@@ -1061,3 +1061,23 @@
 "Open event" = "イベントを開く";
 "Previous month" = "前の月";
 "Next month" = "次の月";
+
+"End Date" = "終了日";
+
+"Frequency" = "周波数";
+
+"Every" = "毎";
+
+"Each" = "それぞれ";
+
+"On the…" = "上に…";
+
+"Days of Week" = "曜日";
+
+"Last" = "最後";
+
+"Weekday" = "平日";
+
+"Weekend day" = "週末の日";
+
+"Event will occur every %@." = "イベントは%@ごとに発生します。";

@@ -1061,3 +1061,23 @@
 "Open event" = "Otevřít událost";
 "Previous month" = "Předchozí měsíc";
 "Next month" = "Následující měsíc";
+
+"End Date" = "Datum konce";
+
+"Frequency" = "Frekvence";
+
+"Every" = "Každý";
+
+"Each" = "Každý";
+
+"On the…" = "Na…";
+
+"Days of Week" = "Dny v týdnu";
+
+"Last" = "Poslední";
+
+"Weekday" = "všední den";
+
+"Weekend day" = "Víkendový den";
+
+"Event will occur every %@." = "Událost se bude konat každé %@.";

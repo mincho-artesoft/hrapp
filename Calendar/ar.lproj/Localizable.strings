@@ -1062,3 +1062,23 @@
 "Open event" = "فتح الحدث";
 "Previous month" = "الشهر السابق";
 "Next month" = "الشهر التالي";
+
+"End Date" = "تاريخ الانتهاء";
+
+"Frequency" = "التردد";
+
+"Every" = "كل";
+
+"Each" = "كل";
+
+"On the…" = "على…";
+
+"Days of Week" = "أيام الأسبوع";
+
+"Last" = "الاخير";
+
+"Weekday" = "أيام الأسبوع";
+
+"Weekend day" = "يوم عطلة نهاية الأسبوع";
+
+"Event will occur every %@." = "سيحدث الحدث كل %@.";

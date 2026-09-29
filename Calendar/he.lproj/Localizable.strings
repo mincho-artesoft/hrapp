@@ -1061,3 +1061,23 @@
 "Open event" = "פתיחת האירוע";
 "Previous month" = "החודש הקודם";
 "Next month" = "החודש הבא";
+
+"End Date" = "תאריך סיום";
+
+"Frequency" = "תדירות";
+
+"Every" = "כל";
+
+"Each" = "כל אחד";
+
+"On the…" = "על…";
+
+"Days of Week" = "ימי השבוע";
+
+"Last" = "אחרון";
+
+"Weekday" = "יום חול";
+
+"Weekend day" = "יום סוף שבוע";
+
+"Event will occur every %@." = "האירוע יתרחש בכל %@.";

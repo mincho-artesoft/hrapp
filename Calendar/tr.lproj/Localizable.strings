@@ -1061,3 +1061,23 @@
 "Open event" = "Etkinliği aç";
 "Previous month" = "Önceki ay";
 "Next month" = "Sonraki ay";
+
+"End Date" = "Bitiş tarihi";
+
+"Frequency" = "Frekans";
+
+"Every" = "Her";
+
+"Each" = "Her biri";
+
+"On the…" = "Üzerinde…";
+
+"Days of Week" = "Haftanın Günleri";
+
+"Last" = "Son";
+
+"Weekday" = "Hafta içi";
+
+"Weekend day" = "Hafta sonu günü";
+
+"Event will occur every %@." = "Etkinlik her %@'de gerçekleşecektir.";

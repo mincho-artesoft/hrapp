@@ -1061,3 +1061,23 @@
 "Open event" = "इवेंट खोलें";
 "Previous month" = "पिछला महीना";
 "Next month" = "अगला महीना";
+
+"End Date" = "समाप्ति तिथि";
+
+"Frequency" = "आवृत्ति";
+
+"Every" = "हर";
+
+"Each" = "प्रत्येक";
+
+"On the…" = "पर…";
+
+"Days of Week" = "सप्ताह के दिन";
+
+"Last" = "अंतिम";
+
+"Weekday" = "कार्यदिवस";
+
+"Weekend day" = "सप्ताहांत का दिन";
+
+"Event will occur every %@." = "घटना प्रत्येक %@ पर घटित होगी।";

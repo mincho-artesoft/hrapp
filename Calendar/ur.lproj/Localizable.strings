@@ -1063,3 +1063,23 @@
 "Open event" = "ایونٹ کھولیں";
 "Previous month" = "پچھلا مہینہ";
 "Next month" = "اگلا مہینہ";
+
+"End Date" = "اختتامی تاریخ";
+
+"Frequency" = "تعدد";
+
+"Every" = "ہر";
+
+"Each" = "ہر ایک";
+
+"On the…" = "پر…";
+
+"Days of Week" = "ہفتے کے دن";
+
+"Last" = "آخری";
+
+"Weekday" = "ہفتے کا دن";
+
+"Weekend day" = "ویک اینڈ کا دن";
+
+"Event will occur every %@." = "ایونٹ ہر %@ پیش آئے گا۔";

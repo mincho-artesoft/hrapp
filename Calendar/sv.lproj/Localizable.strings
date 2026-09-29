@@ -1061,3 +1061,23 @@
 "Open event" = "Öppna händelse";
 "Previous month" = "Föregående månad";
 "Next month" = "Nästa månad";
+
+"End Date" = "Slutdatum";
+
+"Frequency" = "Frekvens";
+
+"Every" = "Varje";
+
+"Each" = "Varje";
+
+"On the…" = "På…";
+
+"Days of Week" = "Veckodagar";
+
+"Last" = "Sist";
+
+"Weekday" = "Vardag";
+
+"Weekend day" = "Helgdag";
+
+"Event will occur every %@." = "Händelse kommer att inträffa varje %@.";

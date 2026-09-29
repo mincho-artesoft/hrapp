@@ -271,8 +271,8 @@ public final class TwoWayPinnedMultiDayContainerView: UIView,
         
         // mainScrollView
         mainScrollView.delegate = self
-        mainScrollView.showsHorizontalScrollIndicator = true
-        mainScrollView.showsVerticalScrollIndicator = true
+        mainScrollView.showsHorizontalScrollIndicator = false
+        mainScrollView.showsVerticalScrollIndicator = false
         mainScrollView.bounces = false
         mainScrollView.contentInsetAdjustmentBehavior = .never
         mainScrollView.layer.zPosition = 1
@@ -282,7 +282,7 @@ public final class TwoWayPinnedMultiDayContainerView: UIView,
         // allDayScrollView
         allDayScrollView.delegate = self
         allDayScrollView.showsHorizontalScrollIndicator = false
-        allDayScrollView.showsVerticalScrollIndicator = true
+        allDayScrollView.showsVerticalScrollIndicator = false
         allDayScrollView.alwaysBounceHorizontal = false
         allDayScrollView.alwaysBounceVertical = false
         allDayScrollView.bounces = false

@@ -1063,3 +1063,23 @@
 "Open event" = "Оқиғаны ашу";
 "Previous month" = "Алдыңғы ай";
 "Next month" = "Келесі ай";
+
+"End Date" = "Аяқталу күні";
+
+"Frequency" = "Жиілік";
+
+"Every" = "Әр";
+
+"Each" = "Әрбір";
+
+"On the…" = "бойынша…";
+
+"Days of Week" = "Апта күндері";
+
+"Last" = "Соңғы";
+
+"Weekday" = "Апта күні";
+
+"Weekend day" = "Демалыс күні";
+
+"Event will occur every %@." = "Оқиға әрбір %@ болады.";

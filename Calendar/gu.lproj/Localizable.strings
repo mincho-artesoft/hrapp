@@ -1063,3 +1063,23 @@
 "Open event" = "ઇવેન્ટ ખોલો";
 "Previous month" = "પાછલો મહિનો";
 "Next month" = "આગલો મહિનો";
+
+"End Date" = "સમાપ્તિ તારીખ";
+
+"Frequency" = "આવર્તન";
+
+"Every" = "દરેક";
+
+"Each" = "દરેક";
+
+"On the…" = "પર…";
+
+"Days of Week" = "અઠવાડિયાના દિવસો";
+
+"Last" = "છેલ્લું";
+
+"Weekday" = "અઠવાડિયાનો દિવસ";
+
+"Weekend day" = "સપ્તાહાંતનો દિવસ";
+
+"Event will occur every %@." = "ઇવેન્ટ દર %@ થશે.";

@@ -1061,3 +1061,23 @@
 "Open event" = "Buka acara";
 "Previous month" = "Bulan sebelumnya";
 "Next month" = "Bulan berikutnya";
+
+"End Date" = "Tanggal berakhir";
+
+"Frequency" = "Frekuensi";
+
+"Every" = "Setiap";
+
+"Each" = "Masing-masing";
+
+"On the…" = "Di…";
+
+"Days of Week" = "Hari dalam Seminggu";
+
+"Last" = "Terakhir";
+
+"Weekday" = "hari kerja";
+
+"Weekend day" = "Hari akhir pekan";
+
+"Event will occur every %@." = "Event akan terjadi setiap %@.";

@@ -1,0 +1,150 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>Event will occur every %ld days.</key>
+	<dict>
+		<key>NSStringLocalizedFormatKey</key>
+		<string>%#@value@</string>
+		<key>value</key>
+		<dict>
+			<key>NSStringFormatSpecTypeKey</key>
+			<string>NSStringPluralRuleType</string>
+			<key>NSStringFormatValueTypeKey</key>
+			<string>ld</string>
+			<key>one</key>
+			<string>Activiteit vindt elke %ld dagen plaats.</string>
+			<key>other</key>
+			<string>Activiteit vindt elke %ld dagen plaats.</string>
+		</dict>
+	</dict>
+	<key>Event will occur every %ld months on the %@ %@.</key>
+	<dict>
+		<key>NSStringLocalizedFormatKey</key>
+		<string>%#@value@</string>
+		<key>value</key>
+		<dict>
+			<key>NSStringFormatSpecTypeKey</key>
+			<string>NSStringPluralRuleType</string>
+			<key>NSStringFormatValueTypeKey</key>
+			<string>ld</string>
+			<key>one</key>
+			<string>Activiteit vindt elke %ld maanden plaats op de %@ %@.</string>
+			<key>other</key>
+			<string>Activiteit vindt elke %ld maanden plaats op de %@ %@.</string>
+		</dict>
+	</dict>
+	<key>Event will occur every %ld months on the %@.</key>
+	<dict>
+		<key>NSStringLocalizedFormatKey</key>
+		<string>%#@value@</string>
+		<key>value</key>
+		<dict>
+			<key>NSStringFormatSpecTypeKey</key>
+			<string>NSStringPluralRuleType</string>
+			<key>NSStringFormatValueTypeKey</key>
+			<string>ld</string>
+			<key>one</key>
+			<string>Activiteit vindt elke %ld maanden plaats op de %@.</string>
+			<key>other</key>
+			<string>Activiteit vindt elke %ld maanden plaats op de %@.</string>
+		</dict>
+	</dict>
+	<key>Event will occur every %ld months.</key>
+	<dict>
+		<key>NSStringLocalizedFormatKey</key>
+		<string>%#@value@</string>
+		<key>value</key>
+		<dict>
+			<key>NSStringFormatSpecTypeKey</key>
+			<string>NSStringPluralRuleType</string>
+			<key>NSStringFormatValueTypeKey</key>
+			<string>ld</string>
+			<key>one</key>
+			<string>Activiteit vindt elke %ld maanden plaats.</string>
+			<key>other</key>
+			<string>Activiteit vindt elke %ld maanden plaats.</string>
+		</dict>
+	</dict>
+	<key>Event will occur every %ld weeks on %@.</key>
+	<dict>
+		<key>NSStringLocalizedFormatKey</key>
+		<string>%#@value@</string>
+		<key>value</key>
+		<dict>
+			<key>NSStringFormatSpecTypeKey</key>
+			<string>NSStringPluralRuleType</string>
+			<key>NSStringFormatValueTypeKey</key>
+			<string>ld</string>
+			<key>one</key>
+			<string>Activiteit vindt elke %ld weken plaats op %@.</string>
+			<key>other</key>
+			<string>Activiteit vindt elke %ld weken plaats op %@.</string>
+		</dict>
+	</dict>
+	<key>Event will occur every %ld weeks.</key>
+	<dict>
+		<key>NSStringLocalizedFormatKey</key>
+		<string>%#@value@</string>
+		<key>value</key>
+		<dict>
+			<key>NSStringFormatSpecTypeKey</key>
+			<string>NSStringPluralRuleType</string>
+			<key>NSStringFormatValueTypeKey</key>
+			<string>ld</string>
+			<key>one</key>
+			<string>Activiteit vindt elke %ld weken plaats.</string>
+			<key>other</key>
+			<string>Activiteit vindt elke %ld weken plaats.</string>
+		</dict>
+	</dict>
+	<key>Event will occur every %ld years in %@.</key>
+	<dict>
+		<key>NSStringLocalizedFormatKey</key>
+		<string>%#@value@</string>
+		<key>value</key>
+		<dict>
+			<key>NSStringFormatSpecTypeKey</key>
+			<string>NSStringPluralRuleType</string>
+			<key>NSStringFormatValueTypeKey</key>
+			<string>ld</string>
+			<key>one</key>
+			<string>Activiteit vindt elke %ld jaar plaats in %@.</string>
+			<key>other</key>
+			<string>Activiteit vindt elke %ld jaar plaats in %@.</string>
+		</dict>
+	</dict>
+	<key>Event will occur every %ld years.</key>
+	<dict>
+		<key>NSStringLocalizedFormatKey</key>
+		<string>%#@value@</string>
+		<key>value</key>
+		<dict>
+			<key>NSStringFormatSpecTypeKey</key>
+			<string>NSStringPluralRuleType</string>
+			<key>NSStringFormatValueTypeKey</key>
+			<string>ld</string>
+			<key>one</key>
+			<string>Activiteit vindt elke %ld jaar plaats.</string>
+			<key>other</key>
+			<string>Activiteit vindt elke %ld jaar plaats.</string>
+		</dict>
+	</dict>
+	<key>every n years on a specific day of months</key>
+	<dict>
+		<key>NSStringLocalizedFormatKey</key>
+		<string>%#@value@</string>
+		<key>value</key>
+		<dict>
+			<key>NSStringFormatSpecTypeKey</key>
+			<string>NSStringPluralRuleType</string>
+			<key>NSStringFormatValueTypeKey</key>
+			<string>ld</string>
+			<key>one</key>
+			<string>Activiteit vindt elke %ld jaar op de %@ %@ %@ plaats.</string>
+			<key>other</key>
+			<string>Activiteit vindt elke %ld jaar op de %@ %@ %@ plaats.</string>
+		</dict>
+	</dict>
+</dict>
+</plist>

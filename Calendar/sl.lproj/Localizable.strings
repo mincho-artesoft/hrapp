@@ -1063,3 +1063,23 @@
 "Open event" = "Odpri dogodek";
 "Previous month" = "Prejšnji mesec";
 "Next month" = "Naslednji mesec";
+
+"End Date" = "Končni datum";
+
+"Frequency" = "Pogostost";
+
+"Every" = "vsak";
+
+"Each" = "Vsak";
+
+"On the…" = "Na…";
+
+"Days of Week" = "Dnevi v tednu";
+
+"Last" = "Zadnji";
+
+"Weekday" = "Delovni dan";
+
+"Weekend day" = "Vikend dan";
+
+"Event will occur every %@." = "Dogodek se bo zgodil vsak %@.";

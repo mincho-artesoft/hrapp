@@ -1061,3 +1061,23 @@
 "Open event" = "打开日程";
 "Previous month" = "上个月";
 "Next month" = "下个月";
+
+"End Date" = "结束日期";
+
+"Frequency" = "频率";
+
+"Every" = "每个";
+
+"Each" = "每个";
+
+"On the…" = "在…";
+
+"Days of Week" = "一周中的几天";
+
+"Last" = "最后";
+
+"Weekday" = "工作日";
+
+"Weekend day" = "周末";
+
+"Event will occur every %@." = "事件将在每个 %@ 发生。";

@@ -1061,3 +1061,23 @@
 "Open event" = "이벤트 열기";
 "Previous month" = "이전 달";
 "Next month" = "다음 달";
+
+"End Date" = "종료일";
+
+"Frequency" = "빈도";
+
+"Every" = "매";
+
+"Each" = "각각";
+
+"On the…" = "에…";
+
+"Days of Week" = "요일";
+
+"Last" = "마지막";
+
+"Weekday" = "평일";
+
+"Weekend day" = "주말";
+
+"Event will occur every %@." = "이벤트는 %@마다 발생합니다.";

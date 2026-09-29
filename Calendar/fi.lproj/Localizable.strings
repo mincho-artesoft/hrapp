@@ -1061,3 +1061,23 @@
 "Open event" = "Avaa tapahtuma";
 "Previous month" = "Edellinen kuukausi";
 "Next month" = "Seuraava kuukausi";
+
+"End Date" = "Päättymispäivä";
+
+"Frequency" = "Taajuus";
+
+"Every" = "Jokainen";
+
+"Each" = "Jokainen";
+
+"On the…" = "Käytössä…";
+
+"Days of Week" = "Viikon päivät";
+
+"Last" = "Viimeinen";
+
+"Weekday" = "Viikonpäivä";
+
+"Weekend day" = "Viikonloppupäivä";
+
+"Event will occur every %@." = "Tapahtuma tapahtuu joka %@.";

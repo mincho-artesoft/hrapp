@@ -1,0 +1,150 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>Event will occur every %ld days.</key>
+	<dict>
+		<key>NSStringLocalizedFormatKey</key>
+		<string>%#@value@</string>
+		<key>value</key>
+		<dict>
+			<key>NSStringFormatSpecTypeKey</key>
+			<string>NSStringPluralRuleType</string>
+			<key>NSStringFormatValueTypeKey</key>
+			<string>ld</string>
+			<key>one</key>
+			<string>O evento ocorrerá todos os dias.</string>
+			<key>other</key>
+			<string>O evento ocorrerá a cada %ld dias.</string>
+		</dict>
+	</dict>
+	<key>Event will occur every %ld months on the %@ %@.</key>
+	<dict>
+		<key>NSStringLocalizedFormatKey</key>
+		<string>%#@value@</string>
+		<key>value</key>
+		<dict>
+			<key>NSStringFormatSpecTypeKey</key>
+			<string>NSStringPluralRuleType</string>
+			<key>NSStringFormatValueTypeKey</key>
+			<string>ld</string>
+			<key>one</key>
+			<string>O evento ocorrerá todos os meses no(a) %2$@ %3$@.</string>
+			<key>other</key>
+			<string>O evento ocorrerá a cada %ld meses no(a) %@ %@.</string>
+		</dict>
+	</dict>
+	<key>Event will occur every %ld months on the %@.</key>
+	<dict>
+		<key>NSStringLocalizedFormatKey</key>
+		<string>%#@value@</string>
+		<key>value</key>
+		<dict>
+			<key>NSStringFormatSpecTypeKey</key>
+			<string>NSStringPluralRuleType</string>
+			<key>NSStringFormatValueTypeKey</key>
+			<string>ld</string>
+			<key>one</key>
+			<string>O evento ocorrerá todos meses no(a) %2$@.</string>
+			<key>other</key>
+			<string>O evento ocorrerá a cada %ld meses no(a) %@.</string>
+		</dict>
+	</dict>
+	<key>Event will occur every %ld months.</key>
+	<dict>
+		<key>NSStringLocalizedFormatKey</key>
+		<string>%#@value@</string>
+		<key>value</key>
+		<dict>
+			<key>NSStringFormatSpecTypeKey</key>
+			<string>NSStringPluralRuleType</string>
+			<key>NSStringFormatValueTypeKey</key>
+			<string>ld</string>
+			<key>one</key>
+			<string>O evento ocorrerá todos os meses.</string>
+			<key>other</key>
+			<string>O evento ocorrerá a cada %ld meses.</string>
+		</dict>
+	</dict>
+	<key>Event will occur every %ld weeks on %@.</key>
+	<dict>
+		<key>NSStringLocalizedFormatKey</key>
+		<string>%#@value@</string>
+		<key>value</key>
+		<dict>
+			<key>NSStringFormatSpecTypeKey</key>
+			<string>NSStringPluralRuleType</string>
+			<key>NSStringFormatValueTypeKey</key>
+			<string>ld</string>
+			<key>one</key>
+			<string>O evento ocorrerá todas as semanas no(a) %2$@.</string>
+			<key>other</key>
+			<string>O evento ocorrerá a cada %ld semanas no(a) %@.</string>
+		</dict>
+	</dict>
+	<key>Event will occur every %ld weeks.</key>
+	<dict>
+		<key>NSStringLocalizedFormatKey</key>
+		<string>%#@value@</string>
+		<key>value</key>
+		<dict>
+			<key>NSStringFormatSpecTypeKey</key>
+			<string>NSStringPluralRuleType</string>
+			<key>NSStringFormatValueTypeKey</key>
+			<string>ld</string>
+			<key>one</key>
+			<string>O evento ocorrerá todas as semanas.</string>
+			<key>other</key>
+			<string>O evento ocorrerá a cada %ld semanas.</string>
+		</dict>
+	</dict>
+	<key>Event will occur every %ld years in %@.</key>
+	<dict>
+		<key>NSStringLocalizedFormatKey</key>
+		<string>%#@value@</string>
+		<key>value</key>
+		<dict>
+			<key>NSStringFormatSpecTypeKey</key>
+			<string>NSStringPluralRuleType</string>
+			<key>NSStringFormatValueTypeKey</key>
+			<string>ld</string>
+			<key>one</key>
+			<string>O evento ocorrerá todos os anos em %2$@.</string>
+			<key>other</key>
+			<string>O evento ocorrerá a cada %ld anos em %@.</string>
+		</dict>
+	</dict>
+	<key>Event will occur every %ld years.</key>
+	<dict>
+		<key>NSStringLocalizedFormatKey</key>
+		<string>%#@value@</string>
+		<key>value</key>
+		<dict>
+			<key>NSStringFormatSpecTypeKey</key>
+			<string>NSStringPluralRuleType</string>
+			<key>NSStringFormatValueTypeKey</key>
+			<string>ld</string>
+			<key>one</key>
+			<string>O evento ocorrerá todos os anos.</string>
+			<key>other</key>
+			<string>O evento ocorrerá a cada %ld anos.</string>
+		</dict>
+	</dict>
+	<key>every n years on a specific day of months</key>
+	<dict>
+		<key>NSStringLocalizedFormatKey</key>
+		<string>%#@value@</string>
+		<key>value</key>
+		<dict>
+			<key>NSStringFormatSpecTypeKey</key>
+			<string>NSStringPluralRuleType</string>
+			<key>NSStringFormatValueTypeKey</key>
+			<string>ld</string>
+			<key>one</key>
+			<string>O evento ocorrerá todos os anos, no(a) %2$@ %3$@ %4$@.</string>
+			<key>other</key>
+			<string>O evento ocorrerá a cada %ld anos, no(a) %@ %@ %@.</string>
+		</dict>
+	</dict>
+</dict>
+</plist>

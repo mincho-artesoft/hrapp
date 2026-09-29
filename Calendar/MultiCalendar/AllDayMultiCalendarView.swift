@@ -17,7 +17,7 @@ public final class AllDayMultiCalendarView: UIView, UIGestureRecognizerDelegate 
     /// Скрол в който ще слагаме всички EventView.
     private let scrollView: UIScrollView = {
         let sv = UIScrollView()
-        sv.showsVerticalScrollIndicator = true
+        sv.showsVerticalScrollIndicator = false
         sv.showsHorizontalScrollIndicator = false
         sv.bounces = true
         return sv

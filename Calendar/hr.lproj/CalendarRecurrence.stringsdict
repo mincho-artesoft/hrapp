@@ -1,0 +1,168 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>Event will occur every %ld days.</key>
+	<dict>
+		<key>NSStringLocalizedFormatKey</key>
+		<string>%#@value@</string>
+		<key>value</key>
+		<dict>
+			<key>NSStringFormatSpecTypeKey</key>
+			<string>NSStringPluralRuleType</string>
+			<key>NSStringFormatValueTypeKey</key>
+			<string>ld</string>
+			<key>few</key>
+			<string>Događaj se ponavlja svaka %ld dana.</string>
+			<key>one</key>
+			<string>Događaj se ponavlja svaki %ld dan.</string>
+			<key>other</key>
+			<string>Događaj se ponavlja svakih %ld dana.</string>
+		</dict>
+	</dict>
+	<key>Event will occur every %ld months on the %@ %@.</key>
+	<dict>
+		<key>NSStringLocalizedFormatKey</key>
+		<string>%#@value@</string>
+		<key>value</key>
+		<dict>
+			<key>NSStringFormatSpecTypeKey</key>
+			<string>NSStringPluralRuleType</string>
+			<key>NSStringFormatValueTypeKey</key>
+			<string>ld</string>
+			<key>few</key>
+			<string>Događaj se ponavlja svaka %ld mjeseca na %@ %@</string>
+			<key>one</key>
+			<string>Događaj se ponavlja svaki %ld mjesec na %@ %@</string>
+			<key>other</key>
+			<string>Događaj se ponavlja svakih %ld mjeseci na %@ %@</string>
+		</dict>
+	</dict>
+	<key>Event will occur every %ld months on the %@.</key>
+	<dict>
+		<key>NSStringLocalizedFormatKey</key>
+		<string>%#@value@</string>
+		<key>value</key>
+		<dict>
+			<key>NSStringFormatSpecTypeKey</key>
+			<string>NSStringPluralRuleType</string>
+			<key>NSStringFormatValueTypeKey</key>
+			<string>ld</string>
+			<key>few</key>
+			<string>Događaj se ponavlja svaka %ld mjeseca na dane: %@</string>
+			<key>one</key>
+			<string>Događaj se ponavlja svaki %ld mjesec na dane: %@</string>
+			<key>other</key>
+			<string>Događaj se ponavlja svakih %ld mjeseci na dane: %@</string>
+		</dict>
+	</dict>
+	<key>Event will occur every %ld months.</key>
+	<dict>
+		<key>NSStringLocalizedFormatKey</key>
+		<string>%#@value@</string>
+		<key>value</key>
+		<dict>
+			<key>NSStringFormatSpecTypeKey</key>
+			<string>NSStringPluralRuleType</string>
+			<key>NSStringFormatValueTypeKey</key>
+			<string>ld</string>
+			<key>few</key>
+			<string>Događaj se ponavlja svaka %ld mjeseca.</string>
+			<key>one</key>
+			<string>Događaj se ponavlja svaki %ld mjesec.</string>
+			<key>other</key>
+			<string>Događaj se ponavlja svakih %ld mjeseci.</string>
+		</dict>
+	</dict>
+	<key>Event will occur every %ld weeks on %@.</key>
+	<dict>
+		<key>NSStringLocalizedFormatKey</key>
+		<string>%#@value@</string>
+		<key>value</key>
+		<dict>
+			<key>NSStringFormatSpecTypeKey</key>
+			<string>NSStringPluralRuleType</string>
+			<key>NSStringFormatValueTypeKey</key>
+			<string>ld</string>
+			<key>few</key>
+			<string>Događaj se ponavlja svaka %ld tjedna na dane: %@.</string>
+			<key>one</key>
+			<string>Događaj se ponavlja svaki %ld tjedan na dane: %@.</string>
+			<key>other</key>
+			<string>Događaj se ponavlja svakih %ld tjedana na dane: %@.</string>
+		</dict>
+	</dict>
+	<key>Event will occur every %ld weeks.</key>
+	<dict>
+		<key>NSStringLocalizedFormatKey</key>
+		<string>%#@value@</string>
+		<key>value</key>
+		<dict>
+			<key>NSStringFormatSpecTypeKey</key>
+			<string>NSStringPluralRuleType</string>
+			<key>NSStringFormatValueTypeKey</key>
+			<string>ld</string>
+			<key>few</key>
+			<string>Događaj se ponavlja svaka %ld tjedna.</string>
+			<key>one</key>
+			<string>Događaj se ponavlja svaki %ld tjedan.</string>
+			<key>other</key>
+			<string>Događaj se ponavlja svakih %ld tjedana.</string>
+		</dict>
+	</dict>
+	<key>Event will occur every %ld years in %@.</key>
+	<dict>
+		<key>NSStringLocalizedFormatKey</key>
+		<string>%#@value@</string>
+		<key>value</key>
+		<dict>
+			<key>NSStringFormatSpecTypeKey</key>
+			<string>NSStringPluralRuleType</string>
+			<key>NSStringFormatValueTypeKey</key>
+			<string>ld</string>
+			<key>few</key>
+			<string>Događaj se ponavlja svake %ld godine u: %@.</string>
+			<key>one</key>
+			<string>Događaj se ponavlja svake %ld godine u: %@.</string>
+			<key>other</key>
+			<string>Događaj se ponavlja svakih %ld godina u: %@.</string>
+		</dict>
+	</dict>
+	<key>Event will occur every %ld years.</key>
+	<dict>
+		<key>NSStringLocalizedFormatKey</key>
+		<string>%#@value@</string>
+		<key>value</key>
+		<dict>
+			<key>NSStringFormatSpecTypeKey</key>
+			<string>NSStringPluralRuleType</string>
+			<key>NSStringFormatValueTypeKey</key>
+			<string>ld</string>
+			<key>few</key>
+			<string>Događaj se ponavlja svake %ld godine.</string>
+			<key>one</key>
+			<string>Događaj se ponavlja svaku %ld godinu.</string>
+			<key>other</key>
+			<string>Događaj se ponavlja svakih %ld godina.</string>
+		</dict>
+	</dict>
+	<key>every n years on a specific day of months</key>
+	<dict>
+		<key>NSStringLocalizedFormatKey</key>
+		<string>%#@value@</string>
+		<key>value</key>
+		<dict>
+			<key>NSStringFormatSpecTypeKey</key>
+			<string>NSStringPluralRuleType</string>
+			<key>NSStringFormatValueTypeKey</key>
+			<string>ld</string>
+			<key>few</key>
+			<string>Događaj se ponavlja svake %ld godine, %@ %@ u mjesecima: %@.</string>
+			<key>one</key>
+			<string>Događaj se ponavlja svaku %ld godinu, %@ %@ u mjesecima: %@.</string>
+			<key>other</key>
+			<string>Događaj se ponavlja svakih %ld godina, %@ %@ u mjesecima: %@.</string>
+		</dict>
+	</dict>
+</dict>
+</plist>

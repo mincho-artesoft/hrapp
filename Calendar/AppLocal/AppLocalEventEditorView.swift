@@ -137,6 +137,7 @@ struct AppLocalEventEditorView: View {
         let repeatOption: String
         let repeatInterval: Int
         let recurrenceEndDate: Date?
+        let recurrencePattern: CalendarRecurrencePattern
         let travelTime: Int
         let urlString: String
         let videoCallURL: String
@@ -225,29 +226,7 @@ struct AppLocalEventEditorView: View {
         }
     }
 
-    private enum TravelTimeOption: Int, CaseIterable, Identifiable {
-        case none = 0, five = 300, fifteen = 900, thirty = 1800, oneHour = 3600, twoHours = 7200
-        var id: Int { rawValue }
-        @MainActor var title: String {
-            switch self {
-            case .none: return localizedEventEditorString("None")
-            default:
-                let formatter = DateComponentsFormatter()
-                formatter.allowedUnits = rawValue < 3_600 ? [.minute] : [.hour]
-                formatter.unitsStyle = .full
-                formatter.maximumUnitCount = 1
-                var calendar = Calendar(identifier: .gregorian)
-                calendar.locale = AppPreferences.shared.interfaceLocale
-                formatter.calendar = calendar
-                return formatter.string(from: TimeInterval(rawValue)) ?? "\(rawValue / 60) min"
-            }
-        }
-        init(seconds: TimeInterval?) {
-            self = Self.allCases.min(by: {
-                abs(Double($0.rawValue) - (seconds ?? 0)) < abs(Double($1.rawValue) - (seconds ?? 0))
-            }) ?? .none
-        }
-    }
+    private typealias TravelTimeOption = CalendarTravelTimeOption
 
     let target: AppLocalEventEditorTarget
     let onDismissed: (() -> Void)?
@@ -260,6 +239,7 @@ struct AppLocalEventEditorView: View {
     @State private var title: String
     @State private var location: String
     @State private var structuredLocation: SharedEventLocation?
+    @State private var expandedDatePicker: CalendarDatePickerFocus?
     @State private var startDate: Date
     @State private var endDate: Date
     @State private var isAllDay: Bool
@@ -267,6 +247,7 @@ struct AppLocalEventEditorView: View {
     @State private var alertOffset: AlertOffset
     @State private var secondAlertOffset: AlertOffset
     @State private var repeatOption: RepeatOption
+    @State private var recurrencePattern: CalendarRecurrencePattern
     @State private var repeatInterval: Int
     @State private var recurrenceEndDate: Date?
     @State private var travelTime: TravelTimeOption
@@ -327,6 +308,9 @@ struct AppLocalEventEditorView: View {
         _selectedCalendarID = State(initialValue: initialCalendar)
         _alertOffset = State(initialValue: Self.alert(for: localAlarms.first ?? systemAlarms.first?.relativeOffset))
         _secondAlertOffset = State(initialValue: Self.alert(for: localAlarms.dropFirst().first ?? systemAlarms.dropFirst().first?.relativeOffset))
+        _recurrencePattern = State(initialValue: CalendarRecurrencePattern(
+            rule: local?.recurrenceRules?.first?.makeRule() ?? system?.recurrenceRules?.first,
+            start: initialStart, calendar: AppPreferences.shared.presentationCalendar))
         _repeatOption = State(initialValue: local.map { RepeatOption(sharedRules: $0.recurrenceRules) } ?? RepeatOption(rules: system?.recurrenceRules))
         _repeatInterval = State(initialValue: max(
             1,
@@ -453,6 +437,7 @@ struct AppLocalEventEditorView: View {
             repeatOption: repeatOption.rawValue,
             repeatInterval: repeatInterval,
             recurrenceEndDate: recurrenceEndDate,
+            recurrencePattern: recurrencePattern,
             travelTime: travelTime.rawValue,
             urlString: urlString,
             videoCallURL: videoCallURL,
@@ -557,62 +542,32 @@ struct AppLocalEventEditorView: View {
 
             Section {
                 Toggle("All-day", isOn: $isAllDay)
-                LabeledContent("Starts") {
-                    HStack(spacing: 6) {
-                        PreferenceCompactDatePicker(
-                            selection: $startDate,
-                            range: Date.distantPast...Date.distantFuture,
-                            component: .date,
-                            timeZone: eventTimeZone
-                        )
-                        if !isAllDay {
-                            PreferenceCompactDatePicker(
-                                selection: $startDate,
-                                range: Date.distantPast...Date.distantFuture,
-                                component: .time,
-                                timeZone: eventTimeZone
-                            )
-                        }
-                    }
-                    .layoutPriority(1)
-                }
-                LabeledContent("Ends") {
-                    HStack(spacing: 6) {
-                        PreferenceCompactDatePicker(
-                            selection: $endDate,
-                            range: startDate...Date.distantFuture,
-                            component: .date,
-                            timeZone: eventTimeZone
-                        )
-                        if !isAllDay {
-                            PreferenceCompactDatePicker(
-                                selection: $endDate,
-                                range: startDate...Date.distantFuture,
-                                component: .time,
-                                timeZone: eventTimeZone
-                            )
-                        }
-                    }
-                    .layoutPriority(1)
-                }
-                NavigationLink {
-                    travelTimeEditor
-                } label: {
-                    LabeledContent("Travel Time") {
-                        Text(travelTime.title)
-                            .foregroundStyle(.secondary)
-                    }
-                }
+                CalendarDateTimePickerRow(title: "Starts", id: "start", selection: Binding(
+                    get: { startDate }, set: { value in
+                        let duration = max(0, endDate.timeIntervalSince(startDate))
+                        startDate = value
+                        endDate = value.addingTimeInterval(duration)
+                    }), showsTime: !isAllDay, expanded: $expandedDatePicker)
+                CalendarDateTimePickerRow(title: "Ends", id: "end", selection: $endDate,
+                    range: startDate...Date.distantFuture, showsTime: !isAllDay,
+                    expanded: $expandedDatePicker)
+                travelTimeMenu
             }
+            .calendarDatePickerColumns([startDate, endDate])
+            .environment(\.timeZone, eventTimeZone)
 
             Section {
                 LabeledContent("Repeat") {
                     Menu {
                         ForEach(RepeatOption.allCases) { option in
                             Button {
+                                recurrencePattern = CalendarRecurrencePattern(rule: nil, start: startDate, calendar: eventCalendar)
                                 repeatOption = option
                                 repeatInterval = 1
-                                if option == .never { recurrenceEndDate = nil }
+                                if option == .never {
+                                    recurrenceEndDate = nil
+                                    expandedDatePicker = nil
+                                }
                             } label: {
                                 if option == repeatOption && repeatInterval == 1 {
                                     Label(option.title, systemImage: "checkmark")
@@ -622,6 +577,7 @@ struct AppLocalEventEditorView: View {
                             }
                         }
                         Button {
+                            recurrencePattern = CalendarRecurrencePattern(rule: nil, start: startDate, calendar: eventCalendar)
                             repeatOption = .weekly
                             repeatInterval = 2
                         } label: {
@@ -632,7 +588,10 @@ struct AppLocalEventEditorView: View {
                             }
                         }
                         Divider()
-                        Button("Custom…") { showCustomRecurrenceEditor = true }
+                        Button("Custom…") {
+                            if repeatOption == .never { repeatOption = .daily }
+                            showCustomRecurrenceEditor = true
+                        }
                     } label: {
                         menuValueLabel(repeatDisplayText)
                     }
@@ -644,6 +603,7 @@ struct AppLocalEventEditorView: View {
                         Menu {
                             Button {
                                 recurrenceEndDate = nil
+                                expandedDatePicker = nil
                             } label: {
                                 if recurrenceEndDate == nil {
                                     Label("Never", systemImage: "checkmark")
@@ -673,15 +633,12 @@ struct AppLocalEventEditorView: View {
                     }
 
                     if recurrenceEndDate != nil {
-                        DatePicker(
-                            "Ends",
-                            selection: Binding(
-                                get: { recurrenceEndDate ?? startDate },
-                                set: { recurrenceEndDate = $0 }
-                            ),
-                            in: startDate...,
-                            displayedComponents: .date
-                        )
+                        CalendarDateTimePickerRow(title: "End Date", id: "recurrence-end",
+                            selection: Binding(get: { recurrenceEndDate ?? startDate },
+                                set: { recurrenceEndDate = $0 }),
+                            range: startDate...Date.distantFuture, showsTime: false,
+                            expanded: $expandedDatePicker)
+                            .environment(\.timeZone, eventTimeZone)
                     }
                 }
             }
@@ -751,6 +708,15 @@ struct AppLocalEventEditorView: View {
                             .frame(maxWidth: .infinity)
                     }
                     .id("event-editor-bottom")
+                }
+            }
+            .onChange(of: expandedDatePicker) { _, focus in
+                guard let focus else { return }
+                // Keep the active row visible when replacing a taller picker.
+                DispatchQueue.main.async {
+                    withAnimation(.easeInOut(duration: 0.2)) {
+                        proxy.scrollTo("calendar-row-\(focus.row)", anchor: .top)
+                    }
                 }
             }
             .scrollDismissesKeyboard(.interactively)
@@ -844,10 +810,11 @@ struct AppLocalEventEditorView: View {
                     }
                 }
 
-                if travelTime != .none {
-                    LabeledContent("Travel Time") {
-                        Text(travelTime.title).foregroundStyle(.secondary)
-                    }
+                if payloadIsReadOnly || selectedChoice?.canEdit != true {
+                    LabeledContent("Travel Time", value: travelTime.title)
+                } else {
+                    travelTimeMenu
+                        .onChange(of: travelTime) { _, _ in saveDetailChanges() }
                 }
 
             }
@@ -1034,6 +1001,7 @@ struct AppLocalEventEditorView: View {
     }
 
     private var repeatDisplayText: Text {
+        if recurrencePattern.edited { return Text("Custom") }
         if repeatOption == .weekly && repeatInterval == 2 {
             return Text("Every 2 Weeks")
         }
@@ -1056,30 +1024,15 @@ struct AppLocalEventEditorView: View {
     }
 
     private var endRepeatDisplayText: Text {
-        guard let recurrenceEndDate else { return Text("Never") }
-        let formatter = appShortDateFormatter(timeZone: eventTimeZone, includesYear: true)
-        return Text(formatter.string(from: recurrenceEndDate))
+        recurrenceEndDate == nil ? Text("Never") : Text("On Date")
     }
 
     private var customRecurrenceEditor: some View {
-        Form {
-            Section {
-                Picker("Repeat", selection: $repeatOption) {
-                    ForEach(RepeatOption.allCases.filter { $0 != .never }) { option in
-                        Text(option.title).tag(option)
-                    }
-                }
-
-                Stepper(value: $repeatInterval, in: 1...99) {
-                    LabeledContent("Repeat") {
-                        Text("\(repeatInterval)")
-                            .foregroundStyle(.secondary)
-                    }
-                }
-            }
-        }
-        .navigationTitle("Custom…")
-        .navigationBarTitleDisplayMode(.inline)
+        CalendarRecurrenceEditor(frequency: Binding(
+            get: { repeatOption.frequency ?? .daily },
+            set: { value in repeatOption = RepeatOption.allCases.first { $0.frequency == value } ?? .daily }),
+            interval: $repeatInterval, pattern: $recurrencePattern,
+            startDate: startDate, timeZone: eventTimeZone)
     }
 
     private func alertMenu(
@@ -1106,31 +1059,24 @@ struct AppLocalEventEditorView: View {
         }
     }
 
-    private var travelTimeEditor: some View {
-        Form {
-            Section {
-                Toggle("Travel Time", isOn: Binding(
-                    get: { travelTime != .none },
-                    set: { enabled in
-                        travelTime = enabled ? (travelTime == .none ? .fifteen : travelTime) : .none
-                    }
-                ))
-
-                if travelTime != .none {
-                    Picker("Travel Time", selection: $travelTime) {
-                        ForEach(TravelTimeOption.allCases.filter { $0 != .none }) { option in
-                            Text(option.title).tag(option)
+    private var travelTimeMenu: some View {
+        LabeledContent("Travel Time") {
+            Menu {
+                ForEach(TravelTimeOption.allCases) { option in
+                    Button { travelTime = option } label: {
+                        if option == travelTime {
+                            Label(option.title, systemImage: "checkmark")
+                        } else {
+                            Text(option.title)
                         }
                     }
-                    .pickerStyle(.wheel)
-                    .labelsHidden()
+                    if option == .none { Divider() }
                 }
-            } footer: {
-                Text("Add travel time for this event to your calendar. Event alerts will take this time into account and your calendar will be blocked during this time.")
+            } label: {
+                menuValueLabel(Text(travelTime.title))
             }
+            .tint(.secondary)
         }
-        .navigationTitle("Travel Time")
-        .navigationBarTitleDisplayMode(.inline)
     }
 
     private var structuredLocationCoordinate: CLLocationCoordinate2D? {
@@ -1171,18 +1117,7 @@ struct AppLocalEventEditorView: View {
 
     private var recurrenceRule: EKRecurrenceRule? {
         guard let frequency = repeatOption.frequency else { return nil }
-        let end = recurrenceEndDate.map(EKRecurrenceEnd.init(end:))
-        return EKRecurrenceRule(
-            recurrenceWith: frequency,
-            interval: max(1, repeatInterval),
-            daysOfTheWeek: nil,
-            daysOfTheMonth: nil,
-            monthsOfTheYear: nil,
-            weeksOfTheYear: nil,
-            daysOfTheYear: nil,
-            setPositions: nil,
-            end: end
-        )
+        return recurrencePattern.rule(frequency: frequency, interval: repeatInterval, end: recurrenceEndDate)
     }
 
     private var eventTimeZone: TimeZone {
@@ -1698,6 +1633,9 @@ struct AppLocalEventEditorView: View {
         secondAlertOffset = Self.alert(
             for: localAlarms.dropFirst().first ?? systemAlarms.dropFirst().first?.relativeOffset
         )
+        recurrencePattern = CalendarRecurrencePattern(
+            rule: local?.recurrenceRules?.first?.makeRule() ?? system?.recurrenceRules?.first,
+            start: startDate, calendar: eventCalendar)
         repeatOption = local.map { RepeatOption(sharedRules: $0.recurrenceRules) }
             ?? RepeatOption(rules: system?.recurrenceRules)
         repeatInterval = max(
@@ -1883,71 +1821,6 @@ private struct EventLocationEditorSheet: View {
             videoCallURL = draftVideoCallURL.trimmingCharacters(in: .whitespacesAndNewlines)
             searchModel.suggestions = []
             dismiss()
-        }
-    }
-}
-
-private enum PreferenceDatePickerComponent {
-    case date
-    case time
-
-    var displayedComponents: DatePickerComponents {
-        switch self {
-        case .date: .date
-        case .time: .hourAndMinute
-        }
-    }
-}
-
-/// Keeps the familiar compact EventKit control and its native picker, while
-/// rendering the value with the date/time format explicitly selected in the
-/// app. SwiftUI's compact DatePicker only follows the locale and otherwise
-/// ignores an app-specific format such as `dd.MM.yyyy`.
-private struct PreferenceCompactDatePicker: View {
-    @ObservedObject private var appPreferences = AppPreferences.shared
-
-    @Binding var selection: Date
-    let range: ClosedRange<Date>
-    let component: PreferenceDatePickerComponent
-    let timeZone: TimeZone
-
-    var body: some View {
-        ZStack {
-            Text(displayText)
-                .font(.body)
-                .foregroundStyle(.primary)
-                .lineLimit(1)
-                .padding(.horizontal, 10)
-                .padding(.vertical, 5)
-                .background(
-                    Color(uiColor: .secondarySystemFill),
-                    in: RoundedRectangle(cornerRadius: 8, style: .continuous)
-                )
-                .allowsHitTesting(false)
-                .accessibilityHidden(true)
-
-            DatePicker(
-                "",
-                selection: $selection,
-                in: range,
-                displayedComponents: component.displayedComponents
-            )
-            .labelsHidden()
-            .datePickerStyle(.compact)
-            .opacity(0.02)
-        }
-        .fixedSize(horizontal: true, vertical: true)
-        .environment(\.locale, appPreferences.presentationLocale)
-        .environment(\.calendar, appPreferences.presentationCalendar)
-    }
-
-    private var displayText: String {
-        switch component {
-        case .date:
-            appShortDateFormatter(timeZone: timeZone, includesYear: true)
-                .string(from: selection)
-        case .time:
-            appTimeFormatter(timeZone: timeZone).string(from: selection)
         }
     }
 }

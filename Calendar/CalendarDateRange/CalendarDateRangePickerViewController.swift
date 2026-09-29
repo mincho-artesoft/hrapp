@@ -25,12 +25,7 @@ public class CalendarDateRangePickerViewController: UIViewController {
     public var usesRightToLeftLayout = false
 
     // Тук може да изберете цвета на „кръга“:
-    public var selectedColor = UIColor(
-        red: 66/255.0,
-        green: 150/255.0,
-        blue: 240/255.0,
-        alpha: 1.0
-    )
+    public var selectedColor = CalendarPickerDayStyle.uiSelectionColor
 
     // Layout за UICollectionView
     private let itemsPerRow = 7

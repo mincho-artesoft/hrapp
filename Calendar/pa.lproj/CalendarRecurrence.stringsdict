@@ -1,0 +1,150 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>Event will occur every %ld days.</key>
+	<dict>
+		<key>NSStringLocalizedFormatKey</key>
+		<string>%#@value@</string>
+		<key>value</key>
+		<dict>
+			<key>NSStringFormatSpecTypeKey</key>
+			<string>NSStringPluralRuleType</string>
+			<key>NSStringFormatValueTypeKey</key>
+			<string>ld</string>
+			<key>one</key>
+			<string>ਇਵੈਂਟ ਹਰ %ld ਦਿਨ ਵਿੱਚ ਹੋਵੇਗਾ।</string>
+			<key>other</key>
+			<string>ਇਵੈਂਟ ਹਰ %ld ਦਿਨਾਂ ਵਿੱਚ ਹੋਵੇਗਾ।</string>
+		</dict>
+	</dict>
+	<key>Event will occur every %ld months on the %@ %@.</key>
+	<dict>
+		<key>NSStringLocalizedFormatKey</key>
+		<string>%#@value@</string>
+		<key>value</key>
+		<dict>
+			<key>NSStringFormatSpecTypeKey</key>
+			<string>NSStringPluralRuleType</string>
+			<key>NSStringFormatValueTypeKey</key>
+			<string>ld</string>
+			<key>one</key>
+			<string>ਇਵੈਂਟ ਹਰ %ld ਮਹੀਨੇ ਵਿੱਚ %@ %@ ਨੂੰ ਹੋਵੇਗਾ।</string>
+			<key>other</key>
+			<string>ਇਵੈਂਟ ਹਰ %ld ਮਹੀਨਿਆਂ ਵਿੱਚ %@ %@ ਨੂੰ ਹੋਵੇਗਾ।</string>
+		</dict>
+	</dict>
+	<key>Event will occur every %ld months on the %@.</key>
+	<dict>
+		<key>NSStringLocalizedFormatKey</key>
+		<string>%#@value@</string>
+		<key>value</key>
+		<dict>
+			<key>NSStringFormatSpecTypeKey</key>
+			<string>NSStringPluralRuleType</string>
+			<key>NSStringFormatValueTypeKey</key>
+			<string>ld</string>
+			<key>one</key>
+			<string>ਇਵੈਂਟ ਹਰ %ld ਮਹੀਨੇ ਵਿੱਚ %@ ਨੂੰ ਹੋਵੇਗਾ।</string>
+			<key>other</key>
+			<string>ਇਵੈਂਟ ਹਰ %ld ਮਹੀਨਿਆਂ ਵਿੱਚ %@ ਨੂੰ ਹੋਵੇਗਾ।</string>
+		</dict>
+	</dict>
+	<key>Event will occur every %ld months.</key>
+	<dict>
+		<key>NSStringLocalizedFormatKey</key>
+		<string>%#@value@</string>
+		<key>value</key>
+		<dict>
+			<key>NSStringFormatSpecTypeKey</key>
+			<string>NSStringPluralRuleType</string>
+			<key>NSStringFormatValueTypeKey</key>
+			<string>ld</string>
+			<key>one</key>
+			<string>ਇਵੈਂਟ ਹਰ %ld ਮਹੀਨੇ ਵਿੱਚ ਹੋਵੇਗਾ।</string>
+			<key>other</key>
+			<string>ਇਵੈਂਟ ਹਰ %ld ਮਹੀਨਿਆਂ ਵਿੱਚ ਹੋਵੇਗਾ।</string>
+		</dict>
+	</dict>
+	<key>Event will occur every %ld weeks on %@.</key>
+	<dict>
+		<key>NSStringLocalizedFormatKey</key>
+		<string>%#@value@</string>
+		<key>value</key>
+		<dict>
+			<key>NSStringFormatSpecTypeKey</key>
+			<string>NSStringPluralRuleType</string>
+			<key>NSStringFormatValueTypeKey</key>
+			<string>ld</string>
+			<key>one</key>
+			<string>ਇਵੈਂਟ ਹਰ %ld ਹਫ਼ਤੇ ਵਿੱਚ %@ ਨੂੰ ਹੋਵੇਗਾ।</string>
+			<key>other</key>
+			<string>ਇਵੈਂਟ ਹਰ %ld ਹਫ਼ਤਿਆਂ ਵਿੱਚ %@ ਨੂੰ ਹੋਵੇਗਾ।</string>
+		</dict>
+	</dict>
+	<key>Event will occur every %ld weeks.</key>
+	<dict>
+		<key>NSStringLocalizedFormatKey</key>
+		<string>%#@value@</string>
+		<key>value</key>
+		<dict>
+			<key>NSStringFormatSpecTypeKey</key>
+			<string>NSStringPluralRuleType</string>
+			<key>NSStringFormatValueTypeKey</key>
+			<string>ld</string>
+			<key>one</key>
+			<string>ਇਵੈਂਟ ਹਰ %ld ਹਫ਼ਤੇ ਵਿੱਚ ਹੋਵੇਗਾ।</string>
+			<key>other</key>
+			<string>ਇਵੈਂਟ ਹਰ %ld ਹਫ਼ਤਿਆਂ ਵਿੱਚ ਹੋਵੇਗਾ।</string>
+		</dict>
+	</dict>
+	<key>Event will occur every %ld years in %@.</key>
+	<dict>
+		<key>NSStringLocalizedFormatKey</key>
+		<string>%#@value@</string>
+		<key>value</key>
+		<dict>
+			<key>NSStringFormatSpecTypeKey</key>
+			<string>NSStringPluralRuleType</string>
+			<key>NSStringFormatValueTypeKey</key>
+			<string>ld</string>
+			<key>one</key>
+			<string>ਇਵੈਂਟ ਹਰ %ld ਸਾਲ ਵਿੱਚ %@ ਨੂੰ ਹੋਵੇਗਾ।</string>
+			<key>other</key>
+			<string>ਇਵੈਂਟ ਹਰ %ld ਸਾਲਾਂ ਵਿੱਚ %@ ਨੂੰ ਹੋਵੇਗਾ।</string>
+		</dict>
+	</dict>
+	<key>Event will occur every %ld years.</key>
+	<dict>
+		<key>NSStringLocalizedFormatKey</key>
+		<string>%#@value@</string>
+		<key>value</key>
+		<dict>
+			<key>NSStringFormatSpecTypeKey</key>
+			<string>NSStringPluralRuleType</string>
+			<key>NSStringFormatValueTypeKey</key>
+			<string>ld</string>
+			<key>one</key>
+			<string>ਇਵੈਂਟ ਹਰ %ld ਸਾਲ ਵਿੱਚ ਹੋਵੇਗਾ।</string>
+			<key>other</key>
+			<string>ਇਵੈਂਟ ਹਰ %ld ਸਾਲਾਂ ਵਿੱਚ ਹੋਵੇਗਾ।</string>
+		</dict>
+	</dict>
+	<key>every n years on a specific day of months</key>
+	<dict>
+		<key>NSStringLocalizedFormatKey</key>
+		<string>%#@value@</string>
+		<key>value</key>
+		<dict>
+			<key>NSStringFormatSpecTypeKey</key>
+			<string>NSStringPluralRuleType</string>
+			<key>NSStringFormatValueTypeKey</key>
+			<string>ld</string>
+			<key>one</key>
+			<string>ਇਵੈਂਟ ਹਰ %1$ld ਸਾਲ ਵਿੱਚ %4$@ ਦੇ %3$@ %2$@ ਨੂੰ ਹੋਵੇਗਾ।</string>
+			<key>other</key>
+			<string>ਇਵੈਂਟ ਹਰ %1$ld ਸਾਲਾਂ ਵਿੱਚ %4$@ ਦੇ %2$@ %3$@ ਨੂੰ ਹੋਵੇਗਾ।</string>
+		</dict>
+	</dict>
+</dict>
+</plist>

@@ -1061,3 +1061,23 @@
 "Open event" = "Activiteit openen";
 "Previous month" = "Vorige maand";
 "Next month" = "Volgende maand";
+
+"End Date" = "Einddatum";
+
+"Frequency" = "Frequentie";
+
+"Every" = "Elke";
+
+"Each" = "Elk";
+
+"On the…" = "Op de…";
+
+"Days of Week" = "Dagen van de week";
+
+"Last" = "Laatste";
+
+"Weekday" = "Weekdag";
+
+"Weekend day" = "Weekenddag";
+
+"Event will occur every %@." = "Het evenement vindt elke %@ plaats.";

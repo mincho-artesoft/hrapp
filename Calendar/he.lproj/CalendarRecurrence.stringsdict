@@ -1,0 +1,186 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>Event will occur every %ld days.</key>
+	<dict>
+		<key>NSStringLocalizedFormatKey</key>
+		<string>%#@value@</string>
+		<key>value</key>
+		<dict>
+			<key>NSStringFormatSpecTypeKey</key>
+			<string>NSStringPluralRuleType</string>
+			<key>NSStringFormatValueTypeKey</key>
+			<string>ld</string>
+			<key>many</key>
+			<string>האירוע יתרחש כל %ld ימים.</string>
+			<key>one</key>
+			<string>האירוע יתרחש כל יום.</string>
+			<key>other</key>
+			<string>האירוע יתרחש כל %ld ימים.</string>
+			<key>two</key>
+			<string>האירוע יתרחש כל יומיים.</string>
+		</dict>
+	</dict>
+	<key>Event will occur every %ld months on the %@ %@.</key>
+	<dict>
+		<key>NSStringLocalizedFormatKey</key>
+		<string>%#@value@</string>
+		<key>value</key>
+		<dict>
+			<key>NSStringFormatSpecTypeKey</key>
+			<string>NSStringPluralRuleType</string>
+			<key>NSStringFormatValueTypeKey</key>
+			<string>ld</string>
+			<key>many</key>
+			<string>האירוע יתרחש כל %1$ld חודשים ב%3$@ %2$@ של החודש.</string>
+			<key>one</key>
+			<string>האירוע יתרחש כל חודש ב%3$@ %2$@ של החודש.</string>
+			<key>other</key>
+			<string>האירוע יתרחש כל %1$ld חודשים ב%3$@ %2$@ של החודש.</string>
+			<key>two</key>
+			<string>האירוע יתרחש כל חודשיים ב%3$@ %2$@ של החודש.</string>
+		</dict>
+	</dict>
+	<key>Event will occur every %ld months on the %@.</key>
+	<dict>
+		<key>NSStringLocalizedFormatKey</key>
+		<string>%#@value@</string>
+		<key>value</key>
+		<dict>
+			<key>NSStringFormatSpecTypeKey</key>
+			<string>NSStringPluralRuleType</string>
+			<key>NSStringFormatValueTypeKey</key>
+			<string>ld</string>
+			<key>many</key>
+			<string>האירוע יתרחש כל %ld חודשים ב-%@ בחודש.</string>
+			<key>one</key>
+			<string>האירוע יתרחש כל חודש ב-%2$@ בחודש.</string>
+			<key>other</key>
+			<string>האירוע יתרחש כל %ld חודשים ב-%@ בחודש.</string>
+			<key>two</key>
+			<string>האירוע יתרחש כל חודשיים ב-%2$@ בחודש.</string>
+		</dict>
+	</dict>
+	<key>Event will occur every %ld months.</key>
+	<dict>
+		<key>NSStringLocalizedFormatKey</key>
+		<string>%#@value@</string>
+		<key>value</key>
+		<dict>
+			<key>NSStringFormatSpecTypeKey</key>
+			<string>NSStringPluralRuleType</string>
+			<key>NSStringFormatValueTypeKey</key>
+			<string>ld</string>
+			<key>many</key>
+			<string>האירוע יתרחש כל %ld חודשים.</string>
+			<key>one</key>
+			<string>האירוע יתרחש כל חודש.</string>
+			<key>other</key>
+			<string>האירוע יתרחש כל %ld חודשים.</string>
+			<key>two</key>
+			<string>האירוע יתרחש כל חודשיים.</string>
+		</dict>
+	</dict>
+	<key>Event will occur every %ld weeks on %@.</key>
+	<dict>
+		<key>NSStringLocalizedFormatKey</key>
+		<string>%#@value@</string>
+		<key>value</key>
+		<dict>
+			<key>NSStringFormatSpecTypeKey</key>
+			<string>NSStringPluralRuleType</string>
+			<key>NSStringFormatValueTypeKey</key>
+			<string>ld</string>
+			<key>many</key>
+			<string>האירוע יתרחש כל %ld שבועות ב%@.</string>
+			<key>one</key>
+			<string>האירוע יתרחש כל שבוע ב%2$@.</string>
+			<key>other</key>
+			<string>האירוע יתרחש בכל %ld שבועות ב%@.</string>
+			<key>two</key>
+			<string>האירוע יתרחש כל שבועיים ב%2$@.</string>
+		</dict>
+	</dict>
+	<key>Event will occur every %ld weeks.</key>
+	<dict>
+		<key>NSStringLocalizedFormatKey</key>
+		<string>%#@value@</string>
+		<key>value</key>
+		<dict>
+			<key>NSStringFormatSpecTypeKey</key>
+			<string>NSStringPluralRuleType</string>
+			<key>NSStringFormatValueTypeKey</key>
+			<string>ld</string>
+			<key>many</key>
+			<string>האירוע יתרחש כל %ld שבועות.</string>
+			<key>one</key>
+			<string>האירוע יתרחש כל שבוע.</string>
+			<key>other</key>
+			<string>האירוע יתרחש כל %ld שבועות.</string>
+			<key>two</key>
+			<string>האירוע יתרחש כל שבועיים.</string>
+		</dict>
+	</dict>
+	<key>Event will occur every %ld years in %@.</key>
+	<dict>
+		<key>NSStringLocalizedFormatKey</key>
+		<string>%#@value@</string>
+		<key>value</key>
+		<dict>
+			<key>NSStringFormatSpecTypeKey</key>
+			<string>NSStringPluralRuleType</string>
+			<key>NSStringFormatValueTypeKey</key>
+			<string>ld</string>
+			<key>many</key>
+			<string>האירוע יתרחש כל %ld שנים ב%@.</string>
+			<key>one</key>
+			<string>האירוע יתרחש כל שנה ב%2$@.</string>
+			<key>other</key>
+			<string>האירוע יתרחש כל %ld שנים ב%@.</string>
+			<key>two</key>
+			<string>האירוע יתרחש כל שנתיים ב%2$@.</string>
+		</dict>
+	</dict>
+	<key>Event will occur every %ld years.</key>
+	<dict>
+		<key>NSStringLocalizedFormatKey</key>
+		<string>%#@value@</string>
+		<key>value</key>
+		<dict>
+			<key>NSStringFormatSpecTypeKey</key>
+			<string>NSStringPluralRuleType</string>
+			<key>NSStringFormatValueTypeKey</key>
+			<string>ld</string>
+			<key>many</key>
+			<string>האירוע יתרחש כל %ld שנים.</string>
+			<key>one</key>
+			<string>האירוע יתרחש כל שנה.</string>
+			<key>other</key>
+			<string>האירוע יתרחש כל %ld שנים.</string>
+			<key>two</key>
+			<string>האירוע יתרחש כל שנתיים.</string>
+		</dict>
+	</dict>
+	<key>every n years on a specific day of months</key>
+	<dict>
+		<key>NSStringLocalizedFormatKey</key>
+		<string>%#@value@</string>
+		<key>value</key>
+		<dict>
+			<key>NSStringFormatSpecTypeKey</key>
+			<string>NSStringPluralRuleType</string>
+			<key>NSStringFormatValueTypeKey</key>
+			<string>ld</string>
+			<key>many</key>
+			<string>האירוע יתרחש כל %1$ld שנים ב%3$@ %2$@ %4$@.</string>
+			<key>one</key>
+			<string>האירוע יתרחש כל שנה ב%3$@ %2$@ %4$@.</string>
+			<key>other</key>
+			<string>האירוע יתרחש כל %1$ld שנים ב%3$@ %2$@ %4$@.</string>
+			<key>two</key>
+			<string>האירוע יתרחש כל שנתיים ב%3$@ %2$@ %4$@.</string>
+		</dict>
+	</dict>
+</dict>
+</plist>

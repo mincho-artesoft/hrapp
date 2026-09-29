@@ -1,0 +1,186 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>Event will occur every %ld days.</key>
+	<dict>
+		<key>NSStringLocalizedFormatKey</key>
+		<string>%#@value@</string>
+		<key>value</key>
+		<dict>
+			<key>NSStringFormatSpecTypeKey</key>
+			<string>NSStringPluralRuleType</string>
+			<key>NSStringFormatValueTypeKey</key>
+			<string>ld</string>
+			<key>few</key>
+			<string>Dogodek se bo zgodil vsake %ld dni.</string>
+			<key>one</key>
+			<string>Dogodek se bo zgodil vsak %ld dan.</string>
+			<key>other</key>
+			<string>Dogodek se bo zgodil vsakih %ld dni.</string>
+			<key>two</key>
+			<string>Dogodek se bo zgodil vsaka %ld dneva.</string>
+		</dict>
+	</dict>
+	<key>Event will occur every %ld months on the %@ %@.</key>
+	<dict>
+		<key>NSStringLocalizedFormatKey</key>
+		<string>%#@value@</string>
+		<key>value</key>
+		<dict>
+			<key>NSStringFormatSpecTypeKey</key>
+			<string>NSStringPluralRuleType</string>
+			<key>NSStringFormatValueTypeKey</key>
+			<string>ld</string>
+			<key>few</key>
+			<string>Dogodek se bo zgodil vsake %ld mesece na ta dan: %@ %@.</string>
+			<key>one</key>
+			<string>Dogodek se bo zgodil vsak %ld mesec na ta dan: %@ %@.</string>
+			<key>other</key>
+			<string>Dogodek se bo zgodil vsakih %ld mesecev na ta dan: %@ %@.</string>
+			<key>two</key>
+			<string>Dogodek se bo zgodil vsaka %ld meseca na ta dan: %@ %@.</string>
+		</dict>
+	</dict>
+	<key>Event will occur every %ld months on the %@.</key>
+	<dict>
+		<key>NSStringLocalizedFormatKey</key>
+		<string>%#@value@</string>
+		<key>value</key>
+		<dict>
+			<key>NSStringFormatSpecTypeKey</key>
+			<string>NSStringPluralRuleType</string>
+			<key>NSStringFormatValueTypeKey</key>
+			<string>ld</string>
+			<key>few</key>
+			<string>Dogodek se bo zgodil vsake %ld mesece na ta dan: %@</string>
+			<key>one</key>
+			<string>Dogodek se bo zgodil vsak %ld mesec na ta dan: %@</string>
+			<key>other</key>
+			<string>Dogodek se bo zgodil vsakih %ld mesecev na ta dan: %@</string>
+			<key>two</key>
+			<string>Dogodek se bo zgodil vsaka %ld meseca na ta dan: %@</string>
+		</dict>
+	</dict>
+	<key>Event will occur every %ld months.</key>
+	<dict>
+		<key>NSStringLocalizedFormatKey</key>
+		<string>%#@value@</string>
+		<key>value</key>
+		<dict>
+			<key>NSStringFormatSpecTypeKey</key>
+			<string>NSStringPluralRuleType</string>
+			<key>NSStringFormatValueTypeKey</key>
+			<string>ld</string>
+			<key>few</key>
+			<string>Dogodek se bo zgodil vsake %ld mesece.</string>
+			<key>one</key>
+			<string>Dogodek se bo zgodil vsak %ld mesec.</string>
+			<key>other</key>
+			<string>Dogodek se bo zgodil vsakih %ld mesecev.</string>
+			<key>two</key>
+			<string>Dogodek se bo zgodil vsaka %ld meseca.</string>
+		</dict>
+	</dict>
+	<key>Event will occur every %ld weeks on %@.</key>
+	<dict>
+		<key>NSStringLocalizedFormatKey</key>
+		<string>%#@value@</string>
+		<key>value</key>
+		<dict>
+			<key>NSStringFormatSpecTypeKey</key>
+			<string>NSStringPluralRuleType</string>
+			<key>NSStringFormatValueTypeKey</key>
+			<string>ld</string>
+			<key>few</key>
+			<string>Dogodek se bo zgodil vsake %ld tedne na ta dan: %@.</string>
+			<key>one</key>
+			<string>Dogodek se bo zgodil vsak %ld teden na ta dan: %@.</string>
+			<key>other</key>
+			<string>Dogodek se bo zgodil vsakih %ld tednov na ta dan: %@.</string>
+			<key>two</key>
+			<string>Dogodek se bo zgodil vsaka %ld tedna na ta dan: %@.</string>
+		</dict>
+	</dict>
+	<key>Event will occur every %ld weeks.</key>
+	<dict>
+		<key>NSStringLocalizedFormatKey</key>
+		<string>%#@value@</string>
+		<key>value</key>
+		<dict>
+			<key>NSStringFormatSpecTypeKey</key>
+			<string>NSStringPluralRuleType</string>
+			<key>NSStringFormatValueTypeKey</key>
+			<string>ld</string>
+			<key>few</key>
+			<string>Dogodek se bo zgodil vsake %ld tedne.</string>
+			<key>one</key>
+			<string>Dogodek se bo zgodil vsak %ld teden.</string>
+			<key>other</key>
+			<string>Dogodek se bo zgodil vsakih %ld tednov.</string>
+			<key>two</key>
+			<string>Dogodek se bo zgodil vsaka %ld tedna.</string>
+		</dict>
+	</dict>
+	<key>Event will occur every %ld years in %@.</key>
+	<dict>
+		<key>NSStringLocalizedFormatKey</key>
+		<string>%#@value@</string>
+		<key>value</key>
+		<dict>
+			<key>NSStringFormatSpecTypeKey</key>
+			<string>NSStringPluralRuleType</string>
+			<key>NSStringFormatValueTypeKey</key>
+			<string>ld</string>
+			<key>few</key>
+			<string>Dogodek se bo zgodil vsaka %ld leta v teh mesecih: %@.</string>
+			<key>one</key>
+			<string>Dogodek se bo zgodil vsako %ld leto v teh mesecih: %@.</string>
+			<key>other</key>
+			<string>Dogodek se bo zgodil vsakih %ld let v teh mesecih: %@.</string>
+			<key>two</key>
+			<string>Dogodek se bo zgodil vsaki %ld leti v teh mesecih: %@.</string>
+		</dict>
+	</dict>
+	<key>Event will occur every %ld years.</key>
+	<dict>
+		<key>NSStringLocalizedFormatKey</key>
+		<string>%#@value@</string>
+		<key>value</key>
+		<dict>
+			<key>NSStringFormatSpecTypeKey</key>
+			<string>NSStringPluralRuleType</string>
+			<key>NSStringFormatValueTypeKey</key>
+			<string>ld</string>
+			<key>few</key>
+			<string>Dogodek se bo zgodil vsaka %ld leta.</string>
+			<key>one</key>
+			<string>Dogodek se bo zgodil vsako %ld leto.</string>
+			<key>other</key>
+			<string>Dogodek se bo zgodil vsakih %ld let.</string>
+			<key>two</key>
+			<string>Dogodek se bo zgodil vsaki %ld leti.</string>
+		</dict>
+	</dict>
+	<key>every n years on a specific day of months</key>
+	<dict>
+		<key>NSStringLocalizedFormatKey</key>
+		<string>%#@value@</string>
+		<key>value</key>
+		<dict>
+			<key>NSStringFormatSpecTypeKey</key>
+			<string>NSStringPluralRuleType</string>
+			<key>NSStringFormatValueTypeKey</key>
+			<string>ld</string>
+			<key>few</key>
+			<string>Dogodek se bo zgodil vsaka %ld leta na ta dan: %@ %@ (%@).</string>
+			<key>one</key>
+			<string>Dogodek se bo zgodil vsako %ld leto na ta dan: %@ %@ (%@).</string>
+			<key>other</key>
+			<string>Dogodek se bo zgodil vsakih %ld let na ta dan: %@ %@ (%@).</string>
+			<key>two</key>
+			<string>Dogodek se bo zgodil vsaki %ld leti na ta dan: %@ %@ (%@).</string>
+		</dict>
+	</dict>
+</dict>
+</plist>

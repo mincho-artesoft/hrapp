@@ -1061,3 +1061,23 @@
 "Open event" = "Mở sự kiện";
 "Previous month" = "Tháng trước";
 "Next month" = "Tháng sau";
+
+"End Date" = "Ngày kết thúc";
+
+"Frequency" = "Tần số";
+
+"Every" = "Mỗi";
+
+"Each" = "Mỗi";
+
+"On the…" = "Trên…";
+
+"Days of Week" = "Ngày trong tuần";
+
+"Last" = "Cuối cùng";
+
+"Weekday" = "Ngày trong tuần";
+
+"Weekend day" = "Ngày cuối tuần";
+
+"Event will occur every %@." = "Sự kiện sẽ xảy ra vào mỗi %@.";

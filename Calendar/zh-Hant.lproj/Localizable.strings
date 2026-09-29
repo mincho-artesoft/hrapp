@@ -1061,3 +1061,23 @@
 "Open event" = "開啟行程";
 "Previous month" = "上個月";
 "Next month" = "下個月";
+
+"End Date" = "結束日期";
+
+"Frequency" = "頻率";
+
+"Every" = "每個";
+
+"Each" = "每個";
+
+"On the…" = "在…";
+
+"Days of Week" = "一周中的幾天";
+
+"Last" = "最後";
+
+"Weekday" = "工作日";
+
+"Weekend day" = "週末";
+
+"Event will occur every %@." = "事件将在每个 %@ 发生。";

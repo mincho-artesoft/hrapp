@@ -1063,3 +1063,23 @@
 "Open event" = "ইভেন্ট খুলুন";
 "Previous month" = "আগের মাস";
 "Next month" = "পরের মাস";
+
+"End Date" = "সমাপ্তির তারিখ";
+
+"Frequency" = "ফ্রিকোয়েন্সি";
+
+"Every" = "প্রতিটি";
+
+"Each" = "প্রতিটি";
+
+"On the…" = "উপর…";
+
+"Days of Week" = "সপ্তাহের দিন";
+
+"Last" = "শেষ";
+
+"Weekday" = "সপ্তাহের দিন";
+
+"Weekend day" = "সপ্তাহান্তের দিন";
+
+"Event will occur every %@." = "ইভেন্ট প্রতি %@ ঘটবে।";

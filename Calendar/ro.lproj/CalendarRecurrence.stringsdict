@@ -1,0 +1,168 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>Event will occur every %ld days.</key>
+	<dict>
+		<key>NSStringLocalizedFormatKey</key>
+		<string>%#@value@</string>
+		<key>value</key>
+		<dict>
+			<key>NSStringFormatSpecTypeKey</key>
+			<string>NSStringPluralRuleType</string>
+			<key>NSStringFormatValueTypeKey</key>
+			<string>ld</string>
+			<key>few</key>
+			<string>Evenimentul se va petrece la fiecare %ld zile.</string>
+			<key>one</key>
+			<string>Evenimentul se va petrece în fiecare zi.</string>
+			<key>other</key>
+			<string>Evenimentul se va petrece la fiecare %ld de zile.</string>
+		</dict>
+	</dict>
+	<key>Event will occur every %ld months on the %@ %@.</key>
+	<dict>
+		<key>NSStringLocalizedFormatKey</key>
+		<string>%#@value@</string>
+		<key>value</key>
+		<dict>
+			<key>NSStringFormatSpecTypeKey</key>
+			<string>NSStringPluralRuleType</string>
+			<key>NSStringFormatValueTypeKey</key>
+			<string>ld</string>
+			<key>few</key>
+			<string>Evenimentul se va petrece la fiecare %ld luni, în %@ %@.</string>
+			<key>one</key>
+			<string>Evenimentul se va petrece în fiecare lună, în %2$@ %3$@.</string>
+			<key>other</key>
+			<string>Evenimentul se va petrece la fiecare %ld de luni, în %@ %@.</string>
+		</dict>
+	</dict>
+	<key>Event will occur every %ld months on the %@.</key>
+	<dict>
+		<key>NSStringLocalizedFormatKey</key>
+		<string>%#@value@</string>
+		<key>value</key>
+		<dict>
+			<key>NSStringFormatSpecTypeKey</key>
+			<string>NSStringPluralRuleType</string>
+			<key>NSStringFormatValueTypeKey</key>
+			<string>ld</string>
+			<key>few</key>
+			<string>Evenimentul se va petrece la fiecare %ld luni, pe %@.</string>
+			<key>one</key>
+			<string>Evenimentul se va petrece în fiecare lună, pe %2$@.</string>
+			<key>other</key>
+			<string>Evenimentul se va petrece la fiecare %ld de luni, pe %@.</string>
+		</dict>
+	</dict>
+	<key>Event will occur every %ld months.</key>
+	<dict>
+		<key>NSStringLocalizedFormatKey</key>
+		<string>%#@value@</string>
+		<key>value</key>
+		<dict>
+			<key>NSStringFormatSpecTypeKey</key>
+			<string>NSStringPluralRuleType</string>
+			<key>NSStringFormatValueTypeKey</key>
+			<string>ld</string>
+			<key>few</key>
+			<string>Evenimentul se va petrece la fiecare %ld luni.</string>
+			<key>one</key>
+			<string>Evenimentul se va petrece în fiecare lună.</string>
+			<key>other</key>
+			<string>Evenimentul se va petrece la fiecare %ld de luni.</string>
+		</dict>
+	</dict>
+	<key>Event will occur every %ld weeks on %@.</key>
+	<dict>
+		<key>NSStringLocalizedFormatKey</key>
+		<string>%#@value@</string>
+		<key>value</key>
+		<dict>
+			<key>NSStringFormatSpecTypeKey</key>
+			<string>NSStringPluralRuleType</string>
+			<key>NSStringFormatValueTypeKey</key>
+			<string>ld</string>
+			<key>few</key>
+			<string>Evenimentul se va petrece la fiecare %ld săptămâni, %@.</string>
+			<key>one</key>
+			<string>Evenimentul se va petrece în fiecare săptămână, %2$@.</string>
+			<key>other</key>
+			<string>Evenimentul se va petrece la fiecare %ld de săptămâni, %@.</string>
+		</dict>
+	</dict>
+	<key>Event will occur every %ld weeks.</key>
+	<dict>
+		<key>NSStringLocalizedFormatKey</key>
+		<string>%#@value@</string>
+		<key>value</key>
+		<dict>
+			<key>NSStringFormatSpecTypeKey</key>
+			<string>NSStringPluralRuleType</string>
+			<key>NSStringFormatValueTypeKey</key>
+			<string>ld</string>
+			<key>few</key>
+			<string>Evenimentul se va petrece la fiecare %ld săptămâni.</string>
+			<key>one</key>
+			<string>Evenimentul se va petrece în fiecare săptămână.</string>
+			<key>other</key>
+			<string>Evenimentul se va petrece la fiecare %ld de săptămâni.</string>
+		</dict>
+	</dict>
+	<key>Event will occur every %ld years in %@.</key>
+	<dict>
+		<key>NSStringLocalizedFormatKey</key>
+		<string>%#@value@</string>
+		<key>value</key>
+		<dict>
+			<key>NSStringFormatSpecTypeKey</key>
+			<string>NSStringPluralRuleType</string>
+			<key>NSStringFormatValueTypeKey</key>
+			<string>ld</string>
+			<key>few</key>
+			<string>Evenimentul se va petrece la fiecare %ld ani, în %@.</string>
+			<key>one</key>
+			<string>Evenimentul se va petrece în fiecare an, în %2$@.</string>
+			<key>other</key>
+			<string>Evenimentul se va petrece la fiecare %ld de ani, în %@.</string>
+		</dict>
+	</dict>
+	<key>Event will occur every %ld years.</key>
+	<dict>
+		<key>NSStringLocalizedFormatKey</key>
+		<string>%#@value@</string>
+		<key>value</key>
+		<dict>
+			<key>NSStringFormatSpecTypeKey</key>
+			<string>NSStringPluralRuleType</string>
+			<key>NSStringFormatValueTypeKey</key>
+			<string>ld</string>
+			<key>few</key>
+			<string>Evenimentul se va petrece la fiecare %ld ani.</string>
+			<key>one</key>
+			<string>Evenimentul se va petrece în fiecare an.</string>
+			<key>other</key>
+			<string>Evenimentul se va petrece la fiecare %ld de ani.</string>
+		</dict>
+	</dict>
+	<key>every n years on a specific day of months</key>
+	<dict>
+		<key>NSStringLocalizedFormatKey</key>
+		<string>%#@value@</string>
+		<key>value</key>
+		<dict>
+			<key>NSStringFormatSpecTypeKey</key>
+			<string>NSStringPluralRuleType</string>
+			<key>NSStringFormatValueTypeKey</key>
+			<string>ld</string>
+			<key>few</key>
+			<string>Evenimentul se va petrece la fiecare %ld ani, în %@ %@ %@.</string>
+			<key>one</key>
+			<string>Evenimentul se va petrece în fiecare an, în %2$@ %3$@ %4$@.</string>
+			<key>other</key>
+			<string>Evenimentul se va petrece la fiecare %ld de ani, în %@ %@ %@.</string>
+		</dict>
+	</dict>
+</dict>
+</plist>

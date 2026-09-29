@@ -1,0 +1,186 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>Event will occur every %ld days.</key>
+	<dict>
+		<key>NSStringLocalizedFormatKey</key>
+		<string>%#@value@</string>
+		<key>value</key>
+		<dict>
+			<key>NSStringFormatSpecTypeKey</key>
+			<string>NSStringPluralRuleType</string>
+			<key>NSStringFormatValueTypeKey</key>
+			<string>ld</string>
+			<key>few</key>
+			<string>Подія відбуватиметься що %ld дні.</string>
+			<key>many</key>
+			<string>Подія відбуватиметься що %ld днів.</string>
+			<key>one</key>
+			<string>Подія відбуватиметься що %ld день.</string>
+			<key>other</key>
+			<string>Подія відбуватиметься що %ld дня.</string>
+		</dict>
+	</dict>
+	<key>Event will occur every %ld months on the %@ %@.</key>
+	<dict>
+		<key>NSStringLocalizedFormatKey</key>
+		<string>%#@value@</string>
+		<key>value</key>
+		<dict>
+			<key>NSStringFormatSpecTypeKey</key>
+			<string>NSStringPluralRuleType</string>
+			<key>NSStringFormatValueTypeKey</key>
+			<string>ld</string>
+			<key>few</key>
+			<string>Подія відбуватиметься що %ld місяці в дні: %@ %@.</string>
+			<key>many</key>
+			<string>Подія відбуватиметься що %ld місяців у дні: %@ %@.</string>
+			<key>one</key>
+			<string>Подія відбуватиметься що %ld місяць у дні: %@ %@.</string>
+			<key>other</key>
+			<string>Подія відбуватиметься що %ld місяця в дні: %@ %@.</string>
+		</dict>
+	</dict>
+	<key>Event will occur every %ld months on the %@.</key>
+	<dict>
+		<key>NSStringLocalizedFormatKey</key>
+		<string>%#@value@</string>
+		<key>value</key>
+		<dict>
+			<key>NSStringFormatSpecTypeKey</key>
+			<string>NSStringPluralRuleType</string>
+			<key>NSStringFormatValueTypeKey</key>
+			<string>ld</string>
+			<key>few</key>
+			<string>Подія відбуватиметься що %ld місяці в такі числа: %@.</string>
+			<key>many</key>
+			<string>Подія відбуватиметься що %ld місяців у такі числа: %@.</string>
+			<key>one</key>
+			<string>Подія відбуватиметься що %ld місяць у такі числа: %@.</string>
+			<key>other</key>
+			<string>Подія відбуватиметься що %ld місяця в такі числа: %@.</string>
+		</dict>
+	</dict>
+	<key>Event will occur every %ld months.</key>
+	<dict>
+		<key>NSStringLocalizedFormatKey</key>
+		<string>%#@value@</string>
+		<key>value</key>
+		<dict>
+			<key>NSStringFormatSpecTypeKey</key>
+			<string>NSStringPluralRuleType</string>
+			<key>NSStringFormatValueTypeKey</key>
+			<string>ld</string>
+			<key>few</key>
+			<string>Подія відбуватиметься що %ld місяці.</string>
+			<key>many</key>
+			<string>Подія відбуватиметься що %ld місяців.</string>
+			<key>one</key>
+			<string>Подія відбуватиметься що %ld місяць.</string>
+			<key>other</key>
+			<string>Подія відбуватиметься що %ld місяця.</string>
+		</dict>
+	</dict>
+	<key>Event will occur every %ld weeks on %@.</key>
+	<dict>
+		<key>NSStringLocalizedFormatKey</key>
+		<string>%#@value@</string>
+		<key>value</key>
+		<dict>
+			<key>NSStringFormatSpecTypeKey</key>
+			<string>NSStringPluralRuleType</string>
+			<key>NSStringFormatValueTypeKey</key>
+			<string>ld</string>
+			<key>few</key>
+			<string>Подія відбуватиметься що %ld тижні в дні: %@.</string>
+			<key>many</key>
+			<string>Подія відбуватиметься що %ld тижнів у дні: %@.</string>
+			<key>one</key>
+			<string>Подія відбуватиметься що %ld тиждень у дні: %@.</string>
+			<key>other</key>
+			<string>Подія відбуватиметься що %ld тижня в дні: %@.</string>
+		</dict>
+	</dict>
+	<key>Event will occur every %ld weeks.</key>
+	<dict>
+		<key>NSStringLocalizedFormatKey</key>
+		<string>%#@value@</string>
+		<key>value</key>
+		<dict>
+			<key>NSStringFormatSpecTypeKey</key>
+			<string>NSStringPluralRuleType</string>
+			<key>NSStringFormatValueTypeKey</key>
+			<string>ld</string>
+			<key>few</key>
+			<string>Подія відбуватиметься що %ld тижні.</string>
+			<key>many</key>
+			<string>Подія відбуватиметься що %ld тижнів.</string>
+			<key>one</key>
+			<string>Подія відбуватиметься що %ld тиждень.</string>
+			<key>other</key>
+			<string>Подія відбуватиметься що %ld тижня.</string>
+		</dict>
+	</dict>
+	<key>Event will occur every %ld years in %@.</key>
+	<dict>
+		<key>NSStringLocalizedFormatKey</key>
+		<string>%#@value@</string>
+		<key>value</key>
+		<dict>
+			<key>NSStringFormatSpecTypeKey</key>
+			<string>NSStringPluralRuleType</string>
+			<key>NSStringFormatValueTypeKey</key>
+			<string>ld</string>
+			<key>few</key>
+			<string>Подія відбуватиметься що %ld роки в такі місяці: %@.</string>
+			<key>many</key>
+			<string>Подія відбуватиметься що %ld років у такі місяці: %@.</string>
+			<key>one</key>
+			<string>Подія відбуватиметься що %ld рік у такі місяці: %@.</string>
+			<key>other</key>
+			<string>Подія відбуватиметься що %ld року в такі місяці: %@.</string>
+		</dict>
+	</dict>
+	<key>Event will occur every %ld years.</key>
+	<dict>
+		<key>NSStringLocalizedFormatKey</key>
+		<string>%#@value@</string>
+		<key>value</key>
+		<dict>
+			<key>NSStringFormatSpecTypeKey</key>
+			<string>NSStringPluralRuleType</string>
+			<key>NSStringFormatValueTypeKey</key>
+			<string>ld</string>
+			<key>few</key>
+			<string>Подія відбуватиметься що %ld роки.</string>
+			<key>many</key>
+			<string>Подія відбуватиметься що %ld років.</string>
+			<key>one</key>
+			<string>Подія відбуватиметься що %ld рік.</string>
+			<key>other</key>
+			<string>Подія відбуватиметься що %ld року.</string>
+		</dict>
+	</dict>
+	<key>every n years on a specific day of months</key>
+	<dict>
+		<key>NSStringLocalizedFormatKey</key>
+		<string>%#@value@</string>
+		<key>value</key>
+		<dict>
+			<key>NSStringFormatSpecTypeKey</key>
+			<string>NSStringPluralRuleType</string>
+			<key>NSStringFormatValueTypeKey</key>
+			<string>ld</string>
+			<key>few</key>
+			<string>Подія відбуватиметься що %ld роки в дні: %@ %@; у місяці: %@.</string>
+			<key>many</key>
+			<string>Подія відбуватиметься що %ld років у дні: %@ %@; у місяці: %@.</string>
+			<key>one</key>
+			<string>Подія відбуватиметься що %ld рік у дні: %@ %@; у місяці: %@.</string>
+			<key>other</key>
+			<string>Подія відбуватиметься що %ld року в дні: %@ %@; у місяці: %@.</string>
+		</dict>
+	</dict>
+</dict>
+</plist>

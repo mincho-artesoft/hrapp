@@ -1,0 +1,186 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>Event will occur every %ld days.</key>
+	<dict>
+		<key>NSStringLocalizedFormatKey</key>
+		<string>%#@value@</string>
+		<key>value</key>
+		<dict>
+			<key>NSStringFormatSpecTypeKey</key>
+			<string>NSStringPluralRuleType</string>
+			<key>NSStringFormatValueTypeKey</key>
+			<string>ld</string>
+			<key>few</key>
+			<string>Wydarzenie występuje co %ld dni.</string>
+			<key>many</key>
+			<string>Wydarzenie występuje co %ld dni.</string>
+			<key>one</key>
+			<string>Wydarzenie występuje co %ld dzień.</string>
+			<key>other</key>
+			<string>Wydarzenie występuje co %ld dnia.</string>
+		</dict>
+	</dict>
+	<key>Event will occur every %ld months on the %@ %@.</key>
+	<dict>
+		<key>NSStringLocalizedFormatKey</key>
+		<string>%#@value@</string>
+		<key>value</key>
+		<dict>
+			<key>NSStringFormatSpecTypeKey</key>
+			<string>NSStringPluralRuleType</string>
+			<key>NSStringFormatValueTypeKey</key>
+			<string>ld</string>
+			<key>few</key>
+			<string>Wydarzenie występuje co %ld miesiące (%@ %@).</string>
+			<key>many</key>
+			<string>Wydarzenie występuje co %ld miesięcy (%@ %@).</string>
+			<key>one</key>
+			<string>Wydarzenie występuje co %ld miesiąc (%@ %@).</string>
+			<key>other</key>
+			<string>Wydarzenie występuje co %ld miesiąca (%@ %@).</string>
+		</dict>
+	</dict>
+	<key>Event will occur every %ld months on the %@.</key>
+	<dict>
+		<key>NSStringLocalizedFormatKey</key>
+		<string>%#@value@</string>
+		<key>value</key>
+		<dict>
+			<key>NSStringFormatSpecTypeKey</key>
+			<string>NSStringPluralRuleType</string>
+			<key>NSStringFormatValueTypeKey</key>
+			<string>ld</string>
+			<key>few</key>
+			<string>Wydarzenie występuje co %ld miesiące (%@ dzień miesiąca).</string>
+			<key>many</key>
+			<string>Wydarzenie występuje co %ld miesięcy (%@ dzień miesiąca).</string>
+			<key>one</key>
+			<string>Wydarzenie występuje co %ld miesiąc (%@ dzień miesiąca).</string>
+			<key>other</key>
+			<string>Wydarzenie występuje co %ld miesiąca (%@ dzień miesiąca).</string>
+		</dict>
+	</dict>
+	<key>Event will occur every %ld months.</key>
+	<dict>
+		<key>NSStringLocalizedFormatKey</key>
+		<string>%#@value@</string>
+		<key>value</key>
+		<dict>
+			<key>NSStringFormatSpecTypeKey</key>
+			<string>NSStringPluralRuleType</string>
+			<key>NSStringFormatValueTypeKey</key>
+			<string>ld</string>
+			<key>few</key>
+			<string>Wydarzenie występuje co %ld miesiące.</string>
+			<key>many</key>
+			<string>Wydarzenie występuje co %ld miesięcy.</string>
+			<key>one</key>
+			<string>Wydarzenie występuje co %ld miesiąc.</string>
+			<key>other</key>
+			<string>Wydarzenie występuje co %ld miesiąca.</string>
+		</dict>
+	</dict>
+	<key>Event will occur every %ld weeks on %@.</key>
+	<dict>
+		<key>NSStringLocalizedFormatKey</key>
+		<string>%#@value@</string>
+		<key>value</key>
+		<dict>
+			<key>NSStringFormatSpecTypeKey</key>
+			<string>NSStringPluralRuleType</string>
+			<key>NSStringFormatValueTypeKey</key>
+			<string>ld</string>
+			<key>few</key>
+			<string>Wydarzenie występuje co %ld tygodnie (%@).</string>
+			<key>many</key>
+			<string>Wydarzenie występuje co %ld tygodni (%@).</string>
+			<key>one</key>
+			<string>Wydarzenie występuje co %ld tydzień (%@).</string>
+			<key>other</key>
+			<string>Wydarzenie występuje co %ld tygodnia (%@).</string>
+		</dict>
+	</dict>
+	<key>Event will occur every %ld weeks.</key>
+	<dict>
+		<key>NSStringLocalizedFormatKey</key>
+		<string>%#@value@</string>
+		<key>value</key>
+		<dict>
+			<key>NSStringFormatSpecTypeKey</key>
+			<string>NSStringPluralRuleType</string>
+			<key>NSStringFormatValueTypeKey</key>
+			<string>ld</string>
+			<key>few</key>
+			<string>Wydarzenie występuje co %ld tygodnie.</string>
+			<key>many</key>
+			<string>Wydarzenie występuje co %ld tygodni.</string>
+			<key>one</key>
+			<string>Wydarzenie występuje co %ld tydzień.</string>
+			<key>other</key>
+			<string>Wydarzenie występuje co %ld tygodnia.</string>
+		</dict>
+	</dict>
+	<key>Event will occur every %ld years in %@.</key>
+	<dict>
+		<key>NSStringLocalizedFormatKey</key>
+		<string>%#@value@</string>
+		<key>value</key>
+		<dict>
+			<key>NSStringFormatSpecTypeKey</key>
+			<string>NSStringPluralRuleType</string>
+			<key>NSStringFormatValueTypeKey</key>
+			<string>ld</string>
+			<key>few</key>
+			<string>Wydarzenie występuje co %ld lata (%@).</string>
+			<key>many</key>
+			<string>Wydarzenie występuje co %ld lat (%@).</string>
+			<key>one</key>
+			<string>Wydarzenie występuje co %ld rok (%@).</string>
+			<key>other</key>
+			<string>Wydarzenie występuje co %ld roku (%@).</string>
+		</dict>
+	</dict>
+	<key>Event will occur every %ld years.</key>
+	<dict>
+		<key>NSStringLocalizedFormatKey</key>
+		<string>%#@value@</string>
+		<key>value</key>
+		<dict>
+			<key>NSStringFormatSpecTypeKey</key>
+			<string>NSStringPluralRuleType</string>
+			<key>NSStringFormatValueTypeKey</key>
+			<string>ld</string>
+			<key>few</key>
+			<string>Wydarzenie występuje co %ld lata.</string>
+			<key>many</key>
+			<string>Wydarzenie występuje co %ld lat.</string>
+			<key>one</key>
+			<string>Wydarzenie występuje co %ld rok.</string>
+			<key>other</key>
+			<string>Wydarzenie występuje co %ld roku.</string>
+		</dict>
+	</dict>
+	<key>every n years on a specific day of months</key>
+	<dict>
+		<key>NSStringLocalizedFormatKey</key>
+		<string>%#@value@</string>
+		<key>value</key>
+		<dict>
+			<key>NSStringFormatSpecTypeKey</key>
+			<string>NSStringPluralRuleType</string>
+			<key>NSStringFormatValueTypeKey</key>
+			<string>ld</string>
+			<key>few</key>
+			<string>Wydarzenie występuje co %ld lata (%@ %@, miesiące: %@).</string>
+			<key>many</key>
+			<string>Wydarzenie występuje co %ld lat (%@ %@, miesiące: %@).</string>
+			<key>one</key>
+			<string>Wydarzenie występuje co %ld rok (%@ %@, miesiące: %@).</string>
+			<key>other</key>
+			<string>Wydarzenie występuje co %ld roku (%@ %@, miesiące: %@).</string>
+		</dict>
+	</dict>
+</dict>
+</plist>

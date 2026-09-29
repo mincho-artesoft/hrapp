@@ -1061,3 +1061,23 @@
 "Open event" = "Esemény megnyitása";
 "Previous month" = "Előző hónap";
 "Next month" = "Következő hónap";
+
+"End Date" = "Befejezés dátuma";
+
+"Frequency" = "Frekvencia";
+
+"Every" = "Minden";
+
+"Each" = "Mindegyik";
+
+"On the…" = "A…";
+
+"Days of Week" = "A hét napjai";
+
+"Last" = "Utolsó";
+
+"Weekday" = "Hétköznap";
+
+"Weekend day" = "Hétvégi nap";
+
+"Event will occur every %@." = "Az esemény minden %@-ben megtörténik.";

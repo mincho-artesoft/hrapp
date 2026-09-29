@@ -1056,3 +1056,23 @@
 "Open event" = "Ouvrir l’événement";
 "Previous month" = "Mois précédent";
 "Next month" = "Mois suivant";
+
+"End Date" = "Date de fin";
+
+"Frequency" = "Fréquence";
+
+"Every" = "Chaque";
+
+"Each" = "Chacun";
+
+"On the…" = "Sur le…";
+
+"Days of Week" = "Jours de la semaine";
+
+"Last" = "Dernier";
+
+"Weekday" = "Jour de la semaine";
+
+"Weekend day" = "Jour de week-end";
+
+"Event will occur every %@." = "L'événement se produira chaque %@.";

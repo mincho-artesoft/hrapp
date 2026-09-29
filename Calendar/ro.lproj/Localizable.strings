@@ -1061,3 +1061,23 @@
 "Open event" = "Deschide evenimentul";
 "Previous month" = "Luna anterioară";
 "Next month" = "Luna următoare";
+
+"End Date" = "Data de sfârșit";
+
+"Frequency" = "Frecvența";
+
+"Every" = "Fiecare";
+
+"Each" = "Fiecare";
+
+"On the…" = "Pe…";
+
+"Days of Week" = "Zilele săptămânii";
+
+"Last" = "Ultimul";
+
+"Weekday" = "Ziua săptămânii";
+
+"Weekend day" = "Zi de weekend";
+
+"Event will occur every %@." = "Evenimentul va avea loc la fiecare %@.";

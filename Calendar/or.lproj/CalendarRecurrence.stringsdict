@@ -1,0 +1,150 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>Event will occur every %ld days.</key>
+	<dict>
+		<key>NSStringLocalizedFormatKey</key>
+		<string>%#@value@</string>
+		<key>value</key>
+		<dict>
+			<key>NSStringFormatSpecTypeKey</key>
+			<string>NSStringPluralRuleType</string>
+			<key>NSStringFormatValueTypeKey</key>
+			<string>ld</string>
+			<key>one</key>
+			<string>କାର୍ଯ୍ଯକ୍ରମ ପ୍ରତି %ld ଦିନରେ ହେବ।</string>
+			<key>other</key>
+			<string>କାର୍ଯ୍ଯକ୍ରମ ପ୍ରତି %ld ଦିନରେ ହେବ।</string>
+		</dict>
+	</dict>
+	<key>Event will occur every %ld months on the %@ %@.</key>
+	<dict>
+		<key>NSStringLocalizedFormatKey</key>
+		<string>%#@value@</string>
+		<key>value</key>
+		<dict>
+			<key>NSStringFormatSpecTypeKey</key>
+			<string>NSStringPluralRuleType</string>
+			<key>NSStringFormatValueTypeKey</key>
+			<string>ld</string>
+			<key>one</key>
+			<string>କାର୍ଯ୍ଯକ୍ରମ ପ୍ରତି %ld ମାସରେ%@ %@ ତାରିଖରେ ହେବ।</string>
+			<key>other</key>
+			<string>ଇଭେଣ୍ଟ୍ ପ୍ରତି %ld ମାସରେ %@ %@ରେ ହେବ।</string>
+		</dict>
+	</dict>
+	<key>Event will occur every %ld months on the %@.</key>
+	<dict>
+		<key>NSStringLocalizedFormatKey</key>
+		<string>%#@value@</string>
+		<key>value</key>
+		<dict>
+			<key>NSStringFormatSpecTypeKey</key>
+			<string>NSStringPluralRuleType</string>
+			<key>NSStringFormatValueTypeKey</key>
+			<string>ld</string>
+			<key>one</key>
+			<string>କାର୍ଯ୍ଯକ୍ରମ ପ୍ରତି %ld ମାସରେ %@ ତାରିଖରେ ହେବ।</string>
+			<key>other</key>
+			<string>କାର୍ଯ୍ଯକ୍ରମ ପ୍ରତି %ld ମାସରେ %@ ତାରିଖରେ ହେବ।</string>
+		</dict>
+	</dict>
+	<key>Event will occur every %ld months.</key>
+	<dict>
+		<key>NSStringLocalizedFormatKey</key>
+		<string>%#@value@</string>
+		<key>value</key>
+		<dict>
+			<key>NSStringFormatSpecTypeKey</key>
+			<string>NSStringPluralRuleType</string>
+			<key>NSStringFormatValueTypeKey</key>
+			<string>ld</string>
+			<key>one</key>
+			<string>କାର୍ଯ୍ଯକ୍ରମ ପ୍ରତି %ld ମାସରେ ହେବ।</string>
+			<key>other</key>
+			<string>କାର୍ଯ୍ଯକ୍ରମ ପ୍ରତି %ld ମାସରେ ହେବ।</string>
+		</dict>
+	</dict>
+	<key>Event will occur every %ld weeks on %@.</key>
+	<dict>
+		<key>NSStringLocalizedFormatKey</key>
+		<string>%#@value@</string>
+		<key>value</key>
+		<dict>
+			<key>NSStringFormatSpecTypeKey</key>
+			<string>NSStringPluralRuleType</string>
+			<key>NSStringFormatValueTypeKey</key>
+			<string>ld</string>
+			<key>one</key>
+			<string>କାର୍ଯ୍ଯକ୍ରମ ପ୍ରତି %ld ସପ୍ତାହରେ %@ ଦିନ ହେବ।</string>
+			<key>other</key>
+			<string>କାର୍ଯ୍ଯକ୍ରମ ପ୍ରତି %ld ସପ୍ତାହରେ %@ ଦିନ ହେବ।</string>
+		</dict>
+	</dict>
+	<key>Event will occur every %ld weeks.</key>
+	<dict>
+		<key>NSStringLocalizedFormatKey</key>
+		<string>%#@value@</string>
+		<key>value</key>
+		<dict>
+			<key>NSStringFormatSpecTypeKey</key>
+			<string>NSStringPluralRuleType</string>
+			<key>NSStringFormatValueTypeKey</key>
+			<string>ld</string>
+			<key>one</key>
+			<string>କାର୍ଯ୍ଯକ୍ରମ ପ୍ରତି %ld ସପ୍ତାହରେ ହେବ।</string>
+			<key>other</key>
+			<string>କାର୍ଯ୍ଯକ୍ରମ ପ୍ରତି %ld ସପ୍ତାହରେ ହେବ।</string>
+		</dict>
+	</dict>
+	<key>Event will occur every %ld years in %@.</key>
+	<dict>
+		<key>NSStringLocalizedFormatKey</key>
+		<string>%#@value@</string>
+		<key>value</key>
+		<dict>
+			<key>NSStringFormatSpecTypeKey</key>
+			<string>NSStringPluralRuleType</string>
+			<key>NSStringFormatValueTypeKey</key>
+			<string>ld</string>
+			<key>one</key>
+			<string>କାର୍ଯ୍ଯକ୍ରମ ପ୍ରତି %ld ବର୍ଷରେ %@ ରେ ହେବ।</string>
+			<key>other</key>
+			<string>ଇଭେଣ୍ଟ୍‌ ପ୍ରତି %ld ବର୍ଷରେ %@ ମାସରେ ହେବ।</string>
+		</dict>
+	</dict>
+	<key>Event will occur every %ld years.</key>
+	<dict>
+		<key>NSStringLocalizedFormatKey</key>
+		<string>%#@value@</string>
+		<key>value</key>
+		<dict>
+			<key>NSStringFormatSpecTypeKey</key>
+			<string>NSStringPluralRuleType</string>
+			<key>NSStringFormatValueTypeKey</key>
+			<string>ld</string>
+			<key>one</key>
+			<string>କାର୍ଯ୍ଯକ୍ରମ ପ୍ରତି %ld ବର୍ଷରେ ହେବ।</string>
+			<key>other</key>
+			<string>କାର୍ଯ୍ଯକ୍ରମ ପ୍ରତି %ld ବର୍ଷରେ ହେବ।</string>
+		</dict>
+	</dict>
+	<key>every n years on a specific day of months</key>
+	<dict>
+		<key>NSStringLocalizedFormatKey</key>
+		<string>%#@value@</string>
+		<key>value</key>
+		<dict>
+			<key>NSStringFormatSpecTypeKey</key>
+			<string>NSStringPluralRuleType</string>
+			<key>NSStringFormatValueTypeKey</key>
+			<string>ld</string>
+			<key>one</key>
+			<string>କାର୍ଯ୍ଯକ୍ରମ ପ୍ରତି %1$ld ବର୍ଷରେ %2$@ %3$@ %4$@ ରେ ହେବ।</string>
+			<key>other</key>
+			<string>ଇଭେଣ୍ଟ୍‌ ପ୍ରତି %1$ld ବର୍ଷରେ %4$@ ମାସରେ %2$@ %3$@ ଦିନ ହେବ।</string>
+		</dict>
+	</dict>
+</dict>
+</plist>

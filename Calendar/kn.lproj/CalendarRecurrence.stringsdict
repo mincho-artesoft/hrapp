@@ -1,0 +1,150 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>Event will occur every %ld days.</key>
+	<dict>
+		<key>NSStringLocalizedFormatKey</key>
+		<string>%#@value@</string>
+		<key>value</key>
+		<dict>
+			<key>NSStringFormatSpecTypeKey</key>
+			<string>NSStringPluralRuleType</string>
+			<key>NSStringFormatValueTypeKey</key>
+			<string>ld</string>
+			<key>one</key>
+			<string>ಪ್ರತಿ %ld ದಿನಗಳಿಗೊಮ್ಮೆ ಇವೆಂಟ್ ನಡೆಯುತ್ತದೆ.</string>
+			<key>other</key>
+			<string>ಪ್ರತಿ %ld ದಿನಗಳಿಗೊಮ್ಮೆ ಇವೆಂಟ್ ನಡೆಯುತ್ತದೆ.</string>
+		</dict>
+	</dict>
+	<key>Event will occur every %ld months on the %@ %@.</key>
+	<dict>
+		<key>NSStringLocalizedFormatKey</key>
+		<string>%#@value@</string>
+		<key>value</key>
+		<dict>
+			<key>NSStringFormatSpecTypeKey</key>
+			<string>NSStringPluralRuleType</string>
+			<key>NSStringFormatValueTypeKey</key>
+			<string>ld</string>
+			<key>one</key>
+			<string>ಪ್ರತಿ %ld ತಿಂಗಳಿಗೊಮ್ಮೆ %@ %@ದಂದು ಇವೆಂಟ್ ನಡೆಯುತ್ತದೆ.</string>
+			<key>other</key>
+			<string>ಪ್ರತಿ %ld ತಿಂಗಳಿಗೊಮ್ಮೆ %@ %@ದಂದು ಇವೆಂಟ್ ನಡೆಯುತ್ತದೆ.</string>
+		</dict>
+	</dict>
+	<key>Event will occur every %ld months on the %@.</key>
+	<dict>
+		<key>NSStringLocalizedFormatKey</key>
+		<string>%#@value@</string>
+		<key>value</key>
+		<dict>
+			<key>NSStringFormatSpecTypeKey</key>
+			<string>NSStringPluralRuleType</string>
+			<key>NSStringFormatValueTypeKey</key>
+			<string>ld</string>
+			<key>one</key>
+			<string>ಪ್ರತಿ %ld ತಿಂಗಳಿಗೊಮ್ಮೆ %@ದಂದು ಇವೆಂಟ್ ನಡೆಯುತ್ತದೆ.</string>
+			<key>other</key>
+			<string>ಪ್ರತಿ %ld ತಿಂಗಳಿಗೊಮ್ಮೆ %@ ದಿನದಂದು ಇವೆಂಟ್ ನಡೆಯುತ್ತದೆ.</string>
+		</dict>
+	</dict>
+	<key>Event will occur every %ld months.</key>
+	<dict>
+		<key>NSStringLocalizedFormatKey</key>
+		<string>%#@value@</string>
+		<key>value</key>
+		<dict>
+			<key>NSStringFormatSpecTypeKey</key>
+			<string>NSStringPluralRuleType</string>
+			<key>NSStringFormatValueTypeKey</key>
+			<string>ld</string>
+			<key>one</key>
+			<string>ಪ್ರತಿ %ld ತಿಂಗಳಿಗೊಮ್ಮೆ ಇವೆಂಟ್ ನಡೆಯುತ್ತದೆ.</string>
+			<key>other</key>
+			<string>ಪ್ರತಿ %ld ತಿಂಗಳಿಗೊಮ್ಮೆ ಇವೆಂಟ್ ನಡೆಯುತ್ತದೆ.</string>
+		</dict>
+	</dict>
+	<key>Event will occur every %ld weeks on %@.</key>
+	<dict>
+		<key>NSStringLocalizedFormatKey</key>
+		<string>%#@value@</string>
+		<key>value</key>
+		<dict>
+			<key>NSStringFormatSpecTypeKey</key>
+			<string>NSStringPluralRuleType</string>
+			<key>NSStringFormatValueTypeKey</key>
+			<string>ld</string>
+			<key>one</key>
+			<string>ಪ್ರತಿ %ld ವಾರಗಳಿಗೊಮ್ಮೆ %@ದಂದು ಇವೆಂಟ್ ನಡೆಯುತ್ತದೆ.</string>
+			<key>other</key>
+			<string>ಪ್ರತಿ %ld ವಾರಗಳಿಗೊಮ್ಮೆ %@ದಂದು ಇವೆಂಟ್ ನಡೆಯುತ್ತದೆ.</string>
+		</dict>
+	</dict>
+	<key>Event will occur every %ld weeks.</key>
+	<dict>
+		<key>NSStringLocalizedFormatKey</key>
+		<string>%#@value@</string>
+		<key>value</key>
+		<dict>
+			<key>NSStringFormatSpecTypeKey</key>
+			<string>NSStringPluralRuleType</string>
+			<key>NSStringFormatValueTypeKey</key>
+			<string>ld</string>
+			<key>one</key>
+			<string>ಪ್ರತಿ %ld ವಾರಕ್ಕೊಮ್ಮೆ ಇವೆಂಟ್ ನಡೆಯುತ್ತದೆ.</string>
+			<key>other</key>
+			<string>ಪ್ರತಿ %ld ವಾರಕ್ಕೊಮ್ಮೆ ಇವೆಂಟ್ ನಡೆಯುತ್ತದೆ.</string>
+		</dict>
+	</dict>
+	<key>Event will occur every %ld years in %@.</key>
+	<dict>
+		<key>NSStringLocalizedFormatKey</key>
+		<string>%#@value@</string>
+		<key>value</key>
+		<dict>
+			<key>NSStringFormatSpecTypeKey</key>
+			<string>NSStringPluralRuleType</string>
+			<key>NSStringFormatValueTypeKey</key>
+			<string>ld</string>
+			<key>one</key>
+			<string>ಪ್ರತಿ %ld ವರ್ಷಗಳಿಗೊಮ್ಮೆ %@ ತಿಂಗಳಿನಲ್ಲಿ ಇವೆಂಟ್ ನಡೆಯುತ್ತದೆ.</string>
+			<key>other</key>
+			<string>ಪ್ರತಿ %ld ವರ್ಷಗಳಿಗೊಮ್ಮೆ %@ ತಿಂಗಳಿನಲ್ಲಿ ಇವೆಂಟ್ ನಡೆಯುತ್ತದೆ.</string>
+		</dict>
+	</dict>
+	<key>Event will occur every %ld years.</key>
+	<dict>
+		<key>NSStringLocalizedFormatKey</key>
+		<string>%#@value@</string>
+		<key>value</key>
+		<dict>
+			<key>NSStringFormatSpecTypeKey</key>
+			<string>NSStringPluralRuleType</string>
+			<key>NSStringFormatValueTypeKey</key>
+			<string>ld</string>
+			<key>one</key>
+			<string>ಪ್ರತಿ %ld ವರ್ಷಗಳಿಗೊಮ್ಮೆ ಇವೆಂಟ್ ನಡೆಯುತ್ತದೆ.</string>
+			<key>other</key>
+			<string>ಪ್ರತಿ %ld ವರ್ಷಗಳಿಗೊಮ್ಮೆ ಇವೆಂಟ್ ನಡೆಯುತ್ತದೆ.</string>
+		</dict>
+	</dict>
+	<key>every n years on a specific day of months</key>
+	<dict>
+		<key>NSStringLocalizedFormatKey</key>
+		<string>%#@value@</string>
+		<key>value</key>
+		<dict>
+			<key>NSStringFormatSpecTypeKey</key>
+			<string>NSStringPluralRuleType</string>
+			<key>NSStringFormatValueTypeKey</key>
+			<string>ld</string>
+			<key>one</key>
+			<string>ಪ್ರತಿ %1$ld ವರ್ಷಗಳಿಗೊಮ್ಮೆ %4$@ %2$@ %3$@ದಂದು ಇವೆಂಟ್ ನಡೆಯುತ್ತದೆ.</string>
+			<key>other</key>
+			<string>ಪ್ರತಿ %1$ld ವರ್ಷಗಳಿಗೊಮ್ಮೆ %4$@ %2$@ %3$@ದಂದು ಇವೆಂಟ್ ನಡೆಯುತ್ತದೆ.</string>
+		</dict>
+	</dict>
+</dict>
+</plist>

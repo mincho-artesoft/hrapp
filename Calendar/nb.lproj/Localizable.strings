@@ -1061,3 +1061,23 @@
 "Open event" = "Åpne hendelse";
 "Previous month" = "Forrige måned";
 "Next month" = "Neste måned";
+
+"End Date" = "Sluttdato";
+
+"Frequency" = "Frekvens";
+
+"Every" = "Hver";
+
+"Each" = "Hver";
+
+"On the…" = "På…";
+
+"Days of Week" = "Ukedager";
+
+"Last" = "Sist";
+
+"Weekday" = "Ukedag";
+
+"Weekend day" = "Helgedag";
+
+"Event will occur every %@." = "Hendelsen vil finne sted hver %@.";

@@ -1,0 +1,222 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>Event will occur every %ld days.</key>
+	<dict>
+		<key>NSStringLocalizedFormatKey</key>
+		<string>%#@value@</string>
+		<key>value</key>
+		<dict>
+			<key>NSStringFormatSpecTypeKey</key>
+			<string>NSStringPluralRuleType</string>
+			<key>NSStringFormatValueTypeKey</key>
+			<string>ld</string>
+			<key>few</key>
+			<string>سيقع الحدث كل %ld أيام.</string>
+			<key>many</key>
+			<string>سيقع الحدث كل %ld يومًا.</string>
+			<key>one</key>
+			<string>سيقع الحدث كل يوم.</string>
+			<key>other</key>
+			<string>سيقع الحدث كل %ld يوم.</string>
+			<key>two</key>
+			<string>سيقع الحدث كل يومين.</string>
+			<key>zero</key>
+			<string>سيقع الحدث كل %ld يوم.</string>
+		</dict>
+	</dict>
+	<key>Event will occur every %ld months on the %@ %@.</key>
+	<dict>
+		<key>NSStringLocalizedFormatKey</key>
+		<string>%#@value@</string>
+		<key>value</key>
+		<dict>
+			<key>NSStringFormatSpecTypeKey</key>
+			<string>NSStringPluralRuleType</string>
+			<key>NSStringFormatValueTypeKey</key>
+			<string>ld</string>
+			<key>few</key>
+			<string>سيقع الحدث كل %ld شهور في %@ ‏%@.</string>
+			<key>many</key>
+			<string>سيقع الحدث كل %ld شهرًا في %@ ‏%@.</string>
+			<key>one</key>
+			<string>سيقع الحدث كل شهر في %2$@ ‏%3$@.</string>
+			<key>other</key>
+			<string>سيقع الحدث كل %ld شهر في %@ ‏%@.</string>
+			<key>two</key>
+			<string>سيقع الحدث كل شهرين في %2$@ ‏%3$@.</string>
+			<key>zero</key>
+			<string>سيقع الحدث كل %ld شهر في %@ ‏%@.</string>
+		</dict>
+	</dict>
+	<key>Event will occur every %ld months on the %@.</key>
+	<dict>
+		<key>NSStringLocalizedFormatKey</key>
+		<string>%#@value@</string>
+		<key>value</key>
+		<dict>
+			<key>NSStringFormatSpecTypeKey</key>
+			<string>NSStringPluralRuleType</string>
+			<key>NSStringFormatValueTypeKey</key>
+			<string>ld</string>
+			<key>few</key>
+			<string>سيقع الحدث كل %ld شهور في %@.</string>
+			<key>many</key>
+			<string>سيقع الحدث كل %ld شهرًا في %@.</string>
+			<key>one</key>
+			<string>سيقع الحدث كل شهر في %2$@.</string>
+			<key>other</key>
+			<string>سيقع الحدث كل %ld شهر في %@.</string>
+			<key>two</key>
+			<string>سيقع الحدث كل شهرين في %2$@.</string>
+			<key>zero</key>
+			<string>سيقع الحدث كل %ld شهر في %@.</string>
+		</dict>
+	</dict>
+	<key>Event will occur every %ld months.</key>
+	<dict>
+		<key>NSStringLocalizedFormatKey</key>
+		<string>%#@value@</string>
+		<key>value</key>
+		<dict>
+			<key>NSStringFormatSpecTypeKey</key>
+			<string>NSStringPluralRuleType</string>
+			<key>NSStringFormatValueTypeKey</key>
+			<string>ld</string>
+			<key>few</key>
+			<string>سيقع الحدث كل %ld شهور.</string>
+			<key>many</key>
+			<string>سيقع الحدث كل %ld شهرًا.</string>
+			<key>one</key>
+			<string>سيقع الحدث كل شهر.</string>
+			<key>other</key>
+			<string>سيقع الحدث كل %ld شهر.</string>
+			<key>two</key>
+			<string>سيقع الحدث كل شهرين.</string>
+			<key>zero</key>
+			<string>سيقع الحدث كل %ld شهر.</string>
+		</dict>
+	</dict>
+	<key>Event will occur every %ld weeks on %@.</key>
+	<dict>
+		<key>NSStringLocalizedFormatKey</key>
+		<string>%#@value@</string>
+		<key>value</key>
+		<dict>
+			<key>NSStringFormatSpecTypeKey</key>
+			<string>NSStringPluralRuleType</string>
+			<key>NSStringFormatValueTypeKey</key>
+			<string>ld</string>
+			<key>few</key>
+			<string>سيقع الحدث كل %ld أسابيع يوم %@.</string>
+			<key>many</key>
+			<string>سيقع الحدث كل %ld أسبوعًا يوم %@.</string>
+			<key>one</key>
+			<string>سيقع الحدث كل أسبوع يوم %2$@.</string>
+			<key>other</key>
+			<string>سيقع الحدث كل %ld أسبوع يوم %@.</string>
+			<key>two</key>
+			<string>سيقع الحدث كل أسبوعين يوم %2$@.</string>
+			<key>zero</key>
+			<string>سيقع الحدث كل %ld أسبوع يوم %@.</string>
+		</dict>
+	</dict>
+	<key>Event will occur every %ld weeks.</key>
+	<dict>
+		<key>NSStringLocalizedFormatKey</key>
+		<string>%#@value@</string>
+		<key>value</key>
+		<dict>
+			<key>NSStringFormatSpecTypeKey</key>
+			<string>NSStringPluralRuleType</string>
+			<key>NSStringFormatValueTypeKey</key>
+			<string>ld</string>
+			<key>few</key>
+			<string>سيقع الحدث كل %ld أسابيع.</string>
+			<key>many</key>
+			<string>سيقع الحدث كل %ld أسبوعًا.</string>
+			<key>one</key>
+			<string>سيقع الحدث كل أسبوع.</string>
+			<key>other</key>
+			<string>سيقع الحدث كل %ld أسبوع.</string>
+			<key>two</key>
+			<string>سيقع الحدث كل أسبوعين.</string>
+			<key>zero</key>
+			<string>سيقع الحدث كل %ld أسبوع.</string>
+		</dict>
+	</dict>
+	<key>Event will occur every %ld years in %@.</key>
+	<dict>
+		<key>NSStringLocalizedFormatKey</key>
+		<string>%#@value@</string>
+		<key>value</key>
+		<dict>
+			<key>NSStringFormatSpecTypeKey</key>
+			<string>NSStringPluralRuleType</string>
+			<key>NSStringFormatValueTypeKey</key>
+			<string>ld</string>
+			<key>few</key>
+			<string>سيقع الحدث كل %ld سنوات في %@.</string>
+			<key>many</key>
+			<string>سيقع الحدث كل %ld سنة في %@.</string>
+			<key>one</key>
+			<string>سيقع الحدث كل سنة في %2$@.</string>
+			<key>other</key>
+			<string>سيقع الحدث كل %ld سنة في %@.</string>
+			<key>two</key>
+			<string>سيقع الحدث كل سنتين في %2$@.</string>
+			<key>zero</key>
+			<string>سيقع الحدث كل %ld سنة في %@.</string>
+		</dict>
+	</dict>
+	<key>Event will occur every %ld years.</key>
+	<dict>
+		<key>NSStringLocalizedFormatKey</key>
+		<string>%#@value@</string>
+		<key>value</key>
+		<dict>
+			<key>NSStringFormatSpecTypeKey</key>
+			<string>NSStringPluralRuleType</string>
+			<key>NSStringFormatValueTypeKey</key>
+			<string>ld</string>
+			<key>few</key>
+			<string>سيقع الحدث كل %ld سنوات.</string>
+			<key>many</key>
+			<string>سيقع الحدث كل %ld سنة.</string>
+			<key>one</key>
+			<string>سيقع الحدث كل سنة.</string>
+			<key>other</key>
+			<string>سيقع الحدث كل %ld سنة.</string>
+			<key>two</key>
+			<string>سيقع الحدث كل سنتين.</string>
+			<key>zero</key>
+			<string>سيقع الحدث كل %ld سنة.</string>
+		</dict>
+	</dict>
+	<key>every n years on a specific day of months</key>
+	<dict>
+		<key>NSStringLocalizedFormatKey</key>
+		<string>%#@value@</string>
+		<key>value</key>
+		<dict>
+			<key>NSStringFormatSpecTypeKey</key>
+			<string>NSStringPluralRuleType</string>
+			<key>NSStringFormatValueTypeKey</key>
+			<string>ld</string>
+			<key>few</key>
+			<string>سيقع الحدث كل %ld سنوات في %@ ‏%@ ‏%@.</string>
+			<key>many</key>
+			<string>سيقع الحدث كل %ld سنة في %@ ‏%@ ‏%@.</string>
+			<key>one</key>
+			<string>سيقع الحدث كل سنة في %2$@ ‏%3$@ ‏%4$@.</string>
+			<key>other</key>
+			<string>سيقع الحدث كل %ld سنة في %@ ‏%@ ‏%@.</string>
+			<key>two</key>
+			<string>سيقع الحدث كل سنتين في %2$@ ‏%3$@ ‏%4$@.</string>
+			<key>zero</key>
+			<string>سيقع الحدث كل %ld سنة في %@ ‏%@ ‏%@.</string>
+		</dict>
+	</dict>
+</dict>
+</plist>

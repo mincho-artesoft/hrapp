@@ -115,7 +115,7 @@ struct YearCalendarView: View {
                         }
                     }()
                     
-                    ScrollView {
+                    ScrollView(.vertical, showsIndicators: false) {
                         LazyVGrid(columns: columns, spacing: 0) {
                             ForEach(1...12, id: \.self) { monthIndex in
                                 let dateForMonth = dateFromYearMonth(year, monthIndex)

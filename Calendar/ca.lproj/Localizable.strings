@@ -1063,3 +1063,23 @@
 "Open event" = "Obre l’esdeveniment";
 "Previous month" = "Mes anterior";
 "Next month" = "Mes següent";
+
+"End Date" = "Data de finalització";
+
+"Frequency" = "Freqüència";
+
+"Every" = "Cadascú";
+
+"Each" = "Cadascú";
+
+"On the…" = "A la…";
+
+"Days of Week" = "Dies de la setmana";
+
+"Last" = "Darrer";
+
+"Weekday" = "Dia laborable";
+
+"Weekend day" = "Dia de cap de setmana";
+
+"Event will occur every %@." = "L'esdeveniment es produirà cada %@.";

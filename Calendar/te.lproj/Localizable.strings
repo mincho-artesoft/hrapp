@@ -1063,3 +1063,23 @@
 "Open event" = "ఈవెంట్‌ను తెరవండి";
 "Previous month" = "గత నెల";
 "Next month" = "తరువాతి నెల";
+
+"End Date" = "ముగింపు తేదీ";
+
+"Frequency" = "ఫ్రీక్వెన్సీ";
+
+"Every" = "ప్రతి";
+
+"Each" = "ప్రతి";
+
+"On the…" = "న…";
+
+"Days of Week" = "వారం రోజులు";
+
+"Last" = "చివరిది";
+
+"Weekday" = "వారపు రోజు";
+
+"Weekend day" = "వారాంతపు రోజు";
+
+"Event will occur every %@." = "ఈవెంట్ ప్రతి %@ జరుగుతుంది.";

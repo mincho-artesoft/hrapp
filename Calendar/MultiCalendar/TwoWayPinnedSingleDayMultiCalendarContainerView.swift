@@ -274,8 +274,8 @@ public final class TwoWayPinnedSingleDayMultiCalendarContainerView: UIView,
         clipsToBounds   = true
         
         mainScrollView.delegate = self
-        mainScrollView.showsHorizontalScrollIndicator = true
-        mainScrollView.showsVerticalScrollIndicator   = true
+        mainScrollView.showsHorizontalScrollIndicator = false
+        mainScrollView.showsVerticalScrollIndicator   = false
         mainScrollView.bounces = false
         mainScrollView.contentInsetAdjustmentBehavior = .never
         mainScrollView.layer.zPosition = 1
@@ -284,7 +284,7 @@ public final class TwoWayPinnedSingleDayMultiCalendarContainerView: UIView,
         
         allDayScrollView.delegate = self
         allDayScrollView.showsHorizontalScrollIndicator = false
-        allDayScrollView.showsVerticalScrollIndicator   = true
+        allDayScrollView.showsVerticalScrollIndicator   = false
         allDayScrollView.alwaysBounceHorizontal = false
         allDayScrollView.alwaysBounceVertical   = false
         allDayScrollView.bounces = false
