@@ -4,9 +4,9 @@
 
 "NSContactsUsageDescription" = "Cloud Calendars Uporablja vaše kontakte za poenostavitev povabilo na dogodke in enostavno upravljanje podatkov o udeležencih.";
 
-"NSLocationAlwaysAndWhenInUseUsageDescription" = "Cloud Calendars dostop do vaše lokacije tudi ko je aplikacija zaprta, zagotavlja natančne vremenske napovedi in pravočasno opozorila na vaše načrtovane dogodke.";
+"NSLocationAlwaysAndWhenInUseUsageDescription" = "Cloud Calendars dostop do vaše lokacije tudi ko je aplikacija zaprta, zagotavlja natančne vremenske napovedi in pravočasno opozorila na vaše načrtovane dogodke. Vaša lokacija se uporablja tudi za posodabljanje opomnikov za odhod, ko se premikate.";
 
-"NSLocationWhenInUseUsageDescription" = "Cloud Calendars uporablja vašo lokacijo, medtem ko je aktivna, da neposredno vključi natančne lokalne vremenske napovedi v svoj koledar.";
+"NSLocationWhenInUseUsageDescription" = "Cloud Calendars uporablja vašo lokacijo, medtem ko je aktivna, da neposredno vključi natančne lokalne vremenske napovedi v svoj koledar. Vaša lokacija se uporablja tudi za posodabljanje opomnikov za odhod, ko se premikate.";
 
 "NSCalendarsFullAccessUsageDescription" = "Cloud Calendars zahteva dostop do koledarja, da združite dogodke iz iCloud-Prav. Googlein Microsoft calendars, ki omogoča brezhibno načrtovanje.";
 

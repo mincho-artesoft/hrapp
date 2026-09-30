@@ -57,7 +57,7 @@ enum LocalSharingE2ETest {
             try FileManager.default.createDirectory(at: directory, withIntermediateDirectories: true)
             try require(["seed", "accept", "owner-update", "receiver-check", "writer-role",
                 "writer-update", "owner-check-writer", "revoke", "receiver-check-revoked"].contains(action), "Unknown test action")
-            try require(["1A67A8FA-A72D-4244-9C1C-551D1C473FD4", "786598BD-4158-4A5B-851F-8E04FDE3BC98"]
+            try require(["3ED181D6-AEEC-42C0-B77B-F1F4CADB051E", "742C50AD-4799-4697-8E62-7259448E36C0"]
                 .contains(env["SIMULATOR_UDID"] ?? ""), "Not an authorized test simulator")
             try require(CloudCalendarsAPI.baseURL.host == "63yo3ore3c.execute-api.us-east-1.amazonaws.com",
                         "Tests must use the Debug backend")

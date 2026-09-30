@@ -1,0 +1,17 @@
+/* Personal travel reminders. */
+"travel.title" = "ਨਿਕਲਣ ਦਾ ਸਮਾਂ";
+"travel.question" = "ਕਦੋਂ ਨਿਕਲਣਾ ਹੈ, ਦੱਸ ਦੇਈਏ?";
+"travel.enable" = "ਚਾਲੂ ਕਰੋ";
+"travel.notnow" = "ਹੁਣ ਨਹੀਂ";
+"travel.explanation" = "ਤੁਹਾਡੀ ਥਾਂ ਬਦਲਣ ਉੱਤੇ ਮੁੜ ਗਣਨਾ ਹੁੰਦੀ ਹੈ। ਬੈਕਗ੍ਰਾਊਂਡ ਅੱਪਡੇਟਾਂ ਵਿੱਚ ਦੇਰੀ ਹੋ ਸਕਦੀ ਹੈ।";
+"travel.pending" = "ਸੇਵ ਕੀਤੇ ਇਵੈਂਟ, ਟਿਕਾਣੇ ਅਤੇ ਰਸਤੇ ਦੀ ਉਡੀਕ ਹੈ।";
+"travel.permissions" = "ਸੈਟਿੰਗਾਂ ਵਿੱਚ ਸੂਚਨਾਵਾਂ ਅਤੇ ਬੈਕਗ੍ਰਾਊਂਡ ਟਿਕਾਣੇ ਦੀ ਇਜਾਜ਼ਤ ਦਿਓ।";
+"travel.unavailable" = "ਅੱਪਡੇਟ ਨਹੀਂ ਹੋ ਸਕਿਆ। ਪਹਿਲਾਂ ਤੈਅ ਕੀਤਾ ਰਿਮਾਈਂਡਰ ਕਾਇਮ ਰਹੇਗਾ।";
+"travel.scheduled" = "ਨਿਕਲਣ ਦਾ ਰਿਮਾਈਂਡਰ ਤੈਅ ਹੋ ਗਿਆ।";
+"travel.notification" = "%@ · %@ ਤੱਕ ਨਿਕਲੋ। ਸਫ਼ਰ ਦਾ ਸਮਾਂ ਅੰਦਾਜ਼ਨ ਹੈ।";
+"travel.transport" = "ਯਾਤਰਾ ਦਾ ਸਾਧਨ";
+"travel.driving" = "ਕਾਰ ਰਾਹੀਂ";
+"travel.walking" = "ਪੈਦਲ";
+"travel.transit" = "ਜਨਤਕ ਆਵਾਜਾਈ";
+"travel.buffer" = "ਪਹਿਲਾਂ ਪਹੁੰਚਣ ਦਾ ਸਮਾਂ";
+"travel.advance" = "ਨਿਕਲਣ ਤੋਂ ਪਹਿਲਾਂ ਸੂਚਨਾ";

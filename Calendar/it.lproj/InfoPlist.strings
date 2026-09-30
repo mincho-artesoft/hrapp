@@ -4,9 +4,9 @@
 
 "NSContactsUsageDescription" = "Cloud Calendars utilizza i tuoi contatti per facilitare l'invio di inviti e gestire i dettagli dei partecipanti.";
 
-"NSLocationAlwaysAndWhenInUseUsageDescription" = "Cloud Calendars accede alla tua posizione anche con l’app chiusa, fornendo previsioni meteo accurate e notifiche sugli eventi.";
+"NSLocationAlwaysAndWhenInUseUsageDescription" = "Cloud Calendars accede alla tua posizione anche con l’app chiusa, fornendo previsioni meteo accurate e notifiche sugli eventi. La tua posizione viene usata anche per aggiornare i promemoria di partenza quando ti sposti.";
 
-"NSLocationWhenInUseUsageDescription" = "Cloud Calendars utilizza la tua posizione durante l'uso dell’app per integrare previsioni meteo locali nel tuo calendario.";
+"NSLocationWhenInUseUsageDescription" = "Cloud Calendars utilizza la tua posizione durante l'uso dell’app per integrare previsioni meteo locali nel tuo calendario. La tua posizione viene usata anche per aggiornare i promemoria di partenza quando ti sposti.";
 
 "NSCalendarsFullAccessUsageDescription" = "Cloud Calendars richiede l'accesso ai tuoi calendari per unificare eventi da iCloud, Google e Microsoft.";
 

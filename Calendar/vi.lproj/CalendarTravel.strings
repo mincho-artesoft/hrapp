@@ -1,0 +1,17 @@
+/* Personal travel reminders. */
+"travel.title" = "Giờ khởi hành";
+"travel.question" = "Bạn muốn được nhắc khi nào nên đi không?";
+"travel.enable" = "Bật";
+"travel.notnow" = "Để sau";
+"travel.explanation" = "Tính lại khi bạn di chuyển. Cập nhật trong nền có thể bị chậm.";
+"travel.pending" = "Đang chờ sự kiện đã lưu, vị trí và tuyến đường.";
+"travel.permissions" = "Cho phép thông báo và vị trí trong nền ở Cài đặt.";
+"travel.unavailable" = "Không thể cập nhật. Lời nhắc đã lên lịch vẫn được giữ.";
+"travel.scheduled" = "Đã lên lịch nhắc khởi hành.";
+"travel.notification" = "%@ · Hãy đi trước %@. Thời gian di chuyển là ước tính.";
+"travel.transport" = "Phương tiện di chuyển";
+"travel.driving" = "Ô tô";
+"travel.walking" = "Đi bộ";
+"travel.transit" = "Giao thông công cộng";
+"travel.buffer" = "Đến sớm hơn";
+"travel.advance" = "Báo trước khi khởi hành";

@@ -1,0 +1,17 @@
+/* Personal travel reminders. */
+"travel.title" = "出発時刻";
+"travel.question" = "出発する時刻を通知しますか？";
+"travel.enable" = "有効にする";
+"travel.notnow" = "今はしない";
+"travel.explanation" = "移動すると再計算されます。バックグラウンド更新は遅れる場合があります。";
+"travel.pending" = "保存された予定、現在地、経路を待っています。";
+"travel.permissions" = "設定で通知とバックグラウンドでの位置情報の利用を許可してください。";
+"travel.unavailable" = "更新できませんでした。すでに設定された通知は保持されます。";
+"travel.scheduled" = "出発の通知を設定しました。";
+"travel.notification" = "%@ · %@までに出発してください。所要時間は目安です。";
+"travel.transport" = "移動手段";
+"travel.driving" = "車";
+"travel.walking" = "徒歩";
+"travel.transit" = "公共交通機関";
+"travel.buffer" = "早めに到着する時間";
+"travel.advance" = "出発前の通知";

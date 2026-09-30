@@ -4,9 +4,9 @@ role="${1:?sender receiver arabic}"
 action="${2:?notifications action}"
 output_dir="${3:?report directory}"
 case "$role" in
-  sender) simulator_id=1A67A8FA-A72D-4244-9C1C-551D1C473FD4 ;;
-  receiver) simulator_id=786598BD-4158-4A5B-851F-8E04FDE3BC98 ;;
-  arabic) simulator_id=6CC8E36B-735C-440C-9AAA-47069C0C310E ;;
+  sender) simulator_id=3ED181D6-AEEC-42C0-B77B-F1F4CADB051E ;;
+  receiver) simulator_id=742C50AD-4799-4697-8E62-7259448E36C0 ;;
+  arabic) simulator_id=A70C6A27-AD63-4D44-A1E1-C1AA30CA1334 ;;
   *) exit 2 ;;
 esac
 case "$action" in notifications-prepare|notifications-observe|notifications-cleanup|notifications-push-register|notifications-push-observe) ;; *) exit 2 ;; esac

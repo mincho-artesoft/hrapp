@@ -1,0 +1,17 @@
+/* Personal travel reminders. */
+"travel.title" = "Aika lähteä";
+"travel.question" = "Haluatko ilmoituksen lähtöajasta?";
+"travel.enable" = "Ota käyttöön";
+"travel.notnow" = "Ei nyt";
+"travel.explanation" = "Lasketaan uudelleen sijaintisi muuttuessa. Taustapäivitykset voivat viivästyä.";
+"travel.pending" = "Odotetaan tallennettua tapahtumaa, sijaintia ja reittiä.";
+"travel.permissions" = "Salli ilmoitukset ja taustasijainti Asetuksissa.";
+"travel.unavailable" = "Päivitys epäonnistui. Aiemmin ajastettu muistutus säilyy.";
+"travel.scheduled" = "Lähtömuistutus ajastettu.";
+"travel.notification" = "%@ · Lähde viimeistään %@. Matka-aika on arvio.";
+"travel.transport" = "Kulkutapa";
+"travel.driving" = "Autolla";
+"travel.walking" = "Kävellen";
+"travel.transit" = "Joukkoliikenne";
+"travel.buffer" = "Saavu etuajassa";
+"travel.advance" = "Ilmoitus ennen lähtöä";

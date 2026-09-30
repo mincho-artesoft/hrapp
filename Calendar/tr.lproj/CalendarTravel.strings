@@ -1,0 +1,17 @@
+/* Personal travel reminders. */
+"travel.title" = "Yola çıkma zamanı";
+"travel.question" = "Ne zaman yola çıkacağını bildirelim mi?";
+"travel.enable" = "Etkinleştir";
+"travel.notnow" = "Şimdi değil";
+"travel.explanation" = "Konumunuz değiştiğinde yeniden hesaplanır. Arka plan güncellemeleri gecikebilir.";
+"travel.pending" = "Kaydedilmiş etkinlik, konum ve rota bekleniyor.";
+"travel.permissions" = "Ayarlar’da bildirimlere ve arka planda konuma izin ver.";
+"travel.unavailable" = "Güncellenemedi. Önceden planlanan hatırlatıcı korunur.";
+"travel.scheduled" = "Yola çıkma hatırlatıcısı planlandı.";
+"travel.notification" = "%@ · En geç %@ saatinde yola çık. Yolculuk süresi tahminidir.";
+"travel.transport" = "Ulaşım şekli";
+"travel.driving" = "Arabayla";
+"travel.walking" = "Yürüyerek";
+"travel.transit" = "Toplu taşıma";
+"travel.buffer" = "Erken varış süresi";
+"travel.advance" = "Yola çıkmadan önce uyarı";

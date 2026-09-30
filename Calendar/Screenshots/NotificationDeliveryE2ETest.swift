@@ -49,7 +49,7 @@ enum NotificationDeliveryE2ETest {
             "scope": "Actual iOS local delivery; production reminder scheduler and invitation/weather builders. Synthetic invitation/weather fixtures; no APNs or real weather warning."]
         do {
             let device = ProcessInfo.processInfo.environment["SIMULATOR_UDID"] ?? ""
-            let approvedSimulator = ["1A67A8FA-A72D-4244-9C1C-551D1C473FD4", "786598BD-4158-4A5B-851F-8E04FDE3BC98", "6CC8E36B-735C-440C-9AAA-47069C0C310E"].contains(device)
+            let approvedSimulator = ["3ED181D6-AEEC-42C0-B77B-F1F4CADB051E", "742C50AD-4799-4697-8E62-7259448E36C0", "A70C6A27-AD63-4D44-A1E1-C1AA30CA1334"].contains(device)
             let physicalAudit = physicalPushAuditRequested
                 && ["notifications-push-register", "notifications-push-observe"].contains(action)
             try require(approvedSimulator || physicalAudit, "Only approved simulators or explicit physical-device push diagnostics")

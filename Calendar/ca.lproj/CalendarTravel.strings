@@ -1,0 +1,17 @@
+/* Personal travel reminders. */
+"travel.title" = "Hora de sortir";
+"travel.question" = "Vols que t’avisem quan has de sortir?";
+"travel.enable" = "Activa";
+"travel.notnow" = "Ara no";
+"travel.explanation" = "Es recalcula quan et mous. Les actualitzacions en segon pla poden trigar.";
+"travel.pending" = "S’espera un esdeveniment desat, la ubicació i la ruta.";
+"travel.permissions" = "Permet les notificacions i la ubicació en segon pla a Configuració.";
+"travel.unavailable" = "No s’ha pogut actualitzar. Es manté qualsevol recordatori ja programat.";
+"travel.scheduled" = "Recordatori de sortida programat.";
+"travel.notification" = "%@ · Surt abans de %@. El temps de viatge és aproximat.";
+"travel.transport" = "Mitjà de transport";
+"travel.driving" = "En cotxe";
+"travel.walking" = "A peu";
+"travel.transit" = "Transport públic";
+"travel.buffer" = "Arribar abans";
+"travel.advance" = "Avís abans de sortir";

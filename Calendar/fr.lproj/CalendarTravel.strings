@@ -1,0 +1,17 @@
+/* Personal travel reminders. */
+"travel.title" = "Heure de départ";
+"travel.question" = "Vous avertir quand partir ?";
+"travel.enable" = "Activer";
+"travel.notnow" = "Pas maintenant";
+"travel.explanation" = "Recalculé lors de vos déplacements. Les mises à jour en arrière-plan peuvent être retardées.";
+"travel.pending" = "En attente d’un événement enregistré, d’une position et d’un itinéraire.";
+"travel.permissions" = "Autorisez les notifications et la localisation en arrière-plan dans Réglages.";
+"travel.unavailable" = "Actualisation impossible. Tout rappel déjà programmé est conservé.";
+"travel.scheduled" = "Rappel de départ programmé.";
+"travel.notification" = "%@ · Partez avant %@. La durée du trajet est estimée.";
+"travel.transport" = "Mode de déplacement";
+"travel.driving" = "En voiture";
+"travel.walking" = "À pied";
+"travel.transit" = "Transports en commun";
+"travel.buffer" = "Arriver en avance de";
+"travel.advance" = "Alerte avant le départ";

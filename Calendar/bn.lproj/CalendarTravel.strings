@@ -1,0 +1,17 @@
+/* Personal travel reminders. */
+"travel.title" = "রওনা দেওয়ার সময়";
+"travel.question" = "কখন রওনা দেবেন তা জানাব?";
+"travel.enable" = "চালু করুন";
+"travel.notnow" = "এখন নয়";
+"travel.explanation" = "আপনি স্থান পরিবর্তন করলে পুনরায় গণনা করা হয়। ব্যাকগ্রাউন্ড আপডেটে দেরি হতে পারে।";
+"travel.pending" = "সংরক্ষিত ইভেন্ট, অবস্থান ও পথের অপেক্ষায়।";
+"travel.permissions" = "সেটিংসে বিজ্ঞপ্তি ও ব্যাকগ্রাউন্ড অবস্থানের অনুমতি দিন।";
+"travel.unavailable" = "আপডেট করা যায়নি। আগে নির্ধারিত রিমাইন্ডার বজায় থাকবে।";
+"travel.scheduled" = "রওনা দেওয়ার রিমাইন্ডার নির্ধারিত হয়েছে।";
+"travel.notification" = "%@ · %@-এর মধ্যে রওনা দিন। যাত্রার সময় আনুমানিক।";
+"travel.transport" = "যাতায়াতের ধরন";
+"travel.driving" = "গাড়িতে";
+"travel.walking" = "হেঁটে";
+"travel.transit" = "গণপরিবহন";
+"travel.buffer" = "আগে পৌঁছানোর সময়";
+"travel.advance" = "রওনা হওয়ার আগে সতর্কতা";

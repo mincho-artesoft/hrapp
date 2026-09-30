@@ -10,6 +10,7 @@ class AppDelegate: NSObject, UIApplicationDelegate, UNUserNotificationCenterDele
     func application(_ application: UIApplication,
                      didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]? = nil) -> Bool {
         UNUserNotificationCenter.current().delegate = self
+        CalendarTravelReminderManager.shared.refresh()
         print("🌦️ [WeatherAlerts] AppDelegate installed as notification-center delegate")
         return true
     }

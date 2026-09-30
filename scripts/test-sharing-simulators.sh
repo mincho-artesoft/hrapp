@@ -4,8 +4,8 @@ set -euo pipefail
 # Read-only production smoke test for the two signed-in sharing accounts.
 # It deliberately does not create events, calendars, invitations, or e-mails.
 
-SENDER_UDID="${1:-1A67A8FA-A72D-4244-9C1C-551D1C473FD4}"
-RECEIVER_UDID="${2:-786598BD-4158-4A5B-851F-8E04FDE3BC98}"
+SENDER_UDID="${1:-3ED181D6-AEEC-42C0-B77B-F1F4CADB051E}"
+RECEIVER_UDID="${2:-742C50AD-4799-4697-8E62-7259448E36C0}"
 APP_BUNDLE_ID="Deksan.CalendarASD"
 API_BASE_URL="${API_BASE_URL:-https://63yo3ore3c.execute-api.us-east-1.amazonaws.com}"
 SESSION_FILE_NAME="${SESSION_FILE_NAME:-feed-session-debug.json}"

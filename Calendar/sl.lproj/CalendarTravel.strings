@@ -1,0 +1,17 @@
+/* Personal travel reminders. */
+"travel.title" = "Čas za odhod";
+"travel.question" = "Želite obvestilo, kdaj oditi?";
+"travel.enable" = "Vklopi";
+"travel.notnow" = "Ne zdaj";
+"travel.explanation" = "Ponovno se izračuna ob spremembi lokacije. Posodobitve v ozadju lahko zamujajo.";
+"travel.pending" = "Čakanje na shranjen dogodek, lokacijo in pot.";
+"travel.permissions" = "V Nastavitvah dovolite obvestila in lokacijo v ozadju.";
+"travel.unavailable" = "Posodobitev ni uspela. Prejšnji načrtovani opomnik se ohrani.";
+"travel.scheduled" = "Opomnik za odhod je načrtovan.";
+"travel.notification" = "%@ · Odidite do %@. Čas poti je ocenjen.";
+"travel.transport" = "Način potovanja";
+"travel.driving" = "Z avtom";
+"travel.walking" = "Peš";
+"travel.transit" = "Javni prevoz";
+"travel.buffer" = "Prihod prej za";
+"travel.advance" = "Opozorilo pred odhodom";

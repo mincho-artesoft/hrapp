@@ -4,9 +4,9 @@
 
 "NSContactsUsageDescription" = "Cloud Calendars etkinlik davetiyelerini basitleştirmek ve katılımcı ayrıntılarını zahmetsizce yönetmek için kişilerinizi kullanır.";
 
-"NSLocationAlwaysAndWhenInUseUsageDescription" = "Cloud Calendars uygulama kapalıyken bile konumunuza erişerek, doğru hava durumu tahminleri ve planlanmış etkinlikleriniz için zamanında uyarılar sağlar.";
+"NSLocationAlwaysAndWhenInUseUsageDescription" = "Cloud Calendars uygulama kapalıyken bile konumunuza erişerek, doğru hava durumu tahminleri ve planlanmış etkinlikleriniz için zamanında uyarılar sağlar. Konumun, hareket ettiğinde yola çıkma hatırlatıcılarını güncellemek için de kullanılır.";
 
-"NSLocationWhenInUseUsageDescription" = "Cloud Calendars kesin yerel hava durumu tahminlerini doğrudan takviminize entegre etmek için etkinken konumunuzu kullanır.";
+"NSLocationWhenInUseUsageDescription" = "Cloud Calendars kesin yerel hava durumu tahminlerini doğrudan takviminize entegre etmek için etkinken konumunuzu kullanır. Konumun, hareket ettiğinde yola çıkma hatırlatıcılarını güncellemek için de kullanılır.";
 
 "NSCalendarsFullAccessUsageDescription" = "Cloud Calendars, iCloud, Google ve Microsoft takvimlerindeki etkinliklerinizi birleştirmek için takvim erişimi gerektirir ve kesintisiz planlamaya olanak tanır.";
 

@@ -1,0 +1,17 @@
+/* Personal travel reminders. */
+"travel.title" = "出發提醒";
+"travel.question" = "需要提醒你何時出發嗎？";
+"travel.enable" = "啟用";
+"travel.notnow" = "暫不";
+"travel.explanation" = "位置變更時重新計算。背景更新可能會延遲。";
+"travel.pending" = "正在等待已儲存的行程、位置和路線。";
+"travel.permissions" = "請在設定中允許通知和背景定位。";
+"travel.unavailable" = "無法更新。已排定的提醒將保留。";
+"travel.scheduled" = "已排定出發提醒。";
+"travel.notification" = "%@ · 請在%@前出發。行程時間為估計值。";
+"travel.transport" = "出行方式";
+"travel.driving" = "開車";
+"travel.walking" = "步行";
+"travel.transit" = "大眾運輸";
+"travel.buffer" = "提早抵達時間";
+"travel.advance" = "出發前提醒";

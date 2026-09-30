@@ -1,0 +1,17 @@
+/* Personal travel reminders. */
+"travel.title" = "Ora di partire";
+"travel.question" = "Vuoi un avviso quando partire?";
+"travel.enable" = "Attiva";
+"travel.notnow" = "Non ora";
+"travel.explanation" = "Ricalcolato quando ti sposti. Gli aggiornamenti in background possono subire ritardi.";
+"travel.pending" = "In attesa di un evento salvato, posizione e percorso.";
+"travel.permissions" = "Consenti notifiche e posizione in background nelle Impostazioni.";
+"travel.unavailable" = "Impossibile aggiornare. I promemoria già programmati vengono mantenuti.";
+"travel.scheduled" = "Promemoria di partenza programmato.";
+"travel.notification" = "%@ · Parti entro le %@. Il tempo di viaggio è stimato.";
+"travel.transport" = "Mezzo di trasporto";
+"travel.driving" = "In auto";
+"travel.walking" = "A piedi";
+"travel.transit" = "Trasporto pubblico";
+"travel.buffer" = "Arriva in anticipo di";
+"travel.advance" = "Avviso prima della partenza";

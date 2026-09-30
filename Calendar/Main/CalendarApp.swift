@@ -194,6 +194,7 @@ struct CalendarApp: App {
         }
         .backgroundTask(.appRefresh(CalendarLiveActivityBackgroundRefreshTask.identifier)) {
             await CalendarLiveActivityBackgroundRefreshTask.run()
+            await CalendarTravelReminderManager.shared.refreshAndWait()
         }
         .onChange(of: scenePhase) { _, newPhase in
             #if DEBUG
@@ -207,6 +208,7 @@ struct CalendarApp: App {
             #endif
             switch newPhase {
             case .active:
+                CalendarTravelReminderManager.shared.refresh()
                 print("App is active.")
                 InvitationPushRegistration.shared.start()
 

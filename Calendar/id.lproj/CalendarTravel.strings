@@ -1,0 +1,17 @@
+/* Personal travel reminders. */
+"travel.title" = "Waktu berangkat";
+"travel.question" = "Ingin diingatkan kapan harus berangkat?";
+"travel.enable" = "Aktifkan";
+"travel.notnow" = "Nanti saja";
+"travel.explanation" = "Dihitung ulang saat Anda berpindah. Pembaruan latar belakang dapat tertunda.";
+"travel.pending" = "Menunggu acara tersimpan, lokasi, dan rute.";
+"travel.permissions" = "Izinkan notifikasi dan lokasi latar belakang di Pengaturan.";
+"travel.unavailable" = "Tidak dapat memperbarui. Pengingat yang sudah dijadwalkan tetap disimpan.";
+"travel.scheduled" = "Pengingat keberangkatan dijadwalkan.";
+"travel.notification" = "%@ · Berangkat sebelum %@. Waktu perjalanan adalah perkiraan.";
+"travel.transport" = "Moda perjalanan";
+"travel.driving" = "Mobil";
+"travel.walking" = "Jalan kaki";
+"travel.transit" = "Transportasi umum";
+"travel.buffer" = "Tiba lebih awal";
+"travel.advance" = "Peringatan sebelum berangkat";

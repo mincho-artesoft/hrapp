@@ -139,6 +139,8 @@ struct AppLocalEventEditorView: View {
         let recurrenceEndDate: Date?
         let recurrencePattern: CalendarRecurrencePattern
         let travelTime: Int
+        let smartTravel: Bool
+        let travelSettings: TravelReminderSettings
         let urlString: String
         let videoCallURL: String
         let notes: String
@@ -234,6 +236,7 @@ struct AppLocalEventEditorView: View {
     @Environment(\.dismiss) private var dismiss
     @ObservedObject private var localStore = AppLocalCalendarStore.shared
     @ObservedObject private var appPreferences = AppPreferences.shared
+    @ObservedObject private var travelReminderManager = CalendarTravelReminderManager.shared
     @StateObject private var locationSearch = EventLocationSearchModel()
 
     @State private var title: String
@@ -251,6 +254,9 @@ struct AppLocalEventEditorView: View {
     @State private var repeatInterval: Int
     @State private var recurrenceEndDate: Date?
     @State private var travelTime: TravelTimeOption
+    @State private var smartTravel = false
+    @State private var travelSettings = TravelReminderSettings()
+    @State private var travelOfferAnswered = false
     @State private var urlString: String
     @State private var videoCallURL: String
     @State private var notes: String
@@ -439,6 +445,8 @@ struct AppLocalEventEditorView: View {
             recurrenceEndDate: recurrenceEndDate,
             recurrencePattern: recurrencePattern,
             travelTime: travelTime.rawValue,
+            smartTravel: smartTravel,
+            travelSettings: travelSettings,
             urlString: urlString,
             videoCallURL: videoCallURL,
             notes: notes,
@@ -494,12 +502,21 @@ struct AppLocalEventEditorView: View {
             } message: {
                 Text(errorMessage ?? localizedEventEditorString("Please try again."))
             }
+            .onChange(of: structuredLocation) { _, value in
+                if value?.latitude == nil || value?.longitude == nil { smartTravel = false }
+            }
+            .onChange(of: isAllDay) { _, value in
+                if value { smartTravel = false }
+            }
             .onAppear {
                 if (selectedCalendarID.isEmpty || (isNew && selectedChoice?.canEdit != true)),
                    let first = choices.first(where: \.canEdit) {
                     selectedCalendarID = first.id
                 }
                 if initialEditorFingerprint == nil {
+                    smartTravel = CalendarTravelReminderManager.shared.isEnabled(key: travelReminderKey)
+                    travelSettings = travelReminderManager.settings(for: travelReminderKey)
+                    travelOfferAnswered = !isNew || smartTravel
                     initialEditorFingerprint = currentEditorFingerprint
                 }
             }
@@ -537,6 +554,58 @@ struct AppLocalEventEditorView: View {
                         .buttonStyle(.plain)
                         .accessibilityLabel("Clear")
                     }
+                }
+            }
+
+            if structuredLocationCoordinate != nil && !isAllDay {
+                Section {
+                    if isNew && !travelOfferAnswered {
+                        Text(travelString("travel.question"))
+                        HStack {
+                            Button(travelString("travel.enable")) {
+                                travelOfferAnswered = true
+                                smartTravel = true
+                                CalendarTravelReminderManager.shared.requestPermissions()
+                            }
+                            .accessibilityIdentifier("travel.enable")
+                            Spacer()
+                            Button(travelString("travel.notnow")) { travelOfferAnswered = true }
+                        }
+                        .buttonStyle(.borderless)
+                    } else {
+                        Toggle(travelString("travel.title"), isOn: $smartTravel)
+                            .accessibilityIdentifier("travel.toggle")
+                            .onChange(of: smartTravel) { _, enabled in
+                                if enabled { CalendarTravelReminderManager.shared.requestPermissions() }
+                            }
+                    }
+                    if smartTravel {
+                        Picker(travelString("travel.transport"), selection: $travelSettings.transport) {
+                            ForEach(TravelReminderSettings.Transport.allCases, id: \.self) { mode in
+                                Text(travelString(mode.localizationKey)).tag(mode)
+                            }
+                        }
+                        .accessibilityIdentifier("travel.transport")
+                        Picker(travelString("travel.buffer"), selection: $travelSettings.arrivalBufferMinutes) {
+                            ForEach(TravelReminderSettings.bufferOptions, id: \.self) { minutes in
+                                Text(travelDuration(minutes)).tag(minutes)
+                            }
+                        }
+                        .accessibilityIdentifier("travel.buffer")
+                        Picker(travelString("travel.advance"), selection: $travelSettings.advanceNoticeMinutes) {
+                            ForEach(TravelReminderSettings.noticeOptions, id: \.self) { minutes in
+                                Text(travelDuration(minutes)).tag(minutes)
+                            }
+                        }
+                        .accessibilityIdentifier("travel.advance")
+                        Text(travelString(travelReminderManager.status(for: travelReminderKey)))
+                            .font(.footnote)
+                            .foregroundStyle(.secondary)
+                        Button("Settings") { EventNotificationManager.shared.openAppSettings() }
+                            .font(.footnote)
+                    }
+                } footer: {
+                    Text(travelString("travel.explanation"))
                 }
             }
 
@@ -1079,6 +1148,23 @@ struct AppLocalEventEditorView: View {
         }
     }
 
+    private func travelDuration(_ minutes: Int) -> String {
+        let formatter = DateComponentsFormatter()
+        var calendar = Calendar.current
+        calendar.locale = AppPreferences.shared.interfaceLocale
+        formatter.calendar = calendar
+        formatter.allowedUnits = [.minute]
+        formatter.unitsStyle = .short
+        formatter.zeroFormattingBehavior = .pad
+        return formatter.string(from: TimeInterval(minutes * 60)) ?? "\(minutes)"
+    }
+
+    private var travelReminderKey: String? {
+        if let id = target.eventID { return CalendarTravelReminderManager.key(localID: id) }
+        if let event = target.eventKitEvent { return CalendarTravelReminderManager.key(for: event) }
+        return nil
+    }
+
     private var structuredLocationCoordinate: CLLocationCoordinate2D? {
         guard let latitude = structuredLocation?.latitude,
               let longitude = structuredLocation?.longitude else { return nil }
@@ -1344,6 +1430,9 @@ struct AppLocalEventEditorView: View {
             attachments: attachments
         )
         localStore.saveEvent(event)
+        CalendarTravelReminderManager.shared.setEnabled(smartTravel && !isAllDay && structuredLocationCoordinate != nil,
+            key: CalendarTravelReminderManager.key(localID: event.id), eventID: event.id,
+            calendarID: event.calendarID, native: false, settings: travelSettings)
         return event
     }
 
@@ -1382,6 +1471,9 @@ struct AppLocalEventEditorView: View {
             videoCallURL: normalizedVideoCallURL,
             for: event
         )
+        CalendarTravelReminderManager.shared.setEnabled(smartTravel && !isAllDay && structuredLocationCoordinate != nil,
+            key: CalendarTravelReminderManager.key(for: event), eventID: event.eventIdentifier ?? event.calendarItemIdentifier,
+            calendarID: event.calendar.calendarIdentifier, native: true, settings: travelSettings)
         if wasNew && showsSharePrompt { EventSharePromptManager.shared.show(for: event) }
         return event
     }
@@ -1412,8 +1504,10 @@ struct AppLocalEventEditorView: View {
                 // Roll back the newly-created local record if EventKit could
                 // not remove the source, avoiding two copies of the event.
                 localStore.deleteEvent(id: savedEvent.id)
+                CalendarTravelReminderManager.shared.remove(key: CalendarTravelReminderManager.key(localID: savedEvent.id))
                 throw error
             }
+            CalendarTravelReminderManager.shared.remove(key: CalendarTravelReminderManager.key(for: sourceEvent))
             EventKitEventSupplementStore.remove(for: sourceEvent)
             if let sourceIdentifier {
                 SharedInviteTracker.localEventWasDeleted(
@@ -1428,6 +1522,7 @@ struct AppLocalEventEditorView: View {
                 return false
             }
             localStore.deleteEvent(id: sourceID)
+            CalendarTravelReminderManager.shared.remove(key: CalendarTravelReminderManager.key(localID: sourceID))
             return true
         }
     }
@@ -1448,11 +1543,13 @@ struct AppLocalEventEditorView: View {
         do {
             if let id = target.eventID {
                 localStore.deleteEvent(id: id)
+                CalendarTravelReminderManager.shared.remove(key: CalendarTravelReminderManager.key(localID: id))
             } else if let event = target.eventKitEvent {
                 let identifier = event.eventIdentifier
                 EventKitEventSupplementStore.remove(for: event)
                 let span: EKSpan = event.hasRecurrenceRules ? .futureEvents : .thisEvent
                 try eventStore.remove(event, span: span, commit: true)
+                CalendarTravelReminderManager.shared.remove(key: CalendarTravelReminderManager.key(for: event))
                 if let identifier { SharedInviteTracker.localEventWasDeleted(localEventIdentifier: identifier) }
             }
             EventNotificationManager.shared.rescheduleUpcomingEventNotifications()
@@ -1647,6 +1744,8 @@ struct AppLocalEventEditorView: View {
         recurrenceEndDate = local?.recurrenceRules?.first?.endDate
             .flatMap(ISO8601DateFormatter().date(from:))
             ?? system?.recurrenceRules?.first?.recurrenceEnd?.endDate
+        smartTravel = CalendarTravelReminderManager.shared.isEnabled(key: travelReminderKey)
+        travelSettings = travelReminderManager.settings(for: travelReminderKey)
         travelTime = TravelTimeOption(seconds: local?.travelTime ?? systemSupplement?.travelTime)
         urlString = local?.urlString ?? system?.url?.absoluteString ?? ""
         videoCallURL = local?.videoCallURL ?? systemSupplement?.videoCallURL ?? ""
@@ -1700,6 +1799,7 @@ private struct EventLocationEditorSheet: View {
                         Text(": ")
                             .foregroundStyle(.secondary)
                         TextField("", text: $draftLocation)
+                            .accessibilityIdentifier("event.location.search")
                             .textInputAutocapitalization(.words)
                             .autocorrectionDisabled(false)
                         if !draftLocation.isEmpty {
@@ -1721,6 +1821,7 @@ private struct EventLocationEditorSheet: View {
                         Text(": ")
                             .foregroundStyle(.secondary)
                         TextField("", text: $draftVideoCallURL)
+                            .accessibilityIdentifier("event.video.url")
                             .keyboardType(.URL)
                             .textInputAutocapitalization(.never)
                             .autocorrectionDisabled()

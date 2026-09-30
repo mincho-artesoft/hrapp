@@ -1,7 +1,7 @@
 #!/bin/bash
 set -euo pipefail
 repo_dir=$(cd "$(dirname "$0")/.." && pwd)
-simulator_id="${1:-1A67A8FA-A72D-4244-9C1C-551D1C473FD4}"
+simulator_id="${1:-3ED181D6-AEEC-42C0-B77B-F1F4CADB051E}"
 output_dir="${2:?Supply an output directory}"
 test_dir=$(mktemp -d "${TMPDIR:-/tmp}/event-extension-snapshots.XXXXXX")
 test_app="$test_dir/EventExtensionSnapshots.app"

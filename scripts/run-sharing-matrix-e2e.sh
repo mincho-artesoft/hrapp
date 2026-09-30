@@ -4,8 +4,8 @@ role="${1:?sender or receiver}"
 action="${2:?matrix action}"
 output_dir="${3:?report directory}"
 case "$role" in
-  sender) simulator_id=1A67A8FA-A72D-4244-9C1C-551D1C473FD4 ;;
-  receiver) simulator_id=786598BD-4158-4A5B-851F-8E04FDE3BC98 ;;
+  sender) simulator_id=3ED181D6-AEEC-42C0-B77B-F1F4CADB051E ;;
+  receiver) simulator_id=742C50AD-4799-4697-8E62-7259448E36C0 ;;
   *) exit 2 ;;
 esac
 case "$action" in matrix-seed|matrix-send|matrix-receiver|matrix-owner|matrix-repair) ;; *) exit 2 ;; esac
@@ -13,7 +13,7 @@ app_data=$(xcrun simctl get_app_container "$simulator_id" Deksan.CalendarASD dat
 test_data="$app_data/Documents/SharingMatrixE2E"
 mkdir -p "$output_dir" "$test_data"
 if [[ "$role" == receiver && ! -f "$test_data/manifest.json" ]]; then
-  sender_data=$(xcrun simctl get_app_container 1A67A8FA-A72D-4244-9C1C-551D1C473FD4 Deksan.CalendarASD data)
+  sender_data=$(xcrun simctl get_app_container 3ED181D6-AEEC-42C0-B77B-F1F4CADB051E Deksan.CalendarASD data)
   cp "$sender_data/Documents/SharingMatrixE2E/manifest.json" "$test_data/manifest.json"
 fi
 result="$test_data/$action.json"

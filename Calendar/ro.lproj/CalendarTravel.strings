@@ -1,0 +1,17 @@
+/* Personal travel reminders. */
+"travel.title" = "Ora de plecare";
+"travel.question" = "Vrei să te anunțăm când să pleci?";
+"travel.enable" = "Activează";
+"travel.notnow" = "Nu acum";
+"travel.explanation" = "Se recalculează când vă deplasați. Actualizările în fundal pot întârzia.";
+"travel.pending" = "Se așteaptă un eveniment salvat, locația și traseul.";
+"travel.permissions" = "Permite notificările și locația în fundal în Configurări.";
+"travel.unavailable" = "Actualizarea nu a reușit. Orice memento programat anterior este păstrat.";
+"travel.scheduled" = "Memento de plecare programat.";
+"travel.notification" = "%@ · Pleacă până la %@. Durata călătoriei este estimată.";
+"travel.transport" = "Mod de deplasare";
+"travel.driving" = "Cu mașina";
+"travel.walking" = "Pe jos";
+"travel.transit" = "Transport public";
+"travel.buffer" = "Sosire mai devreme cu";
+"travel.advance" = "Alertă înainte de plecare";

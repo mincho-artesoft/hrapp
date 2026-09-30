@@ -4,9 +4,9 @@
 
 "NSContactsUsageDescription" = "Cloud Calendars používa vaše kontakty na zjednodušenie pozvánok na udalosti a bez námahy spravovať údaje účastníkov.";
 
-"NSLocationAlwaysAndWhenInUseUsageDescription" = "Cloud Calendars prístup k vašej polohe aj keď je aplikácia zatvorená, poskytuje presné počasie a včasné upozornenia na vaše naplánované udalosti.";
+"NSLocationAlwaysAndWhenInUseUsageDescription" = "Cloud Calendars prístup k vašej polohe aj keď je aplikácia zatvorená, poskytuje presné počasie a včasné upozornenia na vaše naplánované udalosti. Vaša poloha sa používa aj na aktualizáciu pripomienok odchodu pri pohybe.";
 
-"NSLocationWhenInUseUsageDescription" = "Cloud Calendars používa vašu polohu, keď je aktívna, aby priamo integrovala presné miestne počasie do vášho kalendára.";
+"NSLocationWhenInUseUsageDescription" = "Cloud Calendars používa vašu polohu, keď je aktívna, aby priamo integrovala presné miestne počasie do vášho kalendára. Vaša poloha sa používa aj na aktualizáciu pripomienok odchodu pri pohybe.";
 
 "NSCalendarsFullAccessUsageDescription" = "Cloud Calendars vyžaduje prístup k kalendárom na zjednotenie udalostí z iCloud- Áno . Googlea Microsoft calendars, umožňujúce plynulé plánovanie.";
 

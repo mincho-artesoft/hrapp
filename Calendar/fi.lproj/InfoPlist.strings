@@ -4,9 +4,9 @@
 
 "NSContactsUsageDescription" = "Cloud Calendars käyttää yhteystietojasi tapahtumakutsujen yksinkertaistamiseen ja osallistujien tietojen hallintaan vaivattomasti.";
 
-"NSLocationAlwaysAndWhenInUseUsageDescription" = "Cloud Calendars käyttää sijaintiasi, vaikka sovellus on suljettu, ja tarjoaa tarkat sääennusteet ja oikea-aikaiset hälytykset ajoitetuista tapahtumistasi.";
+"NSLocationAlwaysAndWhenInUseUsageDescription" = "Cloud Calendars käyttää sijaintiasi, vaikka sovellus on suljettu, ja tarjoaa tarkat sääennusteet ja oikea-aikaiset hälytykset ajoitetuista tapahtumistasi. Sijaintiasi käytetään myös lähtömuistutusten päivittämiseen liikkuessasi.";
 
-"NSLocationWhenInUseUsageDescription" = "Cloud Calendars käyttää sijaintiasi aktiivisena integroidakseen tarkat paikalliset sääennusteet suoraan kalenteriisi.";
+"NSLocationWhenInUseUsageDescription" = "Cloud Calendars käyttää sijaintiasi aktiivisena integroidakseen tarkat paikalliset sääennusteet suoraan kalenteriisi. Sijaintiasi käytetään myös lähtömuistutusten päivittämiseen liikkuessasi.";
 
 "NSCalendarsFullAccessUsageDescription" = "Cloud Calendars vaatii kalenterin käyttöoikeuden yhdistääkseen tapahtumasi kalentereista iCloud, Google ja Microsoft, mikä mahdollistaa saumattoman ajoituksen.";
 

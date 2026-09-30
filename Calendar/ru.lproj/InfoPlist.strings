@@ -4,9 +4,9 @@
 
 "NSContactsUsageDescription" = "Cloud Calendars использует ваши контакты для удобной отправки приглашений и управления участниками событий.";
 
-"NSLocationAlwaysAndWhenInUseUsageDescription" = "Cloud Calendars использует ваше местоположение даже при закрытом приложении для точных прогнозов погоды и уведомлений о событиях.";
+"NSLocationAlwaysAndWhenInUseUsageDescription" = "Cloud Calendars использует ваше местоположение даже при закрытом приложении для точных прогнозов погоды и уведомлений о событиях. Геопозиция также используется для обновления напоминаний о выезде при перемещении.";
 
-"NSLocationWhenInUseUsageDescription" = "Cloud Calendars использует ваше местоположение при активном приложении, чтобы интегрировать местный прогноз погоды в ваш календарь.";
+"NSLocationWhenInUseUsageDescription" = "Cloud Calendars использует ваше местоположение при активном приложении, чтобы интегрировать местный прогноз погоды в ваш календарь. Геопозиция также используется для обновления напоминаний о выезде при перемещении.";
 
 "NSCalendarsFullAccessUsageDescription" = "Cloud Calendars требуется доступ к календарям для объединения событий из iCloud, Google и Microsoft.";
 

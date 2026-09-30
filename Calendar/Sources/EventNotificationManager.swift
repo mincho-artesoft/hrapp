@@ -155,6 +155,7 @@ final class EventNotificationManager: NSObject, ObservableObject {
     }
 
     func rescheduleUpcomingEventNotifications() {
+        CalendarTravelReminderManager.shared.refresh()
         rebuildStoredUpcomingEventNotifications()
 
         let prefix = notificationPrefix
@@ -166,8 +167,14 @@ final class EventNotificationManager: NSObject, ObservableObject {
 
             UNUserNotificationCenter.current().removePendingNotificationRequests(withIdentifiers: identifiers)
 
+            let otherCount = requests.filter {
+                !$0.identifier.hasPrefix(prefix)
+                    && !$0.identifier.hasPrefix(CalendarTravelReminderManager.prefix)
+            }.count
             Task { @MainActor in
-                self?.scheduleVisibleEventNotificationsIfNeeded()
+                let budget = max(0, 64 - otherCount - CalendarTravelReminderManager.shared.reservedNotificationSlots)
+                self?.scheduleVisibleEventNotificationsIfNeeded(budget: budget)
+                CalendarTravelReminderManager.shared.refresh()
             }
         }
     }
@@ -220,13 +227,13 @@ final class EventNotificationManager: NSObject, ObservableObject {
         }
     }
 
-    private func scheduleVisibleEventNotificationsIfNeeded() {
+    private func scheduleVisibleEventNotificationsIfNeeded(budget: Int) {
         guard eventNotificationsEnabled, notificationsAllowed else { return }
 
         let requests = storedEventNotificationRequests()
         guard !requests.isEmpty else { return }
 
-        for request in requests {
+        for request in requests.prefix(budget) {
             UNUserNotificationCenter.current().add(request) { error in
                 if let error {
                     print("Local event notification scheduling error:", error.localizedDescription)
@@ -246,7 +253,7 @@ final class EventNotificationManager: NSObject, ObservableObject {
         let now = Date()
         return stored
             .filter { $0.fireDate > now }
-            .prefix(maxScheduledNotifications)
+            .prefix(maxScheduledNotifications - CalendarTravelReminderManager.shared.reservedNotificationSlots)
             .map(\.request)
     }
 
@@ -286,7 +293,7 @@ final class EventNotificationManager: NSObject, ObservableObject {
 
         return scheduled
             .sorted { $0.fireDate < $1.fireDate }
-            .prefix(maxScheduledNotifications)
+            .prefix(maxScheduledNotifications - CalendarTravelReminderManager.shared.reservedNotificationSlots)
             .map { $0 }
     }
 

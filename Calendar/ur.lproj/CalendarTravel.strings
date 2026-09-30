@@ -1,0 +1,17 @@
+/* Personal travel reminders. */
+"travel.title" = "روانہ ہونے کا وقت";
+"travel.question" = "کیا ہم بتائیں کہ کب روانہ ہونا ہے؟";
+"travel.enable" = "فعال کریں";
+"travel.notnow" = "ابھی نہیں";
+"travel.explanation" = "آپ کی جگہ بدلنے پر دوبارہ حساب ہوتا ہے۔ پس منظر کی اپ ڈیٹس میں تاخیر ہو سکتی ہے۔";
+"travel.pending" = "محفوظ ایونٹ، مقام اور راستے کا انتظار ہے۔";
+"travel.permissions" = "سیٹنگز میں اطلاعات اور پس منظر میں مقام کی اجازت دیں۔";
+"travel.unavailable" = "اپ ڈیٹ نہیں ہو سکا۔ پہلے سے طے شدہ یاد دہانی برقرار ہے۔";
+"travel.scheduled" = "روانگی کی یاد دہانی طے ہو گئی۔";
+"travel.notification" = "%@ · %@ تک روانہ ہوں۔ سفر کا وقت تخمینی ہے۔";
+"travel.transport" = "سفر کا طریقہ";
+"travel.driving" = "گاڑی سے";
+"travel.walking" = "پیدل";
+"travel.transit" = "عوامی ٹرانسپورٹ";
+"travel.buffer" = "پہلے پہنچنے کا وقت";
+"travel.advance" = "روانگی سے پہلے اطلاع";

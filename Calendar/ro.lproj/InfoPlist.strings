@@ -4,9 +4,9 @@
 
 "NSContactsUsageDescription" = "Cloud Calendars vă folosește contactele pentru a simplifica invitațiile la evenimente și pentru a gestiona fără efort detaliile participanților.";
 
-"NSLocationAlwaysAndWhenInUseUsageDescription" = "Cloud Calendars vă accesează locația chiar și atunci când aplicația este închisă, oferind prognoze meteo precise și alerte în timp util pentru evenimentele programate.";
+"NSLocationAlwaysAndWhenInUseUsageDescription" = "Cloud Calendars vă accesează locația chiar și atunci când aplicația este închisă, oferind prognoze meteo precise și alerte în timp util pentru evenimentele programate. Locația ta este folosită și pentru a actualiza mementourile de plecare când te deplasezi.";
 
-"NSLocationWhenInUseUsageDescription" = "Cloud Calendars vă folosește locația în timp ce este activ pentru a integra previziunile meteo locale precise direct în calendarul dvs.";
+"NSLocationWhenInUseUsageDescription" = "Cloud Calendars vă folosește locația în timp ce este activ pentru a integra previziunile meteo locale precise direct în calendarul dvs. Locația ta este folosită și pentru a actualiza mementourile de plecare când te deplasezi.";
 
 "NSCalendarsFullAccessUsageDescription" = "Cloud Calendars necesită acces la calendar pentru a vă unifica evenimentele din calendarele iCloud, Google și Microsoft, permițând o programare fără probleme.";
 

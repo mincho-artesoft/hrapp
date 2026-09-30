@@ -1,0 +1,17 @@
+/* Personal travel reminders. */
+"travel.title" = "출발 시간";
+"travel.question" = "출발할 시간을 알려드릴까요?";
+"travel.enable" = "켜기";
+"travel.notnow" = "나중에";
+"travel.explanation" = "이동하면 다시 계산됩니다. 백그라운드 업데이트가 지연될 수 있습니다.";
+"travel.pending" = "저장된 일정, 위치 및 경로를 기다리는 중입니다.";
+"travel.permissions" = "설정에서 알림과 백그라운드 위치 접근을 허용하세요.";
+"travel.unavailable" = "업데이트할 수 없습니다. 이전에 예약한 알림은 유지됩니다.";
+"travel.scheduled" = "출발 알림이 예약되었습니다.";
+"travel.notification" = "%@ · %@까지 출발하세요. 이동 시간은 예상치입니다.";
+"travel.transport" = "이동 수단";
+"travel.driving" = "자동차";
+"travel.walking" = "도보";
+"travel.transit" = "대중교통";
+"travel.buffer" = "일찍 도착할 시간";
+"travel.advance" = "출발 전 알림";

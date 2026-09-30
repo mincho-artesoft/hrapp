@@ -1,0 +1,17 @@
+/* Personal travel reminders. */
+"travel.title" = "เวลาออกเดินทาง";
+"travel.question" = "ต้องการให้แจ้งเตือนว่าควรออกเดินทางเมื่อใดไหม?";
+"travel.enable" = "เปิดใช้";
+"travel.notnow" = "ไม่ใช่ตอนนี้";
+"travel.explanation" = "คำนวณใหม่เมื่อคุณย้ายตำแหน่ง การอัปเดตเบื้องหลังอาจล่าช้า";
+"travel.pending" = "กำลังรอกิจกรรมที่บันทึก ตำแหน่ง และเส้นทาง";
+"travel.permissions" = "อนุญาตการแจ้งเตือนและตำแหน่งเบื้องหลังในการตั้งค่า";
+"travel.unavailable" = "อัปเดตไม่ได้ การเตือนที่กำหนดไว้ก่อนหน้านี้ยังคงอยู่";
+"travel.scheduled" = "กำหนดการเตือนออกเดินทางแล้ว";
+"travel.notification" = "%@ · ออกเดินทางภายใน %@ ระยะเวลาเดินทางเป็นค่าประมาณ";
+"travel.transport" = "วิธีเดินทาง";
+"travel.driving" = "ขับรถ";
+"travel.walking" = "เดิน";
+"travel.transit" = "ขนส่งสาธารณะ";
+"travel.buffer" = "ถึงก่อนเวลา";
+"travel.advance" = "แจ้งเตือนก่อนออกเดินทาง";

@@ -1,0 +1,17 @@
+/* Personal travel reminders. */
+"travel.title" = "Zeit zum Aufbrechen";
+"travel.question" = "Benachrichtigen, wann du aufbrechen solltest?";
+"travel.enable" = "Aktivieren";
+"travel.notnow" = "Nicht jetzt";
+"travel.explanation" = "Wird bei Ortswechsel neu berechnet. Hintergrundaktualisierungen können sich verzögern.";
+"travel.pending" = "Warte auf ein gespeichertes Ereignis, Standort und Route.";
+"travel.permissions" = "Erlaube Mitteilungen und Standortzugriff im Hintergrund in den Einstellungen.";
+"travel.unavailable" = "Aktualisierung nicht möglich. Eine bereits geplante Erinnerung bleibt bestehen.";
+"travel.scheduled" = "Abfahrtserinnerung geplant.";
+"travel.notification" = "%@ · Bis %@ aufbrechen. Die Fahrzeit ist geschätzt.";
+"travel.transport" = "Fortbewegungsart";
+"travel.driving" = "Mit dem Auto";
+"travel.walking" = "Zu Fuß";
+"travel.transit" = "Öffentliche Verkehrsmittel";
+"travel.buffer" = "Früher ankommen um";
+"travel.advance" = "Hinweis vor dem Aufbruch";

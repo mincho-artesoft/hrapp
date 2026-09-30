@@ -1,0 +1,17 @@
+/* Personal travel reminders. */
+"travel.title" = "ಹೊರಡುವ ಸಮಯ";
+"travel.question" = "ಯಾವಾಗ ಹೊರಡಬೇಕೆಂದು ತಿಳಿಸಬೇಕೇ?";
+"travel.enable" = "ಸಕ್ರಿಯಗೊಳಿಸಿ";
+"travel.notnow" = "ಈಗ ಬೇಡ";
+"travel.explanation" = "ನೀವು ಸ್ಥಳ ಬದಲಿಸಿದಾಗ ಮರುಲೆಕ್ಕ ಹಾಕಲಾಗುತ್ತದೆ. ಹಿನ್ನೆಲೆ ನವೀಕರಣಗಳು ವಿಳಂಬವಾಗಬಹುದು.";
+"travel.pending" = "ಉಳಿಸಿದ ಈವೆಂಟ್, ಸ್ಥಳ ಮತ್ತು ಮಾರ್ಗಕ್ಕಾಗಿ ಕಾಯಲಾಗುತ್ತಿದೆ.";
+"travel.permissions" = "ಸೆಟ್ಟಿಂಗ್‌ಗಳಲ್ಲಿ ಸೂಚನೆಗಳು ಮತ್ತು ಹಿನ್ನೆಲೆ ಸ್ಥಳಕ್ಕೆ ಅನುಮತಿ ನೀಡಿ.";
+"travel.unavailable" = "ನವೀಕರಿಸಲು ಸಾಧ್ಯವಾಗಲಿಲ್ಲ. ಹಿಂದೆ ನಿಗದಿಪಡಿಸಿದ ಜ್ಞಾಪನೆ ಉಳಿಯುತ್ತದೆ.";
+"travel.scheduled" = "ಹೊರಡುವ ಜ್ಞಾಪನೆ ನಿಗದಿಯಾಗಿದೆ.";
+"travel.notification" = "%@ · %@ ಒಳಗೆ ಹೊರಡಿ. ಪ್ರಯಾಣದ ಸಮಯ ಅಂದಾಜು ಮಾತ್ರ.";
+"travel.transport" = "ಪ್ರಯಾಣದ ವಿಧಾನ";
+"travel.driving" = "ಕಾರಿನಲ್ಲಿ";
+"travel.walking" = "ನಡಿಗೆಯಲ್ಲಿ";
+"travel.transit" = "ಸಾರ್ವಜನಿಕ ಸಾರಿಗೆ";
+"travel.buffer" = "ಮುಂಚಿತವಾಗಿ ತಲುಪುವ ಸಮಯ";
+"travel.advance" = "ಹೊರಡುವ ಮೊದಲು ಸೂಚನೆ";

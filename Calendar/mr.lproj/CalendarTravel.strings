@@ -1,0 +1,17 @@
+/* Personal travel reminders. */
+"travel.title" = "निघण्याची वेळ";
+"travel.question" = "कधी निघायचे ते कळवू का?";
+"travel.enable" = "सुरू करा";
+"travel.notnow" = "आत्ता नको";
+"travel.explanation" = "तुमचे ठिकाण बदलल्यावर पुन्हा गणना होते. पार्श्वभूमीतील अपडेटला उशीर होऊ शकतो.";
+"travel.pending" = "जतन केलेला इव्हेंट, स्थान आणि मार्ग यांची प्रतीक्षा आहे.";
+"travel.permissions" = "सेटिंग्जमध्ये सूचना आणि पार्श्वभूमीतील स्थानाला परवानगी द्या.";
+"travel.unavailable" = "अद्ययावत करता आले नाही. आधी ठरवलेले स्मरणपत्र कायम राहील.";
+"travel.scheduled" = "निघण्याचे स्मरणपत्र ठरवले आहे.";
+"travel.notification" = "%@ · %@ पर्यंत निघा. प्रवासाचा वेळ अंदाजे आहे.";
+"travel.transport" = "प्रवासाचे साधन";
+"travel.driving" = "कारने";
+"travel.walking" = "पायी";
+"travel.transit" = "सार्वजनिक वाहतूक";
+"travel.buffer" = "आधी पोहोचण्याचा वेळ";
+"travel.advance" = "निघण्यापूर्वी सूचना";

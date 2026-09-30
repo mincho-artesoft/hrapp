@@ -1,0 +1,17 @@
+/* Personal travel reminders. */
+"travel.title" = "નીકળવાનો સમય";
+"travel.question" = "ક્યારે નીકળવું તે જણાવીએ?";
+"travel.enable" = "ચાલુ કરો";
+"travel.notnow" = "હમણાં નહીં";
+"travel.explanation" = "તમે સ્થળ બદલો ત્યારે ફરી ગણતરી થાય છે. બૅકગ્રાઉન્ડ અપડેટમાં વિલંબ થઈ શકે છે.";
+"travel.pending" = "સાચવેલી ઇવેન્ટ, સ્થાન અને માર્ગની રાહ જોવાય છે.";
+"travel.permissions" = "સેટિંગ્સમાં સૂચનાઓ અને બૅકગ્રાઉન્ડ સ્થાનની મંજૂરી આપો.";
+"travel.unavailable" = "અપડેટ થઈ શક્યું નહીં. અગાઉ ગોઠવેલું રિમાઇન્ડર જળવાશે.";
+"travel.scheduled" = "નીકળવાનું રિમાઇન્ડર ગોઠવાયું.";
+"travel.notification" = "%@ · %@ સુધીમાં નીકળો. મુસાફરીનો સમય અંદાજિત છે.";
+"travel.transport" = "મુસાફરીનો પ્રકાર";
+"travel.driving" = "કારમાં";
+"travel.walking" = "પગપાળા";
+"travel.transit" = "જાહેર પરિવહન";
+"travel.buffer" = "વહેલા પહોંચવાનો સમય";
+"travel.advance" = "નીકળતા પહેલાં સૂચના";

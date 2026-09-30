@@ -1,0 +1,17 @@
+/* Personal travel reminders. */
+"travel.title" = "ବାହାରିବା ସମୟ";
+"travel.question" = "କେବେ ବାହାରିବେ ଜଣାଇବୁ କି?";
+"travel.enable" = "ଚାଲୁ କରନ୍ତୁ";
+"travel.notnow" = "ଏବେ ନୁହେଁ";
+"travel.explanation" = "ଆପଣଙ୍କ ସ୍ଥାନ ବଦଳିଲେ ପୁନଃ ଗଣନା ହୁଏ। ପୃଷ୍ଠଭୂମି ଅପଡେଟ୍ ବିଳମ୍ବ ହୋଇପାରେ।";
+"travel.pending" = "ସଞ୍ଚିତ ଇଭେଣ୍ଟ, ସ୍ଥାନ ଓ ମାର୍ଗକୁ ଅପେକ୍ଷା।";
+"travel.permissions" = "ସେଟିଂସରେ ସୂଚନା ଓ ପୃଷ୍ଠଭୂମି ଅବସ୍ଥାନକୁ ଅନୁମତି ଦିଅନ୍ତୁ।";
+"travel.unavailable" = "ଅପଡେଟ୍ ହୋଇପାରିଲା ନାହିଁ। ପୂର୍ବରୁ ନିର୍ଦ୍ଧାରିତ ସ୍ମାରକ ରହିବ।";
+"travel.scheduled" = "ବାହାରିବା ସ୍ମାରକ ନିର୍ଦ୍ଧାରିତ ହୋଇଛି।";
+"travel.notification" = "%@ · %@ ସୁଦ୍ଧା ବାହାରନ୍ତୁ। ଯାତ୍ରା ସମୟ ଆନୁମାନିକ।";
+"travel.transport" = "ଯାତ୍ରାର ମାଧ୍ୟମ";
+"travel.driving" = "କାରରେ";
+"travel.walking" = "ଚାଲିକରି";
+"travel.transit" = "ସାର୍ବଜନୀନ ପରିବହନ";
+"travel.buffer" = "ଆଗୁଆ ପହଞ୍ଚିବା ସମୟ";
+"travel.advance" = "ବାହାରିବା ପୂର୍ବରୁ ସୂଚନା";

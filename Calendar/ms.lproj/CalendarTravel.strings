@@ -1,0 +1,17 @@
+/* Personal travel reminders. */
+"travel.title" = "Masa bertolak";
+"travel.question" = "Mahu dimaklumkan bila perlu bertolak?";
+"travel.enable" = "Aktifkan";
+"travel.notnow" = "Bukan sekarang";
+"travel.explanation" = "Dikira semula apabila anda berpindah. Kemas kini latar belakang mungkin tertunda.";
+"travel.pending" = "Menunggu acara disimpan, lokasi dan laluan.";
+"travel.permissions" = "Benarkan pemberitahuan dan lokasi latar belakang dalam Seting.";
+"travel.unavailable" = "Tidak dapat mengemas kini. Peringatan yang telah dijadualkan dikekalkan.";
+"travel.scheduled" = "Peringatan bertolak dijadualkan.";
+"travel.notification" = "%@ · Bertolak sebelum %@. Masa perjalanan ialah anggaran.";
+"travel.transport" = "Mod perjalanan";
+"travel.driving" = "Memandu";
+"travel.walking" = "Berjalan kaki";
+"travel.transit" = "Pengangkutan awam";
+"travel.buffer" = "Tiba lebih awal";
+"travel.advance" = "Makluman sebelum bertolak";

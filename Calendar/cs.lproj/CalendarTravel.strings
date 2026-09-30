@@ -1,0 +1,17 @@
+/* Personal travel reminders. */
+"travel.title" = "Čas vyrazit";
+"travel.question" = "Upozornit vás, kdy vyrazit?";
+"travel.enable" = "Zapnout";
+"travel.notnow" = "Teď ne";
+"travel.explanation" = "Při změně polohy se přepočítá. Aktualizace na pozadí se mohou zpozdit.";
+"travel.pending" = "Čeká se na uloženou událost, polohu a trasu.";
+"travel.permissions" = "Povolte oznámení a polohu na pozadí v Nastavení.";
+"travel.unavailable" = "Aktualizace se nezdařila. Dříve naplánovaná připomínka zůstává zachována.";
+"travel.scheduled" = "Připomínka odjezdu naplánována.";
+"travel.notification" = "%@ · Vyrazte do %@. Doba jízdy je odhadovaná.";
+"travel.transport" = "Způsob dopravy";
+"travel.driving" = "Autem";
+"travel.walking" = "Pěšky";
+"travel.transit" = "Veřejná doprava";
+"travel.buffer" = "Přijet dříve o";
+"travel.advance" = "Upozornění před odchodem";

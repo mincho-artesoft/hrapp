@@ -4,8 +4,8 @@ role="${1:?sender or receiver}"
 action="${2:?test action}"
 output_dir="${3:?report directory}"
 case "$role" in
-    sender) simulator_id=1A67A8FA-A72D-4244-9C1C-551D1C473FD4 ;;
-    receiver) simulator_id=786598BD-4158-4A5B-851F-8E04FDE3BC98 ;;
+    sender) simulator_id=3ED181D6-AEEC-42C0-B77B-F1F4CADB051E ;;
+    receiver) simulator_id=742C50AD-4799-4697-8E62-7259448E36C0 ;;
     *) exit 2 ;;
 esac
 case "$action" in

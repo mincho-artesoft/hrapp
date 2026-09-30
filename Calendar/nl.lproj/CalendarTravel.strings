@@ -1,0 +1,17 @@
+/* Personal travel reminders. */
+"travel.title" = "Tijd om te vertrekken";
+"travel.question" = "Een melding ontvangen wanneer je moet vertrekken?";
+"travel.enable" = "Inschakelen";
+"travel.notnow" = "Niet nu";
+"travel.explanation" = "Wordt opnieuw berekend als je je verplaatst. Achtergrondupdates kunnen vertraging oplopen.";
+"travel.pending" = "Wachten op een opgeslagen afspraak, locatie en route.";
+"travel.permissions" = "Sta meldingen en achtergrondlocatie toe in Instellingen.";
+"travel.unavailable" = "Bijwerken mislukt. Een eerder geplande herinnering blijft behouden.";
+"travel.scheduled" = "Vertrekherinnering gepland.";
+"travel.notification" = "%@ · Vertrek uiterlijk om %@. De reistijd is een schatting.";
+"travel.transport" = "Vervoermiddel";
+"travel.driving" = "Met de auto";
+"travel.walking" = "Te voet";
+"travel.transit" = "Openbaar vervoer";
+"travel.buffer" = "Eerder aankomen";
+"travel.advance" = "Melding vóór vertrek";

@@ -1,0 +1,17 @@
+/* Personal travel reminders. */
+"travel.title" = "Indulás ideje";
+"travel.question" = "Értesítsünk, mikor indulj?";
+"travel.enable" = "Bekapcsolás";
+"travel.notnow" = "Most nem";
+"travel.explanation" = "Helyváltoztatáskor újraszámítja. A háttérfrissítések késhetnek.";
+"travel.pending" = "Várakozás a mentett eseményre, helyzetre és útvonalra.";
+"travel.permissions" = "Engedélyezd az értesítéseket és a háttérbeli helyhozzáférést a Beállításokban.";
+"travel.unavailable" = "Nem sikerült frissíteni. A korábban ütemezett emlékeztető megmarad.";
+"travel.scheduled" = "Indulási emlékeztető ütemezve.";
+"travel.notification" = "%@ · Indulj el eddig: %@. A menetidő becslés.";
+"travel.transport" = "Közlekedési mód";
+"travel.driving" = "Autóval";
+"travel.walking" = "Gyalog";
+"travel.transit" = "Tömegközlekedéssel";
+"travel.buffer" = "Korábbi érkezés";
+"travel.advance" = "Jelzés indulás előtt";

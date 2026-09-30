@@ -1,0 +1,17 @@
+/* Personal travel reminders. */
+"travel.title" = "Time to Leave";
+"travel.question" = "Notify you when to leave?";
+"travel.enable" = "Enable";
+"travel.notnow" = "Not Now";
+"travel.explanation" = "Recalculates when you move. Background updates may be delayed.";
+"travel.pending" = "Waiting for a saved event, location and route.";
+"travel.permissions" = "Allow notifications and background location in Settings.";
+"travel.unavailable" = "Unable to update. Any previously scheduled reminder is kept.";
+"travel.scheduled" = "Departure reminder scheduled.";
+"travel.notification" = "%@ · Leave by %@. Travel time is an estimate.";
+"travel.transport" = "Travel mode";
+"travel.driving" = "Driving";
+"travel.walking" = "Walking";
+"travel.transit" = "Public transport";
+"travel.buffer" = "Arrive early by";
+"travel.advance" = "Alert before departure";

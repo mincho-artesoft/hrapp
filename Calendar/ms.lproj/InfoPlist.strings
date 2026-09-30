@@ -4,9 +4,9 @@
 
 "NSContactsUsageDescription" = "Cloud Calendars menggunakan kenalan anda untuk memudahkan jemputan acara dan mengurus butiran peserta dengan mudah.";
 
-"NSLocationAlwaysAndWhenInUseUsageDescription" = "Cloud Calendars mengakses lokasi anda walaupun semasa apl ditutup, memberikan ramalan cuaca yang tepat dan makluman tepat pada masanya untuk acara yang dijadualkan anda.";
+"NSLocationAlwaysAndWhenInUseUsageDescription" = "Cloud Calendars mengakses lokasi anda walaupun semasa apl ditutup, memberikan ramalan cuaca yang tepat dan makluman tepat pada masanya untuk acara yang dijadualkan anda. Lokasi anda juga digunakan untuk mengemas kini peringatan bertolak apabila anda bergerak.";
 
-"NSLocationWhenInUseUsageDescription" = "Cloud Calendars menggunakan lokasi anda semasa aktif untuk menyepadukan ramalan cuaca tempatan yang tepat terus ke dalam kalendar anda.";
+"NSLocationWhenInUseUsageDescription" = "Cloud Calendars menggunakan lokasi anda semasa aktif untuk menyepadukan ramalan cuaca tempatan yang tepat terus ke dalam kalendar anda. Lokasi anda juga digunakan untuk mengemas kini peringatan bertolak apabila anda bergerak.";
 
 "NSCalendarsFullAccessUsageDescription" = "Cloud Calendars memerlukan akses kalendar untuk menyatukan acara anda daripada kalendar iCloud, Google dan Microsoft, membolehkan penjadualan lancar.";
 

@@ -1,0 +1,17 @@
+/* Personal travel reminders. */
+"travel.title" = "Жолға шығу уақыты";
+"travel.question" = "Қашан шығу керегін ескертейік пе?";
+"travel.enable" = "Қосу";
+"travel.notnow" = "Қазір емес";
+"travel.explanation" = "Орныңыз өзгергенде қайта есептеледі. Фондық жаңартулар кешігуі мүмкін.";
+"travel.pending" = "Сақталған оқиға, орын және бағыт күтілуде.";
+"travel.permissions" = "Реттеулерде хабарландырулар мен фондық геолокацияға рұқсат беріңіз.";
+"travel.unavailable" = "Жаңарту мүмкін болмады. Бұрын жоспарланған еске салғыш сақталады.";
+"travel.scheduled" = "Жолға шығу еске салғышы жоспарланды.";
+"travel.notification" = "%@ · %@ дейін шығыңыз. Жол жүру уақыты болжамды.";
+"travel.transport" = "Қозғалыс тәсілі";
+"travel.driving" = "Көлікпен";
+"travel.walking" = "Жаяу";
+"travel.transit" = "Қоғамдық көлік";
+"travel.buffer" = "Ертерек келу уақыты";
+"travel.advance" = "Жолға шығар алдындағы ескерту";

@@ -1,0 +1,17 @@
+/* Personal travel reminders. */
+"travel.title" = "Dags att åka";
+"travel.question" = "Vill du få en notis när det är dags att åka?";
+"travel.enable" = "Aktivera";
+"travel.notnow" = "Inte nu";
+"travel.explanation" = "Beräknas om när du förflyttar dig. Bakgrundsuppdateringar kan fördröjas.";
+"travel.pending" = "Väntar på en sparad händelse, plats och rutt.";
+"travel.permissions" = "Tillåt notiser och platsåtkomst i bakgrunden i Inställningar.";
+"travel.unavailable" = "Kunde inte uppdatera. En tidigare schemalagd påminnelse behålls.";
+"travel.scheduled" = "Avfärdspåminnelse schemalagd.";
+"travel.notification" = "%@ · Åk senast %@. Restiden är uppskattad.";
+"travel.transport" = "Färdsätt";
+"travel.driving" = "Med bil";
+"travel.walking" = "Till fots";
+"travel.transit" = "Kollektivtrafik";
+"travel.buffer" = "Anländ tidigare med";
+"travel.advance" = "Avisering före avfärd";

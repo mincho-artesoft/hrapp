@@ -1,0 +1,17 @@
+/* Personal travel reminders. */
+"travel.title" = "Tid til at tage afsted";
+"travel.question" = "Vil du have besked om, hvornår du skal tage afsted?";
+"travel.enable" = "Slå til";
+"travel.notnow" = "Ikke nu";
+"travel.explanation" = "Genberegnes, når du flytter dig. Opdateringer i baggrunden kan blive forsinket.";
+"travel.pending" = "Venter på en gemt begivenhed, lokalitet og rute.";
+"travel.permissions" = "Tillad notifikationer og lokalitet i baggrunden i Indstillinger.";
+"travel.unavailable" = "Kunne ikke opdatere. En tidligere planlagt påmindelse bevares.";
+"travel.scheduled" = "Afgangspåmindelse planlagt.";
+"travel.notification" = "%@ · Tag afsted senest %@. Rejsetiden er anslået.";
+"travel.transport" = "Transportform";
+"travel.driving" = "I bil";
+"travel.walking" = "Til fods";
+"travel.transit" = "Offentlig transport";
+"travel.buffer" = "Ankom tidligere med";
+"travel.advance" = "Varsel før afgang";

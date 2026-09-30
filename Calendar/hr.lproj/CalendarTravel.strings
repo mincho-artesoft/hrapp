@@ -1,0 +1,17 @@
+/* Personal travel reminders. */
+"travel.title" = "Vrijeme za polazak";
+"travel.question" = "Želite obavijest kada krenuti?";
+"travel.enable" = "Uključi";
+"travel.notnow" = "Ne sada";
+"travel.explanation" = "Ponovno se izračunava kad se pomaknete. Ažuriranja u pozadini mogu kasniti.";
+"travel.pending" = "Čeka se spremljen događaj, lokacija i ruta.";
+"travel.permissions" = "Dopustite obavijesti i lokaciju u pozadini u Postavkama.";
+"travel.unavailable" = "Ažuriranje nije uspjelo. Prethodno zakazani podsjetnik ostaje.";
+"travel.scheduled" = "Podsjetnik za polazak je zakazan.";
+"travel.notification" = "%@ · Krenite do %@. Vrijeme putovanja je procjena.";
+"travel.transport" = "Način putovanja";
+"travel.driving" = "Automobilom";
+"travel.walking" = "Pješice";
+"travel.transit" = "Javni prijevoz";
+"travel.buffer" = "Stići ranije za";
+"travel.advance" = "Obavijest prije polaska";

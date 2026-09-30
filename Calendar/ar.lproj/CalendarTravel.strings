@@ -1,0 +1,17 @@
+/* Personal travel reminders. */
+"travel.title" = "وقت المغادرة";
+"travel.question" = "هل تريد إشعارًا بموعد المغادرة؟";
+"travel.enable" = "تفعيل";
+"travel.notnow" = "ليس الآن";
+"travel.explanation" = "يُعاد الحساب عند تنقلك. قد تتأخر التحديثات في الخلفية.";
+"travel.pending" = "بانتظار حفظ الحدث وتحديد الموقع والمسار.";
+"travel.permissions" = "اسمح بالإشعارات والموقع في الخلفية من الإعدادات.";
+"travel.unavailable" = "تعذر التحديث. يبقى أي تذكير مجدول سابقًا.";
+"travel.scheduled" = "تمت جدولة تذكير المغادرة.";
+"travel.notification" = "%@ · غادر بحلول %@. مدة الرحلة تقديرية.";
+"travel.transport" = "وسيلة التنقل";
+"travel.driving" = "بالسيارة";
+"travel.walking" = "سيرًا على الأقدام";
+"travel.transit" = "النقل العام";
+"travel.buffer" = "الوصول مبكرًا بمقدار";
+"travel.advance" = "تنبيه قبل المغادرة";

@@ -1,0 +1,17 @@
+/* Personal travel reminders. */
+"travel.title" = "זמן לצאת";
+"travel.question" = "להודיע לך מתי לצאת?";
+"travel.enable" = "הפעלה";
+"travel.notnow" = "לא עכשיו";
+"travel.explanation" = "מחושב מחדש כשהמיקום משתנה. עדכונים ברקע עלולים להתעכב.";
+"travel.pending" = "בהמתנה לאירוע שמור, למיקום ולמסלול.";
+"travel.permissions" = "יש לאפשר עדכונים וגישה למיקום ברקע בהגדרות.";
+"travel.unavailable" = "לא ניתן לעדכן. תזכורת שתוזמנה קודם נשמרת.";
+"travel.scheduled" = "תזכורת היציאה תוזמנה.";
+"travel.notification" = "%@ · יש לצאת עד %@. זמן הנסיעה משוער.";
+"travel.transport" = "אופן נסיעה";
+"travel.driving" = "ברכב";
+"travel.walking" = "ברגל";
+"travel.transit" = "תחבורה ציבורית";
+"travel.buffer" = "הגעה מוקדמת ב־";
+"travel.advance" = "התראה לפני יציאה";
