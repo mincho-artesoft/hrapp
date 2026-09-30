@@ -1,0 +1,33 @@
+/* Wind map interface. */
+"About this map" = "เกี่ยวกับแผนที่นี้";
+"Center on location" = "จัดตำแหน่งให้อยู่กึ่งกลาง";
+"Choose a location to see the wind map" = "เลือกตำแหน่งเพื่อดูแผนที่ลม";
+"Close" = "ปิด";
+"Data sources" = "แหล่งข้อมูล";
+"Done" = "เสร็จแล้ว";
+"Estimated wind" = "ลมโดยประมาณ";
+"Forecast time" = "เวลาพยากรณ์";
+"Load this area" = "โหลดบริเวณนี้";
+"Loading wind forecast…" = "กำลังโหลดพยากรณ์ลม…";
+"Map layers" = "ชั้นข้อมูลแผนที่";
+"Map location" = "สถานที่";
+"Move the time slider to explore the hourly forecast. Outside the colored area, load another region to see its wind." = "เลื่อนแถบเวลาเพื่อดูพยากรณ์รายชั่วโมง หากอยู่นอกพื้นที่สี ให้โหลดบริเวณอื่นเพื่อดูลมในบริเวณนั้น";
+"My Location" = "ตำแหน่งปัจจุบัน";
+"Now" = "ตอนนี้";
+"Open wind map" = "เปิดแผนที่ลม";
+"Pause" = "หยุดชั่วคราว";
+"Play" = "เล่น";
+"Retry" = "ลองอีกครั้ง";
+"The arrows move in the direction the wind travels. The direction label shows where the wind comes from." = "เส้นเคลื่อนที่ตามทิศทางที่ลมพัดไป ป้ายทิศทางแสดงว่าลมพัดมาจากทิศใด";
+"The map is available. Try loading the wind forecast again." = "แผนที่พร้อมใช้งาน ลองโหลดพยากรณ์ลมอีกครั้ง";
+"Weather data provided by Apple has been modified to estimate the regional wind field." = "ข้อมูลสภาพอากาศจาก Apple ได้รับการประมวลผลเพื่อประมาณสนามลมในภูมิภาค";
+"Wind" = "ลม";
+"Wind Map" = "แผนที่ลม";
+"Wind Speed" = "ความเร็วลม";
+"Wind between forecast locations is estimated. Local conditions can differ, especially near mountains and coasts." = "ลมระหว่างจุดพยากรณ์เป็นค่าประมาณ สภาพจริงในพื้นที่อาจต่างกัน โดยเฉพาะใกล้ภูเขาและชายฝั่ง";
+"Wind data unavailable" = "ไม่มีข้อมูลลม";
+"Your Locations" = "ตำแหน่งของคุณ";
+
+/* Additional weather map layers. */
+"Map Data" = "ข้อมูลแผนที่";
+"Weather data provided by Apple has been modified to create forecast maps." = "ข้อมูลสภาพอากาศจาก Apple ได้รับการปรับแต่งเพื่อสร้างแผนที่พยากรณ์";

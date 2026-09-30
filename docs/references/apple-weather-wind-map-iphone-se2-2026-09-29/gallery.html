@@ -1,0 +1,116 @@
+<!doctype html><html lang="bg"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Apple Weather · Wind Map · iPhone SE 2</title>
+<style>
+:root{color-scheme:dark;font-family:system-ui,-apple-system,BlinkMacSystemFont,sans-serif;background:#0b1520;color:#e9f2fa}
+*{box-sizing:border-box}body{margin:0}header,main,footer{max-width:1450px;margin:auto;padding:32px}header{padding-bottom:16px}
+.eyebrow{color:#91c7e9;font-size:12px;letter-spacing:.1em;text-transform:uppercase}h1{font-size:clamp(28px,4vw,46px);margin:12px 0}header p{max-width:900px;line-height:1.6;color:#bdd0dd}
+a{color:#9bd2f7;text-underline-offset:3px}.links{display:flex;gap:20px;flex-wrap:wrap}.filters{display:flex;gap:8px;flex-wrap:wrap;margin:24px 0 12px}
+button{font:inherit;cursor:pointer}.filter{border:1px solid #334e63;border-radius:30px;padding:10px 16px;background:#162737;color:#d8e8f4}.filter[aria-pressed=true]{background:#bee6ff;color:#0b2131;border-color:#bee6ff}
+#count{color:#99aebb;font-size:13px}.grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(245px,1fr));gap:22px}.card{background:#142432;border:1px solid #2b4051;border-radius:20px;overflow:hidden}.card[hidden]{display:none}
+.image-button{display:block;width:100%;border:0;padding:18px 18px 0;background:transparent}.image-button img{display:block;width:100%;height:auto;border-radius:10px;background:#0d1620}.copy{padding:18px}.number{color:#87b4d3;font-size:12px}h2{font-size:17px;line-height:1.35;margin:6px 0 10px}.copy p{font-size:14px;color:#b5c8d6;line-height:1.5;min-height:63px}.copy a{font-size:13px}
+footer{font-size:13px;color:#9eb3c3;line-height:1.6;padding-top:10px}dialog{border:1px solid #425a6b;background:#10202d;color:#e9f2fa;border-radius:20px;max-width:95vw;max-height:95vh;padding:18px}dialog::backdrop{background:#02070ddd}dialog img{display:block;max-height:76vh;max-width:85vw;width:auto;height:auto;margin:auto}.dialog-bar{display:flex;align-items:center;justify-content:space-between;gap:16px;margin-bottom:12px}#dialog-title{margin:0;font-size:15px}#close{border:1px solid #567;background:#213647;color:white;border-radius:30px;padding:8px 13px}button:focus-visible,a:focus-visible{outline:3px solid #80caff;outline-offset:3px}
+@media(max-width:550px){header,main,footer{padding:22px}.grid{grid-template-columns:1fr}.image-button img{max-width:375px;margin:auto}.copy p{min-height:0}}
+</style></head><body><header><div class="eyebrow">Наблюдение на реален телефон · 29.09.2026</div>
+<h1>Apple Weather · Wind Map</h1><p>iPhone SE 2 · iOS 26.6.1 · английски интерфейс · km/h. Вградената картичка, пълният екран и проверените контроли. Изображенията са реални кадри от iPhone Mirroring, изрязани до 375 × 667 px.</p>
+<nav class="links"><a href="README.md">Описание и контролна таблица</a><a href="screenshots.md">Всички 28 кадъра</a><a href="metadata.json">Произход и размери</a></nav>
+<div class="filters" role="group" aria-label="Филтри за кадрите">
+<button class="filter" data-filter="all" aria-pressed="true">Всички</button><button class="filter" data-filter="inline" aria-pressed="false">Картичка</button><button class="filter" data-filter="full" aria-pressed="false">Пълен екран</button><button class="filter" data-filter="controls" aria-pressed="false">Бутони и менюта</button><button class="filter" data-filter="time" aria-pressed="false">Време</button><button class="filter" data-filter="gestures" aria-pressed="false">Жестове</button><button class="filter" data-filter="layers" aria-pressed="false">Други слоеве</button></div>
+<p id="count" aria-live="polite">22 подбрани кадъра · докосни изображение за увеличение</p></header>
+<main><div class="grid"><article class="card" data-category="inline">
+<button class="image-button" data-src="screenshots/26-inline-clean.png" data-title="Картичка в прогнозата" aria-label="Увеличи: Картичка в прогнозата">
+<img src="screenshots/26-inline-clean.png" alt="Картичка в прогнозата" width="375" height="667" loading="lazy"></button>
+<div class="copy"><span class="number">26</span><h2>Картичка в прогнозата</h2><p>Цялата Wind Map картичка, компактен маркер и околният интерфейс.</p><a href="screenshots/26-inline-clean.png" target="_blank">Отвори PNG ↗</a></div></article>
+<article class="card" data-category="full">
+<button class="image-button" data-src="screenshots/27-fullscreen-clean.png" data-title="Пълен екран" aria-label="Увеличи: Пълен екран">
+<img src="screenshots/27-fullscreen-clean.png" alt="Пълен екран" width="375" height="667" loading="lazy"></button>
+<div class="copy"><span class="number">27</span><h2>Пълен екран</h2><p>Легенда, слоеве, местоположение, списък и долен панел Wind Speed.</p><a href="screenshots/27-fullscreen-clean.png" target="_blank">Отвори PNG ↗</a></div></article>
+<article class="card" data-category="controls">
+<button class="image-button" data-src="screenshots/03-map-layers-menu.png" data-title="Меню за слоеве" aria-label="Увеличи: Меню за слоеве">
+<img src="screenshots/03-map-layers-menu.png" alt="Меню за слоеве" width="375" height="667" loading="lazy"></button>
+<div class="copy"><span class="number">03</span><h2>Меню за слоеве</h2><p>Precipitation, Temperature, Air Quality и активен Wind.</p><a href="screenshots/03-map-layers-menu.png" target="_blank">Отвори PNG ↗</a></div></article>
+<article class="card" data-category="controls">
+<button class="image-button" data-src="screenshots/09-locations-list.png" data-title="Your Locations" aria-label="Увеличи: Your Locations">
+<img src="screenshots/09-locations-list.png" alt="Your Locations" width="375" height="667" loading="lazy"></button>
+<div class="copy"><span class="number">09</span><h2>Your Locations</h2><p>Име, скорост, пориви и посока за двете налични места.</p><a href="screenshots/09-locations-list.png" target="_blank">Отвори PNG ↗</a></div></article>
+<article class="card" data-category="controls">
+<button class="image-button" data-src="screenshots/10-selected-san-francisco.png" data-title="Избран San Francisco" aria-label="Увеличи: Избран San Francisco">
+<img src="screenshots/10-selected-san-francisco.png" alt="Избран San Francisco" width="375" height="667" loading="lazy"></button>
+<div class="copy"><span class="number">10</span><h2>Избран San Francisco</h2><p>Изборът на ред премества картата към запазения град.</p><a href="screenshots/10-selected-san-francisco.png" target="_blank">Отвори PNG ↗</a></div></article>
+<article class="card" data-category="time">
+<button class="image-button" data-src="screenshots/11-timeline-playing.png" data-title="Play е активиран" aria-label="Увеличи: Play е активиран">
+<img src="screenshots/11-timeline-playing.png" alt="Play е активиран" width="375" height="667" loading="lazy"></button>
+<div class="copy"><span class="number">11</span><h2>Play е активиран</h2><p>Бутонът показва Pause. Частиците и времевото възпроизвеждане са отделни поведения.</p><a href="screenshots/11-timeline-playing.png" target="_blank">Отвори PNG ↗</a></div></article>
+<article class="card" data-category="time">
+<button class="image-button" data-src="screenshots/12-timeline-paused.png" data-title="Pause е натиснат" aria-label="Увеличи: Pause е натиснат">
+<img src="screenshots/12-timeline-paused.png" alt="Pause е натиснат" width="375" height="667" loading="lazy"></button>
+<div class="copy"><span class="number">12</span><h2>Pause е натиснат</h2><p>Бутонът отново показва Play.</p><a href="screenshots/12-timeline-paused.png" target="_blank">Отвори PNG ↗</a></div></article>
+<article class="card" data-category="time">
+<button class="image-button" data-src="screenshots/13-timeline-scrub-forward.png" data-title="Преместване напред във времето" aria-label="Увеличи: Преместване напред във времето">
+<img src="screenshots/13-timeline-scrub-forward.png" alt="Преместване напред във времето" width="375" height="667" loading="lazy"></button>
+<div class="copy"><span class="number">13</span><h2>Преместване напред във времето</h2><p>Белият прогрес е вдясно; датата преминава на 30 септември.</p><a href="screenshots/13-timeline-scrub-forward.png" target="_blank">Отвори PNG ↗</a></div></article>
+<article class="card" data-category="time">
+<button class="image-button" data-src="screenshots/14-timeline-start.png" data-title="Начало на времевата линия" aria-label="Увеличи: Начало на времевата линия">
+<img src="screenshots/14-timeline-start.png" alt="Начало на времевата линия" width="375" height="667" loading="lazy"></button>
+<div class="copy"><span class="number">14</span><h2>Начало на времевата линия</h2><p>Докосване вляво; датата отново е 29 септември.</p><a href="screenshots/14-timeline-start.png" target="_blank">Отвори PNG ↗</a></div></article>
+<article class="card" data-category="controls">
+<button class="image-button" data-src="screenshots/15-location-recenter.png" data-title="Центриране към My Location" aria-label="Увеличи: Центриране към My Location">
+<img src="screenshots/15-location-recenter.png" alt="Центриране към My Location" width="375" height="667" loading="lazy"></button>
+<div class="copy"><span class="number">15</span><h2>Центриране към My Location</h2><p>Стрелката връща картата от San Francisco към Sofia.</p><a href="screenshots/15-location-recenter.png" target="_blank">Отвори PNG ↗</a></div></article>
+<article class="card" data-category="gestures">
+<button class="image-button" data-src="screenshots/17-map-double-tap-zoom.png" data-title="Увеличение с двукратно докосване" aria-label="Увеличи: Увеличение с двукратно докосване">
+<img src="screenshots/17-map-double-tap-zoom.png" alt="Увеличение с двукратно докосване" width="375" height="667" loading="lazy"></button>
+<div class="copy"><span class="number">17</span><h2>Увеличение с двукратно докосване</h2><p>По-близък мащаб около докоснатата област.</p><a href="screenshots/17-map-double-tap-zoom.png" target="_blank">Отвори PNG ↗</a></div></article>
+<article class="card" data-category="gestures">
+<button class="image-button" data-src="screenshots/18-map-drag-pan.png" data-title="Влачене на картата" aria-label="Увеличи: Влачене на картата">
+<img src="screenshots/18-map-drag-pan.png" alt="Влачене на картата" width="375" height="667" loading="lazy"></button>
+<div class="copy"><span class="number">18</span><h2>Влачене на картата</h2><p>Географията се премества, а плаващите контроли остават фиксирани.</p><a href="screenshots/18-map-drag-pan.png" target="_blank">Отвори PNG ↗</a></div></article>
+<article class="card" data-category="gestures">
+<button class="image-button" data-src="screenshots/21-map-tap-timeline-hidden.png" data-title="Скрита времева линия" aria-label="Увеличи: Скрита времева линия">
+<img src="screenshots/21-map-tap-timeline-hidden.png" alt="Скрита времева линия" width="375" height="667" loading="lazy"></button>
+<div class="copy"><span class="number">21</span><h2>Скрита времева линия</h2><p>Докосване на свободна област скрива долния панел. Маркерът е компактен.</p><a href="screenshots/21-map-tap-timeline-hidden.png" target="_blank">Отвори PNG ↗</a></div></article>
+<article class="card" data-category="gestures">
+<button class="image-button" data-src="screenshots/22-map-tap-timeline-restored.png" data-title="Върната времева линия" aria-label="Увеличи: Върната времева линия">
+<img src="screenshots/22-map-tap-timeline-restored.png" alt="Върната времева линия" width="375" height="667" loading="lazy"></button>
+<div class="copy"><span class="number">22</span><h2>Върната времева линия</h2><p>Следващо докосване връща панела; маркерът остава компактен.</p><a href="screenshots/22-map-tap-timeline-restored.png" target="_blank">Отвори PNG ↗</a></div></article>
+<article class="card" data-category="full">
+<button class="image-button" data-src="screenshots/07-wind-close-scale.png" data-title="Wind при близък мащаб" aria-label="Увеличи: Wind при близък мащаб">
+<img src="screenshots/07-wind-close-scale.png" alt="Wind при близък мащаб" width="375" height="667" loading="lazy"></button>
+<div class="copy"><span class="number">07</span><h2>Wind при близък мащаб</h2><p>Връщане към Wind след Air Quality; близкият мащаб е запазен.</p><a href="screenshots/07-wind-close-scale.png" target="_blank">Отвори PNG ↗</a></div></article>
+<article class="card" data-category="layers">
+<button class="image-button" data-src="screenshots/04-layer-precipitation.png" data-title="Precipitation" aria-label="Увеличи: Precipitation">
+<img src="screenshots/04-layer-precipitation.png" alt="Precipitation" width="375" height="667" loading="lazy"></button>
+<div class="copy"><span class="number">04</span><h2>Precipitation</h2><p>Сива основа, легенда за валежи и Forecast с 1h / 12h.</p><a href="screenshots/04-layer-precipitation.png" target="_blank">Отвори PNG ↗</a></div></article>
+<article class="card" data-category="layers">
+<button class="image-button" data-src="screenshots/05-layer-temperature.png" data-title="Temperature" aria-label="Увеличи: Temperature">
+<img src="screenshots/05-layer-temperature.png" alt="Temperature" width="375" height="667" loading="lazy"></button>
+<div class="copy"><span class="number">05</span><h2>Temperature</h2><p>Цветен температурен слой без долна времева линия.</p><a href="screenshots/05-layer-temperature.png" target="_blank">Отвори PNG ↗</a></div></article>
+<article class="card" data-category="layers">
+<button class="image-button" data-src="screenshots/06-layer-air-quality.png" data-title="Air Quality — Unavailable" aria-label="Увеличи: Air Quality — Unavailable">
+<img src="screenshots/06-layer-air-quality.png" alt="Air Quality — Unavailable" width="375" height="667" loading="lazy"></button>
+<div class="copy"><span class="number">06</span><h2>Air Quality — Unavailable</h2><p>Наблюдавано липсващо покритие за Sofia, с маркер --.</p><a href="screenshots/06-layer-air-quality.png" target="_blank">Отвори PNG ↗</a></div></article>
+<article class="card" data-category="inline">
+<button class="image-button" data-src="screenshots/23-inline-after-close.png" data-title="Връщане от пълен екран" aria-label="Увеличи: Връщане от пълен екран">
+<img src="screenshots/23-inline-after-close.png" alt="Връщане от пълен екран" width="375" height="667" loading="lazy"></button>
+<div class="copy"><span class="number">23</span><h2>Връщане от пълен екран</h2><p>Бутонът × връща прогнозата; картичката е частично изрязана от горната фиксирана област.</p><a href="screenshots/23-inline-after-close.png" target="_blank">Отвори PNG ↗</a></div></article>
+<article class="card" data-category="inline">
+<button class="image-button" data-src="screenshots/24-inline-scroll-clipping.png" data-title="Картичка при скролиране" aria-label="Увеличи: Картичка при скролиране">
+<img src="screenshots/24-inline-scroll-clipping.png" alt="Картичка при скролиране" width="375" height="667" loading="lazy"></button>
+<div class="copy"><span class="number">24</span><h2>Картичка при скролиране</h2><p>Намалена видима част на картата; отделната Wind картичка се вижда по-надолу.</p><a href="screenshots/24-inline-scroll-clipping.png" target="_blank">Отвори PNG ↗</a></div></article>
+<article class="card" data-category="controls">
+<button class="image-button" data-src="screenshots/08-marker-tap-no-sheet.png" data-title="Докосване на големия маркер" aria-label="Увеличи: Докосване на големия маркер">
+<img src="screenshots/08-marker-tap-no-sheet.png" alt="Докосване на големия маркер" width="375" height="667" loading="lazy"></button>
+<div class="copy"><span class="number">08</span><h2>Докосване на големия маркер</h2><p>При този опит не се отвори допълнителен панел.</p><a href="screenshots/08-marker-tap-no-sheet.png" target="_blank">Отвори PNG ↗</a></div></article>
+<article class="card" data-category="controls">
+<button class="image-button" data-src="screenshots/19-map-data-tap-no-page.png" data-title="Опит с Map Data" aria-label="Увеличи: Опит с Map Data">
+<img src="screenshots/19-map-data-tap-no-page.png" alt="Опит с Map Data" width="375" height="667" loading="lazy"></button>
+<div class="copy"><span class="number">19</span><h2>Опит с Map Data</h2><p>Не се отвори страница с източници; не приемаме предполагаем резултат за потвърден.</p><a href="screenshots/19-map-data-tap-no-page.png" target="_blank">Отвори PNG ↗</a></div></article></div></main>
+<footer>Стойностите за времето са моментни. Оригиналните JPEG кадри, регистърът и SHA-256 манифестът са в същата папка. Map Data не отвори отделна страница при опитите; това е отбелязано в описанието. Мултитъч и landscape не са проверявани.</footer>
+<dialog id="viewer" aria-labelledby="dialog-title"><div class="dialog-bar"><h2 id="dialog-title"></h2><button id="close" aria-label="Затвори увеличения кадър">Затвори ×</button></div><img id="large" alt=""></dialog>
+<script>
+const cards=[...document.querySelectorAll('.card')],filters=[...document.querySelectorAll('.filter')];
+filters.forEach(button=>button.addEventListener('click',()=>{filters.forEach(b=>b.setAttribute('aria-pressed',String(b===button)));let count=0;cards.forEach(card=>{card.hidden=button.dataset.filter!=='all'&&card.dataset.category!==button.dataset.filter;if(!card.hidden)count++});document.querySelector('#count').textContent=`${count} кадъра · докосни изображение за увеличение`;}));
+const viewer=document.querySelector('#viewer'),large=document.querySelector('#large'),title=document.querySelector('#dialog-title');
+document.querySelectorAll('.image-button').forEach(button=>button.addEventListener('click',()=>{large.src=button.dataset.src;large.alt=button.dataset.title;title.textContent=button.dataset.title;viewer.showModal();}));
+document.querySelector('#close').addEventListener('click',()=>viewer.close());
+viewer.addEventListener('click',event=>{if(event.target===viewer){const r=viewer.getBoundingClientRect();if(event.clientX<r.left||event.clientX>r.right||event.clientY<r.top||event.clientY>r.bottom)viewer.close();}});
+</script></body></html>

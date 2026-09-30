@@ -1,0 +1,33 @@
+/* Wind map interface. */
+"About this map" = "Despre această hartă";
+"Center on location" = "Centrează pe localizare";
+"Choose a location to see the wind map" = "Alegeți un loc pentru a vedea harta vântului";
+"Close" = "Închideți";
+"Data sources" = "Surse de date";
+"Done" = "Gata";
+"Estimated wind" = "Vânt estimat";
+"Forecast time" = "Ora prognozei";
+"Load this area" = "Încarcă această zonă";
+"Loading wind forecast…" = "Se încarcă prognoza vântului…";
+"Map layers" = "Straturi hartă";
+"Map location" = "Loc";
+"Move the time slider to explore the hourly forecast. Outside the colored area, load another region to see its wind." = "Deplasați glisorul de timp pentru prognoza orară. În afara zonei colorate, încărcați altă regiune pentru a vedea vântul de acolo.";
+"My Location" = "Locația actuală";
+"Now" = "Acum";
+"Open wind map" = "Deschide harta vântului";
+"Pause" = "Pauză";
+"Play" = "Redă";
+"Retry" = "Reîncearcă";
+"The arrows move in the direction the wind travels. The direction label shows where the wind comes from." = "Liniile se mișcă în direcția vântului. Eticheta direcției arată de unde vine vântul.";
+"The map is available. Try loading the wind forecast again." = "Harta este disponibilă. Încercați să încărcați din nou prognoza vântului.";
+"Weather data provided by Apple has been modified to estimate the regional wind field." = "Datele meteo Apple au fost prelucrate pentru a estima câmpul de vânt regional.";
+"Wind" = "Vânt";
+"Wind Map" = "Harta vântului";
+"Wind Speed" = "Viteza vântului";
+"Wind between forecast locations is estimated. Local conditions can differ, especially near mountains and coasts." = "Vântul dintre punctele de prognoză este estimat. Condițiile locale pot varia, mai ales lângă munți și coaste.";
+"Wind data unavailable" = "Date despre vânt indisponibile";
+"Your Locations" = "Locurile dvs.";
+
+/* Additional weather map layers. */
+"Map Data" = "Datele hărții";
+"Weather data provided by Apple has been modified to create forecast maps." = "Datele meteo furnizate de Apple au fost prelucrate pentru a crea hărți de prognoză.";

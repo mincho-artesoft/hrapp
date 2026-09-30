@@ -1,0 +1,33 @@
+/* Wind map interface. */
+"About this map" = "Acerca de este mapa";
+"Center on location" = "Centrar en la ubicación";
+"Choose a location to see the wind map" = "Elige una ubicación para ver el mapa del viento";
+"Close" = "Casi todo";
+"Data sources" = "Fuentes de datos";
+"Done" = "Listo";
+"Estimated wind" = "Viento estimado";
+"Forecast time" = "Hora del pronóstico";
+"Load this area" = "Cargar esta zona";
+"Loading wind forecast…" = "Cargando el pronóstico del viento…";
+"Map layers" = "Capas del mapa";
+"Map location" = "Ubicación";
+"Move the time slider to explore the hourly forecast. Outside the colored area, load another region to see its wind." = "Mueve el control de tiempo para ver el pronóstico por horas. Fuera del área coloreada, carga otra región para ver su viento.";
+"My Location" = "Localización actual";
+"Now" = "Ahora , ¿ qué ?";
+"Open wind map" = "Abrir mapa del viento";
+"Pause" = "Pausar";
+"Play" = "Reproducir";
+"Retry" = "Reintentar";
+"The arrows move in the direction the wind travels. The direction label shows where the wind comes from." = "Las líneas se mueven en la dirección del viento. La etiqueta de dirección indica de dónde viene el viento.";
+"The map is available. Try loading the wind forecast again." = "El mapa está disponible. Intenta cargar de nuevo el pronóstico del viento.";
+"Weather data provided by Apple has been modified to estimate the regional wind field." = "Los datos meteorológicos de Apple se han modificado para estimar el campo de viento regional.";
+"Wind" = "Viento";
+"Wind Map" = "Mapa del viento";
+"Wind Speed" = "Velocidad del viento";
+"Wind between forecast locations is estimated. Local conditions can differ, especially near mountains and coasts." = "El viento entre los puntos del pronóstico es estimado. Las condiciones locales pueden variar, especialmente cerca de montañas y costas.";
+"Wind data unavailable" = "Datos del viento no disponibles";
+"Your Locations" = "Tus ubicaciones";
+
+/* Additional weather map layers. */
+"Map Data" = "Datos del mapa";
+"Weather data provided by Apple has been modified to create forecast maps." = "Los datos meteorológicos de Apple se han modificado para crear mapas de pronóstico.";

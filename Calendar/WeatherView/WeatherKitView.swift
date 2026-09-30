@@ -91,40 +91,20 @@ struct WeatherKitView: View {
             // 2) ScrollView съдържащ цялото съдържание, включително и tърсачката (topBar)
             ScrollView(.vertical, showsIndicators: false) {
                 VStack(spacing: 20) {
-                    // Текущото време и град
-                    currentWeatherHeader
-
-                    if !vm.weatherAlerts.isEmpty {
-                        weatherAlertsSection
-                            .padding(.horizontal, 16)
-                    }
-                    
-                    // Часов прогноз – хоризонтален ScrollView
-                    hourlyForecastCard
-                        .padding(.horizontal, 16)
-                    
-                    // Participates in the persisted Weather-wide
-                    // banner -> native -> banner rotation.
-                    WeatherRotatingAdPlacement(nativeHorizontalPadding: 16)
-                        .padding(.vertical, 8)
-                   
-                    // 10-дневният прогноз
-                    tenDayForecastCard
-                        .padding(.horizontal, 16)
-                    
-                    // Допълнителни детайли за днес
-                    todayDetailsGrid
-                        .padding(.horizontal, 16)
-                    
-                    // Ако има съобщение за грешка
-                    if let error = vm.errorMessage {
-                        Text(error)
-                            .foregroundColor(.yellow)
-                            .padding()
-                            .frame(maxWidth: .infinity)
-                            .background(Color.red.opacity(0.6))
-                            .clipShape(RoundedRectangle(cornerRadius: 8))
-                            .padding(.horizontal, 16)
+                    if needsWeatherLocation {
+                        weatherLocationPrompt
+                    } else {
+                        currentWeatherHeader
+                        if let error = vm.errorMessage {
+                            weatherErrorPanel(error)
+                        }
+                        if vm.currentTemp != nil || !vm.dailyForecast.isEmpty || weatherPreviewIsActive {
+                            weatherForecastCards
+                        } else if vm.isLoading {
+                            ProgressView(NSLocalizedString("Loading...", comment: "Weather loading"))
+                                .tint(.white).foregroundStyle(.white)
+                                .padding(24)
+                        }
                     }
                     
                     
@@ -452,7 +432,7 @@ struct WeatherKitView: View {
                     )
                     initialLoadComplete = true
                 }
-            } else if status == .denied || status == .restricted {
+            } else if (status == .denied || status == .restricted), vm.locationCoordinate == nil {
                 vm.errorMessage = NSLocalizedString("Location access denied. Search for a city or grant access in Settings.", comment: "Location permission error")
                 initialLoadComplete = true
             }
@@ -464,6 +444,82 @@ struct WeatherKitView: View {
         // semantic labels, materials, controls and every presented subview on
         // the same palette regardless of the device's Light/Dark appearance.
         .colorScheme(.dark)
+    }
+
+    private var weatherForecastCards: some View {
+        VStack(spacing: 20) {
+            if !vm.weatherAlerts.isEmpty {
+                weatherAlertsSection.padding(.horizontal, 16)
+            }
+            hourlyForecastCard.padding(.horizontal, 16)
+            WeatherRotatingAdPlacement(nativeHorizontalPadding: 16)
+                .padding(.vertical, 8)
+            tenDayForecastCard.padding(.horizontal, 16)
+            WindMapCard(
+                coordinate: vm.locationCoordinate,
+                name: displayedCityName(),
+                timeZone: vm.locationTimeZone,
+                pointForecast: vm.mapPointForecast,
+                currentLocation: locationManager.currentLocation?.coordinate,
+                allowsNetwork: !weatherPreviewIsActive,
+                fullScreenColorScheme: eventEditorColorScheme
+            )
+            .padding(.horizontal, 16)
+            todayDetailsGrid.padding(.horizontal, 16)
+        }
+    }
+
+    private var needsWeatherLocation: Bool {
+        !weatherPreviewIsActive && vm.locationCoordinate == nil
+    }
+
+    private func beginCitySearch() {
+        withAnimation { showSearchBar = true }
+        DispatchQueue.main.asyncAfter(deadline: .now() + 0.25) {
+            isSearchFieldFocused = true
+        }
+    }
+
+    private var weatherLocationPrompt: some View {
+        VStack(spacing: 20) {
+            Image(systemName: "location.magnifyingglass")
+                .font(.system(size: 42, weight: .light))
+            Text(NSLocalizedString("Weather", comment: "Weather title"))
+                .font(.largeTitle)
+            if locationManager.authorizationStatus == .denied || locationManager.authorizationStatus == .restricted {
+                Text(NSLocalizedString("Location access denied. Search for a city or grant access in Settings.", comment: "Location permission error"))
+                    .multilineTextAlignment(.center)
+                    .foregroundStyle(.white.opacity(0.85))
+            }
+            Button(action: beginCitySearch) {
+                Label(NSLocalizedString("Search for a city…", comment: "City search"), systemImage: "magnifyingglass")
+                    .font(.headline).padding(.horizontal, 18).padding(.vertical, 12)
+                    .background(.ultraThinMaterial, in: Capsule())
+            }
+            .buttonStyle(.plain)
+            .accessibilityIdentifier("weather.chooseLocation")
+            if !savedRegions.regions.isEmpty {
+                Button(action: openSavedRegions) {
+                    Label(NSLocalizedString("Saved Regions", comment: "Saved weather regions"), systemImage: "list.bullet")
+                }.buttonStyle(.plain)
+            }
+        }
+        .foregroundStyle(.white)
+        .padding(.horizontal, 32).padding(.top, 48).padding(.bottom, 24)
+        .frame(maxWidth: .infinity)
+    }
+
+    private func weatherErrorPanel(_ error: String) -> some View {
+        VStack(spacing: 12) {
+            Text(error).font(.callout).multilineTextAlignment(.center)
+            Button(WindMapLabels.text("Retry"), action: refreshWeatherData)
+                .buttonStyle(.bordered)
+                .accessibilityIdentifier("weather.retry")
+        }
+        .foregroundStyle(.white).padding(16)
+        .frame(maxWidth: .infinity)
+        .background(.ultraThinMaterial, in: RoundedRectangle(cornerRadius: 16))
+        .padding(.horizontal, 16)
     }
     
     private var dynamicBackground: some View {
@@ -502,7 +558,7 @@ struct WeatherKitView: View {
             )
             .textInputAutocapitalization(.never)   // без автоматични главни букви
             .autocorrectionDisabled(true)          // без автокорекция
-            .keyboardType(.asciiCapable)           // изчистена QWERTY, без локални „умни“ предложения
+            .keyboardType(.default)
             .focused($isSearchFieldFocused)              // ← тук
             .onSubmit { isEditing = false }
             .onChange(of: locationSearchVM.queryFragment) { isEditing = true }
@@ -531,12 +587,7 @@ struct WeatherKitView: View {
         CalendarScreenHeader(currentView: selectedTab, tint: .white,
             controlsHidden: showSearchBar,
             onSavedRegions: openSavedRegions,
-            onSearch: {
-                withAnimation { showSearchBar = true }
-                DispatchQueue.main.asyncAfter(deadline: .now() + 0.25) {
-                    isSearchFieldFocused = true
-                }
-            }, onViewChange: onViewChange)
+            onSearch: beginCitySearch, onViewChange: onViewChange)
             .background(Color.black.opacity(0.001))
             .contentShape(Rectangle())
             .zIndex(20)
@@ -1538,10 +1589,16 @@ struct WeatherKitView: View {
     }
 
     private func refreshWeatherData() {
+        // A searched city is intentionally not persisted in Saved Regions,
+        // but refreshing it must not switch back to an unavailable GPS fix.
+        let searchedCoordinate = isShowingUnsavedSearchLocation ? vm.locationCoordinate : nil
         vm.clearWeatherData()
         initialLoadComplete = false
 
-        if let selectedID = savedRegions.selectedRegionID,
+        if let searchedCoordinate {
+            vm.fetchWeatherForCoords(latitude: searchedCoordinate.latitude, longitude: searchedCoordinate.longitude)
+            initialLoadComplete = true
+        } else if let selectedID = savedRegions.selectedRegionID,
            let region = savedRegions.regions.first(where: { $0.id == selectedID }) {
             selectSavedRegion(region)
         } else if let loc = locationManager.currentLocation {
@@ -1712,56 +1769,122 @@ struct WeatherKitView: View {
 
 }
 
-/// Хоризонтален scroll с directional-lock и без vertical bounce
-struct DirectionLockedHScroll<Content: View>: UIViewRepresentable {
+/// Keeps a horizontal drag in the hourly row until the finger lifts. A drag
+/// that starts vertically is left to the enclosing Weather page.
+private struct DirectionLockedHScroll<Content: View>: UIViewControllerRepresentable {
     let content: Content
 
     init(@ViewBuilder content: () -> Content) {
         self.content = content()
     }
 
-    func makeUIView(context: Context) -> UIScrollView {
-        // 1) конфигурираме UIScrollView
-        let scrollView = UIScrollView()
-        let semanticDirection: UISemanticContentAttribute =
-            context.environment.layoutDirection == .rightToLeft ? .forceRightToLeft : .forceLeftToRight
-        scrollView.semanticContentAttribute = semanticDirection
-        scrollView.backgroundColor = .clear            // ← прозрачно
+    func makeUIViewController(context: Context) -> HourlyScrollController {
+        HourlyScrollController(rootView: hostedContent(environment: context.environment))
+    }
+
+    func updateUIViewController(_ controller: HourlyScrollController, context: Context) {
+        controller.update(rootView: hostedContent(environment: context.environment),
+                          layoutDirection: context.environment.layoutDirection)
+    }
+
+    private func hostedContent(environment: EnvironmentValues) -> AnyView {
+        AnyView(content.environment(\.self, environment))
+    }
+}
+
+private final class HourlyScrollController: UIViewController {
+    private let scrollView = HourlyDirectionLockedScrollView()
+    private let host: UIHostingController<AnyView>
+
+    init(rootView: AnyView) {
+        host = UIHostingController(rootView: rootView)
+        super.init(nibName: nil, bundle: nil)
+    }
+
+    required init?(coder: NSCoder) { fatalError("init(coder:) has not been implemented") }
+
+    override func loadView() {
+        view = scrollView
+        scrollView.backgroundColor = .clear
         scrollView.alwaysBounceHorizontal = true
         scrollView.alwaysBounceVertical = false
         scrollView.showsHorizontalScrollIndicator = false
         scrollView.showsVerticalScrollIndicator = false
         scrollView.isDirectionalLockEnabled = true
-        scrollView.delaysContentTouches = false   // изпрати tap веднага
-        scrollView.canCancelContentTouches = true // но все пак може да скролва
+        scrollView.contentInsetAdjustmentBehavior = .never
+        scrollView.delaysContentTouches = false
+        scrollView.canCancelContentTouches = true
 
-        // 2) „hosting controller“ за SwiftUI съдържанието
-        let host = UIHostingController(rootView: content)
-        host.view.semanticContentAttribute = semanticDirection
-        host.view.backgroundColor = .clear             // ← прозрачно
-        host.view.isOpaque = false                     // ← важно за прозрачност
+        addChild(host)
+        host.sizingOptions = .intrinsicContentSize
+        host.safeAreaRegions = []
+        host.view.backgroundColor = .clear
+        host.view.isOpaque = false
         host.view.translatesAutoresizingMaskIntoConstraints = false
-
         scrollView.addSubview(host.view)
         NSLayoutConstraint.activate([
             host.view.topAnchor.constraint(equalTo: scrollView.contentLayoutGuide.topAnchor),
             host.view.bottomAnchor.constraint(equalTo: scrollView.contentLayoutGuide.bottomAnchor),
             host.view.leadingAnchor.constraint(equalTo: scrollView.contentLayoutGuide.leadingAnchor),
             host.view.trailingAnchor.constraint(equalTo: scrollView.contentLayoutGuide.trailingAnchor),
+            // The row has exactly one scrolling axis, including during a diagonal drag.
             host.view.heightAnchor.constraint(equalTo: scrollView.frameLayoutGuide.heightAnchor)
         ])
-
-        return scrollView
+        host.didMove(toParent: self)
     }
 
-    func updateUIView(_ uiView: UIScrollView, context: Context) {
-        let semanticDirection: UISemanticContentAttribute =
-            context.environment.layoutDirection == .rightToLeft ? .forceRightToLeft : .forceLeftToRight
-        uiView.semanticContentAttribute = semanticDirection
-        // само заменяме корена на host-а
-        if let host = uiView.subviews.compactMap({ $0.next as? UIHostingController<Content> }).first {
-            host.view.semanticContentAttribute = semanticDirection
-            host.rootView = content
+    func update(rootView: AnyView, layoutDirection: LayoutDirection) {
+        loadViewIfNeeded()
+        host.rootView = rootView
+        scrollView.startsAtRight = layoutDirection == .rightToLeft
+        let direction: UISemanticContentAttribute = scrollView.startsAtRight ? .forceRightToLeft : .forceLeftToRight
+        scrollView.semanticContentAttribute = direction
+        host.view.semanticContentAttribute = direction
+        host.view.invalidateIntrinsicContentSize()
+    }
+}
+
+private final class HourlyDirectionLockedScrollView: UIScrollView {
+    var startsAtRight = false {
+        didSet {
+            if oldValue != startsAtRight { needsInitialOffset = true }
+        }
+    }
+    private var needsInitialOffset = true
+    private let configuredAncestors = NSHashTable<UIScrollView>.weakObjects()
+
+    override func didMoveToWindow() {
+        super.didMoveToWindow()
+        connectAncestorGestures()
+    }
+
+    override func layoutSubviews() {
+        super.layoutSubviews()
+        connectAncestorGestures()
+        if needsInitialOffset, bounds.width > 0, contentSize.width > bounds.width {
+            needsInitialOffset = false
+            contentOffset = CGPoint(x: startsAtRight ? contentSize.width - bounds.width : 0, y: 0)
+        }
+    }
+
+    override func gestureRecognizerShouldBegin(_ gestureRecognizer: UIGestureRecognizer) -> Bool {
+        if gestureRecognizer === panGestureRecognizer {
+            let velocity = panGestureRecognizer.velocity(in: self)
+            guard abs(velocity.x) > abs(velocity.y) else { return false }
+        }
+        return super.gestureRecognizerShouldBegin(gestureRecognizer)
+    }
+
+    private func connectAncestorGestures() {
+        var ancestor = superview
+        while let current = ancestor {
+            if let scroll = current as? UIScrollView, !configuredAncestors.contains(scroll) {
+                // A horizontal start fails the page pan for this entire touch.
+                // A vertical start fails our pan, so the page can scroll normally.
+                scroll.panGestureRecognizer.require(toFail: panGestureRecognizer)
+                configuredAncestors.add(scroll)
+            }
+            ancestor = current.superview
         }
     }
 }
@@ -1860,7 +1983,7 @@ private struct HourlyStrip: View {
     }
 
     var body: some View {
-        ScrollView(.horizontal, showsIndicators: false) {
+        DirectionLockedHScroll {
             HStack(spacing: 25) {
                 ForEach(entries) { entry in
                     switch entry {
@@ -1886,8 +2009,8 @@ private struct HourlyStrip: View {
             }
             .padding(.horizontal, 15)
             .padding(.vertical, 12)
+            .fixedSize(horizontal: true, vertical: false)
         }
-        .scrollIndicators(.hidden)
     }
 }
 

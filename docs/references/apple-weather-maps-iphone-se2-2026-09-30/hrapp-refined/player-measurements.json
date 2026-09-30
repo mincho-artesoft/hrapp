@@ -1,0 +1,29 @@
+[
+  {
+    "clip": "wind-paused",
+    "frames": 47,
+    "minimumTrackX": 246,
+    "maximumTrackX": 246,
+    "wrapTimes": [],
+    "medianPixelsPerSecond": 0
+  },
+  {
+    "clip": "wind-playing",
+    "frames": 138,
+    "minimumTrackX": 71,
+    "maximumTrackX": 715,
+    "wrapTimes": [
+      5.977,
+      13.862
+    ],
+    "medianPixelsPerSecond": 87.9
+  },
+  {
+    "clip": "wind-scrub-paused",
+    "frames": 46,
+    "minimumTrackX": 489,
+    "maximumTrackX": 489,
+    "wrapTimes": [],
+    "medianPixelsPerSecond": 0
+  }
+]

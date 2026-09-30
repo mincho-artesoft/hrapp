@@ -1,0 +1,50 @@
+{
+  "title": "Apple Weather Wind Map — iPhone SE 2",
+  "observedDate": "2026-09-29",
+  "sessionTimezone": "Europe/Sofia",
+  "device": {
+    "model": "iPhone SE (2nd generation)",
+    "productType": "iPhone12,8",
+    "osVersion": "26.6.1",
+    "osBuild": "23G83",
+    "orientation": "portrait",
+    "nativePixels": [
+      750,
+      1334
+    ],
+    "logicalPoints": [
+      375,
+      667
+    ],
+    "scale": 2
+  },
+  "app": {
+    "name": "Apple Weather",
+    "interfaceLanguage": "English",
+    "windUnit": "km/h"
+  },
+  "capture": {
+    "method": "macOS iPhone Mirroring via cua_repl",
+    "sourceFormat": "JPEG",
+    "sourcePixels": [
+      392,
+      713
+    ],
+    "outputFormat": "PNG",
+    "outputPixels": [
+      375,
+      667
+    ],
+    "crop": {
+      "x": 8,
+      "y": 38,
+      "width": 375,
+      "height": 667
+    },
+    "pixelContentEdits": "Crop only; no retouching or upscaling.",
+    "nativeIOSDeviceScreenshots": false,
+    "statusBarTimeIsCaptureTime": false
+  },
+  "finalObservedState": "Wind Map, My Location / Sofia, timeline visible, playback paused",
+  "applicationCodeChanged": false
+}

@@ -1,0 +1,33 @@
+/* Wind map interface. */
+"About this map" = "Про цю карту";
+"Center on location" = "Центрувати за розташуванням";
+"Choose a location to see the wind map" = "Виберіть місце, щоб побачити карту вітру";
+"Close" = "Близько";
+"Data sources" = "Джерела даних";
+"Done" = "Готово";
+"Estimated wind" = "Оцінка вітру";
+"Forecast time" = "Час прогнозу";
+"Load this area" = "Завантажити цю область";
+"Loading wind forecast…" = "Завантаження прогнозу вітру…";
+"Map layers" = "Шари карти";
+"Map location" = "Місце";
+"Move the time slider to explore the hourly forecast. Outside the colored area, load another region to see its wind." = "Переміщуйте повзунок часу для перегляду погодинного прогнозу. За межами кольорової області завантажте інший регіон, щоб побачити вітер.";
+"My Location" = "Текуче місцезнаходження";
+"Now" = "Тепер";
+"Open wind map" = "Відкрити карту вітру";
+"Pause" = "Пауза";
+"Play" = "Відтворити";
+"Retry" = "Повторити";
+"The arrows move in the direction the wind travels. The direction label shows where the wind comes from." = "Лінії рухаються в напрямку вітру. Позначення напрямку показує, звідки дме вітер.";
+"The map is available. Try loading the wind forecast again." = "Карта доступна. Спробуйте знову завантажити прогноз вітру.";
+"Weather data provided by Apple has been modified to estimate the regional wind field." = "Метеодані Apple оброблено для оцінки регіонального поля вітру.";
+"Wind" = "Вітер";
+"Wind Map" = "Карта вітру";
+"Wind Speed" = "Швидкість вітру";
+"Wind between forecast locations is estimated. Local conditions can differ, especially near mountains and coasts." = "Вітер між точками прогнозу оцінюється приблизно. Місцеві умови можуть відрізнятися, особливо поблизу гір і узбереж.";
+"Wind data unavailable" = "Дані про вітер недоступні";
+"Your Locations" = "Ваші місця";
+
+/* Additional weather map layers. */
+"Map Data" = "Дані карти";
+"Weather data provided by Apple has been modified to create forecast maps." = "Метеодані Apple оброблено для створення карт прогнозу.";

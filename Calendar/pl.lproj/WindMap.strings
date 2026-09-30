@@ -1,0 +1,33 @@
+/* Wind map interface. */
+"About this map" = "O tej mapie";
+"Center on location" = "Wyśrodkuj na położeniu";
+"Choose a location to see the wind map" = "Wybierz miejsce, aby zobaczyć mapę wiatru";
+"Close" = "Zamknij";
+"Data sources" = "Źródła danych";
+"Done" = "Gotowe";
+"Estimated wind" = "Szacowany wiatr";
+"Forecast time" = "Godzina prognozy";
+"Load this area" = "Wczytaj ten obszar";
+"Loading wind forecast…" = "Wczytywanie prognozy wiatru…";
+"Map layers" = "Warstwy mapy";
+"Map location" = "Miejsce";
+"Move the time slider to explore the hourly forecast. Outside the colored area, load another region to see its wind." = "Przesuń suwak czasu, aby zobaczyć prognozę godzinową. Poza kolorowym obszarem wczytaj inny region, aby zobaczyć tam wiatr.";
+"My Location" = "Bieżące położenie";
+"Now" = "Teraz";
+"Open wind map" = "Otwórz mapę wiatru";
+"Pause" = "Wstrzymaj";
+"Play" = "Odtwórz";
+"Retry" = "Spróbuj ponownie";
+"The arrows move in the direction the wind travels. The direction label shows where the wind comes from." = "Linie poruszają się zgodnie z kierunkiem wiatru. Etykieta kierunku wskazuje, skąd wieje wiatr.";
+"The map is available. Try loading the wind forecast again." = "Mapa jest dostępna. Spróbuj ponownie wczytać prognozę wiatru.";
+"Weather data provided by Apple has been modified to estimate the regional wind field." = "Dane pogodowe Apple zostały przetworzone w celu oszacowania regionalnego pola wiatru.";
+"Wind" = "Wiatr";
+"Wind Map" = "Mapa wiatru";
+"Wind Speed" = "Prędkość wiatru";
+"Wind between forecast locations is estimated. Local conditions can differ, especially near mountains and coasts." = "Wiatr między punktami prognozy jest szacowany. Warunki lokalne mogą się różnić, zwłaszcza w pobliżu gór i wybrzeży.";
+"Wind data unavailable" = "Dane wiatru niedostępne";
+"Your Locations" = "Twoje miejsca";
+
+/* Additional weather map layers. */
+"Map Data" = "Dane mapy";
+"Weather data provided by Apple has been modified to create forecast maps." = "Dane pogodowe Apple zostały przetworzone w celu utworzenia map prognoz.";

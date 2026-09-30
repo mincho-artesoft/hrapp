@@ -1,0 +1,33 @@
+/* Wind map interface. */
+"About this map" = "Tietoja kartasta";
+"Center on location" = "Keskitä sijaintiin";
+"Choose a location to see the wind map" = "Valitse sijainti nähdäksesi tuulikartan";
+"Close" = "Sulje";
+"Data sources" = "Tietolähteet";
+"Done" = "Valmis";
+"Estimated wind" = "Arvioitu tuuli";
+"Forecast time" = "Ennusteen aika";
+"Load this area" = "Lataa tämä alue";
+"Loading wind forecast…" = "Ladataan tuuliennustetta…";
+"Map layers" = "Karttatasot";
+"Map location" = "Paikka";
+"Move the time slider to explore the hourly forecast. Outside the colored area, load another region to see its wind." = "Katso tuntiennustetta siirtämällä aikaliukusäädintä. Lataa toinen alue nähdäksesi tuulen väritetyn alueen ulkopuolella.";
+"My Location" = "Nykyinen sijainti";
+"Now" = "Nyt";
+"Open wind map" = "Avaa tuulikartta";
+"Pause" = "Keskeytä";
+"Play" = "Toista";
+"Retry" = "Yritä uudelleen";
+"The arrows move in the direction the wind travels. The direction label shows where the wind comes from." = "Viivat liikkuvat tuulen kulkusuuntaan. Suuntamerkintä näyttää, mistä tuuli tulee.";
+"The map is available. Try loading the wind forecast again." = "Kartta on käytettävissä. Yritä ladata tuuliennuste uudelleen.";
+"Weather data provided by Apple has been modified to estimate the regional wind field." = "Applen säätietoja on muokattu alueellisen tuulikentän arvioimiseksi.";
+"Wind" = "Tuuli";
+"Wind Map" = "Tuulikartta";
+"Wind Speed" = "Tuulen nopeus";
+"Wind between forecast locations is estimated. Local conditions can differ, especially near mountains and coasts." = "Tuuli ennustepisteiden välillä on arvioitu. Paikalliset olosuhteet voivat vaihdella etenkin vuorten ja rannikoiden lähellä.";
+"Wind data unavailable" = "Tuulitietoja ei saatavilla";
+"Your Locations" = "Omat sijainnit";
+
+/* Additional weather map layers. */
+"Map Data" = "Kartan tiedot";
+"Weather data provided by Apple has been modified to create forecast maps." = "Applen säätietoja on muokattu ennustekarttojen luomista varten.";

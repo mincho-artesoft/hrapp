@@ -1,0 +1,33 @@
+/* Wind map interface. */
+"About this map" = "इस मानचित्र के बारे में";
+"Center on location" = "स्थान पर केंद्रित करें";
+"Choose a location to see the wind map" = "हवा का मानचित्र देखने के लिए स्थान चुनें";
+"Close" = "बंद करें";
+"Data sources" = "डेटा स्रोत";
+"Done" = "हो गया";
+"Estimated wind" = "अनुमानित हवा";
+"Forecast time" = "पूर्वानुमान का समय";
+"Load this area" = "यह क्षेत्र लोड करें";
+"Loading wind forecast…" = "हवा का पूर्वानुमान लोड हो रहा है…";
+"Map layers" = "मानचित्र की परतें";
+"Map location" = "स्थान";
+"Move the time slider to explore the hourly forecast. Outside the colored area, load another region to see its wind." = "हर घंटे का पूर्वानुमान देखने के लिए समय स्लाइडर खिसकाएँ। रंगीन क्षेत्र के बाहर की हवा देखने के लिए दूसरा क्षेत्र लोड करें।";
+"My Location" = "वर्तमान स्थान";
+"Now" = "अभी";
+"Open wind map" = "हवा का मानचित्र खोलें";
+"Pause" = "रोकें";
+"Play" = "चलाएँ";
+"Retry" = "फिर कोशिश करें";
+"The arrows move in the direction the wind travels. The direction label shows where the wind comes from." = "रेखाएँ हवा के बहने की दिशा में चलती हैं। दिशा का लेबल बताता है कि हवा कहाँ से आ रही है।";
+"The map is available. Try loading the wind forecast again." = "मानचित्र उपलब्ध है। हवा का पूर्वानुमान फिर से लोड करें।";
+"Weather data provided by Apple has been modified to estimate the regional wind field." = "क्षेत्रीय पवन क्षेत्र का अनुमान लगाने के लिए Apple के मौसम डेटा को संसाधित किया गया है।";
+"Wind" = "हवा";
+"Wind Map" = "हवा का मानचित्र";
+"Wind Speed" = "हवा की गति";
+"Wind between forecast locations is estimated. Local conditions can differ, especially near mountains and coasts." = "पूर्वानुमान बिंदुओं के बीच की हवा अनुमानित है। स्थानीय स्थितियाँ अलग हो सकती हैं, खासकर पहाड़ों और तटों के पास।";
+"Wind data unavailable" = "हवा का डेटा उपलब्ध नहीं है";
+"Your Locations" = "आपके स्थान";
+
+/* Additional weather map layers. */
+"Map Data" = "मानचित्र डेटा";
+"Weather data provided by Apple has been modified to create forecast maps." = "पूर्वानुमान मानचित्र बनाने के लिए Apple के मौसम डेटा को संशोधित किया गया है।";

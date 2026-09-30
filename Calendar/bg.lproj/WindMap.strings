@@ -1,0 +1,33 @@
+/* Wind map interface. */
+"About this map" = "За тази карта";
+"Center on location" = "Центрирай към местоположението";
+"Choose a location to see the wind map" = "Изберете място, за да видите картата на вятъра";
+"Close" = "Затвори";
+"Data sources" = "Източници на данни";
+"Done" = "Готово";
+"Estimated wind" = "Приблизителен вятър";
+"Forecast time" = "Час на прогнозата";
+"Load this area" = "Зареди тази област";
+"Loading wind forecast…" = "Зареждане на прогнозата за вятъра…";
+"Map layers" = "Слоеве на картата";
+"Map location" = "Място на картата";
+"Move the time slider to explore the hourly forecast. Outside the colored area, load another region to see its wind." = "Преместете плъзгача, за да разгледате почасовата прогноза. Извън оцветената област заредете друг регион, за да видите вятъра в него.";
+"My Location" = "Моето местоположение";
+"Now" = "Сега";
+"Open wind map" = "Отвори картата на вятъра";
+"Pause" = "Пауза";
+"Play" = "Пусни";
+"Retry" = "Опитай отново";
+"The arrows move in the direction the wind travels. The direction label shows where the wind comes from." = "Линиите се движат в посоката, в която духа вятърът. Надписът за посока показва откъде идва той.";
+"The map is available. Try loading the wind forecast again." = "Картата е налична. Опитайте отново да заредите прогнозата за вятъра.";
+"Weather data provided by Apple has been modified to estimate the regional wind field." = "Метеорологичните данни на Apple са обработени за приблизително изчисляване на вятъра в региона.";
+"Wind" = "Вятър";
+"Wind Map" = "Карта на вятъра";
+"Wind Speed" = "Скорост на вятъра";
+"Wind between forecast locations is estimated. Local conditions can differ, especially near mountains and coasts." = "Вятърът между точките на прогнозата е приблизително изчислен. Местните условия може да се различават, особено край планини и брегове.";
+"Wind data unavailable" = "Данните за вятъра са недостъпни";
+"Your Locations" = "Вашите места";
+
+/* Additional weather map layers. */
+"Map Data" = "Данни за картата";
+"Weather data provided by Apple has been modified to create forecast maps." = "Метеорологичните данни, предоставени от Apple, са обработени за създаване на прогнозни карти.";

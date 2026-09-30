@@ -1,0 +1,33 @@
+/* Wind map interface. */
+"About this map" = "이 지도에 관하여";
+"Center on location" = "위치로 중심 이동";
+"Choose a location to see the wind map" = "바람 지도를 보려면 위치를 선택하세요";
+"Close" = "닫기";
+"Data sources" = "데이터 출처";
+"Done" = "완료";
+"Estimated wind" = "추정 바람";
+"Forecast time" = "예보 시간";
+"Load this area" = "이 지역 불러오기";
+"Loading wind forecast…" = "바람 예보 불러오는 중…";
+"Map layers" = "지도 레이어";
+"Map location" = "위치";
+"Move the time slider to explore the hourly forecast. Outside the colored area, load another region to see its wind." = "시간 슬라이더를 움직여 시간별 예보를 확인하세요. 색이 없는 영역은 다른 지역을 불러오면 바람이 표시됩니다.";
+"My Location" = "현재 위치";
+"Now" = "지금";
+"Open wind map" = "바람 지도 열기";
+"Pause" = "일시 정지";
+"Play" = "재생";
+"Retry" = "다시 시도";
+"The arrows move in the direction the wind travels. The direction label shows where the wind comes from." = "선은 바람이 이동하는 방향으로 움직입니다. 방향 표시는 바람이 불어오는 쪽을 나타냅니다.";
+"The map is available. Try loading the wind forecast again." = "지도를 사용할 수 있습니다. 바람 예보를 다시 불러오세요.";
+"Weather data provided by Apple has been modified to estimate the regional wind field." = "지역의 바람 분포를 추정하기 위해 Apple의 날씨 데이터를 가공했습니다.";
+"Wind" = "바람";
+"Wind Map" = "바람 지도";
+"Wind Speed" = "풍속";
+"Wind between forecast locations is estimated. Local conditions can differ, especially near mountains and coasts." = "예보 지점 사이의 바람은 추정값입니다. 특히 산이나 해안 근처에서는 실제 상황이 다를 수 있습니다.";
+"Wind data unavailable" = "바람 데이터를 사용할 수 없음";
+"Your Locations" = "내 위치 목록";
+
+/* Additional weather map layers. */
+"Map Data" = "지도 데이터";
+"Weather data provided by Apple has been modified to create forecast maps." = "예보 지도를 만들기 위해 Apple에서 제공한 날씨 데이터를 가공했습니다.";

@@ -1,0 +1,22 @@
+{
+  "verifiedOn": "2026-09-30",
+  "source": "https://developer.apple.com/documentation/weatherkitrestapi/dataset",
+  "restDatasets": [
+    "currentWeather",
+    "forecastDaily",
+    "forecastHourly",
+    "forecastNextHour",
+    "weatherAlerts"
+  ],
+  "swiftQueryTypes": [
+    "current",
+    "minute",
+    "hourly",
+    "daily",
+    "alerts",
+    "availability",
+    "changes",
+    "historicalComparisons"
+  ],
+  "mapConclusion": "No public spatial precipitation/radar tiles or AQI dataset. Point forecasts cannot reproduce the supplied precipitation map frames."
+}

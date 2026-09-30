@@ -1,0 +1,33 @@
+/* Wind map interface. */
+"About this map" = "Giới thiệu về bản đồ này";
+"Center on location" = "Căn giữa theo vị trí";
+"Choose a location to see the wind map" = "Chọn vị trí để xem bản đồ gió";
+"Close" = "Đóng";
+"Data sources" = "Nguồn dữ liệu";
+"Done" = "Xong";
+"Estimated wind" = "Gió ước tính";
+"Forecast time" = "Thời gian dự báo";
+"Load this area" = "Tải khu vực này";
+"Loading wind forecast…" = "Đang tải dự báo gió…";
+"Map layers" = "Các lớp bản đồ";
+"Map location" = "Vị trí";
+"Move the time slider to explore the hourly forecast. Outside the colored area, load another region to see its wind." = "Di chuyển thanh thời gian để xem dự báo theo giờ. Ngoài vùng có màu, hãy tải khu vực khác để xem gió ở đó.";
+"My Location" = "Vị trí hiện tại";
+"Now" = "bây giờ";
+"Open wind map" = "Mở bản đồ gió";
+"Pause" = "Tạm dừng";
+"Play" = "Phát";
+"Retry" = "Thử lại";
+"The arrows move in the direction the wind travels. The direction label shows where the wind comes from." = "Các đường di chuyển theo hướng gió thổi. Nhãn hướng cho biết gió đến từ đâu.";
+"The map is available. Try loading the wind forecast again." = "Bản đồ có sẵn. Hãy thử tải lại dự báo gió.";
+"Weather data provided by Apple has been modified to estimate the regional wind field." = "Dữ liệu thời tiết của Apple đã được xử lý để ước tính trường gió trong khu vực.";
+"Wind" = "Gió";
+"Wind Map" = "Bản đồ gió";
+"Wind Speed" = "Tốc độ gió";
+"Wind between forecast locations is estimated. Local conditions can differ, especially near mountains and coasts." = "Gió giữa các điểm dự báo là giá trị ước tính. Điều kiện tại chỗ có thể khác, nhất là gần núi và bờ biển.";
+"Wind data unavailable" = "Không có dữ liệu gió";
+"Your Locations" = "Địa điểm của bạn";
+
+/* Additional weather map layers. */
+"Map Data" = "Dữ liệu bản đồ";
+"Weather data provided by Apple has been modified to create forecast maps." = "Dữ liệu thời tiết do Apple cung cấp đã được xử lý để tạo bản đồ dự báo.";

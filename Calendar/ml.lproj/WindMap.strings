@@ -1,0 +1,33 @@
+/* Wind map interface. */
+"About this map" = "ഈ മാപ്പിനെക്കുറിച്ച്";
+"Center on location" = "സ്ഥാനം കേന്ദ്രത്തിലാക്കുക";
+"Choose a location to see the wind map" = "കാറ്റിന്റെ മാപ്പ് കാണാൻ ഒരു സ്ഥലം തിരഞ്ഞെടുക്കുക";
+"Close" = "അടുത്തു";
+"Data sources" = "വിവര സ്രോതസ്സുകൾ";
+"Done" = "പൂർത്തിയായി";
+"Estimated wind" = "കണക്കാക്കിയ കാറ്റ്";
+"Forecast time" = "പ്രവചന സമയം";
+"Load this area" = "ഈ പ്രദേശം ലോഡ് ചെയ്യുക";
+"Loading wind forecast…" = "കാറ്റിന്റെ പ്രവചനം ലോഡ് ചെയ്യുന്നു…";
+"Map layers" = "മാപ്പ് പാളികൾ";
+"Map location" = "ലൊക്കേഷൻ";
+"Move the time slider to explore the hourly forecast. Outside the colored area, load another region to see its wind." = "മണിക്കൂർ പ്രവചനം കാണാൻ സമയ സ്ലൈഡർ നീക്കുക. നിറമുള്ള ഭാഗത്തിനു പുറത്തുള്ള കാറ്റ് കാണാൻ മറ്റൊരു പ്രദേശം ലോഡ് ചെയ്യുക.";
+"My Location" = "നിലവിലെ സ്ഥാനം";
+"Now" = "ഇപ്പോൾ";
+"Open wind map" = "കാറ്റിന്റെ മാപ്പ് തുറക്കുക";
+"Pause" = "താൽക്കാലികമായി നിർത്തുക";
+"Play" = "പ്ലേ ചെയ്യുക";
+"Retry" = "വീണ്ടും ശ്രമിക്കുക";
+"The arrows move in the direction the wind travels. The direction label shows where the wind comes from." = "വരകൾ കാറ്റ് വീശുന്ന ദിശയിൽ നീങ്ങുന്നു. ദിശാ സൂചകം കാറ്റ് എവിടെനിന്ന് വരുന്നു എന്ന് കാണിക്കുന്നു.";
+"The map is available. Try loading the wind forecast again." = "മാപ്പ് ലഭ്യമാണ്. കാറ്റിന്റെ പ്രവചനം വീണ്ടും ലോഡ് ചെയ്യാൻ ശ്രമിക്കുക.";
+"Weather data provided by Apple has been modified to estimate the regional wind field." = "പ്രാദേശിക കാറ്റിന്റെ വിതരണം കണക്കാക്കാൻ Apple കാലാവസ്ഥാ വിവരങ്ങൾ സംസ്കരിച്ചിട്ടുണ്ട്.";
+"Wind" = "കാറ്റും";
+"Wind Map" = "കാറ്റിന്റെ മാപ്പ്";
+"Wind Speed" = "കാറ്റിന്റെ വേഗം";
+"Wind between forecast locations is estimated. Local conditions can differ, especially near mountains and coasts." = "പ്രവചന സ്ഥലങ്ങൾക്കിടയിലെ കാറ്റ് ഏകദേശമാണ്. പ്രത്യേകിച്ച് മലകൾക്കും തീരങ്ങൾക്കും സമീപം പ്രാദേശിക സാഹചര്യങ്ങൾ വ്യത്യാസപ്പെടാം.";
+"Wind data unavailable" = "കാറ്റിന്റെ വിവരങ്ങൾ ലഭ്യമല്ല";
+"Your Locations" = "നിങ്ങളുടെ സ്ഥലങ്ങൾ";
+
+/* Additional weather map layers. */
+"Map Data" = "മാപ്പ് ഡാറ്റ";
+"Weather data provided by Apple has been modified to create forecast maps." = "പ്രവചന മാപ്പുകൾ സൃഷ്ടിക്കാൻ Apple നൽകിയ കാലാവസ്ഥാ ഡാറ്റ പരിഷ്കരിച്ചിട്ടുണ്ട്.";

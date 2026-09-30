@@ -1,0 +1,33 @@
+/* Wind map interface. */
+"About this map" = "Informazioni sulla mappa";
+"Center on location" = "Centra sulla posizione";
+"Choose a location to see the wind map" = "Scegli un luogo per vedere la mappa del vento";
+"Close" = "Chiudi";
+"Data sources" = "Fonti dei dati";
+"Done" = "Fatto";
+"Estimated wind" = "Vento stimato";
+"Forecast time" = "Ora della previsione";
+"Load this area" = "Carica questa zona";
+"Loading wind forecast…" = "Caricamento delle previsioni del vento…";
+"Map layers" = "Livelli della mappa";
+"Map location" = "Posizione";
+"Move the time slider to explore the hourly forecast. Outside the colored area, load another region to see its wind." = "Sposta il cursore del tempo per vedere le previsioni orarie. Fuori dall’area colorata, carica un’altra regione per visualizzarne il vento.";
+"My Location" = "Posizione attuale";
+"Now" = "Ora";
+"Open wind map" = "Apri la mappa del vento";
+"Pause" = "Pausa";
+"Play" = "Riproduci";
+"Retry" = "Riprova";
+"The arrows move in the direction the wind travels. The direction label shows where the wind comes from." = "Le linee si muovono nella direzione del vento. L’indicazione della direzione mostra da dove proviene il vento.";
+"The map is available. Try loading the wind forecast again." = "La mappa è disponibile. Prova a caricare nuovamente le previsioni del vento.";
+"Weather data provided by Apple has been modified to estimate the regional wind field." = "I dati meteo di Apple sono stati elaborati per stimare il campo di vento regionale.";
+"Wind" = "Vento";
+"Wind Map" = "Mappa del vento";
+"Wind Speed" = "Velocità del vento";
+"Wind between forecast locations is estimated. Local conditions can differ, especially near mountains and coasts." = "Il vento tra i punti di previsione è stimato. Le condizioni locali possono variare, soprattutto vicino a montagne e coste.";
+"Wind data unavailable" = "Dati del vento non disponibili";
+"Your Locations" = "I tuoi luoghi";
+
+/* Additional weather map layers. */
+"Map Data" = "Dati della mappa";
+"Weather data provided by Apple has been modified to create forecast maps." = "I dati meteorologici di Apple sono stati elaborati per creare mappe delle previsioni.";

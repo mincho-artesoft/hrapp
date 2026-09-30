@@ -1,0 +1,33 @@
+/* Wind map interface. */
+"About this map" = "Über diese Karte";
+"Center on location" = "Auf Standort zentrieren";
+"Choose a location to see the wind map" = "Wähle einen Ort, um die Windkarte anzuzeigen";
+"Close" = "Schließen";
+"Data sources" = "Datenquellen";
+"Done" = "Fertig";
+"Estimated wind" = "Geschätzter Wind";
+"Forecast time" = "Vorhersagezeit";
+"Load this area" = "Dieses Gebiet laden";
+"Loading wind forecast…" = "Windvorhersage wird geladen…";
+"Map layers" = "Kartenebenen";
+"Map location" = "Ort";
+"Move the time slider to explore the hourly forecast. Outside the colored area, load another region to see its wind." = "Bewege den Zeitregler, um die stündliche Vorhersage zu sehen. Lade außerhalb des farbigen Bereichs eine andere Region, um dort den Wind anzuzeigen.";
+"My Location" = "Aktueller Standort";
+"Now" = "Jetzt";
+"Open wind map" = "Windkarte öffnen";
+"Pause" = "Pause";
+"Play" = "Abspielen";
+"Retry" = "Erneut versuchen";
+"The arrows move in the direction the wind travels. The direction label shows where the wind comes from." = "Die Linien bewegen sich in Windrichtung. Die Richtungsangabe zeigt, woher der Wind kommt.";
+"The map is available. Try loading the wind forecast again." = "Die Karte ist verfügbar. Versuche erneut, die Windvorhersage zu laden.";
+"Weather data provided by Apple has been modified to estimate the regional wind field." = "Wetterdaten von Apple wurden bearbeitet, um das regionale Windfeld zu schätzen.";
+"Wind" = "Wind";
+"Wind Map" = "Windkarte";
+"Wind Speed" = "Windgeschwindigkeit";
+"Wind between forecast locations is estimated. Local conditions can differ, especially near mountains and coasts." = "Der Wind zwischen den Vorhersagepunkten wird geschätzt. Örtliche Bedingungen können abweichen, besonders in der Nähe von Bergen und Küsten.";
+"Wind data unavailable" = "Winddaten nicht verfügbar";
+"Your Locations" = "Deine Orte";
+
+/* Additional weather map layers. */
+"Map Data" = "Kartendaten";
+"Weather data provided by Apple has been modified to create forecast maps." = "Die Wetterdaten von Apple wurden zur Erstellung von Vorhersagekarten bearbeitet.";

@@ -1,0 +1,33 @@
+/* Wind map interface. */
+"About this map" = "Σχετικά με αυτόν τον χάρτη";
+"Center on location" = "Κεντράρισμα στην τοποθεσία";
+"Choose a location to see the wind map" = "Επιλέξτε τοποθεσία για να δείτε τον χάρτη ανέμου";
+"Close" = "Κλείσιμο";
+"Data sources" = "Πηγές δεδομένων";
+"Done" = "Έγινε";
+"Estimated wind" = "Εκτιμώμενος άνεμος";
+"Forecast time" = "Ώρα πρόγνωσης";
+"Load this area" = "Φόρτωση αυτής της περιοχής";
+"Loading wind forecast…" = "Φόρτωση πρόγνωσης ανέμου…";
+"Map layers" = "Επίπεδα χάρτη";
+"Map location" = "Τοποθεσία";
+"Move the time slider to explore the hourly forecast. Outside the colored area, load another region to see its wind." = "Μετακινήστε τον δείκτη χρόνου για την ωριαία πρόγνωση. Έξω από τη χρωματισμένη περιοχή, φορτώστε άλλη περιοχή για να δείτε τον άνεμο εκεί.";
+"My Location" = "Τρέχουσα τοποθεσία";
+"Now" = "Τώρα";
+"Open wind map" = "Άνοιγμα χάρτη ανέμου";
+"Pause" = "Παύση";
+"Play" = "Αναπαραγωγή";
+"Retry" = "Δοκιμάστε ξανά";
+"The arrows move in the direction the wind travels. The direction label shows where the wind comes from." = "Οι γραμμές κινούνται προς την κατεύθυνση του ανέμου. Η ένδειξη κατεύθυνσης δείχνει από πού έρχεται ο άνεμος.";
+"The map is available. Try loading the wind forecast again." = "Ο χάρτης είναι διαθέσιμος. Δοκιμάστε να φορτώσετε ξανά την πρόγνωση ανέμου.";
+"Weather data provided by Apple has been modified to estimate the regional wind field." = "Τα μετεωρολογικά δεδομένα της Apple έχουν υποστεί επεξεργασία για την εκτίμηση του πεδίου ανέμου της περιοχής.";
+"Wind" = "Άνεμος";
+"Wind Map" = "Χάρτης ανέμου";
+"Wind Speed" = "Ταχύτητα ανέμου";
+"Wind between forecast locations is estimated. Local conditions can differ, especially near mountains and coasts." = "Ο άνεμος μεταξύ των σημείων πρόγνωσης εκτιμάται. Οι τοπικές συνθήκες μπορεί να διαφέρουν, ιδιαίτερα κοντά σε βουνά και ακτές.";
+"Wind data unavailable" = "Μη διαθέσιμα δεδομένα ανέμου";
+"Your Locations" = "Οι τοποθεσίες σας";
+
+/* Additional weather map layers. */
+"Map Data" = "Δεδομένα χάρτη";
+"Weather data provided by Apple has been modified to create forecast maps." = "Τα μετεωρολογικά δεδομένα της Apple έχουν τροποποιηθεί για τη δημιουργία χαρτών πρόγνωσης.";

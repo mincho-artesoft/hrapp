@@ -47,7 +47,7 @@ struct CalendarScreenHeader: View {
                     Spacer(minLength: 0)
                 }
                 Button(action: onSearch) { icon("magnifyingglass") }
-                    .accessibilityLabel(Text("Search events..."))
+                    .accessibilityLabel(currentView == 6 ? Text("Search for a city…") : Text("Search events..."))
                     .accessibilityIdentifier("calendar-header-search")
                 Menu {
                     Picker("", selection: Binding(get: { currentView }, set: onViewChange)) {

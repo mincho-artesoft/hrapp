@@ -1,0 +1,33 @@
+/* Wind map interface. */
+"About this map" = "Об этой карте";
+"Center on location" = "Центрировать по местоположению";
+"Choose a location to see the wind map" = "Выберите место, чтобы увидеть карту ветра";
+"Close" = "Закрыть";
+"Data sources" = "Источники данных";
+"Done" = "Готово";
+"Estimated wind" = "Расчётный ветер";
+"Forecast time" = "Время прогноза";
+"Load this area" = "Загрузить эту область";
+"Loading wind forecast…" = "Загрузка прогноза ветра…";
+"Map layers" = "Слои карты";
+"Map location" = "Место";
+"Move the time slider to explore the hourly forecast. Outside the colored area, load another region to see its wind." = "Перемещайте ползунок времени для просмотра почасового прогноза. За пределами цветной области загрузите другой регион, чтобы увидеть ветер.";
+"My Location" = "Текущее местоположение";
+"Now" = "Сейчас";
+"Open wind map" = "Открыть карту ветра";
+"Pause" = "Пауза";
+"Play" = "Воспроизвести";
+"Retry" = "Повторить";
+"The arrows move in the direction the wind travels. The direction label shows where the wind comes from." = "Линии движутся по направлению ветра. Обозначение направления показывает, откуда дует ветер.";
+"The map is available. Try loading the wind forecast again." = "Карта доступна. Попробуйте снова загрузить прогноз ветра.";
+"Weather data provided by Apple has been modified to estimate the regional wind field." = "Метеоданные Apple обработаны для расчёта регионального поля ветра.";
+"Wind" = "Ветер";
+"Wind Map" = "Карта ветра";
+"Wind Speed" = "Скорость ветра";
+"Wind between forecast locations is estimated. Local conditions can differ, especially near mountains and coasts." = "Ветер между точками прогноза рассчитан приблизительно. Местные условия могут отличаться, особенно вблизи гор и побережий.";
+"Wind data unavailable" = "Данные о ветре недоступны";
+"Your Locations" = "Ваши места";
+
+/* Additional weather map layers. */
+"Map Data" = "Данные карты";
+"Weather data provided by Apple has been modified to create forecast maps." = "Метеоданные Apple обработаны для создания карт прогноза.";

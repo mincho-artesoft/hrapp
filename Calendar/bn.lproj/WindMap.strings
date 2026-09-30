@@ -1,0 +1,33 @@
+/* Wind map interface. */
+"About this map" = "এই মানচিত্র সম্পর্কে";
+"Center on location" = "অবস্থানকে কেন্দ্রে আনুন";
+"Choose a location to see the wind map" = "বাতাসের মানচিত্র দেখতে একটি স্থান বেছে নিন";
+"Close" = "বন্ধ";
+"Data sources" = "তথ্যের উৎস";
+"Done" = "সম্পন্ন";
+"Estimated wind" = "আনুমানিক বাতাস";
+"Forecast time" = "পূর্বাভাসের সময়";
+"Load this area" = "এই অঞ্চল লোড করুন";
+"Loading wind forecast…" = "বাতাসের পূর্বাভাস লোড হচ্ছে…";
+"Map layers" = "মানচিত্রের স্তর";
+"Map location" = "লোকেশন";
+"Move the time slider to explore the hourly forecast. Outside the colored area, load another region to see its wind." = "প্রতি ঘণ্টার পূর্বাভাস দেখতে সময়ের স্লাইডার সরান। রঙিন এলাকার বাইরের বাতাস দেখতে অন্য অঞ্চল লোড করুন।";
+"My Location" = "বর্তমান অবস্থান";
+"Now" = "এখন";
+"Open wind map" = "বাতাসের মানচিত্র খুলুন";
+"Pause" = "বিরতি";
+"Play" = "চালান";
+"Retry" = "আবার চেষ্টা করুন";
+"The arrows move in the direction the wind travels. The direction label shows where the wind comes from." = "রেখাগুলি বাতাসের প্রবাহের দিকে চলে। দিকের লেবেল দেখায় বাতাস কোথা থেকে আসছে।";
+"The map is available. Try loading the wind forecast again." = "মানচিত্র উপলব্ধ। বাতাসের পূর্বাভাস আবার লোড করার চেষ্টা করুন।";
+"Weather data provided by Apple has been modified to estimate the regional wind field." = "আঞ্চলিক বাতাসের ক্ষেত্র অনুমান করতে Apple-এর আবহাওয়ার তথ্য প্রক্রিয়া করা হয়েছে।";
+"Wind" = "বাতাস";
+"Wind Map" = "বাতাসের মানচিত্র";
+"Wind Speed" = "বাতাসের গতি";
+"Wind between forecast locations is estimated. Local conditions can differ, especially near mountains and coasts." = "পূর্বাভাসের স্থানগুলির মধ্যবর্তী বাতাস আনুমানিক। স্থানীয় পরিস্থিতি ভিন্ন হতে পারে, বিশেষত পাহাড় ও উপকূলের কাছে।";
+"Wind data unavailable" = "বাতাসের তথ্য উপলব্ধ নয়";
+"Your Locations" = "আপনার স্থানগুলি";
+
+/* Additional weather map layers. */
+"Map Data" = "মানচিত্রের তথ্য";
+"Weather data provided by Apple has been modified to create forecast maps." = "পূর্বাভাসের মানচিত্র তৈরি করতে Apple-এর আবহাওয়ার তথ্য প্রক্রিয়াকরণ করা হয়েছে।";

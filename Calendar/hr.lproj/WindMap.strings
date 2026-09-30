@@ -1,0 +1,33 @@
+/* Wind map interface. */
+"About this map" = "O ovoj karti";
+"Center on location" = "Centriraj na lokaciju";
+"Choose a location to see the wind map" = "Odaberite lokaciju za prikaz karte vjetra";
+"Close" = "-U blizini.";
+"Data sources" = "Izvori podataka";
+"Done" = "Završeno";
+"Estimated wind" = "Procijenjeni vjetar";
+"Forecast time" = "Vrijeme prognoze";
+"Load this area" = "Učitaj ovo područje";
+"Loading wind forecast…" = "Učitavanje prognoze vjetra…";
+"Map layers" = "Slojevi karte";
+"Map location" = "Lokacija";
+"Move the time slider to explore the hourly forecast. Outside the colored area, load another region to see its wind." = "Pomaknite vremenski klizač za satnu prognozu. Izvan obojenog područja učitajte drugu regiju za prikaz vjetra.";
+"My Location" = "Trenutno mjesto";
+"Now" = "Sada.";
+"Open wind map" = "Otvori kartu vjetra";
+"Pause" = "Pauziraj";
+"Play" = "Reproduciraj";
+"Retry" = "Pokušaj ponovno";
+"The arrows move in the direction the wind travels. The direction label shows where the wind comes from." = "Linije se kreću u smjeru puhanja vjetra. Oznaka smjera pokazuje odakle vjetar dolazi.";
+"The map is available. Try loading the wind forecast again." = "Karta je dostupna. Pokušajte ponovno učitati prognozu vjetra.";
+"Weather data provided by Apple has been modified to estimate the regional wind field." = "Vremenski podaci tvrtke Apple obrađeni su radi procjene regionalnog polja vjetra.";
+"Wind" = "Vjetar";
+"Wind Map" = "Karta vjetra";
+"Wind Speed" = "Brzina vjetra";
+"Wind between forecast locations is estimated. Local conditions can differ, especially near mountains and coasts." = "Vjetar između prognostičkih točaka je procijenjen. Lokalni uvjeti mogu se razlikovati, osobito uz planine i obale.";
+"Wind data unavailable" = "Podaci o vjetru nisu dostupni";
+"Your Locations" = "Vaše lokacije";
+
+/* Additional weather map layers. */
+"Map Data" = "Podaci karte";
+"Weather data provided by Apple has been modified to create forecast maps." = "Vremenski podaci tvrtke Apple obrađeni su za izradu prognostičkih karata.";

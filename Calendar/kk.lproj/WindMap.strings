@@ -1,0 +1,33 @@
+/* Wind map interface. */
+"About this map" = "Осы карта туралы";
+"Center on location" = "Орынға орталау";
+"Choose a location to see the wind map" = "Жел картасын көру үшін орынды таңдаңыз";
+"Close" = "Жабу";
+"Data sources" = "Дереккөздер";
+"Done" = "Дайын";
+"Estimated wind" = "Болжалды жел";
+"Forecast time" = "Болжам уақыты";
+"Load this area" = "Осы аймақты жүктеу";
+"Loading wind forecast…" = "Жел болжамы жүктелуде…";
+"Map layers" = "Карта қабаттары";
+"Map location" = "Орны";
+"Move the time slider to explore the hourly forecast. Outside the colored area, load another region to see its wind." = "Сағаттық болжамды көру үшін уақыт жүгірткісін жылжытыңыз. Боялған аумақтан тыс жердегі желді көру үшін басқа аймақты жүктеңіз.";
+"My Location" = "Ағымдағы орын";
+"Now" = "Қазір";
+"Open wind map" = "Жел картасын ашу";
+"Pause" = "Кідірту";
+"Play" = "Ойнату";
+"Retry" = "Қайталау";
+"The arrows move in the direction the wind travels. The direction label shows where the wind comes from." = "Сызықтар желдің қозғалу бағытымен жылжиды. Бағыт белгісі желдің қайдан соғатынын көрсетеді.";
+"The map is available. Try loading the wind forecast again." = "Карта қолжетімді. Жел болжамын қайта жүктеп көріңіз.";
+"Weather data provided by Apple has been modified to estimate the regional wind field." = "Аймақтағы жел өрісін бағалау үшін Apple ауа райы деректері өңделді.";
+"Wind" = "Жел";
+"Wind Map" = "Жел картасы";
+"Wind Speed" = "Жел жылдамдығы";
+"Wind between forecast locations is estimated. Local conditions can differ, especially near mountains and coasts." = "Болжам нүктелерінің арасындағы жел шамамен есептеледі. Жергілікті жағдайлар, әсіресе таулар мен жағалаулар маңында, өзгеше болуы мүмкін.";
+"Wind data unavailable" = "Жел деректері қолжетімсіз";
+"Your Locations" = "Орындарыңыз";
+
+/* Additional weather map layers. */
+"Map Data" = "Карта деректері";
+"Weather data provided by Apple has been modified to create forecast maps." = "Болжам карталарын жасау үшін Apple ұсынған ауа райы деректері өңделді.";

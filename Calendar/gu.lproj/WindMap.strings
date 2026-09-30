@@ -1,0 +1,33 @@
+/* Wind map interface. */
+"About this map" = "આ નકશા વિશે";
+"Center on location" = "સ્થાનને કેન્દ્રમાં લાવો";
+"Choose a location to see the wind map" = "પવનનો નકશો જોવા માટે સ્થાન પસંદ કરો";
+"Close" = "બંધ";
+"Data sources" = "ડેટાના સ્ત્રોત";
+"Done" = "પૂર્ણ";
+"Estimated wind" = "અંદાજિત પવન";
+"Forecast time" = "આગાહીનો સમય";
+"Load this area" = "આ વિસ્તાર લોડ કરો";
+"Loading wind forecast…" = "પવનની આગાહી લોડ થઈ રહી છે…";
+"Map layers" = "નકશાનાં સ્તરો";
+"Map location" = "લોકેશન";
+"Move the time slider to explore the hourly forecast. Outside the colored area, load another region to see its wind." = "કલાકવાર આગાહી જોવા માટે સમયનું સ્લાઇડર ખસેડો. રંગીન વિસ્તારની બહારનો પવન જોવા બીજો વિસ્તાર લોડ કરો.";
+"My Location" = "વર્તમાન સ્થાન";
+"Now" = "હવે";
+"Open wind map" = "પવનનો નકશો ખોલો";
+"Pause" = "થોભાવો";
+"Play" = "ચલાવો";
+"Retry" = "ફરી પ્રયાસ કરો";
+"The arrows move in the direction the wind travels. The direction label shows where the wind comes from." = "રેખાઓ પવન જે દિશામાં વહે છે તે દિશામાં આગળ વધે છે. દિશાનું લેબલ પવન ક્યાંથી આવે છે તે બતાવે છે.";
+"The map is available. Try loading the wind forecast again." = "નકશો ઉપલબ્ધ છે. પવનની આગાહી ફરી લોડ કરવાનો પ્રયાસ કરો.";
+"Weather data provided by Apple has been modified to estimate the regional wind field." = "પ્રાદેશિક પવન ક્ષેત્રનો અંદાજ કાઢવા Appleના હવામાન ડેટા પર પ્રક્રિયા કરવામાં આવી છે.";
+"Wind" = "પવન";
+"Wind Map" = "પવનનો નકશો";
+"Wind Speed" = "પવનની ઝડપ";
+"Wind between forecast locations is estimated. Local conditions can differ, especially near mountains and coasts." = "આગાહીના બિંદુઓ વચ્ચેનો પવન અંદાજિત છે. સ્થાનિક પરિસ્થિતિઓ અલગ હોઈ શકે છે, ખાસ કરીને પર્વતો અને કિનારા પાસે.";
+"Wind data unavailable" = "પવનનો ડેટા ઉપલબ્ધ નથી";
+"Your Locations" = "તમારાં સ્થાનો";
+
+/* Additional weather map layers. */
+"Map Data" = "નકશાનો ડેટા";
+"Weather data provided by Apple has been modified to create forecast maps." = "આગાહીના નકશા બનાવવા માટે Apple દ્વારા આપવામાં આવેલ હવામાનના ડેટામાં ફેરફાર કરવામાં આવ્યો છે.";

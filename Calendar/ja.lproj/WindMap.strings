@@ -1,0 +1,33 @@
+/* Wind map interface. */
+"About this map" = "このマップについて";
+"Center on location" = "現在地を中心に表示";
+"Choose a location to see the wind map" = "場所を選択すると風マップが表示されます";
+"Close" = "閉じる";
+"Data sources" = "データ提供元";
+"Done" = "完了";
+"Estimated wind" = "推定の風";
+"Forecast time" = "予報時刻";
+"Load this area" = "このエリアを読み込む";
+"Loading wind forecast…" = "風の予報を読み込み中…";
+"Map layers" = "マップのレイヤー";
+"Map location" = "場所";
+"Move the time slider to explore the hourly forecast. Outside the colored area, load another region to see its wind." = "時間スライダーを動かすと毎時の予報を確認できます。色の付いた範囲の外は、別の地域を読み込むと風が表示されます。";
+"My Location" = "現在地";
+"Now" = "現在";
+"Open wind map" = "風マップを開く";
+"Pause" = "一時停止";
+"Play" = "再生";
+"Retry" = "再試行";
+"The arrows move in the direction the wind travels. The direction label shows where the wind comes from." = "線は風が流れる方向に動きます。風向のラベルは風が吹いてくる方向を示します。";
+"The map is available. Try loading the wind forecast again." = "マップは利用可能です。風の予報をもう一度読み込んでください。";
+"Weather data provided by Apple has been modified to estimate the regional wind field." = "Appleの気象データを加工し、地域の風の分布を推定しています。";
+"Wind" = "風速";
+"Wind Map" = "風マップ";
+"Wind Speed" = "風速";
+"Wind between forecast locations is estimated. Local conditions can differ, especially near mountains and coasts." = "予報地点の間の風は推定値です。特に山や海岸の付近では、実際の状況が異なる場合があります。";
+"Wind data unavailable" = "風のデータを取得できません";
+"Your Locations" = "登録した場所";
+
+/* Additional weather map layers. */
+"Map Data" = "地図データ";
+"Weather data provided by Apple has been modified to create forecast maps." = "Appleの気象データを加工して予報マップを作成しています。";

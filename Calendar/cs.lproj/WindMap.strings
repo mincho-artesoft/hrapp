@@ -1,0 +1,33 @@
+/* Wind map interface. */
+"About this map" = "O této mapě";
+"Center on location" = "Vycentrovat na polohu";
+"Choose a location to see the wind map" = "Vyberte místo pro zobrazení mapy větru";
+"Close" = "Zavřít";
+"Data sources" = "Zdroje dat";
+"Done" = "Hotovo";
+"Estimated wind" = "Odhad větru";
+"Forecast time" = "Čas předpovědi";
+"Load this area" = "Načíst tuto oblast";
+"Loading wind forecast…" = "Načítání předpovědi větru…";
+"Map layers" = "Vrstvy mapy";
+"Map location" = "Místo";
+"Move the time slider to explore the hourly forecast. Outside the colored area, load another region to see its wind." = "Posunutím časového posuvníku zobrazíte hodinovou předpověď. Mimo barevnou oblast načtěte další region pro zobrazení větru.";
+"My Location" = "Aktuální poloha";
+"Now" = "Teď";
+"Open wind map" = "Otevřít mapu větru";
+"Pause" = "Pozastavit";
+"Play" = "Přehrát";
+"Retry" = "Zkusit znovu";
+"The arrows move in the direction the wind travels. The direction label shows where the wind comes from." = "Čáry se pohybují ve směru proudění větru. Označení směru ukazuje, odkud vítr vane.";
+"The map is available. Try loading the wind forecast again." = "Mapa je dostupná. Zkuste znovu načíst předpověď větru.";
+"Weather data provided by Apple has been modified to estimate the regional wind field." = "Meteorologická data společnosti Apple byla upravena pro odhad regionálního větrného pole.";
+"Wind" = "Vítr";
+"Wind Map" = "Mapa větru";
+"Wind Speed" = "Rychlost větru";
+"Wind between forecast locations is estimated. Local conditions can differ, especially near mountains and coasts." = "Vítr mezi body předpovědi je odhadován. Místní podmínky se mohou lišit, zejména poblíž hor a pobřeží.";
+"Wind data unavailable" = "Data o větru nejsou dostupná";
+"Your Locations" = "Vaše místa";
+
+/* Additional weather map layers. */
+"Map Data" = "Mapová data";
+"Weather data provided by Apple has been modified to create forecast maps." = "Meteorologická data od společnosti Apple byla upravena pro tvorbu předpovědních map.";

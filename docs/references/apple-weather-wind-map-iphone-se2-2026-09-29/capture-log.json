@@ -1,0 +1,142 @@
+[
+  {
+    "file": "00-initial-fullscreen.jpg",
+    "capturedAt": null,
+    "note": "Initial full-screen capture before the timestamped capture log was started."
+  },
+  {
+    "file": "01-inline-wind-map.jpg",
+    "capturedAt": "2026-09-29T14:27:31.309Z",
+    "note": "Wind Map card embedded in the Sofia forecast, before opening."
+  },
+  {
+    "file": "02-fullscreen-wind-map.jpg",
+    "capturedAt": "2026-09-29T14:27:36.548Z",
+    "note": "Full-screen Wind Speed map opened by tapping embedded Wind Map card."
+  },
+  {
+    "file": "03-map-layers-menu.jpg",
+    "capturedAt": "2026-09-29T14:27:40.992Z",
+    "note": "Layer menu opened from the upper-right stacked layers button."
+  },
+  {
+    "file": "04-layer-precipitation.jpg",
+    "capturedAt": "2026-09-29T14:27:54.869Z",
+    "note": "Precipitation layer selected from the Wind Map layer menu."
+  },
+  {
+    "file": "05-layer-temperature.jpg",
+    "capturedAt": "2026-09-29T14:28:11.917Z",
+    "note": "Temperature layer selected; wind timeline is replaced by temperature legend."
+  },
+  {
+    "file": "06-layer-air-quality.jpg",
+    "capturedAt": "2026-09-29T14:28:27.980Z",
+    "note": "Air Quality selected; Sofia shows Unavailable and a -- marker, with no timeline."
+  },
+  {
+    "file": "07-wind-close-scale.jpg",
+    "capturedAt": "2026-09-29T14:28:44.120Z",
+    "note": "Wind layer restored after Air Quality; closer geographic scale around Sofia is retained."
+  },
+  {
+    "file": "08-marker-tap-no-sheet.jpg",
+    "capturedAt": "2026-09-29T14:28:48.906Z",
+    "note": "Single tap on the wind-speed bubble did not open a secondary sheet or change the visible layout."
+  },
+  {
+    "file": "09-locations-list.jpg",
+    "capturedAt": "2026-09-29T14:29:04.425Z",
+    "note": "Location-list button on full-screen wind map."
+  },
+  {
+    "file": "10-selected-san-francisco.jpg",
+    "capturedAt": "2026-09-29T14:29:17.550Z",
+    "note": "Selecting San Francisco from Your Locations moves the wind map to that saved city."
+  },
+  {
+    "file": "11-timeline-playing.jpg",
+    "capturedAt": "2026-09-29T14:29:26.330Z",
+    "note": "Play pressed on Wind Speed timeline; pause icon is visible. The subtitle shows a date, not a precise forecast hour."
+  },
+  {
+    "file": "12-timeline-paused.jpg",
+    "capturedAt": "2026-09-29T14:29:32.187Z",
+    "note": "Pause pressed; icon returns to play. Date stays Tuesday, 29 September 2026 in this capture."
+  },
+  {
+    "file": "13-timeline-scrub-forward.jpg",
+    "capturedAt": "2026-09-29T14:29:37.327Z",
+    "note": "Dragged Wind Speed time track from current time towards the 03 tick."
+  },
+  {
+    "file": "14-timeline-start.jpg",
+    "capturedAt": "2026-09-29T14:29:56.823Z",
+    "note": "Tapped near left end of Wind Speed time track."
+  },
+  {
+    "file": "15-location-recenter.jpg",
+    "capturedAt": "2026-09-29T14:30:02.333Z",
+    "note": "Tapped location arrow while map was at San Francisco; map returned to My Location around Sofia."
+  },
+  {
+    "file": "16-scroll-input-no-pan.jpg",
+    "capturedAt": "2026-09-29T14:30:11.642Z",
+    "note": "A vertical scroll input did not visibly move the map through iPhone Mirroring; see subsequent drag-pan capture."
+  },
+  {
+    "file": "17-map-double-tap-zoom.jpg",
+    "capturedAt": "2026-09-29T14:30:20.618Z",
+    "note": "Double-tapped near Bulgaria to test map zoom."
+  },
+  {
+    "file": "18-map-drag-pan.jpg",
+    "capturedAt": "2026-09-29T14:31:23.368Z",
+    "note": "Dragged the map canvas diagonally; geographic content moves while overlays remain fixed."
+  },
+  {
+    "file": "19-map-data-tap-no-page.jpg",
+    "capturedAt": "2026-09-29T14:31:36.617Z",
+    "note": "First tap on the Map Data label did not produce a visible change."
+  },
+  {
+    "file": "20-timeline-hidden-after-label-taps.jpg",
+    "capturedAt": "2026-09-29T14:32:01.011Z",
+    "note": "After repeated taps around Map Data, the bottom timeline became hidden; no attribution page appeared. Trigger is not isolated."
+  },
+  {
+    "file": "21-map-tap-timeline-hidden.jpg",
+    "capturedAt": "2026-09-29T14:32:37.369Z",
+    "note": "Single tap on an empty map area hid the bottom Wind Speed panel and collapsed the large wind bubble to a small value marker. Top controls and legend remained visible."
+  },
+  {
+    "file": "22-map-tap-timeline-restored.jpg",
+    "capturedAt": "2026-09-29T14:32:49.541Z",
+    "note": "Second single tap on the same empty map area restored the Wind Speed timeline. The location marker remained compact."
+  },
+  {
+    "file": "23-inline-after-close.jpg",
+    "capturedAt": "2026-09-29T14:33:37.436Z",
+    "note": "Close X returns to the forecast with the embedded Wind Map visible; the card is partly clipped beneath the sticky weather header at this scroll offset."
+  },
+  {
+    "file": "24-inline-scroll-clipping.jpg",
+    "capturedAt": "2026-09-29T14:33:59.927Z",
+    "note": "Scrolling forecast upwards through content clips the Wind Map card beneath the sticky Sofia header; separate numeric Wind card is visible below."
+  },
+  {
+    "file": "25-inline-complete-card.jpg",
+    "capturedAt": "2026-09-29T14:34:27.853Z",
+    "note": "Wind Map card fully visible after scrolling back up, with current wind marker 11 km/h."
+  },
+  {
+    "file": "26-inline-clean.jpg",
+    "capturedAt": "2026-09-29T14:34:56.566Z",
+    "note": "Final unobstructed embedded Wind Map card."
+  },
+  {
+    "file": "27-fullscreen-clean.jpg",
+    "capturedAt": "2026-09-29T14:35:08.218Z",
+    "note": "Final full-screen Wind Map at My Location with timeline visible and playback paused."
+  }
+]

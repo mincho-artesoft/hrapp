@@ -1,0 +1,33 @@
+/* Wind map interface. */
+"About this map" = "À propos de cette carte";
+"Center on location" = "Centrer sur la position";
+"Choose a location to see the wind map" = "Choisissez un lieu pour afficher la carte du vent";
+"Close" = "Fermer";
+"Data sources" = "Sources des données";
+"Done" = "Terminé";
+"Estimated wind" = "Vent estimé";
+"Forecast time" = "Heure de prévision";
+"Load this area" = "Charger cette zone";
+"Loading wind forecast…" = "Chargement des prévisions de vent…";
+"Map layers" = "Couches de la carte";
+"Map location" = "Lieu";
+"Move the time slider to explore the hourly forecast. Outside the colored area, load another region to see its wind." = "Déplacez le curseur temporel pour voir les prévisions horaires. Hors de la zone colorée, chargez une autre région pour y voir le vent.";
+"My Location" = "Position actuelle";
+"Now" = "Maintenant";
+"Open wind map" = "Ouvrir la carte du vent";
+"Pause" = "Pause";
+"Play" = "Lire";
+"Retry" = "Réessayer";
+"The arrows move in the direction the wind travels. The direction label shows where the wind comes from." = "Les lignes se déplacent dans le sens du vent. L’indication de direction montre d’où vient le vent.";
+"The map is available. Try loading the wind forecast again." = "La carte est disponible. Réessayez de charger les prévisions de vent.";
+"Weather data provided by Apple has been modified to estimate the regional wind field." = "Les données météo d’Apple ont été modifiées pour estimer le champ de vent régional.";
+"Wind" = "Vent";
+"Wind Map" = "Carte du vent";
+"Wind Speed" = "Vitesse du vent";
+"Wind between forecast locations is estimated. Local conditions can differ, especially near mountains and coasts." = "Le vent entre les points de prévision est estimé. Les conditions locales peuvent varier, surtout près des montagnes et des côtes.";
+"Wind data unavailable" = "Données de vent indisponibles";
+"Your Locations" = "Vos lieux";
+
+/* Additional weather map layers. */
+"Map Data" = "Données de la carte";
+"Weather data provided by Apple has been modified to create forecast maps." = "Les données météorologiques d’Apple ont été modifiées pour créer des cartes de prévisions.";

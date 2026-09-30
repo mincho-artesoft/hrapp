@@ -1,0 +1,33 @@
+/* Wind map interface. */
+"About this map" = "על המפה הזו";
+"Center on location" = "מרכוז לפי המיקום";
+"Choose a location to see the wind map" = "יש לבחור מיקום כדי לראות את מפת הרוח";
+"Close" = "סגור";
+"Data sources" = "מקורות נתונים";
+"Done" = "בוצע";
+"Estimated wind" = "רוח משוערת";
+"Forecast time" = "שעת התחזית";
+"Load this area" = "טעינת האזור הזה";
+"Loading wind forecast…" = "טוען תחזית רוח…";
+"Map layers" = "שכבות מפה";
+"Map location" = "מיקום";
+"Move the time slider to explore the hourly forecast. Outside the colored area, load another region to see its wind." = "יש להזיז את מחוון הזמן להצגת התחזית השעתית. מחוץ לאזור הצבוע, יש לטעון אזור אחר כדי לראות את הרוח בו.";
+"My Location" = "המיקום הנוכחי";
+"Now" = "עכשיו";
+"Open wind map" = "פתיחת מפת הרוח";
+"Pause" = "השהיה";
+"Play" = "הפעלה";
+"Retry" = "ניסיון נוסף";
+"The arrows move in the direction the wind travels. The direction label shows where the wind comes from." = "הקווים נעים בכיוון תנועת הרוח. תווית הכיוון מציינת מהיכן הרוח מגיעה.";
+"The map is available. Try loading the wind forecast again." = "המפה זמינה. יש לנסות לטעון שוב את תחזית הרוח.";
+"Weather data provided by Apple has been modified to estimate the regional wind field." = "נתוני מזג האוויר של Apple עובדו לצורך הערכת שדה הרוח האזורי.";
+"Wind" = "רוח";
+"Wind Map" = "מפת הרוח";
+"Wind Speed" = "מהירות הרוח";
+"Wind between forecast locations is estimated. Local conditions can differ, especially near mountains and coasts." = "הרוח בין נקודות התחזית היא משוערת. התנאים המקומיים עשויים להיות שונים, במיוחד ליד הרים וחופים.";
+"Wind data unavailable" = "נתוני הרוח אינם זמינים";
+"Your Locations" = "המיקומים שלך";
+
+/* Additional weather map layers. */
+"Map Data" = "נתוני המפה";
+"Weather data provided by Apple has been modified to create forecast maps." = "נתוני מזג האוויר שסופקו על ידי Apple עובדו ליצירת מפות תחזית.";

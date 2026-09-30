@@ -1,0 +1,33 @@
+/* Wind map interface. */
+"About this map" = "ଏହି ମାନଚିତ୍ର ବିଷୟରେ";
+"Center on location" = "ଅବସ୍ଥାନକୁ କେନ୍ଦ୍ରରେ ରଖନ୍ତୁ";
+"Choose a location to see the wind map" = "ପବନ ମାନଚିତ୍ର ଦେଖିବାକୁ ଏକ ସ୍ଥାନ ବାଛନ୍ତୁ";
+"Close" = "ପାଖାପାଖି";
+"Data sources" = "ତଥ୍ୟ ଉତ୍ସ";
+"Done" = "ସମାପ୍ତ";
+"Estimated wind" = "ଆନୁମାନିକ ପବନ";
+"Forecast time" = "ପୂର୍ବାନୁମାନ ସମୟ";
+"Load this area" = "ଏହି ଅଞ୍ଚଳ ଲୋଡ୍ କରନ୍ତୁ";
+"Loading wind forecast…" = "ପବନ ପୂର୍ବାନୁମାନ ଲୋଡ୍ ହେଉଛି…";
+"Map layers" = "ମାନଚିତ୍ର ସ୍ତର";
+"Map location" = "ଲୋକେଶନ୍‌";
+"Move the time slider to explore the hourly forecast. Outside the colored area, load another region to see its wind." = "ଘଣ୍ଟା ଅନୁଯାୟୀ ପୂର୍ବାନୁମାନ ଦେଖିବାକୁ ସମୟ ସ୍ଲାଇଡର୍ ଘୁଞ୍ଚାନ୍ତୁ। ରଙ୍ଗୀନ ଅଞ୍ଚଳ ବାହାରର ପବନ ଦେଖିବାକୁ ଅନ୍ୟ ଅଞ୍ଚଳ ଲୋଡ୍ କରନ୍ତୁ।";
+"My Location" = "ବର୍ତ୍ତମାନର ଅବସ୍ଥିତି";
+"Now" = "ଏବେ";
+"Open wind map" = "ପବନ ମାନଚିତ୍ର ଖୋଲନ୍ତୁ";
+"Pause" = "ବିରତି";
+"Play" = "ଚଲାନ୍ତୁ";
+"Retry" = "ପୁଣି ଚେଷ୍ଟା କରନ୍ତୁ";
+"The arrows move in the direction the wind travels. The direction label shows where the wind comes from." = "ରେଖାଗୁଡ଼ିକ ପବନ ବହୁଥିବା ଦିଗରେ ଚାଲେ। ଦିଗର ଲେବଲ୍ ପବନ କେଉଁଠାରୁ ଆସୁଛି ଦେଖାଏ।";
+"The map is available. Try loading the wind forecast again." = "ମାନଚିତ୍ର ଉପଲବ୍ଧ। ପବନ ପୂର୍ବାନୁମାନ ପୁଣି ଲୋଡ୍ କରିବାକୁ ଚେଷ୍ଟା କରନ୍ତୁ।";
+"Weather data provided by Apple has been modified to estimate the regional wind field." = "ଆଞ୍ଚଳିକ ପବନ କ୍ଷେତ୍ର ଆକଳନ ପାଇଁ Apple ପାଣିପାଗ ତଥ୍ୟ ପ୍ରକ୍ରିୟାକରଣ କରାଯାଇଛି।";
+"Wind" = "ପବନ";
+"Wind Map" = "ପବନ ମାନଚିତ୍ର";
+"Wind Speed" = "ପବନର ବେଗ";
+"Wind between forecast locations is estimated. Local conditions can differ, especially near mountains and coasts." = "ପୂର୍ବାନୁମାନ ସ୍ଥାନଗୁଡ଼ିକ ମଧ୍ୟର ପବନ ଆନୁମାନିକ। ସ୍ଥାନୀୟ ପରିସ୍ଥିତି ଭିନ୍ନ ହୋଇପାରେ, ବିଶେଷତଃ ପର୍ବତ ଓ ଉପକୂଳ ପାଖରେ।";
+"Wind data unavailable" = "ପବନ ତଥ୍ୟ ଉପଲବ୍ଧ ନାହିଁ";
+"Your Locations" = "ଆପଣଙ୍କ ସ୍ଥାନଗୁଡ଼ିକ";
+
+/* Additional weather map layers. */
+"Map Data" = "ମାନଚିତ୍ର ତଥ୍ୟ";
+"Weather data provided by Apple has been modified to create forecast maps." = "ପୂର୍ବାନୁମାନ ମାନଚିତ୍ର ତିଆରି କରିବା ପାଇଁ Apple ପ୍ରଦତ୍ତ ପାଣିପାଗ ତଥ୍ୟ ପ୍ରକ୍ରିୟାକରଣ କରାଯାଇଛି।";

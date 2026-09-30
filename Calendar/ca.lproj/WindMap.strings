@@ -1,0 +1,33 @@
+/* Wind map interface. */
+"About this map" = "Sobre aquest mapa";
+"Center on location" = "Centra a la ubicació";
+"Choose a location to see the wind map" = "Tria una ubicació per veure el mapa del vent";
+"Close" = "Près";
+"Data sources" = "Fonts de dades";
+"Done" = "Fet";
+"Estimated wind" = "Vent estimat";
+"Forecast time" = "Hora de la previsió";
+"Load this area" = "Carrega aquesta zona";
+"Loading wind forecast…" = "S'està carregant la previsió del vent…";
+"Map layers" = "Capes del mapa";
+"Map location" = "Ubicació";
+"Move the time slider to explore the hourly forecast. Outside the colored area, load another region to see its wind." = "Mou el control de temps per veure la previsió horària. Fora de la zona acolorida, carrega una altra regió per veure'n el vent.";
+"My Location" = "L'ubicació actual";
+"Now" = "Ara, ara.";
+"Open wind map" = "Obre el mapa del vent";
+"Pause" = "Pausa";
+"Play" = "Reprodueix";
+"Retry" = "Torna-ho a provar";
+"The arrows move in the direction the wind travels. The direction label shows where the wind comes from." = "Les línies es mouen en la direcció del vent. L'etiqueta indica d'on ve el vent.";
+"The map is available. Try loading the wind forecast again." = "El mapa està disponible. Torna a provar de carregar la previsió del vent.";
+"Weather data provided by Apple has been modified to estimate the regional wind field." = "Les dades meteorològiques d'Apple s'han modificat per estimar el vent de la regió.";
+"Wind" = "Vint";
+"Wind Map" = "Mapa del vent";
+"Wind Speed" = "Velocitat del vent";
+"Wind between forecast locations is estimated. Local conditions can differ, especially near mountains and coasts." = "El vent entre els punts de previsió és estimat. Les condicions locals poden variar, sobretot prop de muntanyes i costes.";
+"Wind data unavailable" = "Dades del vent no disponibles";
+"Your Locations" = "Les teves ubicacions";
+
+/* Additional weather map layers. */
+"Map Data" = "Dades del mapa";
+"Weather data provided by Apple has been modified to create forecast maps." = "Les dades meteorològiques d’Apple s’han modificat per crear mapes de previsió.";

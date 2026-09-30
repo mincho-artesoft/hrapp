@@ -1,0 +1,33 @@
+/* Wind map interface. */
+"About this map" = "Bu harita hakkında";
+"Center on location" = "Konuma ortala";
+"Choose a location to see the wind map" = "Rüzgâr haritasını görmek için bir konum seçin";
+"Close" = "Kapat";
+"Data sources" = "Veri kaynakları";
+"Done" = "Bitti";
+"Estimated wind" = "Tahmini rüzgâr";
+"Forecast time" = "Tahmin zamanı";
+"Load this area" = "Bu bölgeyi yükle";
+"Loading wind forecast…" = "Rüzgâr tahmini yükleniyor…";
+"Map layers" = "Harita katmanları";
+"Map location" = "Konum";
+"Move the time slider to explore the hourly forecast. Outside the colored area, load another region to see its wind." = "Saatlik tahmini görmek için zaman sürgüsünü kaydırın. Renkli alanın dışında rüzgârı görmek için başka bir bölge yükleyin.";
+"My Location" = "Mevcut konum";
+"Now" = "Şimdi";
+"Open wind map" = "Rüzgâr haritasını aç";
+"Pause" = "Duraklat";
+"Play" = "Oynat";
+"Retry" = "Yeniden dene";
+"The arrows move in the direction the wind travels. The direction label shows where the wind comes from." = "Çizgiler rüzgârın ilerlediği yönde hareket eder. Yön etiketi rüzgârın nereden geldiğini gösterir.";
+"The map is available. Try loading the wind forecast again." = "Harita kullanılabilir. Rüzgâr tahminini yeniden yüklemeyi deneyin.";
+"Weather data provided by Apple has been modified to estimate the regional wind field." = "Apple hava durumu verileri, bölgesel rüzgâr alanını tahmin etmek için işlenmiştir.";
+"Wind" = "Rüzgar";
+"Wind Map" = "Rüzgâr Haritası";
+"Wind Speed" = "Rüzgâr Hızı";
+"Wind between forecast locations is estimated. Local conditions can differ, especially near mountains and coasts." = "Tahmin noktaları arasındaki rüzgâr yaklaşık olarak hesaplanır. Yerel koşullar özellikle dağların ve kıyıların yakınında farklı olabilir.";
+"Wind data unavailable" = "Rüzgâr verileri kullanılamıyor";
+"Your Locations" = "Konumlarınız";
+
+/* Additional weather map layers. */
+"Map Data" = "Harita Verileri";
+"Weather data provided by Apple has been modified to create forecast maps." = "Tahmin haritaları oluşturmak için Apple tarafından sağlanan hava durumu verileri işlenmiştir.";

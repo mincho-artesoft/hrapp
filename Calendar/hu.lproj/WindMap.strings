@@ -1,0 +1,33 @@
+/* Wind map interface. */
+"About this map" = "A térképről";
+"Center on location" = "Középre igazítás a helyhez";
+"Choose a location to see the wind map" = "Válasszon helyet a széltérkép megtekintéséhez";
+"Close" = "Bezárás";
+"Data sources" = "Adatforrások";
+"Done" = "Kész";
+"Estimated wind" = "Becsült szél";
+"Forecast time" = "Előrejelzés időpontja";
+"Load this area" = "Terület betöltése";
+"Loading wind forecast…" = "Szélelőrejelzés betöltése…";
+"Map layers" = "Térképrétegek";
+"Map location" = "Hely";
+"Move the time slider to explore the hourly forecast. Outside the colored area, load another region to see its wind." = "Az óránkénti előrejelzéshez mozgassa az időcsúszkát. A színezett területen kívül töltsön be másik régiót a szél megtekintéséhez.";
+"My Location" = "Jelenlegi helyzet";
+"Now" = "Most";
+"Open wind map" = "Széltérkép megnyitása";
+"Pause" = "Szünet";
+"Play" = "Lejátszás";
+"Retry" = "Újrapróbálkozás";
+"The arrows move in the direction the wind travels. The direction label shows where the wind comes from." = "A vonalak a szél haladási irányában mozognak. Az irányjelzés azt mutatja, honnan fúj a szél.";
+"The map is available. Try loading the wind forecast again." = "A térkép elérhető. Próbálja újra betölteni a szélelőrejelzést.";
+"Weather data provided by Apple has been modified to estimate the regional wind field." = "Az Apple időjárási adatait a regionális szélmező becsléséhez feldolgoztuk.";
+"Wind" = "Szél";
+"Wind Map" = "Széltérkép";
+"Wind Speed" = "Szélsebesség";
+"Wind between forecast locations is estimated. Local conditions can differ, especially near mountains and coasts." = "Az előrejelzési pontok közötti szél becsült érték. A helyi viszonyok eltérhetnek, különösen hegyek és partok közelében.";
+"Wind data unavailable" = "A széladatok nem érhetők el";
+"Your Locations" = "Saját helyek";
+
+/* Additional weather map layers. */
+"Map Data" = "Térképadatok";
+"Weather data provided by Apple has been modified to create forecast maps." = "Az Apple időjárási adatait az előrejelzési térképek elkészítéséhez módosítottuk.";

@@ -1,0 +1,33 @@
+/* Wind map interface. */
+"About this map" = "Over deze kaart";
+"Center on location" = "Centreer op locatie";
+"Choose a location to see the wind map" = "Kies een locatie om de windkaart te bekijken";
+"Close" = "Sluiten";
+"Data sources" = "Gegevensbronnen";
+"Done" = "Klaar";
+"Estimated wind" = "Geschatte wind";
+"Forecast time" = "Verwachtingstijd";
+"Load this area" = "Laad dit gebied";
+"Loading wind forecast…" = "Windverwachting laden…";
+"Map layers" = "Kaartlagen";
+"Map location" = "Locatie";
+"Move the time slider to explore the hourly forecast. Outside the colored area, load another region to see its wind." = "Verplaats de tijdschuifknop voor de verwachting per uur. Laad buiten het gekleurde gebied een andere regio om daar de wind te bekijken.";
+"My Location" = "Huidige locatie";
+"Now" = "Nu";
+"Open wind map" = "Open windkaart";
+"Pause" = "Pauzeer";
+"Play" = "Speel af";
+"Retry" = "Probeer opnieuw";
+"The arrows move in the direction the wind travels. The direction label shows where the wind comes from." = "De lijnen bewegen met de wind mee. De richtingsaanduiding geeft aan waar de wind vandaan komt.";
+"The map is available. Try loading the wind forecast again." = "De kaart is beschikbaar. Probeer de windverwachting opnieuw te laden.";
+"Weather data provided by Apple has been modified to estimate the regional wind field." = "Weergegevens van Apple zijn bewerkt om het regionale windveld te schatten.";
+"Wind" = "Wind";
+"Wind Map" = "Windkaart";
+"Wind Speed" = "Windsnelheid";
+"Wind between forecast locations is estimated. Local conditions can differ, especially near mountains and coasts." = "De wind tussen de voorspellingspunten is geschat. Plaatselijke omstandigheden kunnen afwijken, vooral bij bergen en kusten.";
+"Wind data unavailable" = "Windgegevens niet beschikbaar";
+"Your Locations" = "Je locaties";
+
+/* Additional weather map layers. */
+"Map Data" = "Kaartgegevens";
+"Weather data provided by Apple has been modified to create forecast maps." = "Weergegevens van Apple zijn bewerkt om verwachtingskaarten te maken.";

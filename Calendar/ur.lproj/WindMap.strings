@@ -1,0 +1,33 @@
+/* Wind map interface. */
+"About this map" = "اس نقشے کے بارے میں";
+"Center on location" = "مقام کو مرکز میں لائیں";
+"Choose a location to see the wind map" = "ہوا کا نقشہ دیکھنے کے لیے مقام منتخب کریں";
+"Close" = "قریب";
+"Data sources" = "ڈیٹا کے ذرائع";
+"Done" = "مکمل";
+"Estimated wind" = "تخمینی ہوا";
+"Forecast time" = "پیش گوئی کا وقت";
+"Load this area" = "یہ علاقہ لوڈ کریں";
+"Loading wind forecast…" = "ہوا کی پیش گوئی لوڈ ہو رہی ہے…";
+"Map layers" = "نقشے کی تہیں";
+"Map location" = "لوکیشن";
+"Move the time slider to explore the hourly forecast. Outside the colored area, load another region to see its wind." = "گھنٹہ وار پیش گوئی دیکھنے کے لیے وقت کا سلائیڈر حرکت دیں۔ رنگین علاقے سے باہر کی ہوا دیکھنے کے لیے دوسرا علاقہ لوڈ کریں۔";
+"My Location" = "موجودہ مقام";
+"Now" = "اب";
+"Open wind map" = "ہوا کا نقشہ کھولیں";
+"Pause" = "روکیں";
+"Play" = "چلائیں";
+"Retry" = "دوبارہ کوشش کریں";
+"The arrows move in the direction the wind travels. The direction label shows where the wind comes from." = "لکیریں ہوا کے بہاؤ کی سمت میں چلتی ہیں۔ سمت کا لیبل بتاتا ہے کہ ہوا کہاں سے آ رہی ہے۔";
+"The map is available. Try loading the wind forecast again." = "نقشہ دستیاب ہے۔ ہوا کی پیش گوئی دوبارہ لوڈ کرنے کی کوشش کریں۔";
+"Weather data provided by Apple has been modified to estimate the regional wind field." = "علاقائی ہوا کا تخمینہ لگانے کے لیے Apple کے موسمی ڈیٹا پر عمل کاری کی گئی ہے۔";
+"Wind" = "ہوا";
+"Wind Map" = "ہوا کا نقشہ";
+"Wind Speed" = "ہوا کی رفتار";
+"Wind between forecast locations is estimated. Local conditions can differ, especially near mountains and coasts." = "پیش گوئی کے مقامات کے درمیان ہوا تخمینی ہے۔ مقامی حالات مختلف ہو سکتے ہیں، خصوصاً پہاڑوں اور ساحلوں کے قریب۔";
+"Wind data unavailable" = "ہوا کا ڈیٹا دستیاب نہیں";
+"Your Locations" = "آپ کے مقامات";
+
+/* Additional weather map layers. */
+"Map Data" = "نقشے کا ڈیٹا";
+"Weather data provided by Apple has been modified to create forecast maps." = "پیش گوئی کے نقشے بنانے کے لیے Apple کے موسم کے ڈیٹا میں ترمیم کی گئی ہے۔";

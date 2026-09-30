@@ -1,0 +1,33 @@
+/* Wind map interface. */
+"About this map" = "Tentang peta ini";
+"Center on location" = "Pusatkan pada lokasi";
+"Choose a location to see the wind map" = "Pilih lokasi untuk melihat peta angin";
+"Close" = "tutup";
+"Data sources" = "Sumber data";
+"Done" = "Selesai";
+"Estimated wind" = "Angin anggaran";
+"Forecast time" = "Masa ramalan";
+"Load this area" = "Muatkan kawasan ini";
+"Loading wind forecast…" = "Memuatkan ramalan angin…";
+"Map layers" = "Lapisan peta";
+"Map location" = "Lokasi";
+"Move the time slider to explore the hourly forecast. Outside the colored area, load another region to see its wind." = "Gerakkan peluncur masa untuk melihat ramalan setiap jam. Di luar kawasan berwarna, muatkan rantau lain untuk melihat anginnya.";
+"My Location" = "Lokasi semasa";
+"Now" = "Sekarang";
+"Open wind map" = "Buka peta angin";
+"Pause" = "Jeda";
+"Play" = "Main";
+"Retry" = "Cuba lagi";
+"The arrows move in the direction the wind travels. The direction label shows where the wind comes from." = "Garisan bergerak mengikut arah tiupan angin. Label arah menunjukkan dari mana angin datang.";
+"The map is available. Try loading the wind forecast again." = "Peta tersedia. Cuba muatkan ramalan angin sekali lagi.";
+"Weather data provided by Apple has been modified to estimate the regional wind field." = "Data cuaca Apple telah diolah untuk menganggarkan medan angin serantau.";
+"Wind" = "Angin";
+"Wind Map" = "Peta Angin";
+"Wind Speed" = "Kelajuan Angin";
+"Wind between forecast locations is estimated. Local conditions can differ, especially near mountains and coasts." = "Angin antara titik ramalan ialah anggaran. Keadaan setempat mungkin berbeza, terutama berhampiran gunung dan pantai.";
+"Wind data unavailable" = "Data angin tidak tersedia";
+"Your Locations" = "Lokasi Anda";
+
+/* Additional weather map layers. */
+"Map Data" = "Data Peta";
+"Weather data provided by Apple has been modified to create forecast maps." = "Data cuaca daripada Apple telah diolah untuk menghasilkan peta ramalan.";

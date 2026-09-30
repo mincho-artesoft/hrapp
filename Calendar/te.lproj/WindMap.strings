@@ -1,0 +1,33 @@
+/* Wind map interface. */
+"About this map" = "ఈ మ్యాప్ గురించి";
+"Center on location" = "స్థానాన్ని మధ్యలో చూపించు";
+"Choose a location to see the wind map" = "గాలి మ్యాప్ చూడటానికి స్థానాన్ని ఎంచుకోండి";
+"Close" = "దగ్గరగా";
+"Data sources" = "డేటా మూలాలు";
+"Done" = "పూర్తి";
+"Estimated wind" = "అంచనా గాలి";
+"Forecast time" = "అంచనా సమయం";
+"Load this area" = "ఈ ప్రాంతాన్ని లోడ్ చేయి";
+"Loading wind forecast…" = "గాలి అంచనా లోడ్ అవుతోంది…";
+"Map layers" = "మ్యాప్ పొరలు";
+"Map location" = "లొకేషన్";
+"Move the time slider to explore the hourly forecast. Outside the colored area, load another region to see its wind." = "గంటలవారీ అంచనాను చూడటానికి సమయ స్లైడర్‌ను కదపండి. రంగు ప్రాంతం బయట గాలిని చూడటానికి మరో ప్రాంతాన్ని లోడ్ చేయండి.";
+"My Location" = "ప్రస్తుత స్థానం";
+"Now" = "ఇప్పుడు";
+"Open wind map" = "గాలి మ్యాప్ తెరువు";
+"Pause" = "పాజ్ చేయి";
+"Play" = "ప్లే చేయి";
+"Retry" = "మళ్లీ ప్రయత్నించు";
+"The arrows move in the direction the wind travels. The direction label shows where the wind comes from." = "రేఖలు గాలి వీచే దిశలో కదులుతాయి. దిశ లేబుల్ గాలి ఎక్కడి నుంచి వస్తుందో చూపిస్తుంది.";
+"The map is available. Try loading the wind forecast again." = "మ్యాప్ అందుబాటులో ఉంది. గాలి అంచనాను మళ్లీ లోడ్ చేయడానికి ప్రయత్నించండి.";
+"Weather data provided by Apple has been modified to estimate the regional wind field." = "ప్రాంతీయ గాలి క్షేత్రాన్ని అంచనా వేయడానికి Apple వాతావరణ డేటా ప్రాసెస్ చేయబడింది.";
+"Wind" = "గాలి";
+"Wind Map" = "గాలి మ్యాప్";
+"Wind Speed" = "గాలి వేగం";
+"Wind between forecast locations is estimated. Local conditions can differ, especially near mountains and coasts." = "అంచనా పాయింట్ల మధ్య గాలి సుమారుగా లెక్కించబడుతుంది. ముఖ్యంగా పర్వతాలు, తీరాల దగ్గర స్థానిక పరిస్థితులు వేరుగా ఉండవచ్చు.";
+"Wind data unavailable" = "గాలి డేటా అందుబాటులో లేదు";
+"Your Locations" = "మీ స్థానాలు";
+
+/* Additional weather map layers. */
+"Map Data" = "మ్యాప్ డేటా";
+"Weather data provided by Apple has been modified to create forecast maps." = "సూచనల మ్యాప్‌లను రూపొందించడానికి Apple అందించిన వాతావరణ డేటా సవరించబడింది.";

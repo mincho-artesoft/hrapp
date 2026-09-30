@@ -1,0 +1,33 @@
+/* Wind map interface. */
+"About this map" = "Om den här kartan";
+"Center on location" = "Centrera på plats";
+"Choose a location to see the wind map" = "Välj en plats för att se vindkartan";
+"Close" = "Stäng";
+"Data sources" = "Datakällor";
+"Done" = "Klar";
+"Estimated wind" = "Uppskattad vind";
+"Forecast time" = "Prognostid";
+"Load this area" = "Läs in det här området";
+"Loading wind forecast…" = "Läser in vindprognos…";
+"Map layers" = "Kartlager";
+"Map location" = "Plats";
+"Move the time slider to explore the hourly forecast. Outside the colored area, load another region to see its wind." = "Flytta tidsreglaget för att se timprognosen. Utanför det färgade området kan du läsa in en annan region för att se vinden där.";
+"My Location" = "Nuvarande plats";
+"Now" = "Nu";
+"Open wind map" = "Öppna vindkarta";
+"Pause" = "Pausa";
+"Play" = "Spela upp";
+"Retry" = "Försök igen";
+"The arrows move in the direction the wind travels. The direction label shows where the wind comes from." = "Linjerna rör sig i vindens riktning. Riktningsangivelsen visar varifrån vinden kommer.";
+"The map is available. Try loading the wind forecast again." = "Kartan är tillgänglig. Försök läsa in vindprognosen igen.";
+"Weather data provided by Apple has been modified to estimate the regional wind field." = "Väderdata från Apple har bearbetats för att uppskatta det regionala vindfältet.";
+"Wind" = "Vind";
+"Wind Map" = "Vindkarta";
+"Wind Speed" = "Vindhastighet";
+"Wind between forecast locations is estimated. Local conditions can differ, especially near mountains and coasts." = "Vinden mellan prognospunkterna är uppskattad. Lokala förhållanden kan variera, särskilt nära berg och kuster.";
+"Wind data unavailable" = "Vinddata är inte tillgängliga";
+"Your Locations" = "Dina platser";
+
+/* Additional weather map layers. */
+"Map Data" = "Kartdata";
+"Weather data provided by Apple has been modified to create forecast maps." = "Väderdata från Apple har bearbetats för att skapa prognoskartor.";

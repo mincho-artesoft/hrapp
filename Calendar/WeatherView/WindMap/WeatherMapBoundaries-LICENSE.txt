@@ -1,0 +1,7 @@
+Natural Earth 1:50m Admin 0 Countries
+Public domain; commercial use and modification permitted.
+Source: https://github.com/nvkelso/natural-earth-vector/blob/master/geojson/ne_50m_admin_0_countries.geojson
+License: https://www.naturalearthdata.com/about/terms-of-use/
+Downloaded: 2026-09-30
+Original SHA-256: 3e458fc036ad0a66411f2c1e6cac49c5d7bfb81cb1123bc513b22511a2b7fdeb
+Only geometry retained; properties removed. Used for supplemental coast/country outlines on the fullscreen weather map.

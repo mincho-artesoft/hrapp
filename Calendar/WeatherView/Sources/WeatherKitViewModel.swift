@@ -54,9 +54,14 @@ class WeatherKitViewModel: ObservableObject {
     @Published var next24SolarEvents: [SolarForecastEvent] = []
     @Published var solarDayForecast: [SolarDayForecast] = []
     @Published var hourlyForecast: [HourlyForecastItem] = []
+    @Published var mapPointForecast: WindMapPointForecast?
     @Published var dailyForecast: [DayForecastItem] = []
 
     @Published var errorMessage: String?
+    @Published private(set) var isLoading = false
+    private var weatherTask: Task<Void, Never>?
+    private var loadingTimeout: Task<Void, Never>?
+    private var weatherRequestID = UUID()
 
     @Published var nextMoonPhase: String?
     @Published var daysUntilNextMoonPhase: Int?
@@ -83,11 +88,33 @@ class WeatherKitViewModel: ObservableObject {
         isGPSLocation: Bool = false,
         gpsDisplayName: String? = nil
     ) {
+        weatherTask?.cancel()
+        loadingTimeout?.cancel()
+        let requestID = UUID()
+        weatherRequestID = requestID
+        isLoading = true
+        errorMessage = nil
         locationCoordinate = CLLocationCoordinate2D(
             latitude: latitude,
             longitude: longitude
         )
-        Task {
+        loadingTimeout = Task { [weak self] in
+            do { try await Task.sleep(for: .seconds(30)) } catch { return }
+            guard let self, self.weatherRequestID == requestID, self.isLoading else { return }
+            self.weatherRequestID = UUID()
+            self.weatherTask?.cancel()
+            self.isLoading = false
+            self.errorMessage = NSLocalizedString(
+                "Failed to fetch weather data. Please check your connection or try again later.",
+                comment: "Weather loading error")
+        }
+        weatherTask = Task {
+            defer {
+                if weatherRequestID == requestID {
+                    isLoading = false
+                    loadingTimeout?.cancel()
+                }
+            }
             do {
                 let loc = CLLocation(latitude: latitude, longitude: longitude)
                 var hourlyQuery: WeatherQuery<Forecast<HourWeather>> = .hourly
@@ -101,6 +128,7 @@ class WeatherKitViewModel: ObservableObject {
                     for: loc,
                     including: .current, hourlyQuery, .daily, .alerts
                 )
+                guard !Task.isCancelled, weatherRequestID == requestID else { return }
 
                 print(
                     String(
@@ -123,18 +151,13 @@ class WeatherKitViewModel: ObservableObject {
                 }
                 #endif
                 updateHourlyForecast(hourlyData.forecast)
+                mapPointForecast = WindMapPointForecast(
+                    coordinate: .init(latitude: latitude, longitude: longitude),
+                    hours: hourlyData.forecast)
                 updateDailyForecast(dailyData.forecast)
                 updateSolarEvents(dailyData.forecast)
                 updateCurrentPrecipitationType(hourlyData.forecast, relativeTo: observationDate)
                 updateWeatherAlerts(alerts)
-
-                if isGPSLocation {
-                    await WeatherAlertNotificationManager.shared.processFetchedGPSAlerts(
-                        alerts,
-                        location: loc,
-                        displayName: gpsDisplayName
-                    )
-                }
 
                 var calendar = Calendar.current
                 calendar.timeZone = locationTimeZone
@@ -163,8 +186,18 @@ class WeatherKitViewModel: ObservableObject {
                 }
 
                 self.errorMessage = nil
+                isLoading = false
+                loadingTimeout?.cancel()
                 NotificationCenter.default.post(name: .weatherForecastUpdated, object: nil)
+                if isGPSLocation {
+                    await WeatherAlertNotificationManager.shared.processFetchedGPSAlerts(
+                        alerts,
+                        location: loc,
+                        displayName: gpsDisplayName
+                    )
+                }
             } catch {
+                guard !Task.isCancelled, weatherRequestID == requestID else { return }
                 print("WeatherKit Error: \(error)")
                 self.errorMessage = NSLocalizedString(
                     "Failed to fetch weather data. Please check your connection or try again later.",
@@ -175,6 +208,10 @@ class WeatherKitViewModel: ObservableObject {
     }
 
     func clearWeatherData() {
+        weatherRequestID = UUID()
+        weatherTask?.cancel()
+        loadingTimeout?.cancel()
+        isLoading = false
         currentTemp = nil
         currentSymbol = "cloud"
         currentCondition = "—"

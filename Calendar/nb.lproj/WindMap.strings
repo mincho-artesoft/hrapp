@@ -1,0 +1,33 @@
+/* Wind map interface. */
+"About this map" = "Om dette kartet";
+"Center on location" = "Sentrer på posisjon";
+"Choose a location to see the wind map" = "Velg et sted for å se vindkartet";
+"Close" = "Lukk";
+"Data sources" = "Datakilder";
+"Done" = "Ferdig";
+"Estimated wind" = "Anslått vind";
+"Forecast time" = "Prognosetid";
+"Load this area" = "Last inn dette området";
+"Loading wind forecast…" = "Laster vindprognose…";
+"Map layers" = "Kartlag";
+"Map location" = "Sted";
+"Move the time slider to explore the hourly forecast. Outside the colored area, load another region to see its wind." = "Flytt tidsbryteren for å se timevarselet. Utenfor det fargede området kan du laste inn en annen region for å se vinden der.";
+"My Location" = "Nåværende posisjon";
+"Now" = "Nå";
+"Open wind map" = "Åpne vindkart";
+"Pause" = "Pause";
+"Play" = "Spill av";
+"Retry" = "Prøv igjen";
+"The arrows move in the direction the wind travels. The direction label shows where the wind comes from." = "Linjene beveger seg i vindens retning. Retningsangivelsen viser hvor vinden kommer fra.";
+"The map is available. Try loading the wind forecast again." = "Kartet er tilgjengelig. Prøv å laste vindprognosen på nytt.";
+"Weather data provided by Apple has been modified to estimate the regional wind field." = "Værdata fra Apple er bearbeidet for å anslå det regionale vindfeltet.";
+"Wind" = "Vind";
+"Wind Map" = "Vindkart";
+"Wind Speed" = "Vindhastighet";
+"Wind between forecast locations is estimated. Local conditions can differ, especially near mountains and coasts." = "Vinden mellom prognosepunktene er anslått. Lokale forhold kan variere, særlig nær fjell og kyster.";
+"Wind data unavailable" = "Vinddata er ikke tilgjengelige";
+"Your Locations" = "Dine steder";
+
+/* Additional weather map layers. */
+"Map Data" = "Kartdata";
+"Weather data provided by Apple has been modified to create forecast maps." = "Værdata fra Apple er bearbeidet for å lage prognosekart.";

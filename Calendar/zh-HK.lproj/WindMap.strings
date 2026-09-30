@@ -1,0 +1,33 @@
+/* Wind map interface. */
+"About this map" = "關於此地圖";
+"Center on location" = "置中顯示位置";
+"Choose a location to see the wind map" = "選擇地點以查看風力地圖";
+"Close" = "關閉";
+"Data sources" = "資料來源";
+"Done" = "完成";
+"Estimated wind" = "估算風況";
+"Forecast time" = "預報時間";
+"Load this area" = "載入此區域";
+"Loading wind forecast…" = "正在載入風力預報…";
+"Map layers" = "地圖圖層";
+"Map location" = "位置";
+"Move the time slider to explore the hourly forecast. Outside the colored area, load another region to see its wind." = "移動時間滑桿可查看逐小時預報。在彩色範圍外，請載入其他區域以查看當地風況。";
+"My Location" = "目前位置";
+"Now" = "現在";
+"Open wind map" = "開啟風力地圖";
+"Pause" = "暫停";
+"Play" = "播放";
+"Retry" = "重試";
+"The arrows move in the direction the wind travels. The direction label shows where the wind comes from." = "線條沿著風的流動方向移動。風向標籤表示風從哪個方向吹來。";
+"The map is available. Try loading the wind forecast again." = "地圖可用。請嘗試重新載入風力預報。";
+"Weather data provided by Apple has been modified to estimate the regional wind field." = "Apple 提供的天氣資料經過處理，用於估算區域風場。";
+"Wind" = "風";
+"Wind Map" = "風力地圖";
+"Wind Speed" = "風速";
+"Wind between forecast locations is estimated. Local conditions can differ, especially near mountains and coasts." = "預報地點之間的風況為估算值。當地實際情況可能不同，尤其是在山區和海岸附近。";
+"Wind data unavailable" = "無法取得風力資料";
+"Your Locations" = "你的地點";
+
+/* Additional weather map layers. */
+"Map Data" = "地圖資料";
+"Weather data provided by Apple has been modified to create forecast maps." = "已處理Apple提供的天氣資料，以製作預報地圖。";

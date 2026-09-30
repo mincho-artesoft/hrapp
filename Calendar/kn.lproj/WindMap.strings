@@ -1,0 +1,33 @@
+/* Wind map interface. */
+"About this map" = "ಈ ನಕ್ಷೆಯ ಕುರಿತು";
+"Center on location" = "ಸ್ಥಳವನ್ನು ಕೇಂದ್ರಕ್ಕೆ ತರುವುದು";
+"Choose a location to see the wind map" = "ಗಾಳಿಯ ನಕ್ಷೆ ನೋಡಲು ಸ್ಥಳ ಆಯ್ಕೆಮಾಡಿ";
+"Close" = "ಹತ್ತಿರ";
+"Data sources" = "ಮಾಹಿತಿ ಮೂಲಗಳು";
+"Done" = "ಮುಗಿದಿದೆ";
+"Estimated wind" = "ಅಂದಾಜು ಗಾಳಿ";
+"Forecast time" = "ಮುನ್ಸೂಚನೆಯ ಸಮಯ";
+"Load this area" = "ಈ ಪ್ರದೇಶ ಲೋಡ್ ಮಾಡಿ";
+"Loading wind forecast…" = "ಗಾಳಿಯ ಮುನ್ಸೂಚನೆ ಲೋಡ್ ಆಗುತ್ತಿದೆ…";
+"Map layers" = "ನಕ್ಷೆಯ ಪದರಗಳು";
+"Map location" = "ಸ್ಥಳ";
+"Move the time slider to explore the hourly forecast. Outside the colored area, load another region to see its wind." = "ಗಂಟೆಗೊಮ್ಮೆ ಮುನ್ಸೂಚನೆ ನೋಡಲು ಸಮಯದ ಸ್ಲೈಡರ್ ಸರಿಸಿ. ಬಣ್ಣದ ಪ್ರದೇಶದ ಹೊರಗಿನ ಗಾಳಿ ನೋಡಲು ಮತ್ತೊಂದು ಪ್ರದೇಶ ಲೋಡ್ ಮಾಡಿ.";
+"My Location" = "ಪ್ರಸ್ತುತ ಸ್ಥಳ";
+"Now" = "ಈಗ";
+"Open wind map" = "ಗಾಳಿಯ ನಕ್ಷೆ ತೆರೆಯಿರಿ";
+"Pause" = "ವಿರಾಮ";
+"Play" = "ಪ್ಲೇ ಮಾಡಿ";
+"Retry" = "ಮತ್ತೆ ಪ್ರಯತ್ನಿಸಿ";
+"The arrows move in the direction the wind travels. The direction label shows where the wind comes from." = "ರೇಖೆಗಳು ಗಾಳಿ ಬೀಸುವ ದಿಕ್ಕಿನಲ್ಲಿ ಚಲಿಸುತ್ತವೆ. ದಿಕ್ಕಿನ ಸೂಚನೆ ಗಾಳಿ ಎಲ್ಲಿಂದ ಬರುತ್ತದೆ ಎಂಬುದನ್ನು ತೋರಿಸುತ್ತದೆ.";
+"The map is available. Try loading the wind forecast again." = "ನಕ್ಷೆ ಲಭ್ಯವಿದೆ. ಗಾಳಿಯ ಮುನ್ಸೂಚನೆ ಮತ್ತೆ ಲೋಡ್ ಮಾಡಲು ಪ್ರಯತ್ನಿಸಿ.";
+"Weather data provided by Apple has been modified to estimate the regional wind field." = "ಪ್ರಾದೇಶಿಕ ಗಾಳಿಯ ಕ್ಷೇತ್ರವನ್ನು ಅಂದಾಜಿಸಲು Apple ಹವಾಮಾನ ಮಾಹಿತಿಯನ್ನು ಸಂಸ್ಕರಿಸಲಾಗಿದೆ.";
+"Wind" = "ಗಾಳಿ";
+"Wind Map" = "ಗಾಳಿಯ ನಕ್ಷೆ";
+"Wind Speed" = "ಗಾಳಿಯ ವೇಗ";
+"Wind between forecast locations is estimated. Local conditions can differ, especially near mountains and coasts." = "ಮುನ್ಸೂಚನೆಯ ಸ್ಥಳಗಳ ನಡುವಿನ ಗಾಳಿ ಅಂದಾಜು ಮಾತ್ರ. ವಿಶೇಷವಾಗಿ ಪರ್ವತಗಳು ಮತ್ತು ಕರಾವಳಿಯ ಬಳಿ ಸ್ಥಳೀಯ ಪರಿಸ್ಥಿತಿಗಳು ಭಿನ್ನವಾಗಿರಬಹುದು.";
+"Wind data unavailable" = "ಗಾಳಿಯ ಮಾಹಿತಿ ಲಭ್ಯವಿಲ್ಲ";
+"Your Locations" = "ನಿಮ್ಮ ಸ್ಥಳಗಳು";
+
+/* Additional weather map layers. */
+"Map Data" = "ನಕ್ಷೆಯ ದತ್ತಾಂಶ";
+"Weather data provided by Apple has been modified to create forecast maps." = "ಮುನ್ಸೂಚನೆಯ ನಕ್ಷೆಗಳನ್ನು ರಚಿಸಲು Apple ಒದಗಿಸಿದ ಹವಾಮಾನ ದತ್ತಾಂಶವನ್ನು ಸಂಸ್ಕರಿಸಲಾಗಿದೆ.";

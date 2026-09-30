@@ -1,0 +1,33 @@
+/* Wind map interface. */
+"About this map" = "இந்த வரைபடம் பற்றி";
+"Center on location" = "இருப்பிடத்தை மையப்படுத்து";
+"Choose a location to see the wind map" = "காற்று வரைபடத்தைப் பார்க்க இருப்பிடத்தைத் தேர்ந்தெடுக்கவும்";
+"Close" = "நெருக்கமாக";
+"Data sources" = "தரவு மூலங்கள்";
+"Done" = "முடிந்தது";
+"Estimated wind" = "மதிப்பிடப்பட்ட காற்று";
+"Forecast time" = "முன்னறிவிப்பு நேரம்";
+"Load this area" = "இந்தப் பகுதியை ஏற்று";
+"Loading wind forecast…" = "காற்று முன்னறிவிப்பு ஏற்றப்படுகிறது…";
+"Map layers" = "வரைபட அடுக்குகள்";
+"Map location" = "இருப்பிடம்";
+"Move the time slider to explore the hourly forecast. Outside the colored area, load another region to see its wind." = "மணிநேர முன்னறிவிப்பைப் பார்க்க நேரச் சறுக்கியை நகர்த்தவும். வண்ணப் பகுதிக்கு வெளியே உள்ள காற்றைப் பார்க்க மற்றொரு பகுதியை ஏற்றவும்.";
+"My Location" = "தற்போதைய இடம்";
+"Now" = "இப்போது";
+"Open wind map" = "காற்று வரைபடத்தைத் திற";
+"Pause" = "இடைநிறுத்து";
+"Play" = "இயக்கு";
+"Retry" = "மீண்டும் முயல்க";
+"The arrows move in the direction the wind travels. The direction label shows where the wind comes from." = "கோடுகள் காற்று வீசும் திசையில் நகர்கின்றன. திசைக் குறிப்பு காற்று எங்கிருந்து வருகிறது என்பதைக் காட்டுகிறது.";
+"The map is available. Try loading the wind forecast again." = "வரைபடம் கிடைக்கிறது. காற்று முன்னறிவிப்பை மீண்டும் ஏற்ற முயலவும்.";
+"Weather data provided by Apple has been modified to estimate the regional wind field." = "பிராந்தியக் காற்றுப் பரவலை மதிப்பிட Apple வானிலைத் தரவு செயலாக்கப்பட்டுள்ளது.";
+"Wind" = "காற்று";
+"Wind Map" = "காற்று வரைபடம்";
+"Wind Speed" = "காற்றின் வேகம்";
+"Wind between forecast locations is estimated. Local conditions can differ, especially near mountains and coasts." = "முன்னறிவிப்பு இடங்களுக்கு இடையிலான காற்று மதிப்பிடப்படுகிறது. குறிப்பாக மலைகள் மற்றும் கடற்கரைகளுக்கு அருகில் உள்ளூர் நிலைமைகள் மாறுபடலாம்.";
+"Wind data unavailable" = "காற்றுத் தரவு கிடைக்கவில்லை";
+"Your Locations" = "உங்கள் இருப்பிடங்கள்";
+
+/* Additional weather map layers. */
+"Map Data" = "வரைபடத் தரவு";
+"Weather data provided by Apple has been modified to create forecast maps." = "முன்னறிவிப்பு வரைபடங்களை உருவாக்க Apple வழங்கிய வானிலைத் தரவு மாற்றியமைக்கப்பட்டுள்ளது.";

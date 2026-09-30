@@ -1,0 +1,33 @@
+/* Wind map interface. */
+"About this map" = "O tejto mape";
+"Center on location" = "Vycentrovať na polohu";
+"Choose a location to see the wind map" = "Vyberte miesto na zobrazenie mapy vetra";
+"Close" = "- V blízkosti";
+"Data sources" = "Zdroje údajov";
+"Done" = "Hotovo";
+"Estimated wind" = "Odhad vetra";
+"Forecast time" = "Čas predpovede";
+"Load this area" = "Načítať túto oblasť";
+"Loading wind forecast…" = "Načítava sa predpoveď vetra…";
+"Map layers" = "Vrstvy mapy";
+"Map location" = "Miesto";
+"Move the time slider to explore the hourly forecast. Outside the colored area, load another region to see its wind." = "Posunutím časového posuvníka zobrazíte hodinovú predpoveď. Mimo farebnej oblasti načítajte iný región na zobrazenie vetra.";
+"My Location" = "Aktuálne umiestnenie";
+"Now" = "Teraz.";
+"Open wind map" = "Otvoriť mapu vetra";
+"Pause" = "Pozastaviť";
+"Play" = "Prehrať";
+"Retry" = "Skúsiť znova";
+"The arrows move in the direction the wind travels. The direction label shows where the wind comes from." = "Čiary sa pohybujú v smere prúdenia vetra. Označenie smeru ukazuje, odkiaľ vietor fúka.";
+"The map is available. Try loading the wind forecast again." = "Mapa je dostupná. Skúste znova načítať predpoveď vetra.";
+"Weather data provided by Apple has been modified to estimate the regional wind field." = "Meteorologické údaje Apple boli upravené na odhad regionálneho veterného poľa.";
+"Wind" = "Výchot";
+"Wind Map" = "Mapa vetra";
+"Wind Speed" = "Rýchlosť vetra";
+"Wind between forecast locations is estimated. Local conditions can differ, especially near mountains and coasts." = "Vietor medzi bodmi predpovede je odhadovaný. Miestne podmienky sa môžu líšiť, najmä pri horách a pobreží.";
+"Wind data unavailable" = "Údaje o vetre nie sú dostupné";
+"Your Locations" = "Vaše miesta";
+
+/* Additional weather map layers. */
+"Map Data" = "Mapové údaje";
+"Weather data provided by Apple has been modified to create forecast maps." = "Meteorologické údaje od spoločnosti Apple boli upravené na vytvorenie predpovedných máp.";

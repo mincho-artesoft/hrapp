@@ -1,0 +1,33 @@
+/* Wind map interface. */
+"About this map" = "O tem zemljevidu";
+"Center on location" = "Centriraj na lokacijo";
+"Choose a location to see the wind map" = "Izberite lokacijo za prikaz zemljevida vetra";
+"Close" = "Bližje";
+"Data sources" = "Viri podatkov";
+"Done" = "Končano";
+"Estimated wind" = "Ocenjeni veter";
+"Forecast time" = "Čas napovedi";
+"Load this area" = "Naloži to območje";
+"Loading wind forecast…" = "Nalaganje napovedi vetra…";
+"Map layers" = "Plasti zemljevida";
+"Map location" = "Lokacija";
+"Move the time slider to explore the hourly forecast. Outside the colored area, load another region to see its wind." = "Premaknite časovni drsnik za ogled urne napovedi. Zunaj obarvanega območja naložite drugo regijo za prikaz vetra.";
+"My Location" = "Trenutna lokacija";
+"Now" = "Zdaj pa ...";
+"Open wind map" = "Odpri zemljevid vetra";
+"Pause" = "Premor";
+"Play" = "Predvajaj";
+"Retry" = "Poskusi znova";
+"The arrows move in the direction the wind travels. The direction label shows where the wind comes from." = "Črte se premikajo v smeri vetra. Oznaka smeri kaže, od kod veter piha.";
+"The map is available. Try loading the wind forecast again." = "Zemljevid je na voljo. Poskusite znova naložiti napoved vetra.";
+"Weather data provided by Apple has been modified to estimate the regional wind field." = "Vremenski podatki Apple so bili obdelani za oceno regionalnega vetrnega polja.";
+"Wind" = "Veter";
+"Wind Map" = "Zemljevid vetra";
+"Wind Speed" = "Hitrost vetra";
+"Wind between forecast locations is estimated. Local conditions can differ, especially near mountains and coasts." = "Veter med točkami napovedi je ocenjen. Krajevne razmere se lahko razlikujejo, zlasti ob gorah in obalah.";
+"Wind data unavailable" = "Podatki o vetru niso na voljo";
+"Your Locations" = "Vaše lokacije";
+
+/* Additional weather map layers. */
+"Map Data" = "Podatki zemljevida";
+"Weather data provided by Apple has been modified to create forecast maps." = "Vremenski podatki družbe Apple so bili obdelani za izdelavo zemljevidov napovedi.";
