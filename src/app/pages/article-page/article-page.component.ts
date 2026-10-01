@@ -2,6 +2,7 @@ import { DOCUMENT } from '@angular/common';
 import { ChangeDetectionStrategy, Component, inject } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 
+import { MoreAppsComponent } from '../../components/more-apps/more-apps.component';
 import { ShotRailComponent } from '../../components/shot-rail/shot-rail.component';
 import { ARTICLE_FACTS } from '../../content/article-facts';
 import { CONTENT, contentFor, localesWith } from '../../content/registry';
@@ -28,7 +29,7 @@ interface SeeAlsoLink {
   selector: 'cc-article-page',
   standalone: true,
   changeDetection: ChangeDetectionStrategy.OnPush,
-  imports: [ShotRailComponent],
+  imports: [ShotRailComponent, MoreAppsComponent],
   templateUrl: './article-page.component.html',
   styleUrl: './article-page.component.scss',
 })

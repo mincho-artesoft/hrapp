@@ -5,6 +5,7 @@ import { ARTICLE_FACTS } from '../../content/article-facts';
 import { contentFor, LIVE_LOCALES } from '../../content/registry';
 import { ArticleChrome, Family } from '../../content/types';
 import { DEFAULT_LOCALE, Locale, linkPath, localePath } from '../../core/locales';
+import { MoreAppsComponent } from '../../components/more-apps/more-apps.component';
 import { SeoService } from '../../core/seo.service';
 
 interface Card {
@@ -24,6 +25,7 @@ interface Group {
 @Component({
   selector: 'cc-articles-page',
   standalone: true,
+  imports: [MoreAppsComponent],
   changeDetection: ChangeDetectionStrategy.OnPush,
   template: `
     <div class="hub">
@@ -41,6 +43,7 @@ interface Group {
           </ul>
         </section>
       }
+      <cc-more-apps [inline]="true" />
     </div>
   `,
   styles: [

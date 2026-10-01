@@ -7,6 +7,7 @@ import { ShowcaseComponent } from '../../components/showcase/showcase.component'
 import { WidgetsComponent } from '../../components/widgets/widgets.component';
 import { WeatherHubComponent } from '../../components/weather-hub/weather-hub.component';
 import { FeaturesComponent } from '../../components/features/features.component';
+import { MoreAppsComponent } from '../../components/more-apps/more-apps.component';
 import { PricingComponent } from '../../components/pricing/pricing.component';
 import { FaqComponent } from '../../components/faq/faq.component';
 import { CtaComponent } from '../../components/cta/cta.component';
@@ -24,6 +25,7 @@ import { SeoService } from '../../core/seo.service';
     WidgetsComponent,
     WeatherHubComponent,
     FeaturesComponent,
+    MoreAppsComponent,
     PricingComponent,
     FaqComponent,
     CtaComponent,
