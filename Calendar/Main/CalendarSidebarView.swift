@@ -277,12 +277,12 @@ private struct CalendarSidebarEventRow<Times: View>: View {
 
     var body: some View {
         HStack(alignment: .top, spacing: 8) {
-            if !allDay { RoundedRectangle(cornerRadius: 1.5).fill(color).frame(width: 3) }
             if let symbol { Image(systemName: symbol).foregroundStyle(color) }
             Text(title).font(.body).foregroundStyle(.primary).strikethrough(isCancelled, color: color)
             Spacer()
             times().font(.subheadline).foregroundStyle(.gray)
         }
+        .calendarEventRowAccent(color, isVisible: !allDay)
         .padding(.vertical, 6)
         .contentShape(Rectangle())
     }

@@ -38,14 +38,6 @@ struct EventRowView: View {
     
     var body: some View {
         HStack(alignment: .top, spacing: 8) {
-            // Цветна лента при не-all-day събитие
-            if !event.isAllDay {
-                Rectangle()
-                    .fill(Color(uiColor: event.color))
-                    .frame(width: 3)
-                    .cornerRadius(1.5)
-            }
-            
             // Ако има икона за календара
             if let iconName = calendarIconName {
                 Image(systemName: iconName)
@@ -80,6 +72,7 @@ struct EventRowView: View {
                 .foregroundColor(.gray)
             }
         }
+        .calendarEventRowAccent(Color(uiColor: event.color), isVisible: !event.isAllDay)
         .padding(.vertical, 6)
         .contentShape(Rectangle())
     }

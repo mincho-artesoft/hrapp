@@ -938,11 +938,6 @@ struct SharingSheetView: View {
         infoAction: (() -> Void)? = nil
     ) -> some View {
         HStack(alignment: .top, spacing: 8) {
-            Rectangle()
-                .fill(color)
-                .frame(width: 3)
-                .clipShape(Capsule())
-
             VStack(alignment: .leading, spacing: 3) {
                 Text(title)
                     .font(.body)
@@ -1013,6 +1008,7 @@ struct SharingSheetView: View {
                 }
             }
         }
+        .calendarEventRowAccent(color)
         .padding(.vertical, 6)
         .contentShape(Rectangle())
     }

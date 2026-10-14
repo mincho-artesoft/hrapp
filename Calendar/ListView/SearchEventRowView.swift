@@ -39,14 +39,6 @@ struct SearchEventRowView: View {
 
     var body: some View {
         HStack(alignment: .top, spacing: 8) {
-            // Цветна лента, ако не е all-day
-            if !event.isAllDay {
-                Rectangle()
-                    .fill(Color(uiColor: eventColor))
-                    .frame(width: 3)
-                    .cornerRadius(1.5)
-            }
-
             // Икона (birthday, holiday, all-day), ако има
             if let iconName = calendarIconName {
                 Image(systemName: iconName)
@@ -82,6 +74,7 @@ struct SearchEventRowView: View {
                 .foregroundColor(.gray)
             }
         }
+        .calendarEventRowAccent(Color(uiColor: eventColor), isVisible: !event.isAllDay)
         .padding(.vertical, 6)
         .contentShape(Rectangle()) // Целият ред да е кликаем
     }
