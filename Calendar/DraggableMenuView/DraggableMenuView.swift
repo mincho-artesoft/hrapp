@@ -147,7 +147,7 @@ struct DraggableMenuView<
 //                }
             }
         }
-        .edgesIgnoringSafeArea(.all)
+        .edgesIgnoringSafeArea(CalendarSafeAreaLayout.ignoredEdges(.all))
     }
 
     // MARK: — Subviews

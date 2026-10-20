@@ -402,7 +402,7 @@ struct RootView: View {
                                 "draggable-\(appPreferences.languageIdentifier)-"
                                     + (appPreferences.layoutDirection == .rightToLeft ? "rtl" : "ltr")
                             )
-                            .edgesIgnoringSafeArea(.all)
+                            .edgesIgnoringSafeArea(CalendarSafeAreaLayout.ignoredEdges(.all))
                             .zIndex(1) // Ensure DraggableMenuView is above the tap overlay
                             // ---- BEGIN FIX: Disable animation on DraggableMenuView based on selectedTab ----
                             .animation(.none, value: selectedTab)
@@ -874,7 +874,7 @@ extension RootView {
             },
             onMonthChanged: { selectedMonthDate = $0 }
         )
-        .ignoresSafeArea(.container, edges: [.leading, .trailing, .bottom])
+        .ignoresSafeArea(.container, edges: CalendarSafeAreaLayout.ignoredEdges([.leading, .trailing, .bottom]))
 
     case 1:
         TwoWayPinnedMultiDayWrapper(
@@ -903,7 +903,7 @@ extension RootView {
                   !CalendarViewModel.shared.isCalendarSyncInProgress else { return }
             loadSingleDayEvents()
         }
-        .ignoresSafeArea(.all)
+        .ignoresSafeArea(.all, edges: CalendarSafeAreaLayout.ignoredEdges(.all))
 
     case 2:
         YearCalendarView(
@@ -916,7 +916,7 @@ extension RootView {
                 showMonthTab(for: month)
             }
         )
-        .ignoresSafeArea(.container, edges: [.leading, .trailing, .bottom])
+        .ignoresSafeArea(.container, edges: CalendarSafeAreaLayout.ignoredEdges([.leading, .trailing, .bottom]))
 
     case 3:
         TwoWayPinnedMultiDayWrapper(
@@ -943,7 +943,7 @@ extension RootView {
                   !CalendarViewModel.shared.isCalendarSyncInProgress else { return }
             loadMultiDayEvents()
         }
-        .ignoresSafeArea(.all)
+        .ignoresSafeArea(.all, edges: CalendarSafeAreaLayout.ignoredEdges(.all))
 
     case 4:
         AllEventsListView(
@@ -967,7 +967,7 @@ extension RootView {
                 }
             }
         )
-        .ignoresSafeArea(.container, edges: [.leading, .trailing, .bottom])
+        .ignoresSafeArea(.container, edges: CalendarSafeAreaLayout.ignoredEdges([.leading, .trailing, .bottom]))
 
     case 5:
         TwoWayPinnedSingleDayMultiCalendarWrapper(
@@ -995,7 +995,7 @@ extension RootView {
                   !CalendarViewModel.shared.isCalendarSyncInProgress else { return }
             loadSingleDayEventsLocal()
         }
-        .ignoresSafeArea(.all)
+        .ignoresSafeArea(.all, edges: CalendarSafeAreaLayout.ignoredEdges(.all))
 
     case 6:
         WeatherKitView(
@@ -1009,7 +1009,7 @@ extension RootView {
             eventEditorColorScheme: systemColorScheme
         )
         .colorScheme(.dark)
-        .ignoresSafeArea(.container, edges: [.leading, .trailing, .bottom])
+        .ignoresSafeArea(.container, edges: CalendarSafeAreaLayout.ignoredEdges([.leading, .trailing, .bottom]))
         default:
             Text(localizedFormat(NSLocalizedString("N/A - Selected Tab: %@", comment: "Fallback selected tab label"), localizedIntegerString(selectedTab))) // More informative fallback
                 .frame(maxWidth: .infinity, maxHeight: .infinity) // Ensure it fills space

@@ -86,7 +86,7 @@ struct WeatherKitView: View {
         ZStack(alignment: .top) {
             // 1) Динамичен фон
             dynamicBackground
-                .edgesIgnoringSafeArea(.all)
+                .edgesIgnoringSafeArea(CalendarSafeAreaLayout.ignoredEdges(.all))
             
             // 2) ScrollView съдържащ цялото съдържание, включително и tърсачката (topBar)
             ScrollView(.vertical, showsIndicators: false) {
