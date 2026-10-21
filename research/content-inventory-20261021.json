@@ -1,5 +1,5 @@
 {
-  "date": "2026-10-21T19:28:29.150Z",
+  "date": "2026-10-21T19:52:04.244Z",
   "status": "source_inventory_not_quality_approval",
   "articles": [
     {
@@ -600,15 +600,18 @@
     {
       "locale": "de-DE",
       "slug": "who-can-see-what-in-google-calendar",
-      "title": "Wer was sieht, wenn Sie einen Google-Kalender teilen",
-      "description": "Googles Freigabestufen sind schnell gesetzt und leicht misszuverstehen. Was jede einzelne tatsächlich preisgibt, in klaren Worten.",
-      "descriptionCharacters": 130,
-      "sections": 2,
+      "title": "Google-Kalender freigeben: den tatsächlichen Zugriff prüfen",
+      "description": "Wähle Zugriff auf Verfügbarkeit, Details oder Bearbeitung. Prüfe vor dem Teilen auch öffentliche und Gruppenfreigaben, nicht nur einzelne Personen.",
+      "descriptionCharacters": 147,
+      "sections": 6,
       "faq": 3,
-      "words": 265,
+      "words": 671,
       "source": "articles-google.ts",
-      "sources": [],
-      "updated": "2026-08-27"
+      "sources": [
+        "https://support.google.com/calendar/answer/15716974?hl=en",
+        "https://support.google.com/calendar/answer/37082?hl=en"
+      ],
+      "updated": "2026-10-21"
     },
     {
       "locale": "de-DE",
@@ -727,6 +730,23 @@
         "https://support.apple.com/guide/calendar/import-or-export-calendars-icl1023/mac",
         "https://support.apple.com/en-gb/guide/mac-help/mchlp1531/mac",
         "https://support.microsoft.com/en-us/outlook/share-your-calendar-in-outlook-on-the-web"
+      ],
+      "updated": "2026-10-21"
+    },
+    {
+      "locale": "de-DE",
+      "slug": "keeping-track-of-who-replied",
+      "title": "Kalenderantworten: Teilnahme und Freigabezugriff unterscheiden",
+      "description": "Unterscheide Teilnahmeantworten von offenen Einladungen, anonymen Empfängern und angenommenen Freigaben. Bestätige Teilnahme ohne geschätzte Gästezahlen.",
+      "descriptionCharacters": 153,
+      "sections": 6,
+      "faq": 3,
+      "words": 675,
+      "source": "articles.ts",
+      "sources": [
+        "https://support.google.com/calendar/answer/37135?hl=en",
+        "https://support.apple.com/en-ph/guide/iphone/iphc0eddfe3c/ios",
+        "https://support.google.com/calendar/answer/37118?co=GENIE.Platform%3DDesktop&hl=en"
       ],
       "updated": "2026-10-21"
     },
@@ -1404,80 +1424,102 @@
     {
       "locale": "en-US",
       "slug": "sharing-one-event-not-your-calendar",
-      "title": "Sharing one event without handing over your calendar",
-      "description": "How sending a single event works, what the person on the other end actually receives, and why they do not need to install anything to see it.",
-      "descriptionCharacters": 141,
-      "sections": 3,
-      "faq": 0,
-      "words": 410,
+      "title": "Share one calendar event: choose the link and access you mean",
+      "description": "Share one event without sharing a whole calendar. Understand Reader, Writer and Owner access, preview links, updates and the limits of revocation.",
+      "descriptionCharacters": 146,
+      "sections": 6,
+      "faq": 3,
+      "words": 811,
       "source": "articles-sharing.ts",
-      "sources": [],
-      "updated": "2026-08-27"
+      "sources": [
+        "https://developer.apple.com/help/app-store-connect/offer-app-clip-experiences/overview-of-app-clips/",
+        "https://support.google.com/calendar/answer/37118?co=GENIE.Platform%3DDesktop&hl=en",
+        "https://support.microsoft.com/en-us/outlook/import-or-subscribe-to-a-calendar-in-outlook-com-or-outlook-on-the-web"
+      ],
+      "updated": "2026-10-21"
     },
     {
       "locale": "en-US",
       "slug": "inviting-people-who-do-not-have-the-app",
-      "title": "Inviting people who will never install your calendar app",
-      "description": "Most invitations fail because they ask for an install first. What a subscription link does instead, and how it behaves on Android, on desktop and in Outlook.",
-      "descriptionCharacters": 157,
-      "sections": 2,
-      "faq": 0,
-      "words": 257,
+      "title": "Sharing an event with someone who does not have Cloud Calendars",
+      "description": "Understand event previews, App Clips, full-app imports and ICS subscriptions before sending an invitation to someone who does not use Cloud Calendars.",
+      "descriptionCharacters": 150,
+      "sections": 6,
+      "faq": 3,
+      "words": 822,
       "source": "articles-sharing.ts",
-      "sources": [],
-      "updated": "2026-08-27"
+      "sources": [
+        "https://developer.apple.com/help/app-store-connect/offer-app-clip-experiences/overview-of-app-clips/",
+        "https://support.google.com/calendar/answer/37118?co=GENIE.Platform%3DDesktop&hl=en",
+        "https://support.microsoft.com/en-us/outlook/import-or-subscribe-to-a-calendar-in-outlook-com-or-outlook-on-the-web"
+      ],
+      "updated": "2026-10-21"
     },
     {
       "locale": "en-US",
       "slug": "a-calendar-that-is-yours-to-share",
-      "title": "A calendar of your own that other people can follow",
-      "description": "Sharing one event is useful. Sharing a small calendar that keeps updating is what people actually want for a club, a team or a family.",
-      "descriptionCharacters": 134,
-      "sections": 3,
-      "faq": 0,
-      "words": 278,
+      "title": "Share a calendar with the right people and permissions",
+      "description": "Choose a separate calendar, distinguish app sharing from provider sharing, and assign Reader, Writer or Owner access without promising instant updates.",
+      "descriptionCharacters": 151,
+      "sections": 6,
+      "faq": 3,
+      "words": 785,
       "source": "articles-sharing.ts",
-      "sources": [],
-      "updated": "2026-08-27"
+      "sources": [
+        "https://support.google.com/calendar/answer/37082?hl=en",
+        "https://support.microsoft.com/en-us/outlook/import-or-subscribe-to-a-calendar-in-outlook-com-or-outlook-on-the-web"
+      ],
+      "updated": "2026-10-21"
     },
     {
       "locale": "en-US",
       "slug": "who-can-see-what-in-google-calendar",
-      "title": "Who can see what, when you share a Google calendar",
-      "description": "Google's sharing levels are easy to set and easy to misunderstand. What each one really exposes, in plain terms.",
-      "descriptionCharacters": 112,
-      "sections": 2,
+      "title": "Google Calendar sharing permissions: check the access you actually grant",
+      "description": "Choose Google Calendar access for availability, details or editing. Check public and group access as well as individual permissions before sharing.",
+      "descriptionCharacters": 147,
+      "sections": 6,
       "faq": 3,
-      "words": 297,
+      "words": 752,
       "source": "articles-sharing.ts",
-      "sources": [],
-      "updated": "2026-08-27"
+      "sources": [
+        "https://support.google.com/calendar/answer/15716974?hl=en",
+        "https://support.google.com/calendar/answer/37082?hl=en"
+      ],
+      "updated": "2026-10-21"
     },
     {
       "locale": "en-US",
       "slug": "keeping-track-of-who-replied",
-      "title": "Knowing who is actually coming",
-      "description": "Invitations produce replies, and replies pile up somewhere you are not looking. Where attendee status lives and what to do about silence.",
-      "descriptionCharacters": 137,
-      "sections": 2,
-      "faq": 0,
-      "words": 156,
+      "title": "Calendar replies: separate attendance from sharing access",
+      "description": "Distinguish guest RSVPs from pending invitations, anonymous recipients and shared-calendar acceptance. Confirm attendance without inventing a headcount.",
+      "descriptionCharacters": 152,
+      "sections": 6,
+      "faq": 3,
+      "words": 796,
       "source": "articles-sharing.ts",
-      "sources": [],
-      "updated": "2026-08-27"
+      "sources": [
+        "https://support.google.com/calendar/answer/37135?hl=en",
+        "https://support.apple.com/en-ph/guide/iphone/iphc0eddfe3c/ios",
+        "https://support.google.com/calendar/answer/37118?co=GENIE.Platform%3DDesktop&hl=en"
+      ],
+      "updated": "2026-10-21"
     },
     {
       "locale": "en-US",
       "slug": "meeting-links-that-make-themselves",
-      "title": "Meeting links that appear without you fetching them",
-      "description": "Creating a call link in another tab and pasting it into an event is a small ritual repeated hundreds of times a year. It can simply not happen.",
-      "descriptionCharacters": 143,
-      "sections": 2,
-      "faq": 0,
-      "words": 179,
+      "title": "Google Meet and Microsoft Teams links: create, save and check",
+      "description": "See which calendars can create Meet or Teams links, how the plans differ and what to check when a saved event has no working joining link.",
+      "descriptionCharacters": 138,
+      "sections": 6,
+      "faq": 3,
+      "words": 818,
       "source": "articles-sharing.ts",
-      "sources": [],
-      "updated": "2026-08-27"
+      "sources": [
+        "https://developers.google.com/workspace/calendar/api/v3/reference/events",
+        "https://learn.microsoft.com/en-us/graph/outlook-calendar-online-meetings",
+        "https://support.google.com/calendar/answer/37118?co=GENIE.Platform%3DDesktop&hl=en"
+      ],
+      "updated": "2026-10-21"
     },
     {
       "locale": "en-US",
@@ -1805,15 +1847,18 @@
     {
       "locale": "es-ES",
       "slug": "who-can-see-what-in-google-calendar",
-      "title": "Quién ve qué cuando compartes un calendario de Google",
-      "description": "Los niveles de compartición de Google se ponen rápido y se entienden mal. Qué expone cada uno en realidad, dicho con claridad.",
-      "descriptionCharacters": 126,
-      "sections": 2,
+      "title": "Permisos de Google Calendar: revisa el acceso que realmente concedes",
+      "description": "Elige acceso a disponibilidad, detalles o edición. Revisa los permisos públicos y de grupos, además de los individuales, antes de compartir.",
+      "descriptionCharacters": 140,
+      "sections": 6,
       "faq": 3,
-      "words": 281,
+      "words": 794,
       "source": "articles-google.ts",
-      "sources": [],
-      "updated": "2026-08-27"
+      "sources": [
+        "https://support.google.com/calendar/answer/15716974?hl=en",
+        "https://support.google.com/calendar/answer/37082?hl=en"
+      ],
+      "updated": "2026-10-21"
     },
     {
       "locale": "es-ES",
@@ -1932,6 +1977,23 @@
         "https://support.apple.com/guide/calendar/import-or-export-calendars-icl1023/mac",
         "https://support.apple.com/en-gb/guide/mac-help/mchlp1531/mac",
         "https://support.microsoft.com/en-us/outlook/share-your-calendar-in-outlook-on-the-web"
+      ],
+      "updated": "2026-10-21"
+    },
+    {
+      "locale": "es-ES",
+      "slug": "keeping-track-of-who-replied",
+      "title": "Respuestas del calendario: distingue asistencia y acceso compartido",
+      "description": "Distingue respuestas de asistencia, invitaciones pendientes, destinatarios anónimos y acceso aceptado. Confirma asistentes sin inventar cifras.",
+      "descriptionCharacters": 143,
+      "sections": 6,
+      "faq": 3,
+      "words": 814,
+      "source": "articles.ts",
+      "sources": [
+        "https://support.google.com/calendar/answer/37135?hl=en",
+        "https://support.apple.com/en-ph/guide/iphone/iphc0eddfe3c/ios",
+        "https://support.google.com/calendar/answer/37118?co=GENIE.Platform%3DDesktop&hl=en"
       ],
       "updated": "2026-10-21"
     },
@@ -2266,15 +2328,18 @@
     {
       "locale": "fr-FR",
       "slug": "who-can-see-what-in-google-calendar",
-      "title": "Qui voit quoi lorsque vous partagez un agenda Google",
-      "description": "Les niveaux de partage de Google se règlent vite et se comprennent mal. Ce que chacun expose réellement, en termes simples.",
-      "descriptionCharacters": 123,
-      "sections": 2,
+      "title": "Autorisations Google Agenda : vérifiez l’accès réellement accordé",
+      "description": "Choisissez un accès aux disponibilités, aux détails ou à la modification. Vérifiez aussi les accès publics et par groupe avant de partager.",
+      "descriptionCharacters": 139,
+      "sections": 6,
       "faq": 3,
-      "words": 319,
+      "words": 781,
       "source": "articles-google.ts",
-      "sources": [],
-      "updated": "2026-08-27"
+      "sources": [
+        "https://support.google.com/calendar/answer/15716974?hl=en",
+        "https://support.google.com/calendar/answer/37082?hl=en"
+      ],
+      "updated": "2026-10-21"
     },
     {
       "locale": "fr-FR",
@@ -2393,6 +2458,23 @@
         "https://support.apple.com/guide/calendar/import-or-export-calendars-icl1023/mac",
         "https://support.apple.com/en-gb/guide/mac-help/mchlp1531/mac",
         "https://support.microsoft.com/en-us/outlook/share-your-calendar-in-outlook-on-the-web"
+      ],
+      "updated": "2026-10-21"
+    },
+    {
+      "locale": "fr-FR",
+      "slug": "keeping-track-of-who-replied",
+      "title": "Réponses aux invitations : distinguer présence et accès partagé",
+      "description": "Distinguez réponses de présence, invitations en attente, destinataires anonymes et partage accepté. Confirmez les présences sans inventer de total.",
+      "descriptionCharacters": 147,
+      "sections": 6,
+      "faq": 3,
+      "words": 815,
+      "source": "articles.ts",
+      "sources": [
+        "https://support.google.com/calendar/answer/37135?hl=en",
+        "https://support.apple.com/en-ph/guide/iphone/iphc0eddfe3c/ios",
+        "https://support.google.com/calendar/answer/37118?co=GENIE.Platform%3DDesktop&hl=en"
       ],
       "updated": "2026-10-21"
     },
@@ -3135,15 +3217,18 @@
     {
       "locale": "it",
       "slug": "who-can-see-what-in-google-calendar",
-      "title": "Chi vede cosa quando condividi un calendario Google",
-      "description": "I livelli di condivisione di Google si impostano in fretta e si fraintendono facilmente. Cosa espone davvero ciascuno, detto in modo semplice.",
-      "descriptionCharacters": 142,
-      "sections": 2,
+      "title": "Permessi di Google Calendar: controlla l’accesso effettivamente concesso",
+      "description": "Scegli accesso a disponibilità, dettagli o modifica. Prima di condividere controlla anche accessi pubblici e di gruppo, oltre a quelli individuali.",
+      "descriptionCharacters": 147,
+      "sections": 6,
       "faq": 3,
-      "words": 283,
+      "words": 735,
       "source": "articles-google.ts",
-      "sources": [],
-      "updated": "2026-08-27"
+      "sources": [
+        "https://support.google.com/calendar/answer/15716974?hl=en",
+        "https://support.google.com/calendar/answer/37082?hl=en"
+      ],
+      "updated": "2026-10-21"
     },
     {
       "locale": "it",
@@ -3262,6 +3347,23 @@
         "https://support.apple.com/guide/calendar/import-or-export-calendars-icl1023/mac",
         "https://support.apple.com/en-gb/guide/mac-help/mchlp1531/mac",
         "https://support.microsoft.com/en-us/outlook/share-your-calendar-in-outlook-on-the-web"
+      ],
+      "updated": "2026-10-21"
+    },
+    {
+      "locale": "it",
+      "slug": "keeping-track-of-who-replied",
+      "title": "Risposte agli inviti: distinguere partecipazione e accesso condiviso",
+      "description": "Distingui risposte di partecipazione, inviti in attesa, destinatari anonimi e accessi accettati. Conferma le presenze senza inventare un totale.",
+      "descriptionCharacters": 144,
+      "sections": 6,
+      "faq": 3,
+      "words": 734,
+      "source": "articles.ts",
+      "sources": [
+        "https://support.google.com/calendar/answer/37135?hl=en",
+        "https://support.apple.com/en-ph/guide/iphone/iphc0eddfe3c/ios",
+        "https://support.google.com/calendar/answer/37118?co=GENIE.Platform%3DDesktop&hl=en"
       ],
       "updated": "2026-10-21"
     },

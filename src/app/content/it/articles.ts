@@ -10,6 +10,100 @@ import { LocalisedArticle } from '../types';
  * riscrivere ogni frase senza toccare un numero.
  */
 export const ARTICLES_IT: Readonly<Record<string, LocalisedArticle>> = {
+"keeping-track-of-who-replied":{
+  "updated": "2026-10-21",
+  "title": "Risposte agli inviti: distinguere partecipazione e accesso condiviso",
+  "short": "Chi ha risposto e chi ha accesso",
+  "description": "Distingui risposte di partecipazione, inviti in attesa, destinatari anonimi e accessi accettati. Conferma le presenze senza inventare un totale.",
+  "lede": "Una persona può aprire un link, aggiungere un evento o accettare l’accesso senza promettere di partecipare. Decidi quale risposta ti serve prima di interpretare l’elenco dei destinatari. Questa guida è scritta da Arte Soft, sviluppatore di Cloud Calendars.",
+  "commonBelief": "Ogni destinatario o condivisione accettata sarebbe una presenza confermata, e il silenzio permetterebbe una stima affidabile.",
+  "sections": [
+    {
+      "heading": "1. Identifica il tipo di invito",
+      "body": [
+        "Un invito a una riunione del provider chiede una risposta di partecipazione. Una condivisione Cloud Calendars dà accesso a dettagli o a un calendario, eventualmente con modifica. Un’iscrizione ICS segue informazioni. Queste azioni possono riguardare la stessa riunione senza registrare la stessa decisione.",
+        "Un volontario può accettare l’accesso “Writer” per aggiornare l’evento senza partecipare. Un ospite può leggere l’anteprima web e rispondere con un messaggio. Nessuno dei due casi va contato soltanto da una schermata di gestione degli accessi."
+      ]
+    },
+    {
+      "heading": "2. Leggi i destinatari come informazioni di accesso",
+      "body": [
+        "Cloud Calendars distingue inviti email in attesa, destinatari identificati, anonimi e ruoli di accesso. Un invito in attesa può offrire il reinvio. “Reader”, “Writer” e “Owner” descrivono cosa il destinatario può fare con le informazioni condivise.",
+        "Il sistema registra accettazione o ricezione nei percorsi di aggiunta e accesso. È utile per capire la relazione di condivisione, ma non è una risposta di partecipazione Sì/Forse/No. Neppure una ricezione anonima identifica un ospite con nome da conteggiare."
+      ]
+    },
+    {
+      "heading": "3. Verifica la partecipazione nel percorso d’invito dell’organizzatore",
+      "body": [
+        "Google documenta risposte esplicite “Yes”, “No” e “Maybe”. Calendario Apple distingue “Accept”, “Maybe” e “Decline” per gli inviti supportati. Per verificarle usa l’evento e l’account corrispondenti dell’organizzatore.",
+        "Se una risposta manca o sembra errata, conferma con la persona l’email invitata e la versione dell’evento. Una copia importata, un link inoltrato o un evento in un altro account possono non rappresentare l’invito originale. Non presumere che ogni vista di terze parti abbia l’ultima risposta."
+      ]
+    },
+    {
+      "heading": "4. Lascia sconosciuta la partecipazione sconosciuta",
+      "body": [
+        "Una condivisione in attesa, nessuna risposta o un messaggio non letto non sono accettazioni o rifiuti affidabili. Registra separatamente conferme esplicite, rinunce e risposte ancora sconosciute. Non aggiungere una frazione fissa di destinatari silenziosi al totale confermato.",
+        "Per un pasto con una scadenza di prenotazione, indica entro quando serve rispondere e contatta direttamente chi manca. Il seguito dipende dall’evento: non esiste una regola universale per cui basti un promemoria due giorni prima."
+      ]
+    },
+    {
+      "heading": "5. Tratta i link delle riunioni come indicazioni per collegarsi",
+      "body": [
+        "Un URL Google Meet o Microsoft Teams indica dove collegarsi, non se qualcuno ha accettato o parteciperà. Cloud Calendars include Google Meet in Base e Microsoft Teams in Premium, secondo account e percorso del provider. Un piano superiore non rende più affidabile il conteggio.",
+        "Controlla che il link previsto sia nell’evento e funzioni per il pubblico desiderato. Importazioni e conversioni possono perdere informazioni di conferenza. Se cambi l’organizzazione della riunione, indica evento e link da usare anziché interpretare il vecchio accesso come conferma."
+      ]
+    },
+    {
+      "heading": "6. Conferma dopo un cambiamento importante",
+      "body": [
+        "Se un evento viene spostato in modo sostanziale, aggiornalo dal calendario di origine o dal percorso di condivisione. Poi avvisa le persone la cui presenza conta e chiedi una nuova conferma se necessario. Una risposta per martedì non vale necessariamente per giovedì.",
+        "Tieni l’elenco finale dei partecipanti separato da quello degli accessi. Revocare la modifica non annulla la partecipazione, e rifiutare l’accesso condiviso non significa necessariamente rifiutare l’incontro. Usa messaggi chiari perché tutti sappiano quale decisione chiedi."
+      ]
+    }
+  ],
+  "claims": {},
+  "practical": [
+    "Identifica se hai inviato un invito del provider, una condivisione dell’app o un feed.",
+    "Usa l’elenco di condivisione per accessi e inviti in attesa, non per totali di partecipazione.",
+    "Controlla quando pertinente la risposta del provider sull’evento effettivo dell’organizzatore.",
+    "Separa risposte sconosciute, conferme e rinunce.",
+    "Chiedi una risposta diretta entro una scadenza adeguata.",
+    "Dopo un cambiamento importante, conferma nuova organizzazione e link con gli ospiti interessati."
+  ],
+  "faq": [
+    {
+      "q": "Accettare l’accesso al calendario significa che la persona verrà?",
+      "a": "No. Significa che è stata accettata una relazione di condivisione tramite quel percorso. La partecipazione richiede una risposta all’invito del provider o una conferma esplicita."
+    },
+    {
+      "q": "Posso contare i destinatari anonimi come ospiti confermati?",
+      "a": "No. La ricezione anonima non è un impegno di partecipazione identificato. Può descrivere l’uso di un evento condiviso, ma non fornisce un elenco nominativo affidabile."
+    },
+    {
+      "q": "Serve Premium per sapere chi ha risposto?",
+      "a": "Non equiparare il piano all’affidabilità delle risposte. Premium aggiunge calendario Microsoft e Teams; ricevute di accesso e risposte di partecipazione restano informazioni diverse. Controlla invito originale e account dell’organizzatore."
+    }
+  ],
+  "sourcesHeading": "Riferimenti su partecipazione e importazione",
+  "sources": [
+    {
+      "label": "Google: rispondere agli inviti agli eventi",
+      "url": "https://support.google.com/calendar/answer/37135?hl=en"
+    },
+    {
+      "label": "Apple: rispondere agli inviti di Calendario su iPhone",
+      "url": "https://support.apple.com/en-ph/guide/iphone/iphc0eddfe3c/ios"
+    },
+    {
+      "label": "Google: importare eventi e relative limitazioni",
+      "url": "https://support.google.com/calendar/answer/37118?co=GENIE.Platform%3DDesktop&hl=en"
+    }
+  ],
+  "seeAlso": [
+    "sharing-one-event-not-your-calendar"
+  ]
+},
+
 "exchange-calendars-on-an-iphone":{
   "updated": "2026-10-21",
   "title": "Calendari Microsoft ed Exchange su iPhone: verifica prima la connessione",

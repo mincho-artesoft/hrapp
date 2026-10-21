@@ -10,6 +10,100 @@ import { LocalisedArticle } from '../types';
  * réécrire chaque phrase sans toucher à un nombre.
  */
 export const ARTICLES_FR_FR: Readonly<Record<string, LocalisedArticle>> = {
+"keeping-track-of-who-replied":{
+  "updated": "2026-10-21",
+  "title": "Réponses aux invitations : distinguer présence et accès partagé",
+  "short": "Qui a répondu et qui a accès",
+  "description": "Distinguez réponses de présence, invitations en attente, destinataires anonymes et partage accepté. Confirmez les présences sans inventer de total.",
+  "lede": "Une personne peut ouvrir un lien, ajouter un événement ou accepter un accès sans promettre de venir. Déterminez la réponse recherchée avant d’interpréter une liste de destinataires. Ce guide est rédigé par Arte Soft, développeur de Cloud Calendars.",
+  "commonBelief": "Tout destinataire ou partage accepté serait une présence confirmée, et le silence permettrait une estimation fiable.",
+  "sections": [
+    {
+      "heading": "1. Identifiez le type d’invitation",
+      "body": [
+        "Une invitation de réunion du fournisseur demande une réponse de présence. Un partage Cloud Calendars donne accès aux détails ou à un calendrier, parfois avec modification. Un abonnement ICS suit des informations. Ces actions peuvent concerner la même réunion sans enregistrer la même décision.",
+        "Un bénévole peut accepter un accès « Writer » pour mettre à jour l’événement sans y assister. Un invité peut lire l’aperçu web puis répondre par message. Aucun de ces cas ne doit être compté uniquement depuis un écran de gestion des accès."
+      ]
+    },
+    {
+      "heading": "2. Lisez les destinataires comme des informations d’accès",
+      "body": [
+        "Cloud Calendars distingue invitations par e-mail en attente, destinataires identifiés, destinataires anonymes et rôles d’accès. Une invitation en attente peut proposer un renvoi. « Reader », « Writer » et « Owner » décrivent ce que le destinataire peut faire des informations partagées.",
+        "Le système enregistre l’acceptation ou la réception lors des parcours d’ajout ou d’accès. Cela éclaire la relation de partage, mais ne constitue pas une réponse de présence Oui/Peut-être/Non. Une réception anonyme n’identifie pas non plus un invité nommé à compter."
+      ]
+    },
+    {
+      "heading": "3. Vérifiez la présence dans le parcours d’invitation de l’organisateur",
+      "body": [
+        "Google décrit des réponses explicites « Yes », « No » et « Maybe ». Calendrier Apple distingue aussi « Accept », « Maybe » et « Decline » pour les invitations prises en charge. Consultez l’événement et le compte correspondants de l’organisateur pour vérifier ces réponses.",
+        "Si une réponse paraît erronée ou manque, confirmez avec la personne l’adresse invitée et la version de l’événement. Une copie importée, un lien transféré ou un événement dans un autre compte peut ne pas représenter l’invitation d’origine. Ne supposez pas que tout affichage tiers contient la dernière réponse."
+      ]
+    },
+    {
+      "heading": "4. Laissez inconnue une présence inconnue",
+      "body": [
+        "Un partage en attente, une absence de réponse ou un message non lu n’est ni une acceptation ni un refus fiable. Séparez confirmations explicites, refus et réponses encore inconnues. N’ajoutez pas une proportion fixe des destinataires silencieux au total confirmé.",
+        "Pour un repas avec une date limite de réservation, indiquez quand vous avez besoin d’une réponse et contactez directement les personnes restantes. Le suivi dépend de l’événement ; aucune règle universelle ne dit qu’un seul rappel deux jours avant suffit."
+      ]
+    },
+    {
+      "heading": "5. Traitez les liens de réunion comme des moyens de rejoindre",
+      "body": [
+        "Une URL Google Meet ou Microsoft Teams indique où rejoindre, pas si la personne a accepté ou viendra. Cloud Calendars inclut Google Meet dans Base et Microsoft Teams dans Premium, selon le compte et le parcours du fournisseur. Une formule supérieure ne rend pas le décompte plus fiable.",
+        "Vérifiez que le lien prévu figure sur l’événement et fonctionne pour le public visé. Les imports et conversions peuvent perdre des informations de conférence. Si vous changez l’organisation, précisez l’événement et le lien à utiliser plutôt que de prendre l’ancien accès pour une confirmation."
+      ]
+    },
+    {
+      "heading": "6. Confirmez après un changement important",
+      "body": [
+        "Si un événement est sensiblement déplacé, mettez-le à jour via son calendrier d’origine ou le parcours de partage. Prévenez ensuite les personnes dont la présence compte et demandez une nouvelle confirmation si nécessaire. Une réponse pour mardi ne vaut pas forcément pour jeudi.",
+        "Séparez la liste finale des présents de celle des accès. Retirer les droits de modification n’annule pas la présence ; refuser un accès partagé ne signifie pas forcément refuser la rencontre. Formulez clairement la décision demandée dans vos messages."
+      ]
+    }
+  ],
+  "claims": {},
+  "practical": [
+    "Identifiez si vous avez envoyé une invitation du fournisseur, un partage de l’app ou un flux.",
+    "Utilisez la liste de partage pour les accès et invitations en attente, pas les totaux de présence.",
+    "Vérifiez si nécessaire la réponse chez le fournisseur sur le vrai événement de l’organisateur.",
+    "Séparez réponses inconnues, confirmations et refus.",
+    "Demandez une réponse directe avec un délai adapté.",
+    "Après une modification majeure, confirmez les nouvelles modalités et le lien avec les invités concernés."
+  ],
+  "faq": [
+    {
+      "q": "Accepter l’accès au calendrier signifie-t-il que la personne vient ?",
+      "a": "Non. Cela signifie qu’une relation de partage a été acceptée par ce parcours. La présence exige une réponse à l’invitation du fournisseur ou une confirmation explicite."
+    },
+    {
+      "q": "Puis-je compter les destinataires anonymes comme invités confirmés ?",
+      "a": "Non. Une réception anonyme n’est pas un engagement de présence identifié. Elle peut décrire l’usage d’un événement partagé, sans fournir une liste nominative fiable."
+    },
+    {
+      "q": "Faut-il Premium pour savoir qui a répondu ?",
+      "a": "Ne confondez pas formule et fiabilité des réponses. Premium ajoute les fonctions de calendrier Microsoft et Teams ; reçus d’accès et réponses de présence restent distincts. Vérifiez l’invitation d’origine et le compte de l’organisateur."
+    }
+  ],
+  "sourcesHeading": "Références sur les réponses et les imports",
+  "sources": [
+    {
+      "label": "Google : répondre aux invitations à des événements",
+      "url": "https://support.google.com/calendar/answer/37135?hl=en"
+    },
+    {
+      "label": "Apple : répondre aux invitations Calendrier sur iPhone",
+      "url": "https://support.apple.com/en-ph/guide/iphone/iphc0eddfe3c/ios"
+    },
+    {
+      "label": "Google : importer des événements et limites associées",
+      "url": "https://support.google.com/calendar/answer/37118?co=GENIE.Platform%3DDesktop&hl=en"
+    }
+  ],
+  "seeAlso": [
+    "sharing-one-event-not-your-calendar"
+  ]
+},
+
 "exchange-calendars-on-an-iphone":{
   "updated": "2026-10-21",
   "title": "Calendriers Microsoft et Exchange sur iPhone : vérifiez d’abord la connexion",

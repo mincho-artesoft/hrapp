@@ -1,0 +1,95 @@
+{
+  "updated": "2026-10-21",
+  "title": "Calendar replies: separate attendance from sharing access",
+  "short": "Who replied and who has access",
+  "description": "Distinguish guest RSVPs from pending invitations, anonymous recipients and shared-calendar acceptance. Confirm attendance without inventing a headcount.",
+  "lede": "A person can open a link, add an event or accept calendar access without promising to attend. Decide which answer you need before interpreting a recipient list. This guide is written by Arte Soft, the developer of Cloud Calendars.",
+  "commonBelief": "Everyone recorded as a recipient or accepted share is a confirmed attendee, and silence can be converted into a reliable estimate.",
+  "sections": [
+    {
+      "heading": "1. Identify the kind of invitation",
+      "body": [
+        "A provider meeting invitation asks a guest for an attendance response. A Cloud Calendars share gives someone access to event details or a calendar, possibly with editing rights. An ICS subscription follows information. These actions can concern the same meeting without recording the same decision.",
+        "For example, a volunteer may accept Writer access to update an event but not attend it. A guest may read the details in a web preview and then reply by message. Neither case should be counted solely from an access-management screen."
+      ]
+    },
+    {
+      "heading": "2. Read sharing recipients as access information",
+      "body": [
+        "Cloud Calendars recipient information distinguishes pending email invitations, identified recipients, anonymous recipients and access roles. A pending invitation may offer a resend action. Reader, Writer and Owner describe what the recipient can do with shared information.",
+        "The sharing system records acceptance or receipt during its add/access flows. That record is useful for understanding the sharing relationship, but it is not a Yes/Maybe/No attendance answer. Anonymous reception also does not identify a named guest for your headcount."
+      ]
+    },
+    {
+      "heading": "3. Check attendance in the organizer’s invitation workflow",
+      "body": [
+        "For a Google meeting invitation, Google documents explicit Yes, No and Maybe responses. Apple Calendar likewise distinguishes Accept, Maybe and Decline for supported invitations. Use the organizer’s corresponding event and account when checking those replies.",
+        "If a reply looks wrong or missing, confirm the invited email and the event version with the person. An imported copy, a forwarded link or an event in another account may not represent the original invitation. Do not assume that every third-party display has the latest response."
+      ]
+    },
+    {
+      "heading": "4. Keep unknown attendance unknown",
+      "body": [
+        "A pending share, no response or an unread message is not a reliable acceptance or refusal. Record the people who explicitly confirmed, those who declined and those whose answer is still unknown. Do not add a fixed fraction of silent recipients to the confirmed total.",
+        "For a meal with a booking deadline, state the date by which you need a reply and ask the remaining people directly. The appropriate follow-up depends on the event; there is no universal rule that one reminder two days before is enough."
+      ]
+    },
+    {
+      "heading": "5. Treat meeting links as joining details",
+      "body": [
+        "A Google Meet or Microsoft Teams URL tells someone where to join, not whether they accepted or will attend. Cloud Calendars lists Google Meet with Base features and Microsoft Teams with Premium, subject to the relevant account and provider flow. A higher plan is not a more reliable attendance count.",
+        "Check that the intended link exists on the event and works for the intended audience. File imports and other conversions can lose conference information. If you change the meeting arrangement, tell participants which event and link to use instead of interpreting their old access record as confirmation."
+      ]
+    },
+    {
+      "heading": "6. Close the loop after an important change",
+      "body": [
+        "When an event moves substantially, update it through its owning calendar or sharing flow. Then tell the people whose attendance matters and ask for renewed confirmation where needed. A previous response to Tuesday is not necessarily an answer to Thursday.",
+        "Keep the final attendance list separate from the access list. Removing editing rights does not cancel a guest’s attendance, and declining shared access does not necessarily decline the underlying gathering. Use clear messages so people know which decision you are asking them to make."
+      ]
+    }
+  ],
+  "claims": {},
+  "practical": [
+    "Identify whether you sent a provider meeting invitation, an app share or a feed.",
+    "Use the sharing list to check access and pending invitations, not attendance totals.",
+    "Check provider RSVP status on the organizer’s actual event where applicable.",
+    "Keep unknown replies separate from confirmed and declined guests.",
+    "Ask for a direct answer by a deadline appropriate to your event.",
+    "After a major change, confirm the new arrangement and joining link with affected guests."
+  ],
+  "faq": [
+    {
+      "q": "Does accepted calendar access mean the person is coming?",
+      "a": "No. It means a sharing relationship was accepted through that flow. Attendance needs a provider RSVP or an explicit answer from the person."
+    },
+    {
+      "q": "Can I count anonymous recipients as confirmed guests?",
+      "a": "No. Anonymous reception is not an identified attendance commitment. It may help describe use of a shared event, but it cannot supply a reliable named guest list."
+    },
+    {
+      "q": "Do I need Premium to know who replied?",
+      "a": "Do not equate an app tier with RSVP reliability. Premium adds Microsoft Calendar and Teams features; access receipts and provider attendance responses remain different kinds of information. Check the original invitation and organizer account."
+    }
+  ],
+  "sourcesHeading": "Attendance and import references",
+  "sources": [
+    {
+      "label": "Google: responding to event invitations",
+      "url": "https://support.google.com/calendar/answer/37135?hl=en"
+    },
+    {
+      "label": "Apple: reply to Calendar invitations on iPhone",
+      "url": "https://support.apple.com/en-ph/guide/iphone/iphc0eddfe3c/ios"
+    },
+    {
+      "label": "Google: importing events and its limitations",
+      "url": "https://support.google.com/calendar/answer/37118?co=GENIE.Platform%3DDesktop&hl=en"
+    }
+  ],
+  "seeAlso": [
+    "sharing-one-event-not-your-calendar",
+    "inviting-people-who-do-not-have-the-app",
+    "meeting-links-that-make-themselves"
+  ]
+}

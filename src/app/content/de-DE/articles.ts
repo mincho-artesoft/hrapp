@@ -10,6 +10,100 @@ import { LocalisedArticle } from '../types';
  * eine Übersetzung jeden Satz umschreiben kann, ohne eine Zahl zu ändern.
  */
 export const ARTICLES_DE_DE: Readonly<Record<string, LocalisedArticle>> = {
+"keeping-track-of-who-replied":{
+  "updated": "2026-10-21",
+  "title": "Kalenderantworten: Teilnahme und Freigabezugriff unterscheiden",
+  "short": "Wer geantwortet hat und wer Zugriff hat",
+  "description": "Unterscheide Teilnahmeantworten von offenen Einladungen, anonymen Empfängern und angenommenen Freigaben. Bestätige Teilnahme ohne geschätzte Gästezahlen.",
+  "lede": "Eine Person kann einen Link öffnen, ein Ereignis hinzufügen oder Kalenderzugriff annehmen, ohne ihre Teilnahme zuzusagen. Kläre vor dem Lesen einer Empfängerliste, welche Antwort du brauchst. Dieser Leitfaden stammt von Arte Soft, dem Entwickler von Cloud Calendars.",
+  "commonBelief": "Alle verzeichneten Empfänger oder angenommenen Freigaben seien bestätigte Teilnehmende; aus Schweigen lasse sich zuverlässig eine Zahl ableiten.",
+  "sections": [
+    {
+      "heading": "1. Bestimme die Art der Einladung",
+      "body": [
+        "Eine Besprechungseinladung des Anbieters fragt nach Teilnahme. Eine Cloud-Calendars-Freigabe gibt Zugriff auf Ereignisdetails oder einen Kalender, möglicherweise mit Bearbeitungsrechten. Ein ICS-Abonnement folgt Informationen. Diese Vorgänge können dieselbe Besprechung betreffen, ohne dieselbe Entscheidung zu erfassen.",
+        "Eine freiwillig helfende Person kann etwa „Writer“-Zugriff zur Aktualisierung eines Ereignisses annehmen, ohne teilzunehmen. Ein Gast liest vielleicht die Webvorschau und antwortet anschließend per Nachricht. Zähle keinen dieser Fälle allein anhand der Zugriffsverwaltung."
+      ]
+    },
+    {
+      "heading": "2. Lies Freigabeempfänger als Zugriffsinformation",
+      "body": [
+        "Die Empfängerinformationen in Cloud Calendars unterscheiden offene E-Mail-Einladungen, identifizierte und anonyme Empfänger sowie Zugriffsrollen. Bei einer offenen Einladung kann erneutes Senden angeboten werden. „Reader“, „Writer“ und „Owner“ beschreiben die Möglichkeiten im Umgang mit geteilten Informationen.",
+        "Das Freigabesystem erfasst Annahme oder Empfang beim Hinzufügen beziehungsweise Zugreifen. Das hilft, die Freigabebeziehung zu verstehen, ist aber keine Teilnahmeantwort Ja/Vielleicht/Nein. Auch anonymer Empfang identifiziert keinen namentlichen Gast für deine Teilnehmerzahl."
+      ]
+    },
+    {
+      "heading": "3. Prüfe Teilnahme im Einladungsablauf des Organisators",
+      "body": [
+        "Google dokumentiert für Besprechungseinladungen ausdrückliche Antworten „Yes“, „No“ und „Maybe“. Apple Kalender unterscheidet bei unterstützten Einladungen ebenfalls „Accept“, „Maybe“ und „Decline“. Prüfe Antworten am entsprechenden Ereignis und Konto des Organisators.",
+        "Fehlt eine Antwort oder wirkt sie falsch, bestätige mit der Person die eingeladene E-Mail-Adresse und Ereignisversion. Eine importierte Kopie, ein weitergeleiteter Link oder ein Ereignis in einem anderen Konto muss nicht die ursprüngliche Einladung abbilden. Nicht jede Drittanbieteranzeige enthält zwingend die neueste Antwort."
+      ]
+    },
+    {
+      "heading": "4. Lass unbekannte Teilnahme unbekannt",
+      "body": [
+        "Eine offene Freigabe, fehlende Antwort oder ungelesene Nachricht ist weder zuverlässige Zusage noch Absage. Erfasse ausdrücklich bestätigte Personen, Absagen und weiterhin unbekannte Antworten getrennt. Addiere keinen festen Anteil schweigender Empfänger zur bestätigten Zahl.",
+        "Nenne bei einem Essen mit Buchungsfrist das Datum, bis zu dem du eine Antwort brauchst, und frage die übrigen Personen direkt. Das Nachfassen hängt vom Ereignis ab; es gibt keine allgemeine Regel, dass eine Erinnerung zwei Tage vorher genügt."
+      ]
+    },
+    {
+      "heading": "5. Behandle Besprechungslinks als Beitrittsinformationen",
+      "body": [
+        "Eine Google-Meet- oder Microsoft-Teams-URL zeigt, wo jemand beitreten kann, nicht ob er zugesagt hat oder teilnehmen wird. Cloud Calendars führt Google Meet unter Base und Microsoft Teams unter Premium, abhängig vom Konto und Anbieterablauf. Ein höherer Tarif macht die Teilnehmerzahl nicht zuverlässiger.",
+        "Prüfe, ob der richtige Link im Ereignis steht und für die vorgesehene Zielgruppe funktioniert. Dateiimporte und Umwandlungen können Konferenzinformationen verlieren. Änderst du die Besprechung, teile den Beteiligten Ereignis und Link mit, statt ihren alten Zugriffsdatensatz als Bestätigung zu deuten."
+      ]
+    },
+    {
+      "heading": "6. Bestätige wichtige Änderungen erneut",
+      "body": [
+        "Verschiebt sich ein Ereignis wesentlich, aktualisiere es über den zuständigen Kalender oder Freigabeablauf. Informiere anschließend die Personen, auf deren Teilnahme es ankommt, und bitte bei Bedarf um erneute Bestätigung. Eine frühere Antwort auf Dienstag gilt nicht unbedingt für Donnerstag.",
+        "Halte die endgültige Teilnehmerliste getrennt von der Zugriffsliste. Bearbeitungsrechte zu entfernen sagt die Teilnahme nicht ab; geteilten Zugriff abzulehnen lehnt nicht zwangsläufig das Treffen ab. Formuliere Nachrichten klar, damit alle wissen, welche Entscheidung gefragt ist."
+      ]
+    }
+  ],
+  "claims": {},
+  "practical": [
+    "Bestimme, ob du eine Anbietereinladung, eine App-Freigabe oder einen Feed gesendet hast.",
+    "Nutze die Freigabeliste für Zugriffe und offene Einladungen, nicht für Teilnehmerzahlen.",
+    "Prüfe gegebenenfalls die Anbieterantwort am tatsächlichen Ereignis des Organisators.",
+    "Trenne unbekannte Antworten von Zusagen und Absagen.",
+    "Bitte um eine direkte Antwort bis zu einer passenden Frist.",
+    "Bestätige nach wesentlichen Änderungen die neue Vereinbarung und den Beitrittslink mit betroffenen Gästen."
+  ],
+  "faq": [
+    {
+      "q": "Bedeutet angenommener Kalenderzugriff, dass die Person kommt?",
+      "a": "Nein. Damit wurde eine Freigabebeziehung über diesen Ablauf angenommen. Teilnahme erfordert eine Anbieterantwort oder eine ausdrückliche Rückmeldung der Person."
+    },
+    {
+      "q": "Kann ich anonyme Empfänger als bestätigte Gäste zählen?",
+      "a": "Nein. Anonymer Empfang ist keine identifizierte Teilnahmezusage. Er kann die Nutzung eines geteilten Ereignisses beschreiben, liefert aber keine verlässliche namentliche Gästeliste."
+    },
+    {
+      "q": "Brauche ich Premium, um zu sehen, wer geantwortet hat?",
+      "a": "Setze einen App-Tarif nicht mit zuverlässigen Teilnahmeantworten gleich. Premium ergänzt Microsoft-Kalender und Teams; Zugriffsbestätigungen und Anbieterantworten bleiben unterschiedliche Informationen. Prüfe ursprüngliche Einladung und Organisatorkonto."
+    }
+  ],
+  "sourcesHeading": "Quellen zu Teilnahme und Import",
+  "sources": [
+    {
+      "label": "Google: auf Ereigniseinladungen antworten",
+      "url": "https://support.google.com/calendar/answer/37135?hl=en"
+    },
+    {
+      "label": "Apple: auf Kalendereinladungen am iPhone antworten",
+      "url": "https://support.apple.com/en-ph/guide/iphone/iphc0eddfe3c/ios"
+    },
+    {
+      "label": "Google: Ereignisimport und Einschränkungen",
+      "url": "https://support.google.com/calendar/answer/37118?co=GENIE.Platform%3DDesktop&hl=en"
+    }
+  ],
+  "seeAlso": [
+    "sharing-one-event-not-your-calendar"
+  ]
+},
+
 "exchange-calendars-on-an-iphone":{
   "updated": "2026-10-21",
   "title": "Microsoft- und Exchange-Kalender auf dem iPhone: zuerst die Verbindung prüfen",

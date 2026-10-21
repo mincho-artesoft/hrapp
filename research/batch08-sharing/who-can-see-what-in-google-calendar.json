@@ -1,0 +1,91 @@
+{
+  "title": "Google Calendar sharing permissions: check the access you actually grant",
+  "short": "Google Calendar access and privacy",
+  "description": "Choose Google Calendar access for availability, details or editing. Check public and group access as well as individual permissions before sharing.",
+  "lede": "Before sharing a calendar, decide what the other person needs to do. Scheduling around you, reading event details and maintaining the calendar are different tasks. This guide is published by Arte Soft, the developer of Cloud Calendars.",
+  "commonBelief": "Giving one person a restricted setting guarantees they cannot see details through any other route.",
+  "sections": [
+    {
+      "heading": "Match the access to the task",
+      "body": [
+        "A colleague arranging a time may need availability without appointment details. A collaborator maintaining a project schedule needs a different arrangement. Decide the task first, then inspect the permission shown in the calendar\u2019s current sharing settings.",
+        "Google distinguishes availability, event details and several editing levels. One editing option limits access to private events; another permits event editing and details, while the strongest also permits sharing administration. Do not treat every option containing the word changes as equivalent."
+      ]
+    },
+    {
+      "heading": "Inspect calendar-wide access as well as one person",
+      "body": [
+        "Check whether the calendar is public, available to your organisation, or shared through a group, in addition to named individuals. Google says broader calendar access can override a narrower grant: restricting one person does not undo details already made public.",
+        "For example, consider a club schedule published for members. Before placing a personal appointment on it, check the calendar\u2019s audience rather than assuming that the permission beside one friend is the only relevant setting. Keep private appointments in an appropriate destination."
+      ]
+    },
+    {
+      "heading": "Use Google\u2019s settings for the exact calendar",
+      "body": [
+        "In Google Calendar on a computer, find the intended calendar under your calendars, open its menu and go to its sharing settings. Google documents separate areas for people or groups and broader access. Check the calendar name and signed-in account before making a change.",
+        "Confirm the recipient\u2019s intended Google identity when inviting them. If they cannot find the calendar, verify that address and the invitation message rather than granting broader access to make it appear. A missing display and insufficient editing permission are different problems."
+      ]
+    },
+    {
+      "heading": "Test the intended result without private appointments",
+      "body": [
+        "Use an ordinary test appointment that contains no private title, notes, location or guest list. Ask the intended recipient to confirm what they can see and, only when editing is required and permitted, what they can change. Do not distribute your account credentials to perform this check.",
+        "Record the calendar and granted role, then review the result after changing the setting. This verifies the arrangement you intended; it does not prove that information previously read or copied has disappeared. Avoid testing by publishing a real work schedule."
+      ]
+    },
+    {
+      "heading": "Keep work policies and app plans separate",
+      "body": [
+        "Google states that work or school administrators may restrict sharing controls. When the required setting is unavailable, use the organisation\u2019s approved route. Do not publish work information as a workaround for an account restriction.",
+        "Cloud Calendars can display connected calendars, but its plan names do not redefine Google permissions. Advanced removes ads; it is not a payment that grants another person access to every Google event. Check the provider\u2019s sharing arrangement and verify the accepted result instead of relying only on an available local editor."
+      ]
+    },
+    {
+      "heading": "Review and remove the access you no longer need",
+      "body": [
+        "When a project ends, review the actual recipients, groups and any broader publication. Removing one named person is only one part of the check when other access routes exist. Agree who maintains the schedule and how future access changes will be handled.",
+        "Google documents removing people or groups and disabling broader sharing separately. Removing access cannot recall an exported file, screenshot or information already copied elsewhere. Treat those as a separate follow-up with the people involved, rather than promising that one switch erases every previous copy."
+      ]
+    }
+  ],
+  "claims": {},
+  "practical": [
+    "Identify the calendar and the recipient\u2019s intended task.",
+    "Inspect individual, group, organisation and public access.",
+    "Choose the permission for that task using current Google settings.",
+    "Verify the recipient identity before changing access.",
+    "Check a harmless test event from the recipient\u2019s side.",
+    "Review obsolete access routes without assuming previous copies are recalled."
+  ],
+  "faq": [
+    {
+      "q": "Does a restricted individual grant override a public calendar?",
+      "a": "No. Google documents that broader calendar permissions take priority when access settings conflict. Review public and organisation settings as well as the person\u2019s entry."
+    },
+    {
+      "q": "Do all editing permissions expose private events in the same way?",
+      "a": "No. Google documents an editing option that limits private-event access separately from other editing and sharing-management options. Read the exact current permission before choosing it."
+    },
+    {
+      "q": "Does buying Advanced change Google sharing rights?",
+      "a": "No. Advanced removes ads in Cloud Calendars. Provider access depends on the calendar\u2019s permissions and any organisation restrictions."
+    }
+  ],
+  "sourcesHeading": "Current Google permission and sharing guidance",
+  "sources": [
+    {
+      "label": "Google: choose calendar permissions",
+      "url": "https://support.google.com/calendar/answer/15716974?hl=en"
+    },
+    {
+      "label": "Google: share a calendar and remove access",
+      "url": "https://support.google.com/calendar/answer/37082?hl=en"
+    }
+  ],
+  "seeAlso": [
+    "a-calendar-that-is-yours-to-share",
+    "why-a-shared-calendar-does-not-appear",
+    "work-and-personal-without-two-apps"
+  ],
+  "updated": "2026-10-21"
+}

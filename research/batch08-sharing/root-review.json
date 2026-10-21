@@ -1,0 +1,32 @@
+{
+  "date": "2026-10-21",
+  "rootPrimaryReads": [
+    {
+      "url": "https://support.google.com/calendar/answer/15716974?hl=en",
+      "scope": "Complete155line returned text; permissions table26-35 andsharingsteps36-68 specifically reviewed."
+    },
+    {
+      "url": "https://support.google.com/calendar/answer/37082?hl=en",
+      "scope": "Returned193line source, mainsections19-107 reviewed. No invented alwaysprivate or onlyfourlevels claim."
+    }
+  ],
+  "rootNativeReads": [
+    {
+      "path": "/Users/minchomilev/work/hrapp/CalendarAppClip/EventClipPreviewView.swift",
+      "lines": "62-88",
+      "finding": "Explicitpreview-onlynote/fullappneededtoadd."
+    },
+    {
+      "path": "/Users/minchomilev/work/cloud-calendars-api-nest/src/calendar/calendar.controller.ts",
+      "lines": "36-57",
+      "finding": "Email/QRlandingopensfullappnotAppClip."
+    }
+  ],
+  "sourceScope": "Codeonly; not deployedbackend/releasedbinary or actualinvitationruntime certification. No credentials, dataqueries or messages sent.",
+  "rootEdits": [
+    "SixENcanonicals drafted/reviewed; replaceallshares-are-ICS header.",
+    "Disablewrongsharedprice rowsGooglepermissions/RSVP/Meet acrossallactual locales using ARTICLE_FACTS; copy correctness outside rewrittenlocales not therebycertified.",
+    "Articlepadding includes fixedheaderheight; verifybreadcrumb in browser beforepublication."
+  ],
+  "legacyPageNote": "Legacyfirst-personarticle explicitlynamesMinchoMilev/ArteSoftPublishing; no basis to call it fabricated. Independent-customer phrasing and datedclaims still needfullbody/provenance review; notmodifiedthisbatch."
+}

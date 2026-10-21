@@ -10,6 +10,100 @@ import { LocalisedArticle } from '../types';
  * reescribir cada frase sin tocar un número.
  */
 export const ARTICLES_ES_ES: Readonly<Record<string, LocalisedArticle>> = {
+"keeping-track-of-who-replied":{
+  "updated": "2026-10-21",
+  "title": "Respuestas del calendario: distingue asistencia y acceso compartido",
+  "short": "Quién respondió y quién tiene acceso",
+  "description": "Distingue respuestas de asistencia, invitaciones pendientes, destinatarios anónimos y acceso aceptado. Confirma asistentes sin inventar cifras.",
+  "lede": "Una persona puede abrir un enlace, añadir un evento o aceptar acceso al calendario sin prometer que asistirá. Decide qué respuesta necesitas antes de interpretar la lista de destinatarios. Esta guía la escribe Arte Soft, desarrollador de Cloud Calendars.",
+  "commonBelief": "Toda persona registrada como destinataria o acceso aceptado es un asistente confirmado, y el silencio permite hacer una estimación fiable.",
+  "sections": [
+    {
+      "heading": "1. Identifica el tipo de invitación",
+      "body": [
+        "Una invitación de reunión del proveedor pide una respuesta de asistencia. Un enlace compartido de Cloud Calendars da acceso a detalles o a un calendario, quizá con permisos de edición. Una suscripción ICS sigue información. Estas acciones pueden referirse a la misma reunión sin registrar la misma decisión.",
+        "Por ejemplo, un voluntario puede aceptar acceso «Writer» para actualizar un evento sin asistir. Un invitado puede leer los detalles en una vista web y responder por mensaje. Ningún caso debe contarse solo desde una pantalla de gestión de acceso."
+      ]
+    },
+    {
+      "heading": "2. Interpreta los destinatarios como información de acceso",
+      "body": [
+        "La información de destinatarios de Cloud Calendars distingue invitaciones por correo pendientes, destinatarios identificados, anónimos y roles de acceso. Una invitación pendiente puede ofrecer reenvío. «Reader», «Writer» y «Owner» describen lo que se puede hacer con la información compartida.",
+        "El sistema registra aceptación o recepción durante los procesos de añadir o acceder. Sirve para entender la relación de acceso, pero no es una respuesta de asistencia Sí/Quizá/No. La recepción anónima tampoco identifica a un invitado concreto para el recuento."
+      ]
+    },
+    {
+      "heading": "3. Consulta la asistencia en el proceso de invitación del organizador",
+      "body": [
+        "Google documenta respuestas explícitas «Yes», «No» y «Maybe» para sus invitaciones. Calendario de Apple distingue «Accept», «Maybe» y «Decline» en invitaciones compatibles. Usa el evento y la cuenta correspondientes del organizador para comprobarlas.",
+        "Si una respuesta falta o parece incorrecta, confirma con la persona el correo invitado y la versión del evento. Una copia importada, un enlace reenviado o un evento de otra cuenta pueden no representar la invitación original. No supongas que toda visualización de terceros tiene la respuesta más reciente."
+      ]
+    },
+    {
+      "heading": "4. Mantén desconocida la asistencia que no se conoce",
+      "body": [
+        "Un acceso pendiente, la falta de respuesta o un mensaje sin leer no equivalen a aceptar ni rechazar de forma fiable. Registra por separado confirmaciones expresas, rechazos y respuestas aún desconocidas. No sumes una fracción fija de destinatarios silenciosos al total confirmado.",
+        "Para una comida con fecha límite de reserva, indica cuándo necesitas respuesta y pregunta directamente a quienes faltan. El seguimiento depende del evento; no existe una regla universal según la cual baste un recordatorio dos días antes."
+      ]
+    },
+    {
+      "heading": "5. Trata los enlaces de reunión como datos para unirse",
+      "body": [
+        "Una URL de Google Meet o Microsoft Teams indica dónde unirse, no si alguien aceptó o asistirá. Cloud Calendars incluye Google Meet en Base y Microsoft Teams en Premium, según la cuenta y el proceso del proveedor. Un plan superior no aporta un recuento más fiable.",
+        "Comprueba que el enlace previsto exista en el evento y funcione para el público previsto. Las importaciones y conversiones pueden perder información de conferencia. Si cambias la reunión, indica qué evento y enlace usar en lugar de interpretar el antiguo registro de acceso como confirmación."
+      ]
+    },
+    {
+      "heading": "6. Confirma de nuevo después de un cambio importante",
+      "body": [
+        "Si un evento cambia sustancialmente de horario, actualízalo desde su calendario de origen o proceso para compartir. Después avisa a quienes deban asistir y pide confirmación renovada cuando haga falta. Una respuesta al martes no es necesariamente una respuesta al jueves.",
+        "Separa la lista final de asistentes de la lista de acceso. Quitar permisos de edición no cancela la asistencia de un invitado, y rechazar acceso compartido no implica rechazar el encuentro. Usa mensajes claros para que sepan qué decisión les estás pidiendo."
+      ]
+    }
+  ],
+  "claims": {},
+  "practical": [
+    "Identifica si enviaste una invitación de reunión del proveedor, un acceso de la app o un feed.",
+    "Usa la lista compartida para consultar acceso e invitaciones pendientes, no totales de asistentes.",
+    "Comprueba la respuesta del proveedor en el evento real del organizador cuando corresponda.",
+    "Separa respuestas desconocidas, confirmaciones y rechazos.",
+    "Pide una respuesta directa con un plazo adecuado al evento.",
+    "Tras un cambio importante, confirma la nueva organización y el enlace con los invitados afectados."
+  ],
+  "faq": [
+    {
+      "q": "¿Aceptar acceso al calendario significa que la persona viene?",
+      "a": "No. Significa que aceptó una relación de acceso mediante ese proceso. La asistencia necesita una respuesta en la invitación del proveedor o una confirmación explícita."
+    },
+    {
+      "q": "¿Puedo contar destinatarios anónimos como invitados confirmados?",
+      "a": "No. La recepción anónima no es un compromiso de asistencia identificado. Puede describir el uso de un evento compartido, pero no proporciona una lista fiable de invitados con nombre."
+    },
+    {
+      "q": "¿Necesito Premium para saber quién respondió?",
+      "a": "No equipares el nivel de la app con la fiabilidad de las respuestas. Premium añade Microsoft Calendar y Teams; los registros de acceso y las respuestas de asistencia siguen siendo información distinta. Revisa la invitación original y la cuenta del organizador."
+    }
+  ],
+  "sourcesHeading": "Referencias sobre asistencia e importación",
+  "sources": [
+    {
+      "label": "Google: responder a invitaciones de eventos",
+      "url": "https://support.google.com/calendar/answer/37135?hl=en"
+    },
+    {
+      "label": "Apple: responder a invitaciones de Calendario en iPhone",
+      "url": "https://support.apple.com/en-ph/guide/iphone/iphc0eddfe3c/ios"
+    },
+    {
+      "label": "Google: importar eventos y sus limitaciones",
+      "url": "https://support.google.com/calendar/answer/37118?co=GENIE.Platform%3DDesktop&hl=en"
+    }
+  ],
+  "seeAlso": [
+    "sharing-one-event-not-your-calendar"
+  ]
+},
+
 "exchange-calendars-on-an-iphone":{
   "updated": "2026-10-21",
   "title": "Calendarios Microsoft y Exchange en iPhone: comprueba primero la conexión",

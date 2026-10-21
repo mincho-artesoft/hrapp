@@ -3,52 +3,94 @@ import { LocalisedArticle } from '../types';
 /** Die sechs Google-Artikel: konkrete Fragen, klar beantwortet. */
 export const GOOGLE_DE_DE: Readonly<Record<string, LocalisedArticle>> = {
   'who-can-see-what-in-google-calendar': {
-    title: 'Wer was sieht, wenn Sie einen Google-Kalender teilen',
-    short: 'Google-Freigaberechte',
-    description:
-      'Googles Freigabestufen sind schnell gesetzt und leicht misszuverstehen. Was jede einzelne tatsächlich preisgibt, in klaren Worten.',
-    lede: 'Die meisten versehentlichen Einblicke sind kein Fehlurteil. Jemand hat eine Stufe gewählt, die bescheiden klang und es nicht war.',
-    commonBelief: 'Dass zwischen „nur frei/gebucht“ und „alle Termindetails“ ein kleiner Unterschied liegt.',
-    sections: [
-      {
-        heading: 'Die Stufen liegen weiter auseinander, als sie klingen',
-        body: [
-          'Frei/gebucht zeigt Zeitblöcke ohne Titel. Alle Details zeigt Titel, Orte, Notizen und Gäste — bei den meisten Kalendern also erstaunlich viel über Ihr Leben.',
-          'Ändern erlaubt das Bearbeiten. Freigabeeinstellungen verwalten erlaubt, Ihren Kalender an weitere Personen weiterzugeben — das ist die Stufe, die später überrascht.',
-        ],
-      },
-      {
-        heading: 'Wählen, ohne jedes Mal nachzudenken',
-        body: [
-          'Für Kolleginnen und Kollegen, die nur um Sie herum planen müssen, ist frei/gebucht fast immer richtig und fast nie gewählt.',
-          'Volle Details gehören Kalendern, die zum Teilen angelegt wurden, nicht dem, in dem Sie leben.',
-        ],
-      },
-    ],
-    claims: {
-      advancedMonthly: 'Monatlicher Preis der Stufe, in der das in der App verwaltet wird, in Dollar',
+  "title": "Google-Kalender freigeben: den tatsächlichen Zugriff prüfen",
+  "short": "Google-Kalender: Zugriff und Privatsphäre",
+  "description": "Wähle Zugriff auf Verfügbarkeit, Details oder Bearbeitung. Prüfe vor dem Teilen auch öffentliche und Gruppenfreigaben, nicht nur einzelne Personen.",
+  "lede": "Entscheide vor einer Kalenderfreigabe, was die andere Person tun soll. Termine um deine Verfügbarkeit herum planen, Details lesen und den Kalender pflegen sind unterschiedliche Aufgaben. Dieser Leitfaden stammt von Arte Soft, dem Entwickler von Cloud Calendars.",
+  "commonBelief": "Eine eingeschränkte Berechtigung für eine Person garantiere, dass sie über keinen anderen Weg Details sehen kann.",
+  "sections": [
+    {
+      "heading": "Passe den Zugriff an die Aufgabe an",
+      "body": [
+        "Ein Kollege, der einen Termin abstimmt, braucht möglicherweise nur deine Verfügbarkeit ohne Details. Wer einen Projektplan pflegt, benötigt eine andere Regelung. Bestimme zuerst die Aufgabe und prüfe dann die Berechtigung in den aktuellen Freigabeeinstellungen des Kalenders.",
+        "Google unterscheidet Verfügbarkeit, Ereignisdetails und mehrere Bearbeitungsstufen. Eine Bearbeitungsoption beschränkt den Zugriff auf private Ereignisse; eine andere erlaubt Bearbeitung und Details, die stärkste zusätzlich die Verwaltung von Freigaben. Nicht jede Option mit dem Wort „Änderungen“ ist gleichwertig."
+      ]
     },
-    faq: [
-      {
-        q: 'Sieht jemand meine Termintitel, wenn ich nur frei/gebucht teile?',
-        a: 'Nein. Frei/gebucht zeigt Zeitblöcke ohne Titel, Orte, Notizen oder Gäste. Erst „alle Termindetails“ legt das offen — und dann alles davon.',
-      },
-      {
-        q: 'Was darf jemand mit „Ändern und Freigabeeinstellungen verwalten“?',
-        a: 'Jeden Termin bearbeiten und Ihren Kalender an weitere Personen weitergeben, ohne Sie zu fragen. Es ist die einzige Stufe, auf der jemand anderes Zugriff verteilen kann.',
-      },
-      {
-        q: 'Kann ich nachsehen, wer bereits Zugriff auf meinen Kalender hat?',
-        a: 'Ja, in den Freigabeeinstellungen des Kalenders. Niemand erinnert Sie daran, und Freigaben sammeln sich nur an, deshalb lohnt sich ein Blick zweimal im Jahr.',
-      },
-    ],
-    practical: [
-      'Standardmäßig frei/gebucht für alle, die nur Zeit bei Ihnen buchen wollen.',
-      '„Ändern“ nur für Menschen, die wirklich für Sie planen.',
-      'Zweimal im Jahr durchsehen, wer Zugriff hat; Freigaben sammeln sich an, und niemand erinnert Sie daran.',
-    ],
-    seeAlso: ['why-a-shared-calendar-does-not-appear', 'what-guests-can-do-to-your-event'],
-  },
+    {
+      "heading": "Prüfe kalenderweite Zugriffe und einzelne Personen",
+      "body": [
+        "Prüfe neben namentlich aufgeführten Personen, ob der Kalender öffentlich, für die Organisation oder über eine Gruppe verfügbar ist. Laut Google kann ein weiter gefasster Kalenderzugriff eine engere Berechtigung überwiegen: Eine Person einzuschränken nimmt bereits öffentliche Details nicht zurück.",
+        "Ein Beispiel ist ein für Mitglieder veröffentlichter Vereinsplan. Bevor du dort einen privaten Termin einträgst, prüfe den Empfängerkreis statt nur die Berechtigung neben einem Freund. Bewahre private Termine an einem geeigneten Ort auf."
+      ]
+    },
+    {
+      "heading": "Nutze Googles Einstellungen für den genauen Kalender",
+      "body": [
+        "Suche in Google Kalender am Computer unter deinen Kalendern den richtigen, öffne sein Menü und seine Freigabeeinstellungen. Google dokumentiert getrennte Bereiche für Personen oder Gruppen und weiter gefassten Zugriff. Prüfe Kalendername und angemeldetes Konto vor einer Änderung.",
+        "Bestätige beim Einladen die vorgesehene Google-Identität. Findet die Person den Kalender nicht, prüfe Adresse und Einladungsnachricht, statt die Freigabe auszuweiten, damit er erscheint. Eine fehlende Anzeige und unzureichende Bearbeitungsrechte sind verschiedene Probleme."
+      ]
+    },
+    {
+      "heading": "Teste ohne private Termine",
+      "body": [
+        "Verwende einen gewöhnlichen Testtermin ohne privaten Titel, Notizen, Ort oder Gästeliste. Bitte die vorgesehene Person zu bestätigen, was sie sieht und – nur wenn Bearbeitung nötig und erlaubt ist – was sie ändern kann. Gib für diesen Test keine Zugangsdaten weiter.",
+        "Notiere Kalender und gewährte Rolle und prüfe das Ergebnis nach einer Einstellungsänderung. Das bestätigt die beabsichtigte Regelung, beweist aber nicht, dass zuvor gelesene oder kopierte Informationen verschwunden sind. Teste nicht durch Veröffentlichung eines echten Arbeitsplans."
+      ]
+    },
+    {
+      "heading": "Trenne Arbeitsrichtlinien und App-Tarife",
+      "body": [
+        "Google weist darauf hin, dass Administratoren von Arbeits- oder Schulkonten die Freigaben beschränken können. Fehlt die benötigte Einstellung, nutze den genehmigten Weg der Organisation. Veröffentliche keine Arbeitsinformationen, um Kontobeschränkungen zu umgehen.",
+        "Cloud Calendars kann verbundene Kalender anzeigen, doch seine Tarifnamen definieren Google-Berechtigungen nicht neu. Advanced entfernt Werbung; damit wird keiner anderen Person Zugriff auf jedes Google-Ereignis gekauft. Prüfe die Freigabe beim Anbieter und das tatsächlich akzeptierte Ergebnis, statt dich allein auf einen verfügbaren lokalen Editor zu verlassen."
+      ]
+    },
+    {
+      "heading": "Prüfe und entferne nicht mehr benötigte Zugriffe",
+      "body": [
+        "Prüfe nach Projektende tatsächliche Empfänger, Gruppen und weiter gehende Veröffentlichungen. Eine einzelne Person zu entfernen ist nur ein Teil der Prüfung, wenn andere Zugriffswege bestehen. Vereinbart, wer den Plan pflegt und wie spätere Rechteänderungen gehandhabt werden.",
+        "Google dokumentiert das Entfernen von Personen oder Gruppen getrennt vom Abschalten breiterer Freigaben. Ein entzogener Zugriff holt keine exportierte Datei, kein Bildschirmfoto und keine anderweitig kopierten Informationen zurück. Kläre solche Kopien separat mit den Beteiligten, statt zu versprechen, ein Schalter lösche alle bisherigen Kopien."
+      ]
+    }
+  ],
+  "claims": {},
+  "practical": [
+    "Bestimme Kalender und Aufgabe der empfangenden Person.",
+    "Prüfe persönliche, Gruppen-, Organisations- und öffentliche Zugriffe.",
+    "Wähle die passende Berechtigung in den aktuellen Google-Einstellungen.",
+    "Bestätige die Identität vor einer Rechteänderung.",
+    "Prüfe ein unbedenkliches Testereignis aus Sicht der empfangenden Person.",
+    "Überprüfe überholte Zugriffswege, ohne eine Rückholung früherer Kopien anzunehmen."
+  ],
+  "faq": [
+    {
+      "q": "Überwiegt eine eingeschränkte persönliche Berechtigung einen öffentlichen Kalender?",
+      "a": "Nein. Google dokumentiert, dass breitere Kalenderrechte bei widersprüchlichen Einstellungen Vorrang haben. Prüfe öffentliche und organisatorische Freigaben ebenso wie den Eintrag der Person."
+    },
+    {
+      "q": "Zeigen alle Bearbeitungsrechte private Ereignisse auf dieselbe Weise?",
+      "a": "Nein. Google beschreibt eine Bearbeitungsoption mit eingeschränktem Zugriff auf private Ereignisse getrennt von weiteren Bearbeitungs- und Freigabeverwaltungsrechten. Lies vor der Auswahl die genaue aktuelle Berechtigung."
+    },
+    {
+      "q": "Ändert der Kauf von Advanced die Google-Freigaberechte?",
+      "a": "Nein. Advanced entfernt Werbung in Cloud Calendars. Der Anbieterzugriff hängt von Kalenderrechten und möglichen Organisationsbeschränkungen ab."
+    }
+  ],
+  "sourcesHeading": "Aktuelle Google-Hinweise zu Rechten und Freigaben",
+  "sources": [
+    {
+      "label": "Google: Kalenderberechtigungen auswählen",
+      "url": "https://support.google.com/calendar/answer/15716974?hl=en"
+    },
+    {
+      "label": "Google: Kalender freigeben und Zugriff entfernen",
+      "url": "https://support.google.com/calendar/answer/37082?hl=en"
+    }
+  ],
+  "seeAlso": [
+    "why-a-shared-calendar-does-not-appear"
+  ],
+  "updated": "2026-10-21"
+},
 
   'why-a-shared-calendar-does-not-appear': {
     "updated": "2026-10-21",

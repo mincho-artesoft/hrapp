@@ -1,0 +1,284 @@
+{
+  "date": "2026-10-21",
+  "status": "Proposed only. Native/backend source inspection, not runtime/deployed/released verification.",
+  "originalFile": "/Users/minchomilev/cloud-calendars/src/app/content/en-US/articles-sharing.ts",
+  "originalFileSha256": "0aa5b5c78bfccd6c9e68a37b27ed89e803c3b33ec59b302379a85c371fdec4c5",
+  "proofs": [
+    {
+      "file": "/Users/minchomilev/work/hrapp/Calendar/Sharing/EventAppClipSharing.swift",
+      "lines": "1270-1309;1410-1480;1483-1645",
+      "sha256": "7865b1958517884be98991bfe26d4bcff86057d76b785c9fbbe732d8de87ab56",
+      "finding": "Invocation URL includes inline details plus stable event/scoped feed; actual shareableURL requires sign-in and a feed. Some comments claim fallback but actual guards return nil: do not promise fallback."
+    },
+    {
+      "file": "/Users/minchomilev/work/hrapp/CalendarAppClip/EventClipPreviewView.swift",
+      "lines": "60-96",
+      "sha256": "bbb8f645443b9d8b93964a709664ee27f511989500f37ee0c3bcd808164d5ee1",
+      "finding": "App Clip explicitly preview-only; full-app download action to add event."
+    },
+    {
+      "file": "/Users/minchomilev/work/hrapp/Calendar/Sharing/EventEmailInvitationsView.swift",
+      "lines": "20-50;115-144",
+      "sha256": "9f0373d4475ec97d8cf834d789decbd60f03c7ca1c3086c4a5d3a81f6a53f934",
+      "finding": "Email UI Reader/Writer/Owner roles; invited-email sign-in needed for elevated access."
+    },
+    {
+      "file": "/Users/minchomilev/work/hrapp/Calendar/Sharing/SharedEventImporter.swift",
+      "lines": "18-131",
+      "sha256": "61811420ef154abcf25d1aa58516b8d8b4683156b505f5cff4371a01650901f2",
+      "finding": "Full calendar permission, writable existing destination, tracking and signed-in/anonymous receipt. Receipt failure caught after event save, so no perfect-count claim."
+    },
+    {
+      "file": "/Users/minchomilev/work/hrapp/Calendar/Sharing/CloudCalendarsAPI.swift",
+      "lines": "334-397",
+      "sha256": "63e742af594d24c4ab9901dcefdd946c86be5a9836c23be8aa26bce529237f7d",
+      "finding": "Access enum, recipient metadata and pending classification; acceptedAt is not RSVP."
+    },
+    {
+      "file": "/Users/minchomilev/work/hrapp/Calendar/Sharing/SharingSheetView.swift",
+      "lines": "1137-1154;1255-1346",
+      "sha256": "d5be1938751004ebb5bae690d24e06313a3f8b074c1f846c7f251e499209ba17",
+      "finding": "Recipient management, resend, anonymous Reader and access menus, not attendance commitments."
+    },
+    {
+      "file": "/Users/minchomilev/work/hrapp/Calendar/Sharing/SharedCalendarInvitationView.swift",
+      "lines": "189-222",
+      "sha256": "3aafa586bc49d300a5cdfae182b78de6c1b4f96a707c98d15d8204eba8c4a9b6",
+      "finding": "Calendar acceptance requires session; app_local versus EventKit-backed reconciliation."
+    },
+    {
+      "file": "/Users/minchomilev/work/hrapp/Calendar/Calendar/ICloudCalendarSharingView.swift",
+      "lines": "452-537;585-608",
+      "sha256": "ebcbf74f53646e36999c3ec1ee4d52886004f85c13d20fc8298f6d4c66b8467c",
+      "finding": "Calendar kind handling and Reader/Writer/Owner UI. Name is not proof Apple native iCloud ACL protocol."
+    },
+    {
+      "file": "/Users/minchomilev/work/hrapp/Calendar/AppLocal/AppLocalCalendarStore.swift",
+      "lines": "70-71",
+      "sha256": "2ed2d5ad2104857441a4f8d3bcafe80227058ef24cc49c24c8ec7f70189d6e42",
+      "finding": "Can edit unless Reader/revoked; sharing management requires Owner."
+    },
+    {
+      "file": "/Users/minchomilev/work/hrapp/Calendar/Sources/CalendarViewModel.swift",
+      "lines": "1698-1725;3655-3665",
+      "sha256": "a0b207cb78810816775ff1aff4399a33dc3ce7331cbb1af2aa4468bb0828ccf4",
+      "finding": "Provider-specific Meet create request and Teams onlineMeetingProvider, not general RSVP or universal success guarantee."
+    },
+    {
+      "file": "/Users/minchomilev/work/cloud-calendars-api-nest/src/calendar/calendar.controller.ts",
+      "lines": "11-20;45-51;75-119;149-156;277-313",
+      "sha256": "05685de3688e67b7f8ecd30a951bc66f211eb2946d604c24d1f3e77ea7d2224f",
+      "finding": "Public ICS route separate from Email/QR landing; latter intentionally full app, not App Clip. Separate recipients/declines/anonymous access endpoints."
+    },
+    {
+      "file": "/Users/minchomilev/work/cloud-calendars-api-nest/src/calendar/calendar.service.ts",
+      "lines": "239-270;386-477",
+      "sha256": "f9f253bfa7a8be3698012cb6c007364b0d14045b1b9354ba96dd5abc86d62ed1",
+      "finding": "Signed-in Writer modifies canonical event; public landing scoped event lookup; page preview distinct from subscription."
+    },
+    {
+      "file": "/Users/minchomilev/work/cloud-calendars-api-nest/src/calendar/calendar.service.ts",
+      "lines": "740-770;796-905",
+      "sha256": "f9f253bfa7a8be3698012cb6c007364b0d14045b1b9354ba96dd5abc86d62ed1",
+      "finding": "Recipient status fields; owner-level management; removal tombstones; original owner protected. Not attendance RSVP."
+    },
+    {
+      "file": "/Users/minchomilev/work/cloud-calendars-api-nest/src/calendar/calendar.service.ts",
+      "lines": "918-1048",
+      "sha256": "f9f253bfa7a8be3698012cb6c007364b0d14045b1b9354ba96dd5abc86d62ed1",
+      "finding": "Event invitations 1-50 per request, 1000 recipient cap; no unlimited marketing claim."
+    },
+    {
+      "file": "/Users/minchomilev/work/cloud-calendars-api-nest/src/calendar/calendar.service.ts",
+      "lines": "1516-1645",
+      "sha256": "f9f253bfa7a8be3698012cb6c007364b0d14045b1b9354ba96dd5abc86d62ed1",
+      "finding": "Whole-calendar preview/full app; verified email required; matching role else Reader, acceptance timestamp."
+    },
+    {
+      "file": "/Users/minchomilev/work/cloud-calendars-api-nest/src/calendar/calendar.service.ts",
+      "lines": "2576-2625;2668-2708",
+      "sha256": "f9f253bfa7a8be3698012cb6c007364b0d14045b1b9354ba96dd5abc86d62ed1",
+      "finding": "Event receipt records acceptedAt including anonymous Reader; no asserted guest commitment."
+    },
+    {
+      "file": "/Users/minchomilev/work/cloud-calendars-api-nest/src/calendar/calendar.service.ts",
+      "lines": "2886-2900",
+      "sha256": "f9f253bfa7a8be3698012cb6c007364b0d14045b1b9354ba96dd5abc86d62ed1",
+      "finding": "Feed revoke removes feed/ACL/index, separate operation from recipient removal; cannot erase previous downloads."
+    },
+    {
+      "file": "/Users/minchomilev/work/cloud-calendars-api-nest/src/core/core.service.ts",
+      "lines": "74-100",
+      "sha256": "d445cf5dc00d0fd4ce53abdcc9a5abaeaab817f5e3bfa623bf7a69fd8d69d160",
+      "finding": "Feed regeneration filters scoped event versus whole-calendar feed."
+    },
+    {
+      "file": "/Users/minchomilev/work/cloud-calendars-api-nest/src/util/ics.ts",
+      "lines": "128-143;202-235",
+      "sha256": "42a0af6d6f10e75690170a90f204079d758cee7cbd7e63e4b830127c7dac8948",
+      "finding": "ICS can contain participant snapshot; METHOD:PUBLISH and hourly refresh hint, not delivery SLA or response collection."
+    },
+    {
+      "file": "/Users/minchomilev/work/cloud-calendars-api-nest/src/shared-event/shared-event.service.ts",
+      "lines": "9-18;55-115;215-310",
+      "sha256": "7664708b4c33aa9373180463cd4cb4efac88994b8a94ceed643d885ac63d9cfd",
+      "finding": "Separate fixed-date registration backend exists. Not established as these native app sharing flows; do not mix registrant counts with app recipient access."
+    },
+    {
+      "file": "/Users/minchomilev/work/hrapp/Calendar/MultiDayView/MultiDayTimelineView.swift",
+      "lines": "265-294",
+      "sha256": "1cc47bf684d08fbc1bd9a69a73b22e1face9fce1ed54b478bcf9efbf541fed79",
+      "finding": "Meet menu requires writable Google event/account/no existing detected link; Teams writable mapped Microsoft account/no link. No independent plan gate in this menu; Microsoft sign-in gated elsewhere."
+    },
+    {
+      "file": "/Users/minchomilev/work/hrapp/Calendar/Subscription/BaseSubscriptionView.swift",
+      "lines": "10-19",
+      "sha256": "912bfe90241312a385e357b9c1c21856ed681fb9f7f1e623af4ca56b5434ccf1",
+      "finding": "Google and Meet Base feature rows."
+    },
+    {
+      "file": "/Users/minchomilev/work/hrapp/Calendar/Subscription/PremiumSubscriptionView.swift",
+      "lines": "11-13",
+      "sha256": "a490229597f2516c4d35b666a21c2d2caa18b6e8eb6d2ab9e2c81fc332ca2a1c",
+      "finding": "Microsoft and Teams Premium feature rows."
+    },
+    {
+      "file": "/Users/minchomilev/work/hrapp/Calendar/Sources/CalendarViewModel.swift",
+      "lines": "1692-1750;2752-2775;2818-2880;3640-3700;4400-4434",
+      "sha256": "a0b207cb78810816775ff1aff4399a33dc3ce7331cbb1af2aa4468bb0828ccf4",
+      "finding": "Google and Teams create/patch; provider identity required; non-success HTTP returns false; optional returned links; local save not proof link creation succeeded."
+    },
+    {
+      "file": "/Users/minchomilev/work/cloud-calendars-api-nest/src/util/ids.ts",
+      "lines": "1-24",
+      "sha256": "4b47cae4b369d0b4a28672ab683f7f13498da4594d51e54efdbd17e1841e0630",
+      "finding": "randomId uses crypto.randomBytes and rejection sampling, default length22. Source design only, no unguessability/security certification."
+    },
+    {
+      "file": "/Users/minchomilev/work/cloud-calendars-api-nest/src/calendar/calendar.service.ts",
+      "lines": "2859-2882",
+      "sha256": "f9f253bfa7a8be3698012cb6c007364b0d14045b1b9354ba96dd5abc86d62ed1",
+      "finding": "Grant feedId explicitly randomId(22); scoped feed support. Not every invitation URL a22-character feed link."
+    },
+    {
+      "file": "/Users/minchomilev/work/cloud-calendars-api-nest/src/util/ics.ts",
+      "lines": "222-235",
+      "sha256": "42a0af6d6f10e75690170a90f204079d758cee7cbd7e63e4b830127c7dac8948",
+      "finding": "METHOD:PUBLISH, REFRESH-INTERVAL and X-PUBLISHED-TTL PT1H. Client refresh remains outside sender control."
+    }
+  ],
+  "primarySources": [
+    {
+      "label": "Apple: overview of App Clips",
+      "url": "https://developer.apple.com/help/app-store-connect/offer-app-clip-experiences/overview-of-app-clips/",
+      "checked": "2026-10-21",
+      "method": "Current primary search result; no client behavior tested"
+    },
+    {
+      "label": "Google: importing events and its limitations",
+      "url": "https://support.google.com/calendar/answer/37118?co=GENIE.Platform%3DDesktop&hl=en",
+      "checked": "2026-10-21",
+      "method": "Current primary search result; no client behavior tested"
+    },
+    {
+      "label": "Microsoft: importing versus subscribing to a calendar",
+      "url": "https://support.microsoft.com/en-us/outlook/import-or-subscribe-to-a-calendar-in-outlook-com-or-outlook-on-the-web",
+      "checked": "2026-10-21",
+      "method": "Current primary search result; no client behavior tested"
+    },
+    {
+      "label": "Google: responding to event invitations",
+      "url": "https://support.google.com/calendar/answer/37135?hl=en",
+      "checked": "2026-10-21",
+      "method": "Current primary search result; no client behavior tested"
+    },
+    {
+      "label": "Apple: reply to Calendar invitations on iPhone",
+      "url": "https://support.apple.com/en-ph/guide/iphone/iphc0eddfe3c/ios",
+      "checked": "2026-10-21",
+      "method": "Current primary search result; no client behavior tested"
+    },
+    {
+      "label": "Google: calendar sharing permissions",
+      "url": "https://support.google.com/calendar/answer/37082?hl=en",
+      "checked": "2026-10-21",
+      "method": "Current primary search result; no client behavior tested"
+    },
+    {
+      "label": "Google: conference creation status on calendar events",
+      "url": "https://developers.google.com/workspace/calendar/api/v3/reference/events",
+      "checked": "2026-10-21",
+      "method": "Current primary search result; no runtime provider request"
+    },
+    {
+      "label": "Microsoft: online meetings and supported calendar providers",
+      "url": "https://learn.microsoft.com/en-us/graph/outlook-calendar-online-meetings",
+      "checked": "2026-10-21",
+      "method": "Current primary search result; no runtime provider request"
+    }
+  ],
+  "scope": [
+    "sharing-one-event-not-your-calendar",
+    "inviting-people-who-do-not-have-the-app",
+    "a-calendar-that-is-yours-to-share",
+    "keeping-track-of-who-replied",
+    "meeting-links-that-make-themselves"
+  ],
+  "validation": {
+    "sharing-one-event-not-your-calendar": {
+      "sections": 6,
+      "faqs": 3,
+      "descriptionCharacters": 146,
+      "words": 718
+    },
+    "inviting-people-who-do-not-have-the-app": {
+      "sections": 6,
+      "faqs": 3,
+      "descriptionCharacters": 150,
+      "words": 731
+    },
+    "a-calendar-that-is-yours-to-share": {
+      "sections": 6,
+      "faqs": 3,
+      "descriptionCharacters": 151,
+      "words": 693
+    },
+    "keeping-track-of-who-replied": {
+      "sections": 6,
+      "faqs": 3,
+      "descriptionCharacters": 152,
+      "words": 708
+    },
+    "meeting-links-that-make-themselves": {
+      "sections": 6,
+      "faqs": 3,
+      "descriptionCharacters": 138,
+      "words": 719
+    }
+  },
+  "criticalCorrections": [
+    "Event App Clip preview-only; adding through that route needs full app.",
+    "Email/QR landing intentionally opens full app, not App Clip; not every URL an ICS feed.",
+    "Reader/Writer/Owner for event and calendar sharing: blanket read-only claim false.",
+    "Calendar acceptance requires authenticated verified email.",
+    "Recipient receipts/acceptedAt are not reliable RSVP/headcount; anonymous reception and possible receipt failure further limit count interpretation.",
+    "Revoking feed and removing recipient are separate; no erasure of independent copies promised.",
+    "ICS refresh PT1H is hint, not guaranteed update interval.",
+    "No fixed silent-guest fraction or statistical response-rate claims."
+  ],
+  "uncertainties": [
+    "No actual invitation sent, account signed in, feed requested, backend storage queried, App Clip launched or runtime result claimed.",
+    "Current source/released app/production backend correspondence not established.",
+    "Permission checks and refresh paths exist; full race/authorization/security correctness not audited.",
+    "Specific provider UI RSVP display and complete propagation not verified.",
+    "Separate fixed-date registration backend not treated as native RSVP feature.",
+    "Public links carry information; no unguessability/security certification.",
+    "Do not infer generic website fallback supports editing or account-free whole-calendar acceptance."
+  ],
+  "integrationNotes": [
+    "Replace four target objects only, preserve routes. claims={} intentionally omits old price/link-length/hourly assertions; renderer filters unmapped fact IDs.",
+    "File header describing all shares as subscriptions requires separate correction by root.",
+    "Root separately drafts Google permission article and disables stale shared numeric claims for Google permissions, RSVP and Meet. Fifth meeting-link draft added here; preserve other objects.",
+    "No live code, native/backend files, metadata outside drafts, deployment or ASC changes."
+  ]
+}

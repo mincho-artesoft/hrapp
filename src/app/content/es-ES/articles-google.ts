@@ -3,52 +3,94 @@ import { LocalisedArticle } from '../types';
 /** Los seis artículos de Google: preguntas concretas, respuestas claras. */
 export const GOOGLE_ES_ES: Readonly<Record<string, LocalisedArticle>> = {
   'who-can-see-what-in-google-calendar': {
-    title: 'Quién ve qué cuando compartes un calendario de Google',
-    short: 'Permisos de Google',
-    description:
-      'Los niveles de compartición de Google se ponen rápido y se entienden mal. Qué expone cada uno en realidad, dicho con claridad.',
-    lede: 'Casi ningún exceso al compartir es un error de criterio. Es alguien eligiendo un permiso que sonaba modesto y no lo era.',
-    commonBelief: 'Que «ver solo libre/ocupado» y «ver todos los detalles» se diferencian en poco.',
-    sections: [
-      {
-        heading: 'Los niveles están más lejos de lo que suenan',
-        body: [
-          'Libre/ocupado muestra bloques de tiempo sin títulos. Todos los detalles muestra títulos, lugares, notas e invitados: en la mayoría de los calendarios, una parte considerable de tu vida.',
-          'Hacer cambios permite editar. Gestionar la compartición permite entregar tu calendario a otras personas, y ese es el que sorprende más tarde.',
-        ],
-      },
-      {
-        heading: 'Elegir sin pensarlo cada vez',
-        body: [
-          'Para compañeros que solo necesitan encajar huecos contigo, libre/ocupado es casi siempre la respuesta correcta y casi nunca la elegida.',
-          'Reserva los detalles completos para calendarios creados para compartirse, no para aquel en el que vives.',
-        ],
-      },
-    ],
-    claims: {
-      advancedMonthly: 'Coste mensual del nivel donde se gestiona esto en la app, en dólares',
+  "title": "Permisos de Google Calendar: revisa el acceso que realmente concedes",
+  "short": "Acceso y privacidad en Google Calendar",
+  "description": "Elige acceso a disponibilidad, detalles o edición. Revisa los permisos públicos y de grupos, además de los individuales, antes de compartir.",
+  "lede": "Antes de compartir un calendario, decide qué necesita hacer la otra persona. Planificar según tu disponibilidad, leer detalles y mantener el calendario son tareas distintas. Esta guía la publica Arte Soft, desarrollador de Cloud Calendars.",
+  "commonBelief": "Dar a una persona un permiso restringido garantiza que no podrá ver detalles por ninguna otra vía.",
+  "sections": [
+    {
+      "heading": "Adapta el acceso a la tarea",
+      "body": [
+        "Un compañero que busca un horario puede necesitar disponibilidad sin detalles de citas. Quien mantiene el calendario de un proyecto necesita otra configuración. Decide primero la tarea y después revisa el permiso que muestran los ajustes actuales del calendario.",
+        "Google distingue disponibilidad, detalles y varios niveles de edición. Una opción de edición limita el acceso a eventos privados; otra permite editar eventos y ver detalles, y la más amplia permite administrar el uso compartido. No trates como equivalentes todas las opciones que mencionan cambios."
+      ]
     },
-    faq: [
-      {
-        q: '¿Se ven los títulos de mis eventos si comparto solo libre/ocupado?',
-        a: 'No. Libre/ocupado muestra bloques de tiempo sin títulos, lugares, notas ni invitados. Solo «ver todos los detalles» los expone, y los expone todos.',
-      },
-      {
-        q: '¿Qué permite «hacer cambios y gestionar la compartición»?',
-        a: 'Editar cualquier evento y entregar tu calendario a más personas sin preguntarte. Es el único nivel que deja a otro repartir el acceso.',
-      },
-      {
-        q: '¿Puedo ver quién tiene ya acceso a mi calendario?',
-        a: 'Sí, en los ajustes de compartición de ese calendario. Nada te invita a mirar y lo compartido solo se acumula: revisa la lista dos veces al año.',
-      },
-    ],
-    practical: [
-      'Por defecto, libre/ocupado para quien solo necesita reservar tiempo contigo.',
-      'Reserva «hacer cambios» para quien de verdad planifica por ti.',
-      'Revisa quién tiene acceso dos veces al año: lo compartido se acumula y nadie te avisa.',
-    ],
-    seeAlso: ['why-a-shared-calendar-does-not-appear', 'what-guests-can-do-to-your-event'],
-  },
+    {
+      "heading": "Revisa el acceso general y el de cada persona",
+      "body": [
+        "Además de personas concretas, comprueba si el calendario es público, está disponible para tu organización o se comparte con un grupo. Google indica que un acceso más amplio puede prevalecer sobre uno restringido: limitar a una persona no oculta detalles ya publicados.",
+        "Por ejemplo, piensa en un calendario de un club publicado para sus socios. Antes de añadir una cita personal, revisa su público en lugar de suponer que solo importa el permiso junto al nombre de un amigo. Guarda las citas privadas en un destino adecuado."
+      ]
+    },
+    {
+      "heading": "Usa los ajustes de Google del calendario exacto",
+      "body": [
+        "En Google Calendar para ordenador, localiza el calendario entre los tuyos, abre su menú y entra en los ajustes para compartir. Google documenta áreas separadas para personas o grupos y para acceso más amplio. Comprueba nombre del calendario y cuenta antes de cambiar algo.",
+        "Confirma la identidad Google prevista del destinatario al invitarlo. Si no encuentra el calendario, verifica la dirección y el mensaje de invitación en lugar de ampliar el acceso para que aparezca. Una visualización ausente y unos permisos de edición insuficientes son problemas distintos."
+      ]
+    },
+    {
+      "heading": "Prueba el resultado sin citas privadas",
+      "body": [
+        "Usa una cita de prueba normal sin título privado, notas, ubicación ni lista de invitados. Pide al destinatario que confirme qué ve y, solo si editar es necesario y está permitido, qué puede cambiar. No compartas las credenciales de tu cuenta para hacer la prueba.",
+        "Anota el calendario y el rol concedido y revisa el resultado después de cambiar el ajuste. Así verificas la configuración prevista, pero no demuestras que haya desaparecido información leída o copiada antes. No hagas la prueba publicando un calendario laboral real."
+      ]
+    },
+    {
+      "heading": "Separa las políticas laborales de los planes de la app",
+      "body": [
+        "Google indica que administradores de trabajo o centros educativos pueden restringir los controles para compartir. Si falta el ajuste necesario, usa la vía aprobada por la organización. No publiques información laboral para sortear una restricción de cuenta.",
+        "Cloud Calendars puede mostrar calendarios conectados, pero sus planes no redefinen los permisos de Google. Advanced elimina anuncios; no es un pago que dé a otra persona acceso a todos los eventos Google. Revisa el uso compartido del proveedor y verifica el resultado aceptado, sin depender solo de un editor local disponible."
+      ]
+    },
+    {
+      "heading": "Revisa y retira el acceso que ya no necesitas",
+      "body": [
+        "Al terminar un proyecto, revisa destinatarios reales, grupos y cualquier publicación más amplia. Quitar una persona es solo parte de la comprobación si hay otras vías de acceso. Acordad quién mantiene el calendario y cómo gestionar futuros cambios de permisos.",
+        "Google documenta por separado quitar personas o grupos y desactivar el acceso más amplio. Retirar acceso no recupera archivos exportados, capturas ni información copiada en otro lugar. Trátalos por separado con las personas implicadas, sin prometer que un interruptor borre todas las copias anteriores."
+      ]
+    }
+  ],
+  "claims": {},
+  "practical": [
+    "Identifica el calendario y la tarea del destinatario.",
+    "Revisa acceso individual, de grupos, de la organización y público.",
+    "Elige el permiso para esa tarea en los ajustes actuales de Google.",
+    "Verifica la identidad antes de cambiar el acceso.",
+    "Comprueba un evento de prueba inocuo desde el lado del destinatario.",
+    "Revisa las vías de acceso obsoletas sin suponer que se recuperan las copias anteriores."
+  ],
+  "faq": [
+    {
+      "q": "¿Un permiso individual restringido prevalece sobre un calendario público?",
+      "a": "No. Google documenta que los permisos más amplios prevalecen cuando hay conflicto. Revisa los ajustes públicos y de organización además del permiso individual."
+    },
+    {
+      "q": "¿Todos los permisos de edición exponen igual los eventos privados?",
+      "a": "No. Google documenta una opción de edición que limita el acceso a eventos privados por separado de otras opciones de edición y administración. Lee el permiso actual exacto antes de elegir."
+    },
+    {
+      "q": "¿Comprar Advanced cambia los derechos para compartir en Google?",
+      "a": "No. Advanced elimina anuncios en Cloud Calendars. El acceso depende de los permisos del calendario y de las restricciones de la organización."
+    }
+  ],
+  "sourcesHeading": "Orientación actual de Google sobre permisos y uso compartido",
+  "sources": [
+    {
+      "label": "Google: elegir permisos del calendario",
+      "url": "https://support.google.com/calendar/answer/15716974?hl=en"
+    },
+    {
+      "label": "Google: compartir un calendario y retirar acceso",
+      "url": "https://support.google.com/calendar/answer/37082?hl=en"
+    }
+  ],
+  "seeAlso": [
+    "why-a-shared-calendar-does-not-appear"
+  ],
+  "updated": "2026-10-21"
+},
 
   'why-a-shared-calendar-does-not-appear': {
     "updated": "2026-10-21",

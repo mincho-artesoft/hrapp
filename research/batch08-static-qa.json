@@ -1,0 +1,175 @@
+{
+  "allPassed": true,
+  "changedArticles": 14,
+  "newLocalizedArticles": 4,
+  "revisedArticles": 10,
+  "sitemapUrls": 461,
+  "preservedPreviousSitemapUrls": 457,
+  "addedUrls": [
+    "https://www.cloud-calendars.com/de/articles/keeping-track-of-who-replied/",
+    "https://www.cloud-calendars.com/es/articles/keeping-track-of-who-replied/",
+    "https://www.cloud-calendars.com/fr/articles/keeping-track-of-who-replied/",
+    "https://www.cloud-calendars.com/it/articles/keeping-track-of-who-replied/"
+  ],
+  "curatedExportGuides": 35,
+  "articles": [
+    {
+      "locale": "de-DE",
+      "slug": "who-can-see-what-in-google-calendar",
+      "url": "https://www.cloud-calendars.com/de/articles/who-can-see-what-in-google-calendar/",
+      "file": "de/articles/who-can-see-what-in-google-calendar/index.html",
+      "sha256": "88872654c0b1eb65ee78aebf10a62e637c70c86eb04f55ecfc3b68c35fac26d2",
+      "faq": 3
+    },
+    {
+      "locale": "de-DE",
+      "slug": "keeping-track-of-who-replied",
+      "url": "https://www.cloud-calendars.com/de/articles/keeping-track-of-who-replied/",
+      "file": "de/articles/keeping-track-of-who-replied/index.html",
+      "sha256": "4403ee164683b97c07437ba3281ae2e0fdb22678c72eaafa028608683f94bc6c",
+      "faq": 3
+    },
+    {
+      "locale": "en-US",
+      "slug": "sharing-one-event-not-your-calendar",
+      "url": "https://www.cloud-calendars.com/articles/sharing-one-event-not-your-calendar/",
+      "file": "articles/sharing-one-event-not-your-calendar/index.html",
+      "sha256": "1bbc5352ebc3a2b9cf3fd938eaae18ed48b66e47c377ba4f7183b0c2837fba0c",
+      "faq": 3
+    },
+    {
+      "locale": "en-US",
+      "slug": "inviting-people-who-do-not-have-the-app",
+      "url": "https://www.cloud-calendars.com/articles/inviting-people-who-do-not-have-the-app/",
+      "file": "articles/inviting-people-who-do-not-have-the-app/index.html",
+      "sha256": "7905f2eb5e647ab5308a76c31d8d5fd700dcb37331d577eee5a3d0e98fe5590e",
+      "faq": 3
+    },
+    {
+      "locale": "en-US",
+      "slug": "a-calendar-that-is-yours-to-share",
+      "url": "https://www.cloud-calendars.com/articles/a-calendar-that-is-yours-to-share/",
+      "file": "articles/a-calendar-that-is-yours-to-share/index.html",
+      "sha256": "baeaa2a2d185950a56f940ffe9346215a1810ee4b4f4a99f8aae692f2af53af8",
+      "faq": 3
+    },
+    {
+      "locale": "en-US",
+      "slug": "who-can-see-what-in-google-calendar",
+      "url": "https://www.cloud-calendars.com/articles/who-can-see-what-in-google-calendar/",
+      "file": "articles/who-can-see-what-in-google-calendar/index.html",
+      "sha256": "c52bb089702c68c4ea66faf38fdce9b4594f8c1b576740ec7b92d0fe095876b8",
+      "faq": 3
+    },
+    {
+      "locale": "en-US",
+      "slug": "keeping-track-of-who-replied",
+      "url": "https://www.cloud-calendars.com/articles/keeping-track-of-who-replied/",
+      "file": "articles/keeping-track-of-who-replied/index.html",
+      "sha256": "2b8f715b55986a3073aa5c8af686267047223181528543ddecf20e4a9e1be440",
+      "faq": 3
+    },
+    {
+      "locale": "en-US",
+      "slug": "meeting-links-that-make-themselves",
+      "url": "https://www.cloud-calendars.com/articles/meeting-links-that-make-themselves/",
+      "file": "articles/meeting-links-that-make-themselves/index.html",
+      "sha256": "519146acf81e61371d231da0a4535accabcc605e89defebe0fd29984ed7febd9",
+      "faq": 3
+    },
+    {
+      "locale": "es-ES",
+      "slug": "who-can-see-what-in-google-calendar",
+      "url": "https://www.cloud-calendars.com/es/articles/who-can-see-what-in-google-calendar/",
+      "file": "es/articles/who-can-see-what-in-google-calendar/index.html",
+      "sha256": "87b66277eaf04fb23def976c63c577696da61cafb82151640917dd172031e397",
+      "faq": 3
+    },
+    {
+      "locale": "es-ES",
+      "slug": "keeping-track-of-who-replied",
+      "url": "https://www.cloud-calendars.com/es/articles/keeping-track-of-who-replied/",
+      "file": "es/articles/keeping-track-of-who-replied/index.html",
+      "sha256": "837b9c65cf5f14144106182e750a6db7e5b90a20665d2b0ba474d2dc532eb4bd",
+      "faq": 3
+    },
+    {
+      "locale": "fr-FR",
+      "slug": "who-can-see-what-in-google-calendar",
+      "url": "https://www.cloud-calendars.com/fr/articles/who-can-see-what-in-google-calendar/",
+      "file": "fr/articles/who-can-see-what-in-google-calendar/index.html",
+      "sha256": "e086121c260b55e91f89e18b78974d84a704789c034d90bc52b9a1796d9e189b",
+      "faq": 3
+    },
+    {
+      "locale": "fr-FR",
+      "slug": "keeping-track-of-who-replied",
+      "url": "https://www.cloud-calendars.com/fr/articles/keeping-track-of-who-replied/",
+      "file": "fr/articles/keeping-track-of-who-replied/index.html",
+      "sha256": "78a1b647851846db72f4ca1b4672084319614eebe9b33b69d4b87727b7cd004a",
+      "faq": 3
+    },
+    {
+      "locale": "it",
+      "slug": "who-can-see-what-in-google-calendar",
+      "url": "https://www.cloud-calendars.com/it/articles/who-can-see-what-in-google-calendar/",
+      "file": "it/articles/who-can-see-what-in-google-calendar/index.html",
+      "sha256": "72c8e0b872dcd56c264ab94cb21d3269099d74b00362f08205c9258b746c0077",
+      "faq": 3
+    },
+    {
+      "locale": "it",
+      "slug": "keeping-track-of-who-replied",
+      "url": "https://www.cloud-calendars.com/it/articles/keeping-track-of-who-replied/",
+      "file": "it/articles/keeping-track-of-who-replied/index.html",
+      "sha256": "69cdd4f3b878e4c9d90998a10185fe148c3f85f431afeb75c58d47ff952798ba",
+      "faq": 3
+    }
+  ],
+  "hubs": [
+    "https://www.cloud-calendars.com/articles/",
+    "https://www.cloud-calendars.com/de/articles/",
+    "https://www.cloud-calendars.com/es/articles/",
+    "https://www.cloud-calendars.com/fr/articles/",
+    "https://www.cloud-calendars.com/it/articles/"
+  ],
+  "sharedPriceRowsRemovedPages": [
+    "https://www.cloud-calendars.com/ar/articles/who-can-see-what-in-google-calendar/",
+    "https://www.cloud-calendars.com/articles/keeping-track-of-who-replied/",
+    "https://www.cloud-calendars.com/articles/meeting-links-that-make-themselves/",
+    "https://www.cloud-calendars.com/articles/who-can-see-what-in-google-calendar/",
+    "https://www.cloud-calendars.com/bg/articles/who-can-see-what-in-google-calendar/",
+    "https://www.cloud-calendars.com/cs/articles/who-can-see-what-in-google-calendar/",
+    "https://www.cloud-calendars.com/da/articles/who-can-see-what-in-google-calendar/",
+    "https://www.cloud-calendars.com/de/articles/keeping-track-of-who-replied/",
+    "https://www.cloud-calendars.com/de/articles/who-can-see-what-in-google-calendar/",
+    "https://www.cloud-calendars.com/el/articles/who-can-see-what-in-google-calendar/",
+    "https://www.cloud-calendars.com/es/articles/keeping-track-of-who-replied/",
+    "https://www.cloud-calendars.com/es/articles/who-can-see-what-in-google-calendar/",
+    "https://www.cloud-calendars.com/fi/articles/who-can-see-what-in-google-calendar/",
+    "https://www.cloud-calendars.com/fr/articles/keeping-track-of-who-replied/",
+    "https://www.cloud-calendars.com/fr/articles/who-can-see-what-in-google-calendar/",
+    "https://www.cloud-calendars.com/he/articles/who-can-see-what-in-google-calendar/",
+    "https://www.cloud-calendars.com/hi/articles/who-can-see-what-in-google-calendar/",
+    "https://www.cloud-calendars.com/hu/articles/who-can-see-what-in-google-calendar/",
+    "https://www.cloud-calendars.com/id/articles/who-can-see-what-in-google-calendar/",
+    "https://www.cloud-calendars.com/it/articles/keeping-track-of-who-replied/",
+    "https://www.cloud-calendars.com/it/articles/who-can-see-what-in-google-calendar/",
+    "https://www.cloud-calendars.com/ja/articles/who-can-see-what-in-google-calendar/",
+    "https://www.cloud-calendars.com/ko/articles/who-can-see-what-in-google-calendar/",
+    "https://www.cloud-calendars.com/ms/articles/who-can-see-what-in-google-calendar/",
+    "https://www.cloud-calendars.com/nl/articles/who-can-see-what-in-google-calendar/",
+    "https://www.cloud-calendars.com/no/articles/who-can-see-what-in-google-calendar/",
+    "https://www.cloud-calendars.com/pl/articles/who-can-see-what-in-google-calendar/",
+    "https://www.cloud-calendars.com/pt/articles/who-can-see-what-in-google-calendar/",
+    "https://www.cloud-calendars.com/ro/articles/who-can-see-what-in-google-calendar/",
+    "https://www.cloud-calendars.com/ru/articles/who-can-see-what-in-google-calendar/",
+    "https://www.cloud-calendars.com/sv/articles/who-can-see-what-in-google-calendar/",
+    "https://www.cloud-calendars.com/th/articles/who-can-see-what-in-google-calendar/",
+    "https://www.cloud-calendars.com/tr/articles/who-can-see-what-in-google-calendar/",
+    "https://www.cloud-calendars.com/vi/articles/who-can-see-what-in-google-calendar/",
+    "https://www.cloud-calendars.com/zh-hans/articles/who-can-see-what-in-google-calendar/",
+    "https://www.cloud-calendars.com/zh-hant/articles/who-can-see-what-in-google-calendar/"
+  ],
+  "scope": "Static article schema/titles/route preservation, absence of wrong shared price tables. Article CSS affects all routes; separate broad availability/metadata and browser representative layout checks. Not native-runtime or language certification."
+}

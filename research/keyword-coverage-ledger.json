@@ -10,7 +10,7 @@
     "No content is declared researched merely because a corresponding route exists."
   ],
   "currentInventory": {
-    "articles": 394,
+    "articles": 398,
     "locales": [
       "ar-SA",
       "bg",
@@ -417,6 +417,28 @@
     "publicProof": "batch07-public-qa.json",
     "competitorQueue": "competitors/coverage-queue-20261021.json",
     "queueScope": "71exactURLs with explicit reviewed/partial/discovered/failed provenance; not exhaustivecompetition",
+    "goalStatus": "active"
+  },
+  "eighthPublication": {
+    "date": "2026-10-21",
+    "changedArticles": 14,
+    "newLocalizedRSVPGuides": 4,
+    "revisedArticles": 10,
+    "sitemapUrls": 461,
+    "priorCanonicalsPreserved": 457,
+    "sharedMisleadingPriceRowsRemovedPages": 36,
+    "curatedEnglishTextGuides": 35,
+    "nativeProof": "batch08-sharing/evidence.json",
+    "staticProof": "batch08-static-qa.json",
+    "publicProof": "batch08-public-qa.json",
+    "coverageQueue": "competitors/coverage-current-20261021.json",
+    "queueCounts": {
+      "full": 33,
+      "partial": 7,
+      "discovered": 25,
+      "failed": 6
+    },
+    "next": "Correct remaining25localizedGooglepermissions and29singleeventsharingbodies; notcertifiedbyENrewriteorprice-tableremoval",
     "goalStatus": "active"
   }
 }

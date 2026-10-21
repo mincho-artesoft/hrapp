@@ -1,0 +1,201 @@
+{
+  "status": "4 revisions and 4 new localized RSVP routes; proposals only",
+  "revisedExisting": 4,
+  "newLocalizedRoutes": 4,
+  "scope": "No integration, deployment, ASC or native changes. Only two requested objects per locale.",
+  "sourceHashes": {
+    "who-can-see-what-in-google-calendar": "8bc3e2ec5e0cb560e93f9cd390176743792c58a4be8fc1a32578db212c5d6e9f",
+    "keeping-track-of-who-replied": "59f6aa738643a7478977e27657dce1359fa987a09a0ac0665d2d54dcacefa3fb"
+  },
+  "criticalQualifications": [
+    "Broader Google public/group/organisation access can override narrower individual grants. Private-event-limited editing is distinct from other editing and sharing-administration roles.",
+    "Local editor availability and app plan do not establish provider permission. Advanced removes ads, does not buy Google access.",
+    "Sharing receipt/acceptance and anonymous reception are not attendance RSVPs; Reader/Writer/Owner are access roles.",
+    "No fixed fractions of nonresponses, guessed headcounts or universal two-day reminder rule.",
+    "Meet Base and Teams Premium are joining features subject to account/provider flow, not paid-tier RSVP reliability.",
+    "Major changes require renewed confirmation where needed; attendance lists and access lists remain separate."
+  ],
+  "preserved": "Six sections/twelve paragraphs/six practical steps/three FAQ each; original primary source URLs, date, developer disclosure and empty claims.",
+  "relatedPolicy": "Only currently available exact locale article keys retained; omissions logged. Google permissions objects confirmed existing; RSVP objects are four new localized routes explicitly authorized by root.",
+  "relatedChanges": [
+    {
+      "locale": "de-DE",
+      "slug": "who-can-see-what-in-google-calendar",
+      "omittedUnavailable": [
+        "a-calendar-that-is-yours-to-share",
+        "work-and-personal-without-two-apps"
+      ]
+    },
+    {
+      "locale": "de-DE",
+      "slug": "keeping-track-of-who-replied",
+      "omittedUnavailable": [
+        "inviting-people-who-do-not-have-the-app",
+        "meeting-links-that-make-themselves"
+      ]
+    },
+    {
+      "locale": "es-ES",
+      "slug": "who-can-see-what-in-google-calendar",
+      "omittedUnavailable": [
+        "a-calendar-that-is-yours-to-share",
+        "work-and-personal-without-two-apps"
+      ]
+    },
+    {
+      "locale": "es-ES",
+      "slug": "keeping-track-of-who-replied",
+      "omittedUnavailable": [
+        "inviting-people-who-do-not-have-the-app",
+        "meeting-links-that-make-themselves"
+      ]
+    },
+    {
+      "locale": "fr-FR",
+      "slug": "who-can-see-what-in-google-calendar",
+      "omittedUnavailable": [
+        "a-calendar-that-is-yours-to-share",
+        "work-and-personal-without-two-apps"
+      ]
+    },
+    {
+      "locale": "fr-FR",
+      "slug": "keeping-track-of-who-replied",
+      "omittedUnavailable": [
+        "inviting-people-who-do-not-have-the-app",
+        "meeting-links-that-make-themselves"
+      ]
+    },
+    {
+      "locale": "it",
+      "slug": "who-can-see-what-in-google-calendar",
+      "omittedUnavailable": [
+        "a-calendar-that-is-yours-to-share",
+        "work-and-personal-without-two-apps"
+      ]
+    },
+    {
+      "locale": "it",
+      "slug": "keeping-track-of-who-replied",
+      "omittedUnavailable": [
+        "inviting-people-who-do-not-have-the-app",
+        "meeting-links-that-make-themselves"
+      ]
+    }
+  ],
+  "translationConfidence": "medium-high model-authored, no independent native editor",
+  "validation": [
+    {
+      "locale": "de-DE",
+      "slug": "who-can-see-what-in-google-calendar",
+      "routeStatus": "revision",
+      "sections": 6,
+      "paragraphs": 12,
+      "practical": 6,
+      "faq": 3,
+      "sources": 2,
+      "metaCharacters": 147,
+      "related": [
+        "why-a-shared-calendar-does-not-appear"
+      ]
+    },
+    {
+      "locale": "de-DE",
+      "slug": "keeping-track-of-who-replied",
+      "routeStatus": "new_localized_route",
+      "sections": 6,
+      "paragraphs": 12,
+      "practical": 6,
+      "faq": 3,
+      "sources": 3,
+      "metaCharacters": 153,
+      "related": [
+        "sharing-one-event-not-your-calendar"
+      ]
+    },
+    {
+      "locale": "es-ES",
+      "slug": "who-can-see-what-in-google-calendar",
+      "routeStatus": "revision",
+      "sections": 6,
+      "paragraphs": 12,
+      "practical": 6,
+      "faq": 3,
+      "sources": 2,
+      "metaCharacters": 140,
+      "related": [
+        "why-a-shared-calendar-does-not-appear"
+      ]
+    },
+    {
+      "locale": "es-ES",
+      "slug": "keeping-track-of-who-replied",
+      "routeStatus": "new_localized_route",
+      "sections": 6,
+      "paragraphs": 12,
+      "practical": 6,
+      "faq": 3,
+      "sources": 3,
+      "metaCharacters": 143,
+      "related": [
+        "sharing-one-event-not-your-calendar"
+      ]
+    },
+    {
+      "locale": "fr-FR",
+      "slug": "who-can-see-what-in-google-calendar",
+      "routeStatus": "revision",
+      "sections": 6,
+      "paragraphs": 12,
+      "practical": 6,
+      "faq": 3,
+      "sources": 2,
+      "metaCharacters": 139,
+      "related": [
+        "why-a-shared-calendar-does-not-appear"
+      ]
+    },
+    {
+      "locale": "fr-FR",
+      "slug": "keeping-track-of-who-replied",
+      "routeStatus": "new_localized_route",
+      "sections": 6,
+      "paragraphs": 12,
+      "practical": 6,
+      "faq": 3,
+      "sources": 3,
+      "metaCharacters": 147,
+      "related": [
+        "sharing-one-event-not-your-calendar"
+      ]
+    },
+    {
+      "locale": "it",
+      "slug": "who-can-see-what-in-google-calendar",
+      "routeStatus": "revision",
+      "sections": 6,
+      "paragraphs": 12,
+      "practical": 6,
+      "faq": 3,
+      "sources": 2,
+      "metaCharacters": 147,
+      "related": [
+        "why-a-shared-calendar-does-not-appear"
+      ]
+    },
+    {
+      "locale": "it",
+      "slug": "keeping-track-of-who-replied",
+      "routeStatus": "new_localized_route",
+      "sections": 6,
+      "paragraphs": 12,
+      "practical": 6,
+      "faq": 3,
+      "sources": 3,
+      "metaCharacters": 144,
+      "related": [
+        "sharing-one-event-not-your-calendar"
+      ]
+    }
+  ]
+}

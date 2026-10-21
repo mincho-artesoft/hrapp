@@ -216,7 +216,7 @@ export const ARTICLE_FACTS: Readonly<Record<string, ArticleFacts>> = {
     slug: 'who-can-see-what-in-google-calendar',
     family: 'sharing',
     intent: 'editing',
-    claims: [{ id: 'advancedMonthly', value: '0.49' }],
+    claims: [],
     updated: '2026-08-27',
   },
   'why-a-shared-calendar-does-not-appear': {
@@ -277,17 +277,14 @@ export const ARTICLE_FACTS: Readonly<Record<string, ArticleFacts>> = {
     slug: 'keeping-track-of-who-replied',
     family: 'sharing',
     intent: 'editing',
-    claims: [{ id: 'premiumMonthly', value: '4.99' }],
+    claims: [],
     updated: '2026-08-27',
   },
   'meeting-links-that-make-themselves': {
     slug: 'meeting-links-that-make-themselves',
     family: 'sharing',
     intent: 'editing',
-    claims: [
-      { id: 'advancedMonthly', value: '0.49' },
-      { id: 'premiumMonthly', value: '4.99' },
-    ],
+    claims: [],
     updated: '2026-08-27',
   },
   'drag-an-event-to-move-it': {

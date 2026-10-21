@@ -1,0 +1,291 @@
+{
+  "checkedAt": "2026-10-21T19:56:22.630195+00:00",
+  "allPassed": true,
+  "changedHtmlPages": 45,
+  "scope": "All14changedarticles,5hubs,all36sharedprice-tableaffectedpages,sitemapXMLand2text exports. CSSlayout affectsallarticlepages; broad461URLavailability andschemaindependentlychecked.",
+  "textExports": 2,
+  "artifacts": [
+    {
+      "url": "https://www.cloud-calendars.com/ar/articles/who-can-see-what-in-google-calendar/",
+      "status": 200,
+      "sha256": "ee43b81364b7f9cb1fb363ec05e60c707e1318febdde94e80564696116b14f58",
+      "matchesBuild": true
+    },
+    {
+      "url": "https://www.cloud-calendars.com/articles/",
+      "status": 200,
+      "sha256": "89ecf68ff5a0aced984c8d8364108d5ff2007c878e1056ca1b1a4ad2039626d8",
+      "matchesBuild": true
+    },
+    {
+      "url": "https://www.cloud-calendars.com/articles/a-calendar-that-is-yours-to-share/",
+      "status": 200,
+      "sha256": "baeaa2a2d185950a56f940ffe9346215a1810ee4b4f4a99f8aae692f2af53af8",
+      "matchesBuild": true
+    },
+    {
+      "url": "https://www.cloud-calendars.com/articles/inviting-people-who-do-not-have-the-app/",
+      "status": 200,
+      "sha256": "7905f2eb5e647ab5308a76c31d8d5fd700dcb37331d577eee5a3d0e98fe5590e",
+      "matchesBuild": true
+    },
+    {
+      "url": "https://www.cloud-calendars.com/articles/keeping-track-of-who-replied/",
+      "status": 200,
+      "sha256": "2b8f715b55986a3073aa5c8af686267047223181528543ddecf20e4a9e1be440",
+      "matchesBuild": true
+    },
+    {
+      "url": "https://www.cloud-calendars.com/articles/meeting-links-that-make-themselves/",
+      "status": 200,
+      "sha256": "519146acf81e61371d231da0a4535accabcc605e89defebe0fd29984ed7febd9",
+      "matchesBuild": true
+    },
+    {
+      "url": "https://www.cloud-calendars.com/articles/sharing-one-event-not-your-calendar/",
+      "status": 200,
+      "sha256": "1bbc5352ebc3a2b9cf3fd938eaae18ed48b66e47c377ba4f7183b0c2837fba0c",
+      "matchesBuild": true
+    },
+    {
+      "url": "https://www.cloud-calendars.com/articles/who-can-see-what-in-google-calendar/",
+      "status": 200,
+      "sha256": "c52bb089702c68c4ea66faf38fdce9b4594f8c1b576740ec7b92d0fe095876b8",
+      "matchesBuild": true
+    },
+    {
+      "url": "https://www.cloud-calendars.com/bg/articles/who-can-see-what-in-google-calendar/",
+      "status": 200,
+      "sha256": "51ba6c33c8b26b8dff466032d63355c0286661756011142cc2aaaf40b8d89dd9",
+      "matchesBuild": true
+    },
+    {
+      "url": "https://www.cloud-calendars.com/cs/articles/who-can-see-what-in-google-calendar/",
+      "status": 200,
+      "sha256": "b989b498292c5203842e09e77ac0f19029ebb978b25eb49c6f45932a0131cccb",
+      "matchesBuild": true
+    },
+    {
+      "url": "https://www.cloud-calendars.com/da/articles/who-can-see-what-in-google-calendar/",
+      "status": 200,
+      "sha256": "ca75885ba4cd864eb377792f3882e6076ec29460ea5ed70e68516ae3a724c8f8",
+      "matchesBuild": true
+    },
+    {
+      "url": "https://www.cloud-calendars.com/de/articles/",
+      "status": 200,
+      "sha256": "98fbc3e177a02f4a973463bbf3d8092a0bd66a9f751ccf15441067ff1bd14119",
+      "matchesBuild": true
+    },
+    {
+      "url": "https://www.cloud-calendars.com/de/articles/keeping-track-of-who-replied/",
+      "status": 200,
+      "sha256": "4403ee164683b97c07437ba3281ae2e0fdb22678c72eaafa028608683f94bc6c",
+      "matchesBuild": true
+    },
+    {
+      "url": "https://www.cloud-calendars.com/de/articles/who-can-see-what-in-google-calendar/",
+      "status": 200,
+      "sha256": "88872654c0b1eb65ee78aebf10a62e637c70c86eb04f55ecfc3b68c35fac26d2",
+      "matchesBuild": true
+    },
+    {
+      "url": "https://www.cloud-calendars.com/el/articles/who-can-see-what-in-google-calendar/",
+      "status": 200,
+      "sha256": "bc1cc2f048718f2965f593162fd197e436ff64ecdd798c73ed5e49ed001acacd",
+      "matchesBuild": true
+    },
+    {
+      "url": "https://www.cloud-calendars.com/es/articles/",
+      "status": 200,
+      "sha256": "a1924d80c21c99ade4f485d9c9619d0d955919c942764df67cebf4a854bb6705",
+      "matchesBuild": true
+    },
+    {
+      "url": "https://www.cloud-calendars.com/es/articles/keeping-track-of-who-replied/",
+      "status": 200,
+      "sha256": "837b9c65cf5f14144106182e750a6db7e5b90a20665d2b0ba474d2dc532eb4bd",
+      "matchesBuild": true
+    },
+    {
+      "url": "https://www.cloud-calendars.com/es/articles/who-can-see-what-in-google-calendar/",
+      "status": 200,
+      "sha256": "87b66277eaf04fb23def976c63c577696da61cafb82151640917dd172031e397",
+      "matchesBuild": true
+    },
+    {
+      "url": "https://www.cloud-calendars.com/fi/articles/who-can-see-what-in-google-calendar/",
+      "status": 200,
+      "sha256": "4bd2a5edd0a16d50398fae0ee7ad5b9e49b8cf226f7cdcbcf894a887b6b6f9a4",
+      "matchesBuild": true
+    },
+    {
+      "url": "https://www.cloud-calendars.com/fr/articles/",
+      "status": 200,
+      "sha256": "e5fe6061ce1a45045844cda1bafe48d575e74334c7b060cb43a03671aca20727",
+      "matchesBuild": true
+    },
+    {
+      "url": "https://www.cloud-calendars.com/fr/articles/keeping-track-of-who-replied/",
+      "status": 200,
+      "sha256": "78a1b647851846db72f4ca1b4672084319614eebe9b33b69d4b87727b7cd004a",
+      "matchesBuild": true
+    },
+    {
+      "url": "https://www.cloud-calendars.com/fr/articles/who-can-see-what-in-google-calendar/",
+      "status": 200,
+      "sha256": "e086121c260b55e91f89e18b78974d84a704789c034d90bc52b9a1796d9e189b",
+      "matchesBuild": true
+    },
+    {
+      "url": "https://www.cloud-calendars.com/he/articles/who-can-see-what-in-google-calendar/",
+      "status": 200,
+      "sha256": "ac61afbfe81a4d0cb30d17fd8c735cf855e8e3d3ab38f80afbca3ee0e2454513",
+      "matchesBuild": true
+    },
+    {
+      "url": "https://www.cloud-calendars.com/hi/articles/who-can-see-what-in-google-calendar/",
+      "status": 200,
+      "sha256": "51d102bd4f2f0af8893b14e33b391034a260d2e61881cfe8d0fe78f35400c0c9",
+      "matchesBuild": true
+    },
+    {
+      "url": "https://www.cloud-calendars.com/hu/articles/who-can-see-what-in-google-calendar/",
+      "status": 200,
+      "sha256": "9ab379560feb774079b87274c3f0a6902d33dbc042eca190a8324e2f5fc0e107",
+      "matchesBuild": true
+    },
+    {
+      "url": "https://www.cloud-calendars.com/id/articles/who-can-see-what-in-google-calendar/",
+      "status": 200,
+      "sha256": "4d953c4f23b010497bb0cbcda4177b886cc0a054f4055620761406f12ec5e928",
+      "matchesBuild": true
+    },
+    {
+      "url": "https://www.cloud-calendars.com/it/articles/",
+      "status": 200,
+      "sha256": "a91765cde1082b38f970a590b95503ce25c35587eeabea2a09a4cd40b80032ea",
+      "matchesBuild": true
+    },
+    {
+      "url": "https://www.cloud-calendars.com/it/articles/keeping-track-of-who-replied/",
+      "status": 200,
+      "sha256": "69cdd4f3b878e4c9d90998a10185fe148c3f85f431afeb75c58d47ff952798ba",
+      "matchesBuild": true
+    },
+    {
+      "url": "https://www.cloud-calendars.com/it/articles/who-can-see-what-in-google-calendar/",
+      "status": 200,
+      "sha256": "72c8e0b872dcd56c264ab94cb21d3269099d74b00362f08205c9258b746c0077",
+      "matchesBuild": true
+    },
+    {
+      "url": "https://www.cloud-calendars.com/ja/articles/who-can-see-what-in-google-calendar/",
+      "status": 200,
+      "sha256": "52cfba3b4bcc6d34746eb82f097a351b2c60ed3aeabf20b47226d2cf2ff3763e",
+      "matchesBuild": true
+    },
+    {
+      "url": "https://www.cloud-calendars.com/ko/articles/who-can-see-what-in-google-calendar/",
+      "status": 200,
+      "sha256": "fbd97f98ae1927eeb20d00c4fedee6377fc1d27dadbbadac9b0843a01a7cd3f0",
+      "matchesBuild": true
+    },
+    {
+      "url": "https://www.cloud-calendars.com/ms/articles/who-can-see-what-in-google-calendar/",
+      "status": 200,
+      "sha256": "2fdf16b05dc5fbb5a1a9806f43df6ea35f28516cb73e09598e8127cd726b9407",
+      "matchesBuild": true
+    },
+    {
+      "url": "https://www.cloud-calendars.com/nl/articles/who-can-see-what-in-google-calendar/",
+      "status": 200,
+      "sha256": "6a2d9eff5a4297a0c92faf550f783a086c8f11a2db62a8ff1cef28ad44bb347c",
+      "matchesBuild": true
+    },
+    {
+      "url": "https://www.cloud-calendars.com/no/articles/who-can-see-what-in-google-calendar/",
+      "status": 200,
+      "sha256": "dead2602257103bc020f63d646d80046baa2b227c4420d411074dbad3636719d",
+      "matchesBuild": true
+    },
+    {
+      "url": "https://www.cloud-calendars.com/pl/articles/who-can-see-what-in-google-calendar/",
+      "status": 200,
+      "sha256": "d755e2a08fdf3bcadd14ae2e98a79a32063a0b229b5e04cb8662c6c59fe434ae",
+      "matchesBuild": true
+    },
+    {
+      "url": "https://www.cloud-calendars.com/pt/articles/who-can-see-what-in-google-calendar/",
+      "status": 200,
+      "sha256": "e8f46fc0b7cd127a4d44d8a91e5e31d742c980328a473dd08b8eca37f2974430",
+      "matchesBuild": true
+    },
+    {
+      "url": "https://www.cloud-calendars.com/ro/articles/who-can-see-what-in-google-calendar/",
+      "status": 200,
+      "sha256": "bb4570a012e63d37df329d6dd41b3e6e190210470977b4bde5d65f33e5ee93f3",
+      "matchesBuild": true
+    },
+    {
+      "url": "https://www.cloud-calendars.com/ru/articles/who-can-see-what-in-google-calendar/",
+      "status": 200,
+      "sha256": "4577b071d1a5ae5d6408073b1f40eab85dfda6ca2ca20821a5688f6fdcb33566",
+      "matchesBuild": true
+    },
+    {
+      "url": "https://www.cloud-calendars.com/sitemap.xml",
+      "status": 200,
+      "sha256": "091d039435ba0c780a1b3c0284c5176bb3e6e86fb6aa3a5ada8b8f8d405c5612",
+      "matchesBuild": true
+    },
+    {
+      "url": "https://www.cloud-calendars.com/sv/articles/who-can-see-what-in-google-calendar/",
+      "status": 200,
+      "sha256": "c571a9a930c8b54c82d2f0e0243f07255c1faa37462983878b815f279a6b5f17",
+      "matchesBuild": true
+    },
+    {
+      "url": "https://www.cloud-calendars.com/th/articles/who-can-see-what-in-google-calendar/",
+      "status": 200,
+      "sha256": "e626c3127a6f3f48b99867dee6a7df66003ab96b54c4e216fa2377c82271d9fc",
+      "matchesBuild": true
+    },
+    {
+      "url": "https://www.cloud-calendars.com/tr/articles/who-can-see-what-in-google-calendar/",
+      "status": 200,
+      "sha256": "c4e4f7a5d240ddedd4f4b9ee19fb5640f9f41875103dd9e2eb61f8b062453046",
+      "matchesBuild": true
+    },
+    {
+      "url": "https://www.cloud-calendars.com/vi/articles/who-can-see-what-in-google-calendar/",
+      "status": 200,
+      "sha256": "d72c6c6f457aeb1dbb4ceef6650538ec70dfd5dfa63e6c6171551bc051120d86",
+      "matchesBuild": true
+    },
+    {
+      "url": "https://www.cloud-calendars.com/zh-hans/articles/who-can-see-what-in-google-calendar/",
+      "status": 200,
+      "sha256": "d276b28ad817e9f365fc6fd7c6dd4e5f7880b7fc192e2adf16d3d45ad49b4588",
+      "matchesBuild": true
+    },
+    {
+      "url": "https://www.cloud-calendars.com/zh-hant/articles/who-can-see-what-in-google-calendar/",
+      "status": 200,
+      "sha256": "6269a9aa389e09ecd14eadcc52020303fcfa46afcce89779eff8792a9d5c316d",
+      "matchesBuild": true
+    },
+    {
+      "url": "https://www.cloud-calendars.com/llms.txt",
+      "status": 200,
+      "sha256": "15399bd3ca0cd438acb203aba9c555572253d6436eabe697be76b3d23ba97537",
+      "matchesBuild": true
+    },
+    {
+      "url": "https://www.cloud-calendars.com/llms-full.txt",
+      "status": 200,
+      "sha256": "9372e8f7ae457b78c64388a4c6fbfa9463335d1092ac13c6478dbdeca40c3028",
+      "matchesBuild": true
+    }
+  ]
+}

@@ -1,0 +1,95 @@
+{
+  "updated": "2026-10-21",
+  "title": "Google Meet and Microsoft Teams links: create, save and check",
+  "short": "Meeting links that work",
+  "description": "See which calendars can create Meet or Teams links, how the plans differ and what to check when a saved event has no working joining link.",
+  "lede": "A call link is useful only when it belongs to the intended meeting and the guests can use it. Cloud Calendars can request provider meeting links, but a request is not a guarantee that a usable link has arrived. This guide is written by Arte Soft, the developer of Cloud Calendars.",
+  "commonBelief": "Every saved event automatically gets a working call link, and Google Meet requires an upgraded app plan.",
+  "sections": [
+    {
+      "heading": "1. Match the event to the meeting provider",
+      "body": [
+        "Google Meet creation belongs to a connected Google calendar event; Microsoft Teams creation belongs to a connected Microsoft calendar event. An app-local event or a calendar visible through a different route is not automatically eligible just because you also signed in to that provider.",
+        "Start by checking the event’s calendar and account. For a work call, use the calendar and conferencing service your organization permits. Do not move an existing invitation merely to make a different meeting option appear."
+      ]
+    },
+    {
+      "heading": "2. Separate app plans from account capability",
+      "body": [
+        "Google Calendar and Google Meet are listed with Cloud Calendars Base features. Advanced adds ad removal. Premium adds Microsoft Calendar and Microsoft Teams features. Review the local purchase offer if you need Premium; paying does not grant new rights on a calendar owned by someone else.",
+        "Microsoft also requires the calendar to support the intended online meeting provider. An app subscription cannot make every personal or workplace account eligible for Teams meeting creation. Account permissions, organization settings and the saved event remain part of the result."
+      ]
+    },
+    {
+      "heading": "3. Use the available action on an editable event",
+      "body": [
+        "For eligible events without a detected link, the app can offer “Add to Google Meet” or “Add to Microsoft Teams.” The option depends on the event’s provider connection and editability. If the event already contains a recognized link, the corresponding add action may not appear.",
+        "Some provider event-creation paths also request a meeting link while saving. Treat either path as a request to the provider. A local event that has not yet acquired its provider identity is not equivalent to an existing provider meeting that can be updated."
+      ]
+    },
+    {
+      "heading": "4. Check the saved result rather than the button press",
+      "body": [
+        "Reopen the event after synchronization and look for the actual joining link. Compare it with the same event in Google Calendar or Outlook. Google documents conference creation as potentially pending, successful or failed; saving an event does not by itself prove conference creation has finished.",
+        "For example, if tomorrow’s client call has a time and title but no joining URL, do not send “the link is in the invitation” yet. Confirm that the provider event has the meeting information, then check the copy the guests will use."
+      ]
+    },
+    {
+      "heading": "5. Diagnose a missing link without duplicating the meeting",
+      "body": [
+        "Check the intended account, calendar, edit permission and network first. If the action is absent, the event may be read-only, linked through another route or already contain a recognized meeting link. If a request was made but no link appears, compare the provider event before repeatedly creating replacement events.",
+        "Use the provider’s approved workflow if you need to complete the meeting there. Keep one clear event for the participants and communicate the final joining details. Do not assume a new app plan fixes an expired connection, unavailable conferencing service or rejected provider request."
+      ]
+    },
+    {
+      "heading": "6. Recheck after moving, importing or rescheduling",
+      "body": [
+        "A copied or imported event is not guaranteed to preserve conferencing information. Google explicitly documents that conference data is not included when importing events. After a calendar move or file import, inspect the resulting event instead of assuming the old link followed it correctly.",
+        "For a recurring meeting, verify which occurrence or series you are changing and whether the displayed link is the one participants should use. A joining link is also not an RSVP: check attendance separately and tell guests directly about important changes."
+      ]
+    }
+  ],
+  "claims": {},
+  "practical": [
+    "Identify the owning account and calendar before requesting a meeting link.",
+    "Use the appropriate available action on an editable provider event.",
+    "Confirm that the saved provider event contains an actual joining URL.",
+    "Check the event copy or invitation that participants will receive.",
+    "Investigate missing links before creating duplicate meetings.",
+    "Recheck the link after imports, calendar moves or important series changes."
+  ],
+  "faq": [
+    {
+      "q": "Do I need Advanced to create a Google Meet link?",
+      "a": "Google Meet is listed with Base features, alongside Google Calendar. Advanced adds ad removal. Meeting creation still depends on an eligible connected event and a successful provider request."
+    },
+    {
+      "q": "Does Premium guarantee a Teams link for every calendar?",
+      "a": "No. Premium adds the app’s Microsoft features, but the Microsoft account and calendar must support the online meeting provider and allow the operation. Check that a usable joining link was returned."
+    },
+    {
+      "q": "Why is the event saved but the link missing?",
+      "a": "Event saving and conference creation are not the same outcome. A conference request can still be pending or fail. Check the owning provider event, account and permissions before making a duplicate."
+    }
+  ],
+  "sourcesHeading": "Meeting provider references",
+  "sources": [
+    {
+      "label": "Google: conference creation status on calendar events",
+      "url": "https://developers.google.com/workspace/calendar/api/v3/reference/events"
+    },
+    {
+      "label": "Microsoft: online meetings and supported calendar providers",
+      "url": "https://learn.microsoft.com/en-us/graph/outlook-calendar-online-meetings"
+    },
+    {
+      "label": "Google: event import limitations",
+      "url": "https://support.google.com/calendar/answer/37118?co=GENIE.Platform%3DDesktop&hl=en"
+    }
+  ],
+  "seeAlso": [
+    "exchange-calendars-on-an-iphone",
+    "keeping-track-of-who-replied",
+    "icloud-google-and-outlook-in-one-view"
+  ]
+}
