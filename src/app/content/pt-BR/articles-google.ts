@@ -346,53 +346,99 @@ export const GOOGLE_PT_BR: Readonly<Record<string, LocalisedArticle>> = {
 },
 
   'google-calendars-that-never-reach-your-iphone': {
-    title: 'Por que algumas agendas do Google nunca chegam ao iPhone',
-    short: 'Agendas do Google sumidas no iPhone',
-    description:
-      'Uma conta do Google, várias agendas e só uma no telefone. A lista de sincronização que decide isso e o que fazer no lugar.',
-    lede: 'Sua conta do Google guarda oito agendas. Seu iPhone mostra duas. Nada está quebrado: algo que você nunca viu escolheu por você.',
-    commonBelief: 'Que adicionar uma conta do Google ao iPhone adiciona as agendas dela.',
-    sections: [
-      {
-        heading: 'Uma lista que nunca te mostraram',
-        body: [
-          'O Google mantém, por aparelho, uma lista de quais agendas podem sincronizar, e as secundárias — as compartilhadas, as assinadas, as criadas para um projeto — ficam fora com frequência.',
-          'Essa lista não está nos ajustes do iOS. Ela vive numa página do próprio Google, e é por isso que olhar no lugar óbvio não encontra nada errado e não muda nada.',
-        ],
-      },
-      {
-        heading: 'O outro caminho',
-        body: [
-          'Um app que fala direto com o Google não usa essa lista: mostra todas as agendas que a conta realmente tem, inclusive as que o telefone deixou cair sem dizer.',
-          'Isso também junta as contas. Uma visão com o pessoal, o do trabalho e o compartilhado é o ponto; se o telefone teria sincronizado cada uma deixa de ser pergunta.',
-        ],
-      },
-    ],
-    claims: {
-      accounts: 'Tipos de conta que uma única visão reúne',
-      price: 'O que custa o lado do Google',
+  "title": "Um calendário Google não aparece no iPhone: confira a conexão e a seleção",
+  "short": "Calendários Google ausentes no iPhone",
+  "description": "Encontre um calendário Google ausente conferindo acesso à conta, visibilidade e a conexão usada pelo Calendário da Apple ou Cloud Calendars.",
+  "lede": "Quando um calendário Google aparece e outro não, primeiro descubra onde a programação ausente está disponível. Acesso à conta, seleção de calendários e disponibilidade de eventos exigem verificações diferentes. Este guia é publicado pela Arte Soft, desenvolvedora do Cloud Calendars.",
+  "commonBelief": "Todo calendário Google ausente tem a mesma causa numa lista oculta de sincronização, e conectar diretamente garante que tudo apareça.",
+  "sections": [
+    {
+      "heading": "Confirme que o calendário está disponível para essa conta",
+      "body": [
+        "Abra o Google Agenda na web com a mesma conta que pretende usar no celular. Procure o calendário em si, não apenas um título conhecido. Duas contas podem ter calendários com nomes parecidos, e um convite enviado ao e-mail profissional não comprova acesso para a conta pessoal.",
+        "Se o calendário também estiver ausente ali, comece pelo proprietário ou convite de compartilhamento. Se o acesso vier de um grupo, confirme sua participação e qual grupo recebeu a permissão. Não exclua a conta do celular enquanto a dúvida sobre o acesso continuar sem solução."
+      ]
     },
-    faq: [
-      {
-        q: 'Por que só algumas das minhas agendas do Google aparecem no iPhone?',
-        a: 'O Google mantém, por aparelho, uma lista de quais agendas podem sincronizar, e as secundárias — compartilhadas, assinadas, criadas para um projeto — ficam fora com frequência.',
-      },
-      {
-        q: 'Onde fica a configuração de sincronização do Google Agenda para iPhone?',
-        a: 'Não nos ajustes do iOS. Ela mora numa página do próprio Google, e por isso procurar no lugar óbvio não acha nada e não muda nada.',
-      },
-      {
-        q: 'Como vejo todas as minhas agendas do Google no iPhone?',
-        a: 'Por um app que consulta o Google diretamente em vez de passar pela lista do aparelho. Ele mostra todas as agendas que a conta realmente tem, inclusive as que o telefone deixou de fora.',
-      },
-    ],
-    practical: [
-      'Confira a lista de sincronização do Google antes de achar que a conta quebrou.',
-      'Conte com agendas assinadas e compartilhadas excluídas, não incluídas.',
-      'Se você mantém mais do que duas agendas, leia-as por algo que consulte o Google diretamente.',
-    ],
-    seeAlso: ['why-a-shared-calendar-does-not-appear', 'icloud-google-and-outlook-in-one-view'],
-  },
+    {
+      "heading": "Diferencie um calendário oculto de um ausente",
+      "body": [
+        "No aplicativo Google Agenda, o Google orienta selecionar pelo menu os calendários que serão exibidos. Um calendário listado, mas desmarcado, é uma questão de visibilidade. Se ele não está na lista, investigue outros fatores, como a identidade convidada, aprovação ou conexão.",
+        "Um convite de compartilhamento enviado por e-mail e um endereço de assinatura também são caminhos diferentes. O Google distingue adicionar uma nova assinatura pelo navegador do computador de abrir um calendário já compartilhado por e-mail. Guarde o convite original, mas não publique links privados em pedidos de ajuda."
+      ]
+    },
+    {
+      "heading": "Identifique como o aplicativo recebe os dados Google",
+      "body": [
+        "O Calendário da Apple pode se conectar pela conta Google configurada no dispositivo. As instruções do Google incluem ativar calendários para essa conta. Siga as orientações atuais do provedor para sua versão do iOS; alterar outro aplicativo não equivale a mudar essa conta do dispositivo.",
+        "O Cloud Calendars também oferece login direto no Google. Identifique a conta e o caminho realmente usados antes de criar outra conexão. Se a mesma programação chega pelo calendário do dispositivo e pela conexão direta, compare a identidade dos calendários antes de concluir que o evento foi duplicado no Google."
+      ]
+    },
+    {
+      "heading": "Confira a seleção no Cloud Calendars sem presumir cobertura completa",
+      "body": [
+        "No Cloud Calendars, revise os calendários associados à conta Google desejada e selecione os que pretende usar. A sincronização Google considera essa seleção. Um login bem-sucedido, sozinho, não confirma que todos os calendários foram selecionados ou que todas as atualizações terminaram.",
+        "A conexão direta é outra forma de receber dados Google, não uma promessa de exibir todo calendário acessível. Se ele aparece no site Google, mas não no Cloud Calendars, registre conta, nome do calendário e método de conexão para o suporte. Use o provedor original para agendamentos urgentes enquanto a diferença é investigada."
+      ]
+    },
+    {
+      "heading": "Separe calendário ausente de datas ausentes",
+      "body": [
+        "Se o calendário aparece na lista, mas um compromisso não, compare a data exata no Google Agenda. Confira se o item pertence ao calendário selecionado e se é a mesma ocorrência de uma reunião recorrente. Um título parecido em outro calendário não é o mesmo registro de origem.",
+        "Não suponha que um aplicativo baixou todo o histórico e todos os eventos futuros distantes. A sincronização Google do Cloud Calendars consulta um intervalo limitado de datas. Uma busca antiga sem resultados não prova exclusão no Google; confira o provedor original antes de alterar ou recriar algo."
+      ]
+    },
+    {
+      "heading": "Peça ajuda com uma comparação útil, sem redefinir a conta",
+      "body": [
+        "Anote aplicativo, tipo de conta, nome do calendário, uma data de exemplo e onde a programação aparece. Inclua a mensagem de erro, se houver, removendo informações privadas. Isso distingue problemas de permissão, seleção e sincronização melhor do que dizer que toda a conta está com defeito.",
+        "Para planos urgentes, confirme o evento atual com o organizador. Evite excluir contas, importar cópias repetidas ou mover eventos entre calendários como testes iniciais. Depois de entender o problema de conexão, confira o resultado com o mesmo exemplo antes de alterar outras configurações."
+      ]
+    }
+  ],
+  "claims": {},
+  "practical": [
+    "Compare a conta e o calendário desejados no Google Agenda na web.",
+    "Confira se o calendário está ausente ou apenas desmarcado.",
+    "Identifique sincronização do dispositivo, conexão direta ou assinatura.",
+    "Revise os calendários selecionados na conta correta do Cloud Calendars.",
+    "Compare uma data exata do evento no provedor original.",
+    "Informe a diferença sem compartilhar endereços privados ou redefinir contas."
+  ],
+  "faq": [
+    {
+      "q": "O login direto no Google mostrará todos os calendários?",
+      "a": "Não presuma cobertura completa. Conta, lista, seleção e sincronização bem-sucedida importam. Compare o calendário ausente no Google Agenda na web."
+    },
+    {
+      "q": "Devo excluir a conta e adicioná-la novamente?",
+      "a": "Confira primeiro identidade, acesso, visibilidade e conexão. Reconectar não concede uma permissão que o proprietário não deu."
+    },
+    {
+      "q": "Um evento antigo ausente foi excluído?",
+      "a": "Não necessariamente. Confira o calendário Google original e a data. O intervalo disponível ou a busca do aplicativo podem diferir do histórico armazenado pelo provedor."
+    }
+  ],
+  "sourcesHeading": "Orientações dos provedores e leitura complementar",
+  "sources": [
+    {
+      "label": "Google: adicionar eventos ao Calendário da Apple",
+      "url": "https://support.google.com/calendar/answer/99358?hl=en&co=GENIE.Platform%3DiOS"
+    },
+    {
+      "label": "Google: assinaturas e visibilidade de calendários",
+      "url": "https://support.google.com/calendar/answer/37100?hl=en&co=GENIE.Platform%3DiOS"
+    },
+    {
+      "label": "Google: funcionamento da lista de calendários",
+      "url": "https://developers.google.com/workspace/calendar/api/v3/reference/calendarList/list"
+    }
+  ],
+  "updated": "2026-10-21",
+  "seeAlso": [
+    "why-a-shared-calendar-does-not-appear",
+    "icloud-google-and-outlook-in-one-view"
+  ]
+},
 
   'taking-back-a-calendar-you-shared': {
   "title": "Como deixar de compartilhar um calendário e conferir os acessos restantes",

@@ -347,53 +347,100 @@ export const GOOGLE_NL_NL: Readonly<Record<string, LocalisedArticle>> = {
 },
 
   'google-calendars-that-never-reach-your-iphone': {
-    title: 'Waarom sommige Google-agenda’s je iPhone nooit bereiken',
-    short: 'Google-agenda’s ontbreken op iPhone',
-    description:
-      'Eén Google-account, meerdere agenda’s en maar één op de telefoon. De synchronisatielijst die dat bepaalt, en wat je in plaats daarvan doet.',
-    lede: 'Je Google-account bevat acht agenda’s. Je iPhone toont er twee. Er is niets kapot: iets dat je nooit hebt gezien koos voor jou.',
-    commonBelief: 'Dat een Google-account toevoegen op de iPhone ook zijn agenda’s toevoegt.',
-    sections: [
-      {
-        heading: 'Een lijst die je nooit is getoond',
-        body: [
-          'Google houdt per apparaat een lijst bij van welke agenda’s mogen synchroniseren, en secundaire agenda’s — de gedeelde, de geabonneerde, die iemand voor een project maakte — staan daar vaak buiten.',
-          'Die lijst staat niet in de iOS-instellingen. Hij leeft op een eigen Google-pagina; daarom vind je op de voor de hand liggende plek niets fout en verandert er niets.',
-        ],
-      },
-      {
-        heading: 'De andere route',
-        body: [
-          'Een app die rechtstreeks met Google praat gebruikt die lijst niet, dus toont hij elke agenda die het account werkelijk heeft, ook die de telefoon stil liet vallen.',
-          'Dat brengt ook de accounts bij elkaar. Eén overzicht met privé, werk en gedeeld is het punt; of de telefoon elk ervan zou hebben gesynchroniseerd is dan geen vraag meer.',
-        ],
-      },
-    ],
-    claims: {
-      accounts: 'Soorten accounts die één overzicht bijeenhoudt',
-      price: 'Wat de Google-kant kost',
+  "title": "Een Google-agenda ontbreekt op iPhone: controleer verbinding en selectie",
+  "short": "Google-agenda’s ontbreken op iPhone",
+  "description": "Zoek een ontbrekende Google-agenda door toegang, zichtbaarheid en de verbinding van Apple Agenda of Cloud Calendars te controleren.",
+  "lede": "Verschijnt de ene Google-agenda wel en de andere niet? Bepaal eerst waar de ontbrekende agenda beschikbaar is. Accounttoegang, agendaselectie en beschikbare afspraken zijn verschillende controles. Deze gids is gepubliceerd door Arte Soft, de ontwikkelaar van Cloud Calendars.",
+  "commonBelief": "Elke ontbrekende Google-agenda komt door één verborgen synchronisatielijst, en rechtstreeks verbinden garandeert dat alles verschijnt.",
+  "sections": [
+    {
+      "heading": "Controleer of deze account toegang heeft tot de agenda",
+      "body": [
+        "Open Google Agenda op het web met dezelfde account die je op je telefoon wilt gebruiken. Zoek de agenda zelf, niet alleen een bekende afspraaktitel. Twee accounts kunnen agenda’s met vergelijkbare namen hebben. Een uitnodiging aan je werkadres bewijst geen toegang voor je privéaccount.",
+        "Ontbreekt de agenda daar ook, begin dan bij de eigenaar of de deeluitnodiging. Controleer bij toegang via een groep je lidmaatschap en welke groep toestemming heeft gekregen. Verwijder de account niet van je telefoon zolang de toegangsvraag onopgelost is."
+      ]
     },
-    faq: [
-      {
-        q: 'Waarom verschijnen maar sommige van mijn Google-agenda’s op de iPhone?',
-        a: 'Google houdt per apparaat een lijst bij van welke agenda’s mogen synchroniseren, en secundaire agenda’s — gedeelde, geabonneerde, voor een project gemaakte — staan daar vaak buiten.',
-      },
-      {
-        q: 'Waar staat de synchronisatie-instelling voor Google Agenda op de iPhone?',
-        a: 'Niet in de iOS-instellingen. Ze staat op een eigen Google-pagina, en daarom vindt zoeken op de voor de hand liggende plek niets en verandert er niets.',
-      },
-      {
-        q: 'Hoe zie ik al mijn Google-agenda’s op de iPhone?',
-        a: 'Via een app die Google rechtstreeks bevraagt in plaats van via de lijst van het apparaat. Die toont elke agenda die het account echt heeft, ook de door de telefoon weggelaten.',
-      },
-    ],
-    practical: [
-      'Kijk in de Google-synchronisatielijst voordat je het account kapot verklaart.',
-      'Reken erop dat geabonneerde en gedeelde agenda’s zijn uitgesloten, niet opgenomen.',
-      'Houd je meer dan een paar agenda’s bij, lees ze dan via iets dat Google rechtstreeks bevraagt.',
-    ],
-    seeAlso: ['why-a-shared-calendar-does-not-appear', 'icloud-google-and-outlook-in-one-view'],
-  },
+    {
+      "heading": "Maak onderscheid tussen verborgen en ontbrekend",
+      "body": [
+        "Google beschrijft hoe je in het menu van de Google Agenda-app agenda’s voor weergave selecteert. Een vermelde maar niet aangevinkte agenda betreft zichtbaarheid. Ontbreekt hij in de lijst, onderzoek dan bijvoorbeeld de uitgenodigde identiteit, goedkeuring of verbinding.",
+        "Een deeluitnodiging per e-mail en een abonnementsadres zijn ook verschillende routes. Google beschrijft een nieuw abonnement toevoegen via een computerbrowser apart van het openen van een al per e-mail gedeelde agenda. Bewaar de oorspronkelijke uitnodiging, maar plaats privélinks niet in openbare hulpvragen."
+      ]
+    },
+    {
+      "heading": "Bepaal hoe deze iPhone-app Google-gegevens ontvangt",
+      "body": [
+        "Apple Agenda kan verbinden via de Google-account die op het apparaat is ingesteld. Volgens Google moet Agenda’s voor die account ingeschakeld zijn. Volg de actuele instructies voor jouw iOS-versie; instellingen in een afzonderlijke app wijzigen is iets anders dan deze apparaataccount aanpassen.",
+        "Cloud Calendars biedt ook rechtstreeks aanmelden bij Google. Stel vast welke account en route je werkelijk gebruikt voordat je nog een verbinding toevoegt. Komt dezelfde agenda via zowel het apparaat als een directe verbinding binnen, vergelijk dan de agenda-identiteiten voordat je concludeert dat Google een afspraak heeft gedupliceerd."
+      ]
+    },
+    {
+      "heading": "Controleer de selectie in Cloud Calendars zonder volledige dekking aan te nemen",
+      "body": [
+        "Bekijk in Cloud Calendars de agenda’s van de bedoelde Google-account en selecteer wat je wilt gebruiken. De Google-synchronisatie controleert de agendaselectie. Succesvol aanmelden bewijst niet dat elke agenda geselecteerd is of elke aangevraagde update is afgerond.",
+        "Een directe verbinding is een andere manier om Google-gegevens te ontvangen, geen belofte dat elke toegankelijke agenda verschijnt. Staat een agenda op Googles website maar niet in Cloud Calendars, noteer dan account, agendanaam en verbindingsmethode voor ondersteuning. Gebruik bij urgente afspraken de oorspronkelijke dienst terwijl het verschil wordt onderzocht."
+      ]
+    },
+    {
+      "heading": "Onderscheid een ontbrekende agenda van ontbrekende datums",
+      "body": [
+        "Staat de agenda in de lijst maar ontbreekt een afspraak, vergelijk dan die exacte datum in Google Agenda. Controleer of de afspraak bij de geselecteerde agenda hoort en of je dezelfde herhaling bekijkt. Een vergelijkbare titel in een andere agenda is niet hetzelfde bronrecord.",
+        "Neem niet aan dat een app alle oude of ver toekomstige afspraken heeft opgehaald. De Google-synchronisatie van Cloud Calendars gebruikt een begrensde datumaanvraag. Een lege zoekopdracht in het verleden bewijst dus geen verwijdering bij Google. Controleer de oorspronkelijke dienst voordat je iets wijzigt of opnieuw maakt."
+      ]
+    },
+    {
+      "heading": "Vraag hulp met een bruikbare vergelijking, niet met een reset",
+      "body": [
+        "Noteer app, accounttype, agendanaam, voorbeelddatum en waar de agenda zichtbaar is. Voeg een eventuele foutmelding toe nadat je privégegevens hebt verwijderd. Zo onderscheid je rechten, selectie en synchronisatie beter dan met de melding dat de hele account kapot is.",
+        "Bevestig bij tijdkritische plannen de actuele afspraak met de organisator. Begin niet met accounts verwijderen, herhaaldelijk kopieën importeren of afspraken tussen agenda’s verplaatsen. Controleer na het vaststellen van het verbindingsprobleem hetzelfde voorbeeld voordat je verdere instellingen wijzigt."
+      ]
+    }
+  ],
+  "claims": {},
+  "practical": [
+    "Vergelijk de bedoelde account en agenda in Google Agenda op het web.",
+    "Controleer of de agenda ontbreekt of alleen niet geselecteerd is.",
+    "Bepaal of je apparaatsynchronisatie, een directe appverbinding of een abonnement gebruikt.",
+    "Controleer de geselecteerde agenda’s van de bedoelde account in Cloud Calendars.",
+    "Vergelijk één exacte afspraakdatum bij de oorspronkelijke dienst.",
+    "Meld het verschil zonder privé-adressen te delen of accounts te resetten."
+  ],
+  "faq": [
+    {
+      "q": "Toont rechtstreeks aanmelden bij Google elke agenda?",
+      "a": "Ga niet uit van volledige dekking. Account, agendalijst, selectie en geslaagde synchronisatie tellen allemaal mee. Vergelijk een ontbrekende agenda met Google Agenda op het web."
+    },
+    {
+      "q": "Moet ik de account verwijderen en opnieuw toevoegen?",
+      "a": "Controleer eerst identiteit, toegang, zichtbaarheid en verbindingsroute. Opnieuw verbinden verleent geen toestemming die de eigenaar niet heeft gegeven."
+    },
+    {
+      "q": "Betekent een ontbrekende oude afspraak dat deze is verwijderd?",
+      "a": "Nee. Controleer de oorspronkelijke Google-agenda en datum. Het beschikbare datumbereik of zoekgedrag van een app kan afwijken van de opgeslagen geschiedenis bij de dienst."
+    }
+  ],
+  "sourcesHeading": "Instructies van de aanbieders en verder lezen",
+  "sources": [
+    {
+      "label": "Google: Google-afspraken toevoegen aan Apple Agenda",
+      "url": "https://support.google.com/calendar/answer/99358?hl=en&co=GENIE.Platform%3DiOS"
+    },
+    {
+      "label": "Google: abonnementen en zichtbaarheid van agenda’s",
+      "url": "https://support.google.com/calendar/answer/37100?hl=en&co=GENIE.Platform%3DiOS"
+    },
+    {
+      "label": "Google: werking van de agendalijst",
+      "url": "https://developers.google.com/workspace/calendar/api/v3/reference/calendarList/list"
+    }
+  ],
+  "seeAlso": [
+    "why-a-shared-calendar-does-not-appear",
+    "icloud-google-and-outlook-in-one-view",
+    "the-secret-address-of-a-google-calendar"
+  ],
+  "updated": "2026-10-21"
+},
 
   'taking-back-a-calendar-you-shared': {
   "title": "Stoppen met een agenda delen: verwijder toegang en controleer andere routes",

@@ -1,0 +1,95 @@
+{
+  "title": "Kalender Google hilang di iPhone: periksa koneksi dan pilihan kalender",
+  "short": "Kalender Google tidak muncul di iPhone",
+  "description": "Temukan kalender Google yang hilang dengan memeriksa akses, tampilan kalender, dan koneksi Apple Calendar atau Cloud Calendars.",
+  "lede": "Jika satu kalender Google muncul tetapi yang lain tidak, pastikan dahulu di mana kalender yang hilang tersedia. Akses akun, pilihan kalender, dan ketersediaan acara adalah pemeriksaan berbeda. Panduan ini diterbitkan oleh Arte Soft, pengembang Cloud Calendars.",
+  "commonBelief": "Semua kalender Google yang hilang disebabkan satu daftar sinkronisasi tersembunyi, dan koneksi langsung menjamin semuanya muncul.",
+  "sections": [
+    {
+      "heading": "Pastikan kalender tersedia untuk akun ini",
+      "body": [
+        "Buka Google Kalender di web dengan akun yang ingin digunakan di ponsel. Cari kalendernya, bukan hanya judul acara yang dikenal. Dua akun dapat memiliki kalender bernama mirip; undangan ke alamat kantor tidak membuktikan bahwa akun pribadi memiliki akses.",
+        "Jika kalender juga tidak ada di sana, mulai dari pemilik atau undangan berbagi. Untuk akses melalui grup, pastikan keanggotaan dan grup yang diberi izin. Jangan hapus akun dari ponsel selagi persoalan akses dasarnya belum selesai."
+      ]
+    },
+    {
+      "heading": "Bedakan kalender tersembunyi dengan kalender yang tidak ada",
+      "body": [
+        "Google menjelaskan cara memilih kalender untuk ditampilkan melalui menu aplikasi Google Kalender. Kalender yang tercantum tetapi tidak dicentang adalah masalah tampilan. Jika tidak tercantum, periksa hal lain seperti identitas yang diundang, persetujuan, atau koneksi.",
+        "Undangan berbagi melalui email dan alamat langganan juga merupakan jalur berbeda. Google membedakan penambahan langganan baru melalui browser komputer dari membuka kalender yang sudah dibagikan lewat email. Simpan undangan asli, tetapi jangan kirim tautan pribadi ke unggahan bantuan publik."
+      ]
+    },
+    {
+      "heading": "Kenali cara aplikasi iPhone ini menerima data Google",
+      "body": [
+        "Apple Calendar dapat terhubung melalui akun Google yang dikonfigurasi di perangkat. Petunjuk Google mencakup pengaktifan Kalender untuk akun tersebut. Ikuti petunjuk terbaru sesuai versi iOS; mengubah pengaturan aplikasi terpisah tidak sama dengan mengubah akun perangkat ini.",
+        "Cloud Calendars juga menyediakan masuk langsung ke Google. Pastikan akun dan jalur yang benar-benar digunakan sebelum menambahkan koneksi lain. Jika kalender yang sama masuk melalui kalender perangkat dan koneksi langsung, bandingkan identitas kalender sebelum menyimpulkan bahwa acara digandakan di Google."
+      ]
+    },
+    {
+      "heading": "Periksa pilihan Cloud Calendars tanpa menganggap cakupannya lengkap",
+      "body": [
+        "Di Cloud Calendars, tinjau kalender yang terhubung dengan akun Google tujuan dan pilih yang ingin digunakan. Sinkronisasi Google memeriksa pilihan kalender. Berhasil masuk saja tidak membuktikan bahwa semua kalender telah dipilih atau semua pembaruan yang diminta selesai.",
+        "Koneksi langsung adalah cara lain menerima data Google, bukan janji bahwa semua kalender yang dapat diakses akan muncul. Jika kalender ada di situs Google tetapi tidak di Cloud Calendars, catat akun, nama kalender, dan metode koneksi untuk dukungan. Gunakan penyedia asli untuk penjadwalan mendesak selama perbedaan itu diselidiki."
+      ]
+    },
+    {
+      "heading": "Bedakan kalender yang hilang dengan tanggal yang hilang",
+      "body": [
+        "Jika kalender tercantum tetapi suatu janji tidak muncul, bandingkan tanggal tepatnya di Google Kalender. Periksa apakah acara berada di kalender yang dipilih dan apakah Anda melihat kejadian yang sama dari rapat berulang. Judul serupa di kalender lain bukan catatan sumber yang sama.",
+        "Jangan anggap aplikasi telah mengunduh semua acara lama atau jauh di masa depan. Sinkronisasi Google Cloud Calendars meminta rentang tanggal terbatas. Pencarian riwayat yang kosong tidak membuktikan acara dihapus dari Google; periksa penyedia asli sebelum mengubah atau membuat ulang apa pun."
+      ]
+    },
+    {
+      "heading": "Minta bantuan dengan perbandingan yang berguna, bukan pengaturan ulang",
+      "body": [
+        "Catat aplikasi, jenis akun, nama kalender, tanggal contoh, dan tempat kalender terlihat. Sertakan pesan kesalahan jika ada setelah menghapus informasi pribadi. Ini membantu membedakan masalah izin, pilihan, dan sinkronisasi lebih baik daripada menyatakan seluruh akun rusak.",
+        "Untuk rencana mendesak, konfirmasikan acara terkini kepada penyelenggara. Jangan mulai pengujian dengan menghapus akun, mengimpor salinan berulang, atau memindahkan acara antar-kalender. Setelah masalah koneksi dipahami, periksa hasilnya dengan contoh yang sama sebelum mengubah pengaturan lain."
+      ]
+    }
+  ],
+  "claims": {},
+  "practical": [
+    "Bandingkan akun dan kalender tujuan di Google Kalender pada web.",
+    "Periksa apakah kalender tidak ada atau hanya belum dipilih.",
+    "Kenali sinkronisasi Google perangkat, koneksi aplikasi langsung, atau langganan.",
+    "Tinjau kalender yang dipilih untuk akun tujuan di Cloud Calendars.",
+    "Bandingkan satu tanggal acara yang tepat di penyedia asli.",
+    "Laporkan perbedaan tanpa membagikan alamat pribadi atau mengatur ulang akun."
+  ],
+  "faq": [
+    {
+      "q": "Apakah masuk langsung ke Google menampilkan semua kalender?",
+      "a": "Jangan anggap cakupannya lengkap. Akun, daftar kalender, pilihan, dan keberhasilan sinkronisasi semuanya berpengaruh. Bandingkan kalender yang hilang dengan Google Kalender di web."
+    },
+    {
+      "q": "Haruskah saya menghapus akun lalu menambahkannya lagi?",
+      "a": "Periksa identitas, akses, tampilan, dan jalur koneksi terlebih dahulu. Menghubungkan ulang tidak dapat memberikan izin yang belum diberikan pemilik."
+    },
+    {
+      "q": "Apakah acara lama yang tidak muncul berarti telah dihapus?",
+      "a": "Tidak. Periksa kalender Google asli dan tanggalnya. Rentang tanggal atau perilaku pencarian aplikasi bisa berbeda dari riwayat yang disimpan penyedia."
+    }
+  ],
+  "sourcesHeading": "Panduan penyedia dan bacaan lanjutan",
+  "sources": [
+    {
+      "label": "Google: menambahkan acara Google ke Apple Calendar",
+      "url": "https://support.google.com/calendar/answer/99358?hl=en&co=GENIE.Platform%3DiOS"
+    },
+    {
+      "label": "Google: langganan dan tampilan kalender",
+      "url": "https://support.google.com/calendar/answer/37100?hl=en&co=GENIE.Platform%3DiOS"
+    },
+    {
+      "label": "Google: perilaku daftar kalender",
+      "url": "https://developers.google.com/workspace/calendar/api/v3/reference/calendarList/list"
+    }
+  ],
+  "seeAlso": [
+    "why-a-shared-calendar-does-not-appear",
+    "icloud-google-and-outlook-in-one-view",
+    "the-secret-address-of-a-google-calendar"
+  ],
+  "updated": "2026-10-21"
+}

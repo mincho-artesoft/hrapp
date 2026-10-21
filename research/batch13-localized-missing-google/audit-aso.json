@@ -1,0 +1,201 @@
+{
+  "slug": "google-calendars-that-never-reach-your-iphone",
+  "source": "src/app/content/en-US/articles-google.ts",
+  "sourceObjectSha256": "0ec52c776252d2f0e744c28bf7fb14b4f7aca05fc3e678131afc81edadaeef33",
+  "datePreserved": "2026-10-21",
+  "count": 10,
+  "format": "Individual LocalisedArticle JSON objects",
+  "validation": "Passed exact field shape, duplicate-key rejection, 6 sections/12 paragraphs/6 steps/3 FAQs, descriptions under 160 characters, exact source URLs/date/empty claims, developer disclosure and locale-available related routes",
+  "meaningReview": [
+    "Correct invited identity and group membership remain separate from visible calendar selection.",
+    "Device Google account, direct Cloud Calendars connection and subscription remain distinct.",
+    "Successful sign-in does not guarantee all calendars selected, all updates completed or complete accessible-calendar coverage.",
+    "Bounded Google date request retained; missing historical search is not proof of deletion.",
+    "Provider web comparison and exact recurring occurrence retained.",
+    "No universal background refresh, two-way synchronization, unlimited history or reset guarantees added."
+  ],
+  "reviewCaveats": "Own model translations; no native-speaker certification. Arabic/Hebrew rendering not previewed. Source itself does not explain pagination mechanics, so no new pagination tutorial added.",
+  "scope": "Requested research files only; no integration, build, deploy, native edits or paid translation API. Intermediate removed after validation.",
+  "locales": [
+    {
+      "locale": "de-DE",
+      "descriptionCharacters": 135,
+      "seeAlso": [
+        "why-a-shared-calendar-does-not-appear",
+        "icloud-google-and-outlook-in-one-view"
+      ],
+      "omittedRelatedSlugs": [
+        "what-calendar-sync-actually-does"
+      ],
+      "sections": 6,
+      "paragraphs": 12,
+      "practicalSteps": 6,
+      "faqs": 3,
+      "bytes": 7571,
+      "sha256": "bb3699591ac3f813feae009155e8169a1a0cc1a582b5d9851c0cd1d791d7de38",
+      "translationConfidence": "medium-high"
+    },
+    {
+      "locale": "es-ES",
+      "descriptionCharacters": 138,
+      "seeAlso": [
+        "why-a-shared-calendar-does-not-appear",
+        "icloud-google-and-outlook-in-one-view"
+      ],
+      "omittedRelatedSlugs": [
+        "what-calendar-sync-actually-does"
+      ],
+      "sections": 6,
+      "paragraphs": 12,
+      "practicalSteps": 6,
+      "faqs": 3,
+      "bytes": 7308,
+      "sha256": "1c7bf611f1f6967608d1803d48b9c33251d54fb41eff37d2bc890c77554c8864",
+      "translationConfidence": "medium-high"
+    },
+    {
+      "locale": "fr-FR",
+      "descriptionCharacters": 131,
+      "seeAlso": [
+        "why-a-shared-calendar-does-not-appear",
+        "icloud-google-and-outlook-in-one-view"
+      ],
+      "omittedRelatedSlugs": [
+        "what-calendar-sync-actually-does"
+      ],
+      "sections": 6,
+      "paragraphs": 12,
+      "practicalSteps": 6,
+      "faqs": 3,
+      "bytes": 7486,
+      "sha256": "c334d3a231641f3cc93e10cfedc0ff7a2be8885f252e260f1a4f2b6f95420f06",
+      "translationConfidence": "medium-high"
+    },
+    {
+      "locale": "da",
+      "descriptionCharacters": 126,
+      "seeAlso": [
+        "why-a-shared-calendar-does-not-appear",
+        "icloud-google-and-outlook-in-one-view"
+      ],
+      "omittedRelatedSlugs": [
+        "what-calendar-sync-actually-does"
+      ],
+      "sections": 6,
+      "paragraphs": 12,
+      "practicalSteps": 6,
+      "faqs": 3,
+      "bytes": 6880,
+      "sha256": "bc57c08427288b6094df850d8ee9d60b01efa70d634bd0a3e8d42b25a203f19f",
+      "translationConfidence": "medium"
+    },
+    {
+      "locale": "bg",
+      "descriptionCharacters": 131,
+      "seeAlso": [
+        "why-a-shared-calendar-does-not-appear",
+        "icloud-google-and-outlook-in-one-view"
+      ],
+      "omittedRelatedSlugs": [
+        "what-calendar-sync-actually-does"
+      ],
+      "sections": 6,
+      "paragraphs": 12,
+      "practicalSteps": 6,
+      "faqs": 3,
+      "bytes": 10889,
+      "sha256": "596d99f05ab141ababdc85a7cdd139ccd002acc843be5c1be1f423191b238711",
+      "translationConfidence": "medium"
+    },
+    {
+      "locale": "cs",
+      "descriptionCharacters": 129,
+      "seeAlso": [
+        "why-a-shared-calendar-does-not-appear",
+        "icloud-google-and-outlook-in-one-view"
+      ],
+      "omittedRelatedSlugs": [
+        "what-calendar-sync-actually-does"
+      ],
+      "sections": 6,
+      "paragraphs": 12,
+      "practicalSteps": 6,
+      "faqs": 3,
+      "bytes": 6864,
+      "sha256": "d40aea5f4495bd769b1231cfe8bcfd001ce39deddfe2ed34407cc980bad44234",
+      "translationConfidence": "medium"
+    },
+    {
+      "locale": "fi",
+      "descriptionCharacters": 125,
+      "seeAlso": [
+        "why-a-shared-calendar-does-not-appear",
+        "icloud-google-and-outlook-in-one-view"
+      ],
+      "omittedRelatedSlugs": [
+        "what-calendar-sync-actually-does"
+      ],
+      "sections": 6,
+      "paragraphs": 12,
+      "practicalSteps": 6,
+      "faqs": 3,
+      "bytes": 6817,
+      "sha256": "78979b118a9b14cb314b6265d5d4574566f573a65eefbc3f64a2995b6bce0858",
+      "translationConfidence": "medium"
+    },
+    {
+      "locale": "el",
+      "descriptionCharacters": 119,
+      "seeAlso": [
+        "why-a-shared-calendar-does-not-appear",
+        "icloud-google-and-outlook-in-one-view"
+      ],
+      "omittedRelatedSlugs": [
+        "what-calendar-sync-actually-does"
+      ],
+      "sections": 6,
+      "paragraphs": 12,
+      "practicalSteps": 6,
+      "faqs": 3,
+      "bytes": 11287,
+      "sha256": "2ca8c645ed3e6e06da4eea45e327e0f6640b9d2fe575ec03d3e5456092fffe3a",
+      "translationConfidence": "medium"
+    },
+    {
+      "locale": "ar-SA",
+      "descriptionCharacters": 112,
+      "seeAlso": [
+        "why-a-shared-calendar-does-not-appear",
+        "icloud-google-and-outlook-in-one-view"
+      ],
+      "omittedRelatedSlugs": [
+        "what-calendar-sync-actually-does"
+      ],
+      "sections": 6,
+      "paragraphs": 12,
+      "practicalSteps": 6,
+      "faqs": 3,
+      "bytes": 8743,
+      "sha256": "14308fdc6fb6cc3993b9c6e3e031a0bef282b6d092936c97f4e1b4d45fbf9d22",
+      "translationConfidence": "medium"
+    },
+    {
+      "locale": "he",
+      "descriptionCharacters": 97,
+      "seeAlso": [
+        "why-a-shared-calendar-does-not-appear",
+        "icloud-google-and-outlook-in-one-view"
+      ],
+      "omittedRelatedSlugs": [
+        "what-calendar-sync-actually-does"
+      ],
+      "sections": 6,
+      "paragraphs": 12,
+      "practicalSteps": 6,
+      "faqs": 3,
+      "bytes": 8148,
+      "sha256": "d4df90d58f7bef051a1d6ca6a961221d93120bca45eedbcbe63796a47d583f5b",
+      "translationConfidence": "medium"
+    }
+  ]
+}

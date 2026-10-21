@@ -1,8 +1,8 @@
 {
-  "guides": 45,
+  "guides": 48,
   "selection": "tools/guide-text-selection.json",
   "extraction": "Visible article headings, paragraphs, lists, FAQs and source links; gallery/other-app cards excluded.",
-  "exportedCharacters": 256099,
+  "exportedCharacters": 272882,
   "records": [
     {
       "slug": "what-calendar-sync-actually-does",
@@ -62,7 +62,7 @@
       "slug": "find-old-calendar-events-by-account-date-and-title",
       "source": "https://www.cloud-calendars.com/articles/find-old-calendar-events-by-account-date-and-title/",
       "blocks": 47,
-      "characters": 6456
+      "characters": 6458
     },
     {
       "slug": "calendar-export-ics-pdf-and-backup",
@@ -272,7 +272,25 @@
       "slug": "month-view-on-a-bigger-screen",
       "source": "https://www.cloud-calendars.com/articles/month-view-on-a-bigger-screen/",
       "blocks": 46,
-      "characters": 6318
+      "characters": 6330
+    },
+    {
+      "slug": "a-week-view-that-fits-a-week",
+      "source": "https://www.cloud-calendars.com/articles/a-week-view-that-fits-a-week/",
+      "blocks": 45,
+      "characters": 5639
+    },
+    {
+      "slug": "a-list-for-people-who-dislike-grids",
+      "source": "https://www.cloud-calendars.com/articles/a-list-for-people-who-dislike-grids/",
+      "blocks": 45,
+      "characters": 5698
+    },
+    {
+      "slug": "the-year-in-one-screen",
+      "source": "https://www.cloud-calendars.com/articles/the-year-in-one-screen/",
+      "blocks": 45,
+      "characters": 5170
     }
   ]
 }

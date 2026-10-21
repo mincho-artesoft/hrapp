@@ -294,7 +294,7 @@ export const ARTICLE_FACTS: Readonly<Record<string, ArticleFacts>> = {
     slug: 'a-week-view-that-fits-a-week',
     family: 'planning',
     intent: 'editing',
-    claims: [{ id: 'views', value: '5' }],
+    claims: [],
     updated: '2026-08-27',
   },
   'month-view-on-a-bigger-screen': {
@@ -337,14 +337,14 @@ export const ARTICLE_FACTS: Readonly<Record<string, ArticleFacts>> = {
     slug: 'a-list-for-people-who-dislike-grids',
     family: 'planning',
     intent: 'editing',
-    claims: [{ id: 'views', value: '5' }],
+    claims: [],
     updated: '2026-08-27',
   },
   'the-year-in-one-screen': {
     slug: 'the-year-in-one-screen',
     family: 'planning',
     intent: 'editing',
-    claims: [{ id: 'views', value: '5' }],
+    claims: [],
     updated: '2026-08-27',
   },
   'free-google-sync-without-adverts': {

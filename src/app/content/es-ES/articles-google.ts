@@ -345,53 +345,99 @@ export const GOOGLE_ES_ES: Readonly<Record<string, LocalisedArticle>> = {
 },
 
   'google-calendars-that-never-reach-your-iphone': {
-    title: 'Por qué algunos calendarios de Google nunca llegan a tu iPhone',
-    short: 'Calendarios de Google que faltan en el iPhone',
-    description:
-      'Una cuenta de Google, varios calendarios y solo uno en el teléfono. La lista de sincronización que lo decide y qué hacer en su lugar.',
-    lede: 'Tu cuenta de Google guarda ocho calendarios. Tu iPhone enseña dos. No hay nada roto: algo que nunca has visto eligió por ti.',
-    commonBelief: 'Que añadir una cuenta de Google al iPhone añade los calendarios que contiene.',
-    sections: [
-      {
-        heading: 'Una lista que nadie te ha enseñado',
-        body: [
-          'Google mantiene, por dispositivo, una lista de qué calendarios pueden sincronizarse, y los secundarios —los compartidos, los suscritos, los que alguien creó para un proyecto— quedan fuera con frecuencia.',
-          'Esa lista no está en los ajustes de iOS. Vive en una página propia de Google, y por eso mirar en el sitio evidente no encuentra nada mal y no cambia nada.',
-        ],
-      },
-      {
-        heading: 'El otro camino',
-        body: [
-          'Una app que habla directamente con Google no usa esa lista, así que enseña todos los calendarios que la cuenta tiene de verdad, incluidos los que el teléfono dejó caer sin decirlo.',
-          'Eso además junta las cuentas. Una vista con lo personal, lo del trabajo y lo compartido es el objetivo; si el teléfono habría sincronizado cada uno deja de ser una pregunta.',
-        ],
-      },
-    ],
-    claims: {
-      accounts: 'Tipos de cuenta que una sola vista reúne',
-      price: 'Lo que cuesta la parte de Google',
+  "title": "Falta un calendario de Google en el iPhone: comprueba la conexión y la selección",
+  "short": "Calendarios de Google que faltan en el iPhone",
+  "description": "Localiza un calendario de Google ausente revisando el acceso, la visibilidad y la conexión utilizada por Apple Calendar o Cloud Calendars.",
+  "lede": "Si aparece un calendario de Google y otro no, determina primero dónde está disponible el que falta. El acceso a la cuenta, la selección de calendarios y la disponibilidad de eventos son comprobaciones distintas. Esta guía la publica Arte Soft, desarrollador de Cloud Calendars.",
+  "commonBelief": "Todo calendario de Google ausente tiene una misma causa oculta de sincronización y conectarse directamente garantiza que aparezca todo.",
+  "sections": [
+    {
+      "heading": "Confirma que el calendario existe para esta cuenta",
+      "body": [
+        "Abre Google Calendar en la web con la misma cuenta que quieres usar en el teléfono. Busca el calendario, no solo un título de evento conocido. Dos cuentas pueden tener calendarios con nombres parecidos; una invitación enviada al correo de trabajo no acredita acceso para la cuenta personal.",
+        "Si tampoco aparece allí, empieza por el propietario o la invitación de uso compartido. Si el acceso depende de un grupo, confirma la pertenencia y el grupo que recibió el permiso. No borres la cuenta del teléfono mientras siga sin resolverse la cuestión del acceso."
+      ]
     },
-    faq: [
-      {
-        q: '¿Por qué solo aparecen algunos de mis calendarios de Google en el iPhone?',
-        a: 'Google guarda, por dispositivo, una lista de qué calendarios pueden sincronizarse, y los secundarios —compartidos, suscritos, creados para un proyecto— quedan fuera con frecuencia.',
-      },
-      {
-        q: '¿Dónde está el ajuste de sincronización de Google Calendar para iPhone?',
-        a: 'No está en los ajustes de iOS. Vive en una página propia de Google, y por eso buscar en el sitio evidente no encuentra nada ni cambia nada.',
-      },
-      {
-        q: '¿Cómo veo todos mis calendarios de Google en el iPhone?',
-        a: 'A través de una app que consulta a Google directamente en vez de por la lista del dispositivo. Enseña todos los calendarios que la cuenta tiene, incluidos los que el teléfono dejó fuera.',
-      },
-    ],
-    practical: [
-      'Mira la lista de sincronización de Google antes de dar la cuenta por rota.',
-      'Da por hecho que los calendarios suscritos y compartidos quedan excluidos.',
-      'Si guardas más de un par de calendarios, léelos con algo que consulte a Google directamente.',
-    ],
-    seeAlso: ['why-a-shared-calendar-does-not-appear', 'icloud-google-and-outlook-in-one-view'],
-  },
+    {
+      "heading": "Distingue un calendario oculto de uno ausente",
+      "body": [
+        "Google documenta la selección de calendarios visibles mediante el menú de su aplicación. Un calendario listado pero desmarcado plantea un problema de visibilidad. Si no figura en la lista, investiga la identidad invitada, la aprobación o la conexión.",
+        "Una invitación por correo para compartir un calendario y una dirección de suscripción son vías diferentes. Google explica por separado cómo añadir una suscripción desde el navegador de un ordenador y cómo abrir un calendario ya compartido por correo. Conserva la invitación original, pero no reenvíes enlaces privados a consultas públicas de soporte."
+      ]
+    },
+    {
+      "heading": "Identifica cómo recibe los datos esta aplicación del iPhone",
+      "body": [
+        "Apple Calendar puede conectarse mediante la cuenta de Google configurada en el dispositivo. Las instrucciones de Google incluyen activar Calendarios para esa cuenta. Sigue las indicaciones actuales del proveedor para tu versión de iOS; cambiar los ajustes de otra aplicación no equivale a cambiar esa cuenta del dispositivo.",
+        "Cloud Calendars también ofrece inicio de sesión directo con Google. Identifica la cuenta y la vía que realmente utilizas antes de añadir otra conexión. Si el mismo calendario llega mediante el dispositivo y una conexión directa, compara sus identidades antes de concluir que se duplicó un evento en Google."
+      ]
+    },
+    {
+      "heading": "Revisa la selección de Cloud Calendars sin asumir cobertura completa",
+      "body": [
+        "En Cloud Calendars, revisa los calendarios asociados a la cuenta de Google prevista y selecciona los que quieras usar. Su sincronización con Google comprueba la selección. Iniciar sesión correctamente no demuestra que todos estén seleccionados ni que cada actualización solicitada haya terminado.",
+        "Una conexión directa es otra vía para recibir datos de Google, no una promesa de que aparezcan todos los calendarios accesibles. Si uno está en la web de Google pero no en Cloud Calendars, anota cuenta, nombre y método de conexión para soporte. Sigue utilizando el proveedor original para planificar asuntos urgentes mientras se investiga la diferencia."
+      ]
+    },
+    {
+      "heading": "Distingue un calendario ausente de fechas ausentes",
+      "body": [
+        "Si el calendario figura pero falta una cita concreta, compara esa fecha exacta en Google Calendar. Comprueba que el elemento pertenezca al calendario seleccionado y que mires la misma ocurrencia de una reunión recurrente. Un título parecido en otro calendario no es el mismo registro de origen.",
+        "No presupongas que una aplicación ha descargado todos los eventos históricos o de un futuro lejano. La sincronización de Google en Cloud Calendars solicita un intervalo de fechas limitado. Una búsqueda histórica vacía no prueba que Google haya borrado el evento; comprueba el proveedor original antes de modificar o recrear algo."
+      ]
+    },
+    {
+      "heading": "Pide ayuda con una comparación útil, no con un restablecimiento",
+      "body": [
+        "Anota aplicación, tipo de cuenta, nombre del calendario, fecha de ejemplo y dónde aparece el calendario. Incluye el mensaje de error si existe, eliminando información privada. Esto diferencia mejor los problemas de permisos, selección y sincronización que decir que toda la cuenta está rota.",
+        "En planes urgentes, confirma el evento actual con el organizador. Evita empezar borrando cuentas, importando copias repetidas o moviendo eventos entre calendarios. Una vez entendido el problema de conexión, verifica el mismo ejemplo antes de cambiar más ajustes."
+      ]
+    }
+  ],
+  "claims": {},
+  "practical": [
+    "Compara la cuenta y el calendario previstos en Google Calendar web.",
+    "Comprueba si el calendario falta o solo está desmarcado.",
+    "Identifica sincronización del dispositivo, conexión directa o suscripción.",
+    "Revisa los calendarios seleccionados para la cuenta prevista en Cloud Calendars.",
+    "Compara una fecha exacta en el proveedor original.",
+    "Comunica la diferencia sin compartir direcciones privadas ni restablecer cuentas."
+  ],
+  "faq": [
+    {
+      "q": "¿El acceso directo con Google mostrará todos los calendarios?",
+      "a": "No asumas cobertura completa. Importan la cuenta, la lista, la selección y una sincronización correcta. Compara el calendario ausente con Google Calendar web."
+    },
+    {
+      "q": "¿Debo borrar la cuenta y añadirla otra vez?",
+      "a": "Comprueba primero identidad, acceso, visibilidad y conexión. Reconectar no aporta un permiso que el propietario no ha concedido."
+    },
+    {
+      "q": "¿Que falte un evento antiguo significa que se borró?",
+      "a": "No. Comprueba su calendario original de Google y la fecha. El intervalo disponible o la búsqueda de la aplicación pueden diferir del historial guardado por el proveedor."
+    }
+  ],
+  "sourcesHeading": "Orientación del proveedor y lecturas adicionales",
+  "sources": [
+    {
+      "label": "Google: añadir eventos de Google a Apple Calendar",
+      "url": "https://support.google.com/calendar/answer/99358?hl=en&co=GENIE.Platform%3DiOS"
+    },
+    {
+      "label": "Google: suscripciones y visibilidad de calendarios",
+      "url": "https://support.google.com/calendar/answer/37100?hl=en&co=GENIE.Platform%3DiOS"
+    },
+    {
+      "label": "Google: comportamiento de la lista de calendarios",
+      "url": "https://developers.google.com/workspace/calendar/api/v3/reference/calendarList/list"
+    }
+  ],
+  "seeAlso": [
+    "why-a-shared-calendar-does-not-appear",
+    "icloud-google-and-outlook-in-one-view"
+  ],
+  "updated": "2026-10-21"
+},
 
   'taking-back-a-calendar-you-shared': {
   "title": "Dejar de compartir un calendario: retira el acceso y revisa las demás vías",

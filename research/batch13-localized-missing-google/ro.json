@@ -1,0 +1,94 @@
+{
+  "title": "Un calendar Google lipsește pe iPhone: verifică legătura și selecția",
+  "short": "Calendare Google lipsă pe iPhone",
+  "description": "Găsește un calendar Google lipsă verificând accesul contului, vizibilitatea și conexiunea folosită de Calendar Apple sau Cloud Calendars.",
+  "lede": "Când un calendar Google apare, iar altul nu, află mai întâi unde este disponibil programul lipsă. Accesul contului, selecția calendarelor și disponibilitatea evenimentelor sunt verificări diferite. Ghidul este publicat de Arte Soft, dezvoltatorul Cloud Calendars.",
+  "commonBelief": "Orice calendar Google lipsă are aceeași cauză într-o listă ascunsă de sincronizare, iar conectarea directă garantează afișarea tuturor datelor.",
+  "sections": [
+    {
+      "heading": "Confirmă disponibilitatea calendarului pentru acest cont",
+      "body": [
+        "Deschide Google Calendar pe web cu același cont pe care vrei să-l folosești pe telefon. Caută calendarul propriu-zis, nu doar un titlu familiar. Două conturi pot avea calendare cu nume asemănătoare, iar o invitație trimisă la adresa de serviciu nu dovedește accesul contului personal.",
+        "Dacă lipsește și acolo, începe cu proprietarul sau invitația de partajare. Pentru acces prin grup, confirmă apartenența și grupul căruia i s-a dat permisiunea. Nu șterge contul de pe telefon cât timp accesul de bază rămâne neclar."
+      ]
+    },
+    {
+      "heading": "Separă un calendar ascuns de unul absent",
+      "body": [
+        "În aplicația Google Calendar, Google explică selectarea calendarelor afișate din meniu. Un calendar prezent, dar nebifat, ține de vizibilitate. Unul absent din listă necesită altă investigație: identitatea invitată, aprobarea sau conexiunea.",
+        "O invitație de partajare prin e-mail și o adresă de abonare sunt căi diferite. Google descrie separat adăugarea unui abonament nou prin browserul computerului și deschiderea unui calendar deja partajat prin e-mail. Păstrează invitația originală, fără să publici linkuri private în solicitări de ajutor."
+      ]
+    },
+    {
+      "heading": "Identifică modul în care aplicația primește datele Google",
+      "body": [
+        "Calendar Apple se poate conecta prin contul Google configurat pe dispozitiv. Instrucțiunile Google includ activarea calendarelor pentru acel cont. Urmează instrucțiunile actuale pentru versiunea ta de iOS; setările altei aplicații nu sunt același lucru cu setările contului de pe dispozitiv.",
+        "Cloud Calendars oferă și conectare directă la Google. Stabilește contul și calea folosite înainte să adaugi o altă conexiune. Dacă programul ajunge atât prin calendarul dispozitivului, cât și direct, compară identitatea calendarelor înainte să concluzionezi că Google a duplicat evenimentul."
+      ]
+    },
+    {
+      "heading": "Verifică selecția Cloud Calendars fără a presupune acoperire completă",
+      "body": [
+        "În Cloud Calendars, verifică calendarele asociate contului Google dorit și selectează-le pe cele de folosit. Sincronizarea Google ține cont de selecție. O autentificare reușită nu dovedește singură că toate calendarele sunt selectate sau că toate actualizările s-au încheiat.",
+        "Conectarea directă este încă o cale de a primi date Google, nu promisiunea afișării fiecărui calendar accesibil. Dacă există pe site-ul Google, dar nu în Cloud Calendars, notează contul, numele calendarului și metoda de conectare pentru asistență. Folosește furnizorul original pentru programări urgente în timpul investigației."
+      ]
+    },
+    {
+      "heading": "Separă calendarul lipsă de datele lipsă",
+      "body": [
+        "Dacă lista include calendarul, dar lipsește o întâlnire, compară data exactă în Google Calendar. Verifică dacă elementul aparține calendarului selectat și dacă privești aceeași apariție a întâlnirii repetate. Un titlu similar în alt calendar nu este aceeași înregistrare sursă.",
+        "Nu presupune că aplicația a descărcat tot istoricul și toate evenimentele din viitorul îndepărtat. Sincronizarea Google din Cloud Calendars cere un interval limitat de date. O căutare istorică fără rezultate nu dovedește ștergerea din Google; verifică sursa înainte să modifici sau să recreezi ceva."
+      ]
+    },
+    {
+      "heading": "Cere ajutor cu o comparație utilă, nu prin resetare",
+      "body": [
+        "Notează aplicația, tipul contului, numele calendarului, o dată exemplu și locul unde programul este vizibil. Include mesajul de eroare, dacă apare, eliminând datele private. Așa separi problemele de permisiune, selecție și sincronizare mai bine decât spunând că întregul cont nu funcționează.",
+        "Pentru planuri urgente, confirmă evenimentul actual cu organizatorul. Evită ștergerea conturilor, importarea repetată a copiilor sau mutarea evenimentelor între calendare ca teste inițiale. După ce înțelegi problema conexiunii, verifică același exemplu înainte să schimbi alte setări."
+      ]
+    }
+  ],
+  "claims": {},
+  "practical": [
+    "Compară contul și calendarul dorite în Google Calendar pe web.",
+    "Verifică dacă lipsește calendarul sau doar nu este selectat.",
+    "Identifică sincronizarea dispozitivului, conexiunea directă sau abonamentul.",
+    "Revizuiește selecția pentru contul potrivit în Cloud Calendars.",
+    "Compară data exactă a unui eveniment la furnizorul original.",
+    "Raportează diferența fără adrese private sau resetarea conturilor."
+  ],
+  "faq": [
+    {
+      "q": "Conectarea directă la Google afișează toate calendarele?",
+      "a": "Nu presupune acoperire completă. Contează contul, lista, selecția și reușita sincronizării. Compară calendarul lipsă cu Google Calendar pe web."
+    },
+    {
+      "q": "Să șterg contul și să-l adaug din nou?",
+      "a": "Verifică întâi identitatea, accesul, vizibilitatea și conexiunea. Reconectarea nu acordă o permisiune refuzată de proprietar."
+    },
+    {
+      "q": "Un eveniment vechi lipsă înseamnă că a fost șters?",
+      "a": "Nu. Verifică data și calendarul Google original. Intervalul disponibil sau căutarea aplicației pot diferi de istoricul păstrat de furnizor."
+    }
+  ],
+  "sourcesHeading": "Ghidurile furnizorilor și lecturi suplimentare",
+  "sources": [
+    {
+      "label": "Google: adăugarea evenimentelor în Calendar Apple",
+      "url": "https://support.google.com/calendar/answer/99358?hl=en&co=GENIE.Platform%3DiOS"
+    },
+    {
+      "label": "Google: abonamente și vizibilitatea calendarelor",
+      "url": "https://support.google.com/calendar/answer/37100?hl=en&co=GENIE.Platform%3DiOS"
+    },
+    {
+      "label": "Google: comportamentul listei de calendare",
+      "url": "https://developers.google.com/workspace/calendar/api/v3/reference/calendarList/list"
+    }
+  ],
+  "updated": "2026-10-21",
+  "seeAlso": [
+    "why-a-shared-calendar-does-not-appear",
+    "icloud-google-and-outlook-in-one-view"
+  ]
+}

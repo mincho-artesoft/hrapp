@@ -345,53 +345,99 @@ export const GOOGLE_ZH_HANT: Readonly<Record<string, LocalisedArticle>> = {
 },
 
   'google-calendars-that-never-reach-your-iphone': {
-    title: '為什麼有些 Google 日曆永遠到不了你的 iPhone',
-    short: 'iPhone 上缺少的 Google 日曆',
-    description:
-      '一個 Google 帳號，好幾本日曆，手機上卻只有一本。決定這件事的同步清單，以及可以改走的另一條路。',
-    lede: '你的 Google 帳號裡有八本日曆。iPhone 顯示兩本。沒有什麼壞掉：某個你從沒見過的東西替你做了選擇。',
-    commonBelief: '以為把 Google 帳號加進 iPhone，就等於把其中的日曆一併加了進來。',
-    sections: [
-      {
-        heading: '一份從沒給你看過的清單',
-        body: [
-          'Google 按裝置保存著一份「哪些日曆允許同步」的清單，而次要日曆——分享來的、訂閱的、某人為某個專案建的——常常不在其中。',
-          '這份清單不在 iOS 的設定裡，它住在 Google 自己的一個頁面上。所以在顯而易見的地方翻找，既找不出毛病，也改變不了什麼。',
-        ],
-      },
-      {
-        heading: '另一條路',
-        body: [
-          '直接與 Google 對話的應用程式不使用那份清單，因此會顯示帳號真正擁有的每一本日曆，包括被手機悄悄丟掉的那些。',
-          '這同時也把帳號拉到了一起。個人、工作與共享裝進同一個檢視畫面才是重點；手機會不會同步其中某一本，就不再是個問題。',
-        ],
-      },
-    ],
-    claims: {
-      accounts: '一個檢視畫面能容納的帳號類型數',
-      price: 'Google 這一側的費用',
+  "title": "iPhone 上找不到 Google 行事曆：檢查連線與選取",
+  "short": "iPhone 上未顯示的 Google 行事曆",
+  "description": "檢查帳號權限、行事曆可見性，以及 Apple 行事曆或 Cloud Calendars 的連線方式，找出未顯示的 Google 行事曆。",
+  "lede": "一個 Google 行事曆有顯示、另一個卻沒有時，先確認缺少的行程在哪裡仍看得到。帳號存取權、行事曆選取與活動資料是不同的檢查項目。本指南由 Cloud Calendars 開發者 Arte Soft 發布。",
+  "commonBelief": "所有未顯示的 Google 行事曆都源於同一份隱藏同步清單，而直接連線保證顯示全部內容。",
+  "sections": [
+    {
+      "heading": "確認此帳號能看到行事曆",
+      "body": [
+        "以準備在手機上使用的同一帳號開啟網頁版 Google 日曆。尋找行事曆本身，不只是熟悉的活動標題。兩個帳號可能有名稱相近的行事曆；寄到工作信箱的邀請，不代表個人帳號也有權限。",
+        "如果網頁也找不到，從擁有者或共享邀請查起。透過群組取得權限時，確認成員資格與獲授權群組。基本存取問題尚未釐清前，不要刪除手機上的帳號。"
+      ]
     },
-    faq: [
-      {
-        q: '為什麼 iPhone 上只顯示我的部分 Google 日曆？',
-        a: 'Google 按裝置保存著一份「哪些日曆允許同步」的清單，而次要日曆——分享來的、訂閱的、為某個專案建的——常常不在其中。',
-      },
-      {
-        q: 'iPhone 的 Google 日曆同步設定在哪裡？',
-        a: '不在 iOS 的設定裡。它在 Google 自己的一個頁面上，所以在顯而易見的地方翻找既找不出毛病，也改變不了什麼。',
-      },
-      {
-        q: '怎樣在 iPhone 上看到全部 Google 日曆？',
-        a: '用一個直接向 Google 查詢的應用程式來讀，而不是走裝置的那份清單。它會顯示帳號真正擁有的每一本日曆，包括被手機丟掉的那些。',
-      },
-    ],
-    practical: [
-      '在斷定帳號壞了之前，先看看 Google 的同步清單。',
-      '要預期訂閱和分享的日曆是被排除在外，而不是被包含在內。',
-      '如果你保留的日曆超過兩三本，就用直接向 Google 查詢的工具來讀。',
-    ],
-    seeAlso: ['why-a-shared-calendar-does-not-appear', 'icloud-google-and-outlook-in-one-view'],
-  },
+    {
+      "heading": "區分隱藏與缺少的行事曆",
+      "body": [
+        "Google 說明可在 Google 日曆 App 的選單選擇要顯示的行事曆。清單中有列出但未勾選，是可見性問題。根本不在清單中，則需查受邀身分、核准狀態或連線方式等其他因素。",
+        "郵件中的共享邀請與訂閱網址也是不同途徑。Google 分別說明了透過電腦瀏覽器新增訂閱，以及開啟已透過郵件共享的行事曆。保留原始邀請，但不要將私人連結放到公開求助貼文。"
+      ]
+    },
+    {
+      "heading": "確認 iPhone App 如何取得 Google 資料",
+      "body": [
+        "Apple 行事曆可透過裝置上設定的 Google 帳號連線。Google 指南包括為該帳號啟用行事曆。依你的 iOS 版本遵循最新指引；變更另一個 App 的設定，不等於變更此裝置帳號。",
+        "Cloud Calendars 也提供直接登入 Google 的方式。新增連線前，先確認實際使用的帳號及途徑。如果同一行程透過裝置行事曆和直接連線同時出現，先比對行事曆身分，再判斷 Google 是否重複建立活動。"
+      ]
+    },
+    {
+      "heading": "檢查 Cloud Calendars 選取，不假設涵蓋全部",
+      "body": [
+        "在 Cloud Calendars 中，檢查目標 Google 帳號的行事曆並選取要使用的項目。Google 同步會檢查行事曆選取。登入成功本身，不表示所有行事曆都已選取，或每項要求的更新都已完成。",
+        "直接連線是接收 Google 資料的另一種方法，不保證顯示每個可存取的行事曆。如果 Google 網站有而 Cloud Calendars 沒有，記下帳號、行事曆名稱及連線方式供支援人員排查。調查期間，緊急安排繼續以原始服務為準。"
+      ]
+    },
+    {
+      "heading": "區分缺少行事曆與缺少特定日期",
+      "body": [
+        "如果清單中有行事曆，卻找不到某個約會，請在 Google 日曆比對確切日期。確認項目屬於所選行事曆，而且是重複會議的同一次。另一個行事曆的相似標題，並不是同一筆來源紀錄。",
+        "不要假設 App 已下載全部歷史和遙遠未來的活動。Cloud Calendars 的 Google 同步要求有日期範圍限制。因此搜尋舊資料沒有結果，不代表活動已從 Google 刪除；修改或重建任何內容前，先檢查原始服務。"
+      ]
+    },
+    {
+      "heading": "以具體比較求助，不從重設開始",
+      "body": [
+        "記下 App、帳號類型、行事曆名稱、範例日期，以及哪些地方看得到行程。若有錯誤訊息，移除私人資料後一併提供。這比籠統地說整個帳號壞了，更能區分權限、選取及同步問題。",
+        "時間緊迫時，向主辦人確認目前活動。不要把刪除帳號、反覆匯入副本或跨行事曆移動活動當作第一個測試。了解連線問題後，先用同一範例確認結果，再變更其他設定。"
+      ]
+    }
+  ],
+  "claims": {},
+  "practical": [
+    "在網頁版 Google 日曆比對目標帳號與行事曆。",
+    "檢查行事曆是真的缺少，還是只是未選取。",
+    "確認使用裝置同步、App 直接連線或訂閱。",
+    "檢查 Cloud Calendars 中正確帳號選取的行事曆。",
+    "在原始服務比對一個活動的確切日期。",
+    "回報差異，不分享私人網址或重設帳號。"
+  ],
+  "faq": [
+    {
+      "q": "直接登入 Google 會顯示所有行事曆嗎？",
+      "a": "不要假設全部涵蓋。帳號、清單、選取及同步成功與否都重要。請將缺少的行事曆與網頁版 Google 日曆比對。"
+    },
+    {
+      "q": "應該刪除帳號再加入嗎？",
+      "a": "先檢查身分、權限、可見性與連線途徑。重新連線不能補上擁有者尚未授予的權限。"
+    },
+    {
+      "q": "找不到舊活動代表它被刪除了嗎？",
+      "a": "不是。請檢查原始 Google 行事曆及日期。App 的可用日期範圍或搜尋方式，可能與供應商儲存的歷史不同。"
+    }
+  ],
+  "sourcesHeading": "服務供應商指南與延伸閱讀",
+  "sources": [
+    {
+      "label": "Google：將 Google 活動加入 Apple 行事曆",
+      "url": "https://support.google.com/calendar/answer/99358?hl=en&co=GENIE.Platform%3DiOS"
+    },
+    {
+      "label": "Google：訂閱與行事曆可見性",
+      "url": "https://support.google.com/calendar/answer/37100?hl=en&co=GENIE.Platform%3DiOS"
+    },
+    {
+      "label": "Google：行事曆清單的行為",
+      "url": "https://developers.google.com/workspace/calendar/api/v3/reference/calendarList/list"
+    }
+  ],
+  "updated": "2026-10-21",
+  "seeAlso": [
+    "why-a-shared-calendar-does-not-appear",
+    "icloud-google-and-outlook-in-one-view"
+  ]
+},
 
   'taking-back-a-calendar-you-shared': {
   "title": "停止共享行事曆：撤銷存取權並檢查其他存取途徑",

@@ -346,53 +346,99 @@ export const GOOGLE_VI: Readonly<Record<string, LocalisedArticle>> = {
 },
 
   'google-calendars-that-never-reach-your-iphone': {
-    title: 'Vì sao một số lịch Google không bao giờ tới được iPhone',
-    short: 'Lịch Google thiếu trên iPhone',
-    description:
-      'Một tài khoản Google, nhiều lịch, mà điện thoại chỉ có một. Danh sách đồng bộ quyết định điều đó, và nên làm gì thay thế.',
-    lede: 'Tài khoản Google của bạn giữ tám lịch. iPhone hiện hai. Chẳng có gì hỏng cả: một thứ bạn chưa từng thấy đã chọn thay bạn.',
-    commonBelief: 'Rằng thêm tài khoản Google vào iPhone là thêm cả các lịch trong đó.',
-    sections: [
-      {
-        heading: 'Một danh sách chưa ai cho bạn xem',
-        body: [
-          'Google giữ cho từng thiết bị một danh sách những lịch được phép đồng bộ, và các lịch phụ — lịch được chia sẻ, lịch đăng ký, lịch ai đó lập cho một dự án — thường nằm ngoài danh sách ấy.',
-          'Danh sách đó không nằm trong phần cài đặt của iOS. Nó sống trên một trang riêng của Google, nên tìm ở chỗ hiển nhiên sẽ chẳng thấy gì sai và cũng chẳng thay đổi được gì.',
-        ],
-      },
-      {
-        heading: 'Con đường còn lại',
-        body: [
-          'Một ứng dụng nói chuyện thẳng với Google không dùng danh sách ấy, nên nó hiện mọi lịch mà tài khoản thực sự có, kể cả những lịch điện thoại đã lặng lẽ bỏ rơi.',
-          'Điều đó cũng kéo các tài khoản lại gần nhau. Một khung nhìn chứa cả cá nhân, công việc và lịch chung mới là điều cần; chuyện điện thoại có đồng bộ từng lịch hay không, không còn là câu hỏi.',
-        ],
-      },
-    ],
-    claims: {
-      accounts: 'Số loại tài khoản mà một khung nhìn giữ chung',
-      price: 'Chi phí cho phần Google',
+  "title": "Lịch Google không hiện trên iPhone: kiểm tra kết nối và lựa chọn",
+  "short": "Lịch Google bị thiếu trên iPhone",
+  "description": "Tìm lịch Google bị thiếu bằng cách kiểm tra quyền tài khoản, khả năng hiển thị và kết nối của Lịch Apple hoặc Cloud Calendars.",
+  "lede": "Khi một lịch Google hiện còn lịch khác không, trước tiên xác định lịch trình bị thiếu có ở đâu. Quyền tài khoản, chọn lịch và dữ liệu sự kiện là những bước kiểm tra khác nhau. Hướng dẫn do Arte Soft, nhà phát triển Cloud Calendars, xuất bản.",
+  "commonBelief": "Mọi lịch Google bị thiếu đều do một danh sách đồng bộ ẩn, và kết nối trực tiếp bảo đảm hiện tất cả.",
+  "sections": [
+    {
+      "heading": "Xác nhận lịch có trong tài khoản này",
+      "body": [
+        "Mở Google Calendar trên web bằng cùng tài khoản định dùng trên điện thoại. Tìm chính lịch, không chỉ tiêu đề sự kiện quen thuộc. Hai tài khoản có thể có lịch tên giống nhau; lời mời gửi đến email công việc không chứng minh tài khoản cá nhân có quyền.",
+        "Nếu lịch cũng không có ở đó, bắt đầu từ chủ sở hữu hoặc lời mời chia sẻ. Với quyền qua nhóm, xác nhận tư cách thành viên và nhóm được cấp quyền. Đừng xóa tài khoản trên điện thoại khi quyền truy cập gốc chưa rõ."
+      ]
     },
-    faq: [
-      {
-        q: 'Vì sao chỉ một số lịch Google của tôi hiện trên iPhone?',
-        a: 'Google giữ cho từng thiết bị một danh sách những lịch được phép đồng bộ, và các lịch phụ — được chia sẻ, đăng ký, lập cho một dự án — thường nằm ngoài danh sách ấy.',
-      },
-      {
-        q: 'Thiết lập đồng bộ Lịch Google cho iPhone nằm ở đâu?',
-        a: 'Không nằm trong phần cài đặt của iOS. Nó sống trên một trang riêng của Google, nên tìm ở chỗ hiển nhiên sẽ chẳng thấy gì sai và cũng chẳng đổi được gì.',
-      },
-      {
-        q: 'Làm sao thấy hết lịch Google trên iPhone?',
-        a: 'Qua một ứng dụng hỏi thẳng Google thay vì đi qua danh sách của thiết bị. Nó hiện mọi lịch mà tài khoản thực sự có, kể cả những lịch điện thoại đã bỏ rơi.',
-      },
-    ],
-    practical: [
-      'Xem danh sách đồng bộ của Google trước khi cho rằng tài khoản bị hỏng.',
-      'Hãy tính rằng lịch đăng ký và lịch chia sẻ bị loại ra chứ không được đưa vào.',
-      'Nếu bạn giữ hơn hai lịch, hãy đọc chúng bằng thứ hỏi thẳng Google.',
-    ],
-    seeAlso: ['why-a-shared-calendar-does-not-appear', 'icloud-google-and-outlook-in-one-view'],
-  },
+    {
+      "heading": "Phân biệt lịch bị ẩn với lịch vắng mặt",
+      "body": [
+        "Google hướng dẫn chọn lịch hiển thị qua menu trong ứng dụng Google Calendar. Lịch có tên nhưng chưa đánh dấu là vấn đề hiển thị. Nếu không có trong danh sách, cần kiểm tra điều khác như danh tính được mời, phê duyệt hoặc kết nối.",
+        "Lời mời chia sẻ qua email và địa chỉ đăng ký là hai đường khác nhau. Google phân biệt thêm đăng ký mới bằng trình duyệt máy tính với mở lịch đã chia sẻ qua email. Giữ lời mời gốc nhưng không đưa liên kết riêng vào bài hỗ trợ công khai."
+      ]
+    },
+    {
+      "heading": "Xác định ứng dụng nhận dữ liệu Google thế nào",
+      "body": [
+        "Lịch Apple có thể kết nối qua tài khoản Google đã cấu hình trên thiết bị. Hướng dẫn Google bao gồm bật lịch cho tài khoản đó. Theo hướng dẫn hiện tại dành cho phiên bản iOS của bạn; đổi cài đặt ứng dụng riêng không giống đổi tài khoản thiết bị.",
+        "Cloud Calendars cũng có đường đăng nhập Google trực tiếp. Xác định tài khoản và đường đang dùng trước khi thêm kết nối nữa. Nếu cùng lịch trình đến qua lịch thiết bị và kết nối trực tiếp, so sánh danh tính lịch trước khi kết luận sự kiện bị nhân đôi tại Google."
+      ]
+    },
+    {
+      "heading": "Kiểm tra lựa chọn Cloud Calendars mà không mặc định đầy đủ",
+      "body": [
+        "Trong Cloud Calendars, kiểm tra lịch thuộc tài khoản Google cần dùng và chọn lịch mong muốn. Đồng bộ Google có xét lựa chọn lịch. Đăng nhập thành công không tự chứng minh mọi lịch đã chọn hoặc mọi cập nhật đã hoàn tất.",
+        "Kết nối trực tiếp là cách khác để nhận dữ liệu Google, không phải lời hứa hiện mọi lịch có thể truy cập. Nếu lịch có trên web Google nhưng thiếu trong Cloud Calendars, ghi tài khoản, tên lịch và cách kết nối cho hỗ trợ. Dùng nhà cung cấp gốc cho việc khẩn trong lúc kiểm tra."
+      ]
+    },
+    {
+      "heading": "Phân biệt thiếu lịch với thiếu ngày",
+      "body": [
+        "Nếu lịch có trong danh sách nhưng thiếu cuộc hẹn, so sánh ngày chính xác trong Google Calendar. Kiểm tra mục đó thuộc lịch đã chọn và cùng lần của cuộc họp lặp lại. Tiêu đề tương tự trong lịch khác không phải cùng bản ghi nguồn.",
+        "Đừng mặc định ứng dụng tải toàn bộ lịch sử và tương lai xa. Đồng bộ Google của Cloud Calendars yêu cầu một khoảng ngày giới hạn. Tìm quá khứ không có kết quả không chứng minh sự kiện đã xóa khỏi Google; kiểm tra nguồn trước khi sửa hoặc tạo lại."
+      ]
+    },
+    {
+      "heading": "Nhờ hỗ trợ bằng so sánh cụ thể, không đặt lại tài khoản",
+      "body": [
+        "Ghi ứng dụng, loại tài khoản, tên lịch, ngày ví dụ và nơi thấy lịch trình. Nếu có lỗi, gửi nội dung sau khi bỏ thông tin riêng. Điều này phân biệt vấn đề quyền, lựa chọn và đồng bộ tốt hơn câu “tài khoản bị hỏng”.",
+        "Với kế hoạch gấp, xác nhận sự kiện hiện tại với người tổ chức. Tránh xóa tài khoản, nhập bản sao lặp lại hoặc chuyển sự kiện giữa lịch để thử ban đầu. Khi hiểu vấn đề kết nối, dùng cùng ví dụ kiểm tra kết quả trước khi đổi thêm cài đặt."
+      ]
+    }
+  ],
+  "claims": {},
+  "practical": [
+    "So sánh tài khoản và lịch cần dùng trong Google Calendar trên web.",
+    "Kiểm tra lịch vắng mặt hay chỉ chưa được chọn.",
+    "Xác định đồng bộ thiết bị, kết nối trực tiếp hay đăng ký.",
+    "Kiểm tra lịch được chọn cho đúng tài khoản trong Cloud Calendars.",
+    "So sánh ngày chính xác của một sự kiện tại nguồn gốc.",
+    "Báo khác biệt mà không chia sẻ địa chỉ riêng hoặc đặt lại tài khoản."
+  ],
+  "faq": [
+    {
+      "q": "Đăng nhập Google trực tiếp có hiện mọi lịch không?",
+      "a": "Đừng mặc định đầy đủ. Tài khoản, danh sách, lựa chọn và đồng bộ thành công đều quan trọng. So sánh lịch bị thiếu với Google Calendar trên web."
+    },
+    {
+      "q": "Tôi có nên xóa tài khoản rồi thêm lại không?",
+      "a": "Trước hết kiểm tra danh tính, quyền, hiển thị và kết nối. Kết nối lại không cấp quyền mà chủ sở hữu chưa cho."
+    },
+    {
+      "q": "Không thấy sự kiện cũ nghĩa là nó đã bị xóa sao?",
+      "a": "Không. Kiểm tra lịch Google gốc và ngày. Phạm vi ngày hoặc tìm kiếm của ứng dụng có thể khác lịch sử nhà cung cấp lưu."
+    }
+  ],
+  "sourcesHeading": "Hướng dẫn nhà cung cấp và tài liệu thêm",
+  "sources": [
+    {
+      "label": "Google: thêm sự kiện Google vào Lịch Apple",
+      "url": "https://support.google.com/calendar/answer/99358?hl=en&co=GENIE.Platform%3DiOS"
+    },
+    {
+      "label": "Google: đăng ký và hiển thị lịch",
+      "url": "https://support.google.com/calendar/answer/37100?hl=en&co=GENIE.Platform%3DiOS"
+    },
+    {
+      "label": "Google: cách hoạt động của danh sách lịch",
+      "url": "https://developers.google.com/workspace/calendar/api/v3/reference/calendarList/list"
+    }
+  ],
+  "updated": "2026-10-21",
+  "seeAlso": [
+    "why-a-shared-calendar-does-not-appear",
+    "icloud-google-and-outlook-in-one-view"
+  ]
+},
 
   'taking-back-a-calendar-you-shared': {
   "title": "Ngừng chia sẻ lịch và kiểm tra các đường truy cập còn lại",

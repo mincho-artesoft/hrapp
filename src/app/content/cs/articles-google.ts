@@ -346,53 +346,99 @@ export const GOOGLE_CS: Readonly<Record<string, LocalisedArticle>> = {
 },
 
   'google-calendars-that-never-reach-your-iphone': {
-    title: 'Proč se některé kalendáře Google nikdy nedostanou do iPhonu',
-    short: 'Kalendáře Google chybějí na iPhonu',
-    description:
-      'Jeden účet Google, několik kalendářů a v telefonu jen jeden. Seznam synchronizace, který o tom rozhoduje, a co dělat místo toho.',
-    lede: 'Váš účet Google drží osm kalendářů. iPhone ukazuje dva. Nic není rozbité: něco, co jste nikdy neviděli, rozhodlo za vás.',
-    commonBelief: 'Že přidání účtu Google do iPhonu přidá kalendáře, které obsahuje.',
-    sections: [
-      {
-        heading: 'Seznam, který vám nikdo neukázal',
-        body: [
-          'Google vede pro každé zařízení seznam, které kalendáře se smějí synchronizovat, a druhotné kalendáře — sdílené, odebírané, založené kvůli projektu — bývají mimo něj.',
-          'Ten seznam není v nastavení iOS. Žije na vlastní stránce Googlu, a proto hledání na zřejmém místě nic špatného nenajde a nic nezmění.',
-        ],
-      },
-      {
-        heading: 'Druhá cesta',
-        body: [
-          'Aplikace, která mluví s Googlem přímo, ten seznam nepoužívá, takže ukáže každý kalendář, který účet opravdu má, včetně těch, které telefon potichu zahodil.',
-          'Zároveň to sblíží účty. Jeden pohled s osobním, pracovním i sdíleným je celý smysl; jestli by telefon každý z nich zesynchronizoval, přestane být otázkou.',
-        ],
-      },
-    ],
-    claims: {
-      accounts: 'Typy účtů, které jeden pohled drží pohromadě',
-      price: 'Kolik stojí strana Googlu',
+  "title": "Kalendář Google chybí na iPhonu: ověřte připojení a výběr",
+  "short": "Chybějící kalendáře Google na iPhonu",
+  "description": "Najděte chybějící kalendář Google kontrolou přístupu, viditelnosti a připojení používaného Kalendářem Apple nebo Cloud Calendars.",
+  "lede": "Když jeden kalendář Google vidíte a druhý ne, nejprve zjistěte, kde je chybějící rozvrh dostupný. Přístup účtu, výběr kalendáře a dostupnost událostí jsou různé kontroly. Průvodce vydává Arte Soft, vývojář Cloud Calendars.",
+  "commonBelief": "Každý chybějící kalendář Google má jedinou skrytou příčinu v seznamu synchronizace a přímé připojení zaručí zobrazení všeho.",
+  "sections": [
+    {
+      "heading": "Potvrďte, že kalendář existuje pro tento účet",
+      "body": [
+        "Otevřete Kalendář Google na webu stejným účtem, který chcete používat v telefonu. Hledejte samotný kalendář, ne pouze známý název události. Dva účty mohou mít podobně pojmenované kalendáře a pozvánka na pracovní e-mail neprokazuje přístup osobního účtu.",
+        "Pokud chybí i tam, začněte u vlastníka nebo pozvánky ke sdílení. U skupinového přístupu potvrďte členství a oprávněnou skupinu. Nemažte účet z telefonu, dokud základní otázka přístupu zůstává nevyřešená."
+      ]
     },
-    faq: [
-      {
-        q: 'Proč se na iPhonu ukazuje jen část mých kalendářů Google?',
-        a: 'Google vede pro každé zařízení seznam kalendářů, které se smějí synchronizovat, a druhotné — sdílené, odebírané, založené kvůli projektu — bývají mimo něj.',
-      },
-      {
-        q: 'Kde je nastavení synchronizace Kalendáře Google pro iPhone?',
-        a: 'Není v nastavení iOS. Žije na vlastní stránce Googlu, a proto hledání na zřejmém místě nic nenajde a nic nezmění.',
-      },
-      {
-        q: 'Jak uvidím na iPhonu všechny kalendáře Google?',
-        a: 'Přes aplikaci, která se ptá Googlu přímo, místo přes seznam zařízení. Ukáže každý kalendář, který účet opravdu má, včetně těch, které telefon zahodil.',
-      },
-    ],
-    practical: [
-      'Než prohlásíte účet za rozbitý, zkontrolujte seznam synchronizace Googlu.',
-      'Počítejte s tím, že odebírané a sdílené kalendáře jsou vyloučené, ne zahrnuté.',
-      'Držíte-li víc než dva kalendáře, čtěte je něčím, co se ptá Googlu přímo.',
-    ],
-    seeAlso: ['why-a-shared-calendar-does-not-appear', 'icloud-google-and-outlook-in-one-view'],
-  },
+    {
+      "heading": "Rozlište skrytý a chybějící kalendář",
+      "body": [
+        "Google popisuje výběr zobrazovaných kalendářů přes nabídku aplikace Kalendář Google. Kalendář na seznamu bez zaškrtnutí má problém s viditelností. Pokud na seznamu chybí, zkoumejte například pozvanou identitu, schválení nebo připojení.",
+        "E-mailová pozvánka ke sdílení a adresa odběru jsou také odlišné cesty. Google popisuje přidání nového odběru v počítačovém prohlížeči odděleně od otevření kalendáře již sdíleného e-mailem. Ponechte si původní pozvánku, ale nepřeposílejte soukromé odkazy do veřejných dotazů."
+      ]
+    },
+    {
+      "heading": "Určete, jak aplikace iPhonu získává data Google",
+      "body": [
+        "Kalendář Apple se může připojit přes účet Google nastavený v zařízení. Pokyny Google zahrnují zapnutí kalendářů pro tento účet. Řiďte se aktuálními instrukcemi poskytovatele pro vaši verzi iOS; změna nastavení jiné aplikace není změnou tohoto účtu zařízení.",
+        "Cloud Calendars nabízí i přímé přihlášení Google. Před přidáním dalšího spojení určete skutečně používaný účet a cestu. Pokud stejný rozvrh přichází přes kalendář zařízení i přímo, porovnejte identity kalendářů, než usoudíte, že událost byla duplikována u Googlu."
+      ]
+    },
+    {
+      "heading": "Prověřte výběr Cloud Calendars bez předpokladu úplnosti",
+      "body": [
+        "V Cloud Calendars prohlédněte kalendáře spojené s požadovaným účtem Google a vyberte potřebné. Synchronizace Google kontroluje výběr kalendářů. Úspěšné přihlášení samo neprokazuje výběr všech kalendářů ani dokončení každé požadované aktualizace.",
+        "Přímé spojení je další cesta k datům Google, nikoli slib zobrazení všech přístupných kalendářů. Pokud kalendář existuje na webu Google, ale ne v Cloud Calendars, zapište účet, název a způsob připojení pro podporu. Pro naléhavé plánování používejte původního poskytovatele během vyšetřování rozdílu."
+      ]
+    },
+    {
+      "heading": "Oddělte chybějící kalendář od chybějících dat",
+      "body": [
+        "Pokud je kalendář uveden, ale schůzka chybí, porovnejte přesné datum v Kalendáři Google. Ověřte příslušnost k vybranému kalendáři a stejný výskyt opakované schůzky. Podobný název v jiném kalendáři není totožný zdrojový záznam.",
+        "Nepředpokládejte stažení všech historických či vzdálených budoucích událostí. Synchronizace Google v Cloud Calendars používá omezený rozsah dat. Prázdné historické hledání tedy neprokazuje smazání u Googlu; před změnou nebo novým vytvořením ověřte původního poskytovatele."
+      ]
+    },
+    {
+      "heading": "Žádejte pomoc s užitečným srovnáním, ne resetem",
+      "body": [
+        "Zapište aplikaci, typ účtu, název kalendáře, příklad data a kde je rozvrh viditelný. Připojte případnou chybu s odstraněnými soukromými informacemi. To lépe oddělí oprávnění, výběr a synchronizaci než tvrzení o nefunkčnosti celého účtu.",
+        "U časově naléhavých plánů potvrďte aktuální událost s organizátorem. Jako první test nemažte účty, neimportujte opakované kopie ani nepřesouvejte události. Až porozumíte připojení, ověřte stejný příklad před změnou dalších nastavení."
+      ]
+    }
+  ],
+  "claims": {},
+  "practical": [
+    "Porovnejte požadovaný účet a kalendář na webu Google.",
+    "Ověřte, zda kalendář chybí nebo jen není vybrán.",
+    "Určete synchronizaci zařízení, přímé spojení či odběr.",
+    "Prověřte kalendáře vybrané pro správný účet v Cloud Calendars.",
+    "Porovnejte přesné datum u původního poskytovatele.",
+    "Nahlaste rozdíl bez soukromých adres či resetování účtů."
+  ],
+  "faq": [
+    {
+      "q": "Zobrazí přímé přihlášení Google všechny kalendáře?",
+      "a": "Nepředpokládejte úplné pokrytí. Záleží na účtu, seznamu, výběru i úspěšné synchronizaci. Porovnejte chybějící kalendář s webem Google."
+    },
+    {
+      "q": "Mám účet smazat a znovu přidat?",
+      "a": "Nejprve ověřte identitu, přístup, viditelnost a připojení. Nové připojení nedodá oprávnění, které vlastník neudělil."
+    },
+    {
+      "q": "Znamená chybějící stará událost smazání?",
+      "a": "Ne. Ověřte její původní kalendář Google a datum. Dostupný rozsah či vyhledávání aplikace se může lišit od uložené historie poskytovatele."
+    }
+  ],
+  "sourcesHeading": "Pokyny poskytovatele a další informace",
+  "sources": [
+    {
+      "label": "Google: přidání událostí Google do Kalendáře Apple",
+      "url": "https://support.google.com/calendar/answer/99358?hl=en&co=GENIE.Platform%3DiOS"
+    },
+    {
+      "label": "Google: odběry a viditelnost kalendářů",
+      "url": "https://support.google.com/calendar/answer/37100?hl=en&co=GENIE.Platform%3DiOS"
+    },
+    {
+      "label": "Google: chování seznamu kalendářů",
+      "url": "https://developers.google.com/workspace/calendar/api/v3/reference/calendarList/list"
+    }
+  ],
+  "seeAlso": [
+    "why-a-shared-calendar-does-not-appear",
+    "icloud-google-and-outlook-in-one-view"
+  ],
+  "updated": "2026-10-21"
+},
 
   'taking-back-a-calendar-you-shared': {
   "title": "Přestat sdílet kalendář: odeberte přístup a prověřte ostatní cesty",

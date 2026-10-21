@@ -1,0 +1,138 @@
+{
+  "date": "2026-10-22",
+  "sourceProofs": [
+    {
+      "path": "/Users/minchomilev/work/hrapp/Calendar/MultiDayView/TwoWayPinnedMultiDayWrapper.swift",
+      "sha256": "7a8e61a6da46fa4a6df2182cc2e49af048c7d0a781624fdc1eee7b36a016a8a6",
+      "rootReadRanges": [
+        [
+          45,
+          115
+        ],
+        [
+          184,
+          199
+        ]
+      ]
+    },
+    {
+      "path": "/Users/minchomilev/work/hrapp/Calendar/MultiDayView/TwoWayPinnedMultiDayContainerView.swift",
+      "sha256": "aa1896acd9cfbf0371263397d06bf3fd3084739e749b242b9a70aebce55dd3de",
+      "rootReadRanges": [
+        [
+          14,
+          53
+        ],
+        [
+          585,
+          615
+        ],
+        [
+          620,
+          688
+        ]
+      ]
+    },
+    {
+      "path": "/Users/minchomilev/work/hrapp/Calendar/ListView/AllEventsListView.swift",
+      "sha256": "95433ee19de1a36a2e63d8c42b4edddaba9214e6eb0ae8b4e901294cdd550373",
+      "rootReadRanges": [
+        [
+          1,
+          72
+        ],
+        [
+          80,
+          165
+        ],
+        [
+          165,
+          188
+        ]
+      ]
+    },
+    {
+      "path": "/Users/minchomilev/work/hrapp/Calendar/ListView/DaySectionView.swift",
+      "sha256": "01cca961cd535651d1bfbb08819d39f285dc433c252f856d48c57dc90e31919b",
+      "rootReadRanges": [
+        [
+          1,
+          48
+        ]
+      ]
+    },
+    {
+      "path": "/Users/minchomilev/work/hrapp/Calendar/YearView/YearCalendarView.swift",
+      "sha256": "555aa32445fdfd51baed2339bcab05bab43395fa9a5d78f9de401f7deb48e24b",
+      "rootReadRanges": [
+        [
+          95,
+          180
+        ]
+      ]
+    },
+    {
+      "path": "/Users/minchomilev/work/hrapp/Calendar/YearView/YearMonthMiniView.swift",
+      "sha256": "f4fc685613b10913f11bfce5bf2cd3b119a85ec878c6cf76aab1b76ec6acc7a6",
+      "rootReadRanges": [
+        [
+          1,
+          93
+        ]
+      ]
+    },
+    {
+      "path": "/Users/minchomilev/work/hrapp/Calendar/YearView/MiniDayCellView.swift",
+      "sha256": "b51ac6afb1deaa532b9674445cdee7b674f6a2c0ce92990a2f83c35c081fef71",
+      "rootReadRanges": [
+        [
+          1,
+          77
+        ]
+      ]
+    },
+    {
+      "path": "/Users/minchomilev/work/hrapp/Calendar/Sources/CalendarViewModel.swift",
+      "sha256": "a0b207cb78810816775ff1aff4399a33dc3ce7331cbb1af2aa4468bb0828ccf4",
+      "rootReadRanges": [
+        [
+          1025,
+          1072
+        ]
+      ]
+    },
+    {
+      "path": "/Users/minchomilev/work/hrapp/Calendar/Main/RootView.swift",
+      "sha256": "5fe397a4b213f6cdfe9a428e9ed41c9fe68e96feaec721cc8170441e4670a68e",
+      "rootReadRanges": [
+        [
+          905,
+          926
+        ]
+      ]
+    }
+  ],
+  "scope": "Focused current native source ranges, not released app or device/runtime verification. Earlier long output truncated; decisive listgroup/daysection/yearmarkers/range paragraphs reread separately.",
+  "primarySources": [
+    {
+      "url": "https://support.apple.com/en-ca/guide/iphone/iphfd1054569/ios",
+      "scope": "Body1155-1189 read again; Apple menus attributed toApple."
+    },
+    {
+      "url": "https://calendar.teamup.com/kb/how-to-use-calendar-views/",
+      "scope": "Full substantive body2-147 readbatch12, retainedcomparison; no Cloudbrowserconfiguration parity."
+    }
+  ],
+  "changes": [
+    "Replace generic weekview rhetoric with selectedcalendars/exacthours/allDay/buffers/repeatscope workflow.",
+    "Liststartdategrouping andpaginatedload differ from continuousavailability or unlimitedarchive.",
+    "Year distinctcolourmarkers not eventcount; startdategrouping not continuousvacation shading; tilesmay scroll."
+  ],
+  "limits": [
+    "No real events, accounts, native builds or simulators changed.",
+    "No accessibility or native-speaker certification.",
+    "Otherlanguages of these3guides require separate semantic review.",
+    "No ranking or ChatGPT citation measurement.",
+    "List row callback recognises EventKit event types, not AppLocalEventDescriptor in this branch; guide offers another-view route if a record does not open. Potential code issue only, not released/runtime test."
+  ]
+}

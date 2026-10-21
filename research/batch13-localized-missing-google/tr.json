@@ -1,0 +1,94 @@
+{
+  "title": "Google takvimi iPhone’da görünmüyor: bağlantı ve seçimi kontrol edin",
+  "short": "iPhone’da eksik Google takvimleri",
+  "description": "Eksik Google takvimi için hesap erişimini, görünürlüğü ve Apple Takvim ya da Cloud Calendars’ın kullandığı bağlantıyı kontrol edin.",
+  "lede": "Bir Google takvimi görünürken diğeri görünmüyorsa önce eksik programın nerede mevcut olduğunu belirleyin. Hesap erişimi, takvim seçimi ve etkinliklerin bulunması ayrı kontrollerdir. Rehber Cloud Calendars geliştiricisi Arte Soft tarafından yayımlanmıştır.",
+  "commonBelief": "Her eksik Google takviminin tek nedeni gizli eşitleme listesidir ve doğrudan bağlanmak her şeyin görünmesini garanti eder.",
+  "sections": [
+    {
+      "heading": "Takvimin bu hesapta bulunduğunu doğrulayın",
+      "body": [
+        "Telefonda kullanacağınız hesapla webde Google Takvim’i açın. Yalnızca tanıdık etkinlik başlığını değil, takvimin kendisini arayın. İki hesapta benzer adlı takvimler olabilir; iş e-postasına gelen davet kişisel hesabınıza erişim verildiğini göstermez.",
+        "Takvim orada da yoksa sahipten veya paylaşım davetinden başlayın. Grup üzerinden erişimde üyeliği ve izin verilen grubu doğrulayın. Temel erişim sorusu çözülmeden telefondaki hesabı silmeyin."
+      ]
+    },
+    {
+      "heading": "Gizli takvimle eksik takvimi ayırın",
+      "body": [
+        "Google, Google Takvim uygulamasında menüden görüntülenecek takvimleri seçmeyi açıklar. Listede olup işaretlenmeyen takvim görünürlük sorunudur. Listede bulunmayan takvim için davet edilen kimlik, onay veya bağlantı gibi başka konular incelenmelidir.",
+        "E-postayla paylaşım daveti ve abonelik adresi farklı yollardır. Google, bilgisayar tarayıcısında yeni abonelik eklemeyi e-postayla zaten paylaşılmış takvimi açmaktan ayırır. Özgün daveti saklayın ama özel bağlantıları herkese açık yardım gönderilerine taşımayın."
+      ]
+    },
+    {
+      "heading": "Uygulamanın Google verisini nasıl aldığını belirleyin",
+      "body": [
+        "Apple Takvim, cihazda ayarlanmış Google hesabı üzerinden bağlanabilir. Google yönergeleri bu hesap için takvimlerin etkinleştirilmesini içerir. iOS sürümünüz için güncel yönergeleri izleyin; başka uygulamanın ayarlarını değiştirmek cihaz hesabını değiştirmekle aynı değildir.",
+        "Cloud Calendars doğrudan Google oturumu da sunar. Başka bağlantı eklemeden önce hangi hesap ve yolu kullandığınızı belirleyin. Program hem cihaz takviminden hem doğrudan geliyorsa Google’da çoğaltıldığını düşünmeden önce takvim kimliklerini karşılaştırın."
+      ]
+    },
+    {
+      "heading": "Cloud Calendars seçimini tam kapsama varsaymadan inceleyin",
+      "body": [
+        "Cloud Calendars’ta ilgili Google hesabının takvimlerini inceleyip kullanacaklarınızı seçin. Google eşitlemesi takvim seçimini dikkate alır. Başarılı giriş tek başına tüm takvimlerin seçildiğini veya istenen bütün güncellemelerin tamamlandığını göstermez.",
+        "Doğrudan bağlantı Google verisini almanın başka yoludur; erişilebilir her takvimin görünmesi sözü değildir. Takvim Google sitesinde bulunup Cloud Calendars’ta yoksa destek için hesabı, takvim adını ve bağlantı yöntemini kaydedin. İnceleme sırasında acil planlamayı özgün sağlayıcıda sürdürün."
+      ]
+    },
+    {
+      "heading": "Eksik takvimle eksik tarihleri ayırın",
+      "body": [
+        "Takvim listeleniyor ama belirli randevu görünmüyorsa Google Takvim’de tam tarihi karşılaştırın. Öğenin seçtiğiniz takvimde ve yinelenen toplantının aynı örneğinde olduğunu kontrol edin. Başka takvimdeki benzer başlık aynı kaynak kayıt değildir.",
+        "Uygulamanın tüm geçmişi ve uzak gelecekteki etkinlikleri indirdiğini varsaymayın. Cloud Calendars Google eşitlemesi sınırlı tarih aralığı ister. Boş geçmiş araması Google’dan silinmeyi kanıtlamaz; değişiklik veya yeniden oluşturma öncesi özgün sağlayıcıyı kontrol edin."
+      ]
+    },
+    {
+      "heading": "Sıfırlamak yerine yararlı karşılaştırmayla yardım isteyin",
+      "body": [
+        "Uygulamayı, hesap türünü, takvim adını, örnek tarihi ve programın nerede göründüğünü yazın. Varsa hata mesajını özel bilgileri çıkararak ekleyin. Bu, izin, seçim ve eşitleme sorunlarını “hesap bozuk” demekten daha iyi ayırır.",
+        "Zamana duyarlı planlarda güncel etkinliği düzenleyiciyle doğrulayın. İlk test olarak hesap silmekten, tekrar kopya aktarmaktan veya etkinlikleri taşımaktan kaçının. Bağlantı sorunu anlaşıldığında başka ayar değiştirmeden aynı örnekle sonucu kontrol edin."
+      ]
+    }
+  ],
+  "claims": {},
+  "practical": [
+    "Webde Google Takvim’de doğru hesap ve takvimi karşılaştırın.",
+    "Takvim yok mu, yoksa yalnızca seçilmemiş mi kontrol edin.",
+    "Cihaz eşitlemesi, doğrudan bağlantı veya abonelik yolunu belirleyin.",
+    "Cloud Calendars’ta doğru hesap için seçili takvimleri inceleyin.",
+    "Özgün sağlayıcıda bir etkinliğin tam tarihini karşılaştırın.",
+    "Özel adres paylaşmadan veya hesap sıfırlamadan farkı bildirin."
+  ],
+  "faq": [
+    {
+      "q": "Doğrudan Google girişi tüm takvimleri gösterir mi?",
+      "a": "Tam kapsama varsaymayın. Hesap, takvim listesi, seçim ve başarılı eşitleme önemlidir. Eksik takvimi Google Takvim web sürümüyle karşılaştırın."
+    },
+    {
+      "q": "Hesabı silip yeniden eklemeli miyim?",
+      "a": "Önce kimlik, erişim, görünürlük ve bağlantıyı kontrol edin. Yeniden bağlanmak sahibin vermediği izni sağlamaz."
+    },
+    {
+      "q": "Eski etkinliğin görünmemesi silindiği anlamına mı gelir?",
+      "a": "Hayır. Özgün Google takvimini ve tarihi kontrol edin. Uygulamanın tarih aralığı veya araması, sağlayıcının geçmişinden farklı olabilir."
+    }
+  ],
+  "sourcesHeading": "Sağlayıcı yönergeleri ve ek kaynaklar",
+  "sources": [
+    {
+      "label": "Google: Apple Takvim’e Google etkinlikleri ekleme",
+      "url": "https://support.google.com/calendar/answer/99358?hl=en&co=GENIE.Platform%3DiOS"
+    },
+    {
+      "label": "Google: abonelikler ve takvim görünürlüğü",
+      "url": "https://support.google.com/calendar/answer/37100?hl=en&co=GENIE.Platform%3DiOS"
+    },
+    {
+      "label": "Google: takvim listesinin davranışı",
+      "url": "https://developers.google.com/workspace/calendar/api/v3/reference/calendarList/list"
+    }
+  ],
+  "updated": "2026-10-21",
+  "seeAlso": [
+    "why-a-shared-calendar-does-not-appear",
+    "icloud-google-and-outlook-in-one-view"
+  ]
+}

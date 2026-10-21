@@ -1,5 +1,5 @@
 {
-  "date": "2026-10-21T21:26:37.897Z",
+  "date": "2026-10-21T21:39:59.426Z",
   "status": "source_inventory_not_quality_approval",
   "articles": [
     {
@@ -55,15 +55,18 @@
     {
       "locale": "ar-SA",
       "slug": "what-guests-can-do-to-your-event",
-      "title": "ما الذي يستطيع المدعوون فعله بحدثك",
-      "description": "ثلاثة مربعات تحدّد إن كان المدعو يستطيع نقل اجتماعك أو دعوة غرباء أو قراءة القائمة كاملة. وهي مفعّلة أكثر مما يتوقع الناس.",
-      "descriptionCharacters": 122,
-      "sections": 2,
+      "title": "أذونات ضيوف تقويم Google: التحرير والدعوات وقائمة الضيوف",
+      "description": "راجع أذونات الضيوف وإعداداتها الافتراضية. ميّز حقوق الدعوة عن الوصول إلى التقويم وأدوار Reader وWriter وOwner في Cloud Calendars.",
+      "descriptionCharacters": 129,
+      "sections": 6,
       "faq": 3,
-      "words": 264,
+      "words": 639,
       "source": "articles-google.ts",
-      "sources": [],
-      "updated": "2026-09-12"
+      "sources": [
+        "https://support.google.com/a/users/answer/13293412?hl=en",
+        "https://developers.google.com/workspace/calendar/api/v3/reference/events"
+      ],
+      "updated": "2026-10-21"
     },
     {
       "locale": "ar-SA",
@@ -205,15 +208,18 @@
     {
       "locale": "bg",
       "slug": "what-guests-can-do-to-your-event",
-      "title": "Какво могат да направят гостите на едно ваше събитие",
-      "description": "Три отметки решават дали гост може да местѝ срещата ви, да кани непознати или да чете целия списък. Включени са по-често, отколкото хората допускат.",
-      "descriptionCharacters": 148,
-      "sections": 2,
+      "title": "Права на гостите в Google Календар: редактиране, покани и списък",
+      "description": "Проверете правата на гостите и настройките по подразбиране. Разграничете поканите, достъпа до календар и ролите Reader, Writer и Owner.",
+      "descriptionCharacters": 135,
+      "sections": 6,
       "faq": 3,
-      "words": 316,
+      "words": 720,
       "source": "articles-google.ts",
-      "sources": [],
-      "updated": "2026-09-12"
+      "sources": [
+        "https://support.google.com/a/users/answer/13293412?hl=en",
+        "https://developers.google.com/workspace/calendar/api/v3/reference/events"
+      ],
+      "updated": "2026-10-21"
     },
     {
       "locale": "bg",
@@ -406,15 +412,18 @@
     {
       "locale": "cs",
       "slug": "what-guests-can-do-to-your-event",
-      "title": "Co mohou hosté udělat s vaší událostí",
-      "description": "Tři zaškrtávátka rozhodují, jestli host může posunout vaši schůzku, pozvat cizí lidi nebo přečíst celý seznam. Bývají zapnutá častěji, než se čeká.",
-      "descriptionCharacters": 147,
-      "sections": 2,
+      "title": "Oprávnění hostů v Kalendáři Google: úpravy, pozvánky a seznam",
+      "description": "Zkontrolujte oprávnění hostů a výchozí nastavení. Oddělte práva pozvánek od přístupu ke kalendáři a rolí Reader, Writer a Owner.",
+      "descriptionCharacters": 128,
+      "sections": 6,
       "faq": 3,
-      "words": 270,
+      "words": 599,
       "source": "articles-google.ts",
-      "sources": [],
-      "updated": "2026-09-12"
+      "sources": [
+        "https://support.google.com/a/users/answer/13293412?hl=en",
+        "https://developers.google.com/workspace/calendar/api/v3/reference/events"
+      ],
+      "updated": "2026-10-21"
     },
     {
       "locale": "cs",
@@ -556,15 +565,18 @@
     {
       "locale": "da",
       "slug": "what-guests-can-do-to-your-event",
-      "title": "Hvad dine gæster kan gøre ved en begivenhed",
-      "description": "Tre afkrydsningsfelter afgør, om en gæst kan flytte dit møde, invitere fremmede eller læse hele listen. De står til mere end folk regner med.",
-      "descriptionCharacters": 141,
-      "sections": 2,
+      "title": "Gæstetilladelser i Google Kalender: redigering, invitationer og gæsteliste",
+      "description": "Kontrollér gæstetilladelser og standarder i Google. Skeln mellem invitationsrettigheder, kalenderadgang og rollerne Reader, Writer og Owner.",
+      "descriptionCharacters": 140,
+      "sections": 6,
       "faq": 3,
-      "words": 294,
+      "words": 697,
       "source": "articles-google.ts",
-      "sources": [],
-      "updated": "2026-09-12"
+      "sources": [
+        "https://support.google.com/a/users/answer/13293412?hl=en",
+        "https://developers.google.com/workspace/calendar/api/v3/reference/events"
+      ],
+      "updated": "2026-10-21"
     },
     {
       "locale": "da",
@@ -706,15 +718,18 @@
     {
       "locale": "de-DE",
       "slug": "what-guests-can-do-to-your-event",
-      "title": "Was Gäste mit Ihrem Termin anstellen können",
-      "description": "Drei Kästchen entscheiden, ob ein Gast Ihr Meeting verschieben, Fremde einladen oder die ganze Liste lesen darf. Sie sind öfter aktiv, als man denkt.",
-      "descriptionCharacters": 149,
-      "sections": 2,
+      "title": "Gästeberechtigungen in Google Kalender: Bearbeitung, Einladungen und Gästeliste",
+      "description": "Prüfe Googles Gästeberechtigungen und Standardwerte. Unterscheide Einladungsrechte, Kalenderzugriff und die Rollen Reader, Writer und Owner.",
+      "descriptionCharacters": 140,
+      "sections": 6,
       "faq": 3,
-      "words": 278,
+      "words": 692,
       "source": "articles-google.ts",
-      "sources": [],
-      "updated": "2026-09-12"
+      "sources": [
+        "https://support.google.com/a/users/answer/13293412?hl=en",
+        "https://developers.google.com/workspace/calendar/api/v3/reference/events"
+      ],
+      "updated": "2026-10-21"
     },
     {
       "locale": "de-DE",
@@ -1062,15 +1077,18 @@
     {
       "locale": "el",
       "slug": "what-guests-can-do-to-your-event",
-      "title": "Τι μπορούν να κάνουν οι προσκεκλημένοι σε ένα συμβάν σας",
-      "description": "Τρία κουτάκια αποφασίζουν αν ένας προσκεκλημένος μπορεί να μετακινήσει τη σύσκεψή σας, να καλέσει αγνώστους ή να διαβάσει όλη τη λίστα. Είναι ενεργά πιο συχνά απ’ όσο νομίζουμε.",
-      "descriptionCharacters": 177,
-      "sections": 2,
+      "title": "Δικαιώματα επισκεπτών στο Google Calendar: επεξεργασία, προσκλήσεις και λίστα",
+      "description": "Ελέγξτε δικαιώματα και προεπιλογές επισκεπτών. Ξεχωρίστε προσκλήσεις, πρόσβαση ημερολογίου και ρόλους Reader, Writer και Owner.",
+      "descriptionCharacters": 127,
+      "sections": 6,
       "faq": 3,
-      "words": 315,
+      "words": 699,
       "source": "articles-google.ts",
-      "sources": [],
-      "updated": "2026-09-12"
+      "sources": [
+        "https://support.google.com/a/users/answer/13293412?hl=en",
+        "https://developers.google.com/workspace/calendar/api/v3/reference/events"
+      ],
+      "updated": "2026-10-21"
     },
     {
       "locale": "el",
@@ -1424,15 +1442,18 @@
     {
       "locale": "en-US",
       "slug": "a-week-view-that-fits-a-week",
-      "title": "A week view that actually fits a week",
-      "description": "Seven days on a phone screen is a genuine design problem. What has to give, and what must not.",
-      "descriptionCharacters": 94,
-      "sections": 2,
-      "faq": 0,
-      "words": 177,
+      "title": "Week calendar on iPhone: compare hours without overlooking commitments",
+      "description": "Read a week calendar on iPhone: check dates, selected calendars, all-day events and exact hours before fitting another appointment into an apparent gap.",
+      "descriptionCharacters": 152,
+      "sections": 6,
+      "faq": 3,
+      "words": 775,
       "source": "articles-planning.ts",
-      "sources": [],
-      "updated": "2026-08-27"
+      "sources": [
+        "https://support.apple.com/en-ca/guide/iphone/iphfd1054569/ios",
+        "https://calendar.teamup.com/kb/how-to-use-calendar-views/"
+      ],
+      "updated": "2026-10-22"
     },
     {
       "locale": "en-US",
@@ -1516,28 +1537,34 @@
     {
       "locale": "en-US",
       "slug": "a-list-for-people-who-dislike-grids",
-      "title": "A list for people who never got on with grids",
-      "description": "Not everybody reads time spatially. List view is not a lesser calendar; for some people it is the only one that works.",
-      "descriptionCharacters": 118,
-      "sections": 2,
-      "faq": 0,
-      "words": 186,
+      "title": "Calendar list view on iPhone: read the agenda and check what is missing",
+      "description": "Use calendar list view for upcoming appointments. Check day headings, times, selected calendars and loaded dates; switch to a grid to inspect overlaps.",
+      "descriptionCharacters": 151,
+      "sections": 6,
+      "faq": 3,
+      "words": 807,
       "source": "articles-planning.ts",
-      "sources": [],
-      "updated": "2026-08-27"
+      "sources": [
+        "https://support.apple.com/en-ca/guide/iphone/iphfd1054569/ios",
+        "https://calendar.teamup.com/kb/how-to-use-calendar-views/"
+      ],
+      "updated": "2026-10-22"
     },
     {
       "locale": "en-US",
       "slug": "the-year-in-one-screen",
-      "title": "The year in one screen, and what it is for",
-      "description": "Year view looks decorative and is not. It answers questions no other view can, a handful of times a year.",
-      "descriptionCharacters": 105,
-      "sections": 2,
-      "faq": 0,
-      "words": 173,
+      "title": "Year calendar on iPhone and iPad: inspect dates beyond the overview",
+      "description": "Use year view to compare months and dates. Understand colour markers, selected calendars and multi-day events before treating an unmarked period as free.",
+      "descriptionCharacters": 153,
+      "sections": 6,
+      "faq": 3,
+      "words": 702,
       "source": "articles-planning.ts",
-      "sources": [],
-      "updated": "2026-08-27"
+      "sources": [
+        "https://support.apple.com/en-ca/guide/iphone/iphfd1054569/ios",
+        "https://calendar.teamup.com/kb/how-to-use-calendar-views/"
+      ],
+      "updated": "2026-10-22"
     },
     {
       "locale": "en-US",
@@ -2024,15 +2051,18 @@
     {
       "locale": "es-ES",
       "slug": "what-guests-can-do-to-your-event",
-      "title": "Qué pueden hacerle tus invitados a un evento",
-      "description": "Tres casillas deciden si un invitado puede mover tu reunión, invitar a desconocidos o leer la lista entera. Están activas más veces de las que crees.",
-      "descriptionCharacters": 149,
-      "sections": 2,
+      "title": "Permisos de invitados en Google Calendar: edición, invitaciones y lista de asistentes",
+      "description": "Revisa los permisos y valores predeterminados de invitados. Distingue invitaciones, acceso al calendario y roles Reader, Writer y Owner.",
+      "descriptionCharacters": 136,
+      "sections": 6,
       "faq": 3,
-      "words": 344,
+      "words": 820,
       "source": "articles-google.ts",
-      "sources": [],
-      "updated": "2026-09-12"
+      "sources": [
+        "https://support.google.com/a/users/answer/13293412?hl=en",
+        "https://developers.google.com/workspace/calendar/api/v3/reference/events"
+      ],
+      "updated": "2026-10-21"
     },
     {
       "locale": "es-ES",
@@ -2380,15 +2410,18 @@
     {
       "locale": "fi",
       "slug": "what-guests-can-do-to-your-event",
-      "title": "Mitä vieraasi voivat tehdä tapahtumallesi",
-      "description": "Kolme valintaruutua ratkaisee, voiko vieras siirtää palaverisi, kutsua tuntemattomia tai lukea koko listan. Ne ovat päällä useammin kuin luullaan.",
-      "descriptionCharacters": 146,
-      "sections": 2,
+      "title": "Google Kalenterin vieraiden oikeudet: muokkaus, kutsut ja vieraslista",
+      "description": "Tarkista vieraiden oikeudet ja oletukset. Erota kutsuoikeudet kalenterin käyttöoikeudesta sekä Reader-, Writer- ja Owner-rooleista.",
+      "descriptionCharacters": 131,
+      "sections": 6,
       "faq": 3,
-      "words": 226,
+      "words": 548,
       "source": "articles-google.ts",
-      "sources": [],
-      "updated": "2026-09-12"
+      "sources": [
+        "https://support.google.com/a/users/answer/13293412?hl=en",
+        "https://developers.google.com/workspace/calendar/api/v3/reference/events"
+      ],
+      "updated": "2026-10-21"
     },
     {
       "locale": "fi",
@@ -2530,15 +2563,18 @@
     {
       "locale": "fr-FR",
       "slug": "what-guests-can-do-to-your-event",
-      "title": "Ce que vos invités peuvent faire à un événement",
-      "description": "Trois cases décident si un invité peut déplacer votre réunion, inviter des inconnus ou lire toute la liste. Elles sont actives plus souvent qu'on ne le croit.",
-      "descriptionCharacters": 158,
-      "sections": 2,
+      "title": "Autorisations des invités Google Agenda : modification, invitations et liste",
+      "description": "Vérifiez les autorisations des invités et leurs valeurs par défaut. Distinguez invitations, accès au calendrier et rôles Reader, Writer et Owner.",
+      "descriptionCharacters": 145,
+      "sections": 6,
       "faq": 3,
-      "words": 346,
+      "words": 806,
       "source": "articles-google.ts",
-      "sources": [],
-      "updated": "2026-09-12"
+      "sources": [
+        "https://support.google.com/a/users/answer/13293412?hl=en",
+        "https://developers.google.com/workspace/calendar/api/v3/reference/events"
+      ],
+      "updated": "2026-10-21"
     },
     {
       "locale": "fr-FR",
@@ -2886,15 +2922,18 @@
     {
       "locale": "he",
       "slug": "what-guests-can-do-to-your-event",
-      "title": "מה המוזמנים יכולים לעשות לאירוע שלכם",
-      "description": "שלוש תיבות סימון קובעות אם מוזמן יכול להזיז את הפגישה, להזמין זרים או לקרוא את כל הרשימה. הן דלוקות לעיתים קרובות יותר משנדמה.",
-      "descriptionCharacters": 126,
-      "sections": 2,
+      "title": "הרשאות אורחים ביומן Google: עריכה, הזמנות ורשימת האורחים",
+      "description": "בדקו הרשאות אורחים וברירות מחדל. הפרידו זכויות הזמנה מגישה ליומן ומתפקידי Reader, Writer ו-Owner ב-Cloud Calendars.",
+      "descriptionCharacters": 115,
+      "sections": 6,
       "faq": 3,
-      "words": 256,
+      "words": 622,
       "source": "articles-google.ts",
-      "sources": [],
-      "updated": "2026-09-12"
+      "sources": [
+        "https://support.google.com/a/users/answer/13293412?hl=en",
+        "https://developers.google.com/workspace/calendar/api/v3/reference/events"
+      ],
+      "updated": "2026-10-21"
     },
     {
       "locale": "he",
@@ -3036,15 +3075,18 @@
     {
       "locale": "hi",
       "slug": "what-guests-can-do-to-your-event",
-      "title": "आपके इवेंट के साथ मेहमान क्या-क्या कर सकते हैं",
-      "description": "तीन चेकबॉक्स तय करते हैं कि कोई मेहमान आपकी मीटिंग खिसका सकता है, अजनबियों को बुला सकता है या पूरी सूची पढ़ सकता है। ये उम्मीद से ज़्यादा बार चालू रहते हैं।",
-      "descriptionCharacters": 156,
-      "sections": 2,
+      "title": "Google Calendar में मेहमानों की अनुमतियाँ: संपादन, निमंत्रण और मेहमानों की सूची",
+      "description": "Google इवेंट की मेहमान अनुमतियाँ और डिफ़ॉल्ट जाँचें। निमंत्रण के अधिकार, कैलेंडर ऐक्सेस और Cloud Calendars की भूमिकाएँ अलग समझें।",
+      "descriptionCharacters": 129,
+      "sections": 6,
       "faq": 3,
-      "words": 363,
+      "words": 829,
       "source": "articles-google.ts",
-      "sources": [],
-      "updated": "2026-09-12"
+      "sources": [
+        "https://support.google.com/a/users/answer/13293412?hl=en",
+        "https://developers.google.com/workspace/calendar/api/v3/reference/events"
+      ],
+      "updated": "2026-10-21"
     },
     {
       "locale": "hi",
@@ -3186,15 +3228,18 @@
     {
       "locale": "hu",
       "slug": "what-guests-can-do-to-your-event",
-      "title": "Mit tehetnek a vendégeid egy eseményeddel",
-      "description": "Három jelölőnégyzet dönti el, hogy egy vendég átteheti-e a megbeszélésedet, meghívhat-e idegeneket, vagy elolvashatja-e a teljes listát. Gyakrabban vannak bekapcsolva, mint gondolnád.",
-      "descriptionCharacters": 183,
-      "sections": 2,
+      "title": "Google Naptár vendégjogok: szerkesztés, meghívás és vendéglista",
+      "description": "Ellenőrizze a Google vendégjogait és alapértékeit. Különítse el a meghívás jogait a naptárhozzáféréstől és a Cloud Calendars szerepeitől.",
+      "descriptionCharacters": 137,
+      "sections": 6,
       "faq": 3,
-      "words": 275,
+      "words": 586,
       "source": "articles-google.ts",
-      "sources": [],
-      "updated": "2026-09-12"
+      "sources": [
+        "https://support.google.com/a/users/answer/13293412?hl=en",
+        "https://developers.google.com/workspace/calendar/api/v3/reference/events"
+      ],
+      "updated": "2026-10-21"
     },
     {
       "locale": "hu",
@@ -3336,15 +3381,18 @@
     {
       "locale": "id",
       "slug": "what-guests-can-do-to-your-event",
-      "title": "Apa yang bisa dilakukan tamu terhadap acara Anda",
-      "description": "Tiga kotak centang menentukan apakah tamu bisa memindahkan rapat Anda, mengundang orang asing, atau membaca seluruh daftar. Kotak-kotak itu aktif lebih sering daripada dugaan orang.",
-      "descriptionCharacters": 181,
-      "sections": 2,
+      "title": "Izin tamu Google Kalender: mengedit, mengundang, dan daftar tamu",
+      "description": "Periksa izin tamu dan setelan default Google. Pisahkan hak undangan dari akses kalender serta peran Reader, Writer, dan Owner Cloud Calendars.",
+      "descriptionCharacters": 142,
+      "sections": 6,
       "faq": 3,
-      "words": 273,
+      "words": 614,
       "source": "articles-google.ts",
-      "sources": [],
-      "updated": "2026-09-12"
+      "sources": [
+        "https://support.google.com/a/users/answer/13293412?hl=en",
+        "https://developers.google.com/workspace/calendar/api/v3/reference/events"
+      ],
+      "updated": "2026-10-21"
     },
     {
       "locale": "id",
@@ -3486,15 +3534,18 @@
     {
       "locale": "it",
       "slug": "what-guests-can-do-to-your-event",
-      "title": "Cosa possono fare gli invitati a un tuo evento",
-      "description": "Tre caselle decidono se un invitato può spostare la riunione, invitare estranei o leggere l’intero elenco. Sono attive più spesso di quanto si creda.",
-      "descriptionCharacters": 149,
-      "sections": 2,
+      "title": "Permessi degli invitati Google Calendar: modifiche, inviti e lista ospiti",
+      "description": "Controlla permessi e valori predefiniti Google. Distingui i diritti sull’invito dall’accesso al calendario e dai ruoli Cloud Calendars.",
+      "descriptionCharacters": 135,
+      "sections": 6,
       "faq": 3,
-      "words": 308,
+      "words": 686,
       "source": "articles-google.ts",
-      "sources": [],
-      "updated": "2026-09-12"
+      "sources": [
+        "https://support.google.com/a/users/answer/13293412?hl=en",
+        "https://developers.google.com/workspace/calendar/api/v3/reference/events"
+      ],
+      "updated": "2026-10-21"
     },
     {
       "locale": "it",
@@ -3842,15 +3893,18 @@
     {
       "locale": "ja",
       "slug": "what-guests-can-do-to-your-event",
-      "title": "ゲストは、あなたの予定に何ができるのか",
-      "description": "三つのチェックが、ゲストが会議を動かせるか、知らない人を呼べるか、参加者一覧を読めるかを決める。思っているより頻繁に入っている。",
-      "descriptionCharacters": 64,
-      "sections": 2,
+      "title": "Google カレンダーのゲスト権限：編集、招待、ゲスト一覧",
+      "description": "Googleのゲスト権限と既定値を確認しましょう。招待の権限、カレンダーへのアクセス、Cloud Calendarsの役割は別の仕組みです。",
+      "descriptionCharacters": 70,
+      "sections": 6,
       "faq": 3,
-      "words": 21,
+      "words": 43,
       "source": "articles-google.ts",
-      "sources": [],
-      "updated": "2026-09-12"
+      "sources": [
+        "https://support.google.com/a/users/answer/13293412?hl=en",
+        "https://developers.google.com/workspace/calendar/api/v3/reference/events"
+      ],
+      "updated": "2026-10-21"
     },
     {
       "locale": "ja",
@@ -3992,15 +4046,18 @@
     {
       "locale": "ko",
       "slug": "what-guests-can-do-to-your-event",
-      "title": "참석자가 당신의 일정에 할 수 있는 일",
-      "description": "체크박스 셋이 참석자가 회의를 옮길 수 있는지, 모르는 사람을 부를 수 있는지, 명단 전체를 읽을 수 있는지를 정한다. 생각보다 자주 켜져 있다.",
-      "descriptionCharacters": 81,
-      "sections": 2,
+      "title": "Google Calendar 참석자 권한: 일정 수정, 초대 및 참석자 목록",
+      "description": "Google 일정의 참석자 권한과 기본값을 확인하세요. 초대 권한, 캘린더 접근 권한, Cloud Calendars의 Reader·Writer·Owner 역할을 구분합니다.",
+      "descriptionCharacters": 96,
+      "sections": 6,
       "faq": 3,
-      "words": 229,
+      "words": 586,
       "source": "articles-google.ts",
-      "sources": [],
-      "updated": "2026-09-12"
+      "sources": [
+        "https://support.google.com/a/users/answer/13293412?hl=en",
+        "https://developers.google.com/workspace/calendar/api/v3/reference/events"
+      ],
+      "updated": "2026-10-21"
     },
     {
       "locale": "ko",
@@ -4142,15 +4199,18 @@
     {
       "locale": "ms",
       "slug": "what-guests-can-do-to-your-event",
-      "title": "Apa yang tetamu boleh lakukan pada acara anda",
-      "description": "Tiga kotak menentukan sama ada tetamu boleh memindahkan mesyuarat anda, menjemput orang asing, atau membaca seluruh senarai. Ia dihidupkan lebih kerap daripada yang disangka.",
-      "descriptionCharacters": 174,
-      "sections": 2,
+      "title": "Kebenaran tetamu Google Calendar: suntingan, jemputan dan senarai tetamu",
+      "description": "Semak kebenaran tetamu dan tetapan lalai Google. Bezakan hak jemputan daripada akses kalendar serta peranan Cloud Calendars.",
+      "descriptionCharacters": 124,
+      "sections": 6,
       "faq": 3,
-      "words": 282,
+      "words": 616,
       "source": "articles-google.ts",
-      "sources": [],
-      "updated": "2026-09-12"
+      "sources": [
+        "https://support.google.com/a/users/answer/13293412?hl=en",
+        "https://developers.google.com/workspace/calendar/api/v3/reference/events"
+      ],
+      "updated": "2026-10-21"
     },
     {
       "locale": "ms",
@@ -4292,15 +4352,18 @@
     {
       "locale": "nl-NL",
       "slug": "what-guests-can-do-to-your-event",
-      "title": "Wat je gasten met een afspraak kunnen doen",
-      "description": "Drie vinkjes bepalen of een gast je vergadering kan verzetten, vreemden kan uitnodigen of de hele lijst kan lezen. Ze staan vaker aan dan mensen denken.",
-      "descriptionCharacters": 152,
-      "sections": 2,
+      "title": "Google Agenda-gastrechten: bewerken, uitnodigen en de gastenlijst",
+      "description": "Controleer gastrechten en standaardinstellingen in Google. Onderscheid uitnodigingsrechten van agendatoegang en Cloud Calendars-rollen.",
+      "descriptionCharacters": 135,
+      "sections": 6,
       "faq": 3,
-      "words": 305,
+      "words": 666,
       "source": "articles-google.ts",
-      "sources": [],
-      "updated": "2026-09-12"
+      "sources": [
+        "https://support.google.com/a/users/answer/13293412?hl=en",
+        "https://developers.google.com/workspace/calendar/api/v3/reference/events"
+      ],
+      "updated": "2026-10-21"
     },
     {
       "locale": "nl-NL",
@@ -4442,15 +4505,18 @@
     {
       "locale": "no",
       "slug": "what-guests-can-do-to-your-event",
-      "title": "Hva gjestene dine kan gjøre med en hendelse",
-      "description": "Tre avkrysningsbokser avgjør om en gjest kan flytte møtet ditt, invitere fremmede eller lese hele listen. De står på oftere enn folk tror.",
-      "descriptionCharacters": 138,
-      "sections": 2,
+      "title": "Gjesterettigheter i Google Kalender: redigering, invitasjoner og gjesteliste",
+      "description": "Kontroller Googles gjesterettigheter og standardvalg. Skill invitasjonsrettigheter fra kalendertilgang og rollene i Cloud Calendars.",
+      "descriptionCharacters": 132,
+      "sections": 6,
       "faq": 3,
-      "words": 293,
+      "words": 629,
       "source": "articles-google.ts",
-      "sources": [],
-      "updated": "2026-09-12"
+      "sources": [
+        "https://support.google.com/a/users/answer/13293412?hl=en",
+        "https://developers.google.com/workspace/calendar/api/v3/reference/events"
+      ],
+      "updated": "2026-10-21"
     },
     {
       "locale": "no",
@@ -4592,15 +4658,18 @@
     {
       "locale": "pl",
       "slug": "what-guests-can-do-to-your-event",
-      "title": "Co goście mogą zrobić z twoim wydarzeniem",
-      "description": "Trzy pola decydują, czy gość może przesunąć twoje spotkanie, zaprosić obcych albo przeczytać całą listę. Są włączone częściej, niż się wydaje.",
-      "descriptionCharacters": 142,
-      "sections": 2,
+      "title": "Uprawnienia gości Google: edycja, zaproszenia i lista uczestników",
+      "description": "Sprawdź uprawnienia gości i ustawienia domyślne Google. Odróżnij prawa zaproszenia od dostępu do kalendarza i ról Cloud Calendars.",
+      "descriptionCharacters": 130,
+      "sections": 6,
       "faq": 3,
-      "words": 274,
+      "words": 571,
       "source": "articles-google.ts",
-      "sources": [],
-      "updated": "2026-09-12"
+      "sources": [
+        "https://support.google.com/a/users/answer/13293412?hl=en",
+        "https://developers.google.com/workspace/calendar/api/v3/reference/events"
+      ],
+      "updated": "2026-10-21"
     },
     {
       "locale": "pl",
@@ -4742,15 +4811,18 @@
     {
       "locale": "pt-BR",
       "slug": "what-guests-can-do-to-your-event",
-      "title": "O que seus convidados podem fazer com um evento",
-      "description": "Três caixas decidem se um convidado pode mudar sua reunião, convidar estranhos ou ler a lista inteira. Elas ficam ligadas mais vezes do que se imagina.",
-      "descriptionCharacters": 151,
-      "sections": 2,
+      "title": "Permissões de convidados no Google Agenda: edição, convites e lista de participantes",
+      "description": "Confira permissões e padrões dos convidados no Google. Separe os direitos do convite do acesso ao calendário e das funções do Cloud Calendars.",
+      "descriptionCharacters": 142,
+      "sections": 6,
       "faq": 3,
-      "words": 318,
+      "words": 764,
       "source": "articles-google.ts",
-      "sources": [],
-      "updated": "2026-09-12"
+      "sources": [
+        "https://support.google.com/a/users/answer/13293412?hl=en",
+        "https://developers.google.com/workspace/calendar/api/v3/reference/events"
+      ],
+      "updated": "2026-10-21"
     },
     {
       "locale": "pt-BR",
@@ -4943,15 +5015,18 @@
     {
       "locale": "ro",
       "slug": "what-guests-can-do-to-your-event",
-      "title": "Ce pot face invitații cu un eveniment de-al tău",
-      "description": "Trei căsuțe decid dacă un invitat îți poate muta ședința, poate invita necunoscuți sau poate citi toată lista. Sunt bifate mai des decât crede lumea.",
-      "descriptionCharacters": 149,
-      "sections": 2,
+      "title": "Permisiunile invitaților în Google Calendar: editare, invitații și lista participanților",
+      "description": "Verifică permisiunile și setările implicite Google. Separă drepturile invitației de accesul la calendar și de rolurile Cloud Calendars.",
+      "descriptionCharacters": 135,
+      "sections": 6,
       "faq": 3,
-      "words": 306,
+      "words": 694,
       "source": "articles-google.ts",
-      "sources": [],
-      "updated": "2026-09-12"
+      "sources": [
+        "https://support.google.com/a/users/answer/13293412?hl=en",
+        "https://developers.google.com/workspace/calendar/api/v3/reference/events"
+      ],
+      "updated": "2026-10-21"
     },
     {
       "locale": "ro",
@@ -5093,15 +5168,18 @@
     {
       "locale": "ru",
       "slug": "what-guests-can-do-to-your-event",
-      "title": "Что гости могут сделать с вашим событием",
-      "description": "Три галочки решают, может ли гость перенести вашу встречу, пригласить посторонних или прочесть весь список. Включены они чаще, чем принято думать.",
-      "descriptionCharacters": 146,
-      "sections": 2,
+      "title": "Права гостей Google Календаря: редактирование, приглашения и список участников",
+      "description": "Проверьте права гостей и настройки по умолчанию Google. Отличайте права приглашения от доступа к календарю и ролей Cloud Calendars.",
+      "descriptionCharacters": 131,
+      "sections": 6,
       "faq": 3,
-      "words": 273,
+      "words": 624,
       "source": "articles-google.ts",
-      "sources": [],
-      "updated": "2026-09-12"
+      "sources": [
+        "https://support.google.com/a/users/answer/13293412?hl=en",
+        "https://developers.google.com/workspace/calendar/api/v3/reference/events"
+      ],
+      "updated": "2026-10-21"
     },
     {
       "locale": "ru",
@@ -5243,15 +5321,18 @@
     {
       "locale": "sv",
       "slug": "what-guests-can-do-to-your-event",
-      "title": "Vad dina gäster kan göra med en händelse",
-      "description": "Tre kryssrutor avgör om en gäst kan flytta ditt möte, bjuda in främlingar eller läsa hela listan. De står på oftare än folk tror.",
-      "descriptionCharacters": 129,
-      "sections": 2,
+      "title": "Gästbehörigheter i Google Kalender: redigering, inbjudningar och gästlista",
+      "description": "Kontrollera Googles gästbehörigheter och standardinställningar. Skilj inbjudningsrättigheter från kalenderåtkomst och roller i Cloud Calendars.",
+      "descriptionCharacters": 143,
+      "sections": 6,
       "faq": 3,
-      "words": 301,
+      "words": 685,
       "source": "articles-google.ts",
-      "sources": [],
-      "updated": "2026-09-12"
+      "sources": [
+        "https://support.google.com/a/users/answer/13293412?hl=en",
+        "https://developers.google.com/workspace/calendar/api/v3/reference/events"
+      ],
+      "updated": "2026-10-21"
     },
     {
       "locale": "sv",
@@ -5393,15 +5474,18 @@
     {
       "locale": "th",
       "slug": "what-guests-can-do-to-your-event",
-      "title": "ผู้ได้รับเชิญทำอะไรกับกิจกรรมของคุณได้บ้าง",
-      "description": "สามช่องติ๊กเป็นตัวตัดสินว่าผู้ได้รับเชิญจะเลื่อนการประชุมของคุณ เชิญคนแปลกหน้า หรืออ่านรายชื่อทั้งหมดได้หรือไม่ และมันเปิดอยู่บ่อยกว่าที่คนคิด",
-      "descriptionCharacters": 142,
-      "sections": 2,
+      "title": "สิทธิ์ผู้เข้าร่วมใน Google Calendar: การแก้ไข เชิญเพิ่ม และรายชื่อ",
+      "description": "ตรวจสอบสิทธิ์ผู้เข้าร่วมและค่าเริ่มต้นของ Google แยกสิทธิ์ในคำเชิญออกจากการเข้าถึงปฏิทินและบทบาทใน Cloud Calendars",
+      "descriptionCharacters": 114,
+      "sections": 6,
       "faq": 3,
-      "words": 70,
+      "words": 156,
       "source": "articles-google.ts",
-      "sources": [],
-      "updated": "2026-09-12"
+      "sources": [
+        "https://support.google.com/a/users/answer/13293412?hl=en",
+        "https://developers.google.com/workspace/calendar/api/v3/reference/events"
+      ],
+      "updated": "2026-10-21"
     },
     {
       "locale": "th",
@@ -5543,15 +5627,18 @@
     {
       "locale": "tr",
       "slug": "what-guests-can-do-to-your-event",
-      "title": "Konuklarınız bir etkinliğinize ne yapabilir",
-      "description": "Üç kutucuk, bir konuğun toplantınızı taşıyıp taşıyamayacağını, yabancıları davet edip edemeyeceğini, listenin tamamını okuyup okuyamayacağını belirler. Sanılandan daha sık açıktırlar.",
-      "descriptionCharacters": 183,
-      "sections": 2,
+      "title": "Google Takvim misafir izinleri: düzenleme, davetler ve misafir listesi",
+      "description": "Google misafir izinlerini ve varsayılanları kontrol edin. Davet haklarını takvim erişiminden ve Cloud Calendars rollerinden ayırın.",
+      "descriptionCharacters": 131,
+      "sections": 6,
       "faq": 3,
-      "words": 240,
+      "words": 588,
       "source": "articles-google.ts",
-      "sources": [],
-      "updated": "2026-09-12"
+      "sources": [
+        "https://support.google.com/a/users/answer/13293412?hl=en",
+        "https://developers.google.com/workspace/calendar/api/v3/reference/events"
+      ],
+      "updated": "2026-10-21"
     },
     {
       "locale": "tr",
@@ -5693,15 +5780,18 @@
     {
       "locale": "vi",
       "slug": "what-guests-can-do-to-your-event",
-      "title": "Khách mời có thể làm gì với sự kiện của bạn",
-      "description": "Ba ô đánh dấu quyết định khách mời có thể dời cuộc họp, mời người lạ hay đọc toàn bộ danh sách hay không. Chúng bật nhiều hơn người ta tưởng.",
-      "descriptionCharacters": 141,
-      "sections": 2,
+      "title": "Quyền khách mời Google Calendar: chỉnh sửa, mời thêm và danh sách khách",
+      "description": "Kiểm tra quyền khách mời và mặc định Google. Phân biệt quyền lời mời, quyền truy cập lịch và các vai trò trong Cloud Calendars.",
+      "descriptionCharacters": 127,
+      "sections": 6,
       "faq": 3,
-      "words": 415,
+      "words": 924,
       "source": "articles-google.ts",
-      "sources": [],
-      "updated": "2026-09-12"
+      "sources": [
+        "https://support.google.com/a/users/answer/13293412?hl=en",
+        "https://developers.google.com/workspace/calendar/api/v3/reference/events"
+      ],
+      "updated": "2026-10-21"
     },
     {
       "locale": "vi",
@@ -5843,15 +5933,18 @@
     {
       "locale": "zh-Hans",
       "slug": "what-guests-can-do-to-your-event",
-      "title": "受邀的人能对你的活动做什么",
-      "description": "三个勾选框决定受邀者能不能挪动你的会议、邀请陌生人、读到完整名单。它们打开的次数比多数人以为的多。",
-      "descriptionCharacters": 49,
-      "sections": 2,
+      "title": "Google 日历访客权限：编辑、邀请他人与访客名单",
+      "description": "检查 Google 活动的访客权限和默认设置。区分邀请权限、日历访问权限，以及 Cloud Calendars 的不同共享角色。",
+      "descriptionCharacters": 64,
+      "sections": 6,
       "faq": 3,
-      "words": 18,
+      "words": 85,
       "source": "articles-google.ts",
-      "sources": [],
-      "updated": "2026-09-12"
+      "sources": [
+        "https://support.google.com/a/users/answer/13293412?hl=en",
+        "https://developers.google.com/workspace/calendar/api/v3/reference/events"
+      ],
+      "updated": "2026-10-21"
     },
     {
       "locale": "zh-Hans",
@@ -5993,15 +6086,18 @@
     {
       "locale": "zh-Hant",
       "slug": "what-guests-can-do-to-your-event",
-      "title": "受邀的人能對你的活動做什麼",
-      "description": "三個勾選方塊決定受邀者能不能挪動你的會議、邀請陌生人、讀到完整名單。它們打開的次數比多數人以為的多。",
-      "descriptionCharacters": 50,
-      "sections": 2,
+      "title": "Google 日曆邀請對象權限：編輯、邀請他人與名單",
+      "description": "檢查 Google 活動的邀請對象權限與預設值。區分邀請權限、行事曆存取權，以及 Cloud Calendars 的共享角色。",
+      "descriptionCharacters": 63,
+      "sections": 6,
       "faq": 3,
-      "words": 21,
+      "words": 86,
       "source": "articles-google.ts",
-      "sources": [],
-      "updated": "2026-09-12"
+      "sources": [
+        "https://support.google.com/a/users/answer/13293412?hl=en",
+        "https://developers.google.com/workspace/calendar/api/v3/reference/events"
+      ],
+      "updated": "2026-10-21"
     },
     {
       "locale": "zh-Hant",

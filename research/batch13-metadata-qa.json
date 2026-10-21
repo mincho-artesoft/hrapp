@@ -1,0 +1,17 @@
+{
+  "sitemapPages": 462,
+  "parsedPages": 462,
+  "articleSchemas": 399,
+  "faqSchemas": 356,
+  "softwareApplicationSchemas": 30,
+  "appFactsExpected": {
+    "APP_VERSION": "1.7.3",
+    "APP_SIZE_MB": "49.8",
+    "APP_RATING": "4.5",
+    "APP_RATING_COUNT": "12"
+  },
+  "allPassed": true,
+  "errors": [],
+  "warnings": [],
+  "scope": "Built HTML canonical, reciprocal hreflang, schema text/language and shared app facts only. Not indexing, rich-result eligibility, ranking, product runtime or translation certification."
+}

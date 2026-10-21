@@ -344,53 +344,99 @@ export const GOOGLE_DA: Readonly<Record<string, LocalisedArticle>> = {
 },
 
   'google-calendars-that-never-reach-your-iphone': {
-    title: 'Hvorfor nogle Google-kalendere aldrig når din iPhone',
-    short: 'Google-kalendere mangler på iPhone',
-    description:
-      'Én Google-konto, flere kalendere og kun én på telefonen. Synkroniseringslisten, der afgør det, og hvad man gør i stedet.',
-    lede: 'Din Google-konto rummer otte kalendere. Din iPhone viser to. Intet er i stykker: noget, du aldrig har set, har valgt for dig.',
-    commonBelief: 'At tilføje en Google-konto på iPhone tilføjer de kalendere, den indeholder.',
-    sections: [
-      {
-        heading: 'En liste, du aldrig er blevet vist',
-        body: [
-          'Google fører pr. enhed en liste over, hvilke kalendere der må synkronisere, og sekundære kalendere — de delte, de abonnerede, dem nogen lavede til et projekt — står ofte uden for den.',
-          'Listen findes ikke i iOS-indstillingerne. Den bor på en Google-side for sig, og derfor finder man intet galt det indlysende sted, og intet ændrer sig.',
-        ],
-      },
-      {
-        heading: 'Den anden vej',
-        body: [
-          'En app, der taler direkte med Google, bruger ikke den liste, så den viser hver kalender, kontoen faktisk har, også dem telefonen stille lod falde.',
-          'Det bringer også kontoerne sammen. Ét overblik med privat, arbejde og delt er hele pointen; om telefonen ville have synkroniseret hver enkelt holder op med at være et spørgsmål.',
-        ],
-      },
-    ],
-    claims: {
-      accounts: 'Kontotyper, som ét overblik holder sammen',
-      price: 'Hvad Google-siden koster',
+  "title": "En Google-kalender mangler på iPhone: kontrollér forbindelse og valg",
+  "short": "Google-kalendere, der mangler på iPhone",
+  "description": "Find en manglende Google-kalender ved at kontrollere adgang, synlighed og forbindelsen i Apple Kalender eller Cloud Calendars.",
+  "lede": "Når én Google-kalender vises og en anden ikke gør, skal du først finde ud af, hvor den manglende kalender er tilgængelig. Kontoadgang, kalendervalg og tilgængelige begivenheder kræver forskellige kontroller. Guiden er udgivet af Arte Soft, udvikleren af Cloud Calendars.",
+  "commonBelief": "Alle manglende Google-kalendere skyldes samme skjulte synkroniseringsliste, og en direkte forbindelse garanterer, at alt vises.",
+  "sections": [
+    {
+      "heading": "Bekræft, at kalenderen findes for denne konto",
+      "body": [
+        "Åbn Google Kalender på nettet med den samme konto, du vil bruge på telefonen. Find selve kalenderen, ikke kun en kendt begivenhedstitel. To konti kan have kalendere med lignende navne, og en invitation til arbejdsmailen dokumenterer ikke adgang for din private konto.",
+        "Mangler den også dér, så start med ejeren eller delingsinvitationen. Ved gruppeadgang skal du bekræfte medlemskab og den gruppe, der har tilladelse. Slet ikke telefonkontoen, mens det grundlæggende adgangsspørgsmål er uafklaret."
+      ]
     },
-    faq: [
-      {
-        q: 'Hvorfor vises kun nogle af mine Google-kalendere på iPhone?',
-        a: 'Google fører pr. enhed en liste over, hvilke kalendere der må synkronisere, og sekundære kalendere — delte, abonnerede, lavet til et projekt — står ofte uden for den.',
-      },
-      {
-        q: 'Hvor er synkroniseringsindstillingen for Google Kalender på iPhone?',
-        a: 'Ikke i iOS-indstillingerne. Den bor på en Google-side for sig, og derfor finder man intet galt det indlysende sted, og intet ændrer sig.',
-      },
-      {
-        q: 'Hvordan ser jeg alle mine Google-kalendere på iPhone?',
-        a: 'Gennem en app, der spørger Google direkte i stedet for gennem enhedens liste. Den viser hver kalender, kontoen faktisk har, også dem telefonen lod falde.',
-      },
-    ],
-    practical: [
-      'Tjek Googles synkroniseringsliste, før du går ud fra, at kontoen er i stykker.',
-      'Regn med, at abonnerede og delte kalendere er udeladt snarere end medtaget.',
-      'Har du mere end et par kalendere, så læs dem gennem noget, der spørger Google direkte.',
-    ],
-    seeAlso: ['why-a-shared-calendar-does-not-appear', 'icloud-google-and-outlook-in-one-view'],
-  },
+    {
+      "heading": "Skeln mellem en skjult og en manglende kalender",
+      "body": [
+        "Google beskriver valg af kalendere til visning via menuen i Google Kalender-appen. En kalender på listen uden markering har et synlighedsproblem. En kalender, som helt mangler på listen, kræver en anden undersøgelse af eksempelvis inviteret identitet, godkendelse eller forbindelse.",
+        "En delingsinvitation via e-mail og en abonnementsadresse er også forskellige veje. Google beskriver tilføjelse af et nyt abonnement via computerbrowser adskilt fra åbning af en kalender, der allerede er delt via e-mail. Bevar den oprindelige invitation, men videresend ikke private links til offentlige supportopslag."
+      ]
+    },
+    {
+      "heading": "Find ud af, hvordan iPhone-appen modtager Google-data",
+      "body": [
+        "Apple Kalender kan forbinde via Google-kontoen på enheden. Googles vejledning omfatter aktivering af Kalendere for kontoen. Følg udbyderens aktuelle instruktioner til din iOS-version; ændring af en anden apps indstillinger er ikke det samme som ændring af enhedskontoen.",
+        "Cloud Calendars tilbyder også direkte Google-login. Afklar den faktiske konto og forbindelsesvej, før du tilføjer en ny forbindelse. Hvis samme kalender kommer via både enhedskalender og direkte forbindelse, skal du sammenligne kalenderidentiteterne, før du konkluderer, at Google har duplikeret en begivenhed."
+      ]
+    },
+    {
+      "heading": "Kontrollér Cloud Calendars-valget uden at antage fuld dækning",
+      "body": [
+        "Gennemgå i Cloud Calendars kalendere til den ønskede Google-konto, og vælg dem, du vil bruge. Google-synkroniseringen kontrollerer kalendervalget. Et vellykket login beviser ikke, at alle kalendere er valgt, eller at hver anmodet opdatering er afsluttet.",
+        "En direkte forbindelse er endnu en vej til Google-data, ikke et løfte om alle tilgængelige kalendere. Hvis en kalender findes på Googles hjemmeside, men ikke i Cloud Calendars, skal du notere konto, kalendernavn og forbindelsesmetode til support. Brug den oprindelige udbyder til hastende planlægning, mens forskellen undersøges."
+      ]
+    },
+    {
+      "heading": "Skeln mellem en manglende kalender og manglende datoer",
+      "body": [
+        "Hvis kalenderen står på listen, men en aftale mangler, skal du sammenligne præcis den dato i Google Kalender. Kontrollér, at aftalen tilhører den valgte kalender, og at du ser samme forekomst af et gentaget møde. En lignende titel i en anden kalender er ikke samme kilderegistrering.",
+        "Antag ikke, at en app har hentet alle historiske eller fjerne fremtidige begivenheder. Cloud Calendars’ Google-synkronisering bruger et afgrænset datointerval. En tom historisk søgning beviser derfor ikke sletning hos Google; kontrollér originaludbyderen før ændringer eller genoprettelse."
+      ]
+    },
+    {
+      "heading": "Bed om hjælp med en nyttig sammenligning, ikke en nulstilling",
+      "body": [
+        "Notér app, kontotype, kalendernavn, eksempeldato og hvor kalenderen er synlig. Medtag en eventuel fejlmeddelelse uden private oplysninger. Det skelner bedre mellem tilladelses-, valgs- og synkroniseringsproblemer end at sige, at hele kontoen er i stykker.",
+        "Bekræft den aktuelle begivenhed med arrangøren ved tidskritiske planer. Undgå at slette konti, importere gentagne kopier eller flytte begivenheder som første test. Når forbindelsesproblemet er forstået, skal du kontrollere samme eksempel, før du ændrer yderligere indstillinger."
+      ]
+    }
+  ],
+  "claims": {},
+  "practical": [
+    "Sammenlign den ønskede konto og kalender i Google Kalender på nettet.",
+    "Kontrollér, om kalenderen mangler eller blot ikke er valgt.",
+    "Identificér enhedssynkronisering, direkte appforbindelse eller abonnement.",
+    "Gennemgå kalendere valgt for den rette konto i Cloud Calendars.",
+    "Sammenlign én præcis begivenhedsdato hos originaludbyderen.",
+    "Rapportér forskellen uden private adresser eller nulstilling af konti."
+  ],
+  "faq": [
+    {
+      "q": "Viser direkte Google-login alle kalendere?",
+      "a": "Antag ikke fuld dækning. Konto, kalenderliste, valg og vellykket synkronisering har betydning. Sammenlign med Google Kalender på nettet."
+    },
+    {
+      "q": "Skal jeg slette og tilføje kontoen igen?",
+      "a": "Kontrollér først identitet, adgang, synlighed og forbindelsesvej. Genforbindelse giver ikke en tilladelse, ejeren ikke har givet."
+    },
+    {
+      "q": "Er en manglende gammel begivenhed slettet?",
+      "a": "Ikke nødvendigvis. Kontrollér dens oprindelige Google-kalender og dato. Appens datointerval eller søgning kan afvige fra udbyderens gemte historik."
+    }
+  ],
+  "sourcesHeading": "Udbydervejledning og yderligere læsning",
+  "sources": [
+    {
+      "label": "Google: tilføj Google-begivenheder til Apple Kalender",
+      "url": "https://support.google.com/calendar/answer/99358?hl=en&co=GENIE.Platform%3DiOS"
+    },
+    {
+      "label": "Google: abonnementer og kalendersynlighed",
+      "url": "https://support.google.com/calendar/answer/37100?hl=en&co=GENIE.Platform%3DiOS"
+    },
+    {
+      "label": "Google: kalenderlistens funktion",
+      "url": "https://developers.google.com/workspace/calendar/api/v3/reference/calendarList/list"
+    }
+  ],
+  "seeAlso": [
+    "why-a-shared-calendar-does-not-appear",
+    "icloud-google-and-outlook-in-one-view"
+  ],
+  "updated": "2026-10-21"
+},
 
   'taking-back-a-calendar-you-shared': {
   "title": "Stop deling af en kalender: fjern adgang og kontrollér de andre veje",

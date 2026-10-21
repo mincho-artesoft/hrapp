@@ -346,53 +346,100 @@ export const GOOGLE_PL: Readonly<Record<string, LocalisedArticle>> = {
 },
 
   'google-calendars-that-never-reach-your-iphone': {
-    title: 'Dlaczego część kalendarzy Google nigdy nie trafia na iPhone’a',
-    short: 'Brakujące kalendarze Google na iPhonie',
-    description:
-      'Jedno konto Google, kilka kalendarzy i tylko jeden w telefonie. Lista synchronizacji, która o tym decyduje, i co zrobić zamiast tego.',
-    lede: 'Twoje konto Google trzyma osiem kalendarzy. iPhone pokazuje dwa. Nic nie jest zepsute: coś, czego nigdy nie widziałeś, wybrało za ciebie.',
-    commonBelief: 'Że dodanie konta Google do iPhone’a dodaje kalendarze, które ono zawiera.',
-    sections: [
-      {
-        heading: 'Lista, której nigdy ci nie pokazano',
-        body: [
-          'Google prowadzi dla każdego urządzenia listę kalendarzy, które wolno synchronizować, a kalendarze dodatkowe — udostępnione, subskrybowane, założone do projektu — często są poza nią.',
-          'Ta lista nie leży w ustawieniach iOS. Mieszka na osobnej stronie Google i dlatego szukanie w oczywistym miejscu nie znajduje nic złego i nic nie zmienia.',
-        ],
-      },
-      {
-        heading: 'Druga droga',
-        body: [
-          'Aplikacja rozmawiająca z Google bezpośrednio nie używa tej listy, więc pokazuje każdy kalendarz, który konto naprawdę ma, łącznie z tymi, które telefon po cichu porzucił.',
-          'To zbliża też konta. Jeden widok z prywatnym, służbowym i udostępnionym jest sensem całej rzeczy; czy telefon zsynchronizowałby każdy z nich, przestaje być pytaniem.',
-        ],
-      },
-    ],
-    claims: {
-      accounts: 'Rodzaje kont, które jeden widok trzyma razem',
-      price: 'Ile kosztuje strona Google',
+  "title": "Brak kalendarza Google na iPhonie: sprawdź połączenie i wybór kalendarzy",
+  "short": "Kalendarze Google niewidoczne na iPhonie",
+  "description": "Znajdź brakujący kalendarz Google: sprawdź dostęp, widoczność i połączenie używane przez Kalendarz Apple lub Cloud Calendars.",
+  "lede": "Gdy jeden kalendarz Google jest widoczny, a drugi nie, najpierw ustal, gdzie ten brakujący jest dostępny. Dostęp konta, wybór kalendarzy i dostępność wydarzeń to osobne kwestie. Poradnik publikuje Arte Soft, twórca Cloud Calendars.",
+  "commonBelief": "Każdy brakujący kalendarz Google wynika z jednej ukrytej listy synchronizacji, a bezpośrednie połączenie gwarantuje wyświetlenie wszystkiego.",
+  "sections": [
+    {
+      "heading": "Potwierdź, że kalendarz jest dostępny dla tego konta",
+      "body": [
+        "Otwórz Kalendarz Google w przeglądarce na koncie, którego chcesz używać w telefonie. Szukaj samego kalendarza, nie tylko znajomego tytułu wydarzenia. Dwa konta mogą mieć kalendarze o podobnych nazwach. Zaproszenie na służbowy adres nie potwierdza dostępu konta prywatnego.",
+        "Jeśli tam też go nie ma, zacznij od właściciela lub zaproszenia do udostępnionego kalendarza. Przy dostępie grupowym potwierdź członkostwo i grupę, która otrzymała uprawnienie. Nie usuwaj konta z telefonu, dopóki podstawowa kwestia dostępu pozostaje niewyjaśniona."
+      ]
     },
-    faq: [
-      {
-        q: 'Dlaczego na iPhonie widać tylko część moich kalendarzy Google?',
-        a: 'Google prowadzi dla każdego urządzenia listę kalendarzy, którym wolno się synchronizować, a kalendarze dodatkowe — udostępnione, subskrybowane, założone do projektu — często są poza nią.',
-      },
-      {
-        q: 'Gdzie jest ustawienie synchronizacji Kalendarza Google dla iPhone’a?',
-        a: 'Nie w ustawieniach iOS. Mieszka na osobnej stronie Google i dlatego szukanie w oczywistym miejscu niczego nie znajduje i niczego nie zmienia.',
-      },
-      {
-        q: 'Jak zobaczyć wszystkie kalendarze Google na iPhonie?',
-        a: 'Przez aplikację, która pyta Google bezpośrednio, zamiast przez listę urządzenia. Pokazuje każdy kalendarz, który konto naprawdę ma, łącznie z porzuconymi przez telefon.',
-      },
-    ],
-    practical: [
-      'Sprawdź listę synchronizacji Google, zanim uznasz konto za zepsute.',
-      'Zakładaj, że kalendarze subskrybowane i udostępnione są wykluczone, nie włączone.',
-      'Jeśli trzymasz więcej niż dwa kalendarze, czytaj je przez coś, co pyta Google bezpośrednio.',
-    ],
-    seeAlso: ['why-a-shared-calendar-does-not-appear', 'icloud-google-and-outlook-in-one-view'],
-  },
+    {
+      "heading": "Odróżnij kalendarz ukryty od nieobecnego",
+      "body": [
+        "Google opisuje wybieranie kalendarzy do wyświetlenia w menu aplikacji Kalendarz Google. Kalendarz obecny na liście, lecz niezaznaczony, to kwestia widoczności. Brak na liście wymaga sprawdzenia innych rzeczy: zaproszonego konta, zatwierdzenia lub połączenia.",
+        "Zaproszenie do udostępnionego kalendarza przesłane e-mailem i adres subskrypcji to także różne drogi. Google osobno opisuje dodanie nowej subskrypcji w przeglądarce komputera i otwarcie kalendarza już udostępnionego e-mailem. Zachowaj oryginalne zaproszenie, ale nie publikuj prywatnych linków w publicznych prośbach o pomoc."
+      ]
+    },
+    {
+      "heading": "Ustal, jak aplikacja na iPhonie odbiera dane Google",
+      "body": [
+        "Kalendarz Apple może łączyć się przez konto Google skonfigurowane na urządzeniu. Instrukcja Google obejmuje włączenie Kalendarzy dla tego konta. Korzystaj z aktualnych wskazówek dla swojej wersji iOS; ustawienia osobnej aplikacji to nie to samo co ustawienia tego konta urządzenia.",
+        "Cloud Calendars oferuje też bezpośrednie logowanie do Google. Przed dodaniem kolejnego połączenia ustal używane konto i drogę dostępu. Jeśli ten sam kalendarz trafia przez kalendarz urządzenia i bezpośrednie połączenie, porównaj tożsamość kalendarzy, zanim uznasz, że Google powielił wydarzenie."
+      ]
+    },
+    {
+      "heading": "Sprawdź wybór w Cloud Calendars bez zakładania pełnego zakresu",
+      "body": [
+        "W Cloud Calendars przejrzyj kalendarze powiązane z właściwym kontem Google i wybierz potrzebne. Synchronizacja Google sprawdza wybór kalendarzy. Samo udane logowanie nie potwierdza, że wybrano każdy kalendarz ani że wszystkie żądane aktualizacje się zakończyły.",
+        "Bezpośrednie połączenie to inny sposób odbierania danych Google, nie obietnica wyświetlenia każdego dostępnego kalendarza. Jeśli jest na stronie Google, lecz nie ma go w Cloud Calendars, zanotuj konto, nazwę kalendarza i sposób połączenia dla pomocy technicznej. W pilnych sprawach korzystaj z pierwotnej usługi podczas wyjaśniania różnicy."
+      ]
+    },
+    {
+      "heading": "Odróżnij brak kalendarza od braku określonych dat",
+      "body": [
+        "Jeśli kalendarz jest na liście, ale brakuje spotkania, porównaj dokładnie tę datę w Kalendarzu Google. Sprawdź, czy wydarzenie należy do wybranego kalendarza i czy oglądasz to samo wystąpienie spotkania cyklicznego. Podobny tytuł w innym kalendarzu nie oznacza tego samego rekordu źródłowego.",
+        "Nie zakładaj, że aplikacja pobrała wszystkie dawne i odległe przyszłe wydarzenia. Synchronizacja Google w Cloud Calendars pobiera ograniczony zakres dat. Pusty wynik wyszukiwania w przeszłości nie dowodzi usunięcia wydarzenia z Google. Przed zmianą lub ponownym utworzeniem czegokolwiek sprawdź pierwotną usługę."
+      ]
+    },
+    {
+      "heading": "Zgłoś problem z użytecznym porównaniem, zamiast resetować",
+      "body": [
+        "Zanotuj aplikację, typ konta, nazwę kalendarza, przykładową datę i miejsce, gdzie kalendarz jest widoczny. Jeśli pojawia się błąd, dołącz jego komunikat bez prywatnych danych. To lepiej rozdziela problemy uprawnień, wyboru i synchronizacji niż stwierdzenie, że całe konto nie działa.",
+        "Przy pilnych planach potwierdź bieżące wydarzenie z organizatorem. Nie zaczynaj testów od usuwania kont, wielokrotnego importowania kopii ani przenoszenia wydarzeń między kalendarzami. Gdy problem połączenia jest zrozumiały, sprawdź wynik na tym samym przykładzie przed zmianą kolejnych ustawień."
+      ]
+    }
+  ],
+  "claims": {},
+  "practical": [
+    "Porównaj właściwe konto i kalendarz w internetowym Kalendarzu Google.",
+    "Sprawdź, czy kalendarza nie ma, czy jest tylko niezaznaczony.",
+    "Ustal, czy używasz synchronizacji Google urządzenia, bezpośredniego połączenia aplikacji czy subskrypcji.",
+    "Sprawdź wybrane kalendarze właściwego konta w Cloud Calendars.",
+    "Porównaj jedną dokładną datę wydarzenia w pierwotnej usłudze.",
+    "Zgłoś różnicę bez ujawniania prywatnych adresów i resetowania kont."
+  ],
+  "faq": [
+    {
+      "q": "Czy bezpośrednie logowanie do Google pokaże każdy kalendarz?",
+      "a": "Nie zakładaj pełnego zakresu. Liczą się konto, lista kalendarzy, wybór i udana synchronizacja. Porównaj brakujący kalendarz z Kalendarzem Google w przeglądarce."
+    },
+    {
+      "q": "Czy usunąć konto i dodać je ponownie?",
+      "a": "Najpierw sprawdź tożsamość konta, dostęp, widoczność i drogę połączenia. Ponowne połączenie nie nada uprawnienia, którego właściciel nie przyznał."
+    },
+    {
+      "q": "Czy brak starego wydarzenia oznacza, że je usunięto?",
+      "a": "Nie. Sprawdź oryginalny kalendarz Google i datę. Zakres dat lub działanie wyszukiwarki aplikacji może różnić się od historii zapisanej u dostawcy."
+    }
+  ],
+  "sourcesHeading": "Wskazówki dostawców i dalsza lektura",
+  "sources": [
+    {
+      "label": "Google: dodawanie wydarzeń Google do Kalendarza Apple",
+      "url": "https://support.google.com/calendar/answer/99358?hl=en&co=GENIE.Platform%3DiOS"
+    },
+    {
+      "label": "Google: subskrypcje i widoczność kalendarzy",
+      "url": "https://support.google.com/calendar/answer/37100?hl=en&co=GENIE.Platform%3DiOS"
+    },
+    {
+      "label": "Google: działanie listy kalendarzy",
+      "url": "https://developers.google.com/workspace/calendar/api/v3/reference/calendarList/list"
+    }
+  ],
+  "seeAlso": [
+    "why-a-shared-calendar-does-not-appear",
+    "icloud-google-and-outlook-in-one-view",
+    "the-secret-address-of-a-google-calendar"
+  ],
+  "updated": "2026-10-21"
+},
 
   'taking-back-a-calendar-you-shared': {
   "title": "Zakończ udostępnianie kalendarza: usuń dostęp i sprawdź pozostałe drogi",

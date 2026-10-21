@@ -345,53 +345,99 @@ export const GOOGLE_FI: Readonly<Record<string, LocalisedArticle>> = {
 },
 
   'google-calendars-that-never-reach-your-iphone': {
-    title: 'Miksi osa Google-kalentereista ei koskaan päädy iPhoneen',
-    short: 'Google-kalentereita puuttuu iPhonesta',
-    description:
-      'Yksi Google-tili, useita kalentereita ja vain yksi puhelimessa. Synkronointilista, joka päättää sen, ja mitä tehdä sen sijaan.',
-    lede: 'Google-tilissäsi on kahdeksan kalenteria. iPhone näyttää kaksi. Mikään ei ole rikki: jokin, jota et ole koskaan nähnyt, valitsi puolestasi.',
-    commonBelief: 'Että Google-tilin lisääminen iPhoneen lisää sen sisältämät kalenterit.',
-    sections: [
-      {
-        heading: 'Lista, jota sinulle ei ole näytetty',
-        body: [
-          'Google pitää laitekohtaista listaa siitä, mitkä kalenterit saavat synkronoitua, ja toissijaiset kalenterit — jaetut, tilatut, jotakin projektia varten tehdyt — ovat usein sen ulkopuolella.',
-          'Lista ei ole iOS:n asetuksissa. Se asuu omalla Google-sivullaan, ja siksi ilmeisestä paikasta ei löydy mitään vikaa eikä mikään muutu.',
-        ],
-      },
-      {
-        heading: 'Toinen reitti',
-        body: [
-          'Sovellus, joka puhuu suoraan Googlelle, ei käytä tuota listaa, joten se näyttää jokaisen kalenterin, joka tilillä todella on, myös ne, jotka puhelin hiljaa pudotti.',
-          'Samalla tilit tulevat yhteen. Yksi näkymä, jossa on henkilökohtainen, työ ja jaettu, on koko pointti; se, olisiko puhelin synkronoinut kunkin niistä, lakkaa olemasta kysymys.',
-        ],
-      },
-    ],
-    claims: {
-      accounts: 'Tilityypit, jotka yksi näkymä pitää koossa',
-      price: 'Mitä Googlen puoli maksaa',
+  "title": "Google-kalenteri puuttuu iPhonesta: tarkista yhteys ja valinta",
+  "short": "iPhonesta puuttuvat Google-kalenterit",
+  "description": "Etsi puuttuva Google-kalenteri tarkistamalla tilin pääsy, näkyvyys ja Apple Kalenterin tai Cloud Calendarsin käyttämä yhteys.",
+  "lede": "Kun yksi Google-kalenteri näkyy ja toinen ei, selvitä ensin, missä puuttuva aikataulu on saatavilla. Tilin pääsy, kalenterivalinta ja tapahtumien saatavuus ovat erillisiä tarkistuksia. Oppaan julkaisee Cloud Calendarsin kehittäjä Arte Soft.",
+  "commonBelief": "Jokaisen puuttuvan Google-kalenterin syy on sama piilotettu synkronointilista, ja suora yhteys takaa kaiken näkymisen.",
+  "sections": [
+    {
+      "heading": "Varmista kalenterin olemassaolo tällä tilillä",
+      "body": [
+        "Avaa Google Kalenteri verkossa samalla tilillä, jota aiot käyttää puhelimessa. Etsi itse kalenteri, älä vain tuttua tapahtuman nimeä. Kahdella tilillä voi olla samannimisiä kalentereita, eikä työsähköpostiin tullut kutsu osoita henkilökohtaisen tilin pääsyä.",
+        "Jos kalenteri puuttuu myös verkosta, aloita omistajasta tai jakamiskutsusta. Ryhmäpohjaisessa järjestelyssä varmista jäsenyys ja oikeuden saanut ryhmä. Älä poista puhelimen tiliä ennen kuin pääsyä koskeva peruskysymys on selvitetty."
+      ]
     },
-    faq: [
-      {
-        q: 'Miksi vain osa Google-kalentereistani näkyy iPhonessa?',
-        a: 'Google pitää laitekohtaista listaa siitä, mitkä kalenterit saavat synkronoitua, ja toissijaiset — jaetut, tilatut, projektia varten tehdyt — ovat usein sen ulkopuolella.',
-      },
-      {
-        q: 'Missä Google-kalenterin synkronointiasetus on iPhonella?',
-        a: 'Ei iOS:n asetuksissa. Se asuu omalla Google-sivullaan, ja siksi ilmeisestä paikasta ei löydy vikaa eikä mikään muutu.',
-      },
-      {
-        q: 'Miten näen kaikki Google-kalenterini iPhonessa?',
-        a: 'Sovelluksella, joka kysyy Googlelta suoraan laitteen listan sijaan. Se näyttää jokaisen kalenterin, joka tilillä todella on, myös puhelimen pudottamat.',
-      },
-    ],
-    practical: [
-      'Tarkista Googlen synkronointilista ennen kuin oletat tilin rikkinäiseksi.',
-      'Odota, että tilatut ja jaetut kalenterit on jätetty pois eikä otettu mukaan.',
-      'Jos kalentereita on enemmän kuin pari, lue ne jollakin, joka kysyy Googlelta suoraan.',
-    ],
-    seeAlso: ['why-a-shared-calendar-does-not-appear', 'icloud-google-and-outlook-in-one-view'],
-  },
+    {
+      "heading": "Erota piilotettu kalenteri puuttuvasta",
+      "body": [
+        "Google ohjeistaa näyttöön valittavat kalenterit sovelluksen valikosta. Luettelossa oleva mutta valitsematon kalenteri on näkyvyysasia. Luettelosta puuttuva kalenteri edellyttää muun syyn, kuten kutsutun henkilöllisyyden, hyväksynnän tai yhteyden tutkimista.",
+        "Sähköpostin jakamiskutsu ja tilausosoite ovat myös eri reittejä. Google kuvaa uuden tilauksen lisäämisen tietokoneen selaimella erillään sähköpostilla jo jaetun kalenterin avaamisesta. Säilytä alkuperäinen kutsu, mutta älä välitä yksityisiä linkkejä julkisiin tukiviesteihin."
+      ]
+    },
+    {
+      "heading": "Tunnista tämän iPhone-sovelluksen Google-yhteys",
+      "body": [
+        "Apple Kalenteri voi yhdistyä laitteen Google-tilin kautta. Googlen ohje sisältää kalenterien käyttöönoton tilille. Noudata nykyisiä palveluntarjoajan ohjeita iOS-versiollesi; erillisen sovelluksen asetusten muuttaminen ei ole sama kuin tämän laitetilin muuttaminen.",
+        "Cloud Calendars tarjoaa myös suoran Google-kirjautumisen. Selvitä todella käyttämäsi tili ja reitti ennen uuden yhteyden lisäämistä. Jos sama aikataulu saapuu laitekalenterista ja suoraan, vertaa kalenterien tunnisteita ennen johtopäätöstä tapahtuman kahdentumisesta Googlessa."
+      ]
+    },
+    {
+      "heading": "Tarkista Cloud Calendarsin valinta olettamatta täydellistä kattavuutta",
+      "body": [
+        "Tarkastele Cloud Calendarsissa haluttuun Google-tiliin liittyviä kalentereita ja valitse tarvitsemasi. Google-synkronointi tarkistaa kalenterivalinnan. Onnistunut kirjautuminen ei yksin osoita kaikkien kalenterien valintaa tai jokaisen pyydetyn päivityksen valmistumista.",
+        "Suora yhteys on toinen Google-tietojen vastaanottotapa, ei lupaus kaikkien käytettävissä olevien kalenterien näkymisestä. Jos kalenteri on Googlen sivustolla mutta puuttuu Cloud Calendarsista, kirjaa tili, kalenterin nimi ja yhteystapa tukea varten. Käytä kiireelliseen suunnitteluun alkuperäistä palvelua selvityksen aikana."
+      ]
+    },
+    {
+      "heading": "Erota puuttuva kalenteri puuttuvista päivistä",
+      "body": [
+        "Jos kalenteri on luettelossa mutta tapaaminen puuttuu, vertaa täsmälleen samaa päivää Google Kalenterissa. Tarkista, kuuluuko kohde valittuun kalenteriin ja katsotko toistuvan kokouksen samaa kertaa. Samankaltainen nimi toisessa kalenterissa ei ole sama lähdetietue.",
+        "Älä oleta sovelluksen ladanneen kaikkia menneitä tai kaukaisia tulevia tapahtumia. Cloud Calendarsin Google-synkronointi pyytää rajattua ajanjaksoa. Tyhjä historiallinen haku ei siis osoita poistamista Googlesta; tarkista alkuperäinen palvelu ennen muuttamista tai uudelleenluontia."
+      ]
+    },
+    {
+      "heading": "Pyydä apua hyödyllisellä vertailulla, älä nollauksella",
+      "body": [
+        "Kirjaa sovellus, tilityyppi, kalenterin nimi, esimerkkipäivä ja missä aikataulu näkyy. Liitä mahdollinen virheviesti yksityiset tiedot poistettuina. Tämä erottaa oikeus-, valinta- ja synkronointiongelmat paremmin kuin koko tilin toimimattomuudesta ilmoittaminen.",
+        "Vahvista aikakriittisissä suunnitelmissa nykyinen tapahtuma järjestäjältä. Vältä ensitesteinä tilien poistoa, toistuvia tuonteja tai tapahtumien siirtelyä kalenterien välillä. Kun yhteysongelma on ymmärretty, varmista tulos samalla esimerkillä ennen lisämuutoksia."
+      ]
+    }
+  ],
+  "claims": {},
+  "practical": [
+    "Vertaa haluttua tiliä ja kalenteria Google Kalenterin verkkoversiossa.",
+    "Tarkista, puuttuuko kalenteri vai onko se vain valitsematta.",
+    "Tunnista laitesynkronointi, suora sovellusyhteys tai tilaus.",
+    "Tarkista oikean tilin kalenterivalinnat Cloud Calendarsissa.",
+    "Vertaa tarkkaa tapahtumapäivää alkuperäisessä palvelussa.",
+    "Ilmoita ero jakamatta yksityisiä osoitteita tai nollaamatta tilejä."
+  ],
+  "faq": [
+    {
+      "q": "Näyttääkö suora Google-kirjautuminen kaikki kalenterit?",
+      "a": "Älä oleta täydellistä kattavuutta. Tili, luettelo, valinta ja onnistunut synkronointi vaikuttavat. Vertaa puuttuvaa kalenteria Googlen verkkoversioon."
+    },
+    {
+      "q": "Pitäisikö tili poistaa ja lisätä uudelleen?",
+      "a": "Tarkista ensin henkilöllisyys, pääsy, näkyvyys ja yhteysreitti. Uudelleenyhdistäminen ei anna omistajan myöntämättä jättämää oikeutta."
+    },
+    {
+      "q": "Tarkoittaako puuttuva vanha tapahtuma sen poistamista?",
+      "a": "Ei. Tarkista alkuperäinen Google-kalenteri ja päivämäärä. Sovelluksen ajanjakso tai haku voi erota palveluntarjoajan tallennetusta historiasta."
+    }
+  ],
+  "sourcesHeading": "Palveluntarjoajan ohjeet ja lisätietoa",
+  "sources": [
+    {
+      "label": "Google: Google-tapahtumien lisääminen Apple Kalenteriin",
+      "url": "https://support.google.com/calendar/answer/99358?hl=en&co=GENIE.Platform%3DiOS"
+    },
+    {
+      "label": "Google: tilaukset ja kalenterien näkyvyys",
+      "url": "https://support.google.com/calendar/answer/37100?hl=en&co=GENIE.Platform%3DiOS"
+    },
+    {
+      "label": "Google: kalenteriluettelon toiminta",
+      "url": "https://developers.google.com/workspace/calendar/api/v3/reference/calendarList/list"
+    }
+  ],
+  "seeAlso": [
+    "why-a-shared-calendar-does-not-appear",
+    "icloud-google-and-outlook-in-one-view"
+  ],
+  "updated": "2026-10-21"
+},
 
   'taking-back-a-calendar-you-shared': {
   "title": "Lopeta kalenterin jakaminen: poista käyttöoikeus ja tarkista muut reitit",

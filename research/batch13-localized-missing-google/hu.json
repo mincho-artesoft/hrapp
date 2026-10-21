@@ -1,0 +1,95 @@
+{
+  "title": "Hiányzó Google-naptár iPhone-on: kapcsolat és kiválasztás ellenőrzése",
+  "short": "Hiányzó Google-naptárak iPhone-on",
+  "description": "Keresse meg a hiányzó Google-naptárt: ellenőrizze a hozzáférést, a láthatóságot és az Apple Naptár vagy a Cloud Calendars kapcsolatát.",
+  "lede": "Ha az egyik Google-naptár látszik, a másik nem, először tisztázza, hol érhető el a hiányzó naptár. A fiók hozzáférése, a naptárak kiválasztása és az események elérhetősége külön kérdés. Az útmutatót a Cloud Calendars fejlesztője, az Arte Soft adja ki.",
+  "commonBelief": "Minden hiányzó Google-naptárt egy rejtett szinkronizálási lista okoz, és a közvetlen kapcsolat garantálja, hogy minden megjelenik.",
+  "sections": [
+    {
+      "heading": "Ellenőrizze, hogy a fiók hozzáfér-e a naptárhoz",
+      "body": [
+        "Nyissa meg a Google Naptár webes felületét a telefonon használni kívánt fiókkal. Magát a naptárt keresse, ne csak egy ismerős eseménycímet. Két fiókban lehetnek hasonló nevű naptárak; a munkahelyi címre küldött meghívó nem igazolja a személyes fiók hozzáférését.",
+        "Ha ott is hiányzik, a tulajdonosnál vagy a megosztási meghívónál kezdje. Csoportos hozzáférésnél ellenőrizze a tagságot és a jogosultságot kapott csoportot. Ne törölje a telefonos fiókot, amíg a hozzáférés kérdése tisztázatlan."
+      ]
+    },
+    {
+      "heading": "Különböztesse meg az elrejtett és a hiányzó naptárt",
+      "body": [
+        "A Google leírja, hogyan választhatók ki a megjelenítendő naptárak a Google Naptár alkalmazás menüjében. A felsorolt, de ki nem jelölt naptár láthatósági kérdés. Ha a listából is hiányzik, például a meghívott személyazonosságot, a jóváhagyást vagy a kapcsolatot kell vizsgálni.",
+        "Az e-mailes megosztási meghívó és a feliratkozási cím is külön út. A Google külön kezeli az új feliratkozás hozzáadását számítógépes böngészőből és az e-mailben már megosztott naptár megnyitását. Őrizze meg az eredeti meghívót, de privát hivatkozásokat ne tegyen közzé nyilvános segítségkérésben."
+      ]
+    },
+    {
+      "heading": "Azonosítsa, hogyan kap Google-adatokat az iPhone alkalmazása",
+      "body": [
+        "Az Apple Naptár az eszközön beállított Google-fiókon keresztül kapcsolódhat. A Google útmutatója szerint engedélyezni kell a Naptárak funkciót ennél a fióknál. Kövesse az iOS-verziójához tartozó aktuális utasításokat; egy külön alkalmazás beállítása nem azonos az eszközfiók módosításával.",
+        "A Cloud Calendars közvetlen Google-bejelentkezést is kínál. Új kapcsolat felvétele előtt tisztázza a tényleges fiókot és kapcsolódási módot. Ha ugyanaz a naptár az eszközön és közvetlenül is érkezik, először hasonlítsa össze a naptárak azonosságát, ne feltételezzen Google-oldali eseményduplikálást."
+      ]
+    },
+    {
+      "heading": "Ellenőrizze a Cloud Calendars kiválasztását, ne feltételezzen teljes lefedettséget",
+      "body": [
+        "A Cloud Calendarsban tekintse át a megfelelő Google-fiók naptárait, és válassza ki a használni kívántakat. A Google-szinkronizálás ellenőrzi a naptárkiválasztást. A sikeres bejelentkezés önmagában nem igazolja, hogy minden naptár ki van jelölve vagy minden kért frissítés befejeződött.",
+        "A közvetlen kapcsolat a Google-adatok fogadásának másik módja, nem ígéret minden hozzáférhető naptár megjelenítésére. Ha a Google webhelyén látszik, de a Cloud Calendarsban nem, jegyezze fel a fiókot, a naptár nevét és a kapcsolódási módot az ügyfélszolgálatnak. A vizsgálat alatt sürgős szervezéshez használja az eredeti szolgáltatást."
+      ]
+    },
+    {
+      "heading": "Válassza külön a hiányzó naptárt és a hiányzó dátumokat",
+      "body": [
+        "Ha a naptár szerepel, de egy találkozó hiányzik, nézze meg pontosan azt a dátumot a Google Naptárban. Ellenőrizze, hogy az esemény a kiválasztott naptárhoz tartozik-e, és ugyanazt az ismétlődő alkalmat nézi-e. Másik naptár hasonló címe nem ugyanaz a forrásbejegyzés.",
+        "Ne feltételezze, hogy egy alkalmazás minden múltbeli vagy távoli jövőbeli eseményt letöltött. A Cloud Calendars Google-szinkronizálása korlátozott dátumtartományt kér le. Az üres múltbeli keresés ezért nem bizonyít Google-oldali törlést: módosítás vagy újralétrehozás előtt ellenőrizze az eredeti szolgáltatót."
+      ]
+    },
+    {
+      "heading": "Hasznos összehasonlítással kérjen segítséget, ne alaphelyzetbe állítással",
+      "body": [
+        "Jegyezze fel az alkalmazást, a fióktípust, a naptár nevét, egy példadátumot és azt, hol látszik a naptár. Ha van hibaüzenet, személyes adatok nélkül mellékelje. Így jobban elkülöníthető a jogosultság, a kiválasztás és a szinkronizálás hibája, mint azzal, hogy az egész fiók rossz.",
+        "Sürgős programnál egyeztessen a szervezővel az aktuális eseményről. Első tesztként ne töröljön fiókokat, ne importáljon ismételt másolatokat, és ne mozgasson eseményeket naptárak között. A kapcsolat hibájának megértése után ugyanazon a példán ellenőrizze az eredményt, mielőtt mást is átállítana."
+      ]
+    }
+  ],
+  "claims": {},
+  "practical": [
+    "Hasonlítsa össze a megfelelő fiókot és naptárt a Google Naptár webes felületén.",
+    "Nézze meg, hogy hiányzik-e a naptár, vagy csak nincs kijelölve.",
+    "Azonosítsa az eszköz Google-szinkronizálását, a közvetlen alkalmazáskapcsolatot vagy a feliratkozást.",
+    "Ellenőrizze a megfelelő fiók kiválasztott naptárait a Cloud Calendarsban.",
+    "Hasonlítson össze egy pontos eseménydátumot az eredeti szolgáltatónál.",
+    "Jelezze az eltérést privát címek megosztása és fiókok alaphelyzetbe állítása nélkül."
+  ],
+  "faq": [
+    {
+      "q": "A közvetlen Google-bejelentkezés minden naptárt megjelenít?",
+      "a": "Ne feltételezzen teljes lefedettséget. A fiók, a naptárlista, a kiválasztás és a sikeres szinkronizálás egyaránt számít. Hasonlítsa össze a hiányzó naptárt a Google Naptár webes felületével."
+    },
+    {
+      "q": "Töröljem, majd adjam hozzá újra a fiókot?",
+      "a": "Előbb ellenőrizze a személyazonosságot, a hozzáférést, a láthatóságot és a kapcsolat módját. Az újracsatlakozás nem adja meg azt a jogosultságot, amelyet a tulajdonos nem engedélyezett."
+    },
+    {
+      "q": "A hiányzó régi eseményt biztosan törölték?",
+      "a": "Nem. Ellenőrizze az eredeti Google-naptárt és a dátumot. Az alkalmazás dátumtartománya vagy keresése eltérhet a szolgáltató által tárolt előzményektől."
+    }
+  ],
+  "sourcesHeading": "Szolgáltatói útmutatók és további olvasnivalók",
+  "sources": [
+    {
+      "label": "Google: Google-események hozzáadása az Apple Naptárhoz",
+      "url": "https://support.google.com/calendar/answer/99358?hl=en&co=GENIE.Platform%3DiOS"
+    },
+    {
+      "label": "Google: feliratkozások és a naptárak láthatósága",
+      "url": "https://support.google.com/calendar/answer/37100?hl=en&co=GENIE.Platform%3DiOS"
+    },
+    {
+      "label": "Google: a naptárlista működése",
+      "url": "https://developers.google.com/workspace/calendar/api/v3/reference/calendarList/list"
+    }
+  ],
+  "seeAlso": [
+    "why-a-shared-calendar-does-not-appear",
+    "icloud-google-and-outlook-in-one-view",
+    "the-secret-address-of-a-google-calendar"
+  ],
+  "updated": "2026-10-21"
+}
