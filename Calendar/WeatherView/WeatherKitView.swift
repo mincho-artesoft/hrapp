@@ -1525,7 +1525,7 @@ struct WeatherKitView: View {
     }
     
     private func displayedCityName() -> String {
-        if weatherPreviewIsActive {
+        if weatherPreviewIsActive && geocodedCityName.isEmpty {
             #if DEBUG
             if let city = ScreenshotMode.stagedWeatherCity {
                 return city

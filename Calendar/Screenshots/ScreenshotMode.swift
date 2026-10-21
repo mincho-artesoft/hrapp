@@ -601,20 +601,24 @@ private extension WeatherKitViewModel {
             cloudCover: metric.cloudCover
         )
         let conditionKey = "WeatherCondition.\(condition)"
-        let actualNow = Date()
+        let actualNow = ScreenshotMode.referenceDate ?? Date()
         locationCoordinate = CLLocationCoordinate2D(latitude: 42.6977, longitude: 23.3219)
         var calendar = Calendar.current
         calendar.timeZone = locationTimeZone
         let now: Date
-        switch ScreenshotMode.weatherPreviewSky {
-        case "day":
-            now = calendar.date(bySettingHour: 13, minute: 27, second: 0, of: actualNow) ?? actualNow
-        case "sunrise":
-            now = calendar.date(bySettingHour: 5, minute: 42, second: 0, of: actualNow) ?? actualNow
-        case "sunset":
-            now = calendar.date(bySettingHour: 19, minute: 48, second: 0, of: actualNow) ?? actualNow
-        default:
-            now = actualNow
+        if let referenceDate = ScreenshotMode.referenceDate {
+            now = referenceDate
+        } else {
+            switch ScreenshotMode.weatherPreviewSky {
+            case "day":
+                now = calendar.date(bySettingHour: 13, minute: 27, second: 0, of: actualNow) ?? actualNow
+            case "sunrise":
+                now = calendar.date(bySettingHour: 5, minute: 42, second: 0, of: actualNow) ?? actualNow
+            case "sunset":
+                now = calendar.date(bySettingHour: 19, minute: 48, second: 0, of: actualNow) ?? actualNow
+            default:
+                now = actualNow
+            }
         }
 
         currentTemp = profile.temperature
@@ -702,8 +706,9 @@ private extension WeatherKitViewModel {
         hourFormatter.timeZone = locationTimeZone
         hourFormatter.setLocalizedDateFormatFromTemplate("j")
 
+        let forecastStart = calendar.dateInterval(of: .hour, for: now)?.start ?? now
         next24HourlyForecast = (0..<24).compactMap { offset in
-            guard let date = calendar.date(byAdding: .hour, value: offset, to: now) else { return nil }
+            guard let date = calendar.date(byAdding: .hour, value: offset, to: forecastStart) else { return nil }
             let wave = sin(Double(offset) / 4) * 2.4
             return HourlyForecastItem(
                 id: date,

@@ -7,6 +7,14 @@ import Combine
 
 // MARK: - RootView
 struct RootView: View {
+    /// Keep the capture's visible day on its seeded date across midnight.
+    /// Ordinary Debug launches and Release builds continue following today.
+    private static var calendarReferenceDate: Date {
+        #if DEBUG
+        if let referenceDate = ScreenshotMode.referenceDate { return referenceDate }
+        #endif
+        return Date()
+    }
     @ObservedObject private var appPreferences = AppPreferences.shared
     @State private var selectedCalendars = Set<EKCalendar>()
     @State private var showCalendarChooser = false
@@ -32,13 +40,13 @@ struct RootView: View {
         Calendar.current.date(byAdding: .year, value: -1, to: Date())!
     }()
 
-    @State private var pinnedFromDateSingle: Date = Date()
-    @State private var pinnedToDateSingle: Date = Date()
+    @State private var pinnedFromDateSingle: Date = RootView.calendarReferenceDate
+    @State private var pinnedToDateSingle: Date = RootView.calendarReferenceDate
     @State private var pinnedEventsSingle: [EventDescriptor] = []
-    @State private var selectedMonthDate: Date = Date()
+    @State private var selectedMonthDate: Date = RootView.calendarReferenceDate
 
-    @State private var pinnedFromDateMulti: Date = Date()
-    @State private var pinnedToDateMulti: Date = Calendar.current.date(byAdding: .day, value: 7, to: Date())!
+    @State private var pinnedFromDateMulti: Date = RootView.calendarReferenceDate
+    @State private var pinnedToDateMulti: Date = Calendar.current.date(byAdding: .day, value: 7, to: RootView.calendarReferenceDate)!
     @State private var pinnedEventsMulti: [EventDescriptor] = []
 
     @State private var pinnedAllEvents: [EventDescriptor] = []
@@ -302,7 +310,7 @@ struct RootView: View {
                                     HStack{ // Content for bottomBar
                                         Spacer()
                                         bottomBarButton(title: "Today", image: "calendar.badge.checkmark", action: {
-                                            let today = Calendar.current.startOfDay(for: Date())
+                                            let today = Calendar.current.startOfDay(for: Self.calendarReferenceDate)
                                             pinnedFromDateSingle = today
                                             pinnedToDateSingle   = today
                                             oldSelectedTab = selectedTab

@@ -92,7 +92,9 @@ struct DraggableMenuView<
             let bottomSafe   = geometry.safeAreaInsets.bottom
 
             // calculate snap positions
-            let fullOffsetY     = topGapWhenExpanded
+            let fullOffsetY     = CalendarSafeAreaLayout.preservesHorizontalInsets
+                ? screenHeight * 0.2
+                : topGapWhenExpanded
             let clippingHeight  = screenHeight - fixedBottomBarHeight
             let collapsedOffsetY = max(
                 fullOffsetY,
@@ -119,7 +121,12 @@ struct DraggableMenuView<
 
                 // 2. The draggable menu
                 VStack(spacing: 0) {
-                    let contentHeight = UIScreen.main.bounds.height - fixedBottomBarHeight
+                    // Duo's active display can be taller than UIScreen.main.
+                    // Keep the drawer anchored to this window after unfolding
+                    // or rotating, without changing other devices' layout.
+                    let contentHeight = CalendarSafeAreaLayout.preservesHorizontalInsets
+                        ? clippingHeight
+                        : UIScreen.main.bounds.height - fixedBottomBarHeight
 
                     // 2.1 The sliding content
                     slidingContentView(fullOffsetY: fullOffsetY,
@@ -138,6 +145,16 @@ struct DraggableMenuView<
                 .frame(width: screenWidth)
                 .edgesIgnoringSafeArea([.top, .bottom])
 //                .animation(.spring(response: 0.3, dampingFraction: 0.8), value: effectiveY)
+            }
+            .onAppear {
+                if CalendarSafeAreaLayout.preservesHorizontalInsets {
+                    currentOffsetY = menuState == .full ? fullOffsetY : collapsedOffsetY
+                }
+            }
+            .onChange(of: screenHeight) { _, _ in
+                if CalendarSafeAreaLayout.preservesHorizontalInsets {
+                    currentOffsetY = menuState == .full ? fullOffsetY : collapsedOffsetY
+                }
             }
             .onChange(of: menuState) { _, newState in
 //                withAnimation(.spring(response: 0.3, dampingFraction: 0.8)) {

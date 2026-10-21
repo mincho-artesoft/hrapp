@@ -667,13 +667,13 @@ public final class TwoWayPinnedMultiDayContainerView: UIView,
             lastHorizontalContentWidth = totalWidth
             lastHorizontalLayoutWasRTL = isRTL
         }
-        let nowOnly = cal.startOfDay(for: Date())
-        hoursColumnView.isCurrentDayInWeek = (nowOnly >= fromOnly && nowOnly <= toOnly)
         #if DEBUG
         let indicatorDate = ScreenshotMode.referenceDate ?? Date()
         #else
         let indicatorDate = Date()
         #endif
+        let nowOnly = cal.startOfDay(for: indicatorDate)
+        hoursColumnView.isCurrentDayInWeek = (nowOnly >= fromOnly && nowOnly <= toOnly)
         hoursColumnView.currentTime = hoursColumnView.isCurrentDayInWeek ? indicatorDate : nil
         
         hoursColumnWeatherView.isCurrentDayInWeek = (nowOnly >= fromOnly && nowOnly <= toOnly)

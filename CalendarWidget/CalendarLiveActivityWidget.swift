@@ -1,6 +1,22 @@
 import ActivityKit
 import SwiftUI
 import WidgetKit
+import Darwin
+
+private enum CalendarLiveActivityDevice {
+    static let isDuo: Bool = {
+        #if targetEnvironment(simulator)
+        let model = ProcessInfo.processInfo.environment["SIMULATOR_MODEL_IDENTIFIER"] ?? ""
+        #else
+        var system = utsname()
+        uname(&system)
+        let model = withUnsafeBytes(of: &system.machine) { bytes in
+            String(decoding: bytes.prefix { $0 != 0 }, as: UTF8.self)
+        }
+        #endif
+        return model == "iPhone19,4"
+    }()
+}
 
 struct CalendarLiveActivityAttributes: ActivityAttributes {
     public struct ContentState: Codable, Hashable {
@@ -340,15 +356,14 @@ struct CalendarLiveActivityWidget: Widget {
             } compactLeading: {
                 CalendarLiveActivityAppIcon(size: 24, settings: settings)
             } compactTrailing: {
-                if let event = context.state.nextEvent {
-                    CalendarLiveActivityCompactCountdownView(
-                        event: event,
-                        settings: CalendarLiveActivitySharedStore.globalSettings()
+                if CalendarLiveActivityDevice.isDuo, #available(iOS 27.0, *) {
+                    CalendarLiveActivityDuoCompactTrailingView(
+                        event: context.state.nextEvent, settings: settings
                     )
                 } else {
-                    Image(systemName: "exclamationmark.circle")
-                        .font(.caption2.bold())
-                        .foregroundStyle(CalendarLiveActivityPalette.secondaryText)
+                    CalendarLiveActivityCompactTrailingView(
+                        event: context.state.nextEvent, settings: settings
+                    )
                 }
             } minimal: {
                 CalendarLiveActivityAppIcon(size: 18, settings: settings)
@@ -432,6 +447,37 @@ private struct CalendarLiveActivityCompactCountdownView: View {
             .lineLimit(1)
             .minimumScaleFactor(0.72)
             .frame(width: 42, alignment: .trailing)
+    }
+}
+
+private struct CalendarLiveActivityCompactTrailingView: View {
+    let event: CalendarLiveActivityEvent?
+    let settings: CalendarLiveActivitySettingsSnapshot
+
+    var body: some View {
+        if let event {
+            CalendarLiveActivityCompactCountdownView(event: event, settings: settings)
+        } else {
+            Image(systemName: "exclamationmark.circle")
+                .font(.caption2.bold())
+                .foregroundStyle(CalendarLiveActivityPalette.secondaryText)
+        }
+    }
+}
+
+@available(iOS 27.0, *)
+private struct CalendarLiveActivityDuoCompactTrailingView: View {
+    @Environment(\.isDynamicIslandLimitedInWidth) private var isLimitedInWidth
+    let event: CalendarLiveActivityEvent?
+    let settings: CalendarLiveActivitySettingsSnapshot
+
+    var body: some View {
+        // The compact leading region already contains the mini calendar.
+        // Duo's narrow vertical island shows that alone; expanded and Lock
+        // Screen presentations continue to show the full countdown.
+        if !isLimitedInWidth {
+            CalendarLiveActivityCompactTrailingView(event: event, settings: settings)
+        }
     }
 }
 
