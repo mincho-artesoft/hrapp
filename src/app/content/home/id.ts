@@ -4,7 +4,7 @@ import { HomeCopy } from './types';
 export const HOME_ID: HomeCopy = {
   metaTitle: 'Cloud Calendars — iCloud, Google, dan Outlook jadi satu',
   metaDescription:
-    'Kalender iCloud, Google, dan Outlook dalam satu tampilan di iPhone dan iPad. Gratis untuk mulai, tanpa membuat akun, cuaca tiap hari di dalam kalender.',
+    "Kalender Anda dan prakiraannya, di satu tempat. Dibuat untuk iPhone dan iPad. iCloud · Google Calendar · Microsoft Calendar.",
   nav: {
     tour: 'Tur',
     widgets: 'Widget',
@@ -23,7 +23,7 @@ export const HOME_ID: HomeCopy = {
     lead: 'Setiap kalender yang Anda punya — iCloud, Google, Microsoft — di satu tempat, dengan prakiraan tertanam di dalam harinya sendiri. Berhenti menebak seperti apa sorenya.',
     seeItMove: 'Lihat bergerak',
     onTheAppStore: 'di App Store',
-    freeToStart: 'Gratis untuk mulai — tanpa akun',
+    freeToStart: "Unduh gratis",
     scroll: 'Gulir',
     ratingLabel: '{r} dari 5 berdasarkan {n} penilaian di App Store',
     altMonth: 'Tampilan bulan Cloud Calendars dengan penanda pada setiap hari yang terisi',
@@ -42,7 +42,7 @@ export const HOME_ID: HomeCopy = {
     'Hari · Pekan · Bulan · Tahun',
     'Seret untuk memindahkan',
     'Angin dan embusan',
-    'Tanpa akun',
+    "Kalender lokal",
   ],
   showcase: {
     eyebrow: 'Turnya',
@@ -144,8 +144,8 @@ export const HOME_ID: HomeCopy = {
     },
     tiles: [
       {
-        title: 'Tautan rapat, dibuatkan untuk Anda',
-        body: 'Buat acara di kalender Google dan tautan Meet ikut terlampir. Buat di Microsoft dan Anda dapat tautan Teams. Tak ada yang perlu menempel apa pun.',
+        title: "Meet · Teams",
+        body: "Tautan Google Meet · Tautan Microsoft Teams",
         badge: 'Meet · Teams',
       },
       {
@@ -154,9 +154,9 @@ export const HOME_ID: HomeCopy = {
         badge: 'Sekali ketuk',
       },
       {
-        title: 'Kalender Anda tetap milik Anda',
-        body: 'Acara dibaca lewat antarmuka milik Apple, Google, dan Microsoft sendiri lalu digambar di perangkat. Tak ada yang dijual, dan tak ada akun yang perlu dibuat.',
-        badge: 'Tanpa akun',
+        title: "Kalender lokal",
+        body: "Gunakan kalender lokal tanpa akun. Menghubungkan layanan kalender dan berbagi mungkin memerlukan login.",
+        badge: "Kalender lokal",
       },
     ],
     sourceNotes: {
@@ -197,26 +197,15 @@ export const HOME_ID: HomeCopy = {
       },
       advanced: {
         name: 'Advanced',
-        tagline: 'Aplikasi yang lebih tenang dan kendali lebih dalam atas kalender.',
+        tagline: "Tanpa iklan, di mana pun",
         yearlyNote: 'Hemat 15% setahun',
-        features: [
-          'Tanpa iklan, di mana pun',
-          'Pengelolaan acara lintas kalender iCloud dan Google',
-          'Izin berbagi Google Kalender',
-          'Pembuatan tautan Google Meet otomatis',
-          'Penyegaran cuaca prioritas',
-        ],
+        features: ["Tanpa iklan, di mana pun"],
       },
       premium: {
         name: 'Premium',
         tagline: 'Untuk kalender kerja yang tinggal di Microsoft.',
         yearlyNote: 'Hemat 16% setahun',
-        features: [
-          'Sinkronisasi Microsoft Outlook dan Exchange',
-          'Tautan Microsoft Teams otomatis',
-          'Pengelolaan penuh lintas ketiga akun',
-          'Pengelolaan peserta dan undangan',
-        ],
+        features: ["Microsoft Calendar","Tautan Microsoft Teams"],
       },
     },
   },
@@ -228,11 +217,11 @@ export const HOME_ID: HomeCopy = {
     items: [
       {
         q: 'Apakah saya butuh akun untuk memakai Cloud Calendars?',
-        a: 'Tidak. Aplikasi membaca kalender yang sudah ada di iPhone Anda lewat EventKit milik Apple sendiri, jadi iCloud bekerja begitu Anda memberi izin. Anda hanya masuk ke Google atau Microsoft kalau ingin kalender itu ikut masuk.',
+        a: "Gunakan kalender lokal tanpa akun. Menghubungkan layanan kalender dan berbagi mungkin memerlukan login.",
       },
       {
         q: 'Apakah sinkronisasi Google Kalender benar-benar gratis?',
-        a: 'Ya. Sinkronisasi Google, semua tampilan kalender, pusat cuaca lengkap, semua widget layar utama, dan tautan Google Meet ada di tingkat gratis. Advanced menghapus iklan dan menambah pengelolaan lintas kalender; Premium menambah Microsoft.',
+        a: "Google Calendar dan Google Meet termasuk dalam paket gratis. Advanced menghapus iklan; Premium menambahkan Microsoft Calendar dan Teams.",
       },
       {
         q: 'Dari mana data cuacanya berasal?',
@@ -248,7 +237,7 @@ export const HOME_ID: HomeCopy = {
       },
       {
         q: 'Perangkat apa saja yang didukung?',
-        a: 'iPhone dan iPad dengan iOS 18 atau lebih baru. Aplikasinya sekitar 35 MB.',
+        a: "iPhone / iPad · iOS / iPadOS 18+",
       },
       {
         q: 'Bagaimana cara membatalkan langganan?',
@@ -258,7 +247,7 @@ export const HOME_ID: HomeCopy = {
   },
   cta: {
     title: ['Besok sudah datang', 'dengan prakiraannya.'],
-    lead: 'Gratis di App Store. Tanpa akun, tanpa wisaya penyiapan — berikan akses kalender dan pekan Anda sudah ada di sana.',
+    lead: "Unduh gratis. Gunakan kalender lokal tanpa akun. Menghubungkan layanan kalender dan berbagi mungkin memerlukan login.",
     fromRatings: 'dari {n} penilaian',
     download: 'unduhan',
     requiresIos: 'memerlukan iOS {v}',

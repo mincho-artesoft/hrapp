@@ -57,7 +57,7 @@ export class ArticlePageComponent {
     const facts = ARTICLE_FACTS[slug];
     if (!this.article || !facts) return;
 
-    this.updated = facts.updated;
+    this.updated = this.article.updated ?? facts.updated;
 
     // Numbers from facts, words from the translation, joined by id — so a row
     // cannot end up carrying the wrong figure however the wording is edited.
@@ -84,7 +84,7 @@ export class ArticlePageComponent {
       })),
     });
 
-    this.describeAsArticle(slug, facts.updated);
+    this.describeAsArticle(slug, this.updated);
   }
 
   localised(path: string): string {

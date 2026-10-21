@@ -29,6 +29,7 @@ PRUNE="${PRUNE:-0}"
 INVALIDATE_ONLY="${INVALIDATE_ONLY:-0}"
 NO_WAIT="${NO_WAIT:-0}"
 ALLOW_NO_CLOUDFRONT="${ALLOW_NO_CLOUDFRONT:-0}"
+USE_AWS_PROFILE="${USE_AWS_PROFILE:-0}"
 
 log()  { printf '\033[36m▸\033[0m %s\n' "$*"; }
 warn() { printf '\033[33m!\033[0m %s\n' "$*" >&2; }
@@ -40,6 +41,11 @@ aws_do() {
   if [[ "$DRY_RUN" == "1" ]]; then
     printf '\033[90m  would run: aws %s\033[0m\n' "$*"
     return 0
+  fi
+  if [[ "$USE_AWS_PROFILE" == "1" ]]; then
+    env -u AWS_ACCESS_KEY_ID -u AWS_SECRET_ACCESS_KEY -u AWS_SESSION_TOKEN \
+      AWS_PROFILE="${AWS_PROFILE:-default}" AWS_DEFAULT_REGION="$NG_DEPLOY_AWS_REGION" "$AWS_BIN" "$@"
+    return
   fi
   AWS_ACCESS_KEY_ID="$NG_DEPLOY_AWS_ACCESS_KEY_ID" \
   AWS_SECRET_ACCESS_KEY="$NG_DEPLOY_AWS_SECRET_ACCESS_KEY" \
@@ -60,8 +66,11 @@ ANGULAR_PROJECT="${ANGULAR_PROJECT:-arte-calendar}"
 DIST_DIR="${DIST_DIR:-$ROOT_DIR/dist/$ANGULAR_PROJECT/browser}"
 SITE_DOMAIN="${SITE_DOMAIN:-${NG_DEPLOY_AWS_BUCKET:-}}"
 
-for var in NG_DEPLOY_AWS_ACCESS_KEY_ID NG_DEPLOY_AWS_SECRET_ACCESS_KEY \
-           NG_DEPLOY_AWS_BUCKET NG_DEPLOY_AWS_REGION; do
+required_vars=(NG_DEPLOY_AWS_BUCKET NG_DEPLOY_AWS_REGION)
+if [[ "$USE_AWS_PROFILE" != "1" ]]; then
+  required_vars+=(NG_DEPLOY_AWS_ACCESS_KEY_ID NG_DEPLOY_AWS_SECRET_ACCESS_KEY)
+fi
+for var in "${required_vars[@]}"; do
   [[ -n "${!var:-}" ]] || die "$var is required. Set it in $ENV_FILE."
 done
 

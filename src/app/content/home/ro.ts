@@ -4,7 +4,7 @@ import { HomeCopy } from './types';
 export const HOME_RO: HomeCopy = {
   metaTitle: 'Cloud Calendars — iCloud, Google și Outlook într-o vedere',
   metaDescription:
-    'Calendarele tale din iCloud, Google și Outlook într-o vedere pe iPhone și iPad. Gratuit la început, fără cont de creat, cu vremea fiecărei zile în grilă.',
+    "Calendarele dumneavoastră și prognoza, într-un singur loc. Construit pentru iPhone și iPad. iCloud · Google Calendar · Microsoft Calendar.",
   nav: {
     tour: 'Tur',
     widgets: 'Widgeturi',
@@ -23,7 +23,7 @@ export const HOME_RO: HomeCopy = {
     lead: 'Fiecare calendar pe care îl aveți — iCloud, Google, Microsoft — într-un singur loc, cu prognoza construită în ziua însăși. Nu mai ghiciți cum arată după-amiaza.',
     seeItMove: 'Vedeți-l în mișcare',
     onTheAppStore: 'pe App Store',
-    freeToStart: 'Gratuit pentru început — fără cont',
+    freeToStart: "Descarcă gratuit",
     scroll: 'Derulați',
     ratingLabel: '{r} din 5 din {n} evaluări pe App Store',
     altMonth: 'Vederea lunară Cloud Calendars, cu un semn pe fiecare zi ocupată',
@@ -42,7 +42,7 @@ export const HOME_RO: HomeCopy = {
     'Zi · Săptămână · Lună · An',
     'Trageți pentru a muta',
     'Vânt și rafale',
-    'Fără cont',
+    "Calendare locale",
   ],
   showcase: {
     eyebrow: 'Turul',
@@ -140,8 +140,8 @@ export const HOME_RO: HomeCopy = {
     },
     tiles: [
       {
-        title: 'Linkuri de ședință, generate pentru dumneavoastră',
-        body: 'Creați un eveniment într-un calendar Google și i se atașează un link Meet. Creați-l la Microsoft și primiți unul de Teams. Nimeni nu trebuie să lipească nimic.',
+        title: "Meet · Teams",
+        body: "Linkuri Google Meet · Linkuri Microsoft Teams",
         badge: 'Meet · Teams',
       },
       {
@@ -150,9 +150,9 @@ export const HOME_RO: HomeCopy = {
         badge: 'O atingere',
       },
       {
-        title: 'Calendarul rămâne al dumneavoastră',
-        body: 'Evenimentele sunt citite prin interfețele proprii ale Apple, Google și Microsoft și desenate pe dispozitiv. Nimic nu se vinde și nu există niciun cont de creat.',
-        badge: 'Fără cont',
+        title: "Calendare locale",
+        body: "Folosiți calendarele locale fără cont. Conectarea serviciilor de calendar și partajarea pot necesita autentificare.",
+        badge: "Calendare locale",
       },
     ],
     sourceNotes: {
@@ -193,26 +193,15 @@ export const HOME_RO: HomeCopy = {
       },
       advanced: {
         name: 'Advanced',
-        tagline: 'O aplicație mai liniștită și mai mult control asupra calendarului.',
+        tagline: "Fără reclame, nicăieri",
         yearlyNote: 'Economisiți 15% pe an',
-        features: [
-          'Fără reclame, nicăieri',
-          'Gestionarea evenimentelor între calendarele iCloud și Google',
-          'Drepturi de partajare Google Calendar',
-          'Generare automată de linkuri Google Meet',
-          'Reîmprospătare meteo prioritară',
-        ],
+        features: ["Fără reclame, nicăieri"],
       },
       premium: {
         name: 'Premium',
         tagline: 'Pentru calendarele de serviciu care stau la Microsoft.',
         yearlyNote: 'Economisiți 16% pe an',
-        features: [
-          'Sincronizare Microsoft Outlook și Exchange',
-          'Linkuri Microsoft Teams automate',
-          'Gestionare completă între toate cele trei conturi',
-          'Gestionarea participanților și a invitațiilor',
-        ],
+        features: ["Microsoft Calendar","Linkuri Microsoft Teams"],
       },
     },
   },
@@ -224,11 +213,11 @@ export const HOME_RO: HomeCopy = {
     items: [
       {
         q: 'Am nevoie de cont ca să folosesc Cloud Calendars?',
-        a: 'Nu. Aplicația citește calendarele deja aflate pe iPhone-ul dumneavoastră prin EventKit, cadrul propriu al Apple, deci iCloud funcționează din clipa în care acordați permisiunea. Vă conectați la Google sau Microsoft doar dacă vreți și acele calendare.',
+        a: "Folosiți calendarele locale fără cont. Conectarea serviciilor de calendar și partajarea pot necesita autentificare.",
       },
       {
         q: 'Sincronizarea cu Google Calendar chiar este gratuită?',
-        a: 'Da. Sincronizarea Google, toate vederile calendarului, centrul meteo complet, toate widgeturile de pe ecranul principal și linkurile Google Meet sunt în nivelul gratuit. Advanced scoate reclamele și adaugă gestionarea între calendare; Premium adaugă Microsoft.',
+        a: "Google Calendar și Google Meet sunt incluse în planul gratuit. Advanced elimină reclamele; Premium adaugă Microsoft Calendar și Teams.",
       },
       {
         q: 'De unde vin datele meteo?',
@@ -244,7 +233,7 @@ export const HOME_RO: HomeCopy = {
       },
       {
         q: 'Ce dispozitive sunt acceptate?',
-        a: 'iPhone și iPad cu iOS 18 sau mai nou. Aplicația are aproximativ 35 MB.',
+        a: "iPhone / iPad · iOS / iPadOS 18+",
       },
       {
         q: 'Cum anulez un abonament?',
@@ -254,7 +243,7 @@ export const HOME_RO: HomeCopy = {
   },
   cta: {
     title: ['Mâine vine deja', 'cu prognoza atașată.'],
-    lead: 'Gratuit pe App Store. Fără cont, fără asistent de configurare — acordați acces la calendar și săptămâna dumneavoastră este deja acolo.',
+    lead: "Descarcă gratuit. Folosiți calendarele locale fără cont. Conectarea serviciilor de calendar și partajarea pot necesita autentificare.",
     fromRatings: 'din {n} evaluări',
     download: 'descărcare',
     requiresIos: 'necesită iOS {v}',

@@ -1,0 +1,241 @@
+{
+  "audited_at": "2026-10-21",
+  "scope": "Read-only native code and public pages audit. No builds, simulator runs, backend calls, ASC mutations or deployments. Local code may include unreleased changes.",
+  "app": {
+    "name": "Cloud Calendars: Sync & Widget",
+    "app_store_id": "6744690319",
+    "bundle_id": "Deksan.CalendarASD",
+    "app_store_url": "https://apps.apple.com/us/app/cloud-calendars-sync-widget/id6744690319",
+    "website": "https://www.cloud-calendars.com/"
+  },
+  "source_locations": {
+    "native": "/Users/minchomilev/work/hrapp/",
+    "marketing_website": "/Users/minchomilev/cloud-calendars",
+    "marketing_discovery_result": "Verified original Angular marketing repository, own S3/CloudFront deploy script; do not migrate into arte-soft-sites.",
+    "backend_existing": "/Users/minchomilev/work/cloud-calendars-api-nest",
+    "destination": "/Users/minchomilev/work/arte-soft-sites/projects/cloud-calendars"
+  },
+  "facts": [
+    {
+      "id": "platforms",
+      "claim": "Built for iPhone and iPad; public listing requires iOS/iPadOS 18.0 or later.",
+      "evidence_level": "source_inspected_not_runtime_tested",
+      "sources": [
+        "https://apps.apple.com/us/app/cloud-calendars-sync-widget/id6744690319",
+        "/Users/minchomilev/work/hrapp/Cloud Calendars for Google, Microsoft and iCloud.xcodeproj/project.pbxproj:581"
+      ],
+      "qualification": "Project disables Mac Catalyst and Mac-designed-for-iPad support. No evidence for Android, Windows, native Mac or a browser calendar client."
+    },
+    {
+      "id": "views",
+      "claim": "Day, multi-day/week, month, year, list and multi-calendar views are in Base.",
+      "evidence_level": "source_inspected_not_runtime_tested",
+      "sources": [
+        "/Users/minchomilev/work/hrapp/Calendar/Subscription/BaseSubscriptionView.swift:10"
+      ]
+    },
+    {
+      "id": "google",
+      "claim": "Google Calendar synchronization and Google Meet support are Base features.",
+      "evidence_level": "source_inspected_not_runtime_tested",
+      "sources": [
+        "/Users/minchomilev/work/hrapp/Calendar/Subscription/BaseSubscriptionView.swift:18",
+        "https://apps.apple.com/us/app/cloud-calendars-sync-widget/id6744690319"
+      ],
+      "qualification": "Avoid asserting every event automatically receives a meeting link. Account connection and provider permissions apply."
+    },
+    {
+      "id": "advanced",
+      "claim": "Advanced includes Base features and removes ads.",
+      "evidence_level": "source_inspected_not_runtime_tested",
+      "sources": [
+        "/Users/minchomilev/work/hrapp/Calendar/Subscription/AdvanceSubscriptionView.swift:13",
+        "/Users/minchomilev/work/hrapp/Calendar/Ads/WeatherNativeAdView.swift:45"
+      ],
+      "qualification": "No inspected tier evidence for paid-exclusive cross-calendar management, Google sharing, Meet generation or priority weather refresh."
+    },
+    {
+      "id": "premium",
+      "claim": "Premium includes Advanced and adds Microsoft Calendar and Microsoft Teams support.",
+      "evidence_level": "source_inspected_not_runtime_tested",
+      "sources": [
+        "/Users/minchomilev/work/hrapp/Calendar/Subscription/PremiumSubscriptionView.swift:13",
+        "/Users/minchomilev/work/hrapp/Calendar/Calendar/CalendarsSheetView.swift:717",
+        "/Users/minchomilev/work/hrapp/Calendar/Sharing/CloudAccountManager.swift:308"
+      ],
+      "qualification": "Do not generalize to every Exchange deployment or enterprise policy without testing."
+    },
+    {
+      "id": "local",
+      "claim": "App-local calendars and events can be saved on the device.",
+      "evidence_level": "source_inspected_not_runtime_tested",
+      "sources": [
+        "/Users/minchomilev/work/hrapp/Calendar/AppLocal/AppLocalCalendarStore.swift:214",
+        "/Users/minchomilev/work/hrapp/Calendar/AppLocal/AppLocalCalendarStore.swift:236",
+        "/Users/minchomilev/work/hrapp/Calendar/AppLocal/AppLocalCalendarStore.swift:438",
+        "https://apps.apple.com/us/app/cloud-calendars-sync-widget/id6744690319"
+      ],
+      "qualification": "Local calendars are not the same as iCloud calendars. Sharing/sync code exists separately; avoid promising local data never leaves the device under every feature."
+    },
+    {
+      "id": "weather",
+      "claim": "The native app uses Apple WeatherKit for forecasts and supports weather planning views.",
+      "evidence_level": "source_inspected_not_runtime_tested",
+      "sources": [
+        "/Users/minchomilev/work/hrapp/Calendar/WeatherView/Sources/WeatherKitViewModel.swift:20",
+        "/Users/minchomilev/work/hrapp/Calendar/WeatherView/Sources/WeatherKitViewModel.swift:100"
+      ],
+      "qualification": "Website Open-Meteo attribution does not establish the native app weather provider. Avoid 14-day forecast guarantee; local code contains a ten-day solar forecast projection."
+    },
+    {
+      "id": "weather_details",
+      "claim": "Weather code models temperature, precipitation, UV, wind/gusts, humidity, visibility and moon information; detailed pressure and solar views also exist.",
+      "evidence_level": "source_inspected_not_runtime_tested",
+      "sources": [
+        "/Users/minchomilev/work/hrapp/Calendar/WeatherView/Sources/WeatherKitViewModel.swift:558",
+        "/Users/minchomilev/work/hrapp/Calendar/WeatherView/WeatherDetailView/pressureGraphSection.swift",
+        "/Users/minchomilev/work/hrapp/Calendar/WeatherView/SolarDetailSheet.swift"
+      ],
+      "qualification": "Forecast availability is provider/location dependent. Do not promise precise forecasting or always-up-to-date widgets."
+    },
+    {
+      "id": "widgets",
+      "claim": "Home Screen widgets support small, medium and large families.",
+      "evidence_level": "source_inspected_not_runtime_tested",
+      "sources": [
+        "/Users/minchomilev/work/hrapp/CalendarWidget/CalendarWidget.swift:1117",
+        "/Users/minchomilev/work/hrapp/CalendarWidget/CalendarWidget.swift:1131",
+        "/Users/minchomilev/work/hrapp/CalendarWidget/CalendarWidget.swift:1145"
+      ]
+    },
+    {
+      "id": "live_activity",
+      "claim": "A Live Activity implementation exists for upcoming calendar events.",
+      "evidence_level": "source_inspected_not_runtime_tested",
+      "sources": [
+        "/Users/minchomilev/work/hrapp/CalendarWidget/CalendarLiveActivityWidget.swift",
+        "https://apps.apple.com/us/app/cloud-calendars-sync-widget/id6744690319"
+      ],
+      "qualification": "Dynamic Island availability depends on device. Do not imply a continuously live calendar sync guarantee."
+    },
+    {
+      "id": "sharing",
+      "claim": "Event sharing, QR scanning, email invitation, App Clip import and calendar-sharing implementations exist.",
+      "evidence_level": "source_inspected_not_runtime_tested",
+      "sources": [
+        "/Users/minchomilev/work/hrapp/Calendar/Sharing/EventAppClipSharing.swift",
+        "/Users/minchomilev/work/hrapp/Calendar/Sharing/SharedEventQRScannerView.swift",
+        "/Users/minchomilev/work/hrapp/Calendar/Sharing/EventEmailInvitationsView.swift",
+        "/Users/minchomilev/work/hrapp/Calendar/Sharing/SharedCalendarInvitationView.swift",
+        "https://apps.apple.com/us/app/cloud-calendars-sync-widget/id6744690319"
+      ],
+      "qualification": "Source inspected only; cross-provider permissions, recipient edit rights and propagation latency have not been runtime verified."
+    },
+    {
+      "id": "accounts",
+      "claim": "Basic local use does not require a Cloud Calendars identity, but sharing invokes account sign-in.",
+      "evidence_level": "source_inspected_not_runtime_tested",
+      "sources": [
+        "/Users/minchomilev/work/hrapp/Calendar/AppLocal/AppLocalCalendarStore.swift",
+        "/Users/minchomilev/work/hrapp/Calendar/Sharing/EventAppClipSharing.swift:1488",
+        "/Users/minchomilev/work/hrapp/Calendar/Sharing/CloudAccountManager.swift:7"
+      ],
+      "qualification": "Cloud sharing identity is separate from connected Google/Microsoft calendar data-source accounts. Apple, Google and Microsoft sign-in code exists. Never say no account is required for every feature."
+    },
+    {
+      "id": "server_processing",
+      "claim": "Sharing uses a Cloud Calendars API; event models include notes, location, recurrence and attendee information.",
+      "evidence_level": "source_inspected_not_runtime_tested",
+      "sources": [
+        "/Users/minchomilev/work/hrapp/Calendar/Sharing/CloudCalendarsAPI.swift:178",
+        "/Users/minchomilev/work/hrapp/Calendar/Sharing/CloudCalendarsAPI.swift:1145",
+        "/Users/minchomilev/work/hrapp/Calendar/AppLocal/AppLocalCalendarSyncService.swift:37"
+      ],
+      "qualification": "Do not say all data always remains on-device, no servers, no data collection, end-to-end encryption or zero tracking. None of those blanket claims is established by this audit."
+    },
+    {
+      "id": "travel",
+      "claim": "Travel reminder policy and notification manager are implemented.",
+      "evidence_level": "source_inspected_not_runtime_tested",
+      "sources": [
+        "/Users/minchomilev/work/hrapp/Calendar/Travel/TravelReminderPolicy.swift",
+        "/Users/minchomilev/work/hrapp/Calendar/Travel/CalendarTravelReminderManager.swift"
+      ],
+      "qualification": "Do not market automatic routing accuracy or guaranteed timely delivery without focused runtime verification."
+    }
+  ],
+  "public_listing_snapshot": {
+    "source": "https://apps.apple.com/us/app/cloud-calendars-sync-widget/id6744690319",
+    "version": "1.7.3",
+    "size_mb": 49.8,
+    "rating": 4.5,
+    "rating_count": 12,
+    "storefront": "US",
+    "prices_usd": {
+      "advanced_monthly": 0.49,
+      "advanced_yearly": 4.99,
+      "premium_monthly": 4.99,
+      "premium_yearly": 49.99
+    },
+    "qualification": "Public retrieved page, not authenticated ASC or runtime purchase test. Prices, availability, size and ratings can change; preferably omit volatile figures from evergreen articles.",
+    "verified_lookup": "public-listing-20261021.json"
+  },
+  "purchase_copy": {
+    "safe": "Free download with optional auto-renewing in-app subscriptions; check current local prices in the App Store or app.",
+    "evidence": [
+      "https://apps.apple.com/us/app/cloud-calendars-sync-widget/id6744690319",
+      "/Users/minchomilev/work/hrapp/Calendar/Subscription/SubscriptionManager.swift:93"
+    ],
+    "avoid": [
+      "Lifetime purchase",
+      "Free trial for everyone",
+      "Price uniform in every country",
+      "Subscription needed for Google Calendar or multi-calendar view"
+    ]
+  },
+  "privacy_discrepancies": [
+    {
+      "sources": [
+        "https://apps.apple.com/us/app/cloud-calendars-sync-widget/id6744690319",
+        "https://www.cloud-calendars.com/privacy-policy/"
+      ],
+      "finding": "App Store developer declaration says Data Not Collected; privacy policy describes potential account/access-token, usage, device and location handling. These are not equivalent statements. Escalate for privacy review, do not silently rewrite legal declarations."
+    },
+    {
+      "sources": [
+        "https://www.cloud-calendars.com/",
+        "/Users/minchomilev/work/hrapp/Calendar/Sharing/CloudCalendarsAPI.swift"
+      ],
+      "finding": "Broad site on-device/no-account messaging omits authenticated server-backed sharing."
+    }
+  ],
+  "website_corrections": [
+    {
+      "issue": "Outdated version, rating and size",
+      "recommendation": "Omit volatile figures or update from verified release data; existing homepage shows 1.7.0, 4.4/8 and 35.4 MB."
+    },
+    {
+      "issue": "Unsupported Advanced benefit list",
+      "recommendation": "Describe Advanced as ad-free Base; Premium adds Microsoft and Teams. Do not gate Google or multi-calendar functionality."
+    },
+    {
+      "issue": "Free Meet support conflicts with Advanced automatic-Meet wording",
+      "recommendation": "Use Google Meet support in Base and avoid unverified always-automatic generation wording."
+    },
+    {
+      "issue": "No-account claims too broad",
+      "recommendation": "Say start with local calendars without an account; connecting providers and sharing have authentication requirements."
+    },
+    {
+      "issue": "Site weather demo can imply 14-day native forecast",
+      "recommendation": "Keep demo clearly labeled and avoid extending website demo behavior into app claims."
+    }
+  ],
+  "writer_rules": [
+    "Use fact sources for each product assertion; code presence is not a runtime test or proof a feature is in the current public release.",
+    "Do not invent AI scheduling, task management, booking pages, team dashboards, availability polls, Android/web client, automatic conflict resolution, unlimited accounts or offline cloud sync.",
+    "For sharing comparisons, distinguish viewing multiple provider calendars from transferring ownership, write access and cross-provider sharing.",
+    "Prefer cautious provider support wording over all calendars or universal two-way syncing.",
+    "Keep exact prices, ratings, file size and release version out of evergreen article prose unless date-qualified."
+  ]
+}

@@ -4,7 +4,7 @@ import { HomeCopy } from './types';
 export const HOME_TH: HomeCopy = {
   metaTitle: 'Cloud Calendars — iCloud, Google และ Outlook ในหน้าจอเดียว',
   metaDescription:
-    'ปฏิทิน iCloud, Google และ Outlook ของคุณในหน้าจอเดียวบน iPhone และ iPad เริ่มใช้ฟรี ไม่ต้องสมัครบัญชี และอากาศของแต่ละวันอยู่ในปฏิทินเลย',
+    "ปฏิทินของคุณและพยากรณ์ อยู่ในที่เดียวกัน สร้างมาเพื่อ iPhone และ iPad iCloud · Google Calendar · Microsoft Calendar.",
   nav: {
     tour: 'ชมรอบ',
     widgets: 'วิดเจ็ต',
@@ -23,7 +23,7 @@ export const HOME_TH: HomeCopy = {
     lead: 'ปฏิทินทุกเล่มที่คุณมี — iCloud, Google, Microsoft — อยู่ในที่เดียว โดยพยากรณ์ถูกสร้างไว้ในตัววันนั้นเอง เลิกเดาว่าบ่ายนี้จะเป็นอย่างไรได้แล้ว',
     seeItMove: 'ดูตอนมันเคลื่อนไหว',
     onTheAppStore: 'บน App Store',
-    freeToStart: 'เริ่มใช้ฟรี — ไม่ต้องมีบัญชี',
+    freeToStart: "ดาวน์โหลดฟรี",
     scroll: 'เลื่อนลง',
     ratingLabel: '{r} จาก 5 จาก {n} รีวิวบน App Store',
     altMonth: 'มุมมองเดือนของ Cloud Calendars มีเครื่องหมายบนทุกวันที่มีนัด',
@@ -42,7 +42,7 @@ export const HOME_TH: HomeCopy = {
     'วัน · สัปดาห์ · เดือน · ปี',
     'ลากเพื่อย้าย',
     'ลมและลมกระโชก',
-    'ไม่ต้องมีบัญชี',
+    "ปฏิทินในอุปกรณ์",
   ],
   showcase: {
     eyebrow: 'ชมรอบ',
@@ -140,8 +140,8 @@ export const HOME_TH: HomeCopy = {
     },
     tiles: [
       {
-        title: 'ลิงก์ประชุมที่สร้างให้คุณ',
-        body: 'สร้างกิจกรรมบนปฏิทิน Google แล้วลิงก์ Meet จะแนบมาด้วย สร้างบน Microsoft แล้วได้ลิงก์ Teams ไม่มีใครต้องวางอะไรทั้งนั้น',
+        title: "Meet · Teams",
+        body: "ลิงก์ Google Meet · ลิงก์ Microsoft Teams",
         badge: 'Meet · Teams',
       },
       {
@@ -150,9 +150,9 @@ export const HOME_TH: HomeCopy = {
         badge: 'แตะครั้งเดียว',
       },
       {
-        title: 'ปฏิทินของคุณยังเป็นของคุณ',
-        body: 'กิจกรรมถูกอ่านผ่านอินเทอร์เฟซของ Apple, Google และ Microsoft เอง แล้ววาดบนเครื่อง ไม่มีอะไรถูกขาย และไม่มีบัญชีให้สร้าง',
-        badge: 'ไม่มีบัญชี',
+        title: "ปฏิทินในอุปกรณ์",
+        body: "ใช้ปฏิทินในอุปกรณ์ได้โดยไม่ต้องมีบัญชี การเชื่อมต่อบริการปฏิทินและการแชร์อาจต้องลงชื่อเข้าใช้",
+        badge: "ปฏิทินในอุปกรณ์",
       },
     ],
     sourceNotes: {
@@ -193,26 +193,15 @@ export const HOME_TH: HomeCopy = {
       },
       advanced: {
         name: 'Advanced',
-        tagline: 'แอปที่เงียบกว่าและควบคุมปฏิทินได้ลึกกว่า',
+        tagline: "ไม่มีโฆษณา ไม่ว่าที่ไหน",
         yearlyNote: 'ประหยัด 15% ต่อปี',
-        features: [
-          'ไม่มีโฆษณา ไม่ว่าที่ไหน',
-          'จัดการกิจกรรมข้ามปฏิทิน iCloud และ Google',
-          'สิทธิ์การแชร์ปฏิทิน Google',
-          'สร้างลิงก์ Google Meet อัตโนมัติ',
-          'อัปเดตสภาพอากาศก่อนใคร',
-        ],
+        features: ["ไม่มีโฆษณา ไม่ว่าที่ไหน"],
       },
       premium: {
         name: 'Premium',
         tagline: 'สำหรับปฏิทินงานที่อยู่บน Microsoft',
         yearlyNote: 'ประหยัด 16% ต่อปี',
-        features: [
-          'ซิงก์ Microsoft Outlook และ Exchange',
-          'ลิงก์ Microsoft Teams อัตโนมัติ',
-          'จัดการเต็มรูปแบบข้ามทั้งสามบัญชี',
-          'จัดการผู้เข้าร่วมและคำเชิญ',
-        ],
+        features: ["Microsoft Calendar","ลิงก์ Microsoft Teams"],
       },
     },
   },
@@ -224,11 +213,11 @@ export const HOME_TH: HomeCopy = {
     items: [
       {
         q: 'ต้องมีบัญชีถึงจะใช้ Cloud Calendars ได้ไหม',
-        a: 'ไม่ต้อง แอปอ่านปฏิทินที่มีอยู่แล้วบน iPhone ของคุณผ่าน EventKit ของ Apple เอง ดังนั้น iCloud ทำงานทันทีที่คุณให้สิทธิ์ คุณจะลงชื่อเข้า Google หรือ Microsoft ก็ต่อเมื่ออยากได้ปฏิทินเหล่านั้นด้วยเท่านั้น',
+        a: "ใช้ปฏิทินในอุปกรณ์ได้โดยไม่ต้องมีบัญชี การเชื่อมต่อบริการปฏิทินและการแชร์อาจต้องลงชื่อเข้าใช้",
       },
       {
         q: 'การซิงก์ปฏิทิน Google ฟรีจริงหรือ',
-        a: 'จริง การซิงก์ Google ทุกมุมมองปฏิทิน ศูนย์สภาพอากาศเต็มรูปแบบ วิดเจ็ตหน้าจอโฮมทั้งหมด และลิงก์ Google Meet อยู่ในระดับฟรี Advanced เอาโฆษณาออกและเพิ่มการจัดการข้ามปฏิทิน ส่วน Premium เพิ่ม Microsoft',
+        a: "แพ็กเกจฟรีรองรับ Google Calendar และ Google Meet ส่วน Advanced นำโฆษณาออก และ Premium เพิ่ม Microsoft Calendar และ Teams",
       },
       {
         q: 'ข้อมูลสภาพอากาศมาจากไหน',
@@ -244,7 +233,7 @@ export const HOME_TH: HomeCopy = {
       },
       {
         q: 'รองรับอุปกรณ์อะไรบ้าง',
-        a: 'iPhone และ iPad ที่ใช้ iOS 18 ขึ้นไป แอปมีขนาดราว 35 MB',
+        a: "iPhone / iPad · iOS / iPadOS 18+",
       },
       {
         q: 'ยกเลิกการสมัครสมาชิกอย่างไร',
@@ -254,7 +243,7 @@ export const HOME_TH: HomeCopy = {
   },
   cta: {
     title: ['พรุ่งนี้มาพร้อม', 'พยากรณ์อยู่แล้ว'],
-    lead: 'ฟรีบน App Store ไม่มีบัญชี ไม่มีตัวช่วยตั้งค่า — ให้สิทธิ์เข้าถึงปฏิทิน แล้วสัปดาห์ของคุณก็อยู่ในนั้นแล้ว',
+    lead: "ดาวน์โหลดฟรี. ใช้ปฏิทินในอุปกรณ์ได้โดยไม่ต้องมีบัญชี การเชื่อมต่อบริการปฏิทินและการแชร์อาจต้องลงชื่อเข้าใช้",
     fromRatings: 'จาก {n} รีวิว',
     download: 'ดาวน์โหลด',
     requiresIos: 'ต้องใช้ iOS {v}',

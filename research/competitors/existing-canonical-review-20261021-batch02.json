@@ -1,0 +1,194 @@
+{
+  "date": "2026-10-21",
+  "batch": "existing-canonical-review-02",
+  "status": "research_only_no_content_edits",
+  "inventoryScope": "45 English titles/metadata screened from research/content-inventory-20261021.json; complete bodies of 31 articles in five files reviewed. Weather and comparison article bodies excluded. Existing inventory word count for revised sync article is stale.",
+  "filesRead": [
+    {
+      "file": "src/app/content/en-US/articles-unify.ts",
+      "sha256": "3d129542ad820588ea1c735ff80ec739676bb244ccc24bb7887c4e1400230fc5",
+      "readScope": "Complete source file including all article bodies, FAQs and practical lists",
+      "slugs": [
+        "icloud-google-and-outlook-in-one-view",
+        "three-calendar-apps-is-two-too-many",
+        "what-calendar-sync-actually-does",
+        "work-and-personal-without-two-apps",
+        "exchange-calendars-on-an-iphone",
+        "when-two-calendars-disagree"
+      ]
+    },
+    {
+      "file": "src/app/content/en-US/articles-widgets.ts",
+      "sha256": "9fd9f6cd37687e6cd4566e8088c3a9bedb76bfcaaef9faf722cd172ea9c0c773",
+      "readScope": "Complete source file including all article bodies, FAQs and practical lists",
+      "slugs": [
+        "the-widget-that-shows-what-is-next",
+        "a-countdown-to-your-next-meeting",
+        "lock-screen-without-unlocking",
+        "choosing-a-widget-size",
+        "the-calendar-on-a-bedside-table"
+      ]
+    },
+    {
+      "file": "src/app/content/en-US/articles-planning.ts",
+      "sha256": "8dd72deea6701515b7b28ab56242c82ecfc7874b058400ed3dc4fe9b940a5e88",
+      "readScope": "Complete source file including all article bodies, FAQs and practical lists",
+      "slugs": [
+        "drag-an-event-to-move-it",
+        "a-week-view-that-fits-a-week",
+        "month-view-on-a-bigger-screen",
+        "planning-a-week-in-ten-minutes",
+        "recurring-events-without-the-mess",
+        "time-zones-and-the-flight-you-booked",
+        "what-an-all-day-event-really-means",
+        "a-list-for-people-who-dislike-grids",
+        "the-year-in-one-screen"
+      ]
+    },
+    {
+      "file": "src/app/content/en-US/articles-google.ts",
+      "sha256": "0f82d0a6b5658298f087a75ea630df2b418b02926f14b9d8e4ea6b4f89b4a501",
+      "readScope": "Complete source file including all article bodies, FAQs and practical lists",
+      "slugs": [
+        "why-a-shared-calendar-does-not-appear",
+        "the-secret-address-of-a-google-calendar",
+        "what-guests-can-do-to-your-event",
+        "google-calendars-that-never-reach-your-iphone",
+        "taking-back-a-calendar-you-shared"
+      ]
+    },
+    {
+      "file": "src/app/content/en-US/articles-sharing.ts",
+      "sha256": "0aa5b5c78bfccd6c9e68a37b27ed89e803c3b33ec59b302379a85c371fdec4c5",
+      "readScope": "Complete source file including all article bodies, FAQs and practical lists",
+      "slugs": [
+        "sharing-one-event-not-your-calendar",
+        "inviting-people-who-do-not-have-the-app",
+        "a-calendar-that-is-yours-to-share",
+        "who-can-see-what-in-google-calendar",
+        "keeping-track-of-who-replied",
+        "meeting-links-that-make-themselves"
+      ]
+    }
+  ],
+  "mapping": [
+    {
+      "cluster": "sync-versus-subscription",
+      "canonical": "https://cloud-calendars.com/articles/what-calendar-sync-actually-does/",
+      "relatedExistingCanonicals": [
+        "https://cloud-calendars.com/articles/the-secret-address-of-a-google-calendar/"
+      ],
+      "decision": "retain_revised_canonical",
+      "shortcomings": "Root revision already explains ownership, four connection types, two-way disposable-event checks, hidden versus absent and duplicate caution. Do not generate another generic sync article.",
+      "recommendedWork": "Link to provider-specific troubleshooting rather than repeating all steps in each satellite."
+    },
+    {
+      "cluster": "combine-calendars",
+      "canonical": "https://cloud-calendars.com/articles/icloud-google-and-outlook-in-one-view/",
+      "relatedExistingCanonicals": [
+        "https://cloud-calendars.com/articles/three-calendar-apps-is-two-too-many/",
+        "https://cloud-calendars.com/articles/what-calendar-sync-actually-does/"
+      ],
+      "decision": "expand_existing",
+      "shortcomings": "Explains unified view but gives no concrete destination/visibility example. Claims every origin is editable and says Google work sync will never cost anything. Sister article advises deleting other apps.",
+      "recommendedWork": "Add one work/family example with permission caveat, preserve ownership, identify source/destination; remove permanence and unnecessary deletion advice. Reconcile tier facts with actual product."
+    },
+    {
+      "cluster": "sharing-permissions",
+      "canonical": "https://cloud-calendars.com/articles/sharing-one-event-not-your-calendar/",
+      "relatedExistingCanonicals": [
+        "https://cloud-calendars.com/articles/a-calendar-that-is-yours-to-share/",
+        "https://cloud-calendars.com/articles/inviting-people-who-do-not-have-the-app/",
+        "https://cloud-calendars.com/articles/who-can-see-what-in-google-calendar/",
+        "https://cloud-calendars.com/articles/what-guests-can-do-to-your-event/",
+        "https://cloud-calendars.com/articles/taking-back-a-calendar-you-shared/"
+      ],
+      "decision": "expand_and_correct_existing_family",
+      "shortcomings": "Existing page covers single-event feed, refresh caveat and read-only nature. No decision matrix distinguishing guest invitation, imported copy, subscription feed and permission-based shared calendar. Google permissions page compresses permissions/private-event differences.",
+      "recommendedWork": "Use main share page as decision entry; retain specific permission article for current Google matrix, workplace limits and source citation. Verify App Clip/current sharing implementation. Avoid claiming subscriptions are accepted identically on all devices."
+    },
+    {
+      "cluster": "calendar-views",
+      "canonical": "https://cloud-calendars.com/articles/a-week-view-that-fits-a-week/",
+      "relatedExistingCanonicals": [
+        "https://cloud-calendars.com/articles/month-view-on-a-bigger-screen/",
+        "https://cloud-calendars.com/articles/a-list-for-people-who-dislike-grids/",
+        "https://cloud-calendars.com/articles/the-year-in-one-screen/"
+      ],
+      "decision": "expand_existing_no_new_generic_hub",
+      "shortcomings": "Existing four articles separate useful questions but remain short opinion essays without an example. Tablet month article implies weather for a whole month; phone month is dismissed too broadly.",
+      "recommendedWork": "Expand week page with small view-choice comparison and links to specific views. Use one example week; fix forecast horizon; preserve separate iPad intent only with concrete tablet evidence."
+    },
+    {
+      "cluster": "widgets",
+      "canonical": "https://cloud-calendars.com/articles/choosing-a-widget-size/",
+      "relatedExistingCanonicals": [
+        "https://cloud-calendars.com/articles/the-widget-that-shows-what-is-next/",
+        "https://cloud-calendars.com/articles/lock-screen-without-unlocking/",
+        "https://cloud-calendars.com/articles/a-countdown-to-your-next-meeting/",
+        "https://cloud-calendars.com/articles/the-calendar-on-a-bedside-table/"
+      ],
+      "decision": "expand_existing_selection_distinct_troubleshooting_gap",
+      "shortcomings": "Five existing short pieces cover surfaces but no actual setup or supported-layout mapping. Generic small=next/medium=today/large=week is presented as universal; Live Activity page promises information correct every glance.",
+      "recommendedWork": "Verify actual widget families, explain widget versus Live Activity versus StandBy, add setup and calendar selection, qualify refresh. Blank/stale widget diagnosis is a distinct missing subintent, but first add a tested diagnostic section here before considering another URL."
+    },
+    {
+      "cluster": "work-personal-filtering",
+      "canonical": "https://cloud-calendars.com/articles/work-and-personal-without-two-apps/",
+      "relatedExistingCanonicals": [
+        "https://cloud-calendars.com/articles/icloud-google-and-outlook-in-one-view/"
+      ],
+      "decision": "expand_existing",
+      "shortcomings": "Correctly proposes colors and visibility but implies hiding work creates a complete boundary; no distinction between visibility, notifications and permission. Cross-account paid-tier claim needs verification.",
+      "recommendedWork": "Add same-example weekday/weekend visibility, clarify hiding does not revoke access or silence alerts, check destination before moving event. No new URL."
+    },
+    {
+      "cluster": "sync-troubleshooting",
+      "canonical": "https://cloud-calendars.com/articles/what-calendar-sync-actually-does/",
+      "relatedExistingCanonicals": [
+        "https://cloud-calendars.com/articles/when-two-calendars-disagree/",
+        "https://cloud-calendars.com/articles/why-a-shared-calendar-does-not-appear/",
+        "https://cloud-calendars.com/articles/google-calendars-that-never-reach-your-iphone/"
+      ],
+      "decision": "repair_specific_satellites",
+      "shortcomings": "Revised hub resolves general diagnosis. Conflict satellite asserts universal last-write-wins and deleting one duplicate removes both. Shared-calendar article rejects group sharing and generalizes secondary-calendar defaults. Google missing page promises direct APIs show every calendar.",
+      "recommendedWork": "Prioritize factual repair of existing satellites; link back to hub. Missing old history is distinct absent subintent and can initially be a provider-specific section in Google missing page; verify iOS history settings applicability."
+    },
+    {
+      "cluster": "timezones",
+      "canonical": "https://cloud-calendars.com/articles/time-zones-and-the-flight-you-booked/",
+      "relatedExistingCanonicals": [
+        "https://cloud-calendars.com/articles/what-an-all-day-event-really-means/"
+      ],
+      "decision": "correct_expand_existing",
+      "shortcomings": "Claims all events without explicit zone inherit current zone, ignoring floating/date-time distinctions. Instructs separate start/end zones without verifying app UI. All-day companion claims no conflicts are possible, confusing date representation and free/busy availability.",
+      "recommendedWork": "Use provider-backed dated example, distinguish event zone/display zone/floating time/date-only and availability. Verify app supports flight entry behavior; no new travel timezone page."
+    },
+    {
+      "cluster": "tasks-timeblocking",
+      "canonical": "https://cloud-calendars.com/articles/planning-a-week-in-ten-minutes/",
+      "relatedExistingCanonicals": [
+        "https://cloud-calendars.com/articles/drag-an-event-to-move-it/",
+        "https://cloud-calendars.com/articles/recurring-events-without-the-mess/"
+      ],
+      "decision": "expand_existing",
+      "shortcomings": "Current routine places a few commitments but does not distinguish task deadline from reserved time, buffers or unfinished-block rescheduling. Evidence-free universal productivity claims.",
+      "recommendedWork": "Add an original realistic day with fixed meeting, task block, buffer and interruption. Explain manual events without claiming Reminders/task integration. Keep existing slug; time blocking alone does not justify a near duplicate."
+    }
+  ],
+  "limits": [
+    "Paths derived from source slugs and established site route; no independent public canonical-tag validation in this batch.",
+    "No Google ranks, search volumes, conversion measurements or ChatGPT citations established.",
+    "Source comments claiming tracked prompt performance were read but underlying analytics were not reviewed; do not adopt them as evidence.",
+    "Root may edit files concurrently; hashes identify point-in-time state.",
+    "Site facts flagged for verification are not asserted to be definitively false without underlying product evidence."
+  ],
+  "priorityRepairs": [
+    "why-a-shared-calendar-does-not-appear: Google group-sharing claim",
+    "who-can-see-what-in-google-calendar: current permission matrix/private events",
+    "when-two-calendars-disagree: universal conflict and deletion behavior",
+    "what-an-all-day-event-really-means: availability versus date-only representation",
+    "month-view-on-a-bigger-screen: whole-month forecast implication",
+    "a-countdown-to-your-next-meeting: guaranteed freshness implication"
+  ]
+}

@@ -1,0 +1,117 @@
+{
+  "date": "2026-10-21",
+  "status": "proposal_only_not_applied",
+  "appId": "6744690319",
+  "identityDecision": "Retain current exact app name. No bundle/display-name or native changes.",
+  "target": {
+    "version": "1.7.4",
+    "state": "PREPARE_FOR_SUBMISSION",
+    "locale": "en-US",
+    "otherEnglishLocales": "en-CA, en-GB and en-AU may reuse keyword allocation after locale spelling review; no automatic locale writes."
+  },
+  "fields": {
+    "name": {
+      "value": "Cloud Calendars: Sync & Widget",
+      "characters": 30,
+      "utf8Bytes": 30,
+      "limit": 30,
+      "valid": true
+    },
+    "subtitle": {
+      "value": "Google, Microsoft & iCloud",
+      "characters": 26,
+      "utf8Bytes": 26,
+      "limit": 30,
+      "valid": true
+    },
+    "keywords": {
+      "value": "weather,schedule,planner,agenda,forecast,month,week,reminder,event,meeting,shared,invite,appointment",
+      "characters": 100,
+      "utf8Bytes": 100,
+      "limit": 100,
+      "valid": true
+    },
+    "promotionalText": {
+      "value": "Plan with your calendars and weather together. Explore Home Screen widgets, flexible calendar views and local calendars you can start without an account.",
+      "characters": 153,
+      "utf8Bytes": 153,
+      "limit": 170,
+      "valid": true
+    },
+    "description": {
+      "value": "Bring your calendars and weather into one planning app for iPhone and iPad. See work and personal plans together, check the forecast and choose a calendar view that fits your day.\n\nYOUR CALENDARS, TOGETHER\nUse iCloud calendars and connect Google Calendar. Premium adds Microsoft Calendar support. Or start with a local calendar on your device without creating an account. Connecting providers and sharing require sign-in where applicable.\n\nA VIEW FOR EVERY PLAN\nSwitch between Day, Week, Month, Year and List views. Use multiple calendars to keep different parts of your schedule visible in one place.\n\nWEATHER WHILE YOU PLAN\nCheck weather forecasts alongside your plans, explore detailed weather views and use the interactive weather map with wind and temperature layers. Forecast availability depends on your location and the weather provider.\n\nHOME SCREEN WIDGETS\nSee calendar information and weather from your Home Screen, with small, medium and large widget options.\n\nMEETINGS AND SHARING\nUse Google Meet support with Google Calendar. Premium adds Microsoft Teams support. Share events and calendars, and send invitations by email, QR code or App Clip. Sharing access depends on the calendar and invitation type.\n\nCHOOSE YOUR PLAN\nThe free Base plan includes Google Calendar sync, Google Meet support, multiple calendar views, weather and widgets.\nAdvanced includes Base features and removes ads.\nPremium includes Advanced features and adds Microsoft Calendar and Microsoft Teams support.\n\nCloud Calendars is free to download with optional auto-renewing subscriptions. Check current local prices in the app or App Store. Payment is charged to your Apple ID account at purchase confirmation. Subscriptions renew automatically unless canceled at least 24 hours before the current period ends. Your account is charged for renewal within 24 hours before that period ends. Manage or cancel subscriptions in your App Store account settings.\n\nPrivacy Policy: https://www.cloud-calendars.com/privacy-policy\nTerms of Use: https://www.apple.com/legal/internet-services/itunes/dev/stdeula/",
+      "characters": 2083,
+      "utf8Bytes": 2083,
+      "limit": 4000,
+      "valid": true
+    }
+  },
+  "allocation": [
+    {
+      "field": "name",
+      "tokens": [
+        "cloud",
+        "calendars",
+        "sync",
+        "widget"
+      ],
+      "purpose": "Retain identity and existing sync/widget positioning."
+    },
+    {
+      "field": "subtitle",
+      "tokens": [
+        "Google",
+        "Microsoft",
+        "iCloud"
+      ],
+      "purpose": "Preserve visible provider relevance; remove repeated sync. Supported integrations, not an affiliation claim. Existing subtitle already uses these names."
+    },
+    {
+      "field": "keywords",
+      "tokens": [
+        "weather",
+        "schedule",
+        "planner",
+        "agenda",
+        "forecast",
+        "month",
+        "week",
+        "reminder",
+        "event",
+        "meeting",
+        "shared",
+        "invite",
+        "appointment"
+      ],
+      "purpose": "Calendar planning, weather, views, reminders, event sharing and meetings. Deliberately exactly 100 ASCII bytes; no competing app names."
+    }
+  ],
+  "changesFromCurrent": [
+    "Name unchanged. Subtitle drops repeated sync and uses an ampersand; no measured performance benefit is claimed.",
+    "Keep weather, schedule, planner, agenda, forecast, month, week and reminder.",
+    "Remove day planner because planner is already present; this does not assert how Apple combines every query token.",
+    "Remove sync because name contains it. Remove lock/screen until standalone Lock Screen widget support is verified; Live Activity support alone is not that claim.",
+    "Replace broad rain/today terms with event, meeting, shared, invite and appointment to test stronger calendar intent. This is editorial prioritization, not volume/rank evidence.",
+    "Description distinguishes free Google and paid Microsoft features, replaces instant widget wording, and qualifies sign-in and sharing requirements.",
+    "Draft 1.7.4 currently has null promotionalText and whatsNew. Proposed promotional text is evergreen. What is New must come from actual 1.7.4 release scope, not this ASO exercise."
+  ],
+  "evidence": {
+    "currentMetadata": "asc-readonly-snapshot-20261021.json",
+    "product": "../product-facts.json: platforms, views, google, premium, advanced, local, weather, widgets, sharing, accounts; public 1.7.3 confirms weather map.",
+    "competitors": "../competitors/primary-page-review-20261021-batch01.json and ../competitors/intent-clusters-20261021-batch01.json; language/intent inspiration only, no app ranking or volumes.",
+    "appleProductPage": "https://developer.apple.com/app-store/product-page/",
+    "appleFieldReference": "https://developer.apple.com/help/app-store-connect/reference/app-information/platform-version-information/"
+  },
+  "claimGates": [
+    "Tier statements are supported by inspected local source and partly current public copy, not a runtime purchase test. Release owner should confirm they match build 1.7.4 before submission.",
+    "No promise of universal Exchange support, cloud-to-cloud event transfer, conflict resolution, AI planning, task management, always-live widgets or server-free sharing.",
+    "No changes to privacy declarations. Existing Data Not Collected versus policy/server-processing discrepancy requires separate review.",
+    "App description is rewritten for clarity/conversion; do not promise an App Store ranking boost from keyword repetition in it."
+  ],
+  "measurement": {
+    "rank": null,
+    "searchVolume": null,
+    "chatgptCitationEvidence": null,
+    "plan": "Capture release timestamp and unchanged/control metadata, then compare App Store Search impressions, product-page views and first-time downloads by territory/device over comparable 28-day periods, accounting for version changes, seasonality and traffic source. No causal lift claim from an uncontrolled before/after comparison."
+  }
+}

@@ -46,6 +46,8 @@ export interface ClaimRow {
 }
 
 export interface LocalisedArticle {
+  /** Date this language version was substantively revised; other translations keep their original date. */
+  readonly updated?: string;
   /** Full headline. */
   readonly title: string;
   /** Short form, for cards and breadcrumbs. */
@@ -74,6 +76,8 @@ export interface LocalisedArticle {
    * reader cannot see is one the markup should not claim.
    */
   readonly faq?: readonly { readonly q: string; readonly a: string }[];
+  readonly sourcesHeading?: string;
+  readonly sources?: readonly { readonly label: string; readonly url: string }[];
   readonly seeAlso?: readonly string[];
 }
 

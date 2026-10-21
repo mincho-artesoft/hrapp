@@ -4,7 +4,7 @@ import { HomeCopy } from './types';
 export const HOME_TR: HomeCopy = {
   metaTitle: 'Cloud Calendars — iCloud, Google ve Outlook tek görünümde',
   metaDescription:
-    'iCloud, Google ve Outlook takvimleriniz iPhone ve iPad’de tek görünümde. Başlaması ücretsiz, hesap açmak gerekmez, her günün havası takvimin içinde.',
+    "Takvimleriniz ve tahmin tek yerde. iPhone ve iPad için yapıldı. iCloud · Google Calendar · Microsoft Calendar.",
   nav: {
     tour: 'Tur',
     widgets: 'Widget’lar',
@@ -23,7 +23,7 @@ export const HOME_TR: HomeCopy = {
     lead: 'Sahip olduğunuz her takvim — iCloud, Google, Microsoft — tek yerde, tahmin günün kendisine yerleşmiş halde. Öğleden sonranın nasıl olacağını tahmin etmeyi bırakın.',
     seeItMove: 'Hareket halinde görün',
     onTheAppStore: 'App Store’da',
-    freeToStart: 'Başlamak ücretsiz — hesap gerekmez',
+    freeToStart: "Ücretsiz indir",
     scroll: 'Kaydır',
     ratingLabel: '{n} App Store değerlendirmesinden 5 üzerinden {r}',
     altMonth: 'Cloud Calendars ay görünümü, dolu her günde bir işaretle',
@@ -42,7 +42,7 @@ export const HOME_TR: HomeCopy = {
     'Gün · Hafta · Ay · Yıl',
     'Taşımak için sürükleyin',
     'Rüzgâr ve hamleler',
-    'Hesap gerekmez',
+    "Yerel takvimler",
   ],
   showcase: {
     eyebrow: 'Tur',
@@ -140,8 +140,8 @@ export const HOME_TR: HomeCopy = {
     },
     tiles: [
       {
-        title: 'Sizin için üretilen toplantı bağlantıları',
-        body: 'Google takviminde bir etkinlik oluşturun, bir Meet bağlantısı iliştirilsin. Microsoft’ta oluşturun, Teams bağlantısı alın. Kimsenin bir şey yapıştırması gerekmez.',
+        title: "Meet · Teams",
+        body: "Google Meet bağlantıları · Microsoft Teams bağlantıları",
         badge: 'Meet · Teams',
       },
       {
@@ -150,9 +150,9 @@ export const HOME_TR: HomeCopy = {
         badge: 'Tek dokunuş',
       },
       {
-        title: 'Takviminiz sizin kalır',
-        body: 'Etkinlikler Apple, Google ve Microsoft’un kendi arayüzleri üzerinden okunur ve cihazda çizilir. Hiçbir şey satılmaz ve oluşturulacak bir hesap yoktur.',
-        badge: 'Hesap yok',
+        title: "Yerel takvimler",
+        body: "Yerel takvimleri hesap olmadan kullanın. Takvim hizmetlerini bağlamak ve paylaşmak için oturum açmanız gerekebilir.",
+        badge: "Yerel takvimler",
       },
     ],
     sourceNotes: {
@@ -193,26 +193,15 @@ export const HOME_TR: HomeCopy = {
       },
       advanced: {
         name: 'Advanced',
-        tagline: 'Daha sessiz bir uygulama ve takvim üzerinde daha çok hâkimiyet.',
+        tagline: "Hiçbir yerde reklam yok",
         yearlyNote: 'Yıllıkta %15 tasarruf',
-        features: [
-          'Hiçbir yerde reklam yok',
-          'iCloud ve Google takvimleri arasında etkinlik yönetimi',
-          'Google Takvim paylaşım izinleri',
-          'Google Meet bağlantılarının otomatik üretimi',
-          'Öncelikli hava yenileme',
-        ],
+        features: ["Hiçbir yerde reklam yok"],
       },
       premium: {
         name: 'Premium',
         tagline: 'Microsoft’ta yaşayan iş takvimleri için.',
         yearlyNote: 'Yıllıkta %16 tasarruf',
-        features: [
-          'Microsoft Outlook ve Exchange eşitlemesi',
-          'Otomatik Microsoft Teams bağlantıları',
-          'Üç hesabın tamamı arasında tam yönetim',
-          'Katılımcı ve davet yönetimi',
-        ],
+        features: ["Microsoft Calendar","Microsoft Teams bağlantıları"],
       },
     },
   },
@@ -224,11 +213,11 @@ export const HOME_TR: HomeCopy = {
     items: [
       {
         q: 'Cloud Calendars’ı kullanmak için hesap gerekir mi?',
-        a: 'Hayır. Uygulama, iPhone’unuzda zaten bulunan takvimleri Apple’ın kendi EventKit’i üzerinden okur; izni verdiğiniz anda iCloud çalışır. Google’a ya da Microsoft’a yalnızca o takvimleri de istiyorsanız giriş yaparsınız.',
+        a: "Yerel takvimleri hesap olmadan kullanın. Takvim hizmetlerini bağlamak ve paylaşmak için oturum açmanız gerekebilir.",
       },
       {
         q: 'Google Takvim eşitlemesi gerçekten ücretsiz mi?',
-        a: 'Evet. Google eşitlemesi, bütün takvim görünümleri, hava merkezinin tamamı, tüm ana ekran widget’ları ve Google Meet bağlantıları ücretsiz katmandadır. Advanced reklamları kaldırır ve takvimler arası yönetim ekler; Premium Microsoft’u ekler.',
+        a: "Google Calendar ve Google Meet ücretsiz plana dahildir. Advanced reklamları kaldırır; Premium, Microsoft Calendar ve Teams desteği ekler.",
       },
       {
         q: 'Hava verileri nereden geliyor?',
@@ -244,7 +233,7 @@ export const HOME_TR: HomeCopy = {
       },
       {
         q: 'Hangi cihazlar destekleniyor?',
-        a: 'iOS 18 veya sonrasını çalıştıran iPhone ve iPad. Uygulama yaklaşık 35 MB.',
+        a: "iPhone / iPad · iOS / iPadOS 18+",
       },
       {
         q: 'Aboneliği nasıl iptal ederim?',
@@ -254,7 +243,7 @@ export const HOME_TR: HomeCopy = {
   },
   cta: {
     title: ['Yarın zaten', 'tahminiyle geliyor.'],
-    lead: 'App Store’da ücretsiz. Hesap yok, kurulum sihirbazı yok — takvim erişimi verin, haftanız çoktan orada.',
+    lead: "Ücretsiz indir. Yerel takvimleri hesap olmadan kullanın. Takvim hizmetlerini bağlamak ve paylaşmak için oturum açmanız gerekebilir.",
     fromRatings: '{n} değerlendirmeden',
     download: 'indirme',
     requiresIos: 'iOS {v} gerektirir',

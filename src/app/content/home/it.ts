@@ -4,7 +4,7 @@ import { HomeCopy } from './types';
 export const HOME_IT: HomeCopy = {
   metaTitle: 'Cloud Calendars — iCloud, Google e Outlook in una vista',
   metaDescription:
-    'I tuoi calendari iCloud, Google e Outlook in una vista su iPhone e iPad. Gratis per iniziare, senza creare un account, con il meteo del giorno nella griglia.',
+    "I tuoi calendari e le previsioni, in un unico posto. Fatto per iPhone e iPad. iCloud · Google Calendar · Microsoft Calendar.",
   nav: {
     tour: 'Tour',
     widgets: 'Widget',
@@ -23,7 +23,7 @@ export const HOME_IT: HomeCopy = {
     lead: 'Tutti i calendari che hai — iCloud, Google, Microsoft — in un unico posto, con le previsioni dentro la giornata stessa. Basta indovinare che pomeriggio sarà.',
     seeItMove: 'Guardalo in movimento',
     onTheAppStore: 'su App Store',
-    freeToStart: 'Gratis per iniziare — nessun account',
+    freeToStart: "Scarica gratis",
     scroll: 'Scorri',
     ratingLabel: '{r} su 5 da {n} valutazioni su App Store',
     altMonth: 'Vista mese di Cloud Calendars con un segno su ogni giorno occupato',
@@ -42,7 +42,7 @@ export const HOME_IT: HomeCopy = {
     'Giorno · Settimana · Mese · Anno',
     'Trascina per spostare',
     'Vento e raffiche',
-    'Nessun account richiesto',
+    "Calendari locali",
   ],
   showcase: {
     eyebrow: 'Il tour',
@@ -149,8 +149,8 @@ export const HOME_IT: HomeCopy = {
     },
     tiles: [
       {
-        title: 'Link per le riunioni, generati per te',
-        body: 'Crea un evento su un calendario Google e ci viene allegato un link Meet. Crealo su Microsoft e ottieni un link Teams. Nessuno deve incollare niente.',
+        title: "Meet · Teams",
+        body: "Link Google Meet · Link Microsoft Teams",
         badge: 'Meet · Teams',
       },
       {
@@ -159,9 +159,9 @@ export const HOME_IT: HomeCopy = {
         badge: 'Un tocco',
       },
       {
-        title: 'Il tuo calendario resta tuo',
-        body: 'Gli eventi vengono letti attraverso le interfacce di Apple, Google e Microsoft e disegnati sul dispositivo. Non si vende nulla e non c’è nessun account da creare.',
-        badge: 'Nessun account',
+        title: "Calendari locali",
+        body: "Usa i calendari locali senza un account. Collegare servizi di calendario e condividere può richiedere l’accesso.",
+        badge: "Calendari locali",
       },
     ],
     sourceNotes: {
@@ -202,26 +202,15 @@ export const HOME_IT: HomeCopy = {
       },
       advanced: {
         name: 'Advanced',
-        tagline: 'Un’app più tranquilla e più controllo sul calendario.',
+        tagline: "Nessuna pubblicità, da nessuna parte",
         yearlyNote: 'Risparmia il 15% all’anno',
-        features: [
-          'Nessuna pubblicità, da nessuna parte',
-          'Gestione degli eventi tra calendari iCloud e Google',
-          'Permessi di condivisione di Google Calendar',
-          'Generazione automatica dei link Google Meet',
-          'Aggiornamento meteo prioritario',
-        ],
+        features: ["Nessuna pubblicità, da nessuna parte"],
       },
       premium: {
         name: 'Premium',
         tagline: 'Per i calendari di lavoro che vivono su Microsoft.',
         yearlyNote: 'Risparmia il 16% all’anno',
-        features: [
-          'Sincronizzazione Microsoft Outlook ed Exchange',
-          'Link Microsoft Teams automatici',
-          'Gestione completa tra tutti e tre gli account',
-          'Gestione dei partecipanti e degli inviti',
-        ],
+        features: ["Microsoft Calendar","Link Microsoft Teams"],
       },
     },
   },
@@ -233,11 +222,11 @@ export const HOME_IT: HomeCopy = {
     items: [
       {
         q: 'Mi serve un account per usare Cloud Calendars?',
-        a: 'No. L’app legge i calendari già presenti sul tuo iPhone tramite EventKit di Apple, quindi iCloud funziona appena concedi il permesso. Accedi a Google o Microsoft solo se vuoi anche quei calendari.',
+        a: "Usa i calendari locali senza un account. Collegare servizi di calendario e condividere può richiedere l’accesso.",
       },
       {
         q: 'La sincronizzazione con Google Calendar è davvero gratuita?',
-        a: 'Sì. La sincronizzazione Google, tutte le viste del calendario, il centro meteo completo, tutti i widget della schermata Home e i link Google Meet sono nel piano gratuito. Advanced toglie la pubblicità e aggiunge la gestione tra calendari; Premium aggiunge Microsoft.',
+        a: "Google Calendar e Google Meet sono inclusi nel piano gratuito. Advanced rimuove la pubblicità; Premium aggiunge Microsoft Calendar e Teams.",
       },
       {
         q: 'Da dove arrivano i dati meteo?',
@@ -253,7 +242,7 @@ export const HOME_IT: HomeCopy = {
       },
       {
         q: 'Quali dispositivi sono supportati?',
-        a: 'iPhone e iPad con iOS 18 o successivo. L’app occupa circa 35 MB.',
+        a: "iPhone / iPad · iOS / iPadOS 18+",
       },
       {
         q: 'Come disdico un abbonamento?',
@@ -263,7 +252,7 @@ export const HOME_IT: HomeCopy = {
   },
   cta: {
     title: ['Domani arriva già', 'con la previsione attaccata.'],
-    lead: 'Gratis su App Store. Nessun account, nessuna procedura guidata: concedi l’accesso al calendario e la tua settimana è già lì.',
+    lead: "Scarica gratis. Usa i calendari locali senza un account. Collegare servizi di calendario e condividere può richiedere l’accesso.",
     fromRatings: 'da {n} valutazioni',
     download: 'di download',
     requiresIos: 'richiede iOS {v}',

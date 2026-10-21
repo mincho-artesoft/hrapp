@@ -4,7 +4,7 @@ import { HomeCopy } from './types';
 export const HOME_NL_NL: HomeCopy = {
   metaTitle: 'Cloud Calendars — iCloud, Google en Outlook in één overzicht',
   metaDescription:
-    'Je agenda’s uit iCloud, Google en Outlook in één overzicht op iPhone en iPad. Gratis beginnen, geen account aanmaken, het weer van elke dag in het rooster.',
+    "Uw agenda’s en de verwachting, op één plek. Gemaakt voor iPhone en iPad. iCloud · Google Calendar · Microsoft Calendar.",
   nav: {
     tour: 'Rondleiding',
     widgets: 'Widgets',
@@ -23,7 +23,7 @@ export const HOME_NL_NL: HomeCopy = {
     lead: 'Elke agenda die u heeft — iCloud, Google, Microsoft — op één plek, met de verwachting in de dag zelf. Stop met gissen hoe de middag eruitziet.',
     seeItMove: 'Zie het bewegen',
     onTheAppStore: 'in de App Store',
-    freeToStart: 'Gratis om te beginnen — geen account nodig',
+    freeToStart: "Gratis downloaden",
     scroll: 'Scrollen',
     ratingLabel: '{r} van 5 uit {n} beoordelingen in de App Store',
     altMonth: 'Maandweergave van Cloud Calendars met een markering op elke bezette dag',
@@ -42,7 +42,7 @@ export const HOME_NL_NL: HomeCopy = {
     'Dag · Week · Maand · Jaar',
     'Sleep om te verzetten',
     'Wind en windstoten',
-    'Geen account nodig',
+    "Lokale agenda’s",
   ],
   showcase: {
     eyebrow: 'De rondleiding',
@@ -141,8 +141,8 @@ export const HOME_NL_NL: HomeCopy = {
     },
     tiles: [
       {
-        title: 'Vergaderlinks, voor u aangemaakt',
-        body: 'Maak een afspraak in een Google-agenda en er hangt een Meet-link aan. Maak er een bij Microsoft en u krijgt een Teams-link. Niemand hoeft iets te plakken.',
+        title: "Meet · Teams",
+        body: "Google Meet-links · Microsoft Teams-links",
         badge: 'Meet · Teams',
       },
       {
@@ -151,9 +151,9 @@ export const HOME_NL_NL: HomeCopy = {
         badge: 'Eén tik',
       },
       {
-        title: 'Uw agenda blijft van u',
-        body: 'Afspraken worden gelezen via de eigen koppelingen van Apple, Google en Microsoft en op het toestel getekend. Er wordt niets verkocht en er is geen account aan te maken.',
-        badge: 'Geen account',
+        title: "Lokale agenda’s",
+        body: "Gebruik lokale agenda’s zonder account. Voor het koppelen van agendadiensten en delen kan inloggen nodig zijn.",
+        badge: "Lokale agenda’s",
       },
     ],
     sourceNotes: {
@@ -194,26 +194,15 @@ export const HOME_NL_NL: HomeCopy = {
       },
       advanced: {
         name: 'Advanced',
-        tagline: 'Een rustiger app en meer grip op de agenda.',
+        tagline: "Geen advertenties, nergens",
         yearlyNote: '15% goedkoper per jaar',
-        features: [
-          'Geen advertenties, nergens',
-          'Afsprakenbeheer over iCloud- en Google-agenda’s heen',
-          'Deelrechten van Google Agenda',
-          'Automatisch aanmaken van Google Meet-links',
-          'Voorrang bij het verversen van het weer',
-        ],
+        features: ["Geen advertenties, nergens"],
       },
       premium: {
         name: 'Premium',
         tagline: 'Voor werkagenda’s die bij Microsoft leven.',
         yearlyNote: '16% goedkoper per jaar',
-        features: [
-          'Microsoft Outlook- en Exchange-synchronisatie',
-          'Automatische Microsoft Teams-links',
-          'Volledig beheer over alle drie de accounts',
-          'Beheer van deelnemers en uitnodigingen',
-        ],
+        features: ["Microsoft Calendar","Microsoft Teams-links"],
       },
     },
   },
@@ -225,11 +214,11 @@ export const HOME_NL_NL: HomeCopy = {
     items: [
       {
         q: 'Heb ik een account nodig om Cloud Calendars te gebruiken?',
-        a: 'Nee. De app leest de agenda’s die al op uw iPhone staan via Apple’s eigen EventKit, dus iCloud werkt zodra u toestemming geeft. U logt alleen in bij Google of Microsoft als u die agenda’s er ook bij wilt.',
+        a: "Gebruik lokale agenda’s zonder account. Voor het koppelen van agendadiensten en delen kan inloggen nodig zijn.",
       },
       {
         q: 'Is synchronisatie met Google Agenda echt gratis?',
-        a: 'Ja. Google-synchronisatie, alle agendaweergaven, het complete weercentrum, alle widgets op het beginscherm en Google Meet-links zitten in de gratis versie. Advanced haalt de advertenties weg en voegt beheer over agenda’s heen toe; Premium voegt Microsoft toe.',
+        a: "Google Calendar en Google Meet zijn inbegrepen in het gratis abonnement. Advanced verwijdert advertenties; Premium voegt Microsoft Calendar en Teams toe.",
       },
       {
         q: 'Waar komen de weergegevens vandaan?',
@@ -245,7 +234,7 @@ export const HOME_NL_NL: HomeCopy = {
       },
       {
         q: 'Welke toestellen worden ondersteund?',
-        a: 'iPhone en iPad met iOS 18 of nieuwer. De app is ongeveer 35 MB.',
+        a: "iPhone / iPad · iOS / iPadOS 18+",
       },
       {
         q: 'Hoe zeg ik een abonnement op?',
@@ -255,7 +244,7 @@ export const HOME_NL_NL: HomeCopy = {
   },
   cta: {
     title: ['Morgen heeft al', 'een verwachting bij zich.'],
-    lead: 'Gratis in de App Store. Geen account, geen installatiewizard — geef toegang tot de agenda en uw week staat er al.',
+    lead: "Gratis downloaden. Gebruik lokale agenda’s zonder account. Voor het koppelen van agendadiensten en delen kan inloggen nodig zijn.",
     fromRatings: 'uit {n} beoordelingen',
     download: 'download',
     requiresIos: 'vereist iOS {v}',

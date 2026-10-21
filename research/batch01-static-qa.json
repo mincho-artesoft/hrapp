@@ -1,0 +1,17 @@
+{
+  "checkedAt": "2026-10-21",
+  "checks": {
+    "title": true,
+    "sources": true,
+    "six_steps": true,
+    "date": true,
+    "canonical": true,
+    "faq": true,
+    "local_calendar_qualification": true,
+    "old_blanket_survival_removed": true
+  },
+  "article_sha256": "b623a3bc45780825d20f853227fdd5ff0fe2882deb684ff7ab7c7b5cf083152d",
+  "sitemap_urls": 430,
+  "build": "/tmp/cloud-calendar-seo-batch01-build.log",
+  "publication": "pending"
+}

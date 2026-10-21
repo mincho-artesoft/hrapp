@@ -4,7 +4,7 @@ import { HomeCopy } from './types';
 export const HOME_VI: HomeCopy = {
   metaTitle: 'Cloud Calendars — iCloud, Google và Outlook trong một khung',
   metaDescription:
-    'Lịch iCloud, Google và Outlook của bạn trong một khung trên iPhone và iPad. Miễn phí để bắt đầu, không cần tạo tài khoản, thời tiết mỗi ngày ngay trong lịch.',
+    "Những cuốn lịch của bạn và dự báo, ở cùng một nơi. Dựng cho iPhone và iPad. iCloud · Google Calendar · Microsoft Calendar.",
   nav: {
     tour: 'Giới thiệu',
     widgets: 'Widget',
@@ -23,7 +23,7 @@ export const HOME_VI: HomeCopy = {
     lead: 'Mọi cuốn lịch bạn có — iCloud, Google, Microsoft — ở cùng một nơi, với dự báo dựng ngay trong chính ngày đó. Thôi đoán xem buổi chiều sẽ ra sao.',
     seeItMove: 'Xem nó chuyển động',
     onTheAppStore: 'trên App Store',
-    freeToStart: 'Miễn phí để bắt đầu — không cần tài khoản',
+    freeToStart: "Tải miễn phí",
     scroll: 'Cuộn',
     ratingLabel: '{r} trên 5 từ {n} lượt đánh giá trên App Store',
     altMonth: 'Khung nhìn tháng của Cloud Calendars với dấu trên mỗi ngày có việc',
@@ -42,7 +42,7 @@ export const HOME_VI: HomeCopy = {
     'Ngày · Tuần · Tháng · Năm',
     'Kéo để dời',
     'Gió và gió giật',
-    'Không cần tài khoản',
+    "Lịch cục bộ",
   ],
   showcase: {
     eyebrow: 'Giới thiệu',
@@ -144,8 +144,8 @@ export const HOME_VI: HomeCopy = {
     },
     tiles: [
       {
-        title: 'Liên kết họp, được tạo sẵn cho bạn',
-        body: 'Tạo một sự kiện trên lịch Google và một liên kết Meet được đính kèm. Tạo trên Microsoft và bạn nhận được liên kết Teams. Không ai phải dán gì cả.',
+        title: "Meet · Teams",
+        body: "Liên kết Google Meet · Liên kết Microsoft Teams",
         badge: 'Meet · Teams',
       },
       {
@@ -154,9 +154,9 @@ export const HOME_VI: HomeCopy = {
         badge: 'Một chạm',
       },
       {
-        title: 'Cuốn lịch của bạn vẫn là của bạn',
-        body: 'Sự kiện được đọc qua chính giao diện của Apple, Google và Microsoft rồi vẽ ngay trên máy. Không có gì bị bán, và không có tài khoản nào phải tạo.',
-        badge: 'Không tài khoản',
+        title: "Lịch cục bộ",
+        body: "Dùng lịch cục bộ mà không cần tài khoản. Việc kết nối dịch vụ lịch và chia sẻ có thể yêu cầu đăng nhập.",
+        badge: "Lịch cục bộ",
       },
     ],
     sourceNotes: {
@@ -197,26 +197,15 @@ export const HOME_VI: HomeCopy = {
       },
       advanced: {
         name: 'Advanced',
-        tagline: 'Một ứng dụng yên tĩnh hơn và kiểm soát lịch sâu hơn.',
+        tagline: "Không quảng cáo, ở bất cứ đâu",
         yearlyNote: 'Tiết kiệm 15% mỗi năm',
-        features: [
-          'Không quảng cáo, ở bất cứ đâu',
-          'Quản lý sự kiện xuyên lịch iCloud và Google',
-          'Quyền chia sẻ Google Lịch',
-          'Tự động tạo liên kết Google Meet',
-          'Ưu tiên làm mới thời tiết',
-        ],
+        features: ["Không quảng cáo, ở bất cứ đâu"],
       },
       premium: {
         name: 'Premium',
         tagline: 'Cho lịch công việc sống trên Microsoft.',
         yearlyNote: 'Tiết kiệm 16% mỗi năm',
-        features: [
-          'Đồng bộ Microsoft Outlook và Exchange',
-          'Liên kết Microsoft Teams tự động',
-          'Quản lý đầy đủ xuyên cả ba tài khoản',
-          'Quản lý người tham dự và lời mời',
-        ],
+        features: ["Microsoft Calendar","Liên kết Microsoft Teams"],
       },
     },
   },
@@ -228,11 +217,11 @@ export const HOME_VI: HomeCopy = {
     items: [
       {
         q: 'Tôi có cần tài khoản để dùng Cloud Calendars không?',
-        a: 'Không. Ứng dụng đọc những cuốn lịch vốn đã có trên iPhone của bạn qua EventKit của chính Apple, nên iCloud chạy ngay khi bạn cấp quyền. Bạn chỉ đăng nhập Google hay Microsoft nếu muốn có luôn những cuốn lịch đó.',
+        a: "Dùng lịch cục bộ mà không cần tài khoản. Việc kết nối dịch vụ lịch và chia sẻ có thể yêu cầu đăng nhập.",
       },
       {
         q: 'Đồng bộ Google Lịch có thật sự miễn phí không?',
-        a: 'Có. Đồng bộ Google, mọi khung nhìn lịch, toàn bộ trung tâm thời tiết, tất cả widget màn hình chính và liên kết Google Meet đều nằm trong bậc miễn phí. Advanced bỏ quảng cáo và thêm quản lý xuyên lịch; Premium thêm Microsoft.',
+        a: "Google Calendar và Google Meet có trong gói miễn phí. Advanced loại bỏ quảng cáo; Premium bổ sung Microsoft Calendar và Teams.",
       },
       {
         q: 'Dữ liệu thời tiết lấy từ đâu?',
@@ -248,7 +237,7 @@ export const HOME_VI: HomeCopy = {
       },
       {
         q: 'Những thiết bị nào được hỗ trợ?',
-        a: 'iPhone và iPad chạy iOS 18 trở lên. Ứng dụng nặng khoảng 35 MB.',
+        a: "iPhone / iPad · iOS / iPadOS 18+",
       },
       {
         q: 'Tôi huỷ thuê bao thế nào?',
@@ -258,7 +247,7 @@ export const HOME_VI: HomeCopy = {
   },
   cta: {
     title: ['Ngày mai đã tới', 'kèm sẵn dự báo.'],
-    lead: 'Miễn phí trên App Store. Không tài khoản, không trình hướng dẫn thiết lập — cấp quyền truy cập lịch và tuần của bạn đã ở đó rồi.',
+    lead: "Tải miễn phí. Dùng lịch cục bộ mà không cần tài khoản. Việc kết nối dịch vụ lịch và chia sẻ có thể yêu cầu đăng nhập.",
     fromRatings: 'từ {n} lượt đánh giá',
     download: 'dung lượng tải',
     requiresIos: 'yêu cầu iOS {v}',

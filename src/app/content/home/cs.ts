@@ -4,7 +4,7 @@ import { HomeCopy } from './types';
 export const HOME_CS: HomeCopy = {
   metaTitle: 'Cloud Calendars — iCloud, Google a Outlook v jednom pohledu',
   metaDescription:
-    'Kalendáře z iCloudu, Googlu a Outlooku v jednom pohledu na iPhonu a iPadu. Zdarma na začátek, bez zakládání účtu, s předpovědí pro každý den přímo v mřížce.',
+    "Vaše kalendáře a předpověď na jednom místě. Postaveno pro iPhone a iPad. iCloud · Google Calendar · Microsoft Calendar.",
   nav: {
     tour: 'Prohlídka',
     widgets: 'Widgety',
@@ -23,7 +23,7 @@ export const HOME_CS: HomeCopy = {
     lead: 'Každý kalendář, který máte — iCloud, Google, Microsoft — na jednom místě, s předpovědí uvnitř samotného dne. Přestaňte hádat, jak bude odpoledne vypadat.',
     seeItMove: 'Podívat se v pohybu',
     onTheAppStore: 'v App Storu',
-    freeToStart: 'Zdarma na začátek — bez účtu',
+    freeToStart: "Stáhnout zdarma",
     scroll: 'Posunout',
     ratingLabel: '{r} z 5 z {n} hodnocení v App Storu',
     altMonth: 'Měsíční pohled Cloud Calendars se značkou na každém obsazeném dni',
@@ -42,7 +42,7 @@ export const HOME_CS: HomeCopy = {
     'Den · Týden · Měsíc · Rok',
     'Přetažením přesunete',
     'Vítr a nárazy',
-    'Bez účtu',
+    "Místní kalendáře",
   ],
   showcase: {
     eyebrow: 'Prohlídka',
@@ -140,8 +140,8 @@ export const HOME_CS: HomeCopy = {
     },
     tiles: [
       {
-        title: 'Odkazy na schůzky vytvořené za vás',
-        body: 'Vytvořte událost v kalendáři Google a přilepí se k ní odkaz Meet. Vytvořte ji u Microsoftu a dostanete odkaz Teams. Nikdo nemusí nic vkládat.',
+        title: "Meet · Teams",
+        body: "Odkazy Google Meet · Odkazy Microsoft Teams",
         badge: 'Meet · Teams',
       },
       {
@@ -150,9 +150,9 @@ export const HOME_CS: HomeCopy = {
         badge: 'Jedno klepnutí',
       },
       {
-        title: 'Váš kalendář zůstává váš',
-        body: 'Události se čtou přes vlastní rozhraní Applu, Googlu a Microsoftu a vykreslují se na zařízení. Nic se neprodává a není žádný účet k založení.',
-        badge: 'Bez účtu',
+        title: "Místní kalendáře",
+        body: "Místní kalendáře můžete používat bez účtu. Připojení kalendářových služeb a sdílení může vyžadovat přihlášení.",
+        badge: "Místní kalendáře",
       },
     ],
     sourceNotes: {
@@ -193,26 +193,15 @@ export const HOME_CS: HomeCopy = {
       },
       advanced: {
         name: 'Advanced',
-        tagline: 'Tišší aplikace a víc kontroly nad kalendářem.',
+        tagline: "Žádné reklamy, nikde",
         yearlyNote: 'Ročně o 15 % levněji',
-        features: [
-          'Žádné reklamy, nikde',
-          'Správa událostí napříč kalendáři iCloud a Google',
-          'Práva sdílení Kalendáře Google',
-          'Automatické vytváření odkazů Google Meet',
-          'Přednostní obnovování počasí',
-        ],
+        features: ["Žádné reklamy, nikde"],
       },
       premium: {
         name: 'Premium',
         tagline: 'Pro pracovní kalendáře, které žijí u Microsoftu.',
         yearlyNote: 'Ročně o 16 % levněji',
-        features: [
-          'Synchronizace Microsoft Outlook a Exchange',
-          'Automatické odkazy Microsoft Teams',
-          'Plná správa napříč všemi třemi účty',
-          'Správa účastníků a pozvánek',
-        ],
+        features: ["Microsoft Calendar","Odkazy Microsoft Teams"],
       },
     },
   },
@@ -224,11 +213,11 @@ export const HOME_CS: HomeCopy = {
     items: [
       {
         q: 'Potřebuji účet, abych mohl používat Cloud Calendars?',
-        a: 'Ne. Aplikace čte kalendáře, které už na iPhonu máte, přes vlastní EventKit od Applu, takže iCloud funguje, jakmile udělíte oprávnění. Ke Googlu nebo Microsoftu se přihlásíte jen tehdy, chcete-li mít i tyto kalendáře.',
+        a: "Místní kalendáře můžete používat bez účtu. Připojení kalendářových služeb a sdílení může vyžadovat přihlášení.",
       },
       {
         q: 'Je synchronizace s Kalendářem Google opravdu zdarma?',
-        a: 'Ano. Synchronizace s Googlem, všechny pohledy kalendáře, kompletní centrum počasí, všechny widgety na ploše a odkazy Google Meet jsou v bezplatné úrovni. Advanced odstraní reklamy a přidá správu napříč kalendáři; Premium přidá Microsoft.',
+        a: "Google Calendar a Google Meet jsou součástí bezplatného plánu. Advanced odstraňuje reklamy; Premium přidává Microsoft Calendar a Teams.",
       },
       {
         q: 'Odkud pocházejí data o počasí?',
@@ -244,7 +233,7 @@ export const HOME_CS: HomeCopy = {
       },
       {
         q: 'Která zařízení jsou podporována?',
-        a: 'iPhone a iPad s iOS 18 nebo novějším. Aplikace má zhruba 35 MB.',
+        a: "iPhone / iPad · iOS / iPadOS 18+",
       },
       {
         q: 'Jak zruším předplatné?',
@@ -254,7 +243,7 @@ export const HOME_CS: HomeCopy = {
   },
   cta: {
     title: ['Zítřek už s sebou', 'předpověď nese.'],
-    lead: 'Zdarma v App Storu. Žádný účet, žádný průvodce nastavením — udělte přístup ke kalendáři a váš týden už tam je.',
+    lead: "Stáhnout zdarma. Místní kalendáře můžete používat bez účtu. Připojení kalendářových služeb a sdílení může vyžadovat přihlášení.",
     fromRatings: 'z {n} hodnocení',
     download: 'ke stažení',
     requiresIos: 'vyžaduje iOS {v}',

@@ -1,0 +1,122 @@
+[
+  {
+    "locale": "en-US",
+    "path": "/"
+  },
+  {
+    "locale": "ar-SA",
+    "path": "/ar/"
+  },
+  {
+    "locale": "bg",
+    "path": "/bg/"
+  },
+  {
+    "locale": "cs",
+    "path": "/cs/"
+  },
+  {
+    "locale": "da",
+    "path": "/da/"
+  },
+  {
+    "locale": "de-DE",
+    "path": "/de/"
+  },
+  {
+    "locale": "el",
+    "path": "/el/"
+  },
+  {
+    "locale": "es-ES",
+    "path": "/es/"
+  },
+  {
+    "locale": "fi",
+    "path": "/fi/"
+  },
+  {
+    "locale": "fr-FR",
+    "path": "/fr/"
+  },
+  {
+    "locale": "he",
+    "path": "/he/"
+  },
+  {
+    "locale": "hi",
+    "path": "/hi/"
+  },
+  {
+    "locale": "hu",
+    "path": "/hu/"
+  },
+  {
+    "locale": "id",
+    "path": "/id/"
+  },
+  {
+    "locale": "it",
+    "path": "/it/"
+  },
+  {
+    "locale": "ja",
+    "path": "/ja/"
+  },
+  {
+    "locale": "ko",
+    "path": "/ko/"
+  },
+  {
+    "locale": "ms",
+    "path": "/ms/"
+  },
+  {
+    "locale": "nl-NL",
+    "path": "/nl/"
+  },
+  {
+    "locale": "no",
+    "path": "/no/"
+  },
+  {
+    "locale": "pl",
+    "path": "/pl/"
+  },
+  {
+    "locale": "pt-BR",
+    "path": "/pt/"
+  },
+  {
+    "locale": "ro",
+    "path": "/ro/"
+  },
+  {
+    "locale": "ru",
+    "path": "/ru/"
+  },
+  {
+    "locale": "sv",
+    "path": "/sv/"
+  },
+  {
+    "locale": "th",
+    "path": "/th/"
+  },
+  {
+    "locale": "tr",
+    "path": "/tr/"
+  },
+  {
+    "locale": "vi",
+    "path": "/vi/"
+  },
+  {
+    "locale": "zh-Hans",
+    "path": "/zh-hans/"
+  },
+  {
+    "locale": "zh-Hant",
+    "path": "/zh-hant/"
+  }
+]

@@ -4,7 +4,7 @@ import { HomeCopy } from './types';
 export const HOME_FR_FR: HomeCopy = {
   metaTitle: 'Cloud Calendars — iCloud, Google et Outlook en une vue',
   metaDescription:
-    'Vos agendas iCloud, Google et Outlook dans une seule vue sur iPhone et iPad. Gratuit pour commencer, sans compte à créer, et la météo du jour dans la grille.',
+    "Vos agendas et la prévision, au même endroit. Conçu pour iPhone et iPad. iCloud · Google Calendar · Microsoft Calendar.",
   nav: {
     tour: 'Visite',
     widgets: 'Widgets',
@@ -23,7 +23,7 @@ export const HOME_FR_FR: HomeCopy = {
     lead: 'Tous les agendas que vous avez — iCloud, Google, Microsoft — au même endroit, avec la prévision intégrée à la journée elle-même. Fini les suppositions sur l’après-midi.',
     seeItMove: 'Le voir en mouvement',
     onTheAppStore: 'sur l’App Store',
-    freeToStart: 'Gratuit pour commencer — sans compte',
+    freeToStart: "Télécharger gratuitement",
     scroll: 'Défiler',
     ratingLabel: '{r} sur 5 à partir de {n} notes sur l’App Store',
     altMonth: 'Vue mensuelle de Cloud Calendars avec un repère sur chaque jour occupé',
@@ -43,7 +43,7 @@ export const HOME_FR_FR: HomeCopy = {
     'Jour · Semaine · Mois · Année',
     'Glisser pour déplacer',
     'Vent et rafales',
-    'Aucun compte requis',
+    "Calendriers locaux",
   ],
   showcase: {
     eyebrow: 'La visite',
@@ -149,8 +149,8 @@ export const HOME_FR_FR: HomeCopy = {
     },
     tiles: [
       {
-        title: 'Des liens de réunion créés pour vous',
-        body: 'Créez un événement dans un agenda Google et un lien Meet y est attaché. Créez-le chez Microsoft et vous obtenez un lien Teams. Personne n’a rien à coller.',
+        title: "Meet · Teams",
+        body: "Liens Google Meet · Liens Microsoft Teams",
         badge: 'Meet · Teams',
       },
       {
@@ -159,9 +159,9 @@ export const HOME_FR_FR: HomeCopy = {
         badge: 'Une touche',
       },
       {
-        title: 'Votre agenda reste le vôtre',
-        body: 'Les événements sont lus via les interfaces d’Apple, Google et Microsoft et affichés sur l’appareil. Rien n’est vendu, et il n’y a aucun compte à créer.',
-        badge: 'Aucun compte',
+        title: "Calendriers locaux",
+        body: "Utilisez les calendriers locaux sans compte. La connexion de services de calendrier et le partage peuvent nécessiter une connexion à un compte.",
+        badge: "Calendriers locaux",
       },
     ],
     sourceNotes: {
@@ -202,26 +202,15 @@ export const HOME_FR_FR: HomeCopy = {
       },
       advanced: {
         name: 'Advanced',
-        tagline: 'Une application plus calme et plus de maîtrise de l’agenda.',
+        tagline: "Aucune publicité, nulle part",
         yearlyNote: '15 % d’économie à l’année',
-        features: [
-          'Aucune publicité, nulle part',
-          'Gestion des événements entre agendas iCloud et Google',
-          'Droits de partage Google Agenda',
-          'Génération automatique des liens Google Meet',
-          'Rafraîchissement météo prioritaire',
-        ],
+        features: ["Aucune publicité, nulle part"],
       },
       premium: {
         name: 'Premium',
         tagline: 'Pour les agendas professionnels qui vivent chez Microsoft.',
         yearlyNote: '16 % d’économie à l’année',
-        features: [
-          'Synchronisation Microsoft Outlook et Exchange',
-          'Liens Microsoft Teams automatiques',
-          'Gestion complète entre les trois comptes',
-          'Gestion des participants et des invitations',
-        ],
+        features: ["Microsoft Calendar","Liens Microsoft Teams"],
       },
     },
   },
@@ -233,11 +222,11 @@ export const HOME_FR_FR: HomeCopy = {
     items: [
       {
         q: 'Ai-je besoin d’un compte pour utiliser Cloud Calendars ?',
-        a: 'Non. L’application lit les agendas déjà présents sur votre iPhone via EventKit, le cadre d’Apple : iCloud fonctionne donc dès que vous accordez l’autorisation. Vous ne vous connectez à Google ou Microsoft que si vous voulez y ajouter ces agendas.',
+        a: "Utilisez les calendriers locaux sans compte. La connexion de services de calendrier et le partage peuvent nécessiter une connexion à un compte.",
       },
       {
         q: 'La synchronisation avec Google Agenda est-elle vraiment gratuite ?',
-        a: 'Oui. La synchronisation Google, toutes les vues de l’agenda, le pôle météo complet, tous les widgets de l’écran d’accueil et les liens Google Meet font partie de la formule gratuite. Advanced retire la publicité et ajoute la gestion entre agendas ; Premium ajoute Microsoft.',
+        a: "Google Calendar et Google Meet sont inclus dans l’offre gratuite. Advanced supprime les publicités ; Premium ajoute Microsoft Calendar et Teams.",
       },
       {
         q: 'D’où viennent les données météo ?',
@@ -253,7 +242,7 @@ export const HOME_FR_FR: HomeCopy = {
       },
       {
         q: 'Quels appareils sont pris en charge ?',
-        a: 'iPhone et iPad sous iOS 18 ou version ultérieure. L’application pèse environ 35 Mo.',
+        a: "iPhone / iPad · iOS / iPadOS 18+",
       },
       {
         q: 'Comment résilier un abonnement ?',
@@ -263,7 +252,7 @@ export const HOME_FR_FR: HomeCopy = {
   },
   cta: {
     title: ['Demain arrive déjà', 'avec sa prévision.'],
-    lead: 'Gratuit sur l’App Store. Aucun compte, aucun assistant de configuration — accordez l’accès à l’agenda et votre semaine est déjà là.',
+    lead: "Télécharger gratuitement. Utilisez les calendriers locaux sans compte. La connexion de services de calendrier et le partage peuvent nécessiter une connexion à un compte.",
     fromRatings: 'sur {n} notes',
     download: 'de téléchargement',
     requiresIos: 'nécessite iOS {v}',

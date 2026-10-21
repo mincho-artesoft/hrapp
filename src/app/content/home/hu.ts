@@ -4,7 +4,7 @@ import { HomeCopy } from './types';
 export const HOME_HU: HomeCopy = {
   metaTitle: 'Cloud Calendars — iCloud, Google és Outlook egy nézetben',
   metaDescription:
-    'Az iCloud, a Google és az Outlook naptárai egyetlen nézetben iPhone-on és iPaden. Ingyenes kezdés, nincs fiók létrehozása, a napi időjárás a rácsban.',
+    "A naptárai és az előrejelzés egy helyen. iPhone-ra és iPadre építve. iCloud · Google Calendar · Microsoft Calendar.",
   nav: {
     tour: 'Bemutató',
     widgets: 'Modulok',
@@ -23,7 +23,7 @@ export const HOME_HU: HomeCopy = {
     lead: 'Minden naptára — iCloud, Google, Microsoft — egy helyen, az előrejelzéssel magába a napba építve. Ne találgassa többé, milyen lesz a délután.',
     seeItMove: 'Nézze meg mozgásban',
     onTheAppStore: 'az App Store-ban',
-    freeToStart: 'Ingyenes a kezdéshez — fiók nélkül',
+    freeToStart: "Letöltés ingyen",
     scroll: 'Görgetés',
     ratingLabel: '{r} az 5-ből, {n} App Store-értékelés alapján',
     altMonth: 'A Cloud Calendars havi nézete, jelöléssel minden foglalt napon',
@@ -42,7 +42,7 @@ export const HOME_HU: HomeCopy = {
     'Nap · Hét · Hónap · Év',
     'Húzással áthelyezhető',
     'Szél és széllökések',
-    'Nincs szükség fiókra',
+    "Helyi naptárak",
   ],
   showcase: {
     eyebrow: 'A bemutató',
@@ -140,8 +140,8 @@ export const HOME_HU: HomeCopy = {
     },
     tiles: [
       {
-        title: 'Értekezlet-hivatkozások, Ön helyett létrehozva',
-        body: 'Hozzon létre eseményt egy Google-naptárban, és Meet-hivatkozás kerül rá. Hozza létre a Microsoftnál, és Teams-hivatkozást kap. Senkinek nem kell semmit beillesztenie.',
+        title: "Meet · Teams",
+        body: "Google Meet-hivatkozások · Microsoft Teams-hivatkozások",
         badge: 'Meet · Teams',
       },
       {
@@ -150,9 +150,9 @@ export const HOME_HU: HomeCopy = {
         badge: 'Egy érintés',
       },
       {
-        title: 'A naptára a magáé marad',
-        body: 'Az eseményeket az Apple, a Google és a Microsoft saját felületein keresztül olvassuk, és az eszközön rajzoljuk ki. Semmit nem adunk el, és nincs létrehozandó fiók.',
-        badge: 'Nincs fiók',
+        title: "Helyi naptárak",
+        body: "A helyi naptárakat fiók nélkül használhatja. A naptárszolgáltatások csatlakoztatásához és a megosztáshoz bejelentkezésre lehet szükség.",
+        badge: "Helyi naptárak",
       },
     ],
     sourceNotes: {
@@ -193,26 +193,15 @@ export const HOME_HU: HomeCopy = {
       },
       advanced: {
         name: 'Advanced',
-        tagline: 'Csendesebb alkalmazás és több uralom a naptár felett.',
+        tagline: "Semmilyen hirdetés, sehol",
         yearlyNote: 'Évente 15% megtakarítás',
-        features: [
-          'Semmilyen hirdetés, sehol',
-          'Eseménykezelés iCloud- és Google-naptárak között',
-          'Google Naptár megosztási jogok',
-          'Google Meet-hivatkozások automatikus létrehozása',
-          'Elsőbbségi időjárás-frissítés',
-        ],
+        features: ["Semmilyen hirdetés, sehol"],
       },
       premium: {
         name: 'Premium',
         tagline: 'Olyan munkanaptárakhoz, amelyek a Microsoftnál élnek.',
         yearlyNote: 'Évente 16% megtakarítás',
-        features: [
-          'Microsoft Outlook- és Exchange-szinkron',
-          'Automatikus Microsoft Teams-hivatkozások',
-          'Teljes kezelés mindhárom fiók között',
-          'Résztvevők és meghívók kezelése',
-        ],
+        features: ["Microsoft Calendar","Microsoft Teams-hivatkozások"],
       },
     },
   },
@@ -224,11 +213,11 @@ export const HOME_HU: HomeCopy = {
     items: [
       {
         q: 'Szükségem van fiókra a Cloud Calendars használatához?',
-        a: 'Nem. Az alkalmazás az Apple saját EventKitjén keresztül olvassa az iPhone-ján már meglévő naptárakat, így az iCloud abban a pillanatban működik, ahogy megadja az engedélyt. A Google-be vagy a Microsoftba csak akkor jelentkezik be, ha azokat a naptárakat is szeretné.',
+        a: "A helyi naptárakat fiók nélkül használhatja. A naptárszolgáltatások csatlakoztatásához és a megosztáshoz bejelentkezésre lehet szükség.",
       },
       {
         q: 'Tényleg ingyenes a Google Naptár szinkronizálása?',
-        a: 'Igen. A Google-szinkron, minden naptárnézet, a teljes időjárás-központ, az összes kezdőképernyős modul és a Google Meet-hivatkozások az ingyenes szinten vannak. Az Advanced eltünteti a hirdetéseket és naptárak közötti kezelést ad; a Premium hozzáadja a Microsoftot.',
+        a: "A Google Calendar és a Google Meet az ingyenes csomag része. Az Advanced eltávolítja a hirdetéseket; a Premium hozzáadja a Microsoft Calendar és a Teams támogatását.",
       },
       {
         q: 'Honnan származnak az időjárási adatok?',
@@ -244,7 +233,7 @@ export const HOME_HU: HomeCopy = {
       },
       {
         q: 'Mely eszközök támogatottak?',
-        a: 'iPhone és iPad iOS 18 vagy újabb rendszerrel. Az alkalmazás körülbelül 35 MB.',
+        a: "iPhone / iPad · iOS / iPadOS 18+",
       },
       {
         q: 'Hogyan mondhatom le az előfizetést?',
@@ -254,7 +243,7 @@ export const HOME_HU: HomeCopy = {
   },
   cta: {
     title: ['A holnap már', 'előrejelzéssel érkezik.'],
-    lead: 'Ingyenes az App Store-ban. Nincs fiók, nincs beállítási varázsló — adjon naptár-hozzáférést, és a hete már ott van.',
+    lead: "Letöltés ingyen. A helyi naptárakat fiók nélkül használhatja. A naptárszolgáltatások csatlakoztatásához és a megosztáshoz bejelentkezésre lehet szükség.",
     fromRatings: '{n} értékelésből',
     download: 'letöltés',
     requiresIos: 'iOS {v} szükséges',

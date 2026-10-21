@@ -7,7 +7,7 @@ export const HOME_JA: HomeCopy = {
   // カレンダーなので、それを先に言う。
   metaTitle: 'Cloud Calendars — iCloud・Google・Outlook をひとつの画面に',
   metaDescription:
-    'iPhone と iPad で、iCloud・Google・Outlook のカレンダーをひとつの画面に。無料で始められ、アカウント登録は不要。その日の天気もカレンダーの中に。',
+    "あなたのカレンダーと予報を、ひとつの場所に。iPhone と iPad のために。 iCloud · Google Calendar · Microsoft Calendar.",
   nav: {
     tour: 'ツアー',
     widgets: 'ウィジェット',
@@ -26,7 +26,7 @@ export const HOME_JA: HomeCopy = {
     lead: 'お持ちのカレンダーすべて — iCloud、Google、Microsoft — をひとつの場所に。予報は日そのものの中にあります。午後がどうなるかを推測するのは、もう終わりです。',
     seeItMove: '動きを見る',
     onTheAppStore: 'App Store で',
-    freeToStart: '無料ではじめられます — アカウント不要',
+    freeToStart: "無料で入手",
     scroll: 'スクロール',
     ratingLabel: 'App Store の {n} 件の評価で 5 段階中 {r}',
     altMonth: 'Cloud Calendars の月表示。予定のある日すべてに印がついている',
@@ -45,7 +45,7 @@ export const HOME_JA: HomeCopy = {
     '日 · 週 · 月 · 年',
     'ドラッグで移動',
     '風と突風',
-    'アカウント不要',
+    "ローカルカレンダー",
   ],
   showcase: {
     eyebrow: 'ツアー',
@@ -143,8 +143,8 @@ export const HOME_JA: HomeCopy = {
     },
     tiles: [
       {
-        title: '会議リンクは自動で用意されます',
-        body: 'Google カレンダーで予定を作れば Meet リンクが付き、Microsoft で作れば Teams リンクが付きます。誰かが貼り付ける必要はありません。',
+        title: "Meet · Teams",
+        body: "Google Meet リンク · Microsoft Teams リンク",
         badge: 'Meet · Teams',
       },
       {
@@ -153,9 +153,9 @@ export const HOME_JA: HomeCopy = {
         badge: 'ワンタップ',
       },
       {
-        title: 'カレンダーはあなたのもののまま',
-        body: '予定は Apple・Google・Microsoft それぞれのインターフェース経由で読み取り、端末上で描画します。売り渡すものはなく、作るアカウントもありません。',
-        badge: 'アカウント不要',
+        title: "ローカルカレンダー",
+        body: "ローカルカレンダーはアカウントなしで使えます。カレンダーサービスの接続や共有には、サインインが必要な場合があります。",
+        badge: "ローカルカレンダー",
       },
     ],
     sourceNotes: {
@@ -196,26 +196,15 @@ export const HOME_JA: HomeCopy = {
       },
       advanced: {
         name: 'Advanced',
-        tagline: 'より静かなアプリと、カレンダーへのより深い制御。',
+        tagline: "広告はどこにも出ません",
         yearlyNote: '年払いで 15% お得',
-        features: [
-          '広告はどこにも出ません',
-          'iCloud と Google をまたぐ予定の管理',
-          'Google カレンダーの共有権限',
-          'Google Meet リンクの自動生成',
-          '天気の優先更新',
-        ],
+        features: ["広告はどこにも出ません"],
       },
       premium: {
         name: 'Premium',
         tagline: 'Microsoft にある仕事のカレンダーのために。',
         yearlyNote: '年払いで 16% お得',
-        features: [
-          'Microsoft Outlook と Exchange の同期',
-          'Microsoft Teams リンクの自動付与',
-          '三つのアカウントすべてをまたぐ完全な管理',
-          '参加者と招待の管理',
-        ],
+        features: ["Microsoft Calendar","Microsoft Teams リンク"],
       },
     },
   },
@@ -227,11 +216,11 @@ export const HOME_JA: HomeCopy = {
     items: [
       {
         q: 'Cloud Calendars を使うのにアカウントは必要ですか。',
-        a: 'いいえ。Apple の EventKit を通じて iPhone にすでにあるカレンダーを読むので、許可を与えた時点で iCloud は動きます。Google や Microsoft にサインインするのは、それらのカレンダーも入れたい場合だけです。',
+        a: "ローカルカレンダーはアカウントなしで使えます。カレンダーサービスの接続や共有には、サインインが必要な場合があります。",
       },
       {
         q: 'Google カレンダーの同期は本当に無料ですか。',
-        a: 'はい。Google 同期、すべてのカレンダー表示、完全な天気ハブ、すべてのホーム画面ウィジェット、Google Meet リンクは無料の段階に含まれます。Advanced は広告を取り除き、カレンダーをまたぐ管理を加えます。Premium は Microsoft を加えます。',
+        a: "Google CalendarとGoogle Meetは無料プランで利用できます。Advancedは広告を非表示にし、PremiumはMicrosoft CalendarとTeamsを追加します。",
       },
       {
         q: '天気のデータはどこから来ていますか。',
@@ -247,7 +236,7 @@ export const HOME_JA: HomeCopy = {
       },
       {
         q: '対応している機種は何ですか。',
-        a: 'iOS 18 以降の iPhone と iPad です。アプリの大きさはおよそ 35 MB です。',
+        a: "iPhone / iPad · iOS / iPadOS 18+",
       },
       {
         q: 'サブスクリプションはどう解約しますか。',
@@ -257,7 +246,7 @@ export const HOME_JA: HomeCopy = {
   },
   cta: {
     title: ['明日にはもう、', '予報がついています。'],
-    lead: 'App Store で無料。アカウントもセットアップ手順もありません — カレンダーへのアクセスを許可すれば、あなたの一週間はもうそこにあります。',
+    lead: "無料で入手. ローカルカレンダーはアカウントなしで使えます。カレンダーサービスの接続や共有には、サインインが必要な場合があります。",
     fromRatings: '{n} 件の評価',
     download: 'ダウンロード',
     requiresIos: 'iOS {v} 以降が必要',

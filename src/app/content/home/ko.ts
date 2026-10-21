@@ -4,7 +4,7 @@ import { HomeCopy } from './types';
 export const HOME_KO: HomeCopy = {
   metaTitle: 'Cloud Calendars — iCloud·Google·Outlook을 한 화면에',
   metaDescription:
-    'iPhone과 iPad에서 iCloud와 Google과 Outlook 캘린더를 한 화면에. 무료로 시작, 계정 만들 필요 없음, 그날의 날씨가 달력 안에.',
+    "당신의 달력과 예보를 한곳에. iPhone과 iPad를 위해. iCloud · Google Calendar · Microsoft Calendar.",
   nav: {
     tour: '둘러보기',
     widgets: '위젯',
@@ -23,7 +23,7 @@ export const HOME_KO: HomeCopy = {
     lead: '가지고 있는 모든 달력 — iCloud, Google, Microsoft — 을 한곳에, 예보는 하루 안에 들어 있습니다. 오후가 어떨지 짐작하는 일은 이제 그만.',
     seeItMove: '움직이는 모습 보기',
     onTheAppStore: 'App Store에서',
-    freeToStart: '무료로 시작 — 계정 필요 없음',
+    freeToStart: "무료로 받기",
     scroll: '스크롤',
     ratingLabel: 'App Store 평가 {n}개 기준 5점 만점에 {r}점',
     altMonth: 'Cloud Calendars 월 보기, 일정이 있는 날마다 표시',
@@ -42,7 +42,7 @@ export const HOME_KO: HomeCopy = {
     '일 · 주 · 월 · 년',
     '끌어서 옮기기',
     '바람과 돌풍',
-    '계정 필요 없음',
+    "로컬 캘린더",
   ],
   showcase: {
     eyebrow: '둘러보기',
@@ -140,8 +140,8 @@ export const HOME_KO: HomeCopy = {
     },
     tiles: [
       {
-        title: '회의 링크가 알아서 만들어집니다',
-        body: 'Google 달력에 일정을 만들면 Meet 링크가 붙고, Microsoft에 만들면 Teams 링크가 붙습니다. 누구도 무언가를 붙여 넣을 필요가 없습니다.',
+        title: "Meet · Teams",
+        body: "Google Meet 링크 · Microsoft Teams 링크",
         badge: 'Meet · Teams',
       },
       {
@@ -150,9 +150,9 @@ export const HOME_KO: HomeCopy = {
         badge: '한 번 누르기',
       },
       {
-        title: '당신의 달력은 당신 것으로',
-        body: '일정은 Apple, Google, Microsoft 각자의 인터페이스를 통해 읽어 기기에서 그립니다. 파는 것도 없고, 만들 계정도 없습니다.',
-        badge: '계정 없음',
+        title: "로컬 캘린더",
+        body: "로컬 캘린더는 계정 없이 사용할 수 있습니다. 캘린더 서비스 연결과 공유에는 로그인이 필요할 수 있습니다.",
+        badge: "로컬 캘린더",
       },
     ],
     sourceNotes: {
@@ -193,26 +193,15 @@ export const HOME_KO: HomeCopy = {
       },
       advanced: {
         name: 'Advanced',
-        tagline: '더 조용한 앱과 달력에 대한 더 깊은 제어.',
+        tagline: "어디에도 광고 없음",
         yearlyNote: '연간 15% 절약',
-        features: [
-          '어디에도 광고 없음',
-          'iCloud와 Google을 넘나드는 일정 관리',
-          'Google 캘린더 공유 권한',
-          'Google Meet 링크 자동 생성',
-          '우선 날씨 갱신',
-        ],
+        features: ["어디에도 광고 없음"],
       },
       premium: {
         name: 'Premium',
         tagline: 'Microsoft에 사는 업무 달력을 위해.',
         yearlyNote: '연간 16% 절약',
-        features: [
-          'Microsoft Outlook 및 Exchange 동기화',
-          'Microsoft Teams 링크 자동 생성',
-          '세 계정을 아우르는 완전한 관리',
-          '참석자와 초대 관리',
-        ],
+        features: ["Microsoft Calendar","Microsoft Teams 링크"],
       },
     },
   },
@@ -224,11 +213,11 @@ export const HOME_KO: HomeCopy = {
     items: [
       {
         q: 'Cloud Calendars를 쓰려면 계정이 필요한가요?',
-        a: '아니요. 앱은 Apple의 EventKit을 통해 이미 iPhone에 있는 달력을 읽으므로, 권한을 주는 순간 iCloud가 동작합니다. Google이나 Microsoft에 로그인하는 것은 그 달력들도 함께 보고 싶을 때뿐입니다.',
+        a: "로컬 캘린더는 계정 없이 사용할 수 있습니다. 캘린더 서비스 연결과 공유에는 로그인이 필요할 수 있습니다.",
       },
       {
         q: 'Google 캘린더 동기화가 정말 무료인가요?',
-        a: '네. Google 동기화, 모든 달력 보기, 완전한 날씨 허브, 모든 홈 화면 위젯, Google Meet 링크가 무료 단계에 들어 있습니다. Advanced는 광고를 없애고 달력 간 관리를 더하며, Premium은 Microsoft를 더합니다.',
+        a: "Google Calendar와 Google Meet 지원은 무료 플랜에 포함됩니다. Advanced는 광고를 제거하고, Premium은 Microsoft Calendar와 Teams를 추가합니다.",
       },
       {
         q: '날씨 데이터는 어디서 오나요?',
@@ -244,7 +233,7 @@ export const HOME_KO: HomeCopy = {
       },
       {
         q: '어떤 기기를 지원하나요?',
-        a: 'iOS 18 이상의 iPhone과 iPad입니다. 앱 크기는 약 35 MB입니다.',
+        a: "iPhone / iPad · iOS / iPadOS 18+",
       },
       {
         q: '구독은 어떻게 해지하나요?',
@@ -254,7 +243,7 @@ export const HOME_KO: HomeCopy = {
   },
   cta: {
     title: ['내일에는 이미', '예보가 붙어 있습니다.'],
-    lead: 'App Store에서 무료. 계정도, 설정 마법사도 없습니다 — 달력 접근을 허용하면 당신의 한 주는 이미 그 안에 있습니다.',
+    lead: "무료로 받기. 로컬 캘린더는 계정 없이 사용할 수 있습니다. 캘린더 서비스 연결과 공유에는 로그인이 필요할 수 있습니다.",
     fromRatings: '평가 {n}개 기준',
     download: '다운로드',
     requiresIos: 'iOS {v} 이상 필요',

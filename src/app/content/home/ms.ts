@@ -4,7 +4,7 @@ import { HomeCopy } from './types';
 export const HOME_MS: HomeCopy = {
   metaTitle: 'Cloud Calendars — iCloud, Google dan Outlook jadi satu',
   metaDescription:
-    'Kalendar iCloud, Google dan Outlook dalam satu paparan pada iPhone dan iPad. Percuma untuk mula, tanpa membuka akaun, cuaca setiap hari terus dalam kalendar.',
+    "Kalendar anda dan ramalan, di satu tempat. Dibina untuk iPhone dan iPad. iCloud · Google Calendar · Microsoft Calendar.",
   nav: {
     tour: 'Lawatan',
     widgets: 'Widget',
@@ -23,7 +23,7 @@ export const HOME_MS: HomeCopy = {
     lead: 'Setiap kalendar yang anda ada — iCloud, Google, Microsoft — di satu tempat, dengan ramalan terbina di dalam hari itu sendiri. Berhenti meneka rupa petang nanti.',
     seeItMove: 'Lihat ia bergerak',
     onTheAppStore: 'di App Store',
-    freeToStart: 'Percuma untuk mula — tanpa akaun',
+    freeToStart: "Muat turun percuma",
     scroll: 'Tatal',
     ratingLabel: '{r} daripada 5 berdasarkan {n} penilaian di App Store',
     altMonth: 'Paparan bulan Cloud Calendars dengan tanda pada setiap hari yang terisi',
@@ -42,7 +42,7 @@ export const HOME_MS: HomeCopy = {
     'Hari · Minggu · Bulan · Tahun',
     'Seret untuk memindahkan',
     'Angin dan tiupan',
-    'Tanpa akaun',
+    "Kalendar setempat",
   ],
   showcase: {
     eyebrow: 'Lawatan',
@@ -148,8 +148,8 @@ export const HOME_MS: HomeCopy = {
     },
     tiles: [
       {
-        title: 'Pautan mesyuarat, dijana untuk anda',
-        body: 'Cipta acara pada kalendar Google dan pautan Meet dilampirkan. Cipta pada Microsoft dan anda dapat pautan Teams. Tiada siapa perlu menampal apa-apa.',
+        title: "Meet · Teams",
+        body: "Pautan Google Meet · Pautan Microsoft Teams",
         badge: 'Meet · Teams',
       },
       {
@@ -158,9 +158,9 @@ export const HOME_MS: HomeCopy = {
         badge: 'Satu ketikan',
       },
       {
-        title: 'Kalendar anda kekal milik anda',
-        body: 'Acara dibaca melalui antara muka Apple, Google dan Microsoft sendiri lalu dilukis pada peranti. Tiada apa dijual, dan tiada akaun untuk dicipta.',
-        badge: 'Tanpa akaun',
+        title: "Kalendar setempat",
+        body: "Gunakan kalendar setempat tanpa akaun. Sambungan perkhidmatan kalendar dan perkongsian mungkin memerlukan log masuk.",
+        badge: "Kalendar setempat",
       },
     ],
     sourceNotes: {
@@ -201,26 +201,15 @@ export const HOME_MS: HomeCopy = {
       },
       advanced: {
         name: 'Advanced',
-        tagline: 'Aplikasi yang lebih tenang dan kawalan kalendar yang lebih dalam.',
+        tagline: "Tiada iklan, di mana-mana",
         yearlyNote: 'Jimat 15% setahun',
-        features: [
-          'Tiada iklan, di mana-mana',
-          'Pengurusan acara merentas kalendar iCloud dan Google',
-          'Kebenaran perkongsian Kalendar Google',
-          'Penjanaan automatik pautan Google Meet',
-          'Penyegaran cuaca keutamaan',
-        ],
+        features: ["Tiada iklan, di mana-mana"],
       },
       premium: {
         name: 'Premium',
         tagline: 'Untuk kalendar kerja yang tinggal di Microsoft.',
         yearlyNote: 'Jimat 16% setahun',
-        features: [
-          'Penyegerakan Microsoft Outlook dan Exchange',
-          'Pautan Microsoft Teams automatik',
-          'Pengurusan penuh merentas ketiga-tiga akaun',
-          'Pengurusan peserta dan jemputan',
-        ],
+        features: ["Microsoft Calendar","Pautan Microsoft Teams"],
       },
     },
   },
@@ -232,11 +221,11 @@ export const HOME_MS: HomeCopy = {
     items: [
       {
         q: 'Adakah saya perlukan akaun untuk menggunakan Cloud Calendars?',
-        a: 'Tidak. Aplikasi membaca kalendar yang sedia ada pada iPhone anda melalui EventKit milik Apple sendiri, jadi iCloud berfungsi sebaik anda memberi kebenaran. Anda hanya log masuk ke Google atau Microsoft jika mahu kalendar itu turut ada.',
+        a: "Gunakan kalendar setempat tanpa akaun. Sambungan perkhidmatan kalendar dan perkongsian mungkin memerlukan log masuk.",
       },
       {
         q: 'Adakah penyegerakan Kalendar Google benar-benar percuma?',
-        a: 'Ya. Penyegerakan Google, semua paparan kalendar, pusat cuaca lengkap, semua widget skrin utama dan pautan Google Meet ada dalam peringkat percuma. Advanced membuang iklan dan menambah pengurusan merentas kalendar; Premium menambah Microsoft.',
+        a: "Google Calendar dan Google Meet disertakan dalam pelan percuma. Advanced membuang iklan; Premium menambah Microsoft Calendar dan Teams.",
       },
       {
         q: 'Dari mana datangnya data cuaca?',
@@ -252,7 +241,7 @@ export const HOME_MS: HomeCopy = {
       },
       {
         q: 'Peranti apa yang disokong?',
-        a: 'iPhone dan iPad dengan iOS 18 atau lebih baharu. Aplikasi ini kira-kira 35 MB.',
+        a: "iPhone / iPad · iOS / iPadOS 18+",
       },
       {
         q: 'Bagaimana saya membatalkan langganan?',
@@ -262,7 +251,7 @@ export const HOME_MS: HomeCopy = {
   },
   cta: {
     title: ['Esok sudah pun datang', 'dengan ramalannya.'],
-    lead: 'Percuma di App Store. Tiada akaun, tiada wizard persediaan — beri akses kalendar dan minggu anda sudah pun di situ.',
+    lead: "Muat turun percuma. Gunakan kalendar setempat tanpa akaun. Sambungan perkhidmatan kalendar dan perkongsian mungkin memerlukan log masuk.",
     fromRatings: 'daripada {n} penilaian',
     download: 'muat turun',
     requiresIos: 'memerlukan iOS {v}',

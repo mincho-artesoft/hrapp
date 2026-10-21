@@ -4,7 +4,7 @@ import { HomeCopy } from './types';
 export const HOME_BG: HomeCopy = {
   metaTitle: 'Cloud Calendars — iCloud, Google и Outlook в един изглед',
   metaDescription:
-    'Календарите ви от iCloud, Google и Outlook в един изглед на iPhone и iPad. Безплатно начало, без регистрация, с прогнозата за всеки ден вътре в решетката.',
+    "Календарите ви и прогнозата, на едно място. Направено за iPhone и iPad. iCloud · Google Calendar · Microsoft Calendar.",
 
   nav: {
     tour: 'Обиколка',
@@ -25,7 +25,7 @@ export const HOME_BG: HomeCopy = {
     lead: 'Всички ваши календари — iCloud, Google, Microsoft — на едно място, с прогнозата, вградена в самия ден. Спрете да гадаете какъв ще е следобедът.',
     seeItMove: 'Вижте го в движение',
     onTheAppStore: 'в App Store',
-    freeToStart: 'Безплатно за начало — без регистрация',
+    freeToStart: "Изтеглете безплатно",
     scroll: 'Превъртете',
     ratingLabel: '{r} от 5 от {n} оценки в App Store',
     altMonth: 'Месечен изглед на Cloud Calendars с означения за събития на всеки ден',
@@ -45,7 +45,7 @@ export const HOME_BG: HomeCopy = {
     'Ден · Седмица · Месец · Година',
     'Влачене за преместване',
     'Вятър и пориви',
-    'Без регистрация',
+    "Локални календари",
   ],
 
   showcase: {
@@ -147,8 +147,8 @@ export const HOME_BG: HomeCopy = {
     },
     tiles: [
       {
-        title: 'Връзки за срещи, създадени вместо вас',
-        body: 'Създайте събитие в календар на Google и към него се закача връзка за Meet. Създайте го в Microsoft и получавате връзка за Teams. Никой не лепи нищо.',
+        title: "Meet · Teams",
+        body: "Връзки за Google Meet · Връзки за Microsoft Teams",
         badge: 'Meet · Teams',
       },
       {
@@ -157,9 +157,9 @@ export const HOME_BG: HomeCopy = {
         badge: 'Едно докосване',
       },
       {
-        title: 'Календарът ви си остава ваш',
-        body: 'Събитията се четат през собствените интерфейси на Apple, Google и Microsoft и се показват на устройството. Нищо не се продава и няма профил за създаване.',
-        badge: 'Без профил',
+        title: "Локални календари",
+        body: "Използвайте локални календари без профил. Свързването на календарни услуги и споделянето може да изискват вход.",
+        badge: "Локални календари",
       },
     ],
     sourceNotes: { builtIn: 'Вградено', twoWay: 'В двете посоки', premium: 'Premium' },
@@ -197,26 +197,15 @@ export const HOME_BG: HomeCopy = {
       },
       advanced: {
         name: 'Advanced',
-        tagline: 'По-тихо приложение и повече контрол над календара.',
+        tagline: "Никакви реклами, никъде",
         yearlyNote: 'Спестявате 15% годишно',
-        features: [
-          'Никакви реклами, никъде',
-          'Управление между календарите в iCloud и Google',
-          'Права за споделяне в Google Calendar',
-          'Автоматично създаване на връзки за Google Meet',
-          'Приоритетно обновяване на времето',
-        ],
+        features: ["Никакви реклами, никъде"],
       },
       premium: {
         name: 'Premium',
         tagline: 'За работни календари, които живеят в Microsoft.',
         yearlyNote: 'Спестявате 16% годишно',
-        features: [
-          'Синхронизация с Microsoft Outlook и Exchange',
-          'Автоматични връзки за Microsoft Teams',
-          'Пълно управление между календарите и в трите профила',
-          'Управление на участници и покани',
-        ],
+        features: ["Microsoft Calendar","Връзки за Microsoft Teams"],
       },
     },
   },
@@ -229,11 +218,11 @@ export const HOME_BG: HomeCopy = {
     items: [
       {
         q: 'Нужен ли ми е профил, за да ползвам Cloud Calendars?',
-        a: 'Не. Приложението чете календарите, които вече са на вашия iPhone, през собствения EventKit на Apple, така че iCloud работи в мига, в който дадете разрешение. Влизате в Google или Microsoft само ако искате и техните календари да са вътре.',
+        a: "Използвайте локални календари без профил. Свързването на календарни услуги и споделянето може да изискват вход.",
       },
       {
         q: 'Наистина ли синхронизацията с Google Calendar е безплатна?',
-        a: 'Да. Синхронизацията с Google, всички изгледи, целият център за времето, всички уиджети и връзките за Google Meet са в безплатното ниво. Advanced маха рекламите и добавя управление между календарите; Premium добавя Microsoft.',
+        a: "Google Calendar и Google Meet са включени в безплатния план. Advanced премахва рекламите; Premium добавя Microsoft Calendar и Teams.",
       },
       {
         q: 'Откъде идват данните за времето?',
@@ -249,7 +238,7 @@ export const HOME_BG: HomeCopy = {
       },
       {
         q: 'Кои устройства се поддържат?',
-        a: 'iPhone и iPad с iOS 18 или по-нов. Приложението е около 35 MB.',
+        a: "iPhone / iPad · iOS / iPadOS 18+",
       },
       {
         q: 'Как да откажа абонамент?',
@@ -260,7 +249,7 @@ export const HOME_BG: HomeCopy = {
 
   cta: {
     title: ['Утре вече има', 'прикачена прогноза.'],
-    lead: 'Безплатно в App Store. Без профил и без съветник за настройка — дайте достъп до календара и седмицата ви вече е там.',
+    lead: "Изтеглете безплатно. Използвайте локални календари без профил. Свързването на календарни услуги и споделянето може да изискват вход.",
     fromRatings: 'от {n} оценки',
     download: 'изтегляния',
     requiresIos: 'изисква iOS {v}',

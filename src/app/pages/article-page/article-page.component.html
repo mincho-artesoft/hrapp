@@ -74,6 +74,17 @@
       </section>
     }
 
+    @if (article.sources?.length) {
+      <section class="article__sources">
+        <h2>{{ article.sourcesHeading }}</h2>
+        <ul>
+          @for (source of article.sources; track source.url) {
+            <li><a [href]="source.url" target="_blank" rel="noopener">{{ source.label }}</a></li>
+          }
+        </ul>
+      </section>
+    }
+
     @if (seeAlso.length) {
       <section class="article__related">
         <h2>{{ chrome.seeAlso }}</h2>

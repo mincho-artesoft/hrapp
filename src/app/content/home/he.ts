@@ -4,7 +4,7 @@ import { HomeCopy } from './types';
 export const HOME_HE: HomeCopy = {
   metaTitle: 'Cloud Calendars — iCloud, Google ו‑Outlook בתצוגה אחת',
   metaDescription:
-    'היומנים שלכם מ‑iCloud, מ‑Google ומ‑Outlook בתצוגה אחת ב‑iPhone וב‑iPad. חינם להתחלה, בלי לפתוח חשבון, ומזג האוויר של כל יום בתוך הלוח עצמו.',
+    "היומנים שלכם והתחזית, במקום אחד. בנוי ל‑iPhone ול‑iPad. iCloud · Google Calendar · Microsoft Calendar.",
   nav: {
     tour: 'סיור',
     widgets: 'ווידג׳טים',
@@ -23,7 +23,7 @@ export const HOME_HE: HomeCopy = {
     lead: 'כל יומן שיש לכם — iCloud, Google, Microsoft — במקום אחד, כשהתחזית בנויה בתוך היום עצמו. די לנחש איך ייראה אחר הצהריים.',
     seeItMove: 'ראו אותו בתנועה',
     onTheAppStore: 'ב‑App Store',
-    freeToStart: 'חינם להתחלה — בלי חשבון',
+    freeToStart: "הורדה חינם",
     scroll: 'גללו',
     ratingLabel: '{r} מתוך 5 על סמך {n} דירוגים ב‑App Store',
     altMonth: 'תצוגת חודש של Cloud Calendars עם סימון בכל יום תפוס',
@@ -42,7 +42,7 @@ export const HOME_HE: HomeCopy = {
     'יום · שבוע · חודש · שנה',
     'גררו כדי להזיז',
     'רוח ומשבים',
-    'בלי חשבון',
+    "לוחות שנה מקומיים",
   ],
   showcase: {
     eyebrow: 'הסיור',
@@ -140,8 +140,8 @@ export const HOME_HE: HomeCopy = {
     },
     tiles: [
       {
-        title: 'קישורי פגישה שנוצרים עבורכם',
-        body: 'צרו אירוע ביומן Google ויצורף אליו קישור Meet. צרו אותו ב‑Microsoft ותקבלו קישור Teams. אף אחד לא צריך להדביק דבר.',
+        title: "Meet · Teams",
+        body: "קישורי Google Meet · קישורי Microsoft Teams",
         badge: 'Meet · Teams',
       },
       {
@@ -150,9 +150,9 @@ export const HOME_HE: HomeCopy = {
         badge: 'נגיעה אחת',
       },
       {
-        title: 'היומן שלכם נשאר שלכם',
-        body: 'האירועים נקראים דרך הממשקים של Apple, Google ו‑Microsoft עצמן ומצוירים על המכשיר. שום דבר אינו נמכר, ואין חשבון ליצור.',
-        badge: 'בלי חשבון',
+        title: "לוחות שנה מקומיים",
+        body: "אפשר להשתמש בלוחות שנה מקומיים ללא חשבון. חיבור שירותי יומן ושיתוף עשויים לדרוש כניסה לחשבון.",
+        badge: "לוחות שנה מקומיים",
       },
     ],
     sourceNotes: {
@@ -193,26 +193,15 @@ export const HOME_HE: HomeCopy = {
       },
       advanced: {
         name: 'Advanced',
-        tagline: 'אפליקציה שקטה יותר ושליטה עמוקה יותר ביומן.',
+        tagline: "בלי פרסומות, בשום מקום",
         yearlyNote: 'חיסכון של 15% בשנה',
-        features: [
-          'בלי פרסומות, בשום מקום',
-          'ניהול אירועים בין יומני iCloud ו‑Google',
-          'הרשאות שיתוף ביומן Google',
-          'יצירה אוטומטית של קישורי Google Meet',
-          'רענון מזג אוויר בעדיפות',
-        ],
+        features: ["בלי פרסומות, בשום מקום"],
       },
       premium: {
         name: 'Premium',
         tagline: 'ליומני עבודה שחיים ב‑Microsoft.',
         yearlyNote: 'חיסכון של 16% בשנה',
-        features: [
-          'סנכרון Microsoft Outlook ו‑Exchange',
-          'קישורי Microsoft Teams אוטומטיים',
-          'ניהול מלא בין שלושת החשבונות',
-          'ניהול משתתפים והזמנות',
-        ],
+        features: ["Microsoft Calendar","קישורי Microsoft Teams"],
       },
     },
   },
@@ -224,11 +213,11 @@ export const HOME_HE: HomeCopy = {
     items: [
       {
         q: 'האם אני צריך חשבון כדי להשתמש ב‑Cloud Calendars?',
-        a: 'לא. האפליקציה קוראת את היומנים שכבר נמצאים ב‑iPhone שלכם דרך EventKit של Apple עצמה, כך ש‑iCloud עובד ברגע שאתם נותנים הרשאה. אתם מתחברים ל‑Google או ל‑Microsoft רק אם אתם רוצים גם את היומנים האלה.',
+        a: "אפשר להשתמש בלוחות שנה מקומיים ללא חשבון. חיבור שירותי יומן ושיתוף עשויים לדרוש כניסה לחשבון.",
       },
       {
         q: 'האם סנכרון יומן Google באמת חינמי?',
-        a: 'כן. סנכרון Google, כל תצוגות היומן, מרכז מזג האוויר המלא, כל הווידג׳טים במסך הבית וקישורי Google Meet נכללים בשכבה החינמית. Advanced מסירה את הפרסומות ומוסיפה ניהול בין יומנים; Premium מוסיפה את Microsoft.',
+        a: "Google Calendar ו-Google Meet כלולים במסלול החינמי. Advanced מסיר פרסומות; Premium מוסיף את Microsoft Calendar ואת Teams.",
       },
       {
         q: 'מאיפה מגיעים נתוני מזג האוויר?',
@@ -244,7 +233,7 @@ export const HOME_HE: HomeCopy = {
       },
       {
         q: 'אילו מכשירים נתמכים?',
-        a: 'iPhone ו‑iPad עם iOS 18 ואילך. גודל האפליקציה כ‑35 מ״ב.',
+        a: "iPhone / iPad · iOS / iPadOS 18+",
       },
       {
         q: 'איך מבטלים מנוי?',
@@ -254,7 +243,7 @@ export const HOME_HE: HomeCopy = {
   },
   cta: {
     title: ['למחר כבר יש', 'תחזית מצורפת.'],
-    lead: 'חינם ב‑App Store. בלי חשבון ובלי אשף התקנה — תנו גישה ליומן והשבוע שלכם כבר שם.',
+    lead: "הורדה חינם. אפשר להשתמש בלוחות שנה מקומיים ללא חשבון. חיבור שירותי יומן ושיתוף עשויים לדרוש כניסה לחשבון.",
     fromRatings: 'מתוך {n} דירוגים',
     download: 'הורדה',
     requiresIos: 'דורש iOS {v}',

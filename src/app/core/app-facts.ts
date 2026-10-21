@@ -8,7 +8,7 @@ export const APP_NAME = 'Cloud Calendars';
 /** Exactly as Apple prints it. EOOD is the Bulgarian single-member limited
  *  form; a reader matching this against a receipt will not find 'Ltd'. */
 export const APP_DEVELOPER = 'ARTE SOFT EOOD';
-export const APP_VERSION = '1.7.0';
+export const APP_VERSION = '1.7.3';
 /**
  * The release that introduced the widgets and the Live Activity.
  *
@@ -18,12 +18,12 @@ export const APP_VERSION = '1.7.0';
  * shipped last -- "New in 1.6.1" for a feature from 1.5.
  */
 export const WIDGETS_SINCE = '1.5';
-/** Verified against the store 2026-08-28. Quote it with the count below:
+/** Verified against the US store 2026-10-21. Quote it with the count below:
  *  an average without its sample size is a claim without a scale. */
-export const APP_RATING = 4.4;
-export const APP_RATING_COUNT = 8;
+export const APP_RATING = 4.5;
+export const APP_RATING_COUNT = 12;
 export const APP_MIN_IOS = '18.0';
-export const APP_SIZE_MB = 35.4;
+export const APP_SIZE_MB = 49.8;
 export const SITE_URL = 'https://www.cloud-calendars.com';
 export const SUPPORT_EMAIL = 'support@cloud-calendars.com';
 
@@ -59,7 +59,7 @@ export const PLANS: Plan[] = [
   {
     id: 'advanced',
     name: 'Advanced',
-    tagline: 'A quieter app and deeper calendar control.',
+    tagline: 'All Free features, without ads.',
     monthly: '0.49',
     yearly: '4.99',
     yearlyNote: 'Save 15% yearly',
@@ -67,10 +67,6 @@ export const PLANS: Plan[] = [
     inherits: 'Free',
     features: [
       { label: 'No ads, anywhere', strong: true },
-      { label: 'Cross-calendar management across iCloud and Google' },
-      { label: 'Google Calendar sharing permissions' },
-      { label: 'Automatic Google Meet link generation' },
-      { label: 'Priority weather refresh' },
     ],
   },
   {
@@ -82,10 +78,8 @@ export const PLANS: Plan[] = [
     yearlyNote: 'Save 16% yearly',
     inherits: 'Advanced',
     features: [
-      { label: 'Microsoft Outlook & Exchange sync', strong: true },
-      { label: 'Automatic Microsoft Teams links', strong: true },
-      { label: 'Full cross-calendar management across all three accounts' },
-      { label: 'Attendee management and invitations' },
+      { label: 'Microsoft Calendar sync', strong: true },
+      { label: 'Microsoft Teams links', strong: true },
     ],
   },
 ];

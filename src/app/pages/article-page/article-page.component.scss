@@ -3,6 +3,8 @@
   margin: 0 auto;
   padding: clamp(32px, 6vw, 72px) 20px 80px;
   display: grid;
+  grid-template-columns: minmax(0, 1fr);
+  overflow-wrap: anywhere;
   gap: clamp(28px, 4vw, 44px);
 }
 

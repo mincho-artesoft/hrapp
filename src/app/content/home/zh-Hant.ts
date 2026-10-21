@@ -4,7 +4,7 @@ import { HomeCopy } from './types';
 export const HOME_ZH_HANT: HomeCopy = {
   metaTitle: 'Cloud Calendars — iCloud、Google 與 Outlook 合為一個檢視',
   metaDescription:
-    '在 iPhone 和 iPad 上，把 iCloud、Google 與 Outlook 的日曆放進同一個檢視畫面。免費開始，不必註冊帳號，每天的天氣就在格子裡。',
+    "把你的行事曆和預報放在同一個地方。為 iPhone 和 iPad 打造。 iCloud · Google Calendar · Microsoft Calendar.",
   nav: {
     tour: '導覽',
     widgets: '小工具',
@@ -23,7 +23,7 @@ export const HOME_ZH_HANT: HomeCopy = {
     lead: '你手上的每一本行事曆——iCloud、Google、Microsoft——都在同一個地方，預報就長在那一天裡面。別再猜下午是什麼樣子了。',
     seeItMove: '看它動起來',
     onTheAppStore: '在 App Store',
-    freeToStart: '免費開始 — 不用註冊',
+    freeToStart: "免費下載",
     scroll: '向下捲動',
     ratingLabel: '來自 App Store {n} 則評分，5 分制得 {r} 分',
     altMonth: 'Cloud Calendars 月檢視，每個有安排的日子都有標記',
@@ -42,7 +42,7 @@ export const HOME_ZH_HANT: HomeCopy = {
     '日 · 週 · 月 · 年',
     '拖曳即可改期',
     '風與陣風',
-    '無須帳號',
+    "本機行事曆",
   ],
   showcase: {
     eyebrow: '導覽',
@@ -140,8 +140,8 @@ export const HOME_ZH_HANT: HomeCopy = {
     },
     tiles: [
       {
-        title: '會議連結，替你產生好',
-        body: '在 Google 日曆上建一個行程，就會帶上 Meet 連結；在 Microsoft 上建，就得到 Teams 連結。誰都不用去貼上什麼。',
+        title: "Meet · Teams",
+        body: "Google Meet 連結 · Microsoft Teams 連結",
         badge: 'Meet · Teams',
       },
       {
@@ -150,9 +150,9 @@ export const HOME_ZH_HANT: HomeCopy = {
         badge: '一次輕點',
       },
       {
-        title: '你的行事曆還是你的',
-        body: '行程是透過 Apple、Google 和 Microsoft 各自的介面讀取、在裝置上繪製的。沒有什麼被拿去賣，也沒有帳號要註冊。',
-        badge: '無須帳號',
+        title: "本機行事曆",
+        body: "本機行事曆無需帳號即可使用。連接行事曆服務和共享功能可能需要登入。",
+        badge: "本機行事曆",
       },
     ],
     sourceNotes: {
@@ -193,26 +193,15 @@ export const HOME_ZH_HANT: HomeCopy = {
       },
       advanced: {
         name: 'Advanced',
-        tagline: '一個更安靜的 App，和對行事曆更深的掌控。',
+        tagline: "任何地方都沒有廣告",
         yearlyNote: '按年省 15%',
-        features: [
-          '任何地方都沒有廣告',
-          '跨 iCloud 與 Google 行事曆管理行程',
-          'Google 日曆共用權限',
-          '自動產生 Google Meet 連結',
-          '天氣優先更新',
-        ],
+        features: ["任何地方都沒有廣告"],
       },
       premium: {
         name: 'Premium',
         tagline: '為住在 Microsoft 上的工作行事曆而設。',
         yearlyNote: '按年省 16%',
-        features: [
-          'Microsoft Outlook 與 Exchange 同步',
-          '自動的 Microsoft Teams 連結',
-          '跨全部三個帳號的完整管理',
-          '參與者與邀請管理',
-        ],
+        features: ["Microsoft Calendar","Microsoft Teams 連結"],
       },
     },
   },
@@ -224,11 +213,11 @@ export const HOME_ZH_HANT: HomeCopy = {
     items: [
       {
         q: '用 Cloud Calendars 需要註冊帳號嗎？',
-        a: '不需要。App 透過 Apple 自家的 EventKit 讀取你 iPhone 上已有的行事曆，所以你一授權，iCloud 就能用。只有當你也想把 Google 或 Microsoft 的行事曆放進來時，才需要登入。',
+        a: "本機行事曆無需帳號即可使用。連接行事曆服務和共享功能可能需要登入。",
       },
       {
         q: 'Google 日曆同步真的免費嗎？',
-        a: '是的。Google 同步、所有行事曆檢視、完整的天氣中心、全部主畫面小工具和 Google Meet 連結都在免費層裡。Advanced 去掉廣告並加入跨行事曆管理；Premium 加入 Microsoft。',
+        a: "免費方案包含 Google Calendar 和 Google Meet 支援。Advanced 移除廣告；Premium 增加 Microsoft Calendar 和 Teams。",
       },
       {
         q: '天氣資料來自哪裡？',
@@ -244,7 +233,7 @@ export const HOME_ZH_HANT: HomeCopy = {
       },
       {
         q: '支援哪些裝置？',
-        a: '執行 iOS 18 或更新版本的 iPhone 和 iPad。App 大約 35 MB。',
+        a: "iPhone / iPad · iOS / iPadOS 18+",
       },
       {
         q: '怎麼取消訂閱？',
@@ -254,7 +243,7 @@ export const HOME_ZH_HANT: HomeCopy = {
   },
   cta: {
     title: ['明天早就', '帶著預報來了。'],
-    lead: 'App Store 上免費。沒有帳號，沒有設定精靈——授予行事曆權限，你的這一週就已經在裡面了。',
+    lead: "免費下載. 本機行事曆無需帳號即可使用。連接行事曆服務和共享功能可能需要登入。",
     fromRatings: '來自 {n} 則評分',
     download: '下載',
     requiresIos: '需要 iOS {v}',

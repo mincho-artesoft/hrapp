@@ -4,7 +4,7 @@ import { HomeCopy } from './types';
 export const HOME_FI: HomeCopy = {
   metaTitle: 'Cloud Calendars — iCloud, Google ja Outlook yhdessä',
   metaDescription:
-    'iCloudin, Googlen ja Outlookin kalenterit yhdessä näkymässä iPhonessa ja iPadissa. Aloitus ilmaiseksi, ei tunnusta luotavaksi, päivän sää kalenterissa.',
+    "Kalenterisi ja ennuste yhdessä paikassa. Rakennettu iPhonelle ja iPadille. iCloud · Google Calendar · Microsoft Calendar.",
   nav: {
     tour: 'Kierros',
     widgets: 'Widgetit',
@@ -23,7 +23,7 @@ export const HOME_FI: HomeCopy = {
     lead: 'Jokainen kalenteri, joka sinulla on — iCloud, Google, Microsoft — yhdessä paikassa, ennuste itse päivän sisään rakennettuna. Lopeta arvailu siitä, miltä iltapäivä näyttää.',
     seeItMove: 'Katso liikkeessä',
     onTheAppStore: 'App Storessa',
-    freeToStart: 'Ilmainen aloittaa — tiliä ei tarvita',
+    freeToStart: "Lataa ilmaiseksi",
     scroll: 'Vieritä',
     ratingLabel: '{r}/5 {n} App Store -arvion perusteella',
     altMonth: 'Cloud Calendarsin kuukausinäkymä, merkintä jokaisella varatulla päivällä',
@@ -42,7 +42,7 @@ export const HOME_FI: HomeCopy = {
     'Päivä · Viikko · Kuukausi · Vuosi',
     'Vedä siirtääksesi',
     'Tuuli ja puuskat',
-    'Ei tiliä',
+    "Paikalliset kalenterit",
   ],
   showcase: {
     eyebrow: 'Kierros',
@@ -148,8 +148,8 @@ export const HOME_FI: HomeCopy = {
     },
     tiles: [
       {
-        title: 'Kokouslinkit, luotuina puolestasi',
-        body: 'Luo tapahtuma Google-kalenteriin, ja Meet-linkki liittyy siihen. Luo se Microsoftiin, ja saat Teams-linkin. Kenenkään ei tarvitse liittää mitään.',
+        title: "Meet · Teams",
+        body: "Google Meet -linkit · Microsoft Teams -linkit",
         badge: 'Meet · Teams',
       },
       {
@@ -158,9 +158,9 @@ export const HOME_FI: HomeCopy = {
         badge: 'Yksi kosketus',
       },
       {
-        title: 'Kalenterisi pysyy sinun',
-        body: 'Tapahtumat luetaan Applen, Googlen ja Microsoftin omien rajapintojen kautta ja piirretään laitteella. Mitään ei myydä, eikä tiliä tarvitse luoda.',
-        badge: 'Ei tiliä',
+        title: "Paikalliset kalenterit",
+        body: "Käytä paikallisia kalentereita ilman tiliä. Kalenteripalveluiden yhdistäminen ja jakaminen voivat edellyttää kirjautumista.",
+        badge: "Paikalliset kalenterit",
       },
     ],
     sourceNotes: {
@@ -201,26 +201,15 @@ export const HOME_FI: HomeCopy = {
       },
       advanced: {
         name: 'Advanced',
-        tagline: 'Hiljaisempi sovellus ja enemmän otetta kalenteriin.',
+        tagline: "Ei mainoksia, ei missään",
         yearlyNote: 'Säästä 15 % vuodessa',
-        features: [
-          'Ei mainoksia, ei missään',
-          'Tapahtumien hallinta iCloud- ja Google-kalentereiden välillä',
-          'Google-kalenterin jako-oikeudet',
-          'Google Meet -linkkien automaattinen luonti',
-          'Etusija sään päivityksessä',
-        ],
+        features: ["Ei mainoksia, ei missään"],
       },
       premium: {
         name: 'Premium',
         tagline: 'Työkalentereille, jotka asuvat Microsoftilla.',
         yearlyNote: 'Säästä 16 % vuodessa',
-        features: [
-          'Microsoft Outlookin ja Exchangen synkronointi',
-          'Automaattiset Microsoft Teams -linkit',
-          'Täysi hallinta kaikkien kolmen tilin välillä',
-          'Osallistujien ja kutsujen hallinta',
-        ],
+        features: ["Microsoft Calendar","Microsoft Teams -linkit"],
       },
     },
   },
@@ -232,11 +221,11 @@ export const HOME_FI: HomeCopy = {
     items: [
       {
         q: 'Tarvitsenko tilin käyttääkseni Cloud Calendarsia?',
-        a: 'Et. Sovellus lukee iPhonellasi jo olevat kalenterit Applen oman EventKitin kautta, joten iCloud toimii heti kun annat luvan. Kirjaudut Googleen tai Microsoftiin vain, jos haluat myös ne kalenterit mukaan.',
+        a: "Käytä paikallisia kalentereita ilman tiliä. Kalenteripalveluiden yhdistäminen ja jakaminen voivat edellyttää kirjautumista.",
       },
       {
         q: 'Onko Google-kalenterin synkronointi todella ilmainen?',
-        a: 'Kyllä. Google-synkronointi, kaikki kalenterinäkymät, koko sääkeskus, kaikki alkunäytön widgetit ja Google Meet -linkit kuuluvat ilmaiseen tasoon. Advanced poistaa mainokset ja lisää hallinnan kalentereiden välillä; Premium lisää Microsoftin.',
+        a: "Google Calendar ja Google Meet sisältyvät ilmaiseen pakettiin. Advanced poistaa mainokset; Premium lisää Microsoft Calendarin ja Teamsin.",
       },
       {
         q: 'Mistä säätiedot tulevat?',
@@ -252,7 +241,7 @@ export const HOME_FI: HomeCopy = {
       },
       {
         q: 'Mitä laitteita tuetaan?',
-        a: 'iPhone ja iPad, joissa on iOS 18 tai uudempi. Sovellus on noin 35 Mt.',
+        a: "iPhone / iPad · iOS / iPadOS 18+",
       },
       {
         q: 'Miten perun tilauksen?',
@@ -262,7 +251,7 @@ export const HOME_FI: HomeCopy = {
   },
   cta: {
     title: ['Huomisella on jo', 'ennuste mukanaan.'],
-    lead: 'Ilmainen App Storessa. Ei tiliä, ei käyttöönottovelhoa — anna pääsy kalenteriin, ja viikkosi on jo siellä.',
+    lead: "Lataa ilmaiseksi. Käytä paikallisia kalentereita ilman tiliä. Kalenteripalveluiden yhdistäminen ja jakaminen voivat edellyttää kirjautumista.",
     fromRatings: '{n} arviosta',
     download: 'lataus',
     requiresIos: 'vaatii iOS {v}',

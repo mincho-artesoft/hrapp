@@ -4,7 +4,7 @@ import { HomeCopy } from './types';
 export const HOME_AR_SA: HomeCopy = {
   metaTitle: 'Cloud Calendars — iCloud وGoogle وOutlook في شاشة واحدة',
   metaDescription:
-    'تقاويم iCloud وGoogle وOutlook في شاشة واحدة على iPhone وiPad. البداية مجانية، بلا حساب جديد، وطقس كل يوم داخل التقويم نفسه.',
+    "تقاويمك والتوقعات في مكان واحد. مبنيّ لـ iPhone وiPad. iCloud · Google Calendar · Microsoft Calendar.",
   nav: {
     tour: 'جولة',
     widgets: 'عناصر الواجهة',
@@ -23,7 +23,7 @@ export const HOME_AR_SA: HomeCopy = {
     lead: 'كل تقويم لديك — iCloud وGoogle وMicrosoft — في مكان واحد، والتوقعات مبنية داخل اليوم نفسه. كفى تخمينًا لشكل بعد الظهر.',
     seeItMove: 'شاهده وهو يتحرك',
     onTheAppStore: 'على App Store',
-    freeToStart: 'البداية مجانية — دون حساب',
+    freeToStart: "نزّله مجانًا",
     scroll: 'مرّر',
     ratingLabel: '{r} من 5 استنادًا إلى {n} تقييمًا على App Store',
     altMonth: 'عرض الشهر في Cloud Calendars مع علامة على كل يوم مشغول',
@@ -42,7 +42,7 @@ export const HOME_AR_SA: HomeCopy = {
     'يوم · أسبوع · شهر · سنة',
     'اسحب لتنقل',
     'رياح وهبّات',
-    'لا حاجة إلى حساب',
+    "تقويمات محلية",
   ],
   showcase: {
     eyebrow: 'الجولة',
@@ -140,8 +140,8 @@ export const HOME_AR_SA: HomeCopy = {
     },
     tiles: [
       {
-        title: 'روابط اجتماعات تُنشأ نيابةً عنك',
-        body: 'أنشئ حدثًا في تقويم Google فيُرفَق به رابط Meet. أنشئه لدى Microsoft فتحصل على رابط Teams. لا أحد مضطر إلى لصق شيء.',
+        title: "Meet · Teams",
+        body: "روابط Google Meet · روابط Microsoft Teams",
         badge: 'Meet · Teams',
       },
       {
@@ -150,9 +150,9 @@ export const HOME_AR_SA: HomeCopy = {
         badge: 'لمسة واحدة',
       },
       {
-        title: 'تقويمك يبقى تقويمك',
-        body: 'تُقرأ الأحداث عبر واجهات Apple وGoogle وMicrosoft نفسها وتُرسم على الجهاز. لا شيء يُباع، ولا حساب لإنشائه.',
-        badge: 'بلا حساب',
+        title: "تقويمات محلية",
+        body: "يمكنك استخدام التقويمات المحلية دون حساب. قد يتطلب ربط خدمات التقويم والمشاركة تسجيل الدخول.",
+        badge: "تقويمات محلية",
       },
     ],
     sourceNotes: {
@@ -193,26 +193,15 @@ export const HOME_AR_SA: HomeCopy = {
       },
       advanced: {
         name: 'Advanced',
-        tagline: 'تطبيق أهدأ وتحكّم أعمق في التقويم.',
+        tagline: "لا إعلانات في أي مكان",
         yearlyNote: 'وفّر 15% سنويًا',
-        features: [
-          'لا إعلانات في أي مكان',
-          'إدارة الأحداث عبر تقاويم iCloud وGoogle',
-          'أذونات مشاركة تقويم Google',
-          'إنشاء روابط Google Meet تلقائيًا',
-          'تحديث الطقس بأولوية',
-        ],
+        features: ["لا إعلانات في أي مكان"],
       },
       premium: {
         name: 'Premium',
         tagline: 'لتقاويم العمل التي تعيش لدى Microsoft.',
         yearlyNote: 'وفّر 16% سنويًا',
-        features: [
-          'مزامنة Microsoft Outlook وExchange',
-          'روابط Microsoft Teams تلقائية',
-          'إدارة كاملة عبر الحسابات الثلاثة',
-          'إدارة المشاركين والدعوات',
-        ],
+        features: ["Microsoft Calendar","روابط Microsoft Teams"],
       },
     },
   },
@@ -224,11 +213,11 @@ export const HOME_AR_SA: HomeCopy = {
     items: [
       {
         q: 'هل أحتاج إلى حساب لاستخدام Cloud Calendars؟',
-        a: 'لا. يقرأ التطبيق التقاويم الموجودة أصلًا على iPhone عبر EventKit من Apple نفسها، فيعمل iCloud لحظة منحك الإذن. ولا تسجّل الدخول إلى Google أو Microsoft إلا إذا أردت تلك التقاويم أيضًا.',
+        a: "يمكنك استخدام التقويمات المحلية دون حساب. قد يتطلب ربط خدمات التقويم والمشاركة تسجيل الدخول.",
       },
       {
         q: 'هل مزامنة تقويم Google مجانية فعلًا؟',
-        a: 'نعم. مزامنة Google وكل عروض التقويم ومركز الطقس الكامل وجميع عناصر واجهة الشاشة الرئيسية وروابط Google Meet ضمن المستوى المجاني. يزيل Advanced الإعلانات ويضيف الإدارة عبر التقاويم؛ ويضيف Premium خدمة Microsoft.',
+        a: "يشمل الإصدار المجاني دعم Google Calendar وGoogle Meet. يزيل Advanced الإعلانات؛ ويضيف Premium خدمات Microsoft Calendar وTeams.",
       },
       {
         q: 'من أين تأتي بيانات الطقس؟',
@@ -244,7 +233,7 @@ export const HOME_AR_SA: HomeCopy = {
       },
       {
         q: 'ما الأجهزة المدعومة؟',
-        a: 'iPhone وiPad بنظام iOS 18 أو أحدث. وحجم التطبيق نحو 35 ميغابايت.',
+        a: "iPhone / iPad · iOS / iPadOS 18+",
       },
       {
         q: 'كيف ألغي اشتراكًا؟',
@@ -254,7 +243,7 @@ export const HOME_AR_SA: HomeCopy = {
   },
   cta: {
     title: ['الغد يأتي أصلًا', 'ومعه توقعاته.'],
-    lead: 'مجانًا على App Store. لا حساب ولا معالج إعداد — امنح الوصول إلى التقويم، وأسبوعك موجود هناك سلفًا.',
+    lead: "نزّله مجانًا. يمكنك استخدام التقويمات المحلية دون حساب. قد يتطلب ربط خدمات التقويم والمشاركة تسجيل الدخول.",
     fromRatings: 'من {n} تقييمًا',
     download: 'التنزيل',
     requiresIos: 'يتطلب iOS {v}',

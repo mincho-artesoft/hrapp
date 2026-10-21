@@ -1,0 +1,223 @@
+{
+  "checkedAt": "2026-10-21T15:43:41.477082+00:00",
+  "routes": [
+    {
+      "locale": "en-US",
+      "path": "/",
+      "status": 200,
+      "matches_build": true,
+      "bytes": 188295
+    },
+    {
+      "locale": "ar-SA",
+      "path": "/ar/",
+      "status": 200,
+      "matches_build": true,
+      "bytes": 192943
+    },
+    {
+      "locale": "bg",
+      "path": "/bg/",
+      "status": 200,
+      "matches_build": true,
+      "bytes": 196201
+    },
+    {
+      "locale": "cs",
+      "path": "/cs/",
+      "status": 200,
+      "matches_build": true,
+      "bytes": 189510
+    },
+    {
+      "locale": "da",
+      "path": "/da/",
+      "status": 200,
+      "matches_build": true,
+      "bytes": 188958
+    },
+    {
+      "locale": "de-DE",
+      "path": "/de/",
+      "status": 200,
+      "matches_build": true,
+      "bytes": 189752
+    },
+    {
+      "locale": "el",
+      "path": "/el/",
+      "status": 200,
+      "matches_build": true,
+      "bytes": 198272
+    },
+    {
+      "locale": "es-ES",
+      "path": "/es/",
+      "status": 200,
+      "matches_build": true,
+      "bytes": 189821
+    },
+    {
+      "locale": "fi",
+      "path": "/fi/",
+      "status": 200,
+      "matches_build": true,
+      "bytes": 189600
+    },
+    {
+      "locale": "fr-FR",
+      "path": "/fr/",
+      "status": 200,
+      "matches_build": true,
+      "bytes": 190805
+    },
+    {
+      "locale": "he",
+      "path": "/he/",
+      "status": 200,
+      "matches_build": true,
+      "bytes": 192346
+    },
+    {
+      "locale": "hi",
+      "path": "/hi/",
+      "status": 200,
+      "matches_build": true,
+      "bytes": 201597
+    },
+    {
+      "locale": "hu",
+      "path": "/hu/",
+      "status": 200,
+      "matches_build": true,
+      "bytes": 190733
+    },
+    {
+      "locale": "id",
+      "path": "/id/",
+      "status": 200,
+      "matches_build": true,
+      "bytes": 189163
+    },
+    {
+      "locale": "it",
+      "path": "/it/",
+      "status": 200,
+      "matches_build": true,
+      "bytes": 189761
+    },
+    {
+      "locale": "ja",
+      "path": "/ja/",
+      "status": 200,
+      "matches_build": true,
+      "bytes": 190800
+    },
+    {
+      "locale": "ko",
+      "path": "/ko/",
+      "status": 200,
+      "matches_build": true,
+      "bytes": 189582
+    },
+    {
+      "locale": "ms",
+      "path": "/ms/",
+      "status": 200,
+      "matches_build": true,
+      "bytes": 189277
+    },
+    {
+      "locale": "nl-NL",
+      "path": "/nl/",
+      "status": 200,
+      "matches_build": true,
+      "bytes": 189361
+    },
+    {
+      "locale": "no",
+      "path": "/no/",
+      "status": 200,
+      "matches_build": true,
+      "bytes": 188917
+    },
+    {
+      "locale": "pl",
+      "path": "/pl/",
+      "status": 200,
+      "matches_build": true,
+      "bytes": 189644
+    },
+    {
+      "locale": "pt-BR",
+      "path": "/pt/",
+      "status": 200,
+      "matches_build": true,
+      "bytes": 189479
+    },
+    {
+      "locale": "ro",
+      "path": "/ro/",
+      "status": 200,
+      "matches_build": true,
+      "bytes": 190078
+    },
+    {
+      "locale": "ru",
+      "path": "/ru/",
+      "status": 200,
+      "matches_build": true,
+      "bytes": 196548
+    },
+    {
+      "locale": "sv",
+      "path": "/sv/",
+      "status": 200,
+      "matches_build": true,
+      "bytes": 188932
+    },
+    {
+      "locale": "th",
+      "path": "/th/",
+      "status": 200,
+      "matches_build": true,
+      "bytes": 201054
+    },
+    {
+      "locale": "tr",
+      "path": "/tr/",
+      "status": 200,
+      "matches_build": true,
+      "bytes": 189529
+    },
+    {
+      "locale": "vi",
+      "path": "/vi/",
+      "status": 200,
+      "matches_build": true,
+      "bytes": 192012
+    },
+    {
+      "locale": "zh-Hans",
+      "path": "/zh-hans/",
+      "status": 200,
+      "matches_build": true,
+      "bytes": 187763
+    },
+    {
+      "locale": "zh-Hant",
+      "path": "/zh-hant/",
+      "status": 200,
+      "matches_build": true,
+      "bytes": 187867
+    },
+    {
+      "locale": "en-US",
+      "path": "/articles/what-calendar-sync-actually-does/",
+      "status": 200,
+      "matches_build": true,
+      "bytes": 60430
+    }
+  ],
+  "all_passed": true
+}

@@ -4,7 +4,7 @@ import { HomeCopy } from './types';
 export const HOME_HI: HomeCopy = {
   metaTitle: 'Cloud Calendars — iCloud, Google और Outlook एक ही जगह',
   metaDescription:
-    'iPhone और iPad पर iCloud, Google और Outlook के कैलेंडर एक ही दृश्य में। शुरुआत मुफ़्त, कोई खाता बनाने की ज़रूरत नहीं, हर दिन का मौसम कैलेंडर के भीतर।',
+    "आपके कैलेंडर और पूर्वानुमान, एक ही जगह। iPhone और iPad के लिए बनाया गया। iCloud · Google Calendar · Microsoft Calendar.",
   nav: {
     tour: 'झलक',
     widgets: 'विजेट',
@@ -23,7 +23,7 @@ export const HOME_HI: HomeCopy = {
     lead: 'आपके पास जितने भी कैलेंडर हैं — iCloud, Google, Microsoft — सब एक जगह, और पूर्वानुमान ख़ुद उसी दिन के भीतर बना हुआ। दोपहर कैसी रहेगी, इसका अंदाज़ा लगाना बंद कीजिए।',
     seeItMove: 'चलते हुए देखिए',
     onTheAppStore: 'App Store पर',
-    freeToStart: 'शुरू करना मुफ़्त — खाता ज़रूरी नहीं',
+    freeToStart: "मुफ़्त डाउनलोड",
     scroll: 'नीचे जाइए',
     ratingLabel: 'App Store की {n} रेटिंग के आधार पर 5 में से {r}',
     altMonth: 'Cloud Calendars का महीना दृश्य, हर व्यस्त दिन पर एक निशान के साथ',
@@ -42,7 +42,7 @@ export const HOME_HI: HomeCopy = {
     'दिन · सप्ताह · महीना · वर्ष',
     'खिसकाकर समय बदलिए',
     'हवा और झोंके',
-    'खाता ज़रूरी नहीं',
+    "स्थानीय कैलेंडर",
   ],
   showcase: {
     eyebrow: 'झलक',
@@ -144,8 +144,8 @@ export const HOME_HI: HomeCopy = {
     },
     tiles: [
       {
-        title: 'बैठक के लिंक, आपके लिए बने हुए',
-        body: 'Google कैलेंडर में कार्यक्रम बनाइए और उसके साथ Meet लिंक जुड़ जाता है। Microsoft पर बनाइए और Teams लिंक मिलता है। किसी को कुछ चिपकाना नहीं पड़ता।',
+        title: "Meet · Teams",
+        body: "Google Meet लिंक · Microsoft Teams लिंक",
         badge: 'Meet · Teams',
       },
       {
@@ -154,9 +154,9 @@ export const HOME_HI: HomeCopy = {
         badge: 'एक स्पर्श',
       },
       {
-        title: 'आपका कैलेंडर आपका ही रहता है',
-        body: 'कार्यक्रम Apple, Google और Microsoft के अपने-अपने इंटरफ़ेस से पढ़े जाते हैं और उपकरण पर ही बनाए जाते हैं। कुछ बेचा नहीं जाता, और कोई खाता बनाना नहीं है।',
-        badge: 'कोई खाता नहीं',
+        title: "स्थानीय कैलेंडर",
+        body: "स्थानीय कैलेंडर का उपयोग बिना खाते के करें। कैलेंडर सेवाएँ जोड़ने और साझा करने के लिए साइन इन करना पड़ सकता है।",
+        badge: "स्थानीय कैलेंडर",
       },
     ],
     sourceNotes: {
@@ -197,26 +197,15 @@ export const HOME_HI: HomeCopy = {
       },
       advanced: {
         name: 'Advanced',
-        tagline: 'एक शांत ऐप और कैलेंडर पर गहरी पकड़।',
+        tagline: "कहीं भी विज्ञापन नहीं",
         yearlyNote: 'सालाना 15% बचत',
-        features: [
-          'कहीं भी विज्ञापन नहीं',
-          'iCloud और Google कैलेंडरों के आर-पार कार्यक्रम सँभालना',
-          'Google कैलेंडर साझा करने की अनुमतियाँ',
-          'Google Meet लिंक अपने आप बनना',
-          'मौसम का प्राथमिक अद्यतन',
-        ],
+        features: ["कहीं भी विज्ञापन नहीं"],
       },
       premium: {
         name: 'Premium',
         tagline: 'उन दफ़्तरी कैलेंडरों के लिए जो Microsoft पर रहते हैं।',
         yearlyNote: 'सालाना 16% बचत',
-        features: [
-          'Microsoft Outlook और Exchange समन्वय',
-          'अपने आप बनने वाले Microsoft Teams लिंक',
-          'तीनों खातों के आर-पार पूरा प्रबंधन',
-          'शामिल लोगों और निमंत्रणों का प्रबंधन',
-        ],
+        features: ["Microsoft Calendar","Microsoft Teams लिंक"],
       },
     },
   },
@@ -228,11 +217,11 @@ export const HOME_HI: HomeCopy = {
     items: [
       {
         q: 'Cloud Calendars इस्तेमाल करने के लिए क्या खाता चाहिए?',
-        a: 'नहीं। ऐप आपके iPhone पर पहले से मौजूद कैलेंडरों को Apple के अपने EventKit से पढ़ता है, इसलिए अनुमति देते ही iCloud चलने लगता है। Google या Microsoft में तभी साइन इन करना पड़ता है जब आप वे कैलेंडर भी साथ चाहें।',
+        a: "स्थानीय कैलेंडर का उपयोग बिना खाते के करें। कैलेंडर सेवाएँ जोड़ने और साझा करने के लिए साइन इन करना पड़ सकता है।",
       },
       {
         q: 'क्या Google कैलेंडर का समन्वय सचमुच मुफ़्त है?',
-        a: 'हाँ। Google समन्वय, कैलेंडर के सारे दृश्य, पूरा मौसम केंद्र, सारे होम स्क्रीन विजेट और Google Meet लिंक मुफ़्त स्तर में हैं। Advanced विज्ञापन हटाता है और कैलेंडरों के आर-पार प्रबंधन जोड़ता है; Premium Microsoft जोड़ता है।',
+        a: "Google Calendar और Google Meet का समर्थन मुफ़्त प्लान में शामिल है। Advanced विज्ञापन हटाता है; Premium में Microsoft Calendar और Teams भी मिलते हैं।",
       },
       {
         q: 'मौसम के आँकड़े कहाँ से आते हैं?',
@@ -248,7 +237,7 @@ export const HOME_HI: HomeCopy = {
       },
       {
         q: 'कौन-से उपकरण समर्थित हैं?',
-        a: 'iOS 18 या उसके बाद वाले iPhone और iPad। ऐप लगभग 35 MB का है।',
+        a: "iPhone / iPad · iOS / iPadOS 18+",
       },
       {
         q: 'सदस्यता कैसे रद्द करूँ?',
@@ -258,7 +247,7 @@ export const HOME_HI: HomeCopy = {
   },
   cta: {
     title: ['कल पहले से ही', 'अपना पूर्वानुमान साथ लाता है।'],
-    lead: 'App Store पर मुफ़्त। न खाता, न सेटअप की प्रक्रिया — कैलेंडर की अनुमति दीजिए और आपका सप्ताह पहले से वहीं है।',
+    lead: "मुफ़्त डाउनलोड. स्थानीय कैलेंडर का उपयोग बिना खाते के करें। कैलेंडर सेवाएँ जोड़ने और साझा करने के लिए साइन इन करना पड़ सकता है।",
     fromRatings: '{n} रेटिंग से',
     download: 'डाउनलोड',
     requiresIos: 'iOS {v} चाहिए',

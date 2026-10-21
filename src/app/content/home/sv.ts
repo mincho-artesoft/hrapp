@@ -4,7 +4,7 @@ import { HomeCopy } from './types';
 export const HOME_SV: HomeCopy = {
   metaTitle: 'Cloud Calendars — iCloud, Google och Outlook i en vy',
   metaDescription:
-    'Dina kalendrar från iCloud, Google och Outlook i en enda vy på iPhone och iPad. Gratis att börja, inget konto att skapa, och dagens väder direkt i rutnätet.',
+    "Dina kalendrar och prognosen, på ett ställe. Byggt för iPhone och iPad. iCloud · Google Calendar · Microsoft Calendar.",
   nav: {
     tour: 'Rundtur',
     widgets: 'Widgetar',
@@ -23,7 +23,7 @@ export const HOME_SV: HomeCopy = {
     lead: 'Varje kalender du har — iCloud, Google, Microsoft — på ett ställe, med prognosen inbyggd i själva dagen. Sluta gissa hur eftermiddagen ser ut.',
     seeItMove: 'Se det i rörelse',
     onTheAppStore: 'på App Store',
-    freeToStart: 'Gratis att börja — inget konto behövs',
+    freeToStart: "Hämta gratis",
     scroll: 'Rulla',
     ratingLabel: '{r} av 5 från {n} betyg på App Store',
     altMonth: 'Månadsvy i Cloud Calendars med en markering på varje upptagen dag',
@@ -42,7 +42,7 @@ export const HOME_SV: HomeCopy = {
     'Dag · Vecka · Månad · År',
     'Dra för att flytta',
     'Vind och byar',
-    'Inget konto krävs',
+    "Lokala kalendrar",
   ],
   showcase: {
     eyebrow: 'Rundturen',
@@ -140,8 +140,8 @@ export const HOME_SV: HomeCopy = {
     },
     tiles: [
       {
-        title: 'Möteslänkar som skapas åt dig',
-        body: 'Skapa en händelse i en Google-kalender så följer en Meet-länk med. Skapa en hos Microsoft så får du en Teams-länk. Ingen behöver klistra in något.',
+        title: "Meet · Teams",
+        body: "Google Meet-länkar · Microsoft Teams-länkar",
         badge: 'Meet · Teams',
       },
       {
@@ -150,9 +150,9 @@ export const HOME_SV: HomeCopy = {
         badge: 'Ett tryck',
       },
       {
-        title: 'Din kalender förblir din',
-        body: 'Händelser läses genom Apples, Googles och Microsofts egna gränssnitt och ritas på enheten. Ingenting säljs, och det finns inget konto att skapa.',
-        badge: 'Inget konto',
+        title: "Lokala kalendrar",
+        body: "Använd lokala kalendrar utan konto. Anslutning av kalendertjänster och delning kan kräva inloggning.",
+        badge: "Lokala kalendrar",
       },
     ],
     sourceNotes: {
@@ -193,26 +193,15 @@ export const HOME_SV: HomeCopy = {
       },
       advanced: {
         name: 'Advanced',
-        tagline: 'En tystare app och mer kontroll över kalendern.',
+        tagline: "Inga annonser, någonstans",
         yearlyNote: 'Spara 15 % per år',
-        features: [
-          'Inga annonser, någonstans',
-          'Händelsehantering över iCloud- och Google-kalendrar',
-          'Delningsrättigheter i Google Kalender',
-          'Automatisk generering av Google Meet-länkar',
-          'Prioriterad väderuppdatering',
-        ],
+        features: ["Inga annonser, någonstans"],
       },
       premium: {
         name: 'Premium',
         tagline: 'För arbetskalendrar som bor hos Microsoft.',
         yearlyNote: 'Spara 16 % per år',
-        features: [
-          'Synk av Microsoft Outlook och Exchange',
-          'Automatiska Microsoft Teams-länkar',
-          'Fullständig hantering över alla tre kontona',
-          'Hantering av deltagare och inbjudningar',
-        ],
+        features: ["Microsoft Calendar","Microsoft Teams-länkar"],
       },
     },
   },
@@ -224,11 +213,11 @@ export const HOME_SV: HomeCopy = {
     items: [
       {
         q: 'Behöver jag ett konto för att använda Cloud Calendars?',
-        a: 'Nej. Appen läser kalendrarna som redan finns på din iPhone via Apples eget EventKit, så iCloud fungerar så fort du ger tillstånd. Du loggar bara in på Google eller Microsoft om du vill ha med de kalendrarna också.',
+        a: "Använd lokala kalendrar utan konto. Anslutning av kalendertjänster och delning kan kräva inloggning.",
       },
       {
         q: 'Är synken med Google Kalender verkligen gratis?',
-        a: 'Ja. Google-synk, alla kalendervyer, hela vädernavet, alla widgetar på hemskärmen och Google Meet-länkar ingår i gratisnivån. Advanced tar bort annonserna och lägger till hantering över kalendrar; Premium lägger till Microsoft.',
+        a: "Google Calendar och Google Meet ingår i gratisplanen. Advanced tar bort annonser; Premium lägger till Microsoft Calendar och Teams.",
       },
       {
         q: 'Var kommer väderdatan ifrån?',
@@ -244,7 +233,7 @@ export const HOME_SV: HomeCopy = {
       },
       {
         q: 'Vilka enheter stöds?',
-        a: 'iPhone och iPad med iOS 18 eller senare. Appen är ungefär 35 MB.',
+        a: "iPhone / iPad · iOS / iPadOS 18+",
       },
       {
         q: 'Hur säger jag upp en prenumeration?',
@@ -254,7 +243,7 @@ export const HOME_SV: HomeCopy = {
   },
   cta: {
     title: ['Morgondagen har redan', 'en prognos med sig.'],
-    lead: 'Gratis på App Store. Inget konto, ingen installationsguide — ge kalenderåtkomst så finns din vecka redan där.',
+    lead: "Hämta gratis. Använd lokala kalendrar utan konto. Anslutning av kalendertjänster och delning kan kräva inloggning.",
     fromRatings: 'från {n} betyg',
     download: 'nedladdning',
     requiresIos: 'kräver iOS {v}',
