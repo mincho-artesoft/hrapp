@@ -1,0 +1,46 @@
+{
+  "allPassed": true,
+  "samples": [
+    {
+      "url": "https://www.cloud-calendars.com/de/articles/disconnect-calendar-integration-without-losing-track/",
+      "viewport": 575,
+      "documentWidth": 564,
+      "faqCount": 3,
+      "screenshot": "/tmp/cloud-calendar-batch18-de-disconnect.png",
+      "review": "Complete article text, sources, related links and top screenshot inspected."
+    },
+    {
+      "url": "https://www.cloud-calendars.com/articles/time-zones-and-the-flight-you-booked/",
+      "viewport": 575,
+      "documentWidth": 564,
+      "faqCount": 4,
+      "screenshot": "/tmp/cloud-calendar-batch18-feed-zones.png",
+      "review": "Complete visible text and new feed-diagnosis section inspected at narrow viewport."
+    }
+  ],
+  "existingWidgetVideo": {
+    "url": "https://www.cloud-calendars.com/#widgets",
+    "src": "https://www.cloud-calendars.com/assets/video/widgets.webm",
+    "duration": 9.266,
+    "readyState": 4,
+    "error": null,
+    "playingObservation": {
+      "paused": false,
+      "currentTime": 6.389248
+    },
+    "deliberatePauseObservation": {
+      "paused": true,
+      "currentTime": 6.467757,
+      "button": "Play the recording"
+    },
+    "deliberateResumeObservation": {
+      "paused": false,
+      "currentTime": 7.299386,
+      "button": "Pause the recording"
+    },
+    "visualFrameScreenshot": "/tmp/cloud-calendar-batch18-widget-video-paused.png",
+    "note": "Autoplay changed the initial Play label before a first click attempt. Fresh DOM state established playing; a scroll-triggered visibility change also preceded the first Pause target. Retested with button already visible: pause and resume confirmed. Screenshot filename says paused but was captured before the successful deliberate pause; do not infer paused state from that image. No source change needed."
+  },
+  "viewportReset": true,
+  "scope": "Browser behavior and selected responsive pages, not all-device playback, released-app behavior or independent translation certification."
+}

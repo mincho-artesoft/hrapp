@@ -1,5 +1,5 @@
 {
-  "date": "2026-10-21T22:54:21.040Z",
+  "date": "2026-10-21T23:06:07.624Z",
   "status": "source_inventory_not_quality_approval",
   "articles": [
     {
@@ -858,6 +858,24 @@
     },
     {
       "locale": "de-DE",
+      "slug": "disconnect-calendar-integration-without-losing-track",
+      "title": "Eine Kalenderverbindung trennen: Zugriff, Synchronisierung und vorhandene Kopien",
+      "description": "Unterscheide Abmeldung, Anbieterzugriff und vorhandene Kopien. Prüfe die Kontoverbindungen in Cloud Calendars, bevor du trennst oder Kalender entfernst.",
+      "descriptionCharacters": 152,
+      "sections": 6,
+      "faq": 3,
+      "words": 788,
+      "source": "articles-help.ts",
+      "sources": [
+        "https://support.google.com/accounts/answer/13533235?hl=en",
+        "https://support.google.com/accounts/answer/14012355?hl=en",
+        "https://support.microsoft.com/en-us/accounts-billing/work-school/edit-or-revoke-application-permissions-in-the-my-apps-portal",
+        "https://support.apple.com/guide/iphone/use-multiple-calendars-iph3d1110d4/ios"
+      ],
+      "updated": "2026-10-22"
+    },
+    {
+      "locale": "de-DE",
       "slug": "calendar-notifications-missing-silent-or-duplicated",
       "title": "Kalender-Mitteilungen auf dem iPhone: fehlend, lautlos oder doppelt?",
       "description": "Prüfen Sie Ereignishinweise, Cloud Calendars und die iPhone-Mitteilungen getrennt. Finden Sie die Ursache fehlender oder doppelter Hinweise ohne Datenlöschung.",
@@ -1553,9 +1571,9 @@
       "title": "Calendar export on iPhone: ICS, CSV, PDF and subscriptions",
       "description": "Choose calendar data, spreadsheet rows, a printable schedule or a subscription. Use documented provider or Mac export routes and check what transfers.",
       "descriptionCharacters": 150,
-      "sections": 7,
-      "faq": 3,
-      "words": 1115,
+      "sections": 8,
+      "faq": 4,
+      "words": 1357,
       "source": "articles-help.ts",
       "sources": [
         "https://support.google.com/calendar/answer/37111?hl=en",
@@ -1563,9 +1581,10 @@
         "https://support.apple.com/guide/calendar/import-or-export-calendars-icl1023/mac",
         "https://support.apple.com/en-gb/guide/mac-help/mchlp1531/mac",
         "https://support.microsoft.com/en-us/outlook/share-your-calendar-in-outlook-on-the-web",
-        "https://www.busymac.com/docs/busycalios/export-as-csv/"
+        "https://www.busymac.com/docs/busycalios/export-as-csv/",
+        "https://support.google.com/calendar/answer/37064?hl=en"
       ],
-      "updated": "2026-10-21"
+      "updated": "2026-10-22"
     },
     {
       "locale": "en-US",
@@ -1687,15 +1706,17 @@
       "title": "Calendar time zones: check the event before you travel",
       "description": "Separate an event’s time zone from the calendar’s display zone. Check flights, destination appointments and recurring calls without shifting the wrong time.",
       "descriptionCharacters": 156,
-      "sections": 6,
-      "faq": 3,
-      "words": 884,
+      "sections": 7,
+      "faq": 4,
+      "words": 1073,
       "source": "articles-planning.ts",
       "sources": [
         "https://support.apple.com/guide/iphone/schedule-display-events-a-time-zone-iph69525c028/ios",
-        "https://support.google.com/calendar/answer/37064?hl=en"
+        "https://support.google.com/calendar/answer/37064?hl=en",
+        "https://support.google.com/calendar/answer/37118?hl=en",
+        "https://support.microsoft.com/en-us/outlook/share-your-calendar-in-outlook-on-the-web"
       ],
-      "updated": "2026-10-21"
+      "updated": "2026-10-22"
     },
     {
       "locale": "en-US",
@@ -2288,6 +2309,24 @@
     },
     {
       "locale": "es-ES",
+      "slug": "disconnect-calendar-integration-without-losing-track",
+      "title": "Desconectar un calendario: acceso, sincronización y copias existentes",
+      "description": "Distingue cierre de sesión, acceso del proveedor y copias existentes. Revisa las conexiones de Cloud Calendars antes de desconectar o quitar un calendario.",
+      "descriptionCharacters": 155,
+      "sections": 6,
+      "faq": 3,
+      "words": 962,
+      "source": "articles-help.ts",
+      "sources": [
+        "https://support.google.com/accounts/answer/13533235?hl=en",
+        "https://support.google.com/accounts/answer/14012355?hl=en",
+        "https://support.microsoft.com/en-us/accounts-billing/work-school/edit-or-revoke-application-permissions-in-the-my-apps-portal",
+        "https://support.apple.com/guide/iphone/use-multiple-calendars-iph3d1110d4/ios"
+      ],
+      "updated": "2026-10-22"
+    },
+    {
+      "locale": "es-ES",
       "slug": "calendar-notifications-missing-silent-or-duplicated",
       "title": "Notificaciones del calendario en iPhone: ¿faltan, no suenan o se duplican?",
       "description": "Distingue avisos de eventos, ajustes de Cloud Calendars y controles del iPhone. Revisa recordatorios ausentes, silenciosos o duplicados sin borrar datos.",
@@ -2845,6 +2884,24 @@
         "https://support.google.com/calendar/answer/37648?hl=en"
       ],
       "updated": "2026-10-21"
+    },
+    {
+      "locale": "fr-FR",
+      "slug": "disconnect-calendar-integration-without-losing-track",
+      "title": "Déconnecter une intégration de calendrier : accès, synchronisation et copies existantes",
+      "description": "Distinguez déconnexion, accès du fournisseur et copies existantes. Vérifiez les connexions Cloud Calendars avant de supprimer un calendrier.",
+      "descriptionCharacters": 140,
+      "sections": 6,
+      "faq": 3,
+      "words": 949,
+      "source": "articles-help.ts",
+      "sources": [
+        "https://support.google.com/accounts/answer/13533235?hl=en",
+        "https://support.google.com/accounts/answer/14012355?hl=en",
+        "https://support.microsoft.com/en-us/accounts-billing/work-school/edit-or-revoke-application-permissions-in-the-my-apps-portal",
+        "https://support.apple.com/guide/iphone/use-multiple-calendars-iph3d1110d4/ios"
+      ],
+      "updated": "2026-10-22"
     },
     {
       "locale": "fr-FR",
@@ -3933,6 +3990,24 @@
         "https://support.google.com/calendar/answer/37648?hl=en"
       ],
       "updated": "2026-10-21"
+    },
+    {
+      "locale": "it",
+      "slug": "disconnect-calendar-integration-without-losing-track",
+      "title": "Disconnettere un’integrazione del calendario: accesso, sincronizzazione e copie esistenti",
+      "description": "Distingui uscita, accesso del fornitore e copie esistenti. Controlla i collegamenti Cloud Calendars prima di disconnettere o rimuovere un calendario.",
+      "descriptionCharacters": 149,
+      "sections": 6,
+      "faq": 3,
+      "words": 864,
+      "source": "articles-help.ts",
+      "sources": [
+        "https://support.google.com/accounts/answer/13533235?hl=en",
+        "https://support.google.com/accounts/answer/14012355?hl=en",
+        "https://support.microsoft.com/en-us/accounts-billing/work-school/edit-or-revoke-application-permissions-in-the-my-apps-portal",
+        "https://support.apple.com/guide/iphone/use-multiple-calendars-iph3d1110d4/ios"
+      ],
+      "updated": "2026-10-22"
     },
     {
       "locale": "it",

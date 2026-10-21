@@ -379,7 +379,7 @@ export const HELP_EN_US: Readonly<Record<string, LocalisedArticle>> = {
     ]
   },
   "calendar-export-ics-pdf-and-backup": {
-  "updated": "2026-10-21",
+  "updated": "2026-10-22",
   "title": "Calendar export on iPhone: ICS, CSV, PDF and subscriptions",
   "short": "Choose a calendar export format",
   "description": "Choose calendar data, spreadsheet rows, a printable schedule or a subscription. Use documented provider or Mac export routes and check what transfers.",
@@ -424,6 +424,14 @@ export const HELP_EN_US: Readonly<Record<string, LocalisedArticle>> = {
       ]
     },
     {
+      "heading": "If a subscribed calendar stops updating",
+      "body": [
+        "First identify whether you imported a file or subscribed to an address. Google explicitly says imported events do not stay in sync between accounts; Microsoft makes the same distinction for published ICS files. Importing the same file again is not a subscription refresh and can add another set of records.",
+        "For an actual subscription, compare a known changed appointment in its owning calendar and the receiving calendar. Check the intended source and whether its publishing or sharing arrangement is still available. Microsoft says ICS refresh frequency depends on the recipient’s provider. If an intermediary processes the feed, its own refresh and the recipient’s refresh are separate stages; do not assume updating one instantly updates the other.",
+        "Before giving a calendar address to a conversion service, check whether you may share that feed and what data the service will receive. Do not publish a work calendar to bypass an organization’s access restriction. Keep private feed addresses out of public support posts; a service that does not request your account password can still receive the calendar content you provide."
+      ]
+    },
+    {
       "heading": "What Cloud Calendars sharing provides",
       "body": [
         "We develop Cloud Calendars. Its event-sharing flow offers App Clip, email and QR delivery paths for invitation links. Those links serve a different purpose from downloading your entire calendar as a file. A link may lead into an invitation or subscription workflow; it is not itself a portable archive of every calendar you see.",
@@ -457,6 +465,10 @@ export const HELP_EN_US: Readonly<Record<string, LocalisedArticle>> = {
     {
       "q": "Should I choose ICS or PDF?",
       "a": "Choose ICS for event data that a compatible calendar can import. Choose PDF for a readable schedule. A PDF does not provide calendar updates or reconstruct editable events through the documented import workflows."
+    },
+    {
+      "q": "Will converting an ICS feed fix every one-hour difference?",
+      "a": "No. First compare the intended date, the event’s time zone, the display zone and the same recurring occurrence at the source and recipient. A format issue is a possibility to investigate, not the explanation for every time difference. Do not shift the original meeting merely to compensate for one display."
     }
   ],
   "sourcesHeading": "Official instructions and format limitations",
@@ -484,12 +496,17 @@ export const HELP_EN_US: Readonly<Record<string, LocalisedArticle>> = {
     {
       "label": "BusyCal: iOS CSV export and event-occurrence rows",
       "url": "https://www.busymac.com/docs/busycalios/export-as-csv/"
+    },
+    {
+      "label": "Google: event and display time zones",
+      "url": "https://support.google.com/calendar/answer/37064?hl=en"
     }
   ],
   "seeAlso": [
     "sharing-one-event-not-your-calendar",
     "inviting-people-who-do-not-have-the-app",
-    "the-secret-address-of-a-google-calendar"
+    "the-secret-address-of-a-google-calendar",
+    "time-zones-and-the-flight-you-booked"
   ]
 },
   "event-saved-to-wrong-calendar": {

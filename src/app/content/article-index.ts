@@ -78,6 +78,7 @@ export const ARTICLE_SLUGS: Readonly<Record<string, readonly string[]>> = {
     "what-guests-can-do-to-your-event",
     "google-calendars-that-never-reach-your-iphone",
     "taking-back-a-calendar-you-shared",
+    "disconnect-calendar-integration-without-losing-track",
     "calendar-notifications-missing-silent-or-duplicated",
     "find-old-calendar-events-by-account-date-and-title",
     "calendar-export-ics-pdf-and-backup"
@@ -172,6 +173,7 @@ export const ARTICLE_SLUGS: Readonly<Record<string, readonly string[]>> = {
     "what-guests-can-do-to-your-event",
     "google-calendars-that-never-reach-your-iphone",
     "taking-back-a-calendar-you-shared",
+    "disconnect-calendar-integration-without-losing-track",
     "calendar-notifications-missing-silent-or-duplicated",
     "find-old-calendar-events-by-account-date-and-title",
     "calendar-export-ics-pdf-and-backup"
@@ -211,6 +213,7 @@ export const ARTICLE_SLUGS: Readonly<Record<string, readonly string[]>> = {
     "what-guests-can-do-to-your-event",
     "google-calendars-that-never-reach-your-iphone",
     "taking-back-a-calendar-you-shared",
+    "disconnect-calendar-integration-without-losing-track",
     "calendar-notifications-missing-silent-or-duplicated",
     "find-old-calendar-events-by-account-date-and-title",
     "calendar-export-ics-pdf-and-backup"
@@ -289,6 +292,7 @@ export const ARTICLE_SLUGS: Readonly<Record<string, readonly string[]>> = {
     "what-guests-can-do-to-your-event",
     "google-calendars-that-never-reach-your-iphone",
     "taking-back-a-calendar-you-shared",
+    "disconnect-calendar-integration-without-losing-track",
     "calendar-notifications-missing-silent-or-duplicated",
     "find-old-calendar-events-by-account-date-and-title",
     "calendar-export-ics-pdf-and-backup"

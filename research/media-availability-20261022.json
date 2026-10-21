@@ -1,0 +1,485 @@
+{
+  "date": "2026-10-22",
+  "scope": {
+    "repository": "/Users/minchomilev/cloud-calendars",
+    "inspected": [
+      "Media manifest, locale mapping, gallery/tour/widget references, media build script, README, gitignore, infrastructure documentation",
+      "Existing media-source, media-build, shots, art, exports and public media directories; paths, sizes, timestamps and selected metadata only",
+      "Desktop top-level names containing Cloud, Calendar or HRApp; matching Cloud Calendars icon metadata",
+      "Git history for existing video/manifest/build-media; local ffprobe metadata for original and delivered widget clips"
+    ],
+    "excluded": [
+      "Other apps matching generic Calendar names were not traversed.",
+      "No recursive whole-Desktop or home-directory search; no unseen output location assumed absent.",
+      "No AWS requests or credentials inspected; no cloud bucket listing or object freshness verification.",
+      "No pixels, video playback, customer content, native code, simulator or render job inspected."
+    ]
+  },
+  "finding": "Original working media exists locally, but this bounded inspection found no verified newly generated October replacement set. Existing local originals are principally July assets and are not proof of the currently promised generation output.",
+  "currentGallery": {
+    "manifestLocales": 31,
+    "manifestDevices": [
+      "iPhone",
+      "iPad"
+    ],
+    "shotsPerDevicePerLocale": 5,
+    "expectedRenditions": 1240,
+    "missingLocalRenditions": [],
+    "localRenditionSummary": {
+      "root": "/Users/minchomilev/cloud-calendars/media-build",
+      "fileCount": 1240,
+      "bytes": 28708157,
+      "earliestMtimeUtc": "2026-08-27T08:59:00.437196+00:00",
+      "latestMtimeUtc": "2026-08-27T08:59:46.747540+00:00"
+    },
+    "localeMediaMapping": [
+      {
+        "siteLocale": "en-US",
+        "mediaLocale": "en-US"
+      },
+      {
+        "siteLocale": "ar-SA",
+        "mediaLocale": "ar-SA"
+      },
+      {
+        "siteLocale": "bg",
+        "mediaLocale": "en-US"
+      },
+      {
+        "siteLocale": "cs",
+        "mediaLocale": "cs"
+      },
+      {
+        "siteLocale": "da",
+        "mediaLocale": "da"
+      },
+      {
+        "siteLocale": "de-DE",
+        "mediaLocale": "de-DE"
+      },
+      {
+        "siteLocale": "el",
+        "mediaLocale": "el"
+      },
+      {
+        "siteLocale": "es-ES",
+        "mediaLocale": "es-ES"
+      },
+      {
+        "siteLocale": "fi",
+        "mediaLocale": "fi"
+      },
+      {
+        "siteLocale": "fr-FR",
+        "mediaLocale": "fr-FR"
+      },
+      {
+        "siteLocale": "he",
+        "mediaLocale": "he"
+      },
+      {
+        "siteLocale": "hi",
+        "mediaLocale": "hi"
+      },
+      {
+        "siteLocale": "hu",
+        "mediaLocale": "hu"
+      },
+      {
+        "siteLocale": "id",
+        "mediaLocale": "id"
+      },
+      {
+        "siteLocale": "it",
+        "mediaLocale": "it"
+      },
+      {
+        "siteLocale": "ja",
+        "mediaLocale": "ja"
+      },
+      {
+        "siteLocale": "ko",
+        "mediaLocale": "ko"
+      },
+      {
+        "siteLocale": "ms",
+        "mediaLocale": "ms"
+      },
+      {
+        "siteLocale": "nl-NL",
+        "mediaLocale": "nl-NL"
+      },
+      {
+        "siteLocale": "no",
+        "mediaLocale": "no"
+      },
+      {
+        "siteLocale": "pl",
+        "mediaLocale": "pl"
+      },
+      {
+        "siteLocale": "pt-BR",
+        "mediaLocale": "pt-BR"
+      },
+      {
+        "siteLocale": "ro",
+        "mediaLocale": "ro"
+      },
+      {
+        "siteLocale": "ru",
+        "mediaLocale": "ru"
+      },
+      {
+        "siteLocale": "sv",
+        "mediaLocale": "sv"
+      },
+      {
+        "siteLocale": "th",
+        "mediaLocale": "th"
+      },
+      {
+        "siteLocale": "tr",
+        "mediaLocale": "tr"
+      },
+      {
+        "siteLocale": "vi",
+        "mediaLocale": "vi"
+      },
+      {
+        "siteLocale": "zh-Hans",
+        "mediaLocale": "zh-Hans"
+      },
+      {
+        "siteLocale": "zh-Hant",
+        "mediaLocale": "zh-Hant"
+      }
+    ],
+    "fallbacks": [
+      {
+        "siteLocale": "bg",
+        "mediaLocale": "en-US"
+      }
+    ],
+    "publicPathPattern": "/media/panel/<locale>/<iPhone|iPad>/<shot>-<width>.<avif|webp>",
+    "proof": "Manifest plus ShotRailComponent builds these URLs. Local file existence is not a fresh origin or browser availability test."
+  },
+  "documentedOrigin": {
+    "bucketName": "cloud-calendars-media",
+    "evidence": ".gitignore lines 55–58 says media-build is synced here; infrastructure/README.md lines 3–5 describes separate /media/* cache behavior.",
+    "originKeyMapping": "Unverified: public /media/panel path and local media-build/panel path are known, but actual S3 key prefix/origin path not established by the inspected documentation.",
+    "noAwsAccessPerformed": true
+  },
+  "candidates": [
+    {
+      "kind": "existing original video, not new",
+      "file": {
+        "path": "/Users/minchomilev/cloud-calendars/media-source/widgets-iphone17pro-2026-07-28.mov",
+        "bytes": 19465018,
+        "mtimeUtc": "2026-07-28T17:14:37.229471+00:00",
+        "sha256": "a5dc87b71563e73e412be68836f83de06cb2a58e7399102d206e6ba39c2cc665"
+      },
+      "provenance": "Filename dates capture July 28; README lines 150–157 describes iPhone 17 Pro Simulator footage. This documentation is not independent device/build proof.",
+      "device": "iPhone 17 Pro claimed by documentation",
+      "locale": "Not independently established; no localized video variants found in these directories.",
+      "probe": {
+        "width": 1206,
+        "height": 2622,
+        "durationSeconds": 9.236667,
+        "codec": "h264",
+        "rFrameRateReported": "600/1",
+        "caution": "Container-reported rate is not an assertion of capture or delivered playback rate."
+      }
+    },
+    {
+      "kind": "existing source screenshots",
+      "summary": {
+        "root": "/Users/minchomilev/cloud-calendars/shots",
+        "fileCount": 14,
+        "bytes": 18222366,
+        "earliestMtimeUtc": "2026-07-29T06:27:16.899485+00:00",
+        "latestMtimeUtc": "2026-08-31T15:09:01.224875+00:00"
+      },
+      "files": [
+        {
+          "path": "/Users/minchomilev/cloud-calendars/shots/en/dark/cc launchscreen.png",
+          "bytes": 2344330,
+          "mtimeUtc": "2026-08-31T15:09:01.224875+00:00",
+          "sha256": "289d02e9baa65450acfd9b4b4cdfd00487847903d997c2dbf4c72a7e1f3bca8b",
+          "dimensions": [
+            1024,
+            1536
+          ]
+        },
+        {
+          "path": "/Users/minchomilev/cloud-calendars/shots/en/dark/home-widgets-1.png",
+          "bytes": 1920698,
+          "mtimeUtc": "2026-07-29T06:41:21.869237+00:00",
+          "sha256": "2612a0c7da603c35c89f8546b077dd44573b6dd3e268156077682cbaa510788d",
+          "dimensions": [
+            1206,
+            2622
+          ]
+        },
+        {
+          "path": "/Users/minchomilev/cloud-calendars/shots/en/dark/home-widgets-2.png",
+          "bytes": 1672450,
+          "mtimeUtc": "2026-07-29T06:38:20.826741+00:00",
+          "sha256": "3eeb2954c6b16c0ca8967ba6379f3b335d6c98e71bca7afe2a565671946d3a4b",
+          "dimensions": [
+            1206,
+            2622
+          ]
+        },
+        {
+          "path": "/Users/minchomilev/cloud-calendars/shots/en/dark/list.png",
+          "bytes": 229673,
+          "mtimeUtc": "2026-07-29T06:31:50.550951+00:00",
+          "sha256": "27e87bd344dd4e400d52f020ada1d050e733e295147e0e4b85425db897d28650",
+          "dimensions": [
+            1206,
+            2622
+          ]
+        },
+        {
+          "path": "/Users/minchomilev/cloud-calendars/shots/en/dark/live-activity-collapsed.png",
+          "bytes": 1921944,
+          "mtimeUtc": "2026-07-29T06:51:24.354779+00:00",
+          "sha256": "decae7ae3d87e3a16555c3a3f74a9c032590e21d3f23b3c528007ada2bd91e97",
+          "dimensions": [
+            1206,
+            2622
+          ]
+        },
+        {
+          "path": "/Users/minchomilev/cloud-calendars/shots/en/dark/live-activity-expanded.png",
+          "bytes": 2048553,
+          "mtimeUtc": "2026-07-29T06:52:18.668584+00:00",
+          "sha256": "fbaadcebb6175753ec5dd24120652a1fd51e11edcc0e1e05194efbe858a0cd40",
+          "dimensions": [
+            1206,
+            2622
+          ]
+        },
+        {
+          "path": "/Users/minchomilev/cloud-calendars/shots/en/dark/lock-screen-activity.png",
+          "bytes": 3436839,
+          "mtimeUtc": "2026-07-29T06:53:07.979852+00:00",
+          "sha256": "9742e512ba9f443a4399504026a9bad87c4a0b34bc3de1c2724acaa1abdd95e2",
+          "dimensions": [
+            1206,
+            2622
+          ]
+        },
+        {
+          "path": "/Users/minchomilev/cloud-calendars/shots/en/dark/month.png",
+          "bytes": 180903,
+          "mtimeUtc": "2026-07-29T06:30:46.891685+00:00",
+          "sha256": "dbd578d69abf67db328065e223cbc9dbf8c81388a6c2de56244bf0b84318593f",
+          "dimensions": [
+            1206,
+            2622
+          ]
+        },
+        {
+          "path": "/Users/minchomilev/cloud-calendars/shots/en/dark/multi-calendar.png",
+          "bytes": 255556,
+          "mtimeUtc": "2026-07-29T06:30:24.378455+00:00",
+          "sha256": "04795196e2e09b45a0ad0c12a360d3223c693df408b2775dbd9fda17e7f9389d",
+          "dimensions": [
+            1206,
+            2622
+          ]
+        },
+        {
+          "path": "/Users/minchomilev/cloud-calendars/shots/en/dark/multi-day.png",
+          "bytes": 272215,
+          "mtimeUtc": "2026-07-29T06:27:22.919968+00:00",
+          "sha256": "83087595c9b4ab9d565c6f4bed1adeb4063509a99ca6625cbe4c2c9731be53f0",
+          "dimensions": [
+            1206,
+            2622
+          ]
+        },
+        {
+          "path": "/Users/minchomilev/cloud-calendars/shots/en/dark/single-day.png",
+          "bytes": 272312,
+          "mtimeUtc": "2026-07-29T06:27:16.899485+00:00",
+          "sha256": "0ac66d64485ec55d99593986a187023fb1eb3df20a0f800293da3440699c15de",
+          "dimensions": [
+            1206,
+            2622
+          ]
+        },
+        {
+          "path": "/Users/minchomilev/cloud-calendars/shots/en/dark/weather-hourly.png",
+          "bytes": 444599,
+          "mtimeUtc": "2026-07-29T06:36:02.383151+00:00",
+          "sha256": "de621cd3353aeaff117fc991b84cea47fbee865dcb3698960c6ec925003da160",
+          "dimensions": [
+            1206,
+            2622
+          ]
+        },
+        {
+          "path": "/Users/minchomilev/cloud-calendars/shots/en/dark/weather.png",
+          "bytes": 2977221,
+          "mtimeUtc": "2026-07-29T06:34:46.543880+00:00",
+          "sha256": "6b5c83c5ca2e46e32ce758fb0bdb4e5b3cb752d5a43793021f48224c3b7d99c3",
+          "dimensions": [
+            1206,
+            2622
+          ]
+        },
+        {
+          "path": "/Users/minchomilev/cloud-calendars/shots/en/dark/year.png",
+          "bytes": 245073,
+          "mtimeUtc": "2026-07-29T06:31:23.238547+00:00",
+          "sha256": "93c9a05eaa76418912fae59ff8884ba7c6566b2bdf89008dcda0913f7138b055",
+          "dimensions": [
+            1206,
+            2622
+          ]
+        }
+      ],
+      "locale": "en directory; language not visually verified",
+      "device": "Exact device/build/capture provenance unavailable from filenames alone",
+      "suitability": "Potential source material for future reviewed media; no proof of new generation or current UI accuracy."
+    },
+    {
+      "kind": "existing composed screenshot exports",
+      "summary": {
+        "root": "/Users/minchomilev/cloud-calendars/exports",
+        "fileCount": 119,
+        "bytes": 332169758,
+        "earliestMtimeUtc": "2026-07-29T22:03:39+00:00",
+        "latestMtimeUtc": "2026-07-29T22:20:45.577948+00:00"
+      },
+      "locales": [
+        "en",
+        "de",
+        "es",
+        "fr",
+        "it",
+        "bg",
+        "ru"
+      ],
+      "deviceSize": "iphone-6.9",
+      "perLocale": "Five numbered texted screenshots, matching textless variants and a contact sheet; JSON geometry/CSV files also present.",
+      "provenance": "Local storefront spec claims reconstructed July 30 after drift. Its output configuration and supplied files are not a release approval or upload proof.",
+      "missingSource": "Spec references shots/appstore/weather-10day.png, which does not exist in inspected shots directory. Weather frame is not among the five numbered exports found."
+    },
+    {
+      "kind": "existing composition backgrounds",
+      "summary": {
+        "root": "/Users/minchomilev/cloud-calendars/art",
+        "fileCount": 9,
+        "bytes": 18505585,
+        "earliestMtimeUtc": "2026-07-29T10:32:46.770811+00:00",
+        "latestMtimeUtc": "2026-07-29T12:46:34.172871+00:00"
+      },
+      "provenance": "Storefront spec references three fixed panorama images. Not app UI or evidence of current application behavior."
+    },
+    {
+      "kind": "Desktop icon only",
+      "file": {
+        "path": "/Users/minchomilev/Desktop/Cloud Calendars Icon-iOS-Default-1024x1024@1x.png",
+        "bytes": 3837539,
+        "mtimeUtc": "2026-07-28T12:56:40.504250+00:00",
+        "sha256": "f8f77e93287ecda2a2065ac737f09ae2b0cb5ae03800cf5e4a722c92d8d9ae2f",
+        "dimensions": [
+          1024,
+          1024
+        ]
+      },
+      "provenance": "Product-named file, no generation record or approval found in this scope; not a replacement screenshot/video."
+    }
+  ],
+  "deliveredVideo": {
+    "file": {
+      "path": "/Users/minchomilev/cloud-calendars/public/assets/video/widgets.mp4",
+      "bytes": 564222,
+      "mtimeUtc": "2026-07-28T17:26:29.765333+00:00",
+      "sha256": "390f7e8d6bbb5244432e3e299320831638e94fa8276e2eb326d0d55e752e0124"
+    },
+    "width": 640,
+    "height": 1392,
+    "durationSeconds": 9.266667,
+    "averageFrameRate": "30/1",
+    "variants": [
+      "widgets.webm",
+      "widgets-poster.webp",
+      "widgets-poster.jpg"
+    ],
+    "sourceReference": "src/app/components/widgets/widgets.component.html lines 39–55; English accessibility label and device caption are fixed text, not demonstrated locale variants.",
+    "gitHistory": "Widget footage introduced by 477694d dated 2026-07-29; later media-related commits 9ba58cd July 30 and f78e109 August 27.",
+    "playbackVerified": false
+  },
+  "tour": {
+    "source": "src/app/components/showcase/showcase.component.ts lines 88–92",
+    "assets": [
+      "single-day-view.webp",
+      "multi-day-view-v.webp",
+      "multi-calndar-view.webp",
+      "month-view.webp",
+      "list-view.webp"
+    ],
+    "provenance": "README describes transparent device mockups derived from App Store shots. Existing PNG file mtimes are May 2025, WebP derivatives July 2026; timestamps do not prove capture dates or release version."
+  },
+  "evidence": [
+    {
+      "path": "src/app/core/media-manifest.json",
+      "sha256": "c7b74db44762cce88ec43b33b9fa5c53aaa042dbace39c135c29016fac4be679"
+    },
+    {
+      "path": "src/app/core/locales.ts",
+      "sha256": "4a98935b56015f8f151a1c49aaeea94063c2806999ebe6bea9b899805952ae96"
+    },
+    {
+      "path": "src/app/components/shot-rail/shot-rail.component.ts",
+      "sha256": "36980d5df8296df997c3a080e0da9d11614066f94153018b9a475db04aa52418"
+    },
+    {
+      "path": "src/app/components/showcase/showcase.component.ts",
+      "sha256": "e6fb3c70fdfecc2938b5d9207f89d665b36a6c96bd826f9d419b996acb693aa5"
+    },
+    {
+      "path": "src/app/components/widgets/widgets.component.html",
+      "sha256": "a108e39672f4b22a0334396682286cc397d7f8a0cc4949ae4715180edf216ffe"
+    },
+    {
+      "path": "scripts/build-media.py",
+      "sha256": "8595d3b85e0689ded63ae7fda864dc25a6a565f0ae2826c26ca6d107b7895298"
+    },
+    {
+      "path": "README.md",
+      "sha256": "86067f51de0ad5d5fd00f3c3f2cfd8f94007a1cb1e2cb25179bf933d73aa783d"
+    },
+    {
+      "path": ".gitignore",
+      "sha256": "e97bd7cbbf661b246be49b7aafbee75a86614aee3c0448eacfcacb18aa9c8c32"
+    },
+    {
+      "path": "infrastructure/README.md",
+      "sha256": "4153ace6aa9e3410e26fe2758a1040380b673cbeba9aedb7d5dd703ecae130b5"
+    },
+    {
+      "path": "cloud-calendars.storefront.json",
+      "sha256": "9f7173313274d8ae6dcf25ed7e4850d99b1a50cd1b4e21d883ca80e22f6c0aea"
+    }
+  ],
+  "nextActionableChecks": [
+    "Obtain the exact output folder or generation-task reference for the newly promised photos/videos; inspect that bounded location and its completion/provenance manifest.",
+    "For each replacement, identify app build, real-device versus simulator source, capture date, device dimensions, locale and consent/fixture provenance before displaying pixels or publishing.",
+    "Inspect original and proposed rendered media visually against supported widget, Live Activity and weather behavior; July filenames alone do not establish factual accuracy.",
+    "Resolve the storefront spec missing weather image before treating it as a reproducible source set.",
+    "Confirm intended S3 origin/key-prefix mapping and compare only chosen media keys with local hashes/metadata; no cloud write is needed for that verification.",
+    "Verify actual video playback and controls separately; ffprobe metadata is not browser playback proof.",
+    "Review Bulgarian fallback and locale coverage explicitly; seven-locale exports and 31-locale gallery renditions are distinct sets."
+  ],
+  "limitations": [
+    "Modification times and documentation dates are not authoritative generation timestamps.",
+    "No new output is proven absent outside the inspected scope.",
+    "File availability is not approval, pixel correctness, release equivalence or publication readiness.",
+    "No source integration, generation, copying, deletion, build, upload or deployment performed."
+  ]
+}

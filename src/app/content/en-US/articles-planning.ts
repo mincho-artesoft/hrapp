@@ -474,7 +474,7 @@ export const PLANNING_EN_US: Readonly<Record<string, LocalisedArticle>> = {
 },
 
   'time-zones-and-the-flight-you-booked': {
-  "updated": "2026-10-21",
+  "updated": "2026-10-22",
   "title": "Calendar time zones: check the event before you travel",
   "short": "Time zones and travel",
   "description": "Separate an event’s time zone from the calendar’s display zone. Check flights, destination appointments and recurring calls without shifting the wrong time.",
@@ -517,6 +517,13 @@ export const PLANNING_EN_US: Readonly<Record<string, LocalisedArticle>> = {
       ]
     },
     {
+      "heading": "When only an imported or subscribed calendar is wrong",
+      "body": [
+        "Identify the route before changing the appointment: an imported file is a snapshot, while a subscription follows a published source. Compare the same occurrence in the owning calendar and the recipient, including its date, event zone and display zone. Check a date near a seasonal clock change if the event repeats. Keep the original unchanged while establishing where the difference appears.",
+        "If the owner’s calendar is correct but one recipient is wrong, record that bounded comparison for support. A feed-format interpretation problem is one possibility, but not every shifted time has that cause. Review access and calendar-data handling before trying a feed-processing service. It is not a replacement for an authorized account connection, and moving the original event can change the real appointment for everyone."
+      ]
+    },
+    {
       "heading": "If the clocks still disagree",
       "body": [
         "Compare the same event in the owning provider and Cloud Calendars, noting the calendar, event date, zone and displayed time in each. Check that you have not opened a similarly titled copy. If the provider is correct but another display differs, report the comparison before rewriting the appointment.",
@@ -544,6 +551,10 @@ export const PLANNING_EN_US: Readonly<Record<string, LocalisedArticle>> = {
     {
       "q": "Should I move a meeting back to its old hour after travelling?",
       "a": "First check its intended moment and the display zone. A different local hour may be the correct presentation of the same appointment."
+    },
+    {
+      "q": "Should I move the original event if an ICS subscription shows the wrong hour?",
+      "a": "First compare that occurrence at its source and recipient, with both event and display zones. Establish whether the issue belongs to the appointment or only to the receiving display. Do not change the real meeting just to compensate for one calendar."
     }
   ],
   "sourcesHeading": "Official event and display time-zone guidance",
@@ -555,11 +566,20 @@ export const PLANNING_EN_US: Readonly<Record<string, LocalisedArticle>> = {
     {
       "label": "Google: Use Google Calendar in different time zones",
       "url": "https://support.google.com/calendar/answer/37064?hl=en"
+    },
+    {
+      "label": "Google: imported events do not stay in sync",
+      "url": "https://support.google.com/calendar/answer/37118?hl=en"
+    },
+    {
+      "label": "Microsoft: published ICS, imports and subscriptions",
+      "url": "https://support.microsoft.com/en-us/outlook/share-your-calendar-in-outlook-on-the-web"
     }
   ],
   "seeAlso": [
     "recurring-events-without-the-mess",
-    "weather-where-the-event-is"
+    "weather-where-the-event-is",
+    "calendar-export-ics-pdf-and-backup"
   ]
 },
 

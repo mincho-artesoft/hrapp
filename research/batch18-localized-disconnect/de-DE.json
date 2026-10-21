@@ -1,0 +1,101 @@
+{
+  "updated": "2026-10-22",
+  "title": "Eine Kalenderverbindung trennen: Zugriff, Synchronisierung und vorhandene Kopien",
+  "short": "Eine Kalenderverbindung bewusst trennen",
+  "description": "Unterscheide Abmeldung, Anbieterzugriff und vorhandene Kopien. Prüfe die Kontoverbindungen in Cloud Calendars, bevor du trennst oder Kalender entfernst.",
+  "lede": "Eine Verbindung zu beenden und ihre Kalenderkopien zu entfernen sind unterschiedliche Entscheidungen. Kläre deinen Verbindungsweg und sichere benötigte Informationen, bevor du eine Trennaktion wählst. Dieser Leitfaden stammt von Arte Soft, dem Entwickler von Cloud Calendars.",
+  "commonBelief": "Eine Abmeldung pausiert nur Aktualisierungen, widerruft alle zugehörigen Rechte und lässt sämtliche vorhandenen Kalenderdaten unverändert.",
+  "sections": [
+    {
+      "heading": "Die zu trennende Verbindung bestimmen",
+      "body": [
+        "Beginne mit dem Konto und Kalender, denen die Termine gehören. Ein über iPhone-Einstellungen hinzugefügtes Anbieterkonto, eine direkte Verbindung in Cloud Calendars, ein iCalendar-Abonnement und die Freigabeidentität der App sind verschiedene Wege. Dieselbe E-Mail-Adresse macht ihre Einstellungen nicht austauschbar.",
+        "Notiere die Kalendernamen und den Weg, über den sie angezeigt werden, ohne private Termindetails weiterzugeben. Entscheide, ob du künftigen Zugriff beenden, eine Freigabe verlassen oder eine Kopie entfernen möchtest. Bei fehlenden oder doppelten Terminen ist das Trennen nicht der erste Diagnoseschritt."
+      ]
+    },
+    {
+      "heading": "Prüfen, was die Abmeldung der App entfernt",
+      "body": [
+        "Die für diesen Leitfaden geprüfte Umsetzung versucht, das ausgewählte Google-Kalenderprofil zu trennen und seine zugeordneten Kalenderkopien aus dem iOS-Kalenderspeicher zu entfernen. Behandle dies als Entfernung, nicht als Pause. Trotzdem kann ein Verbindungsfehler auftreten; prüfe deshalb den Zugriffsstatus beim Anbieter gesondert, statt einen vollständigen Widerruf aller Rechte vorauszusetzen.",
+        "Auch die Abmeldung eines Microsoft-Kalenderprofils versucht, zugeordnete Kalender und lokale Verbindungseinträge zu entfernen. Gehe nicht davon aus, dass diese Kopien sichtbar bleiben. Wo Kalenderkopien gespeichert werden, kann von den verfügbaren Kalenderquellen des Geräts abhängen. Prüfe daher die Quelle und sichere benötigte Informationen vor dem Fortfahren."
+      ]
+    },
+    {
+      "heading": "Künftigen Zugriff beim Anbieter gesondert prüfen",
+      "body": [
+        "Googles Einstellungen für verknüpfte Apps unterscheiden die Anmeldung mit Google vom Zugriff auf Google-Kontodaten. Prüfe die gewünschte App, das Konto und die Verknüpfungsart. Den betreffenden Datenzugriff zu entfernen und eine Anmeldeverknüpfung zu beenden sind unterschiedliche Aufgaben. Eine Abmeldung in der App beweist allein nicht, dass jede Verbindung beendet wurde.",
+        "Für Microsoft-Geschäfts- oder Schulkonten beschreibt Microsoft „My Apps > Manage your application“ zur Prüfung der Berechtigungen. Du kannst selbst erteilte Rechte widerrufen; vom Administrator erteilte Rechte erfordern den Administrator der Organisation. Diese Anleitung betrifft Geschäfts- und Schulkonten, nicht pauschal private Microsoft-Konten."
+      ]
+    },
+    {
+      "heading": "Freigabeidentität und Anbietersynchronisierung unterscheiden",
+      "body": [
+        "Cloud Calendars hat außerdem ein Konto für Freigaben. Im aktuellen Quellcode wird dessen Abmeldung getrennt von den Kalenderprofil-Verbindungen behandelt: Sie löscht die lokale Freigabesitzung und setzt lokal nachverfolgten Freigabezugriff auf Leserstatus zurück. Das besagt nicht, dass alle Serverdaten gelöscht wurden.",
+        "Sind mehrere Freigabeidentitäten verknüpft, bleibt das Konto beim Trennen einer Identität über eine andere erhalten. Bei der letzten Identität meldet der aktuelle Ablauf lokal ab und belässt die Serververknüpfung zur Wiederherstellung. Nutze Abmelden nicht als Ersatz für eine Datenlöschanfrage und gehe nicht davon aus, dass damit auch alle Kalenderanbieter getrennt werden."
+      ]
+    },
+    {
+      "heading": "Abonnements und frühere Kopien nach ihren eigenen Regeln behandeln",
+      "body": [
+        "Apple beschreibt das Kündigen eines externen Kalenderabonnements getrennt von der Auswahl anzuzeigender Kalender. Handelt es sich um ein schreibgeschütztes Abonnement, identifiziere es vor der Abmeldung vom Abonnement. Ausblenden eines Kalenders, Beenden eines Feed-Abonnements und Löschen eines bearbeitbaren Kalenders sind unterschiedliche Vorgänge.",
+        "Google weist darauf hin, dass nach dem Entfernen eines App-Zugriffs eine getrennte Anfrage nötig sein kann, um bereits beim Entwickler gespeicherte Daten zu löschen. Ebenso ruft ein Berechtigungsschalter keine früher exportierte Datei oder Kopie einer anderen Person zurück. Trenne Datenschutz- und Aufbewahrungsfragen davon, ob neue Aktualisierungen noch erlaubt sind."
+      ]
+    },
+    {
+      "heading": "Das Ergebnis vor weiterem Aufräumen bestätigen",
+      "body": [
+        "Prüfe nach einer beabsichtigten Änderung den Verbindungsstatus beim Anbieter und vergleiche den Originalkalender mit der App. Kläre, was nicht mehr aktualisiert wird, was lokal verschwunden ist und was anderswo bleibt. Lösche keine ähnlich aussehenden Termine allein deshalb, weil ein Verbindungsname nicht mehr erscheint.",
+        "Stoppe bei unerwartetem Ergebnis weitere Bereinigung und kontaktiere den Support mit Kontoweg, Kalenderquelle und verwendeter Aktion. Sende keine Passwörter, Zugriffstoken, privaten Feed-URLs oder Screenshots vertraulicher Termine. Erkläre, ob der Originalkalender beim Anbieter die Termine noch enthält, damit der Support Verbindungsproblem und fehlende Kopie unterscheiden kann."
+      ]
+    }
+  ],
+  "claims": {},
+  "practical": [
+    "Genaues Konto, Kalender und Verbindungsweg bestimmen.",
+    "Entscheiden, ob Zugriff enden, eine Freigabe verlassen oder eine Kopie entfernt werden soll.",
+    "Benötigte Informationen über einen überprüften Export- oder Sicherungsweg bewahren.",
+    "Vor der Verwendung prüfen, was die installierte Abmelde- oder Trennfunktion entfernt.",
+    "Anbieterrechte gesondert prüfen; bei verwaltetem Zugriff den Administrator einbeziehen.",
+    "Das Ergebnis bei Anbieter und App vor weiteren Bereinigungen prüfen."
+  ],
+  "faq": [
+    {
+      "q": "Bleiben Kalenderkopien bei der Abmeldung einer direkten Cloud Calendars-Verbindung erhalten?",
+      "a": "Gehe nicht davon aus. Die geprüften Google- und Microsoft-Kalenderprofilabläufe versuchen, zugeordnete Kalender aus dem iOS-Speicher zu entfernen. Prüfe die Quelle und sichere benötigte Informationen vor dem Trennen."
+    },
+    {
+      "q": "Löscht das Entfernen des Google-Zugriffs einer App bereits kopierte Daten?",
+      "a": "Google erklärt, dass du die Löschung bereits beim Entwickler gespeicherter Daten gegebenenfalls gesondert anfordern musst. Betrachte künftigen Zugriff und aufbewahrte Daten als verschiedene Ergebnisse."
+    },
+    {
+      "q": "Ist die Abmeldung des Freigabekontos dasselbe wie seine Löschung?",
+      "a": "Nein. Der aktuelle Freigabeablauf entfernt eine lokale Sitzung und erhält Wiederherstellungsmöglichkeiten. Er ist von den Abmeldewegen der Kalenderanbieter getrennt und beweist keine Löschung von Serverdaten."
+    }
+  ],
+  "sourcesHeading": "Offizielle Hinweise zu Zugriff und Abonnements",
+  "sources": [
+    {
+      "label": "Google: verknüpfte Apps und unterschiedliche Verbindungsarten verwalten",
+      "url": "https://support.google.com/accounts/answer/13533235?hl=en"
+    },
+    {
+      "label": "Google: Zugriff und bereits bei einer verknüpften App gespeicherte Daten",
+      "url": "https://support.google.com/accounts/answer/14012355?hl=en"
+    },
+    {
+      "label": "Microsoft: My Apps-Berechtigungen für Geschäfts- und Schulkonten",
+      "url": "https://support.microsoft.com/en-us/accounts-billing/work-school/edit-or-revoke-application-permissions-in-the-my-apps-portal"
+    },
+    {
+      "label": "Apple: Kalenderauswahl und Abonnements auf dem iPhone",
+      "url": "https://support.apple.com/guide/iphone/use-multiple-calendars-iph3d1110d4/ios"
+    }
+  ],
+  "seeAlso": [
+    "icloud-google-and-outlook-in-one-view",
+    "calendar-export-ics-pdf-and-backup",
+    "taking-back-a-calendar-you-shared",
+    "the-secret-address-of-a-google-calendar",
+    "google-calendars-that-never-reach-your-iphone"
+  ]
+}

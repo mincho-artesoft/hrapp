@@ -1,6 +1,108 @@
 import { LocalisedArticle } from '../types';
 
 export const HELP_DE_DE: Readonly<Record<string, LocalisedArticle>> = {
+  "disconnect-calendar-integration-without-losing-track": {
+  "updated": "2026-10-22",
+  "title": "Eine Kalenderverbindung trennen: Zugriff, Synchronisierung und vorhandene Kopien",
+  "short": "Eine Kalenderverbindung bewusst trennen",
+  "description": "Unterscheide Abmeldung, Anbieterzugriff und vorhandene Kopien. Prüfe die Kontoverbindungen in Cloud Calendars, bevor du trennst oder Kalender entfernst.",
+  "lede": "Eine Verbindung zu beenden und ihre Kalenderkopien zu entfernen sind unterschiedliche Entscheidungen. Kläre deinen Verbindungsweg und sichere benötigte Informationen, bevor du eine Trennaktion wählst. Dieser Leitfaden stammt von Arte Soft, dem Entwickler von Cloud Calendars.",
+  "commonBelief": "Eine Abmeldung pausiert nur Aktualisierungen, widerruft alle zugehörigen Rechte und lässt sämtliche vorhandenen Kalenderdaten unverändert.",
+  "sections": [
+    {
+      "heading": "Die zu trennende Verbindung bestimmen",
+      "body": [
+        "Beginne mit dem Konto und Kalender, denen die Termine gehören. Ein über iPhone-Einstellungen hinzugefügtes Anbieterkonto, eine direkte Verbindung in Cloud Calendars, ein iCalendar-Abonnement und die Freigabeidentität der App sind verschiedene Wege. Dieselbe E-Mail-Adresse macht ihre Einstellungen nicht austauschbar.",
+        "Notiere die Kalendernamen und den Weg, über den sie angezeigt werden, ohne private Termindetails weiterzugeben. Entscheide, ob du künftigen Zugriff beenden, eine Freigabe verlassen oder eine Kopie entfernen möchtest. Bei fehlenden oder doppelten Terminen ist das Trennen nicht der erste Diagnoseschritt."
+      ]
+    },
+    {
+      "heading": "Prüfen, was die Abmeldung der App entfernt",
+      "body": [
+        "Die für diesen Leitfaden geprüfte Umsetzung versucht, das ausgewählte Google-Kalenderprofil zu trennen und seine zugeordneten Kalenderkopien aus dem iOS-Kalenderspeicher zu entfernen. Behandle dies als Entfernung, nicht als Pause. Trotzdem kann ein Verbindungsfehler auftreten; prüfe deshalb den Zugriffsstatus beim Anbieter gesondert, statt einen vollständigen Widerruf aller Rechte vorauszusetzen.",
+        "Auch die Abmeldung eines Microsoft-Kalenderprofils versucht, zugeordnete Kalender und lokale Verbindungseinträge zu entfernen. Gehe nicht davon aus, dass diese Kopien sichtbar bleiben. Wo Kalenderkopien gespeichert werden, kann von den verfügbaren Kalenderquellen des Geräts abhängen. Prüfe daher die Quelle und sichere benötigte Informationen vor dem Fortfahren."
+      ]
+    },
+    {
+      "heading": "Künftigen Zugriff beim Anbieter gesondert prüfen",
+      "body": [
+        "Googles Einstellungen für verknüpfte Apps unterscheiden die Anmeldung mit Google vom Zugriff auf Google-Kontodaten. Prüfe die gewünschte App, das Konto und die Verknüpfungsart. Den betreffenden Datenzugriff zu entfernen und eine Anmeldeverknüpfung zu beenden sind unterschiedliche Aufgaben. Eine Abmeldung in der App beweist allein nicht, dass jede Verbindung beendet wurde.",
+        "Für Microsoft-Geschäfts- oder Schulkonten beschreibt Microsoft „My Apps > Manage your application“ zur Prüfung der Berechtigungen. Du kannst selbst erteilte Rechte widerrufen; vom Administrator erteilte Rechte erfordern den Administrator der Organisation. Diese Anleitung betrifft Geschäfts- und Schulkonten, nicht pauschal private Microsoft-Konten."
+      ]
+    },
+    {
+      "heading": "Freigabeidentität und Anbietersynchronisierung unterscheiden",
+      "body": [
+        "Cloud Calendars hat außerdem ein Konto für Freigaben. Im aktuellen Quellcode wird dessen Abmeldung getrennt von den Kalenderprofil-Verbindungen behandelt: Sie löscht die lokale Freigabesitzung und setzt lokal nachverfolgten Freigabezugriff auf Leserstatus zurück. Das besagt nicht, dass alle Serverdaten gelöscht wurden.",
+        "Sind mehrere Freigabeidentitäten verknüpft, bleibt das Konto beim Trennen einer Identität über eine andere erhalten. Bei der letzten Identität meldet der aktuelle Ablauf lokal ab und belässt die Serververknüpfung zur Wiederherstellung. Nutze Abmelden nicht als Ersatz für eine Datenlöschanfrage und gehe nicht davon aus, dass damit auch alle Kalenderanbieter getrennt werden."
+      ]
+    },
+    {
+      "heading": "Abonnements und frühere Kopien nach ihren eigenen Regeln behandeln",
+      "body": [
+        "Apple beschreibt das Kündigen eines externen Kalenderabonnements getrennt von der Auswahl anzuzeigender Kalender. Handelt es sich um ein schreibgeschütztes Abonnement, identifiziere es vor der Abmeldung vom Abonnement. Ausblenden eines Kalenders, Beenden eines Feed-Abonnements und Löschen eines bearbeitbaren Kalenders sind unterschiedliche Vorgänge.",
+        "Google weist darauf hin, dass nach dem Entfernen eines App-Zugriffs eine getrennte Anfrage nötig sein kann, um bereits beim Entwickler gespeicherte Daten zu löschen. Ebenso ruft ein Berechtigungsschalter keine früher exportierte Datei oder Kopie einer anderen Person zurück. Trenne Datenschutz- und Aufbewahrungsfragen davon, ob neue Aktualisierungen noch erlaubt sind."
+      ]
+    },
+    {
+      "heading": "Das Ergebnis vor weiterem Aufräumen bestätigen",
+      "body": [
+        "Prüfe nach einer beabsichtigten Änderung den Verbindungsstatus beim Anbieter und vergleiche den Originalkalender mit der App. Kläre, was nicht mehr aktualisiert wird, was lokal verschwunden ist und was anderswo bleibt. Lösche keine ähnlich aussehenden Termine allein deshalb, weil ein Verbindungsname nicht mehr erscheint.",
+        "Stoppe bei unerwartetem Ergebnis weitere Bereinigung und kontaktiere den Support mit Kontoweg, Kalenderquelle und verwendeter Aktion. Sende keine Passwörter, Zugriffstoken, privaten Feed-URLs oder Screenshots vertraulicher Termine. Erkläre, ob der Originalkalender beim Anbieter die Termine noch enthält, damit der Support Verbindungsproblem und fehlende Kopie unterscheiden kann."
+      ]
+    }
+  ],
+  "claims": {},
+  "practical": [
+    "Genaues Konto, Kalender und Verbindungsweg bestimmen.",
+    "Entscheiden, ob Zugriff enden, eine Freigabe verlassen oder eine Kopie entfernt werden soll.",
+    "Benötigte Informationen über einen überprüften Export- oder Sicherungsweg bewahren.",
+    "Vor der Verwendung prüfen, was die installierte Abmelde- oder Trennfunktion entfernt.",
+    "Anbieterrechte gesondert prüfen; bei verwaltetem Zugriff den Administrator einbeziehen.",
+    "Das Ergebnis bei Anbieter und App vor weiteren Bereinigungen prüfen."
+  ],
+  "faq": [
+    {
+      "q": "Bleiben Kalenderkopien bei der Abmeldung einer direkten Cloud Calendars-Verbindung erhalten?",
+      "a": "Gehe nicht davon aus. Die geprüften Google- und Microsoft-Kalenderprofilabläufe versuchen, zugeordnete Kalender aus dem iOS-Speicher zu entfernen. Prüfe die Quelle und sichere benötigte Informationen vor dem Trennen."
+    },
+    {
+      "q": "Löscht das Entfernen des Google-Zugriffs einer App bereits kopierte Daten?",
+      "a": "Google erklärt, dass du die Löschung bereits beim Entwickler gespeicherter Daten gegebenenfalls gesondert anfordern musst. Betrachte künftigen Zugriff und aufbewahrte Daten als verschiedene Ergebnisse."
+    },
+    {
+      "q": "Ist die Abmeldung des Freigabekontos dasselbe wie seine Löschung?",
+      "a": "Nein. Der aktuelle Freigabeablauf entfernt eine lokale Sitzung und erhält Wiederherstellungsmöglichkeiten. Er ist von den Abmeldewegen der Kalenderanbieter getrennt und beweist keine Löschung von Serverdaten."
+    }
+  ],
+  "sourcesHeading": "Offizielle Hinweise zu Zugriff und Abonnements",
+  "sources": [
+    {
+      "label": "Google: verknüpfte Apps und unterschiedliche Verbindungsarten verwalten",
+      "url": "https://support.google.com/accounts/answer/13533235?hl=en"
+    },
+    {
+      "label": "Google: Zugriff und bereits bei einer verknüpften App gespeicherte Daten",
+      "url": "https://support.google.com/accounts/answer/14012355?hl=en"
+    },
+    {
+      "label": "Microsoft: My Apps-Berechtigungen für Geschäfts- und Schulkonten",
+      "url": "https://support.microsoft.com/en-us/accounts-billing/work-school/edit-or-revoke-application-permissions-in-the-my-apps-portal"
+    },
+    {
+      "label": "Apple: Kalenderauswahl und Abonnements auf dem iPhone",
+      "url": "https://support.apple.com/guide/iphone/use-multiple-calendars-iph3d1110d4/ios"
+    }
+  ],
+  "seeAlso": [
+    "icloud-google-and-outlook-in-one-view",
+    "calendar-export-ics-pdf-and-backup",
+    "taking-back-a-calendar-you-shared",
+    "the-secret-address-of-a-google-calendar",
+    "google-calendars-that-never-reach-your-iphone"
+  ]
+},
+
   "calendar-notifications-missing-silent-or-duplicated": {
     "updated": "2026-10-21",
     "title": "Kalender-Mitteilungen auf dem iPhone: fehlend, lautlos oder doppelt?",
@@ -186,105 +288,106 @@ export const HELP_DE_DE: Readonly<Record<string, LocalisedArticle>> = {
     ]
   },
   "calendar-export-ics-pdf-and-backup": {
-    "updated": "2026-10-21",
-    "title": "Kalender exportieren: ICS-Dateien, PDFs und Abonnements",
-    "short": "Kalenderexport und Sicherung",
-    "description": "Kalenderdaten vom iPhone-Konto sichern oder teilen? Wählen Sie ICS, PDF oder ein Abonnement und den passenden Weg über Google, Mac oder Outlook.",
-    "lede": "Der Kalender auf Ihrem iPhone kann mehrere Konten anzeigen. Für eine brauchbare Kopie müssen Sie die Quelle kennen und entscheiden, ob Sie Ereignisdaten, einen lesbaren Zeitplan oder laufende Aktualisierungen brauchen. Dieser Leitfaden stammt von Arte Soft, dem Entwickler von Cloud Calendars.",
-    "sections": [
-      {
-        "heading": "Erst das Ergebnis, dann das Format wählen",
-        "body": [
-          "Ein Kalenderexport kann unterschiedliche Aufgaben erfüllen. Soll eine andere Kalender-App Ereignisdatensätze lesen, wählen Sie ein unterstütztes strukturiertes Format wie ICS. Für einen lesbaren Zeitplan eignet sich ein PDF oder Ausdruck. Für spätere Änderungen prüfen Sie ein Abonnement oder eine Freigabe mit Berechtigungen.",
-          "Ein PDF hält das gespeicherte Layout fest; es ist keine Importdatei für Termine. Eine heruntergeladene ICS-Datei enthält Daten zum Zeitpunkt des Downloads. Ein ICS-Abonnement verwendet eine Adresse, die der Kalender erneut abruft. Die Dateiendung allein unterscheidet nicht zwischen importierter Momentaufnahme und laufendem Abonnement.",
-          "Eine Wochenendreise als PDF lässt sich gut lesen. Ein Kollege, der Termine in ein anderes Konto überträgt, braucht Ereignisdaten. Ein Vereinsmitglied, das sich ändernde Spieltermine verfolgen möchte, braucht eine aktualisierte Quelle. Klären Sie das Ziel vor dem Versand."
-        ]
-      },
-      {
-        "heading": "Mit dem Konto beginnen, das die Termine enthält",
-        "body": [
-          "Identifizieren Sie auf dem iPhone Kalender und Konto mit den benötigten Ereignissen. Eine gemeinsame Ansicht kann mehrere Konten, Freigaben und Abonnements enthalten. Das macht daraus keinen einzelnen Quellkalender für den Export.",
-          "Für Google Kalender benötigen Sie einen Computer; die Google-Kalender-App bietet keinen Export. Öffnen Sie auf der Website „Settings“, „Import & export“ und „Export“. Die ZIP-Datei enthält einzelne ICS-Dateien. Für einen Kalender wählen Sie dessen „Settings and sharing“ und „Export calendar“. Google verlangt Berechtigung zur Verwaltung von Änderungen und Freigaben; auch eine Organisation kann den Export einschränken.",
-          "Ist der Kalender in Kalender auf dem Mac verfügbar, wählen Sie ihn in der Seitenleiste und nutzen „File > Export > Export“ für eine ICS-Datei. Dies ist ein Mac-Verfahren, kein versteckter iPhone-Befehl. Prüfen Sie vor dem Speichern den ausgewählten Kalender."
-        ]
-      },
-      {
-        "heading": "Wenn ein PDF-Zeitplan gebraucht wird",
-        "body": [
-          "Verwenden Sie in Kalender auf dem Mac „File > Print“ und wählen Sie Layout, Datumsbereich und Kalender. Im macOS-Druckdialog nutzen Sie das PDF-Menü und „Save as PDF“. Öffnen Sie das Ergebnis vor dem Versand: Ein kleines Raster kann wichtige Angaben abschneiden oder weglassen.",
-          "Nennen Sie im Begleittext den Zeitraum und die relevante Zeitzone. Prüfen Sie private Termine, Notizen und Orte vor der Weitergabe. Spätere Kalenderänderungen verändern kein bereits versandtes PDF. Kennzeichnen Sie eine überarbeitete Kopie eindeutig."
-        ]
-      },
-      {
-        "heading": "Abonnieren und Veröffentlichen ist keine Sicherung",
-        "body": [
-          "Microsoft unterscheidet für Outlook im Web ausdrücklich: Eine veröffentlichte ICS-Datei herunterzuladen und zu importieren erzeugt eine Kopie ohne spätere Aktualisierungen. Ein Abonnement der ICS-Adresse folgt Änderungen. Das Aktualisierungsintervall hängt vom Anbieter des Empfängers ab; der veröffentlichte Kalender ist schreibgeschützt.",
-          "Wo verfügbar, können Sie in Outlook über „Settings > Shared calendars > Publish a calendar“ Kalender und Detailgrad wählen. Veröffentlichung ermöglicht Ansicht oder Abonnement. Nutzen Sie das für eine beabsichtigte Zielgruppe, nicht als private Sicherung. Ein gespeicherter Link bleibt von der Verfügbarkeit der Quelle abhängig."
-        ]
-      },
-      {
-        "heading": "Was Cloud Calendars beim Teilen bereitstellt",
-        "body": [
-          "Wir entwickeln Cloud Calendars. Die Ereignisfreigabe bietet App Clip, E-Mail und QR-Code als Wege für Einladungslinks. Diese erfüllen einen anderen Zweck als der Download eines ganzen Kalenders. Ein Link kann zu einer Einladung oder einem Abonnement führen, ist aber kein portables Archiv aller angezeigten Kalender.",
-          "Dieser Leitfaden enthält keine Anleitung zum vollständigen ICS-, CSV- oder PDF-Export aus Cloud Calendars. Nutzen Sie dafür die dokumentierten Anbieter- oder Mac-Verfahren. Für einen einzelnen Termin hilft unser Freigabeleitfaden. Für einen laufenden gemeinsamen Zeitplan klären Sie zuerst, wer Zugriff, Aktualisierungen oder Bearbeitungsrechte braucht."
-        ]
-      },
-      {
-        "heading": "Eine Kopie prüfen, bevor Sie sich darauf verlassen",
-        "body": [
-          "Behalten Sie den Originalkalender während der Prüfung. Notieren Sie Konto, Kalendername und Exportdatum. Testen Sie einen Import nach Möglichkeit in einem eigenen Zielkalender. Vergleichen Sie einen normalen Termin, ein ganztägiges Ereignis und eine Serie mit einem geänderten Einzeltermin.",
-          "Eine Übertragung garantiert nicht den Erhalt aller Meetingfunktionen. Google weist darauf hin, dass importierte Ereignisse keine Gäste und Konferenzdaten enthalten und CSV-Wiederholungen zu einzelnen Terminen werden können. Prüfen Sie Einladungen, Meetinglinks und Wiederholungen vor Abschluss einer Migration.",
-          "Apple bietet auf dem Mac außerdem „File > Export > Calendar Archive“ für ein ICBU-Archiv. Das unterscheidet sich vom Export einer ICS-Datei. Apple warnt, dass ein Archivimport aktuelle Kalenderinformationen und Daten ersetzt. Verwenden Sie eine Archivwiederherstellung nicht als beiläufigen Importtest."
-        ]
-      }
-    ],
-    "claims": {},
-    "practical": [
-      "Bestimmen Sie Konto und Kalender sowie das Ziel: Momentaufnahme, Druckansicht oder aktualisiertes Abonnement.",
-      "Nutzen Sie den dokumentierten Exportweg und behalten Sie während der Prüfung das Original.",
-      "Prüfen Sie Ziel, sensible Angaben und repräsentative Termine vor Weitergabe oder Nutzung."
-    ],
-    "faq": [
-      {
-        "q": "Kann ich Google Kalender direkt aus seiner iPhone-App exportieren?",
-        "a": "Nein. Googles dokumentierter Export erfordert einen Computer sowie die passende Berechtigung zur Verwaltung der Freigaben."
-      },
-      {
-        "q": "Ist ein ICS-Abonnement eine Sicherung?",
-        "a": "Es folgt einer Quelle, die sich ändern oder wegfallen kann. Speichern Sie für eine datierte Kopie einen unabhängigen Export und prüfen Sie dessen Inhalt."
-      },
-      {
-        "q": "Soll ich ICS oder PDF wählen?",
-        "a": "ICS eignet sich für Ereignisdaten zum Import in einen kompatiblen Kalender. PDF eignet sich für einen lesbaren Zeitplan. Ein PDF liefert keine Aktualisierungen und stellt über die dokumentierten Importwege keine bearbeitbaren Termine wieder her."
-      }
-    ],
-    "sourcesHeading": "Offizielle Anleitungen und Formatgrenzen",
-    "sources": [
-      {
-        "label": "Google: Kalenderereignisse exportieren",
-        "url": "https://support.google.com/calendar/answer/37111?hl=en"
-      },
-      {
-        "label": "Google: Ereignisse importieren und Übertragungsgrenzen",
-        "url": "https://support.google.com/calendar/answer/37118?hl=en"
-      },
-      {
-        "label": "Apple: ICS-Dateien und Kalenderarchive auf dem Mac",
-        "url": "https://support.apple.com/guide/calendar/import-or-export-calendars-icl1023/mac"
-      },
-      {
-        "label": "Apple: Dokumente auf dem Mac als PDF sichern",
-        "url": "https://support.apple.com/en-gb/guide/mac-help/mchlp1531/mac"
-      },
-      {
-        "label": "Microsoft: Veröffentlichung, Import und Abonnement in Outlook",
-        "url": "https://support.microsoft.com/en-us/outlook/share-your-calendar-in-outlook-on-the-web"
-      }
-    ],
-    "seeAlso": [
-      "sharing-one-event-not-your-calendar",
-      "inviting-people-who-do-not-have-the-app",
-      "the-secret-address-of-a-google-calendar"
-    ]
-  }
+  "updated": "2026-10-21",
+  "title": "Kalender exportieren: ICS-Dateien, PDFs und Abonnements",
+  "short": "Kalenderexport und Sicherung",
+  "description": "Kalenderdaten vom iPhone-Konto sichern oder teilen? Wählen Sie ICS, PDF oder ein Abonnement und den passenden Weg über Google, Mac oder Outlook.",
+  "lede": "Der Kalender auf Ihrem iPhone kann mehrere Konten anzeigen. Für eine brauchbare Kopie müssen Sie die Quelle kennen und entscheiden, ob Sie Ereignisdaten, einen lesbaren Zeitplan oder laufende Aktualisierungen brauchen. Dieser Leitfaden stammt von Arte Soft, dem Entwickler von Cloud Calendars.",
+  "sections": [
+    {
+      "heading": "Erst das Ergebnis, dann das Format wählen",
+      "body": [
+        "Ein Kalenderexport kann unterschiedliche Aufgaben erfüllen. Soll eine andere Kalender-App Ereignisdatensätze lesen, wählen Sie ein unterstütztes strukturiertes Format wie ICS. Für einen lesbaren Zeitplan eignet sich ein PDF oder Ausdruck. Für spätere Änderungen prüfen Sie ein Abonnement oder eine Freigabe mit Berechtigungen.",
+        "Ein PDF hält das gespeicherte Layout fest; es ist keine Importdatei für Termine. Eine heruntergeladene ICS-Datei enthält Daten zum Zeitpunkt des Downloads. Ein ICS-Abonnement verwendet eine Adresse, die der Kalender erneut abruft. Die Dateiendung allein unterscheidet nicht zwischen importierter Momentaufnahme und laufendem Abonnement.",
+        "Eine Wochenendreise als PDF lässt sich gut lesen. Ein Kollege, der Termine in ein anderes Konto überträgt, braucht Ereignisdaten. Ein Vereinsmitglied, das sich ändernde Spieltermine verfolgen möchte, braucht eine aktualisierte Quelle. Klären Sie das Ziel vor dem Versand."
+      ]
+    },
+    {
+      "heading": "Mit dem Konto beginnen, das die Termine enthält",
+      "body": [
+        "Identifizieren Sie auf dem iPhone Kalender und Konto mit den benötigten Ereignissen. Eine gemeinsame Ansicht kann mehrere Konten, Freigaben und Abonnements enthalten. Das macht daraus keinen einzelnen Quellkalender für den Export.",
+        "Für Google Kalender benötigen Sie einen Computer; die Google-Kalender-App bietet keinen Export. Öffnen Sie auf der Website „Settings“, „Import & export“ und „Export“. Die ZIP-Datei enthält einzelne ICS-Dateien. Für einen Kalender wählen Sie dessen „Settings and sharing“ und „Export calendar“. Google verlangt Berechtigung zur Verwaltung von Änderungen und Freigaben; auch eine Organisation kann den Export einschränken.",
+        "Ist der Kalender in Kalender auf dem Mac verfügbar, wählen Sie ihn in der Seitenleiste und nutzen „File > Export > Export“ für eine ICS-Datei. Dies ist ein Mac-Verfahren, kein versteckter iPhone-Befehl. Prüfen Sie vor dem Speichern den ausgewählten Kalender."
+      ]
+    },
+    {
+      "heading": "Wenn ein PDF-Zeitplan gebraucht wird",
+      "body": [
+        "Verwenden Sie in Kalender auf dem Mac „File > Print“ und wählen Sie Layout, Datumsbereich und Kalender. Im macOS-Druckdialog nutzen Sie das PDF-Menü und „Save as PDF“. Öffnen Sie das Ergebnis vor dem Versand: Ein kleines Raster kann wichtige Angaben abschneiden oder weglassen.",
+        "Nennen Sie im Begleittext den Zeitraum und die relevante Zeitzone. Prüfen Sie private Termine, Notizen und Orte vor der Weitergabe. Spätere Kalenderänderungen verändern kein bereits versandtes PDF. Kennzeichnen Sie eine überarbeitete Kopie eindeutig."
+      ]
+    },
+    {
+      "heading": "Abonnieren und Veröffentlichen ist keine Sicherung",
+      "body": [
+        "Microsoft unterscheidet für Outlook im Web ausdrücklich: Eine veröffentlichte ICS-Datei herunterzuladen und zu importieren erzeugt eine Kopie ohne spätere Aktualisierungen. Ein Abonnement der ICS-Adresse folgt Änderungen. Das Aktualisierungsintervall hängt vom Anbieter des Empfängers ab; der veröffentlichte Kalender ist schreibgeschützt.",
+        "Wo verfügbar, können Sie in Outlook über „Settings > Shared calendars > Publish a calendar“ Kalender und Detailgrad wählen. Veröffentlichung ermöglicht Ansicht oder Abonnement. Nutzen Sie das für eine beabsichtigte Zielgruppe, nicht als private Sicherung. Ein gespeicherter Link bleibt von der Verfügbarkeit der Quelle abhängig."
+      ]
+    },
+    {
+      "heading": "Was Cloud Calendars beim Teilen bereitstellt",
+      "body": [
+        "Wir entwickeln Cloud Calendars. Die Ereignisfreigabe bietet App Clip, E-Mail und QR-Code als Wege für Einladungslinks. Diese erfüllen einen anderen Zweck als der Download eines ganzen Kalenders. Ein Link kann zu einer Einladung oder einem Abonnement führen, ist aber kein portables Archiv aller angezeigten Kalender.",
+        "Dieser Leitfaden enthält keine Anleitung zum vollständigen ICS-, CSV- oder PDF-Export aus Cloud Calendars. Nutzen Sie dafür die dokumentierten Anbieter- oder Mac-Verfahren. Für einen einzelnen Termin hilft unser Freigabeleitfaden. Für einen laufenden gemeinsamen Zeitplan klären Sie zuerst, wer Zugriff, Aktualisierungen oder Bearbeitungsrechte braucht."
+      ]
+    },
+    {
+      "heading": "Eine Kopie prüfen, bevor Sie sich darauf verlassen",
+      "body": [
+        "Behalten Sie den Originalkalender während der Prüfung. Notieren Sie Konto, Kalendername und Exportdatum. Testen Sie einen Import nach Möglichkeit in einem eigenen Zielkalender. Vergleichen Sie einen normalen Termin, ein ganztägiges Ereignis und eine Serie mit einem geänderten Einzeltermin.",
+        "Eine Übertragung garantiert nicht den Erhalt aller Meetingfunktionen. Google weist darauf hin, dass importierte Ereignisse keine Gäste und Konferenzdaten enthalten und CSV-Wiederholungen zu einzelnen Terminen werden können. Prüfen Sie Einladungen, Meetinglinks und Wiederholungen vor Abschluss einer Migration.",
+        "Apple bietet auf dem Mac außerdem „File > Export > Calendar Archive“ für ein ICBU-Archiv. Das unterscheidet sich vom Export einer ICS-Datei. Apple warnt, dass ein Archivimport aktuelle Kalenderinformationen und Daten ersetzt. Verwenden Sie eine Archivwiederherstellung nicht als beiläufigen Importtest."
+      ]
+    }
+  ],
+  "claims": {},
+  "practical": [
+    "Bestimmen Sie Konto und Kalender sowie das Ziel: Momentaufnahme, Druckansicht oder aktualisiertes Abonnement.",
+    "Nutzen Sie den dokumentierten Exportweg und behalten Sie während der Prüfung das Original.",
+    "Prüfen Sie Ziel, sensible Angaben und repräsentative Termine vor Weitergabe oder Nutzung."
+  ],
+  "faq": [
+    {
+      "q": "Kann ich Google Kalender direkt aus seiner iPhone-App exportieren?",
+      "a": "Nein. Googles dokumentierter Export erfordert einen Computer sowie die passende Berechtigung zur Verwaltung der Freigaben."
+    },
+    {
+      "q": "Ist ein ICS-Abonnement eine Sicherung?",
+      "a": "Es folgt einer Quelle, die sich ändern oder wegfallen kann. Speichern Sie für eine datierte Kopie einen unabhängigen Export und prüfen Sie dessen Inhalt."
+    },
+    {
+      "q": "Soll ich ICS oder PDF wählen?",
+      "a": "ICS eignet sich für Ereignisdaten zum Import in einen kompatiblen Kalender. PDF eignet sich für einen lesbaren Zeitplan. Ein PDF liefert keine Aktualisierungen und stellt über die dokumentierten Importwege keine bearbeitbaren Termine wieder her."
+    }
+  ],
+  "sourcesHeading": "Offizielle Anleitungen und Formatgrenzen",
+  "sources": [
+    {
+      "label": "Google: Kalenderereignisse exportieren",
+      "url": "https://support.google.com/calendar/answer/37111?hl=en"
+    },
+    {
+      "label": "Google: Ereignisse importieren und Übertragungsgrenzen",
+      "url": "https://support.google.com/calendar/answer/37118?hl=en"
+    },
+    {
+      "label": "Apple: ICS-Dateien und Kalenderarchive auf dem Mac",
+      "url": "https://support.apple.com/guide/calendar/import-or-export-calendars-icl1023/mac"
+    },
+    {
+      "label": "Apple: Dokumente auf dem Mac als PDF sichern",
+      "url": "https://support.apple.com/en-gb/guide/mac-help/mchlp1531/mac"
+    },
+    {
+      "label": "Microsoft: Veröffentlichung, Import und Abonnement in Outlook",
+      "url": "https://support.microsoft.com/en-us/outlook/share-your-calendar-in-outlook-on-the-web"
+    }
+  ],
+  "seeAlso": [
+    "sharing-one-event-not-your-calendar",
+    "inviting-people-who-do-not-have-the-app",
+    "the-secret-address-of-a-google-calendar",
+    "disconnect-calendar-integration-without-losing-track"
+  ]
+}
 };
