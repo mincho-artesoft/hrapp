@@ -1,0 +1,91 @@
+{
+  "title": "Interrompere la condivisione di un calendario: controllare ogni accesso",
+  "short": "Controllare e revocare gli accessi",
+  "description": "Distingui persone, gruppi, accesso pubblico e link ai feed quando interrompi la condivisione. Verifica le modifiche: le copie salvate possono restare.",
+  "lede": "Per terminare una collaborazione, identifica come è stato concesso l’accesso. Rimuovere una persona, disattivare la pubblicazione e reimpostare un feed sono azioni diverse. Questa guida è pubblicata da Arte Soft, sviluppatore di Cloud Calendars.",
+  "commonBelief": "Rimuovere un destinatario richiamerebbe subito ogni copia e chiuderebbe tutte le altre vie di accesso al calendario.",
+  "sections": [
+    {
+      "heading": "Identifica il calendario e il tipo di condivisione",
+      "body": [
+        "Prima di modificare l’accesso, verifica account proprietario, calendario e pubblico previsto. Un calendario Google condiviso con un collega specifico è diverso da uno pubblico, da un’autorizzazione di gruppo o da un indirizzo di sottoscrizione. Cloud Calendars ha anche proprie relazioni di condivisione per eventi e calendari.",
+        "Per esempio, il segretario di un’associazione può ricevere diritti di modifica tramite un invito personale mentre i membri seguono un programma pubblicato. Rimuovere i suoi diritti non stabilisce cosa debba accadere alle sottoscrizioni dei membri. Elenca gli accordi che hai effettivamente creato."
+      ]
+    },
+    {
+      "heading": "Rimuovi l’autorizzazione Google interessata",
+      "body": [
+        "Google documenta controlli separati per persone o gruppi, condivisione nell’organizzazione e disponibilità pubblica. Da computer, apri le impostazioni di condivisione del calendario corretto e modifica la voce o l’impostazione generale pertinente. Controlla prima account connesso e nome del calendario.",
+        "Una persona può avere ancora accesso tramite un gruppo o una pubblicazione più ampia. Esamina l’intera configurazione invece di rimuovere ripetutamente lo stesso indirizzo email. Le regole aziendali o scolastiche possono limitare i controlli: usa la procedura approvata dal proprietario o amministratore quando necessario."
+      ]
+    },
+    {
+      "heading": "Gestisci separatamente l’indirizzo segreto del calendario",
+      "body": [
+        "Google indica che l’indirizzo iCal segreto serve per uso personale in un’altra applicazione e non va consegnato ad altri. Se è stato divulgato, Google documenta come reimpostarlo per invalidare quello precedente. È un’azione diversa dalla rimozione di una persona specifica.",
+        "Prima di cambiare un indirizzo di sottoscrizione usato da te, identifica le app e gli strumenti che ne dipendono per poter ricollegare quelli desiderati. Non incollare l’URL segreto in una richiesta pubblica di assistenza né inviarlo come prova di aver trovato il calendario. Indica invece nome e tipo di connessione."
+      ]
+    },
+    {
+      "heading": "Distingui i destinatari Cloud Calendars dai link ai feed",
+      "body": [
+        "In Cloud Calendars, l’accesso dei destinatari a eventi o calendari e un feed di sottoscrizione emesso sono meccanismi distinti. Controlla la relazione di condivisione e il link effettivo prima di agire. Rimuovere un destinatario identificato non garantisce il richiamo di ogni URL già distribuito o copia indipendente.",
+        "Se un coorganizzatore deve soltanto smettere di modificare, valuta ruolo e pubblico restante invece di eliminare il programma condiviso. Se termina tutta la collaborazione, chiarisci chi possiede il calendario e chi deve conservarlo. Abbandonare un calendario ricevuto ed eliminare quello di cui sei proprietario sono decisioni diverse."
+      ]
+    },
+    {
+      "heading": "Verifica il risultato senza promettere una scomparsa immediata",
+      "body": [
+        "Controlla che la modifica sia salvata nel sistema proprietario. Se un collega autorizzato può aiutare, verifica ciò che vede o può modificare dal suo account senza scambiare password. Distingui un accesso negato da un vecchio evento ancora visibile in una copia memorizzata o importata.",
+        "Non promettere un intervallo universale di aggiornamento o l’assenza di notifiche. Durante un passaggio di consegne, comunica quale programma usare da quel momento. Un vecchio record visibile non rivela da solo se la persona conserva accesso attivo, ha un’altra autorizzazione o una copia autonoma."
+      ]
+    },
+    {
+      "heading": "Gestisci le copie precedenti con un seguito separato",
+      "body": [
+        "File esportati, schermate, messaggi e appuntamenti salvati indipendentemente possono restare dopo le modifiche. Decidi quali copie contano per il passaggio di consegne e concordane la gestione con gli interessati. Cambiare un permesso non permette di stabilire cosa ogni destinatario abbia già salvato.",
+        "Conserva i dati originali necessari mentre verifichi il risultato. Non spostare incontri riservati in un altro calendario condiviso solo per far sembrare vuoto quello vecchio e non annullare inviti reali per provare l’accesso. Annota calendario, percorso e modifica come punto di partenza per eventuali verifiche."
+      ]
+    }
+  ],
+  "claims": {},
+  "practical": [
+    "Identifica account proprietario, calendario e modalità di condivisione.",
+    "Esamina separatamente persone, gruppi e pubblicazione più ampia.",
+    "Usa i controlli di condivisione appropriati di Google o Cloud Calendars.",
+    "Valuta separatamente la reimpostazione di un indirizzo segreto divulgato.",
+    "Verifica l’accesso salvato senza condividere credenziali.",
+    "Gestisci esportazioni e copie precedenti separatamente dall’accesso attivo."
+  ],
+  "faq": [
+    {
+      "q": "Rimuovere una persona disattiva il calendario pubblico o il suo accesso di gruppo?",
+      "a": "Non darlo per scontato. Controlla ogni percorso effettivo. Google documenta destinatari specifici, gruppi e pubblicazione generale come impostazioni separate."
+    },
+    {
+      "q": "Il calendario scomparirà subito e senza avvisi?",
+      "a": "Non esiste una promessa universale su scomparsa, notifiche o tempi di aggiornamento. Conferma la modifica salvata e distingui accesso attivo da informazioni memorizzate o importate."
+    },
+    {
+      "q": "Advanced permette di acquistare la rimozione degli accessi Google?",
+      "a": "Advanced rimuove gli annunci in Cloud Calendars. I controlli Google dipendono da proprietà, permessi e regole dell’organizzazione, non da quel piano dell’app."
+    }
+  ],
+  "sourcesHeading": "Indicazioni del fornitore su accesso e sottoscrizioni",
+  "sources": [
+    {
+      "label": "Google: controlli di condivisione e interruzione dell’accesso",
+      "url": "https://support.google.com/calendar/answer/37082?hl=en"
+    },
+    {
+      "label": "Google: sincronizzazione degli account e indirizzi iCal segreti",
+      "url": "https://support.google.com/calendar/answer/37648?hl=en"
+    }
+  ],
+  "seeAlso": [
+    "who-can-see-what-in-google-calendar",
+    "the-secret-address-of-a-google-calendar",
+    "why-a-shared-calendar-does-not-appear"
+  ],
+  "updated": "2026-10-21"
+}

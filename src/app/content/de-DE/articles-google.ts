@@ -303,50 +303,93 @@ export const GOOGLE_DE_DE: Readonly<Record<string, LocalisedArticle>> = {
   },
 
   'taking-back-a-calendar-you-shared': {
-    title: 'Einen geteilten Kalender wieder zurückholen',
-    short: 'Zugriff wieder entziehen',
-    description:
-      'Jemanden aus einem Kalender zu entfernen, stoppt, was danach kommt. Was es nicht tut: rückgängig machen, was schon geschehen ist.',
-    lede: 'Zugriff zu beenden ist ein Tippen. Zu entscheiden, ob ein Tippen reicht, dauert etwas länger — denn Teilen hinterlässt Kopien.',
-    commonBelief: 'Dass das Entfernen einer Person entfernt, was sie gesehen hat.',
-    sections: [
-      {
-        heading: 'Was aufhört und was bleibt',
-        body: [
-          'Entfernen Sie eine Person, verschwindet der Kalender aus ihrer Liste, sofort und ohne Nachricht. Künftige Termine erreichen sie nie.',
-          'Was nicht zurückkommt: bereits erhaltene Einladungen, in den eigenen Kalender kopierte Termine, Exportiertes und alles, wofür eine geheime Adresse herausging. Der Zugriff endet; die Erinnerung nicht.',
-        ],
-      },
-      {
-        heading: 'Das, was das Entfernen überlebt',
-        body: [
-          'Hatte jemand je das Recht, Freigaben zu verwalten, hat er vielleicht weitere Personen hinzugefügt. Ihn zu entfernen lässt diese Personen stehen — so wird ein Kalender mit jemandem geteilt, an dessen Einladung sich niemand erinnert.',
-          'Lesen Sie also die ganze Liste, statt einen Namen zu streichen, und tun Sie es beim Abschied, nicht Monate später. Niemand erinnert Sie, und Freigaben sammeln sich nur an.',
-        ],
-      },
-    ],
-    claims: {
-      advancedMonthly: 'Monatlicher Preis der Stufe, in der das verwaltet wird, in Dollar',
+  "title": "Kalender nicht mehr teilen: Zugriff entfernen und andere Wege prüfen",
+  "short": "Geteilte Zugriffe prüfen und entfernen",
+  "description": "Beende die Kalenderfreigabe gezielt: Prüfe Personen, Gruppen, öffentliche Zugriffe und Feed-Links und erfahre, warum gespeicherte Kopien bleiben können.",
+  "lede": "Um eine Zusammenarbeit zu beenden, musst du zunächst wissen, wie der Zugriff erteilt wurde. Eine Person zu entfernen, die Veröffentlichung abzuschalten und eine Feed-Adresse zurückzusetzen sind unterschiedliche Aktionen. Dieser Leitfaden stammt von Arte Soft, dem Entwickler von Cloud Calendars.",
+  "commonBelief": "Wenn du einen Empfänger entfernst, werden sofort alle Kalenderkopien zurückgerufen und alle anderen Zugangswege geschlossen.",
+  "sections": [
+    {
+      "heading": "Kalender und Freigabeweg bestimmen",
+      "body": [
+        "Prüfe vor einer Änderung das Eigentümerkonto, den Kalender und den vorgesehenen Empfängerkreis. Eine Google-Kalenderfreigabe für einen bestimmten Kollegen ist etwas anderes als ein öffentlicher Kalender, eine Gruppenberechtigung oder eine Abonnementadresse. Cloud Calendars hat außerdem eigene Freigabebeziehungen für Termine und Kalender.",
+        "Beispielsweise kann die Schriftführung eines Vereins über eine persönliche Einladung Bearbeitungsrechte erhalten, während Mitglieder einem veröffentlichten Terminplan folgen. Das Entfernen dieser persönlichen Berechtigung sagt nichts darüber aus, was mit den Abonnements der Mitglieder geschehen soll. Liste die tatsächlich eingerichteten Freigaben auf."
+      ]
     },
-    faq: [
-      {
-        q: 'Löscht das Entfernen einer Person, was sie bereits gesehen hat?',
-        a: 'Nein. Bereits erhaltene Einladungen, in den eigenen Kalender kopierte Termine und alles Exportierte bleiben. Der Zugriff endet, die Kopien nicht.',
-      },
-      {
-        q: 'Erfährt die Person, dass ich ihren Zugriff entfernt habe?',
-        a: 'Nein. Der Kalender verschwindet sofort und ohne Nachricht aus ihrer Liste.',
-      },
-      {
-        q: 'Warum ist mein Kalender mit jemandem geteilt, den ich nie eingeladen habe?',
-        a: 'Jemand mit dem Recht, Freigaben zu verwalten, hat ihn hinzugefügt. Diese Person zu entfernen lässt alle von ihr Hinzugefügten stehen — deshalb liest man die ganze Liste und nicht einen Namen.',
-      },
-    ],
-    practical: [
-      'Die vollständige Zugriffsliste lesen, nicht nur den Namen, den Sie streichen wollten.',
-      'Die geheime Adresse zurücksetzen, wenn die Person sie je hatte.',
-      'Davon ausgehen, dass Kopien bleiben — wirklich Sensibles verschieben statt verstecken.',
-    ],
-    seeAlso: ['who-can-see-what-in-google-calendar', 'the-secret-address-of-a-google-calendar'],
-  },
+    {
+      "heading": "Die beabsichtigte Google-Berechtigung entfernen",
+      "body": [
+        "Google beschreibt getrennte Einstellungen für einzelne Personen oder Gruppen, organisationsweite Freigaben und öffentlichen Zugriff. Öffne am Computer die Freigabeeinstellungen des betreffenden Kalenders und ändere den passenden Eintrag oder die übergeordnete Einstellung. Prüfe zuerst das angemeldete Konto und den Kalendernamen.",
+        "Eine Person kann weiterhin über einen anderen Weg Zugriff haben, etwa über eine Gruppe oder eine umfassendere Veröffentlichung. Prüfe die gesamte Freigabe, statt dieselbe E-Mail-Adresse wiederholt zu entfernen. Arbeits- oder Schulrichtlinien können die verfügbaren Einstellungen einschränken; nutze bei Bedarf das vom Eigentümer oder Administrator vorgesehene Verfahren."
+      ]
+    },
+    {
+      "heading": "Eine geheime Kalenderadresse gesondert behandeln",
+      "body": [
+        "Laut Google ist die geheime iCal-Adresse für deine eigene Verwendung in einer anderen Kalenderanwendung bestimmt und darf nicht an andere weitergegeben werden. Wurde sie offengelegt, beschreibt Google das Zurücksetzen, um die alte Adresse ungültig zu machen. Das ist eine andere Aktion als das Entfernen einer bestimmten Person.",
+        "Bevor du eine selbst genutzte Abonnementadresse änderst, ermittle die davon abhängigen Kalenderprogramme oder Werkzeuge, damit du die gewünschten anschließend wieder verbinden kannst. Veröffentliche die geheime URL nicht in einem Supportbeitrag und verschicke sie nicht als Beleg für den richtigen Kalender. Nenne stattdessen Kalendername und Verbindungsart."
+      ]
+    },
+    {
+      "heading": "Cloud Calendars-Empfänger von Feed-Links unterscheiden",
+      "body": [
+        "In Cloud Calendars sind der Empfängerzugriff auf Termine oder Kalender und ein ausgegebener Abonnement-Feed unterschiedliche Mechanismen. Prüfe die konkrete Freigabebeziehung und den betreffenden Link, bevor du handelst. Das Entfernen eines bestimmten Empfängers verspricht nicht pauschal, dass jede zuvor verteilte URL oder unabhängige Kopie zurückgerufen wurde.",
+        "Wenn ein Mitorganisator lediglich nicht mehr bearbeiten soll, prüfe die vorgesehene Rolle und den verbleibenden Empfängerkreis, statt den gemeinsamen Terminplan zu löschen. Endet die gesamte Zusammenarbeit, kläre, wem der Kalender gehört und wer ihn behalten soll. Einen empfangenen Kalender zu verlassen und einen eigenen Kalender zu löschen sind unterschiedliche Entscheidungen."
+      ]
+    },
+    {
+      "heading": "Das Ergebnis prüfen, ohne sofortiges Verschwinden zu versprechen",
+      "body": [
+        "Prüfe, ob die gewünschte Änderung im verwaltenden System gespeichert wurde. Wenn ein berechtigter Kollege helfen kann, kontrolliert den betreffenden Anzeige- oder Bearbeitungszugriff über dessen eigenes Konto, ohne Passwörter auszutauschen. Unterscheide eine Zugriffsverweigerung von einem alten Termin, der noch in einer zwischengespeicherten oder importierten Kopie sichtbar ist.",
+        "Versprich weder eine allgemeingültige Aktualisierungsfrist noch, dass keine Benachrichtigung versendet wird. Teile bei einer Gruppenübergabe mit, welcher Terminplan künftig gilt. Ein sichtbarer alter Eintrag allein verrät nicht, ob die Person weiterhin direkten Zugriff hat, eine andere Berechtigung nutzt oder eine eigenständige Kopie aufbewahrt."
+      ]
+    },
+    {
+      "heading": "Frühere Kopien gesondert nachverfolgen",
+      "body": [
+        "Bereits exportierte Dateien, Screenshots, Nachrichten und unabhängig gespeicherte Termine können nach Zugriffsänderungen bestehen bleiben. Entscheide, welche Kopien für die Übergabe wichtig sind, und besprich den Umgang damit mit den Beteiligten. Eine Änderung der Kalenderberechtigung zeigt nicht, was jeder Empfänger bereits gespeichert hat.",
+        "Bewahre notwendige Originalunterlagen auf, während du das Ergebnis prüfst. Verschiebe vertrauliche Besprechungen nicht in einen anderen geteilten Kalender, nur damit der alte leer aussieht, und sage echte Einladungen nicht als Zugriffstest ab. Halte Kalender, Zugangsweg und Änderung fest, damit spätere Fehlersuche einen klaren Ausgangspunkt hat."
+      ]
+    }
+  ],
+  "claims": {},
+  "practical": [
+    "Eigentümerkonto, Kalender und Freigabeweg bestimmen.",
+    "Einzelne Personen, Gruppen und umfassendere Veröffentlichungen getrennt prüfen.",
+    "Die passenden Freigabeeinstellungen von Google oder Cloud Calendars verwenden.",
+    "Über das Zurücksetzen einer offengelegten geheimen Feed-Adresse gesondert entscheiden.",
+    "Den gespeicherten Zugriff prüfen, ohne Zugangsdaten weiterzugeben.",
+    "Frühere Exporte und Kopien getrennt vom direkten Zugriff berücksichtigen."
+  ],
+  "faq": [
+    {
+      "q": "Deaktiviert das Entfernen einer Person einen öffentlichen Kalender oder ihren Gruppenzugriff?",
+      "a": "Davon solltest du nicht ausgehen. Prüfe jeden tatsächlichen Zugangsweg. Google beschreibt einzelne Empfänger, Gruppen und umfassendere Veröffentlichungen als getrennte Einstellungen."
+    },
+    {
+      "q": "Verschwindet der Kalender sofort und ohne Benachrichtigung?",
+      "a": "Für Verschwinden, Benachrichtigungen und Aktualisierungszeiten gibt es hier keine allgemeingültige Zusage. Prüfe die gespeicherte Zugriffsänderung und unterscheide direkten Zugriff von zwischengespeicherten oder importierten Informationen."
+    },
+    {
+      "q": "Kauft man mit Advanced die Möglichkeit, Google-Kalenderzugriff zu entfernen?",
+      "a": "Advanced entfernt Werbung in Cloud Calendars. Die Google-Freigabeeinstellungen hängen von Eigentümerschaft, Berechtigungen und Organisationsregeln ab, nicht von diesem App-Tarif."
+    }
+  ],
+  "sourcesHeading": "Hinweise des Anbieters zu Zugriff und Abonnements",
+  "sources": [
+    {
+      "label": "Google: Freigabeeinstellungen und Zugriff beenden",
+      "url": "https://support.google.com/calendar/answer/37082?hl=en"
+    },
+    {
+      "label": "Google: Kontosynchronisierung und geheime iCal-Adressen",
+      "url": "https://support.google.com/calendar/answer/37648?hl=en"
+    }
+  ],
+  "seeAlso": [
+    "who-can-see-what-in-google-calendar",
+    "the-secret-address-of-a-google-calendar"
+  ],
+  "updated": "2026-10-21"
+},
 };

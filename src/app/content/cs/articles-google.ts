@@ -305,50 +305,93 @@ export const GOOGLE_CS: Readonly<Record<string, LocalisedArticle>> = {
   },
 
   'taking-back-a-calendar-you-shared': {
-    title: 'Vzít zpět kalendář, který jste nasdíleli',
-    short: 'Odebrání přístupu',
-    description:
-      'Odebrat někoho z kalendáře zastaví to, co teprve přijde. Nezruší to, co se už stalo.',
-    lede: 'Ukončit přístup je jedno klepnutí. Rozhodnout, jestli jedno klepnutí stačí, trvá o něco déle, protože sdílení po sobě nechává kopie.',
-    commonBelief: 'Že odebrání člověka odebere i to, co viděl.',
-    sections: [
-      {
-        heading: 'Co skončí a co zůstane',
-        body: [
-          'Odeberte člověka a kalendář zmizí z jeho seznamu okamžitě a beze zprávy. Budoucí události se k němu nikdy nedostanou.',
-          'Co se nevrátí: pozvánky, které už má, události zkopírované do vlastního kalendáře, cokoli vyexportovaného a všechno, k čemu dostal tajnou adresu. Přístup končí; paměť ne.',
-        ],
-      },
-      {
-        heading: 'To, co odebrání přežije',
-        body: [
-          'Pokud někdo někdy směl spravovat sdílení, mohl přidat další lidi. Odebrání jeho je nechá na místě — a tak skončí kalendář sdílený s někým, koho si nikdo nepamatuje pozvat.',
-          'Čtěte proto celý seznam, místo abyste škrtli jedno jméno, a udělejte to při odchodu, ne po měsících. Nic vám to nepřipomene a sdílení se jen hromadí.',
-        ],
-      },
-    ],
-    claims: {
-      advancedMonthly: 'Měsíční cena úrovně, kde se tohle spravuje, v dolarech',
+  "title": "Přestat sdílet kalendář: odeberte přístup a prověřte ostatní cesty",
+  "short": "Zkontrolujte a odeberte sdílený přístup",
+  "description": "Ukončete sdílení s rozlišením osob, skupin, veřejného přístupu a odběrových odkazů. Ověřte změnu a zjistěte, proč uložené kopie mohou zůstat.",
+  "lede": "Ukončení spolupráce začíná zjištěním, jak byl přístup udělen. Odebrání osoby, vypnutí zveřejnění a obnovení adresy odběru jsou různé kroky. Tento průvodce vydává Arte Soft, vývojář Cloud Calendars.",
+  "commonBelief": "Odebrání jednoho příjemce okamžitě stáhne všechny kopie kalendáře a uzavře všechny ostatní cesty k rozvrhu.",
+  "sections": [
+    {
+      "heading": "Určete kalendář a způsob sdílení",
+      "body": [
+        "Před změnou přístupu ověřte účet vlastníka, kalendář a zamýšlené publikum. Kalendář Google sdílený s konkrétním kolegou se liší od veřejného kalendáře, oprávnění skupiny nebo adresy odběru. Cloud Calendars má také vlastní vztahy sdílení událostí a kalendářů.",
+        "Například tajemník klubu může získat právo upravovat prostřednictvím osobní pozvánky, zatímco členové sledují zveřejněný rozvrh. Odebrání tajemníkova osobního oprávnění neurčuje, co se má stát s odběry členů. Sepište způsoby sdílení, které jste skutečně nastavili."
+      ]
     },
-    faq: [
-      {
-        q: 'Smaže odebrání člověka to, co už viděl?',
-        a: 'Ne. Pozvánky, které už má, události zkopírované do vlastního kalendáře i cokoli vyexportovaného zůstanou. Přístup končí, kopie ne.',
-      },
-      {
-        q: 'Dozví se ten člověk, že jsem mu přístup odebral?',
-        a: 'Ne. Kalendář mu ze seznamu zmizí okamžitě a beze zprávy.',
-      },
-      {
-        q: 'Proč je můj kalendář sdílený s někým, koho jsem nikdy nepozval?',
-        a: 'Přidal ho někdo, kdo směl spravovat sdílení. Odebrání té osoby nechá všechny jí přidané na místě — proto se čte celý seznam, ne jedno jméno.',
-      },
-    ],
-    practical: [
-      'Přečtěte celý seznam přístupů, ne jen jméno, které jste chtěli odebrat.',
-      'Resetujte tajnou adresu, pokud ji ten člověk někdy měl.',
-      'Počítejte s tím, že kopie přežijí: opravdu citlivé přesuňte, místo abyste to skrývali.',
-    ],
-    seeAlso: ['who-can-see-what-in-google-calendar', 'the-secret-address-of-a-google-calendar'],
-  },
+    {
+      "heading": "Odeberte příslušné oprávnění Google",
+      "body": [
+        "Google popisuje oddělené ovládací prvky pro konkrétní osoby či skupiny, sdílení v celé organizaci a veřejnou dostupnost. Na počítači otevřete nastavení sdílení daného kalendáře a změňte příslušnou položku nebo širší nastavení. Nejdříve zkontrolujte přihlášený účet a název kalendáře.",
+        "Osoba může mít nadále přístup jinou cestou, například přes skupinu nebo širší zveřejnění. Prověřte celé uspořádání, místo abyste opakovaně odebírali jednu e-mailovou adresu. Pravidla práce či školy mohou dostupné možnosti omezovat; v případě potřeby postupujte podle schváleného postupu vlastníka nebo správce."
+      ]
+    },
+    {
+      "heading": "S tajnou adresou kalendáře zacházejte samostatně",
+      "body": [
+        "Google uvádí, že tajná adresa iCal slouží k vašemu vlastnímu použití v jiné kalendářové aplikaci a nemá se dávat dalším lidem. Pokud byla prozrazena, Google popisuje její obnovení, které zneplatní starou adresu. Jde o jiný krok než odebrání konkrétní osoby.",
+        "Než změníte adresu odběru, kterou sami používáte, zjistěte, které kalendářové programy či nástroje na ní závisejí, abyste je poté mohli znovu připojit. Nevkládejte tajnou URL do veřejného dotazu na podporu ani ji neposílejte jako důkaz nalezení správného kalendáře. Uveďte raději název kalendáře a typ připojení."
+      ]
+    },
+    {
+      "heading": "Rozlišujte příjemce Cloud Calendars a odkazy na odběr",
+      "body": [
+        "V Cloud Calendars jsou přístup příjemce k události či kalendáři a vydaný odběrový kanál různé mechanismy. Před volbou kroku prověřte skutečný vztah sdílení i příslušný odkaz. Odebrání konkrétního příjemce není obecným příslibem stažení všech dříve rozeslaných URL či nezávislých kopií.",
+        "Pokud spoluorganizátor pouze nemá dále upravovat, zvažte zamýšlenou roli a zbývající publikum místo smazání sdíleného rozvrhu. Končí-li celá spolupráce, ujasněte si, kdo kalendář vlastní a kdo si jej má ponechat. Opuštění přijatého kalendáře a smazání vlastního kalendáře jsou odlišná rozhodnutí."
+      ]
+    },
+    {
+      "heading": "Ověřte výsledek bez slibu okamžitého zmizení",
+      "body": [
+        "Ověřte, že zamýšlená změna je uložena v systému vlastníka. Může-li pomoci oprávněný kolega, potvrďte příslušný výsledek zobrazení či úprav z jeho vlastního účtu bez sdílení hesel. Rozlišujte odepření přístupu od staré události stále viditelné v mezipaměti či importované kopii.",
+        "Neslibujte univerzální interval obnovení ani to, že nebude odesláno oznámení. Při předávání skupině sdělte, který rozvrh se má odteď používat. Viditelný starý záznam sám neukazuje, zda má osoba stále živý přístup, jiné oprávnění nebo samostatnou kopii."
+      ]
+    },
+    {
+      "heading": "Starší kopie řešte jako samostatný navazující úkol",
+      "body": [
+        "Dříve exportované soubory, snímky obrazovky, zprávy a samostatně uložené schůzky mohou po změně přístupu zůstat. Určete, které kopie jsou pro předání důležité, a jejich řešení proberte se zúčastněnými. Změna oprávnění kalendáře nemůže určit, co si každý příjemce již uložil.",
+        "Při kontrole výsledku zachovejte potřebné zdrojové záznamy. Nepřesouvejte citlivé schůzky do jiného sdíleného kalendáře jen proto, aby starý vypadal prázdný, ani nerušte skutečné pozvánky jako test přístupu. Zaznamenejte kalendář, cestu přístupu a provedenou změnu pro jasný výchozí bod při budoucím řešení potíží."
+      ]
+    }
+  ],
+  "claims": {},
+  "practical": [
+    "Určete účet vlastníka, kalendář a způsob sdílení.",
+    "Samostatně prověřte konkrétní osoby, skupiny a širší zveřejnění.",
+    "Použijte příslušné nastavení sdílení Google nebo Cloud Calendars.",
+    "O obnovení prozrazené tajné adresy odběru rozhodněte samostatně.",
+    "Ověřte uložený výsledek bez sdílení přihlašovacích údajů.",
+    "Starší exporty a kopie plánujte odděleně od živého přístupu."
+  ],
+  "faq": [
+    {
+      "q": "Vypne odebrání jedné osoby veřejný kalendář nebo její skupinový přístup?",
+      "a": "Nepředpokládejte to. Prověřte každou skutečnou cestu. Google popisuje konkrétní příjemce, skupiny a širší zveřejnění jako samostatná nastavení."
+    },
+    {
+      "q": "Zmizí kalendář okamžitě a bez oznámení?",
+      "a": "Pro zmizení, oznámení ani dobu obnovení zde neexistuje univerzální příslib. Potvrďte uloženou změnu přístupu a odlište živý přístup od informací v mezipaměti či importovaných dat."
+    },
+    {
+      "q": "Kupuje Advanced možnost odebrat přístup ke kalendáři Google?",
+      "a": "Advanced odstraňuje reklamy v Cloud Calendars. Nastavení sdílení Google závisí na vlastnictví, oprávněních a pravidlech organizace, nikoli na tomto tarifu aplikace."
+    }
+  ],
+  "sourcesHeading": "Pokyny poskytovatele k přístupu a odběrům",
+  "sources": [
+    {
+      "label": "Google: nastavení sdílení a ukončení přístupu",
+      "url": "https://support.google.com/calendar/answer/37082?hl=en"
+    },
+    {
+      "label": "Google: synchronizace účtů a tajné adresy iCal",
+      "url": "https://support.google.com/calendar/answer/37648?hl=en"
+    }
+  ],
+  "seeAlso": [
+    "who-can-see-what-in-google-calendar",
+    "the-secret-address-of-a-google-calendar"
+  ],
+  "updated": "2026-10-21"
+},
 };

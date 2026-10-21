@@ -487,5 +487,51 @@
       "Original new media integration and privacy/released-backend correspondence remain open"
     ],
     "goalStatus": "active"
+  },
+  "tenthPublication": {
+    "date": "2026-10-21",
+    "changedArticleObjects": 33,
+    "englishRevisions": 4,
+    "localizedRevocationRewrites": 29,
+    "articleCount": 398,
+    "englishCount": 50,
+    "locales": 30,
+    "sitemapUrls": 461,
+    "newRoutes": 0,
+    "curatedEnglishExportGuides": 40,
+    "curatedExportCharacters": 224808,
+    "staticProof": "batch10-static-qa.json",
+    "metadataProof": "batch10-built-metadata-qa.json",
+    "nativeProofs": [
+      "batch10-feed-review/evidence.json",
+      "batch10-feed-review/root-review.json",
+      "batch10-planning/evidence.json"
+    ],
+    "localizedRevocationProof": "batch10-localized-revocation/root-review.json",
+    "shellNavigation": "Localized header/footer brand and header section anchors preserve locale and canonical trailing slash",
+    "numericTableRemovalPages": 90,
+    "builtLocalizedShellPagesVerified": 460,
+    "competitorCorpusCounts": {
+      "exactUrls": 71,
+      "full": 41,
+      "partial": 7,
+      "discovered": 17,
+      "failed": 6,
+      "pending": 30
+    },
+    "research": "competitors/batch13-ics-troubleshooting-primary-20261021.json",
+    "publicationStatus": "published; all464publicartifacts match final build",
+    "limitations": [
+      "Translated equivalents of3ENGooglefeed/guest/missingcalendar revisions remain to review",
+      "Old ENplanning/weather and many localized core guides still need semantic work",
+      "Initial browser clicks during loading were inconclusive; final loaded HE menu/navigation verified after reload",
+      "No native runtime, released backend correspondence, native-speaker or rank/citation certification"
+    ],
+    "goalStatus": "active",
+    "publicProof": "batch10-public-qa.json",
+    "publicArtifactCount": 464,
+    "browserProof": "batch10-browser-qa.json",
+    "cacheInvalidation": "I4BA964JHCS3W8Z2CF7NT2NNKB (Completed)",
+    "recovery": "S3upload completed; default CFendpointDNS failed; finished only invalidation viaofficialdualstackAPI afterlistingnoexistingrequest"
   }
 }

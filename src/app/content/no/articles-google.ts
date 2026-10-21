@@ -303,50 +303,94 @@ export const GOOGLE_NO: Readonly<Record<string, LocalisedArticle>> = {
   },
 
   'taking-back-a-calendar-you-shared': {
-    title: 'Å ta tilbake en kalender du har delt',
-    short: 'Fjerne tilgang',
-    description:
-      'Å fjerne noen fra en kalender stopper det som kommer etterpå. Det det ikke gjør, er å gjøre om på det som allerede har skjedd.',
-    lede: 'Å avslutte tilgang er ett trykk. Å avgjøre om ett trykk holder, tar litt lenger, for deling etterlater kopier.',
-    commonBelief: 'At å fjerne en person fjerner det personen har sett.',
-    sections: [
-      {
-        heading: 'Hva som opphører og hva som blir',
-        body: [
-          'Fjern en person, og kalenderen forsvinner fra listen deres, straks og uten melding. Framtidige hendelser når dem aldri.',
-          'Det som ikke kommer tilbake: invitasjoner de allerede har, hendelser kopiert til egen kalender, alt eksportert, og alt det er delt ut en hemmelig adresse til. Tilgangen slutter; hukommelsen gjør det ikke.',
-        ],
-      },
-      {
-        heading: 'Det som overlever fjerningen',
-        body: [
-          'Har noen en gang hatt lov til å administrere deling, kan de ha lagt til andre. Å fjerne dem lar de andre bli stående — slik ender en kalender delt med noen ingen husker å ha invitert.',
-          'Les derfor hele listen i stedet for å stryke ett navn, og gjør det på vei ut heller enn måneder senere. Ingenting minner deg på det, og delinger bare hoper seg opp.',
-        ],
-      },
-    ],
-    claims: {
-      advancedMonthly: 'Månedspris for nivået der dette styres, i dollar',
+  "title": "Slutt å dele en kalender: fjern tilgang og kontroller andre veier",
+  "short": "Kontroller og fjern delt tilgang",
+  "description": "Skill mellom personer, grupper, offentlig tilgang og kalenderlenker når du avslutter deling. Kontroller endringen; lagrede kopier kan bli igjen.",
+  "lede": "Å avslutte et samarbeid begynner med å finne ut hvordan tilgangen ble gitt. Å fjerne en person, stoppe publisering og tilbakestille en feedadresse er ulike handlinger. Guiden er publisert av Arte Soft, utvikleren av Cloud Calendars.",
+  "commonBelief": "Å fjerne én mottaker skulle straks hente tilbake alle kalenderkopier og stenge alle andre tilganger.",
+  "sections": [
+    {
+      "heading": "Identifiser kalenderen og delingsmåten",
+      "body": [
+        "Bekreft eierkontoen, kalenderen og den tiltenkte målgruppen før du endrer tilgang. En Google-kalender delt med en navngitt kollega er noe annet enn en offentlig kalender, gruppetilgang eller abonnementsadresse. Cloud Calendars har også egne delingsforhold for hendelser og kalendere.",
+        "En klubbsekretær kan for eksempel ha redigeringsrett via personlig invitasjon, mens medlemmene følger en publisert plan. Å fjerne sekretærens rettighet avgjør ikke hva som bør skje med medlemmenes abonnementer. Lag en oversikt over ordningene du faktisk opprettet."
+      ]
     },
-    faq: [
-      {
-        q: 'Sletter det den andre allerede har sett, når jeg fjerner tilgangen?',
-        a: 'Nei. Invitasjoner vedkommende allerede har, hendelser kopiert til egen kalender og alt eksportert blir liggende. Tilgangen slutter; kopiene gjør det ikke.',
-      },
-      {
-        q: 'Får personen beskjed om at jeg har fjernet tilgangen?',
-        a: 'Nei. Kalenderen forsvinner fra listen med en gang og uten melding.',
-      },
-      {
-        q: 'Hvorfor er kalenderen min delt med noen jeg aldri har invitert?',
-        a: 'Noen med rett til å administrere deling la dem til. Å fjerne den personen lar alle vedkommende la til bli stående — derfor leser man hele listen og ikke ett navn.',
-      },
-    ],
-    practical: [
-      'Les hele tilgangslisten, ikke bare navnet du mente å fjerne.',
-      'Nullstill den hemmelige adressen hvis personen noen gang har hatt den.',
-      'Gå ut fra at kopier overlever, og flytt det virkelig følsomme heller enn å skjule det.',
-    ],
-    seeAlso: ['who-can-see-what-in-google-calendar', 'the-secret-address-of-a-google-calendar'],
-  },
+    {
+      "heading": "Fjern den aktuelle Google-tilgangen",
+      "body": [
+        "Google beskriver separate innstillinger for personer eller grupper, deling i organisasjonen og offentlig tilgjengelighet. Åpne riktig kalenders delingsinnstillinger på en datamaskin og endre den aktuelle oppføringen eller bredere innstillingen. Kontroller først innlogget konto og kalendernavn.",
+        "Personen kan fortsatt ha tilgang gjennom en gruppe eller bredere publisering. Se over hele oppsettet i stedet for å fjerne samme e-postadresse gjentatte ganger. Arbeids- eller skoleregler kan begrense kontrollene; følg eierens eller administratorens godkjente prosess ved behov."
+      ]
+    },
+    {
+      "heading": "Behandle en hemmelig kalenderadresse separat",
+      "body": [
+        "Google sier at den hemmelige iCal-adressen er til eget bruk i en annen kalenderapp og ikke skal gis til andre. Hvis den er delt, beskriver Google tilbakestilling som gjør den gamle adressen ugyldig. Dette er noe annet enn å fjerne en navngitt person.",
+        "Før du endrer en abonnementsadresse du bruker selv, finn kalenderappene eller verktøyene som avhenger av den, slik at du kan koble til de riktige igjen. Ikke legg den hemmelige URL-en i et offentlig støtteinnlegg eller bruk den som bevis på riktig kalender. Oppgi kalendernavn og tilkoblingstype i stedet."
+      ]
+    },
+    {
+      "heading": "Skill Cloud Calendars-mottakere fra feedlenker",
+      "body": [
+        "I Cloud Calendars er mottakertilgang til en hendelse eller kalender og en utstedt abonnementsfeed ulike mekanismer. Kontroller det faktiske delingsforholdet og lenken før du velger handling. Å fjerne en identifisert mottaker garanterer ikke at alle tidligere distribuerte URL-er eller selvstendige kopier er trukket tilbake.",
+        "Hvis en medarrangør bare skal slutte å redigere, vurder ønsket rolle og gjenværende brukere i stedet for å slette planen. Hvis hele samarbeidet avsluttes, avklar hvem som eier kalenderen og hvem som skal beholde den. Å forlate en mottatt kalender og å slette en du eier, er ulike valg."
+      ]
+    },
+    {
+      "heading": "Kontroller resultatet uten å love umiddelbar fjerning",
+      "body": [
+        "Kontroller at endringen er lagret i systemet som eier kalenderen. Hvis en autorisert kollega kan hjelpe, bekreft visning eller redigering fra vedkommendes konto uten å dele passord. Skill nektet tilgang fra en gammel hendelse som fortsatt vises i en bufret eller importert kopi.",
+        "Ikke lov et universelt oppdateringsintervall eller at ingen varsling sendes. Ved overlevering må gruppen få vite hvilken plan som gjelder fremover. En synlig gammel oppføring viser ikke alene om personen har aktiv tilgang, en annen tillatelse eller en selvstendig kopi."
+      ]
+    },
+    {
+      "heading": "Følg opp tidligere kopier separat",
+      "body": [
+        "Eksporterte filer, skjermbilder, meldinger og separat lagrede avtaler kan bestå etter tilgangsendringer. Avklar hvilke kopier som betyr noe for overleveringen, og diskuter håndteringen med de berørte. En endring av kalenderrettigheter fastslår ikke hva hver mottaker allerede har lagret.",
+        "Behold nødvendige kildeoppføringer mens resultatet vurderes. Ikke flytt sensitive møter til en annen delt kalender bare for å få den gamle til å se tom ut, og ikke avlys virkelige invitasjoner som tilgangstest. Noter kalender, delingsmåte og endring for senere feilsøking."
+      ]
+    }
+  ],
+  "claims": {},
+  "practical": [
+    "Identifiser eierkonto, kalender og delingsmåte.",
+    "Kontroller navngitte personer, grupper og bredere publisering hver for seg.",
+    "Bruk riktige delingskontroller i Google eller Cloud Calendars.",
+    "Vurder tilbakestilling av en avslørt hemmelig feedadresse separat.",
+    "Bekreft lagret tilgang uten å dele innloggingsopplysninger.",
+    "Håndter tidligere eksporter og kopier separat fra aktiv tilgang."
+  ],
+  "faq": [
+    {
+      "q": "Slår fjerning av én person av offentlig kalender eller gruppetilgang?",
+      "a": "Ikke anta det. Kontroller hver faktiske tilgangsvei. Google beskriver navngitte mottakere, grupper og bredere publisering som separate innstillinger."
+    },
+    {
+      "q": "Forsvinner kalenderen umiddelbart og uten varsel?",
+      "a": "Det finnes ingen universell garanti om forsvinning, varsler eller oppdateringstid. Bekreft den lagrede tilgangsendringen og skill aktiv tilgang fra bufret eller importert informasjon."
+    },
+    {
+      "q": "Gir Advanced mulighet til å fjerne Google-kalendertilgang?",
+      "a": "Advanced fjerner annonser i Cloud Calendars. Googles delingskontroller avhenger av eierskap, rettigheter og organisasjonsregler, ikke dette appabonnementet."
+    }
+  ],
+  "sourcesHeading": "Leverandørveiledning om tilgang og abonnement",
+  "sources": [
+    {
+      "label": "Google: delingskontroller og avslutning av tilgang",
+      "url": "https://support.google.com/calendar/answer/37082?hl=en"
+    },
+    {
+      "label": "Google: kontosynkronisering og hemmelige iCal-adresser",
+      "url": "https://support.google.com/calendar/answer/37648?hl=en"
+    }
+  ],
+  "seeAlso": [
+    "who-can-see-what-in-google-calendar",
+    "the-secret-address-of-a-google-calendar",
+    "why-a-shared-calendar-does-not-appear"
+  ],
+  "updated": "2026-10-21"
+},
 };

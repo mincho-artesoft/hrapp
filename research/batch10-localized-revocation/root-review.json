@@ -1,0 +1,21 @@
+{
+  "integratedLocales": 29,
+  "sourceAuthority": "Current en-US taking-back-a-calendar-you-shared object",
+  "structure": "Each6sections/12paragraphs/6steps/3FAQs; exactsourceURLs/date; no numericclaims",
+  "rootSamplesRead": [
+    "bg (full object)",
+    "ja (first/lastsections andFAQ)",
+    "pt-BR (first/lastsections andFAQ)",
+    "ru (first/lastsections andFAQ)"
+  ],
+  "bulgarianEditorialAdjustments": [
+    "собствени механизми за споделяне replaces literal отношения",
+    "услугата, която управлява календара replaces системата собственик"
+  ],
+  "currentBulgarianDraftSha256": "f437dd86b191df22f36c899036b55644152716bf9c78655fcb1bf4b3503051b3",
+  "limitations": [
+    "Agent audits reflect pre-root Bulgarian wording; current structural guards and33objectactualsourceinventory verified after rootedit",
+    "No independent native-speaker certification",
+    "Local RTLreviewHebrew at575px; publicfollowup pending at recordcreation"
+  ]
+}

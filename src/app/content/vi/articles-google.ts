@@ -305,50 +305,93 @@ export const GOOGLE_VI: Readonly<Record<string, LocalisedArticle>> = {
   },
 
   'taking-back-a-calendar-you-shared': {
-    title: 'Lấy lại một lịch bạn đã chia sẻ',
-    short: 'Thu hồi quyền truy cập',
-    description:
-      'Gỡ một người khỏi lịch sẽ chặn những gì đến sau. Điều nó không làm được là xóa đi những gì đã xảy ra.',
-    lede: 'Kết thúc quyền truy cập chỉ một chạm. Quyết định xem một chạm có đủ hay không thì lâu hơn, vì chia sẻ để lại các bản sao.',
-    commonBelief: 'Rằng gỡ một người là gỡ luôn những gì họ đã thấy.',
-    sections: [
-      {
-        heading: 'Cái gì dừng lại và cái gì ở lại',
-        body: [
-          'Gỡ một người và lịch biến khỏi danh sách của họ, ngay lập tức và không có lời nhắn nào. Các sự kiện sau này không bao giờ tới được họ.',
-          'Những gì không quay lại: lời mời họ đã có, sự kiện họ đã chép sang lịch riêng, mọi thứ đã xuất ra, và mọi thứ từng được trao địa chỉ bí mật. Quyền truy cập chấm dứt; trí nhớ thì không.',
-        ],
-      },
-      {
-        heading: 'Cái sống sót sau khi gỡ',
-        body: [
-          'Nếu ai đó từng có quyền quản lý chia sẻ, họ có thể đã thêm người khác. Gỡ họ ra vẫn để nguyên những người kia — đó là cách một lịch rốt cuộc được chia sẻ với người mà không ai nhớ đã mời.',
-          'Vậy hãy đọc cả danh sách thay vì xóa một cái tên, và làm lúc chia tay chứ đừng để vài tháng sau. Chẳng có gì nhắc bạn, còn chia sẻ thì chỉ dồn thêm.',
-        ],
-      },
-    ],
-    claims: {
-      advancedMonthly: 'Chi phí hằng tháng của gói nơi việc này được quản lý, tính bằng đô la',
+  "title": "Ngừng chia sẻ lịch và kiểm tra các đường truy cập còn lại",
+  "short": "Kiểm tra và thu hồi quyền truy cập",
+  "description": "Phân biệt người nhận, nhóm, quyền công khai và liên kết đăng ký khi ngừng chia sẻ lịch. Kiểm tra thay đổi và hiểu vì sao bản sao có thể còn lại.",
+  "lede": "Khi kết thúc cộng tác, trước hết hãy xác định quyền truy cập đã được cấp theo cách nào. Xóa một người, tắt công khai và đặt lại địa chỉ đăng ký là những việc khác nhau. Hướng dẫn này do Arte Soft, nhà phát triển Cloud Calendars, xuất bản.",
+  "commonBelief": "Xóa một người nhận sẽ lập tức thu hồi mọi bản sao lịch và đóng tất cả đường truy cập khác.",
+  "sections": [
+    {
+      "heading": "Xác định lịch và cách chia sẻ",
+      "body": [
+        "Trước khi đổi quyền, hãy xác nhận tài khoản sở hữu, lịch và đối tượng cần tiếp cận. Chia sẻ lịch Google cho một đồng nghiệp cụ thể khác với công khai lịch, cấp quyền cho nhóm hoặc dùng địa chỉ đăng ký. Cloud Calendars cũng có cơ chế riêng để chia sẻ sự kiện và lịch.",
+        "Ví dụ, thư ký câu lạc bộ có thể nhận quyền sửa qua lời mời cá nhân, còn thành viên theo dõi lịch trình đã công bố. Thu hồi quyền riêng của thư ký không quyết định phải làm gì với đăng ký của các thành viên. Hãy liệt kê những cách chia sẻ bạn thực sự đã thiết lập."
+      ]
     },
-    faq: [
-      {
-        q: 'Gỡ một người có xóa những gì họ đã xem không?',
-        a: 'Không. Lời mời họ đã có, sự kiện họ đã chép sang lịch riêng và mọi thứ đã xuất ra đều còn. Quyền truy cập chấm dứt; các bản sao thì không.',
-      },
-      {
-        q: 'Người đó có được báo rằng tôi đã gỡ quyền của họ không?',
-        a: 'Không. Lịch biến khỏi danh sách của họ ngay lập tức và không kèm lời nhắn nào.',
-      },
-      {
-        q: 'Vì sao lịch của tôi vẫn chia sẻ với người tôi chưa từng mời?',
-        a: 'Một người từng có quyền quản lý chia sẻ đã thêm họ. Gỡ người đó vẫn để nguyên tất cả những ai họ đã thêm — vì thế phải đọc cả danh sách chứ không phải một cái tên.',
-      },
-    ],
-    practical: [
-      'Đọc toàn bộ danh sách quyền, không chỉ cái tên bạn định gỡ.',
-      'Đặt lại địa chỉ bí mật nếu người đó từng có nó.',
-      'Cứ cho rằng các bản sao còn đó: hãy chuyển những gì thực sự nhạy cảm đi thay vì giấu.',
-    ],
-    seeAlso: ['who-can-see-what-in-google-calendar', 'the-secret-address-of-a-google-calendar'],
-  },
+    {
+      "heading": "Thu hồi đúng quyền trong Google",
+      "body": [
+        "Google hướng dẫn các tùy chọn riêng cho người hoặc nhóm cụ thể, chia sẻ toàn tổ chức và truy cập công khai. Trên máy tính, mở cài đặt chia sẻ của đúng lịch rồi đổi mục hoặc tùy chọn tương ứng. Trước hết hãy kiểm tra tài khoản đang đăng nhập và tên lịch.",
+        "Một người vẫn có thể truy cập qua nhóm hoặc phạm vi công khai rộng hơn. Kiểm tra toàn bộ cách cấp quyền thay vì liên tục xóa cùng một địa chỉ email. Quy định cơ quan hoặc trường học có thể giới hạn tùy chọn; khi cần, hãy làm theo quy trình được chủ sở hữu hoặc quản trị viên cho phép."
+      ]
+    },
+    {
+      "heading": "Xử lý riêng địa chỉ lịch bí mật",
+      "body": [
+        "Google nói địa chỉ iCal bí mật dành cho việc bạn tự dùng trong ứng dụng lịch khác và không nên đưa cho người khác. Nếu địa chỉ bị lộ, Google hướng dẫn đặt lại để vô hiệu hóa địa chỉ cũ. Việc này khác với xóa một người nhận cụ thể.",
+        "Trước khi đổi địa chỉ đăng ký đang dùng, hãy xác định các ứng dụng hoặc công cụ phụ thuộc vào nó để sau đó kết nối lại những nơi cần thiết. Không dán URL bí mật vào bài hỗ trợ công khai hoặc gửi nó để chứng minh bạn đã tìm đúng lịch. Thay vào đó, nêu tên lịch và loại kết nối."
+      ]
+    },
+    {
+      "heading": "Phân biệt người nhận Cloud Calendars với liên kết đăng ký",
+      "body": [
+        "Trong Cloud Calendars, quyền của người nhận sự kiện hoặc lịch và nguồn cấp đăng ký đã tạo là các cơ chế riêng. Kiểm tra quan hệ chia sẻ thực tế và liên kết liên quan trước khi chọn thao tác. Xóa một người nhận xác định không bảo đảm thu hồi mọi URL đã phát hoặc mọi bản sao độc lập.",
+        "Nếu người đồng tổ chức chỉ cần ngừng chỉnh sửa, hãy cân nhắc vai trò và những người còn cần truy cập thay vì xóa lịch trình chung. Nếu kết thúc toàn bộ cộng tác, xác định ai sở hữu và ai nên giữ lịch. Rời một lịch được chia sẻ và xóa lịch của chính mình là hai quyết định khác nhau."
+      ]
+    },
+    {
+      "heading": "Kiểm tra kết quả mà không hứa lịch biến mất ngay",
+      "body": [
+        "Kiểm tra thay đổi đã được lưu trong hệ thống sở hữu lịch. Nếu một đồng nghiệp có quyền có thể giúp, hãy xác nhận khả năng xem hoặc sửa từ tài khoản của họ mà không chia sẻ mật khẩu. Phân biệt truy cập bị từ chối với sự kiện cũ vẫn hiện trong bộ nhớ đệm hoặc bản nhập.",
+        "Không hứa một thời gian làm mới áp dụng cho mọi nơi hoặc sẽ không có thông báo. Khi bàn giao cho nhóm, nói rõ lịch trình nào cần dùng từ nay. Một mục cũ còn hiển thị không tự cho biết người đó còn truy cập trực tiếp, có quyền qua đường khác hay đã giữ bản sao riêng."
+      ]
+    },
+    {
+      "heading": "Xử lý riêng các bản sao đã có",
+      "body": [
+        "Tệp đã xuất, ảnh chụp màn hình, tin nhắn và cuộc hẹn lưu riêng có thể còn lại sau khi đổi quyền. Xác định bản sao nào quan trọng cho việc bàn giao và trao đổi cách xử lý với người liên quan. Đổi một quyền lịch không thể xác định tất cả những gì mỗi người nhận đã lưu.",
+        "Giữ các bản ghi nguồn cần thiết trong khi kiểm tra kết quả. Không chuyển cuộc họp nhạy cảm sang lịch dùng chung khác chỉ để làm lịch cũ trống đi, cũng không hủy lời mời thật để thử quyền. Ghi lại lịch, đường truy cập và thay đổi đã thực hiện để việc kiểm tra sau này có điểm bắt đầu rõ ràng."
+      ]
+    }
+  ],
+  "claims": {},
+  "practical": [
+    "Xác định tài khoản sở hữu, lịch và cách chia sẻ.",
+    "Kiểm tra riêng người nhận, nhóm và phạm vi công khai rộng hơn.",
+    "Dùng đúng tùy chọn chia sẻ của Google hoặc Cloud Calendars.",
+    "Xem việc đặt lại địa chỉ bí mật bị lộ là quyết định riêng.",
+    "Xác minh quyền sau khi lưu mà không chia sẻ thông tin đăng nhập.",
+    "Lập kế hoạch xử lý bản xuất và bản sao cũ riêng với truy cập trực tiếp."
+  ],
+  "faq": [
+    {
+      "q": "Xóa một người có tắt lịch công khai hoặc quyền qua nhóm của họ không?",
+      "a": "Đừng mặc định như vậy. Kiểm tra từng đường truy cập thực tế. Google có cài đặt riêng cho người cụ thể, nhóm và phạm vi công khai rộng hơn."
+    },
+    {
+      "q": "Lịch có biến mất ngay và không gửi thông báo không?",
+      "a": "Không có bảo đảm chung về việc biến mất, thông báo hay thời gian làm mới. Xác nhận thay đổi đã lưu và phân biệt truy cập trực tiếp với thông tin trong bộ nhớ đệm hoặc bản nhập."
+    },
+    {
+      "q": "Có phải mua Advanced để thu hồi quyền truy cập lịch Google không?",
+      "a": "Advanced loại bỏ quảng cáo trong Cloud Calendars. Tùy chọn chia sẻ Google phụ thuộc vào quyền sở hữu, quyền truy cập và quy định tổ chức, không phụ thuộc gói ứng dụng này."
+    }
+  ],
+  "sourcesHeading": "Hướng dẫn về quyền truy cập và đăng ký lịch",
+  "sources": [
+    {
+      "label": "Google: tùy chọn chia sẻ và ngừng cấp quyền",
+      "url": "https://support.google.com/calendar/answer/37082?hl=en"
+    },
+    {
+      "label": "Google: đồng bộ tài khoản và địa chỉ iCal bí mật",
+      "url": "https://support.google.com/calendar/answer/37648?hl=en"
+    }
+  ],
+  "updated": "2026-10-21",
+  "seeAlso": [
+    "who-can-see-what-in-google-calendar",
+    "the-secret-address-of-a-google-calendar"
+  ]
+},
 };

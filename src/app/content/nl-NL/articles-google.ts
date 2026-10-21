@@ -305,50 +305,94 @@ export const GOOGLE_NL_NL: Readonly<Record<string, LocalisedArticle>> = {
   },
 
   'taking-back-a-calendar-you-shared': {
-    title: 'Een gedeelde agenda weer terugnemen',
-    short: 'Toegang intrekken',
-    description:
-      'Iemand uit een agenda verwijderen stopt wat hierna komt. Wat het niet doet is ongedaan maken wat al gebeurd is.',
-    lede: 'Toegang beëindigen is één tik. Beslissen of één tik genoeg is duurt iets langer, want delen laat kopieën achter.',
-    commonBelief: 'Dat iemand verwijderen verwijdert wat diegene heeft gezien.',
-    sections: [
-      {
-        heading: 'Wat stopt en wat blijft',
-        body: [
-          'Verwijder iemand en de agenda verdwijnt uit diens lijst, onmiddellijk en zonder bericht. Toekomstige afspraken bereiken die persoon nooit.',
-          'Wat niet terugkomt: uitnodigingen die al binnen zijn, afspraken die naar de eigen agenda zijn gekopieerd, alles wat geëxporteerd is, en alles waarvoor een geheim adres rondging. De toegang eindigt; het geheugen niet.',
-        ],
-      },
-      {
-        heading: 'Wat de verwijdering overleeft',
-        body: [
-          'Had iemand ooit het recht om delen te beheren, dan heeft diegene misschien anderen toegevoegd. Die persoon verwijderen laat die anderen staan — zo raakt een agenda gedeeld met iemand die niemand zich herinnert te hebben uitgenodigd.',
-          'Lees dus de hele lijst in plaats van één naam te schrappen, en doe het bij het vertrek, niet maanden later. Niets herinnert je eraan, en delen stapelt zich alleen op.',
-        ],
-      },
-    ],
-    claims: {
-      advancedMonthly: 'Maandprijs van het niveau waarin dit wordt beheerd, in dollars',
+  "title": "Stoppen met een agenda delen: verwijder toegang en controleer andere routes",
+  "short": "Gedeelde toegang controleren en intrekken",
+  "description": "Stop met delen en houd personen, groepen, openbare toegang en feedlinks uit elkaar. Controleer het resultaat; eerder opgeslagen kopieën kunnen blijven bestaan.",
+  "lede": "Een samenwerking beëindigen begint met vaststellen hoe toegang is verleend. Een persoon verwijderen, publicatie stoppen en een feedadres vernieuwen zijn verschillende handelingen. Deze gids is gepubliceerd door Arte Soft, de ontwikkelaar van Cloud Calendars.",
+  "commonBelief": "Eén ontvanger verwijderen zou direct alle agendakopieën terughalen en elke andere toegangsroute afsluiten.",
+  "sections": [
+    {
+      "heading": "Bepaal de agenda en de deelroute",
+      "body": [
+        "Controleer het account van de eigenaar, de agenda en het bedoelde publiek voordat je toegang wijzigt. Een Google-agenda delen met een genoemde collega verschilt van openbare publicatie, groepstoegang of een abonnementsadres. Cloud Calendars heeft ook eigen deelrelaties voor afspraken en agenda’s.",
+        "Een verenigingssecretaris kan bijvoorbeeld via een persoonlijke uitnodiging bewerkingsrechten hebben, terwijl leden een gepubliceerd rooster volgen. De toegang van de secretaris verwijderen bepaalt niet wat met de abonnementen van leden moet gebeuren. Maak een overzicht van de regelingen die je werkelijk hebt ingesteld."
+      ]
     },
-    faq: [
-      {
-        q: 'Wist iemand verwijderen ook wat die persoon al heeft gezien?',
-        a: 'Nee. Uitnodigingen die hij al heeft, afspraken die naar zijn eigen agenda zijn gekopieerd en alles wat geëxporteerd is blijven bestaan. De toegang eindigt, de kopieën niet.',
-      },
-      {
-        q: 'Krijgt de persoon bericht dat ik de toegang heb ingetrokken?',
-        a: 'Nee. De agenda verdwijnt onmiddellijk en zonder melding uit zijn lijst.',
-      },
-      {
-        q: 'Waarom is mijn agenda gedeeld met iemand die ik nooit heb uitgenodigd?',
-        a: 'Iemand met het recht om delen te beheren heeft die persoon toegevoegd. Die eerste verwijderen laat iedereen staan die hij toevoegde — daarom lees je de hele lijst en niet één naam.',
-      },
-    ],
-    practical: [
-      'Lees de volledige toegangslijst, niet alleen de naam die je wilde verwijderen.',
-      'Stel het geheime adres opnieuw in als die persoon het ooit had.',
-      'Ga ervan uit dat kopieën blijven: verplaats wat echt gevoelig is in plaats van het te verbergen.',
-    ],
-    seeAlso: ['who-can-see-what-in-google-calendar', 'the-secret-address-of-a-google-calendar'],
-  },
+    {
+      "heading": "Verwijder de bedoelde Google-toegang",
+      "body": [
+        "Google beschrijft afzonderlijke instellingen voor personen of groepen, delen met de organisatie en openbare beschikbaarheid. Open op een computer de deelinstellingen van de juiste agenda en wijzig de betreffende vermelding of bredere instelling. Controleer eerst account en agendanaam.",
+        "Iemand kan nog via een groep of bredere publicatie toegang hebben. Controleer de hele inrichting in plaats van steeds hetzelfde e-mailadres te verwijderen. Werk- of schoolbeleid kan de beschikbare instellingen beperken; volg zo nodig de goedgekeurde procedure van eigenaar of beheerder."
+      ]
+    },
+    {
+      "heading": "Behandel een geheim agenda-adres afzonderlijk",
+      "body": [
+        "Volgens Google is het geheime iCal-adres bedoeld voor eigen gebruik in een andere agenda-app en mag je het niet aan anderen geven. Bij uitlekken beschrijft Google hoe je het opnieuw instelt om het oude adres ongeldig te maken. Dat is iets anders dan een genoemde persoon verwijderen.",
+        "Bepaal vóór het wijzigen van je eigen abonnementsadres welke agenda-apps of hulpmiddelen ervan afhangen, zodat je de bedoelde verbindingen kunt herstellen. Plaats de geheime URL niet in openbare supportberichten of als bewijs dat je de juiste agenda hebt gevonden. Noem de agenda en het verbindingstype."
+      ]
+    },
+    {
+      "heading": "Maak onderscheid tussen Cloud Calendars-ontvangers en feedlinks",
+      "body": [
+        "Toegang voor ontvangers van afspraken of agenda’s en een uitgegeven abonnementsfeed zijn in Cloud Calendars verschillende mechanismen. Controleer de daadwerkelijke deelrelatie en de betrokken link voordat je een actie kiest. Een geïdentificeerde ontvanger verwijderen garandeert niet dat alle verspreide URL’s of onafhankelijke kopieën zijn teruggehaald.",
+        "Moet een medeorganisator alleen stoppen met bewerken, bekijk dan de gewenste rol en overige gebruikers in plaats van het gedeelde rooster te verwijderen. Eindigt de hele samenwerking, bepaal dan wie eigenaar is en wie de agenda moet behouden. Een ontvangen agenda verlaten en je eigen agenda verwijderen zijn verschillende beslissingen."
+      ]
+    },
+    {
+      "heading": "Controleer het resultaat zonder directe verdwijning te beloven",
+      "body": [
+        "Controleer of de wijziging is opgeslagen in het systeem dat de agenda beheert. Kan een bevoegde collega helpen, laat die vanuit het eigen account de weergave of bewerking controleren zonder wachtwoorden te delen. Maak onderscheid tussen geweigerde toegang en oude afspraken in een cache of geïmporteerde kopie.",
+        "Beloof geen universeel verversingsinterval en ook niet dat er geen melding komt. Vertel bij overdracht welk rooster voortaan geldt. Een zichtbaar oud item bewijst op zichzelf niet of iemand nog live toegang heeft, een andere toestemming heeft of een losse kopie bewaart."
+      ]
+    },
+    {
+      "heading": "Bespreek eerdere kopieën afzonderlijk",
+      "body": [
+        "Geëxporteerde bestanden, screenshots, berichten en zelfstandig opgeslagen afspraken kunnen na de wijziging blijven bestaan. Bepaal welke kopieën belangrijk zijn voor de overdracht en bespreek de afhandeling met betrokkenen. Een agendarecht wijzigen toont niet wat elke ontvanger al heeft opgeslagen.",
+        "Bewaar noodzakelijke brongegevens terwijl je het resultaat controleert. Verplaats gevoelige afspraken niet naar een andere gedeelde agenda om de oude leeg te laten lijken en annuleer geen echte uitnodigingen als toegangstest. Noteer agenda, route en wijziging als uitgangspunt voor later onderzoek."
+      ]
+    }
+  ],
+  "claims": {},
+  "practical": [
+    "Bepaal het eigenaarsaccount, de agenda en de deelroute.",
+    "Controleer personen, groepen en bredere publicatie afzonderlijk.",
+    "Gebruik de juiste deelinstellingen van Google of Cloud Calendars.",
+    "Behandel een uitgelekt geheim feedadres als een aparte resetbeslissing.",
+    "Controleer de opgeslagen toegangsrechten zonder inloggegevens te delen.",
+    "Behandel eerdere exports en kopieën afzonderlijk van live toegang."
+  ],
+  "faq": [
+    {
+      "q": "Schakelt één persoon verwijderen ook openbare toegang of diens groepstoegang uit?",
+      "a": "Ga daar niet van uit. Controleer elke werkelijke route. Google beschrijft personen, groepen en bredere publicatie als afzonderlijke instellingen."
+    },
+    {
+      "q": "Verdwijnt de agenda onmiddellijk en zonder melding?",
+      "a": "Daarvoor geldt geen universele belofte over verdwijnen, meldingen of verversing. Controleer de opgeslagen wijziging en onderscheid live toegang van gecachete of geïmporteerde informatie."
+    },
+    {
+      "q": "Koop ik met Advanced de mogelijkheid Google-agendatoegang te verwijderen?",
+      "a": "Advanced verwijdert advertenties in Cloud Calendars. Google-deelinstellingen hangen af van eigendom, rechten en organisatieregels, niet van dat app-abonnement."
+    }
+  ],
+  "sourcesHeading": "Informatie over toegang en abonnementen bij de aanbieder",
+  "sources": [
+    {
+      "label": "Google: deelinstellingen en toegang beëindigen",
+      "url": "https://support.google.com/calendar/answer/37082?hl=en"
+    },
+    {
+      "label": "Google: accountsynchronisatie en geheime iCal-adressen",
+      "url": "https://support.google.com/calendar/answer/37648?hl=en"
+    }
+  ],
+  "seeAlso": [
+    "who-can-see-what-in-google-calendar",
+    "the-secret-address-of-a-google-calendar",
+    "why-a-shared-calendar-does-not-appear"
+  ],
+  "updated": "2026-10-21"
+},
 };

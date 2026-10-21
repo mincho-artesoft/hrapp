@@ -304,50 +304,94 @@ export const GOOGLE_PL: Readonly<Record<string, LocalisedArticle>> = {
   },
 
   'taking-back-a-calendar-you-shared': {
-    title: 'Odbieranie kalendarza, który udostępniłeś',
-    short: 'Cofanie dostępu',
-    description:
-      'Usunięcie kogoś z kalendarza zatrzymuje to, co dopiero nadejdzie. Nie cofa tego, co już się wydarzyło.',
-    lede: 'Zakończenie dostępu to jedno dotknięcie. Decyzja, czy jedno wystarczy, trwa nieco dłużej, bo udostępnianie zostawia kopie.',
-    commonBelief: 'Że usunięcie osoby usuwa to, co zobaczyła.',
-    sections: [
-      {
-        heading: 'Co się kończy, a co zostaje',
-        body: [
-          'Usuń osobę, a kalendarz znika z jej listy natychmiast i bez wiadomości. Przyszłe wydarzenia nigdy do niej nie dotrą.',
-          'Co nie wraca: zaproszenia, które już ma, wydarzenia skopiowane do własnego kalendarza, wszystko, co wyeksportowano, i wszystko, do czego dostała tajny adres. Dostęp się kończy; pamięć nie.',
-        ],
-      },
-      {
-        heading: 'To, co przeżywa usunięcie',
-        body: [
-          'Jeśli ktoś kiedykolwiek miał prawo zarządzać udostępnianiem, mógł dodać kolejne osoby. Usunięcie go zostawia je na miejscu — tak kalendarz kończy udostępniony komuś, kogo nikt nie pamięta zapraszać.',
-          'Czytaj więc całą listę, zamiast skreślać jedno nazwisko, i rób to przy pożegnaniu, nie miesiące później. Nic o tym nie przypomina, a udostępnienia tylko się kumulują.',
-        ],
-      },
-    ],
-    claims: {
-      advancedMonthly: 'Miesięczny koszt poziomu, na którym się tym zarządza, w dolarach',
+  "title": "Zakończ udostępnianie kalendarza: usuń dostęp i sprawdź pozostałe drogi",
+  "short": "Sprawdzanie i odbieranie dostępu",
+  "description": "Rozróżnij osoby, grupy, dostęp publiczny i linki kanałów przy kończeniu udostępniania. Sprawdź zmianę: zapisane kopie mogą pozostać.",
+  "lede": "Kończąc współpracę, najpierw ustal sposób przyznania dostępu. Usunięcie osoby, wyłączenie publikacji i zresetowanie adresu kanału to różne czynności. Poradnik publikuje Arte Soft, twórca Cloud Calendars.",
+  "commonBelief": "Usunięcie jednego odbiorcy miałoby natychmiast wycofać wszystkie kopie i zamknąć każdą inną drogę do kalendarza.",
+  "sections": [
+    {
+      "heading": "Ustal kalendarz i sposób udostępniania",
+      "body": [
+        "Przed zmianą potwierdź konto właściciela, kalendarz i zamierzonych odbiorców. Kalendarz Google udostępniony konkretnej osobie to inna relacja niż kalendarz publiczny, uprawnienia grupy czy adres subskrypcji. Cloud Calendars ma także własne relacje udostępniania wydarzeń i kalendarzy.",
+        "Na przykład sekretarz klubu może mieć prawo edycji z imiennego zaproszenia, a członkowie obserwować opublikowany harmonogram. Odebranie praw sekretarzowi nie określa, co powinno się stać z subskrypcjami członków. Spisz faktycznie utworzone sposoby dostępu."
+      ]
     },
-    faq: [
-      {
-        q: 'Czy usunięcie osoby kasuje to, co już zobaczyła?',
-        a: 'Nie. Zaproszenia, które już ma, wydarzenia skopiowane do własnego kalendarza i wszystko wyeksportowane zostają. Dostęp się kończy, kopie nie.',
-      },
-      {
-        q: 'Czy osoba dowie się, że odebrałem jej dostęp?',
-        a: 'Nie. Kalendarz znika z jej listy natychmiast i bez wiadomości.',
-      },
-      {
-        q: 'Dlaczego mój kalendarz jest udostępniony komuś, kogo nigdy nie zapraszałem?',
-        a: 'Dodał go ktoś, kto miał prawo zarządzać udostępnianiem. Usunięcie tej osoby zostawia na miejscu wszystkich przez nią dodanych — dlatego czyta się całą listę, a nie jedno nazwisko.',
-      },
-    ],
-    practical: [
-      'Przeczytaj pełną listę dostępu, nie tylko nazwisko, które chciałeś usunąć.',
-      'Zresetuj tajny adres, jeśli ta osoba kiedykolwiek go miała.',
-      'Zakładaj, że kopie przetrwają: naprawdę wrażliwe rzeczy przenieś, zamiast je ukrywać.',
-    ],
-    seeAlso: ['who-can-see-what-in-google-calendar', 'the-secret-address-of-a-google-calendar'],
-  },
+    {
+      "heading": "Usuń właściwe uprawnienie Google",
+      "body": [
+        "Google opisuje osobne ustawienia dla osób lub grup, całej organizacji i dostępu publicznego. Na komputerze otwórz ustawienia udostępniania właściwego kalendarza i zmień odpowiedni wpis albo szersze ustawienie. Najpierw sprawdź zalogowane konto i nazwę kalendarza.",
+        "Osoba może nadal mieć dostęp przez grupę lub szerszą publikację. Sprawdź całość zamiast wielokrotnie usuwać ten sam adres e-mail. Zasady firmy lub szkoły mogą ograniczać ustawienia; w razie potrzeby skorzystaj z procedury zatwierdzonej przez właściciela lub administratora."
+      ]
+    },
+    {
+      "heading": "Potraktuj tajny adres kalendarza oddzielnie",
+      "body": [
+        "Google wskazuje, że tajny adres iCal służy do własnego użytku w innej aplikacji kalendarza i nie należy przekazywać go innym. Jeśli go ujawniono, Google opisuje reset unieważniający stary adres. To inna czynność niż usunięcie konkretnej osoby.",
+        "Przed zmianą używanego przez siebie adresu subskrypcji ustal zależne aplikacje i narzędzia, aby później ponownie połączyć właściwe. Nie wklejaj tajnego URL-a do publicznego zgłoszenia ani nie wysyłaj go jako dowodu znalezienia kalendarza. Podaj nazwę kalendarza i rodzaj połączenia."
+      ]
+    },
+    {
+      "heading": "Odróżnij odbiorców Cloud Calendars od linków kanałów",
+      "body": [
+        "W Cloud Calendars dostęp odbiorcy do wydarzenia lub kalendarza i wydany kanał subskrypcji są różnymi mechanizmami. Przed działaniem sprawdź rzeczywistą relację udostępniania oraz link. Usunięcie zidentyfikowanego odbiorcy nie gwarantuje wycofania wszystkich rozesłanych URL-i ani niezależnych kopii.",
+        "Jeśli współorganizator ma tylko przestać edytować, rozważ docelową rolę i pozostałych odbiorców zamiast usuwać harmonogram. Jeśli kończy się cała współpraca, ustal właściciela i osobę, która zachowa kalendarz. Opuszczenie otrzymanego kalendarza i usunięcie własnego to różne decyzje."
+      ]
+    },
+    {
+      "heading": "Sprawdź wynik bez obietnicy natychmiastowego zniknięcia",
+      "body": [
+        "Sprawdź zapisanie zmiany w systemie właściciela. Jeśli upoważniony współpracownik może pomóc, niech sprawdzi podgląd lub edycję na swoim koncie bez udostępniania haseł. Odróżnij odmowę dostępu od starego wydarzenia nadal widocznego w pamięci podręcznej lub zaimportowanej kopii.",
+        "Nie obiecuj jednego czasu odświeżania ani braku powiadomień. Przy przekazaniu obowiązków poinformuj, który harmonogram obowiązuje dalej. Widoczny stary wpis sam nie rozstrzyga, czy osoba ma aktywny dostęp, inne uprawnienie, czy niezależną kopię."
+      ]
+    },
+    {
+      "heading": "Zajmij się wcześniejszymi kopiami osobno",
+      "body": [
+        "Wyeksportowane pliki, zrzuty ekranu, wiadomości i samodzielnie zapisane spotkania mogą pozostać po zmianie dostępu. Ustal, które kopie mają znaczenie dla przekazania obowiązków, i omów ich obsługę z zainteresowanymi. Zmiana uprawnienia nie ustala, co każdy odbiorca już zapisał.",
+        "Zachowaj potrzebne dane źródłowe podczas sprawdzania wyniku. Nie przenoś poufnych spotkań do innego udostępnionego kalendarza tylko po to, by stary wyglądał na pusty, ani nie odwołuj prawdziwych zaproszeń jako testu dostępu. Zapisz kalendarz, drogę udostępniania i zmianę na potrzeby dalszej diagnostyki."
+      ]
+    }
+  ],
+  "claims": {},
+  "practical": [
+    "Ustal konto właściciela, kalendarz i sposób udostępniania.",
+    "Sprawdź oddzielnie osoby, grupy i szerszą publikację.",
+    "Użyj odpowiednich ustawień Google lub Cloud Calendars.",
+    "Osobno zdecyduj o resecie ujawnionego tajnego adresu kanału.",
+    "Potwierdź zapisany dostęp bez przekazywania danych logowania.",
+    "Zaplanuj obsługę wcześniejszych eksportów i kopii niezależnie od aktywnego dostępu."
+  ],
+  "faq": [
+    {
+      "q": "Czy usunięcie osoby wyłącza kalendarz publiczny lub jej dostęp grupowy?",
+      "a": "Nie zakładaj tego. Sprawdź każdą rzeczywistą drogę. Google opisuje indywidualnych odbiorców, grupy i szerszą publikację jako osobne ustawienia."
+    },
+    {
+      "q": "Czy kalendarz zniknie natychmiast i bez powiadomienia?",
+      "a": "Nie ma uniwersalnej gwarancji zniknięcia, powiadomień ani czasu odświeżania. Potwierdź zapisaną zmianę i odróżnij aktywny dostęp od danych podręcznych lub importowanych."
+    },
+    {
+      "q": "Czy Advanced daje możliwość usuwania dostępu do kalendarza Google?",
+      "a": "Advanced usuwa reklamy w Cloud Calendars. Ustawienia Google zależą od własności, uprawnień i zasad organizacji, a nie od tego planu aplikacji."
+    }
+  ],
+  "sourcesHeading": "Wskazówki dostawcy dotyczące dostępu i subskrypcji",
+  "sources": [
+    {
+      "label": "Google: ustawienia udostępniania i kończenie dostępu",
+      "url": "https://support.google.com/calendar/answer/37082?hl=en"
+    },
+    {
+      "label": "Google: synchronizacja kont i tajne adresy iCal",
+      "url": "https://support.google.com/calendar/answer/37648?hl=en"
+    }
+  ],
+  "seeAlso": [
+    "who-can-see-what-in-google-calendar",
+    "the-secret-address-of-a-google-calendar",
+    "why-a-shared-calendar-does-not-appear"
+  ],
+  "updated": "2026-10-21"
+},
 };

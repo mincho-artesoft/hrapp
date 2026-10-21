@@ -1,0 +1,279 @@
+{
+  "date": "2026-10-21",
+  "canonical_slug": "taking-back-a-calendar-you-shared",
+  "status": "Nine draft LocalisedArticle objects only; no integration.",
+  "source_file": "/Users/minchomilev/cloud-calendars/src/app/content/en-US/articles-google.ts",
+  "source_file_sha256": "2b4ff65dc196cde951d3b122743ef120aaf0c4785137018cf1c89f8b665fa1e7",
+  "source_object_sha256": "fe5ad020421c3416ffd444c5cf74cddd279fd1cba010911b068853b80f87d170",
+  "source_object_snapshot": {
+    "title": "Stop sharing a calendar: remove access and check the remaining routes",
+    "short": "Review and remove shared access",
+    "description": "Stop calendar sharing without confusing people, groups, public access and feed links. Check what changed and understand why saved copies may remain.",
+    "lede": "Ending a collaboration starts with identifying how access was granted. Removing a person, disabling publication and resetting a feed address are different actions. This guide is published by Arte Soft, the developer of Cloud Calendars.",
+    "commonBelief": "Removing one recipient instantly recalls every calendar copy and closes every other route to the schedule.",
+    "sections": [
+      {
+        "heading": "Identify the calendar and the sharing route",
+        "body": [
+          "Confirm the owning account, calendar and intended audience before changing access. A Google calendar shared with a named colleague is a different relationship from a public calendar, a group grant or a subscription address. Cloud Calendars also has its own event and calendar sharing relationships.",
+          "For example, a club secretary may receive editing rights through a named invitation while members follow a published schedule. Removing the secretary’s named grant does not describe what should happen to the members’ subscriptions. Make a list of the arrangements you actually created."
+        ]
+      },
+      {
+        "heading": "Remove the intended Google grant",
+        "body": [
+          "Google documents separate controls for named people or groups, organisation-wide sharing and public availability. On a computer, open the intended calendar’s sharing settings and change the relevant entry or broader setting. Check the signed-in account and calendar name first.",
+          "A person may still have another access route, such as a group or broader publication. Review the whole arrangement instead of repeating removal of one email address. Work or school policies may limit the available controls; use the owner or administrator’s approved process when necessary."
+        ]
+      },
+      {
+        "heading": "Treat a secret calendar address separately",
+        "body": [
+          "Google says its secret iCal address is for your own use in another calendar application and should not be given to other people. If it was disclosed, Google documents resetting it to invalidate the old address. That is a different action from removing a named person.",
+          "Before changing a subscription address you use yourself, identify the calendar clients or tools that depend on it so you can reconnect the intended ones afterward. Do not paste the secret URL into a public support post or send it as evidence that you found the correct calendar. Refer to the calendar name and the type of connection instead."
+        ]
+      },
+      {
+        "heading": "Distinguish Cloud Calendars recipients from feed links",
+        "body": [
+          "In Cloud Calendars, event or calendar recipient access and an issued subscription feed are distinct mechanisms. Review the actual event or calendar sharing relationship and the relevant link before choosing an action. Removing an identified recipient is not a blanket promise that every previously distributed URL or independent copy has been recalled.",
+          "If a co-organizer only needs to stop editing, consider the intended role and remaining audience instead of deleting the shared schedule. If the whole collaboration is ending, establish who owns the calendar and who should retain it. Leaving a received calendar and deleting a calendar you own are different decisions."
+        ]
+      },
+      {
+        "heading": "Verify the result without promising immediate disappearance",
+        "body": [
+          "Check that the intended change is saved in the owning system. If an authorised colleague can help, confirm the relevant viewing or editing result from their own account without sharing passwords. Distinguish an access denial from an old event still visible in a cached or imported copy.",
+          "Do not promise a universal refresh interval or that no notification will be sent. For a group handover, communicate which schedule should be used from now on. A visible old record does not by itself identify whether the person retains live access, has another grant or kept a standalone copy."
+        ]
+      },
+      {
+        "heading": "Handle previous copies as a separate follow-up",
+        "body": [
+          "Previously exported files, screenshots, messages and independently saved appointments may remain after access changes. Decide which copies matter for the handover and discuss their handling with the people involved. Changing a calendar permission cannot establish what every recipient has already saved.",
+          "Keep necessary source records while reviewing the outcome. Do not move sensitive meetings into another shared calendar simply to make the old one look empty, or cancel real invitations as an access test. Record the calendar, route and change you made so later troubleshooting has a clear starting point."
+        ]
+      }
+    ],
+    "claims": {},
+    "practical": [
+      "Identify the owning account, calendar and sharing route.",
+      "Review named people, groups and broader publication separately.",
+      "Use the appropriate Google or Cloud Calendars sharing controls.",
+      "Handle a disclosed secret feed address as a separate reset decision.",
+      "Verify the saved access result without sharing credentials.",
+      "Plan for previous exports or copies separately from live access."
+    ],
+    "faq": [
+      {
+        "q": "Does removing one person disable a public calendar or their group access?",
+        "a": "Do not assume so. Review each actual route. Google documents named recipients, groups and broader publication as separate settings."
+      },
+      {
+        "q": "Will the calendar disappear immediately and silently?",
+        "a": "There is no universal promise here about disappearance, notification or refresh timing. Confirm the saved access change and distinguish live access from cached or imported information."
+      },
+      {
+        "q": "Does Advanced buy the ability to remove Google calendar access?",
+        "a": "Advanced removes ads in Cloud Calendars. Google sharing controls depend on ownership, permissions and organisation rules, rather than that app plan."
+      }
+    ],
+    "sourcesHeading": "Provider access and subscription guidance",
+    "sources": [
+      {
+        "label": "Google: sharing controls and stopping access",
+        "url": "https://support.google.com/calendar/answer/37082?hl=en"
+      },
+      {
+        "label": "Google: account synchronization and secret iCal addresses",
+        "url": "https://support.google.com/calendar/answer/37648?hl=en"
+      }
+    ],
+    "seeAlso": [
+      "who-can-see-what-in-google-calendar",
+      "the-secret-address-of-a-google-calendar",
+      "a-calendar-that-is-yours-to-share"
+    ],
+    "updated": "2026-10-21"
+  },
+  "checks": {
+    "pt-BR": {
+      "description_characters": 159,
+      "sections": 6,
+      "paragraphs": 12,
+      "steps": 6,
+      "faqs": 3,
+      "source_urls_match": true,
+      "related_routes": [
+        "who-can-see-what-in-google-calendar",
+        "the-secret-address-of-a-google-calendar"
+      ],
+      "omitted_nonexistent_related_routes": [
+        "a-calendar-that-is-yours-to-share"
+      ],
+      "sha256": "81fca4d8cdcb78680b07eef00fb5351978474714d861c01edc543e55851e981b"
+    },
+    "ro": {
+      "description_characters": 146,
+      "sections": 6,
+      "paragraphs": 12,
+      "steps": 6,
+      "faqs": 3,
+      "source_urls_match": true,
+      "related_routes": [
+        "who-can-see-what-in-google-calendar",
+        "the-secret-address-of-a-google-calendar"
+      ],
+      "omitted_nonexistent_related_routes": [
+        "a-calendar-that-is-yours-to-share"
+      ],
+      "sha256": "b584540b141d01b3620f81017c7d5f5153364e1cf9392405ae0c746e7274f7cb"
+    },
+    "ru": {
+      "description_characters": 138,
+      "sections": 6,
+      "paragraphs": 12,
+      "steps": 6,
+      "faqs": 3,
+      "source_urls_match": true,
+      "related_routes": [
+        "who-can-see-what-in-google-calendar",
+        "the-secret-address-of-a-google-calendar"
+      ],
+      "omitted_nonexistent_related_routes": [
+        "a-calendar-that-is-yours-to-share"
+      ],
+      "sha256": "457615d3b5313809a9df5f787bf72562345f36364da439a6cd218e8fbac99bb2"
+    },
+    "sv": {
+      "description_characters": 158,
+      "sections": 6,
+      "paragraphs": 12,
+      "steps": 6,
+      "faqs": 3,
+      "source_urls_match": true,
+      "related_routes": [
+        "who-can-see-what-in-google-calendar",
+        "the-secret-address-of-a-google-calendar"
+      ],
+      "omitted_nonexistent_related_routes": [
+        "a-calendar-that-is-yours-to-share"
+      ],
+      "sha256": "4c2634cd1aed5766bd0a36c74a108ddc74bd22e9be481cbe6cfb185ebfe18023"
+    },
+    "tr": {
+      "description_characters": 153,
+      "sections": 6,
+      "paragraphs": 12,
+      "steps": 6,
+      "faqs": 3,
+      "source_urls_match": true,
+      "related_routes": [
+        "who-can-see-what-in-google-calendar",
+        "the-secret-address-of-a-google-calendar"
+      ],
+      "omitted_nonexistent_related_routes": [
+        "a-calendar-that-is-yours-to-share"
+      ],
+      "sha256": "9587a48b55b59c81ac2944d8f6a09f6d12c143449501e71ca7d31287c7abbfb9"
+    },
+    "vi": {
+      "description_characters": 144,
+      "sections": 6,
+      "paragraphs": 12,
+      "steps": 6,
+      "faqs": 3,
+      "source_urls_match": true,
+      "related_routes": [
+        "who-can-see-what-in-google-calendar",
+        "the-secret-address-of-a-google-calendar"
+      ],
+      "omitted_nonexistent_related_routes": [
+        "a-calendar-that-is-yours-to-share"
+      ],
+      "sha256": "a7a4b37f1e9401e12b25b929758f831b9580745299474220af0c50a206d71c83"
+    },
+    "th": {
+      "description_characters": 117,
+      "sections": 6,
+      "paragraphs": 12,
+      "steps": 6,
+      "faqs": 3,
+      "source_urls_match": true,
+      "related_routes": [
+        "who-can-see-what-in-google-calendar",
+        "the-secret-address-of-a-google-calendar"
+      ],
+      "omitted_nonexistent_related_routes": [
+        "a-calendar-that-is-yours-to-share"
+      ],
+      "sha256": "47fe5695b8a6dd9a63f8cfd71285b6faa239df0693c382d20f69661cba2ea3a5"
+    },
+    "zh-Hans": {
+      "description_characters": 51,
+      "sections": 6,
+      "paragraphs": 12,
+      "steps": 6,
+      "faqs": 3,
+      "source_urls_match": true,
+      "related_routes": [
+        "who-can-see-what-in-google-calendar",
+        "the-secret-address-of-a-google-calendar"
+      ],
+      "omitted_nonexistent_related_routes": [
+        "a-calendar-that-is-yours-to-share"
+      ],
+      "sha256": "621e50cb8bddec8f0adaca276198dc851ce64ffe447ea989b3e3f1a5cc378994"
+    },
+    "zh-Hant": {
+      "description_characters": 50,
+      "sections": 6,
+      "paragraphs": 12,
+      "steps": 6,
+      "faqs": 3,
+      "source_urls_match": true,
+      "related_routes": [
+        "who-can-see-what-in-google-calendar",
+        "the-secret-address-of-a-google-calendar"
+      ],
+      "omitted_nonexistent_related_routes": [
+        "a-calendar-that-is-yours-to-share"
+      ],
+      "sha256": "0314d35e96477e3fd226ff7e5de7ecfcf0138468b883380a6559bc644a58a797"
+    }
+  },
+  "scope": {
+    "locales": [
+      "pt-BR",
+      "ro",
+      "ru",
+      "sv",
+      "tr",
+      "vi",
+      "th",
+      "zh-Hans",
+      "zh-Hant"
+    ],
+    "objects": 9,
+    "sections": 54,
+    "paragraphs": 108,
+    "practical_steps": 54,
+    "faqs": 27
+  },
+  "semantic_review": [
+    "Person, group, public and organisation permissions remain separate.",
+    "Google secret-address reset differs from named access removal.",
+    "Cloud recipient permissions differ from feed URLs.",
+    "No immediate disappearance, silence, universal refresh, all-copy erasure or single-switch promise.",
+    "Existing copied data handled separately; no destructive diagnostic steps.",
+    "Advanced removes ads; Google access controls depend on ownership/permission/policy.",
+    "All six sections and twelve paragraphs preserved with substantive localized prose, examples and practical guidance."
+  ],
+  "limits": [
+    "Translations prepared without paid translation services.",
+    "No independent native-speaker approval or runtime verification claimed.",
+    "Thai and Chinese wording uses natural explanatory phrasing rather than asserting exact localized product UI labels.",
+    "Related links filtered against current generated per-locale route index.",
+    "No integrated site, native source, build or deployment changes."
+  ]
+}

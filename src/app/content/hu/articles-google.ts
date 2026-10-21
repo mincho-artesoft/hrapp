@@ -305,50 +305,94 @@ export const GOOGLE_HU: Readonly<Record<string, LocalisedArticle>> = {
   },
 
   'taking-back-a-calendar-you-shared': {
-    title: 'Visszavenni egy naptárat, amelyet megosztottál',
-    short: 'A hozzáférés visszavonása',
-    description:
-      'Ha kiveszel valakit egy naptárból, az megállítja azt, ami ezután jön. Amit nem tesz meg: nem csinálja vissza azt, ami már megtörtént.',
-    lede: 'A hozzáférés lezárása egy koppintás. Eldönteni, hogy elég-e egy koppintás, valamivel tovább tart, mert a megosztás másolatokat hagy maga után.',
-    commonBelief: 'Hogy valaki eltávolítása eltávolítja azt is, amit látott.',
-    sections: [
-      {
-        heading: 'Mi áll le és mi marad',
-        body: [
-          'Távolíts el valakit, és a naptár azonnal, üzenet nélkül eltűnik a listájáról. A jövőbeli események soha nem érik el.',
-          'Ami nem jön vissza: a már nála lévő meghívók, a saját naptárába másolt események, bármi exportált, és minden, amihez titkos címet kapott. A hozzáférés véget ér; az emlékezet nem.',
-        ],
-      },
-      {
-        heading: 'Ami túléli az eltávolítást',
-        body: [
-          'Ha valakinek valaha joga volt a megosztást kezelni, lehet, hogy másokat is hozzáadott. Őt eltávolítva azok a helyükön maradnak — így lesz egy naptár megosztva valakivel, akinek a meghívására senki nem emlékszik.',
-          'Olvasd tehát végig a teljes listát, ne egy nevet húzz ki, és a távozáskor tedd, ne hónapokkal később. Semmi nem emlékeztet rá, a megosztások pedig csak gyűlnek.',
-        ],
-      },
-    ],
-    claims: {
-      advancedMonthly: 'Annak a szintnek a havi ára, ahol ezt kezeled, dollárban',
+  "title": "Naptármegosztás megszüntetése: ellenőrizze az összes hozzáférési utat",
+  "short": "Megosztott hozzáférés ellenőrzése és törlése",
+  "description": "Külön kezelje a személyeket, csoportokat, nyilvános elérést és hírcsatornalinkeket. Ellenőrizze a változást: a mentett másolatok megmaradhatnak.",
+  "lede": "Egy együttműködés lezárásakor először azonosítsa, hogyan adtak hozzáférést. Egy személy eltávolítása, a közzététel leállítása és a hírcsatorna címének visszaállítása más művelet. Az útmutatót a Cloud Calendars fejlesztője, az Arte Soft adja ki.",
+  "commonBelief": "Egy címzett eltávolítása azonnal visszahívna minden naptármásolatot és lezárna minden más hozzáférési utat.",
+  "sections": [
+    {
+      "heading": "Azonosítsa a naptárt és a megosztás módját",
+      "body": [
+        "Módosítás előtt ellenőrizze a tulajdonos fiókját, a naptárt és a célközönséget. Egy név szerint meghívott kollégával megosztott Google-naptár más kapcsolat, mint a nyilvános naptár, csoportjog vagy előfizetési cím. A Cloud Calendars saját esemény- és naptármegosztási kapcsolatokat is használ.",
+        "Például egy klub titkára személyes meghívással kaphat szerkesztési jogot, miközben a tagok közzétett programot követnek. A titkár jogának törlése nem határozza meg, mi történjen a tagok előfizetéseivel. Írja össze a ténylegesen kialakított hozzáféréseket."
+      ]
     },
-    faq: [
-      {
-        q: 'Törli valakinek az eltávolítása azt, amit már látott?',
-        a: 'Nem. A már nála lévő meghívók, a saját naptárába másolt események és minden exportált megmarad. A hozzáférés véget ér; a másolatok nem.',
-      },
-      {
-        q: 'Értesül róla az illető, hogy megvontam a hozzáférését?',
-        a: 'Nem. A naptár azonnal és üzenet nélkül eltűnik a listájáról.',
-      },
-      {
-        q: 'Miért van a naptáram megosztva valakivel, akit sosem hívtam meg?',
-        a: 'Olyasvalaki adta hozzá, akinek joga volt kezelni a megosztást. Őt eltávolítva mindenki a helyén marad, akit hozzáadott — ezért a teljes listát olvassuk végig, nem egy nevet.',
-      },
-    ],
-    practical: [
-      'Olvasd végig a teljes hozzáférési listát, ne csak azt a nevet, amelyiket ki akartad venni.',
-      'Állítsd vissza a titkos címet, ha az illetőnek valaha megvolt.',
-      'Számolj azzal, hogy a másolatok megmaradnak: a valóban érzékenyet mozgasd át, ne elrejtsd.',
-    ],
-    seeAlso: ['who-can-see-what-in-google-calendar', 'the-secret-address-of-a-google-calendar'],
-  },
+    {
+      "heading": "A megfelelő Google-jogosultságot távolítsa el",
+      "body": [
+        "A Google külön szabályozza a személyek vagy csoportok, a teljes szervezet és a nyilvánosság hozzáférését. Számítógépen nyissa meg a megfelelő naptár megosztási beállításait, és módosítsa az érintett bejegyzést vagy szélesebb beállítást. Előbb ellenőrizze a bejelentkezett fiókot és a naptár nevét.",
+        "Az illetőnek csoporton vagy szélesebb közzétételen át továbbra is lehet hozzáférése. Az egész rendszert tekintse át, ne ugyanazt az e-mail-címet törölje újra. Munkahelyi vagy iskolai szabályok korlátozhatják a lehetőségeket; szükség esetén kövesse a tulajdonos vagy rendszergazda jóváhagyott eljárását."
+      ]
+    },
+    {
+      "heading": "A titkos naptárcímet külön kezelje",
+      "body": [
+        "A Google szerint a titkos iCal-cím saját használatra való egy másik naptáralkalmazásban, és nem adható át másoknak. Ha nyilvánosságra került, a Google leírja visszaállítását, amely érvényteleníti a régi címet. Ez nem ugyanaz, mint egy megnevezett személy eltávolítása.",
+        "Saját előfizetési cím módosítása előtt keresse meg az arra támaszkodó alkalmazásokat és eszközöket, hogy utána a szükségeseket újra csatlakoztathassa. Ne tegye a titkos URL-t nyilvános támogatási bejegyzésbe, és ne küldje el bizonyítékként a naptár azonosítására. Inkább nevet és kapcsolattípust adjon meg."
+      ]
+    },
+    {
+      "heading": "Különböztesse meg a címzetteket a hírcsatornalinkektől",
+      "body": [
+        "A Cloud Calendars esemény- vagy naptárcímzettjeinek hozzáférése és a kiadott előfizetési hírcsatorna külön mechanizmus. Művelet előtt vizsgálja meg a tényleges megosztási kapcsolatot és linket. Egy azonosított címzett eltávolítása nem garantálja minden korábban kiosztott URL vagy önálló másolat visszahívását.",
+        "Ha egy társszervezőnek csak a szerkesztést kell abbahagynia, a szerepet és a többi felhasználót vizsgálja, ne törölje a közös programot. Ha az egész együttműködés véget ér, tisztázza a tulajdonost és azt, ki őrizze meg a naptárt. Kapott naptár elhagyása és saját naptár törlése más döntés."
+      ]
+    },
+    {
+      "heading": "Az eredményt ellenőrizze, ne ígérjen azonnali eltűnést",
+      "body": [
+        "Ellenőrizze, hogy a tulajdonos rendszerében mentődött-e a változás. Ha jogosult kolléga segíthet, saját fiókjából ellenőrizze a megtekintést vagy szerkesztést, jelszómegosztás nélkül. Különböztesse meg a megtagadott hozzáférést a gyorsítótárazott vagy importált másolatban látható régi eseménytől.",
+        "Ne ígérjen egységes frissítési időt vagy értesítésmentességet. Átadáskor mondja el, melyik programot kell ezután használni. Egy régi látható bejegyzés önmagában nem árulja el, maradt-e élő hozzáférés, másik jogosultság vagy önálló másolat."
+      ]
+    },
+    {
+      "heading": "A korábbi másolatokat külön kövesse nyomon",
+      "body": [
+        "Exportált fájlok, képernyőképek, üzenetek és külön mentett időpontok a változás után is megmaradhatnak. Döntse el, melyek fontosak az átadáshoz, és egyeztessen róluk az érintettekkel. Naptárjog módosításából nem állapítható meg, ki mit mentett korábban.",
+        "Az ellenőrzés alatt őrizze meg a szükséges forrásadatokat. Ne mozgasson érzékeny találkozókat másik megosztott naptárba csak azért, hogy a régi üresnek látszódjon, és ne töröljön valódi meghívókat hozzáférési tesztként. Jegyezze fel a naptárt, útvonalat és változást a későbbi hibakereséshez."
+      ]
+    }
+  ],
+  "claims": {},
+  "practical": [
+    "Azonosítsa a tulajdonos fiókját, a naptárt és a megosztás módját.",
+    "Külön ellenőrizze a személyeket, csoportokat és szélesebb közzétételt.",
+    "Használja a megfelelő Google- vagy Cloud Calendars-megosztási beállítást.",
+    "Külön döntsön a kiszivárgott titkos hírcsatornacím visszaállításáról.",
+    "Bejelentkezési adatok megosztása nélkül ellenőrizze a mentett hozzáférést.",
+    "A korábbi exportokat és másolatokat az élő hozzáféréstől külön kezelje."
+  ],
+  "faq": [
+    {
+      "q": "Egy személy eltávolítása kikapcsolja a nyilvános vagy csoportos hozzáférését is?",
+      "a": "Ne feltételezze. Minden tényleges utat vizsgáljon meg. A Google a címzetteket, csoportokat és szélesebb közzétételt külön beállításként dokumentálja."
+    },
+    {
+      "q": "A naptár azonnal és értesítés nélkül eltűnik?",
+      "a": "Nincs általános garancia az eltűnésre, értesítésre vagy frissítési időre. Ellenőrizze a mentett módosítást, és válassza külön az élő hozzáférést a gyorsítótárazott vagy importált adatoktól."
+    },
+    {
+      "q": "Az Advanced megvásárlása ad jogot Google-naptárhozzáférés eltávolítására?",
+      "a": "Az Advanced a Cloud Calendars hirdetéseit távolítja el. A Google megosztási lehetőségei a tulajdonjogtól, jogosultságoktól és szervezeti szabályoktól függenek, nem az alkalmazáscsomagtól."
+    }
+  ],
+  "sourcesHeading": "Szolgáltatói útmutató hozzáféréshez és előfizetéshez",
+  "sources": [
+    {
+      "label": "Google: megosztási beállítások és hozzáférés megszüntetése",
+      "url": "https://support.google.com/calendar/answer/37082?hl=en"
+    },
+    {
+      "label": "Google: fiókszinkronizálás és titkos iCal-címek",
+      "url": "https://support.google.com/calendar/answer/37648?hl=en"
+    }
+  ],
+  "seeAlso": [
+    "who-can-see-what-in-google-calendar",
+    "the-secret-address-of-a-google-calendar",
+    "why-a-shared-calendar-does-not-appear"
+  ],
+  "updated": "2026-10-21"
+},
 };

@@ -1,5 +1,5 @@
 {
-  "date": "2026-10-21T20:20:26.374Z",
+  "date": "2026-10-21T20:55:50.754Z",
   "status": "source_inventory_not_quality_approval",
   "articles": [
     {
@@ -77,15 +77,18 @@
     {
       "locale": "ar-SA",
       "slug": "taking-back-a-calendar-you-shared",
-      "title": "استرجاع تقويم شاركته مع أحدهم",
-      "description": "إزالة شخص من تقويم توقف ما سيأتي بعد ذلك. لكنها لا تُلغي ما حدث فعلًا.",
-      "descriptionCharacters": 70,
-      "sections": 2,
+      "title": "إيقاف مشاركة تقويم: أزل الوصول وتحقق من المسارات المتبقية",
+      "description": "أوقف مشاركة التقويم مع التمييز بين الأشخاص والمجموعات والوصول العام وروابط الاشتراك. تحقق من التغيير وافهم لماذا قد تبقى نسخ محفوظة.",
+      "descriptionCharacters": 132,
+      "sections": 6,
       "faq": 3,
-      "words": 232,
+      "words": 698,
       "source": "articles-google.ts",
-      "sources": [],
-      "updated": "2026-09-12"
+      "sources": [
+        "https://support.google.com/calendar/answer/37082?hl=en",
+        "https://support.google.com/calendar/answer/37648?hl=en"
+      ],
+      "updated": "2026-10-21"
     },
     {
       "locale": "ar-SA",
@@ -220,15 +223,18 @@
     {
       "locale": "bg",
       "slug": "taking-back-a-calendar-you-shared",
-      "title": "Да си върнете календар, който сте споделили",
-      "description": "Махането на човек от календар спира това, което тепърва предстои. Каквото не прави, е да върне назад станалото.",
-      "descriptionCharacters": 111,
-      "sections": 2,
+      "title": "Спрете споделянето на календар: премахнете достъпа и проверете другите начини",
+      "description": "Спрете споделянето, като разграничите хора, групи, публичен достъп и абонаментни връзки. Проверете промяната и защо запазени копия може да останат.",
+      "descriptionCharacters": 147,
+      "sections": 6,
       "faq": 3,
-      "words": 284,
+      "words": 778,
       "source": "articles-google.ts",
-      "sources": [],
-      "updated": "2026-09-12"
+      "sources": [
+        "https://support.google.com/calendar/answer/37082?hl=en",
+        "https://support.google.com/calendar/answer/37648?hl=en"
+      ],
+      "updated": "2026-10-21"
     },
     {
       "locale": "bg",
@@ -414,15 +420,18 @@
     {
       "locale": "cs",
       "slug": "taking-back-a-calendar-you-shared",
-      "title": "Vzít zpět kalendář, který jste nasdíleli",
-      "description": "Odebrat někoho z kalendáře zastaví to, co teprve přijde. Nezruší to, co se už stalo.",
-      "descriptionCharacters": 84,
-      "sections": 2,
+      "title": "Přestat sdílet kalendář: odeberte přístup a prověřte ostatní cesty",
+      "description": "Ukončete sdílení s rozlišením osob, skupin, veřejného přístupu a odběrových odkazů. Ověřte změnu a zjistěte, proč uložené kopie mohou zůstat.",
+      "descriptionCharacters": 141,
+      "sections": 6,
       "faq": 3,
-      "words": 255,
+      "words": 691,
       "source": "articles-google.ts",
-      "sources": [],
-      "updated": "2026-09-12"
+      "sources": [
+        "https://support.google.com/calendar/answer/37082?hl=en",
+        "https://support.google.com/calendar/answer/37648?hl=en"
+      ],
+      "updated": "2026-10-21"
     },
     {
       "locale": "cs",
@@ -557,15 +566,18 @@
     {
       "locale": "da",
       "slug": "taking-back-a-calendar-you-shared",
-      "title": "At tage en delt kalender tilbage",
-      "description": "At fjerne nogen fra en kalender stopper det, der kommer herefter. Hvad det ikke gør, er at annullere det, der allerede er sket.",
-      "descriptionCharacters": 127,
-      "sections": 2,
+      "title": "Stop deling af en kalender: fjern adgang og kontrollér de andre veje",
+      "description": "Stop kalenderdeling ved at skelne mellem personer, grupper, offentlig adgang og feedlinks. Kontrollér ændringen, og forstå hvorfor kopier kan blive.",
+      "descriptionCharacters": 148,
+      "sections": 6,
       "faq": 3,
-      "words": 283,
+      "words": 805,
       "source": "articles-google.ts",
-      "sources": [],
-      "updated": "2026-09-12"
+      "sources": [
+        "https://support.google.com/calendar/answer/37082?hl=en",
+        "https://support.google.com/calendar/answer/37648?hl=en"
+      ],
+      "updated": "2026-10-21"
     },
     {
       "locale": "da",
@@ -700,15 +712,18 @@
     {
       "locale": "de-DE",
       "slug": "taking-back-a-calendar-you-shared",
-      "title": "Einen geteilten Kalender wieder zurückholen",
-      "description": "Jemanden aus einem Kalender zu entfernen, stoppt, was danach kommt. Was es nicht tut: rückgängig machen, was schon geschehen ist.",
-      "descriptionCharacters": 129,
-      "sections": 2,
+      "title": "Kalender nicht mehr teilen: Zugriff entfernen und andere Wege prüfen",
+      "description": "Beende die Kalenderfreigabe gezielt: Prüfe Personen, Gruppen, öffentliche Zugriffe und Feed-Links und erfahre, warum gespeicherte Kopien bleiben können.",
+      "descriptionCharacters": 152,
+      "sections": 6,
       "faq": 3,
-      "words": 280,
+      "words": 760,
       "source": "articles-google.ts",
-      "sources": [],
-      "updated": "2026-09-12"
+      "sources": [
+        "https://support.google.com/calendar/answer/37082?hl=en",
+        "https://support.google.com/calendar/answer/37648?hl=en"
+      ],
+      "updated": "2026-10-21"
     },
     {
       "locale": "de-DE",
@@ -1049,15 +1064,18 @@
     {
       "locale": "el",
       "slug": "taking-back-a-calendar-you-shared",
-      "title": "Να πάρετε πίσω ένα ημερολόγιο που μοιραστήκατε",
-      "description": "Η αφαίρεση κάποιου από ένα ημερολόγιο σταματά ό,τι έρχεται μετά. Αυτό που δεν κάνει είναι να αναιρέσει ό,τι έχει ήδη γίνει.",
-      "descriptionCharacters": 123,
-      "sections": 2,
+      "title": "Διακοπή κοινής χρήσης ημερολογίου: αφαιρέστε την πρόσβαση και ελέγξτε τις άλλες οδούς",
+      "description": "Σταματήστε την κοινή χρήση ξεχωρίζοντας άτομα, ομάδες, δημόσια πρόσβαση και συνδέσμους ροών. Ελέγξτε την αλλαγή και τα αντίγραφα που ίσως παραμένουν.",
+      "descriptionCharacters": 149,
+      "sections": 6,
       "faq": 3,
-      "words": 294,
+      "words": 813,
       "source": "articles-google.ts",
-      "sources": [],
-      "updated": "2026-09-12"
+      "sources": [
+        "https://support.google.com/calendar/answer/37082?hl=en",
+        "https://support.google.com/calendar/answer/37648?hl=en"
+      ],
+      "updated": "2026-10-21"
     },
     {
       "locale": "el",
@@ -1199,41 +1217,52 @@
     {
       "locale": "en-US",
       "slug": "the-secret-address-of-a-google-calendar",
-      "title": "What the secret address of a Google calendar really gives away",
-      "description": "Google offers a private address that shows your whole calendar to whoever holds it. What it exposes, and why it cannot be taken back quietly.",
-      "descriptionCharacters": 141,
-      "sections": 2,
+      "title": "Google’s secret iCal address: subscribe without confusing it with sharing",
+      "description": "Understand Google’s secret iCal address, account connections and shared feeds. Handle an exposed address without promising instant updates or erased copies.",
+      "descriptionCharacters": 156,
+      "sections": 6,
       "faq": 3,
-      "words": 330,
+      "words": 801,
       "source": "articles-google.ts",
-      "sources": [],
-      "updated": "2026-09-12"
+      "sources": [
+        "https://support.google.com/calendar/answer/37648?hl=en",
+        "https://support.google.com/calendar/answer/37082?hl=en",
+        "https://support.microsoft.com/en-us/outlook/import-or-subscribe-to-a-calendar-in-outlook-com-or-outlook-on-the-web"
+      ],
+      "updated": "2026-10-21"
     },
     {
       "locale": "en-US",
       "slug": "what-guests-can-do-to-your-event",
-      "title": "What your guests can do to an event once invited",
-      "description": "Three tick boxes decide whether a guest can move your meeting, invite strangers, or read the whole list. They are on by default more often than people expect.",
-      "descriptionCharacters": 158,
-      "sections": 2,
+      "title": "Google Calendar guest permissions: editing, invitations and the guest list",
+      "description": "Check Google event guest permissions and defaults. Separate invitation rights from calendar access and Cloud Calendars Reader, Writer and Owner roles.",
+      "descriptionCharacters": 150,
+      "sections": 6,
       "faq": 3,
-      "words": 331,
+      "words": 782,
       "source": "articles-google.ts",
-      "sources": [],
-      "updated": "2026-09-12"
+      "sources": [
+        "https://support.google.com/a/users/answer/13293412?hl=en",
+        "https://developers.google.com/workspace/calendar/api/v3/reference/events"
+      ],
+      "updated": "2026-10-21"
     },
     {
       "locale": "en-US",
       "slug": "google-calendars-that-never-reach-your-iphone",
-      "title": "Why some Google calendars never reach your iPhone",
-      "description": "One Google account, several calendars, and only one of them on the phone. The sync list that decides it, and what to do instead.",
-      "descriptionCharacters": 128,
-      "sections": 2,
+      "title": "A Google calendar is missing on iPhone: check the connection and selection",
+      "description": "Find a missing Google calendar by checking account access, calendar visibility and the connection used by Apple Calendar or Cloud Calendars.",
+      "descriptionCharacters": 140,
+      "sections": 6,
       "faq": 3,
-      "words": 336,
+      "words": 824,
       "source": "articles-google.ts",
-      "sources": [],
-      "updated": "2026-09-12"
+      "sources": [
+        "https://support.google.com/calendar/answer/99358?hl=en&co=GENIE.Platform%3DiOS",
+        "https://support.google.com/calendar/answer/37100?hl=en&co=GENIE.Platform%3DiOS",
+        "https://developers.google.com/workspace/calendar/api/v3/reference/calendarList/list"
+      ],
+      "updated": "2026-10-21"
     },
     {
       "locale": "en-US",
@@ -1339,15 +1368,18 @@
     {
       "locale": "en-US",
       "slug": "drag-an-event-to-move-it",
-      "title": "Moving an event by dragging it",
-      "description": "Rescheduling should cost one gesture, not a form. Why direct manipulation matters more on a calendar than almost anywhere else.",
-      "descriptionCharacters": 127,
-      "sections": 2,
-      "faq": 0,
-      "words": 200,
+      "title": "Drag a calendar event to reschedule: check time, duration and scope",
+      "description": "Move a calendar event without confusing its start, duration, calendar or repeat scope. Check editing rights and verify the saved change.",
+      "descriptionCharacters": 136,
+      "sections": 6,
+      "faq": 3,
+      "words": 793,
       "source": "articles-planning.ts",
-      "sources": [],
-      "updated": "2026-08-27"
+      "sources": [
+        "https://support.apple.com/en-my/guide/iphone/iph3d110f84/ios",
+        "https://support.google.com/calendar/answer/72143/?co=GENIE.Platform%3DiOS&hl=en"
+      ],
+      "updated": "2026-10-21"
     },
     {
       "locale": "en-US",
@@ -1962,15 +1994,18 @@
     {
       "locale": "es-ES",
       "slug": "taking-back-a-calendar-you-shared",
-      "title": "Recuperar un calendario que compartiste",
-      "description": "Quitar a alguien de un calendario detiene lo que viene después. Lo que no hace es deshacer lo que ya ocurrió.",
-      "descriptionCharacters": 109,
-      "sections": 2,
+      "title": "Dejar de compartir un calendario: retira el acceso y revisa las demás vías",
+      "description": "Deja de compartir un calendario revisando personas, grupos, acceso público y enlaces de suscripción. Descubre por qué pueden quedar copias guardadas.",
+      "descriptionCharacters": 149,
+      "sections": 6,
       "faq": 3,
-      "words": 309,
+      "words": 903,
       "source": "articles-google.ts",
-      "sources": [],
-      "updated": "2026-09-12"
+      "sources": [
+        "https://support.google.com/calendar/answer/37082?hl=en",
+        "https://support.google.com/calendar/answer/37648?hl=en"
+      ],
+      "updated": "2026-10-21"
     },
     {
       "locale": "es-ES",
@@ -2311,15 +2346,18 @@
     {
       "locale": "fi",
       "slug": "taking-back-a-calendar-you-shared",
-      "title": "Jaetun kalenterin ottaminen takaisin",
-      "description": "Henkilön poistaminen kalenterista pysäyttää sen, mikä tulee tämän jälkeen. Se ei kumoa sitä, mikä on jo tapahtunut.",
-      "descriptionCharacters": 115,
-      "sections": 2,
+      "title": "Lopeta kalenterin jakaminen: poista käyttöoikeus ja tarkista muut reitit",
+      "description": "Lopeta kalenterin jakaminen erottamalla henkilöt, ryhmät, julkinen käyttö ja syötelinkit. Tarkista muutos ja miksi tallennetut kopiot voivat jäädä.",
+      "descriptionCharacters": 147,
+      "sections": 6,
       "faq": 3,
-      "words": 239,
+      "words": 611,
       "source": "articles-google.ts",
-      "sources": [],
-      "updated": "2026-09-12"
+      "sources": [
+        "https://support.google.com/calendar/answer/37082?hl=en",
+        "https://support.google.com/calendar/answer/37648?hl=en"
+      ],
+      "updated": "2026-10-21"
     },
     {
       "locale": "fi",
@@ -2454,15 +2492,18 @@
     {
       "locale": "fr-FR",
       "slug": "taking-back-a-calendar-you-shared",
-      "title": "Reprendre un agenda que vous avez partagé",
-      "description": "Retirer quelqu'un d'un agenda arrête ce qui vient ensuite. Ce que cela ne fait pas, c'est défaire ce qui a déjà eu lieu.",
-      "descriptionCharacters": 120,
-      "sections": 2,
+      "title": "Ne plus partager un calendrier : retirer l’accès et vérifier les autres voies",
+      "description": "Arrêtez le partage en distinguant personnes, groupes, accès public et liens de flux. Vérifiez le résultat et les copies qui peuvent subsister.",
+      "descriptionCharacters": 142,
+      "sections": 6,
       "faq": 3,
-      "words": 323,
+      "words": 908,
       "source": "articles-google.ts",
-      "sources": [],
-      "updated": "2026-09-12"
+      "sources": [
+        "https://support.google.com/calendar/answer/37082?hl=en",
+        "https://support.google.com/calendar/answer/37648?hl=en"
+      ],
+      "updated": "2026-10-21"
     },
     {
       "locale": "fr-FR",
@@ -2803,15 +2844,18 @@
     {
       "locale": "he",
       "slug": "taking-back-a-calendar-you-shared",
-      "title": "לקחת בחזרה יומן ששיתפתם",
-      "description": "הסרת אדם מיומן עוצרת את מה שיבוא מכאן. מה שהיא לא עושה הוא לבטל את מה שכבר קרה.",
-      "descriptionCharacters": 79,
-      "sections": 2,
+      "title": "הפסקת שיתוף יומן: הסרת גישה ובדיקת הנתיבים שנותרו",
+      "description": "הפסיקו שיתוף יומן תוך הבחנה בין אנשים, קבוצות, גישה ציבורית וקישורי הזנה. בדקו מה השתנה ולמה עותקים שמורים עשויים להישאר.",
+      "descriptionCharacters": 121,
+      "sections": 6,
       "faq": 3,
-      "words": 235,
+      "words": 693,
       "source": "articles-google.ts",
-      "sources": [],
-      "updated": "2026-09-12"
+      "sources": [
+        "https://support.google.com/calendar/answer/37082?hl=en",
+        "https://support.google.com/calendar/answer/37648?hl=en"
+      ],
+      "updated": "2026-10-21"
     },
     {
       "locale": "he",
@@ -2946,15 +2990,18 @@
     {
       "locale": "hi",
       "slug": "taking-back-a-calendar-you-shared",
-      "title": "साझा किया हुआ कैलेंडर वापस लेना",
-      "description": "किसी को कैलेंडर से हटाना आगे आने वाली चीज़ों को रोक देता है। जो वह नहीं करता, वह है जो हो चुका उसे पलटना।",
-      "descriptionCharacters": 105,
-      "sections": 2,
+      "title": "कैलेंडर साझा करना बंद करें: पहुँच हटाएँ और बाकी रास्ते जाँचें",
+      "description": "साझा करना बंद करते समय व्यक्ति, समूह, सार्वजनिक पहुँच और फ़ीड लिंक अलग रखें। बदलाव जाँचें; सहेजी हुई प्रतियाँ बच सकती हैं।",
+      "descriptionCharacters": 122,
+      "sections": 6,
       "faq": 3,
-      "words": 384,
+      "words": 872,
       "source": "articles-google.ts",
-      "sources": [],
-      "updated": "2026-09-12"
+      "sources": [
+        "https://support.google.com/calendar/answer/37082?hl=en",
+        "https://support.google.com/calendar/answer/37648?hl=en"
+      ],
+      "updated": "2026-10-21"
     },
     {
       "locale": "hi",
@@ -3089,15 +3136,18 @@
     {
       "locale": "hu",
       "slug": "taking-back-a-calendar-you-shared",
-      "title": "Visszavenni egy naptárat, amelyet megosztottál",
-      "description": "Ha kiveszel valakit egy naptárból, az megállítja azt, ami ezután jön. Amit nem tesz meg: nem csinálja vissza azt, ami már megtörtént.",
-      "descriptionCharacters": 133,
-      "sections": 2,
+      "title": "Naptármegosztás megszüntetése: ellenőrizze az összes hozzáférési utat",
+      "description": "Külön kezelje a személyeket, csoportokat, nyilvános elérést és hírcsatornalinkeket. Ellenőrizze a változást: a mentett másolatok megmaradhatnak.",
+      "descriptionCharacters": 144,
+      "sections": 6,
       "faq": 3,
-      "words": 273,
+      "words": 674,
       "source": "articles-google.ts",
-      "sources": [],
-      "updated": "2026-09-12"
+      "sources": [
+        "https://support.google.com/calendar/answer/37082?hl=en",
+        "https://support.google.com/calendar/answer/37648?hl=en"
+      ],
+      "updated": "2026-10-21"
     },
     {
       "locale": "hu",
@@ -3232,15 +3282,18 @@
     {
       "locale": "id",
       "slug": "taking-back-a-calendar-you-shared",
-      "title": "Menarik kembali kalender yang Anda bagikan",
-      "description": "Mengeluarkan seseorang dari kalender menghentikan apa yang terjadi selanjutnya. Yang tidak dilakukannya adalah membatalkan yang sudah terjadi.",
-      "descriptionCharacters": 142,
-      "sections": 2,
+      "title": "Berhenti berbagi kalender: hapus akses dan periksa jalur lainnya",
+      "description": "Bedakan akses perorangan, grup, publik, dan tautan feed saat berhenti berbagi. Periksa perubahan; salinan yang disimpan mungkin tetap ada.",
+      "descriptionCharacters": 138,
+      "sections": 6,
       "faq": 3,
-      "words": 261,
+      "words": 691,
       "source": "articles-google.ts",
-      "sources": [],
-      "updated": "2026-09-12"
+      "sources": [
+        "https://support.google.com/calendar/answer/37082?hl=en",
+        "https://support.google.com/calendar/answer/37648?hl=en"
+      ],
+      "updated": "2026-10-21"
     },
     {
       "locale": "id",
@@ -3375,15 +3428,18 @@
     {
       "locale": "it",
       "slug": "taking-back-a-calendar-you-shared",
-      "title": "Riprendersi un calendario che hai condiviso",
-      "description": "Togliere una persona da un calendario ferma ciò che viene dopo. Quello che non fa è annullare ciò che è già accaduto.",
-      "descriptionCharacters": 117,
-      "sections": 2,
+      "title": "Interrompere la condivisione di un calendario: controllare ogni accesso",
+      "description": "Distingui persone, gruppi, accesso pubblico e link ai feed quando interrompi la condivisione. Verifica le modifiche: le copie salvate possono restare.",
+      "descriptionCharacters": 150,
+      "sections": 6,
       "faq": 3,
-      "words": 305,
+      "words": 778,
       "source": "articles-google.ts",
-      "sources": [],
-      "updated": "2026-09-12"
+      "sources": [
+        "https://support.google.com/calendar/answer/37082?hl=en",
+        "https://support.google.com/calendar/answer/37648?hl=en"
+      ],
+      "updated": "2026-10-21"
     },
     {
       "locale": "it",
@@ -3724,15 +3780,18 @@
     {
       "locale": "ja",
       "slug": "taking-back-a-calendar-you-shared",
-      "title": "共有したカレンダーを取り戻す",
-      "description": "相手を外せば、この先は止まる。止まらないのは、すでに起きたことだ。",
-      "descriptionCharacters": 33,
-      "sections": 2,
+      "title": "カレンダーの共有を終了する：アクセスを削除し、ほかの経路も確認",
+      "description": "個人、グループ、一般公開、フィードリンクを区別して共有を終了しましょう。変更結果を確認し、保存済みコピーが残る可能性も考慮します。",
+      "descriptionCharacters": 65,
+      "sections": 6,
       "faq": 3,
-      "words": 18,
+      "words": 40,
       "source": "articles-google.ts",
-      "sources": [],
-      "updated": "2026-09-12"
+      "sources": [
+        "https://support.google.com/calendar/answer/37082?hl=en",
+        "https://support.google.com/calendar/answer/37648?hl=en"
+      ],
+      "updated": "2026-10-21"
     },
     {
       "locale": "ja",
@@ -3867,15 +3926,18 @@
     {
       "locale": "ko",
       "slug": "taking-back-a-calendar-you-shared",
-      "title": "공유한 캘린더를 되찾기",
-      "description": "누군가를 캘린더에서 빼면 다음에 올 일이 멈춘다. 멈추지 않는 것은 이미 일어난 일이다.",
-      "descriptionCharacters": 49,
-      "sections": 2,
+      "title": "캘린더 공유 중단: 접근 권한을 삭제하고 다른 경로도 확인하기",
+      "description": "개인, 그룹, 공개 접근과 피드 링크를 구분해 공유를 중단하세요. 변경 결과를 확인하되, 저장된 사본은 남을 수 있습니다.",
+      "descriptionCharacters": 68,
+      "sections": 6,
       "faq": 3,
-      "words": 225,
+      "words": 609,
       "source": "articles-google.ts",
-      "sources": [],
-      "updated": "2026-09-12"
+      "sources": [
+        "https://support.google.com/calendar/answer/37082?hl=en",
+        "https://support.google.com/calendar/answer/37648?hl=en"
+      ],
+      "updated": "2026-10-21"
     },
     {
       "locale": "ko",
@@ -4010,15 +4072,18 @@
     {
       "locale": "ms",
       "slug": "taking-back-a-calendar-you-shared",
-      "title": "Menarik balik kalendar yang anda kongsikan",
-      "description": "Mengeluarkan seseorang daripada kalendar menghentikan apa yang datang selepas ini. Apa yang ia tidak lakukan ialah membatalkan apa yang sudah berlaku.",
-      "descriptionCharacters": 150,
-      "sections": 2,
+      "title": "Hentikan perkongsian kalendar: buang akses dan semak laluan lain",
+      "description": "Bezakan individu, kumpulan, akses awam dan pautan suapan semasa menghentikan perkongsian. Semak perubahan; salinan tersimpan mungkin kekal.",
+      "descriptionCharacters": 139,
+      "sections": 6,
       "faq": 3,
-      "words": 261,
+      "words": 694,
       "source": "articles-google.ts",
-      "sources": [],
-      "updated": "2026-09-12"
+      "sources": [
+        "https://support.google.com/calendar/answer/37082?hl=en",
+        "https://support.google.com/calendar/answer/37648?hl=en"
+      ],
+      "updated": "2026-10-21"
     },
     {
       "locale": "ms",
@@ -4153,15 +4218,18 @@
     {
       "locale": "nl-NL",
       "slug": "taking-back-a-calendar-you-shared",
-      "title": "Een gedeelde agenda weer terugnemen",
-      "description": "Iemand uit een agenda verwijderen stopt wat hierna komt. Wat het niet doet is ongedaan maken wat al gebeurd is.",
-      "descriptionCharacters": 111,
-      "sections": 2,
+      "title": "Stoppen met een agenda delen: verwijder toegang en controleer andere routes",
+      "description": "Stop met delen en houd personen, groepen, openbare toegang en feedlinks uit elkaar. Controleer het resultaat; eerder opgeslagen kopieën kunnen blijven bestaan.",
+      "descriptionCharacters": 159,
+      "sections": 6,
       "faq": 3,
-      "words": 304,
+      "words": 748,
       "source": "articles-google.ts",
-      "sources": [],
-      "updated": "2026-09-12"
+      "sources": [
+        "https://support.google.com/calendar/answer/37082?hl=en",
+        "https://support.google.com/calendar/answer/37648?hl=en"
+      ],
+      "updated": "2026-10-21"
     },
     {
       "locale": "nl-NL",
@@ -4296,15 +4364,18 @@
     {
       "locale": "no",
       "slug": "taking-back-a-calendar-you-shared",
-      "title": "Å ta tilbake en kalender du har delt",
-      "description": "Å fjerne noen fra en kalender stopper det som kommer etterpå. Det det ikke gjør, er å gjøre om på det som allerede har skjedd.",
-      "descriptionCharacters": 126,
-      "sections": 2,
+      "title": "Slutt å dele en kalender: fjern tilgang og kontroller andre veier",
+      "description": "Skill mellom personer, grupper, offentlig tilgang og kalenderlenker når du avslutter deling. Kontroller endringen; lagrede kopier kan bli igjen.",
+      "descriptionCharacters": 144,
+      "sections": 6,
       "faq": 3,
-      "words": 298,
+      "words": 714,
       "source": "articles-google.ts",
-      "sources": [],
-      "updated": "2026-09-12"
+      "sources": [
+        "https://support.google.com/calendar/answer/37082?hl=en",
+        "https://support.google.com/calendar/answer/37648?hl=en"
+      ],
+      "updated": "2026-10-21"
     },
     {
       "locale": "no",
@@ -4439,15 +4510,18 @@
     {
       "locale": "pl",
       "slug": "taking-back-a-calendar-you-shared",
-      "title": "Odbieranie kalendarza, który udostępniłeś",
-      "description": "Usunięcie kogoś z kalendarza zatrzymuje to, co dopiero nadejdzie. Nie cofa tego, co już się wydarzyło.",
-      "descriptionCharacters": 102,
-      "sections": 2,
+      "title": "Zakończ udostępnianie kalendarza: usuń dostęp i sprawdź pozostałe drogi",
+      "description": "Rozróżnij osoby, grupy, dostęp publiczny i linki kanałów przy kończeniu udostępniania. Sprawdź zmianę: zapisane kopie mogą pozostać.",
+      "descriptionCharacters": 132,
+      "sections": 6,
       "faq": 3,
-      "words": 250,
+      "words": 644,
       "source": "articles-google.ts",
-      "sources": [],
-      "updated": "2026-09-12"
+      "sources": [
+        "https://support.google.com/calendar/answer/37082?hl=en",
+        "https://support.google.com/calendar/answer/37648?hl=en"
+      ],
+      "updated": "2026-10-21"
     },
     {
       "locale": "pl",
@@ -4582,15 +4656,18 @@
     {
       "locale": "pt-BR",
       "slug": "taking-back-a-calendar-you-shared",
-      "title": "Retomar uma agenda que você compartilhou",
-      "description": "Remover alguém de uma agenda interrompe o que vem depois. O que não faz é desfazer o que já aconteceu.",
-      "descriptionCharacters": 102,
-      "sections": 2,
+      "title": "Como deixar de compartilhar um calendário e conferir os acessos restantes",
+      "description": "Encerre o compartilhamento distinguindo pessoas, grupos, acesso público e links de assinatura. Confira as alterações e entenda por que cópias podem permanecer.",
+      "descriptionCharacters": 159,
+      "sections": 6,
       "faq": 3,
-      "words": 301,
+      "words": 830,
       "source": "articles-google.ts",
-      "sources": [],
-      "updated": "2026-09-12"
+      "sources": [
+        "https://support.google.com/calendar/answer/37082?hl=en",
+        "https://support.google.com/calendar/answer/37648?hl=en"
+      ],
+      "updated": "2026-10-21"
     },
     {
       "locale": "pt-BR",
@@ -4776,15 +4853,18 @@
     {
       "locale": "ro",
       "slug": "taking-back-a-calendar-you-shared",
-      "title": "Să iei înapoi un calendar pe care l-ai partajat",
-      "description": "Scoaterea cuiva dintr-un calendar oprește ce urmează. Ce nu face este să desfacă ce s-a întâmplat deja.",
-      "descriptionCharacters": 103,
-      "sections": 2,
+      "title": "Oprește partajarea unui calendar și verifică accesul rămas",
+      "description": "Oprește partajarea fără a confunda persoanele, grupurile, accesul public și abonamentele. Verifică schimbările și înțelege de ce pot rămâne copii.",
+      "descriptionCharacters": 146,
+      "sections": 6,
       "faq": 3,
-      "words": 297,
+      "words": 761,
       "source": "articles-google.ts",
-      "sources": [],
-      "updated": "2026-09-12"
+      "sources": [
+        "https://support.google.com/calendar/answer/37082?hl=en",
+        "https://support.google.com/calendar/answer/37648?hl=en"
+      ],
+      "updated": "2026-10-21"
     },
     {
       "locale": "ro",
@@ -4919,15 +4999,18 @@
     {
       "locale": "ru",
       "slug": "taking-back-a-calendar-you-shared",
-      "title": "Забрать назад календарь, к которому вы открыли доступ",
-      "description": "Удаление человека из календаря останавливает то, что будет дальше. Чего оно не делает — не отменяет уже случившееся.",
-      "descriptionCharacters": 116,
-      "sections": 2,
+      "title": "Как закрыть доступ к календарю и проверить оставшиеся способы доступа",
+      "description": "Различайте доступ для людей и групп, публикацию и ссылки подписки. Проверьте изменения и узнайте, почему сохранённые копии могут остаться.",
+      "descriptionCharacters": 138,
+      "sections": 6,
       "faq": 3,
-      "words": 256,
+      "words": 674,
       "source": "articles-google.ts",
-      "sources": [],
-      "updated": "2026-09-12"
+      "sources": [
+        "https://support.google.com/calendar/answer/37082?hl=en",
+        "https://support.google.com/calendar/answer/37648?hl=en"
+      ],
+      "updated": "2026-10-21"
     },
     {
       "locale": "ru",
@@ -5062,15 +5145,18 @@
     {
       "locale": "sv",
       "slug": "taking-back-a-calendar-you-shared",
-      "title": "Ta tillbaka en kalender du delat",
-      "description": "Att ta bort någon från en kalender stoppar det som kommer härnäst. Vad det inte gör är att göra ogjort det som redan skett.",
-      "descriptionCharacters": 123,
-      "sections": 2,
+      "title": "Sluta dela en kalender och kontrollera kvarvarande åtkomst",
+      "description": "Skilj mellan personer, grupper, offentlig åtkomst och prenumerationslänkar när du slutar dela. Kontrollera ändringen och förstå varför kopior kan finnas kvar.",
+      "descriptionCharacters": 158,
+      "sections": 6,
       "faq": 3,
-      "words": 289,
+      "words": 754,
       "source": "articles-google.ts",
-      "sources": [],
-      "updated": "2026-09-12"
+      "sources": [
+        "https://support.google.com/calendar/answer/37082?hl=en",
+        "https://support.google.com/calendar/answer/37648?hl=en"
+      ],
+      "updated": "2026-10-21"
     },
     {
       "locale": "sv",
@@ -5205,15 +5291,18 @@
     {
       "locale": "th",
       "slug": "taking-back-a-calendar-you-shared",
-      "title": "ขอปฏิทินที่คุณเคยแชร์ไปคืน",
-      "description": "การเอาใครออกจากปฏิทินหยุดสิ่งที่จะเกิดต่อจากนี้ สิ่งที่มันไม่ทำคือย้อนสิ่งที่เกิดไปแล้ว",
-      "descriptionCharacters": 87,
-      "sections": 2,
+      "title": "หยุดแชร์ปฏิทินและตรวจสอบช่องทางเข้าถึงที่ยังเหลืออยู่",
+      "description": "แยกสิทธิ์รายบุคคล กลุ่ม การเผยแพร่สาธารณะ และลิงก์สมัครรับปฏิทิน ตรวจสอบผลการเปลี่ยนแปลงและเหตุที่สำเนาเดิมอาจยังอยู่",
+      "descriptionCharacters": 117,
+      "sections": 6,
       "faq": 3,
-      "words": 52,
+      "words": 145,
       "source": "articles-google.ts",
-      "sources": [],
-      "updated": "2026-09-12"
+      "sources": [
+        "https://support.google.com/calendar/answer/37082?hl=en",
+        "https://support.google.com/calendar/answer/37648?hl=en"
+      ],
+      "updated": "2026-10-21"
     },
     {
       "locale": "th",
@@ -5348,15 +5437,18 @@
     {
       "locale": "tr",
       "slug": "taking-back-a-calendar-you-shared",
-      "title": "Paylaştığınız bir takvimi geri almak",
-      "description": "Birini takvimden çıkarmak bundan sonrasını durdurur. Yapmadığı şey, olup biteni geri almaktır.",
-      "descriptionCharacters": 94,
-      "sections": 2,
+      "title": "Takvim paylaşımını durdurun ve kalan erişim yollarını kontrol edin",
+      "description": "Kişi, grup, herkese açık erişim ve abonelik bağlantılarını ayırarak paylaşımı durdurun. Değişikliği ve eski kopyaların neden kalabileceğini kontrol edin.",
+      "descriptionCharacters": 153,
+      "sections": 6,
       "faq": 3,
-      "words": 224,
+      "words": 661,
       "source": "articles-google.ts",
-      "sources": [],
-      "updated": "2026-09-12"
+      "sources": [
+        "https://support.google.com/calendar/answer/37082?hl=en",
+        "https://support.google.com/calendar/answer/37648?hl=en"
+      ],
+      "updated": "2026-10-21"
     },
     {
       "locale": "tr",
@@ -5491,15 +5583,18 @@
     {
       "locale": "vi",
       "slug": "taking-back-a-calendar-you-shared",
-      "title": "Lấy lại một lịch bạn đã chia sẻ",
-      "description": "Gỡ một người khỏi lịch sẽ chặn những gì đến sau. Điều nó không làm được là xóa đi những gì đã xảy ra.",
-      "descriptionCharacters": 101,
-      "sections": 2,
+      "title": "Ngừng chia sẻ lịch và kiểm tra các đường truy cập còn lại",
+      "description": "Phân biệt người nhận, nhóm, quyền công khai và liên kết đăng ký khi ngừng chia sẻ lịch. Kiểm tra thay đổi và hiểu vì sao bản sao có thể còn lại.",
+      "descriptionCharacters": 144,
+      "sections": 6,
       "faq": 3,
-      "words": 387,
+      "words": 1078,
       "source": "articles-google.ts",
-      "sources": [],
-      "updated": "2026-09-12"
+      "sources": [
+        "https://support.google.com/calendar/answer/37082?hl=en",
+        "https://support.google.com/calendar/answer/37648?hl=en"
+      ],
+      "updated": "2026-10-21"
     },
     {
       "locale": "vi",
@@ -5634,15 +5729,18 @@
     {
       "locale": "zh-Hans",
       "slug": "taking-back-a-calendar-you-shared",
-      "title": "收回一本你共享出去的日历",
-      "description": "把某人移出日历，能停住接下来会发生的事。它停不住的，是已经发生的事。",
-      "descriptionCharacters": 34,
-      "sections": 2,
+      "title": "停止共享日历：撤销访问权限并检查其他访问途径",
+      "description": "停止共享时，区分个人、群组、公开访问和订阅链接。检查权限变更，并了解为什么以前保存的副本可能仍然存在。",
+      "descriptionCharacters": 51,
+      "sections": 6,
       "faq": 3,
-      "words": 18,
+      "words": 71,
       "source": "articles-google.ts",
-      "sources": [],
-      "updated": "2026-09-12"
+      "sources": [
+        "https://support.google.com/calendar/answer/37082?hl=en",
+        "https://support.google.com/calendar/answer/37648?hl=en"
+      ],
+      "updated": "2026-10-21"
     },
     {
       "locale": "zh-Hans",
@@ -5777,15 +5875,18 @@
     {
       "locale": "zh-Hant",
       "slug": "taking-back-a-calendar-you-shared",
-      "title": "收回一本你分享出去的日曆",
-      "description": "把某人移出日曆，能擋住接下來會發生的事。它擋不住的，是已經發生的事。",
-      "descriptionCharacters": 34,
-      "sections": 2,
+      "title": "停止共享行事曆：撤銷存取權並檢查其他存取途徑",
+      "description": "停止共享時，區分個人、群組、公開存取與訂閱連結。確認權限變更，並了解為何先前儲存的副本可能仍然存在。",
+      "descriptionCharacters": 50,
+      "sections": 6,
       "faq": 3,
-      "words": 18,
+      "words": 77,
       "source": "articles-google.ts",
-      "sources": [],
-      "updated": "2026-09-12"
+      "sources": [
+        "https://support.google.com/calendar/answer/37082?hl=en",
+        "https://support.google.com/calendar/answer/37648?hl=en"
+      ],
+      "updated": "2026-10-21"
     },
     {
       "locale": "zh-Hant",

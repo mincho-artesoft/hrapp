@@ -304,50 +304,93 @@ export const GOOGLE_FI: Readonly<Record<string, LocalisedArticle>> = {
   },
 
   'taking-back-a-calendar-you-shared': {
-    title: 'Jaetun kalenterin ottaminen takaisin',
-    short: 'Käyttöoikeuden poisto',
-    description:
-      'Henkilön poistaminen kalenterista pysäyttää sen, mikä tulee tämän jälkeen. Se ei kumoa sitä, mikä on jo tapahtunut.',
-    lede: 'Käyttöoikeuden päättäminen on yksi painallus. Sen ratkaiseminen, riittääkö yksi, vie hieman kauemmin, sillä jakaminen jättää kopioita.',
-    commonBelief: 'Että henkilön poistaminen poistaa sen, minkä hän on nähnyt.',
-    sections: [
-      {
-        heading: 'Mikä loppuu ja mikä jää',
-        body: [
-          'Poista henkilö, ja kalenteri katoaa hänen listaltaan heti ja ilman viestiä. Tulevat tapahtumat eivät koskaan tavoita häntä.',
-          'Mikä ei palaa: jo saadut kutsut, omaan kalenteriin kopioidut tapahtumat, kaikki viety ja kaikki, mihin on annettu salainen osoite. Käyttöoikeus päättyy; muisti ei.',
-        ],
-      },
-      {
-        heading: 'Se, mikä selviää poistosta',
-        body: [
-          'Jos jollakulla on joskus ollut oikeus hallita jakamista, hän on voinut lisätä muita. Hänen poistamisensa jättää heidät paikoilleen — näin kalenteri päätyy jaetuksi jollekulle, jonka kutsumista kukaan ei muista.',
-          'Lue siis koko lista sen sijaan, että poistat yhden nimen, ja tee se lähtöhetkellä, älä kuukausia myöhemmin. Mikään ei muistuta, ja jakoja vain kertyy.',
-        ],
-      },
-    ],
-    claims: {
-      advancedMonthly: 'Kuukausihinta tasolle, jolla tätä hallitaan, dollareina',
+  "title": "Lopeta kalenterin jakaminen: poista käyttöoikeus ja tarkista muut reitit",
+  "short": "Tarkista ja poista jaetut käyttöoikeudet",
+  "description": "Lopeta kalenterin jakaminen erottamalla henkilöt, ryhmät, julkinen käyttö ja syötelinkit. Tarkista muutos ja miksi tallennetut kopiot voivat jäädä.",
+  "lede": "Yhteistyön päättäminen alkaa siitä, että selvität, miten käyttöoikeus annettiin. Henkilön poistaminen, julkaisemisen estäminen ja syöteosoitteen nollaaminen ovat eri toimia. Tämän oppaan julkaisee Cloud Calendarsin kehittäjä Arte Soft.",
+  "commonBelief": "Yhden vastaanottajan poistaminen palauttaa heti kaikki kalenterikopiot ja sulkee kaikki muut pääsyreitit aikatauluun.",
+  "sections": [
+    {
+      "heading": "Tunnista kalenteri ja jakamistapa",
+      "body": [
+        "Varmista omistajan tili, kalenteri ja tarkoitettu yleisö ennen käyttöoikeuden muuttamista. Nimetylle kollegalle jaettu Google-kalenteri eroaa julkisesta kalenterista, ryhmän oikeudesta ja tilausosoitteesta. Cloud Calendarsissa on lisäksi omat tapahtumien ja kalenterien jakamissuhteensa.",
+        "Esimerkiksi yhdistyksen sihteeri voi saada muokkausoikeuden henkilökohtaisella kutsulla, kun jäsenet seuraavat julkaistua aikataulua. Sihteerin henkilökohtaisen oikeuden poistaminen ei kerro, mitä jäsenten tilauksille pitäisi tehdä. Listaa ne jakamisjärjestelyt, jotka todella olet luonut."
+      ]
     },
-    faq: [
-      {
-        q: 'Poistaako henkilön poistaminen sen, minkä hän on jo nähnyt?',
-        a: 'Ei. Jo saadut kutsut, omaan kalenteriin kopioidut tapahtumat ja kaikki viety jäävät. Käyttöoikeus päättyy, kopiot eivät.',
-      },
-      {
-        q: 'Saako henkilö tiedon siitä, että poistin hänen oikeutensa?',
-        a: 'Ei. Kalenteri katoaa hänen listaltaan heti ja ilman viestiä.',
-      },
-      {
-        q: 'Miksi kalenterini on jaettu jollekulle, jota en ole koskaan kutsunut?',
-        a: 'Joku, jolla oli oikeus hallita jakamista, lisäsi hänet. Sen henkilön poistaminen jättää kaikki hänen lisäämänsä paikoilleen — siksi luetaan koko lista eikä yhtä nimeä.',
-      },
-    ],
-    practical: [
-      'Lue koko käyttöoikeuslista, älä vain sitä nimeä, jonka aioit poistaa.',
-      'Nollaa salainen osoite, jos henkilöllä on se koskaan ollut.',
-      'Oleta, että kopiot jäävät: siirrä todella arka asia sen sijaan, että piilottaisit sen.',
-    ],
-    seeAlso: ['who-can-see-what-in-google-calendar', 'the-secret-address-of-a-google-calendar'],
-  },
+    {
+      "heading": "Poista tarkoitettu Google-oikeus",
+      "body": [
+        "Google kuvaa erilliset asetukset nimetyille henkilöille tai ryhmille, organisaation laajuiselle jakamiselle ja julkiselle saatavuudelle. Avaa tietokoneella kyseisen kalenterin jakamisasetukset ja muuta oikeaa merkintää tai laajempaa asetusta. Tarkista ensin kirjautunut tili ja kalenterin nimi.",
+        "Henkilöllä voi olla edelleen toinen pääsyreitti, kuten ryhmä tai laajempi julkaisu. Tarkista koko järjestely sen sijaan, että poistaisit saman sähköpostiosoitteen toistuvasti. Työpaikan tai oppilaitoksen käytännöt voivat rajoittaa asetuksia; käytä tarvittaessa omistajan tai ylläpitäjän hyväksymää menettelyä."
+      ]
+    },
+    {
+      "heading": "Käsittele salainen kalenteriosoite erikseen",
+      "body": [
+        "Googlen mukaan salainen iCal-osoite on omaa käyttöäsi varten toisessa kalenterisovelluksessa, eikä sitä pidä antaa muille. Jos osoite on paljastunut, Google ohjeistaa nollaamaan sen, jolloin vanha osoite lakkaa toimimasta. Tämä on eri toimi kuin nimetyn henkilön poistaminen.",
+        "Ennen kuin muutat itse käyttämääsi tilausosoitetta, selvitä siitä riippuvat kalenteriohjelmat ja työkalut, jotta voit yhdistää haluamasi uudelleen. Älä liitä salaista URL-osoitetta julkiseen tukiviestiin äläkä lähetä sitä todisteena oikean kalenterin löytämisestä. Viittaa sen sijaan kalenterin nimeen ja yhteystyyppiin."
+      ]
+    },
+    {
+      "heading": "Erota Cloud Calendarsin vastaanottajat syötelinkeistä",
+      "body": [
+        "Cloud Calendarsissa vastaanottajan pääsy tapahtumaan tai kalenteriin ja annettu tilaussyöte ovat eri mekanismeja. Tarkista todellinen jakamissuhde ja kyseinen linkki ennen toimenpiteen valintaa. Tietyn vastaanottajan poistaminen ei ole yleinen lupaus kaikkien aiemmin jaettujen URL-osoitteiden tai itsenäisten kopioiden takaisinvedosta.",
+        "Jos kanssajärjestäjän tarvitsee vain lopettaa muokkaaminen, arvioi tarkoitettu rooli ja jäljelle jäävä yleisö jaetun aikataulun poistamisen sijaan. Jos koko yhteistyö päättyy, selvitä kalenterin omistaja ja se, kenen tulee säilyttää kalenteri. Vastaanotetusta kalenterista poistuminen ja oman kalenterin poistaminen ovat eri päätöksiä."
+      ]
+    },
+    {
+      "heading": "Varmista tulos lupaamatta välitöntä katoamista",
+      "body": [
+        "Tarkista, että tarkoitettu muutos on tallennettu kalenteria hallinnoivaan järjestelmään. Jos valtuutettu kollega voi auttaa, varmista katselu- tai muokkaustulos hänen omalta tililtään jakamatta salasanoja. Erota pääsyn epääminen vanhasta tapahtumasta, joka näkyy yhä välimuistissa tai tuodussa kopiossa.",
+        "Älä lupaa yleispätevää päivitysväliä tai sitä, ettei ilmoitusta lähetetä. Kerro ryhmän vastuunvaihdossa, mitä aikataulua jatkossa käytetään. Näkyvä vanha merkintä ei yksin kerro, onko henkilöllä yhä ajantasainen pääsy, jokin muu oikeus vai itsenäinen kopio."
+      ]
+    },
+    {
+      "heading": "Käsittele aiemmat kopiot erillisenä jatkotoimena",
+      "body": [
+        "Aiemmin viedyt tiedostot, kuvakaappaukset, viestit ja erikseen tallennetut tapaamiset voivat jäädä käyttöoikeuden muuttamisen jälkeen. Päätä, mitkä kopiot ovat vastuunvaihdon kannalta olennaisia, ja keskustele niiden käsittelystä asianosaisten kanssa. Kalenterioikeuden muuttaminen ei osoita, mitä kukin vastaanottaja on jo tallentanut.",
+        "Säilytä tarvittavat alkuperäiset tiedot tulosta tarkistaessasi. Älä siirrä arkaluonteisia kokouksia toiseen jaettuun kalenteriin vain saadaksesi vanhan näyttämään tyhjältä äläkä peru oikeita kutsuja käyttöoikeustestinä. Kirjaa kalenteri, pääsyreitti ja tehty muutos, jotta myöhemmällä vianmäärityksellä on selkeä lähtökohta."
+      ]
+    }
+  ],
+  "claims": {},
+  "practical": [
+    "Tunnista omistajan tili, kalenteri ja jakamistapa.",
+    "Tarkista nimetyt henkilöt, ryhmät ja laajempi julkaiseminen erikseen.",
+    "Käytä Googlen tai Cloud Calendarsin asianmukaisia jakamisasetuksia.",
+    "Päätä paljastuneen salaisen syöteosoitteen nollaamisesta erikseen.",
+    "Varmista tallennettu käyttöoikeustulos jakamatta tunnuksia.",
+    "Suunnittele aiempien vientien ja kopioiden käsittely erillään ajantasaisesta pääsystä."
+  ],
+  "faq": [
+    {
+      "q": "Poistaako yhden henkilön poistaminen julkisen kalenterin tai hänen ryhmäpääsynsä?",
+      "a": "Älä oleta niin. Tarkista jokainen todellinen reitti. Google kuvaa nimetyt vastaanottajat, ryhmät ja laajemman julkaisemisen erillisinä asetuksina."
+    },
+    {
+      "q": "Katoaako kalenteri heti ja ilman ilmoitusta?",
+      "a": "Katoamisesta, ilmoituksista tai päivitysajasta ei ole tässä yleispätevää lupausta. Varmista tallennettu käyttöoikeusmuutos ja erota ajantasainen pääsy välimuistissa olevista tai tuoduista tiedoista."
+    },
+    {
+      "q": "Ostaako Advanced mahdollisuuden poistaa Google-kalenterin käyttöoikeuden?",
+      "a": "Advanced poistaa mainokset Cloud Calendarsista. Googlen jakamisasetukset riippuvat omistajuudesta, oikeuksista ja organisaation säännöistä, eivät kyseisestä sovelluksen paketista."
+    }
+  ],
+  "sourcesHeading": "Palveluntarjoajan ohjeet käyttöoikeuksiin ja tilauksiin",
+  "sources": [
+    {
+      "label": "Google: jakamisasetukset ja pääsyn lopettaminen",
+      "url": "https://support.google.com/calendar/answer/37082?hl=en"
+    },
+    {
+      "label": "Google: tilien synkronointi ja salaiset iCal-osoitteet",
+      "url": "https://support.google.com/calendar/answer/37648?hl=en"
+    }
+  ],
+  "seeAlso": [
+    "who-can-see-what-in-google-calendar",
+    "the-secret-address-of-a-google-calendar"
+  ],
+  "updated": "2026-10-21"
+},
 };

@@ -303,50 +303,93 @@ export const GOOGLE_FR_FR: Readonly<Record<string, LocalisedArticle>> = {
   },
 
   'taking-back-a-calendar-you-shared': {
-    title: 'Reprendre un agenda que vous avez partagé',
-    short: "Retirer l'accès",
-    description:
-      "Retirer quelqu'un d'un agenda arrête ce qui vient ensuite. Ce que cela ne fait pas, c'est défaire ce qui a déjà eu lieu.",
-    lede: "Mettre fin à un accès prend une touche. Décider si une touche suffit prend un peu plus longtemps, car le partage laisse des copies.",
-    commonBelief: "Que retirer une personne retire ce qu'elle a vu.",
-    sections: [
-      {
-        heading: "Ce qui s'arrête et ce qui reste",
-        body: [
-          "Retirez une personne et l'agenda disparaît de sa liste, aussitôt et sans message. Les événements à venir ne l'atteignent jamais.",
-          "Ce qui ne revient pas : les invitations déjà reçues, les événements copiés dans son propre agenda, tout ce qui a été exporté, et tout ce pour quoi une adresse secrète a circulé. L'accès s'arrête ; la mémoire non.",
-        ],
-      },
-      {
-        heading: 'Celui qui survit au retrait',
-        body: [
-          "Si quelqu'un a eu un jour le droit de gérer le partage, il a peut-être ajouté d'autres personnes. Le retirer les laisse en place : c'est ainsi qu'un agenda finit partagé avec quelqu'un que personne ne se souvient d'avoir invité.",
-          "Lisez donc toute la liste plutôt qu'un nom, et faites-le au moment du départ, pas des mois plus tard. Rien ne vous le rappelle, et le partage ne fait que s'accumuler.",
-        ],
-      },
-    ],
-    claims: {
-      advancedMonthly: 'Coût mensuel du niveau où cela se gère, en dollars',
+  "title": "Ne plus partager un calendrier : retirer l’accès et vérifier les autres voies",
+  "short": "Vérifier et retirer les accès partagés",
+  "description": "Arrêtez le partage en distinguant personnes, groupes, accès public et liens de flux. Vérifiez le résultat et les copies qui peuvent subsister.",
+  "lede": "Pour mettre fin à une collaboration, commencez par identifier comment l’accès a été accordé. Retirer une personne, désactiver la publication et réinitialiser une adresse de flux sont des actions différentes. Ce guide est publié par Arte Soft, développeur de Cloud Calendars.",
+  "commonBelief": "Retirer un destinataire rappelle immédiatement toutes les copies du calendrier et ferme toutes les autres voies d’accès.",
+  "sections": [
+    {
+      "heading": "Identifier le calendrier et le mode de partage",
+      "body": [
+        "Avant de modifier l’accès, confirmez le compte propriétaire, le calendrier et le public visé. Un calendrier Google partagé avec un collègue nommé diffère d’un calendrier public, d’une autorisation de groupe ou d’une adresse d’abonnement. Cloud Calendars possède aussi ses propres relations de partage d’événements et de calendriers.",
+        "Par exemple, le secrétaire d’un club peut recevoir des droits de modification par invitation nominative, tandis que les membres suivent un planning publié. Retirer cette autorisation ne détermine pas ce qui doit arriver aux abonnements des membres. Dressez la liste des dispositifs réellement mis en place."
+      ]
     },
-    faq: [
-      {
-        q: 'Retirer quelqu’un efface-t-il ce qu’il a déjà vu ?',
-        a: 'Non. Les invitations qu’il détient déjà, les événements copiés dans son propre agenda et tout ce qui a été exporté survivent. L’accès se termine, pas les copies.',
-      },
-      {
-        q: 'La personne est-elle prévenue que je lui ai retiré l’accès ?',
-        a: 'Non. L’agenda disparaît de sa liste immédiatement et sans message.',
-      },
-      {
-        q: 'Pourquoi mon agenda est-il partagé avec quelqu’un que je n’ai jamais invité ?',
-        a: 'Quelqu’un ayant le droit de gérer le partage l’a ajouté. Le retirer laisse en place toutes les personnes qu’il a ajoutées — d’où la nécessité de lire la liste entière.',
-      },
-    ],
-    practical: [
-      "Lisez la liste complète des accès, pas seulement le nom que vous vouliez retirer.",
-      "Réinitialisez l'adresse secrète si la personne l'a eue un jour.",
-      'Supposez que les copies survivent : déplacez ce qui est vraiment sensible au lieu de le cacher.',
-    ],
-    seeAlso: ['who-can-see-what-in-google-calendar', 'the-secret-address-of-a-google-calendar'],
-  },
+    {
+      "heading": "Retirer l’autorisation Google concernée",
+      "body": [
+        "Google décrit des réglages distincts pour les personnes ou groupes nommés, le partage à l’échelle d’une organisation et la disponibilité publique. Sur un ordinateur, ouvrez les paramètres de partage du calendrier concerné et modifiez l’entrée ou le réglage général approprié. Vérifiez d’abord le compte connecté et le nom du calendrier.",
+        "Une personne peut conserver une autre voie d’accès, par exemple un groupe ou une publication plus large. Examinez l’ensemble du partage au lieu de retirer plusieurs fois la même adresse e-mail. Les règles de l’entreprise ou de l’établissement scolaire peuvent limiter les réglages disponibles ; suivez si nécessaire la procédure approuvée par le propriétaire ou l’administrateur."
+      ]
+    },
+    {
+      "heading": "Traiter séparément une adresse secrète de calendrier",
+      "body": [
+        "Google indique que l’adresse iCal secrète est destinée à votre propre usage dans une autre application de calendrier et ne doit pas être communiquée à autrui. Si elle a été divulguée, Google décrit sa réinitialisation pour invalider l’ancienne adresse. Cette action diffère du retrait d’une personne nommée.",
+        "Avant de modifier une adresse d’abonnement que vous utilisez, identifiez les applications ou outils qui en dépendent afin de reconnecter ensuite ceux à conserver. Ne collez pas l’URL secrète dans une demande d’assistance publique et ne l’envoyez pas pour prouver que vous avez trouvé le bon calendrier. Indiquez plutôt son nom et le type de connexion."
+      ]
+    },
+    {
+      "heading": "Distinguer les destinataires Cloud Calendars des liens de flux",
+      "body": [
+        "Dans Cloud Calendars, l’accès d’un destinataire à un événement ou un calendrier et un flux d’abonnement émis sont des mécanismes distincts. Examinez la relation de partage réelle et le lien concerné avant d’agir. Retirer un destinataire identifié ne garantit pas le rappel de toutes les URL déjà diffusées ni des copies indépendantes.",
+        "Si un coorganisateur doit simplement cesser de modifier le calendrier, examinez son rôle prévu et le public restant plutôt que de supprimer le planning partagé. Si toute la collaboration prend fin, déterminez qui possède le calendrier et qui doit le conserver. Quitter un calendrier reçu et supprimer un calendrier dont vous êtes propriétaire sont des décisions différentes."
+      ]
+    },
+    {
+      "heading": "Vérifier le résultat sans promettre une disparition immédiate",
+      "body": [
+        "Vérifiez que la modification prévue est enregistrée dans le système propriétaire. Si un collègue autorisé peut vous aider, confirmez le résultat de consultation ou de modification depuis son propre compte, sans échanger de mots de passe. Distinguez un refus d’accès d’un ancien événement encore visible dans une copie importée ou en cache.",
+        "Ne promettez ni délai universel d’actualisation ni absence de notification. Lors d’un passage de relais dans un groupe, précisez quel planning utiliser désormais. Un ancien élément visible ne permet pas, à lui seul, de savoir si la personne conserve un accès actif, une autre autorisation ou une copie autonome."
+      ]
+    },
+    {
+      "heading": "Prévoir un suivi distinct pour les anciennes copies",
+      "body": [
+        "Les fichiers exportés, captures d’écran, messages et rendez-vous enregistrés séparément peuvent subsister après une modification des accès. Déterminez quelles copies comptent pour le passage de relais et discutez de leur traitement avec les personnes concernées. Une modification d’autorisation ne révèle pas ce que chaque destinataire a déjà conservé.",
+        "Conservez les documents sources nécessaires pendant la vérification. Ne déplacez pas des réunions sensibles dans un autre calendrier partagé pour donner l’impression que l’ancien est vide, et n’annulez pas de vraies invitations pour tester l’accès. Notez le calendrier, la voie d’accès et la modification effectuée afin de disposer d’un point de départ clair pour tout dépannage ultérieur."
+      ]
+    }
+  ],
+  "claims": {},
+  "practical": [
+    "Identifier le compte propriétaire, le calendrier et le mode de partage.",
+    "Examiner séparément les personnes, les groupes et la publication plus large.",
+    "Utiliser les réglages de partage appropriés de Google ou Cloud Calendars.",
+    "Décider séparément de la réinitialisation d’une adresse secrète divulguée.",
+    "Vérifier le résultat enregistré sans partager d’identifiants.",
+    "Prévoir le traitement des anciennes copies et exportations séparément de l’accès actif."
+  ],
+  "faq": [
+    {
+      "q": "Retirer une personne désactive-t-il un calendrier public ou son accès par un groupe ?",
+      "a": "Ne le supposez pas. Examinez chaque voie réelle. Google décrit les destinataires nommés, les groupes et la publication plus large comme des réglages distincts."
+    },
+    {
+      "q": "Le calendrier disparaîtra-t-il immédiatement et sans notification ?",
+      "a": "Aucune promesse universelle ne s’applique ici à la disparition, aux notifications ou aux délais d’actualisation. Confirmez la modification enregistrée et distinguez l’accès actif des informations importées ou en cache."
+    },
+    {
+      "q": "Advanced permet-il d’acheter le droit de retirer un accès Google ?",
+      "a": "Advanced supprime les publicités dans Cloud Calendars. Les réglages de partage Google dépendent de la propriété, des autorisations et des règles de l’organisation, pas de cette formule de l’application."
+    }
+  ],
+  "sourcesHeading": "Conseils du fournisseur sur les accès et abonnements",
+  "sources": [
+    {
+      "label": "Google : réglages de partage et retrait des accès",
+      "url": "https://support.google.com/calendar/answer/37082?hl=en"
+    },
+    {
+      "label": "Google : synchronisation des comptes et adresses iCal secrètes",
+      "url": "https://support.google.com/calendar/answer/37648?hl=en"
+    }
+  ],
+  "seeAlso": [
+    "who-can-see-what-in-google-calendar",
+    "the-secret-address-of-a-google-calendar"
+  ],
+  "updated": "2026-10-21"
+},
 };

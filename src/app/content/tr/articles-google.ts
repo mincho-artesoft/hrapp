@@ -304,50 +304,93 @@ export const GOOGLE_TR: Readonly<Record<string, LocalisedArticle>> = {
   },
 
   'taking-back-a-calendar-you-shared': {
-    title: 'Paylaştığınız bir takvimi geri almak',
-    short: 'Erişimi geri çekmek',
-    description:
-      'Birini takvimden çıkarmak bundan sonrasını durdurur. Yapmadığı şey, olup biteni geri almaktır.',
-    lede: 'Erişimi bitirmek tek dokunuş. Tek dokunuşun yetip yetmediğine karar vermek biraz daha uzun sürer, çünkü paylaşmak arkasında kopyalar bırakır.',
-    commonBelief: 'Birini çıkarmanın, o kişinin gördüklerini de çıkardığı.',
-    sections: [
-      {
-        heading: 'Ne durur, ne kalır',
-        body: [
-          'Birini çıkarın, takvim o kişinin listesinden anında ve mesajsız kaybolur. Gelecekteki etkinlikler ona hiç ulaşmaz.',
-          'Geri gelmeyenler: elinde olan davetler, kendi takvimine kopyaladığı etkinlikler, dışa aktarılan her şey ve gizli adres verilmiş olan her şey. Erişim biter; hafıza bitmez.',
-        ],
-      },
-      {
-        heading: 'Çıkarmayı aşan şey',
-        body: [
-          'Biri bir zamanlar paylaşımı yönetme hakkına sahip olduysa başkalarını eklemiş olabilir. Onu çıkarmak diğerlerini yerinde bırakır — bir takvim böyle, kimsenin davet ettiğini hatırlamadığı biriyle paylaşılmış olur.',
-          'Bu yüzden tek bir ismi silmek yerine listenin tamamını okuyun ve bunu aylar sonra değil, çıkışta yapın. Hiçbir şey hatırlatmaz, paylaşımlar ise yalnızca birikir.',
-        ],
-      },
-    ],
-    claims: {
-      advancedMonthly: 'Bunun yönetildiği katmanın aylık ücreti, dolar olarak',
+  "title": "Takvim paylaşımını durdurun ve kalan erişim yollarını kontrol edin",
+  "short": "Paylaşılan erişimi inceleme ve kaldırma",
+  "description": "Kişi, grup, herkese açık erişim ve abonelik bağlantılarını ayırarak paylaşımı durdurun. Değişikliği ve eski kopyaların neden kalabileceğini kontrol edin.",
+  "lede": "Bir iş birliğini bitirirken önce erişimin nasıl verildiğini belirleyin. Bir kişiyi kaldırmak, yayını kapatmak ve abonelik adresini sıfırlamak farklı işlemlerdir. Bu rehber, Cloud Calendars geliştiricisi Arte Soft tarafından yayımlanmıştır.",
+  "commonBelief": "Bir alıcıyı kaldırmak tüm takvim kopyalarını anında geri çeker ve diğer bütün erişim yollarını kapatır.",
+  "sections": [
+    {
+      "heading": "Takvimi ve paylaşım yolunu belirleyin",
+      "body": [
+        "Erişimi değiştirmeden önce sahip hesabı, takvimi ve hedef kitleyi doğrulayın. Belirli bir iş arkadaşıyla paylaşılan Google takvimi; herkese açık takvimden, grup izninden veya abonelik adresinden farklıdır. Cloud Calendars’ın da kendi etkinlik ve takvim paylaşım ilişkileri vardır.",
+        "Örneğin bir kulübün sekreteri kişisel davetle düzenleme izni alırken üyeler yayımlanan programı takip edebilir. Sekreterin bireysel iznini kaldırmak, üyelerin aboneliklerine ne yapılacağını belirlemez. Gerçekte oluşturduğunuz paylaşım düzenlerini listeleyin."
+      ]
     },
-    faq: [
-      {
-        q: 'Birini çıkarmak onun gördüklerini de siler mi?',
-        a: 'Hayır. Elinde olan davetler, kendi takvimine kopyaladığı etkinlikler ve dışa aktarılan her şey kalır. Erişim biter; kopyalar bitmez.',
-      },
-      {
-        q: 'Kişiye erişimini kaldırdığım bildirilir mi?',
-        a: 'Hayır. Takvim, listesinden anında ve mesajsız kaybolur.',
-      },
-      {
-        q: 'Takvimim neden hiç davet etmediğim biriyle paylaşılmış durumda?',
-        a: 'Paylaşımı yönetme yetkisi olan biri onu eklemiş. O kişiyi çıkarmak, eklediği herkesi yerinde bırakır — bu yüzden tek bir isim değil, listenin tamamı okunur.',
-      },
-    ],
-    practical: [
-      'Yalnızca çıkarmak istediğiniz ismi değil, erişim listesinin tamamını okuyun.',
-      'Kişi gizli adrese bir zamanlar sahip olduysa adresi sıfırlayın.',
-      'Kopyaların kaldığını varsayın: gerçekten hassas olanı gizlemek yerine taşıyın.',
-    ],
-    seeAlso: ['who-can-see-what-in-google-calendar', 'the-secret-address-of-a-google-calendar'],
-  },
+    {
+      "heading": "Google’daki ilgili izni kaldırın",
+      "body": [
+        "Google, belirli kişiler veya gruplar, kuruluş genelinde paylaşım ve herkese açık erişim için ayrı kontroller açıklar. Bilgisayarda ilgili takvimin paylaşım ayarlarını açıp uygun kaydı veya genel ayarı değiştirin. Önce oturum açılan hesabı ve takvim adını kontrol edin.",
+        "Bir kişi grup üyeliği veya daha geniş yayın yoluyla erişmeye devam edebilir. Aynı e-posta adresini tekrar tekrar kaldırmak yerine bütün erişim düzenini inceleyin. İş veya okul kuralları seçenekleri kısıtlayabilir; gerekirse sahibin ya da yöneticinin onayladığı süreci izleyin."
+      ]
+    },
+    {
+      "heading": "Gizli takvim adresini ayrı ele alın",
+      "body": [
+        "Google, gizli iCal adresinin başka bir takvim uygulamasında kişisel kullanım için olduğunu ve başkalarıyla paylaşılmaması gerektiğini belirtir. Adres ifşa edildiyse Google, eski adresi geçersiz kılacak sıfırlamayı açıklar. Bu, belirli bir kişiyi kaldırmaktan farklı bir işlemdir.",
+        "Kullandığınız abonelik adresini değiştirmeden önce ona bağlı uygulama ve araçları belirleyin; böylece istediklerinizi sonradan yeniden bağlayabilirsiniz. Gizli URL’yi herkese açık destek mesajına yapıştırmayın veya doğru takvimi bulduğunuzun kanıtı olarak göndermeyin. Bunun yerine takvim adını ve bağlantı türünü belirtin."
+      ]
+    },
+    {
+      "heading": "Cloud Calendars alıcılarını abonelik bağlantılarından ayırın",
+      "body": [
+        "Cloud Calendars’ta bir etkinlik veya takvimin alıcı erişimi ile oluşturulmuş abonelik akışı farklı mekanizmalardır. İşlem seçmeden önce gerçek paylaşım ilişkisini ve ilgili bağlantıyı inceleyin. Tanımlanmış bir alıcıyı kaldırmak, önceden dağıtılmış tüm URL’lerin ya da bağımsız kopyaların geri çekildiğini garanti etmez.",
+        "Bir ortak düzenleyicinin yalnızca düzenlemeyi bırakması gerekiyorsa paylaşılan programı silmek yerine rolünü ve erişimi sürecek kişileri değerlendirin. İş birliği tamamen bitiyorsa takvimin sahibini ve kimde kalması gerektiğini belirleyin. Size verilen takvimden ayrılmakla kendi takviminizi silmek farklı kararlardır."
+      ]
+    },
+    {
+      "heading": "Anında kaybolma sözü vermeden sonucu doğrulayın",
+      "body": [
+        "İstenen değişikliğin takvimin sahibi olan sistemde kaydedildiğini kontrol edin. Yetkili bir iş arkadaşı yardım edebiliyorsa şifre paylaşmadan kendi hesabından görüntüleme veya düzenleme sonucunu doğrulayın. Erişimin reddedilmesini, önbellekteki veya içe aktarılmış kopyada hâlâ görünen eski etkinlikten ayırın.",
+        "Her yerde geçerli bir yenileme süresi veya bildirim gönderilmeyeceği sözü vermeyin. Bir gruba devir yaparken bundan sonra hangi programın kullanılacağını bildirin. Eski bir kaydın görünmesi tek başına canlı erişimin, başka bir iznin veya bağımsız bir kopyanın bulunduğunu ayırt etmez."
+      ]
+    },
+    {
+      "heading": "Önceden alınmış kopyaları ayrıca ele alın",
+      "body": [
+        "Dışa aktarılmış dosyalar, ekran görüntüleri, mesajlar ve ayrı kaydedilmiş randevular erişim değiştikten sonra kalabilir. Devir için hangi kopyaların önemli olduğunu belirleyip ilgili kişilerle nasıl ele alınacağını konuşun. Takvim iznini değiştirmek, her alıcının önceden neler kaydettiğini göstermez.",
+        "Sonucu incelerken gerekli kaynak kayıtlarını koruyun. Sırf eski takvim boş görünsün diye hassas toplantıları başka bir paylaşılan takvime taşımayın veya erişim testi için gerçek davetleri iptal etmeyin. Sonraki sorun incelemelerine başlangıç olması için takvimi, erişim yolunu ve yaptığınız değişikliği kaydedin."
+      ]
+    }
+  ],
+  "claims": {},
+  "practical": [
+    "Sahip hesabı, takvimi ve paylaşım yolunu belirleyin.",
+    "Kişileri, grupları ve daha geniş yayını ayrı ayrı inceleyin.",
+    "Google veya Cloud Calendars’ın uygun paylaşım kontrollerini kullanın.",
+    "İfşa edilmiş gizli adresi sıfırlamayı ayrı bir karar olarak ele alın.",
+    "Kimlik bilgilerini paylaşmadan kaydedilen erişim sonucunu doğrulayın.",
+    "Eski dışa aktarımları ve kopyaları canlı erişimden ayrı planlayın."
+  ],
+  "faq": [
+    {
+      "q": "Bir kişiyi kaldırmak herkese açık takvimi veya grup erişimini kapatır mı?",
+      "a": "Bunu varsaymayın. Gerçek erişim yollarının her birini inceleyin. Google; kişiler, gruplar ve daha geniş yayın için ayrı ayarlar açıklar."
+    },
+    {
+      "q": "Takvim hemen ve bildirim olmadan kaybolur mu?",
+      "a": "Kaybolma, bildirim veya yenileme süresi için genel bir garanti yoktur. Kaydedilen erişim değişikliğini doğrulayın; canlı erişimi önbellekteki veya içe aktarılmış bilgiden ayırın."
+    },
+    {
+      "q": "Google takvim erişimini kaldırabilmek için Advanced gerekir mi?",
+      "a": "Advanced, Cloud Calendars’taki reklamları kaldırır. Google paylaşım kontrolleri bu uygulama planına değil, sahipliğe, izinlere ve kuruluş kurallarına bağlıdır."
+    }
+  ],
+  "sourcesHeading": "Erişim ve abonelik rehberleri",
+  "sources": [
+    {
+      "label": "Google: paylaşım kontrolleri ve erişimi durdurma",
+      "url": "https://support.google.com/calendar/answer/37082?hl=en"
+    },
+    {
+      "label": "Google: hesap eşitleme ve gizli iCal adresleri",
+      "url": "https://support.google.com/calendar/answer/37648?hl=en"
+    }
+  ],
+  "updated": "2026-10-21",
+  "seeAlso": [
+    "who-can-see-what-in-google-calendar",
+    "the-secret-address-of-a-google-calendar"
+  ]
+},
 };

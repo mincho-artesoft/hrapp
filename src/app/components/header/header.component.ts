@@ -6,7 +6,6 @@ import {
   inject,
   signal,
 } from '@angular/core';
-import { RouterLink } from '@angular/router';
 
 import { ScrollService } from '../../core/scroll.service';
 import { ActiveLocaleService } from '../../core/active-locale.service';
@@ -21,7 +20,7 @@ interface NavItem {
 @Component({
   selector: 'app-header',
   standalone: true,
-  imports: [RouterLink, LanguageSwitcherComponent],
+  imports: [LanguageSwitcherComponent],
   changeDetection: ChangeDetectionStrategy.OnPush,
   templateUrl: './header.component.html',
   styleUrl: './header.component.scss',
@@ -33,6 +32,10 @@ export class HeaderComponent {
 
   /** Follows the language of the page being read, not the site default. */
   readonly appStoreUrl = this.active.storeHref;
+  readonly homePath = computed(() => {
+    const home = this.active.path('/');
+    return home.endsWith('/') ? home : `${home}/`;
+  });
   readonly isScrolled = this.scroll.isScrolled;
   readonly progress = this.scroll.progress;
   readonly menuOpen = signal(false);

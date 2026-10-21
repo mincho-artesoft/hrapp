@@ -303,50 +303,94 @@ export const GOOGLE_ID: Readonly<Record<string, LocalisedArticle>> = {
   },
 
   'taking-back-a-calendar-you-shared': {
-    title: 'Menarik kembali kalender yang Anda bagikan',
-    short: 'Mencabut akses',
-    description:
-      'Mengeluarkan seseorang dari kalender menghentikan apa yang terjadi selanjutnya. Yang tidak dilakukannya adalah membatalkan yang sudah terjadi.',
-    lede: 'Mengakhiri akses cukup satu ketukan. Memutuskan apakah satu ketukan sudah cukup memakan waktu sedikit lebih lama, karena berbagi meninggalkan salinan.',
-    commonBelief: 'Bahwa mengeluarkan seseorang menghapus apa yang sudah dilihatnya.',
-    sections: [
-      {
-        heading: 'Apa yang berhenti dan apa yang tinggal',
-        body: [
-          'Keluarkan seseorang dan kalender lenyap dari daftarnya, seketika dan tanpa pesan. Acara mendatang tidak pernah sampai padanya.',
-          'Yang tidak kembali: undangan yang sudah dipegangnya, acara yang disalin ke kalendernya sendiri, apa pun yang diekspor, dan semua yang sempat diberi alamat rahasia. Akses berakhir; ingatan tidak.',
-        ],
-      },
-      {
-        heading: 'Yang bertahan setelah pencabutan',
-        body: [
-          'Jika seseorang pernah diberi hak mengelola berbagi, ia mungkin telah menambahkan orang lain. Mengeluarkan dia membiarkan mereka tetap ada — begitulah sebuah kalender berakhir dibagikan kepada orang yang tak seorang pun ingat pernah mengundangnya.',
-          'Jadi bacalah seluruh daftar alih-alih menghapus satu nama, dan lakukan saat kepergian, bukan berbulan-bulan kemudian. Tidak ada yang mengingatkan, dan berbagi hanya menumpuk.',
-        ],
-      },
-    ],
-    claims: {
-      advancedMonthly: 'Biaya bulanan tingkat tempat ini dikelola, dalam dolar',
+  "title": "Berhenti berbagi kalender: hapus akses dan periksa jalur lainnya",
+  "short": "Tinjau dan hapus akses bersama",
+  "description": "Bedakan akses perorangan, grup, publik, dan tautan feed saat berhenti berbagi. Periksa perubahan; salinan yang disimpan mungkin tetap ada.",
+  "lede": "Mengakhiri kerja sama dimulai dengan mengenali cara akses diberikan. Menghapus seseorang, menonaktifkan publikasi, dan menyetel ulang alamat feed adalah tindakan berbeda. Panduan ini diterbitkan oleh Arte Soft, pengembang Cloud Calendars.",
+  "commonBelief": "Menghapus satu penerima dianggap langsung menarik semua salinan kalender dan menutup semua jalur akses lainnya.",
+  "sections": [
+    {
+      "heading": "Kenali kalender dan jalur berbagi",
+      "body": [
+        "Pastikan akun pemilik, kalender, dan audiens yang dituju sebelum mengubah akses. Kalender Google yang dibagikan kepada rekan tertentu berbeda dari kalender publik, izin grup, atau alamat langganan. Cloud Calendars juga memiliki hubungan berbagi acara dan kalender sendiri.",
+        "Misalnya, sekretaris klub mendapat hak edit melalui undangan pribadi, sementara anggota mengikuti jadwal yang diterbitkan. Menghapus izin sekretaris tidak menentukan apa yang seharusnya terjadi pada langganan anggota. Catat pengaturan yang benar-benar Anda buat."
+      ]
     },
-    faq: [
-      {
-        q: 'Apakah mengeluarkan seseorang menghapus yang sudah dilihatnya?',
-        a: 'Tidak. Undangan yang sudah dipegangnya, acara yang disalin ke kalendernya sendiri, dan apa pun yang diekspor tetap ada. Akses berakhir; salinan tidak.',
-      },
-      {
-        q: 'Apakah orang itu diberi tahu bahwa saya mencabut aksesnya?',
-        a: 'Tidak. Kalender lenyap dari daftarnya seketika dan tanpa pesan.',
-      },
-      {
-        q: 'Kenapa kalender saya masih dibagikan ke orang yang tak pernah saya undang?',
-        a: 'Seseorang yang berhak mengelola berbagi menambahkannya. Mengeluarkan orang itu membiarkan semua yang ia tambahkan tetap ada — karena itu dibaca seluruh daftarnya, bukan satu nama.',
-      },
-    ],
-    practical: [
-      'Baca daftar akses selengkapnya, bukan hanya nama yang hendak Anda keluarkan.',
-      'Atur ulang alamat rahasia jika orang itu pernah memilikinya.',
-      'Anggap salinan tetap ada: pindahkan yang benar-benar sensitif alih-alih menyembunyikannya.',
-    ],
-    seeAlso: ['who-can-see-what-in-google-calendar', 'the-secret-address-of-a-google-calendar'],
-  },
+    {
+      "heading": "Hapus izin Google yang dimaksud",
+      "body": [
+        "Google mendokumentasikan kontrol terpisah untuk orang atau grup, berbagi dalam organisasi, dan akses publik. Di komputer, buka setelan berbagi kalender yang tepat lalu ubah entri atau setelan lebih luas yang terkait. Periksa akun yang masuk dan nama kalender terlebih dahulu.",
+        "Seseorang mungkin masih memiliki jalur melalui grup atau publikasi lebih luas. Tinjau seluruh pengaturan alih-alih berulang kali menghapus satu alamat email. Kebijakan kantor atau sekolah dapat membatasi kontrol; gunakan proses yang disetujui pemilik atau administrator bila diperlukan."
+      ]
+    },
+    {
+      "heading": "Tangani alamat kalender rahasia secara terpisah",
+      "body": [
+        "Google menyatakan bahwa alamat iCal rahasia digunakan sendiri di aplikasi kalender lain dan tidak boleh diberikan kepada orang lain. Jika sudah terungkap, Google menjelaskan penyetelan ulang untuk membatalkan alamat lama. Ini berbeda dari menghapus orang tertentu.",
+        "Sebelum mengganti alamat langganan yang Anda gunakan sendiri, kenali aplikasi dan alat yang bergantung padanya agar dapat menyambungkan kembali yang diperlukan. Jangan tempel URL rahasia di laporan dukungan publik atau kirim sebagai bukti menemukan kalender yang benar. Sebutkan nama kalender dan jenis koneksinya."
+      ]
+    },
+    {
+      "heading": "Bedakan penerima Cloud Calendars dari tautan feed",
+      "body": [
+        "Dalam Cloud Calendars, akses penerima acara atau kalender dan feed langganan yang diterbitkan merupakan mekanisme berbeda. Periksa hubungan berbagi serta tautan sebenarnya sebelum memilih tindakan. Menghapus penerima yang dikenali tidak menjamin penarikan semua URL yang pernah disebarkan atau salinan mandiri.",
+        "Jika rekan penyelenggara hanya perlu berhenti mengedit, pertimbangkan peran yang tepat dan audiens tersisa daripada menghapus jadwal bersama. Jika seluruh kerja sama berakhir, tentukan pemilik dan siapa yang perlu menyimpan kalender. Keluar dari kalender yang diterima berbeda dengan menghapus kalender milik sendiri."
+      ]
+    },
+    {
+      "heading": "Verifikasi hasil tanpa menjanjikan langsung hilang",
+      "body": [
+        "Periksa apakah perubahan tersimpan dalam sistem pemilik. Jika rekan yang berwenang dapat membantu, konfirmasi hasil melihat atau mengedit dari akunnya sendiri tanpa berbagi kata sandi. Bedakan penolakan akses dari acara lama yang masih tampak dalam cache atau salinan impor.",
+        "Jangan menjanjikan interval pembaruan universal atau tidak adanya notifikasi. Saat serah terima kelompok, beri tahu jadwal yang digunakan selanjutnya. Catatan lama yang terlihat tidak dengan sendirinya menunjukkan apakah orang itu masih punya akses langsung, izin lain, atau salinan mandiri."
+      ]
+    },
+    {
+      "heading": "Tindak lanjuti salinan sebelumnya secara terpisah",
+      "body": [
+        "File ekspor, tangkapan layar, pesan, dan janji yang disimpan terpisah dapat tetap ada setelah akses berubah. Tentukan salinan yang penting untuk serah terima dan bahas penanganannya dengan pihak terkait. Mengubah izin kalender tidak mengungkap apa yang sudah disimpan setiap penerima.",
+        "Pertahankan catatan sumber yang diperlukan selama memeriksa hasil. Jangan pindahkan rapat sensitif ke kalender bersama lain hanya agar kalender lama tampak kosong, atau batalkan undangan nyata untuk menguji akses. Catat kalender, jalur, dan perubahan sebagai awal penelusuran masalah berikutnya."
+      ]
+    }
+  ],
+  "claims": {},
+  "practical": [
+    "Kenali akun pemilik, kalender, dan jalur berbagi.",
+    "Tinjau orang, grup, dan publikasi lebih luas secara terpisah.",
+    "Gunakan kontrol berbagi Google atau Cloud Calendars yang sesuai.",
+    "Putuskan penyetelan ulang alamat feed rahasia yang terungkap secara terpisah.",
+    "Verifikasi hasil akses tersimpan tanpa berbagi kredensial.",
+    "Tangani ekspor atau salinan sebelumnya terpisah dari akses langsung."
+  ],
+  "faq": [
+    {
+      "q": "Apakah menghapus seseorang menonaktifkan kalender publik atau akses grupnya?",
+      "a": "Jangan berasumsi demikian. Periksa setiap jalur yang nyata. Google mendokumentasikan penerima tertentu, grup, dan publikasi lebih luas sebagai setelan terpisah."
+    },
+    {
+      "q": "Apakah kalender langsung menghilang tanpa pemberitahuan?",
+      "a": "Tidak ada janji universal tentang hilangnya tampilan, notifikasi, atau waktu pembaruan. Konfirmasi perubahan tersimpan dan bedakan akses langsung dari informasi cache atau impor."
+    },
+    {
+      "q": "Apakah Advanced memberi kemampuan menghapus akses kalender Google?",
+      "a": "Advanced menghapus iklan di Cloud Calendars. Kontrol berbagi Google bergantung pada kepemilikan, izin, dan aturan organisasi, bukan paket aplikasi tersebut."
+    }
+  ],
+  "sourcesHeading": "Panduan penyedia tentang akses dan langganan",
+  "sources": [
+    {
+      "label": "Google: kontrol berbagi dan menghentikan akses",
+      "url": "https://support.google.com/calendar/answer/37082?hl=en"
+    },
+    {
+      "label": "Google: sinkronisasi akun dan alamat iCal rahasia",
+      "url": "https://support.google.com/calendar/answer/37648?hl=en"
+    }
+  ],
+  "seeAlso": [
+    "who-can-see-what-in-google-calendar",
+    "the-secret-address-of-a-google-calendar",
+    "why-a-shared-calendar-does-not-appear"
+  ],
+  "updated": "2026-10-21"
+},
 };

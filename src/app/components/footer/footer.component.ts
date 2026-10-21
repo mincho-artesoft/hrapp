@@ -1,5 +1,4 @@
 import { ChangeDetectionStrategy, Component, computed, inject } from '@angular/core';
-import { RouterLink } from '@angular/router';
 
 import { ActiveLocaleService } from '../../core/active-locale.service';
 import { storeCta } from '../../core/store-cta';
@@ -8,7 +7,7 @@ import { APP_DEVELOPER, APP_MIN_IOS, APP_STORE_URL, APP_VERSION } from '../../co
 @Component({
   selector: 'app-footer',
   standalone: true,
-  imports: [RouterLink],
+  imports: [],
   changeDetection: ChangeDetectionStrategy.OnPush,
   templateUrl: './footer.component.html',
   styleUrl: './footer.component.scss',
@@ -19,6 +18,10 @@ export class FooterComponent {
 
   /** Follows the language of the page being read, not the site default. */
   readonly appStoreUrl = this.active.storeHref;
+  readonly homePath = computed(() => {
+    const home = this.active.path('/');
+    return home.endsWith('/') ? home : `${home}/`;
+  });
   readonly developer = APP_DEVELOPER;
   readonly version = APP_VERSION;
   readonly minIos = APP_MIN_IOS;

@@ -1,0 +1,202 @@
+{
+  "date": "2026-10-21",
+  "agent": "calendar_keyword_research",
+  "slug": "taking-back-a-calendar-you-shared",
+  "source": "src/app/content/en-US/articles-google.ts",
+  "sourceObjectSha256": "fe5ad020421c3416ffd444c5cf74cddd279fd1cba010911b068853b80f87d170",
+  "routeSource": "src/app/content/article-index.ts",
+  "routeSourceSha256": "d6a88e0083e6bbc64e0e3020e050197d73d0c832b6d95c7a663b9ed03cddc957",
+  "format": "Each locale JSON contains one LocalisedArticle directly, not a slug-keyed wrapper.",
+  "method": "Direct model translation of current corrected English object. No paid API; no native-speaker review or certification.",
+  "checks": {
+    "tenAssignedLocales": true,
+    "sixSectionsTwelveParagraphsSixStepsThreeFaq": true,
+    "descriptionUnder160UnicodeCharacters": true,
+    "all38VisibleStringsTranslated": true,
+    "sourceUrlsAndOrderPreserved": true,
+    "developerDisclosureAndDatePreserved": true,
+    "emptyClaimsPreserved": true,
+    "allRelatedSlugsPresentInArticleIndex": true
+  },
+  "semanticReview": [
+    "Named-person removal distinct from group, public and organisation grants.",
+    "Secret iCal reset distinct from recipient removal, and dependent clients considered.",
+    "Cloud recipient relations distinct from issued subscription feeds.",
+    "Editing-role changes, leaving a received calendar and deleting an owned calendar distinguished.",
+    "No instant disappearance, silence or universal refresh guarantee.",
+    "Cached/imported records distinguished from live access; previous copies may survive.",
+    "No destructive real-invitation testing or credential sharing recommended.",
+    "Advanced removes ads rather than purchasing Google permission authority."
+  ],
+  "relatedLinkAdjustment": "Replaced English a-calendar-that-is-yours-to-share with existing why-a-shared-calendar-does-not-appear for these locales. Other two related slugs retained. All checked against current article-index.",
+  "notPerformed": [
+    "Source integration",
+    "Native edits",
+    "Build",
+    "Deployment",
+    "Paid API calls",
+    "Native-speaker certification"
+  ],
+  "rows": [
+    {
+      "locale": "hi",
+      "file": "research/batch10-localized-revocation/hi.json",
+      "descriptionCharacters": 122,
+      "sections": 6,
+      "paragraphs": 12,
+      "steps": 6,
+      "faq": 3,
+      "sources": 2,
+      "seeAlso": [
+        "who-can-see-what-in-google-calendar",
+        "the-secret-address-of-a-google-calendar",
+        "why-a-shared-calendar-does-not-appear"
+      ],
+      "sha256": "b391a260d406d2e14624e7da6cb89af12ac2e9b591fa90ab5264f94faae8e08b"
+    },
+    {
+      "locale": "hu",
+      "file": "research/batch10-localized-revocation/hu.json",
+      "descriptionCharacters": 144,
+      "sections": 6,
+      "paragraphs": 12,
+      "steps": 6,
+      "faq": 3,
+      "sources": 2,
+      "seeAlso": [
+        "who-can-see-what-in-google-calendar",
+        "the-secret-address-of-a-google-calendar",
+        "why-a-shared-calendar-does-not-appear"
+      ],
+      "sha256": "743040c77fe87c1403da23f922f927457e37b57ec07e360a5ccbd8b65c996d60"
+    },
+    {
+      "locale": "id",
+      "file": "research/batch10-localized-revocation/id.json",
+      "descriptionCharacters": 138,
+      "sections": 6,
+      "paragraphs": 12,
+      "steps": 6,
+      "faq": 3,
+      "sources": 2,
+      "seeAlso": [
+        "who-can-see-what-in-google-calendar",
+        "the-secret-address-of-a-google-calendar",
+        "why-a-shared-calendar-does-not-appear"
+      ],
+      "sha256": "b3be217bec53b814ac9107376779dbbb1a2a8453633c5924dfeb65b0ff9faf21"
+    },
+    {
+      "locale": "it",
+      "file": "research/batch10-localized-revocation/it.json",
+      "descriptionCharacters": 150,
+      "sections": 6,
+      "paragraphs": 12,
+      "steps": 6,
+      "faq": 3,
+      "sources": 2,
+      "seeAlso": [
+        "who-can-see-what-in-google-calendar",
+        "the-secret-address-of-a-google-calendar",
+        "why-a-shared-calendar-does-not-appear"
+      ],
+      "sha256": "a44bef760f9fd0ad64bcd36a7bb5b304f7abb6a66aadbf3ec696f1d5404208ec"
+    },
+    {
+      "locale": "ja",
+      "file": "research/batch10-localized-revocation/ja.json",
+      "descriptionCharacters": 65,
+      "sections": 6,
+      "paragraphs": 12,
+      "steps": 6,
+      "faq": 3,
+      "sources": 2,
+      "seeAlso": [
+        "who-can-see-what-in-google-calendar",
+        "the-secret-address-of-a-google-calendar",
+        "why-a-shared-calendar-does-not-appear"
+      ],
+      "sha256": "b5121f365e06a3bd63c31fea48300a58264e274c74484985a607a6ce42054a5c"
+    },
+    {
+      "locale": "ko",
+      "file": "research/batch10-localized-revocation/ko.json",
+      "descriptionCharacters": 68,
+      "sections": 6,
+      "paragraphs": 12,
+      "steps": 6,
+      "faq": 3,
+      "sources": 2,
+      "seeAlso": [
+        "who-can-see-what-in-google-calendar",
+        "the-secret-address-of-a-google-calendar",
+        "why-a-shared-calendar-does-not-appear"
+      ],
+      "sha256": "f2241ac32cef42f9c802e7b3a70181ec02c638939e584aeaf732574e2602771a"
+    },
+    {
+      "locale": "ms",
+      "file": "research/batch10-localized-revocation/ms.json",
+      "descriptionCharacters": 139,
+      "sections": 6,
+      "paragraphs": 12,
+      "steps": 6,
+      "faq": 3,
+      "sources": 2,
+      "seeAlso": [
+        "who-can-see-what-in-google-calendar",
+        "the-secret-address-of-a-google-calendar",
+        "why-a-shared-calendar-does-not-appear"
+      ],
+      "sha256": "3cb393095ba336111fc7d6aa5aa002e4f4827db30f2f830f3d5993117fdf75e2"
+    },
+    {
+      "locale": "nl-NL",
+      "file": "research/batch10-localized-revocation/nl-NL.json",
+      "descriptionCharacters": 159,
+      "sections": 6,
+      "paragraphs": 12,
+      "steps": 6,
+      "faq": 3,
+      "sources": 2,
+      "seeAlso": [
+        "who-can-see-what-in-google-calendar",
+        "the-secret-address-of-a-google-calendar",
+        "why-a-shared-calendar-does-not-appear"
+      ],
+      "sha256": "6318c2be8e6de413bd2e60dc0b9f039e60546aa335d3d5befb7d187a85996e6a"
+    },
+    {
+      "locale": "no",
+      "file": "research/batch10-localized-revocation/no.json",
+      "descriptionCharacters": 144,
+      "sections": 6,
+      "paragraphs": 12,
+      "steps": 6,
+      "faq": 3,
+      "sources": 2,
+      "seeAlso": [
+        "who-can-see-what-in-google-calendar",
+        "the-secret-address-of-a-google-calendar",
+        "why-a-shared-calendar-does-not-appear"
+      ],
+      "sha256": "fc88e31d0c051a252748ee15d70c59adcffc359fb72f7e0d07e7e656d18f99f5"
+    },
+    {
+      "locale": "pl",
+      "file": "research/batch10-localized-revocation/pl.json",
+      "descriptionCharacters": 132,
+      "sections": 6,
+      "paragraphs": 12,
+      "steps": 6,
+      "faq": 3,
+      "sources": 2,
+      "seeAlso": [
+        "who-can-see-what-in-google-calendar",
+        "the-secret-address-of-a-google-calendar",
+        "why-a-shared-calendar-does-not-appear"
+      ],
+      "sha256": "f46e05827485a362340016c3bf07d03cd72b920cd15eb3ac7fac1038a725d66e"
+    }
+  ]
+}

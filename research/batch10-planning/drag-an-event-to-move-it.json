@@ -1,0 +1,91 @@
+{
+  "title": "Drag a calendar event to reschedule: check time, duration and scope",
+  "short": "Drag to reschedule",
+  "description": "Move a calendar event without confusing its start, duration, calendar or repeat scope. Check editing rights and verify the saved change.",
+  "lede": "A block moved on a screen is only the start of a reschedule. The useful result is the right event, at the right time, in the right calendar, with the intended repeat scope. This guide is published by Arte Soft, the developer of Cloud Calendars.",
+  "commonBelief": "Dragging an appointment always saves exactly the intended change and updates every participant immediately.",
+  "sections": [
+    {
+      "heading": "Identify the event and calendar before moving it",
+      "body": [
+        "Open the appointment details and check its date, start and end times, calendar and owning account. Two similar blocks may be separate events or two displays of the same schedule. Moving the wrong copy does not solve a clash in the original calendar.",
+        "For example, a personal planning block and an organiser’s invitation may both say Project review. Decide which one you are responsible for changing. If you only need a reminder to prepare, keep that separate from the meeting arranged by someone else."
+      ]
+    },
+    {
+      "heading": "Move the block when the start time should change",
+      "body": [
+        "Cloud Calendars provides timeline drag and resize interactions. Moving a timed event and changing one of its edges are different operations: a move changes its placement, while a resize changes the interval. Use a day or multi-day timeline where the intended date and hour are clear.",
+        "Suppose a one-hour appointment moves from 15:00–16:00 to 16:00–17:00. Check both times afterward. An event stretched to 15:00–17:00 has become longer instead of moving later. For an exact booking minute, open its details and inspect the time fields rather than judging the block’s height."
+      ]
+    },
+    {
+      "heading": "Choose the series scope deliberately",
+      "body": [
+        "A repeating appointment is not just a row of unrelated blocks. Before changing Tuesday’s meeting, decide whether this Tuesday alone changes or whether the arrangement changes from then onward. Do not drag repeatedly until the display looks right without checking the scope.",
+        "When a scope chooser is offered, read its options before confirming. Reopen the changed occurrence and a later one to check the result. If the available editor cannot express the intended exception, use the owning provider’s supported editor rather than assuming every timeline handles a series identically."
+      ]
+    },
+    {
+      "heading": "Respect the destination and editing permission",
+      "body": [
+        "An appointment being visible does not establish that you may edit it. A subscribed calendar may be read-only; a received event may permit viewing but not changes. Cloud Calendars distinguishes read-only shared invitations, and a provider may also reject an update that appeared possible locally.",
+        "Keep the calendar unchanged when you only mean to change the time. In a view with multiple calendar columns, crossing to another calendar is a different decision: it can change the account or people who can see the event. Check the Calendar value after the operation, especially when similarly coloured calendars are adjacent."
+      ]
+    },
+    {
+      "heading": "Reopen and compare the saved result",
+      "body": [
+        "After moving or resizing, reopen the event and compare the date, start, end, calendar and repeat behavior with the intended arrangement. Check for a save or synchronization error. A block returning to its old position needs investigation, not repeated dragging of a customer meeting.",
+        "For a connected account, compare the original provider when a change matters or appears inconsistent. If the provider still shows the old time, record the example date and connection route for support. A successful local save and another person’s device displaying the update are separate observations."
+      ]
+    },
+    {
+      "heading": "Tell participants about important changes",
+      "body": [
+        "Confirm an urgent new time through your usual communication channel. A calendar edit does not prove the invitation was delivered, read or accepted, and people may be offline. Ask for the confirmation you actually need.",
+        "Apple Calendar and Google Calendar also document their own drag-to-move workflows. Follow the instructions for the application you are using; their controls and save steps do not define Cloud Calendars behavior. Use the event details when a gesture is unavailable or an exact value needs checking."
+      ]
+    }
+  ],
+  "claims": {},
+  "practical": [
+    "Check the original event, calendar and account.",
+    "Decide whether to move the start or resize the duration.",
+    "Perform one change, then inspect both start and end.",
+    "Choose a repeat scope only when it matches your intention.",
+    "Reopen the event and verify calendar, time and any provider update.",
+    "Confirm urgent schedule changes directly with participants."
+  ],
+  "faq": [
+    {
+      "q": "Does dragging change the duration too?",
+      "a": "Moving and resizing are different operations. Check both start and end after the gesture; use the time fields when the exact result matters."
+    },
+    {
+      "q": "Can I drag an event on a read-only calendar?",
+      "a": "Visibility does not grant editing permission. Check the calendar and sharing role. Make the change at the supported source or ask its owner when you cannot edit it."
+    },
+    {
+      "q": "Will the whole repeating series move?",
+      "a": "Check the available scope and the saved result. Do not infer the series behavior from one block moving; inspect the changed occurrence and a later one."
+    }
+  ],
+  "sourcesHeading": "Official instructions for other calendar applications",
+  "sources": [
+    {
+      "label": "Apple: creating and editing events in Calendar on iPhone",
+      "url": "https://support.apple.com/en-my/guide/iphone/iph3d110f84/ios"
+    },
+    {
+      "label": "Google: editing and moving events on iPhone and iPad",
+      "url": "https://support.google.com/calendar/answer/72143/?co=GENIE.Platform%3DiOS&hl=en"
+    }
+  ],
+  "seeAlso": [
+    "recurring-events-without-the-mess",
+    "event-saved-to-wrong-calendar",
+    "when-two-calendars-disagree"
+  ],
+  "updated": "2026-10-21"
+}

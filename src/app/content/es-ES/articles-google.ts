@@ -303,50 +303,93 @@ export const GOOGLE_ES_ES: Readonly<Record<string, LocalisedArticle>> = {
   },
 
   'taking-back-a-calendar-you-shared': {
-    title: 'Recuperar un calendario que compartiste',
-    short: 'Retirar el acceso',
-    description:
-      'Quitar a alguien de un calendario detiene lo que viene después. Lo que no hace es deshacer lo que ya ocurrió.',
-    lede: 'Terminar un acceso es un toque. Decidir si un toque basta lleva algo más, porque compartir deja copias.',
-    commonBelief: 'Que quitar a una persona quita lo que ha visto.',
-    sections: [
-      {
-        heading: 'Qué se detiene y qué se queda',
-        body: [
-          'Quita a alguien y el calendario desaparece de su lista, al instante y sin mensaje. Los eventos futuros no le llegan nunca.',
-          'Lo que no vuelve: las invitaciones que ya tiene, los eventos copiados a su propio calendario, lo exportado y todo aquello para lo que circuló una dirección secreta. El acceso termina; la memoria no.',
-        ],
-      },
-      {
-        heading: 'El que sobrevive a la retirada',
-        body: [
-          'Si alguien tuvo alguna vez permiso para gestionar la compartición, puede haber añadido a otras personas. Quitarlo a él las deja a ellas, y así acaba un calendario compartido con alguien a quien nadie recuerda haber invitado.',
-          'Lee la lista entera en vez de borrar un nombre, y hazlo a la salida, no meses después. Nada te lo recuerda y lo compartido solo se acumula.',
-        ],
-      },
-    ],
-    claims: {
-      advancedMonthly: 'Coste mensual del nivel donde se gestiona esto, en dólares',
+  "title": "Dejar de compartir un calendario: retira el acceso y revisa las demás vías",
+  "short": "Revisa y retira los accesos compartidos",
+  "description": "Deja de compartir un calendario revisando personas, grupos, acceso público y enlaces de suscripción. Descubre por qué pueden quedar copias guardadas.",
+  "lede": "Para terminar una colaboración, primero identifica cómo se concedió el acceso. Quitar a una persona, desactivar la publicación y restablecer una dirección de suscripción son acciones distintas. Esta guía la publica Arte Soft, desarrollador de Cloud Calendars.",
+  "commonBelief": "Quitar a un destinatario recupera al instante todas las copias del calendario y cierra cualquier otra vía de acceso.",
+  "sections": [
+    {
+      "heading": "Identifica el calendario y la vía de acceso",
+      "body": [
+        "Antes de cambiar el acceso, confirma la cuenta propietaria, el calendario y el público previsto. Compartir un calendario de Google con una persona concreta no es lo mismo que publicarlo, conceder acceso a un grupo o facilitar una dirección de suscripción. Cloud Calendars también tiene sus propias relaciones de uso compartido de eventos y calendarios.",
+        "Por ejemplo, la secretaría de un club puede recibir permisos de edición mediante una invitación personal, mientras los socios siguen un calendario publicado. Retirar ese permiso individual no determina qué debe pasar con las suscripciones de los socios. Enumera los mecanismos que realmente has configurado."
+      ]
     },
-    faq: [
-      {
-        q: '¿Quitar a alguien borra lo que ya vio?',
-        a: 'No. Las invitaciones que ya tiene, los eventos copiados a su propio calendario y todo lo exportado sobreviven. El acceso termina; las copias no.',
-      },
-      {
-        q: '¿Se le avisa a la persona de que le he quitado el acceso?',
-        a: 'No. El calendario desaparece de su lista al instante y sin mensaje.',
-      },
-      {
-        q: '¿Por qué mi calendario sigue compartido con alguien a quien nunca invité?',
-        a: 'Alguien con permiso para gestionar la compartición lo añadió. Quitar a esa persona deja en su sitio a todas las que añadió: por eso se lee la lista entera y no un nombre.',
-      },
-    ],
-    practical: [
-      'Lee la lista completa de acceso, no solo el nombre que ibas a quitar.',
-      'Restablece la dirección secreta si esa persona la tuvo alguna vez.',
-      'Da por hecho que las copias sobreviven: mueve lo verdaderamente sensible en vez de esconderlo.',
-    ],
-    seeAlso: ['who-can-see-what-in-google-calendar', 'the-secret-address-of-a-google-calendar'],
-  },
+    {
+      "heading": "Retira el permiso de Google correspondiente",
+      "body": [
+        "Google documenta controles separados para personas o grupos concretos, el acceso de toda una organización y la disponibilidad pública. En un ordenador, abre los ajustes para compartir del calendario correspondiente y cambia la entrada o el ajuste general adecuado. Comprueba primero la cuenta iniciada y el nombre del calendario.",
+        "Una persona puede conservar otra vía de acceso, como un grupo o una publicación más amplia. Revisa el conjunto en vez de eliminar repetidamente la misma dirección de correo. Las políticas de trabajo o del centro educativo pueden limitar los controles disponibles; utiliza el procedimiento aprobado por el propietario o administrador cuando sea necesario."
+      ]
+    },
+    {
+      "heading": "Trata la dirección secreta del calendario por separado",
+      "body": [
+        "Google indica que la dirección iCal secreta es para tu propio uso en otra aplicación de calendario y no debe facilitarse a otras personas. Si se ha divulgado, Google explica cómo restablecerla para invalidar la dirección anterior. Es una acción distinta de quitar a una persona concreta.",
+        "Antes de cambiar una dirección de suscripción que utilizas, identifica los clientes o herramientas que dependen de ella para poder volver a conectar los que quieras conservar. No pegues la URL secreta en una consulta pública de soporte ni la envíes como prueba de haber encontrado el calendario correcto. Indica el nombre del calendario y el tipo de conexión."
+      ]
+    },
+    {
+      "heading": "Distingue los destinatarios de Cloud Calendars de los enlaces de suscripción",
+      "body": [
+        "En Cloud Calendars, el acceso de destinatarios a un evento o calendario y un canal de suscripción emitido son mecanismos distintos. Revisa la relación concreta de uso compartido y el enlace correspondiente antes de actuar. Quitar a un destinatario identificado no garantiza que se hayan retirado todas las URL distribuidas o las copias independientes.",
+        "Si un coorganizador solo debe dejar de editar, considera su función prevista y el público restante en vez de borrar el calendario compartido. Si termina toda la colaboración, aclara quién es propietario del calendario y quién debe conservarlo. Abandonar un calendario recibido y borrar uno propio son decisiones distintas."
+      ]
+    },
+    {
+      "heading": "Verifica el resultado sin prometer una desaparición inmediata",
+      "body": [
+        "Comprueba que el sistema propietario ha guardado el cambio previsto. Si puede ayudarte un compañero autorizado, confirma el resultado de consulta o edición desde su propia cuenta, sin compartir contraseñas. Distingue una denegación de acceso de un evento antiguo que sigue visible en una copia importada o en caché.",
+        "No prometas un plazo universal de actualización ni que no se enviará ninguna notificación. En un traspaso de grupo, comunica qué calendario debe utilizarse a partir de ahora. Un registro antiguo visible no demuestra por sí solo si la persona mantiene acceso activo, dispone de otro permiso o conserva una copia independiente."
+      ]
+    },
+    {
+      "heading": "Gestiona las copias anteriores como una tarea aparte",
+      "body": [
+        "Los archivos exportados, capturas de pantalla, mensajes y citas guardadas por separado pueden permanecer después de cambiar el acceso. Decide qué copias importan para el traspaso y habla con las personas implicadas sobre su tratamiento. Cambiar un permiso no permite saber qué ha guardado ya cada destinatario.",
+        "Conserva los registros originales necesarios mientras revisas el resultado. No traslades reuniones sensibles a otro calendario compartido solo para que el antiguo parezca vacío ni canceles invitaciones reales para probar el acceso. Anota el calendario, la vía de acceso y el cambio realizado para facilitar futuras comprobaciones."
+      ]
+    }
+  ],
+  "claims": {},
+  "practical": [
+    "Identifica la cuenta propietaria, el calendario y la vía de acceso.",
+    "Revisa por separado personas, grupos y publicaciones más amplias.",
+    "Utiliza los controles adecuados de Google o Cloud Calendars.",
+    "Decide por separado si debes restablecer una dirección secreta divulgada.",
+    "Verifica el acceso guardado sin compartir credenciales.",
+    "Planifica el tratamiento de exportaciones o copias anteriores aparte del acceso activo."
+  ],
+  "faq": [
+    {
+      "q": "¿Quitar a una persona desactiva un calendario público o su acceso mediante un grupo?",
+      "a": "No lo des por hecho. Revisa cada vía real. Google documenta los destinatarios concretos, los grupos y la publicación más amplia como ajustes separados."
+    },
+    {
+      "q": "¿El calendario desaparecerá inmediatamente y sin avisar?",
+      "a": "No existe una promesa universal sobre la desaparición, las notificaciones o el tiempo de actualización. Confirma el cambio guardado y distingue el acceso activo de la información importada o en caché."
+    },
+    {
+      "q": "¿Advanced permite comprar la posibilidad de retirar el acceso a un calendario de Google?",
+      "a": "Advanced elimina los anuncios de Cloud Calendars. Los controles de Google dependen de la propiedad, los permisos y las normas de la organización, no de ese plan de la aplicación."
+    }
+  ],
+  "sourcesHeading": "Orientación del proveedor sobre acceso y suscripciones",
+  "sources": [
+    {
+      "label": "Google: controles para compartir y retirar el acceso",
+      "url": "https://support.google.com/calendar/answer/37082?hl=en"
+    },
+    {
+      "label": "Google: sincronización de cuentas y direcciones iCal secretas",
+      "url": "https://support.google.com/calendar/answer/37648?hl=en"
+    }
+  ],
+  "seeAlso": [
+    "who-can-see-what-in-google-calendar",
+    "the-secret-address-of-a-google-calendar"
+  ],
+  "updated": "2026-10-21"
+},
 };

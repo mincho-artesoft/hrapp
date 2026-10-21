@@ -233,27 +233,21 @@ export const ARTICLE_FACTS: Readonly<Record<string, ArticleFacts>> = {
     slug: 'the-secret-address-of-a-google-calendar',
     family: 'sharing',
     intent: 'editing',
-    claims: [
-      { id: 'linkLength', value: '22' },
-      { id: 'sharePrice', value: '0' },
-    ],
+    claims: [],
     updated: '2026-09-12',
   },
   'what-guests-can-do-to-your-event': {
     slug: 'what-guests-can-do-to-your-event',
     family: 'sharing',
     intent: 'editing',
-    claims: [{ id: 'sharePrice', value: '0' }],
+    claims: [],
     updated: '2026-09-12',
   },
   'google-calendars-that-never-reach-your-iphone': {
     slug: 'google-calendars-that-never-reach-your-iphone',
     family: 'unify',
     intent: 'unify',
-    claims: [
-      { id: 'accounts', value: '3' },
-      { id: 'price', value: '0' },
-    ],
+    claims: [],
     updated: '2026-09-12',
   },
   'taking-back-a-calendar-you-shared': {
