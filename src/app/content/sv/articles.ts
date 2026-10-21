@@ -10,42 +10,39 @@ import { LocalisedArticle } from '../types';
  */
 export const ARTICLES_SV: Readonly<Record<string, LocalisedArticle>> = {
   'weather-inside-your-calendar': {
-    title: 'En kalender som redan har vädret i sig',
-    short: 'Vädret inuti kalendern',
-    description:
-      'Varför två appar för att planera en dag är ett konstruktionsfel, och hur en kalender ser ut där prognosen är en del av vyn i stället för att stå bredvid.',
-    lede: 'Nästan alla planerar sin dag mellan två appar. Kalendern säger var man ska vara; väderappen säger hur det är när man kommer dit. Att hålla ihop de två i huvudet är den del ingen märker att de gör — tills en lördag går förlorad.',
-    commonBelief:
-      'Att en kalender är för åtaganden och en väderapp är för vädret, och att hålla dem åtskilda helt enkelt är så telefoner fungerar.',
-    sections: [
-      {
-        heading: 'Priset för två appar är inte två tryck',
-        body: [
-          'Att växla kostar ingenting. Det dyra är att de två aldrig är överens om vad som spelar roll. Din kalender vet att lördag klockan elva är två timmar upptagna; väderappen vet att det regnar från tio till ett. Ingen av dem vet att de två fakta tillsammans betyder att blocket måste flyttas.',
-          'Integrationslagret är du. Det fungerar tills du har mycket att göra, vilket är precis när det är värt mest att skydda sina planer.',
-        ],
-      },
-      {
-        heading: 'Vad som ändras när prognosen ligger i rutnätet',
-        body: [
-          'Lägg prognosen bakom händelserna så löser konflikten sig själv. En fuktig förmiddag och en torr eftermiddag syns i samma ögonkast som mötet du skulle lägga in, och beslutet slutar kosta tankemöda.',
-          'Det här är ingen widget klistrad vid sidan. Varje dag i vecko- och månadsvyn bär sina egna förhållanden, och varje händelse bär prognosen för de timmar den faktiskt upptar — inte dagssammanfattningen, som medelvärdesbildar just den del du behövde.',
-        ],
-      },
-    ],
-    claims: {
-      forecastDays: 'Dygn prognos, i kalendern och bredvid varje händelse',
-      views: 'Vyer som bär vädret: Dag, Vecka, Månad, År och Lista',
-      price: 'Vad väderfunktionerna kostar',
+  "title": "En kalender som redan har vädret i sig",
+  "short": "Vädret inuti kalendern",
+  "description": "Varför två appar för att planera en dag är ett konstruktionsfel, och hur en kalender ser ut där prognosen är en del av vyn i stället för att stå bredvid.",
+  "lede": "Nästan alla planerar sin dag mellan två appar. Kalendern säger var man ska vara; väderappen säger hur det är när man kommer dit. Att hålla ihop de två i huvudet är den del ingen märker att de gör — tills en lördag går förlorad.",
+  "commonBelief": "Att en kalender är för åtaganden och en väderapp är för vädret, och att hålla dem åtskilda helt enkelt är så telefoner fungerar.",
+  "sections": [
+    {
+      "heading": "Priset för två appar är inte två tryck",
+      "body": [
+        "Att växla kostar ingenting. Det dyra är att de två aldrig är överens om vad som spelar roll. Din kalender vet att lördag klockan elva är två timmar upptagna; väderappen vet att det regnar från tio till ett. Ingen av dem vet att de två fakta tillsammans betyder att blocket måste flyttas.",
+        "Integrationslagret är du. Det fungerar tills du har mycket att göra, vilket är precis när det är värt mest att skydda sina planer."
+      ]
     },
-    practical: [
-      'Titta på bandet bakom dagarna i veckovyn innan du lägger in något utomhus.',
-      'Tryck på en händelse för att se prognosen för dess timmar, inte för dess dag.',
-      'Lägg väderberoende saker först mot de fjorton dygnen och finjustera två dagar innan.',
-      'Behandla allt bortom dag sju som en form, inte som en plan.',
-    ],
-    seeAlso: ['icloud-google-and-outlook-in-one-view', 'what-a-subscription-actually-buys'],
+    {
+      "heading": "Den tillgängliga prognosen",
+      "body": [
+        "Cloud Calendars använder den tillgängliga prognosen för vald plats. Tim- och dagsdata kan omfatta olika perioder.",
+        "Datumen du kan visa i kalendern avgör inte hur långt prognosen sträcker sig. Månadsvyn innebär inte en prognos för hela månaden eller varje händelse."
+      ]
+    }
+  ],
+  "claims": {
+    "price": "Vad väderfunktionerna kostar"
   },
+  "practical": [
+    "Kontrollera plats, datum och tillgängliga timmar innan du planerar utifrån prognosen."
+  ],
+  "seeAlso": [
+    "icloud-google-and-outlook-in-one-view",
+    "what-a-subscription-actually-buys"
+  ],
+  "updated": "2026-10-21"
+},
 
   'icloud-google-and-outlook-in-one-view': {
     title: 'iCloud, Google och Outlook i en enda vy',
@@ -120,39 +117,53 @@ export const ARTICLES_SV: Readonly<Record<string, LocalisedArticle>> = {
   },
 
   'what-a-subscription-actually-buys': {
-    title: 'Vad en prenumeration faktiskt ger',
-    short: 'Vad en prenumeration ger',
-    description:
-      'Två betalnivåer, vad som skiljer dem, och hur du vet vilken — om någon — som är din.',
-    lede: 'Två nivåer räcker för förvirring om ingen tydligt säger vad som skiljer dem. Det som skiljer dem är Microsoft.',
-    commonBelief: 'Att den högre nivån är samma funktioner fast mer av dem.',
-    sections: [
-      {
-        heading: 'Första nivån tar bort annonserna',
-        body: [
-          'Den lägger också till hantering av händelser mellan iCloud- och Google-kalendrar, Googles delningsrättigheter, automatiska Meet-länkar och snabbare väderuppdatering. Men man köper den för annonserna.',
-          'Till det priset är det ungefär en kaffe om året, och det är nivån som passar nästan alla som över huvud taget vill betala något.',
-        ],
-      },
-      {
-        heading: 'Andra nivån är för Microsoft',
-        body: [
-          'Outlook- och Exchange-synk, Teams-länkar, hantering över konton inklusive jobbet, deltagarhantering. Den kostar en storleksordning mer eftersom anslutningen gör det.',
-          'Ligger inte din jobbkalender hos Microsoft finns det inget för dig här. Båda nivåerna är billigare per år; besparingen är måttlig, inte dramatisk. Efter uppsägning står du på gratisnivån med kalendrarna oskadda, eftersom händelserna aldrig var våra.',
-        ],
-      },
-    ],
-    claims: {
-      advancedMonthly: 'Första nivån, per månad, i dollar',
-      advancedYearly: 'Första nivån, per år, i dollar',
-      premiumMonthly: 'Andra nivån, per månad, i dollar',
-      premiumYearly: 'Andra nivån, per år, i dollar',
+  "updated": "2026-10-21",
+  "title": "Vad en prenumeration faktiskt ger",
+  "short": "Vad en prenumeration ger",
+  "description": "Vad en prenumeration ger: Base, Advanced, Premium.",
+  "lede": "Den här guiden publiceras av Arte Soft, utvecklaren av Cloud Calendars.",
+  "sections": [
+    {
+      "heading": "Base",
+      "body": [
+        "Base innehåller Google Calendar-synkronisering, Google Meet, kalendervyer, väder och widgetar. Gratisplanen kan visa annonser."
+      ]
     },
-    practical: [
-      'Köp första nivån för att ta bort annonser, inte för att låsa upp kalendern.',
-      'Köp den andra bara om ditt jobb bor hos Microsoft.',
-      'Gå över till årsvis när du är säker; besparingen är verklig men liten.',
-    ],
-    seeAlso: ['icloud-google-and-outlook-in-one-view'],
-  },
+    {
+      "heading": "Advanced · Premium",
+      "body": [
+        "Advanced innehåller Base och tar bort annonser. Premium innehåller Advanced och lägger till Microsoft Calendar och Microsoft Teams.",
+        "En prenumeration ger inte rätt att redigera andras kalendrar och kringgår inte begränsningar för ett jobbkonto."
+      ]
+    },
+    {
+      "heading": "Information om köp och uppsägning",
+      "body": [
+        "Kontrollera lokalt pris, faktureringsperiod och förnyelsevillkor före köp.",
+        "För en prenumeration som faktureras av Apple öppnar du Inställningar → ditt namn → Prenumerationer. Kontrollera status och slutdatum. Att stoppa förnyelsen är skilt från att radera appen eller kalenderdata; anta inte att betalfunktioner finns kvar efter att prenumerationen löpt ut."
+      ]
+    }
+  ],
+  "claims": {},
+  "practical": [
+    "Kontrollera lokalt pris, faktureringsperiod och förnyelsevillkor före köp.",
+    "En prenumeration ger inte rätt att redigera andras kalendrar och kringgår inte begränsningar för ett jobbkonto."
+  ],
+  "faq": [
+    {
+      "q": "Hur stoppar jag förnyelsen?",
+      "a": "För en prenumeration som faktureras av Apple öppnar du Inställningar → ditt namn → Prenumerationer. Kontrollera status och slutdatum. Att stoppa förnyelsen är skilt från att radera appen eller kalenderdata; anta inte att betalfunktioner finns kvar efter att prenumerationen löpt ut."
+    }
+  ],
+  "sourcesHeading": "Information om köp och uppsägning",
+  "sources": [
+    {
+      "label": "Apple: Hur stoppar jag förnyelsen?",
+      "url": "https://support.apple.com/en-us/118428"
+    }
+  ],
+  "seeAlso": [
+    "icloud-google-and-outlook-in-one-view"
+  ]
+},
 };

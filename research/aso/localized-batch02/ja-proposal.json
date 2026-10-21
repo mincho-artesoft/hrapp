@@ -1,0 +1,82 @@
+{
+  "date": "2026-10-21",
+  "status": "proposal_only_not_applied",
+  "locale": "ja",
+  "appId": "6744690319",
+  "targetVersion": "1.7.4",
+  "targetState": "PREPARE_FOR_SUBMISSION",
+  "appInfoLocalizationId": "dad69593-91eb-471b-90d4-2ceb8c075d25",
+  "versionLocalizationId": "ab762335-72a8-46b7-ae29-3f81e2f455f4",
+  "nameAction": "preserve_exact_current_draft_name",
+  "fields": {
+    "name": {
+      "value": "Cloud Calendars: カレンダー",
+      "characters": 22,
+      "utf8Bytes": 32,
+      "characterLimit": 30,
+      "withinCharacterLimit": true
+    },
+    "subtitle": {
+      "value": "天気・予定管理・ホーム画面ウィジェット",
+      "characters": 19,
+      "utf8Bytes": 57,
+      "characterLimit": 30,
+      "withinCharacterLimit": true
+    },
+    "keywords": {
+      "value": "スケジュール,手帳,日程,リマインダー,会議,イベント,共有,招待,週間表示,月間表示,予報,仕事,プライベート,同期",
+      "characters": 59,
+      "utf8Bytes": 151,
+      "characterLimit": 100,
+      "withinCharacterLimit": true
+    },
+    "promotionalText": {
+      "value": "予定と天気をまとめて確認。ホーム画面ウィジェットや多彩な表示を活用できます。アプリのアカウントを作らずに、端末内のローカルカレンダーから始めることもできます。",
+      "characters": 79,
+      "utf8Bytes": 237,
+      "characterLimit": 170,
+      "withinCharacterLimit": true
+    },
+    "description": {
+      "value": "iPhoneとiPadで、カレンダーと天気をまとめて確認。Cloud Calendarsで仕事とプライベートの予定を見ながら、一日の計画を立てられます。\n\nカレンダーをまとめて表示\niCloudのカレンダーを利用し、Google カレンダーを接続できます。PremiumではMicrosoftのカレンダーにも対応。日・週・月・年・リスト表示から、用途に合った表示を選べます。\n\nCloud Calendarsのアカウントを作らずに、端末内のローカルカレンダーを作成することもできます。サービスの接続や共有には、サインインが必要になる場合があります。\n\n天気とホーム画面ウィジェット\n予定を立てながら天気予報を確認できます。ホーム画面ウィジェットは小・中・大のサイズに対応しています。利用できる予報は地域や気象情報の提供元によって異なります。\n\n会議と共有\nGoogle カレンダーでGoogle Meetを利用できます。PremiumではMicrosoft Teamsにも対応。イベントやカレンダーを共有し、メール、QRコード、App Clipで招待できます。アクセス権はカレンダーや招待の種類によって異なります。\n\nプランについて\n無料のBaseには、Google カレンダーの同期、Google Meet、複数のカレンダー表示、天気、ウィジェットが含まれます。\nAdvancedにはBaseの機能が含まれ、広告が非表示になります。\nPremiumにはAdvancedの機能に加え、MicrosoftのカレンダーとMicrosoft Teamsへの対応が含まれます。\n\nダウンロードは無料です。任意で自動更新のサブスクリプションを購入できます。現在の価格はアプリ内またはApp Storeでご確認ください。購入確定時にAppleアカウントに請求されます。現在の期間が終了する24時間前までに解約しない限り、自動的に更新されます。更新料金は期間終了前の24時間以内に請求されます。サブスクリプションはApp Storeのアカウント設定で管理・解約できます。\n\nプライバシーポリシー: https://www.cloud-calendars.com/privacy-policy\n利用規約: https://www.apple.com/legal/internet-services/itunes/dev/stdeula/",
+      "characters": 1010,
+      "utf8Bytes": 2320,
+      "characterLimit": 4000,
+      "withinCharacterLimit": true
+    }
+  },
+  "current": {
+    "appInfo": {
+      "locale": "ja",
+      "name": "Cloud Calendars: カレンダー",
+      "subtitle": "Google・Microsoft・iCloudを統合",
+      "privacyPolicyUrl": "https://www.cloud-calendars.com/privacy-policy",
+      "privacyChoicesUrl": null,
+      "privacyPolicyText": null
+    },
+    "version": {
+      "description": "カレンダーと天気で毎日を一緒に計画\n\nCloud Calendars は、カレンダーと天気を美しく整理された1つのプランニング体験にまとめます。\n\niCloud、Google カレンダー、Microsoft カレンダーを1つのアプリで管理し、スケジュール、ウィジェット、計画画面の中で天気予報を直接確認できます。\n\nすばやく計画できるカレンダー表示で、会議、旅行、学校へのお迎え、屋外活動、忙しい日々に先回りして備えましょう。\n\nホーム画面ウィジェット\n\n次の情報をまとめた美しいウィジェットを追加できます：\n• カレンダーイベント\n• 天気予報\n• 今後の予定\n• 月相と天気状況\n• 風と気温\n• 1日の予定の概要\n\n複数のウィジェットスタイルから選び、ホーム画面から直接1日を確認できます。\n\nCLOUD CALENDARS を選ぶ理由\n\n• iCloud、Google カレンダー、Microsoft カレンダーをまとめて表示\n• 内蔵の天気予報を使って計画\n• 美しいホーム画面ウィジェットを使用\n• イベントを自然にドラッグ、移動、時間変更\n• Google Meet と Microsoft Teams のリンクを作成\n• 日、週、月、年、リスト表示を切り替え\n• 仕事と個人のカレンダーを1か所で管理\n\n機能\n\nすべてのカレンダーを一緒に\niCloud、Google カレンダー、Microsoft カレンダーを、見やすく色分けされた1つの画面で接続・管理できます。\n\nカレンダーに組み込まれた天気\n気温、天気状況、月相、風、天気アイコンを含む時間別・日別予報を、計画中に直接確認できます。\n\nカレンダー + 天気ウィジェット\nカスタマイズ可能なホーム画面ウィジェットで、予定と天気をすぐに確認できます。\n\n複数のカレンダー表示\n時間の計画方法に合わせて、日、週、月、年、リスト表示から選べます。\n\n簡単なイベント編集\nカレンダー上でイベントをタップ、ドラッグ、時間変更して、すばやく自然にスケジュールできます。\n\n専用の天気画面\n時間ごとの状況や計画に役立つ情報を含む詳細な予報を確認できます。\n\n予報からイベントを作成\n予報の時間をタップすると、選択した時刻で新しいイベントをすぐに作成できます。\n\n内蔵の会議リンク\nイベントに Google Meet と Microsoft Teams のリンクをすばやく追加できます。\n\nこんな方に最適\n\n• 仕事と個人のカレンダー管理\n• 天気を考慮した計画\n• 屋外活動と旅行\n• 忙しい予定と家族の計画\n• Google カレンダーと iCloud のユーザー\n• Microsoft カレンダーのユーザー\n\nCloud Calendars を試して、毎日の計画をもっと簡単にしましょう。\n\nサブスクリプション情報\n\nCloud Calendars では自動更新サブスクリプションを提供しています。\n\n無料プラン\n• Google カレンダー同期\n• 複数のカレンダー表示\n• 天気機能\n• ウィジェット\n• Google Meet 対応\n\n購入の確認時に Apple ID アカウントに課金されます。現在の期間終了の24時間以上前に解約しない限り、サブスクリプションは自動更新されます。現在の期間終了前24時間以内に更新料金が請求されます。サブスクリプションは App Store のアカウント設定で管理・解約できます。\n\nプライバシーポリシー：https://www.cloud-calendars.com/privacy-policy\n利用規約：https://www.apple.com/legal/internet-services/itunes/dev/stdeula/",
+      "locale": "ja",
+      "keywords": "天気,ウィジェット,予定,計画,スケジュール,予報,会議,イベント,仕事,月相,風,気温,旅行,家族,リマインダー,毎日,ロック画面,雨,今日,週間,月間,通知,同期,祝日",
+      "marketingUrl": "https://www.cloud-calendars.com/",
+      "promotionalText": null,
+      "supportUrl": "https://www.cloud-calendars.com/",
+      "whatsNew": null
+    }
+  },
+  "keywordChecks": {
+    "exactDuplicateKeywords": false,
+    "exactTitleSubtitleTokenDuplicates": [],
+    "note": "Exact Unicode token check only. Japanese/Korean segmentation and grammatical forms require linguistic judgment. Keywords use actual localized terms; no provider trademarks added to keyword field. UTF-8 bytes reported, not treated as a rejection threshold."
+  },
+  "readiness": "ready_for_editorial_review_not_applied",
+  "translationConfidence": "medium",
+  "translationCaveat": "Model-authored localization; no native-speaker review or live ASC validation performed. Brand and tier names preserved. Confirm localized tier labels match shipping UI before submission.",
+  "evidence": [
+    "../../product-facts.json",
+    "../english-applied-20261021.json",
+    "asc-current-20261021.json"
+  ],
+  "claims": "Supported features only. No standalone Lock Screen widget, blanket Exchange, forecast-duration, privacy guarantee, superiority, search-volume or ranking claim. Sharing permissions and sign-in qualified.",
+  "mutationPolicy": "Do not change name, URLs, privacy fields, release notes, screenshots or other locales as part of applying these four proposed fields."
+}

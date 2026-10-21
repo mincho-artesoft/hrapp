@@ -10,42 +10,39 @@ import { LocalisedArticle } from '../types';
  */
 export const ARTICLES_PL: Readonly<Record<string, LocalisedArticle>> = {
   'weather-inside-your-calendar': {
-    title: 'Kalendarz, który ma pogodę już w środku',
-    short: 'Pogoda w kalendarzu',
-    description:
-      'Dlaczego sprawdzanie dwóch aplikacji przy planowaniu dnia jest błędem projektowym i jak wygląda kalendarz, w którym prognoza jest częścią widoku, a nie stoi obok.',
-    lede: 'Niemal każdy planuje dzień między dwiema aplikacjami. Kalendarz mówi, gdzie trzeba być; pogodowa mówi, jaka będzie pogoda na miejscu. Trzymanie obu rzeczy w głowie to ta część, której nikt nie zauważa — dopóki nie przepadnie sobota.',
-    commonBelief:
-      'Że kalendarz jest od spotkań, aplikacja pogodowa od pogody, a trzymanie ich osobno to po prostu sposób, w jaki działają telefony.',
-    sections: [
-      {
-        heading: 'Koszt dwóch aplikacji to nie dwa dotknięcia',
-        body: [
-          'Przełączenie nic nie kosztuje. Drogie jest to, że obie nigdy nie zgadzają się co do tego, co ma znaczenie. Kalendarz wie, że w sobotę o jedenastej zajęte są dwie godziny; aplikacja pogodowa wie, że pada od dziesiątej do trzynastej. Żadna nie wie, że te dwa fakty razem oznaczają, że blok trzeba przesunąć.',
-          'Warstwą integracyjną jesteś ty. Działa to do momentu, w którym masz dużo zajęć — czyli dokładnie wtedy, gdy ochrona planów jest najcenniejsza.',
-        ],
-      },
-      {
-        heading: 'Co się zmienia, gdy prognoza jest w siatce',
-        body: [
-          'Umieść prognozę za wydarzeniami, a konflikt rozwiązuje się sam. Wilgotny poranek i suche popołudnie widać tym samym spojrzeniem co spotkanie, które właśnie chciałeś wstawić, a decyzja przestaje kosztować myślenie.',
-          'To nie jest widżet przyklejony z boku. Każdy dzień w widoku tygodnia i miesiąca niesie własne warunki, a każde wydarzenie niesie prognozę godzin, które faktycznie zajmuje — nie dzienne podsumowanie, które uśrednia dokładnie tę część, która była potrzebna.',
-        ],
-      },
-    ],
-    claims: {
-      forecastDays: 'Dni prognozy, w kalendarzu i obok każdego wydarzenia',
-      views: 'Widoki z pogodą: Dzień, Tydzień, Miesiąc, Rok i Lista',
-      price: 'Ile kosztują funkcje pogodowe',
+  "title": "Kalendarz, który ma pogodę już w środku",
+  "short": "Pogoda w kalendarzu",
+  "description": "Dlaczego sprawdzanie dwóch aplikacji przy planowaniu dnia jest błędem projektowym i jak wygląda kalendarz, w którym prognoza jest częścią widoku, a nie stoi obok.",
+  "lede": "Niemal każdy planuje dzień między dwiema aplikacjami. Kalendarz mówi, gdzie trzeba być; pogodowa mówi, jaka będzie pogoda na miejscu. Trzymanie obu rzeczy w głowie to ta część, której nikt nie zauważa — dopóki nie przepadnie sobota.",
+  "commonBelief": "Że kalendarz jest od spotkań, aplikacja pogodowa od pogody, a trzymanie ich osobno to po prostu sposób, w jaki działają telefony.",
+  "sections": [
+    {
+      "heading": "Koszt dwóch aplikacji to nie dwa dotknięcia",
+      "body": [
+        "Przełączenie nic nie kosztuje. Drogie jest to, że obie nigdy nie zgadzają się co do tego, co ma znaczenie. Kalendarz wie, że w sobotę o jedenastej zajęte są dwie godziny; aplikacja pogodowa wie, że pada od dziesiątej do trzynastej. Żadna nie wie, że te dwa fakty razem oznaczają, że blok trzeba przesunąć.",
+        "Warstwą integracyjną jesteś ty. Działa to do momentu, w którym masz dużo zajęć — czyli dokładnie wtedy, gdy ochrona planów jest najcenniejsza."
+      ]
     },
-    practical: [
-      'Zajrzyj na pasek za dniami w widoku tygodnia, zanim wstawisz cokolwiek na zewnątrz.',
-      'Dotknij wydarzenia, by zobaczyć prognozę jego godzin, a nie jego dnia.',
-      'Plany zależne od pogody układaj najpierw na czternastu dniach, a dopracowuj dwa dni wcześniej.',
-      'Wszystko po siódmym dniu traktuj jako kształt, nie jako plan.',
-    ],
-    seeAlso: ['icloud-google-and-outlook-in-one-view', 'what-a-subscription-actually-buys'],
+    {
+      "heading": "Dostępna prognoza",
+      "body": [
+        "Cloud Calendars korzysta z dostępnej prognozy dla wybranego miejsca. Dane godzinowe i dzienne mogą obejmować różne okresy.",
+        "Daty widoczne w kalendarzu nie określają zasięgu prognozy. Widok miesiąca nie oznacza prognozy na cały miesiąc ani dla każdego wydarzenia."
+      ]
+    }
+  ],
+  "claims": {
+    "price": "Ile kosztują funkcje pogodowe"
   },
+  "practical": [
+    "Przed planowaniem na podstawie prognozy sprawdź miejsce, datę i dostępne godziny."
+  ],
+  "seeAlso": [
+    "icloud-google-and-outlook-in-one-view",
+    "what-a-subscription-actually-buys"
+  ],
+  "updated": "2026-10-21"
+},
 
   'icloud-google-and-outlook-in-one-view': {
     title: 'iCloud, Google i Outlook w jednym widoku',
@@ -122,39 +119,53 @@ export const ARTICLES_PL: Readonly<Record<string, LocalisedArticle>> = {
   },
 
   'what-a-subscription-actually-buys': {
-    title: 'Co naprawdę kupuje subskrypcja',
-    short: 'Co kupuje subskrypcja',
-    description:
-      'Dwa płatne warianty, co je dzieli i jak poznać, który — jeśli którykolwiek — jest twój.',
-    lede: 'Dwa warianty wystarczą, by wprowadzić zamęt, jeśli nikt jasno nie mówi, co je dzieli. Dzieli je Microsoft.',
-    commonBelief: 'Że wyższy wariant to te same funkcje, tylko więcej.',
-    sections: [
-      {
-        heading: 'Pierwszy wariant usuwa reklamy',
-        body: [
-          'Dokłada też zarządzanie wydarzeniami między kalendarzami iCloud i Google, uprawnienia udostępniania Google, automatyczne linki Meet i szybsze odświeżanie pogody. Ale kupuje się go dla reklam.',
-          'W tej cenie to mniej więcej jedna kawa rocznie i jest to wariant pasujący niemal każdemu, kto w ogóle chce zapłacić.',
-        ],
-      },
-      {
-        heading: 'Drugi wariant jest dla Microsoftu',
-        body: [
-          'Synchronizacja Outlooka i Exchange, linki Teams, zarządzanie między kontami łącznie z pracą, zarządzanie uczestnikami. Kosztuje rząd wielkości więcej, bo połączenie też.',
-          'Jeśli twój kalendarz służbowy nie stoi na Microsofcie, ten wariant nie zawiera nic dla ciebie. Oba są tańsze w skali roku; oszczędność jest umiarkowana, nie spektakularna. Po rezygnacji zostajesz na wersji darmowej, a kalendarze są nietknięte, bo wydarzenia nigdy nie były nasze.',
-        ],
-      },
-    ],
-    claims: {
-      advancedMonthly: 'Pierwszy wariant, miesięcznie, w dolarach',
-      advancedYearly: 'Pierwszy wariant, rocznie, w dolarach',
-      premiumMonthly: 'Drugi wariant, miesięcznie, w dolarach',
-      premiumYearly: 'Drugi wariant, rocznie, w dolarach',
+  "updated": "2026-10-21",
+  "title": "Co naprawdę kupuje subskrypcja",
+  "short": "Co kupuje subskrypcja",
+  "description": "Co kupuje subskrypcja: Base, Advanced, Premium.",
+  "lede": "Ten poradnik publikuje Arte Soft, twórca Cloud Calendars.",
+  "sections": [
+    {
+      "heading": "Base",
+      "body": [
+        "Base obejmuje synchronizację Google Calendar, Google Meet, widoki kalendarza, pogodę i widżety. Bezpłatny plan może wyświetlać reklamy."
+      ]
     },
-    practical: [
-      'Kup pierwszy wariant, by usunąć reklamy, a nie by odblokować kalendarz.',
-      'Kup drugi tylko wtedy, gdy twoja praca żyje na Microsofcie.',
-      'Przejdź na rok, gdy będziesz pewien; oszczędność jest realna, ale niewielka.',
-    ],
-    seeAlso: ['icloud-google-and-outlook-in-one-view'],
-  },
+    {
+      "heading": "Advanced · Premium",
+      "body": [
+        "Advanced obejmuje Base i usuwa reklamy. Premium obejmuje Advanced oraz dodaje Microsoft Calendar i Microsoft Teams.",
+        "Subskrypcja nie nadaje praw do edycji cudzych kalendarzy ani nie omija ograniczeń konta służbowego."
+      ]
+    },
+    {
+      "heading": "Informacje o zakupie i anulowaniu",
+      "body": [
+        "Przed zakupem sprawdź lokalną cenę, okres rozliczeniowy i warunki odnowienia.",
+        "Dla subskrypcji rozliczanej przez Apple otwórz Ustawienia → swoje imię i nazwisko → Subskrypcje. Sprawdź status i datę wygaśnięcia. Anulowanie odnowienia jest odrębne od usunięcia aplikacji lub danych kalendarza; nie zakładaj dostępności płatnych funkcji po wygaśnięciu."
+      ]
+    }
+  ],
+  "claims": {},
+  "practical": [
+    "Przed zakupem sprawdź lokalną cenę, okres rozliczeniowy i warunki odnowienia.",
+    "Subskrypcja nie nadaje praw do edycji cudzych kalendarzy ani nie omija ograniczeń konta służbowego."
+  ],
+  "faq": [
+    {
+      "q": "Jak zatrzymać odnowienie?",
+      "a": "Dla subskrypcji rozliczanej przez Apple otwórz Ustawienia → swoje imię i nazwisko → Subskrypcje. Sprawdź status i datę wygaśnięcia. Anulowanie odnowienia jest odrębne od usunięcia aplikacji lub danych kalendarza; nie zakładaj dostępności płatnych funkcji po wygaśnięciu."
+    }
+  ],
+  "sourcesHeading": "Informacje o zakupie i anulowaniu",
+  "sources": [
+    {
+      "label": "Apple: Jak zatrzymać odnowienie?",
+      "url": "https://support.apple.com/en-us/118428"
+    }
+  ],
+  "seeAlso": [
+    "icloud-google-and-outlook-in-one-view"
+  ]
+},
 };

@@ -11,168 +11,148 @@ import { LocalisedArticle } from '../types';
  */
 export const ARTICLES_ES_ES: Readonly<Record<string, LocalisedArticle>> = {
   'weather-inside-your-calendar': {
-    title: 'Un calendario que ya lleva el tiempo dentro',
-    short: 'El tiempo dentro del calendario',
-    description:
-      'Por qué consultar dos aplicaciones para planificar un día es un fallo de diseño, y cómo es un calendario en el que la previsión forma parte de la vista en lugar de estar al lado.',
-    lede: 'Casi todo el mundo planifica el día entre dos aplicaciones. El calendario dice dónde hay que estar; la del tiempo dice cómo estará cuando lleguemos. Sostener las dos cosas en la cabeza es la parte que nadie nota que hace, hasta que un sábado se estropea.',
-    commonBelief:
-      'Que un calendario es para compromisos y una aplicación del tiempo es para el tiempo, y que mantenerlos separados es sencillamente cómo funcionan los teléfonos.',
-    sections: [
-      {
-        heading: 'El coste de dos aplicaciones no son dos toques',
-        body: [
-          'Cambiar de aplicación no cuesta nada. Lo caro es que las dos no se ponen de acuerdo sobre qué importa. Su calendario sabe que el sábado hay dos horas bloqueadas a las once; la del tiempo sabe que lloverá de diez a una. Ninguna de las dos sabe que esos dos hechos, juntos, significan que hay que mover el bloque.',
-          'Usted es la capa de integración. Eso funciona hasta que está ocupado, que es justo cuando merece la pena proteger los planes.',
-        ],
-      },
-      {
-        heading: 'Qué cambia cuando la previsión está en la cuadrícula',
-        body: [
-          'Ponga la previsión detrás de los eventos y el conflicto se resuelve solo. Una mañana húmeda y una tarde seca se ven en el mismo golpe de vista que la reunión que iba a colocar, y la decisión deja de costar pensamiento.',
-          'Esto no es un widget pegado a un lado. Cada día de las vistas de semana y mes lleva sus propias condiciones, y cada evento lleva la previsión de las horas que realmente ocupa — no el resumen diario, que promedia justo la parte que necesitaba.',
-        ],
-      },
-      {
-        heading: 'El límite honesto',
-        body: [
-          'Una previsión a catorce días es una forma, no una promesa. Sirve de verdad para elegir entre un martes y un jueves, y no sirve casi de nada para decidir si llevar abrigo dentro de dos semanas.',
-          'La aplicación muestra el horizonte completo porque elegir fecha es un trabajo real. No disfraza el día doce de mañana.',
-        ],
-      },
-    ],
-    claims: {
-      forecastDays: 'Días de previsión, en el calendario y junto a cada evento',
-      views: 'Vistas con el tiempo: Día, Semana, Mes, Año y Lista',
-      price: 'Lo que cuestan las funciones del tiempo',
+  "title": "Un calendario que ya lleva el tiempo dentro",
+  "short": "El tiempo dentro del calendario",
+  "description": "Por qué consultar dos aplicaciones para planificar un día es un fallo de diseño, y cómo es un calendario en el que la previsión forma parte de la vista en lugar de estar al lado.",
+  "lede": "Casi todo el mundo planifica el día entre dos aplicaciones. El calendario dice dónde hay que estar; la del tiempo dice cómo estará cuando lleguemos. Sostener las dos cosas en la cabeza es la parte que nadie nota que hace, hasta que un sábado se estropea.",
+  "commonBelief": "Que un calendario es para compromisos y una aplicación del tiempo es para el tiempo, y que mantenerlos separados es sencillamente cómo funcionan los teléfonos.",
+  "sections": [
+    {
+      "heading": "El coste de dos aplicaciones no son dos toques",
+      "body": [
+        "Cambiar de aplicación no cuesta nada. Lo caro es que las dos no se ponen de acuerdo sobre qué importa. Su calendario sabe que el sábado hay dos horas bloqueadas a las once; la del tiempo sabe que lloverá de diez a una. Ninguna de las dos sabe que esos dos hechos, juntos, significan que hay que mover el bloque.",
+        "Usted es la capa de integración. Eso funciona hasta que está ocupado, que es justo cuando merece la pena proteger los planes."
+      ]
     },
-    practical: [
-      'Mire la banda que hay detrás de los días en la vista de semana antes de colocar nada al aire libre.',
-      'Toque un evento para ver la previsión de sus horas y no la de su día.',
-      'Coloque lo que dependa del tiempo primero contra los catorce días y afínelo dos días antes.',
-      'Trate cualquier cosa más allá del día siete como una forma, no como un plan.',
-    ],
-    seeAlso: ['forecast-beside-every-event', 'a-fourteen-day-view-of-the-weather'],
+    {
+      "heading": "La previsión disponible",
+      "body": [
+        "Cloud Calendars utiliza la previsión disponible para el lugar seleccionado. Los datos por horas y por días pueden abarcar períodos distintos.",
+        "Las fechas que puedes consultar en el calendario no determinan el alcance de la previsión. La vista mensual no implica una previsión para todo el mes ni para cada evento."
+      ]
+    }
+  ],
+  "claims": {
+    "price": "Lo que cuestan las funciones del tiempo"
   },
+  "practical": [
+    "Comprueba el lugar, la fecha y las horas disponibles antes de usar la previsión para planificar."
+  ],
+  "seeAlso": [
+    "forecast-beside-every-event",
+    "a-fourteen-day-view-of-the-weather"
+  ],
+  "updated": "2026-10-21"
+},
 
   'forecast-beside-every-event': {
-    title: 'La previsión junto a cada evento, no solo junto al día',
-    short: 'Previsión en cada evento',
-    description:
-      'Un resumen diario promedia justo las horas que importan. Qué significa el tiempo por evento y por qué la diferencia cuenta al aire libre.',
-    lede: 'La mayoría de los calendarios que mencionan el tiempo muestran un icono por día. Ese icono es un promedio, y el promedio de una mañana lluviosa y una tarde seca es una llovizna que no ocurre nunca.',
-    commonBelief:
-      'Que un icono diario en el calendario es lo mismo que una previsión unida a un evento.',
-    sections: [
-      {
-        heading: 'Lo que esconde un icono diario',
-        body: [
-          'Tome un día que llueve con fuerza hasta las once y luego despeja. El resumen elige algo intermedio y muestra una nube. Usted mira su cita de las dos, ve la nube y mueve un paseo que no hacía falta mover.',
-          'El error va en las dos direcciones. Un día que está bien salvo por una hora violenta a las seis aparece como bueno, y el único evento que importaba es el que se moja.',
-        ],
-      },
-      {
-        heading: 'Unir la previsión a las horas',
-        body: [
-          'Un evento ocupa horas concretas. La previsión de esas horas es una cifra distinta de la de su día, y es la única que responde a lo que usted está preguntando de verdad.',
-          'Abra un evento y las condiciones que aparecen son las de su ventana. Un bloque de tres horas recibe las tres horas, no las veinticuatro.',
-        ],
-      },
-    ],
-    claims: {
-      forecastDays: 'Días de antelación con que un evento puede llevar previsión',
+  "title": "La previsión junto a cada evento, no solo junto al día",
+  "short": "Previsión en cada evento",
+  "description": "Un resumen diario promedia justo las horas que importan. Qué significa el tiempo por evento y por qué la diferencia cuenta al aire libre.",
+  "lede": "La mayoría de los calendarios que mencionan el tiempo muestran un icono por día. Ese icono es un promedio, y el promedio de una mañana lluviosa y una tarde seca es una llovizna que no ocurre nunca.",
+  "commonBelief": "Que un icono diario en el calendario es lo mismo que una previsión unida a un evento.",
+  "sections": [
+    {
+      "heading": "Lo que esconde un icono diario",
+      "body": [
+        "Tome un día que llueve con fuerza hasta las once y luego despeja. El resumen elige algo intermedio y muestra una nube. Usted mira su cita de las dos, ve la nube y mueve un paseo que no hacía falta mover.",
+        "El error va en las dos direcciones. Un día que está bien salvo por una hora violenta a las seis aparece como bueno, y el único evento que importaba es el que se moja."
+      ]
     },
-    practical: [
-      'Consulte el evento, no el día, siempre que el plan dependa del tiempo.',
-      'Para algo de más de un par de horas, mire cómo se mueven las condiciones a lo largo del bloque.',
-      'Mueva antes de cancelar: una hora arriba o abajo suele ser toda la diferencia.',
-    ],
-    seeAlso: ['weather-inside-your-calendar', 'planning-outdoors-without-being-rained-on'],
-  },
+    {
+      "heading": "Unir la previsión a las horas",
+      "body": [
+        "Un evento ocupa horas concretas. La previsión de esas horas es una cifra distinta de la de su día, y es la única que responde a lo que usted está preguntando de verdad.",
+        "Abra un evento y las condiciones que aparecen son las de su ventana. Un bloque de tres horas recibe las tres horas, no las veinticuatro."
+      ]
+    }
+  ],
+  "claims": {},
+  "practical": [
+    "Consulte el evento, no el día, siempre que el plan dependa del tiempo.",
+    "Para algo de más de un par de horas, mire cómo se mueven las condiciones a lo largo del bloque.",
+    "Mueva antes de cancelar: una hora arriba o abajo suele ser toda la diferencia."
+  ],
+  "seeAlso": [
+    "weather-inside-your-calendar",
+    "planning-outdoors-without-being-rained-on"
+  ],
+  "updated": "2026-10-21"
+},
 
   'planning-outdoors-without-being-rained-on': {
-    title: 'Planificar al aire libre sin acabar empapado',
-    short: 'Planificar al aire libre',
-    description:
-      'Un método práctico para programar cualquier cosa que ocurra fuera, usando el calendario que ya lleva en lugar de una rutina meteorológica aparte.',
-    lede: 'Si sus aficiones ocurren al aire libre, probablemente ha construido un ritual privado: mirar el tiempo, entornar los ojos ante la semana, adivinar. La parte de adivinar puede desaparecer.',
-    commonBelief: 'Que evitar el mal tiempo consiste en consultar la previsión más a menudo.',
-    sections: [
-      {
-        heading: 'Mirar más no es la respuesta',
-        body: [
-          'Abrir la aplicación del tiempo cinco veces no mejora la previsión; mejora la ansiedad. Lo que cambia el resultado es mirarla en el momento en que se elige una hora, y ese es un momento completamente distinto.',
-          'Ese momento ocurre en el calendario. Si el tiempo no está ahí, la decisión se toma sin él y se corrige después.',
-        ],
-      },
-      {
-        heading: 'Elegir el hueco contra la semana',
-        body: [
-          'Mire la semana con las condiciones detrás y la elección suele hacerse sola. Dos tardes posibles, una seca: no hay nada que deliberar.',
-          'El hábito que merece la pena es pequeño: antes de colocar algo al aire libre, mire la banda, no otra aplicación.',
-        ],
-      },
-      {
-        heading: 'Después, las horas y no el día',
-        body: [
-          'Una vez que el evento existe, la previsión que importa es la suya. Un día puede ser lluvioso y sus dos horas secas, y el resumen diario no se lo dirá nunca.',
-          'Mueva antes de cancelar. Una hora en cualquier dirección rescata más planes que cualquier cantidad de comprobaciones.',
-        ],
-      },
-    ],
-    claims: {
-      forecastDays: 'Días de antelación contra los que colocar un plan',
+  "title": "Planificar al aire libre sin acabar empapado",
+  "short": "Planificar al aire libre",
+  "description": "Un método práctico para programar cualquier cosa que ocurra fuera, usando el calendario que ya lleva en lugar de una rutina meteorológica aparte.",
+  "lede": "Si sus aficiones ocurren al aire libre, probablemente ha construido un ritual privado: mirar el tiempo, entornar los ojos ante la semana, adivinar. La parte de adivinar puede desaparecer.",
+  "commonBelief": "Que evitar el mal tiempo consiste en consultar la previsión más a menudo.",
+  "sections": [
+    {
+      "heading": "Mirar más no es la respuesta",
+      "body": [
+        "Abrir la aplicación del tiempo cinco veces no mejora la previsión; mejora la ansiedad. Lo que cambia el resultado es mirarla en el momento en que se elige una hora, y ese es un momento completamente distinto.",
+        "Ese momento ocurre en el calendario. Si el tiempo no está ahí, la decisión se toma sin él y se corrige después."
+      ]
     },
-    practical: [
-      'Coloque los eventos al aire libre desde la vista de semana, con las condiciones a la vista.',
-      'Dos días antes, consulte las horas del evento y no su día.',
-      'Desplace una hora antes de abandonar el plan.',
-      'Para algo a más de una semana, elija el día y acepte que lo afinará luego.',
-    ],
-    seeAlso: ['forecast-beside-every-event', 'a-fourteen-day-view-of-the-weather'],
-  },
+    {
+      "heading": "Elegir el hueco contra la semana",
+      "body": [
+        "Mire la semana con las condiciones detrás y la elección suele hacerse sola. Dos tardes posibles, una seca: no hay nada que deliberar.",
+        "El hábito que merece la pena es pequeño: antes de colocar algo al aire libre, mire la banda, no otra aplicación."
+      ]
+    },
+    {
+      "heading": "Después, las horas y no el día",
+      "body": [
+        "Una vez que el evento existe, la previsión que importa es la suya. Un día puede ser lluvioso y sus dos horas secas, y el resumen diario no se lo dirá nunca.",
+        "Mueva antes de cancelar. Una hora en cualquier dirección rescata más planes que cualquier cantidad de comprobaciones."
+      ]
+    }
+  ],
+  "claims": {},
+  "practical": [
+    "Coloque los eventos al aire libre desde la vista de semana, con las condiciones a la vista.",
+    "Dos días antes, consulte las horas del evento y no su día.",
+    "Desplace una hora antes de abandonar el plan.",
+    "Para algo a más de una semana, elija el día y acepte que lo afinará luego."
+  ],
+  "seeAlso": [
+    "forecast-beside-every-event",
+    "a-fourteen-day-view-of-the-weather"
+  ],
+  "updated": "2026-10-21"
+},
 
   'a-fourteen-day-view-of-the-weather': {
-    title: 'Catorce días de previsión, y para qué sirve cada mitad',
-    short: 'Catorce días a la vista',
-    description:
-      'El extremo lejano de una previsión larga no es un pronóstico. Sigue siendo lo más útil que tiene cuando hay que elegir una fecha.',
-    lede: 'La gente pide una previsión a diez días y luego se queja de que el día diez falló. Las dos cosas son razonables. Una previsión larga responde a una pregunta distinta de la de mañana, y la responde bien.',
-    commonBelief:
-      'Que una previsión a catorce días es una promesa a catorce días, y que fallar el día doce invalida todo lo demás.',
-    sections: [
-      {
-        heading: 'Para qué sirve la primera semana',
-        body: [
-          'Dentro de unos siete días la previsión es lo bastante concreta para actuar. Le dirá qué tarde está seca, más o menos cuándo llega la lluvia, y si merece la pena mover algo una hora.',
-          'Es el rango donde viven las decisiones de cancelar, mover y preparar.',
-        ],
-      },
-      {
-        heading: 'Para qué sirve la segunda',
-        body: [
-          'Pasada una semana desaparece el detalle y queda la forma. Ya no le dicen si llueve a las tres; le dicen que un extremo de la semana que viene parece estable y el otro no.',
-          'Eso es exactamente lo que hace falta al elegir entre dos fechas candidatas, que es la decisión meteorológica más común que toma cualquiera.',
-        ],
-      },
-      {
-        heading: 'Leerla sin dejarse engañar',
-        body: [
-          'Fíjese en cómo cambian los días lejanos entre una consulta y otra. Un día que mantiene su forma a lo largo de tres actualizaciones le está diciendo algo. Un día que salta entre sol y tormenta le está diciendo que todavía no lo sabe, y eso también es información.',
-          'La aplicación muestra el horizonte entero en lugar de recortarlo, y no presenta el día doce con más seguridad de la que se ha ganado.',
-        ],
-      },
-    ],
-    claims: {
-      forecastDays: 'Días que cubre la previsión',
-    },
-    practical: [
-      'Use la segunda semana para elegir fecha, no para decidir qué ponerse.',
-      'Vuelva a mirar un plan dependiente del tiempo unos dos días antes, cuando llega el detalle.',
-      'Si el extremo lejano cambia entre consultas, considérelo inestable y no lo que diga la versión de hoy.',
-    ],
-    seeAlso: ['weather-inside-your-calendar', 'planning-outdoors-without-being-rained-on'],
-  },
+  "title": "La previsión disponible",
+  "short": "La previsión disponible",
+  "description": "Cloud Calendars utiliza la previsión disponible para el lugar seleccionado. Los datos por horas y por días pueden abarcar períodos distintos.",
+  "lede": "Las fechas que puedes consultar en el calendario no determinan el alcance de la previsión. La vista mensual no implica una previsión para todo el mes ni para cada evento.",
+  "sections": [
+    {
+      "heading": "La previsión disponible",
+      "body": [
+        "Cloud Calendars utiliza la previsión disponible para el lugar seleccionado. Los datos por horas y por días pueden abarcar períodos distintos.",
+        "Las fechas que puedes consultar en el calendario no determinan el alcance de la previsión. La vista mensual no implica una previsión para todo el mes ni para cada evento."
+      ]
+    }
+  ],
+  "claims": {},
+  "practical": [
+    "Comprueba el lugar, la fecha y las horas disponibles antes de usar la previsión para planificar."
+  ],
+  "seeAlso": [
+    "weather-inside-your-calendar",
+    "planning-outdoors-without-being-rained-on"
+  ],
+  "updated": "2026-10-21",
+  "sources": [
+    {
+      "label": "Apple WeatherKit",
+      "url": "https://developer.apple.com/weatherkit/"
+    }
+  ]
+},
 
   'icloud-google-and-outlook-in-one-view': {
     title: 'iCloud, Google y Outlook en una sola vista',
@@ -432,46 +412,53 @@ export const ARTICLES_ES_ES: Readonly<Record<string, LocalisedArticle>> = {
   },
 
   'what-a-subscription-actually-buys': {
-    title: 'Qué compra realmente una suscripción, plan por plan',
-    short: 'Qué compra una suscripción',
-    description:
-      'Dos planes de pago, qué los separa y cómo saber cuál —si alguno— es el suyo. Precios anuales y mensuales uno al lado del otro.',
-    lede: 'Dos planes bastan para confundir si nadie dice claramente qué los separa. Lo que los separa es Microsoft.',
-    commonBelief: 'Que el plan superior son las mismas funciones pero más.',
-    sections: [
-      {
-        heading: 'El primer plan quita la publicidad',
-        body: [
-          'También añade gestionar eventos entre calendarios de iCloud y Google, permisos de uso compartido de Google, enlaces de Meet automáticos y actualización del tiempo más rápida. Pero la gente lo compra por la publicidad.',
-          'A este precio es aproximadamente un café al año, y es el plan que encaja con casi todo el que quiera pagar algo.',
-        ],
-      },
-      {
-        heading: 'El segundo plan es para Microsoft',
-        body: [
-          'Sincronización con Outlook y Exchange, enlaces de Teams, gestión entre cuentas incluyendo el trabajo, gestión de asistentes. Cuesta un orden de magnitud más porque la conexión también.',
-          'Si su calendario de trabajo no es de Microsoft, este plan no tiene nada para usted y no debería comprarlo.',
-        ],
-      },
-      {
-        heading: 'Anual frente a mensual',
-        body: [
-          'Los dos planes salen más baratos al año. El ahorro es moderado y no espectacular, así que tome el anual si ya lo tiene claro y el mensual si aún lo está pensando.',
-          'Ninguno es una trampa: al cancelar se queda en el plan gratuito con sus calendarios intactos, porque los eventos nunca fueron nuestros.',
-        ],
-      },
-    ],
-    claims: {
-      advancedMonthly: 'Primer plan, mensual, en dólares',
-      advancedYearly: 'Primer plan, anual, en dólares',
-      premiumMonthly: 'Segundo plan, mensual, en dólares',
-      premiumYearly: 'Segundo plan, anual, en dólares',
+  "updated": "2026-10-21",
+  "title": "Qué compra realmente una suscripción, plan por plan",
+  "short": "Qué compra una suscripción",
+  "description": "Qué compra una suscripción: Base, Advanced, Premium.",
+  "lede": "Esta guía la publica Arte Soft, desarrollador de Cloud Calendars.",
+  "sections": [
+    {
+      "heading": "Base",
+      "body": [
+        "Base incluye sincronización con Google Calendar, Google Meet, vistas del calendario, tiempo y widgets. El plan gratuito puede mostrar anuncios."
+      ]
     },
-    practical: [
-      'Compre el primer plan para quitar la publicidad, no para desbloquear el calendario.',
-      'Compre el segundo solo si su trabajo vive en Microsoft.',
-      'Pase al anual cuando esté seguro; el ahorro es real pero pequeño.',
-    ],
-    seeAlso: ['free-google-sync-without-adverts'],
-  },
+    {
+      "heading": "Advanced · Premium",
+      "body": [
+        "Advanced incluye Base y elimina los anuncios. Premium incluye Advanced y añade Microsoft Calendar y Microsoft Teams.",
+        "Una suscripción no concede permisos para editar calendarios ajenos ni evita las restricciones de una cuenta de trabajo."
+      ]
+    },
+    {
+      "heading": "Información de compra y cancelación",
+      "body": [
+        "Antes de comprar, consulta el precio local, el período de facturación y las condiciones de renovación.",
+        "Para una suscripción facturada por Apple, abre Ajustes → tu nombre → Suscripciones. Revisa el estado y la fecha de vencimiento. Cancelar la renovación es distinto de borrar la app o los datos del calendario; no des por hecho que las funciones de pago siguen disponibles al vencer."
+      ]
+    }
+  ],
+  "claims": {},
+  "practical": [
+    "Antes de comprar, consulta el precio local, el período de facturación y las condiciones de renovación.",
+    "Una suscripción no concede permisos para editar calendarios ajenos ni evita las restricciones de una cuenta de trabajo."
+  ],
+  "faq": [
+    {
+      "q": "¿Cómo detengo la renovación?",
+      "a": "Para una suscripción facturada por Apple, abre Ajustes → tu nombre → Suscripciones. Revisa el estado y la fecha de vencimiento. Cancelar la renovación es distinto de borrar la app o los datos del calendario; no des por hecho que las funciones de pago siguen disponibles al vencer."
+    }
+  ],
+  "sourcesHeading": "Información de compra y cancelación",
+  "sources": [
+    {
+      "label": "Apple: ¿Cómo detengo la renovación?",
+      "url": "https://support.apple.com/en-us/118428"
+    }
+  ],
+  "seeAlso": [
+    "free-google-sync-without-adverts"
+  ]
+},
 };

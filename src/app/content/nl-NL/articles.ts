@@ -10,42 +10,39 @@ import { LocalisedArticle } from '../types';
  */
 export const ARTICLES_NL_NL: Readonly<Record<string, LocalisedArticle>> = {
   'weather-inside-your-calendar': {
-    title: 'Een agenda waar het weer al in zit',
-    short: 'Het weer in de agenda',
-    description:
-      'Waarom twee apps raadplegen om een dag in te delen een ontwerpfout is, en hoe een agenda eruitziet waarin de verwachting deel van de weergave is in plaats van ernaast te staan.',
-    lede: 'Bijna iedereen deelt zijn dag in tussen twee apps. De agenda zegt waar u moet zijn; de weer-app zegt wat voor weer het is als u er bent. Die twee in uw hoofd bij elkaar houden is het deel dat niemand merkt te doen — tot een zaterdag in het water valt.',
-    commonBelief:
-      'Dat een agenda voor afspraken is en een weer-app voor het weer, en dat ze gescheiden houden nu eenmaal is hoe telefoons werken.',
-    sections: [
-      {
-        heading: 'De prijs van twee apps zijn geen twee tikken',
-        body: [
-          'Wisselen kost niets. Duur is dat de twee het nooit eens worden over wat telt. Uw agenda weet dat zaterdag om elf uur twee uur bezet is; de weer-app weet dat het van tien tot één regent. Geen van beide weet dat die twee feiten samen betekenen dat het blok moet verschuiven.',
-          'U bent de integratielaag. Dat werkt tot u het druk hebt, precies wanneer plannen beschermen het meest waard is.',
-        ],
-      },
-      {
-        heading: 'Wat er verandert als de verwachting in het raster staat',
-        body: [
-          'Zet de verwachting achter de afspraken en het conflict lost zichzelf op. Een natte ochtend en een droge middag ziet u in dezelfde oogopslag als de afspraak die u wilde plaatsen, en de beslissing kost geen denkwerk meer.',
-          'Dit is geen widget die ernaast geplakt zit. Elke dag in de week- en maandweergave draagt zijn eigen omstandigheden, en elke afspraak draagt de verwachting van de uren die hij werkelijk beslaat — niet de dagsamenvatting, die juist het deel uitmiddelt dat u nodig had.',
-        ],
-      },
-    ],
-    claims: {
-      forecastDays: 'Dagen verwachting, in de agenda en naast elke afspraak',
-      views: 'Weergaven die het weer dragen: Dag, Week, Maand, Jaar en Lijst',
-      price: 'Wat de weerfuncties kosten',
+  "title": "Een agenda waar het weer al in zit",
+  "short": "Het weer in de agenda",
+  "description": "Waarom twee apps raadplegen om een dag in te delen een ontwerpfout is, en hoe een agenda eruitziet waarin de verwachting deel van de weergave is in plaats van ernaast te staan.",
+  "lede": "Bijna iedereen deelt zijn dag in tussen twee apps. De agenda zegt waar u moet zijn; de weer-app zegt wat voor weer het is als u er bent. Die twee in uw hoofd bij elkaar houden is het deel dat niemand merkt te doen — tot een zaterdag in het water valt.",
+  "commonBelief": "Dat een agenda voor afspraken is en een weer-app voor het weer, en dat ze gescheiden houden nu eenmaal is hoe telefoons werken.",
+  "sections": [
+    {
+      "heading": "De prijs van twee apps zijn geen twee tikken",
+      "body": [
+        "Wisselen kost niets. Duur is dat de twee het nooit eens worden over wat telt. Uw agenda weet dat zaterdag om elf uur twee uur bezet is; de weer-app weet dat het van tien tot één regent. Geen van beide weet dat die twee feiten samen betekenen dat het blok moet verschuiven.",
+        "U bent de integratielaag. Dat werkt tot u het druk hebt, precies wanneer plannen beschermen het meest waard is."
+      ]
     },
-    practical: [
-      'Kijk naar de band achter de dagen in de weekweergave voordat u iets buiten plant.',
-      'Tik op een afspraak om de verwachting van zijn uren te zien, niet die van de dag.',
-      'Plaats weersafhankelijke dingen eerst tegen de veertien dagen en verfijn twee dagen van tevoren.',
-      'Behandel alles voorbij dag zeven als een vorm, niet als een plan.',
-    ],
-    seeAlso: ['icloud-google-and-outlook-in-one-view', 'what-a-subscription-actually-buys'],
+    {
+      "heading": "De beschikbare voorspelling",
+      "body": [
+        "Cloud Calendars gebruikt de beschikbare voorspelling voor de gekozen locatie. Uur- en daggegevens kunnen verschillende perioden beslaan.",
+        "De datums die je in de agenda kunt bekijken, bepalen niet hoe ver de voorspelling reikt. Een maandweergave betekent geen voorspelling voor de hele maand of elke afspraak."
+      ]
+    }
+  ],
+  "claims": {
+    "price": "Wat de weerfuncties kosten"
   },
+  "practical": [
+    "Controleer locatie, datum en beschikbare uren voordat je met de voorspelling plant."
+  ],
+  "seeAlso": [
+    "icloud-google-and-outlook-in-one-view",
+    "what-a-subscription-actually-buys"
+  ],
+  "updated": "2026-10-21"
+},
 
   'icloud-google-and-outlook-in-one-view': {
     title: 'iCloud, Google en Outlook in één weergave',
@@ -121,39 +118,53 @@ export const ARTICLES_NL_NL: Readonly<Record<string, LocalisedArticle>> = {
   },
 
   'what-a-subscription-actually-buys': {
-    title: 'Wat een abonnement werkelijk oplevert',
-    short: 'Wat een abonnement oplevert',
-    description:
-      'Twee betaalde versies, wat ze scheidt, en hoe u weet welke — als er één is — de uwe is.',
-    lede: 'Twee versies zijn genoeg voor verwarring als niemand duidelijk zegt wat ze scheidt. Wat ze scheidt is Microsoft.',
-    commonBelief: 'Dat de duurdere versie dezelfde functies zijn, maar dan meer.',
-    sections: [
-      {
-        heading: 'De eerste versie haalt de advertenties weg',
-        body: [
-          "Ze voegt ook beheer van afspraken tussen iCloud- en Google-agenda's toe, Google-deelrechten, automatische Meet-links en sneller verversend weer. Maar men koopt haar voor de advertenties.",
-          'Tegen deze prijs is dat ongeveer één koffie per jaar, en het is de versie die past bij vrijwel iedereen die iets wil betalen.',
-        ],
-      },
-      {
-        heading: 'De tweede versie is voor Microsoft',
-        body: [
-          'Outlook- en Exchange-synchronisatie, Teams-links, beheer over accounts heen inclusief werk, deelnemersbeheer. Ze kost een orde van grootte meer omdat de verbinding dat ook doet.',
-          "Staat uw werkagenda niet bij Microsoft, dan zit er niets voor u in en moet u haar niet kopen. Beide versies zijn per jaar goedkoper; de besparing is bescheiden, niet spectaculair. Na opzeggen staat u op gratis en zijn uw agenda's ongeschonden, want de afspraken waren nooit van ons.",
-        ],
-      },
-    ],
-    claims: {
-      advancedMonthly: 'Eerste versie, per maand, in dollars',
-      advancedYearly: 'Eerste versie, per jaar, in dollars',
-      premiumMonthly: 'Tweede versie, per maand, in dollars',
-      premiumYearly: 'Tweede versie, per jaar, in dollars',
+  "updated": "2026-10-21",
+  "title": "Wat een abonnement werkelijk oplevert",
+  "short": "Wat een abonnement oplevert",
+  "description": "Wat een abonnement oplevert: Base, Advanced, Premium.",
+  "lede": "Deze gids wordt uitgegeven door Arte Soft, de ontwikkelaar van Cloud Calendars.",
+  "sections": [
+    {
+      "heading": "Base",
+      "body": [
+        "Base bevat Google Calendar-synchronisatie, Google Meet, agendaweergaven, weer en widgets. Het gratis abonnement kan advertenties tonen."
+      ]
     },
-    practical: [
-      'Koop de eerste versie om advertenties weg te halen, niet om de agenda te ontgrendelen.',
-      'Koop de tweede alleen als uw werk bij Microsoft leeft.',
-      'Ga over op jaarlijks zodra u zeker bent; de besparing is echt maar klein.',
-    ],
-    seeAlso: ['icloud-google-and-outlook-in-one-view'],
-  },
+    {
+      "heading": "Advanced · Premium",
+      "body": [
+        "Advanced bevat Base en verwijdert advertenties. Premium bevat Advanced en voegt Microsoft Calendar en Microsoft Teams toe.",
+        "Een abonnement geeft geen bewerkingsrechten voor andermans agenda’s en omzeilt geen beperkingen van een werkaccount."
+      ]
+    },
+    {
+      "heading": "Informatie over aankoop en opzegging",
+      "body": [
+        "Controleer vóór aankoop de lokale prijs, factureringsperiode en verlengingsvoorwaarden.",
+        "Voor een door Apple gefactureerd abonnement open je Instellingen → je naam → Abonnementen. Controleer de status en einddatum. Verlenging opzeggen staat los van het verwijderen van de app of agendagegevens; ga er niet van uit dat betaalde functies na afloop beschikbaar blijven."
+      ]
+    }
+  ],
+  "claims": {},
+  "practical": [
+    "Controleer vóór aankoop de lokale prijs, factureringsperiode en verlengingsvoorwaarden.",
+    "Een abonnement geeft geen bewerkingsrechten voor andermans agenda’s en omzeilt geen beperkingen van een werkaccount."
+  ],
+  "faq": [
+    {
+      "q": "Hoe stop ik de verlenging?",
+      "a": "Voor een door Apple gefactureerd abonnement open je Instellingen → je naam → Abonnementen. Controleer de status en einddatum. Verlenging opzeggen staat los van het verwijderen van de app of agendagegevens; ga er niet van uit dat betaalde functies na afloop beschikbaar blijven."
+    }
+  ],
+  "sourcesHeading": "Informatie over aankoop en opzegging",
+  "sources": [
+    {
+      "label": "Apple: Hoe stop ik de verlenging?",
+      "url": "https://support.apple.com/en-us/118428"
+    }
+  ],
+  "seeAlso": [
+    "icloud-google-and-outlook-in-one-view"
+  ]
+},
 };

@@ -51,52 +51,67 @@ export const GOOGLE_RO: Readonly<Record<string, LocalisedArticle>> = {
   },
 
   'why-a-shared-calendar-does-not-appear': {
-    title: 'Ți s-a partajat un calendar și nu e acolo',
-    short: 'Calendarul partajat nu apare',
-    description:
-      'Cineva a partajat un calendar, ai acceptat și nu s-a schimbat nimic. Cele patru motive obișnuite, în ordinea în care merită verificate.',
-    lede: 'Invitația a venit, linkul a fost atins, iar calendarul tot lipsește. Aproape întotdeauna e unul din patru lucruri, și niciunul nu e partajarea stricată.',
-    commonBelief: 'Că acceptarea unui calendar partajat îl pune pe telefonul tău.',
-    sections: [
+    "updated": "2026-10-21",
+    "title": "Ți s-a partajat un calendar și nu e acolo",
+    "short": "Calendarul partajat nu apare",
+    "description": "Lipsește un calendar Google partajat? Verifică contul invitat, grupul, vizibilitatea și tipul linkului primit.",
+    "lede": "Acest ghid este realizat de Arte Soft, dezvoltatorul Cloud Calendars. Deosebește mai întâi lipsa accesului de un calendar doar ascuns.",
+    "commonBelief": "Că acceptarea unui calendar partajat îl pune pe telefonul tău.",
+    "sections": [
       {
-        heading: 'Acceptarea îl adaugă unui cont, nu unui dispozitiv',
-        body: [
-          'O partajare aterizează în contul Google căruia i-a fost adresată. Dacă ai acceptat conectat cu un cont, iar telefonul poartă altul, calendarul stă cuminte exact acolo unde nu te uiți.',
-          'Chiar și în contul potrivit, un calendar proaspăt adăugat ajunge pe celelalte dispozitive mai des oprit decât pornit. Există, doar că nu e bifat — iar un calendar nebifat arată exact ca unul lipsă.',
-        ],
+        "heading": "Verifică contul și grupul",
+        "body": [
+          "Compară destinatarul invitației cu contul Google de pe telefon și din browser. Deschide linkul cu acel cont. Google permite partajarea cu persoane și Grupuri Google. Pentru acces prin grup, cere administratorului să confirme apartenența ta, iar proprietarului calendarului să verifice accesul grupului corect. Un e-mail redirecționat nu acordă singur permisiunea."
+        ]
       },
       {
-        heading: 'Celelalte două motive',
-        body: [
-          'Partajarea către o listă de discuții sau o adresă de grup ajunge rar la persoane; e nevoie de adresa care chiar este un cont Google. Iar un calendar partajat ca link este un abonament: ajunge în altă parte a listei și se reîmprospătează în ritmul celui care publică, nu instantaneu.',
-          'Pe iPhone, calendarele Google ajung în aplicația integrată printr-o listă de sincronizare proprie, iar calendarele secundare sunt implicit în afara ei. De aceea un cont arată calendarul principal și le scapă în tăcere pe cele patru care contează.',
-        ],
+        "heading": "Ascuns, absent sau restricționat?",
+        "body": [
+          "Deschide meniul Google Calendar pe iPhone sau iPad. Dacă apare în listă, dar nu este bifat, selectează calendarul. Dacă lipsește, cere proprietarului să verifice accesul: o cerere nu înseamnă aprobare. Regulile serviciului sau școlii pot limita partajarea. Compară același cont în Google Calendar pe web. Dacă acolo funcționează, verifică contul conectat și calendarele selectate în cealaltă aplicație. Accesul doar pentru citire nu permite editarea."
+        ]
       },
+      {
+        "heading": "Identifică linkul",
+        "body": [
+          "Și invitația de partajare conține un link; nu orice link este un abonament ICS. Întreabă dacă acordă acces la un calendar Google sau publică un flux doar pentru citire. Google precizează că un abonament nou necesită un browser pe computer; deschiderea unui calendar deja partajat prin e-mail este altă operațiune. Actualizările fluxului depind de serviciul destinatar. Nu există un termen universal; confirmă schimbările urgente cu organizatorul."
+        ]
+      }
     ],
-    claims: {
-      refreshHint: 'Ore între cererile de reîmprospătare ale unui flux abonat',
-      accounts: 'Tipuri de conturi pe care o singură vedere le ține laolaltă, fără nimic din toate astea',
-    },
-    faq: [
+    "claims": {},
+    "faq": [
       {
-        q: 'Am acceptat un calendar partajat, dar nu e pe iPhone. De ce?',
-        a: 'Partajarea aterizează în contul Google căruia i-a fost adresată, iar un calendar proaspăt adăugat ajunge pe celelalte dispozitive de obicei oprit. Verifică întâi contul, apoi caută-l nebifat, nu absent.',
+        "q": "Poate un Grup Google primi acces?",
+        "a": "Da. Verifică grupul ales, apartenența ta și restricțiile organizației. Un e-mail de grup redirecționat nu dovedește accesul."
       },
       {
-        q: 'Funcționează partajarea către o adresă de grup?',
-        a: 'Rar. O listă de discuții ajunge greu la oamenii din spatele ei. E nevoie de adresa care este ea însăși un cont Google.',
-      },
-      {
-        q: 'Cât durează până apare un calendar partajat?',
-        a: 'Partajarea prin permisiuni apare imediat ce lista se reîmprospătează. Un calendar partajat ca link este un abonament și urmează ritmul celui care publică.',
-      },
+        "q": "Să șterg contul și să-l reconectez?",
+        "a": "Verifică mai întâi identitatea, drepturile și vizibilitatea și compară calendarul web. Reconectarea nu acordă drepturile lipsă."
+      }
     ],
-    practical: [
-      'Verifică întâi ce cont a acceptat partajarea, apoi restul.',
-      'Deschide lista de calendare de pe dispozitiv și caută-l oprit, nu absent.',
-      'Dacă a venit ca link, așteaptă-te la întârziere, nu la apariție imediată.',
+    "practical": [
+      "Confirmă contul invitat și apartenența la grup.",
+      "Selectează calendarul dacă este în listă, dar ascuns.",
+      "Cere verificarea accesului înainte de a schimba conexiunile."
     ],
-    seeAlso: ['who-can-see-what-in-google-calendar', 'google-calendars-that-never-reach-your-iphone'],
+    "sourcesHeading": "Surse și informații suplimentare",
+    "sources": [
+      {
+        "label": "Google: Verifică contul și grupul",
+        "url": "https://support.google.com/calendar/answer/37082?hl=en&co=GENIE.Platform%3DiOS"
+      },
+      {
+        "label": "Google: Ascuns, absent sau restricționat?",
+        "url": "https://support.google.com/calendar/answer/37100?hl=en&co=GENIE.Platform%3DiOS"
+      },
+      {
+        "label": "Google: Identifică linkul",
+        "url": "https://support.google.com/calendar/answer/37648?hl=en"
+      }
+    ],
+    "seeAlso": [
+      "who-can-see-what-in-google-calendar",
+      "google-calendars-that-never-reach-your-iphone"
+    ]
   },
 
   'the-secret-address-of-a-google-calendar': {

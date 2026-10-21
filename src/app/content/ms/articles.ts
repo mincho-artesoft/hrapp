@@ -10,40 +10,39 @@ import { LocalisedArticle } from '../types';
  */
 export const ARTICLES_MS: Readonly<Record<string, LocalisedArticle>> = {
   'weather-inside-your-calendar': {
-    title: 'Kalendar yang sudah mengandungi cuaca',
-    short: 'Cuaca di dalam kalendar',
-    description: 'Mengapa memeriksa dua aplikasi untuk menyusun satu hari ialah kecacatan reka bentuk, dan bagaimana rupanya kalendar yang ramalannya menjadi sebahagian daripada paparan dan bukan berdiri di sebelahnya.',
-    lede: 'Hampir semua orang menyusun harinya antara dua aplikasi. Kalendar memberitahu di mana perlu berada; aplikasi cuaca memberitahu bagaimana cuacanya apabila sampai. Memegang kedua-duanya serentak di kepala ialah bahagian yang tiada siapa sedar sedang dibuatnya — sehingga satu hari Sabtu hilang begitu sahaja.',
-    commonBelief: 'Bahawa kalendar untuk temu janji dan aplikasi cuaca untuk cuaca, dan mengasingkan kedua-duanya memang begitulah telefon berfungsi.',
-    sections: [
-      {
-        heading: 'Kos dua aplikasi bukan dua ketikan',
-        body: [
-          'Bertukar tidak menelan apa-apa kos. Yang mahal ialah kedua-duanya tidak pernah bersetuju tentang apa yang penting. Kalendar anda tahu bahawa pada Sabtu jam sebelas dua jam telah terisi; aplikasi cuaca tahu hujan turun dari pukul sepuluh hingga satu. Tiada satu pun tahu bahawa kedua-dua fakta itu bersama-sama bermakna blok itu perlu dialihkan.',
-          'Lapisan penyatuannya ialah anda. Ia berjalan sehingga anda sibuk, iaitu tepat ketika melindungi rancangan paling bernilai.',
-        ],
-      },
-      {
-        heading: 'Apa yang berubah apabila ramalan berada dalam grid',
-        body: [
-          'Letakkan ramalan di belakang acara, dan pertembungan itu selesai dengan sendirinya. Pagi yang lembap dan petang yang kering kelihatan dalam pandangan yang sama dengan mesyuarat yang hendak anda letakkan, dan keputusan berhenti memakan fikiran.',
-          'Ini bukan widget yang dilekatkan di tepi. Setiap hari dalam paparan Minggu dan Bulan membawa keadaannya sendiri, dan setiap acara membawa ramalan jam-jam yang benar-benar didudukinya — bukan ringkasan harian, yang justeru mempuratakan bahagian yang anda perlukan.',
-        ],
-      },
-    ],
-    claims: {
-      forecastDays: 'Hari ramalan, dalam kalendar dan di sebelah setiap acara',
-      views: 'Paparan yang membawa cuaca: Hari, Minggu, Bulan, Tahun dan Senarai',
-      price: 'Kos ciri-ciri cuaca',
+  "title": "Kalendar yang sudah mengandungi cuaca",
+  "short": "Cuaca di dalam kalendar",
+  "description": "Mengapa memeriksa dua aplikasi untuk menyusun satu hari ialah kecacatan reka bentuk, dan bagaimana rupanya kalendar yang ramalannya menjadi sebahagian daripada paparan dan bukan berdiri di sebelahnya.",
+  "lede": "Hampir semua orang menyusun harinya antara dua aplikasi. Kalendar memberitahu di mana perlu berada; aplikasi cuaca memberitahu bagaimana cuacanya apabila sampai. Memegang kedua-duanya serentak di kepala ialah bahagian yang tiada siapa sedar sedang dibuatnya — sehingga satu hari Sabtu hilang begitu sahaja.",
+  "commonBelief": "Bahawa kalendar untuk temu janji dan aplikasi cuaca untuk cuaca, dan mengasingkan kedua-duanya memang begitulah telefon berfungsi.",
+  "sections": [
+    {
+      "heading": "Kos dua aplikasi bukan dua ketikan",
+      "body": [
+        "Bertukar tidak menelan apa-apa kos. Yang mahal ialah kedua-duanya tidak pernah bersetuju tentang apa yang penting. Kalendar anda tahu bahawa pada Sabtu jam sebelas dua jam telah terisi; aplikasi cuaca tahu hujan turun dari pukul sepuluh hingga satu. Tiada satu pun tahu bahawa kedua-dua fakta itu bersama-sama bermakna blok itu perlu dialihkan.",
+        "Lapisan penyatuannya ialah anda. Ia berjalan sehingga anda sibuk, iaitu tepat ketika melindungi rancangan paling bernilai."
+      ]
     },
-    practical: [
-      'Lihat jalur di belakang hari-hari dalam paparan Minggu sebelum meletakkan apa-apa di luar.',
-      'Ketik sesuatu acara untuk melihat ramalan jam-jamnya, bukan harinya.',
-      'Letakkan perkara yang bergantung pada cuaca dahulu terhadap empat belas hari, kemudian perhalusi dua hari sebelumnya.',
-      'Anggap apa-apa selepas hari ketujuh sebagai bentuk, bukan rancangan.',
-    ],
-    seeAlso: ['icloud-google-and-outlook-in-one-view', 'what-a-subscription-actually-buys'],
+    {
+      "heading": "Ramalan yang tersedia",
+      "body": [
+        "Cloud Calendars menggunakan ramalan yang tersedia untuk lokasi yang dipilih. Data setiap jam dan harian mungkin meliputi tempoh yang berbeza.",
+        "Tarikh yang boleh dilihat dalam kalendar tidak menentukan julat ramalan. Paparan bulanan tidak bermaksud ramalan tersedia untuk seluruh bulan atau setiap acara."
+      ]
+    }
+  ],
+  "claims": {
+    "price": "Kos ciri-ciri cuaca"
   },
+  "practical": [
+    "Semak lokasi, tarikh dan jam yang tersedia sebelum merancang berdasarkan ramalan."
+  ],
+  "seeAlso": [
+    "icloud-google-and-outlook-in-one-view",
+    "what-a-subscription-actually-buys"
+  ],
+  "updated": "2026-10-21"
+},
 
   'icloud-google-and-outlook-in-one-view': {
     title: 'iCloud, Google dan Outlook dalam satu paparan',
@@ -116,38 +115,53 @@ export const ARTICLES_MS: Readonly<Record<string, LocalisedArticle>> = {
   },
 
   'what-a-subscription-actually-buys': {
-    title: 'Apa yang sebenarnya dibeli oleh langganan',
-    short: 'Apa yang dibeli langganan',
-    description: 'Dua peringkat berbayar, apa yang memisahkannya, dan bagaimana anda tahu yang mana — jika ada — milik anda.',
-    lede: 'Dua peringkat sudah memadai untuk mengelirukan jika tiada siapa berterus terang apa yang memisahkannya. Yang memisahkannya ialah Microsoft.',
-    commonBelief: 'Bahawa peringkat yang lebih tinggi ialah ciri yang sama, cuma lebih banyak.',
-    sections: [
-      {
-        heading: 'Peringkat pertama membuang iklan',
-        body: [
-          'Ia turut menambah pengurusan acara merentas kalendar iCloud dan Google, kebenaran perkongsian Google, pautan Meet automatik dan penyegaran cuaca yang lebih pantas. Tetapi orang membelinya kerana iklan.',
-          'Pada harga ini ia lebih kurang secawan kopi setahun, dan inilah peringkat yang sesuai untuk hampir sesiapa sahaja yang sanggup membayar sesuatu.',
-        ],
-      },
-      {
-        heading: 'Peringkat kedua untuk Microsoft',
-        body: [
-          'Penyegerakan Outlook dan Exchange, pautan Teams, pengurusan merentas akaun termasuk kerja, pengurusan peserta. Harganya satu orde magnitud lebih tinggi kerana sambungannya pun begitu.',
-          'Jika kalendar kerja anda bukan di Microsoft, tiada apa-apa di sini untuk anda. Kedua-dua peringkat lebih murah setahun; penjimatannya sederhana, bukan dramatik. Selepas dibatalkan anda kembali ke peringkat percuma dan kalendar anda utuh, kerana acara-acara itu tidak pernah menjadi milik kami.',
-        ],
-      },
-    ],
-    claims: {
-      advancedMonthly: 'Peringkat pertama, sebulan, dalam dolar',
-      advancedYearly: 'Peringkat pertama, setahun, dalam dolar',
-      premiumMonthly: 'Peringkat kedua, sebulan, dalam dolar',
-      premiumYearly: 'Peringkat kedua, setahun, dalam dolar',
+  "updated": "2026-10-21",
+  "title": "Apa yang sebenarnya dibeli oleh langganan",
+  "short": "Apa yang dibeli langganan",
+  "description": "Apa yang dibeli langganan: Base, Advanced, Premium.",
+  "lede": "Panduan ini diterbitkan oleh Arte Soft, pembangun Cloud Calendars.",
+  "sections": [
+    {
+      "heading": "Base",
+      "body": [
+        "Base merangkumi penyegerakan Google Calendar, Google Meet, paparan kalendar, cuaca dan widget. Pelan percuma mungkin memaparkan iklan."
+      ]
     },
-    practical: [
-      'Beli peringkat pertama untuk membuang iklan, bukan untuk membuka kalendar.',
-      'Beli yang kedua hanya jika kerja anda hidup di Microsoft.',
-      'Beralih ke tahunan apabila anda yakin; penjimatannya nyata tetapi kecil.',
-    ],
-    seeAlso: ['icloud-google-and-outlook-in-one-view'],
-  },
+    {
+      "heading": "Advanced · Premium",
+      "body": [
+        "Advanced merangkumi Base dan membuang iklan. Premium merangkumi Advanced serta menambah Microsoft Calendar dan Microsoft Teams.",
+        "Langganan tidak memberikan kebenaran menyunting kalendar orang lain atau memintas sekatan akaun kerja."
+      ]
+    },
+    {
+      "heading": "Maklumat pembelian dan pembatalan",
+      "body": [
+        "Semak harga tempatan, tempoh pengebilan dan syarat pembaharuan sebelum membeli.",
+        "Untuk langganan yang dibilkan oleh Apple, buka Seting → nama anda → Langganan. Semak status dan tarikh tamat. Membatalkan pembaharuan berbeza daripada memadam app atau data kalendar; jangan anggap ciri berbayar kekal tersedia selepas tamat."
+      ]
+    }
+  ],
+  "claims": {},
+  "practical": [
+    "Semak harga tempatan, tempoh pengebilan dan syarat pembaharuan sebelum membeli.",
+    "Langganan tidak memberikan kebenaran menyunting kalendar orang lain atau memintas sekatan akaun kerja."
+  ],
+  "faq": [
+    {
+      "q": "Bagaimanakah saya menghentikan pembaharuan?",
+      "a": "Untuk langganan yang dibilkan oleh Apple, buka Seting → nama anda → Langganan. Semak status dan tarikh tamat. Membatalkan pembaharuan berbeza daripada memadam app atau data kalendar; jangan anggap ciri berbayar kekal tersedia selepas tamat."
+    }
+  ],
+  "sourcesHeading": "Maklumat pembelian dan pembatalan",
+  "sources": [
+    {
+      "label": "Apple: Bagaimanakah saya menghentikan pembaharuan?",
+      "url": "https://support.apple.com/en-us/118428"
+    }
+  ],
+  "seeAlso": [
+    "icloud-google-and-outlook-in-one-view"
+  ]
+},
 };

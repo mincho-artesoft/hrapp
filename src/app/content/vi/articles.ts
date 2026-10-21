@@ -10,40 +10,39 @@ import { LocalisedArticle } from '../types';
  */
 export const ARTICLES_VI: Readonly<Record<string, LocalisedArticle>> = {
   'weather-inside-your-calendar': {
-    title: 'Một cuốn lịch đã có sẵn thời tiết bên trong',
-    short: 'Thời tiết bên trong cuốn lịch',
-    description: 'Vì sao phải mở hai ứng dụng để sắp xếp một ngày là một lỗi thiết kế, và một cuốn lịch mà dự báo là một phần của khung nhìn chứ không đứng bên cạnh thì trông như thế nào.',
-    lede: 'Gần như ai cũng sắp xếp ngày của mình giữa hai ứng dụng. Lịch nói cần có mặt ở đâu; ứng dụng thời tiết nói lúc tới đó trời thế nào. Giữ cả hai cùng lúc trong đầu là phần việc không ai nhận ra mình đang làm — cho tới khi mất trắng một ngày thứ Bảy.',
-    commonBelief: 'Rằng lịch là để ghi hẹn còn ứng dụng thời tiết là để xem trời, và tách riêng chúng đơn giản là cách điện thoại vận hành.',
-    sections: [
-      {
-        heading: 'Cái giá của hai ứng dụng không phải là hai lần chạm',
-        body: [
-          'Chuyển qua lại chẳng tốn gì. Cái đắt là hai bên không bao giờ thống nhất điều gì mới quan trọng. Lịch của bạn biết thứ Bảy lúc mười một giờ có hai tiếng đã kín; ứng dụng thời tiết biết mưa từ mười giờ đến một giờ. Không bên nào biết rằng hai dữ kiện ấy cộng lại nghĩa là phải dời khối thời gian đó.',
-          'Lớp kết nối chính là bạn. Nó chạy được cho tới khi bạn bận, mà đó đúng là lúc việc bảo vệ kế hoạch đáng giá nhất.',
-        ],
-      },
-      {
-        heading: 'Điều gì thay đổi khi dự báo nằm ngay trong lưới',
-        body: [
-          'Đặt dự báo phía sau các sự kiện, xung đột tự giải quyết. Một buổi sáng ẩm và một buổi chiều khô hiện ra trong cùng cái nhìn với cuộc họp bạn định đặt vào, và quyết định thôi tốn suy nghĩ.',
-          'Đây không phải widget dán bên cạnh. Mỗi ngày trong khung nhìn Tuần và Tháng mang điều kiện riêng của nó, và mỗi sự kiện mang dự báo của đúng những giờ nó chiếm — không phải bản tóm tắt cả ngày, thứ lấy trung bình đúng cái phần bạn cần.',
-        ],
-      },
-    ],
-    claims: {
-      forecastDays: 'Số ngày dự báo, trong lịch và bên cạnh mỗi sự kiện',
-      views: 'Các khung nhìn có thời tiết: Ngày, Tuần, Tháng, Năm và Danh sách',
-      price: 'Các tính năng thời tiết tốn bao nhiêu',
+  "title": "Một cuốn lịch đã có sẵn thời tiết bên trong",
+  "short": "Thời tiết bên trong cuốn lịch",
+  "description": "Vì sao phải mở hai ứng dụng để sắp xếp một ngày là một lỗi thiết kế, và một cuốn lịch mà dự báo là một phần của khung nhìn chứ không đứng bên cạnh thì trông như thế nào.",
+  "lede": "Gần như ai cũng sắp xếp ngày của mình giữa hai ứng dụng. Lịch nói cần có mặt ở đâu; ứng dụng thời tiết nói lúc tới đó trời thế nào. Giữ cả hai cùng lúc trong đầu là phần việc không ai nhận ra mình đang làm — cho tới khi mất trắng một ngày thứ Bảy.",
+  "commonBelief": "Rằng lịch là để ghi hẹn còn ứng dụng thời tiết là để xem trời, và tách riêng chúng đơn giản là cách điện thoại vận hành.",
+  "sections": [
+    {
+      "heading": "Cái giá của hai ứng dụng không phải là hai lần chạm",
+      "body": [
+        "Chuyển qua lại chẳng tốn gì. Cái đắt là hai bên không bao giờ thống nhất điều gì mới quan trọng. Lịch của bạn biết thứ Bảy lúc mười một giờ có hai tiếng đã kín; ứng dụng thời tiết biết mưa từ mười giờ đến một giờ. Không bên nào biết rằng hai dữ kiện ấy cộng lại nghĩa là phải dời khối thời gian đó.",
+        "Lớp kết nối chính là bạn. Nó chạy được cho tới khi bạn bận, mà đó đúng là lúc việc bảo vệ kế hoạch đáng giá nhất."
+      ]
     },
-    practical: [
-      'Hãy nhìn dải màu sau các ngày trong khung nhìn Tuần trước khi đặt bất cứ việc ngoài trời nào.',
-      'Chạm vào một sự kiện để xem dự báo của các giờ nó chiếm, chứ không phải của cả ngày.',
-      'Đặt những việc phụ thuộc thời tiết trước tiên dựa trên mười bốn ngày, rồi tinh chỉnh trước hai ngày.',
-      'Coi mọi thứ sau ngày thứ bảy là một hình dạng, không phải một kế hoạch.',
-    ],
-    seeAlso: ['icloud-google-and-outlook-in-one-view', 'what-a-subscription-actually-buys'],
+    {
+      "heading": "Dự báo hiện có",
+      "body": [
+        "Cloud Calendars sử dụng dự báo hiện có cho địa điểm đã chọn. Dữ liệu theo giờ và theo ngày có thể bao phủ các khoảng thời gian khác nhau.",
+        "Các ngày có thể xem trong lịch không quyết định phạm vi dự báo. Chế độ xem tháng không có nghĩa là có dự báo cho cả tháng hoặc mọi sự kiện."
+      ]
+    }
+  ],
+  "claims": {
+    "price": "Các tính năng thời tiết tốn bao nhiêu"
   },
+  "practical": [
+    "Kiểm tra địa điểm, ngày và các giờ có dữ liệu trước khi lập kế hoạch theo dự báo."
+  ],
+  "seeAlso": [
+    "icloud-google-and-outlook-in-one-view",
+    "what-a-subscription-actually-buys"
+  ],
+  "updated": "2026-10-21"
+},
 
   'icloud-google-and-outlook-in-one-view': {
     title: 'iCloud, Google và Outlook trong cùng một khung nhìn',
@@ -116,38 +115,53 @@ export const ARTICLES_VI: Readonly<Record<string, LocalisedArticle>> = {
   },
 
   'what-a-subscription-actually-buys': {
-    title: 'Một gói thuê bao thực sự mua được gì',
-    short: 'Thuê bao mua được gì',
-    description: 'Hai bậc trả phí, điều gì tách chúng ra, và làm sao biết bậc nào — nếu có — là của bạn.',
-    lede: 'Hai bậc là đủ gây rối nếu không ai nói rõ điều gì tách chúng ra. Thứ tách chúng ra là Microsoft.',
-    commonBelief: 'Rằng bậc cao hơn là cùng những tính năng ấy, chỉ nhiều hơn.',
-    sections: [
-      {
-        heading: 'Bậc thứ nhất gỡ quảng cáo',
-        body: [
-          'Nó cũng thêm việc quản lý sự kiện giữa lịch iCloud và Google, quyền chia sẻ của Google, liên kết Meet tự động và cập nhật thời tiết nhanh hơn. Nhưng người ta mua nó vì quảng cáo.',
-          'Ở mức giá này thì tương đương một ly cà phê mỗi năm, và đây là bậc hợp với gần như bất cứ ai sẵn lòng trả một khoản gì đó.',
-        ],
-      },
-      {
-        heading: 'Bậc thứ hai là dành cho Microsoft',
-        body: [
-          'Đồng bộ Outlook và Exchange, liên kết Teams, quản lý xuyên tài khoản kể cả công việc, quản lý người tham dự. Nó đắt hơn một bậc độ lớn vì kết nối cũng vậy.',
-          'Nếu lịch công việc của bạn không nằm ở Microsoft thì ở đây không có gì cho bạn. Cả hai bậc đều rẻ hơn khi trả theo năm; khoản tiết kiệm vừa phải chứ không ngoạn mục. Sau khi hủy, bạn quay về bậc miễn phí và các cuốn lịch vẫn nguyên vẹn, vì những sự kiện đó chưa bao giờ là của chúng tôi.',
-        ],
-      },
-    ],
-    claims: {
-      advancedMonthly: 'Bậc thứ nhất, mỗi tháng, tính bằng đô la',
-      advancedYearly: 'Bậc thứ nhất, mỗi năm, tính bằng đô la',
-      premiumMonthly: 'Bậc thứ hai, mỗi tháng, tính bằng đô la',
-      premiumYearly: 'Bậc thứ hai, mỗi năm, tính bằng đô la',
+  "updated": "2026-10-21",
+  "title": "Một gói thuê bao thực sự mua được gì",
+  "short": "Thuê bao mua được gì",
+  "description": "Thuê bao mua được gì: Base, Advanced, Premium.",
+  "lede": "Hướng dẫn này do Arte Soft, nhà phát triển Cloud Calendars, xuất bản.",
+  "sections": [
+    {
+      "heading": "Base",
+      "body": [
+        "Base gồm đồng bộ Google Calendar, Google Meet, các chế độ xem lịch, thời tiết và tiện ích. Gói miễn phí có thể hiển thị quảng cáo."
+      ]
     },
-    practical: [
-      'Mua bậc thứ nhất để gỡ quảng cáo, không phải để mở khóa cuốn lịch.',
-      'Chỉ mua bậc thứ hai nếu công việc của bạn sống ở Microsoft.',
-      'Chuyển sang trả theo năm khi bạn đã chắc; khoản tiết kiệm là thật nhưng nhỏ.',
-    ],
-    seeAlso: ['icloud-google-and-outlook-in-one-view'],
-  },
+    {
+      "heading": "Advanced · Premium",
+      "body": [
+        "Advanced gồm Base và loại bỏ quảng cáo. Premium gồm Advanced và bổ sung Microsoft Calendar cùng Microsoft Teams.",
+        "Đăng ký không cấp quyền sửa lịch của người khác hoặc vượt qua hạn chế của tài khoản công việc."
+      ]
+    },
+    {
+      "heading": "Thông tin mua và hủy",
+      "body": [
+        "Trước khi mua, hãy kiểm tra giá tại địa phương, kỳ thanh toán và điều kiện gia hạn.",
+        "Với đăng ký do Apple tính phí, mở Cài đặt → tên của bạn → Đăng ký. Kiểm tra trạng thái và ngày hết hạn. Hủy gia hạn khác với xóa ứng dụng hoặc dữ liệu lịch; đừng mặc định các tính năng trả phí vẫn dùng được sau khi hết hạn."
+      ]
+    }
+  ],
+  "claims": {},
+  "practical": [
+    "Trước khi mua, hãy kiểm tra giá tại địa phương, kỳ thanh toán và điều kiện gia hạn.",
+    "Đăng ký không cấp quyền sửa lịch của người khác hoặc vượt qua hạn chế của tài khoản công việc."
+  ],
+  "faq": [
+    {
+      "q": "Làm sao để dừng gia hạn?",
+      "a": "Với đăng ký do Apple tính phí, mở Cài đặt → tên của bạn → Đăng ký. Kiểm tra trạng thái và ngày hết hạn. Hủy gia hạn khác với xóa ứng dụng hoặc dữ liệu lịch; đừng mặc định các tính năng trả phí vẫn dùng được sau khi hết hạn."
+    }
+  ],
+  "sourcesHeading": "Thông tin mua và hủy",
+  "sources": [
+    {
+      "label": "Apple: Làm sao để dừng gia hạn?",
+      "url": "https://support.apple.com/en-us/118428"
+    }
+  ],
+  "seeAlso": [
+    "icloud-google-and-outlook-in-one-view"
+  ]
+},
 };

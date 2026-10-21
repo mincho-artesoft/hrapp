@@ -51,52 +51,67 @@ export const GOOGLE_HU: Readonly<Record<string, LocalisedArticle>> = {
   },
 
   'why-a-shared-calendar-does-not-appear': {
-    title: 'Megosztottak veled egy naptárat, és nincs sehol',
-    short: 'A megosztott naptár nem jelenik meg',
-    description:
-      'Valaki megosztott egy naptárat, elfogadtad, és semmi nem változott. A négy szokásos ok, abban a sorrendben, ahogy érdemes nézni őket.',
-    lede: 'A meghívó megérkezett, a linkre rákoppintottál, a naptár pedig továbbra sincs meg. Szinte mindig négy dolog egyike, és egyik sem az, hogy elromlott a megosztás.',
-    commonBelief: 'Hogy egy megosztott naptár elfogadása felteszi azt a telefonodra.',
-    sections: [
+    "updated": "2026-10-21",
+    "title": "Megosztottak veled egy naptárat, és nincs sehol",
+    "short": "A megosztott naptár nem jelenik meg",
+    "description": "Hiányzik egy megosztott Google-naptár? Ellenőrizd a meghívott fiókot, a csoportot, a láthatóságot és a kapott link típusát.",
+    "lede": "Az útmutatót a Cloud Calendars fejlesztője, az Arte Soft készítette. Először különítsd el a hiányzó hozzáférést a pusztán elrejtett naptártól.",
+    "commonBelief": "Hogy egy megosztott naptár elfogadása felteszi azt a telefonodra.",
+    "sections": [
       {
-        heading: 'Az elfogadás fiókhoz adja hozzá, nem eszközhöz',
-        body: [
-          'A megosztás abba a Google-fiókba érkezik, amelyiknek címezték. Ha az egyik fiókkal bejelentkezve fogadtad el, a telefonod pedig másikat visel, a naptár épségben ott van, ahová éppen nem nézel.',
-          'Még a jó fiókban is a frissen hozzáadott naptár gyakrabban érkezik kikapcsolva a többi eszközre, mint bekapcsolva. Létezik, csak nincs kipipálva — és egy kipipálatlan naptár pontosan úgy néz ki, mint egy hiányzó.',
-        ],
+        "heading": "Ellenőrizd a fiókot és a csoportot",
+        "body": [
+          "Hasonlítsd össze a meghívó címzettjét a telefonon és a böngészőben használt Google-fiókkal. Nyisd meg a meghívó linkjét a megfelelő fiókkal. A Google személyekkel és Google-csoportokkal is enged megosztást. Csoportos hozzáférésnél kérd a csoport kezelőjét tagságod, a naptár tulajdonosát pedig a megfelelő csoport hozzáférésének ellenőrzésére. Egy továbbított e-mail önmagában nem ad jogosultságot."
+        ]
       },
       {
-        heading: 'A másik két ok',
-        body: [
-          'A levelezőlistára vagy csoportcímre küldött megosztás ritkán ér el embereket; az a cím kell, amelyik valóban Google-fiók. A linkként megosztott naptár pedig előfizetés: a lista másik részébe kerül, és a közzétevő ritmusában frissül, nem azonnal.',
-          'iPhone-on a Google-naptárak saját szinkronizálási listán át jutnak el a beépített alkalmazásba, és a másodlagos naptárak alapból kívül esnek rajta. Ezért mutat egy fiók főnaptárat, és ejti csendben azt a négyet, amelyik számít.',
-        ],
+        "heading": "Rejtett, hiányzó vagy korlátozott?",
+        "body": [
+          "Nyisd meg a Google Naptár menüjét iPhone-on vagy iPaden. Ha a naptár szerepel, de nincs kijelölve, jelöld ki. Ha hiányzik, a tulajdonos ellenőrizze a hozzáférést: a kérés még nem jóváhagyás. Munkahelyi vagy iskolai szabályok korlátozhatják a megosztást. Nézd meg ugyanazt a fiókot a webes Google Naptárban. Ha ott működik, a másik alkalmazásban ellenőrizd a csatlakoztatott fiókot és a kiválasztott naptárakat. Az olvasási jog nem enged szerkesztést."
+        ]
       },
+      {
+        "heading": "Azonosítsd a linket",
+        "body": [
+          "A megosztási meghívó is tartalmaz linket; nem minden link ICS-feliratkozás. Kérdezd meg, Google-naptárhoz ad-e hozzáférést, vagy csak olvasható hírcsatornát tesz közzé. A Google szerint új naptárfeliratkozáshoz számítógépes böngésző kell; az e-mailben már megosztott naptár megnyitása más művelet. A hírcsatorna frissülése a fogadó szolgáltatástól függ. Nincs általános várakozási idő; a sürgős változásokat egyeztesd a szervezővel."
+        ]
+      }
     ],
-    claims: {
-      refreshHint: 'Órák egy előfizetett csatorna frissítési kérései között',
-      accounts: 'Fióktípusok, amelyeket egyetlen nézet ehelyett összefog',
-    },
-    faq: [
+    "claims": {},
+    "faq": [
       {
-        q: 'Elfogadtam egy megosztott naptárat, de nincs az iPhone-omon. Miért?',
-        a: 'A megosztás abba a Google-fiókba érkezik, amelyiknek címezték, és a frissen hozzáadott naptár a többi eszközre többnyire kikapcsolva jut el. Előbb a fiókot nézd meg, aztán keresd kipipálatlanul, ne hiányzóként.',
+        "q": "Kaphat hozzáférést egy Google-csoport?",
+        "a": "Igen. Ellenőrizd a kiválasztott csoportot, tagságodat és a szervezeti korlátozásokat. Egy továbbított csoportlevél nem igazolja a hozzáférést."
       },
       {
-        q: 'Működik a megosztás csoportcímre?',
-        a: 'Ritkán. A levelezőlista alig éri el a mögötte álló embereket. Az a cím kell, amelyik maga is Google-fiók.',
-      },
-      {
-        q: 'Mennyi idő alatt jelenik meg egy megosztott naptár?',
-        a: 'A jogosultsággal megosztott azonnal látszik, amint a lista frissül. A linkként megosztott naptár előfizetés, és a közzétevő ritmusát követi.',
-      },
+        "q": "Töröljem és csatlakoztassam újra a fiókot?",
+        "a": "Előbb ellenőrizd a fiókot, a jogokat és a láthatóságot, majd a webes naptárt. Az újracsatlakozás nem ad hiányzó jogokat."
+      }
     ],
-    practical: [
-      'Először azt nézd meg, melyik fiók fogadta el a megosztást.',
-      'Nyisd meg az eszközön a naptárlistát, és kikapcsolva keresd, ne hiányzóként.',
-      'Ha linkként jött, késésre számíts, ne azonnali megjelenésre.',
+    "practical": [
+      "Ellenőrizd a meghívott fiókot és csoporttagságodat.",
+      "Jelöld ki a listán szereplő, de rejtett naptárt.",
+      "A kapcsolatok módosítása előtt ellenőriztesd a hozzáférést."
     ],
-    seeAlso: ['who-can-see-what-in-google-calendar', 'google-calendars-that-never-reach-your-iphone'],
+    "sourcesHeading": "Források és további információk",
+    "sources": [
+      {
+        "label": "Google: Ellenőrizd a fiókot és a csoportot",
+        "url": "https://support.google.com/calendar/answer/37082?hl=en&co=GENIE.Platform%3DiOS"
+      },
+      {
+        "label": "Google: Rejtett, hiányzó vagy korlátozott?",
+        "url": "https://support.google.com/calendar/answer/37100?hl=en&co=GENIE.Platform%3DiOS"
+      },
+      {
+        "label": "Google: Azonosítsd a linket",
+        "url": "https://support.google.com/calendar/answer/37648?hl=en"
+      }
+    ],
+    "seeAlso": [
+      "who-can-see-what-in-google-calendar",
+      "google-calendars-that-never-reach-your-iphone"
+    ]
   },
 
   'the-secret-address-of-a-google-calendar': {

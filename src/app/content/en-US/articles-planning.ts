@@ -76,39 +76,42 @@ export const PLANNING_EN_US: Readonly<Record<string, LocalisedArticle>> = {
   },
 
   'month-view-on-a-bigger-screen': {
-    title: 'Month view earns its keep on an iPad',
-    short: 'Month view on iPad',
-    description:
-      'A month on a phone is a heat map. On a tablet it becomes a working surface, and that changes what it is for.',
-    lede: 'The same view can be a glance on one device and a workspace on another. Month is the clearest example.',
-    commonBelief: 'That month view is the same feature at every size.',
-    sections: [
-      {
-        heading: 'Phone month is a density map',
-        body: [
-          'On a phone you are reading busyness, not content. Which weeks are heavy, where the clear runs are. That is genuinely useful and it is nearly all you can get.',
-          'Expecting to plan from it is what makes people feel the view is useless.',
-        ],
-      },
-      {
-        heading: 'Tablet month is a planning surface',
-        body: [
-          'With room for several events per day and legible titles, month becomes the view you actually arrange a month from — dragging things between weeks, seeing a pattern, spotting the collision three weeks out.',
-          'This is where the weather band earns the most too: a whole month of conditions behind a whole month of commitments.',
-        ],
-      },
-    ],
-    claims: {
-      views: 'Views available on both devices',
-      minIos: 'Minimum iOS and iPadOS version',
+  "title": "Month view earns its keep on an iPad",
+  "short": "Month view on iPad",
+  "description": "A month on a phone is a heat map. On a tablet it becomes a working surface, and that changes what it is for.",
+  "lede": "The same view can be a glance on one device and a workspace on another. Month is the clearest example.",
+  "commonBelief": "That month view is the same feature at every size.",
+  "sections": [
+    {
+      "heading": "Phone month is a density map",
+      "body": [
+        "On a phone you are reading busyness, not content. Which weeks are heavy, where the clear runs are. That is genuinely useful and it is nearly all you can get.",
+        "Expecting to plan from it is what makes people feel the view is useless."
+      ]
     },
-    practical: [
-      'Plan the month on the tablet, run the day on the phone.',
-      'On a phone, read month for density and switch to week to act.',
-      'Landscape on a tablet is where month is worth the most room you can give it.',
-    ],
-    seeAlso: ['a-week-view-that-fits-a-week', 'the-year-in-one-screen'],
+    {
+      "heading": "Tablet month is a planning surface",
+      "body": [
+        "With room for several events per day and legible titles, month becomes the view you actually arrange a month from — dragging things between weeks, seeing a pattern, spotting the collision three weeks out.",
+        "The month view helps you compare commitments across dates. It does not provide a whole month of weather conditions. For weather-dependent plans, check the dates and hours available in the weather view separately."
+      ]
+    }
+  ],
+  "claims": {
+    "views": "Views available on both devices",
+    "minIos": "Minimum iOS and iPadOS version"
   },
+  "practical": [
+    "Plan the month on the tablet, run the day on the phone.",
+    "On a phone, read month for density and switch to week to act.",
+    "Landscape on a tablet is where month is worth the most room you can give it."
+  ],
+  "seeAlso": [
+    "a-week-view-that-fits-a-week",
+    "the-year-in-one-screen"
+  ],
+  "updated": "2026-10-21"
+},
 
   'planning-a-week-in-ten-minutes': {
     title: 'Planning a week in ten minutes',

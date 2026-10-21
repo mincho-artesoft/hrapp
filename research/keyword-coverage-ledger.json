@@ -269,5 +269,40 @@
     "document": 564,
     "status": "verified_public",
     "screenshot": "/tmp/cloud-calendar-seo-batch01-published.png"
+  },
+  "batch02": {
+    "status": "published_verified",
+    "changedArticleObjects": 113,
+    "locales": 30,
+    "proof": "batch02-changed-articles.json",
+    "correctedIntents": [
+      "shared_calendar_missing",
+      "subscription_plan_choice",
+      "forecast_availability",
+      "calendar_conflicts",
+      "work_personal_ownership",
+      "fantastical_workflow_comparison"
+    ],
+    "ascLocales": [
+      "de-DE",
+      "fr-FR",
+      "es-ES",
+      "it",
+      "ja",
+      "ko"
+    ],
+    "ascProof": "aso/localized-batch02/applied.json",
+    "unreviewedScope": [
+      "Remaining multilingual metadata",
+      "Other Google permission articles",
+      "Other weather science and provider/location claims",
+      "Remaining competitors and measured search/citation queries",
+      "Pending new media"
+    ],
+    "publicProof": "batch02-public-qa.json",
+    "staticProof": "batch02-static-qa.json",
+    "competitorNextBatch": "competitors/batch03-intent-mapping-20261021.json",
+    "totalAscLocalesUpdated": 7,
+    "ascLocalesRemaining": 43
   }
 }

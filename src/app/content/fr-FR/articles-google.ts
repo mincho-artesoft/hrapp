@@ -51,52 +51,67 @@ export const GOOGLE_FR_FR: Readonly<Record<string, LocalisedArticle>> = {
   },
 
   'why-a-shared-calendar-does-not-appear': {
-    title: "Un agenda a été partagé avec vous et il n'est pas là",
-    short: "Agenda partagé qui n'apparaît pas",
-    description:
-      "Quelqu'un a partagé un agenda, vous avez accepté, et rien n'a changé. Les quatre raisons ordinaires, dans l'ordre où les vérifier.",
-    lede: "L'invitation est arrivée, le lien a été touché, et l'agenda manque toujours. C'est presque toujours l'une de quatre choses, et aucune n'est un partage cassé.",
-    commonBelief: "Qu'accepter un agenda partagé le met sur votre téléphone.",
-    sections: [
+    "updated": "2026-10-21",
+    "title": "Un agenda a été partagé avec vous et il n'est pas là",
+    "short": "Agenda partagé qui n'apparaît pas",
+    "description": "Agenda Google partagé absent : vérifiez le compte invité, le groupe, la visibilité et le type de lien reçu.",
+    "lede": "Ce guide est rédigé par Arte Soft, développeur de Cloud Calendars. Distinguez d’abord un accès manquant d’un agenda simplement masqué.",
+    "commonBelief": "Qu'accepter un agenda partagé le met sur votre téléphone.",
+    "sections": [
       {
-        heading: "Accepter l'ajoute à un compte, pas à un appareil",
-        body: [
-          "Un partage atterrit dans le compte Google auquel il était adressé. Si vous avez accepté connecté à un compte et que votre téléphone en porte un autre, l'agenda est sagement posé là où vous ne regardez pas.",
-          "Même dans le bon compte, un agenda fraîchement ajouté arrive désactivé sur les autres appareils plus souvent qu'activé. Il existe, il n'est simplement pas coché — et un agenda décoché ressemble exactement à un agenda absent.",
-        ],
+        "heading": "Vérifier le compte et le groupe",
+        "body": [
+          "Comparez le destinataire de l’invitation au compte Google utilisé sur le téléphone et dans le navigateur. Ouvrez le lien avec le compte concerné. Google permet le partage avec des personnes et des groupes Google. Pour un accès par groupe, faites confirmer votre appartenance par son gestionnaire et le partage avec le bon groupe par le propriétaire de l’agenda. Un courriel transféré ne suffit pas à accorder une autorisation."
+        ]
       },
       {
-        heading: 'Les deux autres raisons',
-        body: [
-          "Un partage vers une liste de diffusion ou une adresse de groupe atteint rarement les individus ; il faut l'adresse qui est réellement un compte Google. Et un agenda partagé par lien est un abonnement : il se range ailleurs dans la liste et se rafraîchit au rythme de l'éditeur, pas instantanément.",
-          "Sur iPhone, les agendas Google atteignent l'app intégrée par une liste de synchronisation qui leur est propre, et les agendas secondaires en sont exclus par défaut. D'où un compte qui montre son agenda principal et laisse tomber en silence les quatre qui comptent.",
-        ],
+        "heading": "Masqué, absent ou limité ?",
+        "body": [
+          "Dans Google Agenda sur iPhone ou iPad, ouvrez le menu. Si l’agenda figure dans la liste sans être coché, sélectionnez-le. S’il est absent, faites vérifier l’accès par le propriétaire : une demande n’est pas une approbation. Les règles professionnelles ou scolaires peuvent limiter le partage. Comparez le même compte sur le Web. S’il y fonctionne, vérifiez le compte connecté et les agendas sélectionnés dans l’autre application. Un accès en lecture seule ne permet pas de modifier les événements."
+        ]
       },
+      {
+        "heading": "Identifier le lien reçu",
+        "body": [
+          "Une invitation de partage contient aussi un lien : ce n’est pas forcément un abonnement ICS. Demandez s’il donne accès à un agenda Google ou à un flux en lecture seule. Google exige un navigateur sur ordinateur pour un nouvel abonnement ; ouvrir un agenda déjà partagé par courriel est une autre opération. La mise à jour d’un flux dépend du service destinataire. Aucun délai universel ne s’applique ; confirmez les changements urgents auprès de l’organisateur."
+        ]
+      }
     ],
-    claims: {
-      refreshHint: "Heures entre deux demandes d'actualisation d'un flux abonné",
-      accounts: 'Types de comptes réunis dans une seule vue, sans rien de tout cela',
-    },
-    faq: [
+    "claims": {},
+    "faq": [
       {
-        q: 'J’ai accepté un agenda partagé mais il n’est pas sur mon iPhone. Pourquoi ?',
-        a: 'Le partage atterrit dans le compte Google auquel il était adressé, et un agenda fraîchement ajouté arrive le plus souvent désactivé sur les autres appareils. Vérifiez d’abord le compte, puis cherchez-le décoché plutôt qu’absent.',
+        "q": "Un groupe Google peut-il recevoir un accès ?",
+        "a": "Oui. Vérifiez le groupe choisi, votre appartenance et les restrictions de l’organisation. Un courriel de groupe transféré ne prouve pas cet accès."
       },
       {
-        q: 'Le partage vers une adresse de groupe fonctionne-t-il ?',
-        a: 'Rarement. Une liste de diffusion atteint peu les personnes derrière elle. Il faut l’adresse qui est elle-même un compte Google.',
-      },
-      {
-        q: 'En combien de temps un agenda partagé doit-il apparaître ?',
-        a: 'Un partage par autorisation apparaît dès que la liste se rafraîchit. Un agenda partagé par lien est un abonnement : il suit le rythme de l’éditeur, pas le vôtre.',
-      },
+        "q": "Faut-il supprimer puis reconnecter le compte ?",
+        "a": "Vérifiez d’abord le compte, les autorisations et la visibilité, puis comparez l’agenda Web. Une reconnexion n’accorde pas les droits manquants."
+      }
     ],
-    practical: [
-      "Vérifiez quel compte a accepté le partage avant toute autre chose.",
-      "Ouvrez la liste des agendas sur l'appareil et cherchez-le désactivé plutôt qu'absent.",
-      "S'il est venu par lien, attendez un délai plutôt qu'une apparition immédiate.",
+    "practical": [
+      "Confirmez le compte invité et votre appartenance au groupe.",
+      "Cochez l’agenda s’il est présent mais masqué.",
+      "Faites vérifier l’accès avant de modifier les connexions."
     ],
-    seeAlso: ['who-can-see-what-in-google-calendar', 'google-calendars-that-never-reach-your-iphone'],
+    "sourcesHeading": "Sources et lectures complémentaires",
+    "sources": [
+      {
+        "label": "Google: Vérifier le compte et le groupe",
+        "url": "https://support.google.com/calendar/answer/37082?hl=en&co=GENIE.Platform%3DiOS"
+      },
+      {
+        "label": "Google: Masqué, absent ou limité ?",
+        "url": "https://support.google.com/calendar/answer/37100?hl=en&co=GENIE.Platform%3DiOS"
+      },
+      {
+        "label": "Google: Identifier le lien reçu",
+        "url": "https://support.google.com/calendar/answer/37648?hl=en"
+      }
+    ],
+    "seeAlso": [
+      "who-can-see-what-in-google-calendar",
+      "google-calendars-that-never-reach-your-iphone"
+    ]
   },
 
   'the-secret-address-of-a-google-calendar': {

@@ -51,52 +51,67 @@ export const GOOGLE_FI: Readonly<Record<string, LocalisedArticle>> = {
   },
 
   'why-a-shared-calendar-does-not-appear': {
-    title: 'Kalenteri jaettiin sinulle, eikä sitä näy',
-    short: 'Jaettu kalenteri ei ilmesty',
-    description:
-      'Joku jakoi kalenterin, hyväksyit sen eikä mikään muuttunut. Neljä tavallista syytä siinä järjestyksessä, jossa ne kannattaa tarkistaa.',
-    lede: 'Kutsu tuli, linkkiä painettiin, ja kalenteri puuttuu yhä. Lähes aina kyse on yhdestä neljästä asiasta, eikä yksikään niistä ole rikkinäinen jako.',
-    commonBelief: 'Että jaetun kalenterin hyväksyminen tuo sen puhelimeen.',
-    sections: [
+    "updated": "2026-10-21",
+    "title": "Kalenteri jaettiin sinulle, eikä sitä näy",
+    "short": "Jaettu kalenteri ei ilmesty",
+    "description": "Puuttuuko jaettu Google-kalenteri? Tarkista kutsuttu tili, ryhmä, näkyvyys ja saamasi linkin tyyppi.",
+    "lede": "Oppaan on kirjoittanut Cloud Calendarsin kehittäjä Arte Soft. Erota ensin puuttuva käyttöoikeus kalenterista, joka on vain piilotettu.",
+    "commonBelief": "Että jaetun kalenterin hyväksyminen tuo sen puhelimeen.",
+    "sections": [
       {
-        heading: 'Hyväksyminen lisää sen tiliin, ei laitteeseen',
-        body: [
-          'Jako laskeutuu siihen Google-tiliin, jolle se osoitettiin. Jos hyväksyit yhdellä tilillä kirjautuneena ja puhelimessasi on toinen, kalenteri lepää turvassa juuri siellä, minne et katso.',
-          'Oikeassakin tilissä juuri lisätty kalenteri saapuu muille laitteille useammin pois päältä kuin päällä. Se on olemassa, sitä ei vain ole rastitettu — ja rastittamaton kalenteri näyttää täsmälleen puuttuvalta.',
-        ],
+        "heading": "Tarkista tili ja ryhmä",
+        "body": [
+          "Vertaa kutsun vastaanottajaa puhelimen ja selaimen Google-tiliin. Avaa kutsulinkki oikealla tilillä. Google tukee jakamista henkilöille ja Google-ryhmille. Jos oikeus tulee ryhmästä, pyydä ryhmän ylläpitäjää vahvistamaan jäsenyytesi ja kalenterin omistajaa tarkistamaan, että oikealla ryhmällä on pääsy. Edelleenlähetetty sähköposti ei yksin anna käyttöoikeutta."
+        ]
       },
       {
-        heading: 'Kaksi muuta syytä',
-        body: [
-          'Jako postituslistalle tai ryhmäosoitteeseen tavoittaa yksilöitä harvoin; tarvitaan osoite, joka todella on Google-tili. Ja linkkinä jaettu kalenteri on tilaus: se päätyy listan toiseen kohtaan ja päivittyy julkaisijan tahdissa eikä heti.',
-          'iPhonessa Google-kalenterit tulevat sisäänrakennettuun sovellukseen omaa synkronointilistaansa pitkin, ja toissijaiset kalenterit ovat oletuksena sen ulkopuolella. Siksi yksi tili näyttää pääkalenterinsa ja pudottaa hiljaa ne neljä, joilla on väliä.',
-        ],
+        "heading": "Piilotettu, puuttuva vai rajoitettu?",
+        "body": [
+          "Avaa Google Kalenterin valikko iPhonessa tai iPadissa. Jos kalenteri näkyy luettelossa ilman valintaa, valitse se. Jos se puuttuu, pyydä omistajaa tarkistamaan pääsy: pyyntö ei ole hyväksyntä. Työpaikan tai koulun säännöt voivat rajoittaa jakamista. Vertaa samaa tiliä Google Kalenterin verkkoversiossa. Jos se toimii siellä, tarkista toisen sovelluksen yhdistetty tili ja kalenterivalinnat. Pelkkä lukuoikeus ei salli muokkaamista."
+        ]
       },
+      {
+        "heading": "Tunnista linkki",
+        "body": [
+          "Myös jakamiskutsu sisältää linkin; kaikki linkit eivät ole ICS-tilauksia. Kysy, antaako linkki pääsyn Google-kalenteriin vai julkaiseeko se vain luettavan syötteen. Googlen mukaan uusi kalenteritilaus vaatii tietokoneen selaimen; jo sähköpostitse jaetun kalenterin avaaminen on eri toiminto. Syötteen päivitys riippuu vastaanottavasta palvelusta. Yleistä odotusaikaa ei ole; varmista kiireelliset muutokset järjestäjältä."
+        ]
+      }
     ],
-    claims: {
-      refreshHint: 'Tunnit tilatun syötteen päivityspyyntöjen välillä',
-      accounts: 'Tilityypit, jotka yksi näkymä pitää koossa ilman tätä kaikkea',
-    },
-    faq: [
+    "claims": {},
+    "faq": [
       {
-        q: 'Hyväksyin jaetun kalenterin, mutta sitä ei ole iPhonessa. Miksi?',
-        a: 'Jako laskeutuu siihen Google-tiliin, jolle se osoitettiin, ja juuri lisätty kalenteri saapuu muille laitteille yleensä pois päältä. Tarkista ensin tili ja etsi sitä sitten rastittamattomana, ei puuttuvana.',
+        "q": "Voiko Google-ryhmä saada käyttöoikeuden?",
+        "a": "Kyllä. Tarkista valittu ryhmä, jäsenyytesi ja organisaation rajoitukset. Edelleenlähetetty ryhmäviesti ei todista oikeutta."
       },
       {
-        q: 'Toimiiko jakaminen ryhmäosoitteeseen?',
-        a: 'Harvoin. Postituslista ei juuri tavoita sen takana olevia ihmisiä. Tarvitaan osoite, joka on itse Google-tili.',
-      },
-      {
-        q: 'Kuinka kauan jaetun kalenterin ilmestyminen kestää?',
-        a: 'Käyttöoikeuksilla jaettu näkyy heti kun lista päivittyy. Linkkinä jaettu kalenteri on tilaus ja päivittyy julkaisijan tahdissa.',
-      },
+        "q": "Pitääkö tili poistaa ja yhdistää uudelleen?",
+        "a": "Tarkista ensin tili, oikeudet ja näkyvyys sekä vertaa verkkokalenteriin. Uudelleen yhdistäminen ei anna puuttuvia oikeuksia."
+      }
     ],
-    practical: [
-      'Tarkista ensin, mikä tili hyväksyi jaon, vasta sitten muu.',
-      'Avaa laitteen kalenterilista ja etsi sitä pois päältä olevana, älä puuttuvana.',
-      'Jos se tuli linkkinä, odota viivettä eikä välitöntä ilmestymistä.',
+    "practical": [
+      "Varmista kutsuttu tili ja ryhmäjäsenyys.",
+      "Valitse luettelossa oleva piilotettu kalenteri.",
+      "Pyydä omistajaa tarkistamaan pääsy ennen yhteyksien muuttamista."
     ],
-    seeAlso: ['who-can-see-what-in-google-calendar', 'google-calendars-that-never-reach-your-iphone'],
+    "sourcesHeading": "Lähteet ja lisätietoja",
+    "sources": [
+      {
+        "label": "Google: Tarkista tili ja ryhmä",
+        "url": "https://support.google.com/calendar/answer/37082?hl=en&co=GENIE.Platform%3DiOS"
+      },
+      {
+        "label": "Google: Piilotettu, puuttuva vai rajoitettu?",
+        "url": "https://support.google.com/calendar/answer/37100?hl=en&co=GENIE.Platform%3DiOS"
+      },
+      {
+        "label": "Google: Tunnista linkki",
+        "url": "https://support.google.com/calendar/answer/37648?hl=en"
+      }
+    ],
+    "seeAlso": [
+      "who-can-see-what-in-google-calendar",
+      "google-calendars-that-never-reach-your-iphone"
+    ]
   },
 
   'the-secret-address-of-a-google-calendar': {

@@ -51,52 +51,67 @@ export const GOOGLE_ID: Readonly<Record<string, LocalisedArticle>> = {
   },
 
   'why-a-shared-calendar-does-not-appear': {
-    title: 'Sebuah kalender dibagikan kepada Anda dan tidak ada di sana',
-    short: 'Kalender bersama tidak muncul',
-    description:
-      'Seseorang membagikan kalender, Anda menerimanya, dan tidak ada yang berubah. Empat alasan biasa, dalam urutan yang layak diperiksa.',
-    lede: 'Undangannya datang, tautannya ditekan, dan kalendernya tetap tidak ada. Hampir selalu satu dari empat hal, dan tidak satu pun karena berbagi rusak.',
-    commonBelief: 'Bahwa menerima kalender bersama menaruhnya di ponsel Anda.',
-    sections: [
+    "updated": "2026-10-21",
+    "title": "Sebuah kalender dibagikan kepada Anda dan tidak ada di sana",
+    "short": "Kalender bersama tidak muncul",
+    "description": "Kalender Google bersama tidak muncul? Periksa akun yang diundang, grup, visibilitas, dan jenis tautannya.",
+    "lede": "Panduan ini disusun Arte Soft, pengembang Cloud Calendars. Bedakan dahulu masalah izin akses dari kalender yang hanya disembunyikan.",
+    "commonBelief": "Bahwa menerima kalender bersama menaruhnya di ponsel Anda.",
+    "sections": [
       {
-        heading: 'Menerima menambahkannya ke akun, bukan ke perangkat',
-        body: [
-          'Sebuah berbagi mendarat di akun Google yang dituju. Jika Anda menerimanya saat masuk dengan satu akun sementara ponsel membawa akun lain, kalender itu aman persis di tempat yang tidak Anda lihat.',
-          'Bahkan di akun yang benar, kalender yang baru ditambahkan lebih sering tiba dalam keadaan mati di perangkat lain. Ia ada, hanya tidak dicentang — dan kalender yang tidak dicentang tampak persis seperti yang hilang.',
-        ],
+        "heading": "Periksa akun dan grup",
+        "body": [
+          "Bandingkan penerima undangan dengan akun Google yang aktif di ponsel dan browser. Buka tautan undangan dengan akun yang dimaksud. Google mendukung berbagi dengan orang dan Google Grup. Untuk akses melalui grup, minta pengelola mengonfirmasi keanggotaan Anda dan pemilik kalender memeriksa izin grup yang benar. Email yang diteruskan tidak memberikan izin dengan sendirinya."
+        ]
       },
       {
-        heading: 'Dua alasan lainnya',
-        body: [
-          'Berbagi ke milis atau alamat grup jarang sampai ke perorangan; yang dibutuhkan adalah alamat yang benar-benar akun Google. Dan kalender yang dibagikan sebagai tautan adalah langganan: ia jatuh di bagian lain daftar dan menyegarkan mengikuti irama penerbit, bukan seketika.',
-          'Di iPhone, kalender Google sampai ke aplikasi bawaan lewat daftar sinkronisasi tersendiri, dan kalender sekunder berada di luar daftar itu secara bawaan. Karena itu satu akun menampilkan kalender utamanya dan diam-diam menjatuhkan empat yang penting.',
-        ],
+        "heading": "Tersembunyi, tidak ada, atau dibatasi?",
+        "body": [
+          "Buka menu Google Kalender di iPhone atau iPad. Jika kalender ada tetapi tidak dicentang, pilih kalender tersebut. Jika tidak ada, minta pemilik memeriksa akses: permintaan bukan persetujuan. Kebijakan kantor atau sekolah dapat membatasi berbagi. Bandingkan akun yang sama di Google Kalender versi web. Jika berfungsi di sana, periksa akun terhubung dan pilihan kalender di aplikasi lain. Akses hanya baca tidak mengizinkan pengeditan."
+        ]
       },
+      {
+        "heading": "Kenali jenis tautan",
+        "body": [
+          "Undangan berbagi juga berisi tautan; tidak semua tautan merupakan langganan ICS. Tanyakan apakah tautan memberikan akses ke kalender Google atau menerbitkan umpan hanya baca. Menurut Google, langganan kalender baru memerlukan browser komputer; membuka kalender yang sudah dibagikan lewat email adalah tindakan berbeda. Pembaruan umpan bergantung pada layanan penerima. Tidak ada waktu tunggu universal; konfirmasikan perubahan mendesak kepada penyelenggara."
+        ]
+      }
     ],
-    claims: {
-      refreshHint: 'Jam antara permintaan penyegaran dari umpan langganan',
-      accounts: 'Jenis akun yang disatukan satu tampilan tanpa semua ini',
-    },
-    faq: [
+    "claims": {},
+    "faq": [
       {
-        q: 'Saya menerima kalender bersama tapi tidak ada di iPhone. Kenapa?',
-        a: 'Berbagi mendarat di akun Google yang dituju, dan kalender yang baru ditambahkan biasanya tiba dalam keadaan mati di perangkat lain. Periksa akunnya dulu, lalu cari dalam keadaan tidak dicentang, bukan hilang.',
+        "q": "Bisakah Google Grup mendapat akses?",
+        "a": "Ya. Periksa grup yang dipilih, keanggotaan Anda, dan batasan organisasi. Email grup yang diteruskan bukan bukti akses."
       },
       {
-        q: 'Apakah berbagi ke alamat grup berhasil?',
-        a: 'Jarang. Milis nyaris tidak sampai ke orang-orang di baliknya. Yang dibutuhkan adalah alamat yang memang sebuah akun Google.',
-      },
-      {
-        q: 'Berapa lama kalender bersama muncul?',
-        a: 'Berbagi lewat izin muncul begitu daftar disegarkan. Kalender yang dibagikan sebagai tautan adalah langganan dan mengikuti irama penerbitnya.',
-      },
+        "q": "Haruskah saya menghapus dan menghubungkan ulang akun?",
+        "a": "Periksa dahulu identitas, izin, dan visibilitas, lalu bandingkan kalender web. Menghubungkan ulang tidak memberikan izin yang belum ada."
+      }
     ],
-    practical: [
-      'Periksa akun mana yang menerima berbagi sebelum memeriksa hal lain.',
-      'Buka daftar kalender di perangkat dan cari dalam keadaan mati, bukan hilang.',
-      'Jika datang sebagai tautan, harapkan jeda, bukan kemunculan seketika.',
+    "practical": [
+      "Pastikan akun yang diundang dan keanggotaan grup.",
+      "Pilih kalender jika terdaftar tetapi tersembunyi.",
+      "Minta pemilik memeriksa akses sebelum mengubah koneksi."
     ],
-    seeAlso: ['who-can-see-what-in-google-calendar', 'google-calendars-that-never-reach-your-iphone'],
+    "sourcesHeading": "Sumber dan informasi lebih lanjut",
+    "sources": [
+      {
+        "label": "Google: Periksa akun dan grup",
+        "url": "https://support.google.com/calendar/answer/37082?hl=en&co=GENIE.Platform%3DiOS"
+      },
+      {
+        "label": "Google: Tersembunyi, tidak ada, atau dibatasi?",
+        "url": "https://support.google.com/calendar/answer/37100?hl=en&co=GENIE.Platform%3DiOS"
+      },
+      {
+        "label": "Google: Kenali jenis tautan",
+        "url": "https://support.google.com/calendar/answer/37648?hl=en"
+      }
+    ],
+    "seeAlso": [
+      "who-can-see-what-in-google-calendar",
+      "google-calendars-that-never-reach-your-iphone"
+    ]
   },
 
   'the-secret-address-of-a-google-calendar': {

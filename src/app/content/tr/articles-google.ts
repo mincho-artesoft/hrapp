@@ -51,52 +51,67 @@ export const GOOGLE_TR: Readonly<Record<string, LocalisedArticle>> = {
   },
 
   'why-a-shared-calendar-does-not-appear': {
-    title: 'Sizinle bir takvim paylaşıldı ve ortada yok',
-    short: 'Paylaşılan takvim görünmüyor',
-    description:
-      'Biri bir takvim paylaştı, kabul ettiniz ve hiçbir şey değişmedi. Dört sıradan neden, bakılmaya değer sırayla.',
-    lede: 'Davet geldi, bağlantıya dokunuldu ve takvim hâlâ yok. Neredeyse her zaman dört şeyden biridir ve hiçbiri paylaşımın bozulması değildir.',
-    commonBelief: 'Kabul etmenin paylaşılan takvimi telefonunuza koyduğu.',
-    sections: [
+    "updated": "2026-10-21",
+    "title": "Sizinle bir takvim paylaşıldı ve ortada yok",
+    "short": "Paylaşılan takvim görünmüyor",
+    "description": "Paylaşılan Google takvimi görünmüyor mu? Davet edilen hesabı, grubu, görünürlüğü ve bağlantı türünü kontrol edin.",
+    "lede": "Bu rehberi Cloud Calendars geliştiricisi Arte Soft hazırladı. Önce erişim eksikliğini yalnızca gizlenmiş bir takvimden ayırın.",
+    "commonBelief": "Kabul etmenin paylaşılan takvimi telefonunuza koyduğu.",
+    "sections": [
       {
-        heading: 'Kabul etmek onu bir hesaba ekler, bir cihaza değil',
-        body: [
-          'Paylaşım, gönderildiği Google hesabına iner. Bir hesapla oturum açmışken kabul ettiyseniz ve telefonunuz başka bir hesap taşıyorsa, takvim tam da bakmadığınız yerde güvenle duruyordur.',
-          'Doğru hesapta bile yeni eklenen bir takvim diğer cihazlara açık olmaktan çok kapalı gelir. Vardır, yalnızca işaretli değildir — ve işaretsiz bir takvim, olmayan bir takvime birebir benzer.',
-        ],
+        "heading": "Hesabı ve grubu kontrol edin",
+        "body": [
+          "Davetin alıcısını telefonda ve tarayıcıda açık olan Google hesabıyla karşılaştırın. Davet bağlantısını doğru hesapla açın. Google, kişilerle ve Google Grupları ile paylaşımı destekler. Erişim bir grup üzerinden geliyorsa grup yöneticisinden üyeliğinizi, takvim sahibinden doğru grubun erişimini doğrulamasını isteyin. İletilmiş bir e-posta tek başına izin vermez."
+        ]
       },
       {
-        heading: 'Diğer iki neden',
-        body: [
-          'Bir posta listesine ya da grup adresine yapılan paylaşım kişilere nadiren ulaşır; gerçekten bir Google hesabı olan adres gerekir. Bağlantı olarak paylaşılan takvim ise bir aboneliktir: listenin başka bir yerine düşer ve anında değil, yayımlayanın temposunda yenilenir.',
-          'iPhone’da Google takvimleri yerleşik uygulamaya kendi eşitleme listesi üzerinden ulaşır ve ikincil takvimler varsayılan olarak bu listenin dışındadır. Bu yüzden bir hesap ana takvimini gösterir, önemli olan dördünü sessizce düşürür.',
-        ],
+        "heading": "Gizli mi, eksik mi, kısıtlı mı?",
+        "body": [
+          "iPhone veya iPad’de Google Takvim menüsünü açın. Takvim listede olup işaretli değilse seçin. Listede yoksa sahibinden erişimi kontrol etmesini isteyin: İstek, onay anlamına gelmez. İş veya okul kuralları paylaşımı sınırlayabilir. Aynı hesabı web’de Google Takvim ile karşılaştırın. Orada çalışıyorsa diğer uygulamanın bağlı hesabını ve takvim seçimini kontrol edin. Salt okunur erişim düzenleme izni vermez."
+        ]
       },
+      {
+        "heading": "Bağlantının türünü belirleyin",
+        "body": [
+          "Paylaşım davetinde de bağlantı vardır; her bağlantı ICS aboneliği değildir. Gönderene Google takvimine erişim mi verdiğini, yoksa salt okunur bir akış mı yayımladığını sorun. Google’a göre yeni takvim aboneliği için bilgisayar tarayıcısı gerekir; e-postayla zaten paylaşılmış takvimi açmak ayrı bir işlemdir. Akış güncellemeleri alıcı hizmetin yenilemesine bağlıdır. Her durum için geçerli bekleme süresi yoktur; acil değişiklikleri düzenleyenle doğrulayın."
+        ]
+      }
     ],
-    claims: {
-      refreshHint: 'Abone olunan bir akışın yenileme istekleri arasındaki saat',
-      accounts: 'Tek bir görünümün bütün bunlar olmadan bir arada tuttuğu hesap türleri',
-    },
-    faq: [
+    "claims": {},
+    "faq": [
       {
-        q: 'Paylaşılan bir takvimi kabul ettim ama iPhone’umda yok. Neden?',
-        a: 'Paylaşım, gönderildiği Google hesabına iner ve yeni eklenen bir takvim diğer cihazlara çoğunlukla kapalı ulaşır. Önce hesaba bakın, sonra onu yok değil, işaretlenmemiş olarak arayın.',
+        "q": "Bir Google Grubu erişim alabilir mi?",
+        "a": "Evet. Seçilen grubu, üyeliğinizi ve kuruluş kısıtlamalarını kontrol edin. İletilmiş bir grup e-postası erişimi kanıtlamaz."
       },
       {
-        q: 'Grup adresine paylaşım işe yarar mı?',
-        a: 'Nadiren. Bir posta listesi arkasındaki kişilere güçlükle ulaşır. Gereken, kendisi bir Google hesabı olan adrestir.',
-      },
-      {
-        q: 'Paylaşılan bir takvim ne kadar sürede görünür?',
-        a: 'İzinle yapılan paylaşım, liste yenilenir yenilenmez görünür. Bağlantı olarak paylaşılan takvim ise aboneliktir ve yayımlayanın temposunu izler.',
-      },
+        "q": "Hesabı silip yeniden bağlamalı mıyım?",
+        "a": "Önce kimliği, izinleri ve görünürlüğü kontrol edip web takvimiyle karşılaştırın. Yeniden bağlamak eksik izinleri vermez."
+      }
     ],
-    practical: [
-      'Her şeyden önce paylaşımı hangi hesabın kabul ettiğine bakın.',
-      'Cihazdaki takvim listesini açın ve onu yok değil, kapalı olarak arayın.',
-      'Bağlantı olarak geldiyse anında görünmeyi değil, gecikmeyi bekleyin.',
+    "practical": [
+      "Davet edilen hesabı ve grup üyeliğini doğrulayın.",
+      "Listede olup gizlenen takvimi seçin.",
+      "Bağlantıları değiştirmeden önce erişimi kontrol ettirin."
     ],
-    seeAlso: ['who-can-see-what-in-google-calendar', 'google-calendars-that-never-reach-your-iphone'],
+    "sourcesHeading": "Kaynaklar ve ek bilgiler",
+    "sources": [
+      {
+        "label": "Google: Hesabı ve grubu kontrol edin",
+        "url": "https://support.google.com/calendar/answer/37082?hl=en&co=GENIE.Platform%3DiOS"
+      },
+      {
+        "label": "Google: Gizli mi, eksik mi, kısıtlı mı?",
+        "url": "https://support.google.com/calendar/answer/37100?hl=en&co=GENIE.Platform%3DiOS"
+      },
+      {
+        "label": "Google: Bağlantının türünü belirleyin",
+        "url": "https://support.google.com/calendar/answer/37648?hl=en"
+      }
+    ],
+    "seeAlso": [
+      "who-can-see-what-in-google-calendar",
+      "google-calendars-that-never-reach-your-iphone"
+    ]
   },
 
   'the-secret-address-of-a-google-calendar': {

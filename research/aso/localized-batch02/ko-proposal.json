@@ -1,0 +1,82 @@
+{
+  "date": "2026-10-21",
+  "status": "proposal_only_not_applied",
+  "locale": "ko",
+  "appId": "6744690319",
+  "targetVersion": "1.7.4",
+  "targetState": "PREPARE_FOR_SUBMISSION",
+  "appInfoLocalizationId": "d3830145-384a-4d55-8cf7-bfb26d4de417",
+  "versionLocalizationId": "d1b5d0e0-4b29-4ac9-b98a-cc73c81bf9b6",
+  "nameAction": "preserve_exact_current_draft_name",
+  "fields": {
+    "name": {
+      "value": "Cloud Calendars: 캘린더",
+      "characters": 20,
+      "utf8Bytes": 26,
+      "characterLimit": 30,
+      "withinCharacterLimit": true
+    },
+    "subtitle": {
+      "value": "날씨와 일정 관리, 홈 화면 위젯",
+      "characters": 18,
+      "utf8Bytes": 42,
+      "characterLimit": 30,
+      "withinCharacterLimit": true
+    },
+    "keywords": {
+      "value": "스케줄,다이어리,플래너,알림,회의,이벤트,공유,초대,주간보기,월간보기,예보,업무,개인,동기화,약속,시간표",
+      "characters": 58,
+      "utf8Bytes": 144,
+      "characterLimit": 100,
+      "withinCharacterLimit": true
+    },
+    "promotionalText": {
+      "value": "일정과 날씨를 한곳에서 확인하세요. 홈 화면 위젯과 다양한 보기를 활용하거나, 앱 계정 없이 기기에 로컬 캘린더를 만들어 시작할 수 있어요.",
+      "characters": 78,
+      "utf8Bytes": 190,
+      "characterLimit": 170,
+      "withinCharacterLimit": true
+    },
+    "description": {
+      "value": "iPhone과 iPad에서 캘린더와 날씨를 함께 확인하세요. Cloud Calendars로 업무 일정과 개인 일정을 살펴보며 하루를 계획할 수 있어요.\n\n캘린더와 다양한 보기\niCloud 캘린더를 사용하고 Google Calendar를 연결하세요. Premium은 Microsoft 캘린더도 지원합니다. 일간, 주간, 월간, 연간, 목록 보기 중에서 원하는 방식을 선택할 수 있어요.\n\nCloud Calendars 계정을 만들지 않고 기기에 로컬 캘린더를 생성할 수도 있어요. 서비스 연결이나 공유 기능에는 로그인이 필요할 수 있습니다.\n\n날씨와 홈 화면 위젯\n계획을 세우면서 일기예보를 확인하세요. 홈 화면 위젯은 소형, 중형, 대형 크기를 지원합니다. 제공되는 예보는 위치와 기상 정보 제공업체에 따라 달라집니다.\n\n회의와 공유\nGoogle Calendar에서 Google Meet를 사용할 수 있어요. Premium은 Microsoft Teams도 지원합니다. 이벤트와 캘린더를 공유하고 이메일, QR 코드 또는 App Clip으로 초대하세요. 접근 권한은 캘린더와 초대 유형에 따라 다릅니다.\n\n요금제 안내\n무료 Base에는 Google Calendar 동기화, Google Meet, 다양한 캘린더 보기, 날씨, 위젯이 포함됩니다.\nAdvanced에는 Base 기능이 포함되며 광고가 제거됩니다.\nPremium에는 Advanced 기능과 함께 Microsoft 캘린더 및 Microsoft Teams 지원이 포함됩니다.\n\n앱은 무료로 다운로드할 수 있으며, 자동 갱신 구독을 선택하여 구매할 수 있습니다. 현재 가격은 앱 또는 App Store에서 확인하세요. 구매 확정 시 Apple 계정으로 요금이 청구됩니다. 현재 구독 기간이 끝나기 최소 24시간 전에 취소하지 않으면 자동으로 갱신됩니다. 갱신 요금은 기간 종료 전 24시간 이내에 청구됩니다. App Store 계정 설정에서 구독을 관리하거나 취소할 수 있습니다.\n\n개인정보 처리방침: https://www.cloud-calendars.com/privacy-policy\n이용 약관: https://www.apple.com/legal/internet-services/itunes/dev/stdeula/",
+      "characters": 1101,
+      "utf8Bytes": 2119,
+      "characterLimit": 4000,
+      "withinCharacterLimit": true
+    }
+  },
+  "current": {
+    "appInfo": {
+      "locale": "ko",
+      "name": "Cloud Calendars: 캘린더",
+      "subtitle": "Google·Microsoft·iCloud 통합",
+      "privacyPolicyUrl": "https://www.cloud-calendars.com/privacy-policy",
+      "privacyChoicesUrl": null,
+      "privacyPolicyText": null
+    },
+    "version": {
+      "description": "캘린더와 날씨로 하루를 함께 계획하세요\n\nCloud Calendars는 캘린더와 날씨를 아름답게 정리된 하나의 계획 환경으로 결합합니다.\n\n하나의 앱에서 iCloud, Google 캘린더, Microsoft 캘린더를 관리하고 일정, 위젯, 계획 보기 안에서 예보를 바로 확인하세요.\n\n더 빠른 계획을 위해 설계된 캘린더 보기로 회의, 여행, 학교 픽업, 야외 활동, 바쁜 하루를 미리 준비할 수 있습니다.\n\n홈 화면 위젯\n\n다음 정보를 결합한 아름다운 위젯을 추가하세요:\n• 캘린더 이벤트\n• 날씨 예보\n• 예정된 일정\n• 달의 위상과 날씨 상태\n• 바람과 기온\n• 일일 일정 개요\n\n여러 위젯 스타일 중에서 선택하여 홈 화면에서 하루를 바로 확인하세요.\n\nCLOUD CALENDARS를 선택하는 이유\n\n• iCloud, Google 캘린더, Microsoft 캘린더를 함께 보기\n• 내장 날씨 예보로 계획하기\n• 아름다운 홈 화면 위젯 사용\n• 이벤트를 자연스럽게 끌고 이동하고 시간 조정\n• Google Meet 및 Microsoft Teams 링크 만들기\n• 일간, 주간, 월간, 연간 및 목록 보기 전환\n• 업무와 개인 캘린더를 한곳에서 관리\n\n기능\n\n모든 캘린더를 한곳에\niCloud, Google 캘린더, Microsoft 캘린더를 깔끔한 색상 구분 환경에서 연결하고 관리하세요.\n\n캘린더에 내장된 날씨\n기온, 날씨 상태, 달의 위상, 바람, 날씨 아이콘을 포함한 시간별 및 일별 예보를 계획 과정에서 바로 확인하세요.\n\n캘린더 + 날씨 위젯\n사용자화할 수 있는 홈 화면 위젯에서 일정과 날씨를 즉시 확인하세요.\n\n다양한 캘린더 보기\n시간을 계획하는 방식에 따라 일간, 주간, 월간, 연간 또는 목록 보기를 선택하세요.\n\n간편한 이벤트 편집\n캘린더에서 이벤트를 탭하고 끌고 시간 조정하여 빠르고 자연스럽게 일정을 관리하세요.\n\n전용 날씨 보기\n시간별 상태와 유용한 계획 정보를 포함한 상세 예보를 살펴보세요.\n\n예보에서 이벤트 만들기\n예보 시간을 탭하여 선택한 시간으로 새 이벤트를 즉시 만드세요.\n\n내장 회의 링크\n이벤트에 Google Meet 및 Microsoft Teams 링크를 빠르게 추가하세요.\n\n다음에 적합\n\n• 업무 및 개인 캘린더 관리\n• 날씨를 고려한 계획\n• 야외 활동과 여행\n• 바쁜 일정과 가족 계획\n• Google 캘린더 및 iCloud 사용자\n• Microsoft 캘린더 사용자\n\nCloud Calendars를 사용해 보고 매일의 계획을 더 쉽게 만들어 보세요.\n\n구독 정보\n\nCloud Calendars는 자동 갱신 구독을 제공합니다.\n\n무료 플랜\n• Google 캘린더 동기화\n• 다양한 캘린더 보기\n• 날씨 기능\n• 위젯\n• Google Meet 지원\n\n구매 확인 시 Apple ID 계정으로 결제 금액이 청구됩니다. 현재 기간 종료 최소 24시간 전에 취소하지 않으면 구독은 자동으로 갱신됩니다. 현재 기간 종료 전 24시간 이내에 갱신 요금이 청구됩니다. App Store 계정 설정에서 구독을 관리하고 취소할 수 있습니다.\n\n개인정보 처리방침: https://www.cloud-calendars.com/privacy-policy\n이용 약관: https://www.apple.com/legal/internet-services/itunes/dev/stdeula/",
+      "locale": "ko",
+      "keywords": "날씨,위젯,일정,플래너,계획,예보,회의,이벤트,업무,달의위상,바람,기온,여행,가족,미리알림,시간관리,온도,약속,잠금화면,비,오늘,주간,월간,알림,동기화,공휴일",
+      "marketingUrl": "https://www.cloud-calendars.com/",
+      "promotionalText": null,
+      "supportUrl": "https://www.cloud-calendars.com/",
+      "whatsNew": null
+    }
+  },
+  "keywordChecks": {
+    "exactDuplicateKeywords": false,
+    "exactTitleSubtitleTokenDuplicates": [],
+    "note": "Exact Unicode token check only. Japanese/Korean segmentation and grammatical forms require linguistic judgment. Keywords use actual localized terms; no provider trademarks added to keyword field. UTF-8 bytes reported, not treated as a rejection threshold."
+  },
+  "readiness": "ready_for_editorial_review_not_applied",
+  "translationConfidence": "medium",
+  "translationCaveat": "Model-authored localization; no native-speaker review or live ASC validation performed. Brand and tier names preserved. Confirm localized tier labels match shipping UI before submission.",
+  "evidence": [
+    "../../product-facts.json",
+    "../english-applied-20261021.json",
+    "asc-current-20261021.json"
+  ],
+  "claims": "Supported features only. No standalone Lock Screen widget, blanket Exchange, forecast-duration, privacy guarantee, superiority, search-volume or ranking claim. Sharing permissions and sign-in qualified.",
+  "mutationPolicy": "Do not change name, URLs, privacy fields, release notes, screenshots or other locales as part of applying these four proposed fields."
+}

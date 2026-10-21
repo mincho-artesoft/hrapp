@@ -11,167 +11,148 @@ import { LocalisedArticle } from '../types';
  */
 export const ARTICLES_DE_DE: Readonly<Record<string, LocalisedArticle>> = {
   'weather-inside-your-calendar': {
-    title: 'Ein Kalender, in dem das Wetter schon drin ist',
-    short: 'Wetter im Kalender',
-    description:
-      'Warum es ein Konstruktionsfehler ist, für einen Tag zwei Apps zu befragen — und wie ein Kalender aussieht, in dem die Vorhersage Teil der Ansicht ist statt daneben zu stehen.',
-    lede: 'Fast alle planen einen Tag über zwei Apps hinweg. Der Kalender sagt, wo Sie sein müssen; die Wetter-App sagt, wie es dort sein wird. Beides gleichzeitig im Kopf zu halten ist der Teil, den niemand bemerkt — bis ein Samstag ins Wasser fällt.',
-    commonBelief:
-      'Dass ein Kalender für Termine da ist und eine Wetter-App fürs Wetter, und dass die Trennung einfach so ist, wie Telefone funktionieren.',
-    sections: [
-      {
-        heading: 'Der Preis für zwei Apps sind nicht zwei Tippen',
-        body: [
-          'Das Umschalten kostet nichts. Teuer ist, dass die beiden Apps sich nicht einig sind, was zählt. Ihr Kalender weiß, dass Samstag um elf zwei Stunden geblockt sind; die Wetter-App weiß, dass es von zehn bis eins regnet. Keine von beiden weiß, dass diese zwei Tatsachen zusammen bedeuten: verschieben.',
-          'Sie sind die Integrationsschicht. Das funktioniert, bis Sie beschäftigt sind — also genau dann, wenn Pläne es wert wären, geschützt zu werden.',
-        ],
-      },
-      {
-        heading: 'Was sich ändert, wenn die Vorhersage im Raster liegt',
-        body: [
-          'Liegt die Vorhersage hinter den Terminen, beantwortet sich der Konflikt von selbst. Ein nasser Vormittag und ein trockener Nachmittag sind im selben Blick sichtbar wie der Termin, den Sie gerade legen wollten, und die Entscheidung kostet keinen Gedanken mehr.',
-          'Das ist kein Widget, das seitlich angeklebt wurde. Jeder Tag in Wochen- und Monatsansicht trägt seine eigenen Bedingungen, und jeder Termin die Vorhersage für die Stunden, die er tatsächlich belegt — nicht die Tagesübersicht, die genau den Teil wegmittelt, den Sie gebraucht hätten.',
-        ],
-      },
-      {
-        heading: 'Die ehrliche Grenze',
-        body: [
-          'Eine Vorhersage vierzehn Tage im Voraus ist eine Form, kein Versprechen. Sie ist wirklich nützlich, um zwischen einem Dienstag und einem Donnerstag zu wählen, und fast wertlos für die Frage, ob man in zwei Wochen eine Jacke braucht.',
-          'Die App zeigt den ganzen Horizont, weil ein Datum zu wählen eine echte Aufgabe ist. Sie stellt Tag zwölf nicht so dar, als wäre er morgen.',
-        ],
-      },
-    ],
-    claims: {
-      forecastDays: 'Tage Vorhersage, im Kalender und neben jedem Termin',
-      views: 'Ansichten mit Wetter: Tag, Woche, Monat, Jahr und Liste',
-      price: 'Was die Wetterfunktionen kosten',
+  "title": "Ein Kalender, in dem das Wetter schon drin ist",
+  "short": "Wetter im Kalender",
+  "description": "Warum es ein Konstruktionsfehler ist, für einen Tag zwei Apps zu befragen — und wie ein Kalender aussieht, in dem die Vorhersage Teil der Ansicht ist statt daneben zu stehen.",
+  "lede": "Fast alle planen einen Tag über zwei Apps hinweg. Der Kalender sagt, wo Sie sein müssen; die Wetter-App sagt, wie es dort sein wird. Beides gleichzeitig im Kopf zu halten ist der Teil, den niemand bemerkt — bis ein Samstag ins Wasser fällt.",
+  "commonBelief": "Dass ein Kalender für Termine da ist und eine Wetter-App fürs Wetter, und dass die Trennung einfach so ist, wie Telefone funktionieren.",
+  "sections": [
+    {
+      "heading": "Der Preis für zwei Apps sind nicht zwei Tippen",
+      "body": [
+        "Das Umschalten kostet nichts. Teuer ist, dass die beiden Apps sich nicht einig sind, was zählt. Ihr Kalender weiß, dass Samstag um elf zwei Stunden geblockt sind; die Wetter-App weiß, dass es von zehn bis eins regnet. Keine von beiden weiß, dass diese zwei Tatsachen zusammen bedeuten: verschieben.",
+        "Sie sind die Integrationsschicht. Das funktioniert, bis Sie beschäftigt sind — also genau dann, wenn Pläne es wert wären, geschützt zu werden."
+      ]
     },
-    practical: [
-      'Schauen Sie in der Wochenansicht auf das Band hinter den Tagen, bevor Sie etwas draußen planen.',
-      'Tippen Sie einen Termin an, um die Vorhersage für seine Stunden zu sehen statt für seinen Tag.',
-      'Legen Sie Wetterabhängiges zuerst grob gegen die vierzehn Tage und verfeinern Sie es zwei Tage vorher.',
-      'Behandeln Sie alles jenseits von etwa Tag sieben als Form, nicht als Plan.',
-    ],
-    seeAlso: ['forecast-beside-every-event', 'a-fourteen-day-view-of-the-weather'],
+    {
+      "heading": "Die verfügbare Vorhersage",
+      "body": [
+        "Cloud Calendars verwendet die verfügbare Vorhersage für den ausgewählten Ort. Stunden- und Tagesdaten können unterschiedliche Zeiträume abdecken.",
+        "Der Zeitraum, den Sie im Kalender aufrufen können, bestimmt nicht die Reichweite der Vorhersage. Eine Monatsansicht bedeutet keine Wettervorhersage für den ganzen Monat oder jeden Termin."
+      ]
+    }
+  ],
+  "claims": {
+    "price": "Was die Wetterfunktionen kosten"
   },
+  "practical": [
+    "Prüfen Sie Ort, Datum und verfügbare Stunden, bevor Sie mit der Vorhersage planen."
+  ],
+  "seeAlso": [
+    "forecast-beside-every-event",
+    "a-fourteen-day-view-of-the-weather"
+  ],
+  "updated": "2026-10-21"
+},
 
   'forecast-beside-every-event': {
-    title: 'Die Vorhersage neben jedem Termin, nicht nur beim Tag',
-    short: 'Vorhersage am Termin',
-    description:
-      'Eine Tagesübersicht mittelt genau die Stunden weg, auf die es ankommt. Was Wetter pro Termin bedeutet und warum der Unterschied draußen zählt.',
-    lede: 'Die meisten Kalender, die überhaupt Wetter zeigen, zeigen ein Symbol pro Tag. Dieses Symbol ist ein Mittelwert — und der Mittelwert aus nassem Vormittag und trockenem Nachmittag ist ein Nieselregen, den es nie gegeben hat.',
-    commonBelief: 'Dass ein Wettersymbol am Tag dasselbe ist wie eine Vorhersage am Termin.',
-    sections: [
-      {
-        heading: 'Was ein Tagessymbol verbirgt',
-        body: [
-          'Nehmen Sie einen Tag, an dem es bis elf stark regnet und danach aufklart. Die Tagesübersicht wählt etwas dazwischen und zeigt eine Wolke. Sie sehen bei Ihrem Zwei-Uhr-Termin die Wolke und verschieben einen Spaziergang, der nie hätte verschoben werden müssen.',
-          'Der Fehler geht in beide Richtungen. Ein Tag, der bis auf eine heftige Stunde um sechs schön ist, erscheint als schön — und der eine Termin, auf den es ankam, ist der, den es erwischt.',
-        ],
-      },
-      {
-        heading: 'Die Vorhersage an die Stunden hängen',
-        body: [
-          'Ein Termin belegt bestimmte Stunden. Die Vorhersage für diese Stunden ist eine andere Zahl als die für seinen Tag, und sie ist die einzige, die Ihre eigentliche Frage beantwortet.',
-          'Öffnen Sie einen Termin, und die gezeigten Bedingungen sind die seines Zeitfensters. Ein Drei-Stunden-Block bekommt die drei Stunden, nicht die vierundzwanzig.',
-        ],
-      },
-    ],
-    claims: {
-      forecastDays: 'Tage im Voraus, für die ein Termin eine Vorhersage tragen kann',
+  "title": "Die Vorhersage neben jedem Termin, nicht nur beim Tag",
+  "short": "Vorhersage am Termin",
+  "description": "Eine Tagesübersicht mittelt genau die Stunden weg, auf die es ankommt. Was Wetter pro Termin bedeutet und warum der Unterschied draußen zählt.",
+  "lede": "Die meisten Kalender, die überhaupt Wetter zeigen, zeigen ein Symbol pro Tag. Dieses Symbol ist ein Mittelwert — und der Mittelwert aus nassem Vormittag und trockenem Nachmittag ist ein Nieselregen, den es nie gegeben hat.",
+  "commonBelief": "Dass ein Wettersymbol am Tag dasselbe ist wie eine Vorhersage am Termin.",
+  "sections": [
+    {
+      "heading": "Was ein Tagessymbol verbirgt",
+      "body": [
+        "Nehmen Sie einen Tag, an dem es bis elf stark regnet und danach aufklart. Die Tagesübersicht wählt etwas dazwischen und zeigt eine Wolke. Sie sehen bei Ihrem Zwei-Uhr-Termin die Wolke und verschieben einen Spaziergang, der nie hätte verschoben werden müssen.",
+        "Der Fehler geht in beide Richtungen. Ein Tag, der bis auf eine heftige Stunde um sechs schön ist, erscheint als schön — und der eine Termin, auf den es ankam, ist der, den es erwischt."
+      ]
     },
-    practical: [
-      'Prüfen Sie den Termin, nicht den Tag, wenn der Plan vom Wetter abhängt.',
-      'Sehen Sie bei allem, was länger als zwei Stunden dauert, wie sich die Bedingungen über den Block bewegen.',
-      'Verschieben Sie, bevor Sie absagen — eine Stunde in eine Richtung ist oft der ganze Unterschied.',
-    ],
-    seeAlso: ['weather-inside-your-calendar', 'planning-outdoors-without-being-rained-on'],
-  },
+    {
+      "heading": "Die Vorhersage an die Stunden hängen",
+      "body": [
+        "Ein Termin belegt bestimmte Stunden. Die Vorhersage für diese Stunden ist eine andere Zahl als die für seinen Tag, und sie ist die einzige, die Ihre eigentliche Frage beantwortet.",
+        "Öffnen Sie einen Termin, und die gezeigten Bedingungen sind die seines Zeitfensters. Ein Drei-Stunden-Block bekommt die drei Stunden, nicht die vierundzwanzig."
+      ]
+    }
+  ],
+  "claims": {},
+  "practical": [
+    "Prüfen Sie den Termin, nicht den Tag, wenn der Plan vom Wetter abhängt.",
+    "Sehen Sie bei allem, was länger als zwei Stunden dauert, wie sich die Bedingungen über den Block bewegen.",
+    "Verschieben Sie, bevor Sie absagen — eine Stunde in eine Richtung ist oft der ganze Unterschied."
+  ],
+  "seeAlso": [
+    "weather-inside-your-calendar",
+    "planning-outdoors-without-being-rained-on"
+  ],
+  "updated": "2026-10-21"
+},
 
   'planning-outdoors-without-being-rained-on': {
-    title: 'Draußen planen, ohne nass zu werden',
-    short: 'Draußen planen',
-    description:
-      'Eine praktische Methode, alles zu terminieren, was im Freien stattfindet — mit dem Kalender, den Sie ohnehin führen, statt mit einer zweiten Wetterroutine.',
-    lede: 'Wenn Ihre Hobbys draußen stattfinden, haben Sie wahrscheinlich ein privates Ritual entwickelt: Wetter prüfen, auf die Woche schielen, raten. Das Raten kann weg.',
-    commonBelief: 'Dass man schlechtem Wetter entgeht, indem man öfter nachsieht.',
-    sections: [
-      {
-        heading: 'Öfter nachsehen hilft nicht',
-        body: [
-          'Die Wetter-App fünfmal zu öffnen verbessert nicht die Vorhersage, sondern die Nervosität. Was Ergebnisse ändert, ist ein Blick auf die Vorhersage in dem Moment, in dem Sie einen Zeitpunkt wählen — und das ist ein völlig anderer Moment.',
-          'Dieser Moment findet im Kalender statt. Ist das Wetter nicht dort, treffen Sie die Entscheidung ohne es und korrigieren später.',
-        ],
-      },
-      {
-        heading: 'Den Termin gegen die Woche wählen',
-        body: [
-          'Sehen Sie die Woche mit den Bedingungen dahinter, entscheidet sich die Sache meist von selbst. Zwei mögliche Nachmittage, einer trocken — da gibt es nichts abzuwägen.',
-          'Die Gewohnheit, die sich lohnt, ist klein: bevor Sie etwas nach draußen legen, schauen Sie auf das Band, nicht in eine zweite App.',
-        ],
-      },
-      {
-        heading: 'Dann die Stunden prüfen, nicht den Tag',
-        body: [
-          'Sobald der Termin existiert, zählt seine eigene Vorhersage. Ein Tag kann nass sein und Ihre zwei Stunden trocken — die Tagesübersicht wird Ihnen das nie sagen.',
-          'Verschieben statt absagen. Eine Stunde in beide Richtungen rettet mehr Pläne als jedes erneute Nachsehen.',
-        ],
-      },
-    ],
-    claims: {
-      forecastDays: 'Tage im Voraus, gegen die sich ein Plan legen lässt',
+  "title": "Draußen planen, ohne nass zu werden",
+  "short": "Draußen planen",
+  "description": "Eine praktische Methode, alles zu terminieren, was im Freien stattfindet — mit dem Kalender, den Sie ohnehin führen, statt mit einer zweiten Wetterroutine.",
+  "lede": "Wenn Ihre Hobbys draußen stattfinden, haben Sie wahrscheinlich ein privates Ritual entwickelt: Wetter prüfen, auf die Woche schielen, raten. Das Raten kann weg.",
+  "commonBelief": "Dass man schlechtem Wetter entgeht, indem man öfter nachsieht.",
+  "sections": [
+    {
+      "heading": "Öfter nachsehen hilft nicht",
+      "body": [
+        "Die Wetter-App fünfmal zu öffnen verbessert nicht die Vorhersage, sondern die Nervosität. Was Ergebnisse ändert, ist ein Blick auf die Vorhersage in dem Moment, in dem Sie einen Zeitpunkt wählen — und das ist ein völlig anderer Moment.",
+        "Dieser Moment findet im Kalender statt. Ist das Wetter nicht dort, treffen Sie die Entscheidung ohne es und korrigieren später."
+      ]
     },
-    practical: [
-      'Legen Sie Termine im Freien aus der Wochenansicht heraus, mit sichtbaren Bedingungen.',
-      'Prüfen Sie zwei Tage vorher die Stunden des Termins, nicht seinen Tag.',
-      'Verschieben Sie um eine Stunde, bevor Sie den Plan aufgeben.',
-      'Bei allem, was weiter als eine Woche entfernt ist: Tag wählen und akzeptieren, dass Sie später nachjustieren.',
-    ],
-    seeAlso: ['forecast-beside-every-event', 'a-fourteen-day-view-of-the-weather'],
-  },
+    {
+      "heading": "Den Termin gegen die Woche wählen",
+      "body": [
+        "Sehen Sie die Woche mit den Bedingungen dahinter, entscheidet sich die Sache meist von selbst. Zwei mögliche Nachmittage, einer trocken — da gibt es nichts abzuwägen.",
+        "Die Gewohnheit, die sich lohnt, ist klein: bevor Sie etwas nach draußen legen, schauen Sie auf das Band, nicht in eine zweite App."
+      ]
+    },
+    {
+      "heading": "Dann die Stunden prüfen, nicht den Tag",
+      "body": [
+        "Sobald der Termin existiert, zählt seine eigene Vorhersage. Ein Tag kann nass sein und Ihre zwei Stunden trocken — die Tagesübersicht wird Ihnen das nie sagen.",
+        "Verschieben statt absagen. Eine Stunde in beide Richtungen rettet mehr Pläne als jedes erneute Nachsehen."
+      ]
+    }
+  ],
+  "claims": {},
+  "practical": [
+    "Legen Sie Termine im Freien aus der Wochenansicht heraus, mit sichtbaren Bedingungen.",
+    "Prüfen Sie zwei Tage vorher die Stunden des Termins, nicht seinen Tag.",
+    "Verschieben Sie um eine Stunde, bevor Sie den Plan aufgeben.",
+    "Bei allem, was weiter als eine Woche entfernt ist: Tag wählen und akzeptieren, dass Sie später nachjustieren."
+  ],
+  "seeAlso": [
+    "forecast-beside-every-event",
+    "a-fourteen-day-view-of-the-weather"
+  ],
+  "updated": "2026-10-21"
+},
 
   'a-fourteen-day-view-of-the-weather': {
-    title: 'Vierzehn Tage Vorhersage — und wofür jede Hälfte taugt',
-    short: 'Vierzehn Tage im Blick',
-    description:
-      'Das Ende einer langen Vorhersage ist keine Prognose. Es ist trotzdem das Nützlichste, was Sie haben, wenn Sie ein Datum wählen.',
-    lede: 'Menschen wünschen sich eine Zehn-Tage-Vorhersage und beschweren sich dann, dass Tag zehn falsch war. Beides ist berechtigt. Eine lange Vorhersage beantwortet eine andere Frage als die von morgen — und sie beantwortet sie gut.',
-    commonBelief:
-      'Dass vierzehn Tage Vorhersage vierzehn Tage Versprechen sind und ein falscher Tag zwölf das Ganze wertlos macht.',
-    sections: [
-      {
-        heading: 'Wofür die erste Woche da ist',
-        body: [
-          'Innerhalb von etwa sieben Tagen ist eine Vorhersage konkret genug, um danach zu handeln. Sie sagt Ihnen, welcher Nachmittag trocken ist, ungefähr wann Regen kommt, und ob es sich lohnt, etwas um eine Stunde zu verschieben.',
-          'In diesem Bereich gehören Absagen, Verschieben und Packen hin.',
-        ],
-      },
-      {
-        heading: 'Wofür die zweite Woche da ist',
-        body: [
-          'Jenseits einer Woche verschwindet das Detail, die Form bleibt. Ihnen wird nicht mehr gesagt, ob es um drei regnet, sondern dass das eine Ende der nächsten Woche beständig aussieht und das andere nicht.',
-          'Genau das brauchen Sie, wenn Sie zwischen zwei möglichen Terminen wählen — und das ist die häufigste Wetterentscheidung, die überhaupt jemand trifft.',
-        ],
-      },
-      {
-        heading: 'Lesen, ohne sich täuschen zu lassen',
-        body: [
-          'Achten Sie darauf, wie sich die fernen Tage zwischen zwei Blicken verändern. Ein Tag, der über drei Aktualisierungen hinweg seine Form behält, sagt Ihnen etwas. Ein Tag, der zwischen Sonne und Gewitter springt, sagt Ihnen, dass er es noch nicht weiß — auch das ist eine Information.',
-          'Die App zeigt den ganzen Horizont, statt ihn abzuschneiden, und gibt Tag zwölf nicht mehr Sicherheit, als er verdient hat.',
-        ],
-      },
-    ],
-    claims: {
-      forecastDays: 'Tage, die die Vorhersage abdeckt',
-    },
-    practical: [
-      'Nutzen Sie die zweite Woche, um ein Datum zu wählen, nicht um Kleidung zu planen.',
-      'Prüfen Sie wetterabhängige Pläne etwa zwei Tage vorher erneut, wenn das Detail eintrifft.',
-      'Ändert sich das ferne Ende zwischen den Blicken ständig, ist es unbeständig — nicht das, was die heutige Version behauptet.',
-    ],
-    seeAlso: ['weather-inside-your-calendar', 'planning-outdoors-without-being-rained-on'],
-  },
+  "title": "Die verfügbare Vorhersage",
+  "short": "Die verfügbare Vorhersage",
+  "description": "Cloud Calendars verwendet die verfügbare Vorhersage für den ausgewählten Ort. Stunden- und Tagesdaten können unterschiedliche Zeiträume abdecken.",
+  "lede": "Der Zeitraum, den Sie im Kalender aufrufen können, bestimmt nicht die Reichweite der Vorhersage. Eine Monatsansicht bedeutet keine Wettervorhersage für den ganzen Monat oder jeden Termin.",
+  "sections": [
+    {
+      "heading": "Die verfügbare Vorhersage",
+      "body": [
+        "Cloud Calendars verwendet die verfügbare Vorhersage für den ausgewählten Ort. Stunden- und Tagesdaten können unterschiedliche Zeiträume abdecken.",
+        "Der Zeitraum, den Sie im Kalender aufrufen können, bestimmt nicht die Reichweite der Vorhersage. Eine Monatsansicht bedeutet keine Wettervorhersage für den ganzen Monat oder jeden Termin."
+      ]
+    }
+  ],
+  "claims": {},
+  "practical": [
+    "Prüfen Sie Ort, Datum und verfügbare Stunden, bevor Sie mit der Vorhersage planen."
+  ],
+  "seeAlso": [
+    "weather-inside-your-calendar",
+    "planning-outdoors-without-being-rained-on"
+  ],
+  "updated": "2026-10-21",
+  "sources": [
+    {
+      "label": "Apple WeatherKit",
+      "url": "https://developer.apple.com/weatherkit/"
+    }
+  ]
+},
 
   'icloud-google-and-outlook-in-one-view': {
     title: 'iCloud, Google und Outlook in einer Ansicht',
@@ -430,46 +411,53 @@ export const ARTICLES_DE_DE: Readonly<Record<string, LocalisedArticle>> = {
   },
 
   'what-a-subscription-actually-buys': {
-    title: 'Was ein Abonnement tatsächlich bringt, Stufe für Stufe',
-    short: 'Was ein Abo bringt',
-    description:
-      'Zwei bezahlte Stufen, was sie trennt, und wie Sie erkennen, welche — wenn überhaupt — Ihre ist. Jahres- und Monatspreise nebeneinander.',
-    lede: 'Zwei Stufen reichen für Verwirrung, wenn niemand klar sagt, was sie trennt. Was sie trennt, ist Microsoft.',
-    commonBelief: 'Dass die höhere Stufe dieselben Funktionen sind, nur mehr davon.',
-    sections: [
-      {
-        heading: 'Die erste Stufe entfernt die Werbung',
-        body: [
-          'Sie bringt außerdem die Verwaltung von Terminen über iCloud- und Google-Kalender hinweg, Google-Freigaberechte, automatische Meet-Links und schnellere Wetteraktualisierung. Gekauft wird sie aber wegen der Werbung.',
-          'Zu diesem Preis ist sie ungefähr ein Kaffee im Jahr, und sie ist die Stufe, die zu den meisten passt, die überhaupt etwas zahlen wollen.',
-        ],
-      },
-      {
-        heading: 'Die zweite Stufe ist für Microsoft',
-        body: [
-          'Outlook- und Exchange-Synchronisierung, Teams-Links, kontenübergreifende Verwaltung samt Arbeit, Verwaltung von Teilnehmern. Sie kostet eine Größenordnung mehr, weil die Verbindung das auch tut.',
-          'Liegt Ihr Arbeitskalender nicht bei Microsoft, enthält diese Stufe nichts für Sie, und Sie sollten sie nicht kaufen.',
-        ],
-      },
-      {
-        heading: 'Jahr gegen Monat',
-        body: [
-          'Beide Stufen sind im Jahr günstiger. Die Ersparnis ist maßvoll statt dramatisch — nehmen Sie das Jahr, wenn Sie sicher sind, und den Monat, wenn Sie noch überlegen.',
-          'Keines von beidem ist eine Falle: Nach einer Kündigung stehen Sie auf der kostenlosen Stufe, und Ihre Kalender sind unversehrt, weil die Termine nie uns gehört haben.',
-        ],
-      },
-    ],
-    claims: {
-      advancedMonthly: 'Erste Stufe, monatlich, in Dollar',
-      advancedYearly: 'Erste Stufe, jährlich, in Dollar',
-      premiumMonthly: 'Zweite Stufe, monatlich, in Dollar',
-      premiumYearly: 'Zweite Stufe, jährlich, in Dollar',
+  "updated": "2026-10-21",
+  "title": "Was ein Abonnement tatsächlich bringt, Stufe für Stufe",
+  "short": "Was ein Abo bringt",
+  "description": "Was ein Abo bringt: Base, Advanced, Premium.",
+  "lede": "Dieser Leitfaden stammt von Arte Soft, dem Entwickler von Cloud Calendars.",
+  "sections": [
+    {
+      "heading": "Base",
+      "body": [
+        "Base umfasst Google-Calendar-Synchronisierung, Google Meet, Kalenderansichten, Wetter und Widgets. Der kostenlose Tarif kann Werbung anzeigen."
+      ]
     },
-    practical: [
-      'Kaufen Sie die erste Stufe, um Werbung zu entfernen, nicht um den Kalender freizuschalten.',
-      'Kaufen Sie die zweite nur, wenn Ihre Arbeit bei Microsoft lebt.',
-      'Nehmen Sie das Jahr, sobald Sie sicher sind; die Ersparnis ist echt, aber klein.',
-    ],
-    seeAlso: ['free-google-sync-without-adverts'],
-  },
+    {
+      "heading": "Advanced · Premium",
+      "body": [
+        "Advanced enthält Base und entfernt Werbung. Premium enthält Advanced und ergänzt Microsoft Calendar und Microsoft Teams.",
+        "Ein Abonnement kauft keine Bearbeitungsrechte für fremde Kalender und umgeht keine Einschränkungen eines Arbeitskontos."
+      ]
+    },
+    {
+      "heading": "Informationen zu Kauf und Kündigung",
+      "body": [
+        "Prüfen Sie vor dem Kauf den lokalen Preis, den Abrechnungszeitraum und die Verlängerungsbedingungen.",
+        "Für ein über Apple abgerechnetes Abo öffnen Sie Einstellungen → Ihr Name → Abonnements. Prüfen Sie Status und Ablaufdatum. Die Kündigung der Verlängerung ist vom Löschen der App oder von Kalenderdaten getrennt; kostenpflichtige Funktionen bleiben nach Ablauf nicht automatisch verfügbar."
+      ]
+    }
+  ],
+  "claims": {},
+  "practical": [
+    "Prüfen Sie vor dem Kauf den lokalen Preis, den Abrechnungszeitraum und die Verlängerungsbedingungen.",
+    "Ein Abonnement kauft keine Bearbeitungsrechte für fremde Kalender und umgeht keine Einschränkungen eines Arbeitskontos."
+  ],
+  "faq": [
+    {
+      "q": "Wie beende ich die Verlängerung?",
+      "a": "Für ein über Apple abgerechnetes Abo öffnen Sie Einstellungen → Ihr Name → Abonnements. Prüfen Sie Status und Ablaufdatum. Die Kündigung der Verlängerung ist vom Löschen der App oder von Kalenderdaten getrennt; kostenpflichtige Funktionen bleiben nach Ablauf nicht automatisch verfügbar."
+    }
+  ],
+  "sourcesHeading": "Informationen zu Kauf und Kündigung",
+  "sources": [
+    {
+      "label": "Apple: Wie beende ich die Verlängerung?",
+      "url": "https://support.apple.com/en-us/118428"
+    }
+  ],
+  "seeAlso": [
+    "free-google-sync-without-adverts"
+  ]
+},
 };

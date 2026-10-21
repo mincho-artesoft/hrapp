@@ -24,7 +24,6 @@ export const ARTICLE_FACTS: Readonly<Record<string, ArticleFacts>> = {
     intent: 'core',
     prompt: 'weather-builtin',
     claims: [
-      { id: 'forecastDays', value: '14' },
       { id: 'views', value: '5' },
       { id: 'price', value: '0' },
     ],
@@ -35,7 +34,7 @@ export const ARTICLE_FACTS: Readonly<Record<string, ArticleFacts>> = {
     family: 'weather',
     intent: 'core',
     prompt: 'weather-per-event',
-    claims: [{ id: 'forecastDays', value: '14' }],
+    claims: [],
     updated: '2026-08-27',
   },
   'a-fourteen-day-view-of-the-weather': {
@@ -43,7 +42,7 @@ export const ARTICLE_FACTS: Readonly<Record<string, ArticleFacts>> = {
     family: 'weather',
     intent: 'core',
     prompt: 'ten-day',
-    claims: [{ id: 'forecastDays', value: '14' }],
+    claims: [],
     updated: '2026-08-27',
   },
   'planning-outdoors-without-being-rained-on': {
@@ -51,14 +50,14 @@ export const ARTICLE_FACTS: Readonly<Record<string, ArticleFacts>> = {
     family: 'weather',
     intent: 'core',
     prompt: 'weather-planning',
-    claims: [{ id: 'forecastDays', value: '14' }],
+    claims: [],
     updated: '2026-08-27',
   },
   'what-a-forecast-can-and-cannot-tell-you': {
     slug: 'what-a-forecast-can-and-cannot-tell-you',
     family: 'weather',
     intent: 'core',
-    claims: [{ id: 'forecastDays', value: '14' }],
+    claims: [],
     updated: '2026-08-27',
   },
   'reading-a-chance-of-rain': {
@@ -72,7 +71,7 @@ export const ARTICLE_FACTS: Readonly<Record<string, ArticleFacts>> = {
     slug: 'weather-where-the-event-is',
     family: 'weather',
     intent: 'core',
-    claims: [{ id: 'forecastDays', value: '14' }],
+    claims: [],
     updated: '2026-08-27',
   },
   'the-commute-and-the-sky': {

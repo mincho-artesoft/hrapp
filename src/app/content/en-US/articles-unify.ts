@@ -189,46 +189,84 @@ export const UNIFY_EN_US: Readonly<Record<string, LocalisedArticle>> = {
 },
 
   'work-and-personal-without-two-apps': {
-    title: 'Keeping work and personal separate without keeping them apart',
-    short: 'Work and personal, one app',
-    description:
-      'The boundary most people want is visual, not structural. How to get it without losing the ability to see your whole week.',
-    lede: 'People keep two calendar apps to keep work out of their evenings. It is a reasonable instinct solved the wrong way.',
-    commonBelief: 'That separation requires separate apps.',
-    sections: [
-      {
-        heading: 'What the boundary is for',
-        body: [
-          'The point is not to be unable to see work. It is to not be ambushed by it — to look at Saturday without a wall of meetings, and to look at Tuesday and see everything.',
-          'Two apps deliver that badly: they hide work when you need the overview and surface it when you do not, because the split is by app rather than by moment.',
-        ],
-      },
-      {
-        heading: 'Doing it by visibility instead',
-        body: [
-          'Colour by account and you can read the week at a glance. Toggle a calendar off and the evening is yours without the work events ceasing to exist.',
-          'The overview survives, which is the thing two apps take away.',
-        ],
-      },
-      {
-        heading: 'Where the paid tier helps',
-        body: [
-          'Managing events across accounts — moving something from work to personal, or the reverse — sits in the paid tier. Viewing everything together does not.',
-          'If all you want is to see it all in one place, that is free.',
-        ],
-      },
-    ],
-    claims: {
-      accounts: 'Accounts in one view',
-      advancedMonthly: 'Monthly cost of cross-account management, in dollars',
+  "updated": "2026-10-21",
+  "title": "Work and personal calendars in one app: keep ownership separate",
+  "short": "Work and personal, one app",
+  "description": "See work and personal calendars together without merging ownership. Check permissions, event destinations and Cloud Calendars plans before connecting accounts.",
+  "lede": "An overview can help you spot clashes without moving family appointments into a work account. Keep the calendars separate underneath, and choose which ones to display together. This guide is written by Arte Soft, the developer of Cloud Calendars.",
+  "commonBelief": "Putting work and personal calendars in one app also combines their sharing permissions.",
+  "sections": [
+    {
+      "heading": "An overview is different from shared access",
+      "body": [
+        "A calendar app can display selected calendars together while each keeps its own account and permissions. Apple’s multiple-calendar guide describes choosing calendars to display, assigning colours and selecting a default calendar. Those display choices are not a transfer of event ownership.",
+        "Before connecting a work account, check your organisation’s requirements. Google documents that administrators can restrict calendar sharing. A convenient personal overview does not give you permission to publish work details or bypass account restrictions."
+      ]
     },
-    practical: [
-      'Colour by account, not by topic.',
-      'Toggle work calendars off at the weekend rather than closing the app.',
-      'Keep one calendar as the one you write to by default, so nothing lands in the wrong place.',
-    ],
-    seeAlso: ['icloud-google-and-outlook-in-one-view'],
-  },
+    {
+      "heading": "Use colour and visibility for the overview",
+      "body": [
+        "Give work and personal calendars distinct colours, then check a busy day with both visible. When you want a narrower view, hide a calendar rather than deleting its events. Apple’s duplicate-calendar guide explains how to show and hide calendars with checkboxes.",
+        "Hiding is a display choice. It is not a change to who can access the calendar, and you should check notification settings separately if the goal is a quiet evening. Keep an approved work app available if your organisation requires it."
+      ]
+    },
+    {
+      "heading": "Check the destination before saving",
+      "body": [
+        "A default calendar is a useful starting point, not a guarantee that every appointment belongs there. For a personal appointment, check the selected calendar before saving. For a work meeting, use the work calendar and the organisation’s invitation process.",
+        "Do not move or copy an invitation simply to make it appear in your overview. Microsoft distinguishes events you created from meetings organised by someone else: changing your own displayed copy is not a reliable way to update the organiser or attendees. Keep the original invitation and ask the organiser about a time change."
+      ]
+    },
+    {
+      "heading": "What the Cloud Calendars plans add",
+      "body": [
+        "Cloud Calendars supports calendar views on iPhone and iPad. Its Base plan includes Google Calendar sync and the multi-calendar view. Advanced adds ad removal; Premium adds Microsoft Calendar and Teams support. Current local prices are shown in the app and App Store.",
+        "Advanced is not a paid permission to manage every account. A subscription does not make a read-only calendar writable or override workplace policy. Local calendars can be used without an account; provider connections and sharing have their own sign-in requirements."
+      ]
+    }
+  ],
+  "claims": {},
+  "practical": [
+    "Check whether your workplace permits the account connection.",
+    "Choose distinct colours and display the calendars you need for an overview.",
+    "Verify the destination calendar when creating a new event.",
+    "Hide a calendar temporarily to narrow the view; do not delete events to tidy it.",
+    "Review sharing permissions and notifications separately from calendar visibility."
+  ],
+  "faq": [
+    {
+      "q": "Will my employer see my personal events just because both calendars are in one app?",
+      "a": "Displaying calendars together does not itself grant calendar-sharing permission. Check which account owns each event, its sharing settings and any employer device-management rules. Do not save a private appointment to a work calendar by accident."
+    },
+    {
+      "q": "Do I need Advanced to see Google and personal calendars together?",
+      "a": "Google Calendar sync and the multi-calendar view are Base features. Advanced removes ads. Microsoft Calendar support is part of Premium; account permissions still apply."
+    }
+  ],
+  "sourcesHeading": "Sources and further reading",
+  "sources": [
+    {
+      "label": "Apple: Set up multiple calendars on iPhone",
+      "url": "https://support.apple.com/guide/iphone/use-multiple-calendars-iph3d1110d4/ios"
+    },
+    {
+      "label": "Apple: If you have duplicate events on your iCloud Calendar",
+      "url": "https://support.apple.com/en-us/102180"
+    },
+    {
+      "label": "Google: Choose what others can do with your calendar",
+      "url": "https://support.google.com/calendar/answer/15716974?hl=en"
+    },
+    {
+      "label": "Microsoft: Change an appointment, meeting, or event in Outlook",
+      "url": "https://support.microsoft.com/en-us/outlook/calendar/change-an-appointment-meeting-or-event-in-outlook"
+    }
+  ],
+  "seeAlso": [
+    "what-calendar-sync-actually-does",
+    "when-two-calendars-disagree"
+  ]
+},
 
   'exchange-calendars-on-an-iphone': {
     title: 'Getting an Exchange work calendar onto your iPhone properly',
@@ -266,34 +304,97 @@ export const UNIFY_EN_US: Readonly<Record<string, LocalisedArticle>> = {
   },
 
   'when-two-calendars-disagree': {
-    title: 'When two calendars disagree about the same event',
-    short: 'When calendars disagree',
-    description:
-      'Conflicts are rarer than people think and stranger than they expect. What causes them and how to resolve one without losing anything.',
-    lede: 'Two devices, one event, two different times. It is unsettling precisely because a calendar is supposed to be the thing you can trust.',
-    commonBelief: 'That a conflict means something is broken.',
-    sections: [
-      {
-        heading: 'Usually it is a race, not a fault',
-        body: [
-          'Both edits were valid; they simply happened before either device heard about the other. The server keeps the one that arrived last, which may not be the one you meant.',
-          'This needs no repair. It needs you to decide which version is right and say so once.',
-        ],
-      },
-      {
-        heading: 'The duplicate that is not a conflict',
-        body: [
-          'Far more common than a genuine conflict is the same event arriving twice by two routes — subscribed once directly and once through another account. Nothing is in conflict; you are simply seeing one event twice.',
-          'The fix is to stop one of the routes rather than to delete an event, which would remove both copies.',
-        ],
-      },
-    ],
-    claims: {},
-    practical: [
-      'Decide which version is correct and set it once, from one device.',
-      'For duplicates, find the second route before deleting anything.',
-      'If a change refuses to stick, check whether the calendar is read-only for you.',
-    ],
-    seeAlso: ['what-calendar-sync-actually-does'],
-  },
+  "updated": "2026-10-21",
+  "title": "When calendar events disagree: check ownership before editing",
+  "short": "When calendars disagree",
+  "description": "Different times or duplicate events? Check the owning calendar, time zone and provider view, then hide one source before making changes or deleting anything.",
+  "lede": "If an appointment shows two different times, pause before changing either copy. First establish whether you are looking at the same event, two separate records or one event displayed differently. This guide is written by Arte Soft, the developer of Cloud Calendars.",
+  "commonBelief": "Every calendar service resolves competing edits by keeping whichever change arrived last.",
+  "sections": [
+    {
+      "heading": "Record the difference before trying to fix it",
+      "body": [
+        "Open both entries and compare the account, calendar name, organiser, date, time zone and recurrence. A matching title alone does not establish that two entries are the same record. Note which device or app shows each version without sharing private event details.",
+        "Check the provider’s own calendar view when available, using the same account. For iCloud, Apple recommends checking service status, account consistency and device date and time. Refresh through the relevant app’s supported controls before deciding a saved change has been lost."
+      ]
+    },
+    {
+      "heading": "There is no universal conflict rule",
+      "body": [
+        "Concurrent edits, old local data, permissions and provider-specific behaviour can lead to different symptoms. Do not assume the newest-looking copy is authoritative or that one more edit will repair the connection.",
+        "Microsoft’s support article about an Outlook Desktop conflict describes a case where the conflict was local and the server copy was unaffected. It documents a specific issue and fix, not a rule for Google, iCloud or Cloud Calendars. Follow guidance for your actual provider and client version rather than applying its repair steps everywhere."
+      ]
+    },
+    {
+      "heading": "Hide first when two entries look duplicated",
+      "body": [
+        "Temporarily hide one calendar and observe which entry disappears. Apple documents calendar checkboxes for this purpose. Restore visibility afterward so you do not mistake a hidden appointment for missing data.",
+        "Two entries may be independent records, imported copies or the same source shown through different connections. Deleting one does not always delete both; deleting a source event can nevertheless affect other devices or people. Establish ownership and preserve needed information before any cleanup. Avoid cancelling a meeting, removing an account or clearing local storage as an initial diagnostic step."
+      ]
+    },
+    {
+      "heading": "Confirm who is allowed to change the event",
+      "body": [
+        "Google distinguishes viewing permission from editing permission; some editing permissions exclude private events, and work administrators can restrict settings. Being able to see an appointment does not prove you can correct it.",
+        "For an Outlook meeting organised by someone else, Microsoft warns that moving your copy does not notify the organiser and can leave your calendar showing the wrong time. Ask the organiser to confirm the intended schedule. For a recurring meeting, identify whether the discrepancy concerns one occurrence or the series."
+      ]
+    },
+    {
+      "heading": "Make a controlled correction only after diagnosis",
+      "body": [
+        "If you own the event or have the required permission, confirm the intended details, make one correction from one client, then check the provider view and other device. If it fails again, stop repeating edits and report the affected client, account type and error to the provider or administrator.",
+        "For a separate connection check, use a disposable event in a calendar you own rather than experimenting on an important invitation. This is a suggested diagnostic workflow, not a runtime test performed by us or a promise about how quickly changes will arrive."
+      ]
+    }
+  ],
+  "claims": {},
+  "practical": [
+    "Compare account, calendar, organiser, time zone and recurrence for both entries.",
+    "Check the same account in the provider’s own view when available.",
+    "Temporarily hide one calendar to trace duplicates; restore it after checking.",
+    "Confirm ownership and edit permissions before changing an invitation.",
+    "Make one authorised correction and verify it; seek provider-specific help if the disagreement returns."
+  ],
+  "faq": [
+    {
+      "q": "Should I delete the duplicate event?",
+      "a": "First determine whether the entries are independent records or two views of the same source. Hide a calendar temporarily to trace them. Deletion can affect the underlying calendar and other participants; it is not a safe first diagnostic step."
+    },
+    {
+      "q": "Does the last edit always win?",
+      "a": "Do not rely on that rule across providers and clients. Check the owning calendar, permissions and the provider’s current troubleshooting guidance. A client-local conflict can differ from the event held by the service."
+    },
+    {
+      "q": "Can Cloud Calendars force a work meeting to accept my change?",
+      "a": "A calendar app cannot grant the organiser’s authority or override account permissions. Check the original invitation and contact the organiser or administrator when needed."
+    }
+  ],
+  "sourcesHeading": "Sources and further reading",
+  "sources": [
+    {
+      "label": "Apple: If you have duplicate events on your iCloud Calendar",
+      "url": "https://support.apple.com/en-us/102180"
+    },
+    {
+      "label": "Apple: If your iCloud calendars won’t sync",
+      "url": "https://support.apple.com/en-us/102543"
+    },
+    {
+      "label": "Google: Choose what others can do with your calendar",
+      "url": "https://support.google.com/calendar/answer/15716974?hl=en"
+    },
+    {
+      "label": "Microsoft: Change an appointment, meeting, or event in Outlook",
+      "url": "https://support.microsoft.com/en-us/outlook/calendar/change-an-appointment-meeting-or-event-in-outlook"
+    },
+    {
+      "label": "Microsoft: Outlook shows conflict errors when updating or cancelling meetings",
+      "url": "https://support.microsoft.com/en-us/support/known-issues/outlook-shows-conflict-errors-when-updating-or-cancelling-meetings"
+    }
+  ],
+  "seeAlso": [
+    "what-calendar-sync-actually-does",
+    "work-and-personal-without-two-apps"
+  ]
+},
 };

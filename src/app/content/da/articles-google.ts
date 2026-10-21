@@ -51,52 +51,67 @@ export const GOOGLE_DA: Readonly<Record<string, LocalisedArticle>> = {
   },
 
   'why-a-shared-calendar-does-not-appear': {
-    title: 'En kalender blev delt med dig, og den er der ikke',
-    short: 'Delt kalender dukker ikke op',
-    description:
-      'Nogen delte en kalender, du accepterede, og intet skete. De fire almindelige årsager i den rækkefølge, det betaler sig at tjekke dem.',
-    lede: 'Invitationen kom, linket blev trykket, og kalenderen mangler stadig. Næsten altid er det en af fire ting, og ingen af dem er, at delingen er i stykker.',
-    commonBelief: 'At acceptere en delt kalender lægger den på din telefon.',
-    sections: [
+    "updated": "2026-10-21",
+    "title": "En kalender blev delt med dig, og den er der ikke",
+    "short": "Delt kalender dukker ikke op",
+    "description": "Mangler en delt Google-kalender? Tjek den inviterede konto, gruppen, synligheden og typen af link.",
+    "lede": "Denne vejledning er skrevet af Arte Soft, udvikleren af Cloud Calendars. Skeln først mellem manglende adgang og en kalender, der blot er skjult.",
+    "commonBelief": "At acceptere en delt kalender lægger den på din telefon.",
+    "sections": [
       {
-        heading: 'At acceptere lægger den i en konto, ikke i en enhed',
-        body: [
-          'En deling lander i den Google-konto, den var adresseret til. Accepterede du logget ind som én konto, mens telefonen bærer en anden, ligger kalenderen trygt netop dér, hvor du ikke kigger.',
-          'Selv i den rigtige konto ankommer en netop tilføjet kalender oftere slukket end tændt på andre enheder. Den findes, den er bare ikke sat flueben ved — og en kalender uden flueben ligner en manglende til forveksling.',
-        ],
+        "heading": "Tjek konto og gruppe",
+        "body": [
+          "Sammenlign invitationens modtager med Google-kontoen på telefonen og i browseren. Åbn linket med den rigtige konto. Google understøtter deling med personer og Google-grupper. Ved gruppeadgang skal gruppeadministratoren bekræfte dit medlemskab, og kalenderejeren skal kontrollere, at den rigtige gruppe har adgang. En videresendt mail giver ikke i sig selv tilladelse."
+        ]
       },
       {
-        heading: 'De to andre årsager',
-        body: [
-          'Deling til en mailliste eller en gruppeadresse når sjældent enkeltpersoner; der skal bruges den adresse, som faktisk er en Google-konto. Og en kalender delt som link er et abonnement: den lander et andet sted i listen og opdateres i udgiverens takt frem for med det samme.',
-          'På iPhone når Google-kalendere den indbyggede app via deres egen synkroniseringsliste, og sekundære kalendere står uden for den som standard. Derfor viser én konto sin hovedkalender og taber stille de fire, der betyder noget.',
-        ],
+        "heading": "Skjult, manglende eller begrænset?",
+        "body": [
+          "Åbn menuen i Google Kalender på iPhone eller iPad. Er kalenderen på listen uden flueben, så vælg den. Mangler den, skal ejeren kontrollere adgangen: En anmodning er ikke en godkendelse. Arbejds- eller skoleregler kan begrænse deling. Sammenlign samme konto i Google Kalender på nettet. Virker det dér, så tjek den tilknyttede konto og valgte kalendere i den anden app. Læseadgang giver ikke ret til at redigere."
+        ]
       },
+      {
+        "heading": "Find ud af, hvilken slags link du har",
+        "body": [
+          "En delingsinvitation indeholder også et link; ikke alle links er ICS-abonnementer. Spørg, om linket giver adgang til en Google-kalender eller udgiver et skrivebeskyttet feed. Ifølge Google kræver et nyt kalenderabonnement en computerbrowser; at åbne en kalender, der allerede er delt via mail, er en anden handling. Feedets opdateringer afhænger af modtagertjenesten. Der er ingen universel ventetid; bekræft hastende ændringer med arrangøren."
+        ]
+      }
     ],
-    claims: {
-      refreshHint: 'Timer mellem opdateringsanmodninger fra et abonneret feed',
-      accounts: 'Kontotyper, som ét overblik holder sammen helt uden dette',
-    },
-    faq: [
+    "claims": {},
+    "faq": [
       {
-        q: 'Jeg har accepteret en delt kalender, men den er ikke på min iPhone. Hvorfor?',
-        a: 'Delingen lander i den Google-konto, den var adresseret til, og en nytilføjet kalender ankommer som regel slukket på andre enheder. Tjek kontoen først, og led så efter den uden flueben frem for fraværende.',
+        "q": "Kan en Google-gruppe få adgang?",
+        "a": "Ja. Tjek gruppen, dit medlemskab og organisationens begrænsninger. En videresendt gruppemail dokumenterer ikke adgang."
       },
       {
-        q: 'Virker deling til en gruppeadresse?',
-        a: 'Sjældent. En mailliste når næppe de mennesker, der står bag. Der skal bruges den adresse, som selv er en Google-konto.',
-      },
-      {
-        q: 'Hvor lang tid går der, før en delt kalender dukker op?',
-        a: 'En deling via rettigheder dukker op, så snart listen opdateres. En kalender delt som link er et abonnement og følger udgiverens takt.',
-      },
+        "q": "Skal jeg slette og tilknytte kontoen igen?",
+        "a": "Tjek først konto, rettigheder og synlighed, og sammenlign webkalenderen. En ny forbindelse giver ikke manglende rettigheder."
+      }
     ],
-    practical: [
-      'Tjek hvilken konto der accepterede delingen, før du tjekker noget andet.',
-      'Åbn kalenderlisten på enheden og led efter den slukket frem for fraværende.',
-      'Kom den som link, så regn med forsinkelse i stedet for øjeblikkelig fremkomst.',
+    "practical": [
+      "Bekræft den inviterede konto og gruppemedlemskabet.",
+      "Vælg kalenderen, hvis den findes, men er skjult.",
+      "Få ejeren til at tjekke adgang før forbindelser ændres."
     ],
-    seeAlso: ['who-can-see-what-in-google-calendar', 'google-calendars-that-never-reach-your-iphone'],
+    "sourcesHeading": "Kilder og videre læsning",
+    "sources": [
+      {
+        "label": "Google: Tjek konto og gruppe",
+        "url": "https://support.google.com/calendar/answer/37082?hl=en&co=GENIE.Platform%3DiOS"
+      },
+      {
+        "label": "Google: Skjult, manglende eller begrænset?",
+        "url": "https://support.google.com/calendar/answer/37100?hl=en&co=GENIE.Platform%3DiOS"
+      },
+      {
+        "label": "Google: Find ud af, hvilken slags link du har",
+        "url": "https://support.google.com/calendar/answer/37648?hl=en"
+      }
+    ],
+    "seeAlso": [
+      "who-can-see-what-in-google-calendar",
+      "google-calendars-that-never-reach-your-iphone"
+    ]
   },
 
   'the-secret-address-of-a-google-calendar': {

@@ -10,42 +10,39 @@ import { LocalisedArticle } from '../types';
  */
 export const ARTICLES_PT_BR: Readonly<Record<string, LocalisedArticle>> = {
   'weather-inside-your-calendar': {
-    title: 'Uma agenda que já traz a previsão dentro',
-    short: 'A previsão dentro da agenda',
-    description:
-      'Por que consultar dois aplicativos para organizar um dia é uma falha de projeto, e como é uma agenda em que a previsão faz parte da vista em vez de ficar ao lado.',
-    lede: 'Quase todo mundo organiza o dia entre dois aplicativos. A agenda diz onde é preciso estar; o de previsão diz que tempo fará na hora. Segurar as duas coisas na cabeça é a parte que ninguém percebe que faz, até um sábado se perder.',
-    commonBelief:
-      'Que agenda serve para compromissos e aplicativo de previsão serve para o tempo, e que mantê-los separados é simplesmente como os telefones funcionam.',
-    sections: [
-      {
-        heading: 'O custo de dois aplicativos não são dois toques',
-        body: [
-          'Trocar de aplicativo não custa nada. Caro é que os dois nunca concordam sobre o que importa. Sua agenda sabe que no sábado há duas horas ocupadas às onze; o aplicativo de previsão sabe que chove das dez à uma. Nenhum dos dois sabe que esses dois fatos juntos significam mover o bloco.',
-          'A camada de integração é você. Isso funciona até você ficar ocupado, que é exatamente quando proteger os planos mais vale a pena.',
-        ],
-      },
-      {
-        heading: 'O que muda quando a previsão está na grade',
-        body: [
-          'Ponha a previsão atrás dos compromissos e o conflito se resolve sozinho. Uma manhã úmida e uma tarde seca aparecem no mesmo olhar que a reunião que você ia marcar, e a decisão deixa de custar pensamento.',
-          'Isto não é um widget colado ao lado. Cada dia das vistas de semana e mês carrega suas próprias condições, e cada compromisso carrega a previsão das horas que ele de fato ocupa — não o resumo do dia, que faz a média justamente da parte de que você precisava.',
-        ],
-      },
-    ],
-    claims: {
-      forecastDays: 'Dias de previsão, na agenda e ao lado de cada compromisso',
-      views: 'Vistas que trazem a previsão: Dia, Semana, Mês, Ano e Lista',
-      price: 'Quanto custam os recursos de previsão',
+  "title": "Uma agenda que já traz a previsão dentro",
+  "short": "A previsão dentro da agenda",
+  "description": "Por que consultar dois aplicativos para organizar um dia é uma falha de projeto, e como é uma agenda em que a previsão faz parte da vista em vez de ficar ao lado.",
+  "lede": "Quase todo mundo organiza o dia entre dois aplicativos. A agenda diz onde é preciso estar; o de previsão diz que tempo fará na hora. Segurar as duas coisas na cabeça é a parte que ninguém percebe que faz, até um sábado se perder.",
+  "commonBelief": "Que agenda serve para compromissos e aplicativo de previsão serve para o tempo, e que mantê-los separados é simplesmente como os telefones funcionam.",
+  "sections": [
+    {
+      "heading": "O custo de dois aplicativos não são dois toques",
+      "body": [
+        "Trocar de aplicativo não custa nada. Caro é que os dois nunca concordam sobre o que importa. Sua agenda sabe que no sábado há duas horas ocupadas às onze; o aplicativo de previsão sabe que chove das dez à uma. Nenhum dos dois sabe que esses dois fatos juntos significam mover o bloco.",
+        "A camada de integração é você. Isso funciona até você ficar ocupado, que é exatamente quando proteger os planos mais vale a pena."
+      ]
     },
-    practical: [
-      'Olhe a faixa atrás dos dias na vista de semana antes de marcar qualquer coisa ao ar livre.',
-      'Toque num compromisso para ver a previsão das horas dele, não a do dia.',
-      'Marque o que depende do tempo primeiro contra os catorze dias e ajuste dois dias antes.',
-      'Trate tudo além do sétimo dia como uma forma, não como um plano.',
-    ],
-    seeAlso: ['icloud-google-and-outlook-in-one-view', 'what-a-subscription-actually-buys'],
+    {
+      "heading": "A previsão disponível",
+      "body": [
+        "O Cloud Calendars usa a previsão disponível para o local selecionado. Dados horários e diários podem abranger períodos diferentes.",
+        "As datas que você pode consultar no calendário não determinam o alcance da previsão. A visualização mensal não significa previsão para o mês inteiro ou para cada evento."
+      ]
+    }
+  ],
+  "claims": {
+    "price": "Quanto custam os recursos de previsão"
   },
+  "practical": [
+    "Confira o local, a data e as horas disponíveis antes de planejar com a previsão."
+  ],
+  "seeAlso": [
+    "icloud-google-and-outlook-in-one-view",
+    "what-a-subscription-actually-buys"
+  ],
+  "updated": "2026-10-21"
+},
 
   'icloud-google-and-outlook-in-one-view': {
     title: 'iCloud, Google e Outlook em uma só vista',
@@ -122,38 +119,53 @@ export const ARTICLES_PT_BR: Readonly<Record<string, LocalisedArticle>> = {
   },
 
   'what-a-subscription-actually-buys': {
-    title: 'O que uma assinatura realmente compra',
-    short: 'O que uma assinatura compra',
-    description: 'Dois planos pagos, o que os separa, e como saber qual — se algum — é o seu.',
-    lede: 'Dois planos bastam para confundir se ninguém diz claramente o que os separa. O que os separa é a Microsoft.',
-    commonBelief: 'Que o plano superior são os mesmos recursos, só que mais.',
-    sections: [
-      {
-        heading: 'O primeiro plano tira a publicidade',
-        body: [
-          'Ele também acrescenta gerenciar compromissos entre agendas do iCloud e do Google, permissões de compartilhamento do Google, links do Meet automáticos e atualização de previsão mais rápida. Mas se compra pela publicidade.',
-          'A esse preço é mais ou menos um café por ano, e é o plano que serve a quase todo mundo disposto a pagar alguma coisa.',
-        ],
-      },
-      {
-        heading: 'O segundo plano é para a Microsoft',
-        body: [
-          'Sincronização com Outlook e Exchange, links do Teams, gerenciamento entre contas incluindo o trabalho, gerenciamento de participantes. Custa uma ordem de grandeza a mais porque a conexão também custa.',
-          'Se sua agenda de trabalho não é da Microsoft, esse plano não tem nada para você. Os dois planos saem mais baratos no ano; a economia é moderada, não espetacular. Depois de cancelar você fica no gratuito e suas agendas ficam intactas, porque os compromissos nunca foram nossos.',
-        ],
-      },
-    ],
-    claims: {
-      advancedMonthly: 'Primeiro plano, por mês, em dólares',
-      advancedYearly: 'Primeiro plano, por ano, em dólares',
-      premiumMonthly: 'Segundo plano, por mês, em dólares',
-      premiumYearly: 'Segundo plano, por ano, em dólares',
+  "updated": "2026-10-21",
+  "title": "O que uma assinatura realmente compra",
+  "short": "O que uma assinatura compra",
+  "description": "O que uma assinatura compra: Base, Advanced, Premium.",
+  "lede": "Este guia é publicado pela Arte Soft, desenvolvedora do Cloud Calendars.",
+  "sections": [
+    {
+      "heading": "Base",
+      "body": [
+        "Base inclui sincronização com Google Calendar, Google Meet, visualizações do calendário, clima e widgets. O plano gratuito pode exibir anúncios."
+      ]
     },
-    practical: [
-      'Compre o primeiro plano para tirar a publicidade, não para destravar a agenda.',
-      'Compre o segundo só se seu trabalho vive na Microsoft.',
-      'Passe para o anual quando tiver certeza; a economia é real, mas pequena.',
-    ],
-    seeAlso: ['icloud-google-and-outlook-in-one-view'],
-  },
+    {
+      "heading": "Advanced · Premium",
+      "body": [
+        "Advanced inclui Base e remove os anúncios. Premium inclui Advanced e adiciona Microsoft Calendar e Microsoft Teams.",
+        "Uma assinatura não concede permissão para editar calendários de outras pessoas nem contorna restrições de uma conta de trabalho."
+      ]
+    },
+    {
+      "heading": "Informações de compra e cancelamento",
+      "body": [
+        "Antes de comprar, confira o preço local, o período de cobrança e os termos de renovação.",
+        "Para uma assinatura cobrada pela Apple, abra Ajustes → seu nome → Assinaturas. Confira o status e a data de vencimento. Cancelar a renovação é diferente de excluir o app ou os dados do calendário; não presuma que os recursos pagos continuam disponíveis após o vencimento."
+      ]
+    }
+  ],
+  "claims": {},
+  "practical": [
+    "Antes de comprar, confira o preço local, o período de cobrança e os termos de renovação.",
+    "Uma assinatura não concede permissão para editar calendários de outras pessoas nem contorna restrições de uma conta de trabalho."
+  ],
+  "faq": [
+    {
+      "q": "Como interrompo a renovação?",
+      "a": "Para uma assinatura cobrada pela Apple, abra Ajustes → seu nome → Assinaturas. Confira o status e a data de vencimento. Cancelar a renovação é diferente de excluir o app ou os dados do calendário; não presuma que os recursos pagos continuam disponíveis após o vencimento."
+    }
+  ],
+  "sourcesHeading": "Informações de compra e cancelamento",
+  "sources": [
+    {
+      "label": "Apple: Como interrompo a renovação?",
+      "url": "https://support.apple.com/en-us/118428"
+    }
+  ],
+  "seeAlso": [
+    "icloud-google-and-outlook-in-one-view"
+  ]
+},
 };

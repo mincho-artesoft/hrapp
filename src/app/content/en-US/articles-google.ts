@@ -12,52 +12,67 @@ import { LocalisedArticle } from '../types';
  */
 export const GOOGLE_EN_US: Readonly<Record<string, LocalisedArticle>> = {
   'why-a-shared-calendar-does-not-appear': {
-    title: 'A calendar was shared with you and it is not there',
-    short: 'Shared calendar not appearing',
-    description:
-      'Somebody shared a calendar, you accepted, and nothing changed. The four ordinary reasons, in the order worth checking.',
-    lede: 'The invitation arrived, the link was tapped, and the calendar is still missing. Almost always this is one of four things, and none of them is the sharing being broken.',
-    commonBelief: 'That accepting a shared calendar puts it on your phone.',
-    sections: [
+    "updated": "2026-10-21",
+    "title": "A calendar was shared with you and it is not there",
+    "short": "Shared calendar not appearing",
+    "description": "Find a missing shared Google calendar: check the invited account, group access, calendar visibility and the type of link you received.",
+    "lede": "This guide is written by Arte Soft, the developer of Cloud Calendars. Start by separating an access problem from a calendar that is simply hidden.",
+    "commonBelief": "That accepting a shared calendar puts it on your phone.",
+    "sections": [
       {
-        heading: 'Accepting adds it to an account, not to a device',
-        body: [
-          'A share lands in the Google account it was addressed to. If you accepted while signed in as one account and your phone carries another, the calendar is sitting safely somewhere you are not looking.',
-          'Even in the right account, a newly added calendar arrives switched off on other devices more often than not. It exists, it is simply not ticked, and an unticked calendar looks exactly like a missing one.',
-        ],
+        "heading": "Check the account and the group",
+        "body": [
+          "Compare the invitation’s recipient with the Google account signed in on your phone and in your browser. Open the calendar link in the invitation with the intended account. Google supports sharing with people and Google Groups. If access comes through a group, ask its manager to confirm your membership and ask the calendar owner to check that the correct group has access. A forwarded email alone does not establish that permission."
+        ]
       },
       {
-        heading: 'The other two reasons',
-        body: [
-          'Sharing to a mailing list or a group address rarely reaches individuals; the share needs the address that is actually a Google account. And a calendar shared as a link rather than a permission is a subscription, which lands in a different part of the list and refreshes on the publisher schedule rather than instantly.',
-          'On iPhone, Google calendars reach the built-in app through a sync list of their own, and secondary calendars sit outside it by default. That is why one account can show its main calendar and silently drop the four that matter.',
-        ],
+        "heading": "Hidden, missing or restricted?",
+        "body": [
+          "In Google Calendar on iPhone or iPad, open the menu and look for the calendar. If it is listed but unchecked, select it. If it is absent, ask the owner to verify access; requesting access is not the same as receiving it. Work or school policies may restrict sharing. Compare the same account in Google Calendar on the web. If it works there but not in another app, check that app’s connected account and calendar selection. Read-only access does not allow editing."
+        ]
       },
+      {
+        "heading": "Identify the link before waiting",
+        "body": [
+          "An emailed sharing invitation also contains a link, so a link is not automatically an ICS subscription. Ask the sender whether it grants access to a Google calendar or publishes a read-only feed. Google says a new calendar subscription requires a computer browser; opening a calendar already shared by email is a separate action. A feed’s updates depend on the receiving service’s refresh behavior. There is no universal arrival time; confirm urgent changes with the organiser."
+        ]
+      }
     ],
-    claims: {
-      refreshHint: 'Hours between refresh requests a subscribed feed makes',
-      accounts: 'Account types one view can hold without any of this',
-    },
-    faq: [
+    "claims": {},
+    "faq": [
       {
-        q: 'I accepted a shared calendar but it is not on my iPhone. Why?',
-        a: 'The share lands in the Google account it was addressed to, and a newly added calendar usually arrives switched off on other devices. Check which account accepted it, then look for the calendar unticked rather than missing.',
+        "q": "Can a Google Group receive calendar access?",
+        "a": "Yes. Check the group selected by the owner, your membership and any organisation restrictions. Do not assume a forwarded group email grants access."
       },
       {
-        q: 'Does sharing a calendar with a group address work?',
-        a: 'Rarely. A mailing list or group address seldom reaches the individuals behind it. The share needs the address that is itself a Google account.',
-      },
-      {
-        q: 'How long should a shared calendar take to show up?',
-        a: 'A permission-based share appears as soon as the calendar list refreshes. A calendar shared as a link is a subscription instead, and it updates on the publisher’s schedule rather than immediately.',
-      },
+        "q": "Should I delete and reconnect the account?",
+        "a": "First check identity, permissions and visibility, then compare the web calendar. Reconnecting cannot grant missing permission and should not be the first diagnostic step."
+      }
     ],
-    practical: [
-      'Check which account accepted the share before checking anything else.',
-      'Open the calendar list on the device and look for it switched off rather than absent.',
-      'If it came as a link, expect a delay rather than an instant appearance.',
+    "practical": [
+      "Confirm the invited account and any group membership.",
+      "Select the calendar if it is listed but hidden.",
+      "Ask the owner to verify access before changing connections."
     ],
-    seeAlso: ['who-can-see-what-in-google-calendar', 'google-calendars-that-never-reach-your-iphone'],
+    "sourcesHeading": "Sources and further reading",
+    "sources": [
+      {
+        "label": "Google: Check the account and the group",
+        "url": "https://support.google.com/calendar/answer/37082?hl=en&co=GENIE.Platform%3DiOS"
+      },
+      {
+        "label": "Google: Hidden, missing or restricted?",
+        "url": "https://support.google.com/calendar/answer/37100?hl=en&co=GENIE.Platform%3DiOS"
+      },
+      {
+        "label": "Google: Identify the link before waiting",
+        "url": "https://support.google.com/calendar/answer/37648?hl=en"
+      }
+    ],
+    "seeAlso": [
+      "who-can-see-what-in-google-calendar",
+      "google-calendars-that-never-reach-your-iphone"
+    ]
   },
 
   'the-secret-address-of-a-google-calendar': {

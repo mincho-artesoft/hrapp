@@ -10,42 +10,39 @@ import { LocalisedArticle } from '../types';
  */
 export const ARTICLES_DA: Readonly<Record<string, LocalisedArticle>> = {
   'weather-inside-your-calendar': {
-    title: 'En kalender, der allerede har vejret i sig',
-    short: 'Vejret inde i kalenderen',
-    description:
-      'Hvorfor to apps til at planlægge en dag er en designfejl, og hvordan en kalender ser ud, hvor udsigten er en del af visningen i stedet for at stå ved siden af.',
-    lede: 'Næsten alle planlægger deres dag mellem to apps. Kalenderen siger, hvor man skal være; vejrappen siger, hvordan vejret er, når man når frem. At holde de to ting sammen i hovedet er den del, ingen bemærker, de gør — indtil en lørdag går tabt.',
-    commonBelief:
-      'At en kalender er til aftaler og en vejrapp er til vejret, og at holde dem adskilt simpelthen er sådan, telefoner fungerer.',
-    sections: [
-      {
-        heading: 'Prisen for to apps er ikke to tryk',
-        body: [
-          'At skifte koster ingenting. Det dyre er, at de to aldrig er enige om, hvad der betyder noget. Din kalender ved, at der lørdag klokken elleve er to timer optaget; vejrappen ved, at det regner fra ti til et. Ingen af dem ved, at de to kendsgerninger tilsammen betyder, at blokken skal flyttes.',
-          'Integrationslaget er dig. Det virker, indtil du har travlt, hvilket er præcis når det er mest værd at beskytte sine planer.',
-        ],
-      },
-      {
-        heading: 'Hvad der ændrer sig, når udsigten ligger i gitteret',
-        body: [
-          'Læg udsigten bag begivenhederne, så løser konflikten sig selv. En fugtig formiddag og en tør eftermiddag ses i samme øjekast som det møde, du skulle lægge ind, og beslutningen holder op med at koste tænkning.',
-          'Det er ikke en widget klistret ved siden af. Hver dag i uge- og månedsvisningen bærer sine egne forhold, og hver begivenhed bærer udsigten for de timer, den faktisk fylder — ikke dagsopsummeringen, som netop midler den del, du havde brug for.',
-        ],
-      },
-    ],
-    claims: {
-      forecastDays: 'Døgns udsigt, i kalenderen og ved siden af hver begivenhed',
-      views: 'Visninger med vejret: Dag, Uge, Måned, År og Liste',
-      price: 'Hvad vejrfunktionerne koster',
+  "title": "En kalender, der allerede har vejret i sig",
+  "short": "Vejret inde i kalenderen",
+  "description": "Hvorfor to apps til at planlægge en dag er en designfejl, og hvordan en kalender ser ud, hvor udsigten er en del af visningen i stedet for at stå ved siden af.",
+  "lede": "Næsten alle planlægger deres dag mellem to apps. Kalenderen siger, hvor man skal være; vejrappen siger, hvordan vejret er, når man når frem. At holde de to ting sammen i hovedet er den del, ingen bemærker, de gør — indtil en lørdag går tabt.",
+  "commonBelief": "At en kalender er til aftaler og en vejrapp er til vejret, og at holde dem adskilt simpelthen er sådan, telefoner fungerer.",
+  "sections": [
+    {
+      "heading": "Prisen for to apps er ikke to tryk",
+      "body": [
+        "At skifte koster ingenting. Det dyre er, at de to aldrig er enige om, hvad der betyder noget. Din kalender ved, at der lørdag klokken elleve er to timer optaget; vejrappen ved, at det regner fra ti til et. Ingen af dem ved, at de to kendsgerninger tilsammen betyder, at blokken skal flyttes.",
+        "Integrationslaget er dig. Det virker, indtil du har travlt, hvilket er præcis når det er mest værd at beskytte sine planer."
+      ]
     },
-    practical: [
-      'Se på båndet bag dagene i ugevisningen, før du lægger noget udendørs ind.',
-      'Tryk på en begivenhed for at se udsigten for dens timer, ikke for dens dag.',
-      'Læg vejrafhængige ting først op mod de fjorten døgn, og finjustér to dage før.',
-      'Behandl alt ud over dag syv som en form, ikke som en plan.',
-    ],
-    seeAlso: ['icloud-google-and-outlook-in-one-view', 'what-a-subscription-actually-buys'],
+    {
+      "heading": "Den tilgængelige vejrudsigt",
+      "body": [
+        "Cloud Calendars bruger den tilgængelige vejrudsigt for det valgte sted. Time- og dagsdata kan dække forskellige perioder.",
+        "De datoer, du kan se i kalenderen, bestemmer ikke vejrudsigtens rækkevidde. Månedsvisning betyder ikke en vejrudsigt for hele måneden eller hver begivenhed."
+      ]
+    }
+  ],
+  "claims": {
+    "price": "Hvad vejrfunktionerne koster"
   },
+  "practical": [
+    "Kontrollér sted, dato og tilgængelige timer, før du planlægger ud fra vejrudsigten."
+  ],
+  "seeAlso": [
+    "icloud-google-and-outlook-in-one-view",
+    "what-a-subscription-actually-buys"
+  ],
+  "updated": "2026-10-21"
+},
 
   'icloud-google-and-outlook-in-one-view': {
     title: 'iCloud, Google og Outlook i én visning',
@@ -121,39 +118,53 @@ export const ARTICLES_DA: Readonly<Record<string, LocalisedArticle>> = {
   },
 
   'what-a-subscription-actually-buys': {
-    title: 'Hvad et abonnement faktisk giver',
-    short: 'Hvad et abonnement giver',
-    description:
-      'To betalte niveauer, hvad der skiller dem, og hvordan du ved, hvilket — hvis noget — der er dit.',
-    lede: 'To niveauer er nok til forvirring, hvis ingen tydeligt siger, hvad der skiller dem. Det, der skiller dem, er Microsoft.',
-    commonBelief: 'At det højere niveau er de samme funktioner, bare flere af dem.',
-    sections: [
-      {
-        heading: 'Første niveau fjerner annoncerne',
-        body: [
-          'Det tilføjer også håndtering af begivenheder på tværs af iCloud- og Google-kalendere, Googles delingsrettigheder, automatiske Meet-links og hurtigere vejropdatering. Men man køber det for annoncerne.',
-          'Til den pris er det omtrent én kop kaffe om året, og det er niveauet, der passer til næsten alle, der overhovedet vil betale noget.',
-        ],
-      },
-      {
-        heading: 'Andet niveau er til Microsoft',
-        body: [
-          'Outlook- og Exchange-synkronisering, Teams-links, håndtering på tværs af konti inklusive arbejdet, deltagerhåndtering. Det koster en størrelsesorden mere, fordi forbindelsen gør det.',
-          'Ligger din arbejdskalender ikke hos Microsoft, er der intet til dig her. Begge niveauer er billigere pr. år; besparelsen er moderat, ikke dramatisk. Efter opsigelse står du på gratisniveauet med kalenderne uskadte, for begivenhederne har aldrig været vores.',
-        ],
-      },
-    ],
-    claims: {
-      advancedMonthly: 'Første niveau, pr. måned, i dollar',
-      advancedYearly: 'Første niveau, pr. år, i dollar',
-      premiumMonthly: 'Andet niveau, pr. måned, i dollar',
-      premiumYearly: 'Andet niveau, pr. år, i dollar',
+  "updated": "2026-10-21",
+  "title": "Hvad et abonnement faktisk giver",
+  "short": "Hvad et abonnement giver",
+  "description": "Hvad et abonnement giver: Base, Advanced, Premium.",
+  "lede": "Denne vejledning udgives af Arte Soft, udvikleren af Cloud Calendars.",
+  "sections": [
+    {
+      "heading": "Base",
+      "body": [
+        "Base omfatter Google Calendar-synkronisering, Google Meet, kalendervisninger, vejr og widgets. Gratisplanen kan vise reklamer."
+      ]
     },
-    practical: [
-      'Køb første niveau for at fjerne annoncer, ikke for at låse kalenderen op.',
-      'Køb det andet, kun hvis dit arbejde bor hos Microsoft.',
-      'Skift til årligt, når du er sikker; besparelsen er reel, men lille.',
-    ],
-    seeAlso: ['icloud-google-and-outlook-in-one-view'],
-  },
+    {
+      "heading": "Advanced · Premium",
+      "body": [
+        "Advanced indeholder Base og fjerner reklamer. Premium indeholder Advanced og tilføjer Microsoft Calendar og Microsoft Teams.",
+        "Et abonnement giver ikke redigeringsret til andres kalendere og omgår ikke begrænsninger på en arbejdskonto."
+      ]
+    },
+    {
+      "heading": "Oplysninger om køb og opsigelse",
+      "body": [
+        "Kontrollér den lokale pris, betalingsperioden og vilkårene for fornyelse før køb.",
+        "For et abonnement faktureret af Apple skal du åbne Indstillinger → dit navn → Abonnementer. Kontrollér status og udløbsdato. At stoppe fornyelsen er adskilt fra at slette appen eller kalenderdata; antag ikke, at betalte funktioner fortsat virker efter udløb."
+      ]
+    }
+  ],
+  "claims": {},
+  "practical": [
+    "Kontrollér den lokale pris, betalingsperioden og vilkårene for fornyelse før køb.",
+    "Et abonnement giver ikke redigeringsret til andres kalendere og omgår ikke begrænsninger på en arbejdskonto."
+  ],
+  "faq": [
+    {
+      "q": "Hvordan stopper jeg fornyelsen?",
+      "a": "For et abonnement faktureret af Apple skal du åbne Indstillinger → dit navn → Abonnementer. Kontrollér status og udløbsdato. At stoppe fornyelsen er adskilt fra at slette appen eller kalenderdata; antag ikke, at betalte funktioner fortsat virker efter udløb."
+    }
+  ],
+  "sourcesHeading": "Oplysninger om køb og opsigelse",
+  "sources": [
+    {
+      "label": "Apple: Hvordan stopper jeg fornyelsen?",
+      "url": "https://support.apple.com/en-us/118428"
+    }
+  ],
+  "seeAlso": [
+    "icloud-google-and-outlook-in-one-view"
+  ]
+},
 };

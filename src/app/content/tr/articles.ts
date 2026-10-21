@@ -10,40 +10,39 @@ import { LocalisedArticle } from '../types';
  */
 export const ARTICLES_TR: Readonly<Record<string, LocalisedArticle>> = {
   'weather-inside-your-calendar': {
-    title: 'Havayı zaten içinde taşıyan bir takvim',
-    short: 'Takvimin içindeki hava',
-    description: 'Bir günü planlamak için iki uygulamaya bakmanın neden bir tasarım hatası olduğu ve tahminin yanda durmak yerine görünümün parçası olduğu bir takvimin nasıl göründüğü.',
-    lede: 'Neredeyse herkes gününü iki uygulama arasında planlar. Takvim nerede olunacağını söyler; hava uygulaması varıldığında havanın nasıl olacağını. İkisini kafada bir arada tutmak, kimsenin yaptığını fark etmediği kısımdır — ta ki bir cumartesi boşa gidene kadar.',
-    commonBelief: 'Takvimin randevular, hava uygulamasının hava için olduğu ve ikisini ayrı tutmanın telefonların çalışma biçimi olduğu.',
-    sections: [
-      {
-        heading: 'İki uygulamanın bedeli iki dokunuş değildir',
-        body: [
-          'Geçiş yapmak hiçbir şeye mal olmaz. Pahalı olan, ikisinin neyin önemli olduğu konusunda asla anlaşmamasıdır. Takviminiz cumartesi on birde iki saatin dolu olduğunu bilir; hava uygulaması ondan bire kadar yağmur yağdığını bilir. Hiçbiri, bu iki olgunun birlikte bloğun kaydırılması gerektiği anlamına geldiğini bilmez.',
-          'Bütünleştirme katmanı sizsiniz. Bu, işiniz yoğunlaşana kadar işler — ki planları korumanın en çok değdiği an tam da odur.',
-        ],
-      },
-      {
-        heading: 'Tahmin ızgaranın içindeyken ne değişir',
-        body: [
-          'Tahmini etkinliklerin arkasına koyun, çatışma kendiliğinden çözülür. Nemli bir sabah ile kuru bir öğleden sonra, koymak üzere olduğunuz toplantıyla aynı bakışta görünür ve karar düşünmeye mal olmaktan çıkar.',
-          'Bu yana yapıştırılmış bir widget değildir. Hafta ve Ay görünümündeki her gün kendi koşullarını taşır ve her etkinlik gerçekte kapladığı saatlerin tahminini taşır — tam da ihtiyacınız olan kısmın ortalamasını alan günlük özeti değil.',
-        ],
-      },
-    ],
-    claims: {
-      forecastDays: 'Takvimde ve her etkinliğin yanında tahmin günü sayısı',
-      views: 'Havayı taşıyan görünümler: Gün, Hafta, Ay, Yıl ve Liste',
-      price: 'Hava özelliklerinin ücreti',
+  "title": "Havayı zaten içinde taşıyan bir takvim",
+  "short": "Takvimin içindeki hava",
+  "description": "Bir günü planlamak için iki uygulamaya bakmanın neden bir tasarım hatası olduğu ve tahminin yanda durmak yerine görünümün parçası olduğu bir takvimin nasıl göründüğü.",
+  "lede": "Neredeyse herkes gününü iki uygulama arasında planlar. Takvim nerede olunacağını söyler; hava uygulaması varıldığında havanın nasıl olacağını. İkisini kafada bir arada tutmak, kimsenin yaptığını fark etmediği kısımdır — ta ki bir cumartesi boşa gidene kadar.",
+  "commonBelief": "Takvimin randevular, hava uygulamasının hava için olduğu ve ikisini ayrı tutmanın telefonların çalışma biçimi olduğu.",
+  "sections": [
+    {
+      "heading": "İki uygulamanın bedeli iki dokunuş değildir",
+      "body": [
+        "Geçiş yapmak hiçbir şeye mal olmaz. Pahalı olan, ikisinin neyin önemli olduğu konusunda asla anlaşmamasıdır. Takviminiz cumartesi on birde iki saatin dolu olduğunu bilir; hava uygulaması ondan bire kadar yağmur yağdığını bilir. Hiçbiri, bu iki olgunun birlikte bloğun kaydırılması gerektiği anlamına geldiğini bilmez.",
+        "Bütünleştirme katmanı sizsiniz. Bu, işiniz yoğunlaşana kadar işler — ki planları korumanın en çok değdiği an tam da odur."
+      ]
     },
-    practical: [
-      'Açık havada bir şey koymadan önce Hafta görünümünde günlerin arkasındaki şeride bakın.',
-      'Bir etkinliğe dokunup gününün değil, saatlerinin tahminini görün.',
-      'Havaya bağlı işleri önce on dört güne göre yerleştirin, iki gün kala ince ayar yapın.',
-      'Yedinci günden ötesini plan değil, biçim olarak görün.',
-    ],
-    seeAlso: ['icloud-google-and-outlook-in-one-view', 'what-a-subscription-actually-buys'],
+    {
+      "heading": "Mevcut hava tahmini",
+      "body": [
+        "Cloud Calendars, seçilen konum için mevcut hava tahminini kullanır. Saatlik ve günlük veriler farklı dönemleri kapsayabilir.",
+        "Takvimde görebildiğiniz tarihler tahminin kapsamını belirlemez. Ay görünümü, tüm ay veya her etkinlik için tahmin olduğu anlamına gelmez."
+      ]
+    }
+  ],
+  "claims": {
+    "price": "Hava özelliklerinin ücreti"
   },
+  "practical": [
+    "Tahmine göre plan yapmadan önce konumu, tarihi ve mevcut saatleri kontrol edin."
+  ],
+  "seeAlso": [
+    "icloud-google-and-outlook-in-one-view",
+    "what-a-subscription-actually-buys"
+  ],
+  "updated": "2026-10-21"
+},
 
   'icloud-google-and-outlook-in-one-view': {
     title: 'iCloud, Google ve Outlook tek görünümde',
@@ -116,38 +115,53 @@ export const ARTICLES_TR: Readonly<Record<string, LocalisedArticle>> = {
   },
 
   'what-a-subscription-actually-buys': {
-    title: 'Bir abonelik gerçekte ne satın alır',
-    short: 'Abonelik ne satın alır',
-    description: 'İki ücretli katman, onları ayıran şey ve hangisinin — varsa — sizinki olduğunu nasıl anlarsınız.',
-    lede: 'Kimse ayıran şeyi açıkça söylemezse iki katman kafa karıştırmaya yeter. Onları ayıran şey Microsoft’tur.',
-    commonBelief: 'Üst katmanın aynı özelliklerin daha fazlası olduğu.',
-    sections: [
-      {
-        heading: 'Birinci katman reklamları kaldırır',
-        body: [
-          'Ayrıca iCloud ve Google takvimleri arasında etkinlik yönetimi, Google paylaşım izinleri, otomatik Meet bağlantıları ve daha hızlı hava yenilemesi ekler. Ama satın alınma nedeni reklamlardır.',
-          'Bu fiyata yılda aşağı yukarı bir kahve eder ve bir şey ödemek isteyen hemen herkese uyan katmandır.',
-        ],
-      },
-      {
-        heading: 'İkinci katman Microsoft içindir',
-        body: [
-          'Outlook ve Exchange eşitlemesi, Teams bağlantıları, iş dahil hesaplar arası yönetim, katılımcı yönetimi. Bir büyüklük mertebesi daha pahalıdır, çünkü bağlantı da öyledir.',
-          'İş takviminiz Microsoft’ta değilse burada size göre bir şey yok. İki katman da yıllıkta ucuzdur; tasarruf ölçülüdür, çarpıcı değil. İptalden sonra ücretsiz katmanda kalırsınız ve takvimleriniz sağlamdır, çünkü etkinlikler hiçbir zaman bizim olmadı.',
-        ],
-      },
-    ],
-    claims: {
-      advancedMonthly: 'Birinci katman, aylık, dolar',
-      advancedYearly: 'Birinci katman, yıllık, dolar',
-      premiumMonthly: 'İkinci katman, aylık, dolar',
-      premiumYearly: 'İkinci katman, yıllık, dolar',
+  "updated": "2026-10-21",
+  "title": "Bir abonelik gerçekte ne satın alır",
+  "short": "Abonelik ne satın alır",
+  "description": "Abonelik ne satın alır: Base, Advanced, Premium.",
+  "lede": "Bu rehber, Cloud Calendars geliştiricisi Arte Soft tarafından yayımlanmıştır.",
+  "sections": [
+    {
+      "heading": "Base",
+      "body": [
+        "Base; Google Calendar eşitleme, Google Meet, takvim görünümleri, hava durumu ve araç takımlarını içerir. Ücretsiz plan reklam gösterebilir."
+      ]
     },
-    practical: [
-      'Birinci katmanı takvimi açmak için değil, reklamları kaldırmak için alın.',
-      'İkincisini yalnızca işiniz Microsoft’ta yaşıyorsa alın.',
-      'Emin olduğunuzda yıllığa geçin; tasarruf gerçektir ama küçüktür.',
-    ],
-    seeAlso: ['icloud-google-and-outlook-in-one-view'],
-  },
+    {
+      "heading": "Advanced · Premium",
+      "body": [
+        "Advanced, Base özelliklerini içerir ve reklamları kaldırır. Premium, Advanced özelliklerine Microsoft Calendar ve Microsoft Teams desteğini ekler.",
+        "Abonelik, başkalarının takvimlerini düzenleme izni vermez ve iş hesabının kısıtlamalarını aşmaz."
+      ]
+    },
+    {
+      "heading": "Satın alma ve iptal bilgileri",
+      "body": [
+        "Satın almadan önce yerel fiyatı, fatura dönemini ve yenileme koşullarını kontrol edin.",
+        "Apple tarafından faturalandırılan abonelik için Ayarlar → adınız → Abonelikler bölümünü açın. Durumu ve bitiş tarihini kontrol edin. Yenilemeyi iptal etmek, uygulamayı veya takvim verilerini silmekten ayrıdır; ücretli özelliklerin süre dolduktan sonra kullanılabileceğini varsaymayın."
+      ]
+    }
+  ],
+  "claims": {},
+  "practical": [
+    "Satın almadan önce yerel fiyatı, fatura dönemini ve yenileme koşullarını kontrol edin.",
+    "Abonelik, başkalarının takvimlerini düzenleme izni vermez ve iş hesabının kısıtlamalarını aşmaz."
+  ],
+  "faq": [
+    {
+      "q": "Yenilemeyi nasıl durdururum?",
+      "a": "Apple tarafından faturalandırılan abonelik için Ayarlar → adınız → Abonelikler bölümünü açın. Durumu ve bitiş tarihini kontrol edin. Yenilemeyi iptal etmek, uygulamayı veya takvim verilerini silmekten ayrıdır; ücretli özelliklerin süre dolduktan sonra kullanılabileceğini varsaymayın."
+    }
+  ],
+  "sourcesHeading": "Satın alma ve iptal bilgileri",
+  "sources": [
+    {
+      "label": "Apple: Yenilemeyi nasıl durdururum?",
+      "url": "https://support.apple.com/en-us/118428"
+    }
+  ],
+  "seeAlso": [
+    "icloud-google-and-outlook-in-one-view"
+  ]
+},
 };

@@ -10,42 +10,39 @@ import { LocalisedArticle } from '../types';
  */
 export const ARTICLES_CS: Readonly<Record<string, LocalisedArticle>> = {
   'weather-inside-your-calendar': {
-    title: 'Kalendář, který už počasí obsahuje',
-    short: 'Počasí uvnitř kalendáře',
-    description:
-      'Proč je dívat se do dvou aplikací kvůli naplánování dne konstrukční chyba a jak vypadá kalendář, v němž je předpověď součástí pohledu, a ne vedle něj.',
-    lede: 'Téměř každý si plánuje den mezi dvěma aplikacemi. Kalendář říká, kde je třeba být; ta s počasím říká, jaké tam bude počasí. Držet obojí pohromadě v hlavě je ta část, o níž nikdo neví, že ji dělá — dokud nepřijde o sobotu.',
-    commonBelief:
-      'Že kalendář je na schůzky a aplikace na počasí je na počasí, a že držet je odděleně je prostě to, jak telefony fungují.',
-    sections: [
-      {
-        heading: 'Cena dvou aplikací nejsou dvě klepnutí',
-        body: [
-          'Přepnout nestojí nic. Drahé je to, že se ty dvě nikdy neshodnou na tom, co je podstatné. Váš kalendář ví, že v sobotu od jedenácti jsou dvě hodiny obsazené; aplikace s počasím ví, že prší od deseti do jedné. Ani jedna neví, že tato dvě fakta dohromady znamenají, že blok je třeba posunout.',
-          'Integrační vrstvou jste vy. Funguje to, dokud nemáte plno práce — což je přesně chvíle, kdy se chránit plány vyplácí nejvíc.',
-        ],
-      },
-      {
-        heading: 'Co se změní, když je předpověď v mřížce',
-        body: [
-          'Dejte předpověď za události a konflikt se vyřeší sám. Vlhké dopoledne a suché odpoledne uvidíte týmž pohledem jako schůzku, kterou jste chtěli vložit, a rozhodnutí přestane stát přemýšlení.',
-          'Není to widget přilepený ze strany. Každý den v týdenním i měsíčním pohledu nese vlastní podmínky a každá událost nese předpověď těch hodin, které skutečně zabírá — ne denní souhrn, který zprůměruje právě tu část, kterou jste potřebovali.',
-        ],
-      },
-    ],
-    claims: {
-      forecastDays: 'Dnů předpovědi, v kalendáři i vedle každé události',
-      views: 'Pohledy s počasím: Den, Týden, Měsíc, Rok a Seznam',
-      price: 'Kolik stojí funkce počasí',
+  "title": "Kalendář, který už počasí obsahuje",
+  "short": "Počasí uvnitř kalendáře",
+  "description": "Proč je dívat se do dvou aplikací kvůli naplánování dne konstrukční chyba a jak vypadá kalendář, v němž je předpověď součástí pohledu, a ne vedle něj.",
+  "lede": "Téměř každý si plánuje den mezi dvěma aplikacemi. Kalendář říká, kde je třeba být; ta s počasím říká, jaké tam bude počasí. Držet obojí pohromadě v hlavě je ta část, o níž nikdo neví, že ji dělá — dokud nepřijde o sobotu.",
+  "commonBelief": "Že kalendář je na schůzky a aplikace na počasí je na počasí, a že držet je odděleně je prostě to, jak telefony fungují.",
+  "sections": [
+    {
+      "heading": "Cena dvou aplikací nejsou dvě klepnutí",
+      "body": [
+        "Přepnout nestojí nic. Drahé je to, že se ty dvě nikdy neshodnou na tom, co je podstatné. Váš kalendář ví, že v sobotu od jedenácti jsou dvě hodiny obsazené; aplikace s počasím ví, že prší od deseti do jedné. Ani jedna neví, že tato dvě fakta dohromady znamenají, že blok je třeba posunout.",
+        "Integrační vrstvou jste vy. Funguje to, dokud nemáte plno práce — což je přesně chvíle, kdy se chránit plány vyplácí nejvíc."
+      ]
     },
-    practical: [
-      'Než vložíte cokoli venkovního, podívejte se v týdenním pohledu na pruh za dny.',
-      'Klepnutím na událost uvidíte předpověď jejích hodin, ne jejího dne.',
-      'Věci závislé na počasí umisťujte nejprve proti čtrnácti dnům a doladit je dva dny předem.',
-      'Se vším za sedmým dnem zacházejte jako s tvarem, ne jako s plánem.',
-    ],
-    seeAlso: ['icloud-google-and-outlook-in-one-view', 'what-a-subscription-actually-buys'],
+    {
+      "heading": "Dostupná předpověď",
+      "body": [
+        "Cloud Calendars používá dostupnou předpověď pro vybrané místo. Hodinové a denní údaje mohou pokrývat různá období.",
+        "Data, která lze zobrazit v kalendáři, neurčují dosah předpovědi. Měsíční zobrazení neznamená předpověď na celý měsíc ani pro každou událost."
+      ]
+    }
+  ],
+  "claims": {
+    "price": "Kolik stojí funkce počasí"
   },
+  "practical": [
+    "Před plánováním podle předpovědi zkontrolujte místo, datum a dostupné hodiny."
+  ],
+  "seeAlso": [
+    "icloud-google-and-outlook-in-one-view",
+    "what-a-subscription-actually-buys"
+  ],
+  "updated": "2026-10-21"
+},
 
   'icloud-google-and-outlook-in-one-view': {
     title: 'iCloud, Google a Outlook v jednom pohledu',
@@ -120,39 +117,53 @@ export const ARTICLES_CS: Readonly<Record<string, LocalisedArticle>> = {
   },
 
   'what-a-subscription-actually-buys': {
-    title: 'Co předplatné doopravdy přináší',
-    short: 'Co předplatné přináší',
-    description:
-      'Dvě placené úrovně, co je dělí a jak poznáte, která — pokud vůbec některá — je vaše.',
-    lede: 'Dvě úrovně stačí ke zmatku, pokud nikdo jasně neřekne, co je dělí. Dělí je Microsoft.',
-    commonBelief: 'Že vyšší úroveň jsou tytéž funkce, jen jich je víc.',
-    sections: [
-      {
-        heading: 'První úroveň odstraní reklamy',
-        body: [
-          'Přidává také správu událostí mezi kalendáři iCloud a Google, práva sdílení Google, automatické odkazy Meet a rychlejší obnovování počasí. Kupuje se ale kvůli reklamám.',
-          'V této ceně je to zhruba jedna káva za rok a je to úroveň, která sedne téměř každému, kdo vůbec chce něco zaplatit.',
-        ],
-      },
-      {
-        heading: 'Druhá úroveň je pro Microsoft',
-        body: [
-          'Synchronizace Outlooku a Exchange, odkazy Teams, správa napříč účty včetně pracovního, správa účastníků. Stojí o řád víc, protože i to spojení stojí.',
-          'Není-li váš pracovní kalendář u Microsoftu, není tu pro vás nic. Obě úrovně jsou levnější ročně; úspora je mírná, ne ohromující. Po zrušení zůstanete na bezplatné úrovni a kalendáře jsou nedotčené, protože události nikdy nebyly naše.',
-        ],
-      },
-    ],
-    claims: {
-      advancedMonthly: 'První úroveň, měsíčně, v dolarech',
-      advancedYearly: 'První úroveň, ročně, v dolarech',
-      premiumMonthly: 'Druhá úroveň, měsíčně, v dolarech',
-      premiumYearly: 'Druhá úroveň, ročně, v dolarech',
+  "updated": "2026-10-21",
+  "title": "Co předplatné doopravdy přináší",
+  "short": "Co předplatné přináší",
+  "description": "Co předplatné přináší: Base, Advanced, Premium.",
+  "lede": "Tuto příručku vydává Arte Soft, vývojář aplikace Cloud Calendars.",
+  "sections": [
+    {
+      "heading": "Base",
+      "body": [
+        "Base zahrnuje synchronizaci Google Calendar, Google Meet, zobrazení kalendáře, počasí a widgety. Bezplatný plán může zobrazovat reklamy."
+      ]
     },
-    practical: [
-      'Kupte první úroveň kvůli odstranění reklam, ne kvůli odemknutí kalendáře.',
-      'Druhou kupte, jen pokud vaše práce žije u Microsoftu.',
-      'Na roční přejděte, až si budete jistí; úspora je skutečná, ale malá.',
-    ],
-    seeAlso: ['icloud-google-and-outlook-in-one-view'],
-  },
+    {
+      "heading": "Advanced · Premium",
+      "body": [
+        "Advanced zahrnuje Base a odstraňuje reklamy. Premium zahrnuje Advanced a přidává Microsoft Calendar a Microsoft Teams.",
+        "Předplatné nedává právo upravovat cizí kalendáře ani neobchází omezení pracovního účtu."
+      ]
+    },
+    {
+      "heading": "Informace o nákupu a zrušení",
+      "body": [
+        "Před nákupem zkontrolujte místní cenu, fakturační období a podmínky obnovení.",
+        "U předplatného účtovaného společností Apple otevřete Nastavení → vaše jméno → Předplatná. Zkontrolujte stav a datum vypršení. Zrušení obnovení je oddělené od smazání aplikace nebo dat kalendáře; nepočítejte s tím, že placené funkce zůstanou po vypršení dostupné."
+      ]
+    }
+  ],
+  "claims": {},
+  "practical": [
+    "Před nákupem zkontrolujte místní cenu, fakturační období a podmínky obnovení.",
+    "Předplatné nedává právo upravovat cizí kalendáře ani neobchází omezení pracovního účtu."
+  ],
+  "faq": [
+    {
+      "q": "Jak zastavím obnovení?",
+      "a": "U předplatného účtovaného společností Apple otevřete Nastavení → vaše jméno → Předplatná. Zkontrolujte stav a datum vypršení. Zrušení obnovení je oddělené od smazání aplikace nebo dat kalendáře; nepočítejte s tím, že placené funkce zůstanou po vypršení dostupné."
+    }
+  ],
+  "sourcesHeading": "Informace o nákupu a zrušení",
+  "sources": [
+    {
+      "label": "Apple: Jak zastavím obnovení?",
+      "url": "https://support.apple.com/en-us/118428"
+    }
+  ],
+  "seeAlso": [
+    "icloud-google-and-outlook-in-one-view"
+  ]
+},
 };

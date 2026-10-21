@@ -1,0 +1,29 @@
+{
+  "date": "2026-10-21",
+  "scope": "Four existing English articles only. Existing canonical slugs retained. Localized subscription versions remain outstanding, not approved by this English edit.",
+  "articles": [
+    "free-google-sync-without-adverts",
+    "what-fantastical-costs-and-what-this-does",
+    "what-you-get-without-paying-anything",
+    "what-a-subscription-actually-buys"
+  ],
+  "changes": [
+    "Remove unsupported paid-tier benefits, limits and blanket access/data survival claims.",
+    "Developer authorship disclosure and task-specific practical checks.",
+    "Remove unmeasured superiority, fixed price comparisons, competitor no-weather assertion and speculative provider running costs.",
+    "Do not change third-party provider permissions through subscriptions."
+  ],
+  "sources": [
+    {
+      "url": "https://flexibits.com/fantastical",
+      "readScope": "Successfully retrieved opening and lines87-155 platforms, providers, multiple views and event entry. Subsequent full/continuation retrieval returned error, not claimed fully reviewed.",
+      "notAdopted": "Testimonials, superiority, exact prices and unreviewed detail."
+    },
+    {
+      "url": "https://support.apple.com/en-us/118428",
+      "readScope": "Retrieved body29-133 cancellation path and missing subscription guidance."
+    }
+  ],
+  "runtimeTests": "none",
+  "publication": "pending"
+}

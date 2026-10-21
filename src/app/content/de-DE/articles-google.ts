@@ -51,52 +51,67 @@ export const GOOGLE_DE_DE: Readonly<Record<string, LocalisedArticle>> = {
   },
 
   'why-a-shared-calendar-does-not-appear': {
-    title: 'Ein Kalender wurde für Sie freigegeben und ist nicht da',
-    short: 'Geteilter Kalender fehlt',
-    description:
-      'Jemand hat einen Kalender geteilt, Sie haben angenommen, und nichts hat sich geändert. Die vier gewöhnlichen Gründe, in der sinnvollen Reihenfolge.',
-    lede: 'Die Einladung kam, der Link wurde angetippt, und der Kalender fehlt weiterhin. Fast immer ist es eines von vier Dingen, und keines davon ist eine kaputte Freigabe.',
-    commonBelief: 'Dass Annehmen einen geteilten Kalender auf Ihr Telefon bringt.',
-    sections: [
+    "updated": "2026-10-21",
+    "title": "Ein Kalender wurde für Sie freigegeben und ist nicht da",
+    "short": "Geteilter Kalender fehlt",
+    "description": "Fehlenden Google-Kalender finden: eingeladenes Konto, Gruppenmitgliedschaft, Sichtbarkeit und Art des erhaltenen Links prüfen.",
+    "lede": "Dieser Leitfaden stammt von Arte Soft, dem Entwickler von Cloud Calendars. Unterscheiden Sie zunächst fehlenden Zugriff von einem ausgeblendeten Kalender.",
+    "commonBelief": "Dass Annehmen einen geteilten Kalender auf Ihr Telefon bringt.",
+    "sections": [
       {
-        heading: 'Annehmen fügt ihn einem Konto hinzu, nicht einem Gerät',
-        body: [
-          'Eine Freigabe landet in dem Google-Konto, an das sie adressiert war. Haben Sie mit einem Konto angenommen und trägt Ihr Telefon ein anderes, liegt der Kalender wohlbehalten dort, wo Sie gerade nicht hinsehen.',
-          'Selbst im richtigen Konto kommt ein neuer Kalender auf anderen Geräten häufiger ausgeschaltet als eingeschaltet an. Er existiert, er ist nur nicht angehakt — und ein nicht angehakter Kalender sieht genauso aus wie ein fehlender.',
-        ],
+        "heading": "Konto und Gruppe prüfen",
+        "body": [
+          "Vergleichen Sie den Empfänger der Einladung mit dem Google-Konto auf dem Telefon und im Browser. Öffnen Sie den Einladungslink mit dem vorgesehenen Konto. Google unterstützt Freigaben für Personen und Google-Gruppen. Bei Gruppenzugriff lassen Sie Ihre Mitgliedschaft von der Gruppenverwaltung und die Freigabe der richtigen Gruppe vom Kalenderinhaber prüfen. Eine weitergeleitete E-Mail allein erteilt keine Berechtigung."
+        ]
       },
       {
-        heading: 'Die anderen beiden Gründe',
-        body: [
-          'Freigaben an Verteiler oder Gruppenadressen erreichen Einzelpersonen selten; nötig ist die Adresse, die tatsächlich ein Google-Konto ist. Und ein als Link geteilter Kalender ist ein Abonnement: Er landet an anderer Stelle in der Liste und aktualisiert sich im Takt des Herausgebers statt sofort.',
-          'Auf dem iPhone erreichen Google-Kalender die eingebaute App über eine eigene Synchronisierungsliste, und Zweitkalender stehen standardmäßig außerhalb davon. Deshalb zeigt ein Konto seinen Hauptkalender und lässt die vier wichtigen stillschweigend weg.',
-        ],
+        "heading": "Ausgeblendet, fehlend oder eingeschränkt?",
+        "body": [
+          "Öffnen Sie in Google Kalender auf iPhone oder iPad das Menü. Ist der Kalender aufgeführt, aber nicht ausgewählt, aktivieren Sie ihn. Fehlt er, lassen Sie den Inhaber den Zugriff prüfen: Eine Anfrage ist noch keine Genehmigung. Organisationsrichtlinien können Freigaben begrenzen. Vergleichen Sie dasselbe Konto in Google Kalender im Web. Funktioniert es dort, prüfen Sie das verbundene Konto und die Kalenderauswahl der anderen App. Lesezugriff erlaubt keine Bearbeitung."
+        ]
       },
+      {
+        "heading": "Welche Art von Link ist es?",
+        "body": [
+          "Auch eine Freigabeeinladung enthält einen Link; nicht jeder Link ist ein ICS-Abonnement. Fragen Sie, ob er Zugriff auf einen Google-Kalender gewährt oder einen schreibgeschützten Feed veröffentlicht. Laut Google erfordert ein neues Kalenderabonnement einen Computerbrowser; das Öffnen eines bereits per E-Mail geteilten Kalenders ist ein anderer Vorgang. Feed-Aktualisierungen hängen vom empfangenden Dienst ab. Es gibt keine allgemeine Wartezeit; dringende Änderungen direkt bestätigen lassen."
+        ]
+      }
     ],
-    claims: {
-      refreshHint: 'Stunden zwischen den Aktualisierungsanfragen eines abonnierten Feeds',
-      accounts: 'Kontoarten, die eine Ansicht ganz ohne das alles zusammenhält',
-    },
-    faq: [
+    "claims": {},
+    "faq": [
       {
-        q: 'Ich habe eine Freigabe angenommen, aber der Kalender ist nicht auf dem iPhone. Warum?',
-        a: 'Die Freigabe landet in dem Google-Konto, an das sie adressiert war, und ein neu hinzugefügter Kalender kommt auf anderen Geräten meist ausgeschaltet an. Prüfen Sie erst das Konto, dann suchen Sie ihn nicht als fehlend, sondern als nicht angehakt.',
+        "q": "Kann eine Google-Gruppe Kalenderzugriff erhalten?",
+        "a": "Ja. Prüfen Sie die freigegebene Gruppe, Ihre Mitgliedschaft und Organisationsregeln. Eine weitergeleitete Gruppenmail belegt keinen Zugriff."
       },
       {
-        q: 'Funktioniert eine Freigabe an eine Gruppenadresse?',
-        a: 'Selten. Ein Verteiler oder eine Gruppenadresse erreicht die Menschen dahinter kaum. Nötig ist die Adresse, die selbst ein Google-Konto ist.',
-      },
-      {
-        q: 'Wie lange dauert es, bis ein geteilter Kalender auftaucht?',
-        a: 'Eine Freigabe über Berechtigungen erscheint, sobald die Kalenderliste aktualisiert. Ein per Link geteilter Kalender ist dagegen ein Abonnement und folgt dem Takt des Herausgebers.',
-      },
+        "q": "Soll ich das Konto löschen und neu verbinden?",
+        "a": "Prüfen Sie zuerst Konto, Rechte und Sichtbarkeit sowie den Kalender im Web. Erneutes Verbinden erteilt keine fehlenden Rechte."
+      }
     ],
-    practical: [
-      'Erst prüfen, welches Konto die Freigabe angenommen hat, dann alles andere.',
-      'Die Kalenderliste auf dem Gerät öffnen und nach dem ausgeschalteten Eintrag suchen, nicht nach einem fehlenden.',
-      'Kam er als Link, rechnen Sie mit Verzögerung statt mit sofortigem Erscheinen.',
+    "practical": [
+      "Eingeladenes Konto und Gruppenmitgliedschaft bestätigen.",
+      "Einen aufgeführten, ausgeblendeten Kalender aktivieren.",
+      "Vor Verbindungsänderungen den Zugriff vom Inhaber prüfen lassen."
     ],
-    seeAlso: ['who-can-see-what-in-google-calendar', 'google-calendars-that-never-reach-your-iphone'],
+    "sourcesHeading": "Quellen und weiterführende Informationen",
+    "sources": [
+      {
+        "label": "Google: Konto und Gruppe prüfen",
+        "url": "https://support.google.com/calendar/answer/37082?hl=en&co=GENIE.Platform%3DiOS"
+      },
+      {
+        "label": "Google: Ausgeblendet, fehlend oder eingeschränkt?",
+        "url": "https://support.google.com/calendar/answer/37100?hl=en&co=GENIE.Platform%3DiOS"
+      },
+      {
+        "label": "Google: Welche Art von Link ist es?",
+        "url": "https://support.google.com/calendar/answer/37648?hl=en"
+      }
+    ],
+    "seeAlso": [
+      "who-can-see-what-in-google-calendar",
+      "google-calendars-that-never-reach-your-iphone"
+    ]
   },
 
   'the-secret-address-of-a-google-calendar': {

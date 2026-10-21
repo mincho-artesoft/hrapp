@@ -51,52 +51,67 @@ export const GOOGLE_VI: Readonly<Record<string, LocalisedArticle>> = {
   },
 
   'why-a-shared-calendar-does-not-appear': {
-    title: 'Một lịch được chia sẻ với bạn mà không thấy đâu',
-    short: 'Lịch chia sẻ không hiện ra',
-    description:
-      'Ai đó chia sẻ một lịch, bạn đã chấp nhận, và chẳng có gì thay đổi. Bốn lý do thường gặp, theo thứ tự đáng kiểm tra.',
-    lede: 'Lời mời đã đến, liên kết đã bấm, mà lịch vẫn không có. Gần như luôn là một trong bốn điều, và không điều nào là chia sẻ bị hỏng.',
-    commonBelief: 'Rằng chấp nhận một lịch chia sẻ là đưa nó vào điện thoại của bạn.',
-    sections: [
+    "updated": "2026-10-21",
+    "title": "Một lịch được chia sẻ với bạn mà không thấy đâu",
+    "short": "Lịch chia sẻ không hiện ra",
+    "description": "Lịch Google được chia sẻ không xuất hiện? Kiểm tra tài khoản được mời, nhóm, chế độ hiển thị và loại liên kết.",
+    "lede": "Hướng dẫn này do Arte Soft, nhà phát triển Cloud Calendars, biên soạn. Trước hết hãy phân biệt thiếu quyền truy cập với lịch chỉ bị ẩn.",
+    "commonBelief": "Rằng chấp nhận một lịch chia sẻ là đưa nó vào điện thoại của bạn.",
+    "sections": [
       {
-        heading: 'Chấp nhận thêm nó vào một tài khoản, không phải vào một thiết bị',
-        body: [
-          'Việc chia sẻ đáp xuống đúng tài khoản Google được gửi tới. Nếu bạn chấp nhận khi đang đăng nhập bằng tài khoản này còn điện thoại mang tài khoản khác, lịch vẫn nằm yên ở nơi bạn không nhìn tới.',
-          'Ngay cả trong đúng tài khoản, một lịch vừa được thêm thường đến các thiết bị khác ở trạng thái tắt hơn là bật. Nó có đó, chỉ là chưa được đánh dấu — mà một lịch chưa đánh dấu trông y hệt một lịch không tồn tại.',
-        ],
+        "heading": "Kiểm tra tài khoản và nhóm",
+        "body": [
+          "So sánh địa chỉ nhận lời mời với tài khoản Google đang đăng nhập trên điện thoại và trình duyệt. Mở liên kết lời mời bằng đúng tài khoản. Google hỗ trợ chia sẻ với cá nhân và Google Groups. Nếu truy cập qua nhóm, nhờ quản trị viên xác nhận tư cách thành viên và chủ lịch kiểm tra quyền của đúng nhóm. Email được chuyển tiếp tự nó không cấp quyền."
+        ]
       },
       {
-        heading: 'Hai lý do còn lại',
-        body: [
-          'Chia sẻ tới một danh sách thư hay địa chỉ nhóm hiếm khi đến được từng người; cần địa chỉ thực sự là một tài khoản Google. Còn lịch chia sẻ dạng liên kết là một đăng ký: nó rơi vào phần khác của danh sách và làm mới theo nhịp của bên phát hành chứ không tức thì.',
-          'Trên iPhone, lịch Google đến ứng dụng có sẵn qua một danh sách đồng bộ riêng, và các lịch phụ mặc định nằm ngoài danh sách đó. Vì thế một tài khoản hiện lịch chính và lặng lẽ bỏ rơi bốn lịch quan trọng.',
-        ],
+        "heading": "Bị ẩn, không có hay bị hạn chế?",
+        "body": [
+          "Mở trình đơn Google Calendar trên iPhone hoặc iPad. Nếu lịch có trong danh sách nhưng chưa được chọn, hãy chọn lịch. Nếu không có, nhờ chủ lịch kiểm tra quyền: gửi yêu cầu không có nghĩa là đã được chấp thuận. Chính sách nơi làm việc hoặc trường học có thể hạn chế chia sẻ. So sánh cùng tài khoản trong Google Calendar trên web. Nếu ở đó hiển thị, kiểm tra tài khoản kết nối và lịch được chọn trong ứng dụng khác. Quyền chỉ đọc không cho phép chỉnh sửa."
+        ]
       },
+      {
+        "heading": "Xác định loại liên kết",
+        "body": [
+          "Lời mời chia sẻ cũng chứa liên kết; không phải mọi liên kết đều là đăng ký ICS. Hỏi người gửi xem liên kết cấp quyền vào lịch Google hay xuất bản nguồn chỉ đọc. Theo Google, đăng ký lịch mới cần trình duyệt trên máy tính; mở lịch đã được chia sẻ qua email là thao tác khác. Việc cập nhật nguồn phụ thuộc vào dịch vụ nhận. Không có thời gian chờ chung cho mọi trường hợp; hãy xác nhận thay đổi gấp với người tổ chức."
+        ]
+      }
     ],
-    claims: {
-      refreshHint: 'Số giờ giữa các lần một nguồn đã đăng ký xin làm mới',
-      accounts: 'Số loại tài khoản mà một khung nhìn giữ chung, không cần tới những thứ này',
-    },
-    faq: [
+    "claims": {},
+    "faq": [
       {
-        q: 'Tôi đã nhận lịch chia sẻ nhưng nó không có trên iPhone. Vì sao?',
-        a: 'Việc chia sẻ đáp xuống đúng tài khoản Google được gửi tới, và một lịch vừa được thêm thường đến các thiết bị khác ở trạng thái tắt. Hãy xem tài khoản trước, rồi tìm nó ở dạng chưa đánh dấu chứ không phải mất hẳn.',
+        "q": "Google Group có thể được cấp quyền không?",
+        "a": "Có. Kiểm tra nhóm được chọn, tư cách thành viên và giới hạn của tổ chức. Email nhóm được chuyển tiếp không chứng minh quyền truy cập."
       },
       {
-        q: 'Chia sẻ tới địa chỉ nhóm có được không?',
-        a: 'Hiếm khi. Danh sách thư gần như không tới được từng người phía sau nó. Cần địa chỉ vốn chính là một tài khoản Google.',
-      },
-      {
-        q: 'Bao lâu thì lịch chia sẻ xuất hiện?',
-        a: 'Chia sẻ bằng quyền xuất hiện ngay khi danh sách làm mới. Lịch chia sẻ dạng liên kết là một đăng ký và chạy theo nhịp của bên phát hành.',
-      },
+        "q": "Có nên xóa rồi kết nối lại tài khoản không?",
+        "a": "Trước hết kiểm tra tài khoản, quyền và chế độ hiển thị, rồi so sánh với lịch trên web. Kết nối lại không cấp quyền còn thiếu."
+      }
     ],
-    practical: [
-      'Xem tài khoản nào đã chấp nhận chia sẻ trước khi xem bất cứ điều gì khác.',
-      'Mở danh sách lịch trên thiết bị và tìm nó ở trạng thái tắt chứ đừng tìm cái vắng mặt.',
-      'Nếu nó đến dạng liên kết, hãy chờ độ trễ thay vì xuất hiện ngay.',
+    "practical": [
+      "Xác nhận tài khoản được mời và tư cách thành viên nhóm.",
+      "Chọn lịch nếu lịch có trong danh sách nhưng bị ẩn.",
+      "Nhờ chủ lịch kiểm tra quyền trước khi đổi kết nối."
     ],
-    seeAlso: ['who-can-see-what-in-google-calendar', 'google-calendars-that-never-reach-your-iphone'],
+    "sourcesHeading": "Nguồn và thông tin thêm",
+    "sources": [
+      {
+        "label": "Google: Kiểm tra tài khoản và nhóm",
+        "url": "https://support.google.com/calendar/answer/37082?hl=en&co=GENIE.Platform%3DiOS"
+      },
+      {
+        "label": "Google: Bị ẩn, không có hay bị hạn chế?",
+        "url": "https://support.google.com/calendar/answer/37100?hl=en&co=GENIE.Platform%3DiOS"
+      },
+      {
+        "label": "Google: Xác định loại liên kết",
+        "url": "https://support.google.com/calendar/answer/37648?hl=en"
+      }
+    ],
+    "seeAlso": [
+      "who-can-see-what-in-google-calendar",
+      "google-calendars-that-never-reach-your-iphone"
+    ]
   },
 
   'the-secret-address-of-a-google-calendar': {

@@ -51,52 +51,67 @@ export const GOOGLE_IT: Readonly<Record<string, LocalisedArticle>> = {
   },
 
   'why-a-shared-calendar-does-not-appear': {
-    title: 'Ti hanno condiviso un calendario e non c’è',
-    short: 'Calendario condiviso che non compare',
-    description:
-      'Qualcuno ha condiviso un calendario, hai accettato e non è cambiato nulla. I quattro motivi ordinari, nell’ordine in cui conviene guardarli.',
-    lede: 'L’invito è arrivato, il link è stato toccato e il calendario continua a mancare. Quasi sempre è una di quattro cose, e nessuna è che la condivisione non funzioni.',
-    commonBelief: 'Che accettare un calendario condiviso lo metta sul telefono.',
-    sections: [
+    "updated": "2026-10-21",
+    "title": "Ti hanno condiviso un calendario e non c’è",
+    "short": "Calendario condiviso che non compare",
+    "description": "Calendario Google condiviso assente? Controlla account invitato, gruppo, visibilità e tipo di link ricevuto.",
+    "lede": "Questa guida è di Arte Soft, sviluppatore di Cloud Calendars. Distingui prima un problema di accesso da un calendario semplicemente nascosto.",
+    "commonBelief": "Che accettare un calendario condiviso lo metta sul telefono.",
+    "sections": [
       {
-        heading: 'Accettare lo aggiunge a un account, non a un dispositivo',
-        body: [
-          'Una condivisione atterra nell’account Google a cui era indirizzata. Se hai accettato con un account e il telefono ne porta un altro, il calendario sta al sicuro esattamente dove non stai guardando.',
-          'Persino nell’account giusto, un calendario appena aggiunto arriva disattivato sugli altri dispositivi più spesso che attivato. Esiste, semplicemente non è spuntato, e un calendario non spuntato sembra identico a uno mancante.',
-        ],
+        "heading": "Controlla account e gruppo",
+        "body": [
+          "Confronta il destinatario dell’invito con l’account Google sul telefono e nel browser. Apri il link con l’account corretto. Google permette la condivisione con persone e Gruppi Google. Per l’accesso tramite gruppo, chiedi al responsabile di confermare la tua appartenenza e al proprietario del calendario di verificare il gruppo autorizzato. Una mail inoltrata non concede da sola il permesso."
+        ]
       },
       {
-        heading: 'Gli altri due motivi',
-        body: [
-          'Condividere con una mailing list o un indirizzo di gruppo raramente raggiunge le persone: serve l’indirizzo che è davvero un account Google. E un calendario condiviso come link è un abbonamento: finisce in un’altra parte dell’elenco e si aggiorna al ritmo di chi pubblica, non all’istante.',
-          'Su iPhone i calendari Google raggiungono l’app integrata attraverso un elenco di sincronizzazione tutto loro, e i calendari secondari ne restano fuori per impostazione predefinita. Per questo un account mostra il calendario principale e lascia cadere in silenzio i quattro che contano.',
-        ],
+        "heading": "Nascosto, assente o limitato?",
+        "body": [
+          "Apri il menu di Google Calendar su iPhone o iPad. Se il calendario è elencato ma non selezionato, attivalo. Se manca, chiedi al proprietario di verificare l’accesso: una richiesta non è un’approvazione. Le regole aziendali o scolastiche possono limitare la condivisione. Confronta lo stesso account sul Web. Se lì funziona, controlla account collegato e calendari selezionati nell’altra app. L’accesso in sola lettura non consente modifiche."
+        ]
       },
+      {
+        "heading": "Identifica il link",
+        "body": [
+          "Anche un invito di condivisione contiene un link: non tutti sono abbonamenti ICS. Chiedi se concede accesso a un calendario Google o pubblica un feed in sola lettura. Google richiede un browser su computer per un nuovo abbonamento; aprire un calendario già condiviso via mail è un’altra operazione. Gli aggiornamenti del feed dipendono dal servizio ricevente. Non esiste un’attesa universale: conferma le modifiche urgenti con l’organizzatore."
+        ]
+      }
     ],
-    claims: {
-      refreshHint: 'Ore fra le richieste di aggiornamento di un feed sottoscritto',
-      accounts: 'Tipi di account che una sola vista tiene insieme, senza nulla di tutto questo',
-    },
-    faq: [
+    "claims": {},
+    "faq": [
       {
-        q: 'Ho accettato un calendario condiviso ma non è sull’iPhone. Perché?',
-        a: 'La condivisione atterra nell’account Google a cui era indirizzata, e un calendario appena aggiunto arriva sugli altri dispositivi quasi sempre spento. Controlla prima l’account, poi cercalo non spuntato anziché assente.',
+        "q": "Un Gruppo Google può ottenere accesso?",
+        "a": "Sì. Verifica gruppo selezionato, appartenenza e restrizioni dell’organizzazione. Una mail del gruppo inoltrata non dimostra l’accesso."
       },
       {
-        q: 'Funziona condividere con un indirizzo di gruppo?',
-        a: 'Raramente. Una mailing list arriva di rado alle persone che ci stanno dietro. Serve l’indirizzo che è esso stesso un account Google.',
-      },
-      {
-        q: 'Quanto ci mette a comparire un calendario condiviso?',
-        a: 'Una condivisione per autorizzazioni compare appena l’elenco si aggiorna. Un calendario condiviso come link è un abbonamento e segue il ritmo di chi pubblica.',
-      },
+        "q": "Devo eliminare e ricollegare l’account?",
+        "a": "Prima controlla identità, permessi e visibilità e confronta il calendario sul Web. Ricollegare non concede permessi mancanti."
+      }
     ],
-    practical: [
-      'Controlla quale account ha accettato la condivisione prima di qualsiasi altra cosa.',
-      'Apri l’elenco dei calendari sul dispositivo e cercalo spento, non assente.',
-      'Se è arrivato come link, aspettati un ritardo invece di una comparsa immediata.',
+    "practical": [
+      "Conferma account invitato e appartenenza al gruppo.",
+      "Attiva il calendario se è elencato ma nascosto.",
+      "Fai verificare l’accesso prima di cambiare le connessioni."
     ],
-    seeAlso: ['who-can-see-what-in-google-calendar', 'google-calendars-that-never-reach-your-iphone'],
+    "sourcesHeading": "Fonti e approfondimenti",
+    "sources": [
+      {
+        "label": "Google: Controlla account e gruppo",
+        "url": "https://support.google.com/calendar/answer/37082?hl=en&co=GENIE.Platform%3DiOS"
+      },
+      {
+        "label": "Google: Nascosto, assente o limitato?",
+        "url": "https://support.google.com/calendar/answer/37100?hl=en&co=GENIE.Platform%3DiOS"
+      },
+      {
+        "label": "Google: Identifica il link",
+        "url": "https://support.google.com/calendar/answer/37648?hl=en"
+      }
+    ],
+    "seeAlso": [
+      "who-can-see-what-in-google-calendar",
+      "google-calendars-that-never-reach-your-iphone"
+    ]
   },
 
   'the-secret-address-of-a-google-calendar': {

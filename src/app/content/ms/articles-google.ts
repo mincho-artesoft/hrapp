@@ -51,52 +51,67 @@ export const GOOGLE_MS: Readonly<Record<string, LocalisedArticle>> = {
   },
 
   'why-a-shared-calendar-does-not-appear': {
-    title: 'Kalendar dikongsi dengan anda dan ia tiada',
-    short: 'Kalendar kongsi tidak muncul',
-    description:
-      'Seseorang berkongsi kalendar, anda menerimanya, dan tiada apa yang berubah. Empat sebab biasa, mengikut susunan yang berbaloi disemak.',
-    lede: 'Jemputan sampai, pautan ditekan, dan kalendar masih tiada. Hampir selalu ia salah satu daripada empat perkara, dan tiada satu pun kerana perkongsian rosak.',
-    commonBelief: 'Bahawa menerima kalendar kongsi meletakkannya pada telefon anda.',
-    sections: [
+    "updated": "2026-10-21",
+    "title": "Kalendar dikongsi dengan anda dan ia tiada",
+    "short": "Kalendar kongsi tidak muncul",
+    "description": "Kalendar Google yang dikongsi tidak muncul? Semak akaun jemputan, kumpulan, keterlihatan dan jenis pautan.",
+    "lede": "Panduan ini disediakan oleh Arte Soft, pembangun Cloud Calendars. Bezakan dahulu masalah akses daripada kalendar yang hanya disembunyikan.",
+    "commonBelief": "Bahawa menerima kalendar kongsi meletakkannya pada telefon anda.",
+    "sections": [
       {
-        heading: 'Menerima menambahkannya pada akaun, bukan pada peranti',
-        body: [
-          'Perkongsian mendarat dalam akaun Google yang dituju. Jika anda menerimanya sambil log masuk dengan satu akaun sedangkan telefon membawa akaun lain, kalendar itu selamat berada tepat di tempat yang anda tidak pandang.',
-          'Walaupun dalam akaun yang betul, kalendar yang baru ditambah lebih kerap tiba dalam keadaan dimatikan pada peranti lain. Ia wujud, cuma tidak ditandakan — dan kalendar yang tidak ditandakan kelihatan sama seperti yang hilang.',
-        ],
+        "heading": "Semak akaun dan kumpulan",
+        "body": [
+          "Bandingkan penerima jemputan dengan akaun Google pada telefon dan pelayar. Buka pautan jemputan menggunakan akaun yang betul. Google menyokong perkongsian dengan individu dan Google Groups. Untuk akses melalui kumpulan, minta pengurus mengesahkan keahlian anda dan pemilik kalendar menyemak akses kumpulan yang betul. E-mel yang dimajukan tidak memberikan kebenaran dengan sendirinya."
+        ]
       },
       {
-        heading: 'Dua sebab yang lain',
-        body: [
-          'Perkongsian kepada senarai mel atau alamat kumpulan jarang sampai kepada individu; yang diperlukan ialah alamat yang benar-benar akaun Google. Dan kalendar yang dikongsi sebagai pautan ialah langganan: ia jatuh di bahagian lain senarai dan disegarkan mengikut rentak penerbit, bukan serta-merta.',
-          'Pada iPhone, kalendar Google sampai ke aplikasi terbina melalui senarai penyegerakan tersendiri, dan kalendar sekunder berada di luar senarai itu secara lalai. Sebab itulah satu akaun menunjukkan kalendar utamanya dan senyap-senyap menggugurkan empat yang penting.',
-        ],
+        "heading": "Tersembunyi, tiada atau terhad?",
+        "body": [
+          "Buka menu Google Calendar pada iPhone atau iPad. Jika kalendar tersenarai tetapi tidak ditandakan, pilih kalendar itu. Jika tiada, minta pemilik menyemak akses: permintaan bukan kelulusan. Dasar tempat kerja atau sekolah boleh mengehadkan perkongsian. Bandingkan akaun yang sama dalam Google Calendar di web. Jika berfungsi di situ, semak akaun tersambung dan pilihan kalendar dalam aplikasi lain. Akses baca sahaja tidak membenarkan suntingan."
+        ]
       },
+      {
+        "heading": "Kenal pasti jenis pautan",
+        "body": [
+          "Jemputan perkongsian juga mengandungi pautan; bukan semua pautan ialah langganan ICS. Tanya sama ada pautan memberikan akses kepada kalendar Google atau menerbitkan suapan baca sahaja. Menurut Google, langganan kalendar baharu memerlukan pelayar komputer; membuka kalendar yang sudah dikongsi melalui e-mel ialah tindakan berbeza. Kemas kini suapan bergantung pada perkhidmatan penerima. Tiada tempoh menunggu yang seragam; sahkan perubahan segera dengan penganjur."
+        ]
+      }
     ],
-    claims: {
-      refreshHint: 'Jam antara permintaan penyegaran oleh suapan langganan',
-      accounts: 'Jenis akaun yang disatukan oleh satu paparan tanpa semua ini',
-    },
-    faq: [
+    "claims": {},
+    "faq": [
       {
-        q: 'Saya terima kalendar kongsi tetapi tiada pada iPhone. Kenapa?',
-        a: 'Perkongsian mendarat dalam akaun Google yang dituju, dan kalendar yang baru ditambah biasanya tiba dalam keadaan dimatikan pada peranti lain. Semak akaun dahulu, kemudian cari ia tidak bertanda, bukan hilang.',
+        "q": "Bolehkah Google Group menerima akses?",
+        "a": "Ya. Semak kumpulan yang dipilih, keahlian anda dan sekatan organisasi. E-mel kumpulan yang dimajukan bukan bukti akses."
       },
       {
-        q: 'Adakah perkongsian ke alamat kumpulan berkesan?',
-        a: 'Jarang. Senarai mel sukar sampai kepada orang di sebaliknya. Yang diperlukan ialah alamat yang memang sebuah akaun Google.',
-      },
-      {
-        q: 'Berapa lama kalendar kongsi mengambil masa untuk muncul?',
-        a: 'Perkongsian melalui kebenaran muncul sebaik senarai disegarkan. Kalendar yang dikongsi sebagai pautan ialah langganan dan mengikut rentak penerbitnya.',
-      },
+        "q": "Perlukah saya memadam dan menyambung semula akaun?",
+        "a": "Semak dahulu identiti, kebenaran dan keterlihatan, kemudian bandingkan kalendar web. Sambungan semula tidak memberikan kebenaran yang tiada."
+      }
     ],
-    practical: [
-      'Semak akaun mana yang menerima perkongsian sebelum menyemak perkara lain.',
-      'Buka senarai kalendar pada peranti dan cari dalam keadaan dimatikan, bukan tiada.',
-      'Jika ia datang sebagai pautan, jangkakan kelewatan dan bukan kemunculan serta-merta.',
+    "practical": [
+      "Sahkan akaun jemputan dan keahlian kumpulan.",
+      "Pilih kalendar jika tersenarai tetapi tersembunyi.",
+      "Minta pemilik menyemak akses sebelum mengubah sambungan."
     ],
-    seeAlso: ['who-can-see-what-in-google-calendar', 'google-calendars-that-never-reach-your-iphone'],
+    "sourcesHeading": "Sumber dan maklumat lanjut",
+    "sources": [
+      {
+        "label": "Google: Semak akaun dan kumpulan",
+        "url": "https://support.google.com/calendar/answer/37082?hl=en&co=GENIE.Platform%3DiOS"
+      },
+      {
+        "label": "Google: Tersembunyi, tiada atau terhad?",
+        "url": "https://support.google.com/calendar/answer/37100?hl=en&co=GENIE.Platform%3DiOS"
+      },
+      {
+        "label": "Google: Kenal pasti jenis pautan",
+        "url": "https://support.google.com/calendar/answer/37648?hl=en"
+      }
+    ],
+    "seeAlso": [
+      "who-can-see-what-in-google-calendar",
+      "google-calendars-that-never-reach-your-iphone"
+    ]
   },
 
   'the-secret-address-of-a-google-calendar': {

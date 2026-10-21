@@ -10,40 +10,39 @@ import { LocalisedArticle } from '../types';
  */
 export const ARTICLES_ZH_HANT: Readonly<Record<string, LocalisedArticle>> = {
   'weather-inside-your-calendar': {
-    title: '一個本身就帶著天氣的行事曆',
-    short: '行事曆裡的天氣',
-    description: '為什麼為了安排一天要看兩個 App 是一處設計缺陷，以及一個把預報放進檢視本身、而不是擺在旁邊的行事曆是什麼樣子。',
-    lede: '幾乎所有人都在兩個 App 之間安排自己的一天。行事曆說該去哪裡；天氣 App 說到那裡時天氣如何。把這兩件事在腦中合在一起，是沒人意識到自己在做的那一部分——直到某個週六白白報銷。',
-    commonBelief: '認為行事曆是用來記約會的、天氣 App 是用來看天的，把它們分開只不過是手機本來就這樣。',
-    sections: [
-      {
-        heading: '兩個 App 的代價不是兩次點按',
-        body: [
-          '切換本身不花什麼。真正昂貴的是這兩者從不就「什麼才重要」達成一致。你的行事曆知道週六十一點起有兩個小時被佔；天氣 App 知道十點到十三點下雨。誰都不知道，這兩個事實合起來意味著那個時段該挪。',
-          '整合層就是你。這在你不忙的時候管用，而恰恰是忙起來的時候，保住計畫才最值錢。',
-        ],
-      },
-      {
-        heading: '當預報就在格子裡，會有什麼不同',
-        body: [
-          '把預報放到行程背後，衝突自己就解開了。一個潮濕的上午和一個乾燥的下午，和你正要放進去的會議出現在同一眼裡，判斷不再需要花心思。',
-          '這不是貼在旁邊的小工具。週檢視和月檢視裡的每一天都帶著自己的天氣，每一個行程都帶著它實際佔用的那幾個小時的預報——而不是那份把你真正需要的部分平均掉的當日摘要。',
-        ],
-      },
-    ],
-    claims: {
-      forecastDays: '預報天數，在行事曆中以及每個行程旁',
-      views: '帶天氣的檢視：日、週、月、年和列表',
-      price: '天氣功能的費用',
+  "title": "一個本身就帶著天氣的行事曆",
+  "short": "行事曆裡的天氣",
+  "description": "為什麼為了安排一天要看兩個 App 是一處設計缺陷，以及一個把預報放進檢視本身、而不是擺在旁邊的行事曆是什麼樣子。",
+  "lede": "幾乎所有人都在兩個 App 之間安排自己的一天。行事曆說該去哪裡；天氣 App 說到那裡時天氣如何。把這兩件事在腦中合在一起，是沒人意識到自己在做的那一部分——直到某個週六白白報銷。",
+  "commonBelief": "認為行事曆是用來記約會的、天氣 App 是用來看天的，把它們分開只不過是手機本來就這樣。",
+  "sections": [
+    {
+      "heading": "兩個 App 的代價不是兩次點按",
+      "body": [
+        "切換本身不花什麼。真正昂貴的是這兩者從不就「什麼才重要」達成一致。你的行事曆知道週六十一點起有兩個小時被佔；天氣 App 知道十點到十三點下雨。誰都不知道，這兩個事實合起來意味著那個時段該挪。",
+        "整合層就是你。這在你不忙的時候管用，而恰恰是忙起來的時候，保住計畫才最值錢。"
+      ]
     },
-    practical: [
-      '在放進任何戶外安排之前，先看週檢視裡日期背後的那條帶。',
-      '點一下行程，看它那幾個小時的預報，而不是那一整天的。',
-      '看天氣行事的先對著十四天放，再在提前兩天時微調。',
-      '第七天以後的一律當作趨勢，不要當作計畫。',
-    ],
-    seeAlso: ['icloud-google-and-outlook-in-one-view', 'what-a-subscription-actually-buys'],
+    {
+      "heading": "可用的天氣預報",
+      "body": [
+        "Cloud Calendars 使用所選地點的可用預報。逐小時和逐日資料可能涵蓋不同的時間範圍。",
+        "行事曆中可瀏覽的日期並不決定預報範圍。月檢視不代表整個月或每個行程都有天氣預報。"
+      ]
+    }
+  ],
+  "claims": {
+    "price": "天氣功能的費用"
   },
+  "practical": [
+    "根據預報規劃之前，請檢查地點、日期和有資料的時段。"
+  ],
+  "seeAlso": [
+    "icloud-google-and-outlook-in-one-view",
+    "what-a-subscription-actually-buys"
+  ],
+  "updated": "2026-10-21"
+},
 
   'icloud-google-and-outlook-in-one-view': {
     title: 'iCloud、Google 和 Outlook 在同一個檢視裡',
@@ -116,38 +115,53 @@ export const ARTICLES_ZH_HANT: Readonly<Record<string, LocalisedArticle>> = {
   },
 
   'what-a-subscription-actually-buys': {
-    title: '訂閱到底買到了什麼',
-    short: '訂閱買到了什麼',
-    description: '兩個付費層，它們之間的分界，以及怎麼判斷哪一個——如果有的話——是你的。',
-    lede: '如果沒人把分界說清楚，兩個層也足以讓人糊塗。分界在於 Microsoft。',
-    commonBelief: '認為更高的那一層只是同樣的功能多來一些。',
-    sections: [
-      {
-        heading: '第一層去掉廣告',
-        body: [
-          '它還加上了跨 iCloud 和 Google 行事曆管理行程、Google 的分享權限、自動的 Meet 連結，以及更快的天氣更新。但人們買它是為了廣告。',
-          '按這個價格，一年下來大約就是一杯咖啡，而且它適合幾乎所有願意花點錢的人。',
-        ],
-      },
-      {
-        heading: '第二層是給 Microsoft 的',
-        body: [
-          'Outlook 和 Exchange 同步、Teams 連結、跨帳戶管理（包括工作帳戶）、參與者管理。它貴一個數量級，因為那條連線本身也貴一個數量級。',
-          '如果你的工作行事曆不在 Microsoft 上，這一層裡沒有屬於你的東西。兩個層按年都更便宜；省下的是適度的，不是驚人的。取消之後你回到免費層，行事曆完好無損，因為那些行程從來就不屬於我們。',
-        ],
-      },
-    ],
-    claims: {
-      advancedMonthly: '第一層，每月，美元',
-      advancedYearly: '第一層，每年，美元',
-      premiumMonthly: '第二層，每月，美元',
-      premiumYearly: '第二層，每年，美元',
+  "updated": "2026-10-21",
+  "title": "訂閱到底買到了什麼",
+  "short": "訂閱買到了什麼",
+  "description": "訂閱買到了什麼: Base, Advanced, Premium.",
+  "lede": "本指南由 Cloud Calendars 的開發商 Arte Soft 發布。",
+  "sections": [
+    {
+      "heading": "Base",
+      "body": [
+        "Base 包含 Google Calendar 同步、Google Meet、行事曆檢視、天氣和小工具。免費方案可能顯示廣告。"
+      ]
     },
-    practical: [
-      '買第一層是為了去掉廣告，不是為了解鎖行事曆。',
-      '只有當你的工作住在 Microsoft 上時才買第二層。',
-      '確定了再轉按年付；省的錢是真的，但不多。',
-    ],
-    seeAlso: ['icloud-google-and-outlook-in-one-view'],
-  },
+    {
+      "heading": "Advanced · Premium",
+      "body": [
+        "Advanced 包含 Base 功能並移除廣告。Premium 包含 Advanced，並增加 Microsoft Calendar 和 Microsoft Teams 支援。",
+        "訂閱不會授予編輯他人行事曆的權限，也不能繞過工作帳號的限制。"
+      ]
+    },
+    {
+      "heading": "購買與取消訂閱資訊",
+      "body": [
+        "購買前，請檢查當地價格、計費週期和續訂條款。",
+        "對於透過 Apple 計費的訂閱，請開啟「設定」→你的姓名→「訂閱項目」，檢查狀態和到期日期。取消續訂與刪除 App 或行事曆資料是不同的操作；不要假定付費功能在到期後仍可使用。"
+      ]
+    }
+  ],
+  "claims": {},
+  "practical": [
+    "購買前，請檢查當地價格、計費週期和續訂條款。",
+    "訂閱不會授予編輯他人行事曆的權限，也不能繞過工作帳號的限制。"
+  ],
+  "faq": [
+    {
+      "q": "如何停止續訂？",
+      "a": "對於透過 Apple 計費的訂閱，請開啟「設定」→你的姓名→「訂閱項目」，檢查狀態和到期日期。取消續訂與刪除 App 或行事曆資料是不同的操作；不要假定付費功能在到期後仍可使用。"
+    }
+  ],
+  "sourcesHeading": "購買與取消訂閱資訊",
+  "sources": [
+    {
+      "label": "Apple: 如何停止續訂？",
+      "url": "https://support.apple.com/en-us/118428"
+    }
+  ],
+  "seeAlso": [
+    "icloud-google-and-outlook-in-one-view"
+  ]
+},
 };

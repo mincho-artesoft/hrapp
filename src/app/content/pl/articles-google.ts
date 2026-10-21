@@ -51,52 +51,67 @@ export const GOOGLE_PL: Readonly<Record<string, LocalisedArticle>> = {
   },
 
   'why-a-shared-calendar-does-not-appear': {
-    title: 'Ktoś udostępnił ci kalendarz, a jego nie ma',
-    short: 'Udostępniony kalendarz się nie pojawia',
-    description:
-      'Ktoś udostępnił kalendarz, przyjąłeś zaproszenie i nic się nie zmieniło. Cztery zwyczajne powody, w kolejności, w jakiej warto je sprawdzać.',
-    lede: 'Zaproszenie przyszło, link został kliknięty, a kalendarza nadal nie ma. Prawie zawsze jest to jedna z czterech rzeczy i żadna z nich nie oznacza zepsutego udostępniania.',
-    commonBelief: 'Że przyjęcie udostępnionego kalendarza umieszcza go w telefonie.',
-    sections: [
+    "updated": "2026-10-21",
+    "title": "Ktoś udostępnił ci kalendarz, a jego nie ma",
+    "short": "Udostępniony kalendarz się nie pojawia",
+    "description": "Brakuje udostępnionego kalendarza Google? Sprawdź zaproszone konto, grupę, widoczność i rodzaj linku.",
+    "lede": "Ten poradnik przygotowała Arte Soft, twórca Cloud Calendars. Najpierw odróżnij brak dostępu od kalendarza, który jest tylko ukryty.",
+    "commonBelief": "Że przyjęcie udostępnionego kalendarza umieszcza go w telefonie.",
+    "sections": [
       {
-        heading: 'Przyjęcie dodaje go do konta, nie do urządzenia',
-        body: [
-          'Udostępnienie ląduje na koncie Google, do którego było zaadresowane. Jeśli przyjąłeś je zalogowany na jednym koncie, a telefon nosi inne, kalendarz spokojnie leży dokładnie tam, gdzie nie patrzysz.',
-          'Nawet na właściwym koncie świeżo dodany kalendarz częściej przychodzi na inne urządzenia wyłączony niż włączony. Istnieje, tylko nie jest zaznaczony — a niezaznaczony kalendarz wygląda dokładnie jak brakujący.',
-        ],
+        "heading": "Sprawdź konto i grupę",
+        "body": [
+          "Porównaj adresata zaproszenia z kontem Google w telefonie i przeglądarce. Otwórz link z zaproszenia na właściwym koncie. Google obsługuje udostępnianie osobom i Grupom Google. Przy dostępie przez grupę poproś jej administratora o potwierdzenie członkostwa, a właściciela kalendarza o sprawdzenie uprawnień właściwej grupy. Przekazany e-mail sam w sobie nie nadaje dostępu."
+        ]
       },
       {
-        heading: 'Dwa pozostałe powody',
-        body: [
-          'Udostępnienie na listę mailingową albo adres grupowy rzadko dociera do pojedynczych osób; potrzebny jest adres, który naprawdę jest kontem Google. A kalendarz udostępniony linkiem to subskrypcja: trafia w inne miejsce listy i odświeża się w rytmie wydawcy, a nie natychmiast.',
-          'Na iPhonie kalendarze Google docierają do wbudowanej aplikacji przez własną listę synchronizacji, a kalendarze dodatkowe domyślnie stoją poza nią. Dlatego jedno konto pokazuje kalendarz główny i po cichu gubi te cztery, na których ci zależy.',
-        ],
+        "heading": "Ukryty, nieobecny czy ograniczony?",
+        "body": [
+          "Otwórz menu Kalendarza Google na iPhonie lub iPadzie. Jeśli kalendarz jest na liście bez zaznaczenia, zaznacz go. Jeśli go nie ma, poproś właściciela o sprawdzenie dostępu: prośba nie oznacza zgody. Zasady firmy lub szkoły mogą ograniczać udostępnianie. Porównaj to samo konto w Kalendarzu Google w przeglądarce. Jeśli tam działa, sprawdź połączone konto i wybrane kalendarze w drugiej aplikacji. Dostęp tylko do odczytu nie pozwala edytować."
+        ]
       },
+      {
+        "heading": "Rozpoznaj rodzaj linku",
+        "body": [
+          "Zaproszenie do udostępnionego kalendarza też zawiera link; nie każdy link jest subskrypcją ICS. Zapytaj, czy daje dostęp do kalendarza Google, czy publikuje kanał tylko do odczytu. Według Google nowa subskrypcja wymaga przeglądarki na komputerze; otwarcie kalendarza już udostępnionego e-mailem to inna czynność. Aktualizacja kanału zależy od usługi odbierającej. Nie ma uniwersalnego czasu oczekiwania; pilne zmiany potwierdź z organizatorem."
+        ]
+      }
     ],
-    claims: {
-      refreshHint: 'Godziny między prośbami o odświeżenie subskrybowanego kanału',
-      accounts: 'Rodzaje kont, które jeden widok trzyma razem bez tego wszystkiego',
-    },
-    faq: [
+    "claims": {},
+    "faq": [
       {
-        q: 'Przyjąłem udostępniony kalendarz, ale nie ma go na iPhonie. Dlaczego?',
-        a: 'Udostępnienie ląduje na koncie Google, do którego było adresowane, a świeżo dodany kalendarz przychodzi na inne urządzenia najczęściej wyłączony. Sprawdź najpierw konto, potem szukaj go niezaznaczonego, a nie brakującego.',
+        "q": "Czy Grupa Google może uzyskać dostęp?",
+        "a": "Tak. Sprawdź wybraną grupę, swoje członkostwo i ograniczenia organizacji. Przekazany e-mail grupowy nie potwierdza dostępu."
       },
       {
-        q: 'Czy udostępnienie na adres grupowy działa?',
-        a: 'Rzadko. Lista mailingowa prawie nie dociera do stojących za nią osób. Potrzebny jest adres, który sam jest kontem Google.',
-      },
-      {
-        q: 'Jak długo czeka się na pojawienie się udostępnionego kalendarza?',
-        a: 'Udostępnienie przez uprawnienia pojawia się, gdy lista się odświeży. Kalendarz udostępniony linkiem to subskrypcja i odświeża się w rytmie wydawcy.',
-      },
+        "q": "Czy usunąć konto i połączyć je ponownie?",
+        "a": "Najpierw sprawdź konto, prawa i widoczność oraz porównaj kalendarz w przeglądarce. Ponowne połączenie nie nada brakujących praw."
+      }
     ],
-    practical: [
-      'Najpierw sprawdź, które konto przyjęło udostępnienie.',
-      'Otwórz listę kalendarzy na urządzeniu i szukaj go wyłączonego, a nie nieobecnego.',
-      'Jeśli przyszedł linkiem, spodziewaj się opóźnienia zamiast natychmiastowego pojawienia.',
+    "practical": [
+      "Potwierdź zaproszone konto i członkostwo w grupie.",
+      "Zaznacz kalendarz, jeśli jest na liście, ale ukryty.",
+      "Poproś właściciela o sprawdzenie dostępu przed zmianą połączeń."
     ],
-    seeAlso: ['who-can-see-what-in-google-calendar', 'google-calendars-that-never-reach-your-iphone'],
+    "sourcesHeading": "Źródła i dodatkowe informacje",
+    "sources": [
+      {
+        "label": "Google: Sprawdź konto i grupę",
+        "url": "https://support.google.com/calendar/answer/37082?hl=en&co=GENIE.Platform%3DiOS"
+      },
+      {
+        "label": "Google: Ukryty, nieobecny czy ograniczony?",
+        "url": "https://support.google.com/calendar/answer/37100?hl=en&co=GENIE.Platform%3DiOS"
+      },
+      {
+        "label": "Google: Rozpoznaj rodzaj linku",
+        "url": "https://support.google.com/calendar/answer/37648?hl=en"
+      }
+    ],
+    "seeAlso": [
+      "who-can-see-what-in-google-calendar",
+      "google-calendars-that-never-reach-your-iphone"
+    ]
   },
 
   'the-secret-address-of-a-google-calendar': {

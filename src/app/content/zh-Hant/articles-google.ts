@@ -51,52 +51,67 @@ export const GOOGLE_ZH_HANT: Readonly<Record<string, LocalisedArticle>> = {
   },
 
   'why-a-shared-calendar-does-not-appear': {
-    title: '有人分享了一本日曆給你，可是它不在',
-    short: '分享的日曆沒出現',
-    description:
-      '有人分享了日曆，你接受了，然後什麼都沒變。四個常見原因，按值得排查的順序。',
-    lede: '邀請來了，連結點了，日曆仍然不見。幾乎總是四件事之一，而其中沒有一件是分享壞了。',
-    commonBelief: '以為接受分享的日曆，就等於把它裝進了手機。',
-    sections: [
+    "updated": "2026-10-21",
+    "title": "有人分享了一本日曆給你，可是它不在",
+    "short": "分享的日曆沒出現",
+    "description": "分享的 Google 日曆沒有出現？檢查受邀帳號、群組成員資格、顯示設定和收到的連結類型。",
+    "lede": "本指南由 Cloud Calendars 的開發者 Arte Soft 撰寫。先區分沒有存取權與日曆只是被隱藏這兩種情況。",
+    "commonBelief": "以為接受分享的日曆，就等於把它裝進了手機。",
+    "sections": [
       {
-        heading: '接受是加進某個帳號，不是加進某台裝置',
-        body: [
-          '分享會落在它所寄往的那個 Google 帳號裡。如果你用一個帳號登入時接受，而手機裡是另一個帳號，日曆正安穩地待在你沒看的地方。',
-          '即使在正確的帳號裡，剛加入的日曆在其他裝置上多半是關著抵達的。它存在，只是沒被勾選——而沒勾選的日曆，看起來和不存在一模一樣。',
-        ],
+        "heading": "檢查帳號和群組",
+        "body": [
+          "比較邀請郵件的收件地址與手機、瀏覽器中登入的 Google 帳號，並以受邀帳號開啟邀請連結。Google 支援與個人和 Google 網路論壇群組分享日曆。若透過群組取得存取權，請群組管理員確認你的成員資格，並請日曆擁有者確認已授權正確群組。僅收到轉寄郵件不代表取得權限。"
+        ]
       },
       {
-        heading: '另外兩個原因',
-        body: [
-          '分享給郵件群組或群組位址，很少能抵達具體的人；需要的是真正屬於 Google 帳號的那個位址。而以連結分享的日曆是訂閱：它落在清單的另一處，依發布方的節奏更新，而不是立刻。',
-          '在 iPhone 上，Google 日曆是透過自己的一份同步清單進入系統內建應用程式，而次要日曆預設不在這份清單裡。所以一個帳號顯示了主日曆，卻悄悄漏掉真正要緊的那四本。',
-        ],
+        "heading": "區分隱藏、缺漏和權限限制",
+        "body": [
+          "在 iPhone 或 iPad 的 Google 日曆中開啟選單。如果日曆在清單中但未勾選，請選取它；如果清單中沒有，請擁有者檢查權限。申請存取不等於已獲批准，公司或學校的政策也可能限制分享。以同一帳號查看 Google 日曆網頁版。若網頁正常顯示，再檢查另一個 App 連結的帳號和所選日曆。唯讀權限不允許編輯。"
+        ]
       },
+      {
+        "heading": "確認連結類型",
+        "body": [
+          "分享邀請也包含連結，因此並非每個連結都是 ICS 訂閱。向寄件者確認：它是授予 Google 日曆存取權，還是發布唯讀訂閱來源？Google 的說明指出，新增日曆訂閱需要電腦瀏覽器；開啟已透過郵件分享的日曆則是另一項操作。訂閱來源的更新取決於接收服務的重新整理方式，沒有統一的等待時間。緊急變更應直接向主辦人確認。"
+        ]
+      }
     ],
-    claims: {
-      refreshHint: '訂閱來源請求更新的間隔小時數',
-      accounts: '一個檢視畫面不靠這些也能容納的帳號類型數',
-    },
-    faq: [
+    "claims": {},
+    "faq": [
       {
-        q: '我接受了分享的日曆，但 iPhone 上沒有。為什麼？',
-        a: '分享會落在它所寄往的那個 Google 帳號裡，而剛加入的日曆在其他裝置上多半是關著抵達的。先看是哪個帳號，再按「未勾選」去找，而不是按「不存在」。',
+        "q": "Google 群組可以取得日曆存取權嗎？",
+        "a": "可以。檢查所選群組、自己的成員資格及機構限制。轉寄的群組郵件不能證明你有存取權。"
       },
       {
-        q: '分享給群組位址有用嗎？',
-        a: '很少。郵件群組幾乎到不了它背後的人。需要的是本身就是 Google 帳號的那個位址。',
-      },
-      {
-        q: '分享的日曆要多久才會出現？',
-        a: '用權限分享的，清單一更新就出現。以連結分享的日曆是訂閱，依發布方的節奏更新。',
-      },
+        "q": "應該刪除帳號再重新連結嗎？",
+        "a": "先檢查帳號、權限與顯示設定，並和網頁版比較。重新連結不會授予缺少的權限。"
+      }
     ],
-    practical: [
-      '先看是哪個帳號接受了分享，再看其他。',
-      '在裝置上打開日曆清單，按「已關閉」去找，而不是按「不存在」。',
-      '如果是以連結形式來的，要預期延遲，而不是立刻出現。',
+    "practical": [
+      "確認受邀帳號和群組成員資格。",
+      "勾選清單中被隱藏的日曆。",
+      "更改連結前，請擁有者確認存取權。"
     ],
-    seeAlso: ['who-can-see-what-in-google-calendar', 'google-calendars-that-never-reach-your-iphone'],
+    "sourcesHeading": "來源與延伸閱讀",
+    "sources": [
+      {
+        "label": "Google: 檢查帳號和群組",
+        "url": "https://support.google.com/calendar/answer/37082?hl=en&co=GENIE.Platform%3DiOS"
+      },
+      {
+        "label": "Google: 區分隱藏、缺漏和權限限制",
+        "url": "https://support.google.com/calendar/answer/37100?hl=en&co=GENIE.Platform%3DiOS"
+      },
+      {
+        "label": "Google: 確認連結類型",
+        "url": "https://support.google.com/calendar/answer/37648?hl=en"
+      }
+    ],
+    "seeAlso": [
+      "who-can-see-what-in-google-calendar",
+      "google-calendars-that-never-reach-your-iphone"
+    ]
   },
 
   'the-secret-address-of-a-google-calendar': {

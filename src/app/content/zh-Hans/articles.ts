@@ -10,40 +10,39 @@ import { LocalisedArticle } from '../types';
  */
 export const ARTICLES_ZH_HANS: Readonly<Record<string, LocalisedArticle>> = {
   'weather-inside-your-calendar': {
-    title: '一个本身就带着天气的日历',
-    short: '日历里的天气',
-    description: '为什么为了安排一天要看两个应用是一处设计缺陷，以及一个把预报放进视图本身、而不是摆在旁边的日历是什么样子。',
-    lede: '几乎所有人都在两个应用之间安排自己的一天。日历说该去哪里；天气应用说到那儿时天怎么样。把这两件事在脑子里合在一起，是没人意识到自己在做的那一部分——直到有个周六白白报废。',
-    commonBelief: '认为日历是用来记约会的、天气应用是用来看天的，把它们分开只不过是手机本来就这样。',
-    sections: [
-      {
-        heading: '两个应用的代价不是两次点按',
-        body: [
-          '切换本身不花什么。真正昂贵的是这两者从不就"什么才重要"达成一致。你的日历知道周六十一点起有两个小时被占；天气应用知道十点到十三点下雨。谁都不知道，这两个事实合起来意味着那个时间块该挪。',
-          '整合层就是你。这在你不忙的时候管用，而恰恰是忙起来的时候，保住计划才最值钱。',
-        ],
-      },
-      {
-        heading: '当预报就在格子里，会有什么不同',
-        body: [
-          '把预报放到日程背后，冲突自己就解开了。一个潮湿的上午和一个干燥的下午，和你正要放进去的会议出现在同一眼里，判断不再需要花心思。',
-          '这不是贴在旁边的小组件。周视图和月视图里的每一天都带着自己的天气，每一个日程都带着它实际占用的那几个小时的预报——而不是那份把你真正需要的部分平均掉的当日摘要。',
-        ],
-      },
-    ],
-    claims: {
-      forecastDays: '预报天数，在日历中以及每个日程旁',
-      views: '带天气的视图：日、周、月、年和列表',
-      price: '天气功能的费用',
+  "title": "一个本身就带着天气的日历",
+  "short": "日历里的天气",
+  "description": "为什么为了安排一天要看两个应用是一处设计缺陷，以及一个把预报放进视图本身、而不是摆在旁边的日历是什么样子。",
+  "lede": "几乎所有人都在两个应用之间安排自己的一天。日历说该去哪里；天气应用说到那儿时天怎么样。把这两件事在脑子里合在一起，是没人意识到自己在做的那一部分——直到有个周六白白报废。",
+  "commonBelief": "认为日历是用来记约会的、天气应用是用来看天的，把它们分开只不过是手机本来就这样。",
+  "sections": [
+    {
+      "heading": "两个应用的代价不是两次点按",
+      "body": [
+        "切换本身不花什么。真正昂贵的是这两者从不就\"什么才重要\"达成一致。你的日历知道周六十一点起有两个小时被占；天气应用知道十点到十三点下雨。谁都不知道，这两个事实合起来意味着那个时间块该挪。",
+        "整合层就是你。这在你不忙的时候管用，而恰恰是忙起来的时候，保住计划才最值钱。"
+      ]
     },
-    practical: [
-      '在放进任何户外安排之前，先看周视图里日期背后的那条带。',
-      '点一下日程，看它那几个小时的预报，而不是那一整天的。',
-      '看天吃饭的事先对着十四天放，再在提前两天时微调。',
-      '第七天以后的一律当作趋势，不要当作计划。',
-    ],
-    seeAlso: ['icloud-google-and-outlook-in-one-view', 'what-a-subscription-actually-buys'],
+    {
+      "heading": "可用的天气预报",
+      "body": [
+        "Cloud Calendars 使用所选地点的可用预报。逐小时和逐日数据可能覆盖不同的时间范围。",
+        "日历中可浏览的日期并不决定预报范围。月视图不代表整个月或每个日程都有天气预报。"
+      ]
+    }
+  ],
+  "claims": {
+    "price": "天气功能的费用"
   },
+  "practical": [
+    "根据预报规划之前，请检查地点、日期和有数据的时段。"
+  ],
+  "seeAlso": [
+    "icloud-google-and-outlook-in-one-view",
+    "what-a-subscription-actually-buys"
+  ],
+  "updated": "2026-10-21"
+},
 
   'icloud-google-and-outlook-in-one-view': {
     title: 'iCloud、Google 和 Outlook 在同一个视图里',
@@ -116,38 +115,53 @@ export const ARTICLES_ZH_HANS: Readonly<Record<string, LocalisedArticle>> = {
   },
 
   'what-a-subscription-actually-buys': {
-    title: '订阅到底买到了什么',
-    short: '订阅买到了什么',
-    description: '两个付费档，它们之间的分界，以及怎么判断哪一个——如果有的话——是你的。',
-    lede: '如果没人把分界说清楚，两个档也足以让人糊涂。分界在于 Microsoft。',
-    commonBelief: '认为更高的那一档只是同样的功能多来一些。',
-    sections: [
-      {
-        heading: '第一档去掉广告',
-        body: [
-          '它还加上了跨 iCloud 和 Google 日历管理日程、Google 的分享权限、自动的 Meet 链接，以及更快的天气刷新。但人们买它是为了广告。',
-          '按这个价格，一年下来大约就是一杯咖啡，而且它适合几乎所有愿意花点钱的人。',
-        ],
-      },
-      {
-        heading: '第二档是给 Microsoft 的',
-        body: [
-          'Outlook 和 Exchange 同步、Teams 链接、跨账户管理（包括工作账户）、参与者管理。它贵一个数量级，因为那条连接本身也贵一个数量级。',
-          '如果你的工作日历不在 Microsoft 上，这一档里没有属于你的东西。两个档按年都更便宜；省下的是适度的，不是惊人的。取消之后你回到免费档，日历完好无损，因为那些日程从来就不属于我们。',
-        ],
-      },
-    ],
-    claims: {
-      advancedMonthly: '第一档，每月，美元',
-      advancedYearly: '第一档，每年，美元',
-      premiumMonthly: '第二档，每月，美元',
-      premiumYearly: '第二档，每年，美元',
+  "updated": "2026-10-21",
+  "title": "订阅到底买到了什么",
+  "short": "订阅买到了什么",
+  "description": "订阅买到了什么: Base, Advanced, Premium.",
+  "lede": "本指南由 Cloud Calendars 的开发商 Arte Soft 发布。",
+  "sections": [
+    {
+      "heading": "Base",
+      "body": [
+        "Base 包含 Google Calendar 同步、Google Meet、日历视图、天气和小组件。免费方案可能显示广告。"
+      ]
     },
-    practical: [
-      '买第一档是为了去掉广告，不是为了解锁日历。',
-      '只有当你的工作住在 Microsoft 上时才买第二档。',
-      '确定了再转按年付；省的钱是真的，但不多。',
-    ],
-    seeAlso: ['icloud-google-and-outlook-in-one-view'],
-  },
+    {
+      "heading": "Advanced · Premium",
+      "body": [
+        "Advanced 包含 Base 功能并移除广告。Premium 包含 Advanced，并增加 Microsoft Calendar 和 Microsoft Teams 支持。",
+        "订阅不会授予编辑他人日历的权限，也不能绕过工作账户的限制。"
+      ]
+    },
+    {
+      "heading": "购买与取消订阅信息",
+      "body": [
+        "购买前，请检查当地价格、计费周期和续订条款。",
+        "对于通过 Apple 计费的订阅，请打开“设置”→你的姓名→“订阅”，检查状态和到期日期。取消续订与删除应用或日历数据是不同的操作；不要假定付费功能在到期后仍可使用。"
+      ]
+    }
+  ],
+  "claims": {},
+  "practical": [
+    "购买前，请检查当地价格、计费周期和续订条款。",
+    "订阅不会授予编辑他人日历的权限，也不能绕过工作账户的限制。"
+  ],
+  "faq": [
+    {
+      "q": "如何停止续订？",
+      "a": "对于通过 Apple 计费的订阅，请打开“设置”→你的姓名→“订阅”，检查状态和到期日期。取消续订与删除应用或日历数据是不同的操作；不要假定付费功能在到期后仍可使用。"
+    }
+  ],
+  "sourcesHeading": "购买与取消订阅信息",
+  "sources": [
+    {
+      "label": "Apple: 如何停止续订？",
+      "url": "https://support.apple.com/en-us/118428"
+    }
+  ],
+  "seeAlso": [
+    "icloud-google-and-outlook-in-one-view"
+  ]
+},
 };

@@ -1,0 +1,186 @@
+{
+  "date": "2026-10-21",
+  "freshReadAt": "2026-10-21T15:53:24.039864+00:00",
+  "prepared": 6,
+  "readyForEditorialReview": 6,
+  "applied": 6,
+  "validation": "All six retain current draft names. All character limits pass; no exact keyword or name/subtitle-token duplication. No byte rejection threshold imposed. No native speaker review; proposals are not ranking predictions.",
+  "locales": [
+    {
+      "locale": "de-DE",
+      "name": "Cloud Calendars: Kalender",
+      "subtitle": "Termine, Wetter und Widgets",
+      "counts": {
+        "name": {
+          "characters": 25,
+          "utf8Bytes": 25
+        },
+        "subtitle": {
+          "characters": 27,
+          "utf8Bytes": 27
+        },
+        "keywords": {
+          "characters": 94,
+          "utf8Bytes": 94
+        },
+        "promotionalText": {
+          "characters": 154,
+          "utf8Bytes": 154
+        },
+        "description": {
+          "characters": 1968,
+          "utf8Bytes": 1993
+        }
+      },
+      "ready": true,
+      "confidence": "medium-high"
+    },
+    {
+      "locale": "fr-FR",
+      "name": "Cloud Calendars: Agenda",
+      "subtitle": "Météo, rendez-vous et widgets",
+      "counts": {
+        "name": {
+          "characters": 23,
+          "utf8Bytes": 23
+        },
+        "subtitle": {
+          "characters": 29,
+          "utf8Bytes": 31
+        },
+        "keywords": {
+          "characters": 100,
+          "utf8Bytes": 104
+        },
+        "promotionalText": {
+          "characters": 146,
+          "utf8Bytes": 153
+        },
+        "description": {
+          "characters": 2023,
+          "utf8Bytes": 2085
+        }
+      },
+      "ready": true,
+      "confidence": "medium-high"
+    },
+    {
+      "locale": "es-ES",
+      "name": "Cloud Calendars: Calendario",
+      "subtitle": "Tiempo, agenda y widgets",
+      "counts": {
+        "name": {
+          "characters": 27,
+          "utf8Bytes": 27
+        },
+        "subtitle": {
+          "characters": 24,
+          "utf8Bytes": 24
+        },
+        "keywords": {
+          "characters": 96,
+          "utf8Bytes": 99
+        },
+        "promotionalText": {
+          "characters": 146,
+          "utf8Bytes": 146
+        },
+        "description": {
+          "characters": 1980,
+          "utf8Bytes": 2006
+        }
+      },
+      "ready": true,
+      "confidence": "medium-high"
+    },
+    {
+      "locale": "it",
+      "name": "Cloud Calendars: Calendario",
+      "subtitle": "Meteo, impegni e widget",
+      "counts": {
+        "name": {
+          "characters": 27,
+          "utf8Bytes": 27
+        },
+        "subtitle": {
+          "characters": 23,
+          "utf8Bytes": 23
+        },
+        "keywords": {
+          "characters": 94,
+          "utf8Bytes": 94
+        },
+        "promotionalText": {
+          "characters": 131,
+          "utf8Bytes": 133
+        },
+        "description": {
+          "characters": 1880,
+          "utf8Bytes": 1897
+        }
+      },
+      "ready": true,
+      "confidence": "medium-high"
+    },
+    {
+      "locale": "ja",
+      "name": "Cloud Calendars: カレンダー",
+      "subtitle": "天気・予定管理・ホーム画面ウィジェット",
+      "counts": {
+        "name": {
+          "characters": 22,
+          "utf8Bytes": 32
+        },
+        "subtitle": {
+          "characters": 19,
+          "utf8Bytes": 57
+        },
+        "keywords": {
+          "characters": 59,
+          "utf8Bytes": 151
+        },
+        "promotionalText": {
+          "characters": 79,
+          "utf8Bytes": 237
+        },
+        "description": {
+          "characters": 1010,
+          "utf8Bytes": 2320
+        }
+      },
+      "ready": true,
+      "confidence": "medium"
+    },
+    {
+      "locale": "ko",
+      "name": "Cloud Calendars: 캘린더",
+      "subtitle": "날씨와 일정 관리, 홈 화면 위젯",
+      "counts": {
+        "name": {
+          "characters": 20,
+          "utf8Bytes": 26
+        },
+        "subtitle": {
+          "characters": 18,
+          "utf8Bytes": 42
+        },
+        "keywords": {
+          "characters": 58,
+          "utf8Bytes": 144
+        },
+        "promotionalText": {
+          "characters": 78,
+          "utf8Bytes": 190
+        },
+        "description": {
+          "characters": 1101,
+          "utf8Bytes": 2119
+        }
+      },
+      "ready": true,
+      "confidence": "medium"
+    }
+  ],
+  "readbackEvidence": "applied.json",
+  "submission": "not_performed"
+}

@@ -10,42 +10,39 @@ import { LocalisedArticle } from '../types';
  */
 export const ARTICLES_RO: Readonly<Record<string, LocalisedArticle>> = {
   'weather-inside-your-calendar': {
-    title: 'Un calendar care are deja vremea în el',
-    short: 'Vremea în calendar',
-    description:
-      'De ce a consulta două aplicații ca să-ți organizezi ziua este o greșeală de proiectare și cum arată un calendar în care prognoza face parte din vedere în loc să stea alături.',
-    lede: 'Aproape toată lumea își organizează ziua între două aplicații. Calendarul spune unde trebuie să fii; cea de vreme spune ce vreme va fi când ajungi. A ține cele două lucruri împreună în cap este partea pe care nimeni nu observă că o face — până când se pierde o sâmbătă.',
-    commonBelief:
-      'Că un calendar e pentru întâlniri și o aplicație de vreme e pentru vreme, și că a le ține separat este pur și simplu felul în care funcționează telefoanele.',
-    sections: [
-      {
-        heading: 'Prețul a două aplicații nu sunt două atingeri',
-        body: [
-          'Comutarea nu costă nimic. Scump este că cele două nu se pun niciodată de acord asupra a ce contează. Calendarul știe că sâmbătă de la unsprezece sunt două ore ocupate; aplicația de vreme știe că plouă de la zece la unu. Niciuna nu știe că aceste două fapte împreună înseamnă că blocul trebuie mutat.',
-          'Stratul de integrare sunteți dumneavoastră. Merge până când aveți mult de lucru, adică exact atunci când protejarea planurilor valorează cel mai mult.',
-        ],
-      },
-      {
-        heading: 'Ce se schimbă când prognoza este în grilă',
-        body: [
-          'Puneți prognoza în spatele evenimentelor și conflictul se rezolvă singur. O dimineață umedă și o după-amiază uscată se văd în aceeași privire cu ședința pe care urma să o puneți, iar decizia încetează să coste gândire.',
-          'Nu este un widget lipit alături. Fiecare zi din vederile Săptămână și Lună poartă propriile condiții, iar fiecare eveniment poartă prognoza orelor pe care le ocupă cu adevărat — nu rezumatul zilei, care face media tocmai părții de care aveați nevoie.',
-        ],
-      },
-    ],
-    claims: {
-      forecastDays: 'Zile de prognoză, în calendar și lângă fiecare eveniment',
-      views: 'Vederi care poartă vremea: Zi, Săptămână, Lună, An și Listă',
-      price: 'Cât costă funcțiile de vreme',
+  "title": "Un calendar care are deja vremea în el",
+  "short": "Vremea în calendar",
+  "description": "De ce a consulta două aplicații ca să-ți organizezi ziua este o greșeală de proiectare și cum arată un calendar în care prognoza face parte din vedere în loc să stea alături.",
+  "lede": "Aproape toată lumea își organizează ziua între două aplicații. Calendarul spune unde trebuie să fii; cea de vreme spune ce vreme va fi când ajungi. A ține cele două lucruri împreună în cap este partea pe care nimeni nu observă că o face — până când se pierde o sâmbătă.",
+  "commonBelief": "Că un calendar e pentru întâlniri și o aplicație de vreme e pentru vreme, și că a le ține separat este pur și simplu felul în care funcționează telefoanele.",
+  "sections": [
+    {
+      "heading": "Prețul a două aplicații nu sunt două atingeri",
+      "body": [
+        "Comutarea nu costă nimic. Scump este că cele două nu se pun niciodată de acord asupra a ce contează. Calendarul știe că sâmbătă de la unsprezece sunt două ore ocupate; aplicația de vreme știe că plouă de la zece la unu. Niciuna nu știe că aceste două fapte împreună înseamnă că blocul trebuie mutat.",
+        "Stratul de integrare sunteți dumneavoastră. Merge până când aveți mult de lucru, adică exact atunci când protejarea planurilor valorează cel mai mult."
+      ]
     },
-    practical: [
-      'Priviți banda din spatele zilelor în vederea Săptămână înainte de a pune ceva în aer liber.',
-      'Atingeți un eveniment ca să vedeți prognoza orelor lui, nu a zilei lui.',
-      'Puneți lucrurile care depind de vreme întâi pe cele paisprezece zile și rafinați cu două zile înainte.',
-      'Tratați tot ce trece de ziua a șaptea ca pe o formă, nu ca pe un plan.',
-    ],
-    seeAlso: ['icloud-google-and-outlook-in-one-view', 'what-a-subscription-actually-buys'],
+    {
+      "heading": "Prognoza disponibilă",
+      "body": [
+        "Cloud Calendars folosește prognoza disponibilă pentru locul selectat. Datele orare și zilnice pot acoperi perioade diferite.",
+        "Datele pe care le puteți vedea în calendar nu determină intervalul prognozei. Vizualizarea lunară nu înseamnă prognoză pentru întreaga lună sau pentru fiecare eveniment."
+      ]
+    }
+  ],
+  "claims": {
+    "price": "Cât costă funcțiile de vreme"
   },
+  "practical": [
+    "Verificați locul, data și orele disponibile înainte de a planifica folosind prognoza."
+  ],
+  "seeAlso": [
+    "icloud-google-and-outlook-in-one-view",
+    "what-a-subscription-actually-buys"
+  ],
+  "updated": "2026-10-21"
+},
 
   'icloud-google-and-outlook-in-one-view': {
     title: 'iCloud, Google și Outlook într-o singură vedere',
@@ -122,39 +119,53 @@ export const ARTICLES_RO: Readonly<Record<string, LocalisedArticle>> = {
   },
 
   'what-a-subscription-actually-buys': {
-    title: 'Ce cumpără de fapt un abonament',
-    short: 'Ce cumpără un abonament',
-    description:
-      'Două niveluri plătite, ce le desparte și cum știți care — dacă vreunul — este al dumneavoastră.',
-    lede: 'Două niveluri sunt de ajuns pentru confuzie dacă nimeni nu spune limpede ce le desparte. Ce le desparte este Microsoft.',
-    commonBelief: 'Că nivelul superior sunt aceleași funcții, doar mai multe.',
-    sections: [
-      {
-        heading: 'Primul nivel scoate reclamele',
-        body: [
-          'Adaugă și gestionarea evenimentelor între calendarele iCloud și Google, drepturi de partajare Google, legături Meet automate și reîmprospătare mai rapidă a vremii. Dar se cumpără pentru reclame.',
-          'La prețul acesta este cam o cafea pe an și este nivelul care i se potrivește aproape oricui vrea să plătească ceva.',
-        ],
-      },
-      {
-        heading: 'Al doilea nivel este pentru Microsoft',
-        body: [
-          'Sincronizare Outlook și Exchange, legături Teams, gestionare între conturi inclusiv serviciul, gestionarea participanților. Costă un ordin de mărime mai mult pentru că și conexiunea costă.',
-          'Dacă agenda dumneavoastră de serviciu nu stă la Microsoft, aici nu este nimic pentru dumneavoastră. Ambele niveluri sunt mai ieftine pe an; economia este moderată, nu spectaculoasă. După anulare rămâneți pe nivelul gratuit, iar calendarele sunt neatinse, pentru că evenimentele nu au fost niciodată ale noastre.',
-        ],
-      },
-    ],
-    claims: {
-      advancedMonthly: 'Primul nivel, pe lună, în dolari',
-      advancedYearly: 'Primul nivel, pe an, în dolari',
-      premiumMonthly: 'Al doilea nivel, pe lună, în dolari',
-      premiumYearly: 'Al doilea nivel, pe an, în dolari',
+  "updated": "2026-10-21",
+  "title": "Ce cumpără de fapt un abonament",
+  "short": "Ce cumpără un abonament",
+  "description": "Ce cumpără un abonament: Base, Advanced, Premium.",
+  "lede": "Acest ghid este publicat de Arte Soft, dezvoltatorul Cloud Calendars.",
+  "sections": [
+    {
+      "heading": "Base",
+      "body": [
+        "Base include sincronizare Google Calendar, Google Meet, vizualizări de calendar, vreme și widgeturi. Planul gratuit poate afișa reclame."
+      ]
     },
-    practical: [
-      'Cumpărați primul nivel ca să scoateți reclamele, nu ca să deblocați calendarul.',
-      'Cumpărați-l pe al doilea doar dacă munca dumneavoastră trăiește la Microsoft.',
-      'Treceți la anual când sunteți sigur; economia este reală, dar mică.',
-    ],
-    seeAlso: ['icloud-google-and-outlook-in-one-view'],
-  },
+    {
+      "heading": "Advanced · Premium",
+      "body": [
+        "Advanced include Base și elimină reclamele. Premium include Advanced și adaugă Microsoft Calendar și Microsoft Teams.",
+        "Un abonament nu oferă drepturi de editare pentru calendarele altora și nu ocolește restricțiile unui cont de serviciu."
+      ]
+    },
+    {
+      "heading": "Informații despre cumpărare și anulare",
+      "body": [
+        "Înainte de cumpărare, verificați prețul local, perioada de facturare și condițiile de reînnoire.",
+        "Pentru un abonament facturat de Apple, deschideți Configurări → numele dvs. → Abonamente. Verificați starea și data expirării. Oprirea reînnoirii este separată de ștergerea aplicației sau a datelor din calendar; nu presupuneți că funcțiile plătite rămân disponibile după expirare."
+      ]
+    }
+  ],
+  "claims": {},
+  "practical": [
+    "Înainte de cumpărare, verificați prețul local, perioada de facturare și condițiile de reînnoire.",
+    "Un abonament nu oferă drepturi de editare pentru calendarele altora și nu ocolește restricțiile unui cont de serviciu."
+  ],
+  "faq": [
+    {
+      "q": "Cum opresc reînnoirea?",
+      "a": "Pentru un abonament facturat de Apple, deschideți Configurări → numele dvs. → Abonamente. Verificați starea și data expirării. Oprirea reînnoirii este separată de ștergerea aplicației sau a datelor din calendar; nu presupuneți că funcțiile plătite rămân disponibile după expirare."
+    }
+  ],
+  "sourcesHeading": "Informații despre cumpărare și anulare",
+  "sources": [
+    {
+      "label": "Apple: Cum opresc reînnoirea?",
+      "url": "https://support.apple.com/en-us/118428"
+    }
+  ],
+  "seeAlso": [
+    "icloud-google-and-outlook-in-one-view"
+  ]
+},
 };

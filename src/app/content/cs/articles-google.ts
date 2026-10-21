@@ -51,52 +51,67 @@ export const GOOGLE_CS: Readonly<Record<string, LocalisedArticle>> = {
   },
 
   'why-a-shared-calendar-does-not-appear': {
-    title: 'Někdo vám nasdílel kalendář a on tam není',
-    short: 'Sdílený kalendář se neobjeví',
-    description:
-      'Někdo sdílel kalendář, přijali jste ho a nic se nezměnilo. Čtyři obvyklé důvody v pořadí, v jakém se vyplatí je zkoumat.',
-    lede: 'Pozvánka přišla, na odkaz se kleplo a kalendář pořád chybí. Téměř vždy jde o jednu ze čtyř věcí a žádná z nich není rozbité sdílení.',
-    commonBelief: 'Že přijetí sdíleného kalendáře ho dostane do telefonu.',
-    sections: [
+    "updated": "2026-10-21",
+    "title": "Někdo vám nasdílel kalendář a on tam není",
+    "short": "Sdílený kalendář se neobjeví",
+    "description": "Chybí sdílený kalendář Google? Ověřte pozvaný účet, skupinu, viditelnost a typ přijatého odkazu.",
+    "lede": "Tento průvodce připravila Arte Soft, vývojář Cloud Calendars. Nejdříve odlište chybějící přístup od kalendáře, který je pouze skrytý.",
+    "commonBelief": "Že přijetí sdíleného kalendáře ho dostane do telefonu.",
+    "sections": [
       {
-        heading: 'Přijetí ho přidá k účtu, ne k zařízení',
-        body: [
-          'Sdílení přistane v tom účtu Google, kterému bylo adresováno. Pokud jste přijali přihlášení jedním účtem a telefon nese jiný, kalendář v klidu leží přesně tam, kam se nedíváte.',
-          'I ve správném účtu dorazí čerstvě přidaný kalendář na další zařízení častěji vypnutý než zapnutý. Existuje, jen není zaškrtnutý — a nezaškrtnutý kalendář vypadá přesně jako chybějící.',
-        ],
+        "heading": "Ověřte účet a skupinu",
+        "body": [
+          "Porovnejte adresáta pozvánky s účtem Google v telefonu a prohlížeči. Otevřete odkaz z pozvánky pod správným účtem. Google podporuje sdílení s lidmi i Skupinami Google. Při přístupu přes skupinu požádejte jejího správce o ověření členství a vlastníka kalendáře o kontrolu oprávnění správné skupiny. Přeposlaný e-mail sám o sobě přístup neuděluje."
+        ]
       },
       {
-        heading: 'Zbylé dva důvody',
-        body: [
-          'Sdílení na e-mailovou konferenci nebo skupinovou adresu se k jednotlivcům dostane zřídka; potřebujete adresu, která je skutečně účtem Google. A kalendář sdílený odkazem je odběr: skončí v jiné části seznamu a obnovuje se v rytmu vydavatele, ne okamžitě.',
-          'Na iPhonu se kalendáře Google dostávají do vestavěné aplikace přes vlastní seznam synchronizace a druhotné kalendáře jsou ve výchozím stavu mimo něj. Proto jeden účet ukáže hlavní kalendář a potichu zahodí ty čtyři, na kterých záleží.',
-        ],
+        "heading": "Skrytý, chybějící, nebo omezený?",
+        "body": [
+          "V Kalendáři Google na iPhonu či iPadu otevřete nabídku. Pokud je kalendář v seznamu nezaškrtnutý, vyberte jej. Jestliže chybí, požádejte vlastníka o kontrolu přístupu: žádost není schválení. Pravidla zaměstnavatele či školy mohou sdílení omezit. Porovnejte stejný účet ve webovém Kalendáři Google. Pokud tam funguje, zkontrolujte připojený účet a výběr kalendářů v druhé aplikaci. Přístup jen pro čtení nedovoluje úpravy."
+        ]
       },
+      {
+        "heading": "Rozpoznejte typ odkazu",
+        "body": [
+          "I pozvánka ke sdílení obsahuje odkaz; ne každý odkaz je odběr ICS. Zeptejte se, zda uděluje přístup ke kalendáři Google, nebo zveřejňuje kanál jen pro čtení. Podle Googlu vyžaduje nový odběr kalendáře prohlížeč na počítači; otevření kalendáře již sdíleného e-mailem je jiná operace. Aktualizace kanálu závisí na přijímající službě. Univerzální čekací doba neexistuje; naléhavé změny ověřte u organizátora."
+        ]
+      }
     ],
-    claims: {
-      refreshHint: 'Hodiny mezi žádostmi odebíraného kanálu o obnovení',
-      accounts: 'Typy účtů, které jeden pohled drží pohromadě i bez tohohle všeho',
-    },
-    faq: [
+    "claims": {},
+    "faq": [
       {
-        q: 'Přijal jsem sdílený kalendář, ale na iPhonu není. Proč?',
-        a: 'Sdílení přistane v tom účtu Google, kterému bylo adresováno, a čerstvě přidaný kalendář dorazí na ostatní zařízení většinou vypnutý. Zkontrolujte nejdřív účet, pak ho hledejte nezaškrtnutý, ne chybějící.',
+        "q": "Může Skupina Google získat přístup?",
+        "a": "Ano. Ověřte vybranou skupinu, své členství a pravidla organizace. Přeposlaný skupinový e-mail není dokladem přístupu."
       },
       {
-        q: 'Funguje sdílení na skupinovou adresu?',
-        a: 'Zřídka. E-mailová konference se k lidem za ní skoro nedostane. Je potřeba adresa, která sama je účtem Google.',
-      },
-      {
-        q: 'Jak dlouho trvá, než se sdílený kalendář objeví?',
-        a: 'Sdílení přes oprávnění se objeví, jakmile se seznam obnoví. Kalendář sdílený odkazem je odběr a obnovuje se v rytmu vydavatele.',
-      },
+        "q": "Mám účet odstranit a znovu připojit?",
+        "a": "Nejdříve ověřte účet, práva a viditelnost a porovnejte webový kalendář. Opětovné připojení chybějící práva neudělí."
+      }
     ],
-    practical: [
-      'Nejdřív zjistěte, který účet sdílení přijal, teprve pak zkoumejte zbytek.',
-      'Otevřete seznam kalendářů v zařízení a hledejte ho vypnutý, ne chybějící.',
-      'Pokud přišel odkazem, počítejte se zpožděním místo okamžitého objevení.',
+    "practical": [
+      "Potvrďte pozvaný účet a členství ve skupině.",
+      "Vyberte kalendář, pokud je v seznamu skrytý.",
+      "Před změnou připojení požádejte vlastníka o kontrolu přístupu."
     ],
-    seeAlso: ['who-can-see-what-in-google-calendar', 'google-calendars-that-never-reach-your-iphone'],
+    "sourcesHeading": "Zdroje a další informace",
+    "sources": [
+      {
+        "label": "Google: Ověřte účet a skupinu",
+        "url": "https://support.google.com/calendar/answer/37082?hl=en&co=GENIE.Platform%3DiOS"
+      },
+      {
+        "label": "Google: Skrytý, chybějící, nebo omezený?",
+        "url": "https://support.google.com/calendar/answer/37100?hl=en&co=GENIE.Platform%3DiOS"
+      },
+      {
+        "label": "Google: Rozpoznejte typ odkazu",
+        "url": "https://support.google.com/calendar/answer/37648?hl=en"
+      }
+    ],
+    "seeAlso": [
+      "who-can-see-what-in-google-calendar",
+      "google-calendars-that-never-reach-your-iphone"
+    ]
   },
 
   'the-secret-address-of-a-google-calendar': {

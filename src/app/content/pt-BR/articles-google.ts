@@ -51,52 +51,67 @@ export const GOOGLE_PT_BR: Readonly<Record<string, LocalisedArticle>> = {
   },
 
   'why-a-shared-calendar-does-not-appear': {
-    title: 'Compartilharam uma agenda com você e ela não está lá',
-    short: 'Agenda compartilhada não aparece',
-    description:
-      'Alguém compartilhou uma agenda, você aceitou e nada mudou. As quatro razões comuns, na ordem em que vale checar.',
-    lede: 'O convite chegou, o link foi tocado e a agenda continua sumida. Quase sempre é uma de quatro coisas, e nenhuma delas é o compartilhamento estar quebrado.',
-    commonBelief: 'Que aceitar uma agenda compartilhada a coloca no seu telefone.',
-    sections: [
+    "updated": "2026-10-21",
+    "title": "Compartilharam uma agenda com você e ela não está lá",
+    "short": "Agenda compartilhada não aparece",
+    "description": "Agenda compartilhada do Google não aparece? Confira a conta convidada, o grupo, a visibilidade e o tipo de link.",
+    "lede": "Este guia é da Arte Soft, desenvolvedora do Cloud Calendars. Primeiro diferencie falta de acesso de uma agenda apenas oculta.",
+    "commonBelief": "Que aceitar uma agenda compartilhada a coloca no seu telefone.",
+    "sections": [
       {
-        heading: 'Aceitar adiciona a uma conta, não a um aparelho',
-        body: [
-          'O compartilhamento cai na conta do Google para a qual foi endereçado. Se você aceitou logado em uma conta e seu telefone carrega outra, a agenda está guardada exatamente onde você não está olhando.',
-          'Mesmo na conta certa, uma agenda recém-adicionada chega desligada nos outros aparelhos mais vezes do que ligada. Ela existe, só não está marcada — e uma agenda desmarcada é idêntica a uma agenda ausente.',
-        ],
+        "heading": "Confira a conta e o grupo",
+        "body": [
+          "Compare o destinatário do convite com a conta Google no telefone e no navegador. Abra o link com a conta correta. O Google permite compartilhar com pessoas e Grupos do Google. Se o acesso vier de um grupo, peça ao administrador que confirme sua participação e ao proprietário da agenda que confira o grupo autorizado. Um e-mail encaminhado não concede permissão por si só."
+        ]
       },
       {
-        heading: 'As outras duas razões',
-        body: [
-          'Compartilhar com uma lista de e-mails ou endereço de grupo raramente chega às pessoas; é preciso o endereço que de fato é uma conta do Google. E uma agenda compartilhada como link é uma assinatura: cai em outra parte da lista e atualiza no ritmo de quem publica, não na hora.',
-          'No iPhone, as agendas do Google chegam ao app nativo por uma lista de sincronização própria, e as agendas secundárias ficam fora dela por padrão. Por isso uma conta mostra a agenda principal e descarta em silêncio as quatro que importam.',
-        ],
+        "heading": "Oculta, ausente ou restrita?",
+        "body": [
+          "Abra o menu do Google Agenda no iPhone ou iPad. Se a agenda estiver na lista, mas desmarcada, selecione-a. Se não estiver, peça ao proprietário para verificar o acesso: solicitar não é receber autorização. Regras do trabalho ou da escola podem limitar o compartilhamento. Compare a mesma conta no Google Agenda na web. Se funcionar lá, confira a conta conectada e as agendas selecionadas no outro app. Acesso somente para leitura não permite editar."
+        ]
       },
+      {
+        "heading": "Identifique o link",
+        "body": [
+          "Um convite de compartilhamento também contém um link; nem todo link é uma assinatura ICS. Pergunte se ele concede acesso a uma agenda Google ou publica um feed somente para leitura. Segundo o Google, uma nova assinatura exige um navegador de computador; abrir uma agenda já compartilhada por e-mail é outra ação. A atualização do feed depende do serviço que o recebe. Não há prazo universal; confirme mudanças urgentes com o organizador."
+        ]
+      }
     ],
-    claims: {
-      refreshHint: 'Horas entre os pedidos de atualização de um feed assinado',
-      accounts: 'Tipos de conta que uma única visão reúne sem nada disso',
-    },
-    faq: [
+    "claims": {},
+    "faq": [
       {
-        q: 'Aceitei uma agenda compartilhada e ela não está no meu iPhone. Por quê?',
-        a: 'O compartilhamento cai na conta do Google para a qual foi endereçado, e uma agenda recém-adicionada costuma chegar desligada nos outros aparelhos. Veja primeiro a conta, depois procure-a desmarcada, não ausente.',
+        "q": "Um Grupo do Google pode receber acesso?",
+        "a": "Sim. Confira o grupo escolhido, sua participação e as restrições da organização. Um e-mail do grupo encaminhado não comprova acesso."
       },
       {
-        q: 'Compartilhar com um endereço de grupo funciona?',
-        a: 'Raramente. Uma lista de e-mails quase não alcança as pessoas por trás dela. É preciso o endereço que é em si uma conta do Google.',
-      },
-      {
-        q: 'Quanto tempo leva para uma agenda compartilhada aparecer?',
-        a: 'O compartilhamento por permissão aparece assim que a lista atualiza. Uma agenda compartilhada como link é uma assinatura e segue o ritmo de quem publica.',
-      },
+        "q": "Devo excluir e reconectar a conta?",
+        "a": "Primeiro confira identidade, permissões e visibilidade e compare a agenda na web. Reconectar não concede permissões ausentes."
+      }
     ],
-    practical: [
-      'Veja qual conta aceitou o compartilhamento antes de qualquer outra coisa.',
-      'Abra a lista de agendas no aparelho e procure-a desligada, não ausente.',
-      'Se veio como link, espere atraso em vez de aparição imediata.',
+    "practical": [
+      "Confirme a conta convidada e a participação no grupo.",
+      "Selecione a agenda se estiver na lista, mas oculta.",
+      "Peça a verificação do acesso antes de alterar conexões."
     ],
-    seeAlso: ['who-can-see-what-in-google-calendar', 'google-calendars-that-never-reach-your-iphone'],
+    "sourcesHeading": "Fontes e informações adicionais",
+    "sources": [
+      {
+        "label": "Google: Confira a conta e o grupo",
+        "url": "https://support.google.com/calendar/answer/37082?hl=en&co=GENIE.Platform%3DiOS"
+      },
+      {
+        "label": "Google: Oculta, ausente ou restrita?",
+        "url": "https://support.google.com/calendar/answer/37100?hl=en&co=GENIE.Platform%3DiOS"
+      },
+      {
+        "label": "Google: Identifique o link",
+        "url": "https://support.google.com/calendar/answer/37648?hl=en"
+      }
+    ],
+    "seeAlso": [
+      "who-can-see-what-in-google-calendar",
+      "google-calendars-that-never-reach-your-iphone"
+    ]
   },
 
   'the-secret-address-of-a-google-calendar': {

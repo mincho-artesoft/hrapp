@@ -51,52 +51,67 @@ export const GOOGLE_NL_NL: Readonly<Record<string, LocalisedArticle>> = {
   },
 
   'why-a-shared-calendar-does-not-appear': {
-    title: 'Een agenda is met je gedeeld en hij staat er niet',
-    short: 'Gedeelde agenda verschijnt niet',
-    description:
-      'Iemand deelde een agenda, je accepteerde, en er veranderde niets. De vier gewone oorzaken, in de volgorde die loont.',
-    lede: 'De uitnodiging kwam, de link is aangetikt en de agenda ontbreekt nog steeds. Bijna altijd is het een van vier dingen, en geen daarvan is kapot delen.',
-    commonBelief: 'Dat accepteren een gedeelde agenda op je telefoon zet.',
-    sections: [
+    "updated": "2026-10-21",
+    "title": "Een agenda is met je gedeeld en hij staat er niet",
+    "short": "Gedeelde agenda verschijnt niet",
+    "description": "Ontbreekt een gedeelde Google-agenda? Controleer het uitgenodigde account, de groep, zichtbaarheid en het soort link.",
+    "lede": "Deze gids is van Arte Soft, de ontwikkelaar van Cloud Calendars. Maak eerst onderscheid tussen ontbrekende toegang en een verborgen agenda.",
+    "commonBelief": "Dat accepteren een gedeelde agenda op je telefoon zet.",
+    "sections": [
       {
-        heading: 'Accepteren voegt hem toe aan een account, niet aan een apparaat',
-        body: [
-          'Een gedeelde agenda landt in het Google-account waaraan hij gericht was. Accepteerde je met het ene account en draagt je telefoon het andere, dan staat de agenda veilig precies daar waar je niet kijkt.',
-          'Zelfs in het juiste account komt een nieuw toegevoegde agenda op andere apparaten vaker uitgeschakeld dan ingeschakeld binnen. Hij bestaat, hij is alleen niet aangevinkt — en een niet-aangevinkte agenda ziet er precies zo uit als een ontbrekende.',
-        ],
+        "heading": "Controleer account en groep",
+        "body": [
+          "Vergelijk de ontvanger van de uitnodiging met het Google-account op je telefoon en in je browser. Open de uitnodigingslink met het juiste account. Google ondersteunt delen met personen en Google-groepen. Laat bij groepstoegang je lidmaatschap bevestigen door de groepsbeheerder en de juiste groepsmachtiging door de agenda-eigenaar. Een doorgestuurde e-mail verleent op zichzelf geen toegang."
+        ]
       },
       {
-        heading: 'De andere twee oorzaken',
-        body: [
-          'Delen met een mailinglijst of groepsadres bereikt zelden personen; nodig is het adres dat werkelijk een Google-account is. En een agenda die als link wordt gedeeld is een abonnement: hij belandt elders in de lijst en ververst op het ritme van de uitgever in plaats van meteen.',
-          'Op de iPhone bereiken Google-agenda’s de ingebouwde app via een eigen synchronisatielijst, en secundaire agenda’s staan daar standaard buiten. Daarom toont één account zijn hoofdagenda en laat het de vier die ertoe doen stilletjes vallen.',
-        ],
+        "heading": "Verborgen, afwezig of beperkt?",
+        "body": [
+          "Open het menu van Google Agenda op iPhone of iPad. Staat de agenda er zonder vinkje, selecteer hem dan. Ontbreekt hij, laat de eigenaar de toegang controleren: een aanvraag is nog geen toestemming. Werk- of schoolbeleid kan delen beperken. Vergelijk hetzelfde account in Google Agenda op het web. Werkt het daar, controleer dan het verbonden account en de agendaselectie in de andere app. Alleen-lezen geeft geen bewerkingsrecht."
+        ]
       },
+      {
+        "heading": "Bepaal het soort link",
+        "body": [
+          "Een deeluitnodiging bevat ook een link; niet elke link is een ICS-abonnement. Vraag of hij toegang verleent tot een Google-agenda of een alleen-lezenfeed publiceert. Google vereist een computerbrowser voor een nieuw agenda-abonnement; een al per e-mail gedeelde agenda openen is iets anders. Feedupdates hangen af van de ontvangende dienst. Er is geen vaste wachttijd voor alles; bevestig urgente wijzigingen met de organisator."
+        ]
+      }
     ],
-    claims: {
-      refreshHint: 'Uren tussen verversingsverzoeken van een geabonneerde feed',
-      accounts: 'Soorten accounts die één overzicht bijeenhoudt, zonder dit alles',
-    },
-    faq: [
+    "claims": {},
+    "faq": [
       {
-        q: 'Ik heb een gedeelde agenda geaccepteerd maar hij staat niet op mijn iPhone. Waarom?',
-        a: 'De deling landt in het Google-account waaraan hij was gericht, en een net toegevoegde agenda komt op andere apparaten meestal uitgeschakeld binnen. Kijk eerst naar het account en zoek hem daarna niet-aangevinkt in plaats van afwezig.',
+        "q": "Kan een Google-groep toegang krijgen?",
+        "a": "Ja. Controleer de gekozen groep, je lidmaatschap en organisatieregels. Een doorgestuurde groepsmail bewijst geen toegang."
       },
       {
-        q: 'Werkt delen met een groepsadres?',
-        a: 'Zelden. Een mailinglijst bereikt de mensen erachter nauwelijks. Nodig is het adres dat zelf een Google-account is.',
-      },
-      {
-        q: 'Hoe lang duurt het voordat een gedeelde agenda verschijnt?',
-        a: 'Een deling via rechten verschijnt zodra de lijst ververst. Een als link gedeelde agenda is een abonnement en volgt het ritme van de uitgever.',
-      },
+        "q": "Moet ik het account verwijderen en opnieuw verbinden?",
+        "a": "Controleer eerst identiteit, rechten en zichtbaarheid en vergelijk de webagenda. Opnieuw verbinden verleent geen ontbrekende rechten."
+      }
     ],
-    practical: [
-      'Kijk eerst welk account de deling heeft geaccepteerd, daarna pas naar de rest.',
-      'Open de agendalijst op het apparaat en zoek hem uitgeschakeld in plaats van afwezig.',
-      'Kwam hij als link, reken dan op vertraging in plaats van directe verschijning.',
+    "practical": [
+      "Bevestig het uitgenodigde account en groepslidmaatschap.",
+      "Vink een aanwezige maar verborgen agenda aan.",
+      "Laat toegang controleren voordat je verbindingen wijzigt."
     ],
-    seeAlso: ['who-can-see-what-in-google-calendar', 'google-calendars-that-never-reach-your-iphone'],
+    "sourcesHeading": "Bronnen en meer informatie",
+    "sources": [
+      {
+        "label": "Google: Controleer account en groep",
+        "url": "https://support.google.com/calendar/answer/37082?hl=en&co=GENIE.Platform%3DiOS"
+      },
+      {
+        "label": "Google: Verborgen, afwezig of beperkt?",
+        "url": "https://support.google.com/calendar/answer/37100?hl=en&co=GENIE.Platform%3DiOS"
+      },
+      {
+        "label": "Google: Bepaal het soort link",
+        "url": "https://support.google.com/calendar/answer/37648?hl=en"
+      }
+    ],
+    "seeAlso": [
+      "who-can-see-what-in-google-calendar",
+      "google-calendars-that-never-reach-your-iphone"
+    ]
   },
 
   'the-secret-address-of-a-google-calendar': {
