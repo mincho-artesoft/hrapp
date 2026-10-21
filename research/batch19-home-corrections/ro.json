@@ -1,0 +1,26 @@
+{
+  "locale": "ro",
+  "changes": [
+    {
+      "path": "cta.title",
+      "before": [
+        "Mâine vine deja",
+        "cu prognoza atașată."
+      ],
+      "after": [
+        "Planificați ziua următoare.",
+        "Verificați prognoza disponibilă."
+      ]
+    },
+    {
+      "path": "showcase.panels[1].body",
+      "before": "Șapte coloane, fiecare cu maxima, minima și condițiile ei. Rotiți pe orizontală pentru toată lățimea. Prindeți un eveniment și glisați-l în altă zi.",
+      "after": "Comparați evenimentele săptămânii cu prognoza zilnică disponibilă. Rotiți dispozitivul pe orizontală pentru un câmp vizual mai larg. Mutați în altă zi evenimentele pe care le puteți edita, iar pentru un eveniment recurent, verificați ce apariții doriți să modificați."
+    },
+    {
+      "path": "features.gestures.title",
+      "before": "Trageți-l. Întindeți-l. Gata.",
+      "after": "Trageți. Redimensionați. Verificați."
+    }
+  ]
+}

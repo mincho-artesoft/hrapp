@@ -59,7 +59,7 @@ export const HOME_CS: HomeCopy = {
       {
         kicker: 'Týdenní pohled',
         title: 'Celý týden, který se dá skutečně přečíst',
-        body: 'Sedm sloupců, každý s vlastním maximem, minimem a vlastními podmínkami. Otočte na šířku a uvidíte vše. Chyťte událost a posuňte ji na jiný den.',
+        body: "Porovnejte události v týdnu s dostupnou denní předpovědí počasí. Otočte zařízení na šířku pro širší pohled. Přesuňte upravitelné události na jiný den a u opakované události zkontrolujte, které výskyty chcete změnit.",
         alt: 'Týdenní pohled se sloupci dnů, každý se souhrnem počasí',
         bullets: ['Na výšku i na šířku', 'Maximum / minimum dne', 'Přetahování mezi dny'],
       },
@@ -139,7 +139,7 @@ tabs: {"hourly":"Po hodinách","daily":"Po dnech","weekend":"Víkend","range":"O
       body: "Zobrazte vybrané kalendáře iCloud a Google společně; Premium přidává kalendáře Microsoft. Upravujte tam, kde to oprávnění účtu dovolují, a po změnách ověřte zdrojový kalendář.",
     },
     gestures: {
-      title: 'Přetáhněte. Natáhněte. Hotovo.',
+      title: "Přetáhněte. Upravte délku. Zkontrolujte.",
       body: "Přesuňte upravitelné události na jiný čas či den nebo změňte jejich délku na časové ose. U opakované události vyberte výskyty, které chcete změnit, a ověřte uložený výsledek.",
     },
     tiles: [
@@ -246,7 +246,10 @@ tabs: {"hourly":"Po hodinách","daily":"Po dnech","weekend":"Víkend","range":"O
     ],
   },
   cta: {
-    title: ['Zítřek už s sebou', 'předpověď nese.'],
+    title: [
+  "Naplánujte si další den.",
+  "Podívejte se na dostupnou předpověď."
+],
     lead: "Stáhnout zdarma. Místní kalendáře můžete používat bez účtu. Připojení kalendářových služeb a sdílení může vyžadovat přihlášení.",
     fromRatings: 'z {n} hodnocení',
     download: 'ke stažení',

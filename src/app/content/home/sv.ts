@@ -59,7 +59,7 @@ export const HOME_SV: HomeCopy = {
       {
         kicker: 'Veckovy',
         title: 'En hel vecka du faktiskt kan läsa',
-        body: 'Sju kolumner, var och en med sitt eget max, min och sina egna förhållanden. Vrid till liggande för hela bredden. Ta en händelse och dra den till en annan dag.',
+        body: "Jämför veckans bokningar med den tillgängliga väderprognosen för varje dag. Vrid till liggande läge för en bredare vy. Flytta händelser som du kan redigera till en annan dag och kontrollera vilka tillfällen som ska ändras för en återkommande händelse.",
         alt: 'Veckovy med dagskolumner som var och en visar en väderöversikt',
         bullets: ['Stående och liggande', 'Max / min per dag', 'Dra mellan dagar'],
       },
@@ -139,7 +139,7 @@ tabs: {"hourly":"Timvis","daily":"Dagligen","weekend":"Helg","range":"Prognosper
       body: "Visa valda iCloud- och Google-kalendrar tillsammans; Premium lägger till Microsoft-kalendrar. Redigera där kontots behörigheter tillåter och kontrollera källkalendern efter ändringar.",
     },
     gestures: {
-      title: 'Dra den. Sträck den. Klart.',
+      title: "Dra. Ändra storlek. Kontrollera.",
       body: "Flytta redigerbara händelser till en annan tid eller dag, eller ändra längden i tidslinjen. För återkommande händelser väljer du vilka förekomster som ska ändras och granskar det sparade resultatet.",
     },
     tiles: [
@@ -246,7 +246,10 @@ tabs: {"hourly":"Timvis","daily":"Dagligen","weekend":"Helg","range":"Prognosper
     ],
   },
   cta: {
-    title: ['Morgondagen har redan', 'en prognos med sig.'],
+    title: [
+  "Planera nästa dag.",
+  "Se den tillgängliga prognosen."
+],
     lead: "Hämta gratis. Använd lokala kalendrar utan konto. Anslutning av kalendertjänster och delning kan kräva inloggning.",
     fromRatings: 'från {n} betyg',
     download: 'nedladdning',

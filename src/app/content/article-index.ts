@@ -118,6 +118,7 @@ export const ARTICLE_SLUGS: Readonly<Record<string, readonly string[]>> = {
     "lock-screen-without-unlocking",
     "choosing-a-widget-size",
     "the-calendar-on-a-bedside-table",
+    "calendar-event-or-room-reservation",
     "sharing-one-event-not-your-calendar",
     "inviting-people-who-do-not-have-the-app",
     "a-calendar-that-is-yours-to-share",

@@ -59,7 +59,7 @@ export const HOME_ID: HomeCopy = {
       {
         kicker: 'Tampilan pekan',
         title: 'Satu pekan penuh yang benar-benar terbaca',
-        body: 'Tujuh kolom, masing-masing dengan tertinggi, terendah, dan kondisinya sendiri. Putar ke lanskap untuk seluruh lebarnya. Genggam sebuah acara dan geser ke hari lain.',
+        body: "Bandingkan jadwal minggu ini dengan prakiraan cuaca harian yang tersedia. Putar perangkat ke posisi lanskap untuk tampilan yang lebih lebar. Pindahkan acara yang dapat diedit ke hari lain, dan periksa kejadian mana yang ingin diubah untuk acara berulang.",
         alt: 'Tampilan pekan dengan kolom harian, masing-masing memuat ringkasan cuaca',
         bullets: ['Potret dan lanskap', 'Tertinggi / terendah harian', 'Seret antarhari'],
       },
@@ -143,7 +143,7 @@ tabs: {"hourly":"Per jam","daily":"Harian","weekend":"Akhir pekan","range":"Rent
       body: "Lihat kalender iCloud dan Google yang dipilih bersama-sama; Premium menambahkan kalender Microsoft. Edit sesuai izin akun, lalu periksa kalender sumber setelah perubahan.",
     },
     gestures: {
-      title: 'Seret. Regangkan. Selesai.',
+      title: "Seret. Ubah durasinya. Periksa.",
       body: "Pindahkan acara yang dapat diedit ke waktu atau hari lain, atau ubah durasinya di linimasa. Untuk acara berulang, pilih kejadian yang ingin diubah dan periksa hasil yang tersimpan.",
     },
     tiles: [
@@ -250,7 +250,10 @@ tabs: {"hourly":"Per jam","daily":"Harian","weekend":"Akhir pekan","range":"Rent
     ],
   },
   cta: {
-    title: ['Besok sudah datang', 'dengan prakiraannya.'],
+    title: [
+  "Rencanakan hari berikutnya.",
+  "Periksa prakiraan yang tersedia."
+],
     lead: "Unduh gratis. Gunakan kalender lokal tanpa akun. Menghubungkan layanan kalender dan berbagi mungkin memerlukan login.",
     fromRatings: 'dari {n} penilaian',
     download: 'unduhan',

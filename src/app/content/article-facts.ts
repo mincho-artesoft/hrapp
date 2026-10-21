@@ -18,6 +18,7 @@ import { ArticleFacts } from './types';
  * long tail around those twelve.
  */
 export const ARTICLE_FACTS: Readonly<Record<string, ArticleFacts>> = {
+  'calendar-event-or-room-reservation': { slug: 'calendar-event-or-room-reservation', family: 'planning', intent: 'core', claims: [], updated: '2026-10-22' },
   'onecal-alternative-iphone-calendar-view-or-sync': { slug: 'onecal-alternative-iphone-calendar-view-or-sync', family: 'compare', intent: 'compare', claims: [], updated: '2026-10-22' },
   'disconnect-calendar-integration-without-losing-track': { slug: 'disconnect-calendar-integration-without-losing-track', family: 'unify', intent: 'unify', claims: [], updated: '2026-10-22' },
   'caldav-calendar-on-iphone': { slug: 'caldav-calendar-on-iphone', family: 'unify', intent: 'unify', claims: [], updated: '2026-10-22' },

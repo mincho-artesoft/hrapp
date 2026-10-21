@@ -59,7 +59,7 @@ export const HOME_PT_BR: HomeCopy = {
       {
         kicker: 'Vista de semana',
         title: 'Uma semana inteira que dá para ler de verdade',
-        body: 'Sete colunas, cada uma encabeçada pela própria máxima, mínima e condição. Gire para o modo paisagem e veja tudo. Pegue um compromisso e deslize para outro dia.',
+        body: "Compare os compromissos da semana com a previsão diária disponível. Gire para o modo paisagem para ter uma visão mais ampla. Mova para outro dia os eventos que você pode editar e, nos eventos recorrentes, confira quais ocorrências devem ser alteradas.",
         alt: 'Vista de semana com colunas diárias, cada uma com um resumo do tempo',
         bullets: ['Retrato e paisagem', 'Máxima / mínima do dia', 'Arraste entre os dias'],
       },
@@ -139,7 +139,7 @@ tabs: {"hourly":"Por hora","daily":"Por dia","weekend":"Fim de semana","range":"
       body: "Veja os calendários iCloud e Google selecionados juntos; Premium adiciona calendários Microsoft. Edite onde sua conta permitir e confira o calendário de origem após as alterações.",
     },
     gestures: {
-      title: 'Arraste. Estique. Pronto.',
+      title: "Arraste. Redimensione. Confira.",
       body: "Mova eventos editáveis para outro horário ou dia, ou ajuste a duração na linha do tempo. Em eventos recorrentes, escolha quais ocorrências alterar e confira o resultado salvo.",
     },
     tiles: [
@@ -246,7 +246,10 @@ tabs: {"hourly":"Por hora","daily":"Por dia","weekend":"Fim de semana","range":"
     ],
   },
   cta: {
-    title: ['Amanhã já vem', 'com previsão junto.'],
+    title: [
+  "Planeje o próximo dia.",
+  "Confira a previsão disponível."
+],
     lead: "Baixar grátis. Use calendários locais sem uma conta. Conectar serviços de calendário e compartilhar pode exigir login.",
     fromRatings: 'de {n} avaliações',
     download: 'de download',

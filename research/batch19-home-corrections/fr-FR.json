@@ -1,0 +1,26 @@
+{
+  "locale": "fr-FR",
+  "changes": [
+    {
+      "path": "cta.title",
+      "before": [
+        "Demain arrive déjà",
+        "avec sa prévision."
+      ],
+      "after": [
+        "Préparez le lendemain.",
+        "Consultez les prévisions disponibles."
+      ]
+    },
+    {
+      "path": "showcase.panels[1].body",
+      "before": "Sept colonnes, chacune coiffée de son maximum, de son minimum et de ses conditions. Passez en paysage pour la largeur complète. Attrapez un événement et faites-le glisser sur un autre jour.",
+      "after": "Comparez les rendez-vous de la semaine avec les prévisions météo quotidiennes disponibles. Tournez l’appareil en mode paysage pour élargir la vue. Déplacez les événements modifiables vers un autre jour et, pour un événement récurrent, vérifiez quelles occurrences modifier."
+    },
+    {
+      "path": "features.gestures.title",
+      "before": "Glissez. Étirez. C’est fait.",
+      "after": "Glissez. Ajustez la durée. Vérifiez."
+    }
+  ]
+}

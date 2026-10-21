@@ -59,7 +59,7 @@ export const HOME_VI: HomeCopy = {
       {
         kicker: 'Khung nhìn tuần',
         title: 'Trọn một tuần mà bạn đọc được thật sự',
-        body: 'Bảy cột, mỗi cột có mức cao nhất, thấp nhất và điều kiện riêng. Xoay ngang để thấy toàn bộ bề rộng. Nắm một sự kiện và trượt nó sang ngày khác.',
+        body: "Đối chiếu các cuộc hẹn trong tuần với dự báo thời tiết từng ngày hiện có. Xoay thiết bị sang ngang để có góc nhìn rộng hơn. Chuyển những sự kiện bạn có quyền chỉnh sửa sang ngày khác và kiểm tra những lần xuất hiện cần thay đổi đối với sự kiện lặp lại.",
         alt: 'Khung nhìn tuần với các cột ngày, mỗi cột kèm tóm tắt thời tiết',
         bullets: ['Dọc và ngang', 'Cao nhất / thấp nhất trong ngày', 'Kéo giữa các ngày'],
       },
@@ -143,7 +143,7 @@ tabs: {"hourly":"Theo giờ","daily":"Theo ngày","weekend":"Cuối tuần","ran
       body: "Xem chung các lịch iCloud và Google đã chọn; Premium thêm lịch Microsoft. Chỉnh sửa theo quyền tài khoản và kiểm tra lịch nguồn sau thay đổi.",
     },
     gestures: {
-      title: 'Kéo nó. Giãn nó. Xong.',
+      title: "Kéo. Đổi kích thước. Kiểm tra.",
       body: "Chuyển sự kiện được phép sửa sang giờ hoặc ngày khác, hoặc đổi thời lượng trên dòng thời gian. Với sự kiện lặp, chọn các lần cần đổi rồi kiểm tra kết quả đã lưu.",
     },
     tiles: [
@@ -250,7 +250,10 @@ tabs: {"hourly":"Theo giờ","daily":"Theo ngày","weekend":"Cuối tuần","ran
     ],
   },
   cta: {
-    title: ['Ngày mai đã tới', 'kèm sẵn dự báo.'],
+    title: [
+  "Lên kế hoạch cho ngày tiếp theo.",
+  "Xem dự báo hiện có."
+],
     lead: "Tải miễn phí. Dùng lịch cục bộ mà không cần tài khoản. Việc kết nối dịch vụ lịch và chia sẻ có thể yêu cầu đăng nhập.",
     fromRatings: 'từ {n} lượt đánh giá',
     download: 'dung lượng tải',

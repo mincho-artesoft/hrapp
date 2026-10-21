@@ -59,7 +59,7 @@ export const HOME_IT: HomeCopy = {
       {
         kicker: 'Vista settimana',
         title: 'Una settimana intera davvero leggibile',
-        body: 'Sette colonne, ciascuna con la propria massima, minima e condizione. Ruota in orizzontale per vederla tutta. Afferra un evento e falla scivolare su un altro giorno.',
+        body: "Confronta gli appuntamenti della settimana con le previsioni meteo giornaliere disponibili. Ruota il dispositivo in orizzontale per una vista più ampia. Sposta gli eventi modificabili a un altro giorno e, per un evento ricorrente, controlla quali occorrenze modificare.",
         alt: 'Vista settimana con colonne giornaliere, ognuna con un riepilogo meteo',
         bullets: [
           'Verticale e orizzontale',
@@ -148,7 +148,7 @@ tabs: {"hourly":"Per ora","daily":"Per giorno","weekend":"Fine settimana","range
       body: "Visualizza insieme i calendari iCloud e Google selezionati; Premium aggiunge i calendari Microsoft. Modifica dove i permessi dell’account lo consentono e controlla il calendario di origine dopo i cambiamenti.",
     },
     gestures: {
-      title: 'Trascina. Allunga. Fatto.',
+      title: "Trascina. Ridimensiona. Controlla.",
       body: "Sposta gli eventi modificabili a un’altra ora o data, oppure ridimensionali nella sequenza temporale. Per un evento ricorrente, scegli quali occorrenze cambiare e controlla il risultato salvato.",
     },
     tiles: [
@@ -255,7 +255,10 @@ tabs: {"hourly":"Per ora","daily":"Per giorno","weekend":"Fine settimana","range
     ],
   },
   cta: {
-    title: ['Domani arriva già', 'con la previsione attaccata.'],
+    title: [
+  "Pianifica il giorno dopo.",
+  "Controlla le previsioni disponibili."
+],
     lead: "Scarica gratis. Usa i calendari locali senza un account. Collegare servizi di calendario e condividere può richiedere l’accesso.",
     fromRatings: 'da {n} valutazioni',
     download: 'di download',

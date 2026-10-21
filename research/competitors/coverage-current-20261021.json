@@ -2941,5 +2941,13 @@
     ],
     "countsUnchanged": true,
     "reason": "Complete index extraction does not establish substantive linked feature-body coverage."
-  }
+  },
+  "supersededUrlMappings": [
+    {
+      "originalUrl": "https://flexibits.com/fantastical-ios/help/fantastical-ios/help/settings",
+      "correctUrl": "https://flexibits.com/fantastical-ios/help/settings",
+      "evidence": "research/competitors/batch25-fantastical-settings-primary-20261022.json",
+      "action": "Do not repeatedly fetch the malformed discovery link. Correct main body reviewed through actual publisher navigation; exact original corpus counts kept for provenance, not a fresh failure or full-body claim about the malformed URL."
+    }
+  ]
 }

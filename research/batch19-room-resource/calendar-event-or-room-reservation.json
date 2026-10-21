@@ -1,0 +1,101 @@
+{
+  "updated": "2026-10-22",
+  "title": "Calendar event or room reservation? Check what is confirmed",
+  "short": "Confirm a room reservation",
+  "description": "A room name is not a reservation. Check Google Calendar or Outlook resource responses, recurring dates and changes before relying on a meeting room.",
+  "lede": "A meeting can appear in your calendar while its room is unavailable or has declined. Check the resource booking separately from the appointment and its location label. Arte Soft, the developer of Cloud Calendars, publishes this guide; it does not establish a room-booking workflow inside Cloud Calendars.",
+  "commonBelief": "Saving an event with a room name, or seeing an empty time slot, confirms that the room is reserved.",
+  "sections": [
+    {
+      "heading": "Identify the resource, not just its address",
+      "body": [
+        "A location tells people where you intend to meet. A bookable room or projector also has an owner and a reservation process. Ask which room directory or booking system your organization uses before treating a typed name as a request. A personal calendar entry cannot establish another person’s approval.",
+        "Write down the intended date, start, end and exact room identity. For example, a workshop may need an earlier setup period as well as its advertised start. Confirm that requirement with the room owner; adding a preparation block to your calendar alone does not reserve the space."
+      ]
+    },
+    {
+      "heading": "Use the Google Calendar room workflow for the right account",
+      "body": [
+        "Google documents its organizational Rooms workflow for work or school accounts. In the computer event editor, use Add rooms or Add room booking, choose the intended resource and save. A personal Gmail account follows a different shared-space arrangement; do not assume it has your employer’s room directory.",
+        "Then inspect the room’s response for that event. Google says a room can decline at booking or later. Its notification behavior also differs for secondary calendars, so the absence of a decline email is not proof of acceptance. Check the actual room status rather than only the event title."
+      ]
+    },
+    {
+      "heading": "Treat an Outlook room as a resource recipient",
+      "body": [
+        "Microsoft documents Room Finder and Scheduling Assistant for supported Microsoft 365 or Exchange accounts. The organization configures the room directory. In its documented workflow, selecting a room adds it as a meeting recipient, and the organizer sends the meeting request. The Outlook mobile instructions use Browse conference rooms; menus differ by platform.",
+        "Microsoft’s resource-mailbox guidance distinguishes availability from processing a request; booking can be automatic or managed by the organization. Confirm the outcome through the approved resource workflow. An editable location field, a free-looking slot or a successfully saved personal event is not that confirmation."
+      ]
+    },
+    {
+      "heading": "Recheck the resource after moving a meeting",
+      "body": [
+        "A room that worked at the original time may be occupied at the new one. Google explicitly says changing the event time releases the booked room and attempts to rebook it; that attempt can fail. Before telling participants the revised location is settled, inspect the resource status for the new date and time.",
+        "For a recurring workshop, inspect the relevant occurrences rather than assuming one acceptance settles the entire course. Booking windows, conflicts and permissions can limit what is confirmed. If one week needs another room, record the specific occurrence and use the provider’s supported editing scope; keep the organizer and participants informed."
+      ]
+    },
+    {
+      "heading": "Use Cloud Calendars for the planning information it exposes",
+      "body": [
+        "Cloud Calendars provides event location entry and a combined calendar view. Those features help you organize the appointment, but this guide does not establish a resource picker or reservation-confirmation controls in the app. Use the owning provider or room manager’s approved workflow when that confirmation is required.",
+        "Do not use a Cloud Calendars subscription tier, a conferencing link or a visible gap as evidence that you have room-booking permission. After a provider change, compare the intended appointment in the app and the source calendar. That comparison checks the displayed plan; retain the separate resource confirmation."
+      ]
+    },
+    {
+      "heading": "Cancel or replace the resource deliberately",
+      "body": [
+        "Microsoft documents removing the room or equipment from the meeting as the way to release that reservation. Follow the organizer’s supported provider workflow and check which occurrence or series is affected. Deleting a personal copy or erasing a location label is not a substitute for confirming that the actual resource request was cancelled. Complete any update or cancellation step the provider requires; an unsaved edit is not a cancelled reservation.",
+        "If the room declines or the result is unclear, contact the organizer or resource manager with the relevant date and room identity. Agree a confirmed alternative before sending a final location. Share only the information needed for that request, and keep private calendar links and unrelated appointments out of public support posts."
+      ]
+    }
+  ],
+  "claims": {},
+  "practical": [
+    "Identify the exact room or equipment and its approved booking system.",
+    "Confirm the account and permission needed to request it.",
+    "Use the provider’s resource workflow rather than only typing a location.",
+    "Inspect the resource response for the intended date or recurring occurrence.",
+    "Recheck after changing the time, duration or room.",
+    "Release or replace the resource through the organizer’s supported workflow."
+  ],
+  "faq": [
+    {
+      "q": "Does adding a room name to an event reserve it?",
+      "a": "No. A location label describes the plan. Use the room owner’s supported booking process and check its response for the required time."
+    },
+    {
+      "q": "Does Cloud Calendars confirm meeting room reservations?",
+      "a": "This guide establishes event location entry, not a room-selection and reservation-confirmation workflow inside Cloud Calendars. Check the owning provider or resource manager when you need that confirmation."
+    },
+    {
+      "q": "Is a room still reserved after I change the meeting time?",
+      "a": "Do not assume that. Google documents releasing and attempting to rebook the room after a time change. Check the result through your provider, including the affected recurring dates, before relying on the new arrangement."
+    }
+  ],
+  "sourcesHeading": "Official room and resource booking guidance",
+  "sources": [
+    {
+      "label": "Google: add or remove a room for a work or school event",
+      "url": "https://support.google.com/calendar/answer/143753?hl=en"
+    },
+    {
+      "label": "Google: declined rooms, notifications and changes",
+      "url": "https://support.google.com/calendar/answer/16107253?hl=en"
+    },
+    {
+      "label": "Microsoft: Scheduling Assistant and Room Finder across platforms",
+      "url": "https://support.microsoft.com/en-us/outlook/use-the-scheduling-assistant-and-room-finder-for-meetings-in-outlook"
+    },
+    {
+      "label": "Microsoft: room and equipment availability, booking and cancellation",
+      "url": "https://learn.microsoft.com/en-us/microsoft-365/admin/manage/room-equipment-mailboxes-faq?view=o365-worldwide"
+    }
+  ],
+  "seeAlso": [
+    "recurring-events-without-the-mess",
+    "a-week-view-that-fits-a-week",
+    "what-calendar-sync-actually-does",
+    "meeting-links-that-make-themselves",
+    "time-zones-and-the-flight-you-booked"
+  ]
+}

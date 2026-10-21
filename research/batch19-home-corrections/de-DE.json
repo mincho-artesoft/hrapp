@@ -1,0 +1,26 @@
+{
+  "locale": "de-DE",
+  "changes": [
+    {
+      "path": "cta.title",
+      "before": [
+        "Morgen hat bereits",
+        "eine Vorhersage dabei."
+      ],
+      "after": [
+        "Planen Sie den nächsten Tag.",
+        "Prüfen Sie die verfügbare Vorhersage."
+      ]
+    },
+    {
+      "path": "showcase.panels[1].body",
+      "before": "Sieben Spalten, jede mit eigenem Höchst- und Tiefstwert und eigenen Bedingungen. Ins Querformat drehen für die volle Breite. Termin greifen und auf einen anderen Tag schieben.",
+      "after": "Vergleichen Sie die Termine der Woche mit der verfügbaren Tagesvorhersage. Drehen Sie das Gerät ins Querformat für eine breitere Ansicht. Verschieben Sie bearbeitbare Termine auf einen anderen Tag und prüfen Sie bei einem Serientermin, welche Wiederholungen Sie ändern möchten."
+    },
+    {
+      "path": "features.gestures.title",
+      "before": "Ziehen. Dehnen. Fertig.",
+      "after": "Ziehen. Dauer ändern. Prüfen."
+    }
+  ]
+}

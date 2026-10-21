@@ -60,7 +60,7 @@ export const HOME_FR_FR: HomeCopy = {
       {
         kicker: 'Vue hebdomadaire',
         title: 'Une semaine entière réellement lisible',
-        body: 'Sept colonnes, chacune coiffée de son maximum, de son minimum et de ses conditions. Passez en paysage pour la largeur complète. Attrapez un événement et faites-le glisser sur un autre jour.',
+        body: "Comparez les rendez-vous de la semaine avec les prévisions météo quotidiennes disponibles. Tournez l’appareil en mode paysage pour élargir la vue. Déplacez les événements modifiables vers un autre jour et, pour un événement récurrent, vérifiez quelles occurrences modifier.",
         alt: 'Vue hebdomadaire avec des colonnes journalières portant chacune un résumé météo',
         bullets: [
           'Portrait et paysage',
@@ -148,7 +148,7 @@ tabs: {"hourly":"Par heure","daily":"Par jour","weekend":"Week-end","range":"Pé
       body: "Consultez ensemble les calendriers iCloud et Google sélectionnés ; Premium ajoute les calendriers Microsoft. Modifiez selon les autorisations de votre compte et vérifiez le calendrier source après les changements.",
     },
     gestures: {
-      title: 'Glissez. Étirez. C’est fait.',
+      title: "Glissez. Ajustez la durée. Vérifiez.",
       body: "Déplacez les événements modifiables vers une autre heure ou un autre jour, ou ajustez leur durée dans la chronologie. Pour un événement récurrent, choisissez les occurrences à modifier et vérifiez le résultat enregistré.",
     },
     tiles: [
@@ -255,7 +255,10 @@ tabs: {"hourly":"Par heure","daily":"Par jour","weekend":"Week-end","range":"Pé
     ],
   },
   cta: {
-    title: ['Demain arrive déjà', 'avec sa prévision.'],
+    title: [
+  "Préparez le lendemain.",
+  "Consultez les prévisions disponibles."
+],
     lead: "Télécharger gratuitement. Utilisez les calendriers locaux sans compte. La connexion de services de calendrier et le partage peuvent nécessiter une connexion à un compte.",
     fromRatings: 'sur {n} notes',
     download: 'de téléchargement',

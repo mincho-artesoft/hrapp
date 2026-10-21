@@ -59,7 +59,7 @@ export const HOME_MS: HomeCopy = {
       {
         kicker: 'Paparan minggu',
         title: 'Satu minggu penuh yang benar-benar boleh dibaca',
-        body: 'Tujuh lajur, setiap satu dengan suhu tertinggi, terendah dan keadaannya sendiri. Putar ke landskap untuk seluruh lebarnya. Pegang satu acara dan luncurkannya ke hari lain.',
+        body: "Bandingkan janji temu minggu ini dengan ramalan cuaca harian yang tersedia. Putar peranti ke orientasi landskap untuk paparan yang lebih luas. Pindahkan acara yang boleh disunting ke hari lain, dan semak kejadian yang hendak diubah bagi acara berulang.",
         alt: 'Paparan minggu dengan lajur harian, setiap satu memuatkan ringkasan cuaca',
         bullets: ['Potret dan landskap', 'Tertinggi / terendah harian', 'Seret antara hari'],
       },
@@ -147,7 +147,7 @@ tabs: {"hourly":"Setiap jam","daily":"Harian","weekend":"Hujung minggu","range":
       body: "Lihat kalendar iCloud dan Google yang dipilih bersama-sama; Premium menambah kalendar Microsoft. Sunting mengikut kebenaran akaun dan semak kalendar sumber selepas perubahan.",
     },
     gestures: {
-      title: 'Seret ia. Regangkan ia. Selesai.',
+      title: "Seret. Ubah tempohnya. Semak.",
       body: "Pindahkan acara yang boleh disunting ke waktu atau hari lain, atau ubah tempohnya pada garis masa. Untuk acara berulang, pilih kejadian yang hendak diubah dan semak hasil yang disimpan.",
     },
     tiles: [
@@ -254,7 +254,10 @@ tabs: {"hourly":"Setiap jam","daily":"Harian","weekend":"Hujung minggu","range":
     ],
   },
   cta: {
-    title: ['Esok sudah pun datang', 'dengan ramalannya.'],
+    title: [
+  "Rancang hari seterusnya.",
+  "Semak ramalan yang tersedia."
+],
     lead: "Muat turun percuma. Gunakan kalendar setempat tanpa akaun. Sambungan perkhidmatan kalendar dan perkongsian mungkin memerlukan log masuk.",
     fromRatings: 'daripada {n} penilaian',
     download: 'muat turun',

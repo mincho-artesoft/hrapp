@@ -59,7 +59,7 @@ export const HOME_NO: HomeCopy = {
       {
         kicker: 'Ukevisning',
         title: 'En hel uke du faktisk kan lese',
-        body: 'Sju kolonner, hver med sin egen høyeste, laveste og sine egne forhold. Vri til liggende for hele bredden. Ta tak i en hendelse og skyv den til en annen dag.',
+        body: "Sammenlign ukens avtaler med tilgjengelige dagsvarsler. Snu enheten til liggende for en bredere visning. Flytt redigerbare hendelser til en annen dag, og sjekk hvilke forekomster som skal endres for en gjentakende hendelse.",
         alt: 'Ukevisning med dagskolonner som hver viser en væroversikt',
         bullets: ['Stående og liggende', 'Høyeste / laveste for dagen', 'Dra mellom dager'],
       },
@@ -143,7 +143,7 @@ tabs: {"hourly":"Timevis","daily":"Daglig","weekend":"Helg","range":"Varslingspe
       body: "Se valgte iCloud- og Google-kalendere sammen; Premium legger til Microsoft-kalendere. Rediger der kontotillatelsene gir adgang, og sjekk kildekalenderen etter endringer.",
     },
     gestures: {
-      title: 'Dra den. Strekk den. Ferdig.',
+      title: "Dra. Endre varigheten. Kontroller.",
       body: "Flytt redigerbare hendelser til en annen tid eller dag, eller endre varigheten i tidslinjen. For gjentakende hendelser velger du hvilke forekomster som skal endres og kontrollerer det lagrede resultatet.",
     },
     tiles: [
@@ -250,7 +250,10 @@ tabs: {"hourly":"Timevis","daily":"Daglig","weekend":"Helg","range":"Varslingspe
     ],
   },
   cta: {
-    title: ['Morgendagen har allerede', 'en værmelding med seg.'],
+    title: [
+  "Planlegg neste dag.",
+  "Sjekk den tilgjengelige værmeldingen."
+],
     lead: "Last ned gratis. Bruk lokale kalendere uten konto. Tilkobling av kalendertjenester og deling kan kreve innlogging.",
     fromRatings: 'fra {n} vurderinger',
     download: 'nedlasting',

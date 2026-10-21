@@ -71,7 +71,7 @@ export const HOME_EN_US: HomeCopy = {
       {
         kicker: 'Week view',
         title: 'A whole week you can actually read',
-        body: 'Seven columns, each headed by its own high, low and condition. Rotate to landscape for the full spread. Grab an event and slide it to another day.',
+        body: "Compare the week’s appointments with available daily weather. Rotate to landscape for a wider view. Move editable events to another day, and check which occurrences to change for a repeating event.",
         alt: 'Week view with daily columns, each showing a weather summary',
         bullets: ['Portrait & landscape', 'Daily high / low', 'Drag across days'],
       },
@@ -154,7 +154,7 @@ tabs: {"hourly":"Hourly","daily":"Daily","weekend":"Weekend","range":"Forecast r
       body: "View selected iCloud and Google calendars together; Premium adds Microsoft calendars. Edit where your account permissions allow, and check the source calendar after changes.",
     },
     gestures: {
-      title: 'Drag it. Stretch it. Done.',
+      title: "Drag it. Resize it. Review it.",
       body: "Move editable events to another time or day, or resize them in the timeline. For a repeating event, choose which occurrences to change and review the saved result.",
     },
     tiles: [
@@ -260,7 +260,10 @@ tabs: {"hourly":"Hourly","daily":"Daily","weekend":"Weekend","range":"Forecast r
   },
 
   cta: {
-    title: ['Tomorrow already has', 'a forecast attached.'],
+    title: [
+  "Plan the next day.",
+  "Check the available forecast."
+],
     lead: "Download free. Use local calendars without an account. Connecting calendar services and sharing may require sign-in.",
     fromRatings: 'from {n} ratings',
     download: 'download',

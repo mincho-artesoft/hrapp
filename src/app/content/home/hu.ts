@@ -59,7 +59,7 @@ export const HOME_HU: HomeCopy = {
       {
         kicker: 'Heti nézet',
         title: 'Egy egész hét, amelyet tényleg el lehet olvasni',
-        body: 'Hét oszlop, mindegyik élén a saját maximumával, minimumával és körülményeivel. Fordítsa fekvőbe a teljes szélességért. Fogjon meg egy eseményt, és csúsztassa másik napra.',
+        body: "Vesse össze a heti programokat az elérhető napi időjárás-előrejelzéssel. A szélesebb nézethez fordítsa a készüléket fekvő helyzetbe. Helyezze át a szerkeszthető eseményeket másik napra, és ismétlődő eseménynél ellenőrizze, mely alkalmakat szeretné módosítani.",
         alt: 'Heti nézet napi oszlopokkal, mindegyikben egy időjárás-összefoglalóval',
         bullets: ['Álló és fekvő', 'Napi maximum / minimum', 'Húzás napok között'],
       },
@@ -139,7 +139,7 @@ tabs: {"hourly":"Óránként","daily":"Naponta","weekend":"Hétvége","range":"E
       body: "Tekintse meg együtt a kiválasztott iCloud- és Google-naptárakat; a Premium Microsoft-naptárakkal egészíti ki őket. A fiók jogosultságai szerint szerkesszen, és változtatás után ellenőrizze a forrásnaptárt.",
     },
     gestures: {
-      title: 'Húzza. Nyújtsa. Kész.',
+      title: "Húzza. Méretezze át. Ellenőrizze.",
       body: "Helyezze át a szerkeszthető eseményeket más időpontra vagy napra, illetve módosítsa időtartamukat az idővonalon. Ismétlődő eseménynél válassza ki a módosítandó alkalmakat, és ellenőrizze a mentett eredményt.",
     },
     tiles: [
@@ -246,7 +246,10 @@ tabs: {"hourly":"Óránként","daily":"Naponta","weekend":"Hétvége","range":"E
     ],
   },
   cta: {
-    title: ['A holnap már', 'előrejelzéssel érkezik.'],
+    title: [
+  "Tervezze meg a következő napot.",
+  "Nézze meg az elérhető előrejelzést."
+],
     lead: "Letöltés ingyen. A helyi naptárakat fiók nélkül használhatja. A naptárszolgáltatások csatlakoztatásához és a megosztáshoz bejelentkezésre lehet szükség.",
     fromRatings: '{n} értékelésből',
     download: 'letöltés',

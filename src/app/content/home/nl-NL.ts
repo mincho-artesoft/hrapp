@@ -59,7 +59,7 @@ export const HOME_NL_NL: HomeCopy = {
       {
         kicker: 'Weekweergave',
         title: 'Een hele week die u echt kunt lezen',
-        body: 'Zeven kolommen, elk met eigen maximum, minimum en omstandigheden. Draai naar liggend voor de volle breedte. Pak een afspraak en schuif hem naar een andere dag.',
+        body: "Vergelijk de afspraken van de week met de beschikbare dagelijkse weersverwachting. Draai uw apparaat naar de liggende stand voor een breder overzicht. Verplaats bewerkbare afspraken naar een andere dag en controleer bij een herhaalde afspraak welke herhalingen u wilt wijzigen.",
         alt: 'Weekweergave met dagkolommen, elk met een weersamenvatting',
         bullets: ['Staand en liggend', 'Maximum / minimum per dag', 'Sleep tussen dagen'],
       },
@@ -140,7 +140,7 @@ tabs: {"hourly":"Per uur","daily":"Per dag","weekend":"Weekend","range":"Voorspe
       body: "Bekijk geselecteerde iCloud- en Google-agenda’s samen; Premium voegt Microsoft-agenda’s toe. Bewerk waar uw accountrechten dat toestaan en controleer na wijzigingen de bronagenda.",
     },
     gestures: {
-      title: 'Sleep hem. Rek hem op. Klaar.',
+      title: "Sleep. Pas de duur aan. Controleer.",
       body: "Verplaats bewerkbare afspraken naar een andere tijd of dag, of pas de duur aan in de tijdlijn. Kies bij een herhaalde afspraak welke herhalingen u wijzigt en controleer het opgeslagen resultaat.",
     },
     tiles: [
@@ -247,7 +247,10 @@ tabs: {"hourly":"Per uur","daily":"Per dag","weekend":"Weekend","range":"Voorspe
     ],
   },
   cta: {
-    title: ['Morgen heeft al', 'een verwachting bij zich.'],
+    title: [
+  "Plan de volgende dag.",
+  "Bekijk de beschikbare weersverwachting."
+],
     lead: "Gratis downloaden. Gebruik lokale agenda’s zonder account. Voor het koppelen van agendadiensten en delen kan inloggen nodig zijn.",
     fromRatings: 'uit {n} beoordelingen',
     download: 'download',

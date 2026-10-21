@@ -1,0 +1,26 @@
+{
+  "locale": "tr",
+  "changes": [
+    {
+      "path": "cta.title",
+      "before": [
+        "Yarın zaten",
+        "tahminiyle geliyor."
+      ],
+      "after": [
+        "Bir sonraki günü planlayın.",
+        "Mevcut hava tahminine bakın."
+      ]
+    },
+    {
+      "path": "showcase.panels[1].body",
+      "before": "Yedi sütun, her birinin başında kendi en yükseği, en düşüğü ve koşulları. Tam genişlik için yatay çevirin. Bir etkinliği tutup başka bir güne kaydırın.",
+      "after": "Haftanın randevularını mevcut günlük hava tahminiyle karşılaştırın. Daha geniş bir görünüm için cihazı yatay çevirin. Düzenleme izniniz olan etkinlikleri başka bir güne taşıyın; tekrarlanan bir etkinlikte hangi tekrarları değiştireceğinizi kontrol edin."
+    },
+    {
+      "path": "features.gestures.title",
+      "before": "Sürükleyin. Uzatın. Tamam.",
+      "after": "Sürükleyin. Boyutunu değiştirin. Kontrol edin."
+    }
+  ]
+}

@@ -59,7 +59,7 @@ export const HOME_DE_DE: HomeCopy = {
       {
         kicker: 'Wochenansicht',
         title: 'Eine ganze Woche, die man wirklich lesen kann',
-        body: 'Sieben Spalten, jede mit eigenem Höchst- und Tiefstwert und eigenen Bedingungen. Ins Querformat drehen für die volle Breite. Termin greifen und auf einen anderen Tag schieben.',
+        body: "Vergleichen Sie die Termine der Woche mit der verfügbaren Tagesvorhersage. Drehen Sie das Gerät ins Querformat für eine breitere Ansicht. Verschieben Sie bearbeitbare Termine auf einen anderen Tag und prüfen Sie bei einem Serientermin, welche Wiederholungen Sie ändern möchten.",
         alt: 'Wochenansicht mit Tagesspalten, jede mit einer Wetterübersicht',
         bullets: ['Hoch- und Querformat', 'Höchst- / Tiefstwert', 'Über Tage ziehen'],
       },
@@ -143,7 +143,7 @@ tabs: {"hourly":"Stündlich","daily":"Täglich","weekend":"Wochenende","range":"
       body: "Sehen Sie ausgewählte iCloud- und Google-Kalender gemeinsam; Premium ergänzt Microsoft-Kalender. Bearbeiten Sie Termine, soweit Ihre Kontoberechtigungen es erlauben, und prüfen Sie anschließend den Quellkalender.",
     },
     gestures: {
-      title: 'Ziehen. Dehnen. Fertig.',
+      title: "Ziehen. Dauer ändern. Prüfen.",
       body: "Verschieben Sie bearbeitbare Termine auf eine andere Zeit oder einen anderen Tag oder ändern Sie ihre Dauer in der Zeitleiste. Wählen Sie bei Serienterminen die betroffenen Wiederholungen und prüfen Sie das gespeicherte Ergebnis.",
     },
     tiles: [
@@ -250,7 +250,10 @@ tabs: {"hourly":"Stündlich","daily":"Täglich","weekend":"Wochenende","range":"
     ],
   },
   cta: {
-    title: ['Morgen hat bereits', 'eine Vorhersage dabei.'],
+    title: [
+  "Planen Sie den nächsten Tag.",
+  "Prüfen Sie die verfügbare Vorhersage."
+],
     lead: "Kostenlos laden. Lokale Kalender können Sie ohne Konto nutzen. Das Verbinden von Kalenderdiensten und das Teilen können eine Anmeldung erfordern.",
     fromRatings: 'aus {n} Bewertungen',
     download: 'Download',

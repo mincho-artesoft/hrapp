@@ -59,7 +59,7 @@ export const HOME_TR: HomeCopy = {
       {
         kicker: 'Hafta görünümü',
         title: 'Gerçekten okunabilen koca bir hafta',
-        body: 'Yedi sütun, her birinin başında kendi en yükseği, en düşüğü ve koşulları. Tam genişlik için yatay çevirin. Bir etkinliği tutup başka bir güne kaydırın.',
+        body: "Haftanın randevularını mevcut günlük hava tahminiyle karşılaştırın. Daha geniş bir görünüm için cihazı yatay çevirin. Düzenleme izniniz olan etkinlikleri başka bir güne taşıyın; tekrarlanan bir etkinlikte hangi tekrarları değiştireceğinizi kontrol edin.",
         alt: 'Her biri hava özeti taşıyan gün sütunlarıyla hafta görünümü',
         bullets: ['Dikey ve yatay', 'Günün en yükseği / en düşüğü', 'Günler arasında sürükleme'],
       },
@@ -139,7 +139,7 @@ tabs: {"hourly":"Saatlik","daily":"Günlük","weekend":"Hafta sonu","range":"Tah
       body: "Seçili iCloud ve Google takvimlerini birlikte görün; Premium, Microsoft takvimlerini ekler. Hesap izinlerinin elverdiği yerde düzenleyin ve değişiklikten sonra kaynak takvimi kontrol edin.",
     },
     gestures: {
-      title: 'Sürükleyin. Uzatın. Tamam.',
+      title: "Sürükleyin. Boyutunu değiştirin. Kontrol edin.",
       body: "Düzenlenebilir etkinlikleri başka saate veya güne taşıyın ya da zaman çizelgesinde sürelerini değiştirin. Yinelenen etkinlikte hangi örneklerin değişeceğini seçip kaydedilen sonucu inceleyin.",
     },
     tiles: [
@@ -246,7 +246,10 @@ tabs: {"hourly":"Saatlik","daily":"Günlük","weekend":"Hafta sonu","range":"Tah
     ],
   },
   cta: {
-    title: ['Yarın zaten', 'tahminiyle geliyor.'],
+    title: [
+  "Bir sonraki günü planlayın.",
+  "Mevcut hava tahminine bakın."
+],
     lead: "Ücretsiz indir. Yerel takvimleri hesap olmadan kullanın. Takvim hizmetlerini bağlamak ve paylaşmak için oturum açmanız gerekebilir.",
     fromRatings: '{n} değerlendirmeden',
     download: 'indirme',

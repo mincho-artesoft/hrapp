@@ -1,8 +1,8 @@
 {
-  "guides": 53,
+  "guides": 54,
   "selection": "tools/guide-text-selection.json",
   "extraction": "Visible article headings, paragraphs, lists, FAQs and source links; gallery/other-app cards excluded.",
-  "exportedCharacters": 318076,
+  "exportedCharacters": 325638,
   "records": [
     {
       "slug": "what-calendar-sync-actually-does",
@@ -205,8 +205,8 @@
     {
       "slug": "meeting-links-that-make-themselves",
       "source": "https://www.cloud-calendars.com/articles/meeting-links-that-make-themselves/",
-      "blocks": 46,
-      "characters": 6178
+      "blocks": 47,
+      "characters": 6287
     },
     {
       "slug": "who-can-see-what-in-google-calendar",
@@ -277,8 +277,8 @@
     {
       "slug": "a-week-view-that-fits-a-week",
       "source": "https://www.cloud-calendars.com/articles/a-week-view-that-fits-a-week/",
-      "blocks": 45,
-      "characters": 5639
+      "blocks": 46,
+      "characters": 5748
     },
     {
       "slug": "a-list-for-people-who-dislike-grids",
@@ -321,6 +321,12 @@
       "source": "https://www.cloud-calendars.com/articles/onecal-alternative-iphone-calendar-view-or-sync/",
       "blocks": 50,
       "characters": 7383
+    },
+    {
+      "slug": "calendar-event-or-room-reservation",
+      "source": "https://www.cloud-calendars.com/articles/calendar-event-or-room-reservation/",
+      "blocks": 49,
+      "characters": 7251
     }
   ]
 }

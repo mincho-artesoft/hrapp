@@ -59,7 +59,7 @@ export const HOME_RO: HomeCopy = {
       {
         kicker: 'Vederea săptămânală',
         title: 'O săptămână întreagă pe care chiar o puteți citi',
-        body: 'Șapte coloane, fiecare cu maxima, minima și condițiile ei. Rotiți pe orizontală pentru toată lățimea. Prindeți un eveniment și glisați-l în altă zi.',
+        body: "Comparați evenimentele săptămânii cu prognoza zilnică disponibilă. Rotiți dispozitivul pe orizontală pentru un câmp vizual mai larg. Mutați în altă zi evenimentele pe care le puteți edita, iar pentru un eveniment recurent, verificați ce apariții doriți să modificați.",
         alt: 'Vedere săptămânală cu coloane zilnice, fiecare cu un rezumat meteo',
         bullets: ['Portret și peisaj', 'Maxima / minima zilei', 'Trageți între zile'],
       },
@@ -139,7 +139,7 @@ tabs: {"hourly":"Pe ore","daily":"Pe zile","weekend":"Weekend","range":"Interval
       body: "Vedeți împreună calendarele iCloud și Google selectate; Premium adaugă calendare Microsoft. Editați unde permisiunile contului permit și verificați calendarul-sursă după modificări.",
     },
     gestures: {
-      title: 'Trageți-l. Întindeți-l. Gata.',
+      title: "Trageți. Redimensionați. Verificați.",
       body: "Mutați evenimente editabile la altă oră sau dată ori ajustați durata în cronologie. Pentru un eveniment repetat, alegeți aparițiile de modificat și verificați rezultatul salvat.",
     },
     tiles: [
@@ -246,7 +246,10 @@ tabs: {"hourly":"Pe ore","daily":"Pe zile","weekend":"Weekend","range":"Interval
     ],
   },
   cta: {
-    title: ['Mâine vine deja', 'cu prognoza atașată.'],
+    title: [
+  "Planificați ziua următoare.",
+  "Verificați prognoza disponibilă."
+],
     lead: "Descarcă gratuit. Folosiți calendarele locale fără cont. Conectarea serviciilor de calendar și partajarea pot necesita autentificare.",
     fromRatings: 'din {n} evaluări',
     download: 'descărcare',

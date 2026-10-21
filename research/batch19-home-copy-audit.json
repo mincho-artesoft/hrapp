@@ -1,0 +1,182 @@
+{
+  "date": "2026-10-22",
+  "scope": "Read-only English homepage semantics audit; proposed copy only",
+  "repository_head": "4456e5d1331a2988c6f6c5b07aed03730a28cad3",
+  "homepage_file": "src/app/content/home/en-US.ts",
+  "homepage_sha256": "a4722334c46b85cc4dd6a05da8d7667e1c9ca5521eeabd64089e4fda0efea400",
+  "issues": [
+    {
+      "field_path": "cta.title",
+      "before": [
+        "Tomorrow already has",
+        "a forecast attached."
+      ],
+      "proposed": [
+        "Plan the next day.",
+        "Check the available forecast."
+      ],
+      "consumer": "src/app/components/cta/cta.component.html:8-9",
+      "why": "The closing headline states that tomorrow already has weather attached without a location or availability qualification. Forecast retrieval can yield no hours; a future calendar date does not establish weather coverage. The CTA lead only discusses accounts, so it does not qualify the weather promise.",
+      "evidence": [
+        "research/batch15-home-claim-audit.json#proofs.weather-data",
+        "research/batch16-localized-weather/audit-product.json:englishSnapshot",
+        "Calendar/WeatherView/Sources/WeatherKitViewModel.swift:380-388,422-427,457"
+      ],
+      "classification": "recommended correction"
+    },
+    {
+      "field_path": "showcase.panels[1].body",
+      "before": "Seven columns, each headed by its own high, low and condition. Rotate to landscape for the full spread. Grab an event and slide it to another day.",
+      "proposed": "Compare the week’s appointments with available daily weather. Rotate to landscape for a wider view. Move editable events to another day, and check which occurrences to change for a repeating event.",
+      "consumer": "src/app/components/showcase/showcase.component.html:15",
+      "why": "Each headed by its own high, low and condition makes forecast presence unconditional; grab an event omits the actual read-only guard and repeating-event choice. The general showcase lead is not rendered, so its availability qualification cannot help this visible panel. The proposal keeps the supported capabilities without promising weather for every column.",
+      "evidence": [
+        "research/batch15-home-claim-audit.json#proofs.weather-data",
+        "research/batch15-home-claim-audit.json#proofs.gesture",
+        "Calendar/MultiDayView/TwoWayPinnedMultiDayWrapper.swift:478",
+        "research/batch16-localized-weather/audit-product.json"
+      ],
+      "classification": "recommended correction"
+    },
+    {
+      "field_path": "features.gestures.title",
+      "before": "Drag it. Stretch it. Done.",
+      "proposed": "Drag it. Resize it. Review it.",
+      "consumer": "src/app/components/features/features.component.html:42",
+      "why": "Done compresses a gesture into completed editing even though recurrence selection, permission checks and reviewing the saved result remain relevant. The corrected adjacent body already explains these; the proposed headline makes the heading consistent rather than introducing another workflow. This is a heading/body consistency issue, not evidence that gestures are absent.",
+      "evidence": [
+        "research/batch15-home-claim-audit.json#proofs.gesture",
+        "src/app/content/home/en-US.ts:features.gestures.body"
+      ],
+      "classification": "recommended correction"
+    },
+    {
+      "field_path": "showcase.panels[4].bullets[2]",
+      "before": "Search from here",
+      "proposed": "Search events in the app",
+      "consumer": "src/app/components/showcase/showcase.component.html:17-24",
+      "why": "Native list search is implemented. Here is merely ambiguous on a website whose tour shows screenshots and navigational controls, not a working event-search interface. Keep the capability and clarify its location; do not label the existing feature unsupported.",
+      "evidence": [
+        "Calendar/ListView/AllEventsListView.swift:25-42,66-69",
+        "Calendar/ListView/SearchResultsView.swift:58-63",
+        "src/app/components/showcase/showcase.component.ts:steps",
+        "src/app/components/showcase/showcase.component.html:33-49,62-71"
+      ],
+      "classification": "optional clarity"
+    },
+    {
+      "field_path": "showcase.panels[4].bullets[1]",
+      "before": "Nothing to decode",
+      "proposed": "Dates and times",
+      "consumer": "src/app/components/showcase/showcase.component.html:17-24",
+      "why": "Nothing to decode is subjective ease-of-use copy, not a technical capability claim. Dates and times is an optional plainer description of the agenda. There is no demonstrated product defect here and no need to invent a decoding requirement.",
+      "evidence": [
+        "Calendar/ListView/AllEventsListView.swift:89-102"
+      ],
+      "classification": "optional editorial"
+    },
+    {
+      "field_path": "features.tiles[1].badge",
+      "before": "One tap",
+      "proposed": "Start a draft",
+      "consumer": "src/app/components/features/features.component.html:79",
+      "why": "The one-tap action really can open a draft, and the adjacent body already says to review before saving. Naming that result in the badge removes a possible completed-plan reading without declaring the one-tap entry point false.",
+      "evidence": [
+        "research/batch15-home-claim-audit.json#proofs.weather-draft",
+        "src/app/content/home/en-US.ts:features.tiles[1].body"
+      ],
+      "classification": "optional clarity"
+    }
+  ],
+  "counts": {
+    "recommended_corrections": 3,
+    "optional_clarity": 2,
+    "optional_editorial": 1
+  },
+  "consumer_findings": [
+    {
+      "fields": [
+        "showcase.title",
+        "showcase.lead"
+      ],
+      "finding": "Defined in the locale object but not referenced by the showcase template. The prior corrected lead therefore does not qualify visible tour panels. No template change proposed in this audit."
+    },
+    {
+      "fields": [
+        "showcase.panels[*]"
+      ],
+      "finding": "steps() merges localized panels with fixed screenshots. Bullets are plain text. Clicking screenshots or rail buttons navigates tour steps."
+    },
+    {
+      "fields": [
+        "weather.readings.*"
+      ],
+      "finding": "Sample metric captions are fallback data. metrics uses snapshot captions when a matching metric exists; the no-snapshot hint explicitly says sample data, not live weather. Do not treat these sample captions as promises about the app or the visitor’s current weather."
+    }
+  ],
+  "retained": [
+    {
+      "fields": [
+        "cta.lead",
+        "features.tiles[2].body"
+      ],
+      "reason": "Already distinguish local calendars without an account from connections/sharing that may need sign-in."
+    },
+    {
+      "fields": [
+        "features.unified.body",
+        "features.sourceNotes.twoWay",
+        "faq.items[3].a"
+      ],
+      "reason": "Already qualify selected calendars, provider permissions and successful synchronization; do not restore a universal two-way or instantaneous promise."
+    },
+    {
+      "fields": [
+        "weather.lead",
+        "weather.demoLabel",
+        "weather.tapAnHour",
+        "faq.items[2].a"
+      ],
+      "reason": "Already distinguish website Open-Meteo from app WeatherKit, finite returned dates/hours, selected place and event drafts."
+    },
+    {
+      "fields": [
+        "hero.altMonth",
+        "hero.altDay",
+        "hero.altWeather",
+        "showcase.panels[*].alt",
+        "cta.alt",
+        "weather.alt"
+      ],
+      "reason": "These are screenshot descriptions, not independently established runtime guarantees. No screenshot visual review performed here; do not infer false product claims solely from their wording."
+    },
+    {
+      "fields": [
+        "features.lead",
+        "features.unified.title"
+      ],
+      "reason": "Three accounts is shorthand alongside explicit provider names and Premium qualification, not an explicit assertion that sign-in is compulsory or a tested account maximum. No new account correction justified by this review."
+    }
+  ],
+  "evidence_status": {
+    "fresh_reads": [
+      "English home copy and showcase/features/CTA/weather-hub templates and component logic",
+      "Native AllEventsListView.swift and SearchResultsView.swift search implementation",
+      "Native source matches for empty hourly data, returned-hour mapping, prefix(10), and read-only gesture guards"
+    ],
+    "existing_records": [
+      "research/batch15-home-claim-audit.json: source-backed claim proofs",
+      "research/batch16-localized-weather/audit-product.json: reviewed weather scope"
+    ],
+    "native_path_root": "/Users/minchomilev/work/hrapp",
+    "limits": [
+      "Static source and existing evidence review only; no release/runtime certification.",
+      "No build, deployment, source integration, native edit, App Store Connect action or external paid API.",
+      "No native-speaker review or locale rewrite."
+    ]
+  },
+  "validation": {
+    "before_values": "Read programmatically from the current HOME_EN_US object; all six paths exist.",
+    "output_scope": "Only this audit JSON was written."
+  }
+}

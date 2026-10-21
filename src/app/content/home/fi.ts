@@ -59,7 +59,7 @@ export const HOME_FI: HomeCopy = {
       {
         kicker: 'Viikkonäkymä',
         title: 'Kokonainen viikko, jonka todella voi lukea',
-        body: "Seitsemän saraketta, kullakin oma ylin, alin ja omat olosuhteet. Käännä vaakatasoon nähdäksesi koko leveyden. Tartu tapahtumaan ja liu'uta se toiselle päivälle.",
+        body: "Vertaa viikon menoja saatavilla olevaan päiväkohtaiseen sääennusteeseen. Käännä laite vaaka-asentoon saadaksesi leveämmän näkymän. Siirrä muokattavia tapahtumia toiselle päivälle ja tarkista toistuvan tapahtuman kohdalla, mitä toistokertoja haluat muuttaa.",
         alt: 'Viikkonäkymä päiväsarakkein, kussakin sään yhteenveto',
         bullets: ['Pysty ja vaaka', 'Päivän ylin / alin', 'Vedä päivien välillä'],
       },
@@ -147,7 +147,7 @@ tabs: {"hourly":"Tunneittain","daily":"Päivittäin","weekend":"Viikonloppu","ra
       body: "Katso valittuja iCloud- ja Google-kalentereita yhdessä; Premium lisää Microsoft-kalenterit. Muokkaa tilisi oikeuksien sallimissa rajoissa ja tarkista lähdekalenteri muutosten jälkeen.",
     },
     gestures: {
-      title: 'Vedä. Venytä. Valmis.',
+      title: "Vedä. Muuta kestoa. Tarkista.",
       body: "Siirrä muokattavia tapahtumia toiseen aikaan tai päivään tai muuta niiden kestoa aikajanalla. Valitse toistuvasta tapahtumasta muutettavat kerrat ja tarkista tallennettu tulos.",
     },
     tiles: [
@@ -254,7 +254,10 @@ tabs: {"hourly":"Tunneittain","daily":"Päivittäin","weekend":"Viikonloppu","ra
     ],
   },
   cta: {
-    title: ['Huomisella on jo', 'ennuste mukanaan.'],
+    title: [
+  "Suunnittele seuraava päivä.",
+  "Tarkista saatavilla oleva ennuste."
+],
     lead: "Lataa ilmaiseksi. Käytä paikallisia kalentereita ilman tiliä. Kalenteripalveluiden yhdistäminen ja jakaminen voivat edellyttää kirjautumista.",
     fromRatings: '{n} arviosta',
     download: 'lataus',

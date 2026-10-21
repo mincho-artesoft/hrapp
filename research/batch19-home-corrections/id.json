@@ -1,0 +1,26 @@
+{
+  "locale": "id",
+  "changes": [
+    {
+      "path": "cta.title",
+      "before": [
+        "Besok sudah datang",
+        "dengan prakiraannya."
+      ],
+      "after": [
+        "Rencanakan hari berikutnya.",
+        "Periksa prakiraan yang tersedia."
+      ]
+    },
+    {
+      "path": "showcase.panels[1].body",
+      "before": "Tujuh kolom, masing-masing dengan tertinggi, terendah, dan kondisinya sendiri. Putar ke lanskap untuk seluruh lebarnya. Genggam sebuah acara dan geser ke hari lain.",
+      "after": "Bandingkan jadwal minggu ini dengan prakiraan cuaca harian yang tersedia. Putar perangkat ke posisi lanskap untuk tampilan yang lebih lebar. Pindahkan acara yang dapat diedit ke hari lain, dan periksa kejadian mana yang ingin diubah untuk acara berulang."
+    },
+    {
+      "path": "features.gestures.title",
+      "before": "Seret. Regangkan. Selesai.",
+      "after": "Seret. Ubah durasinya. Periksa."
+    }
+  ]
+}

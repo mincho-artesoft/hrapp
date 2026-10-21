@@ -1,0 +1,26 @@
+{
+  "date": "2026-10-22",
+  "exactBodyRead": {
+    "url": "https://flexibits.com/fantastical-ios/help/settings",
+    "discoveredFrom": "https://flexibits.com/fantastical-ios/help",
+    "followedVisibleLink": "Settings, link37",
+    "substantiveRange": "61–150",
+    "scope": "Complete extracted Settings main text; not linked settings pages, images or runtime."
+  },
+  "publisherSummary": "Describes weather place, default calendar/duration, display ranges, tasks/list controls, map apps, extra zones, combining identical events and hidden/declined/mirrored records. These are Fantastical settings, not Cloud capabilities.",
+  "mapping": [
+    "event-saved-to-wrong-calendar",
+    "time-zones-and-the-flight-you-booked",
+    "when-two-calendars-disagree",
+    "calendar-notifications-missing-silent-or-duplicated",
+    "weather-where-the-event-is"
+  ],
+  "mappingScope": "Existing intent mapping only; no new procedure or feature parity inferred. No stand-alone generic settings article justified from this body.",
+  "malformedPriorDiscovery": "https://flexibits.com/fantastical-ios/help/fantastical-ios/help/settings",
+  "correction": "Followed actual publisher navigation to the correct single-prefix URL. No redirect or HTTP404 result claimed for the malformed stored citation.",
+  "limits": [
+    "No fixed price, date range or default behavior copied to Cloud.",
+    "No exhaustive feature or competitor coverage claimed.",
+    "No customer account or publisher product opened."
+  ]
+}

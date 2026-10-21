@@ -1,0 +1,220 @@
+{
+  "allPassed": true,
+  "locales": 30,
+  "sourceFields": 90,
+  "renderedStrings": 120,
+  "unusedSourceFields": 0,
+  "records": [
+    {
+      "locale": "en-US",
+      "path": "/",
+      "sourceFieldsVerified": 3,
+      "renderedStringsVerified": 4,
+      "sha256": "e2313e65fdfdbd1d58934428964550f6baaba8a68a9df223393dc373b65cad78"
+    },
+    {
+      "locale": "ar-SA",
+      "path": "/ar/",
+      "sourceFieldsVerified": 3,
+      "renderedStringsVerified": 4,
+      "sha256": "e8654b9d66f00d2b695628ef4bf6555a70e6595e0ef0e18a1b90014158bfb91c"
+    },
+    {
+      "locale": "bg",
+      "path": "/bg/",
+      "sourceFieldsVerified": 3,
+      "renderedStringsVerified": 4,
+      "sha256": "a77877dfe6e6f8f058f693f95e89a95e0f128cd8d677f124b51fbbf1858e50e7"
+    },
+    {
+      "locale": "cs",
+      "path": "/cs/",
+      "sourceFieldsVerified": 3,
+      "renderedStringsVerified": 4,
+      "sha256": "4b5ea74dd5e5633db784e834130ab3e3ba33da06e8296d9f5697beab63f0e5a0"
+    },
+    {
+      "locale": "da",
+      "path": "/da/",
+      "sourceFieldsVerified": 3,
+      "renderedStringsVerified": 4,
+      "sha256": "2de5d2c6e8e3b1785eb04f987c2a5b6c950b65f9a95f1aaef79bad0e00bf6afe"
+    },
+    {
+      "locale": "de-DE",
+      "path": "/de/",
+      "sourceFieldsVerified": 3,
+      "renderedStringsVerified": 4,
+      "sha256": "a20755636d08651b08a6e4951974819d05ca2fcda0dd67744e93110e3d72d042"
+    },
+    {
+      "locale": "el",
+      "path": "/el/",
+      "sourceFieldsVerified": 3,
+      "renderedStringsVerified": 4,
+      "sha256": "4bee8cd5af17c7a14e9e1efb3e0a901017929855094f7b4a748d3f4ae08080d5"
+    },
+    {
+      "locale": "es-ES",
+      "path": "/es/",
+      "sourceFieldsVerified": 3,
+      "renderedStringsVerified": 4,
+      "sha256": "f12b56b9314ace13d1c1e0438a5496538ba8af2a712918992c40f155064aaddf"
+    },
+    {
+      "locale": "fi",
+      "path": "/fi/",
+      "sourceFieldsVerified": 3,
+      "renderedStringsVerified": 4,
+      "sha256": "14016793ceb85be937fb4753a14a9a0be6c22fa8c01adef0ea32e9b37e9de045"
+    },
+    {
+      "locale": "fr-FR",
+      "path": "/fr/",
+      "sourceFieldsVerified": 3,
+      "renderedStringsVerified": 4,
+      "sha256": "eb6efe2c94e1b5a0996dce2ed1f360aa43631b8c502f76beb10dceb7d906b912"
+    },
+    {
+      "locale": "he",
+      "path": "/he/",
+      "sourceFieldsVerified": 3,
+      "renderedStringsVerified": 4,
+      "sha256": "20a096c72ab4a05ea5563119de34a8d2c0b29a03c3717a3120bba90fc03026d3"
+    },
+    {
+      "locale": "hi",
+      "path": "/hi/",
+      "sourceFieldsVerified": 3,
+      "renderedStringsVerified": 4,
+      "sha256": "ed32b5b27076f72311fb2aa134594666a45da5a11c7f680ceb5bc4b286d25fa5"
+    },
+    {
+      "locale": "hu",
+      "path": "/hu/",
+      "sourceFieldsVerified": 3,
+      "renderedStringsVerified": 4,
+      "sha256": "658e8e29aabc30e7f2027f182e3d628993f8b8789542d96a75690a6e633c9d52"
+    },
+    {
+      "locale": "id",
+      "path": "/id/",
+      "sourceFieldsVerified": 3,
+      "renderedStringsVerified": 4,
+      "sha256": "4aff523cb849f4d923a7be3ea6084d483356e01999a9efb1e1c6f15534ba7ca0"
+    },
+    {
+      "locale": "it",
+      "path": "/it/",
+      "sourceFieldsVerified": 3,
+      "renderedStringsVerified": 4,
+      "sha256": "465e7d57e8a9a3c026e42cc523984de2b40015455065f4da5cf2fbde3cc418d5"
+    },
+    {
+      "locale": "ja",
+      "path": "/ja/",
+      "sourceFieldsVerified": 3,
+      "renderedStringsVerified": 4,
+      "sha256": "2f9b19c2341d35efa92d7c54a1feaf36bbd1553d98af9ad7e6dfc78e6f860690"
+    },
+    {
+      "locale": "ko",
+      "path": "/ko/",
+      "sourceFieldsVerified": 3,
+      "renderedStringsVerified": 4,
+      "sha256": "f3e92d83a706dfded276716c07fad0f9aee015e1f176de58b1a64ce720d6ab4c"
+    },
+    {
+      "locale": "ms",
+      "path": "/ms/",
+      "sourceFieldsVerified": 3,
+      "renderedStringsVerified": 4,
+      "sha256": "975bb745353c30c16b6a0b2fd754b9c2b41c7bea954d9a4846e2002ff700978d"
+    },
+    {
+      "locale": "nl-NL",
+      "path": "/nl/",
+      "sourceFieldsVerified": 3,
+      "renderedStringsVerified": 4,
+      "sha256": "b20507497790e34b7fd2ba102392c49ec6d23ae3633b788082aa7166a41b8b17"
+    },
+    {
+      "locale": "no",
+      "path": "/no/",
+      "sourceFieldsVerified": 3,
+      "renderedStringsVerified": 4,
+      "sha256": "db28f3d0b190a964c1f445cd591eb077c6c07751937d31874abd001732d53c1e"
+    },
+    {
+      "locale": "pl",
+      "path": "/pl/",
+      "sourceFieldsVerified": 3,
+      "renderedStringsVerified": 4,
+      "sha256": "fae5945f4f7073830290874f3c9a4fc0836216d7cda293ce40a916095d69668b"
+    },
+    {
+      "locale": "pt-BR",
+      "path": "/pt/",
+      "sourceFieldsVerified": 3,
+      "renderedStringsVerified": 4,
+      "sha256": "804dd62c601677976267c8e2b127651c22b41b5134b522ef1d051b6b5c3bc8fe"
+    },
+    {
+      "locale": "ro",
+      "path": "/ro/",
+      "sourceFieldsVerified": 3,
+      "renderedStringsVerified": 4,
+      "sha256": "d16f4cd72ff655bb1f63a484dc65601963c8f325d2d9f5e34e819f3ffea0c042"
+    },
+    {
+      "locale": "ru",
+      "path": "/ru/",
+      "sourceFieldsVerified": 3,
+      "renderedStringsVerified": 4,
+      "sha256": "2a8d41a7c8546227fab11a2ef57b88831d20d48a16fadf6d591fa16dc5cd0698"
+    },
+    {
+      "locale": "sv",
+      "path": "/sv/",
+      "sourceFieldsVerified": 3,
+      "renderedStringsVerified": 4,
+      "sha256": "785bbe91fc2ca10fe90f9e8557464cc1ec8ad2423c2604afce9012d336abe6ee"
+    },
+    {
+      "locale": "th",
+      "path": "/th/",
+      "sourceFieldsVerified": 3,
+      "renderedStringsVerified": 4,
+      "sha256": "0484bddf0b73b357122d51c674d0392932fed0eba328dc055c205df0d026cf44"
+    },
+    {
+      "locale": "tr",
+      "path": "/tr/",
+      "sourceFieldsVerified": 3,
+      "renderedStringsVerified": 4,
+      "sha256": "2da41512a5296d102676dc6caada51039cbd9cccabf661566e480e641ba9a49b"
+    },
+    {
+      "locale": "vi",
+      "path": "/vi/",
+      "sourceFieldsVerified": 3,
+      "renderedStringsVerified": 4,
+      "sha256": "e507ba2f73b397c22f5e3e0e7d20ae5842059b6bb1b31c90c0ce5ad68b397e9f"
+    },
+    {
+      "locale": "zh-Hans",
+      "path": "/zh-hans/",
+      "sourceFieldsVerified": 3,
+      "renderedStringsVerified": 4,
+      "sha256": "91b99ae059d4823b80d85d3e6c22cd2c6993c2d1304b9a43022088fcc2776364"
+    },
+    {
+      "locale": "zh-Hant",
+      "path": "/zh-hant/",
+      "sourceFieldsVerified": 3,
+      "renderedStringsVerified": 4,
+      "sha256": "ef8d55b489c9a8a25bf0f2d1d254e3f750318b40131a72bf98d2a6c985154fef"
+    }
+  ],
+  "scope": "All120 new literal strings (90 source fields) appear in parsed built homepage bodies including inactive tour panels; script/style excluded. Notvisualorproductruntimecertification."
+}

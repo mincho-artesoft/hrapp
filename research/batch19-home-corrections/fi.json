@@ -1,0 +1,26 @@
+{
+  "locale": "fi",
+  "changes": [
+    {
+      "path": "cta.title",
+      "before": [
+        "Huomisella on jo",
+        "ennuste mukanaan."
+      ],
+      "after": [
+        "Suunnittele seuraava päivä.",
+        "Tarkista saatavilla oleva ennuste."
+      ]
+    },
+    {
+      "path": "showcase.panels[1].body",
+      "before": "Seitsemän saraketta, kullakin oma ylin, alin ja omat olosuhteet. Käännä vaakatasoon nähdäksesi koko leveyden. Tartu tapahtumaan ja liu'uta se toiselle päivälle.",
+      "after": "Vertaa viikon menoja saatavilla olevaan päiväkohtaiseen sääennusteeseen. Käännä laite vaaka-asentoon saadaksesi leveämmän näkymän. Siirrä muokattavia tapahtumia toiselle päivälle ja tarkista toistuvan tapahtuman kohdalla, mitä toistokertoja haluat muuttaa."
+    },
+    {
+      "path": "features.gestures.title",
+      "before": "Vedä. Venytä. Valmis.",
+      "after": "Vedä. Muuta kestoa. Tarkista."
+    }
+  ]
+}

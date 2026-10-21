@@ -59,7 +59,7 @@ export const HOME_PL: HomeCopy = {
       {
         kicker: 'Widok tygodnia',
         title: 'Cały tydzień, który da się naprawdę przeczytać',
-        body: 'Siedem kolumn, każda z własną wartością najwyższą, najniższą i własnymi warunkami. Obróć poziomo, by zobaczyć całość. Chwyć wydarzenie i przesuń je na inny dzień.',
+        body: "Porównaj wydarzenia tygodnia z dostępną prognozą pogody na poszczególne dni. Obróć urządzenie poziomo, aby uzyskać szerszy widok. Przenoś wydarzenia, które możesz edytować, na inny dzień, a przy wydarzeniu cyklicznym sprawdź, które wystąpienia chcesz zmienić.",
         alt: 'Widok tygodnia z kolumnami dni, każda z podsumowaniem pogody',
         bullets: ['Pionowo i poziomo', 'Maksimum / minimum dnia', 'Przeciągaj między dniami'],
       },
@@ -143,7 +143,7 @@ tabs: {"hourly":"Godzinowa","daily":"Dzienna","weekend":"Weekend","range":"Zakre
       body: "Wyświetlaj razem wybrane kalendarze iCloud i Google; Premium dodaje kalendarze Microsoft. Edytuj zgodnie z uprawnieniami konta, a po zmianach sprawdź kalendarz źródłowy.",
     },
     gestures: {
-      title: 'Przeciągnij. Rozciągnij. Gotowe.',
+      title: "Przeciągnij. Zmień rozmiar. Sprawdź.",
       body: "Przenoś edytowalne wydarzenia na inną godzinę lub dzień albo zmieniaj ich długość na osi czasu. Dla wydarzenia cyklicznego wybierz zmieniane wystąpienia i sprawdź zapisany wynik.",
     },
     tiles: [
@@ -250,7 +250,10 @@ tabs: {"hourly":"Godzinowa","daily":"Dzienna","weekend":"Weekend","range":"Zakre
     ],
   },
   cta: {
-    title: ['Jutro już przychodzi', 'z prognozą w komplecie.'],
+    title: [
+  "Zaplanuj kolejny dzień.",
+  "Sprawdź dostępną prognozę."
+],
     lead: "Pobierz za darmo. Korzystaj z kalendarzy lokalnych bez konta. Łączenie usług kalendarza i udostępnianie może wymagać zalogowania.",
     fromRatings: 'z {n} ocen',
     download: 'pobrania',

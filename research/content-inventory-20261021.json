@@ -1,5 +1,5 @@
 {
-  "date": "2026-10-21T23:06:07.624Z",
+  "date": "2026-10-21T23:23:16.751Z",
   "status": "source_inventory_not_quality_approval",
   "articles": [
     {
@@ -1764,6 +1764,24 @@
       "sources": [
         "https://support.apple.com/en-ca/guide/iphone/iphfd1054569/ios",
         "https://calendar.teamup.com/kb/how-to-use-calendar-views/"
+      ],
+      "updated": "2026-10-22"
+    },
+    {
+      "locale": "en-US",
+      "slug": "calendar-event-or-room-reservation",
+      "title": "Calendar event or room reservation? Check what is confirmed",
+      "description": "A room name is not a reservation. Check Google Calendar or Outlook resource responses, recurring dates and changes before relying on a meeting room.",
+      "descriptionCharacters": 148,
+      "sections": 6,
+      "faq": 3,
+      "words": 883,
+      "source": "articles-sharing.ts",
+      "sources": [
+        "https://support.google.com/calendar/answer/143753?hl=en",
+        "https://support.google.com/calendar/answer/16107253?hl=en",
+        "https://support.microsoft.com/en-us/outlook/use-the-scheduling-assistant-and-room-finder-for-meetings-in-outlook",
+        "https://learn.microsoft.com/en-us/microsoft-365/admin/manage/room-equipment-mailboxes-faq?view=o365-worldwide"
       ],
       "updated": "2026-10-22"
     },

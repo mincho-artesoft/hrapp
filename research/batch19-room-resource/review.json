@@ -1,0 +1,82 @@
+{
+  "date": "2026-10-22",
+  "decision": "pass",
+  "blockers": [],
+  "scope": "Complete proposed article reviewed against the native evidence report and batch24 provider evidence. Parent reports fresh reads of all four cited main bodies; this review does not claim an additional web fetch or runtime test.",
+  "reviewedInputs": [
+    {
+      "file": "research/batch19-room-resource/calendar-event-or-room-reservation.json",
+      "sha256": "b5b4a5363a6ae4d762dd881f35b6f78872e2e05ca33a8fe71e06b3887c9ef05c"
+    },
+    {
+      "file": "research/batch19-room-resource-native-evidence.json",
+      "sha256": "22ca0932930e556ce3d30843b70842d87273280d5f629d81b3b9dc8c2d476d7e"
+    },
+    {
+      "file": "research/competitors/batch24-room-resource-primary-20261022.json",
+      "sha256": "71eb02459df589a4d46cb819b90ddd8204c2b659596fe5aacdd3f69159e7148c"
+    }
+  ],
+  "checks": [
+    {
+      "topic": "Location versus resource acceptance",
+      "result": "pass",
+      "reason": "Lede, first section, provider sections, practical steps and FAQ consistently separate a location label, resource request and accepted reservation."
+    },
+    {
+      "topic": "Cloud capability",
+      "result": "pass",
+      "reason": "Explicitly establishes location entry and combined view only; no resource picker, confirmation dashboard or universal impossibility claim. Retains separate provider confirmation after comparing event displays."
+    },
+    {
+      "topic": "Google scope",
+      "result": "pass",
+      "reason": "Computer organizational workflow and work/school restriction are explicit. Personal Gmail is not assigned an employer directory. Declines, secondary-calendar email limits and time-change rebooking are correctly attributed to Google."
+    },
+    {
+      "topic": "Outlook scope",
+      "result": "pass",
+      "reason": "Microsoft 365/Exchange and administrator configuration are qualified. Room recipient, sending the request, platform differences and organizational processing remain distinct from availability."
+    },
+    {
+      "topic": "Recurrence and changed meetings",
+      "result": "pass",
+      "reason": "Checks affected occurrences without promising whole-series acceptance or preserved booking after a time change. Generic booking-window qualification is sufficient; no need to reproduce every numeric provider limit."
+    },
+    {
+      "topic": "Cancellation",
+      "result": "pass",
+      "reason": "Attributes resource removal to Microsoft and directs readers to organizer/provider workflow and correct occurrence scope. It does not claim deleting a personal copy or location text cancels the resource."
+    },
+    {
+      "topic": "Sources and disclosure",
+      "result": "pass",
+      "reason": "Four relevant primary sources and Arte Soft disclosure present; no runtime/released-binary certification."
+    },
+    {
+      "topic": "Related routes",
+      "result": "pass",
+      "missing": []
+    }
+  ],
+  "optionalPolish": [
+    {
+      "path": "sections[5].body[0]",
+      "suggestion": "For extra procedural clarity, say “remove the resource and complete the provider’s update/cancellation workflow” so readers do not stop after an unsent editor change. Existing next sentence already requires the supported workflow, so this is not a blocker."
+    }
+  ],
+  "shape": {
+    "sections": 6,
+    "paragraphs": 12,
+    "practicalSteps": 6,
+    "faqs": 3,
+    "sources": 4,
+    "descriptionUnicodeCharacters": 148,
+    "claimsEmpty": true
+  },
+  "limits": [
+    "Review is evidence consistency and editorial assessment, not a live booking test.",
+    "No source integration, build, deployment, native modification or paid API."
+  ],
+  "rootFollowup": "Implemented optional clarification: complete required provider update/cancellation; unsaved edits do not establish cancellation. No new named menu or universal provider procedure added."
+}

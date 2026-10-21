@@ -59,7 +59,7 @@ export const HOME_DA: HomeCopy = {
       {
         kicker: 'Ugevisning',
         title: 'En hel uge, du faktisk kan læse',
-        body: 'Syv søjler, hver med sin egen højeste, laveste og sine egne forhold. Drej til liggende for hele bredden. Tag fat i en begivenhed og skub den til en anden dag.',
+        body: "Sammenhold ugens aftaler med den tilgængelige daglige vejrudsigt. Drej enheden til liggende for at få en bredere visning. Flyt redigerbare begivenheder til en anden dag, og kontrollér, hvilke forekomster du vil ændre ved en gentagen begivenhed.",
         alt: 'Ugevisning med dagssøjler, der hver viser en vejroversigt',
         bullets: ['Stående og liggende', 'Højeste / laveste for dagen', 'Træk på tværs af dage'],
       },
@@ -139,7 +139,7 @@ tabs: {"hourly":"Timevis","daily":"Dagligt","weekend":"Weekend","range":"Prognos
       body: "Se valgte iCloud- og Google-kalendere samlet; Premium tilføjer Microsoft-kalendere. Redigér, hvor kontotilladelserne tillader det, og kontrollér kildekalenderen efter ændringer.",
     },
     gestures: {
-      title: 'Træk den. Stræk den. Færdig.',
+      title: "Træk. Tilpas varigheden. Kontrollér.",
       body: "Flyt redigerbare begivenheder til et andet tidspunkt eller en anden dag, eller ændr varigheden på tidslinjen. Vælg ved gentagne begivenheder, hvilke forekomster der skal ændres, og kontrollér det gemte resultat.",
     },
     tiles: [
@@ -246,7 +246,10 @@ tabs: {"hourly":"Timevis","daily":"Dagligt","weekend":"Weekend","range":"Prognos
     ],
   },
   cta: {
-    title: ['Morgendagen har allerede', 'en udsigt med.'],
+    title: [
+  "Planlæg den næste dag.",
+  "Tjek den tilgængelige vejrudsigt."
+],
     lead: "Hent gratis. Brug lokale kalendere uden en konto. Tilslutning af kalendertjenester og deling kan kræve login.",
     fromRatings: 'fra {n} bedømmelser',
     download: 'download',

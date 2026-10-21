@@ -1,0 +1,26 @@
+{
+  "locale": "it",
+  "changes": [
+    {
+      "path": "cta.title",
+      "before": [
+        "Domani arriva già",
+        "con la previsione attaccata."
+      ],
+      "after": [
+        "Pianifica il giorno dopo.",
+        "Controlla le previsioni disponibili."
+      ]
+    },
+    {
+      "path": "showcase.panels[1].body",
+      "before": "Sette colonne, ciascuna con la propria massima, minima e condizione. Ruota in orizzontale per vederla tutta. Afferra un evento e falla scivolare su un altro giorno.",
+      "after": "Confronta gli appuntamenti della settimana con le previsioni meteo giornaliere disponibili. Ruota il dispositivo in orizzontale per una vista più ampia. Sposta gli eventi modificabili a un altro giorno e, per un evento ricorrente, controlla quali occorrenze modificare."
+    },
+    {
+      "path": "features.gestures.title",
+      "before": "Trascina. Allunga. Fatto.",
+      "after": "Trascina. Ridimensiona. Controlla."
+    }
+  ]
+}

@@ -187,10 +187,11 @@ export const PLANNING_EN_US: Readonly<Record<string, LocalisedArticle>> = {
     }
   ],
   "seeAlso": [
-    "month-view-on-a-bigger-screen",
-    "a-list-for-people-who-dislike-grids",
-    "drag-an-event-to-move-it"
-  ]
+  "month-view-on-a-bigger-screen",
+  "a-list-for-people-who-dislike-grids",
+  "drag-an-event-to-move-it",
+  "calendar-event-or-room-reservation"
+]
 },
 
   'month-view-on-a-bigger-screen': {

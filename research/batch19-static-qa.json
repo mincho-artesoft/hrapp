@@ -1,0 +1,31 @@
+{
+  "allPassed": true,
+  "changedArticles": 3,
+  "newEnglishGuide": 1,
+  "relatedOnlyChanges": 2,
+  "sitemapUrls": 498,
+  "preservedPreviousCanonicals": 497,
+  "articles": [
+    {
+      "locale": "en-US",
+      "slug": "a-week-view-that-fits-a-week",
+      "url": "https://www.cloud-calendars.com/articles/a-week-view-that-fits-a-week/",
+      "sha256": "3a4d7b4d005f03d36a270bb37c5c2f5a5d93613956159c9c7f23a107dfdde12b"
+    },
+    {
+      "locale": "en-US",
+      "slug": "meeting-links-that-make-themselves",
+      "url": "https://www.cloud-calendars.com/articles/meeting-links-that-make-themselves/",
+      "sha256": "4f0dec39519b26877b17d2b164873319188d1f827e795678a6e655f0015ae157"
+    },
+    {
+      "locale": "en-US",
+      "slug": "calendar-event-or-room-reservation",
+      "url": "https://www.cloud-calendars.com/articles/calendar-event-or-room-reservation/",
+      "sha256": "240c63c8e74a208658b8e45b8308e469643d7ab6a4ee659f480e3eeaa8335e34"
+    }
+  ],
+  "localizedShellPagesVerified": 497,
+  "localizedHeroPagesVerified": 30,
+  "scope": "New guide complete body/FAQ/sources, exact prior canonical preservation and all localized shell links; related-only source guard separately. Not native-speaker, released-runtime or ranking proof."
+}
