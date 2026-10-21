@@ -1,14 +1,6 @@
 import { bootstrapApplication } from '@angular/platform-browser';
-import { provideAnimationsAsync } from '@angular/platform-browser/animations/async';
-import { provideRouter } from '@angular/router'; // Import provideRouter
-
 import { AppComponent } from './app/app.component';
-import { routes } from './app/app.routes'; // Import your routes
+import { appConfig } from './app/app.config';
 
-bootstrapApplication(AppComponent, {
-    providers: [
-        provideAnimationsAsync(),
-        provideRouter(routes) // Provide the routes to the application
-    ]
-})
-    .catch((err) => console.error(err));
+// Use the same router and hydration configuration as the prerendered pages.
+bootstrapApplication(AppComponent, appConfig).catch(error => console.error(error));

@@ -79,40 +79,96 @@ export const ARTICLES_ID: Readonly<Record<string, LocalisedArticle>> = {
   },
 
   'sharing-one-event-not-your-calendar': {
-    title: 'Berbagi satu acara, bukan kalender Anda',
-    short: 'Berbagi satu acara',
-    description: 'Bagaimana mengirim satu acara bekerja, apa yang sebenarnya diterima pihak lain, dan mengapa ia tidak perlu memasang apa pun untuk melihatnya.',
-    lede: 'Berbagi kalender biasanya semua atau tidak sama sekali: entah seseorang punya akses ke milik Anda atau tidak. Mengirim undangan makan malam semestinya tidak menuntut keduanya.',
-    commonBelief: 'Bahwa berbagi satu acara berarti memberi seseorang jendela ke sisa pekan Anda.',
-    sections: [
-      {
-        heading: 'Apa yang sebenarnya dikirim',
-        body: [
-          'Ketika Anda membuat acara, aplikasi menawarkan untuk membagikannya. Yang berjalan adalah sebuah tautan — lewat surel, lewat pesan, lewat apa pun yang dimiliki penerimanya — dan di balik tautan itu ada umpan kalender yang berisi acara tersebut dan tidak ada yang lain.',
-          'Ini bukan tangkapan layar dan bukan salinan yang menjadi usang. Kalau waktunya berubah, umpannya berubah bersamanya, dan orang yang Anda kirimi melihat perubahan itu tanpa Anda mengirim ulang apa pun.',
-        ],
-      },
-      {
-        heading: 'Apa yang bukan',
-        body: [
-          'Tautannya adalah langganan kalender biasa: dibaca Kalender Apple, dibaca Google Kalender, dibaca Outlook. Dalam pesan itu juga ada App Clip bagi yang memang menginginkan aplikasinya — terbuka tanpa pemasangan. Itu pintu, bukan gerbang tol.',
-          'Ini tidak seketika: umpan meminta aplikasi memeriksa lagi tiap jam, dan itu permintaan, bukan aturan. Ini juga bukan rahasia: tautannya membawa dua puluh dua karakter acak yang tak akan ditebak siapa pun, tetapi siapa pun yang memilikinya bisa membaca. Dan untuk sekarang ini hanya-baca.',
-        ],
-      },
-    ],
-    claims: {
-      refreshHint: 'Jam antara permintaan penyegaran umpan',
-      linkLength: 'Karakter acak dalam tautan — itulah yang membuatnya tak tertebak',
-      sharePrice: 'Biaya berbagi',
+  "updated": "2026-10-21",
+  "title": "Bagikan satu acara kalender: pilih tautan dan akses yang tepat",
+  "short": "Berbagi satu acara",
+  "description": "Bagikan satu acara tanpa seluruh kalender. Pahami Reader, Writer, Owner, pratinjau, pembaruan, dan batas pencabutan akses.",
+  "lede": "Berbagi rincian makan malam, mengizinkan penyelenggara lain mengedit, dan meminta jawaban kehadiran adalah tugas berbeda. Tentukan kebutuhan, lalu pilih jalur berbagi. Panduan ini ditulis Arte Soft, pengembang Cloud Calendars.",
+  "commonBelief": "Setiap tautan acara adalah langganan kalender hanya baca yang langsung diperbarui dan mencatat jawaban.",
+  "sections": [
+    {
+      "heading": "Mulai dari satu acara dan periksa rinciannya",
+      "body": [
+        "Berbagi satu acara dibatasi pada acara itu, bukan seluruh kalender pengirim. Sebelum mengirim, periksa judul, zona waktu, lokasi, catatan, dan URL rapat. Informasi untuk satu tamu belum tentu cocok untuk tautan yang disebarkan luas.",
+        "Berbagi acara makan malam tidak mengharuskan Anda berbagi kalender berisi janji medis. Namun, lokasi dan tautan makan malam tetap ikut. Periksa acaranya sendiri, bukan mengandalkan privasi kalender di sekitarnya."
+      ]
     },
-    practical: [
-      'Bagikan dari acaranya sendiri, tepat setelah membuatnya.',
-      'Kirim tautan lewat saluran yang sudah Anda pakai dengan orang itu.',
-      'Kalau waktunya berubah mendadak, tulis pesan juga, jangan hanya menggeser acaranya.',
-      'Cabut tautannya setelah acara lewat, seperti Anda berhenti membagikan sebuah dokumen.',
-    ],
-    seeAlso: ['icloud-google-and-outlook-in-one-view', 'weather-inside-your-calendar'],
-  },
+    {
+      "heading": "Pilih pratinjau, undangan email, atau QR",
+      "body": [
+        "Cloud Calendars menawarkan jalur berbeda. App Clip menampilkan pratinjau; aplikasi lengkap diperlukan untuk menambahkan acara melalui pengalaman itu. Undangan email dan QR memakai halaman web yang menawarkan pembukaan Cloud Calendars. Jangan menyebut semua tautan ini sebagai URL langganan yang saling menggantikan.",
+        "Pengirim masuk untuk alur berbagi tersinkronisasi. Tautan atau kode QR dapat diteruskan, jadi kirim hanya ke tempat yang sesuai dengan isinya. QR menyampaikan tautan, bukan membuktikan siapa yang membukanya."
+      ]
+    },
+    {
+      "heading": "Berikan hanya akses yang diperlukan",
+      "body": [
+        "Undangan email menyediakan Reader, Writer, atau Owner. Reader dapat melihat dan menyinkronkan; Writer mengedit; Owner juga berbagi dan mengelola akses. Pilihan ini berdampak, bukan tiga nama untuk tampilan undangan yang sama. Gunakan Reader bagi yang hanya membutuhkan jadwal.",
+        "Pilih Writer untuk rekan penyelenggara yang perlu mengubah acara. Pilih Owner hanya jika ia juga perlu mengelola akses orang lain. Akses lebih tinggi memerlukan identitas masuk yang sesuai. Penerima anonim bukan pemilik bersama yang teridentifikasi."
+      ]
+    },
+    {
+      "heading": "Pahami cara penerima menambahkan acara",
+      "body": [
+        "Dalam aplikasi lengkap, penambahan memerlukan izin kalender dan kalender tujuan yang dapat ditulis. Penerima perlu memeriksa tujuan sebelum menyimpan. Salinan yang diterima kemudian dapat dihubungkan dengan acara bersama untuk pembaruan berikutnya.",
+        "Ini berbeda dari mengimpor berkas ICS biasa ke kalender lain. Impor menghasilkan salinan; langganan memeriksa feed secara berkala. Jika Anda mengirim feed ICS, bukan undangan aplikasi, jelaskan jalurnya dan pastikan kalender penerima mendukungnya."
+      ]
+    },
+    {
+      "heading": "Verifikasi perubahan sebelum mengandalkannya",
+      "body": [
+        "Berbagi tersinkronisasi dapat membawa perubahan atau pembatalan, tetapi perangkat penerima harus berkesempatan menerimanya. Petunjuk penyegaran feed bukan tenggat pengiriman. Perangkat offline, langganan yang belum disegarkan, atau salinan impor mandiri dapat tetap menampilkan data lama.",
+        "Jika makan malam dipindah mendekati waktu mulai, perbarui acara dan hubungi tamu langsung. Minta konfirmasi waktu baru. Mengirim pembaruan dan menerima jawaban kehadiran adalah langkah terpisah."
+      ]
+    },
+    {
+      "heading": "Kelola akses tanpa menjanjikan penghapusan salinan",
+      "body": [
+        "Tinjau akses penerima dan hapus izin yang tidak diperlukan. Menghapus penerima dan mencabut tautan feed adalah tindakan berbeda; keduanya bukan penghapusan jarak jauh atas tangkapan layar, pesan, atau semua salinan kalender.",
+        "Jika tautan tersebar melampaui sasaran, identifikasi tautan atau pemberian akses terkait. Periksa jalur itu setelah perubahan. Untuk acara berikutnya, hindari rincian pribadi pada tautan luas daripada mengandalkan pencabutan untuk menariknya kembali."
+      ]
+    }
+  ],
+  "claims": {},
+  "practical": [
+    "Periksa rincian dan tentukan kebutuhan melihat, mengedit, atau jawaban kehadiran.",
+    "Pilih jalur berbagi dan masuk bila diperlukan.",
+    "Gunakan Reader untuk pembaca; berikan Writer atau Owner hanya sesuai tanggung jawab.",
+    "Minta penerima memeriksa waktu dan kalender tujuan saat menambahkan.",
+    "Untuk perubahan mendesak, perbarui acara dan kirim pesan langsung.",
+    "Tinjau izin penerima dan akses tautan secara terpisah saat berbagi berakhir."
+  ],
+  "faq": [
+    {
+      "q": "Apakah berbagi satu acara membuka seluruh kalender saya?",
+      "a": "Jalur tersinkronisasi satu acara dibatasi pada acara itu. Rinciannya sendiri tetap terlihat melalui jalur pilihan. Tinjau rinciannya dan jangan kirim undangan seluruh kalender jika hanya bermaksud satu acara."
+    },
+    {
+      "q": "Bisakah penerima mengubah acara?",
+      "a": "Ya, dengan akses Writer atau Owner yang sesuai melalui alur masuk yang didukung. Reader untuk melihat dan menyinkronkan. Langganan ICS biasa bukan mekanisme edit yang sama."
+    },
+    {
+      "q": "Apakah menghapus penerima membatalkan semua yang sudah diterimanya?",
+      "a": "Jangan mengasumsikan jaminan itu. Perubahan memengaruhi hubungan berbagi, tetapi salinan tersimpan, tangkapan layar, dan pesan dapat tetap ada. URL feed bersama perlu ditinjau terpisah."
+    }
+  ],
+  "sourcesHeading": "Referensi opsi penerima",
+  "sources": [
+    {
+      "label": "Apple: pengantar App Clips",
+      "url": "https://developer.apple.com/help/app-store-connect/offer-app-clip-experiences/overview-of-app-clips/"
+    },
+    {
+      "label": "Google: impor acara dan batasannya",
+      "url": "https://support.google.com/calendar/answer/37118?co=GENIE.Platform%3DDesktop&hl=en"
+    },
+    {
+      "label": "Microsoft: mengimpor atau berlangganan kalender",
+      "url": "https://support.microsoft.com/en-us/outlook/import-or-subscribe-to-a-calendar-in-outlook-com-or-outlook-on-the-web"
+    }
+  ],
+  "seeAlso": []
+},
 
   'what-a-subscription-actually-buys': {
   "updated": "2026-10-21",

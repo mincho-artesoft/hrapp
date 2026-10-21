@@ -1,0 +1,526 @@
+{
+  "allPassed": true,
+  "changedArticles": 56,
+  "localizedRewrites": 54,
+  "additionalEnglishRevisions": 2,
+  "locales": 30,
+  "sitemapUrls": 461,
+  "preservedPreviousSitemapUrls": 461,
+  "newCanonicalRoutes": 0,
+  "curatedExportGuides": 36,
+  "articles": [
+    {
+      "locale": "ar-SA",
+      "slug": "who-can-see-what-in-google-calendar",
+      "url": "https://www.cloud-calendars.com/ar/articles/who-can-see-what-in-google-calendar/",
+      "file": "ar/articles/who-can-see-what-in-google-calendar/index.html",
+      "sha256": "550f88f06405063cabefb7917e3edf096059d242b29ac86f1920d3637c64d4ba",
+      "faq": 3
+    },
+    {
+      "locale": "ar-SA",
+      "slug": "sharing-one-event-not-your-calendar",
+      "url": "https://www.cloud-calendars.com/ar/articles/sharing-one-event-not-your-calendar/",
+      "file": "ar/articles/sharing-one-event-not-your-calendar/index.html",
+      "sha256": "5750c2b9422622ab75434ac1495cfe97aea43fd863dd470f41bb7208d425feb7",
+      "faq": 3
+    },
+    {
+      "locale": "bg",
+      "slug": "who-can-see-what-in-google-calendar",
+      "url": "https://www.cloud-calendars.com/bg/articles/who-can-see-what-in-google-calendar/",
+      "file": "bg/articles/who-can-see-what-in-google-calendar/index.html",
+      "sha256": "2b58034cfa7cab977dcf4e3c3f146c3eadb125d0c812801ee6aa9d1edbba9f72",
+      "faq": 3
+    },
+    {
+      "locale": "bg",
+      "slug": "sharing-one-event-not-your-calendar",
+      "url": "https://www.cloud-calendars.com/bg/articles/sharing-one-event-not-your-calendar/",
+      "file": "bg/articles/sharing-one-event-not-your-calendar/index.html",
+      "sha256": "ca1fff378d9c7148ab616a5ca8cae5f8328194beb253cc76f1d9172baab1c312",
+      "faq": 3
+    },
+    {
+      "locale": "cs",
+      "slug": "who-can-see-what-in-google-calendar",
+      "url": "https://www.cloud-calendars.com/cs/articles/who-can-see-what-in-google-calendar/",
+      "file": "cs/articles/who-can-see-what-in-google-calendar/index.html",
+      "sha256": "4661940325ba11d0cc94ee26d680fd40e6af43dc1c21e627c28a7a638a56dc75",
+      "faq": 3
+    },
+    {
+      "locale": "cs",
+      "slug": "sharing-one-event-not-your-calendar",
+      "url": "https://www.cloud-calendars.com/cs/articles/sharing-one-event-not-your-calendar/",
+      "file": "cs/articles/sharing-one-event-not-your-calendar/index.html",
+      "sha256": "5c2798a9049c4a1993a8c1f434ff53389b57f2ecbf44ad7d7d3de43a15894974",
+      "faq": 3
+    },
+    {
+      "locale": "da",
+      "slug": "who-can-see-what-in-google-calendar",
+      "url": "https://www.cloud-calendars.com/da/articles/who-can-see-what-in-google-calendar/",
+      "file": "da/articles/who-can-see-what-in-google-calendar/index.html",
+      "sha256": "d6e3e5455721cb5930a5aea35683c32f8a37a6d5f054d922587a6c2a6eef88a8",
+      "faq": 3
+    },
+    {
+      "locale": "da",
+      "slug": "sharing-one-event-not-your-calendar",
+      "url": "https://www.cloud-calendars.com/da/articles/sharing-one-event-not-your-calendar/",
+      "file": "da/articles/sharing-one-event-not-your-calendar/index.html",
+      "sha256": "cce07ebf68c333dabbaa772bd7bcdfc82c00435075afb5ad773a594207e8a7f9",
+      "faq": 3
+    },
+    {
+      "locale": "de-DE",
+      "slug": "sharing-one-event-not-your-calendar",
+      "url": "https://www.cloud-calendars.com/de/articles/sharing-one-event-not-your-calendar/",
+      "file": "de/articles/sharing-one-event-not-your-calendar/index.html",
+      "sha256": "28b1e18c1d474bb942d5466b4c1c7ab82f4a2b18993ddae9c608e15dbd2400c3",
+      "faq": 3
+    },
+    {
+      "locale": "el",
+      "slug": "who-can-see-what-in-google-calendar",
+      "url": "https://www.cloud-calendars.com/el/articles/who-can-see-what-in-google-calendar/",
+      "file": "el/articles/who-can-see-what-in-google-calendar/index.html",
+      "sha256": "c84395855ded592de5cb7c30082c9387cf2e23048dad848eb94ad23f00c79140",
+      "faq": 3
+    },
+    {
+      "locale": "el",
+      "slug": "sharing-one-event-not-your-calendar",
+      "url": "https://www.cloud-calendars.com/el/articles/sharing-one-event-not-your-calendar/",
+      "file": "el/articles/sharing-one-event-not-your-calendar/index.html",
+      "sha256": "3553b7f63e30e52efa3a64cd2f86070abcd5f6318d13267a2e4fe1c798641068",
+      "faq": 3
+    },
+    {
+      "locale": "en-US",
+      "slug": "taking-back-a-calendar-you-shared",
+      "url": "https://www.cloud-calendars.com/articles/taking-back-a-calendar-you-shared/",
+      "file": "articles/taking-back-a-calendar-you-shared/index.html",
+      "sha256": "1b5faf531f30b5377e86653b2689233b797565757d5efdbc8447527fbffec13e",
+      "faq": 3
+    },
+    {
+      "locale": "en-US",
+      "slug": "calendar-export-ics-pdf-and-backup",
+      "url": "https://www.cloud-calendars.com/articles/calendar-export-ics-pdf-and-backup/",
+      "file": "articles/calendar-export-ics-pdf-and-backup/index.html",
+      "sha256": "62cb83e8941f52a7944f91a042517ffe086aad6b1e661fe9f3df821dbe9c5216",
+      "faq": 3
+    },
+    {
+      "locale": "es-ES",
+      "slug": "sharing-one-event-not-your-calendar",
+      "url": "https://www.cloud-calendars.com/es/articles/sharing-one-event-not-your-calendar/",
+      "file": "es/articles/sharing-one-event-not-your-calendar/index.html",
+      "sha256": "fc750b4011a744c5e495f8df10c8ec3c1b33a6a83fb0ecf73066e4d70fbcf407",
+      "faq": 3
+    },
+    {
+      "locale": "fi",
+      "slug": "who-can-see-what-in-google-calendar",
+      "url": "https://www.cloud-calendars.com/fi/articles/who-can-see-what-in-google-calendar/",
+      "file": "fi/articles/who-can-see-what-in-google-calendar/index.html",
+      "sha256": "fc82fbfdf348b9ce673aa98304af17ca23488c2ba0aac073941efa746fa57cdd",
+      "faq": 3
+    },
+    {
+      "locale": "fi",
+      "slug": "sharing-one-event-not-your-calendar",
+      "url": "https://www.cloud-calendars.com/fi/articles/sharing-one-event-not-your-calendar/",
+      "file": "fi/articles/sharing-one-event-not-your-calendar/index.html",
+      "sha256": "ee0421307aaa804dc3d1da89710a304141b3dfe984ad918d7e234726fa25ad97",
+      "faq": 3
+    },
+    {
+      "locale": "fr-FR",
+      "slug": "sharing-one-event-not-your-calendar",
+      "url": "https://www.cloud-calendars.com/fr/articles/sharing-one-event-not-your-calendar/",
+      "file": "fr/articles/sharing-one-event-not-your-calendar/index.html",
+      "sha256": "167f7ae59d70caac40ffd3d3bb39a4d115e4e9465e095b472d9b2626d2e693fe",
+      "faq": 3
+    },
+    {
+      "locale": "he",
+      "slug": "who-can-see-what-in-google-calendar",
+      "url": "https://www.cloud-calendars.com/he/articles/who-can-see-what-in-google-calendar/",
+      "file": "he/articles/who-can-see-what-in-google-calendar/index.html",
+      "sha256": "93571907f45fe32083d77654f2944e792727f6e04a10859237b4e327e10459a6",
+      "faq": 3
+    },
+    {
+      "locale": "he",
+      "slug": "sharing-one-event-not-your-calendar",
+      "url": "https://www.cloud-calendars.com/he/articles/sharing-one-event-not-your-calendar/",
+      "file": "he/articles/sharing-one-event-not-your-calendar/index.html",
+      "sha256": "c5aa4aa0c1ccda56ad8a4a35665e6d56c55fc29ac7d37583377c86e7d4927395",
+      "faq": 3
+    },
+    {
+      "locale": "hi",
+      "slug": "who-can-see-what-in-google-calendar",
+      "url": "https://www.cloud-calendars.com/hi/articles/who-can-see-what-in-google-calendar/",
+      "file": "hi/articles/who-can-see-what-in-google-calendar/index.html",
+      "sha256": "81ccae2afab8ab5e0909da8f826b99cac147e3262e126e3f6c3fe12200627b96",
+      "faq": 3
+    },
+    {
+      "locale": "hi",
+      "slug": "sharing-one-event-not-your-calendar",
+      "url": "https://www.cloud-calendars.com/hi/articles/sharing-one-event-not-your-calendar/",
+      "file": "hi/articles/sharing-one-event-not-your-calendar/index.html",
+      "sha256": "1fd462be286ab30c541f737bfd354bccf824799407a391bc3cf01867d5216152",
+      "faq": 3
+    },
+    {
+      "locale": "hu",
+      "slug": "who-can-see-what-in-google-calendar",
+      "url": "https://www.cloud-calendars.com/hu/articles/who-can-see-what-in-google-calendar/",
+      "file": "hu/articles/who-can-see-what-in-google-calendar/index.html",
+      "sha256": "5cfaf04d83cb35d6cc014b4c7081677ce38b943667904d555e70d088697f846f",
+      "faq": 3
+    },
+    {
+      "locale": "hu",
+      "slug": "sharing-one-event-not-your-calendar",
+      "url": "https://www.cloud-calendars.com/hu/articles/sharing-one-event-not-your-calendar/",
+      "file": "hu/articles/sharing-one-event-not-your-calendar/index.html",
+      "sha256": "5f3746b508bf7fec031384325a439545444d7d5d0e000a0aa99d84aebc5a25f5",
+      "faq": 3
+    },
+    {
+      "locale": "id",
+      "slug": "who-can-see-what-in-google-calendar",
+      "url": "https://www.cloud-calendars.com/id/articles/who-can-see-what-in-google-calendar/",
+      "file": "id/articles/who-can-see-what-in-google-calendar/index.html",
+      "sha256": "aec16291de8e0ee93df1f483d828269fccbbf27cd35857af025a89a6bf7c1ff2",
+      "faq": 3
+    },
+    {
+      "locale": "id",
+      "slug": "sharing-one-event-not-your-calendar",
+      "url": "https://www.cloud-calendars.com/id/articles/sharing-one-event-not-your-calendar/",
+      "file": "id/articles/sharing-one-event-not-your-calendar/index.html",
+      "sha256": "8d559c5f199b930553bdaadc5d86049181cdf0905e706bd70f2b4d2c8e9bfae6",
+      "faq": 3
+    },
+    {
+      "locale": "it",
+      "slug": "sharing-one-event-not-your-calendar",
+      "url": "https://www.cloud-calendars.com/it/articles/sharing-one-event-not-your-calendar/",
+      "file": "it/articles/sharing-one-event-not-your-calendar/index.html",
+      "sha256": "15309690b9f8d1a2dbe26b43be978c725cacfe0c2133aa6a56eee85eef570df5",
+      "faq": 3
+    },
+    {
+      "locale": "ja",
+      "slug": "who-can-see-what-in-google-calendar",
+      "url": "https://www.cloud-calendars.com/ja/articles/who-can-see-what-in-google-calendar/",
+      "file": "ja/articles/who-can-see-what-in-google-calendar/index.html",
+      "sha256": "3fe7ba6d77db6f2b79c3efb57dd7be05777fbb6e3d6f775fc25227cf08d8bb9f",
+      "faq": 3
+    },
+    {
+      "locale": "ja",
+      "slug": "sharing-one-event-not-your-calendar",
+      "url": "https://www.cloud-calendars.com/ja/articles/sharing-one-event-not-your-calendar/",
+      "file": "ja/articles/sharing-one-event-not-your-calendar/index.html",
+      "sha256": "2253850a7c9d304b9e0d24ea650bfa07cf8df50fdd2e4369b96b0ae271fa5407",
+      "faq": 3
+    },
+    {
+      "locale": "ko",
+      "slug": "who-can-see-what-in-google-calendar",
+      "url": "https://www.cloud-calendars.com/ko/articles/who-can-see-what-in-google-calendar/",
+      "file": "ko/articles/who-can-see-what-in-google-calendar/index.html",
+      "sha256": "d6cfa5476d9578610b20fc096ddec43cfa8e7c75896576a0819ee222ef9d2716",
+      "faq": 3
+    },
+    {
+      "locale": "ko",
+      "slug": "sharing-one-event-not-your-calendar",
+      "url": "https://www.cloud-calendars.com/ko/articles/sharing-one-event-not-your-calendar/",
+      "file": "ko/articles/sharing-one-event-not-your-calendar/index.html",
+      "sha256": "e8dad87efb4f2e7f37ad0384c055b03032dd15f67964c4283996347b71f64a58",
+      "faq": 3
+    },
+    {
+      "locale": "ms",
+      "slug": "who-can-see-what-in-google-calendar",
+      "url": "https://www.cloud-calendars.com/ms/articles/who-can-see-what-in-google-calendar/",
+      "file": "ms/articles/who-can-see-what-in-google-calendar/index.html",
+      "sha256": "704b311e37f311f061e199e96e4493890012d1e6dcc57c438e437d5d6d002ffe",
+      "faq": 3
+    },
+    {
+      "locale": "ms",
+      "slug": "sharing-one-event-not-your-calendar",
+      "url": "https://www.cloud-calendars.com/ms/articles/sharing-one-event-not-your-calendar/",
+      "file": "ms/articles/sharing-one-event-not-your-calendar/index.html",
+      "sha256": "6243a591fbc61ee83f5415592e358c8adc676455df46d52da9354041268cae95",
+      "faq": 3
+    },
+    {
+      "locale": "nl-NL",
+      "slug": "who-can-see-what-in-google-calendar",
+      "url": "https://www.cloud-calendars.com/nl/articles/who-can-see-what-in-google-calendar/",
+      "file": "nl/articles/who-can-see-what-in-google-calendar/index.html",
+      "sha256": "878027c32b009f627810e20487b1416ffefa7457f36b4d215f0f32c580c7b8ac",
+      "faq": 3
+    },
+    {
+      "locale": "nl-NL",
+      "slug": "sharing-one-event-not-your-calendar",
+      "url": "https://www.cloud-calendars.com/nl/articles/sharing-one-event-not-your-calendar/",
+      "file": "nl/articles/sharing-one-event-not-your-calendar/index.html",
+      "sha256": "338db0906a78cf476094a26f34d66428ae8627c3f3dead5d53edbf51d9b87dc7",
+      "faq": 3
+    },
+    {
+      "locale": "no",
+      "slug": "who-can-see-what-in-google-calendar",
+      "url": "https://www.cloud-calendars.com/no/articles/who-can-see-what-in-google-calendar/",
+      "file": "no/articles/who-can-see-what-in-google-calendar/index.html",
+      "sha256": "2035efaf1f7522048dc536999082404e5f656e71811f70e4b37e94cf3e87be4d",
+      "faq": 3
+    },
+    {
+      "locale": "no",
+      "slug": "sharing-one-event-not-your-calendar",
+      "url": "https://www.cloud-calendars.com/no/articles/sharing-one-event-not-your-calendar/",
+      "file": "no/articles/sharing-one-event-not-your-calendar/index.html",
+      "sha256": "6c5119dad6d07dc3496eb7a3d76564c20b84214a2b8f272be3cebe4cfaa6c4e8",
+      "faq": 3
+    },
+    {
+      "locale": "pl",
+      "slug": "who-can-see-what-in-google-calendar",
+      "url": "https://www.cloud-calendars.com/pl/articles/who-can-see-what-in-google-calendar/",
+      "file": "pl/articles/who-can-see-what-in-google-calendar/index.html",
+      "sha256": "4fef25ee9796ab67cef76f1de0c4a25b44337d14ad06865aaf03b20e4cde98ee",
+      "faq": 3
+    },
+    {
+      "locale": "pl",
+      "slug": "sharing-one-event-not-your-calendar",
+      "url": "https://www.cloud-calendars.com/pl/articles/sharing-one-event-not-your-calendar/",
+      "file": "pl/articles/sharing-one-event-not-your-calendar/index.html",
+      "sha256": "9d4395e68040128dc187ab4b74cb677e5f80c5adb7f37c53e6cdb8a3dc8fd558",
+      "faq": 3
+    },
+    {
+      "locale": "pt-BR",
+      "slug": "who-can-see-what-in-google-calendar",
+      "url": "https://www.cloud-calendars.com/pt/articles/who-can-see-what-in-google-calendar/",
+      "file": "pt/articles/who-can-see-what-in-google-calendar/index.html",
+      "sha256": "d65543716fd2f5f0feefcc53333279930270449bd0333db38d13fe8dcc3f0e56",
+      "faq": 3
+    },
+    {
+      "locale": "pt-BR",
+      "slug": "sharing-one-event-not-your-calendar",
+      "url": "https://www.cloud-calendars.com/pt/articles/sharing-one-event-not-your-calendar/",
+      "file": "pt/articles/sharing-one-event-not-your-calendar/index.html",
+      "sha256": "b4a19c031cbb4804f668185c81c85750505a97be5b0c5d60d00f31a729bb9f4c",
+      "faq": 3
+    },
+    {
+      "locale": "ro",
+      "slug": "who-can-see-what-in-google-calendar",
+      "url": "https://www.cloud-calendars.com/ro/articles/who-can-see-what-in-google-calendar/",
+      "file": "ro/articles/who-can-see-what-in-google-calendar/index.html",
+      "sha256": "71d4c6e8e8be18afcb2ebd037e6e9c2ef6b4a80a28d7db5d5f8f7d7678bcbc0b",
+      "faq": 3
+    },
+    {
+      "locale": "ro",
+      "slug": "sharing-one-event-not-your-calendar",
+      "url": "https://www.cloud-calendars.com/ro/articles/sharing-one-event-not-your-calendar/",
+      "file": "ro/articles/sharing-one-event-not-your-calendar/index.html",
+      "sha256": "00192e87096ce8307a406c0a6e23d45a4eeebc9b4554a95fbd1204ce862f756f",
+      "faq": 3
+    },
+    {
+      "locale": "ru",
+      "slug": "who-can-see-what-in-google-calendar",
+      "url": "https://www.cloud-calendars.com/ru/articles/who-can-see-what-in-google-calendar/",
+      "file": "ru/articles/who-can-see-what-in-google-calendar/index.html",
+      "sha256": "2c2e289ccad8b79003c7de7e1c23ae00827cb7cf9ea599be524e8652e85f2dbb",
+      "faq": 3
+    },
+    {
+      "locale": "ru",
+      "slug": "sharing-one-event-not-your-calendar",
+      "url": "https://www.cloud-calendars.com/ru/articles/sharing-one-event-not-your-calendar/",
+      "file": "ru/articles/sharing-one-event-not-your-calendar/index.html",
+      "sha256": "7a897eb06723fdb4bbfc72f9170e9d7d508e5a4725ac7edad61cefc639c4ce71",
+      "faq": 3
+    },
+    {
+      "locale": "sv",
+      "slug": "who-can-see-what-in-google-calendar",
+      "url": "https://www.cloud-calendars.com/sv/articles/who-can-see-what-in-google-calendar/",
+      "file": "sv/articles/who-can-see-what-in-google-calendar/index.html",
+      "sha256": "f656bc69bcaa1d6592e776b5c6906fcfb06bba434bc8446207208d042d96ea6d",
+      "faq": 3
+    },
+    {
+      "locale": "sv",
+      "slug": "sharing-one-event-not-your-calendar",
+      "url": "https://www.cloud-calendars.com/sv/articles/sharing-one-event-not-your-calendar/",
+      "file": "sv/articles/sharing-one-event-not-your-calendar/index.html",
+      "sha256": "5efcab1f5ef122b159bbe01bb9fdc6f9b3cf1330f2468c93fbc9a7b0f87a1873",
+      "faq": 3
+    },
+    {
+      "locale": "th",
+      "slug": "who-can-see-what-in-google-calendar",
+      "url": "https://www.cloud-calendars.com/th/articles/who-can-see-what-in-google-calendar/",
+      "file": "th/articles/who-can-see-what-in-google-calendar/index.html",
+      "sha256": "946cbed57f57d69cec4fd97df5962bc0bbc8d4e929f90381561349c0521a73fc",
+      "faq": 3
+    },
+    {
+      "locale": "th",
+      "slug": "sharing-one-event-not-your-calendar",
+      "url": "https://www.cloud-calendars.com/th/articles/sharing-one-event-not-your-calendar/",
+      "file": "th/articles/sharing-one-event-not-your-calendar/index.html",
+      "sha256": "cc3e398168b9bd51b090e6be9f442ba7ff1ac6c058df89d5315d31aa72d0dce1",
+      "faq": 3
+    },
+    {
+      "locale": "tr",
+      "slug": "who-can-see-what-in-google-calendar",
+      "url": "https://www.cloud-calendars.com/tr/articles/who-can-see-what-in-google-calendar/",
+      "file": "tr/articles/who-can-see-what-in-google-calendar/index.html",
+      "sha256": "fe33b83c5b88fb89e88523cf42a9147fbd619bd9b3fc1926d02a247a135b4a94",
+      "faq": 3
+    },
+    {
+      "locale": "tr",
+      "slug": "sharing-one-event-not-your-calendar",
+      "url": "https://www.cloud-calendars.com/tr/articles/sharing-one-event-not-your-calendar/",
+      "file": "tr/articles/sharing-one-event-not-your-calendar/index.html",
+      "sha256": "04ea47906315039c610f8db6dc1385add700176f9226ee4a78eb1d65697576da",
+      "faq": 3
+    },
+    {
+      "locale": "vi",
+      "slug": "who-can-see-what-in-google-calendar",
+      "url": "https://www.cloud-calendars.com/vi/articles/who-can-see-what-in-google-calendar/",
+      "file": "vi/articles/who-can-see-what-in-google-calendar/index.html",
+      "sha256": "4bac228b5a6724d951322c987e750cbf322d0d1d5e2f6ea7653877c796b06eff",
+      "faq": 3
+    },
+    {
+      "locale": "vi",
+      "slug": "sharing-one-event-not-your-calendar",
+      "url": "https://www.cloud-calendars.com/vi/articles/sharing-one-event-not-your-calendar/",
+      "file": "vi/articles/sharing-one-event-not-your-calendar/index.html",
+      "sha256": "93492d23891af3ade742d3491e98974ba695fdd5ddf5d463a6b21ac2bb5390d4",
+      "faq": 3
+    },
+    {
+      "locale": "zh-Hans",
+      "slug": "who-can-see-what-in-google-calendar",
+      "url": "https://www.cloud-calendars.com/zh-hans/articles/who-can-see-what-in-google-calendar/",
+      "file": "zh-hans/articles/who-can-see-what-in-google-calendar/index.html",
+      "sha256": "f825144a5ace8a8825b3c7661cf4f7d763867a9d69fb03cce11a8edcd03676ad",
+      "faq": 3
+    },
+    {
+      "locale": "zh-Hans",
+      "slug": "sharing-one-event-not-your-calendar",
+      "url": "https://www.cloud-calendars.com/zh-hans/articles/sharing-one-event-not-your-calendar/",
+      "file": "zh-hans/articles/sharing-one-event-not-your-calendar/index.html",
+      "sha256": "3410e4d15ca8b7d250692bbba8b36d81bca1357d2bc99ae849b3a6aafa2dd0bd",
+      "faq": 3
+    },
+    {
+      "locale": "zh-Hant",
+      "slug": "who-can-see-what-in-google-calendar",
+      "url": "https://www.cloud-calendars.com/zh-hant/articles/who-can-see-what-in-google-calendar/",
+      "file": "zh-hant/articles/who-can-see-what-in-google-calendar/index.html",
+      "sha256": "ad6a93cb7e86fdaf3edeef5ea797dbfbe35b3a7e7508debc15910e4902054a8f",
+      "faq": 3
+    },
+    {
+      "locale": "zh-Hant",
+      "slug": "sharing-one-event-not-your-calendar",
+      "url": "https://www.cloud-calendars.com/zh-hant/articles/sharing-one-event-not-your-calendar/",
+      "file": "zh-hant/articles/sharing-one-event-not-your-calendar/index.html",
+      "sha256": "60c39dd5acc31175366f8100b4f47c30ca5e423b4a35e61d5ca766b6562450f1",
+      "faq": 3
+    }
+  ],
+  "hubs": [
+    "https://www.cloud-calendars.com/ar/articles/",
+    "https://www.cloud-calendars.com/articles/",
+    "https://www.cloud-calendars.com/bg/articles/",
+    "https://www.cloud-calendars.com/cs/articles/",
+    "https://www.cloud-calendars.com/da/articles/",
+    "https://www.cloud-calendars.com/de/articles/",
+    "https://www.cloud-calendars.com/el/articles/",
+    "https://www.cloud-calendars.com/es/articles/",
+    "https://www.cloud-calendars.com/fi/articles/",
+    "https://www.cloud-calendars.com/fr/articles/",
+    "https://www.cloud-calendars.com/he/articles/",
+    "https://www.cloud-calendars.com/hi/articles/",
+    "https://www.cloud-calendars.com/hu/articles/",
+    "https://www.cloud-calendars.com/id/articles/",
+    "https://www.cloud-calendars.com/it/articles/",
+    "https://www.cloud-calendars.com/ja/articles/",
+    "https://www.cloud-calendars.com/ko/articles/",
+    "https://www.cloud-calendars.com/ms/articles/",
+    "https://www.cloud-calendars.com/nl/articles/",
+    "https://www.cloud-calendars.com/no/articles/",
+    "https://www.cloud-calendars.com/pl/articles/",
+    "https://www.cloud-calendars.com/pt/articles/",
+    "https://www.cloud-calendars.com/ro/articles/",
+    "https://www.cloud-calendars.com/ru/articles/",
+    "https://www.cloud-calendars.com/sv/articles/",
+    "https://www.cloud-calendars.com/th/articles/",
+    "https://www.cloud-calendars.com/tr/articles/",
+    "https://www.cloud-calendars.com/vi/articles/",
+    "https://www.cloud-calendars.com/zh-hans/articles/",
+    "https://www.cloud-calendars.com/zh-hant/articles/"
+  ],
+  "sharedPriceRowsRemovedPages": [
+    "https://www.cloud-calendars.com/ar/articles/taking-back-a-calendar-you-shared/",
+    "https://www.cloud-calendars.com/articles/taking-back-a-calendar-you-shared/",
+    "https://www.cloud-calendars.com/bg/articles/taking-back-a-calendar-you-shared/",
+    "https://www.cloud-calendars.com/cs/articles/taking-back-a-calendar-you-shared/",
+    "https://www.cloud-calendars.com/da/articles/taking-back-a-calendar-you-shared/",
+    "https://www.cloud-calendars.com/de/articles/taking-back-a-calendar-you-shared/",
+    "https://www.cloud-calendars.com/el/articles/taking-back-a-calendar-you-shared/",
+    "https://www.cloud-calendars.com/es/articles/taking-back-a-calendar-you-shared/",
+    "https://www.cloud-calendars.com/fi/articles/taking-back-a-calendar-you-shared/",
+    "https://www.cloud-calendars.com/fr/articles/taking-back-a-calendar-you-shared/",
+    "https://www.cloud-calendars.com/he/articles/taking-back-a-calendar-you-shared/",
+    "https://www.cloud-calendars.com/hi/articles/taking-back-a-calendar-you-shared/",
+    "https://www.cloud-calendars.com/hu/articles/taking-back-a-calendar-you-shared/",
+    "https://www.cloud-calendars.com/id/articles/taking-back-a-calendar-you-shared/",
+    "https://www.cloud-calendars.com/it/articles/taking-back-a-calendar-you-shared/",
+    "https://www.cloud-calendars.com/ja/articles/taking-back-a-calendar-you-shared/",
+    "https://www.cloud-calendars.com/ko/articles/taking-back-a-calendar-you-shared/",
+    "https://www.cloud-calendars.com/ms/articles/taking-back-a-calendar-you-shared/",
+    "https://www.cloud-calendars.com/nl/articles/taking-back-a-calendar-you-shared/",
+    "https://www.cloud-calendars.com/no/articles/taking-back-a-calendar-you-shared/",
+    "https://www.cloud-calendars.com/pl/articles/taking-back-a-calendar-you-shared/",
+    "https://www.cloud-calendars.com/pt/articles/taking-back-a-calendar-you-shared/",
+    "https://www.cloud-calendars.com/ro/articles/taking-back-a-calendar-you-shared/",
+    "https://www.cloud-calendars.com/ru/articles/taking-back-a-calendar-you-shared/",
+    "https://www.cloud-calendars.com/sv/articles/taking-back-a-calendar-you-shared/",
+    "https://www.cloud-calendars.com/th/articles/taking-back-a-calendar-you-shared/",
+    "https://www.cloud-calendars.com/tr/articles/taking-back-a-calendar-you-shared/",
+    "https://www.cloud-calendars.com/vi/articles/taking-back-a-calendar-you-shared/",
+    "https://www.cloud-calendars.com/zh-hans/articles/taking-back-a-calendar-you-shared/",
+    "https://www.cloud-calendars.com/zh-hant/articles/taking-back-a-calendar-you-shared/"
+  ],
+  "scope": "All actual article-object revisions and complete30locale coverage of core sharing/Googlepermissions; source/localization/staticmetadata evidence, not native-speaker/releasedruntime/ranking certification. Localizedrevocationbodysemanticreview remains separate."
+}

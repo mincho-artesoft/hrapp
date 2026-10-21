@@ -3,52 +3,94 @@ import { LocalisedArticle } from '../types';
 /** Enam artikel Google: pertanyaan spesifik, jawaban lugas. */
 export const GOOGLE_ID: Readonly<Record<string, LocalisedArticle>> = {
   'who-can-see-what-in-google-calendar': {
-    title: 'Siapa melihat apa saat Anda membagikan kalender Google',
-    short: 'Izin berbagi Google',
-    description:
-      'Tingkat berbagi Google mudah diatur dan mudah disalahpahami. Apa yang sebenarnya dibuka masing-masing, dengan bahasa sederhana.',
-    lede: 'Hampir semua kelebihan berbagi bukan salah menilai. Seseorang memilih tingkat yang terdengar sederhana padahal tidak.',
-    commonBelief: 'Bahwa «hanya sibuk/luang» dan «semua detail acara» hanya berbeda sedikit.',
-    sections: [
-      {
-        heading: 'Jarak antar tingkat lebih jauh daripada kedengarannya',
-        body: [
-          'Sibuk/luang menampilkan blok waktu tanpa judul. Semua detail menampilkan judul, lokasi, catatan, dan tamu — bagi sebagian besar kalender, itu bagian besar dari hidup Anda.',
-          'Membuat perubahan memberi hak menyunting. Mengelola berbagi memberi hak menyerahkan kalender Anda kepada orang lain, dan inilah yang mengejutkan di kemudian hari.',
-        ],
-      },
-      {
-        heading: 'Memilih tanpa memikirkannya setiap kali',
-        body: [
-          'Untuk rekan kerja yang hanya perlu mengatur jadwal di sekitar Anda, sibuk/luang hampir selalu jawaban yang benar dan hampir tidak pernah dipilih.',
-          'Simpan detail lengkap untuk kalender yang memang dibuat untuk dibagikan, bukan untuk kalender tempat Anda hidup.',
-        ],
-      },
-    ],
-    claims: {
-      advancedMonthly: 'Biaya bulanan tingkat tempat ini dikelola di aplikasi, dalam dolar',
+  "title": "Izin Google Kalender: periksa akses yang benar-benar diberikan",
+  "short": "Akses dan privasi Google Kalender",
+  "description": "Pilih akses ketersediaan, rincian, atau pengeditan. Periksa akses publik dan grup, selain izin perorangan, sebelum berbagi.",
+  "lede": "Sebelum berbagi kalender, tentukan tugas penerima. Mencari waktu, membaca rincian, dan memelihara kalender adalah tugas berbeda. Panduan ini diterbitkan Arte Soft, pengembang Cloud Calendars.",
+  "commonBelief": "Memberi satu orang izin terbatas menjamin ia tidak bisa melihat rincian melalui jalur lain.",
+  "sections": [
+    {
+      "heading": "Sesuaikan akses dengan tugas",
+      "body": [
+        "Rekan yang menentukan waktu mungkin hanya perlu ketersediaan tanpa rincian janji. Kolaborator pengelola jadwal proyek membutuhkan pengaturan berbeda. Tentukan tugas dahulu, lalu periksa izin pada setelan berbagi kalender saat ini.",
+        "Google membedakan ketersediaan, rincian acara, dan beberapa tingkat edit. Satu pilihan membatasi akses acara pribadi; lainnya mengizinkan edit dan rincian, sedangkan yang terkuat juga mengelola berbagi. Jangan menyamakan semua pilihan yang menyebut perubahan."
+      ]
     },
-    faq: [
-      {
-        q: 'Apakah judul acara saya terlihat kalau hanya berbagi sibuk/luang?',
-        a: 'Tidak. Sibuk/luang menampilkan blok waktu tanpa judul, lokasi, catatan, atau tamu. Hanya «semua detail» yang membukanya — dan membuka semuanya.',
-      },
-      {
-        q: 'Apa yang diizinkan «membuat perubahan dan mengelola berbagi»?',
-        a: 'Menyunting setiap acara dan menyerahkan kalender Anda kepada orang lain tanpa bertanya. Itu satu-satunya tingkat di mana orang lain membagikan akses.',
-      },
-      {
-        q: 'Bisakah saya melihat siapa saja yang sudah punya akses?',
-        a: 'Bisa, di pengaturan berbagi kalender itu. Tidak ada yang mengingatkan Anda untuk melihat dan berbagi hanya menumpuk: baca daftarnya dua kali setahun.',
-      },
-    ],
-    practical: [
-      'Gunakan sibuk/luang sebagai bawaan untuk siapa pun yang hanya perlu memesan waktu dengan Anda.',
-      'Simpan «membuat perubahan» untuk mereka yang benar-benar menjadwalkan untuk Anda.',
-      'Tinjau siapa saja yang punya akses dua kali setahun; berbagi menumpuk dan tidak ada yang mengingatkan.',
-    ],
-    seeAlso: ['why-a-shared-calendar-does-not-appear', 'what-guests-can-do-to-your-event'],
-  },
+    {
+      "heading": "Periksa akses seluruh kalender dan perorangan",
+      "body": [
+        "Selain individu, periksa apakah kalender publik, tersedia bagi organisasi, atau dibagikan melalui grup. Menurut Google, akses lebih luas dapat mengesampingkan izin sempit: membatasi satu orang tidak membatalkan rincian yang sudah publik.",
+        "Misalnya jadwal klub yang dipublikasikan untuk anggota. Sebelum menaruh janji pribadi, periksa audiens kalender, bukan hanya izin di samping satu teman. Simpan janji pribadi pada tujuan yang sesuai."
+      ]
+    },
+    {
+      "heading": "Gunakan setelan Google untuk kalender yang tepat",
+      "body": [
+        "Di Google Kalender pada komputer, cari kalender di daftar Anda, buka menu dan setelan berbaginya. Google mendokumentasikan area terpisah untuk orang atau grup dan akses lebih luas. Periksa nama kalender serta akun masuk sebelum mengubahnya.",
+        "Pastikan identitas Google penerima saat mengundang. Bila kalender tidak ditemukan, periksa alamat dan pesan undangan, bukan memperluas akses agar muncul. Tampilan hilang dan izin edit kurang adalah masalah berbeda."
+      ]
+    },
+    {
+      "heading": "Uji tanpa janji pribadi",
+      "body": [
+        "Gunakan acara uji biasa tanpa judul pribadi, catatan, lokasi, atau daftar tamu. Minta penerima memastikan apa yang terlihat dan, hanya jika perlu serta diizinkan, yang dapat diubah. Jangan membagikan kredensial akun untuk pengujian.",
+        "Catat kalender dan peran yang diberikan, lalu periksa hasil setelah perubahan. Ini memverifikasi pengaturan yang diinginkan, bukan membuktikan hilangnya informasi yang pernah dibaca atau disalin. Jangan menguji dengan mempublikasikan jadwal kerja asli."
+      ]
+    },
+    {
+      "heading": "Pisahkan kebijakan kerja dari paket aplikasi",
+      "body": [
+        "Google menyatakan administrator kerja atau sekolah dapat membatasi kontrol berbagi. Jika setelan tidak tersedia, gunakan jalur yang disetujui organisasi. Jangan mempublikasikan informasi kerja untuk mengakali pembatasan akun.",
+        "Cloud Calendars dapat menampilkan kalender terhubung, tetapi nama paket tidak mengubah izin Google. Advanced menghapus iklan, bukan membeli akses orang lain ke semua acara. Periksa pengaturan penyedia dan hasil yang diterima, bukan hanya editor lokal yang tersedia."
+      ]
+    },
+    {
+      "heading": "Tinjau dan hapus akses yang tidak diperlukan",
+      "body": [
+        "Saat proyek selesai, periksa penerima sebenarnya, grup, dan publikasi yang lebih luas. Menghapus satu nama hanya sebagian pemeriksaan jika ada jalur lain. Sepakati penanggung jawab jadwal dan perubahan akses berikutnya.",
+        "Google mendokumentasikan penghapusan orang atau grup secara terpisah dari penghentian berbagi lebih luas. Pencabutan tidak menarik berkas ekspor, tangkapan layar, atau informasi yang sudah disalin. Tindak lanjuti terpisah dengan pihak terkait; jangan menjanjikan satu tombol menghapus semua salinan lama."
+      ]
+    }
+  ],
+  "claims": {},
+  "practical": [
+    "Identifikasi kalender dan tugas penerima.",
+    "Periksa akses individu, grup, organisasi, dan publik.",
+    "Pilih izin sesuai tugas dalam setelan Google saat ini.",
+    "Pastikan identitas sebelum mengubah akses.",
+    "Periksa acara uji tanpa data sensitif dari sisi penerima.",
+    "Tinjau jalur usang tanpa menganggap salinan lama ditarik kembali."
+  ],
+  "faq": [
+    {
+      "q": "Apakah izin individu terbatas mengesampingkan kalender publik?",
+      "a": "Tidak. Google menyatakan izin lebih luas diprioritaskan jika setelan bertentangan. Periksa akses publik dan organisasi serta entri orang tersebut."
+    },
+    {
+      "q": "Apakah semua izin edit menampilkan acara pribadi dengan cara sama?",
+      "a": "Tidak. Google mendokumentasikan opsi yang membatasi akses acara pribadi secara terpisah dari edit lain dan pengelolaan berbagi. Baca izin saat ini dengan tepat."
+    },
+    {
+      "q": "Apakah membeli Advanced mengubah hak berbagi Google?",
+      "a": "Tidak. Advanced menghapus iklan Cloud Calendars. Akses penyedia bergantung pada izin kalender dan pembatasan organisasi."
+    }
+  ],
+  "sourcesHeading": "Panduan Google terkini tentang izin dan berbagi",
+  "sources": [
+    {
+      "label": "Google: memilih izin kalender",
+      "url": "https://support.google.com/calendar/answer/15716974?hl=en"
+    },
+    {
+      "label": "Google: berbagi kalender dan menghapus akses",
+      "url": "https://support.google.com/calendar/answer/37082?hl=en"
+    }
+  ],
+  "seeAlso": [
+    "why-a-shared-calendar-does-not-appear"
+  ],
+  "updated": "2026-10-21"
+},
 
   'why-a-shared-calendar-does-not-appear': {
     "updated": "2026-10-21",

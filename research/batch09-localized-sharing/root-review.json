@@ -1,0 +1,32 @@
+{
+  "date": "2026-10-21",
+  "sourceTexts": "research/batch08-sharing/final-english-objects.json own-source-backed sixsectionguides, no paidAPItranslation",
+  "translationScope": {
+    "singleEvent": 29,
+    "googlePermissions": 25,
+    "total": 54,
+    "existingGoogleCompletedUntouched": [
+      "de-DE",
+      "es-ES",
+      "fr-FR",
+      "it"
+    ],
+    "sourceLocale": "en-US"
+  },
+  "rootSampleSemanticReview": [
+    "Bulgarian reader/writer/owner roles, eventscope, group/publicprecedence andsettingscopy",
+    "Danish Googlebroaderaccessprecedence andsharingroles",
+    "French singleeventscope androles",
+    "PortugueseBrazil singleeventscope andGoogleaccesssettings"
+  ],
+  "notClaimed": [
+    "Independentnative-speakerreview",
+    "Deployed/releasednativebackendruntimeverification",
+    "GlobalGoogleorChatGPTrank/keywordvolume"
+  ],
+  "rootAdditionalEdits": [
+    "ExistingENrevocationcanonicalupdated: routes,broaderaccess,secretaddressreset,revocationnotrecall,novelocity/silenceguarantee",
+    "ExistingENexportcanonicaladdsqualifiedBusyCalCSVworkflow (explicitlynotCloudexportbutton)"
+  ],
+  "next": "Integrate only expectedexisting locale/slugobjects, preserve allothers andactualcanonicalroutes, verifyfullbuild/static/schema/publicstate."
+}

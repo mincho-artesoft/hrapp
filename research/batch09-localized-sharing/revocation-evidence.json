@@ -1,0 +1,26 @@
+{
+  "date": "2026-10-21",
+  "source": "Current primaryGooglebodyreads plus priorbatch08native/backendsharingaudit. No runtime/deployedreleaseverification.",
+  "primary": [
+    {
+      "url": "https://support.google.com/calendar/answer/37082?hl=en",
+      "scope": "Mainbody19-107: named/group/public/organisation controls andstopsharing."
+    },
+    {
+      "url": "https://support.google.com/calendar/answer/37648?hl=en",
+      "scope": "Mainbody20-55: accountvsfeedview, secretaddressnotforsharing, resetinvalidatesoldaddress."
+    }
+  ],
+  "nativeRootRead": {
+    "path": "/Users/minchomilev/work/hrapp/Calendar/Sharing/CloudCalendarsAPI.swift",
+    "lines": "995-1040",
+    "finding": "createGrant/eventscope and separately revokeGrant; codeinspectionnotpermission/securitycertification."
+  },
+  "removedClaims": [
+    "instant/silentdisappearance",
+    "one-removalclosesallroutes",
+    "AdvancedpaidGoogleaccessmanagement",
+    "move-sensitiveeventsasgenericfix"
+  ],
+  "relatedOpenIssue": "Oldsecretaddressguide and25translatedrevocationbodies stillneedfullreview; no blanketcertification."
+}

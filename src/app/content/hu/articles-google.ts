@@ -3,52 +3,96 @@ import { LocalisedArticle } from '../types';
 /** A hat Google-cikk: pontos kérdések, világos válaszok. */
 export const GOOGLE_HU: Readonly<Record<string, LocalisedArticle>> = {
   'who-can-see-what-in-google-calendar': {
-    title: 'Ki mit lát, ha megoszt egy Google-naptárat',
-    short: 'Google megosztási jogok',
-    description:
-      'A Google megosztási szintjeit gyorsan be lehet állítani és könnyű félreérteni. Mit tár fel valójában mindegyik, egyszerűen elmondva.',
-    lede: 'A véletlen túlmegosztás szinte soha nem ítélethiba. Valaki olyan szintet választott, amely szerénynek hangzott, és nem volt az.',
-    commonBelief: 'Hogy a „csak szabad/foglalt” és a „minden esemény részletei” között kicsi a különbség.',
-    sections: [
-      {
-        heading: 'A szintek távolabb vannak egymástól, mint ahogy hangzanak',
-        body: [
-          'A szabad/foglalt időblokkokat mutat cím nélkül. A minden részlet címeket, helyszíneket, jegyzeteket és vendégeket mutat — a legtöbb naptárnál ez az életed tekintélyes része.',
-          'A módosítás joga szerkesztést enged. A megosztás kezelése azt engedi, hogy valaki továbbadja a naptáradat másoknak, és ez az, ami később meglepetést okoz.',
-        ],
-      },
-      {
-        heading: 'Választani anélkül, hogy minden alkalommal gondolkodni kellene',
-        body: [
-          'Azoknak a kollégáknak, akiknek csak köréd kell időt szervezniük, a szabad/foglalt szinte mindig a helyes válasz — és szinte soha nem ezt kapják.',
-          'A teljes részleteket hagyd a megosztásra készült naptáraknak, ne annak, amelyikben élsz.',
-        ],
-      },
-    ],
-    claims: {
-      advancedMonthly: 'Annak a szintnek a havi ára, ahol ezt az alkalmazásban kezeled, dollárban',
+  "title": "Google Naptár-megosztás: ellenőrizze a ténylegesen megadott jogokat",
+  "short": "Hozzáférés és adatvédelem a Google Naptárban",
+  "description": "Válasszon elérhetőségi, részletmegtekintési vagy szerkesztési hozzáférést. Megosztás előtt az egyéni jogok mellett a nyilvános és csoportos hozzáférést is ellenőrizze.",
+  "lede": "Megosztás előtt döntse el, mire van szüksége a másik félnek. Az időpont-egyeztetés, az eseményadatok olvasása és a naptár karbantartása más feladat. Az útmutatót a Cloud Calendars fejlesztője, az Arte Soft adja ki.",
+  "commonBelief": "Egy személy korlátozása garantálná, hogy más útvonalon sem láthat részleteket.",
+  "sections": [
+    {
+      "heading": "Igazítsa a hozzáférést a feladathoz",
+      "body": [
+        "Az időpontot kereső kollégának elég lehet a szabad és foglalt idő, a találkozók részletei nélkül. A projekt ütemezését kezelő munkatársnak más hozzáférés kell. Előbb határozza meg a feladatot, majd nézze meg a naptár aktuális megosztási beállítását.",
+        "A Google megkülönbözteti az elérhetőséget, az eseményrészleteket és több szerkesztési szintet. Az egyik szerkesztési opció korlátozza a privát események elérését; egy másik engedi a szerkesztést és a részleteket; a legerősebb a megosztást is kezeli. Nem minden változtatást említő opció egyenértékű."
+      ]
     },
-    faq: [
-      {
-        q: 'Látszanak az események címei, ha csak a szabad/elfoglalt állapotot osztom meg?',
-        a: 'Nem. A szabad/elfoglalt időblokkokat mutat cím, helyszín, jegyzet és vendégek nélkül. Csak a „minden részlet” tárja fel őket — és akkor mindet.',
-      },
-      {
-        q: 'Mit enged a „módosítás és a megosztás kezelése”?',
-        a: 'Minden esemény szerkesztését, és azt, hogy a naptáradat továbbadja másoknak anélkül, hogy megkérdezne. Ez az egyetlen szint, ahol rajtad kívül más oszt hozzáférést.',
-      },
-      {
-        q: 'Meg tudom nézni, kinek van már hozzáférése a naptáramhoz?',
-        a: 'Igen, az adott naptár megosztási beállításaiban. Semmi nem hív rá, hogy megnézd, a megosztások pedig csak gyűlnek: olvasd át a listát évente kétszer.',
-      },
-    ],
-    practical: [
-      'Alapértelmezésben szabad/foglalt mindenkinek, akinek csak időpontot kell foglalnia nálad.',
-      'A „módosítás” joga azoké, akik tényleg helyetted szerveznek.',
-      'Évente kétszer nézd át, kinek van hozzáférése; a megosztások gyűlnek, és semmi nem emlékeztet rájuk.',
-    ],
-    seeAlso: ['why-a-shared-calendar-does-not-appear', 'what-guests-can-do-to-your-event'],
-  },
+    {
+      "heading": "Az egész naptár hozzáférését is ellenőrizze",
+      "body": [
+        "A megnevezett személyek mellett nézze meg, nyilvános-e a naptár, elérhető-e a szervezetnek vagy meg van-e osztva csoporttal. A Google szerint a szélesebb hozzáférés felülírhatja a szűkebbet: egy személy korlátozása nem rejti el a már nyilvános részleteket.",
+        "Gondoljon egy klub tagjainak közzétett programra. Személyes időpont hozzáadása előtt ellenőrizze a naptár közönségét, ne csak az egyik barát melletti jogot tekintse relevánsnak. A magánidőpontokat megfelelő célhelyen tárolja."
+      ]
+    },
+    {
+      "heading": "A megfelelő naptár Google-beállításait használja",
+      "body": [
+        "Számítógépen a Google Naptárban keresse meg a kívánt naptárt, nyissa meg a menüjét, majd a megosztási beállításait. A Google külön területet ír le személyeknek vagy csoportoknak és a szélesebb hozzáférésnek. Módosítás előtt ellenőrizze a naptár nevét és a bejelentkezett fiókot.",
+        "Meghíváskor egyeztesse a címzett kívánt Google-azonosítóját. Ha nem találja a naptárt, ellenőrizze az e-mail-címet és a meghívóüzenetet, ne a hozzáférés bővítésével próbálja láthatóvá tenni. A hiányzó megjelenítés és az elégtelen szerkesztési jog külön probléma."
+      ]
+    },
+    {
+      "heading": "Privát időpontok nélkül teszteljen",
+      "body": [
+        "Használjon olyan teszteseményt, amelynek címe, jegyzete, helye és vendéglistája nem tartalmaz magánadatot. Kérje meg a címzettet, hogy ellenőrizze, mit lát, és csak ha szükséges és engedélyezett, mit módosíthat. Ehhez ne adja át fiókja bejelentkezési adatait.",
+        "Jegyezze fel a naptárt és a szerepet, majd beállításváltozás után vizsgálja meg az eredményt. Ez a szándékolt hozzáférést ellenőrzi, nem bizonyítja a korábban olvasott vagy másolt adatok eltűnését. Ne valódi munkarend közzétételével teszteljen."
+      ]
+    },
+    {
+      "heading": "Válassza külön a munkahelyi szabályokat és az alkalmazáscsomagokat",
+      "body": [
+        "A Google szerint a munkahelyi vagy iskolai rendszergazda korlátozhatja a megosztást. Ha egy beállítás nem érhető el, a szervezet által jóváhagyott utat használja. Ne tegyen közzé munkahelyi adatokat fiókkorlátozás megkerülésére.",
+        "A Cloud Calendars megjelenítheti a kapcsolt naptárakat, de a csomagnevek nem írják át a Google jogait. Az Advanced eltávolítja a hirdetéseket; nem olyan díj, amely bárkinek minden Google-eseményhez hozzáférést ad. Ellenőrizze a szolgáltatói megosztást és az elfogadott eredményt, ne csak az elérhető helyi szerkesztőre hagyatkozzon."
+      ]
+    },
+    {
+      "heading": "Vizsgálja felül és távolítsa el a felesleges hozzáférést",
+      "body": [
+        "Projektzáráskor ellenőrizze a tényleges címzetteket, csoportokat és a szélesebb közzétételt. Egy személy eltávolítása csak része a feladatnak, ha más utak is léteznek. Egyezzenek meg, ki kezeli a programot és a későbbi hozzáférésváltozásokat.",
+        "A Google külön dokumentálja személyek vagy csoportok eltávolítását és a szélesebb megosztás kikapcsolását. A hozzáférés megszüntetése nem hív vissza exportált fájlt, képernyőképet vagy máshová másolt információt. Ezekről külön egyeztessen az érintettekkel, ne ígérje minden korábbi másolat törlését egy kapcsolóval."
+      ]
+    }
+  ],
+  "claims": {},
+  "practical": [
+    "Azonosítsa a naptárt és a címzett feladatát.",
+    "Ellenőrizze az egyéni, csoportos, szervezeti és nyilvános hozzáférést.",
+    "Válasszon a feladathoz illő jogot a Google aktuális beállításaiban.",
+    "Hozzáférésmódosítás előtt ellenőrizze a címzett azonosságát.",
+    "Ellenőrizzen ártalmatlan teszteseményt a címzett oldaláról.",
+    "Vizsgálja felül a régi hozzáférési utakat anélkül, hogy a másolatok visszahívását feltételezné."
+  ],
+  "faq": [
+    {
+      "q": "Az egyéni korlátozás felülírja a nyilvános naptárt?",
+      "a": "Nem. A Google szerint ütközéskor a szélesebb naptárjogok élveznek elsőbbséget. Az adott személy mellett a nyilvános és szervezeti beállításokat is vizsgálja meg."
+    },
+    {
+      "q": "Minden szerkesztési jog ugyanúgy teszi elérhetővé a privát eseményeket?",
+      "a": "Nem. A Google külön szerkesztési opciót dokumentál a privát események korlátozott elérésére, más szerkesztési és megosztáskezelési opciók mellett. Választás előtt olvassa el a pontos, aktuális jogosultságot."
+    },
+    {
+      "q": "Az Advanced megvásárlása megváltoztatja a Google megosztási jogait?",
+      "a": "Nem. Az Advanced a Cloud Calendars hirdetéseit távolítja el. A szolgáltatói hozzáférés a naptár jogosultságaitól és a szervezeti korlátozásoktól függ."
+    }
+  ],
+  "sourcesHeading": "A Google aktuális útmutatói jogosultságokhoz és megosztáshoz",
+  "sources": [
+    {
+      "label": "Google: naptárjogosultságok kiválasztása",
+      "url": "https://support.google.com/calendar/answer/15716974?hl=en"
+    },
+    {
+      "label": "Google: naptár megosztása és hozzáférés eltávolítása",
+      "url": "https://support.google.com/calendar/answer/37082?hl=en"
+    }
+  ],
+  "seeAlso": [
+    "why-a-shared-calendar-does-not-appear",
+    "sharing-one-event-not-your-calendar",
+    "taking-back-a-calendar-you-shared"
+  ],
+  "updated": "2026-10-21"
+},
 
   'why-a-shared-calendar-does-not-appear': {
     "updated": "2026-10-21",

@@ -3,52 +3,96 @@ import { LocalisedArticle } from '../types';
 /** De zes Google-artikelen: concrete vragen, heldere antwoorden. */
 export const GOOGLE_NL_NL: Readonly<Record<string, LocalisedArticle>> = {
   'who-can-see-what-in-google-calendar': {
-    title: 'Wie ziet wat als je een Google-agenda deelt',
-    short: 'Google-deelrechten',
-    description:
-      'De deelniveaus van Google zijn snel ingesteld en makkelijk verkeerd begrepen. Wat elk niveau werkelijk prijsgeeft, in gewone woorden.',
-    lede: 'Bijna niemand deelt te veel door een beoordelingsfout. Iemand koos een niveau dat bescheiden klonk en dat niet was.',
-    commonBelief: 'Dat «alleen vrij/bezet» en «alle afspraakgegevens» weinig schelen.',
-    sections: [
-      {
-        heading: 'De niveaus liggen verder uit elkaar dan ze klinken',
-        body: [
-          'Vrij/bezet toont blokken tijd zonder titels. Alle gegevens toont titels, locaties, notities en gasten — bij de meeste agenda’s dus een flink deel van je leven.',
-          'Wijzigingen aanbrengen geeft bewerkrechten. Delen beheren geeft iemand het recht jouw agenda aan anderen door te geven, en dat is het niveau dat later verrast.',
-        ],
-      },
-      {
-        heading: 'Kiezen zonder er elke keer over na te denken',
-        body: [
-          'Voor collega’s die alleen om je heen moeten plannen is vrij/bezet vrijwel altijd het juiste antwoord en vrijwel nooit het gekozene.',
-          'Bewaar volledige gegevens voor agenda’s die zijn gemaakt om te delen, niet voor die waarin je leeft.',
-        ],
-      },
-    ],
-    claims: {
-      advancedMonthly: 'Maandprijs van het niveau waarin dit in de app wordt beheerd, in dollars',
+  "title": "Deelrechten in Google Agenda: controleer welke toegang je geeft",
+  "short": "Toegang en privacy in Google Agenda",
+  "description": "Kies toegang tot beschikbaarheid, details of bewerken. Controleer vóór het delen zowel openbare en groepstoegang als individuele rechten.",
+  "lede": "Bepaal vóór het delen wat de ander moet kunnen doen. Om je afspraken heen plannen, details lezen en de agenda onderhouden zijn verschillende taken. Deze gids is gepubliceerd door Arte Soft, de ontwikkelaar van Cloud Calendars.",
+  "commonBelief": "Een beperkte instelling voor één persoon zou garanderen dat die via geen enkele andere route details kan zien.",
+  "sections": [
+    {
+      "heading": "Stem de toegang af op de taak",
+      "body": [
+        "Een collega die een tijd zoekt, heeft mogelijk alleen beschikbaarheid nodig zonder afspraakdetails. Iemand die een projectplanning bijhoudt, heeft andere toegang nodig. Bepaal eerst de taak en bekijk daarna de rechten in de huidige deelinstellingen van de agenda.",
+        "Google onderscheidt beschikbaarheid, afspraakdetails en meerdere bewerkingsniveaus. Eén bewerkingsoptie beperkt toegang tot privéafspraken; een andere staat bewerken en details toe; de ruimste biedt ook beheer van delen. Behandel niet elke optie met het woord wijzigen als gelijkwaardig."
+      ]
     },
-    faq: [
-      {
-        q: 'Zijn mijn afspraaktitels zichtbaar als ik alleen vrij/bezet deel?',
-        a: 'Nee. Vrij/bezet toont blokken tijd zonder titels, locaties, notities of gasten. Alleen «alle afspraakgegevens» legt die bloot — en dan allemaal.',
-      },
-      {
-        q: 'Wat mag iemand met «wijzigingen aanbrengen en delen beheren»?',
-        a: 'Elke afspraak bewerken én jouw agenda doorgeven aan anderen zonder het te vragen. Het is het enige niveau waarop iemand anders toegang kan uitdelen.',
-      },
-      {
-        q: 'Kan ik zien wie al toegang heeft tot mijn agenda?',
-        a: 'Ja, in de deelinstellingen van die agenda. Niets nodigt je uit om te kijken en delen stapelt zich alleen op: lees de lijst twee keer per jaar.',
-      },
-    ],
-    practical: [
-      'Standaard vrij/bezet voor iedereen die alleen tijd bij je hoeft te boeken.',
-      'Houd «wijzigingen aanbrengen» voor mensen die echt voor je plannen.',
-      'Kijk twee keer per jaar wie toegang heeft: delen stapelt zich op en niets herinnert je eraan.',
-    ],
-    seeAlso: ['why-a-shared-calendar-does-not-appear', 'what-guests-can-do-to-your-event'],
-  },
+    {
+      "heading": "Controleer de toegang tot de hele agenda",
+      "body": [
+        "Bekijk naast personen ook of de agenda openbaar is, voor je organisatie beschikbaar is of met een groep wordt gedeeld. Volgens Google kan ruimere agendatoegang een beperktere toekenning overstijgen: één persoon beperken maakt al gepubliceerde details niet onzichtbaar.",
+        "Denk aan een verenigingsrooster dat voor leden is gepubliceerd. Controleer het publiek voordat je er een persoonlijke afspraak in zet. De instelling naast één vriend is niet de enige relevante instelling. Bewaar privéafspraken in een passende agenda."
+      ]
+    },
+    {
+      "heading": "Gebruik de instellingen van de juiste Google-agenda",
+      "body": [
+        "Zoek op een computer in Google Agenda de bedoelde agenda, open het menu en ga naar de deelinstellingen. Google beschrijft afzonderlijke onderdelen voor personen of groepen en bredere toegang. Controleer de agendanaam en het aangemelde account voordat je iets wijzigt.",
+        "Bevestig bij uitnodigen de bedoelde Google-identiteit van de ontvanger. Kan die de agenda niet vinden, controleer dan het adres en uitnodigingsbericht in plaats van de toegang te verruimen om de agenda zichtbaar te maken. Ontbrekende weergave en onvoldoende bewerkingsrechten zijn verschillende problemen."
+      ]
+    },
+    {
+      "heading": "Test zonder privéafspraken",
+      "body": [
+        "Gebruik een gewone testafspraak zonder vertrouwelijke titel, notities, locatie of gastenlijst. Vraag de ontvanger wat zichtbaar is en, alleen als bewerken nodig en toegestaan is, wat gewijzigd kan worden. Deel daarvoor niet je accountgegevens.",
+        "Noteer de agenda en toegekende rol en controleer het resultaat na een wijziging. Zo toets je de bedoelde inrichting; je bewijst niet dat eerder gelezen of gekopieerde informatie verdwenen is. Publiceer geen echt werkschema als test."
+      ]
+    },
+    {
+      "heading": "Houd werkbeleid en app-abonnementen uit elkaar",
+      "body": [
+        "Google vermeldt dat werk- of schoolbeheerders delen kunnen beperken. Gebruik de goedgekeurde route van de organisatie als de benodigde instelling ontbreekt. Publiceer geen werkinformatie om een accountbeperking te omzeilen.",
+        "Cloud Calendars kan gekoppelde agenda’s tonen, maar abonnementsnamen veranderen Google-rechten niet. Advanced verwijdert advertenties; betaling geeft een ander niet ineens toegang tot elk Google-evenement. Controleer de deelinstellingen bij de aanbieder en het geaccepteerde resultaat, niet alleen of lokaal een editor beschikbaar is."
+      ]
+    },
+    {
+      "heading": "Controleer en verwijder overbodige toegang",
+      "body": [
+        "Bekijk na een project de daadwerkelijke ontvangers, groepen en eventuele bredere publicatie. Eén persoon verwijderen is maar een deel van de controle als andere toegangswegen bestaan. Spreek af wie het schema onderhoudt en hoe toekomstige wijzigingen worden geregeld.",
+        "Google beschrijft personen of groepen verwijderen en breder delen uitschakelen afzonderlijk. Toegang intrekken haalt geen geëxporteerd bestand, screenshot of elders gekopieerde informatie terug. Bespreek dat apart met betrokkenen in plaats van te beloven dat één schakelaar alle eerdere kopieën wist."
+      ]
+    }
+  ],
+  "claims": {},
+  "practical": [
+    "Bepaal de agenda en de taak van de ontvanger.",
+    "Controleer individuele, groeps-, organisatie- en openbare toegang.",
+    "Kies in de actuele Google-instellingen de rechten die bij de taak passen.",
+    "Controleer de identiteit vóór je toegang wijzigt.",
+    "Controleer een onschuldige testafspraak aan de kant van de ontvanger.",
+    "Bekijk verouderde toegangswegen zonder aan te nemen dat kopieën worden teruggehaald."
+  ],
+  "faq": [
+    {
+      "q": "Heeft een individuele beperking voorrang op een openbare agenda?",
+      "a": "Nee. Google beschrijft dat ruimere agendarechten voorrang hebben bij tegenstrijdige instellingen. Controleer openbare en organisatie-instellingen naast de vermelding van die persoon."
+    },
+    {
+      "q": "Maken alle bewerkingsrechten privéafspraken op dezelfde manier zichtbaar?",
+      "a": "Nee. Google beschrijft een bewerkingsoptie die toegang tot privéafspraken beperkt, afzonderlijk van andere bewerkings- en deelbeheeropties. Lees de exacte actuele rechten voordat je kiest."
+    },
+    {
+      "q": "Verandert Advanced kopen de deelrechten van Google?",
+      "a": "Nee. Advanced verwijdert advertenties in Cloud Calendars. Toegang bij de aanbieder hangt af van agendarechten en eventuele organisatiebeperkingen."
+    }
+  ],
+  "sourcesHeading": "Actuele Google-informatie over rechten en delen",
+  "sources": [
+    {
+      "label": "Google: agendarechten kiezen",
+      "url": "https://support.google.com/calendar/answer/15716974?hl=en"
+    },
+    {
+      "label": "Google: een agenda delen en toegang verwijderen",
+      "url": "https://support.google.com/calendar/answer/37082?hl=en"
+    }
+  ],
+  "seeAlso": [
+    "why-a-shared-calendar-does-not-appear",
+    "sharing-one-event-not-your-calendar",
+    "taking-back-a-calendar-you-shared"
+  ],
+  "updated": "2026-10-21"
+},
 
   'why-a-shared-calendar-does-not-appear': {
     "updated": "2026-10-21",

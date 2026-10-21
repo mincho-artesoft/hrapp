@@ -3,52 +3,94 @@ import { LocalisedArticle } from '../types';
 /** Cele șase articole despre Google: întrebări concrete, răspunsuri limpezi. */
 export const GOOGLE_RO: Readonly<Record<string, LocalisedArticle>> = {
   'who-can-see-what-in-google-calendar': {
-    title: 'Cine ce vede când partajezi un calendar Google',
-    short: 'Permisiuni de partajare Google',
-    description:
-      'Nivelurile de partajare ale Google se setează repede și se înțeleg greșit ușor. Ce expune de fapt fiecare, spus pe șleau.',
-    lede: 'Aproape nicio partajare excesivă nu e o eroare de judecată. E cineva care a ales un nivel ce suna modest și nu era.',
-    commonBelief: 'Că „doar liber/ocupat” și „toate detaliile evenimentelor” diferă puțin.',
-    sections: [
-      {
-        heading: 'Nivelurile sunt mai depărtate decât sună',
-        body: [
-          'Liber/ocupat arată blocuri de timp fără titluri. Toate detaliile arată titluri, locuri, notițe și invitați — pentru majoritatea calendarelor, o bună parte din viața ta.',
-          'Efectuarea de modificări permite editarea. Gestionarea partajării permite cuiva să dea calendarul tău mai departe altora, iar acesta e nivelul care surprinde mai târziu.',
-        ],
-      },
-      {
-        heading: 'Să alegi fără să te gândești de fiecare dată',
-        body: [
-          'Pentru colegii care trebuie doar să își potrivească orele cu ale tale, liber/ocupat e aproape întotdeauna răspunsul corect și aproape niciodată cel ales.',
-          'Păstrează detaliile complete pentru calendarele create ca să fie partajate, nu pentru cel în care trăiești.',
-        ],
-      },
-    ],
-    claims: {
-      advancedMonthly: 'Costul lunar al nivelului în care se gestionează asta în aplicație, în dolari',
+  "title": "Permisiuni Google Calendar: verifică accesul acordat efectiv",
+  "short": "Acces și confidențialitate în Google Calendar",
+  "description": "Alege acces la disponibilitate, detalii sau editare. Verifică accesul public și prin grupuri, nu doar permisiunile individuale, înainte de partajare.",
+  "lede": "Înainte de partajare, decide ce trebuie să facă cealaltă persoană. Găsirea unei ore, citirea detaliilor și întreținerea calendarului sunt sarcini diferite. Ghid publicat de Arte Soft, dezvoltatorul Cloud Calendars.",
+  "commonBelief": "O permisiune individuală limitată garantează că persoana nu poate vedea detalii prin altă cale.",
+  "sections": [
+    {
+      "heading": "Potrivește accesul cu sarcina",
+      "body": [
+        "Un coleg care stabilește o oră poate avea nevoie doar de disponibilitate, fără detalii. Un colaborator care întreține un program de proiect are alte nevoi. Decide sarcina și apoi verifică permisiunea din setările curente de partajare.",
+        "Google distinge disponibilitatea, detaliile și mai multe niveluri de editare. Unul limitează accesul la evenimente private; altul permite editarea și detaliile, iar cel mai larg și administrarea partajării. Opțiunile care menționează modificări nu sunt echivalente."
+      ]
     },
-    faq: [
-      {
-        q: 'Se văd titlurile evenimentelor mele dacă partajez doar liber/ocupat?',
-        a: 'Nu. Liber/ocupat arată blocuri de timp fără titluri, locuri, notițe sau invitați. Abia „toate detaliile” le expune — și le expune pe toate.',
-      },
-      {
-        q: 'Ce permite „efectuarea de modificări și gestionarea partajării”?',
-        a: 'Editarea oricărui eveniment și predarea calendarului tău altor persoane fără să te întrebe. E singurul nivel la care altcineva împarte accesul.',
-      },
-      {
-        q: 'Pot verifica cine are deja acces la calendarul meu?',
-        a: 'Da, în setările de partajare ale acelui calendar. Nimic nu te îndeamnă să te uiți, iar partajările doar se adună: citește lista de două ori pe an.',
-      },
-    ],
-    practical: [
-      'Implicit liber/ocupat pentru oricine trebuie doar să rezerve timp cu tine.',
-      'Păstrează „efectuarea de modificări” pentru cei care chiar planifică în locul tău.',
-      'Verifică de două ori pe an cine are acces; partajările se adună și nimic nu-ți amintește.',
-    ],
-    seeAlso: ['why-a-shared-calendar-does-not-appear', 'what-guests-can-do-to-your-event'],
-  },
+    {
+      "heading": "Verifică accesul întregului calendar și al persoanei",
+      "body": [
+        "Pe lângă persoane, verifică dacă este public, disponibil organizației sau partajat unui grup. Google spune că accesul mai larg poate prevala asupra unei acordări restrânse: limitarea unei persoane nu retrage detalii deja publice.",
+        "Gândește-te la programul unui club publicat pentru membri. Înainte de o programare personală, verifică publicul calendarului, nu doar permisiunea din dreptul unui prieten. Păstrează programările private într-o destinație potrivită."
+      ]
+    },
+    {
+      "heading": "Folosește setările Google ale calendarului exact",
+      "body": [
+        "Pe computer, găsește calendarul între calendarele tale în Google Calendar, deschide meniul și setările de partajare. Google documentează zone separate pentru persoane sau grupuri și acces mai larg. Verifică numele și contul autentificat înainte de modificare.",
+        "Confirmă identitatea Google dorită a destinatarului. Dacă nu găsește calendarul, verifică adresa și mesajul invitației în loc să extinzi accesul ca să apară. Lipsa afișării și drepturile insuficiente de editare sunt probleme diferite."
+      ]
+    },
+    {
+      "heading": "Testează fără programări private",
+      "body": [
+        "Folosește o programare de test fără titlu privat, note, loc sau invitați. Cere destinatarului să confirme ce vede și, numai când este necesar și permis, ce poate modifica. Nu distribui datele de autentificare pentru test.",
+        "Notează calendarul și rolul, apoi verifică rezultatul după schimbarea setării. Astfel verifici configurația dorită, nu dispariția informațiilor citite sau copiate anterior. Nu testa publicând un program real de lucru."
+      ]
+    },
+    {
+      "heading": "Separă politicile de lucru de planurile aplicației",
+      "body": [
+        "Google precizează că administratorii de lucru sau școală pot restricționa partajarea. Dacă lipsește setarea, folosește metoda aprobată de organizație. Nu publica informații de lucru pentru a ocoli restricțiile contului.",
+        "Cloud Calendars poate afișa calendare conectate, dar planurile nu redefinesc permisiunile Google. Advanced elimină reclamele, nu cumpără acces pentru altcineva la toate evenimentele. Verifică partajarea furnizorului și rezultatul acceptat, nu doar existența unui editor local."
+      ]
+    },
+    {
+      "heading": "Revizuiește și elimină accesul inutil",
+      "body": [
+        "La sfârșitul proiectului, verifică destinatari, grupuri și publicări mai largi. Eliminarea unei persoane este doar o parte dacă există alte căi. Stabiliți cine întreține programul și cum se vor gestiona schimbările de acces.",
+        "Google documentează separat eliminarea persoanelor sau grupurilor și dezactivarea partajării mai largi. Retragerea nu recuperează exporturi, capturi sau informații copiate altundeva. Urmărește separat aceste situații cu cei implicați, fără promisiunea că un comutator șterge toate copiile vechi."
+      ]
+    }
+  ],
+  "claims": {},
+  "practical": [
+    "Identifică calendarul și sarcina destinatarului.",
+    "Verifică accesul individual, prin grup, organizație și public.",
+    "Alege permisiunea potrivită în setările Google curente.",
+    "Verifică identitatea înainte să schimbi accesul.",
+    "Testează un eveniment inofensiv din perspectiva destinatarului.",
+    "Revizuiește căile vechi fără a presupune recuperarea copiilor."
+  ],
+  "faq": [
+    {
+      "q": "O permisiune individuală restrânsă prevalează asupra unui calendar public?",
+      "a": "Nu. Google documentează prioritatea permisiunilor mai largi când setările se contrazic. Verifică accesul public și al organizației, nu doar persoana."
+    },
+    {
+      "q": "Toate permisiunile de editare expun la fel evenimentele private?",
+      "a": "Nu. Google documentează separat o opțiune care limitează accesul privat și alte opțiuni de editare sau administrare. Citește permisiunea actuală exactă."
+    },
+    {
+      "q": "Advanced schimbă drepturile de partajare Google?",
+      "a": "Nu. Advanced elimină reclamele în Cloud Calendars. Accesul depinde de permisiunile calendarului și restricțiile organizației."
+    }
+  ],
+  "sourcesHeading": "Ghidurile Google actuale despre permisiuni și partajare",
+  "sources": [
+    {
+      "label": "Google: alegerea permisiunilor calendarului",
+      "url": "https://support.google.com/calendar/answer/15716974?hl=en"
+    },
+    {
+      "label": "Google: partajarea calendarului și retragerea accesului",
+      "url": "https://support.google.com/calendar/answer/37082?hl=en"
+    }
+  ],
+  "seeAlso": [
+    "why-a-shared-calendar-does-not-appear"
+  ],
+  "updated": "2026-10-21"
+},
 
   'why-a-shared-calendar-does-not-appear': {
     "updated": "2026-10-21",

@@ -5,8 +5,8 @@ import { ActivatedRoute } from '@angular/router';
 import { MoreAppsComponent } from '../../components/more-apps/more-apps.component';
 import { ShotRailComponent } from '../../components/shot-rail/shot-rail.component';
 import { ARTICLE_FACTS } from '../../content/article-facts';
-import { CONTENT, contentFor, localesWith } from '../../content/registry';
-import { ArticleChrome, ClaimRow, LocalisedArticle } from '../../content/types';
+import { localesWith } from '../../content/article-index';
+import { ArticleChrome, ArticleLocale, ClaimRow, LocalisedArticle } from '../../content/types';
 import { APP_DEVELOPER, APP_NAME, APP_STORE_URL, SITE_URL } from '../../core/app-facts';
 import { DEFAULT_LOCALE, Locale, linkPath, localePath, storeUrl } from '../../core/locales';
 import { storeCta } from '../../core/store-cta';
@@ -49,7 +49,8 @@ export class ArticlePageComponent implements OnDestroy {
     const slug = route.paramMap.get('slug') ?? '';
 
     this.locale = (route.data['locale'] as Locale | undefined) ?? DEFAULT_LOCALE;
-    const content = contentFor(this.locale.code);
+    const content = route.data['articleContent'] as ArticleLocale;
+    if (!content) throw new Error('Article content was not resolved');
     this.chrome = content.chrome;
     this.article = content.articles[slug];
     this.store = storeUrl(this.locale, APP_STORE_URL);

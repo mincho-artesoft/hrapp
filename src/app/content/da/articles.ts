@@ -80,42 +80,96 @@ export const ARTICLES_DA: Readonly<Record<string, LocalisedArticle>> = {
   },
 
   'sharing-one-event-not-your-calendar': {
-    title: 'Del én begivenhed, ikke din kalender',
-    short: 'Del én begivenhed',
-    description:
-      'Hvordan det foregår at sende en enkelt begivenhed, hvad modtageren rent faktisk får, og hvorfor vedkommende ikke behøver installere noget for at se den.',
-    lede: 'At dele en kalender er som regel alt eller intet: enten har nogen adgang til din, eller også har de ikke. At sende en middag burde ikke kræve nogen af delene.',
-    commonBelief:
-      'At det at dele en begivenhed betyder at give nogen et vindue til resten af din uge.',
-    sections: [
-      {
-        heading: 'Hvad der faktisk sendes',
-        body: [
-          'Når du opretter en begivenhed, tilbyder appen at dele den. Det, der rejser, er et link — via mail, besked, hvad modtageren nu har — og bag det link ligger et kalenderfeed, som indeholder den begivenhed og intet andet.',
-          'Det er hverken et skærmbillede eller en kopi, der bliver gammel. Ændres tidspunktet, ændres feedet med det, og den, du sendte til, ser ændringen, uden at du sender noget igen.',
-        ],
-      },
-      {
-        heading: 'Hvad det ikke er',
-        body: [
-          'Linket er et ganske almindeligt kalenderabonnement: Apples Kalender læser det, Google Kalender læser det, Outlook læser det. I beskeden følger også et App Clip med til den, der gerne vil have appen — det åbner uden installation. Det er en dør, ikke en bom.',
-          'Det er ikke øjeblikkeligt: feedet beder apps kigge igen hver time, og det er en anmodning, ikke en regel. Det er heller ikke hemmeligt: linket bærer toogtyve tilfældige tegn, som ingen gætter, men den, der har det, kan læse med. Og indtil videre er det kun læsning.',
-        ],
-      },
-    ],
-    claims: {
-      refreshHint: 'Timer mellem hver anmodning om at opdatere feedet',
-      linkLength: 'Tilfældige tegn i linket, hvilket er det, der gør det ugætteligt',
-      sharePrice: 'Hvad deling koster',
+  "updated": "2026-10-21",
+  "title": "Del én kalenderbegivenhed: vælg det rette link og den rette adgang",
+  "short": "Deling af én begivenhed",
+  "description": "Del én begivenhed uden hele kalenderen. Forstå Reader, Writer og Owner, forhåndsvisninger, opdateringer og grænserne for at fjerne adgang.",
+  "lede": "At dele middagsdetaljer, lade en medarrangør redigere og indsamle svar om deltagelse er forskellige opgaver. Vælg først opgaven og derefter delingsvejen. Guiden er skrevet af Arte Soft, udvikleren af Cloud Calendars.",
+  "commonBelief": "Alle begivenhedslinks er skrivebeskyttede kalenderabonnementer, der straks opdateres og registrerer et svar.",
+  "sections": [
+    {
+      "heading": "Begynd med én begivenhed og gennemgå detaljerne",
+      "body": [
+        "Deling af én begivenhed omfatter begivenheden, ikke afsenderens hele kalender. Kontrollér titel, tidszone, sted, noter og mødelink før afsendelse. Oplysninger til én gæst hører måske ikke hjemme i et link, du vil sprede bredt.",
+        "En middagsaftale kræver for eksempel ikke deling af kalenderen med dine lægebesøg. Middagens eget sted og links følger dog med begivenheden. Kontrollér selve begivenheden frem for at stole på den omgivende kalenders privatliv."
+      ]
     },
-    practical: [
-      'Del fra selve begivenheden, lige efter du har oprettet den.',
-      'Send linket via den kanal, du i forvejen bruger med den person.',
-      'Ændres tidspunktet i sidste øjeblik, så skriv ud over at flytte begivenheden.',
-      'Tilbagekald linket, når begivenheden er overstået, som du ville holde op med at dele et dokument.',
-    ],
-    seeAlso: ['icloud-google-and-outlook-in-one-view', 'weather-inside-your-calendar'],
-  },
+    {
+      "heading": "Vælg forhåndsvisning, e-mail eller QR",
+      "body": [
+        "Cloud Calendars har forskellige delingsveje. App Clip viser en forhåndsvisning; den fulde app kræves for at tilføje begivenheden derfra. E-mail- og QR-invitationer bruger en webside, der tilbyder at åbne Cloud Calendars. Disse links er ikke indbyrdes udskiftelige abonnementsadresser.",
+        "Afsenderen logger ind til appens synkroniserede deling. Links og QR-koder kan videresendes, så send dem kun steder, hvor indholdet passer. En QR-kode formidler et link; den beviser ikke, hvem der åbnede det."
+      ]
+    },
+    {
+      "heading": "Giv kun den nødvendige adgang",
+      "body": [
+        "E-mail-invitationer lader dig vælge Reader, Writer eller Owner. Reader kan se og synkronisere; Writer kan redigere; Owner kan også dele og administrere adgang. Valgene har konsekvenser og er ikke tre navne for samme visning. Brug Reader til dem, der kun behøver programmet.",
+        "Vælg Writer til en medarrangør, som skal ændre begivenheden. Vælg kun Owner, hvis vedkommende også skal styre andres adgang. Udvidet adgang kræver den rette indloggede identitet. En anonym modtager er ikke en identificeret medejer."
+      ]
+    },
+    {
+      "heading": "Forstå, hvordan modtageren tilføjer begivenheden",
+      "body": [
+        "I den fulde app kræves kalendertilladelse og en skrivbar destinationskalender. Modtageren bør kontrollere destinationen før lagring. Den modtagne kopi kan derefter knyttes til den delte begivenhed for senere opdateringer.",
+        "Det er forskelligt fra at importere en almindelig ICS-fil til en anden kalender. Import giver en kopi; et abonnement kontrollerer jævnligt et feed. Sender du et ICS-feed frem for en appinvitation, så forklar det og bekræft, at modtagerens kalender understøtter det."
+      ]
+    },
+    {
+      "heading": "Kontrollér ændringer, før du regner med dem",
+      "body": [
+        "Synkroniseret deling kan overføre senere rettelser eller aflysning, men modtagerens enhed skal have mulighed for at modtage dem. Et tip om feedopdatering er ikke en leveringsfrist. En offlineenhed, et uopdateret abonnement eller en selvstændig importeret kopi kan stadig vise gamle oplysninger.",
+        "Flyttes middagen kort før start, så opdatér begivenheden og kontakt gæsterne direkte. Bed dem bekræfte det nye tidspunkt. At sende en opdatering og modtage et deltagelsessvar er separate trin."
+      ]
+    },
+    {
+      "heading": "Administrer adgang uden at love sletning af kopier",
+      "body": [
+        "Gennemgå modtagernes adgang og fjern unødvendige rettigheder. At fjerne en modtager og tilbagekalde et feedlink er forskellige handlinger; ingen af dem må beskrives som fjernsletning af skærmbilleder, beskeder eller alle kalenderkopier.",
+        "Er et link kommet uden for målgruppen, så identificér linket eller adgangstildelingen. Kontrollér den berørte vej efter ændringen. Undlad fremover private detaljer i bredt delte links frem for at regne med senere tilbagekaldelse."
+      ]
+    }
+  ],
+  "claims": {},
+  "practical": [
+    "Gennemgå detaljerne og vælg behovet: visning, redigering eller deltagelsessvar.",
+    "Vælg delingsvej og log ind, når det kræves.",
+    "Brug Reader til læsere; giv kun Writer eller Owner til det tilsvarende ansvar.",
+    "Bed modtageren kontrollere tid og destinationskalender ved tilføjelsen.",
+    "Ved hastende ændringer: opdatér begivenheden og send en direkte besked.",
+    "Gennemgå modtagerrettigheder og linkadgang separat, når delingen slutter."
+  ],
+  "faq": [
+    {
+      "q": "Afslører deling af én begivenhed hele min kalender?",
+      "a": "Den synkroniserede enkeltbegivenhedsdeling omfatter kun begivenheden. Dens egne detaljer vises stadig gennem den valgte vej. Gennemgå dem, og send ikke en hel kalenderinvitation, hvis du kun mener én begivenhed."
+    },
+    {
+      "q": "Kan modtageren ændre begivenheden?",
+      "a": "Ja, med passende Writer- eller Owner-adgang via den understøttede indloggede vej. Reader er til visning og synkronisering. Et almindeligt ICS-abonnement er ikke samme redigeringsmekanisme."
+    },
+    {
+      "q": "Fortryder fjernelse alt, personen allerede har modtaget?",
+      "a": "Det kan ikke garanteres. Ændringer påvirker den understøttede delingsrelation, men gemte kopier, skærmbilleder og beskeder kan bestå. En delt feedadresse skal også vurderes separat."
+    }
+  ],
+  "sourcesHeading": "Referencer om modtagermuligheder",
+  "sources": [
+    {
+      "label": "Apple: overblik over App Clips",
+      "url": "https://developer.apple.com/help/app-store-connect/offer-app-clip-experiences/overview-of-app-clips/"
+    },
+    {
+      "label": "Google: import af begivenheder og begrænsninger",
+      "url": "https://support.google.com/calendar/answer/37118?co=GENIE.Platform%3DDesktop&hl=en"
+    },
+    {
+      "label": "Microsoft: import eller abonnement på en kalender",
+      "url": "https://support.microsoft.com/en-us/outlook/import-or-subscribe-to-a-calendar-in-outlook-com-or-outlook-on-the-web"
+    }
+  ],
+  "seeAlso": []
+},
 
   'what-a-subscription-actually-buys': {
   "updated": "2026-10-21",

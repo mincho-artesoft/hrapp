@@ -3,52 +3,95 @@ import { LocalisedArticle } from '../types';
 /** Sześć artykułów o Google: konkretne pytania, jasne odpowiedzi. */
 export const GOOGLE_PL: Readonly<Record<string, LocalisedArticle>> = {
   'who-can-see-what-in-google-calendar': {
-    title: 'Kto co widzi, gdy udostępniasz kalendarz Google',
-    short: 'Uprawnienia udostępniania',
-    description:
-      'Poziomy udostępniania w Google ustawia się szybko i łatwo rozumie opacznie. Co naprawdę odsłania każdy z nich, powiedziane wprost.',
-    lede: 'Większość przypadkowego nadmiaru w udostępnianiu to nie błąd oceny. To ktoś wybrał poziom, który brzmiał skromnie, a taki nie był.',
-    commonBelief: 'Że „tylko wolny/zajęty” i „wszystkie szczegóły wydarzeń” różnią się niewiele.',
-    sections: [
-      {
-        heading: 'Poziomy dzieli więcej, niż wynika z nazw',
-        body: [
-          'Wolny/zajęty pokazuje bloki czasu bez tytułów. Wszystkie szczegóły pokazują tytuły, miejsca, notatki i gości — w większości kalendarzy sporą część twojego życia.',
-          'Wprowadzanie zmian pozwala edytować. Zarządzanie udostępnianiem pozwala przekazać twój kalendarz kolejnym osobom i to ten poziom zaskakuje później.',
-        ],
-      },
-      {
-        heading: 'Wybierać bez zastanawiania się za każdym razem',
-        body: [
-          'Dla współpracowników, którzy mają tylko planować wokół ciebie, wolny/zajęty jest niemal zawsze właściwą odpowiedzią i niemal nigdy wybieraną.',
-          'Pełne szczegóły zostaw kalendarzom stworzonym do udostępniania, nie temu, w którym żyjesz.',
-        ],
-      },
-    ],
-    claims: {
-      advancedMonthly: 'Miesięczny koszt poziomu, na którym zarządza się tym w aplikacji, w dolarach',
+  "updated": "2026-10-21",
+  "title": "Uprawnienia Google Calendar: sprawdź rzeczywisty dostęp",
+  "short": "Dostęp i prywatność Google Calendar",
+  "description": "Wybierz dostęp do dostępności, szczegółów lub edycji w Google Calendar. Sprawdź prawa publiczne i grupowe obok uprawnień konkretnych osób.",
+  "lede": "Przed udostępnieniem ustal zadanie odbiorcy: sprawdzanie wolnego czasu, czytanie szczegółów czy prowadzenie kalendarza. Poradnik publikuje Arte Soft, twórca Cloud Calendars.",
+  "commonBelief": "Ograniczenie jednej osoby gwarantuje, że nie zobaczy szczegółów żadną inną drogą.",
+  "sections": [
+    {
+      "heading": "Dopasuj uprawnienie do zadania",
+      "body": [
+        "Współpracownik szukający terminu może potrzebować tylko informacji o zajętości. Osoba prowadząca projekt potrzebuje innego dostępu. Najpierw określ zadanie, potem sprawdź bieżące ustawienia.",
+        "Google rozróżnia dostępność, szczegóły i kilka poziomów edycji. Jeden ogranicza dostęp do prywatnych wydarzeń; drugi pozwala na edycję i szczegóły; najszerszy obejmuje zarządzanie udostępnianiem. Nie traktuj wszystkich opcji zmian jako równoważnych."
+      ]
     },
-    faq: [
-      {
-        q: 'Czy ktoś zobaczy tytuły moich wydarzeń, jeśli udostępnię tylko wolny/zajęty?',
-        a: 'Nie. Wolny/zajęty pokazuje bloki czasu bez tytułów, miejsc, notatek i gości. Dopiero „wszystkie szczegóły” je odsłaniają — i odsłaniają wszystkie.',
-      },
-      {
-        q: 'Co daje „wprowadzanie zmian i zarządzanie udostępnianiem”?',
-        a: 'Edytowanie każdego wydarzenia oraz przekazanie twojego kalendarza kolejnym osobom bez pytania ciebie. To jedyny poziom, na którym ktoś inny rozdaje dostęp.',
-      },
-      {
-        q: 'Czy mogę sprawdzić, kto ma już dostęp do mojego kalendarza?',
-        a: 'Tak, w ustawieniach udostępniania tego kalendarza. Nic nie zachęca do zaglądania, a udostępnienia tylko się kumulują: przejrzyj listę dwa razy w roku.',
-      },
-    ],
-    practical: [
-      'Domyślnie wolny/zajęty dla każdego, kto ma tylko rezerwować u ciebie czas.',
-      '„Wprowadzanie zmian” zostaw tym, którzy naprawdę planują za ciebie.',
-      'Dwa razy w roku przejrzyj, kto ma dostęp; udostępnienia się kumulują i nic o nich nie przypomina.',
-    ],
-    seeAlso: ['why-a-shared-calendar-does-not-appear', 'what-guests-can-do-to-your-event'],
-  },
+    {
+      "heading": "Sprawdź odbiorców całego kalendarza",
+      "body": [
+        "Poza osobami sprawdź publikację publiczną, dostęp organizacji i grup. Według Google szerszy dostęp może przeważyć nad węższym: ograniczenie osoby nie ukrywa już publicznych szczegółów.",
+        "Przed wpisaniem prywatnej wizyty do harmonogramu klubu sprawdź całą publiczność, nie tylko ustawienie przy znajomym. Prywatne terminy umieszczaj we właściwym kalendarzu."
+      ]
+    },
+    {
+      "heading": "Otwórz ustawienia właściwego kalendarza Google",
+      "body": [
+        "W Google Calendar na komputerze znajdź kalendarz, otwórz jego menu i ustawienia udostępniania. Osoby lub grupy oraz szerszy dostęp mają osobne obszary. Sprawdź nazwę i zalogowane konto.",
+        "Potwierdź tożsamość Google odbiorcy. Jeśli kalendarz nie jest widoczny, sprawdź adres i zaproszenie zamiast zwiększać dostęp. Brak widoku i brak prawa do edycji to różne problemy."
+      ]
+    },
+    {
+      "heading": "Testuj bez prywatnych danych",
+      "body": [
+        "Użyj próbnego terminu bez prywatnego tytułu, notatek, miejsca i gości. Poproś odbiorcę o potwierdzenie widoczności, a edycji tylko wtedy, gdy jest potrzebna i dozwolona. Nie udostępniaj danych logowania.",
+        "Zapisz kalendarz i rolę, a po zmianie sprawdź wynik. Test nie dowodzi, że wcześniej przeczytane lub skopiowane informacje zniknęły. Nie publikuj prawdziwego grafiku pracy jako testu."
+      ]
+    },
+    {
+      "heading": "Oddziel zasady pracy od planu aplikacji",
+      "body": [
+        "Administrator Google w pracy lub szkole może ograniczać udostępnianie. Jeśli opcja jest niedostępna, skorzystaj z zatwierdzonej metody. Nie publikuj danych służbowych w celu obejścia ograniczeń.",
+        "Plany Cloud Calendars nie zmieniają praw Google. Advanced usuwa reklamy, a nie zapewnia dostępu do wszystkich wydarzeń. Sprawdź wynik zaakceptowany przez dostawcę, nie tylko dostępny lokalny edytor."
+      ]
+    },
+    {
+      "heading": "Usuń zbędne drogi dostępu",
+      "body": [
+        "Po projekcie przejrzyj osoby, grupy i publikację. Usunięcie jednego nazwiska to tylko część zadania, jeśli istnieją inne drogi. Ustal, kto utrzymuje harmonogram i przyszłe prawa.",
+        "Google osobno opisuje usuwanie osób lub grup i wyłączanie szerszego udostępniania. To nie wycofa eksportów, zrzutów ekranu ani kopii. Omów je oddzielnie z zainteresowanymi osobami."
+      ]
+    }
+  ],
+  "claims": {},
+  "practical": [
+    "Określ kalendarz i zadanie odbiorcy.",
+    "Sprawdź dostęp indywidualny, grupowy, organizacyjny i publiczny.",
+    "Wybierz właściwe bieżące uprawnienie Google.",
+    "Potwierdź tożsamość przed zmianą dostępu.",
+    "Sprawdź neutralne wydarzenie próbne po stronie odbiorcy.",
+    "Usuń stare uprawnienia bez zakładania, że wszystkie kopie znikną."
+  ],
+  "faq": [
+    {
+      "q": "Czy ograniczenie osoby przeważa nad publicznym kalendarzem?",
+      "a": "Nie. Google wskazuje pierwszeństwo szerszych uprawnień przy sprzeczności. Sprawdź ustawienia publiczne i organizacyjne obok wpisu osoby."
+    },
+    {
+      "q": "Czy wszystkie prawa edycji tak samo ujawniają wydarzenia prywatne?",
+      "a": "Nie. Google oddziela edycję z ograniczeniem prywatnych wydarzeń od innych praw edycji i zarządzania. Przeczytaj dokładne aktualne uprawnienie."
+    },
+    {
+      "q": "Czy Advanced zmienia uprawnienia Google?",
+      "a": "Nie. Advanced usuwa reklamy w Cloud Calendars. Dostęp zależy od kalendarza i ograniczeń organizacji."
+    }
+  ],
+  "sourcesHeading": "Aktualne wskazówki Google",
+  "sources": [
+    {
+      "label": "Google: wybór uprawnień kalendarza",
+      "url": "https://support.google.com/calendar/answer/15716974?hl=en"
+    },
+    {
+      "label": "Google: udostępnianie i usuwanie dostępu",
+      "url": "https://support.google.com/calendar/answer/37082?hl=en"
+    }
+  ],
+  "seeAlso": [
+    "why-a-shared-calendar-does-not-appear",
+    "sharing-one-event-not-your-calendar"
+  ]
+},
 
   'why-a-shared-calendar-does-not-appear': {
     "updated": "2026-10-21",

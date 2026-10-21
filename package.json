@@ -3,8 +3,8 @@
   "version": "0.0.0",
   "scripts": {
     "ng": "ng",
-    "start": "ng serve",
-    "build": "ng build && node tools/postbuild.mjs",
+    "start": "node tools/build-article-index.mjs && ng serve",
+    "build": "node tools/build-article-index.mjs && ng build && node tools/postbuild.mjs",
     "watch": "ng build --watch --configuration development",
     "test": "ng test",
     "deploy": "bash scripts/deploy.sh",

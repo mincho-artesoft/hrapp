@@ -731,50 +731,99 @@ export const ARTICLES_IT: Readonly<Record<string, LocalisedArticle>> = {
   },
 
   'sharing-one-event-not-your-calendar': {
-    title: 'Condividere un solo evento, non il calendario',
-    short: 'Condividere un evento',
-    description:
-      "Come funziona mandare un singolo evento, cosa riceve davvero l'altra persona e perché non deve installare niente per vederlo.",
-    lede: "Condividere un calendario di solito è tutto o niente: o qualcuno ha accesso al vostro o non ce l'ha. Mandare una cena non dovrebbe richiedere né l'una né l'altra cosa.",
-    commonBelief:
-      'Che condividere un evento significhi dare a qualcuno una finestra sul resto della vostra settimana.',
-    sections: [
-      {
-        heading: 'Cosa parte davvero',
-        body: [
-          "Quando create un evento, l'app vi propone di condividerlo. Quello che viaggia è un link — per email, per messaggio, per quello che l'altro ha installato — e dietro quel link c'è un flusso di calendario che contiene quell'evento e nient'altro.",
-          "Non è uno screenshot né una copia che invecchia. Se l'ora cambia, il flusso cambia con lei, e la persona a cui l'avete mandato vede il cambiamento senza che voi rimandiate niente.",
-        ],
-      },
-      {
-        heading: 'Non le serve questa app',
-        body: [
-          'Il link è un normale abbonamento di calendario. Lo legge Calendario di Apple, lo legge Google Calendar, lo legge Outlook. Qualcuno su Android con un account Gmail può iscriversi e vedere il vostro evento; niente di tutto ciò richiede un iPhone.',
-          "Nel messaggio c'è anche una App Clip per chi l'app la vuole: si apre senza installare niente e mostra l'evento subito. È una porta, non un pedaggio, e la distinzione conta quando invitate qualcuno a cui non potete chiedere di installare software.",
-        ],
-      },
-      {
-        heading: 'Cosa non è',
-        body: [
-          'Non è istantaneo. Il flusso chiede alle app di ricontrollare ogni ora, e quella è una richiesta, non una regola: ogni programma si aggiorna al proprio ritmo, alcuni con più pigrizia. Per una cena della settimana prossima è invisibile. Per un cambiamento venti minuti prima, mandate anche un messaggio.',
-          "Non è nemmeno segreto. Il link porta ventidue caratteri casuali, che nessuno indovinerà, ma chiunque ce l'abbia può leggere il flusso. Trattatelo come un link a un documento: mandatelo tranquillamente, e revocatelo quando ha fatto il suo lavoro.",
-          "E per ora è in sola lettura. Chi lo riceve vede l'evento. Non può modificarlo né scrivere nel vostro calendario.",
-        ],
-      },
-    ],
-    claims: {
-      refreshHint: 'Ore fra una richiesta di aggiornamento del flusso e la successiva',
-      linkLength: 'Caratteri casuali del link, che è ciò che lo rende non indovinabile',
-      sharePrice: 'Quanto costa condividere',
+  "updated": "2026-10-21",
+  "title": "Condividere un evento: scegliere il link e i permessi",
+  "short": "Condividere un evento",
+  "description": "Condividi un evento senza l’intero calendario. Scopri i ruoli Reader, Writer e Owner, le anteprime, gli aggiornamenti e i limiti della revoca.",
+  "lede": "Inviare i dettagli di una cena, consentire modifiche a un coorganizzatore e raccogliere conferme di presenza sono attività diverse. Scegli prima lo scopo e poi il metodo di condivisione. Questa guida è scritta da Arte Soft, sviluppatore di Cloud Calendars.",
+  "commonBelief": "Ogni link è un abbonamento di sola lettura che si aggiorna subito e registra una risposta.",
+  "sections": [
+    {
+      "heading": "Controlla i dettagli del singolo evento",
+      "body": [
+        "La condivisione di un singolo evento riguarda quell’evento, non l’intero calendario. Prima di inviarlo, controlla titolo, fuso orario, luogo, note e link della riunione. Informazioni utili a un invitato potrebbero non essere adatte a una diffusione ampia.",
+        "Condividere una cena non richiede di condividere il calendario delle visite mediche. Tuttavia, luogo e link della cena vengono trasmessi con l’evento. Controlla il contenuto stesso."
+      ]
     },
-    practical: [
-      "Condividete dall'evento stesso, subito dopo averlo creato: è lì che compare la proposta.",
-      'Mandate il link per il canale che già usate con quella persona; il formato è indifferente.',
-      "Se l'ora cambia all'ultimo, scrivetele oltre che spostare l'evento.",
-      "Revocate il link quando l'evento è passato, come smettereste di condividere un documento.",
-    ],
-    seeAlso: ['icloud-google-and-outlook-in-one-view'],
-  },
+    {
+      "heading": "Scegli anteprima, email o QR",
+      "body": [
+        "L’App Clip di Cloud Calendars mostra un’anteprima; per aggiungere l’evento tramite quel percorso serve l’app completa. Gli inviti via email e QR aprono una pagina web che propone di aprire Cloud Calendars. Non sono indirizzi di abbonamento intercambiabili.",
+        "Il mittente accede al proprio account per la condivisione sincronizzata. Link e codici QR possono essere inoltrati. Un QR trasmette un link, ma non dimostra chi lo abbia aperto."
+      ]
+    },
+    {
+      "heading": "Assegna soltanto l’accesso necessario",
+      "body": [
+        "Negli inviti email puoi scegliere Reader, Writer o Owner. Reader visualizza e sincronizza; Writer modifica; Owner può anche condividere e gestire gli accessi. Per chi deve solo consultare il programma, scegli Reader.",
+        "Writer è adatto a un coorganizzatore che deve modificare l’evento. Owner serve quando deve anche gestire l’accesso altrui. Per ottenere permessi superiori il destinatario deve accedere con l’identità corretta. Un destinatario anonimo non è un comproprietario identificato."
+      ]
+    },
+    {
+      "heading": "Comprendi come viene aggiunto l’evento",
+      "body": [
+        "Nell’app completa occorrono il permesso di accesso ai calendari e un calendario di destinazione modificabile. Il destinatario deve controllarlo prima di salvare. La copia ricevuta può essere associata all’evento condiviso per gli aggiornamenti successivi.",
+        "Importare un normale file ICS in un altro calendario è diverso: l’importazione crea una copia, mentre un abbonamento controlla periodicamente un feed. Se invii un feed ICS, spiega il percorso e verifica che il calendario del destinatario lo supporti."
+      ]
+    },
+    {
+      "heading": "Verifica gli aggiornamenti",
+      "body": [
+        "Una condivisione sincronizzata può trasmettere modifiche e annullamenti, ma il dispositivo deve poterli ricevere. L’intervallo suggerito dal feed non è una scadenza di consegna. Dispositivi offline, abbonamenti non aggiornati e copie importate indipendenti possono mostrare dati vecchi.",
+        "Se la cena cambia poco prima dell’inizio, aggiorna l’evento e contatta direttamente gli invitati. Chiedi conferma del nuovo orario. Ricevere un aggiornamento non equivale a confermare la presenza."
+      ]
+    },
+    {
+      "heading": "Gestisci l’accesso senza promettere di cancellare ogni copia",
+      "body": [
+        "Rivedi i destinatari e rimuovi i permessi inutili. Rimuovere una persona e revocare un link al feed sono operazioni distinte; nessuna equivale a cancellare da remoto ogni screenshot, messaggio o copia del calendario.",
+        "Se un link ha raggiunto altre persone, identifica il link o l’autorizzazione coinvolta e verifica il risultato dopo la modifica. Evita dettagli privati nei link distribuiti ampiamente, invece di confidare in una revoca successiva."
+      ]
+    }
+  ],
+  "claims": {},
+  "practical": [
+    "Controlla i dettagli e scegli tra visualizzazione, modifica e risposte sulla presenza.",
+    "Scegli il percorso di condivisione e accedi quando richiesto.",
+    "Usa Reader per i lettori; Writer o Owner solo per le responsabilità corrispondenti.",
+    "Chiedi di controllare orario e calendario di destinazione.",
+    "Per modifiche urgenti, aggiorna l’evento e invia un messaggio diretto.",
+    "Alla fine, verifica separatamente permessi dei destinatari e accesso tramite link."
+  ],
+  "faq": [
+    {
+      "q": "Condividere un evento rivela tutto il calendario?",
+      "a": "Il percorso sincronizzato per un singolo evento è limitato a quell’evento, ma ne espone i dettagli. Controllali ed evita un invito all’intero calendario quando vuoi condividere solo un appuntamento."
+    },
+    {
+      "q": "Il destinatario può modificarlo?",
+      "a": "Sì, con Writer o Owner e il percorso supportato con accesso all’account. Reader permette visualizzazione e sincronizzazione. Un normale abbonamento ICS non usa lo stesso meccanismo di modifica."
+    },
+    {
+      "q": "Rimuovere una persona annulla tutto ciò che ha ricevuto?",
+      "a": "Non è garantito. Cambia il rapporto di condivisione, ma copie salvate, screenshot e messaggi possono restare. Anche l’indirizzo di un feed condiviso va valutato separatamente."
+    }
+  ],
+  "sourcesHeading": "Riferimenti per i destinatari",
+  "sources": [
+    {
+      "label": "Apple: panoramica delle App Clip",
+      "url": "https://developer.apple.com/help/app-store-connect/offer-app-clip-experiences/overview-of-app-clips/"
+    },
+    {
+      "label": "Google: importazione di eventi e limiti",
+      "url": "https://support.google.com/calendar/answer/37118?co=GENIE.Platform%3DDesktop&hl=en"
+    },
+    {
+      "label": "Microsoft: importare un calendario o abbonarsi",
+      "url": "https://support.microsoft.com/en-us/outlook/import-or-subscribe-to-a-calendar-in-outlook-com-or-outlook-on-the-web"
+    }
+  ],
+  "seeAlso": [
+    "keeping-track-of-who-replied",
+    "who-can-see-what-in-google-calendar"
+  ]
+},
 
   'free-google-sync-without-adverts': {
     title: 'Sincronizzazione Google gratuita, e cosa paga la pubblicità',

@@ -1,0 +1,387 @@
+{
+  "date": "2026-10-21",
+  "agent": "calendar_keyword_research",
+  "source": "research/batch08-sharing/final-english-objects.json",
+  "sourceSha256": "ce8f739eeb4acdb2396d5014dd8b785733bbf2287e955f7cabd32aa1078b573f",
+  "locales": [
+    "cs",
+    "el",
+    "fr-FR",
+    "hu",
+    "ja",
+    "nl-NL",
+    "pt-BR",
+    "sv",
+    "vi"
+  ],
+  "articleObjects": 17,
+  "method": "Direct model translation of finalized English objects with natural localized phrasing. No paid API or native-speaker review.",
+  "validation": {
+    "exactAssignedObjectSets": true,
+    "sixSectionsTwelveParagraphsThreeFaqSixPractical": true,
+    "sourceUrlsAndOrderExactlyPreserved": true,
+    "developerDisclosureRetained": true,
+    "dateAndEmptyClaimsPreserved": true,
+    "allVisibleStringsDifferFromEnglish": true,
+    "actualLocaleRelatedRoutesValidated": true
+  },
+  "relatedRouteAdjustment": "Original English related routes were retained where present. Missing local routes were replaced with relevant existing local Google permissions, guest permissions, access removal or individual-sharing guides. French retains its existing RSVP route. No nonexistent related routes retained.",
+  "semanticReview": [
+    "App Clip previews; full app needed for adding. Email/QR web landing route distinguished from subscription URLs.",
+    "Reader views/syncs; Writer edits; Owner additionally shares/manages; elevated access requires intended signed-in identity.",
+    "Full-app adding requires calendar permission and writable destination.",
+    "Import versus subscription preserved; feed refresh hint is not a delivery deadline.",
+    "Updates are separate from attendance responses; no receipt-as-RSVP claim.",
+    "Recipient removal and feed revocation distinguished; no promise of erasing earlier copies.",
+    "Google broader public/organisation access may override individual restrictions; group routes reviewed too.",
+    "Private-event-limited editing remains distinct from other editing and sharing administration.",
+    "Harmless test without credentials; workplace policy and Advanced ad removal kept separate from provider permissions."
+  ],
+  "limitations": [
+    "No native-speaker review claimed.",
+    "Role names Reader/Writer/Owner and product/format names intentionally retained.",
+    "No source integration, native changes, build, deployment or commit."
+  ],
+  "rows": [
+    {
+      "locale": "cs",
+      "slug": "sharing-one-event-not-your-calendar",
+      "file": "research/batch09-localized-sharing/cs.json",
+      "sections": 6,
+      "bodyParagraphs": 12,
+      "faq": 3,
+      "practical": 6,
+      "sources": 3,
+      "allVisibleTextTranslated": true,
+      "sourceUrlsPreserved": true,
+      "seeAlso": [
+        "who-can-see-what-in-google-calendar",
+        "what-guests-can-do-to-your-event",
+        "taking-back-a-calendar-you-shared"
+      ],
+      "relatedRoutesExistInLocaleInventory": true,
+      "unicodeCharacters": 4908,
+      "sha256": "3bf0f2765e3928aa9dbfa135bb10815bcba9e96ef8d10df38c19d2873869b3c9"
+    },
+    {
+      "locale": "cs",
+      "slug": "who-can-see-what-in-google-calendar",
+      "file": "research/batch09-localized-sharing/cs.json",
+      "sections": 6,
+      "bodyParagraphs": 12,
+      "faq": 3,
+      "practical": 6,
+      "sources": 2,
+      "allVisibleTextTranslated": true,
+      "sourceUrlsPreserved": true,
+      "seeAlso": [
+        "why-a-shared-calendar-does-not-appear",
+        "sharing-one-event-not-your-calendar",
+        "taking-back-a-calendar-you-shared"
+      ],
+      "relatedRoutesExistInLocaleInventory": true,
+      "unicodeCharacters": 4656,
+      "sha256": "70994e24c3e79e02b524ee6d05e457be734c042f229186df1e17fa4583c2ad47"
+    },
+    {
+      "locale": "el",
+      "slug": "sharing-one-event-not-your-calendar",
+      "file": "research/batch09-localized-sharing/el.json",
+      "sections": 6,
+      "bodyParagraphs": 12,
+      "faq": 3,
+      "practical": 6,
+      "sources": 3,
+      "allVisibleTextTranslated": true,
+      "sourceUrlsPreserved": true,
+      "seeAlso": [
+        "who-can-see-what-in-google-calendar",
+        "what-guests-can-do-to-your-event",
+        "taking-back-a-calendar-you-shared"
+      ],
+      "relatedRoutesExistInLocaleInventory": true,
+      "unicodeCharacters": 5894,
+      "sha256": "8960c4629228427f7e90aa79bce3462d7fca4df8eba668cd570fc2a94e05bbcc"
+    },
+    {
+      "locale": "el",
+      "slug": "who-can-see-what-in-google-calendar",
+      "file": "research/batch09-localized-sharing/el.json",
+      "sections": 6,
+      "bodyParagraphs": 12,
+      "faq": 3,
+      "practical": 6,
+      "sources": 2,
+      "allVisibleTextTranslated": true,
+      "sourceUrlsPreserved": true,
+      "seeAlso": [
+        "why-a-shared-calendar-does-not-appear",
+        "sharing-one-event-not-your-calendar",
+        "taking-back-a-calendar-you-shared"
+      ],
+      "relatedRoutesExistInLocaleInventory": true,
+      "unicodeCharacters": 5584,
+      "sha256": "02303ebb6215f2ea77e058253090aa12ae2adbb7d162b278fc30ce6f4c2991a4"
+    },
+    {
+      "locale": "fr-FR",
+      "slug": "sharing-one-event-not-your-calendar",
+      "file": "research/batch09-localized-sharing/fr-FR.json",
+      "sections": 6,
+      "bodyParagraphs": 12,
+      "faq": 3,
+      "practical": 6,
+      "sources": 3,
+      "allVisibleTextTranslated": true,
+      "sourceUrlsPreserved": true,
+      "seeAlso": [
+        "keeping-track-of-who-replied",
+        "who-can-see-what-in-google-calendar",
+        "what-guests-can-do-to-your-event"
+      ],
+      "relatedRoutesExistInLocaleInventory": true,
+      "unicodeCharacters": 6164,
+      "sha256": "d4641530b8f0bfb44b4d400edf417f4415ab6495c423a841f94492bf410de905"
+    },
+    {
+      "locale": "hu",
+      "slug": "sharing-one-event-not-your-calendar",
+      "file": "research/batch09-localized-sharing/hu.json",
+      "sections": 6,
+      "bodyParagraphs": 12,
+      "faq": 3,
+      "practical": 6,
+      "sources": 3,
+      "allVisibleTextTranslated": true,
+      "sourceUrlsPreserved": true,
+      "seeAlso": [
+        "who-can-see-what-in-google-calendar",
+        "what-guests-can-do-to-your-event",
+        "taking-back-a-calendar-you-shared"
+      ],
+      "relatedRoutesExistInLocaleInventory": true,
+      "unicodeCharacters": 5549,
+      "sha256": "908e23a548fca13d298cda3c25fa4f88e9a74e75d4049c09cac846d251326252"
+    },
+    {
+      "locale": "hu",
+      "slug": "who-can-see-what-in-google-calendar",
+      "file": "research/batch09-localized-sharing/hu.json",
+      "sections": 6,
+      "bodyParagraphs": 12,
+      "faq": 3,
+      "practical": 6,
+      "sources": 2,
+      "allVisibleTextTranslated": true,
+      "sourceUrlsPreserved": true,
+      "seeAlso": [
+        "why-a-shared-calendar-does-not-appear",
+        "sharing-one-event-not-your-calendar",
+        "taking-back-a-calendar-you-shared"
+      ],
+      "relatedRoutesExistInLocaleInventory": true,
+      "unicodeCharacters": 5332,
+      "sha256": "f8b4f70aadc0d78e9f0d06061e6ddf94293cb2b5118aa484df57dd3dbdb81089"
+    },
+    {
+      "locale": "ja",
+      "slug": "sharing-one-event-not-your-calendar",
+      "file": "research/batch09-localized-sharing/ja.json",
+      "sections": 6,
+      "bodyParagraphs": 12,
+      "faq": 3,
+      "practical": 6,
+      "sources": 3,
+      "allVisibleTextTranslated": true,
+      "sourceUrlsPreserved": true,
+      "seeAlso": [
+        "who-can-see-what-in-google-calendar",
+        "what-guests-can-do-to-your-event",
+        "taking-back-a-calendar-you-shared"
+      ],
+      "relatedRoutesExistInLocaleInventory": true,
+      "unicodeCharacters": 2427,
+      "sha256": "35c0782554d3f10939f906b55f2130c9f35cec90a7347639823acf6007b014af"
+    },
+    {
+      "locale": "ja",
+      "slug": "who-can-see-what-in-google-calendar",
+      "file": "research/batch09-localized-sharing/ja.json",
+      "sections": 6,
+      "bodyParagraphs": 12,
+      "faq": 3,
+      "practical": 6,
+      "sources": 2,
+      "allVisibleTextTranslated": true,
+      "sourceUrlsPreserved": true,
+      "seeAlso": [
+        "why-a-shared-calendar-does-not-appear",
+        "sharing-one-event-not-your-calendar",
+        "taking-back-a-calendar-you-shared"
+      ],
+      "relatedRoutesExistInLocaleInventory": true,
+      "unicodeCharacters": 2371,
+      "sha256": "70e40314d767780dbe255ba2a7f71c1769331eaae1f333d65e159cd0e7c861aa"
+    },
+    {
+      "locale": "nl-NL",
+      "slug": "sharing-one-event-not-your-calendar",
+      "file": "research/batch09-localized-sharing/nl-NL.json",
+      "sections": 6,
+      "bodyParagraphs": 12,
+      "faq": 3,
+      "practical": 6,
+      "sources": 3,
+      "allVisibleTextTranslated": true,
+      "sourceUrlsPreserved": true,
+      "seeAlso": [
+        "who-can-see-what-in-google-calendar",
+        "what-guests-can-do-to-your-event",
+        "taking-back-a-calendar-you-shared"
+      ],
+      "relatedRoutesExistInLocaleInventory": true,
+      "unicodeCharacters": 5613,
+      "sha256": "eeed08fdf7eadad6a41de8e7b535af9b964ba5586fbcec6719faaedccaaddaa5"
+    },
+    {
+      "locale": "nl-NL",
+      "slug": "who-can-see-what-in-google-calendar",
+      "file": "research/batch09-localized-sharing/nl-NL.json",
+      "sections": 6,
+      "bodyParagraphs": 12,
+      "faq": 3,
+      "practical": 6,
+      "sources": 2,
+      "allVisibleTextTranslated": true,
+      "sourceUrlsPreserved": true,
+      "seeAlso": [
+        "why-a-shared-calendar-does-not-appear",
+        "sharing-one-event-not-your-calendar",
+        "taking-back-a-calendar-you-shared"
+      ],
+      "relatedRoutesExistInLocaleInventory": true,
+      "unicodeCharacters": 5293,
+      "sha256": "29e86886e7a0a98fe33316acc62680d0fd88d55bafea72c13993cf51e2bc7dfd"
+    },
+    {
+      "locale": "pt-BR",
+      "slug": "sharing-one-event-not-your-calendar",
+      "file": "research/batch09-localized-sharing/pt-BR.json",
+      "sections": 6,
+      "bodyParagraphs": 12,
+      "faq": 3,
+      "practical": 6,
+      "sources": 3,
+      "allVisibleTextTranslated": true,
+      "sourceUrlsPreserved": true,
+      "seeAlso": [
+        "who-can-see-what-in-google-calendar",
+        "what-guests-can-do-to-your-event",
+        "taking-back-a-calendar-you-shared"
+      ],
+      "relatedRoutesExistInLocaleInventory": true,
+      "unicodeCharacters": 5663,
+      "sha256": "967d4a201eadc9ed74d0990280c71fbf8e37661f7274e03704fcf3f01731cc66"
+    },
+    {
+      "locale": "pt-BR",
+      "slug": "who-can-see-what-in-google-calendar",
+      "file": "research/batch09-localized-sharing/pt-BR.json",
+      "sections": 6,
+      "bodyParagraphs": 12,
+      "faq": 3,
+      "practical": 6,
+      "sources": 2,
+      "allVisibleTextTranslated": true,
+      "sourceUrlsPreserved": true,
+      "seeAlso": [
+        "why-a-shared-calendar-does-not-appear",
+        "sharing-one-event-not-your-calendar",
+        "taking-back-a-calendar-you-shared"
+      ],
+      "relatedRoutesExistInLocaleInventory": true,
+      "unicodeCharacters": 5406,
+      "sha256": "8e03b1db3e0809cd4f50c00bfb9f20f9a61b433406e5ed511f798d7023feccba"
+    },
+    {
+      "locale": "sv",
+      "slug": "sharing-one-event-not-your-calendar",
+      "file": "research/batch09-localized-sharing/sv.json",
+      "sections": 6,
+      "bodyParagraphs": 12,
+      "faq": 3,
+      "practical": 6,
+      "sources": 3,
+      "allVisibleTextTranslated": true,
+      "sourceUrlsPreserved": true,
+      "seeAlso": [
+        "who-can-see-what-in-google-calendar",
+        "what-guests-can-do-to-your-event",
+        "taking-back-a-calendar-you-shared"
+      ],
+      "relatedRoutesExistInLocaleInventory": true,
+      "unicodeCharacters": 5200,
+      "sha256": "fe240b02c2075f47d4e3a9d57329837827502f60ecd763ea4ccad86bb4c8d050"
+    },
+    {
+      "locale": "sv",
+      "slug": "who-can-see-what-in-google-calendar",
+      "file": "research/batch09-localized-sharing/sv.json",
+      "sections": 6,
+      "bodyParagraphs": 12,
+      "faq": 3,
+      "practical": 6,
+      "sources": 2,
+      "allVisibleTextTranslated": true,
+      "sourceUrlsPreserved": true,
+      "seeAlso": [
+        "why-a-shared-calendar-does-not-appear",
+        "sharing-one-event-not-your-calendar",
+        "taking-back-a-calendar-you-shared"
+      ],
+      "relatedRoutesExistInLocaleInventory": true,
+      "unicodeCharacters": 5211,
+      "sha256": "390e9105b0fe6ff0301bcb01faf40fdeb37a4de6fb7362dcce59436f0621bacf"
+    },
+    {
+      "locale": "vi",
+      "slug": "sharing-one-event-not-your-calendar",
+      "file": "research/batch09-localized-sharing/vi.json",
+      "sections": 6,
+      "bodyParagraphs": 12,
+      "faq": 3,
+      "practical": 6,
+      "sources": 3,
+      "allVisibleTextTranslated": true,
+      "sourceUrlsPreserved": true,
+      "seeAlso": [
+        "who-can-see-what-in-google-calendar",
+        "what-guests-can-do-to-your-event",
+        "taking-back-a-calendar-you-shared"
+      ],
+      "relatedRoutesExistInLocaleInventory": true,
+      "unicodeCharacters": 4988,
+      "sha256": "308983bdd9b5ded61cbefc863c274ee3f0cc1d98fa86602ab4acddd28bf83bde"
+    },
+    {
+      "locale": "vi",
+      "slug": "who-can-see-what-in-google-calendar",
+      "file": "research/batch09-localized-sharing/vi.json",
+      "sections": 6,
+      "bodyParagraphs": 12,
+      "faq": 3,
+      "practical": 6,
+      "sources": 2,
+      "allVisibleTextTranslated": true,
+      "sourceUrlsPreserved": true,
+      "seeAlso": [
+        "why-a-shared-calendar-does-not-appear",
+        "sharing-one-event-not-your-calendar",
+        "taking-back-a-calendar-you-shared"
+      ],
+      "relatedRoutesExistInLocaleInventory": true,
+      "unicodeCharacters": 4737,
+      "sha256": "0a677db32addca515505c699f0a25cb0990edcb2d4a868b85d7ac8e887e86a18"
+    }
+  ]
+}

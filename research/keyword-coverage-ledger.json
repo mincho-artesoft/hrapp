@@ -440,5 +440,52 @@
     },
     "next": "Correct remaining25localizedGooglepermissions and29singleeventsharingbodies; notcertifiedbyENrewriteorprice-tableremoval",
     "goalStatus": "active"
+  },
+  "ninthPublication": {
+    "date": "2026-10-21",
+    "changedArticleObjects": 56,
+    "localizedRewrites": 54,
+    "additionalEnglishRevisions": 2,
+    "newRoutes": 0,
+    "sitemapUrls": 461,
+    "articleCount": 398,
+    "locales": 30,
+    "coreGuidesCompleteLocaleCount": 30,
+    "coreGuides": [
+      "sharing-one-event-not-your-calendar",
+      "who-can-see-what-in-google-calendar"
+    ],
+    "curatedEnglishExportGuides": 36,
+    "curatedExportCharacters": 199811,
+    "initialBundleRawBefore": "3.32 MB (failed 3 MB hard budget)",
+    "initialBundleRawAfter": "1.09 MB",
+    "budgetUnchanged": true,
+    "localeContentStrategy": "30 dynamically imported article-locale aggregates; lightweight route/availability index; all398articlepages remain complete prerendered HTML",
+    "initialShellLocaleProof": "batch09-localized-sharing/shell-locale-qa.json",
+    "interactiveProof": "batch09-localized-sharing/browser-chunks-qa.json",
+    "metadataProof": "batch09-built-metadata-qa.json",
+    "staticProof": "batch09-static-qa.json",
+    "publicProof": "batch09-public-qa.json",
+    "publicByteArtifacts": 118,
+    "ascReadOnlyProof": "aso/all-locales-readback-20261021.json",
+    "ascDraftLocalesExactReadback": 50,
+    "ascWritesThisPublication": false,
+    "competitorCorpusCounts": {
+      "exactUrls": 71,
+      "full": 39,
+      "partial": 7,
+      "discovered": 19,
+      "failed": 6,
+      "pending": 32
+    },
+    "nextDrafts": "batch10-feed-review/ (3English objects not integrated or published)",
+    "limitations": [
+      "No native-speaker certification of all translations",
+      "No rank/volume/ChatGPT citation lift inferred from publication",
+      "Other localized revocation/secret-address guides still need replacement",
+      "Localized header logo and section hrefs still point to root; review in next UI pass",
+      "Original new media integration and privacy/released-backend correspondence remain open"
+    ],
+    "goalStatus": "active"
   }
 }

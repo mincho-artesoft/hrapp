@@ -68,20 +68,24 @@ def add(d):
         f"export const ARTICLES_{const}: Readonly<Record<string, LocalisedArticle>> = {{\n"
         + "\n\n".join(blocks) + "\n};\n")
 
+    # Article prose stays in a locale chunk; never import it into the shell.
+    lazy = pathlib.Path("src/app/content/article-locales") / f"{code}.ts"
+    lazy.parent.mkdir(parents=True, exist_ok=True)
+    if not lazy.exists():
+        lazy.write_text(
+            "import type { ArticleLocale } from '../types';\n"
+            f"import {{ ARTICLES_{const} }} from '../{code}/articles';\n"
+            f"import {{ CHROME_{const} }} from '../{code}/chrome';\n"
+            f"export const ARTICLE_LOCALE: ArticleLocale = {{ chrome: CHROME_{const}, articles: ARTICLES_{const} }};\n")
     reg = pathlib.Path("src/app/content/registry.ts")
-    s = reg.read_text()
-    if f"ARTICLES_{const}" not in s:
-        anchor = "import { ArticleLocale } from './types';"
-        s = s.replace(anchor,
-                      f"import {{ ARTICLES_{const} }} from './{code}/articles';\n"
-                      f"import {{ CHROME_{const} }} from './{code}/chrome';\n" + anchor)
-        key = code if re.fullmatch(r"[a-z]+", code) else f"'{code}'"
-        s = re.sub(r"\n\};\n\n/\*\* Languages with at least one article",
-                   f"\n  {key}: {{\n    chrome: CHROME_{const},\n"
-                   f"    articles: ARTICLES_{const},\n  }},\n}};\n\n"
-                   "/** Languages with at least one article",
-                   s, count=1)
-        reg.write_text(s)
+    text = reg.read_text()
+    loader_key = json.dumps(code)
+    if f"  {loader_key}:" not in text:
+        anchor = "const LOADERS: Readonly<Record<string, () => Promise<{ ARTICLE_LOCALE: ArticleLocale }>>> = {"
+        if text.count(anchor) != 1:
+            raise ValueError("Article loader registry changed; review registration before continuing")
+        text = text.replace(anchor, anchor + f"\n  {loader_key}: () => import('./article-locales/{code}'),")
+        reg.write_text(text)
     print(f"  {code}: {len(d['articles'])} articles")
 
 

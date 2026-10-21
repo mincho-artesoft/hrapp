@@ -3,52 +3,94 @@ import { LocalisedArticle } from '../types';
 /** De seks Google-artiklene: konkrete spørsmål, klare svar. */
 export const GOOGLE_NO: Readonly<Record<string, LocalisedArticle>> = {
   'who-can-see-what-in-google-calendar': {
-    title: 'Hvem ser hva når du deler en Google-kalender',
-    short: 'Googles delingsnivåer',
-    description:
-      'Googles delingsnivåer settes raskt og misforstås lett. Hva hvert nivå faktisk blottlegger, sagt rett fram.',
-    lede: 'De færreste tilfeller av for mye deling er en feilvurdering. Det er noen som valgte et nivå som hørtes beskjedent ut og ikke var det.',
-    commonBelief: 'At «se bare ledig/opptatt» og «se alle detaljer» ligger nær hverandre.',
-    sections: [
-      {
-        heading: 'Nivåene ligger lenger fra hverandre enn de høres ut',
-        body: [
-          'Ledig/opptatt viser blokker med tid uten titler. Alle detaljer viser titler, steder, notater og gjester — for de fleste kalendere en betydelig del av livet ditt.',
-          'Gjøre endringer gir rett til å redigere. Administrere deling gir rett til å gi kalenderen din videre til andre, og det er nivået som overrasker senere.',
-        ],
-      },
-      {
-        heading: 'Å velge uten å tenke over det hver gang',
-        body: [
-          'For kolleger som bare skal planlegge rundt deg, er ledig/opptatt nesten alltid riktig svar og nesten aldri det valgte.',
-          'Spar de fulle detaljene til kalendere laget for å deles, ikke til den du lever i.',
-        ],
-      },
-    ],
-    claims: {
-      advancedMonthly: 'Månedspris for nivået der dette styres i appen, i dollar',
+  "title": "Google Kalender: sjekk tilgangen du faktisk gir",
+  "short": "Tilgang og personvern i Google Kalender",
+  "description": "Velg tilgang til tilgjengelighet, detaljer eller redigering. Sjekk offentlig tilgang og grupper i tillegg til individuelle rettigheter før deling.",
+  "lede": "Bestem hva den andre personen skal gjøre før du deler kalenderen. Å planlegge rundt deg, lese detaljer og vedlikeholde kalenderen er ulike oppgaver. Veiledningen er publisert av Arte Soft, utvikleren av Cloud Calendars.",
+  "commonBelief": "En begrenset rettighet til én person garanterer at personen ikke kan se detaljer via andre veier.",
+  "sections": [
+    {
+      "heading": "Tilpass tilgangen til oppgaven",
+      "body": [
+        "En kollega som finner et tidspunkt, trenger kanskje tilgjengelighet uten avtaledetaljer. En samarbeidspartner som vedlikeholder prosjektplanen trenger noe annet. Bestem oppgaven først, og undersøk så rettigheten i kalenderens gjeldende delingsinnstillinger.",
+        "Google skiller tilgjengelighet, hendelsesdetaljer og flere redigeringsnivåer. Ett begrenser tilgang til private hendelser; et annet tillater redigering og detaljer, og det sterkeste også delingsadministrasjon. Ikke behandle alle alternativer med ordet endringer som like."
+      ]
     },
-    faq: [
-      {
-        q: 'Ser andre titlene på hendelsene mine hvis jeg bare deler ledig/opptatt?',
-        a: 'Nei. Ledig/opptatt viser blokker med tid uten titler, steder, notater eller gjester. Først «alle detaljer» blottlegger dem — og da alle sammen.',
-      },
-      {
-        q: 'Hva gir «gjøre endringer og administrere deling»?',
-        a: 'Rett til å redigere hver hendelse og til å gi kalenderen din videre til flere uten å spørre deg. Det er det eneste nivået der noen andre deler ut tilgang.',
-      },
-      {
-        q: 'Kan jeg se hvem som allerede har tilgang til kalenderen min?',
-        a: 'Ja, i delingsinnstillingene for den kalenderen. Ingenting ber deg se etter, og delinger bare hoper seg opp: les listen to ganger i året.',
-      },
-    ],
-    practical: [
-      'Ledig/opptatt som standard for alle som bare skal booke tid hos deg.',
-      'Spar «gjøre endringer» til dem som faktisk planlegger for deg.',
-      'Gå gjennom hvem som har tilgang to ganger i året; deling hoper seg opp, og ingenting minner deg på det.',
-    ],
-    seeAlso: ['why-a-shared-calendar-does-not-appear', 'what-guests-can-do-to-your-event'],
-  },
+    {
+      "heading": "Sjekk kalenderens samlede tilgang og enkeltpersonen",
+      "body": [
+        "Sjekk om kalenderen er offentlig, tilgjengelig for organisasjonen eller delt via en gruppe, i tillegg til navngitte personer. Google sier at bredere tilgang kan overstyre en snevrere tildeling. Å begrense én person trekker ikke tilbake allerede offentlige detaljer.",
+        "Tenk på en klubbplan publisert for medlemmer. Sjekk målgruppen før du legger inn en privat avtale, fremfor å anta at bare rettigheten ved én venn betyr noe. Oppbevar private avtaler på et passende sted."
+      ]
+    },
+    {
+      "heading": "Bruk Googles innstillinger for riktig kalender",
+      "body": [
+        "Finn kalenderen under dine kalendere i Google Kalender på en datamaskin, åpne menyen og delingsinnstillingene. Google beskriver egne områder for personer eller grupper og bredere tilgang. Sjekk navn og innlogget konto før endring.",
+        "Bekreft mottakerens tilsiktede Google-identitet ved invitasjonen. Hvis kalenderen mangler, sjekk adressen og invitasjonsmeldingen fremfor å utvide tilgangen for å få den frem. Manglende visning og utilstrekkelige redigeringsrettigheter er ulike problemer."
+      ]
+    },
+    {
+      "heading": "Test uten private avtaler",
+      "body": [
+        "Bruk en vanlig testavtale uten privat tittel, notater, sted eller gjesteliste. Be mottakeren bekrefte hva som kan sees og, bare når redigering kreves og tillates, endres. Ikke del kontopassord for å gjøre testen.",
+        "Noter kalender og rolle, og gjennomgå resultatet etter endringen. Dette bekrefter den tilsiktede ordningen, men beviser ikke at tidligere leste eller kopierte opplysninger har forsvunnet. Ikke test ved å publisere en virkelig arbeidsplan."
+      ]
+    },
+    {
+      "heading": "Skill arbeidsregler fra appabonnementer",
+      "body": [
+        "Google opplyser at arbeids- og skoleadministratorer kan begrense delingskontroller. Bruk organisasjonens godkjente vei hvis innstillingen mangler. Ikke publiser arbeidsinformasjon som omvei rundt en kontobegrensning.",
+        "Cloud Calendars kan vise tilkoblede kalendere, men plannavn endrer ikke Google-rettighetene. Advanced fjerner annonser; det kjøper ikke tilgang for andre til alle Google-hendelser. Sjekk leverandørens deling og bekreft det aksepterte resultatet, ikke bare en tilgjengelig lokal editor."
+      ]
+    },
+    {
+      "heading": "Gjennomgå og fjern tilgang som ikke lenger trengs",
+      "body": [
+        "Når prosjektet slutter, gjennomgå faktiske mottakere, grupper og bredere publisering. Å fjerne én person er bare en del når andre tilgangsveier finnes. Avtal hvem som vedlikeholder planen og håndterer senere endringer.",
+        "Google beskriver fjerning av personer eller grupper separat fra deaktivering av bredere deling. Fjerning henter ikke tilbake eksporterte filer, skjermbilder eller informasjon kopiert andre steder. Følg opp dette separat med de involverte; ikke lov at én bryter sletter alle gamle kopier."
+      ]
+    }
+  ],
+  "claims": {},
+  "practical": [
+    "Identifiser kalender og mottakerens oppgave.",
+    "Sjekk individuelle, gruppe-, organisasjons- og offentlige rettigheter.",
+    "Velg passende rettighet i Googles gjeldende innstillinger.",
+    "Bekreft identiteten før tilgangsendringer.",
+    "Sjekk en ufarlig testhendelse fra mottakerens side.",
+    "Gjennomgå foreldede tilgangsveier uten å anta at kopier hentes tilbake."
+  ],
+  "faq": [
+    {
+      "q": "Overstyrer en begrenset personlig rettighet en offentlig kalender?",
+      "a": "Nei. Google dokumenterer at bredere rettigheter har prioritet ved konflikt. Sjekk offentlig og organisatorisk tilgang samt personens oppføring."
+    },
+    {
+      "q": "Eksponerer alle redigeringsrettigheter private hendelser likt?",
+      "a": "Nei. Google beskriver et alternativ med begrenset tilgang til private hendelser separat fra andre redigerings- og delingsroller. Les den nøyaktige gjeldende rettigheten."
+    },
+    {
+      "q": "Endrer kjøp av Advanced Googles delingsrettigheter?",
+      "a": "Nei. Advanced fjerner annonser i Cloud Calendars. Tilgang avhenger av kalenderrettigheter og organisasjonsbegrensninger."
+    }
+  ],
+  "sourcesHeading": "Googles gjeldende veiledning om rettigheter og deling",
+  "sources": [
+    {
+      "label": "Google: velge kalenderrettigheter",
+      "url": "https://support.google.com/calendar/answer/15716974?hl=en"
+    },
+    {
+      "label": "Google: dele kalender og fjerne tilgang",
+      "url": "https://support.google.com/calendar/answer/37082?hl=en"
+    }
+  ],
+  "seeAlso": [
+    "why-a-shared-calendar-does-not-appear"
+  ],
+  "updated": "2026-10-21"
+},
 
   'why-a-shared-calendar-does-not-appear': {
     "updated": "2026-10-21",

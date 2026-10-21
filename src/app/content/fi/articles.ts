@@ -80,41 +80,99 @@ export const ARTICLES_FI: Readonly<Record<string, LocalisedArticle>> = {
   },
 
   'sharing-one-event-not-your-calendar': {
-    title: 'Jaa yksi tapahtuma, ei kalenteriasi',
-    short: 'Jaa yksi tapahtuma',
-    description:
-      'Miten yhden tapahtuman lähettäminen toimii, mitä vastaanottaja oikeasti saa ja miksi hänen ei tarvitse asentaa mitään nähdäkseen sen.',
-    lede: 'Kalenterin jakaminen on yleensä kaikki tai ei mitään: joko jollakulla on pääsy sinun kalenteriisi tai ei ole. Illallisen lähettämisen ei pitäisi vaatia kumpaakaan.',
-    commonBelief: 'Että tapahtuman jakaminen tarkoittaa ikkunan antamista muuhun viikkoosi.',
-    sections: [
-      {
-        heading: 'Mitä oikeasti lähtee',
-        body: [
-          'Tapahtumaa luodessasi sovellus tarjoaa sen jakamista. Matkalle lähtee linkki — sähköpostilla, viestillä, sillä mitä vastaanottajalla on — ja sen linkin takana on kalenterisyöte, joka sisältää tuon tapahtuman eikä mitään muuta.',
-          'Se ei ole kuvakaappaus eikä vanhentuva kopio. Jos aika muuttuu, syöte muuttuu sen mukana, ja se, jolle lähetit, näkee muutoksen ilman että lähetät mitään uudelleen.',
-        ],
-      },
-      {
-        heading: 'Mitä se ei ole',
-        body: [
-          'Linkki on aivan tavallinen kalenteritilaus: Applen Kalenteri lukee sen, Google-kalenteri lukee sen, Outlook lukee sen. Viestissä on myös App Clip sille, joka haluaa sovelluksen — se avautuu ilman asennusta. Se on ovi, ei tullipuomi.',
-          'Se ei ole välitön: syöte pyytää sovelluksia katsomaan uudelleen tunnin välein, ja se on pyyntö eikä sääntö. Se ei myöskään ole salainen: linkissä on kaksikymmentäkaksi satunnaista merkkiä, joita kukaan ei arvaa, mutta kuka tahansa linkin haltija voi lukea. Ja toistaiseksi se on vain luku.',
-        ],
-      },
-    ],
-    claims: {
-      refreshHint: 'Tunteja syötteen päivityspyyntöjen välillä',
-      linkLength: 'Satunnaisia merkkejä linkissä — juuri se tekee siitä arvaamattoman',
-      sharePrice: 'Mitä jakaminen maksaa',
+  "updated": "2026-10-21",
+  "title": "Yhden tapahtuman jakaminen: linkki ja oikeudet",
+  "short": "Yhden tapahtuman jakaminen",
+  "description": "Jaa tapahtuma koko kalenterin sijaan. Tutustu Reader-, Writer- ja Owner-oikeuksiin, esikatseluun, päivityksiin ja käyttöoikeuden poistamisen rajoihin.",
+  "lede": "Illallisen tietojen lähettäminen, muokkausoikeuden antaminen ja osallistumisvastausten kerääminen ovat eri tehtäviä. Valitse ensin tarkoitus ja sitten jakamistapa. Oppaan on laatinut Cloud Calendarsin kehittäjä Arte Soft.",
+  "commonBelief": "Jokainen tapahtumalinkki on vain luettava kalenteritilaus, joka päivittyy heti ja tallentaa vastauksen.",
+  "sections": [
+    {
+      "heading": "Tarkista tapahtuman sisältö",
+      "body": [
+        "Yksittäisen tapahtuman jakaminen koskee sitä tapahtumaa, ei lähettäjän koko kalenteria. Tarkista otsikko, aikavyöhyke, paikka, muistiinpanot ja kokouslinkit. Yhdelle vieraalle sopivat tiedot eivät välttämättä sovi laajaan jakeluun.",
+        "Illallisen jakaminen ei edellytä lääkäriaikojesi kalenterin jakamista. Illallisen paikka ja linkit kuitenkin välittyvät tapahtuman mukana. Tarkista itse sisältö, älä luota ympäröivän kalenterin yksityisyyteen."
+      ]
     },
-    practical: [
-      'Jaa itse tapahtumasta, heti sen luomisen jälkeen.',
-      'Lähetä linkki sitä kanavaa pitkin, jota jo käytät tuon henkilön kanssa.',
-      'Jos aika muuttuu viime hetkellä, kirjoita sen lisäksi että siirrät tapahtuman.',
-      'Peru linkki, kun tapahtuma on ohi, kuten lopettaisit asiakirjan jakamisen.',
-    ],
-    seeAlso: ['icloud-google-and-outlook-in-one-view', 'weather-inside-your-calendar'],
-  },
+    {
+      "heading": "Valitse esikatselu, sähköposti tai QR-koodi",
+      "body": [
+        "Cloud Calendarsin App Clip näyttää esikatselun. Tapahtuman lisääminen tätä kautta vaatii koko sovelluksen. Sähköposti- ja QR-kutsut avaavat verkkosivun, josta voi avata Cloud Calendarsin. Linkit eivät ole keskenään vaihdettavia tilausosoitteita.",
+        "Synkronoitua jakamista varten lähettäjä kirjautuu sisään. Linkin tai QR-koodin voi välittää eteenpäin. QR-koodi välittää linkin mutta ei todista, kuka sen avasi."
+      ]
+    },
+    {
+      "heading": "Anna vain tarvittavat oikeudet",
+      "body": [
+        "Sähköpostikutsussa valitaan Reader, Writer tai Owner. Reader voi katsella ja synkronoida, Writer muokata ja Owner lisäksi jakaa ja hallita käyttöoikeuksia. Aikataulun seuraajalle sopii Reader.",
+        "Anna Writer järjestäjälle, jonka pitää muuttaa tapahtumaa. Owner sopii henkilölle, jonka kuuluu hallita muidenkin oikeuksia. Laajemmat oikeudet vaativat oikealla henkilöllisyydellä kirjautumisen. Anonyymi vastaanottaja ei ole tunnistettu yhteisomistaja."
+      ]
+    },
+    {
+      "heading": "Selvitä, miten vastaanottaja lisää tapahtuman",
+      "body": [
+        "Koko sovellus tarvitsee kalenteriluvan ja kohdekalenterin, johon voi kirjoittaa. Vastaanottajan kannattaa tarkistaa kohde ennen tallennusta. Vastaanotettu kopio voidaan yhdistää jaettuun tapahtumaan myöhempiä päivityksiä varten.",
+        "Tavallisen ICS-tiedoston tuonti luo kopion, kun taas tilaus tarkistaa syötteen määräajoin. Jos lähetät ICS-syötteen sovelluskutsun sijaan, selitä ero ja varmista vastaanottajan kalenterin tuki."
+      ]
+    },
+    {
+      "heading": "Varmista muutosten saapuminen",
+      "body": [
+        "Synkronoitu jako voi välittää muutoksia ja peruutuksia, mutta laitteen täytyy päästä vastaanottamaan ne. Syötteen päivitysvihje ei ole toimitusaikaraja. Verkkoyhteydetön laite, päivittämätön tilaus tai erillinen tuotu kopio voi näyttää vanhoja tietoja.",
+        "Jos illallinen siirtyy juuri ennen alkua, päivitä tapahtuma ja ota vieraisiin suoraan yhteyttä. Pyydä vahvistus uudelle ajalle. Päivityksen vastaanottaminen ei ole osallistumisvahvistus."
+      ]
+    },
+    {
+      "heading": "Oikeuksien poisto ei poista kaikkia kopioita",
+      "body": [
+        "Tarkista vastaanottajat ja poista tarpeettomat oikeudet. Vastaanottajan poistaminen ja syötelinkin peruuttaminen ovat eri toimintoja. Ne eivät takaa kuvakaappausten, viestien tai kaikkien kalenterikopioiden etäpoistoa.",
+        "Jos linkki on levinnyt, selvitä mikä linkki tai oikeus on kyseessä ja tarkista tulos muutoksen jälkeen. Jätä yksityiset tiedot pois laajasti jaettavista linkeistä sen sijaan, että luottaisit myöhempään peruuttamiseen."
+      ]
+    }
+  ],
+  "claims": {},
+  "practical": [
+    "Tarkista tiedot ja valitse katselu, muokkaus tai osallistumisvastaus.",
+    "Valitse jakamistapa ja kirjaudu tarvittaessa.",
+    "Anna Reader katseluun ja Writer tai Owner vain vastaavaan vastuuseen.",
+    "Pyydä vastaanottajaa tarkistamaan aika ja kohdekalenteri.",
+    "Päivitä kiireellinen muutos ja lähetä lisäksi suora viesti.",
+    "Tarkista lopuksi vastaanottajien oikeudet ja linkit erikseen."
+  ],
+  "faq": [
+    {
+      "q": "Paljastaako tapahtuman jakaminen koko kalenterin?",
+      "a": "Yksittäisen tapahtuman synkronoitu jako rajautuu siihen tapahtumaan. Sen omat tiedot kuitenkin näkyvät. Tarkista ne äläkä lähetä koko kalenterin kutsua, jos tarkoitat vain yhtä tapahtumaa."
+    },
+    {
+      "q": "Voiko vastaanottaja muokata tapahtumaa?",
+      "a": "Kyllä, sopivilla Writer- tai Owner-oikeuksilla tuetussa kirjautuneessa käytössä. Reader katselee ja synkronoi. Tavallinen ICS-tilaus ei ole sama muokkausmekanismi."
+    },
+    {
+      "q": "Peruuko vastaanottajan poistaminen kaiken jo saadun?",
+      "a": "Sitä ei voi luvata. Jakamisoikeus muuttuu, mutta tallennetut kopiot, kuvakaappaukset ja viestit voivat jäädä. Jaetun syötteen osoite on tarkistettava erikseen."
+    }
+  ],
+  "sourcesHeading": "Vastaanottajan vaihtoehtojen lähteet",
+  "sources": [
+    {
+      "label": "Apple: App Clips -yleiskuvaus",
+      "url": "https://developer.apple.com/help/app-store-connect/offer-app-clip-experiences/overview-of-app-clips/"
+    },
+    {
+      "label": "Google: tapahtumien tuonti ja rajoitukset",
+      "url": "https://support.google.com/calendar/answer/37118?co=GENIE.Platform%3DDesktop&hl=en"
+    },
+    {
+      "label": "Microsoft: kalenterin tuonti tai tilaaminen",
+      "url": "https://support.microsoft.com/en-us/outlook/import-or-subscribe-to-a-calendar-in-outlook-com-or-outlook-on-the-web"
+    }
+  ],
+  "seeAlso": [
+    "who-can-see-what-in-google-calendar",
+    "taking-back-a-calendar-you-shared"
+  ]
+},
 
   'what-a-subscription-actually-buys': {
   "updated": "2026-10-21",

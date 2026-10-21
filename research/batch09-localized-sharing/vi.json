@@ -1,0 +1,188 @@
+{
+  "sharing-one-event-not-your-calendar": {
+    "updated": "2026-10-21",
+    "title": "Chia sẻ một sự kiện: chọn đúng liên kết và quyền truy cập",
+    "short": "Chia sẻ một sự kiện",
+    "description": "Chia sẻ một sự kiện mà không chia sẻ cả lịch. Hiểu quyền Reader, Writer và Owner, bản xem trước, cập nhật và giới hạn của việc thu hồi quyền.",
+    "lede": "Gửi thông tin bữa tối, cho người đồng tổ chức chỉnh sửa và thu thập câu trả lời tham dự là các việc khác nhau. Xác định nhu cầu rồi chọn cách chia sẻ. Hướng dẫn này do Arte Soft, nhà phát triển Cloud Calendars, biên soạn.",
+    "commonBelief": "Mọi liên kết sự kiện đều là đăng ký lịch chỉ đọc, cập nhật tức thì và ghi nhận câu trả lời.",
+    "sections": [
+      {
+        "heading": "Bắt đầu bằng việc kiểm tra một sự kiện",
+        "body": [
+          "Chia sẻ một sự kiện chỉ bao gồm sự kiện đó, không phải toàn bộ lịch của người gửi. Trước khi gửi, kiểm tra tiêu đề, múi giờ, địa điểm, ghi chú và URL cuộc họp. Thông tin hữu ích với một khách có thể không phù hợp trong liên kết được phát rộng rãi.",
+          "Ví dụ, chia sẻ bữa tối không đòi hỏi chia sẻ lịch chứa các cuộc hẹn khám bệnh. Tuy nhiên, địa điểm và liên kết của bữa tối vẫn đi cùng sự kiện. Hãy kiểm tra chính sự kiện thay vì dựa vào tính riêng tư của lịch chứa nó."
+        ]
+      },
+      {
+        "heading": "Chọn bản xem trước, lời mời email hoặc mã QR",
+        "body": [
+          "Cloud Calendars có các cách chia sẻ riêng biệt. App Clip hiển thị bản xem trước; cần ứng dụng đầy đủ để thêm sự kiện qua trải nghiệm đó. Lời mời email và QR dùng trang web có tùy chọn mở Cloud Calendars. Không nên coi các liên kết này là URL đăng ký lịch có thể thay thế lẫn nhau.",
+          "Người gửi đăng nhập để dùng quy trình chia sẻ đồng bộ của ứng dụng. Liên kết hoặc mã QR có thể bị chuyển tiếp, nên chỉ gửi tới nơi phù hợp với nội dung. Mã QR truyền tải liên kết, không chứng minh ai đã mở."
+        ]
+      },
+      {
+        "heading": "Chỉ cấp quyền người nhận cần",
+        "body": [
+          "Lời mời qua email cho phép chọn Reader, Writer hoặc Owner. Reader có thể xem và đồng bộ; Writer có thể chỉnh sửa; Owner còn có thể chia sẻ và quản lý quyền truy cập. Đây là các quyền có tác động khác nhau, không phải ba tên gọi cho việc xem. Dùng Reader nếu người nhận chỉ cần lịch trình.",
+          "Chọn Writer cho người đồng tổ chức cần thay đổi sự kiện. Chỉ chọn Owner khi họ cũng cần quản lý quyền của người khác. Người nhận phải đăng nhập bằng đúng danh tính để nhận quyền nâng cao. Người nhận ẩn danh không phải đồng sở hữu đã được xác định."
+        ]
+      },
+      {
+        "heading": "Hiểu cách người nhận thêm sự kiện",
+        "body": [
+          "Trong ứng dụng đầy đủ, thêm sự kiện được chia sẻ cần quyền truy cập lịch và một lịch đích cho phép ghi. Người nhận nên kiểm tra đích trước khi lưu. Bản sao nhận được sau đó có thể liên kết với sự kiện được chia sẻ để nhận cập nhật sau này.",
+          "Điều này khác với nhập tệp ICS thông thường vào lịch khác. Nhập tạo ra bản sao, còn đăng ký sẽ định kỳ kiểm tra nguồn cấp. Nếu gửi nguồn cấp ICS thay vì lời mời của ứng dụng, hãy giải thích rõ và xác nhận lịch của người nhận hỗ trợ cách đó."
+        ]
+      },
+      {
+        "heading": "Kiểm tra thay đổi trước khi dựa vào chúng",
+        "body": [
+          "Chia sẻ đồng bộ có thể truyền các chỉnh sửa hoặc hủy bỏ sau đó, nhưng thiết bị người nhận phải có cơ hội nhận chúng. Gợi ý chu kỳ làm mới nguồn cấp không phải hạn chót giao thông tin. Thiết bị ngoại tuyến, đăng ký chưa làm mới hoặc bản sao nhập độc lập vẫn có thể hiển thị thông tin cũ.",
+          "Nếu bữa tối đổi giờ sát lúc bắt đầu, cập nhật sự kiện và liên hệ trực tiếp với khách. Yêu cầu họ xác nhận giờ mới. Gửi cập nhật và nhận câu trả lời tham dự là hai bước riêng."
+        ]
+      },
+      {
+        "heading": "Quản lý quyền mà không hứa xóa mọi bản sao",
+        "body": [
+          "Rà soát quyền của người nhận và bỏ quyền không còn cần thiết. Xóa một người nhận và thu hồi liên kết nguồn cấp là hai thao tác khác nhau. Không nên mô tả thao tác nào là xóa từ xa ảnh chụp màn hình, tin nhắn hoặc mọi bản sao trong lịch.",
+          "Nếu liên kết đã lan ra ngoài nhóm dự kiến, xác định liên kết hoặc quyền cấp nào liên quan. Kiểm tra lại cách truy cập đó sau khi thay đổi quyền. Với sự kiện sau này, không đưa thông tin riêng tư vào liên kết phát rộng rãi thay vì trông chờ thu hồi để lấy lại thông tin."
+        ]
+      }
+    ],
+    "claims": {},
+    "practical": [
+      "Kiểm tra chi tiết và xác định cần xem, chỉnh sửa hay câu trả lời tham dự.",
+      "Chọn đúng cách chia sẻ và đăng nhập khi cần.",
+      "Dùng Reader cho người xem; chỉ cấp Writer hoặc Owner theo trách nhiệm tương ứng.",
+      "Yêu cầu người nhận kiểm tra giờ và lịch đích khi thêm sự kiện.",
+      "Khi có thay đổi khẩn, cập nhật sự kiện và gửi tin nhắn trực tiếp.",
+      "Khi kết thúc chia sẻ, kiểm tra riêng quyền người nhận và truy cập qua liên kết."
+    ],
+    "faq": [
+      {
+        "q": "Chia sẻ một sự kiện có lộ cả lịch của tôi không?",
+        "a": "Cách chia sẻ đồng bộ một sự kiện chỉ giới hạn ở sự kiện đó. Nhưng chi tiết riêng của sự kiện vẫn được cung cấp qua cách đã chọn. Kiểm tra nội dung và đừng gửi lời mời cả lịch khi chỉ định gửi một sự kiện."
+      },
+      {
+        "q": "Người nhận có thể thay đổi sự kiện không?",
+        "a": "Có, nếu họ có quyền Writer hoặc Owner phù hợp và dùng quy trình đăng nhập được hỗ trợ. Reader dành cho xem và đồng bộ. Đăng ký ICS thông thường không phải cùng cơ chế chỉnh sửa."
+      },
+      {
+        "q": "Xóa một người có thu hồi mọi thứ họ đã nhận không?",
+        "a": "Không nên mặc định có bảo đảm đó. Thay đổi quyền tác động tới quan hệ chia sẻ được hỗ trợ, nhưng bản sao đã lưu, ảnh chụp và tin nhắn có thể còn lại. URL nguồn cấp chia sẻ cũng cần được xem xét riêng."
+      }
+    ],
+    "sourcesHeading": "Tài liệu về các lựa chọn cho người nhận",
+    "sources": [
+      {
+        "label": "Apple: tổng quan về App Clips",
+        "url": "https://developer.apple.com/help/app-store-connect/offer-app-clip-experiences/overview-of-app-clips/"
+      },
+      {
+        "label": "Google: nhập sự kiện và các giới hạn",
+        "url": "https://support.google.com/calendar/answer/37118?co=GENIE.Platform%3DDesktop&hl=en"
+      },
+      {
+        "label": "Microsoft: nhập lịch hoặc đăng ký lịch",
+        "url": "https://support.microsoft.com/en-us/outlook/import-or-subscribe-to-a-calendar-in-outlook-com-or-outlook-on-the-web"
+      }
+    ],
+    "seeAlso": [
+      "who-can-see-what-in-google-calendar",
+      "what-guests-can-do-to-your-event",
+      "taking-back-a-calendar-you-shared"
+    ]
+  },
+  "who-can-see-what-in-google-calendar": {
+    "title": "Quyền chia sẻ Google Calendar: kiểm tra quyền bạn thực sự cấp",
+    "short": "Truy cập và quyền riêng tư trong Google Calendar",
+    "description": "Chọn quyền xem thời gian rảnh/bận, chi tiết hoặc chỉnh sửa. Kiểm tra truy cập công khai và qua nhóm bên cạnh quyền từng người trước khi chia sẻ.",
+    "lede": "Trước khi chia sẻ lịch, xác định người kia cần làm gì. Sắp xếp theo thời gian của bạn, đọc chi tiết và duy trì lịch là các việc khác nhau. Hướng dẫn này do Arte Soft, nhà phát triển Cloud Calendars, xuất bản.",
+    "commonBelief": "Đặt quyền hạn chế cho một người bảo đảm họ không thể xem chi tiết qua bất kỳ cách nào khác.",
+    "sections": [
+      {
+        "heading": "Chọn quyền theo công việc",
+        "body": [
+          "Đồng nghiệp tìm giờ hẹn có thể chỉ cần biết khi nào bạn rảnh, không cần chi tiết cuộc hẹn. Người cộng tác duy trì lịch dự án cần cách cấp quyền khác. Xác định việc cần làm trước, rồi kiểm tra quyền trong cài đặt chia sẻ hiện tại của lịch.",
+          "Google phân biệt thời gian rảnh/bận, chi tiết sự kiện và nhiều mức chỉnh sửa. Một tùy chọn chỉnh sửa giới hạn truy cập sự kiện riêng tư; tùy chọn khác cho phép chỉnh sửa và xem chi tiết; mức cao nhất còn cho quản lý chia sẻ. Không coi mọi tùy chọn có từ thay đổi là tương đương."
+        ]
+      },
+      {
+        "heading": "Kiểm tra truy cập toàn lịch, không chỉ từng người",
+        "body": [
+          "Ngoài các cá nhân được chỉ định, xem lịch có công khai, mở cho tổ chức hoặc chia sẻ qua nhóm không. Google cho biết quyền rộng hơn có thể được ưu tiên: hạn chế một người không thu lại chi tiết đã công khai.",
+          "Ví dụ, hãy xét lịch câu lạc bộ công bố cho thành viên. Trước khi thêm cuộc hẹn cá nhân, kiểm tra đối tượng xem lịch thay vì cho rằng quyền bên cạnh một người bạn là cài đặt duy nhất liên quan. Lưu cuộc hẹn riêng tư vào nơi phù hợp."
+        ]
+      },
+      {
+        "heading": "Dùng cài đặt Google cho đúng lịch",
+        "body": [
+          "Trong Google Calendar trên máy tính, tìm lịch cần dùng, mở trình đơn và vào cài đặt chia sẻ. Google mô tả các khu vực riêng cho người hoặc nhóm và cho truy cập rộng hơn. Kiểm tra tên lịch và tài khoản đăng nhập trước khi thay đổi.",
+          "Khi mời, xác nhận đúng danh tính Google của người nhận. Nếu họ không tìm thấy lịch, kiểm tra địa chỉ và thư mời thay vì mở rộng quyền để lịch xuất hiện. Không hiển thị lịch và thiếu quyền chỉnh sửa là hai vấn đề khác nhau."
+        ]
+      },
+      {
+        "heading": "Thử kết quả mà không dùng cuộc hẹn riêng tư",
+        "body": [
+          "Dùng một cuộc hẹn thử không có tiêu đề, ghi chú, địa điểm hay danh sách khách riêng tư. Yêu cầu người nhận xác nhận những gì họ thấy và, chỉ khi cần và được phép chỉnh sửa, những gì họ có thể đổi. Không đưa thông tin đăng nhập của bạn để làm kiểm tra này.",
+          "Ghi lại lịch và vai trò đã cấp, rồi kiểm tra kết quả sau khi đổi cài đặt. Điều này xác minh cách chia sẻ mong muốn, không chứng minh thông tin đã đọc hoặc sao chép đã biến mất. Không thử bằng cách công khai lịch làm việc thật."
+        ]
+      },
+      {
+        "heading": "Tách chính sách nơi làm việc khỏi gói ứng dụng",
+        "body": [
+          "Google nêu rằng quản trị viên cơ quan hoặc trường học có thể hạn chế chia sẻ. Khi không có cài đặt cần dùng, hãy dùng cách tổ chức cho phép. Không công bố thông tin công việc để vượt hạn chế tài khoản.",
+          "Cloud Calendars có thể hiển thị lịch đã kết nối, nhưng tên gói không định nghĩa lại quyền Google. Advanced bỏ quảng cáo; trả tiền không tự cấp cho người khác quyền xem mọi sự kiện Google. Kiểm tra chia sẻ ở nhà cung cấp và kết quả đã được chấp nhận, thay vì chỉ dựa vào trình chỉnh sửa cục bộ sẵn có."
+        ]
+      },
+      {
+        "heading": "Rà soát và xóa quyền không còn cần",
+        "body": [
+          "Khi dự án kết thúc, xem lại người nhận, nhóm và mọi hình thức công bố rộng hơn. Xóa một người chỉ là một phần kiểm tra nếu còn cách truy cập khác. Thống nhất ai duy trì lịch và cách xử lý thay đổi quyền về sau.",
+          "Google hướng dẫn riêng việc xóa người hoặc nhóm và việc tắt chia sẻ rộng hơn. Bỏ quyền không thu hồi tệp đã xuất, ảnh chụp màn hình hoặc thông tin đã sao chép nơi khác. Trao đổi riêng với người liên quan, không hứa rằng một công tắc xóa mọi bản sao cũ."
+        ]
+      }
+    ],
+    "claims": {},
+    "practical": [
+      "Xác định lịch và việc người nhận cần làm.",
+      "Kiểm tra truy cập cá nhân, nhóm, tổ chức và công khai.",
+      "Chọn quyền phù hợp trong cài đặt Google hiện tại.",
+      "Xác minh danh tính người nhận trước khi đổi quyền.",
+      "Kiểm tra một sự kiện thử vô hại từ phía người nhận.",
+      "Rà soát các cách truy cập cũ mà không mặc định thu hồi được bản sao trước đây."
+    ],
+    "faq": [
+      {
+        "q": "Quyền hạn chế riêng có ưu tiên hơn lịch công khai không?",
+        "a": "Không. Google nêu rằng quyền lịch rộng hơn được ưu tiên khi các cài đặt xung đột. Kiểm tra cài đặt công khai và tổ chức bên cạnh mục của người đó."
+      },
+      {
+        "q": "Mọi quyền chỉnh sửa có cho xem sự kiện riêng tư như nhau không?",
+        "a": "Không. Google mô tả một tùy chọn chỉnh sửa giới hạn truy cập sự kiện riêng tư, riêng với các tùy chọn chỉnh sửa và quản lý chia sẻ khác. Đọc chính xác quyền hiện tại trước khi chọn."
+      },
+      {
+        "q": "Mua Advanced có thay đổi quyền chia sẻ Google không?",
+        "a": "Không. Advanced bỏ quảng cáo trong Cloud Calendars. Truy cập tại nhà cung cấp phụ thuộc vào quyền của lịch và hạn chế của tổ chức."
+      }
+    ],
+    "sourcesHeading": "Hướng dẫn hiện tại của Google về quyền và chia sẻ",
+    "sources": [
+      {
+        "label": "Google: chọn quyền cho lịch",
+        "url": "https://support.google.com/calendar/answer/15716974?hl=en"
+      },
+      {
+        "label": "Google: chia sẻ lịch và xóa quyền truy cập",
+        "url": "https://support.google.com/calendar/answer/37082?hl=en"
+      }
+    ],
+    "seeAlso": [
+      "why-a-shared-calendar-does-not-appear",
+      "sharing-one-event-not-your-calendar",
+      "taking-back-a-calendar-you-shared"
+    ],
+    "updated": "2026-10-21"
+  }
+}

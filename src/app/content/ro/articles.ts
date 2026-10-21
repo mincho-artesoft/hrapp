@@ -81,42 +81,96 @@ export const ARTICLES_RO: Readonly<Record<string, LocalisedArticle>> = {
   },
 
   'sharing-one-event-not-your-calendar': {
-    title: 'Partajați un eveniment, nu calendarul',
-    short: 'Partajați un eveniment',
-    description:
-      'Cum funcționează trimiterea unui singur eveniment, ce primește de fapt cealaltă persoană și de ce nu trebuie să instaleze nimic ca să îl vadă.',
-    lede: 'Partajarea unui calendar este de obicei totul sau nimic: ori are cineva acces la al dumneavoastră, ori nu. Trimiterea unei cine nu ar trebui să ceară niciuna dintre variante.',
-    commonBelief:
-      'Că a partaja un eveniment înseamnă a-i da cuiva o fereastră spre restul săptămânii dumneavoastră.',
-    sections: [
-      {
-        heading: 'Ce pleacă de fapt',
-        body: [
-          'Când creați un eveniment, aplicația vă propune să îl partajați. Călătorește o legătură — prin e-mail, prin mesaj, prin ce are instalat celălalt — iar în spatele acelei legături stă un flux de calendar care conține acel eveniment și nimic altceva.',
-          'Nu este o captură de ecran și nici o copie care se învechește. Dacă ora se schimbă, fluxul se schimbă odată cu ea, iar persoana căreia i-ați trimis vede schimbarea fără să retrimiteți nimic.',
-        ],
-      },
-      {
-        heading: 'Ce nu este',
-        body: [
-          'Legătura este un abonament de calendar obișnuit: o citește Calendar de la Apple, o citește Google Calendar, o citește Outlook. În mesaj merge și un App Clip pentru cine vrea totuși aplicația — se deschide fără instalare. Este o ușă, nu o barieră.',
-          'Nu este instantaneu: fluxul cere aplicațiilor să se uite din nou la fiecare oră, iar aceasta este o cerere, nu o regulă. Nu este nici secret: legătura poartă douăzeci și două de caractere aleatoare, pe care nimeni nu le ghicește, dar oricine o are poate citi. Și deocamdată este doar pentru citire.',
-        ],
-      },
-    ],
-    claims: {
-      refreshHint: 'Ore între cererile de reîmprospătare a fluxului',
-      linkLength: 'Caractere aleatoare în legătură, ceea ce o face de neghicit',
-      sharePrice: 'Cât costă partajarea',
+  "updated": "2026-10-21",
+  "title": "Partajează un singur eveniment: alege linkul și accesul potrivit",
+  "short": "Partajarea unui eveniment",
+  "description": "Partajează un eveniment fără întregul calendar. Află ce permit Reader, Writer și Owner, previzualizarea, actualizările și retragerea accesului.",
+  "lede": "Trimiterea detaliilor unei cine, editarea de către un coorganizator și colectarea răspunsurilor de participare sunt sarcini diferite. Alege întâi sarcina, apoi metoda. Ghid scris de Arte Soft, dezvoltatorul Cloud Calendars.",
+  "commonBelief": "Orice link de eveniment este un abonament doar pentru citire, actualizat imediat, care înregistrează un răspuns.",
+  "sections": [
+    {
+      "heading": "Începe cu un eveniment și verifică detaliile",
+      "body": [
+        "Partajarea unui singur eveniment se limitează la acesta, nu la întregul calendar al expeditorului. Verifică titlul, fusul orar, locul, notele și linkul întâlnirii. Detaliile utile unui invitat pot fi nepotrivite într-un link distribuit larg.",
+        "De exemplu, o cină nu necesită partajarea calendarului cu programările medicale. Totuși, locul și linkurile cinei însoțesc evenimentul. Verifică evenimentul în sine, nu te baza pe confidențialitatea calendarului din jur."
+      ]
     },
-    practical: [
-      'Partajați din evenimentul însuși, imediat după ce l-ați creat.',
-      'Trimiteți legătura pe canalul pe care îl folosiți deja cu acea persoană.',
-      'Dacă ora se schimbă în ultima clipă, scrieți-i, nu doar mutați evenimentul.',
-      'Revocați legătura când evenimentul a trecut, așa cum ați înceta să partajați un document.',
-    ],
-    seeAlso: ['icloud-google-and-outlook-in-one-view', 'weather-inside-your-calendar'],
-  },
+    {
+      "heading": "Alege previzualizare, e-mail sau QR",
+      "body": [
+        "Cloud Calendars oferă metode distincte. App Clip prezintă o previzualizare; pentru adăugare prin acea experiență este necesară aplicația completă. Invitațiile prin e-mail și QR folosesc o pagină web care propune deschiderea Cloud Calendars. Nu considera toate linkurile adrese de abonare interschimbabile.",
+        "Expeditorul se autentifică pentru partajarea sincronizată. Linkul sau codul QR poate fi redirecționat, deci trimite-l doar unde conținutul este potrivit. Codul QR transmite un link, nu dovedește cine l-a deschis."
+      ]
+    },
+    {
+      "heading": "Acordă doar accesul necesar",
+      "body": [
+        "Invitațiile prin e-mail permit alegerea Reader, Writer sau Owner. Reader poate vizualiza și sincroniza; Writer poate edita; Owner poate și partaja și gestiona accesul. Sunt alegeri cu efecte reale, nu trei nume pentru aceeași vizualizare. Folosește Reader pentru cine are nevoie doar de program.",
+        "Alege Writer pentru un coorganizator care trebuie să modifice evenimentul. Alege Owner doar dacă trebuie să gestioneze și accesul altora. Drepturile superioare necesită identitatea autentificată potrivită. Un destinatar anonim nu este un coproprietar identificat."
+      ]
+    },
+    {
+      "heading": "Înțelege cum îl adaugă destinatarul",
+      "body": [
+        "În aplicația completă, adăugarea necesită permisiune pentru calendar și o destinație editabilă. Destinatarul trebuie să verifice calendarul înainte de salvare. Copia primită poate fi apoi asociată evenimentului partajat pentru actualizări.",
+        "Aceasta diferă de importul unui fișier ICS obișnuit în alt calendar. Importul este o copie; abonamentul verifică periodic un flux. Dacă trimiți un flux ICS în locul invitației aplicației, explică metoda și confirmă compatibilitatea calendarului destinatarului."
+      ]
+    },
+    {
+      "heading": "Verifică modificările înainte să te bazezi pe ele",
+      "body": [
+        "Partajarea sincronizată poate transmite editări sau anulări, dar dispozitivul destinatarului trebuie să aibă ocazia să le primească. O indicație de reîmprospătare a fluxului nu este un termen de livrare. Un dispozitiv offline, abonament nereîmprospătat sau import separat poate arăta informații vechi.",
+        "Dacă cina se mută cu puțin înainte de începere, actualizează evenimentul și contactează direct invitații. Cere confirmarea noii ore. Trimiterea actualizării și primirea unui răspuns de participare sunt pași separați."
+      ]
+    },
+    {
+      "heading": "Gestionează accesul fără promisiuni de ștergere a copiilor",
+      "body": [
+        "Revizuiește destinatarii și retrage drepturile inutile. Eliminarea unui destinatar și revocarea linkului unui flux sunt operații distincte; niciuna nu trebuie prezentată ca ștergând de la distanță capturi, mesaje sau toate copiile calendarului.",
+        "Dacă linkul a depășit publicul dorit, identifică linkul sau dreptul implicat. Verifică metoda afectată după schimbarea accesului. Pe viitor, nu include detalii private în linkuri larg distribuite, în loc să te bazezi pe revocare ulterioară."
+      ]
+    }
+  ],
+  "claims": {},
+  "practical": [
+    "Verifică detaliile și alege între vizualizare, editare și răspunsuri de participare.",
+    "Alege metoda și autentifică-te când este necesar.",
+    "Folosește Reader pentru vizualizare; acordă Writer sau Owner doar pentru responsabilitatea respectivă.",
+    "Cere destinatarului să verifice ora și calendarul de destinație la adăugare.",
+    "Pentru schimbări urgente, actualizează evenimentul și trimite un mesaj direct.",
+    "La încheiere, verifică separat drepturile destinatarilor și accesul linkurilor."
+  ],
+  "faq": [
+    {
+      "q": "Partajarea unui eveniment expune tot calendarul?",
+      "a": "Metoda sincronizată pentru un eveniment se limitează la acesta. Detaliile proprii sunt totuși expuse prin metoda aleasă. Verifică-le și nu trimite o invitație pentru tot calendarul dacă intenționezi doar un eveniment."
+    },
+    {
+      "q": "Poate destinatarul modifica evenimentul?",
+      "a": "Da, cu acces Writer sau Owner potrivit și fluxul autentificat acceptat. Reader permite vizualizare și sincronizare. Un abonament ICS obișnuit nu este același mecanism de editare."
+    },
+    {
+      "q": "Eliminarea cuiva retrage tot ce a primit deja?",
+      "a": "Nu trebuie presupusă o asemenea garanție. Accesul afectează relația de partajare, dar copiile salvate, capturile și mesajele pot rămâne. Adresa unui flux partajat trebuie analizată separat."
+    }
+  ],
+  "sourcesHeading": "Referințe pentru opțiunile destinatarului",
+  "sources": [
+    {
+      "label": "Apple: prezentarea App Clips",
+      "url": "https://developer.apple.com/help/app-store-connect/offer-app-clip-experiences/overview-of-app-clips/"
+    },
+    {
+      "label": "Google: importul evenimentelor și limitări",
+      "url": "https://support.google.com/calendar/answer/37118?co=GENIE.Platform%3DDesktop&hl=en"
+    },
+    {
+      "label": "Microsoft: import sau abonare la calendar",
+      "url": "https://support.microsoft.com/en-us/outlook/import-or-subscribe-to-a-calendar-in-outlook-com-or-outlook-on-the-web"
+    }
+  ],
+  "seeAlso": []
+},
 
   'what-a-subscription-actually-buys': {
   "updated": "2026-10-21",

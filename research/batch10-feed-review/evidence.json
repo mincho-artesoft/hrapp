@@ -1,0 +1,331 @@
+{
+  "date": "2026-10-21",
+  "status": "Drafts only; no integrated source edits, build, native execution, backend queries or deployment.",
+  "selected_canonicals": [
+    "what-guests-can-do-to-your-event",
+    "the-secret-address-of-a-google-calendar",
+    "google-calendars-that-never-reach-your-iphone"
+  ],
+  "checks": {
+    "what-guests-can-do-to-your-event": {
+      "sha256": "9b070e426b48c3ae1d3b9f484c74aa447be1498c096e38f29c33715d8512090e",
+      "description_chars": 150,
+      "sections": 6,
+      "paragraphs": 12,
+      "practical_steps": 6,
+      "faqs": 3,
+      "crosslinks_exist_in_generated_index": true
+    },
+    "the-secret-address-of-a-google-calendar": {
+      "sha256": "a0fe98d6277f677aa04cfaf4f60a6ace2cb451ec5e164d90450e8b49193bb492",
+      "description_chars": 156,
+      "sections": 6,
+      "paragraphs": 12,
+      "practical_steps": 6,
+      "faqs": 3,
+      "crosslinks_exist_in_generated_index": true
+    },
+    "google-calendars-that-never-reach-your-iphone": {
+      "sha256": "7d0d44b808d48b5a3cd7d1a1d0fb919736c2bfc782d2c05a68e496d1149717c4",
+      "description_chars": 140,
+      "sections": 6,
+      "paragraphs": 12,
+      "practical_steps": 6,
+      "faqs": 3,
+      "crosslinks_exist_in_generated_index": true
+    }
+  },
+  "source_evidence": [
+    {
+      "file": "/Users/minchomilev/work/hrapp/Calendar/Sources/CalendarViewModel.swift",
+      "sha256": "a0b207cb78810816775ff1aff4399a33dc3ce7331cbb1af2aa4468bb0828ccf4",
+      "line_ranges": [
+        [
+          1150,
+          1169
+        ],
+        [
+          2176,
+          2191
+        ]
+      ],
+      "finding": "Calendar-list request has no query parameters or continuation loop; decoded list has no nextPageToken. Google documentation defaults hidden entries off and paginates lists. This disproves a universal completeness promise, not a demonstrated production incident.",
+      "excerpts": [
+        {
+          "start": 1150,
+          "end": 1169,
+          "text": "    private func fetchGoogleCalendarList(accessToken: String) async throws -> [GoogleCalendarItem] {\n        guard let url = URL(string: \"https://www.googleapis.com/calendar/v3/users/me/calendarList\") else {\n            throw SyncError.invalidURL\n        }\n        var request = URLRequest(url: url)\n        request.httpMethod = \"GET\"\n        request.setValue(\"Bearer \\(accessToken)\", forHTTPHeaderField: \"Authorization\")\n        \n        let (data, response) = try await URLSession.shared.data(for: request)\n        if let httpResp = response as? HTTPURLResponse {\n            if httpResp.statusCode == 403 || httpResp.statusCode == 429 {\n                throw SyncError.rateLimit\n            } else if httpResp.statusCode >= 400 {\n                throw SyncError.networkError(\"HTTP \\(httpResp.statusCode)\")\n            }\n        }\n        \n        let decoded = try JSONDecoder().decode(GoogleCalendarListResponse.self, from: data)\n        return decoded.items\n    }"
+        },
+        {
+          "start": 2176,
+          "end": 2191,
+          "text": "struct GoogleCalendarListResponse: Codable {\n    let kind: String\n    let etag: String\n    let items: [GoogleCalendarItem]\n}\n\nstruct GoogleCalendarItem: Codable {\n    let kind: String\n    let etag: String\n    let id: String\n    let summary: String\n    let timeZone: String?\n    let colorId: String?\n    let backgroundColor: String?\n    let foregroundColor: String?\n}"
+        }
+      ]
+    },
+    {
+      "file": "/Users/minchomilev/work/hrapp/Calendar/Sources/CalendarViewModel.swift",
+      "sha256": "a0b207cb78810816775ff1aff4399a33dc3ce7331cbb1af2aa4468bb0828ccf4",
+      "line_ranges": [
+        [
+          1244,
+          1277
+        ],
+        [
+          1367,
+          1382
+        ],
+        [
+          1398,
+          1415
+        ]
+      ],
+      "finding": "Downloads depend on selected mirrored calendar IDs; mirror source can be local, first CalDAV, or default-calendar source. Download request bounds are now minus180/plus360days; no promise that every historical event is available.",
+      "excerpts": [
+        {
+          "start": 1244,
+          "end": 1277,
+          "text": "                // Сваляме събития само ако календарът е селектиран\n                if selectedCalendarIDs.contains(localCalID) {\n                    await downloadAllEvents(\n                        forGoogleCalendarID: googleCalId,\n                        userID: userID,\n                        localCalendar: localEKCal,\n                        accessToken: accessToken\n                    )\n                } else {\n                    print(\"Skipping download for not‑selected localCalID:\", localCalID)\n                }\n\n            } else {\n                // (2) Ако нямаме локален календар => създаваме\n                if let newCal = createLocalCalendar(\n                    googleCalendarName: googleCalName,\n                    googleCalendarColor: googleCalColor\n                ) {\n                    map[googleCalId] = newCal.calendarIdentifier\n                    self.setGoogleToLocalCalendarMap(map, for: userID)\n\n                    // Проверка за selection\n                    if selectedCalendarIDs.contains(newCal.calendarIdentifier) {\n                        await downloadAllEvents(\n                            forGoogleCalendarID: googleCalId,\n                            userID: userID,\n                            localCalendar: newCal,\n                            accessToken: accessToken\n                        )\n                    } else {\n                        print(\"Created local calendar but skipping download (not selected).\")\n                    }\n                }\n            }"
+        },
+        {
+          "start": 1367,
+          "end": 1382,
+          "text": "\n    private func createLocalCalendar(googleCalendarName: String,\n                                     googleCalendarColor: UIColor?) -> EKCalendar? {\n        guard accessGranted else { return nil }\n        \n        let newCal = EKCalendar(for: .event, eventStore: eventStore)\n        newCal.title = googleCalendarName\n        \n        if let localSource = eventStore.sources.first(where: { $0.sourceType == .local }) {\n            newCal.source = localSource\n        } else if let icloudSource = eventStore.sources.first(where: { $0.sourceType == .calDAV }) {\n            newCal.source = icloudSource\n        } else {\n            newCal.source = eventStore.defaultCalendarForNewEvents?.source\n        }\n        "
+        },
+        {
+          "start": 1398,
+          "end": 1415,
+          "text": "    /// Изтегля всички събития от Google Calendar и ги синхронизира в локалния EKCalendar.\n    /// Ако `gevent.updated` се различава от запаметеното в `updMap[gevent.id]`,\n    /// значи има промяна (title/description/location/attendees и т.н.) и се ъпдейтва.\n    private func downloadAllEvents(\n        forGoogleCalendarID googleCalId: String,\n        userID: UUID,\n        localCalendar: EKCalendar,\n        accessToken: String\n    ) async {\n        // Примерен диапазон от -180 дни до +360 дни\n        let now = Date()\n        let startDate = Calendar.current.date(byAdding: .day, value: -180, to: now)!\n        let endDate   = Calendar.current.date(byAdding: .day, value: 360, to: now)!\n\n        do {\n            // 1) Изтегляме всички Google събития (с възможни страници pageToken)\n            let allGEvents = try await fetchAllGoogleEvents(\n                googleCalId: googleCalId,"
+        }
+      ]
+    },
+    {
+      "file": "/Users/minchomilev/work/hrapp/Calendar/Sources/CalendarViewModel.swift",
+      "sha256": "a0b207cb78810816775ff1aff4399a33dc3ce7331cbb1af2aa4468bb0828ccf4",
+      "line_ranges": [
+        [
+          2087,
+          2130
+        ]
+      ],
+      "finding": "Inspected Google event serialization supplies attendees and event fields, not Google guest permission flags. Bounded finding: no equivalent control claimed for Cloud UI.",
+      "excerpts": [
+        {
+          "start": 2087,
+          "end": 2130,
+          "text": "        // 3) Convert the remaining attendees → Google JSON format\n        // -------------------------------------------------------------\n        var googleAttendeeDicts: [[String: Any]] = []\n\n        print(\"GlobalState.email\", GlobalState.email)\n        for a in attendees where a.email != GlobalState.email {\n            googleAttendeeDicts.append([\n                \"email\"       : a.email,\n                \"displayName\" : a.name,\n                \"optional\"    : false          // mark them as required; change if you wish\n            ])\n        }\n\n        // -------------------------------------------------------------\n        // 4) Clean up notes (remove any “Video Call” blocks)\n        // -------------------------------------------------------------\n        let originalNotes  = event.notes ?? \"\"\n        let sanitizedNotes = removeVideoCallBlock(from: originalNotes)\n\n        // -------------------------------------------------------------\n        // 5) Build & return the final body\n        // -------------------------------------------------------------\n        if event.isAllDay {\n            let startDateStr = localAllDayDateString(event.startDate)\n            let endDateStr   = localAllDayDateString(event.endDate)\n\n            return [\n                \"summary\"    : event.title ?? NSLocalizedString(\"(No Title)\", comment: \"Untitled synced event fallback\"),\n                \"description\": sanitizedNotes,\n                \"start\"      : [\"date\": startDateStr],\n                \"end\"        : [\"date\": endDateStr],\n                \"attendees\"  : googleAttendeeDicts\n            ]\n        } else {\n            return [\n                \"summary\"    : event.title ?? NSLocalizedString(\"(No Title)\", comment: \"Untitled synced event fallback\"),\n                \"description\": sanitizedNotes,\n                \"start\"      : [\"dateTime\": isoDateString(event.startDate)],\n                \"end\"        : [\"dateTime\": isoDateString(event.endDate)],\n                \"attendees\"  : googleAttendeeDicts\n            ]\n        }\n    }\n"
+        }
+      ]
+    },
+    {
+      "file": "/Users/minchomilev/work/hrapp/Calendar/Calendar/CalendarsSheetView.swift",
+      "sha256": "901ac260f4566d8ef7b2c65997248c7a1ad241924bf2d998ad3008292d9d25e8",
+      "line_ranges": [
+        [
+          470,
+          510
+        ]
+      ],
+      "finding": "Google calendars grouped under stored user and selection toggle; specific provider calendar mapping used for sharing.",
+      "excerpts": [
+        {
+          "start": 470,
+          "end": 510,
+          "text": "    private var googleSection: some View {\n        Group {\n            if !viewModel.storedUsers.isEmpty {\n                Section { Text(LocalizedStringKey(\"Google calendars\")) }\n            }\n            ForEach(viewModel.storedUsers, id: \\.uniqueID) { user in\n                let isExpanded = Binding<Bool>(\n                    get: { googleExpandedStates[user.uniqueID] ?? true },\n                    set: { googleExpandedStates[user.uniqueID] = $0 }\n                )\n                Section {\n                    DisclosureGroup(isExpanded: isExpanded) {\n                        let googleCals = googleCopiedCalendars(for: user)\n                        if googleCals.isEmpty {\n                            Text(LocalizedStringKey(\"No synced Google calendars yet.\"))\n                                .font(.footnote)\n                                .foregroundColor(.secondary)\n                                .listRowBackground(Color.clear)\n                        } else {\n                            ForEach(googleCals, id: \\.calendarIdentifier) { cal in\n                                CalendarRowView(\n                                    calendar: cal,\n                                    isSelected: viewModel.selectedCalendarIDs.contains(cal.calendarIdentifier),\n                                    toggleAction: toggleCalendar,\n                                    editAction: {},\n                                    showEditButton: false,\n                                    showShareButton: user.refreshToken?.isEmpty == false,\n                                    shareAction: {\n                                        guard let googleCalendarID = googleCalendarID(\n                                            for: cal,\n                                            user: user\n                                        ) else { return }\n\n                                        googleCalendarSharingTarget = GoogleCalendarSharingTarget(\n                                            googleCalendarID: googleCalendarID,\n                                            user: user,\n                                            calendarTitle: cal.title\n                                        )\n                                    }\n                                )\n                                .listRowSeparator(.hidden)"
+        }
+      ]
+    },
+    {
+      "file": "/Users/minchomilev/work/hrapp/Calendar/Sharing/EventEmailInvitationsView.swift",
+      "sha256": "9f0373d4475ec97d8cf834d789decbd60f03c7ca1c3086c4a5d3a81f6a53f934",
+      "line_ranges": [
+        [
+          20,
+          50
+        ]
+      ],
+      "finding": "Native text distinguishes Reader viewing/sync, Writer editing, Owner sharing/access using invited email.",
+      "excerpts": [
+        {
+          "start": 20,
+          "end": 50,
+          "text": "                    VStack(alignment: .leading, spacing: 5) {\n                        Text(eventTitle)\n                            .font(.headline)\n                            .lineLimit(2)\n                        Text(\"Add everyone who should receive this event and choose their access.\")\n                            .font(.footnote)\n                            .foregroundStyle(.secondary)\n                    }\n                    .padding(.vertical, 3)\n                }\n\n                Section {\n                    ForEach($invitations) { $invitation in\n                        invitationRow($invitation)\n                    }\n                    .onDelete(perform: removeInvitations)\n\n                    Button {\n                        let draft = InvitationDraft()\n                        invitations.append(draft)\n                        focusedInvitationID = draft.id\n                    } label: {\n                        Label(\"Add another person\", systemImage: \"person.badge.plus\")\n                    }\n                    .disabled(isSending)\n                } header: {\n                    Text(\"People\")\n                } footer: {\n                    Text(\"Reader can view and sync. Writer can edit. Owner can also share and manage access after signing in with the invited email.\")\n                }\n"
+        }
+      ]
+    },
+    {
+      "file": "/Users/minchomilev/work/hrapp/Calendar/Sharing/SharedEventImporter.swift",
+      "sha256": "61811420ef154abcf25d1aa58516b8d8b4683156b505f5cff4371a01650901f2",
+      "line_ranges": [
+        [
+          103,
+          132
+        ]
+      ],
+      "finding": "Import records signed-in or anonymous received invitation; record failure caught separately. Receipt is not an attendance response.",
+      "excerpts": [
+        {
+          "start": 103,
+          "end": 132,
+          "text": "    private static func remember(\n        _ payload: SharedEventImportPayload,\n        localEventIdentifier: String?,\n        session: CloudCalendarsAPI.Session?\n    ) async {\n        guard let eventID = payload.eventID,\n              let feedID = payload.feedID\n        else { return }\n        do {\n            if let session {\n                try await CloudCalendarsAPI.rememberReceivedInvite(\n                    eventId: eventID,\n                    feedId: feedID,\n                    localEventIdentifier: localEventIdentifier,\n                    anonymousRecipientId: SharedInviteTracker.anonymousRecipientID,\n                    session: session\n                )\n            } else {\n                try await CloudCalendarsAPI.rememberAnonymousReceivedInvite(\n                    eventId: eventID,\n                    feedId: feedID,\n                    anonymousRecipientId: SharedInviteTracker.anonymousRecipientID\n                )\n            }\n            SharedInviteTracker.markReceiptRecorded(eventID: eventID)\n        } catch {\n            print(\"Received invite could not be attached to the account: \\(error.localizedDescription)\")\n        }\n    }\n"
+        }
+      ]
+    },
+    {
+      "file": "/Users/minchomilev/work/cloud-calendars-api-nest/src/core/core.service.ts",
+      "sha256": "d445cf5dc00d0fd4ce53abdcc9a5abaeaab817f5e3bfa623bf7a69fd8d69d160",
+      "line_ranges": [
+        [
+          79,
+          100
+        ]
+      ],
+      "finding": "Generated feeds may be scoped to one event or whole calendar; do not conflate with Google secret address.",
+      "excerpts": [
+        {
+          "start": 79,
+          "end": 100,
+          "text": "    const affected = Object.entries(acl.feeds ?? {}).filter(([, grant]: any) => {\n      if (!changedEventId) return true;                        // full rebuild\n      if (!grant.scope?.eventId) return true;                  // whole-calendar feeds always\n      return grant.scope.eventId === changedEventId;\n    });\n\n    await Promise.all(\n      affected.map(([feedId, grant]: any) =>\n        store.putFeed(\n          store.keys.feed(feedId),\n          buildFeed({\n            name: grant.feedName ?? meta.name,\n            timeZone: meta.timeZone,\n            role: grant.role,\n            busyLabel: meta.busyLabel ?? 'Busy',\n            events: grant.scope?.eventId\n              ? events.filter((ev) => ev.id === grant.scope.eventId)\n              : events,\n          }),\n        ),\n      ),\n    );"
+        }
+      ]
+    },
+    {
+      "file": "/Users/minchomilev/work/cloud-calendars-api-nest/src/calendar/calendar.controller.ts",
+      "sha256": "05685de3688e67b7f8ecd30a951bc66f211eb2946d604c24d1f3e77ea7d2224f",
+      "line_ranges": [
+        [
+          11,
+          20
+        ]
+      ],
+      "finding": "Feed retrieval GET and cache-control do not prove receiver fetch/display timing.",
+      "excerpts": [
+        {
+          "start": 11,
+          "end": 20,
+          "text": "  @Get('f/:file')\n  async calendarFeed(@Param('file') file: string, @Res() res: Response) {\n    const feed = await this.svc.calendarFeed(file);\n    if (feed == null) {\n      res.status(404).type('text/plain').send('Calendar feed not found');\n      return;\n    }\n    res.setHeader('Cache-Control', 'no-cache, max-age=0, must-revalidate');\n    res.status(200).type('text/calendar; charset=utf-8').send(feed);\n  }"
+        }
+      ]
+    },
+    {
+      "file": "/Users/minchomilev/work/cloud-calendars-api-nest/src/util/ics.ts",
+      "sha256": "42a0af6d6f10e75690170a90f204079d758cee7cbd7e63e4b830127c7dac8948",
+      "line_ranges": [
+        [
+          222,
+          239
+        ]
+      ],
+      "finding": "METHOD:PUBLISH with PT1H refresh/TTL hints; no guaranteed refresh deadline.",
+      "excerpts": [
+        {
+          "start": 222,
+          "end": 239,
+          "text": "export function buildFeed({ name, timeZone = 'UTC', events, role, busyLabel }: {\n  name: string; timeZone?: string; events: any[]; role?: string; busyLabel?: string;\n}): string {\n  const lines = [\n    'BEGIN:VCALENDAR',\n    'VERSION:2.0',\n    'PRODID:-//Cloud Calendars//Feed//EN',\n    'CALSCALE:GREGORIAN',\n    'METHOD:PUBLISH',\n    `X-WR-CALNAME:${esc(name)}`,\n    `X-WR-TIMEZONE:${timeZone}`,\n    'REFRESH-INTERVAL;VALUE=DURATION:PT1H',\n    'X-PUBLISHED-TTL:PT1H',\n  ];\n\n  for (const event of events) {\n    lines.push(...eventToVEVENT(event, { role, busyLabel }));\n  }"
+        }
+      ]
+    },
+    {
+      "file": "/Users/minchomilev/work/cloud-calendars-api-nest/src/calendar/calendar.service.ts",
+      "sha256": "f9f253bfa7a8be3698012cb6c007364b0d14045b1b9354ba96dd5abc86d62ed1",
+      "line_ranges": [
+        [
+          2886,
+          2901
+        ]
+      ],
+      "finding": "Owner-only feed grant revocation deletes feed/index; not evidence erasing remote independent copies.",
+      "excerpts": [
+        {
+          "start": 2886,
+          "end": 2901,
+          "text": "  async revokeGrant(principal: any, feedId: string): Promise<ApiResult> {\n    const index = await this.store.getJSON(this.keys.feedIndex(feedId));\n    if (!index) return result(404, { error: 'no such feed' });\n\n    const acl = await this.store.getJSON(this.keys.acl(index.calId));\n    if (this.core.roleOf(acl, principal.principalId) !== 'owner') return result(403, { error: 'only the owner may revoke' });\n    if (acl.owner === acl.feeds?.[feedId]?.principalId) return result(400, { error: 'cannot revoke the owner feed' });\n\n    delete acl.feeds[feedId];\n    await Promise.all([\n      this.store.putJSON(this.keys.acl(index.calId), acl),\n      this.store.del(this.keys.feed(feedId)),\n      this.store.del(this.keys.feedIndex(feedId)),\n    ]);\n    return result(200, { revoked: feedId });\n  }"
+        }
+      ]
+    },
+    {
+      "file": "/Users/minchomilev/cloud-calendars/src/app/content/en-US/articles-google.ts",
+      "sha256": "3ce86c408ccdd8dbdf5e2f89afb7282e27977e3961f5ca9639d7451411a77251",
+      "line_ranges": [
+        [
+          83,
+          243
+        ]
+      ],
+      "finding": "Original three thin guides contain unsupported universal exposure/no-record/default/complete-calendar claims; drafts replace only these canonical objects. Exact lines depend on this hashed snapshot.",
+      "excerpts": [
+        {
+          "start": 83,
+          "end": 243,
+          "text": "    lede: 'Buried in the settings of every Google calendar is a link that shows everything on it. No sign-in, no permission, no record of who opened it.',\n    commonBelief: 'That a private address is private because it is hard to find.',\n    sections: [\n      {\n        heading: 'A link is a password that cannot be changed for one person',\n        body: [\n          'The secret address carries full details — titles, times, locations, notes. Anyone holding the link sees them, and there is no list of who does.',\n          'Its only protection is the random part of the address. That is genuine protection against guessing, and none at all against forwarding, a shared screen, or a document that outlives the job.',\n        ],\n      },\n      {\n        heading: 'Resetting it breaks it for everybody',\n        body: [\n          'You can reset the address, which makes the old one dead. It also makes it dead for every colleague, every dashboard and every script quietly relying on it, with no warning to any of them.',\n          'That is the argument for never handing out the address of a calendar you live in. Publish a calendar made for the purpose, and the reset costs you nothing.',\n        ],\n      },\n    ],\n    claims: {\n      linkLength: 'Random characters protecting a share link of our own',\n      sharePrice: 'What sharing an event from the app costs',\n    },\n    faq: [\n      {\n        q: 'What can someone do with the secret address of my Google calendar?',\n        a: 'See everything on it — titles, times, locations and notes — without signing in or being granted permission, and without leaving any record that they looked.',\n      },\n      {\n        q: 'Can I take a secret calendar address back?',\n        a: 'Only by resetting it, which kills the old address for everyone at once: colleagues, dashboards and any script quietly relying on it, none of whom are warned.',\n      },\n      {\n        q: 'Is it safe to email the secret address to a colleague?',\n        a: 'Treat it as public from the moment it leaves your hands. Its only protection is being hard to guess, and forwarding defeats that completely.',\n      },\n    ],\n    practical: [\n      'Treat the secret address as public the moment it leaves your hands.',\n      'Never publish the address of the calendar you actually use.',\n      'Reset it when somebody leaves, and tell the people it will break.',\n    ],\n    seeAlso: ['who-can-see-what-in-google-calendar', 'taking-back-a-calendar-you-shared'],\n  },\n\n  'what-guests-can-do-to-your-event': {\n    title: 'What your guests can do to an event once invited',\n    short: 'Guest permissions on an event',\n    description:\n      'Three tick boxes decide whether a guest can move your meeting, invite strangers, or read the whole list. They are on by default more often than people expect.',\n    lede: 'Inviting somebody hands them more than a place to be. On a normal Google event, a guest can usually see who else was asked, and frequently can add to the list.',\n    commonBelief: 'That a guest can only accept or decline.',\n    sections: [\n      {\n        heading: 'The three boxes',\n        body: [\n          'Modify event lets a guest change the time, the place and the title for everyone. It is rarely wanted and easily left on.',\n          'Invite others lets a guest add people you have never met. See guest list shows everybody who was asked and how they replied — fine for a team, awkward for a client, wrong for anything resembling a group of separate customers.',\n        ],\n      },\n      {\n        heading: 'Where this quietly goes wrong',\n        body: [\n          'One event, many individual recipients, guest list visible: everybody now has everybody else. Clearing that one box is the difference between a meeting and a leaked address book.',\n          'The settings live on the event, not on the account, so they reset to your defaults every time and have to be thought about on the events that matter rather than once.',\n        ],\n      },\n    ],\n    claims: {\n      sharePrice: 'What sending a single event from the app costs',\n    },\n    faq: [\n      {\n        q: 'Can guests see each other on a Google Calendar invitation?',\n        a: 'By default, usually yes. “See guest list” shows everybody invited and how they replied — fine inside a team, awkward with a client, and wrong when the guests are separate customers.',\n      },\n      {\n        q: 'Can a guest change the time of my meeting?',\n        a: 'If “modify event” is ticked, yes, and the change applies to everybody. It is rarely wanted and easily left on.',\n      },\n      {\n        q: 'How do I stop guests from inviting other people?',\n        a: 'Turn off “invite others” on the event itself. These settings belong to the event rather than the account, so they return to your defaults every time you create one.',\n      },\n    ],\n    practical: [\n      'Turn off see guest list for anything sent to people who do not know each other.',\n      'Leave modify event off unless somebody genuinely schedules for you.',\n      'Check the boxes on the event, not in your settings, because that is where they live.',\n    ],\n    seeAlso: ['who-can-see-what-in-google-calendar', 'why-a-shared-calendar-does-not-appear'],\n  },\n\n  'google-calendars-that-never-reach-your-iphone': {\n    title: 'Why some Google calendars never reach your iPhone',\n    short: 'Google calendars missing on iPhone',\n    description:\n      'One Google account, several calendars, and only one of them on the phone. The sync list that decides it, and what to do instead.',\n    lede: 'Your Google account holds eight calendars. Your iPhone shows two. Nothing is broken: something you have never seen made that choice on your behalf.',\n    commonBelief: 'That adding a Google account to iPhone adds the calendars in it.',\n    sections: [\n      {\n        heading: 'A list you were never shown',\n        body: [\n          'Google keeps a per-device list of which calendars are allowed to sync, and secondary calendars — the shared ones, the subscribed ones, the ones somebody made for a project — are frequently outside it.',\n          'The list is not in iOS settings. It lives on a Google page of its own, which is why looking in the obvious place finds nothing wrong and nothing changes.',\n        ],\n      },\n      {\n        heading: 'The other route',\n        body: [\n          'An app that talks to Google directly does not use that list, so it shows every calendar the account actually holds, including the ones the phone quietly dropped.',\n          'That also brings the accounts together. One view holding personal, work and shared calendars is the point; whether the phone would have synced each of them stops being a question you have to answer.',\n        ],\n      },\n    ],\n    claims: {\n      accounts: 'Account types one view can hold',\n      price: 'What the Google side costs',\n    },\n    faq: [\n      {\n        q: 'Why do only some of my Google calendars show up on iPhone?',\n        a: 'Google keeps a per-device list of which calendars are allowed to sync, and secondary calendars — shared ones, subscribed ones, ones made for a project — are frequently outside it.',\n      },\n      {\n        q: 'Where is the Google Calendar sync setting for iPhone?',\n        a: 'Not in iOS settings. It lives on a Google page of its own, which is why looking in the obvious place finds nothing wrong and changes nothing.',\n      },\n      {\n        q: 'How do I see every Google calendar on my iPhone?',\n        a: 'Read them through an app that queries Google directly instead of through the device sync list. It shows every calendar the account actually holds, including the ones the phone dropped.',\n      },\n    ],\n    practical: [\n      'Check the Google sync list before assuming the account is broken.',\n      'Expect subscribed and shared calendars to be excluded rather than included.',\n      'If you keep more than a couple of calendars, read them through something that queries Google directly.',\n    ],\n    seeAlso: ['why-a-shared-calendar-does-not-appear', 'icloud-google-and-outlook-in-one-view'],\n  },\n\n  'taking-back-a-calendar-you-shared': {\n  \"title\": \"Stop sharing a calendar: remove access and check the remaining routes\",\n  \"short\": \"Review and remove shared access\",\n  \"description\": \"Stop calendar sharing without confusing people, groups, public access and feed links. Check what changed and understand why saved copies may remain.\",\n  \"lede\": \"Ending a collaboration starts with identifying how access was granted. Removing a person, disabling publication and resetting a feed address are different actions. This guide is published by Arte Soft, the developer of Cloud Calendars.\",\n  \"commonBelief\": \"Removing one recipient instantly recalls every calendar copy and closes every other route to the schedule.\",\n  \"sections\": [\n    {\n      \"heading\": \"Identify the calendar and the sharing route\",\n      \"body\": [\n        \"Confirm the owning account, calendar and intended audience before changing access. A Google calendar shared with a named colleague is a different relationship from a public calendar, a group grant or a subscription address. Cloud Calendars also has its own event and calendar sharing relationships.\",\n        \"For example, a club secretary may receive editing rights through a named invitation while members follow a published schedule. Removing the secretary’s named grant does not describe what should happen to the members’ subscriptions. Make a list of the arrangements you actually created.\"\n      ]\n    },\n    {\n      \"heading\": \"Remove the intended Google grant\",\n      \"body\": [\n        \"Google documents separate controls for named people or groups, organisation-wide sharing and public availability. On a computer, open the intended calendar’s sharing settings and change the relevant entry or broader setting. Check the signed-in account and calendar name first.\",\n        \"A person may still have another access route, such as a group or broader publication. Review the whole arrangement instead of repeating removal of one email address. Work or school policies may limit the available controls; use the owner or administrator’s approved process when necessary.\"\n      ]"
+        }
+      ]
+    }
+  ],
+  "official_sources_reviewed": [
+    {
+      "url": "https://support.google.com/a/users/answer/13293412?hl=en",
+      "label": "Google: event collaboration and default guest permissions",
+      "checked": "2026-10-21"
+    },
+    {
+      "url": "https://developers.google.com/workspace/calendar/api/v3/reference/events",
+      "label": "Google: event guest permission fields",
+      "checked": "2026-10-21"
+    },
+    {
+      "url": "https://support.google.com/calendar/answer/37648?hl=en",
+      "label": "Google: account connections and secret iCal addresses",
+      "checked": "2026-10-21"
+    },
+    {
+      "url": "https://support.google.com/calendar/answer/37082?hl=en",
+      "label": "Google: sharing a calendar",
+      "checked": "2026-10-21"
+    },
+    {
+      "url": "https://support.microsoft.com/en-us/outlook/import-or-subscribe-to-a-calendar-in-outlook-com-or-outlook-on-the-web",
+      "label": "Microsoft: importing versus subscribing and update timing",
+      "checked": "2026-10-21"
+    },
+    {
+      "url": "https://support.google.com/calendar/answer/99358?hl=en&co=GENIE.Platform%3DiOS",
+      "label": "Google: adding Google events to Apple Calendar",
+      "checked": "2026-10-21"
+    },
+    {
+      "url": "https://support.google.com/calendar/answer/37100?hl=en&co=GENIE.Platform%3DiOS",
+      "label": "Google: subscriptions and calendar visibility",
+      "checked": "2026-10-21"
+    },
+    {
+      "url": "https://developers.google.com/workspace/calendar/api/v3/reference/calendarList/list",
+      "label": "Google: calendar-list behavior",
+      "checked": "2026-10-21"
+    }
+  ],
+  "corrections": [
+    "Secret iCal address for own applications, named sharing separate; remove universal complete details, no logs and guessing guarantees.",
+    "Subscription differs from imported copy; refresh is receiving-client dependent; reset does not establish recall.",
+    "Google event guest capabilities and defaults distinct from whole-calendar permissions and Cloud Reader/Writer/Owner.",
+    "Calendar absence versus visibility versus missing event date; account route and selection before resetting; remove every-calendar direct-sync guarantee."
+  ],
+  "limits": [
+    "Inspected working-tree code is not evidence of the currently deployed backend or released app implementation.",
+    "No production feed was requested and no customer data, account or tokens were examined.",
+    "No runtime test of calendar list pagination, hidden calendars, Google defaults or feed delays was performed.",
+    "No universal iOS UI path, Google syncselect recipe, guaranteed download horizon or automatic deletion of previous copies is promised.",
+    "Native-source negative finding about Google guest flags is limited to the inspected event serialization and focused control search.",
+    "Google documentation paths and account/organisation options may change.",
+    "Draft JSON is LocalisedArticle prose shape; canonical slug is retained in its filename, not added as an unsupported object property."
+  ],
+  "remaining_followup": [
+    "Root can integrate only the three named objects, preserving current improved shared-calendar and revoke-access articles.",
+    "Audit existing translated equivalents before claiming site-wide correction; this batch contains English only.",
+    "Potential native calendar-list pagination/hidden handling issue is reported for separate consideration; no native change authorized or made."
+  ],
+  "failed_sources_not_relied_on": [
+    "Google Calendar answers37161 and151674 fetch timeouts",
+    "Google Workspace January2026 secondary-calendar post inaccessible through browser tool"
+  ]
+}

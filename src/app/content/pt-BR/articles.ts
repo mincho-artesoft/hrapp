@@ -81,42 +81,100 @@ export const ARTICLES_PT_BR: Readonly<Record<string, LocalisedArticle>> = {
   },
 
   'sharing-one-event-not-your-calendar': {
-    title: 'Compartilhar um compromisso, não a agenda',
-    short: 'Compartilhar um compromisso',
-    description:
-      'Como funciona enviar um único compromisso, o que a outra pessoa realmente recebe e por que ela não precisa instalar nada para ver.',
-    lede: 'Compartilhar uma agenda costuma ser tudo ou nada: ou alguém tem acesso à sua ou não tem. Enviar um jantar não deveria exigir nenhuma das duas coisas.',
-    commonBelief:
-      'Que compartilhar um compromisso significa dar a alguém uma janela para o resto da sua semana.',
-    sections: [
-      {
-        heading: 'O que de fato é enviado',
-        body: [
-          'Ao criar um compromisso, o aplicativo oferece compartilhá-lo. O que viaja é um link — por e-mail, por mensagem, pelo que a pessoa tiver — e atrás desse link há um canal de agenda que contém aquele compromisso e mais nada.',
-          'Não é uma captura de tela nem uma cópia que envelhece. Se o horário mudar, o canal muda junto, e quem recebeu vê a mudança sem que você reenvie nada.',
-        ],
-      },
-      {
-        heading: 'O que não é',
-        body: [
-          'O link é uma assinatura de agenda comum: o Calendário da Apple lê, o Google Agenda lê, o Outlook lê. Na mensagem vai também um App Clip para quem quiser o aplicativo — ele abre sem instalar nada. É uma porta, não um pedágio.',
-          'Não é instantâneo: o canal pede aos aplicativos que voltem a olhar a cada hora, e isso é um pedido, não uma regra. Também não é secreto: o link carrega vinte e dois caracteres aleatórios, que ninguém adivinha, mas quem o tiver pode ler. E, por ora, é somente leitura.',
-        ],
-      },
-    ],
-    claims: {
-      refreshHint: 'Horas entre os pedidos de atualização do canal',
-      linkLength: 'Caracteres aleatórios do link, que é o que o torna inadivinhável',
-      sharePrice: 'Quanto custa compartilhar',
+  "updated": "2026-10-21",
+  "title": "Compartilhe um evento: escolha o link e o acesso adequados",
+  "short": "Compartilhar um evento",
+  "description": "Compartilhe um evento sem compartilhar todo o calendário. Entenda os acessos Reader, Writer e Owner, prévias, atualizações e limites da revogação.",
+  "lede": "Enviar os detalhes de um jantar, permitir que outro organizador edite e coletar confirmações de presença são tarefas diferentes. Defina o que precisa antes de escolher como compartilhar. Este guia foi escrito pela Arte Soft, desenvolvedora do Cloud Calendars.",
+  "commonBelief": "Todo link de evento seria uma assinatura somente de leitura, com atualização imediata e registro de resposta.",
+  "sections": [
+    {
+      "heading": "Comece conferindo os detalhes de um evento",
+      "body": [
+        "O compartilhamento de um único evento abrange esse evento, não todo o calendário do remetente. Antes de enviar, confira título, fuso horário, local, notas e links de reunião. Uma informação útil para um convidado pode não ser adequada para um link distribuído amplamente.",
+        "Compartilhar um jantar não exige compartilhar o calendário das suas consultas médicas. Porém, o local e os links do jantar acompanham o evento. Confira o conteúdo do próprio evento, sem depender da privacidade do calendário em que ele está."
+      ]
     },
-    practical: [
-      'Compartilhe a partir do próprio compromisso, logo depois de criá-lo.',
-      'Mande o link pelo canal que você já usa com aquela pessoa.',
-      'Se o horário mudar em cima da hora, escreva além de mover o compromisso.',
-      'Revogue o link quando o compromisso passar, como deixaria de compartilhar um documento.',
-    ],
-    seeAlso: ['icloud-google-and-outlook-in-one-view', 'weather-inside-your-calendar'],
-  },
+    {
+      "heading": "Escolha uma prévia, um convite por e-mail ou um código QR",
+      "body": [
+        "O Cloud Calendars oferece caminhos distintos. O App Clip apresenta uma prévia; para adicionar o evento por esse caminho, é necessário o aplicativo completo. Convites por e-mail e QR usam uma página web que oferece abrir o Cloud Calendars. Esses links não são URLs de assinatura intercambiáveis.",
+        "O remetente entra na conta para usar o compartilhamento sincronizado do aplicativo. Um link ou código QR pode ser encaminhado: envie-o apenas onde seu conteúdo for apropriado. O QR transmite um link, mas não comprova quem o abriu."
+      ]
+    },
+    {
+      "heading": "Conceda apenas o acesso necessário",
+      "body": [
+        "Convites por e-mail permitem escolher Reader, Writer ou Owner. Reader pode visualizar e sincronizar; Writer pode editar; Owner também pode compartilhar e gerenciar acessos. São permissões com consequências diferentes. Use Reader para quem só precisa consultar a programação.",
+        "Use Writer para um coorganizador que deve alterar o evento. Reserve Owner para quem também deve administrar o acesso de outras pessoas. O destinatário precisa entrar com a identidade correta para receber permissões ampliadas. Um destinatário anônimo não é um coproprietário identificado."
+      ]
+    },
+    {
+      "heading": "Entenda como o destinatário adiciona o evento",
+      "body": [
+        "No aplicativo completo, adicionar um evento compartilhado exige permissão de calendário e um calendário de destino que aceite alterações. O destinatário deve conferir o destino antes de salvar. A cópia recebida pode então ser associada ao evento compartilhado para atualizações futuras.",
+        "Isso difere de importar um arquivo ICS comum em outro calendário. A importação cria uma cópia; uma assinatura consulta periodicamente um feed. Se você enviar um feed ICS em vez de um convite do aplicativo, explique esse caminho e confirme que o calendário do destinatário oferece suporte a ele."
+      ]
+    },
+    {
+      "heading": "Confira as alterações antes de depender delas",
+      "body": [
+        "Um compartilhamento sincronizado pode transmitir edições e cancelamentos, mas o dispositivo do destinatário precisa ter oportunidade de recebê-los. Uma indicação de atualização do feed não é um prazo de entrega. Um dispositivo offline, uma assinatura não atualizada ou uma cópia importada independente ainda pode mostrar informações antigas.",
+        "Se o jantar mudar pouco antes do início, atualize o evento e contate os convidados diretamente. Peça confirmação do novo horário. Enviar uma atualização e receber uma resposta de presença são etapas separadas."
+      ]
+    },
+    {
+      "heading": "Gerencie o acesso sem prometer apagar cópias",
+      "body": [
+        "Revise o acesso dos destinatários e remova permissões desnecessárias. Remover um destinatário e revogar um link de feed são operações distintas. Nenhuma deve ser descrita como capaz de apagar remotamente capturas de tela, mensagens ou todas as cópias do calendário.",
+        "Se um link circular além do público previsto, identifique o link ou a permissão envolvida. Confirme o caminho afetado após alterar o acesso. Em eventos futuros, mantenha informações privadas fora de links amplamente distribuídos, em vez de confiar na revogação posterior para recuperá-las."
+      ]
+    }
+  ],
+  "claims": {},
+  "practical": [
+    "Revise o evento e defina se precisa de visualização, edição ou respostas de presença.",
+    "Escolha o caminho de compartilhamento e entre na conta quando necessário.",
+    "Use Reader para consulta; conceda Writer ou Owner apenas para a responsabilidade correspondente.",
+    "Peça ao destinatário que confira o horário e o calendário de destino ao adicionar.",
+    "Em alterações urgentes, atualize o evento e envie uma mensagem direta.",
+    "Ao encerrar o compartilhamento, revise separadamente permissões e acesso por link."
+  ],
+  "faq": [
+    {
+      "q": "Compartilhar um evento expõe todo o meu calendário?",
+      "a": "O compartilhamento sincronizado de um único evento se limita a ele. Ainda assim, seus próprios detalhes ficam disponíveis pelo caminho escolhido. Confira essas informações e não envie um convite para todo o calendário quando pretende compartilhar somente um evento."
+    },
+    {
+      "q": "O destinatário pode alterar o evento?",
+      "a": "Sim, se tiver acesso Writer ou Owner adequado e usar o fluxo conectado compatível. Reader permite visualizar e sincronizar. Uma assinatura ICS comum não é o mesmo mecanismo de edição."
+    },
+    {
+      "q": "Remover alguém desfaz tudo o que essa pessoa já recebeu?",
+      "a": "Não presuma essa garantia. Alterações de acesso afetam a relação de compartilhamento compatível, mas cópias salvas, capturas de tela e mensagens podem permanecer. Uma URL de feed compartilhado também exige análise separada."
+    }
+  ],
+  "sourcesHeading": "Referências sobre opções para o destinatário",
+  "sources": [
+    {
+      "label": "Apple: visão geral dos App Clips",
+      "url": "https://developer.apple.com/help/app-store-connect/offer-app-clip-experiences/overview-of-app-clips/"
+    },
+    {
+      "label": "Google: importação de eventos e suas limitações",
+      "url": "https://support.google.com/calendar/answer/37118?co=GENIE.Platform%3DDesktop&hl=en"
+    },
+    {
+      "label": "Microsoft: importar um calendário ou assinar um calendário",
+      "url": "https://support.microsoft.com/en-us/outlook/import-or-subscribe-to-a-calendar-in-outlook-com-or-outlook-on-the-web"
+    }
+  ],
+  "seeAlso": [
+    "who-can-see-what-in-google-calendar",
+    "what-guests-can-do-to-your-event",
+    "taking-back-a-calendar-you-shared"
+  ]
+},
 
   'what-a-subscription-actually-buys': {
   "updated": "2026-10-21",

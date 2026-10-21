@@ -1,0 +1,186 @@
+{
+  "sharing-one-event-not-your-calendar": {
+    "updated": "2026-10-21",
+    "title": "Kongsi satu acara: pilih pautan dan akses yang sesuai",
+    "short": "Berkongsi satu acara",
+    "description": "Kongsi satu acara tanpa seluruh kalendar. Fahami Reader, Writer dan Owner, pratonton, kemas kini serta batas penarikan balik akses.",
+    "lede": "Menghantar butiran makan malam, membenarkan penganjur bersama menyunting dan mengumpul jawapan kehadiran ialah tugas berbeza. Pilih tujuan dahulu, kemudian cara berkongsi. Panduan ini ditulis oleh Arte Soft, pembangun Cloud Calendars.",
+    "commonBelief": "Setiap pautan acara ialah langganan baca sahaja yang terus dikemas kini dan merekodkan jawapan.",
+    "sections": [
+      {
+        "heading": "Semak butiran acara dahulu",
+        "body": [
+          "Perkongsian satu acara terhad kepada acara itu, bukan seluruh kalendar pengirim. Semak tajuk, zon waktu, lokasi, nota dan pautan mesyuarat. Maklumat untuk seorang tetamu mungkin tidak sesuai diedarkan secara luas.",
+          "Berkongsi acara makan malam tidak memerlukan kalendar janji temu perubatan anda. Namun, lokasi dan pautan makan malam tetap dikongsi. Semak kandungan acara itu sendiri."
+        ]
+      },
+      {
+        "heading": "Pilih pratonton, e-mel atau QR",
+        "body": [
+          "App Clip Cloud Calendars memaparkan pratonton; aplikasi penuh diperlukan untuk menambah acara melalui laluan ini. Jemputan e-mel dan QR membuka halaman web yang menawarkan pembukaan Cloud Calendars. Pautan ini bukan alamat langganan yang boleh saling menggantikan.",
+          "Pengirim perlu mendaftar masuk untuk perkongsian terselaras. Pautan dan kod QR boleh diteruskan kepada orang lain. Kod QR menyampaikan pautan, bukan membuktikan siapa yang membukanya."
+        ]
+      },
+      {
+        "heading": "Berikan hanya akses yang diperlukan",
+        "body": [
+          "Jemputan e-mel menawarkan Reader, Writer atau Owner. Reader boleh melihat dan menyelaras, Writer boleh menyunting, Owner juga boleh berkongsi dan mengurus akses. Pilih Reader untuk orang yang hanya memerlukan jadual.",
+          "Pilih Writer untuk penganjur bersama yang perlu mengubah acara. Owner hanya apabila orang itu juga perlu mengurus akses orang lain. Hak lebih tinggi memerlukan identiti log masuk yang betul. Penerima tanpa nama bukan pemilik bersama yang dikenal pasti."
+        ]
+      },
+      {
+        "heading": "Fahami cara penerima menambah acara",
+        "body": [
+          "Aplikasi penuh memerlukan kebenaran kalendar dan kalendar destinasi yang boleh ditulis. Penerima perlu menyemak destinasi sebelum menyimpan. Salinan diterima boleh dikaitkan dengan acara dikongsi untuk kemas kini kemudian.",
+          "Import fail ICS biasa menghasilkan salinan, manakala langganan menyemak suapan secara berkala. Jika menghantar suapan ICS dan bukannya jemputan aplikasi, terangkan perbezaannya dan pastikan kalendar penerima menyokongnya."
+        ]
+      },
+      {
+        "heading": "Sahkan perubahan sebelum bergantung padanya",
+        "body": [
+          "Perkongsian terselaras boleh membawa suntingan atau pembatalan, tetapi peranti perlu berpeluang menerimanya. Petunjuk muat semula suapan bukan tarikh akhir penghantaran. Peranti luar talian, langganan belum dimuat semula atau salinan import berasingan mungkin masih menunjukkan maklumat lama.",
+          "Jika waktu makan malam berubah pada saat akhir, kemas kini acara dan hubungi tetamu secara langsung. Minta pengesahan waktu baharu. Menerima kemas kini bukan jawapan kehadiran."
+        ]
+      },
+      {
+        "heading": "Urus akses tanpa menjanjikan pemadaman semua salinan",
+        "body": [
+          "Semak penerima dan buang kebenaran yang tidak diperlukan. Mengeluarkan penerima dan membatalkan pautan suapan ialah tindakan berasingan. Kedua-duanya tidak menjamin pemadaman jauh semua tangkap layar, mesej atau salinan kalendar.",
+          "Jika pautan tersebar, kenal pasti pautan atau akses yang terlibat dan semak hasil selepas perubahan. Elakkan butiran peribadi dalam pautan edaran luas daripada bergantung pada pembatalan kemudian."
+        ]
+      }
+    ],
+    "claims": {},
+    "practical": [
+      "Semak butiran dan tentukan sama ada tujuan anda melihat, menyunting atau mendapat jawapan kehadiran.",
+      "Pilih laluan perkongsian dan daftar masuk apabila diperlukan.",
+      "Gunakan Reader untuk pembaca; Writer atau Owner hanya bagi tanggungjawab berkaitan.",
+      "Minta penerima menyemak waktu dan kalendar destinasi.",
+      "Bagi perubahan segera, kemas kini acara dan hantar mesej terus.",
+      "Semak hak penerima dan akses pautan secara berasingan apabila selesai."
+    ],
+    "faq": [
+      {
+        "q": "Adakah satu acara mendedahkan seluruh kalendar?",
+        "a": "Perkongsian terselaras satu acara terhad kepada acara itu, tetapi butirannya tetap kelihatan. Semak butiran dan jangan hantar jemputan seluruh kalendar jika hanya satu acara diperlukan."
+      },
+      {
+        "q": "Bolehkah penerima mengubah acara?",
+        "a": "Ya, dengan hak Writer atau Owner yang sesuai melalui laluan log masuk yang disokong. Reader untuk melihat dan menyelaras. Langganan ICS biasa bukan mekanisme penyuntingan yang sama."
+      },
+      {
+        "q": "Adakah mengeluarkan seseorang membatalkan semua yang telah diterima?",
+        "a": "Tiada jaminan sedemikian. Akses perkongsian berubah, tetapi salinan, tangkap layar dan mesej boleh kekal. Alamat suapan yang dikongsi juga perlu diperiksa secara berasingan."
+      }
+    ],
+    "sourcesHeading": "Rujukan pilihan penerima",
+    "sources": [
+      {
+        "label": "Apple: gambaran keseluruhan App Clips",
+        "url": "https://developer.apple.com/help/app-store-connect/offer-app-clip-experiences/overview-of-app-clips/"
+      },
+      {
+        "label": "Google: import acara dan batasnya",
+        "url": "https://support.google.com/calendar/answer/37118?co=GENIE.Platform%3DDesktop&hl=en"
+      },
+      {
+        "label": "Microsoft: import atau langgan kalendar",
+        "url": "https://support.microsoft.com/en-us/outlook/import-or-subscribe-to-a-calendar-in-outlook-com-or-outlook-on-the-web"
+      }
+    ],
+    "seeAlso": [
+      "who-can-see-what-in-google-calendar",
+      "taking-back-a-calendar-you-shared"
+    ]
+  },
+  "who-can-see-what-in-google-calendar": {
+    "updated": "2026-10-21",
+    "title": "Kebenaran Google Calendar: semak akses sebenar",
+    "short": "Akses dan privasi Google Calendar",
+    "description": "Pilih akses ketersediaan, butiran atau suntingan Google Calendar. Semak akses awam dan kumpulan selain kebenaran individu.",
+    "lede": "Sebelum berkongsi, tentukan sama ada penerima perlu melihat waktu lapang, membaca butiran atau menyelenggara kalendar. Panduan ini diterbitkan oleh Arte Soft, pembangun Cloud Calendars.",
+    "commonBelief": "Mengehadkan seorang individu menjamin mereka tidak dapat melihat butiran melalui laluan lain.",
+    "sections": [
+      {
+        "heading": "Padankan akses dengan tugas",
+        "body": [
+          "Rakan sekerja yang mencari waktu mungkin hanya memerlukan ketersediaan. Pengurus jadual projek memerlukan aturan lain. Tentukan tugas sebelum memeriksa kebenaran dalam tetapan semasa.",
+          "Google membezakan ketersediaan, butiran dan beberapa tahap suntingan. Satu pilihan mengehadkan acara peribadi; satu lagi membenarkan suntingan dan butiran; yang paling luas turut mengurus perkongsian. Jangan samakan semua pilihan perubahan."
+        ]
+      },
+      {
+        "heading": "Semak akses seluruh kalendar",
+        "body": [
+          "Selain individu, semak sama ada kalendar terbuka kepada umum, organisasi atau kumpulan. Menurut Google, akses lebih luas boleh mengatasi kebenaran sempit: sekatan individu tidak menyembunyikan butiran yang sudah awam.",
+          "Sebelum memasukkan janji temu peribadi ke jadual kelab, semak seluruh khalayaknya, bukan hanya tetapan seorang rakan. Simpan urusan peribadi dalam destinasi yang sesuai."
+        ]
+      },
+      {
+        "heading": "Gunakan tetapan Google bagi kalendar tepat",
+        "body": [
+          "Dalam Google Calendar pada komputer, cari kalendar, buka menunya dan tetapan perkongsian. Terdapat bahagian orang atau kumpulan dan akses lebih luas. Semak nama kalendar serta akaun yang digunakan.",
+          "Sahkan identiti Google penerima. Jika kalendar tidak kelihatan, periksa alamat dan jemputan, bukan meluaskan akses untuk memunculkannya. Paparan hilang dan kebenaran menyunting yang tidak cukup ialah masalah berbeza."
+        ]
+      },
+      {
+        "heading": "Uji tanpa maklumat peribadi",
+        "body": [
+          "Gunakan acara ujian tanpa tajuk peribadi, nota, lokasi atau senarai tetamu. Minta penerima mengesahkan apa yang dilihat dan, hanya jika diperlukan serta dibenarkan, apa yang boleh disunting. Jangan beri kata laluan akaun anda.",
+          "Catat kalendar dan peranan, kemudian periksa hasil selepas perubahan. Ujian tidak membuktikan maklumat yang telah dibaca atau disalin sudah hilang. Jangan terbitkan jadual kerja sebenar sebagai ujian."
+        ]
+      },
+      {
+        "heading": "Asingkan polisi kerja daripada pelan aplikasi",
+        "body": [
+          "Pentadbir Google kerja atau sekolah boleh mengehadkan perkongsian. Jika pilihan diperlukan tiada, gunakan laluan organisasi yang diluluskan. Jangan terbitkan maklumat kerja untuk memintas sekatan.",
+          "Nama pelan Cloud Calendars tidak mengubah hak Google. Advanced membuang iklan, bukan memberi orang lain akses kepada semua acara. Semak hasil yang diterima penyedia, bukan hanya penyunting tempatan yang tersedia."
+        ]
+      },
+      {
+        "heading": "Buang akses yang tidak lagi diperlukan",
+        "body": [
+          "Apabila projek tamat, semak penerima, kumpulan dan penerbitan umum. Membuang satu nama tidak cukup jika ada laluan lain. Persetujui siapa yang menjaga jadual dan perubahan akses seterusnya.",
+          "Google menerangkan pembuangan orang atau kumpulan dan penutupan perkongsian umum secara berasingan. Ia tidak menarik balik fail eksport, tangkap layar atau maklumat yang disalin. Urus salinan tersebut secara berasingan dengan pihak terlibat."
+        ]
+      }
+    ],
+    "claims": {},
+    "practical": [
+      "Kenal pasti kalendar dan tugas penerima.",
+      "Semak akses individu, kumpulan, organisasi dan awam.",
+      "Pilih hak yang sesuai dalam tetapan Google semasa.",
+      "Sahkan identiti sebelum menukar akses.",
+      "Periksa acara ujian selamat dari pihak penerima.",
+      "Semak akses lama tanpa menganggap semua salinan ditarik balik."
+    ],
+    "faq": [
+      {
+        "q": "Adakah sekatan individu mengatasi kalendar awam?",
+        "a": "Tidak. Google menyatakan kebenaran lebih luas diutamakan jika tetapan bercanggah. Semak tetapan awam dan organisasi selain individu."
+      },
+      {
+        "q": "Adakah semua hak suntingan mendedahkan acara peribadi dengan cara sama?",
+        "a": "Tidak. Google membezakan pilihan suntingan yang mengehadkan acara peribadi daripada hak suntingan dan pengurusan lain. Baca kebenaran semasa yang tepat."
+      },
+      {
+        "q": "Adakah membeli Advanced mengubah hak Google?",
+        "a": "Tidak. Advanced membuang iklan dalam Cloud Calendars. Akses bergantung pada kebenaran kalendar dan sekatan organisasi."
+      }
+    ],
+    "sourcesHeading": "Panduan Google semasa",
+    "sources": [
+      {
+        "label": "Google: memilih kebenaran kalendar",
+        "url": "https://support.google.com/calendar/answer/15716974?hl=en"
+      },
+      {
+        "label": "Google: berkongsi kalendar dan membuang akses",
+        "url": "https://support.google.com/calendar/answer/37082?hl=en"
+      }
+    ],
+    "seeAlso": [
+      "why-a-shared-calendar-does-not-appear",
+      "sharing-one-event-not-your-calendar"
+    ]
+  }
+}

@@ -186,107 +186,119 @@ export const HELP_EN_US: Readonly<Record<string, LocalisedArticle>> = {
     ]
   },
   "calendar-export-ics-pdf-and-backup": {
-    "updated": "2026-10-21",
-    "title": "Exporting a calendar: ICS files, PDFs and subscriptions",
-    "short": "Calendar export and backup",
-    "description": "Need a calendar file from your iPhone account? Choose ICS, PDF or a subscription, then use the right Google, Mac or Outlook workflow.",
-    "lede": "A calendar on your iPhone can be a view of several accounts. Getting a useful copy starts with identifying the source and deciding whether you need event data, a readable schedule or continuing updates.",
-    "sections": [
-      {
-        "heading": "Choose the result before choosing a format",
-        "body": [
-          "Exporting a calendar can mean several different jobs. If you want another calendar app to read event records, choose a supported structured format such as ICS. If someone needs a readable schedule, choose a PDF or printed page. If they should receive later changes, investigate a subscription or permission-based sharing instead.",
-          "A PDF records the layout you saved; it is not an event import file. A downloaded ICS file holds calendar data at the time you obtained it. An ICS subscription uses an address that a calendar client checks again. The extension alone does not tell you whether the recipient imported a snapshot or subscribed to updates.",
-          "For example, a weekend itinerary sent as a PDF is easy to read. A colleague moving appointments to another account needs event data. A club member following next month’s changing fixtures needs an updating source. Decide which of these outcomes you need before sending anything."
-        ]
-      },
-      {
-        "heading": "Start with the account that holds the events",
-        "body": [
-          "On your iPhone, identify the calendar and account containing the events you need. A combined view may contain several accounts, shared calendars and subscriptions. Seeing all of them together does not mean there is one source calendar to export.",
-          "For Google Calendar, use a computer: Google does not offer export from its Calendar app. In the web calendar, open Settings, then Import & export, then Export. The downloaded ZIP contains individual ICS files. For one calendar, open its Settings and sharing and choose Export calendar. Google requires permission to manage changes and sharing; an organization can also restrict export.",
-          "For a calendar available in Calendar on your Mac, select its name in the sidebar and use File > Export > Export to save an ICS file. This is a Mac workflow, not a hidden iPhone export command. Check that you selected the intended calendar before saving."
-        ]
-      },
-      {
-        "heading": "When you need a PDF schedule",
-        "body": [
-          "In Calendar on Mac, use File > Print and choose the layout, date range and calendars to include. In the macOS print dialog, use the PDF menu and Save as PDF. Open the result before sending it: a small grid may omit or truncate details that matter to the recipient.",
-          "Include a clear date range and the relevant time zone in the message accompanying the document. Review private appointments, notes and locations before sharing. Later edits to your calendar will not rewrite a PDF already sent; label a revised copy clearly so recipients know which schedule to follow."
-        ]
-      },
-      {
-        "heading": "Subscription and publishing are different from backup",
-        "body": [
-          "Microsoft documents the distinction explicitly for Outlook on the web: downloading and importing a published ICS file creates a copy without later updates; subscribing to the ICS address follows changes. Refresh timing depends on the recipient’s provider, and the published calendar is read-only.",
-          "Where available, Outlook’s Settings > Shared calendars > Publish a calendar lets you choose a calendar and detail level. Publishing exposes it for viewing or subscription, so use this for an intended audience rather than as a private backup technique. A saved link still depends on the source remaining available."
-        ]
-      },
-      {
-        "heading": "What Cloud Calendars sharing provides",
-        "body": [
-          "We develop Cloud Calendars. Its event-sharing flow offers App Clip, email and QR delivery paths for invitation links. Those links serve a different purpose from downloading your entire calendar as a file. A link may lead into an invitation or subscription workflow; it is not itself a portable archive of every calendar you see.",
-          "This guide does not offer a Cloud Calendars whole-calendar ICS, CSV or PDF export procedure. Use the documented provider or Mac routes above for those tasks. For sending a particular event, follow our event-sharing guide; for a continuing shared schedule, first decide who should have access and whether they need updates or editing rights."
-        ]
-      },
-      {
-        "heading": "Check a copy before relying on it",
-        "body": [
-          "Keep the original calendar while checking an export. Record its account, calendar name and export date. If you test an import, use a separate destination calendar where supported, then compare an ordinary appointment, an all-day event and a recurring series with a changed occurrence.",
-          "Calendar transfer is not a promise to preserve every meeting feature. Google says imported events omit guests and conference data, and CSV recurrence can become separate one-time events. Check invitations, meeting links and recurrence explicitly before treating a migration as complete.",
-          "Apple also offers File > Export > Calendar Archive on Mac, producing an ICBU archive. This is a different operation from exporting one ICS file. Apple warns that importing an archive replaces current calendar information and data; do not use an archive restore as a casual test import."
-        ]
-      }
-    ],
-    "claims": {},
-    "practical": [
-      "Identify the account and calendar you need, then choose a snapshot, printable schedule or updating subscription.",
-      "Use the documented export route and keep the original while checking the result.",
-      "Review the destination, sensitive details and representative events before sending or relying on the copy."
-    ],
-    "faq": [
-      {
-        "q": "Can I export Google Calendar directly from its iPhone app?",
-        "a": "No. Google’s documented export workflow requires a computer. Exporting a calendar also requires the appropriate sharing-management permission."
-      },
-      {
-        "q": "Does subscribing to an ICS address give me a backup?",
-        "a": "A subscription follows a source that can change or become unavailable. Save an independent export if you need a dated copy, and verify what that file preserves."
-      },
-      {
-        "q": "Should I choose ICS or PDF?",
-        "a": "Choose ICS for event data that a compatible calendar can import. Choose PDF for a readable schedule. A PDF does not provide calendar updates or reconstruct editable events through the documented import workflows."
-      }
-    ],
-    "sourcesHeading": "Official instructions and format limitations",
-    "sources": [
-      {
-        "label": "Google: export calendar events",
-        "url": "https://support.google.com/calendar/answer/37111?hl=en"
-      },
-      {
-        "label": "Google: import events and transfer limitations",
-        "url": "https://support.google.com/calendar/answer/37118?hl=en"
-      },
-      {
-        "label": "Apple: export ICS files and calendar archives on Mac",
-        "url": "https://support.apple.com/guide/calendar/import-or-export-calendars-icl1023/mac"
-      },
-      {
-        "label": "Apple: save a document as PDF on Mac",
-        "url": "https://support.apple.com/en-gb/guide/mac-help/mchlp1531/mac"
-      },
-      {
-        "label": "Microsoft: publishing, importing and subscribing in Outlook",
-        "url": "https://support.microsoft.com/en-us/outlook/share-your-calendar-in-outlook-on-the-web"
-      }
-    ],
-    "seeAlso": [
-      "sharing-one-event-not-your-calendar",
-      "inviting-people-who-do-not-have-the-app",
-      "the-secret-address-of-a-google-calendar"
-    ]
-  },
+  "updated": "2026-10-21",
+  "title": "Calendar export on iPhone: ICS, CSV, PDF and subscriptions",
+  "short": "Choose a calendar export format",
+  "description": "Choose calendar data, spreadsheet rows, a printable schedule or a subscription. Use documented provider or Mac export routes and check what transfers.",
+  "lede": "A calendar on your iPhone can be a view of several accounts. Getting a useful copy starts with identifying the source and deciding whether you need event data, a readable schedule or continuing updates.",
+  "sections": [
+    {
+      "heading": "Choose the result before choosing a format",
+      "body": [
+        "Exporting a calendar can mean several different jobs. If you want another calendar app to read event records, choose a supported structured format such as ICS. If someone needs a readable schedule, choose a PDF or printed page. If they should receive later changes, investigate a subscription or permission-based sharing instead.",
+        "A PDF records the layout you saved; it is not an event import file. A downloaded ICS file holds calendar data at the time you obtained it. An ICS subscription uses an address that a calendar client checks again. The extension alone does not tell you whether the recipient imported a snapshot or subscribed to updates.",
+        "For example, a weekend itinerary sent as a PDF is easy to read. A colleague moving appointments to another account needs event data. A club member following next month’s changing fixtures needs an updating source. Decide which of these outcomes you need before sending anything."
+      ]
+    },
+    {
+      "heading": "Start with the account that holds the events",
+      "body": [
+        "On your iPhone, identify the calendar and account containing the events you need. A combined view may contain several accounts, shared calendars and subscriptions. Seeing all of them together does not mean there is one source calendar to export.",
+        "For Google Calendar, use a computer: Google does not offer export from its Calendar app. In the web calendar, open Settings, then Import & export, then Export. The downloaded ZIP contains individual ICS files. For one calendar, open its Settings and sharing and choose Export calendar. Google requires permission to manage changes and sharing; an organization can also restrict export.",
+        "For a calendar available in Calendar on your Mac, select its name in the sidebar and use File > Export > Export to save an ICS file. This is a Mac workflow, not a hidden iPhone export command. Check that you selected the intended calendar before saving."
+      ]
+    },
+    {
+      "heading": "When you need a PDF schedule",
+      "body": [
+        "In Calendar on Mac, use File > Print and choose the layout, date range and calendars to include. In the macOS print dialog, use the PDF menu and Save as PDF. Open the result before sending it: a small grid may omit or truncate details that matter to the recipient.",
+        "Include a clear date range and the relevant time zone in the message accompanying the document. Review private appointments, notes and locations before sharing. Later edits to your calendar will not rewrite a PDF already sent; label a revised copy clearly so recipients know which schedule to follow."
+      ]
+    },
+    {
+      "heading": "When you need calendar rows in CSV",
+      "body": [
+        "CSV is useful when the next task is a spreadsheet report rather than adding events to another calendar. BusyCal documents an iOS CSV export: choose calendars in its export settings, then save or share the generated file. Its rows represent individual event occurrences. This is a BusyCal workflow, not a Cloud Calendars export button.",
+        "For a monthly activity report, decide which calendars and dates belong in the report before sharing it. Open the resulting spreadsheet and inspect timestamps, repeated appointments, notes and any private details. A table that is convenient to filter is not automatically a complete backup or an updating calendar subscription.",
+        "Keep the distinction when moving data: exporting spreadsheet rows, importing editable events and subscribing to future changes are different operations. BusyCal’s iOS export documentation points to its Mac app for ICS import; do not infer that every export control also supplies the reverse import workflow."
+      ]
+    },
+    {
+      "heading": "Subscription and publishing are different from backup",
+      "body": [
+        "Microsoft documents the distinction explicitly for Outlook on the web: downloading and importing a published ICS file creates a copy without later updates; subscribing to the ICS address follows changes. Refresh timing depends on the recipient’s provider, and the published calendar is read-only.",
+        "Where available, Outlook’s Settings > Shared calendars > Publish a calendar lets you choose a calendar and detail level. Publishing exposes it for viewing or subscription, so use this for an intended audience rather than as a private backup technique. A saved link still depends on the source remaining available."
+      ]
+    },
+    {
+      "heading": "What Cloud Calendars sharing provides",
+      "body": [
+        "We develop Cloud Calendars. Its event-sharing flow offers App Clip, email and QR delivery paths for invitation links. Those links serve a different purpose from downloading your entire calendar as a file. A link may lead into an invitation or subscription workflow; it is not itself a portable archive of every calendar you see.",
+        "This guide does not offer a Cloud Calendars whole-calendar ICS, CSV or PDF export procedure. Use the documented provider or Mac routes above for those tasks. For sending a particular event, follow our event-sharing guide; for a continuing shared schedule, first decide who should have access and whether they need updates or editing rights."
+      ]
+    },
+    {
+      "heading": "Check a copy before relying on it",
+      "body": [
+        "Keep the original calendar while checking an export. Record its account, calendar name and export date. If you test an import, use a separate destination calendar where supported, then compare an ordinary appointment, an all-day event and a recurring series with a changed occurrence.",
+        "Calendar transfer is not a promise to preserve every meeting feature. Google says imported events omit guests and conference data, and CSV recurrence can become separate one-time events. Check invitations, meeting links and recurrence explicitly before treating a migration as complete.",
+        "Apple also offers File > Export > Calendar Archive on Mac, producing an ICBU archive. This is a different operation from exporting one ICS file. Apple warns that importing an archive replaces current calendar information and data; do not use an archive restore as a casual test import."
+      ]
+    }
+  ],
+  "claims": {},
+  "practical": [
+    "Identify the account and calendar you need, then choose a snapshot, printable schedule or updating subscription.",
+    "Use the documented export route and keep the original while checking the result.",
+    "Review the destination, sensitive details and representative events before sending or relying on the copy."
+  ],
+  "faq": [
+    {
+      "q": "Can I export Google Calendar directly from its iPhone app?",
+      "a": "No. Google’s documented export workflow requires a computer. Exporting a calendar also requires the appropriate sharing-management permission."
+    },
+    {
+      "q": "Does subscribing to an ICS address give me a backup?",
+      "a": "A subscription follows a source that can change or become unavailable. Save an independent export if you need a dated copy, and verify what that file preserves."
+    },
+    {
+      "q": "Should I choose ICS or PDF?",
+      "a": "Choose ICS for event data that a compatible calendar can import. Choose PDF for a readable schedule. A PDF does not provide calendar updates or reconstruct editable events through the documented import workflows."
+    }
+  ],
+  "sourcesHeading": "Official instructions and format limitations",
+  "sources": [
+    {
+      "label": "Google: export calendar events",
+      "url": "https://support.google.com/calendar/answer/37111?hl=en"
+    },
+    {
+      "label": "Google: import events and transfer limitations",
+      "url": "https://support.google.com/calendar/answer/37118?hl=en"
+    },
+    {
+      "label": "Apple: export ICS files and calendar archives on Mac",
+      "url": "https://support.apple.com/guide/calendar/import-or-export-calendars-icl1023/mac"
+    },
+    {
+      "label": "Apple: save a document as PDF on Mac",
+      "url": "https://support.apple.com/en-gb/guide/mac-help/mchlp1531/mac"
+    },
+    {
+      "label": "Microsoft: publishing, importing and subscribing in Outlook",
+      "url": "https://support.microsoft.com/en-us/outlook/share-your-calendar-in-outlook-on-the-web"
+    },
+    {
+      "label": "BusyCal: iOS CSV export and event-occurrence rows",
+      "url": "https://www.busymac.com/docs/busycalios/export-as-csv/"
+    }
+  ],
+  "seeAlso": [
+    "sharing-one-event-not-your-calendar",
+    "inviting-people-who-do-not-have-the-app",
+    "the-secret-address-of-a-google-calendar"
+  ]
+},
   "event-saved-to-wrong-calendar": {
     "updated": "2026-10-21",
     "title": "Event saved to the wrong calendar?",

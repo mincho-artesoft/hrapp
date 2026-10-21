@@ -3,52 +3,95 @@ import { LocalisedArticle } from '../types';
 /** Enam artikel Google: soalan khusus, jawapan terus. */
 export const GOOGLE_MS: Readonly<Record<string, LocalisedArticle>> = {
   'who-can-see-what-in-google-calendar': {
-    title: 'Siapa nampak apa apabila anda berkongsi kalendar Google',
-    short: 'Kebenaran perkongsian Google',
-    description:
-      'Tahap perkongsian Google cepat ditetapkan dan mudah disalah faham. Apa yang sebenarnya didedahkan oleh setiap satu, secara terus terang.',
-    lede: 'Hampir semua perkongsian berlebihan bukanlah salah pertimbangan. Seseorang memilih tahap yang kedengaran sederhana tetapi sebenarnya tidak.',
-    commonBelief: 'Bahawa «lihat sibuk/lapang sahaja» dan «lihat semua butiran» berbeza sedikit sahaja.',
-    sections: [
-      {
-        heading: 'Jurang antara tahap lebih besar daripada bunyinya',
-        body: [
-          'Sibuk/lapang menunjukkan blok masa tanpa tajuk. Semua butiran menunjukkan tajuk, lokasi, nota dan tetamu — bagi kebanyakan kalendar, itu sebahagian besar kehidupan anda.',
-          'Buat perubahan membenarkan penyuntingan. Urus perkongsian membenarkan seseorang menyerahkan kalendar anda kepada orang lain, dan itulah yang mengejutkan kemudian hari.',
-        ],
-      },
-      {
-        heading: 'Memilih tanpa berfikir setiap kali',
-        body: [
-          'Bagi rakan sekerja yang hanya perlu menyusun masa di sekeliling anda, sibuk/lapang hampir selalu jawapan yang betul dan hampir tidak pernah dipilih.',
-          'Simpan butiran penuh untuk kalendar yang memang dibuat untuk dikongsi, bukan kalendar tempat anda hidup.',
-        ],
-      },
-    ],
-    claims: {
-      advancedMonthly: 'Kos bulanan tahap tempat ini diurus dalam aplikasi, dalam dolar',
+  "updated": "2026-10-21",
+  "title": "Kebenaran Google Calendar: semak akses sebenar",
+  "short": "Akses dan privasi Google Calendar",
+  "description": "Pilih akses ketersediaan, butiran atau suntingan Google Calendar. Semak akses awam dan kumpulan selain kebenaran individu.",
+  "lede": "Sebelum berkongsi, tentukan sama ada penerima perlu melihat waktu lapang, membaca butiran atau menyelenggara kalendar. Panduan ini diterbitkan oleh Arte Soft, pembangun Cloud Calendars.",
+  "commonBelief": "Mengehadkan seorang individu menjamin mereka tidak dapat melihat butiran melalui laluan lain.",
+  "sections": [
+    {
+      "heading": "Padankan akses dengan tugas",
+      "body": [
+        "Rakan sekerja yang mencari waktu mungkin hanya memerlukan ketersediaan. Pengurus jadual projek memerlukan aturan lain. Tentukan tugas sebelum memeriksa kebenaran dalam tetapan semasa.",
+        "Google membezakan ketersediaan, butiran dan beberapa tahap suntingan. Satu pilihan mengehadkan acara peribadi; satu lagi membenarkan suntingan dan butiran; yang paling luas turut mengurus perkongsian. Jangan samakan semua pilihan perubahan."
+      ]
     },
-    faq: [
-      {
-        q: 'Adakah tajuk acara saya kelihatan jika saya kongsi sibuk/lapang sahaja?',
-        a: 'Tidak. Sibuk/lapang menunjukkan blok masa tanpa tajuk, lokasi, nota atau tetamu. Hanya «semua butiran» mendedahkannya — dan mendedahkan semuanya.',
-      },
-      {
-        q: 'Apa yang dibenarkan oleh «buat perubahan dan urus perkongsian»?',
-        a: 'Menyunting setiap acara dan menyerahkan kalendar anda kepada orang lain tanpa bertanya. Itu satu-satunya tahap yang membolehkan orang lain mengagihkan akses.',
-      },
-      {
-        q: 'Bolehkah saya lihat siapa sudah mempunyai akses kepada kalendar saya?',
-        a: 'Boleh, dalam tetapan perkongsian kalendar itu. Tiada apa yang mengajak anda menyemak dan perkongsian hanya bertimbun: baca senarainya dua kali setahun.',
-      },
-    ],
-    practical: [
-      'Jadikan sibuk/lapang lalai untuk sesiapa yang hanya perlu menempah masa dengan anda.',
-      'Simpan «buat perubahan» untuk mereka yang benar-benar menjadualkan bagi pihak anda.',
-      'Semak siapa yang ada akses dua kali setahun; perkongsian bertimbun dan tiada apa yang mengingatkan.',
-    ],
-    seeAlso: ['why-a-shared-calendar-does-not-appear', 'what-guests-can-do-to-your-event'],
-  },
+    {
+      "heading": "Semak akses seluruh kalendar",
+      "body": [
+        "Selain individu, semak sama ada kalendar terbuka kepada umum, organisasi atau kumpulan. Menurut Google, akses lebih luas boleh mengatasi kebenaran sempit: sekatan individu tidak menyembunyikan butiran yang sudah awam.",
+        "Sebelum memasukkan janji temu peribadi ke jadual kelab, semak seluruh khalayaknya, bukan hanya tetapan seorang rakan. Simpan urusan peribadi dalam destinasi yang sesuai."
+      ]
+    },
+    {
+      "heading": "Gunakan tetapan Google bagi kalendar tepat",
+      "body": [
+        "Dalam Google Calendar pada komputer, cari kalendar, buka menunya dan tetapan perkongsian. Terdapat bahagian orang atau kumpulan dan akses lebih luas. Semak nama kalendar serta akaun yang digunakan.",
+        "Sahkan identiti Google penerima. Jika kalendar tidak kelihatan, periksa alamat dan jemputan, bukan meluaskan akses untuk memunculkannya. Paparan hilang dan kebenaran menyunting yang tidak cukup ialah masalah berbeza."
+      ]
+    },
+    {
+      "heading": "Uji tanpa maklumat peribadi",
+      "body": [
+        "Gunakan acara ujian tanpa tajuk peribadi, nota, lokasi atau senarai tetamu. Minta penerima mengesahkan apa yang dilihat dan, hanya jika diperlukan serta dibenarkan, apa yang boleh disunting. Jangan beri kata laluan akaun anda.",
+        "Catat kalendar dan peranan, kemudian periksa hasil selepas perubahan. Ujian tidak membuktikan maklumat yang telah dibaca atau disalin sudah hilang. Jangan terbitkan jadual kerja sebenar sebagai ujian."
+      ]
+    },
+    {
+      "heading": "Asingkan polisi kerja daripada pelan aplikasi",
+      "body": [
+        "Pentadbir Google kerja atau sekolah boleh mengehadkan perkongsian. Jika pilihan diperlukan tiada, gunakan laluan organisasi yang diluluskan. Jangan terbitkan maklumat kerja untuk memintas sekatan.",
+        "Nama pelan Cloud Calendars tidak mengubah hak Google. Advanced membuang iklan, bukan memberi orang lain akses kepada semua acara. Semak hasil yang diterima penyedia, bukan hanya penyunting tempatan yang tersedia."
+      ]
+    },
+    {
+      "heading": "Buang akses yang tidak lagi diperlukan",
+      "body": [
+        "Apabila projek tamat, semak penerima, kumpulan dan penerbitan umum. Membuang satu nama tidak cukup jika ada laluan lain. Persetujui siapa yang menjaga jadual dan perubahan akses seterusnya.",
+        "Google menerangkan pembuangan orang atau kumpulan dan penutupan perkongsian umum secara berasingan. Ia tidak menarik balik fail eksport, tangkap layar atau maklumat yang disalin. Urus salinan tersebut secara berasingan dengan pihak terlibat."
+      ]
+    }
+  ],
+  "claims": {},
+  "practical": [
+    "Kenal pasti kalendar dan tugas penerima.",
+    "Semak akses individu, kumpulan, organisasi dan awam.",
+    "Pilih hak yang sesuai dalam tetapan Google semasa.",
+    "Sahkan identiti sebelum menukar akses.",
+    "Periksa acara ujian selamat dari pihak penerima.",
+    "Semak akses lama tanpa menganggap semua salinan ditarik balik."
+  ],
+  "faq": [
+    {
+      "q": "Adakah sekatan individu mengatasi kalendar awam?",
+      "a": "Tidak. Google menyatakan kebenaran lebih luas diutamakan jika tetapan bercanggah. Semak tetapan awam dan organisasi selain individu."
+    },
+    {
+      "q": "Adakah semua hak suntingan mendedahkan acara peribadi dengan cara sama?",
+      "a": "Tidak. Google membezakan pilihan suntingan yang mengehadkan acara peribadi daripada hak suntingan dan pengurusan lain. Baca kebenaran semasa yang tepat."
+    },
+    {
+      "q": "Adakah membeli Advanced mengubah hak Google?",
+      "a": "Tidak. Advanced membuang iklan dalam Cloud Calendars. Akses bergantung pada kebenaran kalendar dan sekatan organisasi."
+    }
+  ],
+  "sourcesHeading": "Panduan Google semasa",
+  "sources": [
+    {
+      "label": "Google: memilih kebenaran kalendar",
+      "url": "https://support.google.com/calendar/answer/15716974?hl=en"
+    },
+    {
+      "label": "Google: berkongsi kalendar dan membuang akses",
+      "url": "https://support.google.com/calendar/answer/37082?hl=en"
+    }
+  ],
+  "seeAlso": [
+    "why-a-shared-calendar-does-not-appear",
+    "sharing-one-event-not-your-calendar"
+  ]
+},
 
   'why-a-shared-calendar-does-not-appear': {
     "updated": "2026-10-21",

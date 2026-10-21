@@ -81,42 +81,99 @@ export const ARTICLES_PL: Readonly<Record<string, LocalisedArticle>> = {
   },
 
   'sharing-one-event-not-your-calendar': {
-    title: 'Udostępnić jedno wydarzenie, a nie kalendarz',
-    short: 'Udostępnić wydarzenie',
-    description:
-      'Jak działa wysłanie pojedynczego wydarzenia, co druga strona naprawdę dostaje i dlaczego nie musi niczego instalować, żeby je zobaczyć.',
-    lede: 'Udostępnianie kalendarza to zwykle wszystko albo nic: ktoś ma dostęp do twojego albo nie ma. Wysłanie kolacji nie powinno wymagać żadnej z tych rzeczy.',
-    commonBelief:
-      'Że udostępnienie wydarzenia oznacza danie komuś okna na resztę twojego tygodnia.',
-    sections: [
-      {
-        heading: 'Co naprawdę zostaje wysłane',
-        body: [
-          'Przy tworzeniu wydarzenia aplikacja proponuje jego udostępnienie. Podróżuje link — mailem, wiadomością, tym, co druga strona ma zainstalowane — a za tym linkiem stoi kanał kalendarza zawierający to jedno wydarzenie i nic więcej.',
-          'To nie zrzut ekranu ani kopia, która się starzeje. Gdy zmieni się godzina, kanał zmienia się razem z nią, a osoba, której go wysłałeś, widzi zmianę bez ponownego wysyłania.',
-        ],
-      },
-      {
-        heading: 'Czym to nie jest',
-        body: [
-          'Link to zwykła subskrypcja kalendarza: czyta go Kalendarz Apple, czyta Kalendarz Google, czyta Outlook. W wiadomości jest też App Clip dla kogoś, kto chce aplikacji — otwiera się bez instalowania. To drzwi, nie bramka.',
-          'Nie jest natychmiastowy: kanał prosi aplikacje, by zaglądały co godzinę, a to prośba, nie reguła. Nie jest też tajny: link niesie dwadzieścia dwa losowe znaki, których nikt nie zgadnie, ale kto go ma, ten czyta. I na razie jest tylko do odczytu.',
-        ],
-      },
-    ],
-    claims: {
-      refreshHint: 'Godziny między prośbami o odświeżenie kanału',
-      linkLength: 'Losowe znaki w linku, co czyni go nie do odgadnięcia',
-      sharePrice: 'Ile kosztuje udostępnianie',
+  "updated": "2026-10-21",
+  "title": "Udostępnij jedno wydarzenie: wybierz link i uprawnienia",
+  "short": "Udostępnianie jednego wydarzenia",
+  "description": "Udostępnij wydarzenie bez całego kalendarza. Poznaj role Reader, Writer i Owner, podgląd, aktualizacje oraz ograniczenia cofania dostępu.",
+  "lede": "Wysłanie szczegółów kolacji, zezwolenie współorganizatorowi na edycję i zbieranie odpowiedzi o obecności to różne zadania. Najpierw wybierz cel, potem sposób udostępnienia. Poradnik przygotował Arte Soft, twórca Cloud Calendars.",
+  "commonBelief": "Każdy link to subskrypcja tylko do odczytu, która aktualizuje się natychmiast i zapisuje odpowiedź.",
+  "sections": [
+    {
+      "heading": "Sprawdź szczegóły wydarzenia",
+      "body": [
+        "Udostępnienie pojedynczego wydarzenia obejmuje je, a nie cały kalendarz nadawcy. Sprawdź tytuł, strefę czasową, miejsce, notatki i linki do spotkania. Dane dla jednego gościa nie zawsze nadają się do szerokiej publikacji.",
+        "Kolacja nie wymaga udostępnienia kalendarza wizyt lekarskich. Jej własne miejsce i linki nadal są jednak przekazywane. Sprawdź treść wydarzenia, zamiast polegać na prywatności pozostałego kalendarza."
+      ]
     },
-    practical: [
-      'Udostępniaj z samego wydarzenia, zaraz po jego utworzeniu.',
-      'Wyślij link tym kanałem, którego już z tą osobą używasz.',
-      'Jeśli godzina zmienia się na ostatnią chwilę, napisz oprócz przesunięcia wydarzenia.',
-      'Unieważnij link, gdy wydarzenie minie, tak jak przestałbyś udostępniać dokument.',
-    ],
-    seeAlso: ['icloud-google-and-outlook-in-one-view', 'weather-inside-your-calendar'],
-  },
+    {
+      "heading": "Wybierz podgląd, e-mail lub QR",
+      "body": [
+        "App Clip Cloud Calendars pokazuje podgląd; dodanie wydarzenia tą drogą wymaga pełnej aplikacji. Zaproszenia e-mail i QR otwierają stronę z możliwością otwarcia Cloud Calendars. To nie są zamienne adresy subskrypcji.",
+        "Nadawca loguje się do synchronizowanego udostępniania. Link lub kod QR można przekazać dalej. Kod przenosi adres, ale nie dowodzi, kto go otworzył."
+      ]
+    },
+    {
+      "heading": "Przyznaj tylko potrzebny dostęp",
+      "body": [
+        "W zaproszeniu e-mail wybierasz Reader, Writer lub Owner. Reader przegląda i synchronizuje, Writer edytuje, a Owner dodatkowo udostępnia i zarządza dostępem. Osobie potrzebującej tylko harmonogramu przyznaj Reader.",
+        "Writer pasuje do współorganizatora zmieniającego wydarzenie. Owner jest dla osoby zarządzającej również dostępem innych. Wyższe prawa wymagają zalogowania właściwą tożsamością. Anonimowy odbiorca nie jest zidentyfikowanym współwłaścicielem."
+      ]
+    },
+    {
+      "heading": "Wyjaśnij dodawanie wydarzenia",
+      "body": [
+        "Pełna aplikacja wymaga uprawnienia do kalendarzy i kalendarza docelowego z możliwością zapisu. Odbiorca powinien sprawdzić go przed zapisaniem. Otrzymaną kopię można powiązać z udostępnionym wydarzeniem dla późniejszych aktualizacji.",
+        "Zwykły import ICS tworzy kopię, natomiast subskrypcja okresowo sprawdza kanał. Jeśli wysyłasz kanał ICS zamiast zaproszenia aplikacji, wyjaśnij różnicę i sprawdź obsługę w kalendarzu odbiorcy."
+      ]
+    },
+    {
+      "heading": "Potwierdź dotarcie zmian",
+      "body": [
+        "Synchronizowane udostępnienie może przekazywać zmiany i odwołanie, ale urządzenie musi je odebrać. Wskazówka odświeżania kanału nie jest terminem dostarczenia. Urządzenie offline, nieodświeżona subskrypcja lub osobna importowana kopia mogą pokazywać stare dane.",
+        "Jeśli kolacja zmienia godzinę tuż przed rozpoczęciem, zaktualizuj wydarzenie i skontaktuj się z gośćmi bezpośrednio. Poproś o potwierdzenie nowego czasu. Odebranie zmiany nie potwierdza uczestnictwa."
+      ]
+    },
+    {
+      "heading": "Cofnięcie dostępu nie usuwa wszystkich kopii",
+      "body": [
+        "Sprawdź odbiorców i usuń niepotrzebne prawa. Usunięcie odbiorcy i unieważnienie linku kanału to osobne działania. Żadne nie oznacza zdalnego wymazania wszystkich zrzutów ekranu, wiadomości i kopii kalendarza.",
+        "Jeśli link trafił dalej, ustal właściwy adres lub uprawnienie i sprawdź efekt zmiany. Nie umieszczaj prywatnych danych w szeroko rozpowszechnianych linkach, licząc na późniejsze cofnięcie dostępu."
+      ]
+    }
+  ],
+  "claims": {},
+  "practical": [
+    "Sprawdź szczegóły i cel: podgląd, edycję czy odpowiedzi o obecności.",
+    "Wybierz sposób udostępnienia i zaloguj się, gdy jest to wymagane.",
+    "Daj Reader do podglądu, a Writer lub Owner tylko do odpowiednich obowiązków.",
+    "Poproś odbiorcę o sprawdzenie godziny i kalendarza docelowego.",
+    "Pilną zmianę przekaż również bezpośrednią wiadomością.",
+    "Na koniec osobno sprawdź prawa odbiorców i dostęp przez link."
+  ],
+  "faq": [
+    {
+      "q": "Czy jedno wydarzenie ujawnia cały kalendarz?",
+      "a": "Synchronizowany sposób udostępniania jednego wydarzenia obejmuje tylko je. Nadal ujawnia jego szczegóły. Sprawdź je i nie wysyłaj zaproszenia do całego kalendarza zamiast pojedynczego wydarzenia."
+    },
+    {
+      "q": "Czy odbiorca może edytować?",
+      "a": "Tak, mając odpowiednie prawa Writer lub Owner i korzystając z obsługiwanego logowania. Reader służy do podglądu i synchronizacji. Zwykła subskrypcja ICS nie jest tym samym mechanizmem edycji."
+    },
+    {
+      "q": "Czy usunięcie osoby cofa wszystko, co otrzymała?",
+      "a": "Nie ma takiej gwarancji. Zmienia się relacja udostępniania, ale zapisane kopie, zrzuty i wiadomości mogą pozostać. Adres kanału wymaga osobnej oceny."
+    }
+  ],
+  "sourcesHeading": "Źródła dotyczące opcji odbiorcy",
+  "sources": [
+    {
+      "label": "Apple: informacje o App Clips",
+      "url": "https://developer.apple.com/help/app-store-connect/offer-app-clip-experiences/overview-of-app-clips/"
+    },
+    {
+      "label": "Google: import wydarzeń i ograniczenia",
+      "url": "https://support.google.com/calendar/answer/37118?co=GENIE.Platform%3DDesktop&hl=en"
+    },
+    {
+      "label": "Microsoft: importowanie a subskrybowanie kalendarza",
+      "url": "https://support.microsoft.com/en-us/outlook/import-or-subscribe-to-a-calendar-in-outlook-com-or-outlook-on-the-web"
+    }
+  ],
+  "seeAlso": [
+    "who-can-see-what-in-google-calendar",
+    "taking-back-a-calendar-you-shared"
+  ]
+},
 
   'what-a-subscription-actually-buys': {
   "updated": "2026-10-21",

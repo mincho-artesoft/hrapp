@@ -1,0 +1,188 @@
+{
+  "sharing-one-event-not-your-calendar": {
+    "updated": "2026-10-21",
+    "title": "Dela en kalenderhändelse: välj rätt länk och behörighet",
+    "short": "Dela en händelse",
+    "description": "Dela en händelse utan att dela hela kalendern. Förstå Reader, Writer och Owner, förhandsvisningar, uppdateringar och vad återkallad åtkomst inte gör.",
+    "lede": "Att dela middagsdetaljer, låta en medarrangör redigera och samla närvarosvar är olika uppgifter. Bestäm vad du behöver innan du väljer delningssätt. Guiden är skriven av Arte Soft, utvecklaren av Cloud Calendars.",
+    "commonBelief": "Varje händelselänk skulle vara en skrivskyddad kalenderprenumeration som uppdateras direkt och registrerar ett svar.",
+    "sections": [
+      {
+        "heading": "Börja med att granska en händelses innehåll",
+        "body": [
+          "Delning av en enskild händelse omfattar den händelsen, inte avsändarens hela kalender. Kontrollera titel, tidszon, plats, anteckningar och möteslänkar före utskick. Information som passar en gäst passar inte nödvändigtvis i en länk som sprids brett.",
+          "Att dela en middag kräver inte att du delar kalendern med dina läkarbesök. Middagens egen plats och länkar följer däremot med. Granska själva händelsen i stället för att förlita dig på att den omgivande kalendern är privat."
+        ]
+      },
+      {
+        "heading": "Välj förhandsvisning, e-postinbjudan eller QR-kod",
+        "body": [
+          "Cloud Calendars har olika delningsvägar. App Clip visar en förhandsvisning; den fullständiga appen behövs för att lägga till händelsen därifrån. Inbjudningar via e-post och QR öppnar en webbsida som erbjuder att öppna Cloud Calendars. Länkarna är inte utbytbara prenumerationsadresser.",
+          "Avsändaren loggar in för appens synkroniserade delning. En länk eller QR-kod kan vidarebefordras, så skicka den bara där innehållet passar. En QR-kod förmedlar en länk och bevisar inte vem som öppnat den."
+        ]
+      },
+      {
+        "heading": "Ge bara den åtkomst mottagaren behöver",
+        "body": [
+          "E-postinbjudningar låter dig välja Reader, Writer eller Owner. Reader kan läsa och synkronisera; Writer kan redigera; Owner kan också dela och hantera åtkomst. Det är olika befogenheter, inte tre namn för visning. Välj Reader när någon bara behöver schemat.",
+          "Välj Writer för en medarrangör som ska ändra händelsen. Välj Owner bara om personen också ska bestämma andras åtkomst. Mottagaren måste använda rätt inloggad identitet för utökade behörigheter. En anonym mottagare är inte en identifierad medägare."
+        ]
+      },
+      {
+        "heading": "Förstå hur mottagaren lägger till händelsen",
+        "body": [
+          "I den fullständiga appen krävs kalenderbehörighet och en skrivbar målkalender för att lägga till en delad händelse. Mottagaren bör kontrollera destinationen innan den sparas. Den mottagna kopian kan sedan kopplas till den delade händelsen för senare uppdateringar.",
+          "Det skiljer sig från att importera en vanlig ICS-fil i en annan kalender. Import skapar en kopia, medan en prenumeration kontrollerar ett flöde regelbundet. Om du skickar ett ICS-flöde i stället för en appinbjudan, förklara det och kontrollera att mottagarens kalender stöder det."
+        ]
+      },
+      {
+        "heading": "Kontrollera ändringar innan du förlitar dig på dem",
+        "body": [
+          "Synkroniserad delning kan föra vidare ändringar och inställda händelser, men mottagarens enhet måste kunna ta emot dem. Ett önskemål om flödets uppdateringsintervall är ingen leveransfrist. En offlineenhet, en ouppdaterad prenumeration eller en fristående importerad kopia kan visa äldre uppgifter.",
+          "Om middagen flyttas strax före start, uppdatera händelsen och kontakta gästerna direkt. Be dem bekräfta den nya tiden. Att skicka en uppdatering och få ett närvarosvar är separata steg."
+        ]
+      },
+      {
+        "heading": "Hantera åtkomst utan att lova att kopior raderas",
+        "body": [
+          "Granska mottagarnas behörigheter och ta bort sådant som inte längre behövs. Att ta bort en mottagare och återkalla en flödeslänk är olika åtgärder. Ingen av dem ska beskrivas som fjärradering av skärmbilder, meddelanden eller alla kalenderkopior.",
+          "Om en länk har spridits utanför den tänkta kretsen, identifiera länken eller behörigheten det gäller. Kontrollera den berörda vägen efter ändringen. Håll privata detaljer borta från framtida brett spridda länkar, i stället för att hoppas kunna återta dem senare."
+        ]
+      }
+    ],
+    "claims": {},
+    "practical": [
+      "Granska händelsen och avgör om du behöver läsning, redigering eller närvarosvar.",
+      "Välj avsedd delningsväg och logga in när det krävs.",
+      "Använd Reader för läsare; ge Writer eller Owner bara för motsvarande ansvar.",
+      "Be mottagaren kontrollera tiden och målkalendern när händelsen läggs till.",
+      "Uppdatera händelsen och skicka ett direktmeddelande vid brådskande ändringar.",
+      "Granska mottagarbehörigheter och länkåtkomst var för sig när delningen upphör."
+    ],
+    "faq": [
+      {
+        "q": "Visas hela min kalender när jag delar en händelse?",
+        "a": "Synkroniserad delning av en händelse är avgränsad till den. Händelsens egna detaljer blir ändå tillgängliga via vald väg. Granska dem och skicka inte en inbjudan till hela kalendern när du bara vill dela en händelse."
+      },
+      {
+        "q": "Kan mottagaren ändra händelsen?",
+        "a": "Ja, med rätt Writer- eller Owner-behörighet och det inloggade flöde som stöds. Reader är för läsning och synkronisering. En vanlig ICS-prenumeration är inte samma redigeringsmekanism."
+      },
+      {
+        "q": "Ångras allt någon redan fått när jag tar bort personen?",
+        "a": "Utgå inte från en sådan garanti. Ändrad åtkomst påverkar den delningsrelation som stöds, men sparade kopior, skärmbilder och meddelanden kan finnas kvar. En delad flödesadress behöver också hanteras separat."
+      }
+    ],
+    "sourcesHeading": "Referenser för mottagarens alternativ",
+    "sources": [
+      {
+        "label": "Apple: översikt över App Clips",
+        "url": "https://developer.apple.com/help/app-store-connect/offer-app-clip-experiences/overview-of-app-clips/"
+      },
+      {
+        "label": "Google: import av händelser och begränsningar",
+        "url": "https://support.google.com/calendar/answer/37118?co=GENIE.Platform%3DDesktop&hl=en"
+      },
+      {
+        "label": "Microsoft: importera eller prenumerera på en kalender",
+        "url": "https://support.microsoft.com/en-us/outlook/import-or-subscribe-to-a-calendar-in-outlook-com-or-outlook-on-the-web"
+      }
+    ],
+    "seeAlso": [
+      "who-can-see-what-in-google-calendar",
+      "what-guests-can-do-to-your-event",
+      "taking-back-a-calendar-you-shared"
+    ]
+  },
+  "who-can-see-what-in-google-calendar": {
+    "title": "Delningsbehörigheter i Google Kalender: kontrollera åtkomsten du ger",
+    "short": "Åtkomst och integritet i Google Kalender",
+    "description": "Välj åtkomst till tillgänglighet, detaljer eller redigering. Kontrollera offentlig åtkomst och gruppåtkomst utöver individuella behörigheter.",
+    "lede": "Bestäm vad mottagaren behöver göra innan du delar en kalender. Att planera runt din tid, läsa detaljer och sköta kalendern är olika uppgifter. Guiden publiceras av Arte Soft, utvecklaren av Cloud Calendars.",
+    "commonBelief": "En begränsad inställning för en person skulle garantera att personen inte kan se detaljer via någon annan väg.",
+    "sections": [
+      {
+        "heading": "Anpassa åtkomsten efter uppgiften",
+        "body": [
+          "En kollega som söker en tid kan behöva din tillgänglighet utan detaljer om möten. Den som sköter ett projektschema behöver en annan lösning. Bestäm uppgiften först och granska sedan behörigheten i kalenderns aktuella delningsinställningar.",
+          "Google skiljer mellan tillgänglighet, händelsedetaljer och flera redigeringsnivåer. Ett alternativ begränsar åtkomsten till privata händelser; ett annat tillåter redigering och detaljer; det mest omfattande tillåter även delningsadministration. Alla alternativ med ordet ändringar betyder inte samma sak."
+        ]
+      },
+      {
+        "heading": "Granska hela kalenderns åtkomst, inte bara en person",
+        "body": [
+          "Kontrollera om kalendern är offentlig, tillgänglig för organisationen eller delad via en grupp, utöver namngivna personer. Google anger att bredare åtkomst kan ha företräde framför en snävare tilldelning: att begränsa en person gör inte redan publicerade detaljer privata.",
+          "Tänk på ett föreningsschema publicerat för medlemmar. Kontrollera kalenderns publik innan du lägger in ett personligt möte. Behörigheten bredvid en vän är inte den enda relevanta inställningen. Lägg privata möten i en lämplig kalender."
+        ]
+      },
+      {
+        "heading": "Använd Googles inställningar för rätt kalender",
+        "body": [
+          "I Google Kalender på en dator hittar du den avsedda kalendern, öppnar dess meny och går till delningsinställningarna. Google beskriver separata delar för personer eller grupper och bredare åtkomst. Kontrollera kalendernamnet och det inloggade kontot innan du ändrar något.",
+          "Bekräfta mottagarens avsedda Google-identitet vid inbjudan. Om kalendern inte hittas, kontrollera adressen och inbjudningsmeddelandet i stället för att ge bredare åtkomst för att få den att visas. Saknad visning och otillräcklig redigeringsbehörighet är olika problem."
+        ]
+      },
+      {
+        "heading": "Testa utan privata möten",
+        "body": [
+          "Använd en vanlig testhändelse utan privat titel, anteckningar, plats eller gästlista. Be mottagaren bekräfta vad som syns och, bara när redigering behövs och är tillåten, vad som går att ändra. Lämna inte ut dina inloggningsuppgifter för testet.",
+          "Anteckna kalendern och rollen och kontrollera resultatet efter en ändring. Det prövar den tänkta lösningen, men bevisar inte att tidigare läst eller kopierad information har försvunnit. Publicera inte ett verkligt arbetsschema som test."
+        ]
+      },
+      {
+        "heading": "Skilj arbetsregler från appens abonnemang",
+        "body": [
+          "Google anger att arbetsplatsens eller skolans administratörer kan begränsa delning. Om inställningen saknas, använd organisationens godkända väg. Publicera inte arbetsinformation för att kringgå en kontobegränsning.",
+          "Cloud Calendars kan visa anslutna kalendrar, men abonnemangsnamnen ändrar inte Googles behörigheter. Advanced tar bort annonser; det är inte en betalning som ger någon åtkomst till varje Google-händelse. Kontrollera delningen hos leverantören och det accepterade resultatet, inte bara om en lokal redigerare är tillgänglig."
+        ]
+      },
+      {
+        "heading": "Granska och ta bort åtkomst som inte behövs",
+        "body": [
+          "När ett projekt tar slut, granska mottagare, grupper och eventuell bredare publicering. Att ta bort en person är bara en del av kontrollen när andra vägar finns. Kom överens om vem som sköter schemat och hur framtida åtkomständringar hanteras.",
+          "Google beskriver borttagning av personer eller grupper separat från avstängning av bredare delning. Återkallad åtkomst kan inte återta exporterade filer, skärmbilder eller information som kopierats. Följ upp det separat med berörda personer i stället för att lova att en inställning raderar varje äldre kopia."
+        ]
+      }
+    ],
+    "claims": {},
+    "practical": [
+      "Identifiera kalendern och mottagarens uppgift.",
+      "Granska individuell åtkomst, grupper, organisation och offentlig åtkomst.",
+      "Välj rätt behörighet i Googles aktuella inställningar.",
+      "Kontrollera mottagarens identitet innan åtkomsten ändras.",
+      "Kontrollera en ofarlig testhändelse från mottagarens sida.",
+      "Granska gamla åtkomstvägar utan att anta att tidigare kopior återtas."
+    ],
+    "faq": [
+      {
+        "q": "Har en individuell begränsning företräde framför en offentlig kalender?",
+        "a": "Nej. Google anger att bredare kalenderbehörigheter har företräde när inställningar står i konflikt. Granska offentliga inställningar och organisationsåtkomst utöver personens post."
+      },
+      {
+        "q": "Visar alla redigeringsbehörigheter privata händelser på samma sätt?",
+        "a": "Nej. Google beskriver en redigeringsbehörighet med begränsad åtkomst till privata händelser separat från andra redigerings- och delningsalternativ. Läs den exakta aktuella behörigheten innan du väljer."
+      },
+      {
+        "q": "Ändrar ett köp av Advanced Googles delningsrättigheter?",
+        "a": "Nej. Advanced tar bort annonser i Cloud Calendars. Leverantörsåtkomst beror på kalenderns behörigheter och organisationens eventuella begränsningar."
+      }
+    ],
+    "sourcesHeading": "Aktuell Google-vägledning om behörigheter och delning",
+    "sources": [
+      {
+        "label": "Google: välj kalenderbehörigheter",
+        "url": "https://support.google.com/calendar/answer/15716974?hl=en"
+      },
+      {
+        "label": "Google: dela en kalender och ta bort åtkomst",
+        "url": "https://support.google.com/calendar/answer/37082?hl=en"
+      }
+    ],
+    "seeAlso": [
+      "why-a-shared-calendar-does-not-appear",
+      "sharing-one-event-not-your-calendar",
+      "taking-back-a-calendar-you-shared"
+    ],
+    "updated": "2026-10-21"
+  }
+}

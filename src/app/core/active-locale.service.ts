@@ -1,11 +1,12 @@
+import { Location } from '@angular/common';
 import { Injectable, computed, inject, signal } from '@angular/core';
 import { ActivatedRoute, NavigationEnd, Router } from '@angular/router';
 import { filter } from 'rxjs/operators';
 
 import { homeCopyFor } from '../content/home/registry';
-import { CONTENT } from '../content/registry';
+import { ARTICLE_SLUGS } from '../content/article-index';
 import { APP_STORE_URL } from './app-facts';
-import { DEFAULT_LOCALE, Locale, localePath, storeUrl } from './locales';
+import { DEFAULT_LOCALE, LOCALES, Locale, localePath, storeUrl } from './locales';
 
 /** The site is served from an S3 website endpoint; see the note in seo.service. */
 function withSlash(path: string): string {
@@ -30,6 +31,7 @@ function withSlash(path: string): string {
 export class ActiveLocaleService {
   private readonly router = inject(Router);
   private readonly root = inject(ActivatedRoute);
+  private readonly location = inject(Location);
   private readonly current = signal<Locale>(DEFAULT_LOCALE);
   /**
    * The path being rendered.
@@ -75,7 +77,7 @@ export class ActiveLocaleService {
 
     if (match) {
       const slug = match[1];
-      const has = CONTENT[target.code as keyof typeof CONTENT]?.articles?.[slug];
+      const has = ARTICLE_SLUGS[target.code]?.includes(slug);
       return withSlash(localePath(target, has ? `/articles/${slug}` : '/articles'));
     }
     if (url.endsWith('/articles')) return withSlash(localePath(target, '/articles'));
@@ -87,7 +89,16 @@ export class ActiveLocaleService {
   private read(): void {
     let route = this.root;
     while (route.firstChild) route = route.firstChild;
-    this.current.set((route.snapshot.data['locale'] as Locale | undefined) ?? DEFAULT_LOCALE);
-    this.url.set(this.router.url.split('#')[0].split('?')[0].replace(/\/+$/, ''));
+    // Async article resolution can leave the shell rendering before the first
+    // route activates. Read the requested URL as well so prerendered headers,
+    // storefront links and language alternatives already match the article.
+    const requested = this.router.getCurrentNavigation()?.extractedUrl.toString()
+      ?? this.location.path()
+      ?? this.router.url;
+    const path = requested.split('#')[0].split('?')[0].replace(/\/+$/, '');
+    const prefix = path.split('/').filter(Boolean)[0] ?? '';
+    const requestedLocale = LOCALES.find(locale => locale.slug === prefix) ?? DEFAULT_LOCALE;
+    this.current.set((route.snapshot.data['locale'] as Locale | undefined) ?? requestedLocale);
+    this.url.set(path);
   }
 }

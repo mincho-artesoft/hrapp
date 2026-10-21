@@ -1,6 +1,8 @@
-import { Routes } from '@angular/router';
+import { Routes, ResolveFn } from '@angular/router';
 
-import { LIVE_LOCALES } from './content/registry';
+import { LIVE_LOCALES } from './content/article-index';
+import { loadContentFor } from './content/registry';
+import type { ArticleLocale } from './content/types';
 import { DEFAULT_LOCALE, LOCALES } from './core/locales';
 import { HomePageComponent } from './pages/home-page/home-page.component';
 import { PrivacyPolicyPageComponent } from './pages/privacy-policy-page/privacy-policy-page.component';
@@ -54,6 +56,8 @@ const eventRoutes: Routes = LOCALES.flatMap((locale) => {
   ];
 });
 
+const resolveArticleContent: ResolveFn<ArticleLocale> = route => loadContentFor(route.data['locale'].code);
+
 const articleRoutes: Routes = LIVE_LOCALES.flatMap((locale) => {
   const prefix = locale.slug ? `${locale.slug}/` : '';
   return [
@@ -64,12 +68,14 @@ const articleRoutes: Routes = LIVE_LOCALES.flatMap((locale) => {
           (m) => m.ArticlesPageComponent,
         ),
       data: { locale },
+      resolve: { articleContent: resolveArticleContent },
     },
     {
       path: `${prefix}articles/:slug`,
       loadComponent: () =>
         import('./pages/article-page/article-page.component').then((m) => m.ArticlePageComponent),
       data: { locale },
+      resolve: { articleContent: resolveArticleContent },
     },
   ];
 });

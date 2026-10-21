@@ -260,7 +260,7 @@ export const ARTICLE_FACTS: Readonly<Record<string, ArticleFacts>> = {
     slug: 'taking-back-a-calendar-you-shared',
     family: 'sharing',
     intent: 'editing',
-    claims: [{ id: 'advancedMonthly', value: '0.49' }],
+    claims: [],
     updated: '2026-09-12',
   },
   'inviting-people-who-do-not-have-the-app': {

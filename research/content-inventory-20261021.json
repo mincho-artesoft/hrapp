@@ -1,19 +1,22 @@
 {
-  "date": "2026-10-21T19:52:04.244Z",
+  "date": "2026-10-21T20:20:26.374Z",
   "status": "source_inventory_not_quality_approval",
   "articles": [
     {
       "locale": "ar-SA",
       "slug": "who-can-see-what-in-google-calendar",
-      "title": "من يرى ماذا عند مشاركة تقويم Google",
-      "description": "مستويات المشاركة في Google تُضبط بسرعة ويُساء فهمها أسرع. ما الذي يكشفه كل مستوى فعليًا، بعبارات واضحة.",
-      "descriptionCharacters": 103,
-      "sections": 2,
+      "title": "صلاحيات تقويم Google: افحص الوصول الذي تمنحه فعلياً",
+      "description": "اختر وصولاً للتوفر أو التفاصيل أو التعديل. افحص الوصول العام والمجموعات، إضافة إلى الصلاحيات الفردية، قبل المشاركة.",
+      "descriptionCharacters": 115,
+      "sections": 6,
       "faq": 3,
-      "words": 255,
+      "words": 550,
       "source": "articles-google.ts",
-      "sources": [],
-      "updated": "2026-08-27"
+      "sources": [
+        "https://support.google.com/calendar/answer/15716974?hl=en",
+        "https://support.google.com/calendar/answer/37082?hl=en"
+      ],
+      "updated": "2026-10-21"
     },
     {
       "locale": "ar-SA",
@@ -113,15 +116,19 @@
     {
       "locale": "ar-SA",
       "slug": "sharing-one-event-not-your-calendar",
-      "title": "شارك حدثًا واحدًا، لا تقويمك",
-      "description": "كيف يعمل إرسال حدث مفرد، وما الذي يستلمه الطرف الآخر فعلًا، ولماذا لا يحتاج إلى تثبيت أي شيء ليراه.",
-      "descriptionCharacters": 99,
-      "sections": 2,
-      "faq": 0,
-      "words": 214,
+      "title": "مشاركة حدث واحد: اختر الرابط والصلاحية المقصودين",
+      "description": "شارك حدثاً دون التقويم كله. تعرّف على Reader وWriter وOwner والمعاينة والتحديثات وحدود سحب الوصول.",
+      "descriptionCharacters": 98,
+      "sections": 6,
+      "faq": 3,
+      "words": 584,
       "source": "articles.ts",
-      "sources": [],
-      "updated": "2026-08-27"
+      "sources": [
+        "https://developer.apple.com/help/app-store-connect/offer-app-clip-experiences/overview-of-app-clips/",
+        "https://support.google.com/calendar/answer/37118?co=GENIE.Platform%3DDesktop&hl=en",
+        "https://support.microsoft.com/en-us/outlook/import-or-subscribe-to-a-calendar-in-outlook-com-or-outlook-on-the-web"
+      ],
+      "updated": "2026-10-21"
     },
     {
       "locale": "ar-SA",
@@ -141,15 +148,18 @@
     {
       "locale": "bg",
       "slug": "who-can-see-what-in-google-calendar",
-      "title": "Кой какво вижда, когато споделите календар в Google",
-      "description": "Нивата на споделяне в Google се задават бързо и се разбират погрешно още по-бързо. Какво разкрива всяко от тях в действителност, казано направо.",
-      "descriptionCharacters": 144,
-      "sections": 2,
+      "title": "Права в Google Calendar: проверете действителния достъп",
+      "description": "Изберете достъп до заетост, подробности или редактиране в Google Calendar. Проверете публичните и груповите права наред с индивидуалните.",
+      "descriptionCharacters": 137,
+      "sections": 6,
       "faq": 3,
-      "words": 293,
+      "words": 553,
       "source": "articles-google.ts",
-      "sources": [],
-      "updated": "2026-08-27"
+      "sources": [
+        "https://support.google.com/calendar/answer/15716974?hl=en",
+        "https://support.google.com/calendar/answer/37082?hl=en"
+      ],
+      "updated": "2026-10-21"
     },
     {
       "locale": "bg",
@@ -300,15 +310,19 @@
     {
       "locale": "bg",
       "slug": "sharing-one-event-not-your-calendar",
-      "title": "Да споделите едно събитие, а не целия си календар",
-      "description": "Повечето покани молят другия да види повече, отколкото му трябва. Как се изпраща едно събитие и нищо друго.",
-      "descriptionCharacters": 107,
-      "sections": 2,
-      "faq": 0,
-      "words": 169,
+      "title": "Споделяне на едно събитие: изберете връзката и достъпа",
+      "description": "Споделете едно събитие, без целия календар. Разберете ролите Reader, Writer и Owner, прегледа, обновяването и ограниченията при отнемане на достъп.",
+      "descriptionCharacters": 147,
+      "sections": 6,
+      "faq": 3,
+      "words": 614,
       "source": "articles.ts",
-      "sources": [],
-      "updated": "2026-08-27"
+      "sources": [
+        "https://developer.apple.com/help/app-store-connect/offer-app-clip-experiences/overview-of-app-clips/",
+        "https://support.google.com/calendar/answer/37118?co=GENIE.Platform%3DDesktop&hl=en",
+        "https://support.microsoft.com/en-us/outlook/import-or-subscribe-to-a-calendar-in-outlook-com-or-outlook-on-the-web"
+      ],
+      "updated": "2026-10-21"
     },
     {
       "locale": "bg",
@@ -328,15 +342,18 @@
     {
       "locale": "cs",
       "slug": "who-can-see-what-in-google-calendar",
-      "title": "Kdo co uvidí, když sdílíte kalendář Google",
-      "description": "Úrovně sdílení v Googlu se nastaví rychle a snadno se pochopí špatně. Co každá z nich ve skutečnosti odhalí, řečeno přímo.",
-      "descriptionCharacters": 122,
-      "sections": 2,
+      "title": "Oprávnění Kalendáře Google: ověřte skutečně udělený přístup",
+      "description": "Zvolte přístup k dostupnosti, podrobnostem nebo úpravám. Před sdílením prověřte veřejný a skupinový přístup i jednotlivá oprávnění.",
+      "descriptionCharacters": 131,
+      "sections": 6,
       "faq": 3,
-      "words": 246,
+      "words": 578,
       "source": "articles-google.ts",
-      "sources": [],
-      "updated": "2026-08-27"
+      "sources": [
+        "https://support.google.com/calendar/answer/15716974?hl=en",
+        "https://support.google.com/calendar/answer/37082?hl=en"
+      ],
+      "updated": "2026-10-21"
     },
     {
       "locale": "cs",
@@ -436,15 +453,19 @@
     {
       "locale": "cs",
       "slug": "sharing-one-event-not-your-calendar",
-      "title": "Sdílet jednu událost, ne svůj kalendář",
-      "description": "Jak funguje odeslání jediné události, co druhá strana skutečně dostane a proč si nemusí nic instalovat, aby to viděla.",
-      "descriptionCharacters": 118,
-      "sections": 2,
-      "faq": 0,
-      "words": 228,
+      "title": "Sdílení jedné události: zvolte správný odkaz a oprávnění",
+      "description": "Sdílejte událost bez celého kalendáře. Zjistěte, co znamenají role Reader, Writer a Owner, náhledy, aktualizace a omezení odebrání přístupu.",
+      "descriptionCharacters": 140,
+      "sections": 6,
+      "faq": 3,
+      "words": 637,
       "source": "articles.ts",
-      "sources": [],
-      "updated": "2026-08-27"
+      "sources": [
+        "https://developer.apple.com/help/app-store-connect/offer-app-clip-experiences/overview-of-app-clips/",
+        "https://support.google.com/calendar/answer/37118?co=GENIE.Platform%3DDesktop&hl=en",
+        "https://support.microsoft.com/en-us/outlook/import-or-subscribe-to-a-calendar-in-outlook-com-or-outlook-on-the-web"
+      ],
+      "updated": "2026-10-21"
     },
     {
       "locale": "cs",
@@ -464,15 +485,18 @@
     {
       "locale": "da",
       "slug": "who-can-see-what-in-google-calendar",
-      "title": "Hvem ser hvad, når du deler en Google-kalender",
-      "description": "Googles delingsniveauer sættes hurtigt og misforstås let. Hvad hvert niveau faktisk blotter, sagt ligeud.",
-      "descriptionCharacters": 105,
-      "sections": 2,
+      "title": "Google Kalender: kontrollér den adgang, du faktisk giver",
+      "description": "Vælg adgang til tilgængelighed, detaljer eller redigering. Kontrollér offentlig adgang og grupper samt individuelle rettigheder før deling.",
+      "descriptionCharacters": 139,
+      "sections": 6,
       "faq": 3,
-      "words": 294,
+      "words": 596,
       "source": "articles-google.ts",
-      "sources": [],
-      "updated": "2026-08-27"
+      "sources": [
+        "https://support.google.com/calendar/answer/15716974?hl=en",
+        "https://support.google.com/calendar/answer/37082?hl=en"
+      ],
+      "updated": "2026-10-21"
     },
     {
       "locale": "da",
@@ -572,15 +596,19 @@
     {
       "locale": "da",
       "slug": "sharing-one-event-not-your-calendar",
-      "title": "Del én begivenhed, ikke din kalender",
-      "description": "Hvordan det foregår at sende en enkelt begivenhed, hvad modtageren rent faktisk får, og hvorfor vedkommende ikke behøver installere noget for at se den.",
-      "descriptionCharacters": 152,
-      "sections": 2,
-      "faq": 0,
-      "words": 272,
+      "title": "Del én kalenderbegivenhed: vælg det rette link og den rette adgang",
+      "description": "Del én begivenhed uden hele kalenderen. Forstå Reader, Writer og Owner, forhåndsvisninger, opdateringer og grænserne for at fjerne adgang.",
+      "descriptionCharacters": 138,
+      "sections": 6,
+      "faq": 3,
+      "words": 660,
       "source": "articles.ts",
-      "sources": [],
-      "updated": "2026-08-27"
+      "sources": [
+        "https://developer.apple.com/help/app-store-connect/offer-app-clip-experiences/overview-of-app-clips/",
+        "https://support.google.com/calendar/answer/37118?co=GENIE.Platform%3DDesktop&hl=en",
+        "https://support.microsoft.com/en-us/outlook/import-or-subscribe-to-a-calendar-in-outlook-com-or-outlook-on-the-web"
+      ],
+      "updated": "2026-10-21"
     },
     {
       "locale": "da",
@@ -846,15 +874,19 @@
     {
       "locale": "de-DE",
       "slug": "sharing-one-event-not-your-calendar",
-      "title": "Einen Termin teilen, ohne den Kalender herzugeben",
-      "description": "Wie das Versenden eines einzelnen Termins funktioniert, was beim Empfänger tatsächlich ankommt — und warum er dafür nichts installieren muss.",
-      "descriptionCharacters": 141,
-      "sections": 3,
-      "faq": 0,
-      "words": 387,
+      "title": "Ein Kalenderereignis teilen: Link und Zugriffsrechte bewusst wählen",
+      "description": "Teilen Sie einen Termin statt des ganzen Kalenders. Verstehen Sie Reader, Writer und Owner, Vorschauen, Aktualisierungen und die Grenzen eines Widerrufs.",
+      "descriptionCharacters": 153,
+      "sections": 6,
+      "faq": 3,
+      "words": 662,
       "source": "articles.ts",
-      "sources": [],
-      "updated": "2026-08-27"
+      "sources": [
+        "https://developer.apple.com/help/app-store-connect/offer-app-clip-experiences/overview-of-app-clips/",
+        "https://support.google.com/calendar/answer/37118?co=GENIE.Platform%3DDesktop&hl=en",
+        "https://support.microsoft.com/en-us/outlook/import-or-subscribe-to-a-calendar-in-outlook-com-or-outlook-on-the-web"
+      ],
+      "updated": "2026-10-21"
     },
     {
       "locale": "de-DE",
@@ -945,15 +977,18 @@
     {
       "locale": "el",
       "slug": "who-can-see-what-in-google-calendar",
-      "title": "Ποιος βλέπει τι όταν μοιράζεστε ένα ημερολόγιο Google",
-      "description": "Τα επίπεδα κοινής χρήσης της Google ρυθμίζονται γρήγορα και παρεξηγούνται εύκολα. Τι αποκαλύπτει πραγματικά το καθένα, με απλά λόγια.",
-      "descriptionCharacters": 133,
-      "sections": 2,
+      "title": "Δικαιώματα Google Calendar: ελέγξτε την πρόσβαση που παραχωρείτε",
+      "description": "Επιλέξτε πρόσβαση σε διαθεσιμότητα, λεπτομέρειες ή επεξεργασία. Πριν κοινοποιήσετε, ελέγξτε δημόσια και ομαδική πρόσβαση μαζί με τα ατομικά δικαιώματα.",
+      "descriptionCharacters": 151,
+      "sections": 6,
       "faq": 3,
-      "words": 285,
+      "words": 703,
       "source": "articles-google.ts",
-      "sources": [],
-      "updated": "2026-08-27"
+      "sources": [
+        "https://support.google.com/calendar/answer/15716974?hl=en",
+        "https://support.google.com/calendar/answer/37082?hl=en"
+      ],
+      "updated": "2026-10-21"
     },
     {
       "locale": "el",
@@ -1053,15 +1088,19 @@
     {
       "locale": "el",
       "slug": "sharing-one-event-not-your-calendar",
-      "title": "Μοιραστείτε ένα γεγονός, όχι το ημερολόγιό σας",
-      "description": "Πώς λειτουργεί η αποστολή ενός μόνο γεγονότος, τι λαμβάνει πραγματικά ο άλλος και γιατί δεν χρειάζεται να εγκαταστήσει τίποτα για να το δει.",
-      "descriptionCharacters": 140,
-      "sections": 2,
-      "faq": 0,
-      "words": 283,
+      "title": "Κοινοποίηση ενός συμβάντος: επιλέξτε σύνδεσμο και δικαιώματα",
+      "description": "Κοινοποιήστε ένα συμβάν χωρίς ολόκληρο το ημερολόγιο. Κατανοήστε τα Reader, Writer και Owner, τις προεπισκοπήσεις, τις ενημερώσεις και τα όρια της ανάκλησης.",
+      "descriptionCharacters": 157,
+      "sections": 6,
+      "faq": 3,
+      "words": 766,
       "source": "articles.ts",
-      "sources": [],
-      "updated": "2026-08-27"
+      "sources": [
+        "https://developer.apple.com/help/app-store-connect/offer-app-clip-experiences/overview-of-app-clips/",
+        "https://support.google.com/calendar/answer/37118?co=GENIE.Platform%3DDesktop&hl=en",
+        "https://support.microsoft.com/en-us/outlook/import-or-subscribe-to-a-calendar-in-outlook-com-or-outlook-on-the-web"
+      ],
+      "updated": "2026-10-21"
     },
     {
       "locale": "el",
@@ -1199,15 +1238,18 @@
     {
       "locale": "en-US",
       "slug": "taking-back-a-calendar-you-shared",
-      "title": "Taking back a calendar you shared with somebody",
-      "description": "Removing a person from a calendar stops what happens next. What it does not do is undo what already happened, and the difference matters.",
-      "descriptionCharacters": 137,
-      "sections": 2,
+      "title": "Stop sharing a calendar: remove access and check the remaining routes",
+      "description": "Stop calendar sharing without confusing people, groups, public access and feed links. Check what changed and understand why saved copies may remain.",
+      "descriptionCharacters": 148,
+      "sections": 6,
       "faq": 3,
-      "words": 291,
+      "words": 816,
       "source": "articles-google.ts",
-      "sources": [],
-      "updated": "2026-09-12"
+      "sources": [
+        "https://support.google.com/calendar/answer/37082?hl=en",
+        "https://support.google.com/calendar/answer/37648?hl=en"
+      ],
+      "updated": "2026-10-21"
     },
     {
       "locale": "en-US",
@@ -1244,19 +1286,20 @@
     {
       "locale": "en-US",
       "slug": "calendar-export-ics-pdf-and-backup",
-      "title": "Exporting a calendar: ICS files, PDFs and subscriptions",
-      "description": "Need a calendar file from your iPhone account? Choose ICS, PDF or a subscription, then use the right Google, Mac or Outlook workflow.",
-      "descriptionCharacters": 133,
-      "sections": 6,
+      "title": "Calendar export on iPhone: ICS, CSV, PDF and subscriptions",
+      "description": "Choose calendar data, spreadsheet rows, a printable schedule or a subscription. Use documented provider or Mac export routes and check what transfers.",
+      "descriptionCharacters": 150,
+      "sections": 7,
       "faq": 3,
-      "words": 959,
+      "words": 1115,
       "source": "articles-help.ts",
       "sources": [
         "https://support.google.com/calendar/answer/37111?hl=en",
         "https://support.google.com/calendar/answer/37118?hl=en",
         "https://support.apple.com/guide/calendar/import-or-export-calendars-icl1023/mac",
         "https://support.apple.com/en-gb/guide/mac-help/mchlp1531/mac",
-        "https://support.microsoft.com/en-us/outlook/share-your-calendar-in-outlook-on-the-web"
+        "https://support.microsoft.com/en-us/outlook/share-your-calendar-in-outlook-on-the-web",
+        "https://www.busymac.com/docs/busycalios/export-as-csv/"
       ],
       "updated": "2026-10-21"
     },
@@ -2151,15 +2194,19 @@
     {
       "locale": "es-ES",
       "slug": "sharing-one-event-not-your-calendar",
-      "title": "Compartir un evento sin entregar el calendario",
-      "description": "Cómo funciona enviar un solo evento, qué recibe realmente la otra persona y por qué no necesita instalar nada para verlo.",
-      "descriptionCharacters": 121,
-      "sections": 3,
-      "faq": 0,
-      "words": 412,
+      "title": "Comparte un evento: elige el enlace y el acceso adecuados",
+      "description": "Comparte un evento sin todo el calendario. Entiende Reader, Writer y Owner, las vistas previas, actualizaciones y límites de retirar acceso.",
+      "descriptionCharacters": 140,
+      "sections": 6,
+      "faq": 3,
+      "words": 768,
       "source": "articles.ts",
-      "sources": [],
-      "updated": "2026-08-27"
+      "sources": [
+        "https://developer.apple.com/help/app-store-connect/offer-app-clip-experiences/overview-of-app-clips/",
+        "https://support.google.com/calendar/answer/37118?co=GENIE.Platform%3DDesktop&hl=en",
+        "https://support.microsoft.com/en-us/outlook/import-or-subscribe-to-a-calendar-in-outlook-com-or-outlook-on-the-web"
+      ],
+      "updated": "2026-10-21"
     },
     {
       "locale": "es-ES",
@@ -2192,15 +2239,18 @@
     {
       "locale": "fi",
       "slug": "who-can-see-what-in-google-calendar",
-      "title": "Kuka näkee mitä, kun jaat Google-kalenterin",
-      "description": "Googlen jakotasot asetetaan nopeasti ja ymmärretään helposti väärin. Mitä kukin niistä todella paljastaa, selvin sanoin.",
-      "descriptionCharacters": 120,
-      "sections": 2,
+      "title": "Google-kalenterin jakaminen: tarkista todelliset oikeudet",
+      "description": "Valitse saatavuuden, tietojen tai muokkauksen oikeudet Google-kalenterissa. Tarkista henkilöiden lisäksi ryhmien, organisaation ja julkinen pääsy.",
+      "descriptionCharacters": 146,
+      "sections": 6,
       "faq": 3,
-      "words": 213,
+      "words": 443,
       "source": "articles-google.ts",
-      "sources": [],
-      "updated": "2026-08-27"
+      "sources": [
+        "https://support.google.com/calendar/answer/15716974?hl=en",
+        "https://support.google.com/calendar/answer/37082?hl=en"
+      ],
+      "updated": "2026-10-21"
     },
     {
       "locale": "fi",
@@ -2300,15 +2350,19 @@
     {
       "locale": "fi",
       "slug": "sharing-one-event-not-your-calendar",
-      "title": "Jaa yksi tapahtuma, ei kalenteriasi",
-      "description": "Miten yhden tapahtuman lähettäminen toimii, mitä vastaanottaja oikeasti saa ja miksi hänen ei tarvitse asentaa mitään nähdäkseen sen.",
-      "descriptionCharacters": 133,
-      "sections": 2,
-      "faq": 0,
-      "words": 215,
+      "title": "Yhden tapahtuman jakaminen: linkki ja oikeudet",
+      "description": "Jaa tapahtuma koko kalenterin sijaan. Tutustu Reader-, Writer- ja Owner-oikeuksiin, esikatseluun, päivityksiin ja käyttöoikeuden poistamisen rajoihin.",
+      "descriptionCharacters": 150,
+      "sections": 6,
+      "faq": 3,
+      "words": 491,
       "source": "articles.ts",
-      "sources": [],
-      "updated": "2026-08-27"
+      "sources": [
+        "https://developer.apple.com/help/app-store-connect/offer-app-clip-experiences/overview-of-app-clips/",
+        "https://support.google.com/calendar/answer/37118?co=GENIE.Platform%3DDesktop&hl=en",
+        "https://support.microsoft.com/en-us/outlook/import-or-subscribe-to-a-calendar-in-outlook-com-or-outlook-on-the-web"
+      ],
+      "updated": "2026-10-21"
     },
     {
       "locale": "fi",
@@ -2632,15 +2686,19 @@
     {
       "locale": "fr-FR",
       "slug": "sharing-one-event-not-your-calendar",
-      "title": "Partager un seul événement, pas son agenda",
-      "description": "Comment fonctionne l'envoi d'un seul événement, ce que reçoit vraiment le destinataire, et pourquoi il n'a rien à installer pour le voir.",
-      "descriptionCharacters": 137,
-      "sections": 3,
-      "faq": 0,
-      "words": 410,
+      "title": "Partager un événement : choisir le lien et les droits adaptés",
+      "description": "Partagez un événement sans partager tout votre calendrier. Distinguez les accès Reader, Writer et Owner, les aperçus, les mises à jour et les limites de la révocation.",
+      "descriptionCharacters": 167,
+      "sections": 6,
+      "faq": 3,
+      "words": 862,
       "source": "articles.ts",
-      "sources": [],
-      "updated": "2026-08-27"
+      "sources": [
+        "https://developer.apple.com/help/app-store-connect/offer-app-clip-experiences/overview-of-app-clips/",
+        "https://support.google.com/calendar/answer/37118?co=GENIE.Platform%3DDesktop&hl=en",
+        "https://support.microsoft.com/en-us/outlook/import-or-subscribe-to-a-calendar-in-outlook-com-or-outlook-on-the-web"
+      ],
+      "updated": "2026-10-21"
     },
     {
       "locale": "fr-FR",
@@ -2673,15 +2731,18 @@
     {
       "locale": "he",
       "slug": "who-can-see-what-in-google-calendar",
-      "title": "מי רואה מה כששיתפתם יומן Google",
-      "description": "רמות השיתוף של Google נקבעות מהר ומובנות לא נכון מהר עוד יותר. מה כל רמה חושפת באמת, במילים פשוטות.",
-      "descriptionCharacters": 99,
-      "sections": 2,
+      "title": "הרשאות יומן Google: בדקו איזו גישה אתם נותנים בפועל",
+      "description": "בחרו גישה לזמינות, לפרטים או לעריכה. לפני שיתוף בדקו גם גישה ציבורית וקבוצתית, ולא רק הרשאות אישיות.",
+      "descriptionCharacters": 100,
+      "sections": 6,
       "faq": 3,
-      "words": 231,
+      "words": 544,
       "source": "articles-google.ts",
-      "sources": [],
-      "updated": "2026-08-27"
+      "sources": [
+        "https://support.google.com/calendar/answer/15716974?hl=en",
+        "https://support.google.com/calendar/answer/37082?hl=en"
+      ],
+      "updated": "2026-10-21"
     },
     {
       "locale": "he",
@@ -2781,15 +2842,19 @@
     {
       "locale": "he",
       "slug": "sharing-one-event-not-your-calendar",
-      "title": "שתפו אירוע אחד, לא את היומן שלכם",
-      "description": "איך עובדת שליחה של אירוע בודד, מה הצד השני באמת מקבל, ולמה הוא לא צריך להתקין דבר כדי לראות אותו.",
-      "descriptionCharacters": 97,
-      "sections": 2,
-      "faq": 0,
-      "words": 221,
+      "title": "שיתוף אירוע אחד: בחירת הקישור וההרשאה המתאימים",
+      "description": "שתפו אירוע בלי לשתף את כל היומן. הכירו את Reader, Writer ו-Owner, תצוגה מקדימה, עדכונים ומגבלות ביטול הגישה.",
+      "descriptionCharacters": 108,
+      "sections": 6,
+      "faq": 3,
+      "words": 600,
       "source": "articles.ts",
-      "sources": [],
-      "updated": "2026-08-27"
+      "sources": [
+        "https://developer.apple.com/help/app-store-connect/offer-app-clip-experiences/overview-of-app-clips/",
+        "https://support.google.com/calendar/answer/37118?co=GENIE.Platform%3DDesktop&hl=en",
+        "https://support.microsoft.com/en-us/outlook/import-or-subscribe-to-a-calendar-in-outlook-com-or-outlook-on-the-web"
+      ],
+      "updated": "2026-10-21"
     },
     {
       "locale": "he",
@@ -2809,15 +2874,18 @@
     {
       "locale": "hi",
       "slug": "who-can-see-what-in-google-calendar",
-      "title": "Google कैलेंडर साझा करने पर कौन क्या देख पाता है",
-      "description": "Google के साझा करने के स्तर तय करने में तेज़ हैं और गलत समझे जाने में उससे भी तेज़। हर स्तर असल में क्या खोलता है, सीधी भाषा में।",
-      "descriptionCharacters": 129,
-      "sections": 2,
+      "title": "Google Calendar की अनुमतियाँ: वास्तविक पहुँच जाँचें",
+      "description": "Google Calendar में उपलब्धता, विवरण या संपादन की अनुमति चुनें। व्यक्तिगत अधिकारों के साथ सार्वजनिक, समूह और संगठन की पहुँच भी जाँचें।",
+      "descriptionCharacters": 133,
+      "sections": 6,
       "faq": 3,
-      "words": 349,
+      "words": 656,
       "source": "articles-google.ts",
-      "sources": [],
-      "updated": "2026-08-27"
+      "sources": [
+        "https://support.google.com/calendar/answer/15716974?hl=en",
+        "https://support.google.com/calendar/answer/37082?hl=en"
+      ],
+      "updated": "2026-10-21"
     },
     {
       "locale": "hi",
@@ -2917,15 +2985,19 @@
     {
       "locale": "hi",
       "slug": "sharing-one-event-not-your-calendar",
-      "title": "एक कार्यक्रम साझा कीजिए, अपना पूरा कैलेंडर नहीं",
-      "description": "एक अकेला कार्यक्रम भेजना कैसे काम करता है, सामने वाले को असल में क्या मिलता है, और उसे देखने के लिए कुछ भी क्यों नहीं लगाना पड़ता।",
-      "descriptionCharacters": 130,
-      "sections": 2,
-      "faq": 0,
-      "words": 318,
+      "title": "एक इवेंट साझा करें: सही लिंक और पहुँच चुनें",
+      "description": "पूरा कैलेंडर नहीं, एक इवेंट साझा करें। Reader, Writer और Owner की भूमिकाएँ, प्रीव्यू, अपडेट और पहुँच वापस लेने की सीमाएँ समझें।",
+      "descriptionCharacters": 127,
+      "sections": 6,
+      "faq": 3,
+      "words": 754,
       "source": "articles.ts",
-      "sources": [],
-      "updated": "2026-08-27"
+      "sources": [
+        "https://developer.apple.com/help/app-store-connect/offer-app-clip-experiences/overview-of-app-clips/",
+        "https://support.google.com/calendar/answer/37118?co=GENIE.Platform%3DDesktop&hl=en",
+        "https://support.microsoft.com/en-us/outlook/import-or-subscribe-to-a-calendar-in-outlook-com-or-outlook-on-the-web"
+      ],
+      "updated": "2026-10-21"
     },
     {
       "locale": "hi",
@@ -2945,15 +3017,18 @@
     {
       "locale": "hu",
       "slug": "who-can-see-what-in-google-calendar",
-      "title": "Ki mit lát, ha megoszt egy Google-naptárat",
-      "description": "A Google megosztási szintjeit gyorsan be lehet állítani és könnyű félreérteni. Mit tár fel valójában mindegyik, egyszerűen elmondva.",
-      "descriptionCharacters": 132,
-      "sections": 2,
+      "title": "Google Naptár-megosztás: ellenőrizze a ténylegesen megadott jogokat",
+      "description": "Válasszon elérhetőségi, részletmegtekintési vagy szerkesztési hozzáférést. Megosztás előtt az egyéni jogok mellett a nyilvános és csoportos hozzáférést is ellenőrizze.",
+      "descriptionCharacters": 167,
+      "sections": 6,
       "faq": 3,
-      "words": 263,
+      "words": 653,
       "source": "articles-google.ts",
-      "sources": [],
-      "updated": "2026-08-27"
+      "sources": [
+        "https://support.google.com/calendar/answer/15716974?hl=en",
+        "https://support.google.com/calendar/answer/37082?hl=en"
+      ],
+      "updated": "2026-10-21"
     },
     {
       "locale": "hu",
@@ -3053,15 +3128,19 @@
     {
       "locale": "hu",
       "slug": "sharing-one-event-not-your-calendar",
-      "title": "Egy esemény megosztása, nem a naptáré",
-      "description": "Hogyan működik egyetlen esemény elküldése, mit kap valójában a másik fél, és miért nem kell semmit telepítenie ahhoz, hogy lássa.",
-      "descriptionCharacters": 129,
-      "sections": 2,
-      "faq": 0,
-      "words": 230,
+      "title": "Egy naptáresemény megosztása: válassza ki a megfelelő linket és hozzáférést",
+      "description": "Osszon meg egy eseményt a teljes naptár helyett. Ismerje meg a Reader, Writer és Owner szerepeket, az előnézetet, a frissítést és a visszavonás korlátait.",
+      "descriptionCharacters": 154,
+      "sections": 6,
+      "faq": 3,
+      "words": 674,
       "source": "articles.ts",
-      "sources": [],
-      "updated": "2026-08-27"
+      "sources": [
+        "https://developer.apple.com/help/app-store-connect/offer-app-clip-experiences/overview-of-app-clips/",
+        "https://support.google.com/calendar/answer/37118?co=GENIE.Platform%3DDesktop&hl=en",
+        "https://support.microsoft.com/en-us/outlook/import-or-subscribe-to-a-calendar-in-outlook-com-or-outlook-on-the-web"
+      ],
+      "updated": "2026-10-21"
     },
     {
       "locale": "hu",
@@ -3081,15 +3160,18 @@
     {
       "locale": "id",
       "slug": "who-can-see-what-in-google-calendar",
-      "title": "Siapa melihat apa saat Anda membagikan kalender Google",
-      "description": "Tingkat berbagi Google mudah diatur dan mudah disalahpahami. Apa yang sebenarnya dibuka masing-masing, dengan bahasa sederhana.",
-      "descriptionCharacters": 127,
-      "sections": 2,
+      "title": "Izin Google Kalender: periksa akses yang benar-benar diberikan",
+      "description": "Pilih akses ketersediaan, rincian, atau pengeditan. Periksa akses publik dan grup, selain izin perorangan, sebelum berbagi.",
+      "descriptionCharacters": 123,
+      "sections": 6,
       "faq": 3,
-      "words": 259,
+      "words": 589,
       "source": "articles-google.ts",
-      "sources": [],
-      "updated": "2026-08-27"
+      "sources": [
+        "https://support.google.com/calendar/answer/15716974?hl=en",
+        "https://support.google.com/calendar/answer/37082?hl=en"
+      ],
+      "updated": "2026-10-21"
     },
     {
       "locale": "id",
@@ -3189,15 +3271,19 @@
     {
       "locale": "id",
       "slug": "sharing-one-event-not-your-calendar",
-      "title": "Berbagi satu acara, bukan kalender Anda",
-      "description": "Bagaimana mengirim satu acara bekerja, apa yang sebenarnya diterima pihak lain, dan mengapa ia tidak perlu memasang apa pun untuk melihatnya.",
-      "descriptionCharacters": 141,
-      "sections": 2,
-      "faq": 0,
-      "words": 240,
+      "title": "Bagikan satu acara kalender: pilih tautan dan akses yang tepat",
+      "description": "Bagikan satu acara tanpa seluruh kalender. Pahami Reader, Writer, Owner, pratinjau, pembaruan, dan batas pencabutan akses.",
+      "descriptionCharacters": 122,
+      "sections": 6,
+      "faq": 3,
+      "words": 634,
       "source": "articles.ts",
-      "sources": [],
-      "updated": "2026-08-27"
+      "sources": [
+        "https://developer.apple.com/help/app-store-connect/offer-app-clip-experiences/overview-of-app-clips/",
+        "https://support.google.com/calendar/answer/37118?co=GENIE.Platform%3DDesktop&hl=en",
+        "https://support.microsoft.com/en-us/outlook/import-or-subscribe-to-a-calendar-in-outlook-com-or-outlook-on-the-web"
+      ],
+      "updated": "2026-10-21"
     },
     {
       "locale": "id",
@@ -3521,15 +3607,19 @@
     {
       "locale": "it",
       "slug": "sharing-one-event-not-your-calendar",
-      "title": "Condividere un solo evento, non il calendario",
-      "description": "Come funziona mandare un singolo evento, cosa riceve davvero l'altra persona e perché non deve installare niente per vederlo.",
-      "descriptionCharacters": 125,
-      "sections": 3,
-      "faq": 0,
-      "words": 377,
+      "title": "Condividere un evento: scegliere il link e i permessi",
+      "description": "Condividi un evento senza l’intero calendario. Scopri i ruoli Reader, Writer e Owner, le anteprime, gli aggiornamenti e i limiti della revoca.",
+      "descriptionCharacters": 142,
+      "sections": 6,
+      "faq": 3,
+      "words": 665,
       "source": "articles.ts",
-      "sources": [],
-      "updated": "2026-08-27"
+      "sources": [
+        "https://developer.apple.com/help/app-store-connect/offer-app-clip-experiences/overview-of-app-clips/",
+        "https://support.google.com/calendar/answer/37118?co=GENIE.Platform%3DDesktop&hl=en",
+        "https://support.microsoft.com/en-us/outlook/import-or-subscribe-to-a-calendar-in-outlook-com-or-outlook-on-the-web"
+      ],
+      "updated": "2026-10-21"
     },
     {
       "locale": "it",
@@ -3562,15 +3652,18 @@
     {
       "locale": "ja",
       "slug": "who-can-see-what-in-google-calendar",
-      "title": "Google カレンダーを共有すると、誰に何が見えるのか",
-      "description": "Google の共有レベルは設定が速く、誤解も速い。それぞれが実際に何を見せるのかを、平たい言葉で。",
-      "descriptionCharacters": 50,
-      "sections": 2,
+      "title": "Google カレンダーの共有権限：実際に付与するアクセスを確認する",
+      "description": "空き時間、予定の詳細、編集のどのアクセスが必要か選びましょう。個人の権限に加え、公開設定やグループのアクセスも確認します。",
+      "descriptionCharacters": 61,
+      "sections": 6,
       "faq": 3,
-      "words": 19,
+      "words": 40,
       "source": "articles-google.ts",
-      "sources": [],
-      "updated": "2026-08-27"
+      "sources": [
+        "https://support.google.com/calendar/answer/15716974?hl=en",
+        "https://support.google.com/calendar/answer/37082?hl=en"
+      ],
+      "updated": "2026-10-21"
     },
     {
       "locale": "ja",
@@ -3670,15 +3763,19 @@
     {
       "locale": "ja",
       "slug": "sharing-one-event-not-your-calendar",
-      "title": "カレンダーではなく、予定をひとつだけ共有する",
-      "description": "予定をひとつ送るとどう動くのか、相手が実際に受け取るものは何か、そしてなぜ相手は何もインストールせずに見られるのか。",
-      "descriptionCharacters": 58,
-      "sections": 2,
-      "faq": 0,
-      "words": 25,
+      "title": "予定を1件だけ共有する：リンクとアクセス権を選ぶ",
+      "description": "カレンダー全体ではなく予定を1件共有する方法。Reader・Writer・Ownerの権限、プレビュー、更新、アクセス取り消しの限界を説明します。",
+      "descriptionCharacters": 73,
+      "sections": 6,
+      "faq": 3,
+      "words": 38,
       "source": "articles.ts",
-      "sources": [],
-      "updated": "2026-08-27"
+      "sources": [
+        "https://developer.apple.com/help/app-store-connect/offer-app-clip-experiences/overview-of-app-clips/",
+        "https://support.google.com/calendar/answer/37118?co=GENIE.Platform%3DDesktop&hl=en",
+        "https://support.microsoft.com/en-us/outlook/import-or-subscribe-to-a-calendar-in-outlook-com-or-outlook-on-the-web"
+      ],
+      "updated": "2026-10-21"
     },
     {
       "locale": "ja",
@@ -3698,15 +3795,18 @@
     {
       "locale": "ko",
       "slug": "who-can-see-what-in-google-calendar",
-      "title": "구글 캘린더를 공유하면 누가 무엇을 보게 되나",
-      "description": "구글의 공유 등급은 설정은 빠르고 오해는 더 빠르다. 각 등급이 실제로 무엇을 드러내는지 쉬운 말로.",
-      "descriptionCharacters": 56,
-      "sections": 2,
+      "title": "Google 캘린더 공유 권한: 실제로 부여한 접근 확인",
+      "description": "한가함 여부, 세부 정보, 편집 중 필요한 접근을 선택하세요. 개인 권한뿐 아니라 공개 및 그룹 접근도 확인하세요.",
+      "descriptionCharacters": 64,
+      "sections": 6,
       "faq": 3,
-      "words": 228,
+      "words": 534,
       "source": "articles-google.ts",
-      "sources": [],
-      "updated": "2026-08-27"
+      "sources": [
+        "https://support.google.com/calendar/answer/15716974?hl=en",
+        "https://support.google.com/calendar/answer/37082?hl=en"
+      ],
+      "updated": "2026-10-21"
     },
     {
       "locale": "ko",
@@ -3806,15 +3906,19 @@
     {
       "locale": "ko",
       "slug": "sharing-one-event-not-your-calendar",
-      "title": "달력이 아니라 일정 하나만 공유하기",
-      "description": "일정 하나를 보내는 일이 어떻게 작동하는지, 상대가 실제로 받는 것은 무엇인지, 그리고 왜 상대는 아무것도 설치하지 않고 볼 수 있는지.",
-      "descriptionCharacters": 76,
-      "sections": 2,
-      "faq": 0,
-      "words": 190,
+      "title": "일정 하나 공유하기: 링크와 접근 권한 선택",
+      "description": "전체 캘린더 대신 일정 하나를 공유하세요. Reader, Writer, Owner 권한과 미리보기, 업데이트, 접근 철회의 한계를 알아봅니다.",
+      "descriptionCharacters": 79,
+      "sections": 6,
+      "faq": 3,
+      "words": 567,
       "source": "articles.ts",
-      "sources": [],
-      "updated": "2026-08-27"
+      "sources": [
+        "https://developer.apple.com/help/app-store-connect/offer-app-clip-experiences/overview-of-app-clips/",
+        "https://support.google.com/calendar/answer/37118?co=GENIE.Platform%3DDesktop&hl=en",
+        "https://support.microsoft.com/en-us/outlook/import-or-subscribe-to-a-calendar-in-outlook-com-or-outlook-on-the-web"
+      ],
+      "updated": "2026-10-21"
     },
     {
       "locale": "ko",
@@ -3834,15 +3938,18 @@
     {
       "locale": "ms",
       "slug": "who-can-see-what-in-google-calendar",
-      "title": "Siapa nampak apa apabila anda berkongsi kalendar Google",
-      "description": "Tahap perkongsian Google cepat ditetapkan dan mudah disalah faham. Apa yang sebenarnya didedahkan oleh setiap satu, secara terus terang.",
-      "descriptionCharacters": 136,
-      "sections": 2,
+      "title": "Kebenaran Google Calendar: semak akses sebenar",
+      "description": "Pilih akses ketersediaan, butiran atau suntingan Google Calendar. Semak akses awam dan kumpulan selain kebenaran individu.",
+      "descriptionCharacters": 122,
+      "sections": 6,
       "faq": 3,
-      "words": 255,
+      "words": 522,
       "source": "articles-google.ts",
-      "sources": [],
-      "updated": "2026-08-27"
+      "sources": [
+        "https://support.google.com/calendar/answer/15716974?hl=en",
+        "https://support.google.com/calendar/answer/37082?hl=en"
+      ],
+      "updated": "2026-10-21"
     },
     {
       "locale": "ms",
@@ -3942,15 +4049,19 @@
     {
       "locale": "ms",
       "slug": "sharing-one-event-not-your-calendar",
-      "title": "Kongsi satu acara, bukan kalendar anda",
-      "description": "Bagaimana menghantar satu acara berfungsi, apa yang sebenarnya diterima pihak sana, dan mengapa dia tidak perlu memasang apa-apa untuk melihatnya.",
-      "descriptionCharacters": 146,
-      "sections": 2,
-      "faq": 0,
-      "words": 248,
+      "title": "Kongsi satu acara: pilih pautan dan akses yang sesuai",
+      "description": "Kongsi satu acara tanpa seluruh kalendar. Fahami Reader, Writer dan Owner, pratonton, kemas kini serta batas penarikan balik akses.",
+      "descriptionCharacters": 131,
+      "sections": 6,
+      "faq": 3,
+      "words": 593,
       "source": "articles.ts",
-      "sources": [],
-      "updated": "2026-08-27"
+      "sources": [
+        "https://developer.apple.com/help/app-store-connect/offer-app-clip-experiences/overview-of-app-clips/",
+        "https://support.google.com/calendar/answer/37118?co=GENIE.Platform%3DDesktop&hl=en",
+        "https://support.microsoft.com/en-us/outlook/import-or-subscribe-to-a-calendar-in-outlook-com-or-outlook-on-the-web"
+      ],
+      "updated": "2026-10-21"
     },
     {
       "locale": "ms",
@@ -3970,15 +4081,18 @@
     {
       "locale": "nl-NL",
       "slug": "who-can-see-what-in-google-calendar",
-      "title": "Wie ziet wat als je een Google-agenda deelt",
-      "description": "De deelniveaus van Google zijn snel ingesteld en makkelijk verkeerd begrepen. Wat elk niveau werkelijk prijsgeeft, in gewone woorden.",
-      "descriptionCharacters": 133,
-      "sections": 2,
+      "title": "Deelrechten in Google Agenda: controleer welke toegang je geeft",
+      "description": "Kies toegang tot beschikbaarheid, details of bewerken. Controleer vóór het delen zowel openbare en groepstoegang als individuele rechten.",
+      "descriptionCharacters": 137,
+      "sections": 6,
       "faq": 3,
-      "words": 281,
+      "words": 692,
       "source": "articles-google.ts",
-      "sources": [],
-      "updated": "2026-08-27"
+      "sources": [
+        "https://support.google.com/calendar/answer/15716974?hl=en",
+        "https://support.google.com/calendar/answer/37082?hl=en"
+      ],
+      "updated": "2026-10-21"
     },
     {
       "locale": "nl-NL",
@@ -4078,15 +4192,19 @@
     {
       "locale": "nl-NL",
       "slug": "sharing-one-event-not-your-calendar",
-      "title": "Eén afspraak delen, niet uw agenda",
-      "description": "Hoe het versturen van één afspraak werkt, wat de ander werkelijk krijgt en waarom die niets hoeft te installeren om hem te zien.",
-      "descriptionCharacters": 128,
-      "sections": 2,
-      "faq": 0,
-      "words": 268,
+      "title": "Eén agenda-afspraak delen: kies de juiste link en toegang",
+      "description": "Deel één afspraak zonder je hele agenda te delen. Begrijp Reader, Writer en Owner, voorvertoningen, updates en de grenzen van het intrekken van toegang.",
+      "descriptionCharacters": 152,
+      "sections": 6,
+      "faq": 3,
+      "words": 775,
       "source": "articles.ts",
-      "sources": [],
-      "updated": "2026-08-27"
+      "sources": [
+        "https://developer.apple.com/help/app-store-connect/offer-app-clip-experiences/overview-of-app-clips/",
+        "https://support.google.com/calendar/answer/37118?co=GENIE.Platform%3DDesktop&hl=en",
+        "https://support.microsoft.com/en-us/outlook/import-or-subscribe-to-a-calendar-in-outlook-com-or-outlook-on-the-web"
+      ],
+      "updated": "2026-10-21"
     },
     {
       "locale": "nl-NL",
@@ -4106,15 +4224,18 @@
     {
       "locale": "no",
       "slug": "who-can-see-what-in-google-calendar",
-      "title": "Hvem ser hva når du deler en Google-kalender",
-      "description": "Googles delingsnivåer settes raskt og misforstås lett. Hva hvert nivå faktisk blottlegger, sagt rett fram.",
-      "descriptionCharacters": 106,
-      "sections": 2,
+      "title": "Google Kalender: sjekk tilgangen du faktisk gir",
+      "description": "Velg tilgang til tilgjengelighet, detaljer eller redigering. Sjekk offentlig tilgang og grupper i tillegg til individuelle rettigheter før deling.",
+      "descriptionCharacters": 146,
+      "sections": 6,
       "faq": 3,
-      "words": 295,
+      "words": 598,
       "source": "articles-google.ts",
-      "sources": [],
-      "updated": "2026-08-27"
+      "sources": [
+        "https://support.google.com/calendar/answer/15716974?hl=en",
+        "https://support.google.com/calendar/answer/37082?hl=en"
+      ],
+      "updated": "2026-10-21"
     },
     {
       "locale": "no",
@@ -4214,15 +4335,19 @@
     {
       "locale": "no",
       "slug": "sharing-one-event-not-your-calendar",
-      "title": "Del én hendelse, ikke kalenderen din",
-      "description": "Hvordan det foregår å sende én enkelt hendelse, hva mottakeren faktisk får, og hvorfor vedkommende ikke trenger å installere noe for å se den.",
-      "descriptionCharacters": 142,
-      "sections": 2,
-      "faq": 0,
-      "words": 274,
+      "title": "Del én kalenderhendelse: velg riktig lenke og tilgang",
+      "description": "Del én hendelse uten hele kalenderen. Forstå Reader, Writer og Owner, forhåndsvisninger, oppdateringer og grensene for å trekke tilbake tilgang.",
+      "descriptionCharacters": 144,
+      "sections": 6,
+      "faq": 3,
+      "words": 638,
       "source": "articles.ts",
-      "sources": [],
-      "updated": "2026-08-27"
+      "sources": [
+        "https://developer.apple.com/help/app-store-connect/offer-app-clip-experiences/overview-of-app-clips/",
+        "https://support.google.com/calendar/answer/37118?co=GENIE.Platform%3DDesktop&hl=en",
+        "https://support.microsoft.com/en-us/outlook/import-or-subscribe-to-a-calendar-in-outlook-com-or-outlook-on-the-web"
+      ],
+      "updated": "2026-10-21"
     },
     {
       "locale": "no",
@@ -4242,15 +4367,18 @@
     {
       "locale": "pl",
       "slug": "who-can-see-what-in-google-calendar",
-      "title": "Kto co widzi, gdy udostępniasz kalendarz Google",
-      "description": "Poziomy udostępniania w Google ustawia się szybko i łatwo rozumie opacznie. Co naprawdę odsłania każdy z nich, powiedziane wprost.",
-      "descriptionCharacters": 130,
-      "sections": 2,
+      "title": "Uprawnienia Google Calendar: sprawdź rzeczywisty dostęp",
+      "description": "Wybierz dostęp do dostępności, szczegółów lub edycji w Google Calendar. Sprawdź prawa publiczne i grupowe obok uprawnień konkretnych osób.",
+      "descriptionCharacters": 138,
+      "sections": 6,
       "faq": 3,
-      "words": 248,
+      "words": 478,
       "source": "articles-google.ts",
-      "sources": [],
-      "updated": "2026-08-27"
+      "sources": [
+        "https://support.google.com/calendar/answer/15716974?hl=en",
+        "https://support.google.com/calendar/answer/37082?hl=en"
+      ],
+      "updated": "2026-10-21"
     },
     {
       "locale": "pl",
@@ -4350,15 +4478,19 @@
     {
       "locale": "pl",
       "slug": "sharing-one-event-not-your-calendar",
-      "title": "Udostępnić jedno wydarzenie, a nie kalendarz",
-      "description": "Jak działa wysłanie pojedynczego wydarzenia, co druga strona naprawdę dostaje i dlaczego nie musi niczego instalować, żeby je zobaczyć.",
-      "descriptionCharacters": 135,
-      "sections": 2,
-      "faq": 0,
-      "words": 226,
+      "title": "Udostępnij jedno wydarzenie: wybierz link i uprawnienia",
+      "description": "Udostępnij wydarzenie bez całego kalendarza. Poznaj role Reader, Writer i Owner, podgląd, aktualizacje oraz ograniczenia cofania dostępu.",
+      "descriptionCharacters": 137,
+      "sections": 6,
+      "faq": 3,
+      "words": 541,
       "source": "articles.ts",
-      "sources": [],
-      "updated": "2026-08-27"
+      "sources": [
+        "https://developer.apple.com/help/app-store-connect/offer-app-clip-experiences/overview-of-app-clips/",
+        "https://support.google.com/calendar/answer/37118?co=GENIE.Platform%3DDesktop&hl=en",
+        "https://support.microsoft.com/en-us/outlook/import-or-subscribe-to-a-calendar-in-outlook-com-or-outlook-on-the-web"
+      ],
+      "updated": "2026-10-21"
     },
     {
       "locale": "pl",
@@ -4378,15 +4510,18 @@
     {
       "locale": "pt-BR",
       "slug": "who-can-see-what-in-google-calendar",
-      "title": "Quem vê o quê quando você compartilha uma agenda do Google",
-      "description": "Os níveis de compartilhamento do Google são rápidos de definir e fáceis de entender errado. O que cada um realmente expõe, em termos simples.",
-      "descriptionCharacters": 141,
-      "sections": 2,
+      "title": "Permissões do Google Agenda: confira o acesso que você concede",
+      "description": "Escolha acesso à disponibilidade, aos detalhes ou à edição no Google Agenda. Antes de compartilhar, confira também acessos públicos e por grupos.",
+      "descriptionCharacters": 145,
+      "sections": 6,
       "faq": 3,
-      "words": 282,
+      "words": 766,
       "source": "articles-google.ts",
-      "sources": [],
-      "updated": "2026-08-27"
+      "sources": [
+        "https://support.google.com/calendar/answer/15716974?hl=en",
+        "https://support.google.com/calendar/answer/37082?hl=en"
+      ],
+      "updated": "2026-10-21"
     },
     {
       "locale": "pt-BR",
@@ -4537,15 +4672,19 @@
     {
       "locale": "pt-BR",
       "slug": "sharing-one-event-not-your-calendar",
-      "title": "Compartilhar um compromisso, não a agenda",
-      "description": "Como funciona enviar um único compromisso, o que a outra pessoa realmente recebe e por que ela não precisa instalar nada para ver.",
-      "descriptionCharacters": 130,
-      "sections": 2,
-      "faq": 0,
-      "words": 273,
+      "title": "Compartilhe um evento: escolha o link e o acesso adequados",
+      "description": "Compartilhe um evento sem compartilhar todo o calendário. Entenda os acessos Reader, Writer e Owner, prévias, atualizações e limites da revogação.",
+      "descriptionCharacters": 146,
+      "sections": 6,
+      "faq": 3,
+      "words": 809,
       "source": "articles.ts",
-      "sources": [],
-      "updated": "2026-08-27"
+      "sources": [
+        "https://developer.apple.com/help/app-store-connect/offer-app-clip-experiences/overview-of-app-clips/",
+        "https://support.google.com/calendar/answer/37118?co=GENIE.Platform%3DDesktop&hl=en",
+        "https://support.microsoft.com/en-us/outlook/import-or-subscribe-to-a-calendar-in-outlook-com-or-outlook-on-the-web"
+      ],
+      "updated": "2026-10-21"
     },
     {
       "locale": "pt-BR",
@@ -4565,15 +4704,18 @@
     {
       "locale": "ro",
       "slug": "who-can-see-what-in-google-calendar",
-      "title": "Cine ce vede când partajezi un calendar Google",
-      "description": "Nivelurile de partajare ale Google se setează repede și se înțeleg greșit ușor. Ce expune de fapt fiecare, spus pe șleau.",
-      "descriptionCharacters": 121,
-      "sections": 2,
+      "title": "Permisiuni Google Calendar: verifică accesul acordat efectiv",
+      "description": "Alege acces la disponibilitate, detalii sau editare. Verifică accesul public și prin grupuri, nu doar permisiunile individuale, înainte de partajare.",
+      "descriptionCharacters": 149,
+      "sections": 6,
       "faq": 3,
-      "words": 279,
+      "words": 604,
       "source": "articles-google.ts",
-      "sources": [],
-      "updated": "2026-08-27"
+      "sources": [
+        "https://support.google.com/calendar/answer/15716974?hl=en",
+        "https://support.google.com/calendar/answer/37082?hl=en"
+      ],
+      "updated": "2026-10-21"
     },
     {
       "locale": "ro",
@@ -4673,15 +4815,19 @@
     {
       "locale": "ro",
       "slug": "sharing-one-event-not-your-calendar",
-      "title": "Partajați un eveniment, nu calendarul",
-      "description": "Cum funcționează trimiterea unui singur eveniment, ce primește de fapt cealaltă persoană și de ce nu trebuie să instaleze nimic ca să îl vadă.",
-      "descriptionCharacters": 142,
-      "sections": 2,
-      "faq": 0,
-      "words": 273,
+      "title": "Partajează un singur eveniment: alege linkul și accesul potrivit",
+      "description": "Partajează un eveniment fără întregul calendar. Află ce permit Reader, Writer și Owner, previzualizarea, actualizările și retragerea accesului.",
+      "descriptionCharacters": 143,
+      "sections": 6,
+      "faq": 3,
+      "words": 670,
       "source": "articles.ts",
-      "sources": [],
-      "updated": "2026-08-27"
+      "sources": [
+        "https://developer.apple.com/help/app-store-connect/offer-app-clip-experiences/overview-of-app-clips/",
+        "https://support.google.com/calendar/answer/37118?co=GENIE.Platform%3DDesktop&hl=en",
+        "https://support.microsoft.com/en-us/outlook/import-or-subscribe-to-a-calendar-in-outlook-com-or-outlook-on-the-web"
+      ],
+      "updated": "2026-10-21"
     },
     {
       "locale": "ro",
@@ -4701,15 +4847,18 @@
     {
       "locale": "ru",
       "slug": "who-can-see-what-in-google-calendar",
-      "title": "Кто что видит, когда вы открываете доступ к календарю Google",
-      "description": "Уровни доступа в Google выставляются за секунду и понимаются неверно. Что на самом деле открывает каждый из них, простыми словами.",
-      "descriptionCharacters": 130,
-      "sections": 2,
+      "title": "Права Google Calendar: проверьте фактический доступ",
+      "description": "Выберите доступ к занятости, подробностям или правкам Google Calendar. Проверьте публичные и групповые разрешения вместе с индивидуальными.",
+      "descriptionCharacters": 139,
+      "sections": 6,
       "faq": 3,
-      "words": 251,
+      "words": 482,
       "source": "articles-google.ts",
-      "sources": [],
-      "updated": "2026-08-27"
+      "sources": [
+        "https://support.google.com/calendar/answer/15716974?hl=en",
+        "https://support.google.com/calendar/answer/37082?hl=en"
+      ],
+      "updated": "2026-10-21"
     },
     {
       "locale": "ru",
@@ -4809,15 +4958,19 @@
     {
       "locale": "ru",
       "slug": "sharing-one-event-not-your-calendar",
-      "title": "Отправить одно событие, а не календарь",
-      "description": "Как работает отправка одного события, что на самом деле получает другая сторона и почему ей не нужно ничего устанавливать, чтобы это увидеть.",
-      "descriptionCharacters": 141,
-      "sections": 2,
-      "faq": 0,
-      "words": 230,
+      "title": "Поделиться одним событием: ссылка и права доступа",
+      "description": "Отправьте одно событие, а не весь календарь. Разберитесь в ролях Reader, Writer и Owner, предпросмотре, обновлениях и ограничениях отзыва доступа.",
+      "descriptionCharacters": 146,
+      "sections": 6,
+      "faq": 3,
+      "words": 524,
       "source": "articles.ts",
-      "sources": [],
-      "updated": "2026-08-27"
+      "sources": [
+        "https://developer.apple.com/help/app-store-connect/offer-app-clip-experiences/overview-of-app-clips/",
+        "https://support.google.com/calendar/answer/37118?co=GENIE.Platform%3DDesktop&hl=en",
+        "https://support.microsoft.com/en-us/outlook/import-or-subscribe-to-a-calendar-in-outlook-com-or-outlook-on-the-web"
+      ],
+      "updated": "2026-10-21"
     },
     {
       "locale": "ru",
@@ -4837,15 +4990,18 @@
     {
       "locale": "sv",
       "slug": "who-can-see-what-in-google-calendar",
-      "title": "Vem ser vad när du delar en Google-kalender",
-      "description": "Googles delningsnivåer ställs in snabbt och missförstås lätt. Vad var och en faktiskt blottar, i klartext.",
-      "descriptionCharacters": 106,
-      "sections": 2,
+      "title": "Delningsbehörigheter i Google Kalender: kontrollera åtkomsten du ger",
+      "description": "Välj åtkomst till tillgänglighet, detaljer eller redigering. Kontrollera offentlig åtkomst och gruppåtkomst utöver individuella behörigheter.",
+      "descriptionCharacters": 141,
+      "sections": 6,
       "faq": 3,
-      "words": 277,
+      "words": 661,
       "source": "articles-google.ts",
-      "sources": [],
-      "updated": "2026-08-27"
+      "sources": [
+        "https://support.google.com/calendar/answer/15716974?hl=en",
+        "https://support.google.com/calendar/answer/37082?hl=en"
+      ],
+      "updated": "2026-10-21"
     },
     {
       "locale": "sv",
@@ -4945,15 +5101,19 @@
     {
       "locale": "sv",
       "slug": "sharing-one-event-not-your-calendar",
-      "title": "Dela en händelse, inte din kalender",
-      "description": "Hur det går till att skicka en enda händelse, vad mottagaren faktiskt får och varför den inte behöver installera något för att se den.",
-      "descriptionCharacters": 134,
-      "sections": 2,
-      "faq": 0,
-      "words": 257,
+      "title": "Dela en kalenderhändelse: välj rätt länk och behörighet",
+      "description": "Dela en händelse utan att dela hela kalendern. Förstå Reader, Writer och Owner, förhandsvisningar, uppdateringar och vad återkallad åtkomst inte gör.",
+      "descriptionCharacters": 149,
+      "sections": 6,
+      "faq": 3,
+      "words": 707,
       "source": "articles.ts",
-      "sources": [],
-      "updated": "2026-08-27"
+      "sources": [
+        "https://developer.apple.com/help/app-store-connect/offer-app-clip-experiences/overview-of-app-clips/",
+        "https://support.google.com/calendar/answer/37118?co=GENIE.Platform%3DDesktop&hl=en",
+        "https://support.microsoft.com/en-us/outlook/import-or-subscribe-to-a-calendar-in-outlook-com-or-outlook-on-the-web"
+      ],
+      "updated": "2026-10-21"
     },
     {
       "locale": "sv",
@@ -4973,15 +5133,18 @@
     {
       "locale": "th",
       "slug": "who-can-see-what-in-google-calendar",
-      "title": "ใครเห็นอะไรบ้างเมื่อคุณแชร์ปฏิทิน Google",
-      "description": "ระดับการแชร์ของ Google ตั้งค่าได้เร็วและเข้าใจผิดได้เร็วกว่า แต่ละระดับเปิดเผยอะไรจริง ๆ อธิบายแบบตรงไปตรงมา",
-      "descriptionCharacters": 108,
-      "sections": 2,
+      "title": "สิทธิ์ Google ปฏิทิน: ตรวจการเข้าถึงที่คุณให้จริง",
+      "description": "เลือกสิทธิ์ดูเวลาว่าง รายละเอียด หรือแก้ไข ตรวจสิทธิ์สาธารณะและกลุ่มร่วมกับสิทธิ์รายบุคคลก่อนแชร์",
+      "descriptionCharacters": 97,
+      "sections": 6,
       "faq": 3,
-      "words": 61,
+      "words": 133,
       "source": "articles-google.ts",
-      "sources": [],
-      "updated": "2026-08-27"
+      "sources": [
+        "https://support.google.com/calendar/answer/15716974?hl=en",
+        "https://support.google.com/calendar/answer/37082?hl=en"
+      ],
+      "updated": "2026-10-21"
     },
     {
       "locale": "th",
@@ -5081,15 +5244,19 @@
     {
       "locale": "th",
       "slug": "sharing-one-event-not-your-calendar",
-      "title": "แชร์กิจกรรมเดียว ไม่ใช่ปฏิทินทั้งเล่ม",
-      "description": "การส่งกิจกรรมเดียวทำงานอย่างไร อีกฝ่ายได้รับอะไรจริง ๆ และทำไมเขาไม่ต้องติดตั้งอะไรเลยก็ดูได้",
-      "descriptionCharacters": 93,
-      "sections": 2,
-      "faq": 0,
-      "words": 59,
+      "title": "แชร์กิจกรรมเดียว: เลือกลิงก์และสิทธิ์ให้ตรงความต้องการ",
+      "description": "แชร์กิจกรรมโดยไม่แชร์ทั้งปฏิทิน เข้าใจสิทธิ์ Reader, Writer, Owner การดูตัวอย่าง การอัปเดต และข้อจำกัดของการถอนสิทธิ์",
+      "descriptionCharacters": 117,
+      "sections": 6,
+      "faq": 3,
+      "words": 160,
       "source": "articles.ts",
-      "sources": [],
-      "updated": "2026-08-27"
+      "sources": [
+        "https://developer.apple.com/help/app-store-connect/offer-app-clip-experiences/overview-of-app-clips/",
+        "https://support.google.com/calendar/answer/37118?co=GENIE.Platform%3DDesktop&hl=en",
+        "https://support.microsoft.com/en-us/outlook/import-or-subscribe-to-a-calendar-in-outlook-com-or-outlook-on-the-web"
+      ],
+      "updated": "2026-10-21"
     },
     {
       "locale": "th",
@@ -5109,15 +5276,18 @@
     {
       "locale": "tr",
       "slug": "who-can-see-what-in-google-calendar",
-      "title": "Bir Google takvimini paylaştığınızda kim neyi görür",
-      "description": "Google’ın paylaşım düzeyleri hızlı ayarlanır ve kolay yanlış anlaşılır. Her birinin gerçekte neyi açtığı, sade bir dille.",
-      "descriptionCharacters": 121,
-      "sections": 2,
+      "title": "Google Calendar paylaşımı: gerçek erişimi kontrol edin",
+      "description": "Google Calendar için uygun görüntüleme veya düzenleme hakkını seçin. Kişisel izinlerle birlikte herkese açık, grup ve kuruluş erişimini inceleyin.",
+      "descriptionCharacters": 146,
+      "sections": 6,
       "faq": 3,
-      "words": 218,
+      "words": 475,
       "source": "articles-google.ts",
-      "sources": [],
-      "updated": "2026-08-27"
+      "sources": [
+        "https://support.google.com/calendar/answer/15716974?hl=en",
+        "https://support.google.com/calendar/answer/37082?hl=en"
+      ],
+      "updated": "2026-10-21"
     },
     {
       "locale": "tr",
@@ -5217,15 +5387,19 @@
     {
       "locale": "tr",
       "slug": "sharing-one-event-not-your-calendar",
-      "title": "Takvimi değil, tek bir etkinliği paylaşmak",
-      "description": "Tek bir etkinlik göndermenin nasıl işlediği, karşı tarafın gerçekte ne aldığı ve görmek için neden hiçbir şey kurmasına gerek olmadığı.",
-      "descriptionCharacters": 135,
-      "sections": 2,
-      "faq": 0,
-      "words": 205,
+      "title": "Tek etkinlik paylaşımı: doğru bağlantı ve erişim",
+      "description": "Tüm takvim yerine tek etkinlik paylaşın. Reader, Writer ve Owner rollerini, önizlemeyi, güncellemeleri ve erişimi kaldırmanın sınırlarını öğrenin.",
+      "descriptionCharacters": 146,
+      "sections": 6,
+      "faq": 3,
+      "words": 512,
       "source": "articles.ts",
-      "sources": [],
-      "updated": "2026-08-27"
+      "sources": [
+        "https://developer.apple.com/help/app-store-connect/offer-app-clip-experiences/overview-of-app-clips/",
+        "https://support.google.com/calendar/answer/37118?co=GENIE.Platform%3DDesktop&hl=en",
+        "https://support.microsoft.com/en-us/outlook/import-or-subscribe-to-a-calendar-in-outlook-com-or-outlook-on-the-web"
+      ],
+      "updated": "2026-10-21"
     },
     {
       "locale": "tr",
@@ -5245,15 +5419,18 @@
     {
       "locale": "vi",
       "slug": "who-can-see-what-in-google-calendar",
-      "title": "Ai thấy gì khi bạn chia sẻ lịch Google",
-      "description": "Các mức chia sẻ của Google đặt rất nhanh và rất dễ hiểu sai. Mỗi mức thực sự để lộ điều gì, nói thẳng ra.",
-      "descriptionCharacters": 105,
-      "sections": 2,
+      "title": "Quyền chia sẻ Google Calendar: kiểm tra quyền bạn thực sự cấp",
+      "description": "Chọn quyền xem thời gian rảnh/bận, chi tiết hoặc chỉnh sửa. Kiểm tra truy cập công khai và qua nhóm bên cạnh quyền từng người trước khi chia sẻ.",
+      "descriptionCharacters": 144,
+      "sections": 6,
       "faq": 3,
-      "words": 386,
+      "words": 954,
       "source": "articles-google.ts",
-      "sources": [],
-      "updated": "2026-08-27"
+      "sources": [
+        "https://support.google.com/calendar/answer/15716974?hl=en",
+        "https://support.google.com/calendar/answer/37082?hl=en"
+      ],
+      "updated": "2026-10-21"
     },
     {
       "locale": "vi",
@@ -5353,15 +5530,19 @@
     {
       "locale": "vi",
       "slug": "sharing-one-event-not-your-calendar",
-      "title": "Chia sẻ một sự kiện, không phải cả cuốn lịch",
-      "description": "Việc gửi một sự kiện đơn lẻ hoạt động ra sao, người nhận thực sự nhận được gì, và vì sao họ không cần cài gì để xem.",
-      "descriptionCharacters": 116,
-      "sections": 2,
-      "faq": 0,
-      "words": 344,
+      "title": "Chia sẻ một sự kiện: chọn đúng liên kết và quyền truy cập",
+      "description": "Chia sẻ một sự kiện mà không chia sẻ cả lịch. Hiểu quyền Reader, Writer và Owner, bản xem trước, cập nhật và giới hạn của việc thu hồi quyền.",
+      "descriptionCharacters": 141,
+      "sections": 6,
+      "faq": 3,
+      "words": 1038,
       "source": "articles.ts",
-      "sources": [],
-      "updated": "2026-08-27"
+      "sources": [
+        "https://developer.apple.com/help/app-store-connect/offer-app-clip-experiences/overview-of-app-clips/",
+        "https://support.google.com/calendar/answer/37118?co=GENIE.Platform%3DDesktop&hl=en",
+        "https://support.microsoft.com/en-us/outlook/import-or-subscribe-to-a-calendar-in-outlook-com-or-outlook-on-the-web"
+      ],
+      "updated": "2026-10-21"
     },
     {
       "locale": "vi",
@@ -5381,15 +5562,18 @@
     {
       "locale": "zh-Hans",
       "slug": "who-can-see-what-in-google-calendar",
-      "title": "共享谷歌日历时，谁能看到什么",
-      "description": "谷歌的共享级别设置很快，误解更快。每一级到底暴露了什么，说得直白些。",
-      "descriptionCharacters": 34,
-      "sections": 2,
+      "title": "Google 日历分享权限：检查实际授予的访问",
+      "description": "按需求选择空闲状态、详情或编辑权限。分享前同时检查公开、群组及个人访问权限。",
+      "descriptionCharacters": 38,
+      "sections": 6,
       "faq": 3,
-      "words": 18,
+      "words": 70,
       "source": "articles-google.ts",
-      "sources": [],
-      "updated": "2026-08-27"
+      "sources": [
+        "https://support.google.com/calendar/answer/15716974?hl=en",
+        "https://support.google.com/calendar/answer/37082?hl=en"
+      ],
+      "updated": "2026-10-21"
     },
     {
       "locale": "zh-Hans",
@@ -5489,15 +5673,19 @@
     {
       "locale": "zh-Hans",
       "slug": "sharing-one-event-not-your-calendar",
-      "title": "分享一个日程，而不是整本日历",
-      "description": "发送单个日程是怎么运作的，对方实际收到的是什么，以及为什么对方不必安装任何东西就能看。",
-      "descriptionCharacters": 43,
-      "sections": 2,
-      "faq": 0,
-      "words": 18,
+      "title": "分享单个日历活动：选择合适的链接和权限",
+      "description": "无需分享整个日历即可分享一个活动。了解 Reader、Writer、Owner 权限、预览链接、更新以及撤销访问的限制。",
+      "descriptionCharacters": 60,
+      "sections": 6,
+      "faq": 3,
+      "words": 70,
       "source": "articles.ts",
-      "sources": [],
-      "updated": "2026-08-27"
+      "sources": [
+        "https://developer.apple.com/help/app-store-connect/offer-app-clip-experiences/overview-of-app-clips/",
+        "https://support.google.com/calendar/answer/37118?co=GENIE.Platform%3DDesktop&hl=en",
+        "https://support.microsoft.com/en-us/outlook/import-or-subscribe-to-a-calendar-in-outlook-com-or-outlook-on-the-web"
+      ],
+      "updated": "2026-10-21"
     },
     {
       "locale": "zh-Hans",
@@ -5517,15 +5705,18 @@
     {
       "locale": "zh-Hant",
       "slug": "who-can-see-what-in-google-calendar",
-      "title": "分享 Google 日曆時，誰看得到什麼",
-      "description": "Google 的分享層級設定很快，誤會更快。每一層實際上會揭露什麼，講得直白些。",
-      "descriptionCharacters": 40,
-      "sections": 2,
+      "title": "Google Calendar 分享權限：檢查實際開放的存取",
+      "description": "為 Google Calendar 選擇忙碌狀態、詳細資料或編輯權限。分享前請一起檢查個人、群組、組織與公開存取設定。",
+      "descriptionCharacters": 59,
+      "sections": 6,
       "faq": 3,
-      "words": 20,
+      "words": 71,
       "source": "articles-google.ts",
-      "sources": [],
-      "updated": "2026-08-27"
+      "sources": [
+        "https://support.google.com/calendar/answer/15716974?hl=en",
+        "https://support.google.com/calendar/answer/37082?hl=en"
+      ],
+      "updated": "2026-10-21"
     },
     {
       "locale": "zh-Hant",
@@ -5625,15 +5816,19 @@
     {
       "locale": "zh-Hant",
       "slug": "sharing-one-event-not-your-calendar",
-      "title": "分享一個行程，而不是整本行事曆",
-      "description": "傳送單一行程是怎麼運作的，對方實際收到的是什麼，以及為什麼對方不必安裝任何東西就能看。",
-      "descriptionCharacters": 43,
-      "sections": 2,
-      "faq": 0,
-      "words": 23,
+      "title": "分享單一行程：選擇適合的連結與權限",
+      "description": "分享一個行程，而非整份行事曆。了解 Reader、Writer、Owner 權限、預覽、更新，以及撤銷存取權的限制。",
+      "descriptionCharacters": 58,
+      "sections": 6,
+      "faq": 3,
+      "words": 83,
       "source": "articles.ts",
-      "sources": [],
-      "updated": "2026-08-27"
+      "sources": [
+        "https://developer.apple.com/help/app-store-connect/offer-app-clip-experiences/overview-of-app-clips/",
+        "https://support.google.com/calendar/answer/37118?co=GENIE.Platform%3DDesktop&hl=en",
+        "https://support.microsoft.com/en-us/outlook/import-or-subscribe-to-a-calendar-in-outlook-com-or-outlook-on-the-web"
+      ],
+      "updated": "2026-10-21"
     },
     {
       "locale": "zh-Hant",

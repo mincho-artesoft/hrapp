@@ -1,0 +1,231 @@
+{
+  "schemaVersion": 1,
+  "date": "2026-10-21",
+  "scope": {
+    "selectedExactUrls": 4,
+    "fullSubstantiveTextBodies": 4,
+    "partialFinalBodies": 0,
+    "failedFetches": 0,
+    "previouslyFailedRetries": 0,
+    "englishInventoryEntries": 50,
+    "currentCloudMainBodiesReviewed": 8,
+    "currentCloudFullObjectsIncludingFaqReviewed": 2
+  },
+  "selectionSource": "research/competitors/coverage-current-20261021.json",
+  "selectionSourceSha256": "b5a4cf5bfb4e78761844ee2e6799e957b4f7c07e9c7cb06c45b1b9a464c49a34",
+  "method": "Selected useful discovered exact URLs from current queue. Web opens followed by public HTML text extraction for two long documents, with bounded chunks to complete reading. Repeated fetches of the same new document only completed truncated views and are not counted as additional URLs.",
+  "reviews": [
+    {
+      "url": "https://www.busymac.com/docs/busycalios/70670-settings/",
+      "publisher": "BusyMac / BusyCal",
+      "priorStatus": "discovered",
+      "status": "full",
+      "scope": "Complete substantive Settings text. Web display initially partial; direct public HTML extraction completed text review of34335characters, including remainder19000–34334. Navigation/footer/scripts/styles excluded; no screenshots or linked-page bodies.",
+      "publisherFindings": [
+        "Saved calendar sets can affect visible calendars and new-event defaults; widget selection and alarm settings have distinct controls.",
+        "Disconnecting an account, deleting a calendar and unsubscribing are separate documented operations.",
+        "App locks can have a separate widget-access exception; support logs may contain calendar data."
+      ],
+      "limits": [
+        "Do not adopt blanket permission-grant instructions or universal private-event behavior. No Cloud Face ID calendar sets, account-disable control, journal/task or CSV parity inferred."
+      ],
+      "priorProvenance": [
+        {
+          "file": "research/competitors/batch04-search-discovery-20261021.json",
+          "field": "/primaryCandidates/3/url",
+          "record": {
+            "url": "https://www.busymac.com/docs/busycalios/70670-settings/",
+            "status": "search_excerpt_only",
+            "topics": [
+              "widget calendar selection",
+              "floating time",
+              "badge meaning",
+              "export calendar selection"
+            ],
+            "nextAction": "Dedup then read exact current iOS controls; do not copy controls to Cloud."
+          },
+          "batchQueries": [
+            "best calendar app iphone weather widgets shared calendars TimeTree Calendars 366",
+            "iPhone calendar app recurring events notifications export Timepage BusyCal"
+          ],
+          "queryAssociation": "Batch-level only; original file does not attribute an individual query to this URL.",
+          "statusEvidence": "discovered"
+        }
+      ],
+      "extractedTextSha256": "b68fcdfa27680e498208455cd736fd14198b56f7e1088666d26b81fbd1db4db3"
+    },
+    {
+      "url": "https://calendar366.com/help/index.html",
+      "publisher": "Calendar366",
+      "priorStatus": "discovered",
+      "status": "full",
+      "scope": "Complete extracted substantive documentation text47578characters, reviewed in two untruncated ranges0–23999 and24000–47577 after initial web excerpts. Includes integrated account, settings, weather, automation and extension sections; not just index labels. No linked external bodies or images.",
+      "publisherFindings": [
+        "Documents device calendar access separately from direct provider connections and account-specific revocation steps.",
+        "Weather can use system or a fixed location; notification, badge and view choices are distinct.",
+        "Describes task and automation integrations with platform and availability qualifications. These are competitor features, not Cloud evidence."
+      ],
+      "limits": [
+        "Publisher removal/storage/security claims not independently audited. No Cloud AI/MCP, tasks, Zoom creation or fixed-weather-alert parity inferred. Do not transplant account-deletion/reset instructions."
+      ],
+      "priorProvenance": [
+        {
+          "file": "research/competitors/batch08-weather-accounts-discovery-20261021.json",
+          "field": "/primaryCandidates/0/url",
+          "record": {
+            "url": "https://calendar366.com/help/index.html",
+            "intent": "Weather source and system/custom selected location; review existing corpus before duplicating",
+            "type": "official documentation"
+          },
+          "batchQueries": [
+            "iPhone calendar weather selected location forecast Fantastical Calendar 366 Timepage",
+            "shared calendar iPhone multiple Google Outlook accounts scheduling app"
+          ],
+          "queryAssociation": "Batch-level only; original file does not attribute an individual query to this URL.",
+          "statusEvidence": "discovered"
+        }
+      ],
+      "extractedTextSha256": "d2fb0640f08d279e7fd300d9bae95c66e6ec1a5ed4e4d9b92e055b66bccf1b06"
+    },
+    {
+      "url": "https://docs.onecal.io/docs/calendar-view/public-calendar-feeds",
+      "publisher": "OneCal",
+      "priorStatus": "discovered",
+      "status": "full",
+      "scope": "Complete main text lines22–92 of100; navigation and TOC excluded.",
+      "publisherFindings": [
+        "A published calendar view has separate browser and ICS URLs, selected calendars and optional event details.",
+        "Generated copies can be included or excluded. Feed deletion changes future access, not independently saved copies."
+      ],
+      "limits": [
+        "No Cloud combined public-feed builder or per-field masking established. Do not generalize every-calendar-client compatibility or immediate cache removal."
+      ],
+      "priorProvenance": [
+        {
+          "file": "research/competitors/batch09-provider-intents-20261021.json",
+          "field": "/discoveredOnly/1/url",
+          "record": {
+            "url": "https://docs.onecal.io/docs/calendar-view/public-calendar-feeds",
+            "status": "discovered_search_or_index_link_not_body_reviewed"
+          },
+          "batchQueries": [],
+          "queryAssociation": "Batch-level only; original file does not attribute an individual query to this URL.",
+          "statusEvidence": "discovered"
+        }
+      ]
+    },
+    {
+      "url": "https://docs.onecal.io/docs/calendar-view/print-calendar",
+      "publisher": "OneCal",
+      "priorStatus": "discovered",
+      "status": "full",
+      "scope": "Complete main text lines22–68 of76; navigation and TOC excluded.",
+      "publisherFindings": [
+        "Prints selected calendars with range/layout choices and a browser PDF route.",
+        "Month overflow can omit visible event detail; hidden weekends and declined/generated-event options affect completeness.",
+        "A readable document requires checking its selected content and layout; it is not a restorable event archive."
+      ],
+      "limits": [
+        "No Cloud print/PDF capability inferred. No promise that every printed event field is preserved or that a PDF stays updated."
+      ],
+      "priorProvenance": [
+        {
+          "file": "research/competitors/batch09-provider-intents-20261021.json",
+          "field": "/discoveredOnly/9/url",
+          "record": {
+            "url": "https://docs.onecal.io/docs/calendar-view/print-calendar",
+            "status": "discovered_search_or_index_link_not_body_reviewed"
+          },
+          "batchQueries": [],
+          "queryAssociation": "Batch-level only; original file does not attribute an individual query to this URL.",
+          "statusEvidence": "discovered"
+        }
+      ]
+    }
+  ],
+  "cloudReadScope": {
+    "mainSectionsOnly": [
+      "what-calendar-sync-actually-does",
+      "work-and-personal-without-two-apps",
+      "taking-back-a-calendar-you-shared",
+      "calendar-export-ics-pdf-and-backup",
+      "lock-screen-without-unlocking",
+      "weather-where-the-event-is"
+    ],
+    "completeObjects": [
+      "calendar-notifications-missing-silent-or-duplicated",
+      "event-saved-to-wrong-calendar"
+    ],
+    "note": "Main-section extraction stopped before subsequent claims/FAQ fields on six objects; do not label those complete-object reviews. All current main paragraphs on those six were read."
+  },
+  "intentMappings": [
+    {
+      "intent": "Print a schedule without missing events or exposing unrelated calendars",
+      "canonical": "calendar-export-ics-pdf-and-backup",
+      "decision": "expand-existing-only-if-needed",
+      "bodyCheck": "Current complete main sections already distinguish PDF, ICS, CSV and subscription, provider/Mac print routes, private-content review and truncated grid details.",
+      "addition": "At most add explicit check of selected calendars, date range and omitted weekends/overflow. No new print synonym page."
+    },
+    {
+      "intent": "Weather for selected destination versus current location",
+      "canonical": "weather-where-the-event-is",
+      "decision": "covered-retain",
+      "bodyCheck": "Current main sections explicitly cover selected city, location permissions, forecast local hours and device-GPS-based alert distinction.",
+      "addition": "No new page justified; competitor weather controls are not Cloud controls."
+    },
+    {
+      "intent": "Default destination follows visible calendar context",
+      "canonical": "event-saved-to-wrong-calendar",
+      "decision": "covered-retain",
+      "bodyCheck": "Full current object covers creation context/selected writable destination versus system fallback and immediate-save existing calendar changes.",
+      "addition": "Do not add competitor calendar-set-default features to Cloud metadata."
+    },
+    {
+      "intent": "Hidden calendar versus muted alerts versus protected widget display",
+      "canonical": "calendar-notifications-missing-silent-or-duplicated",
+      "related": [
+        "lock-screen-without-unlocking"
+      ],
+      "decision": "covered-core-task",
+      "bodyCheck": "Notification guide fully read, including selected-calendar scheduling. Lock Screen main sections distinguish Live Activity, widgets and previews and test visible private detail.",
+      "addition": "If useful, link the two routes. Do not assert hiding never affects Cloud alerts; current guide explicitly says selected calendars matter."
+    },
+    {
+      "intent": "Browser calendar link versus ICS subscription and detail-limited availability",
+      "canonical": "what-calendar-sync-actually-does",
+      "related": [
+        "work-and-personal-without-two-apps",
+        "taking-back-a-calendar-you-shared"
+      ],
+      "decision": "covered-retain",
+      "bodyCheck": "Current main sections now cover provider mirrors, copying availability versus combined view, manually verified busy blocks and separate revocation routes.",
+      "addition": "Do not create a new broad calendar-link guide or promise a Cloud OneCal-style publishing builder."
+    },
+    {
+      "intent": "Disconnect a calendar app while retaining provider events and reviewing grants",
+      "canonical": null,
+      "nearest": [
+        "what-calendar-sync-actually-does",
+        "taking-back-a-calendar-you-shared",
+        "calendar-export-ics-pdf-and-backup"
+      ],
+      "decision": "genuinely-distinct-candidate-after-product-audit",
+      "bodyCheck": "50EN inventory has no dedicated disconnect/offboarding route. Read current main sections of all three nearest guides: they discuss preserving originals and recipient revocation but do not provide app offboarding through local data, mirror sources and provider grants. This is bounded absence evidence, not full-body audit of every EN page.",
+      "addition": "Potential substantial checklist: identify provider-owned versus local-only data, verify synchronization/export needs, distinguish hiding/disable/disconnect/delete, inspect actual mirror location, revoke app OAuth access through approved provider controls and verify remaining copies. Must inspect Cloud source and current Google/Microsoft/Apple guidance before any procedure; no blanket safe-delete claim."
+    }
+  ],
+  "newTaskPriority": "App disconnection/offboarding is the only candidate for a distinct new guide in this batch; authoring requires product/provider verification. Others already have substantive canonical coverage.",
+  "excludedFeatureIntents": [
+    "AI/MCP calendar editing",
+    "Task/journal management",
+    "Biometric protected calendar sets",
+    "Automatic per-field masking or combined public-feed builder",
+    "Cloud print/PDF export without product evidence"
+  ],
+  "evidenceLimits": [
+    "Publisher documentation establishes described workflows, not runtime performance, independent security assurance or Cloud capability.",
+    "No measured Google rank, query volume, ChatGPT recommendation/citation or exhaustive keyword discovery.",
+    "Candidate wording is editorial inference from primary tasks, not measured search demand.",
+    "No consolidated queue mutation, source edits, native actions, paid API or deployment."
+  ]
+}

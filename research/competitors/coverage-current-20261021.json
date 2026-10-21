@@ -1,7 +1,7 @@
 {
   "schemaVersion": 1,
   "date": "2026-10-21",
-  "scope": "All concrete HTTPS URLs recorded in batch03 through batch09 JSON files present in this directory, exact-string deduplicated. This is a bounded corpus queue, not exhaustive publisher coverage. batch07 file is absent. No new network fetches. Consolidated four explicit successful batch10 body reviews; prior evidence preserved.",
+  "scope": "All concrete HTTPS URLs recorded in batch03 through batch09 JSON files present in this directory, exact-string deduplicated. This is a bounded corpus queue, not exhaustive publisher coverage. batch07 file is absent. No new network fetches. Consolidated four explicit successful batch10 body reviews; prior evidence preserved. Consolidated four explicit successful batch12 substantive body reviews, preserving prior evidence.",
   "inputFiles": [
     "research/competitors/batch03-intent-mapping-20261021.json",
     "research/competitors/batch03-primary-discovery-20261021.json",
@@ -11,7 +11,9 @@
     "research/competitors/batch06-family-discovery-20261021.json",
     "research/competitors/batch08-weather-accounts-discovery-20261021.json",
     "research/competitors/batch09-provider-intents-20261021.json",
-    "research/competitors/batch10-sharing-primary-20261021.json"
+    "research/competitors/batch10-sharing-primary-20261021.json",
+    "research/competitors/batch11-export-duplicates-primary-20261021.json",
+    "research/competitors/batch12-primary-20261021.json"
   ],
   "statusDefinitions": {
     "full": "Explicit complete substantive-text review in at least one cited record, not images/runtime/linked pages.",
@@ -23,10 +25,10 @@
   "counts": {
     "failed": 6,
     "partial": 7,
-    "discovered": 25,
-    "full": 33,
+    "discovered": 19,
+    "full": 39,
     "exactUrls": 71,
-    "queue": 38
+    "queue": 32
   },
   "queue": [
     {
@@ -254,84 +256,6 @@
       ]
     },
     {
-      "url": "https://www.busymac.com/docs/busycalios/export-as-csv/",
-      "publisher": "BusyMac / BusyCal",
-      "status": "discovered",
-      "observedQueryOrIntent": [
-        "iOS CSV export",
-        "occurrence rows",
-        "destination share sheet"
-      ],
-      "intentEvidenceNote": "Verbatim recorded intent/topic/summary where present; null means no URL-specific intent was recorded. URL spelling is not body evidence.",
-      "existingCanonicals": [
-        "calendar-export-ics-pdf-and-backup"
-      ],
-      "canonicalMappingBasis": "Editorial candidate routing from recorded topic or URL label; not proof target body covers the task. Null/empty where unsupported.",
-      "nextAction": "Read exact official body if useful; verify destination and platform, then deduplicate against existing canonical before authoring.",
-      "provenance": [
-        {
-          "file": "research/competitors/batch04-search-discovery-20261021.json",
-          "field": "/primaryCandidates/1/url",
-          "record": {
-            "url": "https://www.busymac.com/docs/busycalios/export-as-csv/",
-            "status": "search_excerpt_only",
-            "topics": [
-              "iOS CSV export",
-              "occurrence rows",
-              "destination share sheet"
-            ],
-            "nextAction": "Read full current body before adding comparative export guidance. No Cloud CSV support inferred."
-          },
-          "batchQueries": [
-            "best calendar app iphone weather widgets shared calendars TimeTree Calendars 366",
-            "iPhone calendar app recurring events notifications export Timepage BusyCal"
-          ],
-          "queryAssociation": "Batch-level only; original file does not attribute an individual query to this URL.",
-          "statusEvidence": "discovered"
-        }
-      ]
-    },
-    {
-      "url": "https://www.busymac.com/docs/busycalios/70670-settings/",
-      "publisher": "BusyMac / BusyCal",
-      "status": "discovered",
-      "observedQueryOrIntent": [
-        "widget calendar selection",
-        "floating time",
-        "badge meaning",
-        "export calendar selection"
-      ],
-      "intentEvidenceNote": "Verbatim recorded intent/topic/summary where present; null means no URL-specific intent was recorded. URL spelling is not body evidence.",
-      "existingCanonicals": [
-        "calendar-export-ics-pdf-and-backup"
-      ],
-      "canonicalMappingBasis": "Editorial candidate routing from recorded topic or URL label; not proof target body covers the task. Null/empty where unsupported.",
-      "nextAction": "Read exact official body if useful; verify destination and platform, then deduplicate against existing canonical before authoring.",
-      "provenance": [
-        {
-          "file": "research/competitors/batch04-search-discovery-20261021.json",
-          "field": "/primaryCandidates/3/url",
-          "record": {
-            "url": "https://www.busymac.com/docs/busycalios/70670-settings/",
-            "status": "search_excerpt_only",
-            "topics": [
-              "widget calendar selection",
-              "floating time",
-              "badge meaning",
-              "export calendar selection"
-            ],
-            "nextAction": "Dedup then read exact current iOS controls; do not copy controls to Cloud."
-          },
-          "batchQueries": [
-            "best calendar app iphone weather widgets shared calendars TimeTree Calendars 366",
-            "iPhone calendar app recurring events notifications export Timepage BusyCal"
-          ],
-          "queryAssociation": "Batch-level only; original file does not attribute an individual query to this URL.",
-          "statusEvidence": "discovered"
-        }
-      ]
-    },
-    {
       "url": "https://apps.apple.com/us/app/calendar-366-events-tasks/id6502818600?platform=tv",
       "publisher": "Developer App Store listing: calendar-366-events-tasks",
       "status": "discovered",
@@ -529,37 +453,6 @@
       ]
     },
     {
-      "url": "https://calendar366.com/help/index.html",
-      "publisher": "Calendar 366",
-      "status": "discovered",
-      "observedQueryOrIntent": [
-        "Weather source and system/custom selected location; review existing corpus before duplicating"
-      ],
-      "intentEvidenceNote": "Verbatim recorded intent/topic/summary where present; null means no URL-specific intent was recorded. URL spelling is not body evidence.",
-      "existingCanonicals": [
-        "weather-where-the-event-is"
-      ],
-      "canonicalMappingBasis": "Editorial candidate routing from recorded topic or URL label; not proof target body covers the task. Null/empty where unsupported.",
-      "nextAction": "Read exact official body if useful; verify destination and platform, then deduplicate against existing canonical before authoring.",
-      "provenance": [
-        {
-          "file": "research/competitors/batch08-weather-accounts-discovery-20261021.json",
-          "field": "/primaryCandidates/0/url",
-          "record": {
-            "url": "https://calendar366.com/help/index.html",
-            "intent": "Weather source and system/custom selected location; review existing corpus before duplicating",
-            "type": "official documentation"
-          },
-          "batchQueries": [
-            "iPhone calendar weather selected location forecast Fantastical Calendar 366 Timepage",
-            "shared calendar iPhone multiple Google Outlook accounts scheduling app"
-          ],
-          "queryAssociation": "Batch-level only; original file does not attribute an individual query to this URL.",
-          "statusEvidence": "discovered"
-        }
-      ]
-    },
-    {
       "url": "https://flexibits.com/fantastical-ios/help/fantastical-ios/help/settings",
       "publisher": "Flexibits / Fantastical",
       "status": "discovered",
@@ -741,31 +634,6 @@
       ]
     },
     {
-      "url": "https://docs.onecal.io/docs/calendar-view/public-calendar-feeds",
-      "publisher": "OneCal",
-      "status": "discovered",
-      "observedQueryOrIntent": null,
-      "intentEvidenceNote": "Verbatim recorded intent/topic/summary where present; null means no URL-specific intent was recorded. URL spelling is not body evidence.",
-      "existingCanonicals": [
-        "what-calendar-sync-actually-does"
-      ],
-      "canonicalMappingBasis": "Editorial candidate routing from recorded topic or URL label; not proof target body covers the task. Null/empty where unsupported.",
-      "nextAction": "Read exact official body if useful; verify destination and platform, then deduplicate against existing canonical before authoring.",
-      "provenance": [
-        {
-          "file": "research/competitors/batch09-provider-intents-20261021.json",
-          "field": "/discoveredOnly/1/url",
-          "record": {
-            "url": "https://docs.onecal.io/docs/calendar-view/public-calendar-feeds",
-            "status": "discovered_search_or_index_link_not_body_reviewed"
-          },
-          "batchQueries": [],
-          "queryAssociation": "Batch-level only; original file does not attribute an individual query to this URL.",
-          "statusEvidence": "discovered"
-        }
-      ]
-    },
-    {
       "url": "https://docs.onecal.io/docs/calendar-view/view-settings",
       "publisher": "OneCal",
       "status": "discovered",
@@ -839,31 +707,6 @@
       ]
     },
     {
-      "url": "https://docs.onecal.io/docs/help/duplicate-events",
-      "publisher": "OneCal",
-      "status": "discovered",
-      "observedQueryOrIntent": null,
-      "intentEvidenceNote": "Verbatim recorded intent/topic/summary where present; null means no URL-specific intent was recorded. URL spelling is not body evidence.",
-      "existingCanonicals": [
-        "when-two-calendars-disagree"
-      ],
-      "canonicalMappingBasis": "Editorial candidate routing from recorded topic or URL label; not proof target body covers the task. Null/empty where unsupported.",
-      "nextAction": "Read exact official body if useful; verify destination and platform, then deduplicate against existing canonical before authoring.",
-      "provenance": [
-        {
-          "file": "research/competitors/batch09-provider-intents-20261021.json",
-          "field": "/discoveredOnly/5/url",
-          "record": {
-            "url": "https://docs.onecal.io/docs/help/duplicate-events",
-            "status": "discovered_search_or_index_link_not_body_reviewed"
-          },
-          "batchQueries": [],
-          "queryAssociation": "Batch-level only; original file does not attribute an individual query to this URL.",
-          "statusEvidence": "discovered"
-        }
-      ]
-    },
-    {
       "url": "https://docs.onecal.io/docs/calendars/connect-caldav-calendar",
       "publisher": "OneCal",
       "status": "discovered",
@@ -928,31 +771,6 @@
           "field": "/discoveredOnly/8/url",
           "record": {
             "url": "https://docs.onecal.io/docs/billing/plans-and-free-trial",
-            "status": "discovered_search_or_index_link_not_body_reviewed"
-          },
-          "batchQueries": [],
-          "queryAssociation": "Batch-level only; original file does not attribute an individual query to this URL.",
-          "statusEvidence": "discovered"
-        }
-      ]
-    },
-    {
-      "url": "https://docs.onecal.io/docs/calendar-view/print-calendar",
-      "publisher": "OneCal",
-      "status": "discovered",
-      "observedQueryOrIntent": null,
-      "intentEvidenceNote": "Verbatim recorded intent/topic/summary where present; null means no URL-specific intent was recorded. URL spelling is not body evidence.",
-      "existingCanonicals": [
-        "calendar-export-ics-pdf-and-backup"
-      ],
-      "canonicalMappingBasis": "Editorial candidate routing from recorded topic or URL label; not proof target body covers the task. Null/empty where unsupported.",
-      "nextAction": "Read exact official body if useful; verify destination and platform, then deduplicate against existing canonical before authoring.",
-      "provenance": [
-        {
-          "file": "research/competitors/batch09-provider-intents-20261021.json",
-          "field": "/discoveredOnly/9/url",
-          "record": {
-            "url": "https://docs.onecal.io/docs/calendar-view/print-calendar",
             "status": "discovered_search_or_index_link_not_body_reviewed"
           },
           "batchQueries": [],
@@ -2376,6 +2194,263 @@
         "evidenceFile": "research/competitors/batch10-sharing-primary-20261021.json",
         "evidenceField": "/reviews/3"
       }
+    },
+    {
+      "url": "https://docs.onecal.io/docs/help/duplicate-events",
+      "publisher": "OneCal",
+      "status": "full",
+      "observedQueryOrIntent": null,
+      "intentEvidenceNote": "Verbatim recorded intent/topic/summary where present; null means no URL-specific intent was recorded. URL spelling is not body evidence.",
+      "existingCanonicals": [
+        "when-two-calendars-disagree"
+      ],
+      "canonicalMappingBasis": "Editorial candidate routing from recorded topic or URL label; not proof target body covers the task. Null/empty where unsupported.",
+      "nextAction": "ExistingCloudguidescovervisibilitydiagnosis; do notcopyOneCaldestructivecleanupsteps orclonemarkers.",
+      "provenance": [
+        {
+          "file": "research/competitors/batch09-provider-intents-20261021.json",
+          "field": "/discoveredOnly/5/url",
+          "record": {
+            "url": "https://docs.onecal.io/docs/help/duplicate-events",
+            "status": "discovered_search_or_index_link_not_body_reviewed"
+          },
+          "batchQueries": [],
+          "queryAssociation": "Batch-level only; original file does not attribute an individual query to this URL.",
+          "statusEvidence": "discovered"
+        }
+      ],
+      "latestReview": {
+        "evidenceFile": "research/competitors/batch11-export-duplicates-primary-20261021.json",
+        "field": "/reviews/0",
+        "scope": "Complete main body22-52 of62returnedlines"
+      }
+    },
+    {
+      "url": "https://www.busymac.com/docs/busycalios/export-as-csv/",
+      "publisher": "BusyMac / BusyCal",
+      "status": "full",
+      "observedQueryOrIntent": [
+        "iOS CSV export",
+        "occurrence rows",
+        "destination share sheet"
+      ],
+      "intentEvidenceNote": "Verbatim recorded intent/topic/summary where present; null means no URL-specific intent was recorded. URL spelling is not body evidence.",
+      "existingCanonicals": [
+        "calendar-export-ics-pdf-and-backup"
+      ],
+      "canonicalMappingBasis": "Editorial candidate routing from recorded topic or URL label; not proof target body covers the task. Null/empty where unsupported.",
+      "nextAction": "RootaddedqualifiedCSVsection to existingexportguide andsource; explicitly notCloudexportbutton. No newthinpage.",
+      "provenance": [
+        {
+          "file": "research/competitors/batch04-search-discovery-20261021.json",
+          "field": "/primaryCandidates/1/url",
+          "record": {
+            "url": "https://www.busymac.com/docs/busycalios/export-as-csv/",
+            "status": "search_excerpt_only",
+            "topics": [
+              "iOS CSV export",
+              "occurrence rows",
+              "destination share sheet"
+            ],
+            "nextAction": "Read full current body before adding comparative export guidance. No Cloud CSV support inferred."
+          },
+          "batchQueries": [
+            "best calendar app iphone weather widgets shared calendars TimeTree Calendars 366",
+            "iPhone calendar app recurring events notifications export Timepage BusyCal"
+          ],
+          "queryAssociation": "Batch-level only; original file does not attribute an individual query to this URL.",
+          "statusEvidence": "discovered"
+        }
+      ],
+      "latestReview": {
+        "evidenceFile": "research/competitors/batch11-export-duplicates-primary-20261021.json",
+        "field": "/reviews/1",
+        "scope": "Completebody57-74of84returnedlines; images/linkedpagesnotreviewed"
+      }
+    },
+    {
+      "url": "https://www.busymac.com/docs/busycalios/70670-settings/",
+      "publisher": "BusyMac / BusyCal",
+      "status": "full",
+      "observedQueryOrIntent": [
+        "widget calendar selection",
+        "floating time",
+        "badge meaning",
+        "export calendar selection"
+      ],
+      "intentEvidenceNote": "Verbatim recorded intent/topic/summary where present; null means no URL-specific intent was recorded. URL spelling is not body evidence.",
+      "existingCanonicals": [
+        "calendar-export-ics-pdf-and-backup"
+      ],
+      "canonicalMappingBasis": "Editorial candidate routing from recorded topic or URL label; not proof target body covers the task. Null/empty where unsupported.",
+      "nextAction": "Map actual reviewed tasks to canonical guides; verify Cloud implementation before adopting capability claims.",
+      "provenance": [
+        {
+          "file": "research/competitors/batch04-search-discovery-20261021.json",
+          "field": "/primaryCandidates/3/url",
+          "record": {
+            "url": "https://www.busymac.com/docs/busycalios/70670-settings/",
+            "status": "search_excerpt_only",
+            "topics": [
+              "widget calendar selection",
+              "floating time",
+              "badge meaning",
+              "export calendar selection"
+            ],
+            "nextAction": "Dedup then read exact current iOS controls; do not copy controls to Cloud."
+          },
+          "batchQueries": [
+            "best calendar app iphone weather widgets shared calendars TimeTree Calendars 366",
+            "iPhone calendar app recurring events notifications export Timepage BusyCal"
+          ],
+          "queryAssociation": "Batch-level only; original file does not attribute an individual query to this URL.",
+          "statusEvidence": "discovered"
+        },
+        {
+          "file": "research/competitors/batch12-primary-20261021.json",
+          "field": "/reviews",
+          "statusEvidence": "full",
+          "record": {
+            "scope": "Complete substantive Settings text. Web display initially partial; direct public HTML extraction completed text review of34335characters, including remainder19000–34334. Navigation/footer/scripts/styles excluded; no screenshots or linked-page bodies.",
+            "publisherFindings": [
+              "Saved calendar sets can affect visible calendars and new-event defaults; widget selection and alarm settings have distinct controls.",
+              "Disconnecting an account, deleting a calendar and unsubscribing are separate documented operations.",
+              "App locks can have a separate widget-access exception; support logs may contain calendar data."
+            ],
+            "limits": [
+              "Do not adopt blanket permission-grant instructions or universal private-event behavior. No Cloud Face ID calendar sets, account-disable control, journal/task or CSV parity inferred."
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "url": "https://calendar366.com/help/index.html",
+      "publisher": "Calendar 366",
+      "status": "full",
+      "observedQueryOrIntent": [
+        "Weather source and system/custom selected location; review existing corpus before duplicating"
+      ],
+      "intentEvidenceNote": "Verbatim recorded intent/topic/summary where present; null means no URL-specific intent was recorded. URL spelling is not body evidence.",
+      "existingCanonicals": [
+        "weather-where-the-event-is"
+      ],
+      "canonicalMappingBasis": "Editorial candidate routing from recorded topic or URL label; not proof target body covers the task. Null/empty where unsupported.",
+      "nextAction": "Map actual reviewed tasks to canonical guides; verify Cloud implementation before adopting capability claims.",
+      "provenance": [
+        {
+          "file": "research/competitors/batch08-weather-accounts-discovery-20261021.json",
+          "field": "/primaryCandidates/0/url",
+          "record": {
+            "url": "https://calendar366.com/help/index.html",
+            "intent": "Weather source and system/custom selected location; review existing corpus before duplicating",
+            "type": "official documentation"
+          },
+          "batchQueries": [
+            "iPhone calendar weather selected location forecast Fantastical Calendar 366 Timepage",
+            "shared calendar iPhone multiple Google Outlook accounts scheduling app"
+          ],
+          "queryAssociation": "Batch-level only; original file does not attribute an individual query to this URL.",
+          "statusEvidence": "discovered"
+        },
+        {
+          "file": "research/competitors/batch12-primary-20261021.json",
+          "field": "/reviews",
+          "statusEvidence": "full",
+          "record": {
+            "scope": "Complete extracted substantive documentation text47578characters, reviewed in two untruncated ranges0–23999 and24000–47577 after initial web excerpts. Includes integrated account, settings, weather, automation and extension sections; not just index labels. No linked external bodies or images.",
+            "publisherFindings": [
+              "Documents device calendar access separately from direct provider connections and account-specific revocation steps.",
+              "Weather can use system or a fixed location; notification, badge and view choices are distinct.",
+              "Describes task and automation integrations with platform and availability qualifications. These are competitor features, not Cloud evidence."
+            ],
+            "limits": [
+              "Publisher removal/storage/security claims not independently audited. No Cloud AI/MCP, tasks, Zoom creation or fixed-weather-alert parity inferred. Do not transplant account-deletion/reset instructions."
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "url": "https://docs.onecal.io/docs/calendar-view/public-calendar-feeds",
+      "publisher": "OneCal",
+      "status": "full",
+      "observedQueryOrIntent": null,
+      "intentEvidenceNote": "Verbatim recorded intent/topic/summary where present; null means no URL-specific intent was recorded. URL spelling is not body evidence.",
+      "existingCanonicals": [
+        "what-calendar-sync-actually-does"
+      ],
+      "canonicalMappingBasis": "Editorial candidate routing from recorded topic or URL label; not proof target body covers the task. Null/empty where unsupported.",
+      "nextAction": "Map actual reviewed tasks to canonical guides; verify Cloud implementation before adopting capability claims.",
+      "provenance": [
+        {
+          "file": "research/competitors/batch09-provider-intents-20261021.json",
+          "field": "/discoveredOnly/1/url",
+          "record": {
+            "url": "https://docs.onecal.io/docs/calendar-view/public-calendar-feeds",
+            "status": "discovered_search_or_index_link_not_body_reviewed"
+          },
+          "batchQueries": [],
+          "queryAssociation": "Batch-level only; original file does not attribute an individual query to this URL.",
+          "statusEvidence": "discovered"
+        },
+        {
+          "file": "research/competitors/batch12-primary-20261021.json",
+          "field": "/reviews",
+          "statusEvidence": "full",
+          "record": {
+            "scope": "Complete main text lines22–92 of100; navigation and TOC excluded.",
+            "publisherFindings": [
+              "A published calendar view has separate browser and ICS URLs, selected calendars and optional event details.",
+              "Generated copies can be included or excluded. Feed deletion changes future access, not independently saved copies."
+            ],
+            "limits": [
+              "No Cloud combined public-feed builder or per-field masking established. Do not generalize every-calendar-client compatibility or immediate cache removal."
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "url": "https://docs.onecal.io/docs/calendar-view/print-calendar",
+      "publisher": "OneCal",
+      "status": "full",
+      "observedQueryOrIntent": null,
+      "intentEvidenceNote": "Verbatim recorded intent/topic/summary where present; null means no URL-specific intent was recorded. URL spelling is not body evidence.",
+      "existingCanonicals": [
+        "calendar-export-ics-pdf-and-backup"
+      ],
+      "canonicalMappingBasis": "Editorial candidate routing from recorded topic or URL label; not proof target body covers the task. Null/empty where unsupported.",
+      "nextAction": "Map actual reviewed tasks to canonical guides; verify Cloud implementation before adopting capability claims.",
+      "provenance": [
+        {
+          "file": "research/competitors/batch09-provider-intents-20261021.json",
+          "field": "/discoveredOnly/9/url",
+          "record": {
+            "url": "https://docs.onecal.io/docs/calendar-view/print-calendar",
+            "status": "discovered_search_or_index_link_not_body_reviewed"
+          },
+          "batchQueries": [],
+          "queryAssociation": "Batch-level only; original file does not attribute an individual query to this URL.",
+          "statusEvidence": "discovered"
+        },
+        {
+          "file": "research/competitors/batch12-primary-20261021.json",
+          "field": "/reviews",
+          "statusEvidence": "full",
+          "record": {
+            "scope": "Complete main text lines22–68 of76; navigation and TOC excluded.",
+            "publisherFindings": [
+              "Prints selected calendars with range/layout choices and a browser PDF route.",
+              "Month overflow can omit visible event detail; hidden weekends and declined/generated-event options affect completeness.",
+              "A readable document requires checking its selected content and layout; it is not a restorable event archive."
+            ],
+            "limits": [
+              "No Cloud print/PDF capability inferred. No promise that every printed event field is preserved or that a PDF stays updated."
+            ]
+          }
+        }
+      ]
     }
   ],
   "urlVariantCandidates": [],

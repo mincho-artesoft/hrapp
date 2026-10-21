@@ -1,0 +1,30 @@
+{
+  "build": "/tmp/cloud-calendar-seo-batch09-hydration-build.log",
+  "initialRawSize": "1.09 MB",
+  "initialTransferEstimate": "230.38 kB",
+  "observedDeliveredJsAfterFinalReload": [
+    "/chunk-OPMQSUZY.js",
+    "/chunk-QPCK7PJS.js",
+    "/chunk-TBOIZK4L.js",
+    "/main-HGF5IBXB.js"
+  ],
+  "englishArticleChunkObserved": true,
+  "japaneseArticleChunkObserved": false,
+  "interactions": {
+    "homeFaqExpanded": true,
+    "homeLanguageMenuOpened": true,
+    "englishSharingToJapaneseEquivalent": true,
+    "japaneseArticleMenuExpanded": true,
+    "missingJapaneseFamilyPickupFallsBackToHub": "/ja/articles/"
+  },
+  "consoleErrors": [],
+  "limitations": [
+    "Server request log is cache-dependent and not a complete network trace.",
+    "No timing or user performance claim.",
+    "Local preview intentionally lacks S3-only media; verify those on the deployed host."
+  ],
+  "bootstrapFix": "Browser now uses same appConfig (including hydration and router settings) as server. FAQ expansion and localized article menu verified after change; exact causality beyond this observed comparison not isolated.",
+  "finalBuild": "/tmp/cloud-calendar-seo-batch09-shell-build.log",
+  "shellLocaleProof": "shell-locale-qa.json",
+  "shellLocaleFix": "ActiveLocaleService derives requested locale/path before asynchronous route activation; all428prerenderedarticle/hubheaders match document locale before JavaScript."
+}

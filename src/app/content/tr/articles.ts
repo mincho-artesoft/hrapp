@@ -79,40 +79,99 @@ export const ARTICLES_TR: Readonly<Record<string, LocalisedArticle>> = {
   },
 
   'sharing-one-event-not-your-calendar': {
-    title: 'Takvimi değil, tek bir etkinliği paylaşmak',
-    short: 'Tek etkinlik paylaşmak',
-    description: 'Tek bir etkinlik göndermenin nasıl işlediği, karşı tarafın gerçekte ne aldığı ve görmek için neden hiçbir şey kurmasına gerek olmadığı.',
-    lede: 'Takvim paylaşmak genelde ya hep ya hiçtir: ya birinin sizinkine erişimi vardır ya da yoktur. Bir akşam yemeği göndermek bunların hiçbirini gerektirmemeli.',
-    commonBelief: 'Bir etkinliği paylaşmanın, birine haftanızın geri kalanına açılan bir pencere vermek olduğu.',
-    sections: [
-      {
-        heading: 'Gerçekte ne gider',
-        body: [
-          'Bir etkinlik oluştururken uygulama onu paylaşmayı önerir. Yola çıkan bir bağlantıdır — e-postayla, mesajla, karşı tarafta ne kuruluysa onunla — ve o bağlantının arkasında yalnızca o etkinliği içeren, başka hiçbir şey içermeyen bir takvim akışı durur.',
-          'Ekran görüntüsü değil, eskiyen bir kopya da değil. Saat değişirse akış da onunla değişir ve gönderdiğiniz kişi değişikliği siz bir şey yeniden göndermeden görür.',
-        ],
-      },
-      {
-        heading: 'Ne değildir',
-        body: [
-          'Bağlantı sıradan bir takvim aboneliğidir: Apple Takvim okur, Google Takvim okur, Outlook okur. Mesajda ayrıca uygulamayı isteyen için bir App Clip vardır — kurulum olmadan açılır. Bu bir kapıdır, gişe değil.',
-          'Anlık değildir: akış uygulamalardan saatte bir yeniden bakmalarını ister ve bu bir istektir, kural değil. Gizli de değildir: bağlantı yirmi iki rastgele karakter taşır, kimse tahmin edemez, ama elinde olan okuyabilir. Ve şimdilik yalnızca okumadır.',
-        ],
-      },
-    ],
-    claims: {
-      refreshHint: 'Akışın yenilenme istekleri arasındaki saat sayısı',
-      linkLength: 'Bağlantıdaki rastgele karakter sayısı — tahmin edilemez yapan budur',
-      sharePrice: 'Paylaşımın ücreti',
+  "updated": "2026-10-21",
+  "title": "Tek etkinlik paylaşımı: doğru bağlantı ve erişim",
+  "short": "Tek etkinlik paylaşma",
+  "description": "Tüm takvim yerine tek etkinlik paylaşın. Reader, Writer ve Owner rollerini, önizlemeyi, güncellemeleri ve erişimi kaldırmanın sınırlarını öğrenin.",
+  "lede": "Yemek ayrıntılarını göndermek, ortak düzenleyiciye düzenleme izni vermek ve katılım yanıtı toplamak farklı işlerdir. Önce amacınızı, sonra paylaşım yolunu seçin. Bu rehberi Cloud Calendars geliştiricisi Arte Soft hazırlamıştır.",
+  "commonBelief": "Her etkinlik bağlantısı anında güncellenen, yanıt kaydeden salt okunur bir takvim aboneliğidir.",
+  "sections": [
+    {
+      "heading": "Önce etkinliğin ayrıntılarını inceleyin",
+      "body": [
+        "Tek etkinlik paylaşımı gönderenin tüm takvimini değil, o etkinliği kapsar. Başlığı, saat dilimini, konumu, notları ve toplantı bağlantılarını kontrol edin. Bir konuk için uygun bilgi geniş dağıtıma uygun olmayabilir.",
+        "Yemek paylaşmak için doktor randevularınızın takvimini açmanız gerekmez. Ancak yemeğin konumu ve bağlantıları etkinlikle gider. Çevresindeki takvimin gizliliğine güvenmek yerine içeriği inceleyin."
+      ]
     },
-    practical: [
-      'Oluşturduktan hemen sonra etkinliğin kendisinden paylaşın.',
-      'Bağlantıyı o kişiyle zaten kullandığınız kanaldan gönderin.',
-      'Saat son anda değişirse, etkinliği kaydırmanın yanı sıra bir de yazın.',
-      'Etkinlik geçtiğinde bağlantıyı iptal edin, bir belgeyi paylaşmayı bırakacağınız gibi.',
-    ],
-    seeAlso: ['icloud-google-and-outlook-in-one-view', 'weather-inside-your-calendar'],
-  },
+    {
+      "heading": "Önizleme, e-posta veya QR yolunu seçin",
+      "body": [
+        "Cloud Calendars App Clip bir önizleme sunar; bu yoldan etkinlik eklemek için tam uygulama gerekir. E-posta ve QR davetleri Cloud Calendars açma seçeneği sunan bir web sayfasına gider. Bunlar birbirinin yerine kullanılan abonelik adresleri değildir.",
+        "Eşzamanlanan paylaşım için gönderen oturum açar. Bağlantılar ve QR kodları başkalarına iletilebilir. QR kodu bağlantıyı taşır, kimin açtığını kanıtlamaz."
+      ]
+    },
+    {
+      "heading": "Yalnızca gereken hakları verin",
+      "body": [
+        "E-posta davetinde Reader, Writer veya Owner seçilir. Reader görüntüler ve eşzamanlar, Writer düzenler, Owner ayrıca paylaşır ve erişimi yönetir. Yalnızca programı izleyecek kişiye Reader verin.",
+        "Etkinliği değiştirecek ortak düzenleyiciye Writer uygundur. Owner, başkalarının erişimini de yönetecek kişi içindir. Yüksek haklar doğru kimlikle oturum açmayı gerektirir. Anonim alıcı, kimliği belirli bir ortak sahip değildir."
+      ]
+    },
+    {
+      "heading": "Alıcının etkinliği nasıl eklediğini anlayın",
+      "body": [
+        "Tam uygulamada takvim izni ve yazılabilir hedef takvim gerekir. Alıcı kaydetmeden önce hedefi kontrol etmelidir. Alınan kopya sonraki değişiklikler için paylaşılan etkinlikle ilişkilendirilebilir.",
+        "Normal ICS dosyası içe aktarmak kopya oluşturur; abonelik ise akışı düzenli aralıklarla kontrol eder. Uygulama daveti yerine ICS akışı gönderiyorsanız farkı açıklayın ve alıcının takviminin desteklediğini doğrulayın."
+      ]
+    },
+    {
+      "heading": "Değişikliklerin ulaştığını kontrol edin",
+      "body": [
+        "Eşzamanlanan paylaşım düzenleme ve iptalleri taşıyabilir, ancak cihazın bunları alma fırsatı olmalıdır. Akış yenileme ipucu bir teslim süresi değildir. Çevrimdışı cihaz, yenilenmemiş abonelik veya bağımsız içe aktarılmış kopya eski bilgileri gösterebilir.",
+        "Yemek son anda ertelenirse etkinliği güncelleyin ve konuklara doğrudan ulaşın. Yeni saati doğrulamalarını isteyin. Güncellemeyi almak, katılacağını bildirmek değildir."
+      ]
+    },
+    {
+      "heading": "Erişimi kaldırmak bütün kopyaları silmez",
+      "body": [
+        "Alıcı haklarını gözden geçirip gereksiz izinleri kaldırın. Alıcıyı kaldırmak ve akış bağlantısını iptal etmek ayrı işlemlerdir. Bunlar tüm ekran görüntülerini, mesajları veya takvim kopyalarını uzaktan silme garantisi vermez.",
+        "Bağlantı yayıldıysa ilgili adresi veya izni belirleyin ve değişiklikten sonra sonucu kontrol edin. Sonradan iptale güvenmek yerine özel bilgileri geniş dağıtılan bağlantılara koymayın."
+      ]
+    }
+  ],
+  "claims": {},
+  "practical": [
+    "Ayrıntıları ve amacınızı kontrol edin: görüntüleme, düzenleme veya katılım yanıtı.",
+    "Paylaşım yolunu seçip gerektiğinde oturum açın.",
+    "İzleyicilere Reader, ilgili sorumluluklar için Writer veya Owner verin.",
+    "Alıcıdan saati ve hedef takvimi kontrol etmesini isteyin.",
+    "Acil değişiklikte etkinliği güncelleyip doğrudan mesaj gönderin.",
+    "Paylaşım bittiğinde alıcı hakları ve bağlantıları ayrı inceleyin."
+  ],
+  "faq": [
+    {
+      "q": "Tek etkinlik tüm takvimimi açar mı?",
+      "a": "Eşzamanlanan tek etkinlik yolu o etkinlikle sınırlıdır, fakat kendi ayrıntılarını gösterir. Bunları inceleyin; tek etkinlik amaçlıyorsanız tüm takvim daveti göndermeyin."
+    },
+    {
+      "q": "Alıcı etkinliği değiştirebilir mi?",
+      "a": "Evet, uygun Writer veya Owner hakkıyla desteklenen oturum açma yolunu kullanırsa. Reader görüntüleme ve eşzamanlama içindir. Normal ICS aboneliği aynı düzenleme mekanizması değildir."
+    },
+    {
+      "q": "Birini kaldırmak aldıklarının hepsini geri alır mı?",
+      "a": "Böyle bir garanti yoktur. Paylaşım erişimi değişir, ancak kaydedilmiş kopyalar, ekran görüntüleri ve mesajlar kalabilir. Paylaşılan akış adresi ayrıca değerlendirilmelidir."
+    }
+  ],
+  "sourcesHeading": "Alıcı seçenekleri için kaynaklar",
+  "sources": [
+    {
+      "label": "Apple: App Clips genel bakışı",
+      "url": "https://developer.apple.com/help/app-store-connect/offer-app-clip-experiences/overview-of-app-clips/"
+    },
+    {
+      "label": "Google: etkinlik içe aktarma ve sınırları",
+      "url": "https://support.google.com/calendar/answer/37118?co=GENIE.Platform%3DDesktop&hl=en"
+    },
+    {
+      "label": "Microsoft: takvimi içe aktarma veya abone olma",
+      "url": "https://support.microsoft.com/en-us/outlook/import-or-subscribe-to-a-calendar-in-outlook-com-or-outlook-on-the-web"
+    }
+  ],
+  "seeAlso": [
+    "who-can-see-what-in-google-calendar",
+    "taking-back-a-calendar-you-shared"
+  ]
+},
 
   'what-a-subscription-actually-buys': {
   "updated": "2026-10-21",

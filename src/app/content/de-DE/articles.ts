@@ -505,50 +505,99 @@ export const ARTICLES_DE_DE: Readonly<Record<string, LocalisedArticle>> = {
 },
 
   'sharing-one-event-not-your-calendar': {
-    title: 'Einen Termin teilen, ohne den Kalender herzugeben',
-    short: 'Einen Termin teilen',
-    description:
-      'Wie das Versenden eines einzelnen Termins funktioniert, was beim Empfänger tatsächlich ankommt — und warum er dafür nichts installieren muss.',
-    lede: 'Kalender teilen heißt sonst alles oder nichts: entweder jemand hat Zugriff auf Ihren Kalender oder nicht. Ein Abendessen zu verschicken sollte keines von beidem verlangen.',
-    commonBelief:
-      'Dass einen Termin zu teilen bedeutet, jemandem ein Fenster in den Rest der Woche zu öffnen.',
-    sections: [
-      {
-        heading: 'Was tatsächlich verschickt wird',
-        body: [
-          'Beim Anlegen eines Termins wird angeboten, ihn zu teilen. Unterwegs ist ein Link — per Mail, per Nachricht, über das, was Sie installiert haben — und hinter dem Link liegt ein Kalender-Feed, der diesen einen Termin enthält und sonst nichts.',
-          'Kein Screenshot, keine Kopie, die veraltet. Verschiebt sich die Zeit, verschiebt sich der Feed mit, und der Empfänger sieht die Änderung, ohne dass Sie noch einmal etwas senden.',
-        ],
-      },
-      {
-        heading: 'Er braucht diese App nicht',
-        body: [
-          'Der Link ist ein gewöhnliches Kalender-Abonnement. Apple Kalender liest ihn, Google Kalender liest ihn, Outlook liest ihn. Jemand mit Android und einem Gmail-Konto kann ihn abonnieren und Ihren Termin sehen; nichts daran verlangt ein iPhone.',
-          'In der Nachricht steckt zusätzlich ein App-Clip für alle, die die App wollen — er öffnet sich ohne Installation und zeigt den Termin sofort. Das ist eine Tür, keine Schranke, und der Unterschied zählt, wenn Sie jemanden einladen, den Sie nicht um eine Installation bitten können.',
-        ],
-      },
-      {
-        heading: 'Was es nicht ist',
-        body: [
-          'Es ist nicht sofort. Der Feed bittet Kalender-Apps, stündlich nachzusehen, und das ist eine Bitte und keine Regel — Programme aktualisieren nach eigenem Zeitplan, manche träger als andere. Für ein Abendessen nächste Woche ist das unsichtbar. Für eine Änderung zwanzig Minuten vorher schreiben Sie zusätzlich eine Nachricht.',
-          'Geheim ist es auch nicht. Der Link enthält zweiundzwanzig zufällige Zeichen, die niemand errät, aber wer ihn hat, kann den Feed lesen. Behandeln Sie ihn wie einen Dokumentlink: bedenkenlos zu verschicken, und es lohnt sich, ihn zurückzuziehen, wenn er seine Arbeit getan hat.',
-          'Und er ist vorerst nur lesbar. Wer ihn bekommt, sieht den Termin. Bearbeiten kann er ihn nicht, und in Ihren Kalender zurückschreiben auch nicht.',
-        ],
-      },
-    ],
-    claims: {
-      refreshHint: 'Stunden zwischen den Aktualisierungsbitten des Feeds',
-      linkLength: 'Zufällige Zeichen im Link, die ihn unerratbar machen',
-      sharePrice: 'Was das Teilen kostet',
+  "updated": "2026-10-21",
+  "title": "Ein Kalenderereignis teilen: Link und Zugriffsrechte bewusst wählen",
+  "short": "Ein Ereignis teilen",
+  "description": "Teilen Sie einen Termin statt des ganzen Kalenders. Verstehen Sie Reader, Writer und Owner, Vorschauen, Aktualisierungen und die Grenzen eines Widerrufs.",
+  "lede": "Details zum Abendessen senden, Mitorganisatoren Änderungen erlauben und Zusagen sammeln sind unterschiedliche Aufgaben. Wählen Sie zuerst Ihr Ziel und dann den Freigabeweg. Dieser Leitfaden stammt von Arte Soft, dem Entwickler von Cloud Calendars.",
+  "commonBelief": "Jeder Ereignislink ist ein schreibgeschütztes Kalenderabonnement, das sofort aktualisiert wird und eine Antwort erfasst.",
+  "sections": [
+    {
+      "heading": "Prüfen Sie zuerst das einzelne Ereignis",
+      "body": [
+        "Eine Freigabe für ein einzelnes Ereignis umfasst dieses Ereignis und nicht den gesamten Kalender. Prüfen Sie Titel, Zeitzone, Ort, Notizen und Besprechungslinks. Angaben für einen Gast eignen sich nicht unbedingt für einen weit verbreiteten Link.",
+        "Für ein Abendessen müssen Sie nicht den Kalender mit Ihren Arztterminen freigeben. Ort und Links des Abendessens werden aber mitgeteilt. Prüfen Sie deshalb den Inhalt selbst."
+      ]
     },
-    practical: [
-      'Teilen Sie direkt aus dem Termin heraus, gleich nach dem Anlegen — dort erscheint das Angebot.',
-      'Verschicken Sie den Link so, wie Sie diese Person ohnehin erreichen; das Format ist gleichgültig.',
-      'Ändern Sie die Zeit kurzfristig, schreiben Sie zusätzlich — verlassen Sie sich nicht auf die stündliche Aktualisierung.',
-      'Ziehen Sie den Link zurück, wenn der Termin vorbei ist, wie bei einem geteilten Dokument.',
-    ],
-    seeAlso: ['icloud-google-and-outlook-in-one-view'],
-  },
+    {
+      "heading": "Wählen Sie Vorschau, E-Mail oder QR-Code",
+      "body": [
+        "Der App Clip von Cloud Calendars zeigt eine Vorschau. Zum Hinzufügen über diesen Weg wird die vollständige App benötigt. E-Mail- und QR-Einladungen öffnen eine Webseite mit einer Option zum Öffnen von Cloud Calendars. Diese Links sind keine austauschbaren Abonnementadressen.",
+        "Für die synchronisierte Freigabe meldet sich der Absender an. Links und QR-Codes lassen sich weiterleiten. Ein QR-Code übermittelt einen Link, beweist aber nicht, wer ihn geöffnet hat."
+      ]
+    },
+    {
+      "heading": "Vergeben Sie nur die nötigen Rechte",
+      "body": [
+        "Bei E-Mail-Einladungen wählen Sie Reader, Writer oder Owner. Reader darf ansehen und synchronisieren, Writer darf bearbeiten, Owner zusätzlich teilen und Zugriffe verwalten. Für jemanden, der nur den Zeitplan benötigt, reicht Reader.",
+        "Writer passt zu einem Mitorganisator, der das Ereignis ändern soll. Owner ist für Personen gedacht, die auch fremde Zugriffe verwalten sollen. Höhere Rechte erfordern die passende angemeldete Identität. Ein anonymer Empfänger ist kein identifizierter Mitinhaber."
+      ]
+    },
+    {
+      "heading": "Klären Sie, wie das Ereignis hinzugefügt wird",
+      "body": [
+        "Die vollständige App benötigt Kalenderzugriff und einen beschreibbaren Zielkalender. Der Empfänger sollte das Ziel vor dem Speichern prüfen. Die empfangene Kopie kann für spätere Änderungen mit dem geteilten Ereignis verknüpft werden.",
+        "Ein gewöhnlicher ICS-Import in einen anderen Kalender ist etwas anderes: Er erstellt eine Kopie, während ein Abonnement regelmäßig einen Feed abruft. Wenn Sie einen ICS-Feed senden, erklären Sie diesen Weg und prüfen Sie, ob der Kalender des Empfängers ihn unterstützt."
+      ]
+    },
+    {
+      "heading": "Verlassen Sie sich erst nach Prüfung auf Änderungen",
+      "body": [
+        "Eine synchronisierte Freigabe kann Änderungen und Absagen übermitteln, aber das Gerät muss sie empfangen können. Ein Aktualisierungshinweis für einen Feed ist keine Zustellfrist. Offlinegeräte, noch nicht aktualisierte Abonnements und unabhängige importierte Kopien können alte Angaben zeigen.",
+        "Verschiebt sich das Abendessen kurzfristig, aktualisieren Sie das Ereignis und kontaktieren Sie die Gäste direkt. Lassen Sie die neue Uhrzeit bestätigen. Eine Aktualisierung zu erhalten ist keine Zusage zur Teilnahme."
+      ]
+    },
+    {
+      "heading": "Zugriff ändern heißt nicht alle Kopien löschen",
+      "body": [
+        "Prüfen Sie Empfängerrechte und entfernen Sie nicht mehr benötigte Berechtigungen. Einen Empfänger zu entfernen und einen Feed-Link zu widerrufen sind getrennte Schritte. Keiner davon löscht zuverlässig alle Screenshots, Nachrichten oder Kalenderkopien aus der Ferne.",
+        "Wurde ein Link weiterverbreitet, bestimmen Sie den betroffenen Link oder Zugriff und prüfen Sie das Ergebnis nach der Änderung. Lassen Sie private Angaben künftig aus breit verteilten Links heraus, statt auf einen späteren Widerruf zu vertrauen."
+      ]
+    }
+  ],
+  "claims": {},
+  "practical": [
+    "Prüfen Sie Details und entscheiden Sie, ob es um Ansicht, Bearbeitung oder Teilnahmeantworten geht.",
+    "Wählen Sie den Freigabeweg und melden Sie sich bei Bedarf an.",
+    "Vergeben Sie Reader zum Ansehen und Writer oder Owner nur für die passende Verantwortung.",
+    "Bitten Sie den Empfänger, Uhrzeit und Zielkalender zu prüfen.",
+    "Aktualisieren Sie dringende Änderungen und senden Sie zusätzlich eine direkte Nachricht.",
+    "Prüfen Sie zum Abschluss Empfängerrechte und Linkzugriff getrennt."
+  ],
+  "faq": [
+    {
+      "q": "Wird mein gesamter Kalender sichtbar?",
+      "a": "Die synchronisierte Einzelfreigabe ist auf das Ereignis begrenzt. Seine eigenen Details werden dennoch geteilt. Prüfen Sie sie und senden Sie keine Einladung zum gesamten Kalender, wenn nur ein Termin gemeint ist."
+    },
+    {
+      "q": "Darf der Empfänger das Ereignis ändern?",
+      "a": "Mit den passenden Writer- oder Owner-Rechten und dem unterstützten angemeldeten Ablauf ja. Reader dient zum Ansehen und Synchronisieren. Ein gewöhnliches ICS-Abonnement verwendet nicht diesen Bearbeitungsmechanismus."
+    },
+    {
+      "q": "Macht das Entfernen alles bereits Empfangene rückgängig?",
+      "a": "Das ist nicht garantiert. Der Zugriff auf die Freigabe ändert sich, gespeicherte Kopien, Screenshots und Nachrichten können aber bleiben. Eine geteilte Feed-Adresse ist gesondert zu prüfen."
+    }
+  ],
+  "sourcesHeading": "Referenzen für Empfänger",
+  "sources": [
+    {
+      "label": "Apple: Überblick über App Clips",
+      "url": "https://developer.apple.com/help/app-store-connect/offer-app-clip-experiences/overview-of-app-clips/"
+    },
+    {
+      "label": "Google: Ereignisse importieren und Einschränkungen",
+      "url": "https://support.google.com/calendar/answer/37118?co=GENIE.Platform%3DDesktop&hl=en"
+    },
+    {
+      "label": "Microsoft: Kalender importieren oder abonnieren",
+      "url": "https://support.microsoft.com/en-us/outlook/import-or-subscribe-to-a-calendar-in-outlook-com-or-outlook-on-the-web"
+    }
+  ],
+  "seeAlso": [
+    "keeping-track-of-who-replied",
+    "who-can-see-what-in-google-calendar"
+  ]
+},
 
   'three-calendar-apps-is-two-too-many': {
     title: 'Drei Kalender-Apps sind zwei zu viel',

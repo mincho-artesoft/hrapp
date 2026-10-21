@@ -80,41 +80,100 @@ export const ARTICLES_SV: Readonly<Record<string, LocalisedArticle>> = {
   },
 
   'sharing-one-event-not-your-calendar': {
-    title: 'Dela en händelse, inte din kalender',
-    short: 'Dela en händelse',
-    description:
-      'Hur det går till att skicka en enda händelse, vad mottagaren faktiskt får och varför den inte behöver installera något för att se den.',
-    lede: 'Att dela en kalender är oftast allt eller inget: antingen har någon tillgång till din eller inte. Att skicka en middag borde inte kräva någotdera.',
-    commonBelief: 'Att dela en händelse betyder att ge någon ett fönster mot resten av din vecka.',
-    sections: [
-      {
-        heading: 'Vad som faktiskt skickas',
-        body: [
-          'När du skapar en händelse erbjuder appen att dela den. Det som färdas är en länk — via e-post, meddelande, vad mottagaren nu har — och bakom länken ligger ett kalenderflöde som innehåller den händelsen och inget annat.',
-          'Det är ingen skärmbild och ingen kopia som blir gammal. Ändras tiden ändras flödet med den, och den du skickade till ser ändringen utan att du skickar om något.',
-        ],
-      },
-      {
-        heading: 'Vad det inte är',
-        body: [
-          'Länken är en vanlig kalenderprenumeration: Apples Kalender läser den, Google Kalender läser den, Outlook läser den. I meddelandet följer också ett App Clip med för den som vill ha appen — det öppnas utan installation. Det är en dörr, inte en vägtull.',
-          'Det är inte omedelbart: flödet ber apparna titta igen varje timme, och det är en begäran, inte en regel. Det är inte heller hemligt: länken bär tjugotvå slumpmässiga tecken som ingen gissar, men den som har den kan läsa. Och tills vidare är det enbart läsning.',
-        ],
-      },
-    ],
-    claims: {
-      refreshHint: 'Timmar mellan varje begäran om att uppdatera flödet',
-      linkLength: 'Slumpmässiga tecken i länken, vilket är det som gör den ogissbar',
-      sharePrice: 'Vad delning kostar',
+  "updated": "2026-10-21",
+  "title": "Dela en kalenderhändelse: välj rätt länk och behörighet",
+  "short": "Dela en händelse",
+  "description": "Dela en händelse utan att dela hela kalendern. Förstå Reader, Writer och Owner, förhandsvisningar, uppdateringar och vad återkallad åtkomst inte gör.",
+  "lede": "Att dela middagsdetaljer, låta en medarrangör redigera och samla närvarosvar är olika uppgifter. Bestäm vad du behöver innan du väljer delningssätt. Guiden är skriven av Arte Soft, utvecklaren av Cloud Calendars.",
+  "commonBelief": "Varje händelselänk skulle vara en skrivskyddad kalenderprenumeration som uppdateras direkt och registrerar ett svar.",
+  "sections": [
+    {
+      "heading": "Börja med att granska en händelses innehåll",
+      "body": [
+        "Delning av en enskild händelse omfattar den händelsen, inte avsändarens hela kalender. Kontrollera titel, tidszon, plats, anteckningar och möteslänkar före utskick. Information som passar en gäst passar inte nödvändigtvis i en länk som sprids brett.",
+        "Att dela en middag kräver inte att du delar kalendern med dina läkarbesök. Middagens egen plats och länkar följer däremot med. Granska själva händelsen i stället för att förlita dig på att den omgivande kalendern är privat."
+      ]
     },
-    practical: [
-      'Dela från själva händelsen, direkt efter att du skapat den.',
-      'Skicka länken via den kanal du redan använder med personen.',
-      'Ändras tiden i sista stund, skriv också och nöj dig inte med att flytta händelsen.',
-      'Återkalla länken när händelsen är över, som du skulle sluta dela ett dokument.',
-    ],
-    seeAlso: ['icloud-google-and-outlook-in-one-view', 'weather-inside-your-calendar'],
-  },
+    {
+      "heading": "Välj förhandsvisning, e-postinbjudan eller QR-kod",
+      "body": [
+        "Cloud Calendars har olika delningsvägar. App Clip visar en förhandsvisning; den fullständiga appen behövs för att lägga till händelsen därifrån. Inbjudningar via e-post och QR öppnar en webbsida som erbjuder att öppna Cloud Calendars. Länkarna är inte utbytbara prenumerationsadresser.",
+        "Avsändaren loggar in för appens synkroniserade delning. En länk eller QR-kod kan vidarebefordras, så skicka den bara där innehållet passar. En QR-kod förmedlar en länk och bevisar inte vem som öppnat den."
+      ]
+    },
+    {
+      "heading": "Ge bara den åtkomst mottagaren behöver",
+      "body": [
+        "E-postinbjudningar låter dig välja Reader, Writer eller Owner. Reader kan läsa och synkronisera; Writer kan redigera; Owner kan också dela och hantera åtkomst. Det är olika befogenheter, inte tre namn för visning. Välj Reader när någon bara behöver schemat.",
+        "Välj Writer för en medarrangör som ska ändra händelsen. Välj Owner bara om personen också ska bestämma andras åtkomst. Mottagaren måste använda rätt inloggad identitet för utökade behörigheter. En anonym mottagare är inte en identifierad medägare."
+      ]
+    },
+    {
+      "heading": "Förstå hur mottagaren lägger till händelsen",
+      "body": [
+        "I den fullständiga appen krävs kalenderbehörighet och en skrivbar målkalender för att lägga till en delad händelse. Mottagaren bör kontrollera destinationen innan den sparas. Den mottagna kopian kan sedan kopplas till den delade händelsen för senare uppdateringar.",
+        "Det skiljer sig från att importera en vanlig ICS-fil i en annan kalender. Import skapar en kopia, medan en prenumeration kontrollerar ett flöde regelbundet. Om du skickar ett ICS-flöde i stället för en appinbjudan, förklara det och kontrollera att mottagarens kalender stöder det."
+      ]
+    },
+    {
+      "heading": "Kontrollera ändringar innan du förlitar dig på dem",
+      "body": [
+        "Synkroniserad delning kan föra vidare ändringar och inställda händelser, men mottagarens enhet måste kunna ta emot dem. Ett önskemål om flödets uppdateringsintervall är ingen leveransfrist. En offlineenhet, en ouppdaterad prenumeration eller en fristående importerad kopia kan visa äldre uppgifter.",
+        "Om middagen flyttas strax före start, uppdatera händelsen och kontakta gästerna direkt. Be dem bekräfta den nya tiden. Att skicka en uppdatering och få ett närvarosvar är separata steg."
+      ]
+    },
+    {
+      "heading": "Hantera åtkomst utan att lova att kopior raderas",
+      "body": [
+        "Granska mottagarnas behörigheter och ta bort sådant som inte längre behövs. Att ta bort en mottagare och återkalla en flödeslänk är olika åtgärder. Ingen av dem ska beskrivas som fjärradering av skärmbilder, meddelanden eller alla kalenderkopior.",
+        "Om en länk har spridits utanför den tänkta kretsen, identifiera länken eller behörigheten det gäller. Kontrollera den berörda vägen efter ändringen. Håll privata detaljer borta från framtida brett spridda länkar, i stället för att hoppas kunna återta dem senare."
+      ]
+    }
+  ],
+  "claims": {},
+  "practical": [
+    "Granska händelsen och avgör om du behöver läsning, redigering eller närvarosvar.",
+    "Välj avsedd delningsväg och logga in när det krävs.",
+    "Använd Reader för läsare; ge Writer eller Owner bara för motsvarande ansvar.",
+    "Be mottagaren kontrollera tiden och målkalendern när händelsen läggs till.",
+    "Uppdatera händelsen och skicka ett direktmeddelande vid brådskande ändringar.",
+    "Granska mottagarbehörigheter och länkåtkomst var för sig när delningen upphör."
+  ],
+  "faq": [
+    {
+      "q": "Visas hela min kalender när jag delar en händelse?",
+      "a": "Synkroniserad delning av en händelse är avgränsad till den. Händelsens egna detaljer blir ändå tillgängliga via vald väg. Granska dem och skicka inte en inbjudan till hela kalendern när du bara vill dela en händelse."
+    },
+    {
+      "q": "Kan mottagaren ändra händelsen?",
+      "a": "Ja, med rätt Writer- eller Owner-behörighet och det inloggade flöde som stöds. Reader är för läsning och synkronisering. En vanlig ICS-prenumeration är inte samma redigeringsmekanism."
+    },
+    {
+      "q": "Ångras allt någon redan fått när jag tar bort personen?",
+      "a": "Utgå inte från en sådan garanti. Ändrad åtkomst påverkar den delningsrelation som stöds, men sparade kopior, skärmbilder och meddelanden kan finnas kvar. En delad flödesadress behöver också hanteras separat."
+    }
+  ],
+  "sourcesHeading": "Referenser för mottagarens alternativ",
+  "sources": [
+    {
+      "label": "Apple: översikt över App Clips",
+      "url": "https://developer.apple.com/help/app-store-connect/offer-app-clip-experiences/overview-of-app-clips/"
+    },
+    {
+      "label": "Google: import av händelser och begränsningar",
+      "url": "https://support.google.com/calendar/answer/37118?co=GENIE.Platform%3DDesktop&hl=en"
+    },
+    {
+      "label": "Microsoft: importera eller prenumerera på en kalender",
+      "url": "https://support.microsoft.com/en-us/outlook/import-or-subscribe-to-a-calendar-in-outlook-com-or-outlook-on-the-web"
+    }
+  ],
+  "seeAlso": [
+    "who-can-see-what-in-google-calendar",
+    "what-guests-can-do-to-your-event",
+    "taking-back-a-calendar-you-shared"
+  ]
+},
 
   'what-a-subscription-actually-buys': {
   "updated": "2026-10-21",

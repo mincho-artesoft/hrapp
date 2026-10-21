@@ -2,8 +2,8 @@ import { ChangeDetectionStrategy, Component, inject } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 
 import { ARTICLE_FACTS } from '../../content/article-facts';
-import { contentFor, LIVE_LOCALES } from '../../content/registry';
-import { ArticleChrome, Family } from '../../content/types';
+import { LIVE_LOCALES } from '../../content/article-index';
+import { ArticleChrome, ArticleLocale, Family } from '../../content/types';
 import { DEFAULT_LOCALE, Locale, linkPath, localePath } from '../../core/locales';
 import { MoreAppsComponent } from '../../components/more-apps/more-apps.component';
 import { SeoService } from '../../core/seo.service';
@@ -80,7 +80,8 @@ export class ArticlesPageComponent {
     const route = inject(ActivatedRoute).snapshot;
     this.locale = (route.data['locale'] as Locale | undefined) ?? DEFAULT_LOCALE;
 
-    const content = contentFor(this.locale.code);
+    const content = route.data['articleContent'] as ArticleLocale;
+    if (!content) throw new Error('Article hub content was not resolved');
     this.chrome = content.chrome;
 
     const headings: Record<Family, string> = {

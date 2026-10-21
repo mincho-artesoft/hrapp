@@ -80,41 +80,100 @@ export const ARTICLES_CS: Readonly<Record<string, LocalisedArticle>> = {
   },
 
   'sharing-one-event-not-your-calendar': {
-    title: 'Sdílet jednu událost, ne svůj kalendář',
-    short: 'Sdílet jednu událost',
-    description:
-      'Jak funguje odeslání jediné události, co druhá strana skutečně dostane a proč si nemusí nic instalovat, aby to viděla.',
-    lede: 'Sdílet kalendář bývá všechno, nebo nic: buď má někdo přístup k tomu vašemu, nebo nemá. Poslat večeři by nemělo vyžadovat ani jedno.',
-    commonBelief: 'Že sdílet událost znamená dát někomu okno do zbytku vašeho týdne.',
-    sections: [
-      {
-        heading: 'Co se doopravdy odesílá',
-        body: [
-          'Při vytváření události vám aplikace nabídne ji sdílet. Cestuje odkaz — e-mailem, zprávou, tím, co má druhá strana nainstalované — a za tím odkazem stojí kalendářový kanál obsahující tuto jednu událost a nic dalšího.',
-          'Není to snímek obrazovky ani kopie, která stárne. Změní-li se čas, změní se s ním i kanál, a ten, komu jste jej poslali, změnu uvidí, aniž byste cokoli posílali znovu.',
-        ],
-      },
-      {
-        heading: 'Co to není',
-        body: [
-          'Odkaz je běžné kalendářové předplatné: čte jej Kalendář Apple, čte jej Kalendář Google, čte jej Outlook. Ve zprávě je i App Clip pro toho, kdo aplikaci chce — otevře se bez instalace. Jsou to dveře, ne mýtná brána.',
-          'Není okamžitý: kanál žádá aplikace, aby se každou hodinu podívaly znovu, a to je žádost, ne pravidlo. Není ani tajný: odkaz nese dvaadvacet náhodných znaků, které nikdo neuhodne, ale kdo jej má, může číst. A zatím je jen pro čtení.',
-        ],
-      },
-    ],
-    claims: {
-      refreshHint: 'Hodin mezi žádostmi o obnovení kanálu',
-      linkLength: 'Náhodných znaků v odkazu, což je to, co jej činí neuhodnutelným',
-      sharePrice: 'Kolik stojí sdílení',
+  "updated": "2026-10-21",
+  "title": "Sdílení jedné události: zvolte správný odkaz a oprávnění",
+  "short": "Sdílení jedné události",
+  "description": "Sdílejte událost bez celého kalendáře. Zjistěte, co znamenají role Reader, Writer a Owner, náhledy, aktualizace a omezení odebrání přístupu.",
+  "lede": "Poslat podrobnosti večeře, povolit spoluorganizátorovi úpravy a získat potvrzení účasti jsou různé úkoly. Nejdříve si vyberte potřebný výsledek, potom způsob sdílení. Tento návod připravila Arte Soft, vývojář Cloud Calendars.",
+  "commonBelief": "Každý odkaz na událost je údajně odběr kalendáře pouze pro čtení, který se okamžitě aktualizuje a zaznamená odpověď.",
+  "sections": [
+    {
+      "heading": "Začněte kontrolou jedné události",
+      "body": [
+        "Sdílení jednotlivé události se týká této události, nikoli celého kalendáře odesílatele. Před odesláním zkontrolujte název, časové pásmo, místo, poznámky a odkazy na schůzky. Údaj vhodný pro jednoho hosta nemusí patřit do široce šířeného odkazu.",
+        "Sdílení večeře nevyžaduje sdílet kalendář s návštěvami lékaře. Místo a odkazy samotné večeře se však sdílejí spolu s ní. Prověřte obsah události, nespoléhejte na soukromí okolního kalendáře."
+      ]
     },
-    practical: [
-      'Sdílejte přímo z události, hned po jejím vytvoření.',
-      'Pošlete odkaz kanálem, který s tím člověkem už používáte.',
-      'Mění-li se čas na poslední chvíli, napište kromě toho, že událost posunete.',
-      'Odvolejte odkaz, až událost skončí, tak jako byste přestali sdílet dokument.',
-    ],
-    seeAlso: ['icloud-google-and-outlook-in-one-view', 'weather-inside-your-calendar'],
-  },
+    {
+      "heading": "Vyberte náhled, e-mailovou pozvánku nebo QR kód",
+      "body": [
+        "Cloud Calendars nabízí různé cesty sdílení. App Clip zobrazuje náhled; k přidání události touto cestou je potřeba plná aplikace. E-mailové a QR pozvánky používají webovou stránku nabízející otevření Cloud Calendars. Tyto odkazy nejsou zaměnitelné adresy odběru.",
+        "Pro synchronizované sdílení v aplikaci se odesílatel přihlašuje. Odkaz i QR kód lze přeposlat, proto je posílejte jen tam, kde je jejich obsah vhodný. QR kód předává odkaz, nedokazuje totožnost člověka, který jej otevřel."
+      ]
+    },
+    {
+      "heading": "Přidělte jen potřebná oprávnění",
+      "body": [
+        "U e-mailových pozvánek lze zvolit Reader, Writer nebo Owner. Reader může prohlížet a synchronizovat; Writer upravovat; Owner také sdílet a spravovat přístup. Nejde o tři názvy pro pouhé prohlížení. Pro člověka, který potřebuje pouze program, zvolte Reader.",
+        "Writer je vhodný pro spoluorganizátora, který má měnit událost. Owner přidělte jen tomu, kdo má spravovat i přístup ostatních. Vyšší oprávnění vyžadují odpovídající přihlášenou identitu příjemce. Anonymní příjemce není identifikovaný spoluvlastník."
+      ]
+    },
+    {
+      "heading": "Zjistěte, jak příjemce událost přidá",
+      "body": [
+        "V plné aplikaci vyžaduje přidání sdílené události oprávnění ke kalendářům a zapisovatelný cílový kalendář. Příjemce má před uložením zkontrolovat cíl. Přijatá kopie pak může být spojena se sdílenou událostí pro pozdější aktualizace.",
+        "To se liší od importu běžného souboru ICS do jiného kalendáře. Import vytvoří kopii, zatímco odběr pravidelně kontroluje kanál. Posíláte-li kanál ICS místo pozvánky aplikace, výslovně to vysvětlete a ověřte podporu v kalendáři příjemce."
+      ]
+    },
+    {
+      "heading": "Ověřte změny, než se na ně spolehnete",
+      "body": [
+        "Synchronizované sdílení může přenášet pozdější úpravy či zrušení, zařízení příjemce však musí dostat možnost je přijmout. Doporučený interval obnovení kanálu není termín doručení. Zařízení offline, neobnovený odběr nebo samostatná importovaná kopie mohou stále zobrazovat staré údaje.",
+        "Přesune-li se večeře těsně před začátkem, upravte událost a kontaktujte hosty přímo. Požádejte o potvrzení nového času. Odeslání aktualizace a získání odpovědi o účasti jsou samostatné kroky."
+      ]
+    },
+    {
+      "heading": "Spravujte přístup bez slibu vymazání kopií",
+      "body": [
+        "Prověřte oprávnění příjemců a odeberte nepotřebná. Odebrání příjemce a odvolání odkazu na kanál jsou různé operace. Ani jednu nepopisujte jako vzdálené vymazání snímků obrazovky, zpráv či všech kopií v kalendářích.",
+        "Rozšířil-li se odkaz mimo zamýšlený okruh, zjistěte, o který odkaz nebo oprávnění jde. Po změně přístupu ověřte dotčenou cestu. U dalších událostí nedávejte soukromé údaje do široce šířených odkazů, místo spoléhání na jejich pozdější odvolání."
+      ]
+    }
+  ],
+  "claims": {},
+  "practical": [
+    "Zkontrolujte podrobnosti a určete, zda potřebujete čtení, úpravy nebo odpovědi o účasti.",
+    "Zvolte správnou cestu sdílení a podle potřeby se přihlaste.",
+    "Pro čtenáře použijte Reader; Writer a Owner přidělujte podle skutečné odpovědnosti.",
+    "Požádejte příjemce, aby při přidávání ověřil čas a cílový kalendář.",
+    "Při naléhavé změně upravte událost a pošlete přímou zprávu.",
+    "Při ukončení sdílení prověřte zvlášť oprávnění příjemců a přístup přes odkazy."
+  ],
+  "faq": [
+    {
+      "q": "Zpřístupní sdílení události celý můj kalendář?",
+      "a": "Synchronizované sdílení jedné události je omezeno na ni. Přesto zvolenou cestou zpřístupňuje její vlastní podrobnosti. Zkontrolujte je a neposílejte pozvánku k celému kalendáři, chcete-li sdílet jen událost."
+    },
+    {
+      "q": "Může příjemce událost změnit?",
+      "a": "Ano, s odpovídající rolí Writer nebo Owner a podporovaným přihlášeným postupem. Reader slouží k prohlížení a synchronizaci. Běžný odběr ICS není stejný mechanismus úprav."
+    },
+    {
+      "q": "Zruší odebrání člověka vše, co už obdržel?",
+      "a": "Takovou záruku nepředpokládejte. Změna oprávnění ovlivňuje podporovaný vztah sdílení, ale uložené kopie, snímky obrazovky a zprávy mohou zůstat. Samostatně je třeba posoudit i adresu sdíleného kanálu."
+    }
+  ],
+  "sourcesHeading": "Zdroje k možnostem příjemce",
+  "sources": [
+    {
+      "label": "Apple: přehled App Clips",
+      "url": "https://developer.apple.com/help/app-store-connect/offer-app-clip-experiences/overview-of-app-clips/"
+    },
+    {
+      "label": "Google: import událostí a jeho omezení",
+      "url": "https://support.google.com/calendar/answer/37118?co=GENIE.Platform%3DDesktop&hl=en"
+    },
+    {
+      "label": "Microsoft: import kalendáře a přihlášení k odběru",
+      "url": "https://support.microsoft.com/en-us/outlook/import-or-subscribe-to-a-calendar-in-outlook-com-or-outlook-on-the-web"
+    }
+  ],
+  "seeAlso": [
+    "who-can-see-what-in-google-calendar",
+    "what-guests-can-do-to-your-event",
+    "taking-back-a-calendar-you-shared"
+  ]
+},
 
   'what-a-subscription-actually-buys': {
   "updated": "2026-10-21",

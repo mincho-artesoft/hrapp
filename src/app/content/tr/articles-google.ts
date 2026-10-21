@@ -3,52 +3,95 @@ import { LocalisedArticle } from '../types';
 /** Altı Google yazısı: net sorular, net cevaplar. */
 export const GOOGLE_TR: Readonly<Record<string, LocalisedArticle>> = {
   'who-can-see-what-in-google-calendar': {
-    title: 'Bir Google takvimini paylaştığınızda kim neyi görür',
-    short: 'Google paylaşım izinleri',
-    description:
-      'Google’ın paylaşım düzeyleri hızlı ayarlanır ve kolay yanlış anlaşılır. Her birinin gerçekte neyi açtığı, sade bir dille.',
-    lede: 'Kazara fazla paylaşmanın neredeyse hiçbiri muhakeme hatası değildir. Biri, mütevazı gibi duran ama olmayan bir düzeyi seçmiştir.',
-    commonBelief: '«Yalnızca boş/meşgul» ile «tüm etkinlik ayrıntıları» arasındaki farkın küçük olduğu.',
-    sections: [
-      {
-        heading: 'Düzeyler kulağa geldiğinden daha uzaktır',
-        body: [
-          'Boş/meşgul, başlıksız zaman blokları gösterir. Tüm ayrıntılar başlıkları, yerleri, notları ve konukları gösterir — çoğu takvim için bu, hayatınızın hatırı sayılır bir bölümüdür.',
-          'Değişiklik yapma düzenlemeye izin verir. Paylaşımı yönetme, takviminizi başkalarına devretmeye izin verir; sonradan şaşırtan da budur.',
-        ],
-      },
-      {
-        heading: 'Her seferinde düşünmeden seçmek',
-        body: [
-          'Yalnızca sizin etrafınızda plan yapması gereken iş arkadaşları için boş/meşgul neredeyse her zaman doğru yanıttır ve neredeyse hiç seçilmez.',
-          'Tüm ayrıntıları paylaşılmak için kurulmuş takvimlere saklayın, içinde yaşadığınıza değil.',
-        ],
-      },
-    ],
-    claims: {
-      advancedMonthly: 'Bunun uygulamada yönetildiği katmanın aylık ücreti, dolar olarak',
+  "updated": "2026-10-21",
+  "title": "Google Calendar paylaşımı: gerçek erişimi kontrol edin",
+  "short": "Google Calendar erişimi ve gizlilik",
+  "description": "Google Calendar için uygun görüntüleme veya düzenleme hakkını seçin. Kişisel izinlerle birlikte herkese açık, grup ve kuruluş erişimini inceleyin.",
+  "lede": "Paylaşmadan önce kişinin boş zamanı görmesi, ayrıntıları okuması veya takvimi yönetmesi gerekip gerekmediğini belirleyin. Bu rehberi Cloud Calendars geliştiricisi Arte Soft yayımlamıştır.",
+  "commonBelief": "Bir kişiyi kısıtlamak, ayrıntıları başka hiçbir yoldan göremeyeceğini garanti eder.",
+  "sections": [
+    {
+      "heading": "İzni göreve göre seçin",
+      "body": [
+        "Zaman ayarlayan bir iş arkadaşı yalnızca uygunluğunuzu görmek isteyebilir. Proje programını yöneten kişinin ihtiyacı farklıdır. Önce görevi belirleyin, sonra güncel paylaşım ayarını inceleyin.",
+        "Google uygunluk, etkinlik ayrıntıları ve birkaç düzenleme düzeyini ayırır. Bir seçenek özel etkinlik erişimini sınırlar; başka biri düzenleme ve ayrıntılara izin verir; en genişi paylaşım yönetimini de içerir. Tüm değişiklik seçeneklerini eşit saymayın."
+      ]
     },
-    faq: [
-      {
-        q: 'Yalnızca boş/meşgul paylaşırsam etkinlik başlıklarım görünür mü?',
-        a: 'Hayır. Boş/meşgul, başlıksız zaman bloklarını gösterir; yer, not ve konuk yoktur. Bunları ancak «tüm ayrıntılar» açar — ve hepsini açar.',
-      },
-      {
-        q: '«Değişiklik yapma ve paylaşımı yönetme» neye izin verir?',
-        a: 'Her etkinliği düzenlemeye ve takviminizi size sormadan başkalarına devretmeye. Erişimi sizden başka birinin dağıtabildiği tek düzey budur.',
-      },
-      {
-        q: 'Takvimime kimlerin erişimi olduğunu görebilir miyim?',
-        a: 'Evet, o takvimin paylaşım ayarlarında. Hiçbir şey bakmanızı istemez ve paylaşımlar yalnızca birikir: listeyi yılda iki kez okuyun.',
-      },
-    ],
-    practical: [
-      'Sizden yalnızca zaman ayırtacak herkes için varsayılan boş/meşgul olsun.',
-      '«Değişiklik yapma»yı gerçekten sizin adınıza plan yapanlara bırakın.',
-      'Kimin erişimi olduğunu yılda iki kez gözden geçirin; paylaşımlar birikir ve hiçbir şey hatırlatmaz.',
-    ],
-    seeAlso: ['why-a-shared-calendar-does-not-appear', 'what-guests-can-do-to-your-event'],
-  },
+    {
+      "heading": "Takvimin genel erişimini de inceleyin",
+      "body": [
+        "Tek tek kişiler dışında herkese açıklığı, kuruluşu ve grupları kontrol edin. Google’a göre geniş erişim dar izni geçersiz kılabilir: kişiyi kısıtlamak zaten yayımlanmış ayrıntıları gizlemez.",
+        "Kulüp programına kişisel randevu koymadan önce yalnızca bir arkadaşın iznine değil bütün izleyici kitlesine bakın. Özel randevuları uygun takvimde tutun."
+      ]
+    },
+    {
+      "heading": "Doğru takvimin Google ayarlarını kullanın",
+      "body": [
+        "Bilgisayarda Google Calendar içinde takvimi bulun, menüsünü ve paylaşım ayarlarını açın. Kişi veya gruplar ile genel erişim farklı alanlardadır. Takvim adını ve oturum açılan hesabı kontrol edin.",
+        "Alıcının amaçlanan Google kimliğini doğrulayın. Takvim görünmüyorsa erişimi genişletmek yerine adresi ve daveti inceleyin. Eksik görüntü ile yetersiz düzenleme hakkı farklı sorunlardır."
+      ]
+    },
+    {
+      "heading": "Özel bilgi kullanmadan deneyin",
+      "body": [
+        "Özel başlık, not, konum veya konuk listesi olmayan deneme randevusu kullanın. Alıcıdan gördüklerini, yalnızca gerekli ve izinli olduğunda da değiştirebildiklerini doğrulamasını isteyin. Hesap parolanızı paylaşmayın.",
+        "Takvimi ve rolü kaydedip ayar değişikliğinin sonucunu kontrol edin. Bu, daha önce okunmuş veya kopyalanmış bilgilerin silindiğini kanıtlamaz. Denemek için gerçek iş programını yayımlamayın."
+      ]
+    },
+    {
+      "heading": "İş kurallarıyla uygulama planını ayırın",
+      "body": [
+        "İş veya okul Google yöneticileri paylaşımı kısıtlayabilir. Gerekli ayar yoksa kuruluşun onayladığı yolu kullanın. Kısıtı aşmak için iş bilgilerini herkese açmayın.",
+        "Cloud Calendars planları Google haklarını yeniden tanımlamaz. Advanced reklamları kaldırır; başka birine tüm olayları açan bir ödeme değildir. Yerel düzenleyicinin görünmesine değil, sağlayıcının kabul ettiği sonuca bakın."
+      ]
+    },
+    {
+      "heading": "Gereksiz erişim yollarını kaldırın",
+      "body": [
+        "Proje bitince kişileri, grupları ve genel yayını inceleyin. Başka yollar varsa bir kişiyi kaldırmak tek başına yetmez. Programı ve ilerideki izinleri kimin yöneteceğini kararlaştırın.",
+        "Google kişi veya grup kaldırmayı ve genel paylaşımı kapatmayı ayrı açıklar. Bu, dışa aktarılmış dosyaları, ekran görüntülerini veya kopyaları geri getirmez. Onları ilgililerle ayrıca ele alın."
+      ]
+    }
+  ],
+  "claims": {},
+  "practical": [
+    "Takvimi ve alıcının görevini belirleyin.",
+    "Kişi, grup, kuruluş ve genel erişimi inceleyin.",
+    "Güncel Google ayarlarında göreve uygun izni seçin.",
+    "Değişiklikten önce kimliği doğrulayın.",
+    "Zararsız bir deneme etkinliğini alıcı tarafından kontrol edin.",
+    "Eski erişimi kaldırırken önceki kopyaların silindiğini varsaymayın."
+  ],
+  "faq": [
+    {
+      "q": "Kişisel kısıtlama herkese açık takvime üstün gelir mi?",
+      "a": "Hayır. Google, çelişkide daha geniş takvim izinlerinin öncelikli olduğunu belirtir. Kişi kaydı yanında genel ve kuruluş ayarlarını da inceleyin."
+    },
+    {
+      "q": "Her düzenleme hakkı özel etkinlikleri aynı şekilde gösterir mi?",
+      "a": "Hayır. Google özel etkinlik erişimini sınırlayan düzenlemeyi diğer düzenleme ve paylaşım yönetimi seçeneklerinden ayırır. Güncel iznin tam açıklamasını okuyun."
+    },
+    {
+      "q": "Advanced almak Google haklarını değiştirir mi?",
+      "a": "Hayır. Advanced Cloud Calendars reklamlarını kaldırır. Erişim, takvim izinleri ve kuruluş kısıtlarına bağlıdır."
+    }
+  ],
+  "sourcesHeading": "Güncel Google paylaşım rehberleri",
+  "sources": [
+    {
+      "label": "Google: takvim izinlerini seçme",
+      "url": "https://support.google.com/calendar/answer/15716974?hl=en"
+    },
+    {
+      "label": "Google: paylaşma ve erişimi kaldırma",
+      "url": "https://support.google.com/calendar/answer/37082?hl=en"
+    }
+  ],
+  "seeAlso": [
+    "why-a-shared-calendar-does-not-appear",
+    "sharing-one-event-not-your-calendar"
+  ]
+},
 
   'why-a-shared-calendar-does-not-appear': {
     "updated": "2026-10-21",

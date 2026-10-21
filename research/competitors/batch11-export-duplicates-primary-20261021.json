@@ -1,0 +1,27 @@
+{
+  "date": "2026-10-21",
+  "method": "Two discovered nonfailed exactURLs from coverage-current, direct currentprimarybodyreads. No productruntime, volume orrankingtest.",
+  "reviews": [
+    {
+      "url": "https://docs.onecal.io/docs/help/duplicate-events",
+      "scope": "Complete main body22-52 of62returnedlines",
+      "summary": "Distinguishes source events, destination clones, manual copies and display duplicates. Explains multiple active sync systems, viewing source and destination together, and pre-existing manual copies. Clone markers and cleanup options are publisher-specific, not established Cloud functionality.",
+      "canonicalCandidates": [
+        "what-calendar-sync-actually-does",
+        "when-two-calendars-disagree",
+        "three-calendar-apps-is-two-too-many"
+      ],
+      "next": "ExistingCloudguidescovervisibilitydiagnosis; do notcopyOneCaldestructivecleanupsteps orclonemarkers."
+    },
+    {
+      "url": "https://www.busymac.com/docs/busycalios/export-as-csv/",
+      "scope": "Completebody57-74of84returnedlines; images/linkedpagesnotreviewed",
+      "summary": "Documents iOS export of selected calendars to spreadsheetCSV, one row per event occurrence, through iOS share sheet. ICS import is a separate Mac workflow.",
+      "canonicalCandidates": [
+        "calendar-export-ics-pdf-and-backup"
+      ],
+      "next": "RootaddedqualifiedCSVsection to existingexportguide andsource; explicitly notCloudexportbutton. No newthinpage."
+    }
+  ],
+  "statusUpdates": "Bothpreviouslydiscovered; complete textualbodyreadsrecorded, not runtimecertification."
+}

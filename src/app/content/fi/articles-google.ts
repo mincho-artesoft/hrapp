@@ -3,52 +3,95 @@ import { LocalisedArticle } from '../types';
 /** Kuusi Google-artikkelia: täsmällisiä kysymyksiä, selkeitä vastauksia. */
 export const GOOGLE_FI: Readonly<Record<string, LocalisedArticle>> = {
   'who-can-see-what-in-google-calendar': {
-    title: 'Kuka näkee mitä, kun jaat Google-kalenterin',
-    short: 'Googlen jako-oikeudet',
-    description:
-      'Googlen jakotasot asetetaan nopeasti ja ymmärretään helposti väärin. Mitä kukin niistä todella paljastaa, selvin sanoin.',
-    lede: 'Lähes kaikki vahingossa tapahtunut liikajakaminen ei ole arviointivirhe. Joku valitsi tason, joka kuulosti vaatimattomalta eikä ollut sitä.',
-    commonBelief: 'Että «näytä vain varattu/vapaa» ja «näytä kaikki tiedot» eroavat vähän.',
-    sections: [
-      {
-        heading: 'Tasot ovat kauempana toisistaan kuin kuulostavat',
-        body: [
-          'Varattu/vapaa näyttää aikalohkoja ilman otsikoita. Kaikki tiedot näyttää otsikot, paikat, muistiinpanot ja vieraat — useimmissa kalentereissa siis melkoisen osan elämästäsi.',
-          'Tee muutoksia antaa muokkausoikeuden. Hallitse jakamista antaa oikeuden luovuttaa kalenterisi eteenpäin muille, ja juuri se yllättää myöhemmin.',
-        ],
-      },
-      {
-        heading: 'Valinta ilman pohdintaa joka kerta',
-        body: [
-          'Kollegoille, joiden pitää vain sovittaa aikoja ympärillesi, varattu/vapaa on lähes aina oikea vastaus ja lähes koskaan valittu.',
-          'Säästä täydet tiedot kalentereihin, jotka on tehty jaettaviksi, älä siihen, jossa elät.',
-        ],
-      },
-    ],
-    claims: {
-      advancedMonthly: 'Kuukausihinta tasolle, jolla tätä hallitaan sovelluksessa, dollareina',
+  "updated": "2026-10-21",
+  "title": "Google-kalenterin jakaminen: tarkista todelliset oikeudet",
+  "short": "Google-kalenterin käyttöoikeudet",
+  "description": "Valitse saatavuuden, tietojen tai muokkauksen oikeudet Google-kalenterissa. Tarkista henkilöiden lisäksi ryhmien, organisaation ja julkinen pääsy.",
+  "lede": "Päätä ennen jakamista, tarvitseeko toinen henkilö vapaat ajat, tapahtumatiedot vai kalenterin ylläpito-oikeuden. Ne ovat eri tehtäviä. Oppaan julkaisee Cloud Calendarsin kehittäjä Arte Soft.",
+  "commonBelief": "Yhden henkilön rajattu oikeus estää häntä näkemästä tietoja minkään muun reitin kautta.",
+  "sections": [
+    {
+      "heading": "Sovita oikeus tehtävään",
+      "body": [
+        "Aikaa ehdottava kollega voi tarvita vain varaustilanteen. Projektin aikataulua ylläpitävä tarvitsee muuta. Määritä tehtävä ja tarkista vasta sitten kalenterin nykyiset jakamisasetukset.",
+        "Google erottaa saatavuuden, tapahtumatiedot ja useita muokkaustasoja. Yksi rajoittaa yksityisten tapahtumien tietoja, toinen sallii muokkauksen ja tiedot, laajin myös jakamisen hallinnan. Kaikki muokkausvaihtoehdot eivät vastaa toisiaan."
+      ]
     },
-    faq: [
-      {
-        q: 'Näkyvätkö tapahtumieni otsikot, jos jaan vain varattu/vapaa?',
-        a: 'Ei. Varattu/vapaa näyttää aikalohkoja ilman otsikoita, paikkoja, muistiinpanoja tai vieraita. Vasta «kaikki tiedot» paljastaa ne — ja silloin kaikki.',
-      },
-      {
-        q: 'Mitä «tee muutoksia ja hallitse jakamista» sallii?',
-        a: 'Muokata jokaista tapahtumaa ja luovuttaa kalenterisi eteenpäin muille kysymättä sinulta. Se on ainoa taso, jolla joku muu jakaa käyttöoikeuksia.',
-      },
-      {
-        q: 'Voinko tarkistaa, kenellä on jo pääsy kalenteriini?',
-        a: 'Kyllä, kyseisen kalenterin jakoasetuksista. Mikään ei kehota katsomaan ja jakoja vain kertyy: lue lista kahdesti vuodessa.',
-      },
-    ],
-    practical: [
-      'Oletuksena varattu/vapaa kaikille, joiden tarvitsee vain varata aikaa kanssasi.',
-      'Säästä «tee muutoksia» niille, jotka oikeasti suunnittelevat puolestasi.',
-      'Käy käyttöoikeudet läpi kahdesti vuodessa; jakoja kertyy eikä mikään muistuta niistä.',
-    ],
-    seeAlso: ['why-a-shared-calendar-does-not-appear', 'what-guests-can-do-to-your-event'],
-  },
+    {
+      "heading": "Tarkista koko kalenterin yleisö",
+      "body": [
+        "Nimettyjen henkilöiden lisäksi tarkista julkisuus, organisaatio ja ryhmäjako. Googlen mukaan laajempi oikeus voi ohittaa suppeamman: yhden henkilön rajoitus ei piilota jo julkisia tietoja.",
+        "Tarkista esimerkiksi kerhon julkistetun aikataulun yleisö ennen henkilökohtaisen menon lisäämistä. Yhden ystävän kohdalla näkyvä asetus ei ole ainoa. Säilytä yksityiset menot sopivassa kalenterissa."
+      ]
+    },
+    {
+      "heading": "Avaa oikean kalenterin Google-asetukset",
+      "body": [
+        "Etsi kalenteri tietokoneen Google-kalenterissa ja avaa sen valikosta jakamisasetukset. Henkilöille ja ryhmille sekä laajemmalle pääsylle on eri alueet. Tarkista kalenterin nimi ja kirjautunut tili.",
+        "Varmista vastaanottajan Google-identiteetti. Jos kalenteri puuttuu, tarkista osoite ja kutsu, älä laajenna oikeuksia vain saadaksesi sen näkyviin. Näkymän puuttuminen ja muokkausluvan puuttuminen ovat eri ongelmia."
+      ]
+    },
+    {
+      "heading": "Kokeile ilman yksityisiä tietoja",
+      "body": [
+        "Luo tavallinen koetapahtuma ilman yksityistä otsikkoa, muistiinpanoja, paikkaa tai vieraslistaa. Pyydä vastaanottajaa kertomaan mitä hän näkee ja vain tarvittaessa ja luvalla mitä hän voi muuttaa. Älä jaa tunnuksiasi.",
+        "Kirjaa kalenteri ja rooli, ja tarkista tulos asetuksen muutoksen jälkeen. Koe ei todista aiemmin luetun tai kopioidun tiedon poistuneen. Älä julkaise oikeaa työaikataulua testiksi."
+      ]
+    },
+    {
+      "heading": "Erota organisaation säännöt sovelluksen tilauksesta",
+      "body": [
+        "Työ- tai koulutilin ylläpitäjä voi rajoittaa jakamista. Jos tarvittavaa asetusta ei ole, käytä organisaation hyväksymää tapaa. Älä julkaise työtietoja rajoituksen kiertämiseksi.",
+        "Cloud Calendarsin tilaustasot eivät määritä Googlen oikeuksia. Advanced poistaa mainokset, ei anna toiselle pääsyä kaikkiin tapahtumiin. Tarkista palveluntarjoajan hyväksymä lopputulos, älä luota vain paikallisen muokkaimen saatavuuteen."
+      ]
+    },
+    {
+      "heading": "Poista tarpeettomat pääsyreitit",
+      "body": [
+        "Projektin jälkeen tarkista henkilöt, ryhmät ja laajempi julkaisu. Yhden nimen poistaminen ei riitä, jos muita reittejä on. Sopikaa aikataulun ja tulevien oikeuksien ylläpidosta.",
+        "Google ohjeistaa henkilöiden tai ryhmien poistamisen ja yleisen jakamisen sulkemisen erikseen. Tämä ei palauta vietyjä tiedostoja, kuvakaappauksia tai kopioita. Käsittele ne erikseen asianosaisten kanssa."
+      ]
+    }
+  ],
+  "claims": {},
+  "practical": [
+    "Tunnista kalenteri ja vastaanottajan tehtävä.",
+    "Tarkista henkilö-, ryhmä-, organisaatio- ja julkiset oikeudet.",
+    "Valitse tehtävään sopiva nykyinen Google-oikeus.",
+    "Varmista vastaanottajan identiteetti ennen muutosta.",
+    "Tarkista harmiton koetapahtuma vastaanottajan näkökulmasta.",
+    "Poista vanhat pääsyreitit olettamatta kopioiden häviävän."
+  ],
+  "faq": [
+    {
+      "q": "Ohittaako henkilökohtainen rajoitus julkisen kalenterin?",
+      "a": "Ei. Googlen mukaan laajemmat kalenterioikeudet ovat ristiriidassa etusijalla. Tarkista julkiset ja organisaatioasetukset sekä henkilön oma oikeus."
+    },
+    {
+      "q": "Näyttävätkö kaikki muokkausoikeudet yksityiset tapahtumat samoin?",
+      "a": "Eivät. Google erottaa yksityisiin tapahtumiin rajoitetun muokkausvaihtoehdon muista muokkaus- ja jakamisenhallintaoikeuksista. Lue nykyinen tarkka lupa."
+    },
+    {
+      "q": "Muuttaako Advanced Googlen jakamisoikeuksia?",
+      "a": "Ei. Advanced poistaa Cloud Calendarsin mainokset. Pääsy riippuu kalenterin oikeuksista ja organisaation rajoituksista."
+    }
+  ],
+  "sourcesHeading": "Googlen ajantasaiset jakamisohjeet",
+  "sources": [
+    {
+      "label": "Google: kalenterioikeuden valinta",
+      "url": "https://support.google.com/calendar/answer/15716974?hl=en"
+    },
+    {
+      "label": "Google: jakaminen ja pääsyn poistaminen",
+      "url": "https://support.google.com/calendar/answer/37082?hl=en"
+    }
+  ],
+  "seeAlso": [
+    "why-a-shared-calendar-does-not-appear",
+    "sharing-one-event-not-your-calendar"
+  ]
+},
 
   'why-a-shared-calendar-does-not-appear': {
     "updated": "2026-10-21",

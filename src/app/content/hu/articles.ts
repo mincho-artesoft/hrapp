@@ -81,42 +81,100 @@ export const ARTICLES_HU: Readonly<Record<string, LocalisedArticle>> = {
   },
 
   'sharing-one-event-not-your-calendar': {
-    title: 'Egy esemény megosztása, nem a naptáré',
-    short: 'Egy esemény megosztása',
-    description:
-      'Hogyan működik egyetlen esemény elküldése, mit kap valójában a másik fél, és miért nem kell semmit telepítenie ahhoz, hogy lássa.',
-    lede: 'A naptármegosztás rendszerint mindent vagy semmit jelent: vagy hozzáfér valaki az Önéhez, vagy nem. Egy vacsora elküldése egyiket sem kellene, hogy megkövetelje.',
-    commonBelief:
-      'Hogy egy esemény megosztása azt jelenti, ablakot ad valakinek a hete többi részére.',
-    sections: [
-      {
-        heading: 'Mi megy el valójában',
-        body: [
-          'Esemény létrehozásakor az alkalmazás felajánlja a megosztást. Egy hivatkozás utazik — e-mailben, üzenetben, azon, ami a másiknál van —, és e hivatkozás mögött egy naptárcsatorna áll, amely ezt az egy eseményt tartalmazza és semmi mást.',
-          'Nem képernyőkép és nem elavuló másolat. Ha az időpont változik, a csatorna vele változik, és akinek elküldte, látja a változást anélkül, hogy bármit újraküldene.',
-        ],
-      },
-      {
-        heading: 'Mi nem ez',
-        body: [
-          'A hivatkozás közönséges naptárfeliratkozás: olvassa az Apple Naptár, olvassa a Google Naptár, olvassa az Outlook. Az üzenetben App Clip is van annak, aki mégis akarja az alkalmazást — telepítés nélkül nyílik. Ez ajtó, nem sorompó.',
-          'Nem azonnali: a csatorna óránként kéri az alkalmazásokat, hogy nézzenek rá újra, és ez kérés, nem szabály. Nem is titkos: a hivatkozás huszonkét véletlen karaktert visz, amit senki nem talál ki, de aki megkapta, olvashatja. És egyelőre csak olvasható.',
-        ],
-      },
-    ],
-    claims: {
-      refreshHint: 'Órák a csatorna frissítési kérései között',
-      linkLength: 'Véletlen karakterek a hivatkozásban — ez teszi kitalálhatatlanná',
-      sharePrice: 'Mennyibe kerül a megosztás',
+  "updated": "2026-10-21",
+  "title": "Egy naptáresemény megosztása: válassza ki a megfelelő linket és hozzáférést",
+  "short": "Egy esemény megosztása",
+  "description": "Osszon meg egy eseményt a teljes naptár helyett. Ismerje meg a Reader, Writer és Owner szerepeket, az előnézetet, a frissítést és a visszavonás korlátait.",
+  "lede": "Egy vacsora adatainak elküldése, egy társszervező szerkesztési jogának megadása és a részvételi válaszok gyűjtése külön feladat. Először határozza meg az igényt, majd válasszon megosztási módot. Az útmutatót a Cloud Calendars fejlesztője, az Arte Soft készítette.",
+  "commonBelief": "Minden eseménylink csak olvasható naptár-előfizetés lenne, amely azonnal frissül és választ rögzít.",
+  "sections": [
+    {
+      "heading": "Kezdje az esemény adatainak ellenőrzésével",
+      "body": [
+        "Egyetlen esemény megosztása arra az eseményre vonatkozik, nem a küldő teljes naptárára. Küldés előtt ellenőrizze a címet, időzónát, helyszínt, jegyzeteket és megbeszéléslinkeket. Az egyik vendégnek hasznos adat nem feltétlenül való széles körben terjesztett linkbe.",
+        "Egy vacsora megosztásához nem kell megosztania az orvosi időpontokat tartalmazó naptárát. A vacsora saját helyszíne és linkjei azonban az eseménnyel együtt továbbadódnak. Magát az eseményt ellenőrizze, ne a körülötte lévő naptár magánjellegére hagyatkozzon."
+      ]
     },
-    practical: [
-      'Magából az eseményből osszon meg, közvetlenül a létrehozás után.',
-      'Azon a csatornán küldje a hivatkozást, amelyet az illetővel amúgy is használ.',
-      'Ha az időpont az utolsó pillanatban változik, írjon is, ne csak mozgassa az eseményt.',
-      'Vonja vissza a hivatkozást, ha az esemény elmúlt, ahogy egy dokumentum megosztását is abbahagyná.',
-    ],
-    seeAlso: ['icloud-google-and-outlook-in-one-view', 'weather-inside-your-calendar'],
-  },
+    {
+      "heading": "Válasszon előnézetet, e-mailes meghívót vagy QR-kódot",
+      "body": [
+        "A Cloud Calendars különböző megosztási útvonalakat kínál. Az App Clip előnézetet mutat; az esemény hozzáadásához ezen az útvonalon a teljes alkalmazás szükséges. Az e-mailes és QR-meghívók weboldalon ajánlják fel a Cloud Calendars megnyitását. Ezek a linkek nem felcserélhető előfizetési URL-ek.",
+        "Az alkalmazás szinkronizált megosztásához a küldő bejelentkezik. A link és a QR-kód továbbküldhető, ezért csak megfelelő közönségnek küldje. A QR-kód egy linket közvetít, nem igazolja, ki nyitotta meg."
+      ]
+    },
+    {
+      "heading": "Csak a szükséges hozzáférést adja meg",
+      "body": [
+        "E-mailes meghívóknál Reader, Writer vagy Owner választható. A Reader megtekinthet és szinkronizálhat; a Writer szerkeszthet; az Owner megoszthat és hozzáférést is kezelhet. Ezek eltérő jogosultságok. Ha valakinek csak a programot kell látnia, válassza a Reader szerepet.",
+        "Writer szerepet adjon annak a társszervezőnek, aki módosíthatja az eseményt. Owner csak annak járjon, aki mások hozzáférését is kezelheti. A magasabb jogosultságokhoz a címzettnek a megfelelő azonosítóval kell bejelentkeznie. Egy névtelen címzett nem azonosított társtulajdonos."
+      ]
+    },
+    {
+      "heading": "Értse meg, hogyan adja hozzá a címzett az eseményt",
+      "body": [
+        "A teljes alkalmazásban a megosztott esemény hozzáadásához naptárengedély és írható célnaptár kell. A címzett mentés előtt ellenőrizze a célhelyet. A kapott másolat ezután összekapcsolható a megosztott eseménnyel a későbbi frissítésekhez.",
+        "Ez különbözik egy szokásos ICS-fájl másik naptárba importálásától. Az import másolatot készít, az előfizetés pedig rendszeresen ellenőrzi a hírcsatornát. Ha alkalmazásmeghívó helyett ICS-hírcsatornát küld, mondja el egyértelműen, és ellenőrizze a címzett naptárának támogatását."
+      ]
+    },
+    {
+      "heading": "Ellenőrizze a változásokat, mielőtt rájuk hagyatkozik",
+      "body": [
+        "A szinkronizált megosztás későbbi módosítást vagy lemondást is továbbíthat, de a címzett készülékének lehetőséget kell kapnia ezek fogadására. A hírcsatorna frissítési javaslata nem kézbesítési határidő. Egy offline készülék, nem frissített előfizetés vagy önálló importált másolat régi adatot mutathat.",
+        "Ha a vacsora közvetlenül kezdés előtt változik, frissítse az eseményt, és keresse meg közvetlenül a vendégeket. Kérje az új időpont megerősítését. A frissítés elküldése és a részvételi válasz fogadása külön lépés."
+      ]
+    },
+    {
+      "heading": "Kezelje a hozzáférést a másolatok törlésének ígérete nélkül",
+      "body": [
+        "Nézze át a címzettek hozzáférését, és vonja vissza a szükségtelen jogokat. A címzett eltávolítása és a hírcsatornalink visszavonása két külön művelet. Egyik sem jelentheti a képernyőképek, üzenetek vagy minden naptármásolat távoli törlésének ígéretét.",
+        "Ha a link a tervezett közönségen túl terjedt, azonosítsa az érintett linket vagy jogosultságot. A hozzáférés módosítása után ellenőrizze az érintett útvonalat. A jövőben hagyja ki a magánadatokat a szélesen terjesztett linkekből, ne utólagos visszavonástól várja visszaszerzésüket."
+      ]
+    }
+  ],
+  "claims": {},
+  "practical": [
+    "Ellenőrizze az adatokat, és döntse el, megtekintésre, szerkesztésre vagy részvételi válaszra van szüksége.",
+    "Válassza ki a megfelelő megosztási módot, és szükség esetén jelentkezzen be.",
+    "Megtekintéshez Reader szerepet adjon; Writer vagy Owner csak a megfelelő felelősséghez járjon.",
+    "Kérje meg a címzettet az időpont és a célnaptár ellenőrzésére hozzáadáskor.",
+    "Sürgős módosításkor frissítse az eseményt, és küldjön közvetlen üzenetet.",
+    "A megosztás végén külön ellenőrizze a címzettek jogait és a linkes hozzáférést."
+  ],
+  "faq": [
+    {
+      "q": "Egy esemény megosztása láthatóvá teszi az egész naptáramat?",
+      "a": "Az egyeseményes szinkronizált megosztás az adott eseményre korlátozódik. Saját részleteit azonban a választott útvonalon elérhetővé teszi. Ellenőrizze ezeket, és ne küldjön teljes naptármeghívót, ha csak egy eseményt szeretne megosztani."
+    },
+    {
+      "q": "Módosíthatja a címzett az eseményt?",
+      "a": "Igen, megfelelő Writer vagy Owner hozzáféréssel és a támogatott bejelentkezett folyamattal. A Reader megtekintésre és szinkronizálásra szolgál. A szokásos ICS-előfizetés nem ugyanez a szerkesztési mechanizmus."
+    },
+    {
+      "q": "Valaki eltávolítása visszavon mindent, amit már megkapott?",
+      "a": "Ilyen garanciát ne feltételezzen. A jogosultságváltozás a támogatott megosztási kapcsolatot érinti, de mentett másolatok, képernyőképek és üzenetek megmaradhatnak. A megosztott hírcsatorna URL-jét külön is meg kell vizsgálni."
+    }
+  ],
+  "sourcesHeading": "Források a címzett lehetőségeihez",
+  "sources": [
+    {
+      "label": "Apple: az App Clips áttekintése",
+      "url": "https://developer.apple.com/help/app-store-connect/offer-app-clip-experiences/overview-of-app-clips/"
+    },
+    {
+      "label": "Google: eseményimportálás és korlátai",
+      "url": "https://support.google.com/calendar/answer/37118?co=GENIE.Platform%3DDesktop&hl=en"
+    },
+    {
+      "label": "Microsoft: naptár importálása vagy előfizetés rá",
+      "url": "https://support.microsoft.com/en-us/outlook/import-or-subscribe-to-a-calendar-in-outlook-com-or-outlook-on-the-web"
+    }
+  ],
+  "seeAlso": [
+    "who-can-see-what-in-google-calendar",
+    "what-guests-can-do-to-your-event",
+    "taking-back-a-calendar-you-shared"
+  ]
+},
 
   'what-a-subscription-actually-buys': {
   "updated": "2026-10-21",

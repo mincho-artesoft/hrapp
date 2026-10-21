@@ -80,41 +80,96 @@ export const ARTICLES_NO: Readonly<Record<string, LocalisedArticle>> = {
   },
 
   'sharing-one-event-not-your-calendar': {
-    title: 'Del én hendelse, ikke kalenderen din',
-    short: 'Del én hendelse',
-    description:
-      'Hvordan det foregår å sende én enkelt hendelse, hva mottakeren faktisk får, og hvorfor vedkommende ikke trenger å installere noe for å se den.',
-    lede: 'Å dele en kalender er som regel alt eller ingenting: enten har noen tilgang til din, eller så har de det ikke. Å sende en middag burde ikke kreve noen av delene.',
-    commonBelief: 'At det å dele en hendelse betyr å gi noen et vindu til resten av uken din.',
-    sections: [
-      {
-        heading: 'Hva som faktisk sendes',
-        body: [
-          'Når du oppretter en hendelse, tilbyr appen å dele den. Det som reiser, er en lenke — via e-post, melding, hva mottakeren nå har — og bak den lenken ligger en kalenderstrøm som inneholder den hendelsen og ingenting annet.',
-          'Det er verken et skjermbilde eller en kopi som blir gammel. Endres tidspunktet, endres strømmen med det, og den du sendte til, ser endringen uten at du sender noe på nytt.',
-        ],
-      },
-      {
-        heading: 'Hva det ikke er',
-        body: [
-          'Lenken er et helt vanlig kalenderabonnement: Apples Kalender leser den, Google Kalender leser den, Outlook leser den. I meldingen følger det også med et App Clip for den som vil ha appen — det åpnes uten installasjon. Det er en dør, ikke en bom.',
-          'Det er ikke øyeblikkelig: strømmen ber apper se etter igjen hver time, og det er en forespørsel, ikke en regel. Det er heller ikke hemmelig: lenken bærer tjueto tilfeldige tegn som ingen gjetter, men den som har den, kan lese med. Og foreløpig er det bare lesing.',
-        ],
-      },
-    ],
-    claims: {
-      refreshHint: 'Timer mellom hver forespørsel om å oppdatere strømmen',
-      linkLength: 'Tilfeldige tegn i lenken, som er det som gjør den ugjettelig',
-      sharePrice: 'Hva deling koster',
+  "updated": "2026-10-21",
+  "title": "Del én kalenderhendelse: velg riktig lenke og tilgang",
+  "short": "Dele én hendelse",
+  "description": "Del én hendelse uten hele kalenderen. Forstå Reader, Writer og Owner, forhåndsvisninger, oppdateringer og grensene for å trekke tilbake tilgang.",
+  "lede": "Å dele middagsdetaljer, la en medarrangør redigere og samle svar om deltakelse er ulike oppgaver. Velg oppgaven først, deretter delingsmåten. Denne veiledningen er skrevet av Arte Soft, utvikleren av Cloud Calendars.",
+  "commonBelief": "Alle hendelseslenker er skrivebeskyttede kalenderabonnementer som oppdateres straks og registrerer et svar.",
+  "sections": [
+    {
+      "heading": "Start med én hendelse og sjekk detaljene",
+      "body": [
+        "Deling av én hendelse gjelder hendelsen, ikke avsenderens hele kalender. Kontroller tittel, tidssone, sted, notater og møtelenke før sending. Opplysninger til én gjest passer kanskje ikke i en lenke som skal spres bredt.",
+        "Å dele en middag krever for eksempel ikke at du deler kalenderen med legetimene dine. Middagens eget sted og lenker følger likevel med. Kontroller hendelsen fremfor å stole på personvernet til kalenderen rundt den."
+      ]
     },
-    practical: [
-      'Del fra selve hendelsen, rett etter at du har opprettet den.',
-      'Send lenken via den kanalen du allerede bruker med den personen.',
-      'Endres tidspunktet i siste liten, så skriv i tillegg til å flytte hendelsen.',
-      'Trekk tilbake lenken når hendelsen er over, slik du ville sluttet å dele et dokument.',
-    ],
-    seeAlso: ['icloud-google-and-outlook-in-one-view', 'weather-inside-your-calendar'],
-  },
+    {
+      "heading": "Velg forhåndsvisning, e-post eller QR",
+      "body": [
+        "Cloud Calendars har ulike delingsmåter. App Clip viser en forhåndsvisning; hele appen trengs for å legge til hendelsen derfra. E-post- og QR-invitasjoner bruker en nettside som tilbyr å åpne Cloud Calendars. Ikke beskriv alle disse lenkene som utskiftbare abonnementsadresser.",
+        "Avsenderen logger inn for appens synkroniserte deling. Lenker og QR-koder kan videresendes, så send dem bare dit innholdet passer. En QR-kode formidler en lenke; den beviser ikke hvem som åpnet den."
+      ]
+    },
+    {
+      "heading": "Gi bare tilgangen mottakeren trenger",
+      "body": [
+        "E-postinvitasjoner lar deg velge Reader, Writer eller Owner. Reader kan se og synkronisere; Writer kan redigere; Owner kan også dele og administrere tilgang. Valgene har konsekvenser og er ikke tre navn på samme visning. Bruk Reader når personen bare trenger programmet.",
+        "Velg Writer for en medarrangør som skal endre hendelsen. Velg Owner bare hvis personen også skal styre andres tilgang. Utvidet tilgang krever riktig innlogget identitet. En anonym mottaker er ikke en identifisert medeier."
+      ]
+    },
+    {
+      "heading": "Forstå hvordan mottakeren legger den til",
+      "body": [
+        "I hele appen kreves kalendertillatelse og en skrivbar målkalender. Mottakeren bør sjekke målet før lagring. Kopien kan deretter knyttes til den delte hendelsen for senere oppdateringer.",
+        "Dette skiller seg fra å importere en vanlig ICS-fil til en annen kalender. Import gir en kopi; et abonnement sjekker en feed jevnlig. Sender du en ICS-feed i stedet for en appinvitasjon, forklar dette og bekreft at mottakerens kalender støtter det."
+      ]
+    },
+    {
+      "heading": "Bekreft endringer før du stoler på dem",
+      "body": [
+        "Synkronisert deling kan formidle senere endringer eller avlysning, men mottakerens enhet må få anledning til å motta dem. Et hint om feedoppdatering er ingen leveringsfrist. En frakoblet enhet, et uoppdatert abonnement eller en separat importert kopi kan vise gammel informasjon.",
+        "Flyttes middagen rett før start, oppdater hendelsen og kontakt gjestene direkte. Be dem bekrefte den nye tiden. Å sende en oppdatering og få et svar om deltakelse er separate trinn."
+      ]
+    },
+    {
+      "heading": "Administrer tilgang uten å love sletting av kopier",
+      "body": [
+        "Gjennomgå mottakertilgang og fjern unødvendige rettigheter. Å fjerne en mottaker og tilbakekalle en feedlenke er ulike handlinger; ingen av dem skal beskrives som fjernsletting av skjermbilder, meldinger eller alle kalenderkopier.",
+        "Har en lenke kommet utenfor målgruppen, identifiser lenken eller tilgangstildelingen. Kontroller den berørte delingsmåten etter endringen. Hold private detaljer ute av bredt spredte lenker fremover, fremfor å stole på senere tilbakekalling."
+      ]
+    }
+  ],
+  "claims": {},
+  "practical": [
+    "Sjekk detaljene og velg behovet: visning, redigering eller deltakelsessvar.",
+    "Velg delingsmåte og logg inn når nødvendig.",
+    "Bruk Reader for lesere; gi Writer eller Owner bare til tilsvarende ansvar.",
+    "Be mottakeren sjekke tid og målkalender ved tillegging.",
+    "Ved hasteendringer: oppdater hendelsen og send en direkte melding.",
+    "Gjennomgå mottakerrettigheter og lenketilgang separat når delingen avsluttes."
+  ],
+  "faq": [
+    {
+      "q": "Avslører én delt hendelse hele kalenderen min?",
+      "a": "Den synkroniserte enkelthendelsesdelingen gjelder hendelsen. Dens egne detaljer eksponeres fortsatt gjennom valgt delingsmåte. Sjekk dem, og unngå en hel kalenderinvitasjon når du mener én hendelse."
+    },
+    {
+      "q": "Kan mottakeren endre hendelsen?",
+      "a": "Ja, med passende Writer- eller Owner-tilgang i den støttede innloggede flyten. Reader gjelder visning og synkronisering. Et vanlig ICS-abonnement er ikke samme redigeringsmekanisme."
+    },
+    {
+      "q": "Angrer fjerning alt personen allerede har mottatt?",
+      "a": "Det kan ikke garanteres. Tilgangsendringer påvirker delingsforholdet, men lagrede kopier, skjermbilder og meldinger kan bestå. En delt feedadresse må vurderes separat."
+    }
+  ],
+  "sourcesHeading": "Referanser om mottakeralternativer",
+  "sources": [
+    {
+      "label": "Apple: oversikt over App Clips",
+      "url": "https://developer.apple.com/help/app-store-connect/offer-app-clip-experiences/overview-of-app-clips/"
+    },
+    {
+      "label": "Google: hendelsesimport og begrensninger",
+      "url": "https://support.google.com/calendar/answer/37118?co=GENIE.Platform%3DDesktop&hl=en"
+    },
+    {
+      "label": "Microsoft: importere eller abonnere på en kalender",
+      "url": "https://support.microsoft.com/en-us/outlook/import-or-subscribe-to-a-calendar-in-outlook-com-or-outlook-on-the-web"
+    }
+  ],
+  "seeAlso": []
+},
 
   'what-a-subscription-actually-buys': {
   "updated": "2026-10-21",

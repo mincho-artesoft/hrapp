@@ -79,40 +79,99 @@ export const ARTICLES_MS: Readonly<Record<string, LocalisedArticle>> = {
   },
 
   'sharing-one-event-not-your-calendar': {
-    title: 'Kongsi satu acara, bukan kalendar anda',
-    short: 'Kongsi satu acara',
-    description: 'Bagaimana menghantar satu acara berfungsi, apa yang sebenarnya diterima pihak sana, dan mengapa dia tidak perlu memasang apa-apa untuk melihatnya.',
-    lede: 'Berkongsi kalendar biasanya semua atau tiada langsung: sama ada seseorang mempunyai akses kepada milik anda atau tidak. Menghantar jemputan makan malam sepatutnya tidak menuntut kedua-duanya.',
-    commonBelief: 'Bahawa berkongsi satu acara bermakna memberi seseorang tingkap ke seluruh minggu anda.',
-    sections: [
-      {
-        heading: 'Apa yang sebenarnya dihantar',
-        body: [
-          'Semasa anda mencipta acara, aplikasi menawarkan untuk mengongsikannya. Yang bergerak ialah satu pautan — melalui e-mel, mesej, apa sahaja yang ada pada penerima — dan di sebalik pautan itu terdapat suapan kalendar yang mengandungi acara tersebut dan tiada yang lain.',
-          'Ia bukan tangkapan skrin dan bukan salinan yang menjadi lapuk. Jika waktunya berubah, suapan berubah bersamanya, dan orang yang anda hantar melihat perubahan itu tanpa anda menghantar semula apa-apa.',
-        ],
-      },
-      {
-        heading: 'Apa yang bukan',
-        body: [
-          'Pautan itu ialah langganan kalendar biasa: dibaca oleh Kalendar Apple, dibaca oleh Google Kalendar, dibaca oleh Outlook. Dalam mesej itu turut disertakan App Clip bagi sesiapa yang memang mahukan aplikasinya — ia terbuka tanpa pemasangan. Itu pintu, bukan pintu tol.',
-          'Ia tidak serta-merta: suapan meminta aplikasi menyemak semula setiap jam, dan itu permintaan, bukan peraturan. Ia juga bukan rahsia: pautan membawa dua puluh dua aksara rawak yang tidak akan diteka sesiapa, tetapi sesiapa yang memilikinya boleh membaca. Dan buat masa ini ia baca sahaja.',
-        ],
-      },
-    ],
-    claims: {
-      refreshHint: 'Jam antara permintaan menyegarkan suapan',
-      linkLength: 'Aksara rawak dalam pautan — itulah yang menjadikannya tidak dapat diteka',
-      sharePrice: 'Kos perkongsian',
+  "updated": "2026-10-21",
+  "title": "Kongsi satu acara: pilih pautan dan akses yang sesuai",
+  "short": "Berkongsi satu acara",
+  "description": "Kongsi satu acara tanpa seluruh kalendar. Fahami Reader, Writer dan Owner, pratonton, kemas kini serta batas penarikan balik akses.",
+  "lede": "Menghantar butiran makan malam, membenarkan penganjur bersama menyunting dan mengumpul jawapan kehadiran ialah tugas berbeza. Pilih tujuan dahulu, kemudian cara berkongsi. Panduan ini ditulis oleh Arte Soft, pembangun Cloud Calendars.",
+  "commonBelief": "Setiap pautan acara ialah langganan baca sahaja yang terus dikemas kini dan merekodkan jawapan.",
+  "sections": [
+    {
+      "heading": "Semak butiran acara dahulu",
+      "body": [
+        "Perkongsian satu acara terhad kepada acara itu, bukan seluruh kalendar pengirim. Semak tajuk, zon waktu, lokasi, nota dan pautan mesyuarat. Maklumat untuk seorang tetamu mungkin tidak sesuai diedarkan secara luas.",
+        "Berkongsi acara makan malam tidak memerlukan kalendar janji temu perubatan anda. Namun, lokasi dan pautan makan malam tetap dikongsi. Semak kandungan acara itu sendiri."
+      ]
     },
-    practical: [
-      'Kongsikan daripada acara itu sendiri, sebaik sahaja anda menciptanya.',
-      'Hantar pautan melalui saluran yang anda sudah gunakan dengan orang itu.',
-      'Jika waktunya berubah pada saat akhir, tulis mesej juga, bukan sekadar mengalihkan acara.',
-      'Batalkan pautan apabila acara sudah berlalu, seperti anda berhenti berkongsi sesuatu dokumen.',
-    ],
-    seeAlso: ['icloud-google-and-outlook-in-one-view', 'weather-inside-your-calendar'],
-  },
+    {
+      "heading": "Pilih pratonton, e-mel atau QR",
+      "body": [
+        "App Clip Cloud Calendars memaparkan pratonton; aplikasi penuh diperlukan untuk menambah acara melalui laluan ini. Jemputan e-mel dan QR membuka halaman web yang menawarkan pembukaan Cloud Calendars. Pautan ini bukan alamat langganan yang boleh saling menggantikan.",
+        "Pengirim perlu mendaftar masuk untuk perkongsian terselaras. Pautan dan kod QR boleh diteruskan kepada orang lain. Kod QR menyampaikan pautan, bukan membuktikan siapa yang membukanya."
+      ]
+    },
+    {
+      "heading": "Berikan hanya akses yang diperlukan",
+      "body": [
+        "Jemputan e-mel menawarkan Reader, Writer atau Owner. Reader boleh melihat dan menyelaras, Writer boleh menyunting, Owner juga boleh berkongsi dan mengurus akses. Pilih Reader untuk orang yang hanya memerlukan jadual.",
+        "Pilih Writer untuk penganjur bersama yang perlu mengubah acara. Owner hanya apabila orang itu juga perlu mengurus akses orang lain. Hak lebih tinggi memerlukan identiti log masuk yang betul. Penerima tanpa nama bukan pemilik bersama yang dikenal pasti."
+      ]
+    },
+    {
+      "heading": "Fahami cara penerima menambah acara",
+      "body": [
+        "Aplikasi penuh memerlukan kebenaran kalendar dan kalendar destinasi yang boleh ditulis. Penerima perlu menyemak destinasi sebelum menyimpan. Salinan diterima boleh dikaitkan dengan acara dikongsi untuk kemas kini kemudian.",
+        "Import fail ICS biasa menghasilkan salinan, manakala langganan menyemak suapan secara berkala. Jika menghantar suapan ICS dan bukannya jemputan aplikasi, terangkan perbezaannya dan pastikan kalendar penerima menyokongnya."
+      ]
+    },
+    {
+      "heading": "Sahkan perubahan sebelum bergantung padanya",
+      "body": [
+        "Perkongsian terselaras boleh membawa suntingan atau pembatalan, tetapi peranti perlu berpeluang menerimanya. Petunjuk muat semula suapan bukan tarikh akhir penghantaran. Peranti luar talian, langganan belum dimuat semula atau salinan import berasingan mungkin masih menunjukkan maklumat lama.",
+        "Jika waktu makan malam berubah pada saat akhir, kemas kini acara dan hubungi tetamu secara langsung. Minta pengesahan waktu baharu. Menerima kemas kini bukan jawapan kehadiran."
+      ]
+    },
+    {
+      "heading": "Urus akses tanpa menjanjikan pemadaman semua salinan",
+      "body": [
+        "Semak penerima dan buang kebenaran yang tidak diperlukan. Mengeluarkan penerima dan membatalkan pautan suapan ialah tindakan berasingan. Kedua-duanya tidak menjamin pemadaman jauh semua tangkap layar, mesej atau salinan kalendar.",
+        "Jika pautan tersebar, kenal pasti pautan atau akses yang terlibat dan semak hasil selepas perubahan. Elakkan butiran peribadi dalam pautan edaran luas daripada bergantung pada pembatalan kemudian."
+      ]
+    }
+  ],
+  "claims": {},
+  "practical": [
+    "Semak butiran dan tentukan sama ada tujuan anda melihat, menyunting atau mendapat jawapan kehadiran.",
+    "Pilih laluan perkongsian dan daftar masuk apabila diperlukan.",
+    "Gunakan Reader untuk pembaca; Writer atau Owner hanya bagi tanggungjawab berkaitan.",
+    "Minta penerima menyemak waktu dan kalendar destinasi.",
+    "Bagi perubahan segera, kemas kini acara dan hantar mesej terus.",
+    "Semak hak penerima dan akses pautan secara berasingan apabila selesai."
+  ],
+  "faq": [
+    {
+      "q": "Adakah satu acara mendedahkan seluruh kalendar?",
+      "a": "Perkongsian terselaras satu acara terhad kepada acara itu, tetapi butirannya tetap kelihatan. Semak butiran dan jangan hantar jemputan seluruh kalendar jika hanya satu acara diperlukan."
+    },
+    {
+      "q": "Bolehkah penerima mengubah acara?",
+      "a": "Ya, dengan hak Writer atau Owner yang sesuai melalui laluan log masuk yang disokong. Reader untuk melihat dan menyelaras. Langganan ICS biasa bukan mekanisme penyuntingan yang sama."
+    },
+    {
+      "q": "Adakah mengeluarkan seseorang membatalkan semua yang telah diterima?",
+      "a": "Tiada jaminan sedemikian. Akses perkongsian berubah, tetapi salinan, tangkap layar dan mesej boleh kekal. Alamat suapan yang dikongsi juga perlu diperiksa secara berasingan."
+    }
+  ],
+  "sourcesHeading": "Rujukan pilihan penerima",
+  "sources": [
+    {
+      "label": "Apple: gambaran keseluruhan App Clips",
+      "url": "https://developer.apple.com/help/app-store-connect/offer-app-clip-experiences/overview-of-app-clips/"
+    },
+    {
+      "label": "Google: import acara dan batasnya",
+      "url": "https://support.google.com/calendar/answer/37118?co=GENIE.Platform%3DDesktop&hl=en"
+    },
+    {
+      "label": "Microsoft: import atau langgan kalendar",
+      "url": "https://support.microsoft.com/en-us/outlook/import-or-subscribe-to-a-calendar-in-outlook-com-or-outlook-on-the-web"
+    }
+  ],
+  "seeAlso": [
+    "who-can-see-what-in-google-calendar",
+    "taking-back-a-calendar-you-shared"
+  ]
+},
 
   'what-a-subscription-actually-buys': {
   "updated": "2026-10-21",

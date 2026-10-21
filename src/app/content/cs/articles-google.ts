@@ -3,52 +3,96 @@ import { LocalisedArticle } from '../types';
 /** Šest článků o Googlu: konkrétní otázky, jasné odpovědi. */
 export const GOOGLE_CS: Readonly<Record<string, LocalisedArticle>> = {
   'who-can-see-what-in-google-calendar': {
-    title: 'Kdo co uvidí, když sdílíte kalendář Google',
-    short: 'Oprávnění sdílení v Googlu',
-    description:
-      'Úrovně sdílení v Googlu se nastaví rychle a snadno se pochopí špatně. Co každá z nich ve skutečnosti odhalí, řečeno přímo.',
-    lede: 'Většina nechtěného přesdílení není chyba úsudku. Někdo zvolil úroveň, která zněla skromně, a skromná nebyla.',
-    commonBelief: 'Že „jen volno/obsazeno“ a „všechny podrobnosti události“ se liší málo.',
-    sections: [
-      {
-        heading: 'Úrovně jsou dál od sebe, než zní',
-        body: [
-          'Volno/obsazeno ukazuje bloky času bez názvů. Všechny podrobnosti ukazují názvy, místa, poznámky a hosty — u většiny kalendářů tedy pořádný kus vašeho života.',
-          'Provádět změny dovoluje upravovat. Spravovat sdílení dovoluje předat váš kalendář dalším lidem, a právě tohle překvapí později.',
-        ],
-      },
-      {
-        heading: 'Vybírat bez přemýšlení pokaždé znovu',
-        body: [
-          'Kolegům, kteří mají jen plánovat kolem vás, téměř vždy stačí volno/obsazeno — a téměř nikdy ho nedostanou.',
-          'Plné podrobnosti nechte kalendářům založeným kvůli sdílení, ne tomu, ve kterém žijete.',
-        ],
-      },
-    ],
-    claims: {
-      advancedMonthly: 'Měsíční cena úrovně, kde se tohle spravuje v aplikaci, v dolarech',
+  "title": "Oprávnění Kalendáře Google: ověřte skutečně udělený přístup",
+  "short": "Přístup a soukromí v Kalendáři Google",
+  "description": "Zvolte přístup k dostupnosti, podrobnostem nebo úpravám. Před sdílením prověřte veřejný a skupinový přístup i jednotlivá oprávnění.",
+  "lede": "Před sdílením kalendáře určete, co má druhý člověk dělat. Plánování podle vaší dostupnosti, čtení podrobností a správa kalendáře jsou různé úkoly. Návod vydává Arte Soft, vývojář Cloud Calendars.",
+  "commonBelief": "Omezení jednoho člověka údajně zaručuje, že podrobnosti neuvidí žádnou jinou cestou.",
+  "sections": [
+    {
+      "heading": "Přizpůsobte přístup úkolu",
+      "body": [
+        "Kolega hledající termín může potřebovat dostupnost bez podrobností schůzek. Spolupracovník udržující projektový plán potřebuje jiné uspořádání. Nejdříve určete úkol a potom zkontrolujte oprávnění v aktuálním nastavení sdílení kalendáře.",
+        "Google rozlišuje dostupnost, podrobnosti událostí a několik úrovní úprav. Jedna možnost omezuje přístup k soukromým událostem; jiná umožňuje úpravy a podrobnosti; nejširší také správu sdílení. Neberte všechny možnosti obsahující slovo změny jako rovnocenné."
+      ]
     },
-    faq: [
-      {
-        q: 'Uvidí někdo názvy mých událostí, když sdílím jen volno/obsazeno?',
-        a: 'Ne. Volno/obsazeno ukazuje bloky času bez názvů, míst, poznámek i hostů. Teprve „všechny podrobnosti“ je odhalí — a odhalí je všechny.',
-      },
-      {
-        q: 'Co dovoluje „provádět změny a spravovat sdílení“?',
-        a: 'Upravovat každou událost a předat váš kalendář dalším lidem, aniž by se vás někdo zeptal. Je to jediná úroveň, na které přístup rozdává někdo jiný než vy.',
-      },
-      {
-        q: 'Můžu si ověřit, kdo už má k mému kalendáři přístup?',
-        a: 'Ano, v nastavení sdílení daného kalendáře. Nic vás k tomu nevybízí a sdílení se jen hromadí: přečtěte si seznam dvakrát do roka.',
-      },
-    ],
-    practical: [
-      'Ve výchozím stavu volno/obsazeno pro každého, kdo si u vás má jen rezervovat čas.',
-      '„Provádět změny“ nechte lidem, kteří za vás skutečně plánují.',
-      'Dvakrát ročně projděte, kdo má přístup; sdílení se hromadí a nic vám to nepřipomene.',
-    ],
-    seeAlso: ['why-a-shared-calendar-does-not-appear', 'what-guests-can-do-to-your-event'],
-  },
+    {
+      "heading": "Prověřte celý kalendář, nejen jednoho člověka",
+      "body": [
+        "Kromě jmenovaných lidí zjistěte, zda je kalendář veřejný, dostupný organizaci nebo sdílený skupině. Google uvádí, že širší přístup může mít přednost před užším: omezení jedné osoby nezruší už zveřejněné podrobnosti.",
+        "Představte si klubový rozvrh zveřejněný pro členy. Než do něj vložíte osobní schůzku, ověřte jeho publikum. Oprávnění vedle jednoho přítele není jediné důležité nastavení. Soukromé schůzky ukládejte do vhodného kalendáře."
+      ]
+    },
+    {
+      "heading": "Použijte nastavení správného kalendáře Google",
+      "body": [
+        "V Kalendáři Google na počítači najděte daný kalendář, otevřete jeho nabídku a nastavení sdílení. Google popisuje zvlášť osoby či skupiny a širší přístup. Před změnou ověřte název kalendáře a přihlášený účet.",
+        "Při pozvání potvrďte zamýšlenou identitu Google příjemce. Pokud kalendář nenajde, prověřte adresu a zprávu s pozvánkou místo rozšíření přístupu jen kvůli zobrazení. Chybějící zobrazení a nedostatečné právo upravovat jsou různé potíže."
+      ]
+    },
+    {
+      "heading": "Testujte bez soukromých schůzek",
+      "body": [
+        "Použijte běžnou testovací událost bez soukromého názvu, poznámek, místa a seznamu hostů. Požádejte příjemce, aby ověřil, co vidí, a pouze pokud jsou úpravy potřebné a povolené, co může změnit. K testu nesdílejte přihlašovací údaje svého účtu.",
+        "Poznamenejte si kalendář a udělenou roli a po změně ověřte výsledek. Tím kontrolujete zamýšlené uspořádání, nikoli zmizení dříve přečtených či zkopírovaných informací. Netestujte zveřejněním skutečného pracovního plánu."
+      ]
+    },
+    {
+      "heading": "Oddělte pracovní pravidla od tarifů aplikace",
+      "body": [
+        "Google uvádí, že správci firmy nebo školy mohou sdílení omezit. Není-li potřebné nastavení dostupné, použijte schválený postup organizace. Nezveřejňujte pracovní informace jako obcházení omezení účtu.",
+        "Cloud Calendars může zobrazit připojené kalendáře, názvy tarifů ale nemění oprávnění Google. Advanced odstraňuje reklamy; platba nedává jiné osobě přístup ke všem událostem Google. Ověřte sdílení u poskytovatele i přijatý výsledek, nespoléhejte jen na dostupný místní editor."
+      ]
+    },
+    {
+      "heading": "Zkontrolujte a odeberte nepotřebný přístup",
+      "body": [
+        "Po skončení projektu projděte skutečné příjemce, skupiny a širší zveřejnění. Existují-li další cesty přístupu, odebrání jednoho člověka je jen část kontroly. Dohodněte se, kdo plán udržuje a jak se budou řešit další změny přístupu.",
+        "Google zvlášť dokumentuje odebrání osob či skupin a vypnutí širšího sdílení. Odebrání přístupu nevrátí exportovaný soubor, snímek obrazovky ani informace zkopírované jinam. Řešte je s dotčenými lidmi samostatně, neslibujte vymazání všech kopií jedním přepínačem."
+      ]
+    }
+  ],
+  "claims": {},
+  "practical": [
+    "Určete kalendář a úkol příjemce.",
+    "Prověřte individuální, skupinový, organizační a veřejný přístup.",
+    "Vyberte oprávnění odpovídající úkolu v aktuálním nastavení Google.",
+    "Před změnou ověřte identitu příjemce.",
+    "Zkontrolujte neškodnou testovací událost z pohledu příjemce.",
+    "Prověřte staré cesty přístupu bez předpokladu, že se předchozí kopie vrátí."
+  ],
+  "faq": [
+    {
+      "q": "Má individuální omezení přednost před veřejným kalendářem?",
+      "a": "Ne. Google uvádí, že při konfliktu nastavení mají širší oprávnění kalendáře přednost. Zkontrolujte veřejné a organizační nastavení i záznam dané osoby."
+    },
+    {
+      "q": "Zpřístupňují všechny možnosti úprav soukromé události stejně?",
+      "a": "Ne. Google popisuje možnost úprav s omezeným přístupem k soukromým událostem odděleně od dalších možností úprav a správy sdílení. Před volbou si přečtěte přesné aktuální oprávnění."
+    },
+    {
+      "q": "Mění zakoupení Advanced práva sdílení Google?",
+      "a": "Ne. Advanced odstraňuje reklamy v Cloud Calendars. Přístup u poskytovatele závisí na oprávněních kalendáře a omezeních organizace."
+    }
+  ],
+  "sourcesHeading": "Aktuální pokyny Google k oprávněním a sdílení",
+  "sources": [
+    {
+      "label": "Google: výběr oprávnění kalendáře",
+      "url": "https://support.google.com/calendar/answer/15716974?hl=en"
+    },
+    {
+      "label": "Google: sdílení kalendáře a odebrání přístupu",
+      "url": "https://support.google.com/calendar/answer/37082?hl=en"
+    }
+  ],
+  "seeAlso": [
+    "why-a-shared-calendar-does-not-appear",
+    "sharing-one-event-not-your-calendar",
+    "taking-back-a-calendar-you-shared"
+  ],
+  "updated": "2026-10-21"
+},
 
   'why-a-shared-calendar-does-not-appear': {
     "updated": "2026-10-21",
