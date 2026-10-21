@@ -10,7 +10,7 @@
     "No content is declared researched merely because a corresponding route exists."
   ],
   "currentInventory": {
-    "articles": 367,
+    "articles": 370,
     "locales": [
       "ar-SA",
       "bg",
@@ -43,7 +43,7 @@
       "zh-Hans",
       "zh-Hant"
     ],
-    "englishArticles": 45
+    "englishArticles": 48
   },
   "clusters": [
     {
@@ -245,7 +245,10 @@
     "Integrate new screenshots/videos when available; do not generate substitutes.",
     "Measure search/citation results only with actual query/report evidence.",
     "Localize and apply all remaining ASC metadata after supported keyword review.",
-    "Correct reviewed English sharing/group permissions, universal conflict/deletion claims, all-day availability, whole-month weather and Live Activity freshness; propagate factual corrections to actual translations."
+    "Correct reviewed English sharing/group permissions, universal conflict/deletion claims, all-day availability, whole-month weather and Live Activity freshness; propagate factual corrections to actual translations.",
+    "Localize3newEnglish task guides after corresponding terminology review.",
+    "Review Calendar366 and broaden primary publisher corpus to TimeTree/Howbout/Cozi/FamilyWall/Teamup; discovery not measured ranking.",
+    "Investigate actual SearchConsole query evidence and citation measurement separately from publisher topic inference."
   ],
   "existingCanonicalAudit": "competitors/existing-canonical-review-20261021-batch02.json",
   "existingCanonicalAuditScope": "45 English titles/metadata screened;31full bodies reviewed. Nine initial intent clusters already have existing canonicals. No automatic quality approval.",
@@ -304,5 +307,35 @@
     "competitorNextBatch": "competitors/batch03-intent-mapping-20261021.json",
     "totalAscLocalesUpdated": 7,
     "ascLocalesRemaining": 43
+  },
+  "batch03": {
+    "status": "published_verified",
+    "newEnglishArticles": [
+      "calendar-notifications-missing-silent-or-duplicated",
+      "find-old-calendar-events-by-account-date-and-title",
+      "calendar-export-ics-pdf-and-backup"
+    ],
+    "staticProof": "batch03-static-qa.json",
+    "publicProof": "batch03-public-qa.json",
+    "machineReadableText": {
+      "selectedEnglishGuides": 11,
+      "url": "https://www.cloud-calendars.com/llms-full.txt",
+      "selection": "tools/guide-text-selection.json",
+      "rankingEffect": "not_measured"
+    },
+    "ascAdditionalLocales": [
+      "nl-NL",
+      "pt-BR",
+      "pt-PT",
+      "pl",
+      "sv",
+      "tr",
+      "zh-Hans",
+      "zh-Hant"
+    ],
+    "ascEvidence": "aso/localized-batch03/applied.json",
+    "totalUpdatedLocales": 15,
+    "remainingLocales": 35,
+    "researchNext": "competitors/batch04-search-discovery-20261021.json"
   }
 }

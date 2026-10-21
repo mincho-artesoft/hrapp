@@ -162,6 +162,17 @@ ${articles.map((a) => `- ${a.loc}`).join('\n')}
 `,
 );
 
+// Reader-friendly text from explicitly selected source-backed guides.
+// This is an optional access format, not a claim of indexing or model support.
+{
+  const exportText = spawnSync('python3', [join(ROOT, 'tools/export-guide-text.py')], { cwd: ROOT, encoding: 'utf8' });
+  if (exportText.status !== 0) {
+    console.error(exportText.stderr || exportText.error || 'guide text export failed');
+    process.exit(1);
+  }
+  console.log(exportText.stdout.trim());
+}
+
 // --------------------------------------------------------------- link check
 //
 // Twenty-eight broken links shipped to production before this existed: a

@@ -1,0 +1,93 @@
+{
+  "updated": "2026-10-21",
+  "title": "Find an old calendar event: check the account, dates and search fields",
+  "short": "Find past calendar events",
+  "description": "A blank search is not proof an event was deleted. Check calendar ownership, date coverage and searchable fields before looking in the provider’s own archive.",
+  "lede": "When you remember a meeting but cannot find it, separate three questions: which account held it, which dates the current view has loaded, and which fields the search matches. This guide is published by Arte Soft, the developer of Cloud Calendars. Its app-specific limits describe source inspected on 21 October 2026; they are not an archive-recovery promise or a runtime test of your installed version.",
+  "commonBelief": "Every search box in a calendar app searches every field of every event ever stored by the provider.",
+  "sections": [
+    {
+      "heading": "Write down the smallest useful clue",
+      "body": [
+        "Start with an approximate month or year, a distinctive word from the title, and the account you probably used. Keep those clues separate. A colleague’s name may have been an attendee rather than part of the title; a street address may have lived only in the location field.",
+        "Try a short title fragment before a long phrase. A negative result does not tell you whether the record is absent, outside the loaded dates or in a field that is not searched."
+      ]
+    },
+    {
+      "heading": "Check ownership and calendar selection",
+      "body": [
+        "Look for the account and calendar that originally owned the event. A work Google calendar, a personal iCloud calendar and a local calendar on the device are different destinations, even if one app displayed them together. Confirm you still have access to the expected account and that its calendar is selected.",
+        "Do not create a new copy just because the search is empty. If you can locate the event by browsing its approximate date, inspect its title, calendar and organiser. That gives you evidence to compare with the search result without changing the record."
+      ]
+    },
+    {
+      "heading": "What the inspected Cloud Calendars search actually matches",
+      "body": [
+        "The inspected search view filters the events currently loaded in the app using a case-insensitive text match. For its EventKit and app-local event descriptors, that text is the event title. This does not establish support for searching notes, attendee names, locations or every field in the provider account.",
+        "On entering the inspected search view, the app requests events for the current calendar year from the selected calendars. That is a local loading path, not a request to search the provider’s entire historical archive. No result for a meeting from a previous year should therefore be treated as proof that the provider deleted it.",
+        "The code does not justify a promise that selecting an older date makes this search scan that year. If historical search is the task, use the provider’s own search where available and verify the same account. The released version on your device may differ from the source reviewed here."
+      ]
+    },
+    {
+      "heading": "Use provider tools for their documented fields and dates",
+      "body": [
+        "In Google Calendar on a computer, the search options let you narrow by calendar, event information, people, location and date range. Google recommends a date-limited advanced search when older events do not appear and documents a limit of 200 search results. Divide a broad search into smaller date ranges instead of assuming the first result set is complete.",
+        "Those are Google Calendar web controls, not a description of Cloud Calendars. Likewise, Apple’s Calendar guide says its iPhone search can match titles, invitees, locations and notes. That describes Apple Calendar’s own search. Using Apple’s EventKit in another app does not automatically give that app the same search interface or matching rules."
+      ]
+    },
+    {
+      "heading": "Interpret where the event does and does not appear",
+      "body": [
+        "Found in the provider, absent in Cloud Calendars: check account identity, selected calendar, date coverage and the title being searched. Preserve the provider record. The next question is what the app has loaded or matched, not whether the appointment needs recreating.",
+        "Found by browsing, absent from search: compare the actual title with the query and note the date. This is useful evidence of a search-scope or matching issue. Do not alter an old meeting title solely to make a diagnostic test pass.",
+        "Absent from the provider too: confirm the account, calendar access and date range before investigating retention or deletion with that provider. For a local calendar, a provider website is not an independent copy unless you established a separate connection. Do not assume a cloud archive exists for every local event."
+      ]
+    },
+    {
+      "heading": "Keep a useful search record without exposing the event",
+      "body": [
+        "For support, record the app version, calendar provider or local-storage type, approximate event year and whether the event appears in the provider or by date browsing. Say whether the query was a title word, a location or an attendee. This is more useful than simply reporting that search is broken.",
+        "Avoid sending private notes, invitation links or secret calendar-feed URLs. Keep accounts and local data intact; clearing storage or importing an old file again can add uncertainty."
+      ]
+    }
+  ],
+  "claims": {},
+  "practical": [
+    "Identify the likely owning account and approximate date.",
+    "Check that the calendar is selected and accessible.",
+    "Try a distinctive word from the event title.",
+    "Treat current-year app search separately from provider archive search.",
+    "Use Google Calendar web date filters or Apple Calendar’s documented fields when relevant.",
+    "Record where the event appears before changing any data."
+  ],
+  "faq": [
+    {
+      "q": "Does an empty result mean my old event was deleted?",
+      "a": "No. The wrong account, an unselected calendar, a date outside the loaded range or a field that is not searched can all explain an empty result. Check the provider and the event’s approximate date."
+    },
+    {
+      "q": "Can I search Cloud Calendars by an attendee’s email or a note?",
+      "a": "The inspected search path matches event-title text. It does not establish attendee, note or location search. Use the appropriate provider’s documented search tools for those fields."
+    },
+    {
+      "q": "Will browsing to last year make the search cover last year?",
+      "a": "Do not rely on that. The inspected search view requests the current year when it appears. This guide does not claim an older-year search control or an unlimited historical sync range."
+    }
+  ],
+  "sourcesHeading": "Sources and provider search help",
+  "sources": [
+    {
+      "label": "Google: Search on Google Calendar — computer",
+      "url": "https://support.google.com/calendar/answer/37176?hl=en&co=GENIE.Platform%3DDesktop"
+    },
+    {
+      "label": "Apple: Search for events in Calendar on iPhone",
+      "url": "https://support.apple.com/guide/iphone/search-for-events-iph2c9ef44ad/ios"
+    }
+  ],
+  "seeAlso": [
+    "what-calendar-sync-actually-does",
+    "a-list-for-people-who-dislike-grids",
+    "when-two-calendars-disagree"
+  ]
+}

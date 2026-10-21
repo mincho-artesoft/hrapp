@@ -12,6 +12,7 @@ import { CHROME_FR_FR } from './fr-FR/chrome';
 import { ARTICLES_IT } from './it/articles';
 import { GOOGLE_IT } from './it/articles-google';
 import { CHROME_IT } from './it/chrome';
+import { HELP_EN_US } from './en-US/articles-help';
 import { COMPARE_EN_US } from './en-US/articles-compare';
 import { PLANNING_EN_US } from './en-US/articles-planning';
 import { SHARING_EN_US } from './en-US/articles-sharing';
@@ -119,6 +120,7 @@ export const CONTENT: Readonly<Partial<Record<LocaleCode, ArticleLocale>>> = {
       ...SHARING_EN_US,
       ...PLANNING_EN_US,
       ...COMPARE_EN_US,
+      ...HELP_EN_US,
       ...GOOGLE_EN_US,
     },
   },

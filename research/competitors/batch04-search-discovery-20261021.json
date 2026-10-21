@@ -1,0 +1,79 @@
+{
+  "date": "2026-10-21",
+  "method": "Two web-search queries, primary publisher candidates selected from returned results; no body reads in this discovery step.",
+  "queries": [
+    "best calendar app iphone weather widgets shared calendars TimeTree Calendars 366",
+    "iPhone calendar app recurring events notifications export Timepage BusyCal"
+  ],
+  "limits": [
+    "Web search results are not a measured Google ranking report.",
+    "No keyword search volume, ChatGPT citation or popularity proof.",
+    "Third-party lists, Reddit, press, Wikipedia and historical PDFs were not adopted as product capability sources.",
+    "Search excerpts do not count as complete publisher page reviews."
+  ],
+  "primaryCandidates": [
+    {
+      "url": "https://calendar366.com/",
+      "status": "search_excerpt_only",
+      "topics": [
+        "calendar and task views",
+        "natural-language event entry",
+        "calendar sets",
+        "widgets",
+        "Apple Intelligence option"
+      ],
+      "nextAction": "Read actual full current product body; separate supported Cloud features from comparison-only tasks."
+    },
+    {
+      "url": "https://www.busymac.com/docs/busycalios/export-as-csv/",
+      "status": "search_excerpt_only",
+      "topics": [
+        "iOS CSV export",
+        "occurrence rows",
+        "destination share sheet"
+      ],
+      "nextAction": "Read full current body before adding comparative export guidance. No Cloud CSV support inferred."
+    },
+    {
+      "url": "https://www.busymac.com/docs/busycalios/70656-getting-started-with-busycal-for-ios/",
+      "status": "search_excerpt_only",
+      "topics": [
+        "landscape year view",
+        "event details",
+        "OS notification settings"
+      ],
+      "nextAction": "Dedup against previous discovery/read records before full body review."
+    },
+    {
+      "url": "https://www.busymac.com/docs/busycalios/70670-settings/",
+      "status": "search_excerpt_only",
+      "topics": [
+        "widget calendar selection",
+        "floating time",
+        "badge meaning",
+        "export calendar selection"
+      ],
+      "nextAction": "Dedup then read exact current iOS controls; do not copy controls to Cloud."
+    },
+    {
+      "url": "https://apps.apple.com/us/app/calendar-366-events-tasks/id6502818600?platform=tv",
+      "status": "search_excerpt_only",
+      "topics": [
+        "recurrence",
+        "tasks",
+        "calendar sets",
+        "meeting providers",
+        "widgets"
+      ],
+      "nextAction": "Verify platform applicability and canonical listing before metadata comparison; search parameter is not proof of tv support."
+    }
+  ],
+  "broaderPublishersToDiscover": [
+    "TimeTree",
+    "Howbout",
+    "Cozi",
+    "FamilyWall",
+    "Teamup"
+  ],
+  "notYetReviewed": "Official pages for these broader publishers have not been reviewed or claimed covered."
+}

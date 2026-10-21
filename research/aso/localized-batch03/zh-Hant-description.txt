@@ -1,0 +1,24 @@
+在 iPhone 和 iPad 上一起查看行事曆與天氣。使用 Cloud Calendars 瀏覽工作與個人安排，規劃每一天。
+
+行事曆與多種檢視
+使用 iCloud 行事曆並連結 Google 日曆。Premium 也支援 Microsoft 行事曆。可選擇日、週、月、年或列表檢視。
+
+您也可以直接在裝置上建立本機行事曆，無須註冊 Cloud Calendars 帳號。連結服務或使用共享功能時，可能需要登入。
+
+天氣與主畫面小工具
+安排行程時查看天氣預報。主畫面小工具提供小、中、大三種尺寸。可用的預報取決於所在地點與天氣服務供應商。
+
+會議與共享
+透過 Google 日曆使用 Google Meet。Premium 也支援 Microsoft Teams。共享活動和行事曆，並透過電子郵件、QR 碼或 App Clip 傳送邀請。存取權限取決於行事曆與邀請類型。
+
+選擇方案
+免費 Base 包含 Google 日曆同步、Google Meet、多種行事曆檢視、天氣和小工具。
+Advanced 包含 Base 的功能，並移除廣告。
+Premium 包含 Advanced 的功能，並新增 Microsoft 行事曆與 Microsoft Teams 支援。
+
+購買前，請在 App 內或 App Store 確認目前的當地價格及計費週期。
+
+App 可免費下載，並提供可選的自動續訂訂閱。除非在目前訂閱期間結束前至少 24 小時取消，否則訂閱將自動續訂。您可以在 App Store 帳號設定中管理或取消訂閱。
+
+隱私權政策: https://www.cloud-calendars.com/privacy-policy
+使用條款: https://www.apple.com/legal/internet-services/itunes/dev/stdeula/

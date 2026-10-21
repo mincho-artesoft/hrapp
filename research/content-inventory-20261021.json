@@ -1,5 +1,5 @@
 {
-  "date": "2026-10-21T16:04:58.901Z",
+  "date": "2026-10-21T16:23:09.307Z",
   "status": "source_inventory_not_quality_approval",
   "articles": [
     {
@@ -1054,6 +1054,57 @@
       "source": "articles-google.ts",
       "sources": [],
       "updated": "2026-09-12"
+    },
+    {
+      "locale": "en-US",
+      "slug": "calendar-notifications-missing-silent-or-duplicated",
+      "title": "Calendar notifications on iPhone: missing, silent or duplicated?",
+      "description": "Separate event alerts, Cloud Calendars settings and iPhone delivery controls. Diagnose absent, silent or duplicate reminders without deleting calendar data.",
+      "descriptionCharacters": 156,
+      "sections": 6,
+      "faq": 3,
+      "words": 930,
+      "source": "articles-help.ts",
+      "sources": [
+        "https://support.apple.com/guide/iphone/change-notification-settings-iph7c3d96bab/ios",
+        "https://support.google.com/calendar/answer/37242?hl=en&co=GENIE.Platform%3DiOS"
+      ],
+      "updated": "2026-10-21"
+    },
+    {
+      "locale": "en-US",
+      "slug": "find-old-calendar-events-by-account-date-and-title",
+      "title": "Find an old calendar event: check the account, dates and search fields",
+      "description": "A blank search is not proof an event was deleted. Check calendar ownership, date coverage and searchable fields before looking in the provider’s own archive.",
+      "descriptionCharacters": 157,
+      "sections": 6,
+      "faq": 3,
+      "words": 915,
+      "source": "articles-help.ts",
+      "sources": [
+        "https://support.google.com/calendar/answer/37176?hl=en&co=GENIE.Platform%3DDesktop",
+        "https://support.apple.com/guide/iphone/search-for-events-iph2c9ef44ad/ios"
+      ],
+      "updated": "2026-10-21"
+    },
+    {
+      "locale": "en-US",
+      "slug": "calendar-export-ics-pdf-and-backup",
+      "title": "Exporting a calendar: ICS files, PDFs and subscriptions",
+      "description": "Need a calendar file from your iPhone account? Choose ICS, PDF or a subscription, then use the right Google, Mac or Outlook workflow.",
+      "descriptionCharacters": 133,
+      "sections": 6,
+      "faq": 3,
+      "words": 959,
+      "source": "articles-help.ts",
+      "sources": [
+        "https://support.google.com/calendar/answer/37111?hl=en",
+        "https://support.google.com/calendar/answer/37118?hl=en",
+        "https://support.apple.com/guide/calendar/import-or-export-calendars-icl1023/mac",
+        "https://support.apple.com/en-gb/guide/mac-help/mchlp1531/mac",
+        "https://support.microsoft.com/en-us/outlook/share-your-calendar-in-outlook-on-the-web"
+      ],
+      "updated": "2026-10-21"
     },
     {
       "locale": "en-US",

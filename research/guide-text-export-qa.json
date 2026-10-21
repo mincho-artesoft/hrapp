@@ -1,0 +1,74 @@
+{
+  "guides": 11,
+  "selection": "tools/guide-text-selection.json",
+  "extraction": "Visible article headings, paragraphs, lists, FAQs and source links; gallery/other-app cards excluded.",
+  "exportedCharacters": 61252,
+  "records": [
+    {
+      "slug": "what-calendar-sync-actually-does",
+      "source": "https://www.cloud-calendars.com/articles/what-calendar-sync-actually-does/",
+      "blocks": 52,
+      "characters": 7713
+    },
+    {
+      "slug": "why-a-shared-calendar-does-not-appear",
+      "source": "https://www.cloud-calendars.com/articles/why-a-shared-calendar-does-not-appear/",
+      "blocks": 28,
+      "characters": 3115
+    },
+    {
+      "slug": "when-two-calendars-disagree",
+      "source": "https://www.cloud-calendars.com/articles/when-two-calendars-disagree/",
+      "blocks": 43,
+      "characters": 5779
+    },
+    {
+      "slug": "work-and-personal-without-two-apps",
+      "source": "https://www.cloud-calendars.com/articles/work-and-personal-without-two-apps/",
+      "blocks": 37,
+      "characters": 4614
+    },
+    {
+      "slug": "free-google-sync-without-adverts",
+      "source": "https://www.cloud-calendars.com/articles/free-google-sync-without-adverts/",
+      "blocks": 35,
+      "characters": 3976
+    },
+    {
+      "slug": "what-fantastical-costs-and-what-this-does",
+      "source": "https://www.cloud-calendars.com/articles/what-fantastical-costs-and-what-this-does/",
+      "blocks": 45,
+      "characters": 5673
+    },
+    {
+      "slug": "what-you-get-without-paying-anything",
+      "source": "https://www.cloud-calendars.com/articles/what-you-get-without-paying-anything/",
+      "blocks": 37,
+      "characters": 3886
+    },
+    {
+      "slug": "what-a-subscription-actually-buys",
+      "source": "https://www.cloud-calendars.com/articles/what-a-subscription-actually-buys/",
+      "blocks": 41,
+      "characters": 4729
+    },
+    {
+      "slug": "calendar-notifications-missing-silent-or-duplicated",
+      "source": "https://www.cloud-calendars.com/articles/calendar-notifications-missing-silent-or-duplicated/",
+      "blocks": 45,
+      "characters": 6758
+    },
+    {
+      "slug": "find-old-calendar-events-by-account-date-and-title",
+      "source": "https://www.cloud-calendars.com/articles/find-old-calendar-events-by-account-date-and-title/",
+      "blocks": 47,
+      "characters": 6456
+    },
+    {
+      "slug": "calendar-export-ics-pdf-and-backup",
+      "source": "https://www.cloud-calendars.com/articles/calendar-export-ics-pdf-and-backup/",
+      "blocks": 46,
+      "characters": 7151
+    }
+  ]
+}

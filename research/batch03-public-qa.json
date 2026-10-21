@@ -1,0 +1,41 @@
+{
+  "checkedAt": "2026-10-21T16:32:42.401832+00:00",
+  "all_passed": true,
+  "targets": [
+    {
+      "path": "/articles/calendar-notifications-missing-silent-or-duplicated/",
+      "status": 200,
+      "contentType": "text/html; charset=utf-8",
+      "sha256_matches": true,
+      "bytes": 58924
+    },
+    {
+      "path": "/articles/find-old-calendar-events-by-account-date-and-title/",
+      "status": 200,
+      "contentType": "text/html; charset=utf-8",
+      "sha256_matches": true,
+      "bytes": 58864
+    },
+    {
+      "path": "/articles/calendar-export-ics-pdf-and-backup/",
+      "status": 200,
+      "contentType": "text/html; charset=utf-8",
+      "sha256_matches": true,
+      "bytes": 59209
+    },
+    {
+      "path": "/llms.txt",
+      "status": 200,
+      "contentType": "text/plain",
+      "sha256_matches": true,
+      "bytes": 32410
+    },
+    {
+      "path": "/llms-full.txt",
+      "status": 200,
+      "contentType": "text/plain",
+      "sha256_matches": true,
+      "bytes": 61388
+    }
+  ]
+}

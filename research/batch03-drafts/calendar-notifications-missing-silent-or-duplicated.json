@@ -1,0 +1,91 @@
+{
+  "updated": "2026-10-21",
+  "title": "Calendar notifications on iPhone: missing, silent or duplicated?",
+  "short": "Troubleshoot calendar notifications",
+  "description": "Separate event alerts, Cloud Calendars settings and iPhone delivery controls. Diagnose absent, silent or duplicate reminders without deleting calendar data.",
+  "lede": "Start with what actually happened: was the event missing, was its notification absent, did it appear without sound, or did two apps alert you? Each points to a different check. This guide is published by Arte Soft, the developer of Cloud Calendars. App-specific details below come from source inspection on 21 October 2026, not a delivery test of every released version.",
+  "commonBelief": "If an event appears in the calendar, every alert and notification permission must already be configured.",
+  "sections": [
+    {
+      "heading": "First choose the right branch",
+      "body": [
+        "If the event itself is absent, check its owning account and selected calendar before changing sound settings. An alert cannot establish whether the correct event has reached the app. Use the calendar-sync guide for that separate problem.",
+        "If the event is visible but no notification appears, check the saved alert and both notification controls below. If a notification appears silently, concentrate on iPhone delivery and sound settings. If you receive more than one, identify each sending app and each configured alert before removing anything."
+      ]
+    },
+    {
+      "heading": "No notification: inspect the event and app controls",
+      "body": [
+        "Open the event and inspect its alert time. The inspected Cloud Calendars editor has Alert and, when applicable, Second Alert controls, including None and choices before the event. A second alert can be intentional. Check the saved event again after an edit, especially when a provider or shared-calendar permission limits what you can change.",
+        "In Cloud Calendars settings, look for Event Notifications. The inspected settings also separate invitation and weather notifications; enabling one is not proof that ordinary event reminders are enabled. The event scheduler requires both its own event-notification preference and iOS notification permission.",
+        "Calendar selection matters in the inspected implementation: the scheduler draws event alarms from selected calendars. Check that the relevant calendar is selected. Do not assume hiding a calendar changes only its appearance in this app, and do not delete events to stop reminders."
+      ]
+    },
+    {
+      "heading": "A silent or delayed alert: check iPhone delivery",
+      "body": [
+        "In the iPhone Settings app, open Notifications and choose Cloud Calendars. Review Allow Notifications, the available alert locations and sound controls. Check whether Scheduled Summary or an active Focus is changing delivery. These are Apple’s system settings, not the Alert menu inside an event. Labels can vary with iOS version.",
+        "A banner seen without sound is a different observation from no notification anywhere. Note whether it appeared on the Lock Screen or in Notification Center, whether the phone was in use, and which Focus was active. Change one relevant setting at a time so the next result tells you something. A Live Activity countdown is another surface; seeing it does not prove an audible reminder will arrive."
+      ]
+    },
+    {
+      "heading": "Two alerts: identify the senders before changing the event",
+      "body": [
+        "Read the app name on each notification. Apple Calendar, Google Calendar and Cloud Calendars can be separate notification sources even when they display related events. Two notifications are not enough evidence that two event records exist. Also compare the alert times: a reminder the day before and another near the start may match the saved alert choices.",
+        "Google’s notification guide explains that its settings are personal to the account and that event-specific choices can differ from calendar defaults. Its instructions apply to Google Calendar, not to Cloud Calendars settings. Inspect the relevant sender rather than assuming one app’s switch controls every other app.",
+        "Choose which app you want to notify you, then adjust only the relevant reminder or notification preference. If two actual event records remain, compare their calendars and ownership using the duplicate-event guide. Do not cancel a real meeting just to silence an extra alert."
+      ]
+    },
+    {
+      "heading": "Use one disposable event to narrow the problem",
+      "body": [
+        "Create a clearly named test appointment in a writable calendar you own. Set its start far enough ahead that the chosen alert time is still in the future. Confirm the calendar is selected, the saved alert is present, and both notification controls are enabled. Record the expected alert time and which app should send it.",
+        "Observe whether a notification appears and whether it makes sound; those are separate results. Repeat only after changing one suspected setting. Use an ordinary test event without attendees, not an important meeting or a recurring series. This is a suggested diagnostic exercise, not a test we performed for this article."
+      ]
+    },
+    {
+      "heading": "If the result is still inconsistent",
+      "body": [
+        "The inspected app schedules a bounded set of upcoming alarms, rather than guaranteeing an unlimited queue of future reminders. Source code alone cannot prove delivery in a particular installed build or device state. Report the app and iOS versions, calendar type, saved alert offset, expected time and observed result.",
+        "Keep private event titles, attendee addresses and calendar subscription links out of a public report. Reinstalling, clearing local storage or removing accounts is not the first diagnostic step. Preserve the event and account arrangement while support investigates."
+      ]
+    }
+  ],
+  "claims": {},
+  "practical": [
+    "Classify the failure: missing event, absent notification, silent delivery or duplicate alerts.",
+    "Check the saved alert and selected calendar.",
+    "Check Cloud Calendars Event Notifications separately from iPhone notification permission.",
+    "For duplicates, compare sending apps and configured alert times.",
+    "Use one disposable future event and record the result without changing real invitations."
+  ],
+  "faq": [
+    {
+      "q": "Does turning on weather notifications enable event reminders?",
+      "a": "No. The inspected app settings separate event, invitation and weather notifications. Check Event Notifications and iOS permission for ordinary event alarms."
+    },
+    {
+      "q": "Should I delete one event when two alerts arrive?",
+      "a": "First identify the sending apps and alert times. Multiple notifications can come from separate apps or multiple alerts on one event. Deletion is not a safe way to diagnose that."
+    },
+    {
+      "q": "Does an alert setting guarantee delivery?",
+      "a": "No. It is one part of the chain. App preferences, system permission and delivery settings also matter, and this guide does not certify notification delivery on your installed build."
+    }
+  ],
+  "sourcesHeading": "Sources and notification settings",
+  "sources": [
+    {
+      "label": "Apple: Change notification settings on iPhone",
+      "url": "https://support.apple.com/guide/iphone/change-notification-settings-iph7c3d96bab/ios"
+    },
+    {
+      "label": "Google: Change Google Calendar notifications on iPhone and iPad",
+      "url": "https://support.google.com/calendar/answer/37242?hl=en&co=GENIE.Platform%3DiOS"
+    }
+  ],
+  "seeAlso": [
+    "what-calendar-sync-actually-does",
+    "when-two-calendars-disagree"
+  ]
+}

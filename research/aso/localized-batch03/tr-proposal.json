@@ -1,0 +1,93 @@
+{
+  "status": "proposal_only_not_applied",
+  "locale": "tr",
+  "appId": "6744690319",
+  "targetVersion": "1.7.4",
+  "targetState": "PREPARE_FOR_SUBMISSION",
+  "appInfoLocalizationId": "5e1e3778-3a14-4ec4-b6a5-de58bf7589c4",
+  "versionLocalizationId": "2d04a31c-069d-4692-bf6e-4c0c06948d4c",
+  "nameAction": "preserve_exact_current_draft_name",
+  "fields": {
+    "name": {
+      "value": "Cloud Calendars: Takvim",
+      "characters": 23,
+      "utf8Bytes": 23,
+      "characterLimit": 30,
+      "withinCharacterLimit": true
+    },
+    "subtitle": {
+      "value": "Hava durumu ve günlük planlar",
+      "characters": 29,
+      "utf8Bytes": 31,
+      "characterLimit": 30,
+      "withinCharacterLimit": true
+    },
+    "keywords": {
+      "value": "ajanda,program,hafta,hatırlatıcı,toplantı,etkinlik,paylaşım,davet,tahmin,randevu,araç takımı",
+      "characters": 92,
+      "utf8Bytes": 101,
+      "characterLimit": 100,
+      "withinCharacterLimit": true
+    },
+    "promotionalText": {
+      "value": "Planlarınızı ve hava durumunu birlikte görün. Araç takımlarını ve farklı görünümleri kullanın veya uygulama hesabı olmadan yerel bir takvimle başlayın.",
+      "characters": 151,
+      "utf8Bytes": 168,
+      "characterLimit": 170,
+      "withinCharacterLimit": true
+    },
+    "description": {
+      "value": "iPhone ve iPad’de takvimlerinizi ve hava durumunu birlikte görüntüleyin. Cloud Calendars ile iş ve kişisel planlarınızı inceleyerek gününüzü düzenleyin.\n\nTAKVİMLER VE GÖRÜNÜMLER\niCloud takvimlerini kullanın ve Google Takvim’i bağlayın. Premium, Microsoft takvimleri için de destek sunar. Gün, hafta, ay, yıl ve liste görünümleri arasından seçim yapın.\n\nCloud Calendars hesabı oluşturmadan cihazınızda yerel bir takvim de oluşturabilirsiniz. Hizmetleri bağlamak ve paylaşım yapmak için oturum açmanız gerekebilir.\n\nHAVA DURUMU VE ARAÇ TAKIMLARI\nPlan yaparken hava tahminini kontrol edin. Ana Ekran araç takımları küçük, orta ve büyük boyutlarda sunulur. Kullanılabilir tahminler konuma ve hava durumu sağlayıcısına bağlıdır.\n\nTOPLANTILAR VE PAYLAŞIM\nGoogle Takvim ile Google Meet’i kullanın. Premium, Microsoft Teams’i de destekler. Etkinlikleri ve takvimleri paylaşın; e-posta, QR kodu veya App Clip ile davet gönderin. Erişim izinleri takvime ve davet türüne bağlıdır.\n\nPLANINIZI SEÇİN\nÜcretsiz Base; Google Takvim eşzamanlaması, Google Meet, farklı takvim görünümleri, hava durumu ve araç takımlarını içerir.\nAdvanced, Base özelliklerini içerir ve reklamları kaldırır.\nPremium, Advanced özelliklerine Microsoft takvimleri ve Microsoft Teams desteğini ekler.\n\nSatın almadan önce uygulamada veya App Store’da güncel yerel fiyatı ve faturalandırma dönemini kontrol edin.\n\nUygulamayı ücretsiz indirebilirsiniz. İsteğe bağlı abonelikler, mevcut dönem sona ermeden en az 24 saat önce iptal edilmezse otomatik olarak yenilenir. Aboneliğinizi App Store hesap ayarlarınızdan yönetebilir veya iptal edebilirsiniz.\n\nGizlilik: https://www.cloud-calendars.com/privacy-policy\nKullanım Koşulları: https://www.apple.com/legal/internet-services/itunes/dev/stdeula/",
+      "characters": 1749,
+      "utf8Bytes": 1869,
+      "characterLimit": 4000,
+      "withinCharacterLimit": true
+    }
+  },
+  "current": {
+    "appInfo": {
+      "locale": "tr",
+      "name": "Cloud Calendars: Takvim",
+      "subtitle": "Tüm takvimleriniz tek yerde",
+      "privacyPolicyUrl": "https://www.cloud-calendars.com/privacy-policy",
+      "privacyChoicesUrl": null,
+      "privacyPolicyText": null
+    },
+    "version": {
+      "description": "Gününüzü Takvim + Hava Durumuyla Birlikte Planlayın\n\nCloud Calendars, takvimlerinizi ve hava durumunu güzelce düzenlenmiş tek bir planlama deneyiminde birleştirir.\n\niCloud, Google Takvim ve Microsoft takvimlerini tek bir uygulamada yönetin; tahminleri doğrudan programınızda, araç takımlarında ve planlama görünümlerinde görün.\n\nDaha hızlı planlama için tasarlanmış takvim görünümleriyle toplantılara, seyahatlere, okuldan almaya, açık hava etkinliklerine ve yoğun günlere hazırlıklı olun.\n\nANA EKRAN ARAÇ TAKIMLARI\n\nŞunları birleştiren güzel araç takımları ekleyin:\n• Takvim etkinlikleri\n• Hava tahminleri\n• Yaklaşan program\n• Ay evresi ve koşullar\n• Rüzgâr ve sıcaklık\n• Günlük ajanda özeti\n\nGününüzü doğrudan Ana Ekrandan görmek için birden fazla araç takımı stilinden seçim yapın.\n\nNEDEN CLOUD CALENDARS\n\n• iCloud, Google Takvim ve Microsoft takvimlerini birlikte görüntüleyin\n• Yerleşik hava tahminleriyle plan yapın\n• Güzel Ana Ekran araç takımlarını kullanın\n• Etkinlikleri doğal biçimde sürükleyin, taşıyın ve yeniden boyutlandırın\n• Google Meet ve Microsoft Teams bağlantıları oluşturun\n• Gün, Hafta, Ay, Yıl ve Liste görünümleri arasında geçiş yapın\n• İş ve kişisel takvimleri tek yerde yönetin\n\nÖZELLİKLER\n\nTüm Takvimleriniz Bir Arada\niCloud, Google Takvim ve Microsoft takvimlerini temiz, renk kodlu tek bir deneyimde bağlayın ve yönetin.\n\nTakviminizde Yerleşik Hava Durumu\nSıcaklık, koşullar, ay evresi, rüzgâr ve hava durumu simgeleri dâhil saatlik ve günlük tahminleri doğrudan planlama akışınızda görün.\n\nTakvim + Hava Durumu Araç Takımları\nÖzelleştirilebilir Ana Ekran araç takımlarından programınızı ve hava durumunu anında görün.\n\nBirden Fazla Takvim Görünümü\nZamanınızı planlama biçiminize göre Gün, Hafta, Ay, Yıl veya Liste görünümünü seçin.\n\nKolay Etkinlik Düzenleme\nHızlı ve doğal programlama için etkinliklere doğrudan takvimde dokunun, sürükleyin ve sürelerini değiştirin.\n\nÖzel Hava Durumu Görünümü\nSaatlik koşullar ve faydalı planlama bilgileriyle ayrıntılı tahminleri keşfedin.\n\nTahminlerden Etkinlik Oluşturun\nSeçilen saatte anında yeni bir etkinlik oluşturmak için tahmin saatine dokunun.\n\nYerleşik Toplantı Bağlantıları\nEtkinliklere hızlıca Google Meet ve Microsoft Teams bağlantıları ekleyin.\n\nŞUNLAR İÇİN MÜKEMMEL\n\n• İş ve kişisel takvim yönetimi\n• Hava durumuna göre planlama\n• Açık hava etkinlikleri ve seyahat\n• Yoğun programlar ve aile planlaması\n• Google Takvim ve iCloud kullanıcıları\n• Microsoft takvim kullanıcıları\n\nCloud Calendars’ı deneyin ve her günü daha kolay planlayın.\n\nABONELİK BİLGİLERİ\n\nCloud Calendars otomatik yenilenen abonelikler sunar.\n\nÜcretsiz Plan\n• Google Takvim eşzamanlama\n• Birden fazla takvim görünümü\n• Hava durumu özellikleri\n• Araç takımları\n• Google Meet desteği\n\nSatın alma onaylandığında ödeme Apple ID hesabınızdan tahsil edilir. Abonelikler, mevcut dönemin bitiminden en az 24 saat önce iptal edilmediği sürece otomatik olarak yenilenir. Yenileme ücreti, mevcut dönemin bitiminden önceki 24 saat içinde hesabınızdan tahsil edilir. Abonelikleri App Store hesap ayarlarından yönetebilir ve iptal edebilirsiniz.\n\nGizlilik Politikası: https://www.cloud-calendars.com/privacy-policy\nKullanım Koşulları: https://www.apple.com/legal/internet-services/itunes/dev/stdeula/",
+      "locale": "tr",
+      "keywords": "hava,widget,program,planlayıcı,ajanda,tahmin,iCloud,toplantı,etkinlik,iş,ay,kilit ekranı,yağmur,bugü",
+      "marketingUrl": "https://www.cloud-calendars.com/",
+      "promotionalText": null,
+      "supportUrl": "https://www.cloud-calendars.com/",
+      "whatsNew": null
+    }
+  },
+  "keywordChecks": {
+    "exactDuplicateKeywords": false,
+    "exactTitleSubtitleTokenDuplicates": [],
+    "note": "Exact tokens only; compounds, inflections and CJK segmentation require linguistic judgment. UTF-8 bytes reported separately, no forced byte cap."
+  },
+  "readiness": "ready_for_editorial_review_not_applied",
+  "translationConfidence": "medium",
+  "caveat": "Model-authored localized proposals, no native-speaker review or ASC write validation. Confirm tier names match shipping UI. No popularity/rank claim.",
+  "evidence": [
+    "../../product-facts.json",
+    "../localized-batch02/validation.json",
+    "asc-current.json"
+  ],
+  "applyOnly": [
+    "subtitle",
+    "keywords",
+    "promotionalText",
+    "description"
+  ],
+  "preserve": [
+    "name",
+    "release notes",
+    "URLs",
+    "privacy declarations",
+    "screenshots",
+    "other locales"
+  ]
+}

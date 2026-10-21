@@ -3,13 +3,21 @@
   "snapshot": "asc-readonly-snapshot-20261021.json",
   "totalLocales": 50,
   "appliedAndReadbackVerified": [
-    "en-US",
     "de-DE",
-    "fr-FR",
+    "en-US",
     "es-ES",
+    "fr-FR",
     "it",
     "ja",
-    "ko"
+    "ko",
+    "nl-NL",
+    "pl",
+    "pt-BR",
+    "pt-PT",
+    "sv",
+    "tr",
+    "zh-Hans",
+    "zh-Hant"
   ],
   "remaining": [
     "ar-SA",
@@ -34,26 +42,18 @@
     "ml-IN",
     "mr-IN",
     "ms",
-    "nl-NL",
     "no",
     "or-IN",
     "pa-IN",
-    "pl",
-    "pt-BR",
-    "pt-PT",
     "ro",
     "ru",
     "sk",
     "sl-SI",
-    "sv",
     "ta-IN",
     "te-IN",
     "th",
-    "tr",
     "uk",
     "ur-PK",
-    "vi",
-    "zh-Hans",
-    "zh-Hant"
+    "vi"
   ]
 }

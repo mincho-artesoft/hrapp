@@ -37,6 +37,23 @@ async function get(url, label) {
   return { response, body: await response.text() };
 }
 
+// Keep validation from opening hundreds of connections at once. Collect all
+// worker results before reporting a failure so no request batch runs unseen.
+async function getMany(urls, concurrency = 6) {
+  const results = new Array(urls.length);
+  let next = 0;
+  await Promise.all(Array.from({ length: Math.min(concurrency, urls.length) }, async () => {
+    while (next < urls.length) {
+      const index = next++;
+      try { results[index] = await get(urls[index], urls[index]); }
+      catch (error) { results[index] = { error }; }
+    }
+  }));
+  const failed = results.find(result => result.error);
+  if (failed) throw failed.error;
+  return results;
+}
+
 function contentType(response) {
   return (response.headers.get('content-type') || '').split(';')[0].trim().toLowerCase();
 }
@@ -168,7 +185,7 @@ await check('/sitemap.xml', async () => {
   assert(urls.some(url => new URL(url).pathname === '/how-cloud-calendars-rescued-my-schedule-and-sanity.html'),
     'article URL is missing');
 
-  const results = await Promise.all(urls.map(url => get(url, url)));
+  const results = await getMany(urls);
   results.forEach(({ response: item }, index) => {
     assert(item.status === 200, `${urls[index]} returned ${item.status}`);
   });
@@ -182,7 +199,7 @@ await check('/llms.txt', async () => {
 
   const urls = urlsIn(body);
   assert(urls.length > 0, 'contains no URLs');
-  const results = await Promise.all(urls.map(url => get(url, url)));
+  const results = await getMany(urls);
   results.forEach(({ response: item }, index) => {
     assert(item.status === 200, `${urls[index]} returned ${item.status}`);
   });

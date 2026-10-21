@@ -1,0 +1,29 @@
+{
+  "status": "eight_localized_proposals_not_applied",
+  "scope": "Fresh authenticated GET of draft 1.7.4 and PREPARE_FOR_SUBMISSION appInfo. No mutations, native changes, builds, submission or deployment.",
+  "productFactsRead": [
+    "platforms",
+    "views",
+    "google",
+    "advanced",
+    "premium",
+    "local",
+    "weather",
+    "weather_details",
+    "widgets",
+    "live_activity",
+    "sharing",
+    "accounts",
+    "server_processing",
+    "travel"
+  ],
+  "previousBatchReviewed": 6,
+  "substitution": "bg does not exist in fresh draft version/appInfo localization intersection; zh-Hant substituted as instructed. Do not create bg.",
+  "positioning": "Retain exact names. Localized subtitles express weather/planning/widget utility. Hidden keywords allocate calendar synonyms where not in title, views, reminders, meetings, invitations and sharing. No padding to reach 100. Turkish uses the meaningful phrase araç takımı; Chinese concise terms are intentionally below 100.",
+  "tradeoff": "Chinese subtitles replace provider-led wording with local feature benefits; descriptions retain named integrations and tier distinctions. Other subtitles replace broad consolidation copy. These are editorial intent choices without measured ranking or volume evidence.",
+  "claims": "All descriptions state free Base with Google sync/Meet/views/weather/widgets, Advanced removing ads, Premium adding Microsoft/Teams. Local calendars require no app account; service connection/sharing may require login. Forecast availability and sharing access are qualified. No guaranteed offline privacy, universal Exchange, standalone Lock Screen widget or forecast-duration promise.",
+  "confidence": "Medium for all eight; model-authored copy, no independent native review. Confirm localized UI tier labels and regional vocabulary before submission. pt-BR and pt-PT deliberately use distinct regional vocabulary.",
+  "legalCopy": "Existing privacy/EULA URLs retained as description links. Subscription paragraph states optional automatic renewal and management/cancellation. No changes to legal declarations or price claims.",
+  "validation": "All exact current names preserved. Character limits pass. UTF-8 bytes reported separately; no byte-cap enforcement. Exact-token duplicate checks pass; compounds/CJK segmentation require linguistic judgment. No ASC write validation performed.",
+  "rootApplication": "Review locale-specific current/target data and IDs in each proposal; refresh state before applying only subtitle, keywords, promotionalText and description. Names, URLs, release notes and privacy declarations are reference-only."
+}
