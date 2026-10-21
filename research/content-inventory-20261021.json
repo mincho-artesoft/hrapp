@@ -1,5 +1,5 @@
 {
-  "date": "2026-10-21T21:16:52.370Z",
+  "date": "2026-10-21T21:26:37.897Z",
   "status": "source_inventory_not_quality_approval",
   "articles": [
     {
@@ -1306,6 +1306,22 @@
     },
     {
       "locale": "en-US",
+      "slug": "caldav-calendar-on-iphone",
+      "title": "CalDAV calendar on iPhone: setup, permissions and missing events",
+      "description": "Add a CalDAV account through iPhone settings, then check calendar access and selection. Separate account sync from read-only feeds and duplicate copies.",
+      "descriptionCharacters": 152,
+      "sections": 6,
+      "faq": 3,
+      "words": 942,
+      "source": "articles-help.ts",
+      "sources": [
+        "https://support.apple.com/guide/iphone/change-calendar-settings-iphc37be2016/ios",
+        "https://support.apple.com/en-ca/guide/iphone/iph251e92810/ios"
+      ],
+      "updated": "2026-10-22"
+    },
+    {
+      "locale": "en-US",
       "slug": "calendar-notifications-missing-silent-or-duplicated",
       "title": "Calendar notifications on iPhone: missing, silent or duplicated?",
       "description": "Separate event alerts, Cloud Calendars settings and iPhone delivery controls. Diagnose absent, silent or duplicate reminders without deleting calendar data.",
@@ -1421,15 +1437,18 @@
     {
       "locale": "en-US",
       "slug": "month-view-on-a-bigger-screen",
-      "title": "Month view earns its keep on an iPad",
-      "description": "A month on a phone is a heat map. On a tablet it becomes a working surface, and that changes what it is for.",
-      "descriptionCharacters": 108,
-      "sections": 2,
-      "faq": 0,
-      "words": 202,
+      "title": "Month calendar on iPad and iPhone: see the dates, then check the details",
+      "description": "Compare dates in month view on iPad or iPhone. Check hidden events, selected calendars and exact times before moving shared or recurring appointments.",
+      "descriptionCharacters": 150,
+      "sections": 6,
+      "faq": 3,
+      "words": 883,
       "source": "articles-planning.ts",
-      "sources": [],
-      "updated": "2026-10-21"
+      "sources": [
+        "https://support.apple.com/en-ca/guide/iphone/iphfd1054569/ios",
+        "https://calendar.teamup.com/kb/how-to-use-calendar-views/"
+      ],
+      "updated": "2026-10-22"
     },
     {
       "locale": "en-US",

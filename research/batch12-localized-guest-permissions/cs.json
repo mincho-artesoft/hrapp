@@ -1,0 +1,90 @@
+{
+  "title": "Oprávnění hostů v Kalendáři Google: úpravy, pozvánky a seznam",
+  "short": "Oprávnění hostů události",
+  "description": "Zkontrolujte oprávnění hostů a výchozí nastavení. Oddělte práva pozvánek od přístupu ke kalendáři a rolí Reader, Writer a Owner.",
+  "lede": "Možnost odpovědět nepopisuje vše, co host může dělat. Než použijete jednu pozvánku pro tým, klienty či veřejnou akci, prověřte oprávnění události. Průvodce vydává Arte Soft, vývojář Cloud Calendars.",
+  "commonBelief": "Pozvaní hosté mohou jen přijmout nebo odmítnout a všechny aplikace nabízejí stejné ovládání oprávnění.",
+  "sections": [
+    {
+      "heading": "Začněte organizátorem a původní událostí",
+      "body": [
+        "Otevřete správnou událost v Kalendáři Google účtem organizátora nebo účtem oprávněným ji spravovat. Před změnou oprávnění ověřte kalendář, datum a organizátora. Samostatně importovaná schůzka není spolehlivé místo pro řízení původní pozvánky.",
+        "U týmové schůzky si napište, kdo smí měnit čas, zvát další a zda se mají účastníci navzájem vidět. Jde o samostatná rozhodnutí. Host, který se potřebuje účastnit, nemusí potřebovat schůzku spravovat."
+      ]
+    },
+    {
+      "heading": "Rozhodněte, zda hosté smějí schůzku měnit",
+      "body": [
+        "Google dokumentuje volbu „Modify event“ pod „Guests can“ v počítačovém editoru. Jde o široké oprávnění ke spolupráci, nejen způsob navržení jiného času. Podle Googlu umožňuje správu události včetně úprav polí, prohlížení hostů a rezervace místností.",
+        "Důvěryhodný spoluorganizátor workshopu například může tuto volnost potřebovat, zákazník přicházející na schůzku nemusí. Rozhodujte podle předávané odpovědnosti a ověřte uloženou událost místo spoléhání na nastavení jiné schůzky."
+      ]
+    },
+    {
+      "heading": "Pozvánky a viditelnost hostů prověřte odděleně",
+      "body": [
+        "Model Googlu rozlišuje právo zvát další od práva vidět ostatní hosty. Ověřte obě vedle práva upravovat. Vypnutí jedné možnosti neznamená kontrolu druhé a zobrazená výchozí hodnota nedokazuje nastavení existující události.",
+        "Při setkání nesouvisejících klientů zvažte, zda je společná pozvánka vůbec vhodná. Informace již uvedené v e-mailu, popisu či přeposlané zprávě přesahují aktuální ovládání seznamu hostů. Nevkládejte do popisu důvěrné údaje účastníků s očekáváním, že je skrytý seznam zakryje."
+      ]
+    },
+    {
+      "heading": "Ověřte výchozí nastavení i důležité události",
+      "body": [
+        "Google v nastavení událostí popisuje také „Default guest permissions“, včetně výchozího oprávnění k úpravám. Nastavení tedy není výhradně pro jednotlivé události. Při změně běžného způsobu plánování zkontrolujte výchozí hodnoty a poté jednotlivě důležité existující pozvánky.",
+        "U opakované schůzky před uložením potvrďte, který výskyt nebo sérii upravujete. Nepředpokládejte, že změna předvolby přepsala starší pozvánky. Při testu s kolegou použijte dohodnutý necitlivý příklad místo přesouvání či rušení skutečné klientské schůzky."
+      ]
+    },
+    {
+      "heading": "Oddělte role Cloud Calendars",
+      "body": [
+        "Cloud Calendars má vlastní sdílení s rolemi Reader, Writer a Owner. Reader nabízí prohlížení a synchronizaci; Writer úpravy; Owner také spravuje sdílení a přístup s pozvanou identitou. Tyto role nejsou přepínače tří oprávnění hostů Googlu.",
+        "Záleží-li na konkrétním oprávnění Googlu, zkontrolujte originál v Kalendáři Google. Zobrazení účastníka v Cloud Calendars neprokazuje, že tam lze měnit všechna nastavení hostů Googlu. Při chybějícím ovládání nebo neúspěšné úpravě mějte jasno ve vlastnické službě a identitě příjemce."
+      ]
+    },
+    {
+      "heading": "Ověřte uložený výsledek a sdělte odpovědnost",
+      "body": [
+        "Po uložení znovu otevřete původní událost a ověřte zamýšlená nastavení. Podle potřeby požádejte oprávněného kolegu o potvrzení možností jeho účtu. Nevyměňujte hesla ani neposílejte soukromé údaje hostů jako zkratku ke kontrole přístupu.",
+        "Oddělte účast od oprávnění. Možnost upravovat, importovaná kopie a zaznamenané přijetí jsou různé skutečnosti. Potvrzení přijetí sdílení v Cloud Calendars není odpověď na účast. U důležité schůzky požádejte o potřebnou odpověď a vyjasněte odpovědnost za změny rozvrhu."
+      ]
+    }
+  ],
+  "claims": {},
+  "practical": [
+    "Určete účet organizátora a původní událost.",
+    "Rozhodněte, kdo spravuje, zve další a vidí hosty.",
+    "Prověřte skutečná oprávnění události Google.",
+    "Ověřte výchozí hodnoty bez předpokladu změn existujících událostí.",
+    "Role Cloud Calendars berte jako samostatný systém.",
+    "Znovu otevřete uloženou událost a potvrďte účast zvlášť."
+  ],
+  "faq": [
+    {
+      "q": "Může host změnit čas mé schůzky?",
+      "a": "Google podporuje udělení práva k úpravám. Ověřte konkrétní událost a přístup hosta; neodvozujte je jen z obdržené pozvánky."
+    },
+    {
+      "q": "Nastavují se všechna práva jen v každé události?",
+      "a": "Ne. Google popisuje i výchozí oprávnění. Prověřte je pro budoucí plánování a důležité existující události zkontrolujte přímo."
+    },
+    {
+      "q": "Odstraní skrytí seznamu již odeslané informace?",
+      "a": "Neprokazuje odstranění starších e-mailů, popisů, snímků obrazovky či nezávislých kopií. Samostatně prověřte, co bylo skutečně rozesláno."
+    }
+  ],
+  "sourcesHeading": "Pokyny poskytovatele a další informace",
+  "sources": [
+    {
+      "label": "Google: spolupráce na událostech a výchozí oprávnění hostů",
+      "url": "https://support.google.com/a/users/answer/13293412?hl=en"
+    },
+    {
+      "label": "Google: pole oprávnění hostů",
+      "url": "https://developers.google.com/workspace/calendar/api/v3/reference/events"
+    }
+  ],
+  "seeAlso": [
+    "who-can-see-what-in-google-calendar",
+    "sharing-one-event-not-your-calendar"
+  ],
+  "updated": "2026-10-21"
+}

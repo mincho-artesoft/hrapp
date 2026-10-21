@@ -136,41 +136,96 @@ export const PLANNING_EN_US: Readonly<Record<string, LocalisedArticle>> = {
   },
 
   'month-view-on-a-bigger-screen': {
-  "title": "Month view earns its keep on an iPad",
-  "short": "Month view on iPad",
-  "description": "A month on a phone is a heat map. On a tablet it becomes a working surface, and that changes what it is for.",
-  "lede": "The same view can be a glance on one device and a workspace on another. Month is the clearest example.",
-  "commonBelief": "That month view is the same feature at every size.",
+  "updated": "2026-10-22",
+  "title": "Month calendar on iPad and iPhone: see the dates, then check the details",
+  "short": "Use month view without missing details",
+  "description": "Compare dates in month view on iPad or iPhone. Check hidden events, selected calendars and exact times before moving shared or recurring appointments.",
+  "lede": "Month view answers where commitments fall across dates. It is less suited to proving that a particular hour is free. Use the overview to choose a date, then inspect the day and the event before committing. This guide is published by Arte Soft, the developer of Cloud Calendars.",
+  "commonBelief": "A larger month grid displays every detail, and an apparently empty date proves that everyone is available.",
   "sections": [
     {
-      "heading": "Phone month is a density map",
+      "heading": "Decide whether you need dates or exact hours",
       "body": [
-        "On a phone you are reading busyness, not content. Which weeks are heavy, where the clear runs are. That is genuinely useful and it is nearly all you can get.",
-        "Expecting to plan from it is what makes people feel the view is useless."
+        "Use the month to compare a project deadline, a trip and a family appointment across several weeks. When the question becomes whether two appointments overlap at 14:30, switch to a day or week view and inspect their exact start and end. A month cell does not provide the same time scale as an hourly grid.",
+        "For example, an organiser choosing a date for a workshop can first avoid a travel week. The next check is the proposed day: existing commitments, preparation, travel and the required finish. A clear-looking cell is a candidate to investigate, not a confirmed booking or a statement of other people’s availability."
       ]
     },
     {
-      "heading": "Tablet month is a planning surface",
+      "heading": "Read the overflow instead of counting only visible titles",
       "body": [
-        "With room for several events per day and legible titles, month becomes the view you actually arrange a month from — dragging things between weeks, seeing a pattern, spotting the collision three weeks out.",
-        "The month view helps you compare commitments across dates. It does not provide a whole month of weather conditions. For weather-dependent plans, check the dates and hours available in the weather view separately."
+        "Cloud Calendars’ current month cell shows a limited set of event chips and an additional-count label when more events belong to the date. Titles are kept to a line, so they can shorten. Open the day or the individual event when the full title or remaining commitments matter.",
+        "A bigger iPad display can make the overview easier to read, but do not assume that more physical space removes every display limit. A narrow app window or larger text can change what fits. Keep the same check on iPhone: inspect the underlying day before treating the visible chips as the complete schedule."
+      ]
+    },
+    {
+      "heading": "Check the month, selected calendars and adjacent dates",
+      "body": [
+        "Read the displayed month and year before choosing a date. A month grid can include dates from an adjacent month to complete its rows. In Cloud Calendars, use the month navigation and inspect the selected date rather than relying on the position of a square alone.",
+        "Check which calendars are selected. Hiding work events may help you read a family plan, but it also removes those commitments from that particular overview. If you are diagnosing a duplicate, temporarily hide one source and compare; do not delete an appointment merely to make the month less crowded."
+      ]
+    },
+    {
+      "heading": "Open an event before changing a shared arrangement",
+      "body": [
+        "Confirm the title, owner or calendar, local time and duration in the event details. A colour is useful for scanning, but it is not a substitute for knowing the account or whether you may edit the event. A visible invitation is different from an appointment you organise yourself.",
+        "Cloud Calendars has a month drag-and-drop path for moving events to another date. Before using it on a real commitment, establish the intended date and recurrence scope. After a permitted change, reopen the event and check the result; a local gesture is not proof that a provider or every participant has accepted the new arrangement."
+      ]
+    },
+    {
+      "heading": "Treat repeating events and time zones as separate checks",
+      "body": [
+        "If only this week’s lesson moves, do not accidentally change its future pattern. Read the available repeat-scope choice and inspect both the changed occurrence and a later one afterwards. The month view makes repeated dates easy to compare, but the edit scope determines what the change means.",
+        "For travel or a meeting across time zones, inspect the event’s local date and time explicitly. Moving an event to a different day is not an automatic conversion of the intended meeting time. Check daylight-saving transitions when relevant, and confirm the agreed time with the people involved."
+      ]
+    },
+    {
+      "heading": "Use the larger view without confusing it with other products",
+      "body": [
+        "Apple Calendar offers its own month display choices, while Teamup documents different browser and mobile view sets. Those controls belong to their respective products. Do not look for Teamup’s browser configuration or Apple Calendar’s view menu inside Cloud Calendars just because the layouts have the same name.",
+        "A month of appointments also is not a month of weather forecasts. For an outdoor plan, check the intended place, date and available forecast hours separately. Save the final appointment to the intended calendar and confirm any changed arrangement directly with participants."
       ]
     }
   ],
-  "claims": {
-    "views": "Views available on both devices",
-    "minIos": "Minimum iOS and iPadOS version"
-  },
+  "claims": {},
   "practical": [
-    "Plan the month on the tablet, run the day on the phone.",
-    "On a phone, read month for density and switch to week to act.",
-    "Landscape on a tablet is where month is worth the most room you can give it."
+    "Use month view to shortlist dates, then inspect exact hours in day or week view.",
+    "Open days with an additional-count label or shortened titles.",
+    "Check month, year and selected calendars before assuming a date is clear.",
+    "Confirm the event’s calendar, time, duration and edit permission.",
+    "Read recurrence scope and verify the saved occurrence after a move.",
+    "Check weather availability separately and confirm changes with participants."
+  ],
+  "faq": [
+    {
+      "q": "Does iPad month view display every appointment in full?",
+      "a": "Do not assume that. Cloud Calendars limits the event chips in a month cell and uses an additional-count label. Open the day and event to inspect the full schedule."
+    },
+    {
+      "q": "Does an empty day mean I am free?",
+      "a": "First check the selected calendars, the date and whether relevant account data is present. The overview only represents the information currently available and displayed."
+    },
+    {
+      "q": "Does moving a recurring event change only that date?",
+      "a": "Read the edit-scope choice rather than assuming. After saving, inspect the changed occurrence and a later one, then confirm the intended arrangement."
+    }
+  ],
+  "sourcesHeading": "Compare the official view descriptions",
+  "sources": [
+    {
+      "label": "Apple: month, multiple-day and list views in Apple Calendar",
+      "url": "https://support.apple.com/en-ca/guide/iphone/iphfd1054569/ios"
+    },
+    {
+      "label": "Teamup: calendar views and browser versus app configuration",
+      "url": "https://calendar.teamup.com/kb/how-to-use-calendar-views/"
+    }
   ],
   "seeAlso": [
     "a-week-view-that-fits-a-week",
-    "the-year-in-one-screen"
-  ],
-  "updated": "2026-10-21"
+    "drag-an-event-to-move-it",
+    "recurring-events-without-the-mess",
+    "time-zones-and-the-flight-you-booked"
+  ]
 },
 
   'planning-a-week-in-ten-minutes': {

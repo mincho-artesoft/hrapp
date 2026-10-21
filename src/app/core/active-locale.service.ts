@@ -46,6 +46,12 @@ export class ActiveLocaleService {
 
   readonly locale = this.current.asReadonly();
 
+  /** Root-relative same-page path so base href cannot send fragment links home. */
+  readonly currentPath = computed(() => {
+    const path = this.url() || '/';
+    return path.endsWith('.html') ? path : withSlash(path);
+  });
+
   /** The App Store link for this reader's storefront, not the American one. */
   readonly storeHref = computed(() => storeUrl(this.current(), APP_STORE_URL));
 

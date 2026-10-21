@@ -57,6 +57,10 @@ export class HeroComponent implements AfterViewInit, OnDestroy {
   private readonly active = inject(ActiveLocaleService);
   readonly copy = computed(() => this.active.copy().hero);
   readonly appStore = this.active.storeHref;
+  readonly tourHref = computed(() => {
+    const path = this.active.path('/');
+    return `${path.endsWith('/') ? path : `${path}/`}#showcase`;
+  });
   readonly storeCta = computed(() => storeCta(this.active.locale().code));
   readonly badge = computed(() => this.copy().badge.replace('{v}', APP_VERSION));
   readonly ratingLabel = computed(() =>

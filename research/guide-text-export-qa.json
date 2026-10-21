@@ -1,8 +1,8 @@
 {
-  "guides": 43,
+  "guides": 45,
   "selection": "tools/guide-text-selection.json",
   "extraction": "Visible article headings, paragraphs, lists, FAQs and source links; gallery/other-app cards excluded.",
-  "exportedCharacters": 242511,
+  "exportedCharacters": 256099,
   "records": [
     {
       "slug": "what-calendar-sync-actually-does",
@@ -163,8 +163,8 @@
     {
       "slug": "icloud-google-and-outlook-in-one-view",
       "source": "https://www.cloud-calendars.com/articles/icloud-google-and-outlook-in-one-view/",
-      "blocks": 46,
-      "characters": 7012
+      "blocks": 47,
+      "characters": 7112
     },
     {
       "slug": "exchange-calendars-on-an-iphone",
@@ -261,6 +261,18 @@
       "source": "https://www.cloud-calendars.com/articles/daylight-as-a-planning-constraint/",
       "blocks": 45,
       "characters": 5835
+    },
+    {
+      "slug": "caldav-calendar-on-iphone",
+      "source": "https://www.cloud-calendars.com/articles/caldav-calendar-on-iphone/",
+      "blocks": 45,
+      "characters": 6998
+    },
+    {
+      "slug": "month-view-on-a-bigger-screen",
+      "source": "https://www.cloud-calendars.com/articles/month-view-on-a-bigger-screen/",
+      "blocks": 46,
+      "characters": 6318
     }
   ]
 }

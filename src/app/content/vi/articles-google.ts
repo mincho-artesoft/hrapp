@@ -255,52 +255,95 @@ export const GOOGLE_VI: Readonly<Record<string, LocalisedArticle>> = {
 },
 
   'what-guests-can-do-to-your-event': {
-    title: 'Khách mời có thể làm gì với sự kiện của bạn',
-    short: 'Quyền của khách mời',
-    description:
-      'Ba ô đánh dấu quyết định khách mời có thể dời cuộc họp, mời người lạ hay đọc toàn bộ danh sách hay không. Chúng bật nhiều hơn người ta tưởng.',
-    lede: 'Mời ai đó là cho họ nhiều hơn một địa điểm và một giờ. Trong một sự kiện Google thông thường, khách mời thường thấy còn ai được mời, và nhiều khi được thêm người.',
-    commonBelief: 'Rằng khách mời chỉ có thể nhận lời hoặc từ chối.',
-    sections: [
-      {
-        heading: 'Ba ô ấy',
-        body: [
-          'Sửa sự kiện cho phép khách mời đổi giờ, đổi nơi và đổi tiêu đề cho tất cả mọi người. Hiếm khi ta muốn thế, mà lại rất dễ để nguyên.',
-          'Mời người khác cho phép họ thêm những người bạn chưa từng gặp. Xem danh sách khách mời cho thấy tất cả những ai được mời và họ trả lời ra sao — ổn trong một nhóm làm việc, khó xử với khách hàng, và sai với bất cứ thứ gì giống một nhóm khách hàng riêng rẽ.',
-        ],
-      },
-      {
-        heading: 'Chỗ mọi thứ lặng lẽ hỏng',
-        body: [
-          'Một sự kiện, nhiều người nhận riêng lẻ, danh sách hiện rõ: giờ thì ai cũng có tất cả mọi người. Bỏ đúng một ô ấy là khác biệt giữa một cuộc họp và một sổ địa chỉ bị lộ.',
-          'Các thiết lập sống trong sự kiện chứ không trong tài khoản, nên chúng quay về giá trị mặc định mỗi lần và phải được cân nhắc ở những sự kiện quan trọng, chứ không phải một lần cho mãi mãi.',
-        ],
-      },
-    ],
-    claims: {
-      sharePrice: 'Chi phí gửi một sự kiện đơn lẻ từ ứng dụng',
+  "title": "Quyền khách mời Google Calendar: chỉnh sửa, mời thêm và danh sách khách",
+  "short": "Quyền khách mời trong sự kiện",
+  "description": "Kiểm tra quyền khách mời và mặc định Google. Phân biệt quyền lời mời, quyền truy cập lịch và các vai trò trong Cloud Calendars.",
+  "lede": "Khả năng trả lời lời mời không nói hết những gì khách có thể làm. Kiểm tra quyền trước khi dùng một lời mời chung cho nhóm, khách hàng hoặc buổi gặp công khai. Hướng dẫn do Arte Soft, nhà phát triển Cloud Calendars, xuất bản.",
+  "commonBelief": "Khách chỉ có thể chấp nhận hoặc từ chối, và mọi ứng dụng đều có cùng tùy chọn quyền.",
+  "sections": [
+    {
+      "heading": "Bắt đầu từ người tổ chức và sự kiện gốc",
+      "body": [
+        "Mở sự kiện trong Google Calendar bằng tài khoản tổ chức hoặc tài khoản được phép quản lý. Kiểm tra lịch, ngày và người tổ chức trước khi đổi quyền. Cuộc hẹn được nhập riêng không phải nơi đáng tin để điều khiển lời mời gốc.",
+        "Với cuộc họp nhóm, xác định ai được đổi lịch, mời thêm người và xem các khách khác. Đây là những quyết định riêng. Một khách cần tham dự không nhất thiết cần quản lý cuộc họp."
+      ]
     },
-    faq: [
-      {
-        q: 'Khách mời có thấy nhau trong một lời mời của Lịch Google không?',
-        a: 'Mặc định thường là có. «Xem danh sách khách mời» hiện mọi người được mời cùng câu trả lời của họ: ổn trong một nhóm, khó xử với khách hàng, và sai khi khách mời là những khách hàng riêng rẽ.',
-      },
-      {
-        q: 'Khách mời có đổi được giờ họp của tôi không?',
-        a: 'Nếu «sửa sự kiện» được bật thì có, và thay đổi áp dụng cho tất cả mọi người. Hiếm khi ta muốn thế và rất dễ để nguyên.',
-      },
-      {
-        q: 'Làm sao ngăn khách mời mời thêm người khác?',
-        a: 'Tắt «mời người khác» ngay trên sự kiện. Các thiết lập này thuộc về sự kiện chứ không thuộc tài khoản, nên chúng quay về giá trị mặc định mỗi lần.',
-      },
-    ],
-    practical: [
-      'Tắt «xem danh sách khách mời» với mọi thứ gửi tới những người không quen nhau.',
-      'Để «sửa sự kiện» tắt, trừ khi có người thật sự sắp lịch thay bạn.',
-      'Kiểm tra các ô trên sự kiện, không phải trong cài đặt: chúng nằm ở đó.',
-    ],
-    seeAlso: ['who-can-see-what-in-google-calendar', 'why-a-shared-calendar-does-not-appear'],
-  },
+    {
+      "heading": "Quyết định khách có được sửa cuộc họp không",
+      "body": [
+        "Google hướng dẫn tùy chọn sửa sự kiện trong phần quyền khách của trình chỉnh sửa trên máy tính. Đây là quyền cộng tác rộng, không chỉ để đề xuất giờ khác. Google giải thích quyền này cho phép quản lý sự kiện, sửa trường thông tin, xem khách và đặt phòng.",
+        "Ví dụ, người đồng tổ chức đáng tin chuẩn bị hội thảo có thể cần sự linh hoạt đó. Khách hàng đến buổi hẹn có thể không cần. Chọn theo trách nhiệm giao cho khách và kiểm tra sự kiện đã lưu, thay vì dựa vào cấu hình cuộc họp khác."
+      ]
+    },
+    {
+      "heading": "Kiểm tra riêng quyền mời và xem khách",
+      "body": [
+        "Mô hình sự kiện Google phân biệt quyền mời thêm với quyền xem khách khác. Kiểm tra cả hai cùng quyền chỉnh sửa. Tắt một quyền không có nghĩa đã kiểm tra quyền kia; giá trị mặc định hiển thị cũng không chứng minh cài đặt sự kiện hiện có.",
+        "Với các khách hàng không liên quan nhau, cân nhắc liệu lời mời chung có phù hợp. Thông tin đã nằm trong email, mô tả hoặc tin nhắn chuyển tiếp không thuộc phạm vi hẹp của tùy chọn danh sách khách hiện tại. Đừng đưa chi tiết mật vào mô tả rồi mong việc ẩn danh sách che được chúng."
+      ]
+    },
+    {
+      "heading": "Kiểm tra mặc định và sự kiện quan trọng",
+      "body": [
+        "Google cũng hướng dẫn quyền khách mặc định trong cài đặt sự kiện, gồm quyền sửa. Vì vậy tùy chọn không chỉ nằm ở từng sự kiện. Xem lại mặc định khi cách đặt lịch thường ngày thay đổi, rồi kiểm tra riêng các lời mời quan trọng đã có.",
+        "Với cuộc họp lặp lại, xác nhận đang sửa lần nào hay cả chuỗi trước khi lưu. Đừng mặc định đổi tùy chọn sẽ viết lại lời mời cũ. Khi thử cùng đồng nghiệp, dùng ví dụ đã thống nhất và không nhạy cảm, thay vì dời hoặc hủy cuộc họp thật của khách hàng."
+      ]
+    },
+    {
+      "heading": "Phân biệt vai trò Cloud Calendars",
+      "body": [
+        "Cloud Calendars có hệ thống chia sẻ riêng với Reader, Writer và Owner. Reader cho xem và đồng bộ; Writer cho chỉnh sửa; Owner còn quản lý chia sẻ và truy cập bằng danh tính được mời. Các vai trò này không phải công tắc cho ba quyền khách của Google.",
+        "Khi quyền riêng của Google quan trọng, kiểm tra sự kiện gốc trong Google Calendar. Thấy người tham dự trong Cloud Calendars không chứng minh có thể đổi mọi tùy chọn khách Google tại đó. Khi tìm nguyên nhân thiếu tùy chọn hay sửa thất bại, xác định rõ dịch vụ sở hữu và danh tính người nhận."
+      ]
+    },
+    {
+      "heading": "Xác minh kết quả và trách nhiệm",
+      "body": [
+        "Sau khi lưu, mở lại sự kiện gốc và kiểm tra cài đặt mong muốn. Khi phù hợp, nhờ đồng nghiệp có quyền xác nhận tài khoản của họ làm được gì. Không trao đổi mật khẩu hoặc gửi thông tin riêng của khách để kiểm tra truy cập cho nhanh.",
+        "Phân biệt tham dự với quyền. Quyền chỉnh sửa, bản nhập riêng và phản hồi chấp nhận đã ghi nhận là những việc khác nhau. Trong Cloud Calendars, biên nhận chia sẻ không phải RSVP. Với cuộc họp quan trọng, yêu cầu phản hồi tham dự cần thiết và nói rõ ai chịu trách nhiệm thay đổi lịch."
+      ]
+    }
+  ],
+  "claims": {},
+  "practical": [
+    "Xác định tài khoản tổ chức và sự kiện gốc.",
+    "Quyết định ai quản lý cuộc họp, mời thêm và xem khách.",
+    "Kiểm tra quyền khách thực tế của sự kiện Google.",
+    "Xem lại mặc định mà không cho rằng chúng sửa sự kiện hiện có.",
+    "Coi vai trò Cloud Calendars là hệ thống quyền riêng.",
+    "Mở lại sự kiện đã lưu và xác nhận tham dự riêng."
+  ],
+  "faq": [
+    {
+      "q": "Khách có thể đổi giờ cuộc họp của tôi không?",
+      "a": "Google hỗ trợ cấp quyền sửa. Kiểm tra sự kiện và quyền của khách; đừng suy ra chỉ từ việc họ nhận lời mời."
+    },
+    {
+      "q": "Mọi quyền khách chỉ được cài trên từng sự kiện sao?",
+      "a": "Không. Google cũng có quyền mặc định. Kiểm tra mặc định cho lịch sắp tới và kiểm tra trực tiếp sự kiện quan trọng hiện có."
+    },
+    {
+      "q": "Ẩn danh sách khách có xóa thông tin đã gửi không?",
+      "a": "Không chứng minh email, mô tả, ảnh chụp hoặc bản sao độc lập trước đây đã bị xóa. Kiểm tra riêng nội dung thực tế đã phát đi."
+    }
+  ],
+  "sourcesHeading": "Hướng dẫn nhà cung cấp và tài liệu thêm",
+  "sources": [
+    {
+      "label": "Google: cộng tác sự kiện và quyền khách mặc định",
+      "url": "https://support.google.com/a/users/answer/13293412?hl=en"
+    },
+    {
+      "label": "Google: các trường quyền khách mời",
+      "url": "https://developers.google.com/workspace/calendar/api/v3/reference/events"
+    }
+  ],
+  "updated": "2026-10-21",
+  "seeAlso": [
+    "who-can-see-what-in-google-calendar",
+    "sharing-one-event-not-your-calendar"
+  ]
+},
 
   'google-calendars-that-never-reach-your-iphone': {
     title: 'Vì sao một số lịch Google không bao giờ tới được iPhone',

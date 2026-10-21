@@ -253,52 +253,95 @@ export const GOOGLE_DA: Readonly<Record<string, LocalisedArticle>> = {
 },
 
   'what-guests-can-do-to-your-event': {
-    title: 'Hvad dine gæster kan gøre ved en begivenhed',
-    short: 'Gæsternes rettigheder',
-    description:
-      'Tre afkrydsningsfelter afgør, om en gæst kan flytte dit møde, invitere fremmede eller læse hele listen. De står til mere end folk regner med.',
-    lede: 'At invitere nogen giver mere end et sted og et tidspunkt. I en almindelig Google-begivenhed ser en gæst som regel, hvem der ellers er spurgt, og må ofte tilføje flere.',
-    commonBelief: 'At en gæst kun kan takke ja eller nej.',
-    sections: [
-      {
-        heading: 'De tre felter',
-        body: [
-          'Redigere begivenhed lader en gæst ændre tidspunkt, sted og titel for alle. Sjældent ønsket, let ladt tændt.',
-          'Invitere andre lader en gæst tilføje folk, du aldrig har mødt. Se gæstelisten viser alle inviterede og deres svar — fint i et team, akavet hos en kunde, forkert i alt, der ligner en gruppe adskilte kunder.',
-        ],
-      },
-      {
-        heading: 'Hvor det stille går galt',
-        body: [
-          'Én begivenhed, mange enkelte modtagere, synlig liste: nu har alle alle. Det ene felt er forskellen mellem et møde og en lækket adressebog.',
-          'Indstillingerne hører til begivenheden, ikke til kontoen, så de falder tilbage til dine standardværdier hver gang og skal tænkes igennem på de begivenheder, der betyder noget, ikke én gang for alle.',
-        ],
-      },
-    ],
-    claims: {
-      sharePrice: 'Hvad det koster at sende en enkelt begivenhed fra appen',
+  "title": "Gæstetilladelser i Google Kalender: redigering, invitationer og gæsteliste",
+  "short": "Gæstetilladelser på en begivenhed",
+  "description": "Kontrollér gæstetilladelser og standarder i Google. Skeln mellem invitationsrettigheder, kalenderadgang og rollerne Reader, Writer og Owner.",
+  "lede": "En gæsts mulighed for at svare beskriver ikke alt, hvad vedkommende kan gøre. Gennemgå tilladelserne, før du bruger én invitation til et team, kunder eller et offentligt arrangement. Guiden er udgivet af Arte Soft, udvikleren af Cloud Calendars.",
+  "commonBelief": "Inviterede gæster kan kun acceptere eller afslå, og alle apps tilbyder de samme tilladelsesindstillinger.",
+  "sections": [
+    {
+      "heading": "Start med arrangøren og den oprindelige begivenhed",
+      "body": [
+        "Åbn den rette begivenhed i Google Kalender med arrangørkontoen eller en konto, der må administrere den. Kontrollér kalender, dato og arrangør før ændringer. En særskilt importeret aftale er ikke et pålideligt sted at styre den oprindelige invitation.",
+        "Skriv for et teammøde ned, hvem der må flytte det, invitere andre, og om deltagerne skal se hinanden. Det er forskellige beslutninger. En gæst, der skal deltage, behøver ikke nødvendigvis at administrere mødet."
+      ]
     },
-    faq: [
-      {
-        q: 'Kan gæsterne se hinanden i en invitation fra Google Kalender?',
-        a: 'Som standard oftest ja. «Se gæstelisten» viser alle inviterede og deres svar: fint i et team, akavet hos en kunde, forkert når gæsterne er adskilte kunder.',
-      },
-      {
-        q: 'Kan en gæst ændre tidspunktet for mit møde?',
-        a: 'Hvis «rediger begivenhed» er sat, ja, og ændringen gælder alle. Sjældent ønsket og let ladt tændt.',
-      },
-      {
-        q: 'Hvordan forhindrer jeg gæster i at invitere andre?',
-        a: 'Slå «invitere andre» fra på selve begivenheden. Indstillingerne hører til begivenheden og ikke til kontoen, så de falder tilbage til dine standardværdier hver gang.',
-      },
-    ],
-    practical: [
-      'Slå «se gæstelisten» fra ved alt, der sendes til folk, som ikke kender hinanden.',
-      'Lad «redigere begivenhed» være slået fra, medmindre nogen reelt planlægger for dig.',
-      'Tjek felterne på begivenheden, ikke i dine indstillinger: det er der, de bor.',
-    ],
-    seeAlso: ['who-can-see-what-in-google-calendar', 'why-a-shared-calendar-does-not-appear'],
-  },
+    {
+      "heading": "Beslut, om gæster må ændre mødet",
+      "body": [
+        "Google beskriver “Modify event” under “Guests can” i begivenhedsredigeringen på computer. Det er en bred samarbejdstilladelse, ikke blot en måde at foreslå et nyt tidspunkt på. Google forklarer, at den tillader administration, herunder ændring af felter, visning af gæster og reservation af lokaler.",
+        "En betroet medarrangør af en workshop kan eksempelvis have brug for fleksibiliteten, mens en kunde til en aftale måske ikke har. Vælg efter det ansvar, du giver gæsten, og kontrollér den gemte begivenhed frem for indstillingerne fra et andet møde."
+      ]
+    },
+    {
+      "heading": "Gennemgå invitationer og gæsters synlighed særskilt",
+      "body": [
+        "Googles begivenhedsmodel skelner mellem tilladelse til at invitere andre og til at se andre gæster. Kontrollér begge sammen med redigeringsadgang. At slå den ene mulighed fra betyder ikke, at den anden er kontrolleret, og en vist standard beviser ikke indstillingerne på en eksisterende begivenhed.",
+        "Overvej ved en samling af kunder uden indbyrdes relation, om én fælles invitation overhovedet er passende. Oplysninger i allerede sendte e-mails, beskrivelser eller videresendte beskeder ligger uden for den aktuelle gæstelistekontrol. Skriv ikke fortrolige deltageroplysninger i beskrivelsen og forvent, at en skjult liste skjuler dem."
+      ]
+    },
+    {
+      "heading": "Kontrollér standarder og vigtige enkeltbegivenheder",
+      "body": [
+        "Google beskriver også “Default guest permissions” i begivenhedsindstillingerne, herunder en standard for ændringer. Kontrollen er altså ikke kun pr. begivenhed. Gennemgå standarderne, når din sædvanlige planlægning ændrer sig, og kontrollér derefter vigtige eksisterende invitationer enkeltvis.",
+        "Ved gentagne møder skal du før lagring bekræfte, hvilken forekomst eller serie du ændrer. Antag ikke, at en ændret præference har omskrevet gamle invitationer. Test en ordning med en kollega med et aftalt, ikke-følsomt eksempel i stedet for at flytte eller aflyse et rigtigt kundemøde."
+      ]
+    },
+    {
+      "heading": "Hold Cloud Calendars-roller adskilt",
+      "body": [
+        "Cloud Calendars har en særskilt delingsordning med Reader, Writer og Owner. Reader giver visning og synkronisering; Writer tillader redigering; Owner administrerer også deling og adgang med den inviterede identitet. Roller skal ikke fremstilles som kontakter til Googles tre gæstetilladelser.",
+        "Når en Google-specifik tilladelse er vigtig, skal du undersøge originalen i Google Kalender. En synlig deltager i Cloud Calendars beviser ikke, at alle Googles gæsteindstillinger kan ændres dér. Hold styr på ejertjenesten og modtagerens identitet ved en manglende kontrol eller mislykket redigering."
+      ]
+    },
+    {
+      "heading": "Bekræft resultatet og kommunikér ansvaret",
+      "body": [
+        "Åbn originalen igen efter lagring, og kontrollér de ønskede indstillinger. Bed om nødvendigt en autoriseret kollega bekræfte, hvad deres egen konto kan. Udveksl ikke adgangskoder eller private gæsteoplysninger som genvej til kontrol.",
+        "Hold deltagelse adskilt fra tilladelser. Ret til at redigere, en importeret kopi og en registreret accept er forskellige forhold. En delingskvittering i Cloud Calendars er ikke et deltagelsessvar. Bed ved et vigtigt møde om det svar, du behøver, og gør det klart, hvem der er ansvarlig for tidsændringer."
+      ]
+    }
+  ],
+  "claims": {},
+  "practical": [
+    "Find arrangørkontoen og den oprindelige begivenhed.",
+    "Beslut, hvem der administrerer, inviterer andre og ser gæster.",
+    "Undersøg Google-begivenhedens faktiske tilladelser.",
+    "Gennemgå standarder uden at antage ændringer af eksisterende begivenheder.",
+    "Behandl Cloud Calendars-roller som et separat tilladelsessystem.",
+    "Åbn den gemte begivenhed igen, og bekræft deltagelse særskilt."
+  ],
+  "faq": [
+    {
+      "q": "Kan en gæst ændre mit mødetidspunkt?",
+      "a": "Google understøtter tildeling af ændringstilladelse. Kontrollér selve begivenheden og gæstens adgang; udled den ikke alene af, at en invitation er modtaget."
+    },
+    {
+      "q": "Indstilles alle tilladelser kun på hver begivenhed?",
+      "a": "Nej. Google beskriver også standardtilladelser. Kontrollér dem til fremtidig planlægning og undersøg vigtige eksisterende begivenheder direkte."
+    },
+    {
+      "q": "Fjerner en skjult gæsteliste allerede sendte oplysninger?",
+      "a": "Det beviser ikke, at tidligere e-mails, beskrivelser, skærmbilleder eller selvstændige kopier er fjernet. Gennemgå særskilt, hvad der faktisk blev sendt."
+    }
+  ],
+  "sourcesHeading": "Udbydervejledning og yderligere læsning",
+  "sources": [
+    {
+      "label": "Google: samarbejde om begivenheder og standardtilladelser",
+      "url": "https://support.google.com/a/users/answer/13293412?hl=en"
+    },
+    {
+      "label": "Google: felter for gæstetilladelser",
+      "url": "https://developers.google.com/workspace/calendar/api/v3/reference/events"
+    }
+  ],
+  "seeAlso": [
+    "who-can-see-what-in-google-calendar",
+    "sharing-one-event-not-your-calendar"
+  ],
+  "updated": "2026-10-21"
+},
 
   'google-calendars-that-never-reach-your-iphone': {
     title: 'Hvorfor nogle Google-kalendere aldrig når din iPhone',

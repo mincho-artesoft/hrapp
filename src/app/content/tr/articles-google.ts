@@ -254,52 +254,95 @@ export const GOOGLE_TR: Readonly<Record<string, LocalisedArticle>> = {
 },
 
   'what-guests-can-do-to-your-event': {
-    title: 'Konuklarınız bir etkinliğinize ne yapabilir',
-    short: 'Konuk izinleri',
-    description:
-      'Üç kutucuk, bir konuğun toplantınızı taşıyıp taşıyamayacağını, yabancıları davet edip edemeyeceğini, listenin tamamını okuyup okuyamayacağını belirler. Sanılandan daha sık açıktırlar.',
-    lede: 'Birini davet etmek ona bir yerden ve saatten fazlasını verir. Sıradan bir Google etkinliğinde konuk genellikle başka kimlerin çağrıldığını görür ve çoğu zaman listeye ekleme yapabilir.',
-    commonBelief: 'Bir konuğun yalnızca kabul edip reddedebileceği.',
-    sections: [
-      {
-        heading: 'Üç kutucuk',
-        body: [
-          'Etkinliği değiştirme, konuğun saati, yeri ve başlığı herkes için değiştirmesine izin verir. Nadiren istenir, kolayca açık bırakılır.',
-          'Başkalarını davet etme, hiç tanışmadığınız kişileri eklemesine izin verir. Konuk listesini görme, çağrılan herkesi ve yanıtlarını gösterir — bir ekipte sorun değil, müşteride rahatsız edici, birbirinden ayrı müşteriler topluluğuna benzeyen her şeyde yanlıştır.',
-        ],
-      },
-      {
-        heading: 'İşin sessizce bozulduğu yer',
-        body: [
-          'Tek etkinlik, çok sayıda ayrı alıcı, görünür liste: artık herkeste herkes var. O tek kutucuğu kaldırmak, bir toplantı ile sızmış bir adres defteri arasındaki farktır.',
-          'Ayarlar hesapta değil etkinlikte yaşar; her seferinde varsayılanlarınıza döner ve bir kez değil, önemli olan etkinliklerde düşünülmeleri gerekir.',
-        ],
-      },
-    ],
-    claims: {
-      sharePrice: 'Uygulamadan tek bir etkinlik göndermenin ücreti',
+  "title": "Google Takvim misafir izinleri: düzenleme, davetler ve misafir listesi",
+  "short": "Etkinlikte misafir izinleri",
+  "description": "Google misafir izinlerini ve varsayılanları kontrol edin. Davet haklarını takvim erişiminden ve Cloud Calendars rollerinden ayırın.",
+  "lede": "Bir misafirin yanıt verebilmesi, yapabileceklerinin tamamını açıklamaz. Ekip, müşteriler veya açık bir buluşma için tek davet kullanmadan önce izinleri inceleyin. Bu rehber Cloud Calendars geliştiricisi Arte Soft tarafından yayımlanmıştır.",
+  "commonBelief": "Misafirler yalnızca kabul veya ret yanıtı verebilir ve her uygulama aynı izin kontrollerini sunar.",
+  "sections": [
+    {
+      "heading": "Düzenleyici ve özgün etkinlikle başlayın",
+      "body": [
+        "Google Takvim’de ilgili etkinliği düzenleyen hesapla veya yönetim yetkisi olan hesapla açın. İzinleri değiştirmeden önce takvimi, tarihi ve düzenleyiciyi kontrol edin. Ayrı içe aktarılmış randevu, özgün daveti yönetmek için güvenilir bir yer değildir.",
+        "Ekip toplantısında kimin zamanı değiştirebileceğini, başkalarını davet edebileceğini ve katılımcıları görebileceğini belirleyin. Bunlar ayrı kararlardır. Katılması gereken bir misafirin toplantıyı yönetmesi şart değildir."
+      ]
     },
-    faq: [
-      {
-        q: 'Google Takvim davetinde konuklar birbirini görür mü?',
-        a: 'Varsayılan olarak çoğunlukla evet. «Konuk listesini görme», davet edilen herkesi ve yanıtlarını gösterir: ekip içinde sorun değil, müşteriyle rahatsız edici, konuklar ayrı müşterilerse doğrudan yanlış.',
-      },
-      {
-        q: 'Bir konuk toplantımın saatini değiştirebilir mi?',
-        a: '«Etkinliği değiştirme» işaretliyse evet, ve değişiklik herkes için geçerli olur. Nadiren istenir, kolayca açık bırakılır.',
-      },
-      {
-        q: 'Konukların başkalarını davet etmesini nasıl engellerim?',
-        a: '«Başkalarını davet etme»yi etkinliğin kendisinde kapatın. Bu ayarlar hesaba değil etkinliğe aittir, bu yüzden her seferinde varsayılanlarınıza döner.',
-      },
-    ],
-    practical: [
-      'Birbirini tanımayan kişilere giden her şeyde «konuk listesini görme»yi kapatın.',
-      'Biri gerçekten sizin adınıza plan yapmıyorsa «etkinliği değiştirme»yi kapalı bırakın.',
-      'Kutucuklara ayarlarda değil etkinlikte bakın: orada yaşıyorlar.',
-    ],
-    seeAlso: ['who-can-see-what-in-google-calendar', 'why-a-shared-calendar-does-not-appear'],
-  },
+    {
+      "heading": "Misafirlerin toplantıyı değiştirip değiştiremeyeceğine karar verin",
+      "body": [
+        "Google, bilgisayardaki etkinlik düzenleyicisinde misafir izinleri altında etkinliği değiştirme seçeneğini açıklar. Bu yalnızca yeni saat önerme yolu değil, geniş bir iş birliği iznidir. Google’a göre alanları düzenleme, misafirleri görme ve oda ayırtma dahil etkinlik yönetimini sağlar.",
+        "Örneğin atölye hazırlayan güvenilir bir ortak düzenleyici bu esnekliğe ihtiyaç duyabilir. Randevuya gelen müşteri duymayabilir. Verdiğiniz sorumluluğa göre seçin ve başka toplantının ayarına güvenmek yerine kaydedilmiş etkinliği kontrol edin."
+      ]
+    },
+    {
+      "heading": "Davet ve misafir görünürlüğünü ayrı inceleyin",
+      "body": [
+        "Google’ın etkinlik modeli, başkalarını davet etme izniyle diğer misafirleri görme iznini ayırır. İkisini de düzenleme hakkıyla birlikte inceleyin. Birini kapatmak diğerini kontrol ettiğiniz anlamına gelmez; görünen varsayılan da mevcut etkinliğin ayarlarını kanıtlamaz.",
+        "Birbirini tanımayan müşteriler için ortak davetin uygun olup olmadığını düşünün. E-posta, açıklama veya iletilen mesajda zaten bulunan bilgi, mevcut misafir listesi kontrolünün kapsamı dışındadır. Gizli katılımcı bilgilerini açıklamaya yazıp listeyi gizlemenin bunları saklayacağını beklemeyin."
+      ]
+    },
+    {
+      "heading": "Varsayılanları ve önemli etkinlikleri kontrol edin",
+      "body": [
+        "Google ayrıca etkinlik ayarlarında değişiklik izni dahil varsayılan misafir izinlerini açıklar. Dolayısıyla kontroller yalnızca tek tek etkinliklerde değildir. Alışılmış planlama biçiminiz değiştiğinde varsayılanları gözden geçirin, ardından önemli mevcut davetleri ayrı kontrol edin.",
+        "Yinelenen toplantıda kaydetmeden önce hangi örneği veya seriyi düzenlediğinizi doğrulayın. Bir tercihi değiştirmek eski davetleri yeniden yazmış sayılmaz. Bir meslektaşınızla test ederken gerçek müşteri toplantısını taşımak veya iptal etmek yerine üzerinde anlaşılan, hassas olmayan bir örnek kullanın."
+      ]
+    },
+    {
+      "heading": "Cloud Calendars rollerini ayrı tutun",
+      "body": [
+        "Cloud Calendars’ın Reader, Writer ve Owner rollerinden oluşan ayrı paylaşım sistemi vardır. Reader görüntüleme ve eşitleme; Writer düzenleme sağlar. Owner ayrıca davet edilen kimlikle paylaşımı ve erişimi yönetir. Bu roller Google’ın üç misafir izninin anahtarları değildir.",
+        "Google’a özgü bir izin önemliyse özgün etkinliği Google Takvim’de inceleyin. Cloud Calendars’ta katılımcı görmek, Google’ın bütün misafir ayarlarının orada değiştirilebildiğini göstermez. Eksik kontrol veya başarısız düzenlemeyi incelerken sahip hizmeti ve alıcının kimliğini netleştirin."
+      ]
+    },
+    {
+      "heading": "Kaydedilen sonucu ve sorumlulukları doğrulayın",
+      "body": [
+        "Kaydettikten sonra özgün etkinliği yeniden açıp istenen ayarları kontrol edin. Uygunsa yetkili bir meslektaşınızdan kendi hesabının yapabildiklerini doğrulamasını isteyin. Erişim kontrolünü kolaylaştırmak için şifre veya özel misafir bilgileri paylaşmayın.",
+        "Katılımı izinlerden ayırın. Düzenleme hakkı, içe aktarılmış kopya ve kaydedilmiş kabul yanıtı farklı olgulardır. Cloud Calendars’ta paylaşımın alındığı kaydı RSVP değildir. Önemli toplantılarda gereken katılım yanıtını isteyin ve program değişikliklerinden kimin sorumlu olduğunu açıklayın."
+      ]
+    }
+  ],
+  "claims": {},
+  "practical": [
+    "Düzenleyen hesabı ve özgün etkinliği belirleyin.",
+    "Toplantıyı kimin yöneteceğini, davet göndereceğini ve misafirleri göreceğini kararlaştırın.",
+    "Google etkinliğinin gerçek misafir izinlerini inceleyin.",
+    "Varsayılanların mevcut etkinlikleri değiştirdiğini varsaymadan kontrol edin.",
+    "Cloud Calendars rollerini ayrı izin sistemi olarak ele alın.",
+    "Kaydedilen etkinliği yeniden açın ve katılımı ayrıca doğrulayın."
+  ],
+  "faq": [
+    {
+      "q": "Misafir toplantı saatimi değiştirebilir mi?",
+      "a": "Google değişiklik izni vermeyi destekler. Etkinliği ve misafirin erişimini kontrol edin; yalnızca davet almış olmasından sonuç çıkarmayın."
+    },
+    {
+      "q": "Tüm misafir izinleri yalnızca etkinlik üzerinde mi ayarlanır?",
+      "a": "Hayır. Google varsayılan izinleri de açıklar. Gelecek planlar için bunları, önemli mevcut etkinlikler için etkinliğin kendisini kontrol edin."
+    },
+    {
+      "q": "Misafir listesini gizlemek gönderilmiş bilgiyi kaldırır mı?",
+      "a": "Eski e-posta, açıklama, ekran görüntüsü veya bağımsız kopyaların kaldırıldığını göstermez. Gerçekte dağıtılan içeriği ayrıca inceleyin."
+    }
+  ],
+  "sourcesHeading": "Sağlayıcı yönergeleri ve ek kaynaklar",
+  "sources": [
+    {
+      "label": "Google: etkinlik iş birliği ve varsayılan misafir izinleri",
+      "url": "https://support.google.com/a/users/answer/13293412?hl=en"
+    },
+    {
+      "label": "Google: etkinlik misafir izni alanları",
+      "url": "https://developers.google.com/workspace/calendar/api/v3/reference/events"
+    }
+  ],
+  "updated": "2026-10-21",
+  "seeAlso": [
+    "who-can-see-what-in-google-calendar",
+    "sharing-one-event-not-your-calendar"
+  ]
+},
 
   'google-calendars-that-never-reach-your-iphone': {
     title: 'Bazı Google takvimleri neden iPhone’unuza hiç ulaşmaz',

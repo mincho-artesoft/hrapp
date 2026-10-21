@@ -254,52 +254,96 @@ export const GOOGLE_PL: Readonly<Record<string, LocalisedArticle>> = {
 },
 
   'what-guests-can-do-to-your-event': {
-    title: 'Co goście mogą zrobić z twoim wydarzeniem',
-    short: 'Uprawnienia gości',
-    description:
-      'Trzy pola decydują, czy gość może przesunąć twoje spotkanie, zaprosić obcych albo przeczytać całą listę. Są włączone częściej, niż się wydaje.',
-    lede: 'Zaproszenie kogoś daje mu więcej niż miejsce i godzinę. W zwykłym wydarzeniu Google gość zwykle widzi, kogo jeszcze zaproszono, a często może dopisać kolejnych.',
-    commonBelief: 'Że gość może tylko przyjąć albo odmówić.',
-    sections: [
-      {
-        heading: 'Trzy pola',
-        body: [
-          'Modyfikowanie wydarzenia pozwala gościowi zmienić godzinę, miejsce i tytuł dla wszystkich. Rzadko pożądane, łatwo zostawiane włączone.',
-          'Zapraszanie innych pozwala mu dodać ludzi, których nigdy nie spotkałeś. Widzenie listy gości pokazuje wszystkich zaproszonych i ich odpowiedzi — w porządku w zespole, niezręcznie u klienta, błędnie przy czymkolwiek przypominającym grupę odrębnych klientów.',
-        ],
-      },
-      {
-        heading: 'Gdzie po cichu idzie to źle',
-        body: [
-          'Jedno wydarzenie, wielu pojedynczych odbiorców, widoczna lista: teraz każdy ma każdego. Odznaczenie tego pola to różnica między spotkaniem a wyciekniętą książką adresową.',
-          'Ustawienia żyją w wydarzeniu, nie na koncie, więc za każdym razem wracają do twoich wartości domyślnych i trzeba o nich pomyśleć przy wydarzeniach, które mają znaczenie, a nie raz na zawsze.',
-        ],
-      },
-    ],
-    claims: {
-      sharePrice: 'Ile kosztuje wysłanie pojedynczego wydarzenia z aplikacji',
+  "title": "Uprawnienia gości Google: edycja, zaproszenia i lista uczestników",
+  "short": "Uprawnienia gości wydarzenia",
+  "description": "Sprawdź uprawnienia gości i ustawienia domyślne Google. Odróżnij prawa zaproszenia od dostępu do kalendarza i ról Cloud Calendars.",
+  "lede": "Możliwość odpowiedzi nie opisuje wszystkich działań gościa. Sprawdź uprawnienia przed użyciem jednego zaproszenia dla zespołu, klientów lub publiczności. Poradnik publikuje Arte Soft, twórca Cloud Calendars.",
+  "commonBelief": "Zaproszeni goście mogą tylko przyjąć lub odrzucić, a każda aplikacja pokazuje identyczne ustawienia uprawnień.",
+  "sections": [
+    {
+      "heading": "Zacznij od organizatora i oryginalnego wydarzenia",
+      "body": [
+        "Otwórz właściwe wydarzenie w Kalendarzu Google na koncie organizatora lub uprawnionego zarządcy. Przed zmianą sprawdź kalendarz, datę i organizatora. Osobno zaimportowane spotkanie nie jest wiarygodnym miejscem kontroli oryginalnego zaproszenia.",
+        "Dla spotkania zespołu ustal, kto może zmienić termin, zapraszać innych i widzieć uczestników. To osobne decyzje. Gość, który ma przyjść, nie musi zarządzać spotkaniem."
+      ]
     },
-    faq: [
-      {
-        q: 'Czy goście widzą się nawzajem w zaproszeniu z Kalendarza Google?',
-        a: 'Domyślnie zwykle tak. „Widzenie listy gości” pokazuje wszystkich zaproszonych i ich odpowiedzi: w zespole w porządku, przy kliencie niezręcznie, a przy osobnych klientach po prostu źle.',
-      },
-      {
-        q: 'Czy gość może zmienić godzinę mojego spotkania?',
-        a: 'Jeśli „modyfikowanie wydarzenia” jest zaznaczone, tak, i zmiana obowiązuje wszystkich. Rzadko tego chcemy i łatwo zostawić włączone.',
-      },
-      {
-        q: 'Jak powstrzymać gości przed zapraszaniem innych?',
-        a: 'Odznacz „zapraszanie innych” w samym wydarzeniu. Te ustawienia należą do wydarzenia, nie do konta, więc za każdym razem wracają do twoich wartości domyślnych.',
-      },
-    ],
-    practical: [
-      'Wyłącz „widzenie listy gości” we wszystkim, co idzie do osób, które się nie znają.',
-      'Zostaw „modyfikowanie wydarzenia” wyłączone, chyba że ktoś naprawdę planuje za ciebie.',
-      'Sprawdzaj pola w wydarzeniu, nie w ustawieniach — tam właśnie mieszkają.',
-    ],
-    seeAlso: ['who-can-see-what-in-google-calendar', 'why-a-shared-calendar-does-not-appear'],
-  },
+    {
+      "heading": "Zdecyduj, czy goście mają zmieniać spotkanie",
+      "body": [
+        "Google opisuje opcję modyfikowania wydarzenia w prawach gości edytora na komputerze. To szerokie prawo współpracy, nie tylko propozycja nowej godziny. Według Google obejmuje edycję pól, oglądanie gości i rezerwację sal.",
+        "Zaufany współorganizator warsztatu może potrzebować takiej swobody; klient przychodzący na wizytę niekoniecznie. Wybieraj według powierzonej odpowiedzialności i sprawdź zapisane wydarzenie, nie konfigurację innego spotkania."
+      ]
+    },
+    {
+      "heading": "Oddzielnie sprawdź zapraszanie i widoczność gości",
+      "body": [
+        "Google rozróżnia zapraszanie innych i oglądanie innych gości. Sprawdź obie opcje wraz z edycją. Wyłączenie jednej nie oznacza sprawdzenia drugiej, a widoczne ustawienie domyślne nie dowodzi ustawień istniejącego wydarzenia.",
+        "Przy niezwiązanych klientach rozważ, czy wspólne zaproszenie jest właściwe. Dane w e-mailu, opisie lub przekazanej wiadomości wykraczają poza bieżący przełącznik listy gości. Nie umieszczaj poufnych danych uczestników w opisie, licząc, że ukryta lista je schowa."
+      ]
+    },
+    {
+      "heading": "Sprawdź ustawienia domyślne i ważne wydarzenia",
+      "body": [
+        "Google dokumentuje domyślne uprawnienia gości w ustawieniach wydarzeń, także możliwość modyfikacji. Kontrola nie odbywa się więc wyłącznie osobno dla każdego wydarzenia. Sprawdź wartości domyślne przy zmianie sposobu planowania, a ważne istniejące zaproszenia przejrzyj indywidualnie.",
+        "Przy cyklicznym spotkaniu ustal, czy zmieniasz jedno wystąpienie, czy serię. Nie zakładaj, że zmiana preferencji przepisała stare zaproszenia. Testuj z kolegą na uzgodnionym, niepoufnym przykładzie zamiast przesuwać lub odwoływać prawdziwe spotkanie klienta."
+      ]
+    },
+    {
+      "heading": "Odróżniaj role Cloud Calendars",
+      "body": [
+        "Cloud Calendars ma własne role Reader, Writer i Owner. Reader pozwala przeglądać i synchronizować; Writer edytować; Owner także zarządzać udostępnianiem i dostępem z zaproszoną tożsamością. Nie są to przełączniki trzech praw gości Google.",
+        "Gdy ważne jest prawo specyficzne dla Google, sprawdź oryginał w Kalendarzu Google. Widoczność uczestnika w Cloud Calendars nie dowodzi, że można tam zmienić każde ustawienie Google. Przy brakującym przycisku lub nieudanej edycji ustal usługę właściciela i tożsamość odbiorcy."
+      ]
+    },
+    {
+      "heading": "Potwierdź zapisany wynik i odpowiedzialność",
+      "body": [
+        "Po zapisaniu ponownie otwórz oryginalne wydarzenie i sprawdź ustawienia. W razie potrzeby poproś uprawnionego kolegę o sprawdzenie możliwości jego konta. Nie wymieniaj haseł ani prywatnych danych gości, by przyspieszyć kontrolę dostępu.",
+        "Oddziel obecność od uprawnień. Prawo edycji, zaimportowana kopia i zapisane przyjęcie to różne fakty. Potwierdzenie odbioru udostępnienia w Cloud Calendars nie jest RSVP. Przy ważnym spotkaniu poproś o odpowiedź dotyczącą obecności i jasno ustal odpowiedzialność za zmiany."
+      ]
+    }
+  ],
+  "claims": {},
+  "practical": [
+    "Ustal konto organizatora i oryginalne wydarzenie.",
+    "Zdecyduj, kto zarządza, zaprasza innych i widzi gości.",
+    "Sprawdź rzeczywiste prawa gości wydarzenia Google.",
+    "Przejrzyj wartości domyślne bez założenia zmiany starych wydarzeń.",
+    "Traktuj role Cloud Calendars jako osobny system uprawnień.",
+    "Otwórz zapisane wydarzenie i oddzielnie potwierdź obecność."
+  ],
+  "faq": [
+    {
+      "q": "Czy gość może zmienić godzinę mojego spotkania?",
+      "a": "Google pozwala przyznać prawo modyfikacji. Sprawdź wydarzenie i dostęp gościa; nie wyciągaj wniosku tylko z otrzymania zaproszenia."
+    },
+    {
+      "q": "Czy wszystkie uprawnienia ustawia się wyłącznie na każdym wydarzeniu?",
+      "a": "Nie. Google opisuje także domyślne uprawnienia. Sprawdź je dla przyszłego planowania, a ważne istniejące wydarzenia obejrzyj osobno."
+    },
+    {
+      "q": "Czy ukrycie listy usuwa wysłane już informacje?",
+      "a": "Nie dowodzi usunięcia wcześniejszych e-maili, opisów, zrzutów ani niezależnych kopii. Oddzielnie sprawdź, co faktycznie rozesłano."
+    }
+  ],
+  "sourcesHeading": "Wskazówki dostawców i dalsze informacje",
+  "sources": [
+    {
+      "label": "Google: współpraca przy wydarzeniach i domyślne prawa gości",
+      "url": "https://support.google.com/a/users/answer/13293412?hl=en"
+    },
+    {
+      "label": "Google: pola uprawnień gości wydarzenia",
+      "url": "https://developers.google.com/workspace/calendar/api/v3/reference/events"
+    }
+  ],
+  "seeAlso": [
+    "who-can-see-what-in-google-calendar",
+    "sharing-one-event-not-your-calendar",
+    "why-a-shared-calendar-does-not-appear"
+  ],
+  "updated": "2026-10-21"
+},
 
   'google-calendars-that-never-reach-your-iphone': {
     title: 'Dlaczego część kalendarzy Google nigdy nie trafia na iPhone’a',

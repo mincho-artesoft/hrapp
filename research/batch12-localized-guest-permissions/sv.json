@@ -1,0 +1,90 @@
+{
+  "title": "Gästbehörigheter i Google Kalender: redigering, inbjudningar och gästlista",
+  "short": "Gästernas behörigheter",
+  "description": "Kontrollera Googles gästbehörigheter och standardinställningar. Skilj inbjudningsrättigheter från kalenderåtkomst och roller i Cloud Calendars.",
+  "lede": "Att en gäst kan svara på en inbjudan beskriver inte allt personen kan göra. Granska behörigheterna innan samma inbjudan används för ett team, kunder eller en offentlig träff. Guiden publiceras av Arte Soft, utvecklaren bakom Cloud Calendars.",
+  "commonBelief": "Inbjudna gäster kan bara tacka ja eller nej, och alla appar erbjuder samma behörighetskontroller.",
+  "sections": [
+    {
+      "heading": "Börja med arrangören och originalhändelsen",
+      "body": [
+        "Öppna rätt händelse i Google Kalender med arrangörens konto eller ett konto som får hantera den. Kontrollera kalender, datum och arrangör innan behörigheter ändras. Ett separat importerat möte är ingen tillförlitlig plats att styra originalinbjudan från.",
+        "För ett teammöte, bestäm vem som får boka om, bjuda in andra och se deltagarna. Det är separata beslut. En gäst som behöver delta behöver inte nödvändigtvis kunna hantera mötet."
+      ]
+    },
+    {
+      "heading": "Bestäm om gäster ska få ändra mötet",
+      "body": [
+        "Google beskriver ett alternativ för att ändra händelsen under gästbehörigheter i datorns händelseredigerare. Det är en bred samarbetsbehörighet, inte bara ett sätt att föreslå en ny tid. Enligt Google omfattar den hantering av händelsen, redigering av fält, visning av gäster och bokning av rum.",
+        "En betrodd medarrangör som ordnar en workshop kan behöva den flexibiliteten. En kund som kommer till ett bokat besök kanske inte behöver den. Utgå från ansvaret du ger gästen och kontrollera den sparade händelsen i stället för en annan möteskonfiguration."
+      ]
+    },
+    {
+      "heading": "Granska inbjudningar och gästernas synlighet separat",
+      "body": [
+        "Googles händelsemodell skiljer rätten att bjuda in andra från rätten att se övriga gäster. Granska båda tillsammans med redigeringsrätten. Att stänga av en funktion innebär inte att den andra är kontrollerad, och ett visat standardval bevisar inte en befintlig händelses inställningar.",
+        "När kunderna saknar koppling till varandra, överväg om en gemensam inbjudan alls passar. Uppgifter som redan finns i mejl, beskrivningar eller vidarebefordrade meddelanden ligger utanför den aktuella gästlistekontrollen. Lägg inte känsliga deltagaruppgifter i beskrivningen och förvänta dig att en dold lista döljer dem."
+      ]
+    },
+    {
+      "heading": "Kontrollera standardval och viktiga händelser",
+      "body": [
+        "Google beskriver även standardbehörigheter för gäster i händelseinställningarna, inklusive ändringsrätt. Kontrollerna finns alltså inte bara på varje enskild händelse. Granska standardvalen när ditt vanliga bokningsmönster ändras och kontrollera sedan viktiga befintliga inbjudningar var för sig.",
+        "För ett återkommande möte, bekräfta vilken förekomst eller serie du redigerar innan du sparar. Anta inte att en ändrad inställning har skrivit om äldre inbjudningar. Testa tillsammans med en kollega på ett överenskommet exempel utan känsliga uppgifter, inte genom att flytta eller avboka ett riktigt kundmöte."
+      ]
+    },
+    {
+      "heading": "Håll Cloud Calendars-rollerna åtskilda",
+      "body": [
+        "Cloud Calendars har ett separat delningssystem med Reader, Writer och Owner. Reader ger visning och synkronisering; Writer tillåter redigering; Owner hanterar också delning och åtkomst med den inbjudna identiteten. Dessa roller är inte reglage för Googles tre gästbehörigheter.",
+        "Om en Google-specifik behörighet är viktig, granska originalhändelsen i Google Kalender. Att en deltagare syns i Cloud Calendars visar inte att alla Googles gästinställningar kan ändras där. Håll isär ägartjänsten och mottagarens identitet när du undersöker en saknad kontroll eller misslyckad ändring."
+      ]
+    },
+    {
+      "heading": "Verifiera resultatet och tydliggör ansvaret",
+      "body": [
+        "Öppna originalhändelsen igen efter att du sparat och kontrollera inställningarna. Be vid behov en behörig kollega bekräfta vad det egna kontot kan göra. Dela inte lösenord eller privata gästuppgifter som genväg för att kontrollera åtkomsten.",
+        "Skilj deltagande från behörigheter. Redigeringsrätt, en importerad kopia och ett registrerat ja-svar är olika saker. I Cloud Calendars är ett mottagningskvitto för en delning inte ett närvarosvar. För viktiga möten, be om det deltagarsvar du behöver och tydliggör vem som ansvarar för schemaändringar."
+      ]
+    }
+  ],
+  "claims": {},
+  "practical": [
+    "Identifiera arrangörskontot och originalhändelsen.",
+    "Bestäm vem som hanterar mötet, bjuder in andra och ser gäster.",
+    "Kontrollera Google-händelsens faktiska gästbehörigheter.",
+    "Granska standardval utan att anta att befintliga händelser ändras.",
+    "Behandla Cloud Calendars-roller som ett separat system.",
+    "Öppna den sparade händelsen igen och bekräfta deltagande separat."
+  ],
+  "faq": [
+    {
+      "q": "Kan en gäst ändra tiden för mitt möte?",
+      "a": "Google stöder ändringsbehörighet. Kontrollera händelsen och gästens åtkomst; dra inte slutsatsen enbart av att personen fått en inbjudan."
+    },
+    {
+      "q": "Ställs alla gästbehörigheter in på varje händelse?",
+      "a": "Nej. Google beskriver också standardbehörigheter. Kontrollera dem för framtida bokningar och granska viktiga befintliga händelser direkt."
+    },
+    {
+      "q": "Tar en dold gästlista bort uppgifter som redan skickats?",
+      "a": "Det visar inte att tidigare mejl, beskrivningar, skärmbilder eller fristående kopior tagits bort. Granska separat vad som faktiskt spreds."
+    }
+  ],
+  "sourcesHeading": "Leverantörernas vägledning och vidare läsning",
+  "sources": [
+    {
+      "label": "Google: samarbete och standardbehörigheter för gäster",
+      "url": "https://support.google.com/a/users/answer/13293412?hl=en"
+    },
+    {
+      "label": "Google: fält för gästbehörigheter",
+      "url": "https://developers.google.com/workspace/calendar/api/v3/reference/events"
+    }
+  ],
+  "updated": "2026-10-21",
+  "seeAlso": [
+    "who-can-see-what-in-google-calendar",
+    "sharing-one-event-not-your-calendar"
+  ]
+}

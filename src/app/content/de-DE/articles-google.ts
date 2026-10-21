@@ -253,52 +253,96 @@ export const GOOGLE_DE_DE: Readonly<Record<string, LocalisedArticle>> = {
 },
 
   'what-guests-can-do-to-your-event': {
-    title: 'Was Gäste mit Ihrem Termin anstellen können',
-    short: 'Gastberechtigungen',
-    description:
-      'Drei Kästchen entscheiden, ob ein Gast Ihr Meeting verschieben, Fremde einladen oder die ganze Liste lesen darf. Sie sind öfter aktiv, als man denkt.',
-    lede: 'Wer jemanden einlädt, gibt mehr als einen Ort und eine Zeit. In einem normalen Google-Termin sieht ein Gast meist, wer sonst gefragt wurde — und darf häufig weitere hinzufügen.',
-    commonBelief: 'Dass ein Gast nur zusagen oder absagen kann.',
-    sections: [
-      {
-        heading: 'Die drei Kästchen',
-        body: [
-          'Termin ändern erlaubt einem Gast, Zeit, Ort und Titel für alle zu ändern. Selten gewollt, leicht aktiviert gelassen.',
-          'Andere einladen erlaubt, Menschen hinzuzufügen, die Sie nie getroffen haben. Gästeliste sehen zeigt alle Eingeladenen samt Antwort — in Ordnung für ein Team, unangenehm bei Kundschaft, falsch bei allem, was einer Gruppe getrennter Kunden ähnelt.',
-        ],
-      },
-      {
-        heading: 'Wo das leise schiefgeht',
-        body: [
-          'Ein Termin, viele einzelne Empfänger, sichtbare Gästeliste: Jetzt hat jeder jeden. Dieses eine Kästchen ist der Unterschied zwischen einem Meeting und einem geleakten Adressbuch.',
-          'Die Einstellungen gehören zum Termin, nicht zum Konto. Sie fallen jedes Mal auf Ihre Standardwerte zurück und müssen bei den wichtigen Terminen bedacht werden, nicht einmalig.',
-        ],
-      },
-    ],
-    claims: {
-      sharePrice: 'Was das Senden eines einzelnen Termins aus der App kostet',
+  "title": "Gästeberechtigungen in Google Kalender: Bearbeitung, Einladungen und Gästeliste",
+  "short": "Gästeberechtigungen eines Termins",
+  "description": "Prüfe Googles Gästeberechtigungen und Standardwerte. Unterscheide Einladungsrechte, Kalenderzugriff und die Rollen Reader, Writer und Owner.",
+  "lede": "Die Möglichkeit, auf eine Einladung zu antworten, beschreibt nicht alles, was ein Gast tun kann. Prüfe die Terminberechtigungen, bevor du eine Einladung für Team, Kunden oder eine öffentliche Veranstaltung verwendest. Dieser Leitfaden stammt von Arte Soft, dem Entwickler von Cloud Calendars.",
+  "commonBelief": "Eingeladene Gäste können nur zu- oder absagen, und jede Anwendung bietet dieselben Berechtigungseinstellungen.",
+  "sections": [
+    {
+      "heading": "Beim Organisator und Originaltermin beginnen",
+      "body": [
+        "Öffne den betreffenden Termin in Google Kalender mit dem organisierenden Konto oder einem Konto, das ihn verwalten darf. Prüfe Kalender, Datum und Organisator, bevor du Berechtigungen änderst. Ein separat importierter Termin ist kein verlässlicher Ort, um die ursprüngliche Einladung zu steuern.",
+        "Halte für eine Teambesprechung fest, wer sie verschieben, weitere Personen einladen und die anderen Teilnehmer sehen darf. Das sind getrennte Entscheidungen. Wer teilnehmen soll, muss die Besprechung nicht unbedingt verwalten können."
+      ]
     },
-    faq: [
-      {
-        q: 'Sehen Gäste einander in einer Google-Kalender-Einladung?',
-        a: 'Standardmäßig meist ja. „Gästeliste sehen“ zeigt alle Eingeladenen und ihre Antworten — im Team in Ordnung, bei Kundschaft unangenehm und falsch, wenn die Gäste getrennte Kunden sind.',
-      },
-      {
-        q: 'Kann ein Gast die Uhrzeit meines Termins ändern?',
-        a: 'Wenn „Termin ändern“ gesetzt ist, ja — und die Änderung gilt für alle. Selten gewollt, leicht aktiviert gelassen.',
-      },
-      {
-        q: 'Wie verhindere ich, dass Gäste weitere Personen einladen?',
-        a: '„Andere einladen“ am Termin selbst abschalten. Diese Einstellungen gehören zum Termin, nicht zum Konto, und fallen bei jedem neuen auf Ihre Standardwerte zurück.',
-      },
-    ],
-    practical: [
-      '„Gästeliste sehen“ ausschalten bei allem, was an einander fremde Menschen geht.',
-      '„Termin ändern“ aus lassen, außer jemand plant wirklich für Sie.',
-      'Die Kästchen im Termin prüfen, nicht in den Einstellungen — dort leben sie.',
-    ],
-    seeAlso: ['who-can-see-what-in-google-calendar', 'why-a-shared-calendar-does-not-appear'],
-  },
+    {
+      "heading": "Entscheiden, ob Gäste die Besprechung ändern sollen",
+      "body": [
+        "Google beschreibt im Termin-Editor am Computer die Option „Modify event“ unter „Guests can“. Das ist eine weitreichende Berechtigung zur Zusammenarbeit, nicht bloß eine Möglichkeit, eine neue Uhrzeit vorzuschlagen. Laut Google ermöglicht sie die Terminverwaltung einschließlich Feldänderungen, Gästeanzeige und Raumbuchung.",
+        "Ein vertrauenswürdiger Mitorganisator eines Workshops kann diese Flexibilität beispielsweise benötigen, ein Kunde bei einem Beratungstermin womöglich nicht. Entscheide anhand der Verantwortung, die du überträgst, und prüfe den gespeicherten Termin, statt dich auf die Einstellungen einer anderen Besprechung zu verlassen."
+      ]
+    },
+    {
+      "heading": "Einladungen und Sichtbarkeit der Gäste getrennt prüfen",
+      "body": [
+        "Googles Terminmodell unterscheidet das Recht, weitere Personen einzuladen, vom Recht, andere Gäste zu sehen. Prüfe beides zusammen mit dem Bearbeitungszugriff. Das Abschalten einer Möglichkeit bedeutet nicht, dass du die andere geprüft hast; ein angezeigter Standardwert belegt nicht die Einstellung eines bestehenden Termins.",
+        "Überlege bei einer Veranstaltung mit voneinander unabhängigen Kunden, ob eine gemeinsame Einladung überhaupt geeignet ist. Informationen, die bereits in E-Mails, Beschreibungen oder weitergeleiteten Nachrichten stehen, liegen außerhalb der aktuellen Gästelistensteuerung. Vertrauliche Teilnehmerdetails in der Beschreibung werden nicht durch eine ausgeblendete Gästeliste verborgen."
+      ]
+    },
+    {
+      "heading": "Standardwerte und wichtige Einzeltermine prüfen",
+      "body": [
+        "Google dokumentiert in den Termineinstellungen außerdem „Default guest permissions“, einschließlich eines Standards für Änderungen. Die Steuerung erfolgt also nicht ausschließlich pro Termin. Prüfe deine Standardwerte, wenn sich deine übliche Planung ändert, und kontrolliere wichtige bestehende Einladungen einzeln.",
+        "Bei einer Terminserie prüfe vor dem Speichern, welche einzelne Wiederholung oder Serie du bearbeitest. Gehe nicht davon aus, dass eine geänderte Voreinstellung ältere Einladungen umgeschrieben hat. Teste mit einem Kollegen ein vereinbartes, nicht vertrauliches Beispiel, statt einen echten Kundentermin zu verschieben oder abzusagen."
+      ]
+    },
+    {
+      "heading": "Cloud Calendars-Rollen getrennt betrachten",
+      "body": [
+        "Cloud Calendars hat ein eigenes Freigabesystem mit Reader, Writer und Owner. Reader ermöglicht Ansicht und Synchronisierung, Writer Bearbeitung; Owner verwaltet zusätzlich Freigaben und Zugriff mit der eingeladenen Identität. Diese Rollen sind keine Schalter für Googles drei Gästeberechtigungen.",
+        "Wenn eine Google-spezifische Berechtigung wichtig ist, prüfe den Originaltermin in Google Kalender. Ein sichtbarer Teilnehmer in Cloud Calendars belegt nicht, dass dort jede Google-Gästeeinstellung geändert werden kann. Behalte bei fehlenden Einstellungen oder erfolglosen Änderungen den verwaltenden Dienst und die Identität des Empfängers im Blick."
+      ]
+    },
+    {
+      "heading": "Gespeichertes Ergebnis prüfen und Verantwortung klären",
+      "body": [
+        "Öffne nach dem Speichern den Originaltermin erneut und prüfe die gewünschten Einstellungen. Bitte gegebenenfalls einen berechtigten Kollegen, die Möglichkeiten seines eigenen Kontos zu bestätigen. Tauscht dafür keine Passwörter aus und verschickt keine privaten Gästedaten als Abkürzung zur Zugriffsprüfung.",
+        "Trenne Teilnahme und Berechtigungen. Bearbeitungsrechte, eine importierte Kopie und eine erfasste Zusage sind unterschiedliche Tatsachen. Eine Freigabe-Empfangsbestätigung in Cloud Calendars ist keine Teilnahmeantwort. Frage bei wichtigen Besprechungen ausdrücklich nach der benötigten Rückmeldung und kläre, wer für Terminänderungen zuständig ist."
+      ]
+    }
+  ],
+  "claims": {},
+  "practical": [
+    "Organisierendes Konto und Originaltermin bestimmen.",
+    "Festlegen, wer verwalten, andere einladen und Gäste sehen darf.",
+    "Die tatsächlichen Gästeberechtigungen des Google-Termins prüfen.",
+    "Google-Standardwerte prüfen, ohne Änderungen bestehender Termine vorauszusetzen.",
+    "Cloud Calendars-Rollen als eigenes Berechtigungssystem behandeln.",
+    "Den gespeicherten Termin erneut öffnen und Teilnahme gesondert bestätigen."
+  ],
+  "faq": [
+    {
+      "q": "Kann ein Gast meine Besprechungszeit ändern?",
+      "a": "Google unterstützt die Vergabe von Änderungsrechten. Prüfe den tatsächlichen Termin und den Zugriff des Gastes; leite die Rechte nicht allein aus dem Erhalt einer Einladung ab."
+    },
+    {
+      "q": "Werden alle Gästeberechtigungen nur pro Termin eingestellt?",
+      "a": "Nein. Google beschreibt auch Standardberechtigungen. Prüfe diese für künftige Planungen und wichtige bestehende Termine jeweils selbst."
+    },
+    {
+      "q": "Entfernt das Ausblenden der Gästeliste bereits versendete Informationen?",
+      "a": "Es belegt nicht, dass frühere E-Mails, Beschreibungen, Screenshots oder unabhängige Kopien entfernt wurden. Prüfe gesondert, was tatsächlich verteilt wurde."
+    }
+  ],
+  "sourcesHeading": "Anbieterhinweise und weiterführende Informationen",
+  "sources": [
+    {
+      "label": "Google: Zusammenarbeit an Terminen und Standardberechtigungen für Gäste",
+      "url": "https://support.google.com/a/users/answer/13293412?hl=en"
+    },
+    {
+      "label": "Google: Felder für Gästeberechtigungen",
+      "url": "https://developers.google.com/workspace/calendar/api/v3/reference/events"
+    }
+  ],
+  "seeAlso": [
+    "who-can-see-what-in-google-calendar",
+    "sharing-one-event-not-your-calendar",
+    "keeping-track-of-who-replied"
+  ],
+  "updated": "2026-10-21"
+},
 
   'google-calendars-that-never-reach-your-iphone': {
     title: 'Warum manche Google-Kalender nie auf dem iPhone ankommen',

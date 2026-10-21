@@ -253,52 +253,96 @@ export const GOOGLE_NO: Readonly<Record<string, LocalisedArticle>> = {
 },
 
   'what-guests-can-do-to-your-event': {
-    title: 'Hva gjestene dine kan gjøre med en hendelse',
-    short: 'Gjestenes rettigheter',
-    description:
-      'Tre avkrysningsbokser avgjør om en gjest kan flytte møtet ditt, invitere fremmede eller lese hele listen. De står på oftere enn folk tror.',
-    lede: 'Å invitere noen gir mer enn et sted og et tidspunkt. I en vanlig Google-hendelse ser en gjest vanligvis hvem andre som er spurt, og får ofte legge til flere.',
-    commonBelief: 'At en gjest bare kan takke ja eller nei.',
-    sections: [
-      {
-        heading: 'De tre boksene',
-        body: [
-          'Endre hendelse lar en gjest bytte tid, sted og tittel for alle. Sjelden ønsket, lett latt stå på.',
-          'Invitere andre lar en gjest legge til folk du aldri har møtt. Se gjestelisten viser alle inviterte og svarene deres — greit i et team, ubehagelig hos en kunde, feil i alt som ligner en gruppe separate kunder.',
-        ],
-      },
-      {
-        heading: 'Der det stille går galt',
-        body: [
-          'Én hendelse, mange enkeltmottakere, synlig liste: nå har alle alle. Den ene boksen er forskjellen mellom et møte og en lekket adressebok.',
-          'Innstillingene hører til hendelsen, ikke kontoen, så de faller tilbake til standardverdiene dine hver gang og må tenkes gjennom på de hendelsene som betyr noe, ikke én gang for alle.',
-        ],
-      },
-    ],
-    claims: {
-      sharePrice: 'Hva det koster å sende en enkelt hendelse fra appen',
+  "title": "Gjesterettigheter i Google Kalender: redigering, invitasjoner og gjesteliste",
+  "short": "Gjesterettigheter på en hendelse",
+  "description": "Kontroller Googles gjesterettigheter og standardvalg. Skill invitasjonsrettigheter fra kalendertilgang og rollene i Cloud Calendars.",
+  "lede": "At en gjest kan svare, sier ikke alt om hva vedkommende kan gjøre. Kontroller rettighetene før du bruker én invitasjon for et team, kunder eller publikum. Guiden er publisert av Arte Soft, utvikleren av Cloud Calendars.",
+  "commonBelief": "Inviterte gjester skulle bare kunne godta eller avslå, og alle apper skulle vise de samme rettighetskontrollene.",
+  "sections": [
+    {
+      "heading": "Start med arrangøren og den opprinnelige hendelsen",
+      "body": [
+        "Åpne riktig hendelse i Google Kalender med arrangørkontoen eller en konto med administrasjonsrett. Kontroller kalender, dato og arrangør før endringer. En separat importert avtale er ikke et pålitelig sted å styre originalinvitasjonen.",
+        "Avklar for et teammøte hvem som kan flytte det, invitere flere og se deltakerne. Dette er separate valg. En gjest som skal delta, trenger ikke nødvendigvis å administrere møtet."
+      ]
     },
-    faq: [
-      {
-        q: 'Ser gjestene hverandre i en invitasjon fra Google Kalender?',
-        a: 'Som standard oftest ja. «Se gjestelisten» viser alle inviterte og svarene deres: greit i et team, ubehagelig hos en kunde, feil når gjestene er separate kunder.',
-      },
-      {
-        q: 'Kan en gjest endre tidspunktet for møtet mitt?',
-        a: 'Hvis «endre hendelse» er huket av, ja, og endringen gjelder alle. Sjelden ønsket og lett latt stå på.',
-      },
-      {
-        q: 'Hvordan hindrer jeg gjester i å invitere andre?',
-        a: 'Slå av «invitere andre» på selve hendelsen. Innstillingene hører til hendelsen og ikke kontoen, så de faller tilbake til standardverdiene dine hver gang.',
-      },
-    ],
-    practical: [
-      'Slå av «se gjestelisten» for alt som går til folk som ikke kjenner hverandre.',
-      'La «endre hendelse» stå av med mindre noen faktisk planlegger for deg.',
-      'Sjekk boksene på hendelsen, ikke i innstillingene: det er der de bor.',
-    ],
-    seeAlso: ['who-can-see-what-in-google-calendar', 'why-a-shared-calendar-does-not-appear'],
-  },
+    {
+      "heading": "Avgjør om gjester skal kunne endre møtet",
+      "body": [
+        "Google beskriver et valg for å endre hendelsen under gjesterettigheter i datamaskinens hendelsesredigering. Dette er en bred samarbeidsrett, ikke bare et forslag om ny tid. Google forklarer at den omfatter feltredigering, visning av gjester og rombestilling.",
+        "En betrodd medarrangør av et verksted kan trenge fleksibiliteten; en kunde med en avtale trenger den kanskje ikke. Velg ut fra ansvaret og kontroller den lagrede hendelsen, ikke hvordan et annet møte var satt opp."
+      ]
+    },
+    {
+      "heading": "Kontroller invitasjoner og gjestesynlighet separat",
+      "body": [
+        "Google skiller mellom å invitere andre og å se andre gjester. Kontroller begge sammen med redigeringsrett. Å slå av én funksjon betyr ikke at den andre er vurdert, og en vist standard er ikke bevis på innstillingene i en eksisterende hendelse.",
+        "For kunder som ikke kjenner hverandre, vurder om én felles invitasjon passer. Opplysninger i e-post, beskrivelse eller videresendt melding ligger utenfor spørsmålet om gjestelisten. Ikke legg fortrolige deltakeropplysninger i beskrivelsen og forvent at en skjult liste skjuler dem."
+      ]
+    },
+    {
+      "heading": "Kontroller standardvalg og viktige enkelthendelser",
+      "body": [
+        "Google beskriver også standardrettigheter for gjester under hendelsesinnstillinger, inkludert endringstillatelse. Kontrollene gjelder derfor ikke bare enkelthendelser. Se over standardene når planleggingsmønsteret endres, og kontroller viktige eksisterende invitasjoner hver for seg.",
+        "For gjentakende møter, bekreft om du redigerer én forekomst eller serien. Ikke anta at en preferanse har omskrevet eldre invitasjoner. Test med en kollega på et avtalt, ufølsomt eksempel, ikke ved å flytte eller avlyse et ekte kundemøte."
+      ]
+    },
+    {
+      "heading": "Hold Cloud Calendars-rollene atskilt",
+      "body": [
+        "Cloud Calendars har egne Reader-, Writer- og Owner-roller. Reader gir visning og synkronisering; Writer tillater redigering; Owner styrer også deling og tilgang med den inviterte identiteten. Rollene er ikke brytere for Googles tre gjesterettigheter.",
+        "Når en Google-spesifikk rettighet er viktig, kontroller originalhendelsen i Google Kalender. At en deltaker vises i Cloud Calendars, beviser ikke at alle Google-valg kan endres der. Hold eiertjeneste og mottakeridentitet klart ved manglende kontroller eller mislykkede endringer."
+      ]
+    },
+    {
+      "heading": "Bekreft det lagrede resultatet og ansvaret",
+      "body": [
+        "Åpne originalhendelsen igjen etter lagring og kontroller valgene. Be eventuelt en autorisert kollega bekrefte hva vedkommendes egen konto kan gjøre. Ikke del passord eller private gjestedetaljer som snarvei for å kontrollere tilgang.",
+        "Skill deltakelse fra rettigheter. Redigeringsmulighet, en importert kopi og registrert aksept er ulike fakta. En mottakskvittering for deling i Cloud Calendars er ikke et RSVP-svar. Be om nødvendig deltakelsesbekreftelse ved viktige møter og avklar hvem som styrer endringer."
+      ]
+    }
+  ],
+  "claims": {},
+  "practical": [
+    "Identifiser arrangørkontoen og originalhendelsen.",
+    "Avgjør hvem som skal administrere, invitere flere og se gjester.",
+    "Kontroller hendelsens faktiske Google-rettigheter.",
+    "Se over standarder uten å anta at eksisterende hendelser endres.",
+    "Behandle Cloud Calendars-rollene som et separat system.",
+    "Åpne den lagrede hendelsen og bekreft deltakelse separat."
+  ],
+  "faq": [
+    {
+      "q": "Kan en gjest endre møtetiden min?",
+      "a": "Google støtter endringstillatelse. Kontroller hendelsen og gjestens tilgang; ikke utled rettigheten av at personen mottok en invitasjon."
+    },
+    {
+      "q": "Angis alle gjesterettigheter bare på hver hendelse?",
+      "a": "Nei. Google beskriver også standardrettigheter. Kontroller standardene for fremtidig planlegging og viktige eksisterende hendelser individuelt."
+    },
+    {
+      "q": "Fjerner en skjult gjesteliste allerede sendt informasjon?",
+      "a": "Det beviser ikke at eldre e-poster, beskrivelser, skjermbilder eller selvstendige kopier er fjernet. Kontroller det som faktisk ble delt separat."
+    }
+  ],
+  "sourcesHeading": "Leverandørveiledning og videre lesning",
+  "sources": [
+    {
+      "label": "Google: samarbeid om hendelser og standardrettigheter for gjester",
+      "url": "https://support.google.com/a/users/answer/13293412?hl=en"
+    },
+    {
+      "label": "Google: felter for gjesterettigheter på hendelser",
+      "url": "https://developers.google.com/workspace/calendar/api/v3/reference/events"
+    }
+  ],
+  "seeAlso": [
+    "who-can-see-what-in-google-calendar",
+    "sharing-one-event-not-your-calendar",
+    "why-a-shared-calendar-does-not-appear"
+  ],
+  "updated": "2026-10-21"
+},
 
   'google-calendars-that-never-reach-your-iphone': {
     title: 'Hvorfor noen Google-kalendere aldri når iPhonen din',

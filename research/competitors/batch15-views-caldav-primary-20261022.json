@@ -1,0 +1,77 @@
+{
+  "date": "2026-10-22",
+  "scope": "Two pending exact URLs plus two supplementary newly read primary bodies. No runtime/rank/volume/citation proof.",
+  "reviews": [
+    {
+      "url": "https://www.teamup.com/features/calendar-views/",
+      "status": "full",
+      "publisher": "Teamup",
+      "readScope": "Complete substantive55-272/321 incl final resolution section; navigation/footer excluded.",
+      "findings": [
+        "Different view families answer different date-range/resource/detail tasks.",
+        "Grid resolution, visible period and controlscope are separate; publisherfeatures not Cloudparity."
+      ],
+      "mapping": [
+        "a-week-view-that-fits-a-week",
+        "month-view-on-a-bigger-screen",
+        "the-year-in-one-screen"
+      ],
+      "nextAction": "Month guidance revised after actual source check; week/year/list require their own native source and substantive prose review."
+    },
+    {
+      "url": "https://calendar.teamup.com/kb/how-to-use-calendar-views/",
+      "status": "full",
+      "publisher": "Teamup",
+      "readScope": "Complete substantive2-147/153.",
+      "findings": [
+        "Browser views/configuration differ from mobileapp.",
+        "Default view, weekend hiding, date range, resource visibility and grouping are separate settings."
+      ],
+      "mapping": [
+        "month-view-on-a-bigger-screen",
+        "the-year-in-one-screen"
+      ],
+      "nextAction": "Do not promise browser-specific configuration in Cloud native app."
+    },
+    {
+      "url": "https://support.readdle.com/calendars/troubleshooting/can-t-see-local-calendars-events-after-ios-update",
+      "status": "full",
+      "publisher": "Readdle",
+      "readScope": "Complete body103-114/157.",
+      "findings": [
+        "Local device calendar visibility can require full calendarpermission after iOS update."
+      ],
+      "mapping": [
+        "caldav-calendar-on-iphone",
+        "google-calendars-that-never-reach-your-iphone"
+      ],
+      "nextAction": "Cloud permission verified separately in currentsource."
+    },
+    {
+      "url": "https://support.readdle.com/calendars/tips-and-tricks/how-to-add-a-caldav-calendar",
+      "status": "full",
+      "publisher": "Readdle",
+      "readScope": "Complete body103-114/157.",
+      "findings": [
+        "Device account setup followed by app-specific local-calendar toggle, not same direct connector as OneCal."
+      ],
+      "mapping": [
+        "caldav-calendar-on-iphone"
+      ],
+      "nextAction": "Use current Apple instructions and own app sources, not old Readdle settings labels."
+    }
+  ],
+  "searchDiscovery": {
+    "queries": [
+      "CalDAV calendar on iPhone calendar app sync Nextcloud Fastmail",
+      "CalDAV calendar missing iPhone app calendar permissions"
+    ],
+    "engine": "web search tool, not controlledGoogleSERP",
+    "additionalCandidatesNotRead": [
+      "https://help.one.com/hc/en-us/articles/115005586969-How-do-I-sync-the-calendar-with-my-iPhone-using-CalDAV",
+      "https://help.calendarbridge.com/announcements/connect-any-caldav-calendar/",
+      "https://docs.whentomeet.io/apple-calendar"
+    ],
+    "note": "Candidates not added to completed body counts. No mirror/Reddit cited as feature evidence."
+  }
+}

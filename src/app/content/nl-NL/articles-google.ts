@@ -255,52 +255,96 @@ export const GOOGLE_NL_NL: Readonly<Record<string, LocalisedArticle>> = {
 },
 
   'what-guests-can-do-to-your-event': {
-    title: 'Wat je gasten met een afspraak kunnen doen',
-    short: 'Rechten van gasten',
-    description:
-      'Drie vinkjes bepalen of een gast je vergadering kan verzetten, vreemden kan uitnodigen of de hele lijst kan lezen. Ze staan vaker aan dan mensen denken.',
-    lede: 'Iemand uitnodigen geeft meer dan een plaats en een tijd. In een gewone Google-afspraak ziet een gast doorgaans wie er nog meer gevraagd is, en mag hij er vaak mensen bij zetten.',
-    commonBelief: 'Dat een gast alleen kan accepteren of weigeren.',
-    sections: [
-      {
-        heading: 'De drie vinkjes',
-        body: [
-          'Afspraak wijzigen laat een gast tijd, plaats en titel voor iedereen veranderen. Zelden gewenst, makkelijk aan gelaten.',
-          'Anderen uitnodigen laat een gast mensen toevoegen die jij nooit hebt ontmoet. Gastenlijst zien toont iedereen die gevraagd is en hun antwoord — prima in een team, ongemakkelijk bij een klant, fout bij alles wat lijkt op een groep losse klanten.',
-        ],
-      },
-      {
-        heading: 'Waar het stil misgaat',
-        body: [
-          'Eén afspraak, veel losse ontvangers, zichtbare lijst: nu heeft iedereen iedereen. Dat ene vinkje is het verschil tussen een vergadering en een gelekt adresboek.',
-          'De instellingen horen bij de afspraak, niet bij het account: ze vallen elke keer terug op je standaard en moeten worden bedacht bij de afspraken die ertoe doen, niet één keer.',
-        ],
-      },
-    ],
-    claims: {
-      sharePrice: 'Wat het versturen van één afspraak uit de app kost',
+  "title": "Google Agenda-gastrechten: bewerken, uitnodigen en de gastenlijst",
+  "short": "Gastrechten voor een afspraak",
+  "description": "Controleer gastrechten en standaardinstellingen in Google. Onderscheid uitnodigingsrechten van agendatoegang en Cloud Calendars-rollen.",
+  "lede": "Kunnen antwoorden zegt niet alles over wat een gast mag doen. Controleer de rechten voordat je één uitnodiging gebruikt voor een team, klanten of publiek. Deze gids is gepubliceerd door Arte Soft, de ontwikkelaar van Cloud Calendars.",
+  "commonBelief": "Gasten zouden alleen kunnen accepteren of weigeren, en elke app zou dezelfde rechteninstellingen tonen.",
+  "sections": [
+    {
+      "heading": "Begin bij de organisator en de oorspronkelijke afspraak",
+      "body": [
+        "Open de bedoelde afspraak in Google Agenda met het organiserende account of een account dat deze mag beheren. Controleer agenda, datum en organisator voordat je rechten wijzigt. Een afzonderlijk geïmporteerde afspraak is geen betrouwbare plek om de oorspronkelijke uitnodiging te beheren.",
+        "Leg voor een teamvergadering vast wie de tijd mag wijzigen, anderen mag uitnodigen en deelnemers mag zien. Dit zijn aparte beslissingen. Een gast die moet deelnemen, hoeft de vergadering niet te beheren."
+      ]
     },
-    faq: [
-      {
-        q: 'Zien gasten elkaar bij een uitnodiging in Google Agenda?',
-        a: 'Standaard meestal wel. «Gastenlijst zien» toont iedereen die is uitgenodigd en hun antwoord: prima in een team, ongemakkelijk bij een klant, fout wanneer de gasten losse klanten zijn.',
-      },
-      {
-        q: 'Kan een gast de tijd van mijn vergadering wijzigen?',
-        a: 'Als «afspraak wijzigen» aan staat wel, en de wijziging geldt voor iedereen. Zelden gewenst en makkelijk aan gelaten.',
-      },
-      {
-        q: 'Hoe voorkom ik dat gasten anderen uitnodigen?',
-        a: 'Zet «anderen uitnodigen» uit op de afspraak zelf. Deze instellingen horen bij de afspraak en niet bij het account, dus ze vallen elke keer terug op je standaard.',
-      },
-    ],
-    practical: [
-      'Zet «gastenlijst zien» uit bij alles dat naar mensen gaat die elkaar niet kennen.',
-      'Laat «afspraak wijzigen» uit, tenzij iemand echt voor je plant.',
-      'Controleer de vinkjes op de afspraak, niet in je instellingen: daar horen ze thuis.',
-    ],
-    seeAlso: ['who-can-see-what-in-google-calendar', 'why-a-shared-calendar-does-not-appear'],
-  },
+    {
+      "heading": "Bepaal of gasten de vergadering mogen wijzigen",
+      "body": [
+        "Google beschrijft in de computereditor onder de gastrechten een optie om de afspraak te wijzigen. Dat is een brede samenwerkingsbevoegdheid, niet slechts een voorstel voor een ander tijdstip. Volgens Google omvat dit velden bewerken, gasten bekijken en ruimtes boeken.",
+        "Een vertrouwde medeorganisator van een workshop kan die ruimte nodig hebben; een klant met een afspraak mogelijk niet. Kies op basis van verantwoordelijkheid en controleer de opgeslagen afspraak. Vertrouw niet op de inrichting van een andere vergadering."
+      ]
+    },
+    {
+      "heading": "Controleer uitnodigen en zichtbaarheid afzonderlijk",
+      "body": [
+        "Google onderscheidt anderen uitnodigen van andere gasten zien. Controleer beide naast bewerkingsrechten. Eén mogelijkheid uitschakelen betekent niet dat je de andere hebt gecontroleerd. Een getoonde standaardinstelling bewijst niets over een bestaande afspraak.",
+        "Overweeg bij losstaande klanten of één gezamenlijke uitnodiging überhaupt geschikt is. Informatie in een e-mail, omschrijving of doorgestuurd bericht valt buiten de huidige gastenlijstinstelling. Zet geen vertrouwelijke deelnemersgegevens in de omschrijving in de verwachting dat een verborgen lijst ze verbergt."
+      ]
+    },
+    {
+      "heading": "Controleer standaardinstellingen én belangrijke afspraken",
+      "body": [
+        "Google beschrijft ook standaardgastrechten in de afspraakinstellingen, waaronder een standaard voor wijzigen. Het is dus niet uitsluitend een instelling per afspraak. Bekijk de standaardinstellingen wanneer je manier van plannen verandert en controleer belangrijke bestaande uitnodigingen apart.",
+        "Controleer bij herhaling of je één afspraak of de reeks wijzigt. Neem niet aan dat een voorkeur oudere uitnodigingen heeft herschreven. Test met een collega aan een afgesproken, niet-gevoelig voorbeeld, niet door een echte klantafspraak te verplaatsen of annuleren."
+      ]
+    },
+    {
+      "heading": "Houd Cloud Calendars-rollen afzonderlijk",
+      "body": [
+        "Cloud Calendars heeft eigen Reader-, Writer- en Owner-rollen. Reader biedt bekijken en synchroniseren; Writer mag bewerken; Owner beheert ook delen en toegang met de uitgenodigde identiteit. Deze rollen zijn geen schakelaars voor Googles drie gastrechten.",
+        "Controleer bij Google-specifieke rechten de oorspronkelijke afspraak in Google Agenda. Een deelnemer zien in Cloud Calendars bewijst niet dat je daar elke Google-instelling kunt wijzigen. Houd aanbieder en identiteit duidelijk bij ontbrekende knoppen of mislukte wijzigingen."
+      ]
+    },
+    {
+      "heading": "Controleer het resultaat en spreek verantwoordelijkheid af",
+      "body": [
+        "Open na opslaan de oorspronkelijke afspraak opnieuw en controleer de instellingen. Laat waar passend een bevoegde collega vanuit het eigen account bevestigen wat mogelijk is. Deel geen wachtwoorden of privégegevens van gasten als snelle toegangstest.",
+        "Houd aanwezigheid apart van rechten. Kunnen bewerken, een geïmporteerde kopie hebben en een vastgelegde acceptatie zijn verschillende feiten. Een ontvangstregistratie bij delen in Cloud Calendars is geen RSVP. Vraag bij belangrijke vergaderingen expliciet om aanwezigheid en benoem wie wijzigingen beheert."
+      ]
+    }
+  ],
+  "claims": {},
+  "practical": [
+    "Identificeer het organiserende account en de oorspronkelijke afspraak.",
+    "Bepaal wie mag beheren, anderen uitnodigen en gasten zien.",
+    "Controleer de werkelijke gastrechten van de Google-afspraak.",
+    "Bekijk standaardinstellingen zonder aan te nemen dat ze bestaande afspraken wijzigen.",
+    "Behandel Cloud Calendars-rollen als een afzonderlijk rechtensysteem.",
+    "Open de opgeslagen afspraak opnieuw en bevestig aanwezigheid apart."
+  ],
+  "faq": [
+    {
+      "q": "Kan een gast mijn vergadertijd wijzigen?",
+      "a": "Google kan wijzigingsrechten geven. Controleer de afspraak en de toegang van de gast; leid dit niet af uit het ontvangen van een uitnodiging."
+    },
+    {
+      "q": "Stel je alle gastrechten alleen per afspraak in?",
+      "a": "Nee. Google documenteert ook standaardgastrechten. Controleer deze voor toekomstige planning en bekijk belangrijke bestaande afspraken zelf."
+    },
+    {
+      "q": "Verwijdert een verborgen gastenlijst eerder verzonden informatie?",
+      "a": "Dat bewijst niet dat eerdere e-mails, omschrijvingen, screenshots of onafhankelijke kopieën zijn verwijderd. Controleer apart wat daadwerkelijk is verspreid."
+    }
+  ],
+  "sourcesHeading": "Informatie van aanbieders en verdere uitleg",
+  "sources": [
+    {
+      "label": "Google: samenwerken aan afspraken en standaardgastrechten",
+      "url": "https://support.google.com/a/users/answer/13293412?hl=en"
+    },
+    {
+      "label": "Google: velden voor gastrechten bij afspraken",
+      "url": "https://developers.google.com/workspace/calendar/api/v3/reference/events"
+    }
+  ],
+  "seeAlso": [
+    "who-can-see-what-in-google-calendar",
+    "sharing-one-event-not-your-calendar",
+    "why-a-shared-calendar-does-not-appear"
+  ],
+  "updated": "2026-10-21"
+},
 
   'google-calendars-that-never-reach-your-iphone': {
     title: 'Waarom sommige Google-agenda’s je iPhone nooit bereiken',

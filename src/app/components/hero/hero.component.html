@@ -37,7 +37,7 @@
           </svg>
           {{ storeCta() }}
         </a>
-        <a class="btn btn--ghost btn--lg" href="#showcase">
+        <a class="btn btn--ghost btn--lg" [href]="tourHref()">
           {{ copy().seeItMove }}
         </a>
       </div>
@@ -125,7 +125,7 @@
     </div>
   </div>
 
-  <a class="hero__scroll" href="#showcase" aria-label="Scroll to the product tour">
+  <a class="hero__scroll" [href]="tourHref()" aria-label="Scroll to the product tour">
     <span class="hero__scroll-track"><span class="hero__scroll-dot"></span></span>
     <span class="hero__scroll-label">{{ copy().scroll }}</span>
   </a>

@@ -254,52 +254,95 @@ export const GOOGLE_FI: Readonly<Record<string, LocalisedArticle>> = {
 },
 
   'what-guests-can-do-to-your-event': {
-    title: 'Mitä vieraasi voivat tehdä tapahtumallesi',
-    short: 'Vieraiden oikeudet',
-    description:
-      'Kolme valintaruutua ratkaisee, voiko vieras siirtää palaverisi, kutsua tuntemattomia tai lukea koko listan. Ne ovat päällä useammin kuin luullaan.',
-    lede: 'Kutsuminen antaa enemmän kuin paikan ja ajan. Tavallisessa Google-tapahtumassa vieras yleensä näkee, ketä muita on pyydetty, ja saa usein lisätä listalle.',
-    commonBelief: 'Että vieras voi vain hyväksyä tai kieltäytyä.',
-    sections: [
-      {
-        heading: 'Kolme ruutua',
-        body: [
-          'Muokkaa tapahtumaa antaa vieraan vaihtaa ajan, paikan ja otsikon kaikilta. Harvoin haluttua, helposti päälle jäävää.',
-          'Kutsu muita antaa lisätä ihmisiä, joita et ole koskaan tavannut. Näe vieraslista näyttää kaikki pyydetyt ja heidän vastauksensa — tiimissä sopivaa, asiakkaan kanssa kiusallista, väärin kaikessa, mikä muistuttaa erillisten asiakkaiden joukkoa.',
-        ],
-      },
-      {
-        heading: 'Missä tämä menee hiljaa pieleen',
-        body: [
-          'Yksi tapahtuma, monta erillistä vastaanottajaa, lista näkyvissä: nyt jokaisella on kaikki. Tuon yhden ruudun poistaminen on ero palaverin ja vuotaneen osoitekirjan välillä.',
-          'Asetukset asuvat tapahtumassa, eivät tilissä, joten ne palaavat oletuksiisi joka kerta ja ne on mietittävä niissä tapahtumissa, joilla on väliä, ei kerran.',
-        ],
-      },
-    ],
-    claims: {
-      sharePrice: 'Mitä yksittäisen tapahtuman lähettäminen sovelluksesta maksaa',
+  "title": "Google Kalenterin vieraiden oikeudet: muokkaus, kutsut ja vieraslista",
+  "short": "Tapahtuman vieraiden oikeudet",
+  "description": "Tarkista vieraiden oikeudet ja oletukset. Erota kutsuoikeudet kalenterin käyttöoikeudesta sekä Reader-, Writer- ja Owner-rooleista.",
+  "lede": "Vieraan mahdollisuus vastata ei kerro kaikkea, mitä hän voi tehdä. Tarkista tapahtuman oikeudet ennen yhteisen kutsun käyttämistä tiimille, asiakkaille tai yleisötilaisuudelle. Oppaan julkaisee Cloud Calendarsin kehittäjä Arte Soft.",
+  "commonBelief": "Kutsutut vieraat voivat vain hyväksyä tai hylätä, ja kaikki sovellukset tarjoavat samat oikeusasetukset.",
+  "sections": [
+    {
+      "heading": "Aloita järjestäjästä ja alkuperäisestä tapahtumasta",
+      "body": [
+        "Avaa oikea tapahtuma Google Kalenterissa järjestäjän tilillä tai sen hallintaan valtuutetulla tilillä. Tarkista kalenteri, päivä ja järjestäjä ennen oikeuksien muuttamista. Erikseen tuotu tapaaminen ei ole luotettava paikka alkuperäisen kutsun hallintaan.",
+        "Kirjaa tiimikokoukselle, kuka saa muuttaa aikaa, kutsua muita ja pitäisikö osallistujien nähdä toisensa. Nämä ovat erillisiä päätöksiä. Osallistumaan tulevan vieraan ei välttämättä tarvitse hallita kokousta."
+      ]
     },
-    faq: [
-      {
-        q: 'Näkevätkö vieraat toisensa Google-kalenterin kutsussa?',
-        a: 'Oletuksena useimmiten kyllä. «Näe vieraslista» näyttää kaikki kutsutut ja heidän vastauksensa: tiimissä sopivaa, asiakkaan kanssa kiusallista, ja väärin kun vieraat ovat erillisiä asiakkaita.',
-      },
-      {
-        q: 'Voiko vieras muuttaa palaverini kellonaikaa?',
-        a: 'Jos «muokkaa tapahtumaa» on valittuna, kyllä, ja muutos koskee kaikkia. Harvoin haluttua ja helposti päälle jäävää.',
-      },
-      {
-        q: 'Miten estän vieraita kutsumasta muita?',
-        a: 'Poista «kutsu muita» itse tapahtumasta. Asetukset kuuluvat tapahtumalle eivätkä tilille, joten ne palaavat oletuksiisi joka kerta.',
-      },
-    ],
-    practical: [
-      'Poista «näe vieraslista» kaikesta, mikä lähtee toisilleen tuntemattomille.',
-      'Pidä «muokkaa tapahtumaa» pois päältä, ellei joku oikeasti suunnittele puolestasi.',
-      'Tarkista ruudut tapahtumasta, älä asetuksista: siellä ne asuvat.',
-    ],
-    seeAlso: ['who-can-see-what-in-google-calendar', 'why-a-shared-calendar-does-not-appear'],
-  },
+    {
+      "heading": "Päätä, saavatko vieraat muokata kokousta",
+      "body": [
+        "Google ohjeistaa tietokoneen tapahtumaeditorissa asetuksen ”Modify event” kohdassa ”Guests can”. Se on laaja yhteistyöoikeus, ei vain keino ehdottaa uutta aikaa. Googlen mukaan se mahdollistaa tapahtuman hallinnan, kuten kenttien muokkaamisen, vieraiden katselun ja huoneiden varaamisen.",
+        "Luotettu työpajan kanssajärjestäjä voi tarvita tätä joustavuutta, tapaamiseen saapuva asiakas ei välttämättä. Valitse vieraalle annettavan vastuun perusteella ja tarkista tallennettu tapahtuma sen sijaan, että luottaisit toisen kokouksen asetuksiin."
+      ]
+    },
+    {
+      "heading": "Tarkista kutsuminen ja vieraiden näkyvyys erikseen",
+      "body": [
+        "Googlen tapahtumamalli erottaa muiden kutsumisoikeuden muiden vieraiden katseluoikeudesta. Tarkista molemmat muokkausoikeuden ohella. Yhden toiminnon poistaminen ei tarkoita toisen tarkistamista, eikä näkyvä oletusarvo osoita olemassa olevan tapahtuman asetuksia.",
+        "Jos kokoat yhteen toisistaan riippumattomia asiakkaita, harkitse, sopiiko yhteinen kutsu lainkaan. Sähköpostissa, kuvauksessa tai välitetyssä viestissä jo olevat tiedot ovat nykyisen vieraslista-asetuksen ulkopuolella. Älä lisää kuvaukseen luottamuksellisia osallistujatietoja ja odota piilotetun listan peittävän ne."
+      ]
+    },
+    {
+      "heading": "Tarkista oletukset ja tärkeät yksittäiset tapahtumat",
+      "body": [
+        "Google kuvaa tapahtuma-asetuksissa myös ”Default guest permissions” -kohdan ja muokkauksen oletusarvon. Oikeuksia ei siis aseteta vain tapahtumakohtaisesti. Tarkista oletukset tavallisen suunnittelutapasi muuttuessa ja sen jälkeen tärkeät olemassa olevat kutsut yksitellen.",
+        "Varmista toistuvassa kokouksessa ennen tallennusta, mitä kertaa tai sarjaa muokkaat. Älä oleta asetuksen muutoksen kirjoittaneen vanhoja kutsuja uudelleen. Käytä kollegan kanssa sovittua, ei-arkaluonteista esimerkkiä kokeiluun sen sijaan, että siirtäisit tai peruisit oikean asiakaskokouksen."
+      ]
+    },
+    {
+      "heading": "Pidä Cloud Calendarsin roolit erillisinä",
+      "body": [
+        "Cloud Calendarsilla on erillinen jakamisjärjestely Reader-, Writer- ja Owner-rooleilla. Reader mahdollistaa katselun ja synkronoinnin, Writer muokkauksen, ja Owner hallitsee myös jakamista ja pääsyä kutsutulla henkilöllisyydellä. Roolit eivät ole Googlen kolmen vierasoikeuden kytkimiä.",
+        "Kun Google-kohtainen oikeus on tärkeä, tutki alkuperäinen tapahtuma Google Kalenterissa. Osallistujan näkyminen Cloud Calendarsissa ei osoita, että kaikkia Googlen vierasasetuksia voisi muuttaa siellä. Pidä omistava palvelu ja vastaanottajan henkilöllisyys selvinä puuttuvaa asetusta tai epäonnistunutta muokkausta selvittäessäsi."
+      ]
+    },
+    {
+      "heading": "Varmista tallennettu tulos ja kerro vastuut",
+      "body": [
+        "Avaa alkuperäinen tapahtuma tallentamisen jälkeen uudelleen ja tarkista tarkoitetut asetukset. Pyydä tarvittaessa valtuutettua kollegaa vahvistamaan oman tilinsä mahdollisuudet. Älä vaihda salasanoja tai lähetä yksityisiä vierastietoja tarkistuksen oikotienä.",
+        "Erota osallistuminen oikeuksista. Muokkausmahdollisuus, tuotu kopio ja kirjattu hyväksyntä ovat eri asioita. Cloud Calendarsin jakamisen vastaanottokuittaus ei ole osallistumisvastaus. Pyydä tärkeään kokoukseen tarvitsemasi vastaus ja selvitä, kuka vastaa aikataulumuutoksista."
+      ]
+    }
+  ],
+  "claims": {},
+  "practical": [
+    "Tunnista järjestäjän tili ja alkuperäinen tapahtuma.",
+    "Päätä, kuka hallitsee, kutsuu muita ja näkee vieraat.",
+    "Tutki Google-tapahtuman todelliset vierasoikeudet.",
+    "Tarkista oletukset olettamatta niiden muuttavan vanhoja tapahtumia.",
+    "Käsittele Cloud Calendarsin rooleja erillisenä oikeusjärjestelmänä.",
+    "Avaa tallennettu tapahtuma ja vahvista osallistuminen erikseen."
+  ],
+  "faq": [
+    {
+      "q": "Voiko vieras muuttaa kokoukseni aikaa?",
+      "a": "Google tukee muokkausoikeuden antamista. Tarkista todellinen tapahtuma ja vieraan pääsy; älä päättele oikeutta pelkästä kutsun saamisesta."
+    },
+    {
+      "q": "Asetetaanko kaikki vierasoikeudet vain tapahtumakohtaisesti?",
+      "a": "Ei. Google kuvaa myös oletusoikeudet. Tarkista ne tulevaa suunnittelua varten ja tärkeät nykyiset tapahtumat suoraan."
+    },
+    {
+      "q": "Poistaako vieraslistan piilottaminen jo lähetetyt tiedot?",
+      "a": "Se ei osoita aiempien sähköpostien, kuvausten, kuvakaappausten tai itsenäisten kopioiden poistamista. Selvitä erikseen, mitä todella jaettiin."
+    }
+  ],
+  "sourcesHeading": "Palveluntarjoajan ohjeet ja lisätietoa",
+  "sources": [
+    {
+      "label": "Google: tapahtumayhteistyö ja vieraiden oletusoikeudet",
+      "url": "https://support.google.com/a/users/answer/13293412?hl=en"
+    },
+    {
+      "label": "Google: tapahtuman vierasoikeuksien kentät",
+      "url": "https://developers.google.com/workspace/calendar/api/v3/reference/events"
+    }
+  ],
+  "seeAlso": [
+    "who-can-see-what-in-google-calendar",
+    "sharing-one-event-not-your-calendar"
+  ],
+  "updated": "2026-10-21"
+},
 
   'google-calendars-that-never-reach-your-iphone': {
     title: 'Miksi osa Google-kalentereista ei koskaan päädy iPhoneen',

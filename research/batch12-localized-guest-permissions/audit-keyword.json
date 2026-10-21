@@ -1,0 +1,179 @@
+{
+  "date": "2026-10-22",
+  "slug": "what-guests-can-do-to-your-event",
+  "source": "src/app/content/en-US/articles-google.ts",
+  "sourceObjectSha256": "26bf2bfe46711965d0528b91dbeb76a8b1f04736a49d32443fb8210b917b34ed",
+  "format": "Individual direct LocalisedArticle JSON objects",
+  "method": "Own-language model translations; no paid translation API or native-speaker certification. Structural and route checks performed locally.",
+  "scope": "Ten requested locales only; no source integration, build, deployment, or native application changes.",
+  "semanticChecks": [
+    "Google event modification, invitation and guest-list permissions remain distinct from calendar access and Cloud Calendars Reader, Writer and Owner roles.",
+    "Default permissions are distinguished from existing event permissions and recurring occurrence versus series choices.",
+    "Sharing receipt is not RSVP; explicit attendance confirmation remains separate.",
+    "No universal editing, immediate updates, or deletion of previously distributed information promised.",
+    "Developer authorship disclosure, original source URLs, update date and empty claims preserved."
+  ],
+  "relatedRouteDecision": "Use existing local guide why-a-shared-calendar-does-not-appear as the third related route instead of the English RSVP guide; all three routes verified in each locale article-index.",
+  "files": [
+    {
+      "locale": "hi",
+      "file": "research/batch12-localized-guest-permissions/hi.json",
+      "sha256": "455fea064ee2b60ea903383ce842f4e213cf9f9d232b0204d181384b13ee2c4d",
+      "descriptionCharacters": 129,
+      "sections": 6,
+      "bodyParagraphs": 12,
+      "practicalSteps": 6,
+      "faqs": 3,
+      "sourceUrlsPreserved": true,
+      "relatedRoutesVerified": [
+        "who-can-see-what-in-google-calendar",
+        "sharing-one-event-not-your-calendar",
+        "why-a-shared-calendar-does-not-appear"
+      ]
+    },
+    {
+      "locale": "hu",
+      "file": "research/batch12-localized-guest-permissions/hu.json",
+      "sha256": "0f14f9bc32a96e7ae423beeb5838b82e5803f71d9cdb5ca8005710fe2c871ccb",
+      "descriptionCharacters": 137,
+      "sections": 6,
+      "bodyParagraphs": 12,
+      "practicalSteps": 6,
+      "faqs": 3,
+      "sourceUrlsPreserved": true,
+      "relatedRoutesVerified": [
+        "who-can-see-what-in-google-calendar",
+        "sharing-one-event-not-your-calendar",
+        "why-a-shared-calendar-does-not-appear"
+      ]
+    },
+    {
+      "locale": "id",
+      "file": "research/batch12-localized-guest-permissions/id.json",
+      "sha256": "91de4ee0123a4a27eeba0db8eb65e03b061bfac561590af182e92fc718fe4c36",
+      "descriptionCharacters": 142,
+      "sections": 6,
+      "bodyParagraphs": 12,
+      "practicalSteps": 6,
+      "faqs": 3,
+      "sourceUrlsPreserved": true,
+      "relatedRoutesVerified": [
+        "who-can-see-what-in-google-calendar",
+        "sharing-one-event-not-your-calendar",
+        "why-a-shared-calendar-does-not-appear"
+      ]
+    },
+    {
+      "locale": "it",
+      "file": "research/batch12-localized-guest-permissions/it.json",
+      "sha256": "f8b2473b045683113e446ee88611449bf57c68d3cb67247f5b91899dde984b2b",
+      "descriptionCharacters": 135,
+      "sections": 6,
+      "bodyParagraphs": 12,
+      "practicalSteps": 6,
+      "faqs": 3,
+      "sourceUrlsPreserved": true,
+      "relatedRoutesVerified": [
+        "who-can-see-what-in-google-calendar",
+        "sharing-one-event-not-your-calendar",
+        "why-a-shared-calendar-does-not-appear"
+      ]
+    },
+    {
+      "locale": "ja",
+      "file": "research/batch12-localized-guest-permissions/ja.json",
+      "sha256": "a1d5f206a0f1e344d1e54e26a9d00faed975536fa7df932f5623a6cc11810143",
+      "descriptionCharacters": 70,
+      "sections": 6,
+      "bodyParagraphs": 12,
+      "practicalSteps": 6,
+      "faqs": 3,
+      "sourceUrlsPreserved": true,
+      "relatedRoutesVerified": [
+        "who-can-see-what-in-google-calendar",
+        "sharing-one-event-not-your-calendar",
+        "why-a-shared-calendar-does-not-appear"
+      ]
+    },
+    {
+      "locale": "ko",
+      "file": "research/batch12-localized-guest-permissions/ko.json",
+      "sha256": "8d2a0d13f32a5d8ffbcff38c13123dcda0e6b60b1178263665ae2c1daedb4ece",
+      "descriptionCharacters": 96,
+      "sections": 6,
+      "bodyParagraphs": 12,
+      "practicalSteps": 6,
+      "faqs": 3,
+      "sourceUrlsPreserved": true,
+      "relatedRoutesVerified": [
+        "who-can-see-what-in-google-calendar",
+        "sharing-one-event-not-your-calendar",
+        "why-a-shared-calendar-does-not-appear"
+      ]
+    },
+    {
+      "locale": "ms",
+      "file": "research/batch12-localized-guest-permissions/ms.json",
+      "sha256": "ed669686397947887323c8dad06e4e262da3fe833fdf8a5a765060d0cf5d0d78",
+      "descriptionCharacters": 124,
+      "sections": 6,
+      "bodyParagraphs": 12,
+      "practicalSteps": 6,
+      "faqs": 3,
+      "sourceUrlsPreserved": true,
+      "relatedRoutesVerified": [
+        "who-can-see-what-in-google-calendar",
+        "sharing-one-event-not-your-calendar",
+        "why-a-shared-calendar-does-not-appear"
+      ]
+    },
+    {
+      "locale": "nl-NL",
+      "file": "research/batch12-localized-guest-permissions/nl-NL.json",
+      "sha256": "8e878745d4a8cf5c8caa4ee27c6ef737083998afd551ea7e4ad091cb15a8523d",
+      "descriptionCharacters": 135,
+      "sections": 6,
+      "bodyParagraphs": 12,
+      "practicalSteps": 6,
+      "faqs": 3,
+      "sourceUrlsPreserved": true,
+      "relatedRoutesVerified": [
+        "who-can-see-what-in-google-calendar",
+        "sharing-one-event-not-your-calendar",
+        "why-a-shared-calendar-does-not-appear"
+      ]
+    },
+    {
+      "locale": "no",
+      "file": "research/batch12-localized-guest-permissions/no.json",
+      "sha256": "1cdd934007c7874d9a497e3ef82df7fd2c5dd7c986e9ee521edf52a9fc6a1a1e",
+      "descriptionCharacters": 132,
+      "sections": 6,
+      "bodyParagraphs": 12,
+      "practicalSteps": 6,
+      "faqs": 3,
+      "sourceUrlsPreserved": true,
+      "relatedRoutesVerified": [
+        "who-can-see-what-in-google-calendar",
+        "sharing-one-event-not-your-calendar",
+        "why-a-shared-calendar-does-not-appear"
+      ]
+    },
+    {
+      "locale": "pl",
+      "file": "research/batch12-localized-guest-permissions/pl.json",
+      "sha256": "9df7f17182280cafdc2d4c3a4d52fa9db5575ccf77fe5958811ee498672b7145",
+      "descriptionCharacters": 130,
+      "sections": 6,
+      "bodyParagraphs": 12,
+      "practicalSteps": 6,
+      "faqs": 3,
+      "sourceUrlsPreserved": true,
+      "relatedRoutesVerified": [
+        "who-can-see-what-in-google-calendar",
+        "sharing-one-event-not-your-calendar",
+        "why-a-shared-calendar-does-not-appear"
+      ]
+    }
+  ]
+}

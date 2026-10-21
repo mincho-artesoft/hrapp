@@ -253,52 +253,96 @@ export const GOOGLE_ID: Readonly<Record<string, LocalisedArticle>> = {
 },
 
   'what-guests-can-do-to-your-event': {
-    title: 'Apa yang bisa dilakukan tamu terhadap acara Anda',
-    short: 'Izin tamu',
-    description:
-      'Tiga kotak centang menentukan apakah tamu bisa memindahkan rapat Anda, mengundang orang asing, atau membaca seluruh daftar. Kotak-kotak itu aktif lebih sering daripada dugaan orang.',
-    lede: 'Mengundang seseorang memberi lebih dari tempat dan waktu. Pada acara Google biasa, tamu umumnya melihat siapa lagi yang diundang, dan sering boleh menambah.',
-    commonBelief: 'Bahwa tamu hanya bisa menerima atau menolak.',
-    sections: [
-      {
-        heading: 'Tiga kotak itu',
-        body: [
-          'Ubah acara membiarkan tamu mengganti waktu, tempat, dan judul untuk semua orang. Jarang diinginkan, mudah dibiarkan aktif.',
-          'Undang orang lain membiarkannya menambah orang yang tidak pernah Anda temui. Lihat daftar tamu menampilkan semua yang diundang beserta jawabannya — tidak masalah di tim, canggung dengan klien, keliru pada apa pun yang menyerupai sekelompok pelanggan terpisah.',
-        ],
-      },
-      {
-        heading: 'Di mana ini diam-diam salah',
-        body: [
-          'Satu acara, banyak penerima perorangan, daftar terlihat: kini semua orang memiliki semua orang. Mematikan satu kotak itu adalah beda antara rapat dan buku alamat yang bocor.',
-          'Pengaturannya hidup di acara, bukan di akun, jadi ia kembali ke bawaan Anda setiap kali dan harus dipikirkan pada acara yang penting, bukan sekali untuk selamanya.',
-        ],
-      },
-    ],
-    claims: {
-      sharePrice: 'Biaya mengirim satu acara dari aplikasi',
+  "title": "Izin tamu Google Kalender: mengedit, mengundang, dan daftar tamu",
+  "short": "Izin tamu pada acara",
+  "description": "Periksa izin tamu dan setelan default Google. Pisahkan hak undangan dari akses kalender serta peran Reader, Writer, dan Owner Cloud Calendars.",
+  "lede": "Kemampuan membalas tidak menjelaskan semua tindakan tamu. Tinjau izin acara sebelum memakai satu undangan untuk tim, klien, atau publik. Panduan ini diterbitkan oleh Arte Soft, pengembang Cloud Calendars.",
+  "commonBelief": "Tamu hanya dapat menerima atau menolak, dan semua aplikasi menampilkan kontrol izin yang sama.",
+  "sections": [
+    {
+      "heading": "Mulai dari penyelenggara dan acara asli",
+      "body": [
+        "Buka acara yang benar di Google Kalender dengan akun penyelenggara atau akun yang diizinkan mengelolanya. Periksa kalender, tanggal, dan penyelenggara sebelum mengubah izin. Janji yang diimpor terpisah bukan tempat andal untuk mengatur undangan asli.",
+        "Untuk rapat tim, tentukan siapa boleh mengubah jadwal, mengundang orang lain, dan melihat peserta. Ini keputusan terpisah. Tamu yang perlu hadir belum tentu perlu mengelola rapat."
+      ]
     },
-    faq: [
-      {
-        q: 'Apakah tamu saling melihat pada undangan Google Kalender?',
-        a: 'Secara bawaan biasanya ya. «Lihat daftar tamu» menampilkan semua yang diundang beserta jawabannya: tidak masalah dalam tim, canggung dengan klien, dan keliru bila tamunya pelanggan yang terpisah.',
-      },
-      {
-        q: 'Bisakah tamu mengubah jam rapat saya?',
-        a: 'Kalau «ubah acara» dicentang, bisa, dan perubahannya berlaku untuk semua orang. Jarang diinginkan dan mudah dibiarkan aktif.',
-      },
-      {
-        q: 'Bagaimana mencegah tamu mengundang orang lain?',
-        a: 'Matikan «undang orang lain» pada acara itu sendiri. Pengaturan ini milik acara, bukan akun, jadi kembali ke bawaan Anda setiap kali.',
-      },
-    ],
-    practical: [
-      'Matikan «lihat daftar tamu» untuk apa pun yang dikirim ke orang yang tidak saling kenal.',
-      'Biarkan «ubah acara» mati kecuali ada yang benar-benar menjadwalkan untuk Anda.',
-      'Periksa kotaknya di acara, bukan di pengaturan: di situlah tempatnya.',
-    ],
-    seeAlso: ['who-can-see-what-in-google-calendar', 'why-a-shared-calendar-does-not-appear'],
-  },
+    {
+      "heading": "Tentukan apakah tamu boleh mengubah rapat",
+      "body": [
+        "Google mendokumentasikan opsi “Modify event” pada bagian hak tamu di editor komputer. Ini izin kolaborasi yang luas, bukan sekadar usul waktu baru. Google menjelaskan bahwa izin itu mencakup pengeditan kolom, melihat tamu, dan memesan ruangan.",
+        "Rekan penyelenggara lokakarya yang dipercaya mungkin membutuhkannya, tetapi pelanggan yang datang ke janji mungkin tidak. Pilih berdasarkan tanggung jawab dan periksa acara tersimpan, bukan konfigurasi rapat lain."
+      ]
+    },
+    {
+      "heading": "Periksa undangan dan visibilitas secara terpisah",
+      "body": [
+        "Google membedakan izin mengundang orang lain dari izin melihat tamu lain. Periksa keduanya bersama hak edit. Mematikan satu kemampuan tidak berarti yang lain sudah diperiksa; default yang ditampilkan bukan bukti setelan acara lama.",
+        "Untuk klien yang tidak saling terkait, pertimbangkan apakah satu undangan bersama cocok. Informasi dalam email, deskripsi, atau pesan terusan berada di luar kontrol daftar tamu saat ini. Jangan menaruh detail peserta rahasia di deskripsi lalu berharap daftar tersembunyi menutupinya."
+      ]
+    },
+    {
+      "heading": "Periksa default dan acara penting satu per satu",
+      "body": [
+        "Google juga mendokumentasikan izin tamu default dalam setelan acara, termasuk default perubahan. Jadi kontrol tidak hanya berlaku per acara. Tinjau default saat pola penjadwalan berubah, lalu periksa undangan penting yang sudah ada secara terpisah.",
+        "Untuk rapat berulang, pastikan kejadian atau seri yang diedit sebelum menyimpan. Jangan menganggap perubahan preferensi menulis ulang undangan lama. Uji dengan rekan memakai contoh yang disepakati dan tidak sensitif, bukan memindahkan atau membatalkan rapat pelanggan nyata."
+      ]
+    },
+    {
+      "heading": "Pisahkan peran Cloud Calendars",
+      "body": [
+        "Cloud Calendars mempunyai sistem berbagi Reader, Writer, dan Owner. Reader melihat dan menyinkronkan; Writer mengedit; Owner juga mengelola berbagi dan akses dengan identitas yang diundang. Peran ini bukan sakelar untuk tiga izin tamu Google.",
+        "Jika izin khusus Google penting, periksa acara asli di Google Kalender. Melihat peserta dalam Cloud Calendars tidak membuktikan semua setelan Google dapat diubah di sana. Pastikan layanan pemilik dan identitas penerima saat menelusuri kontrol hilang atau edit gagal."
+      ]
+    },
+    {
+      "heading": "Verifikasi hasil dan sampaikan tanggung jawab",
+      "body": [
+        "Setelah menyimpan, buka kembali acara asli dan periksa setelan. Bila sesuai, minta rekan berwenang memastikan kemampuan akunnya sendiri. Jangan bertukar kata sandi atau mengirim detail tamu pribadi sebagai jalan pintas pemeriksaan akses.",
+        "Pisahkan kehadiran dari izin. Kemampuan mengedit, salinan impor, dan penerimaan tercatat adalah fakta berbeda. Bukti penerimaan berbagi Cloud Calendars bukan RSVP. Untuk rapat penting, mintalah jawaban kehadiran dan jelaskan siapa bertanggung jawab atas perubahan jadwal."
+      ]
+    }
+  ],
+  "claims": {},
+  "practical": [
+    "Kenali akun penyelenggara dan acara asli.",
+    "Tentukan siapa mengelola, mengundang orang lain, dan melihat tamu.",
+    "Periksa izin tamu sebenarnya pada acara Google.",
+    "Tinjau default tanpa menganggapnya mengubah acara lama.",
+    "Perlakukan peran Cloud Calendars sebagai sistem izin terpisah.",
+    "Buka kembali acara tersimpan dan konfirmasikan kehadiran secara terpisah."
+  ],
+  "faq": [
+    {
+      "q": "Bisakah tamu mengubah waktu rapat saya?",
+      "a": "Google mendukung pemberian izin perubahan. Periksa acara dan akses tamu; jangan menyimpulkan dari sekadar menerima undangan."
+    },
+    {
+      "q": "Apakah semua izin tamu hanya diatur pada tiap acara?",
+      "a": "Tidak. Google juga menjelaskan izin default. Periksa default untuk penjadwalan mendatang dan acara penting yang sudah ada secara langsung."
+    },
+    {
+      "q": "Apakah menyembunyikan daftar menghapus informasi yang sudah dikirim?",
+      "a": "Itu tidak membuktikan email, deskripsi, tangkapan layar, atau salinan mandiri sebelumnya telah dihapus. Tinjau informasi yang benar-benar disebarkan secara terpisah."
+    }
+  ],
+  "sourcesHeading": "Panduan penyedia dan bacaan lanjutan",
+  "sources": [
+    {
+      "label": "Google: kolaborasi acara dan izin tamu default",
+      "url": "https://support.google.com/a/users/answer/13293412?hl=en"
+    },
+    {
+      "label": "Google: kolom izin tamu acara",
+      "url": "https://developers.google.com/workspace/calendar/api/v3/reference/events"
+    }
+  ],
+  "seeAlso": [
+    "who-can-see-what-in-google-calendar",
+    "sharing-one-event-not-your-calendar",
+    "why-a-shared-calendar-does-not-appear"
+  ],
+  "updated": "2026-10-21"
+},
 
   'google-calendars-that-never-reach-your-iphone': {
     title: 'Mengapa sebagian kalender Google tidak pernah sampai ke iPhone',

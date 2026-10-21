@@ -255,52 +255,95 @@ export const GOOGLE_SV: Readonly<Record<string, LocalisedArticle>> = {
 },
 
   'what-guests-can-do-to-your-event': {
-    title: 'Vad dina gäster kan göra med en händelse',
-    short: 'Gästernas behörigheter',
-    description:
-      'Tre kryssrutor avgör om en gäst kan flytta ditt möte, bjuda in främlingar eller läsa hela listan. De står på oftare än folk tror.',
-    lede: 'Att bjuda in någon ger mer än en plats och en tid. I en vanlig Google-händelse ser en gäst oftast vilka fler som tillfrågats, och får ofta lägga till fler.',
-    commonBelief: 'Att en gäst bara kan tacka ja eller nej.',
-    sections: [
-      {
-        heading: 'De tre rutorna',
-        body: [
-          'Ändra händelse låter en gäst byta tid, plats och titel för alla. Sällan önskat, lätt kvarlämnat påslaget.',
-          'Bjuda in andra låter en gäst lägga till människor du aldrig träffat. Se gästlistan visar alla tillfrågade och hur de svarat — helt i sin ordning i ett team, obekvämt hos en kund, fel i allt som liknar en grupp separata kunder.',
-        ],
-      },
-      {
-        heading: 'Där det tyst går fel',
-        body: [
-          'En händelse, många enskilda mottagare, synlig lista: nu har alla alla. Den enda rutan är skillnaden mellan ett möte och en läckt adressbok.',
-          'Inställningarna hör till händelsen, inte till kontot, så de faller tillbaka till dina standardvärden varje gång och måste tänkas igenom på de händelser som betyder något, inte en gång för alla.',
-        ],
-      },
-    ],
-    claims: {
-      sharePrice: 'Vad det kostar att skicka en enda händelse från appen',
+  "title": "Gästbehörigheter i Google Kalender: redigering, inbjudningar och gästlista",
+  "short": "Gästernas behörigheter",
+  "description": "Kontrollera Googles gästbehörigheter och standardinställningar. Skilj inbjudningsrättigheter från kalenderåtkomst och roller i Cloud Calendars.",
+  "lede": "Att en gäst kan svara på en inbjudan beskriver inte allt personen kan göra. Granska behörigheterna innan samma inbjudan används för ett team, kunder eller en offentlig träff. Guiden publiceras av Arte Soft, utvecklaren bakom Cloud Calendars.",
+  "commonBelief": "Inbjudna gäster kan bara tacka ja eller nej, och alla appar erbjuder samma behörighetskontroller.",
+  "sections": [
+    {
+      "heading": "Börja med arrangören och originalhändelsen",
+      "body": [
+        "Öppna rätt händelse i Google Kalender med arrangörens konto eller ett konto som får hantera den. Kontrollera kalender, datum och arrangör innan behörigheter ändras. Ett separat importerat möte är ingen tillförlitlig plats att styra originalinbjudan från.",
+        "För ett teammöte, bestäm vem som får boka om, bjuda in andra och se deltagarna. Det är separata beslut. En gäst som behöver delta behöver inte nödvändigtvis kunna hantera mötet."
+      ]
     },
-    faq: [
-      {
-        q: 'Ser gästerna varandra i en inbjudan från Google Kalender?',
-        a: 'Som standard oftast ja. «Se gästlistan» visar alla inbjudna och deras svar: helt i sin ordning i ett team, obekvämt hos en kund, fel när gästerna är separata kunder.',
-      },
-      {
-        q: 'Kan en gäst ändra tiden för mitt möte?',
-        a: 'Om «ändra händelse» är ikryssat, ja, och ändringen gäller alla. Sällan önskat och lätt kvarlämnat påslaget.',
-      },
-      {
-        q: 'Hur hindrar jag gäster från att bjuda in andra?',
-        a: 'Stäng av «bjuda in andra» på själva händelsen. Inställningarna hör till händelsen och inte till kontot, så de faller tillbaka till dina standardvärden varje gång.',
-      },
-    ],
-    practical: [
-      'Stäng av «se gästlistan» för allt som går till människor som inte känner varandra.',
-      'Låt «ändra händelse» vara av om inte någon verkligen planerar åt dig.',
-      'Kolla rutorna på händelsen, inte i dina inställningar: där bor de.',
-    ],
-    seeAlso: ['who-can-see-what-in-google-calendar', 'why-a-shared-calendar-does-not-appear'],
-  },
+    {
+      "heading": "Bestäm om gäster ska få ändra mötet",
+      "body": [
+        "Google beskriver ett alternativ för att ändra händelsen under gästbehörigheter i datorns händelseredigerare. Det är en bred samarbetsbehörighet, inte bara ett sätt att föreslå en ny tid. Enligt Google omfattar den hantering av händelsen, redigering av fält, visning av gäster och bokning av rum.",
+        "En betrodd medarrangör som ordnar en workshop kan behöva den flexibiliteten. En kund som kommer till ett bokat besök kanske inte behöver den. Utgå från ansvaret du ger gästen och kontrollera den sparade händelsen i stället för en annan möteskonfiguration."
+      ]
+    },
+    {
+      "heading": "Granska inbjudningar och gästernas synlighet separat",
+      "body": [
+        "Googles händelsemodell skiljer rätten att bjuda in andra från rätten att se övriga gäster. Granska båda tillsammans med redigeringsrätten. Att stänga av en funktion innebär inte att den andra är kontrollerad, och ett visat standardval bevisar inte en befintlig händelses inställningar.",
+        "När kunderna saknar koppling till varandra, överväg om en gemensam inbjudan alls passar. Uppgifter som redan finns i mejl, beskrivningar eller vidarebefordrade meddelanden ligger utanför den aktuella gästlistekontrollen. Lägg inte känsliga deltagaruppgifter i beskrivningen och förvänta dig att en dold lista döljer dem."
+      ]
+    },
+    {
+      "heading": "Kontrollera standardval och viktiga händelser",
+      "body": [
+        "Google beskriver även standardbehörigheter för gäster i händelseinställningarna, inklusive ändringsrätt. Kontrollerna finns alltså inte bara på varje enskild händelse. Granska standardvalen när ditt vanliga bokningsmönster ändras och kontrollera sedan viktiga befintliga inbjudningar var för sig.",
+        "För ett återkommande möte, bekräfta vilken förekomst eller serie du redigerar innan du sparar. Anta inte att en ändrad inställning har skrivit om äldre inbjudningar. Testa tillsammans med en kollega på ett överenskommet exempel utan känsliga uppgifter, inte genom att flytta eller avboka ett riktigt kundmöte."
+      ]
+    },
+    {
+      "heading": "Håll Cloud Calendars-rollerna åtskilda",
+      "body": [
+        "Cloud Calendars har ett separat delningssystem med Reader, Writer och Owner. Reader ger visning och synkronisering; Writer tillåter redigering; Owner hanterar också delning och åtkomst med den inbjudna identiteten. Dessa roller är inte reglage för Googles tre gästbehörigheter.",
+        "Om en Google-specifik behörighet är viktig, granska originalhändelsen i Google Kalender. Att en deltagare syns i Cloud Calendars visar inte att alla Googles gästinställningar kan ändras där. Håll isär ägartjänsten och mottagarens identitet när du undersöker en saknad kontroll eller misslyckad ändring."
+      ]
+    },
+    {
+      "heading": "Verifiera resultatet och tydliggör ansvaret",
+      "body": [
+        "Öppna originalhändelsen igen efter att du sparat och kontrollera inställningarna. Be vid behov en behörig kollega bekräfta vad det egna kontot kan göra. Dela inte lösenord eller privata gästuppgifter som genväg för att kontrollera åtkomsten.",
+        "Skilj deltagande från behörigheter. Redigeringsrätt, en importerad kopia och ett registrerat ja-svar är olika saker. I Cloud Calendars är ett mottagningskvitto för en delning inte ett närvarosvar. För viktiga möten, be om det deltagarsvar du behöver och tydliggör vem som ansvarar för schemaändringar."
+      ]
+    }
+  ],
+  "claims": {},
+  "practical": [
+    "Identifiera arrangörskontot och originalhändelsen.",
+    "Bestäm vem som hanterar mötet, bjuder in andra och ser gäster.",
+    "Kontrollera Google-händelsens faktiska gästbehörigheter.",
+    "Granska standardval utan att anta att befintliga händelser ändras.",
+    "Behandla Cloud Calendars-roller som ett separat system.",
+    "Öppna den sparade händelsen igen och bekräfta deltagande separat."
+  ],
+  "faq": [
+    {
+      "q": "Kan en gäst ändra tiden för mitt möte?",
+      "a": "Google stöder ändringsbehörighet. Kontrollera händelsen och gästens åtkomst; dra inte slutsatsen enbart av att personen fått en inbjudan."
+    },
+    {
+      "q": "Ställs alla gästbehörigheter in på varje händelse?",
+      "a": "Nej. Google beskriver också standardbehörigheter. Kontrollera dem för framtida bokningar och granska viktiga befintliga händelser direkt."
+    },
+    {
+      "q": "Tar en dold gästlista bort uppgifter som redan skickats?",
+      "a": "Det visar inte att tidigare mejl, beskrivningar, skärmbilder eller fristående kopior tagits bort. Granska separat vad som faktiskt spreds."
+    }
+  ],
+  "sourcesHeading": "Leverantörernas vägledning och vidare läsning",
+  "sources": [
+    {
+      "label": "Google: samarbete och standardbehörigheter för gäster",
+      "url": "https://support.google.com/a/users/answer/13293412?hl=en"
+    },
+    {
+      "label": "Google: fält för gästbehörigheter",
+      "url": "https://developers.google.com/workspace/calendar/api/v3/reference/events"
+    }
+  ],
+  "updated": "2026-10-21",
+  "seeAlso": [
+    "who-can-see-what-in-google-calendar",
+    "sharing-one-event-not-your-calendar"
+  ]
+},
 
   'google-calendars-that-never-reach-your-iphone': {
     title: 'Varför vissa Google-kalendrar aldrig når din iPhone',

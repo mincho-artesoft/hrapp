@@ -254,52 +254,96 @@ export const GOOGLE_MS: Readonly<Record<string, LocalisedArticle>> = {
 },
 
   'what-guests-can-do-to-your-event': {
-    title: 'Apa yang tetamu boleh lakukan pada acara anda',
-    short: 'Kebenaran tetamu',
-    description:
-      'Tiga kotak menentukan sama ada tetamu boleh memindahkan mesyuarat anda, menjemput orang asing, atau membaca seluruh senarai. Ia dihidupkan lebih kerap daripada yang disangka.',
-    lede: 'Menjemput seseorang memberi lebih daripada tempat dan waktu. Dalam acara Google biasa, tetamu lazimnya nampak siapa lagi yang dijemput, dan selalunya boleh menambah.',
-    commonBelief: 'Bahawa tetamu hanya boleh menerima atau menolak.',
-    sections: [
-      {
-        heading: 'Tiga kotak itu',
-        body: [
-          'Ubah acara membolehkan tetamu menukar waktu, tempat dan tajuk untuk semua orang. Jarang dikehendaki, mudah dibiarkan hidup.',
-          'Jemput orang lain membolehkannya menambah orang yang anda tidak pernah temui. Lihat senarai tetamu menunjukkan semua yang dijemput dan jawapan mereka — tidak mengapa dalam pasukan, janggal dengan pelanggan, salah bagi apa-apa yang menyerupai kumpulan pelanggan berasingan.',
-        ],
-      },
-      {
-        heading: 'Di mana ia tersasar secara senyap',
-        body: [
-          'Satu acara, banyak penerima individu, senarai kelihatan: kini semua orang memiliki semua orang. Mematikan satu kotak itu ialah beza antara sebuah mesyuarat dan buku alamat yang bocor.',
-          'Tetapannya tinggal pada acara, bukan pada akaun, jadi ia kembali kepada nilai lalai anda setiap kali dan perlu difikirkan pada acara yang penting, bukan sekali sahaja.',
-        ],
-      },
-    ],
-    claims: {
-      sharePrice: 'Kos menghantar satu acara dari aplikasi',
+  "title": "Kebenaran tetamu Google Calendar: suntingan, jemputan dan senarai tetamu",
+  "short": "Kebenaran tetamu bagi acara",
+  "description": "Semak kebenaran tetamu dan tetapan lalai Google. Bezakan hak jemputan daripada akses kalendar serta peranan Cloud Calendars.",
+  "lede": "Kebolehan membalas tidak menerangkan semua tindakan tetamu. Semak kebenaran sebelum menggunakan satu jemputan untuk pasukan, pelanggan atau orang ramai. Panduan ini diterbitkan oleh Arte Soft, pembangun Cloud Calendars.",
+  "commonBelief": "Tetamu hanya boleh menerima atau menolak, dan setiap aplikasi menawarkan kawalan kebenaran yang sama.",
+  "sections": [
+    {
+      "heading": "Mulakan dengan penganjur dan acara asal",
+      "body": [
+        "Buka acara yang betul dalam Google Calendar menggunakan akaun penganjur atau akaun yang dibenarkan mengurusnya. Semak kalendar, tarikh dan penganjur sebelum mengubah kebenaran. Janji temu yang diimport berasingan bukan tempat yang boleh dipercayai untuk mengawal jemputan asal.",
+        "Untuk mesyuarat pasukan, tentukan siapa boleh menjadualkan semula, menjemput orang lain dan melihat peserta. Ini keputusan berasingan. Tetamu yang perlu hadir tidak semestinya perlu mengurus mesyuarat."
+      ]
     },
-    faq: [
-      {
-        q: 'Adakah tetamu nampak satu sama lain dalam jemputan Kalendar Google?',
-        a: 'Secara lalai selalunya ya. «Lihat senarai tetamu» menunjukkan semua yang dijemput dan jawapan mereka: tidak mengapa dalam pasukan, janggal dengan pelanggan, dan salah apabila tetamu ialah pelanggan yang berasingan.',
-      },
-      {
-        q: 'Bolehkah tetamu menukar waktu mesyuarat saya?',
-        a: 'Jika «ubah acara» ditanda, boleh, dan perubahan itu terpakai untuk semua. Jarang dikehendaki dan mudah dibiarkan hidup.',
-      },
-      {
-        q: 'Bagaimana menghalang tetamu daripada menjemput orang lain?',
-        a: 'Matikan «jemput orang lain» pada acara itu sendiri. Tetapan ini milik acara, bukan akaun, jadi ia kembali kepada nilai lalai anda setiap kali.',
-      },
-    ],
-    practical: [
-      'Matikan «lihat senarai tetamu» bagi apa-apa yang dihantar kepada orang yang tidak saling mengenali.',
-      'Biarkan «ubah acara» dimatikan melainkan ada orang yang benar-benar menjadualkan untuk anda.',
-      'Semak kotak pada acara, bukan dalam tetapan: di situlah tempatnya.',
-    ],
-    seeAlso: ['who-can-see-what-in-google-calendar', 'why-a-shared-calendar-does-not-appear'],
-  },
+    {
+      "heading": "Tentukan sama ada tetamu patut mengubah mesyuarat",
+      "body": [
+        "Google mendokumenkan pilihan “Modify event” di bawah kebenaran tetamu dalam editor komputer. Ini kebenaran kerjasama yang luas, bukan sekadar mencadangkan masa baharu. Google menerangkan bahawa ia merangkumi suntingan medan, melihat tetamu dan menempah bilik.",
+        "Penganjur bersama bengkel yang dipercayai mungkin memerlukan kebebasan ini, tetapi pelanggan dengan janji temu mungkin tidak. Pilih mengikut tanggungjawab dan sahkan acara yang disimpan, bukan tetapan mesyuarat lain."
+      ]
+    },
+    {
+      "heading": "Semak jemputan dan keterlihatan secara berasingan",
+      "body": [
+        "Google membezakan kebenaran menjemput orang lain daripada melihat tetamu lain. Semak kedua-duanya bersama akses suntingan. Mematikan satu kebolehan tidak bermakna yang lain sudah diperiksa; lalai yang dipaparkan bukan bukti tetapan acara sedia ada.",
+        "Bagi pelanggan yang tidak berkaitan, pertimbangkan sama ada jemputan bersama sesuai. Maklumat dalam e-mel, huraian atau mesej diteruskan berada di luar kawalan senarai tetamu semasa. Jangan letakkan butiran sulit peserta dalam huraian lalu mengharapkan senarai tersembunyi melindunginya."
+      ]
+    },
+    {
+      "heading": "Semak lalai serta acara penting secara individu",
+      "body": [
+        "Google turut mendokumenkan kebenaran tetamu lalai dalam tetapan acara, termasuk lalai pengubahsuaian. Jadi kawalan bukan hanya pada setiap acara. Semak lalai apabila corak penjadualan berubah, kemudian periksa jemputan penting sedia ada satu per satu.",
+        "Bagi mesyuarat berulang, pastikan kejadian atau siri yang disunting sebelum menyimpan. Jangan anggap perubahan keutamaan menulis semula jemputan lama. Uji dengan rakan menggunakan contoh yang dipersetujui dan tidak sensitif, bukan memindahkan atau membatalkan mesyuarat pelanggan sebenar."
+      ]
+    },
+    {
+      "heading": "Asingkan peranan Cloud Calendars",
+      "body": [
+        "Cloud Calendars mempunyai perkongsian berasingan dengan Reader, Writer dan Owner. Reader membolehkan paparan dan penyegerakan; Writer menyunting; Owner turut mengurus perkongsian dan akses menggunakan identiti yang dijemput. Ini bukan suis untuk tiga kebenaran tetamu Google.",
+        "Apabila kebenaran khusus Google penting, semak acara asal dalam Google Calendar. Melihat peserta dalam Cloud Calendars tidak membuktikan semua tetapan Google boleh diubah di situ. Kenal pasti perkhidmatan pemilik dan identiti penerima apabila kawalan hilang atau suntingan gagal."
+      ]
+    },
+    {
+      "heading": "Sahkan hasil dan jelaskan tanggungjawab",
+      "body": [
+        "Selepas menyimpan, buka semula acara asal dan semak tetapan. Jika sesuai, minta rakan yang diberi kuasa mengesahkan kebolehan akaunnya sendiri. Jangan bertukar kata laluan atau menghantar butiran peribadi tetamu sebagai jalan pintas menguji akses.",
+        "Asingkan kehadiran daripada kebenaran. Kebolehan menyunting, salinan import dan penerimaan direkodkan ialah fakta berbeza. Resit penerimaan perkongsian Cloud Calendars bukan RSVP. Untuk mesyuarat penting, minta jawapan kehadiran dan jelaskan siapa mengurus perubahan jadual."
+      ]
+    }
+  ],
+  "claims": {},
+  "practical": [
+    "Kenal pasti akaun penganjur dan acara asal.",
+    "Tentukan siapa mengurus, menjemput orang lain dan melihat tetamu.",
+    "Periksa kebenaran tetamu sebenar pada acara Google.",
+    "Semak lalai tanpa menganggapnya mengubah acara sedia ada.",
+    "Anggap peranan Cloud Calendars sebagai sistem kebenaran berasingan.",
+    "Buka semula acara tersimpan dan sahkan kehadiran secara berasingan."
+  ],
+  "faq": [
+    {
+      "q": "Bolehkah tetamu menukar masa mesyuarat saya?",
+      "a": "Google menyokong pemberian kebenaran pengubahsuaian. Periksa acara dan akses tetamu; jangan simpulkan daripada penerimaan jemputan sahaja."
+    },
+    {
+      "q": "Adakah semua kebenaran ditetapkan hanya pada setiap acara?",
+      "a": "Tidak. Google juga mendokumenkan kebenaran lalai. Semak lalai untuk penjadualan akan datang dan acara penting sedia ada secara langsung."
+    },
+    {
+      "q": "Adakah menyembunyikan senarai membuang maklumat yang sudah dihantar?",
+      "a": "Ia tidak membuktikan e-mel, huraian, tangkap layar atau salinan bebas terdahulu telah dibuang. Semak apa yang sebenarnya diedarkan secara berasingan."
+    }
+  ],
+  "sourcesHeading": "Panduan penyedia dan bacaan lanjut",
+  "sources": [
+    {
+      "label": "Google: kerjasama acara dan kebenaran tetamu lalai",
+      "url": "https://support.google.com/a/users/answer/13293412?hl=en"
+    },
+    {
+      "label": "Google: medan kebenaran tetamu acara",
+      "url": "https://developers.google.com/workspace/calendar/api/v3/reference/events"
+    }
+  ],
+  "seeAlso": [
+    "who-can-see-what-in-google-calendar",
+    "sharing-one-event-not-your-calendar",
+    "why-a-shared-calendar-does-not-appear"
+  ],
+  "updated": "2026-10-21"
+},
 
   'google-calendars-that-never-reach-your-iphone': {
     title: 'Kenapa sesetengah kalendar Google tidak pernah sampai ke iPhone',

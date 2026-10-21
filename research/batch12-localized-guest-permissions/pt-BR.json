@@ -1,0 +1,90 @@
+{
+  "title": "Permissões de convidados no Google Agenda: edição, convites e lista de participantes",
+  "short": "Permissões dos convidados",
+  "description": "Confira permissões e padrões dos convidados no Google. Separe os direitos do convite do acesso ao calendário e das funções do Cloud Calendars.",
+  "lede": "Poder responder a um convite não resume tudo o que um convidado pode fazer. Revise as permissões antes de usar um único convite para uma equipe, clientes ou encontro público. Este guia é publicado pela Arte Soft, desenvolvedora do Cloud Calendars.",
+  "commonBelief": "Convidados só podem aceitar ou recusar, e todos os aplicativos oferecem os mesmos controles de permissão.",
+  "sections": [
+    {
+      "heading": "Comece pelo organizador e pelo evento original",
+      "body": [
+        "Abra o evento no Google Agenda usando a conta organizadora ou uma conta autorizada a gerenciá-lo. Confira calendário, data e organizador antes de mudar permissões. Um compromisso importado separadamente não é um lugar confiável para controlar o convite original.",
+        "Para uma reunião de equipe, defina quem poderá reagendar, convidar outras pessoas e ver os participantes. São decisões separadas. Quem precisa participar não necessariamente precisa gerenciar a reunião."
+      ]
+    },
+    {
+      "heading": "Decida se convidados devem alterar a reunião",
+      "body": [
+        "O Google documenta a opção de modificar o evento na seção de permissões dos convidados do editor para computador. É uma permissão ampla de colaboração, não apenas uma forma de sugerir outro horário. Segundo o Google, ela permite gerenciar o evento, editar campos, ver convidados e reservar salas.",
+        "Um coorganizador de confiança preparando uma oficina pode precisar dessa flexibilidade. Um cliente comparecendo a uma consulta talvez não. Escolha conforme a responsabilidade que está atribuindo e confira o evento salvo, sem se basear na configuração de outra reunião."
+      ]
+    },
+    {
+      "heading": "Revise convites e visibilidade separadamente",
+      "body": [
+        "O modelo de eventos do Google distingue a permissão de convidar outras pessoas da permissão de ver os demais convidados. Revise ambas junto com o direito de editar. Desativar uma não significa conferir a outra; um padrão exibido também não comprova a configuração de um evento existente.",
+        "Para reunir clientes sem relação entre si, considere se um convite compartilhado é adequado. Informações já incluídas em e-mails, descrições ou mensagens encaminhadas vão além do controle atual da lista de convidados. Não coloque dados confidenciais na descrição esperando que ocultar a lista os esconda."
+      ]
+    },
+    {
+      "heading": "Confira padrões e eventos importantes",
+      "body": [
+        "O Google também documenta permissões padrão dos convidados nas configurações de eventos, inclusive para modificação. Portanto, os controles não existem apenas em cada evento. Revise os padrões quando sua forma habitual de agendar mudar e confira individualmente convites importantes já existentes.",
+        "Em uma reunião recorrente, confirme qual ocorrência ou série está editando antes de salvar. Não suponha que mudar uma preferência reescreveu convites antigos. Para testar com um colega, use um exemplo combinado e sem dados sensíveis, em vez de mover ou cancelar uma reunião real de cliente."
+      ]
+    },
+    {
+      "heading": "Diferencie as funções do Cloud Calendars",
+      "body": [
+        "O Cloud Calendars tem um mecanismo de compartilhamento separado, com Reader, Writer e Owner. Reader permite ver e sincronizar; Writer permite editar; Owner também gerencia compartilhamento e acesso usando a identidade convidada. Essas funções não são controles das três permissões de convidados do Google.",
+        "Se uma permissão específica do Google importa, inspecione o evento original no Google Agenda. Ver um participante no Cloud Calendars não comprova que todas as configurações de convidados do Google podem ser alteradas ali. Ao investigar um controle ausente ou edição malsucedida, confirme o serviço proprietário e a identidade do destinatário."
+      ]
+    },
+    {
+      "heading": "Verifique o resultado e defina responsabilidades",
+      "body": [
+        "Depois de salvar, reabra o evento original e confira as configurações desejadas. Quando apropriado, peça a um colega autorizado que confirme o que consegue fazer pela própria conta. Não troque senhas nem envie dados privados de convidados como atalho para testar acesso.",
+        "Separe presença de permissões. Poder editar, ter uma cópia importada e registrar uma aceitação são fatos diferentes. No Cloud Calendars, um registro de recebimento do compartilhamento não é confirmação de presença. Em reuniões importantes, peça a resposta necessária e esclareça quem cuida das mudanças no horário."
+      ]
+    }
+  ],
+  "claims": {},
+  "practical": [
+    "Identifique a conta organizadora e o evento original.",
+    "Defina quem gerencia a reunião, convida pessoas e vê os convidados.",
+    "Confira as permissões reais do evento Google.",
+    "Revise os padrões sem presumir que mudam eventos existentes.",
+    "Trate as funções do Cloud Calendars como um sistema separado.",
+    "Reabra o evento salvo e confirme a presença separadamente."
+  ],
+  "faq": [
+    {
+      "q": "Um convidado pode mudar o horário da minha reunião?",
+      "a": "O Google permite conceder direito de modificação. Confira o evento e o acesso do convidado; receber um convite não comprova essa permissão."
+    },
+    {
+      "q": "Todas as permissões são definidas apenas em cada evento?",
+      "a": "Não. O Google também documenta permissões padrão. Confira os padrões para próximos agendamentos e examine os eventos importantes já existentes."
+    },
+    {
+      "q": "Ocultar a lista remove informações já enviadas?",
+      "a": "Isso não comprova a remoção de e-mails, descrições, capturas de tela ou cópias independentes anteriores. Revise separadamente o que foi distribuído."
+    }
+  ],
+  "sourcesHeading": "Orientações dos provedores e leitura complementar",
+  "sources": [
+    {
+      "label": "Google: colaboração em eventos e permissões padrão",
+      "url": "https://support.google.com/a/users/answer/13293412?hl=en"
+    },
+    {
+      "label": "Google: campos de permissão dos convidados",
+      "url": "https://developers.google.com/workspace/calendar/api/v3/reference/events"
+    }
+  ],
+  "updated": "2026-10-21",
+  "seeAlso": [
+    "who-can-see-what-in-google-calendar",
+    "sharing-one-event-not-your-calendar"
+  ]
+}

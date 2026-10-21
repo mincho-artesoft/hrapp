@@ -253,52 +253,96 @@ export const GOOGLE_ES_ES: Readonly<Record<string, LocalisedArticle>> = {
 },
 
   'what-guests-can-do-to-your-event': {
-    title: 'Qué pueden hacerle tus invitados a un evento',
-    short: 'Permisos de los invitados',
-    description:
-      'Tres casillas deciden si un invitado puede mover tu reunión, invitar a desconocidos o leer la lista entera. Están activas más veces de las que crees.',
-    lede: 'Invitar a alguien le da más que un sitio y una hora. En un evento normal de Google, un invitado suele ver a quién más has llamado y a menudo puede añadir gente.',
-    commonBelief: 'Que un invitado solo puede aceptar o rechazar.',
-    sections: [
-      {
-        heading: 'Las tres casillas',
-        body: [
-          'Modificar el evento deja que un invitado cambie la hora, el lugar y el título para todos. Casi nunca se quiere y es fácil dejarla activada.',
-          'Invitar a otros le permite añadir a personas que no conoces. Ver la lista de invitados enseña a todos los llamados y su respuesta: correcto en un equipo, incómodo con un cliente, equivocado en cualquier cosa parecida a un grupo de clientes distintos.',
-        ],
-      },
-      {
-        heading: 'Dónde se tuerce en silencio',
-        body: [
-          'Un evento, muchos destinatarios individuales, lista visible: ahora todos tienen a todos. Quitar esa casilla es la diferencia entre una reunión y una agenda de contactos filtrada.',
-          'Los ajustes viven en el evento, no en la cuenta, así que vuelven a tus valores por defecto cada vez y hay que pensarlos en los eventos que importan, no una sola vez.',
-        ],
-      },
-    ],
-    claims: {
-      sharePrice: 'Lo que cuesta enviar un solo evento desde la app',
+  "title": "Permisos de invitados en Google Calendar: edición, invitaciones y lista de asistentes",
+  "short": "Permisos de invitados de un evento",
+  "description": "Revisa los permisos y valores predeterminados de invitados. Distingue invitaciones, acceso al calendario y roles Reader, Writer y Owner.",
+  "lede": "Poder responder a una invitación no describe todo lo que puede hacer un invitado. Revisa los permisos del evento antes de usar una invitación para el equipo, clientes o una reunión pública. Esta guía la publica Arte Soft, desarrollador de Cloud Calendars.",
+  "commonBelief": "Los invitados solo pueden aceptar o rechazar y todas las aplicaciones ofrecen los mismos controles de permisos.",
+  "sections": [
+    {
+      "heading": "Empieza por el organizador y el evento original",
+      "body": [
+        "Abre el evento correcto en Google Calendar con la cuenta organizadora o una autorizada para gestionarlo. Comprueba calendario, fecha y organizador antes de cambiar permisos. Una cita importada por separado no es un lugar fiable para controlar la invitación original.",
+        "Para una reunión de equipo, define quién puede cambiar la hora, invitar a otras personas y ver a los demás participantes. Son decisiones distintas. Un invitado que necesita asistir no necesariamente debe gestionar la reunión."
+      ]
     },
-    faq: [
-      {
-        q: '¿Los invitados se ven entre sí en una invitación de Google Calendar?',
-        a: 'Por defecto, casi siempre sí. «Ver la lista de invitados» muestra a todos los llamados y sus respuestas: bien en un equipo, incómodo con un cliente y equivocado cuando los invitados son clientes distintos.',
-      },
-      {
-        q: '¿Puede un invitado cambiar la hora de mi reunión?',
-        a: 'Si «modificar el evento» está marcado, sí, y el cambio vale para todos. Rara vez se quiere y es fácil dejarlo activo.',
-      },
-      {
-        q: '¿Cómo evito que los invitados inviten a otros?',
-        a: 'Desmarca «invitar a otros» en el propio evento. Estos ajustes pertenecen al evento y no a la cuenta, así que vuelven a tus valores por defecto cada vez.',
-      },
-    ],
-    practical: [
-      'Desactiva «ver la lista de invitados» en todo lo que va a gente que no se conoce entre sí.',
-      'Deja «modificar el evento» apagado salvo que alguien planifique realmente por ti.',
-      'Mira las casillas en el evento, no en tus ajustes: ahí es donde viven.',
-    ],
-    seeAlso: ['who-can-see-what-in-google-calendar', 'why-a-shared-calendar-does-not-appear'],
-  },
+    {
+      "heading": "Decide si los invitados deben modificar la reunión",
+      "body": [
+        "Google documenta la opción «Modify event» dentro de «Guests can» en su editor de eventos para ordenador. Es un permiso amplio de colaboración, no solo una forma de proponer otra hora. Google explica que permite gestionar el evento, incluidos editar campos, ver invitados y reservar salas.",
+        "Por ejemplo, un coorganizador de confianza que prepara un taller puede necesitar esa flexibilidad; un cliente que acude a una cita quizá no. Decide según la responsabilidad que das al invitado y verifica el evento guardado, sin basarte en la configuración de otra reunión."
+      ]
+    },
+    {
+      "heading": "Revisa por separado las invitaciones y la visibilidad de invitados",
+      "body": [
+        "El modelo de eventos de Google distingue el permiso para invitar a otros del permiso para ver a los demás invitados. Revisa ambos junto al acceso de edición. Desactivar uno no significa haber comprobado el otro, y un valor predeterminado mostrado no demuestra la configuración de un evento existente.",
+        "Si reúnes a clientes sin relación entre sí, considera si una invitación compartida es adecuada. La información ya incluida en un correo, una descripción o un mensaje reenviado queda fuera del control actual de la lista de invitados. No pongas datos confidenciales de participantes en la descripción esperando ocultarlos con una lista invisible."
+      ]
+    },
+    {
+      "heading": "Comprueba los valores predeterminados y los eventos importantes",
+      "body": [
+        "Google también documenta «Default guest permissions» en los ajustes de eventos, incluido un valor predeterminado para modificar. Por tanto, los controles no son exclusivamente por evento. Revisa tus valores habituales cuando cambie tu forma de planificar y después comprueba individualmente las invitaciones existentes importantes.",
+        "En una reunión recurrente, confirma qué ocurrencia o serie editas antes de guardar. No supongas que cambiar una preferencia ha reescrito invitaciones anteriores. Para probar una configuración con un compañero, usa un ejemplo acordado y sin datos sensibles, en vez de mover o cancelar una reunión real con un cliente."
+      ]
+    },
+    {
+      "heading": "Distingue los roles de Cloud Calendars",
+      "body": [
+        "Cloud Calendars tiene un sistema de uso compartido separado con roles Reader, Writer y Owner. Reader permite consultar y sincronizar; Writer permite editar; Owner también gestiona la participación y el acceso con la identidad invitada. Estos roles no deben presentarse como interruptores de los tres permisos de invitados de Google.",
+        "Si importa un permiso específico de Google, inspecciona el evento original en Google Calendar. Ver un asistente en Cloud Calendars no demuestra que todos los ajustes de invitados de Google puedan cambiarse allí. Ten claro el servicio propietario y la identidad del destinatario al investigar un control ausente o una edición fallida."
+      ]
+    },
+    {
+      "heading": "Verifica el resultado guardado y comunica las responsabilidades",
+      "body": [
+        "Después de guardar, vuelve a abrir el evento original y comprueba los ajustes previstos. Cuando corresponda, pide a un compañero autorizado que confirme qué permite su propia cuenta. No intercambiéis contraseñas ni enviéis datos privados de invitados como atajo para comprobar el acceso.",
+        "Separa asistencia y permisos. Poder editar, tener una copia importada y registrar una aceptación son hechos distintos. En Cloud Calendars, un recibo de uso compartido no es una confirmación de asistencia. Para una reunión importante, solicita la respuesta que necesitas y aclara quién es responsable de cambiar el horario."
+      ]
+    }
+  ],
+  "claims": {},
+  "practical": [
+    "Identifica la cuenta organizadora y el evento original.",
+    "Decide quién gestiona la reunión, invita a otros y ve invitados.",
+    "Inspecciona los permisos reales del evento de Google.",
+    "Revisa los valores predeterminados sin asumir que cambian eventos existentes.",
+    "Trata los roles de Cloud Calendars como un sistema de permisos separado.",
+    "Reabre el evento guardado y confirma la asistencia por separado."
+  ],
+  "faq": [
+    {
+      "q": "¿Un invitado puede cambiar la hora de mi reunión?",
+      "a": "Google permite conceder el permiso de modificación. Comprueba el evento real y el acceso del invitado; no lo deduzcas solo porque recibió una invitación."
+    },
+    {
+      "q": "¿Todos los permisos se configuran únicamente en cada evento?",
+      "a": "No. Google también documenta permisos predeterminados. Revísalos para futuras reuniones y comprueba directamente los eventos existentes importantes."
+    },
+    {
+      "q": "¿Ocultar la lista elimina información ya enviada?",
+      "a": "No demuestra que se hayan eliminado correos, descripciones, capturas o copias independientes anteriores. Revisa por separado lo que realmente se distribuyó."
+    }
+  ],
+  "sourcesHeading": "Orientación del proveedor y lecturas adicionales",
+  "sources": [
+    {
+      "label": "Google: colaboración en eventos y permisos predeterminados de invitados",
+      "url": "https://support.google.com/a/users/answer/13293412?hl=en"
+    },
+    {
+      "label": "Google: campos de permisos de invitados",
+      "url": "https://developers.google.com/workspace/calendar/api/v3/reference/events"
+    }
+  ],
+  "seeAlso": [
+    "who-can-see-what-in-google-calendar",
+    "sharing-one-event-not-your-calendar",
+    "keeping-track-of-who-replied"
+  ],
+  "updated": "2026-10-21"
+},
 
   'google-calendars-that-never-reach-your-iphone': {
     title: 'Por qué algunos calendarios de Google nunca llegan a tu iPhone',
