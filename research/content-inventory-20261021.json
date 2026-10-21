@@ -1,5 +1,5 @@
 {
-  "date": "2026-10-21T19:00:32.006Z",
+  "date": "2026-10-21T19:28:29.150Z",
   "status": "source_inventory_not_quality_approval",
   "articles": [
     {
@@ -732,6 +732,23 @@
     },
     {
       "locale": "de-DE",
+      "slug": "exchange-calendars-on-an-iphone",
+      "title": "Microsoft- und Exchange-Kalender auf dem iPhone: zuerst die Verbindung prüfen",
+      "description": "Prüfe Microsoft-Kontotyp, Arbeitgeberfreigabe und Rechte, bevor du einen Arbeitskalender verbindest. Erfahre, was Cloud Calendars Premium ergänzt.",
+      "descriptionCharacters": 146,
+      "sections": 6,
+      "faq": 3,
+      "words": 813,
+      "source": "articles.ts",
+      "sources": [
+        "https://learn.microsoft.com/en-us/graph/outlook-calendar-concept-overview",
+        "https://learn.microsoft.com/en-us/entra/identity/enterprise-apps/user-admin-consent-overview",
+        "https://support.apple.com/en-lamr/guide/iphone/iph3d1110d4/ios"
+      ],
+      "updated": "2026-10-21"
+    },
+    {
+      "locale": "de-DE",
       "slug": "weather-inside-your-calendar",
       "title": "Ein Kalender, in dem das Wetter schon drin ist",
       "description": "Warum es ein Konstruktionsfehler ist, für einen Tag zwei Apps zu befragen — und wie ein Kalender aussieht, in dem die Vorhersage Teil der Ansicht ist statt daneben zu stehen.",
@@ -792,15 +809,19 @@
     {
       "locale": "de-DE",
       "slug": "icloud-google-and-outlook-in-one-view",
-      "title": "iCloud, Google und Outlook in einer Ansicht",
-      "description": "Bei den meisten liegt das Leben auf einem privaten Apple-Kalender, einem Google-Konto und einem Exchange-Kalender der Arbeit. Was sich ändert, wenn alle drei in einem Raster stehen.",
-      "descriptionCharacters": 181,
-      "sections": 3,
-      "faq": 0,
-      "words": 256,
+      "title": "iCloud, Google und Outlook in einer Ansicht: Konten, Kopien und Rechte",
+      "description": "Zeige iCloud-, Google- und Microsoft-Kalender gemeinsam an. Prüfe Konten, Bearbeitungsrechte und Kopien, bevor du Termine verschiebst oder Verfügbarkeit nutzt.",
+      "descriptionCharacters": 159,
+      "sections": 6,
+      "faq": 3,
+      "words": 835,
       "source": "articles.ts",
-      "sources": [],
-      "updated": "2026-08-27"
+      "sources": [
+        "https://support.apple.com/guide/icloud/set-up-calendar-mme4d73a8727/icloud",
+        "https://support.google.com/calendar/answer/37082?hl=en",
+        "https://learn.microsoft.com/en-us/graph/outlook-calendar-concept-overview"
+      ],
+      "updated": "2026-10-21"
     },
     {
       "locale": "de-DE",
@@ -1461,28 +1482,35 @@
     {
       "locale": "en-US",
       "slug": "icloud-google-and-outlook-in-one-view",
-      "title": "iCloud, Google and Outlook in one view",
-      "description": "Most people's life is split across a personal Apple calendar, a Google account and a work Exchange one. Here is what putting them in a single grid actually changes.",
-      "descriptionCharacters": 164,
-      "sections": 3,
-      "faq": 0,
-      "words": 261,
+      "title": "iCloud, Google and Outlook in one view: accounts, copies and permissions",
+      "description": "View iCloud, Google and Microsoft calendars together. Check account selection, edit permissions and copies before moving events or relying on availability.",
+      "descriptionCharacters": 155,
+      "sections": 6,
+      "faq": 3,
+      "words": 955,
       "source": "articles-unify.ts",
-      "sources": [],
-      "updated": "2026-08-27"
+      "sources": [
+        "https://support.apple.com/guide/icloud/set-up-calendar-mme4d73a8727/icloud",
+        "https://support.google.com/calendar/answer/37082?hl=en",
+        "https://learn.microsoft.com/en-us/graph/outlook-calendar-concept-overview"
+      ],
+      "updated": "2026-10-21"
     },
     {
       "locale": "en-US",
       "slug": "three-calendar-apps-is-two-too-many",
-      "title": "Three calendar apps is two too many",
-      "description": "Switching between calendar apps is not a workflow, it is a tax. What it costs and what replacing it looks like.",
-      "descriptionCharacters": 111,
-      "sections": 2,
-      "faq": 0,
-      "words": 210,
+      "title": "Combine calendar apps on iPhone without losing track of events",
+      "description": "Bring calendar accounts into one iPhone overview. Check event destinations, duplicate routes, write-back and notifications before changing your daily workflow.",
+      "descriptionCharacters": 159,
+      "sections": 6,
+      "faq": 3,
+      "words": 775,
       "source": "articles-unify.ts",
-      "sources": [],
-      "updated": "2026-08-27"
+      "sources": [
+        "https://support.apple.com/guide/iphone/use-multiple-calendars-iph3d1110d4/ios",
+        "https://support.apple.com/en-us/102180"
+      ],
+      "updated": "2026-10-21"
     },
     {
       "locale": "en-US",
@@ -1490,9 +1518,9 @@
       "title": "Calendar sync on iPhone: accounts, subscriptions and missing events",
       "description": "Understand calendar sync, read-only subscriptions and local events. Trace one event between iPhone and iPad before changing accounts or deleting duplicates.",
       "descriptionCharacters": 156,
-      "sections": 6,
+      "sections": 7,
       "faq": 4,
-      "words": 1060,
+      "words": 1233,
       "source": "articles-unify.ts",
       "sources": [
         "https://support.apple.com/guide/iphone/use-multiple-calendars-iph3d1110d4/ios",
@@ -1506,9 +1534,9 @@
       "title": "Work and personal calendars in one app: keep ownership separate",
       "description": "See work and personal calendars together without merging ownership. Check permissions, event destinations and Cloud Calendars plans before connecting accounts.",
       "descriptionCharacters": 159,
-      "sections": 4,
-      "faq": 2,
-      "words": 557,
+      "sections": 5,
+      "faq": 3,
+      "words": 758,
       "source": "articles-unify.ts",
       "sources": [
         "https://support.apple.com/guide/iphone/use-multiple-calendars-iph3d1110d4/ios",
@@ -1521,15 +1549,19 @@
     {
       "locale": "en-US",
       "slug": "exchange-calendars-on-an-iphone",
-      "title": "Getting an Exchange work calendar onto your iPhone properly",
-      "description": "Work calendars that live in Microsoft behave differently from Google and iCloud ones. What to expect, and what it costs.",
-      "descriptionCharacters": 120,
-      "sections": 2,
-      "faq": 0,
-      "words": 194,
+      "title": "Microsoft and Exchange calendars on iPhone: check the connection first",
+      "description": "Check Microsoft account type, employer approval and permissions before connecting a work calendar. See what Cloud Calendars Premium adds.",
+      "descriptionCharacters": 137,
+      "sections": 6,
+      "faq": 3,
+      "words": 948,
       "source": "articles-unify.ts",
-      "sources": [],
-      "updated": "2026-08-27"
+      "sources": [
+        "https://learn.microsoft.com/en-us/graph/outlook-calendar-concept-overview",
+        "https://learn.microsoft.com/en-us/entra/identity/enterprise-apps/user-admin-consent-overview",
+        "https://support.apple.com/en-lamr/guide/iphone/iph3d1110d4/ios"
+      ],
+      "updated": "2026-10-21"
     },
     {
       "locale": "en-US",
@@ -1905,6 +1937,23 @@
     },
     {
       "locale": "es-ES",
+      "slug": "exchange-calendars-on-an-iphone",
+      "title": "Calendarios Microsoft y Exchange en iPhone: comprueba primero la conexión",
+      "description": "Revisa el tipo de cuenta Microsoft, la autorización de la empresa y los permisos antes de conectar el calendario. Qué añade Cloud Calendars Premium.",
+      "descriptionCharacters": 148,
+      "sections": 6,
+      "faq": 3,
+      "words": 1003,
+      "source": "articles.ts",
+      "sources": [
+        "https://learn.microsoft.com/en-us/graph/outlook-calendar-concept-overview",
+        "https://learn.microsoft.com/en-us/entra/identity/enterprise-apps/user-admin-consent-overview",
+        "https://support.apple.com/en-lamr/guide/iphone/iph3d1110d4/ios"
+      ],
+      "updated": "2026-10-21"
+    },
+    {
+      "locale": "es-ES",
       "slug": "weather-inside-your-calendar",
       "title": "Un calendario que ya lleva el tiempo dentro",
       "description": "Por qué consultar dos aplicaciones para planificar un día es un fallo de diseño, y cómo es un calendario en el que la previsión forma parte de la vista en lugar de estar al lado.",
@@ -1965,15 +2014,19 @@
     {
       "locale": "es-ES",
       "slug": "icloud-google-and-outlook-in-one-view",
-      "title": "iCloud, Google y Outlook en una sola vista",
-      "description": "La vida de casi todo el mundo está repartida entre un calendario personal de Apple, una cuenta de Google y uno de Exchange del trabajo. Qué cambia al ponerlos en una misma cuadrícula.",
-      "descriptionCharacters": 183,
-      "sections": 3,
-      "faq": 0,
-      "words": 264,
+      "title": "iCloud, Google y Outlook en una vista: cuentas, copias y permisos",
+      "description": "Ve juntos calendarios de iCloud, Google y Microsoft. Revisa cuentas, permisos y copias antes de mover eventos o confiar en la disponibilidad.",
+      "descriptionCharacters": 141,
+      "sections": 6,
+      "faq": 3,
+      "words": 973,
       "source": "articles.ts",
-      "sources": [],
-      "updated": "2026-08-27"
+      "sources": [
+        "https://support.apple.com/guide/icloud/set-up-calendar-mme4d73a8727/icloud",
+        "https://support.google.com/calendar/answer/37082?hl=en",
+        "https://learn.microsoft.com/en-us/graph/outlook-calendar-concept-overview"
+      ],
+      "updated": "2026-10-21"
     },
     {
       "locale": "es-ES",
@@ -2345,6 +2398,23 @@
     },
     {
       "locale": "fr-FR",
+      "slug": "exchange-calendars-on-an-iphone",
+      "title": "Calendriers Microsoft et Exchange sur iPhone : vérifiez d’abord la connexion",
+      "description": "Vérifiez le type de compte Microsoft, l’accord de l’employeur et les droits avant de connecter un calendrier. Ce qu’ajoute Cloud Calendars Premium.",
+      "descriptionCharacters": 147,
+      "sections": 6,
+      "faq": 3,
+      "words": 981,
+      "source": "articles.ts",
+      "sources": [
+        "https://learn.microsoft.com/en-us/graph/outlook-calendar-concept-overview",
+        "https://learn.microsoft.com/en-us/entra/identity/enterprise-apps/user-admin-consent-overview",
+        "https://support.apple.com/en-lamr/guide/iphone/iph3d1110d4/ios"
+      ],
+      "updated": "2026-10-21"
+    },
+    {
+      "locale": "fr-FR",
       "slug": "weather-inside-your-calendar",
       "title": "Un agenda qui contient déjà la météo",
       "description": "Pourquoi consulter deux applications pour organiser une journée est un défaut de conception, et à quoi ressemble un agenda où les prévisions font partie de la vue plutôt que d'être à côté.",
@@ -2405,15 +2475,19 @@
     {
       "locale": "fr-FR",
       "slug": "icloud-google-and-outlook-in-one-view",
-      "title": "iCloud, Google et Outlook dans une seule vue",
-      "description": "La vie de presque tout le monde se répartit entre un agenda personnel Apple, un compte Google et un Exchange professionnel. Ce que change le fait de les mettre dans une même grille.",
-      "descriptionCharacters": 181,
-      "sections": 3,
-      "faq": 0,
-      "words": 268,
+      "title": "iCloud, Google et Outlook dans une vue : comptes, copies et autorisations",
+      "description": "Affichez ensemble iCloud, Google et Microsoft. Vérifiez comptes, droits et copies avant de déplacer des événements ou de vous fier aux disponibilités.",
+      "descriptionCharacters": 150,
+      "sections": 6,
+      "faq": 3,
+      "words": 977,
       "source": "articles.ts",
-      "sources": [],
-      "updated": "2026-08-27"
+      "sources": [
+        "https://support.apple.com/guide/icloud/set-up-calendar-mme4d73a8727/icloud",
+        "https://support.google.com/calendar/answer/37082?hl=en",
+        "https://learn.microsoft.com/en-us/graph/outlook-calendar-concept-overview"
+      ],
+      "updated": "2026-10-21"
     },
     {
       "locale": "fr-FR",
@@ -3193,6 +3267,23 @@
     },
     {
       "locale": "it",
+      "slug": "exchange-calendars-on-an-iphone",
+      "title": "Calendari Microsoft ed Exchange su iPhone: verifica prima la connessione",
+      "description": "Controlla tipo di account Microsoft, approvazione aziendale e permessi prima di collegare un calendario. Cosa aggiunge Cloud Calendars Premium.",
+      "descriptionCharacters": 143,
+      "sections": 6,
+      "faq": 3,
+      "words": 904,
+      "source": "articles.ts",
+      "sources": [
+        "https://learn.microsoft.com/en-us/graph/outlook-calendar-concept-overview",
+        "https://learn.microsoft.com/en-us/entra/identity/enterprise-apps/user-admin-consent-overview",
+        "https://support.apple.com/en-lamr/guide/iphone/iph3d1110d4/ios"
+      ],
+      "updated": "2026-10-21"
+    },
+    {
+      "locale": "it",
       "slug": "weather-inside-your-calendar",
       "title": "Un calendario che contiene già il meteo",
       "description": "Perché controllare due app per organizzare una giornata è un difetto di progetto, e com'è fatto un calendario in cui le previsioni fanno parte della vista invece di stare accanto.",
@@ -3253,15 +3344,19 @@
     {
       "locale": "it",
       "slug": "icloud-google-and-outlook-in-one-view",
-      "title": "iCloud, Google e Outlook in una sola vista",
-      "description": "La vita di quasi tutti è divisa fra un calendario personale Apple, un account Google e un Exchange di lavoro. Cosa cambia a metterli nella stessa griglia.",
-      "descriptionCharacters": 154,
-      "sections": 3,
-      "faq": 0,
-      "words": 260,
+      "title": "iCloud, Google e Outlook in una vista: account, copie e permessi",
+      "description": "Visualizza insieme calendari iCloud, Google e Microsoft. Controlla account, permessi e copie prima di spostare eventi o affidarti alla disponibilità.",
+      "descriptionCharacters": 149,
+      "sections": 6,
+      "faq": 3,
+      "words": 886,
       "source": "articles.ts",
-      "sources": [],
-      "updated": "2026-08-27"
+      "sources": [
+        "https://support.apple.com/guide/icloud/set-up-calendar-mme4d73a8727/icloud",
+        "https://support.google.com/calendar/answer/37082?hl=en",
+        "https://learn.microsoft.com/en-us/graph/outlook-calendar-concept-overview"
+      ],
+      "updated": "2026-10-21"
     },
     {
       "locale": "it",

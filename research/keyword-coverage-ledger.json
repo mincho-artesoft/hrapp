@@ -10,7 +10,7 @@
     "No content is declared researched merely because a corresponding route exists."
   ],
   "currentInventory": {
-    "articles": 390,
+    "articles": 394,
     "locales": [
       "ar-SA",
       "bg",
@@ -402,5 +402,21 @@
     "curatedExportGuides": 26,
     "newPrimaryCandidates": "competitors/batch08-weather-accounts-discovery-20261021.json",
     "status": "published; broadergoalactive"
+  },
+  "seventhPublication": {
+    "date": "2026-10-21",
+    "changedArticles": 13,
+    "newLocalizedExchangeGuides": 4,
+    "revisedArticles": 9,
+    "newEnglishGuides": 0,
+    "sitemapUrls": 457,
+    "priorCanonicalsPreserved": 453,
+    "curatedEnglishTextGuides": 29,
+    "nativeProof": "batch07-providers/evidence.json",
+    "staticProof": "batch07-static-qa.json",
+    "publicProof": "batch07-public-qa.json",
+    "competitorQueue": "competitors/coverage-queue-20261021.json",
+    "queueScope": "71exactURLs with explicit reviewed/partial/discovered/failed provenance; not exhaustivecompetition",
+    "goalStatus": "active"
   }
 }

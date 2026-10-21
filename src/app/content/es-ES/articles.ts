@@ -10,6 +10,101 @@ import { LocalisedArticle } from '../types';
  * reescribir cada frase sin tocar un número.
  */
 export const ARTICLES_ES_ES: Readonly<Record<string, LocalisedArticle>> = {
+"exchange-calendars-on-an-iphone":{
+  "updated": "2026-10-21",
+  "title": "Calendarios Microsoft y Exchange en iPhone: comprueba primero la conexión",
+  "short": "Calendarios Microsoft en iPhone",
+  "description": "Revisa el tipo de cuenta Microsoft, la autorización de la empresa y los permisos antes de conectar el calendario. Qué añade Cloud Calendars Premium.",
+  "lede": "«Calendario Exchange» puede significar servicios y normas laborales distintos. Antes de cambiar ajustes o comprar un plan, identifica dónde se aloja tu buzón y qué conexión permite tu organización. Esta guía la escribe Arte Soft, desarrollador de Cloud Calendars.",
+  "commonBelief": "Toda app con inicio de sesión Microsoft debe funcionar con cualquier servidor Exchange y calendario laboral compartido.",
+  "sections": [
+    {
+      "heading": "1. Identifica el buzón, no solo la app Outlook",
+      "body": [
+        "Outlook es una app y también un nombre usado para servicios de Microsoft. Tener una cuenta en Outlook no indica qué servidor aloja su calendario. Pregunta si usas una cuenta Microsoft personal, un buzón Microsoft 365 en Exchange Online o una instalación Exchange propia de la organización.",
+        "Cloud Calendars ofrece inicio de sesión Microsoft y usa la conexión a su servicio de calendarios. No es una configuración universal mediante dirección de servidor y contraseña para cualquier Exchange. Microsoft documenta su API de calendario por separado de la configuración genérica de Exchange: confirma la vía prevista para tu buzón en lugar de adivinar un servidor."
+      ]
+    },
+    {
+      "heading": "2. Separa la cuenta del dispositivo Apple de la conexión de la app",
+      "body": [
+        "Un calendario laboral ya disponible en Calendario de Apple mediante una cuenta de dispositivo autorizada utiliza una vía distinta de «Sign in with Microsoft» dentro de Cloud Calendars. Los calendarios expuestos por el sistema del teléfono también dependen del permiso de acceso. Configurar correctamente la cuenta en los ajustes de Apple no demuestra que se apruebe otro inicio de sesión Microsoft.",
+        "Antes de añadir otra conexión, revisa dónde aparece el calendario laboral existente. Si después ves dos versiones de una reunión, identifica sus fuentes y oculta una temporalmente. No uses la eliminación de cuentas o eventos para diagnosticar qué conexión los generó."
+      ]
+    },
+    {
+      "heading": "3. Comprueba Premium y la autorización de la organización por separado",
+      "body": [
+        "Premium añade funciones de Microsoft Calendar y Microsoft Teams a Cloud Calendars. Advanced elimina anuncios de Base; no desbloquea el inicio de sesión Microsoft de la app. Revisa el precio local actual y el periodo de facturación en lugar de confiar en un precio de otra región.",
+        "Una suscripción no puede anular la decisión de una empresa sobre el acceso de apps. Microsoft permite controlar el consentimiento del usuario y exigir aprobación administrativa. Si la página solicita aprobación, facilita al administrador el nombre de la app, la cuenta prevista y el mensaje exacto. No publiques el calendario laboral ni cambies a una cuenta personal para eludir esa decisión."
+      ]
+    },
+    {
+      "heading": "4. Diagnostica en qué fase se produjo el fallo",
+      "body": [
+        "Si el inicio de sesión no termina, revisa la identidad seleccionada, la red y el mensaje de Microsoft. Una solicitud de aprobación es distinta de una sesión caducada o un fallo de conexión. No hay base para suponer que todo fallo sea una política de la empresa.",
+        "Si entras pero falta un calendario, revisa el grupo de la cuenta y la selección en Cloud Calendars y compara con la misma cuenta en Outlook. Si falta un calendario compartido o delegado mientras aparece el tuyo, investiga el acceso a ese calendario concreto. Las capacidades generales de la API de Microsoft no garantizan todos los casos de buzones compartidos o delegación en esta app."
+      ]
+    },
+    {
+      "heading": "5. Distingue una copia visible de una actualización confirmada",
+      "body": [
+        "La conexión Microsoft usa copias de calendarios en el sistema del iPhone. Su destino de almacenamiento puede depender de las fuentes disponibles en el dispositivo. En una cuenta laboral, confirma que esta disposición cumple los requisitos de la organización antes de usarla para reuniones sensibles; no supongas que la copia permanece solo en el buzón original.",
+        "Por ejemplo, un calendario de equipo puede mostrar una reunión y rechazar tu cambio por falta de permisos. Una edición local correcta no es la comprobación final. Compara el evento en Outlook con la misma cuenta. Prueba solo un evento desechable en un calendario tuyo, sin invitar a compañeros ni modificar una reunión establecida."
+      ]
+    },
+    {
+      "heading": "6. Mantén explícitas la propiedad y la disponibilidad",
+      "body": [
+        "Una reunión organizada por un compañero no es tuya para trasladarla o reescribirla solo porque aparezca junto a tus planes personales. Ten presentes el organizador, el calendario laboral y los participantes previstos. Usa el proceso autorizado del proveedor si la acción necesaria no está disponible o el cambio no llega al servidor.",
+        "Del mismo modo, mostrar una cita personal junto al trabajo no bloquea automáticamente la disponibilidad laboral ni oculta sus detalles como una entrada genérica de ocupado. Si ese es tu objetivo, pregunta qué método admite la organización y verifica el resultado. Un enlace de solo lectura no sustituye el acceso editable, y publicar un enlace no es un atajo para resolver problemas."
+      ]
+    }
+  ],
+  "claims": {},
+  "practical": [
+    "Identifica dónde se aloja el buzón y qué conexión permite la organización.",
+    "Comprueba si el calendario ya llega al iPhone mediante una cuenta del dispositivo.",
+    "Revisa Premium por separado del consentimiento Microsoft y los permisos del calendario.",
+    "Elige la identidad prevista al iniciar sesión y conserva cualquier error para soporte.",
+    "Después de entrar, selecciona el calendario necesario y compara un evento reciente en Outlook.",
+    "Confirma un cambio de prueba autorizado en el proveedor; deja intactas invitaciones y reuniones recurrentes."
+  ],
+  "faq": [
+    {
+      "q": "¿Premium garantiza que se conecte el Exchange de mi empresa?",
+      "a": "No. Premium habilita las funciones Microsoft de la app. Compatibilidad del buzón, aprobación de la organización y permisos de cada calendario son requisitos separados. Confirma la conexión con el administrador antes de dar una instalación Exchange por compatible."
+    },
+    {
+      "q": "¿Por qué funciona Outlook y se rechaza otra app de calendario?",
+      "a": "Las apps pueden tener permisos y requisitos de aprobación distintos. Que Outlook funcione sirve de referencia para la cuenta, pero no establece autorización para otra app. Usa el error real o la solicitud de aprobación para identificar el problema."
+    },
+    {
+      "q": "¿Puedo usar un enlace público si se bloquea el inicio de sesión Microsoft?",
+      "a": "No publiques información laboral para sortear un bloqueo. Una suscripción suele ser una vista de solo lectura, no equivalente al acceso editable. Pide al propietario o administrador un método aprobado; no supongas que publicar un enlace esté permitido."
+    }
+  ],
+  "sourcesHeading": "Fuentes y orientación de los proveedores",
+  "sources": [
+    {
+      "label": "Microsoft: API de calendario de Outlook y datos de buzón compatibles",
+      "url": "https://learn.microsoft.com/en-us/graph/outlook-calendar-concept-overview"
+    },
+    {
+      "label": "Microsoft: consentimiento del usuario y del administrador",
+      "url": "https://learn.microsoft.com/en-us/entra/identity/enterprise-apps/user-admin-consent-overview"
+    },
+    {
+      "label": "Apple: varios calendarios y suscripciones de solo lectura",
+      "url": "https://support.apple.com/en-lamr/guide/iphone/iph3d1110d4/ios"
+    }
+  ],
+  "seeAlso": [
+    "icloud-google-and-outlook-in-one-view",
+    "what-a-subscription-actually-buys"
+  ]
+},
+
   'weather-inside-your-calendar': {
   "title": "Un calendario que ya lleva el tiempo dentro",
   "short": "El tiempo dentro del calendario",
@@ -222,47 +317,98 @@ export const ARTICLES_ES_ES: Readonly<Record<string, LocalisedArticle>> = {
 },
 
   'icloud-google-and-outlook-in-one-view': {
-    title: 'iCloud, Google y Outlook en una sola vista',
-    short: 'Tres cuentas, una vista',
-    description:
-      'La vida de casi todo el mundo está repartida entre un calendario personal de Apple, una cuenta de Google y uno de Exchange del trabajo. Qué cambia al ponerlos en una misma cuadrícula.',
-    lede: 'El problema rara vez es que alguno de los calendarios sea malo. Es que tiene tres y solo una semana.',
-    commonBelief:
-      'Que mantener el trabajo y lo personal en aplicaciones separadas es un límite y no un defecto.',
-    sections: [
-      {
-        heading: 'La doble reserva es estructural',
-        body: [
-          'Si sus compromisos viven en tres sitios, ningún sitio puede decirle si está libre. Usted es el paso de fusión, y lo ejecuta de memoria, normalmente mientras alguien espera una respuesta.',
-          'Por eso el fallo clásico no es olvidar un evento; es aceptar algo que choca con un evento que no podía ver.',
-        ],
-      },
-      {
-        heading: 'Qué da una sola cuadrícula',
-        body: [
-          'Todas las cuentas en la misma semana, con color según su origen, editables ahí mismo. Deja de preguntarse qué aplicación tiene la respuesta, porque la pregunta deja de estar en plural.',
-          'La separación que la gente quiere en realidad es visual, no estructural. Ver el trabajo de un color y la familia de otro da el límite sin renunciar a la vista de conjunto.',
-        ],
-      },
-      {
-        heading: 'Dónde caen los planes',
-        body: [
-          'iCloud y Google se sincronizan en el plan gratuito. Las cuentas de Microsoft — Outlook y Exchange — están en el de pago, porque esa conexión tiene un coste recurrente que las otras no tienen.',
-          'Si su calendario de trabajo es de Google, no necesitará pagar nunca por sincronizar.',
-        ],
-      },
-    ],
-    claims: {
-      accounts: 'Tipos de cuenta que pueden compartir una vista',
-      premiumMonthly: 'Coste mensual de añadir Microsoft, en dólares',
+  "updated": "2026-10-21",
+  "title": "iCloud, Google y Outlook en una vista: cuentas, copias y permisos",
+  "short": "Tres proveedores, una vista",
+  "description": "Ve juntos calendarios de iCloud, Google y Microsoft. Revisa cuentas, permisos y copias antes de mover eventos o confiar en la disponibilidad.",
+  "lede": "Una cita familiar, una llamada con un cliente y una reunión de trabajo pueden solaparse aunque pertenezcan a cuentas distintas. Una vista conjunta permite detectar el conflicto, pero no convierte esas cuentas en un calendario compartido. Esta guía la escribe Arte Soft, desarrollador de Cloud Calendars.",
+  "commonBelief": "Reunir varios calendarios en una app mantiene automáticamente de acuerdo la disponibilidad, el uso compartido y las copias de eventos.",
+  "sections": [
+    {
+      "heading": "1. Identifica la cuenta y el calendario de cada evento",
+      "body": [
+        "Empieza por un evento normal de cada proveedor. Anota el correo de la sesión iniciada, el nombre del calendario y si el evento es tuyo o recibiste una invitación. Dos calendarios llamados «Calendario» pueden pertenecer a cuentas completamente distintas. El color ayuda a revisar la semana; la cuenta y el calendario identifican dónde debe aplicarse un cambio.",
+        "Por ejemplo, una cita con el dentista en tu iCloud personal y una reunión de proyecto en Microsoft pueden aparecer juntas para ti. Eso no hace por sí solo que tus compañeros vean la cita dental ni reserva ese tiempo en sus herramientas de planificación."
+      ]
     },
-    practical: [
-      'Añada primero la cuenta personal y después la que provoca las colisiones.',
-      'Coloree por cuenta y no por categoría: el origen es lo que necesita de un vistazo.',
-      'Siga escribiendo en el calendario que las otras personas ya leen.',
-    ],
-    seeAlso: ['three-calendar-apps-is-two-too-many', 'free-google-sync-without-adverts'],
-  },
+    {
+      "heading": "2. Conecta por la vía adecuada",
+      "body": [
+        "Para iCloud, activa primero Calendario de iCloud en el iPhone con la cuenta de Apple prevista. La guía de Apple explica los ajustes del dispositivo. Cloud Calendars accede a los calendarios disponibles en el sistema de calendarios del iPhone y necesita permiso para leerlos. Que la cuenta esté conectada en otro dispositivo no basta.",
+        "Cloud Calendars también incluye «Sign in with Google» y «Sign in with Microsoft». Comprueba la cuenta elegida al iniciar sesión y después abre su grupo de calendarios y selecciona los necesarios. Entrar en el proveedor correcto con la identidad personal o laboral equivocada puede mostrar una lista válida, pero inesperada."
+      ]
+    },
+    {
+      "heading": "3. Distingue los planes de los permisos",
+      "body": [
+        "Base incluye sincronización con Google Calendar y las vistas de calendario. Advanced añade la eliminación de anuncios a Base. Premium añade funciones de Microsoft Calendar y Microsoft Teams. Revisa el precio local actual y el periodo de facturación antes de comprar.",
+        "Un plan cambia las funciones disponibles en la app; no te convierte en propietario del calendario de otra persona. Google distingue entre ver eventos y modificarlos. Siguen aplicándose las políticas de la empresa y los permisos del calendario Microsoft. Ver un evento o disponer de un editor no demuestra que el proveedor vaya a aceptar el cambio."
+      ]
+    },
+    {
+      "heading": "4. Una vista conjunta puede incluir copias de calendarios",
+      "body": [
+        "Las conexiones de Google y Microsoft usan copias de calendarios en el sistema del iPhone para mostrar y sincronizar eventos. No supongas que conectar una cuenta no deja ninguna copia fuera del proveedor original. El destino de esas copias puede depender de las fuentes de calendario disponibles en el dispositivo.",
+        "Si la misma cuenta también llega al teléfono por otra vía, revisa nombres y fuentes antes de tratar las citas repetidas como eventos distintos. Oculta temporalmente un calendario para identificar qué parte de la vista aporta. No borres eventos ni calendarios solo para ordenar la pantalla: una copia conectada puede devolver cambios al proveedor."
+      ]
+    },
+    {
+      "heading": "5. Sigue eligiendo el destino al crear eventos",
+      "body": [
+        "Antes de guardar, revisa el calendario del evento con el mismo cuidado que la fecha y la hora. Para una cita familiar, elige el calendario que usa realmente la familia; para una reunión laboral, el destino autorizado del trabajo. Ver ambos juntos no convierte a ninguno en destino automático de todos los eventos nuevos.",
+        "Cambiar el calendario de un evento o arrastrarlo entre calendarios puede ser un traslado, no una segunda vista inocua. Mantén invitaciones y reuniones recurrentes en su calendario habitual mientras investigas un problema de visualización. Si necesitas un cambio, establece primero quién es el propietario y qué calendario puede aceptarlo."
+      ]
+    },
+    {
+      "heading": "6. Verifica la vista antes de depender de ella",
+      "body": [
+        "Compara un evento reciente en el calendario del proveedor con el correspondiente en Cloud Calendars. Revisa fecha, zona horaria, título y calendario seleccionado. En un calendario tuyo editable, es mejor usar un evento de prueba sin invitados que cambiar una reunión real. Confirma el resultado en el proveedor antes de dar la conexión por lista.",
+        "No confíes en que la vista conjunta cree automáticamente bloques anónimos de tiempo ocupado en otra cuenta. Si necesitas que los compañeros vean que no estás disponible sin conocer detalles personales, usa un sistema expresamente aprobado y verifícalo desde su lado. La visión personal clara y la disponibilidad compartida son tareas distintas."
+      ]
+    }
+  ],
+  "claims": {},
+  "practical": [
+    "Anota la cuenta y el calendario exactos de un evento de cada proveedor.",
+    "Activa en el dispositivo los calendarios iCloud previstos y revisa el permiso de acceso.",
+    "Usa el inicio de sesión adecuado de Google o Microsoft y selecciona los calendarios previstos.",
+    "Compara un evento reciente con la vista del proveedor antes de cambiar nada.",
+    "Oculta temporalmente una fuente que parezca duplicada; conserva los eventos originales.",
+    "Revisa el calendario de destino de cada evento nuevo y verifica aparte cualquier uso compartido de tiempo ocupado."
+  ],
+  "faq": [
+    {
+      "q": "¿Verán mis compañeros mis eventos personales porque muestro ambos calendarios?",
+      "a": "Mostrarlos juntos no es una instrucción para compartir ni un puente automático de disponibilidad. Revisa los ajustes reales de cada calendario. Las conexiones pueden crear copias en el dispositivo; la vista conjunta tampoco garantiza que los datos existan solo en el proveedor original."
+    },
+    {
+      "q": "¿Por qué veo un evento pero no consigo editarlo?",
+      "a": "El calendario puede ser de solo lectura, el evento pertenecer a otro organizador o el proveedor rechazar la actualización. Comprueba propiedad y permisos en el proveedor. Comprar un plan superior no cambia esos permisos."
+    },
+    {
+      "q": "¿Conviene conectar la misma cuenta Google por todas las vías disponibles?",
+      "a": "Primero comprueba cómo aparece ya en el teléfono. Varias vías dificultan identificar las copias. Elige la que quieras usar, verifica sus eventos y oculta la visualización extra mientras investigas, en lugar de empezar borrando datos o desconectando cuentas."
+    }
+  ],
+  "sourcesHeading": "Fuentes y referencias de configuración",
+  "sources": [
+    {
+      "label": "Apple: configurar Calendario de iCloud en tus dispositivos",
+      "url": "https://support.apple.com/guide/icloud/set-up-calendar-mme4d73a8727/icloud"
+    },
+    {
+      "label": "Google: compartir calendarios y permisos",
+      "url": "https://support.google.com/calendar/answer/37082?hl=en"
+    },
+    {
+      "label": "Microsoft: API de calendario de Outlook y datos de buzón compatibles",
+      "url": "https://learn.microsoft.com/en-us/graph/outlook-calendar-concept-overview"
+    }
+  ],
+  "seeAlso": [
+    "exchange-calendars-on-an-iphone"
+  ]
+},
 
   'three-calendar-apps-is-two-too-many': {
     title: 'Tres aplicaciones de calendario son dos de más',

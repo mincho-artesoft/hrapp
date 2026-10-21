@@ -1,0 +1,502 @@
+{
+  "date": "2026-10-21",
+  "task": "Bounded primary competitor intent discovery: copy-sync, privacy, Microsoft sharing",
+  "method": "Actual web search to discover official OneCal/CalendarBridge URLs, then direct body reads. Search snippets are discovery only. No paid API, product account, runtime test or source mutation.",
+  "inputs": [
+    "research/CONTINUATION.md (initial substantial portion and latest tail28 lines; not certified full-file read)",
+    "research/competitors/batch08-weather-accounts-discovery-20261021.json (full)",
+    "research/content-inventory-20261021.json (all50 EN entries programmatically parsed)",
+    "src/app/content/en-US/articles-unify.ts (all6 article bodies fully reread)"
+  ],
+  "scope": {
+    "publishers": 2,
+    "fullSubstantiveBodies": 8,
+    "partialBodies": 0,
+    "failedNewFetches": 0,
+    "additionalConcreteDiscoveredUnreviewedUrls": 18,
+    "englishInventoryEntries": 50,
+    "currentEnglishBodiesReread": 6,
+    "nativeCodeFilesRead": 0
+  },
+  "priorScope": "Prior batch05-default-family audited21 complete EN bodies; mappings outside current unify reread use inventory and that earlier audit, not fresh full-body certification.",
+  "sources": [
+    {
+      "url": "https://docs.onecal.io/docs/help/faq",
+      "status": "full_substantive_text_review",
+      "scope": "Main body lines23–135; navigation and TOC excluded",
+      "publisherClaimsSummarized": [
+        "Clones are destination records with a distinct lifecycle; changing a clone is not editing its original.",
+        "Deleting a sync and trial expiry can affect generated copies.",
+        "Calendar sync scope differs from a complete historical archive."
+      ],
+      "verification": "Official publisher documentation, not independent runtime verification; images and linked pages excluded unless listed separately.",
+      "limits": "Security certification, storage and reliability assertions remain publisher claims; no independent audit."
+    },
+    {
+      "url": "https://help.calendarbridge.com/user-docs/syncing-shared-and-resource-calendars/",
+      "status": "full_substantive_text_review",
+      "scope": "Complete substantive body lines0–76",
+      "publisherClaimsSummarized": [
+        "Product access requirements distinguish Google full-details versus free/busy visibility and writable destination access.",
+        "Microsoft shared calendars, resource calendars and managed-group setup have distinct permissions and setup paths."
+      ],
+      "verification": "Official publisher documentation, not independent runtime verification; images and linked pages excluded unless listed separately.",
+      "limits": "Do not adopt universal Google–Outlook sharing or refresh-delay assertions; confirm provider documentation before publishing Microsoft instructions."
+    },
+    {
+      "url": "https://help.calendarbridge.com/tips/sync-calendars-without-sharing-event-details/",
+      "status": "full_substantive_text_review",
+      "scope": "Complete substantive body lines1–66",
+      "publisherClaimsSummarized": [
+        "Per-direction field copying differs from downstream calendar permissions.",
+        "Titles, descriptions, locations and tags deserve separate privacy checks.",
+        "An original invitation may expose details independently of a masked generated copy."
+      ],
+      "verification": "Official publisher documentation, not independent runtime verification; images and linked pages excluded unless listed separately.",
+      "limits": "Reject absolute no-information-leak framing: timing, duration, patterns and source tags can remain informative. Private flags are not universal confidentiality guarantees."
+    },
+    {
+      "url": "https://help.calendarbridge.com/group-admin-docs/syncing-overview/",
+      "status": "full_substantive_text_review",
+      "scope": "Complete substantive body lines0–22",
+      "publisherClaimsSummarized": [
+        "One-way connections generate destination copies; edits to copies do not modify originals.",
+        "Product-specific handling of generated copies prevents its own sync loops."
+      ],
+      "verification": "Official publisher documentation, not independent runtime verification; images and linked pages excluded unless listed separately.",
+      "limits": "No universal timing, loop-prevention or never-corrupt guarantee inferred."
+    },
+    {
+      "url": "https://docs.onecal.io/docs/calendar-sync/sync-event-titles",
+      "status": "full_substantive_text_review",
+      "scope": "Complete substantive body lines23–46",
+      "publisherClaimsSummarized": [
+        "Clones can retain original titles plus an identifier or use a generic replacement title."
+      ],
+      "verification": "Official publisher documentation, not independent runtime verification; images and linked pages excluded unless listed separately.",
+      "limits": "A generic title alone is not evidence all other fields were removed."
+    },
+    {
+      "url": "https://docs.onecal.io/docs/calendar-sync/what-does-onecal-sync",
+      "status": "full_substantive_text_review",
+      "scope": "Complete substantive body lines22–45",
+      "publisherClaimsSummarized": [
+        "Documents provider-specific future windows and exclusions for historical events.",
+        "Clone edits do not propagate upstream; its own generated records are excluded from re-cloning."
+      ],
+      "verification": "Official publisher documentation, not independent runtime verification; images and linked pages excluded unless listed separately.",
+      "limits": "Vendor-specific limits do not describe Cloud Calendars or native provider synchronization."
+    },
+    {
+      "url": "https://docs.onecal.io/docs/calendar-view/hide-clone-events",
+      "status": "full_substantive_text_review",
+      "scope": "Complete substantive body lines22–34",
+      "publisherClaimsSummarized": [
+        "Hiding generated copies in this vendor’s unified view does not remove them from provider calendars.",
+        "Display deduplication and destination availability remain different operations."
+      ],
+      "verification": "Official publisher documentation, not independent runtime verification; images and linked pages excluded unless listed separately.",
+      "limits": "No corresponding Cloud Calendars clone-hiding feature established."
+    },
+    {
+      "url": "https://docs.onecal.io/docs/calendar-sync/calendar-sync-intro",
+      "status": "full_substantive_text_review",
+      "scope": "Complete substantive body lines22–145; navigation/TOC excluded",
+      "publisherClaimsSummarized": [
+        "Unified viewing and booking do not require copy-sync setup in this product.",
+        "Separate directions can copy different fields; same-direction overlapping configurations may create multiple copies.",
+        "Participant information can be copied as description text rather than a fresh invitation."
+      ],
+      "verification": "Official publisher documentation, not independent runtime verification; images and linked pages excluded unless listed separately.",
+      "limits": "Real-time, privacy-intact and provider-approval assertions not independently verified. No Cloud event-copy automation inferred."
+    }
+  ],
+  "discoveredOnly": [
+    {
+      "url": "https://docs.onecal.io/docs/calendar-view/intro",
+      "status": "discovered_search_or_index_link_not_body_reviewed"
+    },
+    {
+      "url": "https://docs.onecal.io/docs/calendar-view/public-calendar-feeds",
+      "status": "discovered_search_or_index_link_not_body_reviewed"
+    },
+    {
+      "url": "https://docs.onecal.io/docs/calendar-view/view-settings",
+      "status": "discovered_search_or_index_link_not_body_reviewed"
+    },
+    {
+      "url": "https://docs.onecal.io/docs/mobile-apps",
+      "status": "discovered_search_or_index_link_not_body_reviewed"
+    },
+    {
+      "url": "https://docs.onecal.io/docs/help/events-not-syncing",
+      "status": "discovered_search_or_index_link_not_body_reviewed"
+    },
+    {
+      "url": "https://docs.onecal.io/docs/help/duplicate-events",
+      "status": "discovered_search_or_index_link_not_body_reviewed"
+    },
+    {
+      "url": "https://docs.onecal.io/docs/calendars/connect-caldav-calendar",
+      "status": "discovered_search_or_index_link_not_body_reviewed"
+    },
+    {
+      "url": "https://docs.onecal.io/docs/help/ics-calendars",
+      "status": "discovered_search_or_index_link_not_body_reviewed"
+    },
+    {
+      "url": "https://docs.onecal.io/docs/billing/plans-and-free-trial",
+      "status": "discovered_search_or_index_link_not_body_reviewed"
+    },
+    {
+      "url": "https://docs.onecal.io/docs/calendar-view/print-calendar",
+      "status": "discovered_search_or_index_link_not_body_reviewed"
+    },
+    {
+      "url": "https://help.calendarbridge.com/user-docs/setting-up-one-way-syncing/",
+      "status": "discovered_search_or_index_link_not_body_reviewed"
+    },
+    {
+      "url": "https://help.calendarbridge.com/help/manage-syncs.html",
+      "status": "discovered_search_or_index_link_not_body_reviewed"
+    },
+    {
+      "url": "https://help.calendarbridge.com/faq/how-often-do-calendars-sync",
+      "status": "discovered_search_or_index_link_not_body_reviewed"
+    },
+    {
+      "url": "https://help.calendarbridge.com/user-docs/how-to-get-an-ics-url-for-you-calendar",
+      "status": "discovered_search_or_index_link_not_body_reviewed"
+    },
+    {
+      "url": "https://help.calendarbridge.com/user-docs/about-syncing/",
+      "status": "discovered_search_or_index_link_not_body_reviewed"
+    },
+    {
+      "url": "https://help.calendarbridge.com/tips/one-way-vs-two-way-calendar-sync/",
+      "status": "discovered_search_or_index_link_not_body_reviewed"
+    },
+    {
+      "url": "https://calendarbridge.com/sync-work-and-personal-calendars/",
+      "status": "discovered_search_or_index_link_not_body_reviewed"
+    },
+    {
+      "url": "https://help.calendarbridge.com/user-docs/no-events-are-syncing/",
+      "status": "discovered_search_or_index_link_not_body_reviewed"
+    }
+  ],
+  "skippedKnownPriorSources": [
+    {
+      "url": "https://apps.apple.com/us/app/syncthemcalendars/id6792364535",
+      "reason": "Developer description reviewed in batch08; not refetched."
+    },
+    {
+      "url": "https://apps.apple.com/gb/app/joinvia-reminders-to-calendar/id6805935839",
+      "reason": "Prior429; not retried; no body evidence."
+    }
+  ],
+  "intentMappings": [
+    {
+      "intent": "Combine calendars without copying or merging ownership",
+      "canonical": "what-calendar-sync-actually-does",
+      "related": [
+        "work-and-personal-without-two-apps",
+        "icloud-google-and-outlook-in-one-view"
+      ],
+      "coverage": "Existing substantive answer; expand rather than new route",
+      "usefulAddition": "Add a fifth connection type: an external service that creates destination records. Show one original work meeting and one masked personal copy; an overlay itself creates neither.",
+      "evidence": [
+        "https://docs.onecal.io/docs/calendar-sync/calendar-sync-intro",
+        "https://help.calendarbridge.com/group-admin-docs/syncing-overview/"
+      ]
+    },
+    {
+      "intent": "Block work availability for private commitments without revealing details",
+      "canonical": "work-and-personal-without-two-apps",
+      "related": [
+        "who-can-see-what-in-google-calendar"
+      ],
+      "coverage": "A genuinely distinct task is absent as a worked workflow; adjacent ownership/privacy principles already exist",
+      "usefulAddition": "First expand existing route with viewing versus publishing availability. A future standalone guide would need provider-specific busy/free semantics, what invitees actually see, directional field review and a disposable test. It must explicitly distinguish manual blocks from verified automation.",
+      "evidence": [
+        "https://help.calendarbridge.com/tips/sync-calendars-without-sharing-event-details/",
+        "https://docs.onecal.io/docs/calendar-sync/sync-event-titles"
+      ],
+      "cloudBoundary": "No verified automatic cross-provider busy-block replication, masking or exclusion rules in this batch. Do not advertise them."
+    },
+    {
+      "intent": "Duplicate original and synced copy appear in one view",
+      "canonical": "when-two-calendars-disagree",
+      "related": [
+        "what-calendar-sync-actually-does",
+        "calendar-notifications-missing-silent-or-duplicated"
+      ],
+      "coverage": "Existing diagnostics; identifiable incremental example",
+      "usefulAddition": "Trace original versus generated copy and the service that created it. Hiding a row is not deleting a destination copy; disabling a replication rule may have service-specific cleanup effects. Do not recommend deleting invitations or assuming all apps detect clone records.",
+      "evidence": [
+        "https://docs.onecal.io/docs/calendar-view/hide-clone-events",
+        "https://docs.onecal.io/docs/help/faq"
+      ]
+    },
+    {
+      "intent": "Microsoft shared calendar missing versus readable but not writable",
+      "canonical": "exchange-calendars-on-an-iphone",
+      "related": [
+        "why-a-shared-calendar-does-not-appear",
+        "what-calendar-sync-actually-does"
+      ],
+      "coverage": "Existing canonical is brief and needs substantive replacement; no new near-duplicate route",
+      "usefulAddition": "Distinguish personal Outlook account, organisational account, shared owner calendar and room/resource. Diagnose identity, accepted share, read permissions, destination edit access and approved app connection. Google missing-calendar instructions are not universal Microsoft instructions.",
+      "evidence": [
+        "https://help.calendarbridge.com/user-docs/syncing-shared-and-resource-calendars/"
+      ],
+      "requiredBeforeAuthoring": "Read current Microsoft support/Graph permission documentation and inspect actual Cloud Microsoft shared/resource support. Do not generalize CalendarBridge integration requirements."
+    },
+    {
+      "intent": "Sync historical or far-future events, or use sync as backup",
+      "canonical": "calendar-export-ics-pdf-and-backup",
+      "related": [
+        "find-old-calendar-events-by-account-date-and-title",
+        "what-calendar-sync-actually-does"
+      ],
+      "coverage": "Existing backup/search intents; useful caveat instead of new article",
+      "usefulAddition": "Ask whether a third-party replication service has a date window before treating its destination as a complete archive. Separate missing history from wrong account or search scope.",
+      "evidence": [
+        "https://docs.onecal.io/docs/calendar-sync/what-does-onecal-sync"
+      ]
+    },
+    {
+      "intent": "Stop copying private events into another account safely",
+      "canonical": "taking-back-a-calendar-you-shared",
+      "related": [
+        "what-calendar-sync-actually-does",
+        "when-two-calendars-disagree"
+      ],
+      "coverage": "Potential distinct task, but permission revocation and generated-copy cleanup must not be conflated",
+      "usefulAddition": "Future provider/service-specific workflow should inspect who created destination records, whether disconnect removes copies, which account retains originals, and other invitations or exports already distributed. Start as a clearly separated section; no generic deletion recipe.",
+      "evidence": [
+        "https://docs.onecal.io/docs/help/faq",
+        "https://help.calendarbridge.com/tips/sync-calendars-without-sharing-event-details/"
+      ]
+    }
+  ],
+  "editorialPriority": [
+    "Expand existing sync guide with replication versus provider synchronization.",
+    "Replace/expand existing Exchange guide after Microsoft primary verification and Cloud feature audit.",
+    "Add busy-block/privacy worked example to existing work/personal route before deciding a separate guide is justified."
+  ],
+  "currentBodyFindings": [
+    "Existing sync, work/personal and disagreement routes already give useful ownership, hiding, permissions and diagnostic distinctions.",
+    "Older Exchange text attributes refused connections usually to policy and makes a running-cost claim; these are unsupported by this research and should be removed or separately substantiated during revision.",
+    "Older combined-view route says every account editable in place and Google sync never requires payment; this is overbroad around permissions and perpetuity, and has stale tier prose. Research does not authorize or perform correction."
+  ],
+  "boundaries": [
+    "Publisher bodies establish what those publishers document, not measured product performance or Cloud capabilities.",
+    "No search volume, Google position, exhaustive keyword access, ranking improvement or ChatGPT recommendation/citation evidence collected.",
+    "No automated cross-provider event copying, clone masking, managed resource support or clone suppression claimed for Cloud Calendars.",
+    "No new page recommended merely for a keyword variation.",
+    "No raw competitor prose copied; no independent security audit or privacy guarantee."
+  ],
+  "englishCanonicals": [
+    {
+      "slug": "free-google-sync-without-adverts",
+      "source": "articles-compare.ts"
+    },
+    {
+      "slug": "what-fantastical-costs-and-what-this-does",
+      "source": "articles-compare.ts"
+    },
+    {
+      "slug": "what-you-get-without-paying-anything",
+      "source": "articles-compare.ts"
+    },
+    {
+      "slug": "what-a-subscription-actually-buys",
+      "source": "articles-compare.ts"
+    },
+    {
+      "slug": "why-a-shared-calendar-does-not-appear",
+      "source": "articles-google.ts"
+    },
+    {
+      "slug": "the-secret-address-of-a-google-calendar",
+      "source": "articles-google.ts"
+    },
+    {
+      "slug": "what-guests-can-do-to-your-event",
+      "source": "articles-google.ts"
+    },
+    {
+      "slug": "google-calendars-that-never-reach-your-iphone",
+      "source": "articles-google.ts"
+    },
+    {
+      "slug": "taking-back-a-calendar-you-shared",
+      "source": "articles-google.ts"
+    },
+    {
+      "slug": "calendar-notifications-missing-silent-or-duplicated",
+      "source": "articles-help.ts"
+    },
+    {
+      "slug": "find-old-calendar-events-by-account-date-and-title",
+      "source": "articles-help.ts"
+    },
+    {
+      "slug": "calendar-export-ics-pdf-and-backup",
+      "source": "articles-help.ts"
+    },
+    {
+      "slug": "event-saved-to-wrong-calendar",
+      "source": "articles-help.ts"
+    },
+    {
+      "slug": "family-pickup-calendar-handoff",
+      "source": "articles-help.ts"
+    },
+    {
+      "slug": "drag-an-event-to-move-it",
+      "source": "articles-planning.ts"
+    },
+    {
+      "slug": "a-week-view-that-fits-a-week",
+      "source": "articles-planning.ts"
+    },
+    {
+      "slug": "month-view-on-a-bigger-screen",
+      "source": "articles-planning.ts"
+    },
+    {
+      "slug": "planning-a-week-in-ten-minutes",
+      "source": "articles-planning.ts"
+    },
+    {
+      "slug": "recurring-events-without-the-mess",
+      "source": "articles-planning.ts"
+    },
+    {
+      "slug": "time-zones-and-the-flight-you-booked",
+      "source": "articles-planning.ts"
+    },
+    {
+      "slug": "what-an-all-day-event-really-means",
+      "source": "articles-planning.ts"
+    },
+    {
+      "slug": "a-list-for-people-who-dislike-grids",
+      "source": "articles-planning.ts"
+    },
+    {
+      "slug": "the-year-in-one-screen",
+      "source": "articles-planning.ts"
+    },
+    {
+      "slug": "sharing-one-event-not-your-calendar",
+      "source": "articles-sharing.ts"
+    },
+    {
+      "slug": "inviting-people-who-do-not-have-the-app",
+      "source": "articles-sharing.ts"
+    },
+    {
+      "slug": "a-calendar-that-is-yours-to-share",
+      "source": "articles-sharing.ts"
+    },
+    {
+      "slug": "who-can-see-what-in-google-calendar",
+      "source": "articles-sharing.ts"
+    },
+    {
+      "slug": "keeping-track-of-who-replied",
+      "source": "articles-sharing.ts"
+    },
+    {
+      "slug": "meeting-links-that-make-themselves",
+      "source": "articles-sharing.ts"
+    },
+    {
+      "slug": "icloud-google-and-outlook-in-one-view",
+      "source": "articles-unify.ts"
+    },
+    {
+      "slug": "three-calendar-apps-is-two-too-many",
+      "source": "articles-unify.ts"
+    },
+    {
+      "slug": "what-calendar-sync-actually-does",
+      "source": "articles-unify.ts"
+    },
+    {
+      "slug": "work-and-personal-without-two-apps",
+      "source": "articles-unify.ts"
+    },
+    {
+      "slug": "exchange-calendars-on-an-iphone",
+      "source": "articles-unify.ts"
+    },
+    {
+      "slug": "when-two-calendars-disagree",
+      "source": "articles-unify.ts"
+    },
+    {
+      "slug": "weather-inside-your-calendar",
+      "source": "articles-weather.ts"
+    },
+    {
+      "slug": "forecast-beside-every-event",
+      "source": "articles-weather.ts"
+    },
+    {
+      "slug": "a-fourteen-day-view-of-the-weather",
+      "source": "articles-weather.ts"
+    },
+    {
+      "slug": "planning-outdoors-without-being-rained-on",
+      "source": "articles-weather.ts"
+    },
+    {
+      "slug": "what-a-forecast-can-and-cannot-tell-you",
+      "source": "articles-weather.ts"
+    },
+    {
+      "slug": "reading-a-chance-of-rain",
+      "source": "articles-weather.ts"
+    },
+    {
+      "slug": "weather-where-the-event-is",
+      "source": "articles-weather.ts"
+    },
+    {
+      "slug": "the-commute-and-the-sky",
+      "source": "articles-weather.ts"
+    },
+    {
+      "slug": "daylight-as-a-planning-constraint",
+      "source": "articles-weather.ts"
+    },
+    {
+      "slug": "wind-the-forecast-nobody-reads",
+      "source": "articles-weather.ts"
+    },
+    {
+      "slug": "the-widget-that-shows-what-is-next",
+      "source": "articles-widgets.ts"
+    },
+    {
+      "slug": "a-countdown-to-your-next-meeting",
+      "source": "articles-widgets.ts"
+    },
+    {
+      "slug": "lock-screen-without-unlocking",
+      "source": "articles-widgets.ts"
+    },
+    {
+      "slug": "choosing-a-widget-size",
+      "source": "articles-widgets.ts"
+    },
+    {
+      "slug": "the-calendar-on-a-bedside-table",
+      "source": "articles-widgets.ts"
+    }
+  ]
+}

@@ -10,6 +10,101 @@ import { LocalisedArticle } from '../types';
  * eine Übersetzung jeden Satz umschreiben kann, ohne eine Zahl zu ändern.
  */
 export const ARTICLES_DE_DE: Readonly<Record<string, LocalisedArticle>> = {
+"exchange-calendars-on-an-iphone":{
+  "updated": "2026-10-21",
+  "title": "Microsoft- und Exchange-Kalender auf dem iPhone: zuerst die Verbindung prüfen",
+  "short": "Microsoft-Kalender auf dem iPhone",
+  "description": "Prüfe Microsoft-Kontotyp, Arbeitgeberfreigabe und Rechte, bevor du einen Arbeitskalender verbindest. Erfahre, was Cloud Calendars Premium ergänzt.",
+  "lede": "„Exchange-Kalender“ kann unterschiedliche Dienste und Arbeitsplatzregeln bedeuten. Kläre vor Einstellungsänderungen oder einem Kauf, wo dein Postfach liegt und welche Verbindung deine Organisation erlaubt. Dieser Leitfaden stammt von Arte Soft, dem Entwickler von Cloud Calendars.",
+  "commonBelief": "Jede App mit Microsoft-Anmeldung müsse mit jedem Exchange-Server und jedem geteilten Arbeitskalender funktionieren.",
+  "sections": [
+    {
+      "heading": "1. Bestimme das Postfach, nicht nur die Outlook-App",
+      "body": [
+        "Outlook ist eine App und ein Name für Microsoft-Dienste. Ein Konto in Outlook sagt nicht, welcher Server dessen Kalender bereitstellt. Frage nach, ob du ein persönliches Microsoft-Konto, ein Microsoft-365-Postfach in Exchange Online oder eine eigene Exchange-Installation der Organisation nutzt.",
+        "Cloud Calendars bietet Microsoft-Anmeldung und verwendet die Verbindung zum Microsoft-Kalenderdienst. Das ist keine universelle Einrichtung mit Serveradresse und Passwort für jede Exchange-Installation. Microsoft dokumentiert seine Kalender-API getrennt von allgemeinen Exchange-Einstellungen. Kläre den vorgesehenen Weg für dein Postfach, statt einen Servernamen zu erraten."
+      ]
+    },
+    {
+      "heading": "2. Trenne Apples Gerätekonto von der App-Verbindung",
+      "body": [
+        "Ein über ein genehmigtes Gerätekonto bereits in Apple Kalender verfügbarer Arbeitskalender nutzt einen anderen Weg als „Sign in with Microsoft“ in Cloud Calendars. Auch Kalender aus dem Kalendersystem des Telefons benötigen Kalenderzugriff. Eine erfolgreiche Einrichtung in Apples Einstellungen beweist nicht, dass eine separate Microsoft-Anmeldung genehmigt wird.",
+        "Prüfe vor einer weiteren Verbindung, wo der bestehende Arbeitskalender erscheint. Siehst du später zwei Versionen einer Besprechung, bestimme ihre Kalenderquellen und blende eine vorübergehend aus. Entferne keine Konten und lösche keine Ereignisse, um herauszufinden, welche Verbindung sie erzeugt hat."
+      ]
+    },
+    {
+      "heading": "3. Prüfe Premium und organisatorische Freigabe getrennt",
+      "body": [
+        "Premium ergänzt Cloud Calendars um Microsoft-Kalender- und Microsoft-Teams-Funktionen. Advanced entfernt Werbung aus Base, schaltet aber die Microsoft-Anmeldung der App nicht frei. Prüfe den aktuellen lokalen Kaufpreis und Abrechnungszeitraum statt einer Preisangabe für eine andere Region.",
+        "Ein Abonnement kann die Entscheidung eines Arbeitgebers zum App-Zugriff nicht aufheben. Microsoft erlaubt Organisationen, Nutzereinwilligungen zu steuern und Administratorfreigaben zu verlangen. Wird eine Freigabe angefordert, gib der Administration App-Name, vorgesehenes Konto und exakten Meldungstext. Veröffentliche den Arbeitskalender nicht und wechsle nicht zu einem privaten Konto, um diese Entscheidung zu umgehen."
+      ]
+    },
+    {
+      "heading": "4. Untersuche die fehlgeschlagene Phase",
+      "body": [
+        "Wird die Anmeldung nicht abgeschlossen, prüfe gewählte Identität, Netzwerk und Microsoft-Meldung. Eine Freigabeanforderung ist etwas anderes als eine abgelaufene Sitzung oder ein Verbindungsfehler. Nicht jede fehlgeschlagene Verbindung lässt sich auf Arbeitgeberregeln zurückführen.",
+        "Gelingt die Anmeldung, fehlt aber ein Kalender, prüfe Kontogruppe und Kalenderauswahl in Cloud Calendars und vergleiche dasselbe Konto in Outlook. Fehlt nur ein geteilter oder delegierter Kalender, während der eigene erscheint, untersuche dessen Zugriff gesondert. Allgemeine Microsoft-API-Funktionen garantieren nicht, dass jedes Szenario mit geteilten Postfächern oder Delegierung in dieser App verfügbar ist."
+      ]
+    },
+    {
+      "heading": "5. Unterscheide eine sichtbare Kopie von einer bestätigten Änderung",
+      "body": [
+        "Die Microsoft-Verbindung verwendet Kalenderkopien im Kalendersystem des iPhones. Ihr Speicherziel kann von den verfügbaren Quellen auf dem Gerät abhängen. Kläre für ein Arbeitskonto vor sensiblen Besprechungen, ob diese Anordnung den Vorgaben deiner Organisation entspricht. Gehe nicht davon aus, dass eine Kopie ausschließlich im ursprünglichen Postfach bleibt.",
+        "Ein Teamkalender kann etwa eine Besprechung anzeigen, deine Änderung aber wegen fehlender Rechte ablehnen. Eine erfolgreiche lokale Bearbeitung ist nicht die abschließende Prüfung. Vergleiche das Ereignis in Outlook mit demselben Konto. Teste nur ein entbehrliches Ereignis in einem eigenen Kalender, ohne Kollegen einzuladen oder eine bestehende Besprechung zu verändern."
+      ]
+    },
+    {
+      "heading": "6. Halte Zuständigkeit und Verfügbarkeit ausdrücklich fest",
+      "body": [
+        "Eine von einem Kollegen organisierte Besprechung darfst du nicht allein deshalb verschieben oder umschreiben, weil sie neben privaten Plänen erscheint. Berücksichtige Organisator, Arbeitskalender und vorgesehene Teilnehmende. Nutze den genehmigten Anbieterprozess, wenn eine Aktion fehlt oder eine Änderung den Server nicht erreicht.",
+        "Ebenso sperrt ein privater Termin neben Arbeitsterminen nicht automatisch die berufliche Verfügbarkeit und verbirgt seine Details nicht automatisch als allgemeinen Belegt-Eintrag. Frage nach einer unterstützten Freigabemethode und prüfe das Ergebnis. Ein schreibgeschützter Kalenderlink ersetzt keinen Bearbeitungszugriff, und die Veröffentlichung eines Links ist keine Abkürzung bei der Fehlersuche."
+      ]
+    }
+  ],
+  "claims": {},
+  "practical": [
+    "Kläre den Postfachanbieter und den von der Organisation erlaubten Verbindungsweg.",
+    "Prüfe, ob der Kalender bereits über ein Gerätekonto auf das iPhone gelangt.",
+    "Prüfe Premium getrennt von Microsoft-Einwilligung und Kalenderrechten.",
+    "Wähle bei der Microsoft-Anmeldung die richtige Identität und bewahre Fehlermeldungen für den Support auf.",
+    "Wähle nach der Anmeldung den benötigten Kalender und vergleiche ein aktuelles Ereignis in Outlook.",
+    "Bestätige eine erlaubte Teständerung beim Anbieter; lasse bestehende Einladungen und Serientermine unverändert."
+  ],
+  "faq": [
+    {
+      "q": "Garantiert Premium die Verbindung zum Exchange-Server meiner Firma?",
+      "a": "Nein. Premium aktiviert die Microsoft-Funktionen der App. Postfachkompatibilität, Freigabe der Organisation und Rechte einzelner Kalender sind getrennte Voraussetzungen. Bestätige die Verbindung mit der Administration, bevor du eine Exchange-Installation als unterstützt betrachtest."
+    },
+    {
+      "q": "Warum funktioniert Outlook, während eine andere Kalender-App abgelehnt wird?",
+      "a": "Apps können unterschiedliche Rechte und Freigaben benötigen. Ein funktionierendes Outlook ist eine nützliche Referenz für das Konto, beweist aber keine Freigabe für eine andere App. Nutze den tatsächlichen Fehler oder die Freigabeanforderung zur Diagnose."
+    },
+    {
+      "q": "Kann ich bei blockierter Microsoft-Anmeldung einen öffentlichen Kalenderlink verwenden?",
+      "a": "Veröffentliche keine Arbeitsinformationen, um eine blockierte Verbindung zu umgehen. Ein Kalenderabonnement ist normalerweise schreibgeschützt und kein gleichwertiger Bearbeitungszugriff. Frage Eigentümer oder Administration nach einer genehmigten Methode; setze nicht voraus, dass ein veröffentlichter Link erlaubt ist."
+    }
+  ],
+  "sourcesHeading": "Quellen und Anbieterhinweise",
+  "sources": [
+    {
+      "label": "Microsoft: Outlook-Kalender-API und unterstützte Postfachdaten",
+      "url": "https://learn.microsoft.com/en-us/graph/outlook-calendar-concept-overview"
+    },
+    {
+      "label": "Microsoft: Einwilligung von Nutzern und Administratoren",
+      "url": "https://learn.microsoft.com/en-us/entra/identity/enterprise-apps/user-admin-consent-overview"
+    },
+    {
+      "label": "Apple: mehrere Kalender und schreibgeschützte Abonnements",
+      "url": "https://support.apple.com/en-lamr/guide/iphone/iph3d1110d4/ios"
+    }
+  ],
+  "seeAlso": [
+    "icloud-google-and-outlook-in-one-view",
+    "what-a-subscription-actually-buys"
+  ]
+},
+
   'weather-inside-your-calendar': {
   "title": "Ein Kalender, in dem das Wetter schon drin ist",
   "short": "Wetter im Kalender",
@@ -222,46 +317,98 @@ export const ARTICLES_DE_DE: Readonly<Record<string, LocalisedArticle>> = {
 },
 
   'icloud-google-and-outlook-in-one-view': {
-    title: 'iCloud, Google und Outlook in einer Ansicht',
-    short: 'Drei Konten, eine Ansicht',
-    description:
-      'Bei den meisten liegt das Leben auf einem privaten Apple-Kalender, einem Google-Konto und einem Exchange-Kalender der Arbeit. Was sich ändert, wenn alle drei in einem Raster stehen.',
-    lede: 'Das Problem ist selten, dass einer der Kalender schlecht wäre. Es ist, dass Sie drei davon haben und nur eine Woche.',
-    commonBelief: 'Dass getrennte Apps für Arbeit und Privat eine Grenze sind und kein Fehler.',
-    sections: [
-      {
-        heading: 'Die Doppelbuchung ist strukturell',
-        body: [
-          'Liegen Ihre Verpflichtungen an drei Orten, kann kein einzelner Ort sagen, ob Sie frei sind. Sie selbst sind der Zusammenführungsschritt, und Sie führen ihn aus dem Gedächtnis aus — meist während jemand auf eine Antwort wartet.',
-          'Deshalb ist der klassische Fehler nicht, einen Termin zu vergessen. Er ist, etwas zuzusagen, das mit einem Termin kollidiert, den Sie nicht sehen konnten.',
-        ],
-      },
-      {
-        heading: 'Was ein Raster gibt',
-        body: [
-          'Alle Konten in derselben Woche, nach Herkunft eingefärbt, an Ort und Stelle bearbeitbar. Sie hören auf zu fragen, welche App die Antwort hat, weil die Frage keinen Plural mehr hat.',
-          'Die Trennung, die Menschen eigentlich wollen, ist visuell und nicht strukturell. Arbeit in einer Farbe und Familie in einer anderen gibt Ihnen die Grenze, ohne den Überblick zu kosten.',
-        ],
-      },
-      {
-        heading: 'Wo die Stufen liegen',
-        body: [
-          'iCloud und Google synchronisieren beide in der kostenlosen Stufe. Microsoft-Konten — Outlook und Exchange — liegen in der bezahlten, weil diese Verbindung laufende Kosten hat, die die anderen nicht haben.',
-          'Ist Ihr Arbeitskalender ein Google-Kalender, werden Sie für Synchronisierung nie bezahlen müssen.',
-        ],
-      },
-    ],
-    claims: {
-      accounts: 'Kontotypen, die sich eine Ansicht teilen können',
-      premiumMonthly: 'Monatlicher Preis für Microsoft, in Dollar',
+  "updated": "2026-10-21",
+  "title": "iCloud, Google und Outlook in einer Ansicht: Konten, Kopien und Rechte",
+  "short": "Drei Anbieter, eine Ansicht",
+  "description": "Zeige iCloud-, Google- und Microsoft-Kalender gemeinsam an. Prüfe Konten, Bearbeitungsrechte und Kopien, bevor du Termine verschiebst oder Verfügbarkeit nutzt.",
+  "lede": "Ein Familientermin, ein Kundengespräch und eine Besprechung können sich überschneiden, obwohl sie zu verschiedenen Konten gehören. Eine gemeinsame Ansicht macht den Konflikt sichtbar, verwandelt die Konten aber nicht in einen geteilten Kalender. Dieser Leitfaden stammt von Arte Soft, dem Entwickler von Cloud Calendars.",
+  "commonBelief": "Mehrere Kalender in einer App würden Verfügbarkeit, Freigaben und Ereigniskopien automatisch in Übereinstimmung halten.",
+  "sections": [
+    {
+      "heading": "1. Bestimme Konto und Kalender jedes Ereignisses",
+      "body": [
+        "Beginne mit einem gewöhnlichen Ereignis pro Anbieter. Notiere die angemeldete E-Mail-Adresse, den Kalendernamen und ob dir das Ereignis gehört oder du eingeladen wurdest. Zwei Kalender namens „Kalender“ können zu völlig unterschiedlichen Konten gehören. Eine Farbe hilft beim Überblick; Konto und Kalender bestimmen, wohin eine Änderung gehen soll.",
+        "Ein Zahnarzttermin im privaten iCloud-Kalender und eine Projektbesprechung bei Microsoft können für dich gemeinsam erscheinen. Dadurch sehen Kollegen den Zahnarzttermin nicht automatisch, und die Zeit wird nicht von selbst in ihren Planungssystemen reserviert."
+      ]
     },
-    practical: [
-      'Fügen Sie zuerst das private Konto hinzu, dann das, das die Kollisionen verursacht.',
-      'Färben Sie nach Konto, nicht nach Kategorie — die Herkunft ist das, was Sie im Vorbeigehen brauchen.',
-      'Schreiben Sie weiterhin in den Kalender, den die anderen Beteiligten ohnehin lesen.',
-    ],
-    seeAlso: ['three-calendar-apps-is-two-too-many', 'free-google-sync-without-adverts'],
-  },
+    {
+      "heading": "2. Verwende den passenden Verbindungsweg",
+      "body": [
+        "Aktiviere für iCloud zuerst den iCloud-Kalender auf dem iPhone unter dem vorgesehenen Apple Account. Apples Einrichtungsanleitung erklärt die Geräteeinstellungen. Cloud Calendars greift auf Kalender im Kalendersystem des iPhones zu und benötigt Kalenderzugriff, um sie zu lesen. Eine Verbindung auf einem anderen Gerät reicht nicht.",
+        "Cloud Calendars bietet außerdem „Sign in with Google“ und „Sign in with Microsoft“. Prüfe das bei der Anmeldung ausgewählte Konto, öffne anschließend dessen Kalendergruppe und wähle die benötigten Kalender. Die Anmeldung beim richtigen Anbieter mit der falschen privaten oder beruflichen Identität kann eine gültige, aber unerwartete Kalenderliste ergeben."
+      ]
+    },
+    {
+      "heading": "3. Unterscheide Tarife und Berechtigungen",
+      "body": [
+        "Base enthält Google-Kalender-Synchronisierung und die Kalenderansichten. Advanced ergänzt Base um Werbefreiheit. Premium fügt Microsoft-Kalender und Microsoft-Teams-Funktionen hinzu. Prüfe vor dem Kauf den aktuellen lokalen Preis und Abrechnungszeitraum.",
+        "Ein Tarif bestimmt die verfügbaren App-Funktionen; er macht dich nicht zum Eigentümer eines fremden Kalenders. Google unterscheidet zwischen dem Anzeigen und Ändern von Ereignissen. Arbeitgeberregeln und Berechtigungen eines Microsoft-Kalenders gelten weiterhin. Ein sichtbares Ereignis oder ein verfügbarer Editor beweist nicht, dass der Anbieter eine Änderung akzeptiert."
+      ]
+    },
+    {
+      "heading": "4. Eine gemeinsame Ansicht kann Kalenderkopien enthalten",
+      "body": [
+        "Google- und Microsoft-Verbindungen verwenden Kalenderkopien im Kalendersystem des iPhones, um Ereignisse anzuzeigen und zu synchronisieren. Gehe nicht davon aus, dass beim Verbinden außerhalb des ursprünglichen Anbieters keine Kopie entsteht. Der Zielort dieser Kopien kann von den auf dem Gerät verfügbaren Kalenderquellen abhängen.",
+        "Erreicht dasselbe Konto das Telefon auch über einen anderen Weg, prüfe Kalendernamen und Quellen, bevor du wiederholte Termine für eigenständige Ereignisse hältst. Blende einen Kalender vorübergehend aus, um seine Anzeige zuzuordnen. Lösche kein Ereignis und keinen Kalender nur für einen aufgeräumten Bildschirm: Eine verbundene Kopie kann Änderungen an den Anbieter zurücksenden."
+      ]
+    },
+    {
+      "heading": "5. Wähle bei jedem neuen Ereignis bewusst den Zielkalender",
+      "body": [
+        "Prüfe vor dem Speichern den Kalender ebenso sorgfältig wie Datum und Uhrzeit. Wähle für einen Familientermin den tatsächlich von der Familie verwendeten Kalender und für eine Besprechung den erlaubten Arbeitskalender. Dass beide gemeinsam sichtbar sind, macht keinen automatisch zum Ziel jedes neuen Ereignisses.",
+        "Das Ändern des Ereigniskalenders oder Ziehen zwischen Kalendern kann ein Verschieben sein, keine harmlose zweite Ansicht. Belasse Einladungen und wiederkehrende Besprechungen während der Fehlersuche in ihrem bisherigen Kalender. Ist eine Änderung nötig, kläre zuerst, wem das Ereignis gehört und welcher Kalender es aufnehmen kann."
+      ]
+    },
+    {
+      "heading": "6. Überprüfe den Überblick, bevor du dich darauf verlässt",
+      "body": [
+        "Vergleiche ein aktuelles Ereignis beim Anbieter mit dem entsprechenden Ereignis in Cloud Calendars. Prüfe Datum, Zeitzone, Titel und ausgewählten Kalender. In einem eigenen bearbeitbaren Kalender eignet sich ein Testereignis ohne Gäste besser als eine Änderung an einer echten Besprechung. Bestätige das Ergebnis beim Anbieter, bevor du die Verbindung als einsatzbereit betrachtest.",
+        "Verlasse dich nicht darauf, dass die gemeinsame Ansicht automatisch anonyme Belegt-Zeiten in einem anderen Konto anlegt. Sollen Kollegen deine Nichtverfügbarkeit ohne persönliche Details sehen, nutze eine ausdrücklich genehmigte Lösung und prüfe sie aus ihrer Sicht. Persönlicher Überblick und geteilte Verfügbarkeit sind getrennte Aufgaben."
+      ]
+    }
+  ],
+  "claims": {},
+  "practical": [
+    "Notiere für ein Ereignis jedes Anbieters das genaue Konto und den Kalender.",
+    "Aktiviere die vorgesehenen iCloud-Kalender auf dem Gerät und prüfe den Kalenderzugriff.",
+    "Nutze die passende Google- oder Microsoft-Anmeldung und wähle die gewünschten Kalender.",
+    "Vergleiche vor Änderungen ein aktuelles Ereignis mit der Anbieteransicht.",
+    "Blende eine vermutete doppelte Quelle vorübergehend aus; lasse die Ereignisse unverändert.",
+    "Prüfe den Zielkalender jedes neuen Ereignisses und separat die gewünschte Freigabe belegter Zeiten."
+  ],
+  "faq": [
+    {
+      "q": "Sehen Kollegen meine privaten Ereignisse, weil ich beide Kalender anzeige?",
+      "a": "Die gemeinsame Anzeige ist keine Freigabeanweisung und keine automatische Übertragung belegter Zeiten. Prüfe die tatsächlichen Freigaben jedes Kalenders. Anbieter-Verbindungen können Kalenderkopien auf dem Gerät erzeugen; die Ansicht garantiert daher auch nicht, dass Ereignisdaten nur beim ursprünglichen Anbieter existieren."
+    },
+    {
+      "q": "Warum sehe ich ein Ereignis, kann es aber nicht erfolgreich bearbeiten?",
+      "a": "Der Kalender kann schreibgeschützt sein, das Ereignis einem anderen Organisator gehören oder der Anbieter die Änderung ablehnen. Prüfe Eigentümerschaft und Rechte beim Anbieter. Ein höherer App-Tarif ändert diese Rechte nicht."
+    },
+    {
+      "q": "Sollte ich dasselbe Google-Konto über jeden verfügbaren Weg verbinden?",
+      "a": "Prüfe zuerst, wie es bereits auf dem Telefon erscheint. Mehrere Wege erschweren die Zuordnung von Kopien. Wähle den vorgesehenen Weg, überprüfe seine Ereignisse und blende während der Untersuchung eine zusätzliche Anzeige aus, statt zuerst Daten zu löschen oder Konten zu trennen."
+    }
+  ],
+  "sourcesHeading": "Quellen und Einrichtungshinweise",
+  "sources": [
+    {
+      "label": "Apple: iCloud-Kalender auf Geräten einrichten",
+      "url": "https://support.apple.com/guide/icloud/set-up-calendar-mme4d73a8727/icloud"
+    },
+    {
+      "label": "Google: Kalenderfreigaben und Berechtigungen",
+      "url": "https://support.google.com/calendar/answer/37082?hl=en"
+    },
+    {
+      "label": "Microsoft: Outlook-Kalender-API und unterstützte Postfachdaten",
+      "url": "https://learn.microsoft.com/en-us/graph/outlook-calendar-concept-overview"
+    }
+  ],
+  "seeAlso": [
+    "exchange-calendars-on-an-iphone"
+  ]
+},
 
   'sharing-one-event-not-your-calendar': {
     title: 'Einen Termin teilen, ohne den Kalender herzugeben',
