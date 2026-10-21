@@ -468,95 +468,187 @@ export const ARTICLES_IT: Readonly<Record<string, LocalisedArticle>> = {
 },
 
   'planning-outdoors-without-being-rained-on': {
-  "title": "Organizzare attività all’aperto senza finire sotto la pioggia",
-  "short": "Pianificare all’aperto",
-  "description": "Un metodo pratico per organizzare attività all’aperto con il calendario che usi già, senza aggiungere una routine meteo separata.",
-  "lede": "Se i tuoi hobby si svolgono all’aperto, probabilmente hai un rituale: controllare il meteo, scrutare la settimana, tirare a indovinare. Quest’ultimo passaggio può lasciare spazio a un confronto ragionato. Questa guida è pubblicata da Arte Soft, sviluppatore di Cloud Calendars.",
-  "commonBelief": "Evitare il maltempo significherebbe controllare più spesso le previsioni.",
+  "updated": "2026-10-22",
+  "title": "Organizza un evento all’aperto con una previsione e un’alternativa",
+  "short": "Scegli un programma all’aperto e un’alternativa praticabile",
+  "description": "Organizza un evento all’aperto: controlla luogo, ore di previsione e alternativa concordata. Verifica i dettagli prima di cambiare un impegno condiviso.",
+  "lede": "Il meteo aiuta a confrontare possibili orari per un’attività all’aperto, ma non promette un risultato senza pioggia. Parti dai requisiti dell’attività e dalle decisioni ancora modificabili, poi usa la previsione pertinente per orientarle. Questa guida è pubblicata da Arte Soft, sviluppatore di Cloud Calendars.",
+  "commonBelief": "Controllare più spesso o spostare leggermente un’attività garantisce di evitare il maltempo.",
   "sections": [
     {
-      "heading": "Parti dal luogo e dalla decisione",
+      "heading": "Definisci l’attività prima di scegliere un numero meteo",
       "body": [
-        "Scegli il luogo meteo corrispondente all’attività, poi verifica se data e ore pertinenti sono disponibili. Decidi cosa ti serve sapere: se scegliere un altro orario, tenere pronta un’alternativa o rimandare la decisione.",
-        "Ricontrollare non cambia il tempo, ma le informazioni aggiornate possono contare. Non esiste un’unica frequenza di controllo adatta a ogni programma all’aperto."
+        "Identifica luogo, persone coinvolte e necessità dell’attività. Un pranzo in giardino, un’attività sportiva scolastica e uno spettacolo all’aperto prenotato hanno vincoli pratici diversi. Evita di applicare a tutti un’unica percentuale generica di pioggia.",
+        "Annota chi può decidere un cambiamento e l’ultimo momento utile per farlo. La scadenza di un luogo o la disponibilità di un collaboratore può limitare le opzioni prima del meteo. Questi esempi di pianificazione non forniscono limiti tecnici di sicurezza per alcuna attività."
       ]
     },
     {
-      "heading": "Confronta gli orari disponibili senza promettere il risultato",
+      "heading": "Abbina luogo, data locale e intero intervallo",
       "body": [
-        "Confronta le informazioni orarie pertinenti per ogni periodo possibile. Un’icona giornaliera è un riepilogo, non una garanzia delle condizioni per tutta la giornata.",
-        "Spostare un’attività di un’ora può aiutare oppure no. Non dedurre un intervallo asciutto che le previsioni non mostrano e non applicare una soglia percentuale universale a ogni attività."
+        "Confronta la località meteo selezionata con il luogo reale. Includi arrivo e preparazione dove serve, poi esamina le ore disponibili durante l’attività. Una sola icona giornaliera non descrive ogni momento di un impegno lungo.",
+        "Se l’evento supera le date della previsione, conserva la data concordata e programma un controllo successivo. In viaggio, confronta l’ora locale del luogo con l’appuntamento. Non sostituire implicitamente le condizioni della destinazione con una previsione per la posizione attuale."
       ]
     },
     {
-      "heading": "Prepara un’alternativa prima di modificare gli inviti",
+      "heading": "Confronta alternative reali senza inventare intervalli asciutti",
       "body": [
-        "Se l’attività richiede condizioni adatte, tieni pronta un’alternativa realistica e decidi quando controllare le informazioni più recenti. Consulta le indicazioni ufficiali locali dove pertinenti.",
-        "Per un appuntamento condiviso, conferma organizzatore e diritti di modifica prima di spostarlo. Una previsione apparentemente migliore non autorizza da sola a cambiare il programma di tutti."
+        "Confronta i periodi candidati usando i valori meteo pertinenti e le loro etichette. La guida del Met Office distingue la probabilità dagli altri valori e spiega che i campi possono descrivere periodi diversi. Leggi le definizioni della fonte che utilizzi.",
+        "Partire un’ora dopo può migliorare le condizioni oppure no. Considera un periodo apparentemente più adatto come informazione per il piano, non come garanzia. Non dedurre un’ora non coperta o condizioni lungo tutto il percorso da un valore relativo a un solo luogo."
+      ]
+    },
+    {
+      "heading": "Concorda un’alternativa che le persone possano davvero usare",
+      "body": [
+        "Un’alternativa deve risolvere il problema concreto: un luogo al chiuso autorizzato, un rinvio concordato o un’altra soluzione raggiungibile dai partecipanti. Verifica accesso, costo e disponibilità con l’organizzatore o la struttura competente.",
+        "Per esempio, spostare un picnic al chiuso può fallire se nessuno ha confermato la sala. Registra chiaramente l’alternativa e stabilisci chi comunicherà la scelta finale. Una nota nel calendario privato di una persona non è un accordo condiviso."
+      ]
+    },
+    {
+      "heading": "Salva e modifica l’evento desiderato",
+      "body": [
+        "Prima di creare o modificare, conferma calendario di destinazione, inizio, fine e luogo. Una bozza avviata da un’ora meteo richiede comunque una verifica. La durata proposta potrebbe non coprire preparazione, viaggio o tutta l’attività.",
+        "Per un appuntamento condiviso o ricorrente, verifica responsabilità dell’organizzatore, diritti di modifica e ambito della ricorrenza. Dopo una modifica autorizzata, riapri l’evento salvato. Un cambiamento locale non prova che la struttura o ogni partecipante lo abbiano accettato."
+      ]
+    },
+    {
+      "heading": "Ricontrolla quando una decisione può ancora essere utile",
+      "body": [
+        "Scegli un momento di verifica che lasci spazio per agire secondo le condizioni dell’impegno. Confronta l’ultima previsione pertinente e le indicazioni ufficiali o della struttura applicabili. La previsione è un elemento della decisione, non un permesso per ignorare i requisiti dell’attività.",
+        "Comunica il piano finale e conferma direttamente i passaggi importanti di responsabilità. Se un aggiornamento successivo cambia la decisione, identifica l’evento e l’occorrenza da modificare. Aggiornare continuamente senza un’alternativa praticabile non elimina l’incertezza."
       ]
     }
   ],
   "claims": {},
   "practical": [
-    "Conferma il luogo delle previsioni e le date e ore disponibili.",
-    "Confronta gli orari possibili usando i fattori meteo pertinenti per l’attività.",
-    "Mantieni un piano alternativo e ricontrolla prima che la decisione conti.",
-    "Consulta le indicazioni ufficiali locali se le condizioni possono rendere pericolosa l’attività."
+    "Identifica luogo, requisiti dell’attività e responsabile della decisione.",
+    "Controlla la località meteo selezionata e l’intero intervallo in ora locale.",
+    "Confronta solo date e ore di previsione effettivamente disponibili.",
+    "Concorda un’alternativa fattibile e una scadenza decisionale.",
+    "Verifica calendario di destinazione, dettagli e ambito della ricorrenza prima di salvare.",
+    "Ricontrolla al momento concordato e conferma il piano finale con i partecipanti."
+  ],
+  "faq": [
+    {
+      "q": "Spostare l’evento di un’ora può garantire tempo asciutto?",
+      "a": "No. Confronta i periodi disponibili e conserva un’alternativa adatta all’attività. Una previsione non è una promessa del risultato."
+    },
+    {
+      "q": "E se la previsione non arriva alla data dell’evento?",
+      "a": "Conserva l’appuntamento concordato e programma un controllo meteo successivo. L’assenza di informazioni non è una previsione di bel tempo."
+    },
+    {
+      "q": "Posso spostare un evento condiviso se un altro orario sembra migliore?",
+      "a": "Conferma prima accordo dell’organizzatore, diritti di modifica e partecipanti. Controlla ambito della ricorrenza e risultato salvato, poi comunica il cambiamento."
+    }
   ],
   "seeAlso": [
     "forecast-beside-every-event",
-    "a-fourteen-day-view-of-the-weather"
+    "weather-inside-your-calendar",
+    "a-fourteen-day-view-of-the-weather",
+    "month-view-on-a-bigger-screen"
   ],
-  "updated": "2026-10-21",
-  "faq": [
-    {
-      "q": "Spostare l’evento garantisce tempo asciutto?",
-      "a": "No. Confronta i periodi di previsione disponibili e tieni pronta un’alternativa realistica."
-    },
-    {
-      "q": "Basta controllare l’icona giornaliera?",
-      "a": "Per un’attività a un’ora precisa, controlla le ore disponibili per tutta la durata e conferma il luogo."
-    },
-    {
-      "q": "Posso spostare un evento condiviso solo perché un altro orario sembra migliore?",
-      "a": "Conferma responsabilità dell’organizzatore, diritti di modifica e partecipanti prima di cambiare il loro programma."
-    }
-  ],
+  "sourcesHeading": "Fonti ufficiali e approfondimenti",
   "sources": [
     {
-      "label": "Apple: dati di previsione WeatherKit e disponibilità regionale",
+      "label": "Apple: informazioni di previsione WeatherKit e disponibilità regionale",
       "url": "https://developer.apple.com/weatherkit/"
+    },
+    {
+      "label": "Met Office: località, periodi e valori delle previsioni",
+      "url": "https://weather.metoffice.gov.uk/guides/what-does-this-forecast-mean"
     }
   ]
 },
 
   'a-fourteen-day-view-of-the-weather': {
-  "title": "Le previsioni disponibili",
-  "short": "Le previsioni disponibili",
-  "description": "Cloud Calendars usa le previsioni disponibili per il luogo selezionato. I dati orari e giornalieri possono coprire periodi diversi.",
-  "lede": "Le date consultabili nel calendario non determinano la durata delle previsioni. La vista mensile non implica previsioni per tutto il mese o per ogni evento.",
+  "updated": "2026-10-22",
+  "title": "Fino a quale data posso vedere il meteo in Cloud Calendars?",
+  "short": "Controlla le date di previsione realmente disponibili",
+  "description": "Controlla le date meteo in Cloud Calendars. Distingui copertura giornaliera e oraria, appuntamenti futuri e dimostrazione del sito.",
+  "lede": "Un calendario a lungo termine e una previsione a lungo termine sono cose diverse. Puoi fissare una riunione prima che esista la sua previsione. Leggi le date disponibili nell’app invece di dedurre la copertura meteo dal mese che puoi aprire. Questa guida è pubblicata da Arte Soft, sviluppatore di Cloud Calendars.",
+  "commonBelief": "Ogni data futura del calendario ha una previsione, e la dimostrazione del sito su quattordici giorni corrisponde alla copertura dell’app.",
   "sections": [
     {
-      "heading": "Le previsioni disponibili",
+      "heading": "Leggi le date nella schermata meteo",
       "body": [
-        "Cloud Calendars usa le previsioni disponibili per il luogo selezionato. I dati orari e giornalieri possono coprire periodi diversi.",
-        "Le date consultabili nel calendario non determinano la durata delle previsioni. La vista mensile non implica previsioni per tutto il mese o per ogni evento."
+        "Apri il meteo del luogo desiderato e identifica le date effettivamente elencate. Non dedurre la disponibilità dalla navigazione mensile o annuale del calendario. Una previsione assente richiede un controllo successivo; non significa bel tempo.",
+        "Se organizzi un incontro tra diverse settimane, salva la data concordata e annota separatamente la decisione legata al meteo. Disponibilità del luogo, inviti e futura previsione sono elementi diversi del programma."
+      ]
+    },
+    {
+      "heading": "Comprendi l’elenco giornaliero dell’app",
+      "body": [
+        "L’app usa Apple WeatherKit. L’implementazione attuale dell’elenco giornaliero conserva fino a dieci giorni restituiti dal servizio. Leggi la prima e l’ultima data del luogo selezionato senza presumere che ogni vista o richiesta abbia dieci giorni completi.",
+        "Questo limite descrive l’elenco giornaliero mostrato, non promette la stessa attendibilità per tutte le variabili né una previsione completa per ogni appuntamento in quelle date. Usa il livello di dettaglio necessario alla decisione."
+      ]
+    },
+    {
+      "heading": "Controlla le ore disponibili per le attività con orario preciso",
+      "body": [
+        "Un riepilogo giornaliero non definisce le condizioni esatte per tutta la durata di un appuntamento. Apri il giorno pertinente e confronta le ore disponibili per arrivo, attività e partenza. Se parte del periodo manca, lasciala da verificare.",
+        "Per un evento serale, assicurati che luogo e data locale corrispondano ancora al programma. Un arrivo dopo mezzanotte appartiene a un’altra data. Controlla gli orari effettivi senza considerare la fine dell’elenco giornaliero come la fine di ogni serie oraria."
+      ]
+    },
+    {
+      "heading": "Distingui la dimostrazione del sito",
+      "body": [
+        "Il sito attualmente richiede quattordici giorni di previsione a Open-Meteo per la dimostrazione meteo. Open-Meteo documenta intervalli configurabili; questa richiesta del sito è un’implementazione distinta dall’app iOS.",
+        "Non usare il risultato web per affermare che l’app fornisce quattordici giorni WeatherKit. Se le due schermate differiscono, confronta prima luogo, ora e fornitore. Un intervallo di previsione diverso non significa che il calendario abbia perso un appuntamento."
+      ]
+    },
+    {
+      "heading": "Programma un controllo quando la previsione non è ancora disponibile",
+      "body": [
+        "Conserva la data reale dell’impegno e organizza un controllo che lasci tempo per decidere il luogo o avvisare i partecipanti. Per esempio, una festa all’aperto può richiedere un’alternativa al chiuso concordata prima del prossimo controllo meteo.",
+        "Scegli il controllo in base ai vincoli effettivi dell’attività. Questa guida non assegna percentuali di precisione o soglie universali per confermare o annullare a un determinato giorno di previsione. Consulta le informazioni aggiornate quando possono cambiare una decisione concreta."
+      ]
+    },
+    {
+      "heading": "Controlla i dettagli dopo aver scelto un orario",
+      "body": [
+        "Se un’ora di previsione disponibile ti aiuta a scegliere l’orario, controlla la bozza di evento risultante. Conferma data locale, inizio, fine, calendario di destinazione e luogo. Navigare nel meteo non sostituisce i permessi del calendario o l’accordo dell’organizzatore.",
+        "Dopo una modifica autorizzata, riapri l’evento e verifica l’occorrenza o la serie desiderata. Conferma separatamente i cambiamenti importanti con i partecipanti. La disponibilità di nuovi dati meteo non equivale alla ricezione di un invito modificato."
       ]
     }
   ],
   "claims": {},
   "practical": [
-    "Controlla luogo, data e ore disponibili prima di usare le previsioni per pianificare."
+    "Seleziona il luogo pertinente all’appuntamento.",
+    "Leggi la prima e l’ultima data nell’elenco giornaliero dell’app.",
+    "Controlla separatamente l’intervallo orario necessario, compreso il passaggio a mezzanotte.",
+    "Distingui la copertura Open-Meteo del sito da quella WeatherKit dell’app.",
+    "Organizza un controllo successivo per programmi oltre la previsione disponibile.",
+    "Verifica l’evento salvato e conferma le modifiche condivise con i partecipanti."
+  ],
+  "faq": [
+    {
+      "q": "Cloud Calendars offre una previsione di quattordici giorni nell’app?",
+      "a": "L’elenco giornaliero attuale usa fino a dieci giorni restituiti da WeatherKit. Il sito richiede separatamente quattordici giorni Open-Meteo. Controlla le date effettivamente disponibili nell’app."
+    },
+    {
+      "q": "Perché posso creare un evento dopo l’ultima data meteo?",
+      "a": "Il salvataggio nel calendario e la disponibilità meteo sono separati. Conserva l’appuntamento e controlla la previsione più vicino alla data."
+    },
+    {
+      "q": "Una voce giornaliera garantisce il meteo per ogni ora dell’evento?",
+      "a": "No. Controlla le ore realmente fornite per quel luogo e periodo. Non dedurre la copertura oraria completa dall’elenco giornaliero."
+    }
   ],
   "seeAlso": [
     "weather-inside-your-calendar",
-    "planning-outdoors-without-being-rained-on"
+    "forecast-beside-every-event",
+    "planning-outdoors-without-being-rained-on",
+    "month-view-on-a-bigger-screen"
   ],
-  "updated": "2026-10-21",
+  "sourcesHeading": "Fonti ufficiali e approfondimenti",
   "sources": [
     {
-      "label": "Apple WeatherKit",
+      "label": "Apple: informazioni di previsione WeatherKit e disponibilità regionale",
       "url": "https://developer.apple.com/weatherkit/"
+    },
+    {
+      "label": "Open-Meteo: parametri delle previsioni e intervalli disponibili",
+      "url": "https://open-meteo.com/en/docs"
     }
   ]
 },

@@ -464,95 +464,183 @@ export const ARTICLES_DE_DE: Readonly<Record<string, LocalisedArticle>> = {
 },
 
   'planning-outdoors-without-being-rained-on': {
-  "title": "Aktivitäten im Freien planen, ohne im Regen zu stehen",
-  "short": "Draußen planen",
-  "description": "Eine praktische Methode für Aktivitäten im Freien: Nutze deinen bestehenden Kalender, statt eine separate Wetterroutine aufzubauen.",
-  "lede": "Wenn deine Hobbys draußen stattfinden, hast du vermutlich dein eigenes Ritual: Wetter prüfen, die Woche überblicken, raten. Das Raten lässt sich durch bewusstes Vergleichen ersetzen. Dieser Leitfaden stammt von Arte Soft, dem Entwickler von Cloud Calendars.",
-  "commonBelief": "Schlechtes Wetter lasse sich vermeiden, indem man die Vorhersage häufiger prüft.",
+  "updated": "2026-10-22",
+  "title": "Eine Veranstaltung im Freien mit Vorhersage und Alternative planen",
+  "short": "Einen Plan im Freien und eine machbare Alternative wählen",
+  "description": "Plane im Freien mit geprüftem Ort, Vorhersagestunden und vereinbarter Alternative. Prüfe Kalenderdetails, bevor du einen gemeinsamen Termin änderst.",
+  "lede": "Wetter kann beim Vergleich möglicher Zeiten für Aktivitäten im Freien helfen, aber keinen trockenen Ausgang versprechen. Beginne mit den Anforderungen der Aktivität und den noch veränderbaren Entscheidungen. Nutze dann die passende Vorhersage als Grundlage. Dieser Leitfaden stammt von Arte Soft, dem Entwickler von Cloud Calendars.",
+  "commonBelief": "Häufigeres Prüfen oder geringfügiges Verschieben garantiert, dass eine Aktivität schlechtes Wetter vermeidet.",
   "sections": [
     {
-      "heading": "Beginne mit Ort und Entscheidung",
+      "heading": "Die Aktivität definieren, bevor du eine Wetterzahl auswählst",
       "body": [
-        "Wähle den Wetterort passend zur Aktivität und prüfe, ob das betreffende Datum und die Stunden verfügbar sind. Entscheide, was du wissen musst: ob du eine andere Zeit wählen, eine Alternative bereithalten oder die Entscheidung verschieben solltest.",
-        "Erneutes Prüfen ändert das Wetter nicht, doch aktualisierte Informationen können wichtig sein. Es gibt keinen einzigen Prüfzeitplan, der für jedes Vorhaben im Freien passt."
+        "Bestimme Ort, beteiligte Personen und Anforderungen der Aktivität. Ein Mittagessen im Garten, eine Schulsportstunde und eine gebuchte Freiluftaufführung haben unterschiedliche praktische Einschränkungen. Verwende nicht für alle denselben allgemeinen Regenprozentsatz.",
+        "Halte fest, wer eine Änderung entscheiden darf und wann die letzte sinnvolle Entscheidung möglich ist. Die Frist eines Veranstaltungsorts oder die Verfügbarkeit einer Hilfsperson kann deine Optionen früher einschränken als das Wetter. Diese Planungsbeispiele liefern keine technischen Sicherheitsgrenzwerte für Aktivitäten."
       ]
     },
     {
-      "heading": "Vergleiche verfügbare Zeiten ohne Ergebnisgarantie",
+      "heading": "Ort, lokales Datum und vollständigen Zeitraum abgleichen",
       "body": [
-        "Vergleiche die relevanten stündlichen Angaben für jeden möglichen Zeitraum. Ein Tagessymbol ist eine Zusammenfassung und keine Garantie für die Bedingungen während des ganzen Tages.",
-        "Eine Verschiebung um eine Stunde kann helfen, muss es aber nicht. Leite kein trockenes Zeitfenster ab, das die Vorhersage nicht zeigt, und wende keinen allgemeinen Prozentgrenzwert auf jede Aktivität an."
+        "Vergleiche den ausgewählten Wetterort mit dem tatsächlichen Veranstaltungsort. Beziehe gegebenenfalls Ankunft und Vorbereitung ein und prüfe die verfügbaren Stunden über die gesamte Aktivität. Ein Tagessymbol beschreibt nicht jeden Moment einer langen Buchung.",
+        "Liegt der Termin jenseits der Vorhersagedaten, behalte das vereinbarte Datum und plane eine spätere Prüfung. Vergleiche auf Reisen die Ortszeit des Veranstaltungsorts mit dem Termin. Ersetze die Buchungsgrundlage nicht unbemerkt durch eine Vorhersage für deinen aktuellen Standort."
       ]
     },
     {
-      "heading": "Plane eine Alternative, bevor du Einladungen änderst",
+      "heading": "Echte Alternativen vergleichen, ohne trockene Zeitfenster zu erfinden",
       "body": [
-        "Hängt die Aktivität von geeigneten Bedingungen ab, halte eine realistische Alternative bereit und entscheide, wann du die neuesten Informationen prüfst. Beachte gegebenenfalls örtliche amtliche Hinweise.",
-        "Prüfe bei einem geteilten Termin den Organisator und die Bearbeitungsrechte, bevor du ihn verschiebst. Eine günstiger aussehende Vorhersage berechtigt allein nicht dazu, den Zeitplan aller Beteiligten zu ändern."
+        "Vergleiche mögliche Zeiträume anhand der relevanten Wetterfelder und ihrer Bezeichnungen. Der Vorhersageleitfaden des Met Office unterscheidet Wahrscheinlichkeit von anderen Werten und erklärt unterschiedliche Bezugszeiträume. Lies die entsprechenden Definitionen deiner verwendeten Quelle.",
+        "Eine Stunde später loszugehen kann die Bedingungen verbessern oder auch nicht. Behandle einen geeigneter wirkenden Zeitraum als Planungsinformation, nicht als Garantie. Leite aus einem Wert für einen Ort weder eine nicht abgedeckte Stunde noch Beobachtungen entlang einer ganzen Strecke ab."
+      ]
+    },
+    {
+      "heading": "Eine tatsächlich nutzbare Alternative vereinbaren",
+      "body": [
+        "Eine Alternative sollte das reale Problem lösen: ein nutzbarer, freigegebener Innenraum, eine vereinbarte Verschiebung oder eine andere für Teilnehmer erreichbare Lösung. Prüfe Zugang, Kosten und Verfügbarkeit beim zuständigen Organisator oder Veranstaltungsort.",
+        "Ein Picknick nach drinnen zu verlegen kann beispielsweise scheitern, wenn niemand den Raum bestätigt hat. Halte die Alternative klar fest und bestimme, wer die endgültige Wahl mitteilt. Eine Notiz im privaten Kalender einer Person ist keine gemeinsame Vereinbarung."
+      ]
+    },
+    {
+      "heading": "Den vorgesehenen Termin speichern und ändern",
+      "body": [
+        "Bestätige vor Erstellen oder Bearbeiten Zielkalender, Beginn, Ende und Ort. Auch ein aus einer Wetterstunde gestarteter Entwurf muss geprüft werden. Seine vorgeschlagene Dauer deckt Aufbau, Fahrt oder die gesamte Aktivität möglicherweise nicht ab.",
+        "Prüfe bei gemeinsamen oder wiederkehrenden Terminen Zuständigkeit des Organisators, Bearbeitungsrechte und Wiederholungsumfang. Öffne nach einer erlaubten Änderung den gespeicherten Termin erneut. Eine lokale Änderung beweist nicht die Zustimmung des Veranstaltungsorts oder aller Teilnehmer."
+      ]
+    },
+    {
+      "heading": "Erneut prüfen, solange eine Entscheidung noch etwas bewirken kann",
+      "body": [
+        "Wähle einen Prüfzeitpunkt, der unter den Buchungsbedingungen noch Handlungsspielraum lässt. Vergleiche die aktuelle relevante Vorhersage sowie geltende offizielle Hinweise oder Vorgaben des Veranstaltungsorts. Wetterinformationen sind eine Entscheidungsgrundlage, keine Erlaubnis, Anforderungen einer Aktivität zu ignorieren.",
+        "Teile den endgültigen Plan mit und bestätige wichtige Übergaben direkt. Ändert eine spätere Aktualisierung die Entscheidung, bestimme den zu ändernden Termin und die Wiederholung. Wiederholtes Aktualisieren ohne machbare Alternative beseitigt die Unsicherheit nicht."
       ]
     }
   ],
   "claims": {},
   "practical": [
-    "Bestätige den Vorhersageort sowie die verfügbaren Tage und Stunden.",
-    "Vergleiche mögliche Zeiten anhand der für deine Aktivität wichtigen Wetterfaktoren.",
-    "Halte eine Alternative bereit und prüfe erneut, bevor die Entscheidung relevant wird.",
-    "Beachte örtliche amtliche Hinweise, wenn die Bedingungen die Aktivität gefährlich machen könnten."
+    "Ort, Anforderungen und entscheidungsverantwortliche Person bestimmen.",
+    "Den ausgewählten Wetterort und den gesamten Zeitraum in Ortszeit prüfen.",
+    "Nur tatsächlich verfügbare Vorhersagedaten und Stunden vergleichen.",
+    "Eine machbare Alternative und Entscheidungsfrist vereinbaren.",
+    "Zielkalender, Termindetails und Wiederholungsumfang vor dem Speichern prüfen.",
+    "Zum vereinbarten Zeitpunkt erneut prüfen und den endgültigen Plan mit Teilnehmern bestätigen."
   ],
-  "seeAlso": [
-    "forecast-beside-every-event",
-    "a-fourteen-day-view-of-the-weather"
-  ],
-  "updated": "2026-10-21",
   "faq": [
     {
-      "q": "Garantiert das Verschieben eines Termins trockenes Wetter?",
-      "a": "Nein. Vergleiche die verfügbaren Vorhersagezeiträume und halte eine realistische Alternative bereit."
+      "q": "Garantiert eine Verschiebung um eine Stunde trockenes Wetter?",
+      "a": "Nein. Vergleiche verfügbare Zeiträume und halte eine zur Aktivität passende Alternative bereit. Eine Vorhersage verspricht kein bestimmtes Ergebnis."
     },
     {
-      "q": "Reicht das Tagessymbol?",
-      "a": "Prüfe bei einer Aktivität zu einer bestimmten Uhrzeit die verfügbaren Stunden über ihre gesamte Dauer und bestätige den Ort."
+      "q": "Was, wenn die Vorhersage noch nicht bis zum Termin reicht?",
+      "a": "Behalte den vereinbarten Termin und plane eine spätere Wetterprüfung. Fehlende Informationen sind keine Schönwettervorhersage."
     },
     {
-      "q": "Darf ich einen geteilten Termin verschieben, nur weil eine andere Zeit besser aussieht?",
-      "a": "Kläre die Zuständigkeit des Organisators, Bearbeitungsrechte und Teilnehmende, bevor du deren Zeitplan änderst."
+      "q": "Darf ich einen gemeinsamen Termin verschieben, wenn eine andere Zeit besser aussieht?",
+      "a": "Bestätige zuerst Zustimmung des Organisators, Bearbeitungsrechte und Teilnehmer. Prüfe Wiederholungsumfang und gespeichertes Ergebnis und teile dann die Änderung mit."
     }
   ],
+  "seeAlso": [
+    "forecast-beside-every-event"
+  ],
+  "sourcesHeading": "Offizielle Quellen und weiterführende Informationen",
   "sources": [
     {
-      "label": "Apple: WeatherKit-Vorhersagedaten und regionale Verfügbarkeit",
+      "label": "Apple: WeatherKit-Vorhersagen und regionale Verfügbarkeit",
       "url": "https://developer.apple.com/weatherkit/"
+    },
+    {
+      "label": "Met Office: Vorhersageort, Zeiträume und Wetterwerte",
+      "url": "https://weather.metoffice.gov.uk/guides/what-does-this-forecast-mean"
     }
   ]
 },
 
   'a-fourteen-day-view-of-the-weather': {
-  "title": "Die verfügbare Vorhersage",
-  "short": "Die verfügbare Vorhersage",
-  "description": "Cloud Calendars verwendet die verfügbare Vorhersage für den ausgewählten Ort. Stunden- und Tagesdaten können unterschiedliche Zeiträume abdecken.",
-  "lede": "Der Zeitraum, den Sie im Kalender aufrufen können, bestimmt nicht die Reichweite der Vorhersage. Eine Monatsansicht bedeutet keine Wettervorhersage für den ganzen Monat oder jeden Termin.",
+  "updated": "2026-10-22",
+  "title": "Wie weit reicht die Wettervorhersage in Cloud Calendars?",
+  "short": "Die tatsächlich verfügbaren Vorhersagedaten prüfen",
+  "description": "Prüfe die verfügbaren Vorhersagedaten in Cloud Calendars. Unterscheide Tages- und Stundenwerte, zukünftige Termine und die Wetterdemo der Website.",
+  "lede": "Ein weit vorausreichender Kalender und eine langfristige Wettervorhersage sind verschiedene Dinge. Du kannst eine Besprechung vereinbaren, bevor ihre Vorhersage vorliegt. Lies die verfügbaren Daten in der App, statt sie aus dem aufrufbaren Kalendermonat abzuleiten. Dieser Leitfaden stammt von Arte Soft, dem Entwickler von Cloud Calendars.",
+  "commonBelief": "Jedes zukünftige Kalenderdatum hat eine Vorhersage, und die Vierzehntage-Demo der Website entspricht dem Vorhersagezeitraum der App.",
   "sections": [
     {
-      "heading": "Die verfügbare Vorhersage",
+      "heading": "Die Daten in der Wetteranzeige lesen",
       "body": [
-        "Cloud Calendars verwendet die verfügbare Vorhersage für den ausgewählten Ort. Stunden- und Tagesdaten können unterschiedliche Zeiträume abdecken.",
-        "Der Zeitraum, den Sie im Kalender aufrufen können, bestimmt nicht die Reichweite der Vorhersage. Eine Monatsansicht bedeutet keine Wettervorhersage für den ganzen Monat oder jeden Termin."
+        "Öffne das Wetter für den vorgesehenen Ort und prüfe die tatsächlich aufgeführten Daten. Leite die Verfügbarkeit nicht aus der Monats- oder Jahresnavigation ab. Fehlende Vorhersagedaten bedeuten, dass eine spätere Prüfung nötig ist; sie bedeuten keinen klaren Tag.",
+        "Wenn du ein Treffen mehrere Wochen im Voraus organisierst, speichere das vereinbarte Datum und halte die Wetterentscheidung gesondert fest. Verfügbarkeit des Veranstaltungsorts, Einladungen und eine spätere Vorhersage sind unterschiedliche Grundlagen dieses Plans."
+      ]
+    },
+    {
+      "heading": "Die Tagesliste der App verstehen",
+      "body": [
+        "Die App verwendet Apple WeatherKit. Ihre aktuelle Tagesliste übernimmt bis zu zehn vom Dienst zurückgegebene Tage. Lies für den gewählten Ort das tatsächliche erste und letzte Datum, statt bei jeder Ansicht oder Anfrage volle zehn Tage vorauszusetzen.",
+        "Diese Grenze beschreibt die angezeigte Tagesliste. Sie verspricht weder gleiche Verlässlichkeit aller Wetterwerte noch eine vollständige Vorhersage für jeden Termin innerhalb dieser Daten. Nutze die Detailtiefe, die deine Entscheidung erfordert."
+      ]
+    },
+    {
+      "heading": "Stundenwerte für zeitlich festgelegte Aktivitäten prüfen",
+      "body": [
+        "Eine Tagesübersicht belegt nicht die genauen Bedingungen während des gesamten Termins. Öffne den betreffenden Tag und vergleiche die verfügbaren Stunden für Ankunft, Aktivität und Abreise. Fehlt ein Teil des Zeitraums, behandle ihn als ungeklärt.",
+        "Prüfe bei einer Abendveranstaltung, ob gewählter Ort und lokales Datum noch zum Plan passen. Eine späte Ankunft nach Mitternacht gehört zum nächsten Datum. Prüfe die tatsächlichen Zeitangaben, statt das Ende der Tagesliste mit dem Ende jeder Stundenreihe gleichzusetzen."
+      ]
+    },
+    {
+      "heading": "Die Website-Demonstration unterscheiden",
+      "body": [
+        "Die aktuelle Website fordert für ihre Wetterdemonstration vierzehn Vorhersagetage von Open-Meteo an. Open-Meteo beschreibt konfigurierbare Zeiträume; diese Website-Anfrage ist eine getrennte Umsetzung von der iOS-App.",
+        "Leite aus dem Webergebnis nicht ab, dass die App vierzehn WeatherKit-Tage liefert. Unterscheiden sich die Anzeigen, vergleiche zuerst Ort, Zeit und Anbieter. Ein anderer Vorhersagezeitraum bedeutet nicht, dass der Kalender einen Termin verloren hat."
+      ]
+    },
+    {
+      "heading": "Eine spätere Prüfung einplanen, wenn die Vorhersage noch fehlt",
+      "body": [
+        "Behalte das echte Datum der Buchung und plane eine Prüfung mit genügend Zeit für eine Ortsentscheidung oder Nachricht an die Teilnehmer. Eine Feier im Freien kann beispielsweise eine vereinbarte Innenraumalternative brauchen, bevor das Wetter erneut geprüft wird.",
+        "Richte die Prüfung nach den tatsächlichen Einschränkungen der Aktivität aus. Dieser Leitfaden ordnet keinem nummerierten Vorhersagetag einen Genauigkeitsprozentsatz oder eine allgemeine Durchführungs- oder Absagegrenze zu. Prüfe aktuelle Informationen, wenn sie eine noch umsetzbare Entscheidung beeinflussen können."
+      ]
+    },
+    {
+      "heading": "Nach der Zeitwahl die Termindetails prüfen",
+      "body": [
+        "Wenn eine verfügbare Vorhersagestunde bei der Zeitwahl hilft, prüfe den daraus entstehenden Terminentwurf. Bestätige lokales Datum, Beginn, Ende, Zielkalender und Ort. Die Navigation durch Vorhersagen ersetzt weder Kalenderberechtigungen noch die Zustimmung des Organisators.",
+        "Öffne nach einer erlaubten Änderung den Termin erneut und prüfe die gewünschte Wiederholung oder Serie. Bestätige wichtige Änderungen gesondert mit den Teilnehmern. Verfügbare Wetterdaten sind nicht gleichbedeutend mit dem Empfang einer geänderten Einladung."
       ]
     }
   ],
   "claims": {},
   "practical": [
-    "Prüfen Sie Ort, Datum und verfügbare Stunden, bevor Sie mit der Vorhersage planen."
+    "Den für den Termin relevanten Ort wählen.",
+    "Das erste und letzte Datum der Tagesliste in der App lesen.",
+    "Den benötigten Stundenzeitraum einschließlich Mitternachtsgrenzen getrennt prüfen.",
+    "Open-Meteo-Abdeckung der Website von WeatherKit-Abdeckung der App unterscheiden.",
+    "Für Pläne jenseits der Vorhersage eine spätere Prüfung vereinbaren.",
+    "Den gespeicherten Termin prüfen und gemeinsame Änderungen mit Teilnehmern bestätigen."
+  ],
+  "faq": [
+    {
+      "q": "Bietet Cloud Calendars in der App eine Vierzehntage-Vorhersage?",
+      "a": "Die aktuelle Tagesliste der App nutzt bis zu zehn zurückgegebene WeatherKit-Tage. Die Website fordert getrennt vierzehn Open-Meteo-Tage an. Prüfe die tatsächlich in der App verfügbaren Daten."
+    },
+    {
+      "q": "Warum kann ich einen Termin nach dem letzten Wetterdatum erstellen?",
+      "a": "Kalenderspeicherung und Wetterverfügbarkeit sind getrennt. Behalte den Termin und prüfe die Vorhersage näher am Datum."
+    },
+    {
+      "q": "Garantiert ein Tageseintrag Wetter für jede Stunde meines Termins?",
+      "a": "Nein. Prüfe die tatsächlich gelieferten Stunden für Ort und Zeitraum. Leite aus der Tagesliste keine vollständige Stundenabdeckung ab."
+    }
   ],
   "seeAlso": [
     "weather-inside-your-calendar",
+    "forecast-beside-every-event",
     "planning-outdoors-without-being-rained-on"
   ],
-  "updated": "2026-10-21",
+  "sourcesHeading": "Offizielle Quellen und weiterführende Informationen",
   "sources": [
     {
-      "label": "Apple WeatherKit",
+      "label": "Apple: WeatherKit-Vorhersagen und regionale Verfügbarkeit",
       "url": "https://developer.apple.com/weatherkit/"
+    },
+    {
+      "label": "Open-Meteo: Vorhersageparameter und verfügbare Zeiträume",
+      "url": "https://open-meteo.com/en/docs"
     }
   ]
 },

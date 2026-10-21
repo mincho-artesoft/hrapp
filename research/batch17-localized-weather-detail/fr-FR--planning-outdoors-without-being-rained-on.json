@@ -1,0 +1,92 @@
+{
+  "updated": "2026-10-22",
+  "title": "Préparer un événement en plein air avec une prévision et un plan de repli",
+  "short": "Choisir un programme extérieur et une alternative réalisable",
+  "description": "Préparez un événement extérieur : lieu, heures de prévision et solution de repli. Vérifiez les détails avant de modifier un rendez-vous partagé.",
+  "lede": "La météo peut aider à comparer des créneaux pour une activité extérieure, mais ne promet pas un résultat sans pluie. Partez des besoins de l’activité et des décisions encore modifiables, puis éclairez-les avec la prévision pertinente. Ce guide est publié par Arte Soft, développeur de Cloud Calendars.",
+  "commonBelief": "Consulter plus souvent ou décaler légèrement une activité garantit d’éviter le mauvais temps.",
+  "sections": [
+    {
+      "heading": "Définir l’activité avant de choisir un chiffre météo",
+      "body": [
+        "Identifiez le lieu, les personnes concernées et les besoins de l’activité. Un déjeuner au jardin, une séance sportive scolaire et un spectacle extérieur réservé ont des contraintes différentes. Évitez de leur appliquer un pourcentage de pluie générique.",
+        "Notez qui peut décider d’un changement et jusqu’à quel moment une décision reste utile. Le délai du lieu ou la disponibilité d’une personne qui aide peut limiter les options avant la météo. Ces exemples de planification ne fournissent pas de limites techniques de sécurité pour une activité."
+      ]
+    },
+    {
+      "heading": "Faire correspondre lieu, date locale et intervalle complet",
+      "body": [
+        "Comparez le lieu météo sélectionné au lieu réel. Incluez l’arrivée et la préparation si nécessaire, puis examinez les heures disponibles pendant l’activité. Une seule icône quotidienne ne décrit pas chaque instant d’une longue réservation.",
+        "Si l’événement dépasse les dates de prévision, conservez la date convenue et prévoyez une vérification ultérieure. En déplacement, comparez l’heure locale du lieu à celle du rendez-vous. Ne remplacez pas implicitement les conditions du lieu par une prévision pour votre position actuelle."
+      ]
+    },
+    {
+      "heading": "Comparer de vraies alternatives sans inventer de créneaux secs",
+      "body": [
+        "Comparez les périodes candidates avec les champs météo pertinents et leurs libellés. Le guide du Met Office distingue la probabilité des autres valeurs et explique que les champs peuvent couvrir des périodes différentes. Lisez les définitions de la source utilisée.",
+        "Partir une heure plus tard peut améliorer les conditions, ou non. Une période qui semble plus adaptée est une information pour le projet, pas une garantie. Ne déduisez pas une heure non couverte ou des observations sur tout un trajet d’une valeur pour un seul lieu."
+      ]
+    },
+    {
+      "heading": "Convenir d’un repli réellement utilisable",
+      "body": [
+        "L’alternative doit résoudre le problème concret : un lieu intérieur autorisé, un report convenu ou une autre organisation accessible aux participants. Vérifiez accès, coût et disponibilité auprès de l’organisateur ou du lieu compétent.",
+        "Déplacer un pique-nique à l’intérieur peut échouer si personne n’a confirmé la salle. Notez clairement l’alternative et décidez qui communiquera le choix final. Une note dans le calendrier privé d’une personne n’est pas un accord partagé."
+      ]
+    },
+    {
+      "heading": "Enregistrer et modifier le bon événement",
+      "body": [
+        "Avant de créer ou modifier, confirmez le calendrier de destination, le début, la fin et le lieu. Un brouillon lancé depuis une heure météo doit encore être vérifié. Sa durée proposée peut ne pas couvrir la préparation, le trajet ou toute l’activité.",
+        "Pour un rendez-vous partagé ou récurrent, vérifiez les responsabilités de l’organisateur, les droits de modification et la portée de la récurrence. Après une modification autorisée, rouvrez l’événement enregistré. Un changement local ne prouve pas l’accord du lieu ou de tous les participants."
+      ]
+    },
+    {
+      "heading": "Revérifier lorsqu’une décision peut encore être utile",
+      "body": [
+        "Choisissez un moment laissant la possibilité d’agir selon les conditions de la réservation. Comparez la dernière prévision pertinente et les consignes officielles ou du lieu applicables. La météo est un élément de décision, pas une autorisation d’ignorer les exigences de l’activité.",
+        "Communiquez le programme final et confirmez directement les relais importants. Si une mise à jour ultérieure change la décision, identifiez l’événement et l’occurrence à modifier. Actualiser sans cesse sans alternative réalisable ne supprime pas l’incertitude."
+      ]
+    }
+  ],
+  "claims": {},
+  "practical": [
+    "Identifiez le lieu, les exigences de l’activité et la personne qui décide.",
+    "Vérifiez le lieu météo sélectionné et l’intervalle complet en heure locale.",
+    "Comparez uniquement les dates et heures de prévision réellement disponibles.",
+    "Convenez d’une alternative réalisable et d’une échéance de décision.",
+    "Vérifiez destination, détails et portée de la récurrence avant d’enregistrer.",
+    "Revérifiez au moment convenu et confirmez le programme final avec les participants."
+  ],
+  "faq": [
+    {
+      "q": "Décaler mon événement d’une heure peut-il garantir un temps sec ?",
+      "a": "Non. Comparez les périodes disponibles et gardez une alternative adaptée à l’activité. Une prévision ne promet pas le résultat."
+    },
+    {
+      "q": "Que faire si la prévision n’atteint pas la date de l’événement ?",
+      "a": "Conservez le rendez-vous convenu et prévoyez une vérification météo ultérieure. Une information absente n’est pas une prévision de beau temps."
+    },
+    {
+      "q": "Puis-je déplacer un événement partagé si un autre créneau semble meilleur ?",
+      "a": "Confirmez d’abord l’accord de l’organisateur, les droits de modification et les participants. Vérifiez la portée de la récurrence et le résultat enregistré, puis communiquez le changement."
+    }
+  ],
+  "seeAlso": [
+    "forecast-beside-every-event",
+    "weather-inside-your-calendar",
+    "a-fourteen-day-view-of-the-weather",
+    "month-view-on-a-bigger-screen"
+  ],
+  "sourcesHeading": "Sources officielles et lectures complémentaires",
+  "sources": [
+    {
+      "label": "Apple : informations météo WeatherKit et disponibilité régionale",
+      "url": "https://developer.apple.com/weatherkit/"
+    },
+    {
+      "label": "Met Office : lieu, périodes et valeurs des prévisions météo",
+      "url": "https://weather.metoffice.gov.uk/guides/what-does-this-forecast-mean"
+    }
+  ]
+}

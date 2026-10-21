@@ -1,0 +1,91 @@
+{
+  "updated": "2026-10-22",
+  "title": "¿Hasta qué fecha puedo ver el tiempo en Cloud Calendars?",
+  "short": "Comprueba las fechas de previsión disponibles",
+  "description": "Comprueba las fechas de previsión de Cloud Calendars. Distingue cobertura diaria y horaria, citas futuras y la demostración meteorológica del sitio web.",
+  "lede": "Un calendario a largo plazo y una previsión a largo plazo son cosas distintas. Puedes concertar una reunión antes de que exista su previsión. Lee las fechas disponibles en la aplicación en vez de deducirlas del mes que puedes abrir. Esta guía la publica Arte Soft, desarrollador de Cloud Calendars.",
+  "commonBelief": "Cada fecha futura del calendario tiene previsión, y la demostración de catorce días del sitio web es el alcance de la aplicación.",
+  "sections": [
+    {
+      "heading": "Lee las fechas de la vista meteorológica",
+      "body": [
+        "Abre el tiempo del lugar previsto e identifica las fechas que realmente figuran. No deduzcas la disponibilidad de la navegación mensual o anual del calendario. Si faltan datos, necesitas revisarlos más adelante; no significa que vaya a hacer buen tiempo.",
+        "Si organizas una reunión con varias semanas de antelación, guarda la fecha acordada y anota por separado la decisión meteorológica. La disponibilidad del lugar, las invitaciones y una futura previsión son elementos distintos del plan."
+      ]
+    },
+    {
+      "heading": "Comprende la lista diaria de la aplicación",
+      "body": [
+        "La aplicación utiliza Apple WeatherKit. Su implementación actual conserva hasta diez días devueltos por el servicio en la lista diaria. Lee la primera y última fecha reales del lugar seleccionado, sin suponer que cada vista o petición dispone de diez días completos.",
+        "Este límite describe la lista diaria mostrada. No promete que todas las variables tengan igual fiabilidad ni que cada cita dentro de esas fechas disponga de una previsión completa. Usa el nivel de detalle que necesita tu decisión."
+      ]
+    },
+    {
+      "heading": "Comprueba las horas disponibles para actividades con horario",
+      "body": [
+        "Un resumen diario no establece las condiciones exactas durante toda una cita. Abre el día y compara las horas disponibles para la llegada, la actividad y la salida. Si falta parte del periodo, déjala como una cuestión pendiente.",
+        "Para un evento nocturno, asegúrate de que lugar y fecha local sigan coincidiendo con el plan. Llegar después de medianoche corresponde a otra fecha. Comprueba las marcas horarias reales en vez de considerar el final de la lista diaria como el final de todas las series horarias."
+      ]
+    },
+    {
+      "heading": "Distingue la demostración del sitio web",
+      "body": [
+        "El sitio actual solicita catorce días de previsión a Open-Meteo para su demostración. Open-Meteo documenta intervalos configurables; esa petición del sitio es una implementación separada de la aplicación iOS.",
+        "No uses el resultado web para afirmar que la aplicación ofrece catorce días de WeatherKit. Si las vistas difieren, compara primero lugar, hora y proveedor. Un alcance distinto de previsión no significa que el calendario haya perdido una cita."
+      ]
+    },
+    {
+      "heading": "Programa una revisión si aún no hay previsión",
+      "body": [
+        "Mantén la fecha real de la reserva y organiza una revisión que deje tiempo para decidir el lugar o avisar a los participantes. Por ejemplo, una celebración exterior puede necesitar una alternativa interior acordada antes de la siguiente consulta meteorológica.",
+        "Elige la revisión según las limitaciones reales de la actividad. Esta guía no asigna porcentajes de precisión ni umbrales universales para celebrar o cancelar según el número de día de previsión. Consulta la información actual cuando pueda cambiar una decisión que aún puedas ejecutar."
+      ]
+    },
+    {
+      "heading": "Revisa los detalles después de elegir una hora",
+      "body": [
+        "Si una hora de previsión disponible ayuda a elegir el momento, revisa el borrador de evento resultante. Confirma fecha local, inicio, final, calendario de destino y lugar. Navegar por la previsión no sustituye los permisos del calendario ni el acuerdo del organizador.",
+        "Después de un cambio autorizado, reabre el evento y comprueba la ocurrencia o serie prevista. Confirma por separado los cambios importantes con los participantes. Que aparezcan datos meteorológicos no equivale a que se haya recibido una invitación modificada."
+      ]
+    }
+  ],
+  "claims": {},
+  "practical": [
+    "Selecciona el lugar relevante para la cita.",
+    "Lee la primera y última fecha de la lista diaria de la aplicación.",
+    "Comprueba por separado el intervalo horario, incluidos los límites de medianoche.",
+    "Distingue la cobertura Open-Meteo del sitio de la cobertura WeatherKit de la aplicación.",
+    "Programa una revisión posterior para planes fuera de la previsión disponible.",
+    "Verifica el evento guardado y confirma los cambios compartidos con los participantes."
+  ],
+  "faq": [
+    {
+      "q": "¿Cloud Calendars ofrece catorce días de previsión en la aplicación?",
+      "a": "La lista diaria actual usa hasta diez días devueltos por WeatherKit. El sitio solicita por separado catorce días a Open-Meteo. Comprueba las fechas realmente disponibles en la aplicación."
+    },
+    {
+      "q": "¿Por qué puedo crear un evento después de la última fecha meteorológica?",
+      "a": "El almacenamiento del calendario y la disponibilidad del tiempo son independientes. Mantén la cita y revisa la previsión cuando se acerque la fecha."
+    },
+    {
+      "q": "¿Un dato diario garantiza previsión para cada hora del evento?",
+      "a": "No. Comprueba las horas realmente suministradas para ese lugar y periodo. No deduzcas una cobertura horaria completa de la lista diaria."
+    }
+  ],
+  "seeAlso": [
+    "weather-inside-your-calendar",
+    "forecast-beside-every-event",
+    "planning-outdoors-without-being-rained-on"
+  ],
+  "sourcesHeading": "Fuentes oficiales y lecturas adicionales",
+  "sources": [
+    {
+      "label": "Apple: previsiones WeatherKit y disponibilidad regional",
+      "url": "https://developer.apple.com/weatherkit/"
+    },
+    {
+      "label": "Open-Meteo: parámetros de previsión e intervalos disponibles",
+      "url": "https://open-meteo.com/en/docs"
+    }
+  ]
+}

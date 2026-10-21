@@ -1,7 +1,7 @@
 {
   "schemaVersion": 1,
   "date": "2026-10-21",
-  "scope": "All concrete HTTPS URLs recorded in batch03 through batch09 JSON files present in this directory, exact-string deduplicated. This is a bounded corpus queue, not exhaustive publisher coverage. batch07 file is absent. No new network fetches. Consolidated four explicit successful batch10 body reviews; prior evidence preserved. Consolidated four explicit successful batch12 substantive body reviews, preserving prior evidence. Consolidated two successful batch13 substantive reviews. Four previously discovered OneCal substantive body reviews consolidated in batch14. Two pending Teamup pages reviewed in batch15; supplementary newly discovered Readdle URLs are recorded separately outside this original71URLcorpus. Three exact CalendarBridge bodies reviewedbatch16; publisherownlimits notCloudpromises. Three family publisher substantive bodies consolidated batch17; publisher claims are not Cloud features. Four exact CalendarBridge main bodies consolidated batch18; no rank/volume/runtime evidence. OriginalOneCalbillingbody reviewedbatch19; newmobileURLrecordedoutsideoriginal71corpus.",
+  "scope": "All concrete HTTPS URLs recorded in batch03 through batch09 JSON files present in this directory, exact-string deduplicated. This is a bounded corpus queue, not exhaustive publisher coverage. batch07 file is absent. No new network fetches. Consolidated four explicit successful batch10 body reviews; prior evidence preserved. Consolidated four explicit successful batch12 substantive body reviews, preserving prior evidence. Consolidated two successful batch13 substantive reviews. Four previously discovered OneCal substantive body reviews consolidated in batch14. Two pending Teamup pages reviewed in batch15; supplementary newly discovered Readdle URLs are recorded separately outside this original71URLcorpus. Three exact CalendarBridge bodies reviewedbatch16; publisherownlimits notCloudpromises. Three family publisher substantive bodies consolidated batch17; publisher claims are not Cloud features. Four exact CalendarBridge main bodies consolidated batch18; no rank/volume/runtime evidence. OriginalOneCalbillingbody reviewedbatch19; newmobileURLrecordedoutsideoriginal71corpus. Batch20 read the three complete Flexibits navigation/index documents; original partial classification is retained because linked feature bodies were not read.",
   "inputFiles": [
     "research/competitors/batch03-intent-mapping-20261021.json",
     "research/competitors/batch03-primary-discovery-20261021.json",
@@ -20,7 +20,8 @@
     "research/competitors/batch16-sync-directions-troubleshooting-20261022.json",
     "research/competitors/batch17-family-responsibility-primary-20261022.json",
     "research/competitors/batch18-calendarbridge-primary-20261022.json",
-    "research/competitors/batch19-onecal-offboarding-discovery-20261022.json"
+    "research/competitors/batch19-onecal-offboarding-discovery-20261022.json",
+    "research/competitors/batch20-flexibits-help-primary-20261022.json"
   ],
   "statusDefinitions": {
     "full": "Explicit complete substantive-text review in at least one cited record, not images/runtime/linked pages.",
@@ -2930,5 +2931,15 @@
     "No Cloud feature parity inferred from competitor labels.",
     "No failed URL fetched; no source/native/deployment changes."
   ],
-  "baseQueue": "research/competitors/coverage-queue-20261021.json"
+  "baseQueue": "research/competitors/coverage-queue-20261021.json",
+  "navigationReadAddendum": {
+    "source": "research/competitors/batch20-flexibits-help-primary-20261022.json",
+    "exactUrls": [
+      "https://flexibits.com/support",
+      "https://flexibits.com/fantastical/help",
+      "https://flexibits.com/fantastical-ios/help"
+    ],
+    "countsUnchanged": true,
+    "reason": "Complete index extraction does not establish substantive linked feature-body coverage."
+  }
 }

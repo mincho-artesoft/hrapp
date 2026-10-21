@@ -1,0 +1,130 @@
+{
+  "date": "2026-10-22",
+  "scope": "Four full LocalisedArticle translations, French and Italian, of the two current corrected English weather guides. No summaries or source integration.",
+  "source": "src/app/content/en-US/articles-weather.ts",
+  "method": "Own-language model translation; no paid API, native-speaker approval or certification.",
+  "checks": [
+    "All four have 6 sections, 12 body paragraphs, 6 practical steps, 3 FAQs, 2 exact source URLs, empty claims and 2026-10-22 update.",
+    "Descriptions at most 155 Unicode characters.",
+    "App daily coverage up to ten returned WeatherKit days remains separate from website request for fourteen Open-Meteo days and hourly coverage.",
+    "Missing weather is not clear-weather evidence; local dates, midnight boundaries and available intervals require checking.",
+    "Outdoor titles make no promise to avoid rain. Alternative plans and decision timing replace generic percentages or safety thresholds.",
+    "Draft destination/start/end/location, permissions, recurrence and saved result checked; no booking or universal update promise.",
+    "Related slugs verified against actual locale articles*.ts modules, unavailable originals replaced with relevant existing weather/month guides."
+  ],
+  "limitations": "No native code changes, runtime tests, build or deployment. These translations follow the exact supplied articles; they do not add implementation specifics absent from these English objects. Temporary helper removed after checks.",
+  "files": [
+    {
+      "locale": "fr-FR",
+      "slug": "a-fourteen-day-view-of-the-weather",
+      "file": "research/batch17-localized-weather-detail/fr-FR--a-fourteen-day-view-of-the-weather.json",
+      "descriptionUnicodeCharacters": 139,
+      "sha256": "67c82ee446da22fd19215b8a698ff383ec73a15e2bdb2aa8a16b7d645ca40911",
+      "sourceObjectSha256": "d5cfe4ca7b9a7255b67f01eec43c669a9bf672b6386dd37139c273a90a556efc",
+      "sections": 6,
+      "bodyParagraphs": 12,
+      "practicalSteps": 6,
+      "faqs": 3,
+      "exactSourceURLsPreserved": true,
+      "relatedRoutes": [
+        "weather-inside-your-calendar",
+        "forecast-beside-every-event",
+        "planning-outdoors-without-being-rained-on",
+        "month-view-on-a-bigger-screen"
+      ],
+      "originalRelatedRoutesRetained": [
+        "weather-inside-your-calendar",
+        "forecast-beside-every-event",
+        "planning-outdoors-without-being-rained-on"
+      ],
+      "routeModuleFiles": [
+        "src/app/content/fr-FR/articles.ts",
+        "src/app/content/fr-FR/articles-google.ts",
+        "src/app/content/fr-FR/articles-help.ts"
+      ]
+    },
+    {
+      "locale": "fr-FR",
+      "slug": "planning-outdoors-without-being-rained-on",
+      "file": "research/batch17-localized-weather-detail/fr-FR--planning-outdoors-without-being-rained-on.json",
+      "descriptionUnicodeCharacters": 144,
+      "sha256": "7ad37afa89121b3e118cb559da8b5c1c4dcaf15dbe90b06aed5d8a412256601a",
+      "sourceObjectSha256": "701e15ff129561d82620ba88ed7493b72e7d70569a398322e0c027e0f9aa32b9",
+      "sections": 6,
+      "bodyParagraphs": 12,
+      "practicalSteps": 6,
+      "faqs": 3,
+      "exactSourceURLsPreserved": true,
+      "relatedRoutes": [
+        "forecast-beside-every-event",
+        "weather-inside-your-calendar",
+        "a-fourteen-day-view-of-the-weather",
+        "month-view-on-a-bigger-screen"
+      ],
+      "originalRelatedRoutesRetained": [
+        "forecast-beside-every-event"
+      ],
+      "routeModuleFiles": [
+        "src/app/content/fr-FR/articles.ts",
+        "src/app/content/fr-FR/articles-google.ts",
+        "src/app/content/fr-FR/articles-help.ts"
+      ]
+    },
+    {
+      "locale": "it",
+      "slug": "a-fourteen-day-view-of-the-weather",
+      "file": "research/batch17-localized-weather-detail/it--a-fourteen-day-view-of-the-weather.json",
+      "descriptionUnicodeCharacters": 131,
+      "sha256": "9e2795bd31846c63aba2d0b01524538ce092469c2999b7917e6938bfec56c0cf",
+      "sourceObjectSha256": "d5cfe4ca7b9a7255b67f01eec43c669a9bf672b6386dd37139c273a90a556efc",
+      "sections": 6,
+      "bodyParagraphs": 12,
+      "practicalSteps": 6,
+      "faqs": 3,
+      "exactSourceURLsPreserved": true,
+      "relatedRoutes": [
+        "weather-inside-your-calendar",
+        "forecast-beside-every-event",
+        "planning-outdoors-without-being-rained-on",
+        "month-view-on-a-bigger-screen"
+      ],
+      "originalRelatedRoutesRetained": [
+        "weather-inside-your-calendar",
+        "forecast-beside-every-event",
+        "planning-outdoors-without-being-rained-on"
+      ],
+      "routeModuleFiles": [
+        "src/app/content/it/articles.ts",
+        "src/app/content/it/articles-google.ts",
+        "src/app/content/it/articles-help.ts"
+      ]
+    },
+    {
+      "locale": "it",
+      "slug": "planning-outdoors-without-being-rained-on",
+      "file": "research/batch17-localized-weather-detail/it--planning-outdoors-without-being-rained-on.json",
+      "descriptionUnicodeCharacters": 152,
+      "sha256": "8969e43a6e437703d7a240a89d2ad87837ac1778d0cc27d0bb913aee3b9803d4",
+      "sourceObjectSha256": "701e15ff129561d82620ba88ed7493b72e7d70569a398322e0c027e0f9aa32b9",
+      "sections": 6,
+      "bodyParagraphs": 12,
+      "practicalSteps": 6,
+      "faqs": 3,
+      "exactSourceURLsPreserved": true,
+      "relatedRoutes": [
+        "forecast-beside-every-event",
+        "weather-inside-your-calendar",
+        "a-fourteen-day-view-of-the-weather",
+        "month-view-on-a-bigger-screen"
+      ],
+      "originalRelatedRoutesRetained": [
+        "forecast-beside-every-event"
+      ],
+      "routeModuleFiles": [
+        "src/app/content/it/articles.ts",
+        "src/app/content/it/articles-google.ts",
+        "src/app/content/it/articles-help.ts"
+      ]
+    }
+  ]
+}

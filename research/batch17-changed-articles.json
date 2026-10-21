@@ -1,0 +1,126 @@
+{
+  "date": "2026-10-21T22:53:42.611Z",
+  "count": 10,
+  "articles": [
+    {
+      "locale": "de-DE",
+      "slug": "planning-outdoors-without-being-rained-on",
+      "file": "src/app/content/de-DE/articles.ts",
+      "title": "Eine Veranstaltung im Freien mit Vorhersage und Alternative planen",
+      "sections": 6,
+      "faqs": 3,
+      "sources": 2,
+      "updated": "2026-10-22",
+      "description": "Plane im Freien mit geprüftem Ort, Vorhersagestunden und vereinbarter Alternative. Prüfe Kalenderdetails, bevor du einen gemeinsamen Termin änderst.",
+      "descriptionCharacters": 148
+    },
+    {
+      "locale": "de-DE",
+      "slug": "a-fourteen-day-view-of-the-weather",
+      "file": "src/app/content/de-DE/articles.ts",
+      "title": "Wie weit reicht die Wettervorhersage in Cloud Calendars?",
+      "sections": 6,
+      "faqs": 3,
+      "sources": 2,
+      "updated": "2026-10-22",
+      "description": "Prüfe die verfügbaren Vorhersagedaten in Cloud Calendars. Unterscheide Tages- und Stundenwerte, zukünftige Termine und die Wetterdemo der Website.",
+      "descriptionCharacters": 146
+    },
+    {
+      "locale": "en-US",
+      "slug": "onecal-alternative-iphone-calendar-view-or-sync",
+      "file": "src/app/content/en-US/articles-compare.ts",
+      "title": "Cloud Calendars or OneCal? Compare iPhone views and calendar syncing",
+      "sections": 6,
+      "faqs": 3,
+      "sources": 5,
+      "updated": "2026-10-22",
+      "description": "Compare Cloud Calendars and OneCal for iPhone: combined views, calendar copies, mobile controls and plans. Choose by the task you need to complete.",
+      "descriptionCharacters": 147
+    },
+    {
+      "locale": "en-US",
+      "slug": "what-calendar-sync-actually-does",
+      "file": "src/app/content/en-US/articles-unify.ts",
+      "title": "Calendar sync on iPhone: accounts, subscriptions and missing events",
+      "sections": 7,
+      "faqs": 4,
+      "sources": 2,
+      "updated": "2026-10-21",
+      "description": "Understand calendar sync, read-only subscriptions and local events. Trace one event between iPhone and iPad before changing accounts or deleting duplicates.",
+      "descriptionCharacters": 156
+    },
+    {
+      "locale": "es-ES",
+      "slug": "planning-outdoors-without-being-rained-on",
+      "file": "src/app/content/es-ES/articles.ts",
+      "title": "Planifica un evento al aire libre con previsión y alternativa",
+      "sections": 6,
+      "faqs": 3,
+      "sources": 2,
+      "updated": "2026-10-22",
+      "description": "Planifica al aire libre comprobando lugar, horas de previsión y una alternativa acordada. Revisa el calendario antes de cambiar una cita compartida.",
+      "descriptionCharacters": 148
+    },
+    {
+      "locale": "es-ES",
+      "slug": "a-fourteen-day-view-of-the-weather",
+      "file": "src/app/content/es-ES/articles.ts",
+      "title": "¿Hasta qué fecha puedo ver el tiempo en Cloud Calendars?",
+      "sections": 6,
+      "faqs": 3,
+      "sources": 2,
+      "updated": "2026-10-22",
+      "description": "Comprueba las fechas de previsión de Cloud Calendars. Distingue cobertura diaria y horaria, citas futuras y la demostración meteorológica del sitio web.",
+      "descriptionCharacters": 152
+    },
+    {
+      "locale": "fr-FR",
+      "slug": "planning-outdoors-without-being-rained-on",
+      "file": "src/app/content/fr-FR/articles.ts",
+      "title": "Préparer un événement en plein air avec une prévision et un plan de repli",
+      "sections": 6,
+      "faqs": 3,
+      "sources": 2,
+      "updated": "2026-10-22",
+      "description": "Préparez un événement extérieur : lieu, heures de prévision et solution de repli. Vérifiez les détails avant de modifier un rendez-vous partagé.",
+      "descriptionCharacters": 144
+    },
+    {
+      "locale": "fr-FR",
+      "slug": "a-fourteen-day-view-of-the-weather",
+      "file": "src/app/content/fr-FR/articles.ts",
+      "title": "Jusqu’à quelle date voir la météo dans Cloud Calendars ?",
+      "sections": 6,
+      "faqs": 3,
+      "sources": 2,
+      "updated": "2026-10-22",
+      "description": "Vérifiez les dates météo dans Cloud Calendars. Distinguez prévisions quotidiennes et horaires, rendez-vous futurs et démonstration du site.",
+      "descriptionCharacters": 139
+    },
+    {
+      "locale": "it",
+      "slug": "planning-outdoors-without-being-rained-on",
+      "file": "src/app/content/it/articles.ts",
+      "title": "Organizza un evento all’aperto con una previsione e un’alternativa",
+      "sections": 6,
+      "faqs": 3,
+      "sources": 2,
+      "updated": "2026-10-22",
+      "description": "Organizza un evento all’aperto: controlla luogo, ore di previsione e alternativa concordata. Verifica i dettagli prima di cambiare un impegno condiviso.",
+      "descriptionCharacters": 152
+    },
+    {
+      "locale": "it",
+      "slug": "a-fourteen-day-view-of-the-weather",
+      "file": "src/app/content/it/articles.ts",
+      "title": "Fino a quale data posso vedere il meteo in Cloud Calendars?",
+      "sections": 6,
+      "faqs": 3,
+      "sources": 2,
+      "updated": "2026-10-22",
+      "description": "Controlla le date meteo in Cloud Calendars. Distingui copertura giornaliera e oraria, appuntamenti futuri e dimostrazione del sito.",
+      "descriptionCharacters": 131
+    }
+  ]
+}

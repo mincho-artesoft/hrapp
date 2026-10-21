@@ -132,6 +132,7 @@ export const ARTICLE_SLUGS: Readonly<Record<string, readonly string[]>> = {
     "what-an-all-day-event-really-means",
     "a-list-for-people-who-dislike-grids",
     "the-year-in-one-screen",
+    "onecal-alternative-iphone-calendar-view-or-sync",
     "free-google-sync-without-adverts",
     "what-fantastical-costs-and-what-this-does",
     "what-you-get-without-paying-anything",

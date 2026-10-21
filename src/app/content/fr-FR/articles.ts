@@ -464,95 +464,187 @@ export const ARTICLES_FR_FR: Readonly<Record<string, LocalisedArticle>> = {
 },
 
   'planning-outdoors-without-being-rained-on': {
-  "title": "Organiser des activités en extérieur sans finir sous la pluie",
-  "short": "Planifier en extérieur",
-  "description": "Une méthode pratique pour organiser vos activités en extérieur avec votre calendrier habituel, sans ajouter une routine météo distincte.",
-  "lede": "Si vos loisirs se déroulent dehors, vous avez sans doute votre rituel : consulter la météo, scruter la semaine, deviner. Cette dernière étape peut laisser place à une comparaison réfléchie. Ce guide est publié par Arte Soft, développeur de Cloud Calendars.",
-  "commonBelief": "Éviter le mauvais temps consisterait à consulter les prévisions plus souvent.",
+  "updated": "2026-10-22",
+  "title": "Préparer un événement en plein air avec une prévision et un plan de repli",
+  "short": "Choisir un programme extérieur et une alternative réalisable",
+  "description": "Préparez un événement extérieur : lieu, heures de prévision et solution de repli. Vérifiez les détails avant de modifier un rendez-vous partagé.",
+  "lede": "La météo peut aider à comparer des créneaux pour une activité extérieure, mais ne promet pas un résultat sans pluie. Partez des besoins de l’activité et des décisions encore modifiables, puis éclairez-les avec la prévision pertinente. Ce guide est publié par Arte Soft, développeur de Cloud Calendars.",
+  "commonBelief": "Consulter plus souvent ou décaler légèrement une activité garantit d’éviter le mauvais temps.",
   "sections": [
     {
-      "heading": "Commencez par le lieu et la décision",
+      "heading": "Définir l’activité avant de choisir un chiffre météo",
       "body": [
-        "Choisissez le lieu météo correspondant à l’activité, puis vérifiez si la date et les heures nécessaires sont disponibles. Déterminez ce que vous devez savoir : faut-il choisir un autre horaire, garder une solution de repli ou reporter la décision ?",
-        "Consulter à nouveau ne change pas le temps, mais des informations actualisées peuvent compter. Il n’existe pas de fréquence de vérification adaptée à tous les projets en extérieur."
+        "Identifiez le lieu, les personnes concernées et les besoins de l’activité. Un déjeuner au jardin, une séance sportive scolaire et un spectacle extérieur réservé ont des contraintes différentes. Évitez de leur appliquer un pourcentage de pluie générique.",
+        "Notez qui peut décider d’un changement et jusqu’à quel moment une décision reste utile. Le délai du lieu ou la disponibilité d’une personne qui aide peut limiter les options avant la météo. Ces exemples de planification ne fournissent pas de limites techniques de sécurité pour une activité."
       ]
     },
     {
-      "heading": "Comparez les horaires disponibles sans promettre le résultat",
+      "heading": "Faire correspondre lieu, date locale et intervalle complet",
       "body": [
-        "Comparez les informations horaires pertinentes pour chaque période envisagée. Une icône quotidienne est un résumé, pas une garantie des conditions tout au long de la journée.",
-        "Décaler une activité d’une heure peut aider, ou non. Ne supposez pas un créneau sec que les prévisions ne montrent pas et n’appliquez pas un seuil de pourcentage universel à toutes les activités."
+        "Comparez le lieu météo sélectionné au lieu réel. Incluez l’arrivée et la préparation si nécessaire, puis examinez les heures disponibles pendant l’activité. Une seule icône quotidienne ne décrit pas chaque instant d’une longue réservation.",
+        "Si l’événement dépasse les dates de prévision, conservez la date convenue et prévoyez une vérification ultérieure. En déplacement, comparez l’heure locale du lieu à celle du rendez-vous. Ne remplacez pas implicitement les conditions du lieu par une prévision pour votre position actuelle."
       ]
     },
     {
-      "heading": "Prévoyez une solution de repli avant de modifier les invitations",
+      "heading": "Comparer de vraies alternatives sans inventer de créneaux secs",
       "body": [
-        "Si l’activité dépend de conditions favorables, gardez une alternative réaliste et décidez quand consulter les informations les plus récentes. Vérifiez les consignes officielles locales si nécessaire.",
-        "Pour un rendez-vous partagé, confirmez l’organisateur et les droits de modification avant de le déplacer. Des prévisions apparemment plus favorables n’autorisent pas à elles seules à changer l’emploi du temps de tout le monde."
+        "Comparez les périodes candidates avec les champs météo pertinents et leurs libellés. Le guide du Met Office distingue la probabilité des autres valeurs et explique que les champs peuvent couvrir des périodes différentes. Lisez les définitions de la source utilisée.",
+        "Partir une heure plus tard peut améliorer les conditions, ou non. Une période qui semble plus adaptée est une information pour le projet, pas une garantie. Ne déduisez pas une heure non couverte ou des observations sur tout un trajet d’une valeur pour un seul lieu."
+      ]
+    },
+    {
+      "heading": "Convenir d’un repli réellement utilisable",
+      "body": [
+        "L’alternative doit résoudre le problème concret : un lieu intérieur autorisé, un report convenu ou une autre organisation accessible aux participants. Vérifiez accès, coût et disponibilité auprès de l’organisateur ou du lieu compétent.",
+        "Déplacer un pique-nique à l’intérieur peut échouer si personne n’a confirmé la salle. Notez clairement l’alternative et décidez qui communiquera le choix final. Une note dans le calendrier privé d’une personne n’est pas un accord partagé."
+      ]
+    },
+    {
+      "heading": "Enregistrer et modifier le bon événement",
+      "body": [
+        "Avant de créer ou modifier, confirmez le calendrier de destination, le début, la fin et le lieu. Un brouillon lancé depuis une heure météo doit encore être vérifié. Sa durée proposée peut ne pas couvrir la préparation, le trajet ou toute l’activité.",
+        "Pour un rendez-vous partagé ou récurrent, vérifiez les responsabilités de l’organisateur, les droits de modification et la portée de la récurrence. Après une modification autorisée, rouvrez l’événement enregistré. Un changement local ne prouve pas l’accord du lieu ou de tous les participants."
+      ]
+    },
+    {
+      "heading": "Revérifier lorsqu’une décision peut encore être utile",
+      "body": [
+        "Choisissez un moment laissant la possibilité d’agir selon les conditions de la réservation. Comparez la dernière prévision pertinente et les consignes officielles ou du lieu applicables. La météo est un élément de décision, pas une autorisation d’ignorer les exigences de l’activité.",
+        "Communiquez le programme final et confirmez directement les relais importants. Si une mise à jour ultérieure change la décision, identifiez l’événement et l’occurrence à modifier. Actualiser sans cesse sans alternative réalisable ne supprime pas l’incertitude."
       ]
     }
   ],
   "claims": {},
   "practical": [
-    "Confirmez le lieu des prévisions ainsi que les dates et heures disponibles.",
-    "Comparez les horaires possibles selon les facteurs météo pertinents pour votre activité.",
-    "Gardez un autre plan et vérifiez à nouveau avant que la décision devienne importante.",
-    "Consultez les consignes officielles locales si les conditions peuvent rendre l’activité dangereuse."
+    "Identifiez le lieu, les exigences de l’activité et la personne qui décide.",
+    "Vérifiez le lieu météo sélectionné et l’intervalle complet en heure locale.",
+    "Comparez uniquement les dates et heures de prévision réellement disponibles.",
+    "Convenez d’une alternative réalisable et d’une échéance de décision.",
+    "Vérifiez destination, détails et portée de la récurrence avant d’enregistrer.",
+    "Revérifiez au moment convenu et confirmez le programme final avec les participants."
+  ],
+  "faq": [
+    {
+      "q": "Décaler mon événement d’une heure peut-il garantir un temps sec ?",
+      "a": "Non. Comparez les périodes disponibles et gardez une alternative adaptée à l’activité. Une prévision ne promet pas le résultat."
+    },
+    {
+      "q": "Que faire si la prévision n’atteint pas la date de l’événement ?",
+      "a": "Conservez le rendez-vous convenu et prévoyez une vérification météo ultérieure. Une information absente n’est pas une prévision de beau temps."
+    },
+    {
+      "q": "Puis-je déplacer un événement partagé si un autre créneau semble meilleur ?",
+      "a": "Confirmez d’abord l’accord de l’organisateur, les droits de modification et les participants. Vérifiez la portée de la récurrence et le résultat enregistré, puis communiquez le changement."
+    }
   ],
   "seeAlso": [
     "forecast-beside-every-event",
-    "a-fourteen-day-view-of-the-weather"
+    "weather-inside-your-calendar",
+    "a-fourteen-day-view-of-the-weather",
+    "month-view-on-a-bigger-screen"
   ],
-  "updated": "2026-10-21",
-  "faq": [
-    {
-      "q": "Déplacer l’événement garantit-il un temps sec ?",
-      "a": "Non. Comparez les périodes de prévision disponibles et gardez une alternative réaliste."
-    },
-    {
-      "q": "Puis-je me limiter à l’icône quotidienne ?",
-      "a": "Pour une activité à une heure précise, consultez les heures disponibles sur toute sa durée et confirmez le lieu."
-    },
-    {
-      "q": "Puis-je déplacer un événement partagé simplement parce qu’un autre horaire semble meilleur ?",
-      "a": "Vérifiez les responsabilités de l’organisateur, les droits de modification et les participants avant de changer leur emploi du temps."
-    }
-  ],
+  "sourcesHeading": "Sources officielles et lectures complémentaires",
   "sources": [
     {
-      "label": "Apple : données de prévision WeatherKit et disponibilité régionale",
+      "label": "Apple : informations météo WeatherKit et disponibilité régionale",
       "url": "https://developer.apple.com/weatherkit/"
+    },
+    {
+      "label": "Met Office : lieu, périodes et valeurs des prévisions météo",
+      "url": "https://weather.metoffice.gov.uk/guides/what-does-this-forecast-mean"
     }
   ]
 },
 
   'a-fourteen-day-view-of-the-weather': {
-  "title": "Les prévisions disponibles",
-  "short": "Les prévisions disponibles",
-  "description": "Cloud Calendars utilise les prévisions disponibles pour le lieu sélectionné. Les données horaires et quotidiennes peuvent couvrir des périodes différentes.",
-  "lede": "Les dates consultables dans le calendrier ne déterminent pas la portée des prévisions. Une vue mensuelle ne signifie pas que la météo couvre tout le mois ou chaque événement.",
+  "updated": "2026-10-22",
+  "title": "Jusqu’à quelle date voir la météo dans Cloud Calendars ?",
+  "short": "Vérifier les dates de prévision réellement disponibles",
+  "description": "Vérifiez les dates météo dans Cloud Calendars. Distinguez prévisions quotidiennes et horaires, rendez-vous futurs et démonstration du site.",
+  "lede": "Un calendrier à long terme et des prévisions météo à long terme sont deux choses différentes. Vous pouvez fixer une réunion avant que sa prévision existe. Lisez les dates disponibles dans l’app plutôt que de déduire la couverture météo du mois affichable. Ce guide est publié par Arte Soft, développeur de Cloud Calendars.",
+  "commonBelief": "Chaque date future du calendrier possède une prévision, et la démonstration sur quatorze jours du site correspond à la portée météo de l’app.",
   "sections": [
     {
-      "heading": "Les prévisions disponibles",
+      "heading": "Lire les dates affichées dans la météo",
       "body": [
-        "Cloud Calendars utilise les prévisions disponibles pour le lieu sélectionné. Les données horaires et quotidiennes peuvent couvrir des périodes différentes.",
-        "Les dates consultables dans le calendrier ne déterminent pas la portée des prévisions. Une vue mensuelle ne signifie pas que la météo couvre tout le mois ou chaque événement."
+        "Ouvrez la météo du lieu voulu et repérez les dates réellement proposées. Ne déduisez pas leur disponibilité de la navigation mensuelle ou annuelle du calendrier. L’absence de prévision nécessite une vérification ultérieure ; elle ne signifie pas qu’il fera beau.",
+        "Pour une rencontre prévue plusieurs semaines à l’avance, enregistrez la date convenue et notez séparément la décision liée au temps. La disponibilité du lieu, les invitations et les futures prévisions sont des éléments distincts de ce projet."
+      ]
+    },
+    {
+      "heading": "Comprendre la liste quotidienne de l’app",
+      "body": [
+        "L’app utilise Apple WeatherKit. Son implémentation actuelle conserve dans la liste quotidienne jusqu’à dix jours renvoyés par le service. Lisez les premières et dernières dates pour le lieu choisi, sans supposer que chaque vue ou requête fournit dix jours complets.",
+        "Cette limite décrit la liste quotidienne affichée. Elle ne garantit ni une confiance identique pour toutes les variables météo ni une prévision complète pour chaque rendez-vous compris dans ces dates. Utilisez le niveau de détail nécessaire à la décision."
+      ]
+    },
+    {
+      "heading": "Vérifier les heures disponibles pour les activités à horaire précis",
+      "body": [
+        "Un résumé quotidien ne décrit pas les conditions exactes pendant tout un rendez-vous. Ouvrez le jour concerné et comparez les heures disponibles pour l’arrivée, l’activité et le départ. Si une partie de la période manque, considérez-la comme non résolue.",
+        "Pour un événement en soirée, vérifiez que le lieu choisi et la date locale correspondent encore au programme. Une arrivée après minuit appartient à une autre date. Consultez les horodatages réels sans assimiler la fin de la liste quotidienne à celle de toutes les séries horaires."
+      ]
+    },
+    {
+      "heading": "Distinguer la démonstration du site",
+      "body": [
+        "Le site demande actuellement quatorze jours de prévisions à Open-Meteo pour sa démonstration météo. Open-Meteo décrit des plages configurables ; cette requête du site est une implémentation distincte de l’app iOS.",
+        "Ne déduisez pas du résultat web que l’app fournit quatorze jours WeatherKit. Si les affichages diffèrent, comparez d’abord lieu, heure et fournisseur. Une portée météo différente ne signifie pas que le calendrier a perdu un rendez-vous."
+      ]
+    },
+    {
+      "heading": "Prévoir une vérification lorsque la météo n’est pas encore disponible",
+      "body": [
+        "Conservez la date réelle du rendez-vous et prévoyez une vérification laissant assez de temps pour décider du lieu ou prévenir les participants. Une fête en plein air peut, par exemple, nécessiter un repli intérieur convenu avant la prochaine consultation météo.",
+        "Choisissez ce moment selon les contraintes réelles de l’activité. Ce guide n’attribue ni pourcentage de précision ni seuil universel de maintien ou d’annulation à un jour numéroté de prévision. Consultez les informations actuelles lorsqu’elles peuvent modifier une décision concrète."
+      ]
+    },
+    {
+      "heading": "Vérifier les détails après avoir choisi une heure",
+      "body": [
+        "Si une heure de prévision disponible vous aide à choisir un créneau, examinez le brouillon d’événement obtenu. Confirmez date locale, début, fin, calendrier de destination et lieu. Parcourir la météo ne remplace ni les droits du calendrier ni l’accord de l’organisateur.",
+        "Après une modification autorisée, rouvrez l’événement et vérifiez l’occurrence ou la série visée. Confirmez séparément les changements importants auprès des participants. La disponibilité de nouvelles données météo ne signifie pas qu’une invitation modifiée a été reçue."
       ]
     }
   ],
   "claims": {},
   "practical": [
-    "Vérifiez le lieu, la date et les heures disponibles avant de planifier avec les prévisions."
+    "Sélectionnez le lieu pertinent pour le rendez-vous.",
+    "Lisez les premières et dernières dates de la liste quotidienne de l’app.",
+    "Vérifiez séparément l’intervalle horaire nécessaire, y compris le passage à minuit.",
+    "Distinguez la couverture Open-Meteo du site de celle de WeatherKit dans l’app.",
+    "Prévoyez une vérification ultérieure pour les projets au-delà des prévisions disponibles.",
+    "Vérifiez l’événement enregistré et confirmez les changements partagés auprès des participants."
+  ],
+  "faq": [
+    {
+      "q": "Cloud Calendars propose-t-il quatorze jours de prévisions dans l’app ?",
+      "a": "La liste quotidienne actuelle utilise jusqu’à dix jours renvoyés par WeatherKit. Le site demande séparément quatorze jours à Open-Meteo. Vérifiez les dates réellement disponibles dans l’app."
+    },
+    {
+      "q": "Pourquoi puis-je créer un événement après la dernière date météo ?",
+      "a": "Le stockage du calendrier et la disponibilité météo sont distincts. Conservez le rendez-vous et consultez la prévision à l’approche de sa date."
+    },
+    {
+      "q": "Une entrée quotidienne garantit-elle la météo pour chaque heure de mon événement ?",
+      "a": "Non. Vérifiez les heures effectivement fournies pour ce lieu et cette période. Ne déduisez pas une couverture horaire complète de la liste quotidienne."
+    }
   ],
   "seeAlso": [
     "weather-inside-your-calendar",
-    "planning-outdoors-without-being-rained-on"
+    "forecast-beside-every-event",
+    "planning-outdoors-without-being-rained-on",
+    "month-view-on-a-bigger-screen"
   ],
-  "updated": "2026-10-21",
+  "sourcesHeading": "Sources officielles et lectures complémentaires",
   "sources": [
     {
-      "label": "Apple WeatherKit",
+      "label": "Apple : informations météo WeatherKit et disponibilité régionale",
       "url": "https://developer.apple.com/weatherkit/"
+    },
+    {
+      "label": "Open-Meteo : paramètres de prévision et plages disponibles",
+      "url": "https://open-meteo.com/en/docs"
     }
   ]
 },

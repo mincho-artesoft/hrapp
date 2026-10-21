@@ -1,5 +1,5 @@
 {
-  "date": "2026-10-21T22:36:57.619Z",
+  "date": "2026-10-21T22:54:21.040Z",
   "status": "source_inventory_not_quality_approval",
   "articles": [
     {
@@ -992,32 +992,34 @@
     {
       "locale": "de-DE",
       "slug": "planning-outdoors-without-being-rained-on",
-      "title": "Aktivitäten im Freien planen, ohne im Regen zu stehen",
-      "description": "Eine praktische Methode für Aktivitäten im Freien: Nutze deinen bestehenden Kalender, statt eine separate Wetterroutine aufzubauen.",
-      "descriptionCharacters": 131,
-      "sections": 3,
+      "title": "Eine Veranstaltung im Freien mit Vorhersage und Alternative planen",
+      "description": "Plane im Freien mit geprüftem Ort, Vorhersagestunden und vereinbarter Alternative. Prüfe Kalenderdetails, bevor du einen gemeinsamen Termin änderst.",
+      "descriptionCharacters": 148,
+      "sections": 6,
       "faq": 3,
-      "words": 349,
+      "words": 650,
       "source": "articles.ts",
       "sources": [
-        "https://developer.apple.com/weatherkit/"
+        "https://developer.apple.com/weatherkit/",
+        "https://weather.metoffice.gov.uk/guides/what-does-this-forecast-mean"
       ],
-      "updated": "2026-10-21"
+      "updated": "2026-10-22"
     },
     {
       "locale": "de-DE",
       "slug": "a-fourteen-day-view-of-the-weather",
-      "title": "Die verfügbare Vorhersage",
-      "description": "Cloud Calendars verwendet die verfügbare Vorhersage für den ausgewählten Ort. Stunden- und Tagesdaten können unterschiedliche Zeiträume abdecken.",
-      "descriptionCharacters": 145,
-      "sections": 1,
-      "faq": 0,
-      "words": 88,
+      "title": "Wie weit reicht die Wettervorhersage in Cloud Calendars?",
+      "description": "Prüfe die verfügbaren Vorhersagedaten in Cloud Calendars. Unterscheide Tages- und Stundenwerte, zukünftige Termine und die Wetterdemo der Website.",
+      "descriptionCharacters": 146,
+      "sections": 6,
+      "faq": 3,
+      "words": 648,
       "source": "articles.ts",
       "sources": [
-        "https://developer.apple.com/weatherkit/"
+        "https://developer.apple.com/weatherkit/",
+        "https://open-meteo.com/en/docs"
       ],
-      "updated": "2026-10-21"
+      "updated": "2026-10-22"
     },
     {
       "locale": "de-DE",
@@ -1314,6 +1316,25 @@
         "https://support.apple.com/en-us/118428"
       ],
       "updated": "2026-10-21"
+    },
+    {
+      "locale": "en-US",
+      "slug": "onecal-alternative-iphone-calendar-view-or-sync",
+      "title": "Cloud Calendars or OneCal? Compare iPhone views and calendar syncing",
+      "description": "Compare Cloud Calendars and OneCal for iPhone: combined views, calendar copies, mobile controls and plans. Choose by the task you need to complete.",
+      "descriptionCharacters": 147,
+      "sections": 6,
+      "faq": 3,
+      "words": 920,
+      "source": "articles-compare.ts",
+      "sources": [
+        "https://docs.onecal.io/docs/mobile-apps",
+        "https://docs.onecal.io/docs/calendar-sync/calendar-sync-intro",
+        "https://docs.onecal.io/docs/calendar-sync/what-does-onecal-sync",
+        "https://docs.onecal.io/docs/billing/plans-and-free-trial",
+        "https://docs.onecal.io/docs/billing/mobile-subscriptions"
+      ],
+      "updated": "2026-10-22"
     },
     {
       "locale": "en-US",
@@ -2401,32 +2422,34 @@
     {
       "locale": "es-ES",
       "slug": "planning-outdoors-without-being-rained-on",
-      "title": "Planificar actividades al aire libre sin acabar bajo la lluvia",
-      "description": "Un método práctico para organizar actividades al aire libre con el calendario que ya utilizas, sin crear otra rutina para consultar el tiempo.",
-      "descriptionCharacters": 142,
-      "sections": 3,
+      "title": "Planifica un evento al aire libre con previsión y alternativa",
+      "description": "Planifica al aire libre comprobando lugar, horas de previsión y una alternativa acordada. Revisa el calendario antes de cambiar una cita compartida.",
+      "descriptionCharacters": 148,
+      "sections": 6,
       "faq": 3,
-      "words": 381,
+      "words": 744,
       "source": "articles.ts",
       "sources": [
-        "https://developer.apple.com/weatherkit/"
+        "https://developer.apple.com/weatherkit/",
+        "https://weather.metoffice.gov.uk/guides/what-does-this-forecast-mean"
       ],
-      "updated": "2026-10-21"
+      "updated": "2026-10-22"
     },
     {
       "locale": "es-ES",
       "slug": "a-fourteen-day-view-of-the-weather",
-      "title": "La previsión disponible",
-      "description": "Cloud Calendars utiliza la previsión disponible para el lugar seleccionado. Los datos por horas y por días pueden abarcar períodos distintos.",
-      "descriptionCharacters": 141,
-      "sections": 1,
-      "faq": 0,
-      "words": 103,
+      "title": "¿Hasta qué fecha puedo ver el tiempo en Cloud Calendars?",
+      "description": "Comprueba las fechas de previsión de Cloud Calendars. Distingue cobertura diaria y horaria, citas futuras y la demostración meteorológica del sitio web.",
+      "descriptionCharacters": 152,
+      "sections": 6,
+      "faq": 3,
+      "words": 769,
       "source": "articles.ts",
       "sources": [
-        "https://developer.apple.com/weatherkit/"
+        "https://developer.apple.com/weatherkit/",
+        "https://open-meteo.com/en/docs"
       ],
-      "updated": "2026-10-21"
+      "updated": "2026-10-22"
     },
     {
       "locale": "es-ES",
@@ -2959,32 +2982,34 @@
     {
       "locale": "fr-FR",
       "slug": "planning-outdoors-without-being-rained-on",
-      "title": "Organiser des activités en extérieur sans finir sous la pluie",
-      "description": "Une méthode pratique pour organiser vos activités en extérieur avec votre calendrier habituel, sans ajouter une routine météo distincte.",
-      "descriptionCharacters": 136,
-      "sections": 3,
+      "title": "Préparer un événement en plein air avec une prévision et un plan de repli",
+      "description": "Préparez un événement extérieur : lieu, heures de prévision et solution de repli. Vérifiez les détails avant de modifier un rendez-vous partagé.",
+      "descriptionCharacters": 144,
+      "sections": 6,
       "faq": 3,
-      "words": 401,
+      "words": 756,
       "source": "articles.ts",
       "sources": [
-        "https://developer.apple.com/weatherkit/"
+        "https://developer.apple.com/weatherkit/",
+        "https://weather.metoffice.gov.uk/guides/what-does-this-forecast-mean"
       ],
-      "updated": "2026-10-21"
+      "updated": "2026-10-22"
     },
     {
       "locale": "fr-FR",
       "slug": "a-fourteen-day-view-of-the-weather",
-      "title": "Les prévisions disponibles",
-      "description": "Cloud Calendars utilise les prévisions disponibles pour le lieu sélectionné. Les données horaires et quotidiennes peuvent couvrir des périodes différentes.",
-      "descriptionCharacters": 155,
-      "sections": 1,
-      "faq": 0,
-      "words": 99,
+      "title": "Jusqu’à quelle date voir la météo dans Cloud Calendars ?",
+      "description": "Vérifiez les dates météo dans Cloud Calendars. Distinguez prévisions quotidiennes et horaires, rendez-vous futurs et démonstration du site.",
+      "descriptionCharacters": 139,
+      "sections": 6,
+      "faq": 3,
+      "words": 765,
       "source": "articles.ts",
       "sources": [
-        "https://developer.apple.com/weatherkit/"
+        "https://developer.apple.com/weatherkit/",
+        "https://open-meteo.com/en/docs"
       ],
-      "updated": "2026-10-21"
+      "updated": "2026-10-22"
     },
     {
       "locale": "fr-FR",
@@ -4045,32 +4070,34 @@
     {
       "locale": "it",
       "slug": "planning-outdoors-without-being-rained-on",
-      "title": "Organizzare attività all’aperto senza finire sotto la pioggia",
-      "description": "Un metodo pratico per organizzare attività all’aperto con il calendario che usi già, senza aggiungere una routine meteo separata.",
-      "descriptionCharacters": 129,
-      "sections": 3,
+      "title": "Organizza un evento all’aperto con una previsione e un’alternativa",
+      "description": "Organizza un evento all’aperto: controlla luogo, ore di previsione e alternativa concordata. Verifica i dettagli prima di cambiare un impegno condiviso.",
+      "descriptionCharacters": 152,
+      "sections": 6,
       "faq": 3,
-      "words": 343,
+      "words": 697,
       "source": "articles.ts",
       "sources": [
-        "https://developer.apple.com/weatherkit/"
+        "https://developer.apple.com/weatherkit/",
+        "https://weather.metoffice.gov.uk/guides/what-does-this-forecast-mean"
       ],
-      "updated": "2026-10-21"
+      "updated": "2026-10-22"
     },
     {
       "locale": "it",
       "slug": "a-fourteen-day-view-of-the-weather",
-      "title": "Le previsioni disponibili",
-      "description": "Cloud Calendars usa le previsioni disponibili per il luogo selezionato. I dati orari e giornalieri possono coprire periodi diversi.",
+      "title": "Fino a quale data posso vedere il meteo in Cloud Calendars?",
+      "description": "Controlla le date meteo in Cloud Calendars. Distingui copertura giornaliera e oraria, appuntamenti futuri e dimostrazione del sito.",
       "descriptionCharacters": 131,
-      "sections": 1,
-      "faq": 0,
-      "words": 88,
+      "sections": 6,
+      "faq": 3,
+      "words": 694,
       "source": "articles.ts",
       "sources": [
-        "https://developer.apple.com/weatherkit/"
+        "https://developer.apple.com/weatherkit/",
+        "https://open-meteo.com/en/docs"
       ],
-      "updated": "2026-10-21"
+      "updated": "2026-10-22"
     },
     {
       "locale": "it",

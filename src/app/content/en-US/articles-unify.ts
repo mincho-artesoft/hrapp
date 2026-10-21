@@ -304,7 +304,8 @@ export const UNIFY_EN_US: Readonly<Record<string, LocalisedArticle>> = {
   "when-two-calendars-disagree",
   "icloud-google-and-outlook-in-one-view",
   "why-a-shared-calendar-does-not-appear",
-  "disconnect-calendar-integration-without-losing-track"
+  "disconnect-calendar-integration-without-losing-track",
+  "onecal-alternative-iphone-calendar-view-or-sync"
 ]
 },
 

@@ -1,0 +1,71 @@
+{
+  "date": "2026-10-22",
+  "taskIntent": "OneCal alternative on iPhone: unifiedview vs automations/copies/mobilecontrols/planrequirements",
+  "deduplication": "Current52ENcanonicals checked, noOneCalbrandbody. Existinggenericview/sync/priceguides linked instead ofduplicated; this guide answers product-specificcopiedeventrules/web-vs-mobileconfiguration/expiry/billing distinctions.",
+  "nativeProofs": [
+    {
+      "path": "/Users/minchomilev/work/hrapp/Calendar/Subscription/BaseSubscriptionView.swift",
+      "sha256": "912bfe90241312a385e357b9c1c21856ed681fb9f7f1e623af4ca56b5434ccf1",
+      "rootReadRanges": [
+        [
+          1,
+          31
+        ]
+      ]
+    },
+    {
+      "path": "/Users/minchomilev/work/hrapp/Calendar/Subscription/PremiumSubscriptionView.swift",
+      "sha256": "a490229597f2516c4d35b666a21c2d2caa18b6e8eb6d2ab9e2c81fc332ca2a1c",
+      "rootReadRanges": [
+        [
+          1,
+          24
+        ]
+      ]
+    }
+  ],
+  "priorCloudProofs": [
+    "research/batch15-home-claim-audit.json",
+    "research/batch16-disconnect/evidence.json",
+    "research/batch16-localized-weather/root-proof.json"
+  ],
+  "primaryBodyRead": [
+    {
+      "url": "https://docs.onecal.io/docs/mobile-apps",
+      "range": "22-139, complete substantivebody frompreviousgoalturn; excerptedfeature/controls scopes retained."
+    },
+    {
+      "url": "https://docs.onecal.io/docs/calendar-sync/calendar-sync-intro",
+      "range": "22-145 fullsubstantivebody thisturn; no privacyguarantees orlatencyclaimsadopted."
+    },
+    {
+      "url": "https://docs.onecal.io/docs/calendar-sync/what-does-onecal-sync",
+      "range": "22-45 fullsubstantivebody thisturn; sourcewindows notallservicehistory/viewcoverage."
+    },
+    {
+      "url": "https://docs.onecal.io/docs/billing/plans-and-free-trial",
+      "range": "22-72 fullsubstantivebody previousgoalturn; no numericpricequote."
+    },
+    {
+      "url": "https://docs.onecal.io/docs/billing/mobile-subscriptions",
+      "range": "22-42 fullsubstantivebody thisturn; followofficialmobileguide link."
+    }
+  ],
+  "limits": [
+    "Publisher documentation, not authenticated OneCal runtime or comparative benchmark.",
+    "No inference that OneCal lacks weather/widgets/LiveActivities from omission.",
+    "No universal best, cheaper, instant sync, all-history or privacy guarantee.",
+    "No competitor brand keywords written into App Store metadata.",
+    "No customercalendar/provider actions or nativechanges."
+  ],
+  "currentTurnReadback": {
+    "checkedAt": "2026-10-21T22:55:25.995298+00:00",
+    "completeBodyRanges": {
+      "https://docs.onecal.io/docs/mobile-apps": "22–139",
+      "https://docs.onecal.io/docs/calendar-sync/what-does-onecal-sync": "22–45",
+      "https://docs.onecal.io/docs/billing/plans-and-free-trial": "22–72",
+      "https://docs.onecal.io/docs/billing/mobile-subscriptions": "22–42"
+    },
+    "result": "All drafted mobile-control, clone, coverage, expiry and billing distinctions remain supported. No named plan prices, performance verdict or undocumented feature absence adopted."
+  }
+}
