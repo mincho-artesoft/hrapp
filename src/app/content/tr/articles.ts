@@ -9,6 +9,94 @@ import { LocalisedArticle } from '../types';
  * translation can rewrite every sentence without touching a figure.
  */
 export const ARTICLES_TR: Readonly<Record<string, LocalisedArticle>> = {
+  "month-view-on-a-bigger-screen": {
+  "updated": "2026-10-22",
+  "title": "iPad ve iPhone’da aylık takvim: tarihe bakın, ayrıntıları kontrol edin",
+  "short": "Aylık görünümde ayrıntıları kaçırmayın",
+  "description": "iPad veya iPhone’da tarihleri karşılaştırın. Ortak ya da yinelenen randevuları taşımadan önce gizli etkinlikleri, seçili takvimleri ve saatleri inceleyin.",
+  "lede": "Aylık görünüm, işlerin hangi tarihlere düştüğünü gösterir. Belirli bir saatin boş olduğunu kanıtlamaya daha az uygundur. Genel görünümden tarih seçin, sonra kesinleştirmeden günü ve etkinliği inceleyin. Rehber Cloud Calendars geliştiricisi Arte Soft tarafından yayımlanmıştır.",
+  "commonBelief": "Daha büyük aylık tablo tüm ayrıntıları gösterir ve boş görünen tarih herkesin müsait olduğunu kanıtlar.",
+  "sections": [
+    {
+      "heading": "Tarih mi kesin saat mi gerektiğine karar verin",
+      "body": [
+        "Ayı; proje teslimi, seyahat ve aile randevusunu haftalar boyunca karşılaştırmak için kullanın. İki randevunun 14.30’da çakışıp çakışmadığı soruluyorsa gün veya hafta görünümünde başlangıç ve bitişi inceleyin. Ay hücresi saatlik tablonun zaman ölçeğini sunmaz.",
+        "Örneğin atölye tarihi seçen düzenleyici önce seyahat haftasını eleyebilir. Sonra önerilen gündeki işler, hazırlık, yol ve gerekli bitiş kontrol edilir. Boş görünen hücre araştırılacak adaydır; onaylı rezervasyon ya da başkalarının müsaitlik beyanı değildir."
+      ]
+    },
+    {
+      "heading": "Ek etkinlik sayısını okuyun",
+      "body": [
+        "Cloud Calendars’ın mevcut ay hücresi sınırlı etkinlik etiketi ve aynı tarihteki diğer etkinliklerin sayısını gösterir. Başlıklar tek satırda tutulduğu için kısalabilir. Tam başlık veya diğer işler önemliyse günü ya da etkinliği açın.",
+        "Daha büyük iPad ekranı okumayı kolaylaştırabilir ama fiziksel alanın tüm görüntüleme sınırlarını kaldırdığını varsaymayın. Dar uygulama penceresi veya büyük yazı sığanları değiştirebilir. iPhone’da da görünen etiketleri tam program saymadan günü inceleyin."
+      ]
+    },
+    {
+      "heading": "Ayı, seçili takvimleri ve komşu tarihleri kontrol edin",
+      "body": [
+        "Tarih seçmeden görüntülenen ay ve yılı okuyun. Satırları tamamlamak için tabloda komşu aydan tarihler bulunabilir. Cloud Calendars’ta ay gezinmesini kullanıp seçili tarihi kontrol edin; yalnızca karenin konumuna güvenmeyin.",
+        "Hangi takvimlerin seçili olduğunu kontrol edin. İş etkinliklerini gizlemek aile planını okumayı kolaylaştırır ama bu yükümlülükleri o görünümden çıkarır. Tekrarı incelerken bir kaynağı geçici gizleyip karşılaştırın; ayı ferahlatmak için randevu silmeyin."
+      ]
+    },
+    {
+      "heading": "Ortak planı değiştirmeden etkinliği açın",
+      "body": [
+        "Ayrıntılarda başlık, sahip veya takvim, yerel saat ve süreyi doğrulayın. Renk taramaya yardımcıdır ama hesabı ya da düzenleme iznini bilmenin yerini tutmaz. Görünen davet, kendiniz düzenlediğiniz randevuyla aynı değildir.",
+        "Cloud Calendars aylık görünümde sürükleyip bırakarak başka tarihe taşıma yolu sunar. Gerçek bir randevuda kullanmadan hedef tarihi ve tekrar kapsamını belirleyin. İzinli değişiklikten sonra yeniden açıp doğrulayın; yerel hareket, sağlayıcının veya tüm katılımcıların yeni planı kabul ettiğini kanıtlamaz."
+      ]
+    },
+    {
+      "heading": "Tekrarları ve saat dilimlerini ayrı kontrol edin",
+      "body": [
+        "Yalnızca bu haftaki ders taşınıyorsa gelecekteki düzeni yanlışlıkla değiştirmeyin. Sunulan tekrar kapsamını okuyup sonrasında hem değişen hem sonraki bir örneği inceleyin. Ay görünümü tekrarlanan tarihleri karşılaştırmayı kolaylaştırır ama değişikliğin anlamını kapsam belirler.",
+        "Seyahat veya farklı saat dilimindeki toplantıda yerel tarih ve saati açıkça kontrol edin. Etkinliği başka güne taşımak hedef saati otomatik dönüştürmez. İlgiliyse yaz saati geçişlerini inceleyin ve kararlaştırılan saati katılımcılarla doğrulayın."
+      ]
+    },
+    {
+      "heading": "Büyük görünümü başka ürünlerle karıştırmayın",
+      "body": [
+        "Apple Takvim kendi aylık seçeneklerini sunar; Teamup tarayıcı ve mobilde farklı görünümler açıklar. Bu kontroller kendi ürünlerine aittir. Görünümlerin adı aynı diye Teamup tarayıcı ayarlarını veya Apple Takvim menüsünü Cloud Calendars’ta aramayın.",
+        "Bir aylık randevu, bir aylık hava tahmini değildir. Açık hava planında yeri, tarihi ve mevcut tahmin saatlerini ayrı kontrol edin. Son randevuyu amaçlanan takvime kaydedip değişiklikleri katılımcılarla doğrudan doğrulayın."
+      ]
+    }
+  ],
+  "claims": {},
+  "practical": [
+    "Ay görünümünde tarih seçip kesin saatleri gün veya haftada inceleyin.",
+    "Ek sayı veya kısaltılmış başlık olan günleri açın.",
+    "Tarihi boş saymadan ay, yıl ve takvim seçimini kontrol edin.",
+    "Takvimi, saati, süreyi ve düzenleme iznini doğrulayın.",
+    "Tekrar kapsamını okuyup taşınan kaydı kontrol edin.",
+    "Hava tahminini ayrı inceleyip değişiklikleri katılımcılarla doğrulayın."
+  ],
+  "faq": [
+    {
+      "q": "iPad aylık görünümü her randevuyu tam gösterir mi?",
+      "a": "Varsaymayın. Cloud Calendars hücredeki etiketleri sınırlar ve ek sayı gösterir. Tam program için günü ve etkinliği açın."
+    },
+    {
+      "q": "Boş gün müsait olduğum anlamına mı gelir?",
+      "a": "Önce seçili takvimleri, tarihi ve ilgili hesap verilerinin varlığını kontrol edin. Görünüm yalnızca o anda mevcut ve gösterilen bilgiyi temsil eder."
+    },
+    {
+      "q": "Yinelenen etkinliği taşımak yalnızca o tarihi mi değiştirir?",
+      "a": "Düzenleme kapsamını okuyun. Kaydettikten sonra değişen ve sonraki bir örneği inceleyip amaçlanan düzeni doğrulayın."
+    }
+  ],
+  "sourcesHeading": "Resmî görünüm açıklamalarını karşılaştırın",
+  "sources": [
+    {
+      "label": "Apple: ay, çoklu gün ve liste görünümleri",
+      "url": "https://support.apple.com/en-ca/guide/iphone/iphfd1054569/ios"
+    },
+    {
+      "label": "Teamup: görünümler ve tarayıcı ile uygulama ayarları",
+      "url": "https://calendar.teamup.com/kb/how-to-use-calendar-views/"
+    }
+  ],
+  "seeAlso": []
+},
+
   'weather-inside-your-calendar': {
   "title": "Havayı zaten içinde taşıyan bir takvim",
   "short": "Takvimin içindeki hava",

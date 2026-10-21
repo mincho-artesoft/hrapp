@@ -1,0 +1,87 @@
+{
+  "updated": "2026-10-22",
+  "title": "Lịch tháng trên iPad và iPhone: xem ngày rồi kiểm tra chi tiết",
+  "short": "Dùng chế độ tháng mà không bỏ sót chi tiết",
+  "description": "So sánh ngày trên iPad hoặc iPhone. Kiểm tra sự kiện ẩn, lịch được chọn và giờ chính xác trước khi chuyển cuộc hẹn chung hoặc lặp lại.",
+  "lede": "Chế độ tháng cho biết công việc rơi vào ngày nào, nhưng ít phù hợp để chứng minh một giờ cụ thể còn trống. Chọn ngày từ tổng quan rồi xem kỹ ngày và sự kiện trước khi xác nhận. Hướng dẫn do Arte Soft, nhà phát triển Cloud Calendars, xuất bản.",
+  "commonBelief": "Lưới tháng lớn hơn hiển thị mọi chi tiết và ngày trông trống chứng minh mọi người đều rảnh.",
+  "sections": [
+    {
+      "heading": "Xác định cần ngày hay giờ chính xác",
+      "body": [
+        "Dùng tháng để so sánh hạn dự án, chuyến đi và cuộc hẹn gia đình qua nhiều tuần. Khi cần biết hai cuộc hẹn có trùng lúc 14:30 không, chuyển sang ngày hoặc tuần để xem giờ bắt đầu và kết thúc. Ô tháng không có thang thời gian như lưới giờ.",
+        "Ví dụ, người chọn ngày hội thảo có thể tránh tuần đi xa trước. Sau đó kiểm tra ngày đề xuất: việc đã có, chuẩn bị, di chuyển và giờ phải kết thúc. Ô trông thoáng chỉ là ngày cần xem xét, không phải đặt chỗ đã xác nhận hay lời khẳng định người khác rảnh."
+      ]
+    },
+    {
+      "heading": "Đọc số sự kiện bổ sung",
+      "body": [
+        "Ô tháng hiện tại của Cloud Calendars hiển thị số nhãn sự kiện giới hạn và số lượng bổ sung khi còn sự kiện cùng ngày. Tiêu đề chỉ có một dòng nên có thể bị rút ngắn. Mở ngày hoặc sự kiện khi cần tiêu đề đầy đủ hay các công việc còn lại.",
+        "Màn hình iPad lớn hơn có thể dễ đọc, nhưng đừng cho rằng diện tích lớn xóa mọi giới hạn hiển thị. Cửa sổ hẹp hoặc chữ lớn thay đổi lượng nội dung vừa chỗ. Trên iPhone cũng cần mở ngày trước khi coi các nhãn đang thấy là toàn bộ lịch trình."
+      ]
+    },
+    {
+      "heading": "Kiểm tra tháng, lịch được chọn và ngày liền kề",
+      "body": [
+        "Đọc tháng và năm đang hiển thị trước khi chọn ngày. Lưới có thể kèm ngày của tháng liền kề để đủ hàng. Trong Cloud Calendars, dùng điều hướng tháng và kiểm tra ngày đã chọn thay vì chỉ dựa vào vị trí ô.",
+        "Kiểm tra lịch nào được chọn. Ẩn việc công ty giúp xem kế hoạch gia đình, nhưng cũng bỏ các việc ấy khỏi tổng quan đó. Khi tìm sự kiện trùng, tạm ẩn một nguồn rồi so sánh; đừng xóa cuộc hẹn chỉ để tháng bớt chật."
+      ]
+    },
+    {
+      "heading": "Mở sự kiện trước khi đổi kế hoạch chung",
+      "body": [
+        "Trong chi tiết, xác nhận tiêu đề, chủ sở hữu hoặc lịch, giờ địa phương và thời lượng. Màu giúp nhìn nhanh nhưng không thay thế việc biết tài khoản hay quyền chỉnh sửa. Lời mời nhìn thấy khác với cuộc hẹn do chính bạn tổ chức.",
+        "Cloud Calendars có thao tác kéo thả trong tháng để chuyển sự kiện sang ngày khác. Trước khi dùng với việc thật, xác định ngày muốn chuyển và phạm vi lặp. Sau thay đổi được phép, mở lại để kiểm tra; cử chỉ trên thiết bị không chứng minh nhà cung cấp hay mọi người đã chấp nhận kế hoạch mới."
+      ]
+    },
+    {
+      "heading": "Kiểm tra riêng lịch lặp và múi giờ",
+      "body": [
+        "Nếu chỉ chuyển buổi học tuần này, đừng vô tình đổi cả quy luật tương lai. Đọc lựa chọn phạm vi lặp rồi kiểm tra cả lần đã đổi và một lần sau. Tháng giúp so sánh ngày lặp, nhưng phạm vi chỉnh sửa quyết định tác động.",
+        "Với chuyến đi hoặc họp khác múi giờ, kiểm tra rõ ngày và giờ địa phương. Chuyển sang ngày khác không tự chuyển đổi giờ họp dự định. Kiểm tra thay đổi giờ mùa hè nếu liên quan và xác nhận giờ đã thống nhất với mọi người."
+      ]
+    },
+    {
+      "heading": "Không nhầm giao diện lớn hơn với sản phẩm khác",
+      "body": [
+        "Lịch Apple có lựa chọn hiển thị tháng riêng; Teamup hướng dẫn bộ chế độ khác nhau cho trình duyệt và di động. Các tùy chọn thuộc sản phẩm tương ứng. Đừng tìm cấu hình web Teamup hay menu Lịch Apple trong Cloud Calendars chỉ vì cùng tên chế độ.",
+        "Một tháng cuộc hẹn cũng không phải một tháng dự báo thời tiết. Với hoạt động ngoài trời, kiểm tra riêng địa điểm, ngày và giờ có dự báo. Lưu cuộc hẹn cuối cùng vào đúng lịch và xác nhận thay đổi trực tiếp với người tham gia."
+      ]
+    }
+  ],
+  "claims": {},
+  "practical": [
+    "Chọn ngày trong tháng rồi kiểm tra giờ ở chế độ ngày hoặc tuần.",
+    "Mở ngày có số bổ sung hoặc tiêu đề rút ngắn.",
+    "Kiểm tra tháng, năm và lịch được chọn trước khi coi ngày là trống.",
+    "Xác nhận lịch, giờ, thời lượng và quyền chỉnh sửa.",
+    "Đọc phạm vi lặp và kiểm tra lần đã lưu sau khi chuyển.",
+    "Kiểm tra thời tiết riêng và xác nhận thay đổi với người tham gia."
+  ],
+  "faq": [
+    {
+      "q": "Chế độ tháng iPad có hiện đầy đủ mọi cuộc hẹn không?",
+      "a": "Đừng mặc định như vậy. Cloud Calendars giới hạn nhãn trong ô và hiện số bổ sung. Mở ngày và sự kiện để xem toàn bộ lịch trình."
+    },
+    {
+      "q": "Ngày trống nghĩa là tôi rảnh sao?",
+      "a": "Trước hết kiểm tra lịch được chọn, ngày và dữ liệu tài khoản liên quan có sẵn không. Tổng quan chỉ phản ánh thông tin hiện có và đang hiển thị."
+    },
+    {
+      "q": "Chuyển sự kiện lặp chỉ đổi ngày đó sao?",
+      "a": "Đọc phạm vi chỉnh sửa thay vì mặc định. Sau khi lưu, kiểm tra lần đã đổi và một lần sau, rồi xác nhận đúng ý định."
+    }
+  ],
+  "sourcesHeading": "So sánh mô tả chế độ chính thức",
+  "sources": [
+    {
+      "label": "Apple: chế độ tháng, nhiều ngày và danh sách",
+      "url": "https://support.apple.com/en-ca/guide/iphone/iphfd1054569/ios"
+    },
+    {
+      "label": "Teamup: chế độ xem và cấu hình trình duyệt so với ứng dụng",
+      "url": "https://calendar.teamup.com/kb/how-to-use-calendar-views/"
+    }
+  ],
+  "seeAlso": []
+}

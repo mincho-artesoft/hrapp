@@ -10,6 +10,96 @@ import { LocalisedArticle } from '../types';
  * eine Übersetzung jeden Satz umschreiben kann, ohne eine Zahl zu ändern.
  */
 export const ARTICLES_DE_DE: Readonly<Record<string, LocalisedArticle>> = {
+  "month-view-on-a-bigger-screen": {
+  "updated": "2026-10-22",
+  "title": "Monatskalender auf iPad und iPhone: erst Daten vergleichen, dann Details prüfen",
+  "short": "Monatsansicht nutzen, ohne Details zu übersehen",
+  "description": "Vergleiche Tage auf iPad oder iPhone. Prüfe verborgene Termine, Kalenderauswahl und Uhrzeiten vor dem Verschieben gemeinsamer oder wiederkehrender Termine.",
+  "lede": "Die Monatsansicht zeigt, auf welche Tage Verpflichtungen fallen. Ob eine bestimmte Stunde frei ist, lässt sich damit weniger gut beurteilen. Wähle in der Übersicht einen Tag und prüfe dann Tag und Termin, bevor du zusagst. Dieser Leitfaden stammt von Arte Soft, dem Entwickler von Cloud Calendars.",
+  "commonBelief": "Ein größeres Monatsraster zeigt jedes Detail, und ein scheinbar leerer Tag beweist, dass alle Zeit haben.",
+  "sections": [
+    {
+      "heading": "Zwischen Tagen und genauen Uhrzeiten unterscheiden",
+      "body": [
+        "Vergleiche im Monat eine Projektfrist, eine Reise und einen Familientermin über mehrere Wochen. Geht es darum, ob sich zwei Termine um 14:30 überschneiden, wechsle zur Tages- oder Wochenansicht und prüfe Beginn und Ende. Eine Monatszelle hat nicht denselben Zeitmaßstab wie ein Stundenraster.",
+        "Ein Workshop-Organisator kann zunächst eine Reisewoche ausschließen. Danach folgt die Prüfung des vorgesehenen Tages: bestehende Verpflichtungen, Vorbereitung, Anfahrt und nötiges Ende. Eine frei wirkende Zelle ist ein Kandidat zur Prüfung, keine bestätigte Buchung oder Aussage über die Verfügbarkeit anderer."
+      ]
+    },
+    {
+      "heading": "Die Zusatzanzahl beachten, statt nur sichtbare Titel zu zählen",
+      "body": [
+        "Die aktuelle Monatszelle von Cloud Calendars zeigt nur eine begrenzte Zahl von Terminelementen und bei weiteren Terminen eine zusätzliche Anzahl. Titel bleiben einzeilig und können gekürzt sein. Öffne den Tag oder einzelnen Termin, wenn vollständiger Titel oder weitere Verpflichtungen wichtig sind.",
+        "Ein größeres iPad-Display kann die Übersicht lesbarer machen, hebt aber nicht automatisch jede Anzeigegrenze auf. Ein schmales App-Fenster oder größere Schrift verändert den verfügbaren Platz. Prüfe auf dem iPhone ebenso den zugrunde liegenden Tag, bevor du sichtbare Elemente für den vollständigen Plan hältst."
+      ]
+    },
+    {
+      "heading": "Monat, Kalenderauswahl und benachbarte Daten prüfen",
+      "body": [
+        "Lies vor der Auswahl Monat und Jahr. Ein Monatsraster kann zum Auffüllen seiner Zeilen Daten des Nachbarmonats enthalten. Nutze in Cloud Calendars die Monatsnavigation und prüfe das ausgewählte Datum, statt dich allein auf die Position eines Feldes zu verlassen.",
+        "Kontrolliere die ausgewählten Kalender. Ausgeblendete Arbeitstermine können einen Familienplan übersichtlicher machen, fehlen dann aber in dieser Ansicht. Blende zur Prüfung eines Duplikats vorübergehend eine Quelle aus und vergleiche; lösche keinen Termin nur für einen weniger vollen Monat."
+      ]
+    },
+    {
+      "heading": "Vor Änderungen gemeinsamer Absprachen den Termin öffnen",
+      "body": [
+        "Prüfe Titel, Eigentümer oder Kalender, Ortszeit und Dauer in den Details. Eine Farbe hilft beim Überfliegen, ersetzt aber weder Kontozuordnung noch Kenntnis der Bearbeitungsrechte. Eine sichtbare Einladung ist etwas anderes als ein selbst organisierter Termin.",
+        "Cloud Calendars ermöglicht in der Monatsansicht das Ziehen von Terminen auf ein anderes Datum. Kläre vor einer echten Änderung das Ziel und den Umfang bei Wiederholungen. Öffne nach einer erlaubten Änderung den Termin erneut; eine lokale Geste beweist nicht, dass der Anbieter oder alle Teilnehmer die neue Absprache akzeptiert haben."
+      ]
+    },
+    {
+      "heading": "Wiederholungen und Zeitzonen gesondert prüfen",
+      "body": [
+        "Wenn nur der Unterricht dieser Woche verschoben wird, ändere nicht versehentlich das künftige Muster. Lies die angebotene Auswahl zum Wiederholungsumfang und prüfe danach den geänderten sowie einen späteren Termin. Im Monat lassen sich wiederkehrende Daten gut vergleichen, aber der Bearbeitungsumfang bestimmt die Wirkung.",
+        "Prüfe bei Reisen oder zeitzonenübergreifenden Besprechungen ausdrücklich das lokale Datum und die Uhrzeit. Das Verschieben auf einen anderen Tag rechnet die beabsichtigte Besprechungszeit nicht automatisch um. Beachte gegebenenfalls Zeitumstellungen und bestätige die vereinbarte Zeit mit den Beteiligten."
+      ]
+    },
+    {
+      "heading": "Die größere Ansicht nutzen, ohne Produkte zu verwechseln",
+      "body": [
+        "Apple Kalender bietet eigene Monatsdarstellungen, Teamup beschreibt unterschiedliche Ansichten für Browser und Mobilgeräte. Diese Einstellungen gehören zum jeweiligen Produkt. Suche Teamups Browserkonfiguration oder Apples Ansichtsmenü nicht in Cloud Calendars, nur weil die Ansichten gleich heißen.",
+        "Ein Monat voller Termine bedeutet auch keinen Monat voller Wettervorhersagen. Prüfe bei Plänen im Freien Ort, Datum und verfügbare Vorhersagestunden getrennt. Speichere den endgültigen Termin im richtigen Kalender und bestätige Änderungen direkt mit den Teilnehmern."
+      ]
+    }
+  ],
+  "claims": {},
+  "practical": [
+    "Im Monat mögliche Tage auswählen, genaue Stunden im Tag oder in der Woche prüfen.",
+    "Tage mit Zusatzanzahl oder gekürzten Titeln öffnen.",
+    "Monat, Jahr und ausgewählte Kalender prüfen, bevor du einen Tag als frei ansiehst.",
+    "Kalender, Uhrzeit, Dauer und Bearbeitungsrecht bestätigen.",
+    "Wiederholungsumfang lesen und nach dem Verschieben den gespeicherten Termin prüfen.",
+    "Wetterverfügbarkeit gesondert prüfen und Änderungen mit Teilnehmern bestätigen."
+  ],
+  "faq": [
+    {
+      "q": "Zeigt die iPad-Monatsansicht alle Termine vollständig?",
+      "a": "Gehe nicht davon aus. Cloud Calendars begrenzt die Terminelemente einer Monatszelle und zeigt eine Zusatzanzahl. Öffne Tag und Termin für den vollständigen Plan."
+    },
+    {
+      "q": "Bin ich an einem leeren Tag frei?",
+      "a": "Prüfe zuerst Kalenderauswahl, Datum und verfügbare Kontodaten. Die Übersicht bildet nur die aktuell verfügbaren und angezeigten Informationen ab."
+    },
+    {
+      "q": "Ändert das Verschieben eines Serientermins nur dieses Datum?",
+      "a": "Lies die Auswahl zum Bearbeitungsumfang. Prüfe nach dem Speichern die geänderte und eine spätere Wiederholung und bestätige die gewünschte Absprache."
+    }
+  ],
+  "sourcesHeading": "Offizielle Beschreibungen der Ansichten vergleichen",
+  "sources": [
+    {
+      "label": "Apple: Monats-, Mehrtages- und Listenansicht in Apple Kalender",
+      "url": "https://support.apple.com/en-ca/guide/iphone/iphfd1054569/ios"
+    },
+    {
+      "label": "Teamup: Kalenderansichten und Konfiguration in Browser und App",
+      "url": "https://calendar.teamup.com/kb/how-to-use-calendar-views/"
+    }
+  ],
+  "seeAlso": [
+    "drag-an-event-to-move-it"
+  ]
+},
+
 "keeping-track-of-who-replied":{
   "updated": "2026-10-21",
   "title": "Kalenderantworten: Teilnahme und Freigabezugriff unterscheiden",

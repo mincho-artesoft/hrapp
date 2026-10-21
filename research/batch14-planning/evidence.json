@@ -1,0 +1,77 @@
+{
+  "date": "2026-10-22",
+  "scope": "3 EN canonical full rewrites and 29 NEW localized month articles; source inspection not released binary/runtime proof.",
+  "nativeSourceProofs": [
+    {
+      "path": "/Users/minchomilev/work/hrapp/Calendar/MonthView/EventEditViewWrapper.swift",
+      "sha256": "865cca145de3a12fa19a7408b847024b378b439cb1aab47d884c257bb353114a",
+      "rootReadRanges": [
+        [
+          1,
+          24
+        ]
+      ]
+    },
+    {
+      "path": "/Users/minchomilev/work/hrapp/Calendar/AppLocal/AppLocalEventEditorView.swift",
+      "sha256": "5f021ab6f986148e70fe3b932e0e9e530fecb8d01fdc436e78217c6116f9a093",
+      "rootReadRanges": [
+        [
+          545,
+          625
+        ]
+      ]
+    },
+    {
+      "path": "/Users/minchomilev/work/hrapp/Calendar/WeatherView/WeatherKitView.swift",
+      "sha256": "53e5e39a94119aa4873d0e033f204f6ad9bf42f758b7d31b3aa4e58ca3228fbc",
+      "rootReadRanges": [
+        [
+          1664,
+          1688
+        ]
+      ]
+    },
+    {
+      "path": "/Users/minchomilev/work/hrapp/Calendar/WeatherView/Sources/WeatherKitViewModel.swift",
+      "sha256": "50a39e84e91cd97436cc1c3a37d498d68fd50625841fef0bb94721462ad7361e",
+      "rootReadRanges": [
+        [
+          125,
+          165
+        ]
+      ]
+    }
+  ],
+  "corrections": [
+    "No universal ten-minute weekly routine, exact-three-tasks productivity rule or twenty-minute rain avoidance claim.",
+    "No blanket all-forecast-values-are-ensemble-means, thunderstorm placement-is-guesswork or temperature-vs-rain accuracy promise.",
+    "Current source editor has conditional smart travel and Travel Time controls. Copy does not claim those are absent; installed controls must be checked.",
+    "Forecast-hour new event uses selected location time zone, default new-event calendar and one-hour proposed duration; draft values require review.",
+    "29 month translations were absent in authoritative modules; adding them grows total from399to428, not32existingrewrites."
+  ],
+  "primarySources": [
+    {
+      "url": "https://www.metoffice.gov.uk/research/weather/ensemble-forecasting/what-is-an-ensemble-forecast",
+      "readScope": "Full substantive body275-292; uncertainty summary only, no claim app exposes ensemble interface."
+    },
+    {
+      "url": "https://www.metoffice.gov.uk/research/weather/ensemble-forecasting/decision-making",
+      "readScope": "Full substantive body275-307; application-specific decision distinction."
+    },
+    {
+      "url": "https://support.apple.com/guide/iphone/get-driving-directions-ipha84a94043/ios",
+      "readScope": "Official body1153-1200 in prior same goal turn; future departure/arrival estimate attribution to Maps, not Cloud routing guarantee."
+    },
+    {
+      "url": "https://support.apple.com/guide/iphone/use-multiple-calendars-iph3d1110d4/ios",
+      "readScope": "Official focused destination/multiple-calendar controls; Apple menus not Cloud controls."
+    },
+    {
+      "url": "https://weather.metoffice.gov.uk/guides/what-does-this-forecast-mean",
+      "readScope": "Official definitions267-322; period/location vs instant field distinctions, no WeatherKit threshold transfer."
+    }
+  ],
+  "translationReview": "Agent audits all29 shape/source/date/available related routes. Root full Bulgarian, Japanese, Arabic semantic review. Own translation, not independent native-speaker certification.",
+  "sharedFactClaims": "All3 EN fact arrays already empty; no unrelated facts mutation."
+}

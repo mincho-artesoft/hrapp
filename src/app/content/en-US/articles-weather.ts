@@ -283,46 +283,95 @@ export const WEATHER_EN_US: Readonly<Record<string, LocalisedArticle>> = {
 },
 
   'what-a-forecast-can-and-cannot-tell-you': {
-  "title": "What a forecast can and cannot tell you",
-  "short": "What a forecast can tell you",
-  "description": "Forecasts are probabilistic, and reading them as promises is why they feel unreliable. A short guide to what the numbers actually mean.",
-  "lede": "Weather forecasts are not wrong nearly as often as they feel wrong. Most of the gap is a mismatch between what they say and what people hear.",
-  "commonBelief": "That a forecast is a statement about what will happen.",
+  "title": "How reliable is a weather forecast for a calendar event?",
+  "short": "Read forecast uncertainty before changing a plan",
+  "description": "Check forecast place, period and uncertainty before changing an event. Separate rain probability, decisions and available weather in Cloud Calendars.",
+  "lede": "A forecast helps you make a decision about an event; it does not guarantee the conditions at every moment. Start with the venue and time, then decide what information could change the plan. This guide is published by Arte Soft, the developer of Cloud Calendars.",
+  "commonBelief": "A weather icon promises the exact conditions throughout an appointment, and a changed forecast means the earlier probability was meaningless.",
   "sections": [
     {
-      "heading": "It is a distribution, not a plan",
+      "heading": "Identify the forecast before judging it",
       "body": [
-        "A forecast is the output of many model runs that disagree with each other. What you are shown is roughly where they cluster. When they cluster tightly, the forecast is confident; when they scatter, it is not — and the icon looks the same either way.",
-        "This is why two forecasts that were both 'right' can feel different: one had no real competition, the other was a coin toss that landed."
+        "A useful check starts with the place, date and period being forecast. The same icon beside a daily summary and an hourly entry does not describe the same interval. Read the accompanying values and the provider’s definitions rather than treating the picture as a minute-by-minute promise.",
+        "For an outdoor appointment, write down the venue and the hours that matter: arrival, the activity and departure may need different checks. A forecast for your current location does not answer a question about a venue elsewhere."
       ]
     },
     {
-      "heading": "Where it is strong",
+      "heading": "Understand why an estimate can change",
       "body": [
-        "Temperature is reliable further out than precipitation. Whether tomorrow is warm is a much easier question than whether it rains at four, and the difference is not small.",
-        "Timing of a front is usually better than intensity. You can often trust that rain arrives in the afternoon while not trusting how much falls."
+        "The Met Office explains that forecasts start from an estimated state of the atmosphere. Small differences in that starting estimate can grow. Its ensemble systems explore possible outcomes with multiple runs; greater disagreement signals greater uncertainty.",
+        "This explains why confidence matters, but does not mean every value in Cloud Calendars is an ensemble mean or that the app displays individual model runs. An icon alone does not reveal the complete uncertainty behind a forecast."
       ]
     },
     {
-      "heading": "Where it is weak",
+      "heading": "Keep probability, amount and timing separate",
       "body": [
-        "Anything convective — summer thunderstorms, sharp showers — is guesswork about placement. The model may be certain that storms happen in the region and unable to say whether one crosses your park.",
-        "Mountains, coasts and cities all bend the local picture in ways a grid forecast smooths away."
+        "A rain probability concerns a defined event over a defined place and period. It is not, by itself, a statement about the share of your appointment that will be wet. Check the forecast product’s definitions and read amount, wind or other relevant fields separately when available.",
+        "If a forecast changes from rain around midday to rain later, compare the same location and intervals before calling the two versions contradictory. Save the observation time if you need to discuss the change with a venue or another organiser; do not silently move a shared booking."
+      ]
+    },
+    {
+      "heading": "Choose the decision for the activity",
+      "body": [
+        "The Met Office’s decision-making guidance relates probability thresholds to the particular application. A percentage that prompts one action is not a universal cancellation rule.",
+        "For a casual picnic, a nearby indoor alternative may be practical. A booked performance may instead require a venue decision and a notification deadline. Agree who can change the plan, what information they need and when others will hear. These are planning examples, not weather safety thresholds."
+      ]
+    },
+    {
+      "heading": "Use Cloud Calendars for the schedule and available weather",
+      "body": [
+        "Check that you are looking at the intended day and weather location. Read the forecast only for periods actually supplied; a calendar appointment can exist beyond the available forecast horizon. Missing weather is not a forecast of clear conditions.",
+        "If you create an event from a weather hour, review its start, end, destination calendar and location before saving. In the current source this flow proposes a one-hour event and the default new-event calendar. Those draft values are conveniences, not a reservation or a complete travel plan."
+      ]
+    },
+    {
+      "heading": "Recheck with a purpose and communicate the result",
+      "body": [
+        "Choose a review time that still leaves room to act under your booking’s conditions. At that point, compare the latest relevant forecast with the plan and any applicable official or venue guidance. Repeated refreshing without an available decision does not create certainty.",
+        "If the plan changes, edit the correct event or recurrence scope and check the saved result. Confirm important changes directly with the people involved. A calendar alert, a changed forecast and a message received by a participant are three different outcomes."
       ]
     }
   ],
   "claims": {},
   "practical": [
-    "Trust temperature further out than rain.",
-    "Treat a chance of showers as a chance, not a schedule.",
-    "For convective weather, check again on the morning; nothing earlier will settle it.",
-    "If a plan cannot survive being wrong, build the fallback rather than refreshing the forecast."
+    "Check the venue, date, time zone and the forecast period.",
+    "Read probability separately from amount, timing and other available weather fields.",
+    "Use the provider’s definitions; do not infer confidence from an icon alone.",
+    "Agree the fallback, decision owner and deadline for your actual activity.",
+    "Review the event’s calendar, start, end and location before saving a change.",
+    "Recheck at the agreed time and confirm important changes with participants."
+  ],
+  "faq": [
+    {
+      "q": "Does a rain percentage tell me how long my event will be wet?",
+      "a": "No. Read what event, place and period the provider defines. A percentage alone does not supply the duration, amount or the conditions at every moment."
+    },
+    {
+      "q": "Does Cloud Calendars show all ensemble model runs?",
+      "a": "This guide does not claim an ensemble comparison interface. Use the weather values actually available for the selected place and period; do not infer hidden model confidence from an icon."
+    },
+    {
+      "q": "Can I use weather for every future calendar appointment?",
+      "a": "A calendar can hold dates beyond the available forecast horizon. Check whether the relevant period has weather data and arrange a later review when it does not."
+    }
   ],
   "seeAlso": [
     "reading-a-chance-of-rain",
-    "a-fourteen-day-view-of-the-weather"
+    "a-fourteen-day-view-of-the-weather",
+    "weather-where-the-event-is",
+    "the-commute-and-the-sky"
   ],
-  "updated": "2026-10-21"
+  "sources": [
+    {
+      "label": "Met Office: What is an ensemble forecast?",
+      "url": "https://www.metoffice.gov.uk/research/weather/ensemble-forecasting/what-is-an-ensemble-forecast"
+    },
+    {
+      "label": "Met Office: Using ensemble forecasts in decision-making",
+      "url": "https://www.metoffice.gov.uk/research/weather/ensemble-forecasting/decision-making"
+    }
+  ],
+  "updated": "2026-10-22"
 },
 
   'reading-a-chance-of-rain': {
@@ -500,35 +549,95 @@ export const WEATHER_EN_US: Readonly<Record<string, LocalisedArticle>> = {
 },
 
   'the-commute-and-the-sky': {
-  "title": "The two half-hours of your day that the weather actually ruins",
-  "short": "The commute and the sky",
-  "description": "Most weather disruption is not the day, it is the two commutes. A small habit that catches nearly all of it.",
-  "lede": "Ask people when weather last inconvenienced them and they will mostly describe a journey, not an afternoon.",
-  "commonBelief": "That a wet day is a wet day, and there is nothing to be done about it.",
+  "updated": "2026-10-22",
+  "title": "Plan travel around calendar events: route time, weather and arrival",
+  "short": "Plan the journey as well as the meeting",
+  "description": "Compare journey times, forecast places and arrival requirements before a calendar event. Keep departure blocks, alerts and the meeting’s real start distinct.",
+  "lede": "A meeting time and the time you need to leave are different parts of the plan. Check the journey you actually intend to make instead of assuming that the day’s weather icon or a familiar travel duration covers it. This guide is published by Arte Soft, the developer of Cloud Calendars.",
+  "commonBelief": "Moving departure by twenty minutes usually avoids the rain, and a saved meeting already accounts for the whole journey.",
   "sections": [
     {
-      "heading": "The exposure is narrow",
+      "heading": "Keep departure, arrival and the event start distinct",
       "body": [
-        "For most people the genuinely weather-exposed part of a working day is two short journeys. Everything between them happens indoors.",
-        "That makes the problem far smaller than it feels, and far more tractable: you are not trying to predict a day, only two half-hours."
+        "Write down the actual venue and the time you need to be there. An appointment starting at 09:00 may require arrival earlier for access or preparation. Keep the meeting at its agreed time rather than moving it earlier to represent your departure.",
+        "For example, an organiser may ask you to arrive before a workshop opens. Record the real arrival requirement and estimate the journey separately. If you add a departure entry, label it clearly and choose who needs to see it; it is not a second workshop invitation."
       ]
     },
     {
-      "heading": "Which changes what you check",
+      "heading": "Estimate the route for the intended time",
       "body": [
-        "The useful question is not whether it rains today but whether it rains at eight and at six. Those are two specific hours, and hourly detail answers them well inside the range where forecasts are strong.",
-        "Shifting a departure by twenty minutes is often the entire fix, and it is only visible if you looked at the hours."
+        "Use a navigation or transport service appropriate to the route and travel mode. Apple Maps documents future driving estimates through its Leave at or Arrive by choices and notes that the estimate can change with predicted traffic. Those are Maps controls, not proof that every calendar calculates the same journey.",
+        "Check the start and destination rather than assuming your current location or a similarly named venue is correct. Include the real access, walking or preparation requirements that matter to your arrangement. A route estimate is not a guarantee of arrival at a particular minute."
+      ]
+    },
+    {
+      "heading": "Compare forecast locations and periods",
+      "body": [
+        "Inspect the forecast place and the hours covering departure, arrival and a relevant return journey. A destination forecast is not a measurement at every point along a route, and weather near home can differ from conditions where the event takes place.",
+        "The Met Office explains that some forecast fields describe an instant while precipitation chance and gusts describe a period. Use the definitions of the provider you are viewing. A change between two displayed hours does not identify an exact rain-free twenty-minute interval."
+      ]
+    },
+    {
+      "heading": "Use available alternatives without inventing a weather rule",
+      "body": [
+        "If the appointment allows a different departure or a remote alternative, compare the practical choices and confirm one with the organiser. Do not change a booked arrival or another person’s meeting solely because one forecast number looks smaller.",
+        "Check relevant local warnings and transport or venue information when conditions may affect the journey. The calendar does not certify route conditions. This guide does not supply a universal rain, wind or visibility threshold for deciding whether to travel."
+      ]
+    },
+    {
+      "heading": "Inspect the saved calendar and any departure reminder",
+      "body": [
+        "In Cloud Calendars, check the event’s destination calendar, exact date and time zone before saving. If creating an event from a forecast hour, inspect the resulting draft: the chosen weather hour is not automatically your travel time, a suitable duration or confirmation of the venue.",
+        "If your installed editor offers Travel Time or a departure reminder, review that control separately from the ordinary event alert. Check the saved settings and notification permission rather than assuming a location or time block guarantees a delivered warning. A personal departure entry need not be shared with everyone attending the meeting."
+      ]
+    },
+    {
+      "heading": "Recheck before leaving and communicate a changed arrangement",
+      "body": [
+        "Review current route and weather information before the journey, particularly if you planned it earlier in the week. An appointment may be within the calendar’s range but outside the forecast data available when you first created it.",
+        "If the arrival arrangement changes, tell the relevant person and get the confirmation you need. Updating your personal departure block does not notify every participant or change their invitation. Keep the original event clear while recording a new agreed start or location."
       ]
     }
   ],
   "claims": {},
   "practical": [
-    "Check the two commute hours rather than the day.",
-    "Twenty minutes earlier or later is usually enough to miss a shower.",
-    "If both ends look wet, that is the day to take the bag rather than the bike."
+    "Identify the actual venue and required arrival time.",
+    "Check a route estimate for the intended date, time and travel mode.",
+    "Compare relevant forecast places and available hours.",
+    "Consult current transport, venue and official warning information where relevant.",
+    "Verify calendar destination, local time, duration and any reminder separately.",
+    "Recheck before departure and confirm changes with the organiser."
+  ],
+  "faq": [
+    {
+      "q": "Will leaving twenty minutes later avoid a shower?",
+      "a": "There is no general guarantee. Forecast fields describe particular places and periods; compare current information and the constraints of the journey."
+    },
+    {
+      "q": "Should the calendar meeting start at my departure time?",
+      "a": "Keep the meeting’s real start. Use a clearly labelled personal departure block or an available reminder control when that helps your plan."
+    },
+    {
+      "q": "Does weather for the destination describe the whole route?",
+      "a": "No. Check the relevant locations and current transport information. One selected-place forecast is not route-wide observation."
+    }
+  ],
+  "sourcesHeading": "Official guidance and further reading",
+  "sources": [
+    {
+      "label": "Apple: future departure or arrival estimates in Maps",
+      "url": "https://support.apple.com/guide/iphone/get-driving-directions-ipha84a94043/ios"
+    },
+    {
+      "label": "Met Office: forecast times, precipitation and gust periods",
+      "url": "https://weather.metoffice.gov.uk/guides/what-does-this-forecast-mean"
+    }
   ],
   "seeAlso": [
-    "forecast-beside-every-event"
+    "weather-where-the-event-is",
+    "reading-a-chance-of-rain",
+    "calendar-notifications-missing-silent-or-duplicated",
+    "planning-a-week-in-ten-minutes"
   ]
 },
 

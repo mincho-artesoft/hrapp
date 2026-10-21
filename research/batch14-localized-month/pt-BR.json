@@ -1,0 +1,87 @@
+{
+  "updated": "2026-10-22",
+  "title": "Calendário mensal no iPad e iPhone: veja as datas e confira os detalhes",
+  "short": "Use a visão mensal sem perder detalhes",
+  "description": "Compare datas no iPad ou iPhone. Confira eventos ocultos, calendários selecionados e horários antes de mover compromissos compartilhados ou recorrentes.",
+  "lede": "A visão mensal mostra em quais datas estão os compromissos. Ela é menos adequada para confirmar que um horário específico está livre. Escolha uma data no panorama geral e examine o dia e o evento antes de confirmar. Este guia é publicado pela Arte Soft, desenvolvedora do Cloud Calendars.",
+  "commonBelief": "Uma grade mensal maior mostra todos os detalhes, e uma data aparentemente vazia prova que todos estão disponíveis.",
+  "sections": [
+    {
+      "heading": "Decida se precisa comparar datas ou horários",
+      "body": [
+        "Use o mês para comparar um prazo de projeto, uma viagem e um compromisso familiar ao longo das semanas. Se a dúvida é se duas reuniões se sobrepõem às 14h30, mude para a visão diária ou semanal e confira início e término. Uma célula mensal não tem a mesma escala de uma grade horária.",
+        "Por exemplo, quem escolhe a data de uma oficina pode primeiro evitar uma semana de viagem. Depois precisa verificar o dia proposto: compromissos, preparação, deslocamento e horário de término necessário. Uma célula aparentemente livre é uma possibilidade a investigar, não uma reserva confirmada nem prova de disponibilidade alheia."
+      ]
+    },
+    {
+      "heading": "Leia o indicador de eventos adicionais",
+      "body": [
+        "A célula mensal atual do Cloud Calendars mostra um número limitado de etiquetas de eventos e indica quantos outros pertencem à data. Os títulos ocupam uma linha e podem ser encurtados. Abra o dia ou o evento quando precisar do título completo ou dos compromissos restantes.",
+        "A tela maior do iPad pode facilitar a leitura, mas não suponha que o espaço elimina todos os limites de exibição. Uma janela estreita ou texto maior muda o que cabe. Faça a mesma verificação no iPhone: examine o dia antes de considerar as etiquetas visíveis como a programação completa."
+      ]
+    },
+    {
+      "heading": "Confira mês, calendários selecionados e datas próximas",
+      "body": [
+        "Leia o mês e o ano exibidos antes de escolher uma data. A grade pode incluir datas de um mês vizinho para completar as linhas. No Cloud Calendars, use a navegação mensal e confira a data selecionada, sem confiar apenas na posição do quadrado.",
+        "Confira os calendários selecionados. Ocultar eventos de trabalho ajuda a ler um plano familiar, mas também retira esses compromissos daquele panorama. Para investigar uma duplicata, oculte temporariamente uma origem e compare; não exclua um compromisso só para aliviar a grade."
+      ]
+    },
+    {
+      "heading": "Abra o evento antes de mudar um compromisso compartilhado",
+      "body": [
+        "Nos detalhes, confirme título, proprietário ou calendário, horário local e duração. A cor ajuda a localizar eventos, mas não substitui saber a conta ou se você pode editar. Um convite visível não é o mesmo que um compromisso organizado por você.",
+        "O Cloud Calendars permite mover eventos para outra data por arrastar e soltar na visão mensal. Antes de usar isso num compromisso real, confirme a data e o alcance da recorrência. Após uma alteração permitida, reabra e confira: um gesto local não prova que o provedor ou todos os participantes aceitaram a mudança."
+      ]
+    },
+    {
+      "heading": "Verifique recorrência e fuso horário separadamente",
+      "body": [
+        "Se apenas a aula desta semana mudou, não altere sem querer o padrão futuro. Leia a opção de alcance da edição e depois examine tanto a ocorrência alterada quanto uma posterior. A visão mensal facilita comparar datas repetidas, mas é o alcance escolhido que define a mudança.",
+        "Em viagens ou reuniões entre fusos, confira explicitamente data e horário local do evento. Mover para outro dia não converte automaticamente o horário pretendido. Verifique transições de horário de verão quando relevantes e confirme o horário combinado com as pessoas envolvidas."
+      ]
+    },
+    {
+      "heading": "Use a tela maior sem confundir produtos",
+      "body": [
+        "O Calendário da Apple tem suas próprias opções mensais; o Teamup documenta conjuntos diferentes de visões no navegador e no aplicativo. Esses controles pertencem a cada produto. Não procure configurações do navegador Teamup ou menus do Calendário da Apple dentro do Cloud Calendars só porque a visão tem o mesmo nome.",
+        "Um mês de compromissos também não equivale a um mês de previsão do tempo. Para planos ao ar livre, confira separadamente local, data e horários com previsão disponível. Salve o compromisso no calendário desejado e confirme mudanças diretamente com os participantes."
+      ]
+    }
+  ],
+  "claims": {},
+  "practical": [
+    "Escolha datas no mês e confira horários na visão diária ou semanal.",
+    "Abra dias com contagem adicional ou títulos encurtados.",
+    "Confira mês, ano e calendários antes de considerar uma data livre.",
+    "Confirme calendário, horário, duração e permissão de edição.",
+    "Leia o alcance da recorrência e confira a ocorrência salva após mover.",
+    "Verifique a previsão separadamente e confirme mudanças com participantes."
+  ],
+  "faq": [
+    {
+      "q": "A visão mensal do iPad mostra todos os compromissos completos?",
+      "a": "Não suponha isso. O Cloud Calendars limita as etiquetas na célula e usa uma contagem adicional. Abra o dia e o evento para ver a programação completa."
+    },
+    {
+      "q": "Um dia vazio significa que estou livre?",
+      "a": "Confira calendários selecionados, data e presença dos dados das contas relevantes. O panorama representa apenas as informações disponíveis e exibidas naquele momento."
+    },
+    {
+      "q": "Mover um evento recorrente altera só aquela data?",
+      "a": "Leia a opção de alcance da edição. Depois de salvar, examine a ocorrência alterada e outra posterior e confirme o resultado desejado."
+    }
+  ],
+  "sourcesHeading": "Compare as descrições oficiais das visões",
+  "sources": [
+    {
+      "label": "Apple: visões mensal, de vários dias e em lista",
+      "url": "https://support.apple.com/en-ca/guide/iphone/iphfd1054569/ios"
+    },
+    {
+      "label": "Teamup: visões e configurações no navegador e aplicativo",
+      "url": "https://calendar.teamup.com/kb/how-to-use-calendar-views/"
+    }
+  ],
+  "seeAlso": []
+}

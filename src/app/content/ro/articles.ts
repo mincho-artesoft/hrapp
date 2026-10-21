@@ -9,6 +9,94 @@ import { LocalisedArticle } from '../types';
  * translation can rewrite every sentence without touching a figure.
  */
 export const ARTICLES_RO: Readonly<Record<string, LocalisedArticle>> = {
+  "month-view-on-a-bigger-screen": {
+  "updated": "2026-10-22",
+  "title": "Calendar lunar pe iPad și iPhone: vezi datele, apoi verifică detaliile",
+  "short": "Vedere lunară fără detalii omise",
+  "description": "Compară date pe iPad sau iPhone. Verifică evenimente ascunse, calendare selectate și ore exacte înainte să muți întâlniri partajate sau repetate.",
+  "lede": "Vederea lunară arată în ce date cad angajamentele. Este mai puțin potrivită pentru a confirma că o anumită oră este liberă. Alege o dată din ansamblu, apoi verifică ziua și evenimentul înainte să confirmi. Ghidul este publicat de Arte Soft, dezvoltatorul Cloud Calendars.",
+  "commonBelief": "O grilă lunară mai mare arată toate detaliile, iar o dată aparent goală dovedește că toată lumea este disponibilă.",
+  "sections": [
+    {
+      "heading": "Decide dacă ai nevoie de date sau ore exacte",
+      "body": [
+        "Folosește luna pentru a compara un termen de proiect, o călătorie și o întâlnire de familie pe mai multe săptămâni. Dacă vrei să știi dacă două întâlniri se suprapun la 14:30, treci la zi sau săptămână și verifică începutul și sfârșitul. Celula lunară nu are scara unei grile orare.",
+        "De exemplu, organizatorul unui atelier poate evita întâi o săptămână de călătorie. Apoi verifică ziua propusă: angajamente, pregătire, drum și ora necesară de încheiere. O celulă aparent liberă este o posibilitate de investigat, nu o rezervare confirmată sau dovada disponibilității altora."
+      ]
+    },
+    {
+      "heading": "Citește indicatorul evenimentelor suplimentare",
+      "body": [
+        "Celula lunară actuală din Cloud Calendars arată un număr limitat de etichete și o indicație numerică pentru celelalte evenimente ale datei. Titlurile ocupă o linie și pot fi scurtate. Deschide ziua sau evenimentul când contează titlul complet ori celelalte angajamente.",
+        "Ecranul mai mare al iPad-ului poate ușura citirea, dar spațiul fizic nu elimină neapărat toate limitele. O fereastră îngustă sau un text mai mare schimbă ce încape. Verifică la fel pe iPhone: inspectează ziua înainte să consideri etichetele vizibile drept programul complet."
+      ]
+    },
+    {
+      "heading": "Verifică luna, calendarele și datele învecinate",
+      "body": [
+        "Citește luna și anul afișate înainte să alegi o dată. Grila poate include date din luna alăturată pentru a completa rândurile. În Cloud Calendars, folosește navigarea lunară și verifică data selectată, fără să te bazezi doar pe poziția pătratului.",
+        "Verifică calendarele selectate. Ascunderea muncii ajută la citirea unui plan de familie, dar elimină acele angajamente din imaginea respectivă. Pentru un duplicat, ascunde temporar o sursă și compară; nu șterge o întâlnire doar ca luna să fie mai aerisită."
+      ]
+    },
+    {
+      "heading": "Deschide evenimentul înainte să modifici un plan comun",
+      "body": [
+        "În detalii, confirmă titlul, proprietarul sau calendarul, ora locală și durata. Culoarea ajută la orientare, dar nu înlocuiește identificarea contului ori a dreptului de editare. O invitație vizibilă diferă de o întâlnire organizată de tine.",
+        "Cloud Calendars permite mutarea evenimentelor la altă dată prin glisare în vederea lunară. Înainte de a muta un angajament real, stabilește data dorită și domeniul repetării. După o modificare permisă, redeschide și verifică: un gest local nu dovedește acceptarea de către furnizor sau toți participanții."
+      ]
+    },
+    {
+      "heading": "Verifică separat repetarea și fusurile orare",
+      "body": [
+        "Dacă se mută doar lecția de săptămâna aceasta, nu schimba accidental modelul viitor. Citește opțiunea privind domeniul repetării și verifică apoi atât apariția schimbată, cât și una ulterioară. Luna ajută la compararea datelor repetate, dar domeniul editării stabilește efectul.",
+        "Pentru călătorii sau întâlniri între fusuri orare, verifică explicit data și ora locală. Mutarea în altă zi nu convertește automat ora intenționată. Verifică trecerile la ora de vară când sunt relevante și confirmă ora convenită cu cei implicați."
+      ]
+    },
+    {
+      "heading": "Nu confunda vederea mai mare cu alte produse",
+      "body": [
+        "Calendar Apple are propriile opțiuni lunare, iar Teamup documentează vederi diferite pentru browser și mobil. Controalele aparțin produselor respective. Nu căuta configurarea Teamup din browser sau meniul Apple în Cloud Calendars doar fiindcă vederea are același nume.",
+        "O lună de întâlniri nu înseamnă o lună de prognoză. Pentru un plan în aer liber, verifică separat locul, data și orele disponibile în prognoză. Salvează întâlnirea în calendarul dorit și confirmă direct cu participanții orice schimbare."
+      ]
+    }
+  ],
+  "claims": {},
+  "practical": [
+    "Alege date în vederea lunară, apoi verifică orele în zi sau săptămână.",
+    "Deschide zilele cu număr suplimentar sau titluri scurtate.",
+    "Verifică luna, anul și calendarele înainte să consideri data liberă.",
+    "Confirmă calendarul, ora, durata și dreptul de editare.",
+    "Citește domeniul repetării și verifică apariția salvată după mutare.",
+    "Verifică prognoza separat și confirmă schimbările cu participanții."
+  ],
+  "faq": [
+    {
+      "q": "Pe iPad, vederea lunară afișează integral toate întâlnirile?",
+      "a": "Nu presupune asta. Cloud Calendars limitează etichetele și afișează un număr suplimentar. Deschide ziua și evenimentul pentru programul complet."
+    },
+    {
+      "q": "O zi goală înseamnă că sunt liber?",
+      "a": "Verifică mai întâi calendarele selectate, data și prezența datelor conturilor relevante. Ansamblul reprezintă doar informațiile disponibile și afișate atunci."
+    },
+    {
+      "q": "Mutarea unui eveniment repetat schimbă doar acea dată?",
+      "a": "Citește domeniul editării. După salvare, verifică apariția schimbată și una ulterioară, apoi confirmă rezultatul dorit."
+    }
+  ],
+  "sourcesHeading": "Compară descrierile oficiale ale vederilor",
+  "sources": [
+    {
+      "label": "Apple: vederi lunare, pe mai multe zile și listă",
+      "url": "https://support.apple.com/en-ca/guide/iphone/iphfd1054569/ios"
+    },
+    {
+      "label": "Teamup: vederi și configurare în browser față de aplicație",
+      "url": "https://calendar.teamup.com/kb/how-to-use-calendar-views/"
+    }
+  ],
+  "seeAlso": []
+},
+
   'weather-inside-your-calendar': {
   "title": "Un calendar care are deja vremea în el",
   "short": "Vremea în calendar",

@@ -1,5 +1,5 @@
 {
-  "date": "2026-10-21T21:39:59.426Z",
+  "date": "2026-10-21T21:59:28.286Z",
   "status": "source_inventory_not_quality_approval",
   "articles": [
     {
@@ -71,15 +71,19 @@
     {
       "locale": "ar-SA",
       "slug": "google-calendars-that-never-reach-your-iphone",
-      "title": "لماذا لا تصل بعض تقاويم Google إلى iPhone أبدًا",
-      "description": "حساب Google واحد، وتقاويم عدة، وواحد فقط على الهاتف. قائمة المزامنة التي تقرّر ذلك، وما البديل.",
-      "descriptionCharacters": 95,
-      "sections": 2,
+      "title": "تقويم Google مفقود على iPhone: تحقق من الاتصال والاختيار",
+      "description": "اعثر على تقويم Google مفقود بفحص الوصول إلى الحساب وظهور التقويم وطريقة اتصال Apple Calendar أو Cloud Calendars.",
+      "descriptionCharacters": 112,
+      "sections": 6,
       "faq": 3,
-      "words": 261,
+      "words": 657,
       "source": "articles-google.ts",
-      "sources": [],
-      "updated": "2026-09-12"
+      "sources": [
+        "https://support.google.com/calendar/answer/99358?hl=en&co=GENIE.Platform%3DiOS",
+        "https://support.google.com/calendar/answer/37100?hl=en&co=GENIE.Platform%3DiOS",
+        "https://developers.google.com/workspace/calendar/api/v3/reference/calendarList/list"
+      ],
+      "updated": "2026-10-21"
     },
     {
       "locale": "ar-SA",
@@ -96,6 +100,22 @@
         "https://support.google.com/calendar/answer/37648?hl=en"
       ],
       "updated": "2026-10-21"
+    },
+    {
+      "locale": "ar-SA",
+      "slug": "month-view-on-a-bigger-screen",
+      "title": "تقويم الشهر على iPad وiPhone: انظر إلى التواريخ ثم افحص التفاصيل",
+      "description": "قارن التواريخ على iPad أو iPhone. افحص الأحداث المخفية والتقويمات المختارة والأوقات الدقيقة قبل نقل مواعيد مشتركة أو متكررة.",
+      "descriptionCharacters": 124,
+      "sections": 6,
+      "faq": 3,
+      "words": 642,
+      "source": "articles.ts",
+      "sources": [
+        "https://support.apple.com/en-ca/guide/iphone/iphfd1054569/ios",
+        "https://calendar.teamup.com/kb/how-to-use-calendar-views/"
+      ],
+      "updated": "2026-10-22"
     },
     {
       "locale": "ar-SA",
@@ -224,15 +244,19 @@
     {
       "locale": "bg",
       "slug": "google-calendars-that-never-reach-your-iphone",
-      "title": "Защо някои календари от Google никога не стигат до iPhone",
-      "description": "Един профил в Google, няколко календара и само един в телефона. Списъкът за синхронизиране, който решава това, и какво да правите вместо това.",
-      "descriptionCharacters": 142,
-      "sections": 2,
+      "title": "Google календар липсва на iPhone: проверете връзката и избора",
+      "description": "Намерете липсващ Google календар чрез проверка на достъпа, видимостта и връзката, използвана от Apple Calendar или Cloud Calendars.",
+      "descriptionCharacters": 131,
+      "sections": 6,
       "faq": 3,
-      "words": 305,
+      "words": 735,
       "source": "articles-google.ts",
-      "sources": [],
-      "updated": "2026-09-12"
+      "sources": [
+        "https://support.google.com/calendar/answer/99358?hl=en&co=GENIE.Platform%3DiOS",
+        "https://support.google.com/calendar/answer/37100?hl=en&co=GENIE.Platform%3DiOS",
+        "https://developers.google.com/workspace/calendar/api/v3/reference/calendarList/list"
+      ],
+      "updated": "2026-10-21"
     },
     {
       "locale": "bg",
@@ -300,6 +324,22 @@
         "https://support.microsoft.com/en-us/outlook/share-your-calendar-in-outlook-on-the-web"
       ],
       "updated": "2026-10-21"
+    },
+    {
+      "locale": "bg",
+      "slug": "month-view-on-a-bigger-screen",
+      "title": "Месечен календар на iPad и iPhone: вижте датите, после проверете подробностите",
+      "description": "Сравнете датите на iPad или iPhone. Проверете скритите събития, избраните календари и часовете, преди да местите споделени или повтарящи се срещи.",
+      "descriptionCharacters": 146,
+      "sections": 6,
+      "faq": 3,
+      "words": 692,
+      "source": "articles.ts",
+      "sources": [
+        "https://support.apple.com/en-ca/guide/iphone/iphfd1054569/ios",
+        "https://calendar.teamup.com/kb/how-to-use-calendar-views/"
+      ],
+      "updated": "2026-10-22"
     },
     {
       "locale": "bg",
@@ -428,15 +468,19 @@
     {
       "locale": "cs",
       "slug": "google-calendars-that-never-reach-your-iphone",
-      "title": "Proč se některé kalendáře Google nikdy nedostanou do iPhonu",
-      "description": "Jeden účet Google, několik kalendářů a v telefonu jen jeden. Seznam synchronizace, který o tom rozhoduje, a co dělat místo toho.",
-      "descriptionCharacters": 128,
-      "sections": 2,
+      "title": "Kalendář Google chybí na iPhonu: ověřte připojení a výběr",
+      "description": "Najděte chybějící kalendář Google kontrolou přístupu, viditelnosti a připojení používaného Kalendářem Apple nebo Cloud Calendars.",
+      "descriptionCharacters": 129,
+      "sections": 6,
       "faq": 3,
-      "words": 265,
+      "words": 617,
       "source": "articles-google.ts",
-      "sources": [],
-      "updated": "2026-09-12"
+      "sources": [
+        "https://support.google.com/calendar/answer/99358?hl=en&co=GENIE.Platform%3DiOS",
+        "https://support.google.com/calendar/answer/37100?hl=en&co=GENIE.Platform%3DiOS",
+        "https://developers.google.com/workspace/calendar/api/v3/reference/calendarList/list"
+      ],
+      "updated": "2026-10-21"
     },
     {
       "locale": "cs",
@@ -453,6 +497,22 @@
         "https://support.google.com/calendar/answer/37648?hl=en"
       ],
       "updated": "2026-10-21"
+    },
+    {
+      "locale": "cs",
+      "slug": "month-view-on-a-bigger-screen",
+      "title": "Měsíční kalendář na iPadu a iPhonu: porovnejte data, ověřte podrobnosti",
+      "description": "Porovnejte data na iPadu či iPhonu. Před přesunem sdílených nebo opakovaných schůzek ověřte skryté události, vybrané kalendáře a přesné časy.",
+      "descriptionCharacters": 141,
+      "sections": 6,
+      "faq": 3,
+      "words": 614,
+      "source": "articles.ts",
+      "sources": [
+        "https://support.apple.com/en-ca/guide/iphone/iphfd1054569/ios",
+        "https://calendar.teamup.com/kb/how-to-use-calendar-views/"
+      ],
+      "updated": "2026-10-22"
     },
     {
       "locale": "cs",
@@ -581,15 +641,19 @@
     {
       "locale": "da",
       "slug": "google-calendars-that-never-reach-your-iphone",
-      "title": "Hvorfor nogle Google-kalendere aldrig når din iPhone",
-      "description": "Én Google-konto, flere kalendere og kun én på telefonen. Synkroniseringslisten, der afgør det, og hvad man gør i stedet.",
-      "descriptionCharacters": 120,
-      "sections": 2,
+      "title": "En Google-kalender mangler på iPhone: kontrollér forbindelse og valg",
+      "description": "Find en manglende Google-kalender ved at kontrollere adgang, synlighed og forbindelsen i Apple Kalender eller Cloud Calendars.",
+      "descriptionCharacters": 126,
+      "sections": 6,
       "faq": 3,
-      "words": 303,
+      "words": 700,
       "source": "articles-google.ts",
-      "sources": [],
-      "updated": "2026-09-12"
+      "sources": [
+        "https://support.google.com/calendar/answer/99358?hl=en&co=GENIE.Platform%3DiOS",
+        "https://support.google.com/calendar/answer/37100?hl=en&co=GENIE.Platform%3DiOS",
+        "https://developers.google.com/workspace/calendar/api/v3/reference/calendarList/list"
+      ],
+      "updated": "2026-10-21"
     },
     {
       "locale": "da",
@@ -606,6 +670,22 @@
         "https://support.google.com/calendar/answer/37648?hl=en"
       ],
       "updated": "2026-10-21"
+    },
+    {
+      "locale": "da",
+      "slug": "month-view-on-a-bigger-screen",
+      "title": "Månedskalender på iPad og iPhone: se datoerne, kontrollér detaljerne",
+      "description": "Sammenlign datoer på iPad eller iPhone. Kontrollér skjulte aftaler, valgte kalendere og tider, før du flytter delte eller gentagne begivenheder.",
+      "descriptionCharacters": 144,
+      "sections": 6,
+      "faq": 3,
+      "words": 699,
+      "source": "articles.ts",
+      "sources": [
+        "https://support.apple.com/en-ca/guide/iphone/iphfd1054569/ios",
+        "https://calendar.teamup.com/kb/how-to-use-calendar-views/"
+      ],
+      "updated": "2026-10-22"
     },
     {
       "locale": "da",
@@ -734,15 +814,19 @@
     {
       "locale": "de-DE",
       "slug": "google-calendars-that-never-reach-your-iphone",
-      "title": "Warum manche Google-Kalender nie auf dem iPhone ankommen",
-      "description": "Ein Google-Konto, mehrere Kalender, und nur einer davon auf dem Telefon. Die Synchronisierungsliste, die das entscheidet — und was stattdessen hilft.",
-      "descriptionCharacters": 149,
-      "sections": 2,
+      "title": "Ein Google-Kalender fehlt auf dem iPhone: Verbindung und Auswahl prüfen",
+      "description": "Finde fehlende Google-Kalender: Prüfe Kontozugriff, Sichtbarkeit und die Verbindung, die Apple Kalender oder Cloud Calendars verwendet.",
+      "descriptionCharacters": 135,
+      "sections": 6,
       "faq": 3,
-      "words": 291,
+      "words": 737,
       "source": "articles-google.ts",
-      "sources": [],
-      "updated": "2026-09-12"
+      "sources": [
+        "https://support.google.com/calendar/answer/99358?hl=en&co=GENIE.Platform%3DiOS",
+        "https://support.google.com/calendar/answer/37100?hl=en&co=GENIE.Platform%3DiOS",
+        "https://developers.google.com/workspace/calendar/api/v3/reference/calendarList/list"
+      ],
+      "updated": "2026-10-21"
     },
     {
       "locale": "de-DE",
@@ -810,6 +894,22 @@
         "https://support.microsoft.com/en-us/outlook/share-your-calendar-in-outlook-on-the-web"
       ],
       "updated": "2026-10-21"
+    },
+    {
+      "locale": "de-DE",
+      "slug": "month-view-on-a-bigger-screen",
+      "title": "Monatskalender auf iPad und iPhone: erst Daten vergleichen, dann Details prüfen",
+      "description": "Vergleiche Tage auf iPad oder iPhone. Prüfe verborgene Termine, Kalenderauswahl und Uhrzeiten vor dem Verschieben gemeinsamer oder wiederkehrender Termine.",
+      "descriptionCharacters": 155,
+      "sections": 6,
+      "faq": 3,
+      "words": 730,
+      "source": "articles.ts",
+      "sources": [
+        "https://support.apple.com/en-ca/guide/iphone/iphfd1054569/ios",
+        "https://calendar.teamup.com/kb/how-to-use-calendar-views/"
+      ],
+      "updated": "2026-10-22"
     },
     {
       "locale": "de-DE",
@@ -1093,15 +1193,19 @@
     {
       "locale": "el",
       "slug": "google-calendars-that-never-reach-your-iphone",
-      "title": "Γιατί κάποια ημερολόγια Google δεν φτάνουν ποτέ στο iPhone σας",
-      "description": "Ένας λογαριασμός Google, πολλά ημερολόγια και μόνο ένα στο τηλέφωνο. Η λίστα συγχρονισμού που το αποφασίζει και τι κάνετε αντ’ αυτού.",
-      "descriptionCharacters": 133,
-      "sections": 2,
+      "title": "Λείπει ημερολόγιο Google στο iPhone: ελέγξτε σύνδεση και επιλογή",
+      "description": "Βρείτε ένα ημερολόγιο Google ελέγχοντας πρόσβαση, ορατότητα και τη σύνδεση του Ημερολογίου Apple ή του Cloud Calendars.",
+      "descriptionCharacters": 119,
+      "sections": 6,
       "faq": 3,
-      "words": 327,
+      "words": 714,
       "source": "articles-google.ts",
-      "sources": [],
-      "updated": "2026-09-12"
+      "sources": [
+        "https://support.google.com/calendar/answer/99358?hl=en&co=GENIE.Platform%3DiOS",
+        "https://support.google.com/calendar/answer/37100?hl=en&co=GENIE.Platform%3DiOS",
+        "https://developers.google.com/workspace/calendar/api/v3/reference/calendarList/list"
+      ],
+      "updated": "2026-10-21"
     },
     {
       "locale": "el",
@@ -1118,6 +1222,22 @@
         "https://support.google.com/calendar/answer/37648?hl=en"
       ],
       "updated": "2026-10-21"
+    },
+    {
+      "locale": "el",
+      "slug": "month-view-on-a-bigger-screen",
+      "title": "Μηνιαίο ημερολόγιο σε iPad και iPhone: δείτε ημερομηνίες, ελέγξτε λεπτομέρειες",
+      "description": "Συγκρίνετε ημερομηνίες σε iPad ή iPhone. Ελέγξτε κρυφά συμβάντα, επιλεγμένα ημερολόγια και ώρες πριν μετακινήσετε κοινά ή επαναλαμβανόμενα ραντεβού.",
+      "descriptionCharacters": 148,
+      "sections": 6,
+      "faq": 3,
+      "words": 673,
+      "source": "articles.ts",
+      "sources": [
+        "https://support.apple.com/en-ca/guide/iphone/iphfd1054569/ios",
+        "https://calendar.teamup.com/kb/how-to-use-calendar-views/"
+      ],
+      "updated": "2026-10-22"
     },
     {
       "locale": "el",
@@ -1474,15 +1594,18 @@
     {
       "locale": "en-US",
       "slug": "planning-a-week-in-ten-minutes",
-      "title": "Planning a week in ten minutes",
-      "description": "A short, repeatable routine that turns a calendar from a record of what happened into something that shapes what does.",
-      "descriptionCharacters": 118,
-      "sections": 2,
-      "faq": 0,
-      "words": 200,
+      "title": "A weekly calendar review: commitments, time blocks and shared responsibilities",
+      "description": "A practical weekly calendar review: check selected calendars, fixed commitments, travel and shared responsibilities before saving realistic time blocks.",
+      "descriptionCharacters": 152,
+      "sections": 6,
+      "faq": 3,
+      "words": 803,
       "source": "articles-planning.ts",
-      "sources": [],
-      "updated": "2026-08-27"
+      "sources": [
+        "https://support.apple.com/guide/iphone/use-multiple-calendars-iph3d1110d4/ios",
+        "https://weather.metoffice.gov.uk/guides/what-does-this-forecast-mean"
+      ],
+      "updated": "2026-10-22"
     },
     {
       "locale": "en-US",
@@ -1833,15 +1956,18 @@
     {
       "locale": "en-US",
       "slug": "what-a-forecast-can-and-cannot-tell-you",
-      "title": "What a forecast can and cannot tell you",
-      "description": "Forecasts are probabilistic, and reading them as promises is why they feel unreliable. A short guide to what the numbers actually mean.",
-      "descriptionCharacters": 135,
-      "sections": 3,
-      "faq": 0,
-      "words": 277,
+      "title": "How reliable is a weather forecast for a calendar event?",
+      "description": "Check forecast place, period and uncertainty before changing an event. Separate rain probability, decisions and available weather in Cloud Calendars.",
+      "descriptionCharacters": 149,
+      "sections": 6,
+      "faq": 3,
+      "words": 785,
       "source": "articles-weather.ts",
-      "sources": [],
-      "updated": "2026-10-21"
+      "sources": [
+        "https://www.metoffice.gov.uk/research/weather/ensemble-forecasting/what-is-an-ensemble-forecast",
+        "https://www.metoffice.gov.uk/research/weather/ensemble-forecasting/decision-making"
+      ],
+      "updated": "2026-10-22"
     },
     {
       "locale": "en-US",
@@ -1878,15 +2004,18 @@
     {
       "locale": "en-US",
       "slug": "the-commute-and-the-sky",
-      "title": "The two half-hours of your day that the weather actually ruins",
-      "description": "Most weather disruption is not the day, it is the two commutes. A small habit that catches nearly all of it.",
-      "descriptionCharacters": 108,
-      "sections": 2,
-      "faq": 0,
-      "words": 194,
+      "title": "Plan travel around calendar events: route time, weather and arrival",
+      "description": "Compare journey times, forecast places and arrival requirements before a calendar event. Keep departure blocks, alerts and the meeting’s real start distinct.",
+      "descriptionCharacters": 157,
+      "sections": 6,
+      "faq": 3,
+      "words": 783,
       "source": "articles-weather.ts",
-      "sources": [],
-      "updated": "2026-08-27"
+      "sources": [
+        "https://support.apple.com/guide/iphone/get-driving-directions-ipha84a94043/ios",
+        "https://weather.metoffice.gov.uk/guides/what-does-this-forecast-mean"
+      ],
+      "updated": "2026-10-22"
     },
     {
       "locale": "en-US",
@@ -2067,15 +2196,19 @@
     {
       "locale": "es-ES",
       "slug": "google-calendars-that-never-reach-your-iphone",
-      "title": "Por qué algunos calendarios de Google nunca llegan a tu iPhone",
-      "description": "Una cuenta de Google, varios calendarios y solo uno en el teléfono. La lista de sincronización que lo decide y qué hacer en su lugar.",
-      "descriptionCharacters": 133,
-      "sections": 2,
+      "title": "Falta un calendario de Google en el iPhone: comprueba la conexión y la selección",
+      "description": "Localiza un calendario de Google ausente revisando el acceso, la visibilidad y la conexión utilizada por Apple Calendar o Cloud Calendars.",
+      "descriptionCharacters": 138,
+      "sections": 6,
       "faq": 3,
-      "words": 341,
+      "words": 839,
       "source": "articles-google.ts",
-      "sources": [],
-      "updated": "2026-09-12"
+      "sources": [
+        "https://support.google.com/calendar/answer/99358?hl=en&co=GENIE.Platform%3DiOS",
+        "https://support.google.com/calendar/answer/37100?hl=en&co=GENIE.Platform%3DiOS",
+        "https://developers.google.com/workspace/calendar/api/v3/reference/calendarList/list"
+      ],
+      "updated": "2026-10-21"
     },
     {
       "locale": "es-ES",
@@ -2143,6 +2276,22 @@
         "https://support.microsoft.com/en-us/outlook/share-your-calendar-in-outlook-on-the-web"
       ],
       "updated": "2026-10-21"
+    },
+    {
+      "locale": "es-ES",
+      "slug": "month-view-on-a-bigger-screen",
+      "title": "Calendario mensual en iPad y iPhone: compara fechas y comprueba los detalles",
+      "description": "Compara fechas en iPad o iPhone. Revisa eventos ocultos, calendarios seleccionados y horas exactas antes de mover citas compartidas o recurrentes.",
+      "descriptionCharacters": 146,
+      "sections": 6,
+      "faq": 3,
+      "words": 819,
+      "source": "articles.ts",
+      "sources": [
+        "https://support.apple.com/en-ca/guide/iphone/iphfd1054569/ios",
+        "https://calendar.teamup.com/kb/how-to-use-calendar-views/"
+      ],
+      "updated": "2026-10-22"
     },
     {
       "locale": "es-ES",
@@ -2426,15 +2575,19 @@
     {
       "locale": "fi",
       "slug": "google-calendars-that-never-reach-your-iphone",
-      "title": "Miksi osa Google-kalentereista ei koskaan päädy iPhoneen",
-      "description": "Yksi Google-tili, useita kalentereita ja vain yksi puhelimessa. Synkronointilista, joka päättää sen, ja mitä tehdä sen sijaan.",
-      "descriptionCharacters": 126,
-      "sections": 2,
+      "title": "Google-kalenteri puuttuu iPhonesta: tarkista yhteys ja valinta",
+      "description": "Etsi puuttuva Google-kalenteri tarkistamalla tilin pääsy, näkyvyys ja Apple Kalenterin tai Cloud Calendarsin käyttämä yhteys.",
+      "descriptionCharacters": 125,
+      "sections": 6,
       "faq": 3,
-      "words": 241,
+      "words": 544,
       "source": "articles-google.ts",
-      "sources": [],
-      "updated": "2026-09-12"
+      "sources": [
+        "https://support.google.com/calendar/answer/99358?hl=en&co=GENIE.Platform%3DiOS",
+        "https://support.google.com/calendar/answer/37100?hl=en&co=GENIE.Platform%3DiOS",
+        "https://developers.google.com/workspace/calendar/api/v3/reference/calendarList/list"
+      ],
+      "updated": "2026-10-21"
     },
     {
       "locale": "fi",
@@ -2451,6 +2604,22 @@
         "https://support.google.com/calendar/answer/37648?hl=en"
       ],
       "updated": "2026-10-21"
+    },
+    {
+      "locale": "fi",
+      "slug": "month-view-on-a-bigger-screen",
+      "title": "Kuukausikalenteri iPadilla ja iPhonella: katso päivät, tarkista tiedot",
+      "description": "Vertaa päiviä iPadilla tai iPhonella. Tarkista piilotetut tapahtumat, kalenterivalinnat ja ajat ennen jaettujen tai toistuvien tapaamisten siirtoa.",
+      "descriptionCharacters": 147,
+      "sections": 6,
+      "faq": 3,
+      "words": 550,
+      "source": "articles.ts",
+      "sources": [
+        "https://support.apple.com/en-ca/guide/iphone/iphfd1054569/ios",
+        "https://calendar.teamup.com/kb/how-to-use-calendar-views/"
+      ],
+      "updated": "2026-10-22"
     },
     {
       "locale": "fi",
@@ -2579,15 +2748,19 @@
     {
       "locale": "fr-FR",
       "slug": "google-calendars-that-never-reach-your-iphone",
-      "title": "Pourquoi certains agendas Google n'arrivent jamais sur votre iPhone",
-      "description": "Un compte Google, plusieurs agendas, et un seul sur le téléphone. La liste de synchronisation qui en décide, et quoi faire à la place.",
-      "descriptionCharacters": 134,
-      "sections": 2,
+      "title": "Un calendrier Google manque sur iPhone : vérifier connexion et sélection",
+      "description": "Retrouvez un calendrier Google absent en vérifiant accès, visibilité et connexion utilisée par Calendrier Apple ou Cloud Calendars.",
+      "descriptionCharacters": 131,
+      "sections": 6,
       "faq": 3,
-      "words": 336,
+      "words": 814,
       "source": "articles-google.ts",
-      "sources": [],
-      "updated": "2026-09-12"
+      "sources": [
+        "https://support.google.com/calendar/answer/99358?hl=en&co=GENIE.Platform%3DiOS",
+        "https://support.google.com/calendar/answer/37100?hl=en&co=GENIE.Platform%3DiOS",
+        "https://developers.google.com/workspace/calendar/api/v3/reference/calendarList/list"
+      ],
+      "updated": "2026-10-21"
     },
     {
       "locale": "fr-FR",
@@ -2655,6 +2828,22 @@
         "https://support.microsoft.com/en-us/outlook/share-your-calendar-in-outlook-on-the-web"
       ],
       "updated": "2026-10-21"
+    },
+    {
+      "locale": "fr-FR",
+      "slug": "month-view-on-a-bigger-screen",
+      "title": "Calendrier mensuel sur iPad et iPhone : voir les dates, vérifier les détails",
+      "description": "Comparez les dates sur iPad ou iPhone. Vérifiez événements masqués, calendriers choisis et heures avant de déplacer des rendez-vous partagés ou récurrents.",
+      "descriptionCharacters": 155,
+      "sections": 6,
+      "faq": 3,
+      "words": 804,
+      "source": "articles.ts",
+      "sources": [
+        "https://support.apple.com/en-ca/guide/iphone/iphfd1054569/ios",
+        "https://calendar.teamup.com/kb/how-to-use-calendar-views/"
+      ],
+      "updated": "2026-10-22"
     },
     {
       "locale": "fr-FR",
@@ -2938,15 +3127,19 @@
     {
       "locale": "he",
       "slug": "google-calendars-that-never-reach-your-iphone",
-      "title": "למה חלק מיומני Google לא מגיעים לעולם ל‑iPhone",
-      "description": "חשבון Google אחד, כמה יומנים, ורק אחד בטלפון. רשימת הסנכרון שמכריעה בכך, ומה לעשות במקום.",
-      "descriptionCharacters": 89,
-      "sections": 2,
+      "title": "יומן Google חסר ב-iPhone: בדקו את החיבור והבחירה",
+      "description": "מצאו יומן Google חסר באמצעות בדיקת גישה, נראות והחיבור שבו משתמשים יומן Apple או Cloud Calendars.",
+      "descriptionCharacters": 97,
+      "sections": 6,
       "faq": 3,
-      "words": 256,
+      "words": 628,
       "source": "articles-google.ts",
-      "sources": [],
-      "updated": "2026-09-12"
+      "sources": [
+        "https://support.google.com/calendar/answer/99358?hl=en&co=GENIE.Platform%3DiOS",
+        "https://support.google.com/calendar/answer/37100?hl=en&co=GENIE.Platform%3DiOS",
+        "https://developers.google.com/workspace/calendar/api/v3/reference/calendarList/list"
+      ],
+      "updated": "2026-10-21"
     },
     {
       "locale": "he",
@@ -2963,6 +3156,22 @@
         "https://support.google.com/calendar/answer/37648?hl=en"
       ],
       "updated": "2026-10-21"
+    },
+    {
+      "locale": "he",
+      "slug": "month-view-on-a-bigger-screen",
+      "title": "יומן חודשי ב-iPad וב-iPhone: ראו תאריכים ובדקו פרטים",
+      "description": "השוו תאריכים ב-iPad או ב-iPhone. בדקו אירועים מוסתרים, יומנים נבחרים ושעות מדויקות לפני הזזת פגישות משותפות או חוזרות.",
+      "descriptionCharacters": 118,
+      "sections": 6,
+      "faq": 3,
+      "words": 611,
+      "source": "articles.ts",
+      "sources": [
+        "https://support.apple.com/en-ca/guide/iphone/iphfd1054569/ios",
+        "https://calendar.teamup.com/kb/how-to-use-calendar-views/"
+      ],
+      "updated": "2026-10-22"
     },
     {
       "locale": "he",
@@ -3091,15 +3300,19 @@
     {
       "locale": "hi",
       "slug": "google-calendars-that-never-reach-your-iphone",
-      "title": "कुछ Google कैलेंडर आपके iPhone तक कभी क्यों नहीं पहुँचते",
-      "description": "एक Google खाता, कई कैलेंडर, और फ़ोन में सिर्फ़ एक। यह तय करने वाली सिंक सूची, और उसकी जगह क्या करें।",
-      "descriptionCharacters": 100,
-      "sections": 2,
+      "title": "iPhone पर Google कैलेंडर नहीं दिख रहा: कनेक्शन और चयन जाँचें",
+      "description": "गुम Google कैलेंडर खोजने के लिए खाते की पहुँच, कैलेंडर का चयन और Apple Calendar या Cloud Calendars का कनेक्शन जाँचें।",
+      "descriptionCharacters": 117,
+      "sections": 6,
       "faq": 3,
-      "words": 369,
+      "words": 899,
       "source": "articles-google.ts",
-      "sources": [],
-      "updated": "2026-09-12"
+      "sources": [
+        "https://support.google.com/calendar/answer/99358?hl=en&co=GENIE.Platform%3DiOS",
+        "https://support.google.com/calendar/answer/37100?hl=en&co=GENIE.Platform%3DiOS",
+        "https://developers.google.com/workspace/calendar/api/v3/reference/calendarList/list"
+      ],
+      "updated": "2026-10-21"
     },
     {
       "locale": "hi",
@@ -3116,6 +3329,22 @@
         "https://support.google.com/calendar/answer/37648?hl=en"
       ],
       "updated": "2026-10-21"
+    },
+    {
+      "locale": "hi",
+      "slug": "month-view-on-a-bigger-screen",
+      "title": "iPad और iPhone पर महीने का कैलेंडर: तारीख देखें, फिर विवरण जाँचें",
+      "description": "iPad या iPhone पर तारीखें मिलाएँ। साझा या दोहराए जाने वाले इवेंट खिसकाने से पहले छिपे इवेंट, चुने कैलेंडर और सटीक समय जाँचें।",
+      "descriptionCharacters": 125,
+      "sections": 6,
+      "faq": 3,
+      "words": 899,
+      "source": "articles.ts",
+      "sources": [
+        "https://support.apple.com/en-ca/guide/iphone/iphfd1054569/ios",
+        "https://calendar.teamup.com/kb/how-to-use-calendar-views/"
+      ],
+      "updated": "2026-10-22"
     },
     {
       "locale": "hi",
@@ -3244,15 +3473,19 @@
     {
       "locale": "hu",
       "slug": "google-calendars-that-never-reach-your-iphone",
-      "title": "Miért nem jut el néhány Google-naptár soha az iPhone-odra",
-      "description": "Egy Google-fiók, több naptár, és csak egy a telefonon. A szinkronizálási lista, amely ezt eldönti, és hogy mit érdemes tenni helyette.",
+      "title": "Hiányzó Google-naptár iPhone-on: kapcsolat és kiválasztás ellenőrzése",
+      "description": "Keresse meg a hiányzó Google-naptárt: ellenőrizze a hozzáférést, a láthatóságot és az Apple Naptár vagy a Cloud Calendars kapcsolatát.",
       "descriptionCharacters": 134,
-      "sections": 2,
+      "sections": 6,
       "faq": 3,
-      "words": 297,
+      "words": 720,
       "source": "articles-google.ts",
-      "sources": [],
-      "updated": "2026-09-12"
+      "sources": [
+        "https://support.google.com/calendar/answer/99358?hl=en&co=GENIE.Platform%3DiOS",
+        "https://support.google.com/calendar/answer/37100?hl=en&co=GENIE.Platform%3DiOS",
+        "https://developers.google.com/workspace/calendar/api/v3/reference/calendarList/list"
+      ],
+      "updated": "2026-10-21"
     },
     {
       "locale": "hu",
@@ -3269,6 +3502,22 @@
         "https://support.google.com/calendar/answer/37648?hl=en"
       ],
       "updated": "2026-10-21"
+    },
+    {
+      "locale": "hu",
+      "slug": "month-view-on-a-bigger-screen",
+      "title": "Havi naptár iPaden és iPhone-on: dátumválasztás után ellenőrizze a részleteket",
+      "description": "Hasonlítson össze dátumokat iPaden vagy iPhone-on. Áthelyezés előtt ellenőrizze a rejtett eseményeket, naptárakat és pontos időket.",
+      "descriptionCharacters": 131,
+      "sections": 6,
+      "faq": 3,
+      "words": 758,
+      "source": "articles.ts",
+      "sources": [
+        "https://support.apple.com/en-ca/guide/iphone/iphfd1054569/ios",
+        "https://calendar.teamup.com/kb/how-to-use-calendar-views/"
+      ],
+      "updated": "2026-10-22"
     },
     {
       "locale": "hu",
@@ -3397,15 +3646,19 @@
     {
       "locale": "id",
       "slug": "google-calendars-that-never-reach-your-iphone",
-      "title": "Mengapa sebagian kalender Google tidak pernah sampai ke iPhone",
-      "description": "Satu akun Google, beberapa kalender, dan hanya satu di ponsel. Daftar sinkronisasi yang menentukannya, dan apa yang sebaiknya dilakukan.",
-      "descriptionCharacters": 136,
-      "sections": 2,
+      "title": "Kalender Google hilang di iPhone: periksa koneksi dan pilihan kalender",
+      "description": "Temukan kalender Google yang hilang dengan memeriksa akses, tampilan kalender, dan koneksi Apple Calendar atau Cloud Calendars.",
+      "descriptionCharacters": 127,
+      "sections": 6,
       "faq": 3,
-      "words": 283,
+      "words": 712,
       "source": "articles-google.ts",
-      "sources": [],
-      "updated": "2026-09-12"
+      "sources": [
+        "https://support.google.com/calendar/answer/99358?hl=en&co=GENIE.Platform%3DiOS",
+        "https://support.google.com/calendar/answer/37100?hl=en&co=GENIE.Platform%3DiOS",
+        "https://developers.google.com/workspace/calendar/api/v3/reference/calendarList/list"
+      ],
+      "updated": "2026-10-21"
     },
     {
       "locale": "id",
@@ -3422,6 +3675,22 @@
         "https://support.google.com/calendar/answer/37648?hl=en"
       ],
       "updated": "2026-10-21"
+    },
+    {
+      "locale": "id",
+      "slug": "month-view-on-a-bigger-screen",
+      "title": "Kalender bulanan di iPad dan iPhone: lihat tanggal, lalu periksa detail",
+      "description": "Bandingkan tanggal di iPad atau iPhone. Periksa acara tersembunyi, kalender pilihan, dan waktu sebelum memindahkan janji bersama atau berulang.",
+      "descriptionCharacters": 143,
+      "sections": 6,
+      "faq": 3,
+      "words": 742,
+      "source": "articles.ts",
+      "sources": [
+        "https://support.apple.com/en-ca/guide/iphone/iphfd1054569/ios",
+        "https://calendar.teamup.com/kb/how-to-use-calendar-views/"
+      ],
+      "updated": "2026-10-22"
     },
     {
       "locale": "id",
@@ -3550,15 +3819,19 @@
     {
       "locale": "it",
       "slug": "google-calendars-that-never-reach-your-iphone",
-      "title": "Perché alcuni calendari Google non arrivano mai sull’iPhone",
-      "description": "Un account Google, più calendari e uno solo sul telefono. L’elenco di sincronizzazione che lo decide e cosa fare invece.",
-      "descriptionCharacters": 120,
-      "sections": 2,
+      "title": "Un calendario Google manca su iPhone: verifica collegamento e selezione",
+      "description": "Trova un calendario Google mancante verificando accesso, visibilità e collegamento usato da Apple Calendar o Cloud Calendars.",
+      "descriptionCharacters": 125,
+      "sections": 6,
       "faq": 3,
-      "words": 308,
+      "words": 776,
       "source": "articles-google.ts",
-      "sources": [],
-      "updated": "2026-09-12"
+      "sources": [
+        "https://support.google.com/calendar/answer/99358?hl=en&co=GENIE.Platform%3DiOS",
+        "https://support.google.com/calendar/answer/37100?hl=en&co=GENIE.Platform%3DiOS",
+        "https://developers.google.com/workspace/calendar/api/v3/reference/calendarList/list"
+      ],
+      "updated": "2026-10-21"
     },
     {
       "locale": "it",
@@ -3626,6 +3899,22 @@
         "https://support.microsoft.com/en-us/outlook/share-your-calendar-in-outlook-on-the-web"
       ],
       "updated": "2026-10-21"
+    },
+    {
+      "locale": "it",
+      "slug": "month-view-on-a-bigger-screen",
+      "title": "Calendario mensile su iPad e iPhone: scegli la data, poi verifica i dettagli",
+      "description": "Confronta le date su iPad o iPhone. Controlla eventi nascosti, calendari selezionati e orari prima di spostare appuntamenti condivisi o ricorrenti.",
+      "descriptionCharacters": 147,
+      "sections": 6,
+      "faq": 3,
+      "words": 826,
+      "source": "articles.ts",
+      "sources": [
+        "https://support.apple.com/en-ca/guide/iphone/iphfd1054569/ios",
+        "https://calendar.teamup.com/kb/how-to-use-calendar-views/"
+      ],
+      "updated": "2026-10-22"
     },
     {
       "locale": "it",
@@ -3909,15 +4198,19 @@
     {
       "locale": "ja",
       "slug": "google-calendars-that-never-reach-your-iphone",
-      "title": "一部の Google カレンダーが iPhone に届かない理由",
-      "description": "Google アカウントは一つ、カレンダーは複数、なのに端末には一つだけ。それを決めている同期リストと、代わりの方法。",
-      "descriptionCharacters": 59,
-      "sections": 2,
+      "title": "iPhoneにGoogleカレンダーが表示されない：接続と選択を確認する",
+      "description": "Googleカレンダーが見つからないときは、アクセス権、表示設定、AppleカレンダーやCloud Calendarsの接続方法を確認しましょう。",
+      "descriptionCharacters": 73,
+      "sections": 6,
       "faq": 3,
-      "words": 47,
+      "words": 41,
       "source": "articles-google.ts",
-      "sources": [],
-      "updated": "2026-09-12"
+      "sources": [
+        "https://support.google.com/calendar/answer/99358?hl=en&co=GENIE.Platform%3DiOS",
+        "https://support.google.com/calendar/answer/37100?hl=en&co=GENIE.Platform%3DiOS",
+        "https://developers.google.com/workspace/calendar/api/v3/reference/calendarList/list"
+      ],
+      "updated": "2026-10-21"
     },
     {
       "locale": "ja",
@@ -3934,6 +4227,22 @@
         "https://support.google.com/calendar/answer/37648?hl=en"
       ],
       "updated": "2026-10-21"
+    },
+    {
+      "locale": "ja",
+      "slug": "month-view-on-a-bigger-screen",
+      "title": "iPadとiPhoneの月表示：日付を選んだら詳細を確認する",
+      "description": "iPadやiPhoneの月表示で日付を比較。共有・繰り返し予定を移動する前に、隠れた予定、選択中のカレンダー、正確な時刻を確認しましょう。",
+      "descriptionCharacters": 69,
+      "sections": 6,
+      "faq": 3,
+      "words": 40,
+      "source": "articles.ts",
+      "sources": [
+        "https://support.apple.com/en-ca/guide/iphone/iphfd1054569/ios",
+        "https://calendar.teamup.com/kb/how-to-use-calendar-views/"
+      ],
+      "updated": "2026-10-22"
     },
     {
       "locale": "ja",
@@ -4062,15 +4371,19 @@
     {
       "locale": "ko",
       "slug": "google-calendars-that-never-reach-your-iphone",
-      "title": "어떤 구글 캘린더는 왜 아이폰에 영영 오지 않나",
-      "description": "구글 계정은 하나, 캘린더는 여럿, 그런데 기기에는 하나뿐. 그것을 정하는 동기화 목록과 대신 쓸 방법.",
-      "descriptionCharacters": 58,
-      "sections": 2,
+      "title": "iPhone에서 Google 캘린더가 안 보일 때: 연결과 선택 확인",
+      "description": "Google 캘린더가 안 보이면 접근 권한, 표시 설정, Apple 캘린더나 Cloud Calendars의 연결 방식을 확인하세요.",
+      "descriptionCharacters": 73,
+      "sections": 6,
       "faq": 3,
-      "words": 241,
+      "words": 615,
       "source": "articles-google.ts",
-      "sources": [],
-      "updated": "2026-09-12"
+      "sources": [
+        "https://support.google.com/calendar/answer/99358?hl=en&co=GENIE.Platform%3DiOS",
+        "https://support.google.com/calendar/answer/37100?hl=en&co=GENIE.Platform%3DiOS",
+        "https://developers.google.com/workspace/calendar/api/v3/reference/calendarList/list"
+      ],
+      "updated": "2026-10-21"
     },
     {
       "locale": "ko",
@@ -4087,6 +4400,22 @@
         "https://support.google.com/calendar/answer/37648?hl=en"
       ],
       "updated": "2026-10-21"
+    },
+    {
+      "locale": "ko",
+      "slug": "month-view-on-a-bigger-screen",
+      "title": "iPad와 iPhone 월간 캘린더: 날짜를 고른 뒤 세부 정보 확인하기",
+      "description": "iPad나 iPhone에서 날짜를 비교하세요. 공유 또는 반복 일정을 옮기기 전에 숨겨진 일정, 선택된 캘린더와 정확한 시간을 확인하세요.",
+      "descriptionCharacters": 77,
+      "sections": 6,
+      "faq": 3,
+      "words": 633,
+      "source": "articles.ts",
+      "sources": [
+        "https://support.apple.com/en-ca/guide/iphone/iphfd1054569/ios",
+        "https://calendar.teamup.com/kb/how-to-use-calendar-views/"
+      ],
+      "updated": "2026-10-22"
     },
     {
       "locale": "ko",
@@ -4215,15 +4544,19 @@
     {
       "locale": "ms",
       "slug": "google-calendars-that-never-reach-your-iphone",
-      "title": "Kenapa sesetengah kalendar Google tidak pernah sampai ke iPhone",
-      "description": "Satu akaun Google, beberapa kalendar, dan hanya satu pada telefon. Senarai penyegerakan yang menentukannya, dan apa yang patut dibuat.",
-      "descriptionCharacters": 134,
-      "sections": 2,
+      "title": "Kalendar Google tiada pada iPhone: semak sambungan dan pilihan",
+      "description": "Cari kalendar Google yang hilang dengan menyemak akses, keterlihatan dan sambungan Apple Calendar atau Cloud Calendars.",
+      "descriptionCharacters": 119,
+      "sections": 6,
       "faq": 3,
-      "words": 300,
+      "words": 726,
       "source": "articles-google.ts",
-      "sources": [],
-      "updated": "2026-09-12"
+      "sources": [
+        "https://support.google.com/calendar/answer/99358?hl=en&co=GENIE.Platform%3DiOS",
+        "https://support.google.com/calendar/answer/37100?hl=en&co=GENIE.Platform%3DiOS",
+        "https://developers.google.com/workspace/calendar/api/v3/reference/calendarList/list"
+      ],
+      "updated": "2026-10-21"
     },
     {
       "locale": "ms",
@@ -4240,6 +4573,22 @@
         "https://support.google.com/calendar/answer/37648?hl=en"
       ],
       "updated": "2026-10-21"
+    },
+    {
+      "locale": "ms",
+      "slug": "month-view-on-a-bigger-screen",
+      "title": "Kalendar bulanan pada iPad dan iPhone: lihat tarikh, kemudian semak butiran",
+      "description": "Bandingkan tarikh pada iPad atau iPhone. Semak acara tersembunyi, kalendar dipilih dan waktu sebelum memindahkan janji temu bersama atau berulang.",
+      "descriptionCharacters": 146,
+      "sections": 6,
+      "faq": 3,
+      "words": 740,
+      "source": "articles.ts",
+      "sources": [
+        "https://support.apple.com/en-ca/guide/iphone/iphfd1054569/ios",
+        "https://calendar.teamup.com/kb/how-to-use-calendar-views/"
+      ],
+      "updated": "2026-10-22"
     },
     {
       "locale": "ms",
@@ -4368,15 +4717,19 @@
     {
       "locale": "nl-NL",
       "slug": "google-calendars-that-never-reach-your-iphone",
-      "title": "Waarom sommige Google-agenda’s je iPhone nooit bereiken",
-      "description": "Eén Google-account, meerdere agenda’s en maar één op de telefoon. De synchronisatielijst die dat bepaalt, en wat je in plaats daarvan doet.",
-      "descriptionCharacters": 139,
-      "sections": 2,
+      "title": "Een Google-agenda ontbreekt op iPhone: controleer verbinding en selectie",
+      "description": "Zoek een ontbrekende Google-agenda door toegang, zichtbaarheid en de verbinding van Apple Agenda of Cloud Calendars te controleren.",
+      "descriptionCharacters": 131,
+      "sections": 6,
       "faq": 3,
-      "words": 320,
+      "words": 768,
       "source": "articles-google.ts",
-      "sources": [],
-      "updated": "2026-09-12"
+      "sources": [
+        "https://support.google.com/calendar/answer/99358?hl=en&co=GENIE.Platform%3DiOS",
+        "https://support.google.com/calendar/answer/37100?hl=en&co=GENIE.Platform%3DiOS",
+        "https://developers.google.com/workspace/calendar/api/v3/reference/calendarList/list"
+      ],
+      "updated": "2026-10-21"
     },
     {
       "locale": "nl-NL",
@@ -4393,6 +4746,22 @@
         "https://support.google.com/calendar/answer/37648?hl=en"
       ],
       "updated": "2026-10-21"
+    },
+    {
+      "locale": "nl-NL",
+      "slug": "month-view-on-a-bigger-screen",
+      "title": "Maandkalender op iPad en iPhone: bekijk de datums en controleer de details",
+      "description": "Vergelijk datums op iPad of iPhone. Controleer verborgen afspraken, geselecteerde agenda’s en tijden vóór je gedeelde of herhaalde afspraken verplaatst.",
+      "descriptionCharacters": 152,
+      "sections": 6,
+      "faq": 3,
+      "words": 787,
+      "source": "articles.ts",
+      "sources": [
+        "https://support.apple.com/en-ca/guide/iphone/iphfd1054569/ios",
+        "https://calendar.teamup.com/kb/how-to-use-calendar-views/"
+      ],
+      "updated": "2026-10-22"
     },
     {
       "locale": "nl-NL",
@@ -4521,15 +4890,19 @@
     {
       "locale": "no",
       "slug": "google-calendars-that-never-reach-your-iphone",
-      "title": "Hvorfor noen Google-kalendere aldri når iPhonen din",
-      "description": "Én Google-konto, flere kalendere og bare én på telefonen. Synkroniseringslisten som avgjør det, og hva du gjør i stedet.",
-      "descriptionCharacters": 120,
-      "sections": 2,
+      "title": "En Google-kalender mangler på iPhone: sjekk tilkobling og valg",
+      "description": "Finn en manglende Google-kalender ved å sjekke tilgang, synlighet og tilkoblingen som Apple Kalender eller Cloud Calendars bruker.",
+      "descriptionCharacters": 130,
+      "sections": 6,
       "faq": 3,
-      "words": 293,
+      "words": 711,
       "source": "articles-google.ts",
-      "sources": [],
-      "updated": "2026-09-12"
+      "sources": [
+        "https://support.google.com/calendar/answer/99358?hl=en&co=GENIE.Platform%3DiOS",
+        "https://support.google.com/calendar/answer/37100?hl=en&co=GENIE.Platform%3DiOS",
+        "https://developers.google.com/workspace/calendar/api/v3/reference/calendarList/list"
+      ],
+      "updated": "2026-10-21"
     },
     {
       "locale": "no",
@@ -4546,6 +4919,22 @@
         "https://support.google.com/calendar/answer/37648?hl=en"
       ],
       "updated": "2026-10-21"
+    },
+    {
+      "locale": "no",
+      "slug": "month-view-on-a-bigger-screen",
+      "title": "Månedskalender på iPad og iPhone: se datoene, sjekk detaljene",
+      "description": "Sammenlign datoer på iPad eller iPhone. Sjekk skjulte hendelser, valgte kalendere og klokkeslett før delte eller gjentakende avtaler flyttes.",
+      "descriptionCharacters": 141,
+      "sections": 6,
+      "faq": 3,
+      "words": 755,
+      "source": "articles.ts",
+      "sources": [
+        "https://support.apple.com/en-ca/guide/iphone/iphfd1054569/ios",
+        "https://calendar.teamup.com/kb/how-to-use-calendar-views/"
+      ],
+      "updated": "2026-10-22"
     },
     {
       "locale": "no",
@@ -4674,15 +5063,19 @@
     {
       "locale": "pl",
       "slug": "google-calendars-that-never-reach-your-iphone",
-      "title": "Dlaczego część kalendarzy Google nigdy nie trafia na iPhone’a",
-      "description": "Jedno konto Google, kilka kalendarzy i tylko jeden w telefonie. Lista synchronizacji, która o tym decyduje, i co zrobić zamiast tego.",
-      "descriptionCharacters": 133,
-      "sections": 2,
+      "title": "Brak kalendarza Google na iPhonie: sprawdź połączenie i wybór kalendarzy",
+      "description": "Znajdź brakujący kalendarz Google: sprawdź dostęp, widoczność i połączenie używane przez Kalendarz Apple lub Cloud Calendars.",
+      "descriptionCharacters": 125,
+      "sections": 6,
       "faq": 3,
-      "words": 274,
+      "words": 699,
       "source": "articles-google.ts",
-      "sources": [],
-      "updated": "2026-09-12"
+      "sources": [
+        "https://support.google.com/calendar/answer/99358?hl=en&co=GENIE.Platform%3DiOS",
+        "https://support.google.com/calendar/answer/37100?hl=en&co=GENIE.Platform%3DiOS",
+        "https://developers.google.com/workspace/calendar/api/v3/reference/calendarList/list"
+      ],
+      "updated": "2026-10-21"
     },
     {
       "locale": "pl",
@@ -4699,6 +5092,22 @@
         "https://support.google.com/calendar/answer/37648?hl=en"
       ],
       "updated": "2026-10-21"
+    },
+    {
+      "locale": "pl",
+      "slug": "month-view-on-a-bigger-screen",
+      "title": "Kalendarz miesięczny na iPadzie i iPhonie: wybierz daty, potem sprawdź szczegóły",
+      "description": "Porównuj daty na iPadzie i iPhonie. Przed przeniesieniem wspólnych lub cyklicznych spotkań sprawdź ukryte wydarzenia, kalendarze i godziny.",
+      "descriptionCharacters": 139,
+      "sections": 6,
+      "faq": 3,
+      "words": 710,
+      "source": "articles.ts",
+      "sources": [
+        "https://support.apple.com/en-ca/guide/iphone/iphfd1054569/ios",
+        "https://calendar.teamup.com/kb/how-to-use-calendar-views/"
+      ],
+      "updated": "2026-10-22"
     },
     {
       "locale": "pl",
@@ -4827,15 +5236,19 @@
     {
       "locale": "pt-BR",
       "slug": "google-calendars-that-never-reach-your-iphone",
-      "title": "Por que algumas agendas do Google nunca chegam ao iPhone",
-      "description": "Uma conta do Google, várias agendas e só uma no telefone. A lista de sincronização que decide isso e o que fazer no lugar.",
-      "descriptionCharacters": 122,
-      "sections": 2,
+      "title": "Um calendário Google não aparece no iPhone: confira a conexão e a seleção",
+      "description": "Encontre um calendário Google ausente conferindo acesso à conta, visibilidade e a conexão usada pelo Calendário da Apple ou Cloud Calendars.",
+      "descriptionCharacters": 140,
+      "sections": 6,
       "faq": 3,
-      "words": 334,
+      "words": 819,
       "source": "articles-google.ts",
-      "sources": [],
-      "updated": "2026-09-12"
+      "sources": [
+        "https://support.google.com/calendar/answer/99358?hl=en&co=GENIE.Platform%3DiOS",
+        "https://support.google.com/calendar/answer/37100?hl=en&co=GENIE.Platform%3DiOS",
+        "https://developers.google.com/workspace/calendar/api/v3/reference/calendarList/list"
+      ],
+      "updated": "2026-10-21"
     },
     {
       "locale": "pt-BR",
@@ -4903,6 +5316,22 @@
         "https://support.microsoft.com/en-us/outlook/share-your-calendar-in-outlook-on-the-web"
       ],
       "updated": "2026-10-21"
+    },
+    {
+      "locale": "pt-BR",
+      "slug": "month-view-on-a-bigger-screen",
+      "title": "Calendário mensal no iPad e iPhone: veja as datas e confira os detalhes",
+      "description": "Compare datas no iPad ou iPhone. Confira eventos ocultos, calendários selecionados e horários antes de mover compromissos compartilhados ou recorrentes.",
+      "descriptionCharacters": 152,
+      "sections": 6,
+      "faq": 3,
+      "words": 834,
+      "source": "articles.ts",
+      "sources": [
+        "https://support.apple.com/en-ca/guide/iphone/iphfd1054569/ios",
+        "https://calendar.teamup.com/kb/how-to-use-calendar-views/"
+      ],
+      "updated": "2026-10-22"
     },
     {
       "locale": "pt-BR",
@@ -5031,15 +5460,19 @@
     {
       "locale": "ro",
       "slug": "google-calendars-that-never-reach-your-iphone",
-      "title": "De ce unele calendare Google nu ajung niciodată pe iPhone",
-      "description": "Un cont Google, mai multe calendare și doar unul pe telefon. Lista de sincronizare care decide asta și ce se face în loc.",
-      "descriptionCharacters": 121,
-      "sections": 2,
+      "title": "Un calendar Google lipsește pe iPhone: verifică legătura și selecția",
+      "description": "Găsește un calendar Google lipsă verificând accesul contului, vizibilitatea și conexiunea folosită de Calendar Apple sau Cloud Calendars.",
+      "descriptionCharacters": 137,
+      "sections": 6,
       "faq": 3,
-      "words": 319,
+      "words": 717,
       "source": "articles-google.ts",
-      "sources": [],
-      "updated": "2026-09-12"
+      "sources": [
+        "https://support.google.com/calendar/answer/99358?hl=en&co=GENIE.Platform%3DiOS",
+        "https://support.google.com/calendar/answer/37100?hl=en&co=GENIE.Platform%3DiOS",
+        "https://developers.google.com/workspace/calendar/api/v3/reference/calendarList/list"
+      ],
+      "updated": "2026-10-21"
     },
     {
       "locale": "ro",
@@ -5056,6 +5489,22 @@
         "https://support.google.com/calendar/answer/37648?hl=en"
       ],
       "updated": "2026-10-21"
+    },
+    {
+      "locale": "ro",
+      "slug": "month-view-on-a-bigger-screen",
+      "title": "Calendar lunar pe iPad și iPhone: vezi datele, apoi verifică detaliile",
+      "description": "Compară date pe iPad sau iPhone. Verifică evenimente ascunse, calendare selectate și ore exacte înainte să muți întâlniri partajate sau repetate.",
+      "descriptionCharacters": 145,
+      "sections": 6,
+      "faq": 3,
+      "words": 726,
+      "source": "articles.ts",
+      "sources": [
+        "https://support.apple.com/en-ca/guide/iphone/iphfd1054569/ios",
+        "https://calendar.teamup.com/kb/how-to-use-calendar-views/"
+      ],
+      "updated": "2026-10-22"
     },
     {
       "locale": "ro",
@@ -5184,15 +5633,19 @@
     {
       "locale": "ru",
       "slug": "google-calendars-that-never-reach-your-iphone",
-      "title": "Почему часть календарей Google никогда не доходит до iPhone",
-      "description": "Один аккаунт Google, несколько календарей и только один в телефоне. Список синхронизации, который это решает, и что делать вместо этого.",
-      "descriptionCharacters": 136,
-      "sections": 2,
+      "title": "Календарь Google не виден на iPhone: проверьте подключение и выбор",
+      "description": "Найдите отсутствующий календарь Google: проверьте доступ аккаунта, видимость и подключение в Календаре Apple или Cloud Calendars.",
+      "descriptionCharacters": 129,
+      "sections": 6,
       "faq": 3,
-      "words": 268,
+      "words": 655,
       "source": "articles-google.ts",
-      "sources": [],
-      "updated": "2026-09-12"
+      "sources": [
+        "https://support.google.com/calendar/answer/99358?hl=en&co=GENIE.Platform%3DiOS",
+        "https://support.google.com/calendar/answer/37100?hl=en&co=GENIE.Platform%3DiOS",
+        "https://developers.google.com/workspace/calendar/api/v3/reference/calendarList/list"
+      ],
+      "updated": "2026-10-21"
     },
     {
       "locale": "ru",
@@ -5209,6 +5662,22 @@
         "https://support.google.com/calendar/answer/37648?hl=en"
       ],
       "updated": "2026-10-21"
+    },
+    {
+      "locale": "ru",
+      "slug": "month-view-on-a-bigger-screen",
+      "title": "Месяц на iPad и iPhone: выберите дату и проверьте детали",
+      "description": "Сравнивайте даты на iPad и iPhone. Проверяйте скрытые события, выбранные календари и время перед переносом общих или повторяющихся встреч.",
+      "descriptionCharacters": 138,
+      "sections": 6,
+      "faq": 3,
+      "words": 642,
+      "source": "articles.ts",
+      "sources": [
+        "https://support.apple.com/en-ca/guide/iphone/iphfd1054569/ios",
+        "https://calendar.teamup.com/kb/how-to-use-calendar-views/"
+      ],
+      "updated": "2026-10-22"
     },
     {
       "locale": "ru",
@@ -5337,15 +5806,19 @@
     {
       "locale": "sv",
       "slug": "google-calendars-that-never-reach-your-iphone",
-      "title": "Varför vissa Google-kalendrar aldrig når din iPhone",
-      "description": "Ett Google-konto, flera kalendrar och bara en i telefonen. Synklistan som avgör det, och vad man gör i stället.",
-      "descriptionCharacters": 111,
-      "sections": 2,
+      "title": "En Google-kalender saknas på iPhone: kontrollera anslutning och val",
+      "description": "Hitta en saknad Google-kalender genom att kontrollera kontoåtkomst, synlighet och anslutningen som Apple Kalender eller Cloud Calendars använder.",
+      "descriptionCharacters": 145,
+      "sections": 6,
       "faq": 3,
-      "words": 296,
+      "words": 669,
       "source": "articles-google.ts",
-      "sources": [],
-      "updated": "2026-09-12"
+      "sources": [
+        "https://support.google.com/calendar/answer/99358?hl=en&co=GENIE.Platform%3DiOS",
+        "https://support.google.com/calendar/answer/37100?hl=en&co=GENIE.Platform%3DiOS",
+        "https://developers.google.com/workspace/calendar/api/v3/reference/calendarList/list"
+      ],
+      "updated": "2026-10-21"
     },
     {
       "locale": "sv",
@@ -5362,6 +5835,22 @@
         "https://support.google.com/calendar/answer/37648?hl=en"
       ],
       "updated": "2026-10-21"
+    },
+    {
+      "locale": "sv",
+      "slug": "month-view-on-a-bigger-screen",
+      "title": "Månadskalender på iPad och iPhone: välj datum och kontrollera detaljer",
+      "description": "Jämför datum på iPad eller iPhone. Kontrollera dolda händelser, valda kalendrar och exakta tider innan delade eller återkommande möten flyttas.",
+      "descriptionCharacters": 143,
+      "sections": 6,
+      "faq": 3,
+      "words": 693,
+      "source": "articles.ts",
+      "sources": [
+        "https://support.apple.com/en-ca/guide/iphone/iphfd1054569/ios",
+        "https://calendar.teamup.com/kb/how-to-use-calendar-views/"
+      ],
+      "updated": "2026-10-22"
     },
     {
       "locale": "sv",
@@ -5490,15 +5979,19 @@
     {
       "locale": "th",
       "slug": "google-calendars-that-never-reach-your-iphone",
-      "title": "ทำไมปฏิทิน Google บางเล่มไม่มีวันมาถึง iPhone ของคุณ",
-      "description": "บัญชี Google บัญชีเดียว ปฏิทินหลายเล่ม แต่ในเครื่องมีเล่มเดียว รายการซิงค์ที่ตัดสินเรื่องนี้ และทางเลือกที่ควรใช้แทน",
-      "descriptionCharacters": 116,
-      "sections": 2,
+      "title": "ปฏิทิน Google ไม่แสดงบน iPhone: ตรวจสอบการเชื่อมต่อและการเลือก",
+      "description": "ค้นหาปฏิทิน Google ที่ไม่แสดงโดยตรวจสิทธิ์บัญชี การแสดงผล และการเชื่อมต่อที่ปฏิทิน Apple หรือ Cloud Calendars ใช้",
+      "descriptionCharacters": 113,
+      "sections": 6,
       "faq": 3,
-      "words": 92,
+      "words": 177,
       "source": "articles-google.ts",
-      "sources": [],
-      "updated": "2026-09-12"
+      "sources": [
+        "https://support.google.com/calendar/answer/99358?hl=en&co=GENIE.Platform%3DiOS",
+        "https://support.google.com/calendar/answer/37100?hl=en&co=GENIE.Platform%3DiOS",
+        "https://developers.google.com/workspace/calendar/api/v3/reference/calendarList/list"
+      ],
+      "updated": "2026-10-21"
     },
     {
       "locale": "th",
@@ -5515,6 +6008,22 @@
         "https://support.google.com/calendar/answer/37648?hl=en"
       ],
       "updated": "2026-10-21"
+    },
+    {
+      "locale": "th",
+      "slug": "month-view-on-a-bigger-screen",
+      "title": "ปฏิทินรายเดือนบน iPad และ iPhone: ดูวันที่แล้วตรวจรายละเอียด",
+      "description": "เปรียบเทียบวันที่บน iPad หรือ iPhone ตรวจรายการที่ซ่อน ปฏิทินที่เลือก และเวลาจริงก่อนย้ายนัดหมายที่แชร์หรือเกิดซ้ำ",
+      "descriptionCharacters": 114,
+      "sections": 6,
+      "faq": 3,
+      "words": 145,
+      "source": "articles.ts",
+      "sources": [
+        "https://support.apple.com/en-ca/guide/iphone/iphfd1054569/ios",
+        "https://calendar.teamup.com/kb/how-to-use-calendar-views/"
+      ],
+      "updated": "2026-10-22"
     },
     {
       "locale": "th",
@@ -5643,15 +6152,19 @@
     {
       "locale": "tr",
       "slug": "google-calendars-that-never-reach-your-iphone",
-      "title": "Bazı Google takvimleri neden iPhone’unuza hiç ulaşmaz",
-      "description": "Tek Google hesabı, birkaç takvim ve telefonda yalnızca biri. Buna karar veren eşitleme listesi ve onun yerine ne yapmalı.",
-      "descriptionCharacters": 121,
-      "sections": 2,
+      "title": "Google takvimi iPhone’da görünmüyor: bağlantı ve seçimi kontrol edin",
+      "description": "Eksik Google takvimi için hesap erişimini, görünürlüğü ve Apple Takvim ya da Cloud Calendars’ın kullandığı bağlantıyı kontrol edin.",
+      "descriptionCharacters": 131,
+      "sections": 6,
       "faq": 3,
-      "words": 250,
+      "words": 570,
       "source": "articles-google.ts",
-      "sources": [],
-      "updated": "2026-09-12"
+      "sources": [
+        "https://support.google.com/calendar/answer/99358?hl=en&co=GENIE.Platform%3DiOS",
+        "https://support.google.com/calendar/answer/37100?hl=en&co=GENIE.Platform%3DiOS",
+        "https://developers.google.com/workspace/calendar/api/v3/reference/calendarList/list"
+      ],
+      "updated": "2026-10-21"
     },
     {
       "locale": "tr",
@@ -5668,6 +6181,22 @@
         "https://support.google.com/calendar/answer/37648?hl=en"
       ],
       "updated": "2026-10-21"
+    },
+    {
+      "locale": "tr",
+      "slug": "month-view-on-a-bigger-screen",
+      "title": "iPad ve iPhone’da aylık takvim: tarihe bakın, ayrıntıları kontrol edin",
+      "description": "iPad veya iPhone’da tarihleri karşılaştırın. Ortak ya da yinelenen randevuları taşımadan önce gizli etkinlikleri, seçili takvimleri ve saatleri inceleyin.",
+      "descriptionCharacters": 154,
+      "sections": 6,
+      "faq": 3,
+      "words": 599,
+      "source": "articles.ts",
+      "sources": [
+        "https://support.apple.com/en-ca/guide/iphone/iphfd1054569/ios",
+        "https://calendar.teamup.com/kb/how-to-use-calendar-views/"
+      ],
+      "updated": "2026-10-22"
     },
     {
       "locale": "tr",
@@ -5796,15 +6325,19 @@
     {
       "locale": "vi",
       "slug": "google-calendars-that-never-reach-your-iphone",
-      "title": "Vì sao một số lịch Google không bao giờ tới được iPhone",
-      "description": "Một tài khoản Google, nhiều lịch, mà điện thoại chỉ có một. Danh sách đồng bộ quyết định điều đó, và nên làm gì thay thế.",
-      "descriptionCharacters": 121,
-      "sections": 2,
+      "title": "Lịch Google không hiện trên iPhone: kiểm tra kết nối và lựa chọn",
+      "description": "Tìm lịch Google bị thiếu bằng cách kiểm tra quyền tài khoản, khả năng hiển thị và kết nối của Lịch Apple hoặc Cloud Calendars.",
+      "descriptionCharacters": 126,
+      "sections": 6,
       "faq": 3,
-      "words": 402,
+      "words": 934,
       "source": "articles-google.ts",
-      "sources": [],
-      "updated": "2026-09-12"
+      "sources": [
+        "https://support.google.com/calendar/answer/99358?hl=en&co=GENIE.Platform%3DiOS",
+        "https://support.google.com/calendar/answer/37100?hl=en&co=GENIE.Platform%3DiOS",
+        "https://developers.google.com/workspace/calendar/api/v3/reference/calendarList/list"
+      ],
+      "updated": "2026-10-21"
     },
     {
       "locale": "vi",
@@ -5821,6 +6354,22 @@
         "https://support.google.com/calendar/answer/37648?hl=en"
       ],
       "updated": "2026-10-21"
+    },
+    {
+      "locale": "vi",
+      "slug": "month-view-on-a-bigger-screen",
+      "title": "Lịch tháng trên iPad và iPhone: xem ngày rồi kiểm tra chi tiết",
+      "description": "So sánh ngày trên iPad hoặc iPhone. Kiểm tra sự kiện ẩn, lịch được chọn và giờ chính xác trước khi chuyển cuộc hẹn chung hoặc lặp lại.",
+      "descriptionCharacters": 134,
+      "sections": 6,
+      "faq": 3,
+      "words": 934,
+      "source": "articles.ts",
+      "sources": [
+        "https://support.apple.com/en-ca/guide/iphone/iphfd1054569/ios",
+        "https://calendar.teamup.com/kb/how-to-use-calendar-views/"
+      ],
+      "updated": "2026-10-22"
     },
     {
       "locale": "vi",
@@ -5949,15 +6498,19 @@
     {
       "locale": "zh-Hans",
       "slug": "google-calendars-that-never-reach-your-iphone",
-      "title": "为什么有些谷歌日历永远到不了你的 iPhone",
-      "description": "一个谷歌账号，好几本日历，手机上却只有一本。决定这件事的同步列表，以及可以改走的另一条路。",
-      "descriptionCharacters": 45,
-      "sections": 2,
+      "title": "iPhone 上缺少 Google 日历：检查连接与选择",
+      "description": "检查账号权限、日历可见性，以及 Apple 日历或 Cloud Calendars 使用的连接方式，查找未显示的 Google 日历。",
+      "descriptionCharacters": 67,
+      "sections": 6,
       "faq": 3,
-      "words": 30,
+      "words": 103,
       "source": "articles-google.ts",
-      "sources": [],
-      "updated": "2026-09-12"
+      "sources": [
+        "https://support.google.com/calendar/answer/99358?hl=en&co=GENIE.Platform%3DiOS",
+        "https://support.google.com/calendar/answer/37100?hl=en&co=GENIE.Platform%3DiOS",
+        "https://developers.google.com/workspace/calendar/api/v3/reference/calendarList/list"
+      ],
+      "updated": "2026-10-21"
     },
     {
       "locale": "zh-Hans",
@@ -5974,6 +6527,22 @@
         "https://support.google.com/calendar/answer/37648?hl=en"
       ],
       "updated": "2026-10-21"
+    },
+    {
+      "locale": "zh-Hans",
+      "slug": "month-view-on-a-bigger-screen",
+      "title": "iPad 与 iPhone 月视图：先看日期，再查详情",
+      "description": "在 iPad 或 iPhone 月视图中比较日期。移动共享或重复约会前，检查隐藏活动、所选日历及准确时间。",
+      "descriptionCharacters": 53,
+      "sections": 6,
+      "faq": 3,
+      "words": 66,
+      "source": "articles.ts",
+      "sources": [
+        "https://support.apple.com/en-ca/guide/iphone/iphfd1054569/ios",
+        "https://calendar.teamup.com/kb/how-to-use-calendar-views/"
+      ],
+      "updated": "2026-10-22"
     },
     {
       "locale": "zh-Hans",
@@ -6102,15 +6671,19 @@
     {
       "locale": "zh-Hant",
       "slug": "google-calendars-that-never-reach-your-iphone",
-      "title": "為什麼有些 Google 日曆永遠到不了你的 iPhone",
-      "description": "一個 Google 帳號，好幾本日曆，手機上卻只有一本。決定這件事的同步清單，以及可以改走的另一條路。",
-      "descriptionCharacters": 51,
-      "sections": 2,
+      "title": "iPhone 上找不到 Google 行事曆：檢查連線與選取",
+      "description": "檢查帳號權限、行事曆可見性，以及 Apple 行事曆或 Cloud Calendars 的連線方式，找出未顯示的 Google 行事曆。",
+      "descriptionCharacters": 68,
+      "sections": 6,
       "faq": 3,
-      "words": 56,
+      "words": 113,
       "source": "articles-google.ts",
-      "sources": [],
-      "updated": "2026-09-12"
+      "sources": [
+        "https://support.google.com/calendar/answer/99358?hl=en&co=GENIE.Platform%3DiOS",
+        "https://support.google.com/calendar/answer/37100?hl=en&co=GENIE.Platform%3DiOS",
+        "https://developers.google.com/workspace/calendar/api/v3/reference/calendarList/list"
+      ],
+      "updated": "2026-10-21"
     },
     {
       "locale": "zh-Hant",
@@ -6127,6 +6700,22 @@
         "https://support.google.com/calendar/answer/37648?hl=en"
       ],
       "updated": "2026-10-21"
+    },
+    {
+      "locale": "zh-Hant",
+      "slug": "month-view-on-a-bigger-screen",
+      "title": "iPad 與 iPhone 月顯示方式：先看日期，再查詳情",
+      "description": "在 iPad 或 iPhone 比較日期。移動共享或重複約會前，檢查隱藏活動、已選行事曆與確切時間。",
+      "descriptionCharacters": 50,
+      "sections": 6,
+      "faq": 3,
+      "words": 67,
+      "source": "articles.ts",
+      "sources": [
+        "https://support.apple.com/en-ca/guide/iphone/iphfd1054569/ios",
+        "https://calendar.teamup.com/kb/how-to-use-calendar-views/"
+      ],
+      "updated": "2026-10-22"
     },
     {
       "locale": "zh-Hant",

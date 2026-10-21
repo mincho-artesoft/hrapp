@@ -10,6 +10,96 @@ import { LocalisedArticle } from '../types';
  * reescribir cada frase sin tocar un número.
  */
 export const ARTICLES_ES_ES: Readonly<Record<string, LocalisedArticle>> = {
+  "month-view-on-a-bigger-screen": {
+  "updated": "2026-10-22",
+  "title": "Calendario mensual en iPad y iPhone: compara fechas y comprueba los detalles",
+  "short": "Usa la vista mensual sin perder detalles",
+  "description": "Compara fechas en iPad o iPhone. Revisa eventos ocultos, calendarios seleccionados y horas exactas antes de mover citas compartidas o recurrentes.",
+  "lede": "La vista mensual muestra cómo se distribuyen los compromisos entre fechas. Sirve menos para demostrar que una hora concreta está libre. Elige una fecha en la vista general y revisa el día y el evento antes de comprometerte. Esta guía la publica Arte Soft, desarrollador de Cloud Calendars.",
+  "commonBelief": "Una cuadrícula mensual más grande muestra todos los detalles y un día aparentemente vacío demuestra que todos están disponibles.",
+  "sections": [
+    {
+      "heading": "Decide si necesitas fechas u horas exactas",
+      "body": [
+        "Usa el mes para comparar un plazo de proyecto, un viaje y una cita familiar a lo largo de varias semanas. Si necesitas saber si dos citas se solapan a las 14:30, cambia a la vista diaria o semanal y revisa inicio y final exactos. Una celda mensual no tiene la misma escala que una cuadrícula horaria.",
+        "Por ejemplo, quien organiza un taller puede descartar primero una semana de viaje. Después debe revisar el día propuesto: compromisos, preparación, desplazamientos y hora límite de finalización. Una celda despejada es una opción por investigar, no una reserva confirmada ni prueba de disponibilidad ajena."
+      ]
+    },
+    {
+      "heading": "Lee el indicador de eventos adicionales",
+      "body": [
+        "La celda mensual actual de Cloud Calendars muestra un número limitado de etiquetas de eventos y un contador cuando hay más. Los títulos ocupan una línea y pueden recortarse. Abre el día o el evento si importan el título completo o los compromisos restantes.",
+        "Una pantalla de iPad más grande facilita la lectura, pero no elimina necesariamente todos los límites. Una ventana estrecha o un texto mayor cambian lo que cabe. Haz la misma comprobación en iPhone: inspecciona el día antes de considerar las etiquetas visibles como la agenda completa."
+      ]
+    },
+    {
+      "heading": "Comprueba mes, calendarios seleccionados y fechas contiguas",
+      "body": [
+        "Lee el mes y el año antes de elegir una fecha. La cuadrícula puede incluir días del mes contiguo para completar filas. En Cloud Calendars, usa la navegación mensual y revisa la fecha seleccionada, sin depender solo de la posición de una casilla.",
+        "Comprueba qué calendarios están seleccionados. Ocultar trabajo facilita leer un plan familiar, pero también retira esos compromisos de esa vista. Para investigar un duplicado, oculta temporalmente un origen y compara; no borres una cita solo para despejar el mes."
+      ]
+    },
+    {
+      "heading": "Abre el evento antes de cambiar un acuerdo compartido",
+      "body": [
+        "Confirma título, propietario o calendario, hora local y duración en los detalles. El color ayuda a explorar, pero no sustituye saber la cuenta ni si puedes editar. Una invitación visible no equivale a una cita que organizas tú.",
+        "Cloud Calendars permite arrastrar eventos a otra fecha desde la vista mensual. Antes de hacerlo con un compromiso real, determina la fecha prevista y el alcance de repetición. Tras un cambio permitido, reabre el evento y comprueba el resultado; un gesto local no demuestra que el proveedor o todos los participantes hayan aceptado el nuevo acuerdo."
+      ]
+    },
+    {
+      "heading": "Revisa repeticiones y zonas horarias por separado",
+      "body": [
+        "Si solo cambia la clase de esta semana, no modifiques por error el patrón futuro. Lee la opción de alcance disponible y revisa después la ocurrencia modificada y una posterior. El mes facilita comparar repeticiones, pero el alcance de edición determina qué cambia.",
+        "En viajes o reuniones entre zonas horarias, revisa expresamente fecha y hora locales. Mover a otro día no convierte automáticamente la hora de reunión prevista. Comprueba cambios de horario estacional cuando corresponda y confirma la hora acordada con los implicados."
+      ]
+    },
+    {
+      "heading": "Aprovecha la vista grande sin confundir productos",
+      "body": [
+        "Apple Calendar ofrece sus propias opciones mensuales y Teamup documenta conjuntos de vistas distintos en navegador y móvil. Esos controles pertenecen a cada producto. No busques la configuración web de Teamup o el menú de Apple en Cloud Calendars porque las vistas tengan el mismo nombre.",
+        "Un mes de citas tampoco equivale a un mes de previsiones meteorológicas. Para un plan al aire libre, comprueba por separado lugar, fecha y horas de previsión disponibles. Guarda la cita final en el calendario previsto y confirma directamente los cambios con los participantes."
+      ]
+    }
+  ],
+  "claims": {},
+  "practical": [
+    "Preselecciona fechas en el mes y revisa horas exactas en día o semana.",
+    "Abre días con contador adicional o títulos recortados.",
+    "Comprueba mes, año y calendarios seleccionados antes de asumir disponibilidad.",
+    "Confirma calendario, hora, duración y permiso de edición.",
+    "Lee el alcance de repetición y verifica la ocurrencia guardada tras moverla.",
+    "Comprueba la previsión disponible y confirma cambios con los participantes."
+  ],
+  "faq": [
+    {
+      "q": "¿La vista mensual de iPad muestra todas las citas completas?",
+      "a": "No lo supongas. Cloud Calendars limita las etiquetas por celda y utiliza un contador adicional. Abre el día y el evento para inspeccionar la agenda completa."
+    },
+    {
+      "q": "¿Un día vacío significa que estoy libre?",
+      "a": "Primero comprueba calendarios seleccionados, fecha y disponibilidad de los datos de cuenta relevantes. La vista solo representa información actualmente disponible y mostrada."
+    },
+    {
+      "q": "¿Mover un evento recurrente cambia solo esa fecha?",
+      "a": "Lee la opción de alcance en vez de asumirlo. Tras guardar, revisa la ocurrencia modificada y una posterior y confirma el acuerdo previsto."
+    }
+  ],
+  "sourcesHeading": "Compara las descripciones oficiales de las vistas",
+  "sources": [
+    {
+      "label": "Apple: vistas mensual, de varios días y de lista en Apple Calendar",
+      "url": "https://support.apple.com/en-ca/guide/iphone/iphfd1054569/ios"
+    },
+    {
+      "label": "Teamup: vistas y configuración en navegador frente a aplicación",
+      "url": "https://calendar.teamup.com/kb/how-to-use-calendar-views/"
+    }
+  ],
+  "seeAlso": [
+    "drag-an-event-to-move-it"
+  ]
+},
+
 "keeping-track-of-who-replied":{
   "updated": "2026-10-21",
   "title": "Respuestas del calendario: distingue asistencia y acceso compartido",

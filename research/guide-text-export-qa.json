@@ -1,8 +1,8 @@
 {
-  "guides": 48,
+  "guides": 51,
   "selection": "tools/guide-text-selection.json",
   "extraction": "Visible article headings, paragraphs, lists, FAQs and source links; gallery/other-app cards excluded.",
-  "exportedCharacters": 272882,
+  "exportedCharacters": 291209,
   "records": [
     {
       "slug": "what-calendar-sync-actually-does",
@@ -128,7 +128,7 @@
       "slug": "family-pickup-calendar-handoff",
       "source": "https://www.cloud-calendars.com/articles/family-pickup-calendar-handoff/",
       "blocks": 45,
-      "characters": 5999
+      "characters": 6003
     },
     {
       "slug": "weather-inside-your-calendar",
@@ -146,7 +146,7 @@
       "slug": "a-fourteen-day-view-of-the-weather",
       "source": "https://www.cloud-calendars.com/articles/a-fourteen-day-view-of-the-weather/",
       "blocks": 30,
-      "characters": 2685
+      "characters": 2705
     },
     {
       "slug": "weather-where-the-event-is",
@@ -248,7 +248,7 @@
       "slug": "reading-a-chance-of-rain",
       "source": "https://www.cloud-calendars.com/articles/reading-a-chance-of-rain/",
       "blocks": 45,
-      "characters": 5971
+      "characters": 5991
     },
     {
       "slug": "wind-the-forecast-nobody-reads",
@@ -291,6 +291,24 @@
       "source": "https://www.cloud-calendars.com/articles/the-year-in-one-screen/",
       "blocks": 45,
       "characters": 5170
+    },
+    {
+      "slug": "planning-a-week-in-ten-minutes",
+      "source": "https://www.cloud-calendars.com/articles/planning-a-week-in-ten-minutes/",
+      "blocks": 46,
+      "characters": 6069
+    },
+    {
+      "slug": "the-commute-and-the-sky",
+      "source": "https://www.cloud-calendars.com/articles/the-commute-and-the-sky/",
+      "blocks": 46,
+      "characters": 6038
+    },
+    {
+      "slug": "what-a-forecast-can-and-cannot-tell-you",
+      "source": "https://www.cloud-calendars.com/articles/what-a-forecast-can-and-cannot-tell-you/",
+      "blocks": 45,
+      "characters": 5907
     }
   ]
 }

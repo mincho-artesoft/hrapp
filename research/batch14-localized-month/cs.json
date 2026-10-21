@@ -1,0 +1,87 @@
+{
+  "updated": "2026-10-22",
+  "title": "Měsíční kalendář na iPadu a iPhonu: porovnejte data, ověřte podrobnosti",
+  "short": "Měsíční přehled bez přehlédnutí detailů",
+  "description": "Porovnejte data na iPadu či iPhonu. Před přesunem sdílených nebo opakovaných schůzek ověřte skryté události, vybrané kalendáře a přesné časy.",
+  "lede": "Měsíční pohled ukazuje, na které dny připadají závazky. Hůře dokazuje, že určitá hodina je volná. Vyberte datum v přehledu a před závazkem prohlédněte den i událost. Průvodce vydává Arte Soft, vývojář Cloud Calendars.",
+  "commonBelief": "Větší měsíční mřížka ukazuje všechny podrobnosti a zdánlivě prázdný den dokazuje dostupnost všech.",
+  "sections": [
+    {
+      "heading": "Rozhodněte mezi daty a přesnými hodinami",
+      "body": [
+        "Použijte měsíc k porovnání termínu projektu, cesty a rodinné schůzky během několika týdnů. Chcete-li zjistit překrytí ve 14:30, přepněte na den či týden a ověřte přesný začátek a konec. Měsíční buňka nemá stejnou časovou stupnici jako hodinová mřížka.",
+        "Organizátor workshopu může nejprve vyloučit cestovní týden. Poté ověří navržený den: závazky, přípravu, cestu a nutný konec. Prázdně vypadající buňka je možnost k prověření, nikoli potvrzená rezervace nebo informace o dostupnosti ostatních."
+      ]
+    },
+    {
+      "heading": "Sledujte počet dalších událostí, nejen viditelné názvy",
+      "body": [
+        "Současná měsíční buňka Cloud Calendars ukazuje omezený počet štítků událostí a údaj o dalších, pokud jich k datu patří více. Názvy zůstávají na jednom řádku a mohou se zkrátit. Otevřete den či událost, pokud záleží na celém názvu nebo ostatních závazcích.",
+        "Větší displej iPadu usnadňuje čtení, ale nemusí odstranit všechny limity zobrazení. Úzké okno nebo větší text mění dostupný prostor. Stejně postupujte na iPhonu: prohlédněte den, než viditelné štítky považujete za celý rozvrh."
+      ]
+    },
+    {
+      "heading": "Ověřte měsíc, vybrané kalendáře a sousední data",
+      "body": [
+        "Před výběrem přečtěte měsíc a rok. Mřížka může doplňovat řádky dny sousedního měsíce. V Cloud Calendars použijte navigaci měsíců a ověřte vybrané datum, nespoléhejte jen na polohu políčka.",
+        "Zkontrolujte výběr kalendářů. Skrytí práce může zpřehlednit rodinný plán, ale odstraní tyto závazky z daného přehledu. Při diagnostice duplicity dočasně skryjte jeden zdroj a porovnejte; nemažte schůzku jen kvůli méně zaplněnému měsíci."
+      ]
+    },
+    {
+      "heading": "Před změnou společné dohody otevřete událost",
+      "body": [
+        "V podrobnostech potvrďte název, vlastníka či kalendář, místní čas a trvání. Barva pomáhá orientaci, nenahrazuje však znalost účtu nebo práva upravovat. Viditelná pozvánka se liší od vámi organizované schůzky.",
+        "Cloud Calendars umožňuje v měsíci přetáhnout událost na jiné datum. Před skutečnou změnou určete cílový den a rozsah opakování. Po povolené změně událost znovu otevřete; místní gesto nedokazuje přijetí nové dohody poskytovatelem nebo všemi účastníky."
+      ]
+    },
+    {
+      "heading": "Opakování a časová pásma kontrolujte zvlášť",
+      "body": [
+        "Pokud se přesouvá jen lekce tohoto týdne, nezměňte omylem budoucí vzorec. Přečtěte nabízený rozsah a poté ověřte změněný i pozdější výskyt. Měsíc usnadňuje porovnání dat, ale rozsah úpravy určuje účinek.",
+        "U cest či schůzek napříč pásmy výslovně ověřte místní datum a čas. Přesun na jiný den automaticky nepřevádí zamýšlený čas setkání. Zkontrolujte případné změny letního času a potvrďte dohodnutou hodinu s účastníky."
+      ]
+    },
+    {
+      "heading": "Použijte větší přehled bez zaměňování produktů",
+      "body": [
+        "Kalendář Apple má vlastní možnosti měsíčního zobrazení, Teamup popisuje různé pohledy v prohlížeči a mobilu. Ovládání patří příslušným produktům. Nehledejte webovou konfiguraci Teamupu nebo nabídku Apple v Cloud Calendars jen kvůli stejnému názvu pohledu.",
+        "Měsíc schůzek není měsíc předpovědí počasí. Pro venkovní plán ověřte místo, datum a dostupné hodiny předpovědi zvlášť. Uložte konečnou schůzku do správného kalendáře a změny potvrďte přímo s účastníky."
+      ]
+    }
+  ],
+  "claims": {},
+  "practical": [
+    "Vyberte možné dny v měsíci a přesné hodiny ověřte v dni či týdnu.",
+    "Otevřete dny s počtem dalších událostí nebo zkrácenými názvy.",
+    "Před předpokladem volného dne ověřte měsíc, rok a kalendáře.",
+    "Potvrďte kalendář, čas, trvání a právo upravovat.",
+    "Přečtěte rozsah opakování a po přesunu ověřte uložený výskyt.",
+    "Dostupnost počasí ověřte zvlášť a změny potvrďte s účastníky."
+  ],
+  "faq": [
+    {
+      "q": "Ukazuje měsíc na iPadu všechny schůzky celé?",
+      "a": "Nepředpokládejte to. Cloud Calendars omezuje štítky v buňce a zobrazuje počet dalších. Otevřete den a událost pro celý rozvrh."
+    },
+    {
+      "q": "Znamená prázdný den, že mám volno?",
+      "a": "Nejprve ověřte výběr kalendářů, datum a dostupnost příslušných dat účtu. Přehled ukazuje jen aktuálně dostupné a zobrazené informace."
+    },
+    {
+      "q": "Změní přesun opakované události jen tento den?",
+      "a": "Přečtěte volbu rozsahu úpravy. Po uložení zkontrolujte změněný a pozdější výskyt a potvrďte zamýšlenou dohodu."
+    }
+  ],
+  "sourcesHeading": "Porovnejte oficiální popisy zobrazení",
+  "sources": [
+    {
+      "label": "Apple: měsíční, vícedenní a seznamové zobrazení",
+      "url": "https://support.apple.com/en-ca/guide/iphone/iphfd1054569/ios"
+    },
+    {
+      "label": "Teamup: pohledy a konfigurace prohlížeče versus aplikace",
+      "url": "https://calendar.teamup.com/kb/how-to-use-calendar-views/"
+    }
+  ],
+  "seeAlso": []
+}

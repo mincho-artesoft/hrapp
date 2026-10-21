@@ -2,6 +2,7 @@
 import { LOCALES, Locale } from '../core/locales';
 export const ARTICLE_SLUGS: Readonly<Record<string, readonly string[]>> = {
   "ar-SA": [
+    "month-view-on-a-bigger-screen",
     "weather-inside-your-calendar",
     "icloud-google-and-outlook-in-one-view",
     "sharing-one-event-not-your-calendar",
@@ -14,6 +15,7 @@ export const ARTICLE_SLUGS: Readonly<Record<string, readonly string[]>> = {
     "taking-back-a-calendar-you-shared"
   ],
   "bg": [
+    "month-view-on-a-bigger-screen",
     "weather-inside-your-calendar",
     "icloud-google-and-outlook-in-one-view",
     "sharing-one-event-not-your-calendar",
@@ -29,6 +31,7 @@ export const ARTICLE_SLUGS: Readonly<Record<string, readonly string[]>> = {
     "calendar-export-ics-pdf-and-backup"
   ],
   "cs": [
+    "month-view-on-a-bigger-screen",
     "weather-inside-your-calendar",
     "icloud-google-and-outlook-in-one-view",
     "sharing-one-event-not-your-calendar",
@@ -41,6 +44,7 @@ export const ARTICLE_SLUGS: Readonly<Record<string, readonly string[]>> = {
     "taking-back-a-calendar-you-shared"
   ],
   "da": [
+    "month-view-on-a-bigger-screen",
     "weather-inside-your-calendar",
     "icloud-google-and-outlook-in-one-view",
     "sharing-one-event-not-your-calendar",
@@ -53,6 +57,7 @@ export const ARTICLE_SLUGS: Readonly<Record<string, readonly string[]>> = {
     "taking-back-a-calendar-you-shared"
   ],
   "de-DE": [
+    "month-view-on-a-bigger-screen",
     "keeping-track-of-who-replied",
     "exchange-calendars-on-an-iphone",
     "weather-inside-your-calendar",
@@ -78,6 +83,7 @@ export const ARTICLE_SLUGS: Readonly<Record<string, readonly string[]>> = {
     "calendar-export-ics-pdf-and-backup"
   ],
   "el": [
+    "month-view-on-a-bigger-screen",
     "weather-inside-your-calendar",
     "icloud-google-and-outlook-in-one-view",
     "sharing-one-event-not-your-calendar",
@@ -143,6 +149,7 @@ export const ARTICLE_SLUGS: Readonly<Record<string, readonly string[]>> = {
     "taking-back-a-calendar-you-shared"
   ],
   "es-ES": [
+    "month-view-on-a-bigger-screen",
     "keeping-track-of-who-replied",
     "exchange-calendars-on-an-iphone",
     "weather-inside-your-calendar",
@@ -168,6 +175,7 @@ export const ARTICLE_SLUGS: Readonly<Record<string, readonly string[]>> = {
     "calendar-export-ics-pdf-and-backup"
   ],
   "fi": [
+    "month-view-on-a-bigger-screen",
     "weather-inside-your-calendar",
     "icloud-google-and-outlook-in-one-view",
     "sharing-one-event-not-your-calendar",
@@ -180,6 +188,7 @@ export const ARTICLE_SLUGS: Readonly<Record<string, readonly string[]>> = {
     "taking-back-a-calendar-you-shared"
   ],
   "fr-FR": [
+    "month-view-on-a-bigger-screen",
     "keeping-track-of-who-replied",
     "exchange-calendars-on-an-iphone",
     "weather-inside-your-calendar",
@@ -205,6 +214,7 @@ export const ARTICLE_SLUGS: Readonly<Record<string, readonly string[]>> = {
     "calendar-export-ics-pdf-and-backup"
   ],
   "he": [
+    "month-view-on-a-bigger-screen",
     "weather-inside-your-calendar",
     "icloud-google-and-outlook-in-one-view",
     "sharing-one-event-not-your-calendar",
@@ -217,6 +227,7 @@ export const ARTICLE_SLUGS: Readonly<Record<string, readonly string[]>> = {
     "taking-back-a-calendar-you-shared"
   ],
   "hi": [
+    "month-view-on-a-bigger-screen",
     "weather-inside-your-calendar",
     "icloud-google-and-outlook-in-one-view",
     "sharing-one-event-not-your-calendar",
@@ -229,6 +240,7 @@ export const ARTICLE_SLUGS: Readonly<Record<string, readonly string[]>> = {
     "taking-back-a-calendar-you-shared"
   ],
   "hu": [
+    "month-view-on-a-bigger-screen",
     "weather-inside-your-calendar",
     "icloud-google-and-outlook-in-one-view",
     "sharing-one-event-not-your-calendar",
@@ -241,6 +253,7 @@ export const ARTICLE_SLUGS: Readonly<Record<string, readonly string[]>> = {
     "taking-back-a-calendar-you-shared"
   ],
   "id": [
+    "month-view-on-a-bigger-screen",
     "weather-inside-your-calendar",
     "icloud-google-and-outlook-in-one-view",
     "sharing-one-event-not-your-calendar",
@@ -253,6 +266,7 @@ export const ARTICLE_SLUGS: Readonly<Record<string, readonly string[]>> = {
     "taking-back-a-calendar-you-shared"
   ],
   "it": [
+    "month-view-on-a-bigger-screen",
     "keeping-track-of-who-replied",
     "exchange-calendars-on-an-iphone",
     "weather-inside-your-calendar",
@@ -278,6 +292,7 @@ export const ARTICLE_SLUGS: Readonly<Record<string, readonly string[]>> = {
     "calendar-export-ics-pdf-and-backup"
   ],
   "ja": [
+    "month-view-on-a-bigger-screen",
     "weather-inside-your-calendar",
     "icloud-google-and-outlook-in-one-view",
     "sharing-one-event-not-your-calendar",
@@ -290,6 +305,7 @@ export const ARTICLE_SLUGS: Readonly<Record<string, readonly string[]>> = {
     "taking-back-a-calendar-you-shared"
   ],
   "ko": [
+    "month-view-on-a-bigger-screen",
     "weather-inside-your-calendar",
     "icloud-google-and-outlook-in-one-view",
     "sharing-one-event-not-your-calendar",
@@ -302,6 +318,7 @@ export const ARTICLE_SLUGS: Readonly<Record<string, readonly string[]>> = {
     "taking-back-a-calendar-you-shared"
   ],
   "ms": [
+    "month-view-on-a-bigger-screen",
     "weather-inside-your-calendar",
     "icloud-google-and-outlook-in-one-view",
     "sharing-one-event-not-your-calendar",
@@ -314,6 +331,7 @@ export const ARTICLE_SLUGS: Readonly<Record<string, readonly string[]>> = {
     "taking-back-a-calendar-you-shared"
   ],
   "nl-NL": [
+    "month-view-on-a-bigger-screen",
     "weather-inside-your-calendar",
     "icloud-google-and-outlook-in-one-view",
     "sharing-one-event-not-your-calendar",
@@ -326,6 +344,7 @@ export const ARTICLE_SLUGS: Readonly<Record<string, readonly string[]>> = {
     "taking-back-a-calendar-you-shared"
   ],
   "no": [
+    "month-view-on-a-bigger-screen",
     "weather-inside-your-calendar",
     "icloud-google-and-outlook-in-one-view",
     "sharing-one-event-not-your-calendar",
@@ -338,6 +357,7 @@ export const ARTICLE_SLUGS: Readonly<Record<string, readonly string[]>> = {
     "taking-back-a-calendar-you-shared"
   ],
   "pl": [
+    "month-view-on-a-bigger-screen",
     "weather-inside-your-calendar",
     "icloud-google-and-outlook-in-one-view",
     "sharing-one-event-not-your-calendar",
@@ -350,6 +370,7 @@ export const ARTICLE_SLUGS: Readonly<Record<string, readonly string[]>> = {
     "taking-back-a-calendar-you-shared"
   ],
   "pt-BR": [
+    "month-view-on-a-bigger-screen",
     "weather-inside-your-calendar",
     "icloud-google-and-outlook-in-one-view",
     "sharing-one-event-not-your-calendar",
@@ -365,6 +386,7 @@ export const ARTICLE_SLUGS: Readonly<Record<string, readonly string[]>> = {
     "calendar-export-ics-pdf-and-backup"
   ],
   "ro": [
+    "month-view-on-a-bigger-screen",
     "weather-inside-your-calendar",
     "icloud-google-and-outlook-in-one-view",
     "sharing-one-event-not-your-calendar",
@@ -377,6 +399,7 @@ export const ARTICLE_SLUGS: Readonly<Record<string, readonly string[]>> = {
     "taking-back-a-calendar-you-shared"
   ],
   "ru": [
+    "month-view-on-a-bigger-screen",
     "weather-inside-your-calendar",
     "icloud-google-and-outlook-in-one-view",
     "sharing-one-event-not-your-calendar",
@@ -389,6 +412,7 @@ export const ARTICLE_SLUGS: Readonly<Record<string, readonly string[]>> = {
     "taking-back-a-calendar-you-shared"
   ],
   "sv": [
+    "month-view-on-a-bigger-screen",
     "weather-inside-your-calendar",
     "icloud-google-and-outlook-in-one-view",
     "sharing-one-event-not-your-calendar",
@@ -401,6 +425,7 @@ export const ARTICLE_SLUGS: Readonly<Record<string, readonly string[]>> = {
     "taking-back-a-calendar-you-shared"
   ],
   "th": [
+    "month-view-on-a-bigger-screen",
     "weather-inside-your-calendar",
     "icloud-google-and-outlook-in-one-view",
     "sharing-one-event-not-your-calendar",
@@ -413,6 +438,7 @@ export const ARTICLE_SLUGS: Readonly<Record<string, readonly string[]>> = {
     "taking-back-a-calendar-you-shared"
   ],
   "tr": [
+    "month-view-on-a-bigger-screen",
     "weather-inside-your-calendar",
     "icloud-google-and-outlook-in-one-view",
     "sharing-one-event-not-your-calendar",
@@ -425,6 +451,7 @@ export const ARTICLE_SLUGS: Readonly<Record<string, readonly string[]>> = {
     "taking-back-a-calendar-you-shared"
   ],
   "vi": [
+    "month-view-on-a-bigger-screen",
     "weather-inside-your-calendar",
     "icloud-google-and-outlook-in-one-view",
     "sharing-one-event-not-your-calendar",
@@ -437,6 +464,7 @@ export const ARTICLE_SLUGS: Readonly<Record<string, readonly string[]>> = {
     "taking-back-a-calendar-you-shared"
   ],
   "zh-Hans": [
+    "month-view-on-a-bigger-screen",
     "weather-inside-your-calendar",
     "icloud-google-and-outlook-in-one-view",
     "sharing-one-event-not-your-calendar",
@@ -449,6 +477,7 @@ export const ARTICLE_SLUGS: Readonly<Record<string, readonly string[]>> = {
     "taking-back-a-calendar-you-shared"
   ],
   "zh-Hant": [
+    "month-view-on-a-bigger-screen",
     "weather-inside-your-calendar",
     "icloud-google-and-outlook-in-one-view",
     "sharing-one-event-not-your-calendar",

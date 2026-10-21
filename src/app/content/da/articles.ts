@@ -9,6 +9,94 @@ import { LocalisedArticle } from '../types';
  * translation can rewrite every sentence without touching a figure.
  */
 export const ARTICLES_DA: Readonly<Record<string, LocalisedArticle>> = {
+  "month-view-on-a-bigger-screen": {
+  "updated": "2026-10-22",
+  "title": "Månedskalender på iPad og iPhone: se datoerne, kontrollér detaljerne",
+  "short": "Brug månedsvisning uden at overse detaljer",
+  "description": "Sammenlign datoer på iPad eller iPhone. Kontrollér skjulte aftaler, valgte kalendere og tider, før du flytter delte eller gentagne begivenheder.",
+  "lede": "Månedsvisningen viser, hvilke datoer aftaler falder på. Den er mindre egnet til at bevise, at en bestemt time er fri. Vælg en dato i oversigten, og undersøg dagen og begivenheden, før du aftaler noget. Guiden er udgivet af Arte Soft, udvikleren af Cloud Calendars.",
+  "commonBelief": "Et større månedsgitter viser alle detaljer, og en tilsyneladende tom dato beviser, at alle er ledige.",
+  "sections": [
+    {
+      "heading": "Vælg mellem datoer og præcise klokkeslæt",
+      "body": [
+        "Brug måneden til at sammenligne projektfrist, rejse og familieaftale over flere uger. Når spørgsmålet er, om to aftaler overlapper kl. 14.30, så skift til dag eller uge og kontrollér præcis start og slut. En månedscelle har ikke samme tidsskala som et timegitter.",
+        "En workshoparrangør kan først undgå en rejseuge. Derefter kontrolleres den foreslåede dag: aftaler, forberedelse, transport og nødvendig afslutning. En tomt udseende celle er en kandidat til undersøgelse, ikke en bekræftet reservation eller andres tilgængelighed."
+      ]
+    },
+    {
+      "heading": "Læs ekstratælleren frem for kun de synlige titler",
+      "body": [
+        "Cloud Calendars’ aktuelle månedscelle viser et begrænset antal begivenhedsmærker og en ekstra tæller, når flere hører til dagen. Titler holdes på én linje og kan afkortes. Åbn dagen eller begivenheden, når hele titlen eller de øvrige aftaler er vigtige.",
+        "En større iPad-skærm kan gøre oversigten lettere at læse, men fjerner ikke nødvendigvis alle visningsgrænser. Et smalt appvindue eller større tekst ændrer pladsen. Kontrollér det samme på iPhone: undersøg dagen bag visningen, før du regner de synlige mærker for hele kalenderen."
+      ]
+    },
+    {
+      "heading": "Kontrollér måned, valgte kalendere og nabodatoer",
+      "body": [
+        "Læs måned og år, før du vælger dato. Gitteret kan medtage datoer fra en nabomåned for at udfylde rækkerne. Brug månedsnavigationen i Cloud Calendars, og kontrollér den valgte dato frem for kun feltets placering.",
+        "Se, hvilke kalendere der er valgt. Skjulte arbejdsaftaler gør måske familieplanen lettere at læse, men fjerner også disse aftaler fra oversigten. Skjul ved dubletundersøgelse én kilde midlertidigt og sammenlign; slet ikke en aftale blot for at gøre måneden mindre fyldt."
+      ]
+    },
+    {
+      "heading": "Åbn en begivenhed før ændring af en fælles aftale",
+      "body": [
+        "Bekræft titel, ejer eller kalender, lokal tid og varighed i detaljerne. Farve hjælper med overblik, men erstatter ikke viden om konto eller redigeringsret. En synlig invitation er anderledes end en aftale, du selv arrangerer.",
+        "Cloud Calendars kan flytte begivenheder til en anden dato med træk og slip i måneden. Fastlæg mål og gentagelsesomfang før en rigtig ændring. Åbn efter en tilladt ændring begivenheden igen; en lokal bevægelse beviser ikke, at udbyderen eller alle deltagere har accepteret den nye aftale."
+      ]
+    },
+    {
+      "heading": "Kontrollér gentagelser og tidszoner særskilt",
+      "body": [
+        "Hvis kun denne uges undervisning flyttes, så undgå utilsigtet ændring af fremtidens mønster. Læs valget af gentagelsesomfang, og undersøg både den ændrede og en senere forekomst. Måneden gør datoer lette at sammenligne, men redigeringsomfanget afgør ændringens betydning.",
+        "Ved rejser eller møder på tværs af tidszoner skal du udtrykkeligt kontrollere lokal dato og tid. Flytning til en anden dag omregner ikke automatisk det ønskede mødetidspunkt. Kontrollér relevante sommertidsskift, og bekræft den aftalte tid med de involverede."
+      ]
+    },
+    {
+      "heading": "Brug den større visning uden at blande produkter sammen",
+      "body": [
+        "Apple Kalender har egne månedsvalg, mens Teamup beskriver forskellige visninger i browser og mobilapp. De tilhører hvert sit produkt. Led ikke efter Teamups browserkonfiguration eller Apples visningsmenu i Cloud Calendars, blot fordi visningerne har samme navn.",
+        "En måned med aftaler er heller ikke en måned med vejrudsigter. Kontrollér sted, dato og tilgængelige prognosetimer særskilt til udendørsplaner. Gem den endelige aftale i den rette kalender, og bekræft ændringer direkte med deltagerne."
+      ]
+    }
+  ],
+  "claims": {},
+  "practical": [
+    "Vælg mulige datoer i måneden, og kontrollér præcise timer i dag eller uge.",
+    "Åbn dage med ekstratæller eller afkortede titler.",
+    "Kontrollér måned, år og kalendervalg, før du antager ledighed.",
+    "Bekræft kalender, tid, varighed og redigeringsret.",
+    "Læs gentagelsesomfanget, og kontrollér den gemte forekomst efter flytning.",
+    "Kontrollér vejrtilgængelighed særskilt, og bekræft ændringer med deltagerne."
+  ],
+  "faq": [
+    {
+      "q": "Viser iPads månedsvisning alle aftaler fuldt ud?",
+      "a": "Antag det ikke. Cloud Calendars begrænser mærker i en månedscelle og viser en ekstratæller. Åbn dag og begivenhed for hele planen."
+    },
+    {
+      "q": "Betyder en tom dag, at jeg er fri?",
+      "a": "Kontrollér først kalendervalg, dato og relevante kontodata. Oversigten viser kun de oplysninger, der aktuelt er tilgængelige og vist."
+    },
+    {
+      "q": "Ændrer flytning af en gentagelse kun denne dato?",
+      "a": "Læs valget af redigeringsomfang. Kontrollér efter lagring den ændrede og en senere forekomst, og bekræft derefter den ønskede aftale."
+    }
+  ],
+  "sourcesHeading": "Sammenlign de officielle visningsbeskrivelser",
+  "sources": [
+    {
+      "label": "Apple: måneds-, flerdages- og listevisninger",
+      "url": "https://support.apple.com/en-ca/guide/iphone/iphfd1054569/ios"
+    },
+    {
+      "label": "Teamup: visninger og konfiguration i browser og app",
+      "url": "https://calendar.teamup.com/kb/how-to-use-calendar-views/"
+    }
+  ],
+  "seeAlso": []
+},
+
   'weather-inside-your-calendar': {
   "title": "En kalender, der allerede har vejret i sig",
   "short": "Vejret inde i kalenderen",

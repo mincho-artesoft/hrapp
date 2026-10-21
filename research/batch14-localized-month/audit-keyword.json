@@ -1,0 +1,195 @@
+{
+  "date": "2026-10-22",
+  "slug": "month-view-on-a-bigger-screen",
+  "source": "src/app/content/en-US/articles-planning.ts",
+  "sourceObjectSha256": "48fd73f258632da80eb4639c356f3fe27f0f270dd0f9f2871c5eed50b25addc5",
+  "format": "Individual direct LocalisedArticle JSON objects",
+  "method": "Own-language model translations with local structural and route checks; no paid API or native-speaker approval/certification.",
+  "scope": "Only ten locale JSON drafts and audit; no integration, native changes, build or deployment. Temporary helper removed after validation.",
+  "semanticReview": [
+    "Month overview chooses dates; exact overlaps require day/week and event details.",
+    "Limited event chips, single-line shortened titles and additional count remain; larger iPad does not imply every event or full title.",
+    "Month/year/adjacent-month dates and selected calendars checked; hiding is distinguished from deleting.",
+    "Event owner/calendar, local time, duration, editing permission and destination checked before changing shared arrangement.",
+    "Dragging locally does not prove provider acceptance or participant agreement.",
+    "Recurrence scope and later occurrence checked; moving a date does not automatically convert intended timezone time.",
+    "Weather horizon distinct from month of events; Apple and Teamup controls explicitly belong to those products.",
+    "Developer disclosure, exact source URLs, updated date and empty claims preserved."
+  ],
+  "relatedRoutePolicy": "Retained original related routes only where present in each locale index (Italian drag guide). Added actual locale guides about combined-calendar visibility, weather and sharing; unavailable English-only related routes omitted.",
+  "files": [
+    {
+      "locale": "hi",
+      "file": "research/batch14-localized-month/hi.json",
+      "sha256": "8f88af5025aa728c63e02b7ba067e5f76e3783ec14227c6ea32e41c61c6cbc32",
+      "descriptionCharacters": 125,
+      "sections": 6,
+      "bodyParagraphs": 12,
+      "practicalSteps": 6,
+      "faqs": 3,
+      "sourceUrlsPreserved": true,
+      "relatedRoutesVerified": [
+        "icloud-google-and-outlook-in-one-view",
+        "weather-inside-your-calendar",
+        "sharing-one-event-not-your-calendar"
+      ],
+      "originalRelatedRoutesRetained": []
+    },
+    {
+      "locale": "hu",
+      "file": "research/batch14-localized-month/hu.json",
+      "sha256": "98bd0899c07fcc3a96222a5df24f84c51d59d7a968bc37475193732d023047a1",
+      "descriptionCharacters": 131,
+      "sections": 6,
+      "bodyParagraphs": 12,
+      "practicalSteps": 6,
+      "faqs": 3,
+      "sourceUrlsPreserved": true,
+      "relatedRoutesVerified": [
+        "icloud-google-and-outlook-in-one-view",
+        "weather-inside-your-calendar",
+        "sharing-one-event-not-your-calendar"
+      ],
+      "originalRelatedRoutesRetained": []
+    },
+    {
+      "locale": "id",
+      "file": "research/batch14-localized-month/id.json",
+      "sha256": "3a3a70fda6d0bf923b33e2e5d4e4e6fbe3b3f44705f2239c6865b7672ab07437",
+      "descriptionCharacters": 143,
+      "sections": 6,
+      "bodyParagraphs": 12,
+      "practicalSteps": 6,
+      "faqs": 3,
+      "sourceUrlsPreserved": true,
+      "relatedRoutesVerified": [
+        "icloud-google-and-outlook-in-one-view",
+        "weather-inside-your-calendar",
+        "sharing-one-event-not-your-calendar"
+      ],
+      "originalRelatedRoutesRetained": []
+    },
+    {
+      "locale": "it",
+      "file": "research/batch14-localized-month/it.json",
+      "sha256": "b1112e99ca2ee8b3695f3ab41f64efc672a24a6603c4f7dc67a173896ada9df8",
+      "descriptionCharacters": 147,
+      "sections": 6,
+      "bodyParagraphs": 12,
+      "practicalSteps": 6,
+      "faqs": 3,
+      "sourceUrlsPreserved": true,
+      "relatedRoutesVerified": [
+        "drag-an-event-to-move-it",
+        "icloud-google-and-outlook-in-one-view",
+        "weather-inside-your-calendar",
+        "sharing-one-event-not-your-calendar"
+      ],
+      "originalRelatedRoutesRetained": [
+        "drag-an-event-to-move-it"
+      ]
+    },
+    {
+      "locale": "ja",
+      "file": "research/batch14-localized-month/ja.json",
+      "sha256": "c83151d8eece102e0e9333461b50544a4652d48a8cc9c065c0c53059f4c58778",
+      "descriptionCharacters": 69,
+      "sections": 6,
+      "bodyParagraphs": 12,
+      "practicalSteps": 6,
+      "faqs": 3,
+      "sourceUrlsPreserved": true,
+      "relatedRoutesVerified": [
+        "icloud-google-and-outlook-in-one-view",
+        "weather-inside-your-calendar",
+        "sharing-one-event-not-your-calendar"
+      ],
+      "originalRelatedRoutesRetained": []
+    },
+    {
+      "locale": "ko",
+      "file": "research/batch14-localized-month/ko.json",
+      "sha256": "c77b8e36ca3282dcb2cbc98ac3efefa4156ae54ab859eec32756079a917a35a1",
+      "descriptionCharacters": 77,
+      "sections": 6,
+      "bodyParagraphs": 12,
+      "practicalSteps": 6,
+      "faqs": 3,
+      "sourceUrlsPreserved": true,
+      "relatedRoutesVerified": [
+        "icloud-google-and-outlook-in-one-view",
+        "weather-inside-your-calendar",
+        "sharing-one-event-not-your-calendar"
+      ],
+      "originalRelatedRoutesRetained": []
+    },
+    {
+      "locale": "ms",
+      "file": "research/batch14-localized-month/ms.json",
+      "sha256": "204116cfea52bef3466591bace5856dacd8577fc1440e46b33e436ecebe68049",
+      "descriptionCharacters": 146,
+      "sections": 6,
+      "bodyParagraphs": 12,
+      "practicalSteps": 6,
+      "faqs": 3,
+      "sourceUrlsPreserved": true,
+      "relatedRoutesVerified": [
+        "icloud-google-and-outlook-in-one-view",
+        "weather-inside-your-calendar",
+        "sharing-one-event-not-your-calendar"
+      ],
+      "originalRelatedRoutesRetained": []
+    },
+    {
+      "locale": "nl-NL",
+      "file": "research/batch14-localized-month/nl-NL.json",
+      "sha256": "16962e324eeb2c318ff663ac20010731d18d6da26b2faefe442d2da5a6208363",
+      "descriptionCharacters": 152,
+      "sections": 6,
+      "bodyParagraphs": 12,
+      "practicalSteps": 6,
+      "faqs": 3,
+      "sourceUrlsPreserved": true,
+      "relatedRoutesVerified": [
+        "icloud-google-and-outlook-in-one-view",
+        "weather-inside-your-calendar",
+        "sharing-one-event-not-your-calendar"
+      ],
+      "originalRelatedRoutesRetained": []
+    },
+    {
+      "locale": "no",
+      "file": "research/batch14-localized-month/no.json",
+      "sha256": "d5321b32107d4f53bfa688a587ac00bf83ccc41ac0eaa193b45580188780ec56",
+      "descriptionCharacters": 141,
+      "sections": 6,
+      "bodyParagraphs": 12,
+      "practicalSteps": 6,
+      "faqs": 3,
+      "sourceUrlsPreserved": true,
+      "relatedRoutesVerified": [
+        "icloud-google-and-outlook-in-one-view",
+        "weather-inside-your-calendar",
+        "sharing-one-event-not-your-calendar"
+      ],
+      "originalRelatedRoutesRetained": []
+    },
+    {
+      "locale": "pl",
+      "file": "research/batch14-localized-month/pl.json",
+      "sha256": "e7c33d8b36993e332c184c60e4b88fbaf43cccb185281b4a4553a0f2492c48f1",
+      "descriptionCharacters": 139,
+      "sections": 6,
+      "bodyParagraphs": 12,
+      "practicalSteps": 6,
+      "faqs": 3,
+      "sourceUrlsPreserved": true,
+      "relatedRoutesVerified": [
+        "icloud-google-and-outlook-in-one-view",
+        "weather-inside-your-calendar",
+        "sharing-one-event-not-your-calendar"
+      ],
+      "originalRelatedRoutesRetained": []
+    }
+  ]
+}

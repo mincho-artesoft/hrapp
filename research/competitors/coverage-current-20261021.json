@@ -1,7 +1,7 @@
 {
   "schemaVersion": 1,
   "date": "2026-10-21",
-  "scope": "All concrete HTTPS URLs recorded in batch03 through batch09 JSON files present in this directory, exact-string deduplicated. This is a bounded corpus queue, not exhaustive publisher coverage. batch07 file is absent. No new network fetches. Consolidated four explicit successful batch10 body reviews; prior evidence preserved. Consolidated four explicit successful batch12 substantive body reviews, preserving prior evidence. Consolidated two successful batch13 substantive reviews. Four previously discovered OneCal substantive body reviews consolidated in batch14. Two pending Teamup pages reviewed in batch15; supplementary newly discovered Readdle URLs are recorded separately outside this original71URLcorpus. Three exact CalendarBridge bodies reviewedbatch16; publisherownlimits notCloudpromises.",
+  "scope": "All concrete HTTPS URLs recorded in batch03 through batch09 JSON files present in this directory, exact-string deduplicated. This is a bounded corpus queue, not exhaustive publisher coverage. batch07 file is absent. No new network fetches. Consolidated four explicit successful batch10 body reviews; prior evidence preserved. Consolidated four explicit successful batch12 substantive body reviews, preserving prior evidence. Consolidated two successful batch13 substantive reviews. Four previously discovered OneCal substantive body reviews consolidated in batch14. Two pending Teamup pages reviewed in batch15; supplementary newly discovered Readdle URLs are recorded separately outside this original71URLcorpus. Three exact CalendarBridge bodies reviewedbatch16; publisherownlimits notCloudpromises. Three family publisher substantive bodies consolidated batch17; publisher claims are not Cloud features.",
   "inputFiles": [
     "research/competitors/batch03-intent-mapping-20261021.json",
     "research/competitors/batch03-primary-discovery-20261021.json",
@@ -17,7 +17,8 @@
     "research/competitors/batch13-ics-troubleshooting-primary-20261021.json",
     "research/competitors/batch14-views-mobile-caldav-20261022.json",
     "research/competitors/batch15-views-caldav-primary-20261022.json",
-    "research/competitors/batch16-sync-directions-troubleshooting-20261022.json"
+    "research/competitors/batch16-sync-directions-troubleshooting-20261022.json",
+    "research/competitors/batch17-family-responsibility-primary-20261022.json"
   ],
   "statusDefinitions": {
     "full": "Explicit complete substantive-text review in at least one cited record, not images/runtime/linked pages.",
@@ -28,11 +29,11 @@
   "resolutionRule": "Full supersedes partial, which supersedes failure, which supersedes discovery; retain all provenance and explicit scope. Mere file presence and search excerpts never count as body reads.",
   "counts": {
     "failed": 6,
-    "partial": 7,
-    "discovered": 8,
-    "full": 50,
+    "partial": 5,
+    "discovered": 7,
+    "full": 53,
     "exactUrls": 71,
-    "queue": 21
+    "queue": 18
   },
   "queue": [
     {
@@ -298,111 +299,6 @@
           ],
           "queryAssociation": "Batch-level only; original file does not attribute an individual query to this URL.",
           "statusEvidence": "discovered"
-        }
-      ]
-    },
-    {
-      "url": "https://support.familywall.com/en/support/solutions/articles/47001013681-about-familywall",
-      "publisher": "FamilyWall",
-      "status": "discovered",
-      "observedQueryOrIntent": null,
-      "intentEvidenceNote": "Verbatim recorded intent/topic/summary where present; null means no URL-specific intent was recorded. URL spelling is not body evidence.",
-      "existingCanonicals": [],
-      "canonicalMappingBasis": "Editorial candidate routing from recorded topic or URL label; not proof target body covers the task. Null/empty where unsupported.",
-      "nextAction": "Read exact official body if useful; verify destination and platform, then deduplicate against existing canonical before authoring.",
-      "provenance": [
-        {
-          "file": "research/competitors/batch05-primary-reviews-20261021.json",
-          "field": "/discoveredNotBodyReviewed/1/url",
-          "record": {
-            "url": "https://support.familywall.com/en/support/solutions/articles/47001013681-about-familywall",
-            "status": "search-result-only"
-          },
-          "batchQueries": [],
-          "queryAssociation": "Batch-level only; original file does not attribute an individual query to this URL.",
-          "statusEvidence": "discovered"
-        }
-      ]
-    },
-    {
-      "url": "https://kidpickup.com/",
-      "publisher": "Kid Pickup",
-      "status": "partial",
-      "observedQueryOrIntent": [
-        "shared pickup responsibility",
-        "calendar invitation versus pickup confirmation",
-        "Positions pickup planning around one responsible adult, claiming a pickup, and reminders when unclaimed. Retrieved section also mentions family communication and permissions. These are first-party claims only."
-      ],
-      "intentEvidenceNote": "Verbatim recorded intent/topic/summary where present; null means no URL-specific intent was recorded. URL spelling is not body evidence.",
-      "existingCanonicals": [
-        "family-pickup-calendar-handoff"
-      ],
-      "canonicalMappingBasis": "Editorial candidate routing from recorded topic or URL label; not proof target body covers the task. Null/empty where unsupported.",
-      "nextAction": "Review remaining substantive text only if needed; preserve recorded coverage and do not infer full-page review.",
-      "provenance": [
-        {
-          "file": "research/competitors/batch06-family-discovery-20261021.json",
-          "field": "/sources/1/url",
-          "record": {
-            "publisher": "Kid Pickup",
-            "url": "https://kidpickup.com/",
-            "textCoverage": "Returned first128of386lines, partial",
-            "summary": "Positions pickup planning around one responsible adult, claiming a pickup, and reminders when unclaimed. Retrieved section also mentions family communication and permissions. These are first-party claims only.",
-            "candidateQueries": [
-              "shared pickup responsibility",
-              "calendar invitation versus pickup confirmation"
-            ],
-            "cloudBoundary": "No Cloud claim of automatic claiming, read receipts, chats or driver reassignment."
-          },
-          "batchQueries": [
-            "iPhone calendar app weather forecast widget",
-            "shared family calendar app iPhone school pickup",
-            "iPhone calendar app widget not updating",
-            "calendar app iPhone event wrong calendar default"
-          ],
-          "queryAssociation": "Batch-level only; original file does not attribute an individual query to this URL.",
-          "statusEvidence": "partial"
-        }
-      ]
-    },
-    {
-      "url": "https://www.famcove.com/free-family-calendar",
-      "publisher": "FamCove",
-      "status": "partial",
-      "observedQueryOrIntent": [
-        "family handoff planning",
-        "school flyer calendar import",
-        "Frames shared family calendars around coverage responsibility and imports from school documents. Page describes additional household workflows. No independent feature or comparative truth audit."
-      ],
-      "intentEvidenceNote": "Verbatim recorded intent/topic/summary where present; null means no URL-specific intent was recorded. URL spelling is not body evidence.",
-      "existingCanonicals": [
-        "family-pickup-calendar-handoff"
-      ],
-      "canonicalMappingBasis": "Editorial candidate routing from recorded topic or URL label; not proof target body covers the task. Null/empty where unsupported.",
-      "nextAction": "Review remaining substantive text only if needed; preserve recorded coverage and do not infer full-page review.",
-      "provenance": [
-        {
-          "file": "research/competitors/batch06-family-discovery-20261021.json",
-          "field": "/sources/3/url",
-          "record": {
-            "publisher": "FamCove",
-            "url": "https://www.famcove.com/free-family-calendar",
-            "textCoverage": "Returned first209of334lines, partial",
-            "summary": "Frames shared family calendars around coverage responsibility and imports from school documents. Page describes additional household workflows. No independent feature or comparative truth audit.",
-            "candidateQueries": [
-              "family handoff planning",
-              "school flyer calendar import"
-            ],
-            "cloudBoundary": "No Cloud PDF/OCR-to-event, legal audit log, child-care expense, chores or automatic assignment promises."
-          },
-          "batchQueries": [
-            "iPhone calendar app weather forecast widget",
-            "shared family calendar app iPhone school pickup",
-            "iPhone calendar app widget not updating",
-            "calendar app iPhone event wrong calendar default"
-          ],
-          "queryAssociation": "Batch-level only; original file does not attribute an individual query to this URL.",
-          "statusEvidence": "partial"
         }
       ]
     },
@@ -2651,6 +2547,190 @@
               "No runtime, GoogleSERPrank,keywordvolume orChatGPTcitation proof."
             ]
           }
+        }
+      ]
+    },
+    {
+      "url": "https://support.familywall.com/en/support/solutions/articles/47001013681-about-familywall",
+      "publisher": "FamilyWall",
+      "status": "full",
+      "observedQueryOrIntent": [
+        "shared calendar vs chores/list assignment",
+        "family access across devices",
+        "calendar source integration vs paid extras"
+      ],
+      "intentEvidenceNote": "Verbatim recorded intent/topic/summary where present; null means no URL-specific intent was recorded. URL spelling is not body evidence.",
+      "existingCanonicals": [
+        "family-pickup-calendar-handoff",
+        "planning-a-week-in-ten-minutes",
+        "sharing-one-event-not-your-calendar"
+      ],
+      "canonicalMappingBasis": "Editorial candidate routing from recorded topic or URL label; not proof target body covers the task. Null/empty where unsupported.",
+      "nextAction": "No repeat body read needed for recorded scope; keep provider features distinct.",
+      "provenance": [
+        {
+          "file": "research/competitors/batch05-primary-reviews-20261021.json",
+          "field": "/discoveredNotBodyReviewed/1/url",
+          "record": {
+            "url": "https://support.familywall.com/en/support/solutions/articles/47001013681-about-familywall",
+            "status": "search-result-only"
+          },
+          "batchQueries": [],
+          "queryAssociation": "Batch-level only; original file does not attribute an individual query to this URL.",
+          "statusEvidence": "discovered"
+        },
+        {
+          "file": "research/competitors/batch17-family-responsibility-primary-20261022.json",
+          "record": {
+            "url": "https://support.familywall.com/en/support/solutions/articles/47001013681-about-familywall",
+            "publisher": "FamilyWall",
+            "textCoverage": "Full substantive body1-48; page modified2023, no current pricing or runtime certification.",
+            "readRefs": [
+              "turn126view0",
+              "turn134view0"
+            ],
+            "candidateIntents": [
+              "shared calendar vs chores/list assignment",
+              "family access across devices",
+              "calendar source integration vs paid extras"
+            ],
+            "boundary": "Separate calendar visibility, to-do assignment, locator and messaging. Do not copy marketing guarantees or historic plan limits into Cloud."
+          },
+          "statusEvidence": "full"
+        }
+      ]
+    },
+    {
+      "url": "https://kidpickup.com/",
+      "publisher": "Kid Pickup",
+      "status": "full",
+      "observedQueryOrIntent": [
+        "shared pickup responsibility",
+        "calendar invitation versus pickup confirmation",
+        "Positions pickup planning around one responsible adult, claiming a pickup, and reminders when unclaimed. Retrieved section also mentions family communication and permissions. These are first-party claims only.",
+        "shared pickup responsibility",
+        "notification versus actual collection",
+        "helper permission versus attendance",
+        "readonly subscription versus editable schedule"
+      ],
+      "intentEvidenceNote": "Verbatim recorded intent/topic/summary where present; null means no URL-specific intent was recorded. URL spelling is not body evidence.",
+      "existingCanonicals": [
+        "family-pickup-calendar-handoff",
+        "planning-a-week-in-ten-minutes",
+        "sharing-one-event-not-your-calendar"
+      ],
+      "canonicalMappingBasis": "Editorial candidate routing from recorded topic or URL label; not proof target body covers the task. Null/empty where unsupported.",
+      "nextAction": "No repeat body read needed for recorded scope; keep provider features distinct.",
+      "provenance": [
+        {
+          "file": "research/competitors/batch06-family-discovery-20261021.json",
+          "field": "/sources/1/url",
+          "record": {
+            "publisher": "Kid Pickup",
+            "url": "https://kidpickup.com/",
+            "textCoverage": "Returned first128of386lines, partial",
+            "summary": "Positions pickup planning around one responsible adult, claiming a pickup, and reminders when unclaimed. Retrieved section also mentions family communication and permissions. These are first-party claims only.",
+            "candidateQueries": [
+              "shared pickup responsibility",
+              "calendar invitation versus pickup confirmation"
+            ],
+            "cloudBoundary": "No Cloud claim of automatic claiming, read receipts, chats or driver reassignment."
+          },
+          "batchQueries": [
+            "iPhone calendar app weather forecast widget",
+            "shared family calendar app iPhone school pickup",
+            "iPhone calendar app widget not updating",
+            "calendar app iPhone event wrong calendar default"
+          ],
+          "queryAssociation": "Batch-level only; original file does not attribute an individual query to this URL.",
+          "statusEvidence": "partial"
+        },
+        {
+          "file": "research/competitors/batch17-family-responsibility-primary-20261022.json",
+          "record": {
+            "url": "https://kidpickup.com/",
+            "publisher": "Kid Pickup",
+            "textCoverage": "Full substantive body2-310 via turn126view1 and turn127view0; fresh firstsection turn134view1. Footer/link destinations not audited.",
+            "readRefs": [
+              "turn126view1",
+              "turn127view0",
+              "turn134view1"
+            ],
+            "candidateIntents": [
+              "shared pickup responsibility",
+              "notification versus actual collection",
+              "helper permission versus attendance",
+              "readonly subscription versus editable schedule"
+            ],
+            "boundary": "Posted/claimed/nudged flows are publisher claims; Cloud copy uses explicit manual agreement, not automatic assignment or escalation."
+          },
+          "statusEvidence": "full"
+        }
+      ]
+    },
+    {
+      "url": "https://www.famcove.com/free-family-calendar",
+      "publisher": "FamCove",
+      "status": "full",
+      "observedQueryOrIntent": [
+        "family handoff planning",
+        "school flyer calendar import",
+        "Frames shared family calendars around coverage responsibility and imports from school documents. Page describes additional household workflows. No independent feature or comparative truth audit.",
+        "coverage responsibility",
+        "school flyer review before calendar import",
+        "free family calendar versus extra household functions"
+      ],
+      "intentEvidenceNote": "Verbatim recorded intent/topic/summary where present; null means no URL-specific intent was recorded. URL spelling is not body evidence.",
+      "existingCanonicals": [
+        "family-pickup-calendar-handoff",
+        "planning-a-week-in-ten-minutes",
+        "sharing-one-event-not-your-calendar"
+      ],
+      "canonicalMappingBasis": "Editorial candidate routing from recorded topic or URL label; not proof target body covers the task. Null/empty where unsupported.",
+      "nextAction": "No repeat body read needed for recorded scope; keep provider features distinct.",
+      "provenance": [
+        {
+          "file": "research/competitors/batch06-family-discovery-20261021.json",
+          "field": "/sources/3/url",
+          "record": {
+            "publisher": "FamCove",
+            "url": "https://www.famcove.com/free-family-calendar",
+            "textCoverage": "Returned first209of334lines, partial",
+            "summary": "Frames shared family calendars around coverage responsibility and imports from school documents. Page describes additional household workflows. No independent feature or comparative truth audit.",
+            "candidateQueries": [
+              "family handoff planning",
+              "school flyer calendar import"
+            ],
+            "cloudBoundary": "No Cloud PDF/OCR-to-event, legal audit log, child-care expense, chores or automatic assignment promises."
+          },
+          "batchQueries": [
+            "iPhone calendar app weather forecast widget",
+            "shared family calendar app iPhone school pickup",
+            "iPhone calendar app widget not updating",
+            "calendar app iPhone event wrong calendar default"
+          ],
+          "queryAssociation": "Batch-level only; original file does not attribute an individual query to this URL.",
+          "statusEvidence": "partial"
+        },
+        {
+          "file": "research/competitors/batch17-family-responsibility-primary-20261022.json",
+          "record": {
+            "url": "https://www.famcove.com/free-family-calendar",
+            "publisher": "FamCove",
+            "textCoverage": "Full substantive body28-293 via turn126view2 and turn127view1; composite homepage/free-plan extraction. Fresh intro turn134view2.",
+            "readRefs": [
+              "turn126view2",
+              "turn127view1",
+              "turn134view2"
+            ],
+            "candidateIntents": [
+              "coverage responsibility",
+              "school flyer review before calendar import",
+              "free family calendar versus extra household functions"
+            ],
+            "boundary": "No Cloud OCR/chores/locator/legal audit/tax receipt features inferred. Prices/testimonials/statistics/absolute free or privacy guarantees not independently verified."
+          },
+          "statusEvidence": "full"
         }
       ]
     }

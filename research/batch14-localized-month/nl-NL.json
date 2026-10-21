@@ -1,0 +1,91 @@
+{
+  "updated": "2026-10-22",
+  "title": "Maandkalender op iPad en iPhone: bekijk de datums en controleer de details",
+  "short": "Maandweergave gebruiken zonder details te missen",
+  "description": "Vergelijk datums op iPad of iPhone. Controleer verborgen afspraken, geselecteerde agenda’s en tijden vóór je gedeelde of herhaalde afspraken verplaatst.",
+  "lede": "De maandweergave laat zien op welke datums afspraken vallen. Ze bewijst minder goed of een bepaald uur vrij is. Kies met het overzicht een datum en bekijk daarna de dag en afspraak voordat je toezegt. Deze gids is gepubliceerd door Arte Soft, de ontwikkelaar van Cloud Calendars.",
+  "commonBelief": "Een groter maandraster toont elk detail, en een schijnbaar lege datum bewijst dat iedereen beschikbaar is.",
+  "sections": [
+    {
+      "heading": "Bepaal of je datums of exacte uren nodig hebt",
+      "body": [
+        "Gebruik de maand om een projectdeadline, reis en familieafspraak over meerdere weken te vergelijken. Wil je weten of twee afspraken om 14.30 uur overlappen, schakel dan naar dag- of weekweergave en controleer begin en einde. Een maandvak heeft niet dezelfde tijdschaal als een uurraster.",
+        "Een workshoporganisator kan eerst een reisweek uitsluiten. Controleer daarna de voorgestelde dag: afspraken, voorbereiding, reistijd en gewenste eindtijd. Een leeg ogend vak is een mogelijkheid om te onderzoeken, geen bevestigde boeking of uitspraak over andermans beschikbaarheid."
+      ]
+    },
+    {
+      "heading": "Lees het extra aantal in plaats van alleen zichtbare titels te tellen",
+      "body": [
+        "Een maandvak in Cloud Calendars toont momenteel een beperkt aantal afspraaklabels en een extra aantal als die datum meer afspraken bevat. Titels blijven op één regel en kunnen worden ingekort. Open de dag of afspraak wanneer de volledige titel of overige afspraken ertoe doen.",
+        "Een groter iPad-scherm kan het overzicht leesbaarder maken, maar meer ruimte heft niet noodzakelijk alle weergavelimieten op. Een smal appvenster of grotere tekst beïnvloedt wat past. Doe op iPhone dezelfde controle: open de dag voordat je zichtbare labels als de volledige planning beschouwt."
+      ]
+    },
+    {
+      "heading": "Controleer maand, geselecteerde agenda’s en aangrenzende datums",
+      "body": [
+        "Lees de weergegeven maand en het jaar voordat je een datum kiest. Om rijen te vullen kan het raster datums uit een aangrenzende maand tonen. Gebruik in Cloud Calendars de maandnavigatie en controleer de geselecteerde datum in plaats van alleen de positie van een vak.",
+        "Controleer welke agenda’s geselecteerd zijn. Werkafspraken verbergen kan een gezinsplanning overzichtelijker maken, maar haalt die verplichtingen ook uit dat overzicht. Onderzoek je een duplicaat, verberg dan tijdelijk één bron en vergelijk. Verwijder geen afspraak alleen om de maand rustiger te maken."
+      ]
+    },
+    {
+      "heading": "Open een afspraak voordat je een gedeelde planning verandert",
+      "body": [
+        "Controleer titel, eigenaar of agenda, lokale tijd en duur in de details. Kleur helpt bij het scannen, maar vervangt kennis van de account of je bewerkingsrechten niet. Een zichtbare uitnodiging is iets anders dan een afspraak die je zelf organiseert.",
+        "Cloud Calendars biedt slepen in de maandweergave om afspraken naar een andere datum te verplaatsen. Stel bij een echte afspraak eerst de bedoelde datum en het bereik van herhalingen vast. Open de afspraak na een toegestane wijziging opnieuw; een lokale handeling bewijst niet dat de aanbieder of elke deelnemer de wijziging heeft aanvaard."
+      ]
+    },
+    {
+      "heading": "Controleer herhalingen en tijdzones afzonderlijk",
+      "body": [
+        "Verplaats je alleen de les van deze week, verander dan niet per ongeluk het toekomstige patroon. Lees de beschikbare keuze voor het herhalingsbereik en controleer daarna zowel de gewijzigde als een latere afspraak. De maand maakt vergelijken eenvoudig, maar het bewerkingsbereik bepaalt het effect.",
+        "Controleer bij reizen of vergaderingen tussen tijdzones expliciet de lokale datum en tijd. Naar een andere dag verplaatsen zet de bedoelde vergadertijd niet automatisch om. Controleer zo nodig de overgang naar zomer- of wintertijd en bevestig het tijdstip met de betrokkenen."
+      ]
+    },
+    {
+      "heading": "Gebruik het grotere overzicht zonder producten te verwarren",
+      "body": [
+        "Apple Agenda heeft eigen maandopties; Teamup beschrijft verschillende weergaven voor browser en mobiele app. Die instellingen horen bij die producten. Zoek Teamups browserconfiguratie of het weergavemenu van Apple Agenda niet in Cloud Calendars alleen omdat de indelingen dezelfde naam hebben.",
+        "Een maand afspraken is ook geen maand weersverwachtingen. Controleer voor buitenactiviteiten afzonderlijk plaats, datum en beschikbare voorspellingsuren. Bewaar de definitieve afspraak in de bedoelde agenda en bevestig wijzigingen rechtstreeks met deelnemers."
+      ]
+    }
+  ],
+  "claims": {},
+  "practical": [
+    "Kies mogelijke datums in de maand en controleer exacte uren in dag- of weekweergave.",
+    "Open dagen met een extra aantal of ingekorte titels.",
+    "Controleer maand, jaar en geselecteerde agenda’s voordat je een datum vrij noemt.",
+    "Bevestig agenda, tijd, duur en bewerkingsrecht van de afspraak.",
+    "Lees het herhalingsbereik en controleer de opgeslagen afspraak na verplaatsing.",
+    "Controleer beschikbare weersinformatie apart en bevestig wijzigingen met deelnemers."
+  ],
+  "faq": [
+    {
+      "q": "Toont de iPad-maandweergave elke afspraak volledig?",
+      "a": "Ga daar niet van uit. Cloud Calendars beperkt afspraaklabels per maandvak en toont een extra aantal. Open de dag en afspraak voor de volledige planning."
+    },
+    {
+      "q": "Betekent een lege dag dat ik vrij ben?",
+      "a": "Controleer eerst geselecteerde agenda’s, datum en of relevante accountgegevens aanwezig zijn. Het overzicht toont alleen informatie die momenteel beschikbaar en zichtbaar is."
+    },
+    {
+      "q": "Verandert verplaatsen van een herhaalde afspraak alleen die datum?",
+      "a": "Lees de keuze voor het bewerkingsbereik in plaats van dit aan te nemen. Controleer na opslaan de gewijzigde en een latere afspraak en bevestig de bedoelde planning."
+    }
+  ],
+  "sourcesHeading": "Vergelijk de officiële beschrijvingen van weergaven",
+  "sources": [
+    {
+      "label": "Apple: maand-, meerdaagse en lijstweergaven in Apple Agenda",
+      "url": "https://support.apple.com/en-ca/guide/iphone/iphfd1054569/ios"
+    },
+    {
+      "label": "Teamup: agendaweergaven en configuratie in browser versus app",
+      "url": "https://calendar.teamup.com/kb/how-to-use-calendar-views/"
+    }
+  ],
+  "seeAlso": [
+    "icloud-google-and-outlook-in-one-view",
+    "weather-inside-your-calendar",
+    "sharing-one-event-not-your-calendar"
+  ]
+}
