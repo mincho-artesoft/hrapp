@@ -98,38 +98,91 @@ export const ARTICLES_RO: Readonly<Record<string, LocalisedArticle>> = {
 },
 
   'weather-inside-your-calendar': {
-  "title": "Un calendar care are deja vremea în el",
-  "short": "Vremea în calendar",
-  "description": "Planifică ziua cu evenimentele și vremea în aceeași vedere. Află cum se integrează prognoza disponibilă și ce limite are perioada acoperită.",
-  "lede": "Aproape toată lumea își organizează ziua între două aplicații. Calendarul spune unde trebuie să fii; cea de vreme spune ce vreme va fi când ajungi. A ține cele două lucruri împreună în cap este partea pe care nimeni nu observă că o face — până când se pierde o sâmbătă.",
-  "commonBelief": "Că un calendar e pentru întâlniri și o aplicație de vreme e pentru vreme, și că a le ține separat este pur și simplu felul în care funcționează telefoanele.",
+  "updated": "2026-10-22",
+  "title": "Calendar cu vreme pe iPhone și iPad: verifică planul în context",
+  "short": "Folosește calendarul și vremea împreună",
+  "description": "Folosește calendarul și vremea pe iPhone și iPad. Verifică locul, orele de prognoză disponibile și detaliile evenimentului înainte de salvare.",
+  "lede": "Calendarul arată când este programat un angajament. Vremea răspunde la altă întrebare: ce condiții sunt prognozate pentru locul și perioada necesare. Folosește-le împreună, păstrând clare locurile și datele. Ghidul este publicat de Arte Soft, dezvoltatorul Cloud Calendars.",
+  "commonBelief": "Vremea afișată lângă calendar descrie automat adresa fiecărei întâlniri, fiecare oră și orice dată viitoare.",
   "sections": [
     {
-      "heading": "Prețul a două aplicații nu sunt două atingeri",
+      "heading": "Alege o întrebare concretă de planificare",
       "body": [
-        "Comutarea nu costă nimic. Scump este că cele două nu se pun niciodată de acord asupra a ce contează. Calendarul știe că sâmbătă de la unsprezece sunt două ore ocupate; aplicația de vreme știe că plouă de la zece la unu. Niciuna nu știe că aceste două fapte împreună înseamnă că blocul trebuie mutat.",
-        "Stratul de integrare sunteți dumneavoastră. Merge până când aveți mult de lucru, adică exact atunci când protejarea planurilor valorează cel mai mult."
+        "Începe cu o întâlnire concretă, precum o vizită în parc după-amiaza. Identifică ce s-ar putea schimba: ora, locul, pregătirea sau alegerea unei alternative. Nu trebuie să reorganizezi tot calendarul doar fiindcă simbolul zilei arată ploaie.",
+        "Notează începutul și sfârșitul real al activității, inclusiv pregătirea când contează. Ansamblul calendarului ajută la găsirea datelor posibile, iar verificarea vremii privește un loc și interval precis. Separă aceste roluri când compari opțiuni."
       ]
     },
     {
-      "heading": "Prognoza disponibilă",
+      "heading": "Confirmă locul prognozei",
       "body": [
-        "Cloud Calendars folosește prognoza disponibilă pentru locul selectat. Datele orare și zilnice pot acoperi perioade diferite.",
-        "Datele pe care le puteți vedea în calendar nu determină intervalul prognozei. Vizualizarea lunară nu înseamnă prognoză pentru întreaga lună sau pentru fiecare eveniment."
+        "Cloud Calendars oferă vreme pentru locul curent sau selectat. Verifică locația afișată, fără să presupui că adresa unui eveniment schimbă automat prognoza. O întâlnire în alt oraș trebuie comparată cu vremea acelui oraș.",
+        "De exemplu, un vizitator poate planifica sosirea la muzeu când telefonul este încă acasă. Citește locația prognozei și ora locală a întâlnirii înainte să le compari. Valorile apropiate pe ecran nu dovedesc folosirea aceluiași loc."
+      ]
+    },
+    {
+      "heading": "Verifică separat orele și zilele disponibile",
+      "body": [
+        "Folosește rezumatul zilnic pentru orientare și orele disponibile pentru o parte a zilei. O rezervare de la două la cinci cere mai mult decât privirea unui simbol. Verifică dacă orele relevante chiar sunt prezente.",
+        "În sursa actuală a aplicației, lista zilnică preia până la zece zile returnate de WeatherKit. Aceasta diferă de navigarea calendarului și de orele furnizate. O întâlnire viitoare nu extinde prognoza. Dacă perioada lipsește, planifică o verificare meteo ulterioară."
+      ]
+    },
+    {
+      "heading": "Înțelege semnificația valorilor",
+      "body": [
+        "Apple documentează date WeatherKit precum temperatură, precipitații, vânt și UV, unele produse fiind disponibile doar în anumite regiuni. Citește valorile pentru locul ales, fără să aștepți toate produsele meteo peste tot.",
+        "Ghidul Met Office arată de ce contează perioada și definiția variabilei: unele valori descriu un moment, altele un interval. Folosește etichetele furnizorului relevant. Probabilitatea, cantitatea și durata ploii sunt întrebări diferite; un singur număr nu decide orice activitate în aer liber."
+      ]
+    },
+    {
+      "heading": "Revizuiește schița creată dintr-o oră meteo",
+      "body": [
+        "Acolo unde aplicația permite crearea unui eveniment dintr-o oră, deschide o schiță. Sursa actuală folosește fusul locului prognozei, propune o oră durată și alege calendarul implicit pentru evenimente noi. Inspectează fiecare valoare înainte de salvare.",
+        "Confirmă titlul, calendarul destinație, începutul, sfârșitul și locul dorit. Selectarea prognozei nu acordă drept de editare a unui calendar partajat, nu anunță locația și nu rezervă o sală. Verifică evenimentul salvat și obține acordurile necesare."
+      ]
+    },
+    {
+      "heading": "Separă demonstrația de pe site",
+      "body": [
+        "Demonstrația meteo interactivă de pe site folosește Open-Meteo. Aplicația folosește Apple WeatherKit. Demonstrația ajută la explorarea prezentării, dar locul, datele și perioada disponibilă pot diferi de aplicație.",
+        "Pentru o decizie reală, deschide aplicația și compară întâlnirea cu prognoza disponibilă. Dacă schimbi un plan comun, confirmă organizatorul, domeniul repetării și participanții. Stabiliți o alternativă când activitatea depinde de condiții."
       ]
     }
   ],
-  "claims": {
-    "price": "Cât costă funcțiile de vreme"
-  },
+  "claims": {},
   "practical": [
-    "Verificați locul, data și orele disponibile înainte de a planifica folosind prognoza."
+    "Identifică întâlnirea și decizia influențată de vreme.",
+    "Confirmă locația meteo și data și ora locală ale întâlnirii.",
+    "Verifică orele disponibile separat de rezumatul zilnic.",
+    "Citește probabilitatea, cantitatea și alte valori după etichete.",
+    "Revizuiește toate detaliile schiței și calendarul destinație înainte de salvare.",
+    "Verifică din nou la momentul deciziei și confirmă direct schimbările comune."
   ],
-  "seeAlso": [
-    "icloud-google-and-outlook-in-one-view",
-    "what-a-subscription-actually-buys"
+  "faq": [
+    {
+      "q": "Vremea de lângă calendar urmează adresa fiecărui eveniment?",
+      "a": "Nu presupune asta. Verifică locația meteo afișată și compar-o cu destinația; apropierea pe ecran nu dovedește potrivirea."
+    },
+    {
+      "q": "Aplicația folosește furnizorul meteo al site-ului?",
+      "a": "Nu. Aplicația folosește Apple WeatherKit, iar demonstrația site-ului folosește separat Open-Meteo."
+    },
+    {
+      "q": "Alegerea unei ore de prognoză salvează automat întâlnirea?",
+      "a": "Pornește o schiță unde acțiunea este oferită. Verifică data, fusul, durata, calendarul și locul, apoi salvează evenimentul dorit."
+    }
   ],
-  "updated": "2026-10-21"
+  "sourcesHeading": "Surse oficiale și lecturi suplimentare",
+  "sources": [
+    {
+      "label": "Apple: informații WeatherKit și disponibilitate regională",
+      "url": "https://developer.apple.com/weatherkit/"
+    },
+    {
+      "label": "Met Office: locul, perioadele și valorile prognozei",
+      "url": "https://weather.metoffice.gov.uk/guides/what-does-this-forecast-mean"
+    }
+  ],
+  "seeAlso": []
 },
 
   'icloud-google-and-outlook-in-one-view': {

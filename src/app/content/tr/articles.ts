@@ -98,38 +98,91 @@ export const ARTICLES_TR: Readonly<Record<string, LocalisedArticle>> = {
 },
 
   'weather-inside-your-calendar': {
-  "title": "Havayı zaten içinde taşıyan bir takvim",
-  "short": "Takvimin içindeki hava",
-  "description": "Etkinlikleri ve hava durumunu aynı görünümde planlayın. Mevcut tahminin takvime nasıl eklendiğini ve hangi dönemleri kapsadığını öğrenin.",
-  "lede": "Neredeyse herkes gününü iki uygulama arasında planlar. Takvim nerede olunacağını söyler; hava uygulaması varıldığında havanın nasıl olacağını. İkisini kafada bir arada tutmak, kimsenin yaptığını fark etmediği kısımdır — ta ki bir cumartesi boşa gidene kadar.",
-  "commonBelief": "Takvimin randevular, hava uygulamasının hava için olduğu ve ikisini ayrı tutmanın telefonların çalışma biçimi olduğu.",
+  "updated": "2026-10-22",
+  "title": "iPhone ve iPad’de hava durumlu takvim: planı bağlamıyla kontrol edin",
+  "short": "Takvim ve hava durumunu birlikte kullanın",
+  "description": "iPhone ve iPad’de takvimle hava durumunu birlikte kullanın. Kaydetmeden seçili yeri, mevcut tahmin saatlerini ve etkinlik ayrıntılarını kontrol edin.",
+  "lede": "Takvim bir işin ne zaman planlandığını söyler. Hava durumu başka soruya yanıt verir: gereken yer ve dönem için hangi koşullar bekleniyor? Yerleri ve tarihleri açık tutarak ikisini birlikte kullanın. Rehber Cloud Calendars geliştiricisi Arte Soft tarafından yayımlanmıştır.",
+  "commonBelief": "Takvimin yanındaki hava durumu otomatik olarak her randevu adresini, her saati ve tüm gelecek tarihleri kapsar.",
   "sections": [
     {
-      "heading": "İki uygulamanın bedeli iki dokunuş değildir",
+      "heading": "Somut bir planlama sorusu seçin",
       "body": [
-        "Geçiş yapmak hiçbir şeye mal olmaz. Pahalı olan, ikisinin neyin önemli olduğu konusunda asla anlaşmamasıdır. Takviminiz cumartesi on birde iki saatin dolu olduğunu bilir; hava uygulaması ondan bire kadar yağmur yağdığını bilir. Hiçbiri, bu iki olgunun birlikte bloğun kaydırılması gerektiği anlamına geldiğini bilmez.",
-        "Bütünleştirme katmanı sizsiniz. Bu, işiniz yoğunlaşana kadar işler — ki planları korumanın en çok değdiği an tam da odur."
+        "Öğleden sonra park ziyareti gibi belirli bir randevuyla başlayın. Neyin değişebileceğini belirleyin: saat, yer, hazırlık veya alternatif seçimi. Günün simgesinde yağmur var diye bütün takvimi yeniden düzenlemek gerekmez.",
+        "Gerekliyse hazırlık dahil etkinliğin gerçek başlangıç ve bitişini yazın. Takvim görünümü olası tarihleri bulmaya, tahmin kontrolü belirli yer ve aralığı değerlendirmeye yarar. Seçenekleri karşılaştırırken bu işleri ayırın."
       ]
     },
     {
-      "heading": "Mevcut hava tahmini",
+      "heading": "Önce tahminin yerini doğrulayın",
       "body": [
-        "Cloud Calendars, seçilen konum için mevcut hava tahminini kullanır. Saatlik ve günlük veriler farklı dönemleri kapsayabilir.",
-        "Takvimde görebildiğiniz tarihler tahminin kapsamını belirlemez. Ay görünümü, tüm ay veya her etkinlik için tahmin olduğu anlamına gelmez."
+        "Cloud Calendars mevcut veya seçili yer için hava durumu sunar. Etkinlik adresinin tahmini sessizce değiştirdiğini varsaymak yerine gösterilen konumu kontrol edin. Başka şehirdeki randevuyu o şehrin havasıyla karşılaştırmak gerekir.",
+        "Örneğin telefon hâlâ evdeyken müzeye varış planlanıyor olabilir. Karşılaştırmadan önce tahmin konumunu ve randevunun yerel saatini okuyun. Ekranda yakın duran değerler, program ve tahminin aynı yeri kullandığını kanıtlamaz."
+      ]
+    },
+    {
+      "heading": "Saatlik ve günlük kapsamı ayrı kontrol edin",
+      "body": [
+        "Genel fikir için günlük girdiyi, günün bir bölümü için mevcut saatlik girdileri kullanın. İkiden beşe kadar rezervasyon tek simgeden fazlasını gerektirir. İlgili saatlerin gerçekten bulunduğunu kontrol edin.",
+        "Uygulamanın mevcut kaynak kodunda günlük liste WeatherKit’in döndürdüğü en fazla on günü alır. Bu, takvim gezinmesinden ve sağlanan saatlerden ayrıdır. Gelecek randevu tahmin kapsamını uzatmaz. Dönemi yoksa daha sonra tekrar hava kontrolü planlayın."
+      ]
+    },
+    {
+      "heading": "Hava değerinin anlamını okuyun",
+      "body": [
+        "Apple sıcaklık, yağış, rüzgâr ve UV gibi WeatherKit verilerini açıklar; bazı ürünler yalnızca belirli bölgelerde bulunur. Her ürünün her yerde olmasını beklemek yerine seçtiğiniz yerin mevcut değerlerini okuyun.",
+        "Met Office rehberi dönem ve değişken tanımının önemini gösterir: bazı değerler bir anı, bazıları süreyi anlatır. İlgili sağlayıcının etiketlerini kullanın. Yağmur olasılığı, miktarı ve süresi ayrı sorulardır; tek sayı her açık hava etkinliğini belirlemez."
+      ]
+    },
+    {
+      "heading": "Tahmin saatinden oluşan taslağı inceleyin",
+      "body": [
+        "Uygulama bir saatten etkinlik oluşturmayı sunduğunda taslak açar. Mevcut kaynak, hava konumunun saat dilimini kullanır, bir saat süre önerir ve yeni etkinlikler için varsayılan takvimi seçer. Kaydetmeden her değeri inceleyin.",
+        "Başlığı, hedef takvimi, başlangıç ve bitişi, amaçlanan konumu doğrulayın. Tahmin seçmek ortak takvimi düzenleme izni vermez, mekâna haber göndermez veya oda ayırtmaz. Kaydedilen etkinliği kontrol edip gereken anlaşmaları sağlayın."
+      ]
+    },
+    {
+      "heading": "Web sitesi demosunu ayrı tutun",
+      "body": [
+        "Web sitesinin etkileşimli hava demosu Open-Meteo kullanır. Uygulama Apple WeatherKit kullanır. Demo sunumu keşfetmek için yararlıdır ama yeri, verisi ve mevcut tarihleri uygulamadan farklı olabilir.",
+        "Gerçek karar için uygulamayı açıp randevuyu mevcut tahminle karşılaştırın. Ortak plan değişiyorsa düzenleyiciyi, tekrar kapsamını ve katılımcıları doğrulayın. Etkinlik koşullara bağlıysa üzerinde anlaşılmış bir alternatif bulundurun."
       ]
     }
   ],
-  "claims": {
-    "price": "Hava özelliklerinin ücreti"
-  },
+  "claims": {},
   "practical": [
-    "Tahmine göre plan yapmadan önce konumu, tarihi ve mevcut saatleri kontrol edin."
+    "Randevuyu ve havanın değiştirebileceği kararı belirleyin.",
+    "Tahmin konumunu ve randevunun yerel tarih ve saatini doğrulayın.",
+    "Mevcut saatlik kapsamı günlük özetten ayrı inceleyin.",
+    "Olasılık, miktar ve diğer değerleri etiketleriyle okuyun.",
+    "Kaydetmeden taslağı ve hedef takvimi kontrol edin.",
+    "Karar anında yeniden kontrol edip ortak değişiklikleri doğrudan doğrulayın."
   ],
-  "seeAlso": [
-    "icloud-google-and-outlook-in-one-view",
-    "what-a-subscription-actually-buys"
+  "faq": [
+    {
+      "q": "Takvimin yanındaki hava her etkinliğin adresini takip eder mi?",
+      "a": "Varsaymayın. Gösterilen hava konumunu mekânla karşılaştırın; ekranda yakın olmaları eşleşmeyi kanıtlamaz."
+    },
+    {
+      "q": "Uygulama sitenin hava sağlayıcısını mı kullanır?",
+      "a": "Hayır. Uygulama Apple WeatherKit, site demosu ayrı olarak Open-Meteo kullanır."
+    },
+    {
+      "q": "Tahmin saati seçmek randevuyu otomatik kaydeder mi?",
+      "a": "Bu işlem sunulduğunda taslak başlatır. Tarih, saat dilimi, süre, takvim ve konumu kontrol edip istediğiniz etkinliği kaydedin."
+    }
   ],
-  "updated": "2026-10-21"
+  "sourcesHeading": "Resmî kaynaklar ve ek okumalar",
+  "sources": [
+    {
+      "label": "Apple: WeatherKit tahminleri ve bölgesel kullanılabilirlik",
+      "url": "https://developer.apple.com/weatherkit/"
+    },
+    {
+      "label": "Met Office: tahmin yeri, dönemleri ve hava değerleri",
+      "url": "https://weather.metoffice.gov.uk/guides/what-does-this-forecast-mean"
+    }
+  ],
+  "seeAlso": []
 },
 
   'icloud-google-and-outlook-in-one-view': {

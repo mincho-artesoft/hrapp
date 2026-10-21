@@ -1,6 +1,108 @@
 import { LocalisedArticle } from '../types';
 
 export const HELP_EN_US: Readonly<Record<string, LocalisedArticle>> = {
+  "disconnect-calendar-integration-without-losing-track": {
+  "updated": "2026-10-22",
+  "title": "Disconnect a calendar integration: access, sync and existing copies",
+  "short": "Disconnect a calendar integration carefully",
+  "description": "Separate calendar sign-out, provider access and existing copies. Check Cloud Calendars account routes before disconnecting or removing a calendar.",
+  "lede": "Stopping a connection and removing its calendar copies are different decisions. Identify the route you use and preserve needed information before choosing a disconnect action. This guide is published by Arte Soft, the developer of Cloud Calendars.",
+  "commonBelief": "Signing out only pauses updates, revokes every related permission and leaves all existing calendar data exactly as it was.",
+  "sections": [
+    {
+      "heading": "Identify the connection you intend to stop",
+      "body": [
+        "Start with the account and calendar that own the events. A provider account added through iPhone settings, a direct connection in Cloud Calendars, an iCalendar subscription and the app’s sharing identity are separate routes. The same email address does not make their controls interchangeable.",
+        "Write down the calendar names and which route displays them, without sharing private event details. Decide whether your aim is to stop future access, leave a shared arrangement or remove a copy. If you are investigating a missing or duplicate event, disconnecting is not the first diagnostic step."
+      ]
+    },
+    {
+      "heading": "Check what the app’s sign-out action removes",
+      "body": [
+        "The implementation reviewed for this guide attempts to disconnect the selected Google calendar profile and remove its mapped calendar copies from the iOS calendar store. Treat this as a removal action, not a pause. A connection error can still occur, so check the provider’s access status separately rather than assuming every permission was revoked.",
+        "The Microsoft calendar-profile sign-out path also attempts to remove its mapped calendars and local connection records. Do not assume those copies will remain visible. Calendar-copy storage can depend on the device’s available sources, so check the source and preserve needed information before proceeding."
+      ]
+    },
+    {
+      "heading": "Review future access at the provider separately",
+      "body": [
+        "Google’s linked-app controls distinguish Sign in with Google from access to Google Account data. Review the intended app, account and link type. Removing the relevant data access and stopping a sign-in link answer different questions; an app-level sign-out alone is not proof that every connection is gone.",
+        "For a Microsoft work or school account, Microsoft documents My Apps > Manage your application to review permissions. You can revoke permissions you personally granted, but administrator-granted access needs the organisation’s administrator. This is work-or-school guidance, not a universal procedure for personal Microsoft accounts."
+      ]
+    },
+    {
+      "heading": "Separate a sharing identity from calendar-provider sync",
+      "body": [
+        "Cloud Calendars also has an account used for sharing. Its current source treats signing out of that account separately from the calendar-profile connections: it clears the local sharing session and reduces locally tracked shared access to reader status. That is not a declaration that all server data has been deleted.",
+        "When multiple sharing identities are linked, disconnecting one retains the account through another identity. With the final identity, the current path signs out locally and leaves the server link for recovery. Do not use signing out as a substitute for a data-deletion request or assume it also disconnects every calendar provider."
+      ]
+    },
+    {
+      "heading": "Handle subscriptions and previous copies by their own rules",
+      "body": [
+        "Apple documents unsubscribing from an external calendar separately from selecting which calendars to display. If the item is a read-only subscription, identify that subscription before using its unsubscribe control. Hiding a calendar, unsubscribing from a feed and deleting an editable calendar are different operations.",
+        "Google notes that removing an app’s access may still require a separate request to delete data the developer already holds. Likewise, a previously exported file or another person’s copy is not recalled by a permission switch. Keep privacy or retention follow-up separate from whether new updates are still authorised."
+      ]
+    },
+    {
+      "heading": "Confirm the outcome before cleaning up anything else",
+      "body": [
+        "After an intentional change, check the provider’s connection status and compare the original calendar with the app. Identify what stopped updating, what disappeared locally and what remains elsewhere. Do not delete lookalike events merely because a connection name no longer appears.",
+        "If the result is unexpected, stop further cleanup and contact support with the account route, calendar source and the action you used. Do not send passwords, access tokens, private feed URLs or screenshots of sensitive appointments. Explain whether the original provider calendar still has the events so support can distinguish a connection problem from a missing copy."
+      ]
+    }
+  ],
+  "claims": {},
+  "practical": [
+    "Identify the exact account, calendar and connection route.",
+    "Decide whether you want to stop access, leave sharing or remove a copy.",
+    "Preserve needed information through a verified export or backup route.",
+    "Read what the installed sign-out or disconnect action removes before using it.",
+    "Review provider permissions separately; involve an administrator for managed access.",
+    "Check the result at the provider and app before any further cleanup."
+  ],
+  "faq": [
+    {
+      "q": "Does signing out of a direct Cloud Calendars connection keep its calendar copies?",
+      "a": "Do not assume that. The inspected Google and Microsoft calendar-profile paths attempt to remove their mapped calendars from the iOS store. Review the source and preserve needed information before disconnecting."
+    },
+    {
+      "q": "Does removing an app’s Google access delete data it already copied?",
+      "a": "Google says you may need to request deletion of data already held by the developer separately. Review future access and retained data as different outcomes."
+    },
+    {
+      "q": "Is signing out of the sharing account the same as deleting it?",
+      "a": "No. The current sharing path clears a local session and retains recovery behaviour; it is separate from the calendar-provider sign-out paths and is not proof of server-data deletion."
+    }
+  ],
+  "sourcesHeading": "Official access and subscription guidance",
+  "sources": [
+    {
+      "label": "Google: manage linked apps and different connection types",
+      "url": "https://support.google.com/accounts/answer/13533235?hl=en"
+    },
+    {
+      "label": "Google: access and data already held by a linked app",
+      "url": "https://support.google.com/accounts/answer/14012355?hl=en"
+    },
+    {
+      "label": "Microsoft: work or school My Apps permissions",
+      "url": "https://support.microsoft.com/en-us/accounts-billing/work-school/edit-or-revoke-application-permissions-in-the-my-apps-portal"
+    },
+    {
+      "label": "Apple: calendar selection and subscriptions on iPhone",
+      "url": "https://support.apple.com/guide/iphone/use-multiple-calendars-iph3d1110d4/ios"
+    }
+  ],
+  "seeAlso": [
+    "what-calendar-sync-actually-does",
+    "calendar-export-ics-pdf-and-backup",
+    "taking-back-a-calendar-you-shared",
+    "the-secret-address-of-a-google-calendar",
+    "when-two-calendars-disagree"
+  ]
+},
+
   "caldav-calendar-on-iphone": {
   "updated": "2026-10-22",
   "title": "CalDAV calendar on iPhone: setup, permissions and missing events",

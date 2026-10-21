@@ -1,0 +1,9 @@
+{
+  "allPassed": true,
+  "articleObjectsChanged": 32,
+  "fullLocalizedWeatherRewrites": 29,
+  "newEnglishGuides": 1,
+  "relatedLinksOnlyObjects": 2,
+  "sharedFactsScope": "Onlynewguideplusnow-unusedweathernumericclaims;allotherfactsunchanged",
+  "scope": "ActualdiffagainstHEAD; exactdraftparity/shape/source/date/description guards, related-only objectimmutability. Notnative-speaker, release-runtime orrank certification."
+}

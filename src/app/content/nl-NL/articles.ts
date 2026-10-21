@@ -102,38 +102,95 @@ export const ARTICLES_NL_NL: Readonly<Record<string, LocalisedArticle>> = {
 },
 
   'weather-inside-your-calendar': {
-  "title": "Een agenda waar het weer al in zit",
-  "short": "Het weer in de agenda",
-  "description": "Plan afspraken en weer in één overzicht. Lees hoe de beschikbare voorspelling in de agenda past en waarom die niet elke zichtbare datum dekt.",
-  "lede": "Bijna iedereen deelt zijn dag in tussen twee apps. De agenda zegt waar u moet zijn; de weer-app zegt wat voor weer het is als u er bent. Die twee in uw hoofd bij elkaar houden is het deel dat niemand merkt te doen — tot een zaterdag in het water valt.",
-  "commonBelief": "Dat een agenda voor afspraken is en een weer-app voor het weer, en dat ze gescheiden houden nu eenmaal is hoe telefoons werken.",
+  "updated": "2026-10-22",
+  "title": "Agenda met weer op iPhone en iPad: bekijk een plan in zijn context",
+  "short": "Agenda en weer samen gebruiken",
+  "description": "Gebruik agenda en weer op iPhone en iPad. Controleer plaats, beschikbare voorspellingsuren en afspraakdetails voordat je een plan opslaat.",
+  "lede": "Een agenda vertelt wanneer een afspraak gepland staat. Het weer beantwoordt een andere vraag: welke omstandigheden worden verwacht voor de plaats en periode die je nodig hebt? Gebruik beide samen en houd locaties en datums duidelijk. Deze gids is gepubliceerd door Arte Soft, de ontwikkelaar van Cloud Calendars.",
+  "commonBelief": "Weer naast een agenda beschrijft automatisch het adres van elke afspraak, elk uur en elke toekomstige datum.",
   "sections": [
     {
-      "heading": "De prijs van twee apps zijn geen twee tikken",
+      "heading": "Begin met een concrete planningsvraag",
       "body": [
-        "Wisselen kost niets. Duur is dat de twee het nooit eens worden over wat telt. Uw agenda weet dat zaterdag om elf uur twee uur bezet is; de weer-app weet dat het van tien tot één regent. Geen van beide weet dat die twee feiten samen betekenen dat het blok moet verschuiven.",
-        "U bent de integratielaag. Dat werkt tot u het druk hebt, precies wanneer plannen beschermen het meest waard is."
+        "Kies een bepaalde afspraak, zoals een middagbezoek aan een park. Bepaal wat kan veranderen: tijd, locatie, voorbereiding of de keuze voor een alternatief. Je hoeft niet je hele agenda om te gooien omdat het dagsymbool regen toont.",
+        "Noteer het echte begin en einde van de activiteit, inclusief voorbereiding waar nodig. Het agendaoverzicht helpt mogelijke datums te vinden; de weercontrole betreft een specifieke plaats en periode. Houd die twee taken gescheiden wanneer je opties vergelijkt."
       ]
     },
     {
-      "heading": "De beschikbare voorspelling",
+      "heading": "Controleer de weerlocatie voordat je waarden leest",
       "body": [
-        "Cloud Calendars gebruikt de beschikbare voorspelling voor de gekozen locatie. Uur- en daggegevens kunnen verschillende perioden beslaan.",
-        "De datums die je in de agenda kunt bekijken, bepalen niet hoe ver de voorspelling reikt. Een maandweergave betekent geen voorspelling voor de hele maand of elke afspraak."
+        "Cloud Calendars biedt weer voor de huidige of geselecteerde plaats. Controleer de weergegeven locatie in plaats van aan te nemen dat het afspraakadres de voorspelling ongemerkt verandert. Voor een afspraak in een andere stad moet je het weer van die stad vergelijken.",
+        "Je kunt bijvoorbeeld een museumbezoek plannen terwijl je telefoon nog thuis is. Lees eerst de voorspellingslocatie en lokale afspraaktijd. Waarden die dicht bij elkaar op het scherm staan, bewijzen niet dat agenda en weer dezelfde plaats gebruiken."
+      ]
+    },
+    {
+      "heading": "Controleer uur- en dagdekking afzonderlijk",
+      "body": [
+        "Gebruik het dagoverzicht ter oriëntatie en de beschikbare uurgegevens voor een deel van de dag. Een afspraak van twee tot vijf vraagt meer dan een blik op één symbool. Controleer of de relevante uren werkelijk aanwezig zijn.",
+        "In de huidige appbroncode neemt de daglijst maximaal tien door WeatherKit teruggegeven dagen over. Dat staat los van agendanavigatie en van de momenteel geleverde uren. Een toekomstige afspraak verlengt de weersdekking niet. Ontbreekt de periode, plan dan een latere weercontrole."
+      ]
+    },
+    {
+      "heading": "Lees wat de weerwaarde betekent",
+      "body": [
+        "Apple beschrijft WeatherKit-gegevens zoals temperatuur, neerslag, wind en UV; sommige producten zijn slechts in bepaalde regio’s beschikbaar. Lees de beschikbare waarden voor jouw plaats in plaats van overal elk weerproduct te verwachten.",
+        "De uitleg van het Met Office laat zien waarom de voorspellingsperiode en definities belangrijk zijn: sommige waarden gelden voor een moment, andere voor een periode. Volg de labels van de betreffende aanbieder. Regenkans, hoeveelheid en duur zijn verschillende vragen; geen enkel getal beslist over elke buitenactiviteit."
+      ]
+    },
+    {
+      "heading": "Controleer een concept dat vanuit een weeruur is gemaakt",
+      "body": [
+        "Waar de app een afspraak vanuit een uur laat maken, opent deze een concept. De huidige broncode gebruikt de tijdzone van de weerlocatie, stelt één uur voor en kiest de standaardagenda voor nieuwe afspraken. Bekijk elke waarde vóór het opslaan.",
+        "Bevestig titel, doelagenda, begin, einde en bedoelde locatie. Een voorspelling selecteren geeft geen bewerkingsrecht voor een gedeelde agenda, meldt niets aan een locatie en reserveert geen ruimte. Controleer de opgeslagen afspraak en regel de benodigde instemming."
+      ]
+    },
+    {
+      "heading": "Houd de websitedemonstratie apart",
+      "body": [
+        "De interactieve weerdemonstratie op de website gebruikt Open-Meteo. De app gebruikt Apple WeatherKit. De webdemo helpt om de presentatie te verkennen, maar plaats, gegevens en beschikbare datums kunnen van de app verschillen.",
+        "Open voor een echte beslissing de app en vergelijk de bedoelde afspraak met de beschikbare voorspelling. Controleer bij wijzigingen aan een gedeeld plan de organisator, het herhalingsbereik en de deelnemers. Spreek een alternatief af als de activiteit van omstandigheden afhangt."
       ]
     }
   ],
-  "claims": {
-    "price": "Wat de weerfuncties kosten"
-  },
+  "claims": {},
   "practical": [
-    "Controleer locatie, datum en beschikbare uren voordat je met de voorspelling plant."
+    "Bepaal de afspraak en welke beslissing het weer kan beïnvloeden.",
+    "Controleer de weerlocatie en de lokale datum en tijd van de afspraak.",
+    "Bekijk de beschikbare uurdekking los van het dagoverzicht.",
+    "Lees kans, hoeveelheid en andere relevante waarden volgens hun labels.",
+    "Controleer alle conceptdetails en de doelagenda vóór het opslaan.",
+    "Controleer opnieuw op het beslismoment en bevestig gedeelde wijzigingen rechtstreeks."
+  ],
+  "faq": [
+    {
+      "q": "Volgt het weer naast mijn agenda elk afspraakadres?",
+      "a": "Ga daar niet van uit. Controleer de weergegeven weerlocatie en vergelijk die met de bestemming; nabijheid op het scherm bewijst geen overeenkomst."
+    },
+    {
+      "q": "Gebruikt de app de weeraanbieder van de website?",
+      "a": "Nee. De app gebruikt Apple WeatherKit; de websitedemonstratie gebruikt afzonderlijk Open-Meteo."
+    },
+    {
+      "q": "Slaat het kiezen van een voorspellingsuur automatisch een afspraak op?",
+      "a": "Het opent een concept waar die actie beschikbaar is. Controleer datum, tijdzone, duur, agenda en locatie en sla daarna de bedoelde afspraak op."
+    }
   ],
   "seeAlso": [
+    "month-view-on-a-bigger-screen",
     "icloud-google-and-outlook-in-one-view",
-    "what-a-subscription-actually-buys"
+    "sharing-one-event-not-your-calendar"
   ],
-  "updated": "2026-10-21"
+  "sourcesHeading": "Officiële bronnen en verder lezen",
+  "sources": [
+    {
+      "label": "Apple: WeatherKit-voorspellingen en regionale beschikbaarheid",
+      "url": "https://developer.apple.com/weatherkit/"
+    },
+    {
+      "label": "Met Office: voorspellingsplaats, perioden en weerwaarden",
+      "url": "https://weather.metoffice.gov.uk/guides/what-does-this-forecast-mean"
+    }
+  ]
 },
 
   'icloud-google-and-outlook-in-one-view': {

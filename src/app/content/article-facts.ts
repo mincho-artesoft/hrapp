@@ -18,6 +18,7 @@ import { ArticleFacts } from './types';
  * long tail around those twelve.
  */
 export const ARTICLE_FACTS: Readonly<Record<string, ArticleFacts>> = {
+  'disconnect-calendar-integration-without-losing-track': { slug: 'disconnect-calendar-integration-without-losing-track', family: 'unify', intent: 'unify', claims: [], updated: '2026-10-22' },
   'caldav-calendar-on-iphone': { slug: 'caldav-calendar-on-iphone', family: 'unify', intent: 'unify', claims: [], updated: '2026-10-22' },
   'event-saved-to-wrong-calendar': { slug: 'event-saved-to-wrong-calendar', family: 'planning', intent: 'core', claims: [], updated: '2026-10-21' },
   'family-pickup-calendar-handoff': { slug: 'family-pickup-calendar-handoff', family: 'planning', intent: 'core', claims: [], updated: '2026-10-21' },
@@ -30,10 +31,7 @@ export const ARTICLE_FACTS: Readonly<Record<string, ArticleFacts>> = {
     family: 'weather',
     intent: 'core',
     prompt: 'weather-builtin',
-    claims: [
-      { id: 'views', value: '5' },
-      { id: 'price', value: '0' },
-    ],
+    claims: [],
     updated: '2026-08-27',
   },
   'forecast-beside-every-event': {

@@ -1,0 +1,87 @@
+{
+  "updated": "2026-10-22",
+  "title": "Kalenteri ja sää iPhonella ja iPadilla: tarkista suunnitelman olosuhteet",
+  "short": "Käytä kalenteria ja säätä yhdessä",
+  "description": "Käytä kalenteria ja säätä yhdessä iPhonella ja iPadilla. Tarkista paikka, saatavilla olevat ennustetunnit ja tapahtuman tiedot ennen tallennusta.",
+  "lede": "Kalenteri kertoo, milloin meno on sovittu. Sää vastaa toiseen kysymykseen: millaisia olosuhteita tarvittavaan paikkaan ja ajanjaksoon ennustetaan? Käytä molempia pitäen paikat ja päivät selvinä. Oppaan julkaisee Cloud Calendarsin kehittäjä Arte Soft.",
+  "commonBelief": "Kalenterin vieressä näkyvä sää kuvaa automaattisesti jokaisen tapaamisen osoitetta, jokaista tuntia ja kaikkia tulevia päiviä.",
+  "sections": [
+    {
+      "heading": "Valitse todellinen suunnittelukysymys",
+      "body": [
+        "Aloita tietystä menosta, kuten iltapäivän puistokäynnistä. Tunnista mahdollinen muutos: aika, paikka, valmistelu tai vaihtoehdon valinta. Koko kalenteria ei tarvitse järjestellä uudelleen vain siksi, että päivän symbolissa on sadetta.",
+        "Kirjaa toiminnan todellinen alku ja loppu sekä tarvittaessa valmistelut. Kalenterin yleiskuva auttaa löytämään mahdollisia päiviä, kun taas ennusteen tarkistus koskee tiettyä paikkaa ja aikaväliä. Erota tehtävät vaihtoehtoja verratessasi."
+      ]
+    },
+    {
+      "heading": "Varmista sääpaikka ennen arvojen lukemista",
+      "body": [
+        "Cloud Calendars tarjoaa nykyisen tai valitun paikan sään. Tarkista näkyvä sijainti sen sijaan, että olettaisit tapahtuman osoitteen muuttavan ennustetta huomaamatta. Toisessa kaupungissa oleva meno on verrattava sen kaupungin säähän.",
+        "Vierailija voi esimerkiksi suunnitella museolle saapumista puhelimen ollessa vielä kotona. Lue ennusteen sijainti ja tapaamisen paikallinen aika ennen vertailua. Näytöllä vierekkäiset arvot eivät todista aikataulun ja sään koskevan samaa paikkaa."
+      ]
+    },
+    {
+      "heading": "Tarkista tunti- ja päiväkattavuus erikseen",
+      "body": [
+        "Käytä päivätietoa yleiskuvaksi ja saatavilla olevia tuntitietoja päivän osaa koskevaan kysymykseen. Meno kahdesta viiteen vaatii enemmän kuin yhden symbolin vilkaisemisen. Tarkista, että tarvittavat tunnit ovat oikeasti saatavilla.",
+        "Nykyisessä sovelluskoodissa päiväluettelo ottaa enintään kymmenen WeatherKitin palauttamaa päivää. Se on erillinen kalenterin navigoinnista ja toimitetuista tunneista. Tuleva tapaaminen ei pidennä sääennustetta. Jos ajanjakso puuttuu, sovi myöhempi säätarkistus."
+      ]
+    },
+    {
+      "heading": "Ymmärrä sääarvon merkitys",
+      "body": [
+        "Apple kuvaa WeatherKitin tietoja kuten lämpötila, sade, tuuli ja UV; osa tuotteista on saatavilla vain tietyillä alueilla. Lue valitsemasi paikan arvot odottamatta kaikkia säätuotteita kaikkialla.",
+        "Met Officen ohje osoittaa ennustejakson ja muuttujamääritelmien merkityksen: osa arvoista koskee hetkeä, osa ajanjaksoa. Käytä kyseisen palveluntarjoajan nimikkeitä. Sateen todennäköisyys, määrä ja kesto ovat eri kysymyksiä, eikä yksi luku ratkaise kaikkea ulkotoimintaa."
+      ]
+    },
+    {
+      "heading": "Tarkista sääajasta luotu luonnos",
+      "body": [
+        "Kun sovellus tarjoaa tapahtuman luomista tunnista, se avaa luonnoksen. Nykyinen koodi käyttää sääpaikan aikavyöhykettä, ehdottaa tunnin kestoa ja valitsee uusien tapahtumien oletuskalenterin. Tarkista jokainen arvo ennen tallennusta.",
+        "Varmista nimi, kohdekalenteri, alku, loppu ja tarkoitettu paikka. Ennusteen valinta ei anna jaetun kalenterin muokkausoikeutta, ilmoita tilan pitäjälle tai varaa huonetta. Tarkista tallennettu tapahtuma ja hanki suunnitelman vaatimat sopimukset."
+      ]
+    },
+    {
+      "heading": "Pidä verkkosivun esittely erillisenä",
+      "body": [
+        "Sivuston vuorovaikutteinen sääesittely käyttää Open-Meteota. Sovellus käyttää Apple WeatherKitiä. Verkkoesittely auttaa tutustumaan esitystapaan, mutta sen paikka, tiedot ja saatavilla olevat päivät voivat erota sovelluksesta.",
+        "Todellista päätöstä varten avaa sovellus ja vertaa suunniteltua menoa saatavilla olevaan ennusteeseen. Jaettua suunnitelmaa muuttaessasi varmista järjestäjä, toiston laajuus ja osallistujat. Pidä sovittu vaihtoehto, jos toiminta riippuu olosuhteista."
+      ]
+    }
+  ],
+  "claims": {},
+  "practical": [
+    "Tunnista tapaaminen ja päätös, johon sää voi vaikuttaa.",
+    "Varmista sääpaikka sekä tapaamisen paikallinen päivä ja aika.",
+    "Tarkista saatavilla olevat tunnit erillään päiväyhteenvedosta.",
+    "Lue todennäköisyys, määrä ja muut arvot nimikkeiden mukaan.",
+    "Tarkista luonnoksen kaikki tiedot ja kohdekalenteri ennen tallennusta.",
+    "Tarkista uudelleen päätöshetkellä ja vahvista yhteiset muutokset suoraan."
+  ],
+  "faq": [
+    {
+      "q": "Seuraako kalenterin sää jokaisen tapahtuman osoitetta?",
+      "a": "Älä oleta niin. Varmista näkyvä sääpaikka ja vertaa sitä tapahtumapaikkaan; läheisyys näytöllä ei osoita vastaavuutta."
+    },
+    {
+      "q": "Käyttääkö sovellus verkkosivun sääpalvelua?",
+      "a": "Ei. Sovellus käyttää Apple WeatherKitiä ja sivuston esittely erikseen Open-Meteota."
+    },
+    {
+      "q": "Tallentaako ennustetunnin valinta tapaamisen automaattisesti?",
+      "a": "Se aloittaa luonnoksen siellä, missä toiminto on tarjolla. Tarkista päivä, aikavyöhyke, kesto, kalenteri ja paikka ja tallenna sitten tarkoitettu tapahtuma."
+    }
+  ],
+  "seeAlso": [],
+  "sourcesHeading": "Viralliset lähteet ja lisätietoa",
+  "sources": [
+    {
+      "label": "Apple: WeatherKit-ennusteet ja alueellinen saatavuus",
+      "url": "https://developer.apple.com/weatherkit/"
+    },
+    {
+      "label": "Met Office: ennustepaikka, ajanjaksot ja sääarvot",
+      "url": "https://weather.metoffice.gov.uk/guides/what-does-this-forecast-mean"
+    }
+  ]
+}

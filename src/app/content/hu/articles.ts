@@ -102,38 +102,95 @@ export const ARTICLES_HU: Readonly<Record<string, LocalisedArticle>> = {
 },
 
   'weather-inside-your-calendar': {
-  "title": "Naptár, amelyben már benne van az időjárás",
-  "short": "Az időjárás a naptárban",
-  "description": "Miért tervezési hiba két alkalmazást megnézni egy nap beosztásához, és hogyan néz ki az a naptár, amelyben az előrejelzés a nézet része, nem pedig mellette áll.",
-  "lede": "Szinte mindenki két alkalmazás között osztja be a napját. A naptár megmondja, hol kell lenni; az időjárás-alkalmazás megmondja, milyen idő lesz odaérve. A kettőt együtt tartani a fejben az a rész, amiről senki nem tudja, hogy csinálja — amíg el nem vész egy szombat.",
-  "commonBelief": "Hogy a naptár a találkozókról szól, az időjárás-alkalmazás az időjárásról, és hogy külön tartani őket egyszerűen így működnek a telefonok.",
+  "updated": "2026-10-22",
+  "title": "Naptár időjárással iPhone-on és iPaden: vizsgálja meg a terv körülményeit",
+  "short": "Naptár és időjárás együtt",
+  "description": "Használja együtt a naptárt és időjárást iPhone-on, iPaden. Mentés előtt ellenőrizze a helyet, az elérhető órás előrejelzést és az eseményt.",
+  "lede": "A naptár megmondja, mikorra szól egy program. Az időjárás más kérdésre válaszol: milyen körülmények várhatók a szükséges helyen és időszakban? Használja együtt őket, de tartsa egyértelműen szem előtt a helyeket és dátumokat. Az útmutatót a Cloud Calendars fejlesztője, az Arte Soft adja ki.",
+  "commonBelief": "A naptár mellett látható időjárás automatikusan minden találkozó címére, minden órára és minden jövőbeli dátumra vonatkozik.",
   "sections": [
     {
-      "heading": "Két alkalmazás ára nem két koppintás",
+      "heading": "Válasszon valós tervezési kérdést",
       "body": [
-        "Váltani semmibe nem kerül. Az a drága, hogy a kettő sosem ért egyet abban, mi számít. A naptár tudja, hogy szombaton tizenegytől két óra foglalt; az időjárás-alkalmazás tudja, hogy tíztől egyig esik. Egyik sem tudja, hogy e két tény együtt azt jelenti: a blokkot el kell mozdítani.",
-        "Az integrációs réteg Ön. Ez addig működik, amíg nincs sok dolga — vagyis pontosan addig, amíg a tervek védelme a legtöbbet érné."
+        "Induljon egy konkrét programból, például délutáni parklátogatásból. Határozza meg, mi változhat: az időpont, a helyszín, a felkészülés vagy egy alternatíva választása. Nem kell az egész naptárt átszervezni pusztán azért, mert a napi jel esőt mutat.",
+        "Írja fel a tevékenység tényleges kezdetét és végét, szükség esetén az előkészülettel együtt. A naptári áttekintés lehetséges dátumokat keres, az előrejelzés vizsgálata viszont konkrét helyre és időszakra vonatkozik. Az opciók összehasonlításakor különítse el a két feladatot."
       ]
     },
     {
-      "heading": "Az elérhető előrejelzés",
+      "heading": "Az értékek olvasása előtt ellenőrizze az időjárási helyet",
       "body": [
-        "A Cloud Calendars a kiválasztott helyhez elérhető előrejelzést használja. Az óránkénti és napi adatok eltérő időszakokat fedhetnek le.",
-        "A naptárban megtekinthető dátumok nem határozzák meg az előrejelzés hosszát. A havi nézet nem jelent az egész hónapra vagy minden eseményre szóló előrejelzést."
+        "A Cloud Calendars az aktuális vagy kiválasztott hely időjárását kínálja. Ellenőrizze a megjelenített helyet, ne feltételezze, hogy az esemény címe észrevétlenül átállítja az előrejelzést. Más városban lévő találkozóhoz annak a városnak az időjárását kell összevetni.",
+        "Például múzeumi érkezést tervezhet, miközben a telefon még otthon van. Összehasonlítás előtt olvassa el az előrejelzés helyét és a találkozó helyi időpontját. A képernyőn közeli értékek nem bizonyítják, hogy a program és az időjárás ugyanarra a helyre vonatkozik."
+      ]
+    },
+    {
+      "heading": "Az órás és napi lefedettséget külön ellenőrizze",
+      "body": [
+        "A napi adatot tájékozódásra, az elérhető órás adatokat a nap egy részére vonatkozó kérdéshez használja. A kettőtől ötig tartó programhoz egyetlen jel megtekintése nem elég. Ellenőrizze, hogy a szükséges órák ténylegesen szerepelnek-e.",
+        "Az alkalmazás jelenlegi forráskódjában a napi lista legfeljebb tíz, a WeatherKit által visszaadott napot vesz át. Ez különálló a naptárban való léptetéstől és az éppen biztosított óráktól. Egy jövőbeli találkozó nem hosszabbítja meg az előrejelzést. Ha az időszak hiányzik, tervezzen későbbi időjárás-ellenőrzést."
+      ]
+    },
+    {
+      "heading": "Értse meg az időjárási érték jelentését",
+      "body": [
+        "Az Apple többek között hőmérséklet-, csapadék-, szél- és UV-adatokat dokumentál a WeatherKithez; bizonyos termékek csak egyes régiókban érhetők el. A választott helyhez rendelkezésre álló értékeket olvassa, ne várjon minden időjárási terméket mindenhol.",
+        "A Met Office útmutatója megmutatja, miért fontos az előrejelzés időszaka és a változók meghatározása: egyes értékek pillanatra, mások időszakra vonatkoznak. Kövesse az adott szolgáltató jelöléseit. Az eső valószínűsége, mennyisége és időtartama külön kérdés; egyetlen szám nem dönt minden szabadtéri tevékenységről."
+      ]
+    },
+    {
+      "heading": "Vizsgálja meg az időjárási órából létrehozott tervezetet",
+      "body": [
+        "Ahol az alkalmazás lehetővé teszi esemény indítását egy órából, tervezet nyílik meg. A jelenlegi kód az időjárási hely időzónáját használja, egyórás időtartamot javasol, és az új események alapértelmezett naptárát választja. Mentés előtt ellenőrizzen minden értéket.",
+        "Erősítse meg a címet, célnaptárt, kezdést, befejezést és kívánt helyszínt. Az előrejelzés kiválasztása nem ad megosztott naptári szerkesztési jogot, nem értesít helyszínt, és nem foglal termet. Ellenőrizze a mentett eseményt, és szerezze meg a szükséges megállapodásokat."
+      ]
+    },
+    {
+      "heading": "Különítse el a webhely bemutatóját",
+      "body": [
+        "A webhely interaktív időjárás-bemutatója Open-Meteót használ. Az alkalmazás Apple WeatherKitet használ. A webes bemutató segít megismerni a megjelenítést, de helye, adatai és elérhető dátumai eltérhetnek az alkalmazástól.",
+        "Valós döntéshez nyissa meg az alkalmazást, és hasonlítsa össze a találkozót az elérhető előrejelzéssel. Megosztott terv módosításakor ellenőrizze a szervezőt, az ismétlődés hatókörét és a résztvevőket. A körülményektől függő programhoz legyen egyeztetett alternatíva."
       ]
     }
   ],
-  "claims": {
-    "price": "Mennyibe kerülnek az időjárási funkciók"
-  },
+  "claims": {},
   "practical": [
-    "Tervezés előtt ellenőrizze a helyet, a dátumot és az elérhető órákat."
+    "Azonosítsa a programot és a döntést, amelyet az időjárás megváltoztathat.",
+    "Erősítse meg az időjárási helyet, valamint a találkozó helyi dátumát és idejét.",
+    "Az elérhető órás lefedettséget a napi összefoglalótól külön vizsgálja.",
+    "A valószínűséget, mennyiséget és más értékeket a jelölések szerint olvassa.",
+    "Mentés előtt ellenőrizze az eseménytervezet minden részletét és célnaptárát.",
+    "A döntéskor nézze meg újra, és a közös változásokat közvetlenül egyeztesse."
+  ],
+  "faq": [
+    {
+      "q": "A naptár melletti időjárás követi minden esemény címét?",
+      "a": "Ne feltételezze ezt. Ellenőrizze a megjelenített időjárási helyet, és vesse össze a helyszínnel; a képernyőn való közelség nem bizonyít egyezést."
+    },
+    {
+      "q": "Az alkalmazás a webhely időjárás-szolgáltatóját használja?",
+      "a": "Nem. Az alkalmazás Apple WeatherKitet, a webhely bemutatója külön Open-Meteót használ."
+    },
+    {
+      "q": "Az előrejelzési óra kiválasztása automatikusan ment találkozót?",
+      "a": "Ahol ez a művelet elérhető, tervezetet indít. Ellenőrizze a dátumot, időzónát, időtartamot, naptárt és helyet, majd mentse a kívánt eseményt."
+    }
   ],
   "seeAlso": [
+    "month-view-on-a-bigger-screen",
     "icloud-google-and-outlook-in-one-view",
-    "what-a-subscription-actually-buys"
+    "sharing-one-event-not-your-calendar"
   ],
-  "updated": "2026-10-21"
+  "sourcesHeading": "Hivatalos források és további olvasnivalók",
+  "sources": [
+    {
+      "label": "Apple: WeatherKit-előrejelzések és regionális elérhetőség",
+      "url": "https://developer.apple.com/weatherkit/"
+    },
+    {
+      "label": "Met Office: az előrejelzés helye, időszakai és időjárási értékei",
+      "url": "https://weather.metoffice.gov.uk/guides/what-does-this-forecast-mean"
+    }
+  ]
 },
 
   'icloud-google-and-outlook-in-one-view': {

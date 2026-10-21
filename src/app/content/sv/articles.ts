@@ -98,38 +98,91 @@ export const ARTICLES_SV: Readonly<Record<string, LocalisedArticle>> = {
 },
 
   'weather-inside-your-calendar': {
-  "title": "En kalender som redan har vädret i sig",
-  "short": "Vädret inuti kalendern",
-  "description": "Varför två appar för att planera en dag är ett konstruktionsfel, och hur en kalender ser ut där prognosen är en del av vyn i stället för att stå bredvid.",
-  "lede": "Nästan alla planerar sin dag mellan två appar. Kalendern säger var man ska vara; väderappen säger hur det är när man kommer dit. Att hålla ihop de två i huvudet är den del ingen märker att de gör — tills en lördag går förlorad.",
-  "commonBelief": "Att en kalender är för åtaganden och en väderapp är för vädret, och att hålla dem åtskilda helt enkelt är så telefoner fungerar.",
+  "updated": "2026-10-22",
+  "title": "Kalender med väder på iPhone och iPad: granska planen i sitt sammanhang",
+  "short": "Använd kalender och väder tillsammans",
+  "description": "Använd kalender och väder på iPhone och iPad. Kontrollera vald plats, tillgängliga prognostimmar och händelsens detaljer innan du sparar.",
+  "lede": "Kalendern visar när ett åtagande är planerat. Vädret svarar på en annan fråga: vilka förhållanden väntas på platsen och under perioden du behöver? Använd båda, men håll platser och datum tydliga. Guiden publiceras av Arte Soft, utvecklaren bakom Cloud Calendars.",
+  "commonBelief": "Väder bredvid kalendern beskriver automatiskt varje mötesadress, varje timme och varje framtida datum.",
   "sections": [
     {
-      "heading": "Priset för två appar är inte två tryck",
+      "heading": "Välj en konkret planeringsfråga",
       "body": [
-        "Att växla kostar ingenting. Det dyra är att de två aldrig är överens om vad som spelar roll. Din kalender vet att lördag klockan elva är två timmar upptagna; väderappen vet att det regnar från tio till ett. Ingen av dem vet att de två fakta tillsammans betyder att blocket måste flyttas.",
-        "Integrationslagret är du. Det fungerar tills du har mycket att göra, vilket är precis när det är värt mest att skydda sina planer."
+        "Börja med ett särskilt åtagande, till exempel ett parkbesök på eftermiddagen. Identifiera vad som kan ändras: tid, plats, förberedelser eller ett alternativ. Hela kalendern behöver inte göras om bara för att dagens symbol visar regn.",
+        "Skriv upp aktivitetens verkliga start och slut, inklusive förberedelser när de är relevanta. Kalenderöversikten hjälper dig hitta möjliga datum, medan prognoskontrollen gäller en bestämd plats och period. Håll isär uppgifterna när du jämför alternativ."
       ]
     },
     {
-      "heading": "Den tillgängliga prognosen",
+      "heading": "Bekräfta prognosplatsen",
       "body": [
-        "Cloud Calendars använder den tillgängliga prognosen för vald plats. Tim- och dagsdata kan omfatta olika perioder.",
-        "Datumen du kan visa i kalendern avgör inte hur långt prognosen sträcker sig. Månadsvyn innebär inte en prognos för hela månaden eller varje händelse."
+        "Cloud Calendars erbjuder väder för aktuell eller vald plats. Kontrollera platsnamnet i stället för att anta att händelsens adress ändrar prognosen i bakgrunden. Ett möte i en annan stad behöver jämföras med den stadens väder.",
+        "En besökare kan exempelvis planera ankomsten till ett museum medan telefonen fortfarande är hemma. Läs prognosplatsen och mötets lokala tid innan du jämför. Närliggande värden på skärmen bevisar inte att kalender och väder gäller samma plats."
+      ]
+    },
+    {
+      "heading": "Kontrollera tim- och dygnstäckning separat",
+      "body": [
+        "Använd dygnsvärdet som orientering och tillgängliga timvärden för en del av dagen. En bokning från två till fem kräver mer än en blick på en symbol. Kontrollera att de relevanta timmarna faktiskt finns.",
+        "I appens nuvarande källkod tar dygnslistan upp till tio dagar som WeatherKit returnerar. Detta är separat från kalendernavigeringen och de timmar som tillhandahålls. Ett framtida möte utökar inte prognosen. Planera en senare väderkontroll om perioden saknas."
+      ]
+    },
+    {
+      "heading": "Förstå vädervärdets betydelse",
+      "body": [
+        "Apple beskriver WeatherKit-data som temperatur, nederbörd, vind och UV, med vissa produkter endast i utvalda regioner. Läs värdena för vald plats i stället för att förvänta dig alla väderprodukter överallt.",
+        "Met Offices vägledning visar varför period och variabeldefinition spelar roll: vissa värden gäller ett ögonblick, andra en period. Använd respektive leverantörs etiketter. Regnsannolikhet, mängd och varaktighet är olika frågor; inget enskilt tal avgör varje utomhusaktivitet."
+      ]
+    },
+    {
+      "heading": "Granska utkastet från en prognostimme",
+      "body": [
+        "Där appen erbjuder händelseskapande från en timme öppnas ett utkast. Nuvarande källkod använder väderplatsens tidszon, föreslår en timmes längd och väljer standardkalendern för nya händelser. Granska varje värde innan du sparar.",
+        "Bekräfta titel, målkalender, start, slut och avsedd plats. Ett prognosval ger inte redigeringsrätt i en delad kalender, meddelar inte lokalen och bokar inget rum. Kontrollera den sparade händelsen och skaffa de överenskommelser planen kräver."
+      ]
+    },
+    {
+      "heading": "Håll webbplatsens demonstration separat",
+      "body": [
+        "Webbplatsens interaktiva väderdemonstration använder Open-Meteo. Appen använder Apple WeatherKit. Demonstrationen hjälper dig utforska presentationen, men plats, data och tillgängliga datum kan skilja sig från appen.",
+        "Öppna appen för ett verkligt beslut och jämför mötet med tillgänglig prognos. Om du ändrar en gemensam plan, bekräfta arrangör, upprepningsomfattning och deltagare. Ha ett överenskommet alternativ när aktiviteten beror på förhållandena."
       ]
     }
   ],
-  "claims": {
-    "price": "Vad väderfunktionerna kostar"
-  },
+  "claims": {},
   "practical": [
-    "Kontrollera plats, datum och tillgängliga timmar innan du planerar utifrån prognosen."
+    "Identifiera åtagandet och beslutet som vädret kan påverka.",
+    "Bekräfta väderplatsen och mötets lokala datum och tid.",
+    "Granska tillgängliga timmar separat från dygnsöversikten.",
+    "Läs sannolikhet, mängd och andra värden med deras etiketter.",
+    "Kontrollera utkastets detaljer och målkalender innan du sparar.",
+    "Kontrollera igen vid beslutstillfället och bekräfta gemensamma ändringar direkt."
   ],
-  "seeAlso": [
-    "icloud-google-and-outlook-in-one-view",
-    "what-a-subscription-actually-buys"
+  "faq": [
+    {
+      "q": "Följer vädret bredvid kalendern varje händelses adress?",
+      "a": "Utgå inte från det. Kontrollera visad väderplats mot mötesplatsen; närhet på skärmen bevisar ingen matchning."
+    },
+    {
+      "q": "Använder appen webbplatsens väderleverantör?",
+      "a": "Nej. Appen använder Apple WeatherKit; webbplatsens demonstration använder Open-Meteo separat."
+    },
+    {
+      "q": "Sparas ett möte automatiskt när jag väljer prognostimme?",
+      "a": "Det startar ett utkast där funktionen finns. Kontrollera datum, tidszon, längd, kalender och plats och spara sedan önskad händelse."
+    }
   ],
-  "updated": "2026-10-21"
+  "sourcesHeading": "Officiella källor och vidare läsning",
+  "sources": [
+    {
+      "label": "Apple: WeatherKit-prognoser och regional tillgänglighet",
+      "url": "https://developer.apple.com/weatherkit/"
+    },
+    {
+      "label": "Met Office: prognosplats, perioder och vädervärden",
+      "url": "https://weather.metoffice.gov.uk/guides/what-does-this-forecast-mean"
+    }
+  ],
+  "seeAlso": []
 },
 
   'icloud-google-and-outlook-in-one-view': {

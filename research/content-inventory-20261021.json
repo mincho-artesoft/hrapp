@@ -1,5 +1,5 @@
 {
-  "date": "2026-10-21T22:12:59.722Z",
+  "date": "2026-10-21T22:36:57.619Z",
   "status": "source_inventory_not_quality_approval",
   "articles": [
     {
@@ -120,15 +120,18 @@
     {
       "locale": "ar-SA",
       "slug": "weather-inside-your-calendar",
-      "title": "تقويم يحمل الطقس بداخله أصلًا",
-      "description": "لماذا يُعدّ فتح تطبيقين لترتيب يوم واحد خللًا في التصميم، وكيف يبدو تقويم تكون فيه التوقعات جزءًا من العرض بدل أن تقف بجانبه.",
-      "descriptionCharacters": 125,
-      "sections": 2,
-      "faq": 0,
-      "words": 183,
+      "title": "تقويم مع الطقس على iPhone وiPad: افحص خطتك في سياقها",
+      "description": "استخدم التقويم والطقس معًا على iPhone وiPad. تحقق من المكان وساعات التوقع المتاحة وتفاصيل الحدث قبل حفظ خطتك.",
+      "descriptionCharacters": 109,
+      "sections": 6,
+      "faq": 3,
+      "words": 583,
       "source": "articles.ts",
-      "sources": [],
-      "updated": "2026-10-21"
+      "sources": [
+        "https://developer.apple.com/weatherkit/",
+        "https://weather.metoffice.gov.uk/guides/what-does-this-forecast-mean"
+      ],
+      "updated": "2026-10-22"
     },
     {
       "locale": "ar-SA",
@@ -344,15 +347,18 @@
     {
       "locale": "bg",
       "slug": "weather-inside-your-calendar",
-      "title": "Календар, в който времето вече е вътре",
-      "description": "Защо да гледаш две приложения, за да планираш един ден, е проектантска грешка, и как изглежда календар, в който прогнозата е част от изгледа, а не до него.",
-      "descriptionCharacters": 155,
-      "sections": 2,
-      "faq": 0,
-      "words": 204,
+      "title": "Календар с прогноза за времето на iPhone и iPad: проверете плана",
+      "description": "Планирайте с календар и прогноза за времето на iPhone и iPad. Проверете мястото, наличните прогнозни часове и събитието преди запазване.",
+      "descriptionCharacters": 136,
+      "sections": 6,
+      "faq": 3,
+      "words": 642,
       "source": "articles.ts",
-      "sources": [],
-      "updated": "2026-10-21"
+      "sources": [
+        "https://developer.apple.com/weatherkit/",
+        "https://weather.metoffice.gov.uk/guides/what-does-this-forecast-mean"
+      ],
+      "updated": "2026-10-22"
     },
     {
       "locale": "bg",
@@ -517,15 +523,18 @@
     {
       "locale": "cs",
       "slug": "weather-inside-your-calendar",
-      "title": "Kalendář, který už počasí obsahuje",
-      "description": "Proč je dívat se do dvou aplikací kvůli naplánování dne konstrukční chyba a jak vypadá kalendář, v němž je předpověď součástí pohledu, a ne vedle něj.",
-      "descriptionCharacters": 150,
-      "sections": 2,
-      "faq": 0,
-      "words": 198,
+      "title": "Kalendář s počasím na iPhonu a iPadu: ověřte plán v souvislostech",
+      "description": "Spojte kalendář a počasí na iPhonu a iPadu. Před uložením plánu ověřte vybrané místo, dostupné hodiny předpovědi a podrobnosti události.",
+      "descriptionCharacters": 136,
+      "sections": 6,
+      "faq": 3,
+      "words": 569,
       "source": "articles.ts",
-      "sources": [],
-      "updated": "2026-10-21"
+      "sources": [
+        "https://developer.apple.com/weatherkit/",
+        "https://weather.metoffice.gov.uk/guides/what-does-this-forecast-mean"
+      ],
+      "updated": "2026-10-22"
     },
     {
       "locale": "cs",
@@ -690,15 +699,18 @@
     {
       "locale": "da",
       "slug": "weather-inside-your-calendar",
-      "title": "En kalender, der allerede har vejret i sig",
-      "description": "Hvorfor to apps til at planlægge en dag er en designfejl, og hvordan en kalender ser ud, hvor udsigten er en del af visningen i stedet for at stå ved siden af.",
-      "descriptionCharacters": 159,
-      "sections": 2,
-      "faq": 0,
-      "words": 210,
+      "title": "Kalender med vejr på iPhone og iPad: vurder planen i sammenhæng",
+      "description": "Brug kalender og vejr sammen på iPhone og iPad. Kontrollér sted, tilgængelige prognosetimer og begivenhedsdetaljer, før du gemmer en plan.",
+      "descriptionCharacters": 138,
+      "sections": 6,
+      "faq": 3,
+      "words": 632,
       "source": "articles.ts",
-      "sources": [],
-      "updated": "2026-10-21"
+      "sources": [
+        "https://developer.apple.com/weatherkit/",
+        "https://weather.metoffice.gov.uk/guides/what-does-this-forecast-mean"
+      ],
+      "updated": "2026-10-22"
     },
     {
       "locale": "da",
@@ -948,15 +960,18 @@
     {
       "locale": "de-DE",
       "slug": "weather-inside-your-calendar",
-      "title": "Ein Kalender, in dem das Wetter schon drin ist",
-      "description": "Termine und Wetter gemeinsam planen: So ergänzt die verfügbare Vorhersage den Kalender, und warum sie nicht jeden sichtbaren Tag abdeckt.",
-      "descriptionCharacters": 137,
-      "sections": 2,
-      "faq": 0,
-      "words": 212,
+      "title": "Kalender mit Wetter auf iPhone und iPad: Pläne im Zusammenhang prüfen",
+      "description": "Nutze Kalender und Wetter auf iPhone und iPad gemeinsam. Prüfe Ort, verfügbare Vorhersagestunden und Termindetails, bevor du einen Plan speicherst.",
+      "descriptionCharacters": 147,
+      "sections": 6,
+      "faq": 3,
+      "words": 674,
       "source": "articles.ts",
-      "sources": [],
-      "updated": "2026-10-21"
+      "sources": [
+        "https://developer.apple.com/weatherkit/",
+        "https://weather.metoffice.gov.uk/guides/what-does-this-forecast-mean"
+      ],
+      "updated": "2026-10-22"
     },
     {
       "locale": "de-DE",
@@ -1242,15 +1257,18 @@
     {
       "locale": "el",
       "slug": "weather-inside-your-calendar",
-      "title": "Ένα ημερολόγιο που έχει ήδη τον καιρό μέσα του",
-      "description": "Οργανώστε ραντεβού και καιρό στην ίδια προβολή. Δείτε πώς εντάσσεται η διαθέσιμη πρόγνωση στο ημερολόγιο και ποια είναι τα χρονικά της όρια.",
-      "descriptionCharacters": 140,
-      "sections": 2,
-      "faq": 0,
-      "words": 241,
+      "title": "Ημερολόγιο με καιρό σε iPhone και iPad: ελέγξτε τις συνθήκες του σχεδίου",
+      "description": "Συνδυάστε ημερολόγιο και καιρό σε iPhone και iPad. Ελέγξτε τόπο, διαθέσιμες ώρες πρόγνωσης και στοιχεία συμβάντος πριν αποθηκεύσετε το σχέδιο.",
+      "descriptionCharacters": 142,
+      "sections": 6,
+      "faq": 3,
+      "words": 663,
       "source": "articles.ts",
-      "sources": [],
-      "updated": "2026-10-21"
+      "sources": [
+        "https://developer.apple.com/weatherkit/",
+        "https://weather.metoffice.gov.uk/guides/what-does-this-forecast-mean"
+      ],
+      "updated": "2026-10-22"
     },
     {
       "locale": "el",
@@ -1441,6 +1459,24 @@
         "https://support.google.com/calendar/answer/37648?hl=en"
       ],
       "updated": "2026-10-21"
+    },
+    {
+      "locale": "en-US",
+      "slug": "disconnect-calendar-integration-without-losing-track",
+      "title": "Disconnect a calendar integration: access, sync and existing copies",
+      "description": "Separate calendar sign-out, provider access and existing copies. Check Cloud Calendars account routes before disconnecting or removing a calendar.",
+      "descriptionCharacters": 146,
+      "sections": 6,
+      "faq": 3,
+      "words": 866,
+      "source": "articles-help.ts",
+      "sources": [
+        "https://support.google.com/accounts/answer/13533235?hl=en",
+        "https://support.google.com/accounts/answer/14012355?hl=en",
+        "https://support.microsoft.com/en-us/accounts-billing/work-school/edit-or-revoke-application-permissions-in-the-my-apps-portal",
+        "https://support.apple.com/guide/iphone/use-multiple-calendars-iph3d1110d4/ios"
+      ],
+      "updated": "2026-10-22"
     },
     {
       "locale": "en-US",
@@ -2333,15 +2369,18 @@
     {
       "locale": "es-ES",
       "slug": "weather-inside-your-calendar",
-      "title": "Un calendario que ya lleva el tiempo dentro",
-      "description": "Planifica con tus citas y el tiempo en la misma vista. Descubre cómo se integra la previsión disponible y qué límites tiene su alcance.",
-      "descriptionCharacters": 135,
-      "sections": 2,
-      "faq": 0,
-      "words": 240,
+      "title": "Calendario con tiempo en iPhone y iPad: revisa tus planes en contexto",
+      "description": "Usa calendario y tiempo juntos en iPhone y iPad. Comprueba el lugar, las horas de previsión disponibles y los detalles antes de guardar un plan.",
+      "descriptionCharacters": 144,
+      "sections": 6,
+      "faq": 3,
+      "words": 778,
       "source": "articles.ts",
-      "sources": [],
-      "updated": "2026-10-21"
+      "sources": [
+        "https://developer.apple.com/weatherkit/",
+        "https://weather.metoffice.gov.uk/guides/what-does-this-forecast-mean"
+      ],
+      "updated": "2026-10-22"
     },
     {
       "locale": "es-ES",
@@ -2627,15 +2666,18 @@
     {
       "locale": "fi",
       "slug": "weather-inside-your-calendar",
-      "title": "Kalenteri, jossa sää on jo sisällä",
-      "description": "Miksi kahden sovelluksen katsominen päivän suunnittelemiseksi on suunnitteluvirhe, ja millainen on kalenteri, jossa ennuste on osa näkymää eikä sen vieressä.",
-      "descriptionCharacters": 157,
-      "sections": 2,
-      "faq": 0,
-      "words": 182,
+      "title": "Kalenteri ja sää iPhonella ja iPadilla: tarkista suunnitelman olosuhteet",
+      "description": "Käytä kalenteria ja säätä yhdessä iPhonella ja iPadilla. Tarkista paikka, saatavilla olevat ennustetunnit ja tapahtuman tiedot ennen tallennusta.",
+      "descriptionCharacters": 145,
+      "sections": 6,
+      "faq": 3,
+      "words": 520,
       "source": "articles.ts",
-      "sources": [],
-      "updated": "2026-10-21"
+      "sources": [
+        "https://developer.apple.com/weatherkit/",
+        "https://weather.metoffice.gov.uk/guides/what-does-this-forecast-mean"
+      ],
+      "updated": "2026-10-22"
     },
     {
       "locale": "fi",
@@ -2885,15 +2927,18 @@
     {
       "locale": "fr-FR",
       "slug": "weather-inside-your-calendar",
-      "title": "Un agenda qui contient déjà la météo",
-      "description": "Planifiez avec vos rendez-vous et la météo dans une même vue. Découvrez les prévisions disponibles et les limites de leur portée.",
-      "descriptionCharacters": 129,
-      "sections": 2,
-      "faq": 0,
-      "words": 243,
+      "title": "Calendrier et météo sur iPhone et iPad : vérifier un projet dans son contexte",
+      "description": "Associez calendrier et météo sur iPhone et iPad. Vérifiez le lieu, les heures de prévision disponibles et les détails avant d’enregistrer un projet.",
+      "descriptionCharacters": 148,
+      "sections": 6,
+      "faq": 3,
+      "words": 769,
       "source": "articles.ts",
-      "sources": [],
-      "updated": "2026-10-21"
+      "sources": [
+        "https://developer.apple.com/weatherkit/",
+        "https://weather.metoffice.gov.uk/guides/what-does-this-forecast-mean"
+      ],
+      "updated": "2026-10-22"
     },
     {
       "locale": "fr-FR",
@@ -3179,15 +3224,18 @@
     {
       "locale": "he",
       "slug": "weather-inside-your-calendar",
-      "title": "יומן שכבר מכיל בתוכו את מזג האוויר",
-      "description": "למה בדיקה בשתי אפליקציות כדי לסדר יום אחד היא כשל תכנוני, ואיך נראה יומן שבו התחזית היא חלק מהתצוגה במקום לעמוד לצידה.",
-      "descriptionCharacters": 118,
-      "sections": 2,
-      "faq": 0,
-      "words": 180,
+      "title": "יומן עם מזג אוויר ב-iPhone וב-iPad: בדקו את התוכנית בהקשר",
+      "description": "השתמשו ביומן ובמזג האוויר יחד ב-iPhone וב-iPad. בדקו מקום, שעות תחזית זמינות ופרטי אירוע לפני שמירת תוכנית.",
+      "descriptionCharacters": 107,
+      "sections": 6,
+      "faq": 3,
+      "words": 584,
       "source": "articles.ts",
-      "sources": [],
-      "updated": "2026-10-21"
+      "sources": [
+        "https://developer.apple.com/weatherkit/",
+        "https://weather.metoffice.gov.uk/guides/what-does-this-forecast-mean"
+      ],
+      "updated": "2026-10-22"
     },
     {
       "locale": "he",
@@ -3352,15 +3400,18 @@
     {
       "locale": "hi",
       "slug": "weather-inside-your-calendar",
-      "title": "ऐसा कैलेंडर जिसमें मौसम पहले से मौजूद है",
-      "description": "एक दिन की योजना बनाने के लिए दो ऐप देखना क्यों एक डिज़ाइन की चूक है, और वह कैलेंडर कैसा होता है जिसमें पूर्वानुमान बगल में खड़ा होने के बजाय दृश्य का हिस्सा हो।",
-      "descriptionCharacters": 160,
-      "sections": 2,
-      "faq": 0,
-      "words": 261,
+      "title": "iPhone और iPad पर मौसम वाला कैलेंडर: योजना की परिस्थितियाँ जाँचें",
+      "description": "iPhone और iPad पर कैलेंडर और मौसम साथ देखें। योजना सहेजने से पहले चुनी जगह, उपलब्ध पूर्वानुमान के घंटे और इवेंट विवरण जाँचें।",
+      "descriptionCharacters": 125,
+      "sections": 6,
+      "faq": 3,
+      "words": 809,
       "source": "articles.ts",
-      "sources": [],
-      "updated": "2026-10-21"
+      "sources": [
+        "https://developer.apple.com/weatherkit/",
+        "https://weather.metoffice.gov.uk/guides/what-does-this-forecast-mean"
+      ],
+      "updated": "2026-10-22"
     },
     {
       "locale": "hi",
@@ -3525,15 +3576,18 @@
     {
       "locale": "hu",
       "slug": "weather-inside-your-calendar",
-      "title": "Naptár, amelyben már benne van az időjárás",
-      "description": "Miért tervezési hiba két alkalmazást megnézni egy nap beosztásához, és hogyan néz ki az a naptár, amelyben az előrejelzés a nézet része, nem pedig mellette áll.",
-      "descriptionCharacters": 160,
-      "sections": 2,
-      "faq": 0,
-      "words": 201,
+      "title": "Naptár időjárással iPhone-on és iPaden: vizsgálja meg a terv körülményeit",
+      "description": "Használja együtt a naptárt és időjárást iPhone-on, iPaden. Mentés előtt ellenőrizze a helyet, az elérhető órás előrejelzést és az eseményt.",
+      "descriptionCharacters": 139,
+      "sections": 6,
+      "faq": 3,
+      "words": 660,
       "source": "articles.ts",
-      "sources": [],
-      "updated": "2026-10-21"
+      "sources": [
+        "https://developer.apple.com/weatherkit/",
+        "https://weather.metoffice.gov.uk/guides/what-does-this-forecast-mean"
+      ],
+      "updated": "2026-10-22"
     },
     {
       "locale": "hu",
@@ -3698,15 +3752,18 @@
     {
       "locale": "id",
       "slug": "weather-inside-your-calendar",
-      "title": "Kalender yang sudah memuat cuaca di dalamnya",
-      "description": "Rencanakan hari dengan acara dan cuaca dalam satu tampilan. Pahami prakiraan yang tersedia dan batas jangkauannya di kalender.",
-      "descriptionCharacters": 126,
-      "sections": 2,
-      "faq": 0,
-      "words": 195,
+      "title": "Kalender dengan cuaca di iPhone dan iPad: periksa konteks rencana",
+      "description": "Gunakan kalender dan cuaca di iPhone dan iPad. Periksa lokasi, jam prakiraan yang tersedia, dan detail acara sebelum menyimpan rencana.",
+      "descriptionCharacters": 135,
+      "sections": 6,
+      "faq": 3,
+      "words": 646,
       "source": "articles.ts",
-      "sources": [],
-      "updated": "2026-10-21"
+      "sources": [
+        "https://developer.apple.com/weatherkit/",
+        "https://weather.metoffice.gov.uk/guides/what-does-this-forecast-mean"
+      ],
+      "updated": "2026-10-22"
     },
     {
       "locale": "id",
@@ -3956,15 +4013,18 @@
     {
       "locale": "it",
       "slug": "weather-inside-your-calendar",
-      "title": "Un calendario che contiene già il meteo",
-      "description": "Pianifica con appuntamenti e meteo nella stessa vista. Scopri come le previsioni disponibili entrano nel calendario e quali periodi coprono.",
-      "descriptionCharacters": 140,
-      "sections": 2,
-      "faq": 0,
-      "words": 218,
+      "title": "Calendario con meteo su iPhone e iPad: valuta il contesto di un programma",
+      "description": "Usa calendario e meteo su iPhone e iPad. Controlla luogo, ore di previsione disponibili e dettagli dell’evento prima di salvare un programma.",
+      "descriptionCharacters": 141,
+      "sections": 6,
+      "faq": 3,
+      "words": 724,
       "source": "articles.ts",
-      "sources": [],
-      "updated": "2026-10-21"
+      "sources": [
+        "https://developer.apple.com/weatherkit/",
+        "https://weather.metoffice.gov.uk/guides/what-does-this-forecast-mean"
+      ],
+      "updated": "2026-10-22"
     },
     {
       "locale": "it",
@@ -4250,15 +4310,18 @@
     {
       "locale": "ja",
       "slug": "weather-inside-your-calendar",
-      "title": "天気がすでに入っているカレンダー",
-      "description": "一日の予定を組むのに二つのアプリを見るのがなぜ設計上の欠陥なのか。そして、予報が隣に置かれるのではなく画面の一部になっているカレンダーとはどういうものか。",
-      "descriptionCharacters": 77,
-      "sections": 2,
-      "faq": 0,
-      "words": 13,
+      "title": "iPhoneとiPadの天気付きカレンダー：予定の条件を確認する",
+      "description": "iPhoneとiPadでカレンダーと天気を活用。計画を保存する前に、選択した場所、利用可能な予報時間、予定の詳細を確認しましょう。",
+      "descriptionCharacters": 65,
+      "sections": 6,
+      "faq": 3,
+      "words": 39,
       "source": "articles.ts",
-      "sources": [],
-      "updated": "2026-10-21"
+      "sources": [
+        "https://developer.apple.com/weatherkit/",
+        "https://weather.metoffice.gov.uk/guides/what-does-this-forecast-mean"
+      ],
+      "updated": "2026-10-22"
     },
     {
       "locale": "ja",
@@ -4423,15 +4486,18 @@
     {
       "locale": "ko",
       "slug": "weather-inside-your-calendar",
-      "title": "날씨가 이미 들어 있는 달력",
-      "description": "하루를 짜기 위해 앱을 두 개 보는 것이 왜 설계 결함인지, 그리고 예보가 옆에 놓이는 대신 화면의 일부인 달력은 어떤 모습인지.",
-      "descriptionCharacters": 72,
-      "sections": 2,
-      "faq": 0,
-      "words": 187,
+      "title": "iPhone과 iPad의 날씨 캘린더: 계획의 조건 확인하기",
+      "description": "iPhone과 iPad에서 캘린더와 날씨를 함께 쓰세요. 계획을 저장하기 전에 선택한 장소, 제공되는 예보 시간과 일정 세부 정보를 확인하세요.",
+      "descriptionCharacters": 80,
+      "sections": 6,
+      "faq": 3,
+      "words": 549,
       "source": "articles.ts",
-      "sources": [],
-      "updated": "2026-10-21"
+      "sources": [
+        "https://developer.apple.com/weatherkit/",
+        "https://weather.metoffice.gov.uk/guides/what-does-this-forecast-mean"
+      ],
+      "updated": "2026-10-22"
     },
     {
       "locale": "ko",
@@ -4596,15 +4662,18 @@
     {
       "locale": "ms",
       "slug": "weather-inside-your-calendar",
-      "title": "Kalendar yang sudah mengandungi cuaca",
-      "description": "Rancang hari dengan acara dan cuaca dalam satu paparan. Fahami ramalan yang tersedia dalam kalendar serta had tempohnya.",
-      "descriptionCharacters": 120,
-      "sections": 2,
-      "faq": 0,
-      "words": 194,
+      "title": "Kalendar dengan cuaca pada iPhone dan iPad: semak konteks rancangan",
+      "description": "Gunakan kalendar dan cuaca pada iPhone dan iPad. Semak tempat, jam ramalan tersedia dan butiran acara sebelum menyimpan rancangan.",
+      "descriptionCharacters": 130,
+      "sections": 6,
+      "faq": 3,
+      "words": 647,
       "source": "articles.ts",
-      "sources": [],
-      "updated": "2026-10-21"
+      "sources": [
+        "https://developer.apple.com/weatherkit/",
+        "https://weather.metoffice.gov.uk/guides/what-does-this-forecast-mean"
+      ],
+      "updated": "2026-10-22"
     },
     {
       "locale": "ms",
@@ -4769,15 +4838,18 @@
     {
       "locale": "nl-NL",
       "slug": "weather-inside-your-calendar",
-      "title": "Een agenda waar het weer al in zit",
-      "description": "Plan afspraken en weer in één overzicht. Lees hoe de beschikbare voorspelling in de agenda past en waarom die niet elke zichtbare datum dekt.",
-      "descriptionCharacters": 141,
-      "sections": 2,
-      "faq": 0,
-      "words": 223,
+      "title": "Agenda met weer op iPhone en iPad: bekijk een plan in zijn context",
+      "description": "Gebruik agenda en weer op iPhone en iPad. Controleer plaats, beschikbare voorspellingsuren en afspraakdetails voordat je een plan opslaat.",
+      "descriptionCharacters": 138,
+      "sections": 6,
+      "faq": 3,
+      "words": 710,
       "source": "articles.ts",
-      "sources": [],
-      "updated": "2026-10-21"
+      "sources": [
+        "https://developer.apple.com/weatherkit/",
+        "https://weather.metoffice.gov.uk/guides/what-does-this-forecast-mean"
+      ],
+      "updated": "2026-10-22"
     },
     {
       "locale": "nl-NL",
@@ -4942,15 +5014,18 @@
     {
       "locale": "no",
       "slug": "weather-inside-your-calendar",
-      "title": "En kalender som allerede har været i seg",
-      "description": "Hvorfor to apper for å planlegge en dag er en designfeil, og hvordan en kalender ser ut der værmeldingen er en del av visningen i stedet for å stå ved siden av.",
-      "descriptionCharacters": 160,
-      "sections": 2,
-      "faq": 0,
-      "words": 216,
+      "title": "Kalender med vær på iPhone og iPad: vurder planen i sammenheng",
+      "description": "Bruk kalender og vær på iPhone og iPad. Sjekk valgt sted, tilgjengelige prognosetimer og hendelsesdetaljer før du lagrer en plan.",
+      "descriptionCharacters": 129,
+      "sections": 6,
+      "faq": 3,
+      "words": 636,
       "source": "articles.ts",
-      "sources": [],
-      "updated": "2026-10-21"
+      "sources": [
+        "https://developer.apple.com/weatherkit/",
+        "https://weather.metoffice.gov.uk/guides/what-does-this-forecast-mean"
+      ],
+      "updated": "2026-10-22"
     },
     {
       "locale": "no",
@@ -5115,15 +5190,18 @@
     {
       "locale": "pl",
       "slug": "weather-inside-your-calendar",
-      "title": "Kalendarz, który ma pogodę już w środku",
-      "description": "Planuj dzień z wydarzeniami i pogodą w jednym widoku. Sprawdź, jak prognoza uzupełnia kalendarz i jakie są granice jej zasięgu.",
-      "descriptionCharacters": 127,
-      "sections": 2,
-      "faq": 0,
-      "words": 195,
+      "title": "Kalendarz z pogodą na iPhonie i iPadzie: sprawdź kontekst planu",
+      "description": "Łącz kalendarz i pogodę na iPhonie i iPadzie. Przed zapisaniem planu sprawdź miejsce, dostępne godziny prognozy i szczegóły wydarzenia.",
+      "descriptionCharacters": 135,
+      "sections": 6,
+      "faq": 3,
+      "words": 616,
       "source": "articles.ts",
-      "sources": [],
-      "updated": "2026-10-21"
+      "sources": [
+        "https://developer.apple.com/weatherkit/",
+        "https://weather.metoffice.gov.uk/guides/what-does-this-forecast-mean"
+      ],
+      "updated": "2026-10-22"
     },
     {
       "locale": "pl",
@@ -5339,15 +5417,18 @@
     {
       "locale": "pt-BR",
       "slug": "weather-inside-your-calendar",
-      "title": "Uma agenda que já traz a previsão dentro",
-      "description": "Planeje o dia com compromissos e clima na mesma visualização. Entenda como a previsão disponível entra na agenda e quais períodos ela cobre.",
-      "descriptionCharacters": 140,
-      "sections": 2,
-      "faq": 0,
-      "words": 225,
+      "title": "Calendário com previsão no iPhone e iPad: avalie seu plano no contexto",
+      "description": "Use calendário e previsão no iPhone e iPad. Confira o local selecionado, os horários disponíveis e os detalhes do evento antes de salvar.",
+      "descriptionCharacters": 137,
+      "sections": 6,
+      "faq": 3,
+      "words": 734,
       "source": "articles.ts",
-      "sources": [],
-      "updated": "2026-10-21"
+      "sources": [
+        "https://developer.apple.com/weatherkit/",
+        "https://weather.metoffice.gov.uk/guides/what-does-this-forecast-mean"
+      ],
+      "updated": "2026-10-22"
     },
     {
       "locale": "pt-BR",
@@ -5512,15 +5593,18 @@
     {
       "locale": "ro",
       "slug": "weather-inside-your-calendar",
-      "title": "Un calendar care are deja vremea în el",
-      "description": "Planifică ziua cu evenimentele și vremea în aceeași vedere. Află cum se integrează prognoza disponibilă și ce limite are perioada acoperită.",
-      "descriptionCharacters": 140,
-      "sections": 2,
-      "faq": 0,
-      "words": 225,
+      "title": "Calendar cu vreme pe iPhone și iPad: verifică planul în context",
+      "description": "Folosește calendarul și vremea pe iPhone și iPad. Verifică locul, orele de prognoză disponibile și detaliile evenimentului înainte de salvare.",
+      "descriptionCharacters": 142,
+      "sections": 6,
+      "faq": 3,
+      "words": 621,
       "source": "articles.ts",
-      "sources": [],
-      "updated": "2026-10-21"
+      "sources": [
+        "https://developer.apple.com/weatherkit/",
+        "https://weather.metoffice.gov.uk/guides/what-does-this-forecast-mean"
+      ],
+      "updated": "2026-10-22"
     },
     {
       "locale": "ro",
@@ -5685,15 +5769,18 @@
     {
       "locale": "ru",
       "slug": "weather-inside-your-calendar",
-      "title": "Календарь, в котором погода уже внутри",
-      "description": "Планируйте день с событиями и погодой в одном виде. Узнайте, как прогноз дополняет календарь и почему он доступен не на все видимые даты.",
-      "descriptionCharacters": 137,
-      "sections": 2,
-      "faq": 0,
-      "words": 193,
+      "title": "Календарь с погодой на iPhone и iPad: проверяйте план в контексте",
+      "description": "Планируйте с календарём и погодой на iPhone и iPad. Перед сохранением проверьте место, доступные часы прогноза и детали события.",
+      "descriptionCharacters": 128,
+      "sections": 6,
+      "faq": 3,
+      "words": 567,
       "source": "articles.ts",
-      "sources": [],
-      "updated": "2026-10-21"
+      "sources": [
+        "https://developer.apple.com/weatherkit/",
+        "https://weather.metoffice.gov.uk/guides/what-does-this-forecast-mean"
+      ],
+      "updated": "2026-10-22"
     },
     {
       "locale": "ru",
@@ -5858,15 +5945,18 @@
     {
       "locale": "sv",
       "slug": "weather-inside-your-calendar",
-      "title": "En kalender som redan har vädret i sig",
-      "description": "Varför två appar för att planera en dag är ett konstruktionsfel, och hur en kalender ser ut där prognosen är en del av vyn i stället för att stå bredvid.",
-      "descriptionCharacters": 153,
-      "sections": 2,
-      "faq": 0,
-      "words": 212,
+      "title": "Kalender med väder på iPhone och iPad: granska planen i sitt sammanhang",
+      "description": "Använd kalender och väder på iPhone och iPad. Kontrollera vald plats, tillgängliga prognostimmar och händelsens detaljer innan du sparar.",
+      "descriptionCharacters": 137,
+      "sections": 6,
+      "faq": 3,
+      "words": 595,
       "source": "articles.ts",
-      "sources": [],
-      "updated": "2026-10-21"
+      "sources": [
+        "https://developer.apple.com/weatherkit/",
+        "https://weather.metoffice.gov.uk/guides/what-does-this-forecast-mean"
+      ],
+      "updated": "2026-10-22"
     },
     {
       "locale": "sv",
@@ -6031,15 +6121,18 @@
     {
       "locale": "th",
       "slug": "weather-inside-your-calendar",
-      "title": "ปฏิทินที่มีสภาพอากาศอยู่ในตัวอยู่แล้ว",
-      "description": "ทำไมการเปิดสองแอปเพื่อจัดตารางหนึ่งวันจึงเป็นข้อบกพร่องของการออกแบบ และปฏิทินที่พยากรณ์เป็นส่วนหนึ่งของมุมมองแทนที่จะวางอยู่ข้าง ๆ นั้นหน้าตาเป็นอย่างไร",
-      "descriptionCharacters": 152,
-      "sections": 2,
-      "faq": 0,
-      "words": 30,
+      "title": "ปฏิทินพร้อมอากาศบน iPhone และ iPad: ตรวจแผนตามบริบท",
+      "description": "ใช้ปฏิทินและอากาศบน iPhone หรือ iPad ตรวจสถานที่ ชั่วโมงพยากรณ์ที่มี และรายละเอียดกิจกรรมก่อนบันทึกแผน",
+      "descriptionCharacters": 102,
+      "sections": 6,
+      "faq": 3,
+      "words": 142,
       "source": "articles.ts",
-      "sources": [],
-      "updated": "2026-10-21"
+      "sources": [
+        "https://developer.apple.com/weatherkit/",
+        "https://weather.metoffice.gov.uk/guides/what-does-this-forecast-mean"
+      ],
+      "updated": "2026-10-22"
     },
     {
       "locale": "th",
@@ -6204,15 +6297,18 @@
     {
       "locale": "tr",
       "slug": "weather-inside-your-calendar",
-      "title": "Havayı zaten içinde taşıyan bir takvim",
-      "description": "Etkinlikleri ve hava durumunu aynı görünümde planlayın. Mevcut tahminin takvime nasıl eklendiğini ve hangi dönemleri kapsadığını öğrenin.",
-      "descriptionCharacters": 137,
-      "sections": 2,
-      "faq": 0,
-      "words": 173,
+      "title": "iPhone ve iPad’de hava durumlu takvim: planı bağlamıyla kontrol edin",
+      "description": "iPhone ve iPad’de takvimle hava durumunu birlikte kullanın. Kaydetmeden seçili yeri, mevcut tahmin saatlerini ve etkinlik ayrıntılarını kontrol edin.",
+      "descriptionCharacters": 149,
+      "sections": 6,
+      "faq": 3,
+      "words": 542,
       "source": "articles.ts",
-      "sources": [],
-      "updated": "2026-10-21"
+      "sources": [
+        "https://developer.apple.com/weatherkit/",
+        "https://weather.metoffice.gov.uk/guides/what-does-this-forecast-mean"
+      ],
+      "updated": "2026-10-22"
     },
     {
       "locale": "tr",
@@ -6377,15 +6473,18 @@
     {
       "locale": "vi",
       "slug": "weather-inside-your-calendar",
-      "title": "Một cuốn lịch đã có sẵn thời tiết bên trong",
-      "description": "Lên kế hoạch với sự kiện và thời tiết trong cùng một chế độ xem. Tìm hiểu cách dự báo có sẵn xuất hiện trong lịch và giới hạn thời gian dự báo.",
-      "descriptionCharacters": 143,
-      "sections": 2,
-      "faq": 0,
-      "words": 286,
+      "title": "Lịch kèm thời tiết trên iPhone và iPad: kiểm tra kế hoạch theo bối cảnh",
+      "description": "Dùng lịch và thời tiết trên iPhone, iPad. Kiểm tra địa điểm đã chọn, giờ có dự báo và chi tiết sự kiện trước khi lưu kế hoạch.",
+      "descriptionCharacters": 126,
+      "sections": 6,
+      "faq": 3,
+      "words": 875,
       "source": "articles.ts",
-      "sources": [],
-      "updated": "2026-10-21"
+      "sources": [
+        "https://developer.apple.com/weatherkit/",
+        "https://weather.metoffice.gov.uk/guides/what-does-this-forecast-mean"
+      ],
+      "updated": "2026-10-22"
     },
     {
       "locale": "vi",
@@ -6550,15 +6649,18 @@
     {
       "locale": "zh-Hans",
       "slug": "weather-inside-your-calendar",
-      "title": "一个本身就带着天气的日历",
-      "description": "为什么为了安排一天要看两个应用是一处设计缺陷，以及一个把预报放进视图本身、而不是摆在旁边的日历是什么样子。",
-      "descriptionCharacters": 53,
-      "sections": 2,
-      "faq": 0,
-      "words": 12,
+      "title": "iPhone 与 iPad 天气日历：结合具体情况检查计划",
+      "description": "在 iPhone 和 iPad 上结合日历与天气。保存计划前，检查所选地点、可用预报小时及活动详情。",
+      "descriptionCharacters": 50,
+      "sections": 6,
+      "faq": 3,
+      "words": 57,
       "source": "articles.ts",
-      "sources": [],
-      "updated": "2026-10-21"
+      "sources": [
+        "https://developer.apple.com/weatherkit/",
+        "https://weather.metoffice.gov.uk/guides/what-does-this-forecast-mean"
+      ],
+      "updated": "2026-10-22"
     },
     {
       "locale": "zh-Hans",
@@ -6723,15 +6825,18 @@
     {
       "locale": "zh-Hant",
       "slug": "weather-inside-your-calendar",
-      "title": "一個本身就帶著天氣的行事曆",
-      "description": "為什麼為了安排一天要看兩個 App 是一處設計缺陷，以及一個把預報放進檢視本身、而不是擺在旁邊的行事曆是什麼樣子。",
-      "descriptionCharacters": 57,
-      "sections": 2,
-      "faq": 0,
-      "words": 22,
+      "title": "iPhone 與 iPad 天氣行事曆：依實際情境檢查計畫",
+      "description": "在 iPhone 和 iPad 結合行事曆與天氣。儲存計畫前，確認所選地點、可用預報時段與活動詳情。",
+      "descriptionCharacters": 50,
+      "sections": 6,
+      "faq": 3,
+      "words": 66,
       "source": "articles.ts",
-      "sources": [],
-      "updated": "2026-10-21"
+      "sources": [
+        "https://developer.apple.com/weatherkit/",
+        "https://weather.metoffice.gov.uk/guides/what-does-this-forecast-mean"
+      ],
+      "updated": "2026-10-22"
     },
     {
       "locale": "zh-Hant",

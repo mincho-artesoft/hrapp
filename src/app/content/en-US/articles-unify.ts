@@ -301,10 +301,11 @@ export const UNIFY_EN_US: Readonly<Record<string, LocalisedArticle>> = {
     }
   ],
   "seeAlso": [
-    "when-two-calendars-disagree",
-    "icloud-google-and-outlook-in-one-view",
-    "why-a-shared-calendar-does-not-appear"
-  ]
+  "when-two-calendars-disagree",
+  "icloud-google-and-outlook-in-one-view",
+  "why-a-shared-calendar-does-not-appear",
+  "disconnect-calendar-integration-without-losing-track"
+]
 },
 
   'work-and-personal-without-two-apps': {
@@ -585,8 +586,9 @@ export const UNIFY_EN_US: Readonly<Record<string, LocalisedArticle>> = {
     }
   ],
   "seeAlso": [
-    "what-calendar-sync-actually-does",
-    "work-and-personal-without-two-apps"
-  ]
+  "what-calendar-sync-actually-does",
+  "work-and-personal-without-two-apps",
+  "disconnect-calendar-integration-without-losing-track"
+]
 },
 };

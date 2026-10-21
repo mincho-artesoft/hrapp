@@ -1,14 +1,14 @@
 {
-  "guides": 51,
+  "guides": 52,
   "selection": "tools/guide-text-selection.json",
   "extraction": "Visible article headings, paragraphs, lists, FAQs and source links; gallery/other-app cards excluded.",
-  "exportedCharacters": 299573,
+  "exportedCharacters": 307125,
   "records": [
     {
       "slug": "what-calendar-sync-actually-does",
       "source": "https://www.cloud-calendars.com/articles/what-calendar-sync-actually-does/",
-      "blocks": 56,
-      "characters": 8866
+      "blocks": 57,
+      "characters": 9010
     },
     {
       "slug": "why-a-shared-calendar-does-not-appear",
@@ -19,8 +19,8 @@
     {
       "slug": "when-two-calendars-disagree",
       "source": "https://www.cloud-calendars.com/articles/when-two-calendars-disagree/",
-      "blocks": 43,
-      "characters": 5779
+      "blocks": 44,
+      "characters": 5923
     },
     {
       "slug": "work-and-personal-without-two-apps",
@@ -309,6 +309,12 @@
       "source": "https://www.cloud-calendars.com/articles/what-a-forecast-can-and-cannot-tell-you/",
       "blocks": 45,
       "characters": 5922
+    },
+    {
+      "slug": "disconnect-calendar-integration-without-losing-track",
+      "source": "https://www.cloud-calendars.com/articles/disconnect-calendar-integration-without-losing-track/",
+      "blocks": 49,
+      "characters": 7153
     }
   ]
 }

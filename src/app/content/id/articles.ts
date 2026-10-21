@@ -102,38 +102,95 @@ export const ARTICLES_ID: Readonly<Record<string, LocalisedArticle>> = {
 },
 
   'weather-inside-your-calendar': {
-  "title": "Kalender yang sudah memuat cuaca di dalamnya",
-  "short": "Cuaca di dalam kalender",
-  "description": "Rencanakan hari dengan acara dan cuaca dalam satu tampilan. Pahami prakiraan yang tersedia dan batas jangkauannya di kalender.",
-  "lede": "Hampir semua orang menata harinya di antara dua aplikasi. Kalender berkata di mana harus berada; aplikasi cuaca berkata bagaimana cuacanya ketika tiba. Menahan keduanya sekaligus di kepala adalah bagian yang tak seorang pun sadar sedang dilakukannya — sampai satu hari Sabtu hilang percuma.",
-  "commonBelief": "Bahwa kalender untuk janji temu dan aplikasi cuaca untuk cuaca, dan memisahkan keduanya memang begitulah ponsel bekerja.",
+  "updated": "2026-10-22",
+  "title": "Kalender dengan cuaca di iPhone dan iPad: periksa konteks rencana",
+  "short": "Gunakan kalender dan cuaca bersama",
+  "description": "Gunakan kalender dan cuaca di iPhone dan iPad. Periksa lokasi, jam prakiraan yang tersedia, dan detail acara sebelum menyimpan rencana.",
+  "lede": "Kalender memberi tahu kapan suatu janji dijadwalkan. Cuaca membantu menjawab pertanyaan berbeda: kondisi apa yang diperkirakan untuk tempat dan periode yang dibutuhkan? Gunakan keduanya dengan tetap memperjelas lokasi dan tanggal. Panduan ini diterbitkan oleh Arte Soft, pengembang Cloud Calendars.",
+  "commonBelief": "Cuaca di samping kalender otomatis menjelaskan alamat setiap janji, setiap jam, dan semua tanggal mendatang.",
   "sections": [
     {
-      "heading": "Ongkos dua aplikasi bukan dua ketukan",
+      "heading": "Pilih pertanyaan perencanaan yang nyata",
       "body": [
-        "Berpindah tidak memakan biaya apa pun. Yang mahal adalah keduanya tak pernah sepakat tentang apa yang penting. Kalender Anda tahu bahwa Sabtu pukul sebelas ada dua jam terisi; aplikasi cuaca tahu hujan turun pukul sepuluh sampai satu. Tak satu pun tahu bahwa kedua fakta itu bersama-sama berarti blok itu harus digeser.",
-        "Lapisan penggabungnya adalah Anda. Itu bekerja sampai Anda sibuk, yaitu tepat saat melindungi rencana paling berharga."
+        "Mulailah dengan janji tertentu, misalnya kunjungan sore ke taman. Tentukan apa yang mungkin berubah: waktu, tempat, persiapan, atau keputusan memilih alternatif. Anda tidak perlu mengatur ulang seluruh kalender hanya karena simbol harian menunjukkan hujan.",
+        "Catat awal dan akhir kegiatan yang sebenarnya, termasuk persiapan jika relevan. Ringkasan kalender membantu mencari tanggal yang memungkinkan, sedangkan pemeriksaan prakiraan menyangkut tempat dan interval tertentu. Pisahkan kedua tugas itu saat membandingkan pilihan."
       ]
     },
     {
-      "heading": "Prakiraan yang tersedia",
+      "heading": "Pastikan lokasi cuaca sebelum membaca nilainya",
       "body": [
-        "Cloud Calendars menggunakan prakiraan yang tersedia untuk lokasi yang dipilih. Data per jam dan harian dapat mencakup periode berbeda.",
-        "Tanggal yang dapat dilihat di kalender tidak menentukan jangkauan prakiraan. Tampilan bulanan tidak berarti prakiraan tersedia untuk seluruh bulan atau setiap acara."
+        "Cloud Calendars menyediakan cuaca untuk lokasi saat ini atau lokasi pilihan. Periksa lokasi yang ditampilkan, bukan menganggap alamat acara diam-diam mengubah prakiraan. Janji di kota lain perlu dibandingkan dengan cuaca kota tersebut.",
+        "Misalnya, pengunjung merencanakan kedatangan di museum saat ponselnya masih di rumah. Baca lokasi prakiraan dan waktu setempat janji sebelum membandingkannya. Nilai yang terlihat berdekatan bukan bukti bahwa jadwal dan cuaca menggunakan tempat yang sama."
+      ]
+    },
+    {
+      "heading": "Periksa cakupan per jam dan harian secara terpisah",
+      "body": [
+        "Gunakan entri harian sebagai gambaran umum dan entri per jam yang tersedia untuk pertanyaan tentang sebagian hari. Janji dari pukul dua sampai lima membutuhkan lebih dari sekilas melihat satu simbol. Periksa apakah jam yang relevan benar-benar tersedia.",
+        "Dalam kode aplikasi saat ini, daftar harian mengambil hingga sepuluh hari yang dikembalikan WeatherKit. Ini terpisah dari navigasi kalender maupun jam yang sedang disediakan. Janji di masa depan tidak memperpanjang cakupan cuaca. Jika periodenya tidak ada, jadwalkan pemeriksaan cuaca kemudian."
+      ]
+    },
+    {
+      "heading": "Pahami arti nilai cuaca",
+      "body": [
+        "Apple mendokumentasikan data WeatherKit seperti suhu, curah hujan, angin, dan UV, dengan beberapa produk hanya tersedia di wilayah tertentu. Baca nilai yang tersedia untuk lokasi pilihan, bukan mengharapkan semua produk cuaca di setiap tempat.",
+        "Panduan Met Office menunjukkan mengapa periode prakiraan dan definisi variabel penting: beberapa nilai berlaku pada satu saat, lainnya pada suatu periode. Gunakan label penyedia terkait. Peluang, jumlah, dan durasi hujan merupakan pertanyaan berbeda; satu angka tidak menentukan semua kegiatan luar ruangan."
+      ]
+    },
+    {
+      "heading": "Tinjau draf yang dibuat dari jam cuaca",
+      "body": [
+        "Jika aplikasi menawarkan pembuatan acara dari suatu jam, yang dibuka adalah draf. Kode saat ini menggunakan zona waktu lokasi cuaca, mengusulkan durasi satu jam, dan memilih kalender default untuk acara baru. Periksa setiap nilai sebelum menyimpan.",
+        "Konfirmasikan judul, kalender tujuan, awal, akhir, dan lokasi yang dimaksud. Memilih prakiraan tidak memberi izin mengedit kalender bersama, memberi tahu tempat acara, atau memesan ruang. Periksa acara tersimpan dan dapatkan kesepakatan yang dibutuhkan rencana."
+      ]
+    },
+    {
+      "heading": "Bedakan demonstrasi situs web",
+      "body": [
+        "Demonstrasi cuaca interaktif di situs menggunakan Open-Meteo. Aplikasi menggunakan Apple WeatherKit. Demo web berguna untuk menjelajahi tampilannya, tetapi lokasi, data, dan tanggal yang tersedia dapat berbeda dari aplikasi.",
+        "Untuk keputusan nyata, buka aplikasi dan bandingkan janji yang dimaksud dengan prakiraan yang tersedia. Jika mengubah rencana bersama, pastikan penyelenggara, cakupan pengulangan, dan peserta. Siapkan alternatif yang disepakati jika kegiatan bergantung pada kondisi."
       ]
     }
   ],
-  "claims": {
-    "price": "Biaya fitur cuaca"
-  },
+  "claims": {},
   "practical": [
-    "Periksa lokasi, tanggal, dan jam yang tersedia sebelum merencanakan dengan prakiraan."
+    "Tentukan janji dan keputusan yang dapat dipengaruhi cuaca.",
+    "Pastikan lokasi cuaca serta tanggal dan waktu setempat janji.",
+    "Periksa cakupan per jam yang tersedia secara terpisah dari ringkasan harian.",
+    "Baca peluang, jumlah, dan nilai terkait lainnya menurut labelnya.",
+    "Tinjau semua detail draf acara dan kalender tujuan sebelum menyimpan.",
+    "Periksa kembali saat mengambil keputusan dan konfirmasikan perubahan bersama secara langsung."
+  ],
+  "faq": [
+    {
+      "q": "Apakah cuaca di samping kalender mengikuti alamat setiap acara?",
+      "a": "Jangan menganggap demikian. Pastikan lokasi cuaca yang ditampilkan dan bandingkan dengan tempat acara; kedekatan di layar tidak membuktikan kecocokan."
+    },
+    {
+      "q": "Apakah aplikasi memakai penyedia cuaca situs web?",
+      "a": "Tidak. Aplikasi memakai Apple WeatherKit; demonstrasi situs memakai Open-Meteo secara terpisah."
+    },
+    {
+      "q": "Apakah memilih jam prakiraan otomatis menyimpan janji?",
+      "a": "Pilihan itu memulai draf jika tindakan tersebut tersedia. Periksa tanggal, zona waktu, durasi, kalender, dan lokasi, lalu simpan acara yang dimaksud."
+    }
   ],
   "seeAlso": [
+    "month-view-on-a-bigger-screen",
     "icloud-google-and-outlook-in-one-view",
-    "what-a-subscription-actually-buys"
+    "sharing-one-event-not-your-calendar"
   ],
-  "updated": "2026-10-21"
+  "sourcesHeading": "Sumber resmi dan bacaan lanjutan",
+  "sources": [
+    {
+      "label": "Apple: informasi prakiraan WeatherKit dan ketersediaan wilayah",
+      "url": "https://developer.apple.com/weatherkit/"
+    },
+    {
+      "label": "Met Office: lokasi, periode, dan nilai prakiraan cuaca",
+      "url": "https://weather.metoffice.gov.uk/guides/what-does-this-forecast-mean"
+    }
+  ]
 },
 
   'icloud-google-and-outlook-in-one-view': {

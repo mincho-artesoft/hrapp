@@ -98,38 +98,91 @@ export const ARTICLES_CS: Readonly<Record<string, LocalisedArticle>> = {
 },
 
   'weather-inside-your-calendar': {
-  "title": "Kalendář, který už počasí obsahuje",
-  "short": "Počasí uvnitř kalendáře",
-  "description": "Proč je dívat se do dvou aplikací kvůli naplánování dne konstrukční chyba a jak vypadá kalendář, v němž je předpověď součástí pohledu, a ne vedle něj.",
-  "lede": "Téměř každý si plánuje den mezi dvěma aplikacemi. Kalendář říká, kde je třeba být; ta s počasím říká, jaké tam bude počasí. Držet obojí pohromadě v hlavě je ta část, o níž nikdo neví, že ji dělá — dokud nepřijde o sobotu.",
-  "commonBelief": "Že kalendář je na schůzky a aplikace na počasí je na počasí, a že držet je odděleně je prostě to, jak telefony fungují.",
+  "updated": "2026-10-22",
+  "title": "Kalendář s počasím na iPhonu a iPadu: ověřte plán v souvislostech",
+  "short": "Používejte kalendář a počasí společně",
+  "description": "Spojte kalendář a počasí na iPhonu a iPadu. Před uložením plánu ověřte vybrané místo, dostupné hodiny předpovědi a podrobnosti události.",
+  "lede": "Kalendář říká, kdy je naplánovaný závazek. Počasí pomáhá s jinou otázkou: jaké podmínky se očekávají pro potřebné místo a období. Používejte obojí a jasně rozlišujte místa a data. Průvodce vydává Arte Soft, vývojář Cloud Calendars.",
+  "commonBelief": "Počasí vedle kalendáře automaticky popisuje adresu každé schůzky, každou hodinu a všechny budoucí dny.",
   "sections": [
     {
-      "heading": "Cena dvou aplikací nejsou dvě klepnutí",
+      "heading": "Vyberte skutečnou plánovací otázku",
       "body": [
-        "Přepnout nestojí nic. Drahé je to, že se ty dvě nikdy neshodnou na tom, co je podstatné. Váš kalendář ví, že v sobotu od jedenácti jsou dvě hodiny obsazené; aplikace s počasím ví, že prší od deseti do jedné. Ani jedna neví, že tato dvě fakta dohromady znamenají, že blok je třeba posunout.",
-        "Integrační vrstvou jste vy. Funguje to, dokud nemáte plno práce — což je přesně chvíle, kdy se chránit plány vyplácí nejvíc."
+        "Začněte konkrétní schůzkou, například odpolední návštěvou parku. Určete, co se může změnit: čas, místo, příprava nebo volba alternativy. Nemusíte přeorganizovat celý kalendář jen kvůli dešťovému symbolu dne.",
+        "Zapište skutečný začátek a konec aktivity, případně včetně příprav. Kalendářový přehled pomáhá najít možná data, zatímco kontrola předpovědi se týká konkrétního místa a intervalu. Při porovnávání možností tyto úkoly oddělte."
       ]
     },
     {
-      "heading": "Dostupná předpověď",
+      "heading": "Před čtením hodnot potvrďte místo počasí",
       "body": [
-        "Cloud Calendars používá dostupnou předpověď pro vybrané místo. Hodinové a denní údaje mohou pokrývat různá období.",
-        "Data, která lze zobrazit v kalendáři, neurčují dosah předpovědi. Měsíční zobrazení neznamená předpověď na celý měsíc ani pro každou událost."
+        "Cloud Calendars nabízí počasí pro aktuální nebo vybrané místo. Ověřte zobrazenou polohu místo předpokladu, že adresa události skrytě mění předpověď. Schůzka v jiném městě potřebuje porovnání s počasím toho města.",
+        "Například návštěvník může plánovat příchod do muzea, zatímco telefon je ještě doma. Před porovnáním přečtěte místo předpovědi a místní čas schůzky. Blízkost hodnot na obrazovce nedokazuje stejné místo pro rozvrh a počasí."
+      ]
+    },
+    {
+      "heading": "Hodinové a denní pokrytí ověřte zvlášť",
+      "body": [
+        "Denní údaj použijte pro orientaci, dostupné hodinové údaje pro otázku o části dne. Schůzka od dvou do pěti vyžaduje víc než pohled na symbol. Ověřte, zda jsou příslušné hodiny skutečně přítomné.",
+        "V aktuálním zdrojovém kódu denní seznam přebírá až deset dní vrácených WeatherKitem. To je oddělené od navigace kalendáře i aktuálně dodaných hodin. Budoucí schůzka nerozšiřuje pokrytí počasí. Pokud její období chybí, naplánujte pozdější kontrolu."
+      ]
+    },
+    {
+      "heading": "Zjistěte, co hodnota počasí znamená",
+      "body": [
+        "Apple dokumentuje data WeatherKit jako teplotu, srážky, vítr a UV; některé produkty jsou dostupné jen ve vybraných regionech. Čtěte hodnoty pro vybrané místo místo očekávání všech meteorologických produktů všude.",
+        "Pokyny Met Office ukazují důležitost období a definic proměnných: některé hodnoty patří okamžiku, jiné období. Používejte označení příslušného poskytovatele. Pravděpodobnost, množství a trvání deště jsou různé otázky a jediné číslo nerozhoduje o každé venkovní aktivitě."
+      ]
+    },
+    {
+      "heading": "Prověřte koncept vytvořený z hodiny počasí",
+      "body": [
+        "Kde aplikace nabízí vytvoření události z hodiny, otevře koncept. Aktuální kód používá časové pásmo místa počasí, navrhuje hodinové trvání a vybírá výchozí kalendář nových událostí. Před uložením ověřte každou hodnotu.",
+        "Potvrďte název, cílový kalendář, začátek, konec a zamýšlené místo. Výběr předpovědi nedává oprávnění upravovat sdílený kalendář, neupozorňuje provozovnu ani nerezervuje místnost. Zkontrolujte uloženou událost a zajistěte potřebné dohody."
+      ]
+    },
+    {
+      "heading": "Oddělte ukázku na webu",
+      "body": [
+        "Interaktivní ukázka počasí na webu používá Open-Meteo. Aplikace používá Apple WeatherKit. Webová ukázka pomáhá prozkoumat zobrazení, ale její místo, data a dostupná období se mohou od aplikace lišit.",
+        "Pro skutečné rozhodnutí otevřete aplikaci a porovnejte schůzku s dostupnou předpovědí. Při změně sdíleného plánu potvrďte organizátora, rozsah opakování a účastníky. Pokud aktivita závisí na podmínkách, mějte dohodnutou alternativu."
       ]
     }
   ],
-  "claims": {
-    "price": "Kolik stojí funkce počasí"
-  },
+  "claims": {},
   "practical": [
-    "Před plánováním podle předpovědi zkontrolujte místo, datum a dostupné hodiny."
+    "Určete schůzku a rozhodnutí, které může počasí změnit.",
+    "Potvrďte místo počasí i místní datum a čas schůzky.",
+    "Prohlédněte dostupné hodiny odděleně od denního souhrnu.",
+    "Čtěte pravděpodobnost, množství a další hodnoty podle označení.",
+    "Před uložením prověřte všechny údaje konceptu a cílový kalendář.",
+    "Znovu ověřte počasí při rozhodování a společné změny potvrďte přímo."
   ],
-  "seeAlso": [
-    "icloud-google-and-outlook-in-one-view",
-    "what-a-subscription-actually-buys"
+  "faq": [
+    {
+      "q": "Sleduje počasí vedle kalendáře každou adresu události?",
+      "a": "Nepředpokládejte to. Ověřte zobrazené místo počasí a porovnejte ho s místem schůzky; blízkost na obrazovce shodu nedokazuje."
+    },
+    {
+      "q": "Používá aplikace stejného poskytovatele počasí jako web?",
+      "a": "Ne. Aplikace používá Apple WeatherKit; webová ukázka samostatně Open-Meteo."
+    },
+    {
+      "q": "Uloží výběr hodiny předpovědi schůzku automaticky?",
+      "a": "Kde je tato akce nabízena, zahájí koncept. Ověřte datum, pásmo, trvání, kalendář a místo, pak uložte zamýšlenou událost."
+    }
   ],
-  "updated": "2026-10-21"
+  "seeAlso": [],
+  "sourcesHeading": "Oficiální zdroje a další informace",
+  "sources": [
+    {
+      "label": "Apple: předpovědi WeatherKit a regionální dostupnost",
+      "url": "https://developer.apple.com/weatherkit/"
+    },
+    {
+      "label": "Met Office: místo, období a hodnoty předpovědi",
+      "url": "https://weather.metoffice.gov.uk/guides/what-does-this-forecast-mean"
+    }
+  ]
 },
 
   'icloud-google-and-outlook-in-one-view': {

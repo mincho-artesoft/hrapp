@@ -290,38 +290,95 @@ export const ARTICLES_ES_ES: Readonly<Record<string, LocalisedArticle>> = {
 },
 
   'weather-inside-your-calendar': {
-  "title": "Un calendario que ya lleva el tiempo dentro",
-  "short": "El tiempo dentro del calendario",
-  "description": "Planifica con tus citas y el tiempo en la misma vista. Descubre cómo se integra la previsión disponible y qué límites tiene su alcance.",
-  "lede": "Casi todo el mundo planifica el día entre dos aplicaciones. El calendario dice dónde hay que estar; la del tiempo dice cómo estará cuando lleguemos. Sostener las dos cosas en la cabeza es la parte que nadie nota que hace, hasta que un sábado se estropea.",
-  "commonBelief": "Que un calendario es para compromisos y una aplicación del tiempo es para el tiempo, y que mantenerlos separados es sencillamente cómo funcionan los teléfonos.",
+  "updated": "2026-10-22",
+  "title": "Calendario con tiempo en iPhone y iPad: revisa tus planes en contexto",
+  "short": "Usa el calendario y el tiempo juntos",
+  "description": "Usa calendario y tiempo juntos en iPhone y iPad. Comprueba el lugar, las horas de previsión disponibles y los detalles antes de guardar un plan.",
+  "lede": "El calendario indica cuándo tienes un compromiso. El tiempo responde a otra pregunta: qué condiciones se prevén para el lugar y periodo que necesitas. Úsalos juntos sin perder de vista sus lugares y fechas. Esta guía la publica Arte Soft, desarrollador de Cloud Calendars.",
+  "commonBelief": "El tiempo junto al calendario describe automáticamente la dirección de cada cita, todas las horas y cualquier fecha futura.",
   "sections": [
     {
-      "heading": "El coste de dos aplicaciones no son dos toques",
+      "heading": "Elige una pregunta concreta de planificación",
       "body": [
-        "Cambiar de aplicación no cuesta nada. Lo caro es que las dos no se ponen de acuerdo sobre qué importa. Su calendario sabe que el sábado hay dos horas bloqueadas a las once; la del tiempo sabe que lloverá de diez a una. Ninguna de las dos sabe que esos dos hechos, juntos, significan que hay que mover el bloque.",
-        "Usted es la capa de integración. Eso funciona hasta que está ocupado, que es justo cuando merece la pena proteger los planes."
+        "Empieza por una cita específica, como una visita al parque por la tarde. Identifica qué podría cambiar: hora, lugar, preparación o decisión de optar por una alternativa. No hace falta reorganizar todo el calendario porque el símbolo del día muestre lluvia.",
+        "Anota el inicio y final reales de la actividad, incluido el montaje si corresponde. La vista general ayuda a encontrar fechas posibles; la consulta meteorológica se refiere a un lugar y un intervalo concretos. Mantén separadas ambas tareas al comparar opciones."
       ]
     },
     {
-      "heading": "La previsión disponible",
+      "heading": "Confirma el lugar del tiempo antes de leer los valores",
       "body": [
-        "Cloud Calendars utiliza la previsión disponible para el lugar seleccionado. Los datos por horas y por días pueden abarcar períodos distintos.",
-        "Las fechas que puedes consultar en el calendario no determinan el alcance de la previsión. La vista mensual no implica una previsión para todo el mes ni para cada evento."
+        "Cloud Calendars ofrece el tiempo de la ubicación actual o seleccionada. Comprueba el lugar mostrado en vez de asumir que la dirección de un evento cambia la previsión silenciosamente. Una cita en otra ciudad necesita compararse con el tiempo de esa ciudad.",
+        "Por ejemplo, puedes estar preparando la llegada a un museo mientras el teléfono sigue en casa. Lee el lugar de la previsión y la hora local de la cita antes de compararlos. La proximidad visual de los valores no demuestra que la agenda y el tiempo usen el mismo lugar."
+      ]
+    },
+    {
+      "heading": "Comprueba por separado la cobertura diaria y horaria",
+      "body": [
+        "Usa el dato diario como orientación y las horas disponibles para una parte del día. Una cita de dos a cinco necesita algo más que mirar un símbolo. Comprueba si esas horas están realmente presentes.",
+        "En el código actual, la lista diaria toma hasta diez días devueltos por WeatherKit. Es independiente de la navegación del calendario y de las horas recibidas. Una cita futura no amplía la cobertura del tiempo. Si su periodo no aparece, programa una revisión meteorológica posterior."
+      ]
+    },
+    {
+      "heading": "Entiende qué significa el valor meteorológico",
+      "body": [
+        "Apple documenta datos de WeatherKit como temperatura, precipitación, viento y UV, con algunos productos disponibles solo en determinadas regiones. Lee los valores disponibles para tu lugar, sin esperar todos los productos meteorológicos en cualquier zona.",
+        "La orientación de Met Office ilustra por qué importan el periodo y la definición de cada variable: unos valores corresponden a un instante y otros a un intervalo. Usa las etiquetas del proveedor correspondiente. Probabilidad, cantidad y duración de lluvia son preguntas diferentes; ningún número decide por sí solo toda actividad al aire libre."
+      ]
+    },
+    {
+      "heading": "Revisa el borrador creado desde una hora del tiempo",
+      "body": [
+        "Donde la aplicación permite crear un evento desde una hora, abre un borrador. El código actual usa la zona horaria del lugar del tiempo, propone una duración de una hora y selecciona el calendario predeterminado para eventos nuevos. Revisa cada valor antes de guardar.",
+        "Confirma título, calendario de destino, inicio, final y lugar previsto. Elegir una previsión no concede permisos para editar un calendario compartido, no avisa a un establecimiento ni reserva una sala. Comprueba el evento guardado y consigue los acuerdos necesarios."
+      ]
+    },
+    {
+      "heading": "Distingue la demostración del sitio web",
+      "body": [
+        "La demostración meteorológica interactiva del sitio usa Open-Meteo. La aplicación utiliza Apple WeatherKit. La demo sirve para explorar la presentación, pero el lugar, los datos y las fechas disponibles pueden diferir de los de la aplicación.",
+        "Para una decisión real, abre la aplicación y compara la cita prevista con su previsión disponible. Si cambias un plan compartido, confirma organizador, alcance de repetición y participantes. Mantén una alternativa acordada cuando la actividad dependa de las condiciones."
       ]
     }
   ],
-  "claims": {
-    "price": "Lo que cuestan las funciones del tiempo"
-  },
+  "claims": {},
   "practical": [
-    "Comprueba el lugar, la fecha y las horas disponibles antes de usar la previsión para planificar."
+    "Identifica la cita y la decisión que podría cambiar el tiempo.",
+    "Confirma el lugar del tiempo y la fecha y hora locales de la cita.",
+    "Examina las horas disponibles por separado del resumen diario.",
+    "Lee probabilidad, cantidad y otros valores según sus etiquetas.",
+    "Revisa todos los detalles del borrador y el calendario de destino antes de guardar.",
+    "Vuelve a comprobar al decidir y confirma directamente los cambios compartidos."
+  ],
+  "faq": [
+    {
+      "q": "¿El tiempo junto al calendario sigue la dirección de cada evento?",
+      "a": "No lo supongas. Confirma la ubicación meteorológica mostrada y compárala con el lugar de la cita; estar cerca en pantalla no acredita que coincidan."
+    },
+    {
+      "q": "¿La aplicación usa el proveedor meteorológico del sitio web?",
+      "a": "No. La aplicación usa Apple WeatherKit y la demostración web utiliza Open-Meteo por separado."
+    },
+    {
+      "q": "¿Elegir una hora de previsión guarda una cita automáticamente?",
+      "a": "Inicia un borrador donde se ofrece esa acción. Comprueba fecha, zona horaria, duración, calendario y lugar, y después guarda el evento previsto."
+    }
   ],
   "seeAlso": [
     "forecast-beside-every-event",
-    "a-fourteen-day-view-of-the-weather"
+    "a-fourteen-day-view-of-the-weather",
+    "planning-outdoors-without-being-rained-on"
   ],
-  "updated": "2026-10-21"
+  "sourcesHeading": "Fuentes oficiales y lecturas adicionales",
+  "sources": [
+    {
+      "label": "Apple: previsiones WeatherKit y disponibilidad regional",
+      "url": "https://developer.apple.com/weatherkit/"
+    },
+    {
+      "label": "Met Office: lugar, periodos y valores de la previsión",
+      "url": "https://weather.metoffice.gov.uk/guides/what-does-this-forecast-mean"
+    }
+  ]
 },
 
   'forecast-beside-every-event': {

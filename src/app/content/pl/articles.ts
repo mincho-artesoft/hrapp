@@ -102,38 +102,95 @@ export const ARTICLES_PL: Readonly<Record<string, LocalisedArticle>> = {
 },
 
   'weather-inside-your-calendar': {
-  "title": "Kalendarz, który ma pogodę już w środku",
-  "short": "Pogoda w kalendarzu",
-  "description": "Planuj dzień z wydarzeniami i pogodą w jednym widoku. Sprawdź, jak prognoza uzupełnia kalendarz i jakie są granice jej zasięgu.",
-  "lede": "Niemal każdy planuje dzień między dwiema aplikacjami. Kalendarz mówi, gdzie trzeba być; pogodowa mówi, jaka będzie pogoda na miejscu. Trzymanie obu rzeczy w głowie to ta część, której nikt nie zauważa — dopóki nie przepadnie sobota.",
-  "commonBelief": "Że kalendarz jest od spotkań, aplikacja pogodowa od pogody, a trzymanie ich osobno to po prostu sposób, w jaki działają telefony.",
+  "updated": "2026-10-22",
+  "title": "Kalendarz z pogodą na iPhonie i iPadzie: sprawdź kontekst planu",
+  "short": "Korzystaj razem z kalendarza i pogody",
+  "description": "Łącz kalendarz i pogodę na iPhonie i iPadzie. Przed zapisaniem planu sprawdź miejsce, dostępne godziny prognozy i szczegóły wydarzenia.",
+  "lede": "Kalendarz mówi, kiedy zaplanowano zobowiązanie. Pogoda pomaga odpowiedzieć na inne pytanie: jakie warunki są przewidywane w potrzebnym miejscu i okresie? Korzystaj z obu, wyraźnie rozróżniając lokalizacje i daty. Poradnik publikuje Arte Soft, twórca Cloud Calendars.",
+  "commonBelief": "Pogoda obok kalendarza automatycznie opisuje adres każdego spotkania, każdą godzinę i każdą przyszłą datę.",
   "sections": [
     {
-      "heading": "Koszt dwóch aplikacji to nie dwa dotknięcia",
+      "heading": "Wybierz rzeczywiste pytanie dotyczące planu",
       "body": [
-        "Przełączenie nic nie kosztuje. Drogie jest to, że obie nigdy nie zgadzają się co do tego, co ma znaczenie. Kalendarz wie, że w sobotę o jedenastej zajęte są dwie godziny; aplikacja pogodowa wie, że pada od dziesiątej do trzynastej. Żadna nie wie, że te dwa fakty razem oznaczają, że blok trzeba przesunąć.",
-        "Warstwą integracyjną jesteś ty. Działa to do momentu, w którym masz dużo zajęć — czyli dokładnie wtedy, gdy ochrona planów jest najcenniejsza."
+        "Zacznij od konkretnego spotkania, na przykład popołudniowej wizyty w parku. Określ, co może się zmienić: czas, miejsce, przygotowanie lub wybór alternatywy. Nie trzeba przebudowywać całego kalendarza tylko dlatego, że symbol dnia pokazuje deszcz.",
+        "Zapisz rzeczywisty początek i koniec aktywności, uwzględniając przygotowanie, jeśli jest potrzebne. Przegląd kalendarza pomaga znaleźć możliwe daty, a sprawdzenie prognozy dotyczy konkretnego miejsca i przedziału. Rozdziel te dwa zadania przy porównywaniu opcji."
       ]
     },
     {
-      "heading": "Dostępna prognoza",
+      "heading": "Potwierdź miejsce pogody, zanim odczytasz wartości",
       "body": [
-        "Cloud Calendars korzysta z dostępnej prognozy dla wybranego miejsca. Dane godzinowe i dzienne mogą obejmować różne okresy.",
-        "Daty widoczne w kalendarzu nie określają zasięgu prognozy. Widok miesiąca nie oznacza prognozy na cały miesiąc ani dla każdego wydarzenia."
+        "Cloud Calendars oferuje pogodę dla bieżącego lub wybranego miejsca. Sprawdź wyświetlaną lokalizację, zamiast zakładać, że adres wydarzenia sam zmienia prognozę. Spotkanie w innym mieście wymaga porównania z pogodą dla tego miasta.",
+        "Na przykład możesz planować przyjazd do muzeum, gdy telefon nadal jest w domu. Przed porównaniem odczytaj lokalizację prognozy i lokalną godzinę spotkania. Wartości blisko siebie na ekranie nie dowodzą, że harmonogram i pogoda dotyczą tego samego miejsca."
+      ]
+    },
+    {
+      "heading": "Osobno sprawdź zakres godzinowy i dzienny",
+      "body": [
+        "Dane dzienne służą orientacji, a dostępne dane godzinowe — pytaniu o część dnia. Spotkanie od drugiej do piątej wymaga czegoś więcej niż spojrzenia na jeden symbol. Sprawdź, czy odpowiednie godziny rzeczywiście są dostępne.",
+        "W obecnym kodzie aplikacji lista dzienna wykorzystuje do dziesięciu dni zwróconych przez WeatherKit. To osobna kwestia od nawigacji po kalendarzu i aktualnie dostarczonych godzin. Przyszłe spotkanie nie wydłuża prognozy. Jeśli brakuje tego okresu, zaplanuj późniejszą kontrolę pogody."
+      ]
+    },
+    {
+      "heading": "Zrozum znaczenie wartości pogody",
+      "body": [
+        "Apple opisuje dane WeatherKit, takie jak temperatura, opady, wiatr i UV; część produktów jest dostępna tylko w wybranych regionach. Odczytuj wartości dostępne dla wybranego miejsca, zamiast oczekiwać wszystkich produktów pogodowych wszędzie.",
+        "Wskazówki Met Office pokazują, dlaczego okres prognozy i definicje zmiennych mają znaczenie: jedne wartości dotyczą chwili, inne przedziału. Korzystaj z etykiet danego dostawcy. Prawdopodobieństwo, ilość i czas trwania deszczu to odrębne pytania; jedna liczba nie rozstrzyga o każdej aktywności na zewnątrz."
+      ]
+    },
+    {
+      "heading": "Sprawdź szkic utworzony z godziny prognozy",
+      "body": [
+        "Tam, gdzie aplikacja umożliwia tworzenie wydarzenia z godziny, otwiera szkic. Obecny kod używa strefy czasowej miejsca pogody, proponuje godzinny czas trwania i wybiera domyślny kalendarz nowych wydarzeń. Przed zapisem sprawdź każdą wartość.",
+        "Potwierdź tytuł, kalendarz docelowy, początek, koniec i zamierzone miejsce. Wybór prognozy nie nadaje praw do edycji współdzielonego kalendarza, nie powiadamia obiektu ani nie rezerwuje sali. Sprawdź zapisane wydarzenie i uzyskaj potrzebne uzgodnienia."
+      ]
+    },
+    {
+      "heading": "Oddziel demonstrację na stronie",
+      "body": [
+        "Interaktywna demonstracja pogody na stronie korzysta z Open-Meteo. Aplikacja używa Apple WeatherKit. Demo pomaga poznać sposób prezentacji, ale miejsce, dane i dostępne daty mogą różnić się od aplikacji.",
+        "Przy rzeczywistej decyzji otwórz aplikację i porównaj planowane spotkanie z dostępną prognozą. Jeśli zmieniasz wspólny plan, potwierdź organizatora, zakres powtarzania i uczestników. Uzgodnij alternatywę, gdy aktywność zależy od warunków."
       ]
     }
   ],
-  "claims": {
-    "price": "Ile kosztują funkcje pogodowe"
-  },
+  "claims": {},
   "practical": [
-    "Przed planowaniem na podstawie prognozy sprawdź miejsce, datę i dostępne godziny."
+    "Określ spotkanie i decyzję, którą pogoda może zmienić.",
+    "Potwierdź lokalizację pogody oraz lokalną datę i godzinę spotkania.",
+    "Sprawdź dostępny zakres godzinowy osobno od podsumowania dziennego.",
+    "Czytaj prawdopodobieństwo, ilość i inne wartości zgodnie z ich etykietami.",
+    "Przed zapisem przejrzyj wszystkie szczegóły szkicu i kalendarz docelowy.",
+    "Sprawdź ponownie w chwili decyzji i bezpośrednio potwierdź wspólne zmiany."
+  ],
+  "faq": [
+    {
+      "q": "Czy pogoda obok kalendarza podąża za adresem każdego wydarzenia?",
+      "a": "Nie zakładaj tego. Potwierdź wyświetlaną lokalizację pogody i porównaj ją z miejscem wydarzenia; bliskość na ekranie nie potwierdza zgodności."
+    },
+    {
+      "q": "Czy aplikacja używa dostawcy pogody ze strony?",
+      "a": "Nie. Aplikacja używa Apple WeatherKit, a demonstracja na stronie osobno korzysta z Open-Meteo."
+    },
+    {
+      "q": "Czy wybór godziny prognozy automatycznie zapisuje spotkanie?",
+      "a": "Rozpoczyna szkic tam, gdzie ta czynność jest dostępna. Sprawdź datę, strefę czasową, długość, kalendarz i miejsce, a potem zapisz zamierzone wydarzenie."
+    }
   ],
   "seeAlso": [
+    "month-view-on-a-bigger-screen",
     "icloud-google-and-outlook-in-one-view",
-    "what-a-subscription-actually-buys"
+    "sharing-one-event-not-your-calendar"
   ],
-  "updated": "2026-10-21"
+  "sourcesHeading": "Oficjalne źródła i dalsza lektura",
+  "sources": [
+    {
+      "label": "Apple: informacje prognozy WeatherKit i dostępność regionalna",
+      "url": "https://developer.apple.com/weatherkit/"
+    },
+    {
+      "label": "Met Office: miejsce, okresy i wartości prognozy pogody",
+      "url": "https://weather.metoffice.gov.uk/guides/what-does-this-forecast-mean"
+    }
+  ]
 },
 
   'icloud-google-and-outlook-in-one-view': {

@@ -136,6 +136,7 @@ export const ARTICLE_SLUGS: Readonly<Record<string, readonly string[]>> = {
     "what-fantastical-costs-and-what-this-does",
     "what-you-get-without-paying-anything",
     "what-a-subscription-actually-buys",
+    "disconnect-calendar-integration-without-losing-track",
     "caldav-calendar-on-iphone",
     "calendar-notifications-missing-silent-or-duplicated",
     "find-old-calendar-events-by-account-date-and-title",

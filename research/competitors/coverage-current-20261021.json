@@ -1,7 +1,7 @@
 {
   "schemaVersion": 1,
   "date": "2026-10-21",
-  "scope": "All concrete HTTPS URLs recorded in batch03 through batch09 JSON files present in this directory, exact-string deduplicated. This is a bounded corpus queue, not exhaustive publisher coverage. batch07 file is absent. No new network fetches. Consolidated four explicit successful batch10 body reviews; prior evidence preserved. Consolidated four explicit successful batch12 substantive body reviews, preserving prior evidence. Consolidated two successful batch13 substantive reviews. Four previously discovered OneCal substantive body reviews consolidated in batch14. Two pending Teamup pages reviewed in batch15; supplementary newly discovered Readdle URLs are recorded separately outside this original71URLcorpus. Three exact CalendarBridge bodies reviewedbatch16; publisherownlimits notCloudpromises. Three family publisher substantive bodies consolidated batch17; publisher claims are not Cloud features. Four exact CalendarBridge main bodies consolidated batch18; no rank/volume/runtime evidence.",
+  "scope": "All concrete HTTPS URLs recorded in batch03 through batch09 JSON files present in this directory, exact-string deduplicated. This is a bounded corpus queue, not exhaustive publisher coverage. batch07 file is absent. No new network fetches. Consolidated four explicit successful batch10 body reviews; prior evidence preserved. Consolidated four explicit successful batch12 substantive body reviews, preserving prior evidence. Consolidated two successful batch13 substantive reviews. Four previously discovered OneCal substantive body reviews consolidated in batch14. Two pending Teamup pages reviewed in batch15; supplementary newly discovered Readdle URLs are recorded separately outside this original71URLcorpus. Three exact CalendarBridge bodies reviewedbatch16; publisherownlimits notCloudpromises. Three family publisher substantive bodies consolidated batch17; publisher claims are not Cloud features. Four exact CalendarBridge main bodies consolidated batch18; no rank/volume/runtime evidence. OriginalOneCalbillingbody reviewedbatch19; newmobileURLrecordedoutsideoriginal71corpus.",
   "inputFiles": [
     "research/competitors/batch03-intent-mapping-20261021.json",
     "research/competitors/batch03-primary-discovery-20261021.json",
@@ -19,7 +19,8 @@
     "research/competitors/batch15-views-caldav-primary-20261022.json",
     "research/competitors/batch16-sync-directions-troubleshooting-20261022.json",
     "research/competitors/batch17-family-responsibility-primary-20261022.json",
-    "research/competitors/batch18-calendarbridge-primary-20261022.json"
+    "research/competitors/batch18-calendarbridge-primary-20261022.json",
+    "research/competitors/batch19-onecal-offboarding-discovery-20261022.json"
   ],
   "statusDefinitions": {
     "full": "Explicit complete substantive-text review in at least one cited record, not images/runtime/linked pages.",
@@ -31,10 +32,10 @@
   "counts": {
     "failed": 6,
     "partial": 5,
-    "discovered": 3,
-    "full": 57,
+    "discovered": 2,
+    "full": 58,
     "exactUrls": 71,
-    "queue": 14
+    "queue": 13
   },
   "queue": [
     {
@@ -456,29 +457,6 @@
           "batchQueries": [],
           "queryAssociation": "Batch-level only; original file does not attribute an individual query to this URL.",
           "statusEvidence": "failed"
-        }
-      ]
-    },
-    {
-      "url": "https://docs.onecal.io/docs/billing/plans-and-free-trial",
-      "publisher": "OneCal",
-      "status": "discovered",
-      "observedQueryOrIntent": null,
-      "intentEvidenceNote": "Verbatim recorded intent/topic/summary where present; null means no URL-specific intent was recorded. URL spelling is not body evidence.",
-      "existingCanonicals": [],
-      "canonicalMappingBasis": "Editorial candidate routing from recorded topic or URL label; not proof target body covers the task. Null/empty where unsupported.",
-      "nextAction": "Read exact official body if useful; verify destination and platform, then deduplicate against existing canonical before authoring.",
-      "provenance": [
-        {
-          "file": "research/competitors/batch09-provider-intents-20261021.json",
-          "field": "/discoveredOnly/8/url",
-          "record": {
-            "url": "https://docs.onecal.io/docs/billing/plans-and-free-trial",
-            "status": "discovered_search_or_index_link_not_body_reviewed"
-          },
-          "batchQueries": [],
-          "queryAssociation": "Batch-level only; original file does not attribute an individual query to this URL.",
-          "statusEvidence": "discovered"
         }
       ]
     },
@@ -2887,6 +2865,54 @@
               "Security, compliance, storage, pricing and testimonial claims are unverified publisher assertions.",
               "Booking pages and AI scheduling are not inferred Cloud features.",
               "No subscriptions, trials or account changes performed."
+            ]
+          },
+          "statusEvidence": "full"
+        }
+      ]
+    },
+    {
+      "url": "https://docs.onecal.io/docs/billing/plans-and-free-trial",
+      "publisher": "OneCal",
+      "status": "full",
+      "observedQueryOrIntent": null,
+      "intentEvidenceNote": "Verbatim recorded intent/topic/summary where present; null means no URL-specific intent was recorded. URL spelling is not body evidence.",
+      "existingCanonicals": [
+        "free-google-sync-without-adverts",
+        "what-a-subscription-actually-buys",
+        "disconnect-calendar-integration-without-losing-track"
+      ],
+      "canonicalMappingBasis": "Editorial candidate routing from recorded topic or URL label; not proof target body covers the task. Null/empty where unsupported.",
+      "nextAction": "Keepplan/trial/mobileaccessdistinct; publisherclonecleanupnotCloudbehavior.",
+      "provenance": [
+        {
+          "file": "research/competitors/batch09-provider-intents-20261021.json",
+          "field": "/discoveredOnly/8/url",
+          "record": {
+            "url": "https://docs.onecal.io/docs/billing/plans-and-free-trial",
+            "status": "discovered_search_or_index_link_not_body_reviewed"
+          },
+          "batchQueries": [],
+          "queryAssociation": "Batch-level only; original file does not attribute an individual query to this URL.",
+          "statusEvidence": "discovered"
+        },
+        {
+          "file": "research/competitors/batch19-onecal-offboarding-discovery-20261022.json",
+          "record": {
+            "url": "https://docs.onecal.io/docs/billing/plans-and-free-trial",
+            "status": "full",
+            "readRanges": [
+              [
+                22,
+                72
+              ]
+            ],
+            "summary": "Publisher distinguishes per-member paidplans from14daytrial, calendarcountlimits fromsynccounts, andtrialexpiry pauses pluscloneremoval; purchase resumes/recreates. No currentnumericpricecaptured.",
+            "boundary": "Do notgeneralizepausestopsbutkeepscopies, free download meansfreeongoingreplication, or transferOneCalcleanup/controlstotheCloudapp.",
+            "canonicalMapping": [
+              "free-google-sync-without-adverts",
+              "what-a-subscription-actually-buys",
+              "disconnect-calendar-integration-without-losing-track"
             ]
           },
           "statusEvidence": "full"

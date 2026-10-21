@@ -1,0 +1,87 @@
+{
+  "updated": "2026-10-22",
+  "title": "Kalender med vejr på iPhone og iPad: vurder planen i sammenhæng",
+  "short": "Brug kalender og vejr sammen",
+  "description": "Brug kalender og vejr sammen på iPhone og iPad. Kontrollér sted, tilgængelige prognosetimer og begivenhedsdetaljer, før du gemmer en plan.",
+  "lede": "En kalender fortæller, hvornår en aftale er planlagt. Vejret hjælper med et andet spørgsmål: Hvilke forhold forventes på det sted og i det tidsrum, du behøver? Brug begge, men hold styr på deres steder og datoer. Guiden er udgivet af Arte Soft, udvikleren af Cloud Calendars.",
+  "commonBelief": "Vejr ved kalenderen beskriver automatisk hver aftales adresse, hver time og alle fremtidige datoer.",
+  "sections": [
+    {
+      "heading": "Vælg et konkret planlægningsspørgsmål",
+      "body": [
+        "Start med en bestemt aftale, eksempelvis et parkbesøg om eftermiddagen. Find ud af, hvad der kan ændres: tidspunkt, sted, forberedelse eller valget af et alternativ. Du behøver ikke omlægge hele kalenderen, blot fordi dagens symbol viser regn.",
+        "Skriv aktivitetens faktiske start og slut ned, inklusive klargøring hvis relevant. Kalenderoversigten hjælper med mulige datoer, mens vejrtjekket vedrører et bestemt sted og tidsrum. Hold de to opgaver adskilt, når du sammenligner muligheder."
+      ]
+    },
+    {
+      "heading": "Bekræft vejrstedet, før du læser værdierne",
+      "body": [
+        "Cloud Calendars tilbyder vejr for det aktuelle eller valgte sted. Kontrollér den viste placering i stedet for at antage, at en begivenhedsadresse ubemærket ændrer prognosen. En aftale i en anden by skal sammenlignes med vejret i den by.",
+        "Du kan eksempelvis planlægge ankomsten til et museum, mens telefonen stadig er hjemme. Læs prognosens sted og aftalens lokale tid, før du sammenligner dem. Værdier tæt på hinanden på skærmen beviser ikke, at kalender og vejr bruger samme sted."
+      ]
+    },
+    {
+      "heading": "Kontrollér time- og dagsdækning særskilt",
+      "body": [
+        "Brug en dagsværdi til orientering og de tilgængelige timeværdier til spørgsmål om en del af dagen. En aftale fra to til fem kræver mere end et blik på ét symbol. Kontrollér, om de relevante timer faktisk findes.",
+        "I den aktuelle appkode tager dagslisten op til ti dage returneret af WeatherKit. Det er adskilt fra kalendernavigation og de timer, der aktuelt leveres. En fremtidig aftale udvider ikke vejrdækningen. Hvis tidsrummet mangler, så planlæg et senere vejrtjek."
+      ]
+    },
+    {
+      "heading": "Forstå, hvad vejrværdien betyder",
+      "body": [
+        "Apple beskriver WeatherKit-data som temperatur, nedbør, vind og UV, hvor nogle produkter kun findes i udvalgte regioner. Læs værdierne for dit valgte sted frem for at forvente alle vejrprodukter overalt.",
+        "Met Offices vejledning viser, hvorfor prognoseperiode og variabeldefinitioner betyder noget: Nogle værdier gælder et tidspunkt, andre en periode. Brug den relevante udbyders betegnelser. Sandsynlighed, mængde og varighed af regn er forskellige spørgsmål, og ét tal afgør ikke alle udendørsaktiviteter."
+      ]
+    },
+    {
+      "heading": "Gennemgå en kladde oprettet fra en vejrtime",
+      "body": [
+        "Hvor appen tilbyder begivenhedsoprettelse fra en time, åbner den en kladde. Den aktuelle kode bruger vejrstedets tidszone, foreslår en times varighed og vælger standardkalenderen for nye begivenheder. Kontrollér hver værdi før lagring.",
+        "Bekræft titel, destinationskalender, start, slut og ønsket sted. Et prognosevalg giver ikke redigeringsret til en delt kalender, underretter ikke et sted og reserverer ikke et lokale. Kontrollér den gemte begivenhed, og indhent nødvendige aftaler."
+      ]
+    },
+    {
+      "heading": "Hold hjemmesidens demonstration adskilt",
+      "body": [
+        "Hjemmesidens interaktive vejrdemo bruger Open-Meteo. Appen bruger Apple WeatherKit. Webdemoen er nyttig til at udforske præsentationen, men sted, data og tilgængelige datoer kan afvige fra appen.",
+        "Åbn appen til en rigtig beslutning, og sammenlign aftalen med den tilgængelige prognose. Ved ændring af en fælles plan skal du bekræfte arrangør, gentagelsesomfang og deltagere. Hav et aftalt alternativ, når aktiviteten afhænger af forholdene."
+      ]
+    }
+  ],
+  "claims": {},
+  "practical": [
+    "Find aftalen og den beslutning, vejret kan ændre.",
+    "Bekræft vejrsted samt aftalens lokale dato og tid.",
+    "Undersøg tilgængelige timer særskilt fra dagsoversigten.",
+    "Læs sandsynlighed, mængde og andre værdier efter deres betegnelser.",
+    "Kontrollér kladdens detaljer og destinationskalender før lagring.",
+    "Tjek igen ved beslutningen, og bekræft fælles ændringer direkte."
+  ],
+  "faq": [
+    {
+      "q": "Følger vejret ved kalenderen hver begivenhedsadresse?",
+      "a": "Antag det ikke. Bekræft det viste vejrsted, og sammenlign med mødestedet; nærhed på skærmen beviser ikke et match."
+    },
+    {
+      "q": "Bruger appen hjemmesidens vejrudbyder?",
+      "a": "Nej. Appen bruger Apple WeatherKit; hjemmesidens demonstration bruger Open-Meteo særskilt."
+    },
+    {
+      "q": "Gemmer valg af en prognosetime automatisk en aftale?",
+      "a": "Det starter en kladde, hvor handlingen tilbydes. Kontrollér dato, tidszone, varighed, kalender og sted, og gem derefter den ønskede begivenhed."
+    }
+  ],
+  "seeAlso": [],
+  "sourcesHeading": "Officielle kilder og yderligere læsning",
+  "sources": [
+    {
+      "label": "Apple: WeatherKit-prognoser og regional tilgængelighed",
+      "url": "https://developer.apple.com/weatherkit/"
+    },
+    {
+      "label": "Met Office: prognosested, perioder og vejrværdier",
+      "url": "https://weather.metoffice.gov.uk/guides/what-does-this-forecast-mean"
+    }
+  ]
+}

@@ -102,38 +102,95 @@ export const ARTICLES_MS: Readonly<Record<string, LocalisedArticle>> = {
 },
 
   'weather-inside-your-calendar': {
-  "title": "Kalendar yang sudah mengandungi cuaca",
-  "short": "Cuaca di dalam kalendar",
-  "description": "Rancang hari dengan acara dan cuaca dalam satu paparan. Fahami ramalan yang tersedia dalam kalendar serta had tempohnya.",
-  "lede": "Hampir semua orang menyusun harinya antara dua aplikasi. Kalendar memberitahu di mana perlu berada; aplikasi cuaca memberitahu bagaimana cuacanya apabila sampai. Memegang kedua-duanya serentak di kepala ialah bahagian yang tiada siapa sedar sedang dibuatnya — sehingga satu hari Sabtu hilang begitu sahaja.",
-  "commonBelief": "Bahawa kalendar untuk temu janji dan aplikasi cuaca untuk cuaca, dan mengasingkan kedua-duanya memang begitulah telefon berfungsi.",
+  "updated": "2026-10-22",
+  "title": "Kalendar dengan cuaca pada iPhone dan iPad: semak konteks rancangan",
+  "short": "Gunakan kalendar dan cuaca bersama",
+  "description": "Gunakan kalendar dan cuaca pada iPhone dan iPad. Semak tempat, jam ramalan tersedia dan butiran acara sebelum menyimpan rancangan.",
+  "lede": "Kalendar memberitahu bila sesuatu komitmen dijadualkan. Cuaca membantu menjawab soalan lain: apakah keadaan yang diramalkan untuk tempat dan tempoh yang diperlukan? Gunakan kedua-duanya sambil memastikan lokasi dan tarikh jelas. Panduan ini diterbitkan oleh Arte Soft, pembangun Cloud Calendars.",
+  "commonBelief": "Cuaca di sebelah kalendar secara automatik menerangkan alamat setiap janji temu, setiap jam dan semua tarikh akan datang.",
   "sections": [
     {
-      "heading": "Kos dua aplikasi bukan dua ketikan",
+      "heading": "Pilih persoalan perancangan sebenar",
       "body": [
-        "Bertukar tidak menelan apa-apa kos. Yang mahal ialah kedua-duanya tidak pernah bersetuju tentang apa yang penting. Kalendar anda tahu bahawa pada Sabtu jam sebelas dua jam telah terisi; aplikasi cuaca tahu hujan turun dari pukul sepuluh hingga satu. Tiada satu pun tahu bahawa kedua-dua fakta itu bersama-sama bermakna blok itu perlu dialihkan.",
-        "Lapisan penyatuannya ialah anda. Ia berjalan sehingga anda sibuk, iaitu tepat ketika melindungi rancangan paling bernilai."
+        "Mulakan dengan janji temu tertentu, seperti kunjungan petang ke taman. Kenal pasti perkara yang boleh berubah: waktu, tempat, persediaan atau keputusan memilih alternatif. Anda tidak perlu menyusun semula seluruh kalendar hanya kerana simbol harian menunjukkan hujan.",
+        "Catat waktu mula dan tamat sebenar aktiviti, termasuk persediaan jika berkaitan. Gambaran kalendar membantu mencari tarikh yang sesuai, manakala semakan ramalan melibatkan tempat dan tempoh tertentu. Bezakan kedua-dua tugas semasa membandingkan pilihan."
       ]
     },
     {
-      "heading": "Ramalan yang tersedia",
+      "heading": "Sahkan tempat cuaca sebelum membaca nilai",
       "body": [
-        "Cloud Calendars menggunakan ramalan yang tersedia untuk lokasi yang dipilih. Data setiap jam dan harian mungkin meliputi tempoh yang berbeza.",
-        "Tarikh yang boleh dilihat dalam kalendar tidak menentukan julat ramalan. Paparan bulanan tidak bermaksud ramalan tersedia untuk seluruh bulan atau setiap acara."
+        "Cloud Calendars menawarkan cuaca untuk tempat semasa atau dipilih. Semak lokasi yang dipaparkan, bukan menganggap alamat acara mengubah ramalan secara senyap. Janji temu di bandar lain perlu dibandingkan dengan cuaca bandar itu.",
+        "Contohnya, pelawat mungkin merancang ketibaan di muzium ketika telefon masih di rumah. Baca lokasi ramalan dan waktu tempatan janji temu sebelum membandingkannya. Nilai yang kelihatan berdekatan bukan bukti jadual dan cuaca menggunakan tempat yang sama."
+      ]
+    },
+    {
+      "heading": "Semak liputan setiap jam dan harian secara berasingan",
+      "body": [
+        "Gunakan entri harian sebagai gambaran awal dan entri setiap jam yang tersedia untuk persoalan tentang sebahagian hari. Janji temu dari pukul dua hingga lima memerlukan lebih daripada melihat satu simbol. Semak sama ada jam yang berkaitan benar-benar tersedia.",
+        "Dalam kod aplikasi semasa, senarai harian mengambil sehingga sepuluh hari yang dipulangkan oleh WeatherKit. Ini berasingan daripada navigasi kalendar dan jam yang kini dibekalkan. Janji temu masa hadapan tidak memanjangkan liputan cuaca. Jika tempohnya tiada, rancang semakan cuaca kemudian."
+      ]
+    },
+    {
+      "heading": "Fahami maksud nilai cuaca",
+      "body": [
+        "Apple menerangkan data WeatherKit seperti suhu, kerpasan, angin dan UV, dengan sesetengah produk hanya tersedia di rantau tertentu. Baca nilai yang tersedia untuk tempat pilihan, bukan menjangkakan setiap produk cuaca di semua tempat.",
+        "Panduan Met Office menunjukkan sebab tempoh ramalan dan takrif pemboleh ubah penting: sesetengah nilai merujuk satu ketika, yang lain merujuk suatu tempoh. Gunakan label penyedia berkaitan. Kebarangkalian, jumlah dan tempoh hujan ialah soalan berbeza; satu nombor tidak menentukan semua aktiviti luar."
+      ]
+    },
+    {
+      "heading": "Semak draf yang dicipta daripada jam cuaca",
+      "body": [
+        "Apabila aplikasi menawarkan penciptaan acara daripada sesuatu jam, ia membuka draf. Kod semasa menggunakan zon waktu lokasi cuaca, mencadangkan tempoh satu jam dan memilih kalendar lalai acara baharu. Periksa setiap nilai sebelum menyimpan.",
+        "Sahkan tajuk, kalendar destinasi, mula, tamat dan lokasi yang dimaksudkan. Memilih ramalan tidak memberikan kebenaran menyunting kalendar dikongsi, memaklumkan tempat acara atau menempah bilik. Semak acara yang disimpan dan dapatkan persetujuan yang diperlukan."
+      ]
+    },
+    {
+      "heading": "Bezakan demonstrasi laman web",
+      "body": [
+        "Demonstrasi cuaca interaktif laman web menggunakan Open-Meteo. Aplikasi menggunakan Apple WeatherKit. Demo web membantu meneroka paparan, tetapi tempat, data dan tarikh tersedia mungkin berbeza daripada aplikasi.",
+        "Untuk keputusan sebenar, buka aplikasi dan bandingkan janji temu yang dimaksudkan dengan ramalan tersedia. Jika mengubah rancangan bersama, sahkan penganjur, skop ulangan dan peserta. Sediakan alternatif yang dipersetujui apabila aktiviti bergantung pada keadaan."
       ]
     }
   ],
-  "claims": {
-    "price": "Kos ciri-ciri cuaca"
-  },
+  "claims": {},
   "practical": [
-    "Semak lokasi, tarikh dan jam yang tersedia sebelum merancang berdasarkan ramalan."
+    "Kenal pasti janji temu dan keputusan yang boleh dipengaruhi cuaca.",
+    "Sahkan lokasi cuaca serta tarikh dan waktu tempatan janji temu.",
+    "Periksa liputan setiap jam yang tersedia secara berasingan daripada ringkasan harian.",
+    "Baca kebarangkalian, jumlah dan nilai berkaitan mengikut labelnya.",
+    "Semak semua butiran draf acara dan kalendar destinasi sebelum menyimpan.",
+    "Semak semula pada waktu keputusan dan sahkan perubahan bersama secara langsung."
+  ],
+  "faq": [
+    {
+      "q": "Adakah cuaca di sebelah kalendar mengikut alamat setiap acara?",
+      "a": "Jangan anggap begitu. Sahkan lokasi cuaca yang dipaparkan dan bandingkan dengan tempat acara; kedudukan berdekatan pada skrin tidak membuktikan padanan."
+    },
+    {
+      "q": "Adakah aplikasi menggunakan penyedia cuaca laman web?",
+      "a": "Tidak. Aplikasi menggunakan Apple WeatherKit; demonstrasi laman web menggunakan Open-Meteo secara berasingan."
+    },
+    {
+      "q": "Adakah memilih jam ramalan menyimpan janji temu secara automatik?",
+      "a": "Ia memulakan draf apabila tindakan itu ditawarkan. Semak tarikh, zon waktu, tempoh, kalendar dan lokasi, kemudian simpan acara yang dimaksudkan."
+    }
   ],
   "seeAlso": [
+    "month-view-on-a-bigger-screen",
     "icloud-google-and-outlook-in-one-view",
-    "what-a-subscription-actually-buys"
+    "sharing-one-event-not-your-calendar"
   ],
-  "updated": "2026-10-21"
+  "sourcesHeading": "Sumber rasmi dan bacaan lanjut",
+  "sources": [
+    {
+      "label": "Apple: maklumat ramalan WeatherKit dan ketersediaan serantau",
+      "url": "https://developer.apple.com/weatherkit/"
+    },
+    {
+      "label": "Met Office: tempat, tempoh dan nilai ramalan cuaca",
+      "url": "https://weather.metoffice.gov.uk/guides/what-does-this-forecast-mean"
+    }
+  ]
 },
 
   'icloud-google-and-outlook-in-one-view': {

@@ -98,38 +98,91 @@ export const ARTICLES_VI: Readonly<Record<string, LocalisedArticle>> = {
 },
 
   'weather-inside-your-calendar': {
-  "title": "Một cuốn lịch đã có sẵn thời tiết bên trong",
-  "short": "Thời tiết bên trong cuốn lịch",
-  "description": "Lên kế hoạch với sự kiện và thời tiết trong cùng một chế độ xem. Tìm hiểu cách dự báo có sẵn xuất hiện trong lịch và giới hạn thời gian dự báo.",
-  "lede": "Gần như ai cũng sắp xếp ngày của mình giữa hai ứng dụng. Lịch nói cần có mặt ở đâu; ứng dụng thời tiết nói lúc tới đó trời thế nào. Giữ cả hai cùng lúc trong đầu là phần việc không ai nhận ra mình đang làm — cho tới khi mất trắng một ngày thứ Bảy.",
-  "commonBelief": "Rằng lịch là để ghi hẹn còn ứng dụng thời tiết là để xem trời, và tách riêng chúng đơn giản là cách điện thoại vận hành.",
+  "updated": "2026-10-22",
+  "title": "Lịch kèm thời tiết trên iPhone và iPad: kiểm tra kế hoạch theo bối cảnh",
+  "short": "Dùng lịch và thời tiết cùng nhau",
+  "description": "Dùng lịch và thời tiết trên iPhone, iPad. Kiểm tra địa điểm đã chọn, giờ có dự báo và chi tiết sự kiện trước khi lưu kế hoạch.",
+  "lede": "Lịch cho biết công việc được hẹn lúc nào. Thời tiết trả lời câu khác: điều kiện dự kiến tại địa điểm và khoảng thời gian cần thiết. Dùng cả hai nhưng luôn xác định rõ nơi và ngày. Hướng dẫn do Arte Soft, nhà phát triển Cloud Calendars, xuất bản.",
+  "commonBelief": "Thời tiết cạnh lịch tự động mô tả địa chỉ mọi cuộc hẹn, mọi giờ và mọi ngày tương lai.",
   "sections": [
     {
-      "heading": "Cái giá của hai ứng dụng không phải là hai lần chạm",
+      "heading": "Chọn câu hỏi lập kế hoạch cụ thể",
       "body": [
-        "Chuyển qua lại chẳng tốn gì. Cái đắt là hai bên không bao giờ thống nhất điều gì mới quan trọng. Lịch của bạn biết thứ Bảy lúc mười một giờ có hai tiếng đã kín; ứng dụng thời tiết biết mưa từ mười giờ đến một giờ. Không bên nào biết rằng hai dữ kiện ấy cộng lại nghĩa là phải dời khối thời gian đó.",
-        "Lớp kết nối chính là bạn. Nó chạy được cho tới khi bạn bận, mà đó đúng là lúc việc bảo vệ kế hoạch đáng giá nhất."
+        "Bắt đầu bằng cuộc hẹn cụ thể, như đi công viên buổi chiều. Xác định điều có thể đổi: giờ, địa điểm, chuẩn bị hay chọn phương án khác. Không cần sắp lại toàn bộ lịch chỉ vì biểu tượng ngày báo mưa.",
+        "Ghi giờ bắt đầu và kết thúc thực tế, kể cả chuẩn bị nếu cần. Tổng quan lịch giúp tìm ngày có thể dùng, còn kiểm tra dự báo liên quan một nơi và khoảng thời gian cụ thể. Tách hai việc khi so sánh phương án."
       ]
     },
     {
-      "heading": "Dự báo hiện có",
+      "heading": "Xác nhận địa điểm dự báo",
       "body": [
-        "Cloud Calendars sử dụng dự báo hiện có cho địa điểm đã chọn. Dữ liệu theo giờ và theo ngày có thể bao phủ các khoảng thời gian khác nhau.",
-        "Các ngày có thể xem trong lịch không quyết định phạm vi dự báo. Chế độ xem tháng không có nghĩa là có dự báo cho cả tháng hoặc mọi sự kiện."
+        "Cloud Calendars cung cấp thời tiết cho vị trí hiện tại hoặc được chọn. Kiểm tra nơi hiển thị thay vì mặc định địa chỉ sự kiện âm thầm đổi dự báo. Cuộc hẹn ở thành phố khác cần so sánh với thời tiết thành phố đó.",
+        "Ví dụ, khách có thể đang tính giờ đến bảo tàng khi điện thoại vẫn ở nhà. Đọc địa điểm dự báo và giờ địa phương của cuộc hẹn trước khi so sánh. Các giá trị nằm gần nhau trên màn hình không chứng minh cùng địa điểm."
+      ]
+    },
+    {
+      "heading": "Kiểm tra riêng phạm vi theo giờ và theo ngày",
+      "body": [
+        "Dùng mục theo ngày để định hướng và các giờ có sẵn cho câu hỏi về một phần ngày. Lịch đặt từ hai đến năm giờ cần hơn một biểu tượng. Kiểm tra các giờ liên quan thực sự có dữ liệu.",
+        "Trong mã nguồn hiện tại, danh sách ngày lấy tối đa mười ngày WeatherKit trả về. Điều này tách biệt với điều hướng lịch và các giờ đang được cung cấp. Cuộc hẹn tương lai không kéo dài dự báo. Nếu chưa có khoảng cần xem, hẹn kiểm tra lại sau."
+      ]
+    },
+    {
+      "heading": "Hiểu ý nghĩa giá trị thời tiết",
+      "body": [
+        "Apple mô tả dữ liệu WeatherKit như nhiệt độ, giáng thủy, gió và UV; một số sản phẩm chỉ có tại vùng nhất định. Đọc giá trị có sẵn cho nơi đã chọn thay vì mong mọi sản phẩm thời tiết có ở mọi nơi.",
+        "Hướng dẫn Met Office cho thấy vì sao thời kỳ dự báo và định nghĩa biến quan trọng: một số giá trị chỉ một thời điểm, số khác chỉ cả khoảng. Dùng nhãn của đúng nhà cung cấp. Xác suất, lượng và thời gian mưa là những câu hỏi khác nhau; một con số không quyết định mọi hoạt động ngoài trời."
+      ]
+    },
+    {
+      "heading": "Kiểm tra bản nháp từ giờ dự báo",
+      "body": [
+        "Ở nơi ứng dụng cho tạo sự kiện từ một giờ, thao tác mở bản nháp. Mã nguồn hiện tại dùng múi giờ của vị trí thời tiết, đề xuất thời lượng một giờ và chọn lịch mặc định cho sự kiện mới. Kiểm tra từng giá trị trước khi lưu.",
+        "Xác nhận tiêu đề, lịch đích, bắt đầu, kết thúc và địa điểm dự định. Chọn dự báo không cấp quyền sửa lịch chung, không báo cho địa điểm và không đặt phòng. Kiểm tra sự kiện đã lưu và có được các thỏa thuận cần thiết."
+      ]
+    },
+    {
+      "heading": "Phân biệt bản minh họa trên website",
+      "body": [
+        "Bản minh họa thời tiết tương tác trên website dùng Open-Meteo. Ứng dụng dùng Apple WeatherKit. Bản minh họa giúp khám phá cách trình bày, nhưng nơi, dữ liệu và ngày có sẵn có thể khác ứng dụng.",
+        "Để quyết định thật, mở ứng dụng rồi so sánh cuộc hẹn với dự báo hiện có. Nếu đổi kế hoạch chung, xác nhận người tổ chức, phạm vi lặp và người tham gia. Thống nhất phương án thay thế khi hoạt động phụ thuộc điều kiện."
       ]
     }
   ],
-  "claims": {
-    "price": "Các tính năng thời tiết tốn bao nhiêu"
-  },
+  "claims": {},
   "practical": [
-    "Kiểm tra địa điểm, ngày và các giờ có dữ liệu trước khi lập kế hoạch theo dự báo."
+    "Xác định cuộc hẹn và quyết định có thể bị thời tiết ảnh hưởng.",
+    "Xác nhận nơi dự báo và ngày giờ địa phương của cuộc hẹn.",
+    "Xem phạm vi theo giờ riêng với tóm tắt theo ngày.",
+    "Đọc xác suất, lượng và các giá trị khác theo nhãn.",
+    "Kiểm tra toàn bộ bản nháp và lịch đích trước khi lưu.",
+    "Kiểm tra lại lúc quyết định và xác nhận trực tiếp thay đổi chung."
   ],
-  "seeAlso": [
-    "icloud-google-and-outlook-in-one-view",
-    "what-a-subscription-actually-buys"
+  "faq": [
+    {
+      "q": "Thời tiết cạnh lịch có đi theo từng địa chỉ sự kiện không?",
+      "a": "Đừng mặc định như vậy. Kiểm tra vị trí thời tiết hiển thị với nơi hẹn; gần nhau trên màn hình không chứng minh khớp."
+    },
+    {
+      "q": "Ứng dụng dùng nhà cung cấp thời tiết của website sao?",
+      "a": "Không. Ứng dụng dùng Apple WeatherKit; bản minh họa website dùng Open-Meteo riêng."
+    },
+    {
+      "q": "Chọn giờ dự báo có tự lưu cuộc hẹn không?",
+      "a": "Nó bắt đầu bản nháp ở nơi có thao tác này. Kiểm tra ngày, múi giờ, thời lượng, lịch và địa điểm rồi lưu sự kiện mong muốn."
+    }
   ],
-  "updated": "2026-10-21"
+  "sourcesHeading": "Nguồn chính thức và tài liệu thêm",
+  "sources": [
+    {
+      "label": "Apple: thông tin dự báo WeatherKit và phạm vi vùng",
+      "url": "https://developer.apple.com/weatherkit/"
+    },
+    {
+      "label": "Met Office: địa điểm, khoảng dự báo và giá trị thời tiết",
+      "url": "https://weather.metoffice.gov.uk/guides/what-does-this-forecast-mean"
+    }
+  ],
+  "seeAlso": []
 },
 
   'icloud-google-and-outlook-in-one-view': {

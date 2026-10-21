@@ -290,38 +290,95 @@ export const ARTICLES_DE_DE: Readonly<Record<string, LocalisedArticle>> = {
 },
 
   'weather-inside-your-calendar': {
-  "title": "Ein Kalender, in dem das Wetter schon drin ist",
-  "short": "Wetter im Kalender",
-  "description": "Termine und Wetter gemeinsam planen: So ergänzt die verfügbare Vorhersage den Kalender, und warum sie nicht jeden sichtbaren Tag abdeckt.",
-  "lede": "Fast alle planen einen Tag über zwei Apps hinweg. Der Kalender sagt, wo Sie sein müssen; die Wetter-App sagt, wie es dort sein wird. Beides gleichzeitig im Kopf zu halten ist der Teil, den niemand bemerkt — bis ein Samstag ins Wasser fällt.",
-  "commonBelief": "Dass ein Kalender für Termine da ist und eine Wetter-App fürs Wetter, und dass die Trennung einfach so ist, wie Telefone funktionieren.",
+  "updated": "2026-10-22",
+  "title": "Kalender mit Wetter auf iPhone und iPad: Pläne im Zusammenhang prüfen",
+  "short": "Kalender und Wetter gemeinsam nutzen",
+  "description": "Nutze Kalender und Wetter auf iPhone und iPad gemeinsam. Prüfe Ort, verfügbare Vorhersagestunden und Termindetails, bevor du einen Plan speicherst.",
+  "lede": "Ein Kalender zeigt, wann eine Verpflichtung ansteht. Wetterdaten beantworten eine andere Frage: Welche Bedingungen werden für den benötigten Ort und Zeitraum erwartet? Nutze beides gemeinsam und behalte Orte und Daten im Blick. Dieser Leitfaden stammt von Arte Soft, dem Entwickler von Cloud Calendars.",
+  "commonBelief": "Wetter neben einem Kalender beschreibt automatisch jede Terminadresse, jede Stunde und jedes künftige Datum.",
   "sections": [
     {
-      "heading": "Der Preis für zwei Apps sind nicht zwei Tippen",
+      "heading": "Mit einer konkreten Planungsfrage beginnen",
       "body": [
-        "Das Umschalten kostet nichts. Teuer ist, dass die beiden Apps sich nicht einig sind, was zählt. Ihr Kalender weiß, dass Samstag um elf zwei Stunden geblockt sind; die Wetter-App weiß, dass es von zehn bis eins regnet. Keine von beiden weiß, dass diese zwei Tatsachen zusammen bedeuten: verschieben.",
-        "Sie sind die Integrationsschicht. Das funktioniert, bis Sie beschäftigt sind — also genau dann, wenn Pläne es wert wären, geschützt zu werden."
+        "Beginne mit einem bestimmten Termin, etwa einem nachmittäglichen Parkbesuch. Kläre, was sich ändern könnte: Uhrzeit, Ort, Vorbereitung oder die Entscheidung für eine Alternative. Du musst nicht den ganzen Kalender umplanen, nur weil das Tagessymbol Regen zeigt.",
+        "Notiere den tatsächlichen Beginn und das Ende der Aktivität, gegebenenfalls einschließlich Aufbau. Eine Kalenderübersicht hilft bei der Suche nach möglichen Tagen; die Wetterprüfung betrifft einen bestimmten Ort und Zeitraum. Halte diese Aufgaben beim Vergleichen von Optionen auseinander."
       ]
     },
     {
-      "heading": "Die verfügbare Vorhersage",
+      "heading": "Vor dem Lesen der Werte den Wetterort bestätigen",
       "body": [
-        "Cloud Calendars verwendet die verfügbare Vorhersage für den ausgewählten Ort. Stunden- und Tagesdaten können unterschiedliche Zeiträume abdecken.",
-        "Der Zeitraum, den Sie im Kalender aufrufen können, bestimmt nicht die Reichweite der Vorhersage. Eine Monatsansicht bedeutet keine Wettervorhersage für den ganzen Monat oder jeden Termin."
+        "Cloud Calendars bietet Wetter für den aktuellen oder ausgewählten Ort. Prüfe die angezeigte Ortsangabe, statt anzunehmen, eine Terminadresse ändere die Vorhersage im Hintergrund. Für einen Termin in einer anderen Stadt brauchst du den Vergleich mit deren Wetter.",
+        "Vielleicht planst du die Ankunft im Museum, während dein Telefon noch zu Hause ist. Lies den Vorhersageort und die lokale Terminzeit, bevor du sie vergleichst. Nebeneinander angezeigte Werte beweisen nicht, dass Terminplan und Wetter denselben Ort verwenden."
+      ]
+    },
+    {
+      "heading": "Stündliche und tägliche Abdeckung getrennt prüfen",
+      "body": [
+        "Nutze den Tageseintrag zur Orientierung und verfügbare Stundenwerte für Fragen zu einem Tagesabschnitt. Ein Termin von zwei bis fünf erfordert mehr als einen Blick auf ein Symbol. Prüfe, ob die betreffenden Stunden tatsächlich vorhanden sind.",
+        "Im aktuellen App-Quellcode übernimmt die Tagesliste bis zu zehn von WeatherKit zurückgegebene Tage. Das ist unabhängig von der Kalendernavigation und den aktuell gelieferten Stunden. Ein zukünftiger Termin erweitert die Wetterabdeckung nicht. Fehlt sein Zeitraum, plane eine spätere Wetterprüfung ein."
+      ]
+    },
+    {
+      "heading": "Die Bedeutung eines Wetterwerts verstehen",
+      "body": [
+        "Apple beschreibt WeatherKit-Daten wie Temperatur, Niederschlag, Wind und UV; einige Produkte sind nur in ausgewählten Regionen verfügbar. Lies die für deinen Ort verfügbaren Werte, statt überall jedes Wetterprodukt zu erwarten.",
+        "Die Hinweise des Met Office zeigen, warum Vorhersagezeitraum und Definitionen wichtig sind: Manche Werte beziehen sich auf einen Zeitpunkt, andere auf einen Zeitraum. Verwende die Bezeichnungen des jeweiligen Anbieters. Regenwahrscheinlichkeit, Menge und Dauer sind unterschiedliche Fragen; keine einzelne Zahl entscheidet über jede Aktivität im Freien."
+      ]
+    },
+    {
+      "heading": "Einen aus einer Wetterstunde erzeugten Entwurf prüfen",
+      "body": [
+        "Wo die App das Erstellen eines Termins aus einer Stunde anbietet, öffnet sie einen Entwurf. Der aktuelle Quellcode verwendet die Zeitzone des Wetterorts, schlägt eine Stunde Dauer vor und wählt den Standardkalender für neue Termine. Prüfe jeden Wert vor dem Speichern.",
+        "Bestätige Titel, Zielkalender, Beginn, Ende und vorgesehenen Ort. Eine Vorhersageauswahl erteilt weder Bearbeitungsrechte für einen geteilten Kalender noch benachrichtigt sie einen Veranstaltungsort oder reserviert einen Raum. Prüfe den gespeicherten Termin und hole notwendige Zustimmungen ein."
+      ]
+    },
+    {
+      "heading": "Die Website-Demonstration gesondert betrachten",
+      "body": [
+        "Die interaktive Wetterdemonstration der Website verwendet Open-Meteo, die App Apple WeatherKit. Die Web-Demo hilft beim Erkunden der Darstellung, doch Ort, Daten und verfügbare Tage können von der App abweichen.",
+        "Öffne für eine echte Entscheidung die App und vergleiche den vorgesehenen Termin mit der verfügbaren Vorhersage. Prüfe bei Änderungen eines gemeinsamen Plans Organisator, Wiederholungsumfang und Teilnehmer. Halte eine vereinbarte Alternative bereit, wenn die Aktivität von den Bedingungen abhängt."
       ]
     }
   ],
-  "claims": {
-    "price": "Was die Wetterfunktionen kosten"
-  },
+  "claims": {},
   "practical": [
-    "Prüfen Sie Ort, Datum und verfügbare Stunden, bevor Sie mit der Vorhersage planen."
+    "Termin und die Entscheidung bestimmen, die das Wetter beeinflussen könnte.",
+    "Wetterort sowie lokales Datum und Uhrzeit des Termins bestätigen.",
+    "Verfügbare Stunden unabhängig von der Tagesübersicht prüfen.",
+    "Wahrscheinlichkeit, Menge und weitere Werte anhand ihrer Bezeichnungen lesen.",
+    "Vor dem Speichern alle Entwurfsdetails und den Zielkalender prüfen.",
+    "Zum Entscheidungszeitpunkt erneut prüfen und gemeinsame Änderungen direkt bestätigen."
+  ],
+  "faq": [
+    {
+      "q": "Folgt das Wetter neben dem Kalender jeder Terminadresse?",
+      "a": "Gehe nicht davon aus. Prüfe den angezeigten Wetterort und vergleiche ihn mit dem Veranstaltungsort; die Nähe auf dem Bildschirm belegt keine Übereinstimmung."
+    },
+    {
+      "q": "Verwendet die App den Wetteranbieter der Website?",
+      "a": "Nein. Die App nutzt Apple WeatherKit; die Website-Demonstration verwendet davon getrennt Open-Meteo."
+    },
+    {
+      "q": "Speichert die Auswahl einer Vorhersagestunde automatisch einen Termin?",
+      "a": "Wo diese Aktion angeboten wird, beginnt sie einen Entwurf. Prüfe Datum, Zeitzone, Dauer, Kalender und Ort und speichere dann den gewünschten Termin."
+    }
   ],
   "seeAlso": [
     "forecast-beside-every-event",
-    "a-fourteen-day-view-of-the-weather"
+    "a-fourteen-day-view-of-the-weather",
+    "planning-outdoors-without-being-rained-on"
   ],
-  "updated": "2026-10-21"
+  "sourcesHeading": "Offizielle Quellen und weiterführende Informationen",
+  "sources": [
+    {
+      "label": "Apple: WeatherKit-Vorhersagen und regionale Verfügbarkeit",
+      "url": "https://developer.apple.com/weatherkit/"
+    },
+    {
+      "label": "Met Office: Vorhersageort, Zeiträume und Wetterwerte",
+      "url": "https://weather.metoffice.gov.uk/guides/what-does-this-forecast-mean"
+    }
+  ]
 },
 
   'forecast-beside-every-event': {
