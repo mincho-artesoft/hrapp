@@ -115,16 +115,20 @@ export const HOME_MS: HomeCopy = {
     ],
   },
   weather: {
+demoLabel: "Demo laman web · Open-Meteo. Aplikasi menggunakan Apple WeatherKit; tarikh yang tersedia mungkin berbeza.",
+loadingLabel: "Memuatkan cuaca untuk tempat yang dipilih…",
+tabs: {"hourly":"Setiap jam","daily":"Harian","weekend":"Hujung minggu","range":"Julat ramalan"},
+
     eyebrow: 'Pusat cuaca',
     title: ['Sebuah stesen cuaca', 'yang diletakkan dalam kalendar anda.'],
-    lead: 'Suhu, terasa seperti, hujan, UV, angin, kelembapan, jarak penglihatan dan tekanan — setiap satu sebagai carta jam yang boleh anda susuri. Ketik mana-mana jam dalam ramalan dan aplikasi membuka acara baharu yang sudah ditetapkan pada waktu itu.',
+    lead: "Lihat cuaca di samping rancangan anda dalam aplikasi. Demo laman web ini menggunakan Open-Meteo; aplikasi menggunakan Apple WeatherKit, dengan ramalan setiap jam dan harian yang tersedia untuk tempat yang dipilih.",
     searchLabel: 'Cari bandar',
     searchPlaceholder: 'Cuba bandar lain — di mana-mana',
     searching: 'Sedang mencari…',
     alt: 'Pusat cuaca dengan suhu semasa, carta jam dan ramalan sepuluh hari',
-    unavailable: 'Ramalan langsung tidak tersedia buat masa ini — data contoh dipaparkan.',
-    liveFrom: 'Langsung daripada Open-Meteo, setakat {t}.',
-    tapAnHour: 'Dalam aplikasi, ketik satu jam untuk meletakkan acara terus padanya.',
+    unavailable: "Data contoh untuk demo ini, bukan ramalan semasa bagi tempat yang dipilih.",
+    liveFrom: "Demo laman web · Open-Meteo · setakat {t}.",
+    tapAnHour: "Dalam aplikasi, pilih waktu ramalan yang tersedia untuk memulakan draf acara, kemudian semak masa dan kalendarnya.",
     readings: {
       feelsLike: 'Dua darjah di bawah bacaan sebenar — angin puncanya.',
       precipitation: 'Satu jalur melintas antara pukul 16 dan 19.',
@@ -229,7 +233,7 @@ export const HOME_MS: HomeCopy = {
       },
       {
         q: 'Dari mana datangnya data cuaca?',
-        a: 'Ramalan diambil untuk lokasi semasa atau pilihan anda dan merangkumi pandangan setiap jam dan sepuluh hari, suhu terasa, hujan, UV, angin dan tiupan, kelembapan dan takat embun, jarak penglihatan, tekanan, matahari terbit dan terbenam, serta fasa bulan.',
+        a: "Aplikasi menggunakan Apple WeatherKit untuk lokasi semasa atau tempat yang dipilih. Semak tarikh dan waktu yang tersedia; senarai harian memaparkan sehingga sepuluh hari daripada data yang diterima. Demo laman web menggunakan Open-Meteo dan mungkin memaparkan julat berbeza.",
       },
       {
         q: 'Bolehkah saya mengubah acara dengan menyeretnya?',

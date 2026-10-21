@@ -13,15 +13,15 @@ export const WEATHER_EN_US: Readonly<Record<string, LocalisedArticle>> = {
   'weather-inside-your-calendar': {
   "title": "A calendar with the weather already in it",
   "short": "Weather inside your calendar",
-  "description": "Why checking two apps to plan one day is a design failure, and what a calendar looks like when the forecast is part of it rather than beside it.",
-  "lede": "Almost everyone plans a day across two apps. The calendar says where you have to be; the weather app says what it will be like when you get there. Holding both in your head is the part nobody notices they are doing, until a Saturday gets rained on.",
+  "description": "Use hourly and daily weather alongside iPhone and iPad calendars. Check the selected place, forecast dates and appointment time before planning.",
+  "lede": "Almost everyone plans a day across two apps. The calendar says where you have to be; the weather app says what it will be like when you get there. Holding both in your head is the part nobody notices they are doing, until a Saturday gets rained on. This guide is published by Arte Soft, the developer of Cloud Calendars.",
   "commonBelief": "That a calendar is for commitments and a weather app is for weather, and keeping them separate is simply how phones work.",
   "sections": [
     {
-      "heading": "The cost of two apps is not two taps",
+      "heading": "Keep the schedule and forecast in context",
       "body": [
-        "The tax is not the switching. It is that the two apps disagree about what matters. Your calendar knows Saturday has a two-hour block at eleven; your weather app knows it will rain from ten until one. Neither of them knows that those two facts, together, mean you should move the block.",
-        "You are the integration layer. That works until you are busy, which is exactly when plans are worth protecting."
+        "For an outdoor appointment, first identify its place and time. Viewing weather alongside the calendar can make that comparison easier, but only when the weather refers to the intended location and date.",
+        "For example, a meeting in another city calls for that city’s forecast. The weather near your phone may answer a different question, even though both displays sit beside the same schedule."
       ]
     },
     {
@@ -34,8 +34,8 @@ export const WEATHER_EN_US: Readonly<Record<string, LocalisedArticle>> = {
     {
       "heading": "What the app’s forecast range means",
       "body": [
-        "Cloud Calendars uses Apple WeatherKit. The inspected native code requests daily data and limits its daily list to at most ten returned entries. A list can contain fewer entries; this is not a guarantee of complete data for every location or future event.",
-        "The website’s weather demonstration is separate from the native app. Its range is not evidence that the app provides fourteen days of forecasts."
+        "The app uses Apple WeatherKit and shows up to ten returned days in its daily list. Check the dates and hours currently available for the selected place; a calendar view can extend beyond them.",
+        "The website uses a separate Open-Meteo demonstration. Its forecast range does not describe the range available in the app."
       ]
     }
   ],
@@ -58,62 +58,123 @@ export const WEATHER_EN_US: Readonly<Record<string, LocalisedArticle>> = {
       "url": "https://developer.apple.com/weatherkit/"
     }
   ],
-  "sourcesHeading": "Sources and further reading"
+  "sourcesHeading": "Sources and further reading",
+  "faq": [
+    {
+      "q": "Does the calendar provide weather for every future appointment?",
+      "a": "No. Forecast dates are limited even when the calendar can hold much later appointments. Check the dates available for your chosen place."
+    },
+    {
+      "q": "Which weather provider does the app use?",
+      "a": "Cloud Calendars uses Apple WeatherKit. The website demonstration uses Open-Meteo separately."
+    },
+    {
+      "q": "Can I create a plan from a forecast hour?",
+      "a": "The app can start an event draft from an available hour. Check the time and destination calendar before saving."
+    }
+  ]
 },
 
   'forecast-beside-every-event': {
-  "title": "The forecast beside every event, not just the day",
-  "short": "Forecast beside every event",
-  "description": "A daily summary averages away the hours you care about. What per-event weather looks like, and why the difference matters for anything scheduled outdoors.",
-  "lede": "Most calendars that mention weather show one icon per day. That icon is an average, and an average of a wet morning and a dry afternoon is a drizzle that never happens.",
+  "title": "Compare an appointment with the hourly weather forecast",
+  "short": "Weather for appointment hours",
+  "description": "Match your appointment to the selected place, date and available forecast hours. Check the event draft before saving a weather-based plan.",
+  "lede": "To compare weather with an appointment, match three things: the selected place, the forecast date and the hours your plan occupies. A nearby weather icon is not proof that all three match. This guide is published by Arte Soft, the developer of Cloud Calendars.",
   "commonBelief": "That a daily weather icon on a calendar is the same feature as a forecast attached to an event.",
   "sections": [
     {
-      "heading": "What a daily icon hides",
+      "heading": "Start with place and date",
       "body": [
-        "Take a day that rains hard until eleven and stays clear afterwards. The daily summary picks something in the middle and shows a cloud. You look at your two o'clock, see the cloud, and move a walk that never needed moving.",
-        "The error runs both ways. A day that is fine except for a violent hour at six shows as fine, and the one event that mattered is the one that gets caught."
+        "Open the forecast for the intended location and compare its date with the calendar entry. Calendar weather can reflect the selected weather place, so check that it is appropriate for the appointment rather than assuming the event address controls it.",
+        "An appointment next month can exist before weather data for that date is available. Keep the appointment and return to the forecast nearer its date; a missing weather entry is not a clear-weather prediction."
       ]
     },
     {
-      "heading": "Attaching the forecast to the hours",
+      "heading": "Use hourly detail for an hourly question",
       "body": [
-        "An event occupies specific hours. The forecast for those hours is a different number from the forecast for its day, and it is the only one that answers the question you are actually asking.",
-        "Open an event and the conditions shown are the ones for its window. A three-hour block gets the three hours, not the twenty-four."
+        "A daily summary and an hourly forecast answer different questions. If the appointment lasts from two until five, inspect the available hours covering that interval rather than treating one daily icon as the full picture.",
+        "If only part of the interval is available, leave the rest unresolved. The app does not promise complete hourly weather for every event you can create, and this guide does not promise that opening any event always presents its entire weather window."
+      ]
+    },
+    {
+      "heading": "Separate chance, amount and timing",
+      "body": [
+        "Read the label on the value you are checking. A precipitation probability is not rainfall amount or duration. Likewise, an hourly value and a daily summary cover different periods; compare like periods when weighing two possible times.",
+        "Choose a fallback appropriate to your plan instead of treating a single percentage as a universal go-or-cancel rule. Weather information can change, so revisit it when a decision needs to be made."
+      ]
+    },
+    {
+      "heading": "Review before saving a weather-based appointment",
+      "body": [
+        "The app can start an event draft from a forecast hour. Review the draft’s date, start, end and destination calendar before saving. Forecast selection does not replace a check that you are creating the right commitment.",
+        "If calendar access or the destination calendar prevents saving, resolve that permission separately from weather access. Finding a forecast does not grant editing rights to a shared calendar."
+      ]
+    },
+    {
+      "heading": "Use the full forecast when the summary is not enough",
+      "body": [
+        "For an activity outdoors, inspect the variables relevant to that activity and the location you actually chose. A current-weather widget or homepage demo is not a substitute for checking the app’s available forecast hours.",
+        "If you notice a discrepancy, compare the place and timestamp first. Different providers, selected places and forecast periods can produce different displays without proving that the calendar event changed."
       ]
     }
   ],
   "claims": {},
   "practical": [
-    "Check the event, not the day, whenever the plan depends on the weather.",
-    "For anything longer than a couple of hours, look at how the conditions move across the block rather than at a single figure.",
-    "Move the event before you cancel it — an hour either way is often the whole difference."
+    "Confirm location and event date.",
+    "Check the available hours across the activity.",
+    "Read probability and amount as different values.",
+    "Review the event draft before saving."
   ],
   "seeAlso": [
     "weather-inside-your-calendar",
     "planning-outdoors-without-being-rained-on"
   ],
-  "updated": "2026-10-21"
+  "updated": "2026-10-21",
+  "faq": [
+    {
+      "q": "Does every event have a complete forecast?",
+      "a": "No. Coverage depends on the selected place and available dates and hours."
+    },
+    {
+      "q": "Is the weather icon specific to the event address?",
+      "a": "Do not infer that from proximity to the event. Confirm the weather location separately."
+    },
+    {
+      "q": "Does tapping an hour save a new appointment?",
+      "a": "It starts an event draft where available. Review its date, time and calendar before saving."
+    }
+  ],
+  "sourcesHeading": "Weather sources and location settings",
+  "sources": [
+    {
+      "label": "Apple: WeatherKit forecasts and regional availability",
+      "url": "https://developer.apple.com/weatherkit/"
+    },
+    {
+      "label": "Apple: Privacy and Location Services",
+      "url": "https://support.apple.com/en-us/102515"
+    }
+  ]
 },
 
   'a-fourteen-day-view-of-the-weather': {
   "title": "How far ahead does the available forecast reach?",
   "short": "The available forecast range",
   "description": "Check the dates a forecast actually covers. Calendar navigation, daily forecasts and hourly detail are different ranges in Cloud Calendars.",
-  "lede": "You can create an appointment far beyond the dates covered by weather data. That does not make the forecast reach the appointment. Check the available dates before using weather to choose a time.",
+  "lede": "You can create an appointment far beyond the dates covered by weather data. That does not make the forecast reach the appointment. Check the available dates before using weather to choose a time. This guide is published by Arte Soft, the developer of Cloud Calendars.",
   "commonBelief": "Every future date visible in a calendar has a matching weather forecast.",
   "sections": [
     {
       "heading": "Separate the calendar range from the forecast range",
       "body": [
-        "A calendar can hold a plan for next month without knowing next month’s weather. Look at the forecast dates themselves, rather than the month you can open in the calendar. No weather entry for a date should be treated as missing information, not as a prediction of clear conditions."
+        "A calendar can hold a plan for next month without weather for that date. Look at the forecast dates themselves rather than the month open in the calendar. A missing weather entry is unavailable information, not a prediction of clear conditions."
       ]
     },
     {
-      "heading": "What the native app requests",
+      "heading": "The forecast available in the app",
       "body": [
-        "Apple describes WeatherKit as providing ten-day hourly forecasts. In the inspected Cloud Calendars source, the daily list uses at most ten entries returned by WeatherKit. That supports removing the old fourteen-day promise; it does not establish that every request or location will return a complete ten days.",
-        "The homepage demonstration and the native app use separate weather implementations. A range offered by the demonstration is not a promise about the app."
+        "The app uses Apple WeatherKit and displays up to ten returned days in its daily list. Check the actual dates and hourly detail for your chosen place rather than assuming every request provides the full range.",
+        "The website demonstration uses Open-Meteo and requests a different forecast range. It is separate from the app, so use the app’s own available dates when planning."
       ]
     },
     {
@@ -141,6 +202,20 @@ export const WEATHER_EN_US: Readonly<Record<string, LocalisedArticle>> = {
       "label": "Apple: Get started with WeatherKit",
       "url": "https://developer.apple.com/weatherkit/"
     }
+  ],
+  "faq": [
+    {
+      "q": "Does opening next month extend the forecast?",
+      "a": "No. Calendar navigation and available weather dates are separate."
+    },
+    {
+      "q": "Why are hourly and daily views different?",
+      "a": "They summarize different periods. Check which actual hours and dates are available rather than inferring coverage from one view."
+    },
+    {
+      "q": "Is the website’s forecast range the app’s range?",
+      "a": "No. The website uses a separate Open-Meteo demonstration. Check available dates in the app itself."
+    }
   ]
 },
 
@@ -148,43 +223,63 @@ export const WEATHER_EN_US: Readonly<Record<string, LocalisedArticle>> = {
   "title": "Planning outdoor things without getting rained on",
   "short": "Planning outdoors",
   "description": "A practical method for scheduling anything that happens outside, using the calendar you already keep rather than a separate weather routine.",
-  "lede": "If your hobbies happen outdoors you have probably built a private ritual: check the weather, squint at the week, guess. The guessing is the part that can go.",
+  "lede": "If your hobbies happen outdoors you have probably built a private ritual: check the weather, squint at the week, guess. The guessing is the part that can go. This guide is published by Arte Soft, the developer of Cloud Calendars.",
   "commonBelief": "That avoiding bad weather means checking the forecast more often.",
   "sections": [
     {
-      "heading": "Checking more is not the answer",
+      "heading": "Start with the place and the decision",
       "body": [
-        "Opening a weather app five times does not improve the forecast; it improves your anxiety. What changes outcomes is looking at the forecast at the moment you are choosing a time, which is a different moment entirely.",
-        "That moment happens in the calendar. If the weather is not there, you are making the decision without it and correcting later."
+        "Choose the weather location that matches the activity, then check whether the relevant date and hours are available. Decide what you need to know: whether to choose a different time, keep a fallback or postpone the decision.",
+        "Rechecking does not change the weather, but updated information can matter. There is no single checking schedule suitable for every outdoor plan."
       ]
     },
     {
-      "heading": "Choose the slot against the week",
+      "heading": "Compare available times without promising the outcome",
       "body": [
-        "Look at the week with the conditions behind it and the choice usually makes itself. Two candidate afternoons, one dry — there is nothing to deliberate about.",
-        "The habit worth building is small: before you place anything outdoors, look at the band, not at a separate app."
+        "Compare the relevant hourly information for each candidate period. A daily icon is a summary, not a guarantee of conditions throughout the day.",
+        "Moving an activity by an hour may or may not help. Do not infer a dry interval that the forecast does not show, and do not apply a universal percentage threshold to every activity."
       ]
     },
     {
-      "heading": "Then check the hours, not the day",
+      "heading": "Make a fallback before changing invitations",
       "body": [
-        "Once the event exists, its own forecast is the one that matters. A day can be wet and your two hours dry, and the daily summary will never tell you that.",
-        "Move before you cancel. An hour in either direction rescues more plans than any amount of re-checking."
+        "If the activity depends on suitable conditions, keep a realistic alternative and decide when you will review the latest information. Check local official guidance where relevant.",
+        "For a shared appointment, confirm the organizer and editing rights before moving it. A better-looking forecast does not itself authorize a change to everyone’s schedule."
       ]
     }
   ],
   "claims": {},
   "practical": [
-    "Place outdoor events from the week view, with conditions visible.",
-    "Two days out, check the event's own hours rather than its day.",
-    "Shift by an hour before abandoning the plan.",
-    "For anything more than a week away, pick the day and accept you will refine it later."
+    "Confirm the forecast location and the dates and hours available.",
+    "Compare candidate times using the weather factors relevant to your activity.",
+    "Keep an alternative plan and check again before the decision matters.",
+    "Consult relevant local official guidance when conditions could make the activity unsafe."
   ],
   "seeAlso": [
     "forecast-beside-every-event",
     "a-fourteen-day-view-of-the-weather"
   ],
-  "updated": "2026-10-21"
+  "updated": "2026-10-21",
+  "faq": [
+    {
+      "q": "Does moving the event guarantee dry weather?",
+      "a": "No. Compare the available forecast periods and keep a realistic alternative."
+    },
+    {
+      "q": "Should I check only the daily icon?",
+      "a": "For an activity at a specific time, inspect the available hours across its duration and confirm the location."
+    },
+    {
+      "q": "Can I move a shared event just because another time looks better?",
+      "a": "Confirm organizer responsibilities, editing rights and participants before changing their schedule."
+    }
+  ],
+  "sources": [
+    {
+      "label": "Apple: WeatherKit forecast data and regional availability",
+      "url": "https://developer.apple.com/weatherkit/"
+    }
+  ]
 },
 
   'what-a-forecast-can-and-cannot-tell-you': {
@@ -231,166 +326,218 @@ export const WEATHER_EN_US: Readonly<Record<string, LocalisedArticle>> = {
 },
 
   'reading-a-chance-of-rain': {
-    title: 'What a forty per cent chance of rain actually means',
-    short: 'Reading a chance of rain',
-    description:
-      'The single most misread number in any forecast, explained — and what to do with it when you are deciding whether to move an event.',
-    lede: 'Almost nobody reads probability of precipitation the way it is meant. The number is not how much rain, and it is not how long.',
-    commonBelief: 'That forty per cent means light rain, or rain for part of the day.',
-    sections: [
-      {
-        heading: 'What the number is',
-        body: [
-          'It is the probability that measurable rain falls at a given point in the forecast area during the period. Forty per cent means: in four out of ten runs of this situation, the spot you are standing on gets wet.',
-          'It says nothing about how hard, and nothing about for how long. A forty per cent day can be a five-minute shower or an afternoon of it.',
-        ],
-      },
-      {
-        heading: 'Why it feels wrong so often',
-        body: [
-          "Because people grade it as a yes or a no. Stay dry on a forty per cent day and the forecast 'was wrong'; get soaked and it 'was right'. Neither is true — the number was a bet, and bets lose six times in ten.",
-          'Over a season a well-calibrated forty per cent rains about forty per cent of the time, which is exactly the point and is invisible from any single day.',
-        ],
-      },
-    ],
-    claims: {},
-    practical: [
-      'Read it as odds, not as intensity.',
-      'Under about thirty per cent, plan normally and carry a contingency.',
-      'Above about sixty, plan for rain and be pleasantly surprised.',
-      'Between the two, look at the hours rather than the day — that is where the answer usually is.',
-    ],
-    seeAlso: ['what-a-forecast-can-and-cannot-tell-you'],
-  },
-
-  'weather-where-the-event-is': {
-  "title": "The weather where the event is, not where you are",
-  "short": "Weather at the location",
-  "description": "Your phone knows where you are. Your event knows where it is going to be. For anything more than a few miles away, those are different forecasts.",
-  "lede": "A forecast pinned to your current location is the right answer for right now and the wrong answer for a match forty miles away.",
-  "commonBelief": "That one local forecast covers everything in your day.",
+  "title": "What a forty per cent chance of rain actually means",
+  "short": "Reading a chance of rain",
+  "description": "The single most misread number in any forecast, explained — and what to do with it when you are deciding whether to move an event.",
+  "lede": "Almost nobody reads probability of precipitation the way it is meant. The number is not how much rain, and it is not how long.",
+  "commonBelief": "That forty per cent means light rain, or rain for part of the day.",
   "sections": [
     {
-      "heading": "Distance changes the answer faster than people expect",
+      "heading": "What the number is",
       "body": [
-        "Rain bands are not uniform. Twenty miles inland can be dry while the coast is not; a valley and the ridge above it disagree routinely. For a commute this is noise. For a fixture, a hike or a site visit it is the whole question.",
-        "The event carries a place. Using it is simply using information you already gave the calendar."
+        "It is the probability that measurable rain falls at a given point in the forecast area during the period. Forty per cent means: in four out of ten runs of this situation, the spot you are standing on gets wet.",
+        "It says nothing about how hard, and nothing about for how long. A forty per cent day can be a five-minute shower or an afternoon of it."
       ]
     },
     {
-      "heading": "What this fixes in practice",
+      "heading": "Why it feels wrong so often",
       "body": [
-        "The classic failure is packing for home weather and arriving somewhere else. It is not a forecasting error at all — the forecast was right about the wrong place.",
-        "When an event has a location, its conditions should follow the location rather than the phone."
+        "Because people grade it as a yes or a no. Stay dry on a forty per cent day and the forecast 'was wrong'; get soaked and it 'was right'. Neither is true — the number was a bet, and bets lose six times in ten.",
+        "Over a season a well-calibrated forty per cent rains about forty per cent of the time, which is exactly the point and is invisible from any single day."
       ]
     }
   ],
   "claims": {},
   "practical": [
-    "Put a real location on events that happen somewhere else.",
-    "For travel days, check the destination rather than the origin.",
-    "If the location is vague, the forecast is vague too — a postcode beats a place name."
+    "Read it as odds, not as intensity.",
+    "Under about thirty per cent, plan normally and carry a contingency.",
+    "Above about sixty, plan for rain and be pleasantly surprised.",
+    "Between the two, look at the hours rather than the day — that is where the answer usually is."
+  ],
+  "seeAlso": [
+    "what-a-forecast-can-and-cannot-tell-you"
+  ]
+},
+
+  'weather-where-the-event-is': {
+  "title": "The weather where the event is, not where you are",
+  "short": "Weather at the location",
+  "description": "Choose weather for a meeting destination, check its local dates and hours, and distinguish selected-place forecasts from device-location alerts.",
+  "lede": "Before using weather to plan an appointment away from home, select the destination in the weather view and check the place name. An address saved in an event is not enough to establish which forecast you are viewing. This guide is published by Arte Soft, the developer of Cloud Calendars.",
+  "commonBelief": "That one local forecast covers everything in your day.",
+  "sections": [
+    {
+      "heading": "Choose the destination deliberately",
+      "body": [
+        "Cloud Calendars lets you use your current location or choose a searched or saved place for weather. For a meeting in another city, select that city and verify the displayed name before comparing forecast hours.",
+        "Do not assume that adding a location to an event automatically switches every calendar weather display to that venue. Keep the event location accurate, then separately confirm the place used by the forecast."
+      ]
+    },
+    {
+      "heading": "Use search when you do not need current-location weather",
+      "body": [
+        "A searched place provides a way to inspect destination weather without treating your phone’s current position as the destination. Compare similarly named search results and verify the city or region before selecting one.",
+        "For current-location weather, review Cloud Calendars in Settings, Privacy & Security, Location Services. If permission is denied or restricted, the current-location route may be unavailable. A location permission is separate from permission to read calendars or deliver notifications."
+      ]
+    },
+    {
+      "heading": "Match the forecast date and local time",
+      "body": [
+        "Check the forecast’s selected place, date and hours against the appointment. This matters particularly when travelling across time zones: the destination’s afternoon and your current afternoon may be different moments.",
+        "For a long activity, examine the available hours across its duration. If some hours are missing, treat them as unavailable information rather than filling the gap with the nearest icon. A saved calendar appointment can extend beyond the forecast."
+      ]
+    },
+    {
+      "heading": "Keep destination forecasts and weather alerts separate",
+      "body": [
+        "Viewing a saved destination does not mean weather notifications follow that destination. Cloud Calendars’ weather-alert checks use the device’s recorded GPS location, with the app preference and iOS notification permission applying separately.",
+        "Apple notes that severe weather alerts are available only in selected regions. Check relevant local official information for your destination; the absence of a notification is not confirmation that conditions are suitable for your activity."
+      ]
+    },
+    {
+      "heading": "If the place or forecast looks wrong",
+      "body": [
+        "First distinguish a wrong place from missing weather data. Re-select the intended city and compare its displayed name, date and available hours. If loading fails, check the connection and try later without changing your appointment or deleting an account.",
+        "For support, record the chosen city, approximate forecast date, app and iOS versions and whether you selected current or searched weather. Keep private event titles and precise personal locations out of a public report."
+      ]
+    }
+  ],
+  "claims": {},
+  "practical": [
+    "Select the destination in the weather view.",
+    "Verify place, date and local forecast hours.",
+    "Review Location Services only when using current location.",
+    "Check weather notifications separately from the selected forecast."
   ],
   "seeAlso": [
     "forecast-beside-every-event",
     "time-zones-and-the-flight-you-booked"
   ],
-  "updated": "2026-10-21"
+  "updated": "2026-10-21",
+  "faq": [
+    {
+      "q": "Does entering an event address automatically select its forecast?",
+      "a": "Do not assume so. Confirm the selected place in the weather view separately."
+    },
+    {
+      "q": "Must I use GPS to view another city?",
+      "a": "You can search for a place and inspect its weather. Current-location weather uses location access separately."
+    },
+    {
+      "q": "Will alerts follow my saved destination?",
+      "a": "The weather-alert checks use recorded device GPS location. Selecting a destination forecast does not establish destination alert coverage."
+    }
+  ],
+  "sourcesHeading": "Weather sources and location settings",
+  "sources": [
+    {
+      "label": "Apple: WeatherKit forecasts and regional availability",
+      "url": "https://developer.apple.com/weatherkit/"
+    },
+    {
+      "label": "Apple: Privacy and Location Services",
+      "url": "https://support.apple.com/en-us/102515"
+    }
+  ]
 },
 
   'the-commute-and-the-sky': {
-    title: 'The two half-hours of your day that the weather actually ruins',
-    short: 'The commute and the sky',
-    description:
-      'Most weather disruption is not the day, it is the two commutes. A small habit that catches nearly all of it.',
-    lede: 'Ask people when weather last inconvenienced them and they will mostly describe a journey, not an afternoon.',
-    commonBelief: 'That a wet day is a wet day, and there is nothing to be done about it.',
-    sections: [
-      {
-        heading: 'The exposure is narrow',
-        body: [
-          'For most people the genuinely weather-exposed part of a working day is two short journeys. Everything between them happens indoors.',
-          'That makes the problem far smaller than it feels, and far more tractable: you are not trying to predict a day, only two half-hours.',
-        ],
-      },
-      {
-        heading: 'Which changes what you check',
-        body: [
-          'The useful question is not whether it rains today but whether it rains at eight and at six. Those are two specific hours, and hourly detail answers them well inside the range where forecasts are strong.',
-          'Shifting a departure by twenty minutes is often the entire fix, and it is only visible if you looked at the hours.',
-        ],
-      },
-    ],
-    claims: {},
-    practical: [
-      'Check the two commute hours rather than the day.',
-      'Twenty minutes earlier or later is usually enough to miss a shower.',
-      'If both ends look wet, that is the day to take the bag rather than the bike.',
-    ],
-    seeAlso: ['forecast-beside-every-event'],
-  },
+  "title": "The two half-hours of your day that the weather actually ruins",
+  "short": "The commute and the sky",
+  "description": "Most weather disruption is not the day, it is the two commutes. A small habit that catches nearly all of it.",
+  "lede": "Ask people when weather last inconvenienced them and they will mostly describe a journey, not an afternoon.",
+  "commonBelief": "That a wet day is a wet day, and there is nothing to be done about it.",
+  "sections": [
+    {
+      "heading": "The exposure is narrow",
+      "body": [
+        "For most people the genuinely weather-exposed part of a working day is two short journeys. Everything between them happens indoors.",
+        "That makes the problem far smaller than it feels, and far more tractable: you are not trying to predict a day, only two half-hours."
+      ]
+    },
+    {
+      "heading": "Which changes what you check",
+      "body": [
+        "The useful question is not whether it rains today but whether it rains at eight and at six. Those are two specific hours, and hourly detail answers them well inside the range where forecasts are strong.",
+        "Shifting a departure by twenty minutes is often the entire fix, and it is only visible if you looked at the hours."
+      ]
+    }
+  ],
+  "claims": {},
+  "practical": [
+    "Check the two commute hours rather than the day.",
+    "Twenty minutes earlier or later is usually enough to miss a shower.",
+    "If both ends look wet, that is the day to take the bag rather than the bike."
+  ],
+  "seeAlso": [
+    "forecast-beside-every-event"
+  ]
+},
 
   'daylight-as-a-planning-constraint': {
-    title: 'Daylight is a constraint, and calendars usually ignore it',
-    short: 'Daylight and planning',
-    description:
-      'Sunset moves by minutes a day and by hours across a season. For anything outdoors it binds harder than the weather does.',
-    lede: 'Weather is uncertain. Daylight is not, and yet most plans are made as though only the first one existed.',
-    commonBelief: 'That the light will hold because it held last week.',
-    sections: [
-      {
-        heading: 'The number moves faster than intuition',
-        body: [
-          'Around the equinoxes sunset shifts by two to three minutes a day at mid-latitudes. Over a fortnight that is half an hour, which is the difference between finishing in light and finishing by phone torch.',
-          'In late autumn the change is sharpest exactly when people are still scheduling as though it were September.',
-        ],
-      },
-      {
-        heading: 'Use it as a hard edge',
-        body: [
-          'Unlike rain, sunset is certain. It is the one planning input that never surprises you, and it deserves to be treated as a wall rather than a suggestion.',
-          'Work backwards from it: a two-hour activity that must finish in daylight has a latest start, and that start moves every week.',
-        ],
-      },
-    ],
-    claims: {},
-    practical: [
-      'Work backwards from sunset for anything outdoors, not forwards from the free slot.',
-      'Re-check the latest safe start every couple of weeks in spring and autumn.',
-      'In the fortnight after the clocks change, assume your instincts are an hour wrong.',
-    ],
-    seeAlso: ['planning-outdoors-without-being-rained-on'],
-  },
+  "title": "Daylight is a constraint, and calendars usually ignore it",
+  "short": "Daylight and planning",
+  "description": "Sunset moves by minutes a day and by hours across a season. For anything outdoors it binds harder than the weather does.",
+  "lede": "Weather is uncertain. Daylight is not, and yet most plans are made as though only the first one existed.",
+  "commonBelief": "That the light will hold because it held last week.",
+  "sections": [
+    {
+      "heading": "The number moves faster than intuition",
+      "body": [
+        "Around the equinoxes sunset shifts by two to three minutes a day at mid-latitudes. Over a fortnight that is half an hour, which is the difference between finishing in light and finishing by phone torch.",
+        "In late autumn the change is sharpest exactly when people are still scheduling as though it were September."
+      ]
+    },
+    {
+      "heading": "Use it as a hard edge",
+      "body": [
+        "Unlike rain, sunset is certain. It is the one planning input that never surprises you, and it deserves to be treated as a wall rather than a suggestion.",
+        "Work backwards from it: a two-hour activity that must finish in daylight has a latest start, and that start moves every week."
+      ]
+    }
+  ],
+  "claims": {},
+  "practical": [
+    "Work backwards from sunset for anything outdoors, not forwards from the free slot.",
+    "Re-check the latest safe start every couple of weeks in spring and autumn.",
+    "In the fortnight after the clocks change, assume your instincts are an hour wrong."
+  ],
+  "seeAlso": [
+    "planning-outdoors-without-being-rained-on"
+  ]
+},
 
   'wind-the-forecast-nobody-reads': {
-    title: 'Wind is the forecast nobody reads and half of them needed',
-    short: 'Wind, the ignored forecast',
-    description:
-      'Cycling, sailing, paddling, drone flying, gardening, anything with a gazebo. For a lot of plans wind decides the day and rain does not.',
-    lede: 'People check rain out of habit. For a surprising number of activities, wind is the number that actually determines whether the thing happens.',
-    commonBelief: 'That wind is a detail and rain is the headline.',
-    sections: [
-      {
-        heading: 'Where wind is the binding constraint',
-        body: [
-          'A dry day at thirty knots cancels more plans than a damp one at five. Cyclists, sailors, paddlers, anyone putting up a marquee, anyone flying anything — for all of them the rain line is secondary.',
-          'It is also the number people are worst at estimating from a window, because a sheltered street tells you very little about an exposed route.',
-        ],
-      },
-      {
-        heading: 'Direction matters as much as speed',
-        body: [
-          'The same speed is a different day depending on where it comes from. An offshore wind flattens water and pushes you out; onshore does the opposite. A headwind out is a tailwind home, which changes how far you plan to go.',
-          'Gust figures matter more than averages for anything with a sail or a canopy: the average holds the tent up, the gust takes it away.',
-        ],
-      },
-    ],
-    claims: {},
-    practical: [
-      'For wind-sensitive plans, check speed and direction, not just the icon.',
-      'Read the gusts, not the mean, for anything that can be lifted.',
-      'Plan the outbound leg into the wind so the tired leg is the easy one.',
-    ],
-    seeAlso: ['planning-outdoors-without-being-rained-on', 'weather-where-the-event-is'],
-  },
+  "title": "Wind is the forecast nobody reads and half of them needed",
+  "short": "Wind, the ignored forecast",
+  "description": "Cycling, sailing, paddling, drone flying, gardening, anything with a gazebo. For a lot of plans wind decides the day and rain does not.",
+  "lede": "People check rain out of habit. For a surprising number of activities, wind is the number that actually determines whether the thing happens.",
+  "commonBelief": "That wind is a detail and rain is the headline.",
+  "sections": [
+    {
+      "heading": "Where wind is the binding constraint",
+      "body": [
+        "A dry day at thirty knots cancels more plans than a damp one at five. Cyclists, sailors, paddlers, anyone putting up a marquee, anyone flying anything — for all of them the rain line is secondary.",
+        "It is also the number people are worst at estimating from a window, because a sheltered street tells you very little about an exposed route."
+      ]
+    },
+    {
+      "heading": "Direction matters as much as speed",
+      "body": [
+        "The same speed is a different day depending on where it comes from. An offshore wind flattens water and pushes you out; onshore does the opposite. A headwind out is a tailwind home, which changes how far you plan to go.",
+        "Gust figures matter more than averages for anything with a sail or a canopy: the average holds the tent up, the gust takes it away."
+      ]
+    }
+  ],
+  "claims": {},
+  "practical": [
+    "For wind-sensitive plans, check speed and direction, not just the icon.",
+    "Read the gusts, not the mean, for anything that can be lifted.",
+    "Plan the outbound leg into the wind so the tired leg is the easy one."
+  ],
+  "seeAlso": [
+    "planning-outdoors-without-being-rained-on",
+    "weather-where-the-event-is"
+  ]
+},
 };

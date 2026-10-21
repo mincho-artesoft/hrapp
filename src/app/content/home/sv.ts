@@ -107,16 +107,20 @@ export const HOME_SV: HomeCopy = {
     ],
   },
   weather: {
+demoLabel: "Webbdemo · Open-Meteo. Appen använder Apple WeatherKit; tillgängliga datum kan skilja sig.",
+loadingLabel: "Laddar väder för den valda platsen…",
+tabs: {"hourly":"Timvis","daily":"Dagligen","weekend":"Helg","range":"Prognosperiod"},
+
     eyebrow: 'Vädernav',
     title: ['En väderstation', 'parkerad i din kalender.'],
-    lead: 'Temperatur, känns som, nederbörd, UV, vind, luftfuktighet, sikt och lufttryck — vart och ett som ett timdiagram du kan dra genom. Tryck på vilken timme som helst i prognosen så öppnar appen en ny händelse redan satt till den tiden.',
+    lead: "Se vädret bredvid dina planer i appen. Den här webbdemon använder Open-Meteo; appen använder Apple WeatherKit med tillgängliga tim- och dygnsprognoser för den valda platsen.",
     searchLabel: 'Sök efter en stad',
     searchPlaceholder: 'Prova en annan stad — var som helst',
     searching: 'Söker…',
     alt: 'Vädernav med aktuell temperatur, timdiagram och tiodygnsprognos',
-    unavailable: 'Live-prognos inte tillgänglig just nu — exempeldata visas.',
-    liveFrom: 'Live från Open-Meteo, per {t}.',
-    tapAnHour: 'Tryck på en timme i appen för att lägga en händelse direkt där.',
+    unavailable: "Exempeldata för denna demo, inte en aktuell prognos för den valda platsen.",
+    liveFrom: "Webbdemo · Open-Meteo · uppdaterad {t}.",
+    tapAnHour: "Välj en tillgänglig prognostimme i appen för att börja ett händelseutkast. Kontrollera sedan tiden och kalendern.",
     readings: {
       feelsLike: 'Två grader under uppmätt — det är vinden.',
       precipitation: 'Ett band drar förbi mellan 16 och 19.',
@@ -221,7 +225,7 @@ export const HOME_SV: HomeCopy = {
       },
       {
         q: 'Var kommer väderdatan ifrån?',
-        a: 'Prognoser hämtas för din nuvarande eller valda plats och täcker utsikter per timme och för tio dygn, känns som-temperatur, nederbörd, UV, vind och byar, luftfuktighet och daggpunkt, sikt, lufttryck, soluppgång och solnedgång samt månfas.',
+        a: "Appen använder Apple WeatherKit för din nuvarande eller valda plats. Kontrollera tillgängliga datum och timmar; dygnslistan visar upp till tio mottagna dagar. Webbdemon använder Open-Meteo och kan visa en annan period.",
       },
       {
         q: 'Kan jag ändra en händelse genom att dra den?',

@@ -1,0 +1,279 @@
+{
+  "status": "Proposed only; no source integration",
+  "date": "2026-10-21",
+  "localeCount": 30,
+  "stringCount": 210,
+  "note": "Draft translations only; no runtime, native-speaker or rendered RTL certification. No external translation API used. Provider names and {t} preserved. Source inspection supports the qualified ten-returned-days cap, not a guaranteed ten-day horizon.",
+  "locales": {
+    "en-US": {
+      "demoLabel": "Website demo · Open-Meteo. The app uses Apple WeatherKit; available dates may differ.",
+      "loading": "Loading weather for the selected place…",
+      "sample": "Sample data for this demo, not a live forecast for the selected place.",
+      "hourly": "Hourly",
+      "daily": "Daily",
+      "weekend": "Weekend",
+      "range": "Forecast range"
+    },
+    "bg": {
+      "demoLabel": "Демонстрация в сайта · Open-Meteo. Приложението използва Apple WeatherKit; наличните дати може да се различават.",
+      "loading": "Зареждане на времето за избраното място…",
+      "sample": "Примерни данни за демонстрацията, а не актуална прогноза за избраното място.",
+      "hourly": "По часове",
+      "daily": "По дни",
+      "weekend": "Уикенд",
+      "range": "Период на прогнозата"
+    },
+    "de-DE": {
+      "demoLabel": "Website-Demo · Open-Meteo. Die App nutzt Apple WeatherKit; verfügbare Tage können abweichen.",
+      "loading": "Wetter für den ausgewählten Ort wird geladen…",
+      "sample": "Beispieldaten für diese Demo, keine aktuelle Vorhersage für den ausgewählten Ort.",
+      "hourly": "Stündlich",
+      "daily": "Täglich",
+      "weekend": "Wochenende",
+      "range": "Vorhersagezeitraum"
+    },
+    "es-ES": {
+      "demoLabel": "Demostración web · Open-Meteo. La app usa Apple WeatherKit; las fechas disponibles pueden variar.",
+      "loading": "Cargando el tiempo del lugar seleccionado…",
+      "sample": "Datos de ejemplo para esta demostración, no una previsión actual del lugar seleccionado.",
+      "hourly": "Por horas",
+      "daily": "Por días",
+      "weekend": "Fin de semana",
+      "range": "Periodo de previsión"
+    },
+    "fr-FR": {
+      "demoLabel": "Démonstration du site · Open-Meteo. L’app utilise Apple WeatherKit ; les dates disponibles peuvent varier.",
+      "loading": "Chargement de la météo du lieu sélectionné…",
+      "sample": "Données d’exemple pour cette démonstration, et non prévisions actuelles du lieu sélectionné.",
+      "hourly": "Par heure",
+      "daily": "Par jour",
+      "weekend": "Week-end",
+      "range": "Période des prévisions"
+    },
+    "it": {
+      "demoLabel": "Demo del sito · Open-Meteo. L’app usa Apple WeatherKit; le date disponibili possono variare.",
+      "loading": "Caricamento del meteo per il luogo selezionato…",
+      "sample": "Dati di esempio per questa demo, non previsioni aggiornate per il luogo selezionato.",
+      "hourly": "Per ora",
+      "daily": "Per giorno",
+      "weekend": "Fine settimana",
+      "range": "Periodo delle previsioni"
+    },
+    "nl-NL": {
+      "demoLabel": "Websitedemo · Open-Meteo. De app gebruikt Apple WeatherKit; beschikbare datums kunnen verschillen.",
+      "loading": "Weer voor de gekozen plaats laden…",
+      "sample": "Voorbeeldgegevens voor deze demo, geen actuele voorspelling voor de gekozen plaats.",
+      "hourly": "Per uur",
+      "daily": "Per dag",
+      "weekend": "Weekend",
+      "range": "Voorspellingsperiode"
+    },
+    "pt-BR": {
+      "demoLabel": "Demonstração do site · Open-Meteo. O app usa Apple WeatherKit; as datas disponíveis podem variar.",
+      "loading": "Carregando o tempo para o local selecionado…",
+      "sample": "Dados de exemplo para esta demonstração, não uma previsão atual para o local selecionado.",
+      "hourly": "Por hora",
+      "daily": "Por dia",
+      "weekend": "Fim de semana",
+      "range": "Período da previsão"
+    },
+    "pl": {
+      "demoLabel": "Demo strony · Open-Meteo. Aplikacja korzysta z Apple WeatherKit; dostępne daty mogą się różnić.",
+      "loading": "Wczytywanie pogody dla wybranego miejsca…",
+      "sample": "Przykładowe dane demonstracyjne, a nie aktualna prognoza dla wybranego miejsca.",
+      "hourly": "Godzinowa",
+      "daily": "Dzienna",
+      "weekend": "Weekend",
+      "range": "Zakres prognozy"
+    },
+    "ru": {
+      "demoLabel": "Демонстрация на сайте · Open-Meteo. Приложение использует Apple WeatherKit; доступные даты могут отличаться.",
+      "loading": "Загружается погода для выбранного места…",
+      "sample": "Пример данных для демонстрации, а не актуальный прогноз для выбранного места.",
+      "hourly": "По часам",
+      "daily": "По дням",
+      "weekend": "Выходные",
+      "range": "Период прогноза"
+    },
+    "sv": {
+      "demoLabel": "Webbdemo · Open-Meteo. Appen använder Apple WeatherKit; tillgängliga datum kan skilja sig.",
+      "loading": "Laddar väder för den valda platsen…",
+      "sample": "Exempeldata för denna demo, inte en aktuell prognos för den valda platsen.",
+      "hourly": "Timvis",
+      "daily": "Dagligen",
+      "weekend": "Helg",
+      "range": "Prognosperiod"
+    },
+    "da": {
+      "demoLabel": "Webdemo · Open-Meteo. Appen bruger Apple WeatherKit; tilgængelige datoer kan variere.",
+      "loading": "Indlæser vejret for det valgte sted…",
+      "sample": "Eksempeldata til denne demo, ikke en aktuel vejrudsigt for det valgte sted.",
+      "hourly": "Timevis",
+      "daily": "Dagligt",
+      "weekend": "Weekend",
+      "range": "Prognoseperiode"
+    },
+    "no": {
+      "demoLabel": "Nettsidedemo · Open-Meteo. Appen bruker Apple WeatherKit; tilgjengelige datoer kan variere.",
+      "loading": "Laster været for det valgte stedet…",
+      "sample": "Eksempeldata for denne demoen, ikke et oppdatert værvarsel for det valgte stedet.",
+      "hourly": "Timevis",
+      "daily": "Daglig",
+      "weekend": "Helg",
+      "range": "Varslingsperiode"
+    },
+    "fi": {
+      "demoLabel": "Sivuston demo · Open-Meteo. Sovellus käyttää Apple WeatherKit -palvelua; saatavilla olevat päivät voivat erota.",
+      "loading": "Ladataan valitun paikan säätä…",
+      "sample": "Demon esimerkkitietoja, ei valitun paikan ajantasaista ennustetta.",
+      "hourly": "Tunneittain",
+      "daily": "Päivittäin",
+      "weekend": "Viikonloppu",
+      "range": "Ennustejakso"
+    },
+    "cs": {
+      "demoLabel": "Ukázka webu · Open-Meteo. Aplikace používá Apple WeatherKit; dostupné termíny se mohou lišit.",
+      "loading": "Načítání počasí pro vybrané místo…",
+      "sample": "Ukázková data pro tuto demonstraci, nikoli aktuální předpověď pro vybrané místo.",
+      "hourly": "Po hodinách",
+      "daily": "Po dnech",
+      "weekend": "Víkend",
+      "range": "Období předpovědi"
+    },
+    "hu": {
+      "demoLabel": "Webes bemutató · Open-Meteo. Az app az Apple WeatherKit szolgáltatást használja; az elérhető dátumok eltérhetnek.",
+      "loading": "A kiválasztott hely időjárásának betöltése…",
+      "sample": "Mintaadatok ehhez a bemutatóhoz, nem a kiválasztott hely aktuális előrejelzése.",
+      "hourly": "Óránként",
+      "daily": "Naponta",
+      "weekend": "Hétvége",
+      "range": "Előrejelzési időszak"
+    },
+    "ro": {
+      "demoLabel": "Demonstrație pe site · Open-Meteo. Aplicația folosește Apple WeatherKit; datele disponibile pot diferi.",
+      "loading": "Se încarcă vremea pentru locul selectat…",
+      "sample": "Date exemplificative pentru această demonstrație, nu o prognoză actuală pentru locul selectat.",
+      "hourly": "Pe ore",
+      "daily": "Pe zile",
+      "weekend": "Weekend",
+      "range": "Intervalul prognozei"
+    },
+    "el": {
+      "demoLabel": "Επίδειξη ιστοτόπου · Open-Meteo. Η εφαρμογή χρησιμοποιεί Apple WeatherKit· οι διαθέσιμες ημερομηνίες ενδέχεται να διαφέρουν.",
+      "loading": "Φόρτωση καιρού για την επιλεγμένη τοποθεσία…",
+      "sample": "Ενδεικτικά δεδομένα για την επίδειξη, όχι τρέχουσα πρόγνωση για την επιλεγμένη τοποθεσία.",
+      "hourly": "Ανά ώρα",
+      "daily": "Ανά ημέρα",
+      "weekend": "Σαββατοκύριακο",
+      "range": "Περίοδος πρόγνωσης"
+    },
+    "tr": {
+      "demoLabel": "Web sitesi demosu · Open-Meteo. Uygulama Apple WeatherKit kullanır; kullanılabilir tarihler farklı olabilir.",
+      "loading": "Seçilen yerin hava durumu yükleniyor…",
+      "sample": "Bu demo için örnek veriler; seçilen yerin güncel hava tahmini değildir.",
+      "hourly": "Saatlik",
+      "daily": "Günlük",
+      "weekend": "Hafta sonu",
+      "range": "Tahmin aralığı"
+    },
+    "id": {
+      "demoLabel": "Demo situs · Open-Meteo. Aplikasi memakai Apple WeatherKit; tanggal yang tersedia bisa berbeda.",
+      "loading": "Memuat cuaca untuk tempat yang dipilih…",
+      "sample": "Data contoh untuk demo ini, bukan prakiraan terkini untuk tempat yang dipilih.",
+      "hourly": "Per jam",
+      "daily": "Harian",
+      "weekend": "Akhir pekan",
+      "range": "Rentang prakiraan"
+    },
+    "ms": {
+      "demoLabel": "Demo laman web · Open-Meteo. Aplikasi menggunakan Apple WeatherKit; tarikh yang tersedia mungkin berbeza.",
+      "loading": "Memuatkan cuaca untuk tempat yang dipilih…",
+      "sample": "Data contoh untuk demo ini, bukan ramalan semasa bagi tempat yang dipilih.",
+      "hourly": "Setiap jam",
+      "daily": "Harian",
+      "weekend": "Hujung minggu",
+      "range": "Julat ramalan"
+    },
+    "vi": {
+      "demoLabel": "Bản demo trên web · Open-Meteo. Ứng dụng dùng Apple WeatherKit; các ngày có dữ liệu có thể khác nhau.",
+      "loading": "Đang tải thời tiết cho địa điểm đã chọn…",
+      "sample": "Dữ liệu mẫu cho bản demo này, không phải dự báo hiện tại cho địa điểm đã chọn.",
+      "hourly": "Theo giờ",
+      "daily": "Theo ngày",
+      "weekend": "Cuối tuần",
+      "range": "Khoảng dự báo"
+    },
+    "ja": {
+      "demoLabel": "ウェブサイトのデモ · Open-Meteo。アプリはApple WeatherKitを使用しており、表示できる日付が異なる場合があります。",
+      "loading": "選択した場所の天気を読み込み中…",
+      "sample": "このデモのサンプルデータです。選択した場所の現在の予報ではありません。",
+      "hourly": "時間別",
+      "daily": "日別",
+      "weekend": "週末",
+      "range": "予報期間"
+    },
+    "ko": {
+      "demoLabel": "웹사이트 데모 · Open-Meteo. 앱은 Apple WeatherKit을 사용하며, 제공되는 날짜가 다를 수 있습니다.",
+      "loading": "선택한 장소의 날씨를 불러오는 중…",
+      "sample": "이 데모용 샘플 데이터이며, 선택한 장소의 현재 예보가 아닙니다.",
+      "hourly": "시간별",
+      "daily": "일별",
+      "weekend": "주말",
+      "range": "예보 기간"
+    },
+    "zh-Hans": {
+      "demoLabel": "网站演示 · Open-Meteo。App 使用 Apple WeatherKit，可查看的日期可能不同。",
+      "loading": "正在加载所选地点的天气…",
+      "sample": "此演示使用示例数据，并非所选地点的当前预报。",
+      "hourly": "逐小时",
+      "daily": "逐日",
+      "weekend": "周末",
+      "range": "预报范围"
+    },
+    "zh-Hant": {
+      "demoLabel": "網站示範 · Open-Meteo。App 使用 Apple WeatherKit，可查看的日期可能不同。",
+      "loading": "正在載入所選地點的天氣…",
+      "sample": "此示範使用範例資料，並非所選地點的目前預報。",
+      "hourly": "逐小時",
+      "daily": "逐日",
+      "weekend": "週末",
+      "range": "預報範圍"
+    },
+    "hi": {
+      "demoLabel": "वेबसाइट डेमो · Open-Meteo। ऐप Apple WeatherKit का उपयोग करता है; उपलब्ध तारीखें अलग हो सकती हैं।",
+      "loading": "चुनी गई जगह का मौसम लोड हो रहा है…",
+      "sample": "इस डेमो के लिए नमूना डेटा, चुनी गई जगह का मौजूदा पूर्वानुमान नहीं।",
+      "hourly": "हर घंटे",
+      "daily": "हर दिन",
+      "weekend": "सप्ताहांत",
+      "range": "पूर्वानुमान की अवधि"
+    },
+    "th": {
+      "demoLabel": "การสาธิตบนเว็บไซต์ · Open-Meteo แอปใช้ Apple WeatherKit วันที่ที่มีข้อมูลอาจแตกต่างกัน",
+      "loading": "กำลังโหลดสภาพอากาศสำหรับสถานที่ที่เลือก…",
+      "sample": "ข้อมูลตัวอย่างสำหรับการสาธิตนี้ ไม่ใช่พยากรณ์อากาศปัจจุบันของสถานที่ที่เลือก",
+      "hourly": "รายชั่วโมง",
+      "daily": "รายวัน",
+      "weekend": "สุดสัปดาห์",
+      "range": "ช่วงพยากรณ์"
+    },
+    "ar-SA": {
+      "demoLabel": "عرض توضيحي للموقع · Open-Meteo. يستخدم التطبيق Apple WeatherKit؛ وقد تختلف التواريخ المتاحة.",
+      "loading": "جارٍ تحميل الطقس للمكان المحدد…",
+      "sample": "بيانات تجريبية لهذا العرض، وليست توقعات حالية للمكان المحدد.",
+      "hourly": "كل ساعة",
+      "daily": "يوميًا",
+      "weekend": "نهاية الأسبوع",
+      "range": "نطاق التوقعات"
+    },
+    "he": {
+      "demoLabel": "הדגמה באתר · Open-Meteo. האפליקציה משתמשת ב-Apple WeatherKit; התאריכים הזמינים עשויים להיות שונים.",
+      "loading": "טוען מזג אוויר למקום שנבחר…",
+      "sample": "נתונים לדוגמה עבור ההדגמה, ולא תחזית עדכנית למקום שנבחר.",
+      "hourly": "לפי שעה",
+      "daily": "לפי יום",
+      "weekend": "סוף שבוע",
+      "range": "טווח התחזית"
+    }
+  }
+}

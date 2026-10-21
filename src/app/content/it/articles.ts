@@ -46,81 +46,148 @@ export const ARTICLES_IT: Readonly<Record<string, LocalisedArticle>> = {
 },
 
   'forecast-beside-every-event': {
-  "title": "La previsione accanto a ogni evento, non solo alla giornata",
-  "short": "Previsione per evento",
-  "description": "Un riassunto giornaliero fa la media proprio delle ore che contano. Che cosa significa avere il meteo per evento e perché la differenza pesa all'aperto.",
-  "lede": "La maggior parte dei calendari che nominano il meteo mostra un'icona al giorno. Quell'icona è una media, e la media fra una mattina di pioggia e un pomeriggio asciutto è una pioggerella che non arriva mai.",
-  "commonBelief": "Che un'icona giornaliera nel calendario equivalga a una previsione legata a un evento.",
+  "title": "Confronta un appuntamento con le previsioni meteo orarie",
+  "short": "Il meteo nelle ore del tuo appuntamento",
+  "description": "Verifica luogo, data e ore di previsione disponibili per l’appuntamento. Controlla la bozza prima di salvare un piano basato sul meteo.",
+  "lede": "Per confrontare il meteo con un appuntamento, fai coincidere tre elementi: luogo selezionato, data delle previsioni e ore occupate dal programma. Un’icona meteo vicina non dimostra che coincidano. Questa guida è pubblicata da Arte Soft, sviluppatore di Cloud Calendars.",
+  "commonBelief": "Un’icona meteo giornaliera nel calendario sarebbe la stessa funzione di una previsione associata a un evento.",
   "sections": [
     {
-      "heading": "Cosa nasconde un'icona giornaliera",
+      "heading": "Parti da luogo e data",
       "body": [
-        "Prendete una giornata in cui piove forte fino alle undici e poi schiarisce. Il riassunto sceglie una via di mezzo e mostra una nuvola. Voi guardate l'appuntamento delle due, vedete la nuvola e spostate una passeggiata che non andava spostata.",
-        "L'errore va in entrambe le direzioni. Una giornata buona tranne un'ora violenta alle sei appare buona, e l'unico evento che contava è proprio quello che si bagna."
+        "Apri le previsioni per il luogo previsto e confrontane la data con la voce del calendario. Il meteo nel calendario può riferirsi al luogo selezionato per le previsioni: verifica che sia adatto all’appuntamento, senza presumere che lo determini l’indirizzo dell’evento.",
+        "Un appuntamento del mese prossimo può esistere prima che siano disponibili i dati meteo per quella data. Mantienilo e ricontrolla le previsioni più vicino al giorno previsto: l’assenza di una voce meteo non è una previsione di bel tempo."
       ]
     },
     {
-      "heading": "Legare la previsione alle ore",
+      "heading": "Usa i dettagli orari per una domanda sulle ore",
       "body": [
-        "Un evento occupa ore precise. La previsione di quelle ore è un numero diverso da quella della giornata, ed è l'unico che risponde a ciò che state davvero chiedendo.",
-        "Aprite un evento e le condizioni che compaiono sono quelle della sua finestra. Un blocco di tre ore riceve le sue tre ore, non le ventiquattro."
+        "Un riepilogo giornaliero e una previsione oraria rispondono a domande diverse. Se l’appuntamento dura dalle due alle cinque, controlla le ore disponibili di quell’intervallo anziché considerare una sola icona giornaliera come il quadro completo.",
+        "Se è disponibile soltanto una parte dell’intervallo, lascia irrisolto il resto. L’app non promette un meteo orario completo per ogni evento che puoi creare. Questa guida non promette neppure che aprire qualsiasi evento mostri sempre tutta la sua finestra meteorologica."
+      ]
+    },
+    {
+      "heading": "Distingui probabilità, quantità e momento",
+      "body": [
+        "Leggi l’etichetta del valore che stai controllando. La probabilità di precipitazioni non è la quantità né la durata della pioggia. Allo stesso modo, un valore orario e un riepilogo giornaliero coprono periodi diversi: confronta periodi equivalenti quando valuti due possibili orari.",
+        "Scegli un’alternativa adatta al tuo programma anziché usare una percentuale come regola universale per procedere o annullare. Le informazioni meteo possono cambiare: ricontrollale quando devi decidere."
+      ]
+    },
+    {
+      "heading": "Controlla l’appuntamento basato sul meteo prima di salvarlo",
+      "body": [
+        "L’app può avviare una bozza di evento da un’ora delle previsioni. Controlla data, inizio, fine e calendario di destinazione prima di salvare. Selezionare una previsione non sostituisce la verifica che tu stia creando l’impegno giusto.",
+        "Se l’accesso al calendario o il calendario di destinazione impedisce il salvataggio, risolvi quel permesso separatamente dall’accesso al meteo. Trovare una previsione non conferisce diritti di modifica su un calendario condiviso."
+      ]
+    },
+    {
+      "heading": "Usa la previsione completa quando il riepilogo non basta",
+      "body": [
+        "Per un’attività all’aperto controlla le variabili pertinenti e il luogo effettivamente selezionato. Un widget del meteo attuale o una demo nella pagina iniziale non sostituisce la verifica delle ore di previsione disponibili nell’app.",
+        "Se noti una discrepanza, confronta prima luogo e data e ora dei dati. Provider, luoghi selezionati e periodi di previsione diversi possono produrre visualizzazioni diverse senza dimostrare che l’evento del calendario sia cambiato."
       ]
     }
   ],
   "claims": {},
   "practical": [
-    "Controllate l'evento, non la giornata, ogni volta che il piano dipende dal tempo.",
-    "Per qualcosa di più lungo di un paio d'ore, guardate come cambiano le condizioni lungo il blocco.",
-    "Spostate prima di annullare: un'ora in un senso o nell'altro basta quasi sempre."
+    "Conferma luogo e data dell’evento.",
+    "Controlla le ore disponibili per tutta l’attività.",
+    "Leggi probabilità e quantità come valori distinti.",
+    "Controlla la bozza dell’evento prima di salvare."
   ],
   "seeAlso": [
     "weather-inside-your-calendar",
     "planning-outdoors-without-being-rained-on"
   ],
-  "updated": "2026-10-21"
+  "updated": "2026-10-21",
+  "faq": [
+    {
+      "q": "Ogni evento ha una previsione completa?",
+      "a": "No. La copertura dipende dal luogo selezionato e dalle date e ore disponibili."
+    },
+    {
+      "q": "L’icona meteo si riferisce all’indirizzo dell’evento?",
+      "a": "Non dedurlo dalla vicinanza all’evento. Conferma separatamente il luogo delle previsioni."
+    },
+    {
+      "q": "Toccare un’ora salva un nuovo appuntamento?",
+      "a": "Dove disponibile, avvia una bozza di evento. Controlla data, ora e calendario prima di salvare."
+    }
+  ],
+  "sourcesHeading": "Fonti meteo e impostazioni di localizzazione",
+  "sources": [
+    {
+      "label": "Apple: previsioni WeatherKit e disponibilità regionale",
+      "url": "https://developer.apple.com/weatherkit/"
+    },
+    {
+      "label": "Apple: privacy e servizi di localizzazione",
+      "url": "https://support.apple.com/en-us/102515"
+    }
+  ]
 },
 
   'planning-outdoors-without-being-rained-on': {
-  "title": "Organizzare all'aperto senza prendersi la pioggia",
-  "short": "Organizzare all'aperto",
-  "description": "Un metodo concreto per programmare qualsiasi cosa succeda fuori, usando il calendario che avete già invece di una routine meteo a parte.",
-  "lede": "Se i vostri passatempi stanno all'aperto, avrete costruito un rituale privato: controllare il meteo, strizzare gli occhi sulla settimana, tirare a indovinare. La parte dell'indovinare può sparire.",
-  "commonBelief": "Che evitare il maltempo consista nel controllare le previsioni più spesso.",
+  "title": "Organizzare attività all’aperto senza finire sotto la pioggia",
+  "short": "Pianificare all’aperto",
+  "description": "Un metodo pratico per organizzare attività all’aperto con il calendario che usi già, senza aggiungere una routine meteo separata.",
+  "lede": "Se i tuoi hobby si svolgono all’aperto, probabilmente hai un rituale: controllare il meteo, scrutare la settimana, tirare a indovinare. Quest’ultimo passaggio può lasciare spazio a un confronto ragionato. Questa guida è pubblicata da Arte Soft, sviluppatore di Cloud Calendars.",
+  "commonBelief": "Evitare il maltempo significherebbe controllare più spesso le previsioni.",
   "sections": [
     {
-      "heading": "Guardare di più non è la risposta",
+      "heading": "Parti dal luogo e dalla decisione",
       "body": [
-        "Aprire l'app meteo cinque volte non migliora la previsione; migliora l'ansia. Quello che cambia il risultato è guardarla nel momento in cui scegliete un orario, e quello è un momento del tutto diverso.",
-        "Quel momento avviene nel calendario. Se il meteo non è lì, la decisione si prende senza e si corregge dopo."
+        "Scegli il luogo meteo corrispondente all’attività, poi verifica se data e ore pertinenti sono disponibili. Decidi cosa ti serve sapere: se scegliere un altro orario, tenere pronta un’alternativa o rimandare la decisione.",
+        "Ricontrollare non cambia il tempo, ma le informazioni aggiornate possono contare. Non esiste un’unica frequenza di controllo adatta a ogni programma all’aperto."
       ]
     },
     {
-      "heading": "Scegliere lo spazio sulla settimana",
+      "heading": "Confronta gli orari disponibili senza promettere il risultato",
       "body": [
-        "Guardate la settimana con le condizioni dietro e la scelta spesso si fa da sola. Due pomeriggi possibili, uno asciutto: non c'è più niente da soppesare.",
-        "L'abitudine che vale la pena è minuscola: prima di mettere qualcosa all'aperto, guardate la fascia, non un'altra app."
+        "Confronta le informazioni orarie pertinenti per ogni periodo possibile. Un’icona giornaliera è un riepilogo, non una garanzia delle condizioni per tutta la giornata.",
+        "Spostare un’attività di un’ora può aiutare oppure no. Non dedurre un intervallo asciutto che le previsioni non mostrano e non applicare una soglia percentuale universale a ogni attività."
       ]
     },
     {
-      "heading": "Poi le ore, non il giorno",
+      "heading": "Prepara un’alternativa prima di modificare gli inviti",
       "body": [
-        "Una volta creato l'evento, la previsione che conta è la sua. Una giornata può essere piovosa e le vostre due ore asciutte, e il riassunto giornaliero non ve lo dirà mai.",
-        "Spostate prima di annullare. Un'ora in una direzione salva più piani di qualsiasi quantità di controlli."
+        "Se l’attività richiede condizioni adatte, tieni pronta un’alternativa realistica e decidi quando controllare le informazioni più recenti. Consulta le indicazioni ufficiali locali dove pertinenti.",
+        "Per un appuntamento condiviso, conferma organizzatore e diritti di modifica prima di spostarlo. Una previsione apparentemente migliore non autorizza da sola a cambiare il programma di tutti."
       ]
     }
   ],
   "claims": {},
   "practical": [
-    "Mettete gli eventi all'aperto dalla vista Settimana, con le condizioni in vista.",
-    "Due giorni prima, controllate le ore dell'evento e non la sua giornata.",
-    "Spostate di un'ora prima di rinunciare al piano.",
-    "Oltre la settimana, scegliete il giorno e accettate di affinare dopo."
+    "Conferma il luogo delle previsioni e le date e ore disponibili.",
+    "Confronta gli orari possibili usando i fattori meteo pertinenti per l’attività.",
+    "Mantieni un piano alternativo e ricontrolla prima che la decisione conti.",
+    "Consulta le indicazioni ufficiali locali se le condizioni possono rendere pericolosa l’attività."
   ],
   "seeAlso": [
     "forecast-beside-every-event",
     "a-fourteen-day-view-of-the-weather"
   ],
-  "updated": "2026-10-21"
+  "updated": "2026-10-21",
+  "faq": [
+    {
+      "q": "Spostare l’evento garantisce tempo asciutto?",
+      "a": "No. Confronta i periodi di previsione disponibili e tieni pronta un’alternativa realistica."
+    },
+    {
+      "q": "Basta controllare l’icona giornaliera?",
+      "a": "Per un’attività a un’ora precisa, controlla le ore disponibili per tutta la durata e conferma il luogo."
+    },
+    {
+      "q": "Posso spostare un evento condiviso solo perché un altro orario sembra migliore?",
+      "a": "Conferma responsabilità dell’organizzatore, diritti di modifica e partecipanti prima di cambiare il loro programma."
+    }
+  ],
+  "sources": [
+    {
+      "label": "Apple: dati di previsione WeatherKit e disponibilità regionale",
+      "url": "https://developer.apple.com/weatherkit/"
+    }
+  ]
 },
 
   'a-fourteen-day-view-of-the-weather': {

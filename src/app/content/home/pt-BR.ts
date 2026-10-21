@@ -107,16 +107,20 @@ export const HOME_PT_BR: HomeCopy = {
     ],
   },
   weather: {
+demoLabel: "Demonstração do site · Open-Meteo. O app usa Apple WeatherKit; as datas disponíveis podem variar.",
+loadingLabel: "Carregando o tempo para o local selecionado…",
+tabs: {"hourly":"Por hora","daily":"Por dia","weekend":"Fim de semana","range":"Período da previsão"},
+
     eyebrow: 'Central de tempo',
     title: ['Uma estação meteorológica', 'estacionada na sua agenda.'],
-    lead: 'Temperatura, sensação, precipitação, UV, vento, umidade, visibilidade e pressão: cada um como um gráfico horário que dá para percorrer. Toque em qualquer hora da previsão e o app abre um compromisso novo já naquele horário.',
+    lead: "Veja o tempo junto dos seus planos no app. Esta demonstração do site usa Open-Meteo; o app usa Apple WeatherKit, com previsões por hora e por dia disponíveis para o local selecionado.",
     searchLabel: 'Buscar uma cidade',
     searchPlaceholder: 'Tente outra cidade — em qualquer lugar',
     searching: 'Buscando…',
     alt: 'Central de tempo com a temperatura atual, o gráfico horário e a previsão de dez dias',
-    unavailable: 'Previsão ao vivo indisponível agora — mostrando dados de exemplo.',
-    liveFrom: 'Ao vivo do Open-Meteo, em {t}.',
-    tapAnHour: 'No app, toque em uma hora para soltar um compromisso ali mesmo.',
+    unavailable: "Dados de exemplo para esta demonstração, não uma previsão atual para o local selecionado.",
+    liveFrom: "Demonstração do site · Open-Meteo · às {t}.",
+    tapAnHour: "No app, escolha um horário disponível na previsão para iniciar um rascunho de evento. Depois, confira o horário e o calendário.",
     readings: {
       feelsLike: 'Dois graus abaixo do valor real — é o vento.',
       precipitation: 'Uma faixa passa entre 16 e 19 horas.',
@@ -221,7 +225,7 @@ export const HOME_PT_BR: HomeCopy = {
       },
       {
         q: 'De onde vêm os dados do tempo?',
-        a: 'As previsões são buscadas para sua localização atual ou escolhida e cobrem perspectivas horárias e de dez dias, sensação térmica, precipitação, UV, vento e rajadas, umidade e ponto de orvalho, visibilidade, pressão, nascer e pôr do sol e fase da lua.',
+        a: "O app usa Apple WeatherKit para sua localização atual ou o local selecionado. Confira as datas e os horários disponíveis; a lista diária mostra até dez dias recebidos. A demonstração do site usa Open-Meteo e pode mostrar outro período.",
       },
       {
         q: 'Dá para mudar um compromisso arrastando?',

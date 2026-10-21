@@ -116,16 +116,20 @@ export const HOME_FR_FR: HomeCopy = {
     ],
   },
   weather: {
+demoLabel: "Démonstration du site · Open-Meteo. L’app utilise Apple WeatherKit ; les dates disponibles peuvent varier.",
+loadingLabel: "Chargement de la météo du lieu sélectionné…",
+tabs: {"hourly":"Par heure","daily":"Par jour","weekend":"Week-end","range":"Période des prévisions"},
+
     eyebrow: 'Pôle météo',
     title: ['Une station météo,', 'garée dans votre agenda.'],
-    lead: 'Température, ressenti, précipitations, UV, vent, humidité, visibilité et pression — chacun sous forme de courbe horaire que l’on peut parcourir. Touchez une heure dans la prévision et l’application ouvre un nouvel événement déjà réglé sur cette heure.',
+    lead: "Consultez la météo à côté de vos projets dans l’app. Cette démonstration du site utilise Open-Meteo ; l’app utilise Apple WeatherKit, avec les prévisions horaires et quotidiennes disponibles pour le lieu sélectionné.",
     searchLabel: 'Rechercher une ville',
     searchPlaceholder: 'Essayez une autre ville — n’importe où',
     searching: 'Recherche…',
     alt: 'Pôle météo affichant la température actuelle, la courbe horaire et la prévision à dix jours',
-    unavailable: 'Prévision en direct indisponible pour l’instant — données d’exemple affichées.',
-    liveFrom: 'En direct d’Open-Meteo, au {t}.',
-    tapAnHour: 'Dans l’application, touchez une heure pour y déposer un événement directement.',
+    unavailable: "Données d’exemple pour cette démonstration, et non prévisions actuelles du lieu sélectionné.",
+    liveFrom: "Démonstration du site · Open-Meteo · à {t}.",
+    tapAnHour: "Dans l’app, choisissez une heure disponible dans les prévisions pour commencer un brouillon d’événement, puis vérifiez son heure et son calendrier.",
     readings: {
       feelsLike: 'Deux degrés sous la valeur réelle — c’est le vent.',
       precipitation: 'Une bande passe entre 16 h et 19 h.',
@@ -230,7 +234,7 @@ export const HOME_FR_FR: HomeCopy = {
       },
       {
         q: 'D’où viennent les données météo ?',
-        a: 'Les prévisions sont récupérées pour votre position actuelle ou choisie et couvrent les perspectives horaires et à dix jours, la température ressentie, les précipitations, l’UV, le vent et les rafales, l’humidité et le point de rosée, la visibilité, la pression, le lever et le coucher du soleil, et la phase lunaire.',
+        a: "L’app utilise Apple WeatherKit pour votre position actuelle ou le lieu sélectionné. Vérifiez les dates et heures disponibles ; la liste quotidienne affiche jusqu’à dix jours reçus. La démonstration du site utilise Open-Meteo et peut couvrir une autre période.",
       },
       {
         q: 'Puis-je modifier un événement en le faisant glisser ?',

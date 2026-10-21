@@ -1,0 +1,1724 @@
+{
+  "status": "Proposed only; no source integration",
+  "date": "2026-10-21",
+  "localeCount": 30,
+  "patchCount": 150,
+  "note": "Draft translations only; no runtime, native-speaker or rendered RTL certification. No external translation API used. Provider names and {t} preserved. Source inspection supports the qualified ten-returned-days cap, not a guaranteed ten-day horizon.",
+  "guard": "Before applying each file group, verify sourceSha256 and every exact decoded before value. A stale hash requires re-reading the current file. Apply groups atomically; hashes describe pre-edit file bytes.",
+  "evidence": [
+    "research/batch06-weather/evidence.json",
+    "research/batch06-weather/proposed-copy-edits.json"
+  ],
+  "patches": [
+    {
+      "locale": "en-US",
+      "file": "/Users/minchomilev/cloud-calendars/src/app/content/home/en-US.ts",
+      "path": [
+        "weather",
+        "lead"
+      ],
+      "before": "Temperature, feels-like, precipitation, UV, wind, humidity, visibility and pressure — each one a scrubable hourly chart. Tap any hour in the forecast and the app opens a new event already set to that time.",
+      "after": "Explore weather alongside your plans in the app. This website demo uses Open-Meteo; the app uses Apple WeatherKit, with available hourly and daily forecasts for your selected place.",
+      "sourceSha256": "46cfd5e3d217d087eb3a96785e3a780fea730b3b47fe068e1731a4c9290eced3"
+    },
+    {
+      "locale": "en-US",
+      "file": "/Users/minchomilev/cloud-calendars/src/app/content/home/en-US.ts",
+      "path": [
+        "weather",
+        "liveFrom"
+      ],
+      "before": "Live from Open-Meteo, as of {t}.",
+      "after": "Website demo · Open-Meteo · as of {t}.",
+      "sourceSha256": "46cfd5e3d217d087eb3a96785e3a780fea730b3b47fe068e1731a4c9290eced3"
+    },
+    {
+      "locale": "en-US",
+      "file": "/Users/minchomilev/cloud-calendars/src/app/content/home/en-US.ts",
+      "path": [
+        "weather",
+        "unavailable"
+      ],
+      "before": "Live forecast unavailable right now — showing sample data.",
+      "after": "Website demo: sample data, not a live forecast for the selected place.",
+      "sourceSha256": "46cfd5e3d217d087eb3a96785e3a780fea730b3b47fe068e1731a4c9290eced3"
+    },
+    {
+      "locale": "en-US",
+      "file": "/Users/minchomilev/cloud-calendars/src/app/content/home/en-US.ts",
+      "path": [
+        "weather",
+        "tapAnHour"
+      ],
+      "before": "In the app, tap an hour to drop an event straight onto it.",
+      "after": "In the app, choose an available forecast hour to start an event draft, then review its time and calendar.",
+      "sourceSha256": "46cfd5e3d217d087eb3a96785e3a780fea730b3b47fe068e1731a4c9290eced3"
+    },
+    {
+      "locale": "en-US",
+      "file": "/Users/minchomilev/cloud-calendars/src/app/content/home/en-US.ts",
+      "path": [
+        "faq",
+        "items",
+        2,
+        "a"
+      ],
+      "before": "Forecasts are fetched for your current or chosen location and cover hourly and ten-day outlooks, feels-like temperature, precipitation, UV, wind and gusts, humidity and dew point, visibility, pressure, sunrise and sunset, and moon phase.",
+      "after": "The app uses Apple WeatherKit for your current or selected place. Check the available dates and hours; its daily list shows up to ten returned days. The website demo uses Open-Meteo and may show a different range.",
+      "sourceSha256": "46cfd5e3d217d087eb3a96785e3a780fea730b3b47fe068e1731a4c9290eced3"
+    },
+    {
+      "locale": "bg",
+      "file": "/Users/minchomilev/cloud-calendars/src/app/content/home/bg.ts",
+      "path": [
+        "weather",
+        "lead"
+      ],
+      "before": "Температура, усещане, валежи, UV, вятър, влажност, видимост и налягане — всяко като почасова графика, през която може да се прокара пръст. Докоснете час в прогнозата и приложението отваря ново събитие, вече нагласено за този час.",
+      "after": "Вижте времето до плановете си в приложението. Тази демонстрация в сайта използва Open-Meteo; приложението използва Apple WeatherKit с налични почасови и дневни прогнози за избраното място.",
+      "sourceSha256": "bccef2694d0d5e9394004655fa2b787d0fa75c3c35d8e310685d6c4472ec5e5f"
+    },
+    {
+      "locale": "bg",
+      "file": "/Users/minchomilev/cloud-calendars/src/app/content/home/bg.ts",
+      "path": [
+        "weather",
+        "liveFrom"
+      ],
+      "before": "На живо от Open-Meteo, към {t}.",
+      "after": "Демонстрация в сайта · Open-Meteo · към {t}.",
+      "sourceSha256": "bccef2694d0d5e9394004655fa2b787d0fa75c3c35d8e310685d6c4472ec5e5f"
+    },
+    {
+      "locale": "bg",
+      "file": "/Users/minchomilev/cloud-calendars/src/app/content/home/bg.ts",
+      "path": [
+        "weather",
+        "unavailable"
+      ],
+      "before": "В момента няма жива прогноза — показваме примерни данни.",
+      "after": "Примерни данни за демонстрацията, а не актуална прогноза за избраното място.",
+      "sourceSha256": "bccef2694d0d5e9394004655fa2b787d0fa75c3c35d8e310685d6c4472ec5e5f"
+    },
+    {
+      "locale": "bg",
+      "file": "/Users/minchomilev/cloud-calendars/src/app/content/home/bg.ts",
+      "path": [
+        "weather",
+        "tapAnHour"
+      ],
+      "before": "В приложението докоснете час, за да пуснете събитие точно върху него.",
+      "after": "В приложението изберете наличен час от прогнозата, за да започнете чернова на събитие, после проверете часа и календара му.",
+      "sourceSha256": "bccef2694d0d5e9394004655fa2b787d0fa75c3c35d8e310685d6c4472ec5e5f"
+    },
+    {
+      "locale": "bg",
+      "file": "/Users/minchomilev/cloud-calendars/src/app/content/home/bg.ts",
+      "path": [
+        "faq",
+        "items",
+        2,
+        "a"
+      ],
+      "before": "Прогнозите се вземат за текущото или избраното от вас място и обхващат почасов и десетдневен изглед, усещане за температура, валежи, UV, вятър и пориви, влажност и точка на оросяване, видимост, налягане, изгрев и залез, както и лунна фаза.",
+      "after": "Приложението използва Apple WeatherKit за текущото или избраното място. Проверете наличните дати и часове; дневният списък показва до десет дни от получената прогноза. Демонстрацията в сайта използва Open-Meteo и може да показва друг период.",
+      "sourceSha256": "bccef2694d0d5e9394004655fa2b787d0fa75c3c35d8e310685d6c4472ec5e5f"
+    },
+    {
+      "locale": "de-DE",
+      "file": "/Users/minchomilev/cloud-calendars/src/app/content/home/de-DE.ts",
+      "path": [
+        "weather",
+        "lead"
+      ],
+      "before": "Temperatur, gefühlte Temperatur, Niederschlag, UV, Wind, Luftfeuchte, Sicht und Luftdruck — jeweils als stündliches Diagramm zum Durchziehen. Tippen Sie eine Stunde in der Vorhersage an, und die App öffnet einen neuen Termin, bereits auf diese Zeit gesetzt.",
+      "after": "Sehen Sie das Wetter neben Ihren Plänen in der App. Diese Website-Demo nutzt Open-Meteo; die App nutzt Apple WeatherKit mit verfügbaren stündlichen und täglichen Vorhersagen für Ihren ausgewählten Ort.",
+      "sourceSha256": "82f45eb65a43dfb0b1fd441a0cddf7ea27ad5227e7c5c81115b8b5a58220c285"
+    },
+    {
+      "locale": "de-DE",
+      "file": "/Users/minchomilev/cloud-calendars/src/app/content/home/de-DE.ts",
+      "path": [
+        "weather",
+        "liveFrom"
+      ],
+      "before": "Live von Open-Meteo, Stand {t}.",
+      "after": "Website-Demo · Open-Meteo · Stand {t}.",
+      "sourceSha256": "82f45eb65a43dfb0b1fd441a0cddf7ea27ad5227e7c5c81115b8b5a58220c285"
+    },
+    {
+      "locale": "de-DE",
+      "file": "/Users/minchomilev/cloud-calendars/src/app/content/home/de-DE.ts",
+      "path": [
+        "weather",
+        "unavailable"
+      ],
+      "before": "Live-Vorhersage gerade nicht verfügbar — es werden Beispieldaten gezeigt.",
+      "after": "Beispieldaten für diese Demo, keine aktuelle Vorhersage für den ausgewählten Ort.",
+      "sourceSha256": "82f45eb65a43dfb0b1fd441a0cddf7ea27ad5227e7c5c81115b8b5a58220c285"
+    },
+    {
+      "locale": "de-DE",
+      "file": "/Users/minchomilev/cloud-calendars/src/app/content/home/de-DE.ts",
+      "path": [
+        "weather",
+        "tapAnHour"
+      ],
+      "before": "Tippen Sie in der App eine Stunde an, um einen Termin direkt daraufzulegen.",
+      "after": "Wählen Sie in der App eine verfügbare Vorhersagestunde, um einen Termin zu entwerfen. Prüfen Sie anschließend Uhrzeit und Kalender.",
+      "sourceSha256": "82f45eb65a43dfb0b1fd441a0cddf7ea27ad5227e7c5c81115b8b5a58220c285"
+    },
+    {
+      "locale": "de-DE",
+      "file": "/Users/minchomilev/cloud-calendars/src/app/content/home/de-DE.ts",
+      "path": [
+        "faq",
+        "items",
+        2,
+        "a"
+      ],
+      "before": "Die Vorhersagen werden für Ihren aktuellen oder gewählten Ort abgerufen und umfassen stündliche und zehntägige Aussichten, gefühlte Temperatur, Niederschlag, UV, Wind und Böen, Luftfeuchte und Taupunkt, Sicht, Luftdruck, Sonnenauf- und -untergang sowie die Mondphase.",
+      "after": "Die App nutzt Apple WeatherKit für Ihren aktuellen oder ausgewählten Ort. Prüfen Sie die verfügbaren Tage und Stunden; die Tagesliste zeigt bis zu zehn gelieferte Tage. Die Website-Demo nutzt Open-Meteo und kann einen anderen Zeitraum zeigen.",
+      "sourceSha256": "82f45eb65a43dfb0b1fd441a0cddf7ea27ad5227e7c5c81115b8b5a58220c285"
+    },
+    {
+      "locale": "es-ES",
+      "file": "/Users/minchomilev/cloud-calendars/src/app/content/home/es-ES.ts",
+      "path": [
+        "weather",
+        "lead"
+      ],
+      "before": "Temperatura, sensación térmica, precipitación, UV, viento, humedad, visibilidad y presión: cada uno como una gráfica horaria que puedes recorrer. Toca cualquier hora de la previsión y la aplicación abre un evento nuevo ya puesto a esa hora.",
+      "after": "Consulta el tiempo junto a tus planes en la app. Esta demostración web usa Open-Meteo; la app usa Apple WeatherKit, con las previsiones por horas y días disponibles para el lugar seleccionado.",
+      "sourceSha256": "5afc7a6439f13457d6d4debf4c0e2776f4f424b5e2fa22bbca647b7e3b53fafc"
+    },
+    {
+      "locale": "es-ES",
+      "file": "/Users/minchomilev/cloud-calendars/src/app/content/home/es-ES.ts",
+      "path": [
+        "weather",
+        "liveFrom"
+      ],
+      "before": "En vivo desde Open-Meteo, a fecha de {t}.",
+      "after": "Demostración web · Open-Meteo · a las {t}.",
+      "sourceSha256": "5afc7a6439f13457d6d4debf4c0e2776f4f424b5e2fa22bbca647b7e3b53fafc"
+    },
+    {
+      "locale": "es-ES",
+      "file": "/Users/minchomilev/cloud-calendars/src/app/content/home/es-ES.ts",
+      "path": [
+        "weather",
+        "unavailable"
+      ],
+      "before": "La previsión en vivo no está disponible ahora mismo — se muestran datos de ejemplo.",
+      "after": "Datos de ejemplo para esta demostración, no una previsión actual del lugar seleccionado.",
+      "sourceSha256": "5afc7a6439f13457d6d4debf4c0e2776f4f424b5e2fa22bbca647b7e3b53fafc"
+    },
+    {
+      "locale": "es-ES",
+      "file": "/Users/minchomilev/cloud-calendars/src/app/content/home/es-ES.ts",
+      "path": [
+        "weather",
+        "tapAnHour"
+      ],
+      "before": "En la aplicación, toca una hora para colocar un evento directamente ahí.",
+      "after": "En la app, elige una hora disponible de la previsión para iniciar un borrador de evento; después revisa su hora y calendario.",
+      "sourceSha256": "5afc7a6439f13457d6d4debf4c0e2776f4f424b5e2fa22bbca647b7e3b53fafc"
+    },
+    {
+      "locale": "es-ES",
+      "file": "/Users/minchomilev/cloud-calendars/src/app/content/home/es-ES.ts",
+      "path": [
+        "faq",
+        "items",
+        2,
+        "a"
+      ],
+      "before": "Las previsiones se obtienen para tu ubicación actual o la que elijas y cubren perspectivas horarias y a diez días, sensación térmica, precipitación, UV, viento y rachas, humedad y punto de rocío, visibilidad, presión, salida y puesta del sol y fase lunar.",
+      "after": "La app usa Apple WeatherKit para tu ubicación actual o el lugar seleccionado. Comprueba las fechas y horas disponibles; la lista diaria muestra hasta diez días recibidos. La demostración web usa Open-Meteo y puede mostrar otro periodo.",
+      "sourceSha256": "5afc7a6439f13457d6d4debf4c0e2776f4f424b5e2fa22bbca647b7e3b53fafc"
+    },
+    {
+      "locale": "fr-FR",
+      "file": "/Users/minchomilev/cloud-calendars/src/app/content/home/fr-FR.ts",
+      "path": [
+        "weather",
+        "lead"
+      ],
+      "before": "Température, ressenti, précipitations, UV, vent, humidité, visibilité et pression — chacun sous forme de courbe horaire que l’on peut parcourir. Touchez une heure dans la prévision et l’application ouvre un nouvel événement déjà réglé sur cette heure.",
+      "after": "Consultez la météo à côté de vos projets dans l’app. Cette démonstration du site utilise Open-Meteo ; l’app utilise Apple WeatherKit, avec les prévisions horaires et quotidiennes disponibles pour le lieu sélectionné.",
+      "sourceSha256": "28ef215c16dabb07820914f4f3a6d60e56c12d72023e52d8cf1a5b8216ab93c0"
+    },
+    {
+      "locale": "fr-FR",
+      "file": "/Users/minchomilev/cloud-calendars/src/app/content/home/fr-FR.ts",
+      "path": [
+        "weather",
+        "liveFrom"
+      ],
+      "before": "En direct d’Open-Meteo, au {t}.",
+      "after": "Démonstration du site · Open-Meteo · à {t}.",
+      "sourceSha256": "28ef215c16dabb07820914f4f3a6d60e56c12d72023e52d8cf1a5b8216ab93c0"
+    },
+    {
+      "locale": "fr-FR",
+      "file": "/Users/minchomilev/cloud-calendars/src/app/content/home/fr-FR.ts",
+      "path": [
+        "weather",
+        "unavailable"
+      ],
+      "before": "Prévision en direct indisponible pour l’instant — données d’exemple affichées.",
+      "after": "Données d’exemple pour cette démonstration, et non prévisions actuelles du lieu sélectionné.",
+      "sourceSha256": "28ef215c16dabb07820914f4f3a6d60e56c12d72023e52d8cf1a5b8216ab93c0"
+    },
+    {
+      "locale": "fr-FR",
+      "file": "/Users/minchomilev/cloud-calendars/src/app/content/home/fr-FR.ts",
+      "path": [
+        "weather",
+        "tapAnHour"
+      ],
+      "before": "Dans l’application, touchez une heure pour y déposer un événement directement.",
+      "after": "Dans l’app, choisissez une heure disponible dans les prévisions pour commencer un brouillon d’événement, puis vérifiez son heure et son calendrier.",
+      "sourceSha256": "28ef215c16dabb07820914f4f3a6d60e56c12d72023e52d8cf1a5b8216ab93c0"
+    },
+    {
+      "locale": "fr-FR",
+      "file": "/Users/minchomilev/cloud-calendars/src/app/content/home/fr-FR.ts",
+      "path": [
+        "faq",
+        "items",
+        2,
+        "a"
+      ],
+      "before": "Les prévisions sont récupérées pour votre position actuelle ou choisie et couvrent les perspectives horaires et à dix jours, la température ressentie, les précipitations, l’UV, le vent et les rafales, l’humidité et le point de rosée, la visibilité, la pression, le lever et le coucher du soleil, et la phase lunaire.",
+      "after": "L’app utilise Apple WeatherKit pour votre position actuelle ou le lieu sélectionné. Vérifiez les dates et heures disponibles ; la liste quotidienne affiche jusqu’à dix jours reçus. La démonstration du site utilise Open-Meteo et peut couvrir une autre période.",
+      "sourceSha256": "28ef215c16dabb07820914f4f3a6d60e56c12d72023e52d8cf1a5b8216ab93c0"
+    },
+    {
+      "locale": "it",
+      "file": "/Users/minchomilev/cloud-calendars/src/app/content/home/it.ts",
+      "path": [
+        "weather",
+        "lead"
+      ],
+      "before": "Temperatura, percepita, precipitazioni, UV, vento, umidità, visibilità e pressione: ognuna come un grafico orario da scorrere. Tocca un’ora nella previsione e l’app apre un nuovo evento già impostato su quell’ora.",
+      "after": "Consulta il meteo accanto ai tuoi programmi nell’app. Questa demo del sito usa Open-Meteo; l’app usa Apple WeatherKit, con le previsioni orarie e giornaliere disponibili per il luogo selezionato.",
+      "sourceSha256": "b6812ea8ab41dcce2540bee423cd3f5674bac1cef5cdaf04242be470e037ebc9"
+    },
+    {
+      "locale": "it",
+      "file": "/Users/minchomilev/cloud-calendars/src/app/content/home/it.ts",
+      "path": [
+        "weather",
+        "liveFrom"
+      ],
+      "before": "In tempo reale da Open-Meteo, aggiornato al {t}.",
+      "after": "Demo del sito · Open-Meteo · alle {t}.",
+      "sourceSha256": "b6812ea8ab41dcce2540bee423cd3f5674bac1cef5cdaf04242be470e037ebc9"
+    },
+    {
+      "locale": "it",
+      "file": "/Users/minchomilev/cloud-calendars/src/app/content/home/it.ts",
+      "path": [
+        "weather",
+        "unavailable"
+      ],
+      "before": "Previsione in tempo reale non disponibile ora — vengono mostrati dati di esempio.",
+      "after": "Dati di esempio per questa demo, non previsioni aggiornate per il luogo selezionato.",
+      "sourceSha256": "b6812ea8ab41dcce2540bee423cd3f5674bac1cef5cdaf04242be470e037ebc9"
+    },
+    {
+      "locale": "it",
+      "file": "/Users/minchomilev/cloud-calendars/src/app/content/home/it.ts",
+      "path": [
+        "weather",
+        "tapAnHour"
+      ],
+      "before": "Nell’app, tocca un’ora per posarci sopra un evento.",
+      "after": "Nell’app, scegli un’ora disponibile nelle previsioni per iniziare una bozza di evento, poi controlla l’orario e il calendario.",
+      "sourceSha256": "b6812ea8ab41dcce2540bee423cd3f5674bac1cef5cdaf04242be470e037ebc9"
+    },
+    {
+      "locale": "it",
+      "file": "/Users/minchomilev/cloud-calendars/src/app/content/home/it.ts",
+      "path": [
+        "faq",
+        "items",
+        2,
+        "a"
+      ],
+      "before": "Le previsioni vengono richieste per la tua posizione attuale o scelta e coprono prospettive orarie e a dieci giorni, temperatura percepita, precipitazioni, UV, vento e raffiche, umidità e punto di rugiada, visibilità, pressione, alba e tramonto e fase lunare.",
+      "after": "L’app usa Apple WeatherKit per la posizione attuale o il luogo selezionato. Controlla le date e le ore disponibili: l’elenco giornaliero mostra fino a dieci giorni ricevuti. La demo del sito usa Open-Meteo e può mostrare un periodo diverso.",
+      "sourceSha256": "b6812ea8ab41dcce2540bee423cd3f5674bac1cef5cdaf04242be470e037ebc9"
+    },
+    {
+      "locale": "nl-NL",
+      "file": "/Users/minchomilev/cloud-calendars/src/app/content/home/nl-NL.ts",
+      "path": [
+        "weather",
+        "lead"
+      ],
+      "before": "Temperatuur, gevoelstemperatuur, neerslag, UV, wind, luchtvochtigheid, zicht en luchtdruk — elk als een uurgrafiek die u kunt doorlopen. Tik op een uur in de verwachting en de app opent een nieuwe afspraak, al op dat tijdstip gezet.",
+      "after": "Bekijk het weer naast je plannen in de app. Deze websitedemo gebruikt Open-Meteo; de app gebruikt Apple WeatherKit, met beschikbare uur- en dagverwachtingen voor de gekozen plaats.",
+      "sourceSha256": "9b3175517824d9d289e562c3ed2715fb399f05ca19a0ddbd25faafc209e83952"
+    },
+    {
+      "locale": "nl-NL",
+      "file": "/Users/minchomilev/cloud-calendars/src/app/content/home/nl-NL.ts",
+      "path": [
+        "weather",
+        "liveFrom"
+      ],
+      "before": "Live van Open-Meteo, stand {t}.",
+      "after": "Websitedemo · Open-Meteo · bijgewerkt om {t}.",
+      "sourceSha256": "9b3175517824d9d289e562c3ed2715fb399f05ca19a0ddbd25faafc209e83952"
+    },
+    {
+      "locale": "nl-NL",
+      "file": "/Users/minchomilev/cloud-calendars/src/app/content/home/nl-NL.ts",
+      "path": [
+        "weather",
+        "unavailable"
+      ],
+      "before": "Live verwachting op dit moment niet beschikbaar — er worden voorbeeldgegevens getoond.",
+      "after": "Voorbeeldgegevens voor deze demo, geen actuele voorspelling voor de gekozen plaats.",
+      "sourceSha256": "9b3175517824d9d289e562c3ed2715fb399f05ca19a0ddbd25faafc209e83952"
+    },
+    {
+      "locale": "nl-NL",
+      "file": "/Users/minchomilev/cloud-calendars/src/app/content/home/nl-NL.ts",
+      "path": [
+        "weather",
+        "tapAnHour"
+      ],
+      "before": "Tik in de app op een uur om er meteen een afspraak op te zetten.",
+      "after": "Kies in de app een beschikbaar uur uit de voorspelling om een conceptafspraak te maken. Controleer daarna de tijd en agenda.",
+      "sourceSha256": "9b3175517824d9d289e562c3ed2715fb399f05ca19a0ddbd25faafc209e83952"
+    },
+    {
+      "locale": "nl-NL",
+      "file": "/Users/minchomilev/cloud-calendars/src/app/content/home/nl-NL.ts",
+      "path": [
+        "faq",
+        "items",
+        2,
+        "a"
+      ],
+      "before": "Verwachtingen worden opgehaald voor uw huidige of gekozen locatie en omvatten vooruitzichten per uur en voor tien dagen, gevoelstemperatuur, neerslag, UV, wind en windstoten, luchtvochtigheid en dauwpunt, zicht, luchtdruk, zonsopkomst en -ondergang, en de maanstand.",
+      "after": "De app gebruikt Apple WeatherKit voor je huidige of gekozen plaats. Controleer de beschikbare datums en uren; de daglijst toont maximaal tien ontvangen dagen. De websitedemo gebruikt Open-Meteo en kan een andere periode tonen.",
+      "sourceSha256": "9b3175517824d9d289e562c3ed2715fb399f05ca19a0ddbd25faafc209e83952"
+    },
+    {
+      "locale": "pt-BR",
+      "file": "/Users/minchomilev/cloud-calendars/src/app/content/home/pt-BR.ts",
+      "path": [
+        "weather",
+        "lead"
+      ],
+      "before": "Temperatura, sensação, precipitação, UV, vento, umidade, visibilidade e pressão: cada um como um gráfico horário que dá para percorrer. Toque em qualquer hora da previsão e o app abre um compromisso novo já naquele horário.",
+      "after": "Veja o tempo junto dos seus planos no app. Esta demonstração do site usa Open-Meteo; o app usa Apple WeatherKit, com previsões por hora e por dia disponíveis para o local selecionado.",
+      "sourceSha256": "ab989a89816dd34a06bf650a838c796adb5c049a08388da67b36d0e2a9329a7c"
+    },
+    {
+      "locale": "pt-BR",
+      "file": "/Users/minchomilev/cloud-calendars/src/app/content/home/pt-BR.ts",
+      "path": [
+        "weather",
+        "liveFrom"
+      ],
+      "before": "Ao vivo do Open-Meteo, em {t}.",
+      "after": "Demonstração do site · Open-Meteo · às {t}.",
+      "sourceSha256": "ab989a89816dd34a06bf650a838c796adb5c049a08388da67b36d0e2a9329a7c"
+    },
+    {
+      "locale": "pt-BR",
+      "file": "/Users/minchomilev/cloud-calendars/src/app/content/home/pt-BR.ts",
+      "path": [
+        "weather",
+        "unavailable"
+      ],
+      "before": "Previsão ao vivo indisponível agora — mostrando dados de exemplo.",
+      "after": "Dados de exemplo para esta demonstração, não uma previsão atual para o local selecionado.",
+      "sourceSha256": "ab989a89816dd34a06bf650a838c796adb5c049a08388da67b36d0e2a9329a7c"
+    },
+    {
+      "locale": "pt-BR",
+      "file": "/Users/minchomilev/cloud-calendars/src/app/content/home/pt-BR.ts",
+      "path": [
+        "weather",
+        "tapAnHour"
+      ],
+      "before": "No app, toque em uma hora para soltar um compromisso ali mesmo.",
+      "after": "No app, escolha um horário disponível na previsão para iniciar um rascunho de evento. Depois, confira o horário e o calendário.",
+      "sourceSha256": "ab989a89816dd34a06bf650a838c796adb5c049a08388da67b36d0e2a9329a7c"
+    },
+    {
+      "locale": "pt-BR",
+      "file": "/Users/minchomilev/cloud-calendars/src/app/content/home/pt-BR.ts",
+      "path": [
+        "faq",
+        "items",
+        2,
+        "a"
+      ],
+      "before": "As previsões são buscadas para sua localização atual ou escolhida e cobrem perspectivas horárias e de dez dias, sensação térmica, precipitação, UV, vento e rajadas, umidade e ponto de orvalho, visibilidade, pressão, nascer e pôr do sol e fase da lua.",
+      "after": "O app usa Apple WeatherKit para sua localização atual ou o local selecionado. Confira as datas e os horários disponíveis; a lista diária mostra até dez dias recebidos. A demonstração do site usa Open-Meteo e pode mostrar outro período.",
+      "sourceSha256": "ab989a89816dd34a06bf650a838c796adb5c049a08388da67b36d0e2a9329a7c"
+    },
+    {
+      "locale": "pl",
+      "file": "/Users/minchomilev/cloud-calendars/src/app/content/home/pl.ts",
+      "path": [
+        "weather",
+        "lead"
+      ],
+      "before": "Temperatura, odczuwalna, opady, UV, wiatr, wilgotność, widzialność i ciśnienie — każde jako godzinny wykres do przewijania. Dotknij dowolnej godziny w prognozie, a aplikacja otworzy nowe wydarzenie już ustawione na tę porę.",
+      "after": "Sprawdzaj pogodę obok swoich planów w aplikacji. To demo strony korzysta z Open-Meteo; aplikacja używa Apple WeatherKit i dostępnych prognoz godzinowych i dziennych dla wybranego miejsca.",
+      "sourceSha256": "a462fa750693af99962c7c8ec1fdb009647018194d61270c94ce63833e786dd3"
+    },
+    {
+      "locale": "pl",
+      "file": "/Users/minchomilev/cloud-calendars/src/app/content/home/pl.ts",
+      "path": [
+        "weather",
+        "liveFrom"
+      ],
+      "before": "Na żywo z Open-Meteo, stan na {t}.",
+      "after": "Demo strony · Open-Meteo · stan na {t}.",
+      "sourceSha256": "a462fa750693af99962c7c8ec1fdb009647018194d61270c94ce63833e786dd3"
+    },
+    {
+      "locale": "pl",
+      "file": "/Users/minchomilev/cloud-calendars/src/app/content/home/pl.ts",
+      "path": [
+        "weather",
+        "unavailable"
+      ],
+      "before": "Prognoza na żywo chwilowo niedostępna — pokazywane są dane przykładowe.",
+      "after": "Przykładowe dane demonstracyjne, a nie aktualna prognoza dla wybranego miejsca.",
+      "sourceSha256": "a462fa750693af99962c7c8ec1fdb009647018194d61270c94ce63833e786dd3"
+    },
+    {
+      "locale": "pl",
+      "file": "/Users/minchomilev/cloud-calendars/src/app/content/home/pl.ts",
+      "path": [
+        "weather",
+        "tapAnHour"
+      ],
+      "before": "W aplikacji dotknij godziny, by upuścić na nią wydarzenie.",
+      "after": "W aplikacji wybierz dostępną godzinę prognozy, aby rozpocząć szkic wydarzenia, a następnie sprawdź jego godzinę i kalendarz.",
+      "sourceSha256": "a462fa750693af99962c7c8ec1fdb009647018194d61270c94ce63833e786dd3"
+    },
+    {
+      "locale": "pl",
+      "file": "/Users/minchomilev/cloud-calendars/src/app/content/home/pl.ts",
+      "path": [
+        "faq",
+        "items",
+        2,
+        "a"
+      ],
+      "before": "Prognozy są pobierane dla twojej bieżącej lub wybranej lokalizacji i obejmują perspektywy godzinowe i dziesięciodniowe, temperaturę odczuwalną, opady, UV, wiatr i porywy, wilgotność i punkt rosy, widzialność, ciśnienie, wschód i zachód słońca oraz fazę księżyca.",
+      "after": "Aplikacja korzysta z Apple WeatherKit dla bieżącego lub wybranego miejsca. Sprawdź dostępne daty i godziny; lista dzienna pokazuje do dziesięciu otrzymanych dni. Demo strony korzysta z Open-Meteo i może obejmować inny okres.",
+      "sourceSha256": "a462fa750693af99962c7c8ec1fdb009647018194d61270c94ce63833e786dd3"
+    },
+    {
+      "locale": "ru",
+      "file": "/Users/minchomilev/cloud-calendars/src/app/content/home/ru.ts",
+      "path": [
+        "weather",
+        "lead"
+      ],
+      "before": "Температура, ощущаемая, осадки, УФ, ветер, влажность, видимость и давление — каждое как почасовой график, по которому можно провести пальцем. Коснитесь любого часа в прогнозе, и приложение откроет новое событие, уже поставленное на это время.",
+      "after": "Смотрите погоду рядом со своими планами в приложении. Эта демонстрация на сайте использует Open-Meteo; приложение использует Apple WeatherKit с доступными почасовыми и дневными прогнозами для выбранного места.",
+      "sourceSha256": "55e78659aeb1a11108e35b29e87b4063fce575844d0f04c36588eb7c4c58f6fd"
+    },
+    {
+      "locale": "ru",
+      "file": "/Users/minchomilev/cloud-calendars/src/app/content/home/ru.ts",
+      "path": [
+        "weather",
+        "liveFrom"
+      ],
+      "before": "В прямом эфире с Open-Meteo, по состоянию на {t}.",
+      "after": "Демонстрация на сайте · Open-Meteo · на {t}.",
+      "sourceSha256": "55e78659aeb1a11108e35b29e87b4063fce575844d0f04c36588eb7c4c58f6fd"
+    },
+    {
+      "locale": "ru",
+      "file": "/Users/minchomilev/cloud-calendars/src/app/content/home/ru.ts",
+      "path": [
+        "weather",
+        "unavailable"
+      ],
+      "before": "Живой прогноз сейчас недоступен — показаны примерные данные.",
+      "after": "Пример данных для демонстрации, а не актуальный прогноз для выбранного места.",
+      "sourceSha256": "55e78659aeb1a11108e35b29e87b4063fce575844d0f04c36588eb7c4c58f6fd"
+    },
+    {
+      "locale": "ru",
+      "file": "/Users/minchomilev/cloud-calendars/src/app/content/home/ru.ts",
+      "path": [
+        "weather",
+        "tapAnHour"
+      ],
+      "before": "В приложении коснитесь часа, чтобы поставить на него событие.",
+      "after": "В приложении выберите доступный час прогноза, чтобы начать черновик события, затем проверьте его время и календарь.",
+      "sourceSha256": "55e78659aeb1a11108e35b29e87b4063fce575844d0f04c36588eb7c4c58f6fd"
+    },
+    {
+      "locale": "ru",
+      "file": "/Users/minchomilev/cloud-calendars/src/app/content/home/ru.ts",
+      "path": [
+        "faq",
+        "items",
+        2,
+        "a"
+      ],
+      "before": "Прогнозы запрашиваются для вашего текущего или выбранного местоположения и охватывают почасовые и десятидневные перспективы, ощущаемую температуру, осадки, УФ, ветер и порывы, влажность и точку росы, видимость, давление, восход и закат и фазу луны.",
+      "after": "Приложение использует Apple WeatherKit для текущего или выбранного места. Проверьте доступные даты и часы: дневной список показывает до десяти полученных дней. Демонстрация на сайте использует Open-Meteo и может показывать другой период.",
+      "sourceSha256": "55e78659aeb1a11108e35b29e87b4063fce575844d0f04c36588eb7c4c58f6fd"
+    },
+    {
+      "locale": "sv",
+      "file": "/Users/minchomilev/cloud-calendars/src/app/content/home/sv.ts",
+      "path": [
+        "weather",
+        "lead"
+      ],
+      "before": "Temperatur, känns som, nederbörd, UV, vind, luftfuktighet, sikt och lufttryck — vart och ett som ett timdiagram du kan dra genom. Tryck på vilken timme som helst i prognosen så öppnar appen en ny händelse redan satt till den tiden.",
+      "after": "Se vädret bredvid dina planer i appen. Den här webbdemon använder Open-Meteo; appen använder Apple WeatherKit med tillgängliga tim- och dygnsprognoser för den valda platsen.",
+      "sourceSha256": "a958abd5ebcbf774cce26010f806f77e449ab5d1dbb421a914bf0f2bf81306cc"
+    },
+    {
+      "locale": "sv",
+      "file": "/Users/minchomilev/cloud-calendars/src/app/content/home/sv.ts",
+      "path": [
+        "weather",
+        "liveFrom"
+      ],
+      "before": "Live från Open-Meteo, per {t}.",
+      "after": "Webbdemo · Open-Meteo · uppdaterad {t}.",
+      "sourceSha256": "a958abd5ebcbf774cce26010f806f77e449ab5d1dbb421a914bf0f2bf81306cc"
+    },
+    {
+      "locale": "sv",
+      "file": "/Users/minchomilev/cloud-calendars/src/app/content/home/sv.ts",
+      "path": [
+        "weather",
+        "unavailable"
+      ],
+      "before": "Live-prognos inte tillgänglig just nu — exempeldata visas.",
+      "after": "Exempeldata för denna demo, inte en aktuell prognos för den valda platsen.",
+      "sourceSha256": "a958abd5ebcbf774cce26010f806f77e449ab5d1dbb421a914bf0f2bf81306cc"
+    },
+    {
+      "locale": "sv",
+      "file": "/Users/minchomilev/cloud-calendars/src/app/content/home/sv.ts",
+      "path": [
+        "weather",
+        "tapAnHour"
+      ],
+      "before": "Tryck på en timme i appen för att lägga en händelse direkt där.",
+      "after": "Välj en tillgänglig prognostimme i appen för att börja ett händelseutkast. Kontrollera sedan tiden och kalendern.",
+      "sourceSha256": "a958abd5ebcbf774cce26010f806f77e449ab5d1dbb421a914bf0f2bf81306cc"
+    },
+    {
+      "locale": "sv",
+      "file": "/Users/minchomilev/cloud-calendars/src/app/content/home/sv.ts",
+      "path": [
+        "faq",
+        "items",
+        2,
+        "a"
+      ],
+      "before": "Prognoser hämtas för din nuvarande eller valda plats och täcker utsikter per timme och för tio dygn, känns som-temperatur, nederbörd, UV, vind och byar, luftfuktighet och daggpunkt, sikt, lufttryck, soluppgång och solnedgång samt månfas.",
+      "after": "Appen använder Apple WeatherKit för din nuvarande eller valda plats. Kontrollera tillgängliga datum och timmar; dygnslistan visar upp till tio mottagna dagar. Webbdemon använder Open-Meteo och kan visa en annan period.",
+      "sourceSha256": "a958abd5ebcbf774cce26010f806f77e449ab5d1dbb421a914bf0f2bf81306cc"
+    },
+    {
+      "locale": "da",
+      "file": "/Users/minchomilev/cloud-calendars/src/app/content/home/da.ts",
+      "path": [
+        "weather",
+        "lead"
+      ],
+      "before": "Temperatur, føles som, nedbør, UV, vind, luftfugtighed, sigtbarhed og lufttryk — hver som en timegraf, du kan trække igennem. Tryk på en hvilken som helst time i udsigten, og appen åbner en ny begivenhed, allerede sat til det tidspunkt.",
+      "after": "Se vejret ved siden af dine planer i appen. Denne webdemo bruger Open-Meteo; appen bruger Apple WeatherKit med tilgængelige time- og døgnprognoser for det valgte sted.",
+      "sourceSha256": "8a40f9d8175633d8d23c037f97534cb2dc52963fd0c5e5a48a4937190659566b"
+    },
+    {
+      "locale": "da",
+      "file": "/Users/minchomilev/cloud-calendars/src/app/content/home/da.ts",
+      "path": [
+        "weather",
+        "liveFrom"
+      ],
+      "before": "Live fra Open-Meteo, pr. {t}.",
+      "after": "Webdemo · Open-Meteo · opdateret {t}.",
+      "sourceSha256": "8a40f9d8175633d8d23c037f97534cb2dc52963fd0c5e5a48a4937190659566b"
+    },
+    {
+      "locale": "da",
+      "file": "/Users/minchomilev/cloud-calendars/src/app/content/home/da.ts",
+      "path": [
+        "weather",
+        "unavailable"
+      ],
+      "before": "Live-udsigt er ikke tilgængelig lige nu — der vises eksempeldata.",
+      "after": "Eksempeldata til denne demo, ikke en aktuel vejrudsigt for det valgte sted.",
+      "sourceSha256": "8a40f9d8175633d8d23c037f97534cb2dc52963fd0c5e5a48a4937190659566b"
+    },
+    {
+      "locale": "da",
+      "file": "/Users/minchomilev/cloud-calendars/src/app/content/home/da.ts",
+      "path": [
+        "weather",
+        "tapAnHour"
+      ],
+      "before": "Tryk på en time i appen for at lægge en begivenhed direkte der.",
+      "after": "Vælg en tilgængelig time i vejrudsigten i appen for at starte et begivenhedsudkast. Kontrollér derefter tidspunkt og kalender.",
+      "sourceSha256": "8a40f9d8175633d8d23c037f97534cb2dc52963fd0c5e5a48a4937190659566b"
+    },
+    {
+      "locale": "da",
+      "file": "/Users/minchomilev/cloud-calendars/src/app/content/home/da.ts",
+      "path": [
+        "faq",
+        "items",
+        2,
+        "a"
+      ],
+      "before": "Udsigterne hentes for din nuværende eller valgte placering og dækker udsigter time for time og for ti døgn, føles-som-temperatur, nedbør, UV, vind og vindstød, luftfugtighed og dugpunkt, sigtbarhed, lufttryk, solopgang og solnedgang samt månefase.",
+      "after": "Appen bruger Apple WeatherKit for din aktuelle eller valgte placering. Kontrollér de tilgængelige datoer og timer; dagslisten viser op til ti modtagne dage. Webdemoen bruger Open-Meteo og kan vise en anden periode.",
+      "sourceSha256": "8a40f9d8175633d8d23c037f97534cb2dc52963fd0c5e5a48a4937190659566b"
+    },
+    {
+      "locale": "no",
+      "file": "/Users/minchomilev/cloud-calendars/src/app/content/home/no.ts",
+      "path": [
+        "weather",
+        "lead"
+      ],
+      "before": "Temperatur, føles som, nedbør, UV, vind, luftfuktighet, sikt og lufttrykk — hver som en timegraf du kan dra gjennom. Trykk på en hvilken som helst time i meldingen, og appen åpner en ny hendelse allerede satt til det tidspunktet.",
+      "after": "Se været ved siden av planene dine i appen. Denne nettsidedemoen bruker Open-Meteo; appen bruker Apple WeatherKit med tilgjengelige time- og dagsvarsler for det valgte stedet.",
+      "sourceSha256": "e0d6a02e8b038df5896cc80cae86383a2e2e5e8cf5e9f1f5b9b26746a3566f72"
+    },
+    {
+      "locale": "no",
+      "file": "/Users/minchomilev/cloud-calendars/src/app/content/home/no.ts",
+      "path": [
+        "weather",
+        "liveFrom"
+      ],
+      "before": "Direkte fra Open-Meteo, per {t}.",
+      "after": "Nettsidedemo · Open-Meteo · oppdatert {t}.",
+      "sourceSha256": "e0d6a02e8b038df5896cc80cae86383a2e2e5e8cf5e9f1f5b9b26746a3566f72"
+    },
+    {
+      "locale": "no",
+      "file": "/Users/minchomilev/cloud-calendars/src/app/content/home/no.ts",
+      "path": [
+        "weather",
+        "unavailable"
+      ],
+      "before": "Sanntidsmelding er utilgjengelig akkurat nå — viser eksempeldata.",
+      "after": "Eksempeldata for denne demoen, ikke et oppdatert værvarsel for det valgte stedet.",
+      "sourceSha256": "e0d6a02e8b038df5896cc80cae86383a2e2e5e8cf5e9f1f5b9b26746a3566f72"
+    },
+    {
+      "locale": "no",
+      "file": "/Users/minchomilev/cloud-calendars/src/app/content/home/no.ts",
+      "path": [
+        "weather",
+        "tapAnHour"
+      ],
+      "before": "Trykk på en time i appen for å legge en hendelse rett der.",
+      "after": "Velg en tilgjengelig time i værvarselet i appen for å starte et hendelsesutkast. Kontroller deretter tidspunkt og kalender.",
+      "sourceSha256": "e0d6a02e8b038df5896cc80cae86383a2e2e5e8cf5e9f1f5b9b26746a3566f72"
+    },
+    {
+      "locale": "no",
+      "file": "/Users/minchomilev/cloud-calendars/src/app/content/home/no.ts",
+      "path": [
+        "faq",
+        "items",
+        2,
+        "a"
+      ],
+      "before": "Værmeldingene hentes for din nåværende eller valgte posisjon og dekker utsikter time for time og for ti døgn, føles-som-temperatur, nedbør, UV, vind og vindkast, luftfuktighet og duggpunkt, sikt, lufttrykk, soloppgang og solnedgang samt månefase.",
+      "after": "Appen bruker Apple WeatherKit for din nåværende eller valgte plassering. Kontroller tilgjengelige datoer og timer; dagslisten viser opptil ti mottatte dager. Nettsidedemoen bruker Open-Meteo og kan vise en annen periode.",
+      "sourceSha256": "e0d6a02e8b038df5896cc80cae86383a2e2e5e8cf5e9f1f5b9b26746a3566f72"
+    },
+    {
+      "locale": "fi",
+      "file": "/Users/minchomilev/cloud-calendars/src/app/content/home/fi.ts",
+      "path": [
+        "weather",
+        "lead"
+      ],
+      "before": "Lämpötila, tuntuu kuin, sade, UV, tuuli, kosteus, näkyvyys ja paine — kukin tuntikaaviona, jota voi selata. Kosketa mitä tahansa tuntia ennusteessa, ja sovellus avaa uuden tapahtuman jo tuohon aikaan asetettuna.",
+      "after": "Katso säätä suunnitelmiesi rinnalla sovelluksessa. Tämä sivuston demo käyttää Open-Meteo-palvelua; sovellus käyttää Apple WeatherKit -palvelua ja valitun paikan saatavilla olevia tunti- ja päiväennusteita.",
+      "sourceSha256": "88de551a7baf6d3caac7d7ff1c3a9d3d1973c9914036687e46e5c18f17c3d8fe"
+    },
+    {
+      "locale": "fi",
+      "file": "/Users/minchomilev/cloud-calendars/src/app/content/home/fi.ts",
+      "path": [
+        "weather",
+        "liveFrom"
+      ],
+      "before": "Reaaliaikaisesti Open-Meteosta, tilanne {t}.",
+      "after": "Sivuston demo · Open-Meteo · päivitetty {t}.",
+      "sourceSha256": "88de551a7baf6d3caac7d7ff1c3a9d3d1973c9914036687e46e5c18f17c3d8fe"
+    },
+    {
+      "locale": "fi",
+      "file": "/Users/minchomilev/cloud-calendars/src/app/content/home/fi.ts",
+      "path": [
+        "weather",
+        "unavailable"
+      ],
+      "before": "Reaaliaikainen ennuste ei ole juuri nyt saatavilla — näytetään esimerkkitietoja.",
+      "after": "Demon esimerkkitietoja, ei valitun paikan ajantasaista ennustetta.",
+      "sourceSha256": "88de551a7baf6d3caac7d7ff1c3a9d3d1973c9914036687e46e5c18f17c3d8fe"
+    },
+    {
+      "locale": "fi",
+      "file": "/Users/minchomilev/cloud-calendars/src/app/content/home/fi.ts",
+      "path": [
+        "weather",
+        "tapAnHour"
+      ],
+      "before": "Kosketa sovelluksessa tuntia pudottaaksesi tapahtuman suoraan siihen.",
+      "after": "Valitse sovelluksessa saatavilla oleva ennustetunti aloittaaksesi tapahtumaluonnoksen. Tarkista sitten sen aika ja kalenteri.",
+      "sourceSha256": "88de551a7baf6d3caac7d7ff1c3a9d3d1973c9914036687e46e5c18f17c3d8fe"
+    },
+    {
+      "locale": "fi",
+      "file": "/Users/minchomilev/cloud-calendars/src/app/content/home/fi.ts",
+      "path": [
+        "faq",
+        "items",
+        2,
+        "a"
+      ],
+      "before": "Ennusteet haetaan nykyiselle tai valitsemallesi sijainnille ja kattavat tunti- ja kymmenen vuorokauden näkymät, tuntuu kuin -lämpötilan, sateen, UV:n, tuulen ja puuskat, kosteuden ja kastepisteen, näkyvyyden, paineen, auringonnousun ja -laskun sekä kuun vaiheen.",
+      "after": "Sovellus käyttää Apple WeatherKit -palvelua nykyiselle tai valitulle paikalle. Tarkista saatavilla olevat päivät ja tunnit; päivälista näyttää enintään kymmenen saatua ennustepäivää. Sivuston demo käyttää Open-Meteo-palvelua ja voi näyttää eri ajanjakson.",
+      "sourceSha256": "88de551a7baf6d3caac7d7ff1c3a9d3d1973c9914036687e46e5c18f17c3d8fe"
+    },
+    {
+      "locale": "cs",
+      "file": "/Users/minchomilev/cloud-calendars/src/app/content/home/cs.ts",
+      "path": [
+        "weather",
+        "lead"
+      ],
+      "before": "Teplota, pocitová, srážky, UV, vítr, vlhkost, dohlednost a tlak — každé jako hodinový graf, kterým lze projet. Klepněte na kteroukoli hodinu v předpovědi a aplikace otevře novou událost už nastavenou na tento čas.",
+      "after": "Sledujte počasí vedle svých plánů v aplikaci. Tato webová ukázka používá Open-Meteo; aplikace používá Apple WeatherKit s dostupnými hodinovými a denními předpověďmi pro vybrané místo.",
+      "sourceSha256": "64f0aa4a496180f35dd084dd05f83fd83bcbbe84ab2cbf79d1d8b93d84e2926c"
+    },
+    {
+      "locale": "cs",
+      "file": "/Users/minchomilev/cloud-calendars/src/app/content/home/cs.ts",
+      "path": [
+        "weather",
+        "liveFrom"
+      ],
+      "before": "Živě z Open-Meteo, stav k {t}.",
+      "after": "Ukázka webu · Open-Meteo · stav v {t}.",
+      "sourceSha256": "64f0aa4a496180f35dd084dd05f83fd83bcbbe84ab2cbf79d1d8b93d84e2926c"
+    },
+    {
+      "locale": "cs",
+      "file": "/Users/minchomilev/cloud-calendars/src/app/content/home/cs.ts",
+      "path": [
+        "weather",
+        "unavailable"
+      ],
+      "before": "Živá předpověď teď není dostupná — zobrazují se ukázková data.",
+      "after": "Ukázková data pro tuto demonstraci, nikoli aktuální předpověď pro vybrané místo.",
+      "sourceSha256": "64f0aa4a496180f35dd084dd05f83fd83bcbbe84ab2cbf79d1d8b93d84e2926c"
+    },
+    {
+      "locale": "cs",
+      "file": "/Users/minchomilev/cloud-calendars/src/app/content/home/cs.ts",
+      "path": [
+        "weather",
+        "tapAnHour"
+      ],
+      "before": "V aplikaci klepněte na hodinu a položte na ni událost.",
+      "after": "V aplikaci vyberte dostupnou hodinu předpovědi a začněte koncept události. Poté zkontrolujte její čas a kalendář.",
+      "sourceSha256": "64f0aa4a496180f35dd084dd05f83fd83bcbbe84ab2cbf79d1d8b93d84e2926c"
+    },
+    {
+      "locale": "cs",
+      "file": "/Users/minchomilev/cloud-calendars/src/app/content/home/cs.ts",
+      "path": [
+        "faq",
+        "items",
+        2,
+        "a"
+      ],
+      "before": "Předpovědi se stahují pro vaši aktuální nebo zvolenou polohu a zahrnují hodinový a desetidenní výhled, pocitovou teplotu, srážky, UV, vítr a nárazy, vlhkost a rosný bod, dohlednost, tlak, východ a západ slunce a fázi měsíce.",
+      "after": "Aplikace používá Apple WeatherKit pro aktuální nebo vybrané místo. Zkontrolujte dostupné dny a hodiny; denní seznam zobrazuje až deset obdržených dnů. Webová ukázka používá Open-Meteo a může zobrazovat jiné období.",
+      "sourceSha256": "64f0aa4a496180f35dd084dd05f83fd83bcbbe84ab2cbf79d1d8b93d84e2926c"
+    },
+    {
+      "locale": "hu",
+      "file": "/Users/minchomilev/cloud-calendars/src/app/content/home/hu.ts",
+      "path": [
+        "weather",
+        "lead"
+      ],
+      "before": "Hőmérséklet, hőérzet, csapadék, UV, szél, páratartalom, látótávolság és légnyomás — mindegyik órás grafikonként, amelyen végig lehet húzni. Érintsen meg bármely órát az előrejelzésben, és az alkalmazás új eseményt nyit, már arra az időpontra állítva.",
+      "after": "Nézd meg az időjárást a terveid mellett az appban. Ez a webes bemutató az Open-Meteo, az app pedig az Apple WeatherKit szolgáltatást használja, a kiválasztott hely elérhető órás és napi előrejelzéseivel.",
+      "sourceSha256": "f151ecef9b517bcdfa26a2924fa5a6aa158a242bfc80f097635008bf8a389949"
+    },
+    {
+      "locale": "hu",
+      "file": "/Users/minchomilev/cloud-calendars/src/app/content/home/hu.ts",
+      "path": [
+        "weather",
+        "liveFrom"
+      ],
+      "before": "Élőben az Open-Meteótól, {t} állapot szerint.",
+      "after": "Webes bemutató · Open-Meteo · frissítve: {t}.",
+      "sourceSha256": "f151ecef9b517bcdfa26a2924fa5a6aa158a242bfc80f097635008bf8a389949"
+    },
+    {
+      "locale": "hu",
+      "file": "/Users/minchomilev/cloud-calendars/src/app/content/home/hu.ts",
+      "path": [
+        "weather",
+        "unavailable"
+      ],
+      "before": "Az élő előrejelzés éppen nem érhető el — mintaadatok láthatók.",
+      "after": "Mintaadatok ehhez a bemutatóhoz, nem a kiválasztott hely aktuális előrejelzése.",
+      "sourceSha256": "f151ecef9b517bcdfa26a2924fa5a6aa158a242bfc80f097635008bf8a389949"
+    },
+    {
+      "locale": "hu",
+      "file": "/Users/minchomilev/cloud-calendars/src/app/content/home/hu.ts",
+      "path": [
+        "weather",
+        "tapAnHour"
+      ],
+      "before": "Az alkalmazásban érintsen meg egy órát, hogy egyenesen rá helyezzen egy eseményt.",
+      "after": "Az appban válassz egy elérhető előrejelzési órát egy eseményvázlat indításához, majd ellenőrizd az időpontját és a naptárát.",
+      "sourceSha256": "f151ecef9b517bcdfa26a2924fa5a6aa158a242bfc80f097635008bf8a389949"
+    },
+    {
+      "locale": "hu",
+      "file": "/Users/minchomilev/cloud-calendars/src/app/content/home/hu.ts",
+      "path": [
+        "faq",
+        "items",
+        2,
+        "a"
+      ],
+      "before": "Az előrejelzéseket a jelenlegi vagy választott helyére kérjük le, és órás és tíznapos kilátásokat, hőérzetet, csapadékot, UV-t, szelet és széllökéseket, páratartalmat és harmatpontot, látótávolságot, légnyomást, napkeltét és napnyugtát, valamint holdfázist tartalmaznak.",
+      "after": "Az app az Apple WeatherKit szolgáltatást használja az aktuális vagy kiválasztott helyhez. Ellenőrizd az elérhető dátumokat és órákat; a napi lista legfeljebb tíz kapott napot mutat. A webes bemutató az Open-Meteo szolgáltatást használja, és más időszakot is mutathat.",
+      "sourceSha256": "f151ecef9b517bcdfa26a2924fa5a6aa158a242bfc80f097635008bf8a389949"
+    },
+    {
+      "locale": "ro",
+      "file": "/Users/minchomilev/cloud-calendars/src/app/content/home/ro.ts",
+      "path": [
+        "weather",
+        "lead"
+      ],
+      "before": "Temperatură, resimțită, precipitații, UV, vânt, umiditate, vizibilitate și presiune — fiecare ca un grafic orar prin care puteți trage. Atingeți orice oră din prognoză și aplicația deschide un eveniment nou, deja fixat la ora aceea.",
+      "after": "Vezi vremea alături de planurile tale în aplicație. Această demonstrație pe site folosește Open-Meteo; aplicația folosește Apple WeatherKit, cu prognozele orare și zilnice disponibile pentru locul selectat.",
+      "sourceSha256": "85dcc837341160e1b2cc8e4c4f36a1b291e170980bec9a9ebec71cbc5c083894"
+    },
+    {
+      "locale": "ro",
+      "file": "/Users/minchomilev/cloud-calendars/src/app/content/home/ro.ts",
+      "path": [
+        "weather",
+        "liveFrom"
+      ],
+      "before": "Live de la Open-Meteo, la {t}.",
+      "after": "Demonstrație pe site · Open-Meteo · la {t}.",
+      "sourceSha256": "85dcc837341160e1b2cc8e4c4f36a1b291e170980bec9a9ebec71cbc5c083894"
+    },
+    {
+      "locale": "ro",
+      "file": "/Users/minchomilev/cloud-calendars/src/app/content/home/ro.ts",
+      "path": [
+        "weather",
+        "unavailable"
+      ],
+      "before": "Prognoza live nu este disponibilă acum — se afișează date de exemplu.",
+      "after": "Date exemplificative pentru această demonstrație, nu o prognoză actuală pentru locul selectat.",
+      "sourceSha256": "85dcc837341160e1b2cc8e4c4f36a1b291e170980bec9a9ebec71cbc5c083894"
+    },
+    {
+      "locale": "ro",
+      "file": "/Users/minchomilev/cloud-calendars/src/app/content/home/ro.ts",
+      "path": [
+        "weather",
+        "tapAnHour"
+      ],
+      "before": "În aplicație, atingeți o oră ca să puneți un eveniment direct pe ea.",
+      "after": "În aplicație, alege o oră disponibilă din prognoză pentru a începe o ciornă de eveniment, apoi verifică ora și calendarul acestuia.",
+      "sourceSha256": "85dcc837341160e1b2cc8e4c4f36a1b291e170980bec9a9ebec71cbc5c083894"
+    },
+    {
+      "locale": "ro",
+      "file": "/Users/minchomilev/cloud-calendars/src/app/content/home/ro.ts",
+      "path": [
+        "faq",
+        "items",
+        2,
+        "a"
+      ],
+      "before": "Prognozele sunt aduse pentru locația dumneavoastră curentă sau aleasă și acoperă perspective orare și pe zece zile, temperatura resimțită, precipitațiile, UV, vântul și rafalele, umiditatea și punctul de rouă, vizibilitatea, presiunea, răsăritul și apusul și faza lunii.",
+      "after": "Aplicația folosește Apple WeatherKit pentru locul actual sau selectat. Verifică datele și orele disponibile; lista zilnică arată cel mult zece zile primite. Demonstrația pe site folosește Open-Meteo și poate afișa un alt interval.",
+      "sourceSha256": "85dcc837341160e1b2cc8e4c4f36a1b291e170980bec9a9ebec71cbc5c083894"
+    },
+    {
+      "locale": "el",
+      "file": "/Users/minchomilev/cloud-calendars/src/app/content/home/el.ts",
+      "path": [
+        "weather",
+        "lead"
+      ],
+      "before": "Θερμοκρασία, αίσθηση, βροχόπτωση, UV, άνεμος, υγρασία, ορατότητα και πίεση — καθένα ως ωριαίο διάγραμμα που μπορείτε να διατρέξετε. Αγγίξτε οποιαδήποτε ώρα στην πρόγνωση και η εφαρμογή ανοίγει νέο γεγονός ήδη ρυθμισμένο σε εκείνη την ώρα.",
+      "after": "Δείτε τον καιρό δίπλα στα σχέδιά σας στην εφαρμογή. Αυτή η επίδειξη ιστοτόπου χρησιμοποιεί Open-Meteo· η εφαρμογή χρησιμοποιεί Apple WeatherKit, με τις διαθέσιμες ωριαίες και ημερήσιες προγνώσεις για την επιλεγμένη τοποθεσία.",
+      "sourceSha256": "87907a0ab55f2ef8914f864bb20c120b57bfc5a1194d6e3f8af19a4717114c10"
+    },
+    {
+      "locale": "el",
+      "file": "/Users/minchomilev/cloud-calendars/src/app/content/home/el.ts",
+      "path": [
+        "weather",
+        "liveFrom"
+      ],
+      "before": "Ζωντανά από το Open-Meteo, με στοιχεία {t}.",
+      "after": "Επίδειξη ιστοτόπου · Open-Meteo · στις {t}.",
+      "sourceSha256": "87907a0ab55f2ef8914f864bb20c120b57bfc5a1194d6e3f8af19a4717114c10"
+    },
+    {
+      "locale": "el",
+      "file": "/Users/minchomilev/cloud-calendars/src/app/content/home/el.ts",
+      "path": [
+        "weather",
+        "unavailable"
+      ],
+      "before": "Η ζωντανή πρόγνωση δεν είναι διαθέσιμη αυτή τη στιγμή — εμφανίζονται ενδεικτικά δεδομένα.",
+      "after": "Ενδεικτικά δεδομένα για την επίδειξη, όχι τρέχουσα πρόγνωση για την επιλεγμένη τοποθεσία.",
+      "sourceSha256": "87907a0ab55f2ef8914f864bb20c120b57bfc5a1194d6e3f8af19a4717114c10"
+    },
+    {
+      "locale": "el",
+      "file": "/Users/minchomilev/cloud-calendars/src/app/content/home/el.ts",
+      "path": [
+        "weather",
+        "tapAnHour"
+      ],
+      "before": "Στην εφαρμογή, αγγίξτε μια ώρα για να ρίξετε πάνω της ένα γεγονός.",
+      "after": "Στην εφαρμογή, επιλέξτε μια διαθέσιμη ώρα πρόγνωσης για να ξεκινήσετε ένα πρόχειρο συμβάν και μετά ελέγξτε την ώρα και το ημερολόγιό του.",
+      "sourceSha256": "87907a0ab55f2ef8914f864bb20c120b57bfc5a1194d6e3f8af19a4717114c10"
+    },
+    {
+      "locale": "el",
+      "file": "/Users/minchomilev/cloud-calendars/src/app/content/home/el.ts",
+      "path": [
+        "faq",
+        "items",
+        2,
+        "a"
+      ],
+      "before": "Οι προγνώσεις αντλούνται για την τρέχουσα ή την επιλεγμένη τοποθεσία σας και καλύπτουν ωριαίες και δεκαήμερες προοπτικές, αισθητή θερμοκρασία, βροχόπτωση, UV, άνεμο και ριπές, υγρασία και σημείο δρόσου, ορατότητα, πίεση, ανατολή και δύση, καθώς και τη φάση της σελήνης.",
+      "after": "Η εφαρμογή χρησιμοποιεί Apple WeatherKit για την τρέχουσα ή την επιλεγμένη τοποθεσία. Ελέγξτε τις διαθέσιμες ημερομηνίες και ώρες· η ημερήσια λίστα εμφανίζει έως δέκα ημέρες από τα δεδομένα που ελήφθησαν. Η επίδειξη ιστοτόπου χρησιμοποιεί Open-Meteo και ενδέχεται να εμφανίζει άλλη περίοδο.",
+      "sourceSha256": "87907a0ab55f2ef8914f864bb20c120b57bfc5a1194d6e3f8af19a4717114c10"
+    },
+    {
+      "locale": "tr",
+      "file": "/Users/minchomilev/cloud-calendars/src/app/content/home/tr.ts",
+      "path": [
+        "weather",
+        "lead"
+      ],
+      "before": "Sıcaklık, hissedilen, yağış, UV, rüzgâr, nem, görüş ve basınç — her biri üzerinde gezinebileceğiniz saatlik bir grafik. Tahminde herhangi bir saate dokunun, uygulama o saate ayarlanmış yeni bir etkinlik açsın.",
+      "after": "Uygulamada planlarınızın yanında hava durumunu görün. Bu web sitesi demosu Open-Meteo kullanır; uygulama, seçilen yer için mevcut saatlik ve günlük tahminleri Apple WeatherKit ile sunar.",
+      "sourceSha256": "b4020b84e12756c3c7803ac5b78a0b5d80983332eb1b3f87a0ee85e1934c02b7"
+    },
+    {
+      "locale": "tr",
+      "file": "/Users/minchomilev/cloud-calendars/src/app/content/home/tr.ts",
+      "path": [
+        "weather",
+        "liveFrom"
+      ],
+      "before": "Open-Meteo’dan canlı, {t} itibarıyla.",
+      "after": "Web sitesi demosu · Open-Meteo · {t} itibarıyla.",
+      "sourceSha256": "b4020b84e12756c3c7803ac5b78a0b5d80983332eb1b3f87a0ee85e1934c02b7"
+    },
+    {
+      "locale": "tr",
+      "file": "/Users/minchomilev/cloud-calendars/src/app/content/home/tr.ts",
+      "path": [
+        "weather",
+        "unavailable"
+      ],
+      "before": "Canlı tahmin şu an kullanılamıyor — örnek veriler gösteriliyor.",
+      "after": "Bu demo için örnek veriler; seçilen yerin güncel hava tahmini değildir.",
+      "sourceSha256": "b4020b84e12756c3c7803ac5b78a0b5d80983332eb1b3f87a0ee85e1934c02b7"
+    },
+    {
+      "locale": "tr",
+      "file": "/Users/minchomilev/cloud-calendars/src/app/content/home/tr.ts",
+      "path": [
+        "weather",
+        "tapAnHour"
+      ],
+      "before": "Uygulamada bir saate dokunup doğrudan üzerine etkinlik bırakın.",
+      "after": "Uygulamada mevcut bir tahmin saatini seçerek etkinlik taslağı başlatın, ardından saatini ve takvimini kontrol edin.",
+      "sourceSha256": "b4020b84e12756c3c7803ac5b78a0b5d80983332eb1b3f87a0ee85e1934c02b7"
+    },
+    {
+      "locale": "tr",
+      "file": "/Users/minchomilev/cloud-calendars/src/app/content/home/tr.ts",
+      "path": [
+        "faq",
+        "items",
+        2,
+        "a"
+      ],
+      "before": "Tahminler geçerli ya da seçtiğiniz konum için alınır; saatlik ve on günlük görünümü, hissedilen sıcaklığı, yağışı, UV’yi, rüzgâr ve hamleleri, nem ve çiy noktasını, görüşü, basıncı, gün doğumu ile batımını ve ay evresini kapsar.",
+      "after": "Uygulama mevcut veya seçilen konum için Apple WeatherKit kullanır. Kullanılabilir tarih ve saatleri kontrol edin; günlük liste, alınan verilerden en fazla on günü gösterir. Web sitesi demosu Open-Meteo kullanır ve farklı bir aralık gösterebilir.",
+      "sourceSha256": "b4020b84e12756c3c7803ac5b78a0b5d80983332eb1b3f87a0ee85e1934c02b7"
+    },
+    {
+      "locale": "id",
+      "file": "/Users/minchomilev/cloud-calendars/src/app/content/home/id.ts",
+      "path": [
+        "weather",
+        "lead"
+      ],
+      "before": "Suhu, terasa seperti, curah hujan, UV, angin, kelembapan, jarak pandang, dan tekanan — masing-masing sebagai grafik per jam yang bisa Anda telusuri. Ketuk jam mana pun di prakiraan dan aplikasi membuka acara baru yang sudah disetel ke jam itu.",
+      "after": "Lihat cuaca di samping rencana Anda dalam aplikasi. Demo situs ini memakai Open-Meteo; aplikasi memakai Apple WeatherKit, dengan prakiraan per jam dan harian yang tersedia untuk tempat yang dipilih.",
+      "sourceSha256": "019e2b79bc6e305d37bcac75290e4abb5dacf4e033602f2f2457f55aae3f597b"
+    },
+    {
+      "locale": "id",
+      "file": "/Users/minchomilev/cloud-calendars/src/app/content/home/id.ts",
+      "path": [
+        "weather",
+        "liveFrom"
+      ],
+      "before": "Langsung dari Open-Meteo, per {t}.",
+      "after": "Demo situs · Open-Meteo · per {t}.",
+      "sourceSha256": "019e2b79bc6e305d37bcac75290e4abb5dacf4e033602f2f2457f55aae3f597b"
+    },
+    {
+      "locale": "id",
+      "file": "/Users/minchomilev/cloud-calendars/src/app/content/home/id.ts",
+      "path": [
+        "weather",
+        "unavailable"
+      ],
+      "before": "Prakiraan langsung tak tersedia saat ini — menampilkan data contoh.",
+      "after": "Data contoh untuk demo ini, bukan prakiraan terkini untuk tempat yang dipilih.",
+      "sourceSha256": "019e2b79bc6e305d37bcac75290e4abb5dacf4e033602f2f2457f55aae3f597b"
+    },
+    {
+      "locale": "id",
+      "file": "/Users/minchomilev/cloud-calendars/src/app/content/home/id.ts",
+      "path": [
+        "weather",
+        "tapAnHour"
+      ],
+      "before": "Di aplikasi, ketuk sebuah jam untuk menjatuhkan acara tepat di situ.",
+      "after": "Di aplikasi, pilih jam prakiraan yang tersedia untuk memulai draf acara, lalu periksa waktu dan kalendernya.",
+      "sourceSha256": "019e2b79bc6e305d37bcac75290e4abb5dacf4e033602f2f2457f55aae3f597b"
+    },
+    {
+      "locale": "id",
+      "file": "/Users/minchomilev/cloud-calendars/src/app/content/home/id.ts",
+      "path": [
+        "faq",
+        "items",
+        2,
+        "a"
+      ],
+      "before": "Prakiraan diambil untuk lokasi Anda saat ini atau yang Anda pilih dan mencakup pandangan per jam dan sepuluh hari, suhu terasa, curah hujan, UV, angin dan embusan, kelembapan dan titik embun, jarak pandang, tekanan, matahari terbit dan terbenam, serta fase bulan.",
+      "after": "Aplikasi memakai Apple WeatherKit untuk lokasi saat ini atau tempat yang dipilih. Periksa tanggal dan jam yang tersedia; daftar harian menampilkan hingga sepuluh hari dari data yang diterima. Demo situs memakai Open-Meteo dan dapat menampilkan rentang berbeda.",
+      "sourceSha256": "019e2b79bc6e305d37bcac75290e4abb5dacf4e033602f2f2457f55aae3f597b"
+    },
+    {
+      "locale": "ms",
+      "file": "/Users/minchomilev/cloud-calendars/src/app/content/home/ms.ts",
+      "path": [
+        "weather",
+        "lead"
+      ],
+      "before": "Suhu, terasa seperti, hujan, UV, angin, kelembapan, jarak penglihatan dan tekanan — setiap satu sebagai carta jam yang boleh anda susuri. Ketik mana-mana jam dalam ramalan dan aplikasi membuka acara baharu yang sudah ditetapkan pada waktu itu.",
+      "after": "Lihat cuaca di samping rancangan anda dalam aplikasi. Demo laman web ini menggunakan Open-Meteo; aplikasi menggunakan Apple WeatherKit, dengan ramalan setiap jam dan harian yang tersedia untuk tempat yang dipilih.",
+      "sourceSha256": "420ffa085a1abd715952ff991a7e0bfce58d9c41676cc9d78c7eb322bc76b6ce"
+    },
+    {
+      "locale": "ms",
+      "file": "/Users/minchomilev/cloud-calendars/src/app/content/home/ms.ts",
+      "path": [
+        "weather",
+        "liveFrom"
+      ],
+      "before": "Langsung daripada Open-Meteo, setakat {t}.",
+      "after": "Demo laman web · Open-Meteo · setakat {t}.",
+      "sourceSha256": "420ffa085a1abd715952ff991a7e0bfce58d9c41676cc9d78c7eb322bc76b6ce"
+    },
+    {
+      "locale": "ms",
+      "file": "/Users/minchomilev/cloud-calendars/src/app/content/home/ms.ts",
+      "path": [
+        "weather",
+        "unavailable"
+      ],
+      "before": "Ramalan langsung tidak tersedia buat masa ini — data contoh dipaparkan.",
+      "after": "Data contoh untuk demo ini, bukan ramalan semasa bagi tempat yang dipilih.",
+      "sourceSha256": "420ffa085a1abd715952ff991a7e0bfce58d9c41676cc9d78c7eb322bc76b6ce"
+    },
+    {
+      "locale": "ms",
+      "file": "/Users/minchomilev/cloud-calendars/src/app/content/home/ms.ts",
+      "path": [
+        "weather",
+        "tapAnHour"
+      ],
+      "before": "Dalam aplikasi, ketik satu jam untuk meletakkan acara terus padanya.",
+      "after": "Dalam aplikasi, pilih waktu ramalan yang tersedia untuk memulakan draf acara, kemudian semak masa dan kalendarnya.",
+      "sourceSha256": "420ffa085a1abd715952ff991a7e0bfce58d9c41676cc9d78c7eb322bc76b6ce"
+    },
+    {
+      "locale": "ms",
+      "file": "/Users/minchomilev/cloud-calendars/src/app/content/home/ms.ts",
+      "path": [
+        "faq",
+        "items",
+        2,
+        "a"
+      ],
+      "before": "Ramalan diambil untuk lokasi semasa atau pilihan anda dan merangkumi pandangan setiap jam dan sepuluh hari, suhu terasa, hujan, UV, angin dan tiupan, kelembapan dan takat embun, jarak penglihatan, tekanan, matahari terbit dan terbenam, serta fasa bulan.",
+      "after": "Aplikasi menggunakan Apple WeatherKit untuk lokasi semasa atau tempat yang dipilih. Semak tarikh dan waktu yang tersedia; senarai harian memaparkan sehingga sepuluh hari daripada data yang diterima. Demo laman web menggunakan Open-Meteo dan mungkin memaparkan julat berbeza.",
+      "sourceSha256": "420ffa085a1abd715952ff991a7e0bfce58d9c41676cc9d78c7eb322bc76b6ce"
+    },
+    {
+      "locale": "vi",
+      "file": "/Users/minchomilev/cloud-calendars/src/app/content/home/vi.ts",
+      "path": [
+        "weather",
+        "lead"
+      ],
+      "before": "Nhiệt độ, cảm giác như, lượng mưa, UV, gió, độ ẩm, tầm nhìn và áp suất — mỗi thứ là một biểu đồ theo giờ có thể rê qua. Chạm vào bất kỳ giờ nào trong dự báo và ứng dụng mở một sự kiện mới đã đặt sẵn vào giờ đó.",
+      "after": "Xem thời tiết bên cạnh kế hoạch của bạn trong ứng dụng. Bản demo trên web này dùng Open-Meteo; ứng dụng dùng Apple WeatherKit với dự báo theo giờ và theo ngày hiện có cho địa điểm đã chọn.",
+      "sourceSha256": "41f08e05890265e2b98099f2b1f713c202391759d2aa5edfc1707fdf1c997768"
+    },
+    {
+      "locale": "vi",
+      "file": "/Users/minchomilev/cloud-calendars/src/app/content/home/vi.ts",
+      "path": [
+        "weather",
+        "liveFrom"
+      ],
+      "before": "Trực tiếp từ Open-Meteo, tính đến {t}.",
+      "after": "Bản demo trên web · Open-Meteo · lúc {t}.",
+      "sourceSha256": "41f08e05890265e2b98099f2b1f713c202391759d2aa5edfc1707fdf1c997768"
+    },
+    {
+      "locale": "vi",
+      "file": "/Users/minchomilev/cloud-calendars/src/app/content/home/vi.ts",
+      "path": [
+        "weather",
+        "unavailable"
+      ],
+      "before": "Dự báo trực tiếp hiện không dùng được — đang hiển thị dữ liệu mẫu.",
+      "after": "Dữ liệu mẫu cho bản demo này, không phải dự báo hiện tại cho địa điểm đã chọn.",
+      "sourceSha256": "41f08e05890265e2b98099f2b1f713c202391759d2aa5edfc1707fdf1c997768"
+    },
+    {
+      "locale": "vi",
+      "file": "/Users/minchomilev/cloud-calendars/src/app/content/home/vi.ts",
+      "path": [
+        "weather",
+        "tapAnHour"
+      ],
+      "before": "Trong ứng dụng, chạm vào một giờ để thả thẳng một sự kiện lên đó.",
+      "after": "Trong ứng dụng, chọn một giờ dự báo có dữ liệu để bắt đầu bản nháp sự kiện, rồi kiểm tra giờ và lịch của sự kiện.",
+      "sourceSha256": "41f08e05890265e2b98099f2b1f713c202391759d2aa5edfc1707fdf1c997768"
+    },
+    {
+      "locale": "vi",
+      "file": "/Users/minchomilev/cloud-calendars/src/app/content/home/vi.ts",
+      "path": [
+        "faq",
+        "items",
+        2,
+        "a"
+      ],
+      "before": "Dự báo được lấy cho vị trí hiện tại hoặc vị trí bạn chọn, bao gồm triển vọng theo giờ và mười ngày, nhiệt độ cảm giác, lượng mưa, UV, gió và gió giật, độ ẩm và điểm sương, tầm nhìn, áp suất, giờ mọc và lặn của mặt trời, cùng pha trăng.",
+      "after": "Ứng dụng dùng Apple WeatherKit cho vị trí hiện tại hoặc địa điểm đã chọn. Hãy kiểm tra các ngày và giờ có dữ liệu; danh sách theo ngày hiển thị tối đa mười ngày nhận được. Bản demo trên web dùng Open-Meteo và có thể hiển thị khoảng thời gian khác.",
+      "sourceSha256": "41f08e05890265e2b98099f2b1f713c202391759d2aa5edfc1707fdf1c997768"
+    },
+    {
+      "locale": "ja",
+      "file": "/Users/minchomilev/cloud-calendars/src/app/content/home/ja.ts",
+      "path": [
+        "weather",
+        "lead"
+      ],
+      "before": "気温、体感、降水、UV、風、湿度、視程、気圧 — どれも指でなぞれる時間別グラフです。予報の任意の時間に触れると、その時刻に設定済みの新しい予定が開きます。",
+      "after": "アプリで予定と一緒に天気を確認できます。このウェブサイトのデモはOpen-Meteoを使用し、アプリはApple WeatherKitから選択した場所の利用可能な時間別・日別予報を表示します。",
+      "sourceSha256": "6ba5d7e983f8fe159d0b45948c900e305c02e424314176ce86dd6e91e0791452"
+    },
+    {
+      "locale": "ja",
+      "file": "/Users/minchomilev/cloud-calendars/src/app/content/home/ja.ts",
+      "path": [
+        "weather",
+        "liveFrom"
+      ],
+      "before": "Open-Meteo からライブ取得、{t} 時点。",
+      "after": "ウェブサイトのデモ · Open-Meteo · {t}時点。",
+      "sourceSha256": "6ba5d7e983f8fe159d0b45948c900e305c02e424314176ce86dd6e91e0791452"
+    },
+    {
+      "locale": "ja",
+      "file": "/Users/minchomilev/cloud-calendars/src/app/content/home/ja.ts",
+      "path": [
+        "weather",
+        "unavailable"
+      ],
+      "before": "ライブ予報は現在利用できません — サンプルデータを表示しています。",
+      "after": "このデモのサンプルデータです。選択した場所の現在の予報ではありません。",
+      "sourceSha256": "6ba5d7e983f8fe159d0b45948c900e305c02e424314176ce86dd6e91e0791452"
+    },
+    {
+      "locale": "ja",
+      "file": "/Users/minchomilev/cloud-calendars/src/app/content/home/ja.ts",
+      "path": [
+        "weather",
+        "tapAnHour"
+      ],
+      "before": "アプリでは、時間に触れるとそこへ直接予定を置けます。",
+      "after": "アプリで予報を表示できる時間を選ぶと、イベントの下書きを作成できます。続けて日時とカレンダーを確認してください。",
+      "sourceSha256": "6ba5d7e983f8fe159d0b45948c900e305c02e424314176ce86dd6e91e0791452"
+    },
+    {
+      "locale": "ja",
+      "file": "/Users/minchomilev/cloud-calendars/src/app/content/home/ja.ts",
+      "path": [
+        "faq",
+        "items",
+        2,
+        "a"
+      ],
+      "before": "予報は現在地または選択した場所について取得され、時間別と十日間の見通し、体感温度、降水、UV、風と突風、湿度と露点、視程、気圧、日の出と日の入り、月齢を含みます。",
+      "after": "アプリは現在地または選択した場所にApple WeatherKitを使用します。表示できる日付と時間をご確認ください。日別リストには取得できた予報のうち最大10日分を表示します。ウェブサイトのデモはOpen-Meteoを使用しており、表示期間が異なる場合があります。",
+      "sourceSha256": "6ba5d7e983f8fe159d0b45948c900e305c02e424314176ce86dd6e91e0791452"
+    },
+    {
+      "locale": "ko",
+      "file": "/Users/minchomilev/cloud-calendars/src/app/content/home/ko.ts",
+      "path": [
+        "weather",
+        "lead"
+      ],
+      "before": "기온, 체감, 강수, 자외선, 바람, 습도, 시정, 기압 — 각각 손으로 훑을 수 있는 시간별 그래프입니다. 예보의 아무 시간이나 누르면, 그 시각으로 이미 맞춰진 새 일정이 열립니다.",
+      "after": "앱에서 일정과 함께 날씨를 확인하세요. 이 웹사이트 데모는 Open-Meteo를 사용하고, 앱은 Apple WeatherKit으로 선택한 장소에 제공되는 시간별 및 일별 예보를 표시합니다.",
+      "sourceSha256": "c678ea62d6b8eb90cd15912d536238ed5b1343205a860eea11ed64a1adab76e4"
+    },
+    {
+      "locale": "ko",
+      "file": "/Users/minchomilev/cloud-calendars/src/app/content/home/ko.ts",
+      "path": [
+        "weather",
+        "liveFrom"
+      ],
+      "before": "Open-Meteo에서 실시간, {t} 기준.",
+      "after": "웹사이트 데모 · Open-Meteo · {t} 기준.",
+      "sourceSha256": "c678ea62d6b8eb90cd15912d536238ed5b1343205a860eea11ed64a1adab76e4"
+    },
+    {
+      "locale": "ko",
+      "file": "/Users/minchomilev/cloud-calendars/src/app/content/home/ko.ts",
+      "path": [
+        "weather",
+        "unavailable"
+      ],
+      "before": "실시간 예보를 지금 쓸 수 없습니다 — 예시 데이터를 보여줍니다.",
+      "after": "이 데모용 샘플 데이터이며, 선택한 장소의 현재 예보가 아닙니다.",
+      "sourceSha256": "c678ea62d6b8eb90cd15912d536238ed5b1343205a860eea11ed64a1adab76e4"
+    },
+    {
+      "locale": "ko",
+      "file": "/Users/minchomilev/cloud-calendars/src/app/content/home/ko.ts",
+      "path": [
+        "weather",
+        "tapAnHour"
+      ],
+      "before": "앱에서는 시간을 눌러 그 위에 바로 일정을 놓을 수 있습니다.",
+      "after": "앱에서 예보가 제공되는 시간을 선택해 이벤트 초안을 만든 뒤 시간과 캘린더를 확인하세요.",
+      "sourceSha256": "c678ea62d6b8eb90cd15912d536238ed5b1343205a860eea11ed64a1adab76e4"
+    },
+    {
+      "locale": "ko",
+      "file": "/Users/minchomilev/cloud-calendars/src/app/content/home/ko.ts",
+      "path": [
+        "faq",
+        "items",
+        2,
+        "a"
+      ],
+      "before": "예보는 현재 또는 선택한 위치에 대해 가져오며, 시간별과 열흘 전망, 체감 온도, 강수, 자외선, 바람과 돌풍, 습도와 이슬점, 시정, 기압, 일출과 일몰, 달의 위상을 포함합니다.",
+      "after": "앱은 현재 위치 또는 선택한 장소에 Apple WeatherKit을 사용합니다. 제공되는 날짜와 시간을 확인하세요. 일별 목록은 받은 예보 중 최대 10일을 표시합니다. 웹사이트 데모는 Open-Meteo를 사용하며 다른 기간을 표시할 수 있습니다.",
+      "sourceSha256": "c678ea62d6b8eb90cd15912d536238ed5b1343205a860eea11ed64a1adab76e4"
+    },
+    {
+      "locale": "zh-Hans",
+      "file": "/Users/minchomilev/cloud-calendars/src/app/content/home/zh-Hans.ts",
+      "path": [
+        "weather",
+        "lead"
+      ],
+      "before": "气温、体感、降水、紫外线、风、湿度、能见度和气压——每一项都是可以拖着看的小时曲线。在预报里点任何一个小时，应用就会打开一个已经设好那个时间的新日程。",
+      "after": "在 App 中结合日程查看天气。此网站演示使用 Open-Meteo；App 使用 Apple WeatherKit，显示所选地点可获取的逐小时和逐日预报。",
+      "sourceSha256": "7171d9b722c0e4e42e74c36e1c023ec261456695a798d46a0d5e8701e271d9cd"
+    },
+    {
+      "locale": "zh-Hans",
+      "file": "/Users/minchomilev/cloud-calendars/src/app/content/home/zh-Hans.ts",
+      "path": [
+        "weather",
+        "liveFrom"
+      ],
+      "before": "来自 Open-Meteo 的实时数据，截至 {t}。",
+      "after": "网站演示 · Open-Meteo · 截至 {t}。",
+      "sourceSha256": "7171d9b722c0e4e42e74c36e1c023ec261456695a798d46a0d5e8701e271d9cd"
+    },
+    {
+      "locale": "zh-Hans",
+      "file": "/Users/minchomilev/cloud-calendars/src/app/content/home/zh-Hans.ts",
+      "path": [
+        "weather",
+        "unavailable"
+      ],
+      "before": "实时预报暂时取不到 — 正在显示示例数据。",
+      "after": "此演示使用示例数据，并非所选地点的当前预报。",
+      "sourceSha256": "7171d9b722c0e4e42e74c36e1c023ec261456695a798d46a0d5e8701e271d9cd"
+    },
+    {
+      "locale": "zh-Hans",
+      "file": "/Users/minchomilev/cloud-calendars/src/app/content/home/zh-Hans.ts",
+      "path": [
+        "weather",
+        "tapAnHour"
+      ],
+      "before": "在应用里点一个小时，就能把日程直接放上去。",
+      "after": "在 App 中选择有预报数据的小时以开始创建事件草稿，然后检查事件时间和所属日历。",
+      "sourceSha256": "7171d9b722c0e4e42e74c36e1c023ec261456695a798d46a0d5e8701e271d9cd"
+    },
+    {
+      "locale": "zh-Hans",
+      "file": "/Users/minchomilev/cloud-calendars/src/app/content/home/zh-Hans.ts",
+      "path": [
+        "faq",
+        "items",
+        2,
+        "a"
+      ],
+      "before": "预报按你当前或选定的位置获取，涵盖逐小时和十天的展望、体感温度、降水、紫外线、风与阵风、湿度与露点、能见度、气压、日出日落，以及月相。",
+      "after": "App 使用 Apple WeatherKit 提供当前位置或所选地点的天气。请查看可用日期和小时；每日列表最多显示已获取的十天预报。网站演示使用 Open-Meteo，显示的范围可能不同。",
+      "sourceSha256": "7171d9b722c0e4e42e74c36e1c023ec261456695a798d46a0d5e8701e271d9cd"
+    },
+    {
+      "locale": "zh-Hant",
+      "file": "/Users/minchomilev/cloud-calendars/src/app/content/home/zh-Hant.ts",
+      "path": [
+        "weather",
+        "lead"
+      ],
+      "before": "氣溫、體感、降水、紫外線、風、濕度、能見度和氣壓——每一項都是可以拖著看的小時曲線。在預報裡點任何一個小時，App 就會打開一個已經設好那個時間的新行程。",
+      "after": "在 App 中搭配行程查看天氣。此網站示範使用 Open-Meteo；App 使用 Apple WeatherKit，顯示所選地點可取得的逐小時與逐日預報。",
+      "sourceSha256": "3263dc7da81044c7a7dfe32860deaed5910a742ee02999f386564a473ad579ba"
+    },
+    {
+      "locale": "zh-Hant",
+      "file": "/Users/minchomilev/cloud-calendars/src/app/content/home/zh-Hant.ts",
+      "path": [
+        "weather",
+        "liveFrom"
+      ],
+      "before": "來自 Open-Meteo 的即時資料，截至 {t}。",
+      "after": "網站示範 · Open-Meteo · 截至 {t}。",
+      "sourceSha256": "3263dc7da81044c7a7dfe32860deaed5910a742ee02999f386564a473ad579ba"
+    },
+    {
+      "locale": "zh-Hant",
+      "file": "/Users/minchomilev/cloud-calendars/src/app/content/home/zh-Hant.ts",
+      "path": [
+        "weather",
+        "unavailable"
+      ],
+      "before": "即時預報暫時取不到 — 正在顯示範例資料。",
+      "after": "此示範使用範例資料，並非所選地點的目前預報。",
+      "sourceSha256": "3263dc7da81044c7a7dfe32860deaed5910a742ee02999f386564a473ad579ba"
+    },
+    {
+      "locale": "zh-Hant",
+      "file": "/Users/minchomilev/cloud-calendars/src/app/content/home/zh-Hant.ts",
+      "path": [
+        "weather",
+        "tapAnHour"
+      ],
+      "before": "在 App 裡點一個小時，就能把行程直接放上去。",
+      "after": "在 App 中選擇有預報資料的小時以開始建立事件草稿，然後檢查事件時間與所屬行事曆。",
+      "sourceSha256": "3263dc7da81044c7a7dfe32860deaed5910a742ee02999f386564a473ad579ba"
+    },
+    {
+      "locale": "zh-Hant",
+      "file": "/Users/minchomilev/cloud-calendars/src/app/content/home/zh-Hant.ts",
+      "path": [
+        "faq",
+        "items",
+        2,
+        "a"
+      ],
+      "before": "預報按你目前或選定的位置取得，涵蓋逐小時和十天的展望、體感溫度、降水、紫外線、風與陣風、濕度與露點、能見度、氣壓、日出日落，以及月相。",
+      "after": "App 使用 Apple WeatherKit 提供目前位置或所選地點的天氣。請查看可用日期與小時；每日清單最多顯示已取得的十天預報。網站示範使用 Open-Meteo，顯示的範圍可能不同。",
+      "sourceSha256": "3263dc7da81044c7a7dfe32860deaed5910a742ee02999f386564a473ad579ba"
+    },
+    {
+      "locale": "hi",
+      "file": "/Users/minchomilev/cloud-calendars/src/app/content/home/hi.ts",
+      "path": [
+        "weather",
+        "lead"
+      ],
+      "before": "तापमान, महसूस होने वाला तापमान, वर्षा, यूवी, हवा, आर्द्रता, दृश्यता और दबाव — हर एक घंटेवार आरेख, जिस पर उँगली फेरी जा सकती है। पूर्वानुमान में किसी भी घंटे को छूइए और ऐप उसी समय पर सेट एक नया कार्यक्रम खोल देता है।",
+      "after": "ऐप में अपनी योजनाओं के साथ मौसम देखें। यह वेबसाइट डेमो Open-Meteo का उपयोग करता है; ऐप Apple WeatherKit से चुनी गई जगह के उपलब्ध घंटेवार और दैनिक पूर्वानुमान दिखाता है।",
+      "sourceSha256": "90816ed833235309c4ca716d12ab72912965bb81e4682cc7220f69be912ea7d4"
+    },
+    {
+      "locale": "hi",
+      "file": "/Users/minchomilev/cloud-calendars/src/app/content/home/hi.ts",
+      "path": [
+        "weather",
+        "liveFrom"
+      ],
+      "before": "Open-Meteo से लाइव, {t} तक।",
+      "after": "वेबसाइट डेमो · Open-Meteo · {t} तक।",
+      "sourceSha256": "90816ed833235309c4ca716d12ab72912965bb81e4682cc7220f69be912ea7d4"
+    },
+    {
+      "locale": "hi",
+      "file": "/Users/minchomilev/cloud-calendars/src/app/content/home/hi.ts",
+      "path": [
+        "weather",
+        "unavailable"
+      ],
+      "before": "लाइव पूर्वानुमान अभी उपलब्ध नहीं है — नमूना आँकड़े दिखाए जा रहे हैं।",
+      "after": "इस डेमो के लिए नमूना डेटा, चुनी गई जगह का मौजूदा पूर्वानुमान नहीं।",
+      "sourceSha256": "90816ed833235309c4ca716d12ab72912965bb81e4682cc7220f69be912ea7d4"
+    },
+    {
+      "locale": "hi",
+      "file": "/Users/minchomilev/cloud-calendars/src/app/content/home/hi.ts",
+      "path": [
+        "weather",
+        "tapAnHour"
+      ],
+      "before": "ऐप में किसी घंटे को छूकर उसी पर सीधे कार्यक्रम रख दीजिए।",
+      "after": "ऐप में पूर्वानुमान का उपलब्ध घंटा चुनकर इवेंट का ड्राफ़्ट शुरू करें, फिर उसका समय और कैलेंडर जाँचें।",
+      "sourceSha256": "90816ed833235309c4ca716d12ab72912965bb81e4682cc7220f69be912ea7d4"
+    },
+    {
+      "locale": "hi",
+      "file": "/Users/minchomilev/cloud-calendars/src/app/content/home/hi.ts",
+      "path": [
+        "faq",
+        "items",
+        2,
+        "a"
+      ],
+      "before": "पूर्वानुमान आपकी मौजूदा या चुनी हुई जगह के लिए लिए जाते हैं और उनमें घंटेवार व दस दिन की तस्वीर, महसूस होने वाला तापमान, वर्षा, यूवी, हवा और झोंके, आर्द्रता और ओसांक, दृश्यता, दबाव, सूर्योदय-सूर्यास्त तथा चंद्रकला शामिल हैं।",
+      "after": "ऐप आपकी मौजूदा या चुनी गई जगह के लिए Apple WeatherKit का उपयोग करता है। उपलब्ध तारीखें और घंटे देखें; दैनिक सूची मिले हुए पूर्वानुमान में से अधिकतम दस दिन दिखाती है। वेबसाइट डेमो Open-Meteo का उपयोग करता है और अलग अवधि दिखा सकता है।",
+      "sourceSha256": "90816ed833235309c4ca716d12ab72912965bb81e4682cc7220f69be912ea7d4"
+    },
+    {
+      "locale": "th",
+      "file": "/Users/minchomilev/cloud-calendars/src/app/content/home/th.ts",
+      "path": [
+        "weather",
+        "lead"
+      ],
+      "before": "อุณหภูมิ อุณหภูมิที่รู้สึกได้ ปริมาณฝน ยูวี ลม ความชื้น ทัศนวิสัย และความกดอากาศ — แต่ละอย่างเป็นกราฟรายชั่วโมงที่ลากดูได้ แตะชั่วโมงไหนก็ได้ในพยากรณ์ แล้วแอปจะเปิดกิจกรรมใหม่ที่ตั้งเวลานั้นไว้ให้แล้ว",
+      "after": "ดูสภาพอากาศควบคู่กับแผนของคุณในแอป การสาธิตบนเว็บไซต์นี้ใช้ Open-Meteo ส่วนแอปใช้ Apple WeatherKit เพื่อแสดงพยากรณ์รายชั่วโมงและรายวันที่มีข้อมูลสำหรับสถานที่ที่เลือก",
+      "sourceSha256": "b0304af4517eddae346018343718875deec9b431eb524d26b80009a788764e39"
+    },
+    {
+      "locale": "th",
+      "file": "/Users/minchomilev/cloud-calendars/src/app/content/home/th.ts",
+      "path": [
+        "weather",
+        "liveFrom"
+      ],
+      "before": "สดจาก Open-Meteo ณ {t}",
+      "after": "การสาธิตบนเว็บไซต์ · Open-Meteo · ณ {t}",
+      "sourceSha256": "b0304af4517eddae346018343718875deec9b431eb524d26b80009a788764e39"
+    },
+    {
+      "locale": "th",
+      "file": "/Users/minchomilev/cloud-calendars/src/app/content/home/th.ts",
+      "path": [
+        "weather",
+        "unavailable"
+      ],
+      "before": "พยากรณ์แบบสดใช้ไม่ได้ในตอนนี้ — กำลังแสดงข้อมูลตัวอย่าง",
+      "after": "ข้อมูลตัวอย่างสำหรับการสาธิตนี้ ไม่ใช่พยากรณ์อากาศปัจจุบันของสถานที่ที่เลือก",
+      "sourceSha256": "b0304af4517eddae346018343718875deec9b431eb524d26b80009a788764e39"
+    },
+    {
+      "locale": "th",
+      "file": "/Users/minchomilev/cloud-calendars/src/app/content/home/th.ts",
+      "path": [
+        "weather",
+        "tapAnHour"
+      ],
+      "before": "ในแอป แตะชั่วโมงหนึ่งเพื่อวางกิจกรรมลงตรงนั้นได้เลย",
+      "after": "ในแอป เลือกชั่วโมงที่มีข้อมูลพยากรณ์เพื่อเริ่มร่างกิจกรรม แล้วตรวจสอบเวลาและปฏิทินของกิจกรรม",
+      "sourceSha256": "b0304af4517eddae346018343718875deec9b431eb524d26b80009a788764e39"
+    },
+    {
+      "locale": "th",
+      "file": "/Users/minchomilev/cloud-calendars/src/app/content/home/th.ts",
+      "path": [
+        "faq",
+        "items",
+        2,
+        "a"
+      ],
+      "before": "พยากรณ์ถูกดึงมาสำหรับตำแหน่งปัจจุบันหรือตำแหน่งที่คุณเลือก ครอบคลุมภาพรายชั่วโมงและสิบวัน อุณหภูมิที่รู้สึกได้ ปริมาณฝน ยูวี ลมและลมกระโชก ความชื้นและจุดน้ำค้าง ทัศนวิสัย ความกดอากาศ พระอาทิตย์ขึ้นและตก และข้างขึ้นข้างแรม",
+      "after": "แอปใช้ Apple WeatherKit สำหรับตำแหน่งปัจจุบันหรือสถานที่ที่เลือก ตรวจสอบวันที่และชั่วโมงที่มีข้อมูล รายการรายวันแสดงข้อมูลที่ได้รับสูงสุดสิบวัน การสาธิตบนเว็บไซต์ใช้ Open-Meteo และอาจแสดงช่วงเวลาที่ต่างกัน",
+      "sourceSha256": "b0304af4517eddae346018343718875deec9b431eb524d26b80009a788764e39"
+    },
+    {
+      "locale": "ar-SA",
+      "file": "/Users/minchomilev/cloud-calendars/src/app/content/home/ar-SA.ts",
+      "path": [
+        "weather",
+        "lead"
+      ],
+      "before": "درجة الحرارة، والمحسوسة، والهطول، والأشعة فوق البنفسجية، والرياح، والرطوبة، ومدى الرؤية، والضغط — كلٌّ منها رسمٌ ساعي يمكن تمرير الإصبع عليه. المس أي ساعة في التوقعات فيفتح التطبيق حدثًا جديدًا مضبوطًا على ذلك الوقت.",
+      "after": "اطّلع على الطقس بجانب خططك في التطبيق. يستخدم هذا العرض التوضيحي للموقع Open-Meteo؛ ويستخدم التطبيق Apple WeatherKit مع التوقعات الساعية واليومية المتاحة للمكان المحدد.",
+      "sourceSha256": "3b32b1d899acc553d342d16bd6850663c35148a390331320b68474a52e65d1d5"
+    },
+    {
+      "locale": "ar-SA",
+      "file": "/Users/minchomilev/cloud-calendars/src/app/content/home/ar-SA.ts",
+      "path": [
+        "weather",
+        "liveFrom"
+      ],
+      "before": "مباشرة من Open-Meteo، حتى {t}.",
+      "after": "عرض توضيحي للموقع · Open-Meteo · حتى {t}.",
+      "sourceSha256": "3b32b1d899acc553d342d16bd6850663c35148a390331320b68474a52e65d1d5"
+    },
+    {
+      "locale": "ar-SA",
+      "file": "/Users/minchomilev/cloud-calendars/src/app/content/home/ar-SA.ts",
+      "path": [
+        "weather",
+        "unavailable"
+      ],
+      "before": "التوقعات المباشرة غير متاحة الآن — تُعرض بيانات نموذجية.",
+      "after": "بيانات تجريبية لهذا العرض، وليست توقعات حالية للمكان المحدد.",
+      "sourceSha256": "3b32b1d899acc553d342d16bd6850663c35148a390331320b68474a52e65d1d5"
+    },
+    {
+      "locale": "ar-SA",
+      "file": "/Users/minchomilev/cloud-calendars/src/app/content/home/ar-SA.ts",
+      "path": [
+        "weather",
+        "tapAnHour"
+      ],
+      "before": "في التطبيق، المس ساعة لتضع عليها حدثًا مباشرة.",
+      "after": "في التطبيق، اختر ساعة متاحة من التوقعات لبدء مسودة حدث، ثم راجع وقته وتقويمه.",
+      "sourceSha256": "3b32b1d899acc553d342d16bd6850663c35148a390331320b68474a52e65d1d5"
+    },
+    {
+      "locale": "ar-SA",
+      "file": "/Users/minchomilev/cloud-calendars/src/app/content/home/ar-SA.ts",
+      "path": [
+        "faq",
+        "items",
+        2,
+        "a"
+      ],
+      "before": "تُجلب التوقعات لموقعك الحالي أو المختار وتغطي آفاقًا ساعية وعشرة أيام، ودرجة الحرارة المحسوسة، والهطول، والأشعة فوق البنفسجية، والرياح والهبّات، والرطوبة ونقطة الندى، ومدى الرؤية، والضغط، والشروق والغروب، وطور القمر.",
+      "after": "يستخدم التطبيق Apple WeatherKit لموقعك الحالي أو المكان المحدد. تحقّق من التواريخ والساعات المتاحة؛ تعرض القائمة اليومية ما يصل إلى عشرة أيام من البيانات الواردة. يستخدم العرض التوضيحي للموقع Open-Meteo وقد يعرض نطاقًا مختلفًا.",
+      "sourceSha256": "3b32b1d899acc553d342d16bd6850663c35148a390331320b68474a52e65d1d5"
+    },
+    {
+      "locale": "he",
+      "file": "/Users/minchomilev/cloud-calendars/src/app/content/home/he.ts",
+      "path": [
+        "weather",
+        "lead"
+      ],
+      "before": "טמפרטורה, תחושה, משקעים, קרינה, רוח, לחות, ראות ולחץ — כל אחד כגרף שעתי שאפשר להחליק עליו. געו בכל שעה בתחזית והאפליקציה תפתח אירוע חדש שכבר מוגדר לאותה שעה.",
+      "after": "אפשר לראות את מזג האוויר לצד התוכניות באפליקציה. ההדגמה באתר משתמשת ב-Open-Meteo; האפליקציה משתמשת ב-Apple WeatherKit, עם תחזיות זמינות לפי שעה ולפי יום למקום שנבחר.",
+      "sourceSha256": "a6a9df12847ea0b05b6cd8d4c9b5944a4cbc1cc0713775d630249af4a2ddf923"
+    },
+    {
+      "locale": "he",
+      "file": "/Users/minchomilev/cloud-calendars/src/app/content/home/he.ts",
+      "path": [
+        "weather",
+        "liveFrom"
+      ],
+      "before": "ישירות מ‑Open-Meteo, נכון ל‑{t}.",
+      "after": "הדגמה באתר · Open-Meteo · נכון ל-{t}.",
+      "sourceSha256": "a6a9df12847ea0b05b6cd8d4c9b5944a4cbc1cc0713775d630249af4a2ddf923"
+    },
+    {
+      "locale": "he",
+      "file": "/Users/minchomilev/cloud-calendars/src/app/content/home/he.ts",
+      "path": [
+        "weather",
+        "unavailable"
+      ],
+      "before": "התחזית החיה אינה זמינה כרגע — מוצגים נתוני דוגמה.",
+      "after": "נתונים לדוגמה עבור ההדגמה, ולא תחזית עדכנית למקום שנבחר.",
+      "sourceSha256": "a6a9df12847ea0b05b6cd8d4c9b5944a4cbc1cc0713775d630249af4a2ddf923"
+    },
+    {
+      "locale": "he",
+      "file": "/Users/minchomilev/cloud-calendars/src/app/content/home/he.ts",
+      "path": [
+        "weather",
+        "tapAnHour"
+      ],
+      "before": "באפליקציה, געו בשעה כדי להניח עליה אירוע ישירות.",
+      "after": "באפליקציה, בחרו שעה זמינה בתחזית כדי להתחיל טיוטת אירוע, ואז בדקו את השעה ואת היומן שלו.",
+      "sourceSha256": "a6a9df12847ea0b05b6cd8d4c9b5944a4cbc1cc0713775d630249af4a2ddf923"
+    },
+    {
+      "locale": "he",
+      "file": "/Users/minchomilev/cloud-calendars/src/app/content/home/he.ts",
+      "path": [
+        "faq",
+        "items",
+        2,
+        "a"
+      ],
+      "before": "התחזיות נשלפות עבור המיקום הנוכחי או הנבחר שלכם ומכסות מבט שעתי ולעשרה ימים, טמפרטורה מורגשת, משקעים, קרינה, רוח ומשבים, לחות ונקודת טל, ראות, לחץ, זריחה ושקיעה, ושלב הירח.",
+      "after": "האפליקציה משתמשת ב-Apple WeatherKit למיקום הנוכחי או למקום שנבחר. בדקו את התאריכים והשעות הזמינים; הרשימה היומית מציגה עד עשרה ימים מהנתונים שהתקבלו. ההדגמה באתר משתמשת ב-Open-Meteo ועשויה להציג טווח אחר.",
+      "sourceSha256": "a6a9df12847ea0b05b6cd8d4c9b5944a4cbc1cc0713775d630249af4a2ddf923"
+    }
+  ]
+}

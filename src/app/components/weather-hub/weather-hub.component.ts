@@ -130,10 +130,8 @@ export class WeatherHubComponent implements AfterViewInit, OnDestroy {
   readonly open = signal(false);
 
   readonly view = signal<WeatherView>('hourly');
-  readonly views: { id: WeatherView; label: string }[] = [
-    { id: 'hourly', label: 'Hourly' },
-    { id: 'daily', label: '14 days' },
-    { id: 'weekend', label: 'Weekend' },
+  readonly views: { id: WeatherView }[] = [
+    { id: 'hourly' }, { id: 'daily' }, { id: 'weekend' },
   ];
 
   private readonly fallback: Metric[] = [

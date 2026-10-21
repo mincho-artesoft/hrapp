@@ -1,5 +1,5 @@
 {
-  "date": "2026-10-21T18:02:37.913Z",
+  "date": "2026-10-21T19:00:32.006Z",
   "status": "source_inventory_not_quality_approval",
   "articles": [
     {
@@ -746,27 +746,32 @@
     {
       "locale": "de-DE",
       "slug": "forecast-beside-every-event",
-      "title": "Die Vorhersage neben jedem Termin, nicht nur beim Tag",
-      "description": "Eine Tagesübersicht mittelt genau die Stunden weg, auf die es ankommt. Was Wetter pro Termin bedeutet und warum der Unterschied draußen zählt.",
-      "descriptionCharacters": 142,
-      "sections": 2,
-      "faq": 0,
-      "words": 238,
+      "title": "Einen Termin mit der stündlichen Wettervorhersage vergleichen",
+      "description": "Prüfe Ort, Datum und verfügbare Vorhersagestunden für deinen Termin. Kontrolliere den Ereignisentwurf, bevor du einen wetterabhängigen Plan speicherst.",
+      "descriptionCharacters": 151,
+      "sections": 5,
+      "faq": 3,
+      "words": 508,
       "source": "articles.ts",
-      "sources": [],
+      "sources": [
+        "https://developer.apple.com/weatherkit/",
+        "https://support.apple.com/en-us/102515"
+      ],
       "updated": "2026-10-21"
     },
     {
       "locale": "de-DE",
       "slug": "planning-outdoors-without-being-rained-on",
-      "title": "Draußen planen, ohne nass zu werden",
-      "description": "Eine praktische Methode, alles zu terminieren, was im Freien stattfindet — mit dem Kalender, den Sie ohnehin führen, statt mit einer zweiten Wetterroutine.",
-      "descriptionCharacters": 155,
+      "title": "Aktivitäten im Freien planen, ohne im Regen zu stehen",
+      "description": "Eine praktische Methode für Aktivitäten im Freien: Nutze deinen bestehenden Kalender, statt eine separate Wetterroutine aufzubauen.",
+      "descriptionCharacters": 131,
       "sections": 3,
-      "faq": 0,
-      "words": 254,
+      "faq": 3,
+      "words": 349,
       "source": "articles.ts",
-      "sources": [],
+      "sources": [
+        "https://developer.apple.com/weatherkit/"
+      ],
       "updated": "2026-10-21"
     },
     {
@@ -1549,11 +1554,11 @@
       "locale": "en-US",
       "slug": "weather-inside-your-calendar",
       "title": "A calendar with the weather already in it",
-      "description": "Why checking two apps to plan one day is a design failure, and what a calendar looks like when the forecast is part of it rather than beside it.",
+      "description": "Use hourly and daily weather alongside iPhone and iPad calendars. Check the selected place, forecast dates and appointment time before planning.",
       "descriptionCharacters": 144,
       "sections": 3,
-      "faq": 0,
-      "words": 342,
+      "faq": 3,
+      "words": 408,
       "source": "articles-weather.ts",
       "sources": [
         "https://developer.apple.com/weatherkit/"
@@ -1563,14 +1568,17 @@
     {
       "locale": "en-US",
       "slug": "forecast-beside-every-event",
-      "title": "The forecast beside every event, not just the day",
-      "description": "A daily summary averages away the hours you care about. What per-event weather looks like, and why the difference matters for anything scheduled outdoors.",
-      "descriptionCharacters": 154,
-      "sections": 2,
-      "faq": 0,
-      "words": 254,
+      "title": "Compare an appointment with the hourly weather forecast",
+      "description": "Match your appointment to the selected place, date and available forecast hours. Check the event draft before saving a weather-based plan.",
+      "descriptionCharacters": 138,
+      "sections": 5,
+      "faq": 3,
+      "words": 541,
       "source": "articles-weather.ts",
-      "sources": [],
+      "sources": [
+        "https://developer.apple.com/weatherkit/",
+        "https://support.apple.com/en-us/102515"
+      ],
       "updated": "2026-10-21"
     },
     {
@@ -1580,8 +1588,8 @@
       "description": "Check the dates a forecast actually covers. Calendar navigation, daily forecasts and hourly detail are different ranges in Cloud Calendars.",
       "descriptionCharacters": 139,
       "sections": 3,
-      "faq": 0,
-      "words": 284,
+      "faq": 3,
+      "words": 345,
       "source": "articles-weather.ts",
       "sources": [
         "https://developer.apple.com/weatherkit/"
@@ -1595,10 +1603,12 @@
       "description": "A practical method for scheduling anything that happens outside, using the calendar you already keep rather than a separate weather routine.",
       "descriptionCharacters": 140,
       "sections": 3,
-      "faq": 0,
-      "words": 265,
+      "faq": 3,
+      "words": 354,
       "source": "articles-weather.ts",
-      "sources": [],
+      "sources": [
+        "https://developer.apple.com/weatherkit/"
+      ],
       "updated": "2026-10-21"
     },
     {
@@ -1631,13 +1641,16 @@
       "locale": "en-US",
       "slug": "weather-where-the-event-is",
       "title": "The weather where the event is, not where you are",
-      "description": "Your phone knows where you are. Your event knows where it is going to be. For anything more than a few miles away, those are different forecasts.",
-      "descriptionCharacters": 145,
-      "sections": 2,
-      "faq": 0,
-      "words": 199,
+      "description": "Choose weather for a meeting destination, check its local dates and hours, and distinguish selected-place forecasts from device-location alerts.",
+      "descriptionCharacters": 144,
+      "sections": 5,
+      "faq": 3,
+      "words": 551,
       "source": "articles-weather.ts",
-      "sources": [],
+      "sources": [
+        "https://developer.apple.com/weatherkit/",
+        "https://support.apple.com/en-us/102515"
+      ],
       "updated": "2026-10-21"
     },
     {
@@ -1906,27 +1919,32 @@
     {
       "locale": "es-ES",
       "slug": "forecast-beside-every-event",
-      "title": "La previsión junto a cada evento, no solo junto al día",
-      "description": "Un resumen diario promedia justo las horas que importan. Qué significa el tiempo por evento y por qué la diferencia cuenta al aire libre.",
-      "descriptionCharacters": 137,
-      "sections": 2,
-      "faq": 0,
-      "words": 257,
+      "title": "Compara una cita con la previsión del tiempo por horas",
+      "description": "Comprueba el lugar, la fecha y las horas de previsión disponibles para tu cita. Revisa el borrador antes de guardar un plan basado en el tiempo.",
+      "descriptionCharacters": 144,
+      "sections": 5,
+      "faq": 3,
+      "words": 608,
       "source": "articles.ts",
-      "sources": [],
+      "sources": [
+        "https://developer.apple.com/weatherkit/",
+        "https://support.apple.com/en-us/102515"
+      ],
       "updated": "2026-10-21"
     },
     {
       "locale": "es-ES",
       "slug": "planning-outdoors-without-being-rained-on",
-      "title": "Planificar al aire libre sin acabar empapado",
-      "description": "Un método práctico para programar cualquier cosa que ocurra fuera, usando el calendario que ya lleva en lugar de una rutina meteorológica aparte.",
-      "descriptionCharacters": 145,
+      "title": "Planificar actividades al aire libre sin acabar bajo la lluvia",
+      "description": "Un método práctico para organizar actividades al aire libre con el calendario que ya utilizas, sin crear otra rutina para consultar el tiempo.",
+      "descriptionCharacters": 142,
       "sections": 3,
-      "faq": 0,
-      "words": 273,
+      "faq": 3,
+      "words": 381,
       "source": "articles.ts",
-      "sources": [],
+      "sources": [
+        "https://developer.apple.com/weatherkit/"
+      ],
       "updated": "2026-10-21"
     },
     {
@@ -2341,27 +2359,32 @@
     {
       "locale": "fr-FR",
       "slug": "forecast-beside-every-event",
-      "title": "La prévision à côté de chaque événement, pas seulement de la journée",
-      "description": "Un résumé quotidien moyenne précisément les heures qui comptent. Ce que signifie une météo par événement, et pourquoi l'écart compte en extérieur.",
-      "descriptionCharacters": 146,
-      "sections": 2,
-      "faq": 0,
-      "words": 245,
+      "title": "Comparer un rendez-vous aux prévisions météo heure par heure",
+      "description": "Vérifiez le lieu, la date et les heures de prévision disponibles pour votre rendez-vous. Relisez le brouillon avant d’enregistrer un projet lié à la météo.",
+      "descriptionCharacters": 155,
+      "sections": 5,
+      "faq": 3,
+      "words": 602,
       "source": "articles.ts",
-      "sources": [],
+      "sources": [
+        "https://developer.apple.com/weatherkit/",
+        "https://support.apple.com/en-us/102515"
+      ],
       "updated": "2026-10-21"
     },
     {
       "locale": "fr-FR",
       "slug": "planning-outdoors-without-being-rained-on",
-      "title": "Organiser une sortie sans se faire surprendre par la pluie",
-      "description": "Une méthode concrète pour programmer tout ce qui se passe dehors, en utilisant l'agenda que vous avez déjà plutôt qu'une routine météo à part.",
-      "descriptionCharacters": 142,
+      "title": "Organiser des activités en extérieur sans finir sous la pluie",
+      "description": "Une méthode pratique pour organiser vos activités en extérieur avec votre calendrier habituel, sans ajouter une routine météo distincte.",
+      "descriptionCharacters": 136,
       "sections": 3,
-      "faq": 0,
-      "words": 272,
+      "faq": 3,
+      "words": 401,
       "source": "articles.ts",
-      "sources": [],
+      "sources": [
+        "https://developer.apple.com/weatherkit/"
+      ],
       "updated": "2026-10-21"
     },
     {
@@ -3184,27 +3207,32 @@
     {
       "locale": "it",
       "slug": "forecast-beside-every-event",
-      "title": "La previsione accanto a ogni evento, non solo alla giornata",
-      "description": "Un riassunto giornaliero fa la media proprio delle ore che contano. Che cosa significa avere il meteo per evento e perché la differenza pesa all'aperto.",
-      "descriptionCharacters": 152,
-      "sections": 2,
-      "faq": 0,
-      "words": 233,
+      "title": "Confronta un appuntamento con le previsioni meteo orarie",
+      "description": "Verifica luogo, data e ore di previsione disponibili per l’appuntamento. Controlla la bozza prima di salvare un piano basato sul meteo.",
+      "descriptionCharacters": 135,
+      "sections": 5,
+      "faq": 3,
+      "words": 534,
       "source": "articles.ts",
-      "sources": [],
+      "sources": [
+        "https://developer.apple.com/weatherkit/",
+        "https://support.apple.com/en-us/102515"
+      ],
       "updated": "2026-10-21"
     },
     {
       "locale": "it",
       "slug": "planning-outdoors-without-being-rained-on",
-      "title": "Organizzare all'aperto senza prendersi la pioggia",
-      "description": "Un metodo concreto per programmare qualsiasi cosa succeda fuori, usando il calendario che avete già invece di una routine meteo a parte.",
-      "descriptionCharacters": 136,
+      "title": "Organizzare attività all’aperto senza finire sotto la pioggia",
+      "description": "Un metodo pratico per organizzare attività all’aperto con il calendario che usi già, senza aggiungere una routine meteo separata.",
+      "descriptionCharacters": 129,
       "sections": 3,
-      "faq": 0,
-      "words": 249,
+      "faq": 3,
+      "words": 343,
       "source": "articles.ts",
-      "sources": [],
+      "sources": [
+        "https://developer.apple.com/weatherkit/"
+      ],
       "updated": "2026-10-21"
     },
     {

@@ -111,16 +111,20 @@ export const HOME_PL: HomeCopy = {
     ],
   },
   weather: {
+demoLabel: "Demo strony · Open-Meteo. Aplikacja korzysta z Apple WeatherKit; dostępne daty mogą się różnić.",
+loadingLabel: "Wczytywanie pogody dla wybranego miejsca…",
+tabs: {"hourly":"Godzinowa","daily":"Dzienna","weekend":"Weekend","range":"Zakres prognozy"},
+
     eyebrow: 'Centrum pogody',
     title: ['Stacja pogodowa', 'zaparkowana w twoim kalendarzu.'],
-    lead: 'Temperatura, odczuwalna, opady, UV, wiatr, wilgotność, widzialność i ciśnienie — każde jako godzinny wykres do przewijania. Dotknij dowolnej godziny w prognozie, a aplikacja otworzy nowe wydarzenie już ustawione na tę porę.',
+    lead: "Sprawdzaj pogodę obok swoich planów w aplikacji. To demo strony korzysta z Open-Meteo; aplikacja używa Apple WeatherKit i dostępnych prognoz godzinowych i dziennych dla wybranego miejsca.",
     searchLabel: 'Szukaj miasta',
     searchPlaceholder: 'Spróbuj innego miasta — gdziekolwiek',
     searching: 'Szukanie…',
     alt: 'Centrum pogody z aktualną temperaturą, wykresem godzinowym i prognozą dziesięciodniową',
-    unavailable: 'Prognoza na żywo chwilowo niedostępna — pokazywane są dane przykładowe.',
-    liveFrom: 'Na żywo z Open-Meteo, stan na {t}.',
-    tapAnHour: 'W aplikacji dotknij godziny, by upuścić na nią wydarzenie.',
+    unavailable: "Przykładowe dane demonstracyjne, a nie aktualna prognoza dla wybranego miejsca.",
+    liveFrom: "Demo strony · Open-Meteo · stan na {t}.",
+    tapAnHour: "W aplikacji wybierz dostępną godzinę prognozy, aby rozpocząć szkic wydarzenia, a następnie sprawdź jego godzinę i kalendarz.",
     readings: {
       feelsLike: 'Dwa stopnie poniżej wskazania — to sprawka wiatru.',
       precipitation: 'Pas przechodzi między 16 a 19.',
@@ -225,7 +229,7 @@ export const HOME_PL: HomeCopy = {
       },
       {
         q: 'Skąd pochodzą dane pogodowe?',
-        a: 'Prognozy są pobierane dla twojej bieżącej lub wybranej lokalizacji i obejmują perspektywy godzinowe i dziesięciodniowe, temperaturę odczuwalną, opady, UV, wiatr i porywy, wilgotność i punkt rosy, widzialność, ciśnienie, wschód i zachód słońca oraz fazę księżyca.',
+        a: "Aplikacja korzysta z Apple WeatherKit dla bieżącego lub wybranego miejsca. Sprawdź dostępne daty i godziny; lista dzienna pokazuje do dziesięciu otrzymanych dni. Demo strony korzysta z Open-Meteo i może obejmować inny okres.",
       },
       {
         q: 'Czy mogę zmienić wydarzenie, przeciągając je?',

@@ -111,16 +111,20 @@ export const HOME_VI: HomeCopy = {
     ],
   },
   weather: {
+demoLabel: "Bản demo trên web · Open-Meteo. Ứng dụng dùng Apple WeatherKit; các ngày có dữ liệu có thể khác nhau.",
+loadingLabel: "Đang tải thời tiết cho địa điểm đã chọn…",
+tabs: {"hourly":"Theo giờ","daily":"Theo ngày","weekend":"Cuối tuần","range":"Khoảng dự báo"},
+
     eyebrow: 'Trung tâm thời tiết',
     title: ['Một trạm khí tượng', 'đỗ ngay trong cuốn lịch của bạn.'],
-    lead: 'Nhiệt độ, cảm giác như, lượng mưa, UV, gió, độ ẩm, tầm nhìn và áp suất — mỗi thứ là một biểu đồ theo giờ có thể rê qua. Chạm vào bất kỳ giờ nào trong dự báo và ứng dụng mở một sự kiện mới đã đặt sẵn vào giờ đó.',
+    lead: "Xem thời tiết bên cạnh kế hoạch của bạn trong ứng dụng. Bản demo trên web này dùng Open-Meteo; ứng dụng dùng Apple WeatherKit với dự báo theo giờ và theo ngày hiện có cho địa điểm đã chọn.",
     searchLabel: 'Tìm một thành phố',
     searchPlaceholder: 'Thử thành phố khác — bất cứ đâu',
     searching: 'Đang tìm…',
     alt: 'Trung tâm thời tiết với nhiệt độ hiện tại, biểu đồ theo giờ và dự báo mười ngày',
-    unavailable: 'Dự báo trực tiếp hiện không dùng được — đang hiển thị dữ liệu mẫu.',
-    liveFrom: 'Trực tiếp từ Open-Meteo, tính đến {t}.',
-    tapAnHour: 'Trong ứng dụng, chạm vào một giờ để thả thẳng một sự kiện lên đó.',
+    unavailable: "Dữ liệu mẫu cho bản demo này, không phải dự báo hiện tại cho địa điểm đã chọn.",
+    liveFrom: "Bản demo trên web · Open-Meteo · lúc {t}.",
+    tapAnHour: "Trong ứng dụng, chọn một giờ dự báo có dữ liệu để bắt đầu bản nháp sự kiện, rồi kiểm tra giờ và lịch của sự kiện.",
     readings: {
       feelsLike: 'Thấp hơn số đo hai độ — là do gió.',
       precipitation: 'Một dải đi qua trong khoảng 16 đến 19 giờ.',
@@ -225,7 +229,7 @@ export const HOME_VI: HomeCopy = {
       },
       {
         q: 'Dữ liệu thời tiết lấy từ đâu?',
-        a: 'Dự báo được lấy cho vị trí hiện tại hoặc vị trí bạn chọn, bao gồm triển vọng theo giờ và mười ngày, nhiệt độ cảm giác, lượng mưa, UV, gió và gió giật, độ ẩm và điểm sương, tầm nhìn, áp suất, giờ mọc và lặn của mặt trời, cùng pha trăng.',
+        a: "Ứng dụng dùng Apple WeatherKit cho vị trí hiện tại hoặc địa điểm đã chọn. Hãy kiểm tra các ngày và giờ có dữ liệu; danh sách theo ngày hiển thị tối đa mười ngày nhận được. Bản demo trên web dùng Open-Meteo và có thể hiển thị khoảng thời gian khác.",
       },
       {
         q: 'Tôi có thể đổi một sự kiện bằng cách kéo nó không?',

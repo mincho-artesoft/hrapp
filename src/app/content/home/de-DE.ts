@@ -111,16 +111,20 @@ export const HOME_DE_DE: HomeCopy = {
     ],
   },
   weather: {
+demoLabel: "Website-Demo · Open-Meteo. Die App nutzt Apple WeatherKit; verfügbare Tage können abweichen.",
+loadingLabel: "Wetter für den ausgewählten Ort wird geladen…",
+tabs: {"hourly":"Stündlich","daily":"Täglich","weekend":"Wochenende","range":"Vorhersagezeitraum"},
+
     eyebrow: 'Wetterzentrale',
     title: ['Eine Wetterstation,', 'geparkt in Ihrem Kalender.'],
-    lead: 'Temperatur, gefühlte Temperatur, Niederschlag, UV, Wind, Luftfeuchte, Sicht und Luftdruck — jeweils als stündliches Diagramm zum Durchziehen. Tippen Sie eine Stunde in der Vorhersage an, und die App öffnet einen neuen Termin, bereits auf diese Zeit gesetzt.',
+    lead: "Sehen Sie das Wetter neben Ihren Plänen in der App. Diese Website-Demo nutzt Open-Meteo; die App nutzt Apple WeatherKit mit verfügbaren stündlichen und täglichen Vorhersagen für Ihren ausgewählten Ort.",
     searchLabel: 'Nach einer Stadt suchen',
     searchPlaceholder: 'Andere Stadt versuchen — weltweit',
     searching: 'Wird gesucht …',
     alt: 'Wetterzentrale mit aktueller Temperatur, Stundenkurve und Zehn-Tage-Vorhersage',
-    unavailable: 'Live-Vorhersage gerade nicht verfügbar — es werden Beispieldaten gezeigt.',
-    liveFrom: 'Live von Open-Meteo, Stand {t}.',
-    tapAnHour: 'Tippen Sie in der App eine Stunde an, um einen Termin direkt daraufzulegen.',
+    unavailable: "Beispieldaten für diese Demo, keine aktuelle Vorhersage für den ausgewählten Ort.",
+    liveFrom: "Website-Demo · Open-Meteo · Stand {t}.",
+    tapAnHour: "Wählen Sie in der App eine verfügbare Vorhersagestunde, um einen Termin zu entwerfen. Prüfen Sie anschließend Uhrzeit und Kalender.",
     readings: {
       feelsLike: 'Zwei Grad unter dem Messwert — das macht der Wind.',
       precipitation: 'Ein Band zieht zwischen 16 und 19 Uhr durch.',
@@ -225,7 +229,7 @@ export const HOME_DE_DE: HomeCopy = {
       },
       {
         q: 'Woher kommen die Wetterdaten?',
-        a: 'Die Vorhersagen werden für Ihren aktuellen oder gewählten Ort abgerufen und umfassen stündliche und zehntägige Aussichten, gefühlte Temperatur, Niederschlag, UV, Wind und Böen, Luftfeuchte und Taupunkt, Sicht, Luftdruck, Sonnenauf- und -untergang sowie die Mondphase.',
+        a: "Die App nutzt Apple WeatherKit für Ihren aktuellen oder ausgewählten Ort. Prüfen Sie die verfügbaren Tage und Stunden; die Tagesliste zeigt bis zu zehn gelieferte Tage. Die Website-Demo nutzt Open-Meteo und kann einen anderen Zeitraum zeigen.",
       },
       {
         q: 'Kann ich einen Termin durch Ziehen ändern?',

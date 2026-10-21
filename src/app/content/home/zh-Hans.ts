@@ -107,16 +107,20 @@ export const HOME_ZH_HANS: HomeCopy = {
     ],
   },
   weather: {
+demoLabel: "网站演示 · Open-Meteo。App 使用 Apple WeatherKit，可查看的日期可能不同。",
+loadingLabel: "正在加载所选地点的天气…",
+tabs: {"hourly":"逐小时","daily":"逐日","weekend":"周末","range":"预报范围"},
+
     eyebrow: '天气中心',
     title: ['一座停在你日历里的', '气象站。'],
-    lead: '气温、体感、降水、紫外线、风、湿度、能见度和气压——每一项都是可以拖着看的小时曲线。在预报里点任何一个小时，应用就会打开一个已经设好那个时间的新日程。',
+    lead: "在 App 中结合日程查看天气。此网站演示使用 Open-Meteo；App 使用 Apple WeatherKit，显示所选地点可获取的逐小时和逐日预报。",
     searchLabel: '搜索城市',
     searchPlaceholder: '换个城市试试 — 哪里都行',
     searching: '正在搜索…',
     alt: '显示当前气温、小时曲线和十天预报的天气中心',
-    unavailable: '实时预报暂时取不到 — 正在显示示例数据。',
-    liveFrom: '来自 Open-Meteo 的实时数据，截至 {t}。',
-    tapAnHour: '在应用里点一个小时，就能把日程直接放上去。',
+    unavailable: "此演示使用示例数据，并非所选地点的当前预报。",
+    liveFrom: "网站演示 · Open-Meteo · 截至 {t}。",
+    tapAnHour: "在 App 中选择有预报数据的小时以开始创建事件草稿，然后检查事件时间和所属日历。",
     readings: {
       feelsLike: '比实测低两度——是风造成的。',
       precipitation: '一条雨带在 16 点到 19 点之间经过。',
@@ -221,7 +225,7 @@ export const HOME_ZH_HANS: HomeCopy = {
       },
       {
         q: '天气数据来自哪里？',
-        a: '预报按你当前或选定的位置获取，涵盖逐小时和十天的展望、体感温度、降水、紫外线、风与阵风、湿度与露点、能见度、气压、日出日落，以及月相。',
+        a: "App 使用 Apple WeatherKit 提供当前位置或所选地点的天气。请查看可用日期和小时；每日列表最多显示已获取的十天预报。网站演示使用 Open-Meteo，显示的范围可能不同。",
       },
       {
         q: '可以拖动来修改日程吗？',

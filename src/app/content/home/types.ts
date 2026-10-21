@@ -90,11 +90,14 @@ export interface HomeCopy {
   };
 
   readonly weather: Section & {
+    readonly demoLabel: string;
+    readonly loadingLabel: string;
+    readonly tabs: { readonly hourly: string; readonly daily: string; readonly weekend: string; readonly range: string };
     readonly searchLabel: string;
     readonly searchPlaceholder: string;
     readonly searching: string;
     readonly alt: string;
-    /** Shown when the live fetch fails and the sample data stands in. */
+    /** Shown whenever the demo has no live snapshot, including prerender/loading. */
     readonly unavailable: string;
     /** "Live from Open-Meteo, as of {t}." — {t} is the observation time. */
     readonly liveFrom: string;

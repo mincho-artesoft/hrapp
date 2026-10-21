@@ -111,16 +111,20 @@ export const HOME_ID: HomeCopy = {
     ],
   },
   weather: {
+demoLabel: "Demo situs · Open-Meteo. Aplikasi memakai Apple WeatherKit; tanggal yang tersedia bisa berbeda.",
+loadingLabel: "Memuat cuaca untuk tempat yang dipilih…",
+tabs: {"hourly":"Per jam","daily":"Harian","weekend":"Akhir pekan","range":"Rentang prakiraan"},
+
     eyebrow: 'Pusat cuaca',
     title: ['Sebuah stasiun cuaca', 'terparkir di kalender Anda.'],
-    lead: 'Suhu, terasa seperti, curah hujan, UV, angin, kelembapan, jarak pandang, dan tekanan — masing-masing sebagai grafik per jam yang bisa Anda telusuri. Ketuk jam mana pun di prakiraan dan aplikasi membuka acara baru yang sudah disetel ke jam itu.',
+    lead: "Lihat cuaca di samping rencana Anda dalam aplikasi. Demo situs ini memakai Open-Meteo; aplikasi memakai Apple WeatherKit, dengan prakiraan per jam dan harian yang tersedia untuk tempat yang dipilih.",
     searchLabel: 'Cari kota',
     searchPlaceholder: 'Coba kota lain — di mana saja',
     searching: 'Mencari…',
     alt: 'Pusat cuaca dengan suhu saat ini, grafik per jam, dan prakiraan sepuluh hari',
-    unavailable: 'Prakiraan langsung tak tersedia saat ini — menampilkan data contoh.',
-    liveFrom: 'Langsung dari Open-Meteo, per {t}.',
-    tapAnHour: 'Di aplikasi, ketuk sebuah jam untuk menjatuhkan acara tepat di situ.',
+    unavailable: "Data contoh untuk demo ini, bukan prakiraan terkini untuk tempat yang dipilih.",
+    liveFrom: "Demo situs · Open-Meteo · per {t}.",
+    tapAnHour: "Di aplikasi, pilih jam prakiraan yang tersedia untuk memulai draf acara, lalu periksa waktu dan kalendernya.",
     readings: {
       feelsLike: 'Dua derajat di bawah yang terukur — anginlah penyebabnya.',
       precipitation: 'Sebuah pita melintas antara pukul 16 dan 19.',
@@ -225,7 +229,7 @@ export const HOME_ID: HomeCopy = {
       },
       {
         q: 'Dari mana data cuacanya berasal?',
-        a: 'Prakiraan diambil untuk lokasi Anda saat ini atau yang Anda pilih dan mencakup pandangan per jam dan sepuluh hari, suhu terasa, curah hujan, UV, angin dan embusan, kelembapan dan titik embun, jarak pandang, tekanan, matahari terbit dan terbenam, serta fase bulan.',
+        a: "Aplikasi memakai Apple WeatherKit untuk lokasi saat ini atau tempat yang dipilih. Periksa tanggal dan jam yang tersedia; daftar harian menampilkan hingga sepuluh hari dari data yang diterima. Demo situs memakai Open-Meteo dan dapat menampilkan rentang berbeda.",
       },
       {
         q: 'Bisakah saya mengubah acara dengan menyeretnya?',

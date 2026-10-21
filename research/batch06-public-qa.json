@@ -1,0 +1,279 @@
+{
+  "checkedAt": "2026-10-21T19:13:39.653353+00:00",
+  "allPassed": true,
+  "changedHtmlPages": 43,
+  "scope": "All13changedarticles and30homepages plus2text exports. Broad sitemap availability independently checked by deploy; earlier broad hash attempts failed transient DNS/readtimeout.",
+  "textExports": 2,
+  "artifacts": [
+    {
+      "url": "https://www.cloud-calendars.com/de/articles/forecast-beside-every-event/",
+      "status": 200,
+      "sha256": "d6950a7394e5fc4d8efb2d4e393147f7c7027eb6b8039fb498a2f1f76c811a4a",
+      "matchesBuild": true
+    },
+    {
+      "url": "https://www.cloud-calendars.com/de/articles/planning-outdoors-without-being-rained-on/",
+      "status": 200,
+      "sha256": "c8593f3c53754829b05b009910246e5b05bf5327ebc4297f28ef976b698d41da",
+      "matchesBuild": true
+    },
+    {
+      "url": "https://www.cloud-calendars.com/articles/weather-inside-your-calendar/",
+      "status": 200,
+      "sha256": "bb0d244a55b94dae9d0ed75e937fd3f6732c7b290bd73c38b7b6ea4bd1023bc4",
+      "matchesBuild": true
+    },
+    {
+      "url": "https://www.cloud-calendars.com/articles/forecast-beside-every-event/",
+      "status": 200,
+      "sha256": "9a955e0eec08e7d1b4b731384d191c5d98df79aa5da6cda604f9444a0ef86aec",
+      "matchesBuild": true
+    },
+    {
+      "url": "https://www.cloud-calendars.com/articles/a-fourteen-day-view-of-the-weather/",
+      "status": 200,
+      "sha256": "f76596311a0a8da138586fc42a9df3c30fc89df61843ca5b5d3ab8150bd60ece",
+      "matchesBuild": true
+    },
+    {
+      "url": "https://www.cloud-calendars.com/articles/planning-outdoors-without-being-rained-on/",
+      "status": 200,
+      "sha256": "479a0c3181a5473ca2c0b363e4988a3e259ef5599802cd4050013b2b838b10d9",
+      "matchesBuild": true
+    },
+    {
+      "url": "https://www.cloud-calendars.com/articles/weather-where-the-event-is/",
+      "status": 200,
+      "sha256": "8bad164d27eb72d07e7e82d76d7a26a301f410d8a15c3a92d79a6e3f9c7b721a",
+      "matchesBuild": true
+    },
+    {
+      "url": "https://www.cloud-calendars.com/es/articles/forecast-beside-every-event/",
+      "status": 200,
+      "sha256": "851a2ca7ef678b418d23b2fd20697828eb252fa376c9443d9ca250c50dea7c60",
+      "matchesBuild": true
+    },
+    {
+      "url": "https://www.cloud-calendars.com/es/articles/planning-outdoors-without-being-rained-on/",
+      "status": 200,
+      "sha256": "b533ace1fd8ce650d2ba0f239744e329659d6471433e60df9653bfcaacaa291d",
+      "matchesBuild": true
+    },
+    {
+      "url": "https://www.cloud-calendars.com/fr/articles/forecast-beside-every-event/",
+      "status": 200,
+      "sha256": "ac41209f3f43216e18fcee125183757871b062e0dc1d42a28ecfcd5dd074ad6b",
+      "matchesBuild": true
+    },
+    {
+      "url": "https://www.cloud-calendars.com/fr/articles/planning-outdoors-without-being-rained-on/",
+      "status": 200,
+      "sha256": "9ed2a0042faeb24f5edbe88eea50526406e322a44ec3a7c173eca056a1bd8b4d",
+      "matchesBuild": true
+    },
+    {
+      "url": "https://www.cloud-calendars.com/it/articles/forecast-beside-every-event/",
+      "status": 200,
+      "sha256": "a26624ef24a35fe38a96f65958e59ad30b3348905e6070a744a01f616c5bf6ea",
+      "matchesBuild": true
+    },
+    {
+      "url": "https://www.cloud-calendars.com/it/articles/planning-outdoors-without-being-rained-on/",
+      "status": 200,
+      "sha256": "b710afccea23022f82bab4ec0e844dbe1fb4f4aac919e6cc07dd115915b767fc",
+      "matchesBuild": true
+    },
+    {
+      "url": "https://www.cloud-calendars.com/",
+      "status": 200,
+      "sha256": "b4c23777461a2151fd307d27a27f9aa9f82b7b0fbc2be80cc72166350b3dc155",
+      "matchesBuild": true
+    },
+    {
+      "url": "https://www.cloud-calendars.com/bg/",
+      "status": 200,
+      "sha256": "03dc7e93840a2fb396997ff2a74eff02fd41b71d636e266421876263cfb25a03",
+      "matchesBuild": true
+    },
+    {
+      "url": "https://www.cloud-calendars.com/de/",
+      "status": 200,
+      "sha256": "5473a2abed56f38cd38e3899a3af5560beae14a95eeeb43e8220ab28cccf88b8",
+      "matchesBuild": true
+    },
+    {
+      "url": "https://www.cloud-calendars.com/es/",
+      "status": 200,
+      "sha256": "401e1d63ac2c5544ba9ec7c21466054c46bde659bfe3ba0a249604169b639a19",
+      "matchesBuild": true
+    },
+    {
+      "url": "https://www.cloud-calendars.com/fr/",
+      "status": 200,
+      "sha256": "46fe39e0ab16da82a360b8eb8f1c2d8808abe7e7f54eb4287de69f20f84fa49a",
+      "matchesBuild": true
+    },
+    {
+      "url": "https://www.cloud-calendars.com/it/",
+      "status": 200,
+      "sha256": "f4e3f3e0e7ab6ce782157024a12e24ce8127b9271e0915c7e5cca6a1d82a552c",
+      "matchesBuild": true
+    },
+    {
+      "url": "https://www.cloud-calendars.com/nl/",
+      "status": 200,
+      "sha256": "ff0e1c63e5db9fa075ed79450426a7d2e19070bf5bf3a07c245508a8e7b56a33",
+      "matchesBuild": true
+    },
+    {
+      "url": "https://www.cloud-calendars.com/pt/",
+      "status": 200,
+      "sha256": "1457db7e9a78464156a9a77785bafa10dde2770caed7101704ead5c6fb708381",
+      "matchesBuild": true
+    },
+    {
+      "url": "https://www.cloud-calendars.com/pl/",
+      "status": 200,
+      "sha256": "ee08670f33c1f6220e7685e228508f1c022c7f79180d08acba62de935d2bf4dd",
+      "matchesBuild": true
+    },
+    {
+      "url": "https://www.cloud-calendars.com/ru/",
+      "status": 200,
+      "sha256": "eb9bd62ba4ed57af65d5139dc02188aec289c9c1832642f9cf15ae980e11ab1e",
+      "matchesBuild": true
+    },
+    {
+      "url": "https://www.cloud-calendars.com/sv/",
+      "status": 200,
+      "sha256": "d5617a0844e0209c644196c273a5cc9325c37ed3b48eb382a1106b4d80ca5715",
+      "matchesBuild": true
+    },
+    {
+      "url": "https://www.cloud-calendars.com/da/",
+      "status": 200,
+      "sha256": "418181afa2d8f0c7c14882a4c2f179f8d1dc72d695ec874b6fddba13bad44814",
+      "matchesBuild": true
+    },
+    {
+      "url": "https://www.cloud-calendars.com/no/",
+      "status": 200,
+      "sha256": "f4bc241c01043e722839e216a17612138d43ecb3715f796f39b3c2f698a1e2fd",
+      "matchesBuild": true
+    },
+    {
+      "url": "https://www.cloud-calendars.com/fi/",
+      "status": 200,
+      "sha256": "c25b6657ef41cbd60837c8b1f1da7b5e03aebdb19d4b5e72d55738e223fc61f1",
+      "matchesBuild": true
+    },
+    {
+      "url": "https://www.cloud-calendars.com/cs/",
+      "status": 200,
+      "sha256": "22b400a03e8d85a4da66f70242b4fe7d5cb6afe0ae29f7640a6b902310b5eee2",
+      "matchesBuild": true
+    },
+    {
+      "url": "https://www.cloud-calendars.com/hu/",
+      "status": 200,
+      "sha256": "647f407a6c010dec14cb35fa46762814dab7575e041210b585f7b172235f5991",
+      "matchesBuild": true
+    },
+    {
+      "url": "https://www.cloud-calendars.com/ro/",
+      "status": 200,
+      "sha256": "06156cd0de58f75375e40a6c18bf512097bf45534dc1735c8019f67289e722db",
+      "matchesBuild": true
+    },
+    {
+      "url": "https://www.cloud-calendars.com/el/",
+      "status": 200,
+      "sha256": "f14d0695ff24f957026bf0daeb61dce1a8713a8027339685a865727f26cf88ba",
+      "matchesBuild": true
+    },
+    {
+      "url": "https://www.cloud-calendars.com/tr/",
+      "status": 200,
+      "sha256": "2d1bffeff922e1336e7d3ae6c88c4bb1b498602ac35edfab48efb43b53be55c6",
+      "matchesBuild": true
+    },
+    {
+      "url": "https://www.cloud-calendars.com/id/",
+      "status": 200,
+      "sha256": "570bb619b2b8a3fd6bbcdd01766eb61b6a0e9c6f8c9793d14df95d745df8c453",
+      "matchesBuild": true
+    },
+    {
+      "url": "https://www.cloud-calendars.com/ms/",
+      "status": 200,
+      "sha256": "69c4ff3a5258a445e69e9858ae9f8979953a1a72dd55af8fc9a73395c013b063",
+      "matchesBuild": true
+    },
+    {
+      "url": "https://www.cloud-calendars.com/vi/",
+      "status": 200,
+      "sha256": "72e1be38a2f468c9f04a013419cf480af01c5e65587fc97aa836e0b867bd4eca",
+      "matchesBuild": true
+    },
+    {
+      "url": "https://www.cloud-calendars.com/ja/",
+      "status": 200,
+      "sha256": "dafccf440e02791fb10a25527499391b8377cd559bf0816812dd08d842a803e0",
+      "matchesBuild": true
+    },
+    {
+      "url": "https://www.cloud-calendars.com/ko/",
+      "status": 200,
+      "sha256": "314feb61730c44306c9d2457b32c9f4b5eb650b8d6e11ba0e24c94a114a042f9",
+      "matchesBuild": true
+    },
+    {
+      "url": "https://www.cloud-calendars.com/zh-hans/",
+      "status": 200,
+      "sha256": "7f0f56b4cb770a8c218521a27e73e53a134f8db3738044e1f912db9273fe4978",
+      "matchesBuild": true
+    },
+    {
+      "url": "https://www.cloud-calendars.com/zh-hant/",
+      "status": 200,
+      "sha256": "4977c61bdab8955face1df3fe7088e992d0bb5de9d90c02533a21e0ab1b0c1d8",
+      "matchesBuild": true
+    },
+    {
+      "url": "https://www.cloud-calendars.com/hi/",
+      "status": 200,
+      "sha256": "07bad2d35f82be90856ebf0c8bc3c5452cdb7ba7f2df7cbd4af5bf76fb4564c6",
+      "matchesBuild": true
+    },
+    {
+      "url": "https://www.cloud-calendars.com/th/",
+      "status": 200,
+      "sha256": "f1eee2f17f1eb3a7cdd3c189622910b11859bb74e31be2ac2ae82d9911e807e3",
+      "matchesBuild": true
+    },
+    {
+      "url": "https://www.cloud-calendars.com/ar/",
+      "status": 200,
+      "sha256": "a8d1ef3cf4eb8efdd05f2dca824b222a739c2637cb71f30ae1b8ecff6f355d60",
+      "matchesBuild": true
+    },
+    {
+      "url": "https://www.cloud-calendars.com/he/",
+      "status": 200,
+      "sha256": "fde3429f27be06de5fb7db73416ffc137417d3ffbd5bcad343924dd17c7cc991",
+      "matchesBuild": true
+    },
+    {
+      "url": "https://www.cloud-calendars.com/llms.txt",
+      "status": 200,
+      "sha256": "3e13ad31ad41423cd92d12a487615c3f1a5a86921dc2c8baee2df28d4322f812",
+      "matchesBuild": true
+    },
+    {
+      "url": "https://www.cloud-calendars.com/llms-full.txt",
+      "status": 200,
+      "sha256": "1c0027be871101f82d60aeec52d950f14bf3a84c201bc32980458d6e03949c9a",
+      "matchesBuild": true
+    }
+  ]
+}

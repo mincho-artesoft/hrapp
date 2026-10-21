@@ -46,81 +46,148 @@ export const ARTICLES_DE_DE: Readonly<Record<string, LocalisedArticle>> = {
 },
 
   'forecast-beside-every-event': {
-  "title": "Die Vorhersage neben jedem Termin, nicht nur beim Tag",
-  "short": "Vorhersage am Termin",
-  "description": "Eine Tagesübersicht mittelt genau die Stunden weg, auf die es ankommt. Was Wetter pro Termin bedeutet und warum der Unterschied draußen zählt.",
-  "lede": "Die meisten Kalender, die überhaupt Wetter zeigen, zeigen ein Symbol pro Tag. Dieses Symbol ist ein Mittelwert — und der Mittelwert aus nassem Vormittag und trockenem Nachmittag ist ein Nieselregen, den es nie gegeben hat.",
-  "commonBelief": "Dass ein Wettersymbol am Tag dasselbe ist wie eine Vorhersage am Termin.",
+  "title": "Einen Termin mit der stündlichen Wettervorhersage vergleichen",
+  "short": "Wetter zu den Terminzeiten",
+  "description": "Prüfe Ort, Datum und verfügbare Vorhersagestunden für deinen Termin. Kontrolliere den Ereignisentwurf, bevor du einen wetterabhängigen Plan speicherst.",
+  "lede": "Um das Wetter mit einem Termin zu vergleichen, müssen drei Dinge zusammenpassen: der ausgewählte Ort, das Vorhersagedatum und die Stunden deines Vorhabens. Ein Wettersymbol neben dem Termin beweist das nicht. Dieser Leitfaden stammt von Arte Soft, dem Entwickler von Cloud Calendars.",
+  "commonBelief": "Ein tägliches Wettersymbol im Kalender sei dasselbe wie eine einem Ereignis zugeordnete Vorhersage.",
   "sections": [
     {
-      "heading": "Was ein Tagessymbol verbirgt",
+      "heading": "Beginne mit Ort und Datum",
       "body": [
-        "Nehmen Sie einen Tag, an dem es bis elf stark regnet und danach aufklart. Die Tagesübersicht wählt etwas dazwischen und zeigt eine Wolke. Sie sehen bei Ihrem Zwei-Uhr-Termin die Wolke und verschieben einen Spaziergang, der nie hätte verschoben werden müssen.",
-        "Der Fehler geht in beide Richtungen. Ein Tag, der bis auf eine heftige Stunde um sechs schön ist, erscheint als schön — und der eine Termin, auf den es ankam, ist der, den es erwischt."
+        "Öffne die Vorhersage für den vorgesehenen Ort und vergleiche das Datum mit dem Kalendereintrag. Das Kalenderwetter kann sich auf den ausgewählten Wetterort beziehen. Prüfe deshalb, ob dieser zum Termin passt, statt anzunehmen, dass die Ereignisadresse ihn bestimmt.",
+        "Ein Termin für nächsten Monat kann schon existieren, bevor Wetterdaten für dieses Datum verfügbar sind. Behalte den Termin und prüfe die Vorhersage näher am Datum erneut. Ein fehlender Wettereintrag ist keine Vorhersage für schönes Wetter."
       ]
     },
     {
-      "heading": "Die Vorhersage an die Stunden hängen",
+      "heading": "Nutze Stundendetails für Fragen zu bestimmten Stunden",
       "body": [
-        "Ein Termin belegt bestimmte Stunden. Die Vorhersage für diese Stunden ist eine andere Zahl als die für seinen Tag, und sie ist die einzige, die Ihre eigentliche Frage beantwortet.",
-        "Öffnen Sie einen Termin, und die gezeigten Bedingungen sind die seines Zeitfensters. Ein Drei-Stunden-Block bekommt die drei Stunden, nicht die vierundzwanzig."
+        "Eine Tagesübersicht und eine stündliche Vorhersage beantworten unterschiedliche Fragen. Dauert der Termin von zwei bis fünf Uhr, prüfe die verfügbaren Stunden dieses Zeitraums, statt ein einziges Tagessymbol als vollständiges Bild zu verstehen.",
+        "Ist nur ein Teil des Zeitraums verfügbar, bleibt der Rest offen. Die App verspricht keine lückenlose stündliche Vorhersage für jedes erstellbare Ereignis. Dieser Leitfaden verspricht auch nicht, dass beim Öffnen eines beliebigen Ereignisses immer das gesamte Wetterzeitfenster erscheint."
+      ]
+    },
+    {
+      "heading": "Unterscheide Wahrscheinlichkeit, Menge und Zeitpunkt",
+      "body": [
+        "Lies die Bezeichnung des Werts, den du prüfst. Eine Niederschlagswahrscheinlichkeit ist weder Regenmenge noch Regendauer. Ebenso beziehen sich ein Stundenwert und eine Tagesübersicht auf unterschiedliche Zeiträume. Vergleiche gleich lange Zeiträume, wenn du zwei mögliche Termine abwägst.",
+        "Wähle eine passende Alternative für dein Vorhaben, statt einen einzelnen Prozentwert als allgemeine Regel für Durchführung oder Absage zu behandeln. Wetterinformationen können sich ändern; prüfe sie erneut, wenn eine Entscheidung ansteht."
+      ]
+    },
+    {
+      "heading": "Prüfe einen wetterabhängigen Termin vor dem Speichern",
+      "body": [
+        "Die App kann aus einer Vorhersagestunde einen Ereignisentwurf beginnen. Prüfe dessen Datum, Beginn, Ende und Zielkalender vor dem Speichern. Eine gewählte Vorhersagestunde ersetzt nicht die Kontrolle, ob du den richtigen Termin anlegst.",
+        "Verhindert der Kalenderzugriff oder der Zielkalender das Speichern, kläre diese Berechtigung getrennt vom Wetterzugriff. Eine gefundene Vorhersage verleiht keine Bearbeitungsrechte für einen geteilten Kalender."
+      ]
+    },
+    {
+      "heading": "Öffne die vollständige Vorhersage, wenn die Übersicht nicht reicht",
+      "body": [
+        "Prüfe bei einer Aktivität im Freien die dafür wichtigen Wettergrößen und den tatsächlich ausgewählten Ort. Ein Widget für das aktuelle Wetter oder eine Demo auf der Startseite ersetzt nicht die Kontrolle der in der App verfügbaren Vorhersagestunden.",
+        "Bei einer Abweichung vergleiche zuerst Ort und Zeitstempel. Unterschiedliche Anbieter, ausgewählte Orte und Vorhersagezeiträume können unterschiedliche Anzeigen ergeben, ohne dass sich der Kalendereintrag geändert haben muss."
       ]
     }
   ],
   "claims": {},
   "practical": [
-    "Prüfen Sie den Termin, nicht den Tag, wenn der Plan vom Wetter abhängt.",
-    "Sehen Sie bei allem, was länger als zwei Stunden dauert, wie sich die Bedingungen über den Block bewegen.",
-    "Verschieben Sie, bevor Sie absagen — eine Stunde in eine Richtung ist oft der ganze Unterschied."
+    "Bestätige Ort und Ereignisdatum.",
+    "Prüfe die verfügbaren Stunden für die gesamte Aktivität.",
+    "Lies Wahrscheinlichkeit und Menge als unterschiedliche Werte.",
+    "Prüfe den Ereignisentwurf vor dem Speichern."
   ],
   "seeAlso": [
     "weather-inside-your-calendar",
     "planning-outdoors-without-being-rained-on"
   ],
-  "updated": "2026-10-21"
+  "updated": "2026-10-21",
+  "faq": [
+    {
+      "q": "Hat jedes Ereignis eine vollständige Vorhersage?",
+      "a": "Nein. Die Abdeckung hängt vom ausgewählten Ort und den verfügbaren Tagen und Stunden ab."
+    },
+    {
+      "q": "Gilt das Wettersymbol für die Ereignisadresse?",
+      "a": "Schließe das nicht allein aus seiner Nähe zum Ereignis. Bestätige den Wetterort separat."
+    },
+    {
+      "q": "Speichert das Antippen einer Stunde einen neuen Termin?",
+      "a": "Wo verfügbar, öffnet es einen Ereignisentwurf. Prüfe Datum, Uhrzeit und Kalender vor dem Speichern."
+    }
+  ],
+  "sourcesHeading": "Wetterquellen und Standorteinstellungen",
+  "sources": [
+    {
+      "label": "Apple: WeatherKit-Vorhersagen und regionale Verfügbarkeit",
+      "url": "https://developer.apple.com/weatherkit/"
+    },
+    {
+      "label": "Apple: Datenschutz und Ortungsdienste",
+      "url": "https://support.apple.com/en-us/102515"
+    }
+  ]
 },
 
   'planning-outdoors-without-being-rained-on': {
-  "title": "Draußen planen, ohne nass zu werden",
+  "title": "Aktivitäten im Freien planen, ohne im Regen zu stehen",
   "short": "Draußen planen",
-  "description": "Eine praktische Methode, alles zu terminieren, was im Freien stattfindet — mit dem Kalender, den Sie ohnehin führen, statt mit einer zweiten Wetterroutine.",
-  "lede": "Wenn Ihre Hobbys draußen stattfinden, haben Sie wahrscheinlich ein privates Ritual entwickelt: Wetter prüfen, auf die Woche schielen, raten. Das Raten kann weg.",
-  "commonBelief": "Dass man schlechtem Wetter entgeht, indem man öfter nachsieht.",
+  "description": "Eine praktische Methode für Aktivitäten im Freien: Nutze deinen bestehenden Kalender, statt eine separate Wetterroutine aufzubauen.",
+  "lede": "Wenn deine Hobbys draußen stattfinden, hast du vermutlich dein eigenes Ritual: Wetter prüfen, die Woche überblicken, raten. Das Raten lässt sich durch bewusstes Vergleichen ersetzen. Dieser Leitfaden stammt von Arte Soft, dem Entwickler von Cloud Calendars.",
+  "commonBelief": "Schlechtes Wetter lasse sich vermeiden, indem man die Vorhersage häufiger prüft.",
   "sections": [
     {
-      "heading": "Öfter nachsehen hilft nicht",
+      "heading": "Beginne mit Ort und Entscheidung",
       "body": [
-        "Die Wetter-App fünfmal zu öffnen verbessert nicht die Vorhersage, sondern die Nervosität. Was Ergebnisse ändert, ist ein Blick auf die Vorhersage in dem Moment, in dem Sie einen Zeitpunkt wählen — und das ist ein völlig anderer Moment.",
-        "Dieser Moment findet im Kalender statt. Ist das Wetter nicht dort, treffen Sie die Entscheidung ohne es und korrigieren später."
+        "Wähle den Wetterort passend zur Aktivität und prüfe, ob das betreffende Datum und die Stunden verfügbar sind. Entscheide, was du wissen musst: ob du eine andere Zeit wählen, eine Alternative bereithalten oder die Entscheidung verschieben solltest.",
+        "Erneutes Prüfen ändert das Wetter nicht, doch aktualisierte Informationen können wichtig sein. Es gibt keinen einzigen Prüfzeitplan, der für jedes Vorhaben im Freien passt."
       ]
     },
     {
-      "heading": "Den Termin gegen die Woche wählen",
+      "heading": "Vergleiche verfügbare Zeiten ohne Ergebnisgarantie",
       "body": [
-        "Sehen Sie die Woche mit den Bedingungen dahinter, entscheidet sich die Sache meist von selbst. Zwei mögliche Nachmittage, einer trocken — da gibt es nichts abzuwägen.",
-        "Die Gewohnheit, die sich lohnt, ist klein: bevor Sie etwas nach draußen legen, schauen Sie auf das Band, nicht in eine zweite App."
+        "Vergleiche die relevanten stündlichen Angaben für jeden möglichen Zeitraum. Ein Tagessymbol ist eine Zusammenfassung und keine Garantie für die Bedingungen während des ganzen Tages.",
+        "Eine Verschiebung um eine Stunde kann helfen, muss es aber nicht. Leite kein trockenes Zeitfenster ab, das die Vorhersage nicht zeigt, und wende keinen allgemeinen Prozentgrenzwert auf jede Aktivität an."
       ]
     },
     {
-      "heading": "Dann die Stunden prüfen, nicht den Tag",
+      "heading": "Plane eine Alternative, bevor du Einladungen änderst",
       "body": [
-        "Sobald der Termin existiert, zählt seine eigene Vorhersage. Ein Tag kann nass sein und Ihre zwei Stunden trocken — die Tagesübersicht wird Ihnen das nie sagen.",
-        "Verschieben statt absagen. Eine Stunde in beide Richtungen rettet mehr Pläne als jedes erneute Nachsehen."
+        "Hängt die Aktivität von geeigneten Bedingungen ab, halte eine realistische Alternative bereit und entscheide, wann du die neuesten Informationen prüfst. Beachte gegebenenfalls örtliche amtliche Hinweise.",
+        "Prüfe bei einem geteilten Termin den Organisator und die Bearbeitungsrechte, bevor du ihn verschiebst. Eine günstiger aussehende Vorhersage berechtigt allein nicht dazu, den Zeitplan aller Beteiligten zu ändern."
       ]
     }
   ],
   "claims": {},
   "practical": [
-    "Legen Sie Termine im Freien aus der Wochenansicht heraus, mit sichtbaren Bedingungen.",
-    "Prüfen Sie zwei Tage vorher die Stunden des Termins, nicht seinen Tag.",
-    "Verschieben Sie um eine Stunde, bevor Sie den Plan aufgeben.",
-    "Bei allem, was weiter als eine Woche entfernt ist: Tag wählen und akzeptieren, dass Sie später nachjustieren."
+    "Bestätige den Vorhersageort sowie die verfügbaren Tage und Stunden.",
+    "Vergleiche mögliche Zeiten anhand der für deine Aktivität wichtigen Wetterfaktoren.",
+    "Halte eine Alternative bereit und prüfe erneut, bevor die Entscheidung relevant wird.",
+    "Beachte örtliche amtliche Hinweise, wenn die Bedingungen die Aktivität gefährlich machen könnten."
   ],
   "seeAlso": [
     "forecast-beside-every-event",
     "a-fourteen-day-view-of-the-weather"
   ],
-  "updated": "2026-10-21"
+  "updated": "2026-10-21",
+  "faq": [
+    {
+      "q": "Garantiert das Verschieben eines Termins trockenes Wetter?",
+      "a": "Nein. Vergleiche die verfügbaren Vorhersagezeiträume und halte eine realistische Alternative bereit."
+    },
+    {
+      "q": "Reicht das Tagessymbol?",
+      "a": "Prüfe bei einer Aktivität zu einer bestimmten Uhrzeit die verfügbaren Stunden über ihre gesamte Dauer und bestätige den Ort."
+    },
+    {
+      "q": "Darf ich einen geteilten Termin verschieben, nur weil eine andere Zeit besser aussieht?",
+      "a": "Kläre die Zuständigkeit des Organisators, Bearbeitungsrechte und Teilnehmende, bevor du deren Zeitplan änderst."
+    }
+  ],
+  "sources": [
+    {
+      "label": "Apple: WeatherKit-Vorhersagedaten und regionale Verfügbarkeit",
+      "url": "https://developer.apple.com/weatherkit/"
+    }
+  ]
 },
 
   'a-fourteen-day-view-of-the-weather': {

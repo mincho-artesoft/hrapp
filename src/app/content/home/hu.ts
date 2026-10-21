@@ -107,16 +107,20 @@ export const HOME_HU: HomeCopy = {
     ],
   },
   weather: {
+demoLabel: "Webes bemutató · Open-Meteo. Az app az Apple WeatherKit szolgáltatást használja; az elérhető dátumok eltérhetnek.",
+loadingLabel: "A kiválasztott hely időjárásának betöltése…",
+tabs: {"hourly":"Óránként","daily":"Naponta","weekend":"Hétvége","range":"Előrejelzési időszak"},
+
     eyebrow: 'Időjárás-központ',
     title: ['Egy meteorológiai állomás,', 'leparkolva a naptárában.'],
-    lead: 'Hőmérséklet, hőérzet, csapadék, UV, szél, páratartalom, látótávolság és légnyomás — mindegyik órás grafikonként, amelyen végig lehet húzni. Érintsen meg bármely órát az előrejelzésben, és az alkalmazás új eseményt nyit, már arra az időpontra állítva.',
+    lead: "Nézd meg az időjárást a terveid mellett az appban. Ez a webes bemutató az Open-Meteo, az app pedig az Apple WeatherKit szolgáltatást használja, a kiválasztott hely elérhető órás és napi előrejelzéseivel.",
     searchLabel: 'Város keresése',
     searchPlaceholder: 'Próbáljon másik várost — bárhol',
     searching: 'Keresés…',
     alt: 'Időjárás-központ az aktuális hőmérséklettel, órás grafikonnal és tíznapos előrejelzéssel',
-    unavailable: 'Az élő előrejelzés éppen nem érhető el — mintaadatok láthatók.',
-    liveFrom: 'Élőben az Open-Meteótól, {t} állapot szerint.',
-    tapAnHour: 'Az alkalmazásban érintsen meg egy órát, hogy egyenesen rá helyezzen egy eseményt.',
+    unavailable: "Mintaadatok ehhez a bemutatóhoz, nem a kiválasztott hely aktuális előrejelzése.",
+    liveFrom: "Webes bemutató · Open-Meteo · frissítve: {t}.",
+    tapAnHour: "Az appban válassz egy elérhető előrejelzési órát egy eseményvázlat indításához, majd ellenőrizd az időpontját és a naptárát.",
     readings: {
       feelsLike: 'Két fokkal a mért érték alatt — ezt a szél teszi.',
       precipitation: 'Egy sáv vonul át 16 és 19 óra között.',
@@ -221,7 +225,7 @@ export const HOME_HU: HomeCopy = {
       },
       {
         q: 'Honnan származnak az időjárási adatok?',
-        a: 'Az előrejelzéseket a jelenlegi vagy választott helyére kérjük le, és órás és tíznapos kilátásokat, hőérzetet, csapadékot, UV-t, szelet és széllökéseket, páratartalmat és harmatpontot, látótávolságot, légnyomást, napkeltét és napnyugtát, valamint holdfázist tartalmaznak.',
+        a: "Az app az Apple WeatherKit szolgáltatást használja az aktuális vagy kiválasztott helyhez. Ellenőrizd az elérhető dátumokat és órákat; a napi lista legfeljebb tíz kapott napot mutat. A webes bemutató az Open-Meteo szolgáltatást használja, és más időszakot is mutathat.",
       },
       {
         q: 'Módosíthatok egy eseményt húzással?',

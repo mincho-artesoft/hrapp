@@ -107,16 +107,20 @@ export const HOME_TR: HomeCopy = {
     ],
   },
   weather: {
+demoLabel: "Web sitesi demosu · Open-Meteo. Uygulama Apple WeatherKit kullanır; kullanılabilir tarihler farklı olabilir.",
+loadingLabel: "Seçilen yerin hava durumu yükleniyor…",
+tabs: {"hourly":"Saatlik","daily":"Günlük","weekend":"Hafta sonu","range":"Tahmin aralığı"},
+
     eyebrow: 'Hava merkezi',
     title: ['Takviminize park etmiş', 'bir meteoroloji istasyonu.'],
-    lead: 'Sıcaklık, hissedilen, yağış, UV, rüzgâr, nem, görüş ve basınç — her biri üzerinde gezinebileceğiniz saatlik bir grafik. Tahminde herhangi bir saate dokunun, uygulama o saate ayarlanmış yeni bir etkinlik açsın.',
+    lead: "Uygulamada planlarınızın yanında hava durumunu görün. Bu web sitesi demosu Open-Meteo kullanır; uygulama, seçilen yer için mevcut saatlik ve günlük tahminleri Apple WeatherKit ile sunar.",
     searchLabel: 'Şehir ara',
     searchPlaceholder: 'Başka bir şehir deneyin — her yer olur',
     searching: 'Aranıyor…',
     alt: 'Güncel sıcaklık, saatlik grafik ve on günlük tahmini gösteren hava merkezi',
-    unavailable: 'Canlı tahmin şu an kullanılamıyor — örnek veriler gösteriliyor.',
-    liveFrom: 'Open-Meteo’dan canlı, {t} itibarıyla.',
-    tapAnHour: 'Uygulamada bir saate dokunup doğrudan üzerine etkinlik bırakın.',
+    unavailable: "Bu demo için örnek veriler; seçilen yerin güncel hava tahmini değildir.",
+    liveFrom: "Web sitesi demosu · Open-Meteo · {t} itibarıyla.",
+    tapAnHour: "Uygulamada mevcut bir tahmin saatini seçerek etkinlik taslağı başlatın, ardından saatini ve takvimini kontrol edin.",
     readings: {
       feelsLike: 'Ölçülenin iki derece altında — bunu rüzgâr yapıyor.',
       precipitation: '16 ile 19 arasında bir kuşak geçiyor.',
@@ -221,7 +225,7 @@ export const HOME_TR: HomeCopy = {
       },
       {
         q: 'Hava verileri nereden geliyor?',
-        a: 'Tahminler geçerli ya da seçtiğiniz konum için alınır; saatlik ve on günlük görünümü, hissedilen sıcaklığı, yağışı, UV’yi, rüzgâr ve hamleleri, nem ve çiy noktasını, görüşü, basıncı, gün doğumu ile batımını ve ay evresini kapsar.',
+        a: "Uygulama mevcut veya seçilen konum için Apple WeatherKit kullanır. Kullanılabilir tarih ve saatleri kontrol edin; günlük liste, alınan verilerden en fazla on günü gösterir. Web sitesi demosu Open-Meteo kullanır ve farklı bir aralık gösterebilir.",
       },
       {
         q: 'Bir etkinliği sürükleyerek değiştirebilir miyim?',

@@ -115,17 +115,21 @@ export const HOME_ES_ES: HomeCopy = {
     ],
   },
   weather: {
+demoLabel: "Demostración web · Open-Meteo. La app usa Apple WeatherKit; las fechas disponibles pueden variar.",
+loadingLabel: "Cargando el tiempo del lugar seleccionado…",
+tabs: {"hourly":"Por horas","daily":"Por días","weekend":"Fin de semana","range":"Periodo de previsión"},
+
     eyebrow: 'Centro meteorológico',
     title: ['Una estación meteorológica', 'aparcada en tu agenda.'],
-    lead: 'Temperatura, sensación térmica, precipitación, UV, viento, humedad, visibilidad y presión: cada uno como una gráfica horaria que puedes recorrer. Toca cualquier hora de la previsión y la aplicación abre un evento nuevo ya puesto a esa hora.',
+    lead: "Consulta el tiempo junto a tus planes en la app. Esta demostración web usa Open-Meteo; la app usa Apple WeatherKit, con las previsiones por horas y días disponibles para el lugar seleccionado.",
     searchLabel: 'Buscar una ciudad',
     searchPlaceholder: 'Prueba otra ciudad — donde sea',
     searching: 'Buscando…',
     alt: 'Centro meteorológico con la temperatura actual, la gráfica horaria y la previsión a diez días',
     unavailable:
-      'La previsión en vivo no está disponible ahora mismo — se muestran datos de ejemplo.',
-    liveFrom: 'En vivo desde Open-Meteo, a fecha de {t}.',
-    tapAnHour: 'En la aplicación, toca una hora para colocar un evento directamente ahí.',
+      "Datos de ejemplo para esta demostración, no una previsión actual del lugar seleccionado.",
+    liveFrom: "Demostración web · Open-Meteo · a las {t}.",
+    tapAnHour: "En la app, elige una hora disponible de la previsión para iniciar un borrador de evento; después revisa su hora y calendario.",
     readings: {
       feelsLike: 'Dos grados por debajo del valor real — cosa del viento.',
       precipitation: 'Una banda que pasa entre las 16 y las 19.',
@@ -230,7 +234,7 @@ export const HOME_ES_ES: HomeCopy = {
       },
       {
         q: '¿De dónde salen los datos del tiempo?',
-        a: 'Las previsiones se obtienen para tu ubicación actual o la que elijas y cubren perspectivas horarias y a diez días, sensación térmica, precipitación, UV, viento y rachas, humedad y punto de rocío, visibilidad, presión, salida y puesta del sol y fase lunar.',
+        a: "La app usa Apple WeatherKit para tu ubicación actual o el lugar seleccionado. Comprueba las fechas y horas disponibles; la lista diaria muestra hasta diez días recibidos. La demostración web usa Open-Meteo y puede mostrar otro periodo.",
       },
       {
         q: '¿Puedo cambiar un evento arrastrándolo?',

@@ -1,0 +1,145 @@
+{
+  "forecast-beside-every-event": {
+    "title": "Compara una cita con la previsión del tiempo por horas",
+    "short": "El tiempo a la hora de tu cita",
+    "description": "Comprueba el lugar, la fecha y las horas de previsión disponibles para tu cita. Revisa el borrador antes de guardar un plan basado en el tiempo.",
+    "lede": "Para comparar el tiempo con una cita, deben coincidir tres cosas: el lugar seleccionado, la fecha de la previsión y las horas que ocupa tu plan. Un icono del tiempo cercano no demuestra que coincidan. Esta guía la publica Arte Soft, desarrollador de Cloud Calendars.",
+    "commonBelief": "Un icono diario del tiempo en el calendario es lo mismo que una previsión asociada a un evento.",
+    "sections": [
+      {
+        "heading": "Empieza por el lugar y la fecha",
+        "body": [
+          "Abre la previsión del lugar previsto y compara su fecha con la entrada del calendario. El tiempo del calendario puede corresponder al lugar seleccionado para la previsión. Comprueba que sea adecuado para la cita en lugar de suponer que lo determina la dirección del evento.",
+          "Puede existir una cita para el mes próximo antes de que haya datos meteorológicos para esa fecha. Conserva la cita y vuelve a consultar la previsión cuando se acerque; que falte una entrada meteorológica no significa que se prevea buen tiempo."
+        ]
+      },
+      {
+        "heading": "Usa el detalle horario para una pregunta sobre horas",
+        "body": [
+          "El resumen diario y la previsión por horas responden a preguntas distintas. Si la cita dura de dos a cinco, revisa las horas disponibles de ese intervalo en lugar de tratar un icono diario como una imagen completa.",
+          "Si solo hay datos para parte del intervalo, deja el resto sin resolver. La app no promete una previsión horaria completa para cada evento que puedas crear, y esta guía tampoco promete que abrir cualquier evento muestre siempre todo su intervalo meteorológico."
+        ]
+      },
+      {
+        "heading": "Distingue probabilidad, cantidad y momento",
+        "body": [
+          "Lee la etiqueta del valor que estás consultando. La probabilidad de precipitación no es la cantidad ni la duración de la lluvia. Del mismo modo, un valor horario y un resumen diario abarcan periodos distintos; compara periodos equivalentes al valorar dos posibles horarios.",
+          "Elige una alternativa apropiada para tu plan en lugar de usar un porcentaje como regla universal para seguir adelante o cancelar. La información meteorológica puede cambiar; revísala cuando llegue el momento de decidir."
+        ]
+      },
+      {
+        "heading": "Revisa la cita basada en el tiempo antes de guardarla",
+        "body": [
+          "La app puede iniciar un borrador de evento desde una hora de la previsión. Revisa su fecha, inicio, final y calendario de destino antes de guardarlo. Elegir una hora de la previsión no sustituye a comprobar que estás creando el compromiso correcto.",
+          "Si el acceso al calendario o el calendario de destino impide guardar, resuelve ese permiso por separado del acceso al tiempo. Encontrar una previsión no otorga permisos de edición sobre un calendario compartido."
+        ]
+      },
+      {
+        "heading": "Consulta la previsión completa si el resumen no basta",
+        "body": [
+          "Para una actividad al aire libre, revisa las variables relevantes para esa actividad y el lugar que realmente has elegido. Un widget del tiempo actual o una demo de la página de inicio no sustituye a comprobar las horas de previsión disponibles en la app.",
+          "Si observas una discrepancia, compara primero el lugar y la marca de tiempo. Distintos proveedores, lugares seleccionados y periodos de previsión pueden producir pantallas distintas sin demostrar que haya cambiado el evento."
+        ]
+      }
+    ],
+    "claims": {},
+    "practical": [
+      "Confirma el lugar y la fecha del evento.",
+      "Comprueba las horas disponibles durante toda la actividad.",
+      "Interpreta probabilidad y cantidad como valores diferentes.",
+      "Revisa el borrador del evento antes de guardarlo."
+    ],
+    "seeAlso": [
+      "weather-inside-your-calendar",
+      "planning-outdoors-without-being-rained-on"
+    ],
+    "updated": "2026-10-21",
+    "faq": [
+      {
+        "q": "¿Todos los eventos tienen una previsión completa?",
+        "a": "No. La cobertura depende del lugar seleccionado y de las fechas y horas disponibles."
+      },
+      {
+        "q": "¿El icono del tiempo corresponde a la dirección del evento?",
+        "a": "No lo deduzcas por su cercanía al evento. Confirma por separado el lugar de la previsión."
+      },
+      {
+        "q": "¿Tocar una hora guarda una cita nueva?",
+        "a": "Cuando está disponible, inicia un borrador de evento. Revisa fecha, hora y calendario antes de guardarlo."
+      }
+    ],
+    "sourcesHeading": "Fuentes meteorológicas y ajustes de ubicación",
+    "sources": [
+      {
+        "label": "Apple: previsiones de WeatherKit y disponibilidad regional",
+        "url": "https://developer.apple.com/weatherkit/"
+      },
+      {
+        "label": "Apple: privacidad y servicios de localización",
+        "url": "https://support.apple.com/en-us/102515"
+      }
+    ]
+  },
+  "planning-outdoors-without-being-rained-on": {
+    "title": "Planificar actividades al aire libre sin acabar bajo la lluvia",
+    "short": "Planificar al aire libre",
+    "description": "Un método práctico para organizar actividades al aire libre con el calendario que ya utilizas, sin crear otra rutina para consultar el tiempo.",
+    "lede": "Si tus aficiones son al aire libre, seguramente tienes tu propio ritual: mirar el tiempo, repasar la semana e intentar adivinar. Esa última parte se puede sustituir por una comparación consciente. Esta guía la publica Arte Soft, desarrollador de Cloud Calendars.",
+    "commonBelief": "Evitar el mal tiempo consiste en consultar la previsión más a menudo.",
+    "sections": [
+      {
+        "heading": "Empieza por el lugar y la decisión",
+        "body": [
+          "Elige el lugar de la previsión que corresponda a la actividad y comprueba si están disponibles la fecha y las horas relevantes. Decide qué necesitas saber: si conviene cambiar de horario, conservar una alternativa o aplazar la decisión.",
+          "Volver a consultar no cambia el tiempo, pero la información actualizada puede importar. No existe una frecuencia de consulta adecuada para todos los planes al aire libre."
+        ]
+      },
+      {
+        "heading": "Compara horarios disponibles sin prometer el resultado",
+        "body": [
+          "Compara la información horaria relevante de cada periodo posible. Un icono diario es un resumen, no una garantía de las condiciones durante todo el día.",
+          "Mover una actividad una hora puede ayudar o no. No deduzcas un intervalo seco que la previsión no muestra ni apliques un umbral porcentual universal a cualquier actividad."
+        ]
+      },
+      {
+        "heading": "Prepara una alternativa antes de cambiar invitaciones",
+        "body": [
+          "Si la actividad depende de condiciones adecuadas, conserva una alternativa realista y decide cuándo revisarás la información más reciente. Consulta las indicaciones oficiales locales cuando corresponda.",
+          "Para una cita compartida, confirma quién la organiza y los permisos de edición antes de moverla. Una previsión aparentemente mejor no autoriza por sí sola a cambiar la agenda de todos."
+        ]
+      }
+    ],
+    "claims": {},
+    "practical": [
+      "Confirma el lugar de la previsión y las fechas y horas disponibles.",
+      "Compara horarios posibles con los factores meteorológicos relevantes para tu actividad.",
+      "Conserva un plan alternativo y vuelve a consultar antes de que la decisión importe.",
+      "Consulta indicaciones oficiales locales si las condiciones pueden hacer insegura la actividad."
+    ],
+    "seeAlso": [
+      "forecast-beside-every-event",
+      "a-fourteen-day-view-of-the-weather"
+    ],
+    "updated": "2026-10-21",
+    "faq": [
+      {
+        "q": "¿Mover el evento garantiza que no llueva?",
+        "a": "No. Compara los periodos de previsión disponibles y conserva una alternativa realista."
+      },
+      {
+        "q": "¿Basta con mirar el icono diario?",
+        "a": "Para una actividad a una hora concreta, revisa las horas disponibles durante toda su duración y confirma el lugar."
+      },
+      {
+        "q": "¿Puedo mover un evento compartido solo porque otro horario parece mejor?",
+        "a": "Confirma las responsabilidades de quien organiza, los permisos de edición y los participantes antes de cambiar su agenda."
+      }
+    ],
+    "sources": [
+      {
+        "label": "Apple: datos de previsión de WeatherKit y disponibilidad regional",
+        "url": "https://developer.apple.com/weatherkit/"
+      }
+    ]
+  }
+}

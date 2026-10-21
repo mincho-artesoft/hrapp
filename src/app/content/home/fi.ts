@@ -115,16 +115,20 @@ export const HOME_FI: HomeCopy = {
     ],
   },
   weather: {
+demoLabel: "Sivuston demo · Open-Meteo. Sovellus käyttää Apple WeatherKit -palvelua; saatavilla olevat päivät voivat erota.",
+loadingLabel: "Ladataan valitun paikan säätä…",
+tabs: {"hourly":"Tunneittain","daily":"Päivittäin","weekend":"Viikonloppu","range":"Ennustejakso"},
+
     eyebrow: 'Sääkeskus',
     title: ['Sääasema,', 'pysäköitynä kalenteriisi.'],
-    lead: 'Lämpötila, tuntuu kuin, sade, UV, tuuli, kosteus, näkyvyys ja paine — kukin tuntikaaviona, jota voi selata. Kosketa mitä tahansa tuntia ennusteessa, ja sovellus avaa uuden tapahtuman jo tuohon aikaan asetettuna.',
+    lead: "Katso säätä suunnitelmiesi rinnalla sovelluksessa. Tämä sivuston demo käyttää Open-Meteo-palvelua; sovellus käyttää Apple WeatherKit -palvelua ja valitun paikan saatavilla olevia tunti- ja päiväennusteita.",
     searchLabel: 'Etsi kaupunkia',
     searchPlaceholder: 'Kokeile toista kaupunkia — mistä tahansa',
     searching: 'Haetaan…',
     alt: 'Sääkeskus, jossa nykyinen lämpötila, tuntikaavio ja kymmenen vuorokauden ennuste',
-    unavailable: 'Reaaliaikainen ennuste ei ole juuri nyt saatavilla — näytetään esimerkkitietoja.',
-    liveFrom: 'Reaaliaikaisesti Open-Meteosta, tilanne {t}.',
-    tapAnHour: 'Kosketa sovelluksessa tuntia pudottaaksesi tapahtuman suoraan siihen.',
+    unavailable: "Demon esimerkkitietoja, ei valitun paikan ajantasaista ennustetta.",
+    liveFrom: "Sivuston demo · Open-Meteo · päivitetty {t}.",
+    tapAnHour: "Valitse sovelluksessa saatavilla oleva ennustetunti aloittaaksesi tapahtumaluonnoksen. Tarkista sitten sen aika ja kalenteri.",
     readings: {
       feelsLike: 'Kaksi astetta mitattua alempi — tuuli tekee sen.',
       precipitation: 'Vyöhyke kulkee ohi klo 16–19.',
@@ -229,7 +233,7 @@ export const HOME_FI: HomeCopy = {
       },
       {
         q: 'Mistä säätiedot tulevat?',
-        a: 'Ennusteet haetaan nykyiselle tai valitsemallesi sijainnille ja kattavat tunti- ja kymmenen vuorokauden näkymät, tuntuu kuin -lämpötilan, sateen, UV:n, tuulen ja puuskat, kosteuden ja kastepisteen, näkyvyyden, paineen, auringonnousun ja -laskun sekä kuun vaiheen.',
+        a: "Sovellus käyttää Apple WeatherKit -palvelua nykyiselle tai valitulle paikalle. Tarkista saatavilla olevat päivät ja tunnit; päivälista näyttää enintään kymmenen saatua ennustepäivää. Sivuston demo käyttää Open-Meteo-palvelua ja voi näyttää eri ajanjakson.",
       },
       {
         q: 'Voinko muuttaa tapahtumaa vetämällä sitä?',

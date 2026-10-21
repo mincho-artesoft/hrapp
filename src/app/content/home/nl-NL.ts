@@ -107,17 +107,21 @@ export const HOME_NL_NL: HomeCopy = {
     ],
   },
   weather: {
+demoLabel: "Websitedemo · Open-Meteo. De app gebruikt Apple WeatherKit; beschikbare datums kunnen verschillen.",
+loadingLabel: "Weer voor de gekozen plaats laden…",
+tabs: {"hourly":"Per uur","daily":"Per dag","weekend":"Weekend","range":"Voorspellingsperiode"},
+
     eyebrow: 'Weercentrum',
     title: ['Een weerstation,', 'geparkeerd in uw agenda.'],
-    lead: 'Temperatuur, gevoelstemperatuur, neerslag, UV, wind, luchtvochtigheid, zicht en luchtdruk — elk als een uurgrafiek die u kunt doorlopen. Tik op een uur in de verwachting en de app opent een nieuwe afspraak, al op dat tijdstip gezet.',
+    lead: "Bekijk het weer naast je plannen in de app. Deze websitedemo gebruikt Open-Meteo; de app gebruikt Apple WeatherKit, met beschikbare uur- en dagverwachtingen voor de gekozen plaats.",
     searchLabel: 'Zoek een stad',
     searchPlaceholder: 'Probeer een andere stad — waar ook ter wereld',
     searching: 'Bezig met zoeken…',
     alt: 'Weercentrum met de huidige temperatuur, de uurgrafiek en de tiendaagse verwachting',
     unavailable:
-      'Live verwachting op dit moment niet beschikbaar — er worden voorbeeldgegevens getoond.',
-    liveFrom: 'Live van Open-Meteo, stand {t}.',
-    tapAnHour: 'Tik in de app op een uur om er meteen een afspraak op te zetten.',
+      "Voorbeeldgegevens voor deze demo, geen actuele voorspelling voor de gekozen plaats.",
+    liveFrom: "Websitedemo · Open-Meteo · bijgewerkt om {t}.",
+    tapAnHour: "Kies in de app een beschikbaar uur uit de voorspelling om een conceptafspraak te maken. Controleer daarna de tijd en agenda.",
     readings: {
       feelsLike: 'Twee graden onder de gemeten waarde — dat doet de wind.',
       precipitation: 'Een band trekt tussen 16 en 19 uur over.',
@@ -222,7 +226,7 @@ export const HOME_NL_NL: HomeCopy = {
       },
       {
         q: 'Waar komen de weergegevens vandaan?',
-        a: 'Verwachtingen worden opgehaald voor uw huidige of gekozen locatie en omvatten vooruitzichten per uur en voor tien dagen, gevoelstemperatuur, neerslag, UV, wind en windstoten, luchtvochtigheid en dauwpunt, zicht, luchtdruk, zonsopkomst en -ondergang, en de maanstand.',
+        a: "De app gebruikt Apple WeatherKit voor je huidige of gekozen plaats. Controleer de beschikbare datums en uren; de daglijst toont maximaal tien ontvangen dagen. De websitedemo gebruikt Open-Meteo en kan een andere periode tonen.",
       },
       {
         q: 'Kan ik een afspraak veranderen door hem te slepen?',

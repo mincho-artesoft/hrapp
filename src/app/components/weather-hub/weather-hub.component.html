@@ -9,6 +9,8 @@
       <p class="section-lead" appReveal="up" [revealDelay]="130">{{ copy().lead }}</p>
     </header>
 
+    <p class="hourly__hint">{{ copy().demoLabel }}</p>
+
     <div class="weather__body">
       <!-- ------------------------------------------------------- device -->
       <div class="weather__device" appReveal="left">
@@ -77,7 +79,7 @@
             }
             </div>
 
-            <div class="views" role="tablist" aria-label="Forecast range">
+            <div class="views" role="tablist" [attr.aria-label]="copy().tabs.range">
               @for (v of views; track v.id) {
                 <button
                   type="button"
@@ -87,7 +89,7 @@
                   [attr.aria-selected]="view() === v.id"
                   (click)="view.set(v.id)"
                 >
-                  {{ v.label }}
+                  {{ copy().tabs[v.id] }}
                 </button>
               }
             </div>
@@ -150,13 +152,12 @@
 
           <p class="hourly__hint">
             <span aria-hidden="true">↳</span>
-            @if (offline()) {
+            @if (!snapshot()) {
               {{ copy().unavailable }}
-            } @else if (snapshot()) {
-              {{ liveFrom() }} {{ copy().tapAnHour }}
             } @else {
-              {{ copy().tapAnHour }}
+              {{ liveFrom() }} {{ copy().tapAnHour }}
             }
+            @if (loading()) { {{ copy().loadingLabel }} }
           </p>
         </div>
 

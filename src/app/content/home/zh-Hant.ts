@@ -107,16 +107,20 @@ export const HOME_ZH_HANT: HomeCopy = {
     ],
   },
   weather: {
+demoLabel: "網站示範 · Open-Meteo。App 使用 Apple WeatherKit，可查看的日期可能不同。",
+loadingLabel: "正在載入所選地點的天氣…",
+tabs: {"hourly":"逐小時","daily":"逐日","weekend":"週末","range":"預報範圍"},
+
     eyebrow: '天氣中心',
     title: ['一座停在你行事曆裡的', '氣象站。'],
-    lead: '氣溫、體感、降水、紫外線、風、濕度、能見度和氣壓——每一項都是可以拖著看的小時曲線。在預報裡點任何一個小時，App 就會打開一個已經設好那個時間的新行程。',
+    lead: "在 App 中搭配行程查看天氣。此網站示範使用 Open-Meteo；App 使用 Apple WeatherKit，顯示所選地點可取得的逐小時與逐日預報。",
     searchLabel: '搜尋城市',
     searchPlaceholder: '換個城市試試 — 哪裡都行',
     searching: '正在搜尋…',
     alt: '顯示目前氣溫、小時曲線和十天預報的天氣中心',
-    unavailable: '即時預報暫時取不到 — 正在顯示範例資料。',
-    liveFrom: '來自 Open-Meteo 的即時資料，截至 {t}。',
-    tapAnHour: '在 App 裡點一個小時，就能把行程直接放上去。',
+    unavailable: "此示範使用範例資料，並非所選地點的目前預報。",
+    liveFrom: "網站示範 · Open-Meteo · 截至 {t}。",
+    tapAnHour: "在 App 中選擇有預報資料的小時以開始建立事件草稿，然後檢查事件時間與所屬行事曆。",
     readings: {
       feelsLike: '比實測低兩度——是風造成的。',
       precipitation: '一條雨帶在 16 點到 19 點之間經過。',
@@ -221,7 +225,7 @@ export const HOME_ZH_HANT: HomeCopy = {
       },
       {
         q: '天氣資料來自哪裡？',
-        a: '預報按你目前或選定的位置取得，涵蓋逐小時和十天的展望、體感溫度、降水、紫外線、風與陣風、濕度與露點、能見度、氣壓、日出日落，以及月相。',
+        a: "App 使用 Apple WeatherKit 提供目前位置或所選地點的天氣。請查看可用日期與小時；每日清單最多顯示已取得的十天預報。網站示範使用 Open-Meteo，顯示的範圍可能不同。",
       },
       {
         q: '可以拖曳來修改行程嗎？',

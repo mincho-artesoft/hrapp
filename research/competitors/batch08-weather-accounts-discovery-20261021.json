@@ -1,0 +1,52 @@
+{
+  "date": "2026-10-21",
+  "queries": [
+    "iPhone calendar weather selected location forecast Fantastical Calendar 366 Timepage",
+    "shared calendar iPhone multiple Google Outlook accounts scheduling app"
+  ],
+  "method": "web search discovery; snippets only, not full product body review or Google rank/search-volume evidence",
+  "primaryCandidates": [
+    {
+      "url": "https://calendar366.com/help/index.html",
+      "intent": "Weather source and system/custom selected location; review existing corpus before duplicating",
+      "type": "official documentation"
+    },
+    {
+      "url": "https://flexibits.com/fantastical-ios/help/fantastical-ios/help/settings",
+      "intent": "Selected weather location, calendar sets and identical-event display; verify exact canonical/body before claims",
+      "type": "official documentation"
+    },
+    {
+      "url": "https://apps.apple.com/us/app/syncthemcalendars/id6792364535",
+      "intent": "Provider event-copy synchronization versus unified viewing",
+      "type": "developer public App Store copy"
+    },
+    {
+      "url": "https://apps.apple.com/gb/app/joinvia-reminders-to-calendar/id6805935839",
+      "intent": "Apple Reminders to calendar sync; not established Cloud capability",
+      "type": "developer public App Store copy"
+    }
+  ],
+  "excludedAsCapabilityEvidence": "Reddit, media articles and university how-to search snippets. No personal user content quoted or copied.",
+  "next": "Read primary bodies, inspect existing canonical content and product source before drafting. Do not create thin pages per wording variant.",
+  "bodyFollowup": [
+    {
+      "url": "https://apps.apple.com/us/app/syncthemcalendars/id6792364535",
+      "result": "success",
+      "coverage": "Developer description lines48:54 and visible information; no runtime verification",
+      "summary": "Developer positions source-to-target calendar event copying, one-way/two-way rules and privacy masking as distinct from viewing calendars together. Says synchronization runs in cloud after setup. These are developer claims, not verified latency or Cloud Calendars functions.",
+      "candidateIntents": [
+        "unified view versus calendar-to-calendar event copying",
+        "busy blocks that conceal event details",
+        "what continues while a calendar app is closed"
+      ],
+      "mapping": "Review existing what-calendar-sync-actually-does/work-personal/permissions guides before new pages. Do not describe Cloud as automatic event-copy service without product proof."
+    },
+    {
+      "url": "https://apps.apple.com/gb/app/joinvia-reminders-to-calendar/id6805935839",
+      "result": "failed HTTP429",
+      "coverage": "No body; discovery snippet only",
+      "next": "Do not retry failed URL or claim feature verification."
+    }
+  ]
+}

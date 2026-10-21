@@ -107,16 +107,20 @@ export const HOME_CS: HomeCopy = {
     ],
   },
   weather: {
+demoLabel: "Ukázka webu · Open-Meteo. Aplikace používá Apple WeatherKit; dostupné termíny se mohou lišit.",
+loadingLabel: "Načítání počasí pro vybrané místo…",
+tabs: {"hourly":"Po hodinách","daily":"Po dnech","weekend":"Víkend","range":"Období předpovědi"},
+
     eyebrow: 'Centrum počasí',
     title: ['Meteorologická stanice', 'zaparkovaná ve vašem kalendáři.'],
-    lead: 'Teplota, pocitová, srážky, UV, vítr, vlhkost, dohlednost a tlak — každé jako hodinový graf, kterým lze projet. Klepněte na kteroukoli hodinu v předpovědi a aplikace otevře novou událost už nastavenou na tento čas.',
+    lead: "Sledujte počasí vedle svých plánů v aplikaci. Tato webová ukázka používá Open-Meteo; aplikace používá Apple WeatherKit s dostupnými hodinovými a denními předpověďmi pro vybrané místo.",
     searchLabel: 'Hledat město',
     searchPlaceholder: 'Zkuste jiné město — kdekoli',
     searching: 'Hledá se…',
     alt: 'Centrum počasí s aktuální teplotou, hodinovým grafem a desetidenní předpovědí',
-    unavailable: 'Živá předpověď teď není dostupná — zobrazují se ukázková data.',
-    liveFrom: 'Živě z Open-Meteo, stav k {t}.',
-    tapAnHour: 'V aplikaci klepněte na hodinu a položte na ni událost.',
+    unavailable: "Ukázková data pro tuto demonstraci, nikoli aktuální předpověď pro vybrané místo.",
+    liveFrom: "Ukázka webu · Open-Meteo · stav v {t}.",
+    tapAnHour: "V aplikaci vyberte dostupnou hodinu předpovědi a začněte koncept události. Poté zkontrolujte její čas a kalendář.",
     readings: {
       feelsLike: 'O dva stupně méně, než ukazuje teploměr — to dělá vítr.',
       precipitation: 'Pás projde mezi 16. a 19. hodinou.',
@@ -221,7 +225,7 @@ export const HOME_CS: HomeCopy = {
       },
       {
         q: 'Odkud pocházejí data o počasí?',
-        a: 'Předpovědi se stahují pro vaši aktuální nebo zvolenou polohu a zahrnují hodinový a desetidenní výhled, pocitovou teplotu, srážky, UV, vítr a nárazy, vlhkost a rosný bod, dohlednost, tlak, východ a západ slunce a fázi měsíce.',
+        a: "Aplikace používá Apple WeatherKit pro aktuální nebo vybrané místo. Zkontrolujte dostupné dny a hodiny; denní seznam zobrazuje až deset obdržených dnů. Webová ukázka používá Open-Meteo a může zobrazovat jiné období.",
       },
       {
         q: 'Můžu změnit událost přetažením?',

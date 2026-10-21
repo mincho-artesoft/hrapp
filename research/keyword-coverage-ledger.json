@@ -382,5 +382,25 @@
     "chatgptScope": "3 uncontrolled consumer UI responses; 1 first recommendation citing App Store; no global or causal claim",
     "nextWeatherAudit": "batch06-weather/evidence.json",
     "goalStatus": "active"
+  },
+  "sixthPublication": {
+    "date": "2026-10-21",
+    "revisedArticles": 13,
+    "locales": [
+      "en-US",
+      "de-DE",
+      "es-ES",
+      "fr-FR",
+      "it"
+    ],
+    "homeLocales": 30,
+    "homeCopyPatches": 150,
+    "demoStateCorrection": "All absent-snapshot sample states labelled, daily tab localized without14daypromise",
+    "staticProof": "batch06-static-qa.json",
+    "metadataProof": "batch06-built-metadata-qa.json",
+    "publicProof": "batch06-public-qa.json",
+    "curatedExportGuides": 26,
+    "newPrimaryCandidates": "competitors/batch08-weather-accounts-discovery-20261021.json",
+    "status": "published; broadergoalactive"
   }
 }

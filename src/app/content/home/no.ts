@@ -111,16 +111,20 @@ export const HOME_NO: HomeCopy = {
     ],
   },
   weather: {
+demoLabel: "Nettsidedemo · Open-Meteo. Appen bruker Apple WeatherKit; tilgjengelige datoer kan variere.",
+loadingLabel: "Laster været for det valgte stedet…",
+tabs: {"hourly":"Timevis","daily":"Daglig","weekend":"Helg","range":"Varslingsperiode"},
+
     eyebrow: 'Værsenter',
     title: ['En værstasjon', 'parkert i kalenderen din.'],
-    lead: 'Temperatur, føles som, nedbør, UV, vind, luftfuktighet, sikt og lufttrykk — hver som en timegraf du kan dra gjennom. Trykk på en hvilken som helst time i meldingen, og appen åpner en ny hendelse allerede satt til det tidspunktet.',
+    lead: "Se været ved siden av planene dine i appen. Denne nettsidedemoen bruker Open-Meteo; appen bruker Apple WeatherKit med tilgjengelige time- og dagsvarsler for det valgte stedet.",
     searchLabel: 'Søk etter en by',
     searchPlaceholder: 'Prøv en annen by — hvor som helst',
     searching: 'Søker…',
     alt: 'Værsenter med gjeldende temperatur, timegraf og tidøgnsmelding',
-    unavailable: 'Sanntidsmelding er utilgjengelig akkurat nå — viser eksempeldata.',
-    liveFrom: 'Direkte fra Open-Meteo, per {t}.',
-    tapAnHour: 'Trykk på en time i appen for å legge en hendelse rett der.',
+    unavailable: "Eksempeldata for denne demoen, ikke et oppdatert værvarsel for det valgte stedet.",
+    liveFrom: "Nettsidedemo · Open-Meteo · oppdatert {t}.",
+    tapAnHour: "Velg en tilgjengelig time i værvarselet i appen for å starte et hendelsesutkast. Kontroller deretter tidspunkt og kalender.",
     readings: {
       feelsLike: 'To grader under det målte — det er vinden.',
       precipitation: 'Et belte drar forbi mellom 16 og 19.',
@@ -225,7 +229,7 @@ export const HOME_NO: HomeCopy = {
       },
       {
         q: 'Hvor kommer værdataene fra?',
-        a: 'Værmeldingene hentes for din nåværende eller valgte posisjon og dekker utsikter time for time og for ti døgn, føles-som-temperatur, nedbør, UV, vind og vindkast, luftfuktighet og duggpunkt, sikt, lufttrykk, soloppgang og solnedgang samt månefase.',
+        a: "Appen bruker Apple WeatherKit for din nåværende eller valgte plassering. Kontroller tilgjengelige datoer og timer; dagslisten viser opptil ti mottatte dager. Nettsidedemoen bruker Open-Meteo og kan vise en annen periode.",
       },
       {
         q: 'Kan jeg endre en hendelse ved å dra i den?',

@@ -107,16 +107,20 @@ export const HOME_RO: HomeCopy = {
     ],
   },
   weather: {
+demoLabel: "Demonstrație pe site · Open-Meteo. Aplicația folosește Apple WeatherKit; datele disponibile pot diferi.",
+loadingLabel: "Se încarcă vremea pentru locul selectat…",
+tabs: {"hourly":"Pe ore","daily":"Pe zile","weekend":"Weekend","range":"Intervalul prognozei"},
+
     eyebrow: 'Centrul meteo',
     title: ['O stație meteo', 'parcată în calendarul dumneavoastră.'],
-    lead: 'Temperatură, resimțită, precipitații, UV, vânt, umiditate, vizibilitate și presiune — fiecare ca un grafic orar prin care puteți trage. Atingeți orice oră din prognoză și aplicația deschide un eveniment nou, deja fixat la ora aceea.',
+    lead: "Vezi vremea alături de planurile tale în aplicație. Această demonstrație pe site folosește Open-Meteo; aplicația folosește Apple WeatherKit, cu prognozele orare și zilnice disponibile pentru locul selectat.",
     searchLabel: 'Căutați un oraș',
     searchPlaceholder: 'Încercați alt oraș — oriunde',
     searching: 'Se caută…',
     alt: 'Centru meteo cu temperatura curentă, graficul orar și prognoza pe zece zile',
-    unavailable: 'Prognoza live nu este disponibilă acum — se afișează date de exemplu.',
-    liveFrom: 'Live de la Open-Meteo, la {t}.',
-    tapAnHour: 'În aplicație, atingeți o oră ca să puneți un eveniment direct pe ea.',
+    unavailable: "Date exemplificative pentru această demonstrație, nu o prognoză actuală pentru locul selectat.",
+    liveFrom: "Demonstrație pe site · Open-Meteo · la {t}.",
+    tapAnHour: "În aplicație, alege o oră disponibilă din prognoză pentru a începe o ciornă de eveniment, apoi verifică ora și calendarul acestuia.",
     readings: {
       feelsLike: 'Cu două grade sub valoarea măsurată — vântul face asta.',
       precipitation: 'O bandă trece între orele 16 și 19.',
@@ -221,7 +225,7 @@ export const HOME_RO: HomeCopy = {
       },
       {
         q: 'De unde vin datele meteo?',
-        a: 'Prognozele sunt aduse pentru locația dumneavoastră curentă sau aleasă și acoperă perspective orare și pe zece zile, temperatura resimțită, precipitațiile, UV, vântul și rafalele, umiditatea și punctul de rouă, vizibilitatea, presiunea, răsăritul și apusul și faza lunii.',
+        a: "Aplicația folosește Apple WeatherKit pentru locul actual sau selectat. Verifică datele și orele disponibile; lista zilnică arată cel mult zece zile primite. Demonstrația pe site folosește Open-Meteo și poate afișa un alt interval.",
       },
       {
         q: 'Pot schimba un eveniment trăgându-l?',

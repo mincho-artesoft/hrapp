@@ -121,16 +121,20 @@ export const HOME_EN_US: HomeCopy = {
   },
 
   weather: {
+demoLabel: "Website demo · Open-Meteo. The app uses Apple WeatherKit; available dates may differ.",
+loadingLabel: "Loading weather for the selected place…",
+tabs: {"hourly":"Hourly","daily":"Daily","weekend":"Weekend","range":"Forecast range"},
+
     eyebrow: 'Weather hub',
     title: ['A weather station,', 'parked in your calendar.'],
-    lead: 'Temperature, feels-like, precipitation, UV, wind, humidity, visibility and pressure — each one a scrubable hourly chart. Tap any hour in the forecast and the app opens a new event already set to that time.',
+    lead: "Explore weather alongside your plans in the app. This website demo uses Open-Meteo; the app uses Apple WeatherKit, with available hourly and daily forecasts for your selected place.",
     searchLabel: 'Search for a city',
     searchPlaceholder: 'Try another city — anywhere',
     searching: 'Searching…',
     alt: 'Weather hub showing current temperature, hourly graph and ten-day forecast',
-    unavailable: 'Live forecast unavailable right now — showing sample data.',
-    liveFrom: 'Live from Open-Meteo, as of {t}.',
-    tapAnHour: 'In the app, tap an hour to drop an event straight onto it.',
+    unavailable: "Website demo: sample data, not a live forecast for the selected place.",
+    liveFrom: "Website demo · Open-Meteo · as of {t}.",
+    tapAnHour: "In the app, choose an available forecast hour to start an event draft, then review its time and calendar.",
     readings: {
       feelsLike: 'Two degrees below actual — the wind is doing it.',
       precipitation: 'A band moving through between 4 and 7pm.',
@@ -234,7 +238,7 @@ export const HOME_EN_US: HomeCopy = {
       },
       {
         q: 'Where does the weather data come from?',
-        a: 'Forecasts are fetched for your current or chosen location and cover hourly and ten-day outlooks, feels-like temperature, precipitation, UV, wind and gusts, humidity and dew point, visibility, pressure, sunrise and sunset, and moon phase.',
+        a: "The app uses Apple WeatherKit for your current or selected place. Check the available dates and hours; its daily list shows up to ten returned days. The website demo uses Open-Meteo and may show a different range.",
       },
       {
         q: 'Can I change an event by dragging it?',
