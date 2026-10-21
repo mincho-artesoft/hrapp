@@ -1,0 +1,93 @@
+{
+  "status": "proposal_only_not_applied",
+  "locale": "or-IN",
+  "appId": "6744690319",
+  "targetVersion": "1.7.4",
+  "targetState": "PREPARE_FOR_SUBMISSION",
+  "appInfoLocalizationId": "11409231-a717-41d3-99c2-36b0c9932427",
+  "versionLocalizationId": "49572c80-b4dd-4849-a234-7742c079656a",
+  "nameAction": "preserve_exact_current_draft_name",
+  "fields": {
+    "name": {
+      "value": "Cloud Calendars: କ୍ୟାଲେଣ୍ଡର",
+      "characters": 27,
+      "utf8Bytes": 47,
+      "characterLimit": 30,
+      "withinCharacterLimit": true
+    },
+    "subtitle": {
+      "value": "ପାଣିପାଗ ଓ ଯୋଜନା",
+      "characters": 15,
+      "utf8Bytes": 41,
+      "characterLimit": 30,
+      "withinCharacterLimit": true
+    },
+    "keywords": {
+      "value": "ସମୟସୂଚୀ,ବୈଠକ,ଇଭେଣ୍ଟ,ସ୍ମରଣ,ନିମନ୍ତ୍ରଣ,ସେୟାର,ସପ୍ତାହ,ମାସ,ପୂର୍ବାନୁମାନ,ୱିଜେଟ୍",
+      "characters": 71,
+      "utf8Bytes": 195,
+      "characterLimit": 100,
+      "withinCharacterLimit": true
+    },
+    "promotionalText": {
+      "value": "ଯୋଜନା ଓ ପାଣିପାଗ ଏକାଠି ଦେଖନ୍ତୁ। ବିଭିନ୍ନ ଦୃଶ୍ୟ ଓ ହୋମ୍ ସ୍କ୍ରିନ୍ ୱିଜେଟ୍ ବ୍ୟବହାର କରନ୍ତୁ, କିମ୍ବା ଆପ୍ ଆକାଉଣ୍ଟ ବିନା ସ୍ଥାନୀୟ କ୍ୟାଲେଣ୍ଡର ତିଆରି କରନ୍ତୁ।",
+      "characters": 140,
+      "utf8Bytes": 378,
+      "characterLimit": 170,
+      "withinCharacterLimit": true
+    },
+    "description": {
+      "value": "iPhone ଓ iPad ରେ Cloud Calendars ସହ କାମ ଓ ବ୍ୟକ୍ତିଗତ ଯୋଜନା ସହିତ ପାଣିପାଗ ଦେଖନ୍ତୁ।\n\niCloud କ୍ୟାଲେଣ୍ଡର ବ୍ୟବହାର କରନ୍ତୁ ଏବଂ Google Calendar ଯୋଡ଼ନ୍ତୁ। ଦିନ, ସପ୍ତାହ, ମାସ, ବର୍ଷ କିମ୍ବା ତାଲିକା ଦୃଶ୍ୟ ବାଛନ୍ତୁ। Cloud Calendars ଆକାଉଣ୍ଟ ବିନା ଡିଭାଇସରେ ସ୍ଥାନୀୟ କ୍ୟାଲେଣ୍ଡର ତିଆରି କରିପାରିବେ। ସେବା ଯୋଡ଼ିବା ଓ ସେୟାର କରିବା ପାଇଁ ସାଇନ୍ ଇନ୍ ଆବଶ୍ୟକ ହୋଇପାରେ। ପ୍ରବେଶ ଅନୁମତି କ୍ୟାଲେଣ୍ଡର ଓ ନିମନ୍ତ୍ରଣର ପ୍ରକାର ଉପରେ ନିର୍ଭର କରେ।\n\nଯୋଜନା ସମୟରେ ପାଣିପାଗ ପୂର୍ବାନୁମାନ ଦେଖନ୍ତୁ। ହୋମ୍ ସ୍କ୍ରିନ୍ ୱିଜେଟ୍ ଛୋଟ, ମଧ୍ୟମ ଓ ବଡ଼ ଆକାରରେ ଉପଲବ୍ଧ। ପୂର୍ବାନୁମାନର ଉପଲବ୍ଧତା ସ୍ଥାନ ଓ ପାଣିପାଗ ସେବା ଉପରେ ନିର୍ଭର କରେ।\n\nମାଗଣା Base ରେ Google Calendar ସିଙ୍କ୍, Google Meet, ବିଭିନ୍ନ କ୍ୟାଲେଣ୍ଡର ଦୃଶ୍ୟ, ପାଣିପାଗ ଓ ୱିଜେଟ୍ ଅଛି। Advanced ରେ Base ସୁବିଧା ଅଛି ଏବଂ ବିଜ୍ଞାପନ ହଟାଯାଏ। Premium ରେ Advanced ସହ Microsoft କ୍ୟାଲେଣ୍ଡର ଓ Microsoft Teams ସମର୍ଥନ ଅଛି।\n\nଡାଉନଲୋଡ୍ ମାଗଣା; ଇଚ୍ଛାଧୀନ ସବ୍‌ସ୍କ୍ରିପ୍‌ସନ୍ ସ୍ୱୟଂଚାଳିତ ଭାବେ ନବୀକରଣ ହୁଏ। ନେବା ପୂର୍ବରୁ ଆପ୍ କିମ୍ବା App Store ରେ ବର୍ତ୍ତମାନର ସ୍ଥାନୀୟ ମୂଲ୍ୟ ଓ ବିଲିଂ ଅବଧି ଯାଞ୍ଚ କରନ୍ତୁ। ଚାଲୁ ଅବଧି ଶେଷର ଅତି କମରେ 24 ଘଣ୍ଟା ପୂର୍ବରୁ ବାତିଲ ନକଲେ ନବୀକରଣ ହୁଏ। App Store ଆକାଉଣ୍ଟ ସେଟିଂରେ ପରିଚାଳନା କିମ୍ବା ବାତିଲ କରନ୍ତୁ।\n\nଗୋପନୀୟତା: https://www.cloud-calendars.com/privacy-policy\nବ୍ୟବହାର ସର୍ତ୍ତ: https://www.apple.com/legal/internet-services/itunes/dev/stdeula/",
+      "characters": 1187,
+      "utf8Bytes": 2677,
+      "characterLimit": 4000,
+      "withinCharacterLimit": true
+    }
+  },
+  "current": {
+    "appInfo": {
+      "locale": "or-IN",
+      "name": "Cloud Calendars: କ୍ୟାଲେଣ୍ଡର",
+      "subtitle": "ସବୁ କ୍ୟାଲେଣ୍ଡର ଏକାଠି",
+      "privacyPolicyUrl": "https://www.cloud-calendars.com/privacy-policy",
+      "privacyChoicesUrl": null,
+      "privacyPolicyText": null
+    },
+    "version": {
+      "description": "କ୍ୟାଲେଣ୍ଡର ଓ ପାଗ ଏକାଠି ନେଇ ଦିନର ଯୋଜନା କରନ୍ତୁ\n\nCloud Calendars ଆପଣଙ୍କ କ୍ୟାଲେଣ୍ଡରଗୁଡ଼ିକ ଓ ପାଗକୁ ଗୋଟିଏ ପରିଷ୍କାର ଜାଗାକୁ ଆଣେ।\n\niCloud, Google Calendar ଓ Microsoft କ୍ୟାଲେଣ୍ଡର ଗୋଟିଏ ଆପ୍‌ରେ ସମ୍ଭାଳନ୍ତୁ, ଆଉ ପୂର୍ବାନୁମାନ ଦେଖନ୍ତୁ ସିଧା ଆପଣଙ୍କ ସମୟସୂଚୀ, ୱିଜେଟ୍ ଓ ଯୋଜନା ଦୃଶ୍ୟରେ।\n\nବୈଠକ, ଯାତ୍ରା, ସ୍କୁଲରୁ ଆଣିବା, ବାହାର କାମ ଓ ବ୍ୟସ୍ତ ଦିନ — ଶୀଘ୍ର ଯୋଜନା ପାଇଁ ତିଆରି କ୍ୟାଲେଣ୍ଡର ଦୃଶ୍ୟ ସହିତ ଆଗରେ ରୁହନ୍ତୁ।\n\nହୋମ୍ ସ୍କ୍ରିନ୍ ୱିଜେଟ୍\n\nଏଗୁଡ଼ିକ ଏକାଠି ଦେଖାଉଥିବା ୱିଜେଟ୍ ଯୋଡ଼ନ୍ତୁ:\n• କ୍ୟାଲେଣ୍ଡର ଇଭେଣ୍ଟ\n• ପାଗ ପୂର୍ବାନୁମାନ\n• ଆସନ୍ତା ସମୟସୂଚୀ\n• ଚନ୍ଦ୍ରକଳା ଓ ଅବସ୍ଥା\n• ପବନ ଓ ତାପମାତ୍ରା\n• ଦିନର ସାରାଂଶ\n\nଅନେକ ୱିଜେଟ୍ ଶୈଳୀରୁ ବାଛନ୍ତୁ ଓ ହୋମ୍ ସ୍କ୍ରିନ୍‌ରୁ ହିଁ ନିଜ ଦିନ ଦେଖନ୍ତୁ।\n\nCLOUD CALENDARS କାହିଁକି\n\n• iCloud, Google Calendar ଓ Microsoft କ୍ୟାଲେଣ୍ଡର ଏକାଠି ଦେଖନ୍ତୁ\n• ଭିତରେ ଥିବା ପାଗ ପୂର୍ବାନୁମାନ ସହିତ ଯୋଜନା କରନ୍ତୁ\n• ହୋମ୍ ସ୍କ୍ରିନ୍‌ରେ ସୁନ୍ଦର ୱିଜେଟ୍ ବ୍ୟବହାର କରନ୍ତୁ\n• ଇଭେଣ୍ଟ ସହଜରେ ଟାଣନ୍ତୁ, ଘୁଞ୍ଚାନ୍ତୁ ଓ ଆକାର ବଦଳାନ୍ତୁ\n• Google Meet ଓ Microsoft Teams ଲିଙ୍କ ତିଆରି କରନ୍ତୁ\n• ଦିନ, ସପ୍ତାହ, ମାସ, ବର୍ଷ ଓ ତାଲିକା ଦୃଶ୍ୟ ମଧ୍ୟରେ ବଦଳନ୍ତୁ\n• କାମ ଓ ବ୍ୟକ୍ତିଗତ କ୍ୟାଲେଣ୍ଡର ଏକାଠି ସମ୍ଭାଳନ୍ତୁ\n\nବିଶେଷତା\n\nସବୁ କ୍ୟାଲେଣ୍ଡର ଏକାଠି\niCloud, Google Calendar ଓ Microsoft ର କ୍ୟାଲେଣ୍ଡର ଯୋଡ଼ି ରଙ୍ଗରେ ଅଲଗା ଦେଖାଯାଉଥିବା ପରିଷ୍କାର ଦୃଶ୍ୟରେ ସମ୍ଭାଳନ୍ତୁ।\n\nକ୍ୟାଲେଣ୍ଡର ଭିତରେ ହିଁ ପାଗ\nଯୋଜନା କରୁଥିବା ସମୟରେ ହିଁ ଘଣ୍ଟା ଓ ଦିନ ଅନୁସାରେ ପୂର୍ବାନୁମାନ ଦେଖନ୍ତୁ — ତାପମାତ୍ରା, ଅବସ୍ଥା, ଚନ୍ଦ୍ରକଳା, ପବନ ଓ ପାଗ ଚିହ୍ନ।\n\nକ୍ୟାଲେଣ୍ଡର ଓ ପାଗ ୱିଜେଟ୍\nନିଜ ପସନ୍ଦରେ ସଜା ୱିଜେଟ୍‌ରୁ ସମୟସୂଚୀ ଓ ପାଗ ସଙ୍ଗେ ସଙ୍ଗେ ଦେଖନ୍ତୁ।\n\nଅନେକ କ୍ୟାଲେଣ୍ଡର ଦୃଶ୍ୟ\nଆପଣ ସମୟ କିପରି ସଜାନ୍ତି ସେ ଅନୁସାରେ ଦିନ, ସପ୍ତାହ, ମାସ, ବର୍ଷ ବା ତାଲିକା ବାଛନ୍ତୁ।\n\nସହଜ ଇଭେଣ୍ଟ ସମ୍ପାଦନା\nକ୍ୟାଲେଣ୍ଡରରେ ହିଁ ଟ୍ୟାପ୍ କରି, ଟାଣି ଓ ଆକାର ବଦଳାଇ ଇଭେଣ୍ଟ ସଜାନ୍ତୁ।\n\nଅଲଗା ପାଗ ଦୃଶ୍ୟ\nଘଣ୍ଟା ଅନୁସାରେ ଅବସ୍ଥା ଓ ଯୋଜନାରେ କାମରେ ଆସୁଥିବା ତଥ୍ୟ ସହିତ ବିସ୍ତୃତ ପୂର୍ବାନୁମାନ ଦେଖନ୍ତୁ।\n\nପୂର୍ବାନୁମାନରୁ ଇଭେଣ୍ଟ\nପୂର୍ବାନୁମାନର କୌଣସି ଘଣ୍ଟାରେ ଟ୍ୟାପ୍ କରନ୍ତୁ — ସେହି ସମୟର ନୂଆ ଇଭେଣ୍ଟ ସଙ୍ଗେ ସଙ୍ଗେ ତିଆରି ହେବ।\n\nଭିତରେ ଥିବା ବୈଠକ ଲିଙ୍କ\nଇଭେଣ୍ଟରେ Google Meet ଓ Microsoft Teams ଲିଙ୍କ ଶୀଘ୍ର ଯୋଡ଼ନ୍ତୁ।\n\nକାହା ପାଇଁ ଉପଯୁକ୍ତ\n\n• କାମ ଓ ବ୍ୟକ୍ତିଗତ କ୍ୟାଲେଣ୍ଡର ସମ୍ଭାଳିବା ପାଇଁ\n• ପାଗ ଧ୍ୟାନରେ ରଖି ଯୋଜନା ପାଇଁ\n• ବାହାର କାମ ଓ ଯାତ୍ରା ପାଇଁ\n• ବ୍ୟସ୍ତ ସମୟସୂଚୀ ଓ ପାରିବାରିକ ଯୋଜନା ପାଇଁ\n• Google Calendar ଓ iCloud ବ୍ୟବହାରକାରୀଙ୍କ ପାଇଁ\n• Microsoft କ୍ୟାଲେଣ୍ଡର ବ୍ୟବହାରକାରୀଙ୍କ ପାଇଁ\n\nCloud Calendars ବ୍ୟବହାର କରି ଦେଖନ୍ତୁ — ପ୍ରତି ଦିନର ଯୋଜନା ସହଜ ହେବ।\n\nସବସ୍କ୍ରିପସନ ସୂଚନା\n\nCloud Calendars ସ୍ୱୟଂ ନବୀକରଣ ହେଉଥିବା ସବସ୍କ୍ରିପସନ ଦିଏ।\n\nମାଗଣା ଯୋଜନା\n• Google Calendar ସିଙ୍କ\n• ଅନେକ କ୍ୟାଲେଣ୍ଡର ଦୃଶ୍ୟ\n• ପାଗ ସୁବିଧା\n• ୱିଜେଟ୍\n• Google Meet ସହାୟତା\nକିଣା ନିଶ୍ଚିତ କରିବା ସମୟରେ ଆପଣଙ୍କ Apple ID ଖାତାରୁ ଟଙ୍କା କଟିବ। ଚଳିତ ଅବଧି ଶେଷ ହେବାର ଅନ୍ତତଃ ୨୪ ଘଣ୍ଟା ପୂର୍ବରୁ ବାତିଲ ନକଲେ ସବସ୍କ୍ରିପସନ ନିଜେ ନବୀକରଣ ହୁଏ। ଚଳିତ ଅବଧି ଶେଷ ହେବାର ପୂର୍ବ ୨୪ ଘଣ୍ଟା ମଧ୍ୟରେ ନବୀକରଣର ଟଙ୍କା ଆପଣଙ୍କ ଖାତାରୁ କଟିବ। App Store ଖାତା ସେଟିଂସରେ ସବସ୍କ୍ରିପସନ ସମ୍ଭାଳି ଓ ବାତିଲ କରିପାରିବେ।\n\nଗୋପନୀୟତା ନୀତି: https://www.cloud-calendars.com/privacy-policy\nବ୍ୟବହାର ସର୍ତ୍ତାବଳୀ: https://www.apple.com/legal/internet-services/itunes/dev/stdeula/",
+      "locale": "or-IN",
+      "keywords": "ପାଗ,ୱିଜେଟ୍,ସମୟସୂଚୀ,ଯୋଜନା,ପୂର୍ବାନୁମାନ,iCloud,ବୈଠକ,ଇଭେଣ୍ଟ,କାମ,ଲକ୍ ସ୍କ୍ରିନ୍,ବର୍ଷା,ଆଜି,ସପ୍ତାହ,କ୍ୟାଲେଣ୍ଡର",
+      "marketingUrl": "https://www.cloud-calendars.com/",
+      "promotionalText": null,
+      "supportUrl": "https://www.cloud-calendars.com/",
+      "whatsNew": null
+    }
+  },
+  "keywordChecks": {
+    "exactDuplicateKeywords": false,
+    "exactTitleSubtitleTokenDuplicates": [],
+    "note": "Unicode code-point counts include combining marks. UTF-8 bytes separate. Token checks are not a full linguistic or rendered-text review."
+  },
+  "readiness": "ready_for_editorial_review_not_applied",
+  "translationConfidence": "low-medium",
+  "caveat": "Model-authored; native-language editorial review recommended, particularly Indic morphology and terminology. No external translator or ASC write validation. Urdu mixed RTL/LTR rendering not visually verified.",
+  "evidence": [
+    "../../product-facts.json",
+    "../localized-batch05/audit.json",
+    "asc-current.json"
+  ],
+  "applyOnly": [
+    "subtitle",
+    "keywords",
+    "promotionalText",
+    "description"
+  ],
+  "preserve": [
+    "name",
+    "release notes",
+    "URLs",
+    "privacy declarations",
+    "screenshots",
+    "other locales"
+  ]
+}

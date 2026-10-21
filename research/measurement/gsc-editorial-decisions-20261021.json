@@ -1,0 +1,176 @@
+{
+  "period": {
+    "start": "2026-09-21",
+    "end": "2026-10-18"
+  },
+  "source": "gsc-baseline-20261021.json",
+  "query": {
+    "keys": [
+      "cloud calendar"
+    ],
+    "clicks": 4,
+    "impressions": 27767,
+    "ctr": 0.00014405589368675045,
+    "position": 9.783483991788813
+  },
+  "countrySegments": [
+    {
+      "keys": [
+        "usa"
+      ],
+      "clicks": 0,
+      "impressions": 27433,
+      "ctr": 0,
+      "position": 9.821127838734371
+    },
+    {
+      "keys": [
+        "mex"
+      ],
+      "clicks": 0,
+      "impressions": 77,
+      "ctr": 0,
+      "position": 9.636363636363637
+    },
+    {
+      "keys": [
+        "can"
+      ],
+      "clicks": 0,
+      "impressions": 35,
+      "ctr": 0,
+      "position": 9.571428571428571
+    },
+    {
+      "keys": [
+        "gbr"
+      ],
+      "clicks": 0,
+      "impressions": 28,
+      "ctr": 0,
+      "position": 6.678571428571429
+    },
+    {
+      "keys": [
+        "fra"
+      ],
+      "clicks": 0,
+      "impressions": 27,
+      "ctr": 0,
+      "position": 3.740740740740741
+    },
+    {
+      "keys": [
+        "ita"
+      ],
+      "clicks": 0,
+      "impressions": 14,
+      "ctr": 0,
+      "position": 3.857142857142857
+    },
+    {
+      "keys": [
+        "esp"
+      ],
+      "clicks": 0,
+      "impressions": 13,
+      "ctr": 0,
+      "position": 4.230769230769231
+    },
+    {
+      "keys": [
+        "aus"
+      ],
+      "clicks": 0,
+      "impressions": 10,
+      "ctr": 0,
+      "position": 7.1
+    },
+    {
+      "keys": [
+        "bra"
+      ],
+      "clicks": 0,
+      "impressions": 8,
+      "ctr": 0,
+      "position": 3.625
+    },
+    {
+      "keys": [
+        "che"
+      ],
+      "clicks": 0,
+      "impressions": 8,
+      "ctr": 0,
+      "position": 3.125
+    },
+    {
+      "keys": [
+        "egy"
+      ],
+      "clicks": 0,
+      "impressions": 7,
+      "ctr": 0,
+      "position": 3.142857142857143
+    },
+    {
+      "keys": [
+        "ind"
+      ],
+      "clicks": 0,
+      "impressions": 7,
+      "ctr": 0,
+      "position": 3.857142857142857
+    }
+  ],
+  "deviceSegments": [
+    {
+      "keys": [
+        "DESKTOP"
+      ],
+      "clicks": 3,
+      "impressions": 27648,
+      "ctr": 0.00010850694444444444,
+      "position": 9.790111400462964
+    },
+    {
+      "keys": [
+        "MOBILE"
+      ],
+      "clicks": 1,
+      "impressions": 112,
+      "ctr": 0.008928571428571428,
+      "position": 7.339285714285714
+    },
+    {
+      "keys": [
+        "TABLET"
+      ],
+      "clicks": 0,
+      "impressions": 3,
+      "ctr": 0,
+      "position": 10.333333333333334
+    }
+  ],
+  "decisions": [
+    {
+      "change": "English homepage title explicitly names Calendar App for iPhone & iPad; snippet and lead qualify Premium Microsoft support.",
+      "why": "The generic query is highly concentrated in USA impressions and desktop. Platform clarity may improve relevance; CTR lift is unproven.",
+      "notConcluded": "We cannot identify user intent, bots, attribution, commercial demand or a reason for low CTR from these aggregates."
+    },
+    {
+      "change": "Prioritize substantial existing canonical help guides over making a page for every surface keyword variant.",
+      "why": "Task-specific guides provide distinct useful workflows; query data are own-site observations, not exhaustive competitor keywords."
+    }
+  ],
+  "limits": [
+    "Own-siteobservations,notcompetitorqueryvolume.",
+    "Queryrowsmayexcludeanonymized/lowvolumequeries.",
+    "Averagepositionisnotfixedrank.",
+    "PeriodprecedesOct21changes;nocausalinference.",
+    "Rowlimit25000;responsesbelowlimit,notproofeveryqueryavailable."
+  ],
+  "measurementNext": "Compare equal complete 28-day windows after re-indexing; segment device/country and preserve positions. Do not attribute a change to metadata alone.",
+  "dailyBreakdown": "gsc-cloud-calendar-daily-20261021.json",
+  "dailyObservation": "28 days returned; largest day2026-09-24 with3040impressions. Concentration is not a single-day spike, and does not identify users or causes."
+}

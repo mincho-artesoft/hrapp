@@ -1,0 +1,12 @@
+Lihat jadwal kerja, rencana pribadi, dan cuaca di iPhone serta iPad dengan Cloud Calendars.
+
+Gunakan kalender iCloud dan hubungkan Google Kalender. Pilih tampilan hari, minggu, bulan, tahun, atau daftar. Anda juga dapat membuat kalender lokal di perangkat tanpa akun Cloud Calendars. Menghubungkan layanan dan berbagi mungkin memerlukan login. Izin akses bergantung pada kalender dan jenis undangan.
+
+Periksa prakiraan saat membuat rencana. Widget Layar Utama tersedia dalam ukuran kecil, sedang, dan besar. Ketersediaan prakiraan bergantung pada lokasi dan penyedia cuaca.
+
+Base gratis mencakup sinkronisasi Google Kalender, Google Meet, berbagai tampilan kalender, cuaca, dan widget. Advanced mencakup fitur Base dan menghapus iklan. Premium mencakup Advanced serta menambahkan kalender Microsoft dan Microsoft Teams.
+
+Aplikasi dapat diunduh gratis, dengan langganan opsional yang diperpanjang otomatis. Periksa harga lokal saat ini dan periode penagihan di aplikasi atau App Store sebelum berlangganan. Langganan diperpanjang kecuali dibatalkan setidaknya 24 jam sebelum periode berjalan berakhir. Kelola atau batalkan melalui pengaturan akun App Store Anda.
+
+Privasi: https://www.cloud-calendars.com/privacy-policy
+Ketentuan Penggunaan: https://www.apple.com/legal/internet-services/itunes/dev/stdeula/

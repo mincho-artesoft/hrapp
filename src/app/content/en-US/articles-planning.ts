@@ -147,76 +147,188 @@ export const PLANNING_EN_US: Readonly<Record<string, LocalisedArticle>> = {
   },
 
   'recurring-events-without-the-mess': {
-    title: 'Recurring events without the mess',
-    short: 'Recurring events',
-    description:
-      'Repeats are the feature most likely to go quietly wrong. The three decisions that cause nearly all of it.',
-    lede: 'A recurring event is not one event. It is a rule, plus a growing pile of exceptions, and the pile is where the trouble lives.',
-    commonBelief: 'That editing a repeating event edits the repeating event.',
-    sections: [
-      {
-        heading: 'This one, or all of them',
-        body: [
-          'Every edit to a repeat asks a question people answer without reading: this occurrence, or the series. Choose wrong and you either move one week or rewrite a year.',
-          "The damaging direction is choosing 'all' when you meant 'this'. It is also the default in more apps than it should be.",
-        ],
-      },
-      {
-        heading: 'Endless repeats accumulate',
-        body: [
-          'A weekly event with no end date is still generating occurrences long after the thing stopped happening. It clutters every future week and quietly makes the calendar less trustworthy.',
-          'Give repeats an end date, even a generous one. A rule that expires is easier to renew than one that never stops.',
-        ],
-      },
-      {
-        heading: 'Exceptions do not survive rewrites',
-        body: [
-          'Move six occurrences individually, then edit the series, and the six exceptions can be flattened back to the rule. The edits vanish and nothing warns you.',
-          'If a series needs many exceptions, it has stopped being a series.',
-        ],
-      },
-    ],
-    claims: {},
-    practical: [
-      'Read the this-or-all prompt every time, even when you are sure.',
-      'Put an end date on every repeat.',
-      'When a series needs more than a few exceptions, end it and start a new one.',
-    ],
-    seeAlso: ['when-two-calendars-disagree'],
-  },
+  "updated": "2026-10-21",
+  "title": "Recurring calendar events: change one date or the series safely",
+  "short": "Recurring events",
+  "description": "Check ownership and edit scope before changing a recurring calendar event. Handle one-off changes, future schedules and exceptions without deleting the series.",
+  "lede": "Before changing a repeating appointment, decide exactly which dates should change. Then verify that the editor offers that scope. This guide is published by Arte Soft, the developer of Cloud Calendars.",
+  "commonBelief": "Every calendar editor asks whether a change applies to one occurrence or the whole series.",
+  "sections": [
+    {
+      "heading": "Describe the change before opening the editor",
+      "body": [
+        "“Move next Tuesday’s lesson by one hour” is a one-occurrence change. “Starting next month, lessons are on Thursdays” changes a future schedule. “Correct the room for every meeting” may have a broader scope. These are different requests even when they start from the same event details screen.",
+        "Note the selected occurrence’s date and the surrounding dates that should remain unchanged. A short before-and-after list makes it easier to check the saved result. Do not use a real series to discover what an unfamiliar Save button does."
+      ]
+    },
+    {
+      "heading": "Check the calendar and your authority to edit",
+      "body": [
+        "Find the calendar that owns the event and whether you are the organizer, an editor or a guest. Seeing a shared series does not by itself grant permission to change its schedule. Google documents guest modification as a permission the organizer can grant; viewing an invitation and managing it are different capabilities.",
+        "In Cloud Calendars, check that the destination calendar permits editing. An attendee’s ability to see a meeting does not mean they can change the organizer’s invitation. If you cannot make the intended change, ask the organizer rather than creating a competing invitation."
+      ]
+    },
+    {
+      "heading": "Check the scope before saving in Cloud Calendars",
+      "body": [
+        "The Cloud Calendars editor includes repeat patterns and an End Repeat setting. Those controls define a schedule; they are not the same as choosing which occurrences an edit affects. Changing an existing repeating event can affect future occurrences. Do not use a change to the repeat rule as a substitute for a one-date exception.",
+        "Before saving a one-date exception, look for an explicit choice that limits the change to that occurrence. If your editor does not offer that scope, use the original event in its owning provider’s supported editor. Then check the affected date and surrounding dates in both places. Local calendars and connected providers need not handle series edits identically."
+      ]
+    },
+    {
+      "heading": "Use a supported scope, then check representative dates",
+      "body": [
+        "Google Calendar’s computer instructions say to edit the recurring event, save and choose which events in the series receive the update. Read the actual choices shown for that event rather than assuming every provider uses identical labels or supports identical changes.",
+        "Apple’s Mac Calendar guide separately documents repeat frequency, custom patterns and when repetition stops. Those are Apple Calendar controls. Whichever supported editor you use, inspect the changed date, an earlier date that should remain unchanged and the next ordinary occurrence. For an invitation, also check the organizer’s saved event rather than treating a personal display change as confirmation that everyone’s meeting moved."
+      ]
+    },
+    {
+      "heading": "Preserve exceptions and choose end dates deliberately",
+      "body": [
+        "A moved appointment or a skipped week is a reason to inspect an existing series before changing its rule. Record important exceptions first and check them afterward. It is not accurate to promise that every series edit preserves exceptions, or to claim that every edit automatically erases them: the result depends on the operation and provider.",
+        "Use a known final date for a course or temporary rota when that matches the real schedule. An ongoing birthday or continuing meeting may reasonably have no planned end. Do not force an arbitrary cutoff onto every repeat, and do not delete and recreate a series merely because it contains several exceptions."
+      ]
+    },
+    {
+      "heading": "If the result is unexpected, preserve the evidence",
+      "body": [
+        "Compare the owning provider with Cloud Calendars on the exact affected date. Check the calendar name, selected occurrence, repeat pattern and any end condition you can inspect. Similar titles or a separately copied appointment can look like a recurrence problem; establish which record you are viewing first.",
+        "If the provider is correct but the app differs, report the app and iOS versions, calendar type, intended scope and dates affected. If the provider also changed more dates than intended, contact the organizer or provider support before making further broad edits. Avoid removing accounts, cancelling invitations or deleting a series as diagnostic steps."
+      ]
+    }
+  ],
+  "claims": {},
+  "practical": [
+    "Write down which occurrence dates should change and which should stay the same.",
+    "Confirm the owning calendar and organizer or editing permission.",
+    "For a one-off exception, use an editor that explicitly offers that scope.",
+    "Check an earlier date, the changed date and the next ordinary occurrence.",
+    "Keep existing exceptions and the original invitation while diagnosing a mismatch."
+  ],
+  "faq": [
+    {
+      "q": "Does every recurring-event edit ask about scope?",
+      "a": "No. Do not assume Cloud Calendars will ask you to choose the scope. Verify the options before saving; use a supported provider editor for a single-date exception if that choice is absent."
+    },
+    {
+      "q": "Should every recurring event have an end date?",
+      "a": "Use an end date when the real schedule has one. Continuing commitments do not need an invented deadline simply to make the calendar tidier."
+    },
+    {
+      "q": "Will changing the series erase its exceptions?",
+      "a": "There is no universal answer across providers and edit operations. Record important exceptions and inspect them after the change; do not assume either guaranteed preservation or automatic loss."
+    }
+  ],
+  "sourcesHeading": "Official recurrence and editing-permission guidance",
+  "sources": [
+    {
+      "label": "Google: Create and change a recurring event on a computer",
+      "url": "https://support.google.com/calendar/answer/37115?co=GENIE.Platform%3DDesktop&hl=en"
+    },
+    {
+      "label": "Apple: Set up all-day, multiday or repeating events on Mac",
+      "url": "https://support.apple.com/guide/calendar/set-up-all-day-multiday-or-repeating-events-icl1018/mac"
+    },
+    {
+      "label": "Google: Collaborate in Calendar and allow guests to modify events",
+      "url": "https://support.google.com/a/users/answer/13293412?hl=en"
+    }
+  ],
+  "seeAlso": [
+    "when-two-calendars-disagree",
+    "time-zones-and-the-flight-you-booked"
+  ]
+},
 
   'time-zones-and-the-flight-you-booked': {
-    title: 'Time zones, and the flight that lands before it takes off',
-    short: 'Time zones and travel',
-    description:
-      'Travel is where calendars quietly betray people. What changes when you cross a zone, and how to enter events so they survive it.',
-    lede: 'A calendar is honest about time and vague about place, which is fine until the two stop agreeing.',
-    commonBelief: 'That entering the local time of the destination is enough.',
-    sections: [
-      {
-        heading: 'Events carry a zone whether you set one or not',
-        body: [
-          'An event without an explicit zone belongs to whatever zone you were in when you made it. Fly somewhere and it moves, because it was never anchored where you meant.',
-          "This is why a nine o'clock meeting arranged at home shows up at six on arrival, and why it is right to do so.",
-        ],
-      },
-      {
-        heading: 'Where it bites hardest',
-        body: [
-          "Flights, because departure and arrival are in different zones. Calls with people elsewhere, because one side's convenient hour is the other's midnight. And anything scheduled while travelling, which inherits a zone you are only passing through.",
-          'All-day events are the exception: they belong to the date rather than a moment, and generally do the right thing.',
-        ],
-      },
-    ],
-    claims: {},
-    practical: [
-      'Set the time zone explicitly on flights and on any call with someone abroad.',
-      'Enter the departure in the departure zone and the arrival in the arrival zone.',
-      'Anything booked while travelling should get an explicit zone, not the one you happen to be standing in.',
-      'Use all-day events for dates that are dates rather than moments.',
-    ],
-    seeAlso: ['weather-where-the-event-is'],
-  },
+  "updated": "2026-10-21",
+  "title": "Calendar time zones: check the event before you travel",
+  "short": "Time zones and travel",
+  "description": "Separate an event’s time zone from the calendar’s display zone. Check flights, destination appointments and recurring calls without shifting the wrong time.",
+  "lede": "A different clock time after a flight does not necessarily mean the appointment moved. First establish which place the event belongs to and which time zone the app is displaying. This guide is published by Arte Soft, the developer of Cloud Calendars.",
+  "commonBelief": "Changing the calendar’s displayed time zone is the same as changing the appointment itself.",
+  "sections": [
+    {
+      "heading": "Start with the appointment, then the display",
+      "body": [
+        "A meeting booked for a particular moment can be shown with different clock times in different places. A dentist appointment at 09:00 in the destination city has a different intention from a personal reminder to stretch at 09:00 wherever you happen to be. Write down which meaning you need before adjusting anything.",
+        "Compare the booking or organizer’s confirmation with the event date, start time and named time zone. Then check the time zone used to display the calendar. Do not drag the event to a new hour just because its displayed hour changed after travelling: that could change the appointment rather than its presentation."
+      ]
+    },
+    {
+      "heading": "Use provider controls when you need an explicit zone",
+      "body": [
+        "Apple documents a Time Zone field while creating or editing an event in Apple Calendar on iPhone. Its separate Time Zone Override setting changes the zone shown in Apple Calendar. These are Apple Calendar instructions, not a promise that the same settings control Cloud Calendars.",
+        "In Google Calendar on a computer, the event editor’s Time zone control lets you select a zone. Google also documents separate start and end zones for an event. Those are Google’s controls. Use the account that owns the event and confirm that you have permission to edit it before changing its zone."
+      ]
+    },
+    {
+      "heading": "Check the saved event in Cloud Calendars",
+      "body": [
+        "An existing event can carry a saved time zone into the Cloud Calendars editor. If an event does not supply one, the editor can use the current device zone. Before creating a destination appointment, check the device zone and the intended local date and hour. Reopen the saved result and compare it with the booking.",
+        "For separate departure and arrival zones, use an editor that explicitly supports them. Do not assume ordinary start and end time fields offer independent zones. If your Cloud Calendars editor does not expose the zone control you need, use the owning provider’s supported editor, then reopen the event in Cloud Calendars and compare both endpoints."
+      ]
+    },
+    {
+      "heading": "A flight and a destination appointment need different checks",
+      "body": [
+        "For a flight, keep the airline’s departure date, departure airport time, arrival date and arrival airport time together. A next-day arrival matters as much as the hour. Where an editor supports separate endpoint zones, match each endpoint to the corresponding airport. Otherwise, use a provider editor that supports the required representation; do not assume two ordinary time fields independently infer two places.",
+        "For a destination appointment, confirm the city’s local date and time with the booking. Record that city in the event details if it helps you check later. A location name in notes is a useful reminder, but it is not proof that the event’s actual time-zone field was set. Reopen the saved result before relying on it."
+      ]
+    },
+    {
+      "heading": "Recurring calls and all-day labels deserve their own review",
+      "body": [
+        "For a regular international call, agree which city’s local hour should stay fixed. Check an occurrence near each participant’s seasonal clock change as well as the next occurrence. A comparison on one date is not evidence that the clock-time difference remains identical all year.",
+        "An all-day trip label can help organize an itinerary, but it is not a substitute for timed departures, appointments or check-in deadlines. Inspect its dates after it passes between providers. Avoid a blanket promise that every imported all-day event will display identically in every calendar."
+      ]
+    },
+    {
+      "heading": "If the clocks still disagree",
+      "body": [
+        "Compare the same event in the owning provider and Cloud Calendars, noting the calendar, event date, zone and displayed time in each. Check that you have not opened a similarly titled copy. If the provider is correct but another display differs, report the comparison before rewriting the appointment.",
+        "Include app and iOS versions, the relevant zones and whether the event repeats. Keep booking references and attendee details out of public reports. There is no need to remove an account or recreate a real invitation to establish which display differs."
+      ]
+    }
+  ],
+  "claims": {},
+  "practical": [
+    "Record the intended local date, hour and city from the booking.",
+    "Distinguish the saved event zone from the display zone.",
+    "Use the owning provider’s zone controls where needed; do not assume matching Cloud controls exist.",
+    "Check both flight endpoints and a later recurring occurrence.",
+    "Reopen the saved event and compare before changing its time again."
+  ],
+  "faq": [
+    {
+      "q": "Does Apple Calendar Time Zone Override change Cloud Calendars?",
+      "a": "Apple documents that setting for the display in Apple Calendar. This guide does not establish that Cloud Calendars follows it."
+    },
+    {
+      "q": "Can I enter different departure and arrival zones in Cloud Calendars?",
+      "a": "Do not assume the ordinary start and end fields offer separate time-zone choices. If your Cloud Calendars editor lacks them, Google Calendar on a computer documents separate start and end zones; use a supported provider editor."
+    },
+    {
+      "q": "Should I move a meeting back to its old hour after travelling?",
+      "a": "First check its intended moment and the display zone. A different local hour may be the correct presentation of the same appointment."
+    }
+  ],
+  "sourcesHeading": "Official event and display time-zone guidance",
+  "sources": [
+    {
+      "label": "Apple: Schedule or display events in a different time zone on iPhone",
+      "url": "https://support.apple.com/guide/iphone/schedule-display-events-a-time-zone-iph69525c028/ios"
+    },
+    {
+      "label": "Google: Use Google Calendar in different time zones",
+      "url": "https://support.google.com/calendar/answer/37064?hl=en"
+    }
+  ],
+  "seeAlso": [
+    "recurring-events-without-the-mess",
+    "weather-where-the-event-is"
+  ]
+},
 
   'what-an-all-day-event-really-means': {
     title: 'What an all-day event really means',

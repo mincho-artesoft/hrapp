@@ -1,0 +1,93 @@
+{
+  "status": "proposal_only_not_applied",
+  "locale": "th",
+  "appId": "6744690319",
+  "targetVersion": "1.7.4",
+  "targetState": "PREPARE_FOR_SUBMISSION",
+  "appInfoLocalizationId": "7b5ff2e7-7525-45fb-8e89-928f017af1c8",
+  "versionLocalizationId": "2e74d181-c85a-4c1e-a41e-340fdb64073e",
+  "nameAction": "preserve_exact_current_draft_name",
+  "fields": {
+    "name": {
+      "value": "Cloud Calendars: ปฏิทิน",
+      "characters": 23,
+      "utf8Bytes": 35,
+      "characterLimit": 30,
+      "withinCharacterLimit": true
+    },
+    "subtitle": {
+      "value": "อากาศ นัดหมาย และวิดเจ็ต",
+      "characters": 24,
+      "utf8Bytes": 68,
+      "characterLimit": 30,
+      "withinCharacterLimit": true
+    },
+    "keywords": {
+      "value": "ตารางเวลา,วางแผน,สัปดาห์,เดือน,เตือน,ประชุม,กิจกรรม,แชร์,คำเชิญ,พยากรณ์",
+      "characters": 71,
+      "utf8Bytes": 195,
+      "characterLimit": 100,
+      "withinCharacterLimit": true
+    },
+    "promotionalText": {
+      "value": "ดูแผนและอากาศด้วยกัน ใช้วิดเจ็ตและมุมมองต่าง ๆ หรือเริ่มด้วยปฏิทินในเครื่องโดยไม่ต้องมีบัญชีแอป",
+      "characters": 95,
+      "utf8Bytes": 279,
+      "characterLimit": 170,
+      "withinCharacterLimit": true
+    },
+    "description": {
+      "value": "ดูแผนงาน นัดหมายส่วนตัว และอากาศบน iPhone และ iPad ด้วย Cloud Calendars\n\nใช้ปฏิทิน iCloud และเชื่อมต่อ Google ปฏิทิน เลือกมุมมองวัน สัปดาห์ เดือน ปี หรือรายการ คุณยังสร้างปฏิทินในเครื่องได้โดยไม่ต้องมีบัญชี Cloud Calendars การเชื่อมต่อบริการและการแชร์อาจต้องลงชื่อเข้าใช้ สิทธิ์เข้าถึงขึ้นอยู่กับปฏิทินและประเภทคำเชิญ\n\nดูพยากรณ์อากาศขณะวางแผน วิดเจ็ตหน้าจอโฮมมีขนาดเล็ก กลาง และใหญ่ พยากรณ์ที่มีให้ขึ้นอยู่กับตำแหน่งและผู้ให้บริการสภาพอากาศ\n\nBase ใช้ฟรี รวมการซิงค์ Google ปฏิทิน, Google Meet, มุมมองปฏิทินหลายแบบ สภาพอากาศ และวิดเจ็ต Advanced รวมคุณสมบัติของ Base และนำโฆษณาออก Premium รวม Advanced และเพิ่มการรองรับปฏิทิน Microsoft และ Microsoft Teams\n\nดาวน์โหลดได้ฟรี พร้อมการสมัครรับแบบต่ออายุอัตโนมัติที่เลือกซื้อได้ ก่อนสมัคร โปรดตรวจสอบราคาท้องถิ่นปัจจุบันและรอบการเรียกเก็บเงินในแอปหรือ App Store การสมัครรับจะต่ออายุหากไม่ยกเลิกอย่างน้อย 24 ชั่วโมงก่อนสิ้นสุดรอบปัจจุบัน จัดการหรือยกเลิกได้ในการตั้งค่าบัญชี App Store\n\nความเป็นส่วนตัว: https://www.cloud-calendars.com/privacy-policy\nข้อกำหนดการใช้งาน: https://www.apple.com/legal/internet-services/itunes/dev/stdeula/",
+      "characters": 1076,
+      "utf8Bytes": 2580,
+      "characterLimit": 4000,
+      "withinCharacterLimit": true
+    }
+  },
+  "current": {
+    "appInfo": {
+      "locale": "th",
+      "name": "Cloud Calendars: ปฏิทิน",
+      "subtitle": "รวมทุกปฏิทินไว้ที่เดียว",
+      "privacyPolicyUrl": "https://www.cloud-calendars.com/privacy-policy",
+      "privacyChoicesUrl": null,
+      "privacyPolicyText": null
+    },
+    "version": {
+      "description": "วางแผนวันของคุณด้วยปฏิทินและสภาพอากาศร่วมกัน\n\nCloud Calendars รวมปฏิทินและสภาพอากาศของคุณไว้ในประสบการณ์การวางแผนเดียวที่สวยงามและเป็นระเบียบ\n\nจัดการปฏิทิน iCloud, Google Calendar และ Microsoft ในแอปเดียว พร้อมดูพยากรณ์อากาศได้โดยตรงในกำหนดการ วิดเจ็ต และมุมมองการวางแผน\n\nเตรียมพร้อมสำหรับการประชุม การเดินทาง การไปรับที่โรงเรียน กิจกรรมกลางแจ้ง และวันที่ยุ่งด้วยมุมมองปฏิทินที่ออกแบบมาเพื่อการวางแผนที่รวดเร็วขึ้น\n\nวิดเจ็ตหน้าจอโฮม\n\nเพิ่มวิดเจ็ตสวยงามที่รวม:\n• กิจกรรมในปฏิทิน\n• พยากรณ์อากาศ\n• กำหนดการที่กำลังจะมาถึง\n• ข้างขึ้นข้างแรมและสภาพอากาศ\n• ลมและอุณหภูมิ\n• ภาพรวมกำหนดการประจำวัน\n\nเลือกจากสไตล์วิดเจ็ตหลายแบบเพื่อดูวันของคุณได้โดยตรงจากหน้าจอโฮม\n\nทำไมต้อง CLOUD CALENDARS\n\n• ดูปฏิทิน iCloud, Google Calendar และ Microsoft พร้อมกัน\n• วางแผนด้วยพยากรณ์อากาศในตัว\n• ใช้วิดเจ็ตหน้าจอโฮมที่สวยงาม\n• ลาก ย้าย และปรับระยะเวลากิจกรรมอย่างเป็นธรรมชาติ\n• สร้างลิงก์ Google Meet และ Microsoft Teams\n• สลับระหว่างมุมมองวัน สัปดาห์ เดือน ปี และรายการ\n• จัดการปฏิทินงานและส่วนตัวในที่เดียว\n\nคุณสมบัติ\n\nปฏิทินทั้งหมดของคุณในที่เดียว\nเชื่อมต่อและจัดการปฏิทิน iCloud, Google Calendar และ Microsoft ในประสบการณ์เดียวที่สะอาดและแยกสีอย่างชัดเจน\n\nสภาพอากาศในปฏิทินของคุณ\nดูพยากรณ์รายชั่วโมงและรายวันได้โดยตรงในขั้นตอนการวางแผน รวมถึงอุณหภูมิ สภาพอากาศ ข้างขึ้นข้างแรม ลม และไอคอนสภาพอากาศ\n\nวิดเจ็ตปฏิทิน + สภาพอากาศ\nดูกำหนดการและสภาพอากาศได้ทันทีจากวิดเจ็ตหน้าจอโฮมที่ปรับแต่งได้\n\nมุมมองปฏิทินหลายแบบ\nเลือกมุมมองวัน สัปดาห์ เดือน ปี หรือรายการตามวิธีที่คุณวางแผนเวลา\n\nแก้ไขกิจกรรมได้ง่าย\nแตะ ลาก และปรับระยะเวลากิจกรรมได้โดยตรงบนปฏิทินเพื่อจัดตารางอย่างรวดเร็วและเป็นธรรมชาติ\n\nมุมมองสภาพอากาศโดยเฉพาะ\nสำรวจพยากรณ์โดยละเอียดพร้อมสภาพอากาศรายชั่วโมงและข้อมูลเชิงลึกที่เป็นประโยชน์ต่อการวางแผน\n\nสร้างกิจกรรมจากพยากรณ์\nแตะชั่วโมงในพยากรณ์เพื่อสร้างกิจกรรมใหม่ทันทีตามเวลาที่เลือก\n\nลิงก์การประชุมในตัว\nเพิ่มลิงก์ Google Meet และ Microsoft Teams ลงในกิจกรรมได้อย่างรวดเร็ว\n\nเหมาะสำหรับ\n\n• การจัดการปฏิทินงานและส่วนตัว\n• การวางแผนโดยคำนึงถึงสภาพอากาศ\n• กิจกรรมกลางแจ้งและการเดินทาง\n• ตารางที่ยุ่งและการวางแผนครอบครัว\n• ผู้ใช้ Google Calendar และ iCloud\n• ผู้ใช้ปฏิทิน Microsoft\n\nลองใช้ Cloud Calendars และทำให้ทุกวันวางแผนได้ง่ายขึ้น\n\nข้อมูลการสมัครสมาชิก\n\nCloud Calendars มีการสมัครสมาชิกแบบต่ออายุอัตโนมัติ\n\nแผนฟรี\n• ซิงค์ Google Calendar\n• มุมมองปฏิทินหลายแบบ\n• คุณสมบัติสภาพอากาศ\n• วิดเจ็ต\n• รองรับ Google Meet\n\nการชำระเงินจะถูกเรียกเก็บจากบัญชี Apple ID เมื่อยืนยันการซื้อ การสมัครสมาชิกจะต่ออายุอัตโนมัติ เว้นแต่จะยกเลิกอย่างน้อย 24 ชั่วโมงก่อนสิ้นสุดระยะเวลาปัจจุบัน บัญชีของคุณจะถูกเรียกเก็บค่าต่ออายุภายใน 24 ชั่วโมงก่อนสิ้นสุดระยะเวลาปัจจุบัน คุณสามารถจัดการและยกเลิกการสมัครสมาชิกได้ในการตั้งค่าบัญชี App Store\n\nนโยบายความเป็นส่วนตัว: https://www.cloud-calendars.com/privacy-policy\nข้อกำหนดการใช้งาน: https://www.apple.com/legal/internet-services/itunes/dev/stdeula/",
+      "locale": "th",
+      "keywords": "อากาศ,วิดเจ็ต,ตาราง,วางแผน,กำหนดการ,พยากรณ์,iCloud,กิจกรรม,ประชุม,งาน,อุณหภูมิ,หน้าจอล็อก,ฝน,วันนี้",
+      "marketingUrl": "https://www.cloud-calendars.com/",
+      "promotionalText": null,
+      "supportUrl": "https://www.cloud-calendars.com/",
+      "whatsNew": null
+    }
+  },
+  "keywordChecks": {
+    "exactDuplicateKeywords": false,
+    "exactTitleSubtitleTokenDuplicates": [],
+    "note": "Unicode code-point counts include combining marks. UTF-8 bytes separate. Token checks are not a full linguistic or rendered-text review."
+  },
+  "readiness": "ready_for_editorial_review_not_applied",
+  "translationConfidence": "medium",
+  "caveat": "Model-authored; native-language editorial review recommended, particularly Indic morphology and terminology. No external translator or ASC write validation. Urdu mixed RTL/LTR rendering not visually verified.",
+  "evidence": [
+    "../../product-facts.json",
+    "../localized-batch05/audit.json",
+    "asc-current.json"
+  ],
+  "applyOnly": [
+    "subtitle",
+    "keywords",
+    "promotionalText",
+    "description"
+  ],
+  "preserve": [
+    "name",
+    "release notes",
+    "URLs",
+    "privacy declarations",
+    "screenshots",
+    "other locales"
+  ]
+}

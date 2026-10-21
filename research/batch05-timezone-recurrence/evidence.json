@@ -1,0 +1,147 @@
+{
+  "date": "2026-10-21",
+  "status": "Drafts only. Native code inspected read-only; no build, simulator, released-app runtime test, provider mutation or source-module integration.",
+  "canonicalSource": "src/app/content/en-US/articles-planning.ts",
+  "existingBodiesAuditedInFull": [
+    "recurring-events-without-the-mess",
+    "time-zones-and-the-flight-you-booked"
+  ],
+  "existingClaimsCorrected": [
+    "Universal scope prompt was contradicted by inspected save path.",
+    "Exception loss is not universal; no delete/recreate default advice.",
+    "End dates depend on the real schedule rather than mandatory cutoff.",
+    "No assumed Cloud separate endpoint timezone selector or inheritance guarantee for every provider.",
+    "Apple Time Zone Override applies to Apple Calendar, not established Cloud behavior."
+  ],
+  "nativeEvidence": [
+    {
+      "path": "/Users/minchomilev/work/hrapp/Calendar/MonthView/EventEditViewWrapper.swift",
+      "lines": [
+        5,
+        21
+      ],
+      "sha256": "865cca145de3a12fa19a7408b847024b378b439cb1aab47d884c257bb353114a",
+      "finding": "Creation wrapper routes through AppLocalEventEditorView.",
+      "excerpt": "/// the same Cloud Calendars editor, independent of the destination calendar.\nstruct EventEditViewWrapper: View {\n    let eventStore: EKEventStore\n    let event: EKEvent\n    var preferredColorScheme: ColorScheme? = nil\n    var onEventUpdated: (() -> Void)? = nil\n\n    var body: some View {\n        AppLocalEventEditorView(\n            target: AppLocalEventEditorTarget(\n                eventKitEvent: event,\n                startsInEditingMode: true\n            ),\n            onDismissed: onEventUpdated\n        )\n        .preferredColorScheme(preferredColorScheme)\n    }"
+    },
+    {
+      "path": "/Users/minchomilev/work/hrapp/Calendar/AppLocal/AppLocalEventEditorView.swift",
+      "lines": [
+        612,
+        710
+      ],
+      "sha256": "5f021ab6f986148e70fe3b932e0e9e530fecb8d01fdc436e78217c6116f9a093",
+      "finding": "Date rows share eventTimeZone environment; Repeat/Custom/End Repeat controls, not separate endpoint zone selectors.",
+      "excerpt": "            Section {\n                Toggle(\"All-day\", isOn: $isAllDay)\n                CalendarDateTimePickerRow(title: \"Starts\", id: \"start\", selection: Binding(\n                    get: { startDate }, set: { value in\n                        let duration = max(0, endDate.timeIntervalSince(startDate))\n                        startDate = value\n                        endDate = value.addingTimeInterval(duration)\n                    }), showsTime: !isAllDay, expanded: $expandedDatePicker)\n                CalendarDateTimePickerRow(title: \"Ends\", id: \"end\", selection: $endDate,\n                    range: startDate...Date.distantFuture, showsTime: !isAllDay,\n                    expanded: $expandedDatePicker)\n                travelTimeMenu\n            }\n            .calendarDatePickerColumns([startDate, endDate])\n            .environment(\\.timeZone, eventTimeZone)\n\n            Section {\n                LabeledContent(\"Repeat\") {\n                    Menu {\n                        ForEach(RepeatOption.allCases) { option in\n                            Button {\n                                recurrencePattern = CalendarRecurrencePattern(rule: nil, start: startDate, calendar: eventCalendar)\n                                repeatOption = option\n                                repeatInterval = 1\n                                if option == .never {\n                                    recurrenceEndDate = nil\n                                    expandedDatePicker = nil\n                                }\n                            } label: {\n                                if option == repeatOption && repeatInterval == 1 {\n                                    Label(option.title, systemImage: \"checkmark\")\n                                } else {\n                                    Text(option.title)\n                                }\n                            }\n                        }\n                        Button {\n                            recurrencePattern = CalendarRecurrencePattern(rule: nil, start: startDate, calendar: eventCalendar)\n                            repeatOption = .weekly\n                            repeatInterval = 2\n                        } label: {\n                            if repeatOption == .weekly && repeatInterval == 2 {\n                                Label(\"Every 2 Weeks\", systemImage: \"checkmark\")\n                            } else {\n                                Text(\"Every 2 Weeks\")\n                            }\n                        }\n                        Divider()\n                        Button(\"Custom…\") {\n                            if repeatOption == .never { repeatOption = .daily }\n                            showCustomRecurrenceEditor = true\n                        }\n                    } label: {\n                        menuValueLabel(repeatDisplayText)\n                    }\n                    .tint(.secondary)\n                }\n\n                if repeatOption != .never {\n                    LabeledContent(\"End Repeat\") {\n                        Menu {\n                            Button {\n                                recurrenceEndDate = nil\n                                expandedDatePicker = nil\n                            } label: {\n                                if recurrenceEndDate == nil {\n                                    Label(\"Never\", systemImage: \"checkmark\")\n                                } else {\n                                    Text(\"Never\")\n                                }\n                            }\n                            Button {\n                                if recurrenceEndDate == nil {\n                                    recurrenceEndDate = eventCalendar.date(\n                                        byAdding: .month,\n                                        value: 1,\n                                        to: startDate\n                                    ) ?? startDate\n                                }\n                            } label: {\n                                if recurrenceEndDate != nil {\n                                    Label(\"On Date\", systemImage: \"checkmark\")\n                                } else {\n                                    Text(\"On Date\")\n                                }\n                            }\n                        } label: {\n                            menuValueLabel(endRepeatDisplayText)\n                        }\n                        .tint(.secondary)\n                    }\n\n                    if recurrenceEndDate != nil {\n                        CalendarDateTimePickerRow(title: \"End Date\", id: \"recurrence-end\",\n                            selection: Binding(get: { recurrenceEndDate ?? startDate },\n                                set: { recurrenceEndDate = $0 }),\n                            range: startDate...Date.distantFuture, showsTime: false,\n                            expanded: $expandedDatePicker)\n                            .environment(\\.timeZone, eventTimeZone)"
+    },
+    {
+      "path": "/Users/minchomilev/work/hrapp/Calendar/AppLocal/AppLocalEventEditorView.swift",
+      "lines": [
+        1197,
+        1215
+      ],
+      "sha256": "5f021ab6f986148e70fe3b932e0e9e530fecb8d01fdc436e78217c6116f9a093",
+      "finding": "Calendar and rule construction; saved local zone then EventKit zone then autoupdating current fallback.",
+      "excerpt": "    private var eventCalendar: Calendar {\n        var calendar = Calendar(identifier: .gregorian)\n        calendar.timeZone = eventTimeZone\n        calendar.locale = appPreferences.presentationLocale\n        return calendar\n    }\n\n    private var recurrenceRule: EKRecurrenceRule? {\n        guard let frequency = repeatOption.frequency else { return nil }\n        return recurrencePattern.rule(frequency: frequency, interval: repeatInterval, end: recurrenceEndDate)\n    }\n\n    private var eventTimeZone: TimeZone {\n        if let identifier = existingLocalEvent?.timeZoneIdentifier,\n           let timeZone = TimeZone(identifier: identifier) {\n            return timeZone\n        }\n        return target.eventKitEvent?.timeZone ?? .autoupdatingCurrent\n    }"
+    },
+    {
+      "path": "/Users/minchomilev/work/hrapp/Calendar/AppLocal/AppLocalEventEditorView.swift",
+      "lines": [
+        1376,
+        1435
+      ],
+      "sha256": "5f021ab6f986148e70fe3b932e0e9e530fecb8d01fdc436e78217c6116f9a093",
+      "finding": "Write permission and local save: local/system/current zone precedence, recurrence rule serialized on event record.",
+      "excerpt": "    private func save() {\n        guard selectedChoice?.canEdit == true else { return }\n        do {\n            let migratedBetweenStores = try persistSelectedDestination()\n            EventNotificationManager.shared.rescheduleUpcomingEventNotifications()\n            SharedEventSyncManager.eventStoreDidChange()\n            NotificationCenter.default.post(name: .sharedEventImported, object: nil)\n            // A cross-store move creates a new backing identifier. Close this\n            // detail instance instead of leaving it bound to the removed one.\n            if migratedBetweenStores {\n                close()\n            } else if !isNew && !target.startsInEditingMode {\n                isEditing = false\n            } else {\n                close()\n            }\n        } catch {\n            errorMessage = error.localizedDescription\n        }\n    }\n\n    @discardableResult\n    private func saveAppLocalEvent() throws -> AppLocalEventRecord {\n        guard localStore.calendar(id: selectedCalendarID)?.canEditEvents == true else {\n            throw selectedCalendarUnavailableError()\n        }\n        let now = Date()\n        let event = AppLocalEventRecord(\n            id: existingLocalEvent?.id ?? \"app-local-event:\" + UUID().uuidString.lowercased(),\n            calendarID: selectedCalendarID,\n            title: title.trimmingCharacters(in: .whitespacesAndNewlines),\n            startDate: persistedStartDate,\n            endDate: persistedEndDate,\n            isAllDay: isAllDay,\n            location: location,\n            notes: notes,\n            urlString: urlString,\n            videoCallURL: normalizedVideoCallURL,\n            timeZoneIdentifier: existingLocalEvent?.timeZoneIdentifier\n                ?? target.eventKitEvent?.timeZone?.identifier\n                ?? TimeZone.current.identifier,\n            alarms: [alertOffset.seconds, secondAlertOffset.seconds].compactMap { seconds in\n                guard let seconds else { return nil }\n                return AppLocalEventAlarm(relativeOffset: seconds)\n            },\n            createdAt: existingLocalEvent?.createdAt\n                ?? target.eventKitEvent?.creationDate\n                ?? now,\n            updatedAt: now,\n            remoteEventID: existingLocalEvent?.remoteEventID,\n            isCancelled: existingLocalEvent?.isCancelled ?? false,\n            travelTime: travelTime == .none ? nil : TimeInterval(travelTime.rawValue),\n            recurrenceRules: recurrenceRule.map { [SharedEventRecurrenceRule(rule: $0)] },\n            structuredLocation: structuredLocation,\n            attachments: attachments\n        )\n        localStore.saveEvent(event)\n        CalendarTravelReminderManager.shared.setEnabled(smartTravel && !isAllDay && structuredLocationCoordinate != nil,\n            key: CalendarTravelReminderManager.key(localID: event.id), eventID: event.id,\n            calendarID: event.calendarID, native: false, settings: travelSettings)"
+    },
+    {
+      "path": "/Users/minchomilev/work/hrapp/Calendar/AppLocal/AppLocalEventEditorView.swift",
+      "lines": [
+        1439,
+        1472
+      ],
+      "sha256": "5f021ab6f986148e70fe3b932e0e9e530fecb8d01fdc436e78217c6116f9a093",
+      "finding": "EventKit calendar allowsContentModifications guard; preserve zone or assign fallback; recurrence replaced then futureEvents span for existing rule-bearing event.",
+      "excerpt": "    @discardableResult\n    private func saveEventKitEvent(showsSharePrompt: Bool = true) throws -> EKEvent {\n        guard let calendar = eventStore.calendar(withIdentifier: selectedCalendarID),\n              calendar.allowsContentModifications else {\n            throw selectedCalendarUnavailableError()\n        }\n        let event = target.eventKitEvent ?? EKEvent(eventStore: eventStore)\n        let wasNew = event.eventIdentifier == nil\n        event.title = title.trimmingCharacters(in: .whitespacesAndNewlines)\n        event.location = location\n        event.structuredLocation = structuredLocation?.makeLocation(title: location)\n        event.startDate = persistedStartDate\n        event.endDate = persistedEndDate\n        event.isAllDay = isAllDay\n        event.calendar = calendar\n        if event.timeZone == nil {\n            event.timeZone = existingLocalEvent\n                .flatMap { TimeZone(identifier: $0.timeZoneIdentifier) }\n                ?? TimeZone.current\n        }\n        event.url = URL(string: urlString.trimmingCharacters(in: .whitespacesAndNewlines))\n        event.notes = notes\n        event.alarms = [alertOffset.seconds, secondAlertOffset.seconds].compactMap { seconds in\n            guard let seconds else { return nil }\n            return EKAlarm(relativeOffset: seconds)\n        }\n        event.recurrenceRules = recurrenceRule.map { [$0] }\n        let span: EKSpan = event.eventIdentifier != nil && event.hasRecurrenceRules ? .futureEvents : .thisEvent\n        try eventStore.save(event, span: span, commit: true)\n        EventKitEventSupplementStore.update(\n            travelTime: travelTime == .none ? nil : TimeInterval(travelTime.rawValue),\n            attachments: attachments,\n            videoCallURL: normalizedVideoCallURL,\n            for: event"
+    },
+    {
+      "path": "/Users/minchomilev/work/hrapp/Calendar/AppLocal/AppLocalCalendarStore.swift",
+      "lines": [
+        70,
+        70
+      ],
+      "sha256": "2ed2d5ad2104857441a4f8d3bcafe80227058ef24cc49c24c8ec7f70189d6e42",
+      "finding": "Local writable access excludes revoked calendars and reader access.",
+      "excerpt": "    var canEditEvents: Bool { !isRevoked && access != .reader }"
+    },
+    {
+      "path": "/Users/minchomilev/work/hrapp/Calendar/AppLocal/AppLocalCalendarStore.swift",
+      "lines": [
+        407,
+        416
+      ],
+      "sha256": "2ed2d5ad2104857441a4f8d3bcafe80227058ef24cc49c24c8ec7f70189d6e42",
+      "finding": "Local save replaces/appends event record by id; not evidence of single occurrence edit.",
+      "excerpt": "    func saveEvent(_ event: AppLocalEventRecord) {\n        var value = event\n        value.endDate = max(value.endDate, value.startDate)\n        value.updatedAt = Date()\n        if let index = events.firstIndex(where: { $0.id == value.id }) {\n            events[index] = value\n        } else {\n            events.append(value)\n        }\n        persistAndNotify()"
+    },
+    {
+      "path": "/Users/minchomilev/work/hrapp/Calendar/Components/CalendarRecurrencePattern.swift",
+      "lines": [
+        4,
+        58
+      ],
+      "sha256": "e33a5273cbf88b60f0356881158dfe71b03bfd9fc711f1356afa73db2391b5cf",
+      "finding": "Original dimensions preserved when pattern unedited; not proof of exception preservation through provider operations.",
+      "excerpt": "/// Editable recurrence dimensions. Preserve imported rules until their pattern\n/// is explicitly edited, including dimensions not exposed by Calendar's UI.\nstruct CalendarRecurrencePattern: Equatable {\n    var weekdays: Set<Int>\n    var monthDays: Set<Int>\n    var months: Set<Int>\n    var usesOrdinal = false\n    var ordinal = 1\n    var weekday = 1 // 1...7 weekdays; 8 every day; 9 weekdays; 10 weekend days\n    var edited = false\n    private let original: EKRecurrenceRule?\n\n    init(rule: EKRecurrenceRule?, start: Date, calendar: Calendar) {\n        original = rule\n        weekdays = Set(rule?.daysOfTheWeek?.map { $0.dayOfTheWeek.rawValue } ?? [calendar.component(.weekday, from: start)])\n        monthDays = Set(rule?.daysOfTheMonth?.map(\\.intValue) ?? [calendar.component(.day, from: start)])\n        months = Set(rule?.monthsOfTheYear?.map(\\.intValue) ?? [calendar.component(.month, from: start)])\n        usesOrdinal = (rule?.frequency == .monthly || rule?.frequency == .yearly) && rule?.daysOfTheWeek?.isEmpty == false\n        if usesOrdinal {\n            ordinal = rule?.setPositions?.first?.intValue ?? rule?.daysOfTheWeek?.first?.weekNumber ?? 1\n            if ordinal == 0 { ordinal = 1 }\n            switch weekdays {\n            case Set(1...7): weekday = 8\n            case Set(2...6): weekday = 9\n            case Set([1, 7]): weekday = 10\n            default: weekday = weekdays.sorted().first ?? 1\n            }\n        }\n    }\n\n    var signature: String {\n        \"\\(weekdays.sorted())|\\(monthDays.sorted())|\\(months.sorted())|\\(usesOrdinal)|\\(ordinal)|\\(weekday)|\\(edited)\"\n    }\n\n    func rule(frequency: EKRecurrenceFrequency, interval: Int, end: Date?) -> EKRecurrenceRule {\n        if !edited, let original, original.frequency == frequency {\n            return EKRecurrenceRule(recurrenceWith: frequency, interval: max(1, interval),\n                daysOfTheWeek: original.daysOfTheWeek, daysOfTheMonth: original.daysOfTheMonth,\n                monthsOfTheYear: original.monthsOfTheYear, weeksOfTheYear: original.weeksOfTheYear,\n                daysOfTheYear: original.daysOfTheYear, setPositions: original.setPositions,\n                end: end.map(EKRecurrenceEnd.init(end:)) ?? ((original.recurrenceEnd?.occurrenceCount ?? 0) > 0 ? original.recurrenceEnd : nil))\n        }\n        var days: [EKRecurrenceDayOfWeek]?\n        var positions: [NSNumber]?\n        if frequency == .weekly {\n            days = weekdays.sorted().compactMap { EKWeekday(rawValue: $0).map { EKRecurrenceDayOfWeek($0) } }\n        } else if (frequency == .monthly || frequency == .yearly) && usesOrdinal {\n            let values = weekday == 8 ? Array(1...7) : weekday == 9 ? Array(2...6) : weekday == 10 ? [1, 7] : [weekday]\n            days = values.compactMap { EKWeekday(rawValue: $0).map { EKRecurrenceDayOfWeek($0) } }\n            positions = [NSNumber(value: ordinal)]\n        }\n        return EKRecurrenceRule(recurrenceWith: frequency, interval: max(1, interval),\n            daysOfTheWeek: days,\n            daysOfTheMonth: frequency == .monthly && !usesOrdinal ? monthDays.sorted().map(NSNumber.init(value:)) : nil,\n            monthsOfTheYear: frequency == .yearly ? months.sorted().map(NSNumber.init(value:)) : nil,"
+    }
+  ],
+  "drafts": [
+    {
+      "path": "research/batch05-timezone-recurrence/recurring-events-without-the-mess.json",
+      "canonicalSlug": "recurring-events-without-the-mess",
+      "descriptionCharacters": 159,
+      "sectionCount": 6,
+      "faqCount": 3,
+      "bodyWords": 649,
+      "sha256": "69dc01decdf4793d66f631b4c9c8e7959529cfffc218460c986fb58a10adb71e"
+    },
+    {
+      "path": "research/batch05-timezone-recurrence/time-zones-and-the-flight-you-booked.json",
+      "canonicalSlug": "time-zones-and-the-flight-you-booked",
+      "descriptionCharacters": 156,
+      "sectionCount": 6,
+      "faqCount": 3,
+      "bodyWords": 661,
+      "sha256": "c75ca3f6d58951103ba8b3d7a46a660389d4c957cd85d78b0724f2d186b85244"
+    }
+  ],
+  "remainingUncertainties": [
+    "Relationship between reviewed working-tree native code and released App Store binary not verified.",
+    "Actual provider behavior, recurrence exceptions, scope prompts outside reviewed editor and invitation propagation not runtime tested.",
+    "No end-to-end app-local recurrence expansion or timezone display test performed.",
+    "No verified Cloud selector for separate start and end timezone; absence of proof not global claim of impossibility.",
+    "Adjacent what-an-all-day-event-really-means guide still has sweeping timezone/date and collision claims; out of assigned scope."
+  ],
+  "sources": [
+    {
+      "label": "Google: Create and change a recurring event on a computer",
+      "url": "https://support.google.com/calendar/answer/37115?co=GENIE.Platform%3DDesktop&hl=en"
+    },
+    {
+      "label": "Apple: Set up all-day, multiday or repeating events on Mac",
+      "url": "https://support.apple.com/guide/calendar/set-up-all-day-multiday-or-repeating-events-icl1018/mac"
+    },
+    {
+      "label": "Google: Collaborate in Calendar and allow guests to modify events",
+      "url": "https://support.google.com/a/users/answer/13293412?hl=en"
+    },
+    {
+      "label": "Apple: Schedule or display events in a different time zone on iPhone",
+      "url": "https://support.apple.com/guide/iphone/schedule-display-events-a-time-zone-iph69525c028/ios"
+    },
+    {
+      "label": "Google: Use Google Calendar in different time zones",
+      "url": "https://support.google.com/calendar/answer/37064?hl=en"
+    }
+  ]
+}

@@ -1,0 +1,18 @@
+{
+  "date": "2026-10-20",
+  "bucket": "cloud-calendars-cdn-logs-e91a0mu1yhgpr",
+  "prefix": "cloudfront/E91A0MU1YHGPR.2026-10-20-",
+  "listedObjects": 302,
+  "listTruncated": false,
+  "compressedBytes": 514948,
+  "downloadResult": "success",
+  "rawStorage": "gitignored .crawler-logs/cloudfront/",
+  "aggregationFile": "cloudfront-sample-20261020.json",
+  "limits": [
+    "Only this day was downloaded, not an exhaustive month.",
+    "Local directory also contains four older July30 files; analyzer excludes these from requested window.",
+    "Listing every delivered object does not prove complete access logging or every hour covered.",
+    "No IP/reverseDNS identity authentication. No rank, indexing or ChatGPTcitation conclusion.",
+    "llms-full.txt was first published Oct21, after this sample day. Zero requests yesterday cannot measure its discovery."
+  ]
+}

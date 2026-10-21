@@ -1,0 +1,19 @@
+Plánujte pracovní i osobní program s počasím na iPhonu a iPadu. Cloud Calendars spojuje vaše kalendáře na jednom místě.
+
+KALENDÁŘE A ZOBRAZENÍ
+Používejte kalendáře iCloud a připojte Kalendář Google. Premium přidává podporu kalendářů Microsoft. Vyberte zobrazení dne, týdne, měsíce, roku nebo seznamu.
+
+Můžete také vytvořit místní kalendář v zařízení bez účtu Cloud Calendars. Připojení služeb a sdílení mohou vyžadovat přihlášení.
+
+POČASÍ, WIDGETY A SDÍLENÍ
+Při plánování sledujte předpověď. Widgety na plochu jsou dostupné v malé, střední a velké velikosti. Dostupnost předpovědí závisí na místě a poskytovateli počasí. Sdílejte události a kalendáře a posílejte pozvánky e-mailem, QR kódem nebo přes App Clip. Oprávnění závisí na kalendáři a typu pozvánky.
+
+VYBERTE SI TARIF
+Bezplatný Base zahrnuje synchronizaci s Kalendářem Google, Google Meet, různá zobrazení kalendáře, počasí a widgety.
+Advanced obsahuje funkce Base a odstraňuje reklamy.
+Premium obsahuje Advanced a přidává kalendáře Microsoft a Microsoft Teams.
+
+Stažení je zdarma s volitelným automaticky obnovovaným předplatným. Před nákupem zkontrolujte aktuální místní cenu a fakturační období v aplikaci nebo App Storu. Předplatné se obnoví, pokud ho nezrušíte alespoň 24 hodin před koncem aktuálního období. Spravovat nebo zrušit ho můžete v nastavení účtu App Store.
+
+Soukromí: https://www.cloud-calendars.com/privacy-policy
+Podmínky použití: https://www.apple.com/legal/internet-services/itunes/dev/stdeula/

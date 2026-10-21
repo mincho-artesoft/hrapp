@@ -1,3 +1,6 @@
+import { HELP_FR_FR } from './fr-FR/articles-help';
+import { HELP_DE_DE } from './de-DE/articles-help';
+import { HELP_BG } from './bg/articles-help';
 import { LOCALES, Locale, LocaleCode } from '../core/locales';
 import { CHROME_EN_US } from './en-US/chrome';
 import { ARTICLES_DE_DE } from './de-DE/articles';
@@ -126,11 +129,11 @@ export const CONTENT: Readonly<Partial<Record<LocaleCode, ArticleLocale>>> = {
   },
   bg: {
     chrome: CHROME_BG,
-    articles: { ...ARTICLES_BG, ...GOOGLE_BG },
+    articles: { ...ARTICLES_BG, ...GOOGLE_BG, ...HELP_BG },
   },
   'de-DE': {
     chrome: CHROME_DE_DE,
-    articles: { ...ARTICLES_DE_DE, ...GOOGLE_DE_DE },
+    articles: { ...ARTICLES_DE_DE, ...GOOGLE_DE_DE, ...HELP_DE_DE },
   },
   'es-ES': {
     chrome: CHROME_ES_ES,
@@ -138,7 +141,7 @@ export const CONTENT: Readonly<Partial<Record<LocaleCode, ArticleLocale>>> = {
   },
   'fr-FR': {
     chrome: CHROME_FR_FR,
-    articles: { ...ARTICLES_FR_FR, ...GOOGLE_FR_FR },
+    articles: { ...ARTICLES_FR_FR, ...GOOGLE_FR_FR, ...HELP_FR_FR },
   },
   it: {
     chrome: CHROME_IT,

@@ -1,0 +1,93 @@
+{
+  "status": "proposal_only_not_applied",
+  "locale": "id",
+  "appId": "6744690319",
+  "targetVersion": "1.7.4",
+  "targetState": "PREPARE_FOR_SUBMISSION",
+  "appInfoLocalizationId": "534478dd-b904-4381-8c44-c2ce3e5bbc8f",
+  "versionLocalizationId": "bacdbba0-8db2-4756-9b98-1a24e68f5416",
+  "nameAction": "preserve_exact_current_draft_name",
+  "fields": {
+    "name": {
+      "value": "Cloud Calendars: Kalender",
+      "characters": 25,
+      "utf8Bytes": 25,
+      "characterLimit": 30,
+      "withinCharacterLimit": true
+    },
+    "subtitle": {
+      "value": "Cuaca, jadwal dan widget",
+      "characters": 24,
+      "utf8Bytes": 24,
+      "characterLimit": 30,
+      "withinCharacterLimit": true
+    },
+    "keywords": {
+      "value": "agenda,perencana,minggu,bulan,pengingat,rapat,acara,berbagi,undangan,prakiraan,janji",
+      "characters": 84,
+      "utf8Bytes": 84,
+      "characterLimit": 100,
+      "withinCharacterLimit": true
+    },
+    "promotionalText": {
+      "value": "Lihat rencana dan cuaca bersama. Gunakan widget dan berbagai tampilan, atau mulai dengan kalender lokal tanpa akun aplikasi.",
+      "characters": 124,
+      "utf8Bytes": 124,
+      "characterLimit": 170,
+      "withinCharacterLimit": true
+    },
+    "description": {
+      "value": "Lihat jadwal kerja, rencana pribadi, dan cuaca di iPhone serta iPad dengan Cloud Calendars.\n\nGunakan kalender iCloud dan hubungkan Google Kalender. Pilih tampilan hari, minggu, bulan, tahun, atau daftar. Anda juga dapat membuat kalender lokal di perangkat tanpa akun Cloud Calendars. Menghubungkan layanan dan berbagi mungkin memerlukan login. Izin akses bergantung pada kalender dan jenis undangan.\n\nPeriksa prakiraan saat membuat rencana. Widget Layar Utama tersedia dalam ukuran kecil, sedang, dan besar. Ketersediaan prakiraan bergantung pada lokasi dan penyedia cuaca.\n\nBase gratis mencakup sinkronisasi Google Kalender, Google Meet, berbagai tampilan kalender, cuaca, dan widget. Advanced mencakup fitur Base dan menghapus iklan. Premium mencakup Advanced serta menambahkan kalender Microsoft dan Microsoft Teams.\n\nAplikasi dapat diunduh gratis, dengan langganan opsional yang diperpanjang otomatis. Periksa harga lokal saat ini dan periode penagihan di aplikasi atau App Store sebelum berlangganan. Langganan diperpanjang kecuali dibatalkan setidaknya 24 jam sebelum periode berjalan berakhir. Kelola atau batalkan melalui pengaturan akun App Store Anda.\n\nPrivasi: https://www.cloud-calendars.com/privacy-policy\nKetentuan Penggunaan: https://www.apple.com/legal/internet-services/itunes/dev/stdeula/",
+      "characters": 1306,
+      "utf8Bytes": 1306,
+      "characterLimit": 4000,
+      "withinCharacterLimit": true
+    }
+  },
+  "current": {
+    "appInfo": {
+      "locale": "id",
+      "name": "Cloud Calendars: Kalender",
+      "subtitle": "Semua kalender jadi satu",
+      "privacyPolicyUrl": "https://www.cloud-calendars.com/privacy-policy",
+      "privacyChoicesUrl": null,
+      "privacyPolicyText": null
+    },
+    "version": {
+      "description": "Rencanakan Hari dengan Kalender + Cuaca Bersama\n\nCloud Calendars menggabungkan kalender dan cuaca Anda dalam satu pengalaman perencanaan yang indah dan tertata.\n\nKelola kalender iCloud, Google Calendar, dan Microsoft dalam satu aplikasi sambil melihat prakiraan langsung di jadwal, widget, dan tampilan perencanaan.\n\nSiapkan rapat, perjalanan, penjemputan sekolah, aktivitas luar ruangan, dan hari yang sibuk dengan tampilan kalender yang dirancang untuk perencanaan lebih cepat.\n\nWIDGET LAYAR UTAMA\n\nTambahkan widget indah yang menggabungkan:\n• Acara kalender\n• Prakiraan cuaca\n• Jadwal mendatang\n• Fase bulan dan kondisi\n• Angin dan suhu\n• Ringkasan agenda harian\n\nPilih dari berbagai gaya widget untuk melihat hari Anda langsung dari Layar Utama.\n\nMENGAPA CLOUD CALENDARS\n\n• Lihat kalender iCloud, Google Calendar, dan Microsoft bersama\n• Rencanakan dengan prakiraan cuaca bawaan\n• Gunakan widget Layar Utama yang indah\n• Seret, pindahkan, dan ubah durasi acara secara alami\n• Buat tautan Google Meet dan Microsoft Teams\n• Beralih antara tampilan Hari, Minggu, Bulan, Tahun, dan Daftar\n• Kelola kalender kerja dan pribadi di satu tempat\n\nFITUR\n\nSemua Kalender Anda Bersama\nHubungkan dan kelola kalender iCloud, Google Calendar, dan Microsoft dalam satu pengalaman bersih dengan kode warna.\n\nCuaca di Dalam Kalender Anda\nLihat prakiraan per jam dan harian langsung dalam alur perencanaan, termasuk suhu, kondisi, fase bulan, angin, dan ikon cuaca.\n\nWidget Kalender + Cuaca\nLihat jadwal dan cuaca seketika dari widget Layar Utama yang dapat disesuaikan.\n\nBerbagai Tampilan Kalender\nPilih tampilan Hari, Minggu, Bulan, Tahun, atau Daftar sesuai cara Anda merencanakan waktu.\n\nPengeditan Acara yang Mudah\nKetuk, seret, dan ubah durasi acara langsung di kalender untuk penjadwalan yang cepat dan alami.\n\nTampilan Cuaca Khusus\nJelajahi prakiraan terperinci dengan kondisi per jam dan wawasan perencanaan yang berguna.\n\nBuat Acara dari Prakiraan\nKetuk jam prakiraan untuk langsung membuat acara baru pada waktu yang dipilih.\n\nTautan Rapat Bawaan\nTambahkan tautan Google Meet dan Microsoft Teams ke acara dengan cepat.\n\nSEMPURNA UNTUK\n\n• Pengelolaan kalender kerja dan pribadi\n• Perencanaan dengan mempertimbangkan cuaca\n• Aktivitas luar ruangan dan perjalanan\n• Jadwal sibuk dan perencanaan keluarga\n• Pengguna Google Calendar dan iCloud\n• Pengguna kalender Microsoft\n\nCoba Cloud Calendars dan buat setiap hari lebih mudah direncanakan.\n\nINFORMASI LANGGANAN\n\nCloud Calendars menawarkan langganan yang diperpanjang otomatis.\n\nPaket Gratis\n• Sinkronisasi Google Calendar\n• Berbagai tampilan kalender\n• Fitur cuaca\n• Widget\n• Dukungan Google Meet\n\nPembayaran akan dibebankan ke akun Apple ID saat pembelian dikonfirmasi. Langganan diperpanjang otomatis kecuali dibatalkan setidaknya 24 jam sebelum akhir periode saat ini. Akun Anda akan dikenai biaya perpanjangan dalam 24 jam sebelum akhir periode saat ini. Anda dapat mengelola dan membatalkan langganan di pengaturan akun App Store.\n\nKebijakan Privasi: https://www.cloud-calendars.com/privacy-policy\nKetentuan Penggunaan: https://www.apple.com/legal/internet-services/itunes/dev/stdeula/",
+      "locale": "id",
+      "keywords": "cuaca,widget,jadwal,perencana,agenda,prakiraan,iCloud,rapat,acara,kerja,layar kunci,hujan,hari ini",
+      "marketingUrl": "https://www.cloud-calendars.com/",
+      "promotionalText": null,
+      "supportUrl": "https://www.cloud-calendars.com/",
+      "whatsNew": null
+    }
+  },
+  "keywordChecks": {
+    "exactDuplicateKeywords": false,
+    "exactTitleSubtitleTokenDuplicates": [],
+    "note": "Unicode code-point counts include combining marks. UTF-8 bytes separate. Token checks are not a full linguistic or rendered-text review."
+  },
+  "readiness": "ready_for_editorial_review_not_applied",
+  "translationConfidence": "medium",
+  "caveat": "Model-authored; native-language editorial review recommended, particularly Indic morphology and terminology. No external translator or ASC write validation. Urdu mixed RTL/LTR rendering not visually verified.",
+  "evidence": [
+    "../../product-facts.json",
+    "../localized-batch05/audit.json",
+    "asc-current.json"
+  ],
+  "applyOnly": [
+    "subtitle",
+    "keywords",
+    "promotionalText",
+    "description"
+  ],
+  "preserve": [
+    "name",
+    "release notes",
+    "URLs",
+    "privacy declarations",
+    "screenshots",
+    "other locales"
+  ]
+}

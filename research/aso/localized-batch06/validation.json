@@ -1,0 +1,442 @@
+{
+  "retrievedAt": "2026-10-21T17:08:27.521507+00:00",
+  "prepared": 15,
+  "applied": 0,
+  "locales": [
+    {
+      "locale": "bn-BD",
+      "name": "Cloud Calendars: ক্যালেন্ডার",
+      "subtitle": "আবহাওয়া ও পরিকল্পনা",
+      "counts": {
+        "name": {
+          "characters": 28,
+          "utf8Bytes": 50
+        },
+        "subtitle": {
+          "characters": 20,
+          "utf8Bytes": 56
+        },
+        "keywords": {
+          "characters": 66,
+          "utf8Bytes": 180
+        },
+        "promotionalText": {
+          "characters": 142,
+          "utf8Bytes": 384
+        },
+        "description": {
+          "characters": 1243,
+          "utf8Bytes": 2831
+        }
+      },
+      "readyForEditorialReview": true,
+      "confidence": "low-medium"
+    },
+    {
+      "locale": "ca",
+      "name": "Cloud Calendars: Calendari",
+      "subtitle": "Temps, cites i ginys",
+      "counts": {
+        "name": {
+          "characters": 26,
+          "utf8Bytes": 26
+        },
+        "subtitle": {
+          "characters": 20,
+          "utf8Bytes": 20
+        },
+        "keywords": {
+          "characters": 99,
+          "utf8Bytes": 102
+        },
+        "promotionalText": {
+          "characters": 122,
+          "utf8Bytes": 124
+        },
+        "description": {
+          "characters": 1376,
+          "utf8Bytes": 1418
+        }
+      },
+      "readyForEditorialReview": true,
+      "confidence": "medium"
+    },
+    {
+      "locale": "gu-IN",
+      "name": "Cloud Calendars: કૅલેન્ડર",
+      "subtitle": "હવામાન અને આયોજન",
+      "counts": {
+        "name": {
+          "characters": 25,
+          "utf8Bytes": 41
+        },
+        "subtitle": {
+          "characters": 16,
+          "utf8Bytes": 44
+        },
+        "keywords": {
+          "characters": 64,
+          "utf8Bytes": 174
+        },
+        "promotionalText": {
+          "characters": 108,
+          "utf8Bytes": 284
+        },
+        "description": {
+          "characters": 1191,
+          "utf8Bytes": 2615
+        }
+      },
+      "readyForEditorialReview": true,
+      "confidence": "low-medium"
+    },
+    {
+      "locale": "id",
+      "name": "Cloud Calendars: Kalender",
+      "subtitle": "Cuaca, jadwal dan widget",
+      "counts": {
+        "name": {
+          "characters": 25,
+          "utf8Bytes": 25
+        },
+        "subtitle": {
+          "characters": 24,
+          "utf8Bytes": 24
+        },
+        "keywords": {
+          "characters": 84,
+          "utf8Bytes": 84
+        },
+        "promotionalText": {
+          "characters": 124,
+          "utf8Bytes": 124
+        },
+        "description": {
+          "characters": 1306,
+          "utf8Bytes": 1306
+        }
+      },
+      "readyForEditorialReview": true,
+      "confidence": "medium"
+    },
+    {
+      "locale": "kn-IN",
+      "name": "Cloud Calendars: ಕ್ಯಾಲೆಂಡರ್",
+      "subtitle": "ಹವಾಮಾನ ಮತ್ತು ಯೋಜನೆ",
+      "counts": {
+        "name": {
+          "characters": 27,
+          "utf8Bytes": 47
+        },
+        "subtitle": {
+          "characters": 18,
+          "utf8Bytes": 50
+        },
+        "keywords": {
+          "characters": 70,
+          "utf8Bytes": 192
+        },
+        "promotionalText": {
+          "characters": 136,
+          "utf8Bytes": 370
+        },
+        "description": {
+          "characters": 1327,
+          "utf8Bytes": 3097
+        }
+      },
+      "readyForEditorialReview": true,
+      "confidence": "low-medium"
+    },
+    {
+      "locale": "ml-IN",
+      "name": "Cloud Calendars: കലണ്ടർ",
+      "subtitle": "കാലാവസ്ഥയും പദ്ധതികളും",
+      "counts": {
+        "name": {
+          "characters": 23,
+          "utf8Bytes": 35
+        },
+        "subtitle": {
+          "characters": 22,
+          "utf8Bytes": 64
+        },
+        "keywords": {
+          "characters": 69,
+          "utf8Bytes": 191
+        },
+        "promotionalText": {
+          "characters": 155,
+          "utf8Bytes": 429
+        },
+        "description": {
+          "characters": 1411,
+          "utf8Bytes": 3367
+        }
+      },
+      "readyForEditorialReview": true,
+      "confidence": "low-medium"
+    },
+    {
+      "locale": "mr-IN",
+      "name": "Cloud Calendars: कॅलेंडर",
+      "subtitle": "हवामान आणि नियोजन",
+      "counts": {
+        "name": {
+          "characters": 24,
+          "utf8Bytes": 38
+        },
+        "subtitle": {
+          "characters": 17,
+          "utf8Bytes": 47
+        },
+        "keywords": {
+          "characters": 67,
+          "utf8Bytes": 183
+        },
+        "promotionalText": {
+          "characters": 121,
+          "utf8Bytes": 319
+        },
+        "description": {
+          "characters": 1234,
+          "utf8Bytes": 2782
+        }
+      },
+      "readyForEditorialReview": true,
+      "confidence": "low-medium"
+    },
+    {
+      "locale": "ms",
+      "name": "Cloud Calendars: Kalendar",
+      "subtitle": "Cuaca, jadual dan widget",
+      "counts": {
+        "name": {
+          "characters": 25,
+          "utf8Bytes": 25
+        },
+        "subtitle": {
+          "characters": 24,
+          "utf8Bytes": 24
+        },
+        "keywords": {
+          "characters": 96,
+          "utf8Bytes": 96
+        },
+        "promotionalText": {
+          "characters": 131,
+          "utf8Bytes": 131
+        },
+        "description": {
+          "characters": 1323,
+          "utf8Bytes": 1323
+        }
+      },
+      "readyForEditorialReview": true,
+      "confidence": "medium"
+    },
+    {
+      "locale": "or-IN",
+      "name": "Cloud Calendars: କ୍ୟାଲେଣ୍ଡର",
+      "subtitle": "ପାଣିପାଗ ଓ ଯୋଜନା",
+      "counts": {
+        "name": {
+          "characters": 27,
+          "utf8Bytes": 47
+        },
+        "subtitle": {
+          "characters": 15,
+          "utf8Bytes": 41
+        },
+        "keywords": {
+          "characters": 71,
+          "utf8Bytes": 195
+        },
+        "promotionalText": {
+          "characters": 140,
+          "utf8Bytes": 378
+        },
+        "description": {
+          "characters": 1187,
+          "utf8Bytes": 2677
+        }
+      },
+      "readyForEditorialReview": true,
+      "confidence": "low-medium"
+    },
+    {
+      "locale": "pa-IN",
+      "name": "Cloud Calendars: ਕੈਲੰਡਰ",
+      "subtitle": "ਮੌਸਮ ਅਤੇ ਯੋਜਨਾਵਾਂ",
+      "counts": {
+        "name": {
+          "characters": 23,
+          "utf8Bytes": 35
+        },
+        "subtitle": {
+          "characters": 17,
+          "utf8Bytes": 47
+        },
+        "keywords": {
+          "characters": 66,
+          "utf8Bytes": 180
+        },
+        "promotionalText": {
+          "characters": 109,
+          "utf8Bytes": 289
+        },
+        "description": {
+          "characters": 1205,
+          "utf8Bytes": 2667
+        }
+      },
+      "readyForEditorialReview": true,
+      "confidence": "low-medium"
+    },
+    {
+      "locale": "ta-IN",
+      "name": "Cloud Calendars: காலண்டர்",
+      "subtitle": "வானிலை மற்றும் திட்டங்கள்",
+      "counts": {
+        "name": {
+          "characters": 25,
+          "utf8Bytes": 41
+        },
+        "subtitle": {
+          "characters": 25,
+          "utf8Bytes": 71
+        },
+        "keywords": {
+          "characters": 88,
+          "utf8Bytes": 246
+        },
+        "promotionalText": {
+          "characters": 168,
+          "utf8Bytes": 470
+        },
+        "description": {
+          "characters": 1379,
+          "utf8Bytes": 3255
+        }
+      },
+      "readyForEditorialReview": true,
+      "confidence": "low-medium"
+    },
+    {
+      "locale": "te-IN",
+      "name": "Cloud Calendars: క్యాలెండర్",
+      "subtitle": "వాతావరణం మరియు ప్రణాళికలు",
+      "counts": {
+        "name": {
+          "characters": 27,
+          "utf8Bytes": 47
+        },
+        "subtitle": {
+          "characters": 25,
+          "utf8Bytes": 71
+        },
+        "keywords": {
+          "characters": 73,
+          "utf8Bytes": 201
+        },
+        "promotionalText": {
+          "characters": 140,
+          "utf8Bytes": 380
+        },
+        "description": {
+          "characters": 1276,
+          "utf8Bytes": 2928
+        }
+      },
+      "readyForEditorialReview": true,
+      "confidence": "low-medium"
+    },
+    {
+      "locale": "th",
+      "name": "Cloud Calendars: ปฏิทิน",
+      "subtitle": "อากาศ นัดหมาย และวิดเจ็ต",
+      "counts": {
+        "name": {
+          "characters": 23,
+          "utf8Bytes": 35
+        },
+        "subtitle": {
+          "characters": 24,
+          "utf8Bytes": 68
+        },
+        "keywords": {
+          "characters": 71,
+          "utf8Bytes": 195
+        },
+        "promotionalText": {
+          "characters": 95,
+          "utf8Bytes": 279
+        },
+        "description": {
+          "characters": 1076,
+          "utf8Bytes": 2580
+        }
+      },
+      "readyForEditorialReview": true,
+      "confidence": "medium"
+    },
+    {
+      "locale": "ur-PK",
+      "name": "Cloud Calendars: کیلنڈر",
+      "subtitle": "موسم اور منصوبہ بندی",
+      "counts": {
+        "name": {
+          "characters": 23,
+          "utf8Bytes": 29
+        },
+        "subtitle": {
+          "characters": 20,
+          "utf8Bytes": 37
+        },
+        "keywords": {
+          "characters": 63,
+          "utf8Bytes": 117
+        },
+        "promotionalText": {
+          "characters": 124,
+          "utf8Bytes": 226
+        },
+        "description": {
+          "characters": 1236,
+          "utf8Bytes": 1987
+        }
+      },
+      "readyForEditorialReview": true,
+      "confidence": "low-medium"
+    },
+    {
+      "locale": "vi",
+      "name": "Cloud Calendars: Lịch",
+      "subtitle": "Thời tiết, kế hoạch, tiện ích",
+      "counts": {
+        "name": {
+          "characters": 21,
+          "utf8Bytes": 23
+        },
+        "subtitle": {
+          "characters": 29,
+          "utf8Bytes": 40
+        },
+        "keywords": {
+          "characters": 79,
+          "utf8Bytes": 110
+        },
+        "promotionalText": {
+          "characters": 125,
+          "utf8Bytes": 168
+        },
+        "description": {
+          "characters": 1214,
+          "utf8Bytes": 1544
+        }
+      },
+      "readyForEditorialReview": true,
+      "confidence": "medium"
+    }
+  ]
+}

@@ -1,0 +1,19 @@
+Pregledajte poslovne obveze, privatne planove i vrijeme na iPhoneu i iPadu uz Cloud Calendars.
+
+KALENDARI I PRIKAZI
+Koristite iCloud kalendare i povežite Google kalendar. Premium dodaje podršku za Microsoftove kalendare. Odaberite prikaz dana, tjedna, mjeseca, godine ili popisa.
+
+Možete izraditi i lokalni kalendar na uređaju bez računa za Cloud Calendars. Povezivanje usluga i dijeljenje mogu zahtijevati prijavu.
+
+VRIJEME, WIDGETI I DIJELJENJE
+Provjerite prognozu dok planirate. Widgeti za početni zaslon dostupni su u maloj, srednjoj i velikoj veličini. Dostupne prognoze ovise o lokaciji i pružatelju vremenskih podataka. Dijelite događaje i kalendare te šaljite pozivnice e-poštom, QR kodom ili putem App Clipa. Prava pristupa ovise o kalendaru i vrsti pozivnice.
+
+ODABERITE PLAN
+Besplatni Base uključuje sinkronizaciju s Google kalendarom, Google Meet, različite prikaze kalendara, vrijeme i widgete.
+Advanced uključuje značajke plana Base i uklanja oglase.
+Premium uključuje Advanced i dodaje Microsoftove kalendare i Microsoft Teams.
+
+Preuzimanje je besplatno, uz neobavezne pretplate s automatskom obnovom. Prije pretplate provjerite trenutačnu lokalnu cijenu i obračunsko razdoblje u aplikaciji ili App Storeu. Pretplata se obnavlja ako je ne otkažete najmanje 24 sata prije kraja tekućeg razdoblja. Njome možete upravljati ili je otkazati u postavkama računa za App Store.
+
+Privatnost: https://www.cloud-calendars.com/privacy-policy
+Uvjeti korištenja: https://www.apple.com/legal/internet-services/itunes/dev/stdeula/

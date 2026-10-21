@@ -1,0 +1,619 @@
+{
+  "retrievedAt": "2026-10-21T16:59:23.912800+00:00",
+  "method": "GET only",
+  "selected": [
+    "en-GB",
+    "en-CA",
+    "en-AU",
+    "es-MX",
+    "fr-CA",
+    "el",
+    "hr",
+    "sk",
+    "sl-SI",
+    "ru"
+  ],
+  "version": {
+    "id": "2efb6dfe-d449-4caa-8e94-964bb5fca361",
+    "attributes": {
+      "platform": "IOS",
+      "versionString": "1.7.4",
+      "appStoreState": "PREPARE_FOR_SUBMISSION",
+      "appVersionState": "PREPARE_FOR_SUBMISSION",
+      "copyright": "Arte Soft Ltd.",
+      "reviewType": "APP_STORE",
+      "releaseType": "AFTER_APPROVAL",
+      "earliestReleaseDate": null,
+      "usesIdfa": null,
+      "downloadable": true,
+      "createdDate": "2026-10-19T23:52:46-07:00"
+    },
+    "localizations": [
+      {
+        "type": "appStoreVersionLocalizations",
+        "id": "b494decd-f50f-4eda-a44d-d93615681a21",
+        "attributes": {
+          "description": "Plan Your Day with Calendar + Weather Together\n\nCloud Calendars combines your calendars and weather into one beautifully organized planning experience.\n\nManage iCloud, Google Calendar, and Microsoft calendars in a single app while seeing forecasts directly inside your schedule, widgets, and planning views.\n\nStay ahead of meetings, travel, school pickups, outdoor activities, and busy days with calendar views designed for faster planning.\n\nHOME SCREEN WIDGETS\n\nAdd beautiful widgets that combine:\n• Calendar events\n• Weather forecasts\n• Upcoming schedule\n• Moon phase and conditions\n• Wind and temperature\n• Daily agenda overview\n\nChoose from multiple widget styles to see your day directly from the Home Screen.\n\nWHY CLOUD CALENDARS\n\n• View iCloud, Google Calendar, and Microsoft calendars together\n• Plan with built-in weather forecasts\n• Use beautiful Home Screen widgets\n• Drag, move, and resize events naturally\n• Create Google Meet and Microsoft Teams links\n• Switch between Day, Week, Month, Year, and List views\n• Manage work and personal calendars in one place\n\nFEATURES\n\nAll Your Calendars Together\nConnect and manage calendars from iCloud, Google Calendar, and Microsoft in one clean, color-coded experience.\n\nWeather Built Into Your Calendar\nSee hourly and daily forecasts directly inside your planning workflow, including temperature, conditions, moon phase, wind, and weather icons.\n\nCalendar + Weather Widgets\nView your schedule and weather instantly from customizable Home Screen widgets.\n\nMultiple Calendar Views\nChoose Day, Week, Month, Year, or List view depending on how you plan your time.\n\nEasy Event Editing\nTap, drag, and resize events directly on the calendar for fast and natural scheduling.\n\nDedicated Weather View\nExplore detailed forecasts with hourly conditions and useful planning insights.\n\nCreate Events from Forecasts\nTap a forecast hour to instantly create a new event with the selected time.\n\nBuilt-In Meeting Links\nQuickly add Google Meet and Microsoft Teams links to events.\n\nPERFECT FOR\n\n• Work and personal calendar management\n• Weather-aware planning\n• Outdoor activities and travel\n• Busy schedules and family planning\n• Google Calendar and iCloud users\n• Microsoft calendar users\n\nTry Cloud Calendars and make every day easier to plan.\n\nSUBSCRIPTION INFORMATION\n\nCloud Calendars offers auto-renewable subscriptions.\n\nFree Plan\n• Google Calendar sync\n• Multiple calendar views\n• Weather features\n• Widgets\n• Google Meet support\nPayment will be charged to your Apple ID account at confirmation of purchase. Subscriptions renew automatically unless canceled at least 24 hours before the end of the current period. Your account will be charged for renewal within 24 hours before the end of the current period. You can manage and cancel subscriptions in your App Store account settings.\n\nPrivacy Policy: https://www.cloud-calendars.com/privacy-policy\nTerms of Use: https://www.apple.com/legal/internet-services/itunes/dev/stdeula/",
+          "locale": "en-AU",
+          "keywords": "weather,schedule,planner,agenda,forecast,day planner,lock,screen,rain,today,month,week,reminder,sync",
+          "marketingUrl": "https://www.cloud-calendars.com/",
+          "promotionalText": null,
+          "supportUrl": "https://www.cloud-calendars.com/",
+          "whatsNew": null
+        },
+        "relationships": {
+          "appScreenshotSets": {
+            "links": {
+              "self": "https://api.appstoreconnect.apple.com/v1/appStoreVersionLocalizations/b494decd-f50f-4eda-a44d-d93615681a21/relationships/appScreenshotSets",
+              "related": "https://api.appstoreconnect.apple.com/v1/appStoreVersionLocalizations/b494decd-f50f-4eda-a44d-d93615681a21/appScreenshotSets"
+            }
+          },
+          "appPreviewSets": {
+            "links": {
+              "self": "https://api.appstoreconnect.apple.com/v1/appStoreVersionLocalizations/b494decd-f50f-4eda-a44d-d93615681a21/relationships/appPreviewSets",
+              "related": "https://api.appstoreconnect.apple.com/v1/appStoreVersionLocalizations/b494decd-f50f-4eda-a44d-d93615681a21/appPreviewSets"
+            }
+          },
+          "searchKeywords": {
+            "links": {
+              "self": "https://api.appstoreconnect.apple.com/v1/appStoreVersionLocalizations/b494decd-f50f-4eda-a44d-d93615681a21/relationships/searchKeywords",
+              "related": "https://api.appstoreconnect.apple.com/v1/appStoreVersionLocalizations/b494decd-f50f-4eda-a44d-d93615681a21/searchKeywords"
+            }
+          },
+          "placements": {
+            "links": {
+              "self": "https://api.appstoreconnect.apple.com/v1/appStoreVersionLocalizations/b494decd-f50f-4eda-a44d-d93615681a21/relationships/placements",
+              "related": "https://api.appstoreconnect.apple.com/v1/appStoreVersionLocalizations/b494decd-f50f-4eda-a44d-d93615681a21/placements"
+            }
+          }
+        },
+        "links": {
+          "self": "https://api.appstoreconnect.apple.com/v1/appStoreVersionLocalizations/b494decd-f50f-4eda-a44d-d93615681a21"
+        }
+      },
+      {
+        "type": "appStoreVersionLocalizations",
+        "id": "79e62e99-3004-47ff-b072-bc8841f9e107",
+        "attributes": {
+          "description": "Planifiez votre journée avec le calendrier et la météo\n\nCloud Calendars combine vos calendriers et la météo dans une expérience de planification élégante et bien organisée.\n\nGérez vos calendriers iCloud, Google Calendar et Microsoft dans une seule app, tout en consultant les prévisions directement dans votre horaire, vos widgets et vos vues de planification.\n\nAnticipez les réunions, les voyages, les sorties d’école, les activités extérieures et les journées chargées grâce à des vues de calendrier conçues pour planifier plus rapidement.\n\nWIDGETS POUR L’ÉCRAN D’ACCUEIL\n\nAjoutez de magnifiques widgets qui combinent :\n• Événements du calendrier\n• Prévisions météo\n• Horaire à venir\n• Phases de la Lune et conditions\n• Vent et température\n• Aperçu de l’agenda quotidien\n\nChoisissez parmi plusieurs styles de widgets pour voir votre journée directement à partir de l’écran d’accueil.\n\nPOURQUOI CLOUD CALENDARS\n\n• Affichez ensemble les calendriers iCloud, Google Calendar et Microsoft\n• Planifiez avec les prévisions météo intégrées\n• Utilisez de magnifiques widgets sur l’écran d’accueil\n• Faites glisser, déplacez et redimensionnez naturellement les événements\n• Créez des liens Google Meet et Microsoft Teams\n• Passez des vues Jour, Semaine, Mois, Année et Liste\n• Gérez vos calendriers professionnels et personnels au même endroit\n\nFONCTIONS\n\nTous vos calendriers réunis\nConnectez et gérez les calendriers iCloud, Google Calendar et Microsoft dans une expérience claire avec code couleur.\n\nLa météo intégrée à votre calendrier\nConsultez les prévisions horaires et quotidiennes directement pendant la planification, avec la température, les conditions, les phases de la Lune, le vent et les icônes météo.\n\nWidgets calendrier et météo\nConsultez instantanément votre horaire et la météo à partir de widgets personnalisables sur l’écran d’accueil.\n\nPlusieurs vues de calendrier\nChoisissez la vue Jour, Semaine, Mois, Année ou Liste selon votre façon d’organiser votre temps.\n\nModification facile des événements\nTouchez, faites glisser et redimensionnez les événements directement dans le calendrier pour une planification rapide et naturelle.\n\nVue météo dédiée\nExplorez des prévisions détaillées avec les conditions horaires et des renseignements utiles pour planifier.\n\nCréez des événements à partir des prévisions\nTouchez une heure de prévision pour créer instantanément un événement à l’heure choisie.\n\nLiens de réunion intégrés\nAjoutez rapidement des liens Google Meet et Microsoft Teams aux événements.\n\nIDÉAL POUR\n\n• La gestion des calendriers professionnels et personnels\n• La planification selon la météo\n• Les activités extérieures et les voyages\n• Les horaires chargés et l’organisation familiale\n• Les utilisateurs de Google Calendar et iCloud\n• Les utilisateurs de calendriers Microsoft\n\nEssayez Cloud Calendars et simplifiez la planification de chaque journée.\n\nRENSEIGNEMENTS SUR L’ABONNEMENT\n\nCloud Calendars offre des abonnements à renouvellement automatique.\n\nForfait gratuit\n• Synchronisation de Google Calendar\n• Plusieurs vues de calendrier\n• Fonctions météo\n• Widgets\n• Prise en charge de Google Meet\n\nLe paiement sera facturé à votre identifiant Apple lors de la confirmation de l’achat. Les abonnements se renouvellent automatiquement sauf annulation au moins 24 heures avant la fin de la période en cours. Votre compte sera facturé pour le renouvellement dans les 24 heures précédant la fin de la période en cours. Vous pouvez gérer et annuler vos abonnements dans les réglages de votre compte App Store.\n\nPolitique de confidentialité : https://www.cloud-calendars.com/privacy-policy\nConditions d’utilisation : https://www.apple.com/legal/internet-services/itunes/dev/stdeula/",
+          "locale": "fr-CA",
+          "keywords": "météo,widget,horaire,planificateur,prévisions,iCloud,réunions,vent,écran verrouillé,pluie,semaine",
+          "marketingUrl": "https://www.cloud-calendars.com/",
+          "promotionalText": null,
+          "supportUrl": "https://www.cloud-calendars.com/",
+          "whatsNew": null
+        },
+        "relationships": {
+          "appScreenshotSets": {
+            "links": {
+              "self": "https://api.appstoreconnect.apple.com/v1/appStoreVersionLocalizations/79e62e99-3004-47ff-b072-bc8841f9e107/relationships/appScreenshotSets",
+              "related": "https://api.appstoreconnect.apple.com/v1/appStoreVersionLocalizations/79e62e99-3004-47ff-b072-bc8841f9e107/appScreenshotSets"
+            }
+          },
+          "appPreviewSets": {
+            "links": {
+              "self": "https://api.appstoreconnect.apple.com/v1/appStoreVersionLocalizations/79e62e99-3004-47ff-b072-bc8841f9e107/relationships/appPreviewSets",
+              "related": "https://api.appstoreconnect.apple.com/v1/appStoreVersionLocalizations/79e62e99-3004-47ff-b072-bc8841f9e107/appPreviewSets"
+            }
+          },
+          "searchKeywords": {
+            "links": {
+              "self": "https://api.appstoreconnect.apple.com/v1/appStoreVersionLocalizations/79e62e99-3004-47ff-b072-bc8841f9e107/relationships/searchKeywords",
+              "related": "https://api.appstoreconnect.apple.com/v1/appStoreVersionLocalizations/79e62e99-3004-47ff-b072-bc8841f9e107/searchKeywords"
+            }
+          },
+          "placements": {
+            "links": {
+              "self": "https://api.appstoreconnect.apple.com/v1/appStoreVersionLocalizations/79e62e99-3004-47ff-b072-bc8841f9e107/relationships/placements",
+              "related": "https://api.appstoreconnect.apple.com/v1/appStoreVersionLocalizations/79e62e99-3004-47ff-b072-bc8841f9e107/placements"
+            }
+          }
+        },
+        "links": {
+          "self": "https://api.appstoreconnect.apple.com/v1/appStoreVersionLocalizations/79e62e99-3004-47ff-b072-bc8841f9e107"
+        }
+      },
+      {
+        "type": "appStoreVersionLocalizations",
+        "id": "a9544b38-ddc9-4c0b-8aa6-f60da6540693",
+        "attributes": {
+          "description": "Plan Your Day with Calendar + Weather Together\n\nCloud Calendars combines your calendars and weather into one beautifully organized planning experience.\n\nManage iCloud, Google Calendar, and Microsoft calendars in a single app while seeing forecasts directly inside your schedule, widgets, and planning views.\n\nStay ahead of meetings, travel, school pickups, outdoor activities, and busy days with calendar views designed for faster planning.\n\nHOME SCREEN WIDGETS\n\nAdd beautiful widgets that combine:\n• Calendar events\n• Weather forecasts\n• Upcoming schedule\n• Moon phase and conditions\n• Wind and temperature\n• Daily agenda overview\n\nChoose from multiple widget styles to see your day directly from the Home Screen.\n\nWHY CLOUD CALENDARS\n\n• View iCloud, Google Calendar, and Microsoft calendars together\n• Plan with built-in weather forecasts\n• Use beautiful Home Screen widgets\n• Drag, move, and resize events naturally\n• Create Google Meet and Microsoft Teams links\n• Switch between Day, Week, Month, Year, and List views\n• Manage work and personal calendars in one place\n\nFEATURES\n\nAll Your Calendars Together\nConnect and manage calendars from iCloud, Google Calendar, and Microsoft in one clean, color-coded experience.\n\nWeather Built Into Your Calendar\nSee hourly and daily forecasts directly inside your planning workflow, including temperature, conditions, moon phase, wind, and weather icons.\n\nCalendar + Weather Widgets\nView your schedule and weather instantly from customizable Home Screen widgets.\n\nMultiple Calendar Views\nChoose Day, Week, Month, Year, or List view depending on how you plan your time.\n\nEasy Event Editing\nTap, drag, and resize events directly on the calendar for fast and natural scheduling.\n\nDedicated Weather View\nExplore detailed forecasts with hourly conditions and useful planning insights.\n\nCreate Events from Forecasts\nTap a forecast hour to instantly create a new event with the selected time.\n\nBuilt-In Meeting Links\nQuickly add Google Meet and Microsoft Teams links to events.\n\nPERFECT FOR\n\n• Work and personal calendar management\n• Weather-aware planning\n• Outdoor activities and travel\n• Busy schedules and family planning\n• Google Calendar and iCloud users\n• Microsoft calendar users\n\nTry Cloud Calendars and make every day easier to plan.\n\nSUBSCRIPTION INFORMATION\n\nCloud Calendars offers auto-renewable subscriptions.\n\nFree Plan\n• Google Calendar sync\n• Multiple calendar views\n• Weather features\n• Widgets\n• Google Meet support\nPayment will be charged to your Apple ID account at confirmation of purchase. Subscriptions renew automatically unless canceled at least 24 hours before the end of the current period. Your account will be charged for renewal within 24 hours before the end of the current period. You can manage and cancel subscriptions in your App Store account settings.\n\nPrivacy Policy: https://www.cloud-calendars.com/privacy-policy\nTerms of Use: https://www.apple.com/legal/internet-services/itunes/dev/stdeula/",
+          "locale": "en-GB",
+          "keywords": "weather,schedule,planner,agenda,forecast,day planner,lock,screen,rain,today,month,week,reminder,sync",
+          "marketingUrl": "https://www.cloud-calendars.com/",
+          "promotionalText": null,
+          "supportUrl": "https://www.cloud-calendars.com/",
+          "whatsNew": null
+        },
+        "relationships": {
+          "appScreenshotSets": {
+            "links": {
+              "self": "https://api.appstoreconnect.apple.com/v1/appStoreVersionLocalizations/a9544b38-ddc9-4c0b-8aa6-f60da6540693/relationships/appScreenshotSets",
+              "related": "https://api.appstoreconnect.apple.com/v1/appStoreVersionLocalizations/a9544b38-ddc9-4c0b-8aa6-f60da6540693/appScreenshotSets"
+            }
+          },
+          "appPreviewSets": {
+            "links": {
+              "self": "https://api.appstoreconnect.apple.com/v1/appStoreVersionLocalizations/a9544b38-ddc9-4c0b-8aa6-f60da6540693/relationships/appPreviewSets",
+              "related": "https://api.appstoreconnect.apple.com/v1/appStoreVersionLocalizations/a9544b38-ddc9-4c0b-8aa6-f60da6540693/appPreviewSets"
+            }
+          },
+          "searchKeywords": {
+            "links": {
+              "self": "https://api.appstoreconnect.apple.com/v1/appStoreVersionLocalizations/a9544b38-ddc9-4c0b-8aa6-f60da6540693/relationships/searchKeywords",
+              "related": "https://api.appstoreconnect.apple.com/v1/appStoreVersionLocalizations/a9544b38-ddc9-4c0b-8aa6-f60da6540693/searchKeywords"
+            }
+          },
+          "placements": {
+            "links": {
+              "self": "https://api.appstoreconnect.apple.com/v1/appStoreVersionLocalizations/a9544b38-ddc9-4c0b-8aa6-f60da6540693/relationships/placements",
+              "related": "https://api.appstoreconnect.apple.com/v1/appStoreVersionLocalizations/a9544b38-ddc9-4c0b-8aa6-f60da6540693/placements"
+            }
+          }
+        },
+        "links": {
+          "self": "https://api.appstoreconnect.apple.com/v1/appStoreVersionLocalizations/a9544b38-ddc9-4c0b-8aa6-f60da6540693"
+        }
+      },
+      {
+        "type": "appStoreVersionLocalizations",
+        "id": "afc2183d-d280-4e21-8169-a08d65d4e1a6",
+        "attributes": {
+          "description": "Планируйте день с календарём и погодой\n\nCloud Calendars объединяет ваши календари и погоду в одном красиво организованном пространстве для планирования.\n\nУправляйте календарями iCloud, Google Календарь и Microsoft в одном приложении и смотрите прогнозы прямо в расписании, виджетах и режимах планирования.\n\nЗаранее готовьтесь к встречам, поездкам, дороге за детьми в школу, занятиям на свежем воздухе и насыщенным дням с помощью режимов календаря для быстрого планирования.\n\nВИДЖЕТЫ ЭКРАНА «ДОМОЙ»\n\nДобавьте красивые виджеты, объединяющие:\n• События календаря\n• Прогнозы погоды\n• Предстоящее расписание\n• Фазу Луны и погодные условия\n• Ветер и температуру\n• Обзор повестки дня\n\nВыберите один из нескольких стилей виджетов, чтобы видеть свой день прямо на экране «Домой».\n\nПОЧЕМУ CLOUD CALENDARS\n\n• Просматривайте вместе календари iCloud, Google Календарь и Microsoft\n• Планируйте с помощью встроенных прогнозов погоды\n• Используйте красивые виджеты экрана «Домой»\n• Естественно перетаскивайте, перемещайте и изменяйте длительность событий\n• Создавайте ссылки Google Meet и Microsoft Teams\n• Переключайтесь между режимами «День», «Неделя», «Месяц», «Год» и «Список»\n• Управляйте рабочими и личными календарями в одном месте\n\nВОЗМОЖНОСТИ\n\nВсе календари вместе\nПодключайте календари iCloud, Google Календарь и Microsoft и управляйте ими в едином понятном интерфейсе с цветовой кодировкой.\n\nПогода в календаре\nСмотрите почасовые и ежедневные прогнозы прямо во время планирования, включая температуру, условия, фазу Луны, ветер и значки погоды.\n\nВиджеты календаря и погоды\nМгновенно просматривайте расписание и погоду в настраиваемых виджетах экрана «Домой».\n\nНесколько режимов календаря\nВыберите режим «День», «Неделя», «Месяц», «Год» или «Список» в зависимости от того, как вы планируете время.\n\nПростое редактирование событий\nНажимайте, перетаскивайте и меняйте длительность событий прямо в календаре для быстрого и естественного планирования.\n\nОтдельный режим погоды\nИзучайте подробные прогнозы с почасовыми условиями и полезной информацией для планирования.\n\nСоздание событий из прогнозов\nНажмите на час прогноза, чтобы сразу создать новое событие на выбранное время.\n\nВстроенные ссылки на встречи\nБыстро добавляйте к событиям ссылки Google Meet и Microsoft Teams.\n\nИДЕАЛЬНО ДЛЯ\n\n• Управления рабочими и личными календарями\n• Планирования с учётом погоды\n• Занятий на свежем воздухе и поездок\n• Насыщенных расписаний и семейного планирования\n• Пользователей Google Календаря и iCloud\n• Пользователей календаря Microsoft\n\nПопробуйте Cloud Calendars и планируйте каждый день проще.\n\nИНФОРМАЦИЯ О ПОДПИСКЕ\n\nCloud Calendars предлагает автоматически продлеваемые подписки.\n\nБесплатный план\n• Синхронизация Google Календаря\n• Несколько режимов календаря\n• Функции погоды\n• Виджеты\n• Поддержка Google Meet\n\nПлата будет списана с вашей учётной записи Apple ID при подтверждении покупки. Подписка продлевается автоматически, если её не отменить не менее чем за 24 часа до окончания текущего периода. Плата за продление будет списана в течение 24 часов до окончания текущего периода. Управлять подписками и отменять их можно в настройках учётной записи App Store.\n\nПолитика конфиденциальности: https://www.cloud-calendars.com/privacy-policy\nУсловия использования: https://www.apple.com/legal/internet-services/itunes/dev/stdeula/",
+          "locale": "ru",
+          "keywords": "погода,виджет,расписание,планер,задачи,прогноз,iCloud,события,встречи,дела,экран блокировки,дождь",
+          "marketingUrl": "https://www.cloud-calendars.com/",
+          "promotionalText": null,
+          "supportUrl": "https://www.cloud-calendars.com/",
+          "whatsNew": null
+        },
+        "relationships": {
+          "appScreenshotSets": {
+            "links": {
+              "self": "https://api.appstoreconnect.apple.com/v1/appStoreVersionLocalizations/afc2183d-d280-4e21-8169-a08d65d4e1a6/relationships/appScreenshotSets",
+              "related": "https://api.appstoreconnect.apple.com/v1/appStoreVersionLocalizations/afc2183d-d280-4e21-8169-a08d65d4e1a6/appScreenshotSets"
+            }
+          },
+          "appPreviewSets": {
+            "links": {
+              "self": "https://api.appstoreconnect.apple.com/v1/appStoreVersionLocalizations/afc2183d-d280-4e21-8169-a08d65d4e1a6/relationships/appPreviewSets",
+              "related": "https://api.appstoreconnect.apple.com/v1/appStoreVersionLocalizations/afc2183d-d280-4e21-8169-a08d65d4e1a6/appPreviewSets"
+            }
+          },
+          "searchKeywords": {
+            "links": {
+              "self": "https://api.appstoreconnect.apple.com/v1/appStoreVersionLocalizations/afc2183d-d280-4e21-8169-a08d65d4e1a6/relationships/searchKeywords",
+              "related": "https://api.appstoreconnect.apple.com/v1/appStoreVersionLocalizations/afc2183d-d280-4e21-8169-a08d65d4e1a6/searchKeywords"
+            }
+          },
+          "placements": {
+            "links": {
+              "self": "https://api.appstoreconnect.apple.com/v1/appStoreVersionLocalizations/afc2183d-d280-4e21-8169-a08d65d4e1a6/relationships/placements",
+              "related": "https://api.appstoreconnect.apple.com/v1/appStoreVersionLocalizations/afc2183d-d280-4e21-8169-a08d65d4e1a6/placements"
+            }
+          }
+        },
+        "links": {
+          "self": "https://api.appstoreconnect.apple.com/v1/appStoreVersionLocalizations/afc2183d-d280-4e21-8169-a08d65d4e1a6"
+        }
+      },
+      {
+        "type": "appStoreVersionLocalizations",
+        "id": "3110b329-4291-4e1b-9cce-61500c38ff4f",
+        "attributes": {
+          "description": "Planea tu día con el calendario y el clima juntos\n\nCloud Calendars reúne tus calendarios y el clima en una sola experiencia de planeación bien organizada.\n\nAdministra los calendarios de iCloud, Google Calendar y Microsoft en una sola app mientras ves los pronósticos dentro de tu agenda, tus widgets y tus vistas de planeación.\n\nLlega a tiempo a juntas, viajes, salidas de la escuela, actividades al aire libre y días cargados con vistas de calendario pensadas para planear más rápido.\n\nWIDGETS EN LA PANTALLA DE INICIO\n\nAgrega widgets que combinan:\n• Eventos del calendario\n• Pronósticos del clima\n• Agenda próxima\n• Fase lunar y condiciones\n• Viento y temperatura\n• Resumen del día\n\nElige entre varios estilos de widget para ver tu día desde la pantalla de inicio.\n\nPOR QUÉ CLOUD CALENDARS\n\n• Consulta juntos los calendarios de iCloud, Google Calendar y Microsoft\n• Planea con pronósticos del clima integrados\n• Usa widgets en la pantalla de inicio\n• Arrastra, mueve y ajusta eventos con naturalidad\n• Crea enlaces de Google Meet y Microsoft Teams\n• Cambia entre las vistas Día, Semana, Mes, Año y Lista\n• Administra el trabajo y lo personal en un mismo lugar\n\nFUNCIONES\n\nTodos tus calendarios juntos\nConecta y administra calendarios de iCloud, Google Calendar y Microsoft en una experiencia limpia y con colores.\n\nEl clima dentro de tu calendario\nConsulta pronósticos por hora y por día dentro de tu flujo de planeación: temperatura, condiciones, fase lunar, viento e iconos del clima.\n\nWidgets de calendario y clima\nVe tu agenda y el clima al instante desde widgets personalizables.\n\nVarias vistas de calendario\nElige Día, Semana, Mes, Año o Lista según cómo planees tu tiempo.\n\nEdición fácil de eventos\nToca, arrastra y ajusta eventos directamente en el calendario.\n\nVista del clima dedicada\nExplora pronósticos detallados con condiciones por hora y datos útiles para planear.\n\nCrea eventos desde el pronóstico\nToca una hora del pronóstico para crear al instante un evento con ese horario.\n\nEnlaces de reunión integrados\nAgrega rápido enlaces de Google Meet y Microsoft Teams a tus eventos.\n\nIDEAL PARA\n\n• Administrar calendarios de trabajo y personales\n• Planear tomando en cuenta el clima\n• Actividades al aire libre y viajes\n• Agendas llenas y planeación familiar\n• Usuarios de Google Calendar e iCloud\n• Usuarios de calendarios de Microsoft\n\nPrueba Cloud Calendars y haz que cada día sea más fácil de planear.\n\nINFORMACIÓN SOBRE LA SUSCRIPCIÓN\n\nCloud Calendars ofrece suscripciones de renovación automática.\n\nPlan gratuito\n• Sincronización con Google Calendar\n• Varias vistas de calendario\n• Funciones del clima\n• Widgets\n• Compatibilidad con Google Meet\nEl pago se cargará a tu cuenta de Apple ID al confirmar la compra. Las suscripciones se renuevan automáticamente a menos que se cancelen al menos 24 horas antes del final del periodo actual. Se cobrará la renovación en tu cuenta dentro de las 24 horas previas al final del periodo actual. Puedes administrar y cancelar las suscripciones en la configuración de tu cuenta de App Store.\n\nPolítica de privacidad: https://www.cloud-calendars.com/privacy-policy\nTérminos de uso: https://www.apple.com/legal/internet-services/itunes/dev/stdeula/",
+          "locale": "es-MX",
+          "keywords": "clima,widget,horario,planificador,agenda,pronóstico,iCloud,juntas,eventos,pantalla,lluvia,hoy,alerta",
+          "marketingUrl": "https://www.cloud-calendars.com/",
+          "promotionalText": null,
+          "supportUrl": "https://www.cloud-calendars.com/",
+          "whatsNew": null
+        },
+        "relationships": {
+          "appScreenshotSets": {
+            "links": {
+              "self": "https://api.appstoreconnect.apple.com/v1/appStoreVersionLocalizations/3110b329-4291-4e1b-9cce-61500c38ff4f/relationships/appScreenshotSets",
+              "related": "https://api.appstoreconnect.apple.com/v1/appStoreVersionLocalizations/3110b329-4291-4e1b-9cce-61500c38ff4f/appScreenshotSets"
+            }
+          },
+          "appPreviewSets": {
+            "links": {
+              "self": "https://api.appstoreconnect.apple.com/v1/appStoreVersionLocalizations/3110b329-4291-4e1b-9cce-61500c38ff4f/relationships/appPreviewSets",
+              "related": "https://api.appstoreconnect.apple.com/v1/appStoreVersionLocalizations/3110b329-4291-4e1b-9cce-61500c38ff4f/appPreviewSets"
+            }
+          },
+          "searchKeywords": {
+            "links": {
+              "self": "https://api.appstoreconnect.apple.com/v1/appStoreVersionLocalizations/3110b329-4291-4e1b-9cce-61500c38ff4f/relationships/searchKeywords",
+              "related": "https://api.appstoreconnect.apple.com/v1/appStoreVersionLocalizations/3110b329-4291-4e1b-9cce-61500c38ff4f/searchKeywords"
+            }
+          },
+          "placements": {
+            "links": {
+              "self": "https://api.appstoreconnect.apple.com/v1/appStoreVersionLocalizations/3110b329-4291-4e1b-9cce-61500c38ff4f/relationships/placements",
+              "related": "https://api.appstoreconnect.apple.com/v1/appStoreVersionLocalizations/3110b329-4291-4e1b-9cce-61500c38ff4f/placements"
+            }
+          }
+        },
+        "links": {
+          "self": "https://api.appstoreconnect.apple.com/v1/appStoreVersionLocalizations/3110b329-4291-4e1b-9cce-61500c38ff4f"
+        }
+      },
+      {
+        "type": "appStoreVersionLocalizations",
+        "id": "5d59df7c-8b6e-471a-a9e5-597cd43d7426",
+        "attributes": {
+          "description": "Plan Your Day with Calendar + Weather Together\n\nCloud Calendars combines your calendars and weather into one beautifully organized planning experience.\n\nManage iCloud, Google Calendar, and Microsoft calendars in a single app while seeing forecasts directly inside your schedule, widgets, and planning views.\n\nStay ahead of meetings, travel, school pickups, outdoor activities, and busy days with calendar views designed for faster planning.\n\nHOME SCREEN WIDGETS\n\nAdd beautiful widgets that combine:\n• Calendar events\n• Weather forecasts\n• Upcoming schedule\n• Moon phase and conditions\n• Wind and temperature\n• Daily agenda overview\n\nChoose from multiple widget styles to see your day directly from the Home Screen.\n\nWHY CLOUD CALENDARS\n\n• View iCloud, Google Calendar, and Microsoft calendars together\n• Plan with built-in weather forecasts\n• Use beautiful Home Screen widgets\n• Drag, move, and resize events naturally\n• Create Google Meet and Microsoft Teams links\n• Switch between Day, Week, Month, Year, and List views\n• Manage work and personal calendars in one place\n\nFEATURES\n\nAll Your Calendars Together\nConnect and manage calendars from iCloud, Google Calendar, and Microsoft in one clean, colour-coded experience.\n\nWeather Built Into Your Calendar\nSee hourly and daily forecasts directly inside your planning workflow, including temperature, conditions, moon phase, wind, and weather icons.\n\nCalendar + Weather Widgets\nView your schedule and weather instantly from customizable Home Screen widgets.\n\nMultiple Calendar Views\nChoose Day, Week, Month, Year, or List view depending on how you plan your time.\n\nEasy Event Editing\nTap, drag, and resize events directly on the calendar for fast and natural scheduling.\n\nDedicated Weather View\nExplore detailed forecasts with hourly conditions and useful planning insights.\n\nCreate Events from Forecasts\nTap a forecast hour to instantly create a new event with the selected time.\n\nBuilt-In Meeting Links\nQuickly add Google Meet and Microsoft Teams links to events.\n\nPERFECT FOR\n\n• Work and personal calendar management\n• Weather-aware planning\n• Outdoor activities and travel\n• Busy schedules and family planning\n• Google Calendar and iCloud users\n• Microsoft calendar users\n\nTry Cloud Calendars and make every day easier to plan.\n\nSUBSCRIPTION INFORMATION\n\nCloud Calendars offers auto-renewable subscriptions.\n\nFree Plan\n• Google Calendar sync\n• Multiple calendar views\n• Weather features\n• Widgets\n• Google Meet support\n\nPayment will be charged to your Apple ID account at confirmation of purchase. Subscriptions renew automatically unless cancelled at least 24 hours before the end of the current period. Your account will be charged for renewal within 24 hours before the end of the current period. You can manage and cancel subscriptions in your App Store account settings.\n\nPrivacy Policy: https://www.cloud-calendars.com/privacy-policy\nTerms of Use: https://www.apple.com/legal/internet-services/itunes/dev/stdeula/",
+          "locale": "en-CA",
+          "keywords": "weather,schedule,planner,agenda,forecast,day planner,lock,screen,rain,today,month,week,reminder,sync",
+          "marketingUrl": "https://www.cloud-calendars.com/",
+          "promotionalText": null,
+          "supportUrl": "https://www.cloud-calendars.com/",
+          "whatsNew": null
+        },
+        "relationships": {
+          "appScreenshotSets": {
+            "links": {
+              "self": "https://api.appstoreconnect.apple.com/v1/appStoreVersionLocalizations/5d59df7c-8b6e-471a-a9e5-597cd43d7426/relationships/appScreenshotSets",
+              "related": "https://api.appstoreconnect.apple.com/v1/appStoreVersionLocalizations/5d59df7c-8b6e-471a-a9e5-597cd43d7426/appScreenshotSets"
+            }
+          },
+          "appPreviewSets": {
+            "links": {
+              "self": "https://api.appstoreconnect.apple.com/v1/appStoreVersionLocalizations/5d59df7c-8b6e-471a-a9e5-597cd43d7426/relationships/appPreviewSets",
+              "related": "https://api.appstoreconnect.apple.com/v1/appStoreVersionLocalizations/5d59df7c-8b6e-471a-a9e5-597cd43d7426/appPreviewSets"
+            }
+          },
+          "searchKeywords": {
+            "links": {
+              "self": "https://api.appstoreconnect.apple.com/v1/appStoreVersionLocalizations/5d59df7c-8b6e-471a-a9e5-597cd43d7426/relationships/searchKeywords",
+              "related": "https://api.appstoreconnect.apple.com/v1/appStoreVersionLocalizations/5d59df7c-8b6e-471a-a9e5-597cd43d7426/searchKeywords"
+            }
+          },
+          "placements": {
+            "links": {
+              "self": "https://api.appstoreconnect.apple.com/v1/appStoreVersionLocalizations/5d59df7c-8b6e-471a-a9e5-597cd43d7426/relationships/placements",
+              "related": "https://api.appstoreconnect.apple.com/v1/appStoreVersionLocalizations/5d59df7c-8b6e-471a-a9e5-597cd43d7426/placements"
+            }
+          }
+        },
+        "links": {
+          "self": "https://api.appstoreconnect.apple.com/v1/appStoreVersionLocalizations/5d59df7c-8b6e-471a-a9e5-597cd43d7426"
+        }
+      },
+      {
+        "type": "appStoreVersionLocalizations",
+        "id": "70e4ce9c-8ba0-45f5-8162-c31475c6215e",
+        "attributes": {
+          "description": "Planirajte dan s kalendarom i vremenskom prognozom zajedno\n\nCloud Calendars spaja vaše kalendare i vremensku prognozu u jedno pregledno mjesto za planiranje.\n\nUpravljajte kalendarima iCloud, Google Calendar i Microsoft u jednoj aplikaciji, a prognozu vidite izravno u rasporedu, widgetima i prikazima za planiranje.\n\nBudite ispred sastanaka, putovanja, odlazaka po djecu, aktivnosti na otvorenom i punih dana uz prikaze kalendara osmišljene za brže planiranje.\n\nWIDGETI NA POČETNOM ZASLONU\n\nDodajte widgete koji spajaju:\n• Događaje iz kalendara\n• Vremensku prognozu\n• Nadolazeći raspored\n• Mjesečevu mijenu i uvjete\n• Vjetar i temperaturu\n• Pregled dana\n\nBirajte među više stilova widgeta i vidite svoj dan izravno s početnog zaslona.\n\nZAŠTO CLOUD CALENDARS\n\n• Gledajte kalendare iCloud, Google Calendar i Microsoft zajedno\n• Planirajte uz ugrađenu vremensku prognozu\n• Koristite widgete na početnom zaslonu\n• Povlačite, pomičite i mijenjajte veličinu događaja prirodno\n• Stvarajte poveznice za Google Meet i Microsoft Teams\n• Prebacujte se između prikaza Dan, Tjedan, Mjesec, Godina i Popis\n• Vodite poslovne i privatne kalendare na jednom mjestu\n\nZNAČAJKE\n\nSvi kalendari zajedno\nPovežite kalendare s iClouda, Google Calendara i Microsofta i vodite ih u čistom prikazu s bojama.\n\nPrognoza unutar kalendara\nPogledajte prognozu po satima i danima izravno u planiranju: temperaturu, uvjete, mjesečevu mijenu, vjetar i ikone vremena.\n\nWidgeti kalendara i vremena\nRaspored i prognozu vidite odmah iz prilagodljivih widgeta.\n\nViše prikaza kalendara\nOdaberite Dan, Tjedan, Mjesec, Godinu ili Popis, ovisno o tome kako planirate vrijeme.\n\nJednostavno uređivanje događaja\nDodirnite, povucite i promijenite veličinu događaja izravno u kalendaru.\n\nZaseban prikaz vremena\nIstražite detaljnu prognozu s uvjetima po satima i korisnim podacima za planiranje.\n\nDogađaji iz prognoze\nDodirnite sat u prognozi i odmah stvorite događaj u tom terminu.\n\nUgrađene poveznice za sastanke\nBrzo dodajte poveznice za Google Meet i Microsoft Teams u događaje.\n\nSAVRŠENO ZA\n\n• Vođenje poslovnih i privatnih kalendara\n• Planiranje s obzirom na vrijeme\n• Aktivnosti na otvorenom i putovanja\n• Pune rasporede i obiteljsko planiranje\n• Korisnike Google Calendara i iClouda\n• Korisnike Microsoftovih kalendara\n\nIsprobajte Cloud Calendars i olakšajte planiranje svakog dana.\n\nPODACI O PRETPLATI\n\nCloud Calendars nudi pretplate koje se automatski obnavljaju.\n\nBesplatni plan\n• Sinkronizacija s Google Calendarom\n• Više prikaza kalendara\n• Vremenske značajke\n• Widgeti\n• Podrška za Google Meet\nPlaćanje se naplaćuje s vašeg Apple ID računa pri potvrdi kupnje. Pretplate se obnavljaju automatski osim ako ih ne otkažete najmanje 24 sata prije kraja tekućeg razdoblja. Obnova se naplaćuje s vašeg računa unutar 24 sata prije kraja tekućeg razdoblja. Pretplatama možete upravljati i otkazati ih u postavkama svojeg App Store računa.\n\nPravila privatnosti: https://www.cloud-calendars.com/privacy-policy\nUvjeti korištenja: https://www.apple.com/legal/internet-services/itunes/dev/stdeula/",
+          "locale": "hr",
+          "keywords": "vrijeme,widget,raspored,planer,agenda,prognoza,iCloud,sastanci,događaji,zaključan zaslon,kiša,obveze",
+          "marketingUrl": "https://www.cloud-calendars.com/",
+          "promotionalText": null,
+          "supportUrl": "https://www.cloud-calendars.com/",
+          "whatsNew": null
+        },
+        "relationships": {
+          "appScreenshotSets": {
+            "links": {
+              "self": "https://api.appstoreconnect.apple.com/v1/appStoreVersionLocalizations/70e4ce9c-8ba0-45f5-8162-c31475c6215e/relationships/appScreenshotSets",
+              "related": "https://api.appstoreconnect.apple.com/v1/appStoreVersionLocalizations/70e4ce9c-8ba0-45f5-8162-c31475c6215e/appScreenshotSets"
+            }
+          },
+          "appPreviewSets": {
+            "links": {
+              "self": "https://api.appstoreconnect.apple.com/v1/appStoreVersionLocalizations/70e4ce9c-8ba0-45f5-8162-c31475c6215e/relationships/appPreviewSets",
+              "related": "https://api.appstoreconnect.apple.com/v1/appStoreVersionLocalizations/70e4ce9c-8ba0-45f5-8162-c31475c6215e/appPreviewSets"
+            }
+          },
+          "searchKeywords": {
+            "links": {
+              "self": "https://api.appstoreconnect.apple.com/v1/appStoreVersionLocalizations/70e4ce9c-8ba0-45f5-8162-c31475c6215e/relationships/searchKeywords",
+              "related": "https://api.appstoreconnect.apple.com/v1/appStoreVersionLocalizations/70e4ce9c-8ba0-45f5-8162-c31475c6215e/searchKeywords"
+            }
+          },
+          "placements": {
+            "links": {
+              "self": "https://api.appstoreconnect.apple.com/v1/appStoreVersionLocalizations/70e4ce9c-8ba0-45f5-8162-c31475c6215e/relationships/placements",
+              "related": "https://api.appstoreconnect.apple.com/v1/appStoreVersionLocalizations/70e4ce9c-8ba0-45f5-8162-c31475c6215e/placements"
+            }
+          }
+        },
+        "links": {
+          "self": "https://api.appstoreconnect.apple.com/v1/appStoreVersionLocalizations/70e4ce9c-8ba0-45f5-8162-c31475c6215e"
+        }
+      },
+      {
+        "type": "appStoreVersionLocalizations",
+        "id": "9012936e-3aa1-46b0-8a33-45723b683b00",
+        "attributes": {
+          "description": "Načrtujte dan s koledarjem in vremenom skupaj\n\nCloud Calendars združi vaše koledarje in vreme v eno pregledno mesto za načrtovanje.\n\nUpravljajte koledarje iCloud, Google Calendar in Microsoft v eni aplikaciji, napoved pa vidite kar v urniku, gradnikih in pogledih za načrtovanje.\n\nBodite korak pred sestanki, potovanji, prevozi otrok, dejavnostmi na prostem in polnimi dnevi s pogledi koledarja, zasnovanimi za hitrejše načrtovanje.\n\nGRADNIKI NA ZAČETNEM ZASLONU\n\nDodajte gradnike, ki združujejo:\n• Dogodke iz koledarja\n• Vremensko napoved\n• Prihajajoči urnik\n• Lunino meno in razmere\n• Veter in temperaturo\n• Pregled dneva\n\nIzbirajte med več slogi gradnikov in spremljajte svoj dan kar z začetnega zaslona.\n\nZAKAJ CLOUD CALENDARS\n\n• Glejte koledarje iCloud, Google Calendar in Microsoft skupaj\n• Načrtujte z vgrajeno vremensko napovedjo\n• Uporabljajte gradnike na začetnem zaslonu\n• Povlecite, premikajte in spreminjajte velikost dogodkov naravno\n• Ustvarjajte povezave za Google Meet in Microsoft Teams\n• Preklapljajte med pogledi Dan, Teden, Mesec, Leto in Seznam\n• Vodite službene in osebne koledarje na enem mestu\n\nFUNKCIJE\n\nVsi koledarji skupaj\nPovežite in vodite koledarje iz iClouda, Google Calendarja in Microsofta v čistem barvno ločenem pogledu.\n\nVreme v koledarju\nOglejte si urno in dnevno napoved kar med načrtovanjem: temperaturo, razmere, lunino meno, veter in ikone vremena.\n\nGradniki koledarja in vremena\nUrnik in vreme vidite takoj iz prilagodljivih gradnikov.\n\nVeč pogledov koledarja\nIzberite Dan, Teden, Mesec, Leto ali Seznam, odvisno od tega, kako načrtujete čas.\n\nPreprosto urejanje dogodkov\nTapnite, povlecite in spremenite velikost dogodkov kar v koledarju.\n\nPoseben pogled vremena\nRaziščite podrobno napoved z urnimi razmerami in uporabnimi podatki za načrtovanje.\n\nDogodki iz napovedi\nTapnite uro v napovedi in takoj ustvarite dogodek v tem terminu.\n\nVgrajene povezave za sestanke\nHitro dodajte povezave za Google Meet in Microsoft Teams k dogodkom.\n\nODLIČNO ZA\n\n• Vodenje službenih in osebnih koledarjev\n• Načrtovanje z ozirom na vreme\n• Dejavnosti na prostem in potovanja\n• Polne urnike in družinsko načrtovanje\n• Uporabnike Google Calendarja in iClouda\n• Uporabnike Microsoftovih koledarjev\n\nPreizkusite Cloud Calendars in si olajšajte načrtovanje vsakega dne.\n\nPODATKI O NAROČNINI\n\nCloud Calendars ponuja samodejno obnovljive naročnine.\n\nBrezplačni paket\n• Sinhronizacija z Google Calendarjem\n• Več pogledov koledarja\n• Vremenske funkcije\n• Gradniki\n• Podpora za Google Meet\nPlačilo bo obremenilo vaš račun Apple ID ob potrditvi nakupa. Naročnine se samodejno obnavljajo, razen če jih prekličete vsaj 24 ur pred koncem trenutnega obdobja. Obnovitev bo obremenila vaš račun v 24 urah pred koncem trenutnega obdobja. Naročnine lahko upravljate in prekličete v nastavitvah svojega računa App Store.\n\nPravilnik o zasebnosti: https://www.cloud-calendars.com/privacy-policy\nPogoji uporabe: https://www.apple.com/legal/internet-services/itunes/dev/stdeula/",
+          "locale": "sl-SI",
+          "keywords": "vreme,widget,urnik,načrtovalnik,agenda,napoved,iCloud,dogodki,sestanki,zaklenjen zaslon,dež,danes,QR",
+          "marketingUrl": "https://www.cloud-calendars.com/",
+          "promotionalText": null,
+          "supportUrl": "https://www.cloud-calendars.com/",
+          "whatsNew": null
+        },
+        "relationships": {
+          "appScreenshotSets": {
+            "links": {
+              "self": "https://api.appstoreconnect.apple.com/v1/appStoreVersionLocalizations/9012936e-3aa1-46b0-8a33-45723b683b00/relationships/appScreenshotSets",
+              "related": "https://api.appstoreconnect.apple.com/v1/appStoreVersionLocalizations/9012936e-3aa1-46b0-8a33-45723b683b00/appScreenshotSets"
+            }
+          },
+          "appPreviewSets": {
+            "links": {
+              "self": "https://api.appstoreconnect.apple.com/v1/appStoreVersionLocalizations/9012936e-3aa1-46b0-8a33-45723b683b00/relationships/appPreviewSets",
+              "related": "https://api.appstoreconnect.apple.com/v1/appStoreVersionLocalizations/9012936e-3aa1-46b0-8a33-45723b683b00/appPreviewSets"
+            }
+          },
+          "searchKeywords": {
+            "links": {
+              "self": "https://api.appstoreconnect.apple.com/v1/appStoreVersionLocalizations/9012936e-3aa1-46b0-8a33-45723b683b00/relationships/searchKeywords",
+              "related": "https://api.appstoreconnect.apple.com/v1/appStoreVersionLocalizations/9012936e-3aa1-46b0-8a33-45723b683b00/searchKeywords"
+            }
+          },
+          "placements": {
+            "links": {
+              "self": "https://api.appstoreconnect.apple.com/v1/appStoreVersionLocalizations/9012936e-3aa1-46b0-8a33-45723b683b00/relationships/placements",
+              "related": "https://api.appstoreconnect.apple.com/v1/appStoreVersionLocalizations/9012936e-3aa1-46b0-8a33-45723b683b00/placements"
+            }
+          }
+        },
+        "links": {
+          "self": "https://api.appstoreconnect.apple.com/v1/appStoreVersionLocalizations/9012936e-3aa1-46b0-8a33-45723b683b00"
+        }
+      },
+      {
+        "type": "appStoreVersionLocalizations",
+        "id": "88e9ac26-6898-432f-85db-5b71f0b553f0",
+        "attributes": {
+          "description": "Naplánujte si deň s kalendárom a počasím spolu\n\nCloud Calendars spája vaše kalendáre a počasie do jedného prehľadného miesta na plánovanie.\n\nSpravujte kalendáre iCloud, Google Calendar a Microsoft v jedinej aplikácii a predpoveď vidíte priamo v rozvrhu, vo widgetoch aj v zobrazeniach na plánovanie.\n\nMajte náskok pred schôdzkami, cestovaním, vyzdvihovaním detí, aktivitami vonku a nabitými dňami vďaka zobrazeniam kalendára navrhnutým na rýchlejšie plánovanie.\n\nWIDGETY NA PLOCHE\n\nPridajte widgety, ktoré spájajú:\n• Udalosti v kalendári\n• Predpoveď počasia\n• Nadchádzajúci rozvrh\n• Fázu Mesiaca a podmienky\n• Vietor a teplotu\n• Prehľad dňa\n\nVyberte si z viacerých štýlov widgetov a sledujte svoj deň priamo z plochy.\n\nPREČO CLOUD CALENDARS\n\n• Pozerajte kalendáre iCloud, Google Calendar a Microsoft spolu\n• Plánujte so zabudovanou predpoveďou počasia\n• Používajte widgety na ploche\n• Ťahajte, presúvajte a meňte veľkosť udalostí prirodzene\n• Vytvárajte odkazy na Google Meet a Microsoft Teams\n• Prepínajte medzi zobrazeniami Deň, Týždeň, Mesiac, Rok a Zoznam\n• Spravujte pracovné aj osobné kalendáre na jednom mieste\n\nFUNKCIE\n\nVšetky kalendáre spolu\nPripojte a spravujte kalendáre z iCloudu, Google Calendara a Microsoftu v čistom farebne rozlíšenom prostredí.\n\nPočasie priamo v kalendári\nPozrite si hodinovú aj dennú predpoveď priamo pri plánovaní: teplotu, podmienky, fázu Mesiaca, vietor a ikony počasia.\n\nWidgety kalendára a počasia\nRozvrh aj počasie uvidíte okamžite z prispôsobiteľných widgetov.\n\nViacero zobrazení kalendára\nZvoľte Deň, Týždeň, Mesiac, Rok alebo Zoznam podľa toho, ako si plánujete čas.\n\nJednoduchá úprava udalostí\nŤuknite, potiahnite a zmeňte veľkosť udalostí priamo v kalendári.\n\nSamostatné zobrazenie počasia\nPreskúmajte podrobnú predpoveď s hodinovými podmienkami a užitočnými údajmi na plánovanie.\n\nUdalosti z predpovede\nŤuknite na hodinu v predpovedi a okamžite vytvorte udalosť v danom čase.\n\nZabudované odkazy na schôdzky\nRýchlo pridajte do udalostí odkazy na Google Meet a Microsoft Teams.\n\nIDEÁLNE PRE\n\n• Správu pracovných aj osobných kalendárov\n• Plánovanie s ohľadom na počasie\n• Aktivity vonku a cestovanie\n• Nabité rozvrhy a plánovanie rodiny\n• Používateľov Google Calendara a iCloudu\n• Používateľov kalendárov Microsoft\n\nVyskúšajte Cloud Calendars a uľahčite si plánovanie každého dňa.\n\nINFORMÁCIE O PREDPLATNOM\n\nCloud Calendars ponúka automaticky obnovované predplatné.\n\nBezplatný plán\n• Synchronizácia s Google Calendarom\n• Viacero zobrazení kalendára\n• Funkcie počasia\n• Widgety\n• Podpora Google Meet\nPlatba sa strhne z vášho účtu Apple ID pri potvrdení nákupu. Predplatné sa obnovuje automaticky, pokiaľ ho nezrušíte aspoň 24 hodín pred koncom aktuálneho obdobia. Obnovenie sa z vášho účtu strhne do 24 hodín pred koncom aktuálneho obdobia. Predplatné môžete spravovať a zrušiť v nastaveniach svojho účtu v App Store.\n\nZásady ochrany súkromia: https://www.cloud-calendars.com/privacy-policy\nPodmienky používania: https://www.apple.com/legal/internet-services/itunes/dev/stdeula/",
+          "locale": "sk",
+          "keywords": "počasie,widget,rozvrh,plánovač,agenda,predpoveď,iCloud,udalosti,stretnutia,uzamknutá obrazovka,úlohy",
+          "marketingUrl": "https://www.cloud-calendars.com/",
+          "promotionalText": null,
+          "supportUrl": "https://www.cloud-calendars.com/",
+          "whatsNew": null
+        },
+        "relationships": {
+          "appScreenshotSets": {
+            "links": {
+              "self": "https://api.appstoreconnect.apple.com/v1/appStoreVersionLocalizations/88e9ac26-6898-432f-85db-5b71f0b553f0/relationships/appScreenshotSets",
+              "related": "https://api.appstoreconnect.apple.com/v1/appStoreVersionLocalizations/88e9ac26-6898-432f-85db-5b71f0b553f0/appScreenshotSets"
+            }
+          },
+          "appPreviewSets": {
+            "links": {
+              "self": "https://api.appstoreconnect.apple.com/v1/appStoreVersionLocalizations/88e9ac26-6898-432f-85db-5b71f0b553f0/relationships/appPreviewSets",
+              "related": "https://api.appstoreconnect.apple.com/v1/appStoreVersionLocalizations/88e9ac26-6898-432f-85db-5b71f0b553f0/appPreviewSets"
+            }
+          },
+          "searchKeywords": {
+            "links": {
+              "self": "https://api.appstoreconnect.apple.com/v1/appStoreVersionLocalizations/88e9ac26-6898-432f-85db-5b71f0b553f0/relationships/searchKeywords",
+              "related": "https://api.appstoreconnect.apple.com/v1/appStoreVersionLocalizations/88e9ac26-6898-432f-85db-5b71f0b553f0/searchKeywords"
+            }
+          },
+          "placements": {
+            "links": {
+              "self": "https://api.appstoreconnect.apple.com/v1/appStoreVersionLocalizations/88e9ac26-6898-432f-85db-5b71f0b553f0/relationships/placements",
+              "related": "https://api.appstoreconnect.apple.com/v1/appStoreVersionLocalizations/88e9ac26-6898-432f-85db-5b71f0b553f0/placements"
+            }
+          }
+        },
+        "links": {
+          "self": "https://api.appstoreconnect.apple.com/v1/appStoreVersionLocalizations/88e9ac26-6898-432f-85db-5b71f0b553f0"
+        }
+      },
+      {
+        "type": "appStoreVersionLocalizations",
+        "id": "ce3783f7-5b12-45e1-8456-6c0eacf1eee8",
+        "attributes": {
+          "description": "Σχεδιάστε την ημέρα σας με ημερολόγιο και καιρό μαζί\n\nΤο Cloud Calendars συνδυάζει τα ημερολόγια και τον καιρό σε μια όμορφα οργανωμένη εμπειρία προγραμματισμού.\n\nΔιαχειριστείτε ημερολόγια iCloud, Google Calendar και Microsoft σε μία εφαρμογή, βλέποντας τις προγνώσεις απευθείας στο πρόγραμμά σας, στα widget και στις προβολές σχεδιασμού.\n\nΠροετοιμαστείτε για συναντήσεις, ταξίδια, παραλαβές από το σχολείο, υπαίθριες δραστηριότητες και πολυάσχολες ημέρες με προβολές ημερολογίου σχεδιασμένες για γρηγορότερο προγραμματισμό.\n\nWIDGET ΑΡΧΙΚΗΣ ΟΘΟΝΗΣ\n\nΠροσθέστε όμορφα widget που συνδυάζουν:\n• Συμβάντα ημερολογίου\n• Προγνώσεις καιρού\n• Προσεχές πρόγραμμα\n• Φάση Σελήνης και συνθήκες\n• Άνεμο και θερμοκρασία\n• Επισκόπηση ημερήσιας ατζέντας\n\nΕπιλέξτε από πολλά στιλ widget για να βλέπετε την ημέρα σας απευθείας από την Αρχική οθόνη.\n\nΓΙΑΤΙ CLOUD CALENDARS\n\n• Προβολή ημερολογίων iCloud, Google Calendar και Microsoft μαζί\n• Σχεδιασμός με ενσωματωμένες προγνώσεις καιρού\n• Όμορφα widget Αρχικής οθόνης\n• Φυσική μεταφορά, μετακίνηση και αλλαγή μεγέθους συμβάντων\n• Δημιουργία συνδέσμων Google Meet και Microsoft Teams\n• Εναλλαγή μεταξύ προβολών Ημέρας, Εβδομάδας, Μήνα, Έτους και Λίστας\n• Διαχείριση επαγγελματικών και προσωπικών ημερολογίων σε ένα μέρος\n\nΛΕΙΤΟΥΡΓΙΕΣ\n\nΌλα τα ημερολόγιά σας μαζί\nΣυνδέστε και διαχειριστείτε ημερολόγια iCloud, Google Calendar και Microsoft σε μια καθαρή εμπειρία με χρωματική κωδικοποίηση.\n\nΟ καιρός μέσα στο ημερολόγιό σας\nΔείτε ωριαίες και ημερήσιες προγνώσεις απευθείας στη ροή σχεδιασμού σας, όπως θερμοκρασία, συνθήκες, φάση Σελήνης, άνεμο και εικονίδια καιρού.\n\nWidget ημερολογίου και καιρού\nΔείτε άμεσα το πρόγραμμά σας και τον καιρό από προσαρμόσιμα widget Αρχικής οθόνης.\n\nΠολλαπλές προβολές ημερολογίου\nΕπιλέξτε προβολή Ημέρας, Εβδομάδας, Μήνα, Έτους ή Λίστας ανάλογα με το πώς οργανώνετε τον χρόνο σας.\n\nΕύκολη επεξεργασία συμβάντων\nΠατήστε, σύρετε και αλλάξτε το μέγεθος συμβάντων απευθείας στο ημερολόγιο για γρήγορο και φυσικό προγραμματισμό.\n\nΞεχωριστή προβολή καιρού\nΕξερευνήστε λεπτομερείς προγνώσεις με ωριαίες συνθήκες και χρήσιμες πληροφορίες σχεδιασμού.\n\nΔημιουργία συμβάντων από προγνώσεις\nΠατήστε μια ώρα πρόγνωσης για να δημιουργήσετε αμέσως νέο συμβάν στην επιλεγμένη ώρα.\n\nΕνσωματωμένοι σύνδεσμοι συναντήσεων\nΠροσθέστε γρήγορα συνδέσμους Google Meet και Microsoft Teams σε συμβάντα.\n\nΙΔΑΝΙΚΟ ΓΙΑ\n\n• Διαχείριση επαγγελματικού και προσωπικού ημερολογίου\n• Σχεδιασμό με βάση τον καιρό\n• Υπαίθριες δραστηριότητες και ταξίδια\n• Πολυάσχολα προγράμματα και οικογενειακό σχεδιασμό\n• Χρήστες Google Calendar και iCloud\n• Χρήστες ημερολογίου Microsoft\n\nΔοκιμάστε το Cloud Calendars και κάντε κάθε ημέρα ευκολότερη στον προγραμματισμό.\n\nΠΛΗΡΟΦΟΡΙΕΣ ΣΥΝΔΡΟΜΗΣ\n\nΤο Cloud Calendars προσφέρει συνδρομές με αυτόματη ανανέωση.\n\nΔωρεάν πρόγραμμα\n• Συγχρονισμός Google Calendar\n• Πολλαπλές προβολές ημερολογίου\n• Λειτουργίες καιρού\n• Widget\n• Υποστήριξη Google Meet\n\nΗ πληρωμή θα χρεωθεί στο Apple ID σας κατά την επιβεβαίωση αγοράς. Οι συνδρομές ανανεώνονται αυτόματα, εκτός αν ακυρωθούν τουλάχιστον 24 ώρες πριν από το τέλος της τρέχουσας περιόδου. Ο λογαριασμός σας θα χρεωθεί για την ανανέωση εντός 24 ωρών πριν από το τέλος της τρέχουσας περιόδου. Μπορείτε να διαχειριστείτε και να ακυρώσετε συνδρομές στις ρυθμίσεις λογαριασμού App Store.\n\nΠολιτική απορρήτου: https://www.cloud-calendars.com/privacy-policy\nΌροι χρήσης: https://www.apple.com/legal/internet-services/itunes/dev/stdeula/",
+          "locale": "el",
+          "keywords": "καιρός,widget,πρόγραμμα,σχεδιασμός,ατζέντα,πρόγνωση,iCloud,συναντήσεις,οθόνη κλειδώματος,βροχή,μήνας",
+          "marketingUrl": "https://www.cloud-calendars.com/",
+          "promotionalText": null,
+          "supportUrl": "https://www.cloud-calendars.com/",
+          "whatsNew": null
+        },
+        "relationships": {
+          "appScreenshotSets": {
+            "links": {
+              "self": "https://api.appstoreconnect.apple.com/v1/appStoreVersionLocalizations/ce3783f7-5b12-45e1-8456-6c0eacf1eee8/relationships/appScreenshotSets",
+              "related": "https://api.appstoreconnect.apple.com/v1/appStoreVersionLocalizations/ce3783f7-5b12-45e1-8456-6c0eacf1eee8/appScreenshotSets"
+            }
+          },
+          "appPreviewSets": {
+            "links": {
+              "self": "https://api.appstoreconnect.apple.com/v1/appStoreVersionLocalizations/ce3783f7-5b12-45e1-8456-6c0eacf1eee8/relationships/appPreviewSets",
+              "related": "https://api.appstoreconnect.apple.com/v1/appStoreVersionLocalizations/ce3783f7-5b12-45e1-8456-6c0eacf1eee8/appPreviewSets"
+            }
+          },
+          "searchKeywords": {
+            "links": {
+              "self": "https://api.appstoreconnect.apple.com/v1/appStoreVersionLocalizations/ce3783f7-5b12-45e1-8456-6c0eacf1eee8/relationships/searchKeywords",
+              "related": "https://api.appstoreconnect.apple.com/v1/appStoreVersionLocalizations/ce3783f7-5b12-45e1-8456-6c0eacf1eee8/searchKeywords"
+            }
+          },
+          "placements": {
+            "links": {
+              "self": "https://api.appstoreconnect.apple.com/v1/appStoreVersionLocalizations/ce3783f7-5b12-45e1-8456-6c0eacf1eee8/relationships/placements",
+              "related": "https://api.appstoreconnect.apple.com/v1/appStoreVersionLocalizations/ce3783f7-5b12-45e1-8456-6c0eacf1eee8/placements"
+            }
+          }
+        },
+        "links": {
+          "self": "https://api.appstoreconnect.apple.com/v1/appStoreVersionLocalizations/ce3783f7-5b12-45e1-8456-6c0eacf1eee8"
+        }
+      }
+    ]
+  },
+  "appInfo": {
+    "id": "2131466c-d47e-469d-bfe4-3642efe9ff0a",
+    "attributes": {
+      "appStoreState": "PREPARE_FOR_SUBMISSION",
+      "state": "PREPARE_FOR_SUBMISSION",
+      "appStoreAgeRating": "FOUR_PLUS",
+      "australiaAgeRating": null,
+      "brazilAgeRating": "L",
+      "brazilAgeRatingV2": "SELF_RATED_L",
+      "franceAgeRating": null,
+      "koreaAgeRating": null
+    },
+    "localizations": [
+      {
+        "type": "appInfoLocalizations",
+        "id": "d96269cd-e544-42a4-8f2c-6ba6296db784",
+        "attributes": {
+          "locale": "en-CA",
+          "name": "Cloud Calendars: Sync & Widget",
+          "subtitle": "Google, Microsoft, iCloud sync",
+          "privacyPolicyUrl": "https://www.cloud-calendars.com/privacy-policy",
+          "privacyChoicesUrl": null,
+          "privacyPolicyText": null
+        },
+        "links": {
+          "self": "https://api.appstoreconnect.apple.com/v1/appInfoLocalizations/d96269cd-e544-42a4-8f2c-6ba6296db784"
+        }
+      },
+      {
+        "type": "appInfoLocalizations",
+        "id": "ed015c75-d999-4ea8-ad29-7fc38d3e6e5c",
+        "attributes": {
+          "locale": "sl-SI",
+          "name": "Cloud Calendars: Koledar",
+          "subtitle": "Vsi koledarji na enem mestu",
+          "privacyPolicyUrl": "https://www.cloud-calendars.com/privacy-policy",
+          "privacyChoicesUrl": null,
+          "privacyPolicyText": null
+        },
+        "links": {
+          "self": "https://api.appstoreconnect.apple.com/v1/appInfoLocalizations/ed015c75-d999-4ea8-ad29-7fc38d3e6e5c"
+        }
+      },
+      {
+        "type": "appInfoLocalizations",
+        "id": "e4f9508a-33f8-4c72-b961-df4f00073f88",
+        "attributes": {
+          "locale": "es-MX",
+          "name": "Cloud Calendars: Calendario",
+          "subtitle": "Todos tus calendarios en uno",
+          "privacyPolicyUrl": "https://www.cloud-calendars.com/privacy-policy",
+          "privacyChoicesUrl": null,
+          "privacyPolicyText": null
+        },
+        "links": {
+          "self": "https://api.appstoreconnect.apple.com/v1/appInfoLocalizations/e4f9508a-33f8-4c72-b961-df4f00073f88"
+        }
+      },
+      {
+        "type": "appInfoLocalizations",
+        "id": "45bdd273-66ec-47f7-b530-46ac3d0e336a",
+        "attributes": {
+          "locale": "en-AU",
+          "name": "Cloud Calendars: Sync & Widget",
+          "subtitle": "Google, Microsoft, iCloud sync",
+          "privacyPolicyUrl": "https://www.cloud-calendars.com/privacy-policy",
+          "privacyChoicesUrl": null,
+          "privacyPolicyText": null
+        },
+        "links": {
+          "self": "https://api.appstoreconnect.apple.com/v1/appInfoLocalizations/45bdd273-66ec-47f7-b530-46ac3d0e336a"
+        }
+      },
+      {
+        "type": "appInfoLocalizations",
+        "id": "af30691e-7f0d-4db3-9076-c38c038dabcd",
+        "attributes": {
+          "locale": "sk",
+          "name": "Cloud Calendars: Kalendár",
+          "subtitle": "Všetky kalendáre v jednom",
+          "privacyPolicyUrl": "https://www.cloud-calendars.com/privacy-policy",
+          "privacyChoicesUrl": null,
+          "privacyPolicyText": null
+        },
+        "links": {
+          "self": "https://api.appstoreconnect.apple.com/v1/appInfoLocalizations/af30691e-7f0d-4db3-9076-c38c038dabcd"
+        }
+      },
+      {
+        "type": "appInfoLocalizations",
+        "id": "8b7dbbe6-5bbc-459c-823a-71b868a8e296",
+        "attributes": {
+          "locale": "el",
+          "name": "Cloud Calendars: Ημερολόγιο",
+          "subtitle": "Όλα τα ημερολόγια μαζί",
+          "privacyPolicyUrl": "https://www.cloud-calendars.com/privacy-policy",
+          "privacyChoicesUrl": null,
+          "privacyPolicyText": null
+        },
+        "links": {
+          "self": "https://api.appstoreconnect.apple.com/v1/appInfoLocalizations/8b7dbbe6-5bbc-459c-823a-71b868a8e296"
+        }
+      },
+      {
+        "type": "appInfoLocalizations",
+        "id": "99d4017f-5990-4993-bab6-d3357e70ad47",
+        "attributes": {
+          "locale": "en-GB",
+          "name": "Cloud Calendars: Sync & Widget",
+          "subtitle": "Google, Microsoft, iCloud sync",
+          "privacyPolicyUrl": "https://www.cloud-calendars.com/privacy-policy",
+          "privacyChoicesUrl": null,
+          "privacyPolicyText": null
+        },
+        "links": {
+          "self": "https://api.appstoreconnect.apple.com/v1/appInfoLocalizations/99d4017f-5990-4993-bab6-d3357e70ad47"
+        }
+      },
+      {
+        "type": "appInfoLocalizations",
+        "id": "d6db6dd7-acb6-46e2-bc4f-50ea1deaddf6",
+        "attributes": {
+          "locale": "hr",
+          "name": "Cloud Calendars: Kalendar",
+          "subtitle": "Svi kalendari na jednom",
+          "privacyPolicyUrl": "https://www.cloud-calendars.com/privacy-policy",
+          "privacyChoicesUrl": null,
+          "privacyPolicyText": null
+        },
+        "links": {
+          "self": "https://api.appstoreconnect.apple.com/v1/appInfoLocalizations/d6db6dd7-acb6-46e2-bc4f-50ea1deaddf6"
+        }
+      },
+      {
+        "type": "appInfoLocalizations",
+        "id": "49a2bb7a-8d3b-4557-9ece-af27fef22b68",
+        "attributes": {
+          "locale": "fr-CA",
+          "name": "Cloud Calendars: Agenda",
+          "subtitle": "Tous vos calendriers réunis",
+          "privacyPolicyUrl": "https://www.cloud-calendars.com/privacy-policy",
+          "privacyChoicesUrl": null,
+          "privacyPolicyText": null
+        },
+        "links": {
+          "self": "https://api.appstoreconnect.apple.com/v1/appInfoLocalizations/49a2bb7a-8d3b-4557-9ece-af27fef22b68"
+        }
+      },
+      {
+        "type": "appInfoLocalizations",
+        "id": "676ddc5d-27b1-4c9e-9564-9fa7b93b2c6b",
+        "attributes": {
+          "locale": "ru",
+          "name": "Cloud Calendars: Календарь",
+          "subtitle": "Все календари в одном месте",
+          "privacyPolicyUrl": "https://www.cloud-calendars.com/privacy-policy",
+          "privacyChoicesUrl": null,
+          "privacyPolicyText": null
+        },
+        "links": {
+          "self": "https://api.appstoreconnect.apple.com/v1/appInfoLocalizations/676ddc5d-27b1-4c9e-9564-9fa7b93b2c6b"
+        }
+      }
+    ]
+  }
+}

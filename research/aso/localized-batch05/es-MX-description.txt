@@ -1,0 +1,19 @@
+Consulta tus compromisos de trabajo, planes personales y el clima en iPhone y iPad con Cloud Calendars.
+
+CALENDARIOS Y VISTAS
+Usa calendarios de iCloud y conecta Calendario de Google. Premium agrega compatibilidad con calendarios de Microsoft. Elige entre las vistas de día, semana, mes, año y lista.
+
+También puedes crear un calendario local en tu dispositivo sin una cuenta de Cloud Calendars. Conectar servicios y compartir contenido puede requerir que inicies sesión.
+
+CLIMA, WIDGETS Y CONTENIDO COMPARTIDO
+Revisa el pronóstico mientras planeas tus actividades. Los widgets para la pantalla de inicio están disponibles en tamaño pequeño, mediano y grande. Los pronósticos disponibles dependen de la ubicación y del proveedor meteorológico. Comparte eventos y calendarios y envía invitaciones por correo electrónico, código QR o App Clip. Los permisos dependen del calendario y del tipo de invitación.
+
+ELIGE TU PLAN
+Base es gratuito e incluye sincronización con Calendario de Google, Google Meet, distintas vistas de calendario, clima y widgets.
+Advanced incluye las funciones de Base y elimina los anuncios.
+Premium incluye Advanced y agrega calendarios de Microsoft y Microsoft Teams.
+
+La descarga es gratuita, con suscripciones opcionales de renovación automática. Antes de suscribirte, revisa el precio local vigente y el periodo de facturación en la app o en App Store. La suscripción se renueva a menos que la canceles al menos 24 horas antes de que termine el periodo actual. Puedes administrarla o cancelarla en la configuración de tu cuenta de App Store.
+
+Privacidad: https://www.cloud-calendars.com/privacy-policy
+Términos de uso: https://www.apple.com/legal/internet-services/itunes/dev/stdeula/

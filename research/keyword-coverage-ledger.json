@@ -10,7 +10,7 @@
     "No content is declared researched merely because a corresponding route exists."
   ],
   "currentInventory": {
-    "articles": 370,
+    "articles": 379,
     "locales": [
       "ar-SA",
       "bg",
@@ -337,5 +337,33 @@
     "totalUpdatedLocales": 15,
     "remainingLocales": 35,
     "researchNext": "competitors/batch04-search-discovery-20261021.json"
+  },
+  "fourthPublication": {
+    "date": "2026-10-21",
+    "newTranslatedGuides": 9,
+    "locales": [
+      "bg",
+      "de-DE",
+      "fr-FR"
+    ],
+    "staticProof": "batch04-static-qa.json",
+    "publicProof": "batch04-public-qa.json",
+    "sitemapUrls": 442,
+    "measurementBaseline": "measurement/gsc-baseline-20261021.json",
+    "measurementDecisions": "measurement/gsc-editorial-decisions-20261021.json",
+    "crawlerSample": "measurement/cloudfront-sample-20261020.json",
+    "crawlerIdentity": "unverified declared UA; not citation evidence",
+    "metadataStatus": "All50draftlocales fourtargetfields and preserved names verified with fresh APIreadback",
+    "pendingDrafts": null,
+    "revisedEnglishCanonicals": [
+      "/articles/recurring-events-without-the-mess/",
+      "/articles/time-zones-and-the-flight-you-booked/"
+    ],
+    "changedArticleObjects": 11,
+    "totalUpdatedLocales": 50,
+    "remainingASOLocales": 0,
+    "ascProof": "aso/all-locales-readback-20261021.json",
+    "privacyAudit": "privacy-dataflow-20261021.json",
+    "next": "Remaining source-body reviews, deeper localized prose, further primary competitor discovery and measured answer citations, privacy/release correspondence, later original media integration."
   }
 }

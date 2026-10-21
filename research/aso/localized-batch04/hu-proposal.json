@@ -1,0 +1,93 @@
+{
+  "status": "proposal_only_not_applied",
+  "locale": "hu",
+  "appId": "6744690319",
+  "targetVersion": "1.7.4",
+  "targetState": "PREPARE_FOR_SUBMISSION",
+  "appInfoLocalizationId": "d6d0e07b-ab46-498c-aa41-03b740e2c767",
+  "versionLocalizationId": "90e49b5b-cac5-4403-b411-c0114f969297",
+  "nameAction": "preserve_exact_current_draft_name",
+  "fields": {
+    "name": {
+      "value": "Cloud Calendars: Naptár",
+      "characters": 23,
+      "utf8Bytes": 24,
+      "characterLimit": 30,
+      "withinCharacterLimit": true
+    },
+    "subtitle": {
+      "value": "Időjárás, programok, widgetek",
+      "characters": 29,
+      "utf8Bytes": 32,
+      "characterLimit": 30,
+      "withinCharacterLimit": true
+    },
+    "keywords": {
+      "value": "napirend,tervező,hét,hónap,emlékeztető,találkozó,esemény,megosztás,meghívó,előrejelzés",
+      "characters": 86,
+      "utf8Bytes": 99,
+      "characterLimit": 100,
+      "withinCharacterLimit": true
+    },
+    "promotionalText": {
+      "value": "Tervek és időjárás egy helyen. Használj widgeteket és különböző nézeteket, vagy kezdj helyi naptárral, alkalmazásfiók nélkül.",
+      "characters": 125,
+      "utf8Bytes": 141,
+      "characterLimit": 170,
+      "withinCharacterLimit": true
+    },
+    "description": {
+      "value": "Tekintsd át munkahelyi és személyes programjaidat az időjárással együtt iPhone-on és iPaden a Cloud Calendars segítségével.\n\nNAPTÁRAK ÉS NÉZETEK\nHasználj iCloud-naptárakat, és csatlakoztasd a Google Naptárt. A Premium Microsoft-naptárakat is támogat. Válassz napi, heti, havi, éves vagy listanézetet.\n\nHelyi naptárat is létrehozhatsz az eszközön Cloud Calendars-fiók nélkül. A szolgáltatások csatlakoztatásához és a megosztáshoz bejelentkezésre lehet szükség.\n\nIDŐJÁRÁS, WIDGETEK ÉS MEGOSZTÁS\nTervezés közben nézd meg az előrejelzést. A Főképernyő widgetjei kis, közepes és nagy méretben érhetők el. Az előrejelzések elérhetősége a helytől és az időjárási szolgáltatótól függ. Ossz meg eseményeket és naptárakat, és küldj meghívókat e-mailben, QR-kóddal vagy App Clippel. A hozzáférés a naptártól és a meghívó típusától függ.\n\nVÁLASSZ CSOMAGOT\nAz ingyenes Base Google Naptár-szinkronizálást, Google Meetet, különböző naptárnézeteket, időjárást és widgeteket tartalmaz.\nAz Advanced tartalmazza a Base funkcióit, és eltávolítja a hirdetéseket.\nA Premium tartalmazza az Advanced funkcióit, valamint Microsoft-naptárakat és Microsoft Teamst is támogat.\n\nA letöltés ingyenes, és választható automatikusan megújuló előfizetés. Előfizetés előtt ellenőrizd az aktuális helyi árat és a számlázási időszakot az alkalmazásban vagy az App Store-ban. Az előfizetés megújul, ha nem mondod le legalább 24 órával az aktuális időszak vége előtt. Az App Store-fiókod beállításaiban kezelheted vagy lemondhatod.\n\nAdatvédelem: https://www.cloud-calendars.com/privacy-policy\nHasználati feltételek: https://www.apple.com/legal/internet-services/itunes/dev/stdeula/",
+      "characters": 1642,
+      "utf8Bytes": 1794,
+      "characterLimit": 4000,
+      "withinCharacterLimit": true
+    }
+  },
+  "current": {
+    "appInfo": {
+      "locale": "hu",
+      "name": "Cloud Calendars: Naptár",
+      "subtitle": "Minden naptár egy helyen",
+      "privacyPolicyUrl": "https://www.cloud-calendars.com/privacy-policy",
+      "privacyChoicesUrl": null,
+      "privacyPolicyText": null
+    },
+    "version": {
+      "description": "Tervezze meg napját a naptár és az időjárás együtt\n\nA Cloud Calendars egyetlen szépen rendezett tervezési élményben egyesíti naptárait és az időjárást.\n\nKezelje iCloud-, Google Naptár- és Microsoft-naptárait egyetlen alkalmazásban, miközben az előrejelzéseket közvetlenül az ütemezésben, a widgetekben és a tervezési nézetekben láthatja.\n\nKészüljön fel a megbeszélésekre, utazásokra, iskolai fuvarokra, szabadtéri programokra és zsúfolt napokra a gyorsabb tervezéshez készült naptárnézetekkel.\n\nFŐKÉPERNYŐ-WIDGETEK\n\nAdjon hozzá gyönyörű widgeteket, amelyek egyesítik:\n• Naptáresemények\n• Időjárás-előrejelzések\n• Közelgő program\n• Holdfázis és körülmények\n• Szél és hőmérséklet\n• Napi napirend áttekintése\n\nVálasszon többféle widgetstílus közül, és lássa napját közvetlenül a Főképernyőn.\n\nMIÉRT A CLOUD CALENDARS\n\n• iCloud-, Google Naptár- és Microsoft-naptárak együttes megjelenítése\n• Tervezés beépített időjárás-előrejelzéssel\n• Gyönyörű Főképernyő-widgetek használata\n• Események természetes húzása, mozgatása és átméretezése\n• Google Meet- és Microsoft Teams-hivatkozások létrehozása\n• Váltás Napi, Heti, Havi, Éves és Listanézet között\n• Munkahelyi és személyes naptárak kezelése egy helyen\n\nFUNKCIÓK\n\nMinden naptára együtt\nCsatlakoztassa és kezelje iCloud-, Google Naptár- és Microsoft-naptárait egy letisztult, színkódolt felületen.\n\nIdőjárás a naptárban\nLássa az óránkénti és napi előrejelzéseket közvetlenül tervezés közben, beleértve a hőmérsékletet, körülményeket, holdfázist, szelet és időjárásikonokat.\n\nNaptár- és időjárás-widgetek\nTekintse meg azonnal ütemezését és az időjárást testreszabható Főképernyő-widgetekből.\n\nTöbb naptárnézet\nVálasszon Napi, Heti, Havi, Éves vagy Listanézetet attól függően, hogyan tervezi idejét.\n\nEgyszerű eseményszerkesztés\nKoppintson, húzza és méretezze át az eseményeket közvetlenül a naptárban a gyors és természetes ütemezéshez.\n\nKülön időjárásnézet\nFedezze fel a részletes előrejelzéseket óránkénti körülményekkel és hasznos tervezési információkkal.\n\nEsemények létrehozása előrejelzésekből\nKoppintson egy előrejelzési órára, és azonnal hozzon létre új eseményt a kiválasztott időponttal.\n\nBeépített megbeszéléshivatkozások\nAdjon gyorsan Google Meet- és Microsoft Teams-hivatkozásokat az eseményekhez.\n\nTÖKÉLETES\n\n• Munkahelyi és személyes naptárak kezeléséhez\n• Időjárás-tudatos tervezéshez\n• Szabadtéri tevékenységekhez és utazáshoz\n• Zsúfolt ütemezésekhez és családi tervezéshez\n• Google Naptár- és iCloud-felhasználóknak\n• Microsoft-naptár felhasználóinak\n\nPróbálja ki a Cloud Calendars alkalmazást, és tegye könnyebbé minden nap megtervezését.\n\nELŐFIZETÉSI INFORMÁCIÓK\n\nA Cloud Calendars automatikusan megújuló előfizetéseket kínál.\n\nIngyenes csomag\n• Google Naptár szinkronizálása\n• Több naptárnézet\n• Időjárási funkciók\n• Widgetek\n• Google Meet-támogatás\n\nA fizetést a vásárlás megerősítésekor az Apple ID-jára terheljük. Az előfizetések automatikusan megújulnak, ha legalább 24 órával az aktuális időszak vége előtt nem mondja le őket. Fiókját az aktuális időszak vége előtti 24 órán belül terheljük meg a megújításért. Az előfizetéseket az App Store-fiók beállításaiban kezelheti és mondhatja le.\n\nAdatvédelmi irányelvek: https://www.cloud-calendars.com/privacy-policy\nHasználati feltételek: https://www.apple.com/legal/internet-services/itunes/dev/stdeula/",
+      "locale": "hu",
+      "keywords": "időjárás,widget,ütemezés,tervező,napirend,előrejelzés,iCloud,események,munka,zárolási képernyő,eső",
+      "marketingUrl": "https://www.cloud-calendars.com/",
+      "promotionalText": null,
+      "supportUrl": "https://www.cloud-calendars.com/",
+      "whatsNew": null
+    }
+  },
+  "keywordChecks": {
+    "exactDuplicateKeywords": false,
+    "exactTitleSubtitleTokenDuplicates": [],
+    "note": "Unicode code-point limits. Bytes reported separately. Exact token checks do not resolve grammatical forms or Hindi combining marks."
+  },
+  "readiness": "ready_for_editorial_review_not_applied",
+  "translationConfidence": "medium",
+  "caveat": "Model-authored; no native-speaker or ASC write validation. Review RTL mixed-brand rendering for Arabic/Hebrew, Hindi grammar, and shipped tier labels before submission.",
+  "evidence": [
+    "../../product-facts.json",
+    "../localized-batch03/audit.json",
+    "asc-current.json"
+  ],
+  "applyOnly": [
+    "subtitle",
+    "keywords",
+    "promotionalText",
+    "description"
+  ],
+  "preserve": [
+    "name",
+    "release notes",
+    "URLs",
+    "privacy declarations",
+    "screenshots",
+    "other locales"
+  ]
+}

@@ -1,0 +1,93 @@
+{
+  "status": "proposal_only_not_applied",
+  "locale": "no",
+  "appId": "6744690319",
+  "targetVersion": "1.7.4",
+  "targetState": "PREPARE_FOR_SUBMISSION",
+  "appInfoLocalizationId": "ce935eb7-70d0-4cdd-a89d-1fef8ab94099",
+  "versionLocalizationId": "617eb54f-399c-486c-8c51-85ad936b0ec6",
+  "nameAction": "preserve_exact_current_draft_name",
+  "fields": {
+    "name": {
+      "value": "Cloud Calendars: Kalender",
+      "characters": 25,
+      "utf8Bytes": 25,
+      "characterLimit": 30,
+      "withinCharacterLimit": true
+    },
+    "subtitle": {
+      "value": "Vær, avtaler og widgeter",
+      "characters": 24,
+      "utf8Bytes": 25,
+      "characterLimit": 30,
+      "withinCharacterLimit": true
+    },
+    "keywords": {
+      "value": "planlegger,agenda,uke,måned,påminnelse,møte,hendelse,deling,invitasjon,varsel,timeplan",
+      "characters": 86,
+      "utf8Bytes": 89,
+      "characterLimit": 100,
+      "withinCharacterLimit": true
+    },
+    "promotionalText": {
+      "value": "Se planene dine og været samlet. Bruk widgeter og ulike visninger, eller start med en lokal kalender uten en konto i appen.",
+      "characters": 123,
+      "utf8Bytes": 124,
+      "characterLimit": 170,
+      "withinCharacterLimit": true
+    },
+    "description": {
+      "value": "Se jobbavtaler, private planer og været på iPhone og iPad med Cloud Calendars.\n\nKALENDERE OG VISNINGER\nBruk iCloud-kalendere og koble til Google Kalender. Premium legger til støtte for Microsoft-kalendere. Velg dags-, uke-, måneds-, års- eller listevisning.\n\nDu kan også opprette en lokal kalender på enheten uten en Cloud Calendars-konto. Tilkobling til tjenester og deling kan kreve pålogging.\n\nVÆR, WIDGETER OG DELING\nSjekk værmeldingen mens du planlegger. Widgeter for Hjem-skjermen finnes i små, mellomstore og store størrelser. Tilgjengelige værprognoser avhenger av sted og værleverandør. Del hendelser og kalendere, og send invitasjoner via e-post, QR-kode eller App Clip. Tilgang avhenger av kalenderen og invitasjonstypen.\n\nVELG ABONNEMENT\nGratisplanen Base inkluderer synkronisering med Google Kalender, Google Meet, ulike kalendervisninger, vær og widgeter.\nAdvanced inkluderer Base-funksjonene og fjerner annonser.\nPremium inkluderer Advanced og legger til Microsoft-kalendere og Microsoft Teams.\n\nAppen er gratis å laste ned med valgfrie abonnementer som fornyes automatisk. Sjekk gjeldende lokal pris og faktureringsperiode i appen eller App Store før du abonnerer. Abonnementet fornyes hvis du ikke sier det opp minst 24 timer før perioden utløper. Administrer eller si det opp i innstillingene for App Store-kontoen din.\n\nPersonvern: https://www.cloud-calendars.com/privacy-policy\nBruksvilkår: https://www.apple.com/legal/internet-services/itunes/dev/stdeula/",
+      "characters": 1476,
+      "utf8Bytes": 1497,
+      "characterLimit": 4000,
+      "withinCharacterLimit": true
+    }
+  },
+  "current": {
+    "appInfo": {
+      "locale": "no",
+      "name": "Cloud Calendars: Kalender",
+      "subtitle": "Alle kalendere på ett sted",
+      "privacyPolicyUrl": "https://www.cloud-calendars.com/privacy-policy",
+      "privacyChoicesUrl": null,
+      "privacyPolicyText": null
+    },
+    "version": {
+      "description": "Planlegg dagen med kalender og vær sammen\n\nCloud Calendars kombinerer kalenderne dine og været i én vakkert organisert planleggingsopplevelse.\n\nAdministrer iCloud-, Google Kalender- og Microsoft-kalendere i én app, samtidig som du ser værmeldinger direkte i tidsplanen, widgetene og planleggingsvisningene.\n\nVær i forkant av møter, reiser, henting på skolen, utendørsaktiviteter og travle dager med kalendervisninger laget for raskere planlegging.\n\nWIDGETER PÅ HJEM-SKJERMEN\n\nLegg til flotte widgeter som kombinerer:\n• Kalenderhendelser\n• Værmeldinger\n• Kommende tidsplan\n• Månefase og forhold\n• Vind og temperatur\n• Oversikt over dagens agenda\n\nVelg mellom flere widgetstiler for å se dagen din direkte fra Hjem-skjermen.\n\nHVORFOR CLOUD CALENDARS\n\n• Se iCloud-, Google Kalender- og Microsoft-kalendere sammen\n• Planlegg med innebygde værmeldinger\n• Bruk flotte widgeter på Hjem-skjermen\n• Dra, flytt og endre varigheten på hendelser naturlig\n• Opprett Google Meet- og Microsoft Teams-lenker\n• Bytt mellom Dag-, Uke-, Måned-, År- og Listevisning\n• Administrer jobb- og privatkalendere på ett sted\n\nFUNKSJONER\n\nAlle kalenderne dine samlet\nKoble til og administrer kalendere fra iCloud, Google Kalender og Microsoft i én ryddig, fargekodet opplevelse.\n\nVær innebygd i kalenderen\nSe time- og dagsmeldinger direkte i planleggingen, inkludert temperatur, forhold, månefase, vind og værikoner.\n\nKalender- og værwidgeter\nSe tidsplanen og været umiddelbart fra tilpassbare widgeter på Hjem-skjermen.\n\nFlere kalendervisninger\nVelg Dag-, Uke-, Måned-, År- eller Listevisning avhengig av hvordan du planlegger tiden din.\n\nEnkel redigering av hendelser\nTrykk, dra og endre varigheten på hendelser direkte i kalenderen for rask og naturlig planlegging.\n\nEgen værvisning\nUtforsk detaljerte værmeldinger med timeforhold og nyttig planleggingsinnsikt.\n\nOpprett hendelser fra værmeldinger\nTrykk på en time i værmeldingen for å opprette en ny hendelse umiddelbart på valgt tidspunkt.\n\nInnebygde møtelenker\nLegg raskt til Google Meet- og Microsoft Teams-lenker i hendelser.\n\nPERFEKT FOR\n\n• Administrasjon av jobb- og privatkalendere\n• Værbevisst planlegging\n• Utendørsaktiviteter og reiser\n• Travle tidsplaner og familieplanlegging\n• Brukere av Google Kalender og iCloud\n• Brukere av Microsoft-kalender\n\nPrøv Cloud Calendars og gjør hver dag enklere å planlegge.\n\nABONNEMENTSINFORMASJON\n\nCloud Calendars tilbyr abonnementer som fornyes automatisk.\n\nGratisabonnement\n• Synkronisering med Google Kalender\n• Flere kalendervisninger\n• Værfunksjoner\n• Widgeter\n• Støtte for Google Meet\n\nBetalingen belastes Apple ID-kontoen din når kjøpet bekreftes. Abonnementer fornyes automatisk med mindre de sies opp minst 24 timer før utgangen av gjeldende periode. Kontoen din belastes for fornyelse innen 24 timer før utgangen av gjeldende periode. Du kan administrere og si opp abonnementer i innstillingene for App Store-kontoen.\n\nPersonvernerklæring: https://www.cloud-calendars.com/privacy-policy\nVilkår for bruk: https://www.apple.com/legal/internet-services/itunes/dev/stdeula/",
+      "locale": "no",
+      "keywords": "vær,widget,tidsplan,planlegger,agenda,prognose,iCloud,møter,hendelser,jobb,låseskjerm,regn,i dag,uke",
+      "marketingUrl": "https://www.cloud-calendars.com/",
+      "promotionalText": null,
+      "supportUrl": "https://www.cloud-calendars.com/",
+      "whatsNew": null
+    }
+  },
+  "keywordChecks": {
+    "exactDuplicateKeywords": false,
+    "exactTitleSubtitleTokenDuplicates": [],
+    "note": "Unicode code-point limits. Bytes reported separately. Exact token checks do not resolve grammatical forms or Hindi combining marks."
+  },
+  "readiness": "ready_for_editorial_review_not_applied",
+  "translationConfidence": "medium",
+  "caveat": "Model-authored; no native-speaker or ASC write validation. Review RTL mixed-brand rendering for Arabic/Hebrew, Hindi grammar, and shipped tier labels before submission.",
+  "evidence": [
+    "../../product-facts.json",
+    "../localized-batch03/audit.json",
+    "asc-current.json"
+  ],
+  "applyOnly": [
+    "subtitle",
+    "keywords",
+    "promotionalText",
+    "description"
+  ],
+  "preserve": [
+    "name",
+    "release notes",
+    "URLs",
+    "privacy declarations",
+    "screenshots",
+    "other locales"
+  ]
+}

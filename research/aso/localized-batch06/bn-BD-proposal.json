@@ -1,0 +1,93 @@
+{
+  "status": "proposal_only_not_applied",
+  "locale": "bn-BD",
+  "appId": "6744690319",
+  "targetVersion": "1.7.4",
+  "targetState": "PREPARE_FOR_SUBMISSION",
+  "appInfoLocalizationId": "07f0536c-fc07-40b4-a521-4d74af76d71f",
+  "versionLocalizationId": "bec247b8-7092-405b-ad17-b595e4ba7f77",
+  "nameAction": "preserve_exact_current_draft_name",
+  "fields": {
+    "name": {
+      "value": "Cloud Calendars: ক্যালেন্ডার",
+      "characters": 28,
+      "utf8Bytes": 50,
+      "characterLimit": 30,
+      "withinCharacterLimit": true
+    },
+    "subtitle": {
+      "value": "আবহাওয়া ও পরিকল্পনা",
+      "characters": 20,
+      "utf8Bytes": 56,
+      "characterLimit": 30,
+      "withinCharacterLimit": true
+    },
+    "keywords": {
+      "value": "সময়সূচি,সভা,ঘটনা,স্মরণ,আমন্ত্রণ,শেয়ার,সপ্তাহ,মাস,পূর্বাভাস,উইজেট",
+      "characters": 66,
+      "utf8Bytes": 180,
+      "characterLimit": 100,
+      "withinCharacterLimit": true
+    },
+    "promotionalText": {
+      "value": "পরিকল্পনা ও আবহাওয়া একসঙ্গে দেখুন। বিভিন্ন ভিউ ও হোম স্ক্রিন উইজেট ব্যবহার করুন, অথবা অ্যাপ অ্যাকাউন্ট ছাড়াই স্থানীয় ক্যালেন্ডার তৈরি করুন।",
+      "characters": 142,
+      "utf8Bytes": 384,
+      "characterLimit": 170,
+      "withinCharacterLimit": true
+    },
+    "description": {
+      "value": "iPhone ও iPad-এ Cloud Calendars দিয়ে কাজের ও ব্যক্তিগত পরিকল্পনার সঙ্গে আবহাওয়া দেখুন।\n\niCloud ক্যালেন্ডার ব্যবহার করুন এবং Google Calendar যুক্ত করুন। দিন, সপ্তাহ, মাস, বছর বা তালিকা ভিউ বেছে নিন। Cloud Calendars অ্যাকাউন্ট ছাড়াই ডিভাইসে স্থানীয় ক্যালেন্ডার তৈরি করা যায়। পরিষেবা যুক্ত করা ও শেয়ার করার জন্য সাইন ইন লাগতে পারে। শেয়ারের অনুমতি ক্যালেন্ডার ও আমন্ত্রণের ধরনের ওপর নির্ভর করে।\n\nপরিকল্পনার সময় আবহাওয়ার পূর্বাভাস দেখুন। হোম স্ক্রিন উইজেট ছোট, মাঝারি ও বড় আকারে পাওয়া যায়। পূর্বাভাসের প্রাপ্যতা অবস্থান ও আবহাওয়া পরিষেবার ওপর নির্ভর করে।\n\nবিনামূল্যের Base-এ Google Calendar সিঙ্ক, Google Meet, বিভিন্ন ক্যালেন্ডার ভিউ, আবহাওয়া ও উইজেট রয়েছে। Advanced-এ Base-এর সুবিধা থাকে এবং বিজ্ঞাপন সরিয়ে দেয়। Premium-এ Advanced-এর সুবিধার সঙ্গে Microsoft ক্যালেন্ডার ও Microsoft Teams সমর্থন রয়েছে।\n\nডাউনলোড বিনামূল্যে; ঐচ্ছিক সাবস্ক্রিপশন স্বয়ংক্রিয়ভাবে নবায়ন হয়। নেওয়ার আগে অ্যাপ বা App Store-এ বর্তমান স্থানীয় মূল্য ও বিলিং সময়কাল দেখুন। বর্তমান মেয়াদ শেষ হওয়ার অন্তত ২৪ ঘণ্টা আগে বাতিল না করলে সাবস্ক্রিপশন নবায়ন হয়। App Store অ্যাকাউন্ট সেটিংসে পরিচালনা বা বাতিল করুন।\n\nগোপনীয়তা: https://www.cloud-calendars.com/privacy-policy\nব্যবহারের শর্ত: https://www.apple.com/legal/internet-services/itunes/dev/stdeula/",
+      "characters": 1243,
+      "utf8Bytes": 2831,
+      "characterLimit": 4000,
+      "withinCharacterLimit": true
+    }
+  },
+  "current": {
+    "appInfo": {
+      "locale": "bn-BD",
+      "name": "Cloud Calendars: ক্যালেন্ডার",
+      "subtitle": "সব ক্যালেন্ডার এক জায়গায়",
+      "privacyPolicyUrl": "https://www.cloud-calendars.com/privacy-policy",
+      "privacyChoicesUrl": null,
+      "privacyPolicyText": null
+    },
+    "version": {
+      "description": "ক্যালেন্ডার আর আবহাওয়া একসঙ্গে নিয়ে দিনের পরিকল্পনা করুন\n\nCloud Calendars আপনার ক্যালেন্ডার আর আবহাওয়াকে একটি পরিপাটি জায়গায় নিয়ে আসে।\n\niCloud, Google Calendar আর Microsoft ক্যালেন্ডার একটিই অ্যাপে সামলান, আর পূর্বাভাস দেখুন সরাসরি আপনার সময়সূচি, উইজেট আর পরিকল্পনার ভিউয়ের ভেতরেই।\n\nমিটিং, ভ্রমণ, স্কুল থেকে নেওয়া, বাইরের কাজ আর ব্যস্ত দিনের আগে থাকুন — দ্রুত পরিকল্পনার জন্য বানানো ক্যালেন্ডার ভিউ দিয়ে।\n\nহোম স্ক্রিনের উইজেট\n\nএমন উইজেট যোগ করুন যাতে একসঙ্গে থাকে:\n• ক্যালেন্ডারের ইভেন্ট\n• আবহাওয়ার পূর্বাভাস\n• সামনের সময়সূচি\n• চাঁদের দশা আর অবস্থা\n• বাতাস আর তাপমাত্রা\n• দিনের সারসংক্ষেপ\n\nএকাধিক উইজেট শৈলী থেকে বেছে নিন আর হোম স্ক্রিন থেকেই দিনটা দেখুন।\n\nকেন CLOUD CALENDARS\n\n• iCloud, Google Calendar আর Microsoft ক্যালেন্ডার একসঙ্গে দেখুন\n• সঙ্গে থাকা আবহাওয়ার পূর্বাভাস নিয়ে পরিকল্পনা করুন\n• হোম স্ক্রিনে সুন্দর উইজেট ব্যবহার করুন\n• ইভেন্ট টেনে সরান আর আকার বদলান সহজে\n• Google Meet আর Microsoft Teams লিঙ্ক তৈরি করুন\n• দিন, সপ্তাহ, মাস, বছর আর তালিকা ভিউয়ের মধ্যে বদল করুন\n• কাজ আর ব্যক্তিগত ক্যালেন্ডার এক জায়গায় সামলান\n\nসুবিধাসমূহ\n\nসব ক্যালেন্ডার একসঙ্গে\niCloud, Google Calendar আর Microsoft-এর ক্যালেন্ডার যুক্ত করে রঙে আলাদা করা পরিচ্ছন্ন ভিউয়ে সামলান।\n\nক্যালেন্ডারের ভেতরেই আবহাওয়া\nপরিকল্পনার সময়েই দেখুন ঘণ্টা ও দিনের পূর্বাভাস — তাপমাত্রা, অবস্থা, চাঁদের দশা, বাতাস আর আবহাওয়ার আইকন।\n\nক্যালেন্ডার ও আবহাওয়ার উইজেট\nনিজের মতো সাজানো উইজেট থেকে সময়সূচি আর আবহাওয়া সঙ্গে সঙ্গে দেখুন।\n\nএকাধিক ক্যালেন্ডার ভিউ\nআপনি কীভাবে সময় সাজান তার উপর নির্ভর করে দিন, সপ্তাহ, মাস, বছর বা তালিকা বেছে নিন।\n\nসহজ ইভেন্ট সম্পাদনা\nক্যালেন্ডারেই ট্যাপ করে, টেনে আর আকার বদলে ইভেন্ট ঠিক করুন।\n\nআলাদা আবহাওয়া ভিউ\nঘণ্টাভিত্তিক অবস্থা আর পরিকল্পনার কাজে লাগা তথ্যসহ বিস্তারিত পূর্বাভাস দেখুন।\n\nপূর্বাভাস থেকে ইভেন্ট\nপূর্বাভাসের কোনো ঘণ্টায় ট্যাপ করলেই সেই সময়ে নতুন ইভেন্ট তৈরি হবে।\n\nসঙ্গে থাকা মিটিং লিঙ্ক\nইভেন্টে দ্রুত Google Meet আর Microsoft Teams লিঙ্ক যোগ করুন।\n\nউপযুক্ত\n\n• কাজ আর ব্যক্তিগত ক্যালেন্ডার সামলানোর জন্য\n• আবহাওয়া মাথায় রেখে পরিকল্পনার জন্য\n• বাইরের কাজ আর ভ্রমণের জন্য\n• ব্যস্ত সময়সূচি আর পারিবারিক পরিকল্পনার জন্য\n• Google Calendar আর iCloud ব্যবহারকারীদের জন্য\n• Microsoft ক্যালেন্ডার ব্যবহারকারীদের জন্য\n\nCloud Calendars ব্যবহার করে দেখুন — প্রতিটি দিনের পরিকল্পনা সহজ হবে।\n\nসাবস্ক্রিপশন সংক্রান্ত তথ্য\n\nCloud Calendars স্বয়ংক্রিয়ভাবে নবায়নযোগ্য সাবস্ক্রিপশন দেয়।\n\nফ্রি প্ল্যান\n• Google Calendar সিঙ্ক\n• একাধিক ক্যালেন্ডার ভিউ\n• আবহাওয়ার সুবিধা\n• উইজেট\n• Google Meet সমর্থন\nকেনা নিশ্চিত করার সময় আপনার Apple ID অ্যাকাউন্ট থেকে টাকা কাটা হবে। চলতি মেয়াদ শেষ হওয়ার অন্তত ২৪ ঘণ্টা আগে বাতিল না করলে সাবস্ক্রিপশন নিজে থেকেই নবায়ন হয়। চলতি মেয়াদ শেষ হওয়ার আগের ২৪ ঘণ্টার মধ্যে নবায়নের টাকা আপনার অ্যাকাউন্ট থেকে কাটা হবে। App Store অ্যাকাউন্ট সেটিংসে গিয়ে সাবস্ক্রিপশন সামলাতে ও বাতিল করতে পারবেন।\n\nগোপনীয়তা নীতি: https://www.cloud-calendars.com/privacy-policy\nব্যবহারের শর্তাবলি: https://www.apple.com/legal/internet-services/itunes/dev/stdeula/",
+      "locale": "bn-BD",
+      "keywords": "আবহাওয়া,উইজেট,সময়সূচি,পরিকল্পনা,পূর্বাভাস,iCloud,মিটিং,ইভেন্ট,কাজ,লক স্ক্রিন,বৃষ্টি,আজ,মাস,দিন,মাস",
+      "marketingUrl": "https://www.cloud-calendars.com/",
+      "promotionalText": null,
+      "supportUrl": "https://www.cloud-calendars.com/",
+      "whatsNew": null
+    }
+  },
+  "keywordChecks": {
+    "exactDuplicateKeywords": false,
+    "exactTitleSubtitleTokenDuplicates": [],
+    "note": "Unicode code-point counts include combining marks. UTF-8 bytes separate. Token checks are not a full linguistic or rendered-text review."
+  },
+  "readiness": "ready_for_editorial_review_not_applied",
+  "translationConfidence": "low-medium",
+  "caveat": "Model-authored; native-language editorial review recommended, particularly Indic morphology and terminology. No external translator or ASC write validation. Urdu mixed RTL/LTR rendering not visually verified.",
+  "evidence": [
+    "../../product-facts.json",
+    "../localized-batch05/audit.json",
+    "asc-current.json"
+  ],
+  "applyOnly": [
+    "subtitle",
+    "keywords",
+    "promotionalText",
+    "description"
+  ],
+  "preserve": [
+    "name",
+    "release notes",
+    "URLs",
+    "privacy declarations",
+    "screenshots",
+    "other locales"
+  ]
+}

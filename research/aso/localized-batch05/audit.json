@@ -1,0 +1,63 @@
+{
+  "status": "ten_proposals_ready_for_editorial_review_not_applied",
+  "prepared": 10,
+  "applied": 0,
+  "scope": "Fresh GET draft 1.7.4 and matching PREPARE_FOR_SUBMISSION appInfo; all ten requested locales present. No native/site edits or ASC mutation.",
+  "productFactsReviewed": [
+    "platforms",
+    "views",
+    "google",
+    "advanced",
+    "premium",
+    "local",
+    "weather",
+    "weather_details",
+    "widgets",
+    "live_activity",
+    "sharing",
+    "accounts",
+    "server_processing",
+    "travel"
+  ],
+  "previousBatchReviewed": 10,
+  "englishAllocation": {
+    "en-GB": "Diary and appointment intent, dropping schedule from the common set.",
+    "en-CA": "Schedule, meeting, invitation and shared-event vocabulary.",
+    "en-AU": "Weather and outdoor/day planning vocabulary: outdoor and daily replace appointment and invite. Outdoor describes planning use, not a new activity-tracking feature.",
+    "qualification": "Editorial hypotheses only. No measured national preference, search demand, ranking or cross-locale indexing assumption. Ordering is for readability, not claimed ranking weight. Provider subtitle retained; name unchanged."
+  },
+  "regionalWriting": {
+    "es-MX": "Clima, pronóstico, app and configuración wording; distinct from es-ES.",
+    "fr-CA": "Courriel, ouverture de session, forfait and formats offerts wording; distinct from fr-FR.",
+    "english": "Shared accurate product explanation and cancelled spelling appropriate to these English locales; promotional copy and keyword membership vary."
+  },
+  "validation": "All current names exactly preserved; all character limits pass; UTF-8 bytes separately reported. Exact duplicate keyword and title/subtitle token checks pass. No byte cap imposed.",
+  "claims": "Accurate Base/Advanced/Premium scope, qualified local-account/provider/sharing requirements, forecast availability and sharing access. Every description includes checking current local price and billing period. No fixed prices, rank/volume/citation claims, standalone Lock Screen widget or no-data guarantee.",
+  "confidence": {
+    "en-GB": "high linguistic confidence; no external reviewer",
+    "en-CA": "high linguistic confidence; no external reviewer",
+    "en-AU": "high linguistic confidence; no external reviewer",
+    "es-MX": "medium; model-authored, no native-speaker review",
+    "fr-CA": "medium; model-authored, no native-speaker review",
+    "el": "medium; model-authored, no native-speaker review",
+    "hr": "medium; model-authored, no native-speaker review",
+    "sk": "medium; model-authored, no native-speaker review",
+    "sl-SI": "medium; model-authored, no native-speaker review",
+    "ru": "medium; model-authored, no native-speaker review"
+  },
+  "applyOnly": [
+    "subtitle",
+    "keywords",
+    "promotionalText",
+    "description"
+  ],
+  "preserve": [
+    "name",
+    "URLs",
+    "privacy declarations",
+    "release notes",
+    "screenshots",
+    "other locales"
+  ],
+  "rootReview": "Refresh current field/state data before applying. Exact IDs and current values included in each locale proposal."
+}

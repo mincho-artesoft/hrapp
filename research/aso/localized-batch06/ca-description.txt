@@ -1,0 +1,12 @@
+Consulta els plans de feina, les cites personals i el temps a l’iPhone i l’iPad amb Cloud Calendars.
+
+Utilitza calendaris de l’iCloud i connecta Google Calendar. Tria la vista de dia, setmana, mes, any o llista. També pots crear un calendari local al dispositiu sense un compte de Cloud Calendars. Connectar serveis i compartir pot requerir iniciar sessió. Els permisos depenen del calendari i del tipus d’invitació.
+
+Consulta la previsió mentre fas plans. Els ginys de la pantalla d’inici estan disponibles en mides petita, mitjana i gran. Les previsions disponibles depenen de la ubicació i del proveïdor meteorològic.
+
+Base és gratuït i inclou sincronització amb Google Calendar, Google Meet, diverses vistes de calendari, temps i ginys. Advanced inclou les funcions de Base i elimina els anuncis. Premium inclou Advanced i afegeix calendaris de Microsoft i Microsoft Teams.
+
+La descàrrega és gratuïta, amb subscripcions opcionals de renovació automàtica. Abans de subscriure’t, comprova el preu local actual i el període de facturació a l’app o a l’App Store. La subscripció es renova si no la cancel·les almenys 24 hores abans del final del període actual. Pots gestionar-la o cancel·lar-la als ajustos del compte de l’App Store.
+
+Privadesa: https://www.cloud-calendars.com/privacy-policy
+Condicions d’ús: https://www.apple.com/legal/internet-services/itunes/dev/stdeula/

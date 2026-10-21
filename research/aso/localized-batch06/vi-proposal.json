@@ -1,0 +1,93 @@
+{
+  "status": "proposal_only_not_applied",
+  "locale": "vi",
+  "appId": "6744690319",
+  "targetVersion": "1.7.4",
+  "targetState": "PREPARE_FOR_SUBMISSION",
+  "appInfoLocalizationId": "10c1df6d-f2e2-4dd0-b3fc-f65dd9a250d4",
+  "versionLocalizationId": "7091d1fe-7462-481a-9735-0746ece5ce89",
+  "nameAction": "preserve_exact_current_draft_name",
+  "fields": {
+    "name": {
+      "value": "Cloud Calendars: Lịch",
+      "characters": 21,
+      "utf8Bytes": 23,
+      "characterLimit": 30,
+      "withinCharacterLimit": true
+    },
+    "subtitle": {
+      "value": "Thời tiết, kế hoạch, tiện ích",
+      "characters": 29,
+      "utf8Bytes": 40,
+      "characterLimit": 30,
+      "withinCharacterLimit": true
+    },
+    "keywords": {
+      "value": "lịch trình,nhắc nhở,cuộc họp,sự kiện,chia sẻ,lời mời,tuần,tháng,dự báo,cuộc hẹn",
+      "characters": 79,
+      "utf8Bytes": 110,
+      "characterLimit": 100,
+      "withinCharacterLimit": true
+    },
+    "promotionalText": {
+      "value": "Xem kế hoạch và thời tiết cùng nhau. Dùng tiện ích và nhiều chế độ xem, hoặc tạo lịch cục bộ mà không cần tài khoản ứng dụng.",
+      "characters": 125,
+      "utf8Bytes": 168,
+      "characterLimit": 170,
+      "withinCharacterLimit": true
+    },
+    "description": {
+      "value": "Xem lịch làm việc, kế hoạch cá nhân và thời tiết trên iPhone và iPad với Cloud Calendars.\n\nDùng lịch iCloud và kết nối Lịch Google. Chọn chế độ xem ngày, tuần, tháng, năm hoặc danh sách. Bạn cũng có thể tạo lịch cục bộ trên thiết bị mà không cần tài khoản Cloud Calendars. Kết nối dịch vụ và chia sẻ có thể yêu cầu đăng nhập. Quyền truy cập phụ thuộc vào lịch và loại lời mời.\n\nXem dự báo khi lên kế hoạch. Tiện ích Màn hình chính có kích thước nhỏ, vừa và lớn. Dự báo có sẵn phụ thuộc vào vị trí và nhà cung cấp thời tiết.\n\nBase miễn phí gồm đồng bộ Lịch Google, Google Meet, nhiều chế độ xem lịch, thời tiết và tiện ích. Advanced gồm tính năng của Base và loại bỏ quảng cáo. Premium gồm Advanced cùng hỗ trợ lịch Microsoft và Microsoft Teams.\n\nỨng dụng được tải miễn phí, với gói đăng ký tự động gia hạn tùy chọn. Trước khi đăng ký, hãy kiểm tra giá hiện tại tại địa phương và kỳ thanh toán trong ứng dụng hoặc App Store. Gói đăng ký sẽ gia hạn nếu không hủy ít nhất 24 giờ trước khi kỳ hiện tại kết thúc. Quản lý hoặc hủy trong phần cài đặt tài khoản App Store.\n\nQuyền riêng tư: https://www.cloud-calendars.com/privacy-policy\nĐiều khoản sử dụng: https://www.apple.com/legal/internet-services/itunes/dev/stdeula/",
+      "characters": 1214,
+      "utf8Bytes": 1544,
+      "characterLimit": 4000,
+      "withinCharacterLimit": true
+    }
+  },
+  "current": {
+    "appInfo": {
+      "locale": "vi",
+      "name": "Cloud Calendars: Lịch",
+      "subtitle": "Mọi lịch của bạn ở một nơi",
+      "privacyPolicyUrl": "https://www.cloud-calendars.com/privacy-policy",
+      "privacyChoicesUrl": null,
+      "privacyPolicyText": null
+    },
+    "version": {
+      "description": "Lên kế hoạch ngày mới với lịch và thời tiết\n\nCloud Calendars kết hợp lịch và thời tiết của bạn thành một trải nghiệm lập kế hoạch đẹp mắt và ngăn nắp.\n\nQuản lý lịch iCloud, Google Calendar và Microsoft trong một ứng dụng, đồng thời xem dự báo ngay trong lịch trình, tiện ích và các chế độ lập kế hoạch.\n\nChủ động trước các cuộc họp, chuyến đi, giờ đón con ở trường, hoạt động ngoài trời và những ngày bận rộn với các chế độ xem lịch được thiết kế để lập kế hoạch nhanh hơn.\n\nTIỆN ÍCH MÀN HÌNH CHÍNH\n\nThêm các tiện ích đẹp mắt kết hợp:\n• Sự kiện lịch\n• Dự báo thời tiết\n• Lịch trình sắp tới\n• Pha Mặt Trăng và điều kiện\n• Gió và nhiệt độ\n• Tổng quan lịch làm việc hằng ngày\n\nChọn từ nhiều kiểu tiện ích để xem ngày của bạn ngay trên Màn hình chính.\n\nVÌ SAO CHỌN CLOUD CALENDARS\n\n• Xem lịch iCloud, Google Calendar và Microsoft cùng nhau\n• Lập kế hoạch với dự báo thời tiết tích hợp\n• Sử dụng tiện ích Màn hình chính đẹp mắt\n• Kéo, di chuyển và thay đổi thời lượng sự kiện tự nhiên\n• Tạo liên kết Google Meet và Microsoft Teams\n• Chuyển giữa chế độ xem Ngày, Tuần, Tháng, Năm và Danh sách\n• Quản lý lịch công việc và cá nhân ở một nơi\n\nTÍNH NĂNG\n\nTất cả lịch của bạn ở một nơi\nKết nối và quản lý lịch iCloud, Google Calendar và Microsoft trong một trải nghiệm rõ ràng, được mã hóa bằng màu sắc.\n\nThời tiết tích hợp trong lịch\nXem dự báo theo giờ và hằng ngày ngay trong quá trình lập kế hoạch, bao gồm nhiệt độ, điều kiện, pha Mặt Trăng, gió và biểu tượng thời tiết.\n\nTiện ích lịch + thời tiết\nXem ngay lịch trình và thời tiết từ các tiện ích Màn hình chính có thể tùy chỉnh.\n\nNhiều chế độ xem lịch\nChọn chế độ xem Ngày, Tuần, Tháng, Năm hoặc Danh sách tùy theo cách bạn lập kế hoạch thời gian.\n\nChỉnh sửa sự kiện dễ dàng\nChạm, kéo và thay đổi thời lượng sự kiện ngay trên lịch để sắp xếp nhanh chóng và tự nhiên.\n\nChế độ xem thời tiết riêng\nKhám phá dự báo chi tiết với điều kiện theo giờ và thông tin hữu ích cho việc lập kế hoạch.\n\nTạo sự kiện từ dự báo\nChạm vào một giờ dự báo để tạo ngay sự kiện mới vào thời gian đã chọn.\n\nLiên kết cuộc họp tích hợp\nNhanh chóng thêm liên kết Google Meet và Microsoft Teams vào sự kiện.\n\nPHÙ HỢP CHO\n\n• Quản lý lịch công việc và cá nhân\n• Lập kế hoạch theo thời tiết\n• Hoạt động ngoài trời và du lịch\n• Lịch trình bận rộn và kế hoạch gia đình\n• Người dùng Google Calendar và iCloud\n• Người dùng lịch Microsoft\n\nHãy dùng thử Cloud Calendars và giúp mỗi ngày dễ lập kế hoạch hơn.\n\nTHÔNG TIN ĐĂNG KÝ\n\nCloud Calendars cung cấp các gói đăng ký tự động gia hạn.\n\nGói Miễn phí\n• Đồng bộ Google Calendar\n• Nhiều chế độ xem lịch\n• Tính năng thời tiết\n• Tiện ích\n• Hỗ trợ Google Meet\n\nThanh toán sẽ được tính vào tài khoản Apple ID khi xác nhận mua. Đăng ký tự động gia hạn trừ khi bị hủy ít nhất 24 giờ trước khi kết thúc kỳ hiện tại. Tài khoản sẽ bị tính phí gia hạn trong vòng 24 giờ trước khi kết thúc kỳ hiện tại. Bạn có thể quản lý và hủy đăng ký trong cài đặt tài khoản App Store.\n\nChính sách quyền riêng tư: https://www.cloud-calendars.com/privacy-policy\nĐiều khoản sử dụng: https://www.apple.com/legal/internet-services/itunes/dev/stdeula/",
+      "locale": "vi",
+      "keywords": "thời tiết,widget,lịch trình,kế hoạch,agenda,dự báo,iCloud,họp,sự kiện,công việc,màn hình khóa,mưa",
+      "marketingUrl": "https://www.cloud-calendars.com/",
+      "promotionalText": null,
+      "supportUrl": "https://www.cloud-calendars.com/",
+      "whatsNew": null
+    }
+  },
+  "keywordChecks": {
+    "exactDuplicateKeywords": false,
+    "exactTitleSubtitleTokenDuplicates": [],
+    "note": "Unicode code-point counts include combining marks. UTF-8 bytes separate. Token checks are not a full linguistic or rendered-text review."
+  },
+  "readiness": "ready_for_editorial_review_not_applied",
+  "translationConfidence": "medium",
+  "caveat": "Model-authored; native-language editorial review recommended, particularly Indic morphology and terminology. No external translator or ASC write validation. Urdu mixed RTL/LTR rendering not visually verified.",
+  "evidence": [
+    "../../product-facts.json",
+    "../localized-batch05/audit.json",
+    "asc-current.json"
+  ],
+  "applyOnly": [
+    "subtitle",
+    "keywords",
+    "promotionalText",
+    "description"
+  ],
+  "preserve": [
+    "name",
+    "release notes",
+    "URLs",
+    "privacy declarations",
+    "screenshots",
+    "other locales"
+  ]
+}

@@ -1,5 +1,5 @@
 {
-  "date": "2026-10-21T16:23:09.307Z",
+  "date": "2026-10-21T17:20:21.770Z",
   "status": "source_inventory_not_quality_approval",
   "articles": [
     {
@@ -219,6 +219,57 @@
       "source": "articles-google.ts",
       "sources": [],
       "updated": "2026-09-12"
+    },
+    {
+      "locale": "bg",
+      "slug": "calendar-notifications-missing-silent-or-duplicated",
+      "title": "Известия от календара на iPhone: липсват, без звук или се повтарят?",
+      "description": "Разграничете напомнянията за събития, настройките на Cloud Calendars и известията на iPhone. Проверете проблема, без да изтривате данни.",
+      "descriptionCharacters": 136,
+      "sections": 6,
+      "faq": 3,
+      "words": 821,
+      "source": "articles-help.ts",
+      "sources": [
+        "https://support.apple.com/guide/iphone/change-notification-settings-iph7c3d96bab/ios",
+        "https://support.google.com/calendar/answer/37242?hl=en&co=GENIE.Platform%3DiOS"
+      ],
+      "updated": "2026-10-21"
+    },
+    {
+      "locale": "bg",
+      "slug": "find-old-calendar-events-by-account-date-and-title",
+      "title": "Намерете старо събитие: профил, дати и полета за търсене",
+      "description": "Празният резултат не доказва изтриване. Проверете профила, периода и полетата за търсене, преди да потърсите в архива на доставчика.",
+      "descriptionCharacters": 132,
+      "sections": 6,
+      "faq": 3,
+      "words": 751,
+      "source": "articles-help.ts",
+      "sources": [
+        "https://support.google.com/calendar/answer/37176?hl=en&co=GENIE.Platform%3DDesktop",
+        "https://support.apple.com/guide/iphone/search-for-events-iph2c9ef44ad/ios"
+      ],
+      "updated": "2026-10-21"
+    },
+    {
+      "locale": "bg",
+      "slug": "calendar-export-ics-pdf-and-backup",
+      "title": "Експортиране на календар: ICS, PDF и абонаменти",
+      "description": "Нужен ви е файл с календар? Изберете ICS, PDF или абонамент и използвайте правилните инструменти на Google, Mac или Outlook.",
+      "descriptionCharacters": 124,
+      "sections": 6,
+      "faq": 3,
+      "words": 797,
+      "source": "articles-help.ts",
+      "sources": [
+        "https://support.google.com/calendar/answer/37111?hl=en",
+        "https://support.google.com/calendar/answer/37118?hl=en",
+        "https://support.apple.com/guide/calendar/import-or-export-calendars-icl1023/mac",
+        "https://support.apple.com/en-gb/guide/mac-help/mchlp1531/mac",
+        "https://support.microsoft.com/en-us/outlook/share-your-calendar-in-outlook-on-the-web"
+      ],
+      "updated": "2026-10-21"
     },
     {
       "locale": "bg",
@@ -627,6 +678,57 @@
       "source": "articles-google.ts",
       "sources": [],
       "updated": "2026-09-12"
+    },
+    {
+      "locale": "de-DE",
+      "slug": "calendar-notifications-missing-silent-or-duplicated",
+      "title": "Kalender-Mitteilungen auf dem iPhone: fehlend, lautlos oder doppelt?",
+      "description": "Prüfen Sie Ereignishinweise, Cloud Calendars und die iPhone-Mitteilungen getrennt. Finden Sie die Ursache fehlender oder doppelter Hinweise ohne Datenlöschung.",
+      "descriptionCharacters": 159,
+      "sections": 6,
+      "faq": 3,
+      "words": 810,
+      "source": "articles-help.ts",
+      "sources": [
+        "https://support.apple.com/guide/iphone/change-notification-settings-iph7c3d96bab/ios",
+        "https://support.google.com/calendar/answer/37242?hl=en&co=GENIE.Platform%3DiOS"
+      ],
+      "updated": "2026-10-21"
+    },
+    {
+      "locale": "de-DE",
+      "slug": "find-old-calendar-events-by-account-date-and-title",
+      "title": "Alte Kalendertermine finden: Konto, Zeitraum und Suchfelder prüfen",
+      "description": "Ein leeres Suchergebnis beweist keine Löschung. Prüfen Sie Konto, Zeitraum und Suchfelder, bevor Sie im Archiv des Anbieters suchen.",
+      "descriptionCharacters": 132,
+      "sections": 6,
+      "faq": 3,
+      "words": 785,
+      "source": "articles-help.ts",
+      "sources": [
+        "https://support.google.com/calendar/answer/37176?hl=en&co=GENIE.Platform%3DDesktop",
+        "https://support.apple.com/guide/iphone/search-for-events-iph2c9ef44ad/ios"
+      ],
+      "updated": "2026-10-21"
+    },
+    {
+      "locale": "de-DE",
+      "slug": "calendar-export-ics-pdf-and-backup",
+      "title": "Kalender exportieren: ICS-Dateien, PDFs und Abonnements",
+      "description": "Kalenderdaten vom iPhone-Konto sichern oder teilen? Wählen Sie ICS, PDF oder ein Abonnement und den passenden Weg über Google, Mac oder Outlook.",
+      "descriptionCharacters": 144,
+      "sections": 6,
+      "faq": 3,
+      "words": 831,
+      "source": "articles-help.ts",
+      "sources": [
+        "https://support.google.com/calendar/answer/37111?hl=en",
+        "https://support.google.com/calendar/answer/37118?hl=en",
+        "https://support.apple.com/guide/calendar/import-or-export-calendars-icl1023/mac",
+        "https://support.apple.com/en-gb/guide/mac-help/mchlp1531/mac",
+        "https://support.microsoft.com/en-us/outlook/share-your-calendar-in-outlook-on-the-web"
+      ],
+      "updated": "2026-10-21"
     },
     {
       "locale": "de-DE",
@@ -1161,28 +1263,35 @@
     {
       "locale": "en-US",
       "slug": "recurring-events-without-the-mess",
-      "title": "Recurring events without the mess",
-      "description": "Repeats are the feature most likely to go quietly wrong. The three decisions that cause nearly all of it.",
-      "descriptionCharacters": 105,
-      "sections": 3,
-      "faq": 0,
-      "words": 227,
+      "title": "Recurring calendar events: change one date or the series safely",
+      "description": "Check ownership and edit scope before changing a recurring calendar event. Handle one-off changes, future schedules and exceptions without deleting the series.",
+      "descriptionCharacters": 159,
+      "sections": 6,
+      "faq": 3,
+      "words": 868,
       "source": "articles-planning.ts",
-      "sources": [],
-      "updated": "2026-08-27"
+      "sources": [
+        "https://support.google.com/calendar/answer/37115?co=GENIE.Platform%3DDesktop&hl=en",
+        "https://support.apple.com/guide/calendar/set-up-all-day-multiday-or-repeating-events-icl1018/mac",
+        "https://support.google.com/a/users/answer/13293412?hl=en"
+      ],
+      "updated": "2026-10-21"
     },
     {
       "locale": "en-US",
       "slug": "time-zones-and-the-flight-you-booked",
-      "title": "Time zones, and the flight that lands before it takes off",
-      "description": "Travel is where calendars quietly betray people. What changes when you cross a zone, and how to enter events so they survive it.",
-      "descriptionCharacters": 128,
-      "sections": 2,
-      "faq": 0,
-      "words": 220,
+      "title": "Calendar time zones: check the event before you travel",
+      "description": "Separate an event’s time zone from the calendar’s display zone. Check flights, destination appointments and recurring calls without shifting the wrong time.",
+      "descriptionCharacters": 156,
+      "sections": 6,
+      "faq": 3,
+      "words": 884,
       "source": "articles-planning.ts",
-      "sources": [],
-      "updated": "2026-08-27"
+      "sources": [
+        "https://support.apple.com/guide/iphone/schedule-display-events-a-time-zone-iph69525c028/ios",
+        "https://support.google.com/calendar/answer/37064?hl=en"
+      ],
+      "updated": "2026-10-21"
     },
     {
       "locale": "en-US",
@@ -2051,6 +2160,57 @@
       "source": "articles-google.ts",
       "sources": [],
       "updated": "2026-09-12"
+    },
+    {
+      "locale": "fr-FR",
+      "slug": "calendar-notifications-missing-silent-or-duplicated",
+      "title": "Notifications de calendrier sur iPhone : absentes, silencieuses ou en double ?",
+      "description": "Distinguez les alertes des événements, Cloud Calendars et les réglages de l’iPhone. Diagnostiquez les rappels sans supprimer de données.",
+      "descriptionCharacters": 136,
+      "sections": 6,
+      "faq": 3,
+      "words": 949,
+      "source": "articles-help.ts",
+      "sources": [
+        "https://support.apple.com/guide/iphone/change-notification-settings-iph7c3d96bab/ios",
+        "https://support.google.com/calendar/answer/37242?hl=en&co=GENIE.Platform%3DiOS"
+      ],
+      "updated": "2026-10-21"
+    },
+    {
+      "locale": "fr-FR",
+      "slug": "find-old-calendar-events-by-account-date-and-title",
+      "title": "Retrouver un ancien événement : compte, dates et champs de recherche",
+      "description": "Un résultat vide ne prouve pas une suppression. Vérifiez le compte, la période et les champs recherchés avant de consulter l’archive du fournisseur.",
+      "descriptionCharacters": 148,
+      "sections": 6,
+      "faq": 3,
+      "words": 919,
+      "source": "articles-help.ts",
+      "sources": [
+        "https://support.google.com/calendar/answer/37176?hl=en&co=GENIE.Platform%3DDesktop",
+        "https://support.apple.com/guide/iphone/search-for-events-iph2c9ef44ad/ios"
+      ],
+      "updated": "2026-10-21"
+    },
+    {
+      "locale": "fr-FR",
+      "slug": "calendar-export-ics-pdf-and-backup",
+      "title": "Exporter un calendrier : fichiers ICS, PDF et abonnements",
+      "description": "Besoin d’un fichier de calendrier ? Choisissez ICS, PDF ou un abonnement, puis la procédure adaptée dans Google, sur Mac ou dans Outlook.",
+      "descriptionCharacters": 137,
+      "sections": 6,
+      "faq": 3,
+      "words": 971,
+      "source": "articles-help.ts",
+      "sources": [
+        "https://support.google.com/calendar/answer/37111?hl=en",
+        "https://support.google.com/calendar/answer/37118?hl=en",
+        "https://support.apple.com/guide/calendar/import-or-export-calendars-icl1023/mac",
+        "https://support.apple.com/en-gb/guide/mac-help/mchlp1531/mac",
+        "https://support.microsoft.com/en-us/outlook/share-your-calendar-in-outlook-on-the-web"
+      ],
+      "updated": "2026-10-21"
     },
     {
       "locale": "fr-FR",

@@ -1,0 +1,93 @@
+{
+  "status": "proposal_only_not_applied",
+  "locale": "kn-IN",
+  "appId": "6744690319",
+  "targetVersion": "1.7.4",
+  "targetState": "PREPARE_FOR_SUBMISSION",
+  "appInfoLocalizationId": "1430fde5-2074-4f05-a67e-c0186910444d",
+  "versionLocalizationId": "8841df1b-4735-4ed7-a8e3-0bf8f48f5ae4",
+  "nameAction": "preserve_exact_current_draft_name",
+  "fields": {
+    "name": {
+      "value": "Cloud Calendars: ಕ್ಯಾಲೆಂಡರ್",
+      "characters": 27,
+      "utf8Bytes": 47,
+      "characterLimit": 30,
+      "withinCharacterLimit": true
+    },
+    "subtitle": {
+      "value": "ಹವಾಮಾನ ಮತ್ತು ಯೋಜನೆ",
+      "characters": 18,
+      "utf8Bytes": 50,
+      "characterLimit": 30,
+      "withinCharacterLimit": true
+    },
+    "keywords": {
+      "value": "ವೇಳಾಪಟ್ಟಿ,ಸಭೆ,ಈವೆಂಟ್,ಜ್ಞಾಪನೆ,ಆಹ್ವಾನ,ಹಂಚಿಕೆ,ವಾರ,ತಿಂಗಳು,ಮುನ್ಸೂಚನೆ,ವಿಜೆಟ್",
+      "characters": 70,
+      "utf8Bytes": 192,
+      "characterLimit": 100,
+      "withinCharacterLimit": true
+    },
+    "promotionalText": {
+      "value": "ಯೋಜನೆ ಮತ್ತು ಹವಾಮಾನವನ್ನು ಒಟ್ಟಿಗೆ ನೋಡಿ. ವಿಭಿನ್ನ ವೀಕ್ಷಣೆಗಳು ಮತ್ತು ಹೋಮ್ ಸ್ಕ್ರೀನ್ ವಿಜೆಟ್ ಬಳಸಿ ಅಥವಾ ಆ್ಯಪ್ ಖಾತೆಯಿಲ್ಲದೆ ಸ್ಥಳೀಯ ಕ್ಯಾಲೆಂಡರ್ ರಚಿಸಿ.",
+      "characters": 136,
+      "utf8Bytes": 370,
+      "characterLimit": 170,
+      "withinCharacterLimit": true
+    },
+    "description": {
+      "value": "iPhone ಮತ್ತು iPad ನಲ್ಲಿ Cloud Calendars ಮೂಲಕ ಕೆಲಸದ ಮತ್ತು ವೈಯಕ್ತಿಕ ಯೋಜನೆಗಳ ಜೊತೆಗೆ ಹವಾಮಾನವನ್ನು ನೋಡಿ.\n\niCloud ಕ್ಯಾಲೆಂಡರ್ ಬಳಸಿ ಮತ್ತು Google Calendar ಸಂಪರ್ಕಿಸಿ. ದಿನ, ವಾರ, ತಿಂಗಳು, ವರ್ಷ ಅಥವಾ ಪಟ್ಟಿ ವೀಕ್ಷಣೆಯನ್ನು ಆಯ್ಕೆಮಾಡಿ. Cloud Calendars ಖಾತೆಯಿಲ್ಲದೆ ಸಾಧನದಲ್ಲಿ ಸ್ಥಳೀಯ ಕ್ಯಾಲೆಂಡರ್ ರಚಿಸಬಹುದು. ಸೇವೆಗಳನ್ನು ಸಂಪರ್ಕಿಸಲು ಮತ್ತು ಹಂಚಿಕೊಳ್ಳಲು ಸೈನ್ ಇನ್ ಅಗತ್ಯವಾಗಬಹುದು. ಪ್ರವೇಶ ಅನುಮತಿಗಳು ಕ್ಯಾಲೆಂಡರ್ ಮತ್ತು ಆಹ್ವಾನದ ಪ್ರಕಾರವನ್ನು ಅವಲಂಬಿಸಿರುತ್ತವೆ.\n\nಯೋಜನೆ ಮಾಡುವಾಗ ಹವಾಮಾನ ಮುನ್ಸೂಚನೆ ಪರಿಶೀಲಿಸಿ. ಹೋಮ್ ಸ್ಕ್ರೀನ್ ವಿಜೆಟ್‌ಗಳು ಸಣ್ಣ, ಮಧ್ಯಮ ಮತ್ತು ದೊಡ್ಡ ಗಾತ್ರಗಳಲ್ಲಿ ಲಭ್ಯವಿವೆ. ಮುನ್ಸೂಚನೆಯ ಲಭ್ಯತೆ ಸ್ಥಳ ಮತ್ತು ಹವಾಮಾನ ಸೇವೆಯನ್ನು ಅವಲಂಬಿಸಿರುತ್ತದೆ.\n\nಉಚಿತ Base ನಲ್ಲಿ Google Calendar ಸಿಂಕ್, Google Meet, ವಿವಿಧ ಕ್ಯಾಲೆಂಡರ್ ವೀಕ್ಷಣೆಗಳು, ಹವಾಮಾನ ಮತ್ತು ವಿಜೆಟ್‌ಗಳು ಸೇರಿವೆ. Advanced ನಲ್ಲಿ Base ವೈಶಿಷ್ಟ್ಯಗಳು ಸೇರಿವೆ ಮತ್ತು ಜಾಹೀರಾತುಗಳನ್ನು ತೆಗೆದುಹಾಕುತ್ತದೆ. Premium ನಲ್ಲಿ Advanced ಜೊತೆಗೆ Microsoft ಕ್ಯಾಲೆಂಡರ್ ಮತ್ತು Microsoft Teams ಬೆಂಬಲ ಸೇರಿದೆ.\n\nಡೌನ್‌ಲೋಡ್ ಉಚಿತ; ಐಚ್ಛಿಕ ಚಂದಾದಾರಿಕೆಗಳು ಸ್ವಯಂಚಾಲಿತವಾಗಿ ನವೀಕರಣಗೊಳ್ಳುತ್ತವೆ. ಖರೀದಿಸುವ ಮೊದಲು ಆ್ಯಪ್ ಅಥವಾ App Store ನಲ್ಲಿ ಪ್ರಸ್ತುತ ಸ್ಥಳೀಯ ಬೆಲೆ ಮತ್ತು ಬಿಲ್ಲಿಂಗ್ ಅವಧಿ ಪರಿಶೀಲಿಸಿ. ಪ್ರಸ್ತುತ ಅವಧಿ ಮುಗಿಯುವ ಕನಿಷ್ಠ 24 ಗಂಟೆಗಳ ಮೊದಲು ರದ್ದುಪಡಿಸದಿದ್ದರೆ ಚಂದಾದಾರಿಕೆ ನವೀಕರಣಗೊಳ್ಳುತ್ತದೆ. App Store ಖಾತೆ ಸೆಟ್ಟಿಂಗ್‌ಗಳಲ್ಲಿ ನಿರ್ವಹಿಸಿ ಅಥವಾ ರದ್ದುಪಡಿಸಿ.\n\nಗೌಪ್ಯತೆ: https://www.cloud-calendars.com/privacy-policy\nಬಳಕೆಯ ನಿಯಮಗಳು: https://www.apple.com/legal/internet-services/itunes/dev/stdeula/",
+      "characters": 1327,
+      "utf8Bytes": 3097,
+      "characterLimit": 4000,
+      "withinCharacterLimit": true
+    }
+  },
+  "current": {
+    "appInfo": {
+      "locale": "kn-IN",
+      "name": "Cloud Calendars: ಕ್ಯಾಲೆಂಡರ್",
+      "subtitle": "ಎಲ್ಲ ಕ್ಯಾಲೆಂಡರ್ ಒಂದೇ ಕಡೆ",
+      "privacyPolicyUrl": "https://www.cloud-calendars.com/privacy-policy",
+      "privacyChoicesUrl": null,
+      "privacyPolicyText": null
+    },
+    "version": {
+      "description": "ಕ್ಯಾಲೆಂಡರ್ ಮತ್ತು ಹವಾಮಾನ ಜೊತೆಯಾಗಿ ನಿಮ್ಮ ದಿನವನ್ನು ಯೋಜಿಸಿ\n\nCloud Calendars ನಿಮ್ಮ ಕ್ಯಾಲೆಂಡರ್‌ಗಳನ್ನು ಮತ್ತು ಹವಾಮಾನವನ್ನು ಒಂದೇ ಅಚ್ಚುಕಟ್ಟಾದ ಜಾಗಕ್ಕೆ ತರುತ್ತದೆ.\n\niCloud, Google Calendar ಮತ್ತು Microsoft ಕ್ಯಾಲೆಂಡರ್‌ಗಳನ್ನು ಒಂದೇ ಆ್ಯಪ್‌ನಲ್ಲಿ ನಿರ್ವಹಿಸಿ, ಮುನ್ಸೂಚನೆಯನ್ನು ನೇರವಾಗಿ ನಿಮ್ಮ ವೇಳಾಪಟ್ಟಿ, ವಿಜೆಟ್ ಮತ್ತು ಯೋಜನಾ ನೋಟಗಳಲ್ಲೇ ನೋಡಿ.\n\nಸಭೆಗಳು, ಪ್ರಯಾಣ, ಶಾಲೆಯಿಂದ ಕರೆತರುವುದು, ಹೊರಾಂಗಣ ಚಟುವಟಿಕೆಗಳು ಮತ್ತು ಬಿಡುವಿಲ್ಲದ ದಿನಗಳಿಗೆ ಮುಂಚಿತವಾಗಿ ಸಿದ್ಧರಾಗಿ — ವೇಗದ ಯೋಜನೆಗಾಗಿ ರೂಪಿಸಿದ ಕ್ಯಾಲೆಂಡರ್ ನೋಟಗಳೊಂದಿಗೆ.\n\nಹೋಮ್ ಸ್ಕ್ರೀನ್ ವಿಜೆಟ್‌ಗಳು\n\nಇವನ್ನು ಒಟ್ಟಿಗೆ ತರುವ ವಿಜೆಟ್‌ಗಳನ್ನು ಸೇರಿಸಿ:\n• ಕ್ಯಾಲೆಂಡರ್ ಈವೆಂಟ್‌ಗಳು\n• ಹವಾಮಾನ ಮುನ್ಸೂಚನೆ\n• ಮುಂಬರುವ ವೇಳಾಪಟ್ಟಿ\n• ಚಂದ್ರನ ಕಲೆ ಮತ್ತು ಸ್ಥಿತಿ\n• ಗಾಳಿ ಮತ್ತು ತಾಪಮಾನ\n• ದಿನದ ಸಾರಾಂಶ\n\nಹಲವು ವಿಜೆಟ್ ಶೈಲಿಗಳಿಂದ ಆರಿಸಿ ಮತ್ತು ಹೋಮ್ ಸ್ಕ್ರೀನ್‌ನಿಂದಲೇ ನಿಮ್ಮ ದಿನವನ್ನು ನೋಡಿ.\n\nCLOUD CALENDARS ಏಕೆ\n\n• iCloud, Google Calendar ಮತ್ತು Microsoft ಕ್ಯಾಲೆಂಡರ್‌ಗಳನ್ನು ಒಟ್ಟಿಗೆ ನೋಡಿ\n• ಒಳಗೇ ಇರುವ ಹವಾಮಾನ ಮುನ್ಸೂಚನೆಯೊಂದಿಗೆ ಯೋಜಿಸಿ\n• ಹೋಮ್ ಸ್ಕ್ರೀನ್‌ನಲ್ಲಿ ಸುಂದರ ವಿಜೆಟ್ ಬಳಸಿ\n• ಈವೆಂಟ್‌ಗಳನ್ನು ಸಹಜವಾಗಿ ಎಳೆಯಿರಿ, ಸರಿಸಿ, ಗಾತ್ರ ಬದಲಿಸಿ\n• Google Meet ಮತ್ತು Microsoft Teams ಲಿಂಕ್ ರಚಿಸಿ\n• ದಿನ, ವಾರ, ತಿಂಗಳು, ವರ್ಷ ಮತ್ತು ಪಟ್ಟಿ ನೋಟಗಳ ನಡುವೆ ಬದಲಿಸಿ\n• ಕೆಲಸದ ಮತ್ತು ವೈಯಕ್ತಿಕ ಕ್ಯಾಲೆಂಡರ್‌ಗಳನ್ನು ಒಂದೇ ಕಡೆ ನಿರ್ವಹಿಸಿ\n\nವೈಶಿಷ್ಟ್ಯಗಳು\n\nಎಲ್ಲ ಕ್ಯಾಲೆಂಡರ್ ಒಟ್ಟಿಗೆ\niCloud, Google Calendar ಮತ್ತು Microsoft ಕ್ಯಾಲೆಂಡರ್‌ಗಳನ್ನು ಜೋಡಿಸಿ, ಬಣ್ಣಗಳಿಂದ ಬೇರ್ಪಟ್ಟ ಸ್ವಚ್ಛ ನೋಟದಲ್ಲಿ ನಿರ್ವಹಿಸಿ.\n\nಕ್ಯಾಲೆಂಡರ್ ಒಳಗೇ ಹವಾಮಾನ\nಯೋಜಿಸುತ್ತಿರುವಾಗಲೇ ಗಂಟೆವಾರು ಮತ್ತು ದಿನವಾರು ಮುನ್ಸೂಚನೆ ನೋಡಿ — ತಾಪಮಾನ, ಸ್ಥಿತಿ, ಚಂದ್ರನ ಕಲೆ, ಗಾಳಿ ಮತ್ತು ಹವಾಮಾನ ಚಿಹ್ನೆಗಳು.\n\nಕ್ಯಾಲೆಂಡರ್ ಮತ್ತು ಹವಾಮಾನ ವಿಜೆಟ್\nನಿಮ್ಮಿಚ್ಛೆಯಂತೆ ಹೊಂದಿಸಿದ ವಿಜೆಟ್‌ಗಳಿಂದ ವೇಳಾಪಟ್ಟಿ ಮತ್ತು ಹವಾಮಾನ ತಕ್ಷಣ ನೋಡಿ.\n\nಹಲವು ಕ್ಯಾಲೆಂಡರ್ ನೋಟಗಳು\nನೀವು ಸಮಯವನ್ನು ಹೇಗೆ ಯೋಜಿಸುತ್ತೀರಿ ಎಂಬುದರ ಮೇಲೆ ದಿನ, ವಾರ, ತಿಂಗಳು, ವರ್ಷ ಅಥವಾ ಪಟ್ಟಿ ಆರಿಸಿ.\n\nಸುಲಭ ಈವೆಂಟ್ ಸಂಪಾದನೆ\nಕ್ಯಾಲೆಂಡರ್‌ನಲ್ಲೇ ಟ್ಯಾಪ್ ಮಾಡಿ, ಎಳೆದು, ಗಾತ್ರ ಬದಲಿಸಿ ಈವೆಂಟ್ ಹೊಂದಿಸಿ.\n\nಪ್ರತ್ಯೇಕ ಹವಾಮಾನ ನೋಟ\nಗಂಟೆವಾರು ಸ್ಥಿತಿ ಮತ್ತು ಯೋಜನೆಗೆ ಉಪಯುಕ್ತ ಮಾಹಿತಿಯೊಂದಿಗೆ ವಿವರವಾದ ಮುನ್ಸೂಚನೆ ನೋಡಿ.\n\nಮುನ್ಸೂಚನೆಯಿಂದ ಈವೆಂಟ್\nಮುನ್ಸೂಚನೆಯ ಒಂದು ಗಂಟೆಯ ಮೇಲೆ ಟ್ಯಾಪ್ ಮಾಡಿ — ಆ ಸಮಯದ ಹೊಸ ಈವೆಂಟ್ ತಕ್ಷಣ ರಚನೆಯಾಗುತ್ತದೆ.\n\nಒಳಗೇ ಇರುವ ಸಭೆ ಲಿಂಕ್\nಈವೆಂಟ್‌ಗಳಿಗೆ Google Meet ಮತ್ತು Microsoft Teams ಲಿಂಕ್ ಬೇಗ ಸೇರಿಸಿ.\n\nಇವರಿಗೆ ಸೂಕ್ತ\n\n• ಕೆಲಸದ ಮತ್ತು ವೈಯಕ್ತಿಕ ಕ್ಯಾಲೆಂಡರ್ ನಿರ್ವಹಣೆಗೆ\n• ಹವಾಮಾನ ಗಮನದಲ್ಲಿಟ್ಟು ಯೋಜಿಸಲು\n• ಹೊರಾಂಗಣ ಚಟುವಟಿಕೆ ಮತ್ತು ಪ್ರಯಾಣಕ್ಕೆ\n• ಬಿಡುವಿಲ್ಲದ ವೇಳಾಪಟ್ಟಿ ಮತ್ತು ಕುಟುಂಬದ ಯೋಜನೆಗೆ\n• Google Calendar ಮತ್ತು iCloud ಬಳಕೆದಾರರಿಗೆ\n• Microsoft ಕ್ಯಾಲೆಂಡರ್ ಬಳಕೆದಾರರಿಗೆ\n\nCloud Calendars ಬಳಸಿ ನೋಡಿ — ಪ್ರತಿ ದಿನದ ಯೋಜನೆ ಸುಲಭವಾಗಲಿ.\n\nಚಂದಾದಾರಿಕೆ ಮಾಹಿತಿ\n\nCloud Calendars ಸ್ವಯಂ ನವೀಕರಣಗೊಳ್ಳುವ ಚಂದಾದಾರಿಕೆಗಳನ್ನು ನೀಡುತ್ತದೆ.\n\nಉಚಿತ ಯೋಜನೆ\n• Google Calendar ಸಿಂಕ್\n• ಹಲವು ಕ್ಯಾಲೆಂಡರ್ ನೋಟಗಳು\n• ಹವಾಮಾನ ವೈಶಿಷ್ಟ್ಯಗಳು\n• ವಿಜೆಟ್\n• Google Meet ಬೆಂಬಲ\nಖರೀದಿ ಖಚಿತಪಡಿಸಿದಾಗ ನಿಮ್ಮ Apple ID ಖಾತೆಯಿಂದ ಹಣ ಪಾವತಿಯಾಗುತ್ತದೆ. ಪ್ರಸ್ತುತ ಅವಧಿ ಮುಗಿಯುವ ಕನಿಷ್ಠ 24 ಗಂಟೆ ಮೊದಲು ರದ್ದುಗೊಳಿಸದಿದ್ದರೆ ಚಂದಾದಾರಿಕೆ ತಾನಾಗಿಯೇ ನವೀಕರಣಗೊಳ್ಳುತ್ತದೆ. ಪ್ರಸ್ತುತ ಅವಧಿ ಮುಗಿಯುವ ಮೊದಲಿನ 24 ಗಂಟೆಗಳಲ್ಲಿ ನವೀಕರಣದ ಹಣ ನಿಮ್ಮ ಖಾತೆಯಿಂದ ಪಾವತಿಯಾಗುತ್ತದೆ. App Store ಖಾತೆ ಸೆಟ್ಟಿಂಗ್‌ಗಳಲ್ಲಿ ಚಂದಾದಾರಿಕೆಯನ್ನು ನಿರ್ವಹಿಸಬಹುದು ಮತ್ತು ರದ್ದುಗೊಳಿಸಬಹುದು.\n\nಗೌಪ್ಯತಾ ನೀತಿ: https://www.cloud-calendars.com/privacy-policy\nಬಳಕೆಯ ನಿಯಮಗಳು: https://www.apple.com/legal/internet-services/itunes/dev/stdeula/",
+      "locale": "kn-IN",
+      "keywords": "ಹವಾಮಾನ,ವಿಜೆಟ್,ವೇಳಾಪಟ್ಟಿ,ಯೋಜನೆ,ಮುನ್ಸೂಚನೆ,iCloud,ಸಭೆ,ಈವೆಂಟ್,ಕೆಲಸ,ಲಾಕ್ ಸ್ಕ್ರೀನ್,ಮಳೆ,ಇಂದು,ಕ್ಯಾಲೆಂಡರ್,ವಾರ",
+      "marketingUrl": "https://www.cloud-calendars.com/",
+      "promotionalText": null,
+      "supportUrl": "https://www.cloud-calendars.com/",
+      "whatsNew": null
+    }
+  },
+  "keywordChecks": {
+    "exactDuplicateKeywords": false,
+    "exactTitleSubtitleTokenDuplicates": [],
+    "note": "Unicode code-point counts include combining marks. UTF-8 bytes separate. Token checks are not a full linguistic or rendered-text review."
+  },
+  "readiness": "ready_for_editorial_review_not_applied",
+  "translationConfidence": "low-medium",
+  "caveat": "Model-authored; native-language editorial review recommended, particularly Indic morphology and terminology. No external translator or ASC write validation. Urdu mixed RTL/LTR rendering not visually verified.",
+  "evidence": [
+    "../../product-facts.json",
+    "../localized-batch05/audit.json",
+    "asc-current.json"
+  ],
+  "applyOnly": [
+    "subtitle",
+    "keywords",
+    "promotionalText",
+    "description"
+  ],
+  "preserve": [
+    "name",
+    "release notes",
+    "URLs",
+    "privacy declarations",
+    "screenshots",
+    "other locales"
+  ]
+}

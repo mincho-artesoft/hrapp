@@ -3,21 +3,16 @@ import { HomeCopy } from './types';
 /**
  * The home page in English.
  *
- * Lifted verbatim out of the components rather than rewritten, so that
- * introducing this layer changed the machinery and not a single word the
- * reader sees. Every other language is a translation of this file.
+ * Locale-specific copy; changes here do not automatically update other
+ * languages. Keep product claims aligned with the source-backed app facts.
  */
 export const HOME_EN_US: HomeCopy = {
-  // Written for the query that actually reaches this page. "cloud calendar"
-  // draws 3,743 impressions a month at around position ten and converts two of
-  // them, because the old title led with the brand and then talked about
-  // weather -- which reads as a forecast app to somebody looking for a calendar
-  // that holds their accounts. The job goes first now; the weather closes the
-  // description, where it is a reason to choose us rather than a reason to
-  // scroll past.
-  metaTitle: 'Cloud Calendars — iCloud, Google and Outlook in one view',
+  // Clarify the app's platforms for generic calendar searches. Baseline and
+  // segmentation: research/measurement/gsc-baseline-20261021.json.
+  // This editorial change is a hypothesis, not a demonstrated CTR improvement.
+  metaTitle: 'Cloud Calendars — Calendar App for iPhone & iPad',
   metaDescription:
-    "Your calendars and the forecast, in one place. Built for iPhone and iPad. iCloud · Google Calendar · Microsoft Calendar.",
+    'See iCloud and Google calendars with weather and widgets on iPhone and iPad. Download free; Premium adds Microsoft calendars and Teams.',
 
   nav: {
     tour: 'Tour',
@@ -35,7 +30,7 @@ export const HOME_EN_US: HomeCopy = {
   hero: {
     badge: 'Version {v} — shared events now keep themselves up to date',
     title: ['Your calendar.', 'Your sky.', 'One view.'],
-    lead: 'Every calendar you own — iCloud, Google, Microsoft — in one place, with the forecast built into the day itself. Stop guessing what the afternoon looks like.',
+    lead: 'See iCloud and Google calendars together on iPhone and iPad, with weather alongside your plans. Premium also connects Microsoft calendars.',
     seeItMove: 'See it in motion',
     onTheAppStore: 'on the App Store',
     freeToStart: "Download free",

@@ -1,0 +1,12 @@
+Xem lịch làm việc, kế hoạch cá nhân và thời tiết trên iPhone và iPad với Cloud Calendars.
+
+Dùng lịch iCloud và kết nối Lịch Google. Chọn chế độ xem ngày, tuần, tháng, năm hoặc danh sách. Bạn cũng có thể tạo lịch cục bộ trên thiết bị mà không cần tài khoản Cloud Calendars. Kết nối dịch vụ và chia sẻ có thể yêu cầu đăng nhập. Quyền truy cập phụ thuộc vào lịch và loại lời mời.
+
+Xem dự báo khi lên kế hoạch. Tiện ích Màn hình chính có kích thước nhỏ, vừa và lớn. Dự báo có sẵn phụ thuộc vào vị trí và nhà cung cấp thời tiết.
+
+Base miễn phí gồm đồng bộ Lịch Google, Google Meet, nhiều chế độ xem lịch, thời tiết và tiện ích. Advanced gồm tính năng của Base và loại bỏ quảng cáo. Premium gồm Advanced cùng hỗ trợ lịch Microsoft và Microsoft Teams.
+
+Ứng dụng được tải miễn phí, với gói đăng ký tự động gia hạn tùy chọn. Trước khi đăng ký, hãy kiểm tra giá hiện tại tại địa phương và kỳ thanh toán trong ứng dụng hoặc App Store. Gói đăng ký sẽ gia hạn nếu không hủy ít nhất 24 giờ trước khi kỳ hiện tại kết thúc. Quản lý hoặc hủy trong phần cài đặt tài khoản App Store.
+
+Quyền riêng tư: https://www.cloud-calendars.com/privacy-policy
+Điều khoản sử dụng: https://www.apple.com/legal/internet-services/itunes/dev/stdeula/

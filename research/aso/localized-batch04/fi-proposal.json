@@ -1,0 +1,93 @@
+{
+  "status": "proposal_only_not_applied",
+  "locale": "fi",
+  "appId": "6744690319",
+  "targetVersion": "1.7.4",
+  "targetState": "PREPARE_FOR_SUBMISSION",
+  "appInfoLocalizationId": "ca2eb59d-0036-4b42-a422-a7be57b84d21",
+  "versionLocalizationId": "b8fa942f-a222-43d9-bc59-f6a9a56212c1",
+  "nameAction": "preserve_exact_current_draft_name",
+  "fields": {
+    "name": {
+      "value": "Cloud Calendars: Kalenteri",
+      "characters": 26,
+      "utf8Bytes": 26,
+      "characterLimit": 30,
+      "withinCharacterLimit": true
+    },
+    "subtitle": {
+      "value": "Sää, tapaamiset ja widgetit",
+      "characters": 27,
+      "utf8Bytes": 29,
+      "characterLimit": 30,
+      "withinCharacterLimit": true
+    },
+    "keywords": {
+      "value": "suunnittelu,viikko,kuukausi,muistutus,kokous,tapahtuma,jakaminen,kutsu,ennuste,aikataulu",
+      "characters": 88,
+      "utf8Bytes": 88,
+      "characterLimit": 100,
+      "withinCharacterLimit": true
+    },
+    "promotionalText": {
+      "value": "Tarkastele suunnitelmia ja säätä yhdessä. Käytä widgettejä ja eri näkymiä tai aloita paikallisella kalenterilla ilman sovellustiliä.",
+      "characters": 132,
+      "utf8Bytes": 142,
+      "characterLimit": 170,
+      "withinCharacterLimit": true
+    },
+    "description": {
+      "value": "Tarkastele työasioita, omia menoja ja säätä iPhonella ja iPadilla Cloud Calendarsin avulla.\n\nKALENTERIT JA NÄKYMÄT\nKäytä iCloud-kalentereita ja yhdistä Google Kalenteri. Premium lisää tuen Microsoft-kalentereille. Valitse päivä-, viikko-, kuukausi-, vuosi- tai luettelonäkymä.\n\nVoit myös luoda laitteelle paikallisen kalenterin ilman Cloud Calendars -tiliä. Palvelujen yhdistäminen ja jakaminen voivat edellyttää kirjautumista.\n\nSÄÄ, WIDGETIT JA JAKAMINEN\nTarkista sääennuste suunnittelun yhteydessä. Koti-valikon widgettejä on pienessä, keskikokoisessa ja suuressa koossa. Ennusteiden saatavuus riippuu sijainnista ja sääpalvelusta. Jaa tapahtumia ja kalentereita sekä lähetä kutsuja sähköpostitse, QR-koodilla tai App Clipillä. Käyttöoikeudet riippuvat kalenterista ja kutsun tyypistä.\n\nVALITSE TILAUS\nMaksuton Base sisältää Google Kalenterin synkronoinnin, Google Meetin, eri kalenterinäkymät, sään ja widgetit.\nAdvanced sisältää Basen ominaisuudet ja poistaa mainokset.\nPremium sisältää Advancedin ja lisää Microsoft-kalenterit ja Microsoft Teamsin.\n\nSovelluksen lataaminen on maksutonta. Saatavilla on valinnaisia automaattisesti uusiutuvia tilauksia. Tarkista nykyinen paikallinen hinta ja laskutusjakso sovelluksesta tai App Storesta ennen tilaamista. Tilaus uusiutuu, ellet peruuta sitä vähintään 24 tuntia ennen nykyisen jakson päättymistä. Hallitse tilausta tai peruuta se App Store -tilisi asetuksista.\n\nTietosuoja: https://www.cloud-calendars.com/privacy-policy\nKäyttöehdot: https://www.apple.com/legal/internet-services/itunes/dev/stdeula/",
+      "characters": 1552,
+      "utf8Bytes": 1614,
+      "characterLimit": 4000,
+      "withinCharacterLimit": true
+    }
+  },
+  "current": {
+    "appInfo": {
+      "locale": "fi",
+      "name": "Cloud Calendars: Kalenteri",
+      "subtitle": "Kaikki kalenterit yhdessä",
+      "privacyPolicyUrl": "https://www.cloud-calendars.com/privacy-policy",
+      "privacyChoicesUrl": null,
+      "privacyPolicyText": null
+    },
+    "version": {
+      "description": "Suunnittele päiväsi kalenterin ja sään avulla\n\nCloud Calendars yhdistää kalenterisi ja sään kauniisti järjestetyksi suunnittelukokemukseksi.\n\nHallitse iCloud-, Google Kalenteri- ja Microsoft-kalentereita yhdessä sovelluksessa ja näe ennusteet suoraan aikataulussa, widgeteissä ja suunnittelunäkymissä.\n\nPysy kokousten, matkojen, kouluhakujen, ulkoilun ja kiireisten päivien edellä nopeampaan suunnitteluun tarkoitetuilla kalenterinäkymillä.\n\nKOTI-VALIKON WIDGETIT\n\nLisää kauniita widgetejä, joissa yhdistyvät:\n• Kalenteritapahtumat\n• Sääennusteet\n• Tuleva aikataulu\n• Kuun vaihe ja sääolosuhteet\n• Tuuli ja lämpötila\n• Päivittäisen agendan yhteenveto\n\nValitse useista widget-tyyleistä ja näe päiväsi suoraan Koti-valikosta.\n\nMIKSI CLOUD CALENDARS\n\n• Näe iCloud-, Google Kalenteri- ja Microsoft-kalenterit yhdessä\n• Suunnittele sisäänrakennettujen sääennusteiden avulla\n• Käytä kauniita Koti-valikon widgetejä\n• Vedä, siirrä ja muuta tapahtumien kestoa luonnollisesti\n• Luo Google Meet- ja Microsoft Teams -linkkejä\n• Vaihda päivä-, viikko-, kuukausi-, vuosi- ja luettelonäkymien välillä\n• Hallitse työ- ja henkilökohtaisia kalentereita yhdessä paikassa\n\nOMINAISUUDET\n\nKaikki kalenterisi yhdessä\nYhdistä ja hallitse iCloud-, Google Kalenteri- ja Microsoft-kalentereita selkeässä, värikoodatussa kokemuksessa.\n\nSää kalenterissasi\nNäe tunti- ja päiväennusteet suoraan suunnittelun aikana, mukaan lukien lämpötila, olosuhteet, kuun vaihe, tuuli ja sääkuvakkeet.\n\nKalenteri- ja sääwidgetit\nNäe aikataulusi ja sää heti mukautettavista Koti-valikon widgeteistä.\n\nUseita kalenterinäkymiä\nValitse päivä-, viikko-, kuukausi-, vuosi- tai luettelonäkymä sen mukaan, miten suunnittelet aikaasi.\n\nHelppo tapahtumien muokkaus\nNapauta, vedä ja muuta tapahtumien kestoa suoraan kalenterissa nopeaa ja luontevaa aikataulutusta varten.\n\nErillinen säänäkymä\nTutki yksityiskohtaisia ennusteita, tuntikohtaisia olosuhteita ja hyödyllisiä suunnittelutietoja.\n\nLuo tapahtumia ennusteista\nNapauta ennustetuntia ja luo heti uusi tapahtuma valitulle ajalle.\n\nSisäänrakennetut kokouslinkit\nLisää tapahtumiin nopeasti Google Meet- ja Microsoft Teams -linkkejä.\n\nTÄYDELLINEN\n\n• Työ- ja henkilökohtaisten kalenterien hallintaan\n• Sään huomioivaan suunnitteluun\n• Ulkoiluun ja matkustamiseen\n• Kiireisiin aikatauluihin ja perhesuunnitteluun\n• Google Kalenterin ja iCloudin käyttäjille\n• Microsoft-kalenterin käyttäjille\n\nKokeile Cloud Calendarsia ja tee jokaisesta päivästä helpompi suunnitella.\n\nTILAUSTIEDOT\n\nCloud Calendars tarjoaa automaattisesti uusiutuvia tilauksia.\n\nIlmainen tilaus\n• Google Kalenterin synkronointi\n• Useita kalenterinäkymiä\n• Sääominaisuudet\n• Widgetit\n• Google Meet -tuki\n\nMaksu veloitetaan Apple ID -tililtä oston vahvistamisen yhteydessä. Tilaus uusiutuu automaattisesti, ellei sitä peruta vähintään 24 tuntia ennen nykyisen kauden päättymistä. Uusimismaksu veloitetaan 24 tunnin kuluessa ennen nykyisen kauden päättymistä. Voit hallita ja perua tilauksia App Store -tilin asetuksissa.\n\nTietosuojakäytäntö: https://www.cloud-calendars.com/privacy-policy\nKäyttöehdot: https://www.apple.com/legal/internet-services/itunes/dev/stdeula/",
+      "locale": "fi",
+      "keywords": "sää,widget,aikataulu,suunnittelu,agenda,ennuste,iCloud,tapahtumat,kokoukset,lukitusnäyttö,sade,tänä",
+      "marketingUrl": "https://www.cloud-calendars.com/",
+      "promotionalText": null,
+      "supportUrl": "https://www.cloud-calendars.com/",
+      "whatsNew": null
+    }
+  },
+  "keywordChecks": {
+    "exactDuplicateKeywords": false,
+    "exactTitleSubtitleTokenDuplicates": [],
+    "note": "Unicode code-point limits. Bytes reported separately. Exact token checks do not resolve grammatical forms or Hindi combining marks."
+  },
+  "readiness": "ready_for_editorial_review_not_applied",
+  "translationConfidence": "medium",
+  "caveat": "Model-authored; no native-speaker or ASC write validation. Review RTL mixed-brand rendering for Arabic/Hebrew, Hindi grammar, and shipped tier labels before submission.",
+  "evidence": [
+    "../../product-facts.json",
+    "../localized-batch03/audit.json",
+    "asc-current.json"
+  ],
+  "applyOnly": [
+    "subtitle",
+    "keywords",
+    "promotionalText",
+    "description"
+  ],
+  "preserve": [
+    "name",
+    "release notes",
+    "URLs",
+    "privacy declarations",
+    "screenshots",
+    "other locales"
+  ]
+}

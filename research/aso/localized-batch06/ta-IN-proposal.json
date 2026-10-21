@@ -1,0 +1,93 @@
+{
+  "status": "proposal_only_not_applied",
+  "locale": "ta-IN",
+  "appId": "6744690319",
+  "targetVersion": "1.7.4",
+  "targetState": "PREPARE_FOR_SUBMISSION",
+  "appInfoLocalizationId": "6dee17f9-5d71-44b3-9773-171741318e4d",
+  "versionLocalizationId": "70413656-8f83-4140-b413-fbcdd8f85a84",
+  "nameAction": "preserve_exact_current_draft_name",
+  "fields": {
+    "name": {
+      "value": "Cloud Calendars: காலண்டர்",
+      "characters": 25,
+      "utf8Bytes": 41,
+      "characterLimit": 30,
+      "withinCharacterLimit": true
+    },
+    "subtitle": {
+      "value": "வானிலை மற்றும் திட்டங்கள்",
+      "characters": 25,
+      "utf8Bytes": 71,
+      "characterLimit": 30,
+      "withinCharacterLimit": true
+    },
+    "keywords": {
+      "value": "அட்டவணை,சந்திப்பு,நிகழ்வு,நினைவூட்டல்,பகிர்வு,அழைப்பு,வாரம்,மாதம்,முன்னறிவிப்பு,விட்ஜெட்",
+      "characters": 88,
+      "utf8Bytes": 246,
+      "characterLimit": 100,
+      "withinCharacterLimit": true
+    },
+    "promotionalText": {
+      "value": "திட்டங்களையும் வானிலையையும் ஒன்றாகப் பாருங்கள். பல காட்சிகளையும் முகப்புத் திரை விட்ஜெட்களையும் பயன்படுத்துங்கள் அல்லது ஆப் கணக்கின்றி உள்ளூர் காலெண்டரை உருவாக்குங்கள்.",
+      "characters": 168,
+      "utf8Bytes": 470,
+      "characterLimit": 170,
+      "withinCharacterLimit": true
+    },
+    "description": {
+      "value": "iPhone மற்றும் iPad இல் Cloud Calendars மூலம் வேலை மற்றும் தனிப்பட்ட திட்டங்களுடன் வானிலையைப் பாருங்கள்.\n\niCloud காலெண்டர்களைப் பயன்படுத்தி Google Calendar ஐ இணைக்கவும். நாள், வாரம், மாதம், ஆண்டு அல்லது பட்டியல் காட்சியைத் தேர்ந்தெடுக்கவும். Cloud Calendars கணக்கின்றி சாதனத்தில் உள்ளூர் காலெண்டரை உருவாக்கலாம். சேவைகளை இணைக்கவும் பகிரவும் உள்நுழைவு தேவைப்படலாம். அணுகல் அனுமதிகள் காலெண்டர் மற்றும் அழைப்பின் வகையைப் பொறுத்தது.\n\nதிட்டமிடும்போது வானிலை முன்னறிவிப்பைப் பார்க்கவும். முகப்புத் திரை விட்ஜெட்கள் சிறிய, நடுத்தர, பெரிய அளவுகளில் உள்ளன. முன்னறிவிப்புகளின் கிடைக்கும் தன்மை இடம் மற்றும் வானிலை சேவையைப் பொறுத்தது.\n\nஇலவச Base இல் Google Calendar ஒத்திசைவு, Google Meet, பல காலெண்டர் காட்சிகள், வானிலை மற்றும் விட்ஜெட்கள் உள்ளன. Advanced இல் Base அம்சங்கள் உள்ளன; விளம்பரங்கள் அகற்றப்படும். Premium இல் Advanced உடன் Microsoft காலெண்டர் மற்றும் Microsoft Teams ஆதரவும் உள்ளது.\n\nபதிவிறக்கம் இலவசம்; விருப்பச் சந்தாக்கள் தானாகப் புதுப்பிக்கப்படும். வாங்கும் முன் ஆப் அல்லது App Store இல் தற்போதைய உள்ளூர் விலை மற்றும் பில்லிங் காலத்தைச் சரிபார்க்கவும். தற்போதைய காலம் முடிவதற்குக் குறைந்தது 24 மணிநேரம் முன்பு ரத்து செய்யாவிட்டால் சந்தா புதுப்பிக்கப்படும். App Store கணக்கு அமைப்புகளில் நிர்வகிக்கலாம் அல்லது ரத்து செய்யலாம்.\n\nதனியுரிமை: https://www.cloud-calendars.com/privacy-policy\nபயன்பாட்டு விதிமுறைகள்: https://www.apple.com/legal/internet-services/itunes/dev/stdeula/",
+      "characters": 1379,
+      "utf8Bytes": 3255,
+      "characterLimit": 4000,
+      "withinCharacterLimit": true
+    }
+  },
+  "current": {
+    "appInfo": {
+      "locale": "ta-IN",
+      "name": "Cloud Calendars: காலண்டர்",
+      "subtitle": "எல்லா காலண்டரும் ஓரிடத்தில்",
+      "privacyPolicyUrl": "https://www.cloud-calendars.com/privacy-policy",
+      "privacyChoicesUrl": null,
+      "privacyPolicyText": null
+    },
+    "version": {
+      "description": "காலண்டரையும் வானிலையையும் சேர்த்து வைத்து உங்கள் நாளைத் திட்டமிடுங்கள்\n\nCloud Calendars உங்கள் காலண்டர்களையும் வானிலையையும் ஒரே நேர்த்தியான இடத்தில் கொண்டு வருகிறது.\n\niCloud, Google Calendar, Microsoft காலண்டர்களை ஒரே செயலியில் நிர்வகியுங்கள்; முன்னறிவிப்பைப் பாருங்கள் நேரடியாக உங்கள் அட்டவணை, விட்ஜெட், திட்டமிடல் காட்சிகளுக்குள்ளேயே.\n\nகூட்டங்கள், பயணம், பள்ளியிலிருந்து அழைத்து வருதல், வெளிப்புற வேலைகள், நெருக்கடியான நாட்கள் — விரைவான திட்டமிடலுக்கு உருவாக்கப்பட்ட காலண்டர் காட்சிகளுடன் முன்னே இருங்கள்.\n\nமுகப்புத் திரை விட்ஜெட்கள்\n\nஇவற்றைச் சேர்த்துக் காட்டும் விட்ஜெட்களைச் சேருங்கள்:\n• காலண்டர் நிகழ்வுகள்\n• வானிலை முன்னறிவிப்பு\n• வரவிருக்கும் அட்டவணை\n• நிலவின் கலை, நிலை\n• காற்று, வெப்பநிலை\n• நாளின் சுருக்கம்\n\nபல விட்ஜெட் பாணிகளிலிருந்து தேர்ந்தெடுத்து முகப்புத் திரையிலிருந்தே உங்கள் நாளைப் பாருங்கள்.\n\nஏன் CLOUD CALENDARS\n\n• iCloud, Google Calendar, Microsoft காலண்டர்களை ஒன்றாகப் பாருங்கள்\n• உள்ளேயே இருக்கும் வானிலை முன்னறிவிப்புடன் திட்டமிடுங்கள்\n• முகப்புத் திரையில் அழகான விட்ஜெட்களைப் பயன்படுத்துங்கள்\n• நிகழ்வுகளை இயல்பாக இழுத்து, நகர்த்தி, அளவு மாற்றுங்கள்\n• Google Meet, Microsoft Teams இணைப்புகளை உருவாக்குங்கள்\n• நாள், வாரம், மாதம், ஆண்டு, பட்டியல் காட்சிகளுக்கு இடையே மாறுங்கள்\n• வேலை மற்றும் தனிப்பட்ட காலண்டர்களை ஒரே இடத்தில் நிர்வகியுங்கள்\n\nவசதிகள்\n\nஎல்லா காலண்டரும் ஒன்றாக\niCloud, Google Calendar, Microsoft காலண்டர்களை இணைத்து வண்ணங்களால் பிரிக்கப்பட்ட சுத்தமான காட்சியில் நிர்வகியுங்கள்.\n\nகாலண்டருக்குள்ளேயே வானிலை\nதிட்டமிடும்போதே மணிநேர, தினசரி முன்னறிவிப்பைப் பாருங்கள் — வெப்பநிலை, நிலை, நிலவின் கலை, காற்று, வானிலைச் சின்னங்கள்.\n\nகாலண்டர், வானிலை விட்ஜெட்கள்\nஉங்கள் விருப்பப்படி அமைத்த விட்ஜெட்களிலிருந்து அட்டவணையையும் வானிலையையும் உடனே பாருங்கள்.\n\nபல காலண்டர் காட்சிகள்\nநேரத்தை எப்படித் திட்டமிடுகிறீர்கள் என்பதைப் பொறுத்து நாள், வாரம், மாதம், ஆண்டு அல்லது பட்டியலைத் தேர்ந்தெடுங்கள்.\n\nஎளிய நிகழ்வுத் திருத்தம்\nகாலண்டரிலேயே தட்டி, இழுத்து, அளவு மாற்றி நிகழ்வுகளைச் சரிசெய்யுங்கள்.\n\nதனி வானிலைக் காட்சி\nமணிநேர நிலை மற்றும் திட்டமிடலுக்குப் பயனுள்ள தகவல்களுடன் விரிவான முன்னறிவிப்பைப் பாருங்கள்.\n\nமுன்னறிவிப்பிலிருந்து நிகழ்வு\nமுன்னறிவிப்பில் ஒரு மணிநேரத்தைத் தட்டுங்கள் — அந்த நேரத்துக்கான புதிய நிகழ்வு உடனே உருவாகும்.\n\nஉள்ளேயே கூட்ட இணைப்புகள்\nநிகழ்வுகளில் Google Meet, Microsoft Teams இணைப்புகளை விரைவாகச் சேருங்கள்.\n\nயாருக்கு ஏற்றது\n\n• வேலை மற்றும் தனிப்பட்ட காலண்டர்களை நிர்வகிக்க\n• வானிலையைக் கருத்தில் கொண்டு திட்டமிட\n• வெளிப்புற வேலைகளுக்கும் பயணத்துக்கும்\n• நெருக்கடியான அட்டவணைக்கும் குடும்பத் திட்டமிடலுக்கும்\n• Google Calendar, iCloud பயனர்களுக்கு\n• Microsoft காலண்டர் பயனர்களுக்கு\n\nCloud Calendars-ஐப் பயன்படுத்திப் பாருங்கள் — ஒவ்வொரு நாளையும் திட்டமிடுவது எளிதாகும்.\n\nசந்தா தகவல்\n\nCloud Calendars தானாகப் புதுப்பிக்கப்படும் சந்தாக்களை வழங்குகிறது.\n\nஇலவசத் திட்டம்\n• Google Calendar ஒத்திசைவு\n• பல காலண்டர் காட்சிகள்\n• வானிலை வசதிகள்\n• விட்ஜெட்கள்\n• Google Meet ஆதரவு\nவாங்குதலை உறுதிசெய்யும்போது உங்கள் Apple ID கணக்கிலிருந்து தொகை பிடிக்கப்படும். தற்போதைய காலம் முடிவதற்கு குறைந்தது 24 மணி நேரத்துக்கு முன் ரத்து செய்யாவிட்டால் சந்தா தானாகவே புதுப்பிக்கப்படும். தற்போதைய காலம் முடிவதற்கு முந்தைய 24 மணி நேரத்துக்குள் புதுப்பித்தலுக்கான தொகை பிடிக்கப்படும். App Store கணக்கு அமைப்புகளில் சந்தாவை நிர்வகிக்கவும் ரத்து செய்யவும் முடியும்.\n\nதனியுரிமைக் கொள்கை: https://www.cloud-calendars.com/privacy-policy\nபயன்பாட்டு விதிமுறைகள்: https://www.apple.com/legal/internet-services/itunes/dev/stdeula/",
+      "locale": "ta-IN",
+      "keywords": "வானிலை,விட்ஜெட்,அட்டவணை,திட்டமிடல்,முன்னறிவிப்பு,iCloud,கூட்டம்,நிகழ்வு,வேலை,பூட்டுத்திரை,மழை,ஞாபகம்",
+      "marketingUrl": "https://www.cloud-calendars.com/",
+      "promotionalText": null,
+      "supportUrl": "https://www.cloud-calendars.com/",
+      "whatsNew": null
+    }
+  },
+  "keywordChecks": {
+    "exactDuplicateKeywords": false,
+    "exactTitleSubtitleTokenDuplicates": [],
+    "note": "Unicode code-point counts include combining marks. UTF-8 bytes separate. Token checks are not a full linguistic or rendered-text review."
+  },
+  "readiness": "ready_for_editorial_review_not_applied",
+  "translationConfidence": "low-medium",
+  "caveat": "Model-authored; native-language editorial review recommended, particularly Indic morphology and terminology. No external translator or ASC write validation. Urdu mixed RTL/LTR rendering not visually verified.",
+  "evidence": [
+    "../../product-facts.json",
+    "../localized-batch05/audit.json",
+    "asc-current.json"
+  ],
+  "applyOnly": [
+    "subtitle",
+    "keywords",
+    "promotionalText",
+    "description"
+  ],
+  "preserve": [
+    "name",
+    "release notes",
+    "URLs",
+    "privacy declarations",
+    "screenshots",
+    "other locales"
+  ]
+}

@@ -1,0 +1,19 @@
+Tarkastele työasioita, omia menoja ja säätä iPhonella ja iPadilla Cloud Calendarsin avulla.
+
+KALENTERIT JA NÄKYMÄT
+Käytä iCloud-kalentereita ja yhdistä Google Kalenteri. Premium lisää tuen Microsoft-kalentereille. Valitse päivä-, viikko-, kuukausi-, vuosi- tai luettelonäkymä.
+
+Voit myös luoda laitteelle paikallisen kalenterin ilman Cloud Calendars -tiliä. Palvelujen yhdistäminen ja jakaminen voivat edellyttää kirjautumista.
+
+SÄÄ, WIDGETIT JA JAKAMINEN
+Tarkista sääennuste suunnittelun yhteydessä. Koti-valikon widgettejä on pienessä, keskikokoisessa ja suuressa koossa. Ennusteiden saatavuus riippuu sijainnista ja sääpalvelusta. Jaa tapahtumia ja kalentereita sekä lähetä kutsuja sähköpostitse, QR-koodilla tai App Clipillä. Käyttöoikeudet riippuvat kalenterista ja kutsun tyypistä.
+
+VALITSE TILAUS
+Maksuton Base sisältää Google Kalenterin synkronoinnin, Google Meetin, eri kalenterinäkymät, sään ja widgetit.
+Advanced sisältää Basen ominaisuudet ja poistaa mainokset.
+Premium sisältää Advancedin ja lisää Microsoft-kalenterit ja Microsoft Teamsin.
+
+Sovelluksen lataaminen on maksutonta. Saatavilla on valinnaisia automaattisesti uusiutuvia tilauksia. Tarkista nykyinen paikallinen hinta ja laskutusjakso sovelluksesta tai App Storesta ennen tilaamista. Tilaus uusiutuu, ellet peruuta sitä vähintään 24 tuntia ennen nykyisen jakson päättymistä. Hallitse tilausta tai peruuta se App Store -tilisi asetuksista.
+
+Tietosuoja: https://www.cloud-calendars.com/privacy-policy
+Käyttöehdot: https://www.apple.com/legal/internet-services/itunes/dev/stdeula/

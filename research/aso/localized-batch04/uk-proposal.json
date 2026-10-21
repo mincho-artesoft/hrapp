@@ -1,0 +1,93 @@
+{
+  "status": "proposal_only_not_applied",
+  "locale": "uk",
+  "appId": "6744690319",
+  "targetVersion": "1.7.4",
+  "targetState": "PREPARE_FOR_SUBMISSION",
+  "appInfoLocalizationId": "18c6f069-5296-4764-a284-59f0f69f95f3",
+  "versionLocalizationId": "bd1cdc00-d0df-458d-87b6-1474b2875f88",
+  "nameAction": "preserve_exact_current_draft_name",
+  "fields": {
+    "name": {
+      "value": "Cloud Calendars: Календар",
+      "characters": 25,
+      "utf8Bytes": 33,
+      "characterLimit": 30,
+      "withinCharacterLimit": true
+    },
+    "subtitle": {
+      "value": "Погода, зустрічі та віджети",
+      "characters": 27,
+      "utf8Bytes": 50,
+      "characterLimit": 30,
+      "withinCharacterLimit": true
+    },
+    "keywords": {
+      "value": "планувальник,розклад,тиждень,місяць,нагадування,подія,поширення,запрошення,прогноз,плани",
+      "characters": 88,
+      "utf8Bytes": 167,
+      "characterLimit": 100,
+      "withinCharacterLimit": true
+    },
+    "promotionalText": {
+      "value": "Переглядайте плани й погоду разом. Використовуйте віджети та різні подання або почніть із локального календаря без облікового запису застосунку.",
+      "characters": 144,
+      "utf8Bytes": 268,
+      "characterLimit": 170,
+      "withinCharacterLimit": true
+    },
+    "description": {
+      "value": "Переглядайте робочі й особисті плани разом із погодою на iPhone та iPad за допомогою Cloud Calendars.\n\nКАЛЕНДАРІ ТА ПОДАННЯ\nВикористовуйте календарі iCloud і підключайте Google Календар. Premium додає підтримку календарів Microsoft. Вибирайте подання дня, тижня, місяця, року або списку.\n\nМожна також створити локальний календар на пристрої без облікового запису Cloud Calendars. Підключення сервісів і спільний доступ можуть потребувати входу в обліковий запис.\n\nПОГОДА, ВІДЖЕТИ ТА СПІЛЬНИЙ ДОСТУП\nПеревіряйте прогноз під час планування. Віджети для початкового екрана доступні в малому, середньому й великому розмірах. Наявність прогнозів залежить від місця та постачальника погодних даних. Діліться подіями й календарями та надсилайте запрошення електронною поштою, QR-кодом або через App Clip. Права доступу залежать від календаря й типу запрошення.\n\nВИБЕРІТЬ ПЛАН\nБезкоштовний Base містить синхронізацію з Google Календарем, Google Meet, різні подання календаря, погоду й віджети.\nAdvanced містить функції Base та прибирає рекламу.\nPremium містить Advanced і додає календарі Microsoft та Microsoft Teams.\n\nЗастосунок можна завантажити безкоштовно. Доступні необов’язкові передплати з автоматичним поновленням. Перед оформленням перевірте поточну місцеву ціну та розрахунковий період у застосунку або App Store. Передплата поновлюється, якщо її не скасувати щонайменше за 24 години до завершення поточного періоду. Керувати нею або скасувати її можна в параметрах облікового запису App Store.\n\nКонфіденційність: https://www.cloud-calendars.com/privacy-policy\nУмови використання: https://www.apple.com/legal/internet-services/itunes/dev/stdeula/",
+      "characters": 1648,
+      "utf8Bytes": 2783,
+      "characterLimit": 4000,
+      "withinCharacterLimit": true
+    }
+  },
+  "current": {
+    "appInfo": {
+      "locale": "uk",
+      "name": "Cloud Calendars: Календар",
+      "subtitle": "Усі календарі в одному місці",
+      "privacyPolicyUrl": "https://www.cloud-calendars.com/privacy-policy",
+      "privacyChoicesUrl": null,
+      "privacyPolicyText": null
+    },
+    "version": {
+      "description": "Плануйте день з календарем і погодою разом\n\nCloud Calendars зводить ваші календарі та погоду в одне охайне місце для планування.\n\nКеруйте календарями iCloud, Google Calendar і Microsoft в одному застосунку, а прогноз бачите просто в розкладі, віджетах і режимах планування.\n\nВипереджайте зустрічі, поїздки, дорогу за дітьми, справи надворі та щільні дні завдяки режимам календаря, зробленим для швидшого планування.\n\nВІДЖЕТИ НА ГОЛОВНОМУ ЕКРАНІ\n\nДодайте віджети, що поєднують:\n• Події календаря\n• Прогноз погоди\n• Найближчий розклад\n• Фазу Місяця й умови\n• Вітер і температуру\n• Огляд дня\n\nОбирайте з кількох стилів віджетів і бачте свій день просто з головного екрана.\n\nЧОМУ CLOUD CALENDARS\n\n• Дивіться календарі iCloud, Google Calendar і Microsoft разом\n• Плануйте з вбудованим прогнозом погоди\n• Користуйтеся віджетами на головному екрані\n• Перетягуйте, пересувайте та змінюйте тривалість подій природно\n• Створюйте посилання Google Meet і Microsoft Teams\n• Перемикайтеся між режимами День, Тиждень, Місяць, Рік і Список\n• Ведіть робочі й особисті календарі в одному місці\n\nМОЖЛИВОСТІ\n\nУсі календарі разом\nПід'єднуйте й ведіть календарі з iCloud, Google Calendar і Microsoft у чистому режимі з кольорами.\n\nПогода всередині календаря\nДивіться погодинний і денний прогноз просто під час планування: температуру, умови, фазу Місяця, вітер та піктограми погоди.\n\nВіджети календаря й погоди\nРозклад і погоду бачите миттєво з віджетів, які можна налаштувати.\n\nКілька режимів календаря\nОберіть День, Тиждень, Місяць, Рік або Список — залежно від того, як ви плануєте час.\n\nПросте редагування подій\nТоркайтеся, перетягуйте та змінюйте тривалість подій просто в календарі.\n\nОкремий режим погоди\nВивчайте докладний прогноз із погодинними умовами та корисними даними для планування.\n\nПодії з прогнозу\nТоркніться години в прогнозі — і подія на цей час створиться одразу.\n\nВбудовані посилання на зустрічі\nШвидко додавайте до подій посилання Google Meet і Microsoft Teams.\n\nЧУДОВО ПІДХОДИТЬ ДЛЯ\n\n• Ведення робочих та особистих календарів\n• Планування з огляду на погоду\n• Справ надворі та подорожей\n• Щільних розкладів і сімейного планування\n• Користувачів Google Calendar та iCloud\n• Користувачів календарів Microsoft\n\nСпробуйте Cloud Calendars — і кожен день стане легшим для планування.\n\nІНФОРМАЦІЯ ПРО ПЕРЕДПЛАТУ\n\nCloud Calendars пропонує передплату з автоматичним поновленням.\n\nБезкоштовний план\n• Синхронізація з Google Calendar\n• Кілька режимів календаря\n• Погодні можливості\n• Віджети\n• Підтримка Google Meet\nОплату буде знято з вашого облікового запису Apple ID під час підтвердження покупки. Передплата поновлюється автоматично, якщо її не скасовано щонайменше за 24 години до кінця поточного періоду. Кошти за поновлення буде знято з вашого облікового запису протягом 24 годин до кінця поточного періоду. Керувати передплатою та скасувати її можна в налаштуваннях облікового запису App Store.\n\nПолітика конфіденційності: https://www.cloud-calendars.com/privacy-policy\nУмови користування: https://www.apple.com/legal/internet-services/itunes/dev/stdeula/",
+      "locale": "uk",
+      "keywords": "погода,віджет,розклад,планер,порядок денний,прогноз,iCloud,події,зустрічі,екран блокування,дощ,плани",
+      "marketingUrl": "https://www.cloud-calendars.com/",
+      "promotionalText": null,
+      "supportUrl": "https://www.cloud-calendars.com/",
+      "whatsNew": null
+    }
+  },
+  "keywordChecks": {
+    "exactDuplicateKeywords": false,
+    "exactTitleSubtitleTokenDuplicates": [],
+    "note": "Unicode code-point limits. Bytes reported separately. Exact token checks do not resolve grammatical forms or Hindi combining marks."
+  },
+  "readiness": "ready_for_editorial_review_not_applied",
+  "translationConfidence": "medium",
+  "caveat": "Model-authored; no native-speaker or ASC write validation. Review RTL mixed-brand rendering for Arabic/Hebrew, Hindi grammar, and shipped tier labels before submission.",
+  "evidence": [
+    "../../product-facts.json",
+    "../localized-batch03/audit.json",
+    "asc-current.json"
+  ],
+  "applyOnly": [
+    "subtitle",
+    "keywords",
+    "promotionalText",
+    "description"
+  ],
+  "preserve": [
+    "name",
+    "release notes",
+    "URLs",
+    "privacy declarations",
+    "screenshots",
+    "other locales"
+  ]
+}

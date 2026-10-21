@@ -1,0 +1,93 @@
+{
+  "status": "proposal_only_not_applied",
+  "locale": "en-CA",
+  "appId": "6744690319",
+  "targetVersion": "1.7.4",
+  "targetState": "PREPARE_FOR_SUBMISSION",
+  "appInfoLocalizationId": "d96269cd-e544-42a4-8f2c-6ba6296db784",
+  "versionLocalizationId": "5d59df7c-8b6e-471a-a9e5-597cd43d7426",
+  "nameAction": "preserve_exact_current_draft_name",
+  "fields": {
+    "name": {
+      "value": "Cloud Calendars: Sync & Widget",
+      "characters": 30,
+      "utf8Bytes": 30,
+      "characterLimit": 30,
+      "withinCharacterLimit": true
+    },
+    "subtitle": {
+      "value": "Google, Microsoft & iCloud",
+      "characters": 26,
+      "utf8Bytes": 26,
+      "characterLimit": 30,
+      "withinCharacterLimit": true
+    },
+    "keywords": {
+      "value": "schedule,planner,agenda,meeting,reminder,event,shared,invite,month,week,weather,forecast,appointment",
+      "characters": 100,
+      "utf8Bytes": 100,
+      "characterLimit": 100,
+      "withinCharacterLimit": true
+    },
+    "promotionalText": {
+      "value": "See work and personal plans alongside the weather. Explore calendar views and Home Screen widgets, or start a local calendar without an app account.",
+      "characters": 148,
+      "utf8Bytes": 148,
+      "characterLimit": 170,
+      "withinCharacterLimit": true
+    },
+    "description": {
+      "value": "Bring your calendars and weather together on iPhone and iPad. See work appointments and personal plans while planning your day.\n\nCALENDARS AND VIEWS\nUse iCloud calendars and connect Google Calendar. Premium adds Microsoft Calendar support. Choose Day, Week, Month, Year or List view.\n\nYou can also create a local calendar on your device without a Cloud Calendars account. Connecting services and sharing may require sign-in.\n\nWEATHER, WIDGETS AND SHARING\nCheck the forecast as you plan. Home Screen widgets come in small, medium and large sizes. Available forecasts depend on your location and weather provider. Share events and calendars, and send invitations by email, QR code or App Clip. Access depends on the calendar and invitation type.\n\nCHOOSE YOUR PLAN\nFree Base includes Google Calendar sync, Google Meet support, multiple calendar views, weather and widgets.\nAdvanced includes Base features and removes ads.\nPremium includes Advanced and adds Microsoft Calendar and Microsoft Teams support.\n\nThe app is free to download, with optional auto-renewing subscriptions. Check the current local price and billing period in the app or App Store before subscribing. Subscriptions renew unless cancelled at least 24 hours before the current period ends. Manage or cancel your subscription in your App Store account settings.\n\nPrivacy Policy: https://www.cloud-calendars.com/privacy-policy\nTerms of Use: https://www.apple.com/legal/internet-services/itunes/dev/stdeula/",
+      "characters": 1469,
+      "utf8Bytes": 1469,
+      "characterLimit": 4000,
+      "withinCharacterLimit": true
+    }
+  },
+  "current": {
+    "appInfo": {
+      "locale": "en-CA",
+      "name": "Cloud Calendars: Sync & Widget",
+      "subtitle": "Google, Microsoft, iCloud sync",
+      "privacyPolicyUrl": "https://www.cloud-calendars.com/privacy-policy",
+      "privacyChoicesUrl": null,
+      "privacyPolicyText": null
+    },
+    "version": {
+      "description": "Plan Your Day with Calendar + Weather Together\n\nCloud Calendars combines your calendars and weather into one beautifully organized planning experience.\n\nManage iCloud, Google Calendar, and Microsoft calendars in a single app while seeing forecasts directly inside your schedule, widgets, and planning views.\n\nStay ahead of meetings, travel, school pickups, outdoor activities, and busy days with calendar views designed for faster planning.\n\nHOME SCREEN WIDGETS\n\nAdd beautiful widgets that combine:\n• Calendar events\n• Weather forecasts\n• Upcoming schedule\n• Moon phase and conditions\n• Wind and temperature\n• Daily agenda overview\n\nChoose from multiple widget styles to see your day directly from the Home Screen.\n\nWHY CLOUD CALENDARS\n\n• View iCloud, Google Calendar, and Microsoft calendars together\n• Plan with built-in weather forecasts\n• Use beautiful Home Screen widgets\n• Drag, move, and resize events naturally\n• Create Google Meet and Microsoft Teams links\n• Switch between Day, Week, Month, Year, and List views\n• Manage work and personal calendars in one place\n\nFEATURES\n\nAll Your Calendars Together\nConnect and manage calendars from iCloud, Google Calendar, and Microsoft in one clean, colour-coded experience.\n\nWeather Built Into Your Calendar\nSee hourly and daily forecasts directly inside your planning workflow, including temperature, conditions, moon phase, wind, and weather icons.\n\nCalendar + Weather Widgets\nView your schedule and weather instantly from customizable Home Screen widgets.\n\nMultiple Calendar Views\nChoose Day, Week, Month, Year, or List view depending on how you plan your time.\n\nEasy Event Editing\nTap, drag, and resize events directly on the calendar for fast and natural scheduling.\n\nDedicated Weather View\nExplore detailed forecasts with hourly conditions and useful planning insights.\n\nCreate Events from Forecasts\nTap a forecast hour to instantly create a new event with the selected time.\n\nBuilt-In Meeting Links\nQuickly add Google Meet and Microsoft Teams links to events.\n\nPERFECT FOR\n\n• Work and personal calendar management\n• Weather-aware planning\n• Outdoor activities and travel\n• Busy schedules and family planning\n• Google Calendar and iCloud users\n• Microsoft calendar users\n\nTry Cloud Calendars and make every day easier to plan.\n\nSUBSCRIPTION INFORMATION\n\nCloud Calendars offers auto-renewable subscriptions.\n\nFree Plan\n• Google Calendar sync\n• Multiple calendar views\n• Weather features\n• Widgets\n• Google Meet support\n\nPayment will be charged to your Apple ID account at confirmation of purchase. Subscriptions renew automatically unless cancelled at least 24 hours before the end of the current period. Your account will be charged for renewal within 24 hours before the end of the current period. You can manage and cancel subscriptions in your App Store account settings.\n\nPrivacy Policy: https://www.cloud-calendars.com/privacy-policy\nTerms of Use: https://www.apple.com/legal/internet-services/itunes/dev/stdeula/",
+      "locale": "en-CA",
+      "keywords": "weather,schedule,planner,agenda,forecast,day planner,lock,screen,rain,today,month,week,reminder,sync",
+      "marketingUrl": "https://www.cloud-calendars.com/",
+      "promotionalText": null,
+      "supportUrl": "https://www.cloud-calendars.com/",
+      "whatsNew": null
+    }
+  },
+  "keywordChecks": {
+    "exactDuplicateKeywords": false,
+    "exactTitleSubtitleTokenDuplicates": [],
+    "note": "Unicode code-point counts, UTF-8 bytes separate. Token checks do not resolve grammar/inflections."
+  },
+  "readiness": "ready_for_editorial_review_not_applied",
+  "translationConfidence": "high",
+  "caveat": "No native-speaker or ASC write validation. English allocation is an editorial hypothesis, not measured demand. Verify tier labels match shipping UI.",
+  "evidence": [
+    "../../product-facts.json",
+    "../localized-batch04/audit.json",
+    "asc-current.json"
+  ],
+  "applyOnly": [
+    "subtitle",
+    "keywords",
+    "promotionalText",
+    "description"
+  ],
+  "preserve": [
+    "name",
+    "release notes",
+    "URLs",
+    "privacy declarations",
+    "screenshots",
+    "other locales"
+  ]
+}

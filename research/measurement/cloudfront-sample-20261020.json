@@ -1,0 +1,162 @@
+{
+  "schemaVersion": 1,
+  "window": {
+    "startDateInclusive": "2026-10-19",
+    "endDateInclusive": "2026-10-21",
+    "calendarDays": 3,
+    "timezone": "UTC"
+  },
+  "coverage": {
+    "availableMinDate": "2026-07-30",
+    "availableMaxDate": "2026-10-20",
+    "availableDistinctDates": 2,
+    "windowDistinctDates": 1,
+    "windowRows": 3570,
+    "state": "sampled-rows-in-window",
+    "completeness": "Unknown: date span or observed dates do not establish complete delivery or full-day coverage."
+  },
+  "counts": {
+    "files": 306,
+    "dataRows": 4062,
+    "parsedRows": 4062,
+    "unsupportedFormatRows": 0,
+    "malformedRows": 0,
+    "invalidFieldHeaders": 0,
+    "windowRows": 3570,
+    "olderRows": 492,
+    "futureRows": 0,
+    "matchedRows": 181,
+    "ambiguousDeclaredUARows": 0,
+    "unreadableFiles": 0,
+    "ignoredEntries": 0
+  },
+  "declaredUserAgents": {
+    "bingbot": {
+      "kind": "other tracked declared UA; purpose not verified",
+      "requests": 42,
+      "firstDate": "2026-10-20",
+      "lastDate": "2026-10-20",
+      "statuses": {
+        "200": 31,
+        "301": 9,
+        "304": 2
+      }
+    },
+    "Googlebot": {
+      "kind": "other tracked declared UA; purpose not verified",
+      "requests": 89,
+      "firstDate": "2026-10-20",
+      "lastDate": "2026-10-20",
+      "statuses": {
+        "200": 63,
+        "301": 15,
+        "304": 1,
+        "404": 10
+      }
+    },
+    "OAI-SearchBot": {
+      "kind": "automated search crawler (declared UA)",
+      "requests": 10,
+      "firstDate": "2026-10-20",
+      "lastDate": "2026-10-20",
+      "statuses": {
+        "200": 6,
+        "301": 4
+      }
+    },
+    "GPTBot": {
+      "kind": "training crawler (declared UA)",
+      "requests": 2,
+      "firstDate": "2026-10-20",
+      "lastDate": "2026-10-20",
+      "statuses": {
+        "200": 1,
+        "301": 1
+      }
+    },
+    "PerplexityBot": {
+      "kind": "other tracked declared UA; purpose not verified",
+      "requests": 27,
+      "firstDate": "2026-10-20",
+      "lastDate": "2026-10-20",
+      "statuses": {
+        "200": 27
+      }
+    },
+    "ChatGPT-User": {
+      "kind": "user-triggered retrieval (declared UA)",
+      "requests": 1,
+      "firstDate": "2026-10-20",
+      "lastDate": "2026-10-20",
+      "statuses": {
+        "200": 1
+      }
+    },
+    "ClaudeBot": {
+      "kind": "other tracked declared UA; purpose not verified",
+      "requests": 10,
+      "firstDate": "2026-10-20",
+      "lastDate": "2026-10-20",
+      "statuses": {
+        "200": 10
+      }
+    }
+  },
+  "watchedPaths": {
+    "/llms.txt": {
+      "allRequests": 3,
+      "trackedDeclaredUARequests": 0,
+      "statuses": {
+        "200": 1,
+        "301": 2
+      },
+      "trackedStatuses": {}
+    },
+    "/llms-full.txt": {
+      "allRequests": 0,
+      "trackedDeclaredUARequests": 0,
+      "statuses": {},
+      "trackedStatuses": {}
+    },
+    "/robots.txt": {
+      "allRequests": 95,
+      "trackedDeclaredUARequests": 24,
+      "statuses": {
+        "200": 53,
+        "206": 6,
+        "301": 36
+      },
+      "trackedStatuses": {
+        "200": 17,
+        "301": 7
+      }
+    },
+    "/sitemap.xml": {
+      "allRequests": 37,
+      "trackedDeclaredUARequests": 7,
+      "statuses": {
+        "200": 25,
+        "301": 10,
+        "304": 2
+      },
+      "trackedStatuses": {
+        "200": 5,
+        "304": 2
+      }
+    }
+  },
+  "trackedPathCategories": {
+    "[redacted-other-path]": 124,
+    "/robots.txt": 24,
+    "/sitemap.xml": 7,
+    "/": 4,
+    "/[locale?]/articles/[redacted-slug]": 22
+  },
+  "interpretation": [
+    "User-agent declarations are spoofable and unverified; no IP or reverse-DNS authentication was performed.",
+    "A logged request does not establish successful reading, indexing, use in an answer, or a citation; inspect status counts.",
+    "No matching request in sampled logs does not prove no crawling or that a file is useless. Stale, incomplete and unsupported logs limit conclusions.",
+    "Google-Extended is not treated as an HTTP user-agent identity."
+  ],
+  "classificationSource": "https://developers.openai.com/api/docs/bots"
+}

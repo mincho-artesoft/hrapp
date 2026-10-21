@@ -1,0 +1,93 @@
+{
+  "status": "proposal_only_not_applied",
+  "locale": "cs",
+  "appId": "6744690319",
+  "targetVersion": "1.7.4",
+  "targetState": "PREPARE_FOR_SUBMISSION",
+  "appInfoLocalizationId": "0d41720d-2d68-46ea-ba1f-83dd00584dfa",
+  "versionLocalizationId": "407dc794-b4ed-4c4f-9319-6b2bb52f6af5",
+  "nameAction": "preserve_exact_current_draft_name",
+  "fields": {
+    "name": {
+      "value": "Cloud Calendars: Kalendář",
+      "characters": 25,
+      "utf8Bytes": 27,
+      "characterLimit": 30,
+      "withinCharacterLimit": true
+    },
+    "subtitle": {
+      "value": "Počasí, schůzky a widgety",
+      "characters": 25,
+      "utf8Bytes": 28,
+      "characterLimit": 30,
+      "withinCharacterLimit": true
+    },
+    "keywords": {
+      "value": "diář,plánovač,týden,měsíc,připomínka,událost,sdílení,pozvánka,předpověď,rozvrh",
+      "characters": 78,
+      "utf8Bytes": 94,
+      "characterLimit": 100,
+      "withinCharacterLimit": true
+    },
+    "promotionalText": {
+      "value": "Prohlížejte si plány a počasí společně. Vyberte si widgety a různá zobrazení, nebo začněte místním kalendářem bez účtu v aplikaci.",
+      "characters": 130,
+      "utf8Bytes": 148,
+      "characterLimit": 170,
+      "withinCharacterLimit": true
+    },
+    "description": {
+      "value": "Plánujte pracovní i osobní program s počasím na iPhonu a iPadu. Cloud Calendars spojuje vaše kalendáře na jednom místě.\n\nKALENDÁŘE A ZOBRAZENÍ\nPoužívejte kalendáře iCloud a připojte Kalendář Google. Premium přidává podporu kalendářů Microsoft. Vyberte zobrazení dne, týdne, měsíce, roku nebo seznamu.\n\nMůžete také vytvořit místní kalendář v zařízení bez účtu Cloud Calendars. Připojení služeb a sdílení mohou vyžadovat přihlášení.\n\nPOČASÍ, WIDGETY A SDÍLENÍ\nPři plánování sledujte předpověď. Widgety na plochu jsou dostupné v malé, střední a velké velikosti. Dostupnost předpovědí závisí na místě a poskytovateli počasí. Sdílejte události a kalendáře a posílejte pozvánky e-mailem, QR kódem nebo přes App Clip. Oprávnění závisí na kalendáři a typu pozvánky.\n\nVYBERTE SI TARIF\nBezplatný Base zahrnuje synchronizaci s Kalendářem Google, Google Meet, různá zobrazení kalendáře, počasí a widgety.\nAdvanced obsahuje funkce Base a odstraňuje reklamy.\nPremium obsahuje Advanced a přidává kalendáře Microsoft a Microsoft Teams.\n\nStažení je zdarma s volitelným automaticky obnovovaným předplatným. Před nákupem zkontrolujte aktuální místní cenu a fakturační období v aplikaci nebo App Storu. Předplatné se obnoví, pokud ho nezrušíte alespoň 24 hodin před koncem aktuálního období. Spravovat nebo zrušit ho můžete v nastavení účtu App Store.\n\nSoukromí: https://www.cloud-calendars.com/privacy-policy\nPodmínky použití: https://www.apple.com/legal/internet-services/itunes/dev/stdeula/",
+      "characters": 1473,
+      "utf8Bytes": 1618,
+      "characterLimit": 4000,
+      "withinCharacterLimit": true
+    }
+  },
+  "current": {
+    "appInfo": {
+      "locale": "cs",
+      "name": "Cloud Calendars: Kalendář",
+      "subtitle": "Všechny kalendáře v jednom",
+      "privacyPolicyUrl": "https://www.cloud-calendars.com/privacy-policy",
+      "privacyChoicesUrl": null,
+      "privacyPolicyText": null
+    },
+    "version": {
+      "description": "Plánujte svůj den s kalendářem a počasím společně\n\nCloud Calendars spojuje vaše kalendáře a počasí do jednoho krásně uspořádaného prostředí pro plánování.\n\nSpravujte kalendáře iCloud, Google Calendar a Microsoft v jedné aplikaci a sledujte předpověď přímo ve svém rozvrhu, widgetech a plánovacích zobrazeních.\n\nMějte náskok před schůzkami, cestami, vyzvedáváním dětí ze školy, venkovními aktivitami i rušnými dny díky kalendářovým zobrazením navrženým pro rychlejší plánování.\n\nWIDGETY NA PLOCHU\n\nPřidejte krásné widgety, které spojují:\n• Události kalendáře\n• Předpověď počasí\n• Nadcházející program\n• Fázi Měsíce a podmínky\n• Vítr a teplotu\n• Přehled denní agendy\n\nVyberte si z několika stylů widgetů a zobrazte svůj den přímo na ploše.\n\nPROČ CLOUD CALENDARS\n\n• Zobrazení kalendářů iCloud, Google Calendar a Microsoft pohromadě\n• Plánování s integrovanou předpovědí počasí\n• Krásné widgety na plochu\n• Přirozené přetahování, přesouvání a změna délky událostí\n• Vytváření odkazů Google Meet a Microsoft Teams\n• Přepínání mezi zobrazením dne, týdne, měsíce, roku a seznamu\n• Správa pracovních a osobních kalendářů na jednom místě\n\nFUNKCE\n\nVšechny kalendáře pohromadě\nPropojte a spravujte kalendáře iCloud, Google Calendar a Microsoft v jednom přehledném, barevně rozlišeném prostředí.\n\nPočasí přímo v kalendáři\nSledujte hodinovou i denní předpověď přímo při plánování, včetně teploty, podmínek, fáze Měsíce, větru a ikon počasí.\n\nWidgety kalendáře a počasí\nZobrazte svůj rozvrh a počasí okamžitě pomocí přizpůsobitelných widgetů na ploše.\n\nVíce zobrazení kalendáře\nVyberte zobrazení dne, týdne, měsíce, roku nebo seznamu podle toho, jak plánujete svůj čas.\n\nSnadná úprava událostí\nKlepnutím, přetažením a změnou délky událostí přímo v kalendáři plánujte rychle a přirozeně.\n\nSamostatné zobrazení počasí\nProzkoumejte podrobnou předpověď s hodinovými podmínkami a užitečnými informacemi pro plánování.\n\nVytváření událostí z předpovědi\nKlepněte na hodinu předpovědi a okamžitě vytvořte novou událost ve zvoleném čase.\n\nIntegrované odkazy na schůzky\nRychle přidávejte k událostem odkazy Google Meet a Microsoft Teams.\n\nIDEÁLNÍ PRO\n\n• Správu pracovních a osobních kalendářů\n• Plánování podle počasí\n• Venkovní aktivity a cestování\n• Rušné rozvrhy a rodinné plánování\n• Uživatele Google Calendar a iCloudu\n• Uživatele kalendáře Microsoft\n\nVyzkoušejte Cloud Calendars a usnadněte si plánování každého dne.\n\nINFORMACE O PŘEDPLATNÉM\n\nCloud Calendars nabízí automaticky obnovovaná předplatná.\n\nBezplatný plán\n• Synchronizace Google Calendar\n• Více zobrazení kalendáře\n• Funkce počasí\n• Widgety\n• Podpora Google Meet\n\nPlatba bude při potvrzení nákupu účtována k vašemu Apple ID. Předplatné se automaticky obnovuje, pokud není zrušeno nejméně 24 hodin před koncem aktuálního období. Poplatek za obnovení bude naúčtován během 24 hodin před koncem aktuálního období. Předplatné můžete spravovat a zrušit v nastavení účtu App Store.\n\nZásady ochrany soukromí: https://www.cloud-calendars.com/privacy-policy\nPodmínky použití: https://www.apple.com/legal/internet-services/itunes/dev/stdeula/",
+      "locale": "cs",
+      "keywords": "počasí,widget,rozvrh,plánovač,agenda,předpověď,iCloud,události,schůzky,práce,zamykací obrazovka,déšť",
+      "marketingUrl": "https://www.cloud-calendars.com/",
+      "promotionalText": null,
+      "supportUrl": "https://www.cloud-calendars.com/",
+      "whatsNew": null
+    }
+  },
+  "keywordChecks": {
+    "exactDuplicateKeywords": false,
+    "exactTitleSubtitleTokenDuplicates": [],
+    "note": "Unicode code-point limits. Bytes reported separately. Exact token checks do not resolve grammatical forms or Hindi combining marks."
+  },
+  "readiness": "ready_for_editorial_review_not_applied",
+  "translationConfidence": "medium",
+  "caveat": "Model-authored; no native-speaker or ASC write validation. Review RTL mixed-brand rendering for Arabic/Hebrew, Hindi grammar, and shipped tier labels before submission.",
+  "evidence": [
+    "../../product-facts.json",
+    "../localized-batch03/audit.json",
+    "asc-current.json"
+  ],
+  "applyOnly": [
+    "subtitle",
+    "keywords",
+    "promotionalText",
+    "description"
+  ],
+  "preserve": [
+    "name",
+    "release notes",
+    "URLs",
+    "privacy declarations",
+    "screenshots",
+    "other locales"
+  ]
+}

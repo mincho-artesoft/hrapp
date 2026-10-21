@@ -1,0 +1,19 @@
+Tekintsd át munkahelyi és személyes programjaidat az időjárással együtt iPhone-on és iPaden a Cloud Calendars segítségével.
+
+NAPTÁRAK ÉS NÉZETEK
+Használj iCloud-naptárakat, és csatlakoztasd a Google Naptárt. A Premium Microsoft-naptárakat is támogat. Válassz napi, heti, havi, éves vagy listanézetet.
+
+Helyi naptárat is létrehozhatsz az eszközön Cloud Calendars-fiók nélkül. A szolgáltatások csatlakoztatásához és a megosztáshoz bejelentkezésre lehet szükség.
+
+IDŐJÁRÁS, WIDGETEK ÉS MEGOSZTÁS
+Tervezés közben nézd meg az előrejelzést. A Főképernyő widgetjei kis, közepes és nagy méretben érhetők el. Az előrejelzések elérhetősége a helytől és az időjárási szolgáltatótól függ. Ossz meg eseményeket és naptárakat, és küldj meghívókat e-mailben, QR-kóddal vagy App Clippel. A hozzáférés a naptártól és a meghívó típusától függ.
+
+VÁLASSZ CSOMAGOT
+Az ingyenes Base Google Naptár-szinkronizálást, Google Meetet, különböző naptárnézeteket, időjárást és widgeteket tartalmaz.
+Az Advanced tartalmazza a Base funkcióit, és eltávolítja a hirdetéseket.
+A Premium tartalmazza az Advanced funkcióit, valamint Microsoft-naptárakat és Microsoft Teamst is támogat.
+
+A letöltés ingyenes, és választható automatikusan megújuló előfizetés. Előfizetés előtt ellenőrizd az aktuális helyi árat és a számlázási időszakot az alkalmazásban vagy az App Store-ban. Az előfizetés megújul, ha nem mondod le legalább 24 órával az aktuális időszak vége előtt. Az App Store-fiókod beállításaiban kezelheted vagy lemondhatod.
+
+Adatvédelem: https://www.cloud-calendars.com/privacy-policy
+Használati feltételek: https://www.apple.com/legal/internet-services/itunes/dev/stdeula/
