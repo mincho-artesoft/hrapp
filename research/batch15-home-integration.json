@@ -1,0 +1,187 @@
+{
+  "locales": 30,
+  "fields": 360,
+  "records": [
+    {
+      "locale": "ar-SA",
+      "file": "src/app/content/home/ar-SA.ts",
+      "expectedFields": 12,
+      "placeholdersPreserved": true
+    },
+    {
+      "locale": "bg",
+      "file": "src/app/content/home/bg.ts",
+      "expectedFields": 12,
+      "placeholdersPreserved": true
+    },
+    {
+      "locale": "cs",
+      "file": "src/app/content/home/cs.ts",
+      "expectedFields": 12,
+      "placeholdersPreserved": true
+    },
+    {
+      "locale": "da",
+      "file": "src/app/content/home/da.ts",
+      "expectedFields": 12,
+      "placeholdersPreserved": true
+    },
+    {
+      "locale": "de-DE",
+      "file": "src/app/content/home/de-DE.ts",
+      "expectedFields": 12,
+      "placeholdersPreserved": true
+    },
+    {
+      "locale": "el",
+      "file": "src/app/content/home/el.ts",
+      "expectedFields": 12,
+      "placeholdersPreserved": true
+    },
+    {
+      "locale": "es-ES",
+      "file": "src/app/content/home/es-ES.ts",
+      "expectedFields": 12,
+      "placeholdersPreserved": true
+    },
+    {
+      "locale": "fi",
+      "file": "src/app/content/home/fi.ts",
+      "expectedFields": 12,
+      "placeholdersPreserved": true
+    },
+    {
+      "locale": "fr-FR",
+      "file": "src/app/content/home/fr-FR.ts",
+      "expectedFields": 12,
+      "placeholdersPreserved": true
+    },
+    {
+      "locale": "he",
+      "file": "src/app/content/home/he.ts",
+      "expectedFields": 12,
+      "placeholdersPreserved": true
+    },
+    {
+      "locale": "hi",
+      "file": "src/app/content/home/hi.ts",
+      "expectedFields": 12,
+      "placeholdersPreserved": true
+    },
+    {
+      "locale": "hu",
+      "file": "src/app/content/home/hu.ts",
+      "expectedFields": 12,
+      "placeholdersPreserved": true
+    },
+    {
+      "locale": "id",
+      "file": "src/app/content/home/id.ts",
+      "expectedFields": 12,
+      "placeholdersPreserved": true
+    },
+    {
+      "locale": "it",
+      "file": "src/app/content/home/it.ts",
+      "expectedFields": 12,
+      "placeholdersPreserved": true
+    },
+    {
+      "locale": "ja",
+      "file": "src/app/content/home/ja.ts",
+      "expectedFields": 12,
+      "placeholdersPreserved": true
+    },
+    {
+      "locale": "ko",
+      "file": "src/app/content/home/ko.ts",
+      "expectedFields": 12,
+      "placeholdersPreserved": true
+    },
+    {
+      "locale": "ms",
+      "file": "src/app/content/home/ms.ts",
+      "expectedFields": 12,
+      "placeholdersPreserved": true
+    },
+    {
+      "locale": "nl-NL",
+      "file": "src/app/content/home/nl-NL.ts",
+      "expectedFields": 12,
+      "placeholdersPreserved": true
+    },
+    {
+      "locale": "no",
+      "file": "src/app/content/home/no.ts",
+      "expectedFields": 12,
+      "placeholdersPreserved": true
+    },
+    {
+      "locale": "pl",
+      "file": "src/app/content/home/pl.ts",
+      "expectedFields": 12,
+      "placeholdersPreserved": true
+    },
+    {
+      "locale": "pt-BR",
+      "file": "src/app/content/home/pt-BR.ts",
+      "expectedFields": 12,
+      "placeholdersPreserved": true
+    },
+    {
+      "locale": "ro",
+      "file": "src/app/content/home/ro.ts",
+      "expectedFields": 12,
+      "placeholdersPreserved": true
+    },
+    {
+      "locale": "ru",
+      "file": "src/app/content/home/ru.ts",
+      "expectedFields": 12,
+      "placeholdersPreserved": true
+    },
+    {
+      "locale": "sv",
+      "file": "src/app/content/home/sv.ts",
+      "expectedFields": 12,
+      "placeholdersPreserved": true
+    },
+    {
+      "locale": "th",
+      "file": "src/app/content/home/th.ts",
+      "expectedFields": 12,
+      "placeholdersPreserved": true
+    },
+    {
+      "locale": "tr",
+      "file": "src/app/content/home/tr.ts",
+      "expectedFields": 12,
+      "placeholdersPreserved": true
+    },
+    {
+      "locale": "vi",
+      "file": "src/app/content/home/vi.ts",
+      "expectedFields": 12,
+      "placeholdersPreserved": true
+    },
+    {
+      "locale": "zh-Hans",
+      "file": "src/app/content/home/zh-Hans.ts",
+      "expectedFields": 12,
+      "placeholdersPreserved": true
+    },
+    {
+      "locale": "zh-Hant",
+      "file": "src/app/content/home/zh-Hant.ts",
+      "expectedFields": 12,
+      "placeholdersPreserved": true
+    },
+    {
+      "locale": "en-US",
+      "file": "src/app/content/home/en-US.ts",
+      "expectedFields": 12,
+      "placeholdersPreserved": true
+    }
+  ],
+  "scope": "12targetfields×30locales. Exact prior checks and placeholder parity. No numerical price, component or native changes."
+}

@@ -1,0 +1,62 @@
+[
+  {
+    "field_path": "features.unified.body",
+    "before": "iCloud, Google Agenda et Microsoft Outlook, synchronisés dans les deux sens et distingués par couleur dans une vue unique. Masquez un agenda quand vous ne voulez pas le voir — le reste continue de fonctionner.",
+    "after": "Consultez ensemble les calendriers iCloud et Google sélectionnés ; Premium ajoute les calendriers Microsoft. Modifiez selon les autorisations de votre compte et vérifiez le calendrier source après les changements."
+  },
+  {
+    "field_path": "features.gestures.body",
+    "before": "Attrapez un événement et faites-le glisser vers une autre heure ou un autre jour. Tirez son bord haut ou bas pour changer sa durée. Pas de fenêtre, pas de bouton Enregistrer.",
+    "after": "Déplacez les événements modifiables vers une autre heure ou un autre jour, ou ajustez leur durée dans la chronologie. Pour un événement récurrent, choisissez les occurrences à modifier et vérifiez le résultat enregistré."
+  },
+  {
+    "field_path": "faq.items[3].a",
+    "before": "C’est la façon principale de modifier. Faites glisser un événement vers une autre heure ou un autre jour, ou tirez son bord haut ou bas pour changer la durée. Les changements repartent directement dans l’agenda d’origine.",
+    "after": "Vous pouvez déplacer les événements modifiables et ajuster leur durée dans la chronologie. Vérifiez le choix des occurrences et l’heure enregistrée ; les mises à jour des calendriers connectés dépendent des autorisations et d’une synchronisation réussie."
+  },
+  {
+    "field_path": "showcase.lead",
+    "before": "Les mêmes événements, disposés selon la question que vous vous posez réellement — et chacun porte sa prévision.",
+    "after": "Choisissez une vue d’ensemble ou une chronologie détaillée, avec la météo disponible dans les vues compatibles."
+  },
+  {
+    "field_path": "showcase.panels[0].body",
+    "before": "Une grille horaire où chaque ligne porte sa propre prévision. Vous voyez la réunion de 15 h et la pluie de 15 h d’un même coup d’œil — pas de seconde application, pas de supposition.",
+    "after": "Comparez vos rendez-vous aux prévisions horaires disponibles dans la même grille. Pour une sortie, vérifiez le lieu sélectionné et la date des prévisions."
+  },
+  {
+    "field_path": "showcase.panels[3].body",
+    "before": "La vue mensuelle marque chaque jour qui contient quelque chose. La vue annuelle met douze mois sur un écran — le moyen le plus rapide de trouver une semaine libre.",
+    "after": "Comparez les événements des calendriers sélectionnés sur le mois ou l’année. Ouvrez un jour pour examiner tous ses rendez-vous avant de le considérer comme libre."
+  },
+  {
+    "field_path": "features.tiles[1].body",
+    "before": "Touchez une heure dans le pôle météo et un nouvel événement s’ouvre, déjà réglé sur cette heure. Trouvez la fenêtre sèche, puis réservez-la.",
+    "after": "Choisissez une heure de prévision disponible pour commencer un brouillon d’événement, puis vérifiez sa date, son heure et son calendrier avant d’enregistrer."
+  },
+  {
+    "field_path": "hero.badge",
+    "before": "Version {v} — les événements partagés se tiennent désormais à jour tout seuls",
+    "after": "Version {v} — partage d’événements et de calendriers"
+  },
+  {
+    "field_path": "faq.items[6].a",
+    "before": "Les abonnements sont gérés par Apple : la résiliation se fait donc dans les réglages de votre compte App Store. Faites-le au moins 24 heures avant la fin de la période et vous ne serez plus facturé.",
+    "after": "Sur iPhone ou iPad, ouvrez Réglages, touchez votre nom, puis Abonnements. Choisissez Cloud Calendars et résiliez à cet endroit ; vérifiez l’état de résiliation ou d’expiration affiché par Apple."
+  },
+  {
+    "field_path": "pricing.note",
+    "before": "Les abonnements se renouvellent automatiquement et sont facturés via votre identifiant Apple. Résiliez quand vous voulez dans les réglages de votre compte App Store, au moins 24 heures avant la fin de la période.",
+    "after": "Les abonnements se renouvellent automatiquement via votre compte Apple. Vérifiez le prix local et la période de facturation avant l’achat. Gérez la résiliation dans Réglages, sous votre nom → Abonnements."
+  },
+  {
+    "field_path": "features.sourceNotes.twoWay",
+    "before": "Bidirectionnel",
+    "after": "Connecté"
+  },
+  {
+    "field_path": "pricing.mostPopular",
+    "before": "Le plus choisi",
+    "after": "Formule mise en avant"
+  }
+]

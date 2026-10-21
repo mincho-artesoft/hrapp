@@ -1,0 +1,42 @@
+{
+  "count": 21,
+  "status": "proposals_only_not_integrated",
+  "countMethod": "Unicode code points: Python len, equivalent to audit [...description].length for these strings",
+  "selection": "Every current source description >160 code points; fresh read-only TypeScript transpilation scan matched all inventory candidates exactly.",
+  "targetMaximum": 155,
+  "actualRange": [
+    113,
+    144
+  ],
+  "sourceFieldsProposed": [
+    "description"
+  ],
+  "sourceFilesModified": false,
+  "review": "Own-language editorial rewrites, not mechanical truncation or native-speaker certification. Article bodies inspected for scope. No new features, ranking, universal support or forecast-horizon guarantees.",
+  "bodyCaveat": "Some existing provider and free-plan article bodies contain broad legacy claims. These proposals change descriptions only and do not certify those bodies; provider descriptions deliberately avoid universal Exchange/editability assertions.",
+  "sourceHashes": {
+    "src/app/content/de-DE/articles.ts": "47793bd2bb0b363c19e39ecbeea2a7f8795bde8ebe9618d746645558c110eee0",
+    "src/app/content/el/articles.ts": "608e78a93f8d2dadda4499724ca00f59fb17201741effdd06be12e4b217f4b33",
+    "src/app/content/es-ES/articles.ts": "d745451c481e9424dadd994d2dcfc5b83d4423c5293871f8642e650bb5b9a381",
+    "src/app/content/fr-FR/articles.ts": "f328ecbccfeca8e8f6b7e9fc6fd6eb08f48ee67e9720df74e93ac08f6a3ca0b5",
+    "src/app/content/hu/articles-google.ts": "f496fd3676426d9165c156cf851f7f93e22a9881fbdadc13efbb71f7978a318f",
+    "src/app/content/id/articles.ts": "f90fe4f8c6ff318d68c539a512c24d601e1b05aae15df0f72db3f0e2db726bde",
+    "src/app/content/it/articles.ts": "03cff8bf343035779532b86859cba6e98c0b62db40044b8252bc74c26717c201",
+    "src/app/content/ms/articles.ts": "716d20474e6efbd9be1445138a7eff4a633cf790207a5dad59561a3593a9809b",
+    "src/app/content/nl-NL/articles.ts": "4a5f4b5d1c8282e29fa07bf49fe2b4162a36405ef8db6c1071b50bd221ee1e7e",
+    "src/app/content/pl/articles.ts": "9f33cdf8ce71262d823565ec8928e51414eaf2e6eeedab4d3fa74cf1d0ffd485",
+    "src/app/content/pt-BR/articles.ts": "2667d25ac3892857a3a15438af0771926a3e704d401b834708f7c4afb80d34b0",
+    "src/app/content/ro/articles.ts": "1b0b2b69fd3e7ddb08f905a73720dead3e2c137bc3e1667c6890eb041a55ae7b",
+    "src/app/content/ru/articles.ts": "2adf468a06556abcab549ff7d2f56560a4cea64f0910207c591941e373b8927f",
+    "src/app/content/tr/articles.ts": "af5be42fa184b7c7c5cd56c17377652cd8d0c9cabed0e13de1ef4442fe120cad",
+    "src/app/content/vi/articles.ts": "8a8852f1148fae0692fcd0fa9d73225ccf65321736072125352828a371d05314"
+  },
+  "noActions": [
+    "source integration",
+    "build",
+    "deployment",
+    "native changes",
+    "account changes",
+    "paid API"
+  ]
+}

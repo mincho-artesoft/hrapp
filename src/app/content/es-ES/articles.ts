@@ -292,7 +292,7 @@ export const ARTICLES_ES_ES: Readonly<Record<string, LocalisedArticle>> = {
   'weather-inside-your-calendar': {
   "title": "Un calendario que ya lleva el tiempo dentro",
   "short": "El tiempo dentro del calendario",
-  "description": "Por qué consultar dos aplicaciones para planificar un día es un fallo de diseño, y cómo es un calendario en el que la previsión forma parte de la vista en lugar de estar al lado.",
+  "description": "Planifica con tus citas y el tiempo en la misma vista. Descubre cómo se integra la previsión disponible y qué límites tiene su alcance.",
   "lede": "Casi todo el mundo planifica el día entre dos aplicaciones. El calendario dice dónde hay que estar; la del tiempo dice cómo estará cuando lleguemos. Sostener las dos cosas en la cabeza es la parte que nadie nota que hace, hasta que un sábado se estropea.",
   "commonBelief": "Que un calendario es para compromisos y una aplicación del tiempo es para el tiempo, y que mantenerlos separados es sencillamente cómo funcionan los teléfonos.",
   "sections": [

@@ -1,0 +1,92 @@
+{
+  "updated": "2026-10-22",
+  "title": "Plan an outdoor event with a forecast and a fallback",
+  "short": "Choose an outdoor plan and a workable alternative",
+  "description": "Plan an outdoor event by checking the venue, forecast hours and an agreed fallback. Review calendar details before changing a shared appointment.",
+  "lede": "Weather can help compare possible times for an outdoor activity, but it cannot promise a dry result. Start with the activity’s requirements and the decisions you can still change, then use the relevant forecast to inform those decisions. This guide is published by Arte Soft, the developer of Cloud Calendars.",
+  "commonBelief": "Checking more often or moving an activity slightly guarantees that it will avoid bad weather.",
+  "sections": [
+    {
+      "heading": "Define the activity before choosing a weather number",
+      "body": [
+        "Identify the venue, the people involved and what the activity needs. A garden lunch, a school sports session and a booked outdoor performance have different practical constraints. Avoid applying one generic rain percentage to all of them.",
+        "Write down who can make a change and the latest useful decision time. A venue’s deadline or a helper’s availability may limit your options before the weather does. These planning examples do not supply technical safety limits for any activity."
+      ]
+    },
+    {
+      "heading": "Match place, local date and the full interval",
+      "body": [
+        "Check the selected weather location against the actual venue. Include arrival and preparation where relevant, then inspect the available hours across the activity. One daily icon cannot describe every moment in a long booking.",
+        "If the event is beyond the forecast dates, keep the agreed date and set a later review. If you are travelling, compare the venue’s local time with the appointment. Do not silently replace the booking with a forecast for your current location."
+      ]
+    },
+    {
+      "heading": "Compare real alternatives without inventing dry windows",
+      "body": [
+        "Compare candidate periods using the relevant weather fields and their labels. The Met Office’s forecast guide distinguishes probability from other weather values and explains that fields can describe different periods. Read the corresponding definitions for the source you are using.",
+        "Leaving an hour later may or may not improve conditions. Treat a more suitable-looking period as information for the plan, not a guarantee. Do not infer an uncovered hour or a route-wide observation from a value for one place."
+      ]
+    },
+    {
+      "heading": "Agree a fallback people can actually use",
+      "body": [
+        "An alternative should solve the activity’s real problem: a permitted indoor venue, an agreed postponement or a different arrangement that participants can reach. Check access, cost and availability through the appropriate organiser or venue.",
+        "For example, moving a picnic indoors can fail if nobody has confirmed the room. Record the alternative clearly and decide who will communicate the final choice. A note in one person’s private calendar is not a shared agreement."
+      ]
+    },
+    {
+      "heading": "Save and change the intended event",
+      "body": [
+        "Before creating or editing, confirm the destination calendar, start, end and location. An event draft started from a weather hour still needs review. Its proposed duration may not match setup, travel or the full activity.",
+        "For a shared or repeating appointment, check organiser responsibilities, editing rights and recurrence scope. After an authorised change, reopen the saved event. A local change is not proof that the venue or every participant accepted it."
+      ]
+    },
+    {
+      "heading": "Recheck when a decision can still make a difference",
+      "body": [
+        "Choose a review time that leaves room to act under the booking’s conditions. Compare the latest relevant forecast and applicable official or venue guidance. Forecast information is an input, not permission to ignore an activity’s requirements.",
+        "Communicate the final plan and confirm important handoffs directly. If a later update changes the decision, identify which event and occurrence to amend. Repeatedly refreshing without a workable alternative does not remove uncertainty."
+      ]
+    }
+  ],
+  "claims": {},
+  "practical": [
+    "Identify the activity’s venue, requirements and decision owner.",
+    "Check the selected weather place and the full local-time interval.",
+    "Compare only forecast dates and hours that are actually available.",
+    "Agree a feasible alternative and a decision deadline.",
+    "Review calendar destination, event details and recurrence scope before saving.",
+    "Recheck at the agreed time and confirm the final plan with participants."
+  ],
+  "faq": [
+    {
+      "q": "Can moving my event by an hour guarantee dry weather?",
+      "a": "No. Compare the available periods and keep an alternative suited to the activity. A forecast is not a promise of the result."
+    },
+    {
+      "q": "What if the forecast does not reach the event date?",
+      "a": "Keep the agreed appointment and schedule a later weather review. Missing information is not a clear-weather prediction."
+    },
+    {
+      "q": "Can I move a shared event when another time looks better?",
+      "a": "Confirm the organiser’s agreement, editing rights and participants first. Check the recurrence scope and the saved result, then communicate the change."
+    }
+  ],
+  "seeAlso": [
+    "forecast-beside-every-event",
+    "reading-a-chance-of-rain",
+    "what-a-forecast-can-and-cannot-tell-you",
+    "the-commute-and-the-sky"
+  ],
+  "sourcesHeading": "Official sources and further reading",
+  "sources": [
+    {
+      "label": "Apple: WeatherKit forecast information and regional availability",
+      "url": "https://developer.apple.com/weatherkit/"
+    },
+    {
+      "label": "Met Office: forecast place, periods and weather values",
+      "url": "https://weather.metoffice.gov.uk/guides/what-does-this-forecast-mean"
+    }
+  ]
+}

@@ -100,7 +100,7 @@ export const ARTICLES_VI: Readonly<Record<string, LocalisedArticle>> = {
   'weather-inside-your-calendar': {
   "title": "Một cuốn lịch đã có sẵn thời tiết bên trong",
   "short": "Thời tiết bên trong cuốn lịch",
-  "description": "Vì sao phải mở hai ứng dụng để sắp xếp một ngày là một lỗi thiết kế, và một cuốn lịch mà dự báo là một phần của khung nhìn chứ không đứng bên cạnh thì trông như thế nào.",
+  "description": "Lên kế hoạch với sự kiện và thời tiết trong cùng một chế độ xem. Tìm hiểu cách dự báo có sẵn xuất hiện trong lịch và giới hạn thời gian dự báo.",
   "lede": "Gần như ai cũng sắp xếp ngày của mình giữa hai ứng dụng. Lịch nói cần có mặt ở đâu; ứng dụng thời tiết nói lúc tới đó trời thế nào. Giữ cả hai cùng lúc trong đầu là phần việc không ai nhận ra mình đang làm — cho tới khi mất trắng một ngày thứ Bảy.",
   "commonBelief": "Rằng lịch là để ghi hẹn còn ứng dụng thời tiết là để xem trời, và tách riêng chúng đơn giản là cách điện thoại vận hành.",
   "sections": [

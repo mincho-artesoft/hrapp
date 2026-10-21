@@ -1,0 +1,92 @@
+{
+  "updated": "2026-10-22",
+  "title": "How far ahead can I see weather in Cloud Calendars?",
+  "short": "Check the forecast dates actually available",
+  "description": "Check the forecast dates available in Cloud Calendars. Separate daily and hourly coverage, future appointments and the website’s weather demonstration.",
+  "lede": "A long-range calendar and a long-range weather forecast are different things. You can book a meeting before its forecast exists. Read the available dates in the app rather than inferring weather coverage from the month you can open. This guide is published by Arte Soft, the developer of Cloud Calendars.",
+  "commonBelief": "Every future date in a calendar has a forecast, and the website’s fourteen-day demonstration is the app’s forecast range.",
+  "sections": [
+    {
+      "heading": "Read the dates in the weather display",
+      "body": [
+        "Open weather for the intended place and identify the dates actually listed. Do not decide availability from the calendar’s month or year navigation. Missing forecast information means you still need a later check; it does not mean a clear day.",
+        "If you are organising a gathering several weeks ahead, save the agreed date and record the weather decision separately. Venue availability, invitations and an eventual forecast are different inputs to that plan."
+      ]
+    },
+    {
+      "heading": "Understand the app’s daily list",
+      "body": [
+        "The app uses Apple WeatherKit. Its current daily-list implementation keeps up to ten days returned by the service. Read the actual first and last dates for the selected place rather than assuming every view or request has a full ten-day set.",
+        "This limit describes the displayed daily list, not a promise that all weather variables have equal confidence or that every appointment within those dates has a complete forecast. Use the level of detail needed for the decision."
+      ]
+    },
+    {
+      "heading": "Check hourly availability for timed activities",
+      "body": [
+        "A daily summary does not establish the exact conditions throughout an appointment. Open the relevant day and compare the available hours covering arrival, the activity and departure. If part of the period is missing, leave it unresolved.",
+        "For an evening event, make sure the selected place and local date still match the schedule. A late arrival after midnight belongs to another date. Check actual timestamps instead of treating the end of the daily list as the end of every hourly series."
+      ]
+    },
+    {
+      "heading": "Distinguish the website’s demonstration",
+      "body": [
+        "The current website requests fourteen forecast days from Open-Meteo for its weather demonstration. Open-Meteo documents configurable ranges; this website request is a separate implementation from the iOS app.",
+        "Do not use the web result to claim that the app supplies fourteen WeatherKit days. If the two displays differ, first compare the place, time and provider. A different forecast range does not mean the calendar lost an appointment."
+      ]
+    },
+    {
+      "heading": "Plan a review when the forecast is not yet available",
+      "body": [
+        "Keep the booking’s real date and arrange a review that still leaves time for a venue decision or a message to participants. For example, an outdoor celebration may need an indoor option agreed before the next forecast check.",
+        "Choose the review around the activity’s actual constraints. This guide does not assign an accuracy percentage or universal go-or-cancel threshold to a numbered forecast day. Check current information when it can change an actionable decision."
+      ]
+    },
+    {
+      "heading": "Check event details after choosing a time",
+      "body": [
+        "If an available forecast hour helps you choose a time, review the resulting event draft. Confirm the local date, start, end, destination calendar and location. Forecast navigation does not replace calendar permissions or an organiser’s agreement.",
+        "After an authorised change, reopen the event and check the intended occurrence or series. Confirm important changes with participants separately. Weather data becoming available is not the same as a changed invitation being received."
+      ]
+    }
+  ],
+  "claims": {},
+  "practical": [
+    "Select the place relevant to the appointment.",
+    "Read the first and last dates shown in the app’s daily list.",
+    "Check the needed hourly interval separately, including midnight boundaries.",
+    "Keep website Open-Meteo coverage separate from app WeatherKit coverage.",
+    "Arrange a later review for plans beyond the available forecast.",
+    "Verify the saved event and confirm shared changes with participants."
+  ],
+  "faq": [
+    {
+      "q": "Does Cloud Calendars offer a fourteen-day app forecast?",
+      "a": "The current app daily list uses up to ten returned WeatherKit days. The website separately requests fourteen Open-Meteo days. Check the dates actually available in the app."
+    },
+    {
+      "q": "Why can I create an event after the last weather date?",
+      "a": "Calendar storage and weather availability are separate. Keep the appointment and review the forecast nearer the date."
+    },
+    {
+      "q": "Does a daily entry guarantee weather for every hour of my event?",
+      "a": "No. Check the hours actually supplied for that place and period. Do not infer complete hourly coverage from the daily list."
+    }
+  ],
+  "seeAlso": [
+    "weather-inside-your-calendar",
+    "forecast-beside-every-event",
+    "what-a-forecast-can-and-cannot-tell-you",
+    "planning-outdoors-without-being-rained-on"
+  ],
+  "sourcesHeading": "Official sources and further reading",
+  "sources": [
+    {
+      "label": "Apple: WeatherKit forecast information and regional availability",
+      "url": "https://developer.apple.com/weatherkit/"
+    },
+    {
+      "label": "Open-Meteo: forecast parameters and available ranges",
+      "url": "https://open-meteo.com/en/docs"
+    }
+  ]
+}

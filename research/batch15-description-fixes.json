@@ -1,0 +1,212 @@
+[
+  {
+    "locale": "de-DE",
+    "slug": "weather-inside-your-calendar",
+    "file": "src/app/content/de-DE/articles.ts",
+    "before": "Warum es ein Konstruktionsfehler ist, für einen Tag zwei Apps zu befragen — und wie ein Kalender aussieht, in dem die Vorhersage Teil der Ansicht ist statt daneben zu stehen.",
+    "beforeCharacters": 174,
+    "after": "Termine und Wetter gemeinsam planen: So ergänzt die verfügbare Vorhersage den Kalender, und warum sie nicht jeden sichtbaren Tag abdeckt.",
+    "rationale": "Recasts the two-app planning discussion as a concise summary of calendar weather and the forecast-availability limits explicitly covered in the current article.",
+    "afterCharacters": 137
+  },
+  {
+    "locale": "el",
+    "slug": "weather-inside-your-calendar",
+    "file": "src/app/content/el/articles.ts",
+    "before": "Γιατί το να κοιτάς δύο εφαρμογές για να οργανώσεις μια μέρα είναι σφάλμα σχεδιασμού, και πώς μοιάζει ένα ημερολόγιο όπου η πρόγνωση είναι μέρος της προβολής αντί να στέκεται δίπλα.",
+    "beforeCharacters": 180,
+    "after": "Οργανώστε ραντεβού και καιρό στην ίδια προβολή. Δείτε πώς εντάσσεται η διαθέσιμη πρόγνωση στο ημερολόγιο και ποια είναι τα χρονικά της όρια.",
+    "rationale": "Recasts the two-app planning discussion as a concise summary of calendar weather and the forecast-availability limits explicitly covered in the current article.",
+    "afterCharacters": 140
+  },
+  {
+    "locale": "el",
+    "slug": "icloud-google-and-outlook-in-one-view",
+    "file": "src/app/content/el/articles.ts",
+    "before": "Η ζωή σχεδόν όλων είναι μοιρασμένη ανάμεσα σε ένα προσωπικό ημερολόγιο Apple, έναν λογαριασμό Google και ένα Exchange της δουλειάς. Τι αλλάζει όταν βρεθούν στο ίδιο πλέγμα.",
+    "beforeCharacters": 172,
+    "after": "Δείτε πώς μια κοινή προβολή ημερολογίων Apple, Google και εργασίας βοηθά στη σύγκριση υποχρεώσεων και στον εντοπισμό συγκρούσεων.",
+    "rationale": "Summarizes comparing personal and work commitments in one view; avoids the original universal-life generalization and does not imply universal Exchange support or editing rights.",
+    "afterCharacters": 129
+  },
+  {
+    "locale": "es-ES",
+    "slug": "weather-inside-your-calendar",
+    "file": "src/app/content/es-ES/articles.ts",
+    "before": "Por qué consultar dos aplicaciones para planificar un día es un fallo de diseño, y cómo es un calendario en el que la previsión forma parte de la vista en lugar de estar al lado.",
+    "beforeCharacters": 178,
+    "after": "Planifica con tus citas y el tiempo en la misma vista. Descubre cómo se integra la previsión disponible y qué límites tiene su alcance.",
+    "rationale": "Recasts the two-app planning discussion as a concise summary of calendar weather and the forecast-availability limits explicitly covered in the current article.",
+    "afterCharacters": 135
+  },
+  {
+    "locale": "fr-FR",
+    "slug": "weather-inside-your-calendar",
+    "file": "src/app/content/fr-FR/articles.ts",
+    "before": "Pourquoi consulter deux applications pour organiser une journée est un défaut de conception, et à quoi ressemble un agenda où les prévisions font partie de la vue plutôt que d'être à côté.",
+    "beforeCharacters": 188,
+    "after": "Planifiez avec vos rendez-vous et la météo dans une même vue. Découvrez les prévisions disponibles et les limites de leur portée.",
+    "rationale": "Recasts the two-app planning discussion as a concise summary of calendar weather and the forecast-availability limits explicitly covered in the current article.",
+    "afterCharacters": 129
+  },
+  {
+    "locale": "fr-FR",
+    "slug": "sharing-one-event-not-your-calendar",
+    "file": "src/app/content/fr-FR/articles.ts",
+    "before": "Partagez un événement sans partager tout votre calendrier. Distinguez les accès Reader, Writer et Owner, les aperçus, les mises à jour et les limites de la révocation.",
+    "beforeCharacters": 167,
+    "after": "Partagez un événement, pas tout le calendrier : rôles Reader, Writer et Owner, aperçus, mises à jour et limites du retrait d’accès.",
+    "rationale": "Preserves single-event scope, named roles, previews, updates and access-withdrawal limits with shorter natural phrasing.",
+    "afterCharacters": 131
+  },
+  {
+    "locale": "fr-FR",
+    "slug": "free-google-sync-without-adverts",
+    "file": "src/app/content/fr-FR/articles.ts",
+    "before": "Ce que contient vraiment la formule gratuite, où apparaît la publicité et ce que coûte son retrait. Dit clairement, parce que presque aucune application ne le fait.",
+    "beforeCharacters": 164,
+    "after": "Découvrez ce que comprend la formule gratuite, où intervient la publicité et quelle formule permet de la retirer.",
+    "rationale": "Keeps free-plan contents, advertising and the plan that removes it; omits the unsupported comparison with almost every other app.",
+    "afterCharacters": 113
+  },
+  {
+    "locale": "hu",
+    "slug": "who-can-see-what-in-google-calendar",
+    "file": "src/app/content/hu/articles-google.ts",
+    "before": "Válasszon elérhetőségi, részletmegtekintési vagy szerkesztési hozzáférést. Megosztás előtt az egyéni jogok mellett a nyilvános és csoportos hozzáférést is ellenőrizze.",
+    "beforeCharacters": 167,
+    "after": "Válasszon hozzáférést a foglaltsághoz, részletekhez vagy szerkesztéshez. Ellenőrizze az egyéni, nyilvános és csoportos jogokat megosztás előtt.",
+    "rationale": "Keeps availability/details/editing access and individual, public and group checks in a shorter grammatical sentence.",
+    "afterCharacters": 143
+  },
+  {
+    "locale": "id",
+    "slug": "weather-inside-your-calendar",
+    "file": "src/app/content/id/articles.ts",
+    "before": "Mengapa memeriksa dua aplikasi untuk menata satu hari adalah cacat rancangan, dan seperti apa kalender yang prakiraannya menjadi bagian tampilan alih-alih berdiri di sebelahnya.",
+    "beforeCharacters": 177,
+    "after": "Rencanakan hari dengan acara dan cuaca dalam satu tampilan. Pahami prakiraan yang tersedia dan batas jangkauannya di kalender.",
+    "rationale": "Recasts the two-app planning discussion as a concise summary of calendar weather and the forecast-availability limits explicitly covered in the current article.",
+    "afterCharacters": 126
+  },
+  {
+    "locale": "it",
+    "slug": "weather-inside-your-calendar",
+    "file": "src/app/content/it/articles.ts",
+    "before": "Perché controllare due app per organizzare una giornata è un difetto di progetto, e com'è fatto un calendario in cui le previsioni fanno parte della vista invece di stare accanto.",
+    "beforeCharacters": 179,
+    "after": "Pianifica con appuntamenti e meteo nella stessa vista. Scopri come le previsioni disponibili entrano nel calendario e quali periodi coprono.",
+    "rationale": "Recasts the two-app planning discussion as a concise summary of calendar weather and the forecast-availability limits explicitly covered in the current article.",
+    "afterCharacters": 140
+  },
+  {
+    "locale": "ms",
+    "slug": "weather-inside-your-calendar",
+    "file": "src/app/content/ms/articles.ts",
+    "before": "Mengapa memeriksa dua aplikasi untuk menyusun satu hari ialah kecacatan reka bentuk, dan bagaimana rupanya kalendar yang ramalannya menjadi sebahagian daripada paparan dan bukan berdiri di sebelahnya.",
+    "beforeCharacters": 200,
+    "after": "Rancang hari dengan acara dan cuaca dalam satu paparan. Fahami ramalan yang tersedia dalam kalendar serta had tempohnya.",
+    "rationale": "Recasts the two-app planning discussion as a concise summary of calendar weather and the forecast-availability limits explicitly covered in the current article.",
+    "afterCharacters": 120
+  },
+  {
+    "locale": "ms",
+    "slug": "icloud-google-and-outlook-in-one-view",
+    "file": "src/app/content/ms/articles.ts",
+    "before": "Kehidupan hampir setiap orang terbahagi antara kalendar Apple peribadi, akaun Google dan Exchange dari tempat kerja. Apa yang berubah apabila ketiga-tiganya masuk ke grid yang sama.",
+    "beforeCharacters": 181,
+    "after": "Lihat bagaimana kalendar Apple, Google dan kerja dalam satu paparan membantu anda membandingkan komitmen dan mengenal pasti pertindihan jadual.",
+    "rationale": "Summarizes comparing personal and work commitments in one view; avoids the original universal-life generalization and does not imply universal Exchange support or editing rights.",
+    "afterCharacters": 143
+  },
+  {
+    "locale": "nl-NL",
+    "slug": "weather-inside-your-calendar",
+    "file": "src/app/content/nl-NL/articles.ts",
+    "before": "Waarom twee apps raadplegen om een dag in te delen een ontwerpfout is, en hoe een agenda eruitziet waarin de verwachting deel van de weergave is in plaats van ernaast te staan.",
+    "beforeCharacters": 176,
+    "after": "Plan afspraken en weer in één overzicht. Lees hoe de beschikbare voorspelling in de agenda past en waarom die niet elke zichtbare datum dekt.",
+    "rationale": "Recasts the two-app planning discussion as a concise summary of calendar weather and the forecast-availability limits explicitly covered in the current article.",
+    "afterCharacters": 141
+  },
+  {
+    "locale": "nl-NL",
+    "slug": "icloud-google-and-outlook-in-one-view",
+    "file": "src/app/content/nl-NL/articles.ts",
+    "before": "Het leven van bijna iedereen is verdeeld over een persoonlijke Apple-agenda, een Google-account en een Exchange van het werk. Wat er verandert als ze in hetzelfde raster staan.",
+    "beforeCharacters": 176,
+    "after": "Lees hoe één overzicht van Apple-, Google- en werkagenda’s helpt om afspraken te vergelijken en overlappende verplichtingen te herkennen.",
+    "rationale": "Summarizes comparing personal and work commitments in one view; avoids the original universal-life generalization and does not imply universal Exchange support or editing rights.",
+    "afterCharacters": 137
+  },
+  {
+    "locale": "pl",
+    "slug": "weather-inside-your-calendar",
+    "file": "src/app/content/pl/articles.ts",
+    "before": "Dlaczego sprawdzanie dwóch aplikacji przy planowaniu dnia jest błędem projektowym i jak wygląda kalendarz, w którym prognoza jest częścią widoku, a nie stoi obok.",
+    "beforeCharacters": 162,
+    "after": "Planuj dzień z wydarzeniami i pogodą w jednym widoku. Sprawdź, jak prognoza uzupełnia kalendarz i jakie są granice jej zasięgu.",
+    "rationale": "Recasts the two-app planning discussion as a concise summary of calendar weather and the forecast-availability limits explicitly covered in the current article.",
+    "afterCharacters": 127
+  },
+  {
+    "locale": "pt-BR",
+    "slug": "weather-inside-your-calendar",
+    "file": "src/app/content/pt-BR/articles.ts",
+    "before": "Por que consultar dois aplicativos para organizar um dia é uma falha de projeto, e como é uma agenda em que a previsão faz parte da vista em vez de ficar ao lado.",
+    "beforeCharacters": 162,
+    "after": "Planeje o dia com compromissos e clima na mesma visualização. Entenda como a previsão disponível entra na agenda e quais períodos ela cobre.",
+    "rationale": "Recasts the two-app planning discussion as a concise summary of calendar weather and the forecast-availability limits explicitly covered in the current article.",
+    "afterCharacters": 140
+  },
+  {
+    "locale": "pt-BR",
+    "slug": "icloud-google-and-outlook-in-one-view",
+    "file": "src/app/content/pt-BR/articles.ts",
+    "before": "A vida de quase todo mundo está repartida entre uma agenda pessoal da Apple, uma conta do Google e um Exchange do trabalho. O que muda ao colocá-los na mesma grade.",
+    "beforeCharacters": 164,
+    "after": "Veja como reunir agendas da Apple, do Google e do trabalho em uma visualização ajuda a comparar compromissos e identificar conflitos de horário.",
+    "rationale": "Summarizes comparing personal and work commitments in one view; avoids the original universal-life generalization and does not imply universal Exchange support or editing rights.",
+    "afterCharacters": 144
+  },
+  {
+    "locale": "ro",
+    "slug": "weather-inside-your-calendar",
+    "file": "src/app/content/ro/articles.ts",
+    "before": "De ce a consulta două aplicații ca să-ți organizezi ziua este o greșeală de proiectare și cum arată un calendar în care prognoza face parte din vedere în loc să stea alături.",
+    "beforeCharacters": 174,
+    "after": "Planifică ziua cu evenimentele și vremea în aceeași vedere. Află cum se integrează prognoza disponibilă și ce limite are perioada acoperită.",
+    "rationale": "Recasts the two-app planning discussion as a concise summary of calendar weather and the forecast-availability limits explicitly covered in the current article.",
+    "afterCharacters": 140
+  },
+  {
+    "locale": "ru",
+    "slug": "weather-inside-your-calendar",
+    "file": "src/app/content/ru/articles.ts",
+    "before": "Почему смотреть в два приложения, чтобы распланировать день, — это ошибка проектирования, и как выглядит календарь, где прогноз является частью вида, а не стоит рядом.",
+    "beforeCharacters": 167,
+    "after": "Планируйте день с событиями и погодой в одном виде. Узнайте, как прогноз дополняет календарь и почему он доступен не на все видимые даты.",
+    "rationale": "Recasts the two-app planning discussion as a concise summary of calendar weather and the forecast-availability limits explicitly covered in the current article.",
+    "afterCharacters": 137
+  },
+  {
+    "locale": "tr",
+    "slug": "weather-inside-your-calendar",
+    "file": "src/app/content/tr/articles.ts",
+    "before": "Bir günü planlamak için iki uygulamaya bakmanın neden bir tasarım hatası olduğu ve tahminin yanda durmak yerine görünümün parçası olduğu bir takvimin nasıl göründüğü.",
+    "beforeCharacters": 166,
+    "after": "Etkinlikleri ve hava durumunu aynı görünümde planlayın. Mevcut tahminin takvime nasıl eklendiğini ve hangi dönemleri kapsadığını öğrenin.",
+    "rationale": "Recasts the two-app planning discussion as a concise summary of calendar weather and the forecast-availability limits explicitly covered in the current article.",
+    "afterCharacters": 137
+  },
+  {
+    "locale": "vi",
+    "slug": "weather-inside-your-calendar",
+    "file": "src/app/content/vi/articles.ts",
+    "before": "Vì sao phải mở hai ứng dụng để sắp xếp một ngày là một lỗi thiết kế, và một cuốn lịch mà dự báo là một phần của khung nhìn chứ không đứng bên cạnh thì trông như thế nào.",
+    "beforeCharacters": 169,
+    "after": "Lên kế hoạch với sự kiện và thời tiết trong cùng một chế độ xem. Tìm hiểu cách dự báo có sẵn xuất hiện trong lịch và giới hạn thời gian dự báo.",
+    "rationale": "Recasts the two-app planning discussion as a concise summary of calendar weather and the forecast-availability limits explicitly covered in the current article.",
+    "afterCharacters": 143
+  }
+]

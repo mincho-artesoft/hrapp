@@ -1,0 +1,62 @@
+[
+  {
+    "field_path": "features.unified.body",
+    "before": "iCloud, Google Takvim ve Microsoft Outlook, iki yönlü eşitlenmiş ve tek görünümde renkle ayrılmış. Görmek istemediğiniz takvimi kapatın — geri kalanı çalışmayı sürdürür.",
+    "after": "Seçili iCloud ve Google takvimlerini birlikte görün; Premium, Microsoft takvimlerini ekler. Hesap izinlerinin elverdiği yerde düzenleyin ve değişiklikten sonra kaynak takvimi kontrol edin."
+  },
+  {
+    "field_path": "features.gestures.body",
+    "before": "Bir etkinliği tutup başka bir saate ya da başka bir güne kaydırın. Ne kadar sürdüğünü değiştirmek için üst veya alt kenarından çekin. Pencere yok, kaydet düğmesi yok.",
+    "after": "Düzenlenebilir etkinlikleri başka saate veya güne taşıyın ya da zaman çizelgesinde sürelerini değiştirin. Yinelenen etkinlikte hangi örneklerin değişeceğini seçip kaydedilen sonucu inceleyin."
+  },
+  {
+    "field_path": "faq.items[3].a",
+    "before": "Düzenlemenin başlıca yolu budur. Etkinliği başka bir saate ya da başka bir güne sürükleyin, veya süresini değiştirmek için üst ya da alt kenarından çekin. Değişiklikler doğrudan kaynak takvime geri işlenir.",
+    "after": "Düzenlenebilir etkinlikleri taşıyabilir ve zaman çizelgesinde sürelerini değiştirebilirsiniz. Tekrar kapsamını ve kaydedilen saati kontrol edin; bağlı takvim güncellemeleri izinlere ve başarılı eşitlemeye bağlıdır."
+  },
+  {
+    "field_path": "showcase.lead",
+    "before": "Aynı etkinlikler, gerçekten sorduğunuz soruya göre dizilmiş — ve her biri tahminini yanında taşıyor.",
+    "after": "Genel görünüm veya ayrıntılı zaman çizelgesi seçin; desteklenen görünümlerde mevcut hava tahminini de inceleyin."
+  },
+  {
+    "field_path": "showcase.panels[0].body",
+    "before": "Her satırın kendi tahminini taşıdığı bir saatlik ızgara. Üçteki toplantıyı ve üçteki yağmuru aynı bakışta görürsünüz — ikinci uygulama yok, tahmin yürütmek yok.",
+    "after": "Randevuları mevcut saatlik hava tahminiyle aynı tabloda karşılaştırın. Açık hava planlarında seçili yeri ve tahmin tarihini kontrol edin."
+  },
+  {
+    "field_path": "showcase.panels[3].body",
+    "before": "Ay görünümü, içinde bir şey olan her günü işaretler. Yıl görünümü on iki ayı tek ekrana koyar — boş bir hafta bulmanın en hızlı yolu.",
+    "after": "Seçili takvimlerin etkinliklerini ay veya yıl boyunca karşılaştırın. Bir günü boş saymadan açıp tüm randevularını inceleyin."
+  },
+  {
+    "field_path": "features.tiles[1].body",
+    "before": "Hava merkezinde herhangi bir saate dokunun, o saate ayarlanmış yeni bir etkinlik açılsın. Kuru aralığı bulun ve doldurun.",
+    "after": "Tahmini bulunan bir saati seçerek etkinlik taslağı başlatın; kaydetmeden önce tarih, saat ve takvimi kontrol edin."
+  },
+  {
+    "field_path": "hero.badge",
+    "before": "Sürüm {v} — paylaşılan etkinlikler artık kendini güncel tutuyor",
+    "after": "Sürüm {v} — etkinlik ve takvim paylaşımı"
+  },
+  {
+    "field_path": "faq.items[6].a",
+    "before": "Abonelikleri Apple yürütür, dolayısıyla App Store hesap ayarlarınızdan iptal edersiniz. Bunu dönem bitmeden en az 24 saat önce yapın, tekrar ücretlendirilmezsiniz.",
+    "after": "iPhone veya iPad’de Ayarlar’ı açın, adınıza ve ardından Abonelikler’e dokunun. Cloud Calendars’ı seçip iptal edin; Apple’ın gösterdiği iptal veya sona erme durumunu kontrol edin."
+  },
+  {
+    "field_path": "pricing.note",
+    "before": "Abonelikler otomatik yenilenir ve Apple Kimliğiniz üzerinden faturalanır. Dilediğiniz zaman App Store hesap ayarlarınızdan, dönem bitmeden en az 24 saat önce iptal edin.",
+    "after": "Abonelikler Apple Hesabınız üzerinden otomatik yenilenir. Satın almadan yerel fiyatı ve faturalama dönemini kontrol edin. İptali Ayarlar’da adınızın altındaki Abonelikler’den yönetin."
+  },
+  {
+    "field_path": "features.sourceNotes.twoWay",
+    "before": "İki yönlü",
+    "after": "Bağlı"
+  },
+  {
+    "field_path": "pricing.mostPopular",
+    "before": "En çok seçilen",
+    "after": "Öne çıkan plan"
+  }
+]

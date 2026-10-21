@@ -104,7 +104,7 @@ export const ARTICLES_NL_NL: Readonly<Record<string, LocalisedArticle>> = {
   'weather-inside-your-calendar': {
   "title": "Een agenda waar het weer al in zit",
   "short": "Het weer in de agenda",
-  "description": "Waarom twee apps raadplegen om een dag in te delen een ontwerpfout is, en hoe een agenda eruitziet waarin de verwachting deel van de weergave is in plaats van ernaast te staan.",
+  "description": "Plan afspraken en weer in één overzicht. Lees hoe de beschikbare voorspelling in de agenda past en waarom die niet elke zichtbare datum dekt.",
   "lede": "Bijna iedereen deelt zijn dag in tussen twee apps. De agenda zegt waar u moet zijn; de weer-app zegt wat voor weer het is als u er bent. Die twee in uw hoofd bij elkaar houden is het deel dat niemand merkt te doen — tot een zaterdag in het water valt.",
   "commonBelief": "Dat een agenda voor afspraken is en een weer-app voor het weer, en dat ze gescheiden houden nu eenmaal is hoe telefoons werken.",
   "sections": [
@@ -140,7 +140,7 @@ export const ARTICLES_NL_NL: Readonly<Record<string, LocalisedArticle>> = {
     title: 'iCloud, Google en Outlook in één weergave',
     short: 'Drie accounts, één weergave',
     description:
-      'Het leven van bijna iedereen is verdeeld over een persoonlijke Apple-agenda, een Google-account en een Exchange van het werk. Wat er verandert als ze in hetzelfde raster staan.',
+      "Lees hoe één overzicht van Apple-, Google- en werkagenda’s helpt om afspraken te vergelijken en overlappende verplichtingen te herkennen.",
     lede: "Het probleem is bijna nooit dat een van die agenda's slecht is. Het is dat u er drie hebt en één week.",
     commonBelief: 'Dat werk en privé in aparte apps houden een grens is en geen gebrek.',
     sections: [

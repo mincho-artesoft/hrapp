@@ -1,0 +1,189 @@
+{
+  "allPassed": true,
+  "locales": 30,
+  "renderedFields": 330,
+  "unusedSourceFields": 30,
+  "records": [
+    {
+      "locale": "en-US",
+      "path": "/",
+      "renderedFieldsVerified": 11,
+      "sha256": "f9a8ae9a1b2d386e10ca072267718bf99570a0685cc7d932b55bfaf5567c5e5b"
+    },
+    {
+      "locale": "ar-SA",
+      "path": "/ar/",
+      "renderedFieldsVerified": 11,
+      "sha256": "461b7ee8054e023d37f1b3453a07652cbd630e2cfa76680a30f09bb3400a6471"
+    },
+    {
+      "locale": "bg",
+      "path": "/bg/",
+      "renderedFieldsVerified": 11,
+      "sha256": "948360df8bc401d8fff21be77c1f2fa5d0308b572686c6c46315e7c52a721343"
+    },
+    {
+      "locale": "cs",
+      "path": "/cs/",
+      "renderedFieldsVerified": 11,
+      "sha256": "c98fe8d0cb5d9f1f2e77b674ece4573e7f7242f029c93c282a9a980556802509"
+    },
+    {
+      "locale": "da",
+      "path": "/da/",
+      "renderedFieldsVerified": 11,
+      "sha256": "91c8db0bab717526c10d2aa2e52f5cbe964c5786734702c309198dc38acc5ab2"
+    },
+    {
+      "locale": "de-DE",
+      "path": "/de/",
+      "renderedFieldsVerified": 11,
+      "sha256": "0a8945785cb38fed9975a2a6e8eed149fe7fc4a70aab1b04a366c1ad31e228ff"
+    },
+    {
+      "locale": "el",
+      "path": "/el/",
+      "renderedFieldsVerified": 11,
+      "sha256": "1a4a50dc5666c181eeb751c5c30747dd61699b8b0ee929197573faf34d08f905"
+    },
+    {
+      "locale": "es-ES",
+      "path": "/es/",
+      "renderedFieldsVerified": 11,
+      "sha256": "9cc86c18e6d325daef888a4133873f2ddd85ee9ab547fa4755d4194ef317ad22"
+    },
+    {
+      "locale": "fi",
+      "path": "/fi/",
+      "renderedFieldsVerified": 11,
+      "sha256": "4503399f7c58cbf05dfe6ba0e77e3c0b8fe9d59dcf06f621fcf60b5e448b188f"
+    },
+    {
+      "locale": "fr-FR",
+      "path": "/fr/",
+      "renderedFieldsVerified": 11,
+      "sha256": "ce7b6f3515cd640a7b283a79c530300c78b3de5ebee35ade8c923283e019b19a"
+    },
+    {
+      "locale": "he",
+      "path": "/he/",
+      "renderedFieldsVerified": 11,
+      "sha256": "26f36beb70969ef1d4ba23e87116dd98781a71d71235beb15529fde4d02984a5"
+    },
+    {
+      "locale": "hi",
+      "path": "/hi/",
+      "renderedFieldsVerified": 11,
+      "sha256": "7170d97d2f19e37f1699f1bb487eb0f5fba7b8ac2020224fee171a8be5d3cd92"
+    },
+    {
+      "locale": "hu",
+      "path": "/hu/",
+      "renderedFieldsVerified": 11,
+      "sha256": "b0796f111d3342ac7a6063712acc44571041a00d7062e4133fa08640816f7e57"
+    },
+    {
+      "locale": "id",
+      "path": "/id/",
+      "renderedFieldsVerified": 11,
+      "sha256": "b9df06801d2e4b9c8eea493fc9f1ff91467a16ff5502f805c72ec05045b40298"
+    },
+    {
+      "locale": "it",
+      "path": "/it/",
+      "renderedFieldsVerified": 11,
+      "sha256": "e192033a76e62f8b121edaabfb55c0dd06aeb4037f91156c2a55a318dd885303"
+    },
+    {
+      "locale": "ja",
+      "path": "/ja/",
+      "renderedFieldsVerified": 11,
+      "sha256": "009c3b78aa64698b1ca774dc87a14fdb36194fba26d4f2ce2d0a37504b8241f3"
+    },
+    {
+      "locale": "ko",
+      "path": "/ko/",
+      "renderedFieldsVerified": 11,
+      "sha256": "d47b443b2acd0570db89bbfd24485f793a8c57a1f6bf4abc16a9048df29f5c19"
+    },
+    {
+      "locale": "ms",
+      "path": "/ms/",
+      "renderedFieldsVerified": 11,
+      "sha256": "01c54d81d99518b47c4867431179421dcca747ba0c4898d06abb3587ae82ce4c"
+    },
+    {
+      "locale": "nl-NL",
+      "path": "/nl/",
+      "renderedFieldsVerified": 11,
+      "sha256": "97a3fb12fa4b489d764995c1a66ae32622495f80cca7b492af98ca9dcd313575"
+    },
+    {
+      "locale": "no",
+      "path": "/no/",
+      "renderedFieldsVerified": 11,
+      "sha256": "bae1fdf61a3f735021cc0e603346757f35182006ba0581ed4c54fe27f8553b61"
+    },
+    {
+      "locale": "pl",
+      "path": "/pl/",
+      "renderedFieldsVerified": 11,
+      "sha256": "7bd09929be2660221531f8ef3b1be067859f82894d9d92d7f572a0b01f042d97"
+    },
+    {
+      "locale": "pt-BR",
+      "path": "/pt/",
+      "renderedFieldsVerified": 11,
+      "sha256": "026566a2ed4aa5f1e60c9d7ce8bd34039a31d07f8b471c85621e456e3fcec7c7"
+    },
+    {
+      "locale": "ro",
+      "path": "/ro/",
+      "renderedFieldsVerified": 11,
+      "sha256": "f4b0668b98cb402ae579314b965bc2ba4fffd6447b0d08ab78234c81c97d2691"
+    },
+    {
+      "locale": "ru",
+      "path": "/ru/",
+      "renderedFieldsVerified": 11,
+      "sha256": "3be8ff3eb13f28bfecb5d0abe9d51f8f2b48960205ff361d6baaf8c1df102601"
+    },
+    {
+      "locale": "sv",
+      "path": "/sv/",
+      "renderedFieldsVerified": 11,
+      "sha256": "d86d79812f7d1f84f975b975e250e056527fe34a2307e48e8d031650c8a436e9"
+    },
+    {
+      "locale": "th",
+      "path": "/th/",
+      "renderedFieldsVerified": 11,
+      "sha256": "964ddefdfdf3e8a9bb5df4050f5be0ab77c66666456c045599669d4b5dfe71a5"
+    },
+    {
+      "locale": "tr",
+      "path": "/tr/",
+      "renderedFieldsVerified": 11,
+      "sha256": "0f6019cd1aeabe2ac2c345aae1b621ee85b03268de9c96302a5a9828be112fd7"
+    },
+    {
+      "locale": "vi",
+      "path": "/vi/",
+      "renderedFieldsVerified": 11,
+      "sha256": "67d18134a901376ef067c7934ad43f3e8dd3e7d0430b66700336de0c7df58c24"
+    },
+    {
+      "locale": "zh-Hans",
+      "path": "/zh-hans/",
+      "renderedFieldsVerified": 11,
+      "sha256": "41047a6388de195fb9f0a64c71e454dc31e4a056401bc8f3f73d4c096fee9caa"
+    },
+    {
+      "locale": "zh-Hant",
+      "path": "/zh-hant/",
+      "renderedFieldsVerified": 11,
+      "sha256": "a56f993a3c6740f6600b1578e38b7530361299dddbb524da241215f74a431c96"
+    }
+  ],
+  "scope": "330newliteralfields appear in parsed built homepagebody including inactive tourpanels; scripts/stylesexcluded. showcase.lead isunusedbytemplate,30sourcecorrections notrendered. Notvisualorproductruntimecertification."
+}

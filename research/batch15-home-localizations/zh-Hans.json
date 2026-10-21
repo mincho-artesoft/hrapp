@@ -1,0 +1,62 @@
+[
+  {
+    "field_path": "features.unified.body",
+    "before": "iCloud、Google 日历和 Microsoft Outlook 双向同步，在同一个视图里按颜色区分。不想看哪本就把它关掉——其余的照常运转。",
+    "after": "一起查看所选的 iCloud 和 Google 日历；Premium 还可连接 Microsoft 日历。请在账号权限允许时编辑，并在更改后检查来源日历。"
+  },
+  {
+    "field_path": "features.gestures.body",
+    "before": "抓起一个日程，滑到另一个时间或另一天。拉它的上边或下边就能改时长。没有弹窗，没有保存按钮。",
+    "after": "将可编辑活动移到其他时间或日期，或在时间线上调整时长。对于重复活动，请选择要修改哪些次数，并核对保存结果。"
+  },
+  {
+    "field_path": "faq.items[3].a",
+    "before": "那正是主要的编辑方式。把日程拖到另一个时间或另一天，或者拉它的上下边缘来改时长。改动会直接同步回原来的日历。",
+    "after": "你可以移动可编辑活动，并在时间线上调整时长。请检查重复范围和保存时间；已连接日历的更新取决于权限及同步是否成功。"
+  },
+  {
+    "field_path": "showcase.lead",
+    "before": "还是那些日程，按你真正在问的问题重新排布——而且每一个都带着自己的预报。",
+    "after": "选择概览或详细时间线，在支持的视图中查看可用天气信息。"
+  },
+  {
+    "field_path": "showcase.panels[0].body",
+    "before": "一张按小时排的格子，每一行都带着自己那一小时的预报。三点的会议和三点的雨，在同一眼里。不用第二个应用，也不用猜。",
+    "after": "在同一网格中比较约会与可用的逐小时预报。安排户外活动时，请检查所选地点和预报日期。"
+  },
+  {
+    "field_path": "showcase.panels[3].body",
+    "before": "月视图会标出每一个有安排的日子。年视图把十二个月放进一屏——找一周空档最快的办法。",
+    "after": "按月或年比较所选日历的活动。打开某一天查看全部约会，再决定当天是否空闲。"
+  },
+  {
+    "field_path": "features.tiles[1].body",
+    "before": "在天气中心点任意一个小时，就会打开一个已经设好那个时间的新日程。找到那段干爽的窗口，然后占下它。",
+    "after": "选择有预报的小时来开始活动草稿，保存前检查日期、时间和日历。"
+  },
+  {
+    "field_path": "hero.badge",
+    "before": "版本 {v} — 分享出去的日程现在会自己保持最新",
+    "after": "版本 {v} — 共享活动与日历"
+  },
+  {
+    "field_path": "faq.items[6].a",
+    "before": "订阅由 Apple 处理，所以在 App Store 账户设置里取消。请在周期结束前至少 24 小时操作，就不会再被扣费。",
+    "after": "在 iPhone 或 iPad 上打开“设置”，点按你的姓名，再进入“订阅”。选择 Cloud Calendars 并取消；检查 Apple 显示的取消或到期状态。"
+  },
+  {
+    "field_path": "pricing.note",
+    "before": "订阅会自动续期，并通过你的 Apple ID 计费。可随时在 App Store 账户设置里取消，最迟在周期结束前 24 小时。",
+    "after": "订阅通过 Apple 账户自动续订。购买前请检查当地价格和计费周期。在“设置”中点按你的姓名，再进入“订阅”管理取消。"
+  },
+  {
+    "field_path": "features.sourceNotes.twoWay",
+    "before": "双向",
+    "after": "已连接"
+  },
+  {
+    "field_path": "pricing.mostPopular",
+    "before": "最多人选",
+    "after": "精选方案"
+  }
+]

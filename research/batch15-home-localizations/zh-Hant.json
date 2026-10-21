@@ -1,0 +1,62 @@
+[
+  {
+    "field_path": "features.unified.body",
+    "before": "iCloud、Google 日曆和 Microsoft Outlook 雙向同步，在同一個檢視裡按顏色區分。不想看哪本就把它關掉——其餘的照常運轉。",
+    "after": "一起查看已選的 iCloud 與 Google 行事曆；Premium 還可連接 Microsoft 行事曆。請在帳號權限允許時編輯，並在變更後檢查來源行事曆。"
+  },
+  {
+    "field_path": "features.gestures.body",
+    "before": "抓起一個行程，滑到另一個時間或另一天。拉它的上緣或下緣就能改時長。沒有彈出視窗，沒有儲存按鈕。",
+    "after": "將可編輯活動移到其他時間或日期，或在時間軸調整長度。重複活動請選擇要修改哪些次數，並檢查儲存結果。"
+  },
+  {
+    "field_path": "faq.items[3].a",
+    "before": "那正是主要的編輯方式。把行程拖到另一個時間或另一天，或者拉它的上下邊緣來改時長。改動會直接同步回原本的行事曆。",
+    "after": "你可以移動可編輯活動，並在時間軸調整長度。請確認重複範圍與儲存時間；已連接行事曆的更新取決於權限及同步是否成功。"
+  },
+  {
+    "field_path": "showcase.lead",
+    "before": "還是那些行程，按你真正在問的問題重新排布——而且每一個都帶著自己的預報。",
+    "after": "選擇總覽或詳細時間軸，在支援的檢視中查看可用天氣資訊。"
+  },
+  {
+    "field_path": "showcase.panels[0].body",
+    "before": "一張按小時排的格子，每一列都帶著自己那一小時的預報。三點的會議和三點的雨，在同一眼裡。不用第二個 App，也不用猜。",
+    "after": "在同一格線比較約會與可用的逐小時預報。安排戶外活動時，請檢查已選地點與預報日期。"
+  },
+  {
+    "field_path": "showcase.panels[3].body",
+    "before": "月檢視會標出每一個有安排的日子。年檢視把十二個月放進一個畫面——找一週空檔最快的辦法。",
+    "after": "按月或年比較已選行事曆的活動。開啟某一天查看全部約會，再決定當天是否有空。"
+  },
+  {
+    "field_path": "features.tiles[1].body",
+    "before": "在天氣中心點任意一個小時，就會打開一個已經設好那個時間的新行程。找到那段乾爽的空檔，然後佔下它。",
+    "after": "選擇有預報的時段來開始活動草稿，儲存前確認日期、時間與行事曆。"
+  },
+  {
+    "field_path": "hero.badge",
+    "before": "版本 {v} — 分享出去的行程現在會自己保持最新",
+    "after": "版本 {v} — 共享活動與行事曆"
+  },
+  {
+    "field_path": "faq.items[6].a",
+    "before": "訂閱由 Apple 處理，所以在 App Store 帳號設定裡取消。請在週期結束前至少 24 小時操作，就不會再被扣款。",
+    "after": "在 iPhone 或 iPad 開啟「設定」，點選你的姓名，再進入「訂閱項目」。選擇 Cloud Calendars 並取消；檢查 Apple 顯示的取消或到期狀態。"
+  },
+  {
+    "field_path": "pricing.note",
+    "before": "訂閱會自動續期，並透過你的 Apple ID 計費。可隨時在 App Store 帳號設定裡取消，最遲在週期結束前 24 小時。",
+    "after": "訂閱透過 Apple 帳號自動續訂。購買前請確認當地價格與計費週期。在「設定」點選你的姓名，再到「訂閱項目」管理取消。"
+  },
+  {
+    "field_path": "features.sourceNotes.twoWay",
+    "before": "雙向",
+    "after": "已連接"
+  },
+  {
+    "field_path": "pricing.mostPopular",
+    "before": "最多人選",
+    "after": "精選方案"
+  }
+]

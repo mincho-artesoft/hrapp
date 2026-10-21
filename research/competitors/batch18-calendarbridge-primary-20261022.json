@@ -1,0 +1,356 @@
+{
+  "schemaVersion": 1,
+  "date": "2026-10-22",
+  "scope": "Exactly four requested primary publisher URLs; all four readable extracted main bodies, no fetch failures. Eight current EN substantive article bodies and FAQs reviewed; current EN index has 51 canonical slugs. No queue/source/native/build/deploy mutations.",
+  "queueInput": "research/competitors/coverage-current-20261021.json",
+  "queueReadScope": "Top-level schema and four matching exact-URL records only; each status discovered. Their recorded original URL-specific query/intent was null; this batch used direct opens, not search queries.",
+  "queueProvenance": [
+    {
+      "url": "https://help.calendarbridge.com/help/manage-syncs.html",
+      "field": "/queue/13",
+      "priorStatus": "discovered"
+    },
+    {
+      "url": "https://help.calendarbridge.com/user-docs/how-to-get-an-ics-url-for-you-calendar",
+      "field": "/queue/14",
+      "priorStatus": "discovered"
+    },
+    {
+      "url": "https://help.calendarbridge.com/user-docs/about-syncing/",
+      "field": "/queue/15",
+      "priorStatus": "discovered"
+    },
+    {
+      "url": "https://calendarbridge.com/sync-work-and-personal-calendars/",
+      "field": "/queue/16",
+      "priorStatus": "discovered"
+    }
+  ],
+  "method": "Browser text extraction, sequential remaining-range reads to cover tails; no video playback, screenshots or authenticated product/runtime testing. Full means complete extracted substantive body, not every visual state or linked page.",
+  "sources": [
+    {
+      "url": "https://help.calendarbridge.com/help/manage-syncs.html",
+      "title": "Manage Syncs",
+      "status": "full_main_body_reviewed",
+      "publisherUpdated": "2026-05-05",
+      "readRanges": [
+        [
+          0,
+          138
+        ],
+        [
+          26,
+          173
+        ]
+      ],
+      "totalExtractedLines": 174,
+      "substantiveRange": [
+        0,
+        173
+      ],
+      "summary": "CalendarBridge describes directional source-to-destination copying; bidirectional groups consist of directional pairs. Destination copies do not edit originals. Controls cover replicated fields, filters, status and manual rescans. Deleting a sync leaves existing placeholders. Troubleshooting mentions a bounded date window and organization approval.",
+      "candidateIntentTerms": [
+        "stop calendar sync keep copied events",
+        "sync source destination",
+        "missing calendar copies filters",
+        "calendar sync date range"
+      ],
+      "boundaries": [
+        "Publisher-specific workflow, not Cloud controls.",
+        "Private flag and OAuth-password statements are not adopted as universal provider facts.",
+        "Suggested manual duplicate deletion is not imported into Cloud advice."
+      ]
+    },
+    {
+      "url": "https://help.calendarbridge.com/user-docs/how-to-get-an-ics-url-for-you-calendar",
+      "title": "How to get a .ics URL for your calendar",
+      "status": "full_main_body_reviewed",
+      "publisherUpdated": "2026-08-20",
+      "readRanges": [
+        [
+          0,
+          112
+        ],
+        [
+          25,
+          113
+        ]
+      ],
+      "totalExtractedLines": 114,
+      "substantiveRange": [
+        0,
+        113
+      ],
+      "summary": "The page distinguishes source-only feeds from account connections, covers provider link retrieval, and contrasts imported files with subscriptions. It also promotes a combined feed product.",
+      "candidateIntentTerms": [
+        "find calendar subscription URL",
+        "ICS import versus subscribe",
+        "calendar feed versus account connection"
+      ],
+      "boundaries": [
+        "Provider instructions here are secondary to Apple/Google/Microsoft documentation.",
+        "A literal .ics suffix is not a universal validity test.",
+        "Do not republish a private calendar merely to troubleshoot.",
+        "Its own provider sections mention restricted-detail feeds, so the final exclusivity claim needs independent evidence.",
+        "No Cloud support for every listed provider or generated aggregate feed inferred."
+      ]
+    },
+    {
+      "url": "https://help.calendarbridge.com/user-docs/about-syncing/",
+      "title": "About Syncing",
+      "status": "full_main_body_reviewed",
+      "publisherUpdated": "2025-05-05",
+      "readRanges": [
+        [
+          0,
+          26
+        ]
+      ],
+      "totalExtractedLines": 27,
+      "substantiveRange": [
+        0,
+        26
+      ],
+      "summary": "Describes one-way copying rules, source-authoritative edits, avoidance of recopy loops, optional copied details, and different source-dependent update cadences. Claims no event-count limit.",
+      "candidateIntentTerms": [
+        "one way versus two way calendar sync",
+        "edit original or copied event",
+        "calendar subscription refresh delay"
+      ],
+      "boundaries": [
+        "Cadence and capacity are CalendarBridge claims, not measured results or Cloud guarantees.",
+        "An event-count limit and a date-window limit are different dimensions; do not equate unrestricted count with unlimited history."
+      ]
+    },
+    {
+      "url": "https://calendarbridge.com/sync-work-and-personal-calendars/",
+      "title": "Calendar & Scheduling Tools for People with Multiple Calendars",
+      "status": "full_main_body_reviewed",
+      "readRanges": [
+        [
+          0,
+          278
+        ],
+        [
+          53,
+          389
+        ]
+      ],
+      "totalExtractedLines": 390,
+      "substantiveRange": [
+        42,
+        324
+      ],
+      "summary": "Separates combined viewing, calendar copying, booking pages and scheduling assistance as different solutions. Discusses work/personal visibility, multiple accounts, and detail controls. FAQs distinguish original events from copies and periodic versus source-triggered updates.",
+      "candidateIntentTerms": [
+        "work and personal calendar together",
+        "busy time without private event details",
+        "unified calendar versus calendar sync"
+      ],
+      "boundaries": [
+        "Security, compliance, storage, pricing and testimonial claims are unverified publisher assertions.",
+        "Booking pages and AI scheduling are not inferred Cloud features.",
+        "No subscriptions, trials or account changes performed."
+      ]
+    }
+  ],
+  "currentCanonicalCount": 51,
+  "localReads": [
+    {
+      "slug": "the-secret-address-of-a-google-calendar",
+      "file": "src/app/content/en-US/articles-google.ts",
+      "objectLines": [
+        78,
+        172
+      ],
+      "scope": "Full substantive main text and FAQs read. Initial multi-object output truncated; affected unify bodies were reread separately; export object read separately. Not claiming all metadata for every object.",
+      "objectSha256": "ff572e59b1927882fc167514f82f547aa4b91fbf29de4f1416acde9146035621"
+    },
+    {
+      "slug": "taking-back-a-calendar-you-shared",
+      "file": "src/app/content/en-US/articles-google.ts",
+      "objectLines": [
+        362,
+        452
+      ],
+      "scope": "Full substantive main text and FAQs read. Initial multi-object output truncated; affected unify bodies were reread separately; export object read separately. Not claiming all metadata for every object.",
+      "objectSha256": "fe5ad020421c3416ffd444c5cf74cddd279fd1cba010911b068853b80f87d170"
+    },
+    {
+      "slug": "icloud-google-and-outlook-in-one-view",
+      "file": "src/app/content/en-US/articles-unify.ts",
+      "objectLines": [
+        12,
+        107
+      ],
+      "scope": "Full substantive main text and FAQs read. Initial multi-object output truncated; affected unify bodies were reread separately; export object read separately. Not claiming all metadata for every object.",
+      "objectSha256": "594f7b38256da7abc3282c54e2f49da0cc801a91c75de3ae612ab330f7520ce4"
+    },
+    {
+      "slug": "what-calendar-sync-actually-does",
+      "file": "src/app/content/en-US/articles-unify.ts",
+      "objectLines": [
+        201,
+        308
+      ],
+      "scope": "Full substantive main text and FAQs read. Initial multi-object output truncated; affected unify bodies were reread separately; export object read separately. Not claiming all metadata for every object.",
+      "objectSha256": "c9fa0a0c17197f8492c2ad305fd8f7cfc04ed1f3ae211959b0e7de08297fe0b3"
+    },
+    {
+      "slug": "work-and-personal-without-two-apps",
+      "file": "src/app/content/en-US/articles-unify.ts",
+      "objectLines": [
+        310,
+        400
+      ],
+      "scope": "Full substantive main text and FAQs read. Initial multi-object output truncated; affected unify bodies were reread separately; export object read separately. Not claiming all metadata for every object.",
+      "objectSha256": "61ede359bf09200b3a963b92bc82bcc258bdc10423fe2bae3351af1c06916ecc"
+    },
+    {
+      "slug": "exchange-calendars-on-an-iphone",
+      "file": "src/app/content/en-US/articles-unify.ts",
+      "objectLines": [
+        402,
+        496
+      ],
+      "scope": "Full substantive main text and FAQs read. Initial multi-object output truncated; affected unify bodies were reread separately; export object read separately. Not claiming all metadata for every object.",
+      "objectSha256": "8947aba633cd9c882bb54fc7c1f699248da34bf1315d58eb4bdd125a353a8588"
+    },
+    {
+      "slug": "when-two-calendars-disagree",
+      "file": "src/app/content/en-US/articles-unify.ts",
+      "objectLines": [
+        498,
+        591
+      ],
+      "scope": "Full substantive main text and FAQs read. Initial multi-object output truncated; affected unify bodies were reread separately; export object read separately. Not claiming all metadata for every object.",
+      "objectSha256": "47159592e07fb9ecf6ef3a0f67c123c7c32b57370d04de4dbc4e0239c232cda5"
+    },
+    {
+      "slug": "calendar-export-ics-pdf-and-backup",
+      "file": "src/app/content/en-US/articles-help.ts",
+      "objectLines": [
+        279,
+        392
+      ],
+      "scope": "Full substantive main text and FAQs read. Initial multi-object output truncated; affected unify bodies were reread separately; export object read separately. Not claiming all metadata for every object.",
+      "objectSha256": "a72ea177d2c94e91c9717cea90064a39776c747db929c6631ee45203a2736bc5"
+    }
+  ],
+  "taskMappings": [
+    {
+      "task": "Distinguish a combined personal overview from copying availability into another account",
+      "canonicals": [
+        "what-calendar-sync-actually-does",
+        "icloud-google-and-outlook-in-one-view"
+      ],
+      "evidenceSources": [
+        "https://help.calendarbridge.com/help/manage-syncs.html",
+        "https://help.calendarbridge.com/user-docs/about-syncing/",
+        "https://calendarbridge.com/sync-work-and-personal-calendars/"
+      ],
+      "coverage": "Already explicit in full current bodies. Preserve both the no-automatic-busy-bridge warning and the actual device-mirror disclosure.",
+      "suggestedChange": "No new route. Optional one-sentence diagnostic: identify original versus destination before editing a mirrored entry."
+    },
+    {
+      "task": "Keep personal appointment details out of workplace availability",
+      "canonicals": [
+        "work-and-personal-without-two-apps"
+      ],
+      "evidenceSources": [
+        "https://calendarbridge.com/sync-work-and-personal-calendars/"
+      ],
+      "coverage": "Existing guide already has an approved manual busy-block example and recipient-side verification.",
+      "suggestedChange": "No duplicate privacy-block guide. Preserve the distinction between manual approved arrangement and unsupported automatic masking."
+    },
+    {
+      "task": "Find a feed, import a snapshot, or connect an editable account",
+      "canonicals": [
+        "the-secret-address-of-a-google-calendar",
+        "calendar-export-ics-pdf-and-backup",
+        "what-calendar-sync-actually-does"
+      ],
+      "evidenceSources": [
+        "https://help.calendarbridge.com/user-docs/how-to-get-an-ics-url-for-you-calendar"
+      ],
+      "coverage": "Current bodies already distinguish account/feed/import and handle exposed addresses and timing.",
+      "suggestedChange": "Keep Google own-use guidance. Only add provider-specific retrieval steps after reading that provider; no thin URL-suffix guide."
+    },
+    {
+      "task": "Explain stale or missing calendar data without destructive cleanup",
+      "canonicals": [
+        "when-two-calendars-disagree",
+        "what-calendar-sync-actually-does",
+        "exchange-calendars-on-an-iphone"
+      ],
+      "evidenceSources": [
+        "https://help.calendarbridge.com/help/manage-syncs.html",
+        "https://help.calendarbridge.com/user-docs/about-syncing/"
+      ],
+      "coverage": "Current bodies cover identity, ownership, permission, source visibility and safe disposable tests.",
+      "suggestedChange": "Optional sync-guide checklist: if a separate copying service is involved, examine its configured filters and covered dates. Do not invent equivalent Cloud switches."
+    },
+    {
+      "task": "Stop an external copy relationship while handling remaining destination records",
+      "canonicals": [
+        "taking-back-a-calendar-you-shared",
+        "what-calendar-sync-actually-does"
+      ],
+      "evidenceSources": [
+        "https://help.calendarbridge.com/help/manage-syncs.html"
+      ],
+      "coverage": "Revocation guide covers grants, feeds and retained exports; neither reviewed guide provides a dedicated third-party integration offboarding procedure.",
+      "suggestedChange": "Candidate new task, not yet publication-ready: distinguish disabling automation, revoking provider authorization and reviewing existing copies. Require provider permission-revocation docs and native Cloud disconnect inspection before any Cloud-specific instructions."
+    }
+  ],
+  "newGapAssessment": {
+    "candidate": "Disconnecting a calendar integration without confusing live authorization with retained copies",
+    "status": "Scoped candidate after index check and eight relevant body reads; not a verified product workflow and not a claim of exhaustive corpus semantic review.",
+    "nextEvidence": "Official Google/Microsoft/Apple connected-app revocation instructions; actual Cloud disconnect data-retention behavior read-only inspection; independent check of any proposed destructive cleanup.",
+    "notNew": [
+      "Combined calendar view",
+      "Generic busy blocks",
+      "ICS versus subscription",
+      "Calendar conflict diagnosis",
+      "Microsoft approval troubleshooting"
+    ]
+  },
+  "crossPageCautions": [
+    "Manage Syncs gives general near-minute language; older About Syncing explicitly differentiates source cadence. Keep source type and publisher date attached; do not present a guaranteed interval.",
+    "Manage Syncs mentions a finite default date window while About Syncing claims no event-count limit. These may coexist; do not conflate them or claim unlimited history.",
+    "Provider privacy and authorization behavior must be sourced to the actual provider before publication."
+  ],
+  "measurementLimits": {
+    "searchQueriesRun": 0,
+    "searchVolumeMeasured": false,
+    "googleRankMeasured": false,
+    "chatgptCitationMeasured": false,
+    "keywords": "Editorial candidate phrasing derived from reviewed tasks, not an exhaustive keyword list or observed user demand."
+  },
+  "suggestedQueueOverlayOnly": [
+    {
+      "url": "https://help.calendarbridge.com/help/manage-syncs.html",
+      "status": "full",
+      "evidenceFile": "research/competitors/batch18-calendarbridge-primary-20261022.json",
+      "evidenceField": "/sources/0"
+    },
+    {
+      "url": "https://help.calendarbridge.com/user-docs/how-to-get-an-ics-url-for-you-calendar",
+      "status": "full",
+      "evidenceFile": "research/competitors/batch18-calendarbridge-primary-20261022.json",
+      "evidenceField": "/sources/1"
+    },
+    {
+      "url": "https://help.calendarbridge.com/user-docs/about-syncing/",
+      "status": "full",
+      "evidenceFile": "research/competitors/batch18-calendarbridge-primary-20261022.json",
+      "evidenceField": "/sources/2"
+    },
+    {
+      "url": "https://calendarbridge.com/sync-work-and-personal-calendars/",
+      "status": "full",
+      "evidenceFile": "research/competitors/batch18-calendarbridge-primary-20261022.json",
+      "evidenceField": "/sources/3"
+    }
+  ]
+}

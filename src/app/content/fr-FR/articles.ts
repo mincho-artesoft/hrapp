@@ -292,7 +292,7 @@ export const ARTICLES_FR_FR: Readonly<Record<string, LocalisedArticle>> = {
   'weather-inside-your-calendar': {
   "title": "Un agenda qui contient déjà la météo",
   "short": "La météo dans l'agenda",
-  "description": "Pourquoi consulter deux applications pour organiser une journée est un défaut de conception, et à quoi ressemble un agenda où les prévisions font partie de la vue plutôt que d'être à côté.",
+  "description": "Planifiez avec vos rendez-vous et la météo dans une même vue. Découvrez les prévisions disponibles et les limites de leur portée.",
   "lede": "Presque tout le monde organise sa journée entre deux applications. L'agenda dit où il faut être ; la météo dit le temps qu'il fera en arrivant. Tenir les deux ensemble dans sa tête, c'est la partie que personne ne remarque faire — jusqu'à un samedi gâché.",
   "commonBelief": "Qu'un agenda sert aux rendez-vous et une application météo au temps qu'il fait, et que les garder séparés est simplement la façon dont les téléphones fonctionnent.",
   "sections": [
@@ -826,7 +826,7 @@ export const ARTICLES_FR_FR: Readonly<Record<string, LocalisedArticle>> = {
   "updated": "2026-10-21",
   "title": "Partager un événement : choisir le lien et les droits adaptés",
   "short": "Partager un événement",
-  "description": "Partagez un événement sans partager tout votre calendrier. Distinguez les accès Reader, Writer et Owner, les aperçus, les mises à jour et les limites de la révocation.",
+  "description": "Partagez un événement, pas tout le calendrier : rôles Reader, Writer et Owner, aperçus, mises à jour et limites du retrait d’accès.",
   "lede": "Transmettre les détails d’un dîner, autoriser un coorganisateur à modifier un événement et recueillir des réponses de présence sont trois tâches différentes. Définissez votre besoin avant de choisir le mode de partage. Ce guide est rédigé par Arte Soft, développeur de Cloud Calendars.",
   "commonBelief": "Tous les liens d’événement seraient des abonnements en lecture seule, mis à jour immédiatement et enregistrant une réponse.",
   "sections": [
@@ -922,7 +922,7 @@ export const ARTICLES_FR_FR: Readonly<Record<string, LocalisedArticle>> = {
     title: 'Synchronisation Google gratuite, et ce que paie la publicité',
     short: 'Gratuit, et la publicité',
     description:
-      'Ce que contient vraiment la formule gratuite, où apparaît la publicité et ce que coûte son retrait. Dit clairement, parce que presque aucune application ne le fait.',
+      "Découvrez ce que comprend la formule gratuite, où intervient la publicité et quelle formule permet de la retirer.",
     lede: "Les applications d'agenda gratuites le sont généralement parce qu'autre chose se vend. Il vaut la peine de savoir quoi avant de leur confier sa semaine.",
     commonBelief:
       "Qu'une formule gratuite est un essai et que la vraie application se trouve derrière le paiement.",

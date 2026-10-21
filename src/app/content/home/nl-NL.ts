@@ -18,7 +18,7 @@ export const HOME_NL_NL: HomeCopy = {
     language: 'Taal',
   },
   hero: {
-    badge: 'Versie {v} — gedeelde afspraken houden zichzelf nu bij',
+    badge: "Versie {v} — afspraken en agenda’s delen",
     title: ['Uw agenda.', 'Uw lucht.', 'Eén weergave.'],
     lead: 'Elke agenda die u heeft — iCloud, Google, Microsoft — op één plek, met de verwachting in de dag zelf. Stop met gissen hoe de middag eruitziet.',
     seeItMove: 'Zie het bewegen',
@@ -47,12 +47,12 @@ export const HOME_NL_NL: HomeCopy = {
   showcase: {
     eyebrow: 'De rondleiding',
     title: ['Vijf manieren om naar', 'dezelfde week te kijken.'],
-    lead: 'Dezelfde afspraken, geordend naar de vraag die u werkelijk stelt — en elk van hen draagt de verwachting.',
+    lead: "Kies een overzicht of gedetailleerde tijdlijn, met beschikbare weersinformatie bij ondersteunde weergaven.",
     panels: [
       {
         kicker: 'Dagweergave',
         title: 'Het plan per uur, met de lucht eraan',
-        body: 'Een uurraster waarin elke rij zijn eigen verwachting draagt. U ziet de afspraak van drie uur en de regen van drie uur in dezelfde blik — geen tweede app, geen gissen.',
+        body: "Vergelijk afspraken met beschikbare weersverwachtingen per uur in hetzelfde raster. Controleer de gekozen plaats en voorspellingsdatum bij plannen buiten.",
         alt: 'Dagweergave met uurraster, afspraken en weerpictogrammen per uur',
         bullets: ['Live „nu”-lijn', 'Temperatuur per uur', 'Sleep om te verzetten'],
       },
@@ -73,7 +73,7 @@ export const HOME_NL_NL: HomeCopy = {
       {
         kicker: 'Maand en jaar',
         title: 'Ga ver genoeg terug om de vorm te zien',
-        body: 'De maandweergave markeert elke dag waarop iets staat. De jaarweergave zet twaalf maanden op één scherm — de snelste manier om een vrije week te vinden.',
+        body: "Vergelijk afspraken uit geselecteerde agenda’s over de maand of het jaar. Open een dag om alle afspraken te bekijken voordat u besluit dat deze vrij is.",
         alt: 'Maandweergave met afspraakmarkeringen op elke dag',
         bullets: ['Drukte in één oogopslag', 'Twaalf maanden ineens', 'Spring naar elke datum'],
       },
@@ -137,11 +137,11 @@ tabs: {"hourly":"Per uur","daily":"Per dag","weekend":"Weekend","range":"Voorspe
     lead: 'Drie accounts, één raster, en gebaren die zich gedragen zoals uw handen verwachten.',
     unified: {
       title: 'Drie accounts. Eén raster.',
-      body: 'iCloud, Google Agenda en Microsoft Outlook, in twee richtingen gesynchroniseerd en met kleur onderscheiden in één weergave. Zet een agenda uit wanneer u hem niet wilt zien — de rest blijft werken.',
+      body: "Bekijk geselecteerde iCloud- en Google-agenda’s samen; Premium voegt Microsoft-agenda’s toe. Bewerk waar uw accountrechten dat toestaan en controleer na wijzigingen de bronagenda.",
     },
     gestures: {
       title: 'Sleep hem. Rek hem op. Klaar.',
-      body: 'Pak een afspraak en schuif hem naar een andere tijd of een andere dag. Trek aan de boven- of onderrand om de duur te veranderen. Geen venster, geen bewaarknop.',
+      body: "Verplaats bewerkbare afspraken naar een andere tijd of dag, of pas de duur aan in de tijdlijn. Kies bij een herhaalde afspraak welke herhalingen u wijzigt en controleer het opgeslagen resultaat.",
     },
     tiles: [
       {
@@ -151,7 +151,7 @@ tabs: {"hourly":"Per uur","daily":"Per dag","weekend":"Weekend","range":"Voorspe
       },
       {
         title: 'Maak van een verwachting een plan',
-        body: 'Tik op een uur in het weercentrum en er opent een nieuwe afspraak, al op dat tijdstip gezet. Vind het droge venster en leg het vast.',
+        body: "Kies een beschikbaar voorspellingsuur om een conceptafspraak te beginnen en controleer vóór het opslaan de datum, tijd en agenda.",
         badge: 'Eén tik',
       },
       {
@@ -162,7 +162,7 @@ tabs: {"hourly":"Per uur","daily":"Per dag","weekend":"Weekend","range":"Voorspe
     ],
     sourceNotes: {
       builtIn: 'Ingebouwd',
-      twoWay: 'Tweerichtings',
+      twoWay: "Verbonden",
       premium: 'Premium',
     },
   },
@@ -174,14 +174,14 @@ tabs: {"hourly":"Per uur","daily":"Per dag","weekend":"Weekend","range":"Voorspe
     yearly: 'Jaarlijks',
     saveMore: 'meer besparen',
     billingPeriod: 'Facturatieperiode',
-    mostPopular: 'Meest gekozen',
+    mostPopular: "Uitgelicht abonnement",
     everythingIn: 'Alles uit {tier}, en verder:',
     forever: 'voor altijd',
     perMonth: '/ maand',
     perYear: '/ jaar',
     downloadFree: 'Gratis downloaden',
     startWith: 'Beginnen met {tier}',
-    note: 'Abonnementen verlengen automatisch en worden via uw Apple ID in rekening gebracht. Zeg op wanneer u wilt in de instellingen van uw App Store-account, ten minste 24 uur voor het einde van de periode.',
+    note: "Abonnementen worden automatisch verlengd via uw Apple Account. Controleer vóór aankoop de lokale prijs en factureringsperiode. Beheer opzegging in Instellingen onder uw naam → Abonnementen.",
     plans: {
       free: {
         name: 'Gratis',
@@ -230,7 +230,7 @@ tabs: {"hourly":"Per uur","daily":"Per dag","weekend":"Weekend","range":"Voorspe
       },
       {
         q: 'Kan ik een afspraak veranderen door hem te slepen?',
-        a: 'Dat is de belangrijkste manier om te bewerken. Sleep een afspraak naar een andere tijd of een andere dag, of trek aan de boven- of onderrand om de duur te veranderen. Wijzigingen gaan meteen terug naar de bronagenda.',
+        a: "U kunt bewerkbare afspraken verplaatsen en de duur aanpassen in de tijdlijn. Controleer de herhalingskeuze en opgeslagen tijd; updates van verbonden agenda’s hangen af van rechten en geslaagde synchronisatie.",
       },
       {
         q: 'Wat laten de widgets zien?',
@@ -242,7 +242,7 @@ tabs: {"hourly":"Per uur","daily":"Per dag","weekend":"Weekend","range":"Voorspe
       },
       {
         q: 'Hoe zeg ik een abonnement op?',
-        a: 'Abonnementen worden door Apple afgehandeld, dus u zegt op in de instellingen van uw App Store-account. Doe dat ten minste 24 uur voor het einde van de periode, dan wordt er niets meer in rekening gebracht.',
+        a: "Open op iPhone of iPad Instellingen, tik op uw naam en vervolgens op Abonnementen. Kies Cloud Calendars en zeg daar op; controleer de opzeg- of vervalstatus die Apple toont.",
       },
     ],
   },

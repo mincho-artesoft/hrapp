@@ -28,7 +28,7 @@ export const HOME_EN_US: HomeCopy = {
   },
 
   hero: {
-    badge: 'Version {v} — shared events now keep themselves up to date',
+    badge: "Version {v} — sharing for events and calendars",
     title: ['Your calendar.', 'Your sky.', 'One view.'],
     lead: 'See iCloud and Google calendars together on iPhone and iPad, with weather alongside your plans. Premium also connects Microsoft calendars.',
     seeItMove: 'See it in motion',
@@ -59,12 +59,12 @@ export const HOME_EN_US: HomeCopy = {
   showcase: {
     eyebrow: 'The tour',
     title: ['Five ways to look', 'at the same week.'],
-    lead: 'The same events, arranged for the question you are actually asking — and every one of them carrying the forecast.',
+    lead: "Choose an overview or a detailed timeline, with available weather alongside supported views.",
     panels: [
       {
         kicker: 'Day view',
         title: 'The hour-by-hour plan, with the sky attached',
-        body: 'An hourly grid where every row carries its own forecast. You see the 3pm meeting and the 3pm rain in the same glance — no second app, no guessing.',
+        body: "Compare appointments with available hourly weather in the same grid. Check the selected place and forecast date when planning outdoors.",
         alt: 'Day view with an hourly grid, events and hourly weather icons',
         bullets: ['Live "now" line', 'Hourly temperature', 'Drag to reschedule'],
       },
@@ -85,7 +85,7 @@ export const HOME_EN_US: HomeCopy = {
       {
         kicker: 'Month & year',
         title: 'Pull back far enough to see the shape of things',
-        body: 'Month view marks every day that has something on it. Year view puts twelve months on one screen — the fastest way to find a free week.',
+        body: "Compare selected-calendar events across the month or year. Open a day to inspect all its appointments before deciding that it is free.",
         alt: 'Month view with event indicators on each day',
         bullets: ['Event density at a glance', 'Twelve-month overview', 'Jump to any date'],
       },
@@ -151,11 +151,11 @@ tabs: {"hourly":"Hourly","daily":"Daily","weekend":"Weekend","range":"Forecast r
     lead: 'Three accounts, one grid, and a set of gestures that behave the way your hands expect them to.',
     unified: {
       title: 'Three accounts. One grid.',
-      body: 'iCloud, Google Calendar and Microsoft Outlook, synced two ways and colour-coded in a single view. Toggle any calendar off when you don’t want to see it — the rest keeps working.',
+      body: "View selected iCloud and Google calendars together; Premium adds Microsoft calendars. Edit where your account permissions allow, and check the source calendar after changes.",
     },
     gestures: {
       title: 'Drag it. Stretch it. Done.',
-      body: 'Grab an event and slide it to a new time or a different day. Pull its top or bottom edge to change how long it runs. No modal, no save button.',
+      body: "Move editable events to another time or day, or resize them in the timeline. For a repeating event, choose which occurrences to change and review the saved result.",
     },
     tiles: [
       {
@@ -165,7 +165,7 @@ tabs: {"hourly":"Hourly","daily":"Daily","weekend":"Weekend","range":"Forecast r
       },
       {
         title: 'Turn a forecast into a plan',
-        body: 'Tap any hour in the weather hub and a new event opens, already set to that time. Find the dry window, then book it.',
+        body: "Choose an available forecast hour to start an event draft, then review its date, time and calendar before saving.",
         badge: 'One tap',
       },
       {
@@ -174,7 +174,7 @@ tabs: {"hourly":"Hourly","daily":"Daily","weekend":"Weekend","range":"Forecast r
         badge: "Local calendars",
       },
     ],
-    sourceNotes: { builtIn: 'Built in', twoWay: 'Two-way', premium: 'Premium' },
+    sourceNotes: { builtIn: 'Built in', twoWay: "Connected", premium: 'Premium' },
   },
 
   pricing: {
@@ -185,14 +185,14 @@ tabs: {"hourly":"Hourly","daily":"Daily","weekend":"Weekend","range":"Forecast r
     yearly: 'Yearly',
     saveMore: 'save more',
     billingPeriod: 'Billing period',
-    mostPopular: 'Most popular',
+    mostPopular: "Featured plan",
     everythingIn: 'Everything in {tier}, plus:',
     forever: 'forever',
     perMonth: '/ month',
     perYear: '/ year',
     downloadFree: 'Download free',
     startWith: 'Start with {tier}',
-    note: 'Subscriptions renew automatically and are billed through your Apple ID. Cancel any time in your App Store account settings, at least 24 hours before the period ends.',
+    note: "Subscriptions renew automatically through your Apple Account. Check the local price and billing period before purchase. Manage cancellation in Settings under your name → Subscriptions.",
     plans: {
       free: {
         name: 'Free',
@@ -242,7 +242,7 @@ tabs: {"hourly":"Hourly","daily":"Daily","weekend":"Weekend","range":"Forecast r
       },
       {
         q: 'Can I change an event by dragging it?',
-        a: 'That is the main way to edit. Drag an event to another time or another day, or pull its top or bottom edge to change the duration. Changes sync straight back to the source calendar.',
+        a: "You can move editable events and resize them in the timeline. Check the recurrence choice and saved time; connected-calendar updates depend on permissions and successful synchronization.",
       },
       {
         q: 'What do the widgets show?',
@@ -254,7 +254,7 @@ tabs: {"hourly":"Hourly","daily":"Daily","weekend":"Weekend","range":"Forecast r
       },
       {
         q: 'How do I cancel a subscription?',
-        a: 'Subscriptions are handled by Apple, so you cancel in your App Store account settings. Do it at least 24 hours before the period ends and you will not be charged again.',
+        a: "On iPhone or iPad, open Settings, tap your name, then Subscriptions. Choose Cloud Calendars and cancel there; check the cancellation or expiry status shown by Apple.",
       },
     ],
   },

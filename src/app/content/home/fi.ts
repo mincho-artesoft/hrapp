@@ -18,7 +18,7 @@ export const HOME_FI: HomeCopy = {
     language: 'Kieli',
   },
   hero: {
-    badge: 'Versio {v} — jaetut tapahtumat pysyvät nyt itse ajan tasalla',
+    badge: "Versio {v} — tapahtumien ja kalenterien jakaminen",
     title: ['Sinun kalenterisi.', 'Sinun taivaasi.', 'Yksi näkymä.'],
     lead: 'Jokainen kalenteri, joka sinulla on — iCloud, Google, Microsoft — yhdessä paikassa, ennuste itse päivän sisään rakennettuna. Lopeta arvailu siitä, miltä iltapäivä näyttää.',
     seeItMove: 'Katso liikkeessä',
@@ -47,12 +47,12 @@ export const HOME_FI: HomeCopy = {
   showcase: {
     eyebrow: 'Kierros',
     title: ['Viisi tapaa katsoa', 'samaa viikkoa.'],
-    lead: 'Samat tapahtumat, järjestettyinä sen kysymyksen mukaan, jota oikeasti kysyt — ja jokainen kantaa ennusteensa.',
+    lead: "Valitse yleiskuva tai tarkka aikajana, jonka tuetuissa näkymissä on saatavilla olevia säätietoja.",
     panels: [
       {
         kicker: 'Päivänäkymä',
         title: 'Tunti tunnilta -suunnitelma, taivas mukana',
-        body: 'Tuntiruudukko, jossa jokainen rivi kantaa oman ennusteensa. Näet kolmen kokouksen ja kolmen sateen samalla silmäyksellä — ei toista sovellusta, ei arvailua.',
+        body: "Vertaa tapaamisia saatavilla olevaan tuntiennusteeseen samassa ruudukossa. Tarkista valittu paikka ja ennustepäivä ulkosuunnitelmia tehdessäsi.",
         alt: 'Päivänäkymä tuntiruudukolla, tapahtumilla ja tuntikohtaisilla sääkuvakkeilla',
         bullets: ['Elävä ”nyt”-viiva', 'Lämpötila tunneittain', 'Vedä siirtääksesi'],
       },
@@ -77,7 +77,7 @@ export const HOME_FI: HomeCopy = {
       {
         kicker: 'Kuukausi ja vuosi',
         title: 'Peräänny riittävän kauas nähdäksesi muodon',
-        body: 'Kuukausinäkymä merkitsee jokaisen päivän, jolla on jotain. Vuosinäkymä asettaa kaksitoista kuukautta yhdelle näytölle — nopein tapa löytää vapaa viikko.',
+        body: "Vertaa valittujen kalenterien tapahtumia kuukauden tai vuoden ajalta. Avaa päivä ja tarkista kaikki tapaamiset ennen kuin päätät sen olevan vapaa.",
         alt: 'Kuukausinäkymä tapahtumamerkinnöin jokaisella päivällä',
         bullets: [
           'Tiheys yhdellä silmäyksellä',
@@ -144,11 +144,11 @@ tabs: {"hourly":"Tunneittain","daily":"Päivittäin","weekend":"Viikonloppu","ra
     lead: 'Kolme tiliä, yksi ruudukko ja joukko eleitä, jotka käyttäytyvät niin kuin kätesi odottavat.',
     unified: {
       title: 'Kolme tiliä. Yksi ruudukko.',
-      body: 'iCloud, Google-kalenteri ja Microsoft Outlook, synkronoituina molempiin suuntiin ja värein eroteltuina yhdessä näkymässä. Ota mikä tahansa kalenteri pois näkyvistä, kun et halua nähdä sitä — loput toimivat edelleen.',
+      body: "Katso valittuja iCloud- ja Google-kalentereita yhdessä; Premium lisää Microsoft-kalenterit. Muokkaa tilisi oikeuksien sallimissa rajoissa ja tarkista lähdekalenteri muutosten jälkeen.",
     },
     gestures: {
       title: 'Vedä. Venytä. Valmis.',
-      body: "Tartu tapahtumaan ja liu'uta se toiseen aikaan tai toiseen päivään. Vedä sen ylä- tai alareunasta muuttaaksesi kestoa. Ei ikkunaa, ei tallennuspainiketta.",
+      body: "Siirrä muokattavia tapahtumia toiseen aikaan tai päivään tai muuta niiden kestoa aikajanalla. Valitse toistuvasta tapahtumasta muutettavat kerrat ja tarkista tallennettu tulos.",
     },
     tiles: [
       {
@@ -158,7 +158,7 @@ tabs: {"hourly":"Tunneittain","daily":"Päivittäin","weekend":"Viikonloppu","ra
       },
       {
         title: 'Muuta ennuste suunnitelmaksi',
-        body: 'Kosketa mitä tahansa tuntia sääkeskuksessa, ja uusi tapahtuma avautuu jo tuohon aikaan asetettuna. Löydä kuiva ikkuna ja varaa se.',
+        body: "Valitse saatavilla oleva ennustetunti aloittaaksesi tapahtumaluonnoksen. Tarkista päivä, aika ja kalenteri ennen tallennusta.",
         badge: 'Yksi kosketus',
       },
       {
@@ -169,7 +169,7 @@ tabs: {"hourly":"Tunneittain","daily":"Päivittäin","weekend":"Viikonloppu","ra
     ],
     sourceNotes: {
       builtIn: 'Sisäänrakennettu',
-      twoWay: 'Molempiin suuntiin',
+      twoWay: "Yhdistetty",
       premium: 'Premium',
     },
   },
@@ -181,14 +181,14 @@ tabs: {"hourly":"Tunneittain","daily":"Päivittäin","weekend":"Viikonloppu","ra
     yearly: 'Vuosittain',
     saveMore: 'säästä enemmän',
     billingPeriod: 'Laskutusjakso',
-    mostPopular: 'Suosituin',
+    mostPopular: "Esittelyssä",
     everythingIn: 'Kaikki tasosta {tier}, lisäksi:',
     forever: 'ikuisesti',
     perMonth: '/ kk',
     perYear: '/ v',
     downloadFree: 'Lataa ilmaiseksi',
     startWith: 'Aloita tasolla {tier}',
-    note: 'Tilaukset uusiutuvat automaattisesti ja veloitetaan Apple ID:si kautta. Peru milloin tahansa App Store -tilisi asetuksista, viimeistään 24 tuntia ennen jakson päättymistä.',
+    note: "Tilaukset uusiutuvat automaattisesti Apple-tilisi kautta. Tarkista paikallinen hinta ja laskutusjakso ennen ostoa. Hallitse peruutusta Asetuksissa oman nimesi alta → Tilaukset.",
     plans: {
       free: {
         name: 'Ilmainen',
@@ -237,7 +237,7 @@ tabs: {"hourly":"Tunneittain","daily":"Päivittäin","weekend":"Viikonloppu","ra
       },
       {
         q: 'Voinko muuttaa tapahtumaa vetämällä sitä?',
-        a: 'Se on pääasiallinen tapa muokata. Vedä tapahtuma toiseen aikaan tai toiseen päivään, tai vedä sen ylä- tai alareunasta muuttaaksesi kestoa. Muutokset siirtyvät suoraan takaisin lähdekalenteriin.',
+        a: "Voit siirtää muokattavia tapahtumia ja muuttaa niiden kestoa aikajanalla. Tarkista toiston valinta ja tallennettu aika; yhdistettyjen kalenterien päivitykset riippuvat oikeuksista ja onnistuneesta synkronoinnista.",
       },
       {
         q: 'Mitä widgetit näyttävät?',
@@ -249,7 +249,7 @@ tabs: {"hourly":"Tunneittain","daily":"Päivittäin","weekend":"Viikonloppu","ra
       },
       {
         q: 'Miten perun tilauksen?',
-        a: 'Tilaukset hoitaa Apple, joten perut ne App Store -tilisi asetuksista. Tee se viimeistään 24 tuntia ennen jakson päättymistä, niin sinulta ei veloiteta uudelleen.',
+        a: "Avaa iPhonessa tai iPadissa Asetukset, napauta nimeäsi ja sitten Tilaukset. Valitse Cloud Calendars ja peru tilaus siellä; tarkista Applen näyttämä peruutus- tai päättymistila.",
       },
     ],
   },

@@ -1,0 +1,62 @@
+[
+  {
+    "field_path": "features.unified.body",
+    "before": "iCloud, Google Kalender und Microsoft Outlook, in beide Richtungen synchronisiert und in einer Ansicht farblich getrennt. Schalten Sie einen Kalender aus, wenn Sie ihn nicht sehen wollen — der Rest arbeitet weiter.",
+    "after": "Sehen Sie ausgewählte iCloud- und Google-Kalender gemeinsam; Premium ergänzt Microsoft-Kalender. Bearbeiten Sie Termine, soweit Ihre Kontoberechtigungen es erlauben, und prüfen Sie anschließend den Quellkalender."
+  },
+  {
+    "field_path": "features.gestures.body",
+    "before": "Greifen Sie einen Termin und schieben Sie ihn auf eine andere Zeit oder einen anderen Tag. Ziehen Sie an der oberen oder unteren Kante, um die Dauer zu ändern. Kein Dialog, kein Sichern-Knopf.",
+    "after": "Verschieben Sie bearbeitbare Termine auf eine andere Zeit oder einen anderen Tag oder ändern Sie ihre Dauer in der Zeitleiste. Wählen Sie bei Serienterminen die betroffenen Wiederholungen und prüfen Sie das gespeicherte Ergebnis."
+  },
+  {
+    "field_path": "faq.items[3].a",
+    "before": "Das ist die wichtigste Art zu bearbeiten. Ziehen Sie einen Termin auf eine andere Zeit oder einen anderen Tag, oder ziehen Sie an der oberen oder unteren Kante, um die Dauer zu ändern. Die Änderungen werden direkt in den Ursprungskalender zurückgeschrieben.",
+    "after": "Sie können bearbeitbare Termine verschieben und ihre Dauer in der Zeitleiste ändern. Prüfen Sie die Wiederholungsauswahl und die gespeicherte Zeit; Aktualisierungen verbundener Kalender hängen von Berechtigungen und erfolgreicher Synchronisierung ab."
+  },
+  {
+    "field_path": "showcase.lead",
+    "before": "Dieselben Termine, angeordnet nach der Frage, die Sie tatsächlich stellen — und jede einzelne mit der Vorhersage dabei.",
+    "after": "Wählen Sie eine Übersicht oder eine detaillierte Zeitleiste, ergänzt um verfügbare Wetterdaten in unterstützten Ansichten."
+  },
+  {
+    "field_path": "showcase.panels[0].body",
+    "before": "Ein Stundenraster, in dem jede Zeile ihre eigene Vorhersage trägt. Sie sehen den Termin um 15 Uhr und den Regen um 15 Uhr im selben Blick — keine zweite App, kein Raten.",
+    "after": "Vergleichen Sie Termine und verfügbare stündliche Wetterdaten im selben Raster. Prüfen Sie bei Plänen im Freien den ausgewählten Ort und das Vorhersagedatum."
+  },
+  {
+    "field_path": "showcase.panels[3].body",
+    "before": "Die Monatsansicht markiert jeden Tag, an dem etwas ansteht. Die Jahresansicht bringt zwölf Monate auf einen Bildschirm — der schnellste Weg zu einer freien Woche.",
+    "after": "Vergleichen Sie Termine ausgewählter Kalender im Monat oder Jahr. Öffnen Sie einen Tag und prüfen Sie alle Termine, bevor Sie ihn als frei ansehen."
+  },
+  {
+    "field_path": "features.tiles[1].body",
+    "before": "Tippen Sie eine Stunde in der Wetterzentrale an, und ein neuer Termin öffnet sich, bereits auf diese Zeit gesetzt. Finden Sie das trockene Fenster und belegen Sie es.",
+    "after": "Wählen Sie eine verfügbare Vorhersagestunde, um einen Terminentwurf zu beginnen. Prüfen Sie Datum, Uhrzeit und Kalender vor dem Speichern."
+  },
+  {
+    "field_path": "hero.badge",
+    "before": "Version {v} — geteilte Termine halten sich jetzt selbst aktuell",
+    "after": "Version {v} — Termine und Kalender teilen"
+  },
+  {
+    "field_path": "faq.items[6].a",
+    "before": "Abonnements werden von Apple abgewickelt, Sie kündigen also in Ihren App-Store-Kontoeinstellungen. Tun Sie das mindestens 24 Stunden vor Ende des Zeitraums, dann wird Ihnen nichts mehr berechnet.",
+    "after": "Öffnen Sie auf iPhone oder iPad die Einstellungen, tippen Sie auf Ihren Namen und dann auf „Abonnements“. Wählen Sie Cloud Calendars und kündigen Sie dort. Prüfen Sie den von Apple angezeigten Kündigungs- oder Ablaufstatus."
+  },
+  {
+    "field_path": "pricing.note",
+    "before": "Abonnements verlängern sich automatisch und werden über Ihre Apple-ID abgerechnet. Sie können jederzeit in den App-Store-Kontoeinstellungen kündigen, spätestens 24 Stunden vor Ende des Zeitraums.",
+    "after": "Abonnements verlängern sich automatisch über Ihren Apple Account. Prüfen Sie vor dem Kauf den lokalen Preis und Abrechnungszeitraum. Verwalten Sie die Kündigung in den Einstellungen unter Ihrem Namen → Abonnements."
+  },
+  {
+    "field_path": "features.sourceNotes.twoWay",
+    "before": "Beidseitig",
+    "after": "Verbunden"
+  },
+  {
+    "field_path": "pricing.mostPopular",
+    "before": "Am beliebtesten",
+    "after": "Hervorgehobener Tarif"
+  }
+]

@@ -104,7 +104,7 @@ export const ARTICLES_PL: Readonly<Record<string, LocalisedArticle>> = {
   'weather-inside-your-calendar': {
   "title": "Kalendarz, który ma pogodę już w środku",
   "short": "Pogoda w kalendarzu",
-  "description": "Dlaczego sprawdzanie dwóch aplikacji przy planowaniu dnia jest błędem projektowym i jak wygląda kalendarz, w którym prognoza jest częścią widoku, a nie stoi obok.",
+  "description": "Planuj dzień z wydarzeniami i pogodą w jednym widoku. Sprawdź, jak prognoza uzupełnia kalendarz i jakie są granice jej zasięgu.",
   "lede": "Niemal każdy planuje dzień między dwiema aplikacjami. Kalendarz mówi, gdzie trzeba być; pogodowa mówi, jaka będzie pogoda na miejscu. Trzymanie obu rzeczy w głowie to ta część, której nikt nie zauważa — dopóki nie przepadnie sobota.",
   "commonBelief": "Że kalendarz jest od spotkań, aplikacja pogodowa od pogody, a trzymanie ich osobno to po prostu sposób, w jaki działają telefony.",
   "sections": [

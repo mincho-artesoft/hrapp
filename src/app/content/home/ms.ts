@@ -18,7 +18,7 @@ export const HOME_MS: HomeCopy = {
     language: 'Bahasa',
   },
   hero: {
-    badge: 'Versi {v} — acara yang dikongsi kini mengemas kini dirinya sendiri',
+    badge: "Versi {v} — perkongsian acara dan kalendar",
     title: ['Kalendar anda.', 'Langit anda.', 'Satu paparan.'],
     lead: 'Setiap kalendar yang anda ada — iCloud, Google, Microsoft — di satu tempat, dengan ramalan terbina di dalam hari itu sendiri. Berhenti meneka rupa petang nanti.',
     seeItMove: 'Lihat ia bergerak',
@@ -47,12 +47,12 @@ export const HOME_MS: HomeCopy = {
   showcase: {
     eyebrow: 'Lawatan',
     title: ['Lima cara memandang', 'minggu yang sama.'],
-    lead: 'Acara yang sama, disusun mengikut soalan yang benar-benar anda tanya — dan setiap satu membawa ramalannya.',
+    lead: "Pilih gambaran keseluruhan atau garis masa terperinci, dengan maklumat cuaca yang tersedia pada paparan yang menyokongnya.",
     panels: [
       {
         kicker: 'Paparan hari',
         title: 'Rancangan jam demi jam, berserta langitnya',
-        body: 'Grid jam yang setiap barisnya membawa ramalannya sendiri. Anda nampak mesyuarat pukul tiga dan hujan pukul tiga dalam pandangan yang sama — tiada aplikasi kedua, tiada tekaan.',
+        body: "Bandingkan janji temu dengan ramalan setiap jam yang tersedia dalam grid yang sama. Semak tempat dipilih dan tarikh ramalan apabila merancang aktiviti luar.",
         alt: 'Paparan hari dengan grid jam, acara dan ikon cuaca setiap jam',
         bullets: ['Garis «sekarang» langsung', 'Suhu setiap jam', 'Seret untuk memindahkan'],
       },
@@ -77,7 +77,7 @@ export const HOME_MS: HomeCopy = {
       {
         kicker: 'Bulan dan tahun',
         title: 'Berundur cukup jauh untuk melihat bentuknya',
-        body: 'Paparan bulan menandakan setiap hari yang ada sesuatu. Paparan tahun meletakkan dua belas bulan pada satu skrin — cara terpantas mencari minggu yang lapang.',
+        body: "Bandingkan acara kalendar dipilih sepanjang bulan atau tahun. Buka sesuatu hari untuk menyemak semua janji temunya sebelum menganggapnya lapang.",
         alt: 'Paparan bulan dengan penanda acara pada setiap hari',
         bullets: [
           'Kepadatan sekali pandang',
@@ -144,11 +144,11 @@ tabs: {"hourly":"Setiap jam","daily":"Harian","weekend":"Hujung minggu","range":
     lead: 'Tiga akaun, satu grid dan satu set gerak isyarat yang berkelakuan seperti yang tangan anda jangkakan.',
     unified: {
       title: 'Tiga akaun. Satu grid.',
-      body: 'iCloud, Kalendar Google dan Microsoft Outlook, disegerak dua hala dan dibezakan warna dalam satu paparan. Matikan mana-mana kalendar bila anda tidak mahu melihatnya — selebihnya terus berfungsi.',
+      body: "Lihat kalendar iCloud dan Google yang dipilih bersama-sama; Premium menambah kalendar Microsoft. Sunting mengikut kebenaran akaun dan semak kalendar sumber selepas perubahan.",
     },
     gestures: {
       title: 'Seret ia. Regangkan ia. Selesai.',
-      body: 'Pegang satu acara dan luncurkannya ke waktu lain atau hari lain. Tarik tepi atas atau bawahnya untuk menukar tempohnya. Tiada tetingkap, tiada butang simpan.',
+      body: "Pindahkan acara yang boleh disunting ke waktu atau hari lain, atau ubah tempohnya pada garis masa. Untuk acara berulang, pilih kejadian yang hendak diubah dan semak hasil yang disimpan.",
     },
     tiles: [
       {
@@ -158,7 +158,7 @@ tabs: {"hourly":"Setiap jam","daily":"Harian","weekend":"Hujung minggu","range":
       },
       {
         title: 'Tukar ramalan menjadi rancangan',
-        body: 'Ketik mana-mana jam dalam pusat cuaca dan acara baharu terbuka, sudah ditetapkan pada waktu itu. Cari tingkap kering itu, kemudian tempah.',
+        body: "Pilih jam ramalan yang tersedia untuk memulakan draf acara, kemudian semak tarikh, waktu dan kalendar sebelum menyimpan.",
         badge: 'Satu ketikan',
       },
       {
@@ -169,7 +169,7 @@ tabs: {"hourly":"Setiap jam","daily":"Harian","weekend":"Hujung minggu","range":
     ],
     sourceNotes: {
       builtIn: 'Terbina',
-      twoWay: 'Dua hala',
+      twoWay: "Disambungkan",
       premium: 'Premium',
     },
   },
@@ -181,14 +181,14 @@ tabs: {"hourly":"Setiap jam","daily":"Harian","weekend":"Hujung minggu","range":
     yearly: 'Tahunan',
     saveMore: 'jimat lebih',
     billingPeriod: 'Tempoh pengebilan',
-    mostPopular: 'Paling dipilih',
+    mostPopular: "Pelan pilihan",
     everythingIn: 'Semua dalam {tier}, tambahan:',
     forever: 'selamanya',
     perMonth: '/ bln',
     perYear: '/ thn',
     downloadFree: 'Muat turun percuma',
     startWith: 'Mula dengan {tier}',
-    note: 'Langganan diperbaharui secara automatik dan dibilkan melalui ID Apple anda. Batalkan bila-bila masa dalam tetapan akaun App Store, sekurang-kurangnya 24 jam sebelum tempoh berakhir.',
+    note: "Langganan diperbaharui secara automatik melalui Akaun Apple anda. Semak harga tempatan dan tempoh pengebilan sebelum membeli. Urus pembatalan dalam Seting di bawah nama anda → Langganan.",
     plans: {
       free: {
         name: 'Percuma',
@@ -237,7 +237,7 @@ tabs: {"hourly":"Setiap jam","daily":"Harian","weekend":"Hujung minggu","range":
       },
       {
         q: 'Bolehkah saya mengubah acara dengan menyeretnya?',
-        a: 'Itulah cara utama menyunting. Seret acara ke waktu lain atau hari lain, atau tarik tepi atas mahupun bawahnya untuk menukar tempoh. Perubahan disegerak terus kembali ke kalendar sumber.',
+        a: "Anda boleh memindahkan acara yang boleh disunting dan mengubah tempohnya pada garis masa. Semak pilihan ulangan dan waktu yang disimpan; kemas kini kalendar bersambung bergantung pada kebenaran dan kejayaan penyegerakan.",
       },
       {
         q: 'Apa yang dipaparkan widget?',
@@ -249,7 +249,7 @@ tabs: {"hourly":"Setiap jam","daily":"Harian","weekend":"Hujung minggu","range":
       },
       {
         q: 'Bagaimana saya membatalkan langganan?',
-        a: 'Langganan dikendalikan oleh Apple, jadi anda membatalkannya dalam tetapan akaun App Store. Lakukan sekurang-kurangnya 24 jam sebelum tempoh berakhir dan anda tidak akan dicaj lagi.',
+        a: "Pada iPhone atau iPad, buka Seting, ketik nama anda, kemudian Langganan. Pilih Cloud Calendars dan batalkan di situ; semak status pembatalan atau tamat tempoh yang dipaparkan Apple.",
       },
     ],
   },

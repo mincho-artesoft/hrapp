@@ -18,7 +18,7 @@ export const HOME_RO: HomeCopy = {
     language: 'Limbă',
   },
   hero: {
-    badge: 'Versiunea {v} — evenimentele partajate se actualizează acum singure',
+    badge: "Versiunea {v} — partajare de evenimente și calendare",
     title: ['Calendarul dumneavoastră.', 'Cerul dumneavoastră.', 'O singură vedere.'],
     lead: 'Fiecare calendar pe care îl aveți — iCloud, Google, Microsoft — într-un singur loc, cu prognoza construită în ziua însăși. Nu mai ghiciți cum arată după-amiaza.',
     seeItMove: 'Vedeți-l în mișcare',
@@ -47,12 +47,12 @@ export const HOME_RO: HomeCopy = {
   showcase: {
     eyebrow: 'Turul',
     title: ['Cinci feluri de a privi', 'aceeași săptămână.'],
-    lead: 'Aceleași evenimente, așezate după întrebarea pe care o puneți de fapt — și fiecare își poartă prognoza.',
+    lead: "Alegeți o imagine de ansamblu sau o cronologie detaliată, cu prognoza disponibilă în vederile compatibile.",
     panels: [
       {
         kicker: 'Vederea zilnică',
         title: 'Planul oră cu oră, cu cerul lângă el',
-        body: 'O grilă orară în care fiecare rând își poartă propria prognoză. Vedeți ședința de la trei și ploaia de la trei în aceeași privire — fără a doua aplicație, fără ghiceli.',
+        body: "Comparați întâlnirile cu prognoza orară disponibilă în aceeași grilă. Verificați locul selectat și data prognozei pentru planurile în aer liber.",
         alt: 'Vedere zilnică cu grilă orară, evenimente și pictograme meteo pentru fiecare oră',
         bullets: ['Linie „acum” live', 'Temperatură orară', 'Trageți pentru a muta'],
       },
@@ -73,7 +73,7 @@ export const HOME_RO: HomeCopy = {
       {
         kicker: 'Lună și an',
         title: 'Îndepărtați-vă destul cât să vedeți forma lucrurilor',
-        body: 'Vederea lunară marchează fiecare zi în care există ceva. Vederea anuală pune douăsprezece luni pe un ecran — cel mai rapid mod de a găsi o săptămână liberă.',
+        body: "Comparați evenimentele calendarelor selectate pe lună sau an. Deschideți o zi și verificați toate întâlnirile înainte să o considerați liberă.",
         alt: 'Vedere lunară cu indicatori de eveniment pe fiecare zi',
         bullets: ['Densitatea dintr-o privire', 'Douăsprezece luni deodată', 'Sar la orice dată'],
       },
@@ -136,11 +136,11 @@ tabs: {"hourly":"Pe ore","daily":"Pe zile","weekend":"Weekend","range":"Interval
     lead: 'Trei conturi, o grilă și un set de gesturi care se comportă așa cum se așteaptă mâinile dumneavoastră.',
     unified: {
       title: 'Trei conturi. O grilă.',
-      body: 'iCloud, Google Calendar și Microsoft Outlook, sincronizate în ambele sensuri și diferențiate prin culoare într-o singură vedere. Opriți orice calendar când nu vreți să-l vedeți — restul continuă să meargă.',
+      body: "Vedeți împreună calendarele iCloud și Google selectate; Premium adaugă calendare Microsoft. Editați unde permisiunile contului permit și verificați calendarul-sursă după modificări.",
     },
     gestures: {
       title: 'Trageți-l. Întindeți-l. Gata.',
-      body: 'Prindeți un eveniment și glisați-l la altă oră sau în altă zi. Trageți de marginea de sus sau de jos ca să schimbați cât durează. Fără fereastră, fără buton de salvare.',
+      body: "Mutați evenimente editabile la altă oră sau dată ori ajustați durata în cronologie. Pentru un eveniment repetat, alegeți aparițiile de modificat și verificați rezultatul salvat.",
     },
     tiles: [
       {
@@ -150,7 +150,7 @@ tabs: {"hourly":"Pe ore","daily":"Pe zile","weekend":"Weekend","range":"Interval
       },
       {
         title: 'Transformați o prognoză într-un plan',
-        body: 'Atingeți orice oră din centrul meteo și se deschide un eveniment nou, deja fixat la ora aceea. Găsiți fereastra uscată și ocupați-o.',
+        body: "Alegeți o oră cu prognoză disponibilă pentru a începe o schiță de eveniment, apoi verificați data, ora și calendarul înainte de salvare.",
         badge: 'O atingere',
       },
       {
@@ -161,7 +161,7 @@ tabs: {"hourly":"Pe ore","daily":"Pe zile","weekend":"Weekend","range":"Interval
     ],
     sourceNotes: {
       builtIn: 'Integrat',
-      twoWay: 'În ambele sensuri',
+      twoWay: "Conectat",
       premium: 'Premium',
     },
   },
@@ -173,14 +173,14 @@ tabs: {"hourly":"Pe ore","daily":"Pe zile","weekend":"Weekend","range":"Interval
     yearly: 'Anual',
     saveMore: 'economisiți mai mult',
     billingPeriod: 'Perioadă de facturare',
-    mostPopular: 'Cel mai ales',
+    mostPopular: "Plan evidențiat",
     everythingIn: 'Tot ce e în {tier}, plus:',
     forever: 'pentru totdeauna',
     perMonth: '/ lună',
     perYear: '/ an',
     downloadFree: 'Descarcă gratuit',
     startWith: 'Începeți cu {tier}',
-    note: 'Abonamentele se reînnoiesc automat și sunt facturate prin Apple ID-ul dumneavoastră. Anulați oricând din setările contului App Store, cu cel puțin 24 de ore înainte de sfârșitul perioadei.',
+    note: "Abonamentele se reînnoiesc automat prin contul Apple. Verificați prețul local și perioada de facturare înainte de cumpărare. Gestionați anularea din Configurări, numele dumneavoastră, Abonamente.",
     plans: {
       free: {
         name: 'Gratuit',
@@ -229,7 +229,7 @@ tabs: {"hourly":"Pe ore","daily":"Pe zile","weekend":"Weekend","range":"Interval
       },
       {
         q: 'Pot schimba un eveniment trăgându-l?',
-        a: 'Este modul principal de a edita. Trageți un eveniment la altă oră sau în altă zi, ori trageți de marginea de sus sau de jos ca să-i schimbați durata. Modificările se sincronizează direct înapoi în calendarul-sursă.',
+        a: "Puteți muta evenimente editabile și ajusta durata în cronologie. Verificați domeniul repetării și ora salvată; actualizările calendarelor conectate depind de permisiuni și de reușita sincronizării.",
       },
       {
         q: 'Ce arată widgeturile?',
@@ -241,7 +241,7 @@ tabs: {"hourly":"Pe ore","daily":"Pe zile","weekend":"Weekend","range":"Interval
       },
       {
         q: 'Cum anulez un abonament?',
-        a: 'Abonamentele sunt gestionate de Apple, deci le anulați din setările contului App Store. Faceți-o cu cel puțin 24 de ore înainte de sfârșitul perioadei și nu veți mai fi taxat.',
+        a: "Pe iPhone sau iPad, deschideți Configurări, atingeți numele dumneavoastră, apoi Abonamente. Selectați Cloud Calendars și anulați; verificați starea anulării sau expirării afișată de Apple.",
       },
     ],
   },

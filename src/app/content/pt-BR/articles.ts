@@ -100,7 +100,7 @@ export const ARTICLES_PT_BR: Readonly<Record<string, LocalisedArticle>> = {
   'weather-inside-your-calendar': {
   "title": "Uma agenda que já traz a previsão dentro",
   "short": "A previsão dentro da agenda",
-  "description": "Por que consultar dois aplicativos para organizar um dia é uma falha de projeto, e como é uma agenda em que a previsão faz parte da vista em vez de ficar ao lado.",
+  "description": "Planeje o dia com compromissos e clima na mesma visualização. Entenda como a previsão disponível entra na agenda e quais períodos ela cobre.",
   "lede": "Quase todo mundo organiza o dia entre dois aplicativos. A agenda diz onde é preciso estar; o de previsão diz que tempo fará na hora. Segurar as duas coisas na cabeça é a parte que ninguém percebe que faz, até um sábado se perder.",
   "commonBelief": "Que agenda serve para compromissos e aplicativo de previsão serve para o tempo, e que mantê-los separados é simplesmente como os telefones funcionam.",
   "sections": [
@@ -136,7 +136,7 @@ export const ARTICLES_PT_BR: Readonly<Record<string, LocalisedArticle>> = {
     title: 'iCloud, Google e Outlook em uma só vista',
     short: 'Três contas, uma vista',
     description:
-      'A vida de quase todo mundo está repartida entre uma agenda pessoal da Apple, uma conta do Google e um Exchange do trabalho. O que muda ao colocá-los na mesma grade.',
+      "Veja como reunir agendas da Apple, do Google e do trabalho em uma visualização ajuda a comparar compromissos e identificar conflitos de horário.",
     lede: 'O problema quase nunca é que alguma dessas agendas seja ruim. É que você tem três e uma só semana.',
     commonBelief:
       'Que manter trabalho e vida pessoal em aplicativos separados é uma fronteira, e não um defeito.',

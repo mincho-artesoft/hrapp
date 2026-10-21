@@ -1,0 +1,127 @@
+{
+  "date": "2026-10-22",
+  "scope": "120 proposed homepage string replacements across ten requested locales; source files not edited.",
+  "semanticSource": "research/batch15-home-claim-audit.json",
+  "semanticSourceScope": "Ten issues with requested literal paths, plus neutral Connected source badge and Featured plan label; no popularity claim retained.",
+  "method": "Own-language model localization; no paid API and no native-speaker certification. Each current exact before value inspected and revalidated using parsed source literals.",
+  "checks": [
+    "All ten locale arrays have exactly twelve unique {field_path,before,after} rows.",
+    "Every before matches the current locale source field exactly.",
+    "All placeholders including {v} preserved.",
+    "No price fields or numerical price values edited. Pricing note adds local price and billing-period check.",
+    "Permissions and successful synchronization qualify provider updates.",
+    "Weather is limited to available data and supported views; forecast selection starts a draft, not a saved booking.",
+    "Recurring edit scope and saved result require review. Selected-calendar overview is not proof a day is free.",
+    "Cancellation directs to Settings, account name, Subscriptions and status verification; no future-charge guarantee."
+  ],
+  "notPerformed": [
+    "Source integration",
+    "Build",
+    "Deployment",
+    "Native changes",
+    "Runtime verification",
+    "Paid API calls"
+  ],
+  "files": [
+    {
+      "locale": "hi",
+      "file": "research/batch15-home-localizations/hi.json",
+      "source": "src/app/content/home/hi.ts",
+      "sourceSha256": "966c647b781b1d2e13714b2488838db8dc32659a7a43b4c2d0f23fb2ceaa5fed",
+      "outputSha256": "b05bd4cdb1aa710ceffcd93987bd6212124ecb1c52d6e590d6f88c9979ac878d",
+      "fields": 12,
+      "exactBeforeValuesVerified": true,
+      "placeholdersPreserved": true
+    },
+    {
+      "locale": "hu",
+      "file": "research/batch15-home-localizations/hu.json",
+      "source": "src/app/content/home/hu.ts",
+      "sourceSha256": "0ada30b4678b4bf7930d920e7e50dfaa83d91e655442f21400eb95380f1fb36e",
+      "outputSha256": "a0f0e49b97f6fb3316509e5dac2428bb899c713d63025900426b0a933ed95795",
+      "fields": 12,
+      "exactBeforeValuesVerified": true,
+      "placeholdersPreserved": true
+    },
+    {
+      "locale": "id",
+      "file": "research/batch15-home-localizations/id.json",
+      "source": "src/app/content/home/id.ts",
+      "sourceSha256": "3c25c09b1c7c144794bb507a3a989c1954b45e40f325f4808df122c2edb61c0c",
+      "outputSha256": "661873e5b95fca98b224e49997e76defa568b9bb18b60adc2be4d4a89873dcca",
+      "fields": 12,
+      "exactBeforeValuesVerified": true,
+      "placeholdersPreserved": true
+    },
+    {
+      "locale": "it",
+      "file": "research/batch15-home-localizations/it.json",
+      "source": "src/app/content/home/it.ts",
+      "sourceSha256": "8c578eb30cb0e24ab8ed8134e930388284fdea9237d2d5e667ecfe6e0c08c312",
+      "outputSha256": "9905f960f11d81c9793d85ac235460688ce3bc257f6f6f096a712b47c4a0715e",
+      "fields": 12,
+      "exactBeforeValuesVerified": true,
+      "placeholdersPreserved": true
+    },
+    {
+      "locale": "ja",
+      "file": "research/batch15-home-localizations/ja.json",
+      "source": "src/app/content/home/ja.ts",
+      "sourceSha256": "067b4156b3b02233c24c447baeaab3de66c40250c9d8bcca1e0c8192506dd9ac",
+      "outputSha256": "8ae496c3a728e900587ccae0f29f321b4e3c4aaedf5ec7ad5fddfbceed7cfaa4",
+      "fields": 12,
+      "exactBeforeValuesVerified": true,
+      "placeholdersPreserved": true
+    },
+    {
+      "locale": "ko",
+      "file": "research/batch15-home-localizations/ko.json",
+      "source": "src/app/content/home/ko.ts",
+      "sourceSha256": "0c384566a0c00646ae991b22a0da2abe0072a730cedbb9b65baa25205af7c690",
+      "outputSha256": "8c32e37233dbbaaf50c9470d9e5010e5d7a24a3fb097c1f994761a07616de8b7",
+      "fields": 12,
+      "exactBeforeValuesVerified": true,
+      "placeholdersPreserved": true
+    },
+    {
+      "locale": "ms",
+      "file": "research/batch15-home-localizations/ms.json",
+      "source": "src/app/content/home/ms.ts",
+      "sourceSha256": "c9eb55e621d86bab6179f1c3a5b040a5ad7fc7b086f47454b3c39fbef375571c",
+      "outputSha256": "a1d30d75e228a06128a0eae1595d4db8f61f2eaf3e9184b038dc11c45a2c2469",
+      "fields": 12,
+      "exactBeforeValuesVerified": true,
+      "placeholdersPreserved": true
+    },
+    {
+      "locale": "nl-NL",
+      "file": "research/batch15-home-localizations/nl-NL.json",
+      "source": "src/app/content/home/nl-NL.ts",
+      "sourceSha256": "7dda0f62fb97bbfa21ddf2c4dc27798702ab6beb5e59f674785c42355e9bf09f",
+      "outputSha256": "62335c4482649b956a70214988630748a33f4547d2aa69bbe652c0e1a51abe40",
+      "fields": 12,
+      "exactBeforeValuesVerified": true,
+      "placeholdersPreserved": true
+    },
+    {
+      "locale": "no",
+      "file": "research/batch15-home-localizations/no.json",
+      "source": "src/app/content/home/no.ts",
+      "sourceSha256": "1969d2bf1fc7d0e4e5410d5a7d1a90f21c47b6a1c1bb7afa352b8719a031ea5c",
+      "outputSha256": "50275451487692a10e38faeb0eb2d8e598ac7568de5359bba1676bc33862538f",
+      "fields": 12,
+      "exactBeforeValuesVerified": true,
+      "placeholdersPreserved": true
+    },
+    {
+      "locale": "pl",
+      "file": "research/batch15-home-localizations/pl.json",
+      "source": "src/app/content/home/pl.ts",
+      "sourceSha256": "35f9ca07cd329353748d0c7652ef654fd7cc59c1be28d4fcd0dd52a5cee5ed6c",
+      "outputSha256": "48e25fb39f41decbd680f28300ae63c14ef724348143c182c1efcd2fa4b12b4c",
+      "fields": 12,
+      "exactBeforeValuesVerified": true,
+      "placeholdersPreserved": true
+    }
+  ]
+}

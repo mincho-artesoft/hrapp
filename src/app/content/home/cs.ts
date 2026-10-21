@@ -18,7 +18,7 @@ export const HOME_CS: HomeCopy = {
     language: 'Jazyk',
   },
   hero: {
-    badge: 'Verze {v} — sdílené události se teď udržují aktuální samy',
+    badge: "Verze {v} — sdílení událostí a kalendářů",
     title: ['Váš kalendář.', 'Vaše obloha.', 'Jeden pohled.'],
     lead: 'Každý kalendář, který máte — iCloud, Google, Microsoft — na jednom místě, s předpovědí uvnitř samotného dne. Přestaňte hádat, jak bude odpoledne vypadat.',
     seeItMove: 'Podívat se v pohybu',
@@ -47,12 +47,12 @@ export const HOME_CS: HomeCopy = {
   showcase: {
     eyebrow: 'Prohlídka',
     title: ['Pět způsobů, jak se dívat', 'na týž týden.'],
-    lead: 'Tytéž události, uspořádané podle otázky, kterou si opravdu kladete — a každá nese svou předpověď.',
+    lead: "Vyberte přehled nebo podrobnou časovou osu s dostupným počasím v podporovaných zobrazeních.",
     panels: [
       {
         kicker: 'Denní pohled',
         title: 'Plán hodinu po hodině, s oblohou v ceně',
-        body: 'Hodinová mřížka, v níž každý řádek nese vlastní předpověď. Schůzku ve tři a déšť ve tři vidíte jedním pohledem — žádná druhá aplikace, žádné hádání.',
+        body: "Porovnejte schůzky s dostupnou hodinovou předpovědí ve stejné mřížce. Při venkovním plánování ověřte vybrané místo a datum předpovědi.",
         alt: 'Denní pohled s hodinovou mřížkou, událostmi a ikonami počasí u každé hodiny',
         bullets: ['Živá linka „teď“', 'Teplota po hodinách', 'Přetažením přesunete'],
       },
@@ -73,7 +73,7 @@ export const HOME_CS: HomeCopy = {
       {
         kicker: 'Měsíc a rok',
         title: 'Odstupte dost daleko, abyste viděli tvar věcí',
-        body: 'Měsíční pohled označí každý den, v němž něco je. Roční položí dvanáct měsíců na jednu obrazovku — nejrychlejší způsob, jak najít volný týden.',
+        body: "Porovnejte události vybraných kalendářů v měsíci či roce. Otevřete den a prohlédněte všechny jeho schůzky, než jej označíte za volný.",
         alt: 'Měsíční pohled se značkami událostí u každého dne',
         bullets: ['Hustota na první pohled', 'Dvanáct měsíců naráz', 'Skok na libovolné datum'],
       },
@@ -136,11 +136,11 @@ tabs: {"hourly":"Po hodinách","daily":"Po dnech","weekend":"Víkend","range":"O
     lead: 'Tři účty, jedna mřížka a sada gest, která se chovají tak, jak vaše ruce čekají.',
     unified: {
       title: 'Tři účty. Jedna mřížka.',
-      body: 'iCloud, Kalendář Google a Microsoft Outlook, synchronizované oběma směry a barevně odlišené v jednom pohledu. Vypněte kterýkoli kalendář, když ho nechcete vidět — zbytek běží dál.',
+      body: "Zobrazte vybrané kalendáře iCloud a Google společně; Premium přidává kalendáře Microsoft. Upravujte tam, kde to oprávnění účtu dovolují, a po změnách ověřte zdrojový kalendář.",
     },
     gestures: {
       title: 'Přetáhněte. Natáhněte. Hotovo.',
-      body: 'Chyťte událost a posuňte ji na jiný čas nebo jiný den. Zatáhněte za horní nebo dolní okraj a změňte, jak dlouho trvá. Žádné okno, žádné tlačítko uložit.',
+      body: "Přesuňte upravitelné události na jiný čas či den nebo změňte jejich délku na časové ose. U opakované události vyberte výskyty, které chcete změnit, a ověřte uložený výsledek.",
     },
     tiles: [
       {
@@ -150,7 +150,7 @@ tabs: {"hourly":"Po hodinách","daily":"Po dnech","weekend":"Víkend","range":"O
       },
       {
         title: 'Proměňte předpověď v plán',
-        body: 'Klepněte na kteroukoli hodinu v centru počasí a otevře se nová událost, už nastavená na tento čas. Najděte suché okno a zabraňte ho.',
+        body: "Vyberte hodinu s dostupnou předpovědí a začněte koncept události. Před uložením ověřte datum, čas a kalendář.",
         badge: 'Jedno klepnutí',
       },
       {
@@ -161,7 +161,7 @@ tabs: {"hourly":"Po hodinách","daily":"Po dnech","weekend":"Víkend","range":"O
     ],
     sourceNotes: {
       builtIn: 'Vestavěné',
-      twoWay: 'Oběma směry',
+      twoWay: "Připojeno",
       premium: 'Premium',
     },
   },
@@ -173,14 +173,14 @@ tabs: {"hourly":"Po hodinách","daily":"Po dnech","weekend":"Víkend","range":"O
     yearly: 'Ročně',
     saveMore: 'ušetříte víc',
     billingPeriod: 'Zúčtovací období',
-    mostPopular: 'Nejčastější volba',
+    mostPopular: "Vybraný tarif",
     everythingIn: 'Vše z {tier}, a navíc:',
     forever: 'navždy',
     perMonth: '/ měs.',
     perYear: '/ rok',
     downloadFree: 'Stáhnout zdarma',
     startWith: 'Začít s {tier}',
-    note: 'Předplatné se automaticky obnovuje a účtuje přes vaše Apple ID. Zrušte kdykoli v nastavení účtu App Store, nejpozději 24 hodin před koncem období.',
+    note: "Předplatné se automaticky obnovuje přes váš účet Apple. Před nákupem ověřte místní cenu a zúčtovací období. Zrušení spravujte v Nastavení pod svým jménem → Předplatná.",
     plans: {
       free: {
         name: 'Zdarma',
@@ -229,7 +229,7 @@ tabs: {"hourly":"Po hodinách","daily":"Po dnech","weekend":"Víkend","range":"O
       },
       {
         q: 'Můžu změnit událost přetažením?',
-        a: 'To je hlavní způsob úprav. Přetáhněte událost na jiný čas nebo jiný den, případně zatáhněte za její horní či dolní okraj a změňte délku. Změny se hned promítnou zpět do zdrojového kalendáře.',
+        a: "Upravitelné události můžete přesouvat a měnit jejich délku na časové ose. Ověřte volbu opakování a uložený čas; aktualizace připojených kalendářů závisí na oprávněních a úspěšné synchronizaci.",
       },
       {
         q: 'Co widgety ukazují?',
@@ -241,7 +241,7 @@ tabs: {"hourly":"Po hodinách","daily":"Po dnech","weekend":"Víkend","range":"O
       },
       {
         q: 'Jak zruším předplatné?',
-        a: 'Předplatné spravuje Apple, takže se ruší v nastavení účtu App Store. Udělejte to nejpozději 24 hodin před koncem období a už vám nic nebude účtováno.',
+        a: "Na iPhonu či iPadu otevřete Nastavení, klepněte na své jméno a potom na Předplatná. Vyberte Cloud Calendars a předplatné tam zrušte; ověřte stav zrušení či vypršení zobrazený Applem.",
       },
     ],
   },

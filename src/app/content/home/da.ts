@@ -18,7 +18,7 @@ export const HOME_DA: HomeCopy = {
     language: 'Sprog',
   },
   hero: {
-    badge: 'Version {v} — delte begivenheder holder sig nu selv opdaterede',
+    badge: "Version {v} — deling af begivenheder og kalendere",
     title: ['Din kalender.', 'Din himmel.', 'Én visning.'],
     lead: 'Hver eneste kalender, du har — iCloud, Google, Microsoft — ét sted, med udsigten bygget ind i selve dagen. Hold op med at gætte, hvordan eftermiddagen ser ud.',
     seeItMove: 'Se det i bevægelse',
@@ -47,12 +47,12 @@ export const HOME_DA: HomeCopy = {
   showcase: {
     eyebrow: 'Rundvisningen',
     title: ['Fem måder at se', 'den samme uge på.'],
-    lead: 'De samme begivenheder, ordnet efter det spørgsmål, du faktisk stiller — og hver af dem bærer sin udsigt.',
+    lead: "Vælg en oversigt eller en detaljeret tidslinje med tilgængeligt vejr i de understøttede visninger.",
     panels: [
       {
         kicker: 'Dagsvisning',
         title: 'Planen time for time, med himlen på',
-        body: 'Et timegitter, hvor hver række bærer sin egen udsigt. Du ser mødet klokken tre og regnen klokken tre i samme øjekast — ingen anden app, ingen gætterier.',
+        body: "Sammenlign aftaler med tilgængeligt timevejr i samme gitter. Kontrollér det valgte sted og prognosedatoen, når du planlægger udendørs.",
         alt: 'Dagsvisning med timegitter, begivenheder og vejrikoner for hver time',
         bullets: ['Levende “nu”-linje', 'Temperatur time for time', 'Træk for at flytte'],
       },
@@ -73,7 +73,7 @@ export const HOME_DA: HomeCopy = {
       {
         kicker: 'Måned og år',
         title: 'Træd langt nok tilbage til at se formen på tingene',
-        body: 'Månedsvisningen markerer hver dag, hvor der er noget. Årsvisningen sætter tolv måneder på én skærm — den hurtigste måde at finde en fri uge.',
+        body: "Sammenlign begivenheder fra valgte kalendere over måneden eller året. Åbn en dag, og gennemgå alle aftaler, før du vurderer den som ledig.",
         alt: 'Månedsvisning med begivenhedsmarkeringer på hver dag',
         bullets: ['Tæthed på ét blik', 'Tolv måneder på én gang', 'Spring til enhver dato'],
       },
@@ -136,11 +136,11 @@ tabs: {"hourly":"Timevis","daily":"Dagligt","weekend":"Weekend","range":"Prognos
     lead: 'Tre konti, ét gitter og et sæt bevægelser, der opfører sig, som dine hænder forventer.',
     unified: {
       title: 'Tre konti. Ét gitter.',
-      body: 'iCloud, Google Kalender og Microsoft Outlook, synkroniseret begge veje og farvekodet i én visning. Slå en kalender fra, når du ikke vil se den — resten kører videre.',
+      body: "Se valgte iCloud- og Google-kalendere samlet; Premium tilføjer Microsoft-kalendere. Redigér, hvor kontotilladelserne tillader det, og kontrollér kildekalenderen efter ændringer.",
     },
     gestures: {
       title: 'Træk den. Stræk den. Færdig.',
-      body: 'Tag fat i en begivenhed, og skub den til et andet tidspunkt eller en anden dag. Træk i dens øverste eller nederste kant for at ændre, hvor længe den varer. Ingen dialog, ingen gem-knap.',
+      body: "Flyt redigerbare begivenheder til et andet tidspunkt eller en anden dag, eller ændr varigheden på tidslinjen. Vælg ved gentagne begivenheder, hvilke forekomster der skal ændres, og kontrollér det gemte resultat.",
     },
     tiles: [
       {
@@ -150,7 +150,7 @@ tabs: {"hourly":"Timevis","daily":"Dagligt","weekend":"Weekend","range":"Prognos
       },
       {
         title: 'Lav en udsigt om til en plan',
-        body: 'Tryk på en hvilken som helst time i vejrcentret, og en ny begivenhed åbner, allerede sat til det tidspunkt. Find det tørre vindue, og book det.',
+        body: "Vælg en time med tilgængelig vejrudsigt for at starte en begivenhedskladde, og kontrollér dato, tid og kalender før lagring.",
         badge: 'Ét tryk',
       },
       {
@@ -161,7 +161,7 @@ tabs: {"hourly":"Timevis","daily":"Dagligt","weekend":"Weekend","range":"Prognos
     ],
     sourceNotes: {
       builtIn: 'Indbygget',
-      twoWay: 'Begge veje',
+      twoWay: "Tilsluttet",
       premium: 'Premium',
     },
   },
@@ -173,14 +173,14 @@ tabs: {"hourly":"Timevis","daily":"Dagligt","weekend":"Weekend","range":"Prognos
     yearly: 'Årligt',
     saveMore: 'spar mere',
     billingPeriod: 'Faktureringsperiode',
-    mostPopular: 'Mest valgte',
+    mostPopular: "Fremhævet abonnement",
     everythingIn: 'Alt i {tier}, plus:',
     forever: 'for altid',
     perMonth: '/ md.',
     perYear: '/ år',
     downloadFree: 'Hent gratis',
     startWith: 'Start med {tier}',
-    note: 'Abonnementer fornyes automatisk og opkræves via dit Apple-id. Opsig når som helst i indstillingerne for din App Store-konto, senest 24 timer før perioden slutter.',
+    note: "Abonnementer fornyes automatisk via din Apple-konto. Kontrollér den lokale pris og faktureringsperiode før køb. Administrér opsigelse i Indstillinger under dit navn → Abonnementer.",
     plans: {
       free: {
         name: 'Gratis',
@@ -229,7 +229,7 @@ tabs: {"hourly":"Timevis","daily":"Dagligt","weekend":"Weekend","range":"Prognos
       },
       {
         q: 'Kan jeg ændre en begivenhed ved at trække i den?',
-        a: 'Det er den primære måde at redigere på. Træk en begivenhed til et andet tidspunkt eller en anden dag, eller træk i dens øverste eller nederste kant for at ændre varigheden. Ændringerne synkroniseres direkte tilbage til kildekalenderen.',
+        a: "Du kan flytte redigerbare begivenheder og ændre deres varighed på tidslinjen. Kontrollér gentagelsesvalget og det gemte tidspunkt; opdateringer af tilsluttede kalendere afhænger af tilladelser og vellykket synkronisering.",
       },
       {
         q: 'Hvad viser widgets?',
@@ -241,7 +241,7 @@ tabs: {"hourly":"Timevis","daily":"Dagligt","weekend":"Weekend","range":"Prognos
       },
       {
         q: 'Hvordan opsiger jeg et abonnement?',
-        a: 'Abonnementer håndteres af Apple, så du opsiger i indstillingerne for din App Store-konto. Gør det senest 24 timer før perioden slutter, så bliver du ikke opkrævet igen.',
+        a: "Åbn Indstillinger på iPhone eller iPad, tryk på dit navn og derefter Abonnementer. Vælg Cloud Calendars, og opsig dér; kontrollér den opsigelses- eller udløbsstatus, Apple viser.",
       },
     ],
   },

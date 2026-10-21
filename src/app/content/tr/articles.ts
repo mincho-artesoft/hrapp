@@ -100,7 +100,7 @@ export const ARTICLES_TR: Readonly<Record<string, LocalisedArticle>> = {
   'weather-inside-your-calendar': {
   "title": "Havayı zaten içinde taşıyan bir takvim",
   "short": "Takvimin içindeki hava",
-  "description": "Bir günü planlamak için iki uygulamaya bakmanın neden bir tasarım hatası olduğu ve tahminin yanda durmak yerine görünümün parçası olduğu bir takvimin nasıl göründüğü.",
+  "description": "Etkinlikleri ve hava durumunu aynı görünümde planlayın. Mevcut tahminin takvime nasıl eklendiğini ve hangi dönemleri kapsadığını öğrenin.",
   "lede": "Neredeyse herkes gününü iki uygulama arasında planlar. Takvim nerede olunacağını söyler; hava uygulaması varıldığında havanın nasıl olacağını. İkisini kafada bir arada tutmak, kimsenin yaptığını fark etmediği kısımdır — ta ki bir cumartesi boşa gidene kadar.",
   "commonBelief": "Takvimin randevular, hava uygulamasının hava için olduğu ve ikisini ayrı tutmanın telefonların çalışma biçimi olduğu.",
   "sections": [

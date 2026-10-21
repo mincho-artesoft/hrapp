@@ -1,0 +1,62 @@
+[
+  {
+    "field_path": "features.unified.body",
+    "before": "iCloud, Google Kalender, dan Microsoft Outlook, tersinkron dua arah dan dibedakan warna dalam satu tampilan. Matikan kalender mana pun ketika tak ingin melihatnya — sisanya tetap bekerja.",
+    "after": "Lihat kalender iCloud dan Google yang dipilih bersama-sama; Premium menambahkan kalender Microsoft. Edit sesuai izin akun, lalu periksa kalender sumber setelah perubahan."
+  },
+  {
+    "field_path": "features.gestures.body",
+    "before": "Genggam sebuah acara dan geser ke waktu lain atau hari lain. Tarik tepi atas atau bawahnya untuk mengubah durasinya. Tanpa jendela, tanpa tombol simpan.",
+    "after": "Pindahkan acara yang dapat diedit ke waktu atau hari lain, atau ubah durasinya di linimasa. Untuk acara berulang, pilih kejadian yang ingin diubah dan periksa hasil yang tersimpan."
+  },
+  {
+    "field_path": "faq.items[3].a",
+    "before": "Itulah cara utama menyunting. Seret acara ke waktu lain atau hari lain, atau tarik tepi atas maupun bawahnya untuk mengubah durasi. Perubahan langsung tersinkron kembali ke kalender sumbernya.",
+    "after": "Anda dapat memindahkan acara yang dapat diedit dan mengubah durasinya di linimasa. Periksa pilihan pengulangan dan waktu yang tersimpan; pembaruan kalender terhubung bergantung pada izin dan keberhasilan sinkronisasi."
+  },
+  {
+    "field_path": "showcase.lead",
+    "before": "Acara yang sama, disusun menurut pertanyaan yang sebenarnya Anda ajukan — dan masing-masing membawa prakiraannya.",
+    "after": "Pilih ringkasan atau linimasa terperinci, dengan informasi cuaca yang tersedia pada tampilan yang mendukungnya."
+  },
+  {
+    "field_path": "showcase.panels[0].body",
+    "before": "Kisi jam yang setiap barisnya membawa prakiraannya sendiri. Anda melihat rapat pukul tiga dan hujan pukul tiga dalam satu pandangan — tanpa aplikasi kedua, tanpa menebak.",
+    "after": "Bandingkan janji dengan prakiraan per jam yang tersedia dalam kisi yang sama. Periksa lokasi pilihan dan tanggal prakiraan saat merencanakan kegiatan luar ruangan."
+  },
+  {
+    "field_path": "showcase.panels[3].body",
+    "before": "Tampilan bulan menandai setiap hari yang ada isinya. Tampilan tahun menaruh dua belas bulan dalam satu layar — cara tercepat menemukan pekan yang kosong.",
+    "after": "Bandingkan acara kalender pilihan sepanjang bulan atau tahun. Buka suatu hari untuk memeriksa seluruh janji sebelum menganggapnya kosong."
+  },
+  {
+    "field_path": "features.tiles[1].body",
+    "before": "Ketuk jam mana pun di pusat cuaca dan acara baru terbuka, sudah disetel ke jam itu. Temukan jendela keringnya, lalu pesan.",
+    "after": "Pilih jam prakiraan yang tersedia untuk memulai draf acara, lalu periksa tanggal, waktu, dan kalender sebelum menyimpan."
+  },
+  {
+    "field_path": "hero.badge",
+    "before": "Versi {v} — acara yang dibagikan kini memperbarui dirinya sendiri",
+    "after": "Versi {v} — berbagi acara dan kalender"
+  },
+  {
+    "field_path": "faq.items[6].a",
+    "before": "Langganan ditangani Apple, jadi Anda membatalkannya di pengaturan akun App Store. Lakukan paling lambat 24 jam sebelum periode berakhir dan Anda tidak akan ditagih lagi.",
+    "after": "Di iPhone atau iPad, buka Pengaturan, ketuk nama Anda, lalu Langganan. Pilih Cloud Calendars dan batalkan di sana; periksa status pembatalan atau kedaluwarsa yang ditampilkan Apple."
+  },
+  {
+    "field_path": "pricing.note",
+    "before": "Langganan diperpanjang otomatis dan ditagihkan lewat ID Apple Anda. Batalkan kapan saja di pengaturan akun App Store, paling lambat 24 jam sebelum periode berakhir.",
+    "after": "Langganan diperpanjang otomatis melalui Akun Apple Anda. Periksa harga setempat dan periode penagihan sebelum membeli. Kelola pembatalan di Pengaturan, di bawah nama Anda → Langganan."
+  },
+  {
+    "field_path": "features.sourceNotes.twoWay",
+    "before": "Dua arah",
+    "after": "Terhubung"
+  },
+  {
+    "field_path": "pricing.mostPopular",
+    "before": "Paling banyak dipilih",
+    "after": "Paket unggulan"
+  }
+]

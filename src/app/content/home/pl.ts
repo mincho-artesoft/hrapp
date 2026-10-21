@@ -18,7 +18,7 @@ export const HOME_PL: HomeCopy = {
     language: 'Język',
   },
   hero: {
-    badge: 'Wersja {v} — udostępnione wydarzenia same się teraz aktualizują',
+    badge: "Wersja {v} — udostępnianie wydarzeń i kalendarzy",
     title: ['Twój kalendarz.', 'Twoje niebo.', 'Jeden widok.'],
     lead: 'Każdy kalendarz, który masz — iCloud, Google, Microsoft — w jednym miejscu, z prognozą wbudowaną w sam dzień. Koniec ze zgadywaniem, jak wygląda popołudnie.',
     seeItMove: 'Zobacz w ruchu',
@@ -47,12 +47,12 @@ export const HOME_PL: HomeCopy = {
   showcase: {
     eyebrow: 'Przewodnik',
     title: ['Pięć sposobów patrzenia', 'na ten sam tydzień.'],
-    lead: 'Te same wydarzenia, ułożone pod pytanie, które naprawdę zadajesz — i każde z prognozą przy sobie.',
+    lead: "Wybierz przegląd lub szczegółową oś czasu, z dostępną pogodą przy obsługiwanych widokach.",
     panels: [
       {
         kicker: 'Widok dnia',
         title: 'Plan godzina po godzinie, z niebem w komplecie',
-        body: 'Siatka godzinowa, w której każdy wiersz niesie własną prognozę. Widzisz spotkanie o piętnastej i deszcz o piętnastej jednym spojrzeniem — bez drugiej aplikacji, bez zgadywania.',
+        body: "Porównuj spotkania z dostępną prognozą godzinową w tej samej siatce. Planując na zewnątrz, sprawdź wybrane miejsce i datę prognozy.",
         alt: 'Widok dnia z siatką godzinową, wydarzeniami i ikonami pogody przy każdej godzinie',
         bullets: ['Linia „teraz” na żywo', 'Temperatura godzinowa', 'Przeciągnij, by przenieść'],
       },
@@ -73,7 +73,7 @@ export const HOME_PL: HomeCopy = {
       {
         kicker: 'Miesiąc i rok',
         title: 'Odsuń się dość daleko, by zobaczyć kształt rzeczy',
-        body: 'Widok miesiąca zaznacza każdy dzień, w którym coś jest. Widok roku mieści dwanaście miesięcy na jednym ekranie — najszybszy sposób, by znaleźć wolny tydzień.',
+        body: "Porównuj wydarzenia z wybranych kalendarzy w miesiącu lub roku. Otwórz dzień i przejrzyj wszystkie spotkania, zanim uznasz go za wolny.",
         alt: 'Widok miesiąca ze znacznikami wydarzeń przy każdym dniu',
         bullets: [
           'Gęstość na pierwszy rzut oka',
@@ -140,11 +140,11 @@ tabs: {"hourly":"Godzinowa","daily":"Dzienna","weekend":"Weekend","range":"Zakre
     lead: 'Trzy konta, jedna siatka i zestaw gestów, które zachowują się tak, jak spodziewają się twoje dłonie.',
     unified: {
       title: 'Trzy konta. Jedna siatka.',
-      body: 'iCloud, Kalendarz Google i Microsoft Outlook, synchronizowane w obie strony i rozróżnione kolorem w jednym widoku. Wyłącz dowolny kalendarz, gdy nie chcesz go widzieć — reszta działa dalej.',
+      body: "Wyświetlaj razem wybrane kalendarze iCloud i Google; Premium dodaje kalendarze Microsoft. Edytuj zgodnie z uprawnieniami konta, a po zmianach sprawdź kalendarz źródłowy.",
     },
     gestures: {
       title: 'Przeciągnij. Rozciągnij. Gotowe.',
-      body: 'Chwyć wydarzenie i przesuń je na inną godzinę albo inny dzień. Pociągnij górną lub dolną krawędź, by zmienić czas trwania. Bez okna, bez przycisku zapisu.',
+      body: "Przenoś edytowalne wydarzenia na inną godzinę lub dzień albo zmieniaj ich długość na osi czasu. Dla wydarzenia cyklicznego wybierz zmieniane wystąpienia i sprawdź zapisany wynik.",
     },
     tiles: [
       {
@@ -154,7 +154,7 @@ tabs: {"hourly":"Godzinowa","daily":"Dzienna","weekend":"Weekend","range":"Zakre
       },
       {
         title: 'Zamień prognozę w plan',
-        body: 'Dotknij dowolnej godziny w centrum pogody, a otworzy się nowe wydarzenie, już ustawione na tę porę. Znajdź suche okno i je zajmij.',
+        body: "Wybierz dostępną godzinę prognozy, aby rozpocząć szkic wydarzenia, a przed zapisaniem sprawdź datę, godzinę i kalendarz.",
         badge: 'Jedno dotknięcie',
       },
       {
@@ -165,7 +165,7 @@ tabs: {"hourly":"Godzinowa","daily":"Dzienna","weekend":"Weekend","range":"Zakre
     ],
     sourceNotes: {
       builtIn: 'Wbudowane',
-      twoWay: 'Dwukierunkowo',
+      twoWay: "Połączono",
       premium: 'Premium',
     },
   },
@@ -177,14 +177,14 @@ tabs: {"hourly":"Godzinowa","daily":"Dzienna","weekend":"Weekend","range":"Zakre
     yearly: 'Rocznie',
     saveMore: 'oszczędzasz więcej',
     billingPeriod: 'Okres rozliczeniowy',
-    mostPopular: 'Najczęściej wybierane',
+    mostPopular: "Wyróżniony plan",
     everythingIn: 'Wszystko z {tier}, a do tego:',
     forever: 'na zawsze',
     perMonth: '/ mies.',
     perYear: '/ rok',
     downloadFree: 'Pobierz za darmo',
     startWith: 'Zacznij od {tier}',
-    note: 'Subskrypcje odnawiają się automatycznie i są rozliczane przez twoje Apple ID. Zrezygnuj kiedy chcesz w ustawieniach konta App Store, najpóźniej 24 godziny przed końcem okresu.',
+    note: "Subskrypcje odnawiają się automatycznie przez konto Apple. Przed zakupem sprawdź lokalną cenę i okres rozliczeniowy. Anulowaniem zarządzaj w Ustawieniach pod swoim imieniem i nazwiskiem → Subskrypcje.",
     plans: {
       free: {
         name: 'Darmowy',
@@ -233,7 +233,7 @@ tabs: {"hourly":"Godzinowa","daily":"Dzienna","weekend":"Weekend","range":"Zakre
       },
       {
         q: 'Czy mogę zmienić wydarzenie, przeciągając je?',
-        a: 'To główny sposób edycji. Przeciągnij wydarzenie na inną godzinę albo inny dzień, albo pociągnij jego górną lub dolną krawędź, by zmienić czas trwania. Zmiany wracają prosto do kalendarza źródłowego.',
+        a: "Możesz przenosić edytowalne wydarzenia i zmieniać ich długość na osi czasu. Sprawdź zakres powtarzania i zapisaną godzinę; aktualizacje połączonych kalendarzy zależą od uprawnień i udanej synchronizacji.",
       },
       {
         q: 'Co pokazują widżety?',
@@ -245,7 +245,7 @@ tabs: {"hourly":"Godzinowa","daily":"Dzienna","weekend":"Weekend","range":"Zakre
       },
       {
         q: 'Jak zrezygnować z subskrypcji?',
-        a: 'Subskrypcjami zarządza Apple, więc rezygnujesz w ustawieniach swojego konta App Store. Zrób to najpóźniej 24 godziny przed końcem okresu, a nie zostaniesz obciążony ponownie.',
+        a: "Na iPhonie lub iPadzie otwórz Ustawienia, stuknij swoje imię i nazwisko, a następnie Subskrypcje. Wybierz Cloud Calendars i anuluj subskrypcję; sprawdź status anulowania lub wygaśnięcia pokazany przez Apple.",
       },
     ],
   },

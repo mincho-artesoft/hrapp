@@ -100,7 +100,7 @@ export const ARTICLES_RO: Readonly<Record<string, LocalisedArticle>> = {
   'weather-inside-your-calendar': {
   "title": "Un calendar care are deja vremea în el",
   "short": "Vremea în calendar",
-  "description": "De ce a consulta două aplicații ca să-ți organizezi ziua este o greșeală de proiectare și cum arată un calendar în care prognoza face parte din vedere în loc să stea alături.",
+  "description": "Planifică ziua cu evenimentele și vremea în aceeași vedere. Află cum se integrează prognoza disponibilă și ce limite are perioada acoperită.",
   "lede": "Aproape toată lumea își organizează ziua între două aplicații. Calendarul spune unde trebuie să fii; cea de vreme spune ce vreme va fi când ajungi. A ține cele două lucruri împreună în cap este partea pe care nimeni nu observă că o face — până când se pierde o sâmbătă.",
   "commonBelief": "Că un calendar e pentru întâlniri și o aplicație de vreme e pentru vreme, și că a le ține separat este pur și simplu felul în care funcționează telefoanele.",
   "sections": [

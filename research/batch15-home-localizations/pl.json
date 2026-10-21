@@ -1,0 +1,62 @@
+[
+  {
+    "field_path": "features.unified.body",
+    "before": "iCloud, Kalendarz Google i Microsoft Outlook, synchronizowane w obie strony i rozróżnione kolorem w jednym widoku. Wyłącz dowolny kalendarz, gdy nie chcesz go widzieć — reszta działa dalej.",
+    "after": "Wyświetlaj razem wybrane kalendarze iCloud i Google; Premium dodaje kalendarze Microsoft. Edytuj zgodnie z uprawnieniami konta, a po zmianach sprawdź kalendarz źródłowy."
+  },
+  {
+    "field_path": "features.gestures.body",
+    "before": "Chwyć wydarzenie i przesuń je na inną godzinę albo inny dzień. Pociągnij górną lub dolną krawędź, by zmienić czas trwania. Bez okna, bez przycisku zapisu.",
+    "after": "Przenoś edytowalne wydarzenia na inną godzinę lub dzień albo zmieniaj ich długość na osi czasu. Dla wydarzenia cyklicznego wybierz zmieniane wystąpienia i sprawdź zapisany wynik."
+  },
+  {
+    "field_path": "faq.items[3].a",
+    "before": "To główny sposób edycji. Przeciągnij wydarzenie na inną godzinę albo inny dzień, albo pociągnij jego górną lub dolną krawędź, by zmienić czas trwania. Zmiany wracają prosto do kalendarza źródłowego.",
+    "after": "Możesz przenosić edytowalne wydarzenia i zmieniać ich długość na osi czasu. Sprawdź zakres powtarzania i zapisaną godzinę; aktualizacje połączonych kalendarzy zależą od uprawnień i udanej synchronizacji."
+  },
+  {
+    "field_path": "showcase.lead",
+    "before": "Te same wydarzenia, ułożone pod pytanie, które naprawdę zadajesz — i każde z prognozą przy sobie.",
+    "after": "Wybierz przegląd lub szczegółową oś czasu, z dostępną pogodą przy obsługiwanych widokach."
+  },
+  {
+    "field_path": "showcase.panels[0].body",
+    "before": "Siatka godzinowa, w której każdy wiersz niesie własną prognozę. Widzisz spotkanie o piętnastej i deszcz o piętnastej jednym spojrzeniem — bez drugiej aplikacji, bez zgadywania.",
+    "after": "Porównuj spotkania z dostępną prognozą godzinową w tej samej siatce. Planując na zewnątrz, sprawdź wybrane miejsce i datę prognozy."
+  },
+  {
+    "field_path": "showcase.panels[3].body",
+    "before": "Widok miesiąca zaznacza każdy dzień, w którym coś jest. Widok roku mieści dwanaście miesięcy na jednym ekranie — najszybszy sposób, by znaleźć wolny tydzień.",
+    "after": "Porównuj wydarzenia z wybranych kalendarzy w miesiącu lub roku. Otwórz dzień i przejrzyj wszystkie spotkania, zanim uznasz go za wolny."
+  },
+  {
+    "field_path": "features.tiles[1].body",
+    "before": "Dotknij dowolnej godziny w centrum pogody, a otworzy się nowe wydarzenie, już ustawione na tę porę. Znajdź suche okno i je zajmij.",
+    "after": "Wybierz dostępną godzinę prognozy, aby rozpocząć szkic wydarzenia, a przed zapisaniem sprawdź datę, godzinę i kalendarz."
+  },
+  {
+    "field_path": "hero.badge",
+    "before": "Wersja {v} — udostępnione wydarzenia same się teraz aktualizują",
+    "after": "Wersja {v} — udostępnianie wydarzeń i kalendarzy"
+  },
+  {
+    "field_path": "faq.items[6].a",
+    "before": "Subskrypcjami zarządza Apple, więc rezygnujesz w ustawieniach swojego konta App Store. Zrób to najpóźniej 24 godziny przed końcem okresu, a nie zostaniesz obciążony ponownie.",
+    "after": "Na iPhonie lub iPadzie otwórz Ustawienia, stuknij swoje imię i nazwisko, a następnie Subskrypcje. Wybierz Cloud Calendars i anuluj subskrypcję; sprawdź status anulowania lub wygaśnięcia pokazany przez Apple."
+  },
+  {
+    "field_path": "pricing.note",
+    "before": "Subskrypcje odnawiają się automatycznie i są rozliczane przez twoje Apple ID. Zrezygnuj kiedy chcesz w ustawieniach konta App Store, najpóźniej 24 godziny przed końcem okresu.",
+    "after": "Subskrypcje odnawiają się automatycznie przez konto Apple. Przed zakupem sprawdź lokalną cenę i okres rozliczeniowy. Anulowaniem zarządzaj w Ustawieniach pod swoim imieniem i nazwiskiem → Subskrypcje."
+  },
+  {
+    "field_path": "features.sourceNotes.twoWay",
+    "before": "Dwukierunkowo",
+    "after": "Połączono"
+  },
+  {
+    "field_path": "pricing.mostPopular",
+    "before": "Najczęściej wybierane",
+    "after": "Wyróżniony plan"
+  }
+]

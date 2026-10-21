@@ -104,7 +104,7 @@ export const ARTICLES_MS: Readonly<Record<string, LocalisedArticle>> = {
   'weather-inside-your-calendar': {
   "title": "Kalendar yang sudah mengandungi cuaca",
   "short": "Cuaca di dalam kalendar",
-  "description": "Mengapa memeriksa dua aplikasi untuk menyusun satu hari ialah kecacatan reka bentuk, dan bagaimana rupanya kalendar yang ramalannya menjadi sebahagian daripada paparan dan bukan berdiri di sebelahnya.",
+  "description": "Rancang hari dengan acara dan cuaca dalam satu paparan. Fahami ramalan yang tersedia dalam kalendar serta had tempohnya.",
   "lede": "Hampir semua orang menyusun harinya antara dua aplikasi. Kalendar memberitahu di mana perlu berada; aplikasi cuaca memberitahu bagaimana cuacanya apabila sampai. Memegang kedua-duanya serentak di kepala ialah bahagian yang tiada siapa sedar sedang dibuatnya — sehingga satu hari Sabtu hilang begitu sahaja.",
   "commonBelief": "Bahawa kalendar untuk temu janji dan aplikasi cuaca untuk cuaca, dan mengasingkan kedua-duanya memang begitulah telefon berfungsi.",
   "sections": [
@@ -139,7 +139,7 @@ export const ARTICLES_MS: Readonly<Record<string, LocalisedArticle>> = {
   'icloud-google-and-outlook-in-one-view': {
     title: 'iCloud, Google dan Outlook dalam satu paparan',
     short: 'Tiga akaun, satu paparan',
-    description: 'Kehidupan hampir setiap orang terbahagi antara kalendar Apple peribadi, akaun Google dan Exchange dari tempat kerja. Apa yang berubah apabila ketiga-tiganya masuk ke grid yang sama.',
+    description: "Lihat bagaimana kalendar Apple, Google dan kerja dalam satu paparan membantu anda membandingkan komitmen dan mengenal pasti pertindihan jadual.",
     lede: 'Masalahnya hampir tidak pernah salah satu kalendar itu buruk. Masalahnya anda ada tiga dan minggu hanya satu.',
     commonBelief: 'Bahawa mengasingkan kerja dan kehidupan peribadi ke aplikasi berlainan ialah sempadan, bukan kekurangan.',
     sections: [

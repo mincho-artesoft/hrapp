@@ -1,0 +1,163 @@
+{
+  "allPassed": true,
+  "changedArticles": 24,
+  "descriptionOnlyObjects": 21,
+  "englishRevisions": 3,
+  "sitemapUrls": 491,
+  "preservedPreviousCanonicals": 491,
+  "articles": [
+    {
+      "locale": "de-DE",
+      "slug": "weather-inside-your-calendar",
+      "url": "https://www.cloud-calendars.com/de/articles/weather-inside-your-calendar/",
+      "sha256": "49565ed9610a6fcc4fd96c665e64fe04ffd14ed0a6252d239ffe982b39f23fe8"
+    },
+    {
+      "locale": "el",
+      "slug": "weather-inside-your-calendar",
+      "url": "https://www.cloud-calendars.com/el/articles/weather-inside-your-calendar/",
+      "sha256": "ce9bb80b8799bc80d2ec48e73de6ccac2d8cfe8fa82d73f75a939db341db22e5"
+    },
+    {
+      "locale": "el",
+      "slug": "icloud-google-and-outlook-in-one-view",
+      "url": "https://www.cloud-calendars.com/el/articles/icloud-google-and-outlook-in-one-view/",
+      "sha256": "c0e7ce400e874deda7a5b4641b70954e60c05b2a806c25de8d0f24b71dce25f6"
+    },
+    {
+      "locale": "en-US",
+      "slug": "weather-inside-your-calendar",
+      "url": "https://www.cloud-calendars.com/articles/weather-inside-your-calendar/",
+      "sha256": "c84aca938e86af7ced101c50fc1e2a9496138f578c7e507456ca54db352e6a97"
+    },
+    {
+      "locale": "en-US",
+      "slug": "a-fourteen-day-view-of-the-weather",
+      "url": "https://www.cloud-calendars.com/articles/a-fourteen-day-view-of-the-weather/",
+      "sha256": "14f8ff465315d607cc53e4b9138f98225bd3391c1af011b619e17988c57841b5"
+    },
+    {
+      "locale": "en-US",
+      "slug": "planning-outdoors-without-being-rained-on",
+      "url": "https://www.cloud-calendars.com/articles/planning-outdoors-without-being-rained-on/",
+      "sha256": "6ad36635a27237ce5ffa3ec1b033086667635f38379999df16d5bc11c623c996"
+    },
+    {
+      "locale": "es-ES",
+      "slug": "weather-inside-your-calendar",
+      "url": "https://www.cloud-calendars.com/es/articles/weather-inside-your-calendar/",
+      "sha256": "1e88d8cc07e2456182ef96584b76ba01ff0f7579a5e5a0ac7de6de940c06246b"
+    },
+    {
+      "locale": "fr-FR",
+      "slug": "weather-inside-your-calendar",
+      "url": "https://www.cloud-calendars.com/fr/articles/weather-inside-your-calendar/",
+      "sha256": "5d828854523f632929fd8cdfee21fb75373c5c2e46ec9cbb51a436e8d5d3fa00"
+    },
+    {
+      "locale": "fr-FR",
+      "slug": "sharing-one-event-not-your-calendar",
+      "url": "https://www.cloud-calendars.com/fr/articles/sharing-one-event-not-your-calendar/",
+      "sha256": "20acb0168d7f333fd9b578f266d5490bf703350cd4aba72d35997541c7502383"
+    },
+    {
+      "locale": "fr-FR",
+      "slug": "free-google-sync-without-adverts",
+      "url": "https://www.cloud-calendars.com/fr/articles/free-google-sync-without-adverts/",
+      "sha256": "21b3c181fa7fe63b83fc3f268317713fbc05160ec150fbe069ed608d6aa3b971"
+    },
+    {
+      "locale": "hu",
+      "slug": "who-can-see-what-in-google-calendar",
+      "url": "https://www.cloud-calendars.com/hu/articles/who-can-see-what-in-google-calendar/",
+      "sha256": "a3953afbd2a71b93f7ca6a2cdf1652646feb974a67c7167de87ffab686972f82"
+    },
+    {
+      "locale": "id",
+      "slug": "weather-inside-your-calendar",
+      "url": "https://www.cloud-calendars.com/id/articles/weather-inside-your-calendar/",
+      "sha256": "87efa8cf5568e03f56affe840ffa9ea63bf9ccdea3bacb149ce3f97919db82f6"
+    },
+    {
+      "locale": "it",
+      "slug": "weather-inside-your-calendar",
+      "url": "https://www.cloud-calendars.com/it/articles/weather-inside-your-calendar/",
+      "sha256": "b06658727664145197dde1f694fd16e12fa85aae5c21fe93da92cdec0e4c56a5"
+    },
+    {
+      "locale": "ms",
+      "slug": "weather-inside-your-calendar",
+      "url": "https://www.cloud-calendars.com/ms/articles/weather-inside-your-calendar/",
+      "sha256": "e79b11ba9f11140f98b2b39aaebc0bd0c84b2f4a1a43b7fb7d7bfd41c1517804"
+    },
+    {
+      "locale": "ms",
+      "slug": "icloud-google-and-outlook-in-one-view",
+      "url": "https://www.cloud-calendars.com/ms/articles/icloud-google-and-outlook-in-one-view/",
+      "sha256": "e942407c7f72309a66cd7e427ec68d38b9b5c4ef8872430e6e8638f3edd426aa"
+    },
+    {
+      "locale": "nl-NL",
+      "slug": "weather-inside-your-calendar",
+      "url": "https://www.cloud-calendars.com/nl/articles/weather-inside-your-calendar/",
+      "sha256": "e202c6b743315ae4bcff9a8fb200811620c63ecbb505de27f6ebfea4de3ef0a8"
+    },
+    {
+      "locale": "nl-NL",
+      "slug": "icloud-google-and-outlook-in-one-view",
+      "url": "https://www.cloud-calendars.com/nl/articles/icloud-google-and-outlook-in-one-view/",
+      "sha256": "ad5726978517b0f686189a2f865f7aae36a166578479d1fa491fe4906011ddab"
+    },
+    {
+      "locale": "pl",
+      "slug": "weather-inside-your-calendar",
+      "url": "https://www.cloud-calendars.com/pl/articles/weather-inside-your-calendar/",
+      "sha256": "69c181254aed6f13c4bdd8b4754ba86f5ff77f195763ce263004aad81998b4c9"
+    },
+    {
+      "locale": "pt-BR",
+      "slug": "weather-inside-your-calendar",
+      "url": "https://www.cloud-calendars.com/pt/articles/weather-inside-your-calendar/",
+      "sha256": "c2d8e8b4b22cc910b54d890937b166737ce0ffe089d8bfc41be08deb63a654d0"
+    },
+    {
+      "locale": "pt-BR",
+      "slug": "icloud-google-and-outlook-in-one-view",
+      "url": "https://www.cloud-calendars.com/pt/articles/icloud-google-and-outlook-in-one-view/",
+      "sha256": "2e2c5b6a8af401b813abbfe9880fa6265e28c575c7301c476a869832b774d10c"
+    },
+    {
+      "locale": "ro",
+      "slug": "weather-inside-your-calendar",
+      "url": "https://www.cloud-calendars.com/ro/articles/weather-inside-your-calendar/",
+      "sha256": "4bfb774aed92e6b98b049c39377da429957d72b5911e744f195260640feed8f5"
+    },
+    {
+      "locale": "ru",
+      "slug": "weather-inside-your-calendar",
+      "url": "https://www.cloud-calendars.com/ru/articles/weather-inside-your-calendar/",
+      "sha256": "0626d672cceb88359c6ecf32bd832f37e538fe9b50ff1c4b0b4bbb3e680643e5"
+    },
+    {
+      "locale": "tr",
+      "slug": "weather-inside-your-calendar",
+      "url": "https://www.cloud-calendars.com/tr/articles/weather-inside-your-calendar/",
+      "sha256": "4606ced4e1a13ae493f20c987a3142440d98fab6c88d714ce7b053499084e7af"
+    },
+    {
+      "locale": "vi",
+      "slug": "weather-inside-your-calendar",
+      "url": "https://www.cloud-calendars.com/vi/articles/weather-inside-your-calendar/",
+      "sha256": "62ffadb09b75fecde5dea4823319cbb37f77ec4086f4260bac0c16f1862d2edc"
+    }
+  ],
+  "monthLocalesVerified": 30,
+  "viewRouteCounts": {
+    "weather-inside-your-calendar": 30,
+    "a-fourteen-day-view-of-the-weather": 5,
+    "planning-outdoors-without-being-rained-on": 5
+  },
+  "localizedShellPagesVerified": 490,
+  "localizedHeroPagesVerified": 30,
+  "scope": "Actual24changedobjects/21metadata-only+3EN/491oldcanonicals/allshellskipbrandsectionandlanglinks; home360fields separate source QA. Notnative-speaker, releasedproductruntime, indexing orrankingcertification."
+}

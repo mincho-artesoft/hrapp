@@ -295,7 +295,7 @@ export const ARTICLES_IT: Readonly<Record<string, LocalisedArticle>> = {
   'weather-inside-your-calendar': {
   "title": "Un calendario che contiene già il meteo",
   "short": "Il meteo dentro il calendario",
-  "description": "Perché controllare due app per organizzare una giornata è un difetto di progetto, e com'è fatto un calendario in cui le previsioni fanno parte della vista invece di stare accanto.",
+  "description": "Pianifica con appuntamenti e meteo nella stessa vista. Scopri come le previsioni disponibili entrano nel calendario e quali periodi coprono.",
   "lede": "Quasi tutti organizzano la giornata fra due app. Il calendario dice dove bisogna essere; il meteo dice che tempo farà quando ci si arriva. Tenere insieme le due cose è la parte che nessuno si accorge di fare, finché un sabato non va storto.",
   "commonBelief": "Che un calendario serva agli impegni e un'app meteo al tempo, e che tenerli separati sia semplicemente come funzionano i telefoni.",
   "sections": [

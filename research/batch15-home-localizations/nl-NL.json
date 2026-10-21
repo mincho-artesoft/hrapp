@@ -1,0 +1,62 @@
+[
+  {
+    "field_path": "features.unified.body",
+    "before": "iCloud, Google Agenda en Microsoft Outlook, in twee richtingen gesynchroniseerd en met kleur onderscheiden in één weergave. Zet een agenda uit wanneer u hem niet wilt zien — de rest blijft werken.",
+    "after": "Bekijk geselecteerde iCloud- en Google-agenda’s samen; Premium voegt Microsoft-agenda’s toe. Bewerk waar uw accountrechten dat toestaan en controleer na wijzigingen de bronagenda."
+  },
+  {
+    "field_path": "features.gestures.body",
+    "before": "Pak een afspraak en schuif hem naar een andere tijd of een andere dag. Trek aan de boven- of onderrand om de duur te veranderen. Geen venster, geen bewaarknop.",
+    "after": "Verplaats bewerkbare afspraken naar een andere tijd of dag, of pas de duur aan in de tijdlijn. Kies bij een herhaalde afspraak welke herhalingen u wijzigt en controleer het opgeslagen resultaat."
+  },
+  {
+    "field_path": "faq.items[3].a",
+    "before": "Dat is de belangrijkste manier om te bewerken. Sleep een afspraak naar een andere tijd of een andere dag, of trek aan de boven- of onderrand om de duur te veranderen. Wijzigingen gaan meteen terug naar de bronagenda.",
+    "after": "U kunt bewerkbare afspraken verplaatsen en de duur aanpassen in de tijdlijn. Controleer de herhalingskeuze en opgeslagen tijd; updates van verbonden agenda’s hangen af van rechten en geslaagde synchronisatie."
+  },
+  {
+    "field_path": "showcase.lead",
+    "before": "Dezelfde afspraken, geordend naar de vraag die u werkelijk stelt — en elk van hen draagt de verwachting.",
+    "after": "Kies een overzicht of gedetailleerde tijdlijn, met beschikbare weersinformatie bij ondersteunde weergaven."
+  },
+  {
+    "field_path": "showcase.panels[0].body",
+    "before": "Een uurraster waarin elke rij zijn eigen verwachting draagt. U ziet de afspraak van drie uur en de regen van drie uur in dezelfde blik — geen tweede app, geen gissen.",
+    "after": "Vergelijk afspraken met beschikbare weersverwachtingen per uur in hetzelfde raster. Controleer de gekozen plaats en voorspellingsdatum bij plannen buiten."
+  },
+  {
+    "field_path": "showcase.panels[3].body",
+    "before": "De maandweergave markeert elke dag waarop iets staat. De jaarweergave zet twaalf maanden op één scherm — de snelste manier om een vrije week te vinden.",
+    "after": "Vergelijk afspraken uit geselecteerde agenda’s over de maand of het jaar. Open een dag om alle afspraken te bekijken voordat u besluit dat deze vrij is."
+  },
+  {
+    "field_path": "features.tiles[1].body",
+    "before": "Tik op een uur in het weercentrum en er opent een nieuwe afspraak, al op dat tijdstip gezet. Vind het droge venster en leg het vast.",
+    "after": "Kies een beschikbaar voorspellingsuur om een conceptafspraak te beginnen en controleer vóór het opslaan de datum, tijd en agenda."
+  },
+  {
+    "field_path": "hero.badge",
+    "before": "Versie {v} — gedeelde afspraken houden zichzelf nu bij",
+    "after": "Versie {v} — afspraken en agenda’s delen"
+  },
+  {
+    "field_path": "faq.items[6].a",
+    "before": "Abonnementen worden door Apple afgehandeld, dus u zegt op in de instellingen van uw App Store-account. Doe dat ten minste 24 uur voor het einde van de periode, dan wordt er niets meer in rekening gebracht.",
+    "after": "Open op iPhone of iPad Instellingen, tik op uw naam en vervolgens op Abonnementen. Kies Cloud Calendars en zeg daar op; controleer de opzeg- of vervalstatus die Apple toont."
+  },
+  {
+    "field_path": "pricing.note",
+    "before": "Abonnementen verlengen automatisch en worden via uw Apple ID in rekening gebracht. Zeg op wanneer u wilt in de instellingen van uw App Store-account, ten minste 24 uur voor het einde van de periode.",
+    "after": "Abonnementen worden automatisch verlengd via uw Apple Account. Controleer vóór aankoop de lokale prijs en factureringsperiode. Beheer opzegging in Instellingen onder uw naam → Abonnementen."
+  },
+  {
+    "field_path": "features.sourceNotes.twoWay",
+    "before": "Tweerichtings",
+    "after": "Verbonden"
+  },
+  {
+    "field_path": "pricing.mostPopular",
+    "before": "Meest gekozen",
+    "after": "Uitgelicht abonnement"
+  }
+]

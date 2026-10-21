@@ -2,6 +2,9 @@
 
 :host { display: block; }
 
+// Keep entrance animations inside the section, including RTL pages.
+.widgets { overflow-x: clip; }
+
 .widgets__inner {
   display: grid;
   grid-template-columns: minmax(0, 1fr) minmax(0, 0.82fr);

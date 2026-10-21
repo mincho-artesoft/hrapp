@@ -11,66 +11,94 @@ import { LocalisedArticle } from '../types';
  */
 export const WEATHER_EN_US: Readonly<Record<string, LocalisedArticle>> = {
   'weather-inside-your-calendar': {
-  "title": "A calendar with the weather already in it",
-  "short": "Weather inside your calendar",
-  "description": "Use hourly and daily weather alongside iPhone and iPad calendars. Check the selected place, forecast dates and appointment time before planning.",
-  "lede": "Almost everyone plans a day across two apps. The calendar says where you have to be; the weather app says what it will be like when you get there. Holding both in your head is the part nobody notices they are doing, until a Saturday gets rained on. This guide is published by Arte Soft, the developer of Cloud Calendars.",
-  "commonBelief": "That a calendar is for commitments and a weather app is for weather, and keeping them separate is simply how phones work.",
+  "updated": "2026-10-22",
+  "title": "Calendar with weather on iPhone and iPad: check a plan in context",
+  "short": "Use calendar and weather together",
+  "description": "Use calendar and weather together on iPhone and iPad. Check the selected place, available forecast hours and event details before saving a plan.",
+  "lede": "A calendar tells you when a commitment is scheduled. Weather helps answer a different question: what conditions are forecast for the place and period you need. Use the two together while keeping their locations and dates explicit. This guide is published by Arte Soft, the developer of Cloud Calendars.",
+  "commonBelief": "Weather shown beside a calendar automatically describes every appointment’s address, every hour and every future date.",
   "sections": [
     {
-      "heading": "Keep the schedule and forecast in context",
+      "heading": "Choose a real planning question",
       "body": [
-        "For an outdoor appointment, first identify its place and time. Viewing weather alongside the calendar can make that comparison easier, but only when the weather refers to the intended location and date.",
-        "For example, a meeting in another city calls for that city’s forecast. The weather near your phone may answer a different question, even though both displays sit beside the same schedule."
+        "Start with a particular appointment, such as an afternoon visit to a park. Identify what could change: its time, venue, preparation or the decision to use an alternative. You do not need to rearrange the whole calendar just because the day’s symbol shows rain.",
+        "Write down the activity’s actual start and end, including setup if relevant. A calendar overview helps find possible dates, while the forecast check concerns a particular place and interval. Keep those two jobs distinct when comparing options."
       ]
     },
     {
-      "heading": "Match the forecast to the plan",
+      "heading": "Confirm the weather place before reading the values",
       "body": [
-        "Use the available hourly and daily forecasts for the selected location alongside your schedule. Check that the dates and hours you need are actually present; a daily summary does not establish hourly coverage for every event.",
-        "Calendar navigation reaches beyond weather data. A month or year view does not promise conditions for every date displayed. If your plan lies outside the available forecast, keep the calendar entry and check the weather closer to its date."
+        "Cloud Calendars offers weather for the current or selected place. Check the displayed location rather than assuming an event’s address silently changes the forecast. An appointment in another city needs a comparison with that city’s weather.",
+        "For example, a visitor may be planning a museum arrival while the phone is still at home. Read the forecast location and the appointment’s local time before comparing them. Nearby-looking values are not proof that the schedule and weather use the same place."
       ]
     },
     {
-      "heading": "What the app’s forecast range means",
+      "heading": "Check hourly and daily coverage separately",
       "body": [
-        "The app uses Apple WeatherKit and shows up to ten returned days in its daily list. Check the dates and hours currently available for the selected place; a calendar view can extend beyond them.",
-        "The website uses a separate Open-Meteo demonstration. Its forecast range does not describe the range available in the app."
+        "Use a daily entry for orientation and the available hourly entries for a question about part of a day. A booking from two until five needs more than a glance at one symbol. Check whether the relevant hours are actually present.",
+        "In the current app source, the daily list takes up to ten returned WeatherKit days. That is separate from calendar navigation and from the hours currently supplied. A future appointment does not extend weather coverage. If its period is absent, arrange a later weather review."
+      ]
+    },
+    {
+      "heading": "Read what the weather value means",
+      "body": [
+        "Apple documents WeatherKit data such as temperature, precipitation, wind and UV, with some products available only in selected regions. Read the values available for your chosen place rather than expecting every weather product everywhere.",
+        "The Met Office’s guidance illustrates why forecast period and variable definitions matter: some values refer to a moment and others to a period. Use the relevant provider’s labels. Rain probability, amount and duration are different questions, and no single number decides every outdoor activity."
+      ]
+    },
+    {
+      "heading": "Review a draft created from a weather hour",
+      "body": [
+        "Where the app offers creating an event from an hour, it opens a draft. The current source uses the weather location’s time zone, proposes a one-hour duration and selects the default new-event calendar. Inspect each value before saving.",
+        "Confirm the title, destination calendar, start, end and intended location. A forecast selection does not grant permission to edit a shared calendar, notify a venue or reserve a room. Check the saved event and obtain any agreement the plan needs."
+      ]
+    },
+    {
+      "heading": "Keep the website demonstration separate",
+      "body": [
+        "The website’s interactive weather demonstration uses Open-Meteo. The app uses Apple WeatherKit. A web demonstration is useful for exploring the presentation, but its place, data and available dates can differ from the app.",
+        "For a real decision, open the app and compare the intended appointment with its available forecast. If you change a shared plan, confirm the organiser, recurrence scope and participants. Keep an agreed alternative when the activity depends on conditions."
       ]
     }
   ],
-  "claims": {
-    "price": "Cost of the weather features, in pounds, dollars or euros"
-  },
+  "claims": {},
   "practical": [
-    "Confirm the selected location and the forecast date.",
-    "Compare the available hours with the hours of your plan.",
-    "If the event is beyond the available forecast, check again nearer the date."
+    "Identify the appointment and the decision weather could change.",
+    "Confirm the weather location and the appointment’s local date and time.",
+    "Inspect available hourly coverage separately from the daily summary.",
+    "Read probability, amount and other relevant values using their labels.",
+    "Review all event-draft details and the destination calendar before saving.",
+    "Recheck at the decision time and confirm shared changes directly."
+  ],
+  "faq": [
+    {
+      "q": "Does weather beside my calendar follow each event address?",
+      "a": "Do not assume that. Confirm the displayed weather location and compare it with the venue; proximity on screen does not establish the match."
+    },
+    {
+      "q": "Does the app use the website’s weather provider?",
+      "a": "No. The app uses Apple WeatherKit; the website demonstration uses Open-Meteo separately."
+    },
+    {
+      "q": "Does choosing a forecast hour save an appointment automatically?",
+      "a": "It starts a draft where that action is offered. Check its date, time zone, duration, calendar and location, then save the intended event."
+    }
   ],
   "seeAlso": [
     "forecast-beside-every-event",
-    "a-fourteen-day-view-of-the-weather"
+    "a-fourteen-day-view-of-the-weather",
+    "weather-where-the-event-is",
+    "planning-outdoors-without-being-rained-on"
   ],
-  "updated": "2026-10-21",
+  "sourcesHeading": "Official sources and further reading",
   "sources": [
     {
-      "label": "Apple: Get started with WeatherKit",
+      "label": "Apple: WeatherKit forecast information and regional availability",
       "url": "https://developer.apple.com/weatherkit/"
-    }
-  ],
-  "sourcesHeading": "Sources and further reading",
-  "faq": [
-    {
-      "q": "Does the calendar provide weather for every future appointment?",
-      "a": "No. Forecast dates are limited even when the calendar can hold much later appointments. Check the dates available for your chosen place."
     },
     {
-      "q": "Which weather provider does the app use?",
-      "a": "Cloud Calendars uses Apple WeatherKit. The website demonstration uses Open-Meteo separately."
-    },
-    {
-      "q": "Can I create a plan from a forecast hour?",
-      "a": "The app can start an event draft from an available hour. Check the time and destination calendar before saving."
+      "label": "Met Office: forecast place, periods and weather values",
+      "url": "https://weather.metoffice.gov.uk/guides/what-does-this-forecast-mean"
     }
   ]
 },
@@ -158,126 +186,187 @@ export const WEATHER_EN_US: Readonly<Record<string, LocalisedArticle>> = {
 },
 
   'a-fourteen-day-view-of-the-weather': {
-  "title": "How far ahead does the available forecast reach?",
-  "short": "The available forecast range",
-  "description": "Check the dates a forecast actually covers. Calendar navigation, daily forecasts and hourly detail are different ranges in Cloud Calendars.",
-  "lede": "You can create an appointment far beyond the dates covered by weather data. That does not make the forecast reach the appointment. Check the available dates before using weather to choose a time. This guide is published by Arte Soft, the developer of Cloud Calendars.",
-  "commonBelief": "Every future date visible in a calendar has a matching weather forecast.",
+  "updated": "2026-10-22",
+  "title": "How far ahead can I see weather in Cloud Calendars?",
+  "short": "Check the forecast dates actually available",
+  "description": "Check the forecast dates available in Cloud Calendars. Separate daily and hourly coverage, future appointments and the website’s weather demonstration.",
+  "lede": "A long-range calendar and a long-range weather forecast are different things. You can book a meeting before its forecast exists. Read the available dates in the app rather than inferring weather coverage from the month you can open. This guide is published by Arte Soft, the developer of Cloud Calendars.",
+  "commonBelief": "Every future date in a calendar has a forecast, and the website’s fourteen-day demonstration is the app’s forecast range.",
   "sections": [
     {
-      "heading": "Separate the calendar range from the forecast range",
+      "heading": "Read the dates in the weather display",
       "body": [
-        "A calendar can hold a plan for next month without weather for that date. Look at the forecast dates themselves rather than the month open in the calendar. A missing weather entry is unavailable information, not a prediction of clear conditions."
+        "Open weather for the intended place and identify the dates actually listed. Do not decide availability from the calendar’s month or year navigation. Missing forecast information means you still need a later check; it does not mean a clear day.",
+        "If you are organising a gathering several weeks ahead, save the agreed date and record the weather decision separately. Venue availability, invitations and an eventual forecast are different inputs to that plan."
       ]
     },
     {
-      "heading": "The forecast available in the app",
+      "heading": "Understand the app’s daily list",
       "body": [
-        "The app uses Apple WeatherKit and displays up to ten returned days in its daily list. Check the actual dates and hourly detail for your chosen place rather than assuming every request provides the full range.",
-        "The website demonstration uses Open-Meteo and requests a different forecast range. It is separate from the app, so use the app’s own available dates when planning."
+        "The app uses Apple WeatherKit. Its current daily-list implementation keeps up to ten days returned by the service. Read the actual first and last dates for the selected place rather than assuming every view or request has a full ten-day set.",
+        "This limit describes the displayed daily list, not a promise that all weather variables have equal confidence or that every appointment within those dates has a complete forecast. Use the level of detail needed for the decision."
       ]
     },
     {
-      "heading": "Check the detail you actually need",
+      "heading": "Check hourly availability for timed activities",
       "body": [
-        "Confirm the selected place, date and hours. Daily and hourly displays need not expose identical ranges. Do not assume a daily forecast contains every hour of a long event.",
-        "For a plan beyond the available dates, choose a tentative date based on your calendar and revisit the forecast later. Forecast information can change; this article does not assign a universal confidence threshold to a particular day."
+        "A daily summary does not establish the exact conditions throughout an appointment. Open the relevant day and compare the available hours covering arrival, the activity and departure. If part of the period is missing, leave it unresolved.",
+        "For an evening event, make sure the selected place and local date still match the schedule. A late arrival after midnight belongs to another date. Check actual timestamps instead of treating the end of the daily list as the end of every hourly series."
+      ]
+    },
+    {
+      "heading": "Distinguish the website’s demonstration",
+      "body": [
+        "The current website requests fourteen forecast days from Open-Meteo for its weather demonstration. Open-Meteo documents configurable ranges; this website request is a separate implementation from the iOS app.",
+        "Do not use the web result to claim that the app supplies fourteen WeatherKit days. If the two displays differ, first compare the place, time and provider. A different forecast range does not mean the calendar lost an appointment."
+      ]
+    },
+    {
+      "heading": "Plan a review when the forecast is not yet available",
+      "body": [
+        "Keep the booking’s real date and arrange a review that still leaves time for a venue decision or a message to participants. For example, an outdoor celebration may need an indoor option agreed before the next forecast check.",
+        "Choose the review around the activity’s actual constraints. This guide does not assign an accuracy percentage or universal go-or-cancel threshold to a numbered forecast day. Check current information when it can change an actionable decision."
+      ]
+    },
+    {
+      "heading": "Check event details after choosing a time",
+      "body": [
+        "If an available forecast hour helps you choose a time, review the resulting event draft. Confirm the local date, start, end, destination calendar and location. Forecast navigation does not replace calendar permissions or an organiser’s agreement.",
+        "After an authorised change, reopen the event and check the intended occurrence or series. Confirm important changes with participants separately. Weather data becoming available is not the same as a changed invitation being received."
       ]
     }
   ],
   "claims": {},
   "practical": [
-    "Read the first and last dates actually available.",
-    "Check hourly coverage separately from the daily list.",
-    "Keep future plans provisional when weather information is not available."
-  ],
-  "seeAlso": [
-    "weather-inside-your-calendar",
-    "what-a-forecast-can-and-cannot-tell-you"
-  ],
-  "updated": "2026-10-21",
-  "sourcesHeading": "Sources and further reading",
-  "sources": [
-    {
-      "label": "Apple: Get started with WeatherKit",
-      "url": "https://developer.apple.com/weatherkit/"
-    }
+    "Select the place relevant to the appointment.",
+    "Read the first and last dates shown in the app’s daily list.",
+    "Check the needed hourly interval separately, including midnight boundaries.",
+    "Keep website Open-Meteo coverage separate from app WeatherKit coverage.",
+    "Arrange a later review for plans beyond the available forecast.",
+    "Verify the saved event and confirm shared changes with participants."
   ],
   "faq": [
     {
-      "q": "Does opening next month extend the forecast?",
-      "a": "No. Calendar navigation and available weather dates are separate."
+      "q": "Does Cloud Calendars offer a fourteen-day app forecast?",
+      "a": "The current app daily list uses up to ten returned WeatherKit days. The website separately requests fourteen Open-Meteo days. Check the dates actually available in the app."
     },
     {
-      "q": "Why are hourly and daily views different?",
-      "a": "They summarize different periods. Check which actual hours and dates are available rather than inferring coverage from one view."
+      "q": "Why can I create an event after the last weather date?",
+      "a": "Calendar storage and weather availability are separate. Keep the appointment and review the forecast nearer the date."
     },
     {
-      "q": "Is the website’s forecast range the app’s range?",
-      "a": "No. The website uses a separate Open-Meteo demonstration. Check available dates in the app itself."
+      "q": "Does a daily entry guarantee weather for every hour of my event?",
+      "a": "No. Check the hours actually supplied for that place and period. Do not infer complete hourly coverage from the daily list."
+    }
+  ],
+  "seeAlso": [
+    "weather-inside-your-calendar",
+    "forecast-beside-every-event",
+    "what-a-forecast-can-and-cannot-tell-you",
+    "planning-outdoors-without-being-rained-on"
+  ],
+  "sourcesHeading": "Official sources and further reading",
+  "sources": [
+    {
+      "label": "Apple: WeatherKit forecast information and regional availability",
+      "url": "https://developer.apple.com/weatherkit/"
+    },
+    {
+      "label": "Open-Meteo: forecast parameters and available ranges",
+      "url": "https://open-meteo.com/en/docs"
     }
   ]
 },
 
   'planning-outdoors-without-being-rained-on': {
-  "title": "Planning outdoor things without getting rained on",
-  "short": "Planning outdoors",
-  "description": "A practical method for scheduling anything that happens outside, using the calendar you already keep rather than a separate weather routine.",
-  "lede": "If your hobbies happen outdoors you have probably built a private ritual: check the weather, squint at the week, guess. The guessing is the part that can go. This guide is published by Arte Soft, the developer of Cloud Calendars.",
-  "commonBelief": "That avoiding bad weather means checking the forecast more often.",
+  "updated": "2026-10-22",
+  "title": "Plan an outdoor event with a forecast and a fallback",
+  "short": "Choose an outdoor plan and a workable alternative",
+  "description": "Plan an outdoor event by checking the venue, forecast hours and an agreed fallback. Review calendar details before changing a shared appointment.",
+  "lede": "Weather can help compare possible times for an outdoor activity, but it cannot promise a dry result. Start with the activity’s requirements and the decisions you can still change, then use the relevant forecast to inform those decisions. This guide is published by Arte Soft, the developer of Cloud Calendars.",
+  "commonBelief": "Checking more often or moving an activity slightly guarantees that it will avoid bad weather.",
   "sections": [
     {
-      "heading": "Start with the place and the decision",
+      "heading": "Define the activity before choosing a weather number",
       "body": [
-        "Choose the weather location that matches the activity, then check whether the relevant date and hours are available. Decide what you need to know: whether to choose a different time, keep a fallback or postpone the decision.",
-        "Rechecking does not change the weather, but updated information can matter. There is no single checking schedule suitable for every outdoor plan."
+        "Identify the venue, the people involved and what the activity needs. A garden lunch, a school sports session and a booked outdoor performance have different practical constraints. Avoid applying one generic rain percentage to all of them.",
+        "Write down who can make a change and the latest useful decision time. A venue’s deadline or a helper’s availability may limit your options before the weather does. These planning examples do not supply technical safety limits for any activity."
       ]
     },
     {
-      "heading": "Compare available times without promising the outcome",
+      "heading": "Match place, local date and the full interval",
       "body": [
-        "Compare the relevant hourly information for each candidate period. A daily icon is a summary, not a guarantee of conditions throughout the day.",
-        "Moving an activity by an hour may or may not help. Do not infer a dry interval that the forecast does not show, and do not apply a universal percentage threshold to every activity."
+        "Check the selected weather location against the actual venue. Include arrival and preparation where relevant, then inspect the available hours across the activity. One daily icon cannot describe every moment in a long booking.",
+        "If the event is beyond the forecast dates, keep the agreed date and set a later review. If you are travelling, compare the venue’s local time with the appointment. Do not silently replace the booking with a forecast for your current location."
       ]
     },
     {
-      "heading": "Make a fallback before changing invitations",
+      "heading": "Compare real alternatives without inventing dry windows",
       "body": [
-        "If the activity depends on suitable conditions, keep a realistic alternative and decide when you will review the latest information. Check local official guidance where relevant.",
-        "For a shared appointment, confirm the organizer and editing rights before moving it. A better-looking forecast does not itself authorize a change to everyone’s schedule."
+        "Compare candidate periods using the relevant weather fields and their labels. The Met Office’s forecast guide distinguishes probability from other weather values and explains that fields can describe different periods. Read the corresponding definitions for the source you are using.",
+        "Leaving an hour later may or may not improve conditions. Treat a more suitable-looking period as information for the plan, not a guarantee. Do not infer an uncovered hour or a route-wide observation from a value for one place."
+      ]
+    },
+    {
+      "heading": "Agree a fallback people can actually use",
+      "body": [
+        "An alternative should solve the activity’s real problem: a permitted indoor venue, an agreed postponement or a different arrangement that participants can reach. Check access, cost and availability through the appropriate organiser or venue.",
+        "For example, moving a picnic indoors can fail if nobody has confirmed the room. Record the alternative clearly and decide who will communicate the final choice. A note in one person’s private calendar is not a shared agreement."
+      ]
+    },
+    {
+      "heading": "Save and change the intended event",
+      "body": [
+        "Before creating or editing, confirm the destination calendar, start, end and location. An event draft started from a weather hour still needs review. Its proposed duration may not match setup, travel or the full activity.",
+        "For a shared or repeating appointment, check organiser responsibilities, editing rights and recurrence scope. After an authorised change, reopen the saved event. A local change is not proof that the venue or every participant accepted it."
+      ]
+    },
+    {
+      "heading": "Recheck when a decision can still make a difference",
+      "body": [
+        "Choose a review time that leaves room to act under the booking’s conditions. Compare the latest relevant forecast and applicable official or venue guidance. Forecast information is an input, not permission to ignore an activity’s requirements.",
+        "Communicate the final plan and confirm important handoffs directly. If a later update changes the decision, identify which event and occurrence to amend. Repeatedly refreshing without a workable alternative does not remove uncertainty."
       ]
     }
   ],
   "claims": {},
   "practical": [
-    "Confirm the forecast location and the dates and hours available.",
-    "Compare candidate times using the weather factors relevant to your activity.",
-    "Keep an alternative plan and check again before the decision matters.",
-    "Consult relevant local official guidance when conditions could make the activity unsafe."
+    "Identify the activity’s venue, requirements and decision owner.",
+    "Check the selected weather place and the full local-time interval.",
+    "Compare only forecast dates and hours that are actually available.",
+    "Agree a feasible alternative and a decision deadline.",
+    "Review calendar destination, event details and recurrence scope before saving.",
+    "Recheck at the agreed time and confirm the final plan with participants."
+  ],
+  "faq": [
+    {
+      "q": "Can moving my event by an hour guarantee dry weather?",
+      "a": "No. Compare the available periods and keep an alternative suited to the activity. A forecast is not a promise of the result."
+    },
+    {
+      "q": "What if the forecast does not reach the event date?",
+      "a": "Keep the agreed appointment and schedule a later weather review. Missing information is not a clear-weather prediction."
+    },
+    {
+      "q": "Can I move a shared event when another time looks better?",
+      "a": "Confirm the organiser’s agreement, editing rights and participants first. Check the recurrence scope and the saved result, then communicate the change."
+    }
   ],
   "seeAlso": [
     "forecast-beside-every-event",
-    "a-fourteen-day-view-of-the-weather"
+    "reading-a-chance-of-rain",
+    "what-a-forecast-can-and-cannot-tell-you",
+    "the-commute-and-the-sky"
   ],
-  "updated": "2026-10-21",
-  "faq": [
-    {
-      "q": "Does moving the event guarantee dry weather?",
-      "a": "No. Compare the available forecast periods and keep a realistic alternative."
-    },
-    {
-      "q": "Should I check only the daily icon?",
-      "a": "For an activity at a specific time, inspect the available hours across its duration and confirm the location."
-    },
-    {
-      "q": "Can I move a shared event just because another time looks better?",
-      "a": "Confirm organizer responsibilities, editing rights and participants before changing their schedule."
-    }
-  ],
+  "sourcesHeading": "Official sources and further reading",
   "sources": [
     {
-      "label": "Apple: WeatherKit forecast data and regional availability",
+      "label": "Apple: WeatherKit forecast information and regional availability",
       "url": "https://developer.apple.com/weatherkit/"
+    },
+    {
+      "label": "Met Office: forecast place, periods and weather values",
+      "url": "https://weather.metoffice.gov.uk/guides/what-does-this-forecast-mean"
     }
   ]
 },

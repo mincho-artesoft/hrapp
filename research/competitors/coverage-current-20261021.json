@@ -1,7 +1,7 @@
 {
   "schemaVersion": 1,
   "date": "2026-10-21",
-  "scope": "All concrete HTTPS URLs recorded in batch03 through batch09 JSON files present in this directory, exact-string deduplicated. This is a bounded corpus queue, not exhaustive publisher coverage. batch07 file is absent. No new network fetches. Consolidated four explicit successful batch10 body reviews; prior evidence preserved. Consolidated four explicit successful batch12 substantive body reviews, preserving prior evidence. Consolidated two successful batch13 substantive reviews. Four previously discovered OneCal substantive body reviews consolidated in batch14. Two pending Teamup pages reviewed in batch15; supplementary newly discovered Readdle URLs are recorded separately outside this original71URLcorpus. Three exact CalendarBridge bodies reviewedbatch16; publisherownlimits notCloudpromises. Three family publisher substantive bodies consolidated batch17; publisher claims are not Cloud features.",
+  "scope": "All concrete HTTPS URLs recorded in batch03 through batch09 JSON files present in this directory, exact-string deduplicated. This is a bounded corpus queue, not exhaustive publisher coverage. batch07 file is absent. No new network fetches. Consolidated four explicit successful batch10 body reviews; prior evidence preserved. Consolidated four explicit successful batch12 substantive body reviews, preserving prior evidence. Consolidated two successful batch13 substantive reviews. Four previously discovered OneCal substantive body reviews consolidated in batch14. Two pending Teamup pages reviewed in batch15; supplementary newly discovered Readdle URLs are recorded separately outside this original71URLcorpus. Three exact CalendarBridge bodies reviewedbatch16; publisherownlimits notCloudpromises. Three family publisher substantive bodies consolidated batch17; publisher claims are not Cloud features. Four exact CalendarBridge main bodies consolidated batch18; no rank/volume/runtime evidence.",
   "inputFiles": [
     "research/competitors/batch03-intent-mapping-20261021.json",
     "research/competitors/batch03-primary-discovery-20261021.json",
@@ -18,7 +18,8 @@
     "research/competitors/batch14-views-mobile-caldav-20261022.json",
     "research/competitors/batch15-views-caldav-primary-20261022.json",
     "research/competitors/batch16-sync-directions-troubleshooting-20261022.json",
-    "research/competitors/batch17-family-responsibility-primary-20261022.json"
+    "research/competitors/batch17-family-responsibility-primary-20261022.json",
+    "research/competitors/batch18-calendarbridge-primary-20261022.json"
   ],
   "statusDefinitions": {
     "full": "Explicit complete substantive-text review in at least one cited record, not images/runtime/linked pages.",
@@ -30,10 +31,10 @@
   "counts": {
     "failed": 6,
     "partial": 5,
-    "discovered": 7,
-    "full": 53,
+    "discovered": 3,
+    "full": 57,
     "exactUrls": 71,
-    "queue": 18
+    "queue": 14
   },
   "queue": [
     {
@@ -473,102 +474,6 @@
           "field": "/discoveredOnly/8/url",
           "record": {
             "url": "https://docs.onecal.io/docs/billing/plans-and-free-trial",
-            "status": "discovered_search_or_index_link_not_body_reviewed"
-          },
-          "batchQueries": [],
-          "queryAssociation": "Batch-level only; original file does not attribute an individual query to this URL.",
-          "statusEvidence": "discovered"
-        }
-      ]
-    },
-    {
-      "url": "https://help.calendarbridge.com/help/manage-syncs.html",
-      "publisher": "CalendarBridge",
-      "status": "discovered",
-      "observedQueryOrIntent": null,
-      "intentEvidenceNote": "Verbatim recorded intent/topic/summary where present; null means no URL-specific intent was recorded. URL spelling is not body evidence.",
-      "existingCanonicals": [],
-      "canonicalMappingBasis": "Editorial candidate routing from recorded topic or URL label; not proof target body covers the task. Null/empty where unsupported.",
-      "nextAction": "Read exact official body if useful; verify destination and platform, then deduplicate against existing canonical before authoring.",
-      "provenance": [
-        {
-          "file": "research/competitors/batch09-provider-intents-20261021.json",
-          "field": "/discoveredOnly/11/url",
-          "record": {
-            "url": "https://help.calendarbridge.com/help/manage-syncs.html",
-            "status": "discovered_search_or_index_link_not_body_reviewed"
-          },
-          "batchQueries": [],
-          "queryAssociation": "Batch-level only; original file does not attribute an individual query to this URL.",
-          "statusEvidence": "discovered"
-        }
-      ]
-    },
-    {
-      "url": "https://help.calendarbridge.com/user-docs/how-to-get-an-ics-url-for-you-calendar",
-      "publisher": "CalendarBridge",
-      "status": "discovered",
-      "observedQueryOrIntent": null,
-      "intentEvidenceNote": "Verbatim recorded intent/topic/summary where present; null means no URL-specific intent was recorded. URL spelling is not body evidence.",
-      "existingCanonicals": [
-        "what-calendar-sync-actually-does"
-      ],
-      "canonicalMappingBasis": "Editorial candidate routing from recorded topic or URL label; not proof target body covers the task. Null/empty where unsupported.",
-      "nextAction": "Read exact official body if useful; verify destination and platform, then deduplicate against existing canonical before authoring.",
-      "provenance": [
-        {
-          "file": "research/competitors/batch09-provider-intents-20261021.json",
-          "field": "/discoveredOnly/13/url",
-          "record": {
-            "url": "https://help.calendarbridge.com/user-docs/how-to-get-an-ics-url-for-you-calendar",
-            "status": "discovered_search_or_index_link_not_body_reviewed"
-          },
-          "batchQueries": [],
-          "queryAssociation": "Batch-level only; original file does not attribute an individual query to this URL.",
-          "statusEvidence": "discovered"
-        }
-      ]
-    },
-    {
-      "url": "https://help.calendarbridge.com/user-docs/about-syncing/",
-      "publisher": "CalendarBridge",
-      "status": "discovered",
-      "observedQueryOrIntent": null,
-      "intentEvidenceNote": "Verbatim recorded intent/topic/summary where present; null means no URL-specific intent was recorded. URL spelling is not body evidence.",
-      "existingCanonicals": [
-        "what-calendar-sync-actually-does"
-      ],
-      "canonicalMappingBasis": "Editorial candidate routing from recorded topic or URL label; not proof target body covers the task. Null/empty where unsupported.",
-      "nextAction": "Read exact official body if useful; verify destination and platform, then deduplicate against existing canonical before authoring.",
-      "provenance": [
-        {
-          "file": "research/competitors/batch09-provider-intents-20261021.json",
-          "field": "/discoveredOnly/14/url",
-          "record": {
-            "url": "https://help.calendarbridge.com/user-docs/about-syncing/",
-            "status": "discovered_search_or_index_link_not_body_reviewed"
-          },
-          "batchQueries": [],
-          "queryAssociation": "Batch-level only; original file does not attribute an individual query to this URL.",
-          "statusEvidence": "discovered"
-        }
-      ]
-    },
-    {
-      "url": "https://calendarbridge.com/sync-work-and-personal-calendars/",
-      "publisher": "CalendarBridge",
-      "status": "discovered",
-      "observedQueryOrIntent": null,
-      "intentEvidenceNote": "Verbatim recorded intent/topic/summary where present; null means no URL-specific intent was recorded. URL spelling is not body evidence.",
-      "existingCanonicals": [],
-      "canonicalMappingBasis": "Editorial candidate routing from recorded topic or URL label; not proof target body covers the task. Null/empty where unsupported.",
-      "nextAction": "Read exact official body if useful; verify destination and platform, then deduplicate against existing canonical before authoring.",
-      "provenance": [
-        {
-          "file": "research/competitors/batch09-provider-intents-20261021.json",
-          "field": "/discoveredOnly/16/url",
-          "record": {
-            "url": "https://calendarbridge.com/sync-work-and-personal-calendars/",
             "status": "discovered_search_or_index_link_not_body_reviewed"
           },
           "batchQueries": [],
@@ -2729,6 +2634,260 @@
               "free family calendar versus extra household functions"
             ],
             "boundary": "No Cloud OCR/chores/locator/legal audit/tax receipt features inferred. Prices/testimonials/statistics/absolute free or privacy guarantees not independently verified."
+          },
+          "statusEvidence": "full"
+        }
+      ]
+    },
+    {
+      "url": "https://help.calendarbridge.com/help/manage-syncs.html",
+      "publisher": "CalendarBridge",
+      "status": "full",
+      "observedQueryOrIntent": [
+        "stop calendar sync keep copied events",
+        "sync source destination",
+        "missing calendar copies filters",
+        "calendar sync date range"
+      ],
+      "intentEvidenceNote": "Verbatim recorded intent/topic/summary where present; null means no URL-specific intent was recorded. URL spelling is not body evidence.",
+      "existingCanonicals": [],
+      "canonicalMappingBasis": "Editorial candidate routing from recorded topic or URL label; not proof target body covers the task. Null/empty where unsupported.",
+      "nextAction": "Use source-specific boundaries and existing canonical mapping; offboarding gap needs provider/native proof before authoring.",
+      "provenance": [
+        {
+          "file": "research/competitors/batch09-provider-intents-20261021.json",
+          "field": "/discoveredOnly/11/url",
+          "record": {
+            "url": "https://help.calendarbridge.com/help/manage-syncs.html",
+            "status": "discovered_search_or_index_link_not_body_reviewed"
+          },
+          "batchQueries": [],
+          "queryAssociation": "Batch-level only; original file does not attribute an individual query to this URL.",
+          "statusEvidence": "discovered"
+        },
+        {
+          "file": "research/competitors/batch18-calendarbridge-primary-20261022.json",
+          "record": {
+            "url": "https://help.calendarbridge.com/help/manage-syncs.html",
+            "title": "Manage Syncs",
+            "status": "full_main_body_reviewed",
+            "publisherUpdated": "2026-05-05",
+            "readRanges": [
+              [
+                0,
+                138
+              ],
+              [
+                26,
+                173
+              ]
+            ],
+            "totalExtractedLines": 174,
+            "substantiveRange": [
+              0,
+              173
+            ],
+            "summary": "CalendarBridge describes directional source-to-destination copying; bidirectional groups consist of directional pairs. Destination copies do not edit originals. Controls cover replicated fields, filters, status and manual rescans. Deleting a sync leaves existing placeholders. Troubleshooting mentions a bounded date window and organization approval.",
+            "candidateIntentTerms": [
+              "stop calendar sync keep copied events",
+              "sync source destination",
+              "missing calendar copies filters",
+              "calendar sync date range"
+            ],
+            "boundaries": [
+              "Publisher-specific workflow, not Cloud controls.",
+              "Private flag and OAuth-password statements are not adopted as universal provider facts.",
+              "Suggested manual duplicate deletion is not imported into Cloud advice."
+            ]
+          },
+          "statusEvidence": "full"
+        }
+      ]
+    },
+    {
+      "url": "https://help.calendarbridge.com/user-docs/how-to-get-an-ics-url-for-you-calendar",
+      "publisher": "CalendarBridge",
+      "status": "full",
+      "observedQueryOrIntent": [
+        "find calendar subscription URL",
+        "ICS import versus subscribe",
+        "calendar feed versus account connection"
+      ],
+      "intentEvidenceNote": "Verbatim recorded intent/topic/summary where present; null means no URL-specific intent was recorded. URL spelling is not body evidence.",
+      "existingCanonicals": [
+        "what-calendar-sync-actually-does"
+      ],
+      "canonicalMappingBasis": "Editorial candidate routing from recorded topic or URL label; not proof target body covers the task. Null/empty where unsupported.",
+      "nextAction": "Use source-specific boundaries and existing canonical mapping; offboarding gap needs provider/native proof before authoring.",
+      "provenance": [
+        {
+          "file": "research/competitors/batch09-provider-intents-20261021.json",
+          "field": "/discoveredOnly/13/url",
+          "record": {
+            "url": "https://help.calendarbridge.com/user-docs/how-to-get-an-ics-url-for-you-calendar",
+            "status": "discovered_search_or_index_link_not_body_reviewed"
+          },
+          "batchQueries": [],
+          "queryAssociation": "Batch-level only; original file does not attribute an individual query to this URL.",
+          "statusEvidence": "discovered"
+        },
+        {
+          "file": "research/competitors/batch18-calendarbridge-primary-20261022.json",
+          "record": {
+            "url": "https://help.calendarbridge.com/user-docs/how-to-get-an-ics-url-for-you-calendar",
+            "title": "How to get a .ics URL for your calendar",
+            "status": "full_main_body_reviewed",
+            "publisherUpdated": "2026-08-20",
+            "readRanges": [
+              [
+                0,
+                112
+              ],
+              [
+                25,
+                113
+              ]
+            ],
+            "totalExtractedLines": 114,
+            "substantiveRange": [
+              0,
+              113
+            ],
+            "summary": "The page distinguishes source-only feeds from account connections, covers provider link retrieval, and contrasts imported files with subscriptions. It also promotes a combined feed product.",
+            "candidateIntentTerms": [
+              "find calendar subscription URL",
+              "ICS import versus subscribe",
+              "calendar feed versus account connection"
+            ],
+            "boundaries": [
+              "Provider instructions here are secondary to Apple/Google/Microsoft documentation.",
+              "A literal .ics suffix is not a universal validity test.",
+              "Do not republish a private calendar merely to troubleshoot.",
+              "Its own provider sections mention restricted-detail feeds, so the final exclusivity claim needs independent evidence.",
+              "No Cloud support for every listed provider or generated aggregate feed inferred."
+            ]
+          },
+          "statusEvidence": "full"
+        }
+      ]
+    },
+    {
+      "url": "https://help.calendarbridge.com/user-docs/about-syncing/",
+      "publisher": "CalendarBridge",
+      "status": "full",
+      "observedQueryOrIntent": [
+        "one way versus two way calendar sync",
+        "edit original or copied event",
+        "calendar subscription refresh delay"
+      ],
+      "intentEvidenceNote": "Verbatim recorded intent/topic/summary where present; null means no URL-specific intent was recorded. URL spelling is not body evidence.",
+      "existingCanonicals": [
+        "what-calendar-sync-actually-does"
+      ],
+      "canonicalMappingBasis": "Editorial candidate routing from recorded topic or URL label; not proof target body covers the task. Null/empty where unsupported.",
+      "nextAction": "Use source-specific boundaries and existing canonical mapping; offboarding gap needs provider/native proof before authoring.",
+      "provenance": [
+        {
+          "file": "research/competitors/batch09-provider-intents-20261021.json",
+          "field": "/discoveredOnly/14/url",
+          "record": {
+            "url": "https://help.calendarbridge.com/user-docs/about-syncing/",
+            "status": "discovered_search_or_index_link_not_body_reviewed"
+          },
+          "batchQueries": [],
+          "queryAssociation": "Batch-level only; original file does not attribute an individual query to this URL.",
+          "statusEvidence": "discovered"
+        },
+        {
+          "file": "research/competitors/batch18-calendarbridge-primary-20261022.json",
+          "record": {
+            "url": "https://help.calendarbridge.com/user-docs/about-syncing/",
+            "title": "About Syncing",
+            "status": "full_main_body_reviewed",
+            "publisherUpdated": "2025-05-05",
+            "readRanges": [
+              [
+                0,
+                26
+              ]
+            ],
+            "totalExtractedLines": 27,
+            "substantiveRange": [
+              0,
+              26
+            ],
+            "summary": "Describes one-way copying rules, source-authoritative edits, avoidance of recopy loops, optional copied details, and different source-dependent update cadences. Claims no event-count limit.",
+            "candidateIntentTerms": [
+              "one way versus two way calendar sync",
+              "edit original or copied event",
+              "calendar subscription refresh delay"
+            ],
+            "boundaries": [
+              "Cadence and capacity are CalendarBridge claims, not measured results or Cloud guarantees.",
+              "An event-count limit and a date-window limit are different dimensions; do not equate unrestricted count with unlimited history."
+            ]
+          },
+          "statusEvidence": "full"
+        }
+      ]
+    },
+    {
+      "url": "https://calendarbridge.com/sync-work-and-personal-calendars/",
+      "publisher": "CalendarBridge",
+      "status": "full",
+      "observedQueryOrIntent": [
+        "work and personal calendar together",
+        "busy time without private event details",
+        "unified calendar versus calendar sync"
+      ],
+      "intentEvidenceNote": "Verbatim recorded intent/topic/summary where present; null means no URL-specific intent was recorded. URL spelling is not body evidence.",
+      "existingCanonicals": [],
+      "canonicalMappingBasis": "Editorial candidate routing from recorded topic or URL label; not proof target body covers the task. Null/empty where unsupported.",
+      "nextAction": "Use source-specific boundaries and existing canonical mapping; offboarding gap needs provider/native proof before authoring.",
+      "provenance": [
+        {
+          "file": "research/competitors/batch09-provider-intents-20261021.json",
+          "field": "/discoveredOnly/16/url",
+          "record": {
+            "url": "https://calendarbridge.com/sync-work-and-personal-calendars/",
+            "status": "discovered_search_or_index_link_not_body_reviewed"
+          },
+          "batchQueries": [],
+          "queryAssociation": "Batch-level only; original file does not attribute an individual query to this URL.",
+          "statusEvidence": "discovered"
+        },
+        {
+          "file": "research/competitors/batch18-calendarbridge-primary-20261022.json",
+          "record": {
+            "url": "https://calendarbridge.com/sync-work-and-personal-calendars/",
+            "title": "Calendar & Scheduling Tools for People with Multiple Calendars",
+            "status": "full_main_body_reviewed",
+            "readRanges": [
+              [
+                0,
+                278
+              ],
+              [
+                53,
+                389
+              ]
+            ],
+            "totalExtractedLines": 390,
+            "substantiveRange": [
+              42,
+              324
+            ],
+            "summary": "Separates combined viewing, calendar copying, booking pages and scheduling assistance as different solutions. Discusses work/personal visibility, multiple accounts, and detail controls. FAQs distinguish original events from copies and periodic versus source-triggered updates.",
+            "candidateIntentTerms": [
+              "work and personal calendar together",
+              "busy time without private event details",
+              "unified calendar versus calendar sync"
+            ],
+            "boundaries": [
+              "Security, compliance, storage, pricing and testimonial claims are unverified publisher assertions.",
+              "Booking pages and AI scheduling are not inferred Cloud features.",
+              "No subscriptions, trials or account changes performed."
+            ]
           },
           "statusEvidence": "full"
         }

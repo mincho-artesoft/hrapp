@@ -292,7 +292,7 @@ export const ARTICLES_DE_DE: Readonly<Record<string, LocalisedArticle>> = {
   'weather-inside-your-calendar': {
   "title": "Ein Kalender, in dem das Wetter schon drin ist",
   "short": "Wetter im Kalender",
-  "description": "Warum es ein Konstruktionsfehler ist, für einen Tag zwei Apps zu befragen — und wie ein Kalender aussieht, in dem die Vorhersage Teil der Ansicht ist statt daneben zu stehen.",
+  "description": "Termine und Wetter gemeinsam planen: So ergänzt die verfügbare Vorhersage den Kalender, und warum sie nicht jeden sichtbaren Tag abdeckt.",
   "lede": "Fast alle planen einen Tag über zwei Apps hinweg. Der Kalender sagt, wo Sie sein müssen; die Wetter-App sagt, wie es dort sein wird. Beides gleichzeitig im Kopf zu halten ist der Teil, den niemand bemerkt — bis ein Samstag ins Wasser fällt.",
   "commonBelief": "Dass ein Kalender für Termine da ist und eine Wetter-App fürs Wetter, und dass die Trennung einfach so ist, wie Telefone funktionieren.",
   "sections": [

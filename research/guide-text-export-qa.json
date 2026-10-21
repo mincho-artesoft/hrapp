@@ -2,7 +2,7 @@
   "guides": 51,
   "selection": "tools/guide-text-selection.json",
   "extraction": "Visible article headings, paragraphs, lists, FAQs and source links; gallery/other-app cards excluded.",
-  "exportedCharacters": 291209,
+  "exportedCharacters": 299573,
   "records": [
     {
       "slug": "what-calendar-sync-actually-does",
@@ -133,20 +133,20 @@
     {
       "slug": "weather-inside-your-calendar",
       "source": "https://www.cloud-calendars.com/articles/weather-inside-your-calendar/",
-      "blocks": 32,
-      "characters": 2997
+      "blocks": 46,
+      "characters": 5683
     },
     {
       "slug": "forecast-beside-every-event",
       "source": "https://www.cloud-calendars.com/articles/forecast-beside-every-event/",
       "blocks": 39,
-      "characters": 4037
+      "characters": 4074
     },
     {
       "slug": "a-fourteen-day-view-of-the-weather",
       "source": "https://www.cloud-calendars.com/articles/a-fourteen-day-view-of-the-weather/",
-      "blocks": 30,
-      "characters": 2705
+      "blocks": 46,
+      "characters": 5483
     },
     {
       "slug": "weather-where-the-event-is",
@@ -157,8 +157,8 @@
     {
       "slug": "planning-outdoors-without-being-rained-on",
       "source": "https://www.cloud-calendars.com/articles/planning-outdoors-without-being-rained-on/",
-      "blocks": 31,
-      "characters": 2795
+      "blocks": 46,
+      "characters": 5547
     },
     {
       "slug": "icloud-google-and-outlook-in-one-view",
@@ -248,19 +248,19 @@
       "slug": "reading-a-chance-of-rain",
       "source": "https://www.cloud-calendars.com/articles/reading-a-chance-of-rain/",
       "blocks": 45,
-      "characters": 5991
+      "characters": 6023
     },
     {
       "slug": "wind-the-forecast-nobody-reads",
       "source": "https://www.cloud-calendars.com/articles/wind-the-forecast-nobody-reads/",
       "blocks": 45,
-      "characters": 5633
+      "characters": 5665
     },
     {
       "slug": "daylight-as-a-planning-constraint",
       "source": "https://www.cloud-calendars.com/articles/daylight-as-a-planning-constraint/",
       "blocks": 45,
-      "characters": 5835
+      "characters": 5867
     },
     {
       "slug": "caldav-calendar-on-iphone",
@@ -308,7 +308,7 @@
       "slug": "what-a-forecast-can-and-cannot-tell-you",
       "source": "https://www.cloud-calendars.com/articles/what-a-forecast-can-and-cannot-tell-you/",
       "blocks": 45,
-      "characters": 5907
+      "characters": 5922
     }
   ]
 }

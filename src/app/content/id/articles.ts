@@ -104,7 +104,7 @@ export const ARTICLES_ID: Readonly<Record<string, LocalisedArticle>> = {
   'weather-inside-your-calendar': {
   "title": "Kalender yang sudah memuat cuaca di dalamnya",
   "short": "Cuaca di dalam kalender",
-  "description": "Mengapa memeriksa dua aplikasi untuk menata satu hari adalah cacat rancangan, dan seperti apa kalender yang prakiraannya menjadi bagian tampilan alih-alih berdiri di sebelahnya.",
+  "description": "Rencanakan hari dengan acara dan cuaca dalam satu tampilan. Pahami prakiraan yang tersedia dan batas jangkauannya di kalender.",
   "lede": "Hampir semua orang menata harinya di antara dua aplikasi. Kalender berkata di mana harus berada; aplikasi cuaca berkata bagaimana cuacanya ketika tiba. Menahan keduanya sekaligus di kepala adalah bagian yang tak seorang pun sadar sedang dilakukannya — sampai satu hari Sabtu hilang percuma.",
   "commonBelief": "Bahwa kalender untuk janji temu dan aplikasi cuaca untuk cuaca, dan memisahkan keduanya memang begitulah ponsel bekerja.",
   "sections": [

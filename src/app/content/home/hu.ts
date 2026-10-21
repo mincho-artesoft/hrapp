@@ -18,7 +18,7 @@ export const HOME_HU: HomeCopy = {
     language: 'Nyelv',
   },
   hero: {
-    badge: '{v} verzió — a megosztott események mostantól maguktól frissülnek',
+    badge: "{v} verzió — események és naptárak megosztása",
     title: ['Az Ön naptára.', 'Az Ön ege.', 'Egyetlen nézet.'],
     lead: 'Minden naptára — iCloud, Google, Microsoft — egy helyen, az előrejelzéssel magába a napba építve. Ne találgassa többé, milyen lesz a délután.',
     seeItMove: 'Nézze meg mozgásban',
@@ -47,12 +47,12 @@ export const HOME_HU: HomeCopy = {
   showcase: {
     eyebrow: 'A bemutató',
     title: ['Ötféleképpen nézni', 'ugyanazt a hetet.'],
-    lead: 'Ugyanazok az események, aszerint elrendezve, amit valójában kérdez — és mindegyik hozza az előrejelzését.',
+    lead: "Válasszon áttekintést vagy részletes idővonalat, az ezt támogató nézetek mellett elérhető időjárási adatokkal.",
     panels: [
       {
         kicker: 'Napi nézet',
         title: 'Az óráról órára terv, az éggel együtt',
-        body: 'Órarács, amelyben minden sor a saját előrejelzését hozza. A háromórai megbeszélést és a háromórai esőt ugyanabban a pillantásban látja — nincs második alkalmazás, nincs találgatás.',
+        body: "Hasonlítsa össze a találkozókat az elérhető óránkénti előrejelzéssel ugyanabban a rácsban. Szabadtéri tervezéskor ellenőrizze a kiválasztott helyet és az előrejelzés dátumát.",
         alt: 'Napi nézet órarács­csal, eseményekkel és óránkénti időjárás-ikonokkal',
         bullets: ['Élő „most” vonal', 'Óránkénti hőmérséklet', 'Húzással áthelyezhető'],
       },
@@ -73,7 +73,7 @@ export const HOME_HU: HomeCopy = {
       {
         kicker: 'Hónap és év',
         title: 'Lépjen elég messze, hogy lássa a dolgok alakját',
-        body: 'A havi nézet megjelöl minden napot, amelyen van valami. Az évi nézet tizenkét hónapot tesz egy képernyőre — a leggyorsabb módja egy szabad hét megtalálásának.',
+        body: "Hasonlítsa össze a kiválasztott naptárak eseményeit a hónap vagy év során. Mielőtt szabadnak tekint egy napot, nyissa meg és nézze át minden találkozóját.",
         alt: 'Havi nézet eseményjelölőkkel minden napon',
         bullets: ['Sűrűség egy pillantásra', 'Tizenkét hónap egyszerre', 'Ugrás bármely dátumra'],
       },
@@ -136,11 +136,11 @@ tabs: {"hourly":"Óránként","daily":"Naponta","weekend":"Hétvége","range":"E
     lead: 'Három fiók, egy rács, és gesztusok, amelyek úgy viselkednek, ahogy a keze várja.',
     unified: {
       title: 'Három fiók. Egy rács.',
-      body: 'iCloud, Google Naptár és Microsoft Outlook, mindkét irányban szinkronizálva és színnel elválasztva egyetlen nézetben. Kapcsoljon ki bármelyik naptárat, ha nem akarja látni — a többi tovább működik.',
+      body: "Tekintse meg együtt a kiválasztott iCloud- és Google-naptárakat; a Premium Microsoft-naptárakkal egészíti ki őket. A fiók jogosultságai szerint szerkesszen, és változtatás után ellenőrizze a forrásnaptárt.",
     },
     gestures: {
       title: 'Húzza. Nyújtsa. Kész.',
-      body: 'Fogjon meg egy eseményt, és csúsztassa másik időpontra vagy másik napra. Húzza a felső vagy alsó szélét, hogy megváltoztassa a hosszát. Nincs ablak, nincs mentés gomb.',
+      body: "Helyezze át a szerkeszthető eseményeket más időpontra vagy napra, illetve módosítsa időtartamukat az idővonalon. Ismétlődő eseménynél válassza ki a módosítandó alkalmakat, és ellenőrizze a mentett eredményt.",
     },
     tiles: [
       {
@@ -150,7 +150,7 @@ tabs: {"hourly":"Óránként","daily":"Naponta","weekend":"Hétvége","range":"E
       },
       {
         title: 'Alakítson egy előrejelzést tervvé',
-        body: 'Érintsen meg bármely órát az időjárás-központban, és új esemény nyílik, már arra az időpontra állítva. Találja meg a száraz ablakot, és foglalja le.',
+        body: "Válasszon egy elérhető előrejelzési órát egy eseménytervezet indításához, majd mentés előtt ellenőrizze a dátumot, időpontot és naptárt.",
         badge: 'Egy érintés',
       },
       {
@@ -161,7 +161,7 @@ tabs: {"hourly":"Óránként","daily":"Naponta","weekend":"Hétvége","range":"E
     ],
     sourceNotes: {
       builtIn: 'Beépítve',
-      twoWay: 'Kétirányú',
+      twoWay: "Csatlakoztatva",
       premium: 'Premium',
     },
   },
@@ -173,14 +173,14 @@ tabs: {"hourly":"Óránként","daily":"Naponta","weekend":"Hétvége","range":"E
     yearly: 'Évente',
     saveMore: 'többet spórol',
     billingPeriod: 'Számlázási időszak',
-    mostPopular: 'A legnépszerűbb',
+    mostPopular: "Kiemelt csomag",
     everythingIn: 'Minden a(z) {tier} csomagból, valamint:',
     forever: 'örökre',
     perMonth: '/ hó',
     perYear: '/ év',
     downloadFree: 'Letöltés ingyen',
     startWith: 'Kezdés a(z) {tier} csomaggal',
-    note: 'Az előfizetések automatikusan megújulnak, és az Apple ID-n keresztül számlázódnak. Bármikor lemondhatja az App Store-fiókja beállításaiban, legkésőbb 24 órával az időszak vége előtt.',
+    note: "Az előfizetések automatikusan megújulnak az Apple-fiókján keresztül. Vásárlás előtt ellenőrizze a helyi árat és a számlázási időszakot. A lemondást a Beállításokban, a neve alatt, az Előfizetések menüben kezelheti.",
     plans: {
       free: {
         name: 'Ingyenes',
@@ -229,7 +229,7 @@ tabs: {"hourly":"Óránként","daily":"Naponta","weekend":"Hétvége","range":"E
       },
       {
         q: 'Módosíthatok egy eseményt húzással?',
-        a: 'Ez a szerkesztés fő módja. Húzzon egy eseményt másik időpontra vagy másik napra, vagy húzza a felső, illetve alsó szélét az időtartam módosításához. A változások egyenesen visszakerülnek a forrásnaptárba.',
+        a: "A szerkeszthető eseményeket áthelyezheti, és módosíthatja időtartamukat az idővonalon. Ellenőrizze az ismétlődésre vonatkozó választást és a mentett időpontot; a kapcsolt naptárak frissítése a jogosultságoktól és a sikeres szinkronizálástól függ.",
       },
       {
         q: 'Mit mutatnak a modulok?',
@@ -241,7 +241,7 @@ tabs: {"hourly":"Óránként","daily":"Naponta","weekend":"Hétvége","range":"E
       },
       {
         q: 'Hogyan mondhatom le az előfizetést?',
-        a: 'Az előfizetéseket az Apple kezeli, így az App Store-fiókja beállításaiban mondhatja le. Tegye meg legkésőbb 24 órával az időszak vége előtt, és nem terheljük meg újra.',
+        a: "iPhone-on vagy iPaden nyissa meg a Beállításokat, koppintson a nevére, majd az Előfizetésekre. Válassza a Cloud Calendarst, és ott mondja le; ellenőrizze az Apple által jelzett lemondási vagy lejárati állapotot.",
       },
     ],
   },

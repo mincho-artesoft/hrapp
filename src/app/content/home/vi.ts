@@ -18,7 +18,7 @@ export const HOME_VI: HomeCopy = {
     language: 'Ngôn ngữ',
   },
   hero: {
-    badge: 'Phiên bản {v} — sự kiện đã chia sẻ giờ tự cập nhật',
+    badge: "Phiên bản {v} — chia sẻ sự kiện và lịch",
     title: ['Lịch của bạn.', 'Bầu trời của bạn.', 'Một khung nhìn.'],
     lead: 'Mọi cuốn lịch bạn có — iCloud, Google, Microsoft — ở cùng một nơi, với dự báo dựng ngay trong chính ngày đó. Thôi đoán xem buổi chiều sẽ ra sao.',
     seeItMove: 'Xem nó chuyển động',
@@ -47,12 +47,12 @@ export const HOME_VI: HomeCopy = {
   showcase: {
     eyebrow: 'Giới thiệu',
     title: ['Năm cách nhìn', 'cùng một tuần.'],
-    lead: 'Vẫn những sự kiện ấy, sắp theo câu hỏi bạn thật sự đang đặt ra — và mỗi cái đều mang theo dự báo của nó.',
+    lead: "Chọn tổng quan hoặc dòng thời gian chi tiết, kèm thời tiết hiện có trong các chế độ hỗ trợ.",
     panels: [
       {
         kicker: 'Khung nhìn ngày',
         title: 'Kế hoạch từng giờ, kèm luôn bầu trời',
-        body: 'Một lưới giờ mà mỗi hàng mang dự báo riêng. Bạn thấy cuộc họp lúc ba giờ và cơn mưa lúc ba giờ trong cùng một cái nhìn — không cần ứng dụng thứ hai, không phải phỏng đoán.',
+        body: "So sánh cuộc hẹn với dự báo theo giờ hiện có trong cùng lưới. Kiểm tra địa điểm đã chọn và ngày dự báo khi lên kế hoạch ngoài trời.",
         alt: 'Khung nhìn ngày với lưới giờ, sự kiện và biểu tượng thời tiết theo từng giờ',
         bullets: ['Đường «bây giờ» trực tiếp', 'Nhiệt độ theo giờ', 'Kéo để dời'],
       },
@@ -73,7 +73,7 @@ export const HOME_VI: HomeCopy = {
       {
         kicker: 'Tháng và năm',
         title: 'Lùi đủ xa để thấy hình dạng của mọi thứ',
-        body: 'Khung nhìn tháng đánh dấu mọi ngày có việc. Khung nhìn năm đặt mười hai tháng lên một màn hình — cách nhanh nhất để tìm một tuần trống.',
+        body: "So sánh sự kiện từ các lịch đã chọn theo tháng hoặc năm. Mở một ngày để xem mọi cuộc hẹn trước khi coi ngày đó là trống.",
         alt: 'Khung nhìn tháng với dấu hiệu sự kiện trên mỗi ngày',
         bullets: [
           'Mật độ trong một cái liếc',
@@ -140,11 +140,11 @@ tabs: {"hourly":"Theo giờ","daily":"Theo ngày","weekend":"Cuối tuần","ran
     lead: 'Ba tài khoản, một cái lưới, và một bộ thao tác cư xử đúng như tay bạn mong đợi.',
     unified: {
       title: 'Ba tài khoản. Một cái lưới.',
-      body: 'iCloud, Google Lịch và Microsoft Outlook, đồng bộ hai chiều và phân biệt bằng màu trong cùng một khung nhìn. Tắt cuốn lịch nào bạn không muốn thấy — phần còn lại vẫn chạy.',
+      body: "Xem chung các lịch iCloud và Google đã chọn; Premium thêm lịch Microsoft. Chỉnh sửa theo quyền tài khoản và kiểm tra lịch nguồn sau thay đổi.",
     },
     gestures: {
       title: 'Kéo nó. Giãn nó. Xong.',
-      body: 'Nắm một sự kiện và trượt nó sang giờ khác hay ngày khác. Kéo cạnh trên hoặc cạnh dưới để đổi độ dài. Không cửa sổ, không nút lưu.',
+      body: "Chuyển sự kiện được phép sửa sang giờ hoặc ngày khác, hoặc đổi thời lượng trên dòng thời gian. Với sự kiện lặp, chọn các lần cần đổi rồi kiểm tra kết quả đã lưu.",
     },
     tiles: [
       {
@@ -154,7 +154,7 @@ tabs: {"hourly":"Theo giờ","daily":"Theo ngày","weekend":"Cuối tuần","ran
       },
       {
         title: 'Biến một dự báo thành kế hoạch',
-        body: 'Chạm vào bất kỳ giờ nào trong trung tâm thời tiết và một sự kiện mới mở ra, đã đặt sẵn vào giờ đó. Tìm khoảng khô ráo rồi giữ chỗ.',
+        body: "Chọn giờ có dự báo để bắt đầu bản nháp sự kiện, rồi kiểm tra ngày, giờ và lịch trước khi lưu.",
         badge: 'Một chạm',
       },
       {
@@ -165,7 +165,7 @@ tabs: {"hourly":"Theo giờ","daily":"Theo ngày","weekend":"Cuối tuần","ran
     ],
     sourceNotes: {
       builtIn: 'Có sẵn',
-      twoWay: 'Hai chiều',
+      twoWay: "Kết nối",
       premium: 'Premium',
     },
   },
@@ -177,14 +177,14 @@ tabs: {"hourly":"Theo giờ","daily":"Theo ngày","weekend":"Cuối tuần","ran
     yearly: 'Hằng năm',
     saveMore: 'tiết kiệm hơn',
     billingPeriod: 'Kỳ thanh toán',
-    mostPopular: 'Được chọn nhiều nhất',
+    mostPopular: "Gói nổi bật",
     everythingIn: 'Mọi thứ trong {tier}, cộng thêm:',
     forever: 'mãi mãi',
     perMonth: '/ tháng',
     perYear: '/ năm',
     downloadFree: 'Tải miễn phí',
     startWith: 'Bắt đầu với {tier}',
-    note: 'Thuê bao tự động gia hạn và được tính qua Apple ID của bạn. Huỷ bất cứ lúc nào trong cài đặt tài khoản App Store, chậm nhất 24 giờ trước khi kỳ hạn kết thúc.',
+    note: "Đăng ký tự động gia hạn qua Tài khoản Apple. Kiểm tra giá địa phương và kỳ thanh toán trước khi mua. Quản lý hủy trong Cài đặt, tên bạn, rồi Đăng ký.",
     plans: {
       free: {
         name: 'Miễn phí',
@@ -233,7 +233,7 @@ tabs: {"hourly":"Theo giờ","daily":"Theo ngày","weekend":"Cuối tuần","ran
       },
       {
         q: 'Tôi có thể đổi một sự kiện bằng cách kéo nó không?',
-        a: 'Đó là cách sửa chính. Kéo sự kiện sang giờ khác hoặc ngày khác, hoặc kéo cạnh trên hay cạnh dưới để đổi độ dài. Thay đổi đồng bộ thẳng trở lại cuốn lịch gốc.',
+        a: "Bạn có thể chuyển sự kiện được phép sửa và đổi thời lượng trên dòng thời gian. Kiểm tra phạm vi lặp và giờ đã lưu; cập nhật lịch kết nối phụ thuộc quyền và đồng bộ thành công.",
       },
       {
         q: 'Widget hiển thị những gì?',
@@ -245,7 +245,7 @@ tabs: {"hourly":"Theo giờ","daily":"Theo ngày","weekend":"Cuối tuần","ran
       },
       {
         q: 'Tôi huỷ thuê bao thế nào?',
-        a: 'Thuê bao do Apple xử lý, nên bạn huỷ trong cài đặt tài khoản App Store. Hãy làm việc đó chậm nhất 24 giờ trước khi kỳ hạn kết thúc và bạn sẽ không bị tính tiền lần nữa.',
+        a: "Trên iPhone hoặc iPad, mở Cài đặt, chạm tên bạn rồi chọn Đăng ký. Chọn Cloud Calendars và hủy tại đó; kiểm tra trạng thái hủy hoặc hết hạn Apple hiển thị.",
       },
     ],
   },

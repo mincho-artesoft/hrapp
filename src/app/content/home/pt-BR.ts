@@ -18,7 +18,7 @@ export const HOME_PT_BR: HomeCopy = {
     language: 'Idioma',
   },
   hero: {
-    badge: 'Versão {v} — compromissos compartilhados agora se mantêm atualizados sozinhos',
+    badge: "Versão {v} — compartilhamento de eventos e calendários",
     title: ['Sua agenda.', 'Seu céu.', 'Uma só vista.'],
     lead: 'Todas as agendas que você tem — iCloud, Google, Microsoft — em um só lugar, com a previsão dentro do próprio dia. Pare de adivinhar como vai ser a tarde.',
     seeItMove: 'Ver em movimento',
@@ -47,12 +47,12 @@ export const HOME_PT_BR: HomeCopy = {
   showcase: {
     eyebrow: 'O tour',
     title: ['Cinco jeitos de olhar', 'para a mesma semana.'],
-    lead: 'Os mesmos compromissos, dispostos conforme a pergunta que você está realmente fazendo — e cada um carrega a previsão.',
+    lead: "Escolha um panorama geral ou uma linha do tempo detalhada, com a previsão disponível nas visões compatíveis.",
     panels: [
       {
         kicker: 'Vista de dia',
         title: 'O plano hora a hora, com o céu junto',
-        body: 'Uma grade horária em que cada linha carrega a própria previsão. Você vê a reunião das três e a chuva das três no mesmo olhar: sem segundo aplicativo, sem adivinhação.',
+        body: "Compare compromissos e a previsão horária disponível na mesma grade. Confira o local e a data da previsão ao planejar atividades ao ar livre.",
         alt: 'Vista de dia com grade horária, compromissos e ícones do tempo por hora',
         bullets: ['Linha de «agora» ao vivo', 'Temperatura por hora', 'Arraste para remarcar'],
       },
@@ -73,7 +73,7 @@ export const HOME_PT_BR: HomeCopy = {
       {
         kicker: 'Mês e ano',
         title: 'Afaste o bastante para ver o formato das coisas',
-        body: 'A vista de mês marca todo dia que tem alguma coisa. A vista de ano põe doze meses em uma tela: o jeito mais rápido de achar uma semana livre.',
+        body: "Compare os eventos dos calendários selecionados ao longo do mês ou ano. Abra um dia para examinar todos os compromissos antes de considerá-lo livre.",
         alt: 'Vista de mês com indicadores de compromisso em cada dia',
         bullets: ['Densidade num relance', 'Doze meses de uma vez', 'Pule para qualquer data'],
       },
@@ -136,11 +136,11 @@ tabs: {"hourly":"Por hora","daily":"Por dia","weekend":"Fim de semana","range":"
     lead: 'Três contas, uma grade e um conjunto de gestos que se comportam como suas mãos esperam.',
     unified: {
       title: 'Três contas. Uma grade.',
-      body: 'iCloud, Google Agenda e Microsoft Outlook, sincronizados nos dois sentidos e separados por cor em uma vista só. Desligue qualquer agenda quando não quiser vê-la — o resto continua funcionando.',
+      body: "Veja os calendários iCloud e Google selecionados juntos; Premium adiciona calendários Microsoft. Edite onde sua conta permitir e confira o calendário de origem após as alterações.",
     },
     gestures: {
       title: 'Arraste. Estique. Pronto.',
-      body: 'Pegue um compromisso e deslize para outro horário ou outro dia. Puxe a borda de cima ou de baixo para mudar a duração. Sem janela, sem botão de salvar.',
+      body: "Mova eventos editáveis para outro horário ou dia, ou ajuste a duração na linha do tempo. Em eventos recorrentes, escolha quais ocorrências alterar e confira o resultado salvo.",
     },
     tiles: [
       {
@@ -150,7 +150,7 @@ tabs: {"hourly":"Por hora","daily":"Por dia","weekend":"Fim de semana","range":"
       },
       {
         title: 'Transforme uma previsão em um plano',
-        body: 'Toque em qualquer hora na central de tempo e abre um compromisso novo, já naquele horário. Ache a janela seca e reserve.',
+        body: "Escolha uma hora com previsão disponível para iniciar um rascunho de evento. Revise data, horário e calendário antes de salvar.",
         badge: 'Um toque',
       },
       {
@@ -161,7 +161,7 @@ tabs: {"hourly":"Por hora","daily":"Por dia","weekend":"Fim de semana","range":"
     ],
     sourceNotes: {
       builtIn: 'Integrado',
-      twoWay: 'Bidirecional',
+      twoWay: "Conectado",
       premium: 'Premium',
     },
   },
@@ -173,14 +173,14 @@ tabs: {"hourly":"Por hora","daily":"Por dia","weekend":"Fim de semana","range":"
     yearly: 'Anual',
     saveMore: 'economize mais',
     billingPeriod: 'Período de cobrança',
-    mostPopular: 'Mais escolhido',
+    mostPopular: "Plano em destaque",
     everythingIn: 'Tudo do {tier}, e mais:',
     forever: 'para sempre',
     perMonth: '/ mês',
     perYear: '/ ano',
     downloadFree: 'Baixar grátis',
     startWith: 'Começar com {tier}',
-    note: 'As assinaturas se renovam automaticamente e são cobradas pelo seu ID Apple. Cancele quando quiser nos ajustes da sua conta da App Store, pelo menos 24 horas antes de o período acabar.',
+    note: "As assinaturas se renovam automaticamente pela sua Conta Apple. Confira o preço local e o período antes de comprar. Para cancelar, abra Ajustes, seu nome e Assinaturas.",
     plans: {
       free: {
         name: 'Grátis',
@@ -229,7 +229,7 @@ tabs: {"hourly":"Por hora","daily":"Por dia","weekend":"Fim de semana","range":"
       },
       {
         q: 'Dá para mudar um compromisso arrastando?',
-        a: 'É a principal forma de editar. Arraste um compromisso para outro horário ou outro dia, ou puxe a borda de cima ou de baixo para mudar a duração. As mudanças voltam direto para a agenda de origem.',
+        a: "Você pode mover eventos editáveis e ajustar sua duração na linha do tempo. Confira o alcance da recorrência e o horário salvo; atualizações de calendários conectados dependem das permissões e da sincronização bem-sucedida.",
       },
       {
         q: 'O que os widgets mostram?',
@@ -241,7 +241,7 @@ tabs: {"hourly":"Por hora","daily":"Por dia","weekend":"Fim de semana","range":"
       },
       {
         q: 'Como cancelo uma assinatura?',
-        a: 'As assinaturas são geridas pela Apple, então você cancela nos ajustes da sua conta da App Store. Faça isso pelo menos 24 horas antes de o período acabar e não será cobrado de novo.',
+        a: "No iPhone ou iPad, abra Ajustes, toque no seu nome e em Assinaturas. Escolha Cloud Calendars e cancele ali; confira o status de cancelamento ou expiração mostrado pela Apple.",
       },
     ],
   },

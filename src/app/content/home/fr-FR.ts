@@ -18,7 +18,7 @@ export const HOME_FR_FR: HomeCopy = {
     language: 'Langue',
   },
   hero: {
-    badge: 'Version {v} — les événements partagés se tiennent désormais à jour tout seuls',
+    badge: "Version {v} — partage d’événements et de calendriers",
     title: ['Votre agenda.', 'Votre ciel.', 'Une seule vue.'],
     lead: 'Tous les agendas que vous avez — iCloud, Google, Microsoft — au même endroit, avec la prévision intégrée à la journée elle-même. Fini les suppositions sur l’après-midi.',
     seeItMove: 'Le voir en mouvement',
@@ -48,12 +48,12 @@ export const HOME_FR_FR: HomeCopy = {
   showcase: {
     eyebrow: 'La visite',
     title: ['Cinq façons de regarder', 'la même semaine.'],
-    lead: 'Les mêmes événements, disposés selon la question que vous vous posez réellement — et chacun porte sa prévision.',
+    lead: "Choisissez une vue d’ensemble ou une chronologie détaillée, avec la météo disponible dans les vues compatibles.",
     panels: [
       {
         kicker: 'Vue journalière',
         title: 'Le plan heure par heure, avec le ciel attaché',
-        body: 'Une grille horaire où chaque ligne porte sa propre prévision. Vous voyez la réunion de 15 h et la pluie de 15 h d’un même coup d’œil — pas de seconde application, pas de supposition.',
+        body: "Comparez vos rendez-vous aux prévisions horaires disponibles dans la même grille. Pour une sortie, vérifiez le lieu sélectionné et la date des prévisions.",
         alt: 'Vue journalière avec grille horaire, événements et icônes météo par heure',
         bullets: ['Ligne « maintenant » en direct', 'Température horaire', 'Glisser pour déplacer'],
       },
@@ -78,7 +78,7 @@ export const HOME_FR_FR: HomeCopy = {
       {
         kicker: 'Mois et année',
         title: 'Reculez assez pour voir la forme des choses',
-        body: 'La vue mensuelle marque chaque jour qui contient quelque chose. La vue annuelle met douze mois sur un écran — le moyen le plus rapide de trouver une semaine libre.',
+        body: "Comparez les événements des calendriers sélectionnés sur le mois ou l’année. Ouvrez un jour pour examiner tous ses rendez-vous avant de le considérer comme libre.",
         alt: 'Vue mensuelle avec des indicateurs d’événement sur chaque jour',
         bullets: [
           'Densité d’un coup d’œil',
@@ -145,11 +145,11 @@ tabs: {"hourly":"Par heure","daily":"Par jour","weekend":"Week-end","range":"Pé
     lead: 'Trois comptes, une grille, et des gestes qui se comportent comme vos mains s’y attendent.',
     unified: {
       title: 'Trois comptes. Une grille.',
-      body: 'iCloud, Google Agenda et Microsoft Outlook, synchronisés dans les deux sens et distingués par couleur dans une vue unique. Masquez un agenda quand vous ne voulez pas le voir — le reste continue de fonctionner.',
+      body: "Consultez ensemble les calendriers iCloud et Google sélectionnés ; Premium ajoute les calendriers Microsoft. Modifiez selon les autorisations de votre compte et vérifiez le calendrier source après les changements.",
     },
     gestures: {
       title: 'Glissez. Étirez. C’est fait.',
-      body: 'Attrapez un événement et faites-le glisser vers une autre heure ou un autre jour. Tirez son bord haut ou bas pour changer sa durée. Pas de fenêtre, pas de bouton Enregistrer.',
+      body: "Déplacez les événements modifiables vers une autre heure ou un autre jour, ou ajustez leur durée dans la chronologie. Pour un événement récurrent, choisissez les occurrences à modifier et vérifiez le résultat enregistré.",
     },
     tiles: [
       {
@@ -159,7 +159,7 @@ tabs: {"hourly":"Par heure","daily":"Par jour","weekend":"Week-end","range":"Pé
       },
       {
         title: 'Transformer une prévision en plan',
-        body: 'Touchez une heure dans le pôle météo et un nouvel événement s’ouvre, déjà réglé sur cette heure. Trouvez la fenêtre sèche, puis réservez-la.',
+        body: "Choisissez une heure de prévision disponible pour commencer un brouillon d’événement, puis vérifiez sa date, son heure et son calendrier avant d’enregistrer.",
         badge: 'Une touche',
       },
       {
@@ -170,7 +170,7 @@ tabs: {"hourly":"Par heure","daily":"Par jour","weekend":"Week-end","range":"Pé
     ],
     sourceNotes: {
       builtIn: 'Intégré',
-      twoWay: 'Bidirectionnel',
+      twoWay: "Connecté",
       premium: 'Premium',
     },
   },
@@ -182,14 +182,14 @@ tabs: {"hourly":"Par heure","daily":"Par jour","weekend":"Week-end","range":"Pé
     yearly: 'Annuel',
     saveMore: 'économisez plus',
     billingPeriod: 'Période de facturation',
-    mostPopular: 'Le plus choisi',
+    mostPopular: "Formule mise en avant",
     everythingIn: 'Tout ce que contient {tier}, plus :',
     forever: 'pour toujours',
     perMonth: '/ mois',
     perYear: '/ an',
     downloadFree: 'Télécharger gratuitement',
     startWith: 'Commencer avec {tier}',
-    note: 'Les abonnements se renouvellent automatiquement et sont facturés via votre identifiant Apple. Résiliez quand vous voulez dans les réglages de votre compte App Store, au moins 24 heures avant la fin de la période.',
+    note: "Les abonnements se renouvellent automatiquement via votre compte Apple. Vérifiez le prix local et la période de facturation avant l’achat. Gérez la résiliation dans Réglages, sous votre nom → Abonnements.",
     plans: {
       free: {
         name: 'Gratuit',
@@ -238,7 +238,7 @@ tabs: {"hourly":"Par heure","daily":"Par jour","weekend":"Week-end","range":"Pé
       },
       {
         q: 'Puis-je modifier un événement en le faisant glisser ?',
-        a: 'C’est la façon principale de modifier. Faites glisser un événement vers une autre heure ou un autre jour, ou tirez son bord haut ou bas pour changer la durée. Les changements repartent directement dans l’agenda d’origine.',
+        a: "Vous pouvez déplacer les événements modifiables et ajuster leur durée dans la chronologie. Vérifiez le choix des occurrences et l’heure enregistrée ; les mises à jour des calendriers connectés dépendent des autorisations et d’une synchronisation réussie.",
       },
       {
         q: 'Que montrent les widgets ?',
@@ -250,7 +250,7 @@ tabs: {"hourly":"Par heure","daily":"Par jour","weekend":"Week-end","range":"Pé
       },
       {
         q: 'Comment résilier un abonnement ?',
-        a: 'Les abonnements sont gérés par Apple : la résiliation se fait donc dans les réglages de votre compte App Store. Faites-le au moins 24 heures avant la fin de la période et vous ne serez plus facturé.',
+        a: "Sur iPhone ou iPad, ouvrez Réglages, touchez votre nom, puis Abonnements. Choisissez Cloud Calendars et résiliez à cet endroit ; vérifiez l’état de résiliation ou d’expiration affiché par Apple.",
       },
     ],
   },

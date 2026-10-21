@@ -18,7 +18,7 @@ export const HOME_DE_DE: HomeCopy = {
     language: 'Sprache',
   },
   hero: {
-    badge: 'Version {v} — geteilte Termine halten sich jetzt selbst aktuell',
+    badge: "Version {v} — Termine und Kalender teilen",
     title: ['Ihr Kalender.', 'Ihr Himmel.', 'Eine Ansicht.'],
     lead: 'Jeder Kalender, den Sie haben — iCloud, Google, Microsoft — an einem Ort, mit der Vorhersage im Tag selbst. Schluss mit dem Raten, wie der Nachmittag aussieht.',
     seeItMove: 'In Bewegung sehen',
@@ -47,12 +47,12 @@ export const HOME_DE_DE: HomeCopy = {
   showcase: {
     eyebrow: 'Der Rundgang',
     title: ['Fünf Arten, dieselbe', 'Woche anzusehen.'],
-    lead: 'Dieselben Termine, angeordnet nach der Frage, die Sie tatsächlich stellen — und jede einzelne mit der Vorhersage dabei.',
+    lead: "Wählen Sie eine Übersicht oder eine detaillierte Zeitleiste, ergänzt um verfügbare Wetterdaten in unterstützten Ansichten.",
     panels: [
       {
         kicker: 'Tagesansicht',
         title: 'Der Stundenplan, mit dem Himmel daran',
-        body: 'Ein Stundenraster, in dem jede Zeile ihre eigene Vorhersage trägt. Sie sehen den Termin um 15 Uhr und den Regen um 15 Uhr im selben Blick — keine zweite App, kein Raten.',
+        body: "Vergleichen Sie Termine und verfügbare stündliche Wetterdaten im selben Raster. Prüfen Sie bei Plänen im Freien den ausgewählten Ort und das Vorhersagedatum.",
         alt: 'Tagesansicht mit Stundenraster, Terminen und stündlichen Wettersymbolen',
         bullets: ['Live-Jetzt-Linie', 'Stündliche Temperatur', 'Zum Verschieben ziehen'],
       },
@@ -73,7 +73,7 @@ export const HOME_DE_DE: HomeCopy = {
       {
         kicker: 'Monat und Jahr',
         title: 'Weit genug zurücktreten, um die Form zu sehen',
-        body: 'Die Monatsansicht markiert jeden Tag, an dem etwas ansteht. Die Jahresansicht bringt zwölf Monate auf einen Bildschirm — der schnellste Weg zu einer freien Woche.',
+        body: "Vergleichen Sie Termine ausgewählter Kalender im Monat oder Jahr. Öffnen Sie einen Tag und prüfen Sie alle Termine, bevor Sie ihn als frei ansehen.",
         alt: 'Monatsansicht mit Terminmarkierungen an jedem Tag',
         bullets: [
           'Termindichte auf einen Blick',
@@ -140,11 +140,11 @@ tabs: {"hourly":"Stündlich","daily":"Täglich","weekend":"Wochenende","range":"
     lead: 'Drei Konten, ein Raster und Gesten, die sich so verhalten, wie Ihre Hände es erwarten.',
     unified: {
       title: 'Drei Konten. Ein Raster.',
-      body: 'iCloud, Google Kalender und Microsoft Outlook, in beide Richtungen synchronisiert und in einer Ansicht farblich getrennt. Schalten Sie einen Kalender aus, wenn Sie ihn nicht sehen wollen — der Rest arbeitet weiter.',
+      body: "Sehen Sie ausgewählte iCloud- und Google-Kalender gemeinsam; Premium ergänzt Microsoft-Kalender. Bearbeiten Sie Termine, soweit Ihre Kontoberechtigungen es erlauben, und prüfen Sie anschließend den Quellkalender.",
     },
     gestures: {
       title: 'Ziehen. Dehnen. Fertig.',
-      body: 'Greifen Sie einen Termin und schieben Sie ihn auf eine andere Zeit oder einen anderen Tag. Ziehen Sie an der oberen oder unteren Kante, um die Dauer zu ändern. Kein Dialog, kein Sichern-Knopf.',
+      body: "Verschieben Sie bearbeitbare Termine auf eine andere Zeit oder einen anderen Tag oder ändern Sie ihre Dauer in der Zeitleiste. Wählen Sie bei Serienterminen die betroffenen Wiederholungen und prüfen Sie das gespeicherte Ergebnis.",
     },
     tiles: [
       {
@@ -154,7 +154,7 @@ tabs: {"hourly":"Stündlich","daily":"Täglich","weekend":"Wochenende","range":"
       },
       {
         title: 'Aus einer Vorhersage einen Plan machen',
-        body: 'Tippen Sie eine Stunde in der Wetterzentrale an, und ein neuer Termin öffnet sich, bereits auf diese Zeit gesetzt. Finden Sie das trockene Fenster und belegen Sie es.',
+        body: "Wählen Sie eine verfügbare Vorhersagestunde, um einen Terminentwurf zu beginnen. Prüfen Sie Datum, Uhrzeit und Kalender vor dem Speichern.",
         badge: 'Ein Tippen',
       },
       {
@@ -165,7 +165,7 @@ tabs: {"hourly":"Stündlich","daily":"Täglich","weekend":"Wochenende","range":"
     ],
     sourceNotes: {
       builtIn: 'Eingebaut',
-      twoWay: 'Beidseitig',
+      twoWay: "Verbunden",
       premium: 'Premium',
     },
   },
@@ -177,14 +177,14 @@ tabs: {"hourly":"Stündlich","daily":"Täglich","weekend":"Wochenende","range":"
     yearly: 'Jährlich',
     saveMore: 'mehr sparen',
     billingPeriod: 'Abrechnungszeitraum',
-    mostPopular: 'Am beliebtesten',
+    mostPopular: "Hervorgehobener Tarif",
     everythingIn: 'Alles aus {tier}, dazu:',
     forever: 'für immer',
     perMonth: '/ Monat',
     perYear: '/ Jahr',
     downloadFree: 'Kostenlos laden',
     startWith: 'Mit {tier} starten',
-    note: 'Abonnements verlängern sich automatisch und werden über Ihre Apple-ID abgerechnet. Sie können jederzeit in den App-Store-Kontoeinstellungen kündigen, spätestens 24 Stunden vor Ende des Zeitraums.',
+    note: "Abonnements verlängern sich automatisch über Ihren Apple Account. Prüfen Sie vor dem Kauf den lokalen Preis und Abrechnungszeitraum. Verwalten Sie die Kündigung in den Einstellungen unter Ihrem Namen → Abonnements.",
     plans: {
       free: {
         name: 'Kostenlos',
@@ -233,7 +233,7 @@ tabs: {"hourly":"Stündlich","daily":"Täglich","weekend":"Wochenende","range":"
       },
       {
         q: 'Kann ich einen Termin durch Ziehen ändern?',
-        a: 'Das ist die wichtigste Art zu bearbeiten. Ziehen Sie einen Termin auf eine andere Zeit oder einen anderen Tag, oder ziehen Sie an der oberen oder unteren Kante, um die Dauer zu ändern. Die Änderungen werden direkt in den Ursprungskalender zurückgeschrieben.',
+        a: "Sie können bearbeitbare Termine verschieben und ihre Dauer in der Zeitleiste ändern. Prüfen Sie die Wiederholungsauswahl und die gespeicherte Zeit; Aktualisierungen verbundener Kalender hängen von Berechtigungen und erfolgreicher Synchronisierung ab.",
       },
       {
         q: 'Was zeigen die Widgets?',
@@ -245,7 +245,7 @@ tabs: {"hourly":"Stündlich","daily":"Täglich","weekend":"Wochenende","range":"
       },
       {
         q: 'Wie kündige ich ein Abonnement?',
-        a: 'Abonnements werden von Apple abgewickelt, Sie kündigen also in Ihren App-Store-Kontoeinstellungen. Tun Sie das mindestens 24 Stunden vor Ende des Zeitraums, dann wird Ihnen nichts mehr berechnet.',
+        a: "Öffnen Sie auf iPhone oder iPad die Einstellungen, tippen Sie auf Ihren Namen und dann auf „Abonnements“. Wählen Sie Cloud Calendars und kündigen Sie dort. Prüfen Sie den von Apple angezeigten Kündigungs- oder Ablaufstatus.",
       },
     ],
   },

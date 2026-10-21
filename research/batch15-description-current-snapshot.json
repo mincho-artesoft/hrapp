@@ -1,0 +1,149 @@
+[
+  {
+    "locale": "de-DE",
+    "slug": "weather-inside-your-calendar",
+    "file": "src/app/content/de-DE/articles.ts",
+    "before": "Warum es ein Konstruktionsfehler ist, für einen Tag zwei Apps zu befragen — und wie ein Kalender aussieht, in dem die Vorhersage Teil der Ansicht ist statt daneben zu stehen.",
+    "beforeCharacters": 174
+  },
+  {
+    "locale": "el",
+    "slug": "weather-inside-your-calendar",
+    "file": "src/app/content/el/articles.ts",
+    "before": "Γιατί το να κοιτάς δύο εφαρμογές για να οργανώσεις μια μέρα είναι σφάλμα σχεδιασμού, και πώς μοιάζει ένα ημερολόγιο όπου η πρόγνωση είναι μέρος της προβολής αντί να στέκεται δίπλα.",
+    "beforeCharacters": 180
+  },
+  {
+    "locale": "el",
+    "slug": "icloud-google-and-outlook-in-one-view",
+    "file": "src/app/content/el/articles.ts",
+    "before": "Η ζωή σχεδόν όλων είναι μοιρασμένη ανάμεσα σε ένα προσωπικό ημερολόγιο Apple, έναν λογαριασμό Google και ένα Exchange της δουλειάς. Τι αλλάζει όταν βρεθούν στο ίδιο πλέγμα.",
+    "beforeCharacters": 172
+  },
+  {
+    "locale": "es-ES",
+    "slug": "weather-inside-your-calendar",
+    "file": "src/app/content/es-ES/articles.ts",
+    "before": "Por qué consultar dos aplicaciones para planificar un día es un fallo de diseño, y cómo es un calendario en el que la previsión forma parte de la vista en lugar de estar al lado.",
+    "beforeCharacters": 178
+  },
+  {
+    "locale": "fr-FR",
+    "slug": "weather-inside-your-calendar",
+    "file": "src/app/content/fr-FR/articles.ts",
+    "before": "Pourquoi consulter deux applications pour organiser une journée est un défaut de conception, et à quoi ressemble un agenda où les prévisions font partie de la vue plutôt que d'être à côté.",
+    "beforeCharacters": 188
+  },
+  {
+    "locale": "fr-FR",
+    "slug": "sharing-one-event-not-your-calendar",
+    "file": "src/app/content/fr-FR/articles.ts",
+    "before": "Partagez un événement sans partager tout votre calendrier. Distinguez les accès Reader, Writer et Owner, les aperçus, les mises à jour et les limites de la révocation.",
+    "beforeCharacters": 167
+  },
+  {
+    "locale": "fr-FR",
+    "slug": "free-google-sync-without-adverts",
+    "file": "src/app/content/fr-FR/articles.ts",
+    "before": "Ce que contient vraiment la formule gratuite, où apparaît la publicité et ce que coûte son retrait. Dit clairement, parce que presque aucune application ne le fait.",
+    "beforeCharacters": 164
+  },
+  {
+    "locale": "hu",
+    "slug": "who-can-see-what-in-google-calendar",
+    "file": "src/app/content/hu/articles-google.ts",
+    "before": "Válasszon elérhetőségi, részletmegtekintési vagy szerkesztési hozzáférést. Megosztás előtt az egyéni jogok mellett a nyilvános és csoportos hozzáférést is ellenőrizze.",
+    "beforeCharacters": 167
+  },
+  {
+    "locale": "id",
+    "slug": "weather-inside-your-calendar",
+    "file": "src/app/content/id/articles.ts",
+    "before": "Mengapa memeriksa dua aplikasi untuk menata satu hari adalah cacat rancangan, dan seperti apa kalender yang prakiraannya menjadi bagian tampilan alih-alih berdiri di sebelahnya.",
+    "beforeCharacters": 177
+  },
+  {
+    "locale": "it",
+    "slug": "weather-inside-your-calendar",
+    "file": "src/app/content/it/articles.ts",
+    "before": "Perché controllare due app per organizzare una giornata è un difetto di progetto, e com'è fatto un calendario in cui le previsioni fanno parte della vista invece di stare accanto.",
+    "beforeCharacters": 179
+  },
+  {
+    "locale": "ms",
+    "slug": "weather-inside-your-calendar",
+    "file": "src/app/content/ms/articles.ts",
+    "before": "Mengapa memeriksa dua aplikasi untuk menyusun satu hari ialah kecacatan reka bentuk, dan bagaimana rupanya kalendar yang ramalannya menjadi sebahagian daripada paparan dan bukan berdiri di sebelahnya.",
+    "beforeCharacters": 200
+  },
+  {
+    "locale": "ms",
+    "slug": "icloud-google-and-outlook-in-one-view",
+    "file": "src/app/content/ms/articles.ts",
+    "before": "Kehidupan hampir setiap orang terbahagi antara kalendar Apple peribadi, akaun Google dan Exchange dari tempat kerja. Apa yang berubah apabila ketiga-tiganya masuk ke grid yang sama.",
+    "beforeCharacters": 181
+  },
+  {
+    "locale": "nl-NL",
+    "slug": "weather-inside-your-calendar",
+    "file": "src/app/content/nl-NL/articles.ts",
+    "before": "Waarom twee apps raadplegen om een dag in te delen een ontwerpfout is, en hoe een agenda eruitziet waarin de verwachting deel van de weergave is in plaats van ernaast te staan.",
+    "beforeCharacters": 176
+  },
+  {
+    "locale": "nl-NL",
+    "slug": "icloud-google-and-outlook-in-one-view",
+    "file": "src/app/content/nl-NL/articles.ts",
+    "before": "Het leven van bijna iedereen is verdeeld over een persoonlijke Apple-agenda, een Google-account en een Exchange van het werk. Wat er verandert als ze in hetzelfde raster staan.",
+    "beforeCharacters": 176
+  },
+  {
+    "locale": "pl",
+    "slug": "weather-inside-your-calendar",
+    "file": "src/app/content/pl/articles.ts",
+    "before": "Dlaczego sprawdzanie dwóch aplikacji przy planowaniu dnia jest błędem projektowym i jak wygląda kalendarz, w którym prognoza jest częścią widoku, a nie stoi obok.",
+    "beforeCharacters": 162
+  },
+  {
+    "locale": "pt-BR",
+    "slug": "weather-inside-your-calendar",
+    "file": "src/app/content/pt-BR/articles.ts",
+    "before": "Por que consultar dois aplicativos para organizar um dia é uma falha de projeto, e como é uma agenda em que a previsão faz parte da vista em vez de ficar ao lado.",
+    "beforeCharacters": 162
+  },
+  {
+    "locale": "pt-BR",
+    "slug": "icloud-google-and-outlook-in-one-view",
+    "file": "src/app/content/pt-BR/articles.ts",
+    "before": "A vida de quase todo mundo está repartida entre uma agenda pessoal da Apple, uma conta do Google e um Exchange do trabalho. O que muda ao colocá-los na mesma grade.",
+    "beforeCharacters": 164
+  },
+  {
+    "locale": "ro",
+    "slug": "weather-inside-your-calendar",
+    "file": "src/app/content/ro/articles.ts",
+    "before": "De ce a consulta două aplicații ca să-ți organizezi ziua este o greșeală de proiectare și cum arată un calendar în care prognoza face parte din vedere în loc să stea alături.",
+    "beforeCharacters": 174
+  },
+  {
+    "locale": "ru",
+    "slug": "weather-inside-your-calendar",
+    "file": "src/app/content/ru/articles.ts",
+    "before": "Почему смотреть в два приложения, чтобы распланировать день, — это ошибка проектирования, и как выглядит календарь, где прогноз является частью вида, а не стоит рядом.",
+    "beforeCharacters": 167
+  },
+  {
+    "locale": "tr",
+    "slug": "weather-inside-your-calendar",
+    "file": "src/app/content/tr/articles.ts",
+    "before": "Bir günü planlamak için iki uygulamaya bakmanın neden bir tasarım hatası olduğu ve tahminin yanda durmak yerine görünümün parçası olduğu bir takvimin nasıl göründüğü.",
+    "beforeCharacters": 166
+  },
+  {
+    "locale": "vi",
+    "slug": "weather-inside-your-calendar",
+    "file": "src/app/content/vi/articles.ts",
+    "before": "Vì sao phải mở hai ứng dụng để sắp xếp một ngày là một lỗi thiết kế, và một cuốn lịch mà dự báo là một phần của khung nhìn chứ không đứng bên cạnh thì trông như thế nào.",
+    "beforeCharacters": 169
+  }
+]

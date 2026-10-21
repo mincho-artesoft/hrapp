@@ -5,7 +5,7 @@ export const GOOGLE_HU: Readonly<Record<string, LocalisedArticle>> = {
   'who-can-see-what-in-google-calendar': {
   "title": "Google Naptár-megosztás: ellenőrizze a ténylegesen megadott jogokat",
   "short": "Hozzáférés és adatvédelem a Google Naptárban",
-  "description": "Válasszon elérhetőségi, részletmegtekintési vagy szerkesztési hozzáférést. Megosztás előtt az egyéni jogok mellett a nyilvános és csoportos hozzáférést is ellenőrizze.",
+  "description": "Válasszon hozzáférést a foglaltsághoz, részletekhez vagy szerkesztéshez. Ellenőrizze az egyéni, nyilvános és csoportos jogokat megosztás előtt.",
   "lede": "Megosztás előtt döntse el, mire van szüksége a másik félnek. Az időpont-egyeztetés, az eseményadatok olvasása és a naptár karbantartása más feladat. Az útmutatót a Cloud Calendars fejlesztője, az Arte Soft adja ki.",
   "commonBelief": "Egy személy korlátozása garantálná, hogy más útvonalon sem láthat részleteket.",
   "sections": [

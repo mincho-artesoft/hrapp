@@ -18,7 +18,7 @@ export const HOME_ES_ES: HomeCopy = {
     language: 'Idioma',
   },
   hero: {
-    badge: 'Versión {v} — los eventos compartidos ya se mantienen al día solos',
+    badge: "Versión {v} — comparte eventos y calendarios",
     title: ['Tu agenda.', 'Tu cielo.', 'Una vista.'],
     lead: 'Todos los calendarios que tienes — iCloud, Google, Microsoft — en un solo sitio, con la previsión dentro del propio día. Deja de adivinar cómo será la tarde.',
     seeItMove: 'Verlo en movimiento',
@@ -47,12 +47,12 @@ export const HOME_ES_ES: HomeCopy = {
   showcase: {
     eyebrow: 'El recorrido',
     title: ['Cinco formas de mirar', 'la misma semana.'],
-    lead: 'Los mismos eventos, ordenados según la pregunta que de verdad estás haciendo — y cada uno con la previsión encima.',
+    lead: "Elige una vista general o una línea de tiempo detallada, con información meteorológica disponible en las vistas compatibles.",
     panels: [
       {
         kicker: 'Vista de día',
         title: 'El plan hora a hora, con el cielo incluido',
-        body: 'Una cuadrícula horaria en la que cada fila lleva su propia previsión. Ves la reunión de las tres y la lluvia de las tres en el mismo golpe de vista: ni segunda aplicación ni conjeturas.',
+        body: "Compara citas con la previsión horaria disponible en la misma cuadrícula. Comprueba el lugar seleccionado y la fecha de la previsión al planificar al aire libre.",
         alt: 'Vista de día con cuadrícula horaria, eventos e iconos del tiempo por hora',
         bullets: ['Línea de «ahora» en vivo', 'Temperatura por hora', 'Arrastrar para mover'],
       },
@@ -77,7 +77,7 @@ export const HOME_ES_ES: HomeCopy = {
       {
         kicker: 'Mes y año',
         title: 'Aléjate lo suficiente para ver la forma de las cosas',
-        body: 'La vista de mes marca cada día que tiene algo. La de año pone doce meses en una pantalla: la forma más rápida de encontrar una semana libre.',
+        body: "Compara eventos de los calendarios seleccionados a lo largo del mes o del año. Abre un día para revisar todas sus citas antes de decidir que está libre.",
         alt: 'Vista de mes con indicadores de eventos en cada día',
         bullets: [
           'Densidad de eventos de un vistazo',
@@ -145,11 +145,11 @@ tabs: {"hourly":"Por horas","daily":"Por días","weekend":"Fin de semana","range
     lead: 'Tres cuentas, una cuadrícula y un conjunto de gestos que se comportan como tus manos esperan.',
     unified: {
       title: 'Tres cuentas. Una cuadrícula.',
-      body: 'iCloud, Google Calendar y Microsoft Outlook, sincronizados en ambos sentidos y con código de color en una sola vista. Oculta cualquier calendario cuando no quieras verlo: el resto sigue funcionando.',
+      body: "Consulta juntos los calendarios seleccionados de iCloud y Google; Premium añade los de Microsoft. Edita donde lo permitan los permisos de tu cuenta y comprueba el calendario de origen tras los cambios.",
     },
     gestures: {
       title: 'Arrástralo. Estíralo. Ya está.',
-      body: 'Agarra un evento y deslízalo a otra hora o a otro día. Tira de su borde superior o inferior para cambiar cuánto dura. Sin ventana ni botón de guardar.',
+      body: "Mueve eventos editables a otra hora o día, o cambia su duración en la línea de tiempo. En un evento recurrente, elige qué repeticiones modificar y revisa el resultado guardado.",
     },
     tiles: [
       {
@@ -159,7 +159,7 @@ tabs: {"hourly":"Por horas","daily":"Por días","weekend":"Fin de semana","range
       },
       {
         title: 'Convierte una previsión en un plan',
-        body: 'Toca cualquier hora del centro meteorológico y se abre un evento nuevo, ya puesto a esa hora. Encuentra la ventana seca y resérvala.',
+        body: "Elige una hora con previsión disponible para iniciar un borrador de evento. Revisa su fecha, hora y calendario antes de guardar.",
         badge: 'Un toque',
       },
       {
@@ -170,7 +170,7 @@ tabs: {"hourly":"Por horas","daily":"Por días","weekend":"Fin de semana","range
     ],
     sourceNotes: {
       builtIn: 'Incorporado',
-      twoWay: 'Bidireccional',
+      twoWay: "Conectado",
       premium: 'Premium',
     },
   },
@@ -182,14 +182,14 @@ tabs: {"hourly":"Por horas","daily":"Por días","weekend":"Fin de semana","range
     yearly: 'Anual',
     saveMore: 'ahorra más',
     billingPeriod: 'Periodo de facturación',
-    mostPopular: 'El más elegido',
+    mostPopular: "Plan destacado",
     everythingIn: 'Todo lo de {tier}, y además:',
     forever: 'para siempre',
     perMonth: '/ mes',
     perYear: '/ año',
     downloadFree: 'Descargar gratis',
     startWith: 'Empezar con {tier}',
-    note: 'Las suscripciones se renuevan automáticamente y se cobran a través de tu Apple ID. Cancela cuando quieras en los ajustes de tu cuenta del App Store, al menos 24 horas antes de que termine el periodo.',
+    note: "Las suscripciones se renuevan automáticamente a través de tu cuenta de Apple. Comprueba el precio local y el periodo de facturación antes de comprar. Gestiona la cancelación en Ajustes, bajo tu nombre → Suscripciones.",
     plans: {
       free: {
         name: 'Gratis',
@@ -238,7 +238,7 @@ tabs: {"hourly":"Por horas","daily":"Por días","weekend":"Fin de semana","range
       },
       {
         q: '¿Puedo cambiar un evento arrastrándolo?',
-        a: 'Es la forma principal de editar. Arrastra un evento a otra hora o a otro día, o tira de su borde superior o inferior para cambiar la duración. Los cambios se sincronizan directamente con el calendario de origen.',
+        a: "Puedes mover eventos editables y cambiar su duración en la línea de tiempo. Revisa la elección de repeticiones y la hora guardada; las actualizaciones de calendarios conectados dependen de los permisos y de una sincronización correcta.",
       },
       {
         q: '¿Qué muestran los widgets?',
@@ -250,7 +250,7 @@ tabs: {"hourly":"Por horas","daily":"Por días","weekend":"Fin de semana","range
       },
       {
         q: '¿Cómo cancelo una suscripción?',
-        a: 'Las suscripciones las gestiona Apple, así que se cancelan en los ajustes de tu cuenta del App Store. Hazlo al menos 24 horas antes de que termine el periodo y no se te volverá a cobrar.',
+        a: "En el iPhone o iPad, abre Ajustes, toca tu nombre y después Suscripciones. Elige Cloud Calendars y cancela allí; comprueba el estado de cancelación o caducidad que muestra Apple.",
       },
     ],
   },

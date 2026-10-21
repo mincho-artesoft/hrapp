@@ -1,0 +1,32 @@
+{
+  "checkedAt": "2026-10-21T22:24:46.741753+00:00",
+  "checks": [
+    {
+      "url": "https://www.cloud-calendars.com/bg/",
+      "viewport": 575,
+      "documentWidth": 564,
+      "readScope": "Gesture paragraph, local-price note and neutral source badge read; feature cards screenshot visually inspected.",
+      "screenshot": "/tmp/cloud-calendar-batch15-bg-home.png"
+    },
+    {
+      "url": "https://www.cloud-calendars.com/ar/",
+      "viewport": 575,
+      "documentWidth": 564,
+      "initialDocumentWidth": 593,
+      "direction": "rtl",
+      "readScope": "Featured-plan badge/cards and local-price note checked. Widgetoverflowclipped by sourceCSS; finalreload+pricingscroll nooverflow.",
+      "screenshot": "/tmp/cloud-calendar-batch15-ar-pricing-final.png"
+    },
+    {
+      "url": "https://www.cloud-calendars.com/articles/weather-inside-your-calendar/",
+      "viewport": 575,
+      "documentWidth": 564,
+      "faqs": 3,
+      "samePageSkip": "/articles/weather-inside-your-calendar/#main",
+      "readScope": "Rendered title/lede/firstsections screenshot inspected; fullbuiltbody in static/bytechecks.",
+      "screenshot": "/tmp/cloud-calendar-batch15-weather.png"
+    }
+  ],
+  "cleanup": "Temporary Chrome viewportreset; publicweatherarticle retained; no localserverstarted.",
+  "limits": "Notallviewportorlocalevisualcertification. No newmediaorvideoplaybackaudit, native-speaker or releasedproductruntimeverification."
+}

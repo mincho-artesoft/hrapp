@@ -1,0 +1,101 @@
+{
+  "date": "2026-10-22",
+  "scope": "9 locales × 12 homepage fields; draft patches only",
+  "semantics_source": "research/batch15-home-claim-audit.json",
+  "fields": [
+    "features.unified.body",
+    "features.gestures.body",
+    "faq.items[3].a",
+    "showcase.lead",
+    "showcase.panels[0].body",
+    "showcase.panels[3].body",
+    "features.tiles[1].body",
+    "hero.badge",
+    "faq.items[6].a",
+    "pricing.note",
+    "features.sourceNotes.twoWay",
+    "pricing.mostPopular"
+  ],
+  "checks": {
+    "pt-BR": {
+      "file": "/Users/minchomilev/cloud-calendars/src/app/content/home/pt-BR.ts",
+      "source_sha256": "0e4516165b6e95df613592a7922084cffc7e7708b79b3f2c2e19bd79799a8947",
+      "patch_sha256": "ba838b5127e2121a87763c6adba615ee39bc4acd941b88bc24113bcb21ca6da0",
+      "fields": 12,
+      "version_placeholder_preserved": true,
+      "exact_before_extracted_from_current_home": true
+    },
+    "ro": {
+      "file": "/Users/minchomilev/cloud-calendars/src/app/content/home/ro.ts",
+      "source_sha256": "df1a707c00908d7c15d466e93fb6764b871a362fb43f87e1058c0d3946c4e8c9",
+      "patch_sha256": "a6339c26ea5c2771badcc807e089b7560af73b3d767ff82bd25684fcc8e0c5d7",
+      "fields": 12,
+      "version_placeholder_preserved": true,
+      "exact_before_extracted_from_current_home": true
+    },
+    "ru": {
+      "file": "/Users/minchomilev/cloud-calendars/src/app/content/home/ru.ts",
+      "source_sha256": "bf66d4c6ab5cc88d7eb034a7de5364494e92e922de3ad02e867a50d266b83500",
+      "patch_sha256": "66b6cf00e25f7d8091c8e98ec70d3fcc51aa8413f01ca3394d9bab90e437bc48",
+      "fields": 12,
+      "version_placeholder_preserved": true,
+      "exact_before_extracted_from_current_home": true
+    },
+    "sv": {
+      "file": "/Users/minchomilev/cloud-calendars/src/app/content/home/sv.ts",
+      "source_sha256": "55370f06aec0c3e7aae4e3bcfa0d05bff6e3a4a6dd1cd4a8c629eb503430ae40",
+      "patch_sha256": "c83c97fade7191ec917b09150d8ad00a8711fee10066463031a42e2ce6a656a4",
+      "fields": 12,
+      "version_placeholder_preserved": true,
+      "exact_before_extracted_from_current_home": true
+    },
+    "th": {
+      "file": "/Users/minchomilev/cloud-calendars/src/app/content/home/th.ts",
+      "source_sha256": "51150b3fd8d835f8dfd1555d4873e56e54251ec8546e0f108788ab7ab421d852",
+      "patch_sha256": "5d9e83b91bbb94163f7052219942be93e0f12a576bf342f5d24dc99772c59aa9",
+      "fields": 12,
+      "version_placeholder_preserved": true,
+      "exact_before_extracted_from_current_home": true
+    },
+    "tr": {
+      "file": "/Users/minchomilev/cloud-calendars/src/app/content/home/tr.ts",
+      "source_sha256": "4580d04f7d1ceb87ddf2f6573d461b407be3b485dff4787114c2d735d30aaf59",
+      "patch_sha256": "245219d5c60ac2ae7c2f079132647123fb8b6175fa3b8d0dfccd21f6e12139c9",
+      "fields": 12,
+      "version_placeholder_preserved": true,
+      "exact_before_extracted_from_current_home": true
+    },
+    "vi": {
+      "file": "/Users/minchomilev/cloud-calendars/src/app/content/home/vi.ts",
+      "source_sha256": "3ea9a8ffddbcfaf2b9271697ebffd108522f976c6b4401d776b6a3d82fcc0483",
+      "patch_sha256": "a7e84a772c31c83766dfe1db7309294b7ea5042a6b34afd9f7429c1f9e9b31cd",
+      "fields": 12,
+      "version_placeholder_preserved": true,
+      "exact_before_extracted_from_current_home": true
+    },
+    "zh-Hans": {
+      "file": "/Users/minchomilev/cloud-calendars/src/app/content/home/zh-Hans.ts",
+      "source_sha256": "b75b4213ddee2e004ab79b0ebd7364085ec09fbe0a4a2529b6354f8da2abaa41",
+      "patch_sha256": "8c6addb836dc3bda03c5681055c63c421650f237e52b11c85b1aded82f25913b",
+      "fields": 12,
+      "version_placeholder_preserved": true,
+      "exact_before_extracted_from_current_home": true
+    },
+    "zh-Hant": {
+      "file": "/Users/minchomilev/cloud-calendars/src/app/content/home/zh-Hant.ts",
+      "source_sha256": "8e431412bdc650790ce7b2d83c12fb800ccc0a53adbd7f1ed03bc5c8de9e78d7",
+      "patch_sha256": "dd22e84382ab84fa7a458801c352f2f704d9394d61c58ef8e76182b9c13a2db3",
+      "fields": 12,
+      "version_placeholder_preserved": true,
+      "exact_before_extracted_from_current_home": true
+    }
+  },
+  "limits": [
+    "Original translations; no independent native-speaker approval.",
+    "No price numbers or integrated source changed.",
+    "No build, deployment or native mutation.",
+    "Exact before values extracted from current TypeScript exports; source SHA guards recorded.",
+    "No universal two-way sync, automatic provider acceptance or unlimited forecast promises.",
+    "Popularity label replaced by neutral featured-plan wording."
+  ]
+}

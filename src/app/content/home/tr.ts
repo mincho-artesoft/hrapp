@@ -18,7 +18,7 @@ export const HOME_TR: HomeCopy = {
     language: 'Dil',
   },
   hero: {
-    badge: 'Sürüm {v} — paylaşılan etkinlikler artık kendini güncel tutuyor',
+    badge: "Sürüm {v} — etkinlik ve takvim paylaşımı",
     title: ['Takviminiz.', 'Gökyüzünüz.', 'Tek görünüm.'],
     lead: 'Sahip olduğunuz her takvim — iCloud, Google, Microsoft — tek yerde, tahmin günün kendisine yerleşmiş halde. Öğleden sonranın nasıl olacağını tahmin etmeyi bırakın.',
     seeItMove: 'Hareket halinde görün',
@@ -47,12 +47,12 @@ export const HOME_TR: HomeCopy = {
   showcase: {
     eyebrow: 'Tur',
     title: ['Aynı haftaya bakmanın', 'beş yolu.'],
-    lead: 'Aynı etkinlikler, gerçekten sorduğunuz soruya göre dizilmiş — ve her biri tahminini yanında taşıyor.',
+    lead: "Genel görünüm veya ayrıntılı zaman çizelgesi seçin; desteklenen görünümlerde mevcut hava tahminini de inceleyin.",
     panels: [
       {
         kicker: 'Gün görünümü',
         title: 'Saat saat plan, gökyüzü de iliştirilmiş',
-        body: 'Her satırın kendi tahminini taşıdığı bir saatlik ızgara. Üçteki toplantıyı ve üçteki yağmuru aynı bakışta görürsünüz — ikinci uygulama yok, tahmin yürütmek yok.',
+        body: "Randevuları mevcut saatlik hava tahminiyle aynı tabloda karşılaştırın. Açık hava planlarında seçili yeri ve tahmin tarihini kontrol edin.",
         alt: 'Saatlik ızgara, etkinlikler ve saat başı hava simgeleriyle gün görünümü',
         bullets: ['Canlı «şimdi» çizgisi', 'Saatlik sıcaklık', 'Taşımak için sürükleyin'],
       },
@@ -73,7 +73,7 @@ export const HOME_TR: HomeCopy = {
       {
         kicker: 'Ay ve yıl',
         title: 'İşlerin şeklini görecek kadar geri çekilin',
-        body: 'Ay görünümü, içinde bir şey olan her günü işaretler. Yıl görünümü on iki ayı tek ekrana koyar — boş bir hafta bulmanın en hızlı yolu.',
+        body: "Seçili takvimlerin etkinliklerini ay veya yıl boyunca karşılaştırın. Bir günü boş saymadan açıp tüm randevularını inceleyin.",
         alt: 'Her günde etkinlik göstergesi olan ay görünümü',
         bullets: ['Yoğunluk tek bakışta', 'On iki ay birden', 'Herhangi bir tarihe atlayın'],
       },
@@ -136,11 +136,11 @@ tabs: {"hourly":"Saatlik","daily":"Günlük","weekend":"Hafta sonu","range":"Tah
     lead: 'Üç hesap, tek ızgara ve ellerinizin beklediği gibi davranan bir dizi hareket.',
     unified: {
       title: 'Üç hesap. Tek ızgara.',
-      body: 'iCloud, Google Takvim ve Microsoft Outlook, iki yönlü eşitlenmiş ve tek görünümde renkle ayrılmış. Görmek istemediğiniz takvimi kapatın — geri kalanı çalışmayı sürdürür.',
+      body: "Seçili iCloud ve Google takvimlerini birlikte görün; Premium, Microsoft takvimlerini ekler. Hesap izinlerinin elverdiği yerde düzenleyin ve değişiklikten sonra kaynak takvimi kontrol edin.",
     },
     gestures: {
       title: 'Sürükleyin. Uzatın. Tamam.',
-      body: 'Bir etkinliği tutup başka bir saate ya da başka bir güne kaydırın. Ne kadar sürdüğünü değiştirmek için üst veya alt kenarından çekin. Pencere yok, kaydet düğmesi yok.',
+      body: "Düzenlenebilir etkinlikleri başka saate veya güne taşıyın ya da zaman çizelgesinde sürelerini değiştirin. Yinelenen etkinlikte hangi örneklerin değişeceğini seçip kaydedilen sonucu inceleyin.",
     },
     tiles: [
       {
@@ -150,7 +150,7 @@ tabs: {"hourly":"Saatlik","daily":"Günlük","weekend":"Hafta sonu","range":"Tah
       },
       {
         title: 'Bir tahmini plana çevirin',
-        body: 'Hava merkezinde herhangi bir saate dokunun, o saate ayarlanmış yeni bir etkinlik açılsın. Kuru aralığı bulun ve doldurun.',
+        body: "Tahmini bulunan bir saati seçerek etkinlik taslağı başlatın; kaydetmeden önce tarih, saat ve takvimi kontrol edin.",
         badge: 'Tek dokunuş',
       },
       {
@@ -161,7 +161,7 @@ tabs: {"hourly":"Saatlik","daily":"Günlük","weekend":"Hafta sonu","range":"Tah
     ],
     sourceNotes: {
       builtIn: 'Yerleşik',
-      twoWay: 'İki yönlü',
+      twoWay: "Bağlı",
       premium: 'Premium',
     },
   },
@@ -173,14 +173,14 @@ tabs: {"hourly":"Saatlik","daily":"Günlük","weekend":"Hafta sonu","range":"Tah
     yearly: 'Yıllık',
     saveMore: 'daha çok kazanın',
     billingPeriod: 'Faturalama dönemi',
-    mostPopular: 'En çok seçilen',
+    mostPopular: "Öne çıkan plan",
     everythingIn: '{tier} içindeki her şey, ayrıca:',
     forever: 'sonsuza dek',
     perMonth: '/ ay',
     perYear: '/ yıl',
     downloadFree: 'Ücretsiz indir',
     startWith: '{tier} ile başlayın',
-    note: 'Abonelikler otomatik yenilenir ve Apple Kimliğiniz üzerinden faturalanır. Dilediğiniz zaman App Store hesap ayarlarınızdan, dönem bitmeden en az 24 saat önce iptal edin.',
+    note: "Abonelikler Apple Hesabınız üzerinden otomatik yenilenir. Satın almadan yerel fiyatı ve faturalama dönemini kontrol edin. İptali Ayarlar’da adınızın altındaki Abonelikler’den yönetin.",
     plans: {
       free: {
         name: 'Ücretsiz',
@@ -229,7 +229,7 @@ tabs: {"hourly":"Saatlik","daily":"Günlük","weekend":"Hafta sonu","range":"Tah
       },
       {
         q: 'Bir etkinliği sürükleyerek değiştirebilir miyim?',
-        a: 'Düzenlemenin başlıca yolu budur. Etkinliği başka bir saate ya da başka bir güne sürükleyin, veya süresini değiştirmek için üst ya da alt kenarından çekin. Değişiklikler doğrudan kaynak takvime geri işlenir.',
+        a: "Düzenlenebilir etkinlikleri taşıyabilir ve zaman çizelgesinde sürelerini değiştirebilirsiniz. Tekrar kapsamını ve kaydedilen saati kontrol edin; bağlı takvim güncellemeleri izinlere ve başarılı eşitlemeye bağlıdır.",
       },
       {
         q: 'Widget’lar ne gösterir?',
@@ -241,7 +241,7 @@ tabs: {"hourly":"Saatlik","daily":"Günlük","weekend":"Hafta sonu","range":"Tah
       },
       {
         q: 'Aboneliği nasıl iptal ederim?',
-        a: 'Abonelikleri Apple yürütür, dolayısıyla App Store hesap ayarlarınızdan iptal edersiniz. Bunu dönem bitmeden en az 24 saat önce yapın, tekrar ücretlendirilmezsiniz.',
+        a: "iPhone veya iPad’de Ayarlar’ı açın, adınıza ve ardından Abonelikler’e dokunun. Cloud Calendars’ı seçip iptal edin; Apple’ın gösterdiği iptal veya sona erme durumunu kontrol edin.",
       },
     ],
   },

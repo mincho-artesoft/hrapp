@@ -1,0 +1,68 @@
+{
+  "count": 120,
+  "localeCount": 10,
+  "fieldsPerLocale": 12,
+  "semanticsSource": "research/batch15-home-claim-audit.json",
+  "semanticsSourceSha256": "2239681229824ca74e1973ea606de7fcf41dbad8642e68434208c346a3581ab7",
+  "format": "Per-locale array of exactly {field_path,before,after}",
+  "validation": [
+    "12 unique authorized fields each",
+    "exact current source values captured before rewriting",
+    "nonempty distinct replacements",
+    "all brace placeholders preserved, including {v}",
+    "no price-number fields included"
+  ],
+  "review": "Natural model translations, not native-speaker certification. Arabic/Hebrew RTL layout not previewed. Settings route follows supplied approved semantics; no Cloud Calendars UI labels invented.",
+  "meaningReview": [
+    "Selected iCloud/Google calendars; Premium Microsoft; edit permissions and source verification.",
+    "Editable-event gestures, recurrence scope and saved-result review.",
+    "Available weather in supported views, correct forecast place/date, draft before save.",
+    "Month/year selected-calendar overview not proof of availability.",
+    "Sharing badge no automatic-update/release claim.",
+    "Apple cancellation route and displayed status, local price and billing-period check.",
+    "Connected and Featured plan labels replace universal two-way and popularity ranking."
+  ],
+  "sources": {
+    "de-DE": {
+      "file": "src/app/content/home/de-DE.ts",
+      "sha256": "5c1c2d07d8cbf6caab8abf1523fcf39d9e2aa1d1e4d3d9cd7907348ab1dd693d"
+    },
+    "es-ES": {
+      "file": "src/app/content/home/es-ES.ts",
+      "sha256": "86edc43d0d428b1bfd8bc57b0cb3dfc1065d7815bcb3627c9bfd9df9edfd988b"
+    },
+    "fr-FR": {
+      "file": "src/app/content/home/fr-FR.ts",
+      "sha256": "20004798a2b844223fb889b07eaa72340a113c14b1958274a82670a9d86e58c2"
+    },
+    "da": {
+      "file": "src/app/content/home/da.ts",
+      "sha256": "b20ed1636231ad09609b29e322bd130d5c9032568aefa08a736e465365c5dd8b"
+    },
+    "bg": {
+      "file": "src/app/content/home/bg.ts",
+      "sha256": "30e9c0023f0d145053b8726d200e701fc806e1dcc7258e0e76a7c35707b4dbd9"
+    },
+    "cs": {
+      "file": "src/app/content/home/cs.ts",
+      "sha256": "eb8dd1e0da0cc2122103afb81df43e7e05c928b3bc3ed2722b03fdebed6811e2"
+    },
+    "fi": {
+      "file": "src/app/content/home/fi.ts",
+      "sha256": "d48fba3d94d5cb262b0955f80e7c7948f14265b9cb2c8e5009a0a54a5799433c"
+    },
+    "el": {
+      "file": "src/app/content/home/el.ts",
+      "sha256": "95b807e731da1140115e319b6642dd0103144484f4b4ec301fce5dc63881bb44"
+    },
+    "ar-SA": {
+      "file": "src/app/content/home/ar-SA.ts",
+      "sha256": "518bd6b2e37ed887fe704212abd28bd35ac5548b919a886148e7d52fcb3fcbe2"
+    },
+    "he": {
+      "file": "src/app/content/home/he.ts",
+      "sha256": "bb71d98dbb049fb92a29010a82e4035825d538eaf31a6f0f41933a8523340fdc"
+    }
+  },
+  "scope": "Research proposals only. No source edits, build, deployment, account changes, native changes, price-number edits or paid API. Temporary generation script removed after validation."
+}

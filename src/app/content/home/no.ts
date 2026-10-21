@@ -18,7 +18,7 @@ export const HOME_NO: HomeCopy = {
     language: 'Språk',
   },
   hero: {
-    badge: 'Versjon {v} — delte hendelser holder seg nå oppdatert selv',
+    badge: "Versjon {v} — deling av hendelser og kalendere",
     title: ['Kalenderen din.', 'Himmelen din.', 'Én visning.'],
     lead: 'Hver eneste kalender du har — iCloud, Google, Microsoft — på ett sted, med værmeldingen bygget inn i selve dagen. Slutt å gjette hvordan ettermiddagen ser ut.',
     seeItMove: 'Se det i bevegelse',
@@ -47,12 +47,12 @@ export const HOME_NO: HomeCopy = {
   showcase: {
     eyebrow: 'Omvisningen',
     title: ['Fem måter å se', 'den samme uken på.'],
-    lead: 'De samme hendelsene, ordnet etter spørsmålet du faktisk stiller — og hver av dem bærer værmeldingen sin.',
+    lead: "Velg en oversikt eller detaljert tidslinje, med tilgjengelig værinformasjon ved støttede visninger.",
     panels: [
       {
         kicker: 'Dagsvisning',
         title: 'Planen time for time, med himmelen på',
-        body: 'Et timerutenett der hver rad bærer sin egen værmelding. Du ser møtet klokken tre og regnet klokken tre i samme øyekast — ingen annen app, ingen gjetting.',
+        body: "Sammenlign avtaler med tilgjengelige timevarsler i samme rutenett. Sjekk valgt sted og prognosedato når du planlegger ute.",
         alt: 'Dagsvisning med timerutenett, hendelser og værikoner for hver time',
         bullets: ['Levende «nå»-linje', 'Temperatur time for time', 'Dra for å flytte'],
       },
@@ -73,7 +73,7 @@ export const HOME_NO: HomeCopy = {
       {
         kicker: 'Måned og år',
         title: 'Trekk langt nok tilbake til å se formen på ting',
-        body: 'Månedsvisningen merker hver dag som har noe. Årsvisningen setter tolv måneder på én skjerm — den raskeste måten å finne en ledig uke.',
+        body: "Sammenlign hendelser fra valgte kalendere gjennom måneden eller året. Åpne en dag og undersøk alle avtalene før du regner den som ledig.",
         alt: 'Månedsvisning med hendelsesmerker på hver dag',
         bullets: [
           'Tetthet på ett blikk',
@@ -140,11 +140,11 @@ tabs: {"hourly":"Timevis","daily":"Daglig","weekend":"Helg","range":"Varslingspe
     lead: 'Tre kontoer, ett rutenett og et sett bevegelser som oppfører seg slik hendene dine forventer.',
     unified: {
       title: 'Tre kontoer. Ett rutenett.',
-      body: 'iCloud, Google Kalender og Microsoft Outlook, synkronisert begge veier og fargekodet i én visning. Slå av en kalender når du ikke vil se den — resten fortsetter å virke.',
+      body: "Se valgte iCloud- og Google-kalendere sammen; Premium legger til Microsoft-kalendere. Rediger der kontotillatelsene gir adgang, og sjekk kildekalenderen etter endringer.",
     },
     gestures: {
       title: 'Dra den. Strekk den. Ferdig.',
-      body: 'Ta tak i en hendelse og skyv den til et annet tidspunkt eller en annen dag. Dra i øvre eller nedre kant for å endre hvor lenge den varer. Ingen dialog, ingen lagreknapp.',
+      body: "Flytt redigerbare hendelser til en annen tid eller dag, eller endre varigheten i tidslinjen. For gjentakende hendelser velger du hvilke forekomster som skal endres og kontrollerer det lagrede resultatet.",
     },
     tiles: [
       {
@@ -154,7 +154,7 @@ tabs: {"hourly":"Timevis","daily":"Daglig","weekend":"Helg","range":"Varslingspe
       },
       {
         title: 'Gjør en værmelding om til en plan',
-        body: 'Trykk på en hvilken som helst time i værsenteret, og en ny hendelse åpnes, allerede satt til det tidspunktet. Finn det tørre vinduet og book det.',
+        body: "Velg en tilgjengelig prognosetime for å starte et hendelsesutkast, og sjekk dato, klokkeslett og kalender før lagring.",
         badge: 'Ett trykk',
       },
       {
@@ -165,7 +165,7 @@ tabs: {"hourly":"Timevis","daily":"Daglig","weekend":"Helg","range":"Varslingspe
     ],
     sourceNotes: {
       builtIn: 'Innebygd',
-      twoWay: 'Begge veier',
+      twoWay: "Tilkoblet",
       premium: 'Premium',
     },
   },
@@ -177,14 +177,14 @@ tabs: {"hourly":"Timevis","daily":"Daglig","weekend":"Helg","range":"Varslingspe
     yearly: 'Årlig',
     saveMore: 'spar mer',
     billingPeriod: 'Faktureringsperiode',
-    mostPopular: 'Mest valgt',
+    mostPopular: "Fremhevet abonnement",
     everythingIn: 'Alt i {tier}, pluss:',
     forever: 'for alltid',
     perMonth: '/ mnd',
     perYear: '/ år',
     downloadFree: 'Last ned gratis',
     startWith: 'Start med {tier}',
-    note: 'Abonnementer fornyes automatisk og belastes via Apple-ID-en din. Si opp når du vil i innstillingene for App Store-kontoen din, senest 24 timer før perioden er slutt.',
+    note: "Abonnementer fornyes automatisk via Apple-kontoen din. Sjekk lokal pris og faktureringsperiode før kjøp. Administrer oppsigelse i Innstillinger under navnet ditt → Abonnementer.",
     plans: {
       free: {
         name: 'Gratis',
@@ -233,7 +233,7 @@ tabs: {"hourly":"Timevis","daily":"Daglig","weekend":"Helg","range":"Varslingspe
       },
       {
         q: 'Kan jeg endre en hendelse ved å dra i den?',
-        a: 'Det er den viktigste måten å redigere på. Dra en hendelse til et annet tidspunkt eller en annen dag, eller dra i øvre eller nedre kant for å endre varigheten. Endringene synkroniseres rett tilbake til kildekalenderen.',
+        a: "Du kan flytte redigerbare hendelser og endre varigheten i tidslinjen. Sjekk valget for gjentakelser og lagret klokkeslett; oppdatering av tilkoblede kalendere avhenger av tillatelser og vellykket synkronisering.",
       },
       {
         q: 'Hva viser widgetene?',
@@ -245,7 +245,7 @@ tabs: {"hourly":"Timevis","daily":"Daglig","weekend":"Helg","range":"Varslingspe
       },
       {
         q: 'Hvordan sier jeg opp et abonnement?',
-        a: 'Abonnementer håndteres av Apple, så du sier opp i innstillingene for App Store-kontoen din. Gjør det senest 24 timer før perioden er slutt, så blir du ikke belastet igjen.',
+        a: "Åpne Innstillinger på iPhone eller iPad, trykk på navnet ditt og deretter Abonnementer. Velg Cloud Calendars og si opp der; sjekk oppsigelses- eller utløpsstatusen Apple viser.",
       },
     ],
   },

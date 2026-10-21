@@ -18,7 +18,7 @@ export const HOME_IT: HomeCopy = {
     language: 'Lingua',
   },
   hero: {
-    badge: 'Versione {v} — gli eventi condivisi ora si tengono aggiornati da soli',
+    badge: "Versione {v} — condivisione di eventi e calendari",
     title: ['Il tuo calendario.', 'Il tuo cielo.', 'Una sola vista.'],
     lead: 'Tutti i calendari che hai — iCloud, Google, Microsoft — in un unico posto, con le previsioni dentro la giornata stessa. Basta indovinare che pomeriggio sarà.',
     seeItMove: 'Guardalo in movimento',
@@ -47,12 +47,12 @@ export const HOME_IT: HomeCopy = {
   showcase: {
     eyebrow: 'Il tour',
     title: ['Cinque modi di guardare', 'la stessa settimana.'],
-    lead: 'Gli stessi eventi, disposti secondo la domanda che stai davvero facendo — e ognuno porta con sé la previsione.',
+    lead: "Scegli una panoramica o una sequenza temporale dettagliata, con il meteo disponibile accanto alle viste supportate.",
     panels: [
       {
         kicker: 'Vista giorno',
         title: 'Il piano ora per ora, con il cielo attaccato',
-        body: 'Una griglia oraria in cui ogni riga porta la propria previsione. Vedi la riunione delle tre e la pioggia delle tre nello stesso sguardo: nessuna seconda app, nessuna congettura.',
+        body: "Confronta appuntamenti e previsioni orarie disponibili nella stessa griglia. Per i programmi all’aperto, controlla il luogo selezionato e la data della previsione.",
         alt: 'Vista giorno con griglia oraria, eventi e icone meteo per ogni ora',
         bullets: ['Linea «adesso» in tempo reale', 'Temperatura oraria', 'Trascina per spostare'],
       },
@@ -81,7 +81,7 @@ export const HOME_IT: HomeCopy = {
       {
         kicker: 'Mese e anno',
         title: 'Allontanati abbastanza da vedere la forma delle cose',
-        body: 'La vista mese segna ogni giorno che ha qualcosa. La vista anno mette dodici mesi in una schermata: il modo più rapido di trovare una settimana libera.',
+        body: "Confronta gli eventi dei calendari selezionati nel mese o nell’anno. Apri una giornata per esaminare tutti i suoi appuntamenti prima di considerarla libera.",
         alt: 'Vista mese con indicatori di evento su ogni giorno',
         bullets: ['Densità a colpo d’occhio', 'Dodici mesi insieme', 'Salta a qualsiasi data'],
       },
@@ -145,11 +145,11 @@ tabs: {"hourly":"Per ora","daily":"Per giorno","weekend":"Fine settimana","range
     lead: 'Tre account, una griglia e una serie di gesti che si comportano come le tue mani si aspettano.',
     unified: {
       title: 'Tre account. Una griglia.',
-      body: 'iCloud, Google Calendar e Microsoft Outlook, sincronizzati nei due sensi e distinti per colore in un’unica vista. Nascondi un calendario quando non vuoi vederlo: il resto continua a funzionare.',
+      body: "Visualizza insieme i calendari iCloud e Google selezionati; Premium aggiunge i calendari Microsoft. Modifica dove i permessi dell’account lo consentono e controlla il calendario di origine dopo i cambiamenti.",
     },
     gestures: {
       title: 'Trascina. Allunga. Fatto.',
-      body: 'Afferra un evento e falla scivolare a un’altra ora o a un altro giorno. Tira il bordo superiore o inferiore per cambiarne la durata. Nessuna finestra, nessun pulsante Salva.',
+      body: "Sposta gli eventi modificabili a un’altra ora o data, oppure ridimensionali nella sequenza temporale. Per un evento ricorrente, scegli quali occorrenze cambiare e controlla il risultato salvato.",
     },
     tiles: [
       {
@@ -159,7 +159,7 @@ tabs: {"hourly":"Per ora","daily":"Per giorno","weekend":"Fine settimana","range
       },
       {
         title: 'Trasforma una previsione in un piano',
-        body: 'Tocca un’ora nel centro meteo e si apre un nuovo evento, già impostato su quell’ora. Trova la finestra asciutta e prenotala.',
+        body: "Scegli un’ora con una previsione disponibile per iniziare una bozza di evento, poi controlla data, ora e calendario prima di salvare.",
         badge: 'Un tocco',
       },
       {
@@ -170,7 +170,7 @@ tabs: {"hourly":"Per ora","daily":"Per giorno","weekend":"Fine settimana","range
     ],
     sourceNotes: {
       builtIn: 'Integrato',
-      twoWay: 'Bidirezionale',
+      twoWay: "Collegato",
       premium: 'Premium',
     },
   },
@@ -182,14 +182,14 @@ tabs: {"hourly":"Per ora","daily":"Per giorno","weekend":"Fine settimana","range
     yearly: 'Annuale',
     saveMore: 'risparmi di più',
     billingPeriod: 'Periodo di fatturazione',
-    mostPopular: 'Il più scelto',
+    mostPopular: "Piano in evidenza",
     everythingIn: 'Tutto quello di {tier}, più:',
     forever: 'per sempre',
     perMonth: '/ mese',
     perYear: '/ anno',
     downloadFree: 'Scarica gratis',
     startWith: 'Inizia con {tier}',
-    note: 'Gli abbonamenti si rinnovano automaticamente e vengono addebitati tramite il tuo ID Apple. Disdici quando vuoi nelle impostazioni del tuo account App Store, almeno 24 ore prima della fine del periodo.',
+    note: "Gli abbonamenti si rinnovano automaticamente tramite il tuo Apple Account. Controlla prezzo locale e periodo di fatturazione prima dell’acquisto. Gestisci la disdetta in Impostazioni, sotto il tuo nome → Abbonamenti.",
     plans: {
       free: {
         name: 'Gratis',
@@ -238,7 +238,7 @@ tabs: {"hourly":"Per ora","daily":"Per giorno","weekend":"Fine settimana","range
       },
       {
         q: 'Posso cambiare un evento trascinandolo?',
-        a: 'È il modo principale di modificarlo. Trascina un evento a un’altra ora o a un altro giorno, oppure tira il bordo superiore o inferiore per cambiarne la durata. Le modifiche tornano subito nel calendario di origine.',
+        a: "Puoi spostare gli eventi modificabili e ridimensionarli nella sequenza temporale. Controlla la scelta della ricorrenza e l’orario salvato; gli aggiornamenti dei calendari collegati dipendono dai permessi e dalla riuscita della sincronizzazione.",
       },
       {
         q: 'Cosa mostrano i widget?',
@@ -250,7 +250,7 @@ tabs: {"hourly":"Per ora","daily":"Per giorno","weekend":"Fine settimana","range
       },
       {
         q: 'Come disdico un abbonamento?',
-        a: 'Gli abbonamenti sono gestiti da Apple, quindi si disdicono nelle impostazioni del tuo account App Store. Fallo almeno 24 ore prima della fine del periodo e non ti verrà addebitato altro.',
+        a: "Su iPhone o iPad, apri Impostazioni, tocca il tuo nome e poi Abbonamenti. Scegli Cloud Calendars e disdici da lì; verifica lo stato di disdetta o scadenza mostrato da Apple.",
       },
     ],
   },
