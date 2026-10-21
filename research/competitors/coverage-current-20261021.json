@@ -1,7 +1,7 @@
 {
   "schemaVersion": 1,
   "date": "2026-10-21",
-  "scope": "All concrete HTTPS URLs recorded in batch03 through batch09 JSON files present in this directory, exact-string deduplicated. This is a bounded corpus queue, not exhaustive publisher coverage. batch07 file is absent. No new network fetches. Consolidated four explicit successful batch10 body reviews; prior evidence preserved. Consolidated four explicit successful batch12 substantive body reviews, preserving prior evidence. Consolidated two successful batch13 substantive reviews.",
+  "scope": "All concrete HTTPS URLs recorded in batch03 through batch09 JSON files present in this directory, exact-string deduplicated. This is a bounded corpus queue, not exhaustive publisher coverage. batch07 file is absent. No new network fetches. Consolidated four explicit successful batch10 body reviews; prior evidence preserved. Consolidated four explicit successful batch12 substantive body reviews, preserving prior evidence. Consolidated two successful batch13 substantive reviews. Four previously discovered OneCal substantive body reviews consolidated in batch14.",
   "inputFiles": [
     "research/competitors/batch03-intent-mapping-20261021.json",
     "research/competitors/batch03-primary-discovery-20261021.json",
@@ -14,7 +14,8 @@
     "research/competitors/batch10-sharing-primary-20261021.json",
     "research/competitors/batch11-export-duplicates-primary-20261021.json",
     "research/competitors/batch12-primary-20261021.json",
-    "research/competitors/batch13-ics-troubleshooting-primary-20261021.json"
+    "research/competitors/batch13-ics-troubleshooting-primary-20261021.json",
+    "research/competitors/batch14-views-mobile-caldav-20261022.json"
   ],
   "statusDefinitions": {
     "full": "Explicit complete substantive-text review in at least one cited record, not images/runtime/linked pages.",
@@ -26,10 +27,10 @@
   "counts": {
     "failed": 6,
     "partial": 7,
-    "discovered": 17,
-    "full": 41,
+    "discovered": 13,
+    "full": 45,
     "exactUrls": 71,
-    "queue": 30
+    "queue": 26
   },
   "queue": [
     {
@@ -606,104 +607,6 @@
           "batchQueries": [],
           "queryAssociation": "Batch-level only; original file does not attribute an individual query to this URL.",
           "statusEvidence": "failed"
-        }
-      ]
-    },
-    {
-      "url": "https://docs.onecal.io/docs/calendar-view/intro",
-      "publisher": "OneCal",
-      "status": "discovered",
-      "observedQueryOrIntent": null,
-      "intentEvidenceNote": "Verbatim recorded intent/topic/summary where present; null means no URL-specific intent was recorded. URL spelling is not body evidence.",
-      "existingCanonicals": [
-        "icloud-google-and-outlook-in-one-view"
-      ],
-      "canonicalMappingBasis": "Editorial candidate routing from recorded topic or URL label; not proof target body covers the task. Null/empty where unsupported.",
-      "nextAction": "Read exact official body if useful; verify destination and platform, then deduplicate against existing canonical before authoring.",
-      "provenance": [
-        {
-          "file": "research/competitors/batch09-provider-intents-20261021.json",
-          "field": "/discoveredOnly/0/url",
-          "record": {
-            "url": "https://docs.onecal.io/docs/calendar-view/intro",
-            "status": "discovered_search_or_index_link_not_body_reviewed"
-          },
-          "batchQueries": [],
-          "queryAssociation": "Batch-level only; original file does not attribute an individual query to this URL.",
-          "statusEvidence": "discovered"
-        }
-      ]
-    },
-    {
-      "url": "https://docs.onecal.io/docs/calendar-view/view-settings",
-      "publisher": "OneCal",
-      "status": "discovered",
-      "observedQueryOrIntent": null,
-      "intentEvidenceNote": "Verbatim recorded intent/topic/summary where present; null means no URL-specific intent was recorded. URL spelling is not body evidence.",
-      "existingCanonicals": [
-        "icloud-google-and-outlook-in-one-view"
-      ],
-      "canonicalMappingBasis": "Editorial candidate routing from recorded topic or URL label; not proof target body covers the task. Null/empty where unsupported.",
-      "nextAction": "Read exact official body if useful; verify destination and platform, then deduplicate against existing canonical before authoring.",
-      "provenance": [
-        {
-          "file": "research/competitors/batch09-provider-intents-20261021.json",
-          "field": "/discoveredOnly/2/url",
-          "record": {
-            "url": "https://docs.onecal.io/docs/calendar-view/view-settings",
-            "status": "discovered_search_or_index_link_not_body_reviewed"
-          },
-          "batchQueries": [],
-          "queryAssociation": "Batch-level only; original file does not attribute an individual query to this URL.",
-          "statusEvidence": "discovered"
-        }
-      ]
-    },
-    {
-      "url": "https://docs.onecal.io/docs/mobile-apps",
-      "publisher": "OneCal",
-      "status": "discovered",
-      "observedQueryOrIntent": null,
-      "intentEvidenceNote": "Verbatim recorded intent/topic/summary where present; null means no URL-specific intent was recorded. URL spelling is not body evidence.",
-      "existingCanonicals": [],
-      "canonicalMappingBasis": "Editorial candidate routing from recorded topic or URL label; not proof target body covers the task. Null/empty where unsupported.",
-      "nextAction": "Read exact official body if useful; verify destination and platform, then deduplicate against existing canonical before authoring.",
-      "provenance": [
-        {
-          "file": "research/competitors/batch09-provider-intents-20261021.json",
-          "field": "/discoveredOnly/3/url",
-          "record": {
-            "url": "https://docs.onecal.io/docs/mobile-apps",
-            "status": "discovered_search_or_index_link_not_body_reviewed"
-          },
-          "batchQueries": [],
-          "queryAssociation": "Batch-level only; original file does not attribute an individual query to this URL.",
-          "statusEvidence": "discovered"
-        }
-      ]
-    },
-    {
-      "url": "https://docs.onecal.io/docs/calendars/connect-caldav-calendar",
-      "publisher": "OneCal",
-      "status": "discovered",
-      "observedQueryOrIntent": null,
-      "intentEvidenceNote": "Verbatim recorded intent/topic/summary where present; null means no URL-specific intent was recorded. URL spelling is not body evidence.",
-      "existingCanonicals": [
-        "what-calendar-sync-actually-does"
-      ],
-      "canonicalMappingBasis": "Editorial candidate routing from recorded topic or URL label; not proof target body covers the task. Null/empty where unsupported.",
-      "nextAction": "Read exact official body if useful; verify destination and platform, then deduplicate against existing canonical before authoring.",
-      "provenance": [
-        {
-          "file": "research/competitors/batch09-provider-intents-20261021.json",
-          "field": "/discoveredOnly/6/url",
-          "record": {
-            "url": "https://docs.onecal.io/docs/calendars/connect-caldav-calendar",
-            "status": "discovered_search_or_index_link_not_body_reviewed"
-          },
-          "batchQueries": [],
-          "queryAssociation": "Batch-level only; original file does not attribute an individual query to this URL.",
-          "statusEvidence": "discovered"
         }
       ]
     },
@@ -2496,6 +2399,160 @@
             "limits": [
               "No OneCal runtime test; do not copy subscription cleanup behavior or support reset advice into Cloud.",
               "No Google rank, volume or ChatGPT recommendation inferred."
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "url": "https://docs.onecal.io/docs/calendar-view/intro",
+      "publisher": "OneCal",
+      "status": "full",
+      "observedQueryOrIntent": null,
+      "intentEvidenceNote": "Verbatim recorded intent/topic/summary where present; null means no URL-specific intent was recorded. URL spelling is not body evidence.",
+      "existingCanonicals": [
+        "icloud-google-and-outlook-in-one-view"
+      ],
+      "canonicalMappingBasis": "Editorial candidate routing from recorded topic or URL label; not proof target body covers the task. Null/empty where unsupported.",
+      "nextAction": "Evaluate task coverage; documentation is not feature-parity or ranking proof.",
+      "provenance": [
+        {
+          "file": "research/competitors/batch09-provider-intents-20261021.json",
+          "field": "/discoveredOnly/0/url",
+          "record": {
+            "url": "https://docs.onecal.io/docs/calendar-view/intro",
+            "status": "discovered_search_or_index_link_not_body_reviewed"
+          },
+          "batchQueries": [],
+          "queryAssociation": "Batch-level only; original file does not attribute an individual query to this URL.",
+          "statusEvidence": "discovered"
+        },
+        {
+          "file": "research/competitors/batch14-views-mobile-caldav-20261022.json",
+          "record": {
+            "url": "https://docs.onecal.io/docs/calendar-view/intro",
+            "publisher": "OneCal",
+            "status": "full",
+            "readScope": "Substantive body lines22-163 of186 read in preceding research segment of this batch",
+            "findings": "Unified view, search, create/edit, repeat scope, RSVP, meeting links and time-zone controls; publisher features only.",
+            "limits": [
+              "Documentation only, no runtime verification.",
+              "No measured Google position, keyword volume or ChatGPT citation inferred."
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "url": "https://docs.onecal.io/docs/calendar-view/view-settings",
+      "publisher": "OneCal",
+      "status": "full",
+      "observedQueryOrIntent": null,
+      "intentEvidenceNote": "Verbatim recorded intent/topic/summary where present; null means no URL-specific intent was recorded. URL spelling is not body evidence.",
+      "existingCanonicals": [
+        "icloud-google-and-outlook-in-one-view"
+      ],
+      "canonicalMappingBasis": "Editorial candidate routing from recorded topic or URL label; not proof target body covers the task. Null/empty where unsupported.",
+      "nextAction": "Evaluate task coverage; documentation is not feature-parity or ranking proof.",
+      "provenance": [
+        {
+          "file": "research/competitors/batch09-provider-intents-20261021.json",
+          "field": "/discoveredOnly/2/url",
+          "record": {
+            "url": "https://docs.onecal.io/docs/calendar-view/view-settings",
+            "status": "discovered_search_or_index_link_not_body_reviewed"
+          },
+          "batchQueries": [],
+          "queryAssociation": "Batch-level only; original file does not attribute an individual query to this URL.",
+          "statusEvidence": "discovered"
+        },
+        {
+          "file": "research/competitors/batch14-views-mobile-caldav-20261022.json",
+          "record": {
+            "url": "https://docs.onecal.io/docs/calendar-view/view-settings",
+            "publisher": "OneCal",
+            "status": "full",
+            "readScope": "Substantive body lines22-50 of58 read in preceding research segment of this batch",
+            "findings": "Weekends and week numbers visibility, first day of week and browser-local preferences are separate settings.",
+            "limits": [
+              "Documentation only, no runtime verification.",
+              "No measured Google position, keyword volume or ChatGPT citation inferred."
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "url": "https://docs.onecal.io/docs/mobile-apps",
+      "publisher": "OneCal",
+      "status": "full",
+      "observedQueryOrIntent": null,
+      "intentEvidenceNote": "Verbatim recorded intent/topic/summary where present; null means no URL-specific intent was recorded. URL spelling is not body evidence.",
+      "existingCanonicals": [],
+      "canonicalMappingBasis": "Editorial candidate routing from recorded topic or URL label; not proof target body covers the task. Null/empty where unsupported.",
+      "nextAction": "Evaluate task coverage; documentation is not feature-parity or ranking proof.",
+      "provenance": [
+        {
+          "file": "research/competitors/batch09-provider-intents-20261021.json",
+          "field": "/discoveredOnly/3/url",
+          "record": {
+            "url": "https://docs.onecal.io/docs/mobile-apps",
+            "status": "discovered_search_or_index_link_not_body_reviewed"
+          },
+          "batchQueries": [],
+          "queryAssociation": "Batch-level only; original file does not attribute an individual query to this URL.",
+          "statusEvidence": "discovered"
+        },
+        {
+          "file": "research/competitors/batch14-views-mobile-caldav-20261022.json",
+          "record": {
+            "url": "https://docs.onecal.io/docs/mobile-apps",
+            "publisher": "OneCal",
+            "status": "full",
+            "readScope": "Substantive body lines22-139 of164 read in preceding research segment of this batch",
+            "findings": "Mobile event use versus web-only configuration boundaries; do not transfer OneCal security or support promises.",
+            "limits": [
+              "Documentation only, no runtime verification.",
+              "No measured Google position, keyword volume or ChatGPT citation inferred."
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "url": "https://docs.onecal.io/docs/calendars/connect-caldav-calendar",
+      "publisher": "OneCal",
+      "status": "full",
+      "observedQueryOrIntent": null,
+      "intentEvidenceNote": "Verbatim recorded intent/topic/summary where present; null means no URL-specific intent was recorded. URL spelling is not body evidence.",
+      "existingCanonicals": [
+        "what-calendar-sync-actually-does"
+      ],
+      "canonicalMappingBasis": "Editorial candidate routing from recorded topic or URL label; not proof target body covers the task. Null/empty where unsupported.",
+      "nextAction": "Evaluate task coverage; documentation is not feature-parity or ranking proof.",
+      "provenance": [
+        {
+          "file": "research/competitors/batch09-provider-intents-20261021.json",
+          "field": "/discoveredOnly/6/url",
+          "record": {
+            "url": "https://docs.onecal.io/docs/calendars/connect-caldav-calendar",
+            "status": "discovered_search_or_index_link_not_body_reviewed"
+          },
+          "batchQueries": [],
+          "queryAssociation": "Batch-level only; original file does not attribute an individual query to this URL.",
+          "statusEvidence": "discovered"
+        },
+        {
+          "file": "research/competitors/batch14-views-mobile-caldav-20261022.json",
+          "record": {
+            "url": "https://docs.onecal.io/docs/calendars/connect-caldav-calendar",
+            "publisher": "OneCal",
+            "status": "full",
+            "readScope": "Substantive body lines22-111 of123 read in preceding research segment of this batch",
+            "findings": "CalDAV account setup, provider credentials and writable account connection distinct from subscribed feeds. No universal Cloud direct connector inferred.",
+            "limits": [
+              "Documentation only, no runtime verification.",
+              "No measured Google position, keyword volume or ChatGPT citation inferred."
             ]
           }
         }

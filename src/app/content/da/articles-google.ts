@@ -157,53 +157,100 @@ export const GOOGLE_DA: Readonly<Record<string, LocalisedArticle>> = {
   },
 
   'the-secret-address-of-a-google-calendar': {
-    title: 'Hvad den hemmelige adresse til en Google-kalender i virkeligheden giver væk',
-    short: 'Den hemmelige iCal-adresse',
-    description:
-      'Google tilbyder en privat adresse, der viser hele din kalender til den, der har den. Hvad den blotter, og hvorfor den ikke kan trækkes tilbage i stilhed.',
-    lede: 'Begravet i indstillingerne for enhver Google-kalender ligger et link, der viser alt på den. Ingen log ind, ingen tilladelse, ingen registrering af, hvem der åbnede det.',
-    commonBelief: 'At en privat adresse er privat, fordi den er svær at finde.',
-    sections: [
-      {
-        heading: 'Et link er en adgangskode, der ikke kan skiftes for én person',
-        body: [
-          'Den hemmelige adresse bærer fulde detaljer — titler, tidspunkter, steder, noter. Enhver med linket ser dem, og der findes ingen liste over hvem.',
-          'Dens eneste beskyttelse er den tilfældige del af adressen. Det er ægte beskyttelse mod gætteri og slet ingen mod videresendelse, en delt skærm eller et dokument, der overlever jobbet.',
-        ],
-      },
-      {
-        heading: 'At nulstille den ødelægger den for alle',
-        body: [
-          'Du kan nulstille adressen, og den gamle dør. Den dør også for hver kollega, hvert dashboard og hvert script, der stille lænede sig op ad den, uden varsel til nogen af dem.',
-          'Det er argumentet for aldrig at dele adressen til en kalender, du lever i, ud. Udgiv en kalender lavet til formålet, så koster nulstillingen intet.',
-        ],
-      },
-    ],
-    claims: {
-      linkLength: 'Tilfældige tegn, der beskytter et delingslink af vores slags',
-      sharePrice: 'Hvad det koster at dele en begivenhed fra appen',
+  "title": "Googles hemmelige iCal-adresse: skeln mellem abonnement og deling",
+  "short": "Den hemmelige iCal-adresse",
+  "description": "Forstå Googles hemmelige iCal-adresse, kontoforbindelser og feeds. Håndtér en afsløret adresse uden løfter om straksopdatering eller slettede kopier.",
+  "lede": "En kalenderadresse, en kontoforbindelse og en invitation har forskellige formål. Find ud af, hvad du har, før du bruger det til at vise en kalender i en anden app. Guiden er udgivet af Arte Soft, udvikleren af Cloud Calendars.",
+  "commonBelief": "En hemmelig kalenderadresse er en personlig invitation, som kan trækkes tilbage fra én bestemt modtager.",
+  "sections": [
+    {
+      "heading": "Vælg forbindelsen efter formålet",
+      "body": [
+        "Google skelner mellem at logge ind i en anden kalenderapp og at se kalenderen via en hemmelig iCal-adresse. Kontoforbindelsen kan understøtte redigering; adressen giver et abonnement kun til visning. Google beskriver den hemmelige adresse som beregnet til eget brug og fraråder at dele den med andre.",
+        "At vise din egen arbejdsplan i en anden kompatibel kalender er eksempelvis anderledes end at give en kollega løbende adgang. Start med målet: at se din kalender, samarbejde med en bestemt person eller distribuere en offentliggjort tidsplan til en målgruppe. Vælg ikke en URL alene, fordi den er nem at indsætte."
+      ]
     },
-    faq: [
-      {
-        q: 'Hvad kan nogen bruge den hemmelige adresse til min kalender til?',
-        a: 'Se alt på den — titler, tidspunkter, steder og noter — uden login, uden tilladelse og uden at det nogen steder noteres, at de har kigget.',
-      },
-      {
-        q: 'Kan jeg tage en hemmelig kalenderadresse tilbage?',
-        a: 'Kun ved at nulstille den, hvilket dræber den gamle for alle på én gang: kolleger, dashboards og ethvert script, der stille lænede sig op ad den, uden varsel.',
-      },
-      {
-        q: 'Kan jeg maile den hemmelige adresse til en kollega?',
-        a: 'Behandl den som offentlig, fra det øjeblik den forlader dine hænder. Dens eneste beskyttelse er at være svær at gætte, og videresendelse ophæver netop det.',
-      },
-    ],
-    practical: [
-      'Behandl den hemmelige adresse som offentlig, så snart den forlader dine hænder.',
-      'Udgiv aldrig adressen til den kalender, du faktisk bruger.',
-      'Nulstil den, når nogen stopper, og sig det til dem, det går i stykker for.',
-    ],
-    seeAlso: ['who-can-see-what-in-google-calendar', 'taking-back-a-calendar-you-shared'],
-  },
+    {
+      "heading": "Find den rigtige kalender, ikke kun kontoen",
+      "body": [
+        "På en computer placerer Googles vejledning “Secret address in iCal format” under den valgte kalenders “Integrate calendar”-indstillinger. Kontrollér først kalendernavnet. Arbejds- eller skoleadministratorer kan begrænse funktionen; en manglende adresse er ikke grund til at offentliggøre kalenderen i stedet.",
+        "Hold adressen ude af skærmbilleder, offentlige supportopslag og delte noter. Beskriv kontotype, kalendernavn og forbindelsesmetode uden URL’en, når du beder om hjælp. Support skal normalt først identificere forbindelsen, før der er behov for begivenhedernes indhold."
+      ]
+    },
+    {
+      "heading": "Kontrollér, hvad modtagerappen faktisk tilføjede",
+      "body": [
+        "Et abonnement følger et feed; import af en fil skaber en selvstændig kopi. Læs modtagerappens vejledning, og bekræft, hvilken handling du udfører. Hvis du blot åbner en hentet kalenderfil, skal du ikke forvente, at de oprettede aftaler følger senere ændringer.",
+        "Brug en almindelig, ikke-følsom begivenhed, du kender, til at sammenligne kalendernavn, dato og viste detaljer. Opret ikke et andet abonnement for at undersøge det første: To synlige kopier kan få en forsinket opdatering til at ligne modstridende aftaler. Skjul midlertidigt en kalender, når du finder kilden."
+      ]
+    },
+    {
+      "heading": "Hold Google- og Cloud Calendars-links adskilt",
+      "body": [
+        "Cloud Calendars har egne forløb til deling af begivenheder og kalendere, herunder abonnementsfeeds. De er ikke hemmelige Google-adresser. Afklar, om afsenderen delte én begivenhed, en kalender eller en kontobaseret invitation, før du vælger, hvordan den åbnes.",
+        "En Cloud Calendars-modtager kan have rollen Reader, Writer eller Owner. En feedadresse alene er ikke bevis på redigeringsret. En Google-adresse til visning gør dig heller ikke til kalenderens ejer. Spørg afsenderen, hvilket system ændringer skal foretages i."
+      ]
+    },
+    {
+      "heading": "Tag højde for modtagerkalenderens opdatering",
+      "body": [
+        "Et abonnement lover ikke øjeblikkelig levering. Cloud Calendars-feeds indeholder et foreslået opdateringsinterval, men modtagerappen bestemmer, hvornår den henter og viser ændringer. Et gammelt tidspunkt på én enhed beviser ikke alene, at arrangøren ikke gemte ændringen.",
+        "Ved et møde samme dag bør du sammenligne med arrangørens aktuelle kalender og bekræfte vigtige ændringer direkte. Notér, hvilken kalender der stadig viser de gamle oplysninger, og hvornår du kontrollerede den. Importér ikke begivenheden gentagne gange, og slet ikke kildekalenderen for at tvinge feedet til at indhente ændringen."
+      ]
+    },
+    {
+      "heading": "Reagér på afsløring uden at love tilbagekaldelse",
+      "body": [
+        "Google beskriver nulstilling af en afsløret hemmelig adresse, så den gamle bliver ugyldig og erstattes af en ny. Find dine egne apps, som bruger adressen, så du efterfølgende kan opdatere abonnementerne. Nulstilling af en adresse er noget andet end at fjerne en navngiven samarbejdspartner.",
+        "Tidligere gemte aftaler, eksporter og skærmbilleder er et særskilt spørgsmål. Et ændret link beviser ikke, at alle tidligere kopier er væk. Hvis oplysninger blev sendt til den forkerte målgruppe, skal du vurdere det faktiske materiale og modtagerne frem for at anse en vellykket nulstilling som bevis på fuldstændig fjernelse."
+      ]
+    }
+  ],
+  "claims": {},
+  "practical": [
+    "Find ud af, om du har en kontoforbindelse, invitation, abonnement eller fil.",
+    "Kontrollér den tilhørende kalender, før du kopierer en adresse.",
+    "Brug kun en hemmelig Google-adresse i dine egne kompatible apps.",
+    "Bekræft, at modtagerappen abonnerede og ikke importerede.",
+    "Bekræft hastende ændringer med arrangøren frem for at stole på opdateringstiden.",
+    "Følg Googles nulstillingsvejledning ved en afsløret adresse, og opdatér de ønskede forbindelser."
+  ],
+  "faq": [
+    {
+      "q": "Kan jeg give den hemmelige adresse til en kollega?",
+      "a": "Google anbefaler at holde den til dine egne apps. Brug kalenderens delingsindstillinger med den ønskede tilladelse, når andre har brug for adgang."
+    },
+    {
+      "q": "Lader et abonnement mig redigere originalen?",
+      "a": "En hemmelig Google-iCal-adresse er til visning. Redigering kræver en passende kontoforbindelse og tilladelse; Cloud Calendars-roller er en særskilt ordning."
+    },
+    {
+      "q": "Sletter nulstilling gamle aftaler overalt?",
+      "a": "Den gør den gamle Google-adresse ugyldig. Den fastslår ikke, at selvstændigt gemte filer, aftaler eller skærmbilleder er fjernet."
+    }
+  ],
+  "sourcesHeading": "Udbydervejledning og yderligere læsning",
+  "sources": [
+    {
+      "label": "Google: kontoforbindelser og hemmelige iCal-adresser",
+      "url": "https://support.google.com/calendar/answer/37648?hl=en"
+    },
+    {
+      "label": "Google: deling af en kalender",
+      "url": "https://support.google.com/calendar/answer/37082?hl=en"
+    },
+    {
+      "label": "Microsoft: import, abonnement og opdateringstid",
+      "url": "https://support.microsoft.com/en-us/outlook/import-or-subscribe-to-a-calendar-in-outlook-com-or-outlook-on-the-web"
+    }
+  ],
+  "seeAlso": [
+    "who-can-see-what-in-google-calendar",
+    "taking-back-a-calendar-you-shared",
+    "sharing-one-event-not-your-calendar"
+  ],
+  "updated": "2026-10-21"
+},
 
   'what-guests-can-do-to-your-event': {
     title: 'Hvad dine gæster kan gøre ved en begivenhed',

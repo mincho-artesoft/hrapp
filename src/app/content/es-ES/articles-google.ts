@@ -157,53 +157,100 @@ export const GOOGLE_ES_ES: Readonly<Record<string, LocalisedArticle>> = {
   },
 
   'the-secret-address-of-a-google-calendar': {
-    title: 'Qué revela de verdad la dirección secreta de un calendario de Google',
-    short: 'La dirección iCal secreta',
-    description:
-      'Google ofrece una dirección privada que enseña tu calendario entero a quien la tenga. Qué expone y por qué no se retira sin ruido.',
-    lede: 'En los ajustes de cada calendario de Google hay un enlace que muestra todo lo que contiene. Sin iniciar sesión, sin permiso y sin registro de quién lo abrió.',
-    commonBelief: 'Que una dirección privada es privada porque es difícil de encontrar.',
-    sections: [
-      {
-        heading: 'Un enlace es una contraseña que no puedes cambiar para una sola persona',
-        body: [
-          'La dirección secreta lleva detalles completos: títulos, horas, lugares, notas. Quien tenga el enlace los ve, y no hay lista de quién es.',
-          'Su única protección es la parte aleatoria de la dirección. Eso protege de verdad contra adivinar, y nada contra un reenvío, una pantalla compartida o un documento que sobrevive al puesto de trabajo.',
-        ],
-      },
-      {
-        heading: 'Restablecerla la rompe para todos',
-        body: [
-          'Puedes restablecer la dirección, y la antigua muere. También muere para cada compañero, cada panel y cada script que dependía de ella en silencio, sin aviso alguno.',
-          'Ese es el argumento para no repartir nunca la dirección del calendario en el que vives. Publica un calendario hecho para eso y restablecer no te cuesta nada.',
-        ],
-      },
-    ],
-    claims: {
-      linkLength: 'Caracteres aleatorios que protegen un enlace nuestro',
-      sharePrice: 'Lo que cuesta compartir un evento desde la app',
+  "title": "La dirección iCal secreta de Google: suscribirse no es compartir",
+  "short": "La dirección iCal secreta",
+  "description": "Distingue la dirección iCal secreta, las conexiones de cuenta y los canales compartidos, sin prometer cambios inmediatos ni borrar copias.",
+  "lede": "Una dirección de calendario, una conexión de cuenta y una invitación cumplen funciones distintas. Identifica cuál tienes antes de llevar un calendario a otra aplicación. Esta guía la publica Arte Soft, desarrollador de Cloud Calendars.",
+  "commonBelief": "Una dirección secreta es una invitación personal que puede retirarse a un único destinatario.",
+  "sections": [
+    {
+      "heading": "Elige la conexión adecuada",
+      "body": [
+        "Google distingue entre iniciar sesión en otra aplicación de calendario y consultar mediante una dirección iCal secreta. La conexión de cuenta puede permitir editar; la dirección ofrece una suscripción de solo lectura. Google indica que la dirección secreta es para uso propio y desaconseja compartirla con otras personas.",
+        "Mostrar tu propio horario de trabajo en otro calendario compatible no equivale a dar acceso continuado a un compañero. Define primero el objetivo: consultar tu agenda, colaborar con alguien concreto o distribuir un horario para un público. No elijas una URL solo porque sea fácil pegarla."
+      ]
     },
-    faq: [
-      {
-        q: '¿Qué puede hacer alguien con la dirección secreta de mi calendario?',
-        a: 'Ver todo lo que hay en él —títulos, horas, lugares y notas— sin iniciar sesión, sin permiso y sin dejar rastro de que ha mirado.',
-      },
-      {
-        q: '¿Puedo recuperar una dirección secreta de calendario?',
-        a: 'Solo restableciéndola, lo que mata la anterior para todos a la vez: compañeros, paneles y cualquier script que se apoyaba en ella en silencio, sin aviso.',
-      },
-      {
-        q: '¿Puedo enviar la dirección secreta por correo a un compañero?',
-        a: 'Trátala como pública desde que sale de tus manos. Su única protección es ser difícil de adivinar, y un reenvío anula exactamente eso.',
-      },
-    ],
-    practical: [
-      'Trata la dirección secreta como pública en cuanto sale de tus manos.',
-      'No publiques nunca la dirección del calendario que usas de verdad.',
-      'Restablécela cuando alguien se va, y avisa a quienes se les romperá.',
-    ],
-    seeAlso: ['who-can-see-what-in-google-calendar', 'taking-back-a-calendar-you-shared'],
-  },
+    {
+      "heading": "Busca el calendario correcto, no solo la cuenta",
+      "body": [
+        "En un ordenador, las instrucciones de Google sitúan «Secret address in iCal format» dentro de «Integrate calendar» del calendario elegido. Comprueba antes su nombre. Los administradores del trabajo o centro educativo pueden restringir esta opción; que falte la dirección no justifica publicar el calendario.",
+        "Evita que la dirección aparezca en capturas, consultas públicas de soporte o notas compartidas. Al pedir ayuda, describe el tipo de cuenta, el nombre del calendario y la conexión sin aportar la URL. Normalmente, soporte necesita identificar primero la vía de conexión, antes de conocer el contenido de los eventos."
+      ]
+    },
+    {
+      "heading": "Comprueba qué ha añadido la aplicación receptora",
+      "body": [
+        "Una suscripción sigue un canal; importar un archivo crea una copia independiente. Lee las instrucciones de la aplicación receptora y confirma qué acción realizas. Si solo abres un archivo de calendario descargado, no presupongas que las citas resultantes seguirán los cambios posteriores.",
+        "Compara el nombre del calendario, la fecha y los detalles con un evento habitual que reconozcas y que no sea sensible. No crees una segunda suscripción para diagnosticar la primera: dos copias visibles pueden hacer que un retraso parezca un conflicto de citas. Oculta temporalmente un calendario al identificar el origen."
+      ]
+    },
+    {
+      "heading": "Distingue los enlaces de Google y Cloud Calendars",
+      "body": [
+        "Cloud Calendars tiene sus propios procesos para compartir eventos y calendarios, incluidos canales de suscripción. No son direcciones secretas de Google. Antes de abrirlo, aclara si el remitente compartió un evento, un calendario o una invitación vinculada a una cuenta.",
+        "Un destinatario de Cloud Calendars puede tener el rol Reader, Writer u Owner. Una dirección de canal por sí sola no demuestra derechos de edición. Del mismo modo, recibir una dirección de consulta de Google no te convierte en propietario. Pregunta al remitente en qué sistema deben hacerse los cambios."
+      ]
+    },
+    {
+      "heading": "Ten en cuenta la actualización del calendario receptor",
+      "body": [
+        "Una suscripción no promete entrega inmediata. Los canales de Cloud Calendars incluyen un intervalo de actualización sugerido, pero la aplicación receptora decide cuándo obtiene y muestra las novedades. Una hora antigua en un dispositivo no demuestra por sí sola que el organizador no guardara el cambio.",
+        "Para una reunión del mismo día, compara con la agenda actual del organizador y confirma directamente los cambios importantes. Anota qué calendario sigue mostrando la información antigua y cuándo lo comprobaste. No importes repetidamente el evento ni borres el calendario de origen para forzar la actualización."
+      ]
+    },
+    {
+      "heading": "Actúa ante una divulgación sin prometer recuperar las copias",
+      "body": [
+        "Google explica cómo restablecer una dirección secreta divulgada: invalida la anterior y crea otra. Identifica tus aplicaciones que la utilizan para actualizar sus suscripciones después. Restablecer una dirección es distinto de retirar a un colaborador concreto.",
+        "Las citas guardadas, exportaciones y capturas anteriores son otra cuestión. Cambiar un enlace no demuestra que todas las copias hayan desaparecido. Si distribuiste información al público equivocado, considera el contenido y los destinatarios reales, en vez de interpretar un restablecimiento correcto como prueba de eliminación completa."
+      ]
+    }
+  ],
+  "claims": {},
+  "practical": [
+    "Identifica si tienes una conexión de cuenta, invitación, suscripción o archivo.",
+    "Comprueba el calendario de origen antes de copiar una dirección.",
+    "Reserva la dirección secreta de Google para tus propias aplicaciones compatibles.",
+    "Verifica que la aplicación receptora se suscribió y no importó.",
+    "Confirma los cambios urgentes con el organizador sin depender de los plazos de actualización.",
+    "Si se divulgó la dirección, sigue las instrucciones de Google para restablecerla y actualizar las conexiones previstas."
+  ],
+  "faq": [
+    {
+      "q": "¿Puedo dar la dirección secreta a un compañero?",
+      "a": "Google recomienda reservarla para tus propias aplicaciones. Si otra persona necesita acceso, utiliza los controles para compartir del calendario y elige el permiso adecuado."
+    },
+    {
+      "q": "¿Una suscripción me permite editar el original?",
+      "a": "La dirección iCal secreta de Google es una vía de consulta. Editar requiere una conexión de cuenta y un permiso adecuados; los roles de Cloud Calendars son un mecanismo aparte."
+    },
+    {
+      "q": "¿Restablecer la dirección borra las citas antiguas de todas partes?",
+      "a": "Invalida la dirección anterior de Google. No demuestra que se hayan eliminado archivos, citas o capturas guardados de forma independiente."
+    }
+  ],
+  "sourcesHeading": "Orientación de los proveedores y lecturas adicionales",
+  "sources": [
+    {
+      "label": "Google: conexiones de cuenta y direcciones iCal secretas",
+      "url": "https://support.google.com/calendar/answer/37648?hl=en"
+    },
+    {
+      "label": "Google: compartir un calendario",
+      "url": "https://support.google.com/calendar/answer/37082?hl=en"
+    },
+    {
+      "label": "Microsoft: importar, suscribirse y plazos de actualización",
+      "url": "https://support.microsoft.com/en-us/outlook/import-or-subscribe-to-a-calendar-in-outlook-com-or-outlook-on-the-web"
+    }
+  ],
+  "seeAlso": [
+    "who-can-see-what-in-google-calendar",
+    "taking-back-a-calendar-you-shared",
+    "sharing-one-event-not-your-calendar"
+  ],
+  "updated": "2026-10-21"
+},
 
   'what-guests-can-do-to-your-event': {
     title: 'Qué pueden hacerle tus invitados a un evento',

@@ -159,53 +159,100 @@ export const GOOGLE_NL_NL: Readonly<Record<string, LocalisedArticle>> = {
   },
 
   'the-secret-address-of-a-google-calendar': {
-    title: 'Wat het geheime adres van een Google-agenda werkelijk weggeeft',
-    short: 'Het geheime iCal-adres',
-    description:
-      'Google biedt een privéadres dat je hele agenda toont aan wie het heeft. Wat het prijsgeeft en waarom je het niet stilletjes terugneemt.',
-    lede: 'In de instellingen van elke Google-agenda zit een link die alles erop laat zien. Zonder inloggen, zonder rechten, zonder spoor van wie hem opende.',
-    commonBelief: 'Dat een privéadres privé is omdat het moeilijk te vinden is.',
-    sections: [
-      {
-        heading: 'Een link is een wachtwoord dat je niet voor één persoon kunt wijzigen',
-        body: [
-          'Het geheime adres draagt volledige gegevens — titels, tijden, locaties, notities. Wie de link heeft ziet ze, en er is geen lijst van wie dat is.',
-          'De enige bescherming is het willekeurige deel van het adres. Tegen raden helpt dat echt, tegen doorsturen, een gedeeld scherm of een document dat de baan overleeft helemaal niet.',
-        ],
-      },
-      {
-        heading: 'Opnieuw instellen breekt hem voor iedereen',
-        body: [
-          'Je kunt het adres opnieuw instellen; het oude is dan dood. Het is ook dood voor elke collega, elk dashboard en elk script dat er stil op leunde, zonder enige waarschuwing.',
-          'Dat is het argument om het adres van de agenda waarin je leeft nooit uit te delen. Publiceer een agenda die daarvoor is gemaakt, en opnieuw instellen kost niets.',
-        ],
-      },
-    ],
-    claims: {
-      linkLength: 'Willekeurige tekens die een deellink van ons beschermen',
-      sharePrice: 'Wat het delen van één afspraak uit de app kost',
+  "title": "Googles geheime iCal-adres: abonneren is iets anders dan delen",
+  "short": "Het geheime iCal-adres",
+  "description": "Begrijp Googles geheime iCal-adres, accountverbindingen en feeds. Handel bij uitlekken zonder directe updates of het wissen van kopieën te beloven.",
+  "lede": "Een kalenderadres, accountverbinding en uitnodiging hebben verschillende functies. Bepaal wat je hebt voordat je een rooster in een andere app opent. Deze gids is gepubliceerd door Arte Soft, de ontwikkelaar van Cloud Calendars.",
+  "commonBelief": "Een geheim kalenderadres zou een persoonlijke uitnodiging zijn die je voor één ontvanger kunt intrekken.",
+  "sections": [
+    {
+      "heading": "Kies de verbinding die bij de taak past",
+      "body": [
+        "Google onderscheidt aanmelden bij een andere agenda-app van bekijken via een geheim iCal-adres. Een accountverbinding kan bewerken ondersteunen; het adres biedt een alleen-lezen abonnement. Volgens Google is het geheime adres voor eigen gebruik en moet je het niet met anderen delen.",
+        "Je eigen werkrooster in een compatibele agenda tonen is bijvoorbeeld iets anders dan een collega blijvend toegang geven. Bepaal of je zelf wilt kijken, met een genoemde persoon wilt samenwerken of een rooster wilt publiceren. Kies een URL niet alleen omdat plakken makkelijk is."
+      ]
     },
-    faq: [
-      {
-        q: 'Wat kan iemand met het geheime adres van mijn agenda?',
-        a: 'Alles erop zien — titels, tijden, locaties en notities — zonder inloggen, zonder rechten en zonder dat ergens wordt vastgelegd dat hij heeft gekeken.',
-      },
-      {
-        q: 'Kan ik een geheim agenda-adres terugnemen?',
-        a: 'Alleen door het opnieuw in te stellen, en dat doodt het oude voor iedereen tegelijk: collega’s, dashboards en elk script dat er stil op leunde, zonder waarschuwing.',
-      },
-      {
-        q: 'Mag ik het geheime adres naar een collega mailen?',
-        a: 'Behandel het als openbaar zodra het je handen verlaat. De enige bescherming is dat het moeilijk te raden is, en doorsturen heft precies dat op.',
-      },
-    ],
-    practical: [
-      'Behandel het geheime adres als openbaar zodra het je handen verlaat.',
-      'Publiceer nooit het adres van de agenda die je echt gebruikt.',
-      'Stel het opnieuw in als iemand vertrekt, en waarschuw wie het daarmee breekt.',
-    ],
-    seeAlso: ['who-can-see-what-in-google-calendar', 'taking-back-a-calendar-you-shared'],
-  },
+    {
+      "heading": "Zoek de juiste agenda, niet alleen het juiste account",
+      "body": [
+        "Op een computer staat het geheime iCal-adres volgens Google bij de integratie-instellingen van de gekozen agenda. Controleer eerst de agendanaam. Werk- of schoolbeheerders kunnen deze optie beperken; een ontbrekend adres is geen reden om de agenda openbaar te maken.",
+        "Houd het adres uit screenshots, openbare supportberichten en gedeelde notities. Beschrijf bij hulpvragen accounttype, agendanaam en verbindingsmethode zonder de URL mee te sturen. Eerst moet duidelijk zijn welke route je gebruikt; afspraakinhoud is daarvoor doorgaans niet nodig."
+      ]
+    },
+    {
+      "heading": "Controleer wat de ontvangende app heeft toegevoegd",
+      "body": [
+        "Een abonnement volgt een feed; een geïmporteerd bestand maakt een afzonderlijke kopie. Lees de instructies van de ontvangende app en controleer welke actie je uitvoert. Het openen van een gedownload kalenderbestand betekent niet dat de afspraken later automatisch veranderen.",
+        "Vergelijk met een gewone, niet-gevoelige afspraak die je herkent: agendanaam, datum en zichtbare details. Maak geen tweede abonnement om het eerste te onderzoeken; twee kopieën kunnen een vertraagde update op een conflict laten lijken. Verberg tijdelijk één agenda om de bron te herkennen."
+      ]
+    },
+    {
+      "heading": "Houd Google- en Cloud Calendars-links uit elkaar",
+      "body": [
+        "Cloud Calendars heeft eigen deelroutes voor afspraken en agenda’s, waaronder feeds. Dat zijn geen geheime Google-adressen. Stel vast of de afzender één afspraak, een agenda of een accountgebonden uitnodiging deelt voordat je kiest hoe je de link opent.",
+        "Een Cloud Calendars-ontvanger kan Reader, Writer of Owner zijn. Een feedadres alleen bewijst geen bewerkingsrecht. Ook een Google-kijkadres maakt je geen eigenaar van de agenda. Vraag de afzender welk systeem voor wijzigingen bedoeld is."
+      ]
+    },
+    {
+      "heading": "Houd rekening met verversing door de ontvangende agenda",
+      "body": [
+        "Een abonnement belooft geen directe bezorging. Cloud Calendars-feeds bevatten een voorgesteld verversingsinterval, maar de ontvangende app bepaalt wanneer updates worden opgehaald en getoond. Een oude tijd op één apparaat bewijst niet dat de organisator de wijziging niet heeft opgeslagen.",
+        "Vergelijk bij een afspraak voor vandaag met het actuele schema van de organisator en bevestig belangrijke wijzigingen rechtstreeks. Noteer welke agenda oude informatie toont en wanneer je keek. Importeer niet steeds opnieuw en verwijder de bronagenda niet om een feed te laten bijwerken."
+      ]
+    },
+    {
+      "heading": "Reageer op uitlekken zonder volledige terughaling te beloven",
+      "body": [
+        "Google beschrijft het opnieuw instellen van een uitgelekt geheim adres: het oude wordt ongeldig en er komt een nieuw adres. Bepaal welke eigen apps het gebruiken zodat je hun abonnementen kunt aanpassen. Dit is iets anders dan een genoemde medewerker verwijderen.",
+        "Eerder opgeslagen afspraken, exports en screenshots zijn een aparte kwestie. Een gewijzigde link bewijst niet dat elke oude kopie verdwenen is. Is informatie bij de verkeerde mensen beland, kijk dan naar inhoud en ontvangers; een geslaagde reset bewijst geen volledige verwijdering."
+      ]
+    }
+  ],
+  "claims": {},
+  "practical": [
+    "Bepaal of je een accountverbinding, uitnodiging, abonnement of bestand hebt.",
+    "Controleer de bronagenda voordat je een adres kopieert.",
+    "Gebruik een geheim Google-adres alleen voor je eigen compatibele apps.",
+    "Controleer of de ontvangende app zich heeft geabonneerd in plaats van geïmporteerd.",
+    "Bevestig urgente wijzigingen bij de organisator in plaats van op verversing te vertrouwen.",
+    "Volg bij uitlekken Googles resetinstructies en werk de bedoelde verbindingen bij."
+  ],
+  "faq": [
+    {
+      "q": "Kan ik het geheime adres aan een collega geven?",
+      "a": "Google adviseert het voor eigen apps te bewaren. Gebruik de deelinstellingen van de agenda als iemand anders toegang nodig heeft en kies de bedoelde rechten."
+    },
+    {
+      "q": "Kan ik via een abonnement het origineel bewerken?",
+      "a": "Een geheim Google-iCal-adres is voor bekijken. Bewerken vereist een passende accountverbinding en toestemming; Cloud Calendars-deelrollen zijn een afzonderlijke regeling."
+    },
+    {
+      "q": "Wist een reset overal de oude afspraken?",
+      "a": "De reset maakt het oude Google-adres ongeldig. Daarmee is niet vastgesteld dat los opgeslagen bestanden, afspraken of screenshots zijn verwijderd."
+    }
+  ],
+  "sourcesHeading": "Informatie van aanbieders en verdere uitleg",
+  "sources": [
+    {
+      "label": "Google: accountverbindingen en geheime iCal-adressen",
+      "url": "https://support.google.com/calendar/answer/37648?hl=en"
+    },
+    {
+      "label": "Google: een agenda delen",
+      "url": "https://support.google.com/calendar/answer/37082?hl=en"
+    },
+    {
+      "label": "Microsoft: importeren, abonneren en verversing",
+      "url": "https://support.microsoft.com/en-us/outlook/import-or-subscribe-to-a-calendar-in-outlook-com-or-outlook-on-the-web"
+    }
+  ],
+  "seeAlso": [
+    "who-can-see-what-in-google-calendar",
+    "taking-back-a-calendar-you-shared",
+    "sharing-one-event-not-your-calendar"
+  ],
+  "updated": "2026-10-21"
+},
 
   'what-guests-can-do-to-your-event': {
     title: 'Wat je gasten met een afspraak kunnen doen',

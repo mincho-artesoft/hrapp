@@ -157,53 +157,100 @@ export const GOOGLE_IT: Readonly<Record<string, LocalisedArticle>> = {
   },
 
   'the-secret-address-of-a-google-calendar': {
-    title: 'Cosa rivela davvero l’indirizzo segreto di un calendario Google',
-    short: 'L’indirizzo iCal segreto',
-    description:
-      'Google offre un indirizzo privato che mostra l’intero calendario a chiunque lo abbia. Cosa espone e perché non si ritira in silenzio.',
-    lede: 'Nelle impostazioni di ogni calendario Google c’è un link che mostra tutto quello che contiene. Senza accesso, senza permesso, senza traccia di chi l’ha aperto.',
-    commonBelief: 'Che un indirizzo privato sia privato perché è difficile da trovare.',
-    sections: [
-      {
-        heading: 'Un link è una password che non puoi cambiare per una sola persona',
-        body: [
-          'L’indirizzo segreto porta i dettagli completi: titoli, orari, luoghi, note. Chi ha il link li vede, e non esiste un elenco di chi sia.',
-          'La sua unica protezione è la parte casuale dell’indirizzo. Contro il tentativo di indovinare protegge sul serio; contro un inoltro, uno schermo condiviso o un documento che sopravvive al posto di lavoro, per nulla.',
-        ],
-      },
-      {
-        heading: 'Reimpostarlo lo rompe per tutti',
-        body: [
-          'Puoi reimpostare l’indirizzo e il vecchio muore. Muore anche per ogni collega, ogni dashboard e ogni script che ci si appoggiava in silenzio, senza il minimo preavviso.',
-          'È la ragione per non distribuire mai l’indirizzo del calendario in cui vivi. Pubblica un calendario creato apposta e reimpostarlo non costa nulla.',
-        ],
-      },
-    ],
-    claims: {
-      linkLength: 'Caratteri casuali che proteggono un nostro link di condivisione',
-      sharePrice: 'Quanto costa condividere un evento dall’app',
+  "title": "Indirizzo iCal segreto di Google: sottoscrizione e condivisione sono diverse",
+  "short": "L’indirizzo iCal segreto",
+  "description": "Distingui indirizzo iCal segreto, account e feed. Gestisci un indirizzo divulgato senza promettere aggiornamenti immediati o cancellazione delle copie.",
+  "lede": "Un indirizzo calendario, una connessione account e un invito svolgono funzioni diverse. Identifica quello che hai prima di usarlo in un’altra applicazione. Questa guida è pubblicata da Arte Soft, sviluppatore di Cloud Calendars.",
+  "commonBelief": "Un indirizzo segreto sarebbe un invito personale revocabile per un solo destinatario.",
+  "sections": [
+    {
+      "heading": "Scegli la connessione adatta allo scopo",
+      "body": [
+        "Google distingue l’accesso con account in un’altra app dalla visualizzazione tramite indirizzo iCal segreto. L’account può consentire modifiche; l’indirizzo offre una sottoscrizione in sola lettura. Google lo descrive come destinato all’uso personale e sconsiglia di darlo ad altri.",
+        "Visualizzare il proprio programma di lavoro in un calendario compatibile è diverso dal dare accesso continuativo a un collega. Decidi se vuoi leggere il tuo programma, collaborare con una persona specifica o pubblicare un orario per un pubblico. Non scegliere un URL solo perché è facile incollarlo."
+      ]
     },
-    faq: [
-      {
-        q: 'Cosa può fare qualcuno con l’indirizzo segreto del mio calendario?',
-        a: 'Vedere tutto ciò che contiene — titoli, orari, luoghi e note — senza accedere, senza permesso e senza lasciare traccia di essere passato.',
-      },
-      {
-        q: 'Posso riprendermi un indirizzo segreto?',
-        a: 'Solo reimpostandolo, il che uccide il vecchio per tutti insieme: colleghi, dashboard e qualunque script ci si appoggiasse in silenzio, senza preavviso.',
-      },
-      {
-        q: 'Posso mandare per email l’indirizzo segreto a un collega?',
-        a: 'Consideralo pubblico dal momento in cui esce dalle tue mani. La sua unica protezione è essere difficile da indovinare, e un inoltro annulla proprio quello.',
-      },
-    ],
-    practical: [
-      'Tratta l’indirizzo segreto come pubblico dal momento in cui esce dalle tue mani.',
-      'Non pubblicare mai l’indirizzo del calendario che usi davvero.',
-      'Reimpostalo quando qualcuno se ne va, e avvisa chi ne resterà scollegato.',
-    ],
-    seeAlso: ['who-can-see-what-in-google-calendar', 'taking-back-a-calendar-you-shared'],
-  },
+    {
+      "heading": "Trova il calendario corretto, non solo l’account",
+      "body": [
+        "Da computer, Google colloca l’indirizzo segreto in formato iCal nelle impostazioni di integrazione del calendario scelto. Controllane prima il nome. Gli amministratori di lavoro o scuola possono limitare l’opzione: la sua assenza non giustifica rendere pubblico il calendario.",
+        "Tieni l’indirizzo fuori da schermate, richieste pubbliche di assistenza e note condivise. Per chiedere aiuto, descrivi tipo di account, nome del calendario e connessione senza fornire l’URL. Di solito va identificato il percorso prima che serva il contenuto degli eventi."
+      ]
+    },
+    {
+      "heading": "Verifica cosa ha aggiunto l’app destinataria",
+      "body": [
+        "Una sottoscrizione segue un feed; un file importato crea una copia separata. Leggi le istruzioni dell’app destinataria e conferma l’azione. Aprire un file calendario scaricato non garantisce che gli appuntamenti seguiranno le modifiche successive.",
+        "Confronta nome del calendario, data e dettagli usando un evento ordinario e non riservato che riconosci. Non creare una seconda sottoscrizione per diagnosticare la prima: due copie possono far sembrare un ritardo un conflitto. Nascondi temporaneamente un calendario per identificare l’origine."
+      ]
+    },
+    {
+      "heading": "Distingui i link Google da quelli Cloud Calendars",
+      "body": [
+        "Cloud Calendars ha proprie modalità di condivisione di eventi e calendari, compresi feed di sottoscrizione. Non sono indirizzi segreti Google. Prima di aprire, stabilisci se il mittente ha condiviso un evento, un calendario o un invito basato su account.",
+        "Un destinatario Cloud Calendars può essere Reader, Writer o Owner. Il solo indirizzo di un feed non prova diritti di modifica. Ricevere un indirizzo Google di visualizzazione non rende proprietari del calendario. Chiedi al mittente quale sistema usare per le modifiche."
+      ]
+    },
+    {
+      "heading": "Considera l’aggiornamento del calendario ricevente",
+      "body": [
+        "Una sottoscrizione non promette consegna immediata. I feed Cloud Calendars indicano un intervallo suggerito, ma l’app ricevente decide quando recuperare e mostrare gli aggiornamenti. Un vecchio orario su un dispositivo non dimostra che l’organizzatore non abbia salvato la modifica.",
+        "Per una riunione in giornata, confronta il programma attuale dell’organizzatore e conferma direttamente le modifiche importanti. Annota calendario e momento del controllo. Non importare ripetutamente l’evento e non eliminare il calendario originale per forzare l’aggiornamento del feed."
+      ]
+    },
+    {
+      "heading": "Gestisci la divulgazione senza promettere un richiamo completo",
+      "body": [
+        "Google documenta la reimpostazione di un indirizzo segreto divulgato: il precedente viene invalidato e sostituito. Identifica le tue app che lo usano per aggiornare le sottoscrizioni. Reimpostare un indirizzo è diverso dal rimuovere un collaboratore specifico.",
+        "Appuntamenti salvati, esportazioni e schermate precedenti sono un’altra questione. Cambiare link non dimostra che tutte le copie siano scomparse. Se hai inviato dati al pubblico sbagliato, valuta contenuti e destinatari effettivi: un ripristino riuscito non prova la rimozione completa."
+      ]
+    }
+  ],
+  "claims": {},
+  "practical": [
+    "Identifica connessione account, invito, sottoscrizione o file.",
+    "Controlla il calendario proprietario prima di copiare un indirizzo.",
+    "Usa l’indirizzo segreto Google solo nelle tue applicazioni compatibili.",
+    "Verifica che l’app abbia sottoscritto il feed anziché importato una copia.",
+    "Conferma le modifiche urgenti con l’organizzatore senza affidarti ai tempi di aggiornamento.",
+    "Se l’indirizzo è stato divulgato, segui la guida Google per reimpostarlo e aggiorna le connessioni volute."
+  ],
+  "faq": [
+    {
+      "q": "Posso dare l’indirizzo segreto a un collega?",
+      "a": "Google consiglia di conservarlo per le proprie app. Per dare accesso a un’altra persona usa i controlli di condivisione del calendario con il permesso appropriato."
+    },
+    {
+      "q": "Una sottoscrizione permette di modificare l’originale?",
+      "a": "L’indirizzo iCal segreto Google serve a visualizzare. Per modificare occorrono connessione account e autorizzazioni adatte; i ruoli Cloud Calendars sono un accordo separato."
+    },
+    {
+      "q": "Reimpostare l’indirizzo elimina i vecchi appuntamenti ovunque?",
+      "a": "Invalida il vecchio indirizzo Google. Non dimostra l’eliminazione di file, appuntamenti o schermate salvati indipendentemente."
+    }
+  ],
+  "sourcesHeading": "Indicazioni dei fornitori e approfondimenti",
+  "sources": [
+    {
+      "label": "Google: connessioni account e indirizzi iCal segreti",
+      "url": "https://support.google.com/calendar/answer/37648?hl=en"
+    },
+    {
+      "label": "Google: condividere un calendario",
+      "url": "https://support.google.com/calendar/answer/37082?hl=en"
+    },
+    {
+      "label": "Microsoft: importazione, sottoscrizione e tempi di aggiornamento",
+      "url": "https://support.microsoft.com/en-us/outlook/import-or-subscribe-to-a-calendar-in-outlook-com-or-outlook-on-the-web"
+    }
+  ],
+  "seeAlso": [
+    "who-can-see-what-in-google-calendar",
+    "taking-back-a-calendar-you-shared",
+    "sharing-one-event-not-your-calendar"
+  ],
+  "updated": "2026-10-21"
+},
 
   'what-guests-can-do-to-your-event': {
     title: 'Cosa possono fare gli invitati a un tuo evento',

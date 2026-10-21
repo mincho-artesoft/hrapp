@@ -159,53 +159,100 @@ export const GOOGLE_HU: Readonly<Record<string, LocalisedArticle>> = {
   },
 
   'the-secret-address-of-a-google-calendar': {
-    title: 'Mit ad ki valójában egy Google-naptár titkos címe',
-    short: 'A titkos iCal-cím',
-    description:
-      'A Google kínál egy privát címet, amely a teljes naptáradat megmutatja annak, akinél van. Mit tár fel, és miért nem lehet csendben visszavenni.',
-    lede: 'Minden Google-naptár beállításai közt ott lapul egy link, amely mindent megmutat, ami rajta van. Bejelentkezés nélkül, engedély nélkül, anélkül hogy nyoma maradna, ki nyitotta meg.',
-    commonBelief: 'Hogy egy privát cím attól privát, hogy nehéz megtalálni.',
-    sections: [
-      {
-        heading: 'A link olyan jelszó, amelyet nem lehet egyvalakinek megváltoztatni',
-        body: [
-          'A titkos cím teljes részleteket visz — címeket, időpontokat, helyszíneket, jegyzeteket. Látja mindenki, akinél a link van, és nincs lista arról, kik ők.',
-          'Egyetlen védelme a cím véletlenszerű része. A találgatás ellen ez valódi védelem, a továbbküldés, a megosztott képernyő vagy a munkahelyet túlélő dokumentum ellen semmilyen.',
-        ],
-      },
-      {
-        heading: 'A visszaállítás mindenkinek elrontja',
-        body: [
-          'A címet vissza lehet állítani, és a régi meghal. Meghal minden kollégának, minden műszerfalnak és minden szkriptnek is, amelyik csendben rá támaszkodott — figyelmeztetés nélkül.',
-          'Ez az érv amellett, hogy soha ne oszd ki annak a naptárnak a címét, amelyikben élsz. Tegyél közzé egy erre a célra készült naptárat, és a visszaállítás semmibe sem kerül.',
-        ],
-      },
-    ],
-    claims: {
-      linkLength: 'Véletlen karakterek, amelyek a mi megosztási linkünket védik',
-      sharePrice: 'Mennyibe kerül egy esemény megosztása az alkalmazásból',
+  "title": "A Google titkos iCal-címe: az előfizetés nem ugyanaz, mint a megosztás",
+  "short": "A titkos iCal-cím",
+  "description": "Ismerje meg a Google titkos iCal-címét, a fiókkapcsolatot és a hírcsatornát. Kiszivárgáskor ne ígérjen azonnali frissítést vagy másolattörlést.",
+  "lede": "A naptárcím, a fiókkapcsolat és a meghívó más feladatot lát el. Azonosítsa, melyiket használja, mielőtt másik alkalmazásba viszi a programot. Az útmutatót a Cloud Calendars fejlesztője, az Arte Soft adja ki.",
+  "commonBelief": "A titkos naptárcím személyes meghívó lenne, amely egyetlen címzettől is visszavonható.",
+  "sections": [
+    {
+      "heading": "Válasszon a feladatnak megfelelő kapcsolatot",
+      "body": [
+        "A Google megkülönbözteti a másik naptáralkalmazásba történő bejelentkezést a titkos iCal-címen át történő megtekintéstől. A fiókkapcsolat szerkesztést is támogathat; a cím csak olvasható előfizetést ad. A Google saját használatra szánja a titkos címet, és nem javasolja továbbadását.",
+        "Saját munkarend megjelenítése egy kompatibilis naptárban más, mint tartós hozzáférést adni egy kollégának. Döntse el, saját programot nézne, egy megnevezett személlyel dolgozna együtt, vagy közönségnek közölne időrendet. Ne csak a könnyű beillesztés miatt válasszon URL-t."
+      ]
     },
-    faq: [
-      {
-        q: 'Mit kezdhet valaki a naptáram titkos címével?',
-        a: 'Mindent láthat rajta — címeket, időpontokat, helyszíneket és jegyzeteket — bejelentkezés nélkül, engedély nélkül, és anélkül hogy bárhol nyoma maradna, hogy megnézte.',
-      },
-      {
-        q: 'Visszavehetem a naptár titkos címét?',
-        a: 'Csak úgy, hogy visszaállítod, ami egyszerre öli meg a régit mindenkinél: kollégáknál, műszerfalakon és minden szkriptnél, amely csendben rá támaszkodott, figyelmeztetés nélkül.',
-      },
-      {
-        q: 'Elküldhetem a titkos címet e-mailben egy kollégának?',
-        a: 'Tekintsd nyilvánosnak abban a pillanatban, ahogy kikerül a kezedből. Egyetlen védelme, hogy nehéz kitalálni, és a továbbküldés pontosan ezt szünteti meg.',
-      },
-    ],
-    practical: [
-      'Kezeld nyilvánosként a titkos címet abban a pillanatban, ahogy kikerül a kezedből.',
-      'Soha ne tedd közzé annak a naptárnak a címét, amelyiket valóban használod.',
-      'Állítsd vissza, ha valaki távozik, és szólj azoknak, akiknél ettől elromlik.',
-    ],
-    seeAlso: ['who-can-see-what-in-google-calendar', 'taking-back-a-calendar-you-shared'],
-  },
+    {
+      "heading": "A megfelelő naptárt keresse, ne csak a fiókot",
+      "body": [
+        "Számítógépen a Google útmutatója a kiválasztott naptár integrációs beállításainál jelöli a titkos iCal-formátumú címet. Először ellenőrizze a naptár nevét. Munkahelyi vagy iskolai rendszergazda korlátozhatja az opciót; hiánya nem indok a naptár nyilvánossá tételére.",
+        "Ne szerepeljen a cím képernyőképen, nyilvános támogatási bejegyzésben vagy megosztott jegyzetben. Segítségkéréskor fióktípust, naptárnevet és kapcsolódási módot írjon, URL nélkül. Általában a kapcsolatot kell előbb azonosítani, nem az események tartalmát átadni."
+      ]
+    },
+    {
+      "heading": "Ellenőrizze, mit adott hozzá a fogadó alkalmazás",
+      "body": [
+        "Az előfizetés hírcsatornát követ; az importált fájl önálló másolatot hoz létre. Olvassa el a fogadó alkalmazás útmutatóját, és tisztázza a végzett műveletet. Letöltött naptárfájl megnyitása nem jelenti, hogy az időpontok követik a későbbi változásokat.",
+        "Egy ismert, nem érzékeny eseményen hasonlítsa össze a naptár nevét, a dátumot és a részleteket. Ne hozzon létre második előfizetést az első hibakeresésére: két másolat ütközésnek mutathat egy késést. A forrás azonosításához ideiglenesen rejtse el az egyik naptárt."
+      ]
+    },
+    {
+      "heading": "Különböztesse meg a Google és a Cloud Calendars linkjeit",
+      "body": [
+        "A Cloud Calendars saját esemény- és naptármegosztási folyamatokkal rendelkezik, köztük előfizetési hírcsatornákkal. Ezek nem Google-féle titkos címek. Megnyitás előtt állapítsa meg, egy eseményt, naptárt vagy fiókhoz kötött meghívót küldtek-e.",
+        "A Cloud Calendars címzettje Reader, Writer vagy Owner szerepet kaphat. Egy hírcsatornacím önmagában nem bizonyít szerkesztési jogot. Google megtekintési cím fogadása sem teszi a naptár tulajdonosává. Kérdezze meg a küldőt, melyik rendszerben kell változtatni."
+      ]
+    },
+    {
+      "heading": "Számoljon a fogadó naptár frissítésével",
+      "body": [
+        "Az előfizetés nem ígéret azonnali kézbesítésre. A Cloud Calendars hírcsatornái javasolt frissítési időközt tartalmaznak, de a fogadó alkalmazás dönti el, mikor tölti le és jeleníti meg a változásokat. Egy eszközön látható régi időpont nem bizonyítja, hogy a szervező nem mentett.",
+        "Aznap esedékes találkozónál hasonlítsa össze a szervező aktuális programját, és a fontos módosítást közvetlenül erősítse meg. Jegyezze fel, melyik naptár mutat régi adatot és mikor ellenőrizte. Ne importáljon ismételten és ne törölje a forrásnaptárt a frissítés kikényszerítésére."
+      ]
+    },
+    {
+      "heading": "Kiszivárgáskor ne ígérjen minden másolatot visszahívó megoldást",
+      "body": [
+        "A Google leírja a kiszivárgott titkos cím visszaállítását: a régi érvénytelen lesz, és új készül. Azonosítsa saját alkalmazásait, amelyek használják, hogy utána átállíthassa előfizetéseiket. Ez más művelet, mint megnevezett közreműködő eltávolítása.",
+        "Korábban mentett időpontok, exportok és képernyőképek külön kérdést jelentenek. Egy módosult link nem bizonyítja minden régi másolat eltűnését. Téves közönséghez került információnál a tényleges tartalmat és címzetteket mérlegelje, ne tekintse a sikeres visszaállítást teljes eltávolításnak."
+      ]
+    }
+  ],
+  "claims": {},
+  "practical": [
+    "Azonosítsa a fiókkapcsolatot, meghívót, előfizetést vagy fájlt.",
+    "Cím másolása előtt ellenőrizze a forrásnaptárt.",
+    "A Google titkos címét saját kompatibilis alkalmazásaiban használja.",
+    "Ellenőrizze, hogy a fogadó alkalmazás előfizetett, nem importált.",
+    "Sürgős változást a szervezővel erősítsen meg, ne a frissítésre hagyatkozzon.",
+    "Kiszivárgáskor kövesse a Google visszaállítási útmutatóját, és frissítse a kívánt kapcsolatokat."
+  ],
+  "faq": [
+    {
+      "q": "Odaadhatom a titkos címet egy kollégának?",
+      "a": "A Google saját alkalmazásokhoz javasolja megtartani. Ha másnak kell hozzáférés, a naptár megosztási beállításaiban válassza ki a szükséges jogosultságot."
+    },
+    {
+      "q": "Az előfizetés engedi az eredeti szerkesztését?",
+      "a": "A Google titkos iCal-címe megtekintésre szolgál. Szerkesztéshez megfelelő fiókkapcsolat és engedély kell; a Cloud Calendars megosztási szerepei külön rendszert alkotnak."
+    },
+    {
+      "q": "A cím visszaállítása mindenhol törli a régi időpontokat?",
+      "a": "A régi Google-címet érvényteleníti. Nem bizonyítja az önállóan mentett fájlok, időpontok vagy képernyőképek törlését."
+    }
+  ],
+  "sourcesHeading": "Szolgáltatói útmutatók és további információ",
+  "sources": [
+    {
+      "label": "Google: fiókkapcsolatok és titkos iCal-címek",
+      "url": "https://support.google.com/calendar/answer/37648?hl=en"
+    },
+    {
+      "label": "Google: naptár megosztása",
+      "url": "https://support.google.com/calendar/answer/37082?hl=en"
+    },
+    {
+      "label": "Microsoft: importálás, előfizetés és frissítési idő",
+      "url": "https://support.microsoft.com/en-us/outlook/import-or-subscribe-to-a-calendar-in-outlook-com-or-outlook-on-the-web"
+    }
+  ],
+  "seeAlso": [
+    "who-can-see-what-in-google-calendar",
+    "taking-back-a-calendar-you-shared",
+    "sharing-one-event-not-your-calendar"
+  ],
+  "updated": "2026-10-21"
+},
 
   'what-guests-can-do-to-your-event': {
     title: 'Mit tehetnek a vendégeid egy eseményeddel',

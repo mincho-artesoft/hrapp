@@ -1,5 +1,5 @@
 {
-  "date": "2026-10-21T20:55:50.754Z",
+  "date": "2026-10-21T21:16:52.370Z",
   "status": "source_inventory_not_quality_approval",
   "articles": [
     {
@@ -38,15 +38,19 @@
     {
       "locale": "ar-SA",
       "slug": "the-secret-address-of-a-google-calendar",
-      "title": "ما الذي يمنحه فعلًا العنوان السري لتقويم Google",
-      "description": "تقدّم Google عنوانًا خاصًا يُظهر تقويمك كاملًا لمن يحمله. ما الذي يكشفه، ولماذا لا يمكن سحبه بهدوء.",
-      "descriptionCharacters": 99,
-      "sections": 2,
+      "title": "عنوان iCal السري من Google: ميّز الاشتراك عن المشاركة",
+      "description": "افهم عنوان iCal السري واتصالات الحساب وموجزات الاشتراك. تعامل مع كشف العنوان دون وعود بتحديث فوري أو محو النسخ المحفوظة.",
+      "descriptionCharacters": 120,
+      "sections": 6,
       "faq": 3,
-      "words": 261,
+      "words": 640,
       "source": "articles-google.ts",
-      "sources": [],
-      "updated": "2026-09-12"
+      "sources": [
+        "https://support.google.com/calendar/answer/37648?hl=en",
+        "https://support.google.com/calendar/answer/37082?hl=en",
+        "https://support.microsoft.com/en-us/outlook/import-or-subscribe-to-a-calendar-in-outlook-com-or-outlook-on-the-web"
+      ],
+      "updated": "2026-10-21"
     },
     {
       "locale": "ar-SA",
@@ -184,15 +188,19 @@
     {
       "locale": "bg",
       "slug": "the-secret-address-of-a-google-calendar",
-      "title": "Какво всъщност издава тайният адрес на календар в Google",
-      "description": "Google предлага частен адрес, който показва целия ви календар на всеки, у когото е. Какво разкрива и защо не може да се прибере тихо.",
-      "descriptionCharacters": 133,
-      "sections": 2,
+      "title": "Тайният iCal адрес на Google: абонаментът не е споделяне",
+      "description": "Разграничете тайния iCal адрес, връзките с акаунт и потоците. Реагирайте при разкрит адрес без обещания за незабавни промени или изтрити копия.",
+      "descriptionCharacters": 143,
+      "sections": 6,
       "faq": 3,
-      "words": 304,
+      "words": 743,
       "source": "articles-google.ts",
-      "sources": [],
-      "updated": "2026-09-12"
+      "sources": [
+        "https://support.google.com/calendar/answer/37648?hl=en",
+        "https://support.google.com/calendar/answer/37082?hl=en",
+        "https://support.microsoft.com/en-us/outlook/import-or-subscribe-to-a-calendar-in-outlook-com-or-outlook-on-the-web"
+      ],
+      "updated": "2026-10-21"
     },
     {
       "locale": "bg",
@@ -381,15 +389,19 @@
     {
       "locale": "cs",
       "slug": "the-secret-address-of-a-google-calendar",
-      "title": "Co tajná adresa kalendáře Google ve skutečnosti prozradí",
-      "description": "Google nabízí soukromou adresu, která ukáže celý váš kalendář komukoli, kdo ji má. Co odhalí a proč se nedá potichu vzít zpět.",
-      "descriptionCharacters": 126,
-      "sections": 2,
+      "title": "Tajná adresa iCal od Googlu: odběr není sdílení",
+      "description": "Rozlište tajnou adresu iCal, připojení účtu a kanály. Při prozrazení adresy neslibujte okamžité aktualizace ani vymazání uložených kopií.",
+      "descriptionCharacters": 137,
+      "sections": 6,
       "faq": 3,
-      "words": 265,
+      "words": 625,
       "source": "articles-google.ts",
-      "sources": [],
-      "updated": "2026-09-12"
+      "sources": [
+        "https://support.google.com/calendar/answer/37648?hl=en",
+        "https://support.google.com/calendar/answer/37082?hl=en",
+        "https://support.microsoft.com/en-us/outlook/import-or-subscribe-to-a-calendar-in-outlook-com-or-outlook-on-the-web"
+      ],
+      "updated": "2026-10-21"
     },
     {
       "locale": "cs",
@@ -527,15 +539,19 @@
     {
       "locale": "da",
       "slug": "the-secret-address-of-a-google-calendar",
-      "title": "Hvad den hemmelige adresse til en Google-kalender i virkeligheden giver væk",
-      "description": "Google tilbyder en privat adresse, der viser hele din kalender til den, der har den. Hvad den blotter, og hvorfor den ikke kan trækkes tilbage i stilhed.",
-      "descriptionCharacters": 153,
-      "sections": 2,
+      "title": "Googles hemmelige iCal-adresse: skeln mellem abonnement og deling",
+      "description": "Forstå Googles hemmelige iCal-adresse, kontoforbindelser og feeds. Håndtér en afsløret adresse uden løfter om straksopdatering eller slettede kopier.",
+      "descriptionCharacters": 149,
+      "sections": 6,
       "faq": 3,
-      "words": 319,
+      "words": 741,
       "source": "articles-google.ts",
-      "sources": [],
-      "updated": "2026-09-12"
+      "sources": [
+        "https://support.google.com/calendar/answer/37648?hl=en",
+        "https://support.google.com/calendar/answer/37082?hl=en",
+        "https://support.microsoft.com/en-us/outlook/import-or-subscribe-to-a-calendar-in-outlook-com-or-outlook-on-the-web"
+      ],
+      "updated": "2026-10-21"
     },
     {
       "locale": "da",
@@ -673,15 +689,19 @@
     {
       "locale": "de-DE",
       "slug": "the-secret-address-of-a-google-calendar",
-      "title": "Was die geheime Adresse eines Google-Kalenders wirklich preisgibt",
-      "description": "Google bietet eine private Adresse, die Ihren ganzen Kalender zeigt — jedem, der sie hat. Was sie offenlegt und warum sie sich nicht leise zurücknehmen lässt.",
-      "descriptionCharacters": 158,
-      "sections": 2,
+      "title": "Googles geheime iCal-Adresse: abonnieren und Freigaben unterscheiden",
+      "description": "Verstehe Googles geheime iCal-Adresse, Kontoverbindungen und Feeds. Reagiere auf Offenlegung ohne Versprechen sofortiger Updates oder gelöschter Kopien.",
+      "descriptionCharacters": 152,
+      "sections": 6,
       "faq": 3,
-      "words": 302,
+      "words": 754,
       "source": "articles-google.ts",
-      "sources": [],
-      "updated": "2026-09-12"
+      "sources": [
+        "https://support.google.com/calendar/answer/37648?hl=en",
+        "https://support.google.com/calendar/answer/37082?hl=en",
+        "https://support.microsoft.com/en-us/outlook/import-or-subscribe-to-a-calendar-in-outlook-com-or-outlook-on-the-web"
+      ],
+      "updated": "2026-10-21"
     },
     {
       "locale": "de-DE",
@@ -1025,15 +1045,19 @@
     {
       "locale": "el",
       "slug": "the-secret-address-of-a-google-calendar",
-      "title": "Τι αποκαλύπτει πραγματικά η μυστική διεύθυνση ενός ημερολογίου Google",
-      "description": "Η Google προσφέρει μια ιδιωτική διεύθυνση που δείχνει ολόκληρο το ημερολόγιό σας σε όποιον την κρατά. Τι εκθέτει και γιατί δεν παίρνεται πίσω αθόρυβα.",
-      "descriptionCharacters": 150,
-      "sections": 2,
+      "title": "Η μυστική διεύθυνση iCal της Google: ξεχωρίστε τη συνδρομή από την κοινή χρήση",
+      "description": "Ξεχωρίστε μυστική διεύθυνση iCal, σύνδεση λογαριασμού και ροές. Αν αποκαλυφθεί διεύθυνση, μην υπόσχεστε άμεση ενημέρωση ή διαγραφή αντιγράφων.",
+      "descriptionCharacters": 142,
+      "sections": 6,
       "faq": 3,
-      "words": 315,
+      "words": 731,
       "source": "articles-google.ts",
-      "sources": [],
-      "updated": "2026-09-12"
+      "sources": [
+        "https://support.google.com/calendar/answer/37648?hl=en",
+        "https://support.google.com/calendar/answer/37082?hl=en",
+        "https://support.microsoft.com/en-us/outlook/import-or-subscribe-to-a-calendar-in-outlook-com-or-outlook-on-the-web"
+      ],
+      "updated": "2026-10-21"
     },
     {
       "locale": "el",
@@ -1776,15 +1800,18 @@
     {
       "locale": "en-US",
       "slug": "reading-a-chance-of-rain",
-      "title": "What a forty per cent chance of rain actually means",
-      "description": "The single most misread number in any forecast, explained — and what to do with it when you are deciding whether to move an event.",
-      "descriptionCharacters": 130,
-      "sections": 2,
-      "faq": 0,
-      "words": 245,
+      "title": "What does a chance of rain mean for a calendar event?",
+      "description": "Read rain probability alongside the forecast period, amount and location. Compare the hours of your event without inventing a universal cancellation threshold.",
+      "descriptionCharacters": 159,
+      "sections": 6,
+      "faq": 3,
+      "words": 792,
       "source": "articles-weather.ts",
-      "sources": [],
-      "updated": "2026-08-27"
+      "sources": [
+        "https://www.weather.gov/lmk/pops?hl=en-US",
+        "https://developer.apple.com/documentation/weatherkit/hourweather/precipitationchance"
+      ],
+      "updated": "2026-10-22"
     },
     {
       "locale": "en-US",
@@ -1818,28 +1845,34 @@
     {
       "locale": "en-US",
       "slug": "daylight-as-a-planning-constraint",
-      "title": "Daylight is a constraint, and calendars usually ignore it",
-      "description": "Sunset moves by minutes a day and by hours across a season. For anything outdoors it binds harder than the weather does.",
-      "descriptionCharacters": 120,
-      "sections": 2,
-      "faq": 0,
-      "words": 193,
+      "title": "Plan around sunset: check daylight, location and the event date",
+      "description": "Check sunset for the right place and date, distinguish it from twilight, and plan an appropriate margin instead of assuming last week’s light will repeat.",
+      "descriptionCharacters": 154,
+      "sections": 6,
+      "faq": 3,
+      "words": 796,
       "source": "articles-weather.ts",
-      "sources": [],
-      "updated": "2026-08-27"
+      "sources": [
+        "https://aa.usno.navy.mil/faq/RST_defs",
+        "https://gml.noaa.gov/grad/solcalc/calcdetails.html"
+      ],
+      "updated": "2026-10-22"
     },
     {
       "locale": "en-US",
       "slug": "wind-the-forecast-nobody-reads",
-      "title": "Wind is the forecast nobody reads and half of them needed",
-      "description": "Cycling, sailing, paddling, drone flying, gardening, anything with a gazebo. For a lot of plans wind decides the day and rain does not.",
-      "descriptionCharacters": 135,
-      "sections": 2,
-      "faq": 0,
-      "words": 221,
+      "title": "Wind forecast for outdoor plans: speed, gusts, direction and time",
+      "description": "Read wind speed, gusts, units and timing before an outdoor plan. Match the forecast place and period without treating an icon as a safety decision.",
+      "descriptionCharacters": 147,
+      "sections": 6,
+      "faq": 3,
+      "words": 751,
       "source": "articles-weather.ts",
-      "sources": [],
-      "updated": "2026-08-27"
+      "sources": [
+        "https://weather.metoffice.gov.uk/guides/what-does-this-forecast-mean",
+        "https://developer.apple.com/documentation/weatherkit"
+      ],
+      "updated": "2026-10-22"
     },
     {
       "locale": "en-US",
@@ -1955,15 +1988,19 @@
     {
       "locale": "es-ES",
       "slug": "the-secret-address-of-a-google-calendar",
-      "title": "Qué revela de verdad la dirección secreta de un calendario de Google",
-      "description": "Google ofrece una dirección privada que enseña tu calendario entero a quien la tenga. Qué expone y por qué no se retira sin ruido.",
-      "descriptionCharacters": 130,
-      "sections": 2,
+      "title": "La dirección iCal secreta de Google: suscribirse no es compartir",
+      "description": "Distingue la dirección iCal secreta, las conexiones de cuenta y los canales compartidos, sin prometer cambios inmediatos ni borrar copias.",
+      "descriptionCharacters": 138,
+      "sections": 6,
       "faq": 3,
-      "words": 318,
+      "words": 820,
       "source": "articles-google.ts",
-      "sources": [],
-      "updated": "2026-09-12"
+      "sources": [
+        "https://support.google.com/calendar/answer/37648?hl=en",
+        "https://support.google.com/calendar/answer/37082?hl=en",
+        "https://support.microsoft.com/en-us/outlook/import-or-subscribe-to-a-calendar-in-outlook-com-or-outlook-on-the-web"
+      ],
+      "updated": "2026-10-21"
     },
     {
       "locale": "es-ES",
@@ -2307,15 +2344,19 @@
     {
       "locale": "fi",
       "slug": "the-secret-address-of-a-google-calendar",
-      "title": "Mitä Google-kalenterin salainen osoite todella paljastaa",
-      "description": "Google tarjoaa yksityisen osoitteen, joka näyttää koko kalenterisi sille, jolla se on. Mitä se paljastaa ja miksi sitä ei oteta hiljaa takaisin.",
-      "descriptionCharacters": 144,
-      "sections": 2,
+      "title": "Googlen salainen iCal-osoite: erota tilaaminen jakamisesta",
+      "description": "Ymmärrä Googlen salainen iCal-osoite, tiliyhteydet ja syötteet. Käsittele paljastunut osoite lupaamatta välittömiä päivityksiä tai kopioiden poistoa.",
+      "descriptionCharacters": 149,
+      "sections": 6,
       "faq": 3,
-      "words": 244,
+      "words": 564,
       "source": "articles-google.ts",
-      "sources": [],
-      "updated": "2026-09-12"
+      "sources": [
+        "https://support.google.com/calendar/answer/37648?hl=en",
+        "https://support.google.com/calendar/answer/37082?hl=en",
+        "https://support.microsoft.com/en-us/outlook/import-or-subscribe-to-a-calendar-in-outlook-com-or-outlook-on-the-web"
+      ],
+      "updated": "2026-10-21"
     },
     {
       "locale": "fi",
@@ -2453,15 +2494,19 @@
     {
       "locale": "fr-FR",
       "slug": "the-secret-address-of-a-google-calendar",
-      "title": "Ce que révèle vraiment l'adresse secrète d'un agenda Google",
-      "description": "Google propose une adresse privée qui montre tout votre agenda à qui la détient. Ce qu'elle expose, et pourquoi on ne la reprend pas discrètement.",
-      "descriptionCharacters": 146,
-      "sections": 2,
+      "title": "L’adresse iCal secrète de Google : distinguer abonnement et partage",
+      "description": "Distinguez adresse iCal secrète, connexion de compte et flux partagés, sans promettre de mises à jour immédiates ni l’effacement des copies.",
+      "descriptionCharacters": 140,
+      "sections": 6,
       "faq": 3,
-      "words": 318,
+      "words": 834,
       "source": "articles-google.ts",
-      "sources": [],
-      "updated": "2026-09-12"
+      "sources": [
+        "https://support.google.com/calendar/answer/37648?hl=en",
+        "https://support.google.com/calendar/answer/37082?hl=en",
+        "https://support.microsoft.com/en-us/outlook/import-or-subscribe-to-a-calendar-in-outlook-com-or-outlook-on-the-web"
+      ],
+      "updated": "2026-10-21"
     },
     {
       "locale": "fr-FR",
@@ -2805,15 +2850,19 @@
     {
       "locale": "he",
       "slug": "the-secret-address-of-a-google-calendar",
-      "title": "מה הכתובת הסודית של יומן Google באמת מוסרת",
-      "description": "ל‑Google יש כתובת פרטית שמראה את היומן כולו לכל מי שמחזיק בה. מה היא חושפת, ולמה אי אפשר למשוך אותה בשקט.",
-      "descriptionCharacters": 105,
-      "sections": 2,
+      "title": "כתובת iCal הסודית של Google: להבחין בין מינוי לשיתוף",
+      "description": "הבינו את כתובת iCal הסודית, חיבורי החשבון וההזנות. טפלו בכתובת שנחשפה בלי להבטיח עדכונים מיידיים או מחיקת עותקים שמורים.",
+      "descriptionCharacters": 120,
+      "sections": 6,
       "faq": 3,
-      "words": 260,
+      "words": 655,
       "source": "articles-google.ts",
-      "sources": [],
-      "updated": "2026-09-12"
+      "sources": [
+        "https://support.google.com/calendar/answer/37648?hl=en",
+        "https://support.google.com/calendar/answer/37082?hl=en",
+        "https://support.microsoft.com/en-us/outlook/import-or-subscribe-to-a-calendar-in-outlook-com-or-outlook-on-the-web"
+      ],
+      "updated": "2026-10-21"
     },
     {
       "locale": "he",
@@ -2951,15 +3000,19 @@
     {
       "locale": "hi",
       "slug": "the-secret-address-of-a-google-calendar",
-      "title": "Google कैलेंडर का गुप्त पता असल में क्या सौंप देता है",
-      "description": "Google एक निजी पता देता है जो आपका पूरा कैलेंडर उस हर व्यक्ति को दिखा देता है जिसके पास वह पता है। वह क्या खोलता है, और उसे चुपचाप वापस क्यों नहीं लिया जा सकता।",
-      "descriptionCharacters": 160,
-      "sections": 2,
+      "title": "Google का गुप्त iCal पता: सदस्यता और साझाकरण का अंतर",
+      "description": "Google का गुप्त iCal पता, खाता कनेक्शन और फ़ीड समझें। पता उजागर होने पर तत्काल अपडेट या प्रतियाँ मिटने का वादा किए बिना कार्रवाई करें।",
+      "descriptionCharacters": 134,
+      "sections": 6,
       "faq": 3,
-      "words": 368,
+      "words": 823,
       "source": "articles-google.ts",
-      "sources": [],
-      "updated": "2026-09-12"
+      "sources": [
+        "https://support.google.com/calendar/answer/37648?hl=en",
+        "https://support.google.com/calendar/answer/37082?hl=en",
+        "https://support.microsoft.com/en-us/outlook/import-or-subscribe-to-a-calendar-in-outlook-com-or-outlook-on-the-web"
+      ],
+      "updated": "2026-10-21"
     },
     {
       "locale": "hi",
@@ -3097,15 +3150,19 @@
     {
       "locale": "hu",
       "slug": "the-secret-address-of-a-google-calendar",
-      "title": "Mit ad ki valójában egy Google-naptár titkos címe",
-      "description": "A Google kínál egy privát címet, amely a teljes naptáradat megmutatja annak, akinél van. Mit tár fel, és miért nem lehet csendben visszavenni.",
-      "descriptionCharacters": 142,
-      "sections": 2,
+      "title": "A Google titkos iCal-címe: az előfizetés nem ugyanaz, mint a megosztás",
+      "description": "Ismerje meg a Google titkos iCal-címét, a fiókkapcsolatot és a hírcsatornát. Kiszivárgáskor ne ígérjen azonnali frissítést vagy másolattörlést.",
+      "descriptionCharacters": 143,
+      "sections": 6,
       "faq": 3,
-      "words": 276,
+      "words": 631,
       "source": "articles-google.ts",
-      "sources": [],
-      "updated": "2026-09-12"
+      "sources": [
+        "https://support.google.com/calendar/answer/37648?hl=en",
+        "https://support.google.com/calendar/answer/37082?hl=en",
+        "https://support.microsoft.com/en-us/outlook/import-or-subscribe-to-a-calendar-in-outlook-com-or-outlook-on-the-web"
+      ],
+      "updated": "2026-10-21"
     },
     {
       "locale": "hu",
@@ -3243,15 +3300,19 @@
     {
       "locale": "id",
       "slug": "the-secret-address-of-a-google-calendar",
-      "title": "Apa yang sebenarnya dibocorkan alamat rahasia kalender Google",
-      "description": "Google menyediakan alamat pribadi yang memperlihatkan seluruh kalender Anda kepada siapa pun yang memegangnya. Apa yang dibukanya dan mengapa ia tidak bisa ditarik diam-diam.",
-      "descriptionCharacters": 174,
-      "sections": 2,
+      "title": "Alamat iCal rahasia Google: bedakan langganan dari berbagi",
+      "description": "Pahami alamat iCal rahasia Google, koneksi akun, dan feed. Tangani alamat yang terungkap tanpa menjanjikan pembaruan instan atau penghapusan salinan.",
+      "descriptionCharacters": 149,
+      "sections": 6,
       "faq": 3,
-      "words": 283,
+      "words": 635,
       "source": "articles-google.ts",
-      "sources": [],
-      "updated": "2026-09-12"
+      "sources": [
+        "https://support.google.com/calendar/answer/37648?hl=en",
+        "https://support.google.com/calendar/answer/37082?hl=en",
+        "https://support.microsoft.com/en-us/outlook/import-or-subscribe-to-a-calendar-in-outlook-com-or-outlook-on-the-web"
+      ],
+      "updated": "2026-10-21"
     },
     {
       "locale": "id",
@@ -3389,15 +3450,19 @@
     {
       "locale": "it",
       "slug": "the-secret-address-of-a-google-calendar",
-      "title": "Cosa rivela davvero l’indirizzo segreto di un calendario Google",
-      "description": "Google offre un indirizzo privato che mostra l’intero calendario a chiunque lo abbia. Cosa espone e perché non si ritira in silenzio.",
-      "descriptionCharacters": 133,
-      "sections": 2,
+      "title": "Indirizzo iCal segreto di Google: sottoscrizione e condivisione sono diverse",
+      "description": "Distingui indirizzo iCal segreto, account e feed. Gestisci un indirizzo divulgato senza promettere aggiornamenti immediati o cancellazione delle copie.",
+      "descriptionCharacters": 151,
+      "sections": 6,
       "faq": 3,
-      "words": 299,
+      "words": 711,
       "source": "articles-google.ts",
-      "sources": [],
-      "updated": "2026-09-12"
+      "sources": [
+        "https://support.google.com/calendar/answer/37648?hl=en",
+        "https://support.google.com/calendar/answer/37082?hl=en",
+        "https://support.microsoft.com/en-us/outlook/import-or-subscribe-to-a-calendar-in-outlook-com-or-outlook-on-the-web"
+      ],
+      "updated": "2026-10-21"
     },
     {
       "locale": "it",
@@ -3741,15 +3806,19 @@
     {
       "locale": "ja",
       "slug": "the-secret-address-of-a-google-calendar",
-      "title": "Google カレンダーの「限定公開 URL」が実際に渡してしまうもの",
-      "description": "持っている人に予定のすべてを見せる非公開アドレスが Google にはある。何が出るのか、なぜ静かには取り消せないのか。",
-      "descriptionCharacters": 60,
-      "sections": 2,
+      "title": "Googleの秘密のiCalアドレス：購読と共有を区別する",
+      "description": "Googleの秘密のiCalアドレス、アカウント接続、共有フィードを理解しましょう。アドレス漏えい時も即時更新やコピー消去を保証しない対応が必要です。",
+      "descriptionCharacters": 75,
+      "sections": 6,
       "faq": 3,
-      "words": 30,
+      "words": 40,
       "source": "articles-google.ts",
-      "sources": [],
-      "updated": "2026-09-12"
+      "sources": [
+        "https://support.google.com/calendar/answer/37648?hl=en",
+        "https://support.google.com/calendar/answer/37082?hl=en",
+        "https://support.microsoft.com/en-us/outlook/import-or-subscribe-to-a-calendar-in-outlook-com-or-outlook-on-the-web"
+      ],
+      "updated": "2026-10-21"
     },
     {
       "locale": "ja",
@@ -3887,15 +3956,19 @@
     {
       "locale": "ko",
       "slug": "the-secret-address-of-a-google-calendar",
-      "title": "구글 캘린더의 비공개 주소가 실제로 내주는 것",
-      "description": "구글에는 가진 사람 누구에게나 캘린더 전체를 보여주는 비공개 주소가 있다. 무엇이 드러나고, 왜 조용히 거둬들일 수 없는지.",
-      "descriptionCharacters": 69,
-      "sections": 2,
+      "title": "Google 비밀 iCal 주소: 구독과 공유 구분하기",
+      "description": "Google 비밀 iCal 주소, 계정 연결, 공유 피드를 이해하세요. 주소 노출에 대응할 때 즉시 업데이트나 사본 삭제를 보장하지 마세요.",
+      "descriptionCharacters": 78,
+      "sections": 6,
       "faq": 3,
-      "words": 216,
+      "words": 550,
       "source": "articles-google.ts",
-      "sources": [],
-      "updated": "2026-09-12"
+      "sources": [
+        "https://support.google.com/calendar/answer/37648?hl=en",
+        "https://support.google.com/calendar/answer/37082?hl=en",
+        "https://support.microsoft.com/en-us/outlook/import-or-subscribe-to-a-calendar-in-outlook-com-or-outlook-on-the-web"
+      ],
+      "updated": "2026-10-21"
     },
     {
       "locale": "ko",
@@ -4033,15 +4106,19 @@
     {
       "locale": "ms",
       "slug": "the-secret-address-of-a-google-calendar",
-      "title": "Apa yang sebenarnya didedahkan alamat rahsia kalendar Google",
-      "description": "Google menawarkan alamat peribadi yang menunjukkan seluruh kalendar anda kepada sesiapa yang memegangnya. Apa yang didedahkan dan mengapa ia tidak boleh ditarik balik secara senyap.",
-      "descriptionCharacters": 181,
-      "sections": 2,
+      "title": "Alamat iCal rahsia Google: bezakan langganan daripada perkongsian",
+      "description": "Fahami alamat iCal rahsia Google, sambungan akaun dan suapan. Urus alamat terdedah tanpa menjanjikan kemas kini segera atau pemadaman salinan.",
+      "descriptionCharacters": 142,
+      "sections": 6,
       "faq": 3,
-      "words": 283,
+      "words": 657,
       "source": "articles-google.ts",
-      "sources": [],
-      "updated": "2026-09-12"
+      "sources": [
+        "https://support.google.com/calendar/answer/37648?hl=en",
+        "https://support.google.com/calendar/answer/37082?hl=en",
+        "https://support.microsoft.com/en-us/outlook/import-or-subscribe-to-a-calendar-in-outlook-com-or-outlook-on-the-web"
+      ],
+      "updated": "2026-10-21"
     },
     {
       "locale": "ms",
@@ -4179,15 +4256,19 @@
     {
       "locale": "nl-NL",
       "slug": "the-secret-address-of-a-google-calendar",
-      "title": "Wat het geheime adres van een Google-agenda werkelijk weggeeft",
-      "description": "Google biedt een privéadres dat je hele agenda toont aan wie het heeft. Wat het prijsgeeft en waarom je het niet stilletjes terugneemt.",
-      "descriptionCharacters": 135,
-      "sections": 2,
+      "title": "Googles geheime iCal-adres: abonneren is iets anders dan delen",
+      "description": "Begrijp Googles geheime iCal-adres, accountverbindingen en feeds. Handel bij uitlekken zonder directe updates of het wissen van kopieën te beloven.",
+      "descriptionCharacters": 147,
+      "sections": 6,
       "faq": 3,
-      "words": 314,
+      "words": 735,
       "source": "articles-google.ts",
-      "sources": [],
-      "updated": "2026-09-12"
+      "sources": [
+        "https://support.google.com/calendar/answer/37648?hl=en",
+        "https://support.google.com/calendar/answer/37082?hl=en",
+        "https://support.microsoft.com/en-us/outlook/import-or-subscribe-to-a-calendar-in-outlook-com-or-outlook-on-the-web"
+      ],
+      "updated": "2026-10-21"
     },
     {
       "locale": "nl-NL",
@@ -4325,15 +4406,19 @@
     {
       "locale": "no",
       "slug": "the-secret-address-of-a-google-calendar",
-      "title": "Hva den hemmelige adressen til en Google-kalender egentlig gir bort",
-      "description": "Google tilbyr en privat adresse som viser hele kalenderen din til den som har den. Hva den blottlegger, og hvorfor den ikke kan trekkes tilbake i stillhet.",
-      "descriptionCharacters": 155,
-      "sections": 2,
+      "title": "Googles hemmelige iCal-adresse: abonnement er ikke det samme som deling",
+      "description": "Forstå Googles hemmelige iCal-adresse, kontotilkoblinger og feeder. Håndter en avslørt adresse uten å love øyeblikkelige oppdateringer eller slettede kopier.",
+      "descriptionCharacters": 157,
+      "sections": 6,
       "faq": 3,
-      "words": 318,
+      "words": 677,
       "source": "articles-google.ts",
-      "sources": [],
-      "updated": "2026-09-12"
+      "sources": [
+        "https://support.google.com/calendar/answer/37648?hl=en",
+        "https://support.google.com/calendar/answer/37082?hl=en",
+        "https://support.microsoft.com/en-us/outlook/import-or-subscribe-to-a-calendar-in-outlook-com-or-outlook-on-the-web"
+      ],
+      "updated": "2026-10-21"
     },
     {
       "locale": "no",
@@ -4471,15 +4556,19 @@
     {
       "locale": "pl",
       "slug": "the-secret-address-of-a-google-calendar",
-      "title": "Co naprawdę zdradza tajny adres kalendarza Google",
-      "description": "Google oferuje prywatny adres, który pokazuje cały twój kalendarz każdemu, kto go ma. Co odsłania i dlaczego nie da się go cicho wycofać.",
-      "descriptionCharacters": 137,
-      "sections": 2,
+      "title": "Tajny adres iCal Google: odróżnij subskrypcję od udostępniania",
+      "description": "Poznaj tajny adres iCal Google, połączenia kont i kanały. Reaguj na ujawnienie adresu bez obietnic natychmiastowych aktualizacji lub usunięcia kopii.",
+      "descriptionCharacters": 149,
+      "sections": 6,
       "faq": 3,
-      "words": 273,
+      "words": 613,
       "source": "articles-google.ts",
-      "sources": [],
-      "updated": "2026-09-12"
+      "sources": [
+        "https://support.google.com/calendar/answer/37648?hl=en",
+        "https://support.google.com/calendar/answer/37082?hl=en",
+        "https://support.microsoft.com/en-us/outlook/import-or-subscribe-to-a-calendar-in-outlook-com-or-outlook-on-the-web"
+      ],
+      "updated": "2026-10-21"
     },
     {
       "locale": "pl",
@@ -4617,15 +4706,19 @@
     {
       "locale": "pt-BR",
       "slug": "the-secret-address-of-a-google-calendar",
-      "title": "O que o endereço secreto de uma agenda do Google realmente entrega",
-      "description": "O Google oferece um endereço privado que mostra sua agenda inteira a quem o tiver. O que ele expõe e por que não dá para retirá-lo em silêncio.",
-      "descriptionCharacters": 143,
-      "sections": 2,
+      "title": "Endereço iCal secreto do Google: assinar não é compartilhar",
+      "description": "Entenda o endereço iCal secreto, a conexão de conta e os feeds compartilhados. Saiba lidar com um endereço exposto e com cópias já salvas.",
+      "descriptionCharacters": 138,
+      "sections": 6,
       "faq": 3,
-      "words": 318,
+      "words": 835,
       "source": "articles-google.ts",
-      "sources": [],
-      "updated": "2026-09-12"
+      "sources": [
+        "https://support.google.com/calendar/answer/37648?hl=en",
+        "https://support.google.com/calendar/answer/37082?hl=en",
+        "https://support.microsoft.com/en-us/outlook/import-or-subscribe-to-a-calendar-in-outlook-com-or-outlook-on-the-web"
+      ],
+      "updated": "2026-10-21"
     },
     {
       "locale": "pt-BR",
@@ -4814,15 +4907,19 @@
     {
       "locale": "ro",
       "slug": "the-secret-address-of-a-google-calendar",
-      "title": "Ce dezvăluie de fapt adresa secretă a unui calendar Google",
-      "description": "Google oferă o adresă privată care arată tot calendarul tău oricui o deține. Ce expune și de ce nu poate fi retrasă în liniște.",
-      "descriptionCharacters": 127,
-      "sections": 2,
+      "title": "Adresa iCal secretă Google: abonarea nu înseamnă partajare",
+      "description": "Înțelege adresa iCal secretă, conectarea contului și fluxurile partajate. Află ce faci dacă adresa a fost divulgată și de ce pot rămâne copii.",
+      "descriptionCharacters": 142,
+      "sections": 6,
       "faq": 3,
-      "words": 311,
+      "words": 721,
       "source": "articles-google.ts",
-      "sources": [],
-      "updated": "2026-09-12"
+      "sources": [
+        "https://support.google.com/calendar/answer/37648?hl=en",
+        "https://support.google.com/calendar/answer/37082?hl=en",
+        "https://support.microsoft.com/en-us/outlook/import-or-subscribe-to-a-calendar-in-outlook-com-or-outlook-on-the-web"
+      ],
+      "updated": "2026-10-21"
     },
     {
       "locale": "ro",
@@ -4960,15 +5057,19 @@
     {
       "locale": "ru",
       "slug": "the-secret-address-of-a-google-calendar",
-      "title": "Что на самом деле выдаёт секретный адрес календаря Google",
-      "description": "Google даёт частный адрес, который показывает весь ваш календарь любому, у кого он есть. Что он открывает и почему его нельзя тихо отозвать.",
-      "descriptionCharacters": 140,
-      "sections": 2,
+      "title": "Секретный адрес iCal Google: подписка и общий доступ — разные вещи",
+      "description": "Разберитесь в секретном адресе iCal, подключении аккаунта и подписках. Узнайте, что делать при раскрытии адреса и почему копии могут остаться.",
+      "descriptionCharacters": 142,
+      "sections": 6,
       "faq": 3,
-      "words": 276,
+      "words": 651,
       "source": "articles-google.ts",
-      "sources": [],
-      "updated": "2026-09-12"
+      "sources": [
+        "https://support.google.com/calendar/answer/37648?hl=en",
+        "https://support.google.com/calendar/answer/37082?hl=en",
+        "https://support.microsoft.com/en-us/outlook/import-or-subscribe-to-a-calendar-in-outlook-com-or-outlook-on-the-web"
+      ],
+      "updated": "2026-10-21"
     },
     {
       "locale": "ru",
@@ -5106,15 +5207,19 @@
     {
       "locale": "sv",
       "slug": "the-secret-address-of-a-google-calendar",
-      "title": "Vad den hemliga adressen till en Google-kalender verkligen röjer",
-      "description": "Google erbjuder en privat adress som visar hela din kalender för den som håller den. Vad den blottar, och varför den inte kan tas tillbaka i tysthet.",
-      "descriptionCharacters": 149,
-      "sections": 2,
+      "title": "Googles hemliga iCal-adress: skilj prenumeration från delning",
+      "description": "Förstå Googles hemliga iCal-adress, kontoanslutningar och delade flöden. Hantera en spridd adress utan löften om snabba uppdateringar eller raderade kopior.",
+      "descriptionCharacters": 156,
+      "sections": 6,
       "faq": 3,
-      "words": 314,
+      "words": 737,
       "source": "articles-google.ts",
-      "sources": [],
-      "updated": "2026-09-12"
+      "sources": [
+        "https://support.google.com/calendar/answer/37648?hl=en",
+        "https://support.google.com/calendar/answer/37082?hl=en",
+        "https://support.microsoft.com/en-us/outlook/import-or-subscribe-to-a-calendar-in-outlook-com-or-outlook-on-the-web"
+      ],
+      "updated": "2026-10-21"
     },
     {
       "locale": "sv",
@@ -5252,15 +5357,19 @@
     {
       "locale": "th",
       "slug": "the-secret-address-of-a-google-calendar",
-      "title": "ที่อยู่ลับของปฏิทิน Google ยกอะไรให้คนอื่นจริง ๆ",
-      "description": "Google มีที่อยู่ส่วนตัวที่เปิดปฏิทินทั้งเล่มให้ใครก็ตามที่ถือมันไว้ มันเปิดเผยอะไร และทำไมจึงเรียกคืนอย่างเงียบ ๆ ไม่ได้",
-      "descriptionCharacters": 120,
-      "sections": 2,
+      "title": "ที่อยู่ iCal ลับของ Google: แยกการสมัครรับออกจากการแชร์",
+      "description": "เข้าใจที่อยู่ iCal ลับ การเชื่อมต่อบัญชี และฟีดที่แชร์ พร้อมวิธีรับมือเมื่อที่อยู่รั่วไหล โดยไม่รับรองการอัปเดตทันทีหรือการลบทุกสำเนา",
+      "descriptionCharacters": 133,
+      "sections": 6,
       "faq": 3,
-      "words": 66,
+      "words": 155,
       "source": "articles-google.ts",
-      "sources": [],
-      "updated": "2026-09-12"
+      "sources": [
+        "https://support.google.com/calendar/answer/37648?hl=en",
+        "https://support.google.com/calendar/answer/37082?hl=en",
+        "https://support.microsoft.com/en-us/outlook/import-or-subscribe-to-a-calendar-in-outlook-com-or-outlook-on-the-web"
+      ],
+      "updated": "2026-10-21"
     },
     {
       "locale": "th",
@@ -5398,15 +5507,19 @@
     {
       "locale": "tr",
       "slug": "the-secret-address-of-a-google-calendar",
-      "title": "Bir Google takviminin gizli adresi gerçekte neyi ele verir",
-      "description": "Google, elinde tutan herkese tüm takviminizi gösteren özel bir adres sunar. Neyi açığa çıkardığı ve neden sessizce geri alınamayacağı.",
-      "descriptionCharacters": 134,
-      "sections": 2,
+      "title": "Google gizli iCal adresi: abonelik ile paylaşımı ayırın",
+      "description": "Google gizli iCal adresini, hesap bağlantısını ve paylaşılan akışları ayırın. Açığa çıkan adresi, güncelleme gecikmelerini ve eski kopyaları anlayın.",
+      "descriptionCharacters": 149,
+      "sections": 6,
       "faq": 3,
-      "words": 251,
+      "words": 619,
       "source": "articles-google.ts",
-      "sources": [],
-      "updated": "2026-09-12"
+      "sources": [
+        "https://support.google.com/calendar/answer/37648?hl=en",
+        "https://support.google.com/calendar/answer/37082?hl=en",
+        "https://support.microsoft.com/en-us/outlook/import-or-subscribe-to-a-calendar-in-outlook-com-or-outlook-on-the-web"
+      ],
+      "updated": "2026-10-21"
     },
     {
       "locale": "tr",
@@ -5544,15 +5657,19 @@
     {
       "locale": "vi",
       "slug": "the-secret-address-of-a-google-calendar",
-      "title": "Địa chỉ bí mật của lịch Google thực sự để lộ điều gì",
-      "description": "Google cung cấp một địa chỉ riêng tư cho thấy toàn bộ lịch của bạn với bất cứ ai giữ nó. Nó phơi bày điều gì, và vì sao không thể lặng lẽ thu hồi.",
-      "descriptionCharacters": 146,
-      "sections": 2,
+      "title": "Địa chỉ iCal bí mật của Google: phân biệt đăng ký và chia sẻ",
+      "description": "Hiểu địa chỉ iCal bí mật, kết nối tài khoản và nguồn cấp chia sẻ. Xử lý địa chỉ bị lộ mà không hứa cập nhật ngay hay xóa mọi bản sao.",
+      "descriptionCharacters": 133,
+      "sections": 6,
       "faq": 3,
-      "words": 417,
+      "words": 998,
       "source": "articles-google.ts",
-      "sources": [],
-      "updated": "2026-09-12"
+      "sources": [
+        "https://support.google.com/calendar/answer/37648?hl=en",
+        "https://support.google.com/calendar/answer/37082?hl=en",
+        "https://support.microsoft.com/en-us/outlook/import-or-subscribe-to-a-calendar-in-outlook-com-or-outlook-on-the-web"
+      ],
+      "updated": "2026-10-21"
     },
     {
       "locale": "vi",
@@ -5690,15 +5807,19 @@
     {
       "locale": "zh-Hans",
       "slug": "the-secret-address-of-a-google-calendar",
-      "title": "谷歌日历的私密地址到底交出了什么",
-      "description": "谷歌提供了一个私密地址，谁拿到它，谁就能看到你的整本日历。它暴露什么，又为什么无法悄悄收回。",
-      "descriptionCharacters": 46,
-      "sections": 2,
+      "title": "Google 秘密 iCal 地址：订阅与共享有何区别",
+      "description": "了解 Google 秘密 iCal 地址、账号连接和共享订阅源。正确处理地址泄露，不把重置当作即时更新或删除所有副本的保证。",
+      "descriptionCharacters": 62,
+      "sections": 6,
       "faq": 3,
-      "words": 18,
+      "words": 84,
       "source": "articles-google.ts",
-      "sources": [],
-      "updated": "2026-09-12"
+      "sources": [
+        "https://support.google.com/calendar/answer/37648?hl=en",
+        "https://support.google.com/calendar/answer/37082?hl=en",
+        "https://support.microsoft.com/en-us/outlook/import-or-subscribe-to-a-calendar-in-outlook-com-or-outlook-on-the-web"
+      ],
+      "updated": "2026-10-21"
     },
     {
       "locale": "zh-Hans",
@@ -5836,15 +5957,19 @@
     {
       "locale": "zh-Hant",
       "slug": "the-secret-address-of-a-google-calendar",
-      "title": "Google 日曆的私人網址到底交出了什麼",
-      "description": "Google 提供了一個私人網址，誰拿到它，誰就看得到你整本日曆。它揭露什麼，又為什麼無法悄悄收回。",
-      "descriptionCharacters": 50,
-      "sections": 2,
+      "title": "Google 私密 iCal 網址：釐清訂閱與共享的差別",
+      "description": "了解 Google 私密 iCal 網址、帳號連線與共享訂閱來源。正確處理網址外洩，不把重設當作立即更新或刪除所有副本的保證。",
+      "descriptionCharacters": 63,
+      "sections": 6,
       "faq": 3,
-      "words": 21,
+      "words": 101,
       "source": "articles-google.ts",
-      "sources": [],
-      "updated": "2026-09-12"
+      "sources": [
+        "https://support.google.com/calendar/answer/37648?hl=en",
+        "https://support.google.com/calendar/answer/37082?hl=en",
+        "https://support.microsoft.com/en-us/outlook/import-or-subscribe-to-a-calendar-in-outlook-com-or-outlook-on-the-web"
+      ],
+      "updated": "2026-10-21"
     },
     {
       "locale": "zh-Hant",

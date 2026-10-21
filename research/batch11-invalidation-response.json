@@ -1,0 +1,17 @@
+{
+    "Location": "https://cloudfront.amazonaws.com/2020-05-31/distribution/E91A0MU1YHGPR/invalidation/IEE0L0TALFLV8V2C3HW8OMXAGQ",
+    "Invalidation": {
+        "Id": "IEE0L0TALFLV8V2C3HW8OMXAGQ",
+        "Status": "InProgress",
+        "CreateTime": "2026-10-21T21:18:30.811Z",
+        "InvalidationBatch": {
+            "Paths": {
+                "Quantity": 1,
+                "Items": [
+                    "/*"
+                ]
+            },
+            "CallerReference": "cloud-calendars-batch11-202f8ba54a6ef27bc24b"
+        }
+    }
+}

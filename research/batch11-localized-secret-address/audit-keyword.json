@@ -1,0 +1,146 @@
+{
+  "date": "2026-10-22",
+  "articleUpdatedDate": "2026-10-21",
+  "slug": "the-secret-address-of-a-google-calendar",
+  "source": "src/app/content/en-US/articles-google.ts",
+  "sourceObjectSha256": "ff572e59b1927882fc167514f82f547aa4b91fbf29de4f1416acde9146035621",
+  "routeSource": "src/app/content/article-index.ts",
+  "routeSourceSha256": "d6a88e0083e6bbc64e0e3020e050197d73d0c832b6d95c7a663b9ed03cddc957",
+  "format": "Individual LocalisedArticle objects, no slug wrapper.",
+  "method": "Direct model translation from current corrected English; no paid API or native-speaker certification.",
+  "checks": {
+    "assignedTenLocales": true,
+    "sixSectionsTwelveParagraphsSixStepsThreeFaq": true,
+    "all39VisibleStringsTranslated": true,
+    "descriptionsUnder160Characters": true,
+    "allSourceUrlsPreservedInOrder": true,
+    "allOriginalRelatedLinksExistInLocaleIndex": true,
+    "developerDisclosureAndSourceDatePreserved": true,
+    "emptyClaimsPreserved": true
+  },
+  "semanticReview": [
+    "Account connection can support editing; secret address is read-only subscription for own use.",
+    "Named sharing and Google secret feed distinct from Cloud sharing roles.",
+    "Calendar-level integration location and admin restrictions retained; no publish-to-bypass advice.",
+    "Import snapshot distinguished from subscription; no duplicate-import troubleshooting.",
+    "Receiver controls refresh; hint not delivery deadline.",
+    "Reset invalidates old URL but does not prove deletion of saved copies.",
+    "No new log, guessing-resistance, secrecy, instant-delivery or complete-recall guarantee."
+  ],
+  "limitations": [
+    "Model-produced translations, not native-speaker-reviewed.",
+    "No source integration, native edit, build, deployment or paid API."
+  ],
+  "rows": [
+    {
+      "locale": "hi",
+      "file": "research/batch11-localized-secret-address/hi.json",
+      "descriptionCharacters": 134,
+      "sections": 6,
+      "paragraphs": 12,
+      "steps": 6,
+      "faq": 3,
+      "sources": 3,
+      "sha256": "f14f923558e897131d5bb9707c736e7bdc3cf3c477a89fc82b3fd389f61a19b1"
+    },
+    {
+      "locale": "hu",
+      "file": "research/batch11-localized-secret-address/hu.json",
+      "descriptionCharacters": 143,
+      "sections": 6,
+      "paragraphs": 12,
+      "steps": 6,
+      "faq": 3,
+      "sources": 3,
+      "sha256": "a0cdba68b60ed2ae3bf825e8dc6e9810b1f99dec430bac2ff7b6236d73c906cc"
+    },
+    {
+      "locale": "id",
+      "file": "research/batch11-localized-secret-address/id.json",
+      "descriptionCharacters": 149,
+      "sections": 6,
+      "paragraphs": 12,
+      "steps": 6,
+      "faq": 3,
+      "sources": 3,
+      "sha256": "2944a7f1ec8bb93ac65b79e5e02ad3c1483495df2d71e80f96535d90962512e1"
+    },
+    {
+      "locale": "it",
+      "file": "research/batch11-localized-secret-address/it.json",
+      "descriptionCharacters": 151,
+      "sections": 6,
+      "paragraphs": 12,
+      "steps": 6,
+      "faq": 3,
+      "sources": 3,
+      "sha256": "601980cfe87d87896043d1edd5bcafb5eab2440f6bcae2ce2ff632424f32017e"
+    },
+    {
+      "locale": "ja",
+      "file": "research/batch11-localized-secret-address/ja.json",
+      "descriptionCharacters": 75,
+      "sections": 6,
+      "paragraphs": 12,
+      "steps": 6,
+      "faq": 3,
+      "sources": 3,
+      "sha256": "a57f2038f19573ba092f607ec848e5bd99e013b440e84ff09b221f429bdd8050"
+    },
+    {
+      "locale": "ko",
+      "file": "research/batch11-localized-secret-address/ko.json",
+      "descriptionCharacters": 78,
+      "sections": 6,
+      "paragraphs": 12,
+      "steps": 6,
+      "faq": 3,
+      "sources": 3,
+      "sha256": "74ad7decfb15c3bbace8359c96985f05bab2998dfc6914e5b406df0c9085bc13"
+    },
+    {
+      "locale": "ms",
+      "file": "research/batch11-localized-secret-address/ms.json",
+      "descriptionCharacters": 142,
+      "sections": 6,
+      "paragraphs": 12,
+      "steps": 6,
+      "faq": 3,
+      "sources": 3,
+      "sha256": "1aa50861c1d58a5dce091cc2781dd0342612cb5ee31d13596b4fdb5775a68b30"
+    },
+    {
+      "locale": "nl-NL",
+      "file": "research/batch11-localized-secret-address/nl-NL.json",
+      "descriptionCharacters": 147,
+      "sections": 6,
+      "paragraphs": 12,
+      "steps": 6,
+      "faq": 3,
+      "sources": 3,
+      "sha256": "0bcb2516fdb1272cff2f90c42f8e3133f3e77d02ecc4a044128f874d6f9001b9"
+    },
+    {
+      "locale": "no",
+      "file": "research/batch11-localized-secret-address/no.json",
+      "descriptionCharacters": 157,
+      "sections": 6,
+      "paragraphs": 12,
+      "steps": 6,
+      "faq": 3,
+      "sources": 3,
+      "sha256": "05ea76c96b5ebcc70d67e763e88932f8b2026db82b0a83a641b413b9de835408"
+    },
+    {
+      "locale": "pl",
+      "file": "research/batch11-localized-secret-address/pl.json",
+      "descriptionCharacters": 149,
+      "sections": 6,
+      "paragraphs": 12,
+      "steps": 6,
+      "faq": 3,
+      "sources": 3,
+      "sha256": "87626b8e91013826772a5cb660835d78d948514fc7c9527a981a40cd9bb8f2e4"
+    }
+  ]
+}

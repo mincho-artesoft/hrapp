@@ -326,37 +326,95 @@ export const WEATHER_EN_US: Readonly<Record<string, LocalisedArticle>> = {
 },
 
   'reading-a-chance-of-rain': {
-  "title": "What a forty per cent chance of rain actually means",
+  "title": "What does a chance of rain mean for a calendar event?",
   "short": "Reading a chance of rain",
-  "description": "The single most misread number in any forecast, explained — and what to do with it when you are deciding whether to move an event.",
-  "lede": "Almost nobody reads probability of precipitation the way it is meant. The number is not how much rain, and it is not how long.",
-  "commonBelief": "That forty per cent means light rain, or rain for part of the day.",
+  "description": "Read rain probability alongside the forecast period, amount and location. Compare the hours of your event without inventing a universal cancellation threshold.",
+  "lede": "An outdoor booking needs a decision about a particular place and time. A percentage alone does not tell you the expected amount of rain, how long it will last or whether your activity can continue. This guide is published by Arte Soft, the developer of Cloud Calendars.",
+  "commonBelief": "A forty per cent chance means rain for forty per cent of the day, or a universal rule about whether to cancel.",
   "sections": [
     {
-      "heading": "What the number is",
+      "heading": "Identify the place and period first",
       "body": [
-        "It is the probability that measurable rain falls at a given point in the forecast area during the period. Forty per cent means: in four out of ten runs of this situation, the spot you are standing on gets wet.",
-        "It says nothing about how hard, and nothing about for how long. A forty per cent day can be a five-minute shower or an afternoon of it."
+        "The U.S. National Weather Service describes precipitation probability for a particular point over a specified period. Its published example uses a measurable-rain threshold and a forecast period; those details belong to that product. Do not silently apply its twelve-hour example to every hourly forecast.",
+        "Apple describes WeatherKit’s hourly precipitation chance as a probability during that hour. In Cloud Calendars, compare the selected forecast place and date with the appointment. A percentage for the next available hour is not automatically the forecast for a meeting next Thursday."
       ]
     },
     {
-      "heading": "Why it feels wrong so often",
+      "heading": "Keep likelihood separate from amount",
       "body": [
-        "Because people grade it as a yes or a no. Stay dry on a forty per cent day and the forecast 'was wrong'; get soaked and it 'was right'. Neither is true — the number was a bet, and bets lose six times in ten.",
-        "Over a season a well-calibrated forty per cent rains about forty per cent of the time, which is exactly the point and is invisible from any single day."
+        "Probability answers a likelihood question. It is not a rainfall amount or a fraction of the period spent raining. Check an amount and its unit separately when the forecast provides one, and read the time interval attached to that amount.",
+        "For example, an organiser choosing between two outdoor slots needs more than two percentages. Available timing and amount information may affect preparation differently. If the required detail is absent, record that gap rather than replacing it with an assumption that a lower percentage means lighter rain."
+      ]
+    },
+    {
+      "heading": "Compare the whole appointment, not one icon",
+      "body": [
+        "For a plan from 14:00 to 16:00, inspect the available forecast intervals covering both hours, along with setup or travel time that actually matters to the arrangement. A daily summary and an individual hour are different views, so a difference between their numbers is not by itself an error.",
+        "Do not add the displayed hourly percentages to produce a probability for the whole appointment. Rain in different hours can occur in the same possible outcome, so simple addition can count overlapping outcomes more than once. Keep each number attached to its interval, or use a provider’s broader-period product when that is the question you need answered."
+      ]
+    },
+    {
+      "heading": "Use a decision suited to the activity",
+      "body": [
+        "An indoor reservation with a short walk and an uncovered outdoor display have different consequences if rain occurs. Agree the venue’s conditions, equipment requirements and alternative arrangement before choosing a slot. There is no general thirty-or-sixty-per-cent rule that makes every event appropriate.",
+        "A simple planning example is a two-location gathering: keep the intended outdoor slot and an agreed indoor fallback, then record when the organiser will confirm the location. This is a planning convention, not an automatic weather-triggered relocation feature in Cloud Calendars."
+      ]
+    },
+    {
+      "heading": "Recheck before a costly change",
+      "body": [
+        "Forecasts can change as the event approaches. Review the chosen place, date and available update information before changing a booking or telling guests to travel elsewhere. For official warnings or activity-specific decisions, use the relevant weather authority and venue guidance.",
+        "The Cloud Calendars app uses Apple WeatherKit, while this website’s interactive weather demo uses Open-Meteo. Different providers, locations or forecast periods can produce different displays. Compare like with like rather than assuming that the website and app must show the same percentage."
+      ]
+    },
+    {
+      "heading": "Save and communicate the actual plan",
+      "body": [
+        "When you create or change the calendar entry, inspect its date, time zone, duration and destination calendar. Weather helps inform the decision; saving an event does not guarantee the forecast, notify every participant successfully or record their agreement to a new venue.",
+        "Write a clear confirmation message when the arrangement changes. Keep the fallback and decision time understandable to the people involved, then verify their response through your agreed channel. A blank forecast outside the available range is unavailable information, not a promise of dry weather."
       ]
     }
   ],
   "claims": {},
   "practical": [
-    "Read it as odds, not as intensity.",
-    "Under about thirty per cent, plan normally and carry a contingency.",
-    "Above about sixty, plan for rain and be pleasantly surprised.",
-    "Between the two, look at the hours rather than the day — that is where the answer usually is."
+    "Check the forecast place, date and stated period.",
+    "Read probability separately from amount and duration.",
+    "Inspect the available intervals across the appointment.",
+    "Choose a fallback appropriate to the activity and venue.",
+    "Recheck current information before changing a booking.",
+    "Verify the calendar entry and confirm changes with participants."
+  ],
+  "faq": [
+    {
+      "q": "Does forty per cent mean rain for forty per cent of the time?",
+      "a": "No. A precipitation probability is tied to a forecast place and period. It is not a duration or amount; inspect those separately."
+    },
+    {
+      "q": "Can I add hourly percentages to get the chance for my event?",
+      "a": "Simple addition is not a valid way to combine those probabilities. Keep each number attached to its interval or consult a forecast product for the broader period."
+    },
+    {
+      "q": "At what percentage should I cancel?",
+      "a": "There is no universal percentage for every activity. Use the venue’s conditions, consequences, relevant official guidance and an agreed alternative."
+    }
+  ],
+  "sourcesHeading": "Definitions and provider guidance",
+  "sources": [
+    {
+      "label": "National Weather Service: precipitation probability and forecast periods",
+      "url": "https://www.weather.gov/lmk/pops?hl=en-US"
+    },
+    {
+      "label": "Apple WeatherKit: hourly precipitation chance",
+      "url": "https://developer.apple.com/documentation/weatherkit/hourweather/precipitationchance"
+    }
   ],
   "seeAlso": [
-    "what-a-forecast-can-and-cannot-tell-you"
-  ]
+    "what-a-forecast-can-and-cannot-tell-you",
+    "weather-where-the-event-is",
+    "planning-outdoors-without-being-rained-on"
+  ],
+  "updated": "2026-10-22"
 },
 
   'weather-where-the-event-is': {
@@ -475,69 +533,186 @@ export const WEATHER_EN_US: Readonly<Record<string, LocalisedArticle>> = {
 },
 
   'daylight-as-a-planning-constraint': {
-  "title": "Daylight is a constraint, and calendars usually ignore it",
+  "title": "Plan around sunset: check daylight, location and the event date",
   "short": "Daylight and planning",
-  "description": "Sunset moves by minutes a day and by hours across a season. For anything outdoors it binds harder than the weather does.",
-  "lede": "Weather is uncertain. Daylight is not, and yet most plans are made as though only the first one existed.",
-  "commonBelief": "That the light will hold because it held last week.",
+  "description": "Check sunset for the right place and date, distinguish it from twilight, and plan an appropriate margin instead of assuming last week’s light will repeat.",
+  "lede": "An empty evening slot does not tell you how much useful natural light a place will have. Start with the actual activity, destination and date, then work back from the conditions it needs. This guide is published by Arte Soft, the developer of Cloud Calendars.",
+  "commonBelief": "The listed sunset is an exact universal cutoff for visibility, and a weekly appointment always has the same daylight.",
   "sections": [
     {
-      "heading": "The number moves faster than intuition",
+      "heading": "Match the solar information to the destination",
       "body": [
-        "Around the equinoxes sunset shifts by two to three minutes a day at mid-latitudes. Over a fortnight that is half an hour, which is the difference between finishing in light and finishing by phone torch.",
-        "In late autumn the change is sharpest exactly when people are still scheduling as though it were September."
+        "Check the place and date attached to a sunrise or sunset value. A time for your current city is not automatically the time at a destination in another time zone. Keep the event’s local date and time clear before comparing it with the weather view.",
+        "Cloud Calendars weather supports selected-place information and available solar values returned by WeatherKit. Check the available date and displayed field before relying on it. Missing information should remain missing, rather than being replaced with today’s sunset or an assumption that the whole evening is light."
       ]
     },
     {
-      "heading": "Use it as a hard edge",
+      "heading": "Distinguish sunset from twilight",
       "body": [
-        "Unlike rain, sunset is certain. It is the one planning input that never surprises you, and it deserves to be treated as a wall rather than a suggestion.",
-        "Work backwards from it: a two-hour activity that must finish in daylight has a latest start, and that start moves every week."
+        "The U.S. Naval Observatory defines sunrise and sunset using the Sun’s position relative to a conventional horizon. Twilight is a separate interval before sunrise or after sunset, with different definitions. The labels therefore should not be used as interchangeable names for one instant.",
+        "Calculated solar times are not a measurement of the light available for a particular task. The observatory describes effects from the atmosphere, local horizon and observer position. A time displayed to the minute does not mean every venue will have identical visibility at that minute."
+      ]
+    },
+    {
+      "heading": "Work back from the task rather than a universal margin",
+      "body": [
+        "Decide what needs daylight: setting up an outdoor display, completing the activity, or returning equipment to the venue. Ask the organiser or venue which conditions and finish arrangements apply. Do not use this guide to invent a general latest safe start for every outdoor activity.",
+        "For example, a venue may require a display to finish and equipment to be packed away before its agreed cutoff. Put those separate commitments into the plan. Subtract the actual activity and pack-down time from that agreed finish, rather than treating the event’s advertised end as the entire job."
+      ]
+    },
+    {
+      "heading": "Check each repeated date",
+      "body": [
+        "A weekly appointment repeats its scheduling rule, not the amount of daylight. Review relevant dates when the season changes or the event crosses a clock change. Check the local time zone instead of assuming that an unchanged wall-clock time has unchanged lighting.",
+        "If only one occurrence needs moving, choose an editor and repeat scope that express that exception. After saving, inspect the changed date and a later occurrence. A routine that remains suitable in one week does not establish that every future occurrence meets the same conditions."
+      ]
+    },
+    {
+      "heading": "Keep available forecasts separate from long-term planning",
+      "body": [
+        "A calendar can hold appointments far beyond the available weather or solar entries in a particular view. For a later date, consult a suitable place-and-date source instead of assuming the app has returned a value for it. Do not copy the nearest available day as though it were the requested one.",
+        "NOAA explains that calculated sunrise and sunset depend on assumptions and observed results can vary. Its older solar calculator is no longer actively maintained; this guide cites its explanation of those limitations, not a claim that the calculator certifies an event’s conditions."
+      ]
+    },
+    {
+      "heading": "Save the intended arrangement and recheck it",
+      "body": [
+        "Record the activity’s date, local time, duration and venue accurately. If a separate setup or finish commitment helps the organiser, label it so nobody confuses it with the public start time. Check the destination calendar before saving a shared arrangement.",
+        "Before the event, review the actual forecast and venue information as well as the solar time. Communicate a changed start or location directly to the people involved. Neither a sunset entry nor a saved appointment guarantees usable light, suitable weather or that every participant has received an update."
       ]
     }
   ],
   "claims": {},
   "practical": [
-    "Work backwards from sunset for anything outdoors, not forwards from the free slot.",
-    "Re-check the latest safe start every couple of weeks in spring and autumn.",
-    "In the fortnight after the clocks change, assume your instincts are an hour wrong."
+    "Identify the destination, event date and local time zone.",
+    "Check whether the value is sunset, sunrise or a twilight field.",
+    "Ask the organiser what conditions and finish arrangement apply.",
+    "Include the real setup, activity and pack-down periods.",
+    "Review repeated dates and any intended single-occurrence change.",
+    "Save the correct calendar entry and confirm changes with participants."
+  ],
+  "faq": [
+    {
+      "q": "Is sunset the exact moment an activity must stop?",
+      "a": "Sunset is a defined solar event, not a universal task-specific visibility rule. Use the venue’s requirements and actual conditions for the arrangement."
+    },
+    {
+      "q": "Can I reuse today’s sunset for an event next month?",
+      "a": "No. Check the intended place and date. A calendar appointment can extend beyond the values available in a weather view."
+    },
+    {
+      "q": "Does a recurring evening event keep the same daylight?",
+      "a": "No. Recheck the relevant dates, season and local clock settings; the repeat rule does not preserve lighting conditions."
+    }
+  ],
+  "sourcesHeading": "Definitions and provider guidance",
+  "sources": [
+    {
+      "label": "U.S. Naval Observatory: rise, set and twilight definitions",
+      "url": "https://aa.usno.navy.mil/faq/RST_defs"
+    },
+    {
+      "label": "NOAA: solar calculation assumptions and limitations",
+      "url": "https://gml.noaa.gov/grad/solcalc/calcdetails.html"
+    }
   ],
   "seeAlso": [
+    "weather-where-the-event-is",
+    "recurring-events-without-the-mess",
     "planning-outdoors-without-being-rained-on"
-  ]
+  ],
+  "updated": "2026-10-22"
 },
 
   'wind-the-forecast-nobody-reads': {
-  "title": "Wind is the forecast nobody reads and half of them needed",
-  "short": "Wind, the ignored forecast",
-  "description": "Cycling, sailing, paddling, drone flying, gardening, anything with a gazebo. For a lot of plans wind decides the day and rain does not.",
-  "lede": "People check rain out of habit. For a surprising number of activities, wind is the number that actually determines whether the thing happens.",
-  "commonBelief": "That wind is a detail and rain is the headline.",
+  "title": "Wind forecast for outdoor plans: speed, gusts, direction and time",
+  "short": "Wind and outdoor plans",
+  "description": "Read wind speed, gusts, units and timing before an outdoor plan. Match the forecast place and period without treating an icon as a safety decision.",
+  "lede": "A dry-looking forecast can leave an important planning question unanswered. An exposed venue, temporary display or outdoor class may need wind information as well as a rain icon. This guide is published by Arte Soft, the developer of Cloud Calendars.",
+  "commonBelief": "A low rain chance means an outdoor plan is suitable, and one wind number applies everywhere along the route.",
   "sections": [
     {
-      "heading": "Where wind is the binding constraint",
+      "heading": "Read the value and its unit",
       "body": [
-        "A dry day at thirty knots cancels more plans than a damp one at five. Cyclists, sailors, paddlers, anyone putting up a marquee, anyone flying anything — for all of them the rain line is secondary.",
-        "It is also the number people are worst at estimating from a window, because a sheltered street tells you very little about an exposed route."
+        "Start with the selected place, forecast date and units. A number labelled kilometres per hour cannot be compared directly with the same number in knots or miles per hour. Keep the displayed unit with any value you record or share.",
+        "The Met Office distinguishes its average wind-speed field from the gust field. Read the definitions supplied by the provider you are using rather than assuming every app averages observations over the same interval. In Cloud Calendars, inspect the relevant available forecast hours instead of substituting the current weather for a later appointment."
       ]
     },
     {
-      "heading": "Direction matters as much as speed",
+      "heading": "Look at gusts as a separate field",
       "body": [
-        "The same speed is a different day depending on where it comes from. An offshore wind flattens water and pushes you out; onshore does the opposite. A headwind out is a tailwind home, which changes how far you plan to go.",
-        "Gust figures matter more than averages for anything with a sail or a canopy: the average holds the tent up, the gust takes it away."
+        "Gusts describe stronger, short-lived peaks rather than the same thing as a typical or average wind value. A separate gust field can therefore change the picture even when the main speed number looks modest. Check which period the provider associates with it.",
+        "If a value is missing or unavailable, do not treat that as proof that there will be no gusts. For a venue with operating limits, use the required forecast and the venue or equipment guidance. This guide does not supply a universal wind limit for structures, aircraft or water activities."
+      ]
+    },
+    {
+      "heading": "Interpret direction using the provider’s convention",
+      "body": [
+        "The Met Office explains that its compass letters identify where the wind comes from, while its arrow illustrates the direction of travel. Do not assume an arrow in another product uses the same convention without checking its legend.",
+        "A selected-city forecast is not a measurement at every point of a route or venue. When location matters, compare the actual venue and the information required for it. A sheltered observation near your home does not establish conditions at an exposed destination."
+      ]
+    },
+    {
+      "heading": "Check the period covering the commitment",
+      "body": [
+        "Consider the whole period you are arranging, including setup and pack-down when relevant. A forecast at the event’s start does not describe every later hour. Record the selected date and time alongside the wind value so a screenshot or note remains understandable.",
+        "Suppose a venue offers a morning and an afternoon slot for an outdoor display. Compare the available intervals for each slot and ask the venue which conditions matter to its decision. The calendar can record the chosen arrangement; it does not certify either slot as suitable."
+      ]
+    },
+    {
+      "heading": "Keep forecasts and warnings distinct",
+      "body": [
+        "A general wind forecast and an official warning answer different questions. Check relevant local warnings and the organiser’s requirements when weather could affect the arrangement. Do not infer the absence of a warning from a single number on a calendar screen.",
+        "Cloud Calendars’ selected-place weather and device-location weather alerts are separate paths. Selecting a destination forecast does not establish that every alert will arrive for that destination. Use the responsible authority’s information directly when it matters to the plan."
+      ]
+    },
+    {
+      "heading": "Record the fallback and confirm changes",
+      "body": [
+        "Choose who will make the final decision and when they will communicate it. A useful calendar note can state the venue, the intended slot and the agreed alternative without turning a forecast value into a guaranteed outcome.",
+        "Before rescheduling, check the event’s calendar, local time and duration, then tell the participants what changed. Do not rely on the calendar entry to communicate a last-minute venue decision on its own. Revisit the current forecast rather than leaving an old copied number as the only planning reference."
       ]
     }
   ],
   "claims": {},
   "practical": [
-    "For wind-sensitive plans, check speed and direction, not just the icon.",
-    "Read the gusts, not the mean, for anything that can be lifted.",
-    "Plan the outbound leg into the wind so the tired leg is the easy one."
+    "Check place, date, time interval and wind units.",
+    "Read the speed and gust fields separately.",
+    "Confirm how the provider represents direction.",
+    "Compare the available hours across the whole commitment.",
+    "Check venue requirements and relevant official information.",
+    "Record the fallback and confirm any schedule change directly."
+  ],
+  "faq": [
+    {
+      "q": "Are wind speed and gusts interchangeable?",
+      "a": "No. Read their separate definitions and periods in the forecast product. A missing gust value is not evidence that gusts cannot occur."
+    },
+    {
+      "q": "Does selecting a destination guarantee weather alerts for it?",
+      "a": "No. In Cloud Calendars the selected forecast and device-location alert paths are distinct. Check the relevant local authority’s information separately."
+    },
+    {
+      "q": "What wind speed is safe for my activity?",
+      "a": "This calendar guide does not set activity or equipment limits. Use the organiser, venue, equipment requirements and relevant official guidance."
+    }
+  ],
+  "sourcesHeading": "Definitions and provider guidance",
+  "sources": [
+    {
+      "label": "Met Office: forecast wind speed, direction and gust definitions",
+      "url": "https://weather.metoffice.gov.uk/guides/what-does-this-forecast-mean"
+    },
+    {
+      "label": "Apple WeatherKit: weather conditions, wind data and availability",
+      "url": "https://developer.apple.com/documentation/weatherkit"
+    }
   ],
   "seeAlso": [
-    "planning-outdoors-without-being-rained-on",
-    "weather-where-the-event-is"
-  ]
+    "weather-where-the-event-is",
+    "reading-a-chance-of-rain",
+    "planning-outdoors-without-being-rained-on"
+  ],
+  "updated": "2026-10-22"
 },
 };

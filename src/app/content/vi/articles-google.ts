@@ -159,53 +159,100 @@ export const GOOGLE_VI: Readonly<Record<string, LocalisedArticle>> = {
   },
 
   'the-secret-address-of-a-google-calendar': {
-    title: 'Địa chỉ bí mật của lịch Google thực sự để lộ điều gì',
-    short: 'Địa chỉ iCal bí mật',
-    description:
-      'Google cung cấp một địa chỉ riêng tư cho thấy toàn bộ lịch của bạn với bất cứ ai giữ nó. Nó phơi bày điều gì, và vì sao không thể lặng lẽ thu hồi.',
-    lede: 'Nằm sâu trong phần cài đặt của mọi lịch Google là một liên kết cho thấy mọi thứ trên đó. Không cần đăng nhập, không cần quyền, không có dấu vết ai đã mở.',
-    commonBelief: 'Rằng một địa chỉ riêng tư là riêng tư vì nó khó tìm.',
-    sections: [
-      {
-        heading: 'Một liên kết là mật khẩu không thể đổi riêng cho một người',
-        body: [
-          'Địa chỉ bí mật mang theo chi tiết đầy đủ — tiêu đề, giờ giấc, địa điểm, ghi chú. Ai giữ liên kết đều thấy, và không có danh sách nào ghi lại họ là ai.',
-          'Lớp bảo vệ duy nhất là phần ngẫu nhiên trong địa chỉ. Trước việc đoán mò thì đó là bảo vệ thật, còn trước việc chuyển tiếp, một màn hình chia sẻ hay một tài liệu sống lâu hơn công việc thì hoàn toàn không.',
-        ],
-      },
-      {
-        heading: 'Đặt lại sẽ làm hỏng nó với tất cả mọi người',
-        body: [
-          'Bạn có thể đặt lại địa chỉ, và cái cũ chết. Nó cũng chết với mọi đồng nghiệp, mọi bảng theo dõi và mọi đoạn mã lặng lẽ dựa vào nó, không hề báo trước.',
-          'Đó là lý do đừng bao giờ phát địa chỉ của cái lịch bạn đang sống trong đó. Hãy công bố một lịch lập riêng cho việc ấy, khi đó đặt lại chẳng tốn gì.',
-        ],
-      },
-    ],
-    claims: {
-      linkLength: 'Số ký tự ngẫu nhiên bảo vệ một liên kết chia sẻ của chúng tôi',
-      sharePrice: 'Chi phí chia sẻ một sự kiện từ ứng dụng',
+  "title": "Địa chỉ iCal bí mật của Google: phân biệt đăng ký và chia sẻ",
+  "short": "Địa chỉ iCal bí mật",
+  "description": "Hiểu địa chỉ iCal bí mật, kết nối tài khoản và nguồn cấp chia sẻ. Xử lý địa chỉ bị lộ mà không hứa cập nhật ngay hay xóa mọi bản sao.",
+  "lede": "Địa chỉ lịch, kết nối tài khoản và lời mời có chức năng khác nhau. Hãy xác định bạn đang có gì trước khi đưa lịch trình vào ứng dụng khác. Hướng dẫn này do Arte Soft, nhà phát triển Cloud Calendars, xuất bản.",
+  "commonBelief": "Địa chỉ lịch bí mật là lời mời cá nhân có thể thu hồi riêng với một người nhận.",
+  "sections": [
+    {
+      "heading": "Chọn kết nối phù hợp mục đích",
+      "body": [
+        "Google phân biệt đăng nhập vào ứng dụng lịch khác với xem qua địa chỉ iCal bí mật. Kết nối tài khoản có thể hỗ trợ chỉnh sửa; địa chỉ cung cấp đăng ký chỉ xem. Google mô tả địa chỉ bí mật là dành cho bạn tự sử dụng và khuyên không chia sẻ với người khác.",
+        "Ví dụ, hiển thị lịch làm việc của chính bạn trong ứng dụng tương thích khác không giống cấp quyền truy cập liên tục cho đồng nghiệp. Bắt đầu từ mục đích: xem lịch của mình, cộng tác với người cụ thể hay phát hành lịch trình cho một nhóm người. Đừng chọn URL chỉ vì dễ dán."
+      ]
     },
-    faq: [
-      {
-        q: 'Ai đó có thể làm gì với địa chỉ bí mật của lịch tôi?',
-        a: 'Xem mọi thứ trên đó — tiêu đề, giờ giấc, địa điểm và ghi chú — mà không cần đăng nhập, không cần quyền, và không để lại dấu vết nào rằng họ đã xem.',
-      },
-      {
-        q: 'Tôi có lấy lại được địa chỉ bí mật không?',
-        a: 'Chỉ bằng cách đặt lại, và điều đó giết địa chỉ cũ với tất cả mọi người cùng lúc: đồng nghiệp, bảng theo dõi và mọi đoạn mã lặng lẽ dựa vào nó, không báo trước.',
-      },
-      {
-        q: 'Tôi gửi địa chỉ bí mật cho đồng nghiệp qua email được không?',
-        a: 'Hãy coi nó là công khai ngay khi rời khỏi tay bạn. Lớp bảo vệ duy nhất là khó đoán, và việc chuyển tiếp xóa sạch đúng điều đó.',
-      },
-    ],
-    practical: [
-      'Hãy coi địa chỉ bí mật là công khai ngay khi nó rời khỏi tay bạn.',
-      'Đừng bao giờ công bố địa chỉ của cái lịch bạn thực sự dùng.',
-      'Đặt lại khi có người nghỉ việc, và báo cho những ai sẽ bị đứt.',
-    ],
-    seeAlso: ['who-can-see-what-in-google-calendar', 'taking-back-a-calendar-you-shared'],
-  },
+    {
+      "heading": "Kiểm tra đúng lịch, không chỉ đúng tài khoản",
+      "body": [
+        "Trên máy tính, hướng dẫn Google đặt địa chỉ bí mật định dạng iCal trong phần tích hợp của lịch đã chọn. Kiểm tra tên lịch trước. Quản trị viên cơ quan hoặc trường học có thể hạn chế tùy chọn này; không thấy địa chỉ không phải lý do để công khai lịch thay thế.",
+        "Không để địa chỉ xuất hiện trong ảnh chụp màn hình, bài hỗ trợ công khai hoặc ghi chú dùng chung. Khi cần trợ giúp, mô tả loại tài khoản, tên lịch và cách kết nối mà không đưa URL. Thông thường cần xác định đường kết nối trước khi cần đến nội dung sự kiện."
+      ]
+    },
+    {
+      "heading": "Kiểm tra ứng dụng nhận thực sự đã thêm gì",
+      "body": [
+        "Đăng ký theo dõi một nguồn cấp; nhập tệp tạo ra bản sao riêng. Đọc hướng dẫn của ứng dụng nhận và xác nhận thao tác đang thực hiện. Nếu chỉ mở tệp lịch đã tải xuống, đừng mặc định các cuộc hẹn tạo ra sẽ theo những thay đổi sau này.",
+        "Dùng một sự kiện quen thuộc, thông thường và không nhạy cảm để so sánh tên lịch, ngày và chi tiết hiển thị. Tránh tạo đăng ký thứ hai để kiểm tra đăng ký đầu tiên: hai bản sao cùng hiện có thể khiến cập nhật chậm trông như xung đột. Tạm ẩn một lịch khi xác định nguồn."
+      ]
+    },
+    {
+      "heading": "Phân biệt liên kết Google và Cloud Calendars",
+      "body": [
+        "Cloud Calendars có các cách chia sẻ sự kiện và lịch riêng, bao gồm nguồn cấp đăng ký. Chúng không phải địa chỉ bí mật của Google. Trước khi chọn cách mở, xác định người gửi đã chia sẻ một sự kiện, một lịch hay lời mời gắn với tài khoản.",
+        "Người nhận trong Cloud Calendars có thể mang vai trò Reader, Writer hoặc Owner. Chỉ có địa chỉ nguồn cấp không chứng minh quyền chỉnh sửa. Tương tự, nhận địa chỉ xem Google không làm bạn thành chủ sở hữu lịch. Hỏi người gửi cần thay đổi trong hệ thống nào."
+      ]
+    },
+    {
+      "heading": "Tính đến cách ứng dụng nhận làm mới lịch",
+      "body": [
+        "Đăng ký không hứa dữ liệu đến ngay. Nguồn cấp Cloud Calendars có khoảng làm mới được đề xuất, nhưng ứng dụng nhận quyết định khi nào tải và hiển thị thay đổi. Giờ cũ trên một thiết bị không tự chứng minh người tổ chức chưa lưu thay đổi.",
+        "Với cuộc họp trong ngày, đối chiếu lịch hiện tại của người tổ chức và xác nhận trực tiếp các thay đổi quan trọng. Ghi lại lịch nào còn hiển thị dữ liệu cũ và lúc bạn kiểm tra. Đừng nhập sự kiện nhiều lần hoặc xóa lịch nguồn để ép nguồn cấp cập nhật."
+      ]
+    },
+    {
+      "heading": "Xử lý địa chỉ bị lộ mà không hứa thu hồi mọi bản sao",
+      "body": [
+        "Google hướng dẫn đặt lại địa chỉ bí mật bị lộ để vô hiệu hóa địa chỉ cũ và tạo địa chỉ thay thế. Xác định các ứng dụng của bạn đang dùng nó để cập nhật đăng ký sau đó. Đặt lại địa chỉ khác với xóa một cộng tác viên cụ thể.",
+        "Cuộc hẹn đã lưu, bản xuất và ảnh chụp màn hình là vấn đề riêng. Liên kết thay đổi không chứng minh mọi bản sao trước đây đã biến mất. Nếu gửi thông tin nhầm đối tượng, hãy xem nội dung và người nhận thực tế thay vì coi đặt lại thành công là bằng chứng xóa sạch."
+      ]
+    }
+  ],
+  "claims": {},
+  "practical": [
+    "Xác định bạn có kết nối tài khoản, lời mời, đăng ký hay tệp.",
+    "Kiểm tra lịch nguồn trước khi sao chép địa chỉ.",
+    "Giữ địa chỉ bí mật Google cho các ứng dụng tương thích của chính bạn.",
+    "Xác nhận ứng dụng nhận đã đăng ký chứ không nhập bản sao.",
+    "Xác nhận thay đổi khẩn với người tổ chức thay vì dựa vào thời gian làm mới.",
+    "Nếu địa chỉ bị lộ, làm theo hướng dẫn đặt lại Google và cập nhật kết nối cần giữ."
+  ],
+  "faq": [
+    {
+      "q": "Tôi có thể đưa địa chỉ bí mật cho đồng nghiệp không?",
+      "a": "Google khuyên giữ địa chỉ cho ứng dụng của chính bạn. Khi người khác cần truy cập, dùng tùy chọn chia sẻ của lịch và chọn quyền phù hợp."
+    },
+    {
+      "q": "Đăng ký có cho phép sửa bản gốc không?",
+      "a": "Địa chỉ iCal bí mật Google dùng để xem. Chỉnh sửa cần kết nối tài khoản và quyền phù hợp; vai trò chia sẻ Cloud Calendars là cơ chế riêng."
+    },
+    {
+      "q": "Đặt lại địa chỉ có xóa cuộc hẹn cũ ở mọi nơi không?",
+      "a": "Nó vô hiệu hóa địa chỉ Google cũ. Không chứng minh tệp, cuộc hẹn hay ảnh chụp màn hình lưu độc lập đã được xóa."
+    }
+  ],
+  "sourcesHeading": "Hướng dẫn nhà cung cấp và tài liệu thêm",
+  "sources": [
+    {
+      "label": "Google: kết nối tài khoản và địa chỉ iCal bí mật",
+      "url": "https://support.google.com/calendar/answer/37648?hl=en"
+    },
+    {
+      "label": "Google: chia sẻ lịch",
+      "url": "https://support.google.com/calendar/answer/37082?hl=en"
+    },
+    {
+      "label": "Microsoft: nhập, đăng ký và thời gian cập nhật",
+      "url": "https://support.microsoft.com/en-us/outlook/import-or-subscribe-to-a-calendar-in-outlook-com-or-outlook-on-the-web"
+    }
+  ],
+  "updated": "2026-10-21",
+  "seeAlso": [
+    "who-can-see-what-in-google-calendar",
+    "taking-back-a-calendar-you-shared",
+    "sharing-one-event-not-your-calendar"
+  ]
+},
 
   'what-guests-can-do-to-your-event': {
     title: 'Khách mời có thể làm gì với sự kiện của bạn',

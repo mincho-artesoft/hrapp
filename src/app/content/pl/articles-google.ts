@@ -158,53 +158,100 @@ export const GOOGLE_PL: Readonly<Record<string, LocalisedArticle>> = {
   },
 
   'the-secret-address-of-a-google-calendar': {
-    title: 'Co naprawdę zdradza tajny adres kalendarza Google',
-    short: 'Tajny adres iCal',
-    description:
-      'Google oferuje prywatny adres, który pokazuje cały twój kalendarz każdemu, kto go ma. Co odsłania i dlaczego nie da się go cicho wycofać.',
-    lede: 'W ustawieniach każdego kalendarza Google tkwi link pokazujący wszystko, co się w nim znajduje. Bez logowania, bez uprawnień, bez śladu po tym, kto go otworzył.',
-    commonBelief: 'Że prywatny adres jest prywatny, bo trudno go znaleźć.',
-    sections: [
-      {
-        heading: 'Link to hasło, którego nie zmienisz dla jednej osoby',
-        body: [
-          'Tajny adres niesie pełne szczegóły — tytuły, godziny, miejsca, notatki. Widzi je każdy, kto ma link, i nie istnieje lista, kto to jest.',
-          'Jego jedyną ochroną jest losowa część adresu. Przed zgadywaniem chroni naprawdę, a przed przesłaniem dalej, udostępnionym ekranem czy dokumentem, który przeżyje twoją pracę — wcale.',
-        ],
-      },
-      {
-        heading: 'Zresetowanie psuje go wszystkim',
-        body: [
-          'Adres można zresetować i stary umiera. Umiera także dla każdego współpracownika, każdego pulpitu i każdego skryptu, który po cichu na nim polegał, bez żadnego ostrzeżenia.',
-          'To argument, by nigdy nie rozdawać adresu kalendarza, w którym żyjesz. Opublikuj kalendarz zrobiony do tego celu, a reset nic cię nie kosztuje.',
-        ],
-      },
-    ],
-    claims: {
-      linkLength: 'Losowe znaki chroniące nasz link do udostępniania',
-      sharePrice: 'Ile kosztuje udostępnienie wydarzenia z aplikacji',
+  "title": "Tajny adres iCal Google: odróżnij subskrypcję od udostępniania",
+  "short": "Tajny adres iCal",
+  "description": "Poznaj tajny adres iCal Google, połączenia kont i kanały. Reaguj na ujawnienie adresu bez obietnic natychmiastowych aktualizacji lub usunięcia kopii.",
+  "lede": "Adres kalendarza, połączenie konta i zaproszenie pełnią różne funkcje. Ustal, co masz, zanim użyjesz tego w innej aplikacji. Poradnik publikuje Arte Soft, twórca Cloud Calendars.",
+  "commonBelief": "Tajny adres kalendarza miałby być osobistym zaproszeniem, które można cofnąć tylko jednemu odbiorcy.",
+  "sections": [
+    {
+      "heading": "Dobierz połączenie do zadania",
+      "body": [
+        "Google odróżnia logowanie do innej aplikacji od wyświetlania przez tajny adres iCal. Połączenie konta może umożliwiać edycję, a adres zapewnia subskrypcję tylko do odczytu. Google przeznacza tajny adres do własnego użytku i odradza przekazywanie go innym.",
+        "Wyświetlanie własnego grafiku w zgodnej aplikacji różni się od przyznania koledze stałego dostępu. Ustal, czy chcesz oglądać swój plan, współpracować z konkretną osobą, czy publikować harmonogram dla odbiorców. Nie wybieraj URL-a tylko dlatego, że łatwo go wkleić."
+      ]
     },
-    faq: [
-      {
-        q: 'Co ktoś może zrobić z tajnym adresem mojego kalendarza?',
-        a: 'Zobaczyć wszystko, co w nim jest — tytuły, godziny, miejsca i notatki — bez logowania, bez uprawnień i bez śladu, że zaglądał.',
-      },
-      {
-        q: 'Czy mogę odebrać tajny adres kalendarza?',
-        a: 'Tylko przez zresetowanie, co zabija stary dla wszystkich naraz: współpracowników, pulpity i każdy skrypt, który po cichu na nim polegał, bez ostrzeżenia.',
-      },
-      {
-        q: 'Czy mogę wysłać tajny adres współpracownikowi mailem?',
-        a: 'Traktuj go jak publiczny od chwili, gdy opuści twoje ręce. Jedyną ochroną jest to, że trudno go zgadnąć, a przesłanie dalej znosi dokładnie to.',
-      },
-    ],
-    practical: [
-      'Traktuj tajny adres jak publiczny od chwili, gdy opuści twoje ręce.',
-      'Nigdy nie publikuj adresu kalendarza, z którego naprawdę korzystasz.',
-      'Zresetuj go, gdy ktoś odchodzi, i uprzedź tych, którym przez to przestanie działać.',
-    ],
-    seeAlso: ['who-can-see-what-in-google-calendar', 'taking-back-a-calendar-you-shared'],
-  },
+    {
+      "heading": "Znajdź właściwy kalendarz, nie tylko konto",
+      "body": [
+        "Na komputerze instrukcje Google umieszczają tajny adres w formacie iCal w ustawieniach integracji wybranego kalendarza. Najpierw sprawdź nazwę. Administrator pracy lub szkoły może ograniczać tę opcję; brak adresu nie jest powodem do upublicznienia kalendarza.",
+        "Nie umieszczaj adresu na zrzutach ekranu, w publicznych zgłoszeniach ani wspólnych notatkach. Prosząc o pomoc, opisz typ konta, nazwę i sposób połączenia bez URL-a. Zwykle najpierw trzeba ustalić drogę połączenia, zanim potrzebna będzie treść wydarzeń."
+      ]
+    },
+    {
+      "heading": "Sprawdź, co dodała aplikacja odbierająca",
+      "body": [
+        "Subskrypcja śledzi kanał, a import pliku tworzy oddzielną kopię. Przeczytaj instrukcje aplikacji i potwierdź wykonywaną czynność. Otwarcie pobranego pliku kalendarza nie oznacza, że dodane spotkania będą śledzić przyszłe zmiany.",
+        "Porównaj nazwę kalendarza, datę i szczegóły na zwykłym, znanym wydarzeniu bez poufnych danych. Nie twórz drugiej subskrypcji do diagnozowania pierwszej: dwie kopie mogą sprawić, że opóźnienie wygląda jak konflikt. Tymczasowo ukryj jeden kalendarz, by rozpoznać źródło."
+      ]
+    },
+    {
+      "heading": "Oddziel linki Google od Cloud Calendars",
+      "body": [
+        "Cloud Calendars ma własne sposoby udostępniania wydarzeń i kalendarzy, w tym kanały subskrypcji. Nie są to tajne adresy Google. Przed otwarciem ustal, czy nadawca udostępnił wydarzenie, kalendarz czy zaproszenie powiązane z kontem.",
+        "Odbiorca Cloud Calendars może mieć rolę Reader, Writer lub Owner. Sam adres kanału nie dowodzi prawa edycji. Adres do podglądu Google także nie czyni Cię właścicielem kalendarza. Zapytaj nadawcę, w którym systemie wprowadzać zmiany."
+      ]
+    },
+    {
+      "heading": "Uwzględnij odświeżanie po stronie odbiorcy",
+      "body": [
+        "Subskrypcja nie gwarantuje natychmiastowego dostarczenia. Kanały Cloud Calendars podają sugerowany odstęp odświeżania, ale aplikacja odbierająca decyduje, kiedy pobiera i wyświetla zmiany. Stara godzina na jednym urządzeniu nie dowodzi, że organizator nie zapisał zmiany.",
+        "Przy spotkaniu tego samego dnia porównaj aktualny plan organizatora i potwierdź ważne zmiany bezpośrednio. Zanotuj, który kalendarz pokazuje stare dane i kiedy go sprawdzono. Nie importuj wydarzenia wielokrotnie ani nie usuwaj źródła, by wymusić aktualizację kanału."
+      ]
+    },
+    {
+      "heading": "Reaguj na ujawnienie bez obietnicy wycofania wszystkich kopii",
+      "body": [
+        "Google opisuje reset ujawnionego tajnego adresu: unieważnia stary i tworzy nowy. Ustal własne aplikacje korzystające z adresu, aby potem zaktualizować subskrypcje. Reset adresu różni się od usunięcia konkretnego współpracownika.",
+        "Wcześniej zapisane spotkania, eksporty i zrzuty ekranu to osobna kwestia. Zmiana linku nie dowodzi zniknięcia każdej kopii. Jeśli dane trafiły do niewłaściwych osób, oceń ich treść i odbiorców, zamiast uznawać udany reset za dowód pełnego usunięcia."
+      ]
+    }
+  ],
+  "claims": {},
+  "practical": [
+    "Ustal, czy używasz połączenia konta, zaproszenia, subskrypcji czy pliku.",
+    "Sprawdź kalendarz źródłowy przed skopiowaniem adresu.",
+    "Zachowaj tajny adres Google do własnych zgodnych aplikacji.",
+    "Potwierdź, że aplikacja subskrybuje kanał, a nie importuje kopię.",
+    "Pilne zmiany potwierdź u organizatora zamiast polegać na odświeżaniu.",
+    "Po ujawnieniu adresu wykonaj reset według Google i zaktualizuj właściwe połączenia."
+  ],
+  "faq": [
+    {
+      "q": "Czy mogę przekazać tajny adres koledze?",
+      "a": "Google zaleca używać go tylko we własnych aplikacjach. Gdy inna osoba potrzebuje dostępu, skorzystaj z ustawień udostępniania i wybierz właściwe uprawnienie."
+    },
+    {
+      "q": "Czy subskrypcja pozwoli edytować oryginał?",
+      "a": "Tajny adres iCal Google służy do podglądu. Edycja wymaga odpowiedniego połączenia konta i uprawnień; role udostępniania Cloud Calendars są odrębnym rozwiązaniem."
+    },
+    {
+      "q": "Czy reset adresu usuwa stare spotkania wszędzie?",
+      "a": "Unieważnia stary adres Google. Nie potwierdza usunięcia niezależnie zapisanych plików, spotkań ani zrzutów ekranu."
+    }
+  ],
+  "sourcesHeading": "Wskazówki dostawców i dalsze informacje",
+  "sources": [
+    {
+      "label": "Google: połączenia kont i tajne adresy iCal",
+      "url": "https://support.google.com/calendar/answer/37648?hl=en"
+    },
+    {
+      "label": "Google: udostępnianie kalendarza",
+      "url": "https://support.google.com/calendar/answer/37082?hl=en"
+    },
+    {
+      "label": "Microsoft: import, subskrypcja i czas aktualizacji",
+      "url": "https://support.microsoft.com/en-us/outlook/import-or-subscribe-to-a-calendar-in-outlook-com-or-outlook-on-the-web"
+    }
+  ],
+  "seeAlso": [
+    "who-can-see-what-in-google-calendar",
+    "taking-back-a-calendar-you-shared",
+    "sharing-one-event-not-your-calendar"
+  ],
+  "updated": "2026-10-21"
+},
 
   'what-guests-can-do-to-your-event': {
     title: 'Co goście mogą zrobić z twoim wydarzeniem',

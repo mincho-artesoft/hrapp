@@ -159,53 +159,100 @@ export const GOOGLE_CS: Readonly<Record<string, LocalisedArticle>> = {
   },
 
   'the-secret-address-of-a-google-calendar': {
-    title: 'Co tajná adresa kalendáře Google ve skutečnosti prozradí',
-    short: 'Tajná adresa iCal',
-    description:
-      'Google nabízí soukromou adresu, která ukáže celý váš kalendář komukoli, kdo ji má. Co odhalí a proč se nedá potichu vzít zpět.',
-    lede: 'V nastavení každého kalendáře Google se skrývá odkaz, který ukazuje všechno, co v něm je. Bez přihlášení, bez oprávnění, bez záznamu, kdo ho otevřel.',
-    commonBelief: 'Že soukromá adresa je soukromá, protože se těžko hledá.',
-    sections: [
-      {
-        heading: 'Odkaz je heslo, které nejde změnit jen jednomu člověku',
-        body: [
-          'Tajná adresa nese plné podrobnosti — názvy, časy, místa, poznámky. Vidí je každý, kdo má odkaz, a neexistuje seznam, kdo to je.',
-          'Její jedinou ochranou je náhodná část adresy. Proti hádání chrání doopravdy, proti přeposlání, sdílené obrazovce nebo dokumentu, který přežije vaši práci, vůbec.',
-        ],
-      },
-      {
-        heading: 'Resetování ji rozbije všem',
-        body: [
-          'Adresu můžete resetovat a stará zemře. Zemře i každému kolegovi, každému přehledu a každému skriptu, který se o ni potichu opíral, bez jakéhokoli varování.',
-          'To je důvod, proč adresu kalendáře, ve kterém žijete, nikdy nerozdávat. Zveřejněte kalendář založený přesně k tomu a reset vás nic nestojí.',
-        ],
-      },
-    ],
-    claims: {
-      linkLength: 'Náhodné znaky, které chrání náš odkaz na sdílení',
-      sharePrice: 'Kolik stojí sdílení jedné události z aplikace',
+  "title": "Tajná adresa iCal od Googlu: odběr není sdílení",
+  "short": "Tajná adresa iCal",
+  "description": "Rozlište tajnou adresu iCal, připojení účtu a kanály. Při prozrazení adresy neslibujte okamžité aktualizace ani vymazání uložených kopií.",
+  "lede": "Adresa kalendáře, připojení účtu a pozvánka slouží k různým účelům. Než přenesete rozvrh do jiné aplikace, určete, co máte. Průvodce vydává Arte Soft, vývojář Cloud Calendars.",
+  "commonBelief": "Tajná adresa je osobní pozvánka, kterou lze odvolat jen pro jednoho příjemce.",
+  "sections": [
+    {
+      "heading": "Vyberte připojení podle účelu",
+      "body": [
+        "Google rozlišuje přihlášení do jiné kalendářové aplikace od prohlížení přes tajnou adresu iCal. Připojení účtu může umožnit úpravy; adresa poskytuje odběr pouze pro čtení. Google uvádí, že tajná adresa je pro vlastní použití, a nedoporučuje ji sdílet s dalšími lidmi.",
+        "Zobrazení vlastního pracovního rozvrhu v jiném kompatibilním kalendáři se například liší od trvalého přístupu pro kolegu. Začněte cílem: prohlížení rozvrhu, spolupráce s konkrétní osobou nebo distribuce programu publiku. Nevolte URL jen proto, že se snadno vloží."
+      ]
     },
-    faq: [
-      {
-        q: 'Co může někdo udělat s tajnou adresou mého kalendáře?',
-        a: 'Vidět všechno, co v něm je — názvy, časy, místa i poznámky — bez přihlášení, bez oprávnění a bez jediné stopy, že se díval.',
-      },
-      {
-        q: 'Dá se tajná adresa kalendáře vzít zpět?',
-        a: 'Jen resetem, který zabije starou adresu všem naráz: kolegům, přehledům i každému skriptu, který se o ni potichu opíral, bez varování.',
-      },
-      {
-        q: 'Můžu tajnou adresu poslat kolegovi e-mailem?',
-        a: 'Berte ji jako veřejnou od chvíle, kdy opustí vaše ruce. Její jedinou ochranou je, že se těžko hádá, a přeposlání přesně tohle ruší.',
-      },
-    ],
-    practical: [
-      'Berte tajnou adresu jako veřejnou od chvíle, kdy opustí vaše ruce.',
-      'Nikdy nezveřejňujte adresu kalendáře, který skutečně používáte.',
-      'Resetujte ji, když někdo odchází, a řekněte to těm, komu tím přestane fungovat.',
-    ],
-    seeAlso: ['who-can-see-what-in-google-calendar', 'taking-back-a-calendar-you-shared'],
-  },
+    {
+      "heading": "Najděte správný kalendář, nejen účet",
+      "body": [
+        "Na počítači umisťuje návod Google „Secret address in iCal format“ do nastavení „Integrate calendar“ vybraného kalendáře. Nejprve ověřte název. Pracovní či školní správci mohou tuto možnost omezit; chybějící adresa není důvod kalendář místo toho zveřejnit.",
+        "Adresu nezahrnujte do snímků obrazovky, veřejných dotazů na podporu ani sdílených poznámek. Při žádosti o pomoc popište typ účtu, název kalendáře a způsob připojení bez URL. Podpora obvykle potřebuje nejdříve určit cestu připojení, teprve potom případně obsah událostí."
+      ]
+    },
+    {
+      "heading": "Ověřte, co přijímající aplikace přidala",
+      "body": [
+        "Odběr sleduje kanál; import souboru vytvoří samostatnou kopii. Přečtěte si pokyny přijímající aplikace a ověřte prováděný krok. Pokud jen otevřete stažený kalendářový soubor, nepředpokládejte, že vzniklé schůzky budou sledovat pozdější změny.",
+        "K porovnání názvu kalendáře, data a zobrazených údajů použijte známou běžnou událost bez citlivých informací. Nevytvářejte druhý odběr pro diagnostiku prvního: dvě viditelné kopie mohou způsobit, že opožděná aktualizace vypadá jako rozporná schůzka. Při určování zdroje jeden kalendář dočasně skryjte."
+      ]
+    },
+    {
+      "heading": "Oddělte odkazy Google a Cloud Calendars",
+      "body": [
+        "Cloud Calendars má vlastní postupy sdílení událostí a kalendářů včetně odběrových kanálů. Nejde o tajné adresy Google. Než zvolíte způsob otevření, zjistěte, zda odesílatel sdílel jednu událost, kalendář nebo pozvánku založenou na účtu.",
+        "Příjemce Cloud Calendars může mít roli Reader, Writer nebo Owner. Samotná adresa kanálu nedokazuje právo upravovat. Ani obdržení adresy Google pro prohlížení z vás nedělá vlastníka kalendáře. Zeptejte se odesílatele, v jakém systému se mají změny dělat."
+      ]
+    },
+    {
+      "heading": "Počítejte s obnovováním přijímajícího kalendáře",
+      "body": [
+        "Odběr neslibuje okamžité doručení. Kanály Cloud Calendars obsahují doporučený interval obnovování, ale přijímající aplikace rozhoduje, kdy změny načte a zobrazí. Starý čas na jednom zařízení sám nedokazuje, že organizátor změnu neuložil.",
+        "U schůzky tentýž den porovnejte aktuální rozvrh organizátora a důležité změny potvrďte přímo. Poznamenejte, který kalendář stále ukazuje staré informace a kdy jste jej zkontrolovali. Neimportujte událost opakovaně ani nemažte zdrojový kalendář ve snaze vynutit aktualizaci kanálu."
+      ]
+    },
+    {
+      "heading": "Reagujte na prozrazení bez slibu stažení kopií",
+      "body": [
+        "Google popisuje obnovení prozrazené tajné adresy, které zneplatní starou a vytvoří náhradu. Určete vlastní aplikace, které ji používají, abyste poté aktualizovali jejich odběry. Obnovení adresy je jiný krok než odebrání konkrétního spolupracovníka.",
+        "Dříve uložené schůzky, exporty a snímky obrazovky jsou samostatná věc. Změněný odkaz neprokazuje, že všechny starší kopie zmizely. Pokud informace dostalo nesprávné publikum, posuzujte skutečný obsah a příjemce místo považování úspěšného obnovení za důkaz úplného odstranění."
+      ]
+    }
+  ],
+  "claims": {},
+  "practical": [
+    "Určete, zda máte připojení účtu, pozvánku, odběr nebo soubor.",
+    "Před kopírováním adresy ověřte příslušný kalendář.",
+    "Tajnou adresu Google ponechte pro vlastní kompatibilní aplikace.",
+    "Ověřte, že přijímající aplikace použila odběr, nikoli import.",
+    "Naléhavé změny potvrďte s organizátorem, nespoléhejte na čas obnovení.",
+    "Při prozrazení adresy postupujte podle pokynů Google a aktualizujte zamýšlená připojení."
+  ],
+  "faq": [
+    {
+      "q": "Mohu tajnou adresu dát kolegovi?",
+      "a": "Google doporučuje ponechat ji pro vlastní aplikace. Potřebuje-li jiná osoba přístup, použijte nastavení sdílení kalendáře a zvolte vhodné oprávnění."
+    },
+    {
+      "q": "Umožní mi odběr upravovat originál?",
+      "a": "Tajná adresa iCal od Googlu slouží k prohlížení. Úpravy vyžadují vhodné připojení účtu a oprávnění; role sdílení Cloud Calendars jsou samostatné uspořádání."
+    },
+    {
+      "q": "Vymaže obnovení adresy staré schůzky všude?",
+      "a": "Zneplatní starou adresu Google. Neprokazuje odstranění samostatně uložených souborů, schůzek ani snímků obrazovky."
+    }
+  ],
+  "sourcesHeading": "Pokyny poskytovatelů a další informace",
+  "sources": [
+    {
+      "label": "Google: připojení účtů a tajné adresy iCal",
+      "url": "https://support.google.com/calendar/answer/37648?hl=en"
+    },
+    {
+      "label": "Google: sdílení kalendáře",
+      "url": "https://support.google.com/calendar/answer/37082?hl=en"
+    },
+    {
+      "label": "Microsoft: import, odběr a načasování aktualizací",
+      "url": "https://support.microsoft.com/en-us/outlook/import-or-subscribe-to-a-calendar-in-outlook-com-or-outlook-on-the-web"
+    }
+  ],
+  "seeAlso": [
+    "who-can-see-what-in-google-calendar",
+    "taking-back-a-calendar-you-shared",
+    "sharing-one-event-not-your-calendar"
+  ],
+  "updated": "2026-10-21"
+},
 
   'what-guests-can-do-to-your-event': {
     title: 'Co mohou hosté udělat s vaší událostí',

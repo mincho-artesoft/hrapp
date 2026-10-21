@@ -1,0 +1,95 @@
+{
+  "title": "Googles hemmelige iCal-adresse: abonnement er ikke det samme som deling",
+  "short": "Den hemmelige iCal-adressen",
+  "description": "Forstå Googles hemmelige iCal-adresse, kontotilkoblinger og feeder. Håndter en avslørt adresse uten å love øyeblikkelige oppdateringer eller slettede kopier.",
+  "lede": "En kalenderadresse, en kontotilkobling og en invitasjon gjør forskjellige jobber. Identifiser hva du har før du bruker det i en annen app. Guiden er publisert av Arte Soft, utvikleren av Cloud Calendars.",
+  "commonBelief": "En hemmelig kalenderadresse skulle være en personlig invitasjon som kan trekkes tilbake for bare én mottaker.",
+  "sections": [
+    {
+      "heading": "Velg tilkobling etter oppgaven",
+      "body": [
+        "Google skiller mellom å logge inn i en annen kalenderapp og å vise via en hemmelig iCal-adresse. Kontotilkobling kan støtte redigering; adressen gir et skrivebeskyttet abonnement. Google sier adressen er til eget bruk og fraråder å dele den med andre.",
+        "Å vise egen arbeidsplan i en kompatibel kalender er noe annet enn å gi en kollega varig tilgang. Bestem om du skal se egen plan, samarbeide med en navngitt person eller publisere en timeplan for et publikum. Ikke velg en URL bare fordi den er lett å lime inn."
+      ]
+    },
+    {
+      "heading": "Finn riktig kalender, ikke bare riktig konto",
+      "body": [
+        "På en datamaskin plasserer Googles veiledning den hemmelige iCal-adressen under integreringsinnstillingene for den valgte kalenderen. Kontroller navnet først. Administratorer på jobb eller skole kan begrense valget; en manglende adresse er ikke grunn til å gjøre kalenderen offentlig.",
+        "Hold adressen unna skjermbilder, offentlige støtteinnlegg og delte notater. Oppgi kontotype, kalendernavn og tilkoblingsmåte ved hjelpespørsmål, uten URL-en. Vanligvis må støtte først identifisere tilkoblingsmåten, før innholdet i hendelsene er relevant."
+      ]
+    },
+    {
+      "heading": "Kontroller hva mottakerappen faktisk la til",
+      "body": [
+        "Et abonnement følger en feed; en importert fil lager en egen kopi. Les veiledningen for mottakerappen og bekreft handlingen. Ikke anta at avtaler fra en nedlastet kalenderfil vil følge senere endringer bare fordi du åpnet filen.",
+        "Bruk en vanlig, ufølsom hendelse du kjenner til for å sammenligne kalendernavn, dato og viste detaljer. Ikke lag et ekstra abonnement for å undersøke det første; to kopier kan få forsinkelse til å ligne en konflikt. Skjul én kalender midlertidig for å finne kilden."
+      ]
+    },
+    {
+      "heading": "Skill Google-lenker fra Cloud Calendars-lenker",
+      "body": [
+        "Cloud Calendars har egne delingsflyter for hendelser og kalendere, inkludert abonnementsfeeder. Disse er ikke hemmelige Google-adresser. Finn ut om avsenderen delte én hendelse, en kalender eller en kontobasert invitasjon før du velger åpningsmåte.",
+        "En Cloud Calendars-mottaker kan ha rollen Reader, Writer eller Owner. En feedadresse alene beviser ikke redigeringsrett. En Google-visningsadresse gjør deg heller ikke til eier av kalenderen. Spør avsenderen hvilket system som skal brukes til endringer."
+      ]
+    },
+    {
+      "heading": "Ta hensyn til mottakerkalenderens oppdateringer",
+      "body": [
+        "Et abonnement lover ikke umiddelbar levering. Cloud Calendars-feeder inneholder et foreslått oppdateringsintervall, men mottakerappen bestemmer når oppdateringer hentes og vises. En gammel tid på én enhet beviser ikke at arrangøren glemte å lagre endringen.",
+        "For et møte samme dag, sammenlign med arrangørens aktuelle plan og bekreft viktige endringer direkte. Noter kalenderen som viser gamle opplysninger og tidspunktet du sjekket. Ikke importer gjentatte ganger eller slett kildekalenderen for å tvinge fram oppdatering."
+      ]
+    },
+    {
+      "heading": "Håndter en avslørt adresse uten å love tilbakekalling",
+      "body": [
+        "Google beskriver tilbakestilling av en avslørt hemmelig adresse, slik at den gamle blir ugyldig og erstattes. Finn egne apper som bruker adressen, slik at abonnementene kan oppdateres. Å tilbakestille adressen er ikke det samme som å fjerne en navngitt samarbeidspartner.",
+        "Tidligere lagrede avtaler, eksporter og skjermbilder er en egen sak. En endret lenke beviser ikke at alle gamle kopier er borte. Hvis informasjon nådde feil publikum, vurder selve innholdet og mottakerne; vellykket tilbakestilling beviser ikke full sletting."
+      ]
+    }
+  ],
+  "claims": {},
+  "practical": [
+    "Identifiser om du har kontotilkobling, invitasjon, abonnement eller fil.",
+    "Kontroller eierkalenderen før du kopierer en adresse.",
+    "Bruk Googles hemmelige adresse bare i egne kompatible apper.",
+    "Bekreft at mottakerappen abonnerte i stedet for å importere.",
+    "Bekreft hastende endringer med arrangøren fremfor å stole på oppdateringstid.",
+    "Følg Googles tilbakestillingsveiledning ved eksponering og oppdater ønskede tilkoblinger."
+  ],
+  "faq": [
+    {
+      "q": "Kan jeg gi den hemmelige adressen til en kollega?",
+      "a": "Google anbefaler å beholde den for egne apper. Bruk kalenderens delingskontroller og velg riktig rettighet når en annen person trenger tilgang."
+    },
+    {
+      "q": "Kan jeg redigere originalen med et abonnement?",
+      "a": "En hemmelig Google-iCal-adresse gir visning. Redigering krever egnet kontotilkobling og tillatelse; delingsroller i Cloud Calendars er en separat ordning."
+    },
+    {
+      "q": "Sletter tilbakestilling gamle avtaler overalt?",
+      "a": "Den gjør den gamle Google-adressen ugyldig. Det fastslår ikke at selvstendig lagrede filer, avtaler eller skjermbilder er slettet."
+    }
+  ],
+  "sourcesHeading": "Leverandørveiledning og videre lesning",
+  "sources": [
+    {
+      "label": "Google: kontotilkoblinger og hemmelige iCal-adresser",
+      "url": "https://support.google.com/calendar/answer/37648?hl=en"
+    },
+    {
+      "label": "Google: dele en kalender",
+      "url": "https://support.google.com/calendar/answer/37082?hl=en"
+    },
+    {
+      "label": "Microsoft: import, abonnement og oppdateringstid",
+      "url": "https://support.microsoft.com/en-us/outlook/import-or-subscribe-to-a-calendar-in-outlook-com-or-outlook-on-the-web"
+    }
+  ],
+  "seeAlso": [
+    "who-can-see-what-in-google-calendar",
+    "taking-back-a-calendar-you-shared",
+    "sharing-one-event-not-your-calendar"
+  ],
+  "updated": "2026-10-21"
+}

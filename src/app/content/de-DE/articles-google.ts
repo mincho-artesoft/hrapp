@@ -157,53 +157,100 @@ export const GOOGLE_DE_DE: Readonly<Record<string, LocalisedArticle>> = {
   },
 
   'the-secret-address-of-a-google-calendar': {
-    title: 'Was die geheime Adresse eines Google-Kalenders wirklich preisgibt',
-    short: 'Die geheime iCal-Adresse',
-    description:
-      'Google bietet eine private Adresse, die Ihren ganzen Kalender zeigt — jedem, der sie hat. Was sie offenlegt und warum sie sich nicht leise zurücknehmen lässt.',
-    lede: 'In den Einstellungen jedes Google-Kalenders steckt ein Link, der alles darauf zeigt. Ohne Anmeldung, ohne Berechtigung, ohne Protokoll, wer ihn geöffnet hat.',
-    commonBelief: 'Dass eine private Adresse privat ist, weil sie schwer zu finden ist.',
-    sections: [
-      {
-        heading: 'Ein Link ist ein Passwort, das man nicht für eine einzelne Person ändern kann',
-        body: [
-          'Die geheime Adresse trägt volle Details — Titel, Zeiten, Orte, Notizen. Wer den Link hat, sieht sie, und es gibt keine Liste, wer das ist.',
-          'Ihr einziger Schutz ist der zufällige Teil der Adresse. Gegen Raten schützt das wirklich, gegen Weiterleiten, einen geteilten Bildschirm oder ein Dokument, das den Job überlebt, überhaupt nicht.',
-        ],
-      },
-      {
-        heading: 'Zurücksetzen macht sie für alle kaputt',
-        body: [
-          'Sie können die Adresse zurücksetzen, dann ist die alte tot. Sie ist damit auch für jede Kollegin, jedes Dashboard und jedes stille Skript tot, das daran hängt — ohne Vorwarnung.',
-          'Genau deshalb gibt man die Adresse des Kalenders, in dem man lebt, nicht heraus. Veröffentlichen Sie einen eigens dafür angelegten Kalender, und das Zurücksetzen kostet nichts.',
-        ],
-      },
-    ],
-    claims: {
-      linkLength: 'Zufallszeichen, die einen Freigabelink von uns schützen',
-      sharePrice: 'Was das Teilen eines Termins aus der App kostet',
+  "title": "Googles geheime iCal-Adresse: abonnieren und Freigaben unterscheiden",
+  "short": "Die geheime iCal-Adresse",
+  "description": "Verstehe Googles geheime iCal-Adresse, Kontoverbindungen und Feeds. Reagiere auf Offenlegung ohne Versprechen sofortiger Updates oder gelöschter Kopien.",
+  "lede": "Eine Kalenderadresse, eine Kontoverbindung und eine Einladung erfüllen unterschiedliche Aufgaben. Kläre zuerst, was du hast, bevor du einen Terminplan in eine andere Anwendung übernimmst. Dieser Leitfaden stammt von Arte Soft, dem Entwickler von Cloud Calendars.",
+  "commonBelief": "Eine geheime Kalenderadresse ist eine persönliche Einladung, die sich für genau einen Empfänger zurückziehen lässt.",
+  "sections": [
+    {
+      "heading": "Die passende Verbindung wählen",
+      "body": [
+        "Google unterscheidet die Anmeldung in einer anderen Kalenderanwendung von der Anzeige über eine geheime iCal-Adresse. Eine Kontoverbindung kann Bearbeitung ermöglichen; die Adresse bietet ein Abonnement nur zur Ansicht. Google beschreibt die geheime Adresse als für den eigenen Gebrauch bestimmt und rät von der Weitergabe an andere ab.",
+        "Deinen eigenen Arbeitsplan in einem kompatiblen Kalender anzuzeigen ist beispielsweise etwas anderes, als einem Kollegen dauerhaften Zugriff zu geben. Beginne beim Ziel: deinen Plan ansehen, mit einer bestimmten Person zusammenarbeiten oder einen Terminplan für ein Publikum veröffentlichen. Wähle eine URL nicht allein deshalb, weil sie sich leicht einfügen lässt."
+      ]
     },
-    faq: [
-      {
-        q: 'Was kann jemand mit der geheimen Adresse meines Kalenders anfangen?',
-        a: 'Alles darauf sehen — Titel, Zeiten, Orte und Notizen — ohne Anmeldung, ohne Berechtigung und ohne dass irgendwo festgehalten wird, dass er nachgesehen hat.',
-      },
-      {
-        q: 'Kann ich eine geheime Kalenderadresse zurücknehmen?',
-        a: 'Nur durch Zurücksetzen, und das tötet die alte Adresse für alle gleichzeitig: Kolleginnen, Dashboards und jedes still daran hängende Skript, ohne Warnung.',
-      },
-      {
-        q: 'Kann ich die geheime Adresse einer Kollegin mailen?',
-        a: 'Betrachten Sie sie als öffentlich, sobald sie Ihre Hände verlässt. Ihr einziger Schutz ist, schwer zu erraten zu sein, und Weiterleiten hebt genau das auf.',
-      },
-    ],
-    practical: [
-      'Die geheime Adresse als öffentlich betrachten, sobald sie Ihre Hände verlässt.',
-      'Niemals die Adresse des Kalenders herausgeben, den Sie tatsächlich nutzen.',
-      'Beim Ausscheiden einer Person zurücksetzen — und denen Bescheid geben, bei denen es dadurch bricht.',
-    ],
-    seeAlso: ['who-can-see-what-in-google-calendar', 'taking-back-a-calendar-you-shared'],
-  },
+    {
+      "heading": "Den richtigen Kalender finden, nicht nur das richtige Konto",
+      "body": [
+        "Laut Googles Anleitung findest du am Computer „Secret address in iCal format“ in den Einstellungen „Integrate calendar“ des ausgewählten Kalenders. Prüfe zuerst den Kalendernamen. Administratoren am Arbeitsplatz oder in der Schule können diese Option einschränken; eine fehlende Adresse ist kein Grund, stattdessen den Kalender zu veröffentlichen.",
+        "Halte die Adresse aus Screenshots, öffentlichen Supportbeiträgen und geteilten Notizen heraus. Beschreibe bei einer Hilfsanfrage Kontotyp, Kalendername und Verbindungsart, ohne die URL anzugeben. Im Support muss normalerweise zunächst der Verbindungsweg geklärt werden, bevor Termininhalte nötig sind."
+      ]
+    },
+    {
+      "heading": "Prüfen, was die empfangende Anwendung hinzugefügt hat",
+      "body": [
+        "Ein Abonnement folgt einem Feed; eine importierte Datei erzeugt eine eigenständige Kopie. Lies die Anleitung der empfangenden Anwendung und prüfe, welche Aktion du ausführst. Wenn du lediglich eine heruntergeladene Kalenderdatei öffnest, gehe nicht davon aus, dass die daraus entstandenen Termine spätere Änderungen übernehmen.",
+        "Vergleiche Kalendername, Datum und angezeigte Details anhand eines bekannten, gewöhnlichen Termins ohne vertrauliche Inhalte. Erstelle kein zweites Abonnement zur Diagnose des ersten: Zwei sichtbare Kopien können eine verzögerte Aktualisierung wie einen Terminkonflikt aussehen lassen. Blende beim Ermitteln der Quelle vorübergehend einen Kalender aus."
+      ]
+    },
+    {
+      "heading": "Google- und Cloud Calendars-Links unterscheiden",
+      "body": [
+        "Cloud Calendars hat eigene Abläufe zur Freigabe von Terminen und Kalendern, einschließlich Abonnement-Feeds. Diese sind keine geheimen Google-Adressen. Kläre vor dem Öffnen, ob der Absender einen einzelnen Termin, einen Kalender oder eine kontobasierte Einladung geteilt hat.",
+        "Ein Empfänger in Cloud Calendars kann die Rolle Reader, Writer oder Owner haben. Eine Feed-Adresse allein ist kein Nachweis für Bearbeitungsrechte. Ebenso macht dich eine Google-Adresse zur Ansicht nicht zum Eigentümer des Kalenders. Frage den Absender, in welchem System Änderungen vorgenommen werden sollen."
+      ]
+    },
+    {
+      "heading": "Das Aktualisierungsverhalten des empfangenden Kalenders berücksichtigen",
+      "body": [
+        "Ein Abonnement verspricht keine sofortige Zustellung. Cloud Calendars-Feeds enthalten einen vorgeschlagenen Aktualisierungsabstand, doch die empfangende Anwendung entscheidet, wann sie Änderungen abruft und anzeigt. Eine alte Uhrzeit auf einem Gerät beweist allein nicht, dass der Organisator die Änderung nicht gespeichert hat.",
+        "Vergleiche bei einer Besprechung am selben Tag mit dem aktuellen Plan des Organisators und bestätige wichtige Änderungen direkt. Notiere, welcher Kalender noch alte Informationen zeigt und wann du nachgesehen hast. Importiere den Termin nicht wiederholt und lösche nicht den Quellkalender, um eine Feed-Aktualisierung zu erzwingen."
+      ]
+    },
+    {
+      "heading": "Auf Offenlegung reagieren, ohne einen Rückruf zu versprechen",
+      "body": [
+        "Google beschreibt das Zurücksetzen einer offengelegten geheimen Adresse: Die alte Adresse wird ungültig und eine neue erstellt. Ermittle deine eigenen Anwendungen, die sie nutzen, damit du deren Abonnements anschließend aktualisieren kannst. Das Zurücksetzen einer Adresse ist etwas anderes als das Entfernen eines bestimmten Mitarbeiters.",
+        "Bereits gespeicherte Termine, Exporte und Screenshots sind gesondert zu betrachten. Ein geänderter Link beweist nicht, dass jede frühere Kopie verschwunden ist. Wenn Informationen an das falsche Publikum gelangt sind, berücksichtige die tatsächlichen Inhalte und Empfänger, statt ein erfolgreiches Zurücksetzen als Beleg vollständiger Entfernung zu werten."
+      ]
+    }
+  ],
+  "claims": {},
+  "practical": [
+    "Kontoverbindung, Einladung, Abonnement oder Datei unterscheiden.",
+    "Vor dem Kopieren einer Adresse den zugehörigen Kalender prüfen.",
+    "Eine geheime Google-Adresse nur in deinen eigenen kompatiblen Anwendungen nutzen.",
+    "Prüfen, ob die empfangende Anwendung abonniert statt importiert hat.",
+    "Dringende Änderungen direkt mit dem Organisator bestätigen, statt auf Aktualisierungszeiten zu vertrauen.",
+    "Bei Offenlegung Googles Anleitung zum Zurücksetzen befolgen und gewünschte Verbindungen aktualisieren."
+  ],
+  "faq": [
+    {
+      "q": "Kann ich die geheime Adresse einem Kollegen geben?",
+      "a": "Google empfiehlt, sie den eigenen Anwendungen vorzubehalten. Nutze die Freigabeeinstellungen des Kalenders, wenn eine andere Person Zugriff braucht, und wähle die passende Berechtigung."
+    },
+    {
+      "q": "Kann ich über ein Abonnement das Original bearbeiten?",
+      "a": "Eine geheime Google-iCal-Adresse ermöglicht die Ansicht. Für Bearbeitung sind eine geeignete Kontoverbindung und Berechtigung nötig; Cloud Calendars-Freigaberollen sind eine getrennte Regelung."
+    },
+    {
+      "q": "Löscht das Zurücksetzen überall alte Termine?",
+      "a": "Es macht die alte Google-Adresse ungültig. Es belegt nicht, dass unabhängig gespeicherte Dateien, Termine oder Screenshots entfernt wurden."
+    }
+  ],
+  "sourcesHeading": "Anbieterhinweise und weiterführende Informationen",
+  "sources": [
+    {
+      "label": "Google: Kontoverbindungen und geheime iCal-Adressen",
+      "url": "https://support.google.com/calendar/answer/37648?hl=en"
+    },
+    {
+      "label": "Google: einen Kalender teilen",
+      "url": "https://support.google.com/calendar/answer/37082?hl=en"
+    },
+    {
+      "label": "Microsoft: Import und Abonnement sowie Aktualisierungszeiten",
+      "url": "https://support.microsoft.com/en-us/outlook/import-or-subscribe-to-a-calendar-in-outlook-com-or-outlook-on-the-web"
+    }
+  ],
+  "seeAlso": [
+    "who-can-see-what-in-google-calendar",
+    "taking-back-a-calendar-you-shared",
+    "sharing-one-event-not-your-calendar"
+  ],
+  "updated": "2026-10-21"
+},
 
   'what-guests-can-do-to-your-event': {
     title: 'Was Gäste mit Ihrem Termin anstellen können',

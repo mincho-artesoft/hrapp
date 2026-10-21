@@ -1,0 +1,9 @@
+{
+  "Paths": {
+    "Quantity": 1,
+    "Items": [
+      "/*"
+    ]
+  },
+  "CallerReference": "cloud-calendars-batch11-202f8ba54a6ef27bc24b"
+}

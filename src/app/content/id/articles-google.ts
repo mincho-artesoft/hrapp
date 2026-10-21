@@ -157,53 +157,100 @@ export const GOOGLE_ID: Readonly<Record<string, LocalisedArticle>> = {
   },
 
   'the-secret-address-of-a-google-calendar': {
-    title: 'Apa yang sebenarnya dibocorkan alamat rahasia kalender Google',
-    short: 'Alamat iCal rahasia',
-    description:
-      'Google menyediakan alamat pribadi yang memperlihatkan seluruh kalender Anda kepada siapa pun yang memegangnya. Apa yang dibukanya dan mengapa ia tidak bisa ditarik diam-diam.',
-    lede: 'Terkubur di pengaturan setiap kalender Google ada tautan yang memperlihatkan semua isinya. Tanpa masuk, tanpa izin, tanpa catatan siapa yang membukanya.',
-    commonBelief: 'Bahwa alamat pribadi bersifat pribadi karena sulit ditemukan.',
-    sections: [
-      {
-        heading: 'Tautan adalah kata sandi yang tidak bisa diganti untuk satu orang',
-        body: [
-          'Alamat rahasia membawa detail lengkap — judul, waktu, lokasi, catatan. Siapa pun yang memegang tautan melihatnya, dan tidak ada daftar siapa saja mereka.',
-          'Satu-satunya pelindungnya adalah bagian acak dari alamat itu. Terhadap tebakan itu benar-benar melindungi, dan sama sekali tidak terhadap penerusan, layar yang dibagikan, atau dokumen yang berumur lebih panjang dari pekerjaan.',
-        ],
-      },
-      {
-        heading: 'Mengatur ulang merusaknya untuk semua orang',
-        body: [
-          'Anda bisa mengatur ulang alamatnya, dan yang lama mati. Ia juga mati untuk setiap rekan kerja, setiap dasbor, dan setiap skrip yang diam-diam bersandar padanya, tanpa peringatan sedikit pun.',
-          'Itulah alasan untuk tidak pernah membagikan alamat kalender tempat Anda hidup. Terbitkan kalender yang dibuat untuk itu, dan mengatur ulang tidak merugikan siapa pun.',
-        ],
-      },
-    ],
-    claims: {
-      linkLength: 'Karakter acak yang melindungi tautan berbagi milik kami',
-      sharePrice: 'Biaya membagikan satu acara dari aplikasi',
+  "title": "Alamat iCal rahasia Google: bedakan langganan dari berbagi",
+  "short": "Alamat iCal rahasia",
+  "description": "Pahami alamat iCal rahasia Google, koneksi akun, dan feed. Tangani alamat yang terungkap tanpa menjanjikan pembaruan instan atau penghapusan salinan.",
+  "lede": "Alamat kalender, koneksi akun, dan undangan menjalankan fungsi berbeda. Kenali yang Anda miliki sebelum membawa jadwal ke aplikasi lain. Panduan ini diterbitkan oleh Arte Soft, pengembang Cloud Calendars.",
+  "commonBelief": "Alamat kalender rahasia dianggap undangan pribadi yang dapat ditarik dari satu penerima saja.",
+  "sections": [
+    {
+      "heading": "Pilih koneksi sesuai kebutuhan",
+      "body": [
+        "Google membedakan masuk ke aplikasi kalender lain dari melihat melalui alamat iCal rahasia. Koneksi akun dapat mendukung pengeditan; alamat menyediakan langganan hanya-baca. Google menyatakan alamat rahasia untuk penggunaan sendiri dan menyarankan agar tidak membagikannya kepada orang lain.",
+        "Menampilkan jadwal kerja sendiri di kalender kompatibel berbeda dari memberi rekan akses berkelanjutan. Tentukan hasilnya: melihat jadwal sendiri, bekerja sama dengan orang tertentu, atau menerbitkan jadwal untuk audiens. Jangan memilih URL hanya karena mudah ditempel."
+      ]
     },
-    faq: [
-      {
-        q: 'Apa yang bisa dilakukan orang dengan alamat rahasia kalender saya?',
-        a: 'Melihat semua isinya — judul, waktu, lokasi, dan catatan — tanpa masuk, tanpa izin, dan tanpa meninggalkan catatan bahwa ia melihat.',
-      },
-      {
-        q: 'Bisakah saya menarik kembali alamat rahasia kalender?',
-        a: 'Hanya dengan mengatur ulangnya, dan itu mematikan yang lama untuk semua orang sekaligus: rekan kerja, dasbor, dan setiap skrip yang diam-diam bersandar padanya, tanpa peringatan.',
-      },
-      {
-        q: 'Bolehkah saya mengirim alamat rahasia ke rekan lewat email?',
-        a: 'Anggap publik sejak ia lepas dari tangan Anda. Satu-satunya pelindungnya adalah sulit ditebak, dan meneruskannya justru meniadakan itu.',
-      },
-    ],
-    practical: [
-      'Anggap alamat rahasia sebagai publik begitu ia lepas dari tangan Anda.',
-      'Jangan pernah menerbitkan alamat kalender yang benar-benar Anda pakai.',
-      'Atur ulang saat seseorang pergi, dan beri tahu mereka yang aksesnya akan putus.',
-    ],
-    seeAlso: ['who-can-see-what-in-google-calendar', 'taking-back-a-calendar-you-shared'],
-  },
+    {
+      "heading": "Temukan kalender yang benar, bukan hanya akunnya",
+      "body": [
+        "Di komputer, petunjuk Google menempatkan alamat rahasia berformat iCal pada pengaturan integrasi kalender yang dipilih. Periksa nama kalender dahulu. Administrator kantor atau sekolah dapat membatasi opsi ini; alamat yang tidak tersedia bukan alasan untuk memublikasikan kalender.",
+        "Jauhkan alamat dari tangkapan layar, laporan dukungan publik, dan catatan bersama. Saat meminta bantuan, jelaskan jenis akun, nama kalender, dan cara koneksi tanpa URL. Biasanya jalur koneksi perlu dikenali terlebih dahulu sebelum isi acara diperlukan."
+      ]
+    },
+    {
+      "heading": "Periksa apa yang ditambahkan aplikasi penerima",
+      "body": [
+        "Langganan mengikuti feed; impor file membuat salinan terpisah. Baca petunjuk aplikasi penerima dan pastikan tindakan yang diambil. Membuka file kalender unduhan tidak berarti janji yang ditambahkan akan mengikuti perubahan berikutnya.",
+        "Gunakan acara biasa yang tidak sensitif dan sudah Anda kenal untuk membandingkan nama kalender, tanggal, dan detail. Jangan membuat langganan kedua untuk memeriksa yang pertama: dua salinan dapat membuat keterlambatan terlihat seperti konflik. Sembunyikan satu kalender sementara untuk mengenali sumber."
+      ]
+    },
+    {
+      "heading": "Pisahkan tautan Google dan Cloud Calendars",
+      "body": [
+        "Cloud Calendars memiliki alur berbagi acara dan kalender sendiri, termasuk feed langganan. Itu bukan alamat rahasia Google. Sebelum membuka, kenali apakah pengirim membagikan satu acara, kalender, atau undangan berbasis akun.",
+        "Penerima Cloud Calendars dapat memiliki peran Reader, Writer, atau Owner. Alamat feed saja bukan bukti hak edit. Menerima alamat tampilan Google juga tidak membuat Anda pemilik kalender. Tanyakan kepada pengirim sistem mana yang digunakan untuk perubahan."
+      ]
+    },
+    {
+      "heading": "Pertimbangkan cara kalender penerima memperbarui",
+      "body": [
+        "Langganan bukan janji pengiriman langsung. Feed Cloud Calendars mencantumkan interval pembaruan yang disarankan, tetapi aplikasi penerima menentukan kapan mengambil dan menampilkan perubahan. Waktu lama pada satu perangkat tidak membuktikan penyelenggara gagal menyimpan.",
+        "Untuk rapat hari ini, bandingkan dengan jadwal terbaru penyelenggara dan konfirmasikan perubahan penting langsung. Catat kalender yang masih menampilkan informasi lama dan waktu pemeriksaan. Jangan mengimpor berulang kali atau menghapus kalender sumber untuk memaksa feed memperbarui."
+      ]
+    },
+    {
+      "heading": "Tangani keterbukaan alamat tanpa menjanjikan penarikan semua salinan",
+      "body": [
+        "Google menjelaskan penyetelan ulang alamat rahasia yang terungkap: alamat lama tidak berlaku dan pengganti dibuat. Kenali aplikasi Anda yang menggunakannya agar langganannya dapat diperbarui. Menyetel ulang alamat berbeda dari menghapus kolaborator tertentu.",
+        "Janji yang tersimpan, ekspor, atau tangkapan layar sebelumnya adalah masalah terpisah. Tautan baru tidak membuktikan semua salinan lama hilang. Jika informasi tersebar ke audiens keliru, pertimbangkan isi dan penerimanya, bukan menganggap reset berhasil sebagai bukti penghapusan lengkap."
+      ]
+    }
+  ],
+  "claims": {},
+  "practical": [
+    "Kenali apakah Anda memiliki koneksi akun, undangan, langganan, atau file.",
+    "Periksa kalender pemilik sebelum menyalin alamat.",
+    "Gunakan alamat rahasia Google hanya untuk aplikasi kompatibel milik sendiri.",
+    "Pastikan aplikasi penerima berlangganan, bukan mengimpor.",
+    "Konfirmasikan perubahan mendesak dengan penyelenggara, jangan hanya mengandalkan pembaruan.",
+    "Jika alamat terungkap, ikuti panduan reset Google dan perbarui koneksi yang dimaksud."
+  ],
+  "faq": [
+    {
+      "q": "Bolehkah saya memberikan alamat rahasia kepada rekan?",
+      "a": "Google menyarankan menyimpannya untuk aplikasi sendiri. Gunakan kontrol berbagi kalender dan pilih izin yang sesuai ketika orang lain membutuhkan akses."
+    },
+    {
+      "q": "Apakah langganan mengizinkan mengedit sumber?",
+      "a": "Alamat iCal rahasia Google adalah jalur melihat. Pengeditan membutuhkan koneksi akun dan izin yang sesuai; peran berbagi Cloud Calendars merupakan pengaturan terpisah."
+    },
+    {
+      "q": "Apakah reset alamat menghapus janji lama di semua tempat?",
+      "a": "Reset membatalkan alamat Google lama. Itu tidak memastikan file, janji, atau tangkapan layar yang disimpan terpisah sudah dihapus."
+    }
+  ],
+  "sourcesHeading": "Panduan penyedia dan bacaan lanjutan",
+  "sources": [
+    {
+      "label": "Google: koneksi akun dan alamat iCal rahasia",
+      "url": "https://support.google.com/calendar/answer/37648?hl=en"
+    },
+    {
+      "label": "Google: berbagi kalender",
+      "url": "https://support.google.com/calendar/answer/37082?hl=en"
+    },
+    {
+      "label": "Microsoft: impor, langganan, dan waktu pembaruan",
+      "url": "https://support.microsoft.com/en-us/outlook/import-or-subscribe-to-a-calendar-in-outlook-com-or-outlook-on-the-web"
+    }
+  ],
+  "seeAlso": [
+    "who-can-see-what-in-google-calendar",
+    "taking-back-a-calendar-you-shared",
+    "sharing-one-event-not-your-calendar"
+  ],
+  "updated": "2026-10-21"
+},
 
   'what-guests-can-do-to-your-event': {
     title: 'Apa yang bisa dilakukan tamu terhadap acara Anda',

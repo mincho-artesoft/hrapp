@@ -157,53 +157,100 @@ export const GOOGLE_RO: Readonly<Record<string, LocalisedArticle>> = {
   },
 
   'the-secret-address-of-a-google-calendar': {
-    title: 'Ce dezvăluie de fapt adresa secretă a unui calendar Google',
-    short: 'Adresa iCal secretă',
-    description:
-      'Google oferă o adresă privată care arată tot calendarul tău oricui o deține. Ce expune și de ce nu poate fi retrasă în liniște.',
-    lede: 'Ascuns în setările fiecărui calendar Google se află un link care arată tot ce e pe el. Fără autentificare, fără permisiune, fără urmă despre cine l-a deschis.',
-    commonBelief: 'Că o adresă privată e privată pentru că e greu de găsit.',
-    sections: [
-      {
-        heading: 'Un link e o parolă care nu poate fi schimbată pentru o singură persoană',
-        body: [
-          'Adresa secretă poartă detalii complete — titluri, ore, locuri, notițe. Oricine are linkul le vede, și nu există o listă cu cine sunt aceștia.',
-          'Singura ei protecție e partea aleatorie a adresei. Împotriva ghicitului chiar protejează, împotriva unei redirecționări, a unui ecran partajat sau a unui document care supraviețuiește slujbei — deloc.',
-        ],
-      },
-      {
-        heading: 'Resetarea o strică pentru toți',
-        body: [
-          'Poți reseta adresa, iar cea veche moare. Moare și pentru fiecare coleg, fiecare tablou de bord și fiecare script care se sprijinea tăcut pe ea, fără niciun avertisment.',
-          'Acesta e argumentul pentru a nu da niciodată adresa calendarului în care trăiești. Publică un calendar făcut anume pentru asta și resetarea nu te costă nimic.',
-        ],
-      },
-    ],
-    claims: {
-      linkLength: 'Caractere aleatorii care protejează un link de partajare de-al nostru',
-      sharePrice: 'Cât costă partajarea unui eveniment din aplicație',
+  "title": "Adresa iCal secretă Google: abonarea nu înseamnă partajare",
+  "short": "Adresa iCal secretă",
+  "description": "Înțelege adresa iCal secretă, conectarea contului și fluxurile partajate. Află ce faci dacă adresa a fost divulgată și de ce pot rămâne copii.",
+  "lede": "O adresă de calendar, conectarea unui cont și o invitație au roluri diferite. Identifică ce ai înainte să folosești acel lucru pentru a aduce programul într-o altă aplicație. Acest ghid este publicat de Arte Soft, dezvoltatorul Cloud Calendars.",
+  "commonBelief": "Adresa secretă este o invitație personală care poate fi retrasă pentru un singur destinatar.",
+  "sections": [
+    {
+      "heading": "Alege conexiunea potrivită scopului",
+      "body": [
+        "Google diferențiază conectarea într-o altă aplicație de calendar de vizualizarea prin adresa iCal secretă. Conectarea contului poate permite editarea; adresa oferă un abonament doar pentru vizualizare. Google o descrie ca fiind pentru uz propriu și recomandă să nu o dai altor persoane.",
+        "De exemplu, afișarea propriului program de lucru într-un calendar compatibil diferă de acordarea accesului permanent unui coleg. Pornește de la rezultat: consultarea programului, colaborarea cu o persoană anume sau distribuirea unui orar către un public. Nu alege un URL doar fiindcă este ușor de lipit."
+      ]
     },
-    faq: [
-      {
-        q: 'Ce poate face cineva cu adresa secretă a calendarului meu?',
-        a: 'Să vadă tot ce e pe el — titluri, ore, locuri și notițe — fără autentificare, fără permisiune și fără să rămână undeva urma că s-a uitat.',
-      },
-      {
-        q: 'Pot lua înapoi o adresă secretă de calendar?',
-        a: 'Doar resetând-o, ceea ce omoară adresa veche pentru toți deodată: colegi, tablouri de bord și orice script care se sprijinea tăcut pe ea, fără avertisment.',
-      },
-      {
-        q: 'Pot trimite adresa secretă unui coleg pe e-mail?',
-        a: 'Tratează-o ca publică din clipa în care îți iese din mâini. Singura ei protecție e că se ghicește greu, iar redirecționarea anulează exact asta.',
-      },
-    ],
-    practical: [
-      'Tratează adresa secretă drept publică din clipa în care îți iese din mâini.',
-      'Nu publica niciodată adresa calendarului pe care chiar îl folosești.',
-      'Resetează când cineva pleacă și spune-le celor cărora li se va rupe.',
-    ],
-    seeAlso: ['who-can-see-what-in-google-calendar', 'taking-back-a-calendar-you-shared'],
-  },
+    {
+      "heading": "Verifică calendarul, nu doar contul",
+      "body": [
+        "Pe computer, instrucțiunile Google plasează adresa secretă în format iCal în setările de integrare ale calendarului ales. Verifică mai întâi numele calendarului. Administratorii de serviciu sau școală pot restricționa opțiunea; lipsa adresei nu justifică publicarea calendarului.",
+        "Nu include adresa în capturi de ecran, solicitări publice de asistență sau notițe partajate. Când ceri ajutor, descrie tipul contului, numele calendarului și metoda de conectare fără URL. De obicei, asistența trebuie să identifice întâi conexiunea, nu conținutul evenimentelor."
+      ]
+    },
+    {
+      "heading": "Verifică ce a adăugat aplicația destinatară",
+      "body": [
+        "Un abonament urmărește un flux; importarea unui fișier creează o copie separată. Citește instrucțiunile aplicației destinatare și confirmă acțiunea aleasă. Dacă doar deschizi un fișier de calendar descărcat, nu presupune că întâlnirile rezultate vor prelua modificările viitoare.",
+        "Compară numele calendarului, data și detaliile cu ajutorul unui eveniment obișnuit, fără date sensibile, pe care îl recunoști. Nu crea un al doilea abonament ca să-l diagnostichezi pe primul: două copii vizibile pot face o actualizare întârziată să pară un conflict. Ascunde temporar un calendar pentru a identifica sursa."
+      ]
+    },
+    {
+      "heading": "Separă linkurile Google de cele Cloud Calendars",
+      "body": [
+        "Cloud Calendars are propriile mecanisme de partajare a evenimentelor și calendarelor, inclusiv fluxuri de abonare. Acestea nu sunt adrese secrete Google. Înainte să alegi cum deschizi linkul, stabilește dacă expeditorul a trimis un eveniment, un calendar sau o invitație asociată unui cont.",
+        "Un destinatar Cloud Calendars poate avea rolul Reader, Writer sau Owner. O adresă de flux nu dovedește singură dreptul de editare. Nici primirea unei adrese Google pentru vizualizare nu te face proprietarul calendarului. Întreabă expeditorul în ce sistem trebuie făcute modificările."
+      ]
+    },
+    {
+      "heading": "Ține cont de actualizarea în aplicația destinatară",
+      "body": [
+        "Abonarea nu promite livrare imediată. Fluxurile Cloud Calendars includ un interval de actualizare sugerat, dar aplicația destinatară decide când preia și afișează schimbările. O oră veche pe un dispozitiv nu dovedește singură că organizatorul nu a salvat modificarea.",
+        "Pentru o întâlnire din aceeași zi, compară cu programul actual al organizatorului și confirmă direct schimbările importante. Notează calendarul care arată încă date vechi și momentul verificării. Nu importa repetat evenimentul și nu șterge calendarul sursă pentru a forța actualizarea."
+      ]
+    },
+    {
+      "heading": "Reacționează la divulgare fără promisiuni de retragere totală",
+      "body": [
+        "Google documentează resetarea unei adrese secrete divulgate: vechea adresă devine invalidă și este creată alta. Identifică aplicațiile proprii care o folosesc, ca să actualizezi ulterior abonamentele. Resetarea adresei diferă de eliminarea unui colaborator anume.",
+        "Întâlnirile salvate anterior, exporturile și capturile de ecran sunt o chestiune separată. Schimbarea linkului nu dovedește dispariția tuturor copiilor. Dacă informațiile au ajuns la publicul greșit, analizează materialul și destinatarii reali, fără a considera resetarea reușită drept dovadă a eliminării complete."
+      ]
+    }
+  ],
+  "claims": {},
+  "practical": [
+    "Identifică dacă ai o conexiune de cont, o invitație, un abonament sau un fișier.",
+    "Verifică calendarul sursă înainte să copiezi adresa.",
+    "Păstrează adresa secretă Google pentru propriile aplicații compatibile.",
+    "Confirmă că aplicația s-a abonat, nu a importat o copie.",
+    "Confirmă schimbările urgente cu organizatorul, fără a depinde de actualizare.",
+    "Dacă adresa a fost divulgată, urmează resetarea Google și actualizează conexiunile dorite."
+  ],
+  "faq": [
+    {
+      "q": "Pot da adresa secretă unui coleg?",
+      "a": "Google recomandă să o păstrezi pentru propriile aplicații. Pentru accesul altei persoane, folosește controalele de partajare și alege permisiunea potrivită."
+    },
+    {
+      "q": "Abonarea îmi permite să editez originalul?",
+      "a": "Adresa iCal secretă Google este pentru vizualizare. Editarea necesită o conexiune de cont și permisiuni potrivite; rolurile Cloud Calendars sunt un mecanism separat."
+    },
+    {
+      "q": "Resetarea adresei șterge întâlnirile vechi de peste tot?",
+      "a": "Invalidează vechea adresă Google. Nu demonstrează că fișierele, întâlnirile sau capturile salvate independent au fost eliminate."
+    }
+  ],
+  "sourcesHeading": "Ghidurile furnizorilor și lecturi suplimentare",
+  "sources": [
+    {
+      "label": "Google: conectarea conturilor și adresele iCal secrete",
+      "url": "https://support.google.com/calendar/answer/37648?hl=en"
+    },
+    {
+      "label": "Google: partajarea unui calendar",
+      "url": "https://support.google.com/calendar/answer/37082?hl=en"
+    },
+    {
+      "label": "Microsoft: import, abonare și timpul de actualizare",
+      "url": "https://support.microsoft.com/en-us/outlook/import-or-subscribe-to-a-calendar-in-outlook-com-or-outlook-on-the-web"
+    }
+  ],
+  "updated": "2026-10-21",
+  "seeAlso": [
+    "who-can-see-what-in-google-calendar",
+    "taking-back-a-calendar-you-shared",
+    "sharing-one-event-not-your-calendar"
+  ]
+},
 
   'what-guests-can-do-to-your-event': {
     title: 'Ce pot face invitații cu un eveniment de-al tău',

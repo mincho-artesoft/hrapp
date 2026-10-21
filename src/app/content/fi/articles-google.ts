@@ -158,53 +158,100 @@ export const GOOGLE_FI: Readonly<Record<string, LocalisedArticle>> = {
   },
 
   'the-secret-address-of-a-google-calendar': {
-    title: 'Mitä Google-kalenterin salainen osoite todella paljastaa',
-    short: 'Salainen iCal-osoite',
-    description:
-      'Google tarjoaa yksityisen osoitteen, joka näyttää koko kalenterisi sille, jolla se on. Mitä se paljastaa ja miksi sitä ei oteta hiljaa takaisin.',
-    lede: 'Jokaisen Google-kalenterin asetuksiin on haudattu linkki, joka näyttää kaiken siinä. Ei kirjautumista, ei oikeuksia, ei tietoa siitä, kuka sen avasi.',
-    commonBelief: 'Että yksityinen osoite on yksityinen, koska sitä on vaikea löytää.',
-    sections: [
-      {
-        heading: 'Linkki on salasana, jota ei voi vaihtaa yhdelle henkilölle',
-        body: [
-          'Salainen osoite kantaa täydet tiedot — otsikot, ajat, paikat, muistiinpanot. Linkin haltija näkee ne, eikä ole listaa siitä, keitä he ovat.',
-          'Sen ainoa suoja on osoitteen satunnainen osa. Arvaamista vastaan se suojaa aidosti, edelleenlähetystä, jaettua näyttöä tai työsuhteen ylittävää dokumenttia vastaan ei lainkaan.',
-        ],
-      },
-      {
-        heading: 'Nollaus rikkoo sen kaikilta',
-        body: [
-          'Voit nollata osoitteen, jolloin vanha kuolee. Se kuolee myös jokaiselta kollegalta, jokaiselta näkymältä ja jokaiselta skriptiltä, joka hiljaa nojasi siihen, ilman varoitusta kenellekään.',
-          'Tästä syystä sen kalenterin osoitetta, jossa elät, ei jaeta koskaan. Julkaise tarkoitusta varten tehty kalenteri, niin nollaus ei maksa mitään.',
-        ],
-      },
-    ],
-    claims: {
-      linkLength: 'Satunnaismerkit, jotka suojaavat meidän jakolinkkiämme',
-      sharePrice: 'Mitä tapahtuman jakaminen sovelluksesta maksaa',
+  "title": "Googlen salainen iCal-osoite: erota tilaaminen jakamisesta",
+  "short": "Salainen iCal-osoite",
+  "description": "Ymmärrä Googlen salainen iCal-osoite, tiliyhteydet ja syötteet. Käsittele paljastunut osoite lupaamatta välittömiä päivityksiä tai kopioiden poistoa.",
+  "lede": "Kalenteriosoite, tiliyhteys ja kutsu palvelevat eri tarkoituksia. Selvitä, mikä sinulla on, ennen kuin tuot aikataulun toiseen sovellukseen. Oppaan julkaisee Cloud Calendarsin kehittäjä Arte Soft.",
+  "commonBelief": "Salainen kalenteriosoite on henkilökohtainen kutsu, jonka voi perua vain yhdeltä vastaanottajalta.",
+  "sections": [
+    {
+      "heading": "Valitse tarkoitukseen sopiva yhteys",
+      "body": [
+        "Google erottaa kirjautumisen toiseen kalenterisovellukseen katselusta salaisen iCal-osoitteen kautta. Tiliyhteys voi tukea muokkausta; osoite tarjoaa vain katseltavan tilauksen. Google kertoo salaisen osoitteen olevan omaan käyttöön ja neuvoo olemaan jakamatta sitä muille.",
+        "Oman työaikataulun näyttäminen toisessa yhteensopivassa kalenterissa eroaa jatkuvan pääsyn antamisesta kollegalle. Aloita tavoitteesta: oman aikataulun katselu, yhteistyö nimetyn henkilön kanssa tai yleisölle tarkoitetun aikataulun jakelu. Älä valitse URL-osoitetta vain sen helpon liittämisen vuoksi."
+      ]
     },
-    faq: [
-      {
-        q: 'Mitä joku voi tehdä kalenterini salaisella osoitteella?',
-        a: 'Nähdä kaiken siinä — otsikot, ajat, paikat ja muistiinpanot — ilman kirjautumista, ilman oikeuksia ja ilman että mihinkään jää merkintää katsomisesta.',
-      },
-      {
-        q: 'Voinko ottaa salaisen kalenteriosoitteen takaisin?',
-        a: 'Vain nollaamalla sen, mikä tappaa vanhan kaikilta yhtä aikaa: kollegoilta, näkymiltä ja jokaiselta skriptiltä, joka hiljaa nojasi siihen, ilman varoitusta.',
-      },
-      {
-        q: 'Voinko lähettää salaisen osoitteen kollegalle sähköpostilla?',
-        a: 'Käsittele sitä julkisena siitä hetkestä, kun se lähtee käsistäsi. Sen ainoa suoja on vaikeasti arvattavuus, ja edelleenlähetys kumoaa juuri sen.',
-      },
-    ],
-    practical: [
-      'Käsittele salaista osoitetta julkisena siitä hetkestä, kun se lähtee käsistäsi.',
-      'Älä koskaan julkaise sen kalenterin osoitetta, jota oikeasti käytät.',
-      'Nollaa se, kun joku lähtee, ja kerro niille, joilta se katkeaa.',
-    ],
-    seeAlso: ['who-can-see-what-in-google-calendar', 'taking-back-a-calendar-you-shared'],
-  },
+    {
+      "heading": "Etsi oikea kalenteri, älä vain oikeaa tiliä",
+      "body": [
+        "Tietokoneella Googlen ohje sijoittaa kohdan ”Secret address in iCal format” valitun kalenterin ”Integrate calendar” -asetuksiin. Tarkista ensin kalenterin nimi. Työpaikan tai koulun ylläpitäjä voi rajoittaa tätä toimintoa; puuttuva osoite ei ole syy julkaista kalenteria sen sijaan.",
+        "Pidä osoite poissa kuvakaappauksista, julkisista tukiviesteistä ja jaetuista muistiinpanoista. Kerro apua pyytäessäsi tilityyppi, kalenterin nimi ja yhteystapa antamatta URL-osoitetta. Tukikeskustelussa on yleensä ensin tunnistettava yhteysreitti ennen tapahtumien sisältöä."
+      ]
+    },
+    {
+      "heading": "Tarkista, mitä vastaanottava sovellus lisäsi",
+      "body": [
+        "Tilaus seuraa syötettä; tuotu tiedosto luo erillisen kopion. Lue vastaanottavan sovelluksen ohje ja varmista tekemäsi toiminto. Jos vain avaat ladatun kalenteritiedoston, älä oleta syntyneiden tapaamisten seuraavan myöhempiä muutoksia.",
+        "Vertaa kalenterin nimeä, päivää ja näkyviä tietoja tutulla, tavallisella tapahtumalla, jossa ei ole arkaluonteista sisältöä. Älä luo toista tilausta ensimmäisen ongelmien selvittämiseksi: kaksi näkyvää kopiota voi saada viiveen näyttämään ristiriitaiselta tapaamiselta. Piilota yksi kalenteri tilapäisesti lähdettä tunnistaessasi."
+      ]
+    },
+    {
+      "heading": "Erota Googlen ja Cloud Calendarsin linkit",
+      "body": [
+        "Cloud Calendarsilla on omat tapahtumien ja kalenterien jakamistapansa, myös tilaussyötteet. Ne eivät ole Googlen salaisia osoitteita. Selvitä ennen avaamistavan valintaa, jakoiko lähettäjä yhden tapahtuman, kalenterin vai tiliin perustuvan kutsun.",
+        "Cloud Calendarsin vastaanottajalla voi olla Reader-, Writer- tai Owner-rooli. Pelkkää syöteosoitetta ei pidä tulkita todisteeksi muokkausoikeudesta. Googlen katseluosoitteen saaminen ei myöskään tee sinusta kalenterin omistajaa. Kysy lähettäjältä, missä järjestelmässä muutokset tehdään."
+      ]
+    },
+    {
+      "heading": "Huomioi vastaanottavan kalenterin päivitystapa",
+      "body": [
+        "Tilaus ei lupaa välitöntä toimitusta. Cloud Calendarsin syötteet sisältävät ehdotetun päivitysvälin, mutta vastaanottava sovellus päättää, milloin muutokset haetaan ja näytetään. Vanha kellonaika yhdellä laitteella ei yksin todista, ettei järjestäjä tallentanut muutosta.",
+        "Vertaa saman päivän kokousta järjestäjän nykyiseen aikatauluun ja varmista tärkeät muutokset suoraan. Kirjaa, missä kalenterissa vanha tieto näkyy ja milloin tarkistit sen. Älä tuo tapahtumaa toistuvasti tai poista lähdekalenteria pakottaaksesi syötteen ajan tasalle."
+      ]
+    },
+    {
+      "heading": "Reagoi paljastumiseen lupaamatta takaisinvetämistä",
+      "body": [
+        "Google ohjeistaa nollaamaan paljastuneen salaisen osoitteen, jolloin vanha mitätöityy ja tilalle luodaan uusi. Tunnista sitä käyttävät omat sovelluksesi, jotta voit päivittää niiden tilaukset. Osoitteen nollaus eroaa nimetyn yhteistyökumppanin poistamisesta.",
+        "Aiemmin tallennetut tapaamiset, viennit ja kuvakaappaukset ovat erillinen asia. Muuttunut linkki ei osoita kaikkien vanhojen kopioiden kadonneen. Jos tietoa päätyi väärälle yleisölle, tarkastele todellista sisältöä ja vastaanottajia sen sijaan, että pitäisit onnistunutta nollausta todisteena täydellisestä poistamisesta."
+      ]
+    }
+  ],
+  "claims": {},
+  "practical": [
+    "Tunnista tiliyhteys, kutsu, tilaus tai tiedosto.",
+    "Tarkista osoitteeseen kuuluva kalenteri ennen kopiointia.",
+    "Säilytä Googlen salainen osoite omien yhteensopivien sovellustesi käyttöön.",
+    "Varmista, että vastaanottava sovellus tilasi eikä tuonut tiedostoa.",
+    "Vahvista kiireelliset muutokset järjestäjältä päivitysaikaan luottamisen sijaan.",
+    "Jos osoite paljastui, noudata Googlen nollausohjetta ja päivitä halutut yhteydet."
+  ],
+  "faq": [
+    {
+      "q": "Voinko antaa salaisen osoitteen kollegalle?",
+      "a": "Google neuvoo käyttämään sitä vain omissa sovelluksissa. Jos toinen henkilö tarvitsee pääsyn, käytä kalenterin jakamisasetuksia ja valitse tarkoitettu oikeus."
+    },
+    {
+      "q": "Voinko muokata alkuperäistä tilauksen kautta?",
+      "a": "Googlen salainen iCal-osoite on katselureitti. Muokkaus tarvitsee sopivan tiliyhteyden ja oikeuden; Cloud Calendarsin jakamisroolit ovat erillinen järjestely."
+    },
+    {
+      "q": "Poistaako osoitteen nollaus vanhat tapaamiset kaikkialta?",
+      "a": "Se mitätöi vanhan Google-osoitteen. Se ei osoita erikseen tallennettujen tiedostojen, tapaamisten tai kuvakaappausten poistamista."
+    }
+  ],
+  "sourcesHeading": "Palveluntarjoajien ohjeet ja lisätietoa",
+  "sources": [
+    {
+      "label": "Google: tiliyhteydet ja salaiset iCal-osoitteet",
+      "url": "https://support.google.com/calendar/answer/37648?hl=en"
+    },
+    {
+      "label": "Google: kalenterin jakaminen",
+      "url": "https://support.google.com/calendar/answer/37082?hl=en"
+    },
+    {
+      "label": "Microsoft: tuonti, tilaaminen ja päivitysajat",
+      "url": "https://support.microsoft.com/en-us/outlook/import-or-subscribe-to-a-calendar-in-outlook-com-or-outlook-on-the-web"
+    }
+  ],
+  "seeAlso": [
+    "who-can-see-what-in-google-calendar",
+    "taking-back-a-calendar-you-shared",
+    "sharing-one-event-not-your-calendar"
+  ],
+  "updated": "2026-10-21"
+},
 
   'what-guests-can-do-to-your-event': {
     title: 'Mitä vieraasi voivat tehdä tapahtumallesi',

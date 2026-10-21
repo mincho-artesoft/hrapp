@@ -1,0 +1,50 @@
+{
+  "date": "2026-10-22",
+  "reviews": [
+    {
+      "url": "https://docs.onecal.io/docs/calendar-view/intro",
+      "publisher": "OneCal",
+      "status": "full",
+      "readScope": "Substantive body lines22-163 of186 read in preceding research segment of this batch",
+      "findings": "Unified view, search, create/edit, repeat scope, RSVP, meeting links and time-zone controls; publisher features only.",
+      "limits": [
+        "Documentation only, no runtime verification.",
+        "No measured Google position, keyword volume or ChatGPT citation inferred."
+      ]
+    },
+    {
+      "url": "https://docs.onecal.io/docs/calendar-view/view-settings",
+      "publisher": "OneCal",
+      "status": "full",
+      "readScope": "Substantive body lines22-50 of58 read in preceding research segment of this batch",
+      "findings": "Weekends and week numbers visibility, first day of week and browser-local preferences are separate settings.",
+      "limits": [
+        "Documentation only, no runtime verification.",
+        "No measured Google position, keyword volume or ChatGPT citation inferred."
+      ]
+    },
+    {
+      "url": "https://docs.onecal.io/docs/mobile-apps",
+      "publisher": "OneCal",
+      "status": "full",
+      "readScope": "Substantive body lines22-139 of164 read in preceding research segment of this batch",
+      "findings": "Mobile event use versus web-only configuration boundaries; do not transfer OneCal security or support promises.",
+      "limits": [
+        "Documentation only, no runtime verification.",
+        "No measured Google position, keyword volume or ChatGPT citation inferred."
+      ]
+    },
+    {
+      "url": "https://docs.onecal.io/docs/calendars/connect-caldav-calendar",
+      "publisher": "OneCal",
+      "status": "full",
+      "readScope": "Substantive body lines22-111 of123 read in preceding research segment of this batch",
+      "findings": "CalDAV account setup, provider credentials and writable account connection distinct from subscribed feeds. No universal Cloud direct connector inferred.",
+      "limits": [
+        "Documentation only, no runtime verification.",
+        "No measured Google position, keyword volume or ChatGPT citation inferred."
+      ]
+    }
+  ],
+  "nextTask": "Compare Apple official CalDAV account setup and actual EventKit calendar visibility before creating a distinct guide; no direct CalDAV feature claim published."
+}

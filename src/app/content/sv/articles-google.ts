@@ -159,53 +159,100 @@ export const GOOGLE_SV: Readonly<Record<string, LocalisedArticle>> = {
   },
 
   'the-secret-address-of-a-google-calendar': {
-    title: 'Vad den hemliga adressen till en Google-kalender verkligen röjer',
-    short: 'Den hemliga iCal-adressen',
-    description:
-      'Google erbjuder en privat adress som visar hela din kalender för den som håller den. Vad den blottar, och varför den inte kan tas tillbaka i tysthet.',
-    lede: 'Djupt i inställningarna för varje Google-kalender finns en länk som visar allt på den. Ingen inloggning, ingen behörighet, ingen notering om vem som öppnade den.',
-    commonBelief: 'Att en privat adress är privat för att den är svår att hitta.',
-    sections: [
-      {
-        heading: 'En länk är ett lösenord som inte kan bytas för en enda person',
-        body: [
-          'Den hemliga adressen bär fullständiga detaljer — titlar, tider, platser, anteckningar. Den som har länken ser dem, och det finns ingen lista över vilka det är.',
-          'Dess enda skydd är den slumpmässiga delen av adressen. Det är ett äkta skydd mot gissningar och inget alls mot vidarebefordran, en delad skärm eller ett dokument som överlever anställningen.',
-        ],
-      },
-      {
-        heading: 'Att återställa den förstör den för alla',
-        body: [
-          'Du kan återställa adressen, vilket dödar den gamla. Den dör också för varje kollega, varje instrumentpanel och varje skript som tyst lutade sig mot den, utan förvarning till någon av dem.',
-          'Det är argumentet för att aldrig dela ut adressen till en kalender du lever i. Publicera en kalender gjord för ändamålet, så kostar återställningen ingenting.',
-        ],
-      },
-    ],
-    claims: {
-      linkLength: 'Slumptecken som skyddar en delningslänk av vårt slag',
-      sharePrice: 'Vad det kostar att dela en händelse från appen',
+  "title": "Googles hemliga iCal-adress: skilj prenumeration från delning",
+  "short": "Den hemliga iCal-adressen",
+  "description": "Förstå Googles hemliga iCal-adress, kontoanslutningar och delade flöden. Hantera en spridd adress utan löften om snabba uppdateringar eller raderade kopior.",
+  "lede": "En kalenderadress, en kontoanslutning och en inbjudan fyller olika funktioner. Ta reda på vad du har innan du använder det för att visa schemat i en annan app. Guiden publiceras av Arte Soft, utvecklaren bakom Cloud Calendars.",
+  "commonBelief": "En hemlig kalenderadress är en personlig inbjudan som kan återkallas för en enda mottagare.",
+  "sections": [
+    {
+      "heading": "Välj anslutning efter uppgiften",
+      "body": [
+        "Google skiljer mellan att logga in i en annan kalenderapp och att visa kalendern via en hemlig iCal-adress. Kontoanslutningen kan stödja redigering; adressen ger en prenumeration för enbart visning. Google beskriver den hemliga adressen som avsedd för eget bruk och avråder från att lämna den till andra.",
+        "Att visa ditt eget arbetsschema i en annan kompatibel kalender är exempelvis något annat än att ge en kollega löpande åtkomst. Börja med målet: läsa ditt schema, samarbeta med en viss person eller sprida en tidtabell till en publik. Välj inte en webbadress bara för att den är lätt att klistra in."
+      ]
     },
-    faq: [
-      {
-        q: 'Vad kan någon göra med den hemliga adressen till min kalender?',
-        a: 'Se allt på den — rubriker, tider, platser och anteckningar — utan inloggning, utan behörighet och utan att det någonstans noteras att de tittat.',
-      },
-      {
-        q: 'Kan jag ta tillbaka en hemlig kalenderadress?',
-        a: 'Bara genom att återställa den, vilket dödar den gamla för alla samtidigt: kollegor, instrumentpaneler och varje skript som tyst lutade sig mot den, utan förvarning.',
-      },
-      {
-        q: 'Kan jag mejla den hemliga adressen till en kollega?',
-        a: 'Behandla den som offentlig från det ögonblick den lämnar dina händer. Dess enda skydd är att vara svår att gissa, och vidarebefordran upphäver precis det.',
-      },
-    ],
-    practical: [
-      'Behandla den hemliga adressen som offentlig i samma stund den lämnar dina händer.',
-      'Publicera aldrig adressen till kalendern du faktiskt använder.',
-      'Återställ den när någon slutar, och säg till dem det går sönder för.',
-    ],
-    seeAlso: ['who-can-see-what-in-google-calendar', 'taking-back-a-calendar-you-shared'],
-  },
+    {
+      "heading": "Kontrollera kalendern, inte bara kontot",
+      "body": [
+        "I Googles datorinstruktioner finns den hemliga adressen i iCal-format under integrationsinställningarna för den valda kalendern. Kontrollera kalenderns namn först. Administratörer på arbetet eller i skolan kan begränsa alternativet; en saknad adress är inte ett skäl att publicera kalendern i stället.",
+        "Håll adressen borta från skärmbilder, offentliga supportinlägg och delade anteckningar. När du ber om hjälp, beskriv kontotyp, kalendernamn och anslutningsmetod utan att lämna webbadressen. Vanligen behöver supporten identifiera anslutningen innan något händelseinnehåll behövs."
+      ]
+    },
+    {
+      "heading": "Kontrollera vad den mottagande appen faktiskt lade till",
+      "body": [
+        "En prenumeration följer ett flöde; en importerad fil skapar en separat kopia. Läs mottagarappens instruktioner och bekräfta vilken åtgärd du använder. Om du bara öppnar en hämtad kalenderfil ska du inte utgå från att mötena följer framtida ändringar.",
+        "Använd en välbekant, vanlig händelse utan känsliga uppgifter för att jämföra kalendernamn, datum och detaljer. Undvik en andra prenumeration för att felsöka den första: två synliga kopior kan få en fördröjd uppdatering att likna en konflikt. Dölj en kalender tillfälligt när du identifierar källan."
+      ]
+    },
+    {
+      "heading": "Skilj Google-länkar från Cloud Calendars-länkar",
+      "body": [
+        "Cloud Calendars har egna sätt att dela händelser och kalendrar, inklusive prenumerationsflöden. Dessa är inte Googles hemliga adresser. Ta reda på om avsändaren delat en händelse, en kalender eller en kontobaserad inbjudan innan du väljer hur den ska öppnas.",
+        "En mottagare i Cloud Calendars kan ha rollen Reader, Writer eller Owner. En flödesadress är inte i sig bevis på redigeringsrätt. En Google-adress för visning gör dig inte heller till kalenderägare. Fråga avsändaren i vilket system ändringar ska göras."
+      ]
+    },
+    {
+      "heading": "Ta hänsyn till hur mottagaren uppdaterar kalendern",
+      "body": [
+        "En prenumeration lovar inte omedelbar leverans. Cloud Calendars-flöden innehåller ett föreslaget uppdateringsintervall, men den mottagande appen avgör när ändringar hämtas och visas. En gammal tid på en enhet bevisar inte i sig att arrangören glömt att spara ändringen.",
+        "För ett möte samma dag, jämför med arrangörens aktuella schema och bekräfta viktiga ändringar direkt. Anteckna vilken kalender som fortfarande visar gamla uppgifter och när du kontrollerade den. Importera inte händelsen upprepade gånger och radera inte källkalendern för att tvinga fram uppdatering."
+      ]
+    },
+    {
+      "heading": "Hantera en spridd adress utan löften om återkallade kopior",
+      "body": [
+        "Google beskriver hur en röjd hemlig adress återställs så att den gamla blir ogiltig och ersätts av en ny. Identifiera dina egna appar som använder den så att deras prenumerationer kan uppdateras efteråt. Att återställa en adress är något annat än att ta bort en namngiven samarbetspartner.",
+        "Tidigare sparade möten, exporter och skärmbilder är en separat fråga. En ändrad länk visar inte att alla äldre kopior har försvunnit. Om information skickats till fel publik, bedöm innehållet och mottagarna i stället för att se en lyckad återställning som bevis på fullständig borttagning."
+      ]
+    }
+  ],
+  "claims": {},
+  "practical": [
+    "Identifiera om du har en kontoanslutning, inbjudan, prenumeration eller fil.",
+    "Kontrollera källkalendern innan du kopierar en adress.",
+    "Behåll Googles hemliga adress för dina egna kompatibla appar.",
+    "Kontrollera att mottagarappen prenumererade i stället för att importera.",
+    "Bekräfta brådskande ändringar med arrangören i stället för att lita på uppdateringstiden.",
+    "Följ Googles återställningsråd om adressen röjts och uppdatera avsedda anslutningar."
+  ],
+  "faq": [
+    {
+      "q": "Kan jag ge den hemliga adressen till en kollega?",
+      "a": "Google rekommenderar att den används i dina egna appar. Använd kalenderns delningskontroller och välj rätt behörighet när någon annan behöver åtkomst."
+    },
+    {
+      "q": "Kan jag redigera originalet via en prenumeration?",
+      "a": "Googles hemliga iCal-adress är för visning. Redigering kräver en lämplig kontoanslutning och behörighet; Cloud Calendars-roller är ett separat upplägg."
+    },
+    {
+      "q": "Raderar en återställning gamla möten överallt?",
+      "a": "Den gör den gamla Google-adressen ogiltig. Den visar inte att separat sparade filer, möten eller skärmbilder har tagits bort."
+    }
+  ],
+  "sourcesHeading": "Leverantörernas vägledning och vidare läsning",
+  "sources": [
+    {
+      "label": "Google: kontoanslutningar och hemliga iCal-adresser",
+      "url": "https://support.google.com/calendar/answer/37648?hl=en"
+    },
+    {
+      "label": "Google: dela en kalender",
+      "url": "https://support.google.com/calendar/answer/37082?hl=en"
+    },
+    {
+      "label": "Microsoft: import, prenumeration och uppdateringstid",
+      "url": "https://support.microsoft.com/en-us/outlook/import-or-subscribe-to-a-calendar-in-outlook-com-or-outlook-on-the-web"
+    }
+  ],
+  "updated": "2026-10-21",
+  "seeAlso": [
+    "who-can-see-what-in-google-calendar",
+    "taking-back-a-calendar-you-shared",
+    "sharing-one-event-not-your-calendar"
+  ]
+},
 
   'what-guests-can-do-to-your-event': {
     title: 'Vad dina gäster kan göra med en händelse',

@@ -158,53 +158,100 @@ export const GOOGLE_TR: Readonly<Record<string, LocalisedArticle>> = {
   },
 
   'the-secret-address-of-a-google-calendar': {
-    title: 'Bir Google takviminin gizli adresi gerçekte neyi ele verir',
-    short: 'Gizli iCal adresi',
-    description:
-      'Google, elinde tutan herkese tüm takviminizi gösteren özel bir adres sunar. Neyi açığa çıkardığı ve neden sessizce geri alınamayacağı.',
-    lede: 'Her Google takviminin ayarlarına gömülü, üzerindeki her şeyi gösteren bir bağlantı vardır. Oturum açmadan, izin almadan, kimin açtığına dair kayıt olmadan.',
-    commonBelief: 'Özel bir adresin, bulunması zor olduğu için özel olduğu.',
-    sections: [
-      {
-        heading: 'Bağlantı, tek bir kişi için değiştirilemeyen bir paroladır',
-        body: [
-          'Gizli adres tüm ayrıntıları taşır — başlıklar, saatler, yerler, notlar. Bağlantıyı elinde tutan herkes bunları görür ve kimlerin gördüğüne dair bir liste yoktur.',
-          'Tek koruması adresin rastgele kısmıdır. Tahmine karşı gerçek bir korumadır; iletilmeye, paylaşılan bir ekrana ya da işten uzun ömürlü çıkan bir belgeye karşı hiçbir koruma değildir.',
-        ],
-      },
-      {
-        heading: 'Sıfırlamak onu herkes için bozar',
-        body: [
-          'Adresi sıfırlayabilirsiniz, eskisi ölür. Aynı zamanda ona sessizce dayanan her iş arkadaşı, her pano ve her betik için de ölür; hiçbirine uyarı gitmez.',
-          'İçinde yaşadığınız takvimin adresini asla dağıtmamanın gerekçesi budur. Bunun için kurulmuş bir takvim yayımlayın, sıfırlamak size hiçbir şeye mal olmaz.',
-        ],
-      },
-    ],
-    claims: {
-      linkLength: 'Bizim paylaşım bağlantımızı koruyan rastgele karakter sayısı',
-      sharePrice: 'Uygulamadan bir etkinliği paylaşmanın ücreti',
+  "title": "Google gizli iCal adresi: abonelik ile paylaşımı ayırın",
+  "short": "Gizli iCal adresi",
+  "description": "Google gizli iCal adresini, hesap bağlantısını ve paylaşılan akışları ayırın. Açığa çıkan adresi, güncelleme gecikmelerini ve eski kopyaları anlayın.",
+  "lede": "Takvim adresi, hesap bağlantısı ve davet farklı işler yapar. Programı başka bir uygulamaya taşımadan önce elinizde hangisinin olduğunu belirleyin. Bu rehber, Cloud Calendars geliştiricisi Arte Soft tarafından yayımlanmıştır.",
+  "commonBelief": "Gizli takvim adresi, yalnızca bir alıcı için geri alınabilen kişisel bir davettir.",
+  "sections": [
+    {
+      "heading": "İşe uygun bağlantıyı seçin",
+      "body": [
+        "Google, başka bir takvim uygulamasında oturum açmayı gizli iCal adresiyle görüntülemeden ayırır. Hesap bağlantısı düzenlemeyi destekleyebilir; adres ise yalnızca görüntüleme amaçlı abonelik sunar. Google, gizli adresi kişisel kullanım için tanımlar ve başkalarıyla paylaşılmamasını önerir.",
+        "Örneğin kendi iş programınızı başka bir uyumlu takvimde görmek, bir iş arkadaşına sürekli erişim vermekten farklıdır. Önce amacı belirleyin: programınızı görüntülemek, belirli biriyle çalışmak veya bir kitleye takvim sunmak. Yalnızca yapıştırması kolay diye bir URL seçmeyin."
+      ]
     },
-    faq: [
-      {
-        q: 'Biri takvimimin gizli adresiyle ne yapabilir?',
-        a: 'Üzerindeki her şeyi görebilir — başlıklar, saatler, yerler ve notlar — oturum açmadan, izin almadan ve baktığına dair hiçbir yerde kayıt bırakmadan.',
-      },
-      {
-        q: 'Gizli takvim adresini geri alabilir miyim?',
-        a: 'Yalnızca sıfırlayarak; bu da eskisini herkes için aynı anda öldürür: iş arkadaşları, panolar ve ona sessizce dayanan her betik, hiçbir uyarı almadan.',
-      },
-      {
-        q: 'Gizli adresi bir iş arkadaşıma e-postayla gönderebilir miyim?',
-        a: 'Elinizden çıktığı andan itibaren herkese açık sayın. Tek koruması tahmin edilmesinin zor olmasıdır ve iletmek tam olarak bunu ortadan kaldırır.',
-      },
-    ],
-    practical: [
-      'Gizli adresi, elinizden çıktığı anda herkese açık sayın.',
-      'Gerçekten kullandığınız takvimin adresini asla yayımlamayın.',
-      'Biri ayrıldığında sıfırlayın ve bununla bağlantısı kopacak olanlara söyleyin.',
-    ],
-    seeAlso: ['who-can-see-what-in-google-calendar', 'taking-back-a-calendar-you-shared'],
-  },
+    {
+      "heading": "Yalnızca hesabı değil, takvimi de kontrol edin",
+      "body": [
+        "Google’ın bilgisayar yönergelerinde iCal biçimindeki gizli adres, seçilen takvimin entegrasyon ayarlarındadır. Önce takvim adını kontrol edin. İş veya okul yöneticileri bu seçeneği kısıtlayabilir; adresin olmaması, bunun yerine takvimi herkese açık yayımlamak için gerekçe değildir.",
+        "Adresi ekran görüntülerine, herkese açık destek gönderilerine veya paylaşılan notlara koymayın. Yardım isterken URL’yi vermeden hesap türünü, takvim adını ve bağlantı yöntemini açıklayın. Destek görüşmesinde genellikle etkinlik içeriğinden önce bağlantı yolunun belirlenmesi gerekir."
+      ]
+    },
+    {
+      "heading": "Alıcı uygulamanın ne eklediğini kontrol edin",
+      "body": [
+        "Abonelik bir akışı takip eder; içe aktarılan dosya ayrı bir kopya oluşturur. Alıcı uygulamanın yönergelerini okuyup hangi işlemi yaptığınızı doğrulayın. Yalnızca indirilmiş bir takvim dosyasını açtıysanız oluşan randevuların sonraki değişiklikleri izleyeceğini varsaymayın.",
+        "Takvim adını, tarihi ve görünen ayrıntıları karşılaştırmak için tanıdığınız, hassas bilgi içermeyen sıradan bir etkinlik kullanın. İlkini incelemek için ikinci abonelik oluşturmayın: iki görünür kopya, gecikmiş güncellemeyi çakışma gibi gösterebilir. Kaynağı belirlerken bir takvimi geçici olarak gizleyin."
+      ]
+    },
+    {
+      "heading": "Google ve Cloud Calendars bağlantılarını ayırın",
+      "body": [
+        "Cloud Calendars’ın abonelik akışları dahil kendi etkinlik ve takvim paylaşım yolları vardır. Bunlar Google gizli adresleri değildir. Nasıl açacağınıza karar vermeden önce gönderenin bir etkinlik, takvim veya hesaba bağlı davet paylaşıp paylaşmadığını belirleyin.",
+        "Cloud Calendars alıcısının Reader, Writer veya Owner rolü olabilir. Tek başına akış adresi düzenleme hakkının kanıtı sayılmamalıdır. Benzer şekilde bir Google görüntüleme adresi almak da sizi takvimin sahibi yapmaz. Değişiklikler için hangi sistemin kullanılacağını gönderene sorun."
+      ]
+    },
+    {
+      "heading": "Alıcı takvimin yenileme davranışını hesaba katın",
+      "body": [
+        "Abonelik anında teslim sözü vermez. Cloud Calendars akışlarında önerilen yenileme aralığı bulunur; ancak güncellemeleri ne zaman alıp göstereceğine alıcı uygulama karar verir. Bir cihazdaki eski saat, düzenleyicinin değişikliği kaydetmediğini tek başına kanıtlamaz.",
+        "Aynı günkü toplantı için düzenleyicinin güncel programıyla karşılaştırın ve önemli değişiklikleri doğrudan doğrulayın. Hangi takvimin eski bilgiyi gösterdiğini ve ne zaman kontrol ettiğinizi kaydedin. Akışı güncellemeye zorlamak için etkinliği tekrar tekrar içe aktarmayın veya kaynak takvimi silmeyin."
+      ]
+    },
+    {
+      "heading": "Açığa çıkan adresi tüm kopyaları geri alma sözü vermeden yönetin",
+      "body": [
+        "Google, açığa çıkan gizli adresin sıfırlanmasını açıklar: eski adres geçersiz olur ve yenisi oluşturulur. Sonradan aboneliklerini güncellemek için adresi kullanan kendi uygulamalarınızı belirleyin. Adresi sıfırlamak, belirli bir çalışma arkadaşını kaldırmaktan farklıdır.",
+        "Önceden kaydedilmiş randevular, dışa aktarımlar ve ekran görüntüleri ayrı bir konudur. Değişen bağlantı, eski kopyaların tümünün kaybolduğunu kanıtlamaz. Bilgiyi yanlış kişilere dağıttıysanız başarılı sıfırlamayı tam silinme kanıtı saymak yerine gerçek içeriği ve alıcıları değerlendirin."
+      ]
+    }
+  ],
+  "claims": {},
+  "practical": [
+    "Hesap bağlantısı, davet, abonelik veya dosyadan hangisine sahip olduğunuzu belirleyin.",
+    "Adresi kopyalamadan önce kaynak takvimi kontrol edin.",
+    "Google gizli adresini kendi uyumlu uygulamalarınız için saklayın.",
+    "Alıcı uygulamanın içe aktarma yerine abone olduğunu doğrulayın.",
+    "Acil değişiklikleri yenileme zamanına güvenmek yerine düzenleyiciyle doğrulayın.",
+    "Adres açığa çıktıysa Google’ın sıfırlama yönergelerini izleyip gerekli bağlantıları güncelleyin."
+  ],
+  "faq": [
+    {
+      "q": "Gizli adresi iş arkadaşıma verebilir miyim?",
+      "a": "Google adresi kendi uygulamalarınız için tutmanızı önerir. Başka birinin erişimi gerekiyorsa takvimin paylaşım kontrollerini kullanıp uygun izni seçin."
+    },
+    {
+      "q": "Abonelik özgün takvimi düzenlememi sağlar mı?",
+      "a": "Google gizli iCal adresi görüntüleme içindir. Düzenleme uygun hesap bağlantısı ve izin gerektirir; Cloud Calendars paylaşım rolleri ayrı bir düzenlemedir."
+    },
+    {
+      "q": "Adresi sıfırlamak eski randevuları her yerden siler mi?",
+      "a": "Eski Google adresini geçersiz kılar. Bağımsız kaydedilmiş dosya, randevu veya ekran görüntülerinin silindiğini göstermez."
+    }
+  ],
+  "sourcesHeading": "Sağlayıcı yönergeleri ve ek kaynaklar",
+  "sources": [
+    {
+      "label": "Google: hesap bağlantıları ve gizli iCal adresleri",
+      "url": "https://support.google.com/calendar/answer/37648?hl=en"
+    },
+    {
+      "label": "Google: takvim paylaşma",
+      "url": "https://support.google.com/calendar/answer/37082?hl=en"
+    },
+    {
+      "label": "Microsoft: içe aktarma, abonelik ve güncelleme zamanı",
+      "url": "https://support.microsoft.com/en-us/outlook/import-or-subscribe-to-a-calendar-in-outlook-com-or-outlook-on-the-web"
+    }
+  ],
+  "updated": "2026-10-21",
+  "seeAlso": [
+    "who-can-see-what-in-google-calendar",
+    "taking-back-a-calendar-you-shared",
+    "sharing-one-event-not-your-calendar"
+  ]
+},
 
   'what-guests-can-do-to-your-event': {
     title: 'Konuklarınız bir etkinliğinize ne yapabilir',
