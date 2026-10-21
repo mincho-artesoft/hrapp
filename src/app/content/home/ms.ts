@@ -4,7 +4,7 @@ import { HomeCopy } from './types';
 export const HOME_MS: HomeCopy = {
   metaTitle: 'Cloud Calendars — iCloud, Google dan Outlook jadi satu',
   metaDescription:
-    "Kalendar anda dan ramalan, di satu tempat. Dibina untuk iPhone dan iPad. iCloud · Google Calendar · Microsoft Calendar.",
+    "Kalendar iCloud dan Google, cuaca, widget pada iPhone dan iPad. Muat turun percuma; Premium menambah kalendar Microsoft dan Teams.",
   nav: {
     tour: 'Lawatan',
     widgets: 'Widget',
@@ -20,7 +20,7 @@ export const HOME_MS: HomeCopy = {
   hero: {
     badge: "Versi {v} — perkongsian acara dan kalendar",
     title: ['Kalendar anda.', 'Langit anda.', 'Satu paparan.'],
-    lead: 'Setiap kalendar yang anda ada — iCloud, Google, Microsoft — di satu tempat, dengan ramalan terbina di dalam hari itu sendiri. Berhenti meneka rupa petang nanti.',
+    lead: "Lihat kalendar iCloud dan Google yang dipilih pada iPhone dan iPad, dengan maklumat cuaca yang tersedia di samping rancangan anda. Premium menambah sambungan kalendar Microsoft.",
     seeItMove: 'Lihat ia bergerak',
     onTheAppStore: 'di App Store',
     freeToStart: "Muat turun percuma",

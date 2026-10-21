@@ -1,0 +1,72 @@
+{
+  "updated": "2026-10-21",
+  "title": "Wiederkehrende Termine: einen einzelnen Termin oder die Serie gezielt ändern",
+  "short": "Wiederkehrende Termine",
+  "description": "Prüfe Kalender, Bearbeitungsrechte und Umfang einer Serienänderung. Behalte einzelne Ausnahmen im Blick, ohne die Terminserie zu löschen.",
+  "lede": "Entscheide vor der Änderung eines wiederkehrenden Termins genau, welche Daten betroffen sein sollen. Prüfe dann, ob der Editor diesen Umfang anbietet. Dieser Leitfaden stammt von Arte Soft, dem Entwickler von Cloud Calendars.",
+  "commonBelief": "Jeder Kalendereditor fragt, ob eine Änderung für einen einzelnen Termin oder die ganze Serie gilt.",
+  "sections": [
+    {
+      "heading": "Beschreibe die Änderung, bevor du den Editor öffnest",
+      "body": [
+        "„Die Unterrichtsstunde am nächsten Dienstag um eine Stunde verschieben“ betrifft einen einzelnen Termin. „Ab nächsten Monat findet der Unterricht donnerstags statt“ ändert den künftigen Zeitplan. „Den Raum für alle Besprechungen korrigieren“ kann einen größeren Umfang haben. Das sind unterschiedliche Aufgaben, auch wenn sie in derselben Terminansicht beginnen.",
+        "Notiere das Datum des ausgewählten Termins und die benachbarten Termine, die unverändert bleiben sollen. Eine kurze Vorher-nachher-Liste erleichtert die Prüfung des gespeicherten Ergebnisses. Probiere nicht an einer echten Terminserie aus, was eine unbekannte Schaltfläche zum Speichern bewirkt."
+      ]
+    },
+    {
+      "heading": "Prüfe den Kalender und deine Bearbeitungsrechte",
+      "body": [
+        "Finde heraus, zu welchem Kalender der Termin gehört und ob du Organisator, Bearbeiter oder Gast bist. Eine geteilte Serie sehen zu können, berechtigt dich noch nicht dazu, ihren Zeitplan zu ändern. Google beschreibt die Bearbeitung durch Gäste als Berechtigung, die der Organisator erteilen kann. Eine Einladung anzusehen und sie zu verwalten sind unterschiedliche Möglichkeiten.",
+        "Prüfe in Cloud Calendars, ob der Zielkalender die Bearbeitung erlaubt. Dass ein Teilnehmer eine Besprechung sehen kann, bedeutet nicht, dass er die Einladung des Organisators ändern darf. Wenn du die beabsichtigte Änderung nicht vornehmen kannst, frage den Organisator, statt eine konkurrierende Einladung zu erstellen."
+      ]
+    },
+    {
+      "heading": "Prüfe vor dem Speichern in Cloud Calendars den Änderungsumfang",
+      "body": [
+        "Der Editor von Cloud Calendars bietet Wiederholungsmuster und die Einstellung „End Repeat“. Diese Steuerelemente legen einen Zeitplan fest; sie wählen nicht aus, welche Termine eine Bearbeitung betrifft. Die Änderung eines bestehenden Serientermins kann künftige Termine beeinflussen. Ändere nicht die Wiederholungsregel, wenn du nur eine Ausnahme für ein einzelnes Datum benötigst.",
+        "Suche vor dem Speichern einer einzelnen Ausnahme nach einer ausdrücklichen Auswahl, die die Änderung auf diesen Termin begrenzt. Bietet dein Editor diesen Umfang nicht an, bearbeite den ursprünglichen Termin in einem unterstützten Editor des zugehörigen Kalenderanbieters. Prüfe anschließend das betroffene Datum und die benachbarten Termine an beiden Stellen. Lokale Kalender und verbundene Anbieter müssen Serienänderungen nicht gleich behandeln."
+      ]
+    },
+    {
+      "heading": "Nutze einen unterstützten Umfang und prüfe ausgewählte Termine",
+      "body": [
+        "Die Computer-Anleitung von Google Kalender beschreibt, dass du den wiederkehrenden Termin bearbeitest, speicherst und auswählst, welche Termine der Serie aktualisiert werden. Lies die tatsächlich für diesen Termin angezeigten Optionen. Gehe nicht davon aus, dass alle Anbieter dieselben Bezeichnungen verwenden oder dieselben Änderungen unterstützen.",
+        "Apples Handbuch für Kalender auf dem Mac beschreibt gesondert die Wiederholungshäufigkeit, eigene Muster und das Ende der Wiederholung. Das sind Steuerelemente von Apple Kalender. Unabhängig vom verwendeten unterstützten Editor solltest du das geänderte Datum, einen früheren unverändert zu lassenden Termin und den nächsten regulären Termin prüfen. Kontrolliere bei einer Einladung auch den gespeicherten Termin des Organisators. Eine Änderung deiner persönlichen Anzeige bestätigt nicht, dass die Besprechung für alle verschoben wurde."
+      ]
+    },
+    {
+      "heading": "Bewahre Ausnahmen und wähle Enddaten bewusst",
+      "body": [
+        "Ein verschobener Termin oder eine ausgelassene Woche ist ein Anlass, eine bestehende Serie vor einer Regeländerung genauer anzusehen. Halte wichtige Ausnahmen vorher fest und prüfe sie anschließend. Weder die Zusage, jede Serienänderung erhalte Ausnahmen, noch die Behauptung, jede Änderung lösche sie automatisch, ist richtig: Das Ergebnis hängt vom Vorgang und vom Anbieter ab.",
+        "Verwende für einen Kurs oder einen vorübergehenden Dienstplan ein bekanntes Enddatum, wenn es dem tatsächlichen Zeitplan entspricht. Ein jährlich wiederkehrender Geburtstag oder eine fortlaufende Besprechung kann sinnvollerweise ohne geplantes Ende bleiben. Erzwinge nicht für jede Wiederholung einen beliebigen Stichtag. Lösche eine Serie auch nicht allein deshalb und erstelle sie neu, weil sie mehrere Ausnahmen enthält."
+      ]
+    },
+    {
+      "heading": "Halte bei unerwarteten Ergebnissen die Einzelheiten fest",
+      "body": [
+        "Vergleiche den zuständigen Kalenderanbieter mit Cloud Calendars am genau betroffenen Datum. Prüfe Kalendername, ausgewählten Termin, Wiederholungsmuster und eine gegebenenfalls einsehbare Endbedingung. Ähnliche Titel oder ein separat kopierter Termin können wie ein Wiederholungsproblem wirken. Kläre zuerst, welchen Eintrag du ansiehst.",
+        "Stimmt der Termin beim Anbieter, weicht aber in der App ab, gib bei einer Fehlermeldung die App- und iOS-Version, den Kalendertyp, den beabsichtigten Änderungsumfang und die betroffenen Daten an. Hat auch der Anbieter mehr Termine geändert als beabsichtigt, kontaktiere den Organisator oder den Support des Anbieters, bevor du weitere weitreichende Änderungen vornimmst. Entferne zur Diagnose keine Konten, sage keine Einladungen ab und lösche keine Serie."
+      ]
+    }
+  ],
+  "claims": {},
+  "practical": [
+    "Notiere, welche Termine geändert werden sollen und welche unverändert bleiben müssen.",
+    "Bestätige den zugehörigen Kalender und den Organisator beziehungsweise deine Bearbeitungsberechtigung.",
+    "Nutze für eine einzelne Ausnahme einen Editor, der diesen Umfang ausdrücklich anbietet.",
+    "Prüfe einen früheren Termin, den geänderten Termin und den nächsten regulären Termin.",
+    "Bewahre vorhandene Ausnahmen und die ursprüngliche Einladung, während du eine Abweichung untersuchst."
+  ],
+  "faq": [
+    {"q": "Wird bei jeder Änderung eines Serientermins nach dem Umfang gefragt?", "a": "Nein. Gehe nicht davon aus, dass Cloud Calendars dich zur Auswahl des Umfangs auffordert. Prüfe die Optionen vor dem Speichern. Fehlt die Auswahl für eine einzelne Ausnahme, verwende dafür einen unterstützten Editor des Kalenderanbieters."},
+    {"q": "Sollte jeder wiederkehrende Termin ein Enddatum haben?", "a": "Verwende ein Enddatum, wenn der tatsächliche Zeitplan eines vorsieht. Fortlaufende Verpflichtungen brauchen keine erfundene Frist, nur damit der Kalender aufgeräumter wirkt."},
+    {"q": "Löscht eine Änderung der Serie ihre Ausnahmen?", "a": "Darauf gibt es keine allgemeingültige Antwort für alle Anbieter und Bearbeitungsvorgänge. Halte wichtige Ausnahmen fest und prüfe sie nach der Änderung. Gehe weder von garantiertem Erhalt noch von automatischem Verlust aus."}
+  ],
+  "sourcesHeading": "Offizielle Hinweise zu Wiederholungen und Bearbeitungsrechten",
+  "sources": [
+    {"label": "Google: Wiederkehrende Termine am Computer erstellen und ändern", "url": "https://support.google.com/calendar/answer/37115?co=GENIE.Platform%3DDesktop&hl=en"},
+    {"label": "Apple: Ganztägige, mehrtägige oder wiederkehrende Ereignisse auf dem Mac einrichten", "url": "https://support.apple.com/guide/calendar/set-up-all-day-multiday-or-repeating-events-icl1018/mac"},
+    {"label": "Google: In Kalender zusammenarbeiten und Gästen die Terminbearbeitung erlauben", "url": "https://support.google.com/a/users/answer/13293412?hl=en"}
+  ],
+  "seeAlso": ["drag-an-event-to-move-it", "what-guests-can-do-to-your-event"]
+}

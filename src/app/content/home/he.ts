@@ -4,7 +4,7 @@ import { HomeCopy } from './types';
 export const HOME_HE: HomeCopy = {
   metaTitle: 'Cloud Calendars — iCloud, Google ו‑Outlook בתצוגה אחת',
   metaDescription:
-    "היומנים שלכם והתחזית, במקום אחד. בנוי ל‑iPhone ול‑iPad. iCloud · Google Calendar · Microsoft Calendar.",
+    "יומני iCloud ו-Google, מזג אוויר ווידג׳טים ב-iPhone וב-iPad. הורדה חינם; Premium מוסיף יומני Microsoft ו-Teams.",
   nav: {
     tour: 'סיור',
     widgets: 'ווידג׳טים',
@@ -20,7 +20,7 @@ export const HOME_HE: HomeCopy = {
   hero: {
     badge: "גרסה {v} — שיתוף אירועים ויומנים",
     title: ['היומן שלכם.', 'השמיים שלכם.', 'תצוגה אחת.'],
-    lead: 'כל יומן שיש לכם — iCloud, Google, Microsoft — במקום אחד, כשהתחזית בנויה בתוך היום עצמו. די לנחש איך ייראה אחר הצהריים.',
+    lead: "הציגו יומני iCloud ו-Google שנבחרו ב-iPhone וב-iPad, עם מידע זמין על מזג האוויר לצד התוכניות שלכם. Premium מוסיף חיבור ליומני Microsoft.",
     seeItMove: 'ראו אותו בתנועה',
     onTheAppStore: 'ב‑App Store',
     freeToStart: "הורדה חינם",

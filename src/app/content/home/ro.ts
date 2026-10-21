@@ -4,7 +4,7 @@ import { HomeCopy } from './types';
 export const HOME_RO: HomeCopy = {
   metaTitle: 'Cloud Calendars — iCloud, Google și Outlook într-o vedere',
   metaDescription:
-    "Calendarele dumneavoastră și prognoza, într-un singur loc. Construit pentru iPhone și iPad. iCloud · Google Calendar · Microsoft Calendar.",
+    "Calendare iCloud și Google, vreme și widgeturi pe iPhone și iPad. Descărcare gratuită; Premium adaugă calendare Microsoft și Teams.",
   nav: {
     tour: 'Tur',
     widgets: 'Widgeturi',
@@ -20,7 +20,7 @@ export const HOME_RO: HomeCopy = {
   hero: {
     badge: "Versiunea {v} — partajare de evenimente și calendare",
     title: ['Calendarul dumneavoastră.', 'Cerul dumneavoastră.', 'O singură vedere.'],
-    lead: 'Fiecare calendar pe care îl aveți — iCloud, Google, Microsoft — într-un singur loc, cu prognoza construită în ziua însăși. Nu mai ghiciți cum arată după-amiaza.',
+    lead: "Vedeți calendarele iCloud și Google selectate pe iPhone și iPad, cu prognoza disponibilă alături de planurile dumneavoastră. Premium adaugă conexiuni la calendarele Microsoft.",
     seeItMove: 'Vedeți-l în mișcare',
     onTheAppStore: 'pe App Store',
     freeToStart: "Descarcă gratuit",

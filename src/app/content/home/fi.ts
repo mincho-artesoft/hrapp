@@ -4,7 +4,7 @@ import { HomeCopy } from './types';
 export const HOME_FI: HomeCopy = {
   metaTitle: 'Cloud Calendars — iCloud, Google ja Outlook yhdessä',
   metaDescription:
-    "Kalenterisi ja ennuste yhdessä paikassa. Rakennettu iPhonelle ja iPadille. iCloud · Google Calendar · Microsoft Calendar.",
+    "iCloud- ja Google-kalenterit, sää ja widgetit iPhonella ja iPadilla. Lataa ilmaiseksi; Premium lisää Microsoft-kalenterit ja Teamsin.",
   nav: {
     tour: 'Kierros',
     widgets: 'Widgetit',
@@ -20,7 +20,7 @@ export const HOME_FI: HomeCopy = {
   hero: {
     badge: "Versio {v} — tapahtumien ja kalenterien jakaminen",
     title: ['Sinun kalenterisi.', 'Sinun taivaasi.', 'Yksi näkymä.'],
-    lead: 'Jokainen kalenteri, joka sinulla on — iCloud, Google, Microsoft — yhdessä paikassa, ennuste itse päivän sisään rakennettuna. Lopeta arvailu siitä, miltä iltapäivä näyttää.',
+    lead: "Katso valittuja iCloud- ja Google-kalentereita iPhonella ja iPadilla sekä saatavilla olevaa sääennustetta suunnitelmiesi rinnalla. Premium lisää yhteydet Microsoft-kalentereihin.",
     seeItMove: 'Katso liikkeessä',
     onTheAppStore: 'App Storessa',
     freeToStart: "Lataa ilmaiseksi",

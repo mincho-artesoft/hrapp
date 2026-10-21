@@ -1,6 +1,100 @@
 import { LocalisedArticle } from '../types';
 
 export const HELP_FR_FR: Readonly<Record<string, LocalisedArticle>> = {
+  "recurring-events-without-the-mess": {
+  "updated": "2026-10-21",
+  "title": "Événements récurrents : modifier une date ou la série avec précaution",
+  "short": "Événements récurrents",
+  "description": "Vérifiez vos droits et les dates concernées avant de modifier un événement récurrent. Gérez les changements ponctuels sans supprimer la série.",
+  "lede": "Avant de modifier un rendez-vous récurrent, déterminez précisément quelles dates doivent changer. Vérifiez ensuite que l’éditeur propose cette portée. Ce guide est publié par Arte Soft, développeur de Cloud Calendars.",
+  "commonBelief": "Tous les éditeurs de calendrier demandent si une modification concerne une seule occurrence ou toute la série.",
+  "sections": [
+    {
+      "heading": "Décrivez le changement avant d’ouvrir l’éditeur",
+      "body": [
+        "« Décaler le cours de mardi prochain d’une heure » concerne une seule occurrence. « À partir du mois prochain, les cours auront lieu le jeudi » modifie les horaires futurs. « Corriger la salle de toutes les réunions » peut avoir une portée plus large. Ce sont des demandes différentes, même si elles partent du même écran de détails.",
+        "Notez la date de l’occurrence sélectionnée et les dates voisines qui doivent rester inchangées. Une courte liste avant et après facilite la vérification du résultat enregistré. N’utilisez pas une série réelle pour découvrir l’effet d’un bouton Enregistrer que vous ne connaissez pas."
+      ]
+    },
+    {
+      "heading": "Vérifiez le calendrier et vos droits de modification",
+      "body": [
+        "Identifiez le calendrier auquel appartient l’événement et votre rôle : organisateur, personne autorisée à modifier ou invité. Voir une série partagée ne donne pas, à lui seul, le droit d’en changer les horaires. Google présente la modification par les invités comme une autorisation que l’organisateur peut accorder : consulter une invitation et la gérer sont deux capacités distinctes.",
+        "Dans Cloud Calendars, vérifiez que le calendrier de destination autorise les modifications. Le fait qu’un participant puisse voir une réunion ne signifie pas qu’il peut modifier l’invitation de l’organisateur. Si vous ne pouvez pas effectuer le changement voulu, demandez à l’organisateur plutôt que de créer une invitation concurrente."
+      ]
+    },
+    {
+      "heading": "Vérifiez les occurrences concernées avant d’enregistrer dans Cloud Calendars",
+      "body": [
+        "L’éditeur de Cloud Calendars propose des règles de répétition et un réglage de fin de répétition. Ces commandes définissent une programmation ; elles ne permettent pas, à elles seules, de choisir quelles occurrences une modification touche. Modifier un événement récurrent existant peut affecter les occurrences futures. Ne remplacez pas une exception portant sur une seule date par un changement de règle de répétition.",
+        "Avant d’enregistrer une exception pour une seule date, recherchez un choix explicite limitant la modification à cette occurrence. Si votre éditeur ne propose pas cette portée, ouvrez l’événement d’origine dans un éditeur compatible de son fournisseur. Vérifiez ensuite la date concernée et les dates voisines aux deux endroits. Les calendriers locaux et les services connectés ne traitent pas nécessairement les modifications de séries de la même manière."
+      ]
+    },
+    {
+      "heading": "Utilisez une portée prise en charge, puis vérifiez des dates représentatives",
+      "body": [
+        "Les instructions de Google Agenda pour ordinateur indiquent de modifier l’événement récurrent, d’enregistrer, puis de choisir les événements de la série auxquels appliquer la mise à jour. Lisez les choix réellement proposés pour cet événement sans supposer que tous les fournisseurs emploient les mêmes libellés ou permettent les mêmes changements.",
+        "Le guide de Calendrier d’Apple pour Mac décrit séparément la fréquence, les répétitions personnalisées et leur date de fin. Il s’agit des commandes de Calendrier d’Apple. Quel que soit l’éditeur compatible utilisé, vérifiez la date modifiée, une date antérieure qui doit rester inchangée et l’occurrence normale suivante. Pour une invitation, vérifiez également l’événement enregistré par l’organisateur : une modification de votre affichage personnel ne confirme pas que la réunion de tous les participants a été déplacée."
+      ]
+    },
+    {
+      "heading": "Préservez les exceptions et choisissez les dates de fin délibérément",
+      "body": [
+        "Un rendez-vous déplacé ou une semaine sautée justifie d’examiner la série existante avant de modifier sa règle. Notez d’abord les exceptions importantes, puis vérifiez-les après la modification. Il serait inexact de promettre que toute modification de série préserve les exceptions, ou d’affirmer qu’elle les efface systématiquement : le résultat dépend de l’opération et du fournisseur.",
+        "Indiquez une date de fin connue pour un cours ou un roulement temporaire si elle correspond au programme réel. Un anniversaire annuel ou une réunion régulière peut raisonnablement ne pas avoir de fin prévue. N’imposez pas de limite arbitraire à chaque répétition et ne supprimez pas une série pour la recréer simplement parce qu’elle comporte plusieurs exceptions."
+      ]
+    },
+    {
+      "heading": "Si le résultat est inattendu, conservez les éléments utiles au diagnostic",
+      "body": [
+        "Comparez le service auquel appartient l’événement et Cloud Calendars à la date exacte concernée. Vérifiez le nom du calendrier, l’occurrence sélectionnée, la règle de répétition et toute condition de fin consultable. Des titres semblables ou un rendez-vous copié séparément peuvent ressembler à un problème de récurrence : établissez d’abord quel événement vous regardez.",
+        "Si l’événement est correct chez le fournisseur mais diffère dans l’app, signalez les versions de l’app et d’iOS, le type de calendrier, la portée souhaitée et les dates concernées. Si le fournisseur a lui aussi modifié plus de dates que prévu, contactez l’organisateur ou son assistance avant d’effectuer d’autres changements étendus. Évitez de retirer des comptes, d’annuler des invitations ou de supprimer une série pour établir un diagnostic."
+      ]
+    }
+  ],
+  "claims": {},
+  "practical": [
+    "Notez les dates des occurrences à modifier et celles qui doivent rester inchangées.",
+    "Confirmez le calendrier auquel appartient l’événement, l’organisateur ou vos droits de modification.",
+    "Pour une exception ponctuelle, utilisez un éditeur qui propose explicitement cette portée.",
+    "Vérifiez une date antérieure, la date modifiée et l’occurrence normale suivante.",
+    "Conservez les exceptions existantes et l’invitation d’origine pendant le diagnostic d’une différence."
+  ],
+  "faq": [
+    {
+      "q": "Chaque modification d’un événement récurrent demande-t-elle de choisir les occurrences concernées ?",
+      "a": "Non. Ne supposez pas que Cloud Calendars vous demandera de choisir cette portée. Vérifiez les options avant d’enregistrer ; si ce choix est absent, utilisez un éditeur compatible du fournisseur pour une exception sur une seule date."
+    },
+    {
+      "q": "Faut-il une date de fin pour chaque événement récurrent ?",
+      "a": "Utilisez une date de fin lorsque le programme réel en prévoit une. Les engagements qui se poursuivent n’ont pas besoin d’une échéance inventée simplement pour rendre le calendrier plus ordonné."
+    },
+    {
+      "q": "Modifier la série effacera-t-il ses exceptions ?",
+      "a": "Il n’existe pas de réponse universelle pour tous les fournisseurs et toutes les modifications. Notez les exceptions importantes et vérifiez-les après le changement ; ne présumez ni leur conservation garantie ni leur perte automatique."
+    }
+  ],
+  "sourcesHeading": "Documentation officielle sur les récurrences et les droits de modification",
+  "sources": [
+    {
+      "label": "Google : créer et modifier un événement récurrent sur ordinateur",
+      "url": "https://support.google.com/calendar/answer/37115?co=GENIE.Platform%3DDesktop&hl=en"
+    },
+    {
+      "label": "Apple : créer des événements sur une journée, plusieurs jours ou récurrents sur Mac",
+      "url": "https://support.apple.com/guide/calendar/set-up-all-day-multiday-or-repeating-events-icl1018/mac"
+    },
+    {
+      "label": "Google : collaborer dans Agenda et autoriser les invités à modifier les événements",
+      "url": "https://support.google.com/a/users/answer/13293412?hl=en"
+    }
+  ],
+  "seeAlso": [
+    "drag-an-event-to-move-it",
+    "what-guests-can-do-to-your-event"
+  ]
+},
+
   "disconnect-calendar-integration-without-losing-track": {
   "updated": "2026-10-22",
   "title": "Déconnecter une intégration de calendrier : accès, synchronisation et copies existantes",

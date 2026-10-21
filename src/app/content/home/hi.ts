@@ -4,7 +4,7 @@ import { HomeCopy } from './types';
 export const HOME_HI: HomeCopy = {
   metaTitle: 'Cloud Calendars — iCloud, Google और Outlook एक ही जगह',
   metaDescription:
-    "आपके कैलेंडर और पूर्वानुमान, एक ही जगह। iPhone और iPad के लिए बनाया गया। iCloud · Google Calendar · Microsoft Calendar.",
+    "iPhone और iPad पर iCloud और Google कैलेंडर, मौसम और विजेट। मुफ़्त डाउनलोड; Premium में Microsoft कैलेंडर और Teams भी।",
   nav: {
     tour: 'झलक',
     widgets: 'विजेट',
@@ -20,7 +20,7 @@ export const HOME_HI: HomeCopy = {
   hero: {
     badge: "संस्करण {v} — इवेंट और कैलेंडर साझा करना",
     title: ['आपका कैलेंडर।', 'आपका आसमान।', 'एक दृश्य।'],
-    lead: 'आपके पास जितने भी कैलेंडर हैं — iCloud, Google, Microsoft — सब एक जगह, और पूर्वानुमान ख़ुद उसी दिन के भीतर बना हुआ। दोपहर कैसी रहेगी, इसका अंदाज़ा लगाना बंद कीजिए।',
+    lead: "iPhone और iPad पर चुने हुए iCloud और Google कैलेंडर देखिए, अपनी योजनाओं के साथ उपलब्ध मौसम की जानकारी भी। Premium में Microsoft कैलेंडर जोड़ने की सुविधा मिलती है।",
     seeItMove: 'चलते हुए देखिए',
     onTheAppStore: 'App Store पर',
     freeToStart: "मुफ़्त डाउनलोड",

@@ -1,0 +1,15 @@
+{
+  "locale": "nl-NL",
+  "changes": [
+    {
+      "path": "hero.lead",
+      "before": "Elke agenda die u heeft — iCloud, Google, Microsoft — op één plek, met de verwachting in de dag zelf. Stop met gissen hoe de middag eruitziet.",
+      "after": "Bekijk geselecteerde iCloud- en Google-agenda’s op iPhone en iPad, met beschikbare weerinformatie naast uw plannen. Premium voegt verbindingen met Microsoft-agenda’s toe."
+    },
+    {
+      "path": "metaDescription",
+      "before": "Uw agenda’s en de verwachting, op één plek. Gemaakt voor iPhone en iPad. iCloud · Google Calendar · Microsoft Calendar.",
+      "after": "iCloud- en Google-agenda’s, weer en widgets op iPhone en iPad. Gratis downloaden; Premium voegt Microsoft-agenda’s en Teams toe."
+    }
+  ]
+}

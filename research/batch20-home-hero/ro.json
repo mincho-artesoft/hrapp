@@ -1,0 +1,15 @@
+{
+  "locale": "ro",
+  "changes": [
+    {
+      "path": "hero.lead",
+      "before": "Fiecare calendar pe care îl aveți — iCloud, Google, Microsoft — într-un singur loc, cu prognoza construită în ziua însăși. Nu mai ghiciți cum arată după-amiaza.",
+      "after": "Vedeți calendarele iCloud și Google selectate pe iPhone și iPad, cu prognoza disponibilă alături de planurile dumneavoastră. Premium adaugă conexiuni la calendarele Microsoft."
+    },
+    {
+      "path": "metaDescription",
+      "before": "Calendarele dumneavoastră și prognoza, într-un singur loc. Construit pentru iPhone și iPad. iCloud · Google Calendar · Microsoft Calendar.",
+      "after": "Calendare iCloud și Google, vreme și widgeturi pe iPhone și iPad. Descărcare gratuită; Premium adaugă calendare Microsoft și Teams."
+    }
+  ]
+}

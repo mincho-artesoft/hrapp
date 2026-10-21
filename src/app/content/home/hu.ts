@@ -4,7 +4,7 @@ import { HomeCopy } from './types';
 export const HOME_HU: HomeCopy = {
   metaTitle: 'Cloud Calendars — iCloud, Google és Outlook egy nézetben',
   metaDescription:
-    "A naptárai és az előrejelzés egy helyen. iPhone-ra és iPadre építve. iCloud · Google Calendar · Microsoft Calendar.",
+    "iCloud- és Google-naptárak, időjárás, widgetek iPhone-on és iPaden. Ingyenes letöltés; a Premium Microsoft-naptárakkal és Teamsszel bővít.",
   nav: {
     tour: 'Bemutató',
     widgets: 'Modulok',
@@ -20,7 +20,7 @@ export const HOME_HU: HomeCopy = {
   hero: {
     badge: "{v} verzió — események és naptárak megosztása",
     title: ['Az Ön naptára.', 'Az Ön ege.', 'Egyetlen nézet.'],
-    lead: 'Minden naptára — iCloud, Google, Microsoft — egy helyen, az előrejelzéssel magába a napba építve. Ne találgassa többé, milyen lesz a délután.',
+    lead: "Tekintse meg a kiválasztott iCloud- és Google-naptárakat iPhone-on és iPaden, tervei mellett az elérhető időjárási adatokkal. A Premium Microsoft-naptárak csatlakoztatását is lehetővé teszi.",
     seeItMove: 'Nézze meg mozgásban',
     onTheAppStore: 'az App Store-ban',
     freeToStart: "Letöltés ingyen",

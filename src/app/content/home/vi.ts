@@ -4,7 +4,7 @@ import { HomeCopy } from './types';
 export const HOME_VI: HomeCopy = {
   metaTitle: 'Cloud Calendars — iCloud, Google và Outlook trong một khung',
   metaDescription:
-    "Những cuốn lịch của bạn và dự báo, ở cùng một nơi. Dựng cho iPhone và iPad. iCloud · Google Calendar · Microsoft Calendar.",
+    "Lịch iCloud và Google, thời tiết và tiện ích trên iPhone và iPad. Tải miễn phí; Premium bổ sung lịch Microsoft và Teams.",
   nav: {
     tour: 'Giới thiệu',
     widgets: 'Widget',
@@ -20,7 +20,7 @@ export const HOME_VI: HomeCopy = {
   hero: {
     badge: "Phiên bản {v} — chia sẻ sự kiện và lịch",
     title: ['Lịch của bạn.', 'Bầu trời của bạn.', 'Một khung nhìn.'],
-    lead: 'Mọi cuốn lịch bạn có — iCloud, Google, Microsoft — ở cùng một nơi, với dự báo dựng ngay trong chính ngày đó. Thôi đoán xem buổi chiều sẽ ra sao.',
+    lead: "Xem các lịch iCloud và Google đã chọn trên iPhone và iPad, cùng dự báo thời tiết hiện có bên cạnh kế hoạch của bạn. Premium bổ sung kết nối lịch Microsoft.",
     seeItMove: 'Xem nó chuyển động',
     onTheAppStore: 'trên App Store',
     freeToStart: "Tải miễn phí",

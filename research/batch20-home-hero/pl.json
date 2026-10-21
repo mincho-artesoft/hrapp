@@ -1,0 +1,15 @@
+{
+  "locale": "pl",
+  "changes": [
+    {
+      "path": "hero.lead",
+      "before": "Każdy kalendarz, który masz — iCloud, Google, Microsoft — w jednym miejscu, z prognozą wbudowaną w sam dzień. Koniec ze zgadywaniem, jak wygląda popołudnie.",
+      "after": "Przeglądaj wybrane kalendarze iCloud i Google na iPhonie i iPadzie, z dostępną prognozą pogody obok swoich planów. Premium dodaje połączenia z kalendarzami Microsoft."
+    },
+    {
+      "path": "metaDescription",
+      "before": "Twoje kalendarze i prognoza w jednym miejscu. Zbudowane na iPhone’a i iPada. iCloud · Google Calendar · Microsoft Calendar.",
+      "after": "Kalendarze iCloud i Google, pogoda i widżety na iPhone’a i iPada. Pobierz bezpłatnie; Premium dodaje kalendarze Microsoft i Teams."
+    }
+  ]
+}

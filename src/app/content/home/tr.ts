@@ -4,7 +4,7 @@ import { HomeCopy } from './types';
 export const HOME_TR: HomeCopy = {
   metaTitle: 'Cloud Calendars — iCloud, Google ve Outlook tek görünümde',
   metaDescription:
-    "Takvimleriniz ve tahmin tek yerde. iPhone ve iPad için yapıldı. iCloud · Google Calendar · Microsoft Calendar.",
+    "iPhone ve iPad’de iCloud ve Google takvimleri, hava durumu ve araç takımları. Ücretsiz indirin; Premium, Microsoft takvimleri ve Teams ekler.",
   nav: {
     tour: 'Tur',
     widgets: 'Widget’lar',
@@ -20,7 +20,7 @@ export const HOME_TR: HomeCopy = {
   hero: {
     badge: "Sürüm {v} — etkinlik ve takvim paylaşımı",
     title: ['Takviminiz.', 'Gökyüzünüz.', 'Tek görünüm.'],
-    lead: 'Sahip olduğunuz her takvim — iCloud, Google, Microsoft — tek yerde, tahmin günün kendisine yerleşmiş halde. Öğleden sonranın nasıl olacağını tahmin etmeyi bırakın.',
+    lead: "Seçtiğiniz iCloud ve Google takvimlerini iPhone ve iPad’de, planlarınızın yanında mevcut hava tahminiyle görüntüleyin. Premium, Microsoft takvim bağlantılarını ekler.",
     seeItMove: 'Hareket halinde görün',
     onTheAppStore: 'App Store’da',
     freeToStart: "Ücretsiz indir",

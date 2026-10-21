@@ -4,7 +4,7 @@ import { HomeCopy } from './types';
 export const HOME_KO: HomeCopy = {
   metaTitle: 'Cloud Calendars — iCloud·Google·Outlook을 한 화면에',
   metaDescription:
-    "당신의 달력과 예보를 한곳에. iPhone과 iPad를 위해. iCloud · Google Calendar · Microsoft Calendar.",
+    "iPhone과 iPad에서 iCloud·Google 캘린더, 날씨, 위젯을 이용하세요. 무료 다운로드. Premium은 Microsoft 캘린더와 Teams를 추가합니다.",
   nav: {
     tour: '둘러보기',
     widgets: '위젯',
@@ -20,7 +20,7 @@ export const HOME_KO: HomeCopy = {
   hero: {
     badge: "버전 {v} — 일정과 캘린더 공유",
     title: ['당신의 달력.', '당신의 하늘.', '하나의 화면.'],
-    lead: '가지고 있는 모든 달력 — iCloud, Google, Microsoft — 을 한곳에, 예보는 하루 안에 들어 있습니다. 오후가 어떨지 짐작하는 일은 이제 그만.',
+    lead: "iPhone과 iPad에서 선택한 iCloud 및 Google 캘린더를 보고, 계획 옆에서 제공되는 날씨 정보를 확인하세요. Premium은 Microsoft 캘린더 연결을 추가합니다.",
     seeItMove: '움직이는 모습 보기',
     onTheAppStore: 'App Store에서',
     freeToStart: "무료로 받기",

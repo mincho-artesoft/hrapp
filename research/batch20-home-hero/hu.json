@@ -1,0 +1,15 @@
+{
+  "locale": "hu",
+  "changes": [
+    {
+      "path": "hero.lead",
+      "before": "Minden naptára — iCloud, Google, Microsoft — egy helyen, az előrejelzéssel magába a napba építve. Ne találgassa többé, milyen lesz a délután.",
+      "after": "Tekintse meg a kiválasztott iCloud- és Google-naptárakat iPhone-on és iPaden, tervei mellett az elérhető időjárási adatokkal. A Premium Microsoft-naptárak csatlakoztatását is lehetővé teszi."
+    },
+    {
+      "path": "metaDescription",
+      "before": "A naptárai és az előrejelzés egy helyen. iPhone-ra és iPadre építve. iCloud · Google Calendar · Microsoft Calendar.",
+      "after": "iCloud- és Google-naptárak, időjárás, widgetek iPhone-on és iPaden. Ingyenes letöltés; a Premium Microsoft-naptárakkal és Teamsszel bővít."
+    }
+  ]
+}

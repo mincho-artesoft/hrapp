@@ -1,0 +1,291 @@
+{
+  "schemaVersion": 1,
+  "date": "2026-10-22",
+  "status": "draft_reconciliation_for_review_no_ledger_mutation",
+  "sourceHead": "2cd5b8b10d248bd5a59c3b1cbb9679864aeda0da",
+  "inventory": {
+    "ledgerBefore": {
+      "articles": 398,
+      "englishArticles": 50
+    },
+    "currentIndex": {
+      "articles": 441,
+      "englishArticles": 54,
+      "locales": 30
+    },
+    "meaning": "Inventory is route accounting only. It is not substantive coverage, quality, live deployment or ranking evidence."
+  },
+  "bodyReview": [
+    {
+      "slug": "icloud-google-and-outlook-in-one-view",
+      "route": "/articles/icloud-google-and-outlook-in-one-view/",
+      "file": "src/app/content/en-US/articles-unify.ts",
+      "title": "iCloud, Google and Outlook in one view: accounts, copies and permissions",
+      "scope": "Complete current object: all sections and paragraphs, practical steps, FAQs, sources and related links; not just metadata or route presence.",
+      "sections": 6,
+      "bodyParagraphs": 12,
+      "sourceUrls": [
+        "https://support.apple.com/guide/icloud/set-up-calendar-mme4d73a8727/icloud",
+        "https://support.google.com/calendar/answer/37082?hl=en",
+        "https://learn.microsoft.com/en-us/graph/outlook-calendar-concept-overview"
+      ],
+      "objectSha256": "5d303ca15a2c1d245d0c6fdf50f87f171d51a246fed70883b670633f715d6303"
+    },
+    {
+      "slug": "three-calendar-apps-is-two-too-many",
+      "route": "/articles/three-calendar-apps-is-two-too-many/",
+      "file": "src/app/content/en-US/articles-unify.ts",
+      "title": "Combine calendar apps on iPhone without losing track of events",
+      "scope": "Complete current object: all sections and paragraphs, practical steps, FAQs, sources and related links; not just metadata or route presence.",
+      "sections": 6,
+      "bodyParagraphs": 12,
+      "sourceUrls": [
+        "https://support.apple.com/guide/iphone/use-multiple-calendars-iph3d1110d4/ios",
+        "https://support.apple.com/en-us/102180"
+      ],
+      "objectSha256": "3f89adfaf8e6301aedd23da5b828fe86d8733aeb687394e94debd1d2129d3c9f"
+    },
+    {
+      "slug": "what-calendar-sync-actually-does",
+      "route": "/articles/what-calendar-sync-actually-does/",
+      "file": "src/app/content/en-US/articles-unify.ts",
+      "title": "Calendar sync on iPhone: accounts, subscriptions and missing events",
+      "scope": "Complete current object: all sections and paragraphs, practical steps, FAQs, sources and related links; not just metadata or route presence.",
+      "sections": 7,
+      "bodyParagraphs": 20,
+      "sourceUrls": [
+        "https://support.apple.com/guide/iphone/use-multiple-calendars-iph3d1110d4/ios",
+        "https://support.google.com/calendar/answer/37100?hl=en&co=GENIE.Platform%3DiOS"
+      ],
+      "objectSha256": "8e8413b51e1d775503ebd65721ee65eb80d982440c925ad85c36a9e86fbdef37"
+    },
+    {
+      "slug": "work-and-personal-without-two-apps",
+      "route": "/articles/work-and-personal-without-two-apps/",
+      "file": "src/app/content/en-US/articles-unify.ts",
+      "title": "Work and personal calendars in one app: keep ownership separate",
+      "scope": "Complete current object: all sections and paragraphs, practical steps, FAQs, sources and related links; not just metadata or route presence.",
+      "sections": 5,
+      "bodyParagraphs": 11,
+      "sourceUrls": [
+        "https://support.apple.com/guide/iphone/use-multiple-calendars-iph3d1110d4/ios",
+        "https://support.apple.com/en-us/102180",
+        "https://support.google.com/calendar/answer/15716974?hl=en",
+        "https://support.microsoft.com/en-us/outlook/calendar/change-an-appointment-meeting-or-event-in-outlook"
+      ],
+      "objectSha256": "01b2362f4dfc7794baefd3dd4cab687424751c5e762bca800ab1b2d497cfb000"
+    },
+    {
+      "slug": "when-two-calendars-disagree",
+      "route": "/articles/when-two-calendars-disagree/",
+      "file": "src/app/content/en-US/articles-unify.ts",
+      "title": "When calendar events disagree: check ownership before editing",
+      "scope": "Complete current object: all sections and paragraphs, practical steps, FAQs, sources and related links; not just metadata or route presence.",
+      "sections": 5,
+      "bodyParagraphs": 10,
+      "sourceUrls": [
+        "https://support.apple.com/en-us/102180",
+        "https://support.apple.com/en-us/102543",
+        "https://support.google.com/calendar/answer/15716974?hl=en",
+        "https://support.microsoft.com/en-us/outlook/calendar/change-an-appointment-meeting-or-event-in-outlook",
+        "https://support.microsoft.com/en-us/support/known-issues/outlook-shows-conflict-errors-when-updating-or-cancelling-meetings"
+      ],
+      "objectSha256": "70e4f87860828576f3d4e0df33472e0fc75cecb2a447ab603c097683d05a38bf"
+    },
+    {
+      "slug": "google-calendars-that-never-reach-your-iphone",
+      "route": "/articles/google-calendars-that-never-reach-your-iphone/",
+      "file": "src/app/content/en-US/articles-google.ts",
+      "title": "A Google calendar is missing on iPhone: check the connection and selection",
+      "scope": "Complete current object: all sections and paragraphs, practical steps, FAQs, sources and related links; not just metadata or route presence.",
+      "sections": 6,
+      "bodyParagraphs": 12,
+      "sourceUrls": [
+        "https://support.google.com/calendar/answer/99358?hl=en&co=GENIE.Platform%3DiOS",
+        "https://support.google.com/calendar/answer/37100?hl=en&co=GENIE.Platform%3DiOS",
+        "https://developers.google.com/workspace/calendar/api/v3/reference/calendarList/list"
+      ],
+      "objectSha256": "9dd8865cffbeb8a48a4ccc344d0e9532b1b7a2274b83297eaf00c4eac25bfe3e"
+    },
+    {
+      "slug": "find-old-calendar-events-by-account-date-and-title",
+      "route": "/articles/find-old-calendar-events-by-account-date-and-title/",
+      "file": "src/app/content/en-US/articles-help.ts",
+      "title": "Find an old calendar event: check the account, dates and search fields",
+      "scope": "Complete current object: all sections and paragraphs, practical steps, FAQs, sources and related links; not just metadata or route presence.",
+      "sections": 6,
+      "bodyParagraphs": 14,
+      "sourceUrls": [
+        "https://support.google.com/calendar/answer/37176?hl=en&co=GENIE.Platform%3DDesktop",
+        "https://support.apple.com/guide/iphone/search-for-events-iph2c9ef44ad/ios"
+      ],
+      "objectSha256": "712a76b8780bc20853a7376cacef0032fdcbde1dc5e96667895518d27494e03a"
+    }
+  ],
+  "proposedClusterReconciliations": [
+    {
+      "id": "combine-calendars",
+      "beforeStatus": "candidate_existing_content_comparison_pending",
+      "proposedStatus": "english_existing_bodies_reviewed_substantive_core_coverage_scoped_gaps",
+      "proposedCanonical": "/articles/icloud-google-and-outlook-in-one-view/",
+      "supportingRoutes": [
+        "/articles/three-calendar-apps-is-two-too-many/",
+        "/articles/work-and-personal-without-two-apps/",
+        "/articles/what-calendar-sync-actually-does/"
+      ],
+      "reason": "The original aggregation-versus-migration and destination/colour/checking intent is materially answered in current prose. Provider copies, account identity, workplace authority, plan limits, duplicate routes, and harmless two-direction checks are explicit. Retaining comparison_pending would ignore actual completed editorial work; marking the whole merge intent complete would overstate it.",
+      "intentAssessment": [
+        {
+          "intent": "Multiple calendars in one view / combine Google and Outlook for personal planning",
+          "status": "substantively_covered",
+          "evidence": "Provider overview sections 1–6 identify accounts, iOS versus direct connection, Google/Base and Microsoft/Premium, provider permissions, mirror sources, selected destinations and verification."
+        },
+        {
+          "intent": "Replace app switching without deleting accounts or confusing copies",
+          "status": "substantively_covered",
+          "evidence": "Three-calendar-apps sections 1–6 keep workplace apps, inspect existing routes, test a disposable owned appointment and separate notifications from view selection."
+        },
+        {
+          "intent": "Work/personal colour labels, destinations and shared availability",
+          "status": "substantively_covered_for_overview_and_bounded_manual_workflow",
+          "evidence": "Work-and-personal sections 1–5 explain colours, visibility, destination, approved manual busy block and recipient-side verification without asserting automated masking."
+        },
+        {
+          "intent": "Merge/migrate stored events into one destination calendar",
+          "status": "distinction_covered_full_migration_workflow_not_established_in_reviewed_bodies",
+          "evidence": "Current guides explain why an overview is not a merge and why a move can affect the source. They do not provide a provider-specific transfer validation/rollback procedure. This is not evidence the entire site lacks export guidance."
+        }
+      ],
+      "remainingIntentGaps": [
+        {
+          "gap": "A reader using merge to mean actual migration still needs a clear next action.",
+          "action": "In the existing provider overview, add a compact goal choice: view selected sources / move owned events / replicate availability. Refer actual transfer seekers to the existing export guide after reviewing that guide; do not invent a Cloud bulk merge control or repeat an import procedure without provider support.",
+          "priority": "medium"
+        },
+        {
+          "gap": "Automatic cross-account availability replication is not established as a Cloud capability.",
+          "action": "Keep the explicit boundary and existing sync/OneCal related guide. Do not create a generic automation article from competitor discovery alone.",
+          "priority": "boundary_not_missing_feature"
+        }
+      ],
+      "noNewPageRecommended": true
+    },
+    {
+      "id": "sync-troubleshooting",
+      "beforeStatus": "candidate_existing_content_comparison_pending",
+      "proposedStatus": "english_existing_bodies_reviewed_substantive_diagnostics_coverage_provider_specific_gaps",
+      "proposedCanonical": "/articles/what-calendar-sync-actually-does/",
+      "supportingRoutes": [
+        "/articles/when-two-calendars-disagree/",
+        "/articles/google-calendars-that-never-reach-your-iphone/",
+        "/articles/find-old-calendar-events-by-account-date-and-title/"
+      ],
+      "reason": "The stated layered decision sequence is present across full guides: ownership/provider view, same identity, visible versus absent calendars, two-device direction checks, Google selection and bounded retrieval, title/current-year search, duplicates and safe escalation. Generic troubleshooting is substantive; universal provider repair and recovery are not established.",
+      "intentAssessment": [
+        {
+          "intent": "Calendar not syncing between iPhone and iPad",
+          "status": "substantively_covered_as_non_destructive_diagnosis",
+          "evidence": "Sync guide sections 1–5 distinguish connection types and perform a harmless provider/direction comparison, without a fixed refresh promise or reset-first advice."
+        },
+        {
+          "intent": "A Google calendar or event is missing",
+          "status": "substantively_covered",
+          "evidence": "Google missing-calendar guide sections 1–6 separately checks web identity/access, hidden versus absent calendars, iOS versus direct routes, selection, exact dates and support escalation. It does not promise every accessible calendar appears."
+        },
+        {
+          "intent": "Old calendar events are missing",
+          "status": "substantively_covered_as_search_and_date_scope_diagnosis",
+          "evidence": "Old-event guide sections 1–6 identifies title matching, current-year app search, provider advanced search, browsing versus search and local calendar absence of an assumed cloud archive. No guarantee of recovery."
+        },
+        {
+          "intent": "Two copies disagree or appear duplicated",
+          "status": "substantively_covered_with_one_useful_example_remaining",
+          "evidence": "Disagreement guide sections 1–5 checks record identity, provider view, time zone, recurrence and permissions, rejects universal last-edit-wins, hides/restores visibility and verifies one authorised correction."
+        }
+      ],
+      "remainingIntentGaps": [
+        {
+          "gap": "Readers have to assemble the symptom branches from several guides.",
+          "action": "Add a short diagnostic routing list to what-calendar-sync-actually-does: calendar absent / listed but unchecked / exact event date absent / title search empty / two entries differ. Link each to the existing specific guide. This is navigation of existing depth, not a demand for another article.",
+          "priority": "medium"
+        },
+        {
+          "gap": "A generated destination copy from a separate replication service is not worked through as an explicit example in the disagreement guide.",
+          "action": "Add one bounded example under Hide first: identify the original provider event, the separate destination calendar and the service that created it; hiding a displayed calendar does not remove a stored destination copy. Point disconnect decisions to the existing disconnect guide; do not invent clone markers or cleanup outcomes.",
+          "priority": "medium",
+          "evidenceRecord": "research/competitors/batch11-export-duplicates-primary-20261021.json"
+        },
+        {
+          "gap": "Exact provider/client repair procedures and service-specific history limits remain outside this body review.",
+          "action": "Do not claim universal iCloud/Microsoft/shared-resource troubleshooting, full archive loading or recovery. Before expanding a provider branch, reread its current official help and the existing Exchange/help guides. Readdle troubleshooting remains an index-only original discovery; it is not a completed substantive source read.",
+          "priority": "research_gate"
+        }
+      ],
+      "noNewPageRecommended": true
+    }
+  ],
+  "recordedEvidenceReview": [
+    {
+      "file": "research/competitors/primary-page-review-20261021-batch01.json",
+      "scope": "Complete record read; original merge article main body recorded full, Timepage sync main body recorded full; Readdle troubleshooting index only, Google/Apple setup search-returned body only. Partial BusyCal and marketing reads remain partial.",
+      "contribution": "Establishes original candidate intent and limits; no retroactive promotion of source-read scope."
+    },
+    {
+      "file": "research/batch07-providers/evidence.json",
+      "scope": "Complete existing proof record read, not a fresh native audit.",
+      "contribution": "iOS calendars plus direct providers, source-dependent mirrors, selected sync, permission-model limitations and Premium Microsoft. Earlier integration note about three-calendar-apps is superseded by its now-reviewed revised body."
+    },
+    {
+      "file": "research/competitors/batch09-provider-intents-20261021.json",
+      "scope": "Targeted mapping entries for availability, clones, Microsoft shared/resource support and history; not a fresh complete corpus review.",
+      "contribution": "Earlier absence/brief-body labels cannot override current revised content. Work/personal busy-block example now exists; actual Microsoft expansion not reviewed here."
+    },
+    {
+      "file": "research/competitors/batch11-export-duplicates-primary-20261021.json",
+      "scope": "Complete record; recorded OneCal duplicate body 22–52 and BusyCal CSV body 57–74.",
+      "contribution": "Supports original/destination/generated-copy distinction, not Cloud clone detection or vendor cleanup transfer."
+    },
+    {
+      "file": "research/competitors/batch16-sync-directions-troubleshooting-20261022.json",
+      "scope": "Complete record; three CalendarBridge main bodies recorded full.",
+      "contribution": "Direction, provider browser, selection, date horizon and feed refresh stages; publisher timings are not Cloud promises."
+    },
+    {
+      "file": "research/batch17-onecal/evidence.json",
+      "scope": "Complete existing record of primary body ranges; no new web fetch.",
+      "contribution": "Copying rules and mobile/web scope belong to that publisher; extend existing conceptual distinctions, not unsupported Cloud parity."
+    },
+    {
+      "file": "research/batch18-feed-diagnostics/evidence.json",
+      "scope": "Complete record: Microsoft publishing sections targeted; Google import/subscription substantive bodies recorded full; CalConverter FAQ publisher-only.",
+      "contribution": "Import snapshots, subscription refresh and intermediate feed processing are adjacent existing-article work, not grounds to duplicate sync pages. Current feed/time-zone article bodies were not reviewed in this task."
+    },
+    {
+      "file": "research/competitors/batch21-syncdate-calconverter-primary-20261022.json",
+      "scope": "Complete recorded homepage-review findings.",
+      "contribution": "Automation/formatting questions only; no imported privacy, conflict, timing or universal compatibility claims."
+    },
+    {
+      "file": "research/competitors/batch25-fantastical-settings-primary-20261022.json",
+      "scope": "Complete recorded Settings body review 61–150.",
+      "contribution": "Hidden/declined/mirrored records are vendor-specific settings; useful diagnosis intent, not a Cloud settings recipe."
+    },
+    {
+      "file": "research/batch16-disconnect/evidence.json",
+      "scope": "Complete existing native/provider proof record; no fresh disconnect or account operation.",
+      "contribution": "Reconnection is not neutral; local mirror removal and provider revocation differ. Current disconnect article body not reviewed here."
+    }
+  ],
+  "evidenceLimits": [
+    "Only seven current English article objects were fully reviewed. Other linked guides and translations are not declared quality-approved by association.",
+    "Recorded source reviews were read locally; no new primary-web fetch or independent revalidation of external documentation occurred in this task.",
+    "No deployed-page or released-app runtime verification. Proposed statuses deliberately say existing bodies reviewed, not published_verified.",
+    "No rank, volume, ChatGPT citation or keyword-completeness measurement.",
+    "No ledger, source, account, native, build or deployment mutation."
+  ],
+  "metrics": {
+    "measuredRank": null,
+    "measuredSearchVolume": null,
+    "chatgptCitationEvidence": null
+  }
+}

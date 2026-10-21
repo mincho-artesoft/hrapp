@@ -1,0 +1,10 @@
+{
+  "allPassed": true,
+  "newLocalizedGuides": 6,
+  "relatedOnlyChanges": 6,
+  "homeLocales": 30,
+  "homeFieldsChanged": 60,
+  "exactHomeScopeOnly": true,
+  "sharedFactsAndCuratedSelectionUnchanged": true,
+  "scope": "Actual diff versus HEAD, full localized exact-draft/structure/source parity, related-only immutability and exactly two fields per home. Not native-speaker or product-runtime certification."
+}

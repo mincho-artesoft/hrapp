@@ -4,7 +4,7 @@ import { HomeCopy } from './types';
 export const HOME_AR_SA: HomeCopy = {
   metaTitle: 'Cloud Calendars — iCloud وGoogle وOutlook في شاشة واحدة',
   metaDescription:
-    "تقاويمك والتوقعات في مكان واحد. مبنيّ لـ iPhone وiPad. iCloud · Google Calendar · Microsoft Calendar.",
+    "تقويمات iCloud وGoogle والطقس والأدوات على iPhone وiPad. تنزيل مجاني؛ تضيف Premium تقويمات Microsoft وTeams.",
   nav: {
     tour: 'جولة',
     widgets: 'عناصر الواجهة',
@@ -20,7 +20,7 @@ export const HOME_AR_SA: HomeCopy = {
   hero: {
     badge: "الإصدار {v} — مشاركة الأحداث والتقويمات",
     title: ['تقويمك.', 'سماؤك.', 'عرض واحد.'],
-    lead: 'كل تقويم لديك — iCloud وGoogle وMicrosoft — في مكان واحد، والتوقعات مبنية داخل اليوم نفسه. كفى تخمينًا لشكل بعد الظهر.',
+    lead: "اعرض تقويمات iCloud وGoogle التي تختارها على iPhone وiPad، مع توقعات الطقس المتاحة إلى جانب خططك. تضيف Premium إمكانية ربط تقويمات Microsoft.",
     seeItMove: 'شاهده وهو يتحرك',
     onTheAppStore: 'على App Store',
     freeToStart: "نزّله مجانًا",

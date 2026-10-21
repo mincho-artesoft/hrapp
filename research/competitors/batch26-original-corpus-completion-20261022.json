@@ -1,0 +1,185 @@
+{
+  "schemaVersion": 1,
+  "date": "2026-10-22",
+  "scope": "Two substantive original-corpus URLs reviewed, plus two unresolved original-corpus help landing pages inspected and classified as navigation/welcome rather than substantive feature bodies. No new search queries.",
+  "planningReads": [
+    {
+      "file": "research/CONTINUATION.md",
+      "scope": "Latest nineteenth-publication section plus preceding continuation tail; combined tail output truncated outside latest section."
+    },
+    {
+      "file": "research/competitors/coverage-current-20261021.json",
+      "scope": "Parsed all queue rows and output every non-full status, next action and recorded intent. Existing queue not modified."
+    },
+    {
+      "file": "research/keyword-coverage-ledger.json",
+      "scope": "Parsed keys, initial intent clusters and publication history through tenthPublication; older ledger is not used as current inventory authority."
+    }
+  ],
+  "primaryReads": [
+    {
+      "url": "https://www.busymac.com/docs/busycalios/70656-getting-started-with-busycal-for-ios/",
+      "priorStatus": "partial",
+      "status": "full_extracted_main_body_reviewed",
+      "readRanges": [
+        [
+          57,
+          283
+        ]
+      ],
+      "newlyResolvedRange": [
+        250,
+        283
+      ],
+      "extractedPageLines": 310,
+      "publisherUpdated": "2026-08-19",
+      "summary": "BusyCal distinguishes app notification sources, describes a test alarm, and documents Contacts-derived birthdays/anniversaries and read-only holiday subscriptions. Its subscription setup includes its own refresh/alarm options. Tapping a feed link may add it to Apple Calendar rather than BusyCal.",
+      "limits": [
+        "No test event created or notification operated.",
+        "BusyCal controls and refresh options are not Cloud Calendars capabilities.",
+        "Its blanket notification-disable instructions are not adopted as universal advice."
+      ]
+    },
+    {
+      "url": "https://apps.apple.com/us/app/calendar-366-events-tasks/id6502818600?platform=tv",
+      "priorStatus": "discovered",
+      "status": "full_developer_description_and_selected_listing_sections",
+      "readRanges": [
+        [
+          21,
+          50
+        ],
+        [
+          131,
+          179
+        ]
+      ],
+      "extractedPageLines": 469,
+      "summary": "The developer description presents event/task workflows, calendar sets, notification selection, attendees and subscriptions. Listing compatibility names iPhone, iPad, Mac, Vision and Watch; the URL query does not establish TV support.",
+      "limits": [
+        "Full developer description reviewed, not full historical release notes or every listing section.",
+        "Developer feature and privacy assertions are untested publisher claims.",
+        "Do not infer tvOS compatibility from platform=tv or navigation. Preserve this exact variant; canonical URL equivalence not established.",
+        "No numeric price comparison or future platform/OS claim adopted."
+      ]
+    }
+  ],
+  "navigationReads": [
+    {
+      "url": "https://flexibits.com/fantastical-ios/help",
+      "priorStatus": "partial",
+      "status": "full_extracted_landing_page_navigation_only",
+      "readRanges": [
+        [
+          16,
+          69
+        ]
+      ],
+      "extractedPageLines": 101,
+      "summary": "Complete short welcome and navigation. Linked feature titles are discovery, not body review."
+    },
+    {
+      "url": "https://flexibits.com/fantastical/help",
+      "priorStatus": "partial",
+      "status": "full_extracted_landing_page_navigation_only",
+      "readRanges": [
+        [
+          16,
+          70
+        ]
+      ],
+      "extractedPageLines": 102,
+      "summary": "Complete Mac welcome and navigation. Mac-only links must not be treated as iOS features."
+    }
+  ],
+  "localArticleReads": [
+    {
+      "slug": "the-secret-address-of-a-google-calendar",
+      "file": "src/app/content/en-US/articles-google.ts",
+      "readScope": "Complete article object, including all sections, practical steps, FAQs and sources.",
+      "lineRange": [
+        78,
+        172
+      ],
+      "sha256": "ff572e59b1927882fc167514f82f547aa4b91fbf29de4f1416acde9146035621"
+    },
+    {
+      "slug": "what-fantastical-costs-and-what-this-does",
+      "file": "src/app/content/en-US/articles-compare.ts",
+      "readScope": "Complete article object, including all sections, practical steps, FAQs and sources.",
+      "lineRange": [
+        179,
+        269
+      ],
+      "sha256": "a4b966b47c82f987fe1fa810cc5b363025e86a9b5fa74b70a1b909b387464a60"
+    },
+    {
+      "slug": "calendar-notifications-missing-silent-or-duplicated",
+      "file": "src/app/content/en-US/articles-help.ts",
+      "readScope": "Complete article object, including all sections, practical steps, FAQs and sources.",
+      "lineRange": [
+        197,
+        287
+      ],
+      "sha256": "072adc901a699e858d779c787169d2134d3322caf963abc6d87ec2549b7f1042"
+    }
+  ],
+  "taskMappings": [
+    {
+      "task": "Identify duplicate notifications and choose a notifying app",
+      "source": "https://www.busymac.com/docs/busycalios/70656-getting-started-with-busycal-for-ios/",
+      "canonical": "calendar-notifications-missing-silent-or-duplicated",
+      "comparison": "Current full body already separates sender apps, multiple saved alerts, app/system settings, selected calendars and a disposable future test.",
+      "decision": "No new page and no substantive addition needed."
+    },
+    {
+      "task": "Know which app/account received a calendar subscription",
+      "source": "https://www.busymac.com/docs/busycalios/70656-getting-started-with-busycal-for-ios/",
+      "canonical": "the-secret-address-of-a-google-calendar",
+      "comparison": "Current full body already distinguishes subscription/import, owning calendar, receiving app and delayed refresh. It does not explicitly discuss an operating-system URL handoff opening a different calendar app.",
+      "decision": "Small possible improvement to existing receiving-app section, not a new page.",
+      "suggestedChange": "Explain that a feed link opening successfully does not identify which app/account subscribed; verify its destination before adding it again.",
+      "evidenceGate": "Verify current Apple subscription-link handling and Cloud feed-opening behavior before offering product-specific menu steps; BusyCal behavior cannot be transferred."
+    },
+    {
+      "task": "Compare view/notification/task capabilities by platform",
+      "source": "https://apps.apple.com/us/app/calendar-366-events-tasks/id6502818600?platform=tv",
+      "canonical": "what-fantastical-costs-and-what-this-does",
+      "comparison": "Existing comparison already requires device/provider checks and labels untested features. Calendar 366 is a different publisher; its task/calendar-set features do not justify inserting unverified Cloud equivalents.",
+      "decision": "No generic Calendar 366 alternative page justified by this listing alone."
+    }
+  ],
+  "possibleFutureResearchNotEstablishedGaps": [
+    {
+      "task": "Distinguish Contacts-derived birthdays from manually recurring events and holiday feeds",
+      "basis": "BusyCal final sections and Calendar 366 publisher description.",
+      "status": "Candidate for a focused future corpus/body check only; no complete current-EN birthday task audit performed in this batch.",
+      "boundary": "No claim Cloud reads Contacts birthdays or supports task lists, automatic carry-forward, calendar sets or location reminders."
+    }
+  ],
+  "recommendation": {
+    "newPages": 0,
+    "nextAction": "Review destination-app/account handling for subscription links against official Apple documentation and native read-only evidence, then consider one concise improvement to the existing secret-address guide. Existing notification coverage needs no duplicate.",
+    "queueAction": "Parent may record BusyCal main body completion and exact Calendar 366 developer-description scope. Mark Fantastical landings as fully inspected navigation, not multiple newly reviewed feature guides. Preserve historical evidence and failed URLs."
+  },
+  "failuresThisBatch": [],
+  "notRetried": [
+    "All six failed original-corpus URLs",
+    "Malformed duplicated Fantastical settings path already superseded",
+    "SyncThemCalendars developer description already reviewed"
+  ],
+  "measurementLimits": [
+    "No search queries executed in this batch.",
+    "No Google ranking, keyword volume, ChatGPT citation, performance or runtime capability measurements.",
+    "No exhaustive keyword or all-competitor coverage claim."
+  ],
+  "notPerformed": [
+    "Source edits",
+    "Consolidated queue mutation",
+    "Native audit or changes",
+    "Build",
+    "Deployment",
+    "Account or customer actions",
+    "Paid APIs"
+  ]
+}

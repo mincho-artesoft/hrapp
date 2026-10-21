@@ -1,0 +1,518 @@
+{
+  "date": "2026-10-22",
+  "decision": "pass",
+  "materialFindings": [],
+  "blockers": [],
+  "source": {
+    "file": "src/app/content/en-US/articles-planning.ts",
+    "sha256": "62bd5cbf96da54ba75a84d7c761b9e603dc20fc174c524fcff645198c05d745b",
+    "slug": "recurring-events-without-the-mess",
+    "readScope": "Full current English object"
+  },
+  "articleReviews": [
+    {
+      "locale": "bg",
+      "file": "research/batch20-localized-recurrence/bg.json",
+      "sha256": "f271eaaa0b33c042ca752b3020929c4fe6468364a7b385e6b44482410ffa658d",
+      "readScope": "Full object, including all paragraphs, metadata, practical steps, FAQs, source labels/URLs and related routes.",
+      "descriptionUnicodeCharacters": 138,
+      "structure": {
+        "sections": 6,
+        "paragraphs": 12,
+        "practical": 5,
+        "faqs": 3
+      },
+      "exactSourceUrls": true,
+      "dateMatches": true,
+      "claimsEmpty": true,
+      "allRelatedRoutesExist": true,
+      "integratedObjectMatchesDraft": true
+    },
+    {
+      "locale": "de-DE",
+      "file": "research/batch20-localized-recurrence/de-DE.json",
+      "sha256": "aaea21e7b7859ecc357d1a1e3263c88173eabbf5260e2c20a72717596e2113ff",
+      "readScope": "Full object, including all paragraphs, metadata, practical steps, FAQs, source labels/URLs and related routes.",
+      "descriptionUnicodeCharacters": 137,
+      "structure": {
+        "sections": 6,
+        "paragraphs": 12,
+        "practical": 5,
+        "faqs": 3
+      },
+      "exactSourceUrls": true,
+      "dateMatches": true,
+      "claimsEmpty": true,
+      "allRelatedRoutesExist": true,
+      "integratedObjectMatchesDraft": true
+    },
+    {
+      "locale": "es-ES",
+      "file": "research/batch20-localized-recurrence/es-ES.json",
+      "sha256": "73bb7f127c71a0e704776676a84a48058312d66c575c51143ddd989803fd3a6c",
+      "readScope": "Full object, including all paragraphs, metadata, practical steps, FAQs, source labels/URLs and related routes.",
+      "descriptionUnicodeCharacters": 133,
+      "structure": {
+        "sections": 6,
+        "paragraphs": 12,
+        "practical": 5,
+        "faqs": 3
+      },
+      "exactSourceUrls": true,
+      "dateMatches": true,
+      "claimsEmpty": true,
+      "allRelatedRoutesExist": true,
+      "integratedObjectMatchesDraft": true
+    },
+    {
+      "locale": "fr-FR",
+      "file": "research/batch20-localized-recurrence/fr-FR.json",
+      "sha256": "cc2b41da82eefe1d3c1ed7fb00073bd52bce074a421ad3afeecaf1ecea6d5c7f",
+      "readScope": "Full object, including all paragraphs, metadata, practical steps, FAQs, source labels/URLs and related routes.",
+      "descriptionUnicodeCharacters": 142,
+      "structure": {
+        "sections": 6,
+        "paragraphs": 12,
+        "practical": 5,
+        "faqs": 3
+      },
+      "exactSourceUrls": true,
+      "dateMatches": true,
+      "claimsEmpty": true,
+      "allRelatedRoutesExist": true,
+      "integratedObjectMatchesDraft": true
+    },
+    {
+      "locale": "it",
+      "file": "research/batch20-localized-recurrence/it.json",
+      "sha256": "de0dea0c5be1f57309dc5ed091cdae41c2c861eec8cba8e685ef314402b624ff",
+      "readScope": "Full object, including all paragraphs, metadata, practical steps, FAQs, source labels/URLs and related routes.",
+      "descriptionUnicodeCharacters": 139,
+      "structure": {
+        "sections": 6,
+        "paragraphs": 12,
+        "practical": 5,
+        "faqs": 3
+      },
+      "exactSourceUrls": true,
+      "dateMatches": true,
+      "claimsEmpty": true,
+      "allRelatedRoutesExist": true,
+      "integratedObjectMatchesDraft": true
+    },
+    {
+      "locale": "ja",
+      "file": "research/batch20-localized-recurrence/ja.json",
+      "sha256": "04221abc1d0c78c4dd3d1f190c7884ed1083b2885f95e44aff51b81b44184b29",
+      "readScope": "Full object, including all paragraphs, metadata, practical steps, FAQs, source labels/URLs and related routes.",
+      "descriptionUnicodeCharacters": 71,
+      "structure": {
+        "sections": 6,
+        "paragraphs": 12,
+        "practical": 5,
+        "faqs": 3
+      },
+      "exactSourceUrls": true,
+      "dateMatches": true,
+      "claimsEmpty": true,
+      "allRelatedRoutesExist": true,
+      "integratedObjectMatchesDraft": true
+    }
+  ],
+  "homeReviews": [
+    {
+      "locale": "ar-SA",
+      "file": "research/batch20-home-hero/ar-SA.json",
+      "sha256": "a9d0c0b851b3f50992ed9f7adee81944d0230c843bfca39e875d4416853407dd",
+      "readScope": "Both after strings read for meaning; before fields retained as baseline in draft.",
+      "paths": [
+        "hero.lead",
+        "metaDescription"
+      ],
+      "descriptionUnicodeCharacters": 108,
+      "integratedFieldsMatchDraft": true
+    },
+    {
+      "locale": "bg",
+      "file": "research/batch20-home-hero/bg.json",
+      "sha256": "adfeefdc7ad74986aa28aabb3a1ac06ae39bb11ed9ec6c7a6a8872f18d5501a1",
+      "readScope": "Both after strings read for meaning; before fields retained as baseline in draft.",
+      "paths": [
+        "hero.lead",
+        "metaDescription"
+      ],
+      "descriptionUnicodeCharacters": 124,
+      "integratedFieldsMatchDraft": true
+    },
+    {
+      "locale": "cs",
+      "file": "research/batch20-home-hero/cs.json",
+      "sha256": "1c7b976f48a2a15473205f62de2174666efc046c80d5f6ec61ebeb66c61b402d",
+      "readScope": "Both after strings read for meaning; before fields retained as baseline in draft.",
+      "paths": [
+        "hero.lead",
+        "metaDescription"
+      ],
+      "descriptionUnicodeCharacters": 123,
+      "integratedFieldsMatchDraft": true
+    },
+    {
+      "locale": "da",
+      "file": "research/batch20-home-hero/da.json",
+      "sha256": "d84c961b9eddb411be00377617262a2840cc614b86f34f3cacecd34721550934",
+      "readScope": "Both after strings read for meaning; before fields retained as baseline in draft.",
+      "paths": [
+        "hero.lead",
+        "metaDescription"
+      ],
+      "descriptionUnicodeCharacters": 123,
+      "integratedFieldsMatchDraft": true
+    },
+    {
+      "locale": "de-DE",
+      "file": "research/batch20-home-hero/de-DE.json",
+      "sha256": "016e30682c7b5c679ba16c66bdac2e5c8d78f67cc872ae7303e47bd5132d1274",
+      "readScope": "Both after strings read for meaning; before fields retained as baseline in draft.",
+      "paths": [
+        "hero.lead",
+        "metaDescription"
+      ],
+      "descriptionUnicodeCharacters": 131,
+      "integratedFieldsMatchDraft": true
+    },
+    {
+      "locale": "el",
+      "file": "research/batch20-home-hero/el.json",
+      "sha256": "40dc70ee718b7f82e9777e1da8b9e1366ade76c0dcc4cdf95586c7969b9ae58b",
+      "readScope": "Both after strings read for meaning; before fields retained as baseline in draft.",
+      "paths": [
+        "hero.lead",
+        "metaDescription"
+      ],
+      "descriptionUnicodeCharacters": 133,
+      "integratedFieldsMatchDraft": true
+    },
+    {
+      "locale": "en-US",
+      "file": "research/batch20-home-hero/en-US.json",
+      "sha256": "a974a4f30222c9ddaf5a8dd242f1ae0838338250c816b5c8599511f7bc3b30da",
+      "readScope": "Both after strings read for meaning; before fields retained as baseline in draft.",
+      "paths": [
+        "hero.lead",
+        "metaDescription"
+      ],
+      "descriptionUnicodeCharacters": 127,
+      "integratedFieldsMatchDraft": true
+    },
+    {
+      "locale": "es-ES",
+      "file": "research/batch20-home-hero/es-ES.json",
+      "sha256": "1d0843aed9e237874141005e2023459317b4a84601b9bf0962b737e309e1bb94",
+      "readScope": "Both after strings read for meaning; before fields retained as baseline in draft.",
+      "paths": [
+        "hero.lead",
+        "metaDescription"
+      ],
+      "descriptionUnicodeCharacters": 125,
+      "integratedFieldsMatchDraft": true
+    },
+    {
+      "locale": "fi",
+      "file": "research/batch20-home-hero/fi.json",
+      "sha256": "b519f77aed74d56c6e97c97ce566a9ddcafe11d078c27fcc0ea2798c118c0966",
+      "readScope": "Both after strings read for meaning; before fields retained as baseline in draft.",
+      "paths": [
+        "hero.lead",
+        "metaDescription"
+      ],
+      "descriptionUnicodeCharacters": 133,
+      "integratedFieldsMatchDraft": true
+    },
+    {
+      "locale": "fr-FR",
+      "file": "research/batch20-home-hero/fr-FR.json",
+      "sha256": "120efd967fe5f71e38a0d7afd6f0c3a66b63ca4c4bff38908335b7ef0514a9b7",
+      "readScope": "Both after strings read for meaning; before fields retained as baseline in draft.",
+      "paths": [
+        "hero.lead",
+        "metaDescription"
+      ],
+      "descriptionUnicodeCharacters": 134,
+      "integratedFieldsMatchDraft": true
+    },
+    {
+      "locale": "he",
+      "file": "research/batch20-home-hero/he.json",
+      "sha256": "078386b94c97efeb612febcf35b8c59cd1a636a2d1f1b718776fac243f3b4399",
+      "readScope": "Both after strings read for meaning; before fields retained as baseline in draft.",
+      "paths": [
+        "hero.lead",
+        "metaDescription"
+      ],
+      "descriptionUnicodeCharacters": 111,
+      "integratedFieldsMatchDraft": true
+    },
+    {
+      "locale": "hi",
+      "file": "research/batch20-home-hero/hi.json",
+      "sha256": "951bb54354a8255ccd9a09d7b90b9b48c74d82c1fa02ba8e902de6bbb60e6689",
+      "readScope": "Both after strings read for meaning; before fields retained as baseline in draft.",
+      "paths": [
+        "hero.lead",
+        "metaDescription"
+      ],
+      "descriptionUnicodeCharacters": 117,
+      "integratedFieldsMatchDraft": true
+    },
+    {
+      "locale": "hu",
+      "file": "research/batch20-home-hero/hu.json",
+      "sha256": "02512a9b8c5defaa3af0d9616039816c5f3831e56f6069657759d9d3f61c92b7",
+      "readScope": "Both after strings read for meaning; before fields retained as baseline in draft.",
+      "paths": [
+        "hero.lead",
+        "metaDescription"
+      ],
+      "descriptionUnicodeCharacters": 138,
+      "integratedFieldsMatchDraft": true
+    },
+    {
+      "locale": "id",
+      "file": "research/batch20-home-hero/id.json",
+      "sha256": "24437eef84e571d86c3dd357cf0704d7ed949ec0b6cf672607c70b6a93956d14",
+      "readScope": "Both after strings read for meaning; before fields retained as baseline in draft.",
+      "paths": [
+        "hero.lead",
+        "metaDescription"
+      ],
+      "descriptionUnicodeCharacters": 125,
+      "integratedFieldsMatchDraft": true
+    },
+    {
+      "locale": "it",
+      "file": "research/batch20-home-hero/it.json",
+      "sha256": "586ff266e7f9b5f7ef3ae057b801782c14a902f13d4078704d2fc11ccfd5bbb0",
+      "readScope": "Both after strings read for meaning; before fields retained as baseline in draft.",
+      "paths": [
+        "hero.lead",
+        "metaDescription"
+      ],
+      "descriptionUnicodeCharacters": 124,
+      "integratedFieldsMatchDraft": true
+    },
+    {
+      "locale": "ja",
+      "file": "research/batch20-home-hero/ja.json",
+      "sha256": "a1928ca67c8ef06de0ded091a3206286b23e8d49031f1db98c412ec7db0b514c",
+      "readScope": "Both after strings read for meaning; before fields retained as baseline in draft.",
+      "paths": [
+        "hero.lead",
+        "metaDescription"
+      ],
+      "descriptionUnicodeCharacters": 85,
+      "integratedFieldsMatchDraft": true
+    },
+    {
+      "locale": "ko",
+      "file": "research/batch20-home-hero/ko.json",
+      "sha256": "b2dc75a772ebc0045fb821ee78e1263208ce2c9ba248c1d11078353a8051e64e",
+      "readScope": "Both after strings read for meaning; before fields retained as baseline in draft.",
+      "paths": [
+        "hero.lead",
+        "metaDescription"
+      ],
+      "descriptionUnicodeCharacters": 95,
+      "integratedFieldsMatchDraft": true
+    },
+    {
+      "locale": "ms",
+      "file": "research/batch20-home-hero/ms.json",
+      "sha256": "e8cb09db822c69ddd8c12645e8b8ddc36b55bb3255ec8f6c2538a0f608baf104",
+      "readScope": "Both after strings read for meaning; before fields retained as baseline in draft.",
+      "paths": [
+        "hero.lead",
+        "metaDescription"
+      ],
+      "descriptionUnicodeCharacters": 130,
+      "integratedFieldsMatchDraft": true
+    },
+    {
+      "locale": "nl-NL",
+      "file": "research/batch20-home-hero/nl-NL.json",
+      "sha256": "1853f011ec57ffda5e469366ec45f8506cf84b49c0828bfa454fd332a27f2593",
+      "readScope": "Both after strings read for meaning; before fields retained as baseline in draft.",
+      "paths": [
+        "hero.lead",
+        "metaDescription"
+      ],
+      "descriptionUnicodeCharacters": 128,
+      "integratedFieldsMatchDraft": true
+    },
+    {
+      "locale": "no",
+      "file": "research/batch20-home-hero/no.json",
+      "sha256": "15715ecb9e8f4f264a6bb9d65bd66c54c68dba8913c398a5e3483d2a07e11354",
+      "readScope": "Both after strings read for meaning; before fields retained as baseline in draft.",
+      "paths": [
+        "hero.lead",
+        "metaDescription"
+      ],
+      "descriptionUnicodeCharacters": 129,
+      "integratedFieldsMatchDraft": true
+    },
+    {
+      "locale": "pl",
+      "file": "research/batch20-home-hero/pl.json",
+      "sha256": "40796bea72d0c635bce07d02f9b8857b5a51ab848f63a3ea793300045177acbf",
+      "readScope": "Both after strings read for meaning; before fields retained as baseline in draft.",
+      "paths": [
+        "hero.lead",
+        "metaDescription"
+      ],
+      "descriptionUnicodeCharacters": 130,
+      "integratedFieldsMatchDraft": true
+    },
+    {
+      "locale": "pt-BR",
+      "file": "research/batch20-home-hero/pt-BR.json",
+      "sha256": "acadb469ec8e01bdfa0d52abb99c3a8400529046b44d672e1f7119e553462642",
+      "readScope": "Both after strings read for meaning; before fields retained as baseline in draft.",
+      "paths": [
+        "hero.lead",
+        "metaDescription"
+      ],
+      "descriptionUnicodeCharacters": 126,
+      "integratedFieldsMatchDraft": true
+    },
+    {
+      "locale": "ro",
+      "file": "research/batch20-home-hero/ro.json",
+      "sha256": "74390d1ffe6b2d80d404d1282bb6f28a9043a90d75937c4188224953b8c89d30",
+      "readScope": "Both after strings read for meaning; before fields retained as baseline in draft.",
+      "paths": [
+        "hero.lead",
+        "metaDescription"
+      ],
+      "descriptionUnicodeCharacters": 131,
+      "integratedFieldsMatchDraft": true
+    },
+    {
+      "locale": "ru",
+      "file": "research/batch20-home-hero/ru.json",
+      "sha256": "77cc7b2efe3b161c8b7cc47312b3ac65d3a6019a4028f37ab2a54fc9be49be7c",
+      "readScope": "Both after strings read for meaning; before fields retained as baseline in draft.",
+      "paths": [
+        "hero.lead",
+        "metaDescription"
+      ],
+      "descriptionUnicodeCharacters": 128,
+      "integratedFieldsMatchDraft": true
+    },
+    {
+      "locale": "sv",
+      "file": "research/batch20-home-hero/sv.json",
+      "sha256": "b61e051fa3d486c73eee4d218008d1b6a5f775e14940cf615286339da0baa955",
+      "readScope": "Both after strings read for meaning; before fields retained as baseline in draft.",
+      "paths": [
+        "hero.lead",
+        "metaDescription"
+      ],
+      "descriptionUnicodeCharacters": 137,
+      "integratedFieldsMatchDraft": true
+    },
+    {
+      "locale": "th",
+      "file": "research/batch20-home-hero/th.json",
+      "sha256": "fa1f6523105c6c37379f0f3d49c9be23168072a18358cd2762c63fbe0d7f25d8",
+      "readScope": "Both after strings read for meaning; before fields retained as baseline in draft.",
+      "paths": [
+        "hero.lead",
+        "metaDescription"
+      ],
+      "descriptionUnicodeCharacters": 112,
+      "integratedFieldsMatchDraft": true
+    },
+    {
+      "locale": "tr",
+      "file": "research/batch20-home-hero/tr.json",
+      "sha256": "9e6c118f8ab394f5ba3219be8ef324fd39740eed66b19ed2b98bdb05d7d60477",
+      "readScope": "Both after strings read for meaning; before fields retained as baseline in draft.",
+      "paths": [
+        "hero.lead",
+        "metaDescription"
+      ],
+      "descriptionUnicodeCharacters": 141,
+      "integratedFieldsMatchDraft": true
+    },
+    {
+      "locale": "vi",
+      "file": "research/batch20-home-hero/vi.json",
+      "sha256": "4570e3a8474edd0207869d77acb578e740f31c75e7bec3963d531c3ac91f633c",
+      "readScope": "Both after strings read for meaning; before fields retained as baseline in draft.",
+      "paths": [
+        "hero.lead",
+        "metaDescription"
+      ],
+      "descriptionUnicodeCharacters": 120,
+      "integratedFieldsMatchDraft": true
+    },
+    {
+      "locale": "zh-Hans",
+      "file": "research/batch20-home-hero/zh-Hans.json",
+      "sha256": "b91218c20e6e8a12c9929cb8c614d724525e9d3b9bb046234b8a88c657941b36",
+      "readScope": "Both after strings read for meaning; before fields retained as baseline in draft.",
+      "paths": [
+        "hero.lead",
+        "metaDescription"
+      ],
+      "descriptionUnicodeCharacters": 82,
+      "integratedFieldsMatchDraft": true
+    },
+    {
+      "locale": "zh-Hant",
+      "file": "research/batch20-home-hero/zh-Hant.json",
+      "sha256": "c69dc43edf3d2e3061a88161944d117aa60cada7253d0bde002c420253f84c5c",
+      "readScope": "Both after strings read for meaning; before fields retained as baseline in draft.",
+      "paths": [
+        "hero.lead",
+        "metaDescription"
+      ],
+      "descriptionUnicodeCharacters": 84,
+      "integratedFieldsMatchDraft": true
+    }
+  ],
+  "semanticChecks": [
+    "All six recurrence translations retain actual scope inspection and provider-editor fallback when one-occurrence scope is absent; none promises a Cloud prompt.",
+    "Organizer/edit permission, representative date checks and distinctions between local and connected calendars retained.",
+    "Exceptions neither guaranteed preserved nor guaranteed erased; arbitrary mandatory end dates and destructive diagnostic actions rejected.",
+    "Apple/Google controls remain attributed to those products; translated end-repeat description is not presented as a verified localized UI label.",
+    "All thirty hero drafts limit the view to selected calendars and available weather, and state that Premium adds Microsoft calendar connections.",
+    "All thirty metadata drafts preserve iPhone/iPad, free download, and Microsoft calendars plus Teams as Premium additions; no unlimited forecast or all-features-free promise found."
+  ],
+  "translationAssessment": "No concrete material translation defect identified in this review. Minor stylistic variation across languages does not change the requested meaning.",
+  "independenceDisclosure": {
+    "selfAuthoredRecurrence": [
+      "bg",
+      "ja"
+    ],
+    "selfAuthoredHomes": [
+      "pl",
+      "pt-BR",
+      "ro",
+      "ru",
+      "sv",
+      "th",
+      "tr",
+      "vi",
+      "zh-Hans",
+      "zh-Hant"
+    ],
+    "scope": "Those portions are a second self-review, not independent authorship review. Remaining four recurrence drafts and twenty home drafts were reviewed without having authored them."
+  },
+  "limits": [
+    "Own language and factual-consistency review, not independent native-speaker certification.",
+    "No production fetch, rendered browser review, app runtime test or confirmation of deployment completion.",
+    "In-memory TypeScript module loading only for field comparison and route availability; no build performed.",
+    "No native operations, source changes, deployment or paid API."
+  ]
+}

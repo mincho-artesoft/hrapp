@@ -4,7 +4,7 @@ import { HomeCopy } from './types';
 export const HOME_NL_NL: HomeCopy = {
   metaTitle: 'Cloud Calendars — iCloud, Google en Outlook in één overzicht',
   metaDescription:
-    "Uw agenda’s en de verwachting, op één plek. Gemaakt voor iPhone en iPad. iCloud · Google Calendar · Microsoft Calendar.",
+    "iCloud- en Google-agenda’s, weer en widgets op iPhone en iPad. Gratis downloaden; Premium voegt Microsoft-agenda’s en Teams toe.",
   nav: {
     tour: 'Rondleiding',
     widgets: 'Widgets',
@@ -20,7 +20,7 @@ export const HOME_NL_NL: HomeCopy = {
   hero: {
     badge: "Versie {v} — afspraken en agenda’s delen",
     title: ['Uw agenda.', 'Uw lucht.', 'Eén weergave.'],
-    lead: 'Elke agenda die u heeft — iCloud, Google, Microsoft — op één plek, met de verwachting in de dag zelf. Stop met gissen hoe de middag eruitziet.',
+    lead: "Bekijk geselecteerde iCloud- en Google-agenda’s op iPhone en iPad, met beschikbare weerinformatie naast uw plannen. Premium voegt verbindingen met Microsoft-agenda’s toe.",
     seeItMove: 'Zie het bewegen',
     onTheAppStore: 'in de App Store',
     freeToStart: "Gratis downloaden",

@@ -4,7 +4,7 @@ import { HomeCopy } from './types';
 export const HOME_NO: HomeCopy = {
   metaTitle: 'Cloud Calendars — iCloud, Google og Outlook i én visning',
   metaDescription:
-    "Kalenderne dine og værmeldingen, på ett sted. Bygget for iPhone og iPad. iCloud · Google Calendar · Microsoft Calendar.",
+    "iCloud- og Google-kalendere, vær og widgeter på iPhone og iPad. Last ned gratis; Premium legger til Microsoft-kalendere og Teams.",
   nav: {
     tour: 'Omvisning',
     widgets: 'Widgeter',
@@ -20,7 +20,7 @@ export const HOME_NO: HomeCopy = {
   hero: {
     badge: "Versjon {v} — deling av hendelser og kalendere",
     title: ['Kalenderen din.', 'Himmelen din.', 'Én visning.'],
-    lead: 'Hver eneste kalender du har — iCloud, Google, Microsoft — på ett sted, med værmeldingen bygget inn i selve dagen. Slutt å gjette hvordan ettermiddagen ser ut.',
+    lead: "Se valgte iCloud- og Google-kalendere på iPhone og iPad, med tilgjengelig værinformasjon ved siden av planene dine. Premium legger til tilkobling til Microsoft-kalendere.",
     seeItMove: 'Se det i bevegelse',
     onTheAppStore: 'i App Store',
     freeToStart: "Last ned gratis",

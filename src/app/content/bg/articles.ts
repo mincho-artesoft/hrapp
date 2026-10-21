@@ -94,7 +94,9 @@ export const ARTICLES_BG: Readonly<Record<string, LocalisedArticle>> = {
       "url": "https://calendar.teamup.com/kb/how-to-use-calendar-views/"
     }
   ],
-  "seeAlso": []
+  "seeAlso": [
+  "recurring-events-without-the-mess"
+]
 },
 
   'weather-inside-your-calendar': {

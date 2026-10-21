@@ -1,0 +1,15 @@
+{
+  "locale": "he",
+  "changes": [
+    {
+      "path": "hero.lead",
+      "before": "כל יומן שיש לכם — iCloud, Google, Microsoft — במקום אחד, כשהתחזית בנויה בתוך היום עצמו. די לנחש איך ייראה אחר הצהריים.",
+      "after": "הציגו יומני iCloud ו-Google שנבחרו ב-iPhone וב-iPad, עם מידע זמין על מזג האוויר לצד התוכניות שלכם. Premium מוסיף חיבור ליומני Microsoft."
+    },
+    {
+      "path": "metaDescription",
+      "before": "היומנים שלכם והתחזית, במקום אחד. בנוי ל‑iPhone ול‑iPad. iCloud · Google Calendar · Microsoft Calendar.",
+      "after": "יומני iCloud ו-Google, מזג אוויר ווידג׳טים ב-iPhone וב-iPad. הורדה חינם; Premium מוסיף יומני Microsoft ו-Teams."
+    }
+  ]
+}

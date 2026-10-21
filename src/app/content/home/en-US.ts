@@ -12,7 +12,7 @@ export const HOME_EN_US: HomeCopy = {
   // This editorial change is a hypothesis, not a demonstrated CTR improvement.
   metaTitle: 'Cloud Calendars — Calendar App for iPhone & iPad',
   metaDescription:
-    'See iCloud and Google calendars with weather and widgets on iPhone and iPad. Download free; Premium adds Microsoft calendars and Teams.',
+    "iCloud and Google calendars, weather and widgets on iPhone and iPad. Download free; Premium adds Microsoft calendars and Teams.",
 
   nav: {
     tour: 'Tour',
@@ -30,7 +30,7 @@ export const HOME_EN_US: HomeCopy = {
   hero: {
     badge: "Version {v} — sharing for events and calendars",
     title: ['Your calendar.', 'Your sky.', 'One view.'],
-    lead: 'See iCloud and Google calendars together on iPhone and iPad, with weather alongside your plans. Premium also connects Microsoft calendars.',
+    lead: "View selected iCloud and Google calendars on iPhone and iPad, with available weather alongside your plans. Premium adds Microsoft calendar connections.",
     seeItMove: 'See it in motion',
     onTheAppStore: 'on the App Store',
     freeToStart: "Download free",

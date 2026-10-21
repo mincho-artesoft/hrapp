@@ -4,7 +4,7 @@ import { HomeCopy } from './types';
 export const HOME_PT_BR: HomeCopy = {
   metaTitle: 'Cloud Calendars — iCloud, Google e Outlook em uma visão',
   metaDescription:
-    "Suas agendas e a previsão, em um só lugar. Feito para iPhone e iPad. iCloud · Google Calendar · Microsoft Calendar.",
+    "Calendários iCloud e Google, clima e widgets no iPhone e iPad. Baixe grátis; o Premium adiciona calendários Microsoft e Teams.",
   nav: {
     tour: 'Tour',
     widgets: 'Widgets',
@@ -20,7 +20,7 @@ export const HOME_PT_BR: HomeCopy = {
   hero: {
     badge: "Versão {v} — compartilhamento de eventos e calendários",
     title: ['Sua agenda.', 'Seu céu.', 'Uma só vista.'],
-    lead: 'Todas as agendas que você tem — iCloud, Google, Microsoft — em um só lugar, com a previsão dentro do próprio dia. Pare de adivinhar como vai ser a tarde.',
+    lead: "Veja os calendários selecionados do iCloud e Google no iPhone e iPad, com a previsão disponível ao lado dos seus planos. O Premium adiciona conexões com calendários Microsoft.",
     seeItMove: 'Ver em movimento',
     onTheAppStore: 'na App Store',
     freeToStart: "Baixar grátis",

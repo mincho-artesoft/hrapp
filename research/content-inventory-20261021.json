@@ -1,5 +1,5 @@
 {
-  "date": "2026-10-21T23:23:16.751Z",
+  "date": "2026-10-21T23:36:10.045Z",
   "status": "source_inventory_not_quality_approval",
   "articles": [
     {
@@ -274,6 +274,23 @@
       "sources": [
         "https://support.google.com/calendar/answer/37082?hl=en",
         "https://support.google.com/calendar/answer/37648?hl=en"
+      ],
+      "updated": "2026-10-21"
+    },
+    {
+      "locale": "bg",
+      "slug": "recurring-events-without-the-mess",
+      "title": "Повтарящи се събития: променете една дата или поредицата безопасно",
+      "description": "Проверете правата си и обхвата на промяната при повтарящо се събитие. Променяйте отделни дати и бъдещи срещи, без да изтривате поредицата.",
+      "descriptionCharacters": 138,
+      "sections": 6,
+      "faq": 3,
+      "words": 860,
+      "source": "articles-help.ts",
+      "sources": [
+        "https://support.google.com/calendar/answer/37115?co=GENIE.Platform%3DDesktop&hl=en",
+        "https://support.apple.com/guide/calendar/set-up-all-day-multiday-or-repeating-events-icl1018/mac",
+        "https://support.google.com/a/users/answer/13293412?hl=en"
       ],
       "updated": "2026-10-21"
     },
@@ -853,6 +870,23 @@
       "sources": [
         "https://support.google.com/calendar/answer/37082?hl=en",
         "https://support.google.com/calendar/answer/37648?hl=en"
+      ],
+      "updated": "2026-10-21"
+    },
+    {
+      "locale": "de-DE",
+      "slug": "recurring-events-without-the-mess",
+      "title": "Wiederkehrende Termine: einen einzelnen Termin oder die Serie gezielt ändern",
+      "description": "Prüfe Kalender, Bearbeitungsrechte und Umfang einer Serienänderung. Behalte einzelne Ausnahmen im Blick, ohne die Terminserie zu löschen.",
+      "descriptionCharacters": 137,
+      "sections": 6,
+      "faq": 3,
+      "words": 883,
+      "source": "articles-help.ts",
+      "sources": [
+        "https://support.google.com/calendar/answer/37115?co=GENIE.Platform%3DDesktop&hl=en",
+        "https://support.apple.com/guide/calendar/set-up-all-day-multiday-or-repeating-events-icl1018/mac",
+        "https://support.google.com/a/users/answer/13293412?hl=en"
       ],
       "updated": "2026-10-21"
     },
@@ -1775,7 +1809,7 @@
       "descriptionCharacters": 148,
       "sections": 6,
       "faq": 3,
-      "words": 883,
+      "words": 900,
       "source": "articles-sharing.ts",
       "sources": [
         "https://support.google.com/calendar/answer/143753?hl=en",
@@ -2322,6 +2356,23 @@
       "sources": [
         "https://support.google.com/calendar/answer/37082?hl=en",
         "https://support.google.com/calendar/answer/37648?hl=en"
+      ],
+      "updated": "2026-10-21"
+    },
+    {
+      "locale": "es-ES",
+      "slug": "recurring-events-without-the-mess",
+      "title": "Eventos recurrentes: cambia una fecha o la serie con cuidado",
+      "description": "Comprueba el calendario, los permisos y el alcance antes de cambiar un evento recurrente. Revisa las excepciones sin borrar la serie.",
+      "descriptionCharacters": 133,
+      "sections": 6,
+      "faq": 3,
+      "words": 1013,
+      "source": "articles-help.ts",
+      "sources": [
+        "https://support.google.com/calendar/answer/37115?co=GENIE.Platform%3DDesktop&hl=en",
+        "https://support.apple.com/guide/calendar/set-up-all-day-multiday-or-repeating-events-icl1018/mac",
+        "https://support.google.com/a/users/answer/13293412?hl=en"
       ],
       "updated": "2026-10-21"
     },
@@ -2900,6 +2951,23 @@
       "sources": [
         "https://support.google.com/calendar/answer/37082?hl=en",
         "https://support.google.com/calendar/answer/37648?hl=en"
+      ],
+      "updated": "2026-10-21"
+    },
+    {
+      "locale": "fr-FR",
+      "slug": "recurring-events-without-the-mess",
+      "title": "Événements récurrents : modifier une date ou la série avec précaution",
+      "description": "Vérifiez vos droits et les dates concernées avant de modifier un événement récurrent. Gérez les changements ponctuels sans supprimer la série.",
+      "descriptionCharacters": 142,
+      "sections": 6,
+      "faq": 3,
+      "words": 1000,
+      "source": "articles-help.ts",
+      "sources": [
+        "https://support.google.com/calendar/answer/37115?co=GENIE.Platform%3DDesktop&hl=en",
+        "https://support.apple.com/guide/calendar/set-up-all-day-multiday-or-repeating-events-icl1018/mac",
+        "https://support.google.com/a/users/answer/13293412?hl=en"
       ],
       "updated": "2026-10-21"
     },
@@ -4011,6 +4079,23 @@
     },
     {
       "locale": "it",
+      "slug": "recurring-events-without-the-mess",
+      "title": "Eventi ricorrenti: modificare una data o la serie con attenzione",
+      "description": "Controlla permessi e date interessate prima di modificare un evento ricorrente. Gestisci cambiamenti ed eccezioni senza eliminare la serie.",
+      "descriptionCharacters": 139,
+      "sections": 6,
+      "faq": 3,
+      "words": 940,
+      "source": "articles-help.ts",
+      "sources": [
+        "https://support.google.com/calendar/answer/37115?co=GENIE.Platform%3DDesktop&hl=en",
+        "https://support.apple.com/guide/calendar/set-up-all-day-multiday-or-repeating-events-icl1018/mac",
+        "https://support.google.com/a/users/answer/13293412?hl=en"
+      ],
+      "updated": "2026-10-21"
+    },
+    {
+      "locale": "it",
       "slug": "disconnect-calendar-integration-without-losing-track",
       "title": "Disconnettere un’integrazione del calendario: accesso, sincronizzazione e copie esistenti",
       "description": "Distingui uscita, accesso del fornitore e copie esistenti. Controlla i collegamenti Cloud Calendars prima di disconnettere o rimuovere un calendario.",
@@ -4408,6 +4493,23 @@
       "sources": [
         "https://support.google.com/calendar/answer/37082?hl=en",
         "https://support.google.com/calendar/answer/37648?hl=en"
+      ],
+      "updated": "2026-10-21"
+    },
+    {
+      "locale": "ja",
+      "slug": "recurring-events-without-the-mess",
+      "title": "繰り返しの予定を変更する：1回だけか、予定全体かを確認",
+      "description": "繰り返しの予定を変更する前に、編集権限と変更範囲を確認しましょう。予定全体を削除せず、1回だけの変更や今後の日程、例外を扱う方法を紹介します。",
+      "descriptionCharacters": 71,
+      "sections": 6,
+      "faq": 3,
+      "words": 41,
+      "source": "articles.ts",
+      "sources": [
+        "https://support.google.com/calendar/answer/37115?co=GENIE.Platform%3DDesktop&hl=en",
+        "https://support.apple.com/guide/calendar/set-up-all-day-multiday-or-repeating-events-icl1018/mac",
+        "https://support.google.com/a/users/answer/13293412?hl=en"
       ],
       "updated": "2026-10-21"
     },

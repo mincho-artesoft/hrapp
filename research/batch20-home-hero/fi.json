@@ -1,0 +1,15 @@
+{
+  "locale": "fi",
+  "changes": [
+    {
+      "path": "hero.lead",
+      "before": "Jokainen kalenteri, joka sinulla on — iCloud, Google, Microsoft — yhdessä paikassa, ennuste itse päivän sisään rakennettuna. Lopeta arvailu siitä, miltä iltapäivä näyttää.",
+      "after": "Katso valittuja iCloud- ja Google-kalentereita iPhonella ja iPadilla sekä saatavilla olevaa sääennustetta suunnitelmiesi rinnalla. Premium lisää yhteydet Microsoft-kalentereihin."
+    },
+    {
+      "path": "metaDescription",
+      "before": "Kalenterisi ja ennuste yhdessä paikassa. Rakennettu iPhonelle ja iPadille. iCloud · Google Calendar · Microsoft Calendar.",
+      "after": "iCloud- ja Google-kalenterit, sää ja widgetit iPhonella ja iPadilla. Lataa ilmaiseksi; Premium lisää Microsoft-kalenterit ja Teamsin."
+    }
+  ]
+}

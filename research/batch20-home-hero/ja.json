@@ -1,0 +1,15 @@
+{
+  "locale": "ja",
+  "changes": [
+    {
+      "path": "hero.lead",
+      "before": "お持ちのカレンダーすべて — iCloud、Google、Microsoft — をひとつの場所に。予報は日そのものの中にあります。午後がどうなるかを推測するのは、もう終わりです。",
+      "after": "iPhoneとiPadで選択したiCloudとGoogleのカレンダーを表示し、予定と一緒に利用できる天気情報を確認できます。PremiumではMicrosoftカレンダーも接続できます。"
+    },
+    {
+      "path": "metaDescription",
+      "before": "あなたのカレンダーと予報を、ひとつの場所に。iPhone と iPad のために。 iCloud · Google Calendar · Microsoft Calendar.",
+      "after": "iPhoneとiPadでiCloud・Googleのカレンダー、天気、ウィジェットを。無料でダウンロード。PremiumはMicrosoftカレンダーとTeamsを追加。"
+    }
+  ]
+}

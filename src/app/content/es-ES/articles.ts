@@ -96,8 +96,9 @@ export const ARTICLES_ES_ES: Readonly<Record<string, LocalisedArticle>> = {
     }
   ],
   "seeAlso": [
-    "drag-an-event-to-move-it"
-  ]
+  "drag-an-event-to-move-it",
+  "recurring-events-without-the-mess"
+]
 },
 
 "keeping-track-of-who-replied":{

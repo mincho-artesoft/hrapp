@@ -1,7 +1,7 @@
 {
   "schemaVersion": 1,
-  "date": "2026-10-21",
-  "scope": "All concrete HTTPS URLs recorded in batch03 through batch09 JSON files present in this directory, exact-string deduplicated. This is a bounded corpus queue, not exhaustive publisher coverage. batch07 file is absent. No new network fetches. Consolidated four explicit successful batch10 body reviews; prior evidence preserved. Consolidated four explicit successful batch12 substantive body reviews, preserving prior evidence. Consolidated two successful batch13 substantive reviews. Four previously discovered OneCal substantive body reviews consolidated in batch14. Two pending Teamup pages reviewed in batch15; supplementary newly discovered Readdle URLs are recorded separately outside this original71URLcorpus. Three exact CalendarBridge bodies reviewedbatch16; publisherownlimits notCloudpromises. Three family publisher substantive bodies consolidated batch17; publisher claims are not Cloud features. Four exact CalendarBridge main bodies consolidated batch18; no rank/volume/runtime evidence. OriginalOneCalbillingbody reviewedbatch19; newmobileURLrecordedoutsideoriginal71corpus. Batch20 read the three complete Flexibits navigation/index documents; original partial classification is retained because linked feature bodies were not read.",
+  "date": "2026-10-22",
+  "scope": "All concrete HTTPS URLs recorded in batch03 through batch09 JSON files present in this directory, exact-string deduplicated. This is a bounded corpus queue, not exhaustive publisher coverage. batch07 file is absent. No new network fetches. Consolidated four explicit successful batch10 body reviews; prior evidence preserved. Consolidated four explicit successful batch12 substantive body reviews, preserving prior evidence. Consolidated two successful batch13 substantive reviews. Four previously discovered OneCal substantive body reviews consolidated in batch14. Two pending Teamup pages reviewed in batch15; supplementary newly discovered Readdle URLs are recorded separately outside this original71URLcorpus. Three exact CalendarBridge bodies reviewedbatch16; publisherownlimits notCloudpromises. Three family publisher substantive bodies consolidated batch17; publisher claims are not Cloud features. Four exact CalendarBridge main bodies consolidated batch18; no rank/volume/runtime evidence. OriginalOneCalbillingbody reviewedbatch19; newmobileURLrecordedoutsideoriginal71corpus. Batch20 read the three complete Flexibits navigation/index documents; original partial classification is retained because linked feature bodies were not read. Batch26 completed the BusyCal main body and reviewed the exact Calendar366 developer-description/compatibility sections only; partial listing status retained. No new original URLs or search/ranking measurements.",
   "inputFiles": [
     "research/competitors/batch03-intent-mapping-20261021.json",
     "research/competitors/batch03-primary-discovery-20261021.json",
@@ -33,10 +33,10 @@
   "counts": {
     "failed": 6,
     "partial": 5,
-    "discovered": 2,
-    "full": 58,
+    "discovered": 1,
+    "full": 59,
     "exactUrls": 71,
-    "queue": 13
+    "queue": 12
   },
   "queue": [
     {
@@ -266,7 +266,7 @@
     {
       "url": "https://apps.apple.com/us/app/calendar-366-events-tasks/id6502818600?platform=tv",
       "publisher": "Developer App Store listing: calendar-366-events-tasks",
-      "status": "discovered",
+      "status": "partial",
       "observedQueryOrIntent": [
         "recurrence",
         "tasks",
@@ -279,7 +279,7 @@
         "the-widget-that-shows-what-is-next"
       ],
       "canonicalMappingBasis": "Editorial candidate routing from recorded topic or URL label; not proof target body covers the task. Null/empty where unsupported.",
-      "nextAction": "Confirm listing platform and canonical from official navigation; retain this exact parameter variant separately; do not infer tvOS support.",
+      "nextAction": "Complete developer description and compatibility sections read; remaining listing/history not reviewed. Do not infer TV compatibility from URL query or create a generic comparison from listing alone.",
       "provenance": [
         {
           "file": "research/competitors/batch04-search-discovery-20261021.json",
@@ -302,6 +302,33 @@
           ],
           "queryAssociation": "Batch-level only; original file does not attribute an individual query to this URL.",
           "statusEvidence": "discovered"
+        },
+        {
+          "file": "research/competitors/batch26-original-corpus-completion-20261022.json",
+          "record": {
+            "url": "https://apps.apple.com/us/app/calendar-366-events-tasks/id6502818600?platform=tv",
+            "priorStatus": "discovered",
+            "status": "full_developer_description_and_selected_listing_sections",
+            "readRanges": [
+              [
+                21,
+                50
+              ],
+              [
+                131,
+                179
+              ]
+            ],
+            "extractedPageLines": 469,
+            "summary": "The developer description presents event/task workflows, calendar sets, notification selection, attendees and subscriptions. Listing compatibility names iPhone, iPad, Mac, Vision and Watch; the URL query does not establish TV support.",
+            "limits": [
+              "Full developer description reviewed, not full historical release notes or every listing section.",
+              "Developer feature and privacy assertions are untested publisher claims.",
+              "Do not infer tvOS compatibility from platform=tv or navigation. Preserve this exact variant; canonical URL equivalence not established.",
+              "No numeric price comparison or future platform/OS claim adopted."
+            ]
+          },
+          "statusEvidence": "partial"
         }
       ]
     },
@@ -458,72 +485,6 @@
           "batchQueries": [],
           "queryAssociation": "Batch-level only; original file does not attribute an individual query to this URL.",
           "statusEvidence": "failed"
-        }
-      ]
-    },
-    {
-      "url": "https://www.busymac.com/docs/busycalios/70656-getting-started-with-busycal-for-ios/",
-      "publisher": "BusyMac / BusyCal",
-      "status": "partial",
-      "observedQueryOrIntent": [
-        "landscape year view",
-        "event details",
-        "OS notification settings"
-      ],
-      "intentEvidenceNote": "Verbatim recorded intent/topic/summary where present; null means no URL-specific intent was recorded. URL spelling is not body evidence.",
-      "existingCanonicals": [],
-      "canonicalMappingBasis": "Editorial candidate routing from recorded topic or URL label; not proof target body covers the task. Null/empty where unsupported.",
-      "nextAction": "Review remaining substantive body after line249 if useful; existing lines57–249 of310 are explicitly partial.",
-      "provenance": [
-        {
-          "file": "research/competitors/batch03-primary-discovery-20261021.json",
-          "field": "/indexReviews/3/url",
-          "record": {
-            "url": "https://www.busymac.com/docs/busycalios/70656-getting-started-with-busycal-for-ios/",
-            "status": "index-and-partial-body-reviewed",
-            "readScope": "Navigation plus lines 57–249 of 310; not counted as complete body. Provides links to recurrence, time/date, widgets, alarms, search and CSV export."
-          },
-          "batchQueries": [],
-          "queryAssociation": "Batch-level only; original file does not attribute an individual query to this URL.",
-          "statusEvidence": "partial"
-        },
-        {
-          "file": "research/competitors/batch03-primary-discovery-20261021.json",
-          "field": "/additionalTitleDiscovery/1/sourceIndex",
-          "record": {
-            "sourceIndex": "https://www.busymac.com/docs/busycalios/70656-getting-started-with-busycal-for-ios/",
-            "linkLabels": [
-              "Alarms",
-              "Export as CSV",
-              "Finding Events",
-              "Using BusyCal with Reminders",
-              "Using BusyCal with Apple Calendar"
-            ],
-            "status": "index-label-only; destination bodies not reviewed; no inferred URL"
-          },
-          "batchQueries": [],
-          "queryAssociation": "Batch-level only; original file does not attribute an individual query to this URL.",
-          "statusEvidence": "discovered"
-        },
-        {
-          "file": "research/competitors/batch04-search-discovery-20261021.json",
-          "field": "/primaryCandidates/2/url",
-          "record": {
-            "url": "https://www.busymac.com/docs/busycalios/70656-getting-started-with-busycal-for-ios/",
-            "status": "search_excerpt_only",
-            "topics": [
-              "landscape year view",
-              "event details",
-              "OS notification settings"
-            ],
-            "nextAction": "Dedup against previous discovery/read records before full body review."
-          },
-          "batchQueries": [
-            "best calendar app iphone weather widgets shared calendars TimeTree Calendars 366",
-            "iPhone calendar app recurring events notifications export Timepage BusyCal"
-          ],
-          "queryAssociation": "Batch-level only; original file does not attribute an individual query to this URL.",
-          "statusEvidence": "discovered"
         }
       ]
     }
@@ -2919,6 +2880,102 @@
           "statusEvidence": "full"
         }
       ]
+    },
+    {
+      "url": "https://www.busymac.com/docs/busycalios/70656-getting-started-with-busycal-for-ios/",
+      "publisher": "BusyMac / BusyCal",
+      "status": "full",
+      "observedQueryOrIntent": [
+        "landscape year view",
+        "event details",
+        "OS notification settings"
+      ],
+      "intentEvidenceNote": "Verbatim recorded intent/topic/summary where present; null means no URL-specific intent was recorded. URL spelling is not body evidence.",
+      "existingCanonicals": [
+        "calendar-notifications-missing-silent-or-duplicated",
+        "the-secret-address-of-a-google-calendar"
+      ],
+      "canonicalMappingBasis": "Editorial candidate routing from recorded topic or URL label; not proof target body covers the task. Null/empty where unsupported.",
+      "nextAction": "Main body reviewed; native and Apple evidence needed before adding subscription-link destination guidance. No duplicate notifications page.",
+      "provenance": [
+        {
+          "file": "research/competitors/batch03-primary-discovery-20261021.json",
+          "field": "/indexReviews/3/url",
+          "record": {
+            "url": "https://www.busymac.com/docs/busycalios/70656-getting-started-with-busycal-for-ios/",
+            "status": "index-and-partial-body-reviewed",
+            "readScope": "Navigation plus lines 57–249 of 310; not counted as complete body. Provides links to recurrence, time/date, widgets, alarms, search and CSV export."
+          },
+          "batchQueries": [],
+          "queryAssociation": "Batch-level only; original file does not attribute an individual query to this URL.",
+          "statusEvidence": "partial"
+        },
+        {
+          "file": "research/competitors/batch03-primary-discovery-20261021.json",
+          "field": "/additionalTitleDiscovery/1/sourceIndex",
+          "record": {
+            "sourceIndex": "https://www.busymac.com/docs/busycalios/70656-getting-started-with-busycal-for-ios/",
+            "linkLabels": [
+              "Alarms",
+              "Export as CSV",
+              "Finding Events",
+              "Using BusyCal with Reminders",
+              "Using BusyCal with Apple Calendar"
+            ],
+            "status": "index-label-only; destination bodies not reviewed; no inferred URL"
+          },
+          "batchQueries": [],
+          "queryAssociation": "Batch-level only; original file does not attribute an individual query to this URL.",
+          "statusEvidence": "discovered"
+        },
+        {
+          "file": "research/competitors/batch04-search-discovery-20261021.json",
+          "field": "/primaryCandidates/2/url",
+          "record": {
+            "url": "https://www.busymac.com/docs/busycalios/70656-getting-started-with-busycal-for-ios/",
+            "status": "search_excerpt_only",
+            "topics": [
+              "landscape year view",
+              "event details",
+              "OS notification settings"
+            ],
+            "nextAction": "Dedup against previous discovery/read records before full body review."
+          },
+          "batchQueries": [
+            "best calendar app iphone weather widgets shared calendars TimeTree Calendars 366",
+            "iPhone calendar app recurring events notifications export Timepage BusyCal"
+          ],
+          "queryAssociation": "Batch-level only; original file does not attribute an individual query to this URL.",
+          "statusEvidence": "discovered"
+        },
+        {
+          "file": "research/competitors/batch26-original-corpus-completion-20261022.json",
+          "record": {
+            "url": "https://www.busymac.com/docs/busycalios/70656-getting-started-with-busycal-for-ios/",
+            "priorStatus": "partial",
+            "status": "full_extracted_main_body_reviewed",
+            "readRanges": [
+              [
+                57,
+                283
+              ]
+            ],
+            "newlyResolvedRange": [
+              250,
+              283
+            ],
+            "extractedPageLines": 310,
+            "publisherUpdated": "2026-08-19",
+            "summary": "BusyCal distinguishes app notification sources, describes a test alarm, and documents Contacts-derived birthdays/anniversaries and read-only holiday subscriptions. Its subscription setup includes its own refresh/alarm options. Tapping a feed link may add it to Apple Calendar rather than BusyCal.",
+            "limits": [
+              "No test event created or notification operated.",
+              "BusyCal controls and refresh options are not Cloud Calendars capabilities.",
+              "Its blanket notification-disable instructions are not adopted as universal advice."
+            ]
+          },
+          "statusEvidence": "full"
+        }
+      ]
     }
   ],
   "urlVariantCandidates": [],
@@ -2949,5 +3006,13 @@
       "evidence": "research/competitors/batch25-fantastical-settings-primary-20261022.json",
       "action": "Do not repeatedly fetch the malformed discovery link. Correct main body reviewed through actual publisher navigation; exact original corpus counts kept for provenance, not a fresh failure or full-body claim about the malformed URL."
     }
-  ]
+  ],
+  "latestBodyReadAddendum": {
+    "source": "research/competitors/batch26-original-corpus-completion-20261022.json",
+    "completedMainBodies": 1,
+    "developerDescriptionSectionsOnly": 1,
+    "navigationLandingsRevisited": 2,
+    "originalExactUrls": 71,
+    "scope": "Bounded original corpus, not all linked documents or all competitor keywords."
+  }
 }

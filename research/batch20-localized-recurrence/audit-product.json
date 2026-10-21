@@ -1,0 +1,78 @@
+{
+  "date": "2026-10-22",
+  "source": {
+    "file": "src/app/content/en-US/articles-planning.ts",
+    "slug": "recurring-events-without-the-mess",
+    "sha256": "62bd5cbf96da54ba75a84d7c761b9e603dc20fc174c524fcff645198c05d745b",
+    "objectSha256": "7fb4cbb8b72b124ad9561ff58801e21e5040ab3fee54b6a3b4db5f3f921b20d6"
+  },
+  "scope": "Two full LocalisedArticle draft translations only; no source integration.",
+  "results": [
+    {
+      "locale": "bg",
+      "file": "research/batch20-localized-recurrence/bg.json",
+      "descriptionUnicodeCharacters": 138,
+      "checks": {
+        "sixSections": true,
+        "twelveParagraphs": true,
+        "fiveSteps": true,
+        "threeFaqs": true,
+        "exactSourceUrls": true,
+        "exactDate": true,
+        "emptyClaims": true,
+        "descriptionWithinLimit": true,
+        "relatedRoutesExist": true
+      },
+      "omittedUnavailableEnglishRelated": [
+        "when-two-calendars-disagree",
+        "time-zones-and-the-flight-you-booked"
+      ],
+      "replacementRelated": [
+        "what-guests-can-do-to-your-event",
+        "icloud-google-and-outlook-in-one-view"
+      ],
+      "sha256": "f271eaaa0b33c042ca752b3020929c4fe6468364a7b385e6b44482410ffa658d"
+    },
+    {
+      "locale": "ja",
+      "file": "research/batch20-localized-recurrence/ja.json",
+      "descriptionUnicodeCharacters": 71,
+      "checks": {
+        "sixSections": true,
+        "twelveParagraphs": true,
+        "fiveSteps": true,
+        "threeFaqs": true,
+        "exactSourceUrls": true,
+        "exactDate": true,
+        "emptyClaims": true,
+        "descriptionWithinLimit": true,
+        "relatedRoutesExist": true
+      },
+      "omittedUnavailableEnglishRelated": [
+        "when-two-calendars-disagree",
+        "time-zones-and-the-flight-you-booked"
+      ],
+      "replacementRelated": [
+        "what-guests-can-do-to-your-event",
+        "icloud-google-and-outlook-in-one-view"
+      ],
+      "sha256": "04221abc1d0c78c4dd3d1f190c7884ed1083b2885f95e44aff51b81b44184b29"
+    }
+  ],
+  "semanticReview": [
+    "No guaranteed Cloud occurrence-scope prompt; provider editor fallback preserved for a one-date exception.",
+    "Organizer/edit permissions and source-calendar identity retained.",
+    "Representative-date checks, exception uncertainty and no arbitrary mandatory end date retained.",
+    "Apple and Google controls attributed to their providers; End Repeat retained as source UI label, not a verified localized label.",
+    "Arte Soft developer disclosure and exact source URLs retained."
+  ],
+  "translationLimits": "Own translations; no independent native-speaker approval or runtime/localized-UI certification.",
+  "notPerformed": [
+    "Paid translation API",
+    "Source integration",
+    "Build",
+    "Deployment",
+    "Native edits",
+    "Simulator use"
+  ]
+}

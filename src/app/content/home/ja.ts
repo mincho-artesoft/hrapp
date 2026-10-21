@@ -7,7 +7,7 @@ export const HOME_JA: HomeCopy = {
   // カレンダーなので、それを先に言う。
   metaTitle: 'Cloud Calendars — iCloud・Google・Outlook をひとつの画面に',
   metaDescription:
-    "あなたのカレンダーと予報を、ひとつの場所に。iPhone と iPad のために。 iCloud · Google Calendar · Microsoft Calendar.",
+    "iPhoneとiPadでiCloud・Googleのカレンダー、天気、ウィジェットを。無料でダウンロード。PremiumはMicrosoftカレンダーとTeamsを追加。",
   nav: {
     tour: 'ツアー',
     widgets: 'ウィジェット',
@@ -23,7 +23,7 @@ export const HOME_JA: HomeCopy = {
   hero: {
     badge: "バージョン {v} — 予定とカレンダーの共有",
     title: ['あなたのカレンダー。', 'あなたの空。', 'ひとつの画面。'],
-    lead: 'お持ちのカレンダーすべて — iCloud、Google、Microsoft — をひとつの場所に。予報は日そのものの中にあります。午後がどうなるかを推測するのは、もう終わりです。',
+    lead: "iPhoneとiPadで選択したiCloudとGoogleのカレンダーを表示し、予定と一緒に利用できる天気情報を確認できます。PremiumではMicrosoftカレンダーも接続できます。",
     seeItMove: '動きを見る',
     onTheAppStore: 'App Store で',
     freeToStart: "無料で入手",

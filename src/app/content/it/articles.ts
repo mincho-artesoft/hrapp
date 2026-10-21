@@ -96,11 +96,12 @@ export const ARTICLES_IT: Readonly<Record<string, LocalisedArticle>> = {
     }
   ],
   "seeAlso": [
-    "drag-an-event-to-move-it",
-    "icloud-google-and-outlook-in-one-view",
-    "weather-inside-your-calendar",
-    "sharing-one-event-not-your-calendar"
-  ]
+  "drag-an-event-to-move-it",
+  "icloud-google-and-outlook-in-one-view",
+  "weather-inside-your-calendar",
+  "sharing-one-event-not-your-calendar",
+  "recurring-events-without-the-mess"
+]
 },
 
 "keeping-track-of-who-replied":{

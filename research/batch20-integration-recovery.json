@@ -1,0 +1,6 @@
+{
+  "issue": "Integration assumed Japanese had articles-help.ts; actual locale uses existing articles.ts.",
+  "stateAtFailure": "Home changes and five localized article/link pairs written; no build/deployment. Article diff showed10objects/440total.",
+  "recovery": "Did not rerun completed mutations or restart a process. Completed only Japanese guide/link in actual module, then re-derived exact diff/index. Corrected helper path for reproduction.",
+  "finalExpected": "12 article changes,441total; full source guard follows."
+}

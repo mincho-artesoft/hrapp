@@ -1,0 +1,15 @@
+{
+  "locale": "tr",
+  "changes": [
+    {
+      "path": "hero.lead",
+      "before": "Sahip olduğunuz her takvim — iCloud, Google, Microsoft — tek yerde, tahmin günün kendisine yerleşmiş halde. Öğleden sonranın nasıl olacağını tahmin etmeyi bırakın.",
+      "after": "Seçtiğiniz iCloud ve Google takvimlerini iPhone ve iPad’de, planlarınızın yanında mevcut hava tahminiyle görüntüleyin. Premium, Microsoft takvim bağlantılarını ekler."
+    },
+    {
+      "path": "metaDescription",
+      "before": "Takvimleriniz ve tahmin tek yerde. iPhone ve iPad için yapıldı. iCloud · Google Calendar · Microsoft Calendar.",
+      "after": "iPhone ve iPad’de iCloud ve Google takvimleri, hava durumu ve araç takımları. Ücretsiz indirin; Premium, Microsoft takvimleri ve Teams ekler."
+    }
+  ]
+}

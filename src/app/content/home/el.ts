@@ -4,7 +4,7 @@ import { HomeCopy } from './types';
 export const HOME_EL: HomeCopy = {
   metaTitle: 'Cloud Calendars — iCloud, Google και Outlook σε μία προβολή',
   metaDescription:
-    "Τα ημερολόγιά σας και η πρόγνωση, σε ένα μέρος. Φτιαγμένο για iPhone και iPad. iCloud · Google Calendar · Microsoft Calendar.",
+    "Ημερολόγια iCloud και Google, καιρός και widget σε iPhone και iPad. Δωρεάν λήψη· το Premium προσθέτει ημερολόγια Microsoft και Teams.",
   nav: {
     tour: 'Ξενάγηση',
     widgets: 'Widget',
@@ -20,7 +20,7 @@ export const HOME_EL: HomeCopy = {
   hero: {
     badge: "Έκδοση {v} — κοινή χρήση συμβάντων και ημερολογίων",
     title: ['Το ημερολόγιό σας.', 'Ο ουρανός σας.', 'Μία προβολή.'],
-    lead: 'Κάθε ημερολόγιο που έχετε — iCloud, Google, Microsoft — σε ένα μέρος, με την πρόγνωση χτισμένη μέσα στην ίδια τη μέρα. Σταματήστε να μαντεύετε πώς θα είναι το απόγευμα.',
+    lead: "Δείτε επιλεγμένα ημερολόγια iCloud και Google σε iPhone και iPad, με τη διαθέσιμη πρόγνωση καιρού δίπλα στα σχέδιά σας. Το Premium προσθέτει σύνδεση ημερολογίων Microsoft.",
     seeItMove: 'Δείτε το σε κίνηση',
     onTheAppStore: 'στο App Store',
     freeToStart: "Δωρεάν λήψη",

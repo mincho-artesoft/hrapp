@@ -4,7 +4,7 @@ import { HomeCopy } from './types';
 export const HOME_ZH_HANS: HomeCopy = {
   metaTitle: 'Cloud Calendars — iCloud、Google 和 Outlook 合为一个视图',
   metaDescription:
-    "把你的日历和预报放在同一个地方。为 iPhone 和 iPad 打造。 iCloud · Google Calendar · Microsoft Calendar.",
+    "在 iPhone 和 iPad 上使用 iCloud 和 Google 日历、天气及小组件。免费下载；Premium 增加 Microsoft 日历和 Teams。",
   nav: {
     tour: '导览',
     widgets: '小组件',
@@ -20,7 +20,7 @@ export const HOME_ZH_HANS: HomeCopy = {
   hero: {
     badge: "版本 {v} — 共享活动与日历",
     title: ['你的日历。', '你的天空。', '一个视图。'],
-    lead: '你手上的每一本日历——iCloud、Google、Microsoft——都在同一个地方，预报就长在那一天里面。别再猜下午是什么样子了。',
+    lead: "在 iPhone 和 iPad 上查看选定的 iCloud 和 Google 日历，并在计划旁查看可用的天气预报。Premium 增加 Microsoft 日历连接。",
     seeItMove: '看它动起来',
     onTheAppStore: '在 App Store',
     freeToStart: "免费下载",

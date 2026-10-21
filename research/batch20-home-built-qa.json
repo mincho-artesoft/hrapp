@@ -1,0 +1,220 @@
+{
+  "allPassed": true,
+  "locales": 30,
+  "sourceFields": 60,
+  "visibleHeroStrings": 30,
+  "descriptionFieldsVerified": 90,
+  "records": [
+    {
+      "locale": "en-US",
+      "path": "/",
+      "visibleHeroVerified": true,
+      "descriptionOgTwitterVerified": true,
+      "sha256": "75a67a92e36e992a14d467429fd86f9d8ca010093ae9a2ad7aa14c23a6692ef1"
+    },
+    {
+      "locale": "ar-SA",
+      "path": "/ar/",
+      "visibleHeroVerified": true,
+      "descriptionOgTwitterVerified": true,
+      "sha256": "6583ce536d261622f8b895a18902227f0991f1f703381bbd7d73053d23fe6667"
+    },
+    {
+      "locale": "bg",
+      "path": "/bg/",
+      "visibleHeroVerified": true,
+      "descriptionOgTwitterVerified": true,
+      "sha256": "135ca78d85dc0ff4a55e49119826368976ca2a1c7527a66fdb3103e4bb616f88"
+    },
+    {
+      "locale": "cs",
+      "path": "/cs/",
+      "visibleHeroVerified": true,
+      "descriptionOgTwitterVerified": true,
+      "sha256": "68fc312348a2008fa17d982792dd8e15271175c8570993c92f3f72888d90fbeb"
+    },
+    {
+      "locale": "da",
+      "path": "/da/",
+      "visibleHeroVerified": true,
+      "descriptionOgTwitterVerified": true,
+      "sha256": "c2aa6f86bbb3fedd7efed0248aae5de4fd1cd5bc5ec7ee2ae208070fb863d3f3"
+    },
+    {
+      "locale": "de-DE",
+      "path": "/de/",
+      "visibleHeroVerified": true,
+      "descriptionOgTwitterVerified": true,
+      "sha256": "e225d103d8ac3ef28ca99422ea1284fa250bde880a0e0bb1750d3c85df852d0a"
+    },
+    {
+      "locale": "el",
+      "path": "/el/",
+      "visibleHeroVerified": true,
+      "descriptionOgTwitterVerified": true,
+      "sha256": "bb97ac9947d8fb268e0b9b3ca01df2b7e04741beeb949c997a4d48e5c24ae192"
+    },
+    {
+      "locale": "es-ES",
+      "path": "/es/",
+      "visibleHeroVerified": true,
+      "descriptionOgTwitterVerified": true,
+      "sha256": "fad17310ea9f77e71df1477bc69b40fbecd916098ee1f6ff2f57070c57af0cef"
+    },
+    {
+      "locale": "fi",
+      "path": "/fi/",
+      "visibleHeroVerified": true,
+      "descriptionOgTwitterVerified": true,
+      "sha256": "67973651a4e731bd96d5aee8621560fd22de706da9e2bac8d40ec0d9ca4ad986"
+    },
+    {
+      "locale": "fr-FR",
+      "path": "/fr/",
+      "visibleHeroVerified": true,
+      "descriptionOgTwitterVerified": true,
+      "sha256": "b4982a9bce7df4a8b36637f04c4089ca1c5d297a8272d7370a1c618358e9cc9e"
+    },
+    {
+      "locale": "he",
+      "path": "/he/",
+      "visibleHeroVerified": true,
+      "descriptionOgTwitterVerified": true,
+      "sha256": "0dcfc85f166811ed2844bad144393aca011a253252a254d43a5cf3b95363ed68"
+    },
+    {
+      "locale": "hi",
+      "path": "/hi/",
+      "visibleHeroVerified": true,
+      "descriptionOgTwitterVerified": true,
+      "sha256": "68dc04b25bdfb723a6e9bdce3bb5a339859178a8b73ccd9a93a1f2ae036e003b"
+    },
+    {
+      "locale": "hu",
+      "path": "/hu/",
+      "visibleHeroVerified": true,
+      "descriptionOgTwitterVerified": true,
+      "sha256": "cfab1791a60f8274b8b7ec1076d9785146dadda371d33a17fd76accc74168da8"
+    },
+    {
+      "locale": "id",
+      "path": "/id/",
+      "visibleHeroVerified": true,
+      "descriptionOgTwitterVerified": true,
+      "sha256": "08ed851f77b7cf574eb89914c73baac8dd0949bf97d1246f1d1778d3ec058eca"
+    },
+    {
+      "locale": "it",
+      "path": "/it/",
+      "visibleHeroVerified": true,
+      "descriptionOgTwitterVerified": true,
+      "sha256": "74fe3797601d7161e10de477e3144f1242d70c95f565215dc3ef4c4e325b4e3e"
+    },
+    {
+      "locale": "ja",
+      "path": "/ja/",
+      "visibleHeroVerified": true,
+      "descriptionOgTwitterVerified": true,
+      "sha256": "4d76d09eda4825f31f4e621e0ed60d795dc788e69cd9667e3a615d7ecafd37af"
+    },
+    {
+      "locale": "ko",
+      "path": "/ko/",
+      "visibleHeroVerified": true,
+      "descriptionOgTwitterVerified": true,
+      "sha256": "d6ccec6d60f0a612541edd12eba121d578481ac42ce4d01e22eae41dc15d8be9"
+    },
+    {
+      "locale": "ms",
+      "path": "/ms/",
+      "visibleHeroVerified": true,
+      "descriptionOgTwitterVerified": true,
+      "sha256": "5fc05747e96876e10e76dc505a0b80e8b331ec28d41a79bd10642c32bd335a57"
+    },
+    {
+      "locale": "nl-NL",
+      "path": "/nl/",
+      "visibleHeroVerified": true,
+      "descriptionOgTwitterVerified": true,
+      "sha256": "ff59e4885164ea927ec1b6d64caf9c7b0cc065d2e75b34806f1ced34fd273091"
+    },
+    {
+      "locale": "no",
+      "path": "/no/",
+      "visibleHeroVerified": true,
+      "descriptionOgTwitterVerified": true,
+      "sha256": "e81b067eb4513ae69c1eb4ced1233ae5952dedba670dfab2acb8f639ebf18b7d"
+    },
+    {
+      "locale": "pl",
+      "path": "/pl/",
+      "visibleHeroVerified": true,
+      "descriptionOgTwitterVerified": true,
+      "sha256": "de42d28fc9d507f2110082167fb82dea769a40426ea1d9ed3643beeb9810b1e7"
+    },
+    {
+      "locale": "pt-BR",
+      "path": "/pt/",
+      "visibleHeroVerified": true,
+      "descriptionOgTwitterVerified": true,
+      "sha256": "35f24ab65e5bc6b3c4160edf48ef9f391d73a7d63b8a1e9706262a0a455a7a1c"
+    },
+    {
+      "locale": "ro",
+      "path": "/ro/",
+      "visibleHeroVerified": true,
+      "descriptionOgTwitterVerified": true,
+      "sha256": "e0222adf25082e7f984fb52041fa4661a3bf00428cf91d595cc58344d3cf3423"
+    },
+    {
+      "locale": "ru",
+      "path": "/ru/",
+      "visibleHeroVerified": true,
+      "descriptionOgTwitterVerified": true,
+      "sha256": "af8199606ecfbce721e2b823f28036f3b181f86833c6b623b628f34cfe4bee09"
+    },
+    {
+      "locale": "sv",
+      "path": "/sv/",
+      "visibleHeroVerified": true,
+      "descriptionOgTwitterVerified": true,
+      "sha256": "5ffab4d8c7bd18f9fee490bc1a5dc7cbf482aab7cf998ed0d95ec7e21a5389d9"
+    },
+    {
+      "locale": "th",
+      "path": "/th/",
+      "visibleHeroVerified": true,
+      "descriptionOgTwitterVerified": true,
+      "sha256": "e7924a8137e52d46f236c909ff580ed54d5c5902b51976e196e16c97b668bb1c"
+    },
+    {
+      "locale": "tr",
+      "path": "/tr/",
+      "visibleHeroVerified": true,
+      "descriptionOgTwitterVerified": true,
+      "sha256": "fa92bb8e7fec30844f2d70529ff61c0998f1c9f716ef8302dcacfe8c5796846f"
+    },
+    {
+      "locale": "vi",
+      "path": "/vi/",
+      "visibleHeroVerified": true,
+      "descriptionOgTwitterVerified": true,
+      "sha256": "25b83a2bb4b2b9b98e5fdccdb0e85178a937877efb25ee4f1fa6c88a5546bf6d"
+    },
+    {
+      "locale": "zh-Hans",
+      "path": "/zh-hans/",
+      "visibleHeroVerified": true,
+      "descriptionOgTwitterVerified": true,
+      "sha256": "310747b362b3703900e2520d310c2eb2cf3c8be0b7ebaa50caf283716e7550f6"
+    },
+    {
+      "locale": "zh-Hant",
+      "path": "/zh-hant/",
+      "visibleHeroVerified": true,
+      "descriptionOgTwitterVerified": true,
+      "sha256": "34e4b9e73533877f9e1d4002d9af609f9f4a3cf9a2e0a39ce433305492230809"
+    }
+  ],
+  "scope": "Literal hero body text with script/style excluded and exact description/OG/Twitter metadata. Native-language quality and product runtime are separate checks."
+}

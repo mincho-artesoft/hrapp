@@ -1,0 +1,15 @@
+{
+  "locale": "it",
+  "changes": [
+    {
+      "path": "hero.lead",
+      "before": "Tutti i calendari che hai — iCloud, Google, Microsoft — in un unico posto, con le previsioni dentro la giornata stessa. Basta indovinare che pomeriggio sarà.",
+      "after": "Visualizza i calendari iCloud e Google selezionati su iPhone e iPad, con il meteo disponibile accanto ai tuoi programmi. Premium aggiunge i collegamenti ai calendari Microsoft."
+    },
+    {
+      "path": "metaDescription",
+      "before": "I tuoi calendari e le previsioni, in un unico posto. Fatto per iPhone e iPad. iCloud · Google Calendar · Microsoft Calendar.",
+      "after": "Calendari iCloud e Google, meteo e widget su iPhone e iPad. Download gratuito; Premium aggiunge calendari Microsoft e Teams."
+    }
+  ]
+}

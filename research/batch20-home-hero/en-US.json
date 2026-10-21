@@ -1,0 +1,15 @@
+{
+  "locale": "en-US",
+  "changes": [
+    {
+      "path": "hero.lead",
+      "before": "See iCloud and Google calendars together on iPhone and iPad, with weather alongside your plans. Premium also connects Microsoft calendars.",
+      "after": "View selected iCloud and Google calendars on iPhone and iPad, with available weather alongside your plans. Premium adds Microsoft calendar connections."
+    },
+    {
+      "path": "metaDescription",
+      "before": "See iCloud and Google calendars with weather and widgets on iPhone and iPad. Download free; Premium adds Microsoft calendars and Teams.",
+      "after": "iCloud and Google calendars, weather and widgets on iPhone and iPad. Download free; Premium adds Microsoft calendars and Teams."
+    }
+  ]
+}
