@@ -1,0 +1,21 @@
+{
+  "checkedAt": "2026-10-21T18:25:58.779126+00:00",
+  "source": "https://itunes.apple.com/lookup?id=6775474988&country=ca",
+  "resultCount": 1,
+  "scope": "Official public Apple lookup for exact appID cited by ChatGPT. Not hidden keywords, rank or an app runtime test.",
+  "trackId": 6775474988,
+  "trackName": "easyDays: Calendar & Weather",
+  "version": "1.3.0",
+  "minimumOsVersion": "18.0",
+  "trackViewUrl": "https://apps.apple.com/ca/app/easydays-calendar-weather/id6775474988?uo=4",
+  "primaryGenreName": "Productivity",
+  "widgetRelatedDescriptionExcerpts": [
+    "See the daily weather, temperature and chance of rain, so you can plan around the forecast.",
+    "■ Widgets",
+    "Available on your Home Screen:",
+    "• Today’s events and weather",
+    "• 5-day weather (Plus only)",
+    "Today’s events and weather are also available on your Lock Screen.",
+    "• Weather, temperature and chance of rain"
+  ]
+}

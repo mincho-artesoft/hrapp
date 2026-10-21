@@ -331,36 +331,100 @@ export const PLANNING_EN_US: Readonly<Record<string, LocalisedArticle>> = {
 },
 
   'what-an-all-day-event-really-means': {
-    title: 'What an all-day event really means',
-    short: 'All-day events',
-    description:
-      'All-day is not midnight to midnight. It is a different kind of thing entirely, and treating it as a long event causes the confusion.',
-    lede: 'An all-day event is not twenty-four hours long. It is not any number of hours long, which is exactly why it behaves oddly when you expect it to.',
-    commonBelief: 'That an all-day event is an event that runs from midnight to midnight.',
-    sections: [
-      {
-        heading: 'It belongs to a date, not a clock',
-        body: [
-          'A birthday is on the fourteenth everywhere on earth at once. It does not start earlier in Tokyo. All-day events model that: they are attached to a date and carry no time zone at all.',
-          'This is why they do not shift when you travel, while everything else does.',
-        ],
-      },
-      {
-        heading: 'Where people fight it',
-        body: [
-          'Using all-day for a conference that really runs nine to five means it cannot collide with anything, so the calendar stops warning you about clashes on that day.',
-          'If you want the day blocked, block the hours. If you want the day labelled, all-day is correct.',
-        ],
-      },
-    ],
-    claims: {},
-    practical: [
-      'Use all-day for dates: holidays, birthdays, deadlines, travel days.',
-      'Use timed events for anything that can collide with something else.',
-      'For multi-day trips, an all-day span plus timed events inside it reads best.',
-    ],
-    seeAlso: ['time-zones-and-the-flight-you-booked'],
-  },
+  "updated": "2026-10-21",
+  "title": "All-day calendar events: dates, availability and missing widget entries",
+  "short": "Understand all-day events",
+  "description": "Choose dates or timed appointments, check free/busy separately and verify multi-day ranges. Find all-day entries that do not appear in an upcoming widget.",
+  "lede": "An all-day label, a busy day and an appointment at a particular hour are different ideas. Decide which you need before changing the event. This guide is published by Arte Soft, the developer of Cloud Calendars.",
+  "commonBelief": "An all-day entry always leaves you free, appears in every upcoming list and behaves identically across calendar providers.",
+  "sections": [
+    {
+      "heading": "Choose a date label or a timed commitment",
+      "body": [
+        "A birthday, public holiday or trip label can belong to a date without requiring an arrival hour. A dentist visit or a conference session needs an actual start and end time. Choose the representation that lets someone understand the commitment without guessing.",
+        "For a trip from Friday through Sunday, an all-day span can label the itinerary. Keep a Friday flight, Saturday booking and Sunday check-out as timed commitments when their hours matter. The trip label should not replace the bookings it summarizes. A deadline at 17:00 also needs its hour; an all-day label alone does not communicate that cutoff."
+      ]
+    },
+    {
+      "heading": "Check both dates in Cloud Calendars",
+      "body": [
+        "In the event editor, use All-day for a date-based entry. Starts and Ends then use date choices rather than clock times. Read the first and last intended dates before saving, and reopen the result across those days. The current editor treats the selected ending day as included in the span.",
+        "For a one-day birthday, check that it appears on the intended date without an unwanted extra day. For a three-day trip, check all three dates. If you change an existing repeating entry, follow the recurrence guide before saving: choosing All-day does not establish whether an edit affects one occurrence or future occurrences."
+      ]
+    },
+    {
+      "heading": "Check availability independently",
+      "body": [
+        "Do not decide whether a day is free just by seeing an all-day banner. Google Calendar documents whether an event blocks time as a separate setting from its dates. Calendar permissions and the recipient's view can also limit the details people see. An all-day entry is not a universal instruction to accept or reject meetings.",
+        "If you need a day blocked for leave, check the owning provider's availability or out-of-office controls and the saved result. If you only want a birthday label, check that it does not block time unintentionally. This guide does not promise that Cloud Calendars exposes every provider's availability control or prevents scheduling conflicts. Use a supported provider editor when you need an option absent from the app."
+      ]
+    },
+    {
+      "heading": "A missing widget row is not a missing event",
+      "body": [
+        "Cloud Calendars' upcoming-event widgets and Live Activity follow future timed appointments. They exclude all-day entries. A birthday may therefore be present in the full calendar but absent from the next-event display. Making the widget larger does not change that eligibility rule.",
+        "Open the date in the app and check that the calendar is selected. If the entry is present there, distinguish an expected widget omission from lost calendar data. Do not convert a birthday into an artificial timed meeting merely to make a widget show it; decide first whether the event itself should really have an hour."
+      ]
+    },
+    {
+      "heading": "Inspect transfers and travel dates",
+      "body": [
+        "Date-based events can use different storage conventions from timed appointments. Google documents date fields for all-day entries and a separate end boundary in its event format. A raw export's ending date is not necessarily the last date a calendar displays. Use the displayed result to check a transfer rather than editing a file solely because its end date looks one day later.",
+        "After an import or an important time-zone change, compare the intended first and last dates in the owning calendar and the app. Do not assume every provider, imported file and installed version handles the boundaries identically. Keep the source while checking; moving the event to compensate for an unfamiliar display can introduce another error."
+      ]
+    },
+    {
+      "heading": "Keep alerts and planning separate",
+      "body": [
+        "A label across the top of a day is useful context, but it is not a reminder that has been delivered. If you need to act before a birthday, deadline or trip, inspect the saved alert and the app and system notification settings. The event's visible date alone does not guarantee an audible reminder.",
+        "For a problem report, note the intended date range, whether All-day is enabled, the owning calendar and where the entry differs: full app, provider, widget or activity. Use a non-sensitive example when possible. Preserve the original entry while diagnosing the difference."
+      ]
+    }
+  ],
+  "claims": {},
+  "practical": [
+    "Choose a date label for context and a timed entry for a commitment with an hour.",
+    "Check the first and last included dates after saving.",
+    "Verify free/busy separately in the owning provider when needed.",
+    "Look in the full calendar for all-day entries omitted from upcoming displays.",
+    "Check reminders and imported date boundaries without deleting the source."
+  ],
+  "faq": [
+    {
+      "q": "Does an all-day event mean I am available?",
+      "a": "No. Check the owning calendar's availability settings separately; an all-day banner does not establish free/busy for every provider."
+    },
+    {
+      "q": "Why is my all-day trip absent from the next-event widget?",
+      "a": "That feed follows future timed appointments and excludes all-day entries. Check the trip in the full calendar."
+    },
+    {
+      "q": "Should I subtract a day from an export's end date?",
+      "a": "Do not change it just from the raw field. Some formats use an exclusive end boundary. Check the imported displayed range while retaining the original."
+    }
+  ],
+  "sourcesHeading": "Official event-format and calendar guidance",
+  "sources": [
+    {
+      "label": "Apple: All-day and multiday events in Calendar on Mac",
+      "url": "https://support.apple.com/guide/calendar/set-up-all-day-multiday-or-repeating-events-icl1018/mac"
+    },
+    {
+      "label": "Google: Timed and all-day event concepts",
+      "url": "https://developers.google.com/workspace/calendar/api/concepts/events-calendars"
+    },
+    {
+      "label": "Google: Event boundaries and availability fields",
+      "url": "https://developers.google.com/workspace/calendar/api/v3/reference/events"
+    }
+  ],
+  "seeAlso": [
+    "time-zones-and-the-flight-you-booked",
+    "recurring-events-without-the-mess",
+    "the-widget-that-shows-what-is-next",
+    "calendar-notifications-missing-silent-or-duplicated"
+  ]
+},
 
   'a-list-for-people-who-dislike-grids': {
     title: 'A list for people who never got on with grids',

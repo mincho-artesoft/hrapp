@@ -88,21 +88,21 @@ export const HOME_PT_BR: HomeCopy = {
   },
   widgets: {
     eyebrow: 'Novidade na {v}',
-    title: ['Seu dia, antes de', 'desbloquear qualquer coisa.'],
-    lead: 'O Cloud Calendars vive na tela de início e na tela bloqueada, não só atrás de um ícone. Os widgets carregam a data, a previsão e o que vem; uma atividade ao vivo faz a contagem regressiva.',
+    title: ["Seu calendário,","num relance."],
+    lead: "Escolha widgets de data e tempo ou listas de próximos eventos. Uma atividade ao vivo separada adiciona a contagem regressiva.",
     newIn: 'Novidade na',
     items: [
       {
         title: 'Três tamanhos de widget',
-        body: 'Pequeno para a data e a temperatura, médio para condições, fase da lua e vento, grande para a agenda do dia ao lado da previsão.',
+        body: "Os formatos pequeno e médio mostram data e tempo. As listas médias e grandes mostram compromissos futuros com horário; veja os eventos de dia inteiro no app.",
       },
       {
         title: 'Atividade ao vivo na tela bloqueada',
-        body: 'Seu próximo compromisso faz a contagem regressiva na Dynamic Island e na tela bloqueada, então você nunca precisa abrir nada para saber quanto tempo tem.',
+        body: "Use a atividade ao vivo em aparelhos compatíveis. As atualizações podem demorar; confira mudanças no app.",
       },
       {
-        title: 'Avisos que chegam a tempo',
-        body: 'Lembretes que respeitam o tempo de deslocamento e dizem o que o tempo está fazendo quando você chegar.',
+        title: "Lembretes à sua escolha",
+        body: "Escolha alertas de eventos e ajustes de notificações. Confira o tempo de viagem e a previsão no app.",
       },
     ],
   },
@@ -229,7 +229,7 @@ export const HOME_PT_BR: HomeCopy = {
       },
       {
         q: 'O que os widgets mostram?',
-        a: 'Três tamanhos. O pequeno dá a data com a condição e a temperatura atuais. O médio acrescenta condições, fase da lua e direção do vento. O grande põe seus próximos compromissos ao lado da previsão. Uma atividade ao vivo faz a contagem regressiva até o próximo.',
+        a: "Os formatos pequeno e médio mostram data e tempo. As listas médias e grandes mostram compromissos futuros com horário; veja os eventos de dia inteiro no app. Use a atividade ao vivo em aparelhos compatíveis. As atualizações podem demorar; confira mudanças no app.",
       },
       {
         q: 'Quais aparelhos são compatíveis?',

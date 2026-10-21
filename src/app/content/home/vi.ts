@@ -92,21 +92,21 @@ export const HOME_VI: HomeCopy = {
   },
   widgets: {
     eyebrow: 'Mới ở {v}',
-    title: ['Ngày của bạn, trước khi', 'bạn mở khoá bất cứ thứ gì.'],
-    lead: 'Cloud Calendars sống trên màn hình chính và màn hình khoá, chứ không chỉ nằm sau một biểu tượng. Các widget mang theo ngày, dự báo và việc kế tiếp; một hoạt động trực tiếp đếm ngược tới đó.',
+    title: ["Lịch của bạn,","chỉ qua một cái nhìn."],
+    lead: "Chọn widget ngày và thời tiết hoặc danh sách sự kiện sắp tới. Hoạt động trực tiếp riêng biệt bổ sung phần đếm ngược.",
     newIn: 'Mới ở',
     items: [
       {
         title: 'Ba cỡ widget',
-        body: 'Nhỏ cho ngày và nhiệt độ, vừa cho điều kiện, pha trăng và gió, lớn cho lịch trình trong ngày đặt cạnh dự báo.',
+        body: "Bố cục nhỏ và vừa hiển thị ngày và thời tiết. Danh sách vừa và lớn hiển thị sự kiện sắp tới có giờ bắt đầu; xem sự kiện cả ngày trong ứng dụng.",
       },
       {
         title: 'Hoạt động trực tiếp trên màn hình khoá',
-        body: 'Sự kiện kế tiếp đếm ngược trong Dynamic Island và trên màn hình khoá, nên bạn không bao giờ phải mở gì để biết còn bao lâu.',
+        body: "Dùng hoạt động trực tiếp trên thiết bị được hỗ trợ. Cập nhật có thể mất thời gian; kiểm tra thay đổi trong ứng dụng.",
       },
       {
-        title: 'Thông báo đến kịp lúc',
-        body: 'Nhắc nhở có tính đến thời gian di chuyển và cho bạn biết thời tiết ra sao khi bạn tới nơi.',
+        title: "Lời nhắc do bạn chọn",
+        body: "Chọn lời nhắc sự kiện và cài đặt thông báo. Kiểm tra thời gian di chuyển và dự báo trong ứng dụng.",
       },
     ],
   },
@@ -233,7 +233,7 @@ export const HOME_VI: HomeCopy = {
       },
       {
         q: 'Widget hiển thị những gì?',
-        a: 'Ba cỡ. Cỡ nhỏ cho ngày kèm điều kiện và nhiệt độ hiện tại. Cỡ vừa thêm điều kiện, pha trăng và hướng gió. Cỡ lớn đặt vài sự kiện kế tiếp bên cạnh dự báo. Một hoạt động trực tiếp đếm ngược tới sự kiện kế tiếp.',
+        a: "Bố cục nhỏ và vừa hiển thị ngày và thời tiết. Danh sách vừa và lớn hiển thị sự kiện sắp tới có giờ bắt đầu; xem sự kiện cả ngày trong ứng dụng. Dùng hoạt động trực tiếp trên thiết bị được hỗ trợ. Cập nhật có thể mất thời gian; kiểm tra thay đổi trong ứng dụng.",
       },
       {
         q: 'Những thiết bị nào được hỗ trợ?',

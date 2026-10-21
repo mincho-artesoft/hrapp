@@ -1,0 +1,45 @@
+{
+  "checkedAt": "2026-10-21T18:16:09.758Z",
+  "surface": "ChatGPT web, logged-in user account",
+  "uiModeObserved": "Default chat; backend model not exposed",
+  "prompt": "Which shared family calendar apps for iPhone help coordinate school pickups and last-minute changes? Compare viewing a shared schedule with confirming who is responsible for a pickup, and cite official product sources.",
+  "responseComplete": true,
+  "brandMentioned": false,
+  "namedRecommendations": [
+    "Cozi",
+    "TimeTree",
+    "FamilyWall",
+    "Google Calendar",
+    "Apple Calendar"
+  ],
+  "limits": [
+    "One response, personalized account and tools uncontrolled; not universal ranking or capability verification.",
+    "New separate chat without brand name; cross-chat memory was not controlled.",
+    "Direct answer anchors captured, citation popovers not exhaustively expanded."
+  ],
+  "response": {
+    "links": [
+      {
+        "text": "FamilyWall features",
+        "url": "https://support.familywall.com/en/support/solutions/articles/47001013681-about-familywall?utm_source=chatgpt.com"
+      },
+      {
+        "text": "TimeTree notifications",
+        "url": "https://support.timetreeapp.com/hc/en-us/articles/900005172803-About-notifications?utm_source=chatgpt.com"
+      },
+      {
+        "text": "Cozi features",
+        "url": "https://www.cozi.com/cozi-gold-features/?utm_source=chatgpt.com"
+      },
+      {
+        "text": "Google Calendar RSVPs",
+        "url": "https://support.google.com/calendar/answer/37161?utm_source=chatgpt.com"
+      },
+      {
+        "text": "Apple calendar sharing",
+        "url": "https://support.apple.com/en-ie/guide/iphone/-iph7613c4fb/ios?utm_source=chatgpt.com"
+      }
+    ],
+    "text": "ChatGPT said:\n\nFor coordinating school pickups on iPhone, the most important distinction is between seeing the family schedule and knowing who has accepted responsibility for collecting a child.\n\nA shared calendar can show “School pickup — 3:15 PM — Dad,” but that doesn't necessarily mean Dad has seen the change or confirmed he can do it.\n\nFor families juggling school, after-school activities, grandparents, babysitters, and last-minute changes, I'd prioritize apps that combine calendar visibility with task assignments, notifications, or explicit acknowledgments.\n\nBest family calendar apps to compare\n\nThe strongest options to investigate are Cozi Family Organizer, TimeTree, FamilyWall, Google Calendar, and Apple Calendar. They approach coordination differently, particularly when plans change unexpectedly.\n\nFeature comparison\n\nApp\n\n\t\n\nViewing a shared schedule\n\n\t\n\nConfirming pickup responsibility\n\n\t\n\nLast-minute changes\n\n\n\n\nCozi\n\n\t\n\nFamily calendar, color-coded members\n\n\t\n\nAssign or label the responsible person; confirmation needs follow-up\n\n\t\n\nCalendar reminders and updates\n\n\n\n\nTimeTree\n\n\t\n\nShared calendars and event discussions\n\n\t\n\nDiscuss and acknowledge in an event conversation\n\n\t\n\nUseful for coordinating changes in context\n\n\n\n\nFamilyWall\n\n\t\n\nShared family calendar and organizer\n\n\t\n\nAssign tasks to family members; check completion separately\n\n\t\n\nMessaging and family coordination tools\n\n\n\n\nGoogle Calendar\n\n\t\n\nShared calendars with editing permissions\n\n\t\n\nInvite pickup person and check Yes/No/Maybe RSVP\n\n\t\n\nEvent updates and response notifications\n\n\n\n\nApple Calendar\n\n\t\n\nShared iCloud calendars\n\n\t\n\nInvite the responsible adult to an event and check response\n\n\t\n\nShared-calendar change notifications\n\nImportant: A calendar RSVP means someone accepted an invitation, not that the child was actually collected. Likewise, a task being marked complete is not proof of a successful handoff unless your family agrees to use it that way.\n\nGoogle explicitly documents guest response tracking, including accepted, declined, and tentative responses. \nGoogle Calendar Help\n+1\n Apple documents shared calendar editing, change notifications, and event invitations. \nApple Support (IE)\n+1\n\nWhich apps work best for actual pickup coordination?\n\n1. FamilyWall — Best for assigning responsibility\n\nFamilyWall combines a calendar, assignable to-do lists, progress tracking, and family messaging. You can assign a pickup task to one parent, then ask them to acknowledge it in the family conversation. \nFamilyWall\n+1\n\nBest when several adults regularly share pickup duties.\n\n2. TimeTree — Best for discussing sudden changes\n\nTimeTree supports shared calendars, calendar chat, event participation, and notifications for event edits and comments. That makes it convenient to discuss a change without losing its calendar context. \nTimeTree\n+2\n\nBest when pickup arrangements change frequently and communication matters more than formal task tracking.\n\n3. Cozi — Best for an easy family overview\n\nCozi's color-coded calendar, reminders, and shared lists are designed around household planning. However, notifications about changed events are a Cozi Gold feature, an important limitation for last-minute pickups. \nFree Shared Planner\n+1\n\nBest for predictable school routines and seeing who is scheduled.\n\nExample: a last-minute pickup change\n\nSuppose one parent is scheduled for a 3:15 PM pickup but gets stuck at work at 2:45 PM.\n\nStep\n\n\t\n\nShared calendar alone\n\n\t\n\nCalendar + confirmation\n\n\n\n\n2:45 PM\n\n\t\n\nChange pickup from Alex to Sam\n\n\t\n\nAsk Sam to take over\n\n\n\n\n2:48 PM\n\n\t\n\nCalendar displays Sam\n\n\t\n\nSam explicitly replies “Confirmed”\n\n\n\n\n3:00 PM\n\n\t\n\nEvent reminder appears\n\n\t\n\nEveryone knows Sam accepted\n\n\n\n\n3:20 PM\n\n\t\n\nEvent remains on calendar\n\n\t\n\nSam confirms “Picked up”\n\nThe second workflow reduces the risk of two adults assuming the other person is handling pickup.\n\nMy recommendation\n\nChoose FamilyWall when your priority is accountability through assigned tasks and messaging. Choose TimeTree when your priority is rapidly discussing and agreeing on schedule changes. Choose Google Calendar if you prefer an existing calendar system with explicit invitation responses, or Apple Calendar if your household is already using iCloud and wants minimal setup.\n\nWhatever app you choose, establish one simple rule: a pickup reassignment isn't final until the new responsible adult explicitly confirms it. For a change close to dismissal time, a direct phone call is a sensible backup.\n\nOfficial product references: FamilyWall features · TimeTree notifications · Cozi features · Google Calendar RSVPs · Apple calendar sharing."
+  }
+}

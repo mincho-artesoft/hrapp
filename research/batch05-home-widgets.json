@@ -1,0 +1,3760 @@
+{
+  "date": "2026-10-21",
+  "status": "Prepared field-level patches only; no source modules changed.",
+  "scope": "30homepage locales; seven field values per locale (title array is one value),210field patches. Other metadata/prices/media/copy preserved.",
+  "patchFormat": "Match exact before value at pathSegments and source hash before applying. title is a two-element array; other values are strings. FAQ index4 verified as widget question in all30locales.",
+  "translationLimits": "Editorial translations, no paid API or native-speaker certification. Current source inspected, no released/runtime validation. Plain concise copy; no legal guarantee or code-review jargon.",
+  "nativeEvidence": [
+    {
+      "path": "/Users/minchomilev/work/hrapp/CalendarWidget/CalendarWidget.swift",
+      "lines": [
+        [
+          1099,
+          1147
+        ]
+      ],
+      "sha256": "202168b86e98d32b8e26314e9ff2e57ab61428bab784aa3f4fd060fe4ffa01e7",
+      "finding": "Bundle has three static Home Screen widget variants plus ActivityConfiguration. Calendar & Weather small/medium; Calendar Events medium; Calendar Events Large large. No accessoryCircular/Rectangular/Inline families declared."
+    },
+    {
+      "path": "/Users/minchomilev/work/hrapp/CalendarWidget/CalendarWidget.swift",
+      "lines": [
+        [
+          107,
+          116
+        ],
+        [
+          220,
+          235
+        ],
+        [
+          435,
+          465
+        ]
+      ],
+      "sha256": "202168b86e98d32b8e26314e9ff2e57ab61428bab784aa3f4fd060fe4ffa01e7",
+      "finding": "Provider reads saved app-group event/weather/settings values; requests timeline after15min, not guaranteed scheduling. Large events view dynamically caps visible rows at11; event list is not a week grid."
+    },
+    {
+      "path": "/Users/minchomilev/work/hrapp/Calendar/Main/CalendarWidgetStore.swift",
+      "lines": [
+        [
+          174,
+          231
+        ],
+        [
+          235,
+          280
+        ]
+      ],
+      "sha256": "0e766b69fcf12e3cbc99c40b033e5e80b1d34899627844676d989d52b552a2c7",
+      "finding": "Uses selected calendar identities; EventKit full-access gate; combines native/local events, removes cancelled/revoked entries, excludes all-day and started events, sorts and limits future feed. Snapshot written to shared defaults then reload requested."
+    },
+    {
+      "path": "/Users/minchomilev/work/hrapp/Calendar/Sources/CalendarLiveActivityManager.swift",
+      "lines": [
+        [
+          38,
+          83
+        ],
+        [
+          115,
+          189
+        ]
+      ],
+      "sha256": "0c558abc2c57c6fc07a45fbd76b1dc149a3b303117d4edef6e301fe57d1247db",
+      "finding": "Activity authorization gate and start/stop/update; current source creates pushType:nil; retains at most3future timed events, staleDate next start. Not continuous provider polling or unlimited queue."
+    },
+    {
+      "path": "/Users/minchomilev/work/hrapp/CalendarWidget/CalendarLiveActivityWidget.swift",
+      "lines": [
+        [
+          300,
+          360
+        ],
+        [
+          438,
+          465
+        ]
+      ],
+      "sha256": "d6e512b62218f0d3319368e68362c6b5b27f45c25ba4f6326729fbfe6e0b844b",
+      "finding": "Lock Screen ActivityConfiguration plus DynamicIsland; countdown uses periodic60second view, not proof of fresh provider data. Distinct from static accessory widget."
+    },
+    {
+      "path": "/Users/minchomilev/work/hrapp/Calendar/Main/CalendarApp.swift",
+      "lines": [
+        [
+          379,
+          435
+        ]
+      ],
+      "sha256": "f07cc2ac3643c89526e5b10efaa2cbb5680346f98e83354a2fbae69e6b8e8a4c",
+      "finding": "Background refresh earliest request5min and availability gate; no guarantee that iOS runs at that interval."
+    },
+    {
+      "path": "/Users/minchomilev/work/hrapp/Calendar/Main/RootView.swift",
+      "lines": [
+        [
+          320,
+          329
+        ]
+      ],
+      "sha256": "5fe397a4b213f6cdfe9a428e9ed41c9fe68e96feaec721cc8170441e4670a68e",
+      "finding": "Live/Stop control invokes manager toggle when supported."
+    }
+  ],
+  "additionalReminderEvidence": [
+    {
+      "file": "/Users/minchomilev/work/hrapp/Calendar/AppLocal/AppLocalEventEditorView.swift",
+      "lines": [
+        738,
+        744
+      ],
+      "finding": "Event editor Alert/Second Alert controls; no arrival-time/weather-delivery guarantee derived.",
+      "sha256": "5f021ab6f986148e70fe3b932e0e9e530fecb8d01fdc436e78217c6116f9a093"
+    },
+    {
+      "file": "/Users/minchomilev/work/hrapp/Calendar/Settings/SettingsSheetView.swift",
+      "lines": [
+        290,
+        387
+      ],
+      "finding": "Separate event/invitation/weather notification preferences; OS permission separately applies.",
+      "sha256": "eff14d1ea610e32f25e3b271c4eb55dcfc42ec7899b276a1079ec9a047c7fbed"
+    }
+  ],
+  "patches": [
+    {
+      "locale": "en-US",
+      "file": "/Users/minchomilev/cloud-calendars/src/app/content/home/en-US.ts",
+      "sourceSha256": "77746d38b12c3997c5dec9a8d89b9538c4ca54981a23321143b6f4f80743e151",
+      "fields": [
+        {
+          "path": "widgets.title",
+          "pathSegments": [
+            "widgets",
+            "title"
+          ],
+          "before": [
+            "Your day, before",
+            "you unlock anything."
+          ],
+          "after": [
+            "Your calendar,",
+            "at a glance."
+          ],
+          "sourceLines": [
+            104,
+            104
+          ],
+          "reason": "Avoids blanket no-unlock claim across Home Screen and Live Activity."
+        },
+        {
+          "path": "widgets.lead",
+          "pathSegments": [
+            "widgets",
+            "lead"
+          ],
+          "before": "Cloud Calendars lives on the Home Screen and the Lock Screen, not just inside an app icon. Widgets carry the date, the forecast and what’s next; a Live Activity counts down to it.",
+          "after": "Choose date-and-weather widgets or upcoming event lists. A separate Live Activity adds a countdown.",
+          "sourceLines": [
+            105,
+            105
+          ],
+          "reason": "Separates widgets from Live Activity."
+        },
+        {
+          "path": "widgets.items.0.body",
+          "pathSegments": [
+            "widgets",
+            "items",
+            0,
+            "body"
+          ],
+          "before": "Small for the date and temperature, medium for conditions, moon phase and wind, large for the day’s agenda alongside the forecast.",
+          "after": "Small and medium layouts show date and weather. Medium and large event lists show future timed appointments; find all-day entries in the app.",
+          "sourceLines": [
+            110,
+            110
+          ],
+          "reason": "Correct size/layout mapping and future-timed/all-day distinction."
+        },
+        {
+          "path": "widgets.items.1.body",
+          "pathSegments": [
+            "widgets",
+            "items",
+            1,
+            "body"
+          ],
+          "before": "Your next event counts down in the Dynamic Island and on the Lock Screen, so you never have to open anything to know how long you have.",
+          "after": "Use Live Activity on supported devices. Updates may take time; check the app after a schedule change.",
+          "sourceLines": [
+            114,
+            114
+          ],
+          "reason": "Supported-device qualification and no instant-update guarantee."
+        },
+        {
+          "path": "widgets.items.2.title",
+          "pathSegments": [
+            "widgets",
+            "items",
+            2,
+            "title"
+          ],
+          "before": "Notifications that arrive in time",
+          "after": "Reminders you choose",
+          "sourceLines": [
+            117,
+            117
+          ],
+          "reason": "Removes timely-arrival guarantee."
+        },
+        {
+          "path": "widgets.items.2.body",
+          "pathSegments": [
+            "widgets",
+            "items",
+            2,
+            "body"
+          ],
+          "before": "Event reminders that respect travel time and tell you what the weather is doing when you get there.",
+          "after": "Choose event alerts and notification settings. Check travel time and the forecast in the app.",
+          "sourceLines": [
+            118,
+            118
+          ],
+          "reason": "User-selected reminders; travel and forecast checked separately."
+        },
+        {
+          "path": "faq.items.4.a",
+          "pathSegments": [
+            "faq",
+            "items",
+            4,
+            "a"
+          ],
+          "before": "Three sizes. Small gives the date with the current condition and temperature. Medium adds conditions, moon phase and wind direction. Large puts your next few events beside the forecast. A Live Activity counts down to your next event.",
+          "after": "Small and medium layouts show date and weather. Medium and large event lists show future timed appointments; find all-day entries in the app. Use Live Activity on supported devices. Updates may take time; check the app after a schedule change.",
+          "sourceLines": [
+            245,
+            245
+          ],
+          "reason": "FAQ mirrors supported widget content and update limits."
+        }
+      ]
+    },
+    {
+      "locale": "bg",
+      "file": "/Users/minchomilev/cloud-calendars/src/app/content/home/bg.ts",
+      "sourceSha256": "f4780ab8d688f1f05863a7ca8cd1cc91862c1e988e90017c5d8507d956bcb2cc",
+      "fields": [
+        {
+          "path": "widgets.title",
+          "pathSegments": [
+            "widgets",
+            "title"
+          ],
+          "before": [
+            "Денят ви, преди",
+            "да отключите каквото и да е."
+          ],
+          "after": [
+            "Календарът ви,",
+            "с един поглед."
+          ],
+          "sourceLines": [
+            96,
+            96
+          ],
+          "reason": "Avoids blanket no-unlock claim across Home Screen and Live Activity."
+        },
+        {
+          "path": "widgets.lead",
+          "pathSegments": [
+            "widgets",
+            "lead"
+          ],
+          "before": "Cloud Calendars живее на началния и заключения екран, а не само в икона на приложение. Уиджетите носят датата, прогнозата и какво следва; едно Live Activity отброява до него.",
+          "after": "Изберете уиджети за датата и времето навън или списъци с предстоящи събития. Отделна Live Activity добавя обратно броене.",
+          "sourceLines": [
+            97,
+            97
+          ],
+          "reason": "Separates widgets from Live Activity."
+        },
+        {
+          "path": "widgets.items.0.body",
+          "pathSegments": [
+            "widgets",
+            "items",
+            0,
+            "body"
+          ],
+          "before": "Малкият за датата и температурата, средният за условията, лунната фаза и вятъра, големият за програмата на деня редом с прогнозата.",
+          "after": "Малките и средните оформления показват датата и времето навън. Средните и големите списъци показват предстоящи събития с час; целодневните са в приложението.",
+          "sourceLines": [
+            102,
+            102
+          ],
+          "reason": "Correct size/layout mapping and future-timed/all-day distinction."
+        },
+        {
+          "path": "widgets.items.1.body",
+          "pathSegments": [
+            "widgets",
+            "items",
+            1,
+            "body"
+          ],
+          "before": "Следващото ви събитие отброява в Dynamic Island и на заключения екран, така че не се налага да отваряте нищо, за да знаете колко време имате.",
+          "after": "Използвайте Live Activity на поддържани устройства. Обновяването може да отнеме време; проверете приложението след промяна.",
+          "sourceLines": [
+            106,
+            106
+          ],
+          "reason": "Supported-device qualification and no instant-update guarantee."
+        },
+        {
+          "path": "widgets.items.2.title",
+          "pathSegments": [
+            "widgets",
+            "items",
+            2,
+            "title"
+          ],
+          "before": "Известия, които идват навреме",
+          "after": "Напомняния по ваш избор",
+          "sourceLines": [
+            109,
+            109
+          ],
+          "reason": "Removes timely-arrival guarantee."
+        },
+        {
+          "path": "widgets.items.2.body",
+          "pathSegments": [
+            "widgets",
+            "items",
+            2,
+            "body"
+          ],
+          "before": "Напомняния за събития, които се съобразяват с времето за път и ви казват какво прави времето, щом стигнете.",
+          "after": "Изберете известия за събития и настройки за уведомяване. Проверете времето за път и прогнозата в приложението.",
+          "sourceLines": [
+            110,
+            110
+          ],
+          "reason": "User-selected reminders; travel and forecast checked separately."
+        },
+        {
+          "path": "faq.items.4.a",
+          "pathSegments": [
+            "faq",
+            "items",
+            4,
+            "a"
+          ],
+          "before": "Три размера. Малкият дава датата с текущите условия и температура. Средният добавя условия, лунна фаза и посока на вятъра. Големият слага следващите ви събития до прогнозата. Едно Live Activity отброява до следващото събитие.",
+          "after": "Малките и средните оформления показват датата и времето навън. Средните и големите списъци показват предстоящи събития с час; целодневните са в приложението. Използвайте Live Activity на поддържани устройства. Обновяването може да отнеме време; проверете приложението след промяна.",
+          "sourceLines": [
+            237,
+            237
+          ],
+          "reason": "FAQ mirrors supported widget content and update limits."
+        }
+      ]
+    },
+    {
+      "locale": "de-DE",
+      "file": "/Users/minchomilev/cloud-calendars/src/app/content/home/de-DE.ts",
+      "sourceSha256": "af0a86eb405b0bd313a37240ecd37f8a544308ce3b29d894ceb725f8751b068d",
+      "fields": [
+        {
+          "path": "widgets.title",
+          "pathSegments": [
+            "widgets",
+            "title"
+          ],
+          "before": [
+            "Ihr Tag, bevor Sie",
+            "irgendetwas entsperren."
+          ],
+          "after": [
+            "Ihr Kalender,",
+            "auf einen Blick."
+          ],
+          "sourceLines": [
+            95,
+            95
+          ],
+          "reason": "Avoids blanket no-unlock claim across Home Screen and Live Activity."
+        },
+        {
+          "path": "widgets.lead",
+          "pathSegments": [
+            "widgets",
+            "lead"
+          ],
+          "before": "Cloud Calendars lebt auf dem Home- und dem Sperrbildschirm, nicht nur hinter einem App-Symbol. Widgets tragen das Datum, die Vorhersage und das Nächste; eine Live-Aktivität zählt darauf herunter.",
+          "after": "Wählen Sie Widgets für Datum und Wetter oder Listen kommender Termine. Eine separate Live Activity ergänzt einen Countdown.",
+          "sourceLines": [
+            96,
+            96
+          ],
+          "reason": "Separates widgets from Live Activity."
+        },
+        {
+          "path": "widgets.items.0.body",
+          "pathSegments": [
+            "widgets",
+            "items",
+            0,
+            "body"
+          ],
+          "before": "Klein für Datum und Temperatur, mittel für Bedingungen, Mondphase und Wind, groß für die Tagesagenda neben der Vorhersage.",
+          "after": "Kleine und mittlere Layouts zeigen Datum und Wetter. Mittlere und große Terminlisten zeigen zukünftige Termine mit Uhrzeit; ganztägige Einträge finden Sie in der App.",
+          "sourceLines": [
+            101,
+            101
+          ],
+          "reason": "Correct size/layout mapping and future-timed/all-day distinction."
+        },
+        {
+          "path": "widgets.items.1.body",
+          "pathSegments": [
+            "widgets",
+            "items",
+            1,
+            "body"
+          ],
+          "before": "Ihr nächster Termin zählt in der Dynamic Island und auf dem Sperrbildschirm herunter, sodass Sie nichts öffnen müssen, um zu wissen, wie viel Zeit bleibt.",
+          "after": "Nutzen Sie Live Activity auf unterstützten Geräten. Aktualisierungen können dauern; prüfen Sie Änderungen in der App.",
+          "sourceLines": [
+            105,
+            105
+          ],
+          "reason": "Supported-device qualification and no instant-update guarantee."
+        },
+        {
+          "path": "widgets.items.2.title",
+          "pathSegments": [
+            "widgets",
+            "items",
+            2,
+            "title"
+          ],
+          "before": "Benachrichtigungen, die rechtzeitig kommen",
+          "after": "Erinnerungen nach Ihrer Wahl",
+          "sourceLines": [
+            108,
+            108
+          ],
+          "reason": "Removes timely-arrival guarantee."
+        },
+        {
+          "path": "widgets.items.2.body",
+          "pathSegments": [
+            "widgets",
+            "items",
+            2,
+            "body"
+          ],
+          "before": "Erinnerungen, die die Wegzeit berücksichtigen und Ihnen sagen, was das Wetter macht, wenn Sie ankommen.",
+          "after": "Wählen Sie Terminhinweise und Benachrichtigungseinstellungen. Prüfen Sie Wegzeit und Wettervorhersage in der App.",
+          "sourceLines": [
+            109,
+            109
+          ],
+          "reason": "User-selected reminders; travel and forecast checked separately."
+        },
+        {
+          "path": "faq.items.4.a",
+          "pathSegments": [
+            "faq",
+            "items",
+            4,
+            "a"
+          ],
+          "before": "Drei Größen. Klein zeigt das Datum mit der aktuellen Lage und der Temperatur. Mittel ergänzt Bedingungen, Mondphase und Windrichtung. Groß stellt Ihre nächsten Termine neben die Vorhersage. Eine Live-Aktivität zählt zu Ihrem nächsten Termin herunter.",
+          "after": "Kleine und mittlere Layouts zeigen Datum und Wetter. Mittlere und große Terminlisten zeigen zukünftige Termine mit Uhrzeit; ganztägige Einträge finden Sie in der App. Nutzen Sie Live Activity auf unterstützten Geräten. Aktualisierungen können dauern; prüfen Sie Änderungen in der App.",
+          "sourceLines": [
+            236,
+            236
+          ],
+          "reason": "FAQ mirrors supported widget content and update limits."
+        }
+      ]
+    },
+    {
+      "locale": "es-ES",
+      "file": "/Users/minchomilev/cloud-calendars/src/app/content/home/es-ES.ts",
+      "sourceSha256": "04992d719fcdbdb41b6a869a02ba8d8aa893683cb73f3169c623f33e4a09222d",
+      "fields": [
+        {
+          "path": "widgets.title",
+          "pathSegments": [
+            "widgets",
+            "title"
+          ],
+          "before": [
+            "Tu día, antes de",
+            "desbloquear nada."
+          ],
+          "after": [
+            "Tu calendario,",
+            "de un vistazo."
+          ],
+          "sourceLines": [
+            99,
+            99
+          ],
+          "reason": "Avoids blanket no-unlock claim across Home Screen and Live Activity."
+        },
+        {
+          "path": "widgets.lead",
+          "pathSegments": [
+            "widgets",
+            "lead"
+          ],
+          "before": "Cloud Calendars vive en la pantalla de inicio y en la de bloqueo, no solo detrás de un icono. Los widgets llevan la fecha, la previsión y lo siguiente; una actividad en vivo hace la cuenta atrás.",
+          "after": "Elige widgets de fecha y tiempo o listas de próximos eventos. Una actividad en directo independiente añade la cuenta atrás.",
+          "sourceLines": [
+            100,
+            100
+          ],
+          "reason": "Separates widgets from Live Activity."
+        },
+        {
+          "path": "widgets.items.0.body",
+          "pathSegments": [
+            "widgets",
+            "items",
+            0,
+            "body"
+          ],
+          "before": "Pequeño para la fecha y la temperatura, mediano para condiciones, fase lunar y viento, grande para la agenda del día junto a la previsión.",
+          "after": "Los diseños pequeños y medianos muestran fecha y tiempo. Las listas medianas y grandes muestran citas futuras con hora; consulta los eventos de todo el día en la app.",
+          "sourceLines": [
+            105,
+            105
+          ],
+          "reason": "Correct size/layout mapping and future-timed/all-day distinction."
+        },
+        {
+          "path": "widgets.items.1.body",
+          "pathSegments": [
+            "widgets",
+            "items",
+            1,
+            "body"
+          ],
+          "before": "Tu próximo evento hace la cuenta atrás en la Dynamic Island y en la pantalla de bloqueo, así que nunca tienes que abrir nada para saber cuánto te queda.",
+          "after": "Usa la actividad en directo en dispositivos compatibles. Las actualizaciones pueden tardar; comprueba los cambios en la app.",
+          "sourceLines": [
+            109,
+            109
+          ],
+          "reason": "Supported-device qualification and no instant-update guarantee."
+        },
+        {
+          "path": "widgets.items.2.title",
+          "pathSegments": [
+            "widgets",
+            "items",
+            2,
+            "title"
+          ],
+          "before": "Avisos que llegan a tiempo",
+          "after": "Recordatorios a tu medida",
+          "sourceLines": [
+            112,
+            112
+          ],
+          "reason": "Removes timely-arrival guarantee."
+        },
+        {
+          "path": "widgets.items.2.body",
+          "pathSegments": [
+            "widgets",
+            "items",
+            2,
+            "body"
+          ],
+          "before": "Recordatorios que respetan el tiempo de desplazamiento y te dicen qué hace el tiempo cuando llegues.",
+          "after": "Elige avisos de eventos y ajustes de notificaciones. Comprueba el tiempo de viaje y la previsión en la app.",
+          "sourceLines": [
+            113,
+            113
+          ],
+          "reason": "User-selected reminders; travel and forecast checked separately."
+        },
+        {
+          "path": "faq.items.4.a",
+          "pathSegments": [
+            "faq",
+            "items",
+            4,
+            "a"
+          ],
+          "before": "Tres tamaños. El pequeño da la fecha con la condición actual y la temperatura. El mediano añade condiciones, fase lunar y dirección del viento. El grande pone tus próximos eventos junto a la previsión. Una actividad en vivo hace la cuenta atrás hasta tu próximo evento.",
+          "after": "Los diseños pequeños y medianos muestran fecha y tiempo. Las listas medianas y grandes muestran citas futuras con hora; consulta los eventos de todo el día en la app. Usa la actividad en directo en dispositivos compatibles. Las actualizaciones pueden tardar; comprueba los cambios en la app.",
+          "sourceLines": [
+            241,
+            241
+          ],
+          "reason": "FAQ mirrors supported widget content and update limits."
+        }
+      ]
+    },
+    {
+      "locale": "fr-FR",
+      "file": "/Users/minchomilev/cloud-calendars/src/app/content/home/fr-FR.ts",
+      "sourceSha256": "8c55c03b9bd605231c4c83d5081c543105c8f1351dc350954218255462fb490b",
+      "fields": [
+        {
+          "path": "widgets.title",
+          "pathSegments": [
+            "widgets",
+            "title"
+          ],
+          "before": [
+            "Votre journée, avant",
+            "tout déverrouillage."
+          ],
+          "after": [
+            "Votre agenda,",
+            "en un coup d’œil."
+          ],
+          "sourceLines": [
+            100,
+            100
+          ],
+          "reason": "Avoids blanket no-unlock claim across Home Screen and Live Activity."
+        },
+        {
+          "path": "widgets.lead",
+          "pathSegments": [
+            "widgets",
+            "lead"
+          ],
+          "before": "Cloud Calendars vit sur l’écran d’accueil et l’écran verrouillé, pas seulement derrière une icône. Les widgets portent la date, la prévision et la suite ; une activité en direct fait le décompte.",
+          "after": "Choisissez des widgets de date et météo ou des listes de prochains rendez-vous. Une activité en direct distincte ajoute un compte à rebours.",
+          "sourceLines": [
+            101,
+            101
+          ],
+          "reason": "Separates widgets from Live Activity."
+        },
+        {
+          "path": "widgets.items.0.body",
+          "pathSegments": [
+            "widgets",
+            "items",
+            0,
+            "body"
+          ],
+          "before": "Petit pour la date et la température, moyen pour les conditions, la phase lunaire et le vent, grand pour l’agenda de la journée à côté de la prévision.",
+          "after": "Les petits et moyens formats affichent date et météo. Les listes moyennes et grandes montrent les rendez-vous horaires à venir ; consultez les journées entières dans l’app.",
+          "sourceLines": [
+            106,
+            106
+          ],
+          "reason": "Correct size/layout mapping and future-timed/all-day distinction."
+        },
+        {
+          "path": "widgets.items.1.body",
+          "pathSegments": [
+            "widgets",
+            "items",
+            1,
+            "body"
+          ],
+          "before": "Votre prochain événement décompte dans la Dynamic Island et sur l’écran verrouillé, de sorte que vous n’avez jamais à ouvrir quoi que ce soit pour savoir combien de temps il reste.",
+          "after": "Utilisez l’activité en direct sur les appareils compatibles. Les mises à jour peuvent prendre du temps ; vérifiez les changements dans l’app.",
+          "sourceLines": [
+            110,
+            110
+          ],
+          "reason": "Supported-device qualification and no instant-update guarantee."
+        },
+        {
+          "path": "widgets.items.2.title",
+          "pathSegments": [
+            "widgets",
+            "items",
+            2,
+            "title"
+          ],
+          "before": "Des notifications qui arrivent à temps",
+          "after": "Des rappels à votre choix",
+          "sourceLines": [
+            113,
+            113
+          ],
+          "reason": "Removes timely-arrival guarantee."
+        },
+        {
+          "path": "widgets.items.2.body",
+          "pathSegments": [
+            "widgets",
+            "items",
+            2,
+            "body"
+          ],
+          "before": "Des rappels qui tiennent compte du temps de trajet et vous disent quel temps il fera à l’arrivée.",
+          "after": "Choisissez les rappels et les réglages de notification. Vérifiez le trajet et les prévisions dans l’app.",
+          "sourceLines": [
+            114,
+            114
+          ],
+          "reason": "User-selected reminders; travel and forecast checked separately."
+        },
+        {
+          "path": "faq.items.4.a",
+          "pathSegments": [
+            "faq",
+            "items",
+            4,
+            "a"
+          ],
+          "before": "Trois tailles. Le petit donne la date avec les conditions et la température du moment. Le moyen ajoute les conditions, la phase lunaire et la direction du vent. Le grand place vos prochains événements à côté de la prévision. Une activité en direct décompte jusqu’au prochain.",
+          "after": "Les petits et moyens formats affichent date et météo. Les listes moyennes et grandes montrent les rendez-vous horaires à venir ; consultez les journées entières dans l’app. Utilisez l’activité en direct sur les appareils compatibles. Les mises à jour peuvent prendre du temps ; vérifiez les changements dans l’app.",
+          "sourceLines": [
+            241,
+            241
+          ],
+          "reason": "FAQ mirrors supported widget content and update limits."
+        }
+      ]
+    },
+    {
+      "locale": "it",
+      "file": "/Users/minchomilev/cloud-calendars/src/app/content/home/it.ts",
+      "sourceSha256": "5e9cf6680914ebfd735649457aa7a9f0e4df6133d7989d5db92ac62d5bc45c44",
+      "fields": [
+        {
+          "path": "widgets.title",
+          "pathSegments": [
+            "widgets",
+            "title"
+          ],
+          "before": [
+            "La tua giornata, prima",
+            "di sbloccare qualsiasi cosa."
+          ],
+          "after": [
+            "Il tuo calendario,",
+            "a colpo d’occhio."
+          ],
+          "sourceLines": [
+            99,
+            99
+          ],
+          "reason": "Avoids blanket no-unlock claim across Home Screen and Live Activity."
+        },
+        {
+          "path": "widgets.lead",
+          "pathSegments": [
+            "widgets",
+            "lead"
+          ],
+          "before": "Cloud Calendars vive nella schermata Home e in quella di blocco, non solo dietro un’icona. I widget portano la data, la previsione e la prossima cosa; un’attività in tempo reale fa il conto alla rovescia.",
+          "after": "Scegli widget con data e meteo o elenchi dei prossimi eventi. Un’attività in tempo reale separata aggiunge il conto alla rovescia.",
+          "sourceLines": [
+            100,
+            100
+          ],
+          "reason": "Separates widgets from Live Activity."
+        },
+        {
+          "path": "widgets.items.0.body",
+          "pathSegments": [
+            "widgets",
+            "items",
+            0,
+            "body"
+          ],
+          "before": "Piccolo per data e temperatura, medio per condizioni, fase lunare e vento, grande per l’agenda della giornata accanto alla previsione.",
+          "after": "I formati piccoli e medi mostrano data e meteo. Gli elenchi medi e grandi mostrano appuntamenti futuri con orario; trovi gli eventi di tutto il giorno nell’app.",
+          "sourceLines": [
+            105,
+            105
+          ],
+          "reason": "Correct size/layout mapping and future-timed/all-day distinction."
+        },
+        {
+          "path": "widgets.items.1.body",
+          "pathSegments": [
+            "widgets",
+            "items",
+            1,
+            "body"
+          ],
+          "before": "Il tuo prossimo evento scorre alla rovescia nella Dynamic Island e sulla schermata di blocco, così non devi aprire niente per sapere quanto tempo ti resta.",
+          "after": "Usa l’attività in tempo reale sui dispositivi compatibili. Gli aggiornamenti possono richiedere tempo; controlla le modifiche nell’app.",
+          "sourceLines": [
+            109,
+            109
+          ],
+          "reason": "Supported-device qualification and no instant-update guarantee."
+        },
+        {
+          "path": "widgets.items.2.title",
+          "pathSegments": [
+            "widgets",
+            "items",
+            2,
+            "title"
+          ],
+          "before": "Notifiche che arrivano in tempo",
+          "after": "Promemoria a tua scelta",
+          "sourceLines": [
+            112,
+            112
+          ],
+          "reason": "Removes timely-arrival guarantee."
+        },
+        {
+          "path": "widgets.items.2.body",
+          "pathSegments": [
+            "widgets",
+            "items",
+            2,
+            "body"
+          ],
+          "before": "Promemoria che tengono conto del tempo di spostamento e ti dicono che tempo farà quando arrivi.",
+          "after": "Scegli gli avvisi degli eventi e le impostazioni delle notifiche. Controlla viaggio e previsioni nell’app.",
+          "sourceLines": [
+            113,
+            113
+          ],
+          "reason": "User-selected reminders; travel and forecast checked separately."
+        },
+        {
+          "path": "faq.items.4.a",
+          "pathSegments": [
+            "faq",
+            "items",
+            4,
+            "a"
+          ],
+          "before": "Tre dimensioni. Il piccolo dà la data con la condizione e la temperatura attuali. Il medio aggiunge condizioni, fase lunare e direzione del vento. Il grande mette i tuoi prossimi eventi accanto alla previsione. Un’attività in tempo reale conta alla rovescia fino al prossimo.",
+          "after": "I formati piccoli e medi mostrano data e meteo. Gli elenchi medi e grandi mostrano appuntamenti futuri con orario; trovi gli eventi di tutto il giorno nell’app. Usa l’attività in tempo reale sui dispositivi compatibili. Gli aggiornamenti possono richiedere tempo; controlla le modifiche nell’app.",
+          "sourceLines": [
+            241,
+            241
+          ],
+          "reason": "FAQ mirrors supported widget content and update limits."
+        }
+      ]
+    },
+    {
+      "locale": "nl-NL",
+      "file": "/Users/minchomilev/cloud-calendars/src/app/content/home/nl-NL.ts",
+      "sourceSha256": "29ff795aef04202a50db23dcb7429cee5bffe6bace0fd849ff49fc8f93cd289c",
+      "fields": [
+        {
+          "path": "widgets.title",
+          "pathSegments": [
+            "widgets",
+            "title"
+          ],
+          "before": [
+            "Uw dag, voordat u",
+            "ook maar iets ontgrendelt."
+          ],
+          "after": [
+            "Uw agenda,",
+            "in één oogopslag."
+          ],
+          "sourceLines": [
+            91,
+            91
+          ],
+          "reason": "Avoids blanket no-unlock claim across Home Screen and Live Activity."
+        },
+        {
+          "path": "widgets.lead",
+          "pathSegments": [
+            "widgets",
+            "lead"
+          ],
+          "before": "Cloud Calendars leeft op het beginscherm en het toegangsscherm, niet alleen achter een app-symbool. Widgets dragen de datum, de verwachting en wat er komt; een live activiteit telt ernaartoe af.",
+          "after": "Kies widgets met datum en weer of lijsten met komende afspraken. Een aparte live activiteit voegt een aftelling toe.",
+          "sourceLines": [
+            92,
+            92
+          ],
+          "reason": "Separates widgets from Live Activity."
+        },
+        {
+          "path": "widgets.items.0.body",
+          "pathSegments": [
+            "widgets",
+            "items",
+            0,
+            "body"
+          ],
+          "before": "Klein voor datum en temperatuur, middel voor omstandigheden, maanstand en wind, groot voor de agenda van de dag naast de verwachting.",
+          "after": "Kleine en middelgrote indelingen tonen datum en weer. Middelgrote en grote lijsten tonen toekomstige afspraken met een tijdstip; bekijk hele-dagafspraken in de app.",
+          "sourceLines": [
+            97,
+            97
+          ],
+          "reason": "Correct size/layout mapping and future-timed/all-day distinction."
+        },
+        {
+          "path": "widgets.items.1.body",
+          "pathSegments": [
+            "widgets",
+            "items",
+            1,
+            "body"
+          ],
+          "before": "Uw volgende afspraak telt af in de Dynamic Island en op het toegangsscherm, zodat u nooit iets hoeft te openen om te weten hoeveel tijd u nog heeft.",
+          "after": "Gebruik live activiteiten op ondersteunde apparaten. Updates kunnen even duren; controleer wijzigingen in de app.",
+          "sourceLines": [
+            101,
+            101
+          ],
+          "reason": "Supported-device qualification and no instant-update guarantee."
+        },
+        {
+          "path": "widgets.items.2.title",
+          "pathSegments": [
+            "widgets",
+            "items",
+            2,
+            "title"
+          ],
+          "before": "Meldingen die op tijd komen",
+          "after": "Herinneringen naar uw keuze",
+          "sourceLines": [
+            104,
+            104
+          ],
+          "reason": "Removes timely-arrival guarantee."
+        },
+        {
+          "path": "widgets.items.2.body",
+          "pathSegments": [
+            "widgets",
+            "items",
+            2,
+            "body"
+          ],
+          "before": "Herinneringen die rekening houden met reistijd en vertellen wat het weer doet als u aankomt.",
+          "after": "Kies afspraakherinneringen en meldingsinstellingen. Controleer reistijd en weersverwachting in de app.",
+          "sourceLines": [
+            105,
+            105
+          ],
+          "reason": "User-selected reminders; travel and forecast checked separately."
+        },
+        {
+          "path": "faq.items.4.a",
+          "pathSegments": [
+            "faq",
+            "items",
+            4,
+            "a"
+          ],
+          "before": "Drie formaten. Klein geeft de datum met de huidige omstandigheden en temperatuur. Middel voegt omstandigheden, maanstand en windrichting toe. Groot zet uw eerstvolgende afspraken naast de verwachting. Een live activiteit telt af naar uw volgende afspraak.",
+          "after": "Kleine en middelgrote indelingen tonen datum en weer. Middelgrote en grote lijsten tonen toekomstige afspraken met een tijdstip; bekijk hele-dagafspraken in de app. Gebruik live activiteiten op ondersteunde apparaten. Updates kunnen even duren; controleer wijzigingen in de app.",
+          "sourceLines": [
+            233,
+            233
+          ],
+          "reason": "FAQ mirrors supported widget content and update limits."
+        }
+      ]
+    },
+    {
+      "locale": "pt-BR",
+      "file": "/Users/minchomilev/cloud-calendars/src/app/content/home/pt-BR.ts",
+      "sourceSha256": "14576bb01a7f38f114a6aa44bba44501d4c432d8ce4bc1e4e786775370c6633f",
+      "fields": [
+        {
+          "path": "widgets.title",
+          "pathSegments": [
+            "widgets",
+            "title"
+          ],
+          "before": [
+            "Seu dia, antes de",
+            "desbloquear qualquer coisa."
+          ],
+          "after": [
+            "Seu calendário,",
+            "num relance."
+          ],
+          "sourceLines": [
+            91,
+            91
+          ],
+          "reason": "Avoids blanket no-unlock claim across Home Screen and Live Activity."
+        },
+        {
+          "path": "widgets.lead",
+          "pathSegments": [
+            "widgets",
+            "lead"
+          ],
+          "before": "O Cloud Calendars vive na tela de início e na tela bloqueada, não só atrás de um ícone. Os widgets carregam a data, a previsão e o que vem; uma atividade ao vivo faz a contagem regressiva.",
+          "after": "Escolha widgets de data e tempo ou listas de próximos eventos. Uma atividade ao vivo separada adiciona a contagem regressiva.",
+          "sourceLines": [
+            92,
+            92
+          ],
+          "reason": "Separates widgets from Live Activity."
+        },
+        {
+          "path": "widgets.items.0.body",
+          "pathSegments": [
+            "widgets",
+            "items",
+            0,
+            "body"
+          ],
+          "before": "Pequeno para a data e a temperatura, médio para condições, fase da lua e vento, grande para a agenda do dia ao lado da previsão.",
+          "after": "Os formatos pequeno e médio mostram data e tempo. As listas médias e grandes mostram compromissos futuros com horário; veja os eventos de dia inteiro no app.",
+          "sourceLines": [
+            97,
+            97
+          ],
+          "reason": "Correct size/layout mapping and future-timed/all-day distinction."
+        },
+        {
+          "path": "widgets.items.1.body",
+          "pathSegments": [
+            "widgets",
+            "items",
+            1,
+            "body"
+          ],
+          "before": "Seu próximo compromisso faz a contagem regressiva na Dynamic Island e na tela bloqueada, então você nunca precisa abrir nada para saber quanto tempo tem.",
+          "after": "Use a atividade ao vivo em aparelhos compatíveis. As atualizações podem demorar; confira mudanças no app.",
+          "sourceLines": [
+            101,
+            101
+          ],
+          "reason": "Supported-device qualification and no instant-update guarantee."
+        },
+        {
+          "path": "widgets.items.2.title",
+          "pathSegments": [
+            "widgets",
+            "items",
+            2,
+            "title"
+          ],
+          "before": "Avisos que chegam a tempo",
+          "after": "Lembretes à sua escolha",
+          "sourceLines": [
+            104,
+            104
+          ],
+          "reason": "Removes timely-arrival guarantee."
+        },
+        {
+          "path": "widgets.items.2.body",
+          "pathSegments": [
+            "widgets",
+            "items",
+            2,
+            "body"
+          ],
+          "before": "Lembretes que respeitam o tempo de deslocamento e dizem o que o tempo está fazendo quando você chegar.",
+          "after": "Escolha alertas de eventos e ajustes de notificações. Confira o tempo de viagem e a previsão no app.",
+          "sourceLines": [
+            105,
+            105
+          ],
+          "reason": "User-selected reminders; travel and forecast checked separately."
+        },
+        {
+          "path": "faq.items.4.a",
+          "pathSegments": [
+            "faq",
+            "items",
+            4,
+            "a"
+          ],
+          "before": "Três tamanhos. O pequeno dá a data com a condição e a temperatura atuais. O médio acrescenta condições, fase da lua e direção do vento. O grande põe seus próximos compromissos ao lado da previsão. Uma atividade ao vivo faz a contagem regressiva até o próximo.",
+          "after": "Os formatos pequeno e médio mostram data e tempo. As listas médias e grandes mostram compromissos futuros com horário; veja os eventos de dia inteiro no app. Use a atividade ao vivo em aparelhos compatíveis. As atualizações podem demorar; confira mudanças no app.",
+          "sourceLines": [
+            232,
+            232
+          ],
+          "reason": "FAQ mirrors supported widget content and update limits."
+        }
+      ]
+    },
+    {
+      "locale": "pl",
+      "file": "/Users/minchomilev/cloud-calendars/src/app/content/home/pl.ts",
+      "sourceSha256": "616528efdfa066016b21b89e350a15cbf93602e4e6e4d57ceb8fb047f6364bea",
+      "fields": [
+        {
+          "path": "widgets.title",
+          "pathSegments": [
+            "widgets",
+            "title"
+          ],
+          "before": [
+            "Twój dzień, zanim",
+            "cokolwiek odblokujesz."
+          ],
+          "after": [
+            "Twój kalendarz,",
+            "na pierwszy rzut oka."
+          ],
+          "sourceLines": [
+            95,
+            95
+          ],
+          "reason": "Avoids blanket no-unlock claim across Home Screen and Live Activity."
+        },
+        {
+          "path": "widgets.lead",
+          "pathSegments": [
+            "widgets",
+            "lead"
+          ],
+          "before": "Cloud Calendars mieszka na ekranie początkowym i na ekranie blokady, nie tylko za ikoną aplikacji. Widżety niosą datę, prognozę i to, co następne; aktywność na żywo odlicza do tego.",
+          "after": "Wybierz widżety z datą i pogodą lub listy nadchodzących wydarzeń. Osobna aktywność na żywo dodaje odliczanie.",
+          "sourceLines": [
+            96,
+            96
+          ],
+          "reason": "Separates widgets from Live Activity."
+        },
+        {
+          "path": "widgets.items.0.body",
+          "pathSegments": [
+            "widgets",
+            "items",
+            0,
+            "body"
+          ],
+          "before": "Mały na datę i temperaturę, średni na warunki, fazę księżyca i wiatr, duży na plan dnia obok prognozy.",
+          "after": "Małe i średnie układy pokazują datę i pogodę. Średnie i duże listy pokazują przyszłe wydarzenia z godziną; wpisy całodniowe znajdziesz w aplikacji.",
+          "sourceLines": [
+            101,
+            101
+          ],
+          "reason": "Correct size/layout mapping and future-timed/all-day distinction."
+        },
+        {
+          "path": "widgets.items.1.body",
+          "pathSegments": [
+            "widgets",
+            "items",
+            1,
+            "body"
+          ],
+          "before": "Twoje najbliższe wydarzenie odlicza w Dynamic Island i na ekranie blokady, więc nigdy nie musisz niczego otwierać, by wiedzieć, ile masz czasu.",
+          "after": "Korzystaj z aktywności na żywo na obsługiwanych urządzeniach. Aktualizacje mogą wymagać czasu; sprawdź zmiany w aplikacji.",
+          "sourceLines": [
+            105,
+            105
+          ],
+          "reason": "Supported-device qualification and no instant-update guarantee."
+        },
+        {
+          "path": "widgets.items.2.title",
+          "pathSegments": [
+            "widgets",
+            "items",
+            2,
+            "title"
+          ],
+          "before": "Powiadomienia, które przychodzą na czas",
+          "after": "Przypomnienia według Twoich potrzeb",
+          "sourceLines": [
+            108,
+            108
+          ],
+          "reason": "Removes timely-arrival guarantee."
+        },
+        {
+          "path": "widgets.items.2.body",
+          "pathSegments": [
+            "widgets",
+            "items",
+            2,
+            "body"
+          ],
+          "before": "Przypomnienia, które uwzględniają czas dojazdu i mówią, co robi pogoda, gdy dotrzesz na miejsce.",
+          "after": "Wybierz alerty wydarzeń i ustawienia powiadomień. Sprawdź czas dojazdu i prognozę w aplikacji.",
+          "sourceLines": [
+            109,
+            109
+          ],
+          "reason": "User-selected reminders; travel and forecast checked separately."
+        },
+        {
+          "path": "faq.items.4.a",
+          "pathSegments": [
+            "faq",
+            "items",
+            4,
+            "a"
+          ],
+          "before": "Trzy rozmiary. Mały podaje datę z bieżącymi warunkami i temperaturą. Średni dokłada warunki, fazę księżyca i kierunek wiatru. Duży stawia najbliższe wydarzenia obok prognozy. Aktywność na żywo odlicza do najbliższego wydarzenia.",
+          "after": "Małe i średnie układy pokazują datę i pogodę. Średnie i duże listy pokazują przyszłe wydarzenia z godziną; wpisy całodniowe znajdziesz w aplikacji. Korzystaj z aktywności na żywo na obsługiwanych urządzeniach. Aktualizacje mogą wymagać czasu; sprawdź zmiany w aplikacji.",
+          "sourceLines": [
+            236,
+            236
+          ],
+          "reason": "FAQ mirrors supported widget content and update limits."
+        }
+      ]
+    },
+    {
+      "locale": "ru",
+      "file": "/Users/minchomilev/cloud-calendars/src/app/content/home/ru.ts",
+      "sourceSha256": "c537d2d9f978e17fbdb448035e9333de57095bade2dca8e6e48138f2429fa9ea",
+      "fields": [
+        {
+          "path": "widgets.title",
+          "pathSegments": [
+            "widgets",
+            "title"
+          ],
+          "before": [
+            "Ваш день ещё до того,",
+            "как вы что-то разблокируете."
+          ],
+          "after": [
+            "Ваш календарь,",
+            "с первого взгляда."
+          ],
+          "sourceLines": [
+            95,
+            95
+          ],
+          "reason": "Avoids blanket no-unlock claim across Home Screen and Live Activity."
+        },
+        {
+          "path": "widgets.lead",
+          "pathSegments": [
+            "widgets",
+            "lead"
+          ],
+          "before": "Cloud Calendars живёт на домашнем экране и экране блокировки, а не только за значком приложения. Виджеты несут дату, прогноз и то, что дальше; живая активность ведёт к этому отсчёт.",
+          "after": "Выберите виджеты даты и погоды или списки предстоящих событий. Отдельная Live Activity добавляет обратный отсчёт.",
+          "sourceLines": [
+            96,
+            96
+          ],
+          "reason": "Separates widgets from Live Activity."
+        },
+        {
+          "path": "widgets.items.0.body",
+          "pathSegments": [
+            "widgets",
+            "items",
+            0,
+            "body"
+          ],
+          "before": "Малый — дата и температура, средний — условия, фаза луны и ветер, большой — повестка дня рядом с прогнозом.",
+          "after": "Малые и средние виджеты показывают дату и погоду. Средние и большие списки показывают будущие события с временем начала; события на весь день смотрите в приложении.",
+          "sourceLines": [
+            101,
+            101
+          ],
+          "reason": "Correct size/layout mapping and future-timed/all-day distinction."
+        },
+        {
+          "path": "widgets.items.1.body",
+          "pathSegments": [
+            "widgets",
+            "items",
+            1,
+            "body"
+          ],
+          "before": "Ваше следующее событие отсчитывается в Dynamic Island и на экране блокировки, так что открывать ничего не нужно, чтобы знать, сколько осталось.",
+          "after": "Используйте Live Activity на поддерживаемых устройствах. Обновление может занять время; проверяйте изменения в приложении.",
+          "sourceLines": [
+            105,
+            105
+          ],
+          "reason": "Supported-device qualification and no instant-update guarantee."
+        },
+        {
+          "path": "widgets.items.2.title",
+          "pathSegments": [
+            "widgets",
+            "items",
+            2,
+            "title"
+          ],
+          "before": "Уведомления, которые приходят вовремя",
+          "after": "Напоминания на ваш выбор",
+          "sourceLines": [
+            108,
+            108
+          ],
+          "reason": "Removes timely-arrival guarantee."
+        },
+        {
+          "path": "widgets.items.2.body",
+          "pathSegments": [
+            "widgets",
+            "items",
+            2,
+            "body"
+          ],
+          "before": "Напоминания, учитывающие время в дороге и сообщающие, какая будет погода, когда вы доберётесь.",
+          "after": "Выберите напоминания о событиях и настройки уведомлений. Проверьте время в пути и прогноз в приложении.",
+          "sourceLines": [
+            109,
+            109
+          ],
+          "reason": "User-selected reminders; travel and forecast checked separately."
+        },
+        {
+          "path": "faq.items.4.a",
+          "pathSegments": [
+            "faq",
+            "items",
+            4,
+            "a"
+          ],
+          "before": "Три размера. Малый даёт дату с текущими условиями и температурой. Средний добавляет условия, фазу луны и направление ветра. Большой ставит ближайшие события рядом с прогнозом. Живая активность ведёт отсчёт до ближайшего события.",
+          "after": "Малые и средние виджеты показывают дату и погоду. Средние и большие списки показывают будущие события с временем начала; события на весь день смотрите в приложении. Используйте Live Activity на поддерживаемых устройствах. Обновление может занять время; проверяйте изменения в приложении.",
+          "sourceLines": [
+            236,
+            236
+          ],
+          "reason": "FAQ mirrors supported widget content and update limits."
+        }
+      ]
+    },
+    {
+      "locale": "sv",
+      "file": "/Users/minchomilev/cloud-calendars/src/app/content/home/sv.ts",
+      "sourceSha256": "48281f481890c52cfa5b13e9824a23678dadae94831f900d5d0623fc887b7287",
+      "fields": [
+        {
+          "path": "widgets.title",
+          "pathSegments": [
+            "widgets",
+            "title"
+          ],
+          "before": [
+            "Din dag, innan du",
+            "låser upp någonting."
+          ],
+          "after": [
+            "Din kalender,",
+            "med en blick."
+          ],
+          "sourceLines": [
+            91,
+            91
+          ],
+          "reason": "Avoids blanket no-unlock claim across Home Screen and Live Activity."
+        },
+        {
+          "path": "widgets.lead",
+          "pathSegments": [
+            "widgets",
+            "lead"
+          ],
+          "before": "Cloud Calendars bor på hemskärmen och låsskärmen, inte bara bakom en appsymbol. Widgetarna bär datumet, prognosen och nästa sak; en liveaktivitet räknar ner till den.",
+          "after": "Välj widgetar med datum och väder eller listor över kommande händelser. En separat liveaktivitet lägger till en nedräkning.",
+          "sourceLines": [
+            92,
+            92
+          ],
+          "reason": "Separates widgets from Live Activity."
+        },
+        {
+          "path": "widgets.items.0.body",
+          "pathSegments": [
+            "widgets",
+            "items",
+            0,
+            "body"
+          ],
+          "before": "Liten för datum och temperatur, mellan för förhållanden, månfas och vind, stor för dagens agenda bredvid prognosen.",
+          "after": "Små och mellanstora layouter visar datum och väder. Mellanstora och stora listor visar framtida händelser med klockslag; heldagshändelser finns i appen.",
+          "sourceLines": [
+            97,
+            97
+          ],
+          "reason": "Correct size/layout mapping and future-timed/all-day distinction."
+        },
+        {
+          "path": "widgets.items.1.body",
+          "pathSegments": [
+            "widgets",
+            "items",
+            1,
+            "body"
+          ],
+          "before": "Din nästa händelse räknar ner i Dynamic Island och på låsskärmen, så du behöver aldrig öppna något för att veta hur lång tid du har.",
+          "after": "Använd liveaktivitet på enheter som stöds. Uppdateringar kan ta tid; kontrollera ändringar i appen.",
+          "sourceLines": [
+            101,
+            101
+          ],
+          "reason": "Supported-device qualification and no instant-update guarantee."
+        },
+        {
+          "path": "widgets.items.2.title",
+          "pathSegments": [
+            "widgets",
+            "items",
+            2,
+            "title"
+          ],
+          "before": "Aviseringar som kommer i tid",
+          "after": "Påminnelser du väljer",
+          "sourceLines": [
+            104,
+            104
+          ],
+          "reason": "Removes timely-arrival guarantee."
+        },
+        {
+          "path": "widgets.items.2.body",
+          "pathSegments": [
+            "widgets",
+            "items",
+            2,
+            "body"
+          ],
+          "before": "Påminnelser som tar hänsyn till restid och berättar vad vädret gör när du kommer fram.",
+          "after": "Välj händelsepåminnelser och aviseringsinställningar. Kontrollera restid och prognos i appen.",
+          "sourceLines": [
+            105,
+            105
+          ],
+          "reason": "User-selected reminders; travel and forecast checked separately."
+        },
+        {
+          "path": "faq.items.4.a",
+          "pathSegments": [
+            "faq",
+            "items",
+            4,
+            "a"
+          ],
+          "before": "Tre storlekar. Den lilla ger datumet med aktuellt väder och temperatur. Den mellanstora lägger till förhållanden, månfas och vindriktning. Den stora sätter dina närmaste händelser bredvid prognosen. En liveaktivitet räknar ner till nästa händelse.",
+          "after": "Små och mellanstora layouter visar datum och väder. Mellanstora och stora listor visar framtida händelser med klockslag; heldagshändelser finns i appen. Använd liveaktivitet på enheter som stöds. Uppdateringar kan ta tid; kontrollera ändringar i appen.",
+          "sourceLines": [
+            232,
+            232
+          ],
+          "reason": "FAQ mirrors supported widget content and update limits."
+        }
+      ]
+    },
+    {
+      "locale": "da",
+      "file": "/Users/minchomilev/cloud-calendars/src/app/content/home/da.ts",
+      "sourceSha256": "64440fcab51b55b02621cdc718248bca79f1e84a7ef58f8fb65f1301e5f280f1",
+      "fields": [
+        {
+          "path": "widgets.title",
+          "pathSegments": [
+            "widgets",
+            "title"
+          ],
+          "before": [
+            "Din dag, før du",
+            "låser noget som helst op."
+          ],
+          "after": [
+            "Din kalender,",
+            "med et blik."
+          ],
+          "sourceLines": [
+            91,
+            91
+          ],
+          "reason": "Avoids blanket no-unlock claim across Home Screen and Live Activity."
+        },
+        {
+          "path": "widgets.lead",
+          "pathSegments": [
+            "widgets",
+            "lead"
+          ],
+          "before": "Cloud Calendars bor på hjemmeskærmen og låseskærmen, ikke kun bag et appsymbol. Widgets bærer datoen, udsigten og det næste; en liveaktivitet tæller ned til det.",
+          "after": "Vælg widgets med dato og vejr eller lister over kommende begivenheder. En separat liveaktivitet tilføjer en nedtælling.",
+          "sourceLines": [
+            92,
+            92
+          ],
+          "reason": "Separates widgets from Live Activity."
+        },
+        {
+          "path": "widgets.items.0.body",
+          "pathSegments": [
+            "widgets",
+            "items",
+            0,
+            "body"
+          ],
+          "before": "Lille til dato og temperatur, mellem til forhold, månefase og vind, stor til dagens dagsorden ved siden af udsigten.",
+          "after": "Små og mellemstore layout viser dato og vejr. Mellemstore og store lister viser fremtidige aftaler med klokkeslæt; heldagsbegivenheder findes i appen.",
+          "sourceLines": [
+            97,
+            97
+          ],
+          "reason": "Correct size/layout mapping and future-timed/all-day distinction."
+        },
+        {
+          "path": "widgets.items.1.body",
+          "pathSegments": [
+            "widgets",
+            "items",
+            1,
+            "body"
+          ],
+          "before": "Din næste begivenhed tæller ned i Dynamic Island og på låseskærmen, så du aldrig behøver åbne noget for at vide, hvor lang tid du har.",
+          "after": "Brug liveaktivitet på understøttede enheder. Opdateringer kan tage tid; kontrollér ændringer i appen.",
+          "sourceLines": [
+            101,
+            101
+          ],
+          "reason": "Supported-device qualification and no instant-update guarantee."
+        },
+        {
+          "path": "widgets.items.2.title",
+          "pathSegments": [
+            "widgets",
+            "items",
+            2,
+            "title"
+          ],
+          "before": "Notifikationer, der når frem i tide",
+          "after": "Påmindelser efter dit valg",
+          "sourceLines": [
+            104,
+            104
+          ],
+          "reason": "Removes timely-arrival guarantee."
+        },
+        {
+          "path": "widgets.items.2.body",
+          "pathSegments": [
+            "widgets",
+            "items",
+            2,
+            "body"
+          ],
+          "before": "Påmindelser, der tager hensyn til rejsetid og fortæller, hvad vejret gør, når du ankommer.",
+          "after": "Vælg begivenhedspåmindelser og notifikationsindstillinger. Tjek rejsetid og vejrudsigt i appen.",
+          "sourceLines": [
+            105,
+            105
+          ],
+          "reason": "User-selected reminders; travel and forecast checked separately."
+        },
+        {
+          "path": "faq.items.4.a",
+          "pathSegments": [
+            "faq",
+            "items",
+            4,
+            "a"
+          ],
+          "before": "Tre størrelser. Den lille giver datoen med de aktuelle forhold og temperaturen. Den mellemste tilføjer forhold, månefase og vindretning. Den store sætter dine næste begivenheder ved siden af udsigten. En liveaktivitet tæller ned til din næste begivenhed.",
+          "after": "Små og mellemstore layout viser dato og vejr. Mellemstore og store lister viser fremtidige aftaler med klokkeslæt; heldagsbegivenheder findes i appen. Brug liveaktivitet på understøttede enheder. Opdateringer kan tage tid; kontrollér ændringer i appen.",
+          "sourceLines": [
+            232,
+            232
+          ],
+          "reason": "FAQ mirrors supported widget content and update limits."
+        }
+      ]
+    },
+    {
+      "locale": "no",
+      "file": "/Users/minchomilev/cloud-calendars/src/app/content/home/no.ts",
+      "sourceSha256": "11b9df5b5188793cc8a6e391df89cb510ab8a79c679f37eded0b30880bb1e54f",
+      "fields": [
+        {
+          "path": "widgets.title",
+          "pathSegments": [
+            "widgets",
+            "title"
+          ],
+          "before": [
+            "Dagen din, før du",
+            "låser opp noe som helst."
+          ],
+          "after": [
+            "Kalenderen din,",
+            "med et blikk."
+          ],
+          "sourceLines": [
+            95,
+            95
+          ],
+          "reason": "Avoids blanket no-unlock claim across Home Screen and Live Activity."
+        },
+        {
+          "path": "widgets.lead",
+          "pathSegments": [
+            "widgets",
+            "lead"
+          ],
+          "before": "Cloud Calendars bor på hjemskjermen og låseskjermen, ikke bare bak et appsymbol. Widgetene bærer datoen, værmeldingen og det neste; en sanntidsaktivitet teller ned til det.",
+          "after": "Velg widgeter med dato og vær eller lister over kommende hendelser. En egen sanntidsaktivitet legger til en nedtelling.",
+          "sourceLines": [
+            96,
+            96
+          ],
+          "reason": "Separates widgets from Live Activity."
+        },
+        {
+          "path": "widgets.items.0.body",
+          "pathSegments": [
+            "widgets",
+            "items",
+            0,
+            "body"
+          ],
+          "before": "Liten for dato og temperatur, middels for forhold, månefase og vind, stor for dagens agenda ved siden av værmeldingen.",
+          "after": "Små og mellomstore oppsett viser dato og vær. Mellomstore og store lister viser fremtidige avtaler med klokkeslett; heldagshendelser finner du i appen.",
+          "sourceLines": [
+            101,
+            101
+          ],
+          "reason": "Correct size/layout mapping and future-timed/all-day distinction."
+        },
+        {
+          "path": "widgets.items.1.body",
+          "pathSegments": [
+            "widgets",
+            "items",
+            1,
+            "body"
+          ],
+          "before": "Neste hendelse teller ned i Dynamic Island og på låseskjermen, så du aldri trenger å åpne noe for å vite hvor lang tid du har.",
+          "after": "Bruk sanntidsaktivitet på støttede enheter. Oppdateringer kan ta tid; kontroller endringer i appen.",
+          "sourceLines": [
+            105,
+            105
+          ],
+          "reason": "Supported-device qualification and no instant-update guarantee."
+        },
+        {
+          "path": "widgets.items.2.title",
+          "pathSegments": [
+            "widgets",
+            "items",
+            2,
+            "title"
+          ],
+          "before": "Varsler som kommer i tide",
+          "after": "Påminnelser du velger",
+          "sourceLines": [
+            108,
+            108
+          ],
+          "reason": "Removes timely-arrival guarantee."
+        },
+        {
+          "path": "widgets.items.2.body",
+          "pathSegments": [
+            "widgets",
+            "items",
+            2,
+            "body"
+          ],
+          "before": "Påminnelser som tar hensyn til reisetid og forteller hva været gjør når du kommer fram.",
+          "after": "Velg hendelsesvarsler og varslingsinnstillinger. Sjekk reisetid og værmelding i appen.",
+          "sourceLines": [
+            109,
+            109
+          ],
+          "reason": "User-selected reminders; travel and forecast checked separately."
+        },
+        {
+          "path": "faq.items.4.a",
+          "pathSegments": [
+            "faq",
+            "items",
+            4,
+            "a"
+          ],
+          "before": "Tre størrelser. Den lille gir datoen med gjeldende forhold og temperatur. Den mellomste legger til forhold, månefase og vindretning. Den store setter de nærmeste hendelsene dine ved siden av værmeldingen. En sanntidsaktivitet teller ned til neste hendelse.",
+          "after": "Små og mellomstore oppsett viser dato og vær. Mellomstore og store lister viser fremtidige avtaler med klokkeslett; heldagshendelser finner du i appen. Bruk sanntidsaktivitet på støttede enheter. Oppdateringer kan ta tid; kontroller endringer i appen.",
+          "sourceLines": [
+            236,
+            236
+          ],
+          "reason": "FAQ mirrors supported widget content and update limits."
+        }
+      ]
+    },
+    {
+      "locale": "fi",
+      "file": "/Users/minchomilev/cloud-calendars/src/app/content/home/fi.ts",
+      "sourceSha256": "79d13d966c3efb70f057318c17e92c1952388c05a6c0271deafaea8d3debcac1",
+      "fields": [
+        {
+          "path": "widgets.title",
+          "pathSegments": [
+            "widgets",
+            "title"
+          ],
+          "before": [
+            "Päiväsi, ennen kuin",
+            "avaat mitään."
+          ],
+          "after": [
+            "Kalenterisi,",
+            "yhdellä silmäyksellä."
+          ],
+          "sourceLines": [
+            99,
+            99
+          ],
+          "reason": "Avoids blanket no-unlock claim across Home Screen and Live Activity."
+        },
+        {
+          "path": "widgets.lead",
+          "pathSegments": [
+            "widgets",
+            "lead"
+          ],
+          "before": "Cloud Calendars asuu alkunäytöllä ja lukitusnäytöllä, ei vain sovelluskuvakkeen takana. Widgetit kantavat päivämäärän, ennusteen ja seuraavan; reaaliaikainen toiminto laskee siihen.",
+          "after": "Valitse päivämäärä- ja sääwidget tai tulevien tapahtumien luettelo. Erillinen reaaliaikainen toiminto näyttää lähtölaskennan.",
+          "sourceLines": [
+            100,
+            100
+          ],
+          "reason": "Separates widgets from Live Activity."
+        },
+        {
+          "path": "widgets.items.0.body",
+          "pathSegments": [
+            "widgets",
+            "items",
+            0,
+            "body"
+          ],
+          "before": "Pieni päivämäärälle ja lämpötilalle, keskikokoinen olosuhteille, kuun vaiheelle ja tuulelle, suuri päivän ohjelmalle ennusteen rinnalla.",
+          "after": "Pienet ja keskikokoiset näkymät näyttävät päivämäärän ja sään. Keskikokoiset ja suuret luettelot näyttävät tulevat kellonajalliset tapahtumat; koko päivän merkinnät löydät sovelluksesta.",
+          "sourceLines": [
+            105,
+            105
+          ],
+          "reason": "Correct size/layout mapping and future-timed/all-day distinction."
+        },
+        {
+          "path": "widgets.items.1.body",
+          "pathSegments": [
+            "widgets",
+            "items",
+            1,
+            "body"
+          ],
+          "before": "Seuraava tapahtumasi laskee alaspäin Dynamic Islandissa ja lukitusnäytöllä, joten mitään ei tarvitse avata tietääkseen, paljonko aikaa on jäljellä.",
+          "after": "Käytä reaaliaikaista toimintoa tuetuilla laitteilla. Päivityksissä voi kestää; tarkista muutokset sovelluksesta.",
+          "sourceLines": [
+            109,
+            109
+          ],
+          "reason": "Supported-device qualification and no instant-update guarantee."
+        },
+        {
+          "path": "widgets.items.2.title",
+          "pathSegments": [
+            "widgets",
+            "items",
+            2,
+            "title"
+          ],
+          "before": "Ilmoitukset, jotka ehtivät ajoissa",
+          "after": "Valitsemasi muistutukset",
+          "sourceLines": [
+            112,
+            112
+          ],
+          "reason": "Removes timely-arrival guarantee."
+        },
+        {
+          "path": "widgets.items.2.body",
+          "pathSegments": [
+            "widgets",
+            "items",
+            2,
+            "body"
+          ],
+          "before": "Muistutukset, jotka huomioivat matka-ajan ja kertovat, mitä sää tekee perillä.",
+          "after": "Valitse tapahtumamuistutukset ja ilmoitusasetukset. Tarkista matka-aika ja ennuste sovelluksesta.",
+          "sourceLines": [
+            113,
+            113
+          ],
+          "reason": "User-selected reminders; travel and forecast checked separately."
+        },
+        {
+          "path": "faq.items.4.a",
+          "pathSegments": [
+            "faq",
+            "items",
+            4,
+            "a"
+          ],
+          "before": "Kolme kokoa. Pieni antaa päivämäärän nykyisellä säällä ja lämpötilalla. Keskikokoinen lisää olosuhteet, kuun vaiheen ja tuulen suunnan. Suuri asettaa seuraavat tapahtumasi ennusteen viereen. Reaaliaikainen toiminto laskee seuraavaan tapahtumaan.",
+          "after": "Pienet ja keskikokoiset näkymät näyttävät päivämäärän ja sään. Keskikokoiset ja suuret luettelot näyttävät tulevat kellonajalliset tapahtumat; koko päivän merkinnät löydät sovelluksesta. Käytä reaaliaikaista toimintoa tuetuilla laitteilla. Päivityksissä voi kestää; tarkista muutokset sovelluksesta.",
+          "sourceLines": [
+            240,
+            240
+          ],
+          "reason": "FAQ mirrors supported widget content and update limits."
+        }
+      ]
+    },
+    {
+      "locale": "cs",
+      "file": "/Users/minchomilev/cloud-calendars/src/app/content/home/cs.ts",
+      "sourceSha256": "a6b75db8c4735dc40803ce05fd103b9fb5c1f8bb3176db1d810eda5d539a7451",
+      "fields": [
+        {
+          "path": "widgets.title",
+          "pathSegments": [
+            "widgets",
+            "title"
+          ],
+          "before": [
+            "Váš den dřív, než",
+            "cokoli odemknete."
+          ],
+          "after": [
+            "Váš kalendář,",
+            "na první pohled."
+          ],
+          "sourceLines": [
+            91,
+            91
+          ],
+          "reason": "Avoids blanket no-unlock claim across Home Screen and Live Activity."
+        },
+        {
+          "path": "widgets.lead",
+          "pathSegments": [
+            "widgets",
+            "lead"
+          ],
+          "before": "Cloud Calendars žije na ploše a na uzamčené obrazovce, ne jen za ikonou aplikace. Widgety nesou datum, předpověď a to další; živá aktivita k tomu odpočítává.",
+          "after": "Vyberte widgety s datem a počasím nebo seznamy nadcházejících událostí. Samostatná živá aktivita přidá odpočítávání.",
+          "sourceLines": [
+            92,
+            92
+          ],
+          "reason": "Separates widgets from Live Activity."
+        },
+        {
+          "path": "widgets.items.0.body",
+          "pathSegments": [
+            "widgets",
+            "items",
+            0,
+            "body"
+          ],
+          "before": "Malý na datum a teplotu, střední na podmínky, fázi měsíce a vítr, velký na program dne vedle předpovědi.",
+          "after": "Malá a střední rozvržení ukazují datum a počasí. Střední a velké seznamy zobrazují budoucí události s časem; celodenní záznamy najdete v aplikaci.",
+          "sourceLines": [
+            97,
+            97
+          ],
+          "reason": "Correct size/layout mapping and future-timed/all-day distinction."
+        },
+        {
+          "path": "widgets.items.1.body",
+          "pathSegments": [
+            "widgets",
+            "items",
+            1,
+            "body"
+          ],
+          "before": "Vaše nejbližší událost odpočítává v Dynamic Islandu a na uzamčené obrazovce, takže nikdy nemusíte nic otevírat, abyste věděli, kolik času zbývá.",
+          "after": "Živou aktivitu používejte na podporovaných zařízeních. Aktualizace mohou chvíli trvat; změny ověřte v aplikaci.",
+          "sourceLines": [
+            101,
+            101
+          ],
+          "reason": "Supported-device qualification and no instant-update guarantee."
+        },
+        {
+          "path": "widgets.items.2.title",
+          "pathSegments": [
+            "widgets",
+            "items",
+            2,
+            "title"
+          ],
+          "before": "Upozornění, která přijdou včas",
+          "after": "Připomínky podle vás",
+          "sourceLines": [
+            104,
+            104
+          ],
+          "reason": "Removes timely-arrival guarantee."
+        },
+        {
+          "path": "widgets.items.2.body",
+          "pathSegments": [
+            "widgets",
+            "items",
+            2,
+            "body"
+          ],
+          "before": "Připomínky, které berou ohled na dobu cesty a řeknou vám, co dělá počasí, až dorazíte.",
+          "after": "Zvolte upozornění na události a nastavení oznámení. Dobu cesty a předpověď zkontrolujte v aplikaci.",
+          "sourceLines": [
+            105,
+            105
+          ],
+          "reason": "User-selected reminders; travel and forecast checked separately."
+        },
+        {
+          "path": "faq.items.4.a",
+          "pathSegments": [
+            "faq",
+            "items",
+            4,
+            "a"
+          ],
+          "before": "Tři velikosti. Malý dá datum s aktuálním počasím a teplotou. Střední přidá podmínky, fázi měsíce a směr větru. Velký postaví vaše nejbližší události vedle předpovědi. Živá aktivita odpočítává k nejbližší události.",
+          "after": "Malá a střední rozvržení ukazují datum a počasí. Střední a velké seznamy zobrazují budoucí události s časem; celodenní záznamy najdete v aplikaci. Živou aktivitu používejte na podporovaných zařízeních. Aktualizace mohou chvíli trvat; změny ověřte v aplikaci.",
+          "sourceLines": [
+            232,
+            232
+          ],
+          "reason": "FAQ mirrors supported widget content and update limits."
+        }
+      ]
+    },
+    {
+      "locale": "hu",
+      "file": "/Users/minchomilev/cloud-calendars/src/app/content/home/hu.ts",
+      "sourceSha256": "f7051056be5e41e61803a317767f3b991986761844cc244e4015d9a7af9970ad",
+      "fields": [
+        {
+          "path": "widgets.title",
+          "pathSegments": [
+            "widgets",
+            "title"
+          ],
+          "before": [
+            "A napja, mielőtt",
+            "bármit feloldana."
+          ],
+          "after": [
+            "Naptára,",
+            "egy pillantással."
+          ],
+          "sourceLines": [
+            91,
+            91
+          ],
+          "reason": "Avoids blanket no-unlock claim across Home Screen and Live Activity."
+        },
+        {
+          "path": "widgets.lead",
+          "pathSegments": [
+            "widgets",
+            "lead"
+          ],
+          "before": "A Cloud Calendars a kezdő- és a zárolási képernyőn él, nem csupán egy ikon mögött. A modulok hozzák a dátumot, az előrejelzést és a következőt; egy élő tevékenység visszaszámol hozzá.",
+          "after": "Válasszon dátumot és időjárást mutató modulokat vagy közelgő eseménylistákat. A külön élő tevékenység visszaszámlálást ad hozzá.",
+          "sourceLines": [
+            92,
+            92
+          ],
+          "reason": "Separates widgets from Live Activity."
+        },
+        {
+          "path": "widgets.items.0.body",
+          "pathSegments": [
+            "widgets",
+            "items",
+            0,
+            "body"
+          ],
+          "before": "Kicsi a dátumhoz és a hőmérséklethez, közepes a körülményekhez, a holdfázishoz és a szélhez, nagy a nap programjához az előrejelzés mellett.",
+          "after": "A kis és közepes elrendezés dátumot és időjárást mutat. A közepes és nagy listák jövőbeli, időponthoz kötött eseményeket mutatnak; az egész napos bejegyzéseket az appban találja.",
+          "sourceLines": [
+            97,
+            97
+          ],
+          "reason": "Correct size/layout mapping and future-timed/all-day distinction."
+        },
+        {
+          "path": "widgets.items.1.body",
+          "pathSegments": [
+            "widgets",
+            "items",
+            1,
+            "body"
+          ],
+          "before": "A következő eseménye visszaszámol a Dynamic Islanden és a zárolási képernyőn, így soha nem kell megnyitnia semmit ahhoz, hogy tudja, mennyi ideje van.",
+          "after": "Használja az élő tevékenységet támogatott eszközökön. A frissítés időbe telhet; ellenőrizze a változásokat az appban.",
+          "sourceLines": [
+            101,
+            101
+          ],
+          "reason": "Supported-device qualification and no instant-update guarantee."
+        },
+        {
+          "path": "widgets.items.2.title",
+          "pathSegments": [
+            "widgets",
+            "items",
+            2,
+            "title"
+          ],
+          "before": "Értesítések, amelyek időben érkeznek",
+          "after": "Emlékeztetők az Ön igényei szerint",
+          "sourceLines": [
+            104,
+            104
+          ],
+          "reason": "Removes timely-arrival guarantee."
+        },
+        {
+          "path": "widgets.items.2.body",
+          "pathSegments": [
+            "widgets",
+            "items",
+            2,
+            "body"
+          ],
+          "before": "Emlékeztetők, amelyek számolnak az utazási idővel, és megmondják, mit csinál az időjárás, mire odaér.",
+          "after": "Válasszon eseményjelzéseket és értesítési beállításokat. Ellenőrizze az utazási időt és az előrejelzést az appban.",
+          "sourceLines": [
+            105,
+            105
+          ],
+          "reason": "User-selected reminders; travel and forecast checked separately."
+        },
+        {
+          "path": "faq.items.4.a",
+          "pathSegments": [
+            "faq",
+            "items",
+            4,
+            "a"
+          ],
+          "before": "Három méret. A kicsi a dátumot adja az aktuális körülményekkel és hőmérséklettel. A közepes hozzáteszi a körülményeket, a holdfázist és a szélirányt. A nagy a következő eseményeit teszi az előrejelzés mellé. Egy élő tevékenység visszaszámol a következő eseményig.",
+          "after": "A kis és közepes elrendezés dátumot és időjárást mutat. A közepes és nagy listák jövőbeli, időponthoz kötött eseményeket mutatnak; az egész napos bejegyzéseket az appban találja. Használja az élő tevékenységet támogatott eszközökön. A frissítés időbe telhet; ellenőrizze a változásokat az appban.",
+          "sourceLines": [
+            232,
+            232
+          ],
+          "reason": "FAQ mirrors supported widget content and update limits."
+        }
+      ]
+    },
+    {
+      "locale": "ro",
+      "file": "/Users/minchomilev/cloud-calendars/src/app/content/home/ro.ts",
+      "sourceSha256": "b3ad996483c7b7f66a4234a248bbc312767da6d07c8fed61b11949cadab9cee7",
+      "fields": [
+        {
+          "path": "widgets.title",
+          "pathSegments": [
+            "widgets",
+            "title"
+          ],
+          "before": [
+            "Ziua dumneavoastră, înainte",
+            "să deblocați ceva."
+          ],
+          "after": [
+            "Calendarul dumneavoastră,",
+            "dintr-o privire."
+          ],
+          "sourceLines": [
+            91,
+            91
+          ],
+          "reason": "Avoids blanket no-unlock claim across Home Screen and Live Activity."
+        },
+        {
+          "path": "widgets.lead",
+          "pathSegments": [
+            "widgets",
+            "lead"
+          ],
+          "before": "Cloud Calendars trăiește pe ecranul principal și pe cel de blocare, nu doar în spatele unei pictograme. Widgeturile poartă data, prognoza și ce urmează; o activitate live numără invers până acolo.",
+          "after": "Alegeți widgeturi cu dată și vreme sau liste de evenimente viitoare. O activitate live separată adaugă numărătoarea inversă.",
+          "sourceLines": [
+            92,
+            92
+          ],
+          "reason": "Separates widgets from Live Activity."
+        },
+        {
+          "path": "widgets.items.0.body",
+          "pathSegments": [
+            "widgets",
+            "items",
+            0,
+            "body"
+          ],
+          "before": "Mic pentru dată și temperatură, mediu pentru condiții, faza lunii și vânt, mare pentru programul zilei lângă prognoză.",
+          "after": "Formatele mici și medii arată data și vremea. Listele medii și mari arată evenimente viitoare cu oră; intrările pentru întreaga zi se găsesc în aplicație.",
+          "sourceLines": [
+            97,
+            97
+          ],
+          "reason": "Correct size/layout mapping and future-timed/all-day distinction."
+        },
+        {
+          "path": "widgets.items.1.body",
+          "pathSegments": [
+            "widgets",
+            "items",
+            1,
+            "body"
+          ],
+          "before": "Evenimentul următor numără invers în Dynamic Island și pe ecranul de blocare, așa că nu trebuie să deschideți nimic ca să știți cât timp mai aveți.",
+          "after": "Folosiți activitatea live pe dispozitive compatibile. Actualizările pot dura; verificați schimbările în aplicație.",
+          "sourceLines": [
+            101,
+            101
+          ],
+          "reason": "Supported-device qualification and no instant-update guarantee."
+        },
+        {
+          "path": "widgets.items.2.title",
+          "pathSegments": [
+            "widgets",
+            "items",
+            2,
+            "title"
+          ],
+          "before": "Notificări care ajung la timp",
+          "after": "Mementouri la alegere",
+          "sourceLines": [
+            104,
+            104
+          ],
+          "reason": "Removes timely-arrival guarantee."
+        },
+        {
+          "path": "widgets.items.2.body",
+          "pathSegments": [
+            "widgets",
+            "items",
+            2,
+            "body"
+          ],
+          "before": "Memento-uri care țin cont de timpul de deplasare și vă spun ce face vremea când ajungeți.",
+          "after": "Alegeți alertele pentru evenimente și setările notificărilor. Verificați durata deplasării și prognoza în aplicație.",
+          "sourceLines": [
+            105,
+            105
+          ],
+          "reason": "User-selected reminders; travel and forecast checked separately."
+        },
+        {
+          "path": "faq.items.4.a",
+          "pathSegments": [
+            "faq",
+            "items",
+            4,
+            "a"
+          ],
+          "before": "Trei dimensiuni. Cel mic dă data cu condițiile și temperatura curente. Cel mediu adaugă condițiile, faza lunii și direcția vântului. Cel mare pune evenimentele apropiate lângă prognoză. O activitate live numără invers până la următorul eveniment.",
+          "after": "Formatele mici și medii arată data și vremea. Listele medii și mari arată evenimente viitoare cu oră; intrările pentru întreaga zi se găsesc în aplicație. Folosiți activitatea live pe dispozitive compatibile. Actualizările pot dura; verificați schimbările în aplicație.",
+          "sourceLines": [
+            232,
+            232
+          ],
+          "reason": "FAQ mirrors supported widget content and update limits."
+        }
+      ]
+    },
+    {
+      "locale": "el",
+      "file": "/Users/minchomilev/cloud-calendars/src/app/content/home/el.ts",
+      "sourceSha256": "e1abad4bd47bfd1e55c3687bab688d5a4b4c9b5e4d7b529daedb211c72b41df4",
+      "fields": [
+        {
+          "path": "widgets.title",
+          "pathSegments": [
+            "widgets",
+            "title"
+          ],
+          "before": [
+            "Η μέρα σας, πριν",
+            "ξεκλειδώσετε οτιδήποτε."
+          ],
+          "after": [
+            "Το ημερολόγιό σας,",
+            "με μια ματιά."
+          ],
+          "sourceLines": [
+            99,
+            99
+          ],
+          "reason": "Avoids blanket no-unlock claim across Home Screen and Live Activity."
+        },
+        {
+          "path": "widgets.lead",
+          "pathSegments": [
+            "widgets",
+            "lead"
+          ],
+          "before": "Το Cloud Calendars ζει στην αρχική οθόνη και στην οθόνη κλειδώματος, όχι μόνο πίσω από ένα εικονίδιο. Τα widget κουβαλούν την ημερομηνία, την πρόγνωση και το επόμενο· μια ζωντανή δραστηριότητα μετρά αντίστροφα προς αυτό.",
+          "after": "Επιλέξτε widget ημερομηνίας και καιρού ή λίστες προσεχών γεγονότων. Μια ξεχωριστή ζωντανή δραστηριότητα προσθέτει αντίστροφη μέτρηση.",
+          "sourceLines": [
+            100,
+            100
+          ],
+          "reason": "Separates widgets from Live Activity."
+        },
+        {
+          "path": "widgets.items.0.body",
+          "pathSegments": [
+            "widgets",
+            "items",
+            0,
+            "body"
+          ],
+          "before": "Μικρό για ημερομηνία και θερμοκρασία, μεσαίο για συνθήκες, φάση σελήνης και άνεμο, μεγάλο για το πρόγραμμα της μέρας δίπλα στην πρόγνωση.",
+          "after": "Οι μικρές και μεσαίες διατάξεις δείχνουν ημερομηνία και καιρό. Οι μεσαίες και μεγάλες λίστες δείχνουν μελλοντικά γεγονότα με ώρα· τα ολοήμερα βρίσκονται στην εφαρμογή.",
+          "sourceLines": [
+            105,
+            105
+          ],
+          "reason": "Correct size/layout mapping and future-timed/all-day distinction."
+        },
+        {
+          "path": "widgets.items.1.body",
+          "pathSegments": [
+            "widgets",
+            "items",
+            1,
+            "body"
+          ],
+          "before": "Το επόμενο γεγονός σας μετρά αντίστροφα στο Dynamic Island και στην οθόνη κλειδώματος, ώστε να μη χρειάζεται ποτέ να ανοίξετε κάτι για να ξέρετε πόσος χρόνος μένει.",
+          "after": "Χρησιμοποιήστε τη ζωντανή δραστηριότητα σε υποστηριζόμενες συσκευές. Οι ενημερώσεις μπορεί να καθυστερούν· ελέγξτε τις αλλαγές στην εφαρμογή.",
+          "sourceLines": [
+            109,
+            109
+          ],
+          "reason": "Supported-device qualification and no instant-update guarantee."
+        },
+        {
+          "path": "widgets.items.2.title",
+          "pathSegments": [
+            "widgets",
+            "items",
+            2,
+            "title"
+          ],
+          "before": "Ειδοποιήσεις που φτάνουν στην ώρα τους",
+          "after": "Υπενθυμίσεις που επιλέγετε",
+          "sourceLines": [
+            112,
+            112
+          ],
+          "reason": "Removes timely-arrival guarantee."
+        },
+        {
+          "path": "widgets.items.2.body",
+          "pathSegments": [
+            "widgets",
+            "items",
+            2,
+            "body"
+          ],
+          "before": "Υπενθυμίσεις που λαμβάνουν υπόψη τον χρόνο μετακίνησης και σας λένε τι κάνει ο καιρός όταν φτάσετε.",
+          "after": "Επιλέξτε ειδοποιήσεις γεγονότων και ρυθμίσεις γνωστοποιήσεων. Ελέγξτε χρόνο μετακίνησης και πρόγνωση στην εφαρμογή.",
+          "sourceLines": [
+            113,
+            113
+          ],
+          "reason": "User-selected reminders; travel and forecast checked separately."
+        },
+        {
+          "path": "faq.items.4.a",
+          "pathSegments": [
+            "faq",
+            "items",
+            4,
+            "a"
+          ],
+          "before": "Τρία μεγέθη. Το μικρό δίνει την ημερομηνία με τις τρέχουσες συνθήκες και τη θερμοκρασία. Το μεσαίο προσθέτει συνθήκες, φάση σελήνης και διεύθυνση ανέμου. Το μεγάλο βάζει τα επόμενα γεγονότα σας δίπλα στην πρόγνωση. Μια ζωντανή δραστηριότητα μετρά αντίστροφα προς το επόμενο.",
+          "after": "Οι μικρές και μεσαίες διατάξεις δείχνουν ημερομηνία και καιρό. Οι μεσαίες και μεγάλες λίστες δείχνουν μελλοντικά γεγονότα με ώρα· τα ολοήμερα βρίσκονται στην εφαρμογή. Χρησιμοποιήστε τη ζωντανή δραστηριότητα σε υποστηριζόμενες συσκευές. Οι ενημερώσεις μπορεί να καθυστερούν· ελέγξτε τις αλλαγές στην εφαρμογή.",
+          "sourceLines": [
+            241,
+            241
+          ],
+          "reason": "FAQ mirrors supported widget content and update limits."
+        }
+      ]
+    },
+    {
+      "locale": "tr",
+      "file": "/Users/minchomilev/cloud-calendars/src/app/content/home/tr.ts",
+      "sourceSha256": "44d5a2ca0ebfab578d41def3005e881bb1f8cc225259f5276c382eeae9bfac62",
+      "fields": [
+        {
+          "path": "widgets.title",
+          "pathSegments": [
+            "widgets",
+            "title"
+          ],
+          "before": [
+            "Gününüz, siz hiçbir şeyin",
+            "kilidini açmadan önce."
+          ],
+          "after": [
+            "Takviminiz,",
+            "bir bakışta."
+          ],
+          "sourceLines": [
+            91,
+            91
+          ],
+          "reason": "Avoids blanket no-unlock claim across Home Screen and Live Activity."
+        },
+        {
+          "path": "widgets.lead",
+          "pathSegments": [
+            "widgets",
+            "lead"
+          ],
+          "before": "Cloud Calendars yalnızca bir simgenin ardında değil, ana ekranda ve kilit ekranında yaşar. Widget’lar tarihi, tahmini ve sıradakini taşır; bir canlı etkinlik ona doğru geri sayar.",
+          "after": "Tarih ve hava durumu widget’larını veya yaklaşan etkinlik listelerini seçin. Ayrı bir canlı etkinlik geri sayım ekler.",
+          "sourceLines": [
+            92,
+            92
+          ],
+          "reason": "Separates widgets from Live Activity."
+        },
+        {
+          "path": "widgets.items.0.body",
+          "pathSegments": [
+            "widgets",
+            "items",
+            0,
+            "body"
+          ],
+          "before": "Küçük tarih ve sıcaklık için, orta koşullar, ay evresi ve rüzgâr için, büyük günün programı ile tahmini yan yana koymak için.",
+          "after": "Küçük ve orta düzenler tarih ve hava durumunu gösterir. Orta ve büyük listeler gelecekteki saatli etkinlikleri gösterir; tüm gün kayıtlarını uygulamada bulabilirsiniz.",
+          "sourceLines": [
+            97,
+            97
+          ],
+          "reason": "Correct size/layout mapping and future-timed/all-day distinction."
+        },
+        {
+          "path": "widgets.items.1.body",
+          "pathSegments": [
+            "widgets",
+            "items",
+            1,
+            "body"
+          ],
+          "before": "Sıradaki etkinliğiniz Dynamic Island’da ve kilit ekranında geri sayar; ne kadar vaktiniz kaldığını bilmek için hiçbir şey açmanız gerekmez.",
+          "after": "Canlı etkinliği desteklenen cihazlarda kullanın. Güncellemeler zaman alabilir; değişiklikleri uygulamada kontrol edin.",
+          "sourceLines": [
+            101,
+            101
+          ],
+          "reason": "Supported-device qualification and no instant-update guarantee."
+        },
+        {
+          "path": "widgets.items.2.title",
+          "pathSegments": [
+            "widgets",
+            "items",
+            2,
+            "title"
+          ],
+          "before": "Zamanında gelen bildirimler",
+          "after": "Seçtiğiniz hatırlatıcılar",
+          "sourceLines": [
+            104,
+            104
+          ],
+          "reason": "Removes timely-arrival guarantee."
+        },
+        {
+          "path": "widgets.items.2.body",
+          "pathSegments": [
+            "widgets",
+            "items",
+            2,
+            "body"
+          ],
+          "before": "Yol süresini gözeten ve vardığınızda havanın ne yaptığını söyleyen hatırlatıcılar.",
+          "after": "Etkinlik uyarılarını ve bildirim ayarlarını seçin. Yol süresini ve hava tahminini uygulamada kontrol edin.",
+          "sourceLines": [
+            105,
+            105
+          ],
+          "reason": "User-selected reminders; travel and forecast checked separately."
+        },
+        {
+          "path": "faq.items.4.a",
+          "pathSegments": [
+            "faq",
+            "items",
+            4,
+            "a"
+          ],
+          "before": "Üç boyut. Küçüğü tarihi, güncel durumu ve sıcaklığı verir. Ortancası koşulları, ay evresini ve rüzgâr yönünü ekler. Büyüğü sıradaki birkaç etkinliğinizi tahminin yanına koyar. Bir canlı etkinlik sıradaki etkinliğe geri sayar.",
+          "after": "Küçük ve orta düzenler tarih ve hava durumunu gösterir. Orta ve büyük listeler gelecekteki saatli etkinlikleri gösterir; tüm gün kayıtlarını uygulamada bulabilirsiniz. Canlı etkinliği desteklenen cihazlarda kullanın. Güncellemeler zaman alabilir; değişiklikleri uygulamada kontrol edin.",
+          "sourceLines": [
+            232,
+            232
+          ],
+          "reason": "FAQ mirrors supported widget content and update limits."
+        }
+      ]
+    },
+    {
+      "locale": "id",
+      "file": "/Users/minchomilev/cloud-calendars/src/app/content/home/id.ts",
+      "sourceSha256": "16e2e99bece271f280935708627694eb99f812b8a96ffb6b3b3cbe8ccaf0d861",
+      "fields": [
+        {
+          "path": "widgets.title",
+          "pathSegments": [
+            "widgets",
+            "title"
+          ],
+          "before": [
+            "Hari Anda, sebelum",
+            "membuka kunci apa pun."
+          ],
+          "after": [
+            "Kalender Anda,",
+            "sekilas saja."
+          ],
+          "sourceLines": [
+            95,
+            95
+          ],
+          "reason": "Avoids blanket no-unlock claim across Home Screen and Live Activity."
+        },
+        {
+          "path": "widgets.lead",
+          "pathSegments": [
+            "widgets",
+            "lead"
+          ],
+          "before": "Cloud Calendars tinggal di layar utama dan layar terkunci, bukan hanya di balik ikon. Widget membawa tanggal, prakiraan, dan yang berikutnya; sebuah aktivitas langsung menghitung mundur ke sana.",
+          "after": "Pilih widget tanggal dan cuaca atau daftar acara mendatang. Aktivitas langsung yang terpisah menambahkan hitung mundur.",
+          "sourceLines": [
+            96,
+            96
+          ],
+          "reason": "Separates widgets from Live Activity."
+        },
+        {
+          "path": "widgets.items.0.body",
+          "pathSegments": [
+            "widgets",
+            "items",
+            0,
+            "body"
+          ],
+          "before": "Kecil untuk tanggal dan suhu, sedang untuk kondisi, fase bulan, dan angin, besar untuk agenda hari itu di samping prakiraan.",
+          "after": "Tata letak kecil dan sedang menampilkan tanggal dan cuaca. Daftar sedang dan besar menampilkan acara mendatang dengan jam mulai; lihat acara sepanjang hari di aplikasi.",
+          "sourceLines": [
+            101,
+            101
+          ],
+          "reason": "Correct size/layout mapping and future-timed/all-day distinction."
+        },
+        {
+          "path": "widgets.items.1.body",
+          "pathSegments": [
+            "widgets",
+            "items",
+            1,
+            "body"
+          ],
+          "before": "Acara berikutnya menghitung mundur di Dynamic Island dan di layar terkunci, jadi Anda tak perlu membuka apa pun untuk tahu berapa lama lagi.",
+          "after": "Gunakan aktivitas langsung pada perangkat yang didukung. Pembaruan bisa memerlukan waktu; periksa perubahan di aplikasi.",
+          "sourceLines": [
+            105,
+            105
+          ],
+          "reason": "Supported-device qualification and no instant-update guarantee."
+        },
+        {
+          "path": "widgets.items.2.title",
+          "pathSegments": [
+            "widgets",
+            "items",
+            2,
+            "title"
+          ],
+          "before": "Pemberitahuan yang datang tepat waktu",
+          "after": "Pengingat pilihan Anda",
+          "sourceLines": [
+            108,
+            108
+          ],
+          "reason": "Removes timely-arrival guarantee."
+        },
+        {
+          "path": "widgets.items.2.body",
+          "pathSegments": [
+            "widgets",
+            "items",
+            2,
+            "body"
+          ],
+          "before": "Pengingat yang memperhitungkan waktu perjalanan dan memberi tahu apa yang dilakukan cuaca saat Anda tiba.",
+          "after": "Pilih pengingat acara dan pengaturan notifikasi. Periksa waktu perjalanan dan prakiraan di aplikasi.",
+          "sourceLines": [
+            109,
+            109
+          ],
+          "reason": "User-selected reminders; travel and forecast checked separately."
+        },
+        {
+          "path": "faq.items.4.a",
+          "pathSegments": [
+            "faq",
+            "items",
+            4,
+            "a"
+          ],
+          "before": "Tiga ukuran. Yang kecil memberi tanggal dengan kondisi dan suhu saat ini. Yang sedang menambahkan kondisi, fase bulan, dan arah angin. Yang besar menaruh beberapa acara berikutnya di samping prakiraan. Sebuah aktivitas langsung menghitung mundur ke acara berikutnya.",
+          "after": "Tata letak kecil dan sedang menampilkan tanggal dan cuaca. Daftar sedang dan besar menampilkan acara mendatang dengan jam mulai; lihat acara sepanjang hari di aplikasi. Gunakan aktivitas langsung pada perangkat yang didukung. Pembaruan bisa memerlukan waktu; periksa perubahan di aplikasi.",
+          "sourceLines": [
+            236,
+            236
+          ],
+          "reason": "FAQ mirrors supported widget content and update limits."
+        }
+      ]
+    },
+    {
+      "locale": "ms",
+      "file": "/Users/minchomilev/cloud-calendars/src/app/content/home/ms.ts",
+      "sourceSha256": "380518b8e72be2b53439bf3ba13a12d831ae889f22a51a4ad3a08ddabba8f35f",
+      "fields": [
+        {
+          "path": "widgets.title",
+          "pathSegments": [
+            "widgets",
+            "title"
+          ],
+          "before": [
+            "Hari anda, sebelum",
+            "anda buka kunci apa-apa."
+          ],
+          "after": [
+            "Kalendar anda,",
+            "sepintas lalu."
+          ],
+          "sourceLines": [
+            99,
+            99
+          ],
+          "reason": "Avoids blanket no-unlock claim across Home Screen and Live Activity."
+        },
+        {
+          "path": "widgets.lead",
+          "pathSegments": [
+            "widgets",
+            "lead"
+          ],
+          "before": "Cloud Calendars tinggal pada skrin utama dan skrin kunci, bukan sekadar di sebalik ikon. Widget membawa tarikh, ramalan dan yang seterusnya; satu aktiviti langsung mengira detik ke arahnya.",
+          "after": "Pilih widget tarikh dan cuaca atau senarai acara akan datang. Aktiviti langsung yang berasingan menambah kira detik.",
+          "sourceLines": [
+            100,
+            100
+          ],
+          "reason": "Separates widgets from Live Activity."
+        },
+        {
+          "path": "widgets.items.0.body",
+          "pathSegments": [
+            "widgets",
+            "items",
+            0,
+            "body"
+          ],
+          "before": "Kecil untuk tarikh dan suhu, sederhana untuk keadaan, fasa bulan dan angin, besar untuk agenda hari itu di sebelah ramalan.",
+          "after": "Susun atur kecil dan sederhana memaparkan tarikh dan cuaca. Senarai sederhana dan besar memaparkan acara akan datang dengan waktu mula; lihat acara sepanjang hari dalam aplikasi.",
+          "sourceLines": [
+            105,
+            105
+          ],
+          "reason": "Correct size/layout mapping and future-timed/all-day distinction."
+        },
+        {
+          "path": "widgets.items.1.body",
+          "pathSegments": [
+            "widgets",
+            "items",
+            1,
+            "body"
+          ],
+          "before": "Acara anda yang seterusnya mengira detik dalam Dynamic Island dan pada skrin kunci, jadi anda tidak perlu membuka apa-apa untuk tahu berapa lama lagi.",
+          "after": "Gunakan aktiviti langsung pada peranti yang disokong. Kemas kini mungkin mengambil masa; semak perubahan dalam aplikasi.",
+          "sourceLines": [
+            109,
+            109
+          ],
+          "reason": "Supported-device qualification and no instant-update guarantee."
+        },
+        {
+          "path": "widgets.items.2.title",
+          "pathSegments": [
+            "widgets",
+            "items",
+            2,
+            "title"
+          ],
+          "before": "Pemberitahuan yang tiba tepat pada masanya",
+          "after": "Peringatan pilihan anda",
+          "sourceLines": [
+            112,
+            112
+          ],
+          "reason": "Removes timely-arrival guarantee."
+        },
+        {
+          "path": "widgets.items.2.body",
+          "pathSegments": [
+            "widgets",
+            "items",
+            2,
+            "body"
+          ],
+          "before": "Peringatan yang mengambil kira masa perjalanan dan memberitahu apa yang cuaca lakukan apabila anda sampai.",
+          "after": "Pilih peringatan acara dan tetapan pemberitahuan. Semak masa perjalanan dan ramalan dalam aplikasi.",
+          "sourceLines": [
+            113,
+            113
+          ],
+          "reason": "User-selected reminders; travel and forecast checked separately."
+        },
+        {
+          "path": "faq.items.4.a",
+          "pathSegments": [
+            "faq",
+            "items",
+            4,
+            "a"
+          ],
+          "before": "Tiga saiz. Yang kecil memberi tarikh dengan keadaan dan suhu semasa. Yang sederhana menambah keadaan, fasa bulan dan arah angin. Yang besar meletakkan beberapa acara berikutnya di sebelah ramalan. Satu aktiviti langsung mengira detik ke acara seterusnya.",
+          "after": "Susun atur kecil dan sederhana memaparkan tarikh dan cuaca. Senarai sederhana dan besar memaparkan acara akan datang dengan waktu mula; lihat acara sepanjang hari dalam aplikasi. Gunakan aktiviti langsung pada peranti yang disokong. Kemas kini mungkin mengambil masa; semak perubahan dalam aplikasi.",
+          "sourceLines": [
+            240,
+            240
+          ],
+          "reason": "FAQ mirrors supported widget content and update limits."
+        }
+      ]
+    },
+    {
+      "locale": "vi",
+      "file": "/Users/minchomilev/cloud-calendars/src/app/content/home/vi.ts",
+      "sourceSha256": "7ee5c7fb0cad6bd35d04670c2addfab658082eeb8432859a8a800df7db2a931e",
+      "fields": [
+        {
+          "path": "widgets.title",
+          "pathSegments": [
+            "widgets",
+            "title"
+          ],
+          "before": [
+            "Ngày của bạn, trước khi",
+            "bạn mở khoá bất cứ thứ gì."
+          ],
+          "after": [
+            "Lịch của bạn,",
+            "chỉ qua một cái nhìn."
+          ],
+          "sourceLines": [
+            95,
+            95
+          ],
+          "reason": "Avoids blanket no-unlock claim across Home Screen and Live Activity."
+        },
+        {
+          "path": "widgets.lead",
+          "pathSegments": [
+            "widgets",
+            "lead"
+          ],
+          "before": "Cloud Calendars sống trên màn hình chính và màn hình khoá, chứ không chỉ nằm sau một biểu tượng. Các widget mang theo ngày, dự báo và việc kế tiếp; một hoạt động trực tiếp đếm ngược tới đó.",
+          "after": "Chọn widget ngày và thời tiết hoặc danh sách sự kiện sắp tới. Hoạt động trực tiếp riêng biệt bổ sung phần đếm ngược.",
+          "sourceLines": [
+            96,
+            96
+          ],
+          "reason": "Separates widgets from Live Activity."
+        },
+        {
+          "path": "widgets.items.0.body",
+          "pathSegments": [
+            "widgets",
+            "items",
+            0,
+            "body"
+          ],
+          "before": "Nhỏ cho ngày và nhiệt độ, vừa cho điều kiện, pha trăng và gió, lớn cho lịch trình trong ngày đặt cạnh dự báo.",
+          "after": "Bố cục nhỏ và vừa hiển thị ngày và thời tiết. Danh sách vừa và lớn hiển thị sự kiện sắp tới có giờ bắt đầu; xem sự kiện cả ngày trong ứng dụng.",
+          "sourceLines": [
+            101,
+            101
+          ],
+          "reason": "Correct size/layout mapping and future-timed/all-day distinction."
+        },
+        {
+          "path": "widgets.items.1.body",
+          "pathSegments": [
+            "widgets",
+            "items",
+            1,
+            "body"
+          ],
+          "before": "Sự kiện kế tiếp đếm ngược trong Dynamic Island và trên màn hình khoá, nên bạn không bao giờ phải mở gì để biết còn bao lâu.",
+          "after": "Dùng hoạt động trực tiếp trên thiết bị được hỗ trợ. Cập nhật có thể mất thời gian; kiểm tra thay đổi trong ứng dụng.",
+          "sourceLines": [
+            105,
+            105
+          ],
+          "reason": "Supported-device qualification and no instant-update guarantee."
+        },
+        {
+          "path": "widgets.items.2.title",
+          "pathSegments": [
+            "widgets",
+            "items",
+            2,
+            "title"
+          ],
+          "before": "Thông báo đến kịp lúc",
+          "after": "Lời nhắc do bạn chọn",
+          "sourceLines": [
+            108,
+            108
+          ],
+          "reason": "Removes timely-arrival guarantee."
+        },
+        {
+          "path": "widgets.items.2.body",
+          "pathSegments": [
+            "widgets",
+            "items",
+            2,
+            "body"
+          ],
+          "before": "Nhắc nhở có tính đến thời gian di chuyển và cho bạn biết thời tiết ra sao khi bạn tới nơi.",
+          "after": "Chọn lời nhắc sự kiện và cài đặt thông báo. Kiểm tra thời gian di chuyển và dự báo trong ứng dụng.",
+          "sourceLines": [
+            109,
+            109
+          ],
+          "reason": "User-selected reminders; travel and forecast checked separately."
+        },
+        {
+          "path": "faq.items.4.a",
+          "pathSegments": [
+            "faq",
+            "items",
+            4,
+            "a"
+          ],
+          "before": "Ba cỡ. Cỡ nhỏ cho ngày kèm điều kiện và nhiệt độ hiện tại. Cỡ vừa thêm điều kiện, pha trăng và hướng gió. Cỡ lớn đặt vài sự kiện kế tiếp bên cạnh dự báo. Một hoạt động trực tiếp đếm ngược tới sự kiện kế tiếp.",
+          "after": "Bố cục nhỏ và vừa hiển thị ngày và thời tiết. Danh sách vừa và lớn hiển thị sự kiện sắp tới có giờ bắt đầu; xem sự kiện cả ngày trong ứng dụng. Dùng hoạt động trực tiếp trên thiết bị được hỗ trợ. Cập nhật có thể mất thời gian; kiểm tra thay đổi trong ứng dụng.",
+          "sourceLines": [
+            236,
+            236
+          ],
+          "reason": "FAQ mirrors supported widget content and update limits."
+        }
+      ]
+    },
+    {
+      "locale": "ja",
+      "file": "/Users/minchomilev/cloud-calendars/src/app/content/home/ja.ts",
+      "sourceSha256": "992120fab6ca187dddd58d1edb0a7153a4a99bdfdbe65c2619e222a53820bb3d",
+      "fields": [
+        {
+          "path": "widgets.title",
+          "pathSegments": [
+            "widgets",
+            "title"
+          ],
+          "before": [
+            "ロックを解除する前の、",
+            "あなたの一日。"
+          ],
+          "after": [
+            "カレンダーを、",
+            "ひと目で確認。"
+          ],
+          "sourceLines": [
+            94,
+            94
+          ],
+          "reason": "Avoids blanket no-unlock claim across Home Screen and Live Activity."
+        },
+        {
+          "path": "widgets.lead",
+          "pathSegments": [
+            "widgets",
+            "lead"
+          ],
+          "before": "Cloud Calendars はアプリアイコンの奥だけでなく、ホーム画面とロック画面に住んでいます。ウィジェットが日付と予報と次の予定を運び、ライブアクティビティがそこまでを数えます。",
+          "after": "日付と天気のウィジェット、または今後の予定リストを選べます。別機能のライブアクティビティでカウントダウンも表示できます。",
+          "sourceLines": [
+            95,
+            95
+          ],
+          "reason": "Separates widgets from Live Activity."
+        },
+        {
+          "path": "widgets.items.0.body",
+          "pathSegments": [
+            "widgets",
+            "items",
+            0,
+            "body"
+          ],
+          "before": "小は日付と気温、中は空模様・月齢・風、大はその日の予定を予報と並べて。",
+          "after": "小・中サイズの日付と天気の表示に加え、中・大サイズの予定リストがあります。リストは開始前の時刻付き予定を表示し、終日予定はアプリで確認できます。",
+          "sourceLines": [
+            100,
+            100
+          ],
+          "reason": "Correct size/layout mapping and future-timed/all-day distinction."
+        },
+        {
+          "path": "widgets.items.1.body",
+          "pathSegments": [
+            "widgets",
+            "items",
+            1,
+            "body"
+          ],
+          "before": "次の予定が Dynamic Island とロック画面でカウントダウンされるので、あと何分あるかを知るために何かを開く必要がありません。",
+          "after": "対応デバイスでライブアクティビティを利用できます。更新には時間がかかる場合があるため、予定変更後はアプリで確認してください。",
+          "sourceLines": [
+            104,
+            104
+          ],
+          "reason": "Supported-device qualification and no instant-update guarantee."
+        },
+        {
+          "path": "widgets.items.2.title",
+          "pathSegments": [
+            "widgets",
+            "items",
+            2,
+            "title"
+          ],
+          "before": "間に合う通知",
+          "after": "自分で選べるリマインダー",
+          "sourceLines": [
+            107,
+            107
+          ],
+          "reason": "Removes timely-arrival guarantee."
+        },
+        {
+          "path": "widgets.items.2.body",
+          "pathSegments": [
+            "widgets",
+            "items",
+            2,
+            "body"
+          ],
+          "before": "移動時間を考慮し、着いたときの天気を教えてくれるリマインダー。",
+          "after": "予定の通知時刻と通知設定を選び、移動時間と天気予報はアプリで確認できます。",
+          "sourceLines": [
+            108,
+            108
+          ],
+          "reason": "User-selected reminders; travel and forecast checked separately."
+        },
+        {
+          "path": "faq.items.4.a",
+          "pathSegments": [
+            "faq",
+            "items",
+            4,
+            "a"
+          ],
+          "before": "三つのサイズがあります。小は日付と現在の空模様・気温。中は空模様・月齢・風向きを加えます。大は次のいくつかの予定を予報と並べます。ライブアクティビティは次の予定までを数えます。",
+          "after": "小・中サイズの日付と天気の表示に加え、中・大サイズの予定リストがあります。リストは開始前の時刻付き予定を表示し、終日予定はアプリで確認できます。 対応デバイスでライブアクティビティを利用できます。更新には時間がかかる場合があるため、予定変更後はアプリで確認してください。",
+          "sourceLines": [
+            235,
+            235
+          ],
+          "reason": "FAQ mirrors supported widget content and update limits."
+        }
+      ]
+    },
+    {
+      "locale": "ko",
+      "file": "/Users/minchomilev/cloud-calendars/src/app/content/home/ko.ts",
+      "sourceSha256": "95b921f9bafb4a2e7ec11679bb44fcc619bbb33280cbf3c6d4b838bee73512a7",
+      "fields": [
+        {
+          "path": "widgets.title",
+          "pathSegments": [
+            "widgets",
+            "title"
+          ],
+          "before": [
+            "무엇 하나 잠금을 풀기 전의,",
+            "당신의 하루."
+          ],
+          "after": [
+            "캘린더를,",
+            "한눈에 확인하세요."
+          ],
+          "sourceLines": [
+            91,
+            91
+          ],
+          "reason": "Avoids blanket no-unlock claim across Home Screen and Live Activity."
+        },
+        {
+          "path": "widgets.lead",
+          "pathSegments": [
+            "widgets",
+            "lead"
+          ],
+          "before": "Cloud Calendars는 앱 아이콘 뒤가 아니라 홈 화면과 잠금 화면에 삽니다. 위젯이 날짜와 예보와 다음 일을 나르고, 실시간 활동이 거기까지 세어 갑니다.",
+          "after": "날짜와 날씨 위젯 또는 다가오는 일정 목록을 선택하세요. 별도의 실시간 활동으로 카운트다운도 볼 수 있습니다.",
+          "sourceLines": [
+            92,
+            92
+          ],
+          "reason": "Separates widgets from Live Activity."
+        },
+        {
+          "path": "widgets.items.0.body",
+          "pathSegments": [
+            "widgets",
+            "items",
+            0,
+            "body"
+          ],
+          "before": "작은 것은 날짜와 기온, 중간은 상태와 달의 위상과 바람, 큰 것은 그날의 일정을 예보와 나란히.",
+          "after": "작은 크기와 중간 크기는 날짜와 날씨를 표시합니다. 중간 크기와 큰 크기 일정 목록은 시작 전의 시간 지정 일정을 표시하며, 종일 일정은 앱에서 확인하세요.",
+          "sourceLines": [
+            97,
+            97
+          ],
+          "reason": "Correct size/layout mapping and future-timed/all-day distinction."
+        },
+        {
+          "path": "widgets.items.1.body",
+          "pathSegments": [
+            "widgets",
+            "items",
+            1,
+            "body"
+          ],
+          "before": "다음 일정이 Dynamic Island와 잠금 화면에서 거꾸로 세어지므로, 얼마나 남았는지 알려고 무언가를 열 필요가 없습니다.",
+          "after": "지원 기기에서 실시간 활동을 사용하세요. 업데이트에 시간이 걸릴 수 있으므로 일정 변경 후 앱에서 확인하세요.",
+          "sourceLines": [
+            101,
+            101
+          ],
+          "reason": "Supported-device qualification and no instant-update guarantee."
+        },
+        {
+          "path": "widgets.items.2.title",
+          "pathSegments": [
+            "widgets",
+            "items",
+            2,
+            "title"
+          ],
+          "before": "제때 도착하는 알림",
+          "after": "직접 선택하는 알림",
+          "sourceLines": [
+            104,
+            104
+          ],
+          "reason": "Removes timely-arrival guarantee."
+        },
+        {
+          "path": "widgets.items.2.body",
+          "pathSegments": [
+            "widgets",
+            "items",
+            2,
+            "body"
+          ],
+          "before": "이동 시간을 감안하고, 도착했을 때 날씨가 어떤지 알려주는 알림.",
+          "after": "일정 알림과 알림 설정을 선택하고, 이동 시간과 일기예보는 앱에서 확인하세요.",
+          "sourceLines": [
+            105,
+            105
+          ],
+          "reason": "User-selected reminders; travel and forecast checked separately."
+        },
+        {
+          "path": "faq.items.4.a",
+          "pathSegments": [
+            "faq",
+            "items",
+            4,
+            "a"
+          ],
+          "before": "세 가지 크기입니다. 작은 것은 날짜와 현재 상태·기온을, 중간은 상태·달의 위상·풍향을 더하고, 큰 것은 다음 몇 개의 일정을 예보와 나란히 놓습니다. 실시간 활동이 다음 일정까지 세어 갑니다.",
+          "after": "작은 크기와 중간 크기는 날짜와 날씨를 표시합니다. 중간 크기와 큰 크기 일정 목록은 시작 전의 시간 지정 일정을 표시하며, 종일 일정은 앱에서 확인하세요. 지원 기기에서 실시간 활동을 사용하세요. 업데이트에 시간이 걸릴 수 있으므로 일정 변경 후 앱에서 확인하세요.",
+          "sourceLines": [
+            232,
+            232
+          ],
+          "reason": "FAQ mirrors supported widget content and update limits."
+        }
+      ]
+    },
+    {
+      "locale": "zh-Hans",
+      "file": "/Users/minchomilev/cloud-calendars/src/app/content/home/zh-Hans.ts",
+      "sourceSha256": "a6d0206bd8ba8b72ebe9132b6c3b0d482cd1741f8c61134521834f3b7c52449e",
+      "fields": [
+        {
+          "path": "widgets.title",
+          "pathSegments": [
+            "widgets",
+            "title"
+          ],
+          "before": [
+            "在你解锁任何东西之前，",
+            "你的这一天。"
+          ],
+          "after": [
+            "你的日历，",
+            "一目了然。"
+          ],
+          "sourceLines": [
+            91,
+            91
+          ],
+          "reason": "Avoids blanket no-unlock claim across Home Screen and Live Activity."
+        },
+        {
+          "path": "widgets.lead",
+          "pathSegments": [
+            "widgets",
+            "lead"
+          ],
+          "before": "Cloud Calendars 住在主屏幕和锁定屏幕上，而不只是躲在一个图标后面。小组件带着日期、预报和下一件事；实时活动为它倒数。",
+          "after": "选择日期和天气小组件，或即将开始的日程列表。独立的实时活动功能提供倒计时。",
+          "sourceLines": [
+            92,
+            92
+          ],
+          "reason": "Separates widgets from Live Activity."
+        },
+        {
+          "path": "widgets.items.0.body",
+          "pathSegments": [
+            "widgets",
+            "items",
+            0,
+            "body"
+          ],
+          "before": "小号放日期和气温，中号加上天气、月相和风，大号把当天安排和预报并排放。",
+          "after": "小号和中号布局显示日期和天气，中号和大号日程列表显示尚未开始的定时日程；全天日程请在应用内查看。",
+          "sourceLines": [
+            97,
+            97
+          ],
+          "reason": "Correct size/layout mapping and future-timed/all-day distinction."
+        },
+        {
+          "path": "widgets.items.1.body",
+          "pathSegments": [
+            "widgets",
+            "items",
+            1,
+            "body"
+          ],
+          "before": "下一个日程会在灵动岛和锁定屏幕上倒数，所以你从来不必打开任何东西就知道还剩多久。",
+          "after": "在支持的设备上使用实时活动。更新可能需要时间，日程变更后请在应用内核对。",
+          "sourceLines": [
+            101,
+            101
+          ],
+          "reason": "Supported-device qualification and no instant-update guarantee."
+        },
+        {
+          "path": "widgets.items.2.title",
+          "pathSegments": [
+            "widgets",
+            "items",
+            2,
+            "title"
+          ],
+          "before": "来得及的通知",
+          "after": "按需设置提醒",
+          "sourceLines": [
+            104,
+            104
+          ],
+          "reason": "Removes timely-arrival guarantee."
+        },
+        {
+          "path": "widgets.items.2.body",
+          "pathSegments": [
+            "widgets",
+            "items",
+            2,
+            "body"
+          ],
+          "before": "会把路上时间算进去、并告诉你到那儿时天气如何的提醒。",
+          "after": "选择日程提醒和通知设置，并在应用内查看行程时间和天气预报。",
+          "sourceLines": [
+            105,
+            105
+          ],
+          "reason": "User-selected reminders; travel and forecast checked separately."
+        },
+        {
+          "path": "faq.items.4.a",
+          "pathSegments": [
+            "faq",
+            "items",
+            4,
+            "a"
+          ],
+          "before": "三种尺寸。小号给出日期以及当前天气和气温。中号加上天气、月相和风向。大号把接下来几个日程和预报并排放。实时活动会为下一个日程倒数。",
+          "after": "小号和中号布局显示日期和天气，中号和大号日程列表显示尚未开始的定时日程；全天日程请在应用内查看。 在支持的设备上使用实时活动。更新可能需要时间，日程变更后请在应用内核对。",
+          "sourceLines": [
+            232,
+            232
+          ],
+          "reason": "FAQ mirrors supported widget content and update limits."
+        }
+      ]
+    },
+    {
+      "locale": "zh-Hant",
+      "file": "/Users/minchomilev/cloud-calendars/src/app/content/home/zh-Hant.ts",
+      "sourceSha256": "1d37928e0e8168e6b8ea9f696063b0ee59d9849f52088a478c3cbaf2df0df6e8",
+      "fields": [
+        {
+          "path": "widgets.title",
+          "pathSegments": [
+            "widgets",
+            "title"
+          ],
+          "before": [
+            "在你解鎖任何東西之前，",
+            "你的這一天。"
+          ],
+          "after": [
+            "你的行事曆，",
+            "一目瞭然。"
+          ],
+          "sourceLines": [
+            91,
+            91
+          ],
+          "reason": "Avoids blanket no-unlock claim across Home Screen and Live Activity."
+        },
+        {
+          "path": "widgets.lead",
+          "pathSegments": [
+            "widgets",
+            "lead"
+          ],
+          "before": "Cloud Calendars 住在主畫面和鎖定畫面上，而不只是躲在一個圖示後面。小工具帶著日期、預報和下一件事；即時動態為它倒數。",
+          "after": "選擇日期和天氣小工具，或即將開始的行程列表。獨立的即時動態功能提供倒數計時。",
+          "sourceLines": [
+            92,
+            92
+          ],
+          "reason": "Separates widgets from Live Activity."
+        },
+        {
+          "path": "widgets.items.0.body",
+          "pathSegments": [
+            "widgets",
+            "items",
+            0,
+            "body"
+          ],
+          "before": "小的放日期和氣溫，中的加上天氣、月相和風，大的把當天安排和預報並排放。",
+          "after": "小型和中型版面顯示日期和天氣，中型和大型行程列表顯示尚未開始的定時行程；整日行程請在 App 內查看。",
+          "sourceLines": [
+            97,
+            97
+          ],
+          "reason": "Correct size/layout mapping and future-timed/all-day distinction."
+        },
+        {
+          "path": "widgets.items.1.body",
+          "pathSegments": [
+            "widgets",
+            "items",
+            1,
+            "body"
+          ],
+          "before": "下一個行程會在動態島和鎖定畫面上倒數，所以你從來不必打開任何東西就知道還剩多久。",
+          "after": "在支援的裝置上使用即時動態。更新可能需要時間，行程變更後請在 App 內核對。",
+          "sourceLines": [
+            101,
+            101
+          ],
+          "reason": "Supported-device qualification and no instant-update guarantee."
+        },
+        {
+          "path": "widgets.items.2.title",
+          "pathSegments": [
+            "widgets",
+            "items",
+            2,
+            "title"
+          ],
+          "before": "來得及的通知",
+          "after": "依需求設定提醒",
+          "sourceLines": [
+            104,
+            104
+          ],
+          "reason": "Removes timely-arrival guarantee."
+        },
+        {
+          "path": "widgets.items.2.body",
+          "pathSegments": [
+            "widgets",
+            "items",
+            2,
+            "body"
+          ],
+          "before": "會把路上時間算進去、並告訴你到那兒時天氣如何的提醒。",
+          "after": "選擇行程提醒和通知設定，並在 App 內查看交通時間和天氣預報。",
+          "sourceLines": [
+            105,
+            105
+          ],
+          "reason": "User-selected reminders; travel and forecast checked separately."
+        },
+        {
+          "path": "faq.items.4.a",
+          "pathSegments": [
+            "faq",
+            "items",
+            4,
+            "a"
+          ],
+          "before": "三種尺寸。小的給出日期以及目前天氣和氣溫。中的加上天氣、月相和風向。大的把接下來幾個行程和預報並排放。即時動態會為下一個行程倒數。",
+          "after": "小型和中型版面顯示日期和天氣，中型和大型行程列表顯示尚未開始的定時行程；整日行程請在 App 內查看。 在支援的裝置上使用即時動態。更新可能需要時間，行程變更後請在 App 內核對。",
+          "sourceLines": [
+            232,
+            232
+          ],
+          "reason": "FAQ mirrors supported widget content and update limits."
+        }
+      ]
+    },
+    {
+      "locale": "hi",
+      "file": "/Users/minchomilev/cloud-calendars/src/app/content/home/hi.ts",
+      "sourceSha256": "878d41a0411e0a3c6887028c5da47fbeb2654eb61551e5339bf973dc30a31c68",
+      "fields": [
+        {
+          "path": "widgets.title",
+          "pathSegments": [
+            "widgets",
+            "title"
+          ],
+          "before": [
+            "आपका दिन, इससे पहले कि",
+            "आप कुछ भी अनलॉक करें।"
+          ],
+          "after": [
+            "आपका कैलेंडर,",
+            "एक नज़र में।"
+          ],
+          "sourceLines": [
+            95,
+            95
+          ],
+          "reason": "Avoids blanket no-unlock claim across Home Screen and Live Activity."
+        },
+        {
+          "path": "widgets.lead",
+          "pathSegments": [
+            "widgets",
+            "lead"
+          ],
+          "before": "Cloud Calendars सिर्फ़ एक चिह्न के पीछे नहीं, बल्कि होम स्क्रीन और लॉक स्क्रीन पर रहता है। विजेट तारीख़, पूर्वानुमान और अगली चीज़ लिए रहते हैं; एक लाइव गतिविधि उस तक उलटी गिनती करती है।",
+          "after": "तारीख़ और मौसम वाले विजेट या आने वाले कार्यक्रमों की सूची चुनें। अलग लाइव गतिविधि उलटी गिनती दिखाती है।",
+          "sourceLines": [
+            96,
+            96
+          ],
+          "reason": "Separates widgets from Live Activity."
+        },
+        {
+          "path": "widgets.items.0.body",
+          "pathSegments": [
+            "widgets",
+            "items",
+            0,
+            "body"
+          ],
+          "before": "छोटा तारीख़ और तापमान के लिए, मँझला हाल, चंद्रकला और हवा के लिए, बड़ा दिन के कार्यक्रम को पूर्वानुमान के बग़ल में रखने के लिए।",
+          "after": "छोटे और मँझले लेआउट तारीख़ और मौसम दिखाते हैं। मँझली और बड़ी सूचियाँ भविष्य के समय तय कार्यक्रम दिखाती हैं; पूरे दिन की प्रविष्टियाँ ऐप में देखें।",
+          "sourceLines": [
+            101,
+            101
+          ],
+          "reason": "Correct size/layout mapping and future-timed/all-day distinction."
+        },
+        {
+          "path": "widgets.items.1.body",
+          "pathSegments": [
+            "widgets",
+            "items",
+            1,
+            "body"
+          ],
+          "before": "आपका अगला कार्यक्रम Dynamic Island और लॉक स्क्रीन पर उलटी गिनती करता है, इसलिए कितना समय बचा है यह जानने के लिए कुछ खोलना नहीं पड़ता।",
+          "after": "समर्थित उपकरणों पर लाइव गतिविधि इस्तेमाल करें। अपडेट में समय लग सकता है; कार्यक्रम बदलने पर ऐप में जाँचें।",
+          "sourceLines": [
+            105,
+            105
+          ],
+          "reason": "Supported-device qualification and no instant-update guarantee."
+        },
+        {
+          "path": "widgets.items.2.title",
+          "pathSegments": [
+            "widgets",
+            "items",
+            2,
+            "title"
+          ],
+          "before": "वक़्त पर पहुँचने वाली सूचनाएँ",
+          "after": "अपनी पसंद की याददिहानियाँ",
+          "sourceLines": [
+            108,
+            108
+          ],
+          "reason": "Removes timely-arrival guarantee."
+        },
+        {
+          "path": "widgets.items.2.body",
+          "pathSegments": [
+            "widgets",
+            "items",
+            2,
+            "body"
+          ],
+          "before": "ऐसी याददिहानियाँ जो रास्ते का समय ध्यान में रखती हैं और बताती हैं कि पहुँचने पर मौसम क्या कर रहा होगा।",
+          "after": "कार्यक्रम के अलर्ट और सूचना सेटिंग चुनें। यात्रा का समय और मौसम का पूर्वानुमान ऐप में देखें।",
+          "sourceLines": [
+            109,
+            109
+          ],
+          "reason": "User-selected reminders; travel and forecast checked separately."
+        },
+        {
+          "path": "faq.items.4.a",
+          "pathSegments": [
+            "faq",
+            "items",
+            4,
+            "a"
+          ],
+          "before": "तीन आकार। छोटा तारीख़ के साथ मौजूदा हाल और तापमान देता है। मँझला हाल, चंद्रकला और हवा की दिशा जोड़ता है। बड़ा आपके अगले कुछ कार्यक्रम पूर्वानुमान के बग़ल में रखता है। एक लाइव गतिविधि अगले कार्यक्रम तक उलटी गिनती करती है।",
+          "after": "छोटे और मँझले लेआउट तारीख़ और मौसम दिखाते हैं। मँझली और बड़ी सूचियाँ भविष्य के समय तय कार्यक्रम दिखाती हैं; पूरे दिन की प्रविष्टियाँ ऐप में देखें। समर्थित उपकरणों पर लाइव गतिविधि इस्तेमाल करें। अपडेट में समय लग सकता है; कार्यक्रम बदलने पर ऐप में जाँचें।",
+          "sourceLines": [
+            236,
+            236
+          ],
+          "reason": "FAQ mirrors supported widget content and update limits."
+        }
+      ]
+    },
+    {
+      "locale": "th",
+      "file": "/Users/minchomilev/cloud-calendars/src/app/content/home/th.ts",
+      "sourceSha256": "dc97e8dd66bf431a0410b8a47948ead1b0bc48949f76cda74335bf942b63552b",
+      "fields": [
+        {
+          "path": "widgets.title",
+          "pathSegments": [
+            "widgets",
+            "title"
+          ],
+          "before": [
+            "วันของคุณ ก่อนที่",
+            "คุณจะปลดล็อกอะไรเลย"
+          ],
+          "after": [
+            "ปฏิทินของคุณ",
+            "ดูได้ในพริบตา"
+          ],
+          "sourceLines": [
+            91,
+            91
+          ],
+          "reason": "Avoids blanket no-unlock claim across Home Screen and Live Activity."
+        },
+        {
+          "path": "widgets.lead",
+          "pathSegments": [
+            "widgets",
+            "lead"
+          ],
+          "before": "Cloud Calendars อยู่บนหน้าจอโฮมและหน้าจอล็อก ไม่ใช่แค่หลังไอคอนแอป วิดเจ็ตพกวันที่ พยากรณ์ และสิ่งถัดไปมาให้ ส่วนกิจกรรมสดนับถอยหลังไปหามัน",
+          "after": "เลือกวิดเจ็ตวันที่และสภาพอากาศ หรือรายการกิจกรรมที่กำลังจะมาถึง กิจกรรมสดเป็นอีกฟีเจอร์หนึ่งสำหรับนับถอยหลัง",
+          "sourceLines": [
+            92,
+            92
+          ],
+          "reason": "Separates widgets from Live Activity."
+        },
+        {
+          "path": "widgets.items.0.body",
+          "pathSegments": [
+            "widgets",
+            "items",
+            0,
+            "body"
+          ],
+          "before": "เล็กสำหรับวันที่และอุณหภูมิ กลางสำหรับสภาพอากาศ ข้างขึ้นข้างแรม และลม ใหญ่สำหรับกำหนดการของวันวางคู่กับพยากรณ์",
+          "after": "รูปแบบเล็กและกลางแสดงวันที่และสภาพอากาศ รายการขนาดกลางและใหญ่แสดงกิจกรรมที่กำหนดเวลาและยังไม่เริ่ม ส่วนกิจกรรมทั้งวันดูได้ในแอป",
+          "sourceLines": [
+            97,
+            97
+          ],
+          "reason": "Correct size/layout mapping and future-timed/all-day distinction."
+        },
+        {
+          "path": "widgets.items.1.body",
+          "pathSegments": [
+            "widgets",
+            "items",
+            1,
+            "body"
+          ],
+          "before": "กิจกรรมถัดไปของคุณนับถอยหลังใน Dynamic Island และบนหน้าจอล็อก คุณจึงไม่ต้องเปิดอะไรเลยเพื่อรู้ว่าเหลือเวลาเท่าไร",
+          "after": "ใช้กิจกรรมสดบนอุปกรณ์ที่รองรับ การอัปเดตอาจใช้เวลา โปรดตรวจสอบในแอปเมื่อกำหนดการเปลี่ยน",
+          "sourceLines": [
+            101,
+            101
+          ],
+          "reason": "Supported-device qualification and no instant-update guarantee."
+        },
+        {
+          "path": "widgets.items.2.title",
+          "pathSegments": [
+            "widgets",
+            "items",
+            2,
+            "title"
+          ],
+          "before": "การแจ้งเตือนที่มาถึงทันเวลา",
+          "after": "การเตือนที่คุณเลือกได้",
+          "sourceLines": [
+            104,
+            104
+          ],
+          "reason": "Removes timely-arrival guarantee."
+        },
+        {
+          "path": "widgets.items.2.body",
+          "pathSegments": [
+            "widgets",
+            "items",
+            2,
+            "body"
+          ],
+          "before": "การเตือนที่คำนึงถึงเวลาเดินทาง และบอกว่าสภาพอากาศเป็นอย่างไรตอนคุณไปถึง",
+          "after": "เลือกการเตือนกิจกรรมและการตั้งค่าการแจ้งเตือน แล้วตรวจสอบเวลาเดินทางและพยากรณ์อากาศในแอป",
+          "sourceLines": [
+            105,
+            105
+          ],
+          "reason": "User-selected reminders; travel and forecast checked separately."
+        },
+        {
+          "path": "faq.items.4.a",
+          "pathSegments": [
+            "faq",
+            "items",
+            4,
+            "a"
+          ],
+          "before": "สามขนาด ขนาดเล็กให้วันที่พร้อมสภาพและอุณหภูมิปัจจุบัน ขนาดกลางเพิ่มสภาพอากาศ ข้างขึ้นข้างแรม และทิศลม ขนาดใหญ่วางกิจกรรมถัดไปไม่กี่รายการไว้ข้างพยากรณ์ ส่วนกิจกรรมสดนับถอยหลังไปยังกิจกรรมถัดไป",
+          "after": "รูปแบบเล็กและกลางแสดงวันที่และสภาพอากาศ รายการขนาดกลางและใหญ่แสดงกิจกรรมที่กำหนดเวลาและยังไม่เริ่ม ส่วนกิจกรรมทั้งวันดูได้ในแอป ใช้กิจกรรมสดบนอุปกรณ์ที่รองรับ การอัปเดตอาจใช้เวลา โปรดตรวจสอบในแอปเมื่อกำหนดการเปลี่ยน",
+          "sourceLines": [
+            232,
+            232
+          ],
+          "reason": "FAQ mirrors supported widget content and update limits."
+        }
+      ]
+    },
+    {
+      "locale": "ar-SA",
+      "file": "/Users/minchomilev/cloud-calendars/src/app/content/home/ar-SA.ts",
+      "sourceSha256": "abfa03692dd96fd8a183b8983e3a3d01e3885e5dcc80f0f413a3ac8518943d50",
+      "fields": [
+        {
+          "path": "widgets.title",
+          "pathSegments": [
+            "widgets",
+            "title"
+          ],
+          "before": [
+            "يومك، قبل أن",
+            "تفتح أي قفل."
+          ],
+          "after": [
+            "تقويمك،",
+            "بنظرة واحدة."
+          ],
+          "sourceLines": [
+            91,
+            91
+          ],
+          "reason": "Avoids blanket no-unlock claim across Home Screen and Live Activity."
+        },
+        {
+          "path": "widgets.lead",
+          "pathSegments": [
+            "widgets",
+            "lead"
+          ],
+          "before": "يعيش Cloud Calendars على الشاشة الرئيسية وشاشة القفل، لا خلف أيقونة فحسب. تحمل عناصر الواجهة التاريخ والتوقعات وما هو تالٍ؛ ويعدّ نشاط مباشر تنازليًا إليه.",
+          "after": "اختر عناصر واجهة للتاريخ والطقس أو قوائم للأحداث القادمة. ويضيف النشاط المباشر المنفصل عدًا تنازليًا.",
+          "sourceLines": [
+            92,
+            92
+          ],
+          "reason": "Separates widgets from Live Activity."
+        },
+        {
+          "path": "widgets.items.0.body",
+          "pathSegments": [
+            "widgets",
+            "items",
+            0,
+            "body"
+          ],
+          "before": "الصغير للتاريخ ودرجة الحرارة، والمتوسط للحالة وطور القمر والرياح، والكبير لجدول اليوم إلى جانب التوقعات.",
+          "after": "تعرض التصاميم الصغيرة والمتوسطة التاريخ والطقس. وتعرض القوائم المتوسطة والكبيرة الأحداث القادمة ذات الوقت المحدد؛ أما أحداث اليوم الكامل ففي التطبيق.",
+          "sourceLines": [
+            97,
+            97
+          ],
+          "reason": "Correct size/layout mapping and future-timed/all-day distinction."
+        },
+        {
+          "path": "widgets.items.1.body",
+          "pathSegments": [
+            "widgets",
+            "items",
+            1,
+            "body"
+          ],
+          "before": "يعدّ حدثك التالي تنازليًا في Dynamic Island وعلى شاشة القفل، فلا تحتاج إلى فتح شيء لتعرف كم بقي لديك.",
+          "after": "استخدم النشاط المباشر على الأجهزة المدعومة. قد تستغرق التحديثات وقتًا؛ تحقق من التطبيق بعد تغيير الموعد.",
+          "sourceLines": [
+            101,
+            101
+          ],
+          "reason": "Supported-device qualification and no instant-update guarantee."
+        },
+        {
+          "path": "widgets.items.2.title",
+          "pathSegments": [
+            "widgets",
+            "items",
+            2,
+            "title"
+          ],
+          "before": "إشعارات تصل في وقتها",
+          "after": "تذكيرات تختارها",
+          "sourceLines": [
+            104,
+            104
+          ],
+          "reason": "Removes timely-arrival guarantee."
+        },
+        {
+          "path": "widgets.items.2.body",
+          "pathSegments": [
+            "widgets",
+            "items",
+            2,
+            "body"
+          ],
+          "before": "تذكيرات تراعي زمن التنقل وتخبرك بما يفعله الطقس حين تصل.",
+          "after": "اختر تنبيهات الأحداث وإعدادات الإشعارات. وتحقق من وقت التنقل والتوقعات في التطبيق.",
+          "sourceLines": [
+            105,
+            105
+          ],
+          "reason": "User-selected reminders; travel and forecast checked separately."
+        },
+        {
+          "path": "faq.items.4.a",
+          "pathSegments": [
+            "faq",
+            "items",
+            4,
+            "a"
+          ],
+          "before": "ثلاثة أحجام. الصغير يعطي التاريخ مع الحالة ودرجة الحرارة الحاليتين. والمتوسط يضيف الحالة وطور القمر واتجاه الرياح. والكبير يضع أحداثك القادمة إلى جانب التوقعات. ويعدّ نشاط مباشر تنازليًا إلى حدثك التالي.",
+          "after": "تعرض التصاميم الصغيرة والمتوسطة التاريخ والطقس. وتعرض القوائم المتوسطة والكبيرة الأحداث القادمة ذات الوقت المحدد؛ أما أحداث اليوم الكامل ففي التطبيق. استخدم النشاط المباشر على الأجهزة المدعومة. قد تستغرق التحديثات وقتًا؛ تحقق من التطبيق بعد تغيير الموعد.",
+          "sourceLines": [
+            232,
+            232
+          ],
+          "reason": "FAQ mirrors supported widget content and update limits."
+        }
+      ]
+    },
+    {
+      "locale": "he",
+      "file": "/Users/minchomilev/cloud-calendars/src/app/content/home/he.ts",
+      "sourceSha256": "7104925cef7c49ad1cafcb3c68fe70effaa625bb581782d754f335817892e0b6",
+      "fields": [
+        {
+          "path": "widgets.title",
+          "pathSegments": [
+            "widgets",
+            "title"
+          ],
+          "before": [
+            "היום שלכם, לפני",
+            "שאתם פותחים משהו."
+          ],
+          "after": [
+            "היומן שלכם,",
+            "במבט אחד."
+          ],
+          "sourceLines": [
+            91,
+            91
+          ],
+          "reason": "Avoids blanket no-unlock claim across Home Screen and Live Activity."
+        },
+        {
+          "path": "widgets.lead",
+          "pathSegments": [
+            "widgets",
+            "lead"
+          ],
+          "before": "Cloud Calendars חי במסך הבית ובמסך הנעילה, לא רק מאחורי סמל אפליקציה. הווידג׳טים נושאים את התאריך, התחזית והדבר הבא; פעילות בזמן אמת סופרת אליו לאחור.",
+          "after": "בחרו וידג׳טים של תאריך ומזג אוויר או רשימות אירועים קרובים. פעילות בזמן אמת נפרדת מוסיפה ספירה לאחור.",
+          "sourceLines": [
+            92,
+            92
+          ],
+          "reason": "Separates widgets from Live Activity."
+        },
+        {
+          "path": "widgets.items.0.body",
+          "pathSegments": [
+            "widgets",
+            "items",
+            0,
+            "body"
+          ],
+          "before": "קטן לתאריך ולטמפרטורה, בינוני לתנאים, שלב הירח ורוח, גדול לסדר היום לצד התחזית.",
+          "after": "פריסות קטנות ובינוניות מציגות תאריך ומזג אוויר. רשימות בינוניות וגדולות מציגות אירועים עתידיים עם שעה; אירועי יום שלם נמצאים באפליקציה.",
+          "sourceLines": [
+            97,
+            97
+          ],
+          "reason": "Correct size/layout mapping and future-timed/all-day distinction."
+        },
+        {
+          "path": "widgets.items.1.body",
+          "pathSegments": [
+            "widgets",
+            "items",
+            1,
+            "body"
+          ],
+          "before": "האירוע הבא שלכם סופר לאחור ב‑Dynamic Island ובמסך הנעילה, כך שאף פעם אין צורך לפתוח משהו כדי לדעת כמה זמן נשאר.",
+          "after": "השתמשו בפעילות בזמן אמת במכשירים נתמכים. עדכונים עשויים לקחת זמן; בדקו באפליקציה לאחר שינוי מועד.",
+          "sourceLines": [
+            101,
+            101
+          ],
+          "reason": "Supported-device qualification and no instant-update guarantee."
+        },
+        {
+          "path": "widgets.items.2.title",
+          "pathSegments": [
+            "widgets",
+            "items",
+            2,
+            "title"
+          ],
+          "before": "התראות שמגיעות בזמן",
+          "after": "תזכורות לבחירתכם",
+          "sourceLines": [
+            104,
+            104
+          ],
+          "reason": "Removes timely-arrival guarantee."
+        },
+        {
+          "path": "widgets.items.2.body",
+          "pathSegments": [
+            "widgets",
+            "items",
+            2,
+            "body"
+          ],
+          "before": "תזכורות שמתחשבות בזמן הנסיעה ומספרות מה מזג האוויר עושה כשתגיעו.",
+          "after": "בחרו תזכורות לאירועים והגדרות התראות. בדקו את זמן הנסיעה והתחזית באפליקציה.",
+          "sourceLines": [
+            105,
+            105
+          ],
+          "reason": "User-selected reminders; travel and forecast checked separately."
+        },
+        {
+          "path": "faq.items.4.a",
+          "pathSegments": [
+            "faq",
+            "items",
+            4,
+            "a"
+          ],
+          "before": "שלושה גדלים. הקטן נותן את התאריך עם התנאים והטמפרטורה הנוכחיים. הבינוני מוסיף תנאים, שלב הירח וכיוון הרוח. הגדול מציב את האירועים הקרובים שלכם לצד התחזית. פעילות בזמן אמת סופרת לאחור עד האירוע הבא.",
+          "after": "פריסות קטנות ובינוניות מציגות תאריך ומזג אוויר. רשימות בינוניות וגדולות מציגות אירועים עתידיים עם שעה; אירועי יום שלם נמצאים באפליקציה. השתמשו בפעילות בזמן אמת במכשירים נתמכים. עדכונים עשויים לקחת זמן; בדקו באפליקציה לאחר שינוי מועד.",
+          "sourceLines": [
+            232,
+            232
+          ],
+          "reason": "FAQ mirrors supported widget content and update limits."
+        }
+      ]
+    }
+  ],
+  "rootReview": "Bulgarian weather wording clarified to distinguish weather from clock time. Applied exact before/hash gates, preserved all unlisted values.",
+  "applied": true
+}

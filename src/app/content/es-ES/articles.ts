@@ -233,69 +233,164 @@ export const ARTICLES_ES_ES: Readonly<Record<string, LocalisedArticle>> = {
   },
 
   'the-widget-that-shows-what-is-next': {
-    title: 'Un widget que responde a una sola pregunta',
-    short: 'El widget de lo siguiente',
-    description:
-      'Casi todos los widgets de calendario intentan ser un calendario pequeño. Los útiles responden a la única pregunta que usted hace veinte veces al día.',
-    lede: 'Nadie desbloquea el teléfono para navegar por su calendario. Lo desbloquea para saber qué viene ahora y cuánto tiempo queda.',
-    commonBelief: 'Que un buen widget de calendario es una vista de mes en miniatura.',
-    sections: [
-      {
-        heading: 'Las pantallas pequeñas castigan la densidad',
-        body: [
-          'Un mes apretado en un widget es ilegible de un vistazo, que es la única manera en que se lee un widget. Acaba abriendo la aplicación igualmente, y el widget le ha costado espacio a cambio de nada.',
-          'El widget que se gana su sitio muestra lo siguiente, la hora y, si importa, qué está haciendo el cielo cuando llegue.',
-        ],
-      },
-      {
-        heading: 'Por qué el tiempo pertenece ahí',
-        body: [
-          'Los dos datos que quiere antes de salir son cuándo y cómo está fuera. Repartirlos en dos widgets recrea el problema de las dos aplicaciones en una pantalla más pequeña.',
-          'Un vistazo, las dos respuestas, sin desbloquear.',
-        ],
-      },
-    ],
-    claims: {
-      views: 'Vistas de la aplicación, para cuando sí la abre',
+  "updated": "2026-10-21",
+  "title": "Próximos eventos en la pantalla de inicio del iPhone",
+  "short": "Próximos eventos en el widget",
+  "description": "Elige un widget con eventos, comprueba los calendarios seleccionados y diagnostica ausencias. Una lista vacía no demuestra que tu agenda esté libre.",
+  "lede": "Para consultar la próxima cita, elige un widget que incluya eventos. Una tarjeta con fecha y tiempo responde a otra pregunta. Esta guía la publica Arte Soft, desarrollador de Cloud Calendars.",
+  "sections": [
+    {
+      "heading": "Elige primero el diseño con eventos",
+      "body": [
+        "«Calendar Events» es el diseño mediano con lista de eventos. «Calendar Events Large» ofrece más espacio. «Calendar & Weather» es un diseño independiente de fecha y tiempo; su tamaño pequeño no incluye automáticamente la próxima cita. Los nombres pueden aparecer traducidos.",
+        "Mantén pulsada una zona vacía de la pantalla de inicio y abre la galería de widgets desde las opciones de edición. Busca Cloud Calendars y revisa la vista previa antes de añadirlo. Esta galería del iPhone es distinta de las vistas del calendario dentro de la app."
+      ]
     },
-    practical: [
-      'Ponga el widget donde cae el pulgar, no donde queda ordenado.',
-      'Use un tamaño mayor solo si de verdad lee más que el siguiente elemento.',
-      'Si consulta el tiempo justo después del calendario, use un widget que lleve ambos.',
-    ],
-    seeAlso: ['a-countdown-to-your-next-meeting'],
-  },
+    {
+      "heading": "Qué se considera próximo",
+      "body": [
+        "La lista utiliza los calendarios seleccionados y los eventos con hora de inicio futura. Excluye los eventos de todo el día y los que ya han empezado. Por eso un cumpleaños o una reunión en curso pueden aparecer en la app y no en el widget.",
+        "Si hoy solo tienes un viaje marcado como evento de todo el día, una lista vacía no significa que se haya perdido. Abre el día completo y lee la fecha de cada próxima cita: podría corresponder a mañana o más adelante."
+      ]
+    },
+    {
+      "heading": "Compara primero con la app",
+      "body": [
+        "Localiza un evento futuro concreto en Cloud Calendars. Comprueba a qué calendario pertenece, que esté seleccionado y que la app tenga acceso al calendario. Compara título, fecha y hora. Si también falta en la app, investiga primero la cuenta o la sincronización.",
+        "Para una comprobación sencilla, crea una cita de prueba sin invitados en un calendario propio, con un título reconocible y un inicio futuro. No modifiques una invitación real ni elimines cuentas para probar el widget."
+      ]
+    },
+    {
+      "heading": "No presupongas una actualización inmediata",
+      "body": [
+        "Los widgets muestran información guardada y no funcionan continuamente como una app abierta. iOS decide cuándo actualizarlos. Abrir la app y comprobar el evento proporciona una referencia, pero no establece un plazo exacto para que cambie el widget.",
+        "Si la app sigue correcta y el widget no, anota el diseño, el calendario, la hora del evento y las versiones de la app y de iOS. Distingue entre una lista vacía, una cita antigua y una hora equivocada."
+      ]
+    },
+    {
+      "heading": "Comprueba el tiempo por separado",
+      "body": [
+        "El tiempo junto a la fecha no es una previsión para el lugar y la hora de cada evento. Antes de una actividad al aire libre, consulta el lugar y la franja horaria adecuados en la vista del tiempo.",
+        "Usa el widget para orientarte y el calendario completo para eventos de todo el día, detalles y decisiones que requieren ver toda la agenda."
+      ]
+    }
+  ],
+  "claims": {},
+  "practical": [
+    "Elige un diseño con lista de eventos.",
+    "Comprueba una cita futura en un calendario seleccionado.",
+    "Compara fecha y hora con la app.",
+    "Documenta las diferencias persistentes sin borrar datos."
+  ],
+  "faq": [
+    {
+      "q": "¿Por qué falta mi cumpleaños?",
+      "a": "La lista de próximos eventos excluye los de todo el día. Comprueba el calendario completo."
+    },
+    {
+      "q": "¿El widget pequeño muestra la siguiente reunión?",
+      "a": "El diseño pequeño «Calendar & Weather» muestra fecha y tiempo. Para citas, elige una lista de eventos."
+    },
+    {
+      "q": "¿Una lista vacía significa que hoy estoy libre?",
+      "a": "No. Puede omitir eventos de todo el día, reuniones en curso, calendarios no seleccionados o información pendiente de actualizar."
+    }
+  ],
+  "sourcesHeading": "Fuentes e instrucciones de Apple",
+  "sources": [
+    {
+      "label": "Apple: Añadir y editar widgets en el iPhone",
+      "url": "https://support.apple.com/118610"
+    },
+    {
+      "label": "Apple: Mantener actualizado un widget",
+      "url": "https://developer.apple.com/documentation/widgetkit/keeping-a-widget-up-to-date"
+    }
+  ],
+  "seeAlso": [
+    "a-countdown-to-your-next-meeting"
+  ]
+},
 
   'a-countdown-to-your-next-meeting': {
-    title: 'Una cuenta atrás en la pantalla bloqueada',
-    short: 'Cuenta atrás hasta la reunión',
-    description:
-      'Una actividad en vivo convierte «cuándo es» en «cuánto me queda», que era la pregunta de verdad.',
-    lede: 'Entre saber que algo es a las tres y saber que quedan once minutos hay una diferencia práctica enorme, y solo una de las dos cambia lo que hace a continuación.',
-    commonBelief: 'Que basta con un aviso unos minutos antes.',
-    sections: [
-      {
-        heading: 'Una hora no es una duración',
-        body: [
-          'Leer «las tres» le obliga a una resta contra un reloj que además tiene que encontrar. Leer «once minutos» no. Lo segundo es accionable; lo primero es una consulta.',
-          'Importa sobre todo en los veinte minutos previos, que es justo cuando la gente calcula mal.',
-        ],
-      },
-      {
-        heading: 'Por qué vive en la pantalla bloqueada',
-        body: [
-          'La cuenta atrás se actualiza en su sitio, así que basta con mirar. No hay aplicación que abrir ni aviso que descartar, y el dato es correcto cada vez que mira, en vez de haberlo sido una vez cuando saltó.',
-          'Una única alerta cinco minutos antes dice lo mismo una sola vez y después deja de ayudar.',
-        ],
-      },
-    ],
-    claims: {},
-    practical: [
-      'Use la cuenta atrás para la última media hora y las alertas para el día anterior.',
-      'Si suele salir tarde, mire el número en lugar de adelantar la alerta: la alerta se descarta con un dedo y el número no.',
-    ],
-    seeAlso: ['the-widget-that-shows-what-is-next'],
-  },
+  "updated": "2026-10-21",
+  "title": "Una cuenta atrás que complementa los avisos del calendario",
+  "short": "Cuenta atrás para la próxima cita",
+  "description": "Usa la actividad en directo para una cita futura, comprueba los cambios de horario y conserva los avisos independientemente de la cuenta atrás.",
+  "lede": "Una cuenta atrás ayuda a calcular cuánto tiempo queda. Para ser útil, debe mostrar la cita correcta y su hora de inicio actual. Esta guía la publica Arte Soft, desarrollador de Cloud Calendars.",
+  "sections": [
+    {
+      "heading": "Empieza por una cita confirmada",
+      "body": [
+        "Abre el evento en Cloud Calendars y comprueba fecha, hora y calendario seleccionado. La actividad sigue eventos futuros con hora; no mide eventos de todo el día ni el tiempo restante de una reunión que ya comenzó.",
+        "Iníciala con «Live» cuando esté disponible; mientras funciona, el control pasa a «Stop». Si no aparece, comprueba si iPhone permite las actividades en directo de la app. Las etiquetas y la disponibilidad pueden variar."
+      ]
+    },
+    {
+      "heading": "Distingue las dos superficies",
+      "body": [
+        "La actividad puede mostrar la siguiente cita en la pantalla bloqueada. Los iPhone compatibles también disponen de una presentación en la Dynamic Island. La guía de Apple explica cómo ampliarla para ver detalles.",
+        "Un widget de la pantalla de inicio es otra función. Añadirlo no demuestra que la actividad esté iniciada; activar los sonidos de las notificaciones tampoco la pone en marcha."
+      ]
+    },
+    {
+      "heading": "Comprueba la cita, no solo el número",
+      "body": [
+        "La cuenta puede seguir avanzando hacia una hora guardada que ya no es correcta. Si el organizador cambia la reunión, ver un número que disminuye no demuestra que haya llegado la modificación. Mira también el título, la fecha y la información de actualización.",
+        "Después de un cambio importante, abre la app y compara el evento guardado con la actividad. Si no coinciden, utiliza los datos confirmados de la cita mientras investigas la diferencia."
+      ]
+    },
+    {
+      "heading": "Mantén un aviso cuando no estés mirando",
+      "body": [
+        "Una cuenta atrás visual solo ayuda cuando miras la pantalla. Conserva un aviso adecuado para las citas importantes y comprueba por separado el permiso de notificaciones. No sustituyas un recordatorio necesario por la mera presencia de la actividad.",
+        "Añade el tiempo de preparación o desplazamiento que necesites. El número cuenta hasta el inicio del evento; no verifica de forma independiente cuándo debes salir. Comprueba la ubicación y tus necesidades."
+      ]
+    },
+    {
+      "heading": "Investiga una actividad ausente o desactualizada",
+      "body": [
+        "Revisa primero el evento en la app, después si la actividad está iniciada y permitida. Las actualizaciones en segundo plano dependen de iOS; no hay una garantía de sincronización continua ni una agenda futura ilimitada.",
+        "Compara una cita de prueba antes y después de cambiar su hora. Anota el inicio previsto y el mostrado, y si volver a abrir la app cambia el resultado. Mantén intactas las invitaciones reales e incluye las versiones al informar del problema."
+      ]
+    }
+  ],
+  "claims": {},
+  "practical": [
+    "Confirma la cita futura y su calendario.",
+    "Inicia «Live» y revisa el evento mostrado.",
+    "Vuelve a comparar tras un cambio de horario.",
+    "Conserva por separado los avisos que necesites."
+  ],
+  "faq": [
+    {
+      "q": "¿La cuenta atrás está siempre actualizada?",
+      "a": "No. Puede seguir contando hacia una hora guardada anteriormente. Comprueba los cambios importantes en la app."
+    },
+    {
+      "q": "¿Por qué no cuenta un evento de todo el día?",
+      "a": "La actividad selecciona citas futuras con hora."
+    },
+    {
+      "q": "¿Todos los iPhone tienen Dynamic Island?",
+      "a": "No. Es una superficie distinta de la pantalla bloqueada y requiere un modelo compatible."
+    }
+  ],
+  "sourcesHeading": "Fuentes e instrucciones de Apple",
+  "sources": [
+    {
+      "label": "Apple: Funciones y actividades en directo en la pantalla bloqueada",
+      "url": "https://support.apple.com/guide/iphone/access-features-from-the-lock-screen-iphcd5c65ccf/ios"
+    },
+    {
+      "label": "Apple: Actividades en directo en la Dynamic Island",
+      "url": "https://support.apple.com/guide/iphone/view-live-activities-in-the-dynamic-island-iph28f50d10d/ios"
+    }
+  ],
+  "seeAlso": [
+    "the-widget-that-shows-what-is-next"
+  ]
+},
 
   'drag-an-event-to-move-it': {
     title: 'Mover un evento arrastrándolo',

@@ -4,6 +4,8 @@
 
 .weather {
   position: relative;
+  // Contain the decorative glow without widening the mobile document.
+  overflow-x: clip;
 
   /* a warm counterpoint to the blue elsewhere on the page */
   &::before {

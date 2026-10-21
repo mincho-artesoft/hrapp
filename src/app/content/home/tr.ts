@@ -88,21 +88,21 @@ export const HOME_TR: HomeCopy = {
   },
   widgets: {
     eyebrow: '{v} sürümünde yeni',
-    title: ['Gününüz, siz hiçbir şeyin', 'kilidini açmadan önce.'],
-    lead: 'Cloud Calendars yalnızca bir simgenin ardında değil, ana ekranda ve kilit ekranında yaşar. Widget’lar tarihi, tahmini ve sıradakini taşır; bir canlı etkinlik ona doğru geri sayar.',
+    title: ["Takviminiz,","bir bakışta."],
+    lead: "Tarih ve hava durumu widget’larını veya yaklaşan etkinlik listelerini seçin. Ayrı bir canlı etkinlik geri sayım ekler.",
     newIn: 'Şurada yeni:',
     items: [
       {
         title: 'Üç widget boyutu',
-        body: 'Küçük tarih ve sıcaklık için, orta koşullar, ay evresi ve rüzgâr için, büyük günün programı ile tahmini yan yana koymak için.',
+        body: "Küçük ve orta düzenler tarih ve hava durumunu gösterir. Orta ve büyük listeler gelecekteki saatli etkinlikleri gösterir; tüm gün kayıtlarını uygulamada bulabilirsiniz.",
       },
       {
         title: 'Kilit ekranında canlı etkinlik',
-        body: 'Sıradaki etkinliğiniz Dynamic Island’da ve kilit ekranında geri sayar; ne kadar vaktiniz kaldığını bilmek için hiçbir şey açmanız gerekmez.',
+        body: "Canlı etkinliği desteklenen cihazlarda kullanın. Güncellemeler zaman alabilir; değişiklikleri uygulamada kontrol edin.",
       },
       {
-        title: 'Zamanında gelen bildirimler',
-        body: 'Yol süresini gözeten ve vardığınızda havanın ne yaptığını söyleyen hatırlatıcılar.',
+        title: "Seçtiğiniz hatırlatıcılar",
+        body: "Etkinlik uyarılarını ve bildirim ayarlarını seçin. Yol süresini ve hava tahminini uygulamada kontrol edin.",
       },
     ],
   },
@@ -229,7 +229,7 @@ export const HOME_TR: HomeCopy = {
       },
       {
         q: 'Widget’lar ne gösterir?',
-        a: 'Üç boyut. Küçüğü tarihi, güncel durumu ve sıcaklığı verir. Ortancası koşulları, ay evresini ve rüzgâr yönünü ekler. Büyüğü sıradaki birkaç etkinliğinizi tahminin yanına koyar. Bir canlı etkinlik sıradaki etkinliğe geri sayar.',
+        a: "Küçük ve orta düzenler tarih ve hava durumunu gösterir. Orta ve büyük listeler gelecekteki saatli etkinlikleri gösterir; tüm gün kayıtlarını uygulamada bulabilirsiniz. Canlı etkinliği desteklenen cihazlarda kullanın. Güncellemeler zaman alabilir; değişiklikleri uygulamada kontrol edin.",
       },
       {
         q: 'Hangi cihazlar destekleniyor?',

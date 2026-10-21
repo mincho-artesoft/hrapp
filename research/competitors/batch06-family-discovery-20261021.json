@@ -1,0 +1,73 @@
+{
+  "date": "2026-10-21",
+  "method": "Four bounded web searches followed by four first-party page opens. Search engine result order is not fixed Google rank and not a ChatGPT recommendation. No volume measured.",
+  "queries": [
+    "iPhone calendar app weather forecast widget",
+    "shared family calendar app iPhone school pickup",
+    "iPhone calendar app widget not updating",
+    "calendar app iPhone event wrong calendar default"
+  ],
+  "sources": [
+    {
+      "publisher": "Nido Family",
+      "url": "https://nidofamilyapp.com/en/",
+      "textCoverage": "Complete returned page255lines",
+      "summary": "Positions shared family schedules around care requests, acceptance/rescheduling and targeted alerts. Suggests responsibility-confirmation intent beyond simply seeing an event. Publisher assertions, not independent tests.",
+      "candidateQueries": [
+        "family pickup calendar",
+        "confirm who collects child"
+      ],
+      "cloudBoundary": "Calendar sharing and agreed title/notes conventions do not establish automatic responsibility assignment or targeted care-request workflow."
+    },
+    {
+      "publisher": "Kid Pickup",
+      "url": "https://kidpickup.com/",
+      "textCoverage": "Returned first128of386lines, partial",
+      "summary": "Positions pickup planning around one responsible adult, claiming a pickup, and reminders when unclaimed. Retrieved section also mentions family communication and permissions. These are first-party claims only.",
+      "candidateQueries": [
+        "shared pickup responsibility",
+        "calendar invitation versus pickup confirmation"
+      ],
+      "cloudBoundary": "No Cloud claim of automatic claiming, read receipts, chats or driver reassignment."
+    },
+    {
+      "publisher": "Podz",
+      "url": "https://www.podzorganizer.com/sync-your-calendar-with-podz",
+      "textCoverage": "Complete returned46lines",
+      "summary": "Explains calendar imports through device accounts, ICS file/feed, and TeamSnap. Distinguishes snapshot from updating feed and places family communications alongside calendar.",
+      "candidateQueries": [
+        "school calendar file or subscription feed",
+        "school sports calendar updates"
+      ],
+      "cloudBoundary": "Cloud export/sync canonicals already cover file-versus-feed; do not add duplicate generic migration page or promise TeamSnap integration."
+    },
+    {
+      "publisher": "FamCove",
+      "url": "https://www.famcove.com/free-family-calendar",
+      "textCoverage": "Returned first209of334lines, partial",
+      "summary": "Frames shared family calendars around coverage responsibility and imports from school documents. Page describes additional household workflows. No independent feature or comparative truth audit.",
+      "candidateQueries": [
+        "family handoff planning",
+        "school flyer calendar import"
+      ],
+      "cloudBoundary": "No Cloud PDF/OCR-to-event, legal audit log, child-care expense, chores or automatic assignment promises."
+    }
+  ],
+  "decisions": [
+    {
+      "canonical": "/articles/family-pickup-calendar-handoff/",
+      "action": "One distinct worked convention with example, recipient access, exacttime/place, one-off recurrence exception and explicit confirmation. Not a generic bestfamily app comparison."
+    },
+    {
+      "canonical": "/articles/event-saved-to-wrong-calendar/",
+      "action": "Native creation selection precedence and immediate-save existing Calendar choice documented separately from Apple system default."
+    },
+    {
+      "canonical": "/articles/the-widget-that-shows-what-is-next/",
+      "action": "Expand existing widget troubleshooting rather than new thin synonyms."
+    }
+  ],
+  "ranking": null,
+  "searchVolume": null,
+  "chatgptCitationEvidence": null
+}

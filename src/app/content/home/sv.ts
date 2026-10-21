@@ -88,21 +88,21 @@ export const HOME_SV: HomeCopy = {
   },
   widgets: {
     eyebrow: 'Nytt i {v}',
-    title: ['Din dag, innan du', 'låser upp någonting.'],
-    lead: 'Cloud Calendars bor på hemskärmen och låsskärmen, inte bara bakom en appsymbol. Widgetarna bär datumet, prognosen och nästa sak; en liveaktivitet räknar ner till den.',
+    title: ["Din kalender,","med en blick."],
+    lead: "Välj widgetar med datum och väder eller listor över kommande händelser. En separat liveaktivitet lägger till en nedräkning.",
     newIn: 'Nytt i',
     items: [
       {
         title: 'Tre widgetstorlekar',
-        body: 'Liten för datum och temperatur, mellan för förhållanden, månfas och vind, stor för dagens agenda bredvid prognosen.',
+        body: "Små och mellanstora layouter visar datum och väder. Mellanstora och stora listor visar framtida händelser med klockslag; heldagshändelser finns i appen.",
       },
       {
         title: 'Liveaktivitet på låsskärmen',
-        body: 'Din nästa händelse räknar ner i Dynamic Island och på låsskärmen, så du behöver aldrig öppna något för att veta hur lång tid du har.',
+        body: "Använd liveaktivitet på enheter som stöds. Uppdateringar kan ta tid; kontrollera ändringar i appen.",
       },
       {
-        title: 'Aviseringar som kommer i tid',
-        body: 'Påminnelser som tar hänsyn till restid och berättar vad vädret gör när du kommer fram.',
+        title: "Påminnelser du väljer",
+        body: "Välj händelsepåminnelser och aviseringsinställningar. Kontrollera restid och prognos i appen.",
       },
     ],
   },
@@ -229,7 +229,7 @@ export const HOME_SV: HomeCopy = {
       },
       {
         q: 'Vad visar widgetarna?',
-        a: 'Tre storlekar. Den lilla ger datumet med aktuellt väder och temperatur. Den mellanstora lägger till förhållanden, månfas och vindriktning. Den stora sätter dina närmaste händelser bredvid prognosen. En liveaktivitet räknar ner till nästa händelse.',
+        a: "Små och mellanstora layouter visar datum och väder. Mellanstora och stora listor visar framtida händelser med klockslag; heldagshändelser finns i appen. Använd liveaktivitet på enheter som stöds. Uppdateringar kan ta tid; kontrollera ändringar i appen.",
       },
       {
         q: 'Vilka enheter stöds?',

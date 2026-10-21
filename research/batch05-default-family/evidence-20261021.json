@@ -1,0 +1,81 @@
+{
+  "date": "2026-10-21",
+  "status": "Research and drafts only; no native or website source writes, runtime tests, builds or deployment.",
+  "existingReadScope": {
+    "completeArticleBodies": 21,
+    "files": [
+      "src/app/content/en-US/articles-unify.ts (6 articles)",
+      "src/app/content/en-US/articles-planning.ts (9 articles)",
+      "src/app/content/en-US/articles-sharing.ts (6 articles)"
+    ],
+    "method": "Initial combined output truncated; subsequent separate planning/sharing reads and remaining unify sections completed the review. All sections, practical steps and FAQs of these objects read. No other locale reviewed.",
+    "closestCanonicals": {
+      "default": [
+        "work-and-personal-without-two-apps",
+        "what-calendar-sync-actually-does",
+        "when-two-calendars-disagree"
+      ],
+      "family": [
+        "planning-a-week-in-ten-minutes",
+        "a-calendar-that-is-yours-to-share",
+        "keeping-track-of-who-replied",
+        "recurring-events-without-the-mess"
+      ]
+    },
+    "decision": "Two distinct drafts warranted by concrete diagnostics and worked handoff task; retain existing broader canonicals and link rather than duplicating their full scope. Family recommendation is an original planning convention, not a researched claim of safety or automatic assignment."
+  },
+  "nativeReadScope": {
+    "root": "/Users/minchomilev/work/hrapp",
+    "mode": "Code inspection only; no runtime verification.",
+    "sources": [
+      {
+        "path": "Calendar/CalendarKit/NewEventCalendarSelection.swift",
+        "lines": "1–20 (complete file)",
+        "finding": "Writable preferred calendar if supplied; otherwise first selected writable, system-default writable, then first writable. No inferred user selection ordering."
+      },
+      {
+        "path": "Calendar/Sources/CalendarViewModel.swift",
+        "lines": "825–940",
+        "finding": "Builds candidates across EventKit and app-local stores, passes selected/default IDs to resolver; loading uses selected IDs for display."
+      },
+      {
+        "path": "Calendar/AppLocal/AppLocalEventEditorView.swift",
+        "lines": "265–315;355–435;700–735;835–885;1405–1465;1550–1645",
+        "finding": "Creation destination initialization preserves existing record or explicit target before default. Writable picker options include source subtitles. Existing detail Calendar selection calls moveExistingEvent, which immediately persists. Read-only/system-copy special handling and futureEvents recurrence span observed; no universal migration-preservation claim made."
+      }
+    ],
+    "limits": [
+      "Did not inspect every creation entry point or independently verify all device/privacy permission screens.",
+      "Did not execute provider transfers or test recurrence/invitation preservation.",
+      "The draft deliberately distinguishes source inspection from runtime behavior."
+    ]
+  },
+  "officialSources": [
+    {
+      "url": "https://support.apple.com/guide/iphone/use-multiple-calendars-iph3d1110d4/ios",
+      "readScope": "Complete substantive main body lines1157–1231; navigation not treated as article content.",
+      "supports": "Visibility, read-only subscriptions and Apple Calendar move control."
+    },
+    {
+      "url": "https://support.apple.com/en-my/guide/iphone/iphc37be2016/27/ios/27",
+      "readScope": "Complete substantive main body lines1153–1220.",
+      "supports": "Apple Calendar default setting; not a Cloud universal-default claim."
+    },
+    {
+      "url": "https://support.google.com/calendar/answer/78739?co=GENIE.Platform%3DiOS&hl=en",
+      "readScope": "Complete substantive main body lines18–44.",
+      "supports": "Organizer and destination edit-access requirements, future-instance behavior of recurring moves."
+    }
+  ],
+  "nonAdoptedResults": [
+    "Google community replies",
+    "Apple iPod touch legacy instructions",
+    "Unverified competitor feature promises"
+  ],
+  "preIntegrationNotes": [
+    "Default draft includes important immediate-save warning based on existing-detail selection binding.",
+    "Existing old sharing articles still conflate invitation links and subscriptions; drafts avoid repeating that claim.",
+    "The existing all-day article still contains broad availability/timezone claims; not edited in this task.",
+    "Keep visible developer authorship and sources. No promise that invitations, recurrence exceptions or conferencing survive every move."
+  ]
+}

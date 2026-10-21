@@ -1,0 +1,160 @@
+{
+  "the-widget-that-shows-what-is-next": {
+    "updated": "2026-10-21",
+    "title": "Afficher les prochains rendez-vous sur l’écran d’accueil",
+    "short": "Les prochains rendez-vous dans un widget",
+    "description": "Choisissez un widget avec événements et vérifiez les calendriers sélectionnés. Une liste vide ne signifie pas que votre agenda est vide.",
+    "lede": "Pour consulter le prochain rendez-vous, choisissez un widget qui contient une liste. Une vignette de date et de météo répond à une autre question. Ce guide est publié par Arte Soft, le développeur de Cloud Calendars.",
+    "sections": [
+      {
+        "heading": "Choisir d’abord la présentation adaptée",
+        "body": [
+          "« Calendar Events » est la présentation moyenne avec une liste de rendez-vous. « Calendar Events Large » offre davantage de place. « Calendar & Weather » est une présentation distincte pour la date et la météo ; sa petite taille ne promet pas le prochain événement. Les noms peuvent être traduits sur votre appareil.",
+          "Maintenez le doigt sur une zone vide de l’écran d’accueil, puis ouvrez la galerie de widgets dans les options de modification. Recherchez Cloud Calendars et comparez l’aperçu avant l’ajout. Cette galerie de l’iPhone est indépendante des vues de l’agenda dans l’app."
+        ]
+      },
+      {
+        "heading": "Comprendre les événements retenus",
+        "body": [
+          "La liste utilise les calendriers sélectionnés et les rendez-vous horaires dont le début est encore à venir. Les événements sur toute la journée et ceux qui ont déjà commencé en sont exclus. Un anniversaire ou une réunion en cours peut donc être visible dans l’app sans apparaître ici.",
+          "Si votre seule entrée du jour est un voyage sur toute la journée, une liste vide ne prouve pas sa disparition. Ouvrez la journée complète. Lisez aussi la date de chaque rendez-vous : le prochain peut être demain ou plus tard."
+        ]
+      },
+      {
+        "heading": "Comparer avec l’application en premier",
+        "body": [
+          "Retrouvez un rendez-vous futur précis dans Cloud Calendars. Vérifiez son calendrier, sa sélection et l’accès de l’app aux calendriers. Comparez le titre, la date et l’heure. S’il manque également dans l’app, commencez par le compte ou la synchronisation.",
+          "Pour un essai simple, créez un rendez-vous sans invités dans un calendrier personnel, avec un titre identifiable et un début futur. Ne modifiez pas une vraie invitation et ne retirez pas de compte pour tester l’écran d’accueil."
+        ]
+      },
+      {
+        "heading": "Ne pas supposer une mise à jour instantanée",
+        "body": [
+          "Les widgets affichent des informations enregistrées et ne fonctionnent pas en permanence comme une app ouverte. iOS organise leurs mises à jour. Ouvrir l’app donne un point de comparaison, sans garantir un délai précis avant le changement du widget.",
+          "Si l’app reste correcte et le widget incorrect, notez la présentation, le calendrier, l’heure et les versions de l’app et d’iOS. Distinguez une liste vide, un ancien rendez-vous et une heure erronée."
+        ]
+      },
+      {
+        "heading": "Lire la météo comme un résumé distinct",
+        "body": [
+          "La météo près de la date n’est pas une prévision propre au lieu et à l’heure de chaque rendez-vous. Avant une activité dehors, vérifiez le lieu et le créneau souhaités dans la vue météo.",
+          "Gardez le widget pour vous orienter rapidement. Utilisez l’agenda complet pour les événements sur toute la journée, les détails et les décisions qui exigent une vue d’ensemble."
+        ]
+      }
+    ],
+    "claims": {},
+    "practical": [
+      "Choisir une présentation avec liste de rendez-vous.",
+      "Vérifier un événement futur dans un calendrier sélectionné.",
+      "Comparer sa date et son heure avec l’app.",
+      "Noter les écarts persistants sans supprimer de données."
+    ],
+    "faq": [
+      {
+        "q": "Pourquoi mon anniversaire manque-t-il ?",
+        "a": "La liste exclut les événements sur toute la journée. Consultez l’agenda complet."
+      },
+      {
+        "q": "Le petit widget affiche-t-il le prochain rendez-vous ?",
+        "a": "La petite présentation « Calendar & Weather » affiche la date et la météo. Choisissez une liste pour les rendez-vous."
+      },
+      {
+        "q": "Une liste vide signifie-t-elle que je suis libre ?",
+        "a": "Non. Les événements sur toute la journée, les réunions en cours, les calendriers non sélectionnés ou une mise à jour en attente peuvent manquer."
+      }
+    ],
+    "sourcesHeading": "Sources et instructions Apple",
+    "sources": [
+      {
+        "label": "Apple : ajouter et modifier des widgets sur iPhone",
+        "url": "https://support.apple.com/118610"
+      },
+      {
+        "label": "Apple : actualiser un widget",
+        "url": "https://developer.apple.com/documentation/widgetkit/keeping-a-widget-up-to-date"
+      }
+    ],
+    "seeAlso": [
+      "a-countdown-to-your-next-meeting"
+    ]
+  },
+  "a-countdown-to-your-next-meeting": {
+    "updated": "2026-10-21",
+    "title": "Un compte à rebours qui complète les rappels",
+    "short": "Compte à rebours du prochain rendez-vous",
+    "description": "Utilisez l’activité en direct pour un rendez-vous futur, vérifiez les horaires modifiés et conservez les rappels indépendamment du compte à rebours.",
+    "lede": "Un compte à rebours aide à estimer le temps disponible. Encore faut-il que l’activité affiche le bon rendez-vous et son heure de début actuelle. Ce guide est publié par Arte Soft, le développeur de Cloud Calendars.",
+    "sections": [
+      {
+        "heading": "Partir d’un rendez-vous confirmé",
+        "body": [
+          "Ouvrez d’abord le rendez-vous dans Cloud Calendars et vérifiez sa date, son heure et le calendrier sélectionné. L’activité suit les événements horaires à venir, pas les journées entières ni le temps restant dans une réunion commencée.",
+          "Démarrez-la avec « Live » lorsque ce contrôle est disponible ; il devient « Stop » pendant son fonctionnement. Sinon, vérifiez dans les réglages de l’iPhone si les activités en direct sont autorisées pour l’app. Les libellés et la disponibilité peuvent varier."
+        ]
+      },
+      {
+        "heading": "Distinguer les deux affichages",
+        "body": [
+          "L’activité peut présenter le prochain événement sur l’écran verrouillé. Sur les iPhone compatibles, elle dispose aussi d’une présentation dans la Dynamic Island. Apple explique comment y développer une activité pour consulter davantage de détails.",
+          "Un widget de l’écran d’accueil reste une autre présentation. L’ajouter ne prouve pas qu’une activité est démarrée. Activer le son des notifications ne la lance pas non plus."
+        ]
+      },
+      {
+        "heading": "Vérifier le rendez-vous autant que le nombre",
+        "body": [
+          "Le temps peut diminuer à partir d’une ancienne heure de début. Si l’organisateur décale la réunion, un nombre qui bouge ne prouve pas que la modification a été reçue. Consultez aussi le titre, la date et l’information de mise à jour affichée.",
+          "Après une modification importante, rouvrez l’app et comparez le rendez-vous enregistré avec l’activité. En cas d’écart, utilisez les détails confirmés du rendez-vous pendant la recherche de la cause."
+        ]
+      },
+      {
+        "heading": "Garder un rappel lorsque vous ne regardez pas",
+        "body": [
+          "Un compte à rebours visuel n’aide que si vous regardez l’écran. Conservez un rappel adapté pour les rendez-vous importants et vérifiez séparément l’autorisation de notification. La présence de l’activité ne remplace pas une alerte nécessaire.",
+          "Prévoyez également le trajet et la préparation. Le nombre mesure le temps jusqu’au début du rendez-vous ; il ne vérifie pas de manière indépendante votre heure de départ. Contrôlez le lieu et vos besoins."
+        ]
+      },
+      {
+        "heading": "Examiner une activité absente ou ancienne",
+        "body": [
+          "Vérifiez d’abord le rendez-vous dans l’app, puis le démarrage et l’autorisation de l’activité. Les mises à jour en arrière-plan dépendent d’iOS : l’affichage ne garantit ni une synchronisation continue ni une liste illimitée de futurs événements.",
+          "Comparez un rendez-vous d’essai avant et après un changement d’heure. Notez le début attendu, celui affiché et l’effet d’une réouverture de l’app. Préservez les vraies invitations et indiquez les versions de l’app et d’iOS dans votre signalement."
+        ]
+      }
+    ],
+    "claims": {},
+    "practical": [
+      "Confirmer le rendez-vous futur et son calendrier.",
+      "Démarrer « Live » et vérifier l’événement affiché.",
+      "Comparer à nouveau après un changement d’horaire.",
+      "Conserver séparément les rappels nécessaires."
+    ],
+    "faq": [
+      {
+        "q": "Le compte à rebours est-il toujours à jour ?",
+        "a": "Non. Il peut compter vers une heure enregistrée auparavant. Vérifiez les changements importants dans l’app."
+      },
+      {
+        "q": "Pourquoi un événement sur toute la journée manque-t-il ?",
+        "a": "L’activité sélectionne les rendez-vous horaires à venir."
+      },
+      {
+        "q": "Tous les iPhone ont-ils une Dynamic Island ?",
+        "a": "Non. Cet affichage est distinct de l’écran verrouillé et nécessite un modèle compatible."
+      }
+    ],
+    "sourcesHeading": "Sources et instructions Apple",
+    "sources": [
+      {
+        "label": "Apple : fonctions et activités en direct sur l’écran verrouillé",
+        "url": "https://support.apple.com/guide/iphone/access-features-from-the-lock-screen-iphcd5c65ccf/ios"
+      },
+      {
+        "label": "Apple : activités en direct dans la Dynamic Island",
+        "url": "https://support.apple.com/guide/iphone/view-live-activities-in-the-dynamic-island-iph28f50d10d/ios"
+      }
+    ],
+    "seeAlso": [
+      "the-widget-that-shows-what-is-next"
+    ]
+  }
+}

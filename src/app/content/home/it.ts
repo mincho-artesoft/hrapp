@@ -96,21 +96,21 @@ export const HOME_IT: HomeCopy = {
   },
   widgets: {
     eyebrow: 'Novità nella {v}',
-    title: ['La tua giornata, prima', 'di sbloccare qualsiasi cosa.'],
-    lead: 'Cloud Calendars vive nella schermata Home e in quella di blocco, non solo dietro un’icona. I widget portano la data, la previsione e la prossima cosa; un’attività in tempo reale fa il conto alla rovescia.',
+    title: ["Il tuo calendario,","a colpo d’occhio."],
+    lead: "Scegli widget con data e meteo o elenchi dei prossimi eventi. Un’attività in tempo reale separata aggiunge il conto alla rovescia.",
     newIn: 'Novità nella',
     items: [
       {
         title: 'Tre dimensioni di widget',
-        body: 'Piccolo per data e temperatura, medio per condizioni, fase lunare e vento, grande per l’agenda della giornata accanto alla previsione.',
+        body: "I formati piccoli e medi mostrano data e meteo. Gli elenchi medi e grandi mostrano appuntamenti futuri con orario; trovi gli eventi di tutto il giorno nell’app.",
       },
       {
         title: 'Attività in tempo reale sulla schermata di blocco',
-        body: 'Il tuo prossimo evento scorre alla rovescia nella Dynamic Island e sulla schermata di blocco, così non devi aprire niente per sapere quanto tempo ti resta.',
+        body: "Usa l’attività in tempo reale sui dispositivi compatibili. Gli aggiornamenti possono richiedere tempo; controlla le modifiche nell’app.",
       },
       {
-        title: 'Notifiche che arrivano in tempo',
-        body: 'Promemoria che tengono conto del tempo di spostamento e ti dicono che tempo farà quando arrivi.',
+        title: "Promemoria a tua scelta",
+        body: "Scegli gli avvisi degli eventi e le impostazioni delle notifiche. Controlla viaggio e previsioni nell’app.",
       },
     ],
   },
@@ -238,7 +238,7 @@ export const HOME_IT: HomeCopy = {
       },
       {
         q: 'Cosa mostrano i widget?',
-        a: 'Tre dimensioni. Il piccolo dà la data con la condizione e la temperatura attuali. Il medio aggiunge condizioni, fase lunare e direzione del vento. Il grande mette i tuoi prossimi eventi accanto alla previsione. Un’attività in tempo reale conta alla rovescia fino al prossimo.',
+        a: "I formati piccoli e medi mostrano data e meteo. Gli elenchi medi e grandi mostrano appuntamenti futuri con orario; trovi gli eventi di tutto il giorno nell’app. Usa l’attività in tempo reale sui dispositivi compatibili. Gli aggiornamenti possono richiedere tempo; controlla le modifiche nell’app.",
       },
       {
         q: 'Quali dispositivi sono supportati?',

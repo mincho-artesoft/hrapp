@@ -97,21 +97,21 @@ export const HOME_FR_FR: HomeCopy = {
   },
   widgets: {
     eyebrow: 'Nouveau en {v}',
-    title: ['Votre journée, avant', 'tout déverrouillage.'],
-    lead: 'Cloud Calendars vit sur l’écran d’accueil et l’écran verrouillé, pas seulement derrière une icône. Les widgets portent la date, la prévision et la suite ; une activité en direct fait le décompte.',
+    title: ["Votre agenda,","en un coup d’œil."],
+    lead: "Choisissez des widgets de date et météo ou des listes de prochains rendez-vous. Une activité en direct distincte ajoute un compte à rebours.",
     newIn: 'Nouveau en',
     items: [
       {
         title: 'Trois tailles de widget',
-        body: 'Petit pour la date et la température, moyen pour les conditions, la phase lunaire et le vent, grand pour l’agenda de la journée à côté de la prévision.',
+        body: "Les petits et moyens formats affichent date et météo. Les listes moyennes et grandes montrent les rendez-vous horaires à venir ; consultez les journées entières dans l’app.",
       },
       {
         title: 'Activité en direct sur l’écran verrouillé',
-        body: 'Votre prochain événement décompte dans la Dynamic Island et sur l’écran verrouillé, de sorte que vous n’avez jamais à ouvrir quoi que ce soit pour savoir combien de temps il reste.',
+        body: "Utilisez l’activité en direct sur les appareils compatibles. Les mises à jour peuvent prendre du temps ; vérifiez les changements dans l’app.",
       },
       {
-        title: 'Des notifications qui arrivent à temps',
-        body: 'Des rappels qui tiennent compte du temps de trajet et vous disent quel temps il fera à l’arrivée.',
+        title: "Des rappels à votre choix",
+        body: "Choisissez les rappels et les réglages de notification. Vérifiez le trajet et les prévisions dans l’app.",
       },
     ],
   },
@@ -238,7 +238,7 @@ export const HOME_FR_FR: HomeCopy = {
       },
       {
         q: 'Que montrent les widgets ?',
-        a: 'Trois tailles. Le petit donne la date avec les conditions et la température du moment. Le moyen ajoute les conditions, la phase lunaire et la direction du vent. Le grand place vos prochains événements à côté de la prévision. Une activité en direct décompte jusqu’au prochain.',
+        a: "Les petits et moyens formats affichent date et météo. Les listes moyennes et grandes montrent les rendez-vous horaires à venir ; consultez les journées entières dans l’app. Utilisez l’activité en direct sur les appareils compatibles. Les mises à jour peuvent prendre du temps ; vérifiez les changements dans l’app.",
       },
       {
         q: 'Quels appareils sont pris en charge ?',

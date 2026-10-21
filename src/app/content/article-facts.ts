@@ -18,6 +18,8 @@ import { ArticleFacts } from './types';
  * long tail around those twelve.
  */
 export const ARTICLE_FACTS: Readonly<Record<string, ArticleFacts>> = {
+  'event-saved-to-wrong-calendar': { slug: 'event-saved-to-wrong-calendar', family: 'planning', intent: 'core', claims: [], updated: '2026-10-21' },
+  'family-pickup-calendar-handoff': { slug: 'family-pickup-calendar-handoff', family: 'planning', intent: 'core', claims: [], updated: '2026-10-21' },
   'calendar-notifications-missing-silent-or-duplicated': { slug: 'calendar-notifications-missing-silent-or-duplicated', family: 'planning', intent: 'core', claims: [], updated: '2026-10-21' },
   'find-old-calendar-events-by-account-date-and-title': { slug: 'find-old-calendar-events-by-account-date-and-title', family: 'planning', intent: 'core', claims: [], updated: '2026-10-21' },
   'calendar-export-ics-pdf-and-backup': { slug: 'calendar-export-ics-pdf-and-backup', family: 'sharing', intent: 'unify', claims: [], updated: '2026-10-21' },

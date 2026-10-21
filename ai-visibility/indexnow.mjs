@@ -32,17 +32,25 @@ if (fs.readFileSync(path.join(publicDir, keyFile), 'utf8').trim() !== key) {
   process.exit(1);
 }
 
-const sitemapUrl = new URL('sitemap.xml', base);
-const sitemap = await fetch(sitemapUrl, {
-  headers: { 'user-agent': 'Cloud-Calendars-IndexNow/1.0' },
-  signal: AbortSignal.timeout(20_000),
-});
-if (sitemap.status !== 200) {
-  console.error(`cannot submit IndexNow: ${sitemapUrl} returned ${sitemap.status}`);
-  process.exit(1);
+// Deployment passes the exact uploaded build, avoiding a stale CDN sitemap
+// while invalidation is still propagating. Standalone usage reads the live site.
+const localSitemap = process.argv.find(arg => arg.startsWith('--sitemap-file='))?.slice('--sitemap-file='.length);
+let xml;
+if (localSitemap) {
+  xml = fs.readFileSync(localSitemap, 'utf8');
+} else {
+  const sitemapUrl = new URL('sitemap.xml', base);
+  const sitemap = await fetch(sitemapUrl, {
+    headers: { 'user-agent': 'Cloud-Calendars-IndexNow/1.0' },
+    signal: AbortSignal.timeout(20_000),
+  });
+  if (sitemap.status !== 200) {
+    console.error(`cannot submit IndexNow: ${sitemapUrl} returned ${sitemap.status}`);
+    process.exit(1);
+  }
+  xml = await sitemap.text();
 }
 
-const xml = await sitemap.text();
 const urlList = [...xml.matchAll(/<loc\b[^>]*>([\s\S]*?)<\/loc>/gi)].map(match =>
   match[1].trim().replace(/&amp;/g, '&'),
 );

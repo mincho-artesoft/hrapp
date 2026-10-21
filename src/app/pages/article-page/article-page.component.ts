@@ -1,5 +1,5 @@
 import { DOCUMENT } from '@angular/common';
-import { ChangeDetectionStrategy, Component, inject } from '@angular/core';
+import { ChangeDetectionStrategy, Component, OnDestroy, inject } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 
 import { MoreAppsComponent } from '../../components/more-apps/more-apps.component';
@@ -33,7 +33,8 @@ interface SeeAlsoLink {
   templateUrl: './article-page.component.html',
   styleUrl: './article-page.component.scss',
 })
-export class ArticlePageComponent {
+export class ArticlePageComponent implements OnDestroy {
+  private readonly doc = inject(DOCUMENT);
   readonly locale: Locale;
   readonly chrome: ArticleChrome;
   readonly article: LocalisedArticle | undefined;
@@ -161,4 +162,10 @@ export class ArticlePageComponent {
     });
     doc.head.appendChild(faqScript);
   }
+
+  ngOnDestroy(): void {
+    this.doc.getElementById('article-jsonld')?.remove();
+    this.doc.getElementById('article-faq-jsonld')?.remove();
+  }
+
 }

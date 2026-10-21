@@ -96,21 +96,21 @@ export const HOME_MS: HomeCopy = {
   },
   widgets: {
     eyebrow: 'Baharu dalam {v}',
-    title: ['Hari anda, sebelum', 'anda buka kunci apa-apa.'],
-    lead: 'Cloud Calendars tinggal pada skrin utama dan skrin kunci, bukan sekadar di sebalik ikon. Widget membawa tarikh, ramalan dan yang seterusnya; satu aktiviti langsung mengira detik ke arahnya.',
+    title: ["Kalendar anda,","sepintas lalu."],
+    lead: "Pilih widget tarikh dan cuaca atau senarai acara akan datang. Aktiviti langsung yang berasingan menambah kira detik.",
     newIn: 'Baharu dalam',
     items: [
       {
         title: 'Tiga saiz widget',
-        body: 'Kecil untuk tarikh dan suhu, sederhana untuk keadaan, fasa bulan dan angin, besar untuk agenda hari itu di sebelah ramalan.',
+        body: "Susun atur kecil dan sederhana memaparkan tarikh dan cuaca. Senarai sederhana dan besar memaparkan acara akan datang dengan waktu mula; lihat acara sepanjang hari dalam aplikasi.",
       },
       {
         title: 'Aktiviti langsung pada skrin kunci',
-        body: 'Acara anda yang seterusnya mengira detik dalam Dynamic Island dan pada skrin kunci, jadi anda tidak perlu membuka apa-apa untuk tahu berapa lama lagi.',
+        body: "Gunakan aktiviti langsung pada peranti yang disokong. Kemas kini mungkin mengambil masa; semak perubahan dalam aplikasi.",
       },
       {
-        title: 'Pemberitahuan yang tiba tepat pada masanya',
-        body: 'Peringatan yang mengambil kira masa perjalanan dan memberitahu apa yang cuaca lakukan apabila anda sampai.',
+        title: "Peringatan pilihan anda",
+        body: "Pilih peringatan acara dan tetapan pemberitahuan. Semak masa perjalanan dan ramalan dalam aplikasi.",
       },
     ],
   },
@@ -237,7 +237,7 @@ export const HOME_MS: HomeCopy = {
       },
       {
         q: 'Apa yang dipaparkan widget?',
-        a: 'Tiga saiz. Yang kecil memberi tarikh dengan keadaan dan suhu semasa. Yang sederhana menambah keadaan, fasa bulan dan arah angin. Yang besar meletakkan beberapa acara berikutnya di sebelah ramalan. Satu aktiviti langsung mengira detik ke acara seterusnya.',
+        a: "Susun atur kecil dan sederhana memaparkan tarikh dan cuaca. Senarai sederhana dan besar memaparkan acara akan datang dengan waktu mula; lihat acara sepanjang hari dalam aplikasi. Gunakan aktiviti langsung pada peranti yang disokong. Kemas kini mungkin mengambil masa; semak perubahan dalam aplikasi.",
       },
       {
         q: 'Peranti apa yang disokong?',

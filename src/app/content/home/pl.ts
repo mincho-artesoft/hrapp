@@ -92,21 +92,21 @@ export const HOME_PL: HomeCopy = {
   },
   widgets: {
     eyebrow: 'Nowość w {v}',
-    title: ['Twój dzień, zanim', 'cokolwiek odblokujesz.'],
-    lead: 'Cloud Calendars mieszka na ekranie początkowym i na ekranie blokady, nie tylko za ikoną aplikacji. Widżety niosą datę, prognozę i to, co następne; aktywność na żywo odlicza do tego.',
+    title: ["Twój kalendarz,","na pierwszy rzut oka."],
+    lead: "Wybierz widżety z datą i pogodą lub listy nadchodzących wydarzeń. Osobna aktywność na żywo dodaje odliczanie.",
     newIn: 'Nowość w',
     items: [
       {
         title: 'Trzy rozmiary widżetu',
-        body: 'Mały na datę i temperaturę, średni na warunki, fazę księżyca i wiatr, duży na plan dnia obok prognozy.',
+        body: "Małe i średnie układy pokazują datę i pogodę. Średnie i duże listy pokazują przyszłe wydarzenia z godziną; wpisy całodniowe znajdziesz w aplikacji.",
       },
       {
         title: 'Aktywność na żywo na ekranie blokady',
-        body: 'Twoje najbliższe wydarzenie odlicza w Dynamic Island i na ekranie blokady, więc nigdy nie musisz niczego otwierać, by wiedzieć, ile masz czasu.',
+        body: "Korzystaj z aktywności na żywo na obsługiwanych urządzeniach. Aktualizacje mogą wymagać czasu; sprawdź zmiany w aplikacji.",
       },
       {
-        title: 'Powiadomienia, które przychodzą na czas',
-        body: 'Przypomnienia, które uwzględniają czas dojazdu i mówią, co robi pogoda, gdy dotrzesz na miejsce.',
+        title: "Przypomnienia według Twoich potrzeb",
+        body: "Wybierz alerty wydarzeń i ustawienia powiadomień. Sprawdź czas dojazdu i prognozę w aplikacji.",
       },
     ],
   },
@@ -233,7 +233,7 @@ export const HOME_PL: HomeCopy = {
       },
       {
         q: 'Co pokazują widżety?',
-        a: 'Trzy rozmiary. Mały podaje datę z bieżącymi warunkami i temperaturą. Średni dokłada warunki, fazę księżyca i kierunek wiatru. Duży stawia najbliższe wydarzenia obok prognozy. Aktywność na żywo odlicza do najbliższego wydarzenia.',
+        a: "Małe i średnie układy pokazują datę i pogodę. Średnie i duże listy pokazują przyszłe wydarzenia z godziną; wpisy całodniowe znajdziesz w aplikacji. Korzystaj z aktywności na żywo na obsługiwanych urządzeniach. Aktualizacje mogą wymagać czasu; sprawdź zmiany w aplikacji.",
       },
       {
         q: 'Jakie urządzenia są obsługiwane?',

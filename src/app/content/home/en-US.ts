@@ -101,21 +101,21 @@ export const HOME_EN_US: HomeCopy = {
 
   widgets: {
     eyebrow: 'New in {v}',
-    title: ['Your day, before', 'you unlock anything.'],
-    lead: 'Cloud Calendars lives on the Home Screen and the Lock Screen, not just inside an app icon. Widgets carry the date, the forecast and what’s next; a Live Activity counts down to it.',
+    title: ["Your calendar,","at a glance."],
+    lead: "Choose date-and-weather widgets or upcoming event lists. A separate Live Activity adds a countdown.",
     newIn: 'New in',
     items: [
       {
         title: 'Three widget sizes',
-        body: 'Small for the date and temperature, medium for conditions, moon phase and wind, large for the day’s agenda alongside the forecast.',
+        body: "Small and medium layouts show date and weather. Medium and large event lists show future timed appointments; find all-day entries in the app.",
       },
       {
         title: 'Live Activity on the Lock Screen',
-        body: 'Your next event counts down in the Dynamic Island and on the Lock Screen, so you never have to open anything to know how long you have.',
+        body: "Use Live Activity on supported devices. Updates may take time; check the app after a schedule change.",
       },
       {
-        title: 'Notifications that arrive in time',
-        body: 'Event reminders that respect travel time and tell you what the weather is doing when you get there.',
+        title: "Reminders you choose",
+        body: "Choose event alerts and notification settings. Check travel time and the forecast in the app.",
       },
     ],
   },
@@ -242,7 +242,7 @@ export const HOME_EN_US: HomeCopy = {
       },
       {
         q: 'What do the widgets show?',
-        a: 'Three sizes. Small gives the date with the current condition and temperature. Medium adds conditions, moon phase and wind direction. Large puts your next few events beside the forecast. A Live Activity counts down to your next event.',
+        a: "Small and medium layouts show date and weather. Medium and large event lists show future timed appointments; find all-day entries in the app. Use Live Activity on supported devices. Updates may take time; check the app after a schedule change.",
       },
       {
         q: 'Which devices are supported?',

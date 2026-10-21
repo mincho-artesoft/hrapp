@@ -88,21 +88,21 @@ export const HOME_HU: HomeCopy = {
   },
   widgets: {
     eyebrow: 'Újdonság a {v} verzióban',
-    title: ['A napja, mielőtt', 'bármit feloldana.'],
-    lead: 'A Cloud Calendars a kezdő- és a zárolási képernyőn él, nem csupán egy ikon mögött. A modulok hozzák a dátumot, az előrejelzést és a következőt; egy élő tevékenység visszaszámol hozzá.',
+    title: ["Naptára,","egy pillantással."],
+    lead: "Válasszon dátumot és időjárást mutató modulokat vagy közelgő eseménylistákat. A külön élő tevékenység visszaszámlálást ad hozzá.",
     newIn: 'Újdonság a',
     items: [
       {
         title: 'Három modulméret',
-        body: 'Kicsi a dátumhoz és a hőmérséklethez, közepes a körülményekhez, a holdfázishoz és a szélhez, nagy a nap programjához az előrejelzés mellett.',
+        body: "A kis és közepes elrendezés dátumot és időjárást mutat. A közepes és nagy listák jövőbeli, időponthoz kötött eseményeket mutatnak; az egész napos bejegyzéseket az appban találja.",
       },
       {
         title: 'Élő tevékenység a zárolási képernyőn',
-        body: 'A következő eseménye visszaszámol a Dynamic Islanden és a zárolási képernyőn, így soha nem kell megnyitnia semmit ahhoz, hogy tudja, mennyi ideje van.',
+        body: "Használja az élő tevékenységet támogatott eszközökön. A frissítés időbe telhet; ellenőrizze a változásokat az appban.",
       },
       {
-        title: 'Értesítések, amelyek időben érkeznek',
-        body: 'Emlékeztetők, amelyek számolnak az utazási idővel, és megmondják, mit csinál az időjárás, mire odaér.',
+        title: "Emlékeztetők az Ön igényei szerint",
+        body: "Válasszon eseményjelzéseket és értesítési beállításokat. Ellenőrizze az utazási időt és az előrejelzést az appban.",
       },
     ],
   },
@@ -229,7 +229,7 @@ export const HOME_HU: HomeCopy = {
       },
       {
         q: 'Mit mutatnak a modulok?',
-        a: 'Három méret. A kicsi a dátumot adja az aktuális körülményekkel és hőmérséklettel. A közepes hozzáteszi a körülményeket, a holdfázist és a szélirányt. A nagy a következő eseményeit teszi az előrejelzés mellé. Egy élő tevékenység visszaszámol a következő eseményig.',
+        a: "A kis és közepes elrendezés dátumot és időjárást mutat. A közepes és nagy listák jövőbeli, időponthoz kötött eseményeket mutatnak; az egész napos bejegyzéseket az appban találja. Használja az élő tevékenységet támogatott eszközökön. A frissítés időbe telhet; ellenőrizze a változásokat az appban.",
       },
       {
         q: 'Mely eszközök támogatottak?',

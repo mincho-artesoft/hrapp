@@ -258,7 +258,7 @@ if [[ "$INVALIDATE_ONLY" != "1" ]]; then
   if [[ "$DRY_RUN" == "1" ]]; then
     printf '\033[90m  would run: node ai-visibility/indexnow.mjs https://%s\033[0m\n' "$SITE_DOMAIN"
   else
-    "$NODE_BIN" "$ROOT_DIR/ai-visibility/indexnow.mjs" "https://$SITE_DOMAIN"
+    "$NODE_BIN" "$ROOT_DIR/ai-visibility/indexnow.mjs" "https://$SITE_DOMAIN" "--sitemap-file=$DIST_DIR/sitemap.xml"
   fi
 fi
 

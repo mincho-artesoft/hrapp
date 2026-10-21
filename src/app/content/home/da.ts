@@ -88,21 +88,21 @@ export const HOME_DA: HomeCopy = {
   },
   widgets: {
     eyebrow: 'Nyt i {v}',
-    title: ['Din dag, før du', 'låser noget som helst op.'],
-    lead: 'Cloud Calendars bor på hjemmeskærmen og låseskærmen, ikke kun bag et appsymbol. Widgets bærer datoen, udsigten og det næste; en liveaktivitet tæller ned til det.',
+    title: ["Din kalender,","med et blik."],
+    lead: "Vælg widgets med dato og vejr eller lister over kommende begivenheder. En separat liveaktivitet tilføjer en nedtælling.",
     newIn: 'Nyt i',
     items: [
       {
         title: 'Tre widgetstørrelser',
-        body: 'Lille til dato og temperatur, mellem til forhold, månefase og vind, stor til dagens dagsorden ved siden af udsigten.',
+        body: "Små og mellemstore layout viser dato og vejr. Mellemstore og store lister viser fremtidige aftaler med klokkeslæt; heldagsbegivenheder findes i appen.",
       },
       {
         title: 'Liveaktivitet på låseskærmen',
-        body: 'Din næste begivenhed tæller ned i Dynamic Island og på låseskærmen, så du aldrig behøver åbne noget for at vide, hvor lang tid du har.',
+        body: "Brug liveaktivitet på understøttede enheder. Opdateringer kan tage tid; kontrollér ændringer i appen.",
       },
       {
-        title: 'Notifikationer, der når frem i tide',
-        body: 'Påmindelser, der tager hensyn til rejsetid og fortæller, hvad vejret gør, når du ankommer.',
+        title: "Påmindelser efter dit valg",
+        body: "Vælg begivenhedspåmindelser og notifikationsindstillinger. Tjek rejsetid og vejrudsigt i appen.",
       },
     ],
   },
@@ -229,7 +229,7 @@ export const HOME_DA: HomeCopy = {
       },
       {
         q: 'Hvad viser widgets?',
-        a: 'Tre størrelser. Den lille giver datoen med de aktuelle forhold og temperaturen. Den mellemste tilføjer forhold, månefase og vindretning. Den store sætter dine næste begivenheder ved siden af udsigten. En liveaktivitet tæller ned til din næste begivenhed.',
+        a: "Små og mellemstore layout viser dato og vejr. Mellemstore og store lister viser fremtidige aftaler med klokkeslæt; heldagsbegivenheder findes i appen. Brug liveaktivitet på understøttede enheder. Opdateringer kan tage tid; kontrollér ændringer i appen.",
       },
       {
         q: 'Hvilke enheder understøttes?',

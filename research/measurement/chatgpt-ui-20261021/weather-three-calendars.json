@@ -1,0 +1,42 @@
+{
+  "checkedAt": "2026-10-21T18:11:38.035Z",
+  "surface": "ChatGPT web, logged-in user account",
+  "uiModeObserved": "Instant, 1 of 5 Power; exact backend model not exposed",
+  "prompt": "Which iPhone or iPad calendar apps let me view iCloud, Google and Outlook calendars together and see weather while planning? Compare suitable options, distinguish built-in features from integrations, and cite current official sources.",
+  "responseComplete": true,
+  "brandMentioned": false,
+  "namedRecommendationSections": [
+    "Fantastical",
+    "Calendars by Readdle",
+    "Calendar 366",
+    "Apple Calendar"
+  ],
+  "limits": [
+    "One account, one prompt and one response; personalization/tools/custom instructions not controlled.",
+    "UI surfaced plugin recommendation; no plugin installed or account linked.",
+    "Not a representative ChatGPT ranking, search-volume measure or proof of factual capability.",
+    "Captured direct answer anchors, not every source hidden inside citation popovers.",
+    "Prompt did not name Cloud Calendars."
+  ],
+  "response": {
+    "links": [
+      {
+        "text": "Official feature and pricing comparison",
+        "url": "https://flexibits.com/pricing?product=fantastical&utm_source=chatgpt.com"
+      },
+      {
+        "text": "Official weather setup guide",
+        "url": "https://support.readdle.com/calendars/calendars-premium/weather-updates?utm_source=chatgpt.com"
+      },
+      {
+        "text": "Official integration and weather documentation",
+        "url": "https://calendar366.com/help/index.html?utm_source=chatgpt.com"
+      },
+      {
+        "text": "Official Apple calendar account setup",
+        "url": "https://support.apple.com/en-my/guide/iphone/iphc37be2016/27/ios/27?utm_source=chatgpt.com"
+      }
+    ],
+    "text": "ChatGPT said:\nBest iPhone and iPad calendar apps for iCloud, Google, Outlook and weather\n\nFour apps stand out: Fantastical, Calendars by Readdle, Calendar 366, and Apple's built-in Apple Calendar.\n\nThe important distinction is whether the app displays weather inside your calendar or merely lets you check weather in a separate app or through a workaround.\n\nAt-a-glance comparison\n\nApp\n\n\t\n\niCloud + Google + Outlook\n\n\t\n\nWeather while planning\n\n\t\n\nHow it works\n\n\n\n\nFantastical\n\n\t\n\nYes\n\n\t\n\nBuilt-in 3-day forecast; extended 10-day premium forecast\n\n\t\n\nDirect calendar accounts and integrated weather\n\n\n\n\nCalendars by Readdle\n\n\t\n\nYes\n\n\t\n\nBuilt-in weather in multiple calendar views\n\n\t\n\nDirect calendar sync and in-app weather settings\n\n\n\n\nCalendar 366\n\n\t\n\nYes\n\n\t\n\nBuilt-in forecast powered by Apple Weather\n\n\t\n\nDirect accounts or Apple system calendars\n\n\n\n\nApple Calendar\n\n\t\n\nYes*\n\n\t\n\nSeparate Weather app or third-party calendar subscriptions\n\n\t\n\nNative account sync; weather requires a workaround\n\n*Apple Calendar officially supports iCloud, Google and Microsoft Exchange. Outlook.com compatibility may depend on how the Microsoft account is configured. Weather availability and premium entitlements vary by app.\n\nThese distinctions are supported by the developers' current documentation and Apple's account-setup guidance. \nApp Store\n+4\n\nDetailed recommendations\n1. Fantastical\n\nBest for advanced scheduling and weather-aware planning\n\nCombines iCloud, Google, Exchange and Microsoft 365 calendars. AccuWeather forecasts appear within the calendar, with event-location weather details, RealFeel and minute-by-minute precipitation features in Premium.\n\nFree: 3-day forecast. Premium: 10-day forecast and advanced weather details. \nFlexibits\n+1\n\nTrade-off: Its most useful scheduling and weather features require a subscription.\n\nOfficial feature and pricing comparison\n\n2. Calendars by Readdle\n\nBest for straightforward all-in-one planning\n\nReaddle explicitly supports Google, Outlook and iCloud in a unified schedule. Weather is built into its List, Day, Week and Month views, and can be enabled under Settings → Weather Options.\n\nWeather is documented under Calendars Premium; verify the current subscription entitlement in the app. \nCalendars Knowledge Base\n+1\n\nTrade-off: Less emphasis on advanced weather features such as minute-by-minute precipitation.\n\nOfficial weather setup guide\n\n3. Calendar 366\n\nBest for Apple-centric users wanting a purchase option\n\nSupports direct iCloud, Google, Outlook and Microsoft 365 accounts, as well as calendars already configured in iOS. Weather is displayed in calendar views using Apple Weather, with current-location or custom-location options.\n\nFree basic version, a 7-day premium trial, and subscription or one-time purchase options. \nDocumentation\n+1\n\nTrade-off: Direct iCloud account setup requires an Apple app-specific password; using system calendars is an alternative.\n\nOfficial integration and weather documentation\n\n4. Apple Calendar\n\nBest free option if weather can be separate\n\nApple's built-in app can display iCloud, Google and Exchange events together. But it doesn't provide the same built-in forecast overlay as the three apps above.\n\nFor weather, use Apple's Weather app separately or subscribe to a third-party weather calendar feed, which adds forecast entries as events rather than a native forecast display. \nApple Support (MY)\n+2\n\nTrade-off: A weather feed is an integration workaround, not a native weather feature.\n\nOfficial Apple calendar account setup\n\nBuilt-in weather versus integrations\n\nCapability\n\n\t\n\nBuilt-in weather\n\n\t\n\nWeather subscription/feed\n\n\t\n\nSeparate weather app\n\n\n\n\nForecast visible alongside events\n\n\t\n\nYes\n\n\t\n\nAs calendar entries\n\n\t\n\nNo\n\n\n\n\nWeather icons or temperatures in calendar views\n\n\t\n\nYes\n\n\t\n\nDepends on feed\n\n\t\n\nNo\n\n\n\n\nAutomatic forecast updates\n\n\t\n\nApp-managed\n\n\t\n\nFeed-dependent\n\n\t\n\nApp-managed\n\n\n\n\nRequires third-party feed setup\n\n\t\n\nNo\n\n\t\n\nYes\n\n\t\n\nNo\n\n\n\n\nBest for\n\n\t\n\nPlanning in one screen\n\n\t\n\nBasic forecast reminders\n\n\t\n\nDetailed standalone forecasts\n\nOne important difference: a calendar account integration is not a weather integration. An app may sync three calendar providers perfectly but still lack weather forecasting. Conversely, weather powered by AccuWeather or Apple Weather can be built into a calendar app without you needing to install or configure a separate weather calendar.\n\nWhich one should you choose?\n\nChoose Fantastical if weather is central to planning outdoor events, travel or meetings. Its event-location forecasts and advanced precipitation features make it the strongest weather-focused option.\n\nChoose Calendars by Readdle if you mainly want one clean calendar showing work, family, tasks and weather together.\n\nChoose Calendar 366 if you prefer Apple Weather integration and want the option of a one-time purchase rather than an ongoing subscription.\n\nStay with Apple Calendar if avoiding additional software and subscriptions matters more than having weather directly in the calendar.\n\nMy first two to try would be Fantastical and Calendar 366. Both support the three calendar ecosystems, and their weather features are well documented by their developers.\n\nOne setup tip: when connecting your accounts directly inside a third-party app, check whether it's also importing the same accounts from iOS. Otherwise, events may appear twice. Fantastical explicitly documents how to avoid this. \nFAQ\n\nYou can also connect Google Calendar directly to ChatGPT to review your schedule and plan around commitments in conversation. That is a separate integration, not a replacement for the calendar apps above."
+  }
+}

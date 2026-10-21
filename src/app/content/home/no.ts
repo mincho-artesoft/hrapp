@@ -92,21 +92,21 @@ export const HOME_NO: HomeCopy = {
   },
   widgets: {
     eyebrow: 'Nytt i {v}',
-    title: ['Dagen din, før du', 'låser opp noe som helst.'],
-    lead: 'Cloud Calendars bor på hjemskjermen og låseskjermen, ikke bare bak et appsymbol. Widgetene bærer datoen, værmeldingen og det neste; en sanntidsaktivitet teller ned til det.',
+    title: ["Kalenderen din,","med et blikk."],
+    lead: "Velg widgeter med dato og vær eller lister over kommende hendelser. En egen sanntidsaktivitet legger til en nedtelling.",
     newIn: 'Nytt i',
     items: [
       {
         title: 'Tre widgetstørrelser',
-        body: 'Liten for dato og temperatur, middels for forhold, månefase og vind, stor for dagens agenda ved siden av værmeldingen.',
+        body: "Små og mellomstore oppsett viser dato og vær. Mellomstore og store lister viser fremtidige avtaler med klokkeslett; heldagshendelser finner du i appen.",
       },
       {
         title: 'Sanntidsaktivitet på låseskjermen',
-        body: 'Neste hendelse teller ned i Dynamic Island og på låseskjermen, så du aldri trenger å åpne noe for å vite hvor lang tid du har.',
+        body: "Bruk sanntidsaktivitet på støttede enheter. Oppdateringer kan ta tid; kontroller endringer i appen.",
       },
       {
-        title: 'Varsler som kommer i tide',
-        body: 'Påminnelser som tar hensyn til reisetid og forteller hva været gjør når du kommer fram.',
+        title: "Påminnelser du velger",
+        body: "Velg hendelsesvarsler og varslingsinnstillinger. Sjekk reisetid og værmelding i appen.",
       },
     ],
   },
@@ -233,7 +233,7 @@ export const HOME_NO: HomeCopy = {
       },
       {
         q: 'Hva viser widgetene?',
-        a: 'Tre størrelser. Den lille gir datoen med gjeldende forhold og temperatur. Den mellomste legger til forhold, månefase og vindretning. Den store setter de nærmeste hendelsene dine ved siden av værmeldingen. En sanntidsaktivitet teller ned til neste hendelse.',
+        a: "Små og mellomstore oppsett viser dato og vær. Mellomstore og store lister viser fremtidige avtaler med klokkeslett; heldagshendelser finner du i appen. Bruk sanntidsaktivitet på støttede enheter. Oppdateringer kan ta tid; kontroller endringer i appen.",
       },
       {
         q: 'Hvilke enheter støttes?',

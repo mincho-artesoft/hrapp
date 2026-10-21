@@ -1,0 +1,80 @@
+{
+  "updated": "2026-10-21",
+  "title": "Calendar information on the Lock Screen: choose the right feature",
+  "short": "Calendar on the Lock Screen",
+  "description": "Distinguish Live Activity from Lock Screen widgets and notification previews. Check availability, privacy and freshness before relying on a calendar glance.",
+  "lede": "An event on the locked phone may be a Live Activity, a notification or a widget. Identifying which one you are looking at makes both setup and troubleshooting easier. This guide is published by Arte Soft, the developer of Cloud Calendars.",
+  "sections": [
+    {
+      "heading": "A Live Activity is not a Lock Screen widget",
+      "body": [
+        "Cloud Calendars provides a Live Activity for upcoming timed appointments. Its Home Screen widgets are separate layouts. Do not assume that a small Home Screen widget can be added beside the Lock Screen clock: Cloud Calendars does not currently offer those accessory widget layouts.",
+        "Apple’s Lock Screen widget picker shows the widgets available for that surface. If Cloud Calendars is absent there, repeatedly changing the Home Screen widget size will not add a missing Lock Screen layout. Use the Live Activity feature where it is available instead."
+      ]
+    },
+    {
+      "heading": "A notification is a third kind of information",
+      "body": [
+        "A notification reports an alert that was delivered. A Live Activity presents an ongoing display, while a widget occupies a configured position. A notification remaining on the screen is not proof that its event has not since changed.",
+        "If your problem is no sound, follow the notification guide rather than changing widget placement. If the activity itself is missing, check whether it is started and permitted. If an event is wrong everywhere, begin with its owning calendar and account."
+      ]
+    },
+    {
+      "heading": "Decide what should be visible while locked",
+      "body": [
+        "Event titles can reveal more than a time: a client name, medical appointment or private meeting may be readable by someone near the phone. Review the actual locked display in the setting where you use it, rather than assuming that information is hidden because the device is locked.",
+        "Apple documents app Live Activity controls in Settings under Apps when that app exposes them. Notification preview settings are a separate control. Choose the display you are comfortable with and verify the result; changing one surface’s preference does not prove the others hide the same details."
+      ]
+    },
+    {
+      "heading": "Check freshness before acting",
+      "body": [
+        "For a glance before leaving, compare the event title and time with what you expect. If a meeting was recently rescheduled or cancelled, open the calendar to confirm it. The ability to see something without unlocking does not guarantee it contains the latest update.",
+        "All-day events and already-started meetings are not the same as the future timed event followed by the activity. If you need an overview of the entire day, including those entries, use the full app rather than interpreting an empty activity as a clear schedule."
+      ]
+    },
+    {
+      "heading": "Make a small, repeatable check",
+      "body": [
+        "Use a future appointment with a non-sensitive test title. Start the activity, lock the phone and inspect which details appear. Then compare the same event after changing its time in the owning calendar and allowing the app to receive the update.",
+        "Keep the test separate from real invitations. If the result differs from your expectations, note whether the problem is appearance, privacy, content or alert delivery. That distinction gives support a useful starting point without deleting any account or event history."
+      ]
+    }
+  ],
+  "claims": {},
+  "practical": [
+    "Identify whether you see a Live Activity, notification or widget.",
+    "Use Cloud Calendars Live Activity for its supported Lock Screen display.",
+    "Review visible titles while the phone is locked.",
+    "Check recent calendar changes in the app before acting."
+  ],
+  "faq": [
+    {
+      "q": "Why is Cloud Calendars missing beside the Lock Screen clock?",
+      "a": "Its Home Screen layouts are not accessory Lock Screen widgets. The app’s Lock Screen event display uses a Live Activity."
+    },
+    {
+      "q": "Does hiding notification previews hide a Live Activity?",
+      "a": "Treat those as separate controls and inspect the result on your device. Do not assume a notification preference controls every surface."
+    },
+    {
+      "q": "Can an empty activity prove the day is free?",
+      "a": "No. It follows future timed events and does not represent the complete calendar."
+    }
+  ],
+  "sourcesHeading": "Sources and Apple instructions",
+  "sources": [
+    {
+      "label": "Apple: Access features and Live Activities from the Lock Screen",
+      "url": "https://support.apple.com/guide/iphone/access-features-from-the-lock-screen-iphcd5c65ccf/ios"
+    },
+    {
+      "label": "Apple: Add and edit widgets on iPhone",
+      "url": "https://support.apple.com/118610"
+    }
+  ],
+  "seeAlso": [
+    "a-countdown-to-your-next-meeting",
+    "calendar-notifications-missing-silent-or-duplicated"
+  ]
+}

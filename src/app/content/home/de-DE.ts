@@ -92,21 +92,21 @@ export const HOME_DE_DE: HomeCopy = {
   },
   widgets: {
     eyebrow: 'Neu in {v}',
-    title: ['Ihr Tag, bevor Sie', 'irgendetwas entsperren.'],
-    lead: 'Cloud Calendars lebt auf dem Home- und dem Sperrbildschirm, nicht nur hinter einem App-Symbol. Widgets tragen das Datum, die Vorhersage und das Nächste; eine Live-Aktivität zählt darauf herunter.',
+    title: ["Ihr Kalender,","auf einen Blick."],
+    lead: "Wählen Sie Widgets für Datum und Wetter oder Listen kommender Termine. Eine separate Live Activity ergänzt einen Countdown.",
     newIn: 'Neu in',
     items: [
       {
         title: 'Drei Widget-Größen',
-        body: 'Klein für Datum und Temperatur, mittel für Bedingungen, Mondphase und Wind, groß für die Tagesagenda neben der Vorhersage.',
+        body: "Kleine und mittlere Layouts zeigen Datum und Wetter. Mittlere und große Terminlisten zeigen zukünftige Termine mit Uhrzeit; ganztägige Einträge finden Sie in der App.",
       },
       {
         title: 'Live-Aktivität auf dem Sperrbildschirm',
-        body: 'Ihr nächster Termin zählt in der Dynamic Island und auf dem Sperrbildschirm herunter, sodass Sie nichts öffnen müssen, um zu wissen, wie viel Zeit bleibt.',
+        body: "Nutzen Sie Live Activity auf unterstützten Geräten. Aktualisierungen können dauern; prüfen Sie Änderungen in der App.",
       },
       {
-        title: 'Benachrichtigungen, die rechtzeitig kommen',
-        body: 'Erinnerungen, die die Wegzeit berücksichtigen und Ihnen sagen, was das Wetter macht, wenn Sie ankommen.',
+        title: "Erinnerungen nach Ihrer Wahl",
+        body: "Wählen Sie Terminhinweise und Benachrichtigungseinstellungen. Prüfen Sie Wegzeit und Wettervorhersage in der App.",
       },
     ],
   },
@@ -233,7 +233,7 @@ export const HOME_DE_DE: HomeCopy = {
       },
       {
         q: 'Was zeigen die Widgets?',
-        a: 'Drei Größen. Klein zeigt das Datum mit der aktuellen Lage und der Temperatur. Mittel ergänzt Bedingungen, Mondphase und Windrichtung. Groß stellt Ihre nächsten Termine neben die Vorhersage. Eine Live-Aktivität zählt zu Ihrem nächsten Termin herunter.',
+        a: "Kleine und mittlere Layouts zeigen Datum und Wetter. Mittlere und große Terminlisten zeigen zukünftige Termine mit Uhrzeit; ganztägige Einträge finden Sie in der App. Nutzen Sie Live Activity auf unterstützten Geräten. Aktualisierungen können dauern; prüfen Sie Änderungen in der App.",
       },
       {
         q: 'Welche Geräte werden unterstützt?',

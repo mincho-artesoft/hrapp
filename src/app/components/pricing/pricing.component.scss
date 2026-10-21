@@ -4,6 +4,8 @@
 
 .pricing {
   position: relative;
+  // Keep the background glow inside the section on narrow screens.
+  overflow-x: clip;
 
   &::before {
     content: '';

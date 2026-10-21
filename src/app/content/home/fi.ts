@@ -96,21 +96,21 @@ export const HOME_FI: HomeCopy = {
   },
   widgets: {
     eyebrow: 'Uutta versiossa {v}',
-    title: ['Päiväsi, ennen kuin', 'avaat mitään.'],
-    lead: 'Cloud Calendars asuu alkunäytöllä ja lukitusnäytöllä, ei vain sovelluskuvakkeen takana. Widgetit kantavat päivämäärän, ennusteen ja seuraavan; reaaliaikainen toiminto laskee siihen.',
+    title: ["Kalenterisi,","yhdellä silmäyksellä."],
+    lead: "Valitse päivämäärä- ja sääwidget tai tulevien tapahtumien luettelo. Erillinen reaaliaikainen toiminto näyttää lähtölaskennan.",
     newIn: 'Uutta versiossa',
     items: [
       {
         title: 'Kolme widgetkokoa',
-        body: 'Pieni päivämäärälle ja lämpötilalle, keskikokoinen olosuhteille, kuun vaiheelle ja tuulelle, suuri päivän ohjelmalle ennusteen rinnalla.',
+        body: "Pienet ja keskikokoiset näkymät näyttävät päivämäärän ja sään. Keskikokoiset ja suuret luettelot näyttävät tulevat kellonajalliset tapahtumat; koko päivän merkinnät löydät sovelluksesta.",
       },
       {
         title: 'Reaaliaikainen toiminto lukitusnäytöllä',
-        body: 'Seuraava tapahtumasi laskee alaspäin Dynamic Islandissa ja lukitusnäytöllä, joten mitään ei tarvitse avata tietääkseen, paljonko aikaa on jäljellä.',
+        body: "Käytä reaaliaikaista toimintoa tuetuilla laitteilla. Päivityksissä voi kestää; tarkista muutokset sovelluksesta.",
       },
       {
-        title: 'Ilmoitukset, jotka ehtivät ajoissa',
-        body: 'Muistutukset, jotka huomioivat matka-ajan ja kertovat, mitä sää tekee perillä.',
+        title: "Valitsemasi muistutukset",
+        body: "Valitse tapahtumamuistutukset ja ilmoitusasetukset. Tarkista matka-aika ja ennuste sovelluksesta.",
       },
     ],
   },
@@ -237,7 +237,7 @@ export const HOME_FI: HomeCopy = {
       },
       {
         q: 'Mitä widgetit näyttävät?',
-        a: 'Kolme kokoa. Pieni antaa päivämäärän nykyisellä säällä ja lämpötilalla. Keskikokoinen lisää olosuhteet, kuun vaiheen ja tuulen suunnan. Suuri asettaa seuraavat tapahtumasi ennusteen viereen. Reaaliaikainen toiminto laskee seuraavaan tapahtumaan.',
+        a: "Pienet ja keskikokoiset näkymät näyttävät päivämäärän ja sään. Keskikokoiset ja suuret luettelot näyttävät tulevat kellonajalliset tapahtumat; koko päivän merkinnät löydät sovelluksesta. Käytä reaaliaikaista toimintoa tuetuilla laitteilla. Päivityksissä voi kestää; tarkista muutokset sovelluksesta.",
       },
       {
         q: 'Mitä laitteita tuetaan?',

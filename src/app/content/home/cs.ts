@@ -88,21 +88,21 @@ export const HOME_CS: HomeCopy = {
   },
   widgets: {
     eyebrow: 'Novinka ve verzi {v}',
-    title: ['Váš den dřív, než', 'cokoli odemknete.'],
-    lead: 'Cloud Calendars žije na ploše a na uzamčené obrazovce, ne jen za ikonou aplikace. Widgety nesou datum, předpověď a to další; živá aktivita k tomu odpočítává.',
+    title: ["Váš kalendář,","na první pohled."],
+    lead: "Vyberte widgety s datem a počasím nebo seznamy nadcházejících událostí. Samostatná živá aktivita přidá odpočítávání.",
     newIn: 'Novinka ve verzi',
     items: [
       {
         title: 'Tři velikosti widgetu',
-        body: 'Malý na datum a teplotu, střední na podmínky, fázi měsíce a vítr, velký na program dne vedle předpovědi.',
+        body: "Malá a střední rozvržení ukazují datum a počasí. Střední a velké seznamy zobrazují budoucí události s časem; celodenní záznamy najdete v aplikaci.",
       },
       {
         title: 'Živá aktivita na uzamčené obrazovce',
-        body: 'Vaše nejbližší událost odpočítává v Dynamic Islandu a na uzamčené obrazovce, takže nikdy nemusíte nic otevírat, abyste věděli, kolik času zbývá.',
+        body: "Živou aktivitu používejte na podporovaných zařízeních. Aktualizace mohou chvíli trvat; změny ověřte v aplikaci.",
       },
       {
-        title: 'Upozornění, která přijdou včas',
-        body: 'Připomínky, které berou ohled na dobu cesty a řeknou vám, co dělá počasí, až dorazíte.',
+        title: "Připomínky podle vás",
+        body: "Zvolte upozornění na události a nastavení oznámení. Dobu cesty a předpověď zkontrolujte v aplikaci.",
       },
     ],
   },
@@ -229,7 +229,7 @@ export const HOME_CS: HomeCopy = {
       },
       {
         q: 'Co widgety ukazují?',
-        a: 'Tři velikosti. Malý dá datum s aktuálním počasím a teplotou. Střední přidá podmínky, fázi měsíce a směr větru. Velký postaví vaše nejbližší události vedle předpovědi. Živá aktivita odpočítává k nejbližší události.',
+        a: "Malá a střední rozvržení ukazují datum a počasí. Střední a velké seznamy zobrazují budoucí události s časem; celodenní záznamy najdete v aplikaci. Živou aktivitu používejte na podporovaných zařízeních. Aktualizace mohou chvíli trvat; změny ověřte v aplikaci.",
       },
       {
         q: 'Která zařízení jsou podporována?',

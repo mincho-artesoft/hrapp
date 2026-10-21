@@ -92,21 +92,21 @@ export const HOME_ID: HomeCopy = {
   },
   widgets: {
     eyebrow: 'Baru di {v}',
-    title: ['Hari Anda, sebelum', 'membuka kunci apa pun.'],
-    lead: 'Cloud Calendars tinggal di layar utama dan layar terkunci, bukan hanya di balik ikon. Widget membawa tanggal, prakiraan, dan yang berikutnya; sebuah aktivitas langsung menghitung mundur ke sana.',
+    title: ["Kalender Anda,","sekilas saja."],
+    lead: "Pilih widget tanggal dan cuaca atau daftar acara mendatang. Aktivitas langsung yang terpisah menambahkan hitung mundur.",
     newIn: 'Baru di',
     items: [
       {
         title: 'Tiga ukuran widget',
-        body: 'Kecil untuk tanggal dan suhu, sedang untuk kondisi, fase bulan, dan angin, besar untuk agenda hari itu di samping prakiraan.',
+        body: "Tata letak kecil dan sedang menampilkan tanggal dan cuaca. Daftar sedang dan besar menampilkan acara mendatang dengan jam mulai; lihat acara sepanjang hari di aplikasi.",
       },
       {
         title: 'Aktivitas langsung di layar terkunci',
-        body: 'Acara berikutnya menghitung mundur di Dynamic Island dan di layar terkunci, jadi Anda tak perlu membuka apa pun untuk tahu berapa lama lagi.',
+        body: "Gunakan aktivitas langsung pada perangkat yang didukung. Pembaruan bisa memerlukan waktu; periksa perubahan di aplikasi.",
       },
       {
-        title: 'Pemberitahuan yang datang tepat waktu',
-        body: 'Pengingat yang memperhitungkan waktu perjalanan dan memberi tahu apa yang dilakukan cuaca saat Anda tiba.',
+        title: "Pengingat pilihan Anda",
+        body: "Pilih pengingat acara dan pengaturan notifikasi. Periksa waktu perjalanan dan prakiraan di aplikasi.",
       },
     ],
   },
@@ -233,7 +233,7 @@ export const HOME_ID: HomeCopy = {
       },
       {
         q: 'Apa yang ditampilkan widget?',
-        a: 'Tiga ukuran. Yang kecil memberi tanggal dengan kondisi dan suhu saat ini. Yang sedang menambahkan kondisi, fase bulan, dan arah angin. Yang besar menaruh beberapa acara berikutnya di samping prakiraan. Sebuah aktivitas langsung menghitung mundur ke acara berikutnya.',
+        a: "Tata letak kecil dan sedang menampilkan tanggal dan cuaca. Daftar sedang dan besar menampilkan acara mendatang dengan jam mulai; lihat acara sepanjang hari di aplikasi. Gunakan aktivitas langsung pada perangkat yang didukung. Pembaruan bisa memerlukan waktu; periksa perubahan di aplikasi.",
       },
       {
         q: 'Perangkat apa saja yang didukung?',

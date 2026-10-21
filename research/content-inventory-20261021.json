@@ -1,5 +1,5 @@
 {
-  "date": "2026-10-21T17:20:21.770Z",
+  "date": "2026-10-21T18:02:37.913Z",
   "status": "source_inventory_not_quality_approval",
   "articles": [
     {
@@ -826,28 +826,34 @@
     {
       "locale": "de-DE",
       "slug": "the-widget-that-shows-what-is-next",
-      "title": "Ein Widget, das eine einzige Frage beantwortet",
-      "description": "Die meisten Kalender-Widgets versuchen, ein kleiner Kalender zu sein. Die nützlichen beantworten die eine Frage, die Sie zwanzigmal am Tag stellen.",
-      "descriptionCharacters": 147,
-      "sections": 2,
-      "faq": 0,
-      "words": 194,
+      "title": "Kommende Kalendertermine auf dem iPhone-Home-Bildschirm",
+      "description": "Wählen Sie ein Termin-Widget, prüfen Sie ausgewählte Kalender und fehlende Einträge. Eine leere Liste bedeutet nicht, dass Ihr Kalender leer ist.",
+      "descriptionCharacters": 145,
+      "sections": 5,
+      "faq": 3,
+      "words": 492,
       "source": "articles.ts",
-      "sources": [],
-      "updated": "2026-08-27"
+      "sources": [
+        "https://support.apple.com/118610",
+        "https://developer.apple.com/documentation/widgetkit/keeping-a-widget-up-to-date"
+      ],
+      "updated": "2026-10-21"
     },
     {
       "locale": "de-DE",
       "slug": "a-countdown-to-your-next-meeting",
-      "title": "Ein Countdown auf dem Sperrbildschirm bis zum Nächsten",
-      "description": "Eine Live-Aktivität macht aus „wann ist es“ ein „wie lange habe ich noch“ — und das war die eigentliche Frage.",
-      "descriptionCharacters": 110,
-      "sections": 2,
-      "faq": 0,
-      "words": 194,
+      "title": "Ein Kalender-Countdown ergänzt Erinnerungen",
+      "description": "Nutzen Sie die Live Activity für kommende Termine. Prüfen Sie geänderte Startzeiten und behalten Sie Erinnerungen unabhängig vom Countdown bei.",
+      "descriptionCharacters": 143,
+      "sections": 5,
+      "faq": 3,
+      "words": 440,
       "source": "articles.ts",
-      "sources": [],
-      "updated": "2026-08-27"
+      "sources": [
+        "https://support.apple.com/guide/iphone/access-features-from-the-lock-screen-iphcd5c65ccf/ios",
+        "https://support.apple.com/guide/iphone/view-live-activities-in-the-dynamic-island-iph28f50d10d/ios"
+      ],
+      "updated": "2026-10-21"
     },
     {
       "locale": "de-DE",
@@ -1210,6 +1216,39 @@
     },
     {
       "locale": "en-US",
+      "slug": "event-saved-to-wrong-calendar",
+      "title": "Event saved to the wrong calendar?",
+      "description": "Check the event destination, Cloud Calendars selection and Apple defaults before moving appointments or changing account settings.",
+      "descriptionCharacters": 130,
+      "sections": 6,
+      "faq": 3,
+      "words": 822,
+      "source": "articles-help.ts",
+      "sources": [
+        "https://support.apple.com/guide/iphone/use-multiple-calendars-iph3d1110d4/ios",
+        "https://support.apple.com/en-my/guide/iphone/iphc37be2016/27/ios/27",
+        "https://support.google.com/calendar/answer/78739?co=GENIE.Platform%3DiOS&hl=en"
+      ],
+      "updated": "2026-10-21"
+    },
+    {
+      "locale": "en-US",
+      "slug": "family-pickup-calendar-handoff",
+      "title": "A family pickup plan with a clear handoff",
+      "description": "A worked family pickup plan: agree the driver, check shared access, record the meeting point and confirm one-off changes.",
+      "descriptionCharacters": 121,
+      "sections": 6,
+      "faq": 3,
+      "words": 816,
+      "source": "articles-help.ts",
+      "sources": [
+        "https://support.apple.com/guide/iphone/use-multiple-calendars-iph3d1110d4/ios",
+        "https://support.google.com/calendar/answer/78739?co=GENIE.Platform%3DiOS&hl=en"
+      ],
+      "updated": "2026-10-21"
+    },
+    {
+      "locale": "en-US",
       "slug": "drag-an-event-to-move-it",
       "title": "Moving an event by dragging it",
       "description": "Rescheduling should cost one gesture, not a form. Why direct manipulation matters more on a calendar than almost anywhere else.",
@@ -1296,15 +1335,19 @@
     {
       "locale": "en-US",
       "slug": "what-an-all-day-event-really-means",
-      "title": "What an all-day event really means",
-      "description": "All-day is not midnight to midnight. It is a different kind of thing entirely, and treating it as a long event causes the confusion.",
-      "descriptionCharacters": 132,
-      "sections": 2,
-      "faq": 0,
-      "words": 187,
+      "title": "All-day calendar events: dates, availability and missing widget entries",
+      "description": "Choose dates or timed appointments, check free/busy separately and verify multi-day ranges. Find all-day entries that do not appear in an upcoming widget.",
+      "descriptionCharacters": 154,
+      "sections": 6,
+      "faq": 3,
+      "words": 873,
       "source": "articles-planning.ts",
-      "sources": [],
-      "updated": "2026-08-27"
+      "sources": [
+        "https://support.apple.com/guide/calendar/set-up-all-day-multiday-or-repeating-events-icl1018/mac",
+        "https://developers.google.com/workspace/calendar/api/concepts/events-calendars",
+        "https://developers.google.com/workspace/calendar/api/v3/reference/events"
+      ],
+      "updated": "2026-10-21"
     },
     {
       "locale": "en-US",
@@ -1639,67 +1682,80 @@
     {
       "locale": "en-US",
       "slug": "the-widget-that-shows-what-is-next",
-      "title": "A Home Screen widget that answers one question",
-      "description": "Most calendar widgets try to be a small calendar. The useful ones answer a single question you ask twenty times a day.",
-      "descriptionCharacters": 118,
-      "sections": 2,
-      "faq": 0,
-      "words": 195,
+      "title": "Show upcoming calendar events on your iPhone Home Screen",
+      "description": "Choose an event widget, check selected calendars and diagnose missing appointments. Understand why an empty widget is not proof of an empty calendar.",
+      "descriptionCharacters": 149,
+      "sections": 5,
+      "faq": 3,
+      "words": 607,
       "source": "articles-widgets.ts",
-      "sources": [],
-      "updated": "2026-08-27"
+      "sources": [
+        "https://support.apple.com/118610",
+        "https://developer.apple.com/documentation/widgetkit/keeping-a-widget-up-to-date"
+      ],
+      "updated": "2026-10-21"
     },
     {
       "locale": "en-US",
       "slug": "a-countdown-to-your-next-meeting",
-      "title": "A countdown on the Lock Screen for the next thing",
-      "description": "A Live Activity turns 'when is it' into 'how long have I got', which is the question you were really asking.",
-      "descriptionCharacters": 108,
-      "sections": 2,
-      "faq": 0,
-      "words": 203,
+      "title": "Use a calendar Live Activity countdown without replacing alerts",
+      "description": "Use Cloud Calendars Live Activity for a future meeting, check stale event details and keep alerts separate from the countdown on your Lock Screen.",
+      "descriptionCharacters": 146,
+      "sections": 5,
+      "faq": 3,
+      "words": 595,
       "source": "articles-widgets.ts",
-      "sources": [],
-      "updated": "2026-08-27"
+      "sources": [
+        "https://support.apple.com/guide/iphone/access-features-from-the-lock-screen-iphcd5c65ccf/ios",
+        "https://support.apple.com/guide/iphone/view-live-activities-in-the-dynamic-island-iph28f50d10d/ios"
+      ],
+      "updated": "2026-10-21"
     },
     {
       "locale": "en-US",
       "slug": "lock-screen-without-unlocking",
-      "title": "Answering the calendar question without unlocking anything",
-      "description": "Lock Screen widgets are small, monochrome and limited, which is exactly why they work. What to put there and what to leave out.",
-      "descriptionCharacters": 127,
-      "sections": 2,
-      "faq": 0,
-      "words": 165,
+      "title": "Calendar information on the Lock Screen: choose the right feature",
+      "description": "Distinguish Live Activity from Lock Screen widgets and notification previews. Check availability, privacy and freshness before relying on a calendar glance.",
+      "descriptionCharacters": 156,
+      "sections": 5,
+      "faq": 3,
+      "words": 632,
       "source": "articles-widgets.ts",
-      "sources": [],
-      "updated": "2026-08-27"
+      "sources": [
+        "https://support.apple.com/guide/iphone/access-features-from-the-lock-screen-iphcd5c65ccf/ios",
+        "https://support.apple.com/118610"
+      ],
+      "updated": "2026-10-21"
     },
     {
       "locale": "en-US",
       "slug": "choosing-a-widget-size",
-      "title": "Choosing a widget size without wasting your Home Screen",
-      "description": "Small, medium and large are not more and less of the same thing. Each answers a different question, and picking wrong is why widgets get deleted.",
-      "descriptionCharacters": 145,
-      "sections": 2,
-      "faq": 0,
-      "words": 163,
+      "title": "Choose a Cloud Calendars widget by its layout, not just its size",
+      "description": "Compare date-and-weather widgets with medium and large event lists. Choose readable content without assuming that a large widget is a complete week view.",
+      "descriptionCharacters": 153,
+      "sections": 5,
+      "faq": 3,
+      "words": 583,
       "source": "articles-widgets.ts",
-      "sources": [],
-      "updated": "2026-08-27"
+      "sources": [
+        "https://support.apple.com/118610"
+      ],
+      "updated": "2026-10-21"
     },
     {
       "locale": "en-US",
       "slug": "the-calendar-on-a-bedside-table",
-      "title": "The calendar as a bedside clock",
-      "description": "Charging sideways turns an iPhone into a small desk display. What a calendar should show when it is two feet away and you are half asleep.",
-      "descriptionCharacters": 138,
-      "sections": 2,
-      "faq": 0,
-      "words": 164,
+      "title": "Use iPhone StandBy without mistaking a glance for tomorrow’s plan",
+      "description": "Set up iPhone StandBy, check the widgets your device offers and separate a bedside date display from a complete tomorrow agenda or a guaranteed alarm.",
+      "descriptionCharacters": 150,
+      "sections": 5,
+      "faq": 3,
+      "words": 619,
       "source": "articles-widgets.ts",
-      "sources": [],
-      "updated": "2026-08-27"
+      "sources": [
+        "https://support.apple.com/guide/iphone/use-standby-iph878d77632/ios"
+      ],
+      "updated": "2026-10-21"
     },
     {
       "locale": "es-ES",
@@ -1785,6 +1841,57 @@
     },
     {
       "locale": "es-ES",
+      "slug": "calendar-notifications-missing-silent-or-duplicated",
+      "title": "Notificaciones del calendario en iPhone: ¿faltan, no suenan o se duplican?",
+      "description": "Distingue avisos de eventos, ajustes de Cloud Calendars y controles del iPhone. Revisa recordatorios ausentes, silenciosos o duplicados sin borrar datos.",
+      "descriptionCharacters": 153,
+      "sections": 6,
+      "faq": 3,
+      "words": 1049,
+      "source": "articles-help.ts",
+      "sources": [
+        "https://support.apple.com/guide/iphone/change-notification-settings-iph7c3d96bab/ios",
+        "https://support.google.com/calendar/answer/37242?hl=en&co=GENIE.Platform%3DiOS"
+      ],
+      "updated": "2026-10-21"
+    },
+    {
+      "locale": "es-ES",
+      "slug": "find-old-calendar-events-by-account-date-and-title",
+      "title": "Encuentra un evento antiguo: comprueba la cuenta, las fechas y los campos de búsqueda",
+      "description": "Una búsqueda vacía no demuestra que se haya borrado un evento. Revisa la cuenta, las fechas y los campos antes de consultar el archivo del proveedor.",
+      "descriptionCharacters": 149,
+      "sections": 6,
+      "faq": 3,
+      "words": 1006,
+      "source": "articles-help.ts",
+      "sources": [
+        "https://support.google.com/calendar/answer/37176?hl=en&co=GENIE.Platform%3DDesktop",
+        "https://support.apple.com/guide/iphone/search-for-events-iph2c9ef44ad/ios"
+      ],
+      "updated": "2026-10-21"
+    },
+    {
+      "locale": "es-ES",
+      "slug": "calendar-export-ics-pdf-and-backup",
+      "title": "Exportar un calendario: archivos ICS, PDF y suscripciones",
+      "description": "¿Necesitas un archivo de un calendario de tu iPhone? Elige ICS, PDF o una suscripción y sigue el proceso adecuado de Google, Mac u Outlook.",
+      "descriptionCharacters": 139,
+      "sections": 6,
+      "faq": 3,
+      "words": 1016,
+      "source": "articles-help.ts",
+      "sources": [
+        "https://support.google.com/calendar/answer/37111?hl=en",
+        "https://support.google.com/calendar/answer/37118?hl=en",
+        "https://support.apple.com/guide/calendar/import-or-export-calendars-icl1023/mac",
+        "https://support.apple.com/en-gb/guide/mac-help/mchlp1531/mac",
+        "https://support.microsoft.com/en-us/outlook/share-your-calendar-in-outlook-on-the-web"
+      ],
+      "updated": "2026-10-21"
+    },
+    {
+      "locale": "es-ES",
       "slug": "weather-inside-your-calendar",
       "title": "Un calendario que ya lleva el tiempo dentro",
       "description": "Por qué consultar dos aplicaciones para planificar un día es un fallo de diseño, y cómo es un calendario en el que la previsión forma parte de la vista en lugar de estar al lado.",
@@ -1866,28 +1973,34 @@
     {
       "locale": "es-ES",
       "slug": "the-widget-that-shows-what-is-next",
-      "title": "Un widget que responde a una sola pregunta",
-      "description": "Casi todos los widgets de calendario intentan ser un calendario pequeño. Los útiles responden a la única pregunta que usted hace veinte veces al día.",
-      "descriptionCharacters": 149,
-      "sections": 2,
-      "faq": 0,
-      "words": 189,
+      "title": "Próximos eventos en la pantalla de inicio del iPhone",
+      "description": "Elige un widget con eventos, comprueba los calendarios seleccionados y diagnostica ausencias. Una lista vacía no demuestra que tu agenda esté libre.",
+      "descriptionCharacters": 148,
+      "sections": 5,
+      "faq": 3,
+      "words": 557,
       "source": "articles.ts",
-      "sources": [],
-      "updated": "2026-08-27"
+      "sources": [
+        "https://support.apple.com/118610",
+        "https://developer.apple.com/documentation/widgetkit/keeping-a-widget-up-to-date"
+      ],
+      "updated": "2026-10-21"
     },
     {
       "locale": "es-ES",
       "slug": "a-countdown-to-your-next-meeting",
-      "title": "Una cuenta atrás en la pantalla bloqueada",
-      "description": "Una actividad en vivo convierte «cuándo es» en «cuánto me queda», que era la pregunta de verdad.",
-      "descriptionCharacters": 96,
-      "sections": 2,
-      "faq": 0,
-      "words": 201,
+      "title": "Una cuenta atrás que complementa los avisos del calendario",
+      "description": "Usa la actividad en directo para una cita futura, comprueba los cambios de horario y conserva los avisos independientemente de la cuenta atrás.",
+      "descriptionCharacters": 143,
+      "sections": 5,
+      "faq": 3,
+      "words": 511,
       "source": "articles.ts",
-      "sources": [],
-      "updated": "2026-08-27"
+      "sources": [
+        "https://support.apple.com/guide/iphone/access-features-from-the-lock-screen-iphcd5c65ccf/ios",
+        "https://support.apple.com/guide/iphone/view-live-activities-in-the-dynamic-island-iph28f50d10d/ios"
+      ],
+      "updated": "2026-10-21"
     },
     {
       "locale": "es-ES",
@@ -2295,28 +2408,34 @@
     {
       "locale": "fr-FR",
       "slug": "the-widget-that-shows-what-is-next",
-      "title": "Un widget qui répond à une seule question",
-      "description": "La plupart des widgets d'agenda essaient d'être un petit agenda. Les utiles répondent à la seule question que vous posez vingt fois par jour.",
-      "descriptionCharacters": 141,
-      "sections": 2,
-      "faq": 0,
-      "words": 206,
+      "title": "Afficher les prochains rendez-vous sur l’écran d’accueil",
+      "description": "Choisissez un widget avec événements et vérifiez les calendriers sélectionnés. Une liste vide ne signifie pas que votre agenda est vide.",
+      "descriptionCharacters": 136,
+      "sections": 5,
+      "faq": 3,
+      "words": 573,
       "source": "articles.ts",
-      "sources": [],
-      "updated": "2026-08-27"
+      "sources": [
+        "https://support.apple.com/118610",
+        "https://developer.apple.com/documentation/widgetkit/keeping-a-widget-up-to-date"
+      ],
+      "updated": "2026-10-21"
     },
     {
       "locale": "fr-FR",
       "slug": "a-countdown-to-your-next-meeting",
-      "title": "Un compte à rebours sur l'écran verrouillé",
-      "description": "Une activité en direct transforme « c'est quand » en « il me reste combien » — et c'était la vraie question.",
-      "descriptionCharacters": 108,
-      "sections": 2,
-      "faq": 0,
-      "words": 202,
+      "title": "Un compte à rebours qui complète les rappels",
+      "description": "Utilisez l’activité en direct pour un rendez-vous futur, vérifiez les horaires modifiés et conservez les rappels indépendamment du compte à rebours.",
+      "descriptionCharacters": 148,
+      "sections": 5,
+      "faq": 3,
+      "words": 513,
       "source": "articles.ts",
-      "sources": [],
-      "updated": "2026-08-27"
+      "sources": [
+        "https://support.apple.com/guide/iphone/access-features-from-the-lock-screen-iphcd5c65ccf/ios",
+        "https://support.apple.com/guide/iphone/view-live-activities-in-the-dynamic-island-iph28f50d10d/ios"
+      ],
+      "updated": "2026-10-21"
     },
     {
       "locale": "fr-FR",
@@ -3000,6 +3119,57 @@
     },
     {
       "locale": "it",
+      "slug": "calendar-notifications-missing-silent-or-duplicated",
+      "title": "Notifiche del calendario su iPhone: assenti, silenziose o duplicate?",
+      "description": "Distingui avvisi degli eventi, impostazioni di Cloud Calendars e controlli di iPhone. Verifica promemoria assenti, silenziosi o doppi senza eliminare dati.",
+      "descriptionCharacters": 155,
+      "sections": 6,
+      "faq": 3,
+      "words": 965,
+      "source": "articles-help.ts",
+      "sources": [
+        "https://support.apple.com/guide/iphone/change-notification-settings-iph7c3d96bab/ios",
+        "https://support.google.com/calendar/answer/37242?hl=en&co=GENIE.Platform%3DiOS"
+      ],
+      "updated": "2026-10-21"
+    },
+    {
+      "locale": "it",
+      "slug": "find-old-calendar-events-by-account-date-and-title",
+      "title": "Trovare un vecchio evento: controlla account, date e campi di ricerca",
+      "description": "Una ricerca vuota non prova che un evento sia stato eliminato. Controlla account, date e campi cercati prima di consultare l’archivio del provider.",
+      "descriptionCharacters": 147,
+      "sections": 6,
+      "faq": 3,
+      "words": 927,
+      "source": "articles-help.ts",
+      "sources": [
+        "https://support.google.com/calendar/answer/37176?hl=en&co=GENIE.Platform%3DDesktop",
+        "https://support.apple.com/guide/iphone/search-for-events-iph2c9ef44ad/ios"
+      ],
+      "updated": "2026-10-21"
+    },
+    {
+      "locale": "it",
+      "slug": "calendar-export-ics-pdf-and-backup",
+      "title": "Esportare un calendario: file ICS, PDF e iscrizioni",
+      "description": "Ti serve un file del calendario di un account su iPhone? Scegli ICS, PDF o un’iscrizione e segui la procedura adatta di Google, Mac o Outlook.",
+      "descriptionCharacters": 142,
+      "sections": 6,
+      "faq": 3,
+      "words": 972,
+      "source": "articles-help.ts",
+      "sources": [
+        "https://support.google.com/calendar/answer/37111?hl=en",
+        "https://support.google.com/calendar/answer/37118?hl=en",
+        "https://support.apple.com/guide/calendar/import-or-export-calendars-icl1023/mac",
+        "https://support.apple.com/en-gb/guide/mac-help/mchlp1531/mac",
+        "https://support.microsoft.com/en-us/outlook/share-your-calendar-in-outlook-on-the-web"
+      ],
+      "updated": "2026-10-21"
+    },
+    {
+      "locale": "it",
       "slug": "weather-inside-your-calendar",
       "title": "Un calendario che contiene già il meteo",
       "description": "Perché controllare due app per organizzare una giornata è un difetto di progetto, e com'è fatto un calendario in cui le previsioni fanno parte della vista invece di stare accanto.",
@@ -3081,28 +3251,34 @@
     {
       "locale": "it",
       "slug": "the-widget-that-shows-what-is-next",
-      "title": "Un widget che risponde a una sola domanda",
-      "description": "Quasi tutti i widget di calendario cercano di essere un calendario piccolo. Quelli utili rispondono all'unica domanda che vi fate venti volte al giorno.",
-      "descriptionCharacters": 152,
-      "sections": 2,
-      "faq": 0,
-      "words": 189,
+      "title": "I prossimi appuntamenti sulla schermata Home di iPhone",
+      "description": "Scegli un widget con eventi e controlla i calendari selezionati e gli appuntamenti mancanti. Una lista vuota non dimostra che l’agenda sia libera.",
+      "descriptionCharacters": 146,
+      "sections": 5,
+      "faq": 3,
+      "words": 515,
       "source": "articles.ts",
-      "sources": [],
-      "updated": "2026-08-27"
+      "sources": [
+        "https://support.apple.com/118610",
+        "https://developer.apple.com/documentation/widgetkit/keeping-a-widget-up-to-date"
+      ],
+      "updated": "2026-10-21"
     },
     {
       "locale": "it",
       "slug": "a-countdown-to-your-next-meeting",
-      "title": "Un conto alla rovescia sulla schermata di blocco",
-      "description": "Un'attività in tempo reale trasforma «quand'è» in «quanto mi resta» — che era la domanda vera.",
-      "descriptionCharacters": 94,
-      "sections": 2,
-      "faq": 0,
-      "words": 187,
+      "title": "Un conto alla rovescia che affianca i promemoria",
+      "description": "Usa l’attività in tempo reale per un appuntamento futuro, verifica gli orari modificati e mantieni gli avvisi separati dal conto alla rovescia.",
+      "descriptionCharacters": 143,
+      "sections": 5,
+      "faq": 3,
+      "words": 467,
       "source": "articles.ts",
-      "sources": [],
-      "updated": "2026-08-27"
+      "sources": [
+        "https://support.apple.com/guide/iphone/access-features-from-the-lock-screen-iphcd5c65ccf/ios",
+        "https://support.apple.com/guide/iphone/view-live-activities-in-the-dynamic-island-iph28f50d10d/ios"
+      ],
+      "updated": "2026-10-21"
     },
     {
       "locale": "it",
@@ -4055,6 +4231,57 @@
       "source": "articles-google.ts",
       "sources": [],
       "updated": "2026-09-12"
+    },
+    {
+      "locale": "pt-BR",
+      "slug": "calendar-notifications-missing-silent-or-duplicated",
+      "title": "Notificações do calendário no iPhone: ausentes, sem som ou duplicadas?",
+      "description": "Separe alertas de eventos, ajustes do Cloud Calendars e controles do iPhone. Verifique lembretes ausentes, sem som ou duplicados sem apagar dados.",
+      "descriptionCharacters": 146,
+      "sections": 6,
+      "faq": 3,
+      "words": 1012,
+      "source": "articles-help.ts",
+      "sources": [
+        "https://support.apple.com/guide/iphone/change-notification-settings-iph7c3d96bab/ios",
+        "https://support.google.com/calendar/answer/37242?hl=en&co=GENIE.Platform%3DiOS"
+      ],
+      "updated": "2026-10-21"
+    },
+    {
+      "locale": "pt-BR",
+      "slug": "find-old-calendar-events-by-account-date-and-title",
+      "title": "Encontre um evento antigo: confira a conta, as datas e os campos de busca",
+      "description": "Uma busca vazia não prova que um evento foi apagado. Confira a conta, as datas e os campos pesquisados antes de consultar o arquivo do provedor.",
+      "descriptionCharacters": 144,
+      "sections": 6,
+      "faq": 3,
+      "words": 983,
+      "source": "articles-help.ts",
+      "sources": [
+        "https://support.google.com/calendar/answer/37176?hl=en&co=GENIE.Platform%3DDesktop",
+        "https://support.apple.com/guide/iphone/search-for-events-iph2c9ef44ad/ios"
+      ],
+      "updated": "2026-10-21"
+    },
+    {
+      "locale": "pt-BR",
+      "slug": "calendar-export-ics-pdf-and-backup",
+      "title": "Exportar um calendário: arquivos ICS, PDFs e assinaturas",
+      "description": "Precisa de um arquivo de calendário de uma conta do iPhone? Escolha ICS, PDF ou assinatura e siga o processo adequado do Google, Mac ou Outlook.",
+      "descriptionCharacters": 144,
+      "sections": 6,
+      "faq": 3,
+      "words": 982,
+      "source": "articles-help.ts",
+      "sources": [
+        "https://support.google.com/calendar/answer/37111?hl=en",
+        "https://support.google.com/calendar/answer/37118?hl=en",
+        "https://support.apple.com/guide/calendar/import-or-export-calendars-icl1023/mac",
+        "https://support.apple.com/en-gb/guide/mac-help/mchlp1531/mac",
+        "https://support.microsoft.com/en-us/outlook/share-your-calendar-in-outlook-on-the-web"
+      ],
+      "updated": "2026-10-21"
     },
     {
       "locale": "pt-BR",

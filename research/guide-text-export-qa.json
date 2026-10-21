@@ -1,8 +1,8 @@
 {
-  "guides": 11,
+  "guides": 21,
   "selection": "tools/guide-text-selection.json",
   "extraction": "Visible article headings, paragraphs, lists, FAQs and source links; gallery/other-app cards excluded.",
-  "exportedCharacters": 61252,
+  "exportedCharacters": 115486,
   "records": [
     {
       "slug": "what-calendar-sync-actually-does",
@@ -69,6 +69,66 @@
       "source": "https://www.cloud-calendars.com/articles/calendar-export-ics-pdf-and-backup/",
       "blocks": 46,
       "characters": 7151
+    },
+    {
+      "slug": "recurring-events-without-the-mess",
+      "source": "https://www.cloud-calendars.com/articles/recurring-events-without-the-mess/",
+      "blocks": 44,
+      "characters": 6473
+    },
+    {
+      "slug": "time-zones-and-the-flight-you-booked",
+      "source": "https://www.cloud-calendars.com/articles/time-zones-and-the-flight-you-booked/",
+      "blocks": 43,
+      "characters": 6214
+    },
+    {
+      "slug": "what-an-all-day-event-really-means",
+      "source": "https://www.cloud-calendars.com/articles/what-an-all-day-event-really-means/",
+      "blocks": 46,
+      "characters": 6546
+    },
+    {
+      "slug": "the-widget-that-shows-what-is-next",
+      "source": "https://www.cloud-calendars.com/articles/the-widget-that-shows-what-is-next/",
+      "blocks": 37,
+      "characters": 4373
+    },
+    {
+      "slug": "a-countdown-to-your-next-meeting",
+      "source": "https://www.cloud-calendars.com/articles/a-countdown-to-your-next-meeting/",
+      "blocks": 37,
+      "characters": 4508
+    },
+    {
+      "slug": "lock-screen-without-unlocking",
+      "source": "https://www.cloud-calendars.com/articles/lock-screen-without-unlocking/",
+      "blocks": 37,
+      "characters": 4623
+    },
+    {
+      "slug": "choosing-a-widget-size",
+      "source": "https://www.cloud-calendars.com/articles/choosing-a-widget-size/",
+      "blocks": 35,
+      "characters": 3912
+    },
+    {
+      "slug": "the-calendar-on-a-bedside-table",
+      "source": "https://www.cloud-calendars.com/articles/the-calendar-on-a-bedside-table/",
+      "blocks": 36,
+      "characters": 4389
+    },
+    {
+      "slug": "event-saved-to-wrong-calendar",
+      "source": "https://www.cloud-calendars.com/articles/event-saved-to-wrong-calendar/",
+      "blocks": 43,
+      "characters": 6297
+    },
+    {
+      "slug": "family-pickup-calendar-handoff",
+      "source": "https://www.cloud-calendars.com/articles/family-pickup-calendar-handoff/",
+      "blocks": 45,
+      "characters": 5999
     }
   ]
 }

@@ -1,0 +1,95 @@
+{
+  "status": "draft-for-root-integration",
+  "proposedSlug": "family-pickup-calendar-handoff",
+  "canonicalDecision": "Distinct worked coordination task. Existing weekly planning is a brief personal routine; sharing pages address distribution, not driver assignment, handoff details and confirmed exceptions. Keep the concrete example to avoid a generic duplicate.",
+  "wordCount": 705,
+  "article": {
+    "updated": "2026-10-21",
+    "title": "A family pickup plan with a clear handoff",
+    "short": "A family pickup plan with a clear handoff",
+    "description": "A worked family pickup plan: agree the driver, check shared access, record the meeting point and confirm one-off changes.",
+    "lede": "This guide is published by Arte Soft, the developer of Cloud Calendars. A lesson on the calendar says where someone needs to be. It may not say who is taking them home. A useful handoff plan records that decision explicitly.",
+    "sections": [
+      {
+        "heading": "Separate the activity from the responsibility",
+        "body": [
+          "Imagine a Tuesday swimming lesson from 16:30 to 17:15. Maya handles drop-off and Leo handles collection. An event called Swimming leaves the driver, entrance and departure time unclear. Keep the lesson at its real time. Record the agreed responsibility in its title or notes, or create a separate timed pickup commitment when that is clearer.",
+          "This is a suggested planning convention. It does not depend on an automatic assignment feature, and putting a name in a title does not itself notify or assign that person."
+        ]
+      },
+      {
+        "heading": "Check access before relying on the plan",
+        "body": [
+          "Agree which calendar holds the family schedule and who maintains it. A combined personal overview does not automatically give another adult access to every calendar you can see. Check the actual shared destination and the permission the provider grants.",
+          "When creating the handoff in Cloud Calendars, inspect Calendar explicitly. A pickup accidentally saved to a private or work calendar can look correct on your phone while remaining absent for the driver. Use a harmless test record to confirm both adults can open the intended shared calendar.",
+          "Keep unrelated private appointments and sensitive access information out of a broadly shared schedule. Share the details needed for the handoff with the people who need them."
+        ]
+      },
+      {
+        "heading": "Write a handoff someone else can follow",
+        "body": [
+          "In this example, use a clear collection entry such as “Swimming pickup — Leo” at 17:15. Record “pool reception, east entrance” and the real address when venues have similar names. Agree where to wait if the lesson runs late.",
+          "Keep collection time separate from departure time. Leo may need to leave at 16:55, but that does not mean the lesson finishes earlier. He can choose a personal reminder or departure commitment appropriate to his journey. One adult’s alert configuration is not proof another will receive a useful notification.",
+          "Ask Leo to confirm the driving responsibility through your normal conversation. Receiving an event or accepting attendance may not mean agreeing to collect someone. The calendar should record an arrangement you have actually made."
+        ]
+      },
+      {
+        "heading": "Change one Tuesday without changing the whole term",
+        "body": [
+          "Suppose Leo cannot collect on 3 November and Maya agrees to do it. State the exact date and responsibility first. Then update that pickup using an editor that clearly supports the required occurrence scope.",
+          "For a repeating pickup, check the changed date and the following Tuesday afterward. Do not rewrite the repeat rule to represent one swap. If the editor lacks a single-occurrence option, use the owning provider’s supported editor; do not assume every Save action asks which dates should change.",
+          "The driver change does not necessarily change the lesson itself. Preserve the school or club’s original invitation. If its schedule is a read-only subscription, use a separate writable handoff entry instead of expecting to edit the published lesson."
+        ]
+      },
+      {
+        "heading": "Confirm urgent changes directly",
+        "body": [
+          "A different entrance or a delayed driver shortly before collection is an urgent communication task. Update the calendar where needed, then contact the responsible adult through the agreed channel and get a reply. A saved edit is not a read receipt.",
+          "If the change is not confirmed, follow the family’s agreed backup arrangement and the venue’s collection rules. Do not infer arrival from a calendar status. This workflow makes no claim that Cloud Calendars provides chat, live location, attendance tracking or automatic task reassignment."
+        ]
+      },
+      {
+        "heading": "Review the handoffs, not just the activities",
+        "body": [
+          "During the weekly review, check the named adult, collection time, meeting point and exceptions. Agree who will update the record and how changes will be confirmed. Adding more unassigned reminders does not resolve an undecided responsibility.",
+          "For a course with a known finish date, check the last actual lesson before carrying a pickup into another term. A clear household routine works alongside permissions and provider rules; it does not replace them."
+        ]
+      }
+    ],
+    "claims": {},
+    "practical": [
+      "Identify the owning calendar and intended recipient before making changes.",
+      "Check the saved result and confirm important changes directly with the people affected."
+    ],
+    "faq": [
+      {
+        "q": "Do both adults need editing access?",
+        "a": "Only if both must update the shared schedule. Otherwise agree who maintains it and how changes are requested; check the actual provider permissions."
+      },
+      {
+        "q": "Does accepting an invitation confirm pickup?",
+        "a": "Confirm the responsibility explicitly. Attendance and driving are different commitments."
+      }
+    ],
+    "sourcesHeading": "Official guidance",
+    "sources": [
+      {
+        "label": "Apple: multiple calendars, visibility and moving events",
+        "url": "https://support.apple.com/guide/iphone/use-multiple-calendars-iph3d1110d4/ios"
+      },
+      {
+        "label": "Apple: default calendar settings",
+        "url": "https://support.apple.com/en-my/guide/iphone/iphc37be2016/27/ios/27"
+      },
+      {
+        "label": "Google: moving events on iPhone and iPad",
+        "url": "https://support.google.com/calendar/answer/78739?co=GENIE.Platform%3DiOS&hl=en"
+      }
+    ],
+    "seeAlso": [
+      "planning-a-week-in-ten-minutes",
+      "a-calendar-that-is-yours-to-share",
+      "recurring-events-without-the-mess"
+    ]
+  }
+}

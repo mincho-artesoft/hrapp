@@ -1,0 +1,165 @@
+{
+  "allPassed": true,
+  "changedArticleObjects": 25,
+  "newLocalizedGuides": 9,
+  "newEnglishGuides": 2,
+  "revisedExistingArticles": 14,
+  "homeLocalesPatched": 30,
+  "homeExactFieldPatches": 210,
+  "articles": [
+    {
+      "route": "/de/articles/the-widget-that-shows-what-is-next/",
+      "sha256": "87d5594e3c1af43b4f1c429af91c25d58736629f208b79b20db584db5bf74ba3",
+      "title": "Kommende Kalendertermine auf dem iPhone-Home-Bildschirm",
+      "faqCount": 3
+    },
+    {
+      "route": "/de/articles/a-countdown-to-your-next-meeting/",
+      "sha256": "f984e94e2c9cc2e2e0bd528fd421df1991ba45ceb81a862dbdf8a22781697e68",
+      "title": "Ein Kalender-Countdown ergänzt Erinnerungen",
+      "faqCount": 3
+    },
+    {
+      "route": "/articles/event-saved-to-wrong-calendar/",
+      "sha256": "d67c8b42201ed8e539058d803948f45621a46dcbf092d78dad425eadbbda08e6",
+      "title": "Event saved to the wrong calendar?",
+      "faqCount": 3
+    },
+    {
+      "route": "/articles/family-pickup-calendar-handoff/",
+      "sha256": "3a31681849fe726f23269007533df6b6302853f512e19725ccfb2567d64cefc7",
+      "title": "A family pickup plan with a clear handoff",
+      "faqCount": 3
+    },
+    {
+      "route": "/articles/what-an-all-day-event-really-means/",
+      "sha256": "0c4c607d61954d458924d6811ec72f84419f98f47c2c2afae3255794401f9782",
+      "title": "All-day calendar events: dates, availability and missing widget entries",
+      "faqCount": 3
+    },
+    {
+      "route": "/articles/the-widget-that-shows-what-is-next/",
+      "sha256": "fca282a745e7437042fb7d8e6be0ec1fe1f57546c731fb1e230bbe93c92245cd",
+      "title": "Show upcoming calendar events on your iPhone Home Screen",
+      "faqCount": 3
+    },
+    {
+      "route": "/articles/a-countdown-to-your-next-meeting/",
+      "sha256": "b662b896fc789bcc5c6de87418834fced660902ddca9d30f38fa7940ec0f300f",
+      "title": "Use a calendar Live Activity countdown without replacing alerts",
+      "faqCount": 3
+    },
+    {
+      "route": "/articles/lock-screen-without-unlocking/",
+      "sha256": "1e976a9c840810cc957f3c1edfc8ae55dd4f7c8b9f8fec8347771ef0e1def6a3",
+      "title": "Calendar information on the Lock Screen: choose the right feature",
+      "faqCount": 3
+    },
+    {
+      "route": "/articles/choosing-a-widget-size/",
+      "sha256": "0cc8b48ed9517247e755460b199117b9c73ab44b06dcbf59c5af8ec2bb98939b",
+      "title": "Choose a Cloud Calendars widget by its layout, not just its size",
+      "faqCount": 3
+    },
+    {
+      "route": "/articles/the-calendar-on-a-bedside-table/",
+      "sha256": "6b3e470b081b2d0e7ee893df7a4f90a887f599fecd860fe31a0ed5bfece6e1cf",
+      "title": "Use iPhone StandBy without mistaking a glance for tomorrow’s plan",
+      "faqCount": 3
+    },
+    {
+      "route": "/es/articles/the-widget-that-shows-what-is-next/",
+      "sha256": "5eb617d407d6607f39277d431a6a4a34765485dc9269d74f83892ac524b8061b",
+      "title": "Próximos eventos en la pantalla de inicio del iPhone",
+      "faqCount": 3
+    },
+    {
+      "route": "/es/articles/a-countdown-to-your-next-meeting/",
+      "sha256": "be162cfd05f549f05ba29f3f44cd4876c4e2da05ed9a7d9300a3adfbe3542533",
+      "title": "Una cuenta atrás que complementa los avisos del calendario",
+      "faqCount": 3
+    },
+    {
+      "route": "/fr/articles/the-widget-that-shows-what-is-next/",
+      "sha256": "4e4bbd85541d4782dc28cdd212b354ddc37ecfc31b6f38443f141012824749a5",
+      "title": "Afficher les prochains rendez-vous sur l’écran d’accueil",
+      "faqCount": 3
+    },
+    {
+      "route": "/fr/articles/a-countdown-to-your-next-meeting/",
+      "sha256": "7c3336e7478ec2a1248b204d84e55a142e15c2d3b828d18c4ab41a41ad6e284b",
+      "title": "Un compte à rebours qui complète les rappels",
+      "faqCount": 3
+    },
+    {
+      "route": "/it/articles/the-widget-that-shows-what-is-next/",
+      "sha256": "b088877e459d2c015a236052c1df97f0654425f7b9e0b250f46b95dc743f0db3",
+      "title": "I prossimi appuntamenti sulla schermata Home di iPhone",
+      "faqCount": 3
+    },
+    {
+      "route": "/it/articles/a-countdown-to-your-next-meeting/",
+      "sha256": "0d61d2cca1d2331bfdb2b3ce90f128c8128093e9ed8661ca229f6a479d5b7e03",
+      "title": "Un conto alla rovescia che affianca i promemoria",
+      "faqCount": 3
+    },
+    {
+      "route": "/es/articles/calendar-notifications-missing-silent-or-duplicated/",
+      "sha256": "4616fa73bcee7e47e939de381b6a74c5f1c1b4c7bcd61ec4188b3f863932e43a",
+      "title": "Notificaciones del calendario en iPhone: ¿faltan, no suenan o se duplican?",
+      "faqCount": 3
+    },
+    {
+      "route": "/es/articles/find-old-calendar-events-by-account-date-and-title/",
+      "sha256": "22fc9b4b9b9883eec820ec9d974c902ae0233a27860e4d48c81d0672b5699893",
+      "title": "Encuentra un evento antiguo: comprueba la cuenta, las fechas y los campos de búsqueda",
+      "faqCount": 3
+    },
+    {
+      "route": "/es/articles/calendar-export-ics-pdf-and-backup/",
+      "sha256": "197cc638c30448bf936330d20625318a384494c853d6532771194b90e01d5408",
+      "title": "Exportar un calendario: archivos ICS, PDF y suscripciones",
+      "faqCount": 3
+    },
+    {
+      "route": "/it/articles/calendar-notifications-missing-silent-or-duplicated/",
+      "sha256": "74304e9d927dba79ea10c453ad01c2800f4064048ab5a7d79189db59fd165376",
+      "title": "Notifiche del calendario su iPhone: assenti, silenziose o duplicate?",
+      "faqCount": 3
+    },
+    {
+      "route": "/it/articles/find-old-calendar-events-by-account-date-and-title/",
+      "sha256": "452a76af54b9c1465998be66fcbf74ceba0d780c60523abb413c76ab96f6e406",
+      "title": "Trovare un vecchio evento: controlla account, date e campi di ricerca",
+      "faqCount": 3
+    },
+    {
+      "route": "/it/articles/calendar-export-ics-pdf-and-backup/",
+      "sha256": "fee12c43f7711ee6d7a970534045286bc7830470975f1b88a76b1fa1ed9931a4",
+      "title": "Esportare un calendario: file ICS, PDF e iscrizioni",
+      "faqCount": 3
+    },
+    {
+      "route": "/pt/articles/calendar-notifications-missing-silent-or-duplicated/",
+      "sha256": "2a314abd7a0674b9716c16782c9a1142392ef515ae6aa41ea31b99e83f87fb2e",
+      "title": "Notificações do calendário no iPhone: ausentes, sem som ou duplicadas?",
+      "faqCount": 3
+    },
+    {
+      "route": "/pt/articles/find-old-calendar-events-by-account-date-and-title/",
+      "sha256": "d5d5cce853b35c7a24eb7bdc4c715016626af92a8c596aceb579dc93b96680dd",
+      "title": "Encontre um evento antigo: confira a conta, as datas e os campos de busca",
+      "faqCount": 3
+    },
+    {
+      "route": "/pt/articles/calendar-export-ics-pdf-and-backup/",
+      "sha256": "5da17485c7b5088e63f0ab5581395dd508cdbcafad783dcdc84ad166a0252d66",
+      "title": "Exportar um calendário: arquivos ICS, PDFs e assinaturas",
+      "faqCount": 3
+    }
+  ],
+  "metadataAudit": "batch05-built-metadata-qa.json",
+  "readableEnglishGuides": 21,
+  "llmsFullBytes": 115766,
+  "sitemapUrls": 453
+}

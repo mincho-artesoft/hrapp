@@ -88,21 +88,21 @@ export const HOME_RO: HomeCopy = {
   },
   widgets: {
     eyebrow: 'Nou în {v}',
-    title: ['Ziua dumneavoastră, înainte', 'să deblocați ceva.'],
-    lead: 'Cloud Calendars trăiește pe ecranul principal și pe cel de blocare, nu doar în spatele unei pictograme. Widgeturile poartă data, prognoza și ce urmează; o activitate live numără invers până acolo.',
+    title: ["Calendarul dumneavoastră,","dintr-o privire."],
+    lead: "Alegeți widgeturi cu dată și vreme sau liste de evenimente viitoare. O activitate live separată adaugă numărătoarea inversă.",
     newIn: 'Nou în',
     items: [
       {
         title: 'Trei dimensiuni de widget',
-        body: 'Mic pentru dată și temperatură, mediu pentru condiții, faza lunii și vânt, mare pentru programul zilei lângă prognoză.',
+        body: "Formatele mici și medii arată data și vremea. Listele medii și mari arată evenimente viitoare cu oră; intrările pentru întreaga zi se găsesc în aplicație.",
       },
       {
         title: 'Activitate live pe ecranul de blocare',
-        body: 'Evenimentul următor numără invers în Dynamic Island și pe ecranul de blocare, așa că nu trebuie să deschideți nimic ca să știți cât timp mai aveți.',
+        body: "Folosiți activitatea live pe dispozitive compatibile. Actualizările pot dura; verificați schimbările în aplicație.",
       },
       {
-        title: 'Notificări care ajung la timp',
-        body: 'Memento-uri care țin cont de timpul de deplasare și vă spun ce face vremea când ajungeți.',
+        title: "Mementouri la alegere",
+        body: "Alegeți alertele pentru evenimente și setările notificărilor. Verificați durata deplasării și prognoza în aplicație.",
       },
     ],
   },
@@ -229,7 +229,7 @@ export const HOME_RO: HomeCopy = {
       },
       {
         q: 'Ce arată widgeturile?',
-        a: 'Trei dimensiuni. Cel mic dă data cu condițiile și temperatura curente. Cel mediu adaugă condițiile, faza lunii și direcția vântului. Cel mare pune evenimentele apropiate lângă prognoză. O activitate live numără invers până la următorul eveniment.',
+        a: "Formatele mici și medii arată data și vremea. Listele medii și mari arată evenimente viitoare cu oră; intrările pentru întreaga zi se găsesc în aplicație. Folosiți activitatea live pe dispozitive compatibile. Actualizările pot dura; verificați schimbările în aplicație.",
       },
       {
         q: 'Ce dispozitive sunt acceptate?',

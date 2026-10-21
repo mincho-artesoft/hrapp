@@ -10,7 +10,7 @@
     "No content is declared researched merely because a corresponding route exists."
   ],
   "currentInventory": {
-    "articles": 379,
+    "articles": 390,
     "locales": [
       "ar-SA",
       "bg",
@@ -43,7 +43,7 @@
       "zh-Hans",
       "zh-Hant"
     ],
-    "englishArticles": 48
+    "englishArticles": 50
   },
   "clusters": [
     {
@@ -365,5 +365,22 @@
     "ascProof": "aso/all-locales-readback-20261021.json",
     "privacyAudit": "privacy-dataflow-20261021.json",
     "next": "Remaining source-body reviews, deeper localized prose, further primary competitor discovery and measured answer citations, privacy/release correspondence, later original media integration."
+  },
+  "fifthPublication": {
+    "date": "2026-10-21",
+    "changedArticleObjects": 25,
+    "newLocalizedGuides": 9,
+    "newEnglishGuides": 2,
+    "revisedArticles": 14,
+    "homeLocales": 30,
+    "homeFieldPatches": 210,
+    "sitemapUrls": 453,
+    "curatedTextGuides": 21,
+    "metadataAudit": "batch05-built-metadata-qa.json",
+    "publicProof": "batch05-public-qa.json",
+    "chatgptBaseline": "measurement/chatgpt-ui-20261021/summary.json",
+    "chatgptScope": "3 uncontrolled consumer UI responses; 1 first recommendation citing App Store; no global or causal claim",
+    "nextWeatherAudit": "batch06-weather/evidence.json",
+    "goalStatus": "active"
   }
 }

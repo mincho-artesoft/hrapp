@@ -88,21 +88,21 @@ export const HOME_NL_NL: HomeCopy = {
   },
   widgets: {
     eyebrow: 'Nieuw in {v}',
-    title: ['Uw dag, voordat u', 'ook maar iets ontgrendelt.'],
-    lead: 'Cloud Calendars leeft op het beginscherm en het toegangsscherm, niet alleen achter een app-symbool. Widgets dragen de datum, de verwachting en wat er komt; een live activiteit telt ernaartoe af.',
+    title: ["Uw agenda,","in één oogopslag."],
+    lead: "Kies widgets met datum en weer of lijsten met komende afspraken. Een aparte live activiteit voegt een aftelling toe.",
     newIn: 'Nieuw in',
     items: [
       {
         title: 'Drie widgetformaten',
-        body: 'Klein voor datum en temperatuur, middel voor omstandigheden, maanstand en wind, groot voor de agenda van de dag naast de verwachting.',
+        body: "Kleine en middelgrote indelingen tonen datum en weer. Middelgrote en grote lijsten tonen toekomstige afspraken met een tijdstip; bekijk hele-dagafspraken in de app.",
       },
       {
         title: 'Live activiteit op het toegangsscherm',
-        body: 'Uw volgende afspraak telt af in de Dynamic Island en op het toegangsscherm, zodat u nooit iets hoeft te openen om te weten hoeveel tijd u nog heeft.',
+        body: "Gebruik live activiteiten op ondersteunde apparaten. Updates kunnen even duren; controleer wijzigingen in de app.",
       },
       {
-        title: 'Meldingen die op tijd komen',
-        body: 'Herinneringen die rekening houden met reistijd en vertellen wat het weer doet als u aankomt.',
+        title: "Herinneringen naar uw keuze",
+        body: "Kies afspraakherinneringen en meldingsinstellingen. Controleer reistijd en weersverwachting in de app.",
       },
     ],
   },
@@ -230,7 +230,7 @@ export const HOME_NL_NL: HomeCopy = {
       },
       {
         q: 'Wat laten de widgets zien?',
-        a: 'Drie formaten. Klein geeft de datum met de huidige omstandigheden en temperatuur. Middel voegt omstandigheden, maanstand en windrichting toe. Groot zet uw eerstvolgende afspraken naast de verwachting. Een live activiteit telt af naar uw volgende afspraak.',
+        a: "Kleine en middelgrote indelingen tonen datum en weer. Middelgrote en grote lijsten tonen toekomstige afspraken met een tijdstip; bekijk hele-dagafspraken in de app. Gebruik live activiteiten op ondersteunde apparaten. Updates kunnen even duren; controleer wijzigingen in de app.",
       },
       {
         q: 'Welke toestellen worden ondersteund?',

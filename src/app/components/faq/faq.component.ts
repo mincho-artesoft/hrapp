@@ -2,6 +2,7 @@ import {
   ChangeDetectionStrategy,
   Component,
   OnInit,
+  OnDestroy,
   computed,
   inject,
   signal,
@@ -24,7 +25,7 @@ interface Qa {
   templateUrl: './faq.component.html',
   styleUrl: './faq.component.scss',
 })
-export class FaqComponent implements OnInit {
+export class FaqComponent implements OnInit, OnDestroy {
   /** Index of the open row, or -1 for none. */
   readonly open = signal(0);
 
@@ -84,4 +85,9 @@ export class FaqComponent implements OnInit {
     });
     this.doc.head.appendChild(script);
   }
+
+  ngOnDestroy(): void {
+    this.doc.getElementById('faq-jsonld')?.remove();
+  }
+
 }

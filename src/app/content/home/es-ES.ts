@@ -96,21 +96,21 @@ export const HOME_ES_ES: HomeCopy = {
   },
   widgets: {
     eyebrow: 'Novedad en {v}',
-    title: ['Tu día, antes de', 'desbloquear nada.'],
-    lead: 'Cloud Calendars vive en la pantalla de inicio y en la de bloqueo, no solo detrás de un icono. Los widgets llevan la fecha, la previsión y lo siguiente; una actividad en vivo hace la cuenta atrás.',
+    title: ["Tu calendario,","de un vistazo."],
+    lead: "Elige widgets de fecha y tiempo o listas de próximos eventos. Una actividad en directo independiente añade la cuenta atrás.",
     newIn: 'Novedad en',
     items: [
       {
         title: 'Tres tamaños de widget',
-        body: 'Pequeño para la fecha y la temperatura, mediano para condiciones, fase lunar y viento, grande para la agenda del día junto a la previsión.',
+        body: "Los diseños pequeños y medianos muestran fecha y tiempo. Las listas medianas y grandes muestran citas futuras con hora; consulta los eventos de todo el día en la app.",
       },
       {
         title: 'Actividad en vivo en la pantalla de bloqueo',
-        body: 'Tu próximo evento hace la cuenta atrás en la Dynamic Island y en la pantalla de bloqueo, así que nunca tienes que abrir nada para saber cuánto te queda.',
+        body: "Usa la actividad en directo en dispositivos compatibles. Las actualizaciones pueden tardar; comprueba los cambios en la app.",
       },
       {
-        title: 'Avisos que llegan a tiempo',
-        body: 'Recordatorios que respetan el tiempo de desplazamiento y te dicen qué hace el tiempo cuando llegues.',
+        title: "Recordatorios a tu medida",
+        body: "Elige avisos de eventos y ajustes de notificaciones. Comprueba el tiempo de viaje y la previsión en la app.",
       },
     ],
   },
@@ -238,7 +238,7 @@ export const HOME_ES_ES: HomeCopy = {
       },
       {
         q: '¿Qué muestran los widgets?',
-        a: 'Tres tamaños. El pequeño da la fecha con la condición actual y la temperatura. El mediano añade condiciones, fase lunar y dirección del viento. El grande pone tus próximos eventos junto a la previsión. Una actividad en vivo hace la cuenta atrás hasta tu próximo evento.',
+        a: "Los diseños pequeños y medianos muestran fecha y tiempo. Las listas medianas y grandes muestran citas futuras con hora; consulta los eventos de todo el día en la app. Usa la actividad en directo en dispositivos compatibles. Las actualizaciones pueden tardar; comprueba los cambios en la app.",
       },
       {
         q: '¿Qué dispositivos son compatibles?',
