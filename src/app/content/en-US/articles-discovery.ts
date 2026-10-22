@@ -257,7 +257,7 @@ export const DISCOVERY_EN_US: Readonly<Record<string, LocalisedArticle>> = {
     ]
   },
   "cozi-timetree-family-calendar-iphone-android": {
-    "updated": "2026-10-22",
+    "updated": "2026-10-23",
     "title": "Cozi or TimeTree for an iPhone and Android family? Check sharing and updates",
     "short": "Cozi and TimeTree for mixed-device families",
     "description": "Compare Cozi and TimeTree for family calendars across iPhone and Android. Check external feeds, imported events, permissions and urgent changes.",
@@ -268,6 +268,13 @@ export const DISCOVERY_EN_US: Readonly<Record<string, LocalisedArticle>> = {
         "body": [
           "Cozi describes a family organizer available on iPhone, Android and the web, combining a shared calendar with lists and meal planning. TimeTree describes separate shared calendars for groups such as family, school and hobbies. Decide whether you want one household organizer or several group schedules before comparing visual styles.",
           "For a practical trial, choose a fictional pickup and let two adults add and edit it from their own devices. Check where each person sees the latest time and who is responsible. Colour coding and visibility help with planning; neither alone proves that somebody has accepted a last-minute responsibility."
+        ]
+      },
+      {
+        "heading": "For couples and friend groups, check the group model",
+        "body": [
+          "A couple may need a small shared schedule while keeping work calendars separate. A friend group may need a calendar for one trip or recurring activity. TimeTree documents calendars for different groups; Cozi presents a household organizer. Choose the membership model that matches who should see each schedule.",
+          "Agree who maintains an event and who confirms changes. Keep a dinner plan or holiday schedule in one authoritative calendar rather than having each person circulate a separate imported copy. Sharing access is useful, but it does not prove that every participant has noticed a change or accepted a responsibility."
         ]
       },
       {
@@ -623,6 +630,357 @@ export const DISCOVERY_EN_US: Readonly<Record<string, LocalisedArticle>> = {
       "icloud-google-and-outlook-in-one-view",
       "what-calendar-sync-actually-does",
       "a-calendar-that-is-yours-to-share"
+    ]
+  },
+  "fantastical-readdle-calendar366-iphone-comparison": {
+    "updated": "2026-10-23",
+    "title": "Fantastical, Readdle or Calendar 366? Compare the iPhone workflow you need",
+    "short": "Compare three iPhone calendar alternatives",
+    "description": "Compare Fantastical, Calendars by Readdle and Calendar 366 by accounts, tasks, quick entry and weather. Check plan requirements on your actual devices.",
+    "lede": "These three calendar apps can look similar in a screenshot but differ in their account setup and planning controls. Start with the workflow you need every day, then test it on your actual devices. Arte Soft, the developer of Cloud Calendars, publishes this source-based comparison; it is not an independent speed or reliability benchmark.",
+    "sections": [
+      {
+        "heading": "Choose what must work before comparing appearance",
+        "body": [
+          "Write down your calendar providers, devices and three essential actions. An example is: see work and personal calendars together, complete a reminder and add a meeting quickly. Test those actions with private sample data before importing an entire schedule.",
+          "A product supporting the name of your provider does not establish that every connection method has identical permissions or features. A device calendar, a directly connected account and a subscribed feed can produce similar-looking entries while allowing different actions."
+        ]
+      },
+      {
+        "heading": "Fantastical: check account connections and quick entry",
+        "body": [
+          "Flexibits documents both direct calendar-account connections and options for calendars and reminders already configured in iOS. Its getting-started guide recommends direct connections for full use of the app’s features. Identify which route you selected instead of connecting the same calendar twice without a reason.",
+          "Fantastical also documents sentence-based entry and reusable event or task templates. Test an explicit date, duration and destination calendar, then inspect the saved result. Its syntax belongs to Fantastical; another app’s text field may interpret the same sentence differently."
+        ]
+      },
+      {
+        "heading": "Calendars by Readdle: check the task source",
+        "body": [
+          "Readdle presents Google, Outlook and iCloud calendars alongside task and natural-language entry features. Its task setup guide describes selecting iOS Reminders or Google Tasks in Task Options. That choice matters if completing a task on the phone must update a specific original list.",
+          "Use a disposable task to test completion at both ends, not just whether a title appears on a timeline. If you need a view or action on Mac as well as iPhone, test it there too. Do not assume identical controls from a shared product name."
+        ]
+      },
+      {
+        "heading": "Calendar 366: check system access, sets and weather location",
+        "body": [
+          "Calendar 366’s documentation distinguishes access to system calendars and reminders from direct account integrations. It describes calendar sets that select visible calendars and lists. Those sets can also determine a default calendar, so check where a newly created event will belong.",
+          "The same documentation describes its own natural-language parser and weather using Apple Weather, with system or custom location choices. For outdoor planning, verify the selected place instead of assuming the forecast follows each appointment’s address. These are publisher-documented capabilities, not features tested on your account."
+        ]
+      },
+      {
+        "heading": "Treat price and entitlement as a separate check",
+        "body": [
+          "Check the current local purchase screen, the features available after a trial ends and whether an earlier purchase changes your entitlement. Free download, a recurring subscription and a legacy purchase do not necessarily unlock the same feature set.",
+          "Publisher pages can change at different times. Readdle’s current product FAQ describes several core capabilities as free, while a separate free-versus-full help page lists a different division. Rather than treating one description as a universal promise, verify the required action in the installed app and its current purchase terms."
+        ]
+      },
+      {
+        "heading": "Where Cloud Calendars belongs in the shortlist",
+        "body": [
+          "Cloud Calendars is another iPhone and iPad option for selected calendars, multiple planning views, weather and widgets. Google sync is included in Base, Advanced removes ads and Premium adds Microsoft calendar support. Check the current plan and provider permissions for your setup.",
+          "If a specialist task connection, template command or desktop workflow is essential, use the product that documents and successfully performs that requirement. Compare saved results and daily effort; a checklist should help you choose, not imply that every feature mentioned here exists in Cloud Calendars."
+        ]
+      }
+    ],
+    "claims": {},
+    "practical": [
+      "List your accounts, devices and essential actions.",
+      "Choose one account-connection route and inspect the calendars it exposes.",
+      "Test quick entry and task completion with harmless examples.",
+      "Verify the weather location and the views used on each device.",
+      "Check current purchase terms after any trial or legacy entitlement."
+    ],
+    "faq": [
+      {
+        "q": "Which is the best alternative to Fantastical?",
+        "a": "It depends on your required workflow. Compare calendar and task sources, event entry, device support and current entitlement. This guide does not declare a universal performance winner."
+      },
+      {
+        "q": "Does the same provider name mean every app syncs identically?",
+        "a": "No. Check direct connections, device calendars, feeds and permissions separately, then verify an example change at its source."
+      },
+      {
+        "q": "Can I assume every advertised feature is free?",
+        "a": "No. Check the installed app, the local purchase screen and the features remaining after a trial. Publisher documentation may describe different versions or entitlements."
+      }
+    ],
+    "sourcesHeading": "Official documentation checked for this guide",
+    "sources": [
+      {
+        "label": "Fantastical: account connection routes",
+        "url": "https://flexibits.com/fantastical-ios/help/getting-started"
+      },
+      {
+        "label": "Fantastical: natural-language entry and templates",
+        "url": "https://flexibits.com/fantastical-ios/help/adding-events-and-tasks"
+      },
+      {
+        "label": "Readdle: current product capabilities and FAQ",
+        "url": "https://readdle.com/calendars"
+      },
+      {
+        "label": "Readdle: selecting a task source",
+        "url": "https://support.readdle.com/calendars/synchronization/how-to-sync-tasks-with-ios-reminders-or-google-tasks"
+      },
+      {
+        "label": "Readdle: separate free/full plan guidance",
+        "url": "https://apphelp.readdle.com/en/index.php?id=585&pg=kb.page"
+      },
+      {
+        "label": "Calendar 366: integrations, sets, quick entry and weather",
+        "url": "https://calendar366.com/help/index.html"
+      }
+    ],
+    "seeAlso": [
+      "what-fantastical-costs-and-what-this-does",
+      "natural-language-calendar-events-iphone",
+      "iphone-calendar-tasks-reminders-versus-event-alerts"
+    ]
+  },
+  "iphone-calendar-language-alternate-calendar-settings": {
+    "updated": "2026-10-23",
+    "title": "iPhone calendar in another language? Check language, region and alternate dates",
+    "short": "Calendar language and alternate dates",
+    "description": "Separate iPhone language, date format, alternate calendars and event titles. Find the relevant setting without removing your calendar account or events.",
+    "lede": "Unexpected characters beside a date do not necessarily mean the calendar app changed language. Interface language, regional formatting, alternate dates and event text are separate things. Identify which changed before adjusting settings. Arte Soft, the developer of Cloud Calendars, publishes this guide.",
+    "sections": [
+      {
+        "heading": "Identify the part of the screen that changed",
+        "body": [
+          "Look at a menu label, a month name, the date numbers and an event title separately. If menus remain in your usual language but extra date labels appear, investigate calendar display settings. If only one appointment has unfamiliar text, inspect that appointment’s title and source.",
+          "For example, a travel reservation can keep the organiser’s original title while the surrounding app menus remain English. Changing your device language is not an instruction to translate all saved appointment text. Avoid deleting an event or removing an account merely because its text looks unfamiliar."
+        ]
+      },
+      {
+        "heading": "Check the iPhone’s language and regional format",
+        "body": [
+          "Apple’s language-and-region guide places these controls in Settings, General, Language & Region. It separates language preferences from regional choices such as calendar format, first weekday and date format. Check the specific choice relevant to your problem.",
+          "If day and month order looks different, inspect the actual saved date before rescheduling. A date displayed as 03/04 can be ambiguous without its format. Use a month name or the full event details to confirm the intended appointment."
+        ]
+      },
+      {
+        "heading": "Check alternate calendars in Apple Calendar",
+        "body": [
+          "Apple’s Calendar settings guide documents alternate Chinese, Hebrew and Hijri calendars displayed alongside the Gregorian calendar. In the documented iOS 26 workflow, the control is Settings, Apps, Calendar, Alternate Calendars. Menu labels can differ by installed version.",
+          "The guide also separates Week Numbers and Start Week On. A number next to a week is not an extra appointment, and changing which weekday starts a grid does not itself move a saved event. Change one relevant display setting, return to the calendar and compare."
+        ]
+      },
+      {
+        "heading": "Use the controls belonging to the app you opened",
+        "body": [
+          "Apple Calendar settings are not universal instructions for every calendar app. A third-party app can have its own language, view and formatting choices. Check its help and device settings rather than assuming the same menu path exists inside it.",
+          "In Cloud Calendars, inspect the actual view and event details to establish whether the issue is a label, formatting or saved content. This guide does not claim that every Apple alternate-calendar setting is reproduced by Cloud Calendars. Keep the account connection intact while investigating a display issue."
+        ]
+      },
+      {
+        "heading": "Verify a harmless example before changing real plans",
+        "body": [
+          "Use one private appointment with an unambiguous date and title. Compare it in the app and the provider’s own view. If both identify the same day and time, a formatting difference is not evidence that the appointment moved.",
+          "If the saved date or time is genuinely wrong, correct that specific event using the usual owner and recurrence checks. Keep time-zone troubleshooting separate: changing interface language does not by itself explain a shifted meeting hour."
+        ]
+      }
+    ],
+    "claims": {},
+    "practical": [
+      "Identify whether menus, dates or event text are affected.",
+      "Inspect language and regional format separately.",
+      "In Apple Calendar, check alternate dates, week numbers and first weekday.",
+      "Change one display setting and compare the same appointment.",
+      "Correct a real event only after confirming its saved date and time."
+    ],
+    "faq": [
+      {
+        "q": "Why are there Chinese or Hebrew labels beside the date?",
+        "a": "One possible explanation is an alternate calendar display. Apple documents alternate calendars alongside Gregorian dates; inspect that setting before assuming your event text changed."
+      },
+      {
+        "q": "Will changing language translate all event titles?",
+        "a": "Do not assume so. Appointment titles are saved content and may retain the organiser’s wording even when app menus use another language."
+      },
+      {
+        "q": "Should I remove my calendar account to fix date labels?",
+        "a": "Start with display and regional settings. Removing an account is unnecessary for identifying whether a label or format is the issue."
+      }
+    ],
+    "sourcesHeading": "Official documentation checked for this guide",
+    "sources": [
+      {
+        "label": "Apple: language, region, calendar and date format",
+        "url": "https://support.apple.com/en-ie/guide/iphone/iphce20717a3/ios"
+      },
+      {
+        "label": "Apple: alternate calendars, week numbers and first weekday in iOS 26",
+        "url": "https://support.apple.com/en-gb/guide/iphone/iphc37be2016/26/ios/26"
+      }
+    ],
+    "seeAlso": [
+      "time-zones-and-the-flight-you-booked",
+      "what-an-all-day-event-really-means",
+      "change-calendar-color-iphone"
+    ]
+  },
+  "share-assign-reminders-iphone-calendar-difference": {
+    "updated": "2026-10-23",
+    "title": "Share and assign reminders on iPhone: lists are different from calendars",
+    "short": "Shared reminders and responsibility",
+    "description": "Share an Apple Reminders list, assign an item and check notification behaviour. Distinguish task responsibility from shared calendar access.",
+    "lede": "A shared appointment tells people when something happens. An assigned reminder identifies an action for a person. For household chores or preparation before a meeting, choose the tool that represents the responsibility clearly. Arte Soft, the developer of Cloud Calendars, publishes this guide.",
+    "sections": [
+      {
+        "heading": "Choose a shared list for actions, a calendar for commitments",
+        "body": [
+          "Put an agreed collection time in the family calendar and put “pack the equipment” in an appropriate task list. Those records answer different questions. Seeing the collection time does not tell you whether the equipment has been packed.",
+          "For a practical household example, agree on the task owner, the required result and when it needs to be done. Keep the task short enough that the person marking it complete knows what completion means. If a handoff is urgent, confirm it directly rather than assuming a colour or assignment was noticed."
+        ]
+      },
+      {
+        "heading": "Check iCloud participation before sharing an Apple Reminders list",
+        "body": [
+          "Apple’s collaboration guide requires the participants to use their Apple Accounts with Reminders enabled in iCloud. It notes that the described features use updated iCloud reminders and that some features are unavailable with other account types.",
+          "Open the intended list in Reminders and use its Share control. Check who will receive access before sending the invitation. These are Apple Reminders instructions; sharing a calendar in another app does not automatically share a Reminders list."
+        ]
+      },
+      {
+        "heading": "Assign the item after the list is shared",
+        "body": [
+          "Apple documents assigning a reminder only after sharing its list. Select the reminder and choose the person using the assignment control. In the documented newer interface, the person selector or an @ mention can assign a list participant.",
+          "For a simple test, share a disposable list with a willing participant, add a harmless item and assign it. Ask them to check it on their device. Their acceptance of the list invitation and their understanding of a particular responsibility are separate checks."
+        ]
+      },
+      {
+        "heading": "Distinguish due alerts from shared-list activity",
+        "body": [
+          "Apple’s support article says notification settings on your reminders are not shared with other people. Its separate shared-list controls can notify you when items are added or completed. Do not assume that setting an alert on your phone configures the same alert on every participant’s device.",
+          "Have the responsible person review their own notifications for a time-critical action. If a change affects a real appointment, update the authoritative calendar as well. Completing a task should not be treated as proof that a separate meeting time changed."
+        ]
+      },
+      {
+        "heading": "Review membership and test completion",
+        "body": [
+          "Apple’s collaboration guide also describes controlling whether invited people can invite others. Review membership for a household or work list and keep private information out of lists shared with a wider group.",
+          "After completing the disposable item, inspect the shared list on both devices. In Cloud Calendars, continue to use the calendar for event planning; this guide does not promise Apple Reminders sharing or assignment controls inside our app. A combined planning routine can use separate tools without pretending they are one data system."
+        ]
+      }
+    ],
+    "claims": {},
+    "practical": [
+      "Decide whether the item is a scheduled commitment or an action to complete.",
+      "Check iCloud Reminders availability for every participant.",
+      "Share the intended list before assigning its item.",
+      "Verify the assignment and each person’s notification choices.",
+      "Check completion on both devices and communicate urgent changes directly."
+    ],
+    "faq": [
+      {
+        "q": "Does sharing a calendar also share my Reminders list?",
+        "a": "No. Treat calendar access and list collaboration as separate operations. Use the sharing controls for the system that owns the item."
+      },
+      {
+        "q": "Why can I not assign a reminder to someone?",
+        "a": "Apple documents assignment within a shared list. Check list sharing, participant acceptance and iCloud Reminders setup before assuming an app malfunction."
+      },
+      {
+        "q": "Will my reminder alert be copied to every participant?",
+        "a": "Apple says your reminder notification settings are not shared with others. Review each person’s alerts and the separate shared-list activity settings."
+      }
+    ],
+    "sourcesHeading": "Official documentation checked for this guide",
+    "sources": [
+      {
+        "label": "Apple: share lists, assign items and manage notifications",
+        "url": "https://support.apple.com/en-au/105124"
+      },
+      {
+        "label": "Apple: iCloud participation and collaboration permissions",
+        "url": "https://support.apple.com/guide/iphone/iph2a8f9121e/ios"
+      }
+    ],
+    "seeAlso": [
+      "iphone-calendar-tasks-reminders-versus-event-alerts",
+      "family-pickup-calendar-handoff",
+      "cozi-timetree-family-calendar-iphone-android"
+    ]
+  },
+  "can-others-see-google-calendar-tasks": {
+    "updated": "2026-10-23",
+    "title": "Can others see your Google Calendar tasks? Check timed tasks and permissions",
+    "short": "Google task visibility",
+    "description": "Check whether Google tasks have start and end times, how busy blocks appear, and how task visibility interacts with shared calendar permissions.",
+    "lede": "Google’s current guidance distinguishes timed tasks from other tasks. Check the item before assuming it is visible—or hidden. Arte Soft, the developer of Cloud Calendars, publishes this guide.",
+    "sections": [
+      {
+        "heading": "Identify the kind of item before checking access",
+        "body": [
+          "Open the item in Google Calendar and establish whether it is a task or an event. A work block created as an ordinary event follows event settings; calling it “task time” in the title does not change its type.",
+          "Check whether the task has both start and end times. Google says tasks without either time remain private; timed tasks have configurable visibility. Inspect the current item rather than applying a blanket rule."
+        ]
+      },
+      {
+        "heading": "Inspect the timed task’s visibility at the source",
+        "body": [
+          "Google documents desktop controls under the task editor’s Advanced settings. Inspect those alongside calendar access; a third-party calendar view may not expose them.",
+          "A shared calendar permission and an individual item’s visibility work together. Before putting private wording into a timed work block, inspect both. If your interface does not offer the documented controls, check the current account and supported Google interface rather than assuming the option exists in every app."
+        ]
+      },
+      {
+        "heading": "Separate a busy block from its details",
+        "body": [
+          "Google distinguishes a timed task’s Busy block from its details. What another person sees depends on the item’s visibility and their calendar permissions.",
+          "Use a neutral example such as “Sample work block” when checking the result. Do not test visibility by entering confidential information and then asking whether it leaked. Have a consenting calendar participant inspect the harmless example from their own account."
+        ]
+      },
+      {
+        "heading": "Verify existing tasks after permission changes",
+        "body": [
+          "Google says changed calendar sharing settings apply to future tasks. Check existing timed tasks individually instead of assuming their access changed as intended.",
+          "For a practical check, compare one existing harmless task with a newly created example. Record what the recipient can see: no item, busy time or details. Use the task’s supported visibility controls to correct an unintended result, then verify again from the recipient’s account."
+        ]
+      },
+      {
+        "heading": "Keep other task systems separate",
+        "body": [
+          "These instructions concern Google Calendar’s documented tasks. They are not rules for Apple Reminders, a project-management app or a private note that happens to contain a deadline. A task completion connection also is different from calendar sharing.",
+          "Cloud Calendars can help you review calendar commitments, but this guide does not claim that it edits Google task visibility or task sharing. Make access changes in the service that owns the task and verify the specific recipient experience there."
+        ]
+      }
+    ],
+    "claims": {},
+    "practical": [
+      "Confirm whether the item is a task or ordinary event.",
+      "Check whether the task has both start and end times.",
+      "Review the task’s visibility alongside calendar permissions.",
+      "Test a neutral example from the intended recipient’s account.",
+      "Check existing timed tasks after changing sharing settings."
+    ],
+    "faq": [
+      {
+        "q": "Are all Google tasks always private?",
+        "a": "No blanket rule is safe. Google distinguishes tasks without both times from timed tasks with visibility controls."
+      },
+      {
+        "q": "Can someone see a busy block without seeing the task title?",
+        "a": "Yes, Google documents that possibility. Verify the task’s visibility and the recipient’s calendar permissions."
+      },
+      {
+        "q": "Can I change Google task visibility in any iPhone calendar app?",
+        "a": "Do not assume so. This guide follows Google’s documented desktop controls; another app showing calendar events may not expose task settings."
+      }
+    ],
+    "sourcesHeading": "Official documentation checked for this guide",
+    "sources": [
+      {
+        "label": "Google: task visibility and its relationship to calendar permissions",
+        "url": "https://support.google.com/calendar/answer/34580"
+      },
+      {
+        "label": "Google: timed-task creation and editing controls",
+        "url": "https://support.google.com/calendar/answer/9901136?hl=en"
+      }
+    ],
+    "seeAlso": [
+      "who-can-see-what-in-google-calendar",
+      "iphone-calendar-tasks-reminders-versus-event-alerts",
+      "work-and-personal-without-two-apps"
     ]
   }
 };

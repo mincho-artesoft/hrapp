@@ -409,7 +409,7 @@ export const PLANNING_EN_US: Readonly<Record<string, LocalisedArticle>> = {
 },
 
   'recurring-events-without-the-mess': {
-  "updated": "2026-10-21",
+  "updated": "2026-10-23",
   "title": "Recurring calendar events: change one date or the series safely",
   "short": "Recurring events",
   "description": "Check ownership and edit scope before changing a recurring calendar event. Handle one-off changes, future schedules and exceptions without deleting the series.",
@@ -468,6 +468,7 @@ export const PLANNING_EN_US: Readonly<Record<string, LocalisedArticle>> = {
     "Keep existing exceptions and the original invitation while diagnosing a mismatch."
   ],
   "faq": [
+    {"q": "How do I repeat an event only on selected days?", "a": "Write the intended dates first, then use the owning provider’s supported repeat controls. Google’s desktop guide starts with the repeat menu; Apple’s Mac guide documents custom frequency and pattern choices. Verify several resulting dates and the end condition. Do not assume those desktop controls exist in every iPhone editor."},
     {
       "q": "Does every recurring-event edit ask about scope?",
       "a": "No. Do not assume Cloud Calendars will ask you to choose the scope. Verify the options before saving; use a supported provider editor for a single-date exception if that choice is absent."
@@ -607,6 +608,7 @@ export const PLANNING_EN_US: Readonly<Record<string, LocalisedArticle>> = {
     }
   ],
   "seeAlso": [
+    "iphone-calendar-language-alternate-calendar-settings",
     "recurring-events-without-the-mess",
     "weather-where-the-event-is",
     "calendar-export-ics-pdf-and-backup"

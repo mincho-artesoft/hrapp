@@ -162,8 +162,8 @@
         "can others see my tasks in google calendar",
         "are google calendar tasks visible to others"
       ],
-      "canonical": null,
-      "decision": "Distinct privacy/visibility question; verify official Google task sharing rules before answering. Event sharing alone is not evidence.",
+      "canonical": "can-others-see-google-calendar-tasks",
+      "decision": "New source-backed guide distinguishes timed tasks, Busy blocks and visibility permissions.",
       "observedRows": [
         {
           "query": "are tasks visible to others on google calendar",

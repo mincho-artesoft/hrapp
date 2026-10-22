@@ -1,13 +1,13 @@
 {
-  "date": "2026-10-22",
+  "date": "2026-10-23",
   "goalStatus": "active_incomplete",
-  "previousGoalTurn": "Progress: three guides and a query matrix were published and pushed in commit 92345ab.",
-  "googleActualQueries": 31,
-  "consumerChatGPTFreshSamples": 8,
+  "previousGoalTurn": "Progress: four guides and research expansion published and pushed in commit 57ee608.",
+  "googleActualQueries": 35,
+  "consumerChatGPTFreshSamples": 12,
   "historicalChatGPTSamples": 3,
-  "newEnglishArticles": 7,
-  "totalEnglishArticles": 65,
-  "sitemapUrls": 99,
+  "newEnglishArticles": 11,
+  "totalEnglishArticles": 69,
+  "sitemapUrls": 103,
   "heldTranslatedArticlesAndHubs": 436,
   "implementedSlugs": [
     "shift-work-calendar-iphone-rotating-schedules",
@@ -16,24 +16,30 @@
     "cozi-timetree-family-calendar-iphone-android",
     "iphone-calendar-tasks-reminders-versus-event-alerts",
     "automatic-time-blocking-versus-manual-calendar",
-    "what-is-a-cloud-calendar"
+    "what-is-a-cloud-calendar",
+    "fantastical-readdle-calendar366-iphone-comparison",
+    "iphone-calendar-language-alternate-calendar-settings",
+    "share-assign-reminders-iphone-calendar-difference",
+    "can-others-see-google-calendar-tasks"
   ],
   "delivered": [
-    "Query-to-canonical matrix in JSON and CSV",
-    "Separate unvalidated related-query backlog",
-    "Five saved fresh consumer ChatGPT answers with method limitations",
-    "Three source-backed English guides with contextual incoming links",
-    "Build and public URL checks; live deployment; visual inspection"
+    "35 saved actual Google UI observations with query-to-canonical mapping",
+    "12 saved fresh consumer ChatGPT answers and an intent map; seeded comparison separated",
+    "150 available own-site Search Console query rows and selected editorial priorities",
+    "275 related/follow-up strings classified, including filters and navigational artifacts",
+    "Eleven source-backed new English guides across three increments, with contextual incoming links",
+    "Two existing guides expanded for couples/friend groups and selected recurring weekdays",
+    "Build checks, public readback, full sitemap validation and visual proof"
   ],
   "remaining": [
-    "Complete branded comparisons for Calendar 366, Fantastical and Readdle beyond the existing workflow guides.",
-    "Verify 20 distinct-intent leads from the classified 212-row snapshot and classify 40 later suggestions.",
-    "Expand consumer ChatGPT buyer-intent samples; one of the eight current prompts is explicitly seeded with competitor names.",
-    "Map the rest of the 150 available own-site Search Console query rows and assess existing snippet/landing-page fit.",
-    "Broaden query language and market coverage, prioritising observed markets; current non-English SERPs do not establish local-country ranks.",
-    "Check remaining offline/privacy/visual-planner intents against actual supported product behaviour and official evidence."
+    "Research shared household displays versus an iPad app for the three outstanding original leads.",
+    "Verify provider-to-provider task bridging versus selected task-source display.",
+    "Review remaining named BusyCal, Google Calendar and Fantastical device/task comparison leads.",
+    "Check alternate-calendar Home/Lock Screen widget support separately from Calendar display settings.",
+    "Finish mapping the remaining own-site GSC queries and evaluate landing-page/snippet fit.",
+    "Broaden market/language observations proportionately; current language samples are not local-country rank measurements."
   ],
-  "completionAudit": "Not achieved: 31 actual Google queries, eight fresh ChatGPT samples and selected GSC groups do not establish comprehensive competitor-query coverage. Four further distinct-intent pages implemented this increment; publication evidence is recorded separately.",
+  "completionAudit": "Not achieved: three original leads concerning household displays remain unresolved, along with later task-bridge, named-competitor and alternate-calendar widget questions. Own-site query mapping and broader search coverage remain incomplete. Observations do not establish all competitor keywords.",
   "lastIncrementArticles": 4,
   "ownSiteSearchConsoleQueries": 150,
   "classifiedOriginalSuggestionRows": 212,
@@ -41,10 +47,15 @@
   "laterUnclassifiedSuggestionRows": 40,
   "lastIncrementPublication": {
     "newArticles": 4,
-    "build": "comparison-build-check.json",
-    "public": "comparison-public-check.json",
-    "deploy": "comparison-deploy.log",
-    "screenshot": "comparison-visual-proof.json",
-    "result": "Published and verified; 99/99 sitemap URLs successful."
-  }
+    "expandedArticles": 2,
+    "build": "round3-build-check.json",
+    "public": "round3-public-check.json",
+    "deploy": "round3-deploy.log",
+    "screenshot": "round3-visual-proof.json",
+    "result": "Published and verified; 103/103 sitemap URLs successful."
+  },
+  "lastIncrementExpandedArticles": 2,
+  "classifiedRelatedSuggestionRows": 275,
+  "originalDistinctIntentLeadsResolved": 17,
+  "remainingOriginalDistinctIntentLeads": 3
 }

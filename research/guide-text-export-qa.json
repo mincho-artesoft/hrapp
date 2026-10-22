@@ -1,8 +1,8 @@
 {
-  "guides": 65,
+  "guides": 69,
   "selection": "tools/guide-text-selection.json",
   "extraction": "Visible article headings, paragraphs, lists, FAQs and source links; gallery/other-app cards excluded.",
-  "exportedCharacters": 424491,
+  "exportedCharacters": 447367,
   "records": [
     {
       "slug": "what-calendar-sync-actually-does",
@@ -37,8 +37,8 @@
     {
       "slug": "what-fantastical-costs-and-what-this-does",
       "source": "https://www.cloud-calendars.com/articles/what-fantastical-costs-and-what-this-does/",
-      "blocks": 45,
-      "characters": 5674
+      "blocks": 46,
+      "characters": 5814
     },
     {
       "slug": "what-you-get-without-paying-anything",
@@ -73,14 +73,14 @@
     {
       "slug": "recurring-events-without-the-mess",
       "source": "https://www.cloud-calendars.com/articles/recurring-events-without-the-mess/",
-      "blocks": 45,
-      "characters": 6592
+      "blocks": 47,
+      "characters": 6975
     },
     {
       "slug": "time-zones-and-the-flight-you-booked",
       "source": "https://www.cloud-calendars.com/articles/time-zones-and-the-flight-you-booked/",
-      "blocks": 51,
-      "characters": 7790
+      "blocks": 52,
+      "characters": 7928
     },
     {
       "slug": "what-an-all-day-event-really-means",
@@ -127,8 +127,8 @@
     {
       "slug": "family-pickup-calendar-handoff",
       "source": "https://www.cloud-calendars.com/articles/family-pickup-calendar-handoff/",
-      "blocks": 46,
-      "characters": 6139
+      "blocks": 47,
+      "characters": 6272
     },
     {
       "slug": "weather-inside-your-calendar",
@@ -211,8 +211,8 @@
     {
       "slug": "who-can-see-what-in-google-calendar",
       "source": "https://www.cloud-calendars.com/articles/who-can-see-what-in-google-calendar/",
-      "blocks": 45,
-      "characters": 5882
+      "blocks": 46,
+      "characters": 5989
     },
     {
       "slug": "taking-back-a-calendar-you-shared",
@@ -373,8 +373,8 @@
     {
       "slug": "cozi-timetree-family-calendar-iphone-android",
       "source": "https://www.cloud-calendars.com/articles/cozi-timetree-family-calendar-iphone-android/",
-      "blocks": 44,
-      "characters": 5936
+      "blocks": 47,
+      "characters": 6619
     },
     {
       "slug": "iphone-calendar-tasks-reminders-versus-event-alerts",
@@ -393,6 +393,30 @@
       "source": "https://www.cloud-calendars.com/articles/what-is-a-cloud-calendar/",
       "blocks": 43,
       "characters": 6068
+    },
+    {
+      "slug": "fantastical-readdle-calendar366-iphone-comparison",
+      "source": "https://www.cloud-calendars.com/articles/fantastical-readdle-calendar366-iphone-comparison/",
+      "blocks": 46,
+      "characters": 6412
+    },
+    {
+      "slug": "iphone-calendar-language-alternate-calendar-settings",
+      "source": "https://www.cloud-calendars.com/articles/iphone-calendar-language-alternate-calendar-settings/",
+      "blocks": 39,
+      "characters": 5015
+    },
+    {
+      "slug": "share-assign-reminders-iphone-calendar-difference",
+      "source": "https://www.cloud-calendars.com/articles/share-assign-reminders-iphone-calendar-difference/",
+      "blocks": 39,
+      "characters": 5028
+    },
+    {
+      "slug": "can-others-see-google-calendar-tasks",
+      "source": "https://www.cloud-calendars.com/articles/can-others-see-google-calendar-tasks/",
+      "blocks": 39,
+      "characters": 4415
     }
   ]
 }

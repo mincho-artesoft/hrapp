@@ -18,10 +18,14 @@ import { ArticleFacts } from './types';
  * long tail around those twelve.
  */
 export const ARTICLE_FACTS: Readonly<Record<string, ArticleFacts>> = {
+  'can-others-see-google-calendar-tasks': { slug: 'can-others-see-google-calendar-tasks', family: 'sharing', intent: 'core', claims: [], updated: '2026-10-23' },
+  'share-assign-reminders-iphone-calendar-difference': { slug: 'share-assign-reminders-iphone-calendar-difference', family: 'sharing', intent: 'core', claims: [], updated: '2026-10-23' },
+  'iphone-calendar-language-alternate-calendar-settings': { slug: 'iphone-calendar-language-alternate-calendar-settings', family: 'planning', intent: 'core', claims: [], updated: '2026-10-23' },
+  'fantastical-readdle-calendar366-iphone-comparison': { slug: 'fantastical-readdle-calendar366-iphone-comparison', family: 'compare', intent: 'compare', claims: [], updated: '2026-10-23' },
   'what-is-a-cloud-calendar': { slug: 'what-is-a-cloud-calendar', family: 'unify', intent: 'core', claims: [], updated: '2026-10-22' },
   'automatic-time-blocking-versus-manual-calendar': { slug: 'automatic-time-blocking-versus-manual-calendar', family: 'planning', intent: 'compare', claims: [], updated: '2026-10-22' },
   'iphone-calendar-tasks-reminders-versus-event-alerts': { slug: 'iphone-calendar-tasks-reminders-versus-event-alerts', family: 'planning', intent: 'core', claims: [], updated: '2026-10-22' },
-  'cozi-timetree-family-calendar-iphone-android': { slug: 'cozi-timetree-family-calendar-iphone-android', family: 'compare', intent: 'compare', claims: [], updated: '2026-10-22' },
+  'cozi-timetree-family-calendar-iphone-android': { slug: 'cozi-timetree-family-calendar-iphone-android', family: 'compare', intent: 'compare', claims: [], updated: '2026-10-23' },
   'shift-work-calendar-iphone-rotating-schedules': { slug: 'shift-work-calendar-iphone-rotating-schedules', family: 'planning', intent: 'core', claims: [], updated: '2026-10-22' },
   'booking-link-or-shared-calendar': { slug: 'booking-link-or-shared-calendar', family: 'sharing', intent: 'compare', claims: [], updated: '2026-10-22' },
   'natural-language-calendar-events-iphone': { slug: 'natural-language-calendar-events-iphone', family: 'planning', intent: 'editing', claims: [], updated: '2026-10-22' },
@@ -328,7 +332,7 @@ export const ARTICLE_FACTS: Readonly<Record<string, ArticleFacts>> = {
     family: 'planning',
     intent: 'editing',
     claims: [],
-    updated: '2026-08-27',
+    updated: '2026-10-23',
   },
   'time-zones-and-the-flight-you-booked': {
     slug: 'time-zones-and-the-flight-you-booked',

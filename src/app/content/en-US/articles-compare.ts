@@ -262,6 +262,7 @@ export const COMPARE_EN_US: Readonly<Record<string, LocalisedArticle>> = {
       }
     ],
     "seeAlso": [
+    "fantastical-readdle-calendar366-iphone-comparison",
       "icloud-google-and-outlook-in-one-view",
       "what-calendar-sync-actually-does",
       "what-a-subscription-actually-buys"

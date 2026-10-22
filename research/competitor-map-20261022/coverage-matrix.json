@@ -1,9 +1,9 @@
 {
-  "date": "2026-10-22",
-  "status": "incomplete_research_with_seven_implemented_intent_gaps",
+  "date": "2026-10-23",
+  "status": "incomplete_research_with_eleven_implemented_intent_gaps",
   "method": {
-    "google": "31 actual Google UI queries: English plus one German and one Japanese query. hl=en gl=us pws=0, desktop, signed-in, physical location not controlled. Heading order is not universal organic rank.",
-    "chatgpt": "Eight fresh independent consumer UI conversations. auto-scheduling explicitly names competitors; classify it as a seeded comparison, not blind discovery. Account personalization not controlled.",
+    "google": "35 actual Google UI queries; English plus one German and one Japanese query. hl=en gl=us pws=0, signed-in desktop, physical location not controlled. Captured heading order is not universal organic rank.",
+    "chatgpt": "Twelve fresh consumer UI conversations, each in a new chat. Eleven unseeded product-discovery prompts and one named-competitor auto-scheduling comparison. Backend model and account personalization not controlled; no recommendation-share or causal-lift claim.",
     "volume": "No measured keyword volume or difficulty; no claim that every competitor keyword is known.",
     "canonicalPolicy": "Group same-intent variants. New pages require a distinct reader task and source-backed substance.",
     "sources": "Competitor help pages verify publisher claims only, not runtime performance."
@@ -118,9 +118,9 @@
       "query": "best Fantastical alternative iPhone calendar",
       "evidenceFile": "google-observations.json",
       "observedAt": "2026-10-22T20:14:32.157Z",
-      "canonical": "https://www.cloud-calendars.com/articles/what-fantastical-costs-and-what-this-does/",
-      "coverage": "expand",
-      "assessment": "Existing price/workflow guide; needs broader current feature comparison.",
+      "canonical": "https://www.cloud-calendars.com/articles/fantastical-readdle-calendar366-iphone-comparison/",
+      "coverage": "implemented-comparison",
+      "assessment": "New three-product workflow comparison linked with existing price guide. Publisher capabilities checked; not a device benchmark or every feature reviewed.",
       "observedResults": [
         {
           "displayOrder": 1,
@@ -1312,9 +1312,9 @@
       "query": "Fantastical alternative calendar iPhone",
       "evidenceFile": "google-observations.json",
       "observedAt": "2026-10-22T20:35:57.114Z",
-      "canonical": "https://www.cloud-calendars.com/articles/what-fantastical-costs-and-what-this-does/",
-      "coverage": "expand",
-      "assessment": "Branded alternative query observed; broaden current feature comparison.",
+      "canonical": "https://www.cloud-calendars.com/articles/fantastical-readdle-calendar366-iphone-comparison/",
+      "coverage": "implemented-comparison",
+      "assessment": "New three-product workflow comparison linked with existing price guide. Publisher capabilities checked; not a device benchmark or every feature reviewed.",
       "observedResults": [
         {
           "displayOrder": 1,
@@ -1377,9 +1377,9 @@
       "query": "Calendars by Readdle alternative iPhone",
       "evidenceFile": "google-observations.json",
       "observedAt": "2026-10-22T20:36:23.021Z",
-      "canonical": "https://www.cloud-calendars.com/articles/three-calendar-apps-is-two-too-many/",
-      "coverage": "research",
-      "assessment": "Generic combined-view article is not a dedicated Readdle comparison; needs feature-by-feature verification.",
+      "canonical": "https://www.cloud-calendars.com/articles/fantastical-readdle-calendar366-iphone-comparison/",
+      "coverage": "implemented-comparison",
+      "assessment": "New three-product workflow comparison linked with existing price guide. Publisher capabilities checked; not a device benchmark or every feature reviewed.",
       "observedResults": [
         {
           "displayOrder": 1,
@@ -1873,9 +1873,9 @@
       "query": "Calendar 366 vs Fantastical iPhone",
       "evidenceFile": "google-observations.json",
       "observedAt": "2026-10-22T20:47:28.080Z",
-      "canonical": "https://www.cloud-calendars.com/articles/what-fantastical-costs-and-what-this-does/",
-      "coverage": "research",
-      "assessment": "Observed branded comparison; current Fantastical article does not completely compare Calendar 366.",
+      "canonical": "https://www.cloud-calendars.com/articles/fantastical-readdle-calendar366-iphone-comparison/",
+      "coverage": "implemented-comparison",
+      "assessment": "New three-product workflow comparison linked with existing price guide. Publisher capabilities checked; not a device benchmark or every feature reviewed.",
       "observedResults": [
         {
           "displayOrder": 1,
@@ -1989,20 +1989,278 @@
         "iCloud calendar on Android",
         "iCloud Calendar on iPhone"
       ]
+    },
+    {
+      "id": "three-calendar-comparison",
+      "query": "Fantastical vs Calendars by Readdle Calendar 366 iPhone",
+      "evidenceFile": "google-observations.json",
+      "observedAt": "2026-10-22T21:07:09.445Z",
+      "canonical": "https://www.cloud-calendars.com/articles/fantastical-readdle-calendar366-iphone-comparison/",
+      "coverage": "new",
+      "assessment": "Source-based three-app workflow guide; avoids universal free-plan and reliability claims.",
+      "observedResults": [
+        {
+          "displayOrder": 1,
+          "heading": "Fantastical vs Apple Calendar : r/FantasticalCalendar",
+          "url": "https://www.reddit.com/r/FantasticalCalendar/comments/1w4kfrz/fantastical_vs_apple_calendar/"
+        },
+        {
+          "displayOrder": 2,
+          "heading": "Fantastical Vs Calendar 366: Which One To Choose?",
+          "url": "https://medium.com/productivity-side/fantastical-vs-calendar-366-which-one-to-choose-130c96af8eb3"
+        },
+        {
+          "displayOrder": 3,
+          "heading": "Compare Fantastical vs. Readdle Calendars in 2026",
+          "url": "https://slashdot.org/software/comparison/Fantastical-vs-Readdle-Calendars/"
+        },
+        {
+          "displayOrder": 4,
+          "heading": "Apple Calendar vs. Fantastical vs. Readdle Calendar and More",
+          "url": "https://techpastorsolutions.com/Site/Blog/The+Great+Calendar+Showdown+(2025)-+Apple+Calendar+vs.+Fantastical+vs.+Readdle+Calendar+and+More"
+        },
+        {
+          "displayOrder": 5,
+          "heading": "Exploring BusyCal vs. Fantastical in 2024 - Software - MPU Talk",
+          "url": "https://talk.macpowerusers.com/t/exploring-busycal-vs-fantastical-in-2024/36673"
+        },
+        {
+          "displayOrder": 6,
+          "heading": "Best Calendar Program for iPhone: 6 Apps Compared (2026)",
+          "url": "https://www.clickreach.io/blog/best-calendar-apps-iphone"
+        },
+        {
+          "displayOrder": 7,
+          "heading": "Searching for Calendar App",
+          "url": "https://forums.macrumors.com/threads/searching-for-calendar-app.2489656/"
+        },
+        {
+          "displayOrder": 8,
+          "heading": "Apple Calendar vs Fantastical: Which Is Better?",
+          "url": "https://horacal.app/blog/apple-calendar-vs-fantastical/"
+        }
+      ],
+      "relatedQueries": [
+        "More results from www.reddit.com",
+        "Fantastical vs calendars by readdle calendar 366 iphone reddit",
+        "Fantastical vs calendars by readdle calendar 366 iphone free"
+      ]
+    },
+    {
+      "id": "calendar-language",
+      "query": "iPhone calendar showing Chinese characters language alternate calendar",
+      "evidenceFile": "google-observations.json",
+      "observedAt": "2026-10-22T21:08:27.177Z",
+      "canonical": "https://www.cloud-calendars.com/articles/iphone-calendar-language-alternate-calendar-settings/",
+      "coverage": "new",
+      "assessment": "Separates interface language, regional format, alternate dates and saved event text.",
+      "observedResults": [
+        {
+          "displayOrder": 1,
+          "heading": "Calendar randomly changed language?",
+          "url": "https://discussions.apple.com/thread/255160313"
+        },
+        {
+          "displayOrder": 2,
+          "heading": "How to Add Chinese, Hebrew, or Hijri Alternate Calendars ...",
+          "url": "https://www.youtube.com/watch?v=jx0RkksOSU0"
+        },
+        {
+          "displayOrder": 3,
+          "heading": "How to Change Calendar Language in iPhone",
+          "url": "https://www.facebook.com/fb-answers/how-to-change-calendar-language-in-iphone/"
+        },
+        {
+          "displayOrder": 4,
+          "heading": "Change your Calendar settings on iPhone",
+          "url": "https://support.apple.com/en-az/guide/iphone/iphc37be2016/ios"
+        },
+        {
+          "displayOrder": 5,
+          "heading": "iPhone 16/16 Pro Max: How to Turn Off Alternate Calendars",
+          "url": "https://www.youtube.com/watch?v=SBuIYlXwOwc"
+        },
+        {
+          "displayOrder": 6,
+          "heading": "I have many Chinese characters on my iPhone calendar ...",
+          "url": "https://www.justanswer.com/computer/dcxpo-chinese-characters-iphone-calendar-set.html"
+        },
+        {
+          "displayOrder": 7,
+          "heading": "How to configure alternate calendars",
+          "url": "https://www.youtube.com/watch?v=IgjhcPies_I"
+        },
+        {
+          "displayOrder": 8,
+          "heading": "Calendar on iPhone randomly having an event in Chinese ...",
+          "url": "https://www.reddit.com/r/applehelp/comments/53z1ru/calendar_on_iphone_randomly_having_an_event_in/"
+        },
+        {
+          "displayOrder": 9,
+          "heading": "iPhone calendar showing Chinese months - Ask Different",
+          "url": "https://apple.stackexchange.com/questions/379494/iphone-calendar-showing-chinese-months"
+        }
+      ],
+      "relatedQueries": [
+        "More results from discussions.apple.com",
+        "Iphone calendar showing chinese characters language alternate calendar iphone 11",
+        "How to change calendar language on iPhone",
+        "How to get Islamic calendar on iPhone Lock Screen",
+        "How to change calendar language Windows 11",
+        "How to change Calendar language on Android",
+        "How to add Hebrew calendar to iPhone lock screen",
+        "How to add islamic calendar to iphone ios 16",
+        "How to add islamic calendar on iPhone home Screen"
+      ]
+    },
+    {
+      "id": "shared-reminders",
+      "query": "share assign reminders iPhone family list",
+      "evidenceFile": "google-observations.json",
+      "observedAt": "2026-10-22T21:08:47.662Z",
+      "canonical": "https://www.cloud-calendars.com/articles/share-assign-reminders-iphone-calendar-difference/",
+      "coverage": "new",
+      "assessment": "Separates list collaboration, assignment and notification settings from calendar access.",
+      "observedResults": [
+        {
+          "displayOrder": 1,
+          "heading": "Share lists and collaborate in Reminders on iPhone",
+          "url": "https://support.apple.com/guide/iphone/share-and-collaborate-iph2a8f9121e/ios"
+        },
+        {
+          "displayOrder": 2,
+          "heading": "Share and assign reminders on your iPhone or iPad",
+          "url": "https://support.apple.com/en-us/105124"
+        },
+        {
+          "displayOrder": 3,
+          "heading": "if you and your partner have an iPhone, create a shared ...",
+          "url": "https://www.reddit.com/r/LifeProTips/comments/1iull4w/lpt_if_you_and_your_partner_have_an_iphone_create/"
+        },
+        {
+          "displayOrder": 4,
+          "heading": "How to Share Apple Reminders Lists (Family & Team Guide)",
+          "url": "https://medium.com/write-a-catalyst/how-to-share-apple-reminders-lists-family-team-guide-51c7f81fdd2b"
+        },
+        {
+          "displayOrder": 5,
+          "heading": "Assign Reminders",
+          "url": "https://danstutorials.com/tutorials/tutor-for-reminders/lessons/lessons-for-reminders-on-the-iphone-with-ios/topics/assign-reminders-2/"
+        },
+        {
+          "displayOrder": 6,
+          "heading": "Can Two People Share Reminders on iPhone? Yes",
+          "url": "https://www.yougot.ai/blog/technology/setup-guides/can-two-people-share-reminders-on-iphone"
+        },
+        {
+          "displayOrder": 7,
+          "heading": "How to Create a Shared Reminders List on iPhone",
+          "url": "https://ioshacker.com/how-to/create-shared-reminders-on-iphone"
+        },
+        {
+          "displayOrder": 8,
+          "heading": "How To Set Up a Family Reminder",
+          "url": "https://www.iphonelife.com/blog/30704/how-set-family-reminder"
+        }
+      ],
+      "relatedQueries": [
+        "Can t share reminder list iPhone",
+        "How to share reminders on iPhone with family",
+        "How to create a shared list on iPhone",
+        "Apple Reminders shared list",
+        "How to share reminders on iPhone iOS 26",
+        "How to assign reminders on iPhone",
+        "How to create a shared reminder list on iPhone",
+        "How to set a reminder on iPhone with alarm"
+      ]
+    },
+    {
+      "id": "google-task-visibility",
+      "query": "can others see my Google Calendar tasks",
+      "evidenceFile": "google-observations.json",
+      "observedAt": "2026-10-22T21:09:47.812Z",
+      "canonical": "https://www.cloud-calendars.com/articles/can-others-see-google-calendar-tasks/",
+      "coverage": "new",
+      "assessment": "Current Google timed-task visibility rules checked; no blanket all-tasks-private claim.",
+      "observedResults": [
+        {
+          "displayOrder": 1,
+          "heading": "Change event & task visibility on your calendar - Computer",
+          "url": "https://support.google.com/calendar/answer/34580?hl=en&co=GENIE.Platform%3DDesktop"
+        },
+        {
+          "displayOrder": 2,
+          "heading": "How can I see tasks from another user on my calendar",
+          "url": "https://support.google.com/calendar/thread/229492622/how-can-i-see-tasks-from-another-user-on-my-calendar?hl=en"
+        },
+        {
+          "displayOrder": 3,
+          "heading": "Can someone see all my google calendar events, just be ...",
+          "url": "https://www.reddit.com/r/GMail/comments/1imkorc/can_someone_see_all_my_google_calendar_events/"
+        },
+        {
+          "displayOrder": 4,
+          "heading": "Are Google Calendar tasks private? - That Online Stuff",
+          "url": "https://www.thatonlinestuff.com.au/google-tasks-private/"
+        },
+        {
+          "displayOrder": 5,
+          "heading": "Can different users see tasks in shared Google calendars?",
+          "url": "https://www.quora.com/Can-different-users-see-tasks-in-shared-Google-calendars"
+        },
+        {
+          "displayOrder": 6,
+          "heading": "Are Tasks on Google Calendar Private?",
+          "url": "https://www.facebook.com/fb-answers/are-tasks-on-google-calendar-private/"
+        },
+        {
+          "displayOrder": 7,
+          "heading": "Can my coworkers that can see all my events also ...",
+          "url": "https://support.google.com/calendar/thread/114064727/can-my-coworkers-that-can-see-all-my-events-also-see-all-my-tasks?hl=en"
+        },
+        {
+          "displayOrder": 8,
+          "heading": "How to Share a Google Tasks List in 2026",
+          "url": "https://www.youtube.com/watch?v=ZdYDmeO5fao"
+        },
+        {
+          "displayOrder": 9,
+          "heading": "Can Coworkers See My Personal Google Calendar?",
+          "url": "https://syncdate.app/blog/can-coworkers-see-personal-google-calendar"
+        }
+      ],
+      "relatedQueries": [
+        "Can others see my google calendar tasks on my phone",
+        "Can others see my google calendar tasks on android",
+        "Can others see my google calendar tasks ios",
+        "How to change default visibility in Google Calendar for all events",
+        "How to change Default visibility on Google Calendar",
+        "How to make Google Calendar private on phone",
+        "What is Default visibility in Google Calendar",
+        "Who can see my Google calendar"
+      ]
     }
   ],
   "remaining": [
-    "Complete competitor-by-competitor feature and alternative coverage, including Calendar 366, Readdle, Task planners and newly observed apps.",
-    "Expand independent ChatGPT samples to the remaining buyer intents, distinguishing seeded comparisons from blind discovery.",
-    "Verify the 20 distinct-intent leads identified in the original 212-row classified suggestion snapshot.",
-    "Classify new suggestion strings from later queries separately; old snapshot is not all current discovery.",
-    "Map own-site Search Console queries by intent and use actual impressions/CTR to prioritise meaningful improvements.",
-    "Broaden query languages and controlled market samples; current German/Japanese tests are language discovery only."
+    "Research shared household displays versus an iPad app for the three outstanding original leads.",
+    "Verify provider-to-provider task bridging versus selected task-source display.",
+    "Review remaining named BusyCal, Google Calendar and Fantastical device/task comparison leads.",
+    "Check alternate-calendar Home/Lock Screen widget support separately from Calendar display settings.",
+    "Finish mapping the remaining own-site GSC queries and evaluate landing-page/snippet fit.",
+    "Broaden market/language observations proportionately; current language samples are not local-country rank measurements."
   ],
   "ownSiteEvidence": {
     "file": "gsc-query-observations.json",
     "queryRows": 150,
     "range": "2026-08-25 to 2026-10-20",
     "limitation": "Own-site impressions; not competitor keyword volume. Anonymized queries can be omitted."
+  },
+  "suggestionReview": {
+    "file": "all-discovered-classification.json",
+    "rowsReviewed": 275,
+    "originalDistinctIntentLeads": 20,
+    "implementedOrExpandedAmongOriginalLeads": 17,
+    "remainingOriginalLeads": 3,
+    "note": "Remaining three leads concern shared household displays. Broader competitor and provider/task bridge questions remain explicitly open."
   }
 }

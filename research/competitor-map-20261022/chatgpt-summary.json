@@ -1,5 +1,5 @@
 {
-  "sampleSize": 8,
+  "sampleSize": 12,
   "independentConversations": true,
   "backendModel": "not exposed",
   "accountPersonalization": "not controlled",
@@ -56,6 +56,27 @@
       "limitation": "Mention detection supports manual review; it is not recommendation ranking. Citation popup sources were not expanded."
     },
     {
+      "id": "drag-edit",
+      "prompt": "Which iPhone calendar apps let me drag appointments to reschedule them? Compare suitable options, explain limits for recurring or shared events and cite current official sources.",
+      "promptClass": "unseeded-product-discovery",
+      "file": "chatgpt-drag-edit.json",
+      "mentionedBrands": [
+        "Fantastical",
+        "Calendars by Readdle",
+        "Apple Calendar",
+        "Google Calendar",
+        "Outlook"
+      ],
+      "cloudMentioned": false,
+      "directSourceUrls": [
+        "https://support.apple.com/en-euro/guide/iphone/iph3d110f84/27/ios/27?utm_source=chatgpt.com",
+        "https://flexibits.com/fantastical-ios/help/calendar-views?utm_source=chatgpt.com",
+        "https://support.readdle.com/calendars/quick-start-with-events/how-to-reschedule-events?utm_source=chatgpt.com",
+        "https://support.google.com/calendar/answer/72143?co=GENIE.Platform=iOS&utm_source=chatgpt.com"
+      ],
+      "limitation": "Mention detection supports manual review; it is not recommendation ranking. Citation popup sources were not expanded."
+    },
+    {
       "id": "family",
       "prompt": "Which shared family calendar apps work for an iPhone and Android household coordinating school pickups and changing schedules? Compare practical sharing and responsibility handoff, and cite official sources.",
       "promptClass": "unseeded-product-discovery",
@@ -103,6 +124,69 @@
         "https://support.readdle.com/calendars/billing-subscription/free-vs-full-version-of-the-app?utm_source=chatgpt.com",
         "https://apps.apple.com/us/app/tiny-calendar-planner-tasks/id514917848?utm_source=chatgpt.com",
         "https://www.cloud-calendars.com/?utm_source=chatgpt.com"
+      ],
+      "limitation": "Mention detection supports manual review; it is not recommendation ranking. Citation popup sources were not expanded."
+    },
+    {
+      "id": "ipad",
+      "prompt": "Which iPad calendar apps offer useful month and week views with weather for planning? Compare suitable options, distinguish a full calendar view from a widget and cite current official product sources.",
+      "promptClass": "unseeded-product-discovery",
+      "file": "chatgpt-ipad.json",
+      "mentionedBrands": [
+        "Cloud Calendars",
+        "Fantastical",
+        "Calendars by Readdle",
+        "Calendar 366",
+        "Timepage"
+      ],
+      "cloudMentioned": true,
+      "directSourceUrls": [
+        "https://support.readdle.com/calendars/calendars-premium/weather-updates?utm_source=chatgpt.com",
+        "https://flexibits.com/fantastical?utm_source=chatgpt.com",
+        "https://calendar366.com/help/index.html?utm_source=chatgpt.com",
+        "https://bonobolabs.com/support/timepage/navigating-timeline-and-day-view/?utm_source=chatgpt.com"
+      ],
+      "limitation": "Mention detection supports manual review; it is not recommendation ranking. Citation popup sources were not expanded."
+    },
+    {
+      "id": "live-activity",
+      "prompt": "Which iPhone calendar apps offer a Live Activity or Dynamic Island countdown to my next meeting? Distinguish this from a Lock Screen widget or an ordinary reminder notification, and cite current official sources.",
+      "promptClass": "unseeded-product-discovery",
+      "file": "chatgpt-live-activity.json",
+      "mentionedBrands": [
+        "Apple Calendar",
+        "Outlook",
+        "Structured",
+        "BusyCal"
+      ],
+      "cloudMentioned": false,
+      "directSourceUrls": [
+        "https://apps.apple.com/us/app/proximum/id6787688495?utm_source=chatgpt.com",
+        "https://apps.apple.com/sg/app/what-now-live-calendar/id6821417283?utm_source=chatgpt.com",
+        "https://www.groupcal.app/blog/smarter-shared-schedules-introducing-groupcal-for-ios-27/?utm_source=chatgpt.com",
+        "https://apps.apple.com/gb/app/timely/id6756438073?utm_source=chatgpt.com"
+      ],
+      "limitation": "Mention detection supports manual review; it is not recommendation ranking. Citation popup sources were not expanded."
+    },
+    {
+      "id": "offline",
+      "prompt": "Which iPhone calendar apps can be used offline without a subscription? Distinguish viewing previously synced appointments, creating or editing offline, later syncing and features that still need internet. Cite official sources and identify any unsupported claims.",
+      "promptClass": "unseeded-product-discovery",
+      "file": "chatgpt-offline.json",
+      "mentionedBrands": [
+        "Calendars by Readdle",
+        "Apple Calendar",
+        "Google Calendar"
+      ],
+      "cloudMentioned": false,
+      "directSourceUrls": [
+        "https://support.apple.com/en-euro/guide/iphone/iph3d110f84/ios?utm_source=chatgpt.com",
+        "https://support.apple.com/en-ie/guide/iphone/iphdafdf98a1/ios?utm_source=chatgpt.com",
+        "https://support.google.com/calendar/answer/1340696?co=GENIE.Platform=iOS&utm_source=chatgpt.com",
+        "https://readdle.com/calendars?utm_source=chatgpt.com",
+        "https://support.readdle.com/calendars/billing-subscription/free-vs-full-version-of-the-app?utm_source=chatgpt.com",
+        "https://proton.me/support/proton-calendar-guide?utm_source=chatgpt.com",
+        "https://proton.me/support/protoncalendar-create-modify-events?utm_source=chatgpt.com"
       ],
       "limitation": "Mention detection supports manual review; it is not recommendation ranking. Citation popup sources were not expanded."
     },

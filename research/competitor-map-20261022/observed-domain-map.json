@@ -1,5 +1,5 @@
 {
-  "method": "Every observed result domain; includes publishers, forums and official app pages. This is not a list of verified competing products or search volumes.",
+  "method": "All observed result domains, including forums and publishers; not a verified competitor list or keyword volume.",
   "domains": {
     "9to5mac.com": [
       {
@@ -46,6 +46,12 @@
         "queryId": "travel",
         "heading": "How do I set floating timezone on iOS calendar?",
         "url": "https://apple.stackexchange.com/questions/452690/how-do-i-set-floating-timezone-on-ios-calendar",
+        "capturedDisplayOrder": 9
+      },
+      {
+        "queryId": "calendar-language",
+        "heading": "iPhone calendar showing Chinese months - Ask Different",
+        "url": "https://apple.stackexchange.com/questions/379494/iphone-calendar-showing-chinese-months",
         "capturedDisplayOrder": 9
       }
     ],
@@ -417,6 +423,14 @@
         "capturedDisplayOrder": 7
       }
     ],
+    "danstutorials.com": [
+      {
+        "queryId": "shared-reminders",
+        "heading": "Assign Reminders",
+        "url": "https://danstutorials.com/tutorials/tutor-for-reminders/lessons/lessons-for-reminders-on-the-iphone-with-ios/topics/assign-reminders-2/",
+        "capturedDisplayOrder": 5
+      }
+    ],
     "dayprivate.com": [
       {
         "queryId": "privacy",
@@ -489,6 +503,12 @@
         "heading": "How can I sync reminders with Google ?",
         "url": "https://discussions.apple.com/thread/4140082",
         "capturedDisplayOrder": 7
+      },
+      {
+        "queryId": "calendar-language",
+        "heading": "Calendar randomly changed language?",
+        "url": "https://discussions.apple.com/thread/255160313",
+        "capturedDisplayOrder": 1
       }
     ],
     "escapesf.net": [
@@ -565,6 +585,14 @@
         "capturedDisplayOrder": 1
       }
     ],
+    "forums.macrumors.com": [
+      {
+        "queryId": "three-calendar-comparison",
+        "heading": "Searching for Calendar App",
+        "url": "https://forums.macrumors.com/threads/searching-for-calendar-app.2489656/",
+        "capturedDisplayOrder": 7
+      }
+    ],
     "get-alfred.ai": [
       {
         "queryId": "fantastical-brand",
@@ -603,6 +631,14 @@
         "heading": "Apple Calendar Integration",
         "url": "https://help.shiftcare.com/en/articles/14260509-apple-calendar-integration",
         "capturedDisplayOrder": 6
+      }
+    ],
+    "horacal.app": [
+      {
+        "queryId": "three-calendar-comparison",
+        "heading": "Apple Calendar vs Fantastical: Which Is Better?",
+        "url": "https://horacal.app/blog/apple-calendar-vs-fantastical/",
+        "capturedDisplayOrder": 8
       }
     ],
     "howbout.app": [
@@ -659,6 +695,14 @@
         "heading": "Beste Kalender Apps fürs iPhone im Vergleich 2026",
         "url": "https://iosapps.de/apps/vergleich/kalender-apps/",
         "capturedDisplayOrder": 5
+      }
+    ],
+    "ioshacker.com": [
+      {
+        "queryId": "shared-reminders",
+        "heading": "How to Create a Shared Reminders List on iPhone",
+        "url": "https://ioshacker.com/how-to/create-shared-reminders-on-iphone",
+        "capturedDisplayOrder": 7
       }
     ],
     "it.cornell.edu": [
@@ -761,6 +805,18 @@
         "heading": "Fantastical Vs Calendar 366: Which One To Choose?",
         "url": "https://medium.com/productivity-side/fantastical-vs-calendar-366-which-one-to-choose-130c96af8eb3",
         "capturedDisplayOrder": 2
+      },
+      {
+        "queryId": "three-calendar-comparison",
+        "heading": "Fantastical Vs Calendar 366: Which One To Choose?",
+        "url": "https://medium.com/productivity-side/fantastical-vs-calendar-366-which-one-to-choose-130c96af8eb3",
+        "capturedDisplayOrder": 2
+      },
+      {
+        "queryId": "shared-reminders",
+        "heading": "How to Share Apple Reminders Lists (Family & Team Guide)",
+        "url": "https://medium.com/write-a-catalyst/how-to-share-apple-reminders-lists-family-team-guide-51c7f81fdd2b",
+        "capturedDisplayOrder": 4
       }
     ],
     "micalapp.com": [
@@ -913,6 +969,14 @@
         "capturedDisplayOrder": 3
       }
     ],
+    "slashdot.org": [
+      {
+        "queryId": "three-calendar-comparison",
+        "heading": "Compare Fantastical vs. Readdle Calendars in 2026",
+        "url": "https://slashdot.org/software/comparison/Fantastical-vs-Readdle-Calendars/",
+        "capturedDisplayOrder": 3
+      }
+    ],
     "smahospital.jp": [
       {
         "queryId": "weather-ja",
@@ -965,6 +1029,24 @@
         "heading": "Keep your calendars up to date and share them with iCloud",
         "url": "https://support.apple.com/guide/icloud/what-you-can-do-with-icloud-and-calendar-mm15eb200ab4/icloud",
         "capturedDisplayOrder": 3
+      },
+      {
+        "queryId": "calendar-language",
+        "heading": "Change your Calendar settings on iPhone",
+        "url": "https://support.apple.com/en-az/guide/iphone/iphc37be2016/ios",
+        "capturedDisplayOrder": 4
+      },
+      {
+        "queryId": "shared-reminders",
+        "heading": "Share lists and collaborate in Reminders on iPhone",
+        "url": "https://support.apple.com/guide/iphone/share-and-collaborate-iph2a8f9121e/ios",
+        "capturedDisplayOrder": 1
+      },
+      {
+        "queryId": "shared-reminders",
+        "heading": "Share and assign reminders on your iPhone or iPad",
+        "url": "https://support.apple.com/en-us/105124",
+        "capturedDisplayOrder": 2
       }
     ],
     "support.google.com": [
@@ -997,6 +1079,24 @@
         "heading": "Can Google tasks be synced with Apple reminders?",
         "url": "https://support.google.com/calendar/thread/305159420/can-google-tasks-be-synced-with-apple-reminders?hl=en",
         "capturedDisplayOrder": 4
+      },
+      {
+        "queryId": "google-task-visibility",
+        "heading": "Change event & task visibility on your calendar - Computer",
+        "url": "https://support.google.com/calendar/answer/34580?hl=en&co=GENIE.Platform%3DDesktop",
+        "capturedDisplayOrder": 1
+      },
+      {
+        "queryId": "google-task-visibility",
+        "heading": "How can I see tasks from another user on my calendar",
+        "url": "https://support.google.com/calendar/thread/229492622/how-can-i-see-tasks-from-another-user-on-my-calendar?hl=en",
+        "capturedDisplayOrder": 2
+      },
+      {
+        "queryId": "google-task-visibility",
+        "heading": "Can my coworkers that can see all my events also ...",
+        "url": "https://support.google.com/calendar/thread/114064727/can-my-coworkers-that-can-see-all-my-events-also-see-all-my-tasks?hl=en",
+        "capturedDisplayOrder": 7
       }
     ],
     "support.microsoft.com": [
@@ -1021,6 +1121,14 @@
         "capturedDisplayOrder": 3
       }
     ],
+    "syncdate.app": [
+      {
+        "queryId": "google-task-visibility",
+        "heading": "Can Coworkers See My Personal Google Calendar?",
+        "url": "https://syncdate.app/blog/can-coworkers-see-personal-google-calendar",
+        "capturedDisplayOrder": 9
+      }
+    ],
     "syncthemcalendars.com": [
       {
         "queryId": "combine",
@@ -1032,6 +1140,12 @@
     "talk.macpowerusers.com": [
       {
         "queryId": "calendar366-comparison",
+        "heading": "Exploring BusyCal vs. Fantastical in 2024 - Software - MPU Talk",
+        "url": "https://talk.macpowerusers.com/t/exploring-busycal-vs-fantastical-in-2024/36673",
+        "capturedDisplayOrder": 5
+      },
+      {
+        "queryId": "three-calendar-comparison",
         "heading": "Exploring BusyCal vs. Fantastical in 2024 - Software - MPU Talk",
         "url": "https://talk.macpowerusers.com/t/exploring-busycal-vs-fantastical-in-2024/36673",
         "capturedDisplayOrder": 5
@@ -1048,6 +1162,14 @@
         "queryId": "travel",
         "heading": "Understand Calendar App Time Zone Support to Avoid ...",
         "url": "https://talk.tidbits.com/t/understand-calendar-app-time-zone-support-to-avoid-scheduling-mishaps/30557",
+        "capturedDisplayOrder": 4
+      }
+    ],
+    "techpastorsolutions.com": [
+      {
+        "queryId": "three-calendar-comparison",
+        "heading": "Apple Calendar vs. Fantastical vs. Readdle Calendar and More",
+        "url": "https://techpastorsolutions.com/Site/Blog/The+Great+Calendar+Showdown+(2025)-+Apple+Calendar+vs.+Fantastical+vs.+Readdle+Calendar+and+More",
         "capturedDisplayOrder": 4
       }
     ],
@@ -1159,6 +1281,14 @@
         "capturedDisplayOrder": 9
       }
     ],
+    "www.clickreach.io": [
+      {
+        "queryId": "three-calendar-comparison",
+        "heading": "Best Calendar Program for iPhone: 6 Apps Compared (2026)",
+        "url": "https://www.clickreach.io/blog/best-calendar-apps-iphone",
+        "capturedDisplayOrder": 6
+      }
+    ],
     "www.cloud-calendars.com": [
       {
         "queryId": "export",
@@ -1237,6 +1367,18 @@
         "heading": "Compare Cozi Vs TimeTree Vs Other Family Scheduling ...",
         "url": "https://www.facebook.com/fb-answers/compare-cozi-vs-timetree-vs-other-family-scheduling-tools/",
         "capturedDisplayOrder": 9
+      },
+      {
+        "queryId": "calendar-language",
+        "heading": "How to Change Calendar Language in iPhone",
+        "url": "https://www.facebook.com/fb-answers/how-to-change-calendar-language-in-iphone/",
+        "capturedDisplayOrder": 3
+      },
+      {
+        "queryId": "google-task-visibility",
+        "heading": "Are Tasks on Google Calendar Private?",
+        "url": "https://www.facebook.com/fb-answers/are-tasks-on-google-calendar-private/",
+        "capturedDisplayOrder": 6
       }
     ],
     "www.flickplanner.com": [
@@ -1307,11 +1449,27 @@
         "capturedDisplayOrder": 8
       }
     ],
+    "www.iphonelife.com": [
+      {
+        "queryId": "shared-reminders",
+        "heading": "How To Set Up a Family Reminder",
+        "url": "https://www.iphonelife.com/blog/30704/how-set-family-reminder",
+        "capturedDisplayOrder": 8
+      }
+    ],
     "www.itecheverything.com": [
       {
         "queryId": "natural-language",
         "heading": "Use Natural Language to Schedule your day.",
         "url": "https://www.itecheverything.com/post/introducing-natural-calendar-use-natural-language-to-schedule-your-day",
+        "capturedDisplayOrder": 6
+      }
+    ],
+    "www.justanswer.com": [
+      {
+        "queryId": "calendar-language",
+        "heading": "I have many Chinese characters on my iPhone calendar ...",
+        "url": "https://www.justanswer.com/computer/dcxpo-chinese-characters-iphone-calendar-set.html",
         "capturedDisplayOrder": 6
       }
     ],
@@ -1419,6 +1577,14 @@
         "heading": "Claire Mail: Email, calendar and reminders, in one fast app",
         "url": "https://www.producthunt.com/products/claire-mail",
         "capturedDisplayOrder": 7
+      }
+    ],
+    "www.quora.com": [
+      {
+        "queryId": "google-task-visibility",
+        "heading": "Can different users see tasks in shared Google calendars?",
+        "url": "https://www.quora.com/Can-different-users-see-tasks-in-shared-Google-calendars",
+        "capturedDisplayOrder": 5
       }
     ],
     "www.reddit.com": [
@@ -1589,6 +1755,30 @@
         "heading": "Fantastical vs Apple Calendar : r/FantasticalCalendar",
         "url": "https://www.reddit.com/r/FantasticalCalendar/comments/1w4kfrz/fantastical_vs_apple_calendar/",
         "capturedDisplayOrder": 1
+      },
+      {
+        "queryId": "three-calendar-comparison",
+        "heading": "Fantastical vs Apple Calendar : r/FantasticalCalendar",
+        "url": "https://www.reddit.com/r/FantasticalCalendar/comments/1w4kfrz/fantastical_vs_apple_calendar/",
+        "capturedDisplayOrder": 1
+      },
+      {
+        "queryId": "calendar-language",
+        "heading": "Calendar on iPhone randomly having an event in Chinese ...",
+        "url": "https://www.reddit.com/r/applehelp/comments/53z1ru/calendar_on_iphone_randomly_having_an_event_in/",
+        "capturedDisplayOrder": 8
+      },
+      {
+        "queryId": "shared-reminders",
+        "heading": "if you and your partner have an iPhone, create a shared ...",
+        "url": "https://www.reddit.com/r/LifeProTips/comments/1iull4w/lpt_if_you_and_your_partner_have_an_iphone_create/",
+        "capturedDisplayOrder": 3
+      },
+      {
+        "queryId": "google-task-visibility",
+        "heading": "Can someone see all my google calendar events, just be ...",
+        "url": "https://www.reddit.com/r/GMail/comments/1imkorc/can_someone_see_all_my_google_calendar_events/",
+        "capturedDisplayOrder": 3
       }
     ],
     "www.saner.ai": [
@@ -1613,6 +1803,14 @@
         "heading": "Readdle Calendars Alternatives & Competitors",
         "url": "https://www.softwaresuggest.com/readdle-calendars/alternatives",
         "capturedDisplayOrder": 2
+      }
+    ],
+    "www.thatonlinestuff.com.au": [
+      {
+        "queryId": "google-task-visibility",
+        "heading": "Are Google Calendar tasks private? - That Online Stuff",
+        "url": "https://www.thatonlinestuff.com.au/google-tasks-private/",
+        "capturedDisplayOrder": 4
       }
     ],
     "www.thisandthat.chat": [
@@ -1701,6 +1899,14 @@
         "capturedDisplayOrder": 10
       }
     ],
+    "www.yougot.ai": [
+      {
+        "queryId": "shared-reminders",
+        "heading": "Can Two People Share Reminders on iPhone? Yes",
+        "url": "https://www.yougot.ai/blog/technology/setup-guides/can-two-people-share-reminders-on-iphone",
+        "capturedDisplayOrder": 6
+      }
+    ],
     "www.youtube.com": [
       {
         "queryId": "combine",
@@ -1760,6 +1966,30 @@
         "queryId": "cloud-calendar-definition",
         "heading": "iCloud Calendar Vs Calendar in iCloud Settings on iPhone",
         "url": "https://www.youtube.com/watch?v=vdasg53YUBg",
+        "capturedDisplayOrder": 8
+      },
+      {
+        "queryId": "calendar-language",
+        "heading": "How to Add Chinese, Hebrew, or Hijri Alternate Calendars ...",
+        "url": "https://www.youtube.com/watch?v=jx0RkksOSU0",
+        "capturedDisplayOrder": 2
+      },
+      {
+        "queryId": "calendar-language",
+        "heading": "iPhone 16/16 Pro Max: How to Turn Off Alternate Calendars",
+        "url": "https://www.youtube.com/watch?v=SBuIYlXwOwc",
+        "capturedDisplayOrder": 5
+      },
+      {
+        "queryId": "calendar-language",
+        "heading": "How to configure alternate calendars",
+        "url": "https://www.youtube.com/watch?v=IgjhcPies_I",
+        "capturedDisplayOrder": 7
+      },
+      {
+        "queryId": "google-task-visibility",
+        "heading": "How to Share a Google Tasks List in 2026",
+        "url": "https://www.youtube.com/watch?v=ZdYDmeO5fao",
         "capturedDisplayOrder": 8
       }
     ],

@@ -1,0 +1,28 @@
+[36m▸[0m Skipping build (SKIP_BUILD=1).
+[36m▸[0m Publishing 679 files to s3://www.arte-calendar.com
+[36m▸[0m 1/3  fingerprinted bundles → immutable, 1 year
+[36m▸[0m 2/3  images, icons and static files → 1 day
+[36m▸[0m 3/3  prerendered HTML → never cached
+[36m▸[0m 4/4  apple-app-site-association → application/json
+[36m▸[0m Invalidating E91A0MU1YHGPR (/*)…
+[36m▸[0m Invalidation I9X044ZEQST9Y7XWK5AJKZ0QLW created.
+[36m▸[0m Waiting for it to reach every edge (a few minutes; NO_WAIT=1 skips)…
+[36m▸[0m Invalidation complete — the new build is live.
+[36m▸[0m Submitting sitemap URLs to IndexNow…
+IndexNow: HTTP 200 — submitted 103 sitemap URLs for www.cloud-calendars.com
+[36m▸[0m Running post-deploy live checks…
+PASS GET https://www.cloud-calendars.com/.well-known/apple-app-site-association: 200 application/json, no redirect
+PASS HEAD https://www.cloud-calendars.com/.well-known/apple-app-site-association: 200 application/json, no redirect
+PASS GET https://www.cloud-calendars.com/.well-known/apple-app-site-association/: 200 application/json, no redirect
+PASS HEAD https://www.cloud-calendars.com/.well-known/apple-app-site-association/: 200 application/json, no redirect
+PASS GET https://www.cloud-calendars.com/apple-app-site-association: 200 application/json, no redirect
+PASS HEAD https://www.cloud-calendars.com/apple-app-site-association: 200 application/json, no redirect
+PASS GET https://www.cloud-calendars.com/apple-app-site-association/: 200 application/json, no redirect
+PASS HEAD https://www.cloud-calendars.com/apple-app-site-association/: 200 application/json, no redirect
+✓ /robots.txt: 200 text/plain, Sitemap line present
+✓ /sitemap.xml: 200 application/xml, valid XML, 103/103 URLs returned 200 (article included)
+✓ /llms.txt: 200 text/plain, 74/74 referenced URLs resolved
+✓ /: 200, valid SoftwareApplication and FAQPage JSON-LD
+
+LIVE CHECK PASSED — https://www.cloud-calendars.com/
+[36m▸[0m Done. https://www.cloud-calendars.com

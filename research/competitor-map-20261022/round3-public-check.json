@@ -1,0 +1,54 @@
+{
+  "date": "2026-10-23",
+  "pages": [
+    {
+      "url": "https://www.cloud-calendars.com/articles/fantastical-readdle-calendar366-iphone-comparison/",
+      "httpStatus": 200,
+      "sha256": "2896e3ca4f0cd544c62b1f4eacbfb1e3cabeed8bbc2e81c265e35f5fc529b598",
+      "matchesBuildBytes": true,
+      "indexable": true,
+      "jsonLdBlocks": 2
+    },
+    {
+      "url": "https://www.cloud-calendars.com/articles/iphone-calendar-language-alternate-calendar-settings/",
+      "httpStatus": 200,
+      "sha256": "1d4fc3eb5f36fc7d8bfc1daa5b2abc5023bfa429bb28a56416a05de1fef27a2e",
+      "matchesBuildBytes": true,
+      "indexable": true,
+      "jsonLdBlocks": 2
+    },
+    {
+      "url": "https://www.cloud-calendars.com/articles/share-assign-reminders-iphone-calendar-difference/",
+      "httpStatus": 200,
+      "sha256": "f7cee720f2e55d953a54e62c25506b0ec5d0643f29ba71341767a5493c38374a",
+      "matchesBuildBytes": true,
+      "indexable": true,
+      "jsonLdBlocks": 2
+    },
+    {
+      "url": "https://www.cloud-calendars.com/articles/can-others-see-google-calendar-tasks/",
+      "httpStatus": 200,
+      "sha256": "eb8cee78bfd70d3228d127db94b6a61633ba2ae52a2e0e4049ae8745badd7000",
+      "matchesBuildBytes": true,
+      "indexable": true,
+      "jsonLdBlocks": 2
+    },
+    {
+      "url": "https://www.cloud-calendars.com/articles/cozi-timetree-family-calendar-iphone-android/",
+      "httpStatus": 200,
+      "sha256": "cf8318a0a2e01469fe049b7304b57c5b69e7163400ee9aa1d64e486afda0cd8a",
+      "matchesBuildBytes": true,
+      "indexable": true,
+      "jsonLdBlocks": 2
+    },
+    {
+      "url": "https://www.cloud-calendars.com/articles/recurring-events-without-the-mess/",
+      "httpStatus": 200,
+      "sha256": "2a01716974b19e2fa501841d559446bd344d48de65ee4f953b5b0223e065d02f",
+      "matchesBuildBytes": true,
+      "indexable": true,
+      "jsonLdBlocks": 2
+    }
+  ],
+  "scope": "Public HTML matches tested build bytes. Not proof of search indexing, rankings or citation lift."
+}

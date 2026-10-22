@@ -1,6 +1,6 @@
 {
   "schemaVersion": 1,
-  "updated": "2026-10-22",
+  "updated": "2026-10-23",
   "objective": "Cloud Calendars website and App Store Connect discovery optimization; broad competitor intent research, useful original articles, metadata alignment, later existing media integration.",
   "websiteSource": "/Users/minchomilev/cloud-calendars",
   "scopeLimits": [
@@ -10,7 +10,7 @@
     "No content is declared researched merely because a corresponding route exists."
   ],
   "currentInventory": {
-    "articles": 472,
+    "articles": 476,
     "locales": [
       "ar-SA",
       "bg",
@@ -43,9 +43,9 @@
       "zh-Hans",
       "zh-Hant"
     ],
-    "englishArticles": 65,
+    "englishArticles": 69,
     "evidence": "src/app/content/article-index.ts generated from locale aggregates",
-    "scope": "Current route inventory after seven additional English guides; not blanket article-quality approval."
+    "scope": "Current generated route inventory after eleven added English guides; not blanket quality approval."
   },
   "clusters": [
     {
@@ -767,15 +767,62 @@
       "observedEvidence": "research/competitor-map-20261022/coverage-matrix.json",
       "measuredSearchVolume": null,
       "qualityScope": "Distinct workflow guide with publisher attribution, worked examples and sources. Publication/readback records are kept separately."
+    },
+    {
+      "id": "fantastical-readdle-calendar366-iphone-comparison",
+      "keywordCandidates": [
+        "Fantastical vs Calendars by Readdle Calendar 366 iPhone",
+        "Calendar 366 vs Fantastical iPhone"
+      ],
+      "status": "english_published_verified",
+      "canonical": "/articles/fantastical-readdle-calendar366-iphone-comparison/",
+      "observedEvidence": "research/competitor-map-20261022/coverage-matrix.json",
+      "measuredSearchVolume": null,
+      "qualityScope": "Publisher-source guide; public HTML and build verified, no device benchmark or rank promise."
+    },
+    {
+      "id": "iphone-calendar-language-alternate-calendar-settings",
+      "keywordCandidates": [
+        "iPhone calendar showing Chinese characters language alternate calendar"
+      ],
+      "status": "english_published_verified",
+      "canonical": "/articles/iphone-calendar-language-alternate-calendar-settings/",
+      "observedEvidence": "research/competitor-map-20261022/coverage-matrix.json",
+      "measuredSearchVolume": null,
+      "qualityScope": "Publisher-source guide; public HTML and build verified, no device benchmark or rank promise."
+    },
+    {
+      "id": "share-assign-reminders-iphone-calendar-difference",
+      "keywordCandidates": [
+        "share assign reminders iPhone family list"
+      ],
+      "status": "english_published_verified",
+      "canonical": "/articles/share-assign-reminders-iphone-calendar-difference/",
+      "observedEvidence": "research/competitor-map-20261022/coverage-matrix.json",
+      "measuredSearchVolume": null,
+      "qualityScope": "Publisher-source guide; public HTML and build verified, no device benchmark or rank promise."
+    },
+    {
+      "id": "can-others-see-google-calendar-tasks",
+      "keywordCandidates": [
+        "can others see my Google Calendar tasks"
+      ],
+      "status": "english_published_verified",
+      "canonical": "/articles/can-others-see-google-calendar-tasks/",
+      "observedEvidence": "research/competitor-map-20261022/coverage-matrix.json",
+      "measuredSearchVolume": null,
+      "qualityScope": "Publisher-source guide; public HTML and build verified, no device benchmark or rank promise."
     }
   ],
   "remaining": [
-    "Complete the open expand/research rows in the current competitive-query matrix rather than generating literal-keyword duplicates.",
-    "Verify 20 distinct-intent leads from the classified suggestion snapshot and classify 40 later suggestions.",
-    "Broaden actual competitor query observations and consumer ChatGPT coverage; multilingual query tests are not controlled local-country rank measurements.",
-    "Map remaining own-site GSC queries and evaluate equal reporting windows after enough time has elapsed.",
-    "Review translated articles individually; owner indexing hold remains active until approval.",
-    "Use released/runtime verification for new product behaviour claims; App Privacy remains owner-managed and the proposed replacement policy remains unpublished."
+    "Research shared household displays versus an iPad app for the three outstanding original leads.",
+    "Verify provider-to-provider task bridging versus selected task-source display.",
+    "Review remaining named BusyCal, Google Calendar and Fantastical device/task comparison leads.",
+    "Check alternate-calendar Home/Lock Screen widget support separately from Calendar display settings.",
+    "Finish mapping the remaining own-site GSC queries and evaluate landing-page/snippet fit.",
+    "Broaden market/language observations proportionately; current language samples are not local-country rank measurements.",
+    "Translated articles remain held from indexing until individual editorial approval.",
+    "App Privacy remains owner-managed; pending replacement privacy policy remains unpublished."
   ],
   "existingCanonicalAudit": "competitors/existing-canonical-review-20261021-batch02.json",
   "existingCanonicalAuditScope": "All nine original intent clusters now have bounded substantive English coverage review records, with explicit remaining gaps. Batch20 reviewed seven complete bodies for two clusters; batch22 records ten sharing/work, eleven widgets/views and four tasks/timezones body comparisons (overlaps are not counted as unique additions). Route inventory is not quality or exhaustive-query approval.",
@@ -1732,15 +1779,17 @@
     "goalComplete": false
   },
   "currentSearchEvidence": {
-    "googleActualQueries": 31,
-    "freshConsumerChatGPTConversations": 8,
+    "googleActualQueries": 35,
+    "freshConsumerChatGPTConversations": 12,
     "seededComparisonsWithinFreshChatGPT": 1,
     "historicalConsumerChatGPTConversations": 3,
     "ownSiteSearchConsoleQueryRows": 150,
     "classifiedOriginalRelatedStrings": 212,
-    "laterUnclassifiedStrings": 40,
     "evidence": "research/competitor-map-20261022/coverage-matrix.json",
-    "scope": "Explicit observed queries, not exhaustive rankings or search volumes."
+    "scope": "Explicit observed queries, not exhaustive rankings or search volumes.",
+    "classifiedRelatedStrings": 275,
+    "originalRelatedStrings": 212,
+    "laterRelatedStrings": 63
   },
   "currentMediaEvidence": {
     "verifiedPublicMediaObjects": 1882,
@@ -1753,14 +1802,15 @@
     "translatedArticlesAndHubs": "noindex,follow until individual approval",
     "englishArticles": "indexable",
     "localizedProductHomepages": "indexable",
-    "sitemapUrls": 99,
+    "sitemapUrls": 103,
     "evidence": "research/competitor-map-20261022/comparison-build-check.json"
   },
   "latestPublication": {
-    "date": "2026-10-22",
-    "newEnglishGuidesSinceBatch43": 7,
+    "date": "2026-10-23",
+    "newEnglishGuidesSinceBatch43": 11,
     "lastIncrement": 4,
-    "evidence": "research/competitor-map-20261022/implementation-status.json",
+    "expandedThisIncrement": 2,
+    "evidence": "research/competitor-map-20261022/round3-public-check.json",
     "goalComplete": false
   }
 }

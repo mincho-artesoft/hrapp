@@ -172,7 +172,11 @@ export const ARTICLE_SLUGS: Readonly<Record<string, readonly string[]>> = {
     "cozi-timetree-family-calendar-iphone-android",
     "iphone-calendar-tasks-reminders-versus-event-alerts",
     "automatic-time-blocking-versus-manual-calendar",
-    "what-is-a-cloud-calendar"
+    "what-is-a-cloud-calendar",
+    "fantastical-readdle-calendar366-iphone-comparison",
+    "iphone-calendar-language-alternate-calendar-settings",
+    "share-assign-reminders-iphone-calendar-difference",
+    "can-others-see-google-calendar-tasks"
   ],
   "es-ES": [
     "month-view-on-a-bigger-screen",
