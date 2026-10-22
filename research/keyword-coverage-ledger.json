@@ -544,6 +544,16 @@
         ],
         "change": "Five symptom branches now point to actual existing guide labels/related links; local calendars remain distinct from provider accounts. Main sections/FAQ/sources unchanged.",
         "remaining": "Provider-specific repair/recovery and migration gaps remain; branch routing is not universal repair."
+      },
+      "duplicateImportFollowup": {
+        "status": "scoped_selection_caveat_and_google_import_faq_published",
+        "canonicals": [
+          "when-two-calendars-disagree",
+          "what-calendar-sync-actually-does",
+          "calendar-export-ics-pdf-and-backup"
+        ],
+        "evidence": "batch26-duplicates/final-review.json",
+        "limits": "No general cleanup, universal repeat-import dedup, provider pause/resume identity or released-runtime certification."
       }
     },
     {
@@ -1069,5 +1079,32 @@
       "Website viewport testing is not native hardware or widget runtime validation.",
       "No new ASC, media, indexing or ranking measurement."
     ]
+  },
+  "twentySixthPublication": {
+    "date": "2026-10-22",
+    "changedEnglishGuides": 3,
+    "newRoutes": 0,
+    "tasks": [
+      "Google zero-processed ambiguity: check actual imported destination before deciding on retry.",
+      "Temporary calendar-selection diagnosis: restore selection and consider widget/notification/Google synchronization effects."
+    ],
+    "research": [
+      "batch26-duplicates/intent-research.json",
+      "batch26-duplicates/product-evidence.json",
+      "batch26-duplicates/root-preparation-review.json",
+      "batch26-duplicates/final-review.json"
+    ],
+    "sourceAndDeliveryEvidence": [
+      "batch26-source-qa.json",
+      "batch26-static-qa.json",
+      "batch26-metadata-qa.json",
+      "batch26-invalidation-status.json",
+      "batch26-public-qa.json",
+      "batch26-browser-qa.json"
+    ],
+    "sitemapUrls": 512,
+    "publicArtifactsExactBuild": 515,
+    "goalComplete": false,
+    "scope": "Three public tool queries/twelve results/three full official bodies plus bounded native consumers and complete local guide review. No measured Google ranking, exhaustive query or runtime certification."
   }
 }

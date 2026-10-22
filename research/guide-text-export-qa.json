@@ -2,13 +2,13 @@
   "guides": 54,
   "selection": "tools/guide-text-selection.json",
   "extraction": "Visible article headings, paragraphs, lists, FAQs and source links; gallery/other-app cards excluded.",
-  "exportedCharacters": 332811,
+  "exportedCharacters": 334015,
   "records": [
     {
       "slug": "what-calendar-sync-actually-does",
       "source": "https://www.cloud-calendars.com/articles/what-calendar-sync-actually-does/",
       "blocks": 60,
-      "characters": 10049
+      "characters": 10229
     },
     {
       "slug": "why-a-shared-calendar-does-not-appear",
@@ -19,8 +19,8 @@
     {
       "slug": "when-two-calendars-disagree",
       "source": "https://www.cloud-calendars.com/articles/when-two-calendars-disagree/",
-      "blocks": 44,
-      "characters": 5923
+      "blocks": 45,
+      "characters": 6288
     },
     {
       "slug": "work-and-personal-without-two-apps",
@@ -67,8 +67,8 @@
     {
       "slug": "calendar-export-ics-pdf-and-backup",
       "source": "https://www.cloud-calendars.com/articles/calendar-export-ics-pdf-and-backup/",
-      "blocks": 63,
-      "characters": 11121
+      "blocks": 66,
+      "characters": 11780
     },
     {
       "slug": "recurring-events-without-the-mess",

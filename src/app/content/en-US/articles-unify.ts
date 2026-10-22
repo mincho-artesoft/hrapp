@@ -246,7 +246,7 @@ export const UNIFY_EN_US: Readonly<Record<string, LocalisedArticle>> = {
       "heading": "Investigate duplicates without deleting the source",
       "body": [
         "Two similar events may be two records, or one source calendar displayed through two routes. Inspect both entries: compare calendar, account, organiser, start time and recurrence before deciding which explanation fits.",
-        "Temporarily hide one calendar to see which copy disappears. Hiding changes visibility; deleting an event can change the underlying calendar for other devices and participants. Do not delete an account, cancel a meeting or erase local data as a first troubleshooting step.",
+        "Temporarily hide one calendar to see which copy disappears. Hiding changes visibility; deleting an event can change the underlying calendar for other devices and participants. Do not delete an account, cancel a meeting or erase local data as a first troubleshooting step. In Cloud Calendars, record and restore the original selection: it can also affect widgets, notification scheduling and Google synchronization. See “When calendars disagree” below.",
         "If you imported the same file more than once, preserve a backup and identify the imported destination before cleaning anything. A recurring series needs particular care because changing one occurrence and changing the whole series have different consequences."
       ]
     },
@@ -504,7 +504,7 @@ export const UNIFY_EN_US: Readonly<Record<string, LocalisedArticle>> = {
 },
 
   'when-two-calendars-disagree': {
-  "updated": "2026-10-21",
+  "updated": "2026-10-22",
   "title": "When calendar events disagree: check ownership before editing",
   "short": "When calendars disagree",
   "description": "Different times or duplicate events? Check the owning calendar, time zone and provider view, then hide one source before making changes or deleting anything.",
@@ -529,6 +529,7 @@ export const UNIFY_EN_US: Readonly<Record<string, LocalisedArticle>> = {
       "heading": "Hide first when two entries look duplicated",
       "body": [
         "Temporarily hide one calendar and observe which entry disappears. Apple documents calendar checkboxes for this purpose. Restore visibility afterward so you do not mistake a hidden appointment for missing data.",
+        "In Cloud Calendars, note the original selection before this check. Calendar selection also affects widgets, notification scheduling and Google synchronization. Restore the calendars you need after comparing the entries, then recheck the schedule before relying on availability or alerts. Do not assume every provider connection pauses and resumes in the same way.",
         "Two entries may be independent records, imported copies or the same source shown through different connections. Deleting one does not always delete both; deleting a source event can nevertheless affect other devices or people. Establish ownership and preserve needed information before any cleanup. Avoid cancelling a meeting, removing an account or clearing local storage as an initial diagnostic step."
       ]
     },
@@ -593,9 +594,9 @@ export const UNIFY_EN_US: Readonly<Record<string, LocalisedArticle>> = {
     }
   ],
   "seeAlso": [
-  "what-calendar-sync-actually-does",
-  "work-and-personal-without-two-apps",
-  "disconnect-calendar-integration-without-losing-track"
-]
+    "what-calendar-sync-actually-does",
+    "work-and-personal-without-two-apps",
+    "disconnect-calendar-integration-without-losing-track"
+  ]
 },
 };

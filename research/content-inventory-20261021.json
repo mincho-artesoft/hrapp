@@ -1,5 +1,5 @@
 {
-  "date": "2026-10-22T00:49:07.927Z",
+  "date": "2026-10-22T00:59:37.837Z",
   "status": "source_inventory_not_quality_approval",
   "articles": [
     {
@@ -1663,8 +1663,8 @@
       "description": "Choose calendar data, spreadsheet rows, a printable schedule or a subscription. Use documented provider or Mac export routes and check what transfers.",
       "descriptionCharacters": 150,
       "sections": 9,
-      "faq": 4,
-      "words": 1509,
+      "faq": 5,
+      "words": 1592,
       "source": "articles-help.ts",
       "sources": [
         "https://support.google.com/calendar/answer/37111?hl=en",
@@ -1674,7 +1674,8 @@
         "https://support.microsoft.com/en-us/outlook/share-your-calendar-in-outlook-on-the-web",
         "https://www.busymac.com/docs/busycalios/export-as-csv/",
         "https://support.google.com/calendar/answer/37064?hl=en",
-        "https://support.google.com/calendar/answer/78739?hl=en"
+        "https://support.google.com/calendar/answer/78739?hl=en",
+        "https://support.google.com/calendar/answer/45654?hl=en"
       ],
       "updated": "2026-10-22"
     },
@@ -2018,7 +2019,7 @@
       "descriptionCharacters": 156,
       "sections": 7,
       "faq": 4,
-      "words": 1330,
+      "words": 1354,
       "source": "articles-unify.ts",
       "sources": [
         "https://support.apple.com/guide/iphone/use-multiple-calendars-iph3d1110d4/ios",
@@ -2069,7 +2070,7 @@
       "descriptionCharacters": 157,
       "sections": 5,
       "faq": 3,
-      "words": 704,
+      "words": 756,
       "source": "articles-unify.ts",
       "sources": [
         "https://support.apple.com/en-us/102180",
@@ -2078,7 +2079,7 @@
         "https://support.microsoft.com/en-us/outlook/calendar/change-an-appointment-meeting-or-event-in-outlook",
         "https://support.microsoft.com/en-us/support/known-issues/outlook-shows-conflict-errors-when-updating-or-cancelling-meetings"
       ],
-      "updated": "2026-10-21"
+      "updated": "2026-10-22"
     },
     {
       "locale": "en-US",

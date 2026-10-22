@@ -476,6 +476,10 @@ export const HELP_EN_US: Readonly<Record<string, LocalisedArticle>> = {
     {
       "q": "Will converting an ICS feed fix every one-hour difference?",
       "a": "No. First compare the intended date, the event’s time zone, the display zone and the same recurring occurrence at the source and recipient. A format issue is a possibility to investigate, not the explanation for every time difference. Do not shift the original meeting merely to compensate for one display."
+    },
+    {
+      "q": "Google says “Processed zero events.” Should I import again?",
+      "a": "First check the calendar selected as the import destination. Google says this message can appear after a second click on Import when the first import already succeeded. Look for the expected events before retrying. The message alone does not prove that events are missing, and it is not a guarantee that repeated imports always avoid duplicates. If the result is still unclear, follow Google’s computer-based import troubleshooting and compare the destination before deleting anything."
     }
   ],
   "sourcesHeading": "Official instructions and format limitations",
@@ -511,6 +515,10 @@ export const HELP_EN_US: Readonly<Record<string, LocalisedArticle>> = {
     {
       "label": "Google: transfer calendar ownership, move or copy events",
       "url": "https://support.google.com/calendar/answer/78739?hl=en"
+    },
+    {
+      "label": "Google: fix problems importing calendar events",
+      "url": "https://support.google.com/calendar/answer/45654?hl=en"
     }
   ],
   "seeAlso": [

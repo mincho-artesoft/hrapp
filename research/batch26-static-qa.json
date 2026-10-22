@@ -1,0 +1,34 @@
+{
+  "allPassed": true,
+  "previousCanonicalsPreserved": 512,
+  "sitemapUrls": 512,
+  "newRoutes": 0,
+  "changedArticles": [
+    {
+      "slug": "calendar-export-ics-pdf-and-backup",
+      "sections": 9,
+      "paragraphs": 23,
+      "faqs": 5,
+      "sources": 9,
+      "completeVisibleTextAndLinksMatchDraft": true
+    },
+    {
+      "slug": "when-two-calendars-disagree",
+      "sections": 5,
+      "paragraphs": 11,
+      "faqs": 3,
+      "sources": 5,
+      "completeVisibleTextAndLinksMatchDraft": true
+    },
+    {
+      "slug": "what-calendar-sync-actually-does",
+      "sections": 7,
+      "paragraphs": 20,
+      "faqs": 4,
+      "sources": 2,
+      "completeVisibleTextAndLinksMatchDraft": true
+    }
+  ],
+  "allThreeTextExportAdditionsVerified": true,
+  "scope": "Canonical set and complete changed visible prose/practical/FAQ/source/related parity; not provider operations, runtime, rankings or indexing proof."
+}
