@@ -1,0 +1,1621 @@
+{
+  "date": "2026-10-22",
+  "status": "read_only_editorial_preparation_complete",
+  "source": {
+    "file": "research/batch29-aso-semantic/applied.json",
+    "rawFileSha256": "b3d921c1a9d6646b790379e47419f7bf438a23e085b99bfd6a8deb212f023252",
+    "checkedAt": "2026-10-22T01:47:34.667517+00:00",
+    "completedAt": "2026-10-22T01:48:04.043808+00:00",
+    "version": "1.7.4",
+    "state": "PREPARE_FOR_SUBMISSION",
+    "allVerified": true,
+    "bodyPaths": {
+      "description_keywords_promotionalText": "afterLocalizations[locale].attributes",
+      "name_subtitle": "afterAppInfoLocalizations[locale].attributes"
+    },
+    "scope": "Actual complete saved postwrite text response. No initial proposal substitution and no inference of bodies from boolean batch18readback. Saved state is not a fresh live API read."
+  },
+  "counts": {
+    "locales": 19,
+    "fullFieldsRead": 95,
+    "completeDescriptions": 19,
+    "retainedLocales": 18,
+    "materialCandidates": 1,
+    "keywordChanges": 0,
+    "nameChanges": 0
+  },
+  "evidenceBasis": {
+    "product": "Known inspected product-facts tiers/local/accounts/weather/widgets and detailed batch08sharing evidence reviewed in preceding audits. Source evidence, not native runtime certification.",
+    "currentGuideBoundaries": "Complete sharing/weather/CalDAV guides read in batch29 earlier in this session: provider permissions/full-app adding/finite forecast/device-account distinctions. No new guide or native read claimed in this bounded pass.",
+    "clarification": "App Clip invitation wording is not treated as an explicit no-install guarantee; no blanket rollout of optional descriptive expansions."
+  },
+  "mechanicalMethod": "SHA256 for each exact UTF8field value; Unicode code-point counts and bytes separately. Keyword comma entries NFC-casefolded; equality duplicates and exact letter/number title/subtitle-token equality checked. Not morphology/compound indexing or search-volume research.",
+  "locales": [
+    {
+      "locale": "ar-SA",
+      "versionLocalizationId": "655ccbe8-e076-4bed-a61e-c119abd3e314",
+      "appInfoLocalizationId": "9b44c426-1c4e-41e6-a5a0-b0fc76c54b37",
+      "readScope": "Complete five string values printed in full and read, including every description paragraph, promotional text, all keywords, subtitle and preserved name. Not just snippets or boolean check.",
+      "fields": {
+        "name": {
+          "sha256Utf8Value": "e5f79c4f20da65cba4052e0dd1c42571b57ae463c6593aca17bbc9b11180bec0",
+          "unicodeCharacters": 22,
+          "utf8Bytes": 27
+        },
+        "subtitle": {
+          "sha256Utf8Value": "a22f061ce69b0a4520ba21a6f686f5409b89d49a6ca9276f0cd66b6d04236ca5",
+          "unicodeCharacters": 24,
+          "utf8Bytes": 46
+        },
+        "description": {
+          "sha256Utf8Value": "437855172e1d9f818405b34bfbabebedea24fb616b49adc847b2bb768b685705",
+          "unicodeCharacters": 1237,
+          "utf8Bytes": 1999
+        },
+        "keywords": {
+          "sha256Utf8Value": "fa4b4a609dc6c47e2340947aec1742d95bba8f8cd3ce8d2ad5a837c9ef5ebd21",
+          "unicodeCharacters": 62,
+          "utf8Bytes": 114
+        },
+        "promotionalText": {
+          "sha256Utf8Value": "d301114e6808803bd9dcb06f31ce0ea76930b794d7f64d59e50c4ce956ab97c4",
+          "unicodeCharacters": 123,
+          "utf8Bytes": 225
+        }
+      },
+      "completeFieldValues": {
+        "name": "Cloud Calendars: تقويم",
+        "subtitle": "الطقس والمواعيد والأدوات",
+        "description": "تابع مواعيد العمل وخططك الشخصية والطقس على iPhone وiPad باستخدام Cloud Calendars.\n\nالتقاويم والعروض\nاستخدم تقاويم iCloud واربط تقويم Google. يضيف Premium دعم تقاويم Microsoft. اختر عرض اليوم أو الأسبوع أو الشهر أو السنة أو القائمة.\n\nيمكنك إنشاء تقويم محلي على جهازك دون إنشاء حساب Cloud Calendars. قد يتطلب ربط الخدمات والمشاركة تسجيل الدخول.\n\nالطقس والأدوات والمشاركة\nتحقق من توقعات الطقس أثناء التخطيط. تتوفر أدوات الشاشة الرئيسية بأحجام صغيرة ومتوسطة وكبيرة. تعتمد التوقعات المتاحة على الموقع ومزود الطقس. شارك الأحداث والتقاويم وأرسل دعوات بالبريد الإلكتروني أو رمز QR أو App Clip. تعتمد صلاحيات الوصول على التقويم ونوع الدعوة.\n\nاختر خطتك\nBase مجاني ويشمل مزامنة تقويم Google وGoogle Meet وعروض التقويم المختلفة والطقس والأدوات.\nيشمل Advanced ميزات Base ويزيل الإعلانات.\nيشمل Premium ميزات Advanced ويضيف تقاويم Microsoft وMicrosoft Teams.\n\nالتنزيل مجاني مع اشتراكات اختيارية تتجدد تلقائياً. تحقق من السعر المحلي الحالي وفترة الفوترة في التطبيق أو App Store قبل الاشتراك. يتجدد الاشتراك ما لم تلغه قبل نهاية الفترة الحالية بـ24 ساعة على الأقل. يمكنك إدارته أو إلغاؤه من إعدادات حساب App Store.\n\nالخصوصية: https://www.cloud-calendars.com/privacy-policy\nشروط الاستخدام: https://www.apple.com/legal/internet-services/itunes/dev/stdeula/",
+        "keywords": "جدول,تخطيط,أسبوع,شهر,تذكير,اجتماع,حدث,مشاركة,دعوة,توقعات,تنظيم",
+        "promotionalText": "اجمع مواعيدك والطقس في مكان واحد، واستخدم أدوات الشاشة الرئيسية وعروض التقويم. يمكنك البدء بتقويم محلي دون حساب في التطبيق."
+      },
+      "languageConfidence": "moderate",
+      "assessment": "Local-calendar/no-account scope and conditional sign-in remain explicit; ordinary Arabic planning terms. No blanket account-free sharing or universal permissions.",
+      "semanticChecks": {
+        "freeBaseGoogleMeetViewsWeatherWidgets": true,
+        "advancedBasePlusAdRemoval": true,
+        "premiumAdvancedPlusMicrosoftTeams": true,
+        "accountlessClaimLimitedToLocalCalendar": true,
+        "connectionsSharingSignInQualified": true,
+        "weatherAvailabilityQualified": true,
+        "widgetSizesNotUniversalContentOrFreshnessPromise": true,
+        "noUniversalExchangeOrNoDataGuarantee": true
+      },
+      "keywords": {
+        "terms": [
+          "جدول",
+          "تخطيط",
+          "أسبوع",
+          "شهر",
+          "تذكير",
+          "اجتماع",
+          "حدث",
+          "مشاركة",
+          "دعوة",
+          "توقعات",
+          "تنظيم"
+        ],
+        "duplicateExactTerms": [],
+        "exactTitleSubtitleTokenOverlap": [],
+        "decision": "No concrete exact redundancy found; no keyword replacement proposed. Synonyms and compound phrases not declared waste without evidence."
+      },
+      "appClipAssessment": "Where present, invitation-route wording does not explicitly guarantee no-install adding. Optional preview expansion is outside material-only revision scope. No mandatory rewrite proposed.",
+      "decision": "retain_all_five_fields_no_material_change_justified",
+      "proposals": [],
+      "preserve": [
+        "appName",
+        "subtitle",
+        "keywords",
+        "promotionalText",
+        "URLs",
+        "prices",
+        "privacy",
+        "all other description text"
+      ]
+    },
+    {
+      "locale": "bn-BD",
+      "versionLocalizationId": "bec247b8-7092-405b-ad17-b595e4ba7f77",
+      "appInfoLocalizationId": "07f0536c-fc07-40b4-a521-4d74af76d71f",
+      "readScope": "Complete five string values printed in full and read, including every description paragraph, promotional text, all keywords, subtitle and preserved name. Not just snippets or boolean check.",
+      "fields": {
+        "name": {
+          "sha256Utf8Value": "d581bc77e13bb977689a4c3b68e9bd30c7839faabd8cca5fcc07a436a022ff3b",
+          "unicodeCharacters": 28,
+          "utf8Bytes": 50
+        },
+        "subtitle": {
+          "sha256Utf8Value": "c594fa45b9e95f6dd777dc265c4c6ec672fbe2aa7ec643f3ca71f5b8083b5d6c",
+          "unicodeCharacters": 20,
+          "utf8Bytes": 56
+        },
+        "description": {
+          "sha256Utf8Value": "fb3430ec52adbe7af0c70af54246969a32df4b30e1dc06aa6ade57cbf4f5e499",
+          "unicodeCharacters": 1243,
+          "utf8Bytes": 2831
+        },
+        "keywords": {
+          "sha256Utf8Value": "7b9352606869d383f6a6ea2e6be30bff5f5fb317c415e37675202d83c920db48",
+          "unicodeCharacters": 66,
+          "utf8Bytes": 180
+        },
+        "promotionalText": {
+          "sha256Utf8Value": "dada68dc8eebe7e145e1c06b27ca61412874fdce9cb70b9e57e1468982de28a0",
+          "unicodeCharacters": 142,
+          "utf8Bytes": 384
+        }
+      },
+      "completeFieldValues": {
+        "name": "Cloud Calendars: ক্যালেন্ডার",
+        "subtitle": "আবহাওয়া ও পরিকল্পনা",
+        "description": "iPhone ও iPad-এ Cloud Calendars দিয়ে কাজের ও ব্যক্তিগত পরিকল্পনার সঙ্গে আবহাওয়া দেখুন।\n\niCloud ক্যালেন্ডার ব্যবহার করুন এবং Google Calendar যুক্ত করুন। দিন, সপ্তাহ, মাস, বছর বা তালিকা ভিউ বেছে নিন। Cloud Calendars অ্যাকাউন্ট ছাড়াই ডিভাইসে স্থানীয় ক্যালেন্ডার তৈরি করা যায়। পরিষেবা যুক্ত করা ও শেয়ার করার জন্য সাইন ইন লাগতে পারে। শেয়ারের অনুমতি ক্যালেন্ডার ও আমন্ত্রণের ধরনের ওপর নির্ভর করে।\n\nপরিকল্পনার সময় আবহাওয়ার পূর্বাভাস দেখুন। হোম স্ক্রিন উইজেট ছোট, মাঝারি ও বড় আকারে পাওয়া যায়। পূর্বাভাসের প্রাপ্যতা অবস্থান ও আবহাওয়া পরিষেবার ওপর নির্ভর করে।\n\nবিনামূল্যের Base-এ Google Calendar সিঙ্ক, Google Meet, বিভিন্ন ক্যালেন্ডার ভিউ, আবহাওয়া ও উইজেট রয়েছে। Advanced-এ Base-এর সুবিধা থাকে এবং বিজ্ঞাপন সরিয়ে দেয়। Premium-এ Advanced-এর সুবিধার সঙ্গে Microsoft ক্যালেন্ডার ও Microsoft Teams সমর্থন রয়েছে।\n\nডাউনলোড বিনামূল্যে; ঐচ্ছিক সাবস্ক্রিপশন স্বয়ংক্রিয়ভাবে নবায়ন হয়। নেওয়ার আগে অ্যাপ বা App Store-এ বর্তমান স্থানীয় মূল্য ও বিলিং সময়কাল দেখুন। বর্তমান মেয়াদ শেষ হওয়ার অন্তত ২৪ ঘণ্টা আগে বাতিল না করলে সাবস্ক্রিপশন নবায়ন হয়। App Store অ্যাকাউন্ট সেটিংসে পরিচালনা বা বাতিল করুন।\n\nগোপনীয়তা: https://www.cloud-calendars.com/privacy-policy\nব্যবহারের শর্ত: https://www.apple.com/legal/internet-services/itunes/dev/stdeula/",
+        "keywords": "সময়সূচি,সভা,ঘটনা,স্মরণ,আমন্ত্রণ,শেয়ার,সপ্তাহ,মাস,পূর্বাভাস,উইজেট",
+        "promotionalText": "পরিকল্পনা ও আবহাওয়া একসঙ্গে দেখুন। বিভিন্ন ভিউ ও হোম স্ক্রিন উইজেট ব্যবহার করুন, অথবা অ্যাপ অ্যাকাউন্ট ছাড়াই স্থানীয় ক্যালেন্ডার তৈরি করুন।"
+      },
+      "languageConfidence": "lower_to_moderate",
+      "assessment": "Bengali plan inheritance and forecast qualification are understandable. Some phrasing is mechanical (Advanced sentence), but no material change in tier meaning identified.",
+      "semanticChecks": {
+        "freeBaseGoogleMeetViewsWeatherWidgets": true,
+        "advancedBasePlusAdRemoval": true,
+        "premiumAdvancedPlusMicrosoftTeams": true,
+        "accountlessClaimLimitedToLocalCalendar": true,
+        "connectionsSharingSignInQualified": true,
+        "weatherAvailabilityQualified": true,
+        "widgetSizesNotUniversalContentOrFreshnessPromise": true,
+        "noUniversalExchangeOrNoDataGuarantee": true
+      },
+      "keywords": {
+        "terms": [
+          "সময়সূচি",
+          "সভা",
+          "ঘটনা",
+          "স্মরণ",
+          "আমন্ত্রণ",
+          "শেয়ার",
+          "সপ্তাহ",
+          "মাস",
+          "পূর্বাভাস",
+          "উইজেট"
+        ],
+        "duplicateExactTerms": [],
+        "exactTitleSubtitleTokenOverlap": [],
+        "decision": "No concrete exact redundancy found; no keyword replacement proposed. Synonyms and compound phrases not declared waste without evidence."
+      },
+      "appClipAssessment": "Where present, invitation-route wording does not explicitly guarantee no-install adding. Optional preview expansion is outside material-only revision scope. No mandatory rewrite proposed.",
+      "decision": "retain_all_five_fields_no_material_change_justified",
+      "proposals": [],
+      "preserve": [
+        "appName",
+        "subtitle",
+        "keywords",
+        "promotionalText",
+        "URLs",
+        "prices",
+        "privacy",
+        "all other description text"
+      ]
+    },
+    {
+      "locale": "ca",
+      "versionLocalizationId": "c7a8730b-6a11-46b4-b64e-9e2d69c474bd",
+      "appInfoLocalizationId": "062259d7-9e41-48bc-abc0-2afc8dd2f862",
+      "readScope": "Complete five string values printed in full and read, including every description paragraph, promotional text, all keywords, subtitle and preserved name. Not just snippets or boolean check.",
+      "fields": {
+        "name": {
+          "sha256Utf8Value": "6a5aad09dc28b46ccedbcf90d44d95ddeb2bb260ec8f34d02ac41fef45f63a18",
+          "unicodeCharacters": 26,
+          "utf8Bytes": 26
+        },
+        "subtitle": {
+          "sha256Utf8Value": "ceb3247ab435119bac50a4d255c3142c19686e16599e7993f430239e81eb5a86",
+          "unicodeCharacters": 20,
+          "utf8Bytes": 20
+        },
+        "description": {
+          "sha256Utf8Value": "54db54748d59973b44203099f48f12917e1dbcb92109671ae4ad73e4fcfd4e61",
+          "unicodeCharacters": 1376,
+          "utf8Bytes": 1418
+        },
+        "keywords": {
+          "sha256Utf8Value": "c8f3e307cd1a24a214b649ece1cd5af0d3a9aabb9574c6e77850ef8ab174a9b2",
+          "unicodeCharacters": 99,
+          "utf8Bytes": 102
+        },
+        "promotionalText": {
+          "sha256Utf8Value": "e363c237c268ad0b43b943e78e4695eaa1c5547826f299b03d1562088caec066",
+          "unicodeCharacters": 122,
+          "utf8Bytes": 124
+        }
+      },
+      "completeFieldValues": {
+        "name": "Cloud Calendars: Calendari",
+        "subtitle": "Temps, cites i ginys",
+        "description": "Consulta els plans de feina, les cites personals i el temps a l’iPhone i l’iPad amb Cloud Calendars.\n\nUtilitza calendaris de l’iCloud i connecta Google Calendar. Tria la vista de dia, setmana, mes, any o llista. També pots crear un calendari local al dispositiu sense un compte de Cloud Calendars. Connectar serveis i compartir pot requerir iniciar sessió. Els permisos depenen del calendari i del tipus d’invitació.\n\nConsulta la previsió mentre fas plans. Els ginys de la pantalla d’inici estan disponibles en mides petita, mitjana i gran. Les previsions disponibles depenen de la ubicació i del proveïdor meteorològic.\n\nBase és gratuït i inclou sincronització amb Google Calendar, Google Meet, diverses vistes de calendari, temps i ginys. Advanced inclou les funcions de Base i elimina els anuncis. Premium inclou Advanced i afegeix calendaris de Microsoft i Microsoft Teams.\n\nLa descàrrega és gratuïta, amb subscripcions opcionals de renovació automàtica. Abans de subscriure’t, comprova el preu local actual i el període de facturació a l’app o a l’App Store. La subscripció es renova si no la cancel·les almenys 24 hores abans del final del període actual. Pots gestionar-la o cancel·lar-la als ajustos del compte de l’App Store.\n\nPrivadesa: https://www.cloud-calendars.com/privacy-policy\nCondicions d’ús: https://www.apple.com/legal/internet-services/itunes/dev/stdeula/",
+        "keywords": "agenda,planificador,horari,setmana,mes,recordatori,reunió,esdeveniment,compartir,invitació,previsió",
+        "promotionalText": "Consulta els plans i el temps junts. Utilitza ginys i diferents vistes, o crea un calendari local sense un compte a l’app."
+      },
+      "languageConfidence": "moderate_to_high",
+      "assessment": "Catalan temps is weather in the surrounding forecast context; ginys is appropriate. No repeated exact title/subtitle keyword allocation.",
+      "semanticChecks": {
+        "freeBaseGoogleMeetViewsWeatherWidgets": true,
+        "advancedBasePlusAdRemoval": true,
+        "premiumAdvancedPlusMicrosoftTeams": true,
+        "accountlessClaimLimitedToLocalCalendar": true,
+        "connectionsSharingSignInQualified": true,
+        "weatherAvailabilityQualified": true,
+        "widgetSizesNotUniversalContentOrFreshnessPromise": true,
+        "noUniversalExchangeOrNoDataGuarantee": true
+      },
+      "keywords": {
+        "terms": [
+          "agenda",
+          "planificador",
+          "horari",
+          "setmana",
+          "mes",
+          "recordatori",
+          "reunió",
+          "esdeveniment",
+          "compartir",
+          "invitació",
+          "previsió"
+        ],
+        "duplicateExactTerms": [],
+        "exactTitleSubtitleTokenOverlap": [],
+        "decision": "No concrete exact redundancy found; no keyword replacement proposed. Synonyms and compound phrases not declared waste without evidence."
+      },
+      "appClipAssessment": "Where present, invitation-route wording does not explicitly guarantee no-install adding. Optional preview expansion is outside material-only revision scope. No mandatory rewrite proposed.",
+      "decision": "retain_all_five_fields_no_material_change_justified",
+      "proposals": [],
+      "preserve": [
+        "appName",
+        "subtitle",
+        "keywords",
+        "promotionalText",
+        "URLs",
+        "prices",
+        "privacy",
+        "all other description text"
+      ]
+    },
+    {
+      "locale": "cs",
+      "versionLocalizationId": "407dc794-b4ed-4c4f-9319-6b2bb52f6af5",
+      "appInfoLocalizationId": "0d41720d-2d68-46ea-ba1f-83dd00584dfa",
+      "readScope": "Complete five string values printed in full and read, including every description paragraph, promotional text, all keywords, subtitle and preserved name. Not just snippets or boolean check.",
+      "fields": {
+        "name": {
+          "sha256Utf8Value": "b31bac9daefbc6175b4b4cd8c6571536a9761084434a87cb38bbd064de665eca",
+          "unicodeCharacters": 25,
+          "utf8Bytes": 27
+        },
+        "subtitle": {
+          "sha256Utf8Value": "b16c9c9adfaa91a5d4b63bae950f57d3c6c8a59cab9613a468be751ed346d671",
+          "unicodeCharacters": 25,
+          "utf8Bytes": 28
+        },
+        "description": {
+          "sha256Utf8Value": "91af847dc3aecdfa59dc242e0aab71d6e70c9404fb9d30981a98ac6ff2677c55",
+          "unicodeCharacters": 1473,
+          "utf8Bytes": 1618
+        },
+        "keywords": {
+          "sha256Utf8Value": "7f0eb1a001d9ceb7a69684d7c51e469e9383181bd720c2e5bdadb456165591a8",
+          "unicodeCharacters": 78,
+          "utf8Bytes": 94
+        },
+        "promotionalText": {
+          "sha256Utf8Value": "3568f10bd45d992d41bed4b528f643a90751918abd8ced60df67f625057ed6b5",
+          "unicodeCharacters": 130,
+          "utf8Bytes": 148
+        }
+      },
+      "completeFieldValues": {
+        "name": "Cloud Calendars: Kalendář",
+        "subtitle": "Počasí, schůzky a widgety",
+        "description": "Plánujte pracovní i osobní program s počasím na iPhonu a iPadu. Cloud Calendars spojuje vaše kalendáře na jednom místě.\n\nKALENDÁŘE A ZOBRAZENÍ\nPoužívejte kalendáře iCloud a připojte Kalendář Google. Premium přidává podporu kalendářů Microsoft. Vyberte zobrazení dne, týdne, měsíce, roku nebo seznamu.\n\nMůžete také vytvořit místní kalendář v zařízení bez účtu Cloud Calendars. Připojení služeb a sdílení mohou vyžadovat přihlášení.\n\nPOČASÍ, WIDGETY A SDÍLENÍ\nPři plánování sledujte předpověď. Widgety na plochu jsou dostupné v malé, střední a velké velikosti. Dostupnost předpovědí závisí na místě a poskytovateli počasí. Sdílejte události a kalendáře a posílejte pozvánky e-mailem, QR kódem nebo přes App Clip. Oprávnění závisí na kalendáři a typu pozvánky.\n\nVYBERTE SI TARIF\nBezplatný Base zahrnuje synchronizaci s Kalendářem Google, Google Meet, různá zobrazení kalendáře, počasí a widgety.\nAdvanced obsahuje funkce Base a odstraňuje reklamy.\nPremium obsahuje Advanced a přidává kalendáře Microsoft a Microsoft Teams.\n\nStažení je zdarma s volitelným automaticky obnovovaným předplatným. Před nákupem zkontrolujte aktuální místní cenu a fakturační období v aplikaci nebo App Storu. Předplatné se obnoví, pokud ho nezrušíte alespoň 24 hodin před koncem aktuálního období. Spravovat nebo zrušit ho můžete v nastavení účtu App Store.\n\nSoukromí: https://www.cloud-calendars.com/privacy-policy\nPodmínky použití: https://www.apple.com/legal/internet-services/itunes/dev/stdeula/",
+        "keywords": "diář,plánovač,týden,měsíc,připomínka,událost,sdílení,pozvánka,předpověď,rozvrh",
+        "promotionalText": "Prohlížejte si plány a počasí společně. Vyberte si widgety a různá zobrazení, nebo začněte místním kalendářem bez účtu v aplikaci."
+      },
+      "languageConfidence": "moderate_to_high",
+      "assessment": "Czech tiers, local account qualification and forecast availability remain clear. App Clip route wording is broad but no no-install/add guarantee.",
+      "semanticChecks": {
+        "freeBaseGoogleMeetViewsWeatherWidgets": true,
+        "advancedBasePlusAdRemoval": true,
+        "premiumAdvancedPlusMicrosoftTeams": true,
+        "accountlessClaimLimitedToLocalCalendar": true,
+        "connectionsSharingSignInQualified": true,
+        "weatherAvailabilityQualified": true,
+        "widgetSizesNotUniversalContentOrFreshnessPromise": true,
+        "noUniversalExchangeOrNoDataGuarantee": true
+      },
+      "keywords": {
+        "terms": [
+          "diář",
+          "plánovač",
+          "týden",
+          "měsíc",
+          "připomínka",
+          "událost",
+          "sdílení",
+          "pozvánka",
+          "předpověď",
+          "rozvrh"
+        ],
+        "duplicateExactTerms": [],
+        "exactTitleSubtitleTokenOverlap": [],
+        "decision": "No concrete exact redundancy found; no keyword replacement proposed. Synonyms and compound phrases not declared waste without evidence."
+      },
+      "appClipAssessment": "Where present, invitation-route wording does not explicitly guarantee no-install adding. Optional preview expansion is outside material-only revision scope. No mandatory rewrite proposed.",
+      "decision": "retain_all_five_fields_no_material_change_justified",
+      "proposals": [],
+      "preserve": [
+        "appName",
+        "subtitle",
+        "keywords",
+        "promotionalText",
+        "URLs",
+        "prices",
+        "privacy",
+        "all other description text"
+      ]
+    },
+    {
+      "locale": "da",
+      "versionLocalizationId": "36c6b56c-545c-483e-92d9-c7a008289e00",
+      "appInfoLocalizationId": "d856d704-39d1-46e5-b588-be01c7b1873e",
+      "readScope": "Complete five string values printed in full and read, including every description paragraph, promotional text, all keywords, subtitle and preserved name. Not just snippets or boolean check.",
+      "fields": {
+        "name": {
+          "sha256Utf8Value": "47d894e004dc3c13636879c2b328d161eb3c7fdea3a3f961abf1ae6748c847b4",
+          "unicodeCharacters": 25,
+          "utf8Bytes": 25
+        },
+        "subtitle": {
+          "sha256Utf8Value": "a7824b1a41f188416ab1a33ac08bc40e06b42f507de1a798450122fa0bd71836",
+          "unicodeCharacters": 24,
+          "utf8Bytes": 24
+        },
+        "description": {
+          "sha256Utf8Value": "7f88ed420dcb399847455ea6c418843ec74b7aa289c6e51c6c9388a8b45e4375",
+          "unicodeCharacters": 1499,
+          "utf8Bytes": 1521
+        },
+        "keywords": {
+          "sha256Utf8Value": "ee09a9d89e384794ebdb4d39fc2c74164d00e40151d698de4fdb04246f675107",
+          "unicodeCharacters": 90,
+          "utf8Bytes": 94
+        },
+        "promotionalText": {
+          "sha256Utf8Value": "6c2889cf1495678094b8e1437c5c4e704fdcbc86db8942a8d01dd6546a6b34a4",
+          "unicodeCharacters": 129,
+          "utf8Bytes": 129
+        }
+      },
+      "completeFieldValues": {
+        "name": "Cloud Calendars: Kalender",
+        "subtitle": "Vejr, aftaler og widgets",
+        "description": "Se arbejdsplaner, private aftaler og vejret på din iPhone og iPad med Cloud Calendars.\n\nKALENDERE OG VISNINGER\nBrug iCloud-kalendere, og tilslut Google Kalender. Premium tilføjer understøttelse af Microsoft-kalendere. Vælg dags-, uge-, måneds-, års- eller listevisning.\n\nDu kan også oprette en lokal kalender på enheden uden en Cloud Calendars-konto. Tilslutning til tjenester og deling kan kræve login.\n\nVEJR, WIDGETS OG DELING\nSe vejrudsigten, mens du planlægger. Widgets til hjemmeskærmen findes i små, mellemstore og store størrelser. Tilgængelige prognoser afhænger af placering og vejrudbyder. Del begivenheder og kalendere, og send invitationer via e-mail, QR-kode eller App Clip. Adgang afhænger af kalenderen og invitationstypen.\n\nVÆLG DIT ABONNEMENT\nGratisplanen Base omfatter synkronisering med Google Kalender, Google Meet, forskellige kalendervisninger, vejr og widgets.\nAdvanced indeholder Base-funktionerne og fjerner reklamer.\nPremium indeholder Advanced og tilføjer Microsoft-kalendere og Microsoft Teams.\n\nAppen er gratis at hente med valgfrie abonnementer, der fornyes automatisk. Kontrollér den aktuelle lokale pris og faktureringsperiode i appen eller App Store, før du abonnerer. Abonnementet fornyes, medmindre du opsiger det mindst 24 timer før periodens udløb. Administrer eller opsig det i indstillingerne for din App Store-konto.\n\nPrivatliv: https://www.cloud-calendars.com/privacy-policy\nBrugsbetingelser: https://www.apple.com/legal/internet-services/itunes/dev/stdeula/",
+        "keywords": "planlægger,agenda,uge,måned,påmindelse,møde,begivenhed,deling,invitation,prognose,tidsplan",
+        "promotionalText": "Se dine planer og vejret samlet. Brug widgets og forskellige visninger, eller begynd med en lokal kalender uden en konto i appen."
+      },
+      "languageConfidence": "moderate_to_high",
+      "assessment": "Danish wording separates free download from optional renewal, local calendar from service login. No meaningful semantic error identified.",
+      "semanticChecks": {
+        "freeBaseGoogleMeetViewsWeatherWidgets": true,
+        "advancedBasePlusAdRemoval": true,
+        "premiumAdvancedPlusMicrosoftTeams": true,
+        "accountlessClaimLimitedToLocalCalendar": true,
+        "connectionsSharingSignInQualified": true,
+        "weatherAvailabilityQualified": true,
+        "widgetSizesNotUniversalContentOrFreshnessPromise": true,
+        "noUniversalExchangeOrNoDataGuarantee": true
+      },
+      "keywords": {
+        "terms": [
+          "planlægger",
+          "agenda",
+          "uge",
+          "måned",
+          "påmindelse",
+          "møde",
+          "begivenhed",
+          "deling",
+          "invitation",
+          "prognose",
+          "tidsplan"
+        ],
+        "duplicateExactTerms": [],
+        "exactTitleSubtitleTokenOverlap": [],
+        "decision": "No concrete exact redundancy found; no keyword replacement proposed. Synonyms and compound phrases not declared waste without evidence."
+      },
+      "appClipAssessment": "Where present, invitation-route wording does not explicitly guarantee no-install adding. Optional preview expansion is outside material-only revision scope. No mandatory rewrite proposed.",
+      "decision": "retain_all_five_fields_no_material_change_justified",
+      "proposals": [],
+      "preserve": [
+        "appName",
+        "subtitle",
+        "keywords",
+        "promotionalText",
+        "URLs",
+        "prices",
+        "privacy",
+        "all other description text"
+      ]
+    },
+    {
+      "locale": "el",
+      "versionLocalizationId": "ce3783f7-5b12-45e1-8456-6c0eacf1eee8",
+      "appInfoLocalizationId": "8b7dbbe6-5bbc-459c-823a-71b868a8e296",
+      "readScope": "Complete five string values printed in full and read, including every description paragraph, promotional text, all keywords, subtitle and preserved name. Not just snippets or boolean check.",
+      "fields": {
+        "name": {
+          "sha256Utf8Value": "e5f99fe1e2a1633f7fb423a4c5964601a815372ca64297dc49ba9bd22eb541a5",
+          "unicodeCharacters": 27,
+          "utf8Bytes": 37
+        },
+        "subtitle": {
+          "sha256Utf8Value": "b6db83d4e1f2fc8e78927ecb7c30c754354526378d175c009b7156babd4cde20",
+          "unicodeCharacters": 27,
+          "utf8Bytes": 44
+        },
+        "description": {
+          "sha256Utf8Value": "717f071dfcadd7e95587b45356ddfe133213f7bba418ce2979bfe1d67555d5bc",
+          "unicodeCharacters": 1704,
+          "utf8Bytes": 2848
+        },
+        "keywords": {
+          "sha256Utf8Value": "601e447c716976f449eef42b465625651e4009f1be9df38b5c7ac09a758fc86a",
+          "unicodeCharacters": 91,
+          "utf8Bytes": 173
+        },
+        "promotionalText": {
+          "sha256Utf8Value": "2fc5c2b67db1397cb305c8c11efa36d44d1c17f46aae87569250a1a93feae981",
+          "unicodeCharacters": 151,
+          "utf8Bytes": 273
+        }
+      },
+      "completeFieldValues": {
+        "name": "Cloud Calendars: Ημερολόγιο",
+        "subtitle": "Καιρός, ραντεβού και widget",
+        "description": "Δείτε επαγγελματικά ραντεβού, προσωπικά σχέδια και τον καιρό σε iPhone και iPad με το Cloud Calendars.\n\nΗΜΕΡΟΛΟΓΙΑ ΚΑΙ ΠΡΟΒΟΛΕΣ\nΧρησιμοποιήστε ημερολόγια iCloud και συνδέστε το Ημερολόγιο Google. Το Premium προσθέτει υποστήριξη για ημερολόγια Microsoft. Επιλέξτε προβολή ημέρας, εβδομάδας, μήνα, έτους ή λίστας.\n\nΜπορείτε επίσης να δημιουργήσετε τοπικό ημερολόγιο στη συσκευή χωρίς λογαριασμό Cloud Calendars. Η σύνδεση υπηρεσιών και η κοινοποίηση ενδέχεται να απαιτούν σύνδεση σε λογαριασμό.\n\nΚΑΙΡΟΣ, WIDGET ΚΑΙ ΚΟΙΝΟΠΟΙΗΣΗ\nΕλέγξτε την πρόγνωση καθώς σχεδιάζετε τη μέρα σας. Τα widget της οθόνης Αφετηρίας διατίθενται σε μικρό, μεσαίο και μεγάλο μέγεθος. Οι διαθέσιμες προγνώσεις εξαρτώνται από την τοποθεσία και τον πάροχο καιρού. Μοιραστείτε συμβάντα και ημερολόγια και στείλτε προσκλήσεις με email, κωδικό QR ή App Clip. Τα δικαιώματα εξαρτώνται από το ημερολόγιο και τον τύπο πρόσκλησης.\n\nΕΠΙΛΕΞΤΕ ΠΡΟΓΡΑΜΜΑ\nΤο δωρεάν Base περιλαμβάνει συγχρονισμό με το Ημερολόγιο Google, Google Meet, διαφορετικές προβολές ημερολογίου, καιρό και widget.\nΤο Advanced περιλαμβάνει τις λειτουργίες του Base και αφαιρεί τις διαφημίσεις.\nΤο Premium περιλαμβάνει το Advanced και προσθέτει ημερολόγια Microsoft και Microsoft Teams.\n\nΗ λήψη είναι δωρεάν, με προαιρετικές συνδρομές αυτόματης ανανέωσης. Πριν εγγραφείτε, ελέγξτε την τρέχουσα τοπική τιμή και την περίοδο χρέωσης στην εφαρμογή ή στο App Store. Η συνδρομή ανανεώνεται αν δεν ακυρωθεί τουλάχιστον 24 ώρες πριν από τη λήξη της τρέχουσας περιόδου. Διαχειριστείτε ή ακυρώστε τη στις ρυθμίσεις του λογαριασμού σας στο App Store.\n\nΑπόρρητο: https://www.cloud-calendars.com/privacy-policy\nΌροι χρήσης: https://www.apple.com/legal/internet-services/itunes/dev/stdeula/",
+        "keywords": "ατζέντα,πρόγραμμα,εβδομάδα,μήνας,υπενθύμιση,συνάντηση,συμβάν,κοινοποίηση,πρόσκληση,πρόγνωση",
+        "promotionalText": "Δείτε τα σχέδιά σας μαζί με τον καιρό. Χρησιμοποιήστε widget και διαφορετικές προβολές ή ξεκινήστε με τοπικό ημερολόγιο χωρίς λογαριασμό στην εφαρμογή."
+      },
+      "languageConfidence": "moderate_to_high",
+      "assessment": "Greek provider, plan inheritance, sign-in and forecast limitations remain explicit. Widget loanword is understandable; no material wording change needed.",
+      "semanticChecks": {
+        "freeBaseGoogleMeetViewsWeatherWidgets": true,
+        "advancedBasePlusAdRemoval": true,
+        "premiumAdvancedPlusMicrosoftTeams": true,
+        "accountlessClaimLimitedToLocalCalendar": true,
+        "connectionsSharingSignInQualified": true,
+        "weatherAvailabilityQualified": true,
+        "widgetSizesNotUniversalContentOrFreshnessPromise": true,
+        "noUniversalExchangeOrNoDataGuarantee": true
+      },
+      "keywords": {
+        "terms": [
+          "ατζέντα",
+          "πρόγραμμα",
+          "εβδομάδα",
+          "μήνας",
+          "υπενθύμιση",
+          "συνάντηση",
+          "συμβάν",
+          "κοινοποίηση",
+          "πρόσκληση",
+          "πρόγνωση"
+        ],
+        "duplicateExactTerms": [],
+        "exactTitleSubtitleTokenOverlap": [],
+        "decision": "No concrete exact redundancy found; no keyword replacement proposed. Synonyms and compound phrases not declared waste without evidence."
+      },
+      "appClipAssessment": "Where present, invitation-route wording does not explicitly guarantee no-install adding. Optional preview expansion is outside material-only revision scope. No mandatory rewrite proposed.",
+      "decision": "retain_all_five_fields_no_material_change_justified",
+      "proposals": [],
+      "preserve": [
+        "appName",
+        "subtitle",
+        "keywords",
+        "promotionalText",
+        "URLs",
+        "prices",
+        "privacy",
+        "all other description text"
+      ]
+    },
+    {
+      "locale": "es-MX",
+      "versionLocalizationId": "3110b329-4291-4e1b-9cce-61500c38ff4f",
+      "appInfoLocalizationId": "e4f9508a-33f8-4c72-b961-df4f00073f88",
+      "readScope": "Complete five string values printed in full and read, including every description paragraph, promotional text, all keywords, subtitle and preserved name. Not just snippets or boolean check.",
+      "fields": {
+        "name": {
+          "sha256Utf8Value": "2d6a16aa92f567d2f2b3967972eaf786a09778a6beda8994afa9ab91e4251332",
+          "unicodeCharacters": 27,
+          "utf8Bytes": 27
+        },
+        "subtitle": {
+          "sha256Utf8Value": "bcea7c8c55e17983417d7c94aa3c392e3725100800fff6fc7d7bfa14345fe973",
+          "unicodeCharacters": 23,
+          "utf8Bytes": 23
+        },
+        "description": {
+          "sha256Utf8Value": "b7f04a283b55b1cbad0de1fd7bea52219851588ab635fc92ec413b7923294deb",
+          "unicodeCharacters": 1710,
+          "utf8Bytes": 1732
+        },
+        "keywords": {
+          "sha256Utf8Value": "28b992aaefbf2d9cb7ea439f9e69d549e4b5928ae5a435948004970118388619",
+          "unicodeCharacters": 97,
+          "utf8Bytes": 100
+        },
+        "promotionalText": {
+          "sha256Utf8Value": "df08637dc374739d96498ed3da5086a739e8a1bc602203a2ebff4aa9b51f7e5f",
+          "unicodeCharacters": 140,
+          "utf8Bytes": 140
+        }
+      },
+      "completeFieldValues": {
+        "name": "Cloud Calendars: Calendario",
+        "subtitle": "Clima, agenda y widgets",
+        "description": "Consulta tus compromisos de trabajo, planes personales y el clima en iPhone y iPad con Cloud Calendars.\n\nCALENDARIOS Y VISTAS\nUsa calendarios de iCloud y conecta Calendario de Google. Premium agrega compatibilidad con calendarios de Microsoft. Elige entre las vistas de día, semana, mes, año y lista.\n\nTambién puedes crear un calendario local en tu dispositivo sin una cuenta de Cloud Calendars. Conectar servicios y compartir contenido puede requerir que inicies sesión.\n\nCLIMA, WIDGETS Y CONTENIDO COMPARTIDO\nRevisa el pronóstico mientras planeas tus actividades. Los widgets para la pantalla de inicio están disponibles en tamaño pequeño, mediano y grande. Los pronósticos disponibles dependen de la ubicación y del proveedor meteorológico. Comparte eventos y calendarios y envía invitaciones por correo electrónico, código QR o App Clip. Los permisos dependen del calendario y del tipo de invitación.\n\nELIGE TU PLAN\nBase es gratuito e incluye sincronización con Calendario de Google, Google Meet, distintas vistas de calendario, clima y widgets.\nAdvanced incluye las funciones de Base y elimina los anuncios.\nPremium incluye Advanced y agrega calendarios de Microsoft y Microsoft Teams.\n\nLa descarga es gratuita, con suscripciones opcionales de renovación automática. Antes de suscribirte, revisa el precio local vigente y el periodo de facturación en la app o en App Store. La suscripción se renueva a menos que la canceles al menos 24 horas antes de que termine el periodo actual. Puedes administrarla o cancelarla en la configuración de tu cuenta de App Store.\n\nPrivacidad: https://www.cloud-calendars.com/privacy-policy\nTérminos de uso: https://www.apple.com/legal/internet-services/itunes/dev/stdeula/",
+        "keywords": "planificador,horario,semana,mes,recordatorio,reunión,evento,compartir,invitación,pronóstico,citas",
+        "promotionalText": "Consulta tus planes y el clima en un solo lugar. Usa widgets y distintas vistas, o empieza con un calendario local sin una cuenta en la app."
+      },
+      "languageConfidence": "moderate_to_high",
+      "assessment": "Mexican Spanish clima/pronóstico/planeas are appropriate. Paid Microsoft support and existing access qualifications preserved.",
+      "semanticChecks": {
+        "freeBaseGoogleMeetViewsWeatherWidgets": true,
+        "advancedBasePlusAdRemoval": true,
+        "premiumAdvancedPlusMicrosoftTeams": true,
+        "accountlessClaimLimitedToLocalCalendar": true,
+        "connectionsSharingSignInQualified": true,
+        "weatherAvailabilityQualified": true,
+        "widgetSizesNotUniversalContentOrFreshnessPromise": true,
+        "noUniversalExchangeOrNoDataGuarantee": true
+      },
+      "keywords": {
+        "terms": [
+          "planificador",
+          "horario",
+          "semana",
+          "mes",
+          "recordatorio",
+          "reunión",
+          "evento",
+          "compartir",
+          "invitación",
+          "pronóstico",
+          "citas"
+        ],
+        "duplicateExactTerms": [],
+        "exactTitleSubtitleTokenOverlap": [],
+        "decision": "No concrete exact redundancy found; no keyword replacement proposed. Synonyms and compound phrases not declared waste without evidence."
+      },
+      "appClipAssessment": "Where present, invitation-route wording does not explicitly guarantee no-install adding. Optional preview expansion is outside material-only revision scope. No mandatory rewrite proposed.",
+      "decision": "retain_all_five_fields_no_material_change_justified",
+      "proposals": [],
+      "preserve": [
+        "appName",
+        "subtitle",
+        "keywords",
+        "promotionalText",
+        "URLs",
+        "prices",
+        "privacy",
+        "all other description text"
+      ]
+    },
+    {
+      "locale": "fi",
+      "versionLocalizationId": "b8fa942f-a222-43d9-bc59-f6a9a56212c1",
+      "appInfoLocalizationId": "ca2eb59d-0036-4b42-a422-a7be57b84d21",
+      "readScope": "Complete five string values printed in full and read, including every description paragraph, promotional text, all keywords, subtitle and preserved name. Not just snippets or boolean check.",
+      "fields": {
+        "name": {
+          "sha256Utf8Value": "8b4b58255ec731fa71362a43763dda2d4592a0887cfc4e7efd19241a8892b582",
+          "unicodeCharacters": 26,
+          "utf8Bytes": 26
+        },
+        "subtitle": {
+          "sha256Utf8Value": "29b5104e533e184f7436d6898f96d3bc445bcd86c87a8765d5aa815f864c3404",
+          "unicodeCharacters": 27,
+          "utf8Bytes": 29
+        },
+        "description": {
+          "sha256Utf8Value": "a4cbf938410e944c3bd0d31db1a7605e76d5c11f7919309f93304a4f7a6dd062",
+          "unicodeCharacters": 1552,
+          "utf8Bytes": 1614
+        },
+        "keywords": {
+          "sha256Utf8Value": "8c2a4f2bdf2141c9abad8eb04f24cda71e056d44df24803cbecccb346da2868c",
+          "unicodeCharacters": 88,
+          "utf8Bytes": 88
+        },
+        "promotionalText": {
+          "sha256Utf8Value": "c7cb01f679b753620888509ef55449bbc953469875dd8a9642847e24bd619469",
+          "unicodeCharacters": 132,
+          "utf8Bytes": 142
+        }
+      },
+      "completeFieldValues": {
+        "name": "Cloud Calendars: Kalenteri",
+        "subtitle": "Sää, tapaamiset ja widgetit",
+        "description": "Tarkastele työasioita, omia menoja ja säätä iPhonella ja iPadilla Cloud Calendarsin avulla.\n\nKALENTERIT JA NÄKYMÄT\nKäytä iCloud-kalentereita ja yhdistä Google Kalenteri. Premium lisää tuen Microsoft-kalentereille. Valitse päivä-, viikko-, kuukausi-, vuosi- tai luettelonäkymä.\n\nVoit myös luoda laitteelle paikallisen kalenterin ilman Cloud Calendars -tiliä. Palvelujen yhdistäminen ja jakaminen voivat edellyttää kirjautumista.\n\nSÄÄ, WIDGETIT JA JAKAMINEN\nTarkista sääennuste suunnittelun yhteydessä. Koti-valikon widgettejä on pienessä, keskikokoisessa ja suuressa koossa. Ennusteiden saatavuus riippuu sijainnista ja sääpalvelusta. Jaa tapahtumia ja kalentereita sekä lähetä kutsuja sähköpostitse, QR-koodilla tai App Clipillä. Käyttöoikeudet riippuvat kalenterista ja kutsun tyypistä.\n\nVALITSE TILAUS\nMaksuton Base sisältää Google Kalenterin synkronoinnin, Google Meetin, eri kalenterinäkymät, sään ja widgetit.\nAdvanced sisältää Basen ominaisuudet ja poistaa mainokset.\nPremium sisältää Advancedin ja lisää Microsoft-kalenterit ja Microsoft Teamsin.\n\nSovelluksen lataaminen on maksutonta. Saatavilla on valinnaisia automaattisesti uusiutuvia tilauksia. Tarkista nykyinen paikallinen hinta ja laskutusjakso sovelluksesta tai App Storesta ennen tilaamista. Tilaus uusiutuu, ellet peruuta sitä vähintään 24 tuntia ennen nykyisen jakson päättymistä. Hallitse tilausta tai peruuta se App Store -tilisi asetuksista.\n\nTietosuoja: https://www.cloud-calendars.com/privacy-policy\nKäyttöehdot: https://www.apple.com/legal/internet-services/itunes/dev/stdeula/",
+        "keywords": "suunnittelu,viikko,kuukausi,muistutus,kokous,tapahtuma,jakaminen,kutsu,ennuste,aikataulu",
+        "promotionalText": "Tarkastele suunnitelmia ja säätä yhdessä. Käytä widgettejä ja eri näkymiä tai aloita paikallisella kalenterilla ilman sovellustiliä."
+      },
+      "languageConfidence": "moderate_to_high",
+      "assessment": "Finnish calendar, permissions and tier meanings remain clear. Koti-valikon is less precise than a Home Screen expression, but context is clearly widgets; optional terminology polish is not treated as a material failure.",
+      "semanticChecks": {
+        "freeBaseGoogleMeetViewsWeatherWidgets": true,
+        "advancedBasePlusAdRemoval": true,
+        "premiumAdvancedPlusMicrosoftTeams": true,
+        "accountlessClaimLimitedToLocalCalendar": true,
+        "connectionsSharingSignInQualified": true,
+        "weatherAvailabilityQualified": true,
+        "widgetSizesNotUniversalContentOrFreshnessPromise": true,
+        "noUniversalExchangeOrNoDataGuarantee": true
+      },
+      "keywords": {
+        "terms": [
+          "suunnittelu",
+          "viikko",
+          "kuukausi",
+          "muistutus",
+          "kokous",
+          "tapahtuma",
+          "jakaminen",
+          "kutsu",
+          "ennuste",
+          "aikataulu"
+        ],
+        "duplicateExactTerms": [],
+        "exactTitleSubtitleTokenOverlap": [],
+        "decision": "No concrete exact redundancy found; no keyword replacement proposed. Synonyms and compound phrases not declared waste without evidence."
+      },
+      "appClipAssessment": "Where present, invitation-route wording does not explicitly guarantee no-install adding. Optional preview expansion is outside material-only revision scope. No mandatory rewrite proposed.",
+      "decision": "retain_all_five_fields_no_material_change_justified",
+      "proposals": [],
+      "preserve": [
+        "appName",
+        "subtitle",
+        "keywords",
+        "promotionalText",
+        "URLs",
+        "prices",
+        "privacy",
+        "all other description text"
+      ]
+    },
+    {
+      "locale": "fr-CA",
+      "versionLocalizationId": "79e62e99-3004-47ff-b072-bc8841f9e107",
+      "appInfoLocalizationId": "49a2bb7a-8d3b-4557-9ece-af27fef22b68",
+      "readScope": "Complete five string values printed in full and read, including every description paragraph, promotional text, all keywords, subtitle and preserved name. Not just snippets or boolean check.",
+      "fields": {
+        "name": {
+          "sha256Utf8Value": "42df5bf406e3b924a2e839577764ecc0e083a180e4688faf9455138feeba5024",
+          "unicodeCharacters": 23,
+          "utf8Bytes": 23
+        },
+        "subtitle": {
+          "sha256Utf8Value": "74dd91130be52734ff11b027e6c20ec4756b64d31861a8117981c990ca32642e",
+          "unicodeCharacters": 29,
+          "utf8Bytes": 31
+        },
+        "description": {
+          "sha256Utf8Value": "a2f71e35034ffb3c0d68d7b1c8f6052ddf94c15a21fba293cf4ce5ed28d318d7",
+          "unicodeCharacters": 1772,
+          "utf8Bytes": 1820
+        },
+        "keywords": {
+          "sha256Utf8Value": "f8601f4d4d8b078472c115784b3ca4db547f9f2277e46e69884a693c417b77d4",
+          "unicodeCharacters": 100,
+          "utf8Bytes": 104
+        },
+        "promotionalText": {
+          "sha256Utf8Value": "45bff1aa4157807ad9613cef49c5ff900c6bbcee94babce325a9c8c38436d21f",
+          "unicodeCharacters": 139,
+          "utf8Bytes": 146
+        }
+      },
+      "completeFieldValues": {
+        "name": "Cloud Calendars: Agenda",
+        "subtitle": "Météo, rendez-vous et widgets",
+        "description": "Consultez vos rendez-vous professionnels, vos projets personnels et la météo sur iPhone et iPad avec Cloud Calendars.\n\nCALENDRIERS ET VUES\nUtilisez vos calendriers iCloud et connectez Google Agenda. Premium ajoute la prise en charge des calendriers Microsoft. Choisissez une vue par jour, semaine, mois, année ou liste.\n\nVous pouvez aussi créer un calendrier local sur votre appareil sans compte Cloud Calendars. La connexion aux services et le partage peuvent nécessiter une ouverture de session.\n\nMÉTÉO, WIDGETS ET PARTAGE\nConsultez les prévisions pendant que vous planifiez vos activités. Les widgets pour l’écran d’accueil sont offerts en formats petit, moyen et grand. Les prévisions disponibles dépendent du lieu et du fournisseur météo. Partagez des événements et des calendriers et envoyez des invitations par courriel, code QR ou App Clip. Les droits d’accès dépendent du calendrier et du type d’invitation.\n\nCHOISISSEZ VOTRE FORFAIT\nBase est gratuit et comprend la synchronisation avec Google Agenda, Google Meet, plusieurs vues du calendrier, la météo et les widgets.\nAdvanced comprend les fonctions de Base et supprime les publicités.\nPremium comprend Advanced et ajoute les calendriers Microsoft et Microsoft Teams.\n\nLe téléchargement est gratuit, avec des abonnements facultatifs à renouvellement automatique. Avant de vous abonner, vérifiez le prix local en vigueur et la période de facturation dans l’app ou l’App Store. L’abonnement se renouvelle, sauf annulation au moins 24 heures avant la fin de la période en cours. Vous pouvez le gérer ou l’annuler dans les réglages de votre compte App Store.\n\nConfidentialité: https://www.cloud-calendars.com/privacy-policy\nConditions d’utilisation: https://www.apple.com/legal/internet-services/itunes/dev/stdeula/",
+        "keywords": "calendrier,horaire,semaine,mois,rappel,réunion,événement,partage,invitation,prévisions,planification",
+        "promotionalText": "Vos rendez-vous et la météo au même endroit. Utilisez les widgets et différentes vues, ou créez un calendrier local sans compte dans l’app."
+      },
+      "languageConfidence": "moderate_to_high",
+      "assessment": "Canadian French courriel, ouverture de session and forfait are appropriate. Plan/account/forecast boundaries preserved.",
+      "semanticChecks": {
+        "freeBaseGoogleMeetViewsWeatherWidgets": true,
+        "advancedBasePlusAdRemoval": true,
+        "premiumAdvancedPlusMicrosoftTeams": true,
+        "accountlessClaimLimitedToLocalCalendar": true,
+        "connectionsSharingSignInQualified": true,
+        "weatherAvailabilityQualified": true,
+        "widgetSizesNotUniversalContentOrFreshnessPromise": true,
+        "noUniversalExchangeOrNoDataGuarantee": true
+      },
+      "keywords": {
+        "terms": [
+          "calendrier",
+          "horaire",
+          "semaine",
+          "mois",
+          "rappel",
+          "réunion",
+          "événement",
+          "partage",
+          "invitation",
+          "prévisions",
+          "planification"
+        ],
+        "duplicateExactTerms": [],
+        "exactTitleSubtitleTokenOverlap": [],
+        "decision": "No concrete exact redundancy found; no keyword replacement proposed. Synonyms and compound phrases not declared waste without evidence."
+      },
+      "appClipAssessment": "Where present, invitation-route wording does not explicitly guarantee no-install adding. Optional preview expansion is outside material-only revision scope. No mandatory rewrite proposed.",
+      "decision": "retain_all_five_fields_no_material_change_justified",
+      "proposals": [],
+      "preserve": [
+        "appName",
+        "subtitle",
+        "keywords",
+        "promotionalText",
+        "URLs",
+        "prices",
+        "privacy",
+        "all other description text"
+      ]
+    },
+    {
+      "locale": "gu-IN",
+      "versionLocalizationId": "6fbf996c-ce0f-4a39-9de1-f73b2ab244b8",
+      "appInfoLocalizationId": "04b4b39b-44be-44c0-bd7b-2257565df971",
+      "readScope": "Complete five string values printed in full and read, including every description paragraph, promotional text, all keywords, subtitle and preserved name. Not just snippets or boolean check.",
+      "fields": {
+        "name": {
+          "sha256Utf8Value": "f6d9d256f776930bb0268a7ddd68bb35105bcdc731b036b65bb43921d07457d1",
+          "unicodeCharacters": 25,
+          "utf8Bytes": 41
+        },
+        "subtitle": {
+          "sha256Utf8Value": "c940f044a754c15512012f345eede5458284e1c9d4cfb51b2f9cbfb824f06098",
+          "unicodeCharacters": 16,
+          "utf8Bytes": 44
+        },
+        "description": {
+          "sha256Utf8Value": "aa18da5ad462d36a16a384049dba318f871298e894beb8e1df6c945542717871",
+          "unicodeCharacters": 1191,
+          "utf8Bytes": 2615
+        },
+        "keywords": {
+          "sha256Utf8Value": "0b54bceb790eca08ed07c542ab7b882c9840fb1541cf6d07f0d0544bf63d7b14",
+          "unicodeCharacters": 64,
+          "utf8Bytes": 174
+        },
+        "promotionalText": {
+          "sha256Utf8Value": "6cd1b81ca7d93d4453e5519a2e5a4d35001f201abf6102e281f8f35f74f04a46",
+          "unicodeCharacters": 108,
+          "utf8Bytes": 284
+        }
+      },
+      "completeFieldValues": {
+        "name": "Cloud Calendars: કૅલેન્ડર",
+        "subtitle": "હવામાન અને આયોજન",
+        "description": "iPhone અને iPad પર Cloud Calendars સાથે કામ અને વ્યક્તિગત આયોજનની સાથે હવામાન જુઓ.\n\niCloud કૅલેન્ડર વાપરો અને Google Calendar જોડો. દિવસ, અઠવાડિયું, મહિનો, વર્ષ અથવા સૂચિ દૃશ્ય પસંદ કરો. Cloud Calendars ખાતા વિના ઉપકરણ પર સ્થાનિક કૅલેન્ડર બનાવી શકાય છે. સેવાઓ જોડવા અને શેર કરવા માટે સાઇન ઇન જરૂરી હોઈ શકે છે. ઍક્સેસની પરવાનગી કૅલેન્ડર અને આમંત્રણના પ્રકાર પર આધાર રાખે છે.\n\nઆયોજન કરતી વખતે હવામાનની આગાહી જુઓ. હોમ સ્ક્રીન વિજેટ નાના, મધ્યમ અને મોટા કદમાં ઉપલબ્ધ છે. ઉપલબ્ધ આગાહી સ્થાન અને હવામાન સેવા પર આધાર રાખે છે.\n\nમફત Base માં Google Calendar સિંક, Google Meet, વિવિધ કૅલેન્ડર દૃશ્યો, હવામાન અને વિજેટ છે. Advanced માં Base ની સુવિધાઓ છે અને જાહેરાતો દૂર થાય છે. Premium માં Advanced ની સુવિધાઓ સાથે Microsoft કૅલેન્ડર અને Microsoft Teams નો સપોર્ટ છે.\n\nડાઉનલોડ મફત છે; વૈકલ્પિક સબ્સ્ક્રિપ્શન આપમેળે રિન્યૂ થાય છે. લેતાં પહેલાં ઍપ અથવા App Store માં વર્તમાન સ્થાનિક કિંમત અને બિલિંગ સમયગાળો તપાસો. વર્તમાન સમયગાળો પૂરો થાય તેના ઓછામાં ઓછા 24 કલાક પહેલાં રદ ન કરો તો સબ્સ્ક્રિપ્શન રિન્યૂ થાય છે. App Store ખાતાની સેટિંગ્સમાં તેને મેનેજ અથવા રદ કરો.\n\nગોપનીયતા: https://www.cloud-calendars.com/privacy-policy\nઉપયોગની શરતો: https://www.apple.com/legal/internet-services/itunes/dev/stdeula/",
+        "keywords": "સમયપત્રક,બેઠક,ઇવેન્ટ,યાદ,આમંત્રણ,શેર,અઠવાડિયું,મહિનો,આગાહી,વિજેટ",
+        "promotionalText": "આયોજન અને હવામાન સાથે જુઓ. જુદા દૃશ્યો અને હોમ સ્ક્રીન વિજેટ વાપરો અથવા ઍપ ખાતા વિના સ્થાનિક કૅલેન્ડર બનાવો."
+      },
+      "languageConfidence": "lower_to_moderate",
+      "assessment": "Gujarati separates local accountless calendars from sign-in-required services and preserves tier inheritance. Lower confidence in idiomatic polish; no demonstrated semantic error.",
+      "semanticChecks": {
+        "freeBaseGoogleMeetViewsWeatherWidgets": true,
+        "advancedBasePlusAdRemoval": true,
+        "premiumAdvancedPlusMicrosoftTeams": true,
+        "accountlessClaimLimitedToLocalCalendar": true,
+        "connectionsSharingSignInQualified": true,
+        "weatherAvailabilityQualified": true,
+        "widgetSizesNotUniversalContentOrFreshnessPromise": true,
+        "noUniversalExchangeOrNoDataGuarantee": true
+      },
+      "keywords": {
+        "terms": [
+          "સમયપત્રક",
+          "બેઠક",
+          "ઇવેન્ટ",
+          "યાદ",
+          "આમંત્રણ",
+          "શેર",
+          "અઠવાડિયું",
+          "મહિનો",
+          "આગાહી",
+          "વિજેટ"
+        ],
+        "duplicateExactTerms": [],
+        "exactTitleSubtitleTokenOverlap": [],
+        "decision": "No concrete exact redundancy found; no keyword replacement proposed. Synonyms and compound phrases not declared waste without evidence."
+      },
+      "appClipAssessment": "Where present, invitation-route wording does not explicitly guarantee no-install adding. Optional preview expansion is outside material-only revision scope. No mandatory rewrite proposed.",
+      "decision": "retain_all_five_fields_no_material_change_justified",
+      "proposals": [],
+      "preserve": [
+        "appName",
+        "subtitle",
+        "keywords",
+        "promotionalText",
+        "URLs",
+        "prices",
+        "privacy",
+        "all other description text"
+      ]
+    },
+    {
+      "locale": "he",
+      "versionLocalizationId": "81dc22d5-6b74-4d6a-87fb-bb6eade3e389",
+      "appInfoLocalizationId": "3e2cf1df-1dbc-4d68-8ede-0731cc8935d5",
+      "readScope": "Complete five string values printed in full and read, including every description paragraph, promotional text, all keywords, subtitle and preserved name. Not just snippets or boolean check.",
+      "fields": {
+        "name": {
+          "sha256Utf8Value": "c6ce6f7b5c73201a8d26654d942c4b60e1d3f545da41e13f9418a8834e14319a",
+          "unicodeCharacters": 21,
+          "utf8Bytes": 25
+        },
+        "subtitle": {
+          "sha256Utf8Value": "f0dafc87d335b628da01f31e9206c625f6a820749d09ee519afd7b0bfc232175",
+          "unicodeCharacters": 27,
+          "utf8Bytes": 50
+        },
+        "description": {
+          "sha256Utf8Value": "85900243f47f93183784c0613d09072aa557c45294e2e2f2120eae011bb78906",
+          "unicodeCharacters": 1288,
+          "utf8Bytes": 2069
+        },
+        "keywords": {
+          "sha256Utf8Value": "6ffa7b3a77fbd29f586ad1e464233224171f7e76e1a73a3312f23c1d91fcbefc",
+          "unicodeCharacters": 62,
+          "utf8Bytes": 113
+        },
+        "promotionalText": {
+          "sha256Utf8Value": "eacc99ba79988d510c5d8c2151d3eb785d50d79e815cb984a9a7ca29b971eff2",
+          "unicodeCharacters": 118,
+          "utf8Bytes": 215
+        }
+      },
+      "completeFieldValues": {
+        "name": "Cloud Calendars: יומן",
+        "subtitle": "מזג אוויר, פגישות ווידג׳טים",
+        "description": "אפשר לעיין בתוכניות לעבודה ולחיים הפרטיים לצד מזג האוויר ב-iPhone וב-iPad עם Cloud Calendars.\n\nלוחות שנה ותצוגות\nהשתמשו בלוחות שנה של iCloud וחברו את יומן Google. מסלול Premium מוסיף תמיכה בלוחות שנה של Microsoft. בחרו תצוגה יומית, שבועית, חודשית, שנתית או רשימה.\n\nאפשר גם ליצור לוח שנה מקומי במכשיר בלי חשבון Cloud Calendars. חיבור שירותים ושיתוף עשויים לדרוש כניסה לחשבון.\n\nמזג אוויר, ווידג׳טים ושיתוף\nבדקו את התחזית בזמן התכנון. ווידג׳טים למסך הבית זמינים בגודל קטן, בינוני וגדול. זמינות התחזיות תלויה במיקום ובספק מזג האוויר. שתפו אירועים ולוחות שנה ושלחו הזמנות בדוא״ל, בקוד QR או ב-App Clip. הרשאות הגישה תלויות בלוח השנה ובסוג ההזמנה.\n\nבחירת מסלול\nBase הוא מסלול חינמי הכולל סנכרון עם יומן Google, תמיכה ב-Google Meet, תצוגות לוח שנה שונות, מזג אוויר ווידג׳טים.\nAdvanced כולל את תכונות Base ומסיר פרסומות.\nPremium כולל את Advanced ומוסיף לוחות שנה של Microsoft ותמיכה ב-Microsoft Teams.\n\nההורדה חינמית, עם מינויים אופציונליים המתחדשים אוטומטית. לפני ההרשמה, בדקו את המחיר המקומי העדכני ואת תקופת החיוב באפליקציה או ב-App Store. המינוי מתחדש אלא אם מבטלים אותו לפחות 24 שעות לפני סיום התקופה הנוכחית. אפשר לנהל או לבטל אותו בהגדרות חשבון App Store.\n\nפרטיות: https://www.cloud-calendars.com/privacy-policy\nתנאי שימוש: https://www.apple.com/legal/internet-services/itunes/dev/stdeula/",
+        "keywords": "לוח שנה,תכנון,שבוע,חודש,תזכורת,אירוע,שיתוף,הזמנה,תחזית,סדר יום",
+        "promotionalText": "התוכניות ומזג האוויר במקום אחד. אפשר להשתמש בווידג׳טים ובתצוגות שונות, או להתחיל עם לוח שנה מקומי בלי חשבון באפליקציה."
+      },
+      "languageConfidence": "moderate",
+      "assessment": "Hebrew retains local account distinction, conditional permissions and clear paid tiers. RTL visual rendering not assessed; no semantic blocker found.",
+      "semanticChecks": {
+        "freeBaseGoogleMeetViewsWeatherWidgets": true,
+        "advancedBasePlusAdRemoval": true,
+        "premiumAdvancedPlusMicrosoftTeams": true,
+        "accountlessClaimLimitedToLocalCalendar": true,
+        "connectionsSharingSignInQualified": true,
+        "weatherAvailabilityQualified": true,
+        "widgetSizesNotUniversalContentOrFreshnessPromise": true,
+        "noUniversalExchangeOrNoDataGuarantee": true
+      },
+      "keywords": {
+        "terms": [
+          "לוח שנה",
+          "תכנון",
+          "שבוע",
+          "חודש",
+          "תזכורת",
+          "אירוע",
+          "שיתוף",
+          "הזמנה",
+          "תחזית",
+          "סדר יום"
+        ],
+        "duplicateExactTerms": [],
+        "exactTitleSubtitleTokenOverlap": [],
+        "decision": "No concrete exact redundancy found; no keyword replacement proposed. Synonyms and compound phrases not declared waste without evidence."
+      },
+      "appClipAssessment": "Where present, invitation-route wording does not explicitly guarantee no-install adding. Optional preview expansion is outside material-only revision scope. No mandatory rewrite proposed.",
+      "decision": "retain_all_five_fields_no_material_change_justified",
+      "proposals": [],
+      "preserve": [
+        "appName",
+        "subtitle",
+        "keywords",
+        "promotionalText",
+        "URLs",
+        "prices",
+        "privacy",
+        "all other description text"
+      ]
+    },
+    {
+      "locale": "hi",
+      "versionLocalizationId": "5c3939c4-55f7-4baf-b574-ff78c31486f0",
+      "appInfoLocalizationId": "442f500c-8bf1-4eef-a4a3-c962c12bfd6d",
+      "readScope": "Complete five string values printed in full and read, including every description paragraph, promotional text, all keywords, subtitle and preserved name. Not just snippets or boolean check.",
+      "fields": {
+        "name": {
+          "sha256Utf8Value": "40ac2da7b0007ab9d51393b9f07a4518fe6286cbded42918c8f693a8e653c98a",
+          "unicodeCharacters": 24,
+          "utf8Bytes": 38
+        },
+        "subtitle": {
+          "sha256Utf8Value": "54e48e3d284aa1d9deee7c5a0e2e6cb239f8debda09b8cbc0e13bfc227037edb",
+          "unicodeCharacters": 22,
+          "utf8Bytes": 58
+        },
+        "description": {
+          "sha256Utf8Value": "b7c1473e3eb126f2bd2e06e9abf96e50f365871b60e1c88d4c45659e68430dbf",
+          "unicodeCharacters": 1468,
+          "utf8Bytes": 3294
+        },
+        "keywords": {
+          "sha256Utf8Value": "be48d7c1e0d11ea90845bb3facad9a0f64789a42fae1de02640459526d119f12",
+          "unicodeCharacters": 79,
+          "utf8Bytes": 217
+        },
+        "promotionalText": {
+          "sha256Utf8Value": "1164ca2fb9d540ec47aa1f7771b13faab23d49457c6a5bcc77c1a29ce8750c5c",
+          "unicodeCharacters": 123,
+          "utf8Bytes": 321
+        }
+      },
+      "completeFieldValues": {
+        "name": "Cloud Calendars: कैलेंडर",
+        "subtitle": "मौसम, योजनाएँ और विजेट",
+        "description": "Cloud Calendars के साथ iPhone और iPad पर काम और निजी जीवन की योजनाएँ मौसम के साथ देखें।\n\nकैलेंडर और दृश्य\niCloud कैलेंडर का उपयोग करें और Google Calendar जोड़ें। Premium में Microsoft कैलेंडर का समर्थन भी मिलता है। दिन, सप्ताह, महीना, वर्ष या सूची दृश्य चुनें।\n\nआप Cloud Calendars खाता बनाए बिना अपने डिवाइस पर स्थानीय कैलेंडर भी बना सकते हैं। सेवाएँ जोड़ने और साझा करने के लिए साइन इन करना पड़ सकता है।\n\nमौसम, विजेट और साझा करना\nयोजना बनाते समय मौसम का पूर्वानुमान देखें। होम स्क्रीन विजेट छोटे, मध्यम और बड़े आकार में उपलब्ध हैं। उपलब्ध पूर्वानुमान स्थान और मौसम सेवा प्रदाता पर निर्भर करते हैं। इवेंट और कैलेंडर साझा करें तथा ईमेल, QR कोड या App Clip से निमंत्रण भेजें। पहुँच की अनुमति कैलेंडर और निमंत्रण के प्रकार पर निर्भर करती है।\n\nअपना प्लान चुनें\nमुफ़्त Base में Google Calendar सिंक, Google Meet, अलग-अलग कैलेंडर दृश्य, मौसम और विजेट शामिल हैं।\nAdvanced में Base की सुविधाएँ शामिल हैं और विज्ञापन हट जाते हैं।\nPremium में Advanced की सुविधाओं के साथ Microsoft कैलेंडर और Microsoft Teams का समर्थन मिलता है।\n\nऐप डाउनलोड करना मुफ़्त है। वैकल्पिक सदस्यताएँ अपने आप नवीनीकृत होती हैं। सदस्यता लेने से पहले ऐप या App Store में मौजूदा स्थानीय कीमत और बिलिंग अवधि देखें। वर्तमान अवधि समाप्त होने से कम से कम 24 घंटे पहले रद्द न करने पर सदस्यता नवीनीकृत हो जाती है। App Store खाते की सेटिंग में सदस्यता प्रबंधित या रद्द करें।\n\nगोपनीयता: https://www.cloud-calendars.com/privacy-policy\nउपयोग की शर्तें: https://www.apple.com/legal/internet-services/itunes/dev/stdeula/",
+        "keywords": "समयसारणी,याद दिलाना,बैठक,इवेंट,साझा,निमंत्रण,सप्ताह,महीना,पूर्वानुमान,कार्यक्रम",
+        "promotionalText": "अपनी योजनाएँ और मौसम एक साथ देखें। विजेट और अलग-अलग कैलेंडर दृश्य चुनें, या ऐप खाता बनाए बिना स्थानीय कैलेंडर से शुरू करें।"
+      },
+      "languageConfidence": "moderate",
+      "assessment": "Hindi retains local-account scope and conditional sharing, forecast availability and paid Microsoft support. याद दिलाना is a multiword reminder phrase, not an exact duplicate; no indexing penalty assumed.",
+      "semanticChecks": {
+        "freeBaseGoogleMeetViewsWeatherWidgets": true,
+        "advancedBasePlusAdRemoval": true,
+        "premiumAdvancedPlusMicrosoftTeams": true,
+        "accountlessClaimLimitedToLocalCalendar": true,
+        "connectionsSharingSignInQualified": true,
+        "weatherAvailabilityQualified": true,
+        "widgetSizesNotUniversalContentOrFreshnessPromise": true,
+        "noUniversalExchangeOrNoDataGuarantee": true
+      },
+      "keywords": {
+        "terms": [
+          "समयसारणी",
+          "याद दिलाना",
+          "बैठक",
+          "इवेंट",
+          "साझा",
+          "निमंत्रण",
+          "सप्ताह",
+          "महीना",
+          "पूर्वानुमान",
+          "कार्यक्रम"
+        ],
+        "duplicateExactTerms": [],
+        "exactTitleSubtitleTokenOverlap": [],
+        "decision": "No concrete exact redundancy found; no keyword replacement proposed. Synonyms and compound phrases not declared waste without evidence."
+      },
+      "appClipAssessment": "Where present, invitation-route wording does not explicitly guarantee no-install adding. Optional preview expansion is outside material-only revision scope. No mandatory rewrite proposed.",
+      "decision": "retain_all_five_fields_no_material_change_justified",
+      "proposals": [],
+      "preserve": [
+        "appName",
+        "subtitle",
+        "keywords",
+        "promotionalText",
+        "URLs",
+        "prices",
+        "privacy",
+        "all other description text"
+      ]
+    },
+    {
+      "locale": "hr",
+      "versionLocalizationId": "70e4ce9c-8ba0-45f5-8162-c31475c6215e",
+      "appInfoLocalizationId": "d6db6dd7-acb6-46e2-bc4f-50ea1deaddf6",
+      "readScope": "Complete five string values printed in full and read, including every description paragraph, promotional text, all keywords, subtitle and preserved name. Not just snippets or boolean check.",
+      "fields": {
+        "name": {
+          "sha256Utf8Value": "c3288661486a049bfeef31599f4608c2b23a1b14e04a2babd6598f5aaacb7e48",
+          "unicodeCharacters": 25,
+          "utf8Bytes": 25
+        },
+        "subtitle": {
+          "sha256Utf8Value": "82ea62ca27a817ed815d345b1a16746b1559623ebe5c80b7f2a9736670f3d24e",
+          "unicodeCharacters": 27,
+          "utf8Bytes": 27
+        },
+        "description": {
+          "sha256Utf8Value": "3a71f94a3c86646f0153625a38865ada8191070997f6bfb00d5c3ff77d435b4a",
+          "unicodeCharacters": 1529,
+          "utf8Bytes": 1552
+        },
+        "keywords": {
+          "sha256Utf8Value": "4d513b965e55c5a405f889fce60d858737ef77b09eeff62a42927dc75ddb1dfc",
+          "unicodeCharacters": 85,
+          "utf8Bytes": 86
+        },
+        "promotionalText": {
+          "sha256Utf8Value": "785dcbf8e7a2b01466b70390a7cb0d9a971b4ed308a93b0ea411e1fa93fcd600",
+          "unicodeCharacters": 135,
+          "utf8Bytes": 138
+        }
+      },
+      "completeFieldValues": {
+        "name": "Cloud Calendars: Kalendar",
+        "subtitle": "Vrijeme, sastanci i widgeti",
+        "description": "Pregledajte poslovne obveze, privatne planove i vrijeme na iPhoneu i iPadu uz Cloud Calendars.\n\nKALENDARI I PRIKAZI\nKoristite iCloud kalendare i povežite Google kalendar. Premium dodaje podršku za Microsoftove kalendare. Odaberite prikaz dana, tjedna, mjeseca, godine ili popisa.\n\nMožete izraditi i lokalni kalendar na uređaju bez računa za Cloud Calendars. Povezivanje usluga i dijeljenje mogu zahtijevati prijavu.\n\nVRIJEME, WIDGETI I DIJELJENJE\nProvjerite prognozu dok planirate. Widgeti za početni zaslon dostupni su u maloj, srednjoj i velikoj veličini. Dostupne prognoze ovise o lokaciji i pružatelju vremenskih podataka. Dijelite događaje i kalendare te šaljite pozivnice e-poštom, QR kodom ili putem App Clipa. Prava pristupa ovise o kalendaru i vrsti pozivnice.\n\nODABERITE PLAN\nBesplatni Base uključuje sinkronizaciju s Google kalendarom, Google Meet, različite prikaze kalendara, vrijeme i widgete.\nAdvanced uključuje značajke plana Base i uklanja oglase.\nPremium uključuje Advanced i dodaje Microsoftove kalendare i Microsoft Teams.\n\nPreuzimanje je besplatno, uz neobavezne pretplate s automatskom obnovom. Prije pretplate provjerite trenutačnu lokalnu cijenu i obračunsko razdoblje u aplikaciji ili App Storeu. Pretplata se obnavlja ako je ne otkažete najmanje 24 sata prije kraja tekućeg razdoblja. Njome možete upravljati ili je otkazati u postavkama računa za App Store.\n\nPrivatnost: https://www.cloud-calendars.com/privacy-policy\nUvjeti korištenja: https://www.apple.com/legal/internet-services/itunes/dev/stdeula/",
+        "keywords": "planer,raspored,tjedan,mjesec,podsjetnik,događaj,dijeljenje,pozivnica,prognoza,termin",
+        "promotionalText": "Pregledajte planove i vrijeme zajedno. Koristite widgete i različite prikaze ili počnite s lokalnim kalendarom bez računa u aplikaciji."
+      },
+      "languageConfidence": "moderate_to_high",
+      "assessment": "Croatian vrijeme means weather in explicit forecast context. Roles/plan conditions and renewal meaning preserved; no material issue.",
+      "semanticChecks": {
+        "freeBaseGoogleMeetViewsWeatherWidgets": true,
+        "advancedBasePlusAdRemoval": true,
+        "premiumAdvancedPlusMicrosoftTeams": true,
+        "accountlessClaimLimitedToLocalCalendar": true,
+        "connectionsSharingSignInQualified": true,
+        "weatherAvailabilityQualified": true,
+        "widgetSizesNotUniversalContentOrFreshnessPromise": true,
+        "noUniversalExchangeOrNoDataGuarantee": true
+      },
+      "keywords": {
+        "terms": [
+          "planer",
+          "raspored",
+          "tjedan",
+          "mjesec",
+          "podsjetnik",
+          "događaj",
+          "dijeljenje",
+          "pozivnica",
+          "prognoza",
+          "termin"
+        ],
+        "duplicateExactTerms": [],
+        "exactTitleSubtitleTokenOverlap": [],
+        "decision": "No concrete exact redundancy found; no keyword replacement proposed. Synonyms and compound phrases not declared waste without evidence."
+      },
+      "appClipAssessment": "Where present, invitation-route wording does not explicitly guarantee no-install adding. Optional preview expansion is outside material-only revision scope. No mandatory rewrite proposed.",
+      "decision": "retain_all_five_fields_no_material_change_justified",
+      "proposals": [],
+      "preserve": [
+        "appName",
+        "subtitle",
+        "keywords",
+        "promotionalText",
+        "URLs",
+        "prices",
+        "privacy",
+        "all other description text"
+      ]
+    },
+    {
+      "locale": "hu",
+      "versionLocalizationId": "90e49b5b-cac5-4403-b411-c0114f969297",
+      "appInfoLocalizationId": "d6d0e07b-ab46-498c-aa41-03b740e2c767",
+      "readScope": "Complete five string values printed in full and read, including every description paragraph, promotional text, all keywords, subtitle and preserved name. Not just snippets or boolean check.",
+      "fields": {
+        "name": {
+          "sha256Utf8Value": "f1d3f55ed680a8e810ca31bbc64aac110645f2eb2968a5035c9a85c58fb1cd00",
+          "unicodeCharacters": 23,
+          "utf8Bytes": 24
+        },
+        "subtitle": {
+          "sha256Utf8Value": "ebd5df4fc627dc590a5cdc42f93f0d7e655a42351adfdf3430d9f9df2df3cbdd",
+          "unicodeCharacters": 29,
+          "utf8Bytes": 32
+        },
+        "description": {
+          "sha256Utf8Value": "e4cbaf56e66b431768a31b14f272af0b15475796a9db7e2b967a6ddc9fd5ebd2",
+          "unicodeCharacters": 1642,
+          "utf8Bytes": 1794
+        },
+        "keywords": {
+          "sha256Utf8Value": "14ab5b0ff7aa7202cc7231efad5c2a89b8a30e2cff997ae2757a2979e4f45e8b",
+          "unicodeCharacters": 86,
+          "utf8Bytes": 99
+        },
+        "promotionalText": {
+          "sha256Utf8Value": "6c133f574aac8377ccabd70f19e3a99c8a6a5a1cf8a9d54b421ae4ed988e11b4",
+          "unicodeCharacters": 125,
+          "utf8Bytes": 141
+        }
+      },
+      "completeFieldValues": {
+        "name": "Cloud Calendars: Naptár",
+        "subtitle": "Időjárás, programok, widgetek",
+        "description": "Tekintsd át munkahelyi és személyes programjaidat az időjárással együtt iPhone-on és iPaden a Cloud Calendars segítségével.\n\nNAPTÁRAK ÉS NÉZETEK\nHasználj iCloud-naptárakat, és csatlakoztasd a Google Naptárt. A Premium Microsoft-naptárakat is támogat. Válassz napi, heti, havi, éves vagy listanézetet.\n\nHelyi naptárat is létrehozhatsz az eszközön Cloud Calendars-fiók nélkül. A szolgáltatások csatlakoztatásához és a megosztáshoz bejelentkezésre lehet szükség.\n\nIDŐJÁRÁS, WIDGETEK ÉS MEGOSZTÁS\nTervezés közben nézd meg az előrejelzést. A Főképernyő widgetjei kis, közepes és nagy méretben érhetők el. Az előrejelzések elérhetősége a helytől és az időjárási szolgáltatótól függ. Ossz meg eseményeket és naptárakat, és küldj meghívókat e-mailben, QR-kóddal vagy App Clippel. A hozzáférés a naptártól és a meghívó típusától függ.\n\nVÁLASSZ CSOMAGOT\nAz ingyenes Base Google Naptár-szinkronizálást, Google Meetet, különböző naptárnézeteket, időjárást és widgeteket tartalmaz.\nAz Advanced tartalmazza a Base funkcióit, és eltávolítja a hirdetéseket.\nA Premium tartalmazza az Advanced funkcióit, valamint Microsoft-naptárakat és Microsoft Teamst is támogat.\n\nA letöltés ingyenes, és választható automatikusan megújuló előfizetés. Előfizetés előtt ellenőrizd az aktuális helyi árat és a számlázási időszakot az alkalmazásban vagy az App Store-ban. Az előfizetés megújul, ha nem mondod le legalább 24 órával az aktuális időszak vége előtt. Az App Store-fiókod beállításaiban kezelheted vagy lemondhatod.\n\nAdatvédelem: https://www.cloud-calendars.com/privacy-policy\nHasználati feltételek: https://www.apple.com/legal/internet-services/itunes/dev/stdeula/",
+        "keywords": "napirend,tervező,hét,hónap,emlékeztető,találkozó,esemény,megosztás,meghívó,előrejelzés",
+        "promotionalText": "Tervek és időjárás egy helyen. Használj widgeteket és különböző nézeteket, vagy kezdj helyi naptárral, alkalmazásfiók nélkül."
+      },
+      "languageConfidence": "moderate_to_high",
+      "assessment": "Hungarian feature inheritance and optional renewals are clear. Informal singular voice is consistent; no material error.",
+      "semanticChecks": {
+        "freeBaseGoogleMeetViewsWeatherWidgets": true,
+        "advancedBasePlusAdRemoval": true,
+        "premiumAdvancedPlusMicrosoftTeams": true,
+        "accountlessClaimLimitedToLocalCalendar": true,
+        "connectionsSharingSignInQualified": true,
+        "weatherAvailabilityQualified": true,
+        "widgetSizesNotUniversalContentOrFreshnessPromise": true,
+        "noUniversalExchangeOrNoDataGuarantee": true
+      },
+      "keywords": {
+        "terms": [
+          "napirend",
+          "tervező",
+          "hét",
+          "hónap",
+          "emlékeztető",
+          "találkozó",
+          "esemény",
+          "megosztás",
+          "meghívó",
+          "előrejelzés"
+        ],
+        "duplicateExactTerms": [],
+        "exactTitleSubtitleTokenOverlap": [],
+        "decision": "No concrete exact redundancy found; no keyword replacement proposed. Synonyms and compound phrases not declared waste without evidence."
+      },
+      "appClipAssessment": "Where present, invitation-route wording does not explicitly guarantee no-install adding. Optional preview expansion is outside material-only revision scope. No mandatory rewrite proposed.",
+      "decision": "retain_all_five_fields_no_material_change_justified",
+      "proposals": [],
+      "preserve": [
+        "appName",
+        "subtitle",
+        "keywords",
+        "promotionalText",
+        "URLs",
+        "prices",
+        "privacy",
+        "all other description text"
+      ]
+    },
+    {
+      "locale": "id",
+      "versionLocalizationId": "bacdbba0-8db2-4756-9b98-1a24e68f5416",
+      "appInfoLocalizationId": "534478dd-b904-4381-8c44-c2ce3e5bbc8f",
+      "readScope": "Complete five string values printed in full and read, including every description paragraph, promotional text, all keywords, subtitle and preserved name. Not just snippets or boolean check.",
+      "fields": {
+        "name": {
+          "sha256Utf8Value": "47d894e004dc3c13636879c2b328d161eb3c7fdea3a3f961abf1ae6748c847b4",
+          "unicodeCharacters": 25,
+          "utf8Bytes": 25
+        },
+        "subtitle": {
+          "sha256Utf8Value": "a5a3b71cf7687049ef2053231f10bb78503e0598117724da876c5b49c5ae3a97",
+          "unicodeCharacters": 24,
+          "utf8Bytes": 24
+        },
+        "description": {
+          "sha256Utf8Value": "042064db3cee1d7f5fcf626b66976ee9b17926f39162e233354e092493d5b3c5",
+          "unicodeCharacters": 1306,
+          "utf8Bytes": 1306
+        },
+        "keywords": {
+          "sha256Utf8Value": "56a3ba925e4e22d5f9d537cedffd9aa82700c4f18dbb963876ca932839e9b63f",
+          "unicodeCharacters": 84,
+          "utf8Bytes": 84
+        },
+        "promotionalText": {
+          "sha256Utf8Value": "97db0ece09625213752cc358c8673d5ac64221f27adbb85821d3508e401a2d0c",
+          "unicodeCharacters": 124,
+          "utf8Bytes": 124
+        }
+      },
+      "completeFieldValues": {
+        "name": "Cloud Calendars: Kalender",
+        "subtitle": "Cuaca, jadwal dan widget",
+        "description": "Lihat jadwal kerja, rencana pribadi, dan cuaca di iPhone serta iPad dengan Cloud Calendars.\n\nGunakan kalender iCloud dan hubungkan Google Kalender. Pilih tampilan hari, minggu, bulan, tahun, atau daftar. Anda juga dapat membuat kalender lokal di perangkat tanpa akun Cloud Calendars. Menghubungkan layanan dan berbagi mungkin memerlukan login. Izin akses bergantung pada kalender dan jenis undangan.\n\nPeriksa prakiraan saat membuat rencana. Widget Layar Utama tersedia dalam ukuran kecil, sedang, dan besar. Ketersediaan prakiraan bergantung pada lokasi dan penyedia cuaca.\n\nBase gratis mencakup sinkronisasi Google Kalender, Google Meet, berbagai tampilan kalender, cuaca, dan widget. Advanced mencakup fitur Base dan menghapus iklan. Premium mencakup Advanced serta menambahkan kalender Microsoft dan Microsoft Teams.\n\nAplikasi dapat diunduh gratis, dengan langganan opsional yang diperpanjang otomatis. Periksa harga lokal saat ini dan periode penagihan di aplikasi atau App Store sebelum berlangganan. Langganan diperpanjang kecuali dibatalkan setidaknya 24 jam sebelum periode berjalan berakhir. Kelola atau batalkan melalui pengaturan akun App Store Anda.\n\nPrivasi: https://www.cloud-calendars.com/privacy-policy\nKetentuan Penggunaan: https://www.apple.com/legal/internet-services/itunes/dev/stdeula/",
+        "keywords": "agenda,perencana,minggu,bulan,pengingat,rapat,acara,berbagi,undangan,prakiraan,janji",
+        "promotionalText": "Lihat rencana dan cuaca bersama. Gunakan widget dan berbagai tampilan, atau mulai dengan kalender lokal tanpa akun aplikasi."
+      },
+      "languageConfidence": "moderate_to_high",
+      "assessment": "Indonesian distinguishes local app account from connecting services and retains weather-provider availability. No unsupported direct account-to-account merge claim.",
+      "semanticChecks": {
+        "freeBaseGoogleMeetViewsWeatherWidgets": true,
+        "advancedBasePlusAdRemoval": true,
+        "premiumAdvancedPlusMicrosoftTeams": true,
+        "accountlessClaimLimitedToLocalCalendar": true,
+        "connectionsSharingSignInQualified": true,
+        "weatherAvailabilityQualified": true,
+        "widgetSizesNotUniversalContentOrFreshnessPromise": true,
+        "noUniversalExchangeOrNoDataGuarantee": true
+      },
+      "keywords": {
+        "terms": [
+          "agenda",
+          "perencana",
+          "minggu",
+          "bulan",
+          "pengingat",
+          "rapat",
+          "acara",
+          "berbagi",
+          "undangan",
+          "prakiraan",
+          "janji"
+        ],
+        "duplicateExactTerms": [],
+        "exactTitleSubtitleTokenOverlap": [],
+        "decision": "No concrete exact redundancy found; no keyword replacement proposed. Synonyms and compound phrases not declared waste without evidence."
+      },
+      "appClipAssessment": "Where present, invitation-route wording does not explicitly guarantee no-install adding. Optional preview expansion is outside material-only revision scope. No mandatory rewrite proposed.",
+      "decision": "retain_all_five_fields_no_material_change_justified",
+      "proposals": [],
+      "preserve": [
+        "appName",
+        "subtitle",
+        "keywords",
+        "promotionalText",
+        "URLs",
+        "prices",
+        "privacy",
+        "all other description text"
+      ]
+    },
+    {
+      "locale": "kn-IN",
+      "versionLocalizationId": "8841df1b-4735-4ed7-a8e3-0bf8f48f5ae4",
+      "appInfoLocalizationId": "1430fde5-2074-4f05-a67e-c0186910444d",
+      "readScope": "Complete five string values printed in full and read, including every description paragraph, promotional text, all keywords, subtitle and preserved name. Not just snippets or boolean check.",
+      "fields": {
+        "name": {
+          "sha256Utf8Value": "1a98c488c4d233fa50e861f922fdf15848b613fb4a2dd9a39f55cb68048f7028",
+          "unicodeCharacters": 27,
+          "utf8Bytes": 47
+        },
+        "subtitle": {
+          "sha256Utf8Value": "330d2a5f63fba2c023f49464c61f7e2bae6db8a67b2a556361692819b18047d8",
+          "unicodeCharacters": 18,
+          "utf8Bytes": 50
+        },
+        "description": {
+          "sha256Utf8Value": "0140dde9bedf6d2d0156f36448d097f2940529ee56205b48c1fdd56831b78dd4",
+          "unicodeCharacters": 1327,
+          "utf8Bytes": 3097
+        },
+        "keywords": {
+          "sha256Utf8Value": "62df498ab60342dab9be6a8d2d35d5f9dac410e39486a4bb6666eed7934d2550",
+          "unicodeCharacters": 70,
+          "utf8Bytes": 192
+        },
+        "promotionalText": {
+          "sha256Utf8Value": "6becf903a56843c9698691cff42b5caf6bf3e4df7589687c89de6a28d0e74f6d",
+          "unicodeCharacters": 136,
+          "utf8Bytes": 370
+        }
+      },
+      "completeFieldValues": {
+        "name": "Cloud Calendars: ಕ್ಯಾಲೆಂಡರ್",
+        "subtitle": "ಹವಾಮಾನ ಮತ್ತು ಯೋಜನೆ",
+        "description": "iPhone ಮತ್ತು iPad ನಲ್ಲಿ Cloud Calendars ಮೂಲಕ ಕೆಲಸದ ಮತ್ತು ವೈಯಕ್ತಿಕ ಯೋಜನೆಗಳ ಜೊತೆಗೆ ಹವಾಮಾನವನ್ನು ನೋಡಿ.\n\niCloud ಕ್ಯಾಲೆಂಡರ್ ಬಳಸಿ ಮತ್ತು Google Calendar ಸಂಪರ್ಕಿಸಿ. ದಿನ, ವಾರ, ತಿಂಗಳು, ವರ್ಷ ಅಥವಾ ಪಟ್ಟಿ ವೀಕ್ಷಣೆಯನ್ನು ಆಯ್ಕೆಮಾಡಿ. Cloud Calendars ಖಾತೆಯಿಲ್ಲದೆ ಸಾಧನದಲ್ಲಿ ಸ್ಥಳೀಯ ಕ್ಯಾಲೆಂಡರ್ ರಚಿಸಬಹುದು. ಸೇವೆಗಳನ್ನು ಸಂಪರ್ಕಿಸಲು ಮತ್ತು ಹಂಚಿಕೊಳ್ಳಲು ಸೈನ್ ಇನ್ ಅಗತ್ಯವಾಗಬಹುದು. ಪ್ರವೇಶ ಅನುಮತಿಗಳು ಕ್ಯಾಲೆಂಡರ್ ಮತ್ತು ಆಹ್ವಾನದ ಪ್ರಕಾರವನ್ನು ಅವಲಂಬಿಸಿರುತ್ತವೆ.\n\nಯೋಜನೆ ಮಾಡುವಾಗ ಹವಾಮಾನ ಮುನ್ಸೂಚನೆ ಪರಿಶೀಲಿಸಿ. ಹೋಮ್ ಸ್ಕ್ರೀನ್ ವಿಜೆಟ್‌ಗಳು ಸಣ್ಣ, ಮಧ್ಯಮ ಮತ್ತು ದೊಡ್ಡ ಗಾತ್ರಗಳಲ್ಲಿ ಲಭ್ಯವಿವೆ. ಮುನ್ಸೂಚನೆಯ ಲಭ್ಯತೆ ಸ್ಥಳ ಮತ್ತು ಹವಾಮಾನ ಸೇವೆಯನ್ನು ಅವಲಂಬಿಸಿರುತ್ತದೆ.\n\nಉಚಿತ Base ನಲ್ಲಿ Google Calendar ಸಿಂಕ್, Google Meet, ವಿವಿಧ ಕ್ಯಾಲೆಂಡರ್ ವೀಕ್ಷಣೆಗಳು, ಹವಾಮಾನ ಮತ್ತು ವಿಜೆಟ್‌ಗಳು ಸೇರಿವೆ. Advanced ನಲ್ಲಿ Base ವೈಶಿಷ್ಟ್ಯಗಳು ಸೇರಿವೆ ಮತ್ತು ಜಾಹೀರಾತುಗಳನ್ನು ತೆಗೆದುಹಾಕುತ್ತದೆ. Premium ನಲ್ಲಿ Advanced ಜೊತೆಗೆ Microsoft ಕ್ಯಾಲೆಂಡರ್ ಮತ್ತು Microsoft Teams ಬೆಂಬಲ ಸೇರಿದೆ.\n\nಡೌನ್‌ಲೋಡ್ ಉಚಿತ; ಐಚ್ಛಿಕ ಚಂದಾದಾರಿಕೆಗಳು ಸ್ವಯಂಚಾಲಿತವಾಗಿ ನವೀಕರಣಗೊಳ್ಳುತ್ತವೆ. ಖರೀದಿಸುವ ಮೊದಲು ಆ್ಯಪ್ ಅಥವಾ App Store ನಲ್ಲಿ ಪ್ರಸ್ತುತ ಸ್ಥಳೀಯ ಬೆಲೆ ಮತ್ತು ಬಿಲ್ಲಿಂಗ್ ಅವಧಿ ಪರಿಶೀಲಿಸಿ. ಪ್ರಸ್ತುತ ಅವಧಿ ಮುಗಿಯುವ ಕನಿಷ್ಠ 24 ಗಂಟೆಗಳ ಮೊದಲು ರದ್ದುಪಡಿಸದಿದ್ದರೆ ಚಂದಾದಾರಿಕೆ ನವೀಕರಣಗೊಳ್ಳುತ್ತದೆ. App Store ಖಾತೆ ಸೆಟ್ಟಿಂಗ್‌ಗಳಲ್ಲಿ ನಿರ್ವಹಿಸಿ ಅಥವಾ ರದ್ದುಪಡಿಸಿ.\n\nಗೌಪ್ಯತೆ: https://www.cloud-calendars.com/privacy-policy\nಬಳಕೆಯ ನಿಯಮಗಳು: https://www.apple.com/legal/internet-services/itunes/dev/stdeula/",
+        "keywords": "ವೇಳಾಪಟ್ಟಿ,ಸಭೆ,ಈವೆಂಟ್,ಜ್ಞಾಪನೆ,ಆಹ್ವಾನ,ಹಂಚಿಕೆ,ವಾರ,ತಿಂಗಳು,ಮುನ್ಸೂಚನೆ,ವಿಜೆಟ್",
+        "promotionalText": "ಯೋಜನೆ ಮತ್ತು ಹವಾಮಾನವನ್ನು ಒಟ್ಟಿಗೆ ನೋಡಿ. ವಿಭಿನ್ನ ವೀಕ್ಷಣೆಗಳು ಮತ್ತು ಹೋಮ್ ಸ್ಕ್ರೀನ್ ವಿಜೆಟ್ ಬಳಸಿ ಅಥವಾ ಆ್ಯಪ್ ಖಾತೆಯಿಲ್ಲದೆ ಸ್ಥಳೀಯ ಕ್ಯಾಲೆಂಡರ್ ರಚಿಸಿ."
+      },
+      "languageConfidence": "lower_to_moderate",
+      "assessment": "Kannada tier statements and access/forecast qualifications remain understandable. Minor grammatical stiffness around Advanced is not a demonstrated feature change; lower confidence in idiomatic quality.",
+      "semanticChecks": {
+        "freeBaseGoogleMeetViewsWeatherWidgets": true,
+        "advancedBasePlusAdRemoval": true,
+        "premiumAdvancedPlusMicrosoftTeams": true,
+        "accountlessClaimLimitedToLocalCalendar": true,
+        "connectionsSharingSignInQualified": true,
+        "weatherAvailabilityQualified": true,
+        "widgetSizesNotUniversalContentOrFreshnessPromise": true,
+        "noUniversalExchangeOrNoDataGuarantee": true
+      },
+      "keywords": {
+        "terms": [
+          "ವೇಳಾಪಟ್ಟಿ",
+          "ಸಭೆ",
+          "ಈವೆಂಟ್",
+          "ಜ್ಞಾಪನೆ",
+          "ಆಹ್ವಾನ",
+          "ಹಂಚಿಕೆ",
+          "ವಾರ",
+          "ತಿಂಗಳು",
+          "ಮುನ್ಸೂಚನೆ",
+          "ವಿಜೆಟ್"
+        ],
+        "duplicateExactTerms": [],
+        "exactTitleSubtitleTokenOverlap": [],
+        "decision": "No concrete exact redundancy found; no keyword replacement proposed. Synonyms and compound phrases not declared waste without evidence."
+      },
+      "appClipAssessment": "Where present, invitation-route wording does not explicitly guarantee no-install adding. Optional preview expansion is outside material-only revision scope. No mandatory rewrite proposed.",
+      "decision": "retain_all_five_fields_no_material_change_justified",
+      "proposals": [],
+      "preserve": [
+        "appName",
+        "subtitle",
+        "keywords",
+        "promotionalText",
+        "URLs",
+        "prices",
+        "privacy",
+        "all other description text"
+      ]
+    },
+    {
+      "locale": "ml-IN",
+      "versionLocalizationId": "3c5616c1-1dad-4e41-a7ec-771de0375308",
+      "appInfoLocalizationId": "a6d3ff9b-f1a0-49bb-bbb2-13f5cb05c9ce",
+      "readScope": "Complete five string values printed in full and read, including every description paragraph, promotional text, all keywords, subtitle and preserved name. Not just snippets or boolean check.",
+      "fields": {
+        "name": {
+          "sha256Utf8Value": "19440582a06f577e62affe52d60f7691de666e88a9b2f07ec6675ba3e59182bb",
+          "unicodeCharacters": 23,
+          "utf8Bytes": 35
+        },
+        "subtitle": {
+          "sha256Utf8Value": "851a2f9c7d78611aff79aa10e0f9cde7866bd67b7ee4adc6306a53b0193615ee",
+          "unicodeCharacters": 22,
+          "utf8Bytes": 64
+        },
+        "description": {
+          "sha256Utf8Value": "a42503049341603d7c75b648422b64dc993235d9f46da8b51f84989c5ef1567a",
+          "unicodeCharacters": 1411,
+          "utf8Bytes": 3367
+        },
+        "keywords": {
+          "sha256Utf8Value": "9c1a5d9bb71179af4d2aed2181aabecdf579faad2416748dcc66630cd889cd78",
+          "unicodeCharacters": 69,
+          "utf8Bytes": 191
+        },
+        "promotionalText": {
+          "sha256Utf8Value": "712548635a96c82cf1879f7ca857f176e768d5b57677721a4716f40c0e1fc02e",
+          "unicodeCharacters": 155,
+          "utf8Bytes": 429
+        }
+      },
+      "completeFieldValues": {
+        "name": "Cloud Calendars: കലണ്ടർ",
+        "subtitle": "കാലാവസ്ഥയും പദ്ധതികളും",
+        "description": "iPhone, iPad എന്നിവയിൽ Cloud Calendars ഉപയോഗിച്ച് ജോലി, സ്വകാര്യ പദ്ധതികൾക്കൊപ്പം കാലാവസ്ഥയും കാണുക.\n\niCloud കലണ്ടറുകൾ ഉപയോഗിച്ച് Google Calendar ബന്ധിപ്പിക്കുക. ദിവസം, ആഴ്ച, മാസം, വർഷം അല്ലെങ്കിൽ പട്ടിക കാഴ്ച തിരഞ്ഞെടുക്കുക. Cloud Calendars അക്കൗണ്ടില്ലാതെ ഉപകരണത്തിൽ പ്രാദേശിക കലണ്ടർ സൃഷ്ടിക്കാം. സേവനങ്ങൾ ബന്ധിപ്പിക്കാനും പങ്കിടാനും സൈൻ ഇൻ ആവശ്യമായേക്കാം. പ്രവേശനാനുമതികൾ കലണ്ടറിനെയും ക്ഷണത്തിന്റെ തരത്തെയും ആശ്രയിച്ചിരിക്കും.\n\nപദ്ധതികൾ തയ്യാറാക്കുമ്പോൾ കാലാവസ്ഥാ പ്രവചനം പരിശോധിക്കുക. ഹോം സ്ക്രീൻ വിജറ്റുകൾ ചെറുതും ഇടത്തരവും വലുതുമായ വലുപ്പങ്ങളിൽ ലഭ്യമാണ്. പ്രവചനങ്ങളുടെ ലഭ്യത സ്ഥലത്തെയും കാലാവസ്ഥാ സേവനത്തെയും ആശ്രയിച്ചിരിക്കും.\n\nസൗജന്യ Base-ൽ Google Calendar സമന്വയം, Google Meet, വിവിധ കലണ്ടർ കാഴ്ചകൾ, കാലാവസ്ഥ, വിജറ്റുകൾ എന്നിവ ഉൾപ്പെടുന്നു. Advanced-ൽ Base സവിശേഷതകൾ ഉൾപ്പെടുകയും പരസ്യങ്ങൾ നീക്കം ചെയ്യുകയും ചെയ്യുന്നു. Premium-ൽ Advanced കൂടാതെ Microsoft കലണ്ടറുകളും Microsoft Teams പിന്തുണയും ഉൾപ്പെടുന്നു.\n\nഡൗൺലോഡ് സൗജന്യമാണ്; ഐച്ഛിക സബ്‌സ്‌ക്രിപ്‌ഷനുകൾ സ്വയമേവ പുതുക്കും. വാങ്ങുന്നതിന് മുമ്പ് ആപ്പിലോ App Store-ലോ നിലവിലെ പ്രാദേശിക വിലയും ബില്ലിംഗ് കാലയളവും പരിശോധിക്കുക. നിലവിലെ കാലയളവ് അവസാനിക്കുന്നതിന് കുറഞ്ഞത് 24 മണിക്കൂർ മുമ്പ് റദ്ദാക്കിയില്ലെങ്കിൽ സബ്‌സ്‌ക്രിപ്‌ഷൻ പുതുക്കും. App Store അക്കൗണ്ട് ക്രമീകരണങ്ങളിൽ നിയന്ത്രിക്കുകയോ റദ്ദാക്കുകയോ ചെയ്യാം.\n\nസ്വകാര്യത: https://www.cloud-calendars.com/privacy-policy\nഉപയോഗ നിബന്ധനകൾ: https://www.apple.com/legal/internet-services/itunes/dev/stdeula/",
+        "keywords": "സമയക്രമം,യോഗം,ഓർമ്മപ്പെടുത്തൽ,ക്ഷണം,പങ്കിടൽ,ആഴ്ച,മാസം,പ്രവചനം,വിജറ്റ്",
+        "promotionalText": "പദ്ധതികളും കാലാവസ്ഥയും ഒരുമിച്ച് കാണുക. വിവിധ കാഴ്ചകളും ഹോം സ്ക്രീൻ വിജറ്റുകളും ഉപയോഗിക്കുക, അല്ലെങ്കിൽ ആപ്പ് അക്കൗണ്ടില്ലാതെ പ്രാദേശിക കലണ്ടർ സൃഷ്ടിക്കുക."
+      },
+      "languageConfidence": "lower_to_moderate",
+      "assessment": "One connector error: ഉപയോഗിച്ച് makes iCloud calendars the means of connecting Google Calendar. Replace with independent imperative ഉപയോഗിക്കുക plus comma. Rest of complete body preserves tier, account and forecast qualifications.",
+      "semanticChecks": {
+        "freeBaseGoogleMeetViewsWeatherWidgets": true,
+        "advancedBasePlusAdRemoval": true,
+        "premiumAdvancedPlusMicrosoftTeams": true,
+        "accountlessClaimLimitedToLocalCalendar": true,
+        "connectionsSharingSignInQualified": true,
+        "weatherAvailabilityQualified": true,
+        "widgetSizesNotUniversalContentOrFreshnessPromise": true,
+        "noUniversalExchangeOrNoDataGuarantee": true
+      },
+      "keywords": {
+        "terms": [
+          "സമയക്രമം",
+          "യോഗം",
+          "ഓർമ്മപ്പെടുത്തൽ",
+          "ക്ഷണം",
+          "പങ്കിടൽ",
+          "ആഴ്ച",
+          "മാസം",
+          "പ്രവചനം",
+          "വിജറ്റ്"
+        ],
+        "duplicateExactTerms": [],
+        "exactTitleSubtitleTokenOverlap": [],
+        "decision": "No concrete exact redundancy found; no keyword replacement proposed. Synonyms and compound phrases not declared waste without evidence."
+      },
+      "appClipAssessment": "Where present, invitation-route wording does not explicitly guarantee no-install adding. Optional preview expansion is outside material-only revision scope. No mandatory rewrite proposed.",
+      "decision": "one_material_description_translation_candidate",
+      "proposals": [
+        {
+          "field": "description",
+          "before": "iPhone, iPad എന്നിവയിൽ Cloud Calendars ഉപയോഗിച്ച് ജോലി, സ്വകാര്യ പദ്ധതികൾക്കൊപ്പം കാലാവസ്ഥയും കാണുക.\n\niCloud കലണ്ടറുകൾ ഉപയോഗിച്ച് Google Calendar ബന്ധിപ്പിക്കുക. ദിവസം, ആഴ്ച, മാസം, വർഷം അല്ലെങ്കിൽ പട്ടിക കാഴ്ച തിരഞ്ഞെടുക്കുക. Cloud Calendars അക്കൗണ്ടില്ലാതെ ഉപകരണത്തിൽ പ്രാദേശിക കലണ്ടർ സൃഷ്ടിക്കാം. സേവനങ്ങൾ ബന്ധിപ്പിക്കാനും പങ്കിടാനും സൈൻ ഇൻ ആവശ്യമായേക്കാം. പ്രവേശനാനുമതികൾ കലണ്ടറിനെയും ക്ഷണത്തിന്റെ തരത്തെയും ആശ്രയിച്ചിരിക്കും.\n\nപദ്ധതികൾ തയ്യാറാക്കുമ്പോൾ കാലാവസ്ഥാ പ്രവചനം പരിശോധിക്കുക. ഹോം സ്ക്രീൻ വിജറ്റുകൾ ചെറുതും ഇടത്തരവും വലുതുമായ വലുപ്പങ്ങളിൽ ലഭ്യമാണ്. പ്രവചനങ്ങളുടെ ലഭ്യത സ്ഥലത്തെയും കാലാവസ്ഥാ സേവനത്തെയും ആശ്രയിച്ചിരിക്കും.\n\nസൗജന്യ Base-ൽ Google Calendar സമന്വയം, Google Meet, വിവിധ കലണ്ടർ കാഴ്ചകൾ, കാലാവസ്ഥ, വിജറ്റുകൾ എന്നിവ ഉൾപ്പെടുന്നു. Advanced-ൽ Base സവിശേഷതകൾ ഉൾപ്പെടുകയും പരസ്യങ്ങൾ നീക്കം ചെയ്യുകയും ചെയ്യുന്നു. Premium-ൽ Advanced കൂടാതെ Microsoft കലണ്ടറുകളും Microsoft Teams പിന്തുണയും ഉൾപ്പെടുന്നു.\n\nഡൗൺലോഡ് സൗജന്യമാണ്; ഐച്ഛിക സബ്‌സ്‌ക്രിപ്‌ഷനുകൾ സ്വയമേവ പുതുക്കും. വാങ്ങുന്നതിന് മുമ്പ് ആപ്പിലോ App Store-ലോ നിലവിലെ പ്രാദേശിക വിലയും ബില്ലിംഗ് കാലയളവും പരിശോധിക്കുക. നിലവിലെ കാലയളവ് അവസാനിക്കുന്നതിന് കുറഞ്ഞത് 24 മണിക്കൂർ മുമ്പ് റദ്ദാക്കിയില്ലെങ്കിൽ സബ്‌സ്‌ക്രിപ്‌ഷൻ പുതുക്കും. App Store അക്കൗണ്ട് ക്രമീകരണങ്ങളിൽ നിയന്ത്രിക്കുകയോ റദ്ദാക്കുകയോ ചെയ്യാം.\n\nസ്വകാര്യത: https://www.cloud-calendars.com/privacy-policy\nഉപയോഗ നിബന്ധനകൾ: https://www.apple.com/legal/internet-services/itunes/dev/stdeula/",
+          "after": "iPhone, iPad എന്നിവയിൽ Cloud Calendars ഉപയോഗിച്ച് ജോലി, സ്വകാര്യ പദ്ധതികൾക്കൊപ്പം കാലാവസ്ഥയും കാണുക.\n\niCloud കലണ്ടറുകൾ ഉപയോഗിക്കുക, Google Calendar ബന്ധിപ്പിക്കുക. ദിവസം, ആഴ്ച, മാസം, വർഷം അല്ലെങ്കിൽ പട്ടിക കാഴ്ച തിരഞ്ഞെടുക്കുക. Cloud Calendars അക്കൗണ്ടില്ലാതെ ഉപകരണത്തിൽ പ്രാദേശിക കലണ്ടർ സൃഷ്ടിക്കാം. സേവനങ്ങൾ ബന്ധിപ്പിക്കാനും പങ്കിടാനും സൈൻ ഇൻ ആവശ്യമായേക്കാം. പ്രവേശനാനുമതികൾ കലണ്ടറിനെയും ക്ഷണത്തിന്റെ തരത്തെയും ആശ്രയിച്ചിരിക്കും.\n\nപദ്ധതികൾ തയ്യാറാക്കുമ്പോൾ കാലാവസ്ഥാ പ്രവചനം പരിശോധിക്കുക. ഹോം സ്ക്രീൻ വിജറ്റുകൾ ചെറുതും ഇടത്തരവും വലുതുമായ വലുപ്പങ്ങളിൽ ലഭ്യമാണ്. പ്രവചനങ്ങളുടെ ലഭ്യത സ്ഥലത്തെയും കാലാവസ്ഥാ സേവനത്തെയും ആശ്രയിച്ചിരിക്കും.\n\nസൗജന്യ Base-ൽ Google Calendar സമന്വയം, Google Meet, വിവിധ കലണ്ടർ കാഴ്ചകൾ, കാലാവസ്ഥ, വിജറ്റുകൾ എന്നിവ ഉൾപ്പെടുന്നു. Advanced-ൽ Base സവിശേഷതകൾ ഉൾപ്പെടുകയും പരസ്യങ്ങൾ നീക്കം ചെയ്യുകയും ചെയ്യുന്നു. Premium-ൽ Advanced കൂടാതെ Microsoft കലണ്ടറുകളും Microsoft Teams പിന്തുണയും ഉൾപ്പെടുന്നു.\n\nഡൗൺലോഡ് സൗജന്യമാണ്; ഐച്ഛിക സബ്‌സ്‌ക്രിപ്‌ഷനുകൾ സ്വയമേവ പുതുക്കും. വാങ്ങുന്നതിന് മുമ്പ് ആപ്പിലോ App Store-ലോ നിലവിലെ പ്രാദേശിക വിലയും ബില്ലിംഗ് കാലയളവും പരിശോധിക്കുക. നിലവിലെ കാലയളവ് അവസാനിക്കുന്നതിന് കുറഞ്ഞത് 24 മണിക്കൂർ മുമ്പ് റദ്ദാക്കിയില്ലെങ്കിൽ സബ്‌സ്‌ക്രിപ്‌ഷൻ പുതുക്കും. App Store അക്കൗണ്ട് ക്രമീകരണങ്ങളിൽ നിയന്ത്രിക്കുകയോ റദ്ദാക്കുകയോ ചെയ്യാം.\n\nസ്വകാര്യത: https://www.cloud-calendars.com/privacy-policy\nഉപയോഗ നിബന്ധനകൾ: https://www.apple.com/legal/internet-services/itunes/dev/stdeula/",
+          "beforeExcerpt": "iCloud കലണ്ടറുകൾ ഉപയോഗിച്ച് Google Calendar ബന്ധിപ്പിക്കുക.",
+          "afterExcerpt": "iCloud കലണ്ടറുകൾ ഉപയോഗിക്കുക, Google Calendar ബന്ധിപ്പിക്കുക.",
+          "rationale": "The old Malayalam conjunctive participle means using iCloud calendars to connect Google Calendar, conflating independent actions. The replacement says use iCloud calendars and connect Google Calendar independently. No connector/control or product feature added.",
+          "beforeSha256": "a42503049341603d7c75b648422b64dc993235d9f46da8b51f84989c5ef1567a",
+          "afterSha256": "3dfd8ae31b7071023a5431bdfd29b91390db603b20068962e02611801bcb7e1b",
+          "charactersAfter": 1413,
+          "utf8BytesAfter": 3371,
+          "otherTextUnchanged": true,
+          "confidence": "moderate own-language semantic assessment; not native-speaker certification. Narrow exact replacement for root review, not apply instruction."
+        }
+      ],
+      "preserve": [
+        "appName",
+        "subtitle",
+        "keywords",
+        "promotionalText",
+        "URLs",
+        "prices",
+        "privacy",
+        "all other description text"
+      ]
+    },
+    {
+      "locale": "mr-IN",
+      "versionLocalizationId": "8329c516-9863-48ad-9030-b8fd1e47a081",
+      "appInfoLocalizationId": "415652ad-e3ef-4f03-b026-b9ca471fddaf",
+      "readScope": "Complete five string values printed in full and read, including every description paragraph, promotional text, all keywords, subtitle and preserved name. Not just snippets or boolean check.",
+      "fields": {
+        "name": {
+          "sha256Utf8Value": "dd56d3506d1d190067696c170ffc47a6895da0f375e6de5a20260cbe6c860267",
+          "unicodeCharacters": 24,
+          "utf8Bytes": 38
+        },
+        "subtitle": {
+          "sha256Utf8Value": "0973a04558e65223eae97ad9ca98ac3b9e56a2bf5315a7947112f68f401e9d92",
+          "unicodeCharacters": 17,
+          "utf8Bytes": 47
+        },
+        "description": {
+          "sha256Utf8Value": "05f22331d9f9ff87669a0d0582da77c61a1c8fe6bf1fc58a316a32e4688d7879",
+          "unicodeCharacters": 1234,
+          "utf8Bytes": 2782
+        },
+        "keywords": {
+          "sha256Utf8Value": "1f60609f143da2c0b0b422a086552bce94d9f2e8c2afe96618f581be0a5888d8",
+          "unicodeCharacters": 67,
+          "utf8Bytes": 183
+        },
+        "promotionalText": {
+          "sha256Utf8Value": "8cf809f8cd348089ed21827c6711dd23558dabded3733c22aa5cce764646da4c",
+          "unicodeCharacters": 121,
+          "utf8Bytes": 319
+        }
+      },
+      "completeFieldValues": {
+        "name": "Cloud Calendars: कॅलेंडर",
+        "subtitle": "हवामान आणि नियोजन",
+        "description": "iPhone आणि iPad वर Cloud Calendars वापरून कामाचे आणि वैयक्तिक नियोजन हवामानासह पाहा.\n\niCloud कॅलेंडर वापरा आणि Google Calendar जोडा. दिवस, आठवडा, महिना, वर्ष किंवा सूची दृश्य निवडा. Cloud Calendars खाते न बनवता डिव्हाइसवर स्थानिक कॅलेंडर तयार करता येते. सेवा जोडण्यासाठी आणि शेअर करण्यासाठी साइन इन करावे लागू शकते. प्रवेशाच्या परवानग्या कॅलेंडर आणि आमंत्रणाच्या प्रकारावर अवलंबून असतात.\n\nनियोजन करताना हवामानाचा अंदाज पाहा. होम स्क्रीन विजेट लहान, मध्यम आणि मोठ्या आकारांत उपलब्ध आहेत. अंदाजांची उपलब्धता स्थान आणि हवामान सेवा पुरवठादारावर अवलंबून असते.\n\nमोफत Base मध्ये Google Calendar सिंक, Google Meet, वेगवेगळी कॅलेंडर दृश्ये, हवामान आणि विजेट समाविष्ट आहेत. Advanced मध्ये Base ची वैशिष्ट्ये आहेत आणि जाहिराती काढल्या जातात. Premium मध्ये Advanced सोबत Microsoft कॅलेंडर आणि Microsoft Teams समर्थन मिळते.\n\nडाउनलोड मोफत आहे; ऐच्छिक सदस्यता आपोआप नूतनीकृत होतात. घेण्यापूर्वी ॲप किंवा App Store मध्ये सध्याची स्थानिक किंमत आणि बिलिंग कालावधी तपासा. चालू कालावधी संपण्याच्या किमान 24 तास आधी रद्द न केल्यास सदस्यता नूतनीकृत होते. App Store खात्याच्या सेटिंग्जमध्ये व्यवस्थापित किंवा रद्द करा.\n\nगोपनीयता: https://www.cloud-calendars.com/privacy-policy\nवापराच्या अटी: https://www.apple.com/legal/internet-services/itunes/dev/stdeula/",
+        "keywords": "वेळापत्रक,बैठक,कार्यक्रम,स्मरण,आमंत्रण,शेअर,आठवडा,महिना,अंदाज,विजेट",
+        "promotionalText": "नियोजन आणि हवामान एकत्र पाहा. वेगवेगळी दृश्ये आणि होम स्क्रीन विजेट वापरा किंवा ॲप खाते न बनवता स्थानिक कॅलेंडर तयार करा."
+      },
+      "languageConfidence": "lower_to_moderate",
+      "assessment": "Marathi tier inheritance, local-only accountless use and local billing period check retained. Lower idiomatic confidence; no material claim error identified.",
+      "semanticChecks": {
+        "freeBaseGoogleMeetViewsWeatherWidgets": true,
+        "advancedBasePlusAdRemoval": true,
+        "premiumAdvancedPlusMicrosoftTeams": true,
+        "accountlessClaimLimitedToLocalCalendar": true,
+        "connectionsSharingSignInQualified": true,
+        "weatherAvailabilityQualified": true,
+        "widgetSizesNotUniversalContentOrFreshnessPromise": true,
+        "noUniversalExchangeOrNoDataGuarantee": true
+      },
+      "keywords": {
+        "terms": [
+          "वेळापत्रक",
+          "बैठक",
+          "कार्यक्रम",
+          "स्मरण",
+          "आमंत्रण",
+          "शेअर",
+          "आठवडा",
+          "महिना",
+          "अंदाज",
+          "विजेट"
+        ],
+        "duplicateExactTerms": [],
+        "exactTitleSubtitleTokenOverlap": [],
+        "decision": "No concrete exact redundancy found; no keyword replacement proposed. Synonyms and compound phrases not declared waste without evidence."
+      },
+      "appClipAssessment": "Where present, invitation-route wording does not explicitly guarantee no-install adding. Optional preview expansion is outside material-only revision scope. No mandatory rewrite proposed.",
+      "decision": "retain_all_five_fields_no_material_change_justified",
+      "proposals": [],
+      "preserve": [
+        "appName",
+        "subtitle",
+        "keywords",
+        "promotionalText",
+        "URLs",
+        "prices",
+        "privacy",
+        "all other description text"
+      ]
+    },
+    {
+      "locale": "ms",
+      "versionLocalizationId": "c9261f10-b41e-4656-a9f2-bdecc9d9cf14",
+      "appInfoLocalizationId": "00c5692d-d274-41b7-9dc9-b82359da37cd",
+      "readScope": "Complete five string values printed in full and read, including every description paragraph, promotional text, all keywords, subtitle and preserved name. Not just snippets or boolean check.",
+      "fields": {
+        "name": {
+          "sha256Utf8Value": "c3288661486a049bfeef31599f4608c2b23a1b14e04a2babd6598f5aaacb7e48",
+          "unicodeCharacters": 25,
+          "utf8Bytes": 25
+        },
+        "subtitle": {
+          "sha256Utf8Value": "8a83e8fbb38a83e5405142fd1b390d4e4d741ea6bb55c350c1d134003a19a874",
+          "unicodeCharacters": 24,
+          "utf8Bytes": 24
+        },
+        "description": {
+          "sha256Utf8Value": "1d904f6cbdd984c4cd327acae496c34a0959ced293ebbed8ceaaf1b3fed10629",
+          "unicodeCharacters": 1323,
+          "utf8Bytes": 1323
+        },
+        "keywords": {
+          "sha256Utf8Value": "b4c4e5cf2dc1e010956f998eb30302c7ce2c95cd9a492a71f188b795356dfbdf",
+          "unicodeCharacters": 96,
+          "utf8Bytes": 96
+        },
+        "promotionalText": {
+          "sha256Utf8Value": "d289fe791e7427bc462965002dbf4e5e314e930a59ec4905248d30c176768087",
+          "unicodeCharacters": 131,
+          "utf8Bytes": 131
+        }
+      },
+      "completeFieldValues": {
+        "name": "Cloud Calendars: Kalendar",
+        "subtitle": "Cuaca, jadual dan widget",
+        "description": "Lihat jadual kerja, rancangan peribadi dan cuaca pada iPhone serta iPad dengan Cloud Calendars.\n\nGunakan kalendar iCloud dan sambungkan Google Calendar. Pilih paparan hari, minggu, bulan, tahun atau senarai. Anda juga boleh mencipta kalendar setempat pada peranti tanpa akaun Cloud Calendars. Menyambungkan perkhidmatan dan berkongsi mungkin memerlukan daftar masuk. Kebenaran akses bergantung pada kalendar dan jenis jemputan.\n\nSemak ramalan semasa merancang. Widget Skrin Utama tersedia dalam saiz kecil, sederhana dan besar. Ketersediaan ramalan bergantung pada lokasi dan penyedia cuaca.\n\nBase percuma merangkumi penyegerakan Google Calendar, Google Meet, pelbagai paparan kalendar, cuaca dan widget. Advanced merangkumi ciri Base dan membuang iklan. Premium merangkumi Advanced serta menambah kalendar Microsoft dan Microsoft Teams.\n\nMuat turun adalah percuma, dengan langganan pilihan yang diperbaharui secara automatik. Semak harga tempatan semasa dan tempoh pengebilan dalam aplikasi atau App Store sebelum melanggan. Langganan diperbaharui melainkan dibatalkan sekurang-kurangnya 24 jam sebelum tempoh semasa tamat. Urus atau batalkan melalui tetapan akaun App Store anda.\n\nPrivasi: https://www.cloud-calendars.com/privacy-policy\nSyarat Penggunaan: https://www.apple.com/legal/internet-services/itunes/dev/stdeula/",
+        "keywords": "agenda,perancang,minggu,bulan,peringatan,mesyuarat,acara,perkongsian,jemputan,ramalan,janji temu",
+        "promotionalText": "Lihat rancangan dan cuaca bersama. Gunakan widget dan pelbagai paparan, atau mulakan dengan kalendar setempat tanpa akaun aplikasi."
+      },
+      "languageConfidence": "moderate_to_high",
+      "assessment": "Malay setempat consistently means local device calendar; connection sign-in and price/period checks explicit. No material error.",
+      "semanticChecks": {
+        "freeBaseGoogleMeetViewsWeatherWidgets": true,
+        "advancedBasePlusAdRemoval": true,
+        "premiumAdvancedPlusMicrosoftTeams": true,
+        "accountlessClaimLimitedToLocalCalendar": true,
+        "connectionsSharingSignInQualified": true,
+        "weatherAvailabilityQualified": true,
+        "widgetSizesNotUniversalContentOrFreshnessPromise": true,
+        "noUniversalExchangeOrNoDataGuarantee": true
+      },
+      "keywords": {
+        "terms": [
+          "agenda",
+          "perancang",
+          "minggu",
+          "bulan",
+          "peringatan",
+          "mesyuarat",
+          "acara",
+          "perkongsian",
+          "jemputan",
+          "ramalan",
+          "janji temu"
+        ],
+        "duplicateExactTerms": [],
+        "exactTitleSubtitleTokenOverlap": [],
+        "decision": "No concrete exact redundancy found; no keyword replacement proposed. Synonyms and compound phrases not declared waste without evidence."
+      },
+      "appClipAssessment": "Where present, invitation-route wording does not explicitly guarantee no-install adding. Optional preview expansion is outside material-only revision scope. No mandatory rewrite proposed.",
+      "decision": "retain_all_five_fields_no_material_change_justified",
+      "proposals": [],
+      "preserve": [
+        "appName",
+        "subtitle",
+        "keywords",
+        "promotionalText",
+        "URLs",
+        "prices",
+        "privacy",
+        "all other description text"
+      ]
+    }
+  ],
+  "limits": [
+    "Own-language semantic editorial assessment, not independent native-speaker approval. Indic locales especially retain lower confidence; absence of identified errors is not certification.",
+    "No network, production API/read/write, mailbox/customer/native/backend/build/deploy/commit actions.",
+    "No search volumes, rankings, universal indexing or causal conversion claims.",
+    "No alteration to applied.json, proposal inputs or website source. Only this audit file written."
+  ],
+  "nextAction": "Root can review the single Malayalam sentence candidate. Do not mutate ASC from this audit alone; no changes warranted for the other18on the reviewed evidence."
+}

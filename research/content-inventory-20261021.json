@@ -1,5 +1,5 @@
 {
-  "date": "2026-10-22T01:51:19.019Z",
+  "date": "2026-10-22T02:01:53.529Z",
   "status": "source_inventory_not_quality_approval",
   "articles": [
     {
@@ -276,6 +276,24 @@
         "https://support.google.com/calendar/answer/37648?hl=en"
       ],
       "updated": "2026-10-21"
+    },
+    {
+      "locale": "bg",
+      "slug": "time-zones-and-the-flight-you-booked",
+      "title": "Часови зони в календара: проверете събитието преди пътуване",
+      "description": "Разграничете часовата зона на събитието от зоната на изгледа. Проверете полети, срещи на място и повтарящи се разговори, преди да променяте часа.",
+      "descriptionCharacters": 145,
+      "sections": 7,
+      "faq": 4,
+      "words": 1133,
+      "source": "articles-help.ts",
+      "sources": [
+        "https://support.apple.com/guide/iphone/schedule-display-events-a-time-zone-iph69525c028/ios",
+        "https://support.google.com/calendar/answer/37064?hl=en",
+        "https://support.google.com/calendar/answer/37118?hl=en",
+        "https://support.microsoft.com/en-us/outlook/share-your-calendar-in-outlook-on-the-web"
+      ],
+      "updated": "2026-10-22"
     },
     {
       "locale": "bg",

@@ -26,6 +26,7 @@ export const ARTICLE_SLUGS: Readonly<Record<string, readonly string[]>> = {
     "what-guests-can-do-to-your-event",
     "google-calendars-that-never-reach-your-iphone",
     "taking-back-a-calendar-you-shared",
+    "time-zones-and-the-flight-you-booked",
     "the-widget-that-shows-what-is-next",
     "work-and-personal-without-two-apps",
     "recurring-events-without-the-mess",

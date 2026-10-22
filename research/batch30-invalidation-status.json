@@ -1,0 +1,16 @@
+{
+    "Invalidation": {
+        "Id": "IWFQHDXNMKG5ZEKWDRUWAJ0G0",
+        "Status": "Completed",
+        "CreateTime": "2026-10-22T02:04:02.014Z",
+        "InvalidationBatch": {
+            "Paths": {
+                "Quantity": 1,
+                "Items": [
+                    "/*"
+                ]
+            },
+            "CallerReference": "cli-1792634641-181986"
+        }
+    }
+}

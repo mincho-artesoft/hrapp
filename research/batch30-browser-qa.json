@@ -1,0 +1,24 @@
+{
+  "checkedAt": "2026-10-22T02:10:56.891914+00:00",
+  "allPassed": true,
+  "route": "/bg/articles/time-zones-and-the-flight-you-booked/",
+  "h1MatchesReviewedDraft": true,
+  "views": [
+    {
+      "viewport": 575,
+      "documentWidth": 564,
+      "scrollWidth": 564,
+      "scope": "Complete stable top/title/lede/firstsection visible and readable"
+    },
+    {
+      "viewport": 390,
+      "documentWidth": 379,
+      "scrollWidth": 379,
+      "scope": "Flight section and provider-editor fallback, saved-zone caveat visible and readable"
+    }
+  ],
+  "screenshot": "/tmp/cloud-calendar-batch30-bg-timezone.png",
+  "viewportRestored": true,
+  "tabDeliverable": true,
+  "scope": "Representative rendered webpage checks, no provider/native/released-runtime certification."
+}

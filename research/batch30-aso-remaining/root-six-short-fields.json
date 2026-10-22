@@ -1,0 +1,132 @@
+{
+  "checkedAt": "2026-10-22T02:09:53.672568+00:00",
+  "source": "batch30-aso-remaining/applied.json afterLocalizations/afterAppInfoLocalizations",
+  "completeFieldsReadNow": 24,
+  "locales": [
+    {
+      "locale": "en-US",
+      "completeValuesRead": {
+        "name": "Cloud Calendars: Sync & Widget",
+        "subtitle": "Google, Microsoft & iCloud",
+        "keywords": "weather,schedule,planner,agenda,forecast,month,week,reminder,event,meeting,shared,invite,appointment",
+        "promotionalText": "Plan with your calendars and weather together. Explore Home Screen widgets, flexible calendar views and local calendars you can start without an account."
+      },
+      "fieldHashes": {
+        "name": "9acc72a35df98b4e2a4609fdedfd9d7f2b6ce689406682e039a49bb4b9b5a2e1",
+        "subtitle": "fbc5cd420d6f95c6618bad71cb339feaf476bd797cecd001f1c03009902a30c5",
+        "keywords": "9ec1048b723debea5a05bb60586ba071b591985d1d528b623cd792d90d7f7888",
+        "promotionalText": "a172b53f48f528789fa612c886fb461b1cc41d9f38406dac2eb40d4069653f0d"
+      },
+      "exactKeywordDuplicates": [],
+      "exactNameSubtitleTokenKeywordOverlap": [],
+      "decision": "retain; no material meaning/eligibility or concrete exact duplication problem identified",
+      "assessment": "Provider/platform title remains scoped to app. Promotion local-account exception explicitly limited to local calendar. Weather/views/widget vocabulary matches reviewed supported task categories. No unsupported task-manager, automatic migration or access-free sharing promise.",
+      "confidence": "High English editorial confidence"
+    },
+    {
+      "locale": "en-GB",
+      "completeValuesRead": {
+        "name": "Cloud Calendars: Sync & Widget",
+        "subtitle": "Google, Microsoft & iCloud",
+        "keywords": "diary,planner,agenda,appointment,week,month,reminder,meeting,event,shared,invite,weather,forecast",
+        "promotionalText": "Plan work appointments and personal time with calendars, weather and Home Screen widgets. Start a local calendar without an app account."
+      },
+      "fieldHashes": {
+        "name": "9acc72a35df98b4e2a4609fdedfd9d7f2b6ce689406682e039a49bb4b9b5a2e1",
+        "subtitle": "fbc5cd420d6f95c6618bad71cb339feaf476bd797cecd001f1c03009902a30c5",
+        "keywords": "7584a795165d8722ec1db80a784a90febf3174d602561e9cda394451cc8b62ff",
+        "promotionalText": "f715861d18479c5d7b431c4e15d3d3ab308c54206ca16bdc9e3f984d5bddbcb7"
+      },
+      "exactKeywordDuplicates": [],
+      "exactNameSubtitleTokenKeywordOverlap": [],
+      "decision": "retain; no material meaning/eligibility or concrete exact duplication problem identified",
+      "assessment": "Provider/platform title remains scoped to app. Promotion local-account exception explicitly limited to local calendar. Weather/views/widget vocabulary matches reviewed supported task categories. No unsupported task-manager, automatic migration or access-free sharing promise.",
+      "confidence": "High English editorial confidence"
+    },
+    {
+      "locale": "en-CA",
+      "completeValuesRead": {
+        "name": "Cloud Calendars: Sync & Widget",
+        "subtitle": "Google, Microsoft & iCloud",
+        "keywords": "schedule,planner,agenda,meeting,reminder,event,shared,invite,month,week,weather,forecast,appointment",
+        "promotionalText": "See work and personal plans alongside the weather. Explore calendar views and Home Screen widgets, or start a local calendar without an app account."
+      },
+      "fieldHashes": {
+        "name": "9acc72a35df98b4e2a4609fdedfd9d7f2b6ce689406682e039a49bb4b9b5a2e1",
+        "subtitle": "fbc5cd420d6f95c6618bad71cb339feaf476bd797cecd001f1c03009902a30c5",
+        "keywords": "f01268d01750992cc2136ae8dd96f87ea21a222319dcae9af8d66aadba6094eb",
+        "promotionalText": "f1f30cef06ab4eafd8bfb6f64a14b1e489710075e0bab37917680eb50e74dc84"
+      },
+      "exactKeywordDuplicates": [],
+      "exactNameSubtitleTokenKeywordOverlap": [],
+      "decision": "retain; no material meaning/eligibility or concrete exact duplication problem identified",
+      "assessment": "Provider/platform title remains scoped to app. Promotion local-account exception explicitly limited to local calendar. Weather/views/widget vocabulary matches reviewed supported task categories. No unsupported task-manager, automatic migration or access-free sharing promise.",
+      "confidence": "High English editorial confidence"
+    },
+    {
+      "locale": "en-AU",
+      "completeValuesRead": {
+        "name": "Cloud Calendars: Sync & Widget",
+        "subtitle": "Google, Microsoft & iCloud",
+        "keywords": "weather,forecast,planner,agenda,schedule,outdoor,daily,meeting,event,reminder,week,month,shared",
+        "promotionalText": "Check the forecast while planning your day. Use calendar views and Home Screen widgets, or start a local calendar without an app account."
+      },
+      "fieldHashes": {
+        "name": "9acc72a35df98b4e2a4609fdedfd9d7f2b6ce689406682e039a49bb4b9b5a2e1",
+        "subtitle": "fbc5cd420d6f95c6618bad71cb339feaf476bd797cecd001f1c03009902a30c5",
+        "keywords": "3f210afe1c14689a1d1a5ca2b7ed3639f30164b82c990e8e73150293489b9cd0",
+        "promotionalText": "131e0cbaf47a8a29bda743746f0f57e2b5e7a95c906125ada91bdacef1592290"
+      },
+      "exactKeywordDuplicates": [],
+      "exactNameSubtitleTokenKeywordOverlap": [],
+      "decision": "retain; no material meaning/eligibility or concrete exact duplication problem identified",
+      "assessment": "Provider/platform title remains scoped to app. Promotion local-account exception explicitly limited to local calendar. Weather/views/widget vocabulary matches reviewed supported task categories. No unsupported task-manager, automatic migration or access-free sharing promise.",
+      "confidence": "High English editorial confidence"
+    },
+    {
+      "locale": "de-DE",
+      "completeValuesRead": {
+        "name": "Cloud Calendars: Kalender",
+        "subtitle": "Termine, Wetter und Widgets",
+        "keywords": "planer,wochenansicht,monatsansicht,erinnerung,besprechung,ereignis,teilen,einladung,vorhersage",
+        "promotionalText": "Plane mit Terminen und Wetter an einem Ort. Entdecke Home-Bildschirm-Widgets und flexible Ansichten oder starte mit einem lokalen Kalender ohne App-Konto."
+      },
+      "fieldHashes": {
+        "name": "47d894e004dc3c13636879c2b328d161eb3c7fdea3a3f961abf1ae6748c847b4",
+        "subtitle": "3df86eaf55debfe1f61e4877523b79a5541874031383aa33299545b1974e6b2d",
+        "keywords": "8a7b7bfdef4af5860beb2d339a8a12c547a465dc120b75f4bd21b2ed790b464e",
+        "promotionalText": "d6b6e18bd065b56c4f973adea1326fea7e92039e0d551d54afb430a1222a00e8"
+      },
+      "exactKeywordDuplicates": [],
+      "exactNameSubtitleTokenKeywordOverlap": [],
+      "decision": "retain; no material meaning/eligibility or concrete exact duplication problem identified",
+      "assessment": "Provider/platform title remains scoped to app. Promotion local-account exception explicitly limited to local calendar. Weather/views/widget vocabulary matches reviewed supported task categories. No unsupported task-manager, automatic migration or access-free sharing promise.",
+      "confidence": "Moderate-to-high own-language semantic assessment"
+    },
+    {
+      "locale": "es-ES",
+      "completeValuesRead": {
+        "name": "Cloud Calendars: Calendario",
+        "subtitle": "Tiempo, agenda y widgets",
+        "keywords": "planificador,horario,semana,mes,recordatorio,reunión,evento,compartir,invitación,previsión,citas",
+        "promotionalText": "Consulta tus planes y el tiempo en un mismo lugar. Prueba los widgets y las distintas vistas, o crea un calendario local sin una cuenta en la app."
+      },
+      "fieldHashes": {
+        "name": "2d6a16aa92f567d2f2b3967972eaf786a09778a6beda8994afa9ab91e4251332",
+        "subtitle": "82a6879ca6db65bdfdf4e1793106a51608126792e6c2294fb33a0ebb8db5e2db",
+        "keywords": "9a6a1be1cd3a778bfa700892a0c2664dfcb3591f333fb8c7427b3c41e86a766c",
+        "promotionalText": "e3823ac91f6ff63264031cdd7e492ed2ba355a8ee18fed63a19972ebcd11e83a"
+      },
+      "exactKeywordDuplicates": [],
+      "exactNameSubtitleTokenKeywordOverlap": [],
+      "decision": "retain; no material meaning/eligibility or concrete exact duplication problem identified",
+      "assessment": "Provider/platform title remains scoped to app. Promotion local-account exception explicitly limited to local calendar. Weather/views/widget vocabulary matches reviewed supported task categories. No unsupported task-manager, automatic migration or access-free sharing promise.",
+      "confidence": "Moderate-to-high own-language semantic assessment"
+    }
+  ],
+  "descriptionReadEvidence": [
+    "batch28-readiness/aso-audit.json",
+    "batch29-aso-semantic/root-plan-review.json"
+  ],
+  "scope": "Root freshly read all24exact short fields, not six descriptions again. Combined with recorded complete descriptions and later exact preservation, closes remaining field-read scope. Not native-speaker, market-volume/indexing or ranking certification."
+}

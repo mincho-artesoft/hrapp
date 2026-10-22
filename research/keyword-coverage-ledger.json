@@ -10,7 +10,7 @@
     "No content is declared researched merely because a corresponding route exists."
   ],
   "currentInventory": {
-    "articles": 452,
+    "articles": 453,
     "locales": [
       "ar-SA",
       "bg",
@@ -639,7 +639,7 @@
     "Confirm released-binary and production data-handling correspondence separately before making privacy/runtime claims or changing App Privacy.",
     "Integrate the actual new screenshot/video set after the generating task or folder is identified. Existing1240galleryrenditions and widgets playback verified separately; no new replacement assumed ready.",
     "Measure equal elapsed Search Console windows and repeat controlled fixed ChatGPT prompts. IndexNow acceptance and successful delivery do not prove ranking/citation lift.",
-    "Continue localized ASO semantic/keyword allocation review where evidence is weak;50locale250fieldAPIreadback proves persistence only.",
+    "Bounded editorial review now covers all50ASCdescriptions/250fields. Continue only evidence-based market/keyword refinement or concrete newly found defects; do not repeat broad copy churn.",
     "Subscription-link destination advice now attributes Apple controls and distinguishes Cloud invitation links. Arbitrary external-feed handling and released/runtime subscription visibility are not established by source inspection; no blanket support claim."
   ],
   "existingCanonicalAudit": "competitors/existing-canonical-review-20261021-batch02.json",
@@ -1165,7 +1165,7 @@
       "Compare genuinely elapsed search/citation observations; no new repeated short-interval measurement."
     ],
     "staleGapPolicy": "Earlier embedded assessments and publication entries are historical; use currentFollowup/localizedFollowup and readiness evidence rather than re-adding resolved FAQs or synonym pages.",
-    "asc": "Current batch29postwrite response proves50locales250expected textfields with seven-description overlay; names/keywords/otherattrs unchanged. Semantic scope now includes six additional locales. No submission."
+    "asc": "All50descriptions and250textfields now have recorded bounded editorial-read coverage. One additional exactMalayalam correction applied and all50localeexpected fields verified;8description overlay active. Own-language confidence varies; no independent native-speaker or market-demand certification."
   },
   "twentyEighthPublication": {
     "date": "2026-10-22",
@@ -1236,5 +1236,42 @@
     "goalComplete": false,
     "limits": "No restore operation, new product feature, universal recovery, released-binary correspondence or rankings/citation improvement claim.",
     "publicArtifactsExactBuild": 518
+  },
+  "thirtiethPublication": {
+    "date": "2026-10-22",
+    "newLocalizedGuide": {
+      "locale": "bg",
+      "slug": "time-zones-and-the-flight-you-booked"
+    },
+    "relatedOnlyBacklinks": 1,
+    "englishGuides": 55,
+    "sitemapUrls": 516,
+    "publicArtifactsExactBuild": 519,
+    "reviewEvidence": [
+      "batch29-bg-timezone/root-review.json",
+      "batch29-bg-timezone/cross-review.json",
+      "batch30-primary-readback.json"
+    ],
+    "sourceAndDeliveryEvidence": [
+      "batch30-source-qa.json",
+      "batch30-static-qa.json",
+      "batch30-metadata-qa.json",
+      "batch30-invalidation-status.json",
+      "batch30-public-qa.json",
+      "batch30-browser-qa.json"
+    ],
+    "asc": {
+      "version": "1.7.4",
+      "state": "PREPARE_FOR_SUBMISSION",
+      "descriptionCorrection": "ml-IN independent iCloud/Google wording",
+      "currentPersistenceEvidence": "aso/all-locales-readback-batch30.json",
+      "remaining38LocaleReview": "batch30-aso-remaining/coverage-summary.json",
+      "all50DescriptionCoverage": true,
+      "boundedAll250FieldEditorialCoverage": true,
+      "nativeSpeakerCertification": false,
+      "noNamesOrKeywordsChanged": true
+    },
+    "goalComplete": false,
+    "limits": "Language confidence varies, especially some Indic text. No search demand, universal competitor coverage, rankings/citation lift or native release proof."
   }
 }

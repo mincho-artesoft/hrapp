@@ -1,0 +1,899 @@
+{
+  "schemaVersion": 1,
+  "date": "2026-10-22",
+  "scope": "Read-only semantic review of exact complete saved API after-bodies, not boolean verification summaries. No network/API request.",
+  "input": {
+    "file": "research/batch29-aso-semantic/applied.json",
+    "rawFileSha256": "b3d921c1a9d6646b790379e47419f7bf438a23e085b99bfd6a8deb212f023252",
+    "checkedAt": "2026-10-22T01:47:34.667517+00:00",
+    "completedAt": "2026-10-22T01:48:04.043808+00:00",
+    "version": "1.7.4",
+    "limits": "This is the requested saved API snapshot, not a fresh assertion about current live ASC or released metadata."
+  },
+  "readScope": {
+    "locales": [
+      "no",
+      "or-IN",
+      "pa-IN",
+      "pl",
+      "pt-PT",
+      "ro",
+      "ru",
+      "sk",
+      "sl-SI",
+      "sv",
+      "ta-IN",
+      "te-IN",
+      "th",
+      "tr",
+      "uk",
+      "ur-PK",
+      "vi",
+      "zh-Hans",
+      "zh-Hant"
+    ],
+    "localesRead": 19,
+    "fieldsPerLocale": [
+      "description",
+      "keywords",
+      "promotionalText",
+      "name",
+      "subtitle"
+    ],
+    "completeFieldsRead": 95,
+    "method": "Displayed all five complete strings per locale in four untruncated batches: first five locales, next five, next five, final four. Human-language semantic review of the actual bodies plus mechanical keyword duplication check. Hashes are UTF-8 hashes of decoded field strings, preserving literal characters/newlines as stored."
+  },
+  "decision": "No material correction identified in these 19 locales. No mutation proposed.",
+  "corrections": [],
+  "locales": {
+    "no": {
+      "status": "no_material_change_identified",
+      "languageConfidence": "moderate-to-high",
+      "confidenceScope": "Semantic product-claim comprehension, not native editorial polish or certification.",
+      "completeFieldReads": {
+        "description": {
+          "jsonPointer": "/afterLocalizations/no/attributes/description",
+          "unicodeCharacters": 1476,
+          "utf8Sha256": "811552aa8b205a9d99a824b4024b3094b2840a69dbacbbdd4a3638c558457b00",
+          "readScope": "complete literal field"
+        },
+        "keywords": {
+          "jsonPointer": "/afterLocalizations/no/attributes/keywords",
+          "unicodeCharacters": 86,
+          "utf8Sha256": "29d1a02625241f4cd86961d56f95475b630407825fe5f26f10561c30c58acdad",
+          "readScope": "complete literal field"
+        },
+        "promotionalText": {
+          "jsonPointer": "/afterLocalizations/no/attributes/promotionalText",
+          "unicodeCharacters": 123,
+          "utf8Sha256": "b877d46f9704909fb219d4cab0864c17f502b94a461254c1a42c1e0817ab6a66",
+          "readScope": "complete literal field"
+        },
+        "name": {
+          "jsonPointer": "/afterAppInfoLocalizations/no/attributes/name",
+          "unicodeCharacters": 25,
+          "utf8Sha256": "47d894e004dc3c13636879c2b328d161eb3c7fdea3a3f961abf1ae6748c847b4",
+          "readScope": "complete literal field"
+        },
+        "subtitle": {
+          "jsonPointer": "/afterAppInfoLocalizations/no/attributes/subtitle",
+          "unicodeCharacters": 24,
+          "utf8Sha256": "91ecfeb7db3d3145858c038301c1f03d86a985f36f46daa7e5dd72a5b3a0f1ed",
+          "readScope": "complete literal field"
+        }
+      },
+      "semanticAssessment": "Base is explicitly free and includes Google sync/Meet; Advanced removes ads; Premium adds Microsoft/Teams. Local calendar account exception is bounded. No automatic or accurate-all-weather claim.",
+      "keywordCheck": {
+        "exactNormalizedCommaSeparatedDuplicates": [],
+        "exactWholeNameOrSubtitleDuplicates": [],
+        "limits": "No synonym/root-word or inflection treated automatically as a duplicate. No unjustified keyword rewrite."
+      },
+      "corrections": []
+    },
+    "or-IN": {
+      "status": "no_material_change_identified",
+      "languageConfidence": "limited-to-moderate",
+      "confidenceScope": "Semantic product-claim comprehension, not native editorial polish or certification.",
+      "completeFieldReads": {
+        "description": {
+          "jsonPointer": "/afterLocalizations/or-IN/attributes/description",
+          "unicodeCharacters": 1187,
+          "utf8Sha256": "625caae6c0586803f21a64fd56f54c2b159c10447d38f056a70f5eed9af108f8",
+          "readScope": "complete literal field"
+        },
+        "keywords": {
+          "jsonPointer": "/afterLocalizations/or-IN/attributes/keywords",
+          "unicodeCharacters": 71,
+          "utf8Sha256": "4a3d267a1e32d9363a3063bbf68263e8572ce462c9ad1d8574e136309e457cac",
+          "readScope": "complete literal field"
+        },
+        "promotionalText": {
+          "jsonPointer": "/afterLocalizations/or-IN/attributes/promotionalText",
+          "unicodeCharacters": 140,
+          "utf8Sha256": "b60da396dd6e5fa494958689b5ae776dcc0cc71088f7f07520592027b227683e",
+          "readScope": "complete literal field"
+        },
+        "name": {
+          "jsonPointer": "/afterAppInfoLocalizations/or-IN/attributes/name",
+          "unicodeCharacters": 27,
+          "utf8Sha256": "e3827ce9c6cdd435294a9692a68d1f9216af0e62977ea44aabd9b2cd99421ea9",
+          "readScope": "complete literal field"
+        },
+        "subtitle": {
+          "jsonPointer": "/afterAppInfoLocalizations/or-IN/attributes/subtitle",
+          "unicodeCharacters": 15,
+          "utf8Sha256": "30923f5c0509711653e6d6a94272475aa1086cb90328fbe9ea526cfc9a24bf31",
+          "readScope": "complete literal field"
+        }
+      },
+      "semanticAssessment": "Odia body preserves local device calendar without app account, conditional sign-in for service connections/sharing, forecast availability and all three tier distinctions. No concrete UI labels or unsupported feature detected. Language fluency assessment has greater uncertainty.",
+      "keywordCheck": {
+        "exactNormalizedCommaSeparatedDuplicates": [],
+        "exactWholeNameOrSubtitleDuplicates": [],
+        "limits": "No synonym/root-word or inflection treated automatically as a duplicate. No unjustified keyword rewrite."
+      },
+      "corrections": []
+    },
+    "pa-IN": {
+      "status": "no_material_change_identified",
+      "languageConfidence": "moderate",
+      "confidenceScope": "Semantic product-claim comprehension, not native editorial polish or certification.",
+      "completeFieldReads": {
+        "description": {
+          "jsonPointer": "/afterLocalizations/pa-IN/attributes/description",
+          "unicodeCharacters": 1205,
+          "utf8Sha256": "50687df4f914381fd7d4b751ffe45ad35d76767f84025cf7225e4da226dbc7b5",
+          "readScope": "complete literal field"
+        },
+        "keywords": {
+          "jsonPointer": "/afterLocalizations/pa-IN/attributes/keywords",
+          "unicodeCharacters": 66,
+          "utf8Sha256": "1f98f434d8dad4a24f60ef38e5440f2cb84442699a346ea0e13d04a68cf7fc53",
+          "readScope": "complete literal field"
+        },
+        "promotionalText": {
+          "jsonPointer": "/afterLocalizations/pa-IN/attributes/promotionalText",
+          "unicodeCharacters": 109,
+          "utf8Sha256": "c4752b3c384bc2edbf654c3e331461f03b2cc7d9f926e512206c13402b8a8150",
+          "readScope": "complete literal field"
+        },
+        "name": {
+          "jsonPointer": "/afterAppInfoLocalizations/pa-IN/attributes/name",
+          "unicodeCharacters": 23,
+          "utf8Sha256": "ebcef0fa1af0f3b73815af56ac45030f5817fc0effc255c45254216afba416b4",
+          "readScope": "complete literal field"
+        },
+        "subtitle": {
+          "jsonPointer": "/afterAppInfoLocalizations/pa-IN/attributes/subtitle",
+          "unicodeCharacters": 17,
+          "utf8Sha256": "7302fbe55e973118abdf6c37aca87557fbb242d526622bfce5c66cf896f46425",
+          "readScope": "complete literal field"
+        }
+      },
+      "semanticAssessment": "Punjabi distinguishes local calendar from service sign-in; free Base and ad-removing Advanced versus Microsoft/Teams Premium remain clear. The short reminder keyword is broad vocabulary, not a material task-manager capability claim.",
+      "keywordCheck": {
+        "exactNormalizedCommaSeparatedDuplicates": [],
+        "exactWholeNameOrSubtitleDuplicates": [],
+        "limits": "No synonym/root-word or inflection treated automatically as a duplicate. No unjustified keyword rewrite."
+      },
+      "corrections": []
+    },
+    "pl": {
+      "status": "no_material_change_identified",
+      "languageConfidence": "moderate-to-high",
+      "confidenceScope": "Semantic product-claim comprehension, not native editorial polish or certification.",
+      "completeFieldReads": {
+        "description": {
+          "jsonPointer": "/afterLocalizations/pl/attributes/description",
+          "unicodeCharacters": 1661,
+          "utf8Sha256": "f68b5043ab62b28d9f751c106114e0b188602ecc83405b3fd030ba1cb0a0f8dd",
+          "readScope": "complete literal field"
+        },
+        "keywords": {
+          "jsonPointer": "/afterLocalizations/pl/attributes/keywords",
+          "unicodeCharacters": 99,
+          "utf8Sha256": "a3ee0a516b88397afdf5ca533f6b7d5080657f141c096bc33be20737190de49b",
+          "readScope": "complete literal field"
+        },
+        "promotionalText": {
+          "jsonPointer": "/afterLocalizations/pl/attributes/promotionalText",
+          "unicodeCharacters": 131,
+          "utf8Sha256": "51f89037a57975cc886fed2af0e299c2107b8d1fd1c6c04248aedf877f62f951",
+          "readScope": "complete literal field"
+        },
+        "name": {
+          "jsonPointer": "/afterAppInfoLocalizations/pl/attributes/name",
+          "unicodeCharacters": 26,
+          "utf8Sha256": "a4a6f81f889ed48326c1f8ae0743cfb55d075538f598c57103096926f8e96c16",
+          "readScope": "complete literal field"
+        },
+        "subtitle": {
+          "jsonPointer": "/afterAppInfoLocalizations/pl/attributes/subtitle",
+          "unicodeCharacters": 25,
+          "utf8Sha256": "3a04f8c1d4f32ee3d158331c851add8ec7cd039ac326b8942077d8e98bda235f",
+          "readScope": "complete literal field"
+        }
+      },
+      "semanticAssessment": "Polish body keeps Microsoft/Teams in Premium and qualifies service/sharing access. Calendar-view and widget size descriptions do not assert instant refresh or unlimited event rows.",
+      "keywordCheck": {
+        "exactNormalizedCommaSeparatedDuplicates": [],
+        "exactWholeNameOrSubtitleDuplicates": [],
+        "limits": "No synonym/root-word or inflection treated automatically as a duplicate. No unjustified keyword rewrite."
+      },
+      "corrections": []
+    },
+    "pt-PT": {
+      "status": "no_material_change_identified",
+      "languageConfidence": "moderate-to-high",
+      "confidenceScope": "Semantic product-claim comprehension, not native editorial polish or certification.",
+      "completeFieldReads": {
+        "description": {
+          "jsonPointer": "/afterLocalizations/pt-PT/attributes/description",
+          "unicodeCharacters": 1794,
+          "utf8Sha256": "c36cb5c0b012cca6d69d1f1bb88fe23a96d3141ffa65cc02fd8d472315df3fa3",
+          "readScope": "complete literal field"
+        },
+        "keywords": {
+          "jsonPointer": "/afterLocalizations/pt-PT/attributes/keywords",
+          "unicodeCharacters": 91,
+          "utf8Sha256": "476d85a0700bc6e2413f20057af62a390c4baa21ae730645bb1e59c686c43f26",
+          "readScope": "complete literal field"
+        },
+        "promotionalText": {
+          "jsonPointer": "/afterLocalizations/pt-PT/attributes/promotionalText",
+          "unicodeCharacters": 150,
+          "utf8Sha256": "6f38d310cefca3a14e4aba8c982328afc9f585325ac81a832e9f50985efaca93",
+          "readScope": "complete literal field"
+        },
+        "name": {
+          "jsonPointer": "/afterAppInfoLocalizations/pt-PT/attributes/name",
+          "unicodeCharacters": 23,
+          "utf8Sha256": "42df5bf406e3b924a2e839577764ecc0e083a180e4688faf9455138feeba5024",
+          "readScope": "complete literal field"
+        },
+        "subtitle": {
+          "jsonPointer": "/afterAppInfoLocalizations/pt-PT/attributes/subtitle",
+          "unicodeCharacters": 30,
+          "utf8Sha256": "2afcd2f9463c33ea7eadc5562f1825f156bd8029caa2968ccb36afe4416022e1",
+          "readScope": "complete literal field"
+        }
+      },
+      "semanticAssessment": "European Portuguese text consistently distinguishes Base, Advanced and Premium. Widget/weather wording is bounded; calendar keyword is not an exact duplication of the localized name Agenda.",
+      "keywordCheck": {
+        "exactNormalizedCommaSeparatedDuplicates": [],
+        "exactWholeNameOrSubtitleDuplicates": [],
+        "limits": "No synonym/root-word or inflection treated automatically as a duplicate. No unjustified keyword rewrite."
+      },
+      "corrections": []
+    },
+    "ro": {
+      "status": "no_material_change_identified",
+      "languageConfidence": "moderate-to-high",
+      "confidenceScope": "Semantic product-claim comprehension, not native editorial polish or certification.",
+      "completeFieldReads": {
+        "description": {
+          "jsonPointer": "/afterLocalizations/ro/attributes/description",
+          "unicodeCharacters": 1603,
+          "utf8Sha256": "879bdb7761d9310edc6acc1ee03302fd4753b15c14cf2332173aab231ee0fa9d",
+          "readScope": "complete literal field"
+        },
+        "keywords": {
+          "jsonPointer": "/afterLocalizations/ro/attributes/keywords",
+          "unicodeCharacters": 85,
+          "utf8Sha256": "5011bfadc904bb3dbf05b7ebac4ecbefbd050f8ee9f7ce5ca5edc17c2edc521f",
+          "readScope": "complete literal field"
+        },
+        "promotionalText": {
+          "jsonPointer": "/afterLocalizations/ro/attributes/promotionalText",
+          "unicodeCharacters": 140,
+          "utf8Sha256": "92901b163dc65bc4a68d38e4ba5173878af1c80af0b0ba9d11338b9885de0a48",
+          "readScope": "complete literal field"
+        },
+        "name": {
+          "jsonPointer": "/afterAppInfoLocalizations/ro/attributes/name",
+          "unicodeCharacters": 25,
+          "utf8Sha256": "05eaf8fce64b410b6b7cdb9ea7f24417010293c611476deaa61fbfd71e6f1c87",
+          "readScope": "complete literal field"
+        },
+        "subtitle": {
+          "jsonPointer": "/afterAppInfoLocalizations/ro/attributes/subtitle",
+          "unicodeCharacters": 29,
+          "utf8Sha256": "d5d821df17412d10236da9d4f209a8920701a864deeefcf71fa11e844969a29b",
+          "readScope": "complete literal field"
+        }
+      },
+      "semanticAssessment": "Romanian tier and local account statements are consistent. No all-calendar, automatic accuracy or no-install promise detected.",
+      "keywordCheck": {
+        "exactNormalizedCommaSeparatedDuplicates": [],
+        "exactWholeNameOrSubtitleDuplicates": [],
+        "limits": "No synonym/root-word or inflection treated automatically as a duplicate. No unjustified keyword rewrite."
+      },
+      "corrections": []
+    },
+    "ru": {
+      "status": "no_material_change_identified",
+      "languageConfidence": "moderate-to-high",
+      "confidenceScope": "Semantic product-claim comprehension, not native editorial polish or certification.",
+      "completeFieldReads": {
+        "description": {
+          "jsonPointer": "/afterLocalizations/ru/attributes/description",
+          "unicodeCharacters": 1608,
+          "utf8Sha256": "e5e200ce55afe64778c5e67f2ec0b2d0075ea484f5b3e40911e6182ef532597a",
+          "readScope": "complete literal field"
+        },
+        "keywords": {
+          "jsonPointer": "/afterLocalizations/ru/attributes/keywords",
+          "unicodeCharacters": 94,
+          "utf8Sha256": "f0017f98c3a8054e0df0eab347df26152344f759ae4f031fa5be5c9201d9df22",
+          "readScope": "complete literal field"
+        },
+        "promotionalText": {
+          "jsonPointer": "/afterLocalizations/ru/attributes/promotionalText",
+          "unicodeCharacters": 133,
+          "utf8Sha256": "0caa25b4cf0f368a51987743fd2c3cd93f066665f847ca11b7c425c10e787b8e",
+          "readScope": "complete literal field"
+        },
+        "name": {
+          "jsonPointer": "/afterAppInfoLocalizations/ru/attributes/name",
+          "unicodeCharacters": 26,
+          "utf8Sha256": "3472f93119868810a325f998e7156e7b412cb134634334d889ded76d0ee3c88a",
+          "readScope": "complete literal field"
+        },
+        "subtitle": {
+          "jsonPointer": "/afterAppInfoLocalizations/ru/attributes/subtitle",
+          "unicodeCharacters": 25,
+          "utf8Sha256": "6a9108a065ebad752c5dab2d26ef3281ace44d49b76bc94ed5a3eaab7972be5f",
+          "readScope": "complete literal field"
+        }
+      },
+      "semanticAssessment": "Russian text states Google sync/Meet in free Base, removes ads in Advanced and adds Microsoft/Teams in Premium. Local account statement is distinct from service access. Generic sharing phrasing supplies no universal permissions promise.",
+      "keywordCheck": {
+        "exactNormalizedCommaSeparatedDuplicates": [],
+        "exactWholeNameOrSubtitleDuplicates": [],
+        "limits": "No synonym/root-word or inflection treated automatically as a duplicate. No unjustified keyword rewrite."
+      },
+      "corrections": []
+    },
+    "sk": {
+      "status": "no_material_change_identified",
+      "languageConfidence": "moderate",
+      "confidenceScope": "Semantic product-claim comprehension, not native editorial polish or certification.",
+      "completeFieldReads": {
+        "description": {
+          "jsonPointer": "/afterLocalizations/sk/attributes/description",
+          "unicodeCharacters": 1494,
+          "utf8Sha256": "b11cd2403b449bc32d7d99d89cc71c79b8503b4fba53378db1220f873f0bd927",
+          "readScope": "complete literal field"
+        },
+        "keywords": {
+          "jsonPointer": "/afterLocalizations/sk/attributes/keywords",
+          "unicodeCharacters": 83,
+          "utf8Sha256": "c3a3d64c4384549df91043f6fea4c21879bf41d78a539333d835425244f5623b",
+          "readScope": "complete literal field"
+        },
+        "promotionalText": {
+          "jsonPointer": "/afterLocalizations/sk/attributes/promotionalText",
+          "unicodeCharacters": 130,
+          "utf8Sha256": "ad3a49f297de792ad7130b4ebca3bc749fe1c9d954ee9a2b71f2237d96599df5",
+          "readScope": "complete literal field"
+        },
+        "name": {
+          "jsonPointer": "/afterAppInfoLocalizations/sk/attributes/name",
+          "unicodeCharacters": 25,
+          "utf8Sha256": "27d8fa6f6fd62a8a4eb2345dfaf8af23dd7eda1957b0f07ab0a5b550104d8b9e",
+          "readScope": "complete literal field"
+        },
+        "subtitle": {
+          "jsonPointer": "/afterAppInfoLocalizations/sk/attributes/subtitle",
+          "unicodeCharacters": 29,
+          "utf8Sha256": "98c78ed446761c51efa546b132ef58e3afbe231012b3387d49c36ca0810c613e",
+          "readScope": "complete literal field"
+        }
+      },
+      "semanticAssessment": "Slovak plan and connection qualifications are retained. Local-calendar phrasing is understandable; no material semantic correction justified by stylistic preference.",
+      "keywordCheck": {
+        "exactNormalizedCommaSeparatedDuplicates": [],
+        "exactWholeNameOrSubtitleDuplicates": [],
+        "limits": "No synonym/root-word or inflection treated automatically as a duplicate. No unjustified keyword rewrite."
+      },
+      "corrections": []
+    },
+    "sl-SI": {
+      "status": "no_material_change_identified",
+      "languageConfidence": "moderate",
+      "confidenceScope": "Semantic product-claim comprehension, not native editorial polish or certification.",
+      "completeFieldReads": {
+        "description": {
+          "jsonPointer": "/afterLocalizations/sl-SI/attributes/description",
+          "unicodeCharacters": 1542,
+          "utf8Sha256": "d2f47a92f0296065f69dcbcd175e6e2552ce6ba6635804a86fcc6a0e719ca2e2",
+          "readScope": "complete literal field"
+        },
+        "keywords": {
+          "jsonPointer": "/afterLocalizations/sl-SI/attributes/keywords",
+          "unicodeCharacters": 79,
+          "utf8Sha256": "122f448965fb610ed1c693da53394e2e69d085734af4f1b0d6bfb4e9abacdba9",
+          "readScope": "complete literal field"
+        },
+        "promotionalText": {
+          "jsonPointer": "/afterLocalizations/sl-SI/attributes/promotionalText",
+          "unicodeCharacters": 133,
+          "utf8Sha256": "fcf7b98abe0b259679b6d154113a4b6ba03a314fd81efa7f3052dfd1b19067b3",
+          "readScope": "complete literal field"
+        },
+        "name": {
+          "jsonPointer": "/afterAppInfoLocalizations/sl-SI/attributes/name",
+          "unicodeCharacters": 24,
+          "utf8Sha256": "f6147acb4e012b61fc3eaad8509ca372074f36bc9e317478220bb295d553395e",
+          "readScope": "complete literal field"
+        },
+        "subtitle": {
+          "jsonPointer": "/afterAppInfoLocalizations/sl-SI/attributes/subtitle",
+          "unicodeCharacters": 27,
+          "utf8Sha256": "3c4192f3eadc1b3b598c404f37593f0065d6f647b9ab8c94f8f01e140a689d2f",
+          "readScope": "complete literal field"
+        }
+      },
+      "semanticAssessment": "Slovenian body preserves calendar/account and sharing conditions and widget sizes. Plan tiers do not put Google/Meet/weather behind Premium.",
+      "keywordCheck": {
+        "exactNormalizedCommaSeparatedDuplicates": [],
+        "exactWholeNameOrSubtitleDuplicates": [],
+        "limits": "No synonym/root-word or inflection treated automatically as a duplicate. No unjustified keyword rewrite."
+      },
+      "corrections": []
+    },
+    "sv": {
+      "status": "no_material_change_identified",
+      "languageConfidence": "moderate-to-high",
+      "confidenceScope": "Semantic product-claim comprehension, not native editorial polish or certification.",
+      "completeFieldReads": {
+        "description": {
+          "jsonPointer": "/afterLocalizations/sv/attributes/description",
+          "unicodeCharacters": 1637,
+          "utf8Sha256": "f7260cea8e7a9914780156239d50b390783038e696d91090421d87e4f38bd34f",
+          "readScope": "complete literal field"
+        },
+        "keywords": {
+          "jsonPointer": "/afterLocalizations/sv/attributes/keywords",
+          "unicodeCharacters": 85,
+          "utf8Sha256": "50b9c83621389d5972ec361a190a0fd90c53c3417b4e080b55611dce1e07097e",
+          "readScope": "complete literal field"
+        },
+        "promotionalText": {
+          "jsonPointer": "/afterLocalizations/sv/attributes/promotionalText",
+          "unicodeCharacters": 132,
+          "utf8Sha256": "87cadf80332e969bed773f1a0f36caf9929a8f136a07322321550149b444ea03",
+          "readScope": "complete literal field"
+        },
+        "name": {
+          "jsonPointer": "/afterAppInfoLocalizations/sv/attributes/name",
+          "unicodeCharacters": 25,
+          "utf8Sha256": "47d894e004dc3c13636879c2b328d161eb3c7fdea3a3f961abf1ae6748c847b4",
+          "readScope": "complete literal field"
+        },
+        "subtitle": {
+          "jsonPointer": "/afterAppInfoLocalizations/sv/attributes/subtitle",
+          "unicodeCharacters": 25,
+          "utf8Sha256": "90a70935073b5cd2f27454690c8c5ac590120496b236806f5f908fb3a9ea1d66",
+          "readScope": "complete literal field"
+        }
+      },
+      "semanticAssessment": "Swedish clearly places Microsoft calendars and Teams in Premium and preserves free Base. Weather availability depends on place/provider; no refresh deadline asserted.",
+      "keywordCheck": {
+        "exactNormalizedCommaSeparatedDuplicates": [],
+        "exactWholeNameOrSubtitleDuplicates": [],
+        "limits": "No synonym/root-word or inflection treated automatically as a duplicate. No unjustified keyword rewrite."
+      },
+      "corrections": []
+    },
+    "ta-IN": {
+      "status": "no_material_change_identified",
+      "languageConfidence": "moderate",
+      "confidenceScope": "Semantic product-claim comprehension, not native editorial polish or certification.",
+      "completeFieldReads": {
+        "description": {
+          "jsonPointer": "/afterLocalizations/ta-IN/attributes/description",
+          "unicodeCharacters": 1379,
+          "utf8Sha256": "7242a3a35a08ca505f9a5db30be297768dce3d8eb0e23e420f12d2b9fe3188e5",
+          "readScope": "complete literal field"
+        },
+        "keywords": {
+          "jsonPointer": "/afterLocalizations/ta-IN/attributes/keywords",
+          "unicodeCharacters": 88,
+          "utf8Sha256": "cd93465d5074ec8be0ca8cc7abc544ba83796d5f8e665e37a86136f31c3433ae",
+          "readScope": "complete literal field"
+        },
+        "promotionalText": {
+          "jsonPointer": "/afterLocalizations/ta-IN/attributes/promotionalText",
+          "unicodeCharacters": 168,
+          "utf8Sha256": "2baef2fcb60a39ff65d62231cd588568345adc6435c693edf37e8d3cb933b708",
+          "readScope": "complete literal field"
+        },
+        "name": {
+          "jsonPointer": "/afterAppInfoLocalizations/ta-IN/attributes/name",
+          "unicodeCharacters": 25,
+          "utf8Sha256": "771ca0e951cf2745e56504a09561c9225fee171d03c0d373c16b80d84639d2c6",
+          "readScope": "complete literal field"
+        },
+        "subtitle": {
+          "jsonPointer": "/afterAppInfoLocalizations/ta-IN/attributes/subtitle",
+          "unicodeCharacters": 25,
+          "utf8Sha256": "996c226c9d350c06ddd4c8e9d7dc5bd0d621b0a9067f77a9e4411ee3bc558cd3",
+          "readScope": "complete literal field"
+        }
+      },
+      "semanticAssessment": "Tamil full body preserves free Base, ad removal, Microsoft/Teams tiering, local calendar exception and conditional service sign-in. Calendar transliteration differs slightly between name and body but meaning remains calendar; not a material falsehood or reason to rename.",
+      "keywordCheck": {
+        "exactNormalizedCommaSeparatedDuplicates": [],
+        "exactWholeNameOrSubtitleDuplicates": [],
+        "limits": "No synonym/root-word or inflection treated automatically as a duplicate. No unjustified keyword rewrite."
+      },
+      "corrections": []
+    },
+    "te-IN": {
+      "status": "no_material_change_identified",
+      "languageConfidence": "limited-to-moderate",
+      "confidenceScope": "Semantic product-claim comprehension, not native editorial polish or certification.",
+      "completeFieldReads": {
+        "description": {
+          "jsonPointer": "/afterLocalizations/te-IN/attributes/description",
+          "unicodeCharacters": 1276,
+          "utf8Sha256": "4fb33732ac7a0a79a01bd4f7cd95c8e300231234379e706a3c781a70a466de0a",
+          "readScope": "complete literal field"
+        },
+        "keywords": {
+          "jsonPointer": "/afterLocalizations/te-IN/attributes/keywords",
+          "unicodeCharacters": 73,
+          "utf8Sha256": "7c635caf376c2a69b8b2ffceb39e89013ac52e49cd7a1ac3a31daa672782d14f",
+          "readScope": "complete literal field"
+        },
+        "promotionalText": {
+          "jsonPointer": "/afterLocalizations/te-IN/attributes/promotionalText",
+          "unicodeCharacters": 140,
+          "utf8Sha256": "5a78dd794d9c4a8299b426b93203d87637fb633d6d123b5d63867266cc170299",
+          "readScope": "complete literal field"
+        },
+        "name": {
+          "jsonPointer": "/afterAppInfoLocalizations/te-IN/attributes/name",
+          "unicodeCharacters": 27,
+          "utf8Sha256": "66569f7f7a0cbc95f69414f681511788f347ecbd6010190266a597e32c1a19e4",
+          "readScope": "complete literal field"
+        },
+        "subtitle": {
+          "jsonPointer": "/afterAppInfoLocalizations/te-IN/attributes/subtitle",
+          "unicodeCharacters": 25,
+          "utf8Sha256": "0a1458f93c51d131774b4559e8cb15c982c7834b6e545dd23fc1cb3e797ace76",
+          "readScope": "complete literal field"
+        }
+      },
+      "semanticAssessment": "Telugu body preserves feature tiers, local storage account qualification and weather availability limits. Greater uncertainty about idiomatic polish does not establish a factual correction.",
+      "keywordCheck": {
+        "exactNormalizedCommaSeparatedDuplicates": [],
+        "exactWholeNameOrSubtitleDuplicates": [],
+        "limits": "No synonym/root-word or inflection treated automatically as a duplicate. No unjustified keyword rewrite."
+      },
+      "corrections": []
+    },
+    "th": {
+      "status": "no_material_change_identified",
+      "languageConfidence": "moderate",
+      "confidenceScope": "Semantic product-claim comprehension, not native editorial polish or certification.",
+      "completeFieldReads": {
+        "description": {
+          "jsonPointer": "/afterLocalizations/th/attributes/description",
+          "unicodeCharacters": 1076,
+          "utf8Sha256": "85eb2ab08f9e5fe637660fbe0d69ea7959502c4962fcc20b80565a3beb2a28ee",
+          "readScope": "complete literal field"
+        },
+        "keywords": {
+          "jsonPointer": "/afterLocalizations/th/attributes/keywords",
+          "unicodeCharacters": 71,
+          "utf8Sha256": "f972a3dc2ea43ac806a26227871bb0aaa0296db10365746cdb21d598e7c77c3f",
+          "readScope": "complete literal field"
+        },
+        "promotionalText": {
+          "jsonPointer": "/afterLocalizations/th/attributes/promotionalText",
+          "unicodeCharacters": 95,
+          "utf8Sha256": "cf002c7d0a616d292d81ab5505bf7b9c9d991aa1b12cc1b29293a102ed34e2d3",
+          "readScope": "complete literal field"
+        },
+        "name": {
+          "jsonPointer": "/afterAppInfoLocalizations/th/attributes/name",
+          "unicodeCharacters": 23,
+          "utf8Sha256": "4f7bb4b8ba4cdb55faf22938c8b770eee293d8fc5a612382cd8bf7cfcdd6344b",
+          "readScope": "complete literal field"
+        },
+        "subtitle": {
+          "jsonPointer": "/afterAppInfoLocalizations/th/attributes/subtitle",
+          "unicodeCharacters": 24,
+          "utf8Sha256": "88a2dcfe7502741b2c2fe0ec77b4ceae433f6a81fb9aa93a50c13ad2a72c0015",
+          "readScope": "complete literal field"
+        }
+      },
+      "semanticAssessment": "Thai text includes five calendar views, three widget sizes, provider/location forecast qualification and correct tier allocation. Local no-account statement is bounded to on-device calendar creation.",
+      "keywordCheck": {
+        "exactNormalizedCommaSeparatedDuplicates": [],
+        "exactWholeNameOrSubtitleDuplicates": [],
+        "limits": "No synonym/root-word or inflection treated automatically as a duplicate. No unjustified keyword rewrite."
+      },
+      "corrections": []
+    },
+    "tr": {
+      "status": "no_material_change_identified",
+      "languageConfidence": "moderate-to-high",
+      "confidenceScope": "Semantic product-claim comprehension, not native editorial polish or certification.",
+      "completeFieldReads": {
+        "description": {
+          "jsonPointer": "/afterLocalizations/tr/attributes/description",
+          "unicodeCharacters": 1749,
+          "utf8Sha256": "d30c5f8853a6f78ca786d1e6b9267769c2164218f995799d489fade4873141af",
+          "readScope": "complete literal field"
+        },
+        "keywords": {
+          "jsonPointer": "/afterLocalizations/tr/attributes/keywords",
+          "unicodeCharacters": 92,
+          "utf8Sha256": "418895bfa6e93178b44b9def4510f9e5a54e895ca9543164bb9bf12d60e10221",
+          "readScope": "complete literal field"
+        },
+        "promotionalText": {
+          "jsonPointer": "/afterLocalizations/tr/attributes/promotionalText",
+          "unicodeCharacters": 151,
+          "utf8Sha256": "5d6aa58234dbf02bfbdebd62ff72c3c52aef76a0bf4eeeca5d9bc02098d77c05",
+          "readScope": "complete literal field"
+        },
+        "name": {
+          "jsonPointer": "/afterAppInfoLocalizations/tr/attributes/name",
+          "unicodeCharacters": 23,
+          "utf8Sha256": "f2a764315c3ed689acda2eb9cb8c8af8584219d3a7dcd99579c8986fec7616ec",
+          "readScope": "complete literal field"
+        },
+        "subtitle": {
+          "jsonPointer": "/afterAppInfoLocalizations/tr/attributes/subtitle",
+          "unicodeCharacters": 29,
+          "utf8Sha256": "7e7a58a03e57bfd43fd770fe54576d09acaf5063b33f6429bb2cfbbd61c4f49f",
+          "readScope": "complete literal field"
+        }
+      },
+      "semanticAssessment": "Turkish uses araç takımları for widgets, not a separate unsupported tool feature. Base/Advanced/Premium allocation and local-account qualifications are accurate against supplied product facts.",
+      "keywordCheck": {
+        "exactNormalizedCommaSeparatedDuplicates": [],
+        "exactWholeNameOrSubtitleDuplicates": [],
+        "limits": "No synonym/root-word or inflection treated automatically as a duplicate. No unjustified keyword rewrite."
+      },
+      "corrections": []
+    },
+    "uk": {
+      "status": "no_material_change_identified",
+      "languageConfidence": "moderate-to-high",
+      "confidenceScope": "Semantic product-claim comprehension, not native editorial polish or certification.",
+      "completeFieldReads": {
+        "description": {
+          "jsonPointer": "/afterLocalizations/uk/attributes/description",
+          "unicodeCharacters": 1648,
+          "utf8Sha256": "24ecd11adbe6849efb3403246a1976ec18626789e19dfe38dbb2f16559c8d616",
+          "readScope": "complete literal field"
+        },
+        "keywords": {
+          "jsonPointer": "/afterLocalizations/uk/attributes/keywords",
+          "unicodeCharacters": 88,
+          "utf8Sha256": "de1df4966c452dbde1bbdb7eeab510def54d0d7189fa88cce700caa0bdba993b",
+          "readScope": "complete literal field"
+        },
+        "promotionalText": {
+          "jsonPointer": "/afterLocalizations/uk/attributes/promotionalText",
+          "unicodeCharacters": 144,
+          "utf8Sha256": "d37e3e9e28c8d03a03951d005dfd21f2e415cc182782e7de834bf5b4b571173e",
+          "readScope": "complete literal field"
+        },
+        "name": {
+          "jsonPointer": "/afterAppInfoLocalizations/uk/attributes/name",
+          "unicodeCharacters": 25,
+          "utf8Sha256": "7778db5844029b22c884354e16bc17f2f4235c7da105017464383f7e43779ec8",
+          "readScope": "complete literal field"
+        },
+        "subtitle": {
+          "jsonPointer": "/afterAppInfoLocalizations/uk/attributes/subtitle",
+          "unicodeCharacters": 27,
+          "utf8Sha256": "cd4403aebc32bf8507d3077494cf8b640671aaaf72856bfb9d3b22013a54c35b",
+          "readScope": "complete literal field"
+        }
+      },
+      "semanticAssessment": "Ukrainian complete copy keeps provider sign-in separate from local calendar creation and correct tier distinctions. Keyword plans/плани overlaps subtitle only semantically, not a material duplicate requiring a change.",
+      "keywordCheck": {
+        "exactNormalizedCommaSeparatedDuplicates": [],
+        "exactWholeNameOrSubtitleDuplicates": [],
+        "limits": "No synonym/root-word or inflection treated automatically as a duplicate. No unjustified keyword rewrite."
+      },
+      "corrections": []
+    },
+    "ur-PK": {
+      "status": "no_material_change_identified",
+      "languageConfidence": "moderate",
+      "confidenceScope": "Semantic product-claim comprehension, not native editorial polish or certification.",
+      "completeFieldReads": {
+        "description": {
+          "jsonPointer": "/afterLocalizations/ur-PK/attributes/description",
+          "unicodeCharacters": 1236,
+          "utf8Sha256": "f430496bb2d547e2754db12af1d932510d03ba4b175fccf41d98a13951d60f13",
+          "readScope": "complete literal field"
+        },
+        "keywords": {
+          "jsonPointer": "/afterLocalizations/ur-PK/attributes/keywords",
+          "unicodeCharacters": 63,
+          "utf8Sha256": "5a3c167b40e3643b66cefa21f4c883a03462ff2f987315989dfa646e92944fa2",
+          "readScope": "complete literal field"
+        },
+        "promotionalText": {
+          "jsonPointer": "/afterLocalizations/ur-PK/attributes/promotionalText",
+          "unicodeCharacters": 124,
+          "utf8Sha256": "71d3bc004913abe1520c18ab2934b47a3ae968476115dc4bda15144f1e473a78",
+          "readScope": "complete literal field"
+        },
+        "name": {
+          "jsonPointer": "/afterAppInfoLocalizations/ur-PK/attributes/name",
+          "unicodeCharacters": 23,
+          "utf8Sha256": "d9eba88c02d3ee5c9f10e14fd26e46887d69ccb42bf22c28afa654140be6b170",
+          "readScope": "complete literal field"
+        },
+        "subtitle": {
+          "jsonPointer": "/afterAppInfoLocalizations/ur-PK/attributes/subtitle",
+          "unicodeCharacters": 20,
+          "utf8Sha256": "2cda957bcbacb0c857e0977a1db58d10838a88f92c0734716760ab7aa1d3ea8d",
+          "readScope": "complete literal field"
+        }
+      },
+      "semanticAssessment": "Urdu describes local device calendar without Cloud account and conditional sign-in for services/sharing. Tier and forecast conditions remain intact; no stronger runtime or sync guarantee detected.",
+      "keywordCheck": {
+        "exactNormalizedCommaSeparatedDuplicates": [],
+        "exactWholeNameOrSubtitleDuplicates": [],
+        "limits": "No synonym/root-word or inflection treated automatically as a duplicate. No unjustified keyword rewrite."
+      },
+      "corrections": []
+    },
+    "vi": {
+      "status": "no_material_change_identified",
+      "languageConfidence": "moderate-to-high",
+      "confidenceScope": "Semantic product-claim comprehension, not native editorial polish or certification.",
+      "completeFieldReads": {
+        "description": {
+          "jsonPointer": "/afterLocalizations/vi/attributes/description",
+          "unicodeCharacters": 1214,
+          "utf8Sha256": "c058123c28f46a95c0112c884633f2603a8ae0ded70fe6a01bbda42f37c4f4ec",
+          "readScope": "complete literal field"
+        },
+        "keywords": {
+          "jsonPointer": "/afterLocalizations/vi/attributes/keywords",
+          "unicodeCharacters": 79,
+          "utf8Sha256": "fcef4bbb9839b657a19d759c14dbc79d366caaa4641a1615c6af44dd6f196f9e",
+          "readScope": "complete literal field"
+        },
+        "promotionalText": {
+          "jsonPointer": "/afterLocalizations/vi/attributes/promotionalText",
+          "unicodeCharacters": 125,
+          "utf8Sha256": "1eefd5e481f5f987ef2435013dc8c592e9bf2fdff70ec5d60f21a845b2d5f06f",
+          "readScope": "complete literal field"
+        },
+        "name": {
+          "jsonPointer": "/afterAppInfoLocalizations/vi/attributes/name",
+          "unicodeCharacters": 21,
+          "utf8Sha256": "a3f0362ede548b041b85d2c9f2b5bd0e55e33e757d9fa43bf081f9126835de45",
+          "readScope": "complete literal field"
+        },
+        "subtitle": {
+          "jsonPointer": "/afterAppInfoLocalizations/vi/attributes/subtitle",
+          "unicodeCharacters": 29,
+          "utf8Sha256": "5d1a23175fde410d60eea7abc1e9263464905947bbe6ee65c4811e72fdff2416",
+          "readScope": "complete literal field"
+        }
+      },
+      "semanticAssessment": "Vietnamese preserves local account exception and service/access qualifications; correct Google/Meet versus Microsoft/Teams plans. Generic reminder/meeting keywords do not promise advanced task management.",
+      "keywordCheck": {
+        "exactNormalizedCommaSeparatedDuplicates": [],
+        "exactWholeNameOrSubtitleDuplicates": [],
+        "limits": "No synonym/root-word or inflection treated automatically as a duplicate. No unjustified keyword rewrite."
+      },
+      "corrections": []
+    },
+    "zh-Hans": {
+      "status": "no_material_change_identified",
+      "languageConfidence": "moderate-to-high",
+      "confidenceScope": "Semantic product-claim comprehension, not native editorial polish or certification.",
+      "completeFieldReads": {
+        "description": {
+          "jsonPointer": "/afterLocalizations/zh-Hans/attributes/description",
+          "unicodeCharacters": 771,
+          "utf8Sha256": "0b73d2a48ce927e64aac7be0f61f451c9073034a69aa30eb8b3a4d8143bab14d",
+          "readScope": "complete literal field"
+        },
+        "keywords": {
+          "jsonPointer": "/afterLocalizations/zh-Hans/attributes/keywords",
+          "unicodeCharacters": 44,
+          "utf8Sha256": "f78b64705aff18f003dc169b47e57fe9139b201086bc3a81ef527297bfd346ce",
+          "readScope": "complete literal field"
+        },
+        "promotionalText": {
+          "jsonPointer": "/afterLocalizations/zh-Hans/attributes/promotionalText",
+          "unicodeCharacters": 48,
+          "utf8Sha256": "c036d00508415dbc28a2743b181982da4ee11f981af9cf97cf59384033740bcb",
+          "readScope": "complete literal field"
+        },
+        "name": {
+          "jsonPointer": "/afterAppInfoLocalizations/zh-Hans/attributes/name",
+          "unicodeCharacters": 19,
+          "utf8Sha256": "b4ef68f7b1802c72fe21a18ed0bb845804a709ca4e8b8f90621311c560df65a0",
+          "readScope": "complete literal field"
+        },
+        "subtitle": {
+          "jsonPointer": "/afterAppInfoLocalizations/zh-Hans/attributes/subtitle",
+          "unicodeCharacters": 14,
+          "utf8Sha256": "23de5e17647291c10740495121e2be50c174ae74d0e54b909a69ecdd24abc3bc",
+          "readScope": "complete literal field"
+        }
+      },
+      "semanticAssessment": "Simplified Chinese preserves all tier boundaries, location/provider forecast qualification and local account exception. Name/subtitle/keywords contain no exact repeated keyword phrase that warrants correction.",
+      "keywordCheck": {
+        "exactNormalizedCommaSeparatedDuplicates": [],
+        "exactWholeNameOrSubtitleDuplicates": [],
+        "limits": "No synonym/root-word or inflection treated automatically as a duplicate. No unjustified keyword rewrite."
+      },
+      "corrections": []
+    },
+    "zh-Hant": {
+      "status": "no_material_change_identified",
+      "languageConfidence": "moderate-to-high",
+      "confidenceScope": "Semantic product-claim comprehension, not native editorial polish or certification.",
+      "completeFieldReads": {
+        "description": {
+          "jsonPointer": "/afterLocalizations/zh-Hant/attributes/description",
+          "unicodeCharacters": 788,
+          "utf8Sha256": "9f428833b4caad08e982d74d754e6be0ff52def974a594093ba969c87ff7f383",
+          "readScope": "complete literal field"
+        },
+        "keywords": {
+          "jsonPointer": "/afterLocalizations/zh-Hant/attributes/keywords",
+          "unicodeCharacters": 47,
+          "utf8Sha256": "9671405640d9a198463553176a01da075f6a6c3a1a843475c7ed7d3992b32b62",
+          "readScope": "complete literal field"
+        },
+        "promotionalText": {
+          "jsonPointer": "/afterLocalizations/zh-Hant/attributes/promotionalText",
+          "unicodeCharacters": 53,
+          "utf8Sha256": "8f0971ec537fd2db1963036b53e7def477761477b2ed8eb8bb406b9e81c5d4f8",
+          "readScope": "complete literal field"
+        },
+        "name": {
+          "jsonPointer": "/afterAppInfoLocalizations/zh-Hant/attributes/name",
+          "unicodeCharacters": 20,
+          "utf8Sha256": "d99b233b2edf6595a39a980ceb5ffefbb760caccfe2f92a5e944cf9239dbc8b0",
+          "readScope": "complete literal field"
+        },
+        "subtitle": {
+          "jsonPointer": "/afterAppInfoLocalizations/zh-Hant/attributes/subtitle",
+          "unicodeCharacters": 14,
+          "utf8Sha256": "747785ae8bf46d136fea3193b4a8ff8504400871db78bfb3812af1e71ece927b",
+          "readScope": "complete literal field"
+        }
+      },
+      "semanticAssessment": "Traditional Chinese distinguishes Google 日曆 naming from product 行事曆 naturally. Generic 日曆 keyword is a synonym/partial name overlap, not a material falsehood or evidence-based reason to remove it. Plan and access qualifications remain bounded.",
+      "keywordCheck": {
+        "exactNormalizedCommaSeparatedDuplicates": [],
+        "exactWholeNameOrSubtitleDuplicates": [],
+        "limits": "No synonym/root-word or inflection treated automatically as a duplicate. No unjustified keyword rewrite."
+      },
+      "corrections": []
+    }
+  },
+  "reviewBaseline": [
+    "Free Base: Google Calendar synchronization, Google Meet, calendar views, weather, widgets.",
+    "Advanced includes Base and removes ads; Premium includes Advanced and adds Microsoft calendars/Teams.",
+    "No-app-account exception concerns local on-device calendar creation; service connections/sharing may require sign-in.",
+    "Weather availability depends on location/provider; no universal forecast horizon or guaranteed accuracy. Widget sizes do not guarantee immediate refresh, all-event coverage or special layouts.",
+    "Access depends on calendar/invitation type. Generic App Clip invitation mention alone is not treated as a universal no-install/add-event claim."
+  ],
+  "limits": [
+    "Own multilingual semantic assessment, not independent native-speaker certification. Higher idiomatic uncertainty for Odia, Telugu and some other locales is disclosed per locale.",
+    "No legal, subscription-account or production privacy certification. Existing names, links, prices and policy text left unchanged.",
+    "No search-volume/rank/keyword-conversion or ChatGPT citation data collected; absence of exact duplicates is not an ASO performance claim.",
+    "No source/native/customer changes, build/deploy, ASC write, commit or paid API."
+  ]
+}
