@@ -1,0 +1,24 @@
+{
+  "date": "2026-10-22",
+  "beforeSha256": "7f90d249e37d16c20b786eaaf86bc52c88271d618e8d31103474bc0f6584c2d3",
+  "draftSha256": "9c65950cfba1d703587be23d3734a25125592fea79944af950c3afee8a981e68",
+  "nativeEvidenceSha256": "9ae38d71ba9d80872c00152848c3334723687cf64dfd775ed9cf9fd225c20614",
+  "changes": [
+    "sections[1] inserted5paragraphs",
+    "practical[1] inserted",
+    "faq[3] appended",
+    "sources[2..3] appended",
+    "description updated"
+  ],
+  "descriptionCharacters": 133,
+  "inverseDeltaEqualsBefore": true,
+  "allOriginalProseAndRelatedDateClaimsPreserved": true,
+  "scope": "Current full week object extracted; full prior task body read plus native evidence report complete. No native code/runtime independently inspected in this draft step.",
+  "bounds": [
+    "No unconditional public Cloud UI workflow; installed app/version checked generically.",
+    "No Cloud week-number/custom-week/alternate-overlay claim.",
+    "No ISO rule or Apple preference propagation guarantee.",
+    "Provider controls explicitly attributed."
+  ],
+  "review": "Author self-check; root independent review pending. No source edits."
+}

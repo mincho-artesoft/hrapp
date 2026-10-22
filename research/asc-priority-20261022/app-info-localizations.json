@@ -1,0 +1,763 @@
+{
+  "data": [
+    {
+      "type": "appInfoLocalizations",
+      "id": "d96269cd-e544-42a4-8f2c-6ba6296db784",
+      "attributes": {
+        "locale": "en-CA",
+        "name": "Cloud Calendars: Sync & Widget",
+        "subtitle": "Google, Microsoft & iCloud",
+        "privacyPolicyUrl": "https://www.cloud-calendars.com/privacy-policy",
+        "privacyChoicesUrl": null,
+        "privacyPolicyText": null
+      },
+      "links": {
+        "self": "https://api.appstoreconnect.apple.com/v1/appInfoLocalizations/d96269cd-e544-42a4-8f2c-6ba6296db784"
+      }
+    },
+    {
+      "type": "appInfoLocalizations",
+      "id": "18c6f069-5296-4764-a284-59f0f69f95f3",
+      "attributes": {
+        "locale": "uk",
+        "name": "Cloud Calendars: Календар",
+        "subtitle": "Погода, зустрічі та віджети",
+        "privacyPolicyUrl": "https://www.cloud-calendars.com/privacy-policy",
+        "privacyChoicesUrl": null,
+        "privacyPolicyText": null
+      },
+      "links": {
+        "self": "https://api.appstoreconnect.apple.com/v1/appInfoLocalizations/18c6f069-5296-4764-a284-59f0f69f95f3"
+      }
+    },
+    {
+      "type": "appInfoLocalizations",
+      "id": "d1481d54-1499-445f-bf01-7cf2d87cdeb4",
+      "attributes": {
+        "locale": "fr-FR",
+        "name": "Cloud Calendars: Agenda",
+        "subtitle": "Météo, rendez-vous et widgets",
+        "privacyPolicyUrl": "https://www.cloud-calendars.com/privacy-policy",
+        "privacyChoicesUrl": null,
+        "privacyPolicyText": null
+      },
+      "links": {
+        "self": "https://api.appstoreconnect.apple.com/v1/appInfoLocalizations/d1481d54-1499-445f-bf01-7cf2d87cdeb4"
+      }
+    },
+    {
+      "type": "appInfoLocalizations",
+      "id": "0ff8556b-b5db-46d8-bca3-c6f2c92af369",
+      "attributes": {
+        "locale": "pl",
+        "name": "Cloud Calendars: Kalendarz",
+        "subtitle": "Pogoda, terminy i widżety",
+        "privacyPolicyUrl": "https://www.cloud-calendars.com/privacy-policy",
+        "privacyChoicesUrl": null,
+        "privacyPolicyText": null
+      },
+      "links": {
+        "self": "https://api.appstoreconnect.apple.com/v1/appInfoLocalizations/0ff8556b-b5db-46d8-bca3-c6f2c92af369"
+      }
+    },
+    {
+      "type": "appInfoLocalizations",
+      "id": "ed015c75-d999-4ea8-ad29-7fc38d3e6e5c",
+      "attributes": {
+        "locale": "sl-SI",
+        "name": "Cloud Calendars: Koledar",
+        "subtitle": "Vreme, sestanki in gradniki",
+        "privacyPolicyUrl": "https://www.cloud-calendars.com/privacy-policy",
+        "privacyChoicesUrl": null,
+        "privacyPolicyText": null
+      },
+      "links": {
+        "self": "https://api.appstoreconnect.apple.com/v1/appInfoLocalizations/ed015c75-d999-4ea8-ad29-7fc38d3e6e5c"
+      }
+    },
+    {
+      "type": "appInfoLocalizations",
+      "id": "ca2eb59d-0036-4b42-a422-a7be57b84d21",
+      "attributes": {
+        "locale": "fi",
+        "name": "Cloud Calendars: Kalenteri",
+        "subtitle": "Sää, tapaamiset ja widgetit",
+        "privacyPolicyUrl": "https://www.cloud-calendars.com/privacy-policy",
+        "privacyChoicesUrl": null,
+        "privacyPolicyText": null
+      },
+      "links": {
+        "self": "https://api.appstoreconnect.apple.com/v1/appInfoLocalizations/ca2eb59d-0036-4b42-a422-a7be57b84d21"
+      }
+    },
+    {
+      "type": "appInfoLocalizations",
+      "id": "788de7fb-472b-4a60-a412-f863913621aa",
+      "attributes": {
+        "locale": "nl-NL",
+        "name": "Cloud Calendars: Agenda",
+        "subtitle": "Weer, afspraken en widgets",
+        "privacyPolicyUrl": "https://www.cloud-calendars.com/privacy-policy",
+        "privacyChoicesUrl": null,
+        "privacyPolicyText": null
+      },
+      "links": {
+        "self": "https://api.appstoreconnect.apple.com/v1/appInfoLocalizations/788de7fb-472b-4a60-a412-f863913621aa"
+      }
+    },
+    {
+      "type": "appInfoLocalizations",
+      "id": "d6d0e07b-ab46-498c-aa41-03b740e2c767",
+      "attributes": {
+        "locale": "hu",
+        "name": "Cloud Calendars: Naptár",
+        "subtitle": "Időjárás, programok, widgetek",
+        "privacyPolicyUrl": "https://www.cloud-calendars.com/privacy-policy",
+        "privacyChoicesUrl": null,
+        "privacyPolicyText": null
+      },
+      "links": {
+        "self": "https://api.appstoreconnect.apple.com/v1/appInfoLocalizations/d6d0e07b-ab46-498c-aa41-03b740e2c767"
+      }
+    },
+    {
+      "type": "appInfoLocalizations",
+      "id": "e4f9508a-33f8-4c72-b961-df4f00073f88",
+      "attributes": {
+        "locale": "es-MX",
+        "name": "Cloud Calendars: Calendario",
+        "subtitle": "Clima, agenda y widgets",
+        "privacyPolicyUrl": "https://www.cloud-calendars.com/privacy-policy",
+        "privacyChoicesUrl": null,
+        "privacyPolicyText": null
+      },
+      "links": {
+        "self": "https://api.appstoreconnect.apple.com/v1/appInfoLocalizations/e4f9508a-33f8-4c72-b961-df4f00073f88"
+      }
+    },
+    {
+      "type": "appInfoLocalizations",
+      "id": "4cb37d87-cc8f-4944-90f8-7f0782c021fa",
+      "attributes": {
+        "locale": "es-ES",
+        "name": "Cloud Calendars: Calendario",
+        "subtitle": "Tiempo, agenda y widgets",
+        "privacyPolicyUrl": "https://www.cloud-calendars.com/privacy-policy",
+        "privacyChoicesUrl": null,
+        "privacyPolicyText": null
+      },
+      "links": {
+        "self": "https://api.appstoreconnect.apple.com/v1/appInfoLocalizations/4cb37d87-cc8f-4944-90f8-7f0782c021fa"
+      }
+    },
+    {
+      "type": "appInfoLocalizations",
+      "id": "ce935eb7-70d0-4cdd-a89d-1fef8ab94099",
+      "attributes": {
+        "locale": "no",
+        "name": "Cloud Calendars: Kalender",
+        "subtitle": "Vær, avtaler og widgeter",
+        "privacyPolicyUrl": "https://www.cloud-calendars.com/privacy-policy",
+        "privacyChoicesUrl": null,
+        "privacyPolicyText": null
+      },
+      "links": {
+        "self": "https://api.appstoreconnect.apple.com/v1/appInfoLocalizations/ce935eb7-70d0-4cdd-a89d-1fef8ab94099"
+      }
+    },
+    {
+      "type": "appInfoLocalizations",
+      "id": "415652ad-e3ef-4f03-b026-b9ca471fddaf",
+      "attributes": {
+        "locale": "mr-IN",
+        "name": "Cloud Calendars: कॅलेंडर",
+        "subtitle": "हवामान आणि नियोजन",
+        "privacyPolicyUrl": "https://www.cloud-calendars.com/privacy-policy",
+        "privacyChoicesUrl": null,
+        "privacyPolicyText": null
+      },
+      "links": {
+        "self": "https://api.appstoreconnect.apple.com/v1/appInfoLocalizations/415652ad-e3ef-4f03-b026-b9ca471fddaf"
+      }
+    },
+    {
+      "type": "appInfoLocalizations",
+      "id": "3e2cf1df-1dbc-4d68-8ede-0731cc8935d5",
+      "attributes": {
+        "locale": "he",
+        "name": "Cloud Calendars: יומן",
+        "subtitle": "מזג אוויר, פגישות ווידג׳טים",
+        "privacyPolicyUrl": "https://www.cloud-calendars.com/privacy-policy",
+        "privacyChoicesUrl": null,
+        "privacyPolicyText": null
+      },
+      "links": {
+        "self": "https://api.appstoreconnect.apple.com/v1/appInfoLocalizations/3e2cf1df-1dbc-4d68-8ede-0731cc8935d5"
+      }
+    },
+    {
+      "type": "appInfoLocalizations",
+      "id": "ede342dd-b234-434e-9b56-c863636e13be",
+      "attributes": {
+        "locale": "sv",
+        "name": "Cloud Calendars: Kalender",
+        "subtitle": "Väder, möten och widgetar",
+        "privacyPolicyUrl": "https://www.cloud-calendars.com/privacy-policy",
+        "privacyChoicesUrl": null,
+        "privacyPolicyText": null
+      },
+      "links": {
+        "self": "https://api.appstoreconnect.apple.com/v1/appInfoLocalizations/ede342dd-b234-434e-9b56-c863636e13be"
+      }
+    },
+    {
+      "type": "appInfoLocalizations",
+      "id": "1430fde5-2074-4f05-a67e-c0186910444d",
+      "attributes": {
+        "locale": "kn-IN",
+        "name": "Cloud Calendars: ಕ್ಯಾಲೆಂಡರ್",
+        "subtitle": "ಹವಾಮಾನ ಮತ್ತು ಯೋಜನೆ",
+        "privacyPolicyUrl": "https://www.cloud-calendars.com/privacy-policy",
+        "privacyChoicesUrl": null,
+        "privacyPolicyText": null
+      },
+      "links": {
+        "self": "https://api.appstoreconnect.apple.com/v1/appInfoLocalizations/1430fde5-2074-4f05-a67e-c0186910444d"
+      }
+    },
+    {
+      "type": "appInfoLocalizations",
+      "id": "1efc63dd-18ef-4893-b517-2005d55469df",
+      "attributes": {
+        "locale": "pa-IN",
+        "name": "Cloud Calendars: ਕੈਲੰਡਰ",
+        "subtitle": "ਮੌਸਮ ਅਤੇ ਯੋਜਨਾਵਾਂ",
+        "privacyPolicyUrl": "https://www.cloud-calendars.com/privacy-policy",
+        "privacyChoicesUrl": null,
+        "privacyPolicyText": null
+      },
+      "links": {
+        "self": "https://api.appstoreconnect.apple.com/v1/appInfoLocalizations/1efc63dd-18ef-4893-b517-2005d55469df"
+      }
+    },
+    {
+      "type": "appInfoLocalizations",
+      "id": "a6d3ff9b-f1a0-49bb-bbb2-13f5cb05c9ce",
+      "attributes": {
+        "locale": "ml-IN",
+        "name": "Cloud Calendars: കലണ്ടർ",
+        "subtitle": "കാലാവസ്ഥയും പദ്ധതികളും",
+        "privacyPolicyUrl": "https://www.cloud-calendars.com/privacy-policy",
+        "privacyChoicesUrl": null,
+        "privacyPolicyText": null
+      },
+      "links": {
+        "self": "https://api.appstoreconnect.apple.com/v1/appInfoLocalizations/a6d3ff9b-f1a0-49bb-bbb2-13f5cb05c9ce"
+      }
+    },
+    {
+      "type": "appInfoLocalizations",
+      "id": "539e2578-2169-48ee-9e3f-88949df1b7d1",
+      "attributes": {
+        "locale": "ur-PK",
+        "name": "Cloud Calendars: کیلنڈر",
+        "subtitle": "موسم اور منصوبہ بندی",
+        "privacyPolicyUrl": "https://www.cloud-calendars.com/privacy-policy",
+        "privacyChoicesUrl": null,
+        "privacyPolicyText": null
+      },
+      "links": {
+        "self": "https://api.appstoreconnect.apple.com/v1/appInfoLocalizations/539e2578-2169-48ee-9e3f-88949df1b7d1"
+      }
+    },
+    {
+      "type": "appInfoLocalizations",
+      "id": "45bdd273-66ec-47f7-b530-46ac3d0e336a",
+      "attributes": {
+        "locale": "en-AU",
+        "name": "Cloud Calendars: Sync & Widget",
+        "subtitle": "Google, Microsoft & iCloud",
+        "privacyPolicyUrl": "https://www.cloud-calendars.com/privacy-policy",
+        "privacyChoicesUrl": null,
+        "privacyPolicyText": null
+      },
+      "links": {
+        "self": "https://api.appstoreconnect.apple.com/v1/appInfoLocalizations/45bdd273-66ec-47f7-b530-46ac3d0e336a"
+      }
+    },
+    {
+      "type": "appInfoLocalizations",
+      "id": "442f500c-8bf1-4eef-a4a3-c962c12bfd6d",
+      "attributes": {
+        "locale": "hi",
+        "name": "Cloud Calendars: कैलेंडर",
+        "subtitle": "मौसम, योजनाएँ और विजेट",
+        "privacyPolicyUrl": "https://www.cloud-calendars.com/privacy-policy",
+        "privacyChoicesUrl": null,
+        "privacyPolicyText": null
+      },
+      "links": {
+        "self": "https://api.appstoreconnect.apple.com/v1/appInfoLocalizations/442f500c-8bf1-4eef-a4a3-c962c12bfd6d"
+      }
+    },
+    {
+      "type": "appInfoLocalizations",
+      "id": "5e1e3778-3a14-4ec4-b6a5-de58bf7589c4",
+      "attributes": {
+        "locale": "tr",
+        "name": "Cloud Calendars: Takvim",
+        "subtitle": "Hava durumu ve günlük planlar",
+        "privacyPolicyUrl": "https://www.cloud-calendars.com/privacy-policy",
+        "privacyChoicesUrl": null,
+        "privacyPolicyText": null
+      },
+      "links": {
+        "self": "https://api.appstoreconnect.apple.com/v1/appInfoLocalizations/5e1e3778-3a14-4ec4-b6a5-de58bf7589c4"
+      }
+    },
+    {
+      "type": "appInfoLocalizations",
+      "id": "7b5ff2e7-7525-45fb-8e89-928f017af1c8",
+      "attributes": {
+        "locale": "th",
+        "name": "Cloud Calendars: ปฏิทิน",
+        "subtitle": "อากาศ นัดหมาย และวิดเจ็ต",
+        "privacyPolicyUrl": "https://www.cloud-calendars.com/privacy-policy",
+        "privacyChoicesUrl": null,
+        "privacyPolicyText": null
+      },
+      "links": {
+        "self": "https://api.appstoreconnect.apple.com/v1/appInfoLocalizations/7b5ff2e7-7525-45fb-8e89-928f017af1c8"
+      }
+    },
+    {
+      "type": "appInfoLocalizations",
+      "id": "1baf79fb-8ace-4db3-a357-b25c086aee23",
+      "attributes": {
+        "locale": "pt-BR",
+        "name": "Cloud Calendars: Calendário",
+        "subtitle": "Clima, compromissos e widgets",
+        "privacyPolicyUrl": "https://www.cloud-calendars.com/privacy-policy",
+        "privacyChoicesUrl": null,
+        "privacyPolicyText": null
+      },
+      "links": {
+        "self": "https://api.appstoreconnect.apple.com/v1/appInfoLocalizations/1baf79fb-8ace-4db3-a357-b25c086aee23"
+      }
+    },
+    {
+      "type": "appInfoLocalizations",
+      "id": "af30691e-7f0d-4db3-9076-c38c038dabcd",
+      "attributes": {
+        "locale": "sk",
+        "name": "Cloud Calendars: Kalendár",
+        "subtitle": "Počasie, stretnutia a widgety",
+        "privacyPolicyUrl": "https://www.cloud-calendars.com/privacy-policy",
+        "privacyChoicesUrl": null,
+        "privacyPolicyText": null
+      },
+      "links": {
+        "self": "https://api.appstoreconnect.apple.com/v1/appInfoLocalizations/af30691e-7f0d-4db3-9076-c38c038dabcd"
+      }
+    },
+    {
+      "type": "appInfoLocalizations",
+      "id": "024f9209-104e-4827-b65d-e0655d301ad2",
+      "attributes": {
+        "locale": "zh-Hans",
+        "name": "Cloud Calendars: 日历",
+        "subtitle": "天气、日程安排与主屏幕小组件",
+        "privacyPolicyUrl": "https://www.cloud-calendars.com/privacy-policy",
+        "privacyChoicesUrl": null,
+        "privacyPolicyText": null
+      },
+      "links": {
+        "self": "https://api.appstoreconnect.apple.com/v1/appInfoLocalizations/024f9209-104e-4827-b65d-e0655d301ad2"
+      }
+    },
+    {
+      "type": "appInfoLocalizations",
+      "id": "d856d704-39d1-46e5-b588-be01c7b1873e",
+      "attributes": {
+        "locale": "da",
+        "name": "Cloud Calendars: Kalender",
+        "subtitle": "Vejr, aftaler og widgets",
+        "privacyPolicyUrl": "https://www.cloud-calendars.com/privacy-policy",
+        "privacyChoicesUrl": null,
+        "privacyPolicyText": null
+      },
+      "links": {
+        "self": "https://api.appstoreconnect.apple.com/v1/appInfoLocalizations/d856d704-39d1-46e5-b588-be01c7b1873e"
+      }
+    },
+    {
+      "type": "appInfoLocalizations",
+      "id": "8b7dbbe6-5bbc-459c-823a-71b868a8e296",
+      "attributes": {
+        "locale": "el",
+        "name": "Cloud Calendars: Ημερολόγιο",
+        "subtitle": "Καιρός, ραντεβού και widget",
+        "privacyPolicyUrl": "https://www.cloud-calendars.com/privacy-policy",
+        "privacyChoicesUrl": null,
+        "privacyPolicyText": null
+      },
+      "links": {
+        "self": "https://api.appstoreconnect.apple.com/v1/appInfoLocalizations/8b7dbbe6-5bbc-459c-823a-71b868a8e296"
+      }
+    },
+    {
+      "type": "appInfoLocalizations",
+      "id": "062259d7-9e41-48bc-abc0-2afc8dd2f862",
+      "attributes": {
+        "locale": "ca",
+        "name": "Cloud Calendars: Calendari",
+        "subtitle": "Temps, cites i ginys",
+        "privacyPolicyUrl": "https://www.cloud-calendars.com/privacy-policy",
+        "privacyChoicesUrl": null,
+        "privacyPolicyText": null
+      },
+      "links": {
+        "self": "https://api.appstoreconnect.apple.com/v1/appInfoLocalizations/062259d7-9e41-48bc-abc0-2afc8dd2f862"
+      }
+    },
+    {
+      "type": "appInfoLocalizations",
+      "id": "99d4017f-5990-4993-bab6-d3357e70ad47",
+      "attributes": {
+        "locale": "en-GB",
+        "name": "Cloud Calendars: Sync & Widget",
+        "subtitle": "Google, Microsoft & iCloud",
+        "privacyPolicyUrl": "https://www.cloud-calendars.com/privacy-policy",
+        "privacyChoicesUrl": null,
+        "privacyPolicyText": null
+      },
+      "links": {
+        "self": "https://api.appstoreconnect.apple.com/v1/appInfoLocalizations/99d4017f-5990-4993-bab6-d3357e70ad47"
+      }
+    },
+    {
+      "type": "appInfoLocalizations",
+      "id": "04b4b39b-44be-44c0-bd7b-2257565df971",
+      "attributes": {
+        "locale": "gu-IN",
+        "name": "Cloud Calendars: કૅલેન્ડર",
+        "subtitle": "હવામાન અને આયોજન",
+        "privacyPolicyUrl": "https://www.cloud-calendars.com/privacy-policy",
+        "privacyChoicesUrl": null,
+        "privacyPolicyText": null
+      },
+      "links": {
+        "self": "https://api.appstoreconnect.apple.com/v1/appInfoLocalizations/04b4b39b-44be-44c0-bd7b-2257565df971"
+      }
+    },
+    {
+      "type": "appInfoLocalizations",
+      "id": "0d41720d-2d68-46ea-ba1f-83dd00584dfa",
+      "attributes": {
+        "locale": "cs",
+        "name": "Cloud Calendars: Kalendář",
+        "subtitle": "Počasí, schůzky a widgety",
+        "privacyPolicyUrl": "https://www.cloud-calendars.com/privacy-policy",
+        "privacyChoicesUrl": null,
+        "privacyPolicyText": null
+      },
+      "links": {
+        "self": "https://api.appstoreconnect.apple.com/v1/appInfoLocalizations/0d41720d-2d68-46ea-ba1f-83dd00584dfa"
+      }
+    },
+    {
+      "type": "appInfoLocalizations",
+      "id": "10c1df6d-f2e2-4dd0-b3fc-f65dd9a250d4",
+      "attributes": {
+        "locale": "vi",
+        "name": "Cloud Calendars: Lịch",
+        "subtitle": "Thời tiết, kế hoạch, tiện ích",
+        "privacyPolicyUrl": "https://www.cloud-calendars.com/privacy-policy",
+        "privacyChoicesUrl": null,
+        "privacyPolicyText": null
+      },
+      "links": {
+        "self": "https://api.appstoreconnect.apple.com/v1/appInfoLocalizations/10c1df6d-f2e2-4dd0-b3fc-f65dd9a250d4"
+      }
+    },
+    {
+      "type": "appInfoLocalizations",
+      "id": "d6db6dd7-acb6-46e2-bc4f-50ea1deaddf6",
+      "attributes": {
+        "locale": "hr",
+        "name": "Cloud Calendars: Kalendar",
+        "subtitle": "Vrijeme, sastanci i widgeti",
+        "privacyPolicyUrl": "https://www.cloud-calendars.com/privacy-policy",
+        "privacyChoicesUrl": null,
+        "privacyPolicyText": null
+      },
+      "links": {
+        "self": "https://api.appstoreconnect.apple.com/v1/appInfoLocalizations/d6db6dd7-acb6-46e2-bc4f-50ea1deaddf6"
+      }
+    },
+    {
+      "type": "appInfoLocalizations",
+      "id": "09fd2176-51b9-4aba-b6b6-70b70f1a4a02",
+      "attributes": {
+        "locale": "zh-Hant",
+        "name": "Cloud Calendars: 行事曆",
+        "subtitle": "天氣、日程安排與主畫面小工具",
+        "privacyPolicyUrl": "https://www.cloud-calendars.com/privacy-policy",
+        "privacyChoicesUrl": null,
+        "privacyPolicyText": null
+      },
+      "links": {
+        "self": "https://api.appstoreconnect.apple.com/v1/appInfoLocalizations/09fd2176-51b9-4aba-b6b6-70b70f1a4a02"
+      }
+    },
+    {
+      "type": "appInfoLocalizations",
+      "id": "c760d605-aff3-4766-81de-d19754ac2877",
+      "attributes": {
+        "locale": "it",
+        "name": "Cloud Calendars: Calendario",
+        "subtitle": "Meteo, impegni e widget",
+        "privacyPolicyUrl": "https://www.cloud-calendars.com/privacy-policy",
+        "privacyChoicesUrl": null,
+        "privacyPolicyText": null
+      },
+      "links": {
+        "self": "https://api.appstoreconnect.apple.com/v1/appInfoLocalizations/c760d605-aff3-4766-81de-d19754ac2877"
+      }
+    },
+    {
+      "type": "appInfoLocalizations",
+      "id": "c8b4ff95-d910-48b9-a824-c84744a4cb9e",
+      "attributes": {
+        "locale": "en-US",
+        "name": "Cloud Calendars: Sync & Widget",
+        "subtitle": "Google, Microsoft & iCloud",
+        "privacyPolicyUrl": "https://www.cloud-calendars.com/privacy-policy",
+        "privacyChoicesUrl": null,
+        "privacyPolicyText": null
+      },
+      "links": {
+        "self": "https://api.appstoreconnect.apple.com/v1/appInfoLocalizations/c8b4ff95-d910-48b9-a824-c84744a4cb9e"
+      }
+    },
+    {
+      "type": "appInfoLocalizations",
+      "id": "534478dd-b904-4381-8c44-c2ce3e5bbc8f",
+      "attributes": {
+        "locale": "id",
+        "name": "Cloud Calendars: Kalender",
+        "subtitle": "Cuaca, jadwal dan widget",
+        "privacyPolicyUrl": "https://www.cloud-calendars.com/privacy-policy",
+        "privacyChoicesUrl": null,
+        "privacyPolicyText": null
+      },
+      "links": {
+        "self": "https://api.appstoreconnect.apple.com/v1/appInfoLocalizations/534478dd-b904-4381-8c44-c2ce3e5bbc8f"
+      }
+    },
+    {
+      "type": "appInfoLocalizations",
+      "id": "d3830145-384a-4d55-8cf7-bfb26d4de417",
+      "attributes": {
+        "locale": "ko",
+        "name": "Cloud Calendars: 캘린더",
+        "subtitle": "날씨와 일정 관리, 홈 화면 위젯",
+        "privacyPolicyUrl": "https://www.cloud-calendars.com/privacy-policy",
+        "privacyChoicesUrl": null,
+        "privacyPolicyText": null
+      },
+      "links": {
+        "self": "https://api.appstoreconnect.apple.com/v1/appInfoLocalizations/d3830145-384a-4d55-8cf7-bfb26d4de417"
+      }
+    },
+    {
+      "type": "appInfoLocalizations",
+      "id": "11409231-a717-41d3-99c2-36b0c9932427",
+      "attributes": {
+        "locale": "or-IN",
+        "name": "Cloud Calendars: କ୍ୟାଲେଣ୍ଡର",
+        "subtitle": "ପାଣିପାଗ ଓ ଯୋଜନା",
+        "privacyPolicyUrl": "https://www.cloud-calendars.com/privacy-policy",
+        "privacyChoicesUrl": null,
+        "privacyPolicyText": null
+      },
+      "links": {
+        "self": "https://api.appstoreconnect.apple.com/v1/appInfoLocalizations/11409231-a717-41d3-99c2-36b0c9932427"
+      }
+    },
+    {
+      "type": "appInfoLocalizations",
+      "id": "18309564-dae6-471b-9adb-5b6d5a6472e7",
+      "attributes": {
+        "locale": "de-DE",
+        "name": "Cloud Calendars: Kalender",
+        "subtitle": "Termine, Wetter und Widgets",
+        "privacyPolicyUrl": "https://www.cloud-calendars.com/privacy-policy",
+        "privacyChoicesUrl": null,
+        "privacyPolicyText": null
+      },
+      "links": {
+        "self": "https://api.appstoreconnect.apple.com/v1/appInfoLocalizations/18309564-dae6-471b-9adb-5b6d5a6472e7"
+      }
+    },
+    {
+      "type": "appInfoLocalizations",
+      "id": "9b44c426-1c4e-41e6-a5a0-b0fc76c54b37",
+      "attributes": {
+        "locale": "ar-SA",
+        "name": "Cloud Calendars: تقويم",
+        "subtitle": "الطقس والمواعيد والأدوات",
+        "privacyPolicyUrl": "https://www.cloud-calendars.com/privacy-policy",
+        "privacyChoicesUrl": null,
+        "privacyPolicyText": null
+      },
+      "links": {
+        "self": "https://api.appstoreconnect.apple.com/v1/appInfoLocalizations/9b44c426-1c4e-41e6-a5a0-b0fc76c54b37"
+      }
+    },
+    {
+      "type": "appInfoLocalizations",
+      "id": "94925c80-b76b-4cae-9662-189eea2c1d01",
+      "attributes": {
+        "locale": "te-IN",
+        "name": "Cloud Calendars: క్యాలెండర్",
+        "subtitle": "వాతావరణం మరియు ప్రణాళికలు",
+        "privacyPolicyUrl": "https://www.cloud-calendars.com/privacy-policy",
+        "privacyChoicesUrl": null,
+        "privacyPolicyText": null
+      },
+      "links": {
+        "self": "https://api.appstoreconnect.apple.com/v1/appInfoLocalizations/94925c80-b76b-4cae-9662-189eea2c1d01"
+      }
+    },
+    {
+      "type": "appInfoLocalizations",
+      "id": "2f0d722d-1c8b-4c76-8c3f-c66ba64314d2",
+      "attributes": {
+        "locale": "pt-PT",
+        "name": "Cloud Calendars: Agenda",
+        "subtitle": "Meteorologia, planos e widgets",
+        "privacyPolicyUrl": "https://www.cloud-calendars.com/privacy-policy",
+        "privacyChoicesUrl": null,
+        "privacyPolicyText": null
+      },
+      "links": {
+        "self": "https://api.appstoreconnect.apple.com/v1/appInfoLocalizations/2f0d722d-1c8b-4c76-8c3f-c66ba64314d2"
+      }
+    },
+    {
+      "type": "appInfoLocalizations",
+      "id": "07f0536c-fc07-40b4-a521-4d74af76d71f",
+      "attributes": {
+        "locale": "bn-BD",
+        "name": "Cloud Calendars: ক্যালেন্ডার",
+        "subtitle": "আবহাওয়া ও পরিকল্পনা",
+        "privacyPolicyUrl": "https://www.cloud-calendars.com/privacy-policy",
+        "privacyChoicesUrl": null,
+        "privacyPolicyText": null
+      },
+      "links": {
+        "self": "https://api.appstoreconnect.apple.com/v1/appInfoLocalizations/07f0536c-fc07-40b4-a521-4d74af76d71f"
+      }
+    },
+    {
+      "type": "appInfoLocalizations",
+      "id": "49a2bb7a-8d3b-4557-9ece-af27fef22b68",
+      "attributes": {
+        "locale": "fr-CA",
+        "name": "Cloud Calendars: Agenda",
+        "subtitle": "Météo, rendez-vous et widgets",
+        "privacyPolicyUrl": "https://www.cloud-calendars.com/privacy-policy",
+        "privacyChoicesUrl": null,
+        "privacyPolicyText": null
+      },
+      "links": {
+        "self": "https://api.appstoreconnect.apple.com/v1/appInfoLocalizations/49a2bb7a-8d3b-4557-9ece-af27fef22b68"
+      }
+    },
+    {
+      "type": "appInfoLocalizations",
+      "id": "00c5692d-d274-41b7-9dc9-b82359da37cd",
+      "attributes": {
+        "locale": "ms",
+        "name": "Cloud Calendars: Kalendar",
+        "subtitle": "Cuaca, jadual dan widget",
+        "privacyPolicyUrl": "https://www.cloud-calendars.com/privacy-policy",
+        "privacyChoicesUrl": null,
+        "privacyPolicyText": null
+      },
+      "links": {
+        "self": "https://api.appstoreconnect.apple.com/v1/appInfoLocalizations/00c5692d-d274-41b7-9dc9-b82359da37cd"
+      }
+    },
+    {
+      "type": "appInfoLocalizations",
+      "id": "676ddc5d-27b1-4c9e-9564-9fa7b93b2c6b",
+      "attributes": {
+        "locale": "ru",
+        "name": "Cloud Calendars: Календарь",
+        "subtitle": "Погода, встречи и виджеты",
+        "privacyPolicyUrl": "https://www.cloud-calendars.com/privacy-policy",
+        "privacyChoicesUrl": null,
+        "privacyPolicyText": null
+      },
+      "links": {
+        "self": "https://api.appstoreconnect.apple.com/v1/appInfoLocalizations/676ddc5d-27b1-4c9e-9564-9fa7b93b2c6b"
+      }
+    },
+    {
+      "type": "appInfoLocalizations",
+      "id": "dad69593-91eb-471b-90d4-2ceb8c075d25",
+      "attributes": {
+        "locale": "ja",
+        "name": "Cloud Calendars: カレンダー",
+        "subtitle": "天気・予定管理・ホーム画面ウィジェット",
+        "privacyPolicyUrl": "https://www.cloud-calendars.com/privacy-policy",
+        "privacyChoicesUrl": null,
+        "privacyPolicyText": null
+      },
+      "links": {
+        "self": "https://api.appstoreconnect.apple.com/v1/appInfoLocalizations/dad69593-91eb-471b-90d4-2ceb8c075d25"
+      }
+    },
+    {
+      "type": "appInfoLocalizations",
+      "id": "6dee17f9-5d71-44b3-9773-171741318e4d",
+      "attributes": {
+        "locale": "ta-IN",
+        "name": "Cloud Calendars: காலண்டர்",
+        "subtitle": "வானிலை மற்றும் திட்டங்கள்",
+        "privacyPolicyUrl": "https://www.cloud-calendars.com/privacy-policy",
+        "privacyChoicesUrl": null,
+        "privacyPolicyText": null
+      },
+      "links": {
+        "self": "https://api.appstoreconnect.apple.com/v1/appInfoLocalizations/6dee17f9-5d71-44b3-9773-171741318e4d"
+      }
+    },
+    {
+      "type": "appInfoLocalizations",
+      "id": "407c6222-e7fd-4589-839b-f0f1a0501139",
+      "attributes": {
+        "locale": "ro",
+        "name": "Cloud Calendars: Calendar",
+        "subtitle": "Vreme, întâlniri și widgeturi",
+        "privacyPolicyUrl": "https://www.cloud-calendars.com/privacy-policy",
+        "privacyChoicesUrl": null,
+        "privacyPolicyText": null
+      },
+      "links": {
+        "self": "https://api.appstoreconnect.apple.com/v1/appInfoLocalizations/407c6222-e7fd-4589-839b-f0f1a0501139"
+      }
+    }
+  ],
+  "links": {
+    "self": "https://api.appstoreconnect.apple.com/v1/appInfos/2131466c-d47e-469d-bfe4-3642efe9ff0a/appInfoLocalizations?limit=200"
+  },
+  "meta": {
+    "paging": {
+      "total": 50,
+      "limit": 200
+    }
+  }
+}

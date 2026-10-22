@@ -105,7 +105,7 @@ export const PLANNING_EN_US: Readonly<Record<string, LocalisedArticle>> = {
   "updated": "2026-10-22",
   "title": "Week calendar on iPhone: compare hours without overlooking commitments",
   "short": "Read a week calendar clearly",
-  "description": "Read a week calendar on iPhone: check dates, selected calendars, all-day events and exact hours before fitting another appointment into an apparent gap.",
+  "description": "Read a week calendar on iPhone: check the first day, week numbers, date range and selected calendars before offering an apparent gap.",
   "lede": "A week grid helps compare when commitments begin and end. Start with the dates and calendars it represents, then use the details when a small block or shortened title leaves a question unanswered. This guide is published by Arte Soft, the developer of Cloud Calendars.",
   "commonBelief": "Every visible gap is available time, and every commitment appears as a timed block.",
   "sections": [
@@ -114,6 +114,16 @@ export const PLANNING_EN_US: Readonly<Record<string, LocalisedArticle>> = {
       "body": [
         "Read the date range and day labels before placing an appointment. A selected range is not necessarily the week you had in mind. Check that the work, family or other calendars relevant to this decision are selected, rather than assuming every connected calendar is currently visible.",
         "For example, a personal view may hide a work calendar to reduce clutter. The clear afternoon it shows does not establish that the work schedule is empty. Bring the relevant calendars into view before offering the slot, and confirm the account behind an unfamiliar colour."
+      ]
+    },
+    {
+      "heading": "Separate the first weekday from other date-display settings",
+      "body": [
+        "If two calendar views begin on different days, compare their date headers before changing an appointment. A fixed week beginning on Monday or Sunday is different from a rolling view beginning today or on a selected date. Check the settings offered by the app and version you are using, then reopen the view to verify its actual range. Do not move events merely to make two grids look alike.",
+        "Apple documents these choices in Settings > Apps > Calendar: Start Week On chooses a weekday, while Week View Starts On Today changes the week-view starting point. Fantastical likewise separates Start Week On from Start Week View On. These are instructions for those applications; changing an Apple Calendar display preference does not establish that every other calendar app will adopt it.",
+        "Week numbers are another setting. Apple documents Week Numbers, and Fantastical documents Show Calendar Weeks with an optional custom starting date. If a colleague asks for “week 12,” confirm the year and actual start and end dates, especially when comparing different systems or a range near New Year. Choosing Monday as the first column does not by itself establish which week-numbering convention is in use.",
+        "Alternate date labels are also different from calendar accounts. Apple’s Alternate Calendars setting can show Chinese, Hebrew or Hijri dates alongside Gregorian dates. That display choice is not a connection to another person’s calendar or an import of a holiday schedule. Read the actual event date before agreeing a booking, and do not assume another app offers the same dual-date display.",
+        "For a shared plan, write the date range explicitly rather than relying only on a week number or the first column in a screenshot. Check the selected calendars again before offering time. If your installed app lacks a display option you need, consult the relevant provider view and compare the dates; do not treat an unfamiliar label as evidence that the underlying event must be rescheduled."
       ]
     },
     {
@@ -156,6 +166,7 @@ export const PLANNING_EN_US: Readonly<Record<string, LocalisedArticle>> = {
   "claims": {},
   "practical": [
     "Check the date range and selected calendars.",
+    "Compare the actual date range, first weekday and any week-number or alternate-date labels before relying on a screenshot or a numbered work week.",
     "Read exact start and end times when a block is unclear.",
     "Inspect all-day commitments as well as timed events.",
     "Account for real travel and preparation before offering a gap.",
@@ -174,6 +185,10 @@ export const PLANNING_EN_US: Readonly<Record<string, LocalisedArticle>> = {
     {
       "q": "Should I drag an event whose title I cannot read?",
       "a": "Open its details first. Confirm its identity, calendar, time and intended edit scope before changing it."
+    },
+    {
+      "q": "Does starting the week on Monday also set the week numbers?",
+      "a": "Do not assume that. The first weekday, rolling-view alignment and week-number labels are separate choices in the documented Apple and Fantastical workflows. Confirm the displayed dates and the convention used by the person sharing the plan."
     }
   ],
   "sourcesHeading": "Official view descriptions for comparison",
@@ -185,6 +200,14 @@ export const PLANNING_EN_US: Readonly<Record<string, LocalisedArticle>> = {
     {
       "label": "Teamup: view choices and browser versus mobile settings",
       "url": "https://calendar.teamup.com/kb/how-to-use-calendar-views/"
+    },
+    {
+      "label": "Apple: week start, week numbers and alternate calendar display",
+      "url": "https://support.apple.com/en-by/guide/iphone/iphc37be2016/ios"
+    },
+    {
+      "label": "Fantastical for iOS: calendar-view settings",
+      "url": "https://flexibits.com/fantastical-ios/help/settings"
     }
   ],
   "seeAlso": [

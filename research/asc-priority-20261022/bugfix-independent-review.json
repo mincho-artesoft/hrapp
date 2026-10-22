@@ -1,0 +1,319 @@
+{
+  "verdict": "approved",
+  "proposalRawSha256": "f244c99cafcb42a8724bd75f57851674cf5a7c6ae18e2a7de5845b46672d933f",
+  "savedReadbackRawSha256": "1b69e7bfd368fe38af80c5b72f780d8fb6a75831d6166c7bb5a26930f8b35e14",
+  "scope": "Complete all50 before values, appended sentences and resulting values read without truncation. Saved applied readback comparison; no new API read.",
+  "checks": {
+    "localesExact": 50,
+    "beforeMatchesSavedAppliedReadback": true,
+    "onlyAppendTwoNewlinesAndLocalizedBugFixSentence": true,
+    "allUnder4000Unicode": true,
+    "englishCanonical": "Bug fixes.",
+    "noSeverityOrInventedTechnicalDetail": true
+  },
+  "perLocale": {
+    "ja": {
+      "append": "不具合を修正しました。",
+      "characters": 72,
+      "sha256Utf8": "d6408bee5ae9559af60db569a9a06020e323a8028091dc56240c2b0e24e96c7b",
+      "decision": "pass; neutral bug-fix meaning"
+    },
+    "ro": {
+      "append": "Corectări de erori.",
+      "characters": 144,
+      "sha256Utf8": "a9811b6b39d1f20e25d9c2a29fc1f506f7166621a939c6295b971472fbed4772",
+      "decision": "pass; neutral bug-fix meaning"
+    },
+    "hu": {
+      "append": "Hibajavítások.",
+      "characters": 166,
+      "sha256Utf8": "b132c6992598ce760a109f3e85198b6487cd587230e50803a3268f6d1adc7ac5",
+      "decision": "pass; neutral bug-fix meaning"
+    },
+    "hr": {
+      "append": "Ispravci pogrešaka.",
+      "characters": 150,
+      "sha256Utf8": "78c185669ba7f65e4db4127e5436e6cb600ed6275bdf433f5da6cb58cc2a218c",
+      "decision": "pass; neutral bug-fix meaning"
+    },
+    "zh-Hans": {
+      "append": "修复了错误。",
+      "characters": 45,
+      "sha256Utf8": "e4517596ab35e443a7fad970370aecbba13950829a1adb82590a4673bf6b2d78",
+      "decision": "pass; neutral bug-fix meaning"
+    },
+    "ur-PK": {
+      "append": "خرابیوں کی اصلاح کی گئی ہے۔",
+      "characters": 150,
+      "sha256Utf8": "8fc6356ca76a0b6417098aba4a393af79d89fd15dd523ef19796c22153393401",
+      "decision": "pass; neutral bug-fix meaning"
+    },
+    "gu-IN": {
+      "append": "ભૂલો સુધારી છે.",
+      "characters": 142,
+      "sha256Utf8": "da7eba7fe807beb83325991e926f53bb195d29729e525378c3f33fa3957065e1",
+      "decision": "pass; neutral bug-fix meaning"
+    },
+    "ca": {
+      "append": "Correccions d’errors.",
+      "characters": 175,
+      "sha256Utf8": "77f0e2c17503f8ce6ffbbf99dd2bfe05f57a9b4662a4e1ae979013e992fbae06",
+      "decision": "pass; neutral bug-fix meaning"
+    },
+    "cs": {
+      "append": "Opravy chyb.",
+      "characters": 139,
+      "sha256Utf8": "0ab928459e6e7f020e03829141bd57ef53d840ab0fdd977e75f7ad9f0fa3f88e",
+      "decision": "pass; neutral bug-fix meaning"
+    },
+    "zh-Hant": {
+      "append": "修正了錯誤。",
+      "characters": 47,
+      "sha256Utf8": "5599bebe46835fb5a21623b5cf1d0684199faaaea2056ac08fa8cb6f2dc1cb62",
+      "decision": "pass; neutral bug-fix meaning"
+    },
+    "bn-BD": {
+      "append": "ত্রুটি সংশোধন করা হয়েছে।",
+      "characters": 173,
+      "sha256Utf8": "b6d1014b99460f21d9b8bb6aa34974c99a7a98769e7765db618f8802561bea93",
+      "decision": "pass; neutral bug-fix meaning"
+    },
+    "ar-SA": {
+      "append": "إصلاح الأخطاء.",
+      "characters": 108,
+      "sha256Utf8": "63d22da7738043ade2b51948bfb2f4d987f229c4ad10088e46af9f32e4e2caee",
+      "decision": "pass; neutral bug-fix meaning"
+    },
+    "pl": {
+      "append": "Poprawki błędów.",
+      "characters": 159,
+      "sha256Utf8": "31c28de900009e31ca9ca4618ef1a498e11f60283f73192ec4d313d591677637",
+      "decision": "pass; neutral bug-fix meaning"
+    },
+    "nl-NL": {
+      "append": "Bugfixes.",
+      "characters": 144,
+      "sha256Utf8": "366e64cec18c432cc7b4f60ed1a01b48ae20c6e6e920e4243906a30d488ad72a",
+      "decision": "pass; neutral bug-fix meaning"
+    },
+    "en-AU": {
+      "append": "Bug fixes.",
+      "characters": 123,
+      "sha256Utf8": "3ea844c7833e782a07c010f2a417d516d909fd152f76c3e45352ec6f20b8736d",
+      "decision": "pass; neutral bug-fix meaning"
+    },
+    "or-IN": {
+      "append": "ତ୍ରୁଟି ସଂଶୋଧନ କରାଯାଇଛି।",
+      "characters": 174,
+      "sha256Utf8": "bcf435db0df0a7414f41fbeee5e5ddca4f07fd1ce695cd263c80e684ae251e99",
+      "decision": "pass; neutral bug-fix meaning"
+    },
+    "fr-CA": {
+      "append": "Corrections de bogues.",
+      "characters": 174,
+      "sha256Utf8": "7fee5a626753ad7025ae525adb7cffa7c98d53ae6aa5da793b5f3aa5e3636723",
+      "decision": "pass; neutral bug-fix meaning"
+    },
+    "te-IN": {
+      "append": "లోపాలను సరిచేశాము.",
+      "characters": 166,
+      "sha256Utf8": "cdbcea0cd921fa2574e9e407be55e46bbfe0f9dee0c81732e760c562c6014b72",
+      "decision": "pass; neutral bug-fix meaning"
+    },
+    "pt-BR": {
+      "append": "Correções de bugs.",
+      "characters": 165,
+      "sha256Utf8": "fffe30e6a1601e0d9a52c7405ce3efc5ec188bbffef3f41011773e4c714e1c58",
+      "decision": "pass; neutral bug-fix meaning"
+    },
+    "en-GB": {
+      "append": "Bug fixes.",
+      "characters": 123,
+      "sha256Utf8": "3ea844c7833e782a07c010f2a417d516d909fd152f76c3e45352ec6f20b8736d",
+      "decision": "pass; neutral bug-fix meaning"
+    },
+    "ru": {
+      "append": "Исправления ошибок.",
+      "characters": 145,
+      "sha256Utf8": "6d04cf866c50292092897a14021318eefa04828f9cd9ae9747425aba16959e65",
+      "decision": "pass; neutral bug-fix meaning"
+    },
+    "fr-FR": {
+      "append": "Corrections de bugs.",
+      "characters": 172,
+      "sha256Utf8": "726d8401dc509488676a931e6df4c2754dc1441d141b757b039893188dee740a",
+      "decision": "pass; neutral bug-fix meaning"
+    },
+    "fi": {
+      "append": "Virheenkorjauksia.",
+      "characters": 136,
+      "sha256Utf8": "6a73b5595fd6401210928fe47683c66501fa2bd9b5b897cec0bc0df07be1d7e8",
+      "decision": "pass; neutral bug-fix meaning"
+    },
+    "es-MX": {
+      "append": "Correcciones de errores.",
+      "characters": 180,
+      "sha256Utf8": "9e04dbdd5561294877b09aa2e3a3e7d1cfec13710ec0d814f1a9e29f6aa24c07",
+      "decision": "pass; neutral bug-fix meaning"
+    },
+    "ms": {
+      "append": "Pembetulan pepijat.",
+      "characters": 151,
+      "sha256Utf8": "cc595a9ac19de3dae7f1f13f4b616a91dfbbf5e0d14024cbb8926902838d947e",
+      "decision": "pass; neutral bug-fix meaning"
+    },
+    "da": {
+      "append": "Fejlrettelser.",
+      "characters": 134,
+      "sha256Utf8": "9e1f02de395d25847cff16017ada55156fa5e71b4cf16ac2bb52cca9810bf4b8",
+      "decision": "pass; neutral bug-fix meaning"
+    },
+    "tr": {
+      "append": "Hata düzeltmeleri.",
+      "characters": 155,
+      "sha256Utf8": "3c374b891ab0fa934cfee38bf131077ae36e6afc63019cfc6b1855e0879228c7",
+      "decision": "pass; neutral bug-fix meaning"
+    },
+    "no": {
+      "append": "Feilrettinger.",
+      "characters": 132,
+      "sha256Utf8": "0cd559c9cec4fb8143485aaf26dcab8bdc3d22cc6dd4389f11ffa0bf50d8e249",
+      "decision": "pass; neutral bug-fix meaning"
+    },
+    "th": {
+      "append": "แก้ไขข้อผิดพลาด",
+      "characters": 129,
+      "sha256Utf8": "fda79f65244fb71a72e14565c6b08171246982a4c73dd5a4e0fc76873f57a149",
+      "decision": "pass; neutral bug-fix meaning"
+    },
+    "es-ES": {
+      "append": "Correcciones de errores.",
+      "characters": 191,
+      "sha256Utf8": "74815e4522d8ab00277b54d5d381847c350713bdb15e73179d2a158e90241246",
+      "decision": "pass; neutral bug-fix meaning"
+    },
+    "mr-IN": {
+      "append": "त्रुटी दुरुस्त केल्या.",
+      "characters": 151,
+      "sha256Utf8": "45f89d4563693e9822ad2877b0fc1421f9849206a73e2121c46c16001e0c315b",
+      "decision": "pass; neutral bug-fix meaning"
+    },
+    "en-CA": {
+      "append": "Bug fixes.",
+      "characters": 123,
+      "sha256Utf8": "3ea844c7833e782a07c010f2a417d516d909fd152f76c3e45352ec6f20b8736d",
+      "decision": "pass; neutral bug-fix meaning"
+    },
+    "ml-IN": {
+      "append": "പിശകുകൾ പരിഹരിച്ചു.",
+      "characters": 168,
+      "sha256Utf8": "cc6fd1021a27d499a345845f05e0c7e119a95628dc291e997cab11bb631287bb",
+      "decision": "pass; neutral bug-fix meaning"
+    },
+    "en-US": {
+      "append": "Bug fixes.",
+      "characters": 123,
+      "sha256Utf8": "3ea844c7833e782a07c010f2a417d516d909fd152f76c3e45352ec6f20b8736d",
+      "decision": "pass; neutral bug-fix meaning"
+    },
+    "sl-SI": {
+      "append": "Popravki napak.",
+      "characters": 150,
+      "sha256Utf8": "a4ea57439596d88c0255830c7cbde059de0a115613c2c15155bdae6a966f8a57",
+      "decision": "pass; neutral bug-fix meaning"
+    },
+    "de-DE": {
+      "append": "Fehlerbehebungen.",
+      "characters": 163,
+      "sha256Utf8": "f9c3a508fcbc500cdaf1213466565e1ea746987882800976801a2a7561d9a2af",
+      "decision": "pass; neutral bug-fix meaning"
+    },
+    "vi": {
+      "append": "Sửa lỗi.",
+      "characters": 145,
+      "sha256Utf8": "5bf1700079c459a9efa8f395986a76c17533b82efe21d4ed5940ce8165c021b5",
+      "decision": "pass; neutral bug-fix meaning"
+    },
+    "he": {
+      "append": "תיקוני באגים.",
+      "characters": 128,
+      "sha256Utf8": "99cd131d6990d999d3b7fb347559eb685666d7fbe45e9bed98953147536a2e80",
+      "decision": "pass; neutral bug-fix meaning"
+    },
+    "id": {
+      "append": "Perbaikan bug.",
+      "characters": 157,
+      "sha256Utf8": "35e0dddf29fcc751558267f39f03d88b5f50bf79a6e2ef924794f47363546938",
+      "decision": "pass; neutral bug-fix meaning"
+    },
+    "it": {
+      "append": "Correzioni di bug.",
+      "characters": 180,
+      "sha256Utf8": "e9924485f334447af0d027cd3858f07b8eefc9c8e906d448e8e64a3a6366beef",
+      "decision": "pass; neutral bug-fix meaning"
+    },
+    "pa-IN": {
+      "append": "ਗਲਤੀਆਂ ਠੀਕ ਕੀਤੀਆਂ।",
+      "characters": 153,
+      "sha256Utf8": "6f5b939972d39d656d299b6d98fd4eac6e661700180732443928a495d42832c6",
+      "decision": "pass; neutral bug-fix meaning"
+    },
+    "sk": {
+      "append": "Opravy chýb.",
+      "characters": 139,
+      "sha256Utf8": "81f2a55a79854a22c91b4f5639558d6e65b9b0559efea40e8e416763288ced9b",
+      "decision": "pass; neutral bug-fix meaning"
+    },
+    "uk": {
+      "append": "Виправлення помилок.",
+      "characters": 156,
+      "sha256Utf8": "536998f4ad336024fd42f1feb468c45e403c3e92967b85033cbd8e0350c89894",
+      "decision": "pass; neutral bug-fix meaning"
+    },
+    "el": {
+      "append": "Διορθώσεις σφαλμάτων.",
+      "characters": 178,
+      "sha256Utf8": "83a833c14c6dffa574b295343f95edf1a67d23f029e352662661fe1e2aa89d8c",
+      "decision": "pass; neutral bug-fix meaning"
+    },
+    "ko": {
+      "append": "버그를 수정했습니다.",
+      "characters": 76,
+      "sha256Utf8": "86c78a4810b8594fa36feaa001cfe17b6db42b247596abb53a28da1f0bc4b066",
+      "decision": "pass; neutral bug-fix meaning"
+    },
+    "kn-IN": {
+      "append": "ದೋಷಗಳನ್ನು ಸರಿಪಡಿಸಲಾಗಿದೆ.",
+      "characters": 181,
+      "sha256Utf8": "51695d938ad60b5b97b8bfcca234ec4c5eaeee6cdb7c57ad24d79d8d0bfdc7bb",
+      "decision": "pass; neutral bug-fix meaning"
+    },
+    "pt-PT": {
+      "append": "Correções de erros.",
+      "characters": 179,
+      "sha256Utf8": "9fbea0aa78df9aa79ac7787d2b9ed6f9567ff078b51f3d72c7848e3c886820c7",
+      "decision": "pass; neutral bug-fix meaning"
+    },
+    "sv": {
+      "append": "Buggfixar.",
+      "characters": 131,
+      "sha256Utf8": "a8c0e65a50b5ba9bbdd5eb2a9d61cad446b2171dd81c0c7e15e58263a7a2f4e6",
+      "decision": "pass; neutral bug-fix meaning"
+    },
+    "ta-IN": {
+      "append": "பிழைகள் சரிசெய்யப்பட்டன.",
+      "characters": 171,
+      "sha256Utf8": "04599087e84654b399a1bda1f846490808c475f5219482c8882fe0c4f6838dd4",
+      "decision": "pass; neutral bug-fix meaning"
+    },
+    "hi": {
+      "append": "गड़बड़ियाँ ठीक की गईं।",
+      "characters": 153,
+      "sha256Utf8": "fe566f1493b418ced1fcab588d6258dcc79cb527ca189f502db961b0ee999dd4",
+      "decision": "pass; neutral bug-fix meaning"
+    }
+  },
+  "requiredChanges": [],
+  "confidence": "Bounded semantic language review, not native-speaker certification; lower confidence for Indic scripts and RTL idiom. Short appended sentences retain neutral error/bug correction meaning. Existing layout/Live Activity/weather claims are unchanged from prior pinned review.",
+  "mutations": "Review artifact only; no API writes."
+}

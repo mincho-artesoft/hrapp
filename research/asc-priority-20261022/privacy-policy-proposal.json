@@ -1,0 +1,137 @@
+{
+  "status": "PROPOSAL_ONLY_NOT_PUBLISHED",
+  "date": "2026-10-22",
+  "file": "/Users/minchomilev/cloud-calendars/src/app/pages/privacy-policy-page/privacy-policy-page.component.html",
+  "beforeSHA256": "25ce1d341a18967caf5ef68782358b48e3fb192346ff13aa7712b1935f5b28e4",
+  "readScope": {
+    "local": "Complete HTML template and TypeScript component read. TypeScript SEO text remains accurate and needs no change.",
+    "public": {
+      "url": "https://www.cloud-calendars.com/privacy-policy/",
+      "readLines": [
+        38,
+        82
+      ],
+      "result": "Fresh full substantive policy matches current template; dateMay5,2025. No literal blanket DataNotCollected or no-server sentence on this page: actual false/incomplete restriction is app-only provider-event processing, plus missing retained sharing/ad details."
+    }
+  },
+  "changes": [
+    {
+      "id": "date",
+      "before": "Last updated 5 May 2025 · ARTE SOFT EOOD",
+      "after": "Last updated 22 October 2026 · ARTE SOFT EOOD",
+      "evidence": [
+        "Apply date only when correction is actually published."
+      ]
+    },
+    {
+      "id": "accounts-and-sharing",
+      "before": "<li><strong>Account Information:</strong> If you create an account or connect third-party services (like Google Calendar or Microsoft Calendar via our subscription plans), we may collect information associated with those accounts as necessary to provide the service, such as your email address and calendar data access tokens. Calendar event data accessed through these services remains under the control of those services and is processed within the App only as needed to display and manage your schedule.</li>",
+      "after": "<li><strong>Accounts and Calendar Connections:</strong> You can create local calendars without a Cloud Calendars account. Connecting Google or Microsoft calendars requires the relevant provider authorization. For Cloud Calendars account and sharing services, we store account identifiers, email addresses and names when supplied, together with ownership and access records. Provider connections use account information and authorization tokens to access the calendars you authorize.</li>\n          <li><strong>Shared Content:</strong> When you share an event or calendar, its shared content is sent to and stored by Cloud Calendars' server services so it can be delivered and made available to recipients. This can include event titles, dates and times, notes, locations, recurrence details, meeting links, organizer and attendee information, calendar details, recipient addresses and access roles. Files you choose to include in shared content can also be uploaded, including their names, types and contents. These server copies are separate from local calendar storage and the original provider calendar.</li>\n          <li><strong>Contacts:</strong> With the relevant Google authorization and device Contacts permission, the App can read Google contact names, email addresses and phone numbers and create or update contacts on your device. Recipient information used for invitations is also processed for sharing.</li>",
+      "evidence": [
+        "Owner confirmation: account/sharing name and email persist; reported by root2026-10-22",
+        "prior evidence identity/accounts/content/event-storage/storage/provider-auth/contacts; native byte identity at eda40b44 recorded in batch41 delta"
+      ]
+    },
+    {
+      "id": "usage",
+      "before": "<li><strong>Usage Data:</strong> We may collect information about how you interact with the App, such as features used, crash reports, and performance data. This helps us improve the App. This data is often anonymized or aggregated.</li>",
+      "after": "<li><strong>Usage and Advertising Data:</strong> Google Mobile Ads and Google's User Messaging Platform process data for advertising, ad measurement, diagnostics and consent management. Depending on the SDK and your choices, this can include device identifiers, IP-derived approximate location, ad interactions, product interactions, crash reports and performance or diagnostic information. Some advertising data can be linked to identifiers; it is not all anonymous.</li>",
+      "evidence": [
+        "pinned GoogleMobileAds12.5.0 and UMP3.0.0 manifests",
+        "https://developers.google.com/admob/ios/privacy/data-disclosure"
+      ]
+    },
+    {
+      "id": "device",
+      "before": "<li><strong>Device Information:</strong> We may collect basic information about your device, such as device model and operating system version, primarily for troubleshooting and analytics.</li>",
+      "after": "<li><strong>Device Information:</strong> Integrated advertising and consent services may process information about your device and software. When the App registers a signed-in installation for invitation notifications, our services store its installation identifier, notification token, account association and enabled or disabled status. A registration can be stored even when notification delivery is disabled; turning notifications off does not itself erase that registration.</li>",
+      "evidence": [
+        "pinned SDK manifests",
+        "prior evidence push; production notification enablement remains conditional",
+        "Fresh immutable InvitationPushRegistration.swift77–106/111–125; backend push.service.ts31–62 writes enabled=false registration too."
+      ]
+    },
+    {
+      "id": "weather",
+      "before": "<li><strong>Location Data (for Weather):</strong> The integrated weather features require access to your location (approximate or precise, depending on your settings) to provide relevant forecasts. This data is typically processed by our weather data provider and is not stored by Cloud Calendars long-term associated with your identity.</li>",
+      "after": "<li><strong>Location Data (for Weather):</strong> Weather features use coordinates for a place you select or, with your device permission, your current location. Coordinates are sent to Apple WeatherKit to request weather information; weather maps also use coordinates for the area being displayed. Forecast information and selected places may be cached on your device. Locations included in shared events are part of the shared content described above.</li>",
+      "evidence": [
+        "batch41 immutable WeatherKitViewModel/WindMapStore/MapKit source evidence; prior location/content"
+      ]
+    },
+    {
+      "id": "advertising-purpose",
+      "before": "<li>To analyze usage patterns and improve user experience.</li>",
+      "after": "<li>To provide advertising, measure ad interactions, manage consent and diagnose performance issues through our integrated advertising services.</li>",
+      "evidence": [
+        "owner confirms personalized advertising with consent",
+        "pinned SDK purposes"
+      ]
+    },
+    {
+      "id": "sharing-intro",
+      "before": "<p>We do not sell your personal information. We may share information under limited circumstances:</p>",
+      "after": "<p>Information is shared to operate the services you use, deliver invitations and provide advertising as described below:</p>",
+      "evidence": [
+        "Prior no-sale legal/business assurance not verified; replace with concrete processing description rather than declare sale or no-sale."
+      ]
+    },
+    {
+      "id": "service-providers",
+      "before": "<li><strong>Service Providers:</strong> With third-party vendors who help us operate the App (e.g., weather data providers, analytics services, cloud hosting – though calendar data is primarily processed on-device or via direct API calls). These providers are bound by confidentiality obligations.</li>",
+      "after": "<li><strong>Service Providers and Recipients:</strong> We use cloud hosting and storage for account and sharing records, and email delivery services for invitations, including Amazon Web Services storage and Amazon SES. Shared content is made available through the sharing route and access you choose. Invitation notification services may also process routing information. Apple provides weather and App Store payment services; Google provides advertising and consent services.</li>",
+      "evidence": [
+        "prior storage/email/push/content/weather/purchases; pinned SDK; no blanket vendor confidentiality-contract assurance inferred"
+      ]
+    },
+    {
+      "id": "tracking",
+      "before": "<p>The App itself does not typically use cookies like websites do. However, third-party services integrated (like analytics or payment processing via the App Store) might use their own identifiers or tracking technologies.</p>",
+      "after": "<p>The App uses Google Mobile Ads for advertising and Google's User Messaging Platform for consent choices. Personalized advertising is used with consent. Advertising services may use device identifiers and interactions to personalize and measure ads, subject to your consent and applicable device permissions. You can review advertising privacy choices through the consent options offered in the App and manage tracking permission in device settings. These advertising practices are separate from the account and calendar-sharing information used to provide App functionality. See <a href=\"https://policies.google.com/privacy\">Google's Privacy Policy</a> for Google's handling of information.</p>",
+      "evidence": [
+        "owner confirmation personalized ads with consent; immutable ConsentManager28–74; pinned SDK DeviceID tracking declaration; does not assert every manifest path executes"
+      ]
+    },
+    {
+      "id": "deletion-boundary",
+      "before": "<li>Depending on your jurisdiction, you may have rights to access, correct, or delete your personal information. Please contact us for requests.</li>",
+      "after": "<li>Depending on your jurisdiction, you may have rights to access, correct, or delete your personal information. Please contact us for requests. Signing out, disconnecting a provider or cancelling a subscription does not by itself erase account and sharing records held by our services or copies already received by other people.</li>",
+      "evidence": [
+        "prior signout/accounts/retained-snapshot; no retention schedule or completed-erasure deadline invented"
+      ]
+    }
+  ],
+  "proposedFullHTML": "<section class=\"legal\">\n  <div class=\"legal__aura\" aria-hidden=\"true\"></div>\n\n  <div class=\"shell legal__inner\">\n    <header class=\"legal__head\">\n      <p class=\"eyebrow\">Legal</p>\n      <h1 class=\"legal__title\">Privacy Policy</h1>\n      <p class=\"legal__meta\">Last updated 22 October 2026 · ARTE SOFT EOOD</p>\n      <p class=\"legal__intro\">How Cloud Calendars handles your calendar data, your location and everything in between.</p>\n    </header>\n\n    <article class=\"legal__body\">\n      <p>Thank you for using Cloud Calendars (\"App\"). This Privacy Policy describes how your personal information is collected, used, and shared when you use our App.</p>\n\n      <h2>Information We Collect</h2>\n      <ul>\n          <li><strong>Accounts and Calendar Connections:</strong> You can create local calendars without a Cloud Calendars account. Connecting Google or Microsoft calendars requires the relevant provider authorization. For Cloud Calendars account and sharing services, we store account identifiers, email addresses and names when supplied, together with ownership and access records. Provider connections use account information and authorization tokens to access the calendars you authorize.</li>\n          <li><strong>Shared Content:</strong> When you share an event or calendar, its shared content is sent to and stored by Cloud Calendars' server services so it can be delivered and made available to recipients. This can include event titles, dates and times, notes, locations, recurrence details, meeting links, organizer and attendee information, calendar details, recipient addresses and access roles. Files you choose to include in shared content can also be uploaded, including their names, types and contents. These server copies are separate from local calendar storage and the original provider calendar.</li>\n          <li><strong>Contacts:</strong> With the relevant Google authorization and device Contacts permission, the App can read Google contact names, email addresses and phone numbers and create or update contacts on your device. Recipient information used for invitations is also processed for sharing.</li>\n          <li><strong>Usage and Advertising Data:</strong> Google Mobile Ads and Google's User Messaging Platform process data for advertising, ad measurement, diagnostics and consent management. Depending on the SDK and your choices, this can include device identifiers, IP-derived approximate location, ad interactions, product interactions, crash reports and performance or diagnostic information. Some advertising data can be linked to identifiers; it is not all anonymous.</li>\n          <li><strong>Device Information:</strong> Integrated advertising and consent services may process information about your device and software. When the App registers a signed-in installation for invitation notifications, our services store its installation identifier, notification token, account association and enabled or disabled status. A registration can be stored even when notification delivery is disabled; turning notifications off does not itself erase that registration.</li>\n          <li><strong>Location Data (for Weather):</strong> Weather features use coordinates for a place you select or, with your device permission, your current location. Coordinates are sent to Apple WeatherKit to request weather information; weather maps also use coordinates for the area being displayed. Forecast information and selected places may be cached on your device. Locations included in shared events are part of the shared content described above.</li>\n      </ul>\n\n      <h2>How We Use Your Information</h2>\n      <ul>\n          <li>To provide, maintain, and improve the App's functionality, including calendar synchronization and weather forecasts.</li>\n          <li>To process subscription payments (via Apple's App Store).</li>\n          <li>To respond to your support requests or inquiries.</li>\n          <li>To provide advertising, measure ad interactions, manage consent and diagnose performance issues through our integrated advertising services.</li>\n          <li>To comply with legal obligations.</li>\n      </ul>\n\n      <h2>Sharing Your Information</h2>\n      <p>Information is shared to operate the services you use, deliver invitations and provide advertising as described below:</p>\n      <ul>\n          <li><strong>Service Providers and Recipients:</strong> We use cloud hosting and storage for account and sharing records, and email delivery services for invitations, including Amazon Web Services storage and Amazon SES. Shared content is made available through the sharing route and access you choose. Invitation notification services may also process routing information. Apple provides weather and App Store payment services; Google provides advertising and consent services.</li>\n          <li><strong>Third-Party Services:</strong> When you connect Google Calendar or Microsoft Calendar, data is shared with those services as required by their APIs for synchronization. Refer to their respective privacy policies.</li>\n          <li><strong>Legal Requirements:</strong> If required by law, subpoena, or other legal process, or to protect our rights or the safety of others.</li>\n      </ul>\n\n      <h2>Data Security</h2>\n      <p>We implement reasonable security measures to protect your information. However, no system is completely secure.</p>\n\n      <h2>Your Choices and Rights</h2>\n      <ul>\n          <li>You can manage connected accounts and permissions within the App settings and your device settings.</li>\n          <li>You can control location access for weather features through your device settings.</li>\n          <li>Depending on your jurisdiction, you may have rights to access, correct, or delete your personal information. Please contact us for requests. Signing out, disconnecting a provider or cancelling a subscription does not by itself erase account and sharing records held by our services or copies already received by other people.</li>\n      </ul>\n\n      <h2>Cookies and Tracking Technologies</h2>\n      <p>The App uses Google Mobile Ads for advertising and Google's User Messaging Platform for consent choices. Personalized advertising is used with consent. Advertising services may use device identifiers and interactions to personalize and measure ads, subject to your consent and applicable device permissions. You can review advertising privacy choices through the consent options offered in the App and manage tracking permission in device settings. These advertising practices are separate from the account and calendar-sharing information used to provide App functionality. See <a href=\"https://policies.google.com/privacy\">Google's Privacy Policy</a> for Google's handling of information.</p>\n\n      <h2>Changes to This Policy</h2>\n      <p>We may update this Privacy Policy from time to time. We will notify you of significant changes by posting the new policy within the App or by other means.</p>\n\n      <h2>Contact Us</h2>\n      <p>If you have any questions about this Privacy Policy, please contact us at: <strong>office&#64;arte-soft.com</strong></p>\n    </article>\n\n    <a class=\"legal__back\" routerLink=\"/\">\n      <span aria-hidden=\"true\">←</span> Back to Cloud Calendars\n    </a>\n  </div>\n</section>\n",
+  "proposedSHA256": "06c43bab072b324f2ae8ee84bacbc843fab8afbed0972d86b2d3e9113ee3b05f",
+  "sources": [
+    {
+      "path": "research/privacy-dataflow-20261021.json",
+      "sha256": "39f49b99827499bbc3552f44a396808c0ce91308d21ebb39cde3da23eaaf9824"
+    },
+    {
+      "path": "research/batch41-release/native-privacy-delta.json",
+      "sha256": "63ecb387a2ecbe5799b4d7482b31f14133ff1660232e890e7d0d65c0fb522530"
+    },
+    {
+      "path": "research/asc-priority-20261022/pinned-sdk-privacy.json",
+      "sha256": "117a369a3cc4439ccc68ed9ef3226be384558cd123bb9865feb375724bb3e3d2"
+    }
+  ],
+  "ownerFacts": [
+    "Root reports owner confirmation account/sharing name and email persist.",
+    "Root reports owner confirmation personalized ads with consent."
+  ],
+  "preserved": [
+    "Privacy contact office@arte-soft.com; no support mailbox substitution",
+    "Existing route/layout/backlink and TypeScript SEO",
+    "No retention duration, deletion completion guarantee, security certification or payment-card collection claim added"
+  ],
+  "remainingOwnerFacts": [
+    "Retention periods and actual account-deletion handling remain unconfirmed; this proposal deliberately supplies neither a deadline nor a deletion guarantee.",
+    "Production push delivery configuration not proved. Registration storage is distinct: authenticated registration can persist enabled=false records, subject to APNs token/session and server validation.",
+    "Exact SDK manifests are pinned vendor artifact evidence, not cryptographic proof of uploaded build16 bytes or observed network traffic.",
+    "No claim that every calendar is uploaded or contacts address book is uploaded to our server. Selected shared content is a separate flow.",
+    "Policy proposal does not by itself resolve App Store App Privacy publication or constitute legal compliance certification."
+  ],
+  "limits": "Only this proposal artifact written; no source/API/backend/customer or publication action. Existing source evidence reused with immutable byte-preservation chain; no fresh runtime test."
+}

@@ -1,0 +1,1259 @@
+{
+  "checkedAt": "2026-10-22T05:56:46.658566+00:00",
+  "scope": "Fresh root-provided snapshot, no API request by this reviewer. All50 localization attribute sets parsed; complete EN description/promotional/keywords/URLs and complete reviewer notes read; all50 whatsNew/support/marketing fields explicitly read. Prior multilingual semantic reviews reused only where exact bytes match.",
+  "snapshotRawSha256": "46f7d5fa6748dc2e6a0867bc1d9fb45ee6a08d2ceb29cf7f15fffab2859493e2",
+  "version": "1.7.4",
+  "versionState": "PREPARE_FOR_SUBMISSION",
+  "build": "16",
+  "buildProcessing": "VALID",
+  "summary": {
+    "locales": 50,
+    "reviewedTextFieldsCompared": 150,
+    "mismatches": [],
+    "whatsNewNull": 50,
+    "undefinedMarketingRoutes": [],
+    "staleVersionLocalizationMatches": []
+  },
+  "requiredActions": [
+    {
+      "field": "appStoreReviewDetails.notes",
+      "owner": "Root already handling",
+      "issue": "Version1.7.1 heading; no sign-in anywhere; AppClip offers add without full app; automatic recipient updates; blanket no-network preview. These contradict qualified current description/source.",
+      "action": "Replace with reviewed1.7.4/build16 testing guidance and precise local/no-app-account versus provider/sharing identity; preview versus full-app add; refresh/connection qualifications. Preserve contact fields; do not duplicate a competing notes draft."
+    },
+    {
+      "field": "appStoreVersionLocalizations.whatsNew",
+      "locales": "all50",
+      "before": null,
+      "issue": "No release notes in any current localization; outside prior250field verification.",
+      "proposedEnglish": "This update improves calendar layouts and Live Activity display, adjusts launch-screen scaling, and corrects Mexican Spanish weather text.",
+      "basis": "Immutable eda40b44 author commit message and changed-file scope previously read in batch41; does not advertise new unsupported functionality, guaranteed stability or Debug screenshot fixtures.",
+      "action": "Root should approve release-note content and prepare appropriate locale text; no API write performed here."
+    }
+  ],
+  "noChangeDecisions": [
+    {
+      "field": "description/keywords/promotionalText",
+      "reason": "All150 current fields match saved reviewed batch30 actual text exactly. Preserve all8 description overrides; no fresh50locale semantic reread claimed."
+    },
+    {
+      "field": "supportUrl",
+      "reason": "All50 use existing public root. Current footer uses purpose-specific SUPPORT_EMAIL support@arte-soft.com and mailto. No URL rewrite required merely because support is on homepage. Source check only; no mailbox deliverability or fresh HTTP test."
+    },
+    {
+      "field": "marketingUrl",
+      "reason": "All50 target an actual current locale root or English root fallback. Regional fr-CA/es-MX/pt-PT reuse language route; untranslated site locales use root. No invented regional paths needed."
+    },
+    {
+      "field": "copyright/releaseType/earliestReleaseDate/usesIdfa/downloadable/build encryption and appInfo age ratings",
+      "reason": "Inspected presence/values only; no editorial evidence justifying changes. Null usesIdfa is not proof of no tracking. Privacy/age/export declarations require separate factual review and are not modified."
+    }
+  ],
+  "fieldCoverageLimits": [
+    "Snapshot infos contains appInfos state/rating attributes, not appInfoLocalizations name/subtitle. This task verifies150 version-localization text fields, not a new250field check.",
+    "No review attachments, screenshot completeness, app privacy answers, subscription products or submission readiness independently verified here.",
+    "No source/native/build/deployment/API mutations."
+  ],
+  "rows": [
+    {
+      "locale": "ja",
+      "id": "ab762335-72a8-46b7-ae29-3f81e2f455f4",
+      "attributesPresent": [
+        "description",
+        "locale",
+        "keywords",
+        "marketingUrl",
+        "promotionalText",
+        "supportUrl",
+        "whatsNew"
+      ],
+      "descriptionHash": "916b0068b33fea30f470059ac9b0c3396e1117e656328ec1a613019096101879",
+      "reviewedFieldMatches": {
+        "description": true,
+        "keywords": true,
+        "promotionalText": true
+      },
+      "whatsNew": null,
+      "marketingUrl": "https://www.cloud-calendars.com/ja/",
+      "marketingRouteDefined": true,
+      "supportUrl": "https://www.cloud-calendars.com/",
+      "staleVersionMatches": []
+    },
+    {
+      "locale": "ro",
+      "id": "3389ecf3-903f-46bd-8af0-45b591661311",
+      "attributesPresent": [
+        "description",
+        "locale",
+        "keywords",
+        "marketingUrl",
+        "promotionalText",
+        "supportUrl",
+        "whatsNew"
+      ],
+      "descriptionHash": "879bdb7761d9310edc6acc1ee03302fd4753b15c14cf2332173aab231ee0fa9d",
+      "reviewedFieldMatches": {
+        "description": true,
+        "keywords": true,
+        "promotionalText": true
+      },
+      "whatsNew": null,
+      "marketingUrl": "https://www.cloud-calendars.com/ro/",
+      "marketingRouteDefined": true,
+      "supportUrl": "https://www.cloud-calendars.com/",
+      "staleVersionMatches": []
+    },
+    {
+      "locale": "hu",
+      "id": "90e49b5b-cac5-4403-b411-c0114f969297",
+      "attributesPresent": [
+        "description",
+        "locale",
+        "keywords",
+        "marketingUrl",
+        "promotionalText",
+        "supportUrl",
+        "whatsNew"
+      ],
+      "descriptionHash": "e4cbaf56e66b431768a31b14f272af0b15475796a9db7e2b967a6ddc9fd5ebd2",
+      "reviewedFieldMatches": {
+        "description": true,
+        "keywords": true,
+        "promotionalText": true
+      },
+      "whatsNew": null,
+      "marketingUrl": "https://www.cloud-calendars.com/hu/",
+      "marketingRouteDefined": true,
+      "supportUrl": "https://www.cloud-calendars.com/",
+      "staleVersionMatches": []
+    },
+    {
+      "locale": "hr",
+      "id": "70e4ce9c-8ba0-45f5-8162-c31475c6215e",
+      "attributesPresent": [
+        "description",
+        "locale",
+        "keywords",
+        "marketingUrl",
+        "promotionalText",
+        "supportUrl",
+        "whatsNew"
+      ],
+      "descriptionHash": "3a71f94a3c86646f0153625a38865ada8191070997f6bfb00d5c3ff77d435b4a",
+      "reviewedFieldMatches": {
+        "description": true,
+        "keywords": true,
+        "promotionalText": true
+      },
+      "whatsNew": null,
+      "marketingUrl": "https://www.cloud-calendars.com/",
+      "marketingRouteDefined": true,
+      "supportUrl": "https://www.cloud-calendars.com/",
+      "staleVersionMatches": []
+    },
+    {
+      "locale": "zh-Hans",
+      "id": "d1b9bc90-83d6-4a44-abb3-8a1fa3a3d978",
+      "attributesPresent": [
+        "description",
+        "locale",
+        "keywords",
+        "marketingUrl",
+        "promotionalText",
+        "supportUrl",
+        "whatsNew"
+      ],
+      "descriptionHash": "0b73d2a48ce927e64aac7be0f61f451c9073034a69aa30eb8b3a4d8143bab14d",
+      "reviewedFieldMatches": {
+        "description": true,
+        "keywords": true,
+        "promotionalText": true
+      },
+      "whatsNew": null,
+      "marketingUrl": "https://www.cloud-calendars.com/zh-hans/",
+      "marketingRouteDefined": true,
+      "supportUrl": "https://www.cloud-calendars.com/",
+      "staleVersionMatches": []
+    },
+    {
+      "locale": "ur-PK",
+      "id": "e95c03c7-0155-4fdd-932a-3f844afb25d0",
+      "attributesPresent": [
+        "description",
+        "locale",
+        "keywords",
+        "marketingUrl",
+        "promotionalText",
+        "supportUrl",
+        "whatsNew"
+      ],
+      "descriptionHash": "f430496bb2d547e2754db12af1d932510d03ba4b175fccf41d98a13951d60f13",
+      "reviewedFieldMatches": {
+        "description": true,
+        "keywords": true,
+        "promotionalText": true
+      },
+      "whatsNew": null,
+      "marketingUrl": "https://www.cloud-calendars.com/",
+      "marketingRouteDefined": true,
+      "supportUrl": "https://www.cloud-calendars.com/",
+      "staleVersionMatches": []
+    },
+    {
+      "locale": "gu-IN",
+      "id": "6fbf996c-ce0f-4a39-9de1-f73b2ab244b8",
+      "attributesPresent": [
+        "description",
+        "locale",
+        "keywords",
+        "marketingUrl",
+        "promotionalText",
+        "supportUrl",
+        "whatsNew"
+      ],
+      "descriptionHash": "aa18da5ad462d36a16a384049dba318f871298e894beb8e1df6c945542717871",
+      "reviewedFieldMatches": {
+        "description": true,
+        "keywords": true,
+        "promotionalText": true
+      },
+      "whatsNew": null,
+      "marketingUrl": "https://www.cloud-calendars.com/",
+      "marketingRouteDefined": true,
+      "supportUrl": "https://www.cloud-calendars.com/",
+      "staleVersionMatches": []
+    },
+    {
+      "locale": "ca",
+      "id": "c7a8730b-6a11-46b4-b64e-9e2d69c474bd",
+      "attributesPresent": [
+        "description",
+        "locale",
+        "keywords",
+        "marketingUrl",
+        "promotionalText",
+        "supportUrl",
+        "whatsNew"
+      ],
+      "descriptionHash": "54db54748d59973b44203099f48f12917e1dbcb92109671ae4ad73e4fcfd4e61",
+      "reviewedFieldMatches": {
+        "description": true,
+        "keywords": true,
+        "promotionalText": true
+      },
+      "whatsNew": null,
+      "marketingUrl": "https://www.cloud-calendars.com/",
+      "marketingRouteDefined": true,
+      "supportUrl": "https://www.cloud-calendars.com/",
+      "staleVersionMatches": []
+    },
+    {
+      "locale": "cs",
+      "id": "407dc794-b4ed-4c4f-9319-6b2bb52f6af5",
+      "attributesPresent": [
+        "description",
+        "locale",
+        "keywords",
+        "marketingUrl",
+        "promotionalText",
+        "supportUrl",
+        "whatsNew"
+      ],
+      "descriptionHash": "91af847dc3aecdfa59dc242e0aab71d6e70c9404fb9d30981a98ac6ff2677c55",
+      "reviewedFieldMatches": {
+        "description": true,
+        "keywords": true,
+        "promotionalText": true
+      },
+      "whatsNew": null,
+      "marketingUrl": "https://www.cloud-calendars.com/cs/",
+      "marketingRouteDefined": true,
+      "supportUrl": "https://www.cloud-calendars.com/",
+      "staleVersionMatches": []
+    },
+    {
+      "locale": "zh-Hant",
+      "id": "db9bd915-8d55-49c3-b765-09dd83985839",
+      "attributesPresent": [
+        "description",
+        "locale",
+        "keywords",
+        "marketingUrl",
+        "promotionalText",
+        "supportUrl",
+        "whatsNew"
+      ],
+      "descriptionHash": "9f428833b4caad08e982d74d754e6be0ff52def974a594093ba969c87ff7f383",
+      "reviewedFieldMatches": {
+        "description": true,
+        "keywords": true,
+        "promotionalText": true
+      },
+      "whatsNew": null,
+      "marketingUrl": "https://www.cloud-calendars.com/zh-hant/",
+      "marketingRouteDefined": true,
+      "supportUrl": "https://www.cloud-calendars.com/",
+      "staleVersionMatches": []
+    },
+    {
+      "locale": "bn-BD",
+      "id": "bec247b8-7092-405b-ad17-b595e4ba7f77",
+      "attributesPresent": [
+        "description",
+        "locale",
+        "keywords",
+        "marketingUrl",
+        "promotionalText",
+        "supportUrl",
+        "whatsNew"
+      ],
+      "descriptionHash": "fb3430ec52adbe7af0c70af54246969a32df4b30e1dc06aa6ade57cbf4f5e499",
+      "reviewedFieldMatches": {
+        "description": true,
+        "keywords": true,
+        "promotionalText": true
+      },
+      "whatsNew": null,
+      "marketingUrl": "https://www.cloud-calendars.com/",
+      "marketingRouteDefined": true,
+      "supportUrl": "https://www.cloud-calendars.com/",
+      "staleVersionMatches": []
+    },
+    {
+      "locale": "ar-SA",
+      "id": "655ccbe8-e076-4bed-a61e-c119abd3e314",
+      "attributesPresent": [
+        "description",
+        "locale",
+        "keywords",
+        "marketingUrl",
+        "promotionalText",
+        "supportUrl",
+        "whatsNew"
+      ],
+      "descriptionHash": "437855172e1d9f818405b34bfbabebedea24fb616b49adc847b2bb768b685705",
+      "reviewedFieldMatches": {
+        "description": true,
+        "keywords": true,
+        "promotionalText": true
+      },
+      "whatsNew": null,
+      "marketingUrl": "https://www.cloud-calendars.com/ar/",
+      "marketingRouteDefined": true,
+      "supportUrl": "https://www.cloud-calendars.com/",
+      "staleVersionMatches": []
+    },
+    {
+      "locale": "pl",
+      "id": "0bc52ccb-22c8-4b17-af7c-6783c1bd3428",
+      "attributesPresent": [
+        "description",
+        "locale",
+        "keywords",
+        "marketingUrl",
+        "promotionalText",
+        "supportUrl",
+        "whatsNew"
+      ],
+      "descriptionHash": "f68b5043ab62b28d9f751c106114e0b188602ecc83405b3fd030ba1cb0a0f8dd",
+      "reviewedFieldMatches": {
+        "description": true,
+        "keywords": true,
+        "promotionalText": true
+      },
+      "whatsNew": null,
+      "marketingUrl": "https://www.cloud-calendars.com/pl/",
+      "marketingRouteDefined": true,
+      "supportUrl": "https://www.cloud-calendars.com/",
+      "staleVersionMatches": []
+    },
+    {
+      "locale": "nl-NL",
+      "id": "330744ac-9574-4c5b-b2ac-749a724d3da9",
+      "attributesPresent": [
+        "description",
+        "locale",
+        "keywords",
+        "marketingUrl",
+        "promotionalText",
+        "supportUrl",
+        "whatsNew"
+      ],
+      "descriptionHash": "e35343c0de817b026057bcfaf944169283be7d715c5c5fd0111b5f628336b6e9",
+      "reviewedFieldMatches": {
+        "description": true,
+        "keywords": true,
+        "promotionalText": true
+      },
+      "whatsNew": null,
+      "marketingUrl": "https://www.cloud-calendars.com/nl/",
+      "marketingRouteDefined": true,
+      "supportUrl": "https://www.cloud-calendars.com/",
+      "staleVersionMatches": []
+    },
+    {
+      "locale": "en-AU",
+      "id": "b494decd-f50f-4eda-a44d-d93615681a21",
+      "attributesPresent": [
+        "description",
+        "locale",
+        "keywords",
+        "marketingUrl",
+        "promotionalText",
+        "supportUrl",
+        "whatsNew"
+      ],
+      "descriptionHash": "87df713d3cc66f1a613d4b1bccdd61487bb5dea682cab74ee59458ba648395b6",
+      "reviewedFieldMatches": {
+        "description": true,
+        "keywords": true,
+        "promotionalText": true
+      },
+      "whatsNew": null,
+      "marketingUrl": "https://www.cloud-calendars.com/",
+      "marketingRouteDefined": true,
+      "supportUrl": "https://www.cloud-calendars.com/",
+      "staleVersionMatches": []
+    },
+    {
+      "locale": "or-IN",
+      "id": "49572c80-b4dd-4849-a234-7742c079656a",
+      "attributesPresent": [
+        "description",
+        "locale",
+        "keywords",
+        "marketingUrl",
+        "promotionalText",
+        "supportUrl",
+        "whatsNew"
+      ],
+      "descriptionHash": "625caae6c0586803f21a64fd56f54c2b159c10447d38f056a70f5eed9af108f8",
+      "reviewedFieldMatches": {
+        "description": true,
+        "keywords": true,
+        "promotionalText": true
+      },
+      "whatsNew": null,
+      "marketingUrl": "https://www.cloud-calendars.com/",
+      "marketingRouteDefined": true,
+      "supportUrl": "https://www.cloud-calendars.com/",
+      "staleVersionMatches": []
+    },
+    {
+      "locale": "fr-CA",
+      "id": "79e62e99-3004-47ff-b072-bc8841f9e107",
+      "attributesPresent": [
+        "description",
+        "locale",
+        "keywords",
+        "marketingUrl",
+        "promotionalText",
+        "supportUrl",
+        "whatsNew"
+      ],
+      "descriptionHash": "a2f71e35034ffb3c0d68d7b1c8f6052ddf94c15a21fba293cf4ce5ed28d318d7",
+      "reviewedFieldMatches": {
+        "description": true,
+        "keywords": true,
+        "promotionalText": true
+      },
+      "whatsNew": null,
+      "marketingUrl": "https://www.cloud-calendars.com/fr/",
+      "marketingRouteDefined": true,
+      "supportUrl": "https://www.cloud-calendars.com/",
+      "staleVersionMatches": []
+    },
+    {
+      "locale": "te-IN",
+      "id": "f74c4349-47cb-4dee-8e2e-80d37b92fdb6",
+      "attributesPresent": [
+        "description",
+        "locale",
+        "keywords",
+        "marketingUrl",
+        "promotionalText",
+        "supportUrl",
+        "whatsNew"
+      ],
+      "descriptionHash": "4fb33732ac7a0a79a01bd4f7cd95c8e300231234379e706a3c781a70a466de0a",
+      "reviewedFieldMatches": {
+        "description": true,
+        "keywords": true,
+        "promotionalText": true
+      },
+      "whatsNew": null,
+      "marketingUrl": "https://www.cloud-calendars.com/",
+      "marketingRouteDefined": true,
+      "supportUrl": "https://www.cloud-calendars.com/",
+      "staleVersionMatches": []
+    },
+    {
+      "locale": "pt-BR",
+      "id": "792d84c7-d17d-40b7-890b-e18a097ee741",
+      "attributesPresent": [
+        "description",
+        "locale",
+        "keywords",
+        "marketingUrl",
+        "promotionalText",
+        "supportUrl",
+        "whatsNew"
+      ],
+      "descriptionHash": "0dbd630a83bd4f7e2448a3fb28f21478607ba40da53323d1ffc5b3adb9a8c54f",
+      "reviewedFieldMatches": {
+        "description": true,
+        "keywords": true,
+        "promotionalText": true
+      },
+      "whatsNew": null,
+      "marketingUrl": "https://www.cloud-calendars.com/pt/",
+      "marketingRouteDefined": true,
+      "supportUrl": "https://www.cloud-calendars.com/",
+      "staleVersionMatches": []
+    },
+    {
+      "locale": "en-GB",
+      "id": "a9544b38-ddc9-4c0b-8aa6-f60da6540693",
+      "attributesPresent": [
+        "description",
+        "locale",
+        "keywords",
+        "marketingUrl",
+        "promotionalText",
+        "supportUrl",
+        "whatsNew"
+      ],
+      "descriptionHash": "87df713d3cc66f1a613d4b1bccdd61487bb5dea682cab74ee59458ba648395b6",
+      "reviewedFieldMatches": {
+        "description": true,
+        "keywords": true,
+        "promotionalText": true
+      },
+      "whatsNew": null,
+      "marketingUrl": "https://www.cloud-calendars.com/",
+      "marketingRouteDefined": true,
+      "supportUrl": "https://www.cloud-calendars.com/",
+      "staleVersionMatches": []
+    },
+    {
+      "locale": "ru",
+      "id": "afc2183d-d280-4e21-8169-a08d65d4e1a6",
+      "attributesPresent": [
+        "description",
+        "locale",
+        "keywords",
+        "marketingUrl",
+        "promotionalText",
+        "supportUrl",
+        "whatsNew"
+      ],
+      "descriptionHash": "e5e200ce55afe64778c5e67f2ec0b2d0075ea484f5b3e40911e6182ef532597a",
+      "reviewedFieldMatches": {
+        "description": true,
+        "keywords": true,
+        "promotionalText": true
+      },
+      "whatsNew": null,
+      "marketingUrl": "https://www.cloud-calendars.com/ru/",
+      "marketingRouteDefined": true,
+      "supportUrl": "https://www.cloud-calendars.com/",
+      "staleVersionMatches": []
+    },
+    {
+      "locale": "fr-FR",
+      "id": "fc2a50aa-4f64-4c57-a6e9-6f427b144811",
+      "attributesPresent": [
+        "description",
+        "locale",
+        "keywords",
+        "marketingUrl",
+        "promotionalText",
+        "supportUrl",
+        "whatsNew"
+      ],
+      "descriptionHash": "1945255a52ad015f9da73c95d77c079173214a498d5954000c3df4d331413e4f",
+      "reviewedFieldMatches": {
+        "description": true,
+        "keywords": true,
+        "promotionalText": true
+      },
+      "whatsNew": null,
+      "marketingUrl": "https://www.cloud-calendars.com/fr/",
+      "marketingRouteDefined": true,
+      "supportUrl": "https://www.cloud-calendars.com/",
+      "staleVersionMatches": []
+    },
+    {
+      "locale": "fi",
+      "id": "b8fa942f-a222-43d9-bc59-f6a9a56212c1",
+      "attributesPresent": [
+        "description",
+        "locale",
+        "keywords",
+        "marketingUrl",
+        "promotionalText",
+        "supportUrl",
+        "whatsNew"
+      ],
+      "descriptionHash": "a4cbf938410e944c3bd0d31db1a7605e76d5c11f7919309f93304a4f7a6dd062",
+      "reviewedFieldMatches": {
+        "description": true,
+        "keywords": true,
+        "promotionalText": true
+      },
+      "whatsNew": null,
+      "marketingUrl": "https://www.cloud-calendars.com/fi/",
+      "marketingRouteDefined": true,
+      "supportUrl": "https://www.cloud-calendars.com/",
+      "staleVersionMatches": []
+    },
+    {
+      "locale": "es-MX",
+      "id": "3110b329-4291-4e1b-9cce-61500c38ff4f",
+      "attributesPresent": [
+        "description",
+        "locale",
+        "keywords",
+        "marketingUrl",
+        "promotionalText",
+        "supportUrl",
+        "whatsNew"
+      ],
+      "descriptionHash": "b7f04a283b55b1cbad0de1fd7bea52219851588ab635fc92ec413b7923294deb",
+      "reviewedFieldMatches": {
+        "description": true,
+        "keywords": true,
+        "promotionalText": true
+      },
+      "whatsNew": null,
+      "marketingUrl": "https://www.cloud-calendars.com/es/",
+      "marketingRouteDefined": true,
+      "supportUrl": "https://www.cloud-calendars.com/",
+      "staleVersionMatches": []
+    },
+    {
+      "locale": "ms",
+      "id": "c9261f10-b41e-4656-a9f2-bdecc9d9cf14",
+      "attributesPresent": [
+        "description",
+        "locale",
+        "keywords",
+        "marketingUrl",
+        "promotionalText",
+        "supportUrl",
+        "whatsNew"
+      ],
+      "descriptionHash": "1d904f6cbdd984c4cd327acae496c34a0959ced293ebbed8ceaaf1b3fed10629",
+      "reviewedFieldMatches": {
+        "description": true,
+        "keywords": true,
+        "promotionalText": true
+      },
+      "whatsNew": null,
+      "marketingUrl": "https://www.cloud-calendars.com/ms/",
+      "marketingRouteDefined": true,
+      "supportUrl": "https://www.cloud-calendars.com/",
+      "staleVersionMatches": []
+    },
+    {
+      "locale": "da",
+      "id": "36c6b56c-545c-483e-92d9-c7a008289e00",
+      "attributesPresent": [
+        "description",
+        "locale",
+        "keywords",
+        "marketingUrl",
+        "promotionalText",
+        "supportUrl",
+        "whatsNew"
+      ],
+      "descriptionHash": "7f88ed420dcb399847455ea6c418843ec74b7aa289c6e51c6c9388a8b45e4375",
+      "reviewedFieldMatches": {
+        "description": true,
+        "keywords": true,
+        "promotionalText": true
+      },
+      "whatsNew": null,
+      "marketingUrl": "https://www.cloud-calendars.com/da/",
+      "marketingRouteDefined": true,
+      "supportUrl": "https://www.cloud-calendars.com/",
+      "staleVersionMatches": []
+    },
+    {
+      "locale": "tr",
+      "id": "2d04a31c-069d-4692-bf6e-4c0c06948d4c",
+      "attributesPresent": [
+        "description",
+        "locale",
+        "keywords",
+        "marketingUrl",
+        "promotionalText",
+        "supportUrl",
+        "whatsNew"
+      ],
+      "descriptionHash": "d30c5f8853a6f78ca786d1e6b9267769c2164218f995799d489fade4873141af",
+      "reviewedFieldMatches": {
+        "description": true,
+        "keywords": true,
+        "promotionalText": true
+      },
+      "whatsNew": null,
+      "marketingUrl": "https://www.cloud-calendars.com/tr/",
+      "marketingRouteDefined": true,
+      "supportUrl": "https://www.cloud-calendars.com/",
+      "staleVersionMatches": []
+    },
+    {
+      "locale": "no",
+      "id": "617eb54f-399c-486c-8c51-85ad936b0ec6",
+      "attributesPresent": [
+        "description",
+        "locale",
+        "keywords",
+        "marketingUrl",
+        "promotionalText",
+        "supportUrl",
+        "whatsNew"
+      ],
+      "descriptionHash": "811552aa8b205a9d99a824b4024b3094b2840a69dbacbbdd4a3638c558457b00",
+      "reviewedFieldMatches": {
+        "description": true,
+        "keywords": true,
+        "promotionalText": true
+      },
+      "whatsNew": null,
+      "marketingUrl": "https://www.cloud-calendars.com/no/",
+      "marketingRouteDefined": true,
+      "supportUrl": "https://www.cloud-calendars.com/",
+      "staleVersionMatches": []
+    },
+    {
+      "locale": "th",
+      "id": "2e74d181-c85a-4c1e-a41e-340fdb64073e",
+      "attributesPresent": [
+        "description",
+        "locale",
+        "keywords",
+        "marketingUrl",
+        "promotionalText",
+        "supportUrl",
+        "whatsNew"
+      ],
+      "descriptionHash": "85eb2ab08f9e5fe637660fbe0d69ea7959502c4962fcc20b80565a3beb2a28ee",
+      "reviewedFieldMatches": {
+        "description": true,
+        "keywords": true,
+        "promotionalText": true
+      },
+      "whatsNew": null,
+      "marketingUrl": "https://www.cloud-calendars.com/th/",
+      "marketingRouteDefined": true,
+      "supportUrl": "https://www.cloud-calendars.com/",
+      "staleVersionMatches": []
+    },
+    {
+      "locale": "es-ES",
+      "id": "00a6748f-cdd1-4679-84bc-ac1e461426a0",
+      "attributesPresent": [
+        "description",
+        "locale",
+        "keywords",
+        "marketingUrl",
+        "promotionalText",
+        "supportUrl",
+        "whatsNew"
+      ],
+      "descriptionHash": "c40f5626d205e79e0f12db12ab2bd57c0068739ad852e989a9f5ad11f5d3eea8",
+      "reviewedFieldMatches": {
+        "description": true,
+        "keywords": true,
+        "promotionalText": true
+      },
+      "whatsNew": null,
+      "marketingUrl": "https://www.cloud-calendars.com/es/",
+      "marketingRouteDefined": true,
+      "supportUrl": "https://www.cloud-calendars.com/",
+      "staleVersionMatches": []
+    },
+    {
+      "locale": "mr-IN",
+      "id": "8329c516-9863-48ad-9030-b8fd1e47a081",
+      "attributesPresent": [
+        "description",
+        "locale",
+        "keywords",
+        "marketingUrl",
+        "promotionalText",
+        "supportUrl",
+        "whatsNew"
+      ],
+      "descriptionHash": "05f22331d9f9ff87669a0d0582da77c61a1c8fe6bf1fc58a316a32e4688d7879",
+      "reviewedFieldMatches": {
+        "description": true,
+        "keywords": true,
+        "promotionalText": true
+      },
+      "whatsNew": null,
+      "marketingUrl": "https://www.cloud-calendars.com/",
+      "marketingRouteDefined": true,
+      "supportUrl": "https://www.cloud-calendars.com/",
+      "staleVersionMatches": []
+    },
+    {
+      "locale": "en-CA",
+      "id": "5d59df7c-8b6e-471a-a9e5-597cd43d7426",
+      "attributesPresent": [
+        "description",
+        "locale",
+        "keywords",
+        "marketingUrl",
+        "promotionalText",
+        "supportUrl",
+        "whatsNew"
+      ],
+      "descriptionHash": "87df713d3cc66f1a613d4b1bccdd61487bb5dea682cab74ee59458ba648395b6",
+      "reviewedFieldMatches": {
+        "description": true,
+        "keywords": true,
+        "promotionalText": true
+      },
+      "whatsNew": null,
+      "marketingUrl": "https://www.cloud-calendars.com/",
+      "marketingRouteDefined": true,
+      "supportUrl": "https://www.cloud-calendars.com/",
+      "staleVersionMatches": []
+    },
+    {
+      "locale": "ml-IN",
+      "id": "3c5616c1-1dad-4e41-a7ec-771de0375308",
+      "attributesPresent": [
+        "description",
+        "locale",
+        "keywords",
+        "marketingUrl",
+        "promotionalText",
+        "supportUrl",
+        "whatsNew"
+      ],
+      "descriptionHash": "3dfd8ae31b7071023a5431bdfd29b91390db603b20068962e02611801bcb7e1b",
+      "reviewedFieldMatches": {
+        "description": true,
+        "keywords": true,
+        "promotionalText": true
+      },
+      "whatsNew": null,
+      "marketingUrl": "https://www.cloud-calendars.com/",
+      "marketingRouteDefined": true,
+      "supportUrl": "https://www.cloud-calendars.com/",
+      "staleVersionMatches": []
+    },
+    {
+      "locale": "en-US",
+      "id": "69e0e01f-9691-4044-b52c-acd3728d2721",
+      "attributesPresent": [
+        "description",
+        "locale",
+        "keywords",
+        "marketingUrl",
+        "promotionalText",
+        "supportUrl",
+        "whatsNew"
+      ],
+      "descriptionHash": "d3ec75fa40c5adb2d284b651b0df0df4741eaeb97392b8cc64bb468628ff0396",
+      "reviewedFieldMatches": {
+        "description": true,
+        "keywords": true,
+        "promotionalText": true
+      },
+      "whatsNew": null,
+      "marketingUrl": "https://www.cloud-calendars.com/",
+      "marketingRouteDefined": true,
+      "supportUrl": "https://www.cloud-calendars.com/",
+      "staleVersionMatches": []
+    },
+    {
+      "locale": "sl-SI",
+      "id": "9012936e-3aa1-46b0-8a33-45723b683b00",
+      "attributesPresent": [
+        "description",
+        "locale",
+        "keywords",
+        "marketingUrl",
+        "promotionalText",
+        "supportUrl",
+        "whatsNew"
+      ],
+      "descriptionHash": "d2f47a92f0296065f69dcbcd175e6e2552ce6ba6635804a86fcc6a0e719ca2e2",
+      "reviewedFieldMatches": {
+        "description": true,
+        "keywords": true,
+        "promotionalText": true
+      },
+      "whatsNew": null,
+      "marketingUrl": "https://www.cloud-calendars.com/",
+      "marketingRouteDefined": true,
+      "supportUrl": "https://www.cloud-calendars.com/",
+      "staleVersionMatches": []
+    },
+    {
+      "locale": "de-DE",
+      "id": "f6802cbe-9871-490d-99e5-0c70bae5fd62",
+      "attributesPresent": [
+        "description",
+        "locale",
+        "keywords",
+        "marketingUrl",
+        "promotionalText",
+        "supportUrl",
+        "whatsNew"
+      ],
+      "descriptionHash": "cf08a933c28e648effd889863288a0716052e2d05e3330adcd938c1ffbef9485",
+      "reviewedFieldMatches": {
+        "description": true,
+        "keywords": true,
+        "promotionalText": true
+      },
+      "whatsNew": null,
+      "marketingUrl": "https://www.cloud-calendars.com/de/",
+      "marketingRouteDefined": true,
+      "supportUrl": "https://www.cloud-calendars.com/",
+      "staleVersionMatches": []
+    },
+    {
+      "locale": "vi",
+      "id": "7091d1fe-7462-481a-9735-0746ece5ce89",
+      "attributesPresent": [
+        "description",
+        "locale",
+        "keywords",
+        "marketingUrl",
+        "promotionalText",
+        "supportUrl",
+        "whatsNew"
+      ],
+      "descriptionHash": "c058123c28f46a95c0112c884633f2603a8ae0ded70fe6a01bbda42f37c4f4ec",
+      "reviewedFieldMatches": {
+        "description": true,
+        "keywords": true,
+        "promotionalText": true
+      },
+      "whatsNew": null,
+      "marketingUrl": "https://www.cloud-calendars.com/vi/",
+      "marketingRouteDefined": true,
+      "supportUrl": "https://www.cloud-calendars.com/",
+      "staleVersionMatches": []
+    },
+    {
+      "locale": "he",
+      "id": "81dc22d5-6b74-4d6a-87fb-bb6eade3e389",
+      "attributesPresent": [
+        "description",
+        "locale",
+        "keywords",
+        "marketingUrl",
+        "promotionalText",
+        "supportUrl",
+        "whatsNew"
+      ],
+      "descriptionHash": "85900243f47f93183784c0613d09072aa557c45294e2e2f2120eae011bb78906",
+      "reviewedFieldMatches": {
+        "description": true,
+        "keywords": true,
+        "promotionalText": true
+      },
+      "whatsNew": null,
+      "marketingUrl": "https://www.cloud-calendars.com/he/",
+      "marketingRouteDefined": true,
+      "supportUrl": "https://www.cloud-calendars.com/",
+      "staleVersionMatches": []
+    },
+    {
+      "locale": "id",
+      "id": "bacdbba0-8db2-4756-9b98-1a24e68f5416",
+      "attributesPresent": [
+        "description",
+        "locale",
+        "keywords",
+        "marketingUrl",
+        "promotionalText",
+        "supportUrl",
+        "whatsNew"
+      ],
+      "descriptionHash": "042064db3cee1d7f5fcf626b66976ee9b17926f39162e233354e092493d5b3c5",
+      "reviewedFieldMatches": {
+        "description": true,
+        "keywords": true,
+        "promotionalText": true
+      },
+      "whatsNew": null,
+      "marketingUrl": "https://www.cloud-calendars.com/id/",
+      "marketingRouteDefined": true,
+      "supportUrl": "https://www.cloud-calendars.com/",
+      "staleVersionMatches": []
+    },
+    {
+      "locale": "it",
+      "id": "a02e99d4-e709-463e-96c5-26e226d73427",
+      "attributesPresent": [
+        "description",
+        "locale",
+        "keywords",
+        "marketingUrl",
+        "promotionalText",
+        "supportUrl",
+        "whatsNew"
+      ],
+      "descriptionHash": "f63a75dd305547f4eb04bcb4dc9d42186b89fd6c0d6ca98c668fb1fdeab53055",
+      "reviewedFieldMatches": {
+        "description": true,
+        "keywords": true,
+        "promotionalText": true
+      },
+      "whatsNew": null,
+      "marketingUrl": "https://www.cloud-calendars.com/it/",
+      "marketingRouteDefined": true,
+      "supportUrl": "https://www.cloud-calendars.com/",
+      "staleVersionMatches": []
+    },
+    {
+      "locale": "pa-IN",
+      "id": "3dab41e0-6821-499d-9a93-49e07279b332",
+      "attributesPresent": [
+        "description",
+        "locale",
+        "keywords",
+        "marketingUrl",
+        "promotionalText",
+        "supportUrl",
+        "whatsNew"
+      ],
+      "descriptionHash": "50687df4f914381fd7d4b751ffe45ad35d76767f84025cf7225e4da226dbc7b5",
+      "reviewedFieldMatches": {
+        "description": true,
+        "keywords": true,
+        "promotionalText": true
+      },
+      "whatsNew": null,
+      "marketingUrl": "https://www.cloud-calendars.com/",
+      "marketingRouteDefined": true,
+      "supportUrl": "https://www.cloud-calendars.com/",
+      "staleVersionMatches": []
+    },
+    {
+      "locale": "sk",
+      "id": "88e9ac26-6898-432f-85db-5b71f0b553f0",
+      "attributesPresent": [
+        "description",
+        "locale",
+        "keywords",
+        "marketingUrl",
+        "promotionalText",
+        "supportUrl",
+        "whatsNew"
+      ],
+      "descriptionHash": "b11cd2403b449bc32d7d99d89cc71c79b8503b4fba53378db1220f873f0bd927",
+      "reviewedFieldMatches": {
+        "description": true,
+        "keywords": true,
+        "promotionalText": true
+      },
+      "whatsNew": null,
+      "marketingUrl": "https://www.cloud-calendars.com/",
+      "marketingRouteDefined": true,
+      "supportUrl": "https://www.cloud-calendars.com/",
+      "staleVersionMatches": []
+    },
+    {
+      "locale": "uk",
+      "id": "bd1cdc00-d0df-458d-87b6-1474b2875f88",
+      "attributesPresent": [
+        "description",
+        "locale",
+        "keywords",
+        "marketingUrl",
+        "promotionalText",
+        "supportUrl",
+        "whatsNew"
+      ],
+      "descriptionHash": "24ecd11adbe6849efb3403246a1976ec18626789e19dfe38dbb2f16559c8d616",
+      "reviewedFieldMatches": {
+        "description": true,
+        "keywords": true,
+        "promotionalText": true
+      },
+      "whatsNew": null,
+      "marketingUrl": "https://www.cloud-calendars.com/",
+      "marketingRouteDefined": true,
+      "supportUrl": "https://www.cloud-calendars.com/",
+      "staleVersionMatches": []
+    },
+    {
+      "locale": "el",
+      "id": "ce3783f7-5b12-45e1-8456-6c0eacf1eee8",
+      "attributesPresent": [
+        "description",
+        "locale",
+        "keywords",
+        "marketingUrl",
+        "promotionalText",
+        "supportUrl",
+        "whatsNew"
+      ],
+      "descriptionHash": "717f071dfcadd7e95587b45356ddfe133213f7bba418ce2979bfe1d67555d5bc",
+      "reviewedFieldMatches": {
+        "description": true,
+        "keywords": true,
+        "promotionalText": true
+      },
+      "whatsNew": null,
+      "marketingUrl": "https://www.cloud-calendars.com/el/",
+      "marketingRouteDefined": true,
+      "supportUrl": "https://www.cloud-calendars.com/",
+      "staleVersionMatches": []
+    },
+    {
+      "locale": "ko",
+      "id": "d1b5d0e0-4b29-4ac9-b98a-cc73c81bf9b6",
+      "attributesPresent": [
+        "description",
+        "locale",
+        "keywords",
+        "marketingUrl",
+        "promotionalText",
+        "supportUrl",
+        "whatsNew"
+      ],
+      "descriptionHash": "818e4d5d9e42b837d58e6b6970507980c1ded7c6903344f15383e020f85c9356",
+      "reviewedFieldMatches": {
+        "description": true,
+        "keywords": true,
+        "promotionalText": true
+      },
+      "whatsNew": null,
+      "marketingUrl": "https://www.cloud-calendars.com/ko/",
+      "marketingRouteDefined": true,
+      "supportUrl": "https://www.cloud-calendars.com/",
+      "staleVersionMatches": []
+    },
+    {
+      "locale": "kn-IN",
+      "id": "8841df1b-4735-4ed7-a8e3-0bf8f48f5ae4",
+      "attributesPresent": [
+        "description",
+        "locale",
+        "keywords",
+        "marketingUrl",
+        "promotionalText",
+        "supportUrl",
+        "whatsNew"
+      ],
+      "descriptionHash": "0140dde9bedf6d2d0156f36448d097f2940529ee56205b48c1fdd56831b78dd4",
+      "reviewedFieldMatches": {
+        "description": true,
+        "keywords": true,
+        "promotionalText": true
+      },
+      "whatsNew": null,
+      "marketingUrl": "https://www.cloud-calendars.com/",
+      "marketingRouteDefined": true,
+      "supportUrl": "https://www.cloud-calendars.com/",
+      "staleVersionMatches": []
+    },
+    {
+      "locale": "pt-PT",
+      "id": "deedce92-e15b-4742-be7f-4ca0af85c0ff",
+      "attributesPresent": [
+        "description",
+        "locale",
+        "keywords",
+        "marketingUrl",
+        "promotionalText",
+        "supportUrl",
+        "whatsNew"
+      ],
+      "descriptionHash": "c36cb5c0b012cca6d69d1f1bb88fe23a96d3141ffa65cc02fd8d472315df3fa3",
+      "reviewedFieldMatches": {
+        "description": true,
+        "keywords": true,
+        "promotionalText": true
+      },
+      "whatsNew": null,
+      "marketingUrl": "https://www.cloud-calendars.com/pt/",
+      "marketingRouteDefined": true,
+      "supportUrl": "https://www.cloud-calendars.com/",
+      "staleVersionMatches": []
+    },
+    {
+      "locale": "sv",
+      "id": "bcdb23cf-7623-4e3b-9c5a-37bd60bae990",
+      "attributesPresent": [
+        "description",
+        "locale",
+        "keywords",
+        "marketingUrl",
+        "promotionalText",
+        "supportUrl",
+        "whatsNew"
+      ],
+      "descriptionHash": "f7260cea8e7a9914780156239d50b390783038e696d91090421d87e4f38bd34f",
+      "reviewedFieldMatches": {
+        "description": true,
+        "keywords": true,
+        "promotionalText": true
+      },
+      "whatsNew": null,
+      "marketingUrl": "https://www.cloud-calendars.com/sv/",
+      "marketingRouteDefined": true,
+      "supportUrl": "https://www.cloud-calendars.com/",
+      "staleVersionMatches": []
+    },
+    {
+      "locale": "ta-IN",
+      "id": "70413656-8f83-4140-b413-fbcdd8f85a84",
+      "attributesPresent": [
+        "description",
+        "locale",
+        "keywords",
+        "marketingUrl",
+        "promotionalText",
+        "supportUrl",
+        "whatsNew"
+      ],
+      "descriptionHash": "7242a3a35a08ca505f9a5db30be297768dce3d8eb0e23e420f12d2b9fe3188e5",
+      "reviewedFieldMatches": {
+        "description": true,
+        "keywords": true,
+        "promotionalText": true
+      },
+      "whatsNew": null,
+      "marketingUrl": "https://www.cloud-calendars.com/",
+      "marketingRouteDefined": true,
+      "supportUrl": "https://www.cloud-calendars.com/",
+      "staleVersionMatches": []
+    },
+    {
+      "locale": "hi",
+      "id": "5c3939c4-55f7-4baf-b574-ff78c31486f0",
+      "attributesPresent": [
+        "description",
+        "locale",
+        "keywords",
+        "marketingUrl",
+        "promotionalText",
+        "supportUrl",
+        "whatsNew"
+      ],
+      "descriptionHash": "b7c1473e3eb126f2bd2e06e9abf96e50f365871b60e1c88d4c45659e68430dbf",
+      "reviewedFieldMatches": {
+        "description": true,
+        "keywords": true,
+        "promotionalText": true
+      },
+      "whatsNew": null,
+      "marketingUrl": "https://www.cloud-calendars.com/hi/",
+      "marketingRouteDefined": true,
+      "supportUrl": "https://www.cloud-calendars.com/",
+      "staleVersionMatches": []
+    }
+  ]
+}

@@ -1,0 +1,366 @@
+{
+  "date": "2026-10-22",
+  "purpose": "Read-only SDK privacy evidence for App Privacy preparation; not questionnaire answers or uploaded-binary certification.",
+  "pinnedSource": {
+    "repository": "/Users/minchomilev/work/hrapp",
+    "commit": "eda40b44af01f813d7700d1e00ec8e62b30fd67e",
+    "path": "Cloud Calendars for Google, Microsoft and iCloud.xcodeproj/project.xcworkspace/xcshareddata/swiftpm/Package.resolved",
+    "rawSha256": "779a7fa976343b37712309fb1691679b225a845d0e1195dfeb859ec06e8fbc8f",
+    "scope": "Complete immutable Package.resolved JSON parsed; two relevant pins extracted.",
+    "pins": [
+      {
+        "identity": "swift-package-manager-google-mobile-ads",
+        "kind": "remoteSourceControl",
+        "location": "https://github.com/googleads/swift-package-manager-google-mobile-ads.git",
+        "state": {
+          "revision": "ab4c505ecdd6f78ffba926ba7f9a596e2a43bec2",
+          "version": "12.5.0"
+        }
+      },
+      {
+        "identity": "swift-package-manager-google-user-messaging-platform",
+        "kind": "remoteSourceControl",
+        "location": "https://github.com/googleads/swift-package-manager-google-user-messaging-platform.git",
+        "state": {
+          "revision": "69b53394c5258b3fe688e625a998047d1f393497",
+          "version": "3.0.0"
+        }
+      }
+    ]
+  },
+  "boundedLocalSearch": {
+    "root": "/Users/minchomilev/Library/Developer/Xcode/DerivedData",
+    "method": "Listed DerivedData project directories; searched tracked local files named PrivacyInfo.xcprivacy, Package.swift and workspace-state.json under DerivedData and native .build/build. Selected device manifests from the two Google SDK artifact caches found. No whole-home search, build, dependency resolution or downloads.",
+    "limitation": "No matching GMA 12.5.0 or UMP 3.0.0 manifest established within this bounded search. Absence here does not establish absence elsewhere or in an archive."
+  },
+  "cachedManifestEvidence": [
+    {
+      "manifestPath": "/Users/minchomilev/Library/Developer/Xcode/DerivedData/Glance_Studio-edraxacpxacqscghenieniczlbsg/SourcePackages/artifacts/swift-package-manager-google-mobile-ads/GoogleMobileAds/GoogleMobileAds.xcframework/ios-arm64/GoogleMobileAds.framework/PrivacyInfo.xcprivacy",
+      "manifestRawSha256": "69fb112582fc23fc06c635c961d262a3f7b4b5654d284787491de3000dadf9d2",
+      "infoPlistPath": "/Users/minchomilev/Library/Developer/Xcode/DerivedData/Glance_Studio-edraxacpxacqscghenieniczlbsg/SourcePackages/artifacts/swift-package-manager-google-mobile-ads/GoogleMobileAds/GoogleMobileAds.xcframework/ios-arm64/GoogleMobileAds.framework/Info.plist",
+      "infoPlistRawSha256": "522540fe9c003c38435f30adca74eba237dd2a20265cf460d6ff168dca333513",
+      "frameworkVersion": "13.4.0",
+      "frameworkBuild": "1340",
+      "bundleIdentifier": "com.google.GoogleMobileAds",
+      "scope": "Complete device-slice privacy plist and complete Info.plist parsed; simulator slice not reviewed. Cache belongs to another project, not HRApp archive.",
+      "matchesPinnedDependencyVersion": false,
+      "manifest": {
+        "NSPrivacyCollectedDataTypes": [
+          {
+            "NSPrivacyCollectedDataType": "NSPrivacyCollectedDataTypeOtherDiagnosticData",
+            "NSPrivacyCollectedDataTypeLinked": false,
+            "NSPrivacyCollectedDataTypeTracking": false,
+            "NSPrivacyCollectedDataTypePurposes": [
+              "NSPrivacyCollectedDataTypePurposeThirdPartyAdvertising",
+              "NSPrivacyCollectedDataTypePurposeDeveloperAdvertising",
+              "NSPrivacyCollectedDataTypePurposeAnalytics"
+            ]
+          },
+          {
+            "NSPrivacyCollectedDataType": "NSPrivacyCollectedDataTypeCoarseLocation",
+            "NSPrivacyCollectedDataTypeLinked": true,
+            "NSPrivacyCollectedDataTypeTracking": false,
+            "NSPrivacyCollectedDataTypePurposes": [
+              "NSPrivacyCollectedDataTypePurposeThirdPartyAdvertising",
+              "NSPrivacyCollectedDataTypePurposeAnalytics",
+              "NSPrivacyCollectedDataTypePurposeDeveloperAdvertising"
+            ]
+          },
+          {
+            "NSPrivacyCollectedDataType": "NSPrivacyCollectedDataTypePerformanceData",
+            "NSPrivacyCollectedDataTypeLinked": false,
+            "NSPrivacyCollectedDataTypeTracking": false,
+            "NSPrivacyCollectedDataTypePurposes": [
+              "NSPrivacyCollectedDataTypePurposeThirdPartyAdvertising",
+              "NSPrivacyCollectedDataTypePurposeDeveloperAdvertising",
+              "NSPrivacyCollectedDataTypePurposeAnalytics"
+            ]
+          },
+          {
+            "NSPrivacyCollectedDataType": "NSPrivacyCollectedDataTypeCrashData",
+            "NSPrivacyCollectedDataTypeLinked": false,
+            "NSPrivacyCollectedDataTypeTracking": false,
+            "NSPrivacyCollectedDataTypePurposes": [
+              "NSPrivacyCollectedDataTypePurposeAnalytics"
+            ]
+          },
+          {
+            "NSPrivacyCollectedDataType": "NSPrivacyCollectedDataTypeAdvertisingData",
+            "NSPrivacyCollectedDataTypeLinked": true,
+            "NSPrivacyCollectedDataTypeTracking": false,
+            "NSPrivacyCollectedDataTypePurposes": [
+              "NSPrivacyCollectedDataTypePurposeThirdPartyAdvertising",
+              "NSPrivacyCollectedDataTypePurposeDeveloperAdvertising",
+              "NSPrivacyCollectedDataTypePurposeAnalytics"
+            ]
+          },
+          {
+            "NSPrivacyCollectedDataType": "NSPrivacyCollectedDataTypeProductInteraction",
+            "NSPrivacyCollectedDataTypeLinked": true,
+            "NSPrivacyCollectedDataTypeTracking": false,
+            "NSPrivacyCollectedDataTypePurposes": [
+              "NSPrivacyCollectedDataTypePurposeAnalytics",
+              "NSPrivacyCollectedDataTypePurposeDeveloperAdvertising",
+              "NSPrivacyCollectedDataTypePurposeThirdPartyAdvertising"
+            ]
+          },
+          {
+            "NSPrivacyCollectedDataType": "NSPrivacyCollectedDataTypeDeviceID",
+            "NSPrivacyCollectedDataTypeLinked": true,
+            "NSPrivacyCollectedDataTypeTracking": true,
+            "NSPrivacyCollectedDataTypePurposes": [
+              "NSPrivacyCollectedDataTypePurposeThirdPartyAdvertising",
+              "NSPrivacyCollectedDataTypePurposeAnalytics",
+              "NSPrivacyCollectedDataTypePurposeDeveloperAdvertising"
+            ]
+          }
+        ],
+        "NSPrivacyAccessedAPITypes": [
+          {
+            "NSPrivacyAccessedAPITypeReasons": [
+              "35F9.1"
+            ],
+            "NSPrivacyAccessedAPIType": "NSPrivacyAccessedAPICategorySystemBootTime"
+          },
+          {
+            "NSPrivacyAccessedAPITypeReasons": [
+              "CA92.1"
+            ],
+            "NSPrivacyAccessedAPIType": "NSPrivacyAccessedAPICategoryUserDefaults"
+          },
+          {
+            "NSPrivacyAccessedAPITypeReasons": [
+              "E174.1"
+            ],
+            "NSPrivacyAccessedAPIType": "NSPrivacyAccessedAPICategoryDiskSpace"
+          }
+        ]
+      }
+    },
+    {
+      "manifestPath": "/Users/minchomilev/Library/Developer/Xcode/DerivedData/Glance_Studio-edraxacpxacqscghenieniczlbsg/SourcePackages/artifacts/swift-package-manager-google-user-messaging-platform/UserMessagingPlatform/UserMessagingPlatform.xcframework/ios-arm64/UserMessagingPlatform.framework/PrivacyInfo.xcprivacy",
+      "manifestRawSha256": "45b7adb99fcd2d962a1c800fbfcc1325b57a7fa4165f416182323bb5ffe9c900",
+      "infoPlistPath": "/Users/minchomilev/Library/Developer/Xcode/DerivedData/Glance_Studio-edraxacpxacqscghenieniczlbsg/SourcePackages/artifacts/swift-package-manager-google-user-messaging-platform/UserMessagingPlatform/UserMessagingPlatform.xcframework/ios-arm64/UserMessagingPlatform.framework/Info.plist",
+      "infoPlistRawSha256": "dac509a65c31cbee9981b5a9a1cd721c78b3e31c8b53162eee87225c9b21d5eb",
+      "frameworkVersion": "3.1.0",
+      "frameworkBuild": "1",
+      "bundleIdentifier": "com.google.UserMessagingPlatform",
+      "scope": "Complete device-slice privacy plist and complete Info.plist parsed; simulator slice not reviewed. Cache belongs to another project, not HRApp archive.",
+      "matchesPinnedDependencyVersion": false,
+      "manifest": {
+        "NSPrivacyCollectedDataTypes": [
+          {
+            "NSPrivacyCollectedDataType": "NSPrivacyCollectedDataTypeCoarseLocation",
+            "NSPrivacyCollectedDataTypeLinked": false,
+            "NSPrivacyCollectedDataTypeTracking": false,
+            "NSPrivacyCollectedDataTypePurposes": [
+              "NSPrivacyCollectedDataTypePurposeAppFunctionality"
+            ]
+          },
+          {
+            "NSPrivacyCollectedDataType": "NSPrivacyCollectedDataTypePerformanceData",
+            "NSPrivacyCollectedDataTypeLinked": false,
+            "NSPrivacyCollectedDataTypeTracking": false,
+            "NSPrivacyCollectedDataTypePurposes": [
+              "NSPrivacyCollectedDataTypePurposeAppFunctionality"
+            ]
+          },
+          {
+            "NSPrivacyCollectedDataType": "NSPrivacyCollectedDataTypeProductInteraction",
+            "NSPrivacyCollectedDataTypeLinked": false,
+            "NSPrivacyCollectedDataTypeTracking": false,
+            "NSPrivacyCollectedDataTypePurposes": [
+              "NSPrivacyCollectedDataTypePurposeAppFunctionality"
+            ]
+          }
+        ],
+        "NSPrivacyAccessedAPITypes": [
+          {
+            "NSPrivacyAccessedAPITypeReasons": [
+              "CA92.1"
+            ],
+            "NSPrivacyAccessedAPIType": "NSPrivacyAccessedAPICategoryUserDefaults"
+          }
+        ]
+      }
+    },
+    {
+      "manifestPath": "/Users/minchomilev/Library/Developer/Xcode/DerivedData/StoreFrontStudio-ekvjpxbgfbnfaoatgfeihpvxpyjh/SourcePackages/artifacts/swift-package-manager-google-mobile-ads/GoogleMobileAds/GoogleMobileAds.xcframework/ios-arm64/GoogleMobileAds.framework/PrivacyInfo.xcprivacy",
+      "manifestRawSha256": "69fb112582fc23fc06c635c961d262a3f7b4b5654d284787491de3000dadf9d2",
+      "infoPlistPath": "/Users/minchomilev/Library/Developer/Xcode/DerivedData/StoreFrontStudio-ekvjpxbgfbnfaoatgfeihpvxpyjh/SourcePackages/artifacts/swift-package-manager-google-mobile-ads/GoogleMobileAds/GoogleMobileAds.xcframework/ios-arm64/GoogleMobileAds.framework/Info.plist",
+      "infoPlistRawSha256": "bd5b349fa3e6970ade44f418a729d119accaf190958baa3c14ce37c3054371d0",
+      "frameworkVersion": "13.8.0",
+      "frameworkBuild": "1380",
+      "bundleIdentifier": "com.google.GoogleMobileAds",
+      "scope": "Complete device-slice privacy plist and complete Info.plist parsed; simulator slice not reviewed. Cache belongs to another project, not HRApp archive.",
+      "matchesPinnedDependencyVersion": false,
+      "manifest": {
+        "NSPrivacyCollectedDataTypes": [
+          {
+            "NSPrivacyCollectedDataType": "NSPrivacyCollectedDataTypeOtherDiagnosticData",
+            "NSPrivacyCollectedDataTypeLinked": false,
+            "NSPrivacyCollectedDataTypeTracking": false,
+            "NSPrivacyCollectedDataTypePurposes": [
+              "NSPrivacyCollectedDataTypePurposeThirdPartyAdvertising",
+              "NSPrivacyCollectedDataTypePurposeDeveloperAdvertising",
+              "NSPrivacyCollectedDataTypePurposeAnalytics"
+            ]
+          },
+          {
+            "NSPrivacyCollectedDataType": "NSPrivacyCollectedDataTypeCoarseLocation",
+            "NSPrivacyCollectedDataTypeLinked": true,
+            "NSPrivacyCollectedDataTypeTracking": false,
+            "NSPrivacyCollectedDataTypePurposes": [
+              "NSPrivacyCollectedDataTypePurposeThirdPartyAdvertising",
+              "NSPrivacyCollectedDataTypePurposeAnalytics",
+              "NSPrivacyCollectedDataTypePurposeDeveloperAdvertising"
+            ]
+          },
+          {
+            "NSPrivacyCollectedDataType": "NSPrivacyCollectedDataTypePerformanceData",
+            "NSPrivacyCollectedDataTypeLinked": false,
+            "NSPrivacyCollectedDataTypeTracking": false,
+            "NSPrivacyCollectedDataTypePurposes": [
+              "NSPrivacyCollectedDataTypePurposeThirdPartyAdvertising",
+              "NSPrivacyCollectedDataTypePurposeDeveloperAdvertising",
+              "NSPrivacyCollectedDataTypePurposeAnalytics"
+            ]
+          },
+          {
+            "NSPrivacyCollectedDataType": "NSPrivacyCollectedDataTypeCrashData",
+            "NSPrivacyCollectedDataTypeLinked": false,
+            "NSPrivacyCollectedDataTypeTracking": false,
+            "NSPrivacyCollectedDataTypePurposes": [
+              "NSPrivacyCollectedDataTypePurposeAnalytics"
+            ]
+          },
+          {
+            "NSPrivacyCollectedDataType": "NSPrivacyCollectedDataTypeAdvertisingData",
+            "NSPrivacyCollectedDataTypeLinked": true,
+            "NSPrivacyCollectedDataTypeTracking": false,
+            "NSPrivacyCollectedDataTypePurposes": [
+              "NSPrivacyCollectedDataTypePurposeThirdPartyAdvertising",
+              "NSPrivacyCollectedDataTypePurposeDeveloperAdvertising",
+              "NSPrivacyCollectedDataTypePurposeAnalytics"
+            ]
+          },
+          {
+            "NSPrivacyCollectedDataType": "NSPrivacyCollectedDataTypeProductInteraction",
+            "NSPrivacyCollectedDataTypeLinked": true,
+            "NSPrivacyCollectedDataTypeTracking": false,
+            "NSPrivacyCollectedDataTypePurposes": [
+              "NSPrivacyCollectedDataTypePurposeAnalytics",
+              "NSPrivacyCollectedDataTypePurposeDeveloperAdvertising",
+              "NSPrivacyCollectedDataTypePurposeThirdPartyAdvertising"
+            ]
+          },
+          {
+            "NSPrivacyCollectedDataType": "NSPrivacyCollectedDataTypeDeviceID",
+            "NSPrivacyCollectedDataTypeLinked": true,
+            "NSPrivacyCollectedDataTypeTracking": true,
+            "NSPrivacyCollectedDataTypePurposes": [
+              "NSPrivacyCollectedDataTypePurposeThirdPartyAdvertising",
+              "NSPrivacyCollectedDataTypePurposeAnalytics",
+              "NSPrivacyCollectedDataTypePurposeDeveloperAdvertising"
+            ]
+          }
+        ],
+        "NSPrivacyAccessedAPITypes": [
+          {
+            "NSPrivacyAccessedAPITypeReasons": [
+              "35F9.1"
+            ],
+            "NSPrivacyAccessedAPIType": "NSPrivacyAccessedAPICategorySystemBootTime"
+          },
+          {
+            "NSPrivacyAccessedAPITypeReasons": [
+              "CA92.1"
+            ],
+            "NSPrivacyAccessedAPIType": "NSPrivacyAccessedAPICategoryUserDefaults"
+          },
+          {
+            "NSPrivacyAccessedAPITypeReasons": [
+              "E174.1"
+            ],
+            "NSPrivacyAccessedAPIType": "NSPrivacyAccessedAPICategoryDiskSpace"
+          }
+        ]
+      }
+    },
+    {
+      "manifestPath": "/Users/minchomilev/Library/Developer/Xcode/DerivedData/StoreFrontStudio-ekvjpxbgfbnfaoatgfeihpvxpyjh/SourcePackages/artifacts/swift-package-manager-google-user-messaging-platform/UserMessagingPlatform/UserMessagingPlatform.xcframework/ios-arm64/UserMessagingPlatform.framework/PrivacyInfo.xcprivacy",
+      "manifestRawSha256": "45b7adb99fcd2d962a1c800fbfcc1325b57a7fa4165f416182323bb5ffe9c900",
+      "infoPlistPath": "/Users/minchomilev/Library/Developer/Xcode/DerivedData/StoreFrontStudio-ekvjpxbgfbnfaoatgfeihpvxpyjh/SourcePackages/artifacts/swift-package-manager-google-user-messaging-platform/UserMessagingPlatform/UserMessagingPlatform.xcframework/ios-arm64/UserMessagingPlatform.framework/Info.plist",
+      "infoPlistRawSha256": "dac509a65c31cbee9981b5a9a1cd721c78b3e31c8b53162eee87225c9b21d5eb",
+      "frameworkVersion": "3.1.0",
+      "frameworkBuild": "1",
+      "bundleIdentifier": "com.google.UserMessagingPlatform",
+      "scope": "Complete device-slice privacy plist and complete Info.plist parsed; simulator slice not reviewed. Cache belongs to another project, not HRApp archive.",
+      "matchesPinnedDependencyVersion": false,
+      "manifest": {
+        "NSPrivacyCollectedDataTypes": [
+          {
+            "NSPrivacyCollectedDataType": "NSPrivacyCollectedDataTypeCoarseLocation",
+            "NSPrivacyCollectedDataTypeLinked": false,
+            "NSPrivacyCollectedDataTypeTracking": false,
+            "NSPrivacyCollectedDataTypePurposes": [
+              "NSPrivacyCollectedDataTypePurposeAppFunctionality"
+            ]
+          },
+          {
+            "NSPrivacyCollectedDataType": "NSPrivacyCollectedDataTypePerformanceData",
+            "NSPrivacyCollectedDataTypeLinked": false,
+            "NSPrivacyCollectedDataTypeTracking": false,
+            "NSPrivacyCollectedDataTypePurposes": [
+              "NSPrivacyCollectedDataTypePurposeAppFunctionality"
+            ]
+          },
+          {
+            "NSPrivacyCollectedDataType": "NSPrivacyCollectedDataTypeProductInteraction",
+            "NSPrivacyCollectedDataTypeLinked": false,
+            "NSPrivacyCollectedDataTypeTracking": false,
+            "NSPrivacyCollectedDataTypePurposes": [
+              "NSPrivacyCollectedDataTypePurposeAppFunctionality"
+            ]
+          }
+        ],
+        "NSPrivacyAccessedAPITypes": [
+          {
+            "NSPrivacyAccessedAPITypeReasons": [
+              "CA92.1"
+            ],
+            "NSPrivacyAccessedAPIType": "NSPrivacyAccessedAPICategoryUserDefaults"
+          }
+        ]
+      }
+    }
+  ],
+  "officialPrimary": {
+    "url": "https://developers.google.com/admob/ios/privacy/data-disclosure",
+    "accessed": "2026-10-22",
+    "pageUpdated": "2026-10-21",
+    "readScope": "Full substantive main body lines77–106 of165, including collection list95–103 and manifest guidance104–106; navigation/footer excluded.",
+    "searchQuery": "site:developers.google.com/admob/ios data disclosure App Store privacy diagnostics identifiers user messaging platform",
+    "summary": "Google identifies potential collection of IP-derived general location, crash and performance diagnostics, device identifiers, ad exposure and product interactions. Its guide describes practices since SDK7.68.0, with privacy manifests supported from11.2.0. Optional features/tests can require additional disclosures. The developer must inspect the applicable manifest and keep disclosures current.",
+    "limit": "General current publisher guidance, not exact version12.5.0 declaration, application runtime observation or proof of enabled optional features."
+  },
+  "conclusions": [
+    "Immutable source pins Google Mobile Ads12.5.0 and UMP3.0.0. This proves source resolution only, not which archive was uploaded.",
+    "Local comparative GMA manifests are13.4.0/13.8.0; both declare DeviceID linked and used for tracking. Other declared types and purpose/link flags are preserved verbatim in records. Do not substitute these newer manifests for the pinned versions.",
+    "Both comparative UMP manifests are3.1.0 and declare coarse location, performance and product interaction for app functionality, not linked and not tracking. They do not prove UMP3.0.0 behavior.",
+    "A tracking=false flag for one data type or UMP does not establish that the app as a whole does not track. ATT/consent state and app/SDK configuration need their own evidence.",
+    "App Privacy encompasses application and relevant SDK practices. These records do not settle app-specific collection, backend behavior, consent configuration, mediation or all purposes."
+  ],
+  "nextEvidenceNeeded": [
+    "Inspect the actual submitted archive or its retained privacy report and exact matching SDK manifests, without assuming current local caches represent it.",
+    "Combine exact-version declarations with the already reviewed app data flows and owner-confirmed production ad/consent configuration before final questionnaire choices."
+  ],
+  "operationsNotPerformed": [
+    "No App Store Connect writes",
+    "No builds or dependency downloads",
+    "No account/customer/calendar actions",
+    "No configuration changes",
+    "No uploaded archive inspected",
+    "No runtime network observation"
+  ]
+}

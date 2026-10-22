@@ -1,0 +1,32 @@
+{
+  "decision": "APPROVE DESCRIPTION TEXT",
+  "file": "research/asc-priority-20261022/description-en-draft.txt",
+  "rawSha256": "7114a539ea780015f244c4c6596750ef6c8be6ebdbdd32445af5696f5047929b",
+  "unicodeCharactersIncludingFinalNewline": 3895,
+  "unicodeCharactersTrimmed": 3894,
+  "limit": 4000,
+  "readScope": "Complete proposed description and complete current en-US description from fresh live-snapshot read. All six current English article bodies independently read in description-article-evidence.json; latest immutable weather-map and prior App Clip/provider/widget/plan evidence reused. No runtime or API operation.",
+  "requiredFixes": [],
+  "findings": [
+    "Concrete benefits and useful planning cases replace a thin feature list: selected-calendar overview, available hourly weather, forecast-hour draft, single-event sharing, Home Screen event layouts, weekly overlap checks.",
+    "iCloud device availability and selected calendars qualified; Microsoft explicitly Premium. Combined view does not promise provider merging or cross-account busy masking.",
+    "App Clip is an event preview requiring full app for adding; sign-in conditions retained. No anonymous sharing/guaranteed automatic delivery/RSVP claim.",
+    "Weather place/date/availability explicit; no every-event-address mapping,14-day guarantee or automatic booking. Wind/temperature map is supported by pinned build16 source; source-to-binary limitation remains in provenance records.",
+    "Widgets distinguish date/weather from medium/large event lists. Future timed eligibility and all-day exclusion retained; no Lock Screen widget, complete schedule or fixed refresh deadline claim.",
+    "Drag/resize restricted to editable appointments with calendar/time/repeat-scope checks; no mandatory occurrence prompt or universal provider acceptance promised.",
+    "Base/Advanced/Premium roles align with audited plan source; no paid provider permissions or privacy guarantee.",
+    "Current legal/subscription block preserved except removing redundant account from Apple ID account; privacy and EULA URLs unchanged."
+  ],
+  "optionalPolish": [],
+  "legalComparison": {
+    "sameAfterNarrowAppleIDWordingNormalization": true,
+    "policyAndEulaUrlsPreserved": true,
+    "scope": "Editorial preservation check, not new legal certification."
+  },
+  "keywords": {
+    "status": "Not reviewed in this task; no keyword proposal included.",
+    "limitRequested": 100
+  },
+  "submissionBoundary": "Approval applies only to description wording. The separately recorded App Privacy readiness gate remains unresolved; this approval is not authorization or confirmation of complete submission readiness.",
+  "evidenceFile": "research/asc-priority-20261022/description-article-evidence.json"
+}

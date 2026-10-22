@@ -1,0 +1,229 @@
+{
+  "date": "2026-10-22",
+  "purpose": "Six complete current English guides reviewed for stronger factual ASC description; research only.",
+  "readScope": "All six complete objects extracted from current modules and read including FAQs/practical/source/related fields. Initial combined output truncated two weather objects; both were recovered and fully read separately. No reliance on title/slug alone.",
+  "evidence": [
+    {
+      "slug": "icloud-google-and-outlook-in-one-view",
+      "articleUrl": "https://www.cloud-calendars.com/articles/icloud-google-and-outlook-in-one-view/",
+      "sourceFile": "src/app/content/en-US/articles-unify.ts",
+      "sourceFileSha256": "8c8785adab5d23195f1439a55d76f9d278d7e8ebb89d59ef63e6c89520111b46",
+      "objectSha256": "0488e74254f99f86ce2495d2831f8fd94ffa04685875d48b8c7fcbbff665867f",
+      "fullObjectRead": true,
+      "sections": 6,
+      "sources": [
+        {
+          "label": "Apple: set up iCloud Calendar on your devices",
+          "url": "https://support.apple.com/guide/icloud/set-up-calendar-mme4d73a8727/icloud"
+        },
+        {
+          "label": "Google: calendar sharing and permissions",
+          "url": "https://support.google.com/calendar/answer/37082?hl=en"
+        },
+        {
+          "label": "Microsoft: Outlook calendar API and supported mailbox data",
+          "url": "https://learn.microsoft.com/en-us/graph/outlook-calendar-concept-overview"
+        }
+      ],
+      "supportedDescriptionLine": "See work and personal plans together. View selected iCloud and Google calendars, with Microsoft calendars available in Premium.",
+      "useCase": "Compare a family appointment, client call and work meeting without switching calendar views.",
+      "alignmentPaths": [
+        "sections[0]",
+        "sections[1]",
+        "sections[2]"
+      ],
+      "essentialBounds": [
+        "iCloud calendars require device setup/calendar access; Google/Microsoft sign-in and provider permissions apply.",
+        "Combined view is not automatic busy masking or a merge; device calendar copies can be created."
+      ]
+    },
+    {
+      "slug": "sharing-one-event-not-your-calendar",
+      "articleUrl": "https://www.cloud-calendars.com/articles/sharing-one-event-not-your-calendar/",
+      "sourceFile": "src/app/content/en-US/articles-sharing.ts",
+      "sourceFileSha256": "fce32260dbb1c5872d27bba6d564392fbb07799f90a01966825d613a1275b8cd",
+      "objectSha256": "d99b4e64a7433d3142ade790d94b0d9ffa1bb5f18ba52b60fe05e55af308613e",
+      "fullObjectRead": true,
+      "sections": 6,
+      "sources": [
+        {
+          "label": "Apple: overview of App Clips",
+          "url": "https://developer.apple.com/help/app-store-connect/offer-app-clip-experiences/overview-of-app-clips/"
+        },
+        {
+          "label": "Google: importing events and its limitations",
+          "url": "https://support.google.com/calendar/answer/37118?co=GENIE.Platform%3DDesktop&hl=en"
+        },
+        {
+          "label": "Microsoft: importing versus subscribing to a calendar",
+          "url": "https://support.microsoft.com/en-us/outlook/import-or-subscribe-to-a-calendar-in-outlook-com-or-outlook-on-the-web"
+        }
+      ],
+      "supportedDescriptionLine": "Share one event without sharing the whole calendar. Send an email or QR invitation, or offer an App Clip preview.",
+      "useCase": "Send dinner details or give a co-organizer access to a specific event.",
+      "alignmentPaths": [
+        "sections[0]",
+        "sections[1]",
+        "sections[2]",
+        "sections[3]"
+      ],
+      "essentialBounds": [
+        "App Clip previews; full app needed for adding.",
+        "Synchronized sharing requires sign-in; Writer/Owner require appropriate identity.",
+        "Updates are not immediate delivery guarantees; no attendance RSVP or erased-copy promise."
+      ]
+    },
+    {
+      "slug": "weather-inside-your-calendar",
+      "articleUrl": "https://www.cloud-calendars.com/articles/weather-inside-your-calendar/",
+      "sourceFile": "src/app/content/en-US/articles-weather.ts",
+      "sourceFileSha256": "c937a186a28d458c002ca4ec34ae5a1335036a9685dc1e8476442ea700989415",
+      "objectSha256": "9cc75e958975ad33340157a648503f3d5de33cee4b9f8cb3f63c6b06d915df28",
+      "fullObjectRead": true,
+      "sections": 6,
+      "sources": [
+        {
+          "label": "Apple: WeatherKit forecast information and regional availability",
+          "url": "https://developer.apple.com/weatherkit/"
+        },
+        {
+          "label": "Met Office: forecast place, periods and weather values",
+          "url": "https://weather.metoffice.gov.uk/guides/what-does-this-forecast-mean"
+        }
+      ],
+      "supportedDescriptionLine": "Plan with calendar and weather together on iPhone and iPad. Check Apple WeatherKit forecasts for your current or selected place.",
+      "useCase": "Compare an outdoor appointment with the forecast for the place and hours that matter.",
+      "alignmentPaths": [
+        "sections[1]",
+        "sections[2]",
+        "sections[3]"
+      ],
+      "essentialBounds": [
+        "No automatic per-event-address weather.",
+        "Available forecast dates/hours and regional products vary; omit blanket10/14day guarantee.",
+        "Website Open-Meteo demo is separate."
+      ]
+    },
+    {
+      "slug": "forecast-beside-every-event",
+      "articleUrl": "https://www.cloud-calendars.com/articles/forecast-beside-every-event/",
+      "sourceFile": "src/app/content/en-US/articles-weather.ts",
+      "sourceFileSha256": "c937a186a28d458c002ca4ec34ae5a1335036a9685dc1e8476442ea700989415",
+      "objectSha256": "168075686ee5c11770b93d13062db77a317b9d8fee30d7c78e0e040849a19146",
+      "fullObjectRead": true,
+      "sections": 5,
+      "sources": [
+        {
+          "label": "Apple: WeatherKit forecasts and regional availability",
+          "url": "https://developer.apple.com/weatherkit/"
+        },
+        {
+          "label": "Apple: Privacy and Location Services",
+          "url": "https://support.apple.com/en-us/102515"
+        }
+      ],
+      "supportedDescriptionLine": "Turn a forecast hour into an event draft, then review the time and destination calendar before saving.",
+      "useCase": "Choose a possible outdoor appointment time from available hourly weather, then create the intended calendar entry.",
+      "alignmentPaths": [
+        "sections[3]"
+      ],
+      "essentialBounds": [
+        "Draft action, not automatic save/booking/permission grant.",
+        "Do not market a dedicated full forecast embedded in every event; current guide explicitly declines that promise."
+      ]
+    },
+    {
+      "slug": "the-widget-that-shows-what-is-next",
+      "articleUrl": "https://www.cloud-calendars.com/articles/the-widget-that-shows-what-is-next/",
+      "sourceFile": "src/app/content/en-US/articles-widgets.ts",
+      "sourceFileSha256": "432eaae6e6afd8c1c8ec358e9f6356a7c87a99cdf654a3ce22eed7f21ffa3490",
+      "objectSha256": "f806948ffc194209adcaf339a1c3503960089a461ecb3b51b527b8704c1dfeef",
+      "fullObjectRead": true,
+      "sections": 7,
+      "sources": [
+        {
+          "label": "Apple: Add and edit widgets on iPhone",
+          "url": "https://support.apple.com/118610"
+        },
+        {
+          "label": "Apple: Keeping a widget up to date",
+          "url": "https://developer.apple.com/documentation/widgetkit/keeping-a-widget-up-to-date"
+        },
+        {
+          "label": "Apple: Add, edit, and remove widgets on iPad",
+          "url": "https://support.apple.com/guide/ipad/add-edit-and-remove-widgets-ipadb0de8630/ipados"
+        }
+      ],
+      "supportedDescriptionLine": "Keep upcoming timed appointments on your Home Screen with medium and large event-list widgets, or choose a date-and-weather layout.",
+      "useCase": "Check the next eligible appointment at a glance; use the larger list for more upcoming rows.",
+      "alignmentPaths": [
+        "sections[0]",
+        "sections[1]",
+        "sections[2]",
+        "sections[3]"
+      ],
+      "essentialBounds": [
+        "Selected calendars and future timed entries; all-day/ongoing excluded.",
+        "Finite rows, not complete day/week or all commitments.",
+        "No instant refresh, Lock Screen widget or universal device synchronization claim."
+      ]
+    },
+    {
+      "slug": "a-week-view-that-fits-a-week",
+      "articleUrl": "https://www.cloud-calendars.com/articles/a-week-view-that-fits-a-week/",
+      "sourceFile": "src/app/content/en-US/articles-planning.ts",
+      "sourceFileSha256": "c0e35ecea46ad8b371bacb7f6d1c5be2f9acbf861b8e6b3dfd2b24a2224d4f97",
+      "objectSha256": "9a3de18dcfae3806dcf3217b7314131549327615892cdc3b09eac50d61ab9ffd",
+      "fullObjectRead": true,
+      "sections": 7,
+      "sources": [
+        {
+          "label": "Apple: month, multiple-day and list views in Apple Calendar",
+          "url": "https://support.apple.com/en-ca/guide/iphone/iphfd1054569/ios"
+        },
+        {
+          "label": "Teamup: view choices and browser versus mobile settings",
+          "url": "https://calendar.teamup.com/kb/how-to-use-calendar-views/"
+        },
+        {
+          "label": "Apple: week start, week numbers and alternate calendar display",
+          "url": "https://support.apple.com/en-by/guide/iphone/iphc37be2016/ios"
+        },
+        {
+          "label": "Fantastical for iOS: calendar-view settings",
+          "url": "https://flexibits.com/fantastical-ios/help/settings"
+        }
+      ],
+      "supportedDescriptionLine": "Compare start times, durations and overlaps in the week view. Scroll day columns and open event details when you need a closer look.",
+      "useCase": "Review work and family commitments across days; keep all-day plans separate from hourly blocks.",
+      "alignmentPaths": [
+        "sections[0]",
+        "sections[2]",
+        "sections[3]",
+        "sections[5]"
+      ],
+      "essentialBounds": [
+        "No blank-gap availability guarantee.",
+        "Drag/resize subject to rights and recurrence scope; no participant acceptance guarantee.",
+        "Week numbers, custom numbering and alternate-calendar overlays in article belong to Apple/Fantastical instructions, not Cloud feature promises."
+      ]
+    }
+  ],
+  "suggestedOpening": "Bring work, personal plans and weather into one calendar on iPhone and iPad. Compare selected calendars, check the forecast for your plans, and keep upcoming appointments on your Home Screen.",
+  "suggestedFeatureOrder": [
+    "Selected iCloud/Google calendar overview; Premium Microsoft distinction.",
+    "Weather by selected place and available hours, including forecast-hour event draft.",
+    "Single-event sharing with separate email/QR/App Clip preview routes.",
+    "Home Screen event lists versus date/weather layouts.",
+    "Week view, details and permitted editing.",
+    "Clear Base/Advanced/Premium terms and sign-in boundaries."
+  ],
+  "shortPlanLine": "Start with Base for Google calendar features, weather and widgets. Advanced removes ads; Premium adds Microsoft Calendar and Teams. Local calendars can be used without an app account; provider connections and sharing have their own sign-in and permission requirements.",
+  "linkRecommendation": "Use the actual article routes above as optional learn-more links for concrete tasks, not as substitutes for explaining the features in the description. Avoid describing provider setup guidance as Cloud controls.",
+  "sourceTruthLimits": [
+    "These are source-aligned product statements from audited articles; no new runtime test or binary correspondence proof.",
+    "Latest immutable native privacy evidence remains research/batch41-release/native-privacy-delta.json; source/API/privacy readiness remain separately assessed.",
+    "Do not import unsupported editorial claims of uniqueness, universal synchronization, private-by-default/no-data-collection or guaranteed delivery."
+  ],
+  "noMutations": "Only this research JSON; no source or API writes."
+}

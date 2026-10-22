@@ -1,6 +1,122 @@
 import { LocalisedArticle } from '../types';
 
 export const HELP_DE_DE: Readonly<Record<string, LocalisedArticle>> = {
+  "a-week-view-that-fits-a-week": {
+  "updated": "2026-10-22",
+  "title": "Wochenansicht auf dem iPhone: Zeiten vergleichen, ohne Termine zu übersehen",
+  "short": "Die Wochenansicht richtig lesen",
+  "description": "Prüfe Wochenbeginn, Kalenderwoche, Datumsbereich und ausgewählte Kalender auf dem iPhone, bevor du eine scheinbar freie Zeit anbietest.",
+  "lede": "Ein Wochenraster hilft, Beginn und Ende von Terminen zu vergleichen. Prüfe zuerst, welche Daten und Kalender es zeigt. Öffne die Details, wenn ein kleiner Block oder ein gekürzter Titel Fragen offenlässt. Diese Anleitung stammt von Arte Soft, dem Entwickler von Cloud Calendars.",
+  "commonBelief": "Jede sichtbare Lücke ist freie Zeit, und jeder Termin erscheint als Block im Stundenraster.",
+  "sections": [
+    {
+      "heading": "Prüfe, welche Woche und welche Kalender du vor dir hast",
+      "body": [
+        "Lies den Datumsbereich und die Tagesbeschriftungen, bevor du einen Termin einträgst. Ein ausgewählter Zeitraum ist nicht unbedingt die Woche, die du im Sinn hattest. Prüfe, ob die für deine Entscheidung wichtigen Arbeits-, Familien- oder anderen Kalender ausgewählt sind. Nicht jeder verbundene Kalender muss gerade sichtbar sein.",
+        "Eine persönliche Ansicht kann etwa den Arbeitskalender ausblenden, damit sie übersichtlicher bleibt. Der scheinbar freie Nachmittag belegt dann nicht, dass im Arbeitskalender nichts steht. Blende die relevanten Kalender ein, bevor du die Zeit anbietest, und prüfe bei einer unbekannten Farbe, welches Konto dahintersteht."
+      ]
+    },
+    {
+      "heading": "Unterscheide den Wochenbeginn von anderen Datumseinstellungen",
+      "body": [
+        "Beginnen zwei Kalenderansichten an verschiedenen Tagen, vergleiche zuerst ihre Datumsüberschriften, bevor du einen Termin änderst. Eine feste Woche ab Montag oder Sonntag unterscheidet sich von einer fortlaufenden Ansicht ab heute oder einem gewählten Datum. Prüfe die Optionen deiner tatsächlich verwendeten App und Version. Öffne die Ansicht danach erneut, um den angezeigten Zeitraum zu kontrollieren. Verschiebe keine Termine nur deshalb, damit zwei Raster gleich aussehen.",
+        "Apple beschreibt diese Optionen unter Einstellungen > Apps > Kalender: Start Week On legt den ersten Wochentag fest, während Week View Starts On Today den Ausgangspunkt der Wochenansicht ändert. Auch Fantastical unterscheidet Start Week On und Start Week View On. Diese Anleitungen gelten für die jeweiligen Anwendungen. Eine Anzeigeeinstellung in Apple Kalender zu ändern bedeutet nicht, dass jede andere Kalender-App sie übernimmt.",
+        "Kalenderwochen sind eine weitere Einstellung. Apple beschreibt Week Numbers, Fantastical Show Calendar Weeks mit einem optionalen eigenen Anfangsdatum. Fragt jemand nach „Woche 12“, bestätige das Jahr sowie das tatsächliche Anfangs- und Enddatum — besonders beim Vergleich verschiedener Systeme oder rund um den Jahreswechsel. Montag als erste Spalte legt für sich genommen nicht fest, nach welcher Regel die Wochen nummeriert werden.",
+        "Alternative Datumsangaben sind ebenfalls etwas anderes als Kalenderkonten. Apples Einstellung Alternate Calendars kann chinesische, hebräische oder Hidschri-Daten neben gregorianischen Daten anzeigen. Diese Anzeigeoption verbindet weder den Kalender einer anderen Person noch importiert sie einen Feiertagskalender. Lies das tatsächliche Termindatum, bevor du eine Buchung zusagst, und setze eine solche doppelte Datumsanzeige in anderen Apps nicht voraus.",
+        "Schreibe bei einem gemeinsamen Plan den Datumsbereich ausdrücklich dazu, statt dich nur auf eine Kalenderwoche oder die erste Spalte eines Screenshots zu verlassen. Prüfe die ausgewählten Kalender erneut, bevor du Zeit anbietest. Fehlt deiner installierten App eine benötigte Anzeigeoption, nutze die passende Ansicht des Anbieters und vergleiche die Daten. Eine ungewohnte Beschriftung ist kein Beleg dafür, dass der zugrunde liegende Termin verschoben werden muss."
+      ]
+    },
+    {
+      "heading": "Vergleiche die Zeitblöcke und öffne anschließend die Details",
+      "body": [
+        "Vergleiche Beginn, Ende und Überschneidungen im Stundenraster. Ein schmaler Termin kann schwer lesbar sein. Öffne ihn, um den vollständigen Titel, Ort und Kalender zu prüfen. Leite eine genaue Dauer nicht allein aus der scheinbaren Größe eines kleinen Blocks ab.",
+        "Überschneiden sich zwei Termine, kläre zuerst, ob es verschiedene Verpflichtungen oder zwei Darstellungen desselben Eintrags sind. Ähnliche Titel und identische Zeiten beweisen kein Duplikat. Blende vorübergehend einen Kalender aus, um die Quelle zu erkennen, statt eine Einladung zu löschen, nur um das Raster aufzuräumen."
+      ]
+    },
+    {
+      "heading": "Lies ganztägige Ereignisse getrennt von den Lücken im Stundenraster",
+      "body": [
+        "Cloud Calendars zeigt ganztägige Ereignisse in der Mehrtagesansicht getrennt von Terminen mit Uhrzeit. Prüfe diesen Bereich ebenso wie die Stundenspalten. Ein Feiertag, eine Reise oder eine ganztägige Verpflichtung kann wichtig sein, obwohl das Stundenraster leer aussieht.",
+        "Ein ganztägiger Eintrag sagt für sich genommen nicht, welche Stunden du anderen anbieten kannst. Öffne das Ereignis und kläre, was es tatsächlich bedeutet. Prüfe bei einer mehrtägigen Reise Anfangs- und Enddatum, statt anzunehmen, dass eine einzelne sichtbare Beschriftung jeden betroffenen Tag beschreibt."
+      ]
+    },
+    {
+      "heading": "Berücksichtige auch Planungsbedarf, der noch kein Termin ist",
+      "body": [
+        "Ein Kalender kann nur Informationen anzeigen, die ihm vorliegen. Anfahrt, Vorbereitung oder Erholung benötigen möglicherweise einen eigenen vereinbarten Zeitblock, wenn sie eine Buchung beeinflussen. Eine Lücke zwischen zwei gespeicherten Besprechungen belegt nicht, dass du in dieser Zeit zwischen den Orten reisen kannst.",
+        "Notiere bei einem Workshop nach einem bestehenden Termin den tatsächlichen Reise- und Aufbauaufwand, bevor du den Beginn festlegst. Das ist eine Planungsmethode, keine Zusage, dass Cloud Calendars automatisch Reisepuffer berechnet oder Zeit in den Buchungssystemen deiner Kollegen reserviert.",
+        "Trage eine bestätigte Schicht von Montag 22:00 Uhr bis Dienstag 06:00 Uhr als Termin mit Uhrzeit ein und wähle Dienstag ausdrücklich als Enddatum. Öffne den gespeicherten Termin erneut und prüfe beide Daten, Uhrzeiten, den Kalender und die relevante Zeitzone. Eine Montagsbeschriftung allein vermittelt nicht, dass die Schicht am Dienstag endet. Berücksichtige vor einem Termin am Dienstagmorgen den tatsächlichen Heimweg und deinen Erholungsbedarf. Maßgeblich für die Schicht ist der bestätigte Dienstplan des Arbeitgebers. Bei Wiederholungen hilft die unten verlinkte Anleitung; verwende eine Regel nur, wenn sie zu diesem Dienstplan passt. Eine Änderung im persönlichen Kalender genehmigt keinen Schichttausch."
+      ]
+    },
+    {
+      "heading": "Wechsle vor einer wichtigen Änderung in eine genauere Ansicht",
+      "body": [
+        "Benötigt der gewählte Zeitraum mehr Platz als auf dem Bildschirm verfügbar ist, kann Cloud Calendars die Tagesspalten scrollen, statt sie alle gleichzeitig zusammenzudrängen. Achte beim Scrollen auf die Tagesbeschriftungen. Öffne den Tag oder die Termindetails, wenn du eine bestimmte Verpflichtung genauer prüfen musst.",
+        "Prüfe vor dem Ziehen oder Ändern der Blockgröße den Kalender, die beabsichtigte Ortszeit und den Umfang der Änderung bei Wiederholungen. Öffne den Termin nach einer erlaubten Änderung erneut und kontrolliere das Ergebnis. Eine scheinbar erfolgreiche Geste beweist nicht, dass der zuständige Dienst und alle Teilnehmenden die neue Vereinbarung übernommen haben."
+      ]
+    },
+    {
+      "heading": "Ordne Ansichtsoptionen und Wetterabdeckung richtig ein",
+      "body": [
+        "Apple Kalender und Teamup beschreiben ihre eigenen Bedienelemente für die Wochenansicht. Teamup unterscheidet zudem zwischen Einstellungen im Browser und mobilen Ansichten. Daraus ergeben sich nicht automatisch dieselben Bedienelemente in Cloud Calendars. Wähle die Ansicht in der App, die du tatsächlich verwendest.",
+        "Eine Woche mit Terminen garantiert keine vollständigen Wetterinformationen für jeden Tag und Ort. Prüfe für einen Termin im Freien den gewählten Vorhersageort sowie die verfügbaren Daten und Stunden gesondert. Teile die endgültige Vereinbarung anschließend über den vereinbarten Kommunikationsweg mit."
+      ]
+    }
+  ],
+  "claims": {},
+  "practical": [
+    "Prüfe den Datumsbereich und die ausgewählten Kalender.",
+    "Vergleiche den tatsächlichen Datumsbereich, den Wochenbeginn und mögliche Kalenderwochen oder alternative Datumsangaben, bevor du dich auf einen Screenshot oder eine nummerierte Arbeitswoche verlässt.",
+    "Lies genaue Anfangs- und Endzeiten nach, wenn ein Block unklar ist.",
+    "Prüfe ganztägige Verpflichtungen ebenso wie Termine mit Uhrzeit.",
+    "Berücksichtige tatsächliche Wege und Vorbereitung, bevor du eine Lücke anbietest.",
+    "Bestätige Bearbeitungsrechte, Ortszeit und den Umfang einer Änderung bei Wiederholungen.",
+    "Öffne den gespeicherten Termin erneut und bestätige wichtige Änderungen direkt."
+  ],
+  "faq": [
+    {
+      "q": "Bedeutet eine leere Stelle in der Woche, dass alle frei sind?",
+      "a": "Nein. Sie zeigt nur die gerade eingeblendeten Kalender und verfügbaren Informationen. Prüfe ausgeblendete Verpflichtungen und bestätige die Verfügbarkeit mit den Beteiligten."
+    },
+    {
+      "q": "Warum kann eine Woche trotz einer ganztägigen Verpflichtung leer aussehen?",
+      "a": "Ganztägige Ereignisse stehen getrennt von den Zeitblöcken. Prüfe diesen Bereich und öffne das Ereignis, bevor du die Zeit anbietest."
+    },
+    {
+      "q": "Soll ich einen Termin ziehen, dessen Titel ich nicht lesen kann?",
+      "a": "Öffne zuerst seine Details. Kläre, welcher Termin es ist, zu welchem Kalender er gehört, wann er stattfindet und welche Wiederholungen geändert werden sollen, bevor du ihn bearbeitest."
+    },
+    {
+      "q": "Legt Montag als Wochenbeginn auch die Kalenderwochen fest?",
+      "a": "Davon solltest du nicht ausgehen. In den beschriebenen Abläufen von Apple und Fantastical sind der erste Wochentag, der Beginn einer fortlaufenden Ansicht und die Anzeige von Kalenderwochen getrennte Optionen. Bestätige die angezeigten Daten und die Zählweise der Person, die den Plan teilt."
+    }
+  ],
+  "sourcesHeading": "Offizielle Beschreibungen der Ansichten zum Vergleich",
+  "sources": [
+    {
+      "label": "Apple: Monats-, Mehrtages- und Listenansichten in Apple Kalender",
+      "url": "https://support.apple.com/en-ca/guide/iphone/iphfd1054569/ios"
+    },
+    {
+      "label": "Teamup: Ansichten sowie Einstellungen im Browser und auf Mobilgeräten",
+      "url": "https://calendar.teamup.com/kb/how-to-use-calendar-views/"
+    },
+    {
+      "label": "Apple: Wochenbeginn, Kalenderwochen und alternative Datumsanzeige",
+      "url": "https://support.apple.com/en-by/guide/iphone/iphc37be2016/ios"
+    },
+    {
+      "label": "Fantastical für iOS: Einstellungen der Kalenderansicht",
+      "url": "https://flexibits.com/fantastical-ios/help/settings"
+    }
+  ],
+  "seeAlso": [
+    "month-view-on-a-bigger-screen",
+    "drag-an-event-to-move-it",
+    "recurring-events-without-the-mess"
+  ]
+},
+
   "time-zones-and-the-flight-you-booked": {
   "updated": "2026-10-22",
   "title": "Zeitzonen im Kalender: Termine vor der Reise prüfen",
@@ -294,7 +410,8 @@ export const HELP_DE_DE: Readonly<Record<string, LocalisedArticle>> = {
   "seeAlso": [
     "drag-an-event-to-move-it",
     "what-guests-can-do-to-your-event",
-    "time-zones-and-the-flight-you-booked"
+    "time-zones-and-the-flight-you-booked",
+    "a-week-view-that-fits-a-week"
   ]
 },
 

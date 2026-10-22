@@ -1,0 +1,23 @@
+{
+  "checkedAt": "2026-10-22T05:51:17.717646+00:00",
+  "previousTurn": "progress: batch42 published two full reviewed guide changes; all531public artifacts matched and commit7fb57c8pushed",
+  "primaryReads": [
+    {
+      "url": "https://flexibits.com/fantastical-ios/help/settings",
+      "scope": "Full substantive settings61\u2013150 visible rootread; CalendarViews91\u2013108 used",
+      "finding": "Firstweekday,viewalignmentandcustomweeklabels distinct."
+    },
+    {
+      "url": "https://support.apple.com/en-by/guide/iphone/iphc37be2016/ios",
+      "scope": "Full substantive1136\u20131203;display1186\u20131202 used",
+      "finding": "AppleCalendarsettingsnotuniversal thirdparty preference propagation."
+    },
+    {
+      "url": "https://www.busymac.com/docs/busycal/70588-week-view/",
+      "scope": "WeekViewbody91\u2013220read;notallremainingbody",
+      "finding": "MacBusyCalOneWeekvsrolling7days reinforces taskdistinction; notaddedasCloud/iPhoneinstructions."
+    }
+  ],
+  "enReview": "Read complete pinned current guide via batch43-current-bodies snapshot and full proposed five-paragraph addition,description,FAQ,sources. Actualdate/yearcheck notISO promise. No native exactpublicUIsteps added.",
+  "scope": "Targeted editorial/provider evidence; no freshChatGPT/rank/volume test or currentpublicCloudcontrol runtime."
+}

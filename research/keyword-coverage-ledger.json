@@ -10,7 +10,7 @@
     "No content is declared researched merely because a corresponding route exists."
   ],
   "currentInventory": {
-    "articles": 464,
+    "articles": 465,
     "locales": [
       "ar-SA",
       "bg",
@@ -45,7 +45,7 @@
     ],
     "englishArticles": 58,
     "evidence": "research/content-inventory-20261021.json",
-    "scope": "Fresh source inventory after batch42; not quality approval for all translations."
+    "scope": "Fresh batch43 source inventory; not all-localization quality approval."
   },
   "clusters": [
     {
@@ -296,7 +296,23 @@
           }
         ]
       },
-      "coverageScope": "Complete reviewed current English bodies and recorded/fresh scoped primary evidence. Not all translated bodies, every provider/hardware path or measured ranking/citation coverage."
+      "coverageScope": "Complete reviewed current English bodies and recorded/fresh scoped primary evidence. Not all translated bodies, every provider/hardware path or measured ranking/citation coverage.",
+      "weekDisplaySettings": {
+        "keywordCandidates": [
+          "week numbers iPhone calendar",
+          "calendar week starts on Monday",
+          "Kalenderwoche iPhone",
+          "Wochenbeginn Kalender"
+        ],
+        "canonical": "/articles/a-week-view-that-fits-a-week/",
+        "germanEdition": "/de/articles/a-week-view-that-fits-a-week/",
+        "evidence": "research/batch43-discovery.json",
+        "nativeEvidence": "research/batch43-week-settings-source.json",
+        "status": "reviewed_EN_expansion_and_DE_edition_integrated_publication_pending",
+        "scope": "First weekday versus rolling range, numbering convention/date range and alternate label versus account. Apple/Fantastical controls attributed; no Cloud numbered-week or dual-date feature claim.",
+        "measuredRank": null,
+        "measuredSearchVolume": null
+      }
     },
     {
       "id": "widgets",
@@ -1600,5 +1616,42 @@
       "invalidation": "IEWE7T07ROC1Y2UGFV9YOUX02M",
       "invalidationStatus": "Completed"
     }
+  },
+  "batch43": {
+    "status": "published_and_verified",
+    "research": "research/batch43-discovery.json",
+    "editorial": "research/batch43-independent-review.json",
+    "scope": "Existing ENweekguide expanded; complete Germanedition new; one DErecurrence relatedlink only. No ASC/native/backend/media/legal/pricing changes.",
+    "verification": {
+      "public": "research/batch43-public-qa.json",
+      "metadata": "research/batch43-metadata-qa.json",
+      "sitemapUrls": 528,
+      "exactPublicArtifacts": 532,
+      "invalidation": "I9AI6YB9OL5T40T1GX2Y5UQ9J0",
+      "invalidationStatus": "Completed",
+      "browserVisualCheck": "Not performed for this batch; not inferred from earlier screenshots"
+    }
+  },
+  "ascPriority20261022": {
+    "status": "strong_copy_written_and_verified_privacy_publication_pending",
+    "version": "1.7.4",
+    "build": "16",
+    "locales": 50,
+    "fieldsVerified": 150,
+    "keywordsCharacters": [
+      97,
+      100
+    ],
+    "descriptionCharacters": [
+      3807,
+      4000
+    ],
+    "authoritativeManifest": "research/asc-priority-20261022/strong-aso-manifest.json",
+    "readback": "research/asc-priority-20261022/strong-aso-readback.json",
+    "media": "research/asc-priority-20261022/media-readiness.json",
+    "keywordEvidenceLimit": "Competitor/task and own Search Console evidence; no Apple Ads measured search volume or proven strongest/ranking claim.",
+    "privacy": "15-type declaration prepared, separate publication confirmation pending; policy rewrite proposal not published.",
+    "historicalVerifierNotice": "Earlier all-locales verifiers/proposals describe their historical snapshot, not the new desired descriptions/keywords.",
+    "goalComplete": false
   }
 }

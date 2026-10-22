@@ -1,0 +1,59 @@
+{
+  "decision": "PASS",
+  "reviewedRawSHA256": "ffaf22c7ae1fc12090375fadcb7b66adca508bdfb94b3b94ca6c3ac5e30c1195",
+  "initialFullReadRawSHA256": "465fad3927eacd4fbe1f913a543fa1b4181db32a47fc55db711c43fe1d901570",
+  "scope": {
+    "fullDescriptionsRead": [
+      "ar-SA",
+      "bn-BD",
+      "ca",
+      "cs",
+      "da",
+      "de-DE",
+      "el",
+      "en-AU",
+      "en-CA",
+      "en-GB",
+      "en-US",
+      "es-ES",
+      "es-MX",
+      "fi",
+      "fr-CA",
+      "fr-FR",
+      "gu-IN"
+    ],
+    "count": 17,
+    "method": "All17 complete values read in four bounded outputs, compared semantically with previously fully reviewed English source and approved article-usecase expansion bank. Final targeted reread of corrected es-MX paragraph and every remaining clima occurrence.",
+    "englishExact": true
+  },
+  "resolvedRequiredCorrections": [
+    {
+      "locale": "es-MX",
+      "before": "la recogida del escuela",
+      "after": "la recogida de la escuela",
+      "status": "verified current"
+    },
+    {
+      "locale": "es-MX",
+      "before": "tu clima personal",
+      "after": "tu tiempo personal",
+      "status": "verified current; all remaining clima occurrences refer to weather"
+    }
+  ],
+  "findings": [],
+  "checks": [
+    "Exact17 Group A locales; all3831–3939Unicodecharacters, exact count metadata",
+    "Both required URLs occur once per description",
+    "Every full legal paragraph preserves optionalauto-renewal/localprice/purchaseconfirmation charge/24hour cancellation/24hour pre-expiry renewalcharge/AppStoremanagement",
+    "BaseGoogleMeet/weather/widgets, Advancedadsremoved, PremiumMicrosoftTeams preserved",
+    "AppClippreview/fullappaddition, localcalendaraccount distinction, provider/sharing sign-in qualifiers preserved",
+    "Futuretimedwidget/daylongfullcalendar distinction and availableweather/place preserved",
+    "No Cloudweeknumber/ISOclaim, automaticstaffrota/travelbuffer, accountmerging, guaranteedavailability or privacyassurance introduced"
+  ],
+  "sourceHashes": {
+    "description-en-draft.txt": "7114a539ea780015f244c4c6596750ef6c8be6ebdbdd32445af5696f5047929b",
+    "description-article-evidence.json": "2f30bd80c19788ce1da4b9c4437562e9875ceff5bbe1ea4d4f687754ff49ce3a",
+    "description-localization-plan.json": "87527a67b6de0f12ed752ee9f95897a1a9c72394f708012a346c187621675e29"
+  },
+  "limits": "Independent cross-agent semantic/editorial review, not independent native-speaker certification or runtime/release validation. No API writes or source edits. Author reports other16 descriptions unchanged; final fullscope approval includes initialfullread plus targeted correctedparagraph reread."
+}

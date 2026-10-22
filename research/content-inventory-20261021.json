@@ -1,5 +1,5 @@
 {
-  "date": "2026-10-22T05:40:28.430Z",
+  "date": "2026-10-22T05:53:51.042Z",
   "status": "source_inventory_not_quality_approval",
   "articles": [
     {
@@ -982,6 +982,24 @@
     },
     {
       "locale": "de-DE",
+      "slug": "a-week-view-that-fits-a-week",
+      "title": "Wochenansicht auf dem iPhone: Zeiten vergleichen, ohne Termine zu übersehen",
+      "description": "Prüfe Wochenbeginn, Kalenderwoche, Datumsbereich und ausgewählte Kalender auf dem iPhone, bevor du eine scheinbar freie Zeit anbietest.",
+      "descriptionCharacters": 135,
+      "sections": 7,
+      "faq": 4,
+      "words": 1255,
+      "source": "articles-help.ts",
+      "sources": [
+        "https://support.apple.com/en-ca/guide/iphone/iphfd1054569/ios",
+        "https://calendar.teamup.com/kb/how-to-use-calendar-views/",
+        "https://support.apple.com/en-by/guide/iphone/iphc37be2016/ios",
+        "https://flexibits.com/fantastical-ios/help/settings"
+      ],
+      "updated": "2026-10-22"
+    },
+    {
+      "locale": "de-DE",
       "slug": "time-zones-and-the-flight-you-booked",
       "title": "Zeitzonen im Kalender: Termine vor der Reise prüfen",
       "description": "Terminzeitzone und angezeigte Zeitzone unterscheiden: Prüfe Flüge, Termine am Reiseziel und wiederkehrende Anrufe, bevor du eine Uhrzeit änderst.",
@@ -1880,15 +1898,17 @@
       "locale": "en-US",
       "slug": "a-week-view-that-fits-a-week",
       "title": "Week calendar on iPhone: compare hours without overlooking commitments",
-      "description": "Read a week calendar on iPhone: check dates, selected calendars, all-day events and exact hours before fitting another appointment into an apparent gap.",
-      "descriptionCharacters": 152,
-      "sections": 6,
-      "faq": 3,
-      "words": 875,
+      "description": "Read a week calendar on iPhone: check the first day, week numbers, date range and selected calendars before offering an apparent gap.",
+      "descriptionCharacters": 133,
+      "sections": 7,
+      "faq": 4,
+      "words": 1275,
       "source": "articles-planning.ts",
       "sources": [
         "https://support.apple.com/en-ca/guide/iphone/iphfd1054569/ios",
-        "https://calendar.teamup.com/kb/how-to-use-calendar-views/"
+        "https://calendar.teamup.com/kb/how-to-use-calendar-views/",
+        "https://support.apple.com/en-by/guide/iphone/iphc37be2016/ios",
+        "https://flexibits.com/fantastical-ios/help/settings"
       ],
       "updated": "2026-10-22"
     },

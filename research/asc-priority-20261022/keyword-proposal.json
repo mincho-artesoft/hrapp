@@ -1,0 +1,911 @@
+{
+  "app": "6744690319",
+  "version": "1.7.4",
+  "date": "2026-10-22",
+  "field": "keywords",
+  "status": "proposal only, independent review required",
+  "sourceHashes": {
+    "app-info-localizations.json": "929dcebddd30a0cd0b4d62e59aab9f2da5a29d48eccae48214ad815180a8c8b6",
+    "applied-readback.json": "1b69e7bfd368fe38af80c5b72f780d8fb6a75831d6166c7bb5a26930f8b35e14"
+  },
+  "strategy": "Use supported task intents rather than a synonym inventory. Family means household calendar planning/sharing, not purchase Family Sharing entitlement. Wind is forecast inspection, not a safety service. No competitor brands, task automation, universal availability or guaranteed updates. Visible metadata already covers calendar/cloud/provider/widget or local weather terms. Generic localized calendar synonym is retained only when title uses agenda/diary. User explicitly requested near-maximum100 Unicode characters; final candidates use97–100, without punctuation padding. Added date/view and weather terms refer to existing calendar views, recurrence, timezone, rain and daylight planning guides, not new automation.",
+  "articleEvidence": [
+    {
+      "slug": "sharing-one-event-not-your-calendar",
+      "scope": "Current articles-sharing.ts lines107–198: complete narrative, practical, FAQ and sources; related list partial."
+    },
+    {
+      "slug": "a-calendar-that-is-yours-to-share",
+      "scope": "Current articles-sharing.ts lines298–384: complete narrative, practical, FAQ and sources; related list partial."
+    },
+    {
+      "slug": "work-and-personal-without-two-apps",
+      "scope": "Current articles-unify.ts lines340–427: complete narrative, practical, FAQ and sources; related list partial."
+    },
+    {
+      "slug": "wind-the-forecast-nobody-reads",
+      "scope": "Current articles-weather.ts lines825–905: complete narrative, practical and FAQ; source list partial."
+    }
+  ],
+  "limits": [
+    "No search volume, rank or ChatGPT citation evidence is asserted.",
+    "Keyword ordering is an editorial priority, not a proven ranking mechanism.",
+    "Exact duplicate check does not model App Store stemming, compounds or tokenization, especially CJK and Indic scripts.",
+    "Short localized terms are candidate intent expressions, not a claim users search them at a measured rate.",
+    "Family schedule, club and pickup terms describe event use cases, not dedicated roster/chat/transport features. No keyword denotes purchase Family Sharing eligibility."
+  ],
+  "localizations": [
+    {
+      "locale": "ar-SA",
+      "before": "جدول,تخطيط,أسبوع,شهر,تذكير,اجتماع,حدث,مشاركة,دعوة,توقعات,تنظيم",
+      "after": "جدول,تخطيط,عائلة,عمل,شخصي,اجتماع,حدث,مشاركة,دعوة,توقعات,رياح,أسبوع,شهر,يوم,سنة,شروق,غروب,منطقة زمنية",
+      "characters": 100,
+      "currentName": "Cloud Calendars: تقويم",
+      "currentSubtitle": "الطقس والمواعيد والأدوات",
+      "rationale": "Prioritize localized family/work/personal planning, sharing and invitations; retain meeting/event and available-forecast/wind intent where not already in visible metadata. Replace generic reminder and month/week emphasis with supported use cases; no automation claim. Use remaining capacity for actual calendar views and outdoor/date planning, with whole meaningful localized terms rather than filler.",
+      "exactTitleSubtitleTokenDuplicates": [],
+      "confidence": "Own-language semantic proposal; not native-speaker certification or locale search-demand measurement.",
+      "addedIntentTermsForRequestedCapacity": [
+        "أسبوع",
+        "شهر",
+        "يوم",
+        "سنة",
+        "شروق",
+        "غروب",
+        "منطقة زمنية"
+      ]
+    },
+    {
+      "locale": "bn-BD",
+      "before": "সময়সূচি,সভা,ঘটনা,স্মরণ,আমন্ত্রণ,শেয়ার,সপ্তাহ,মাস,পূর্বাভাস,উইজেট",
+      "after": "সময়সূচি,সভা,অনুষ্ঠান,আমন্ত্রণ,শেয়ার,পরিবার,কাজ,ব্যক্তিগত,পূর্বাভাস,বাতাস,সপ্তাহ,মাস,দিন,বছর,বৃষ্টি",
+      "characters": 100,
+      "currentName": "Cloud Calendars: ক্যালেন্ডার",
+      "currentSubtitle": "আবহাওয়া ও পরিকল্পনা",
+      "rationale": "Prioritize localized family/work/personal planning, sharing and invitations; retain meeting/event and available-forecast/wind intent where not already in visible metadata. Replace generic reminder and month/week emphasis with supported use cases; no automation claim. Use remaining capacity for actual calendar views and outdoor/date planning, with whole meaningful localized terms rather than filler.",
+      "exactTitleSubtitleTokenDuplicates": [],
+      "confidence": "Own-language semantic proposal; not native-speaker certification or locale search-demand measurement.",
+      "addedIntentTermsForRequestedCapacity": [
+        "সপ্তাহ",
+        "মাস",
+        "দিন",
+        "বছর",
+        "বৃষ্টি"
+      ]
+    },
+    {
+      "locale": "ca",
+      "before": "agenda,planificador,horari,setmana,mes,recordatori,reunió,esdeveniment,compartir,invitació,previsió",
+      "after": "agenda,horari,família,feina,personal,reunió,esdeveniment,compartir,invitació,previsió,vent,mes,pluja",
+      "characters": 100,
+      "currentName": "Cloud Calendars: Calendari",
+      "currentSubtitle": "Temps, cites i ginys",
+      "rationale": "Prioritize localized family/work/personal planning, sharing and invitations; retain meeting/event and available-forecast/wind intent where not already in visible metadata. Replace generic reminder and month/week emphasis with supported use cases; no automation claim. Use remaining capacity for actual calendar views and outdoor/date planning, with whole meaningful localized terms rather than filler.",
+      "exactTitleSubtitleTokenDuplicates": [],
+      "confidence": "Own-language semantic proposal; not native-speaker certification or locale search-demand measurement.",
+      "addedIntentTermsForRequestedCapacity": [
+        "mes",
+        "pluja"
+      ]
+    },
+    {
+      "locale": "cs",
+      "before": "diář,plánovač,týden,měsíc,připomínka,událost,sdílení,pozvánka,předpověď,rozvrh",
+      "after": "diář,plánovač,rodina,práce,osobní,událost,sdílení,pozvánka,předpověď,vítr,rozvrh,týden,měsíc,den,rok",
+      "characters": 100,
+      "currentName": "Cloud Calendars: Kalendář",
+      "currentSubtitle": "Počasí, schůzky a widgety",
+      "rationale": "Prioritize localized family/work/personal planning, sharing and invitations; retain meeting/event and available-forecast/wind intent where not already in visible metadata. Replace generic reminder and month/week emphasis with supported use cases; no automation claim. Use remaining capacity for actual calendar views and outdoor/date planning, with whole meaningful localized terms rather than filler.",
+      "exactTitleSubtitleTokenDuplicates": [],
+      "confidence": "Own-language semantic proposal; not native-speaker certification or locale search-demand measurement.",
+      "addedIntentTermsForRequestedCapacity": [
+        "týden",
+        "měsíc",
+        "den",
+        "rok"
+      ]
+    },
+    {
+      "locale": "da",
+      "before": "planlægger,agenda,uge,måned,påmindelse,møde,begivenhed,deling,invitation,prognose,tidsplan",
+      "after": "planlægger,agenda,familie,arbejde,privat,møde,begivenhed,deling,invitation,prognose,vind,uge,år,regn",
+      "characters": 100,
+      "currentName": "Cloud Calendars: Kalender",
+      "currentSubtitle": "Vejr, aftaler og widgets",
+      "rationale": "Prioritize localized family/work/personal planning, sharing and invitations; retain meeting/event and available-forecast/wind intent where not already in visible metadata. Replace generic reminder and month/week emphasis with supported use cases; no automation claim. Use remaining capacity for actual calendar views and outdoor/date planning, with whole meaningful localized terms rather than filler.",
+      "exactTitleSubtitleTokenDuplicates": [],
+      "confidence": "Own-language semantic proposal; not native-speaker certification or locale search-demand measurement.",
+      "addedIntentTermsForRequestedCapacity": [
+        "uge",
+        "år",
+        "regn"
+      ]
+    },
+    {
+      "locale": "de-DE",
+      "before": "planer,wochenansicht,monatsansicht,erinnerung,besprechung,ereignis,teilen,einladung,vorhersage",
+      "after": "planer,familie,arbeit,privat,besprechung,ereignis,teilen,einladung,vorhersage,wind,woche,monat,regen",
+      "characters": 100,
+      "currentName": "Cloud Calendars: Kalender",
+      "currentSubtitle": "Termine, Wetter und Widgets",
+      "rationale": "Prioritize localized family/work/personal planning, sharing and invitations; retain meeting/event and available-forecast/wind intent where not already in visible metadata. Replace generic reminder and month/week emphasis with supported use cases; no automation claim. Use remaining capacity for actual calendar views and outdoor/date planning, with whole meaningful localized terms rather than filler.",
+      "exactTitleSubtitleTokenDuplicates": [],
+      "confidence": "Own-language semantic proposal; not native-speaker certification or locale search-demand measurement.",
+      "addedIntentTermsForRequestedCapacity": [
+        "woche",
+        "monat",
+        "regen"
+      ]
+    },
+    {
+      "locale": "el",
+      "before": "ατζέντα,πρόγραμμα,εβδομάδα,μήνας,υπενθύμιση,συνάντηση,συμβάν,κοινοποίηση,πρόσκληση,πρόγνωση",
+      "after": "ατζέντα,πρόγραμμα,οικογένεια,εργασία,προσωπικό,συμβάν,κοινοποίηση,πρόσκληση,πρόγνωση,άνεμος,εβδομάδα",
+      "characters": 100,
+      "currentName": "Cloud Calendars: Ημερολόγιο",
+      "currentSubtitle": "Καιρός, ραντεβού και widget",
+      "rationale": "Prioritize localized family/work/personal planning, sharing and invitations; retain meeting/event and available-forecast/wind intent where not already in visible metadata. Replace generic reminder and month/week emphasis with supported use cases; no automation claim. Use remaining capacity for actual calendar views and outdoor/date planning, with whole meaningful localized terms rather than filler.",
+      "exactTitleSubtitleTokenDuplicates": [],
+      "confidence": "Own-language semantic proposal; not native-speaker certification or locale search-demand measurement.",
+      "addedIntentTermsForRequestedCapacity": [
+        "εβδομάδα"
+      ]
+    },
+    {
+      "locale": "en-AU",
+      "before": "weather,forecast,planner,agenda,schedule,outdoor,daily,meeting,event,reminder,week,month,shared",
+      "after": "planner,agenda,schedule,family,work,personal,shared,event,invitation,meeting,weather,forecast,wind",
+      "characters": 98,
+      "currentName": "Cloud Calendars: Sync & Widget",
+      "currentSubtitle": "Google, Microsoft & iCloud",
+      "rationale": "Prioritize localized family/work/personal planning, sharing and invitations; retain meeting/event and available-forecast/wind intent where not already in visible metadata. Replace generic reminder and month/week emphasis with supported use cases; no automation claim.",
+      "exactTitleSubtitleTokenDuplicates": [],
+      "confidence": "Own-language semantic proposal; not native-speaker certification or locale search-demand measurement."
+    },
+    {
+      "locale": "en-CA",
+      "before": "schedule,planner,agenda,meeting,reminder,event,shared,invite,month,week,weather,forecast,appointment",
+      "after": "planner,agenda,schedule,family,work,personal,shared,event,invitation,meeting,weather,forecast,wind",
+      "characters": 98,
+      "currentName": "Cloud Calendars: Sync & Widget",
+      "currentSubtitle": "Google, Microsoft & iCloud",
+      "rationale": "Prioritize localized family/work/personal planning, sharing and invitations; retain meeting/event and available-forecast/wind intent where not already in visible metadata. Replace generic reminder and month/week emphasis with supported use cases; no automation claim.",
+      "exactTitleSubtitleTokenDuplicates": [],
+      "confidence": "Own-language semantic proposal; not native-speaker certification or locale search-demand measurement."
+    },
+    {
+      "locale": "en-GB",
+      "before": "diary,planner,agenda,appointment,week,month,reminder,meeting,event,shared,invite,weather,forecast",
+      "after": "diary,planner,agenda,family,work,personal,shared,event,invitation,meeting,weather,forecast,wind,week",
+      "characters": 100,
+      "currentName": "Cloud Calendars: Sync & Widget",
+      "currentSubtitle": "Google, Microsoft & iCloud",
+      "rationale": "Prioritize localized family/work/personal planning, sharing and invitations; retain meeting/event and available-forecast/wind intent where not already in visible metadata. Replace generic reminder and month/week emphasis with supported use cases; no automation claim. Use remaining capacity for actual calendar views and outdoor/date planning, with whole meaningful localized terms rather than filler.",
+      "exactTitleSubtitleTokenDuplicates": [],
+      "confidence": "Own-language semantic proposal; not native-speaker certification or locale search-demand measurement.",
+      "addedIntentTermsForRequestedCapacity": [
+        "week"
+      ]
+    },
+    {
+      "locale": "en-US",
+      "before": "weather,schedule,planner,agenda,forecast,month,week,reminder,event,meeting,shared,invite,appointment",
+      "after": "planner,agenda,schedule,family,work,personal,shared,event,invitation,meeting,weather,forecast,wind",
+      "characters": 98,
+      "currentName": "Cloud Calendars: Sync & Widget",
+      "currentSubtitle": "Google, Microsoft & iCloud",
+      "rationale": "Prioritize localized family/work/personal planning, sharing and invitations; retain meeting/event and available-forecast/wind intent where not already in visible metadata. Replace generic reminder and month/week emphasis with supported use cases; no automation claim.",
+      "exactTitleSubtitleTokenDuplicates": [],
+      "confidence": "Own-language semantic proposal; not native-speaker certification or locale search-demand measurement."
+    },
+    {
+      "locale": "es-ES",
+      "before": "planificador,horario,semana,mes,recordatorio,reunión,evento,compartir,invitación,previsión,citas",
+      "after": "planificador,horario,familia,trabajo,personal,reunión,evento,compartir,invitación,previsión,viento",
+      "characters": 98,
+      "currentName": "Cloud Calendars: Calendario",
+      "currentSubtitle": "Tiempo, agenda y widgets",
+      "rationale": "Prioritize localized family/work/personal planning, sharing and invitations; retain meeting/event and available-forecast/wind intent where not already in visible metadata. Replace generic reminder and month/week emphasis with supported use cases; no automation claim.",
+      "exactTitleSubtitleTokenDuplicates": [],
+      "confidence": "Own-language semantic proposal; not native-speaker certification or locale search-demand measurement."
+    },
+    {
+      "locale": "es-MX",
+      "before": "planificador,horario,semana,mes,recordatorio,reunión,evento,compartir,invitación,pronóstico,citas",
+      "after": "planificador,horario,familia,trabajo,personal,reunión,evento,compartir,invitación,pronóstico,viento",
+      "characters": 99,
+      "currentName": "Cloud Calendars: Calendario",
+      "currentSubtitle": "Clima, agenda y widgets",
+      "rationale": "Prioritize localized family/work/personal planning, sharing and invitations; retain meeting/event and available-forecast/wind intent where not already in visible metadata. Replace generic reminder and month/week emphasis with supported use cases; no automation claim.",
+      "exactTitleSubtitleTokenDuplicates": [],
+      "confidence": "Own-language semantic proposal; not native-speaker certification or locale search-demand measurement."
+    },
+    {
+      "locale": "fi",
+      "before": "suunnittelu,viikko,kuukausi,muistutus,kokous,tapahtuma,jakaminen,kutsu,ennuste,aikataulu",
+      "after": "suunnittelu,perhe,työ,henkilökohtainen,kokous,tapahtuma,jakaminen,kutsu,ennuste,tuuli,aikataulu,sade",
+      "characters": 100,
+      "currentName": "Cloud Calendars: Kalenteri",
+      "currentSubtitle": "Sää, tapaamiset ja widgetit",
+      "rationale": "Prioritize localized family/work/personal planning, sharing and invitations; retain meeting/event and available-forecast/wind intent where not already in visible metadata. Replace generic reminder and month/week emphasis with supported use cases; no automation claim. Use remaining capacity for actual calendar views and outdoor/date planning, with whole meaningful localized terms rather than filler.",
+      "exactTitleSubtitleTokenDuplicates": [],
+      "confidence": "Own-language semantic proposal; not native-speaker certification or locale search-demand measurement.",
+      "addedIntentTermsForRequestedCapacity": [
+        "sade"
+      ]
+    },
+    {
+      "locale": "fr-CA",
+      "before": "calendrier,horaire,semaine,mois,rappel,réunion,événement,partage,invitation,prévisions,planification",
+      "after": "calendrier,horaire,famille,travail,personnel,réunion,événement,partage,invitation,prévisions,vent",
+      "characters": 97,
+      "currentName": "Cloud Calendars: Agenda",
+      "currentSubtitle": "Météo, rendez-vous et widgets",
+      "rationale": "Prioritize localized family/work/personal planning, sharing and invitations; retain meeting/event and available-forecast/wind intent where not already in visible metadata. Replace generic reminder and month/week emphasis with supported use cases; no automation claim.",
+      "exactTitleSubtitleTokenDuplicates": [],
+      "confidence": "Own-language semantic proposal; not native-speaker certification or locale search-demand measurement."
+    },
+    {
+      "locale": "fr-FR",
+      "before": "calendrier,planning,semaine,mois,rappel,réunion,événement,partage,invitation,prévisions,organisation",
+      "after": "calendrier,planning,famille,travail,personnel,réunion,événement,partage,invitation,prévisions,vent",
+      "characters": 98,
+      "currentName": "Cloud Calendars: Agenda",
+      "currentSubtitle": "Météo, rendez-vous et widgets",
+      "rationale": "Prioritize localized family/work/personal planning, sharing and invitations; retain meeting/event and available-forecast/wind intent where not already in visible metadata. Replace generic reminder and month/week emphasis with supported use cases; no automation claim.",
+      "exactTitleSubtitleTokenDuplicates": [],
+      "confidence": "Own-language semantic proposal; not native-speaker certification or locale search-demand measurement."
+    },
+    {
+      "locale": "gu-IN",
+      "before": "સમયપત્રક,બેઠક,ઇવેન્ટ,યાદ,આમંત્રણ,શેર,અઠવાડિયું,મહિનો,આગાહી,વિજેટ",
+      "after": "સમયપત્રક,બેઠક,ઇવેન્ટ,આમંત્રણ,શેર,પરિવાર,કામ,વ્યક્તિગત,આગાહી,પવન,અઠવાડિયું,મહિનો,દિવસ,વર્ષ,વરસાદ,યાદી",
+      "characters": 100,
+      "currentName": "Cloud Calendars: કૅલેન્ડર",
+      "currentSubtitle": "હવામાન અને આયોજન",
+      "rationale": "Prioritize localized family/work/personal planning, sharing and invitations; retain meeting/event and available-forecast/wind intent where not already in visible metadata. Replace generic reminder and month/week emphasis with supported use cases; no automation claim. Use remaining capacity for actual calendar views and outdoor/date planning, with whole meaningful localized terms rather than filler.",
+      "exactTitleSubtitleTokenDuplicates": [],
+      "confidence": "Own-language semantic proposal; not native-speaker certification or locale search-demand measurement.",
+      "addedIntentTermsForRequestedCapacity": [
+        "અઠવાડિયું",
+        "મહિનો",
+        "દિવસ",
+        "વર્ષ",
+        "વરસાદ",
+        "યાદી"
+      ]
+    },
+    {
+      "locale": "he",
+      "before": "לוח שנה,תכנון,שבוע,חודש,תזכורת,אירוע,שיתוף,הזמנה,תחזית,סדר יום",
+      "after": "לוח שנה,תכנון,משפחה,עבודה,אישי,אירוע,שיתוף,הזמנה,תחזית,רוח,סדר יום,שבוע,חודש,יום,שנה,גשם,נסיעה,רשימה",
+      "characters": 100,
+      "currentName": "Cloud Calendars: יומן",
+      "currentSubtitle": "מזג אוויר, פגישות ווידג׳טים",
+      "rationale": "Prioritize localized family/work/personal planning, sharing and invitations; retain meeting/event and available-forecast/wind intent where not already in visible metadata. Replace generic reminder and month/week emphasis with supported use cases; no automation claim. Use remaining capacity for actual calendar views and outdoor/date planning, with whole meaningful localized terms rather than filler.",
+      "exactTitleSubtitleTokenDuplicates": [],
+      "confidence": "Own-language semantic proposal; not native-speaker certification or locale search-demand measurement.",
+      "addedIntentTermsForRequestedCapacity": [
+        "שבוע",
+        "חודש",
+        "יום",
+        "שנה",
+        "גשם",
+        "נסיעה",
+        "רשימה"
+      ]
+    },
+    {
+      "locale": "hi",
+      "before": "समयसारणी,याद दिलाना,बैठक,इवेंट,साझा,निमंत्रण,सप्ताह,महीना,पूर्वानुमान,कार्यक्रम",
+      "after": "समयसारणी,बैठक,इवेंट,साझा,निमंत्रण,परिवार,काम,निजी,पूर्वानुमान,हवा,सप्ताह,महीना,दिन,वर्ष,बारिश,यात्रा",
+      "characters": 100,
+      "currentName": "Cloud Calendars: कैलेंडर",
+      "currentSubtitle": "मौसम, योजनाएँ और विजेट",
+      "rationale": "Prioritize localized family/work/personal planning, sharing and invitations; retain meeting/event and available-forecast/wind intent where not already in visible metadata. Replace generic reminder and month/week emphasis with supported use cases; no automation claim. Use remaining capacity for actual calendar views and outdoor/date planning, with whole meaningful localized terms rather than filler.",
+      "exactTitleSubtitleTokenDuplicates": [],
+      "confidence": "Own-language semantic proposal; not native-speaker certification or locale search-demand measurement.",
+      "addedIntentTermsForRequestedCapacity": [
+        "सप्ताह",
+        "महीना",
+        "दिन",
+        "वर्ष",
+        "बारिश",
+        "यात्रा"
+      ]
+    },
+    {
+      "locale": "hr",
+      "before": "planer,raspored,tjedan,mjesec,podsjetnik,događaj,dijeljenje,pozivnica,prognoza,termin",
+      "after": "planer,raspored,obitelj,posao,osobno,događaj,dijeljenje,pozivnica,prognoza,vjetar,tjedan,mjesec,kiša",
+      "characters": 100,
+      "currentName": "Cloud Calendars: Kalendar",
+      "currentSubtitle": "Vrijeme, sastanci i widgeti",
+      "rationale": "Prioritize localized family/work/personal planning, sharing and invitations; retain meeting/event and available-forecast/wind intent where not already in visible metadata. Replace generic reminder and month/week emphasis with supported use cases; no automation claim. Use remaining capacity for actual calendar views and outdoor/date planning, with whole meaningful localized terms rather than filler.",
+      "exactTitleSubtitleTokenDuplicates": [],
+      "confidence": "Own-language semantic proposal; not native-speaker certification or locale search-demand measurement.",
+      "addedIntentTermsForRequestedCapacity": [
+        "tjedan",
+        "mjesec",
+        "kiša"
+      ]
+    },
+    {
+      "locale": "hu",
+      "before": "napirend,tervező,hét,hónap,emlékeztető,találkozó,esemény,megosztás,meghívó,előrejelzés",
+      "after": "napirend,tervező,család,munka,személyes,esemény,megosztás,meghívó,előrejelzés,szél,hét,hónap,nap,eső",
+      "characters": 100,
+      "currentName": "Cloud Calendars: Naptár",
+      "currentSubtitle": "Időjárás, programok, widgetek",
+      "rationale": "Prioritize localized family/work/personal planning, sharing and invitations; retain meeting/event and available-forecast/wind intent where not already in visible metadata. Replace generic reminder and month/week emphasis with supported use cases; no automation claim. Use remaining capacity for actual calendar views and outdoor/date planning, with whole meaningful localized terms rather than filler.",
+      "exactTitleSubtitleTokenDuplicates": [],
+      "confidence": "Own-language semantic proposal; not native-speaker certification or locale search-demand measurement.",
+      "addedIntentTermsForRequestedCapacity": [
+        "hét",
+        "hónap",
+        "nap",
+        "eső"
+      ]
+    },
+    {
+      "locale": "id",
+      "before": "agenda,perencana,minggu,bulan,pengingat,rapat,acara,berbagi,undangan,prakiraan,janji",
+      "after": "agenda,perencana,keluarga,kerja,pribadi,rapat,acara,berbagi,undangan,prakiraan,angin,hari,perjalanan",
+      "characters": 100,
+      "currentName": "Cloud Calendars: Kalender",
+      "currentSubtitle": "Cuaca, jadwal dan widget",
+      "rationale": "Prioritize localized family/work/personal planning, sharing and invitations; retain meeting/event and available-forecast/wind intent where not already in visible metadata. Replace generic reminder and month/week emphasis with supported use cases; no automation claim. Use remaining capacity for actual calendar views and outdoor/date planning, with whole meaningful localized terms rather than filler.",
+      "exactTitleSubtitleTokenDuplicates": [],
+      "confidence": "Own-language semantic proposal; not native-speaker certification or locale search-demand measurement.",
+      "addedIntentTermsForRequestedCapacity": [
+        "hari",
+        "perjalanan"
+      ]
+    },
+    {
+      "locale": "it",
+      "before": "agenda,pianificazione,settimana,mese,promemoria,riunione,evento,condivisione,invito,previsioni",
+      "after": "agenda,pianificazione,famiglia,lavoro,personale,riunione,evento,condivisione,invito,previsioni,vento",
+      "characters": 100,
+      "currentName": "Cloud Calendars: Calendario",
+      "currentSubtitle": "Meteo, impegni e widget",
+      "rationale": "Prioritize localized family/work/personal planning, sharing and invitations; retain meeting/event and available-forecast/wind intent where not already in visible metadata. Replace generic reminder and month/week emphasis with supported use cases; no automation claim.",
+      "exactTitleSubtitleTokenDuplicates": [],
+      "confidence": "Own-language semantic proposal; not native-speaker certification or locale search-demand measurement."
+    },
+    {
+      "locale": "ja",
+      "before": "スケジュール,手帳,日程,リマインダー,会議,イベント,共有,招待,週間表示,月間表示,予報,仕事,プライベート,同期",
+      "after": "スケジュール,手帳,日程,家族,仕事,プライベート,会議,イベント,共有,招待,予報,風,週間表示,月間表示,雨,降水確率,日の入り,屋外,旅行,時差,繰り返し,終日,会食,家事,部活,サークル,送迎",
+      "characters": 100,
+      "currentName": "Cloud Calendars: カレンダー",
+      "currentSubtitle": "天気・予定管理・ホーム画面ウィジェット",
+      "rationale": "Prioritize localized family/work/personal planning, sharing and invitations; retain meeting/event and available-forecast/wind intent where not already in visible metadata. Replace generic reminder and month/week emphasis with supported use cases; no automation claim. Use remaining capacity for actual calendar views and outdoor/date planning, with whole meaningful localized terms rather than filler.",
+      "exactTitleSubtitleTokenDuplicates": [],
+      "confidence": "Own-language semantic proposal; not native-speaker certification or locale search-demand measurement.",
+      "addedIntentTermsForRequestedCapacity": [
+        "雨",
+        "降水確率",
+        "日の入り",
+        "屋外",
+        "旅行",
+        "時差",
+        "繰り返し",
+        "終日",
+        "会食",
+        "家事",
+        "部活",
+        "サークル",
+        "送迎"
+      ]
+    },
+    {
+      "locale": "kn-IN",
+      "before": "ವೇಳಾಪಟ್ಟಿ,ಸಭೆ,ಈವೆಂಟ್,ಜ್ಞಾಪನೆ,ಆಹ್ವಾನ,ಹಂಚಿಕೆ,ವಾರ,ತಿಂಗಳು,ಮುನ್ಸೂಚನೆ,ವಿಜೆಟ್",
+      "after": "ವೇಳಾಪಟ್ಟಿ,ಸಭೆ,ಈವೆಂಟ್,ಆಹ್ವಾನ,ಹಂಚಿಕೆ,ಕುಟುಂಬ,ಕೆಲಸ,ವೈಯಕ್ತಿಕ,ಮುನ್ಸೂಚನೆ,ಗಾಳಿ,ವಾರ,ತಿಂಗಳು,ದಿನ,ವರ್ಷ,ಮಳೆ,ಪಟ್ಟಿ",
+      "characters": 100,
+      "currentName": "Cloud Calendars: ಕ್ಯಾಲೆಂಡರ್",
+      "currentSubtitle": "ಹವಾಮಾನ ಮತ್ತು ಯೋಜನೆ",
+      "rationale": "Prioritize localized family/work/personal planning, sharing and invitations; retain meeting/event and available-forecast/wind intent where not already in visible metadata. Replace generic reminder and month/week emphasis with supported use cases; no automation claim. Use remaining capacity for actual calendar views and outdoor/date planning, with whole meaningful localized terms rather than filler.",
+      "exactTitleSubtitleTokenDuplicates": [],
+      "confidence": "Own-language semantic proposal; not native-speaker certification or locale search-demand measurement.",
+      "addedIntentTermsForRequestedCapacity": [
+        "ವಾರ",
+        "ತಿಂಗಳು",
+        "ದಿನ",
+        "ವರ್ಷ",
+        "ಮಳೆ",
+        "ಪಟ್ಟಿ"
+      ]
+    },
+    {
+      "locale": "ko",
+      "before": "스케줄,다이어리,플래너,알림,회의,이벤트,공유,초대,주간보기,월간보기,예보,업무,개인,동기화,약속,시간표",
+      "after": "스케줄,다이어리,플래너,가족,업무,개인,회의,이벤트,공유,초대,예보,바람,주간보기,월간보기,시간표,강수확률,일출,일몰,야외,여행,시간대,반복,종일,식사,모임,동호회,등하교,목록보기",
+      "characters": 100,
+      "currentName": "Cloud Calendars: 캘린더",
+      "currentSubtitle": "날씨와 일정 관리, 홈 화면 위젯",
+      "rationale": "Prioritize localized family/work/personal planning, sharing and invitations; retain meeting/event and available-forecast/wind intent where not already in visible metadata. Replace generic reminder and month/week emphasis with supported use cases; no automation claim. Use remaining capacity for actual calendar views and outdoor/date planning, with whole meaningful localized terms rather than filler.",
+      "exactTitleSubtitleTokenDuplicates": [],
+      "confidence": "Own-language semantic proposal; not native-speaker certification or locale search-demand measurement.",
+      "addedIntentTermsForRequestedCapacity": [
+        "강수확률",
+        "일출",
+        "일몰",
+        "야외",
+        "여행",
+        "시간대",
+        "반복",
+        "종일",
+        "식사",
+        "모임",
+        "동호회",
+        "등하교",
+        "목록보기"
+      ]
+    },
+    {
+      "locale": "ml-IN",
+      "before": "സമയക്രമം,യോഗം,ഓർമ്മപ്പെടുത്തൽ,ക്ഷണം,പങ്കിടൽ,ആഴ്ച,മാസം,പ്രവചനം,വിജറ്റ്",
+      "after": "സമയക്രമം,യോഗം,ക്ഷണം,പങ്കിടൽ,കുടുംബം,ജോലി,വ്യക്തിഗതം,പ്രവചനം,കാറ്റ്,ആഴ്ച,മാസം,ദിവസം,വർഷം,യാത്ര,പട്ടിക",
+      "characters": 100,
+      "currentName": "Cloud Calendars: കലണ്ടർ",
+      "currentSubtitle": "കാലാവസ്ഥയും പദ്ധതികളും",
+      "rationale": "Prioritize localized family/work/personal planning, sharing and invitations; retain meeting/event and available-forecast/wind intent where not already in visible metadata. Replace generic reminder and month/week emphasis with supported use cases; no automation claim. Use remaining capacity for actual calendar views and outdoor/date planning, with whole meaningful localized terms rather than filler.",
+      "exactTitleSubtitleTokenDuplicates": [],
+      "confidence": "Own-language semantic proposal; not native-speaker certification or locale search-demand measurement.",
+      "addedIntentTermsForRequestedCapacity": [
+        "ആഴ്ച",
+        "മാസം",
+        "ദിവസം",
+        "വർഷം",
+        "യാത്ര",
+        "പട്ടിക"
+      ]
+    },
+    {
+      "locale": "mr-IN",
+      "before": "वेळापत्रक,बैठक,कार्यक्रम,स्मरण,आमंत्रण,शेअर,आठवडा,महिना,अंदाज,विजेट",
+      "after": "वेळापत्रक,बैठक,कार्यक्रम,आमंत्रण,शेअर,कुटुंब,काम,वैयक्तिक,अंदाज,वारा,आठवडा,महिना,दिवस,वर्ष,पाऊस,यादी",
+      "characters": 100,
+      "currentName": "Cloud Calendars: कॅलेंडर",
+      "currentSubtitle": "हवामान आणि नियोजन",
+      "rationale": "Prioritize localized family/work/personal planning, sharing and invitations; retain meeting/event and available-forecast/wind intent where not already in visible metadata. Replace generic reminder and month/week emphasis with supported use cases; no automation claim. Use remaining capacity for actual calendar views and outdoor/date planning, with whole meaningful localized terms rather than filler.",
+      "exactTitleSubtitleTokenDuplicates": [],
+      "confidence": "Own-language semantic proposal; not native-speaker certification or locale search-demand measurement.",
+      "addedIntentTermsForRequestedCapacity": [
+        "आठवडा",
+        "महिना",
+        "दिवस",
+        "वर्ष",
+        "पाऊस",
+        "यादी"
+      ]
+    },
+    {
+      "locale": "ms",
+      "before": "agenda,perancang,minggu,bulan,peringatan,mesyuarat,acara,perkongsian,jemputan,ramalan,janji temu",
+      "after": "agenda,perancang,keluarga,kerja,peribadi,mesyuarat,acara,perkongsian,jemputan,ramalan,angin,senarai",
+      "characters": 99,
+      "currentName": "Cloud Calendars: Kalendar",
+      "currentSubtitle": "Cuaca, jadual dan widget",
+      "rationale": "Prioritize localized family/work/personal planning, sharing and invitations; retain meeting/event and available-forecast/wind intent where not already in visible metadata. Replace generic reminder and month/week emphasis with supported use cases; no automation claim. Use remaining capacity for actual calendar views and outdoor/date planning, with whole meaningful localized terms rather than filler.",
+      "exactTitleSubtitleTokenDuplicates": [],
+      "confidence": "Own-language semantic proposal; not native-speaker certification or locale search-demand measurement.",
+      "addedIntentTermsForRequestedCapacity": [
+        "senarai"
+      ]
+    },
+    {
+      "locale": "nl-NL",
+      "before": "kalender,planner,schema,week,maand,herinnering,vergadering,evenement,delen,uitnodiging,verwachting",
+      "after": "kalender,planner,schema,gezin,werk,privé,vergadering,evenement,delen,uitnodiging,verwachting,wind",
+      "characters": 97,
+      "currentName": "Cloud Calendars: Agenda",
+      "currentSubtitle": "Weer, afspraken en widgets",
+      "rationale": "Prioritize localized family/work/personal planning, sharing and invitations; retain meeting/event and available-forecast/wind intent where not already in visible metadata. Replace generic reminder and month/week emphasis with supported use cases; no automation claim.",
+      "exactTitleSubtitleTokenDuplicates": [],
+      "confidence": "Own-language semantic proposal; not native-speaker certification or locale search-demand measurement."
+    },
+    {
+      "locale": "no",
+      "before": "planlegger,agenda,uke,måned,påminnelse,møte,hendelse,deling,invitasjon,varsel,timeplan",
+      "after": "planlegger,agenda,familie,jobb,privat,møte,hendelse,deling,invitasjon,prognose,vind,timeplan,uke,dag",
+      "characters": 100,
+      "currentName": "Cloud Calendars: Kalender",
+      "currentSubtitle": "Vær, avtaler og widgeter",
+      "rationale": "Prioritize localized family/work/personal planning, sharing and invitations; retain meeting/event and available-forecast/wind intent where not already in visible metadata. Replace generic reminder and month/week emphasis with supported use cases; no automation claim. Use remaining capacity for actual calendar views and outdoor/date planning, with whole meaningful localized terms rather than filler.",
+      "exactTitleSubtitleTokenDuplicates": [],
+      "confidence": "Own-language semantic proposal; not native-speaker certification or locale search-demand measurement.",
+      "addedIntentTermsForRequestedCapacity": [
+        "uke",
+        "dag"
+      ]
+    },
+    {
+      "locale": "or-IN",
+      "before": "ସମୟସୂଚୀ,ବୈଠକ,ଇଭେଣ୍ଟ,ସ୍ମରଣ,ନିମନ୍ତ୍ରଣ,ସେୟାର,ସପ୍ତାହ,ମାସ,ପୂର୍ବାନୁମାନ,ୱିଜେଟ୍",
+      "after": "ସମୟସୂଚୀ,ବୈଠକ,ଇଭେଣ୍ଟ,ନିମନ୍ତ୍ରଣ,ସେୟାର,ପରିବାର,କାମ,ବ୍ୟକ୍ତିଗତ,ପୂର୍ବାନୁମାନ,ପବନ,ସପ୍ତାହ,ମାସ,ଦିନ,ବର୍ଷା,ଯାତ୍ରା",
+      "characters": 100,
+      "currentName": "Cloud Calendars: କ୍ୟାଲେଣ୍ଡର",
+      "currentSubtitle": "ପାଣିପାଗ ଓ ଯୋଜନା",
+      "rationale": "Prioritize localized family/work/personal planning, sharing and invitations; retain meeting/event and available-forecast/wind intent where not already in visible metadata. Replace generic reminder and month/week emphasis with supported use cases; no automation claim. Use remaining capacity for actual calendar views and outdoor/date planning, with whole meaningful localized terms rather than filler.",
+      "exactTitleSubtitleTokenDuplicates": [],
+      "confidence": "Own-language semantic proposal; not native-speaker certification or locale search-demand measurement.",
+      "addedIntentTermsForRequestedCapacity": [
+        "ସପ୍ତାହ",
+        "ମାସ",
+        "ଦିନ",
+        "ବର୍ଷା",
+        "ଯାତ୍ରା"
+      ]
+    },
+    {
+      "locale": "pa-IN",
+      "before": "ਸਮਾਂਸਾਰਣੀ,ਮੀਟਿੰਗ,ਇਵੈਂਟ,ਯਾਦ,ਸੱਦਾ,ਸਾਂਝਾ,ਹਫ਼ਤਾ,ਮਹੀਨਾ,ਪੂਰਵਅਨੁਮਾਨ,ਵਿਜੇਟ",
+      "after": "ਸਮਾਂਸਾਰਣੀ,ਮੀਟਿੰਗ,ਇਵੈਂਟ,ਸੱਦਾ,ਸਾਂਝਾ,ਪਰਿਵਾਰ,ਕੰਮ,ਨਿੱਜੀ,ਪੂਰਵਅਨੁਮਾਨ,ਹਵਾ,ਹਫ਼ਤਾ,ਮਹੀਨਾ,ਮੀਂਹ,ਯਾਤਰਾ,ਸੂਰਜ ਚੜ੍ਹਨਾ",
+      "characters": 100,
+      "currentName": "Cloud Calendars: ਕੈਲੰਡਰ",
+      "currentSubtitle": "ਮੌਸਮ ਅਤੇ ਯੋਜਨਾਵਾਂ",
+      "rationale": "Prioritize localized family/work/personal planning, sharing and invitations; retain meeting/event and available-forecast/wind intent where not already in visible metadata. Replace generic reminder and month/week emphasis with supported use cases; no automation claim. Use remaining capacity for actual calendar views and outdoor/date planning, with whole meaningful localized terms rather than filler.",
+      "exactTitleSubtitleTokenDuplicates": [],
+      "confidence": "Own-language semantic proposal; not native-speaker certification or locale search-demand measurement.",
+      "addedIntentTermsForRequestedCapacity": [
+        "ਹਫ਼ਤਾ",
+        "ਮਹੀਨਾ",
+        "ਮੀਂਹ",
+        "ਯਾਤਰਾ",
+        "ਸੂਰਜ ਚੜ੍ਹਨਾ"
+      ]
+    },
+    {
+      "locale": "pl",
+      "before": "planer,agenda,tydzień,miesiąc,przypomnienie,spotkanie,wydarzenie,udostępnianie,zaproszenie,prognoza",
+      "after": "planer,agenda,rodzina,praca,osobisty,spotkanie,wydarzenie,udostępnianie,zaproszenie,prognoza,wiatr",
+      "characters": 98,
+      "currentName": "Cloud Calendars: Kalendarz",
+      "currentSubtitle": "Pogoda, terminy i widżety",
+      "rationale": "Prioritize localized family/work/personal planning, sharing and invitations; retain meeting/event and available-forecast/wind intent where not already in visible metadata. Replace generic reminder and month/week emphasis with supported use cases; no automation claim.",
+      "exactTitleSubtitleTokenDuplicates": [],
+      "confidence": "Own-language semantic proposal; not native-speaker certification or locale search-demand measurement."
+    },
+    {
+      "locale": "pt-BR",
+      "before": "agenda,planejador,horário,semana,mês,lembrete,reunião,evento,compartilhar,convite,previsão",
+      "after": "agenda,planos,horário,família,trabalho,pessoal,reunião,evento,compartilhar,convite,previsão,vento",
+      "characters": 97,
+      "currentName": "Cloud Calendars: Calendário",
+      "currentSubtitle": "Clima, compromissos e widgets",
+      "rationale": "Prioritize localized family/work/personal planning, sharing and invitations; retain meeting/event and available-forecast/wind intent where not already in visible metadata. Replace generic reminder and month/week emphasis with supported use cases; no automation claim.",
+      "exactTitleSubtitleTokenDuplicates": [],
+      "confidence": "Own-language semantic proposal; not native-speaker certification or locale search-demand measurement."
+    },
+    {
+      "locale": "pt-PT",
+      "before": "calendário,planeamento,horário,semana,mês,lembrete,reunião,evento,partilha,convite,previsão",
+      "after": "calendário,horário,família,trabalho,pessoal,reunião,evento,partilha,convite,previsão,vento,mês,chuva",
+      "characters": 100,
+      "currentName": "Cloud Calendars: Agenda",
+      "currentSubtitle": "Meteorologia, planos e widgets",
+      "rationale": "Prioritize localized family/work/personal planning, sharing and invitations; retain meeting/event and available-forecast/wind intent where not already in visible metadata. Replace generic reminder and month/week emphasis with supported use cases; no automation claim. Use remaining capacity for actual calendar views and outdoor/date planning, with whole meaningful localized terms rather than filler.",
+      "exactTitleSubtitleTokenDuplicates": [],
+      "confidence": "Own-language semantic proposal; not native-speaker certification or locale search-demand measurement.",
+      "addedIntentTermsForRequestedCapacity": [
+        "mês",
+        "chuva"
+      ]
+    },
+    {
+      "locale": "ro",
+      "before": "agendă,planificare,săptămână,lună,memento,eveniment,partajare,invitație,prognoză,orar",
+      "after": "agendă,planificare,familie,muncă,personal,eveniment,partajare,invitație,prognoză,vânt,orar,săptămână",
+      "characters": 100,
+      "currentName": "Cloud Calendars: Calendar",
+      "currentSubtitle": "Vreme, întâlniri și widgeturi",
+      "rationale": "Prioritize localized family/work/personal planning, sharing and invitations; retain meeting/event and available-forecast/wind intent where not already in visible metadata. Replace generic reminder and month/week emphasis with supported use cases; no automation claim. Use remaining capacity for actual calendar views and outdoor/date planning, with whole meaningful localized terms rather than filler.",
+      "exactTitleSubtitleTokenDuplicates": [],
+      "confidence": "Own-language semantic proposal; not native-speaker certification or locale search-demand measurement.",
+      "addedIntentTermsForRequestedCapacity": [
+        "săptămână"
+      ]
+    },
+    {
+      "locale": "ru",
+      "before": "планировщик,расписание,неделя,месяц,напоминание,событие,приглашение,прогноз,планы,общий доступ",
+      "after": "планировщик,расписание,семья,работа,личный,событие,приглашение,прогноз,ветер,общий доступ,месяц,день",
+      "characters": 100,
+      "currentName": "Cloud Calendars: Календарь",
+      "currentSubtitle": "Погода, встречи и виджеты",
+      "rationale": "Prioritize localized family/work/personal planning, sharing and invitations; retain meeting/event and available-forecast/wind intent where not already in visible metadata. Replace generic reminder and month/week emphasis with supported use cases; no automation claim. Use remaining capacity for actual calendar views and outdoor/date planning, with whole meaningful localized terms rather than filler.",
+      "exactTitleSubtitleTokenDuplicates": [],
+      "confidence": "Own-language semantic proposal; not native-speaker certification or locale search-demand measurement.",
+      "addedIntentTermsForRequestedCapacity": [
+        "месяц",
+        "день"
+      ]
+    },
+    {
+      "locale": "sk",
+      "before": "diár,plánovač,týždeň,mesiac,pripomienka,udalosť,zdieľanie,pozvánka,predpoveď,rozvrh",
+      "after": "diár,plánovač,rodina,práca,osobný,udalosť,zdieľanie,pozvánka,predpoveď,vietor,rozvrh,týždeň,deň,dážď",
+      "characters": 100,
+      "currentName": "Cloud Calendars: Kalendár",
+      "currentSubtitle": "Počasie, stretnutia a widgety",
+      "rationale": "Prioritize localized family/work/personal planning, sharing and invitations; retain meeting/event and available-forecast/wind intent where not already in visible metadata. Replace generic reminder and month/week emphasis with supported use cases; no automation claim. Use remaining capacity for actual calendar views and outdoor/date planning, with whole meaningful localized terms rather than filler.",
+      "exactTitleSubtitleTokenDuplicates": [],
+      "confidence": "Own-language semantic proposal; not native-speaker certification or locale search-demand measurement.",
+      "addedIntentTermsForRequestedCapacity": [
+        "týždeň",
+        "deň",
+        "dážď"
+      ]
+    },
+    {
+      "locale": "sl-SI",
+      "before": "načrtovalnik,urnik,teden,mesec,opomnik,dogodek,deljenje,povabilo,napoved,termin",
+      "after": "načrtovalnik,urnik,družina,delo,osebno,dogodek,deljenje,povabilo,napoved,veter,teden,mesec,potovanje",
+      "characters": 100,
+      "currentName": "Cloud Calendars: Koledar",
+      "currentSubtitle": "Vreme, sestanki in gradniki",
+      "rationale": "Prioritize localized family/work/personal planning, sharing and invitations; retain meeting/event and available-forecast/wind intent where not already in visible metadata. Replace generic reminder and month/week emphasis with supported use cases; no automation claim. Use remaining capacity for actual calendar views and outdoor/date planning, with whole meaningful localized terms rather than filler.",
+      "exactTitleSubtitleTokenDuplicates": [],
+      "confidence": "Own-language semantic proposal; not native-speaker certification or locale search-demand measurement.",
+      "addedIntentTermsForRequestedCapacity": [
+        "teden",
+        "mesec",
+        "potovanje"
+      ]
+    },
+    {
+      "locale": "sv",
+      "before": "planerare,agenda,schema,vecka,månad,påminnelse,händelse,dela,inbjudan,prognos,bokning",
+      "after": "planerare,agenda,schema,familj,arbete,privat,händelse,dela,inbjudan,prognos,vind,vecka,månad,år,regn",
+      "characters": 100,
+      "currentName": "Cloud Calendars: Kalender",
+      "currentSubtitle": "Väder, möten och widgetar",
+      "rationale": "Prioritize localized family/work/personal planning, sharing and invitations; retain meeting/event and available-forecast/wind intent where not already in visible metadata. Replace generic reminder and month/week emphasis with supported use cases; no automation claim. Use remaining capacity for actual calendar views and outdoor/date planning, with whole meaningful localized terms rather than filler.",
+      "exactTitleSubtitleTokenDuplicates": [],
+      "confidence": "Own-language semantic proposal; not native-speaker certification or locale search-demand measurement.",
+      "addedIntentTermsForRequestedCapacity": [
+        "vecka",
+        "månad",
+        "år",
+        "regn"
+      ]
+    },
+    {
+      "locale": "ta-IN",
+      "before": "அட்டவணை,சந்திப்பு,நிகழ்வு,நினைவூட்டல்,பகிர்வு,அழைப்பு,வாரம்,மாதம்,முன்னறிவிப்பு,விட்ஜெட்",
+      "after": "அட்டவணை,சந்திப்பு,நிகழ்வு,பகிர்வு,அழைப்பு,குடும்பம்,வேலை,தனிப்பட்ட,முன்னறிவிப்பு,காற்று,மழை,பட்டியல்",
+      "characters": 100,
+      "currentName": "Cloud Calendars: காலண்டர்",
+      "currentSubtitle": "வானிலை மற்றும் திட்டங்கள்",
+      "rationale": "Prioritize localized family/work/personal planning, sharing and invitations; retain meeting/event and available-forecast/wind intent where not already in visible metadata. Replace generic reminder and month/week emphasis with supported use cases; no automation claim. Use remaining capacity for actual calendar views and outdoor/date planning, with whole meaningful localized terms rather than filler.",
+      "exactTitleSubtitleTokenDuplicates": [],
+      "confidence": "Own-language semantic proposal; not native-speaker certification or locale search-demand measurement.",
+      "addedIntentTermsForRequestedCapacity": [
+        "மழை",
+        "பட்டியல்"
+      ]
+    },
+    {
+      "locale": "te-IN",
+      "before": "సమయపట్టిక,సమావేశం,ఈవెంట్,రిమైండర్,ఆహ్వానం,షేరింగ్,వారం,నెల,అంచనా,విడ్జెట్",
+      "after": "సమయపట్టిక,సమావేశం,ఈవెంట్,ఆహ్వానం,పంచుకోవడం,కుటుంబం,పని,వ్యక్తిగతం,అంచనా,గాలి,వారం,నెల,సంవత్సరం,వర్షం",
+      "characters": 100,
+      "currentName": "Cloud Calendars: క్యాలెండర్",
+      "currentSubtitle": "వాతావరణం మరియు ప్రణాళికలు",
+      "rationale": "Prioritize localized family/work/personal planning, sharing and invitations; retain meeting/event and available-forecast/wind intent where not already in visible metadata. Replace generic reminder and month/week emphasis with supported use cases; no automation claim. Use remaining capacity for actual calendar views and outdoor/date planning, with whole meaningful localized terms rather than filler.",
+      "exactTitleSubtitleTokenDuplicates": [],
+      "confidence": "Own-language semantic proposal; not native-speaker certification or locale search-demand measurement.",
+      "addedIntentTermsForRequestedCapacity": [
+        "వారం",
+        "నెల",
+        "సంవత్సరం",
+        "వర్షం"
+      ]
+    },
+    {
+      "locale": "th",
+      "before": "ตารางเวลา,วางแผน,สัปดาห์,เดือน,เตือน,ประชุม,กิจกรรม,แชร์,คำเชิญ,พยากรณ์",
+      "after": "ตารางเวลา,วางแผน,ครอบครัว,งาน,ส่วนตัว,ประชุม,กิจกรรม,แชร์,คำเชิญ,พยากรณ์,ลม,สัปดาห์,เดือน,ปี,เดินทาง",
+      "characters": 100,
+      "currentName": "Cloud Calendars: ปฏิทิน",
+      "currentSubtitle": "อากาศ นัดหมาย และวิดเจ็ต",
+      "rationale": "Prioritize localized family/work/personal planning, sharing and invitations; retain meeting/event and available-forecast/wind intent where not already in visible metadata. Replace generic reminder and month/week emphasis with supported use cases; no automation claim. Use remaining capacity for actual calendar views and outdoor/date planning, with whole meaningful localized terms rather than filler.",
+      "exactTitleSubtitleTokenDuplicates": [],
+      "confidence": "Own-language semantic proposal; not native-speaker certification or locale search-demand measurement.",
+      "addedIntentTermsForRequestedCapacity": [
+        "สัปดาห์",
+        "เดือน",
+        "ปี",
+        "เดินทาง"
+      ]
+    },
+    {
+      "locale": "tr",
+      "before": "ajanda,program,hafta,hatırlatıcı,toplantı,etkinlik,paylaşım,davet,tahmin,randevu,araç takımı",
+      "after": "ajanda,program,aile,iş,kişisel,toplantı,etkinlik,paylaşım,davet,tahmin,rüzgar,gün,yıl,yağmur,seyahat",
+      "characters": 100,
+      "currentName": "Cloud Calendars: Takvim",
+      "currentSubtitle": "Hava durumu ve günlük planlar",
+      "rationale": "Prioritize localized family/work/personal planning, sharing and invitations; retain meeting/event and available-forecast/wind intent where not already in visible metadata. Replace generic reminder and month/week emphasis with supported use cases; no automation claim. Use remaining capacity for actual calendar views and outdoor/date planning, with whole meaningful localized terms rather than filler.",
+      "exactTitleSubtitleTokenDuplicates": [],
+      "confidence": "Own-language semantic proposal; not native-speaker certification or locale search-demand measurement.",
+      "addedIntentTermsForRequestedCapacity": [
+        "gün",
+        "yıl",
+        "yağmur",
+        "seyahat"
+      ]
+    },
+    {
+      "locale": "uk",
+      "before": "планувальник,розклад,тиждень,місяць,нагадування,подія,поширення,запрошення,прогноз,плани",
+      "after": "планувальник,розклад,родина,робота,особистий,подія,поширення,запрошення,прогноз,вітер,тиждень,місяць",
+      "characters": 100,
+      "currentName": "Cloud Calendars: Календар",
+      "currentSubtitle": "Погода, зустрічі та віджети",
+      "rationale": "Prioritize localized family/work/personal planning, sharing and invitations; retain meeting/event and available-forecast/wind intent where not already in visible metadata. Replace generic reminder and month/week emphasis with supported use cases; no automation claim. Use remaining capacity for actual calendar views and outdoor/date planning, with whole meaningful localized terms rather than filler.",
+      "exactTitleSubtitleTokenDuplicates": [],
+      "confidence": "Own-language semantic proposal; not native-speaker certification or locale search-demand measurement.",
+      "addedIntentTermsForRequestedCapacity": [
+        "тиждень",
+        "місяць"
+      ]
+    },
+    {
+      "locale": "ur-PK",
+      "before": "شیڈول,ملاقات,تقریب,یاددہانی,دعوت,اشتراک,ہفتہ,مہینہ,پیشگوئی,ویجٹ",
+      "after": "شیڈول,ملاقات,تقریب,دعوت,اشتراک,خاندان,کام,ذاتی,پیشگوئی,ہوا,ہفتہ,مہینہ,سال,بارش,طلوع آفتاب,غروب آفتاب",
+      "characters": 100,
+      "currentName": "Cloud Calendars: کیلنڈر",
+      "currentSubtitle": "موسم اور منصوبہ بندی",
+      "rationale": "Prioritize localized family/work/personal planning, sharing and invitations; retain meeting/event and available-forecast/wind intent where not already in visible metadata. Replace generic reminder and month/week emphasis with supported use cases; no automation claim. Use remaining capacity for actual calendar views and outdoor/date planning, with whole meaningful localized terms rather than filler.",
+      "exactTitleSubtitleTokenDuplicates": [],
+      "confidence": "Own-language semantic proposal; not native-speaker certification or locale search-demand measurement.",
+      "addedIntentTermsForRequestedCapacity": [
+        "ہفتہ",
+        "مہینہ",
+        "سال",
+        "بارش",
+        "طلوع آفتاب",
+        "غروب آفتاب"
+      ]
+    },
+    {
+      "locale": "vi",
+      "before": "lịch trình,nhắc nhở,cuộc họp,sự kiện,chia sẻ,lời mời,tuần,tháng,dự báo,cuộc hẹn",
+      "after": "lịch trình,gia đình,công việc,cá nhân,cuộc họp,sự kiện,chia sẻ,lời mời,dự báo,gió,tuần,tháng,năm,mưa",
+      "characters": 100,
+      "currentName": "Cloud Calendars: Lịch",
+      "currentSubtitle": "Thời tiết, kế hoạch, tiện ích",
+      "rationale": "Prioritize localized family/work/personal planning, sharing and invitations; retain meeting/event and available-forecast/wind intent where not already in visible metadata. Replace generic reminder and month/week emphasis with supported use cases; no automation claim. Use remaining capacity for actual calendar views and outdoor/date planning, with whole meaningful localized terms rather than filler.",
+      "exactTitleSubtitleTokenDuplicates": [],
+      "confidence": "Own-language semantic proposal; not native-speaker certification or locale search-demand measurement.",
+      "addedIntentTermsForRequestedCapacity": [
+        "tuần",
+        "tháng",
+        "năm",
+        "mưa"
+      ]
+    },
+    {
+      "locale": "zh-Hans",
+      "before": "计划,提醒,会议,活动,共享,邀请,周视图,月视图,预报,工作,生活,同步,时间表,预约",
+      "after": "计划,会议,活动,共享,邀请,家庭,工作,个人,预报,风速,周视图,月视图,时间表,预约,降雨概率,日出,日落,户外,旅行,时区,重复事件,全天,聚餐,家庭安排,社团,接送,年视图,列表,日视图,地点",
+      "characters": 100,
+      "currentName": "Cloud Calendars: 日历",
+      "currentSubtitle": "天气、日程安排与主屏幕小组件",
+      "rationale": "Prioritize localized family/work/personal planning, sharing and invitations; retain meeting/event and available-forecast/wind intent where not already in visible metadata. Replace generic reminder and month/week emphasis with supported use cases; no automation claim. Use remaining capacity for actual calendar views and outdoor/date planning, with whole meaningful localized terms rather than filler.",
+      "exactTitleSubtitleTokenDuplicates": [],
+      "confidence": "Own-language semantic proposal; not native-speaker certification or locale search-demand measurement.",
+      "addedIntentTermsForRequestedCapacity": [
+        "降雨概率",
+        "日出",
+        "日落",
+        "户外",
+        "旅行",
+        "时区",
+        "重复事件",
+        "全天",
+        "聚餐",
+        "家庭安排",
+        "社团",
+        "接送",
+        "年视图",
+        "列表",
+        "日视图",
+        "地点"
+      ]
+    },
+    {
+      "locale": "zh-Hant",
+      "before": "日曆,計畫,提醒,會議,活動,共享,邀請,週檢視,月檢視,預報,工作,生活,同步,時間表,預約",
+      "after": "日曆,計畫,會議,活動,共享,邀請,家庭,工作,個人,預報,風速,週檢視,月檢視,時間表,預約,降雨機率,日出,日落,戶外,旅行,時區,重複活動,全天,聚餐,家庭安排,社團,接送,年檢視,列表,日檢視",
+      "characters": 100,
+      "currentName": "Cloud Calendars: 行事曆",
+      "currentSubtitle": "天氣、日程安排與主畫面小工具",
+      "rationale": "Prioritize localized family/work/personal planning, sharing and invitations; retain meeting/event and available-forecast/wind intent where not already in visible metadata. Replace generic reminder and month/week emphasis with supported use cases; no automation claim. Use remaining capacity for actual calendar views and outdoor/date planning, with whole meaningful localized terms rather than filler.",
+      "exactTitleSubtitleTokenDuplicates": [],
+      "confidence": "Own-language semantic proposal; not native-speaker certification or locale search-demand measurement.",
+      "addedIntentTermsForRequestedCapacity": [
+        "降雨機率",
+        "日出",
+        "日落",
+        "戶外",
+        "旅行",
+        "時區",
+        "重複活動",
+        "全天",
+        "聚餐",
+        "家庭安排",
+        "社團",
+        "接送",
+        "年檢視",
+        "列表",
+        "日檢視"
+      ]
+    }
+  ],
+  "values": {
+    "ar-SA": "جدول,تخطيط,عائلة,عمل,شخصي,اجتماع,حدث,مشاركة,دعوة,توقعات,رياح,أسبوع,شهر,يوم,سنة,شروق,غروب,منطقة زمنية",
+    "bn-BD": "সময়সূচি,সভা,অনুষ্ঠান,আমন্ত্রণ,শেয়ার,পরিবার,কাজ,ব্যক্তিগত,পূর্বাভাস,বাতাস,সপ্তাহ,মাস,দিন,বছর,বৃষ্টি",
+    "ca": "agenda,horari,família,feina,personal,reunió,esdeveniment,compartir,invitació,previsió,vent,mes,pluja",
+    "cs": "diář,plánovač,rodina,práce,osobní,událost,sdílení,pozvánka,předpověď,vítr,rozvrh,týden,měsíc,den,rok",
+    "da": "planlægger,agenda,familie,arbejde,privat,møde,begivenhed,deling,invitation,prognose,vind,uge,år,regn",
+    "de-DE": "planer,familie,arbeit,privat,besprechung,ereignis,teilen,einladung,vorhersage,wind,woche,monat,regen",
+    "el": "ατζέντα,πρόγραμμα,οικογένεια,εργασία,προσωπικό,συμβάν,κοινοποίηση,πρόσκληση,πρόγνωση,άνεμος,εβδομάδα",
+    "en-AU": "planner,agenda,schedule,family,work,personal,shared,event,invitation,meeting,weather,forecast,wind",
+    "en-CA": "planner,agenda,schedule,family,work,personal,shared,event,invitation,meeting,weather,forecast,wind",
+    "en-GB": "diary,planner,agenda,family,work,personal,shared,event,invitation,meeting,weather,forecast,wind,week",
+    "en-US": "planner,agenda,schedule,family,work,personal,shared,event,invitation,meeting,weather,forecast,wind",
+    "es-ES": "planificador,horario,familia,trabajo,personal,reunión,evento,compartir,invitación,previsión,viento",
+    "es-MX": "planificador,horario,familia,trabajo,personal,reunión,evento,compartir,invitación,pronóstico,viento",
+    "fi": "suunnittelu,perhe,työ,henkilökohtainen,kokous,tapahtuma,jakaminen,kutsu,ennuste,tuuli,aikataulu,sade",
+    "fr-CA": "calendrier,horaire,famille,travail,personnel,réunion,événement,partage,invitation,prévisions,vent",
+    "fr-FR": "calendrier,planning,famille,travail,personnel,réunion,événement,partage,invitation,prévisions,vent",
+    "gu-IN": "સમયપત્રક,બેઠક,ઇવેન્ટ,આમંત્રણ,શેર,પરિવાર,કામ,વ્યક્તિગત,આગાહી,પવન,અઠવાડિયું,મહિનો,દિવસ,વર્ષ,વરસાદ,યાદી",
+    "he": "לוח שנה,תכנון,משפחה,עבודה,אישי,אירוע,שיתוף,הזמנה,תחזית,רוח,סדר יום,שבוע,חודש,יום,שנה,גשם,נסיעה,רשימה",
+    "hi": "समयसारणी,बैठक,इवेंट,साझा,निमंत्रण,परिवार,काम,निजी,पूर्वानुमान,हवा,सप्ताह,महीना,दिन,वर्ष,बारिश,यात्रा",
+    "hr": "planer,raspored,obitelj,posao,osobno,događaj,dijeljenje,pozivnica,prognoza,vjetar,tjedan,mjesec,kiša",
+    "hu": "napirend,tervező,család,munka,személyes,esemény,megosztás,meghívó,előrejelzés,szél,hét,hónap,nap,eső",
+    "id": "agenda,perencana,keluarga,kerja,pribadi,rapat,acara,berbagi,undangan,prakiraan,angin,hari,perjalanan",
+    "it": "agenda,pianificazione,famiglia,lavoro,personale,riunione,evento,condivisione,invito,previsioni,vento",
+    "ja": "スケジュール,手帳,日程,家族,仕事,プライベート,会議,イベント,共有,招待,予報,風,週間表示,月間表示,雨,降水確率,日の入り,屋外,旅行,時差,繰り返し,終日,会食,家事,部活,サークル,送迎",
+    "kn-IN": "ವೇಳಾಪಟ್ಟಿ,ಸಭೆ,ಈವೆಂಟ್,ಆಹ್ವಾನ,ಹಂಚಿಕೆ,ಕುಟುಂಬ,ಕೆಲಸ,ವೈಯಕ್ತಿಕ,ಮುನ್ಸೂಚನೆ,ಗಾಳಿ,ವಾರ,ತಿಂಗಳು,ದಿನ,ವರ್ಷ,ಮಳೆ,ಪಟ್ಟಿ",
+    "ko": "스케줄,다이어리,플래너,가족,업무,개인,회의,이벤트,공유,초대,예보,바람,주간보기,월간보기,시간표,강수확률,일출,일몰,야외,여행,시간대,반복,종일,식사,모임,동호회,등하교,목록보기",
+    "ml-IN": "സമയക്രമം,യോഗം,ക്ഷണം,പങ്കിടൽ,കുടുംബം,ജോലി,വ്യക്തിഗതം,പ്രവചനം,കാറ്റ്,ആഴ്ച,മാസം,ദിവസം,വർഷം,യാത്ര,പട്ടിക",
+    "mr-IN": "वेळापत्रक,बैठक,कार्यक्रम,आमंत्रण,शेअर,कुटुंब,काम,वैयक्तिक,अंदाज,वारा,आठवडा,महिना,दिवस,वर्ष,पाऊस,यादी",
+    "ms": "agenda,perancang,keluarga,kerja,peribadi,mesyuarat,acara,perkongsian,jemputan,ramalan,angin,senarai",
+    "nl-NL": "kalender,planner,schema,gezin,werk,privé,vergadering,evenement,delen,uitnodiging,verwachting,wind",
+    "no": "planlegger,agenda,familie,jobb,privat,møte,hendelse,deling,invitasjon,prognose,vind,timeplan,uke,dag",
+    "or-IN": "ସମୟସୂଚୀ,ବୈଠକ,ଇଭେଣ୍ଟ,ନିମନ୍ତ୍ରଣ,ସେୟାର,ପରିବାର,କାମ,ବ୍ୟକ୍ତିଗତ,ପୂର୍ବାନୁମାନ,ପବନ,ସପ୍ତାହ,ମାସ,ଦିନ,ବର୍ଷା,ଯାତ୍ରା",
+    "pa-IN": "ਸਮਾਂਸਾਰਣੀ,ਮੀਟਿੰਗ,ਇਵੈਂਟ,ਸੱਦਾ,ਸਾਂਝਾ,ਪਰਿਵਾਰ,ਕੰਮ,ਨਿੱਜੀ,ਪੂਰਵਅਨੁਮਾਨ,ਹਵਾ,ਹਫ਼ਤਾ,ਮਹੀਨਾ,ਮੀਂਹ,ਯਾਤਰਾ,ਸੂਰਜ ਚੜ੍ਹਨਾ",
+    "pl": "planer,agenda,rodzina,praca,osobisty,spotkanie,wydarzenie,udostępnianie,zaproszenie,prognoza,wiatr",
+    "pt-BR": "agenda,planos,horário,família,trabalho,pessoal,reunião,evento,compartilhar,convite,previsão,vento",
+    "pt-PT": "calendário,horário,família,trabalho,pessoal,reunião,evento,partilha,convite,previsão,vento,mês,chuva",
+    "ro": "agendă,planificare,familie,muncă,personal,eveniment,partajare,invitație,prognoză,vânt,orar,săptămână",
+    "ru": "планировщик,расписание,семья,работа,личный,событие,приглашение,прогноз,ветер,общий доступ,месяц,день",
+    "sk": "diár,plánovač,rodina,práca,osobný,udalosť,zdieľanie,pozvánka,predpoveď,vietor,rozvrh,týždeň,deň,dážď",
+    "sl-SI": "načrtovalnik,urnik,družina,delo,osebno,dogodek,deljenje,povabilo,napoved,veter,teden,mesec,potovanje",
+    "sv": "planerare,agenda,schema,familj,arbete,privat,händelse,dela,inbjudan,prognos,vind,vecka,månad,år,regn",
+    "ta-IN": "அட்டவணை,சந்திப்பு,நிகழ்வு,பகிர்வு,அழைப்பு,குடும்பம்,வேலை,தனிப்பட்ட,முன்னறிவிப்பு,காற்று,மழை,பட்டியல்",
+    "te-IN": "సమయపట్టిక,సమావేశం,ఈవెంట్,ఆహ్వానం,పంచుకోవడం,కుటుంబం,పని,వ్యక్తిగతం,అంచనా,గాలి,వారం,నెల,సంవత్సరం,వర్షం",
+    "th": "ตารางเวลา,วางแผน,ครอบครัว,งาน,ส่วนตัว,ประชุม,กิจกรรม,แชร์,คำเชิญ,พยากรณ์,ลม,สัปดาห์,เดือน,ปี,เดินทาง",
+    "tr": "ajanda,program,aile,iş,kişisel,toplantı,etkinlik,paylaşım,davet,tahmin,rüzgar,gün,yıl,yağmur,seyahat",
+    "uk": "планувальник,розклад,родина,робота,особистий,подія,поширення,запрошення,прогноз,вітер,тиждень,місяць",
+    "ur-PK": "شیڈول,ملاقات,تقریب,دعوت,اشتراک,خاندان,کام,ذاتی,پیشگوئی,ہوا,ہفتہ,مہینہ,سال,بارش,طلوع آفتاب,غروب آفتاب",
+    "vi": "lịch trình,gia đình,công việc,cá nhân,cuộc họp,sự kiện,chia sẻ,lời mời,dự báo,gió,tuần,tháng,năm,mưa",
+    "zh-Hans": "计划,会议,活动,共享,邀请,家庭,工作,个人,预报,风速,周视图,月视图,时间表,预约,降雨概率,日出,日落,户外,旅行,时区,重复事件,全天,聚餐,家庭安排,社团,接送,年视图,列表,日视图,地点",
+    "zh-Hant": "日曆,計畫,會議,活動,共享,邀請,家庭,工作,個人,預報,風速,週檢視,月檢視,時間表,預約,降雨機率,日出,日落,戶外,旅行,時區,重複活動,全天,聚餐,家庭安排,社團,接送,年檢視,列表,日檢視"
+  },
+  "checks": {
+    "localeCount": 50,
+    "allWithin100UnicodeCodePoints": true,
+    "allCommaItemsUnique": true,
+    "allExactWhitespaceTitleSubtitleTokensExcluded": true,
+    "noAPIWrites": true,
+    "all97To100UnicodeCodePoints": true
+  }
+}

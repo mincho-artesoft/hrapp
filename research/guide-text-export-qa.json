@@ -2,7 +2,7 @@
   "guides": 58,
   "selection": "tools/guide-text-selection.json",
   "extraction": "Visible article headings, paragraphs, lists, FAQs and source links; gallery/other-app cards excluded.",
-  "exportedCharacters": 379628,
+  "exportedCharacters": 382361,
   "records": [
     {
       "slug": "what-calendar-sync-actually-does",
@@ -277,8 +277,8 @@
     {
       "slug": "a-week-view-that-fits-a-week",
       "source": "https://www.cloud-calendars.com/articles/a-week-view-that-fits-a-week/",
-      "blocks": 48,
-      "characters": 6438
+      "blocks": 59,
+      "characters": 9171
     },
     {
       "slug": "a-list-for-people-who-dislike-grids",

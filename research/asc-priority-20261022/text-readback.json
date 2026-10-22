@@ -1,0 +1,564 @@
+{
+  "checkedAt": "2026-10-22T05:56:51.486192+00:00",
+  "app": "6744690319",
+  "version": "1.7.4",
+  "state": "PREPARE_FOR_SUBMISSION",
+  "locales": [
+    {
+      "locale": "ar-SA",
+      "verified": true,
+      "checks": {
+        "description": true,
+        "keywords": true,
+        "promotionalText": true,
+        "subtitle": true,
+        "name": true
+      }
+    },
+    {
+      "locale": "bn-BD",
+      "verified": true,
+      "checks": {
+        "description": true,
+        "keywords": true,
+        "promotionalText": true,
+        "subtitle": true,
+        "name": true
+      }
+    },
+    {
+      "locale": "ca",
+      "verified": true,
+      "checks": {
+        "description": true,
+        "keywords": true,
+        "promotionalText": true,
+        "subtitle": true,
+        "name": true
+      }
+    },
+    {
+      "locale": "cs",
+      "verified": true,
+      "checks": {
+        "description": true,
+        "keywords": true,
+        "promotionalText": true,
+        "subtitle": true,
+        "name": true
+      }
+    },
+    {
+      "locale": "da",
+      "verified": true,
+      "checks": {
+        "description": true,
+        "keywords": true,
+        "promotionalText": true,
+        "subtitle": true,
+        "name": true
+      }
+    },
+    {
+      "locale": "de-DE",
+      "verified": true,
+      "checks": {
+        "description": true,
+        "keywords": true,
+        "promotionalText": true,
+        "subtitle": true,
+        "name": true
+      }
+    },
+    {
+      "locale": "el",
+      "verified": true,
+      "checks": {
+        "description": true,
+        "keywords": true,
+        "promotionalText": true,
+        "subtitle": true,
+        "name": true
+      }
+    },
+    {
+      "locale": "en-AU",
+      "verified": true,
+      "checks": {
+        "description": true,
+        "keywords": true,
+        "promotionalText": true,
+        "subtitle": true,
+        "name": true
+      }
+    },
+    {
+      "locale": "en-CA",
+      "verified": true,
+      "checks": {
+        "description": true,
+        "keywords": true,
+        "promotionalText": true,
+        "subtitle": true,
+        "name": true
+      }
+    },
+    {
+      "locale": "en-GB",
+      "verified": true,
+      "checks": {
+        "description": true,
+        "keywords": true,
+        "promotionalText": true,
+        "subtitle": true,
+        "name": true
+      }
+    },
+    {
+      "locale": "en-US",
+      "verified": true,
+      "checks": {
+        "description": true,
+        "keywords": true,
+        "promotionalText": true,
+        "subtitle": true,
+        "name": true
+      }
+    },
+    {
+      "locale": "es-ES",
+      "verified": true,
+      "checks": {
+        "description": true,
+        "keywords": true,
+        "promotionalText": true,
+        "subtitle": true,
+        "name": true
+      }
+    },
+    {
+      "locale": "es-MX",
+      "verified": true,
+      "checks": {
+        "description": true,
+        "keywords": true,
+        "promotionalText": true,
+        "subtitle": true,
+        "name": true
+      }
+    },
+    {
+      "locale": "fi",
+      "verified": true,
+      "checks": {
+        "description": true,
+        "keywords": true,
+        "promotionalText": true,
+        "subtitle": true,
+        "name": true
+      }
+    },
+    {
+      "locale": "fr-CA",
+      "verified": true,
+      "checks": {
+        "description": true,
+        "keywords": true,
+        "promotionalText": true,
+        "subtitle": true,
+        "name": true
+      }
+    },
+    {
+      "locale": "fr-FR",
+      "verified": true,
+      "checks": {
+        "description": true,
+        "keywords": true,
+        "promotionalText": true,
+        "subtitle": true,
+        "name": true
+      }
+    },
+    {
+      "locale": "gu-IN",
+      "verified": true,
+      "checks": {
+        "description": true,
+        "keywords": true,
+        "promotionalText": true,
+        "subtitle": true,
+        "name": true
+      }
+    },
+    {
+      "locale": "he",
+      "verified": true,
+      "checks": {
+        "description": true,
+        "keywords": true,
+        "promotionalText": true,
+        "subtitle": true,
+        "name": true
+      }
+    },
+    {
+      "locale": "hi",
+      "verified": true,
+      "checks": {
+        "description": true,
+        "keywords": true,
+        "promotionalText": true,
+        "subtitle": true,
+        "name": true
+      }
+    },
+    {
+      "locale": "hr",
+      "verified": true,
+      "checks": {
+        "description": true,
+        "keywords": true,
+        "promotionalText": true,
+        "subtitle": true,
+        "name": true
+      }
+    },
+    {
+      "locale": "hu",
+      "verified": true,
+      "checks": {
+        "description": true,
+        "keywords": true,
+        "promotionalText": true,
+        "subtitle": true,
+        "name": true
+      }
+    },
+    {
+      "locale": "id",
+      "verified": true,
+      "checks": {
+        "description": true,
+        "keywords": true,
+        "promotionalText": true,
+        "subtitle": true,
+        "name": true
+      }
+    },
+    {
+      "locale": "it",
+      "verified": true,
+      "checks": {
+        "description": true,
+        "keywords": true,
+        "promotionalText": true,
+        "subtitle": true,
+        "name": true
+      }
+    },
+    {
+      "locale": "ja",
+      "verified": true,
+      "checks": {
+        "description": true,
+        "keywords": true,
+        "promotionalText": true,
+        "subtitle": true,
+        "name": true
+      }
+    },
+    {
+      "locale": "kn-IN",
+      "verified": true,
+      "checks": {
+        "description": true,
+        "keywords": true,
+        "promotionalText": true,
+        "subtitle": true,
+        "name": true
+      }
+    },
+    {
+      "locale": "ko",
+      "verified": true,
+      "checks": {
+        "description": true,
+        "keywords": true,
+        "promotionalText": true,
+        "subtitle": true,
+        "name": true
+      }
+    },
+    {
+      "locale": "ml-IN",
+      "verified": true,
+      "checks": {
+        "description": true,
+        "keywords": true,
+        "promotionalText": true,
+        "subtitle": true,
+        "name": true
+      }
+    },
+    {
+      "locale": "mr-IN",
+      "verified": true,
+      "checks": {
+        "description": true,
+        "keywords": true,
+        "promotionalText": true,
+        "subtitle": true,
+        "name": true
+      }
+    },
+    {
+      "locale": "ms",
+      "verified": true,
+      "checks": {
+        "description": true,
+        "keywords": true,
+        "promotionalText": true,
+        "subtitle": true,
+        "name": true
+      }
+    },
+    {
+      "locale": "nl-NL",
+      "verified": true,
+      "checks": {
+        "description": true,
+        "keywords": true,
+        "promotionalText": true,
+        "subtitle": true,
+        "name": true
+      }
+    },
+    {
+      "locale": "no",
+      "verified": true,
+      "checks": {
+        "description": true,
+        "keywords": true,
+        "promotionalText": true,
+        "subtitle": true,
+        "name": true
+      }
+    },
+    {
+      "locale": "or-IN",
+      "verified": true,
+      "checks": {
+        "description": true,
+        "keywords": true,
+        "promotionalText": true,
+        "subtitle": true,
+        "name": true
+      }
+    },
+    {
+      "locale": "pa-IN",
+      "verified": true,
+      "checks": {
+        "description": true,
+        "keywords": true,
+        "promotionalText": true,
+        "subtitle": true,
+        "name": true
+      }
+    },
+    {
+      "locale": "pl",
+      "verified": true,
+      "checks": {
+        "description": true,
+        "keywords": true,
+        "promotionalText": true,
+        "subtitle": true,
+        "name": true
+      }
+    },
+    {
+      "locale": "pt-BR",
+      "verified": true,
+      "checks": {
+        "description": true,
+        "keywords": true,
+        "promotionalText": true,
+        "subtitle": true,
+        "name": true
+      }
+    },
+    {
+      "locale": "pt-PT",
+      "verified": true,
+      "checks": {
+        "description": true,
+        "keywords": true,
+        "promotionalText": true,
+        "subtitle": true,
+        "name": true
+      }
+    },
+    {
+      "locale": "ro",
+      "verified": true,
+      "checks": {
+        "description": true,
+        "keywords": true,
+        "promotionalText": true,
+        "subtitle": true,
+        "name": true
+      }
+    },
+    {
+      "locale": "ru",
+      "verified": true,
+      "checks": {
+        "description": true,
+        "keywords": true,
+        "promotionalText": true,
+        "subtitle": true,
+        "name": true
+      }
+    },
+    {
+      "locale": "sk",
+      "verified": true,
+      "checks": {
+        "description": true,
+        "keywords": true,
+        "promotionalText": true,
+        "subtitle": true,
+        "name": true
+      }
+    },
+    {
+      "locale": "sl-SI",
+      "verified": true,
+      "checks": {
+        "description": true,
+        "keywords": true,
+        "promotionalText": true,
+        "subtitle": true,
+        "name": true
+      }
+    },
+    {
+      "locale": "sv",
+      "verified": true,
+      "checks": {
+        "description": true,
+        "keywords": true,
+        "promotionalText": true,
+        "subtitle": true,
+        "name": true
+      }
+    },
+    {
+      "locale": "ta-IN",
+      "verified": true,
+      "checks": {
+        "description": true,
+        "keywords": true,
+        "promotionalText": true,
+        "subtitle": true,
+        "name": true
+      }
+    },
+    {
+      "locale": "te-IN",
+      "verified": true,
+      "checks": {
+        "description": true,
+        "keywords": true,
+        "promotionalText": true,
+        "subtitle": true,
+        "name": true
+      }
+    },
+    {
+      "locale": "th",
+      "verified": true,
+      "checks": {
+        "description": true,
+        "keywords": true,
+        "promotionalText": true,
+        "subtitle": true,
+        "name": true
+      }
+    },
+    {
+      "locale": "tr",
+      "verified": true,
+      "checks": {
+        "description": true,
+        "keywords": true,
+        "promotionalText": true,
+        "subtitle": true,
+        "name": true
+      }
+    },
+    {
+      "locale": "uk",
+      "verified": true,
+      "checks": {
+        "description": true,
+        "keywords": true,
+        "promotionalText": true,
+        "subtitle": true,
+        "name": true
+      }
+    },
+    {
+      "locale": "ur-PK",
+      "verified": true,
+      "checks": {
+        "description": true,
+        "keywords": true,
+        "promotionalText": true,
+        "subtitle": true,
+        "name": true
+      }
+    },
+    {
+      "locale": "vi",
+      "verified": true,
+      "checks": {
+        "description": true,
+        "keywords": true,
+        "promotionalText": true,
+        "subtitle": true,
+        "name": true
+      }
+    },
+    {
+      "locale": "zh-Hans",
+      "verified": true,
+      "checks": {
+        "description": true,
+        "keywords": true,
+        "promotionalText": true,
+        "subtitle": true,
+        "name": true
+      }
+    },
+    {
+      "locale": "zh-Hant",
+      "verified": true,
+      "checks": {
+        "description": true,
+        "keywords": true,
+        "promotionalText": true,
+        "subtitle": true,
+        "name": true
+      }
+    }
+  ],
+  "totalLocales": 50,
+  "allVerified": true,
+  "writesInThisCheck": false,
+  "scope": "Fresh full APIreadback of four targeted text fields and exact preserved app names across all50draftlocales. Does not certify translation quality, rankings or released copy.",
+  "descriptionOverlay": "description-overrides-batch30.json",
+  "submission": "not_performed"
+}
