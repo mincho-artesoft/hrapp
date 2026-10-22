@@ -1,0 +1,37 @@
+{
+  "newPages": [
+    {
+      "url": "https://www.cloud-calendars.com/articles/cozi-timetree-family-calendar-iphone-android/",
+      "httpStatus": 200,
+      "sha256": "f05d180738359da7dc52e70011456856064b96b951c270bb4c76974f42b442db",
+      "matchesBuildBytes": true,
+      "indexable": true,
+      "jsonLdBlocks": 2
+    },
+    {
+      "url": "https://www.cloud-calendars.com/articles/iphone-calendar-tasks-reminders-versus-event-alerts/",
+      "httpStatus": 200,
+      "sha256": "c5b5d5c4afa34070f7d5c4c91c10cf424860472be3ce70139fba0e05bf19feb2",
+      "matchesBuildBytes": true,
+      "indexable": true,
+      "jsonLdBlocks": 2
+    },
+    {
+      "url": "https://www.cloud-calendars.com/articles/automatic-time-blocking-versus-manual-calendar/",
+      "httpStatus": 200,
+      "sha256": "ecdf5c9cec91f3215a17f4c64ee84fa1013a052248781c06ab8a5621838863a7",
+      "matchesBuildBytes": true,
+      "indexable": true,
+      "jsonLdBlocks": 2
+    },
+    {
+      "url": "https://www.cloud-calendars.com/articles/what-is-a-cloud-calendar/",
+      "httpStatus": 200,
+      "sha256": "0cf7e77354a8d1c79bbd7207401392c1c88e4b97ea5a2d156ad7424e4f3f73a0",
+      "matchesBuildBytes": true,
+      "indexable": true,
+      "jsonLdBlocks": 2
+    }
+  ],
+  "scope": "Public HTML bytes match tested build; canonical, indexable robots and parseable JSON-LD verified. This does not establish search indexing or ranking."
+}

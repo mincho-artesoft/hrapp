@@ -608,6 +608,7 @@ export const HELP_EN_US: Readonly<Record<string, LocalisedArticle>> = {
       }
     ],
     "seeAlso": [
+    "iphone-calendar-tasks-reminders-versus-event-alerts",
       "what-calendar-sync-actually-does",
       "when-two-calendars-disagree"
     ]
@@ -1038,6 +1039,7 @@ export const HELP_EN_US: Readonly<Record<string, LocalisedArticle>> = {
       }
     ],
     "seeAlso": [
+    "cozi-timetree-family-calendar-iphone-android",
       "planning-a-week-in-ten-minutes",
       "a-calendar-that-is-yours-to-share",
       "recurring-events-without-the-mess"

@@ -18,6 +18,10 @@ import { ArticleFacts } from './types';
  * long tail around those twelve.
  */
 export const ARTICLE_FACTS: Readonly<Record<string, ArticleFacts>> = {
+  'what-is-a-cloud-calendar': { slug: 'what-is-a-cloud-calendar', family: 'unify', intent: 'core', claims: [], updated: '2026-10-22' },
+  'automatic-time-blocking-versus-manual-calendar': { slug: 'automatic-time-blocking-versus-manual-calendar', family: 'planning', intent: 'compare', claims: [], updated: '2026-10-22' },
+  'iphone-calendar-tasks-reminders-versus-event-alerts': { slug: 'iphone-calendar-tasks-reminders-versus-event-alerts', family: 'planning', intent: 'core', claims: [], updated: '2026-10-22' },
+  'cozi-timetree-family-calendar-iphone-android': { slug: 'cozi-timetree-family-calendar-iphone-android', family: 'compare', intent: 'compare', claims: [], updated: '2026-10-22' },
   'shift-work-calendar-iphone-rotating-schedules': { slug: 'shift-work-calendar-iphone-rotating-schedules', family: 'planning', intent: 'core', claims: [], updated: '2026-10-22' },
   'booking-link-or-shared-calendar': { slug: 'booking-link-or-shared-calendar', family: 'sharing', intent: 'compare', claims: [], updated: '2026-10-22' },
   'natural-language-calendar-events-iphone': { slug: 'natural-language-calendar-events-iphone', family: 'planning', intent: 'editing', claims: [], updated: '2026-10-22' },

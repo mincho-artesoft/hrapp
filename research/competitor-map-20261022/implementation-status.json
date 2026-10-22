@@ -1,18 +1,22 @@
 {
   "date": "2026-10-22",
   "goalStatus": "active_incomplete",
-  "previousGoalTurn": "No progress: status explanation only. Revalidated worktree and resumed research and publication.",
-  "googleActualQueries": 24,
-  "consumerChatGPTFreshSamples": 5,
+  "previousGoalTurn": "Progress: three guides and a query matrix were published and pushed in commit 92345ab.",
+  "googleActualQueries": 31,
+  "consumerChatGPTFreshSamples": 8,
   "historicalChatGPTSamples": 3,
-  "newEnglishArticles": 3,
-  "totalEnglishArticles": 61,
-  "sitemapUrls": 95,
+  "newEnglishArticles": 7,
+  "totalEnglishArticles": 65,
+  "sitemapUrls": 99,
   "heldTranslatedArticlesAndHubs": 436,
   "implementedSlugs": [
     "shift-work-calendar-iphone-rotating-schedules",
     "booking-link-or-shared-calendar",
-    "natural-language-calendar-events-iphone"
+    "natural-language-calendar-events-iphone",
+    "cozi-timetree-family-calendar-iphone-android",
+    "iphone-calendar-tasks-reminders-versus-event-alerts",
+    "automatic-time-blocking-versus-manual-calendar",
+    "what-is-a-cloud-calendar"
   ],
   "delivered": [
     "Query-to-canonical matrix in JSON and CSV",
@@ -22,12 +26,25 @@
     "Build and public URL checks; live deployment; visual inspection"
   ],
   "remaining": [
-    "Branded feature comparisons for Readdle, Fantastical, Cozi and TimeTree",
-    "Task/reminder and automatic time-blocking comparison gaps",
-    "Offline/privacy workflow verification before new claims",
-    "Classify 212 discovered follow-up strings, then verify useful distinct searches",
-    "Broaden languages/markets and independent consumer ChatGPT prompts",
-    "Use actual Search Console query data to prioritise and later measure changes"
+    "Complete branded comparisons for Calendar 366, Fantastical and Readdle beyond the existing workflow guides.",
+    "Verify 20 distinct-intent leads from the classified 212-row snapshot and classify 40 later suggestions.",
+    "Expand consumer ChatGPT buyer-intent samples; one of the eight current prompts is explicitly seeded with competitor names.",
+    "Map the rest of the 150 available own-site Search Console query rows and assess existing snippet/landing-page fit.",
+    "Broaden query language and market coverage, prioritising observed markets; current non-English SERPs do not establish local-country ranks.",
+    "Check remaining offline/privacy/visual-planner intents against actual supported product behaviour and official evidence."
   ],
-  "completionAudit": "Not achieved: 24 English Google queries and five fresh consumer samples do not establish all competitor keywords or all markets. Canonical mapping is a coverage assessment, not proof every existing article completely satisfies its query."
+  "completionAudit": "Not achieved: 31 actual Google queries, eight fresh ChatGPT samples and selected GSC groups do not establish comprehensive competitor-query coverage. Four further distinct-intent pages implemented this increment; publication evidence is recorded separately.",
+  "lastIncrementArticles": 4,
+  "ownSiteSearchConsoleQueries": 150,
+  "classifiedOriginalSuggestionRows": 212,
+  "distinctIntentLeads": 20,
+  "laterUnclassifiedSuggestionRows": 40,
+  "lastIncrementPublication": {
+    "newArticles": 4,
+    "build": "comparison-build-check.json",
+    "public": "comparison-public-check.json",
+    "deploy": "comparison-deploy.log",
+    "screenshot": "comparison-visual-proof.json",
+    "result": "Published and verified; 99/99 sitemap URLs successful."
+  }
 }

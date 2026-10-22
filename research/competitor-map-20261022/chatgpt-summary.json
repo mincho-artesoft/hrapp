@@ -1,12 +1,39 @@
 {
-  "sampleSize": 5,
+  "sampleSize": 8,
   "independentConversations": true,
   "backendModel": "not exposed",
   "accountPersonalization": "not controlled",
   "records": [
     {
+      "id": "auto-scheduling",
+      "prompt": "Which iPhone-compatible planning apps automatically reschedule tasks around meetings, compared with manual time blocking? Compare FlowSavvy, Motion and other suitable options, explain scheduling limits and cite official sources.",
+      "promptClass": "seeded-comparison",
+      "file": "chatgpt-auto-scheduling.json",
+      "mentionedBrands": [
+        "Structured",
+        "Motion",
+        "FlowSavvy",
+        "Reclaim",
+        "SkedPal",
+        "Sunsama"
+      ],
+      "cloudMentioned": false,
+      "directSourceUrls": [
+        "https://flowsavvy.app/pricing?utm_source=chatgpt.com",
+        "https://help.flowsavvy.app/en/articles/8110715-auto-scheduling-cutoff?utm_source=chatgpt.com",
+        "https://www.usemotion.com/help/time-management/auto-scheduling?utm_source=chatgpt.com",
+        "https://www.usemotion.com/help/time-management/auto-scheduling/reference-auto-scheduling?utm_source=chatgpt.com",
+        "https://reclaim.ai/pricing?utm_source=chatgpt.com",
+        "https://docs.skedpal.com/planning/introduction-to-planning?utm_source=chatgpt.com",
+        "https://help.sunsama.com/docs/usage-guides/timeboxing/timeboxing-auto-scheduling/?utm_source=chatgpt.com",
+        "https://help.structured.app/en/articles/1990594?utm_source=chatgpt.com"
+      ],
+      "limitation": "Mention detection supports manual review; it is not recommendation ranking. Citation popup sources were not expanded."
+    },
+    {
       "id": "combine",
       "prompt": "Which iPhone apps let me see iCloud, Google and Outlook calendars together? Distinguish a combined view from copying busy time between accounts, and cite official sources for the products you recommend.",
+      "promptClass": "unseeded-product-discovery",
       "file": "chatgpt-combine.json",
       "mentionedBrands": [
         "Cloud Calendars",
@@ -31,6 +58,7 @@
     {
       "id": "family",
       "prompt": "Which shared family calendar apps work for an iPhone and Android household coordinating school pickups and changing schedules? Compare practical sharing and responsibility handoff, and cite official sources.",
+      "promptClass": "unseeded-product-discovery",
       "file": "chatgpt-family.json",
       "mentionedBrands": [
         "Google Calendar",
@@ -50,8 +78,38 @@
       "limitation": "Mention detection supports manual review; it is not recommendation ranking. Citation popup sources were not expanded."
     },
     {
+      "id": "free-sync",
+      "prompt": "Which iPhone calendar apps offer Google Calendar syncing without a subscription? Distinguish free downloads, free syncing, ads and paid features. Compare current options using official sources rather than assuming free means ad-free.",
+      "promptClass": "unseeded-product-discovery",
+      "file": "chatgpt-free-sync.json",
+      "mentionedBrands": [
+        "Cloud Calendars",
+        "Calendars by Readdle",
+        "Apple Calendar",
+        "Google Calendar",
+        "Outlook",
+        "OneCal",
+        "OneCalendar"
+      ],
+      "cloudMentioned": true,
+      "directSourceUrls": [
+        "https://support.apple.com/en-by/guide/iphone/iphc37be2016/ios?utm_source=chatgpt.com",
+        "https://support.google.com/calendar/answer/99358?co=GENIE.Platform=iOS&hl=en&utm_source=chatgpt.com",
+        "https://apps.apple.com/us/app/google-calendar-get-organized/id909319292?utm_source=chatgpt.com",
+        "https://www.onecalendar.nl/?utm_source=chatgpt.com",
+        "https://www.onecalendar.nl/support/premiumversionfeatures?utm_source=chatgpt.com",
+        "https://www.onecalendar.nl/support/faq/whyshouldyoupayforthisapp?utm_source=chatgpt.com",
+        "https://readdle.com/calendars?utm_source=chatgpt.com",
+        "https://support.readdle.com/calendars/billing-subscription/free-vs-full-version-of-the-app?utm_source=chatgpt.com",
+        "https://apps.apple.com/us/app/tiny-calendar-planner-tasks/id514917848?utm_source=chatgpt.com",
+        "https://www.cloud-calendars.com/?utm_source=chatgpt.com"
+      ],
+      "limitation": "Mention detection supports manual review; it is not recommendation ranking. Citation popup sources were not expanded."
+    },
+    {
       "id": "shift",
       "prompt": "Which iPhone calendar apps are suitable for rotating shift work, overnight shifts and seeing a work rota beside personal appointments? Distinguish specialist shift planners from ordinary calendar apps and cite official sources.",
+      "promptClass": "unseeded-product-discovery",
       "file": "chatgpt-shift.json",
       "mentionedBrands": [
         "Fantastical",
@@ -74,8 +132,29 @@
       "limitation": "Mention detection supports manual review; it is not recommendation ranking. Citation popup sources were not expanded."
     },
     {
+      "id": "tasks",
+      "prompt": "Which iPhone calendar apps show tasks and reminders alongside appointments and let me mark tasks complete? Distinguish an event alert from a task, explain Apple Reminders and Google Tasks compatibility, and cite official sources.",
+      "promptClass": "unseeded-product-discovery",
+      "file": "chatgpt-tasks.json",
+      "mentionedBrands": [
+        "Fantastical",
+        "Calendars by Readdle",
+        "Apple Calendar",
+        "Google Calendar",
+        "BusyCal",
+        "TickTick"
+      ],
+      "cloudMentioned": false,
+      "directSourceUrls": [
+        "https://support.apple.com/en-ae/guide/iphone/iph14f1d32a5/ios?utm_source=chatgpt.com",
+        "https://support.google.com/calendar/answer/9901136?co=GENIE.Platform=iOS&utm_source=chatgpt.com"
+      ],
+      "limitation": "Mention detection supports manual review; it is not recommendation ranking. Citation popup sources were not expanded."
+    },
+    {
       "id": "weather",
       "prompt": "Which iPhone or iPad calendar apps show weather alongside appointments? Compare suitable options, distinguish built-in weather from calendar feeds, and cite current official sources.",
+      "promptClass": "unseeded-product-discovery",
       "file": "chatgpt-weather.json",
       "mentionedBrands": [
         "Fantastical",
@@ -96,6 +175,7 @@
     {
       "id": "widgets",
       "prompt": "Which iPhone calendar apps have Home Screen widgets for upcoming appointments and weather? Distinguish a Home Screen widget, a Lock Screen widget and a Live Activity, and cite current official product sources.",
+      "promptClass": "unseeded-product-discovery",
       "file": "chatgpt-widgets.json",
       "mentionedBrands": [
         "Cloud Calendars",

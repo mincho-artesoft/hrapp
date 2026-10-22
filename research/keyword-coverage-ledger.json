@@ -10,7 +10,7 @@
     "No content is declared researched merely because a corresponding route exists."
   ],
   "currentInventory": {
-    "articles": 465,
+    "articles": 472,
     "locales": [
       "ar-SA",
       "bg",
@@ -43,9 +43,9 @@
       "zh-Hans",
       "zh-Hant"
     ],
-    "englishArticles": 58,
-    "evidence": "research/content-inventory-20261021.json",
-    "scope": "Fresh batch43 source inventory; not all-localization quality approval."
+    "englishArticles": 65,
+    "evidence": "src/app/content/article-index.ts generated from locale aggregates",
+    "scope": "Current route inventory after seven additional English guides; not blanket article-quality approval."
   },
   "clusters": [
     {
@@ -687,18 +687,95 @@
       "measuredSearchVolume": null,
       "chatgptCitationEvidence": null,
       "publicationGate": "Rootauthored/fullBGread; independentfullENfactual/editorial andBGcrossreview; exact oneUIprecisionchangechain; completedeliverychecks."
+    },
+    {
+      "id": "shift-work-calendar-iphone-rotating-schedules",
+      "keywordCandidates": [
+        "best shift work calendar app iPhone rotating schedule",
+        "shift calendar app export Apple Calendar"
+      ],
+      "status": "implemented_english_source_backed",
+      "canonical": "/articles/shift-work-calendar-iphone-rotating-schedules/",
+      "observedEvidence": "research/competitor-map-20261022/coverage-matrix.json",
+      "measuredSearchVolume": null,
+      "qualityScope": "Distinct workflow guide with publisher attribution, worked examples and sources. Publication/readback records are kept separately."
+    },
+    {
+      "id": "booking-link-or-shared-calendar",
+      "keywordCandidates": [
+        "calendar app booking link availability iPhone"
+      ],
+      "status": "implemented_english_source_backed",
+      "canonical": "/articles/booking-link-or-shared-calendar/",
+      "observedEvidence": "research/competitor-map-20261022/coverage-matrix.json",
+      "measuredSearchVolume": null,
+      "qualityScope": "Distinct workflow guide with publisher attribution, worked examples and sources. Publication/readback records are kept separately."
+    },
+    {
+      "id": "natural-language-calendar-events-iphone",
+      "keywordCandidates": [
+        "calendar app natural language input iPhone"
+      ],
+      "status": "implemented_english_source_backed",
+      "canonical": "/articles/natural-language-calendar-events-iphone/",
+      "observedEvidence": "research/competitor-map-20261022/coverage-matrix.json",
+      "measuredSearchVolume": null,
+      "qualityScope": "Distinct workflow guide with publisher attribution, worked examples and sources. Publication/readback records are kept separately."
+    },
+    {
+      "id": "cozi-timetree-family-calendar-iphone-android",
+      "keywordCandidates": [
+        "Cozi vs TimeTree external calendar sync",
+        "best shared family calendar app iPhone Android"
+      ],
+      "status": "implemented_english_source_backed",
+      "canonical": "/articles/cozi-timetree-family-calendar-iphone-android/",
+      "observedEvidence": "research/competitor-map-20261022/coverage-matrix.json",
+      "measuredSearchVolume": null,
+      "qualityScope": "Distinct workflow guide with publisher attribution, worked examples and sources. Publication/readback records are kept separately."
+    },
+    {
+      "id": "iphone-calendar-tasks-reminders-versus-event-alerts",
+      "keywordCandidates": [
+        "iPhone calendar app Apple Reminders Google Tasks integration"
+      ],
+      "status": "implemented_english_source_backed",
+      "canonical": "/articles/iphone-calendar-tasks-reminders-versus-event-alerts/",
+      "observedEvidence": "research/competitor-map-20261022/coverage-matrix.json",
+      "measuredSearchVolume": null,
+      "qualityScope": "Distinct workflow guide with publisher attribution, worked examples and sources. Publication/readback records are kept separately."
+    },
+    {
+      "id": "automatic-time-blocking-versus-manual-calendar",
+      "keywordCandidates": [
+        "Motion alternative automatic time blocking calendar iPhone"
+      ],
+      "status": "implemented_english_source_backed",
+      "canonical": "/articles/automatic-time-blocking-versus-manual-calendar/",
+      "observedEvidence": "research/competitor-map-20261022/coverage-matrix.json",
+      "measuredSearchVolume": null,
+      "qualityScope": "Distinct workflow guide with publisher attribution, worked examples and sources. Publication/readback records are kept separately."
+    },
+    {
+      "id": "what-is-a-cloud-calendar",
+      "keywordCandidates": [
+        "what is a cloud calendar",
+        "cloud calendar"
+      ],
+      "status": "implemented_english_source_backed",
+      "canonical": "/articles/what-is-a-cloud-calendar/",
+      "observedEvidence": "research/competitor-map-20261022/coverage-matrix.json",
+      "measuredSearchVolume": null,
+      "qualityScope": "Distinct workflow guide with publisher attribution, worked examples and sources. Publication/readback records are kept separately."
     }
   ],
   "remaining": [
-    "Broaden actual query and competitor intent research beyond the bounded original71URLs and review remaining substantive linked bodies. A keyword variant alone does not justify a duplicate page.",
-    "Deepen provider-specific migration/repair beyond bounded core English coverage. Family purchase-versus-calendar access now has a conditional FAQ; actual Cloud product Family Sharing eligibility is still unverified, and translated-body review remains incomplete.",
-    "Review and improve remaining translated timezone/all-day/storage/CalDAV and newer English task-guide editions with accurate local terminology; no bulk quality approval.",
-    "Confirm released-binary and production data-handling correspondence separately before making privacy/runtime claims or changing App Privacy.",
-    "Integrate the actual new screenshot/video set after the generating task or folder is identified. Existing1240galleryrenditions and widgets playback verified separately; no new replacement assumed ready.",
-    "Measure equal elapsed Search Console windows and repeat controlled fixed ChatGPT prompts. IndexNow acceptance and successful delivery do not prove ranking/citation lift.",
-    "Bounded editorial review now covers all50ASCdescriptions/250fields. Continue only evidence-based market/keyword refinement or concrete newly found defects; do not repeat broad copy churn.",
-    "Subscription-link destination advice now attributes Apple controls and distinguishes Cloud invitation links. Arbitrary external-feed handling and released/runtime subscription visibility are not established by source inspection; no blanket support claim.",
-    "Birthday source branch is published in existing English all-day guide. Broader provider-specific birthday workflow requires evidence before a separate route; current Contacts access is source evidence only, not shipped correspondence."
+    "Complete the open expand/research rows in the current competitive-query matrix rather than generating literal-keyword duplicates.",
+    "Verify 20 distinct-intent leads from the classified suggestion snapshot and classify 40 later suggestions.",
+    "Broaden actual competitor query observations and consumer ChatGPT coverage; multilingual query tests are not controlled local-country rank measurements.",
+    "Map remaining own-site GSC queries and evaluate equal reporting windows after enough time has elapsed.",
+    "Review translated articles individually; owner indexing hold remains active until approval.",
+    "Use released/runtime verification for new product behaviour claims; App Privacy remains owner-managed and the proposed replacement policy remains unpublished."
   ],
   "existingCanonicalAudit": "competitors/existing-canonical-review-20261021-batch02.json",
   "existingCanonicalAuditScope": "All nine original intent clusters now have bounded substantive English coverage review records, with explicit remaining gaps. Batch20 reviewed seven complete bodies for two clusters; batch22 records ten sharing/work, eleven widgets/views and four tasks/timezones body comparisons (overlaps are not counted as unique additions). Route inventory is not quality or exhaustive-query approval.",
@@ -1652,6 +1729,38 @@
     "keywordEvidenceLimit": "Competitor/task and own Search Console evidence; no Apple Ads measured search volume or proven strongest/ranking claim.",
     "privacy": "15-type declaration prepared, separate publication confirmation pending; policy rewrite proposal not published.",
     "historicalVerifierNotice": "Earlier all-locales verifiers/proposals describe their historical snapshot, not the new desired descriptions/keywords.",
+    "goalComplete": false
+  },
+  "currentSearchEvidence": {
+    "googleActualQueries": 31,
+    "freshConsumerChatGPTConversations": 8,
+    "seededComparisonsWithinFreshChatGPT": 1,
+    "historicalConsumerChatGPTConversations": 3,
+    "ownSiteSearchConsoleQueryRows": 150,
+    "classifiedOriginalRelatedStrings": 212,
+    "laterUnclassifiedStrings": 40,
+    "evidence": "research/competitor-map-20261022/coverage-matrix.json",
+    "scope": "Explicit observed queries, not exhaustive rankings or search volumes."
+  },
+  "currentMediaEvidence": {
+    "verifiedPublicMediaObjects": 1882,
+    "websiteReadsS3": true,
+    "persistentLocalMarketingMedia": false,
+    "evidence": "research/media-asc-20261022/integration-audit.json",
+    "note": "Replaces the obsolete remaining-task reference to locating a future screenshot/video set."
+  },
+  "currentIndexingPolicy": {
+    "translatedArticlesAndHubs": "noindex,follow until individual approval",
+    "englishArticles": "indexable",
+    "localizedProductHomepages": "indexable",
+    "sitemapUrls": 99,
+    "evidence": "research/competitor-map-20261022/comparison-build-check.json"
+  },
+  "latestPublication": {
+    "date": "2026-10-22",
+    "newEnglishGuidesSinceBatch43": 7,
+    "lastIncrement": 4,
+    "evidence": "research/competitor-map-20261022/implementation-status.json",
     "goalComplete": false
   }
 }

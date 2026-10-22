@@ -1,9 +1,9 @@
 {
   "date": "2026-10-22",
-  "status": "incomplete_research_with_implemented_gaps",
+  "status": "incomplete_research_with_seven_implemented_intent_gaps",
   "method": {
-    "google": "24 actual desktop Google UI queries. hl=en, gl=us, pws=0; signed-in; physical location not controlled. Captured heading order is not a universal organic rank.",
-    "chatgpt": "Five fresh independent consumer UI conversations saved in this directory, in addition to three historical samples. No stable ranks, controlled personalization or measured volume.",
+    "google": "31 actual Google UI queries: English plus one German and one Japanese query. hl=en gl=us pws=0, desktop, signed-in, physical location not controlled. Heading order is not universal organic rank.",
+    "chatgpt": "Eight fresh independent consumer UI conversations. auto-scheduling explicitly names competitors; classify it as a seeded comparison, not blind discovery. Account personalization not controlled.",
     "volume": "No measured keyword volume or difficulty; no claim that every competitor keyword is known.",
     "canonicalPolicy": "Group same-intent variants. New pages require a distinct reader task and source-backed substance.",
     "sources": "Competitor help pages verify publisher claims only, not runtime performance."
@@ -302,9 +302,9 @@
       "query": "best time blocking calendar app iPhone",
       "evidenceFile": "google-observations.json",
       "observedAt": "2026-10-22T20:15:47.101Z",
-      "canonical": "https://www.cloud-calendars.com/articles/planning-a-week-in-ten-minutes/",
-      "coverage": "expand",
-      "assessment": "Manual planning exists; automatic rescheduling versus time blocking remains a genuine comparison gap.",
+      "canonical": "https://www.cloud-calendars.com/articles/automatic-time-blocking-versus-manual-calendar/",
+      "coverage": "implemented-comparison",
+      "assessment": "Distinct workflow comparison implemented with official references. Observed query coverage is not proof of ranking or complete competitor parity.",
       "observedResults": [
         {
           "displayOrder": 1,
@@ -641,9 +641,9 @@
       "query": "calendar app tasks reminders iPhone together",
       "evidenceFile": "google-observations.json",
       "observedAt": "2026-10-22T20:16:17.814Z",
-      "canonical": "https://www.cloud-calendars.com/articles/planning-a-week-in-ten-minutes/",
-      "coverage": "expand",
-      "assessment": "Weekly planning exists; dedicated task-versus-event and reminders comparison is incomplete.",
+      "canonical": "https://www.cloud-calendars.com/articles/iphone-calendar-tasks-reminders-versus-event-alerts/",
+      "coverage": "implemented-comparison",
+      "assessment": "Distinct workflow comparison implemented with official references. Observed query coverage is not proof of ranking or complete competitor parity.",
       "observedResults": [
         {
           "displayOrder": 1,
@@ -774,9 +774,9 @@
       "query": "best shared family calendar app iPhone Android",
       "evidenceFile": "google-observations.json",
       "observedAt": "2026-10-22T20:16:55.561Z",
-      "canonical": "https://www.cloud-calendars.com/articles/family-pickup-calendar-handoff/",
-      "coverage": "expand",
-      "assessment": "Pickup workflow covered; cross-platform family product comparison remains incomplete.",
+      "canonical": "https://www.cloud-calendars.com/articles/cozi-timetree-family-calendar-iphone-android/",
+      "coverage": "implemented-comparison",
+      "assessment": "Distinct workflow comparison implemented with official references. Observed query coverage is not proof of ranking or complete competitor parity.",
       "observedResults": [
         {
           "displayOrder": 1,
@@ -1439,9 +1439,9 @@
       "query": "TimeTree alternative shared family calendar iPhone",
       "evidenceFile": "google-observations.json",
       "observedAt": "2026-10-22T20:36:31.221Z",
-      "canonical": "https://www.cloud-calendars.com/articles/family-pickup-calendar-handoff/",
-      "coverage": "expand",
-      "assessment": "Family workflow exists; cross-platform product comparison remains incomplete.",
+      "canonical": "https://www.cloud-calendars.com/articles/cozi-timetree-family-calendar-iphone-android/",
+      "coverage": "implemented-comparison",
+      "assessment": "Distinct workflow comparison implemented with official references. Observed query coverage is not proof of ranking or complete competitor parity.",
       "observedResults": [
         {
           "displayOrder": 1,
@@ -1499,9 +1499,9 @@
       "query": "Cozi alternative shared calendar iPhone",
       "evidenceFile": "google-observations.json",
       "observedAt": "2026-10-22T20:37:13.121Z",
-      "canonical": "https://www.cloud-calendars.com/articles/family-pickup-calendar-handoff/",
-      "coverage": "expand",
-      "assessment": "Family workflow exists; Cozi-specific comparison remains incomplete.",
+      "canonical": "https://www.cloud-calendars.com/articles/cozi-timetree-family-calendar-iphone-android/",
+      "coverage": "implemented-comparison",
+      "assessment": "Distinct workflow comparison implemented with official references. Observed query coverage is not proof of ranking or complete competitor parity.",
       "observedResults": [
         {
           "displayOrder": 1,
@@ -1555,14 +1555,454 @@
         "Shared calendar Google",
         "Cozi shared calendar"
       ]
+    },
+    {
+      "id": "tasks-integration",
+      "query": "iPhone calendar app Apple Reminders Google Tasks integration",
+      "evidenceFile": "google-observations.json",
+      "observedAt": "2026-10-22T20:41:54.023Z",
+      "canonical": "https://www.cloud-calendars.com/articles/iphone-calendar-tasks-reminders-versus-event-alerts/",
+      "coverage": "new",
+      "assessment": "Task-backend and completion guide implemented; provider-to-provider task migration remains a separate need.",
+      "observedResults": [
+        {
+          "displayOrder": 1,
+          "heading": "Syncing apple reminders with google tasks? : r/gtd",
+          "url": "https://www.reddit.com/r/gtd/comments/1olp9p9/syncing_apple_reminders_with_google_tasks/"
+        },
+        {
+          "displayOrder": 2,
+          "heading": "gtsync: Sync Tasks & Reminders - App Store - Apple",
+          "url": "https://apps.apple.com/il/app/gtsync-sync-tasks-reminders/id6761292407"
+        },
+        {
+          "displayOrder": 3,
+          "heading": "How to sync Tasks with iOS Reminders or Google Tasks",
+          "url": "https://support.readdle.com/calendars/synchronization/how-to-sync-tasks-with-ios-reminders-or-google-tasks"
+        },
+        {
+          "displayOrder": 4,
+          "heading": "Can Google tasks be synced with Apple reminders?",
+          "url": "https://support.google.com/calendar/thread/305159420/can-google-tasks-be-synced-with-apple-reminders?hl=en"
+        },
+        {
+          "displayOrder": 5,
+          "heading": "SyncBridge Tasks - App Store - Apple",
+          "url": "https://apps.apple.com/us/app/syncbridge-tasks/id6795491976"
+        },
+        {
+          "displayOrder": 6,
+          "heading": "Connect Google Tasks to Apple Reminders",
+          "url": "https://ifttt.com/connect/google_tasks/ios_reminders"
+        },
+        {
+          "displayOrder": 7,
+          "heading": "How can I sync reminders with Google ?",
+          "url": "https://discussions.apple.com/thread/4140082"
+        },
+        {
+          "displayOrder": 8,
+          "heading": "Google Calendar + Apple Reminders Integration - Morgen",
+          "url": "https://www.morgen.so/google-calendar-apple-reminders-integration"
+        },
+        {
+          "displayOrder": 9,
+          "heading": "Can Google Tasks Sync With Apple Reminders? The ...",
+          "url": "https://escapesf.net/sync-apple-reminders-ultimate-integration-gd17.html"
+        }
+      ],
+      "relatedQueries": [
+        "More results from www.reddit.com",
+        "Iphone calendar app apple reminders google tasks integration reddit",
+        "Sync Google Tasks with Apple Reminders",
+        "Sync Google tasks with Apple calendar",
+        "Sync Google tasks with Apple Reminders reddit",
+        "Google Tasks vs Apple Reminders",
+        "Sync Reminders with Google Tasks"
+      ]
+    },
+    {
+      "id": "auto-scheduling",
+      "query": "Motion alternative automatic time blocking calendar iPhone",
+      "evidenceFile": "google-observations.json",
+      "observedAt": "2026-10-22T20:43:03.554Z",
+      "canonical": "https://www.cloud-calendars.com/articles/automatic-time-blocking-versus-manual-calendar/",
+      "coverage": "new",
+      "assessment": "Source-backed FlowSavvy/Motion/Morgen comparison; no Cloud auto-scheduler promise.",
+      "observedResults": [
+        {
+          "displayOrder": 1,
+          "heading": "What are the best Motion alternatives? : r/ProductivityApps",
+          "url": "https://www.reddit.com/r/ProductivityApps/comments/1vez2yb/what_are_the_best_motion_alternatives/"
+        },
+        {
+          "displayOrder": 2,
+          "heading": "AI Time Blocking Apps 2026: 10 Planners Compared",
+          "url": "https://arahi.ai/blog/time-blocking-apps-compared"
+        },
+        {
+          "displayOrder": 3,
+          "heading": "Best Motion Alternatives in 2026: 5 Planners Compared",
+          "url": "https://www.flickplanner.com/blog/best-motion-alternatives-2026"
+        },
+        {
+          "displayOrder": 4,
+          "heading": "Best Motion Alternatives in 2026: Cheaper, Simpler, or ...",
+          "url": "https://mytimeo.com/blog/motion-alternatives/"
+        },
+        {
+          "displayOrder": 5,
+          "heading": "9 Best Calendar Apps for Time Blocking in 2026",
+          "url": "https://blog.archcalendar.com/9-best-calendar-apps-for-time-blocking-in-2026/"
+        },
+        {
+          "displayOrder": 6,
+          "heading": "Best Time Blocking Apps in 2026 (Compared)",
+          "url": "https://planzer.io/best-time-blocking-apps/"
+        },
+        {
+          "displayOrder": 7,
+          "heading": "7 Best Motion Alternatives for AI-Powered Productivity Beyond ...",
+          "url": "https://www.thisandthat.chat/blog/motion-alternatives/"
+        }
+      ],
+      "relatedQueries": [
+        "More results from www.reddit.com",
+        "Motion alternative automatic time blocking calendar iphone reddit",
+        "Motion alternative automatic time blocking calendar iphone free",
+        "Best motion alternative automatic time blocking calendar iphone"
+      ]
+    },
+    {
+      "id": "family-external-sync",
+      "query": "Cozi vs TimeTree external calendar sync",
+      "evidenceFile": "google-observations.json",
+      "observedAt": "2026-10-22T20:43:23.909Z",
+      "canonical": "https://www.cloud-calendars.com/articles/cozi-timetree-family-calendar-iphone-android/",
+      "coverage": "new",
+      "assessment": "Cozi feed and TimeTree display/import distinctions now covered.",
+      "observedResults": [
+        {
+          "displayOrder": 1,
+          "heading": "Digital family calendar that actually syncs everyone's stuff?",
+          "url": "https://www.reddit.com/r/apps/comments/1s9ipcj/digital_family_calendar_that_actually_syncs/"
+        },
+        {
+          "displayOrder": 2,
+          "heading": "Cozi vs TimeTree: Family Lists and Calendar Access",
+          "url": "https://lighthouse.mapquest.com/blog/cozi-vs-timetree/"
+        },
+        {
+          "displayOrder": 3,
+          "heading": "TimeTree vs Cozi (2026): Which Family Calendar Wins?",
+          "url": "https://www.kinmory.ai/blog/timetree_vs_cozi"
+        },
+        {
+          "displayOrder": 4,
+          "heading": "Cozi vs TimeTree (2026): Which Shared Calendar Fits?",
+          "url": "https://www.usecalendara.com/blog/cozi-vs-timetree"
+        },
+        {
+          "displayOrder": 5,
+          "heading": "Cozi vs TimeTree 2026: Best Family Calendar? - RemindHer",
+          "url": "https://remindher.app/cozi-vs-timetree/"
+        },
+        {
+          "displayOrder": 6,
+          "heading": "Cozi vs FamilyWall vs TimeTree: Compared - dEssence",
+          "url": "https://dessence.ai/blog/cozi-vs-familywall-timetree"
+        },
+        {
+          "displayOrder": 7,
+          "heading": "TimeTree vs Cozi",
+          "url": "https://cupla.app/blog/timetree-vs-cozi/"
+        },
+        {
+          "displayOrder": 8,
+          "heading": "Best TimeTree Alternatives for Families in 2026 (And Why ...",
+          "url": "https://www.nestifyapp.org/blog/best-timetree-alternatives-for-families"
+        },
+        {
+          "displayOrder": 9,
+          "heading": "Compare Cozi Vs TimeTree Vs Other Family Scheduling ...",
+          "url": "https://www.facebook.com/fb-answers/compare-cozi-vs-timetree-vs-other-family-scheduling-tools/"
+        }
+      ],
+      "relatedQueries": [
+        "More results from www.reddit.com",
+        "Cozi vs timetree external calendar sync reddit",
+        "Cozi vs timetree external calendar sync ios",
+        "TimeTree vs Google Calendar",
+        "TimeTree calendar",
+        "Skylight Calendar",
+        "Apolosign Digital Calendar"
+      ]
+    },
+    {
+      "id": "weather-de",
+      "query": "Kalender App iPhone Wetter Termine",
+      "evidenceFile": "google-observations.json",
+      "observedAt": "2026-10-22T20:45:57.696Z",
+      "canonical": "https://www.cloud-calendars.com/articles/weather-inside-your-calendar/",
+      "coverage": "research",
+      "assessment": "German-language query in English Google UI with US preference; not a Germany rank test. Localized article remains held pending review.",
+      "observedResults": [
+        {
+          "displayOrder": 1,
+          "heading": "Weather-Calendar - App Store - Apple",
+          "url": "https://apps.apple.com/us/app/weather-calendar/id6748898739"
+        },
+        {
+          "displayOrder": 2,
+          "heading": "Weather Events - for Calendar - App Store - Apple",
+          "url": "https://apps.apple.com/de/app/weather-events-for-calendar/id6475696867"
+        },
+        {
+          "displayOrder": 3,
+          "heading": "Timepage: Kalender und Planer - App Store - Apple",
+          "url": "https://apps.apple.com/lu/app/timepage-kalender-und-planer/id989178902?l=de-DE"
+        },
+        {
+          "displayOrder": 4,
+          "heading": "miCal - Kalender App für Apple iOS iPhone und iPad",
+          "url": "https://micalapp.com/de/"
+        },
+        {
+          "displayOrder": 5,
+          "heading": "Beste Kalender Apps fürs iPhone im Vergleich 2026",
+          "url": "https://iosapps.de/apps/vergleich/kalender-apps/"
+        },
+        {
+          "displayOrder": 6,
+          "heading": "Weather in Calendar ⛅️ 20°",
+          "url": "https://weather-in-calendar.com/"
+        },
+        {
+          "displayOrder": 7,
+          "heading": "FirstSeed Inc.",
+          "url": "https://firstseed.io/de/calendar/calendar.html"
+        },
+        {
+          "displayOrder": 8,
+          "heading": "Wetter im Kalender auf iPhone und Mac anzeigen",
+          "url": "https://www.heise.de/ratgeber/Wetter-im-Kalender-auf-iPhone-und-Mac-anzeigen-4582801.html"
+        },
+        {
+          "displayOrder": 9,
+          "heading": "Kostenloser Tagesplaner für iPhone und Web - Eva",
+          "url": "https://evacalendar.app/de/"
+        }
+      ],
+      "relatedQueries": [
+        "Calendar App iPhone Weather Termine",
+        "Kalender App iPhone Wetter Termine",
+        "Kalender app iphone wetter termine download",
+        "Weather in calendar",
+        "Can apple calendar show weather",
+        "Fantastical calendar",
+        "What is the best calendar app for iPhone",
+        "Meteomatics weather calendar"
+      ]
+    },
+    {
+      "id": "weather-ja",
+      "query": "iPhone カレンダー 天気 予定 アプリ",
+      "evidenceFile": "google-observations.json",
+      "observedAt": "2026-10-22T20:46:17.626Z",
+      "canonical": "https://www.cloud-calendars.com/articles/weather-inside-your-calendar/",
+      "coverage": "research",
+      "assessment": "Japanese-language query in English Google UI with US preference; not a Japan rank test. Localized article remains held pending review.",
+      "observedResults": [
+        {
+          "displayOrder": 1,
+          "heading": "【天気も表示できる】iPhoneカレンダーアプリおすすめ10選！ ...",
+          "url": "https://ichioshi.allabout.co.jp/articles/limited/40450"
+        },
+        {
+          "displayOrder": 2,
+          "heading": "Week Calendar - スマートプランナーアプリ - App Store - Apple",
+          "url": "https://apps.apple.com/jp/app/week-calendar-%E3%82%B9%E3%83%9E%E3%83%BC%E3%83%88%E3%83%97%E3%83%A9%E3%83%B3%E3%83%8A%E3%83%BC/id381059732"
+        },
+        {
+          "displayOrder": 3,
+          "heading": "【2026年】iPhoneのカレンダーと連携アプリおすすめ8選",
+          "url": "https://app-liv.jp/lifestyle/scheduler/1005/"
+        },
+        {
+          "displayOrder": 4,
+          "heading": "カレンダーに天気予報も表示されてるアプリとかあったら教え ...",
+          "url": "https://detail.chiebukuro.yahoo.co.jp/qa/question_detail/q14306145024"
+        },
+        {
+          "displayOrder": 5,
+          "heading": "iCal週間天気予報（ITエンジニアがときめく自動化の魔法）",
+          "url": "https://weather.masuipeo.com/"
+        },
+        {
+          "displayOrder": 6,
+          "heading": "‎Fantastical Calendarアプリ - App Store",
+          "url": "https://apps.apple.com/jp/app/fantastical-calendar/id718043190"
+        },
+        {
+          "displayOrder": 7,
+          "heading": "iPhoneのカレンダーに天気予報を自動で表示させる方法！",
+          "url": "https://smahospital.jp/column/blogs/127947/"
+        },
+        {
+          "displayOrder": 8,
+          "heading": "天気予報 まで自作！30年分の気象データと #AI で予定を立てて ...",
+          "url": "https://www.instagram.com/reel/Dd8jar8tVRp/"
+        },
+        {
+          "displayOrder": 9,
+          "heading": "カレンダーアプリ『CalCal』v3.1.0が公開！ iPhone Duoと ...",
+          "url": "https://www.appbank.net/2026/10/22/iphone-news/3140223.php"
+        }
+      ],
+      "relatedQueries": [
+        "iPhone カレンダー 天気 予報 アプリ",
+        "iPhone カレンダー 表示 方法",
+        "iPhone カレンダー 共有 できない",
+        "iPhone カレンダー同期 されない",
+        "Fantastical calendar",
+        "iPhoneカレンダー 使いにくい"
+      ]
+    },
+    {
+      "id": "calendar366-comparison",
+      "query": "Calendar 366 vs Fantastical iPhone",
+      "evidenceFile": "google-observations.json",
+      "observedAt": "2026-10-22T20:47:28.080Z",
+      "canonical": "https://www.cloud-calendars.com/articles/what-fantastical-costs-and-what-this-does/",
+      "coverage": "research",
+      "assessment": "Observed branded comparison; current Fantastical article does not completely compare Calendar 366.",
+      "observedResults": [
+        {
+          "displayOrder": 1,
+          "heading": "Fantastical vs Apple Calendar : r/FantasticalCalendar",
+          "url": "https://www.reddit.com/r/FantasticalCalendar/comments/1w4kfrz/fantastical_vs_apple_calendar/"
+        },
+        {
+          "displayOrder": 2,
+          "heading": "Fantastical Vs Calendar 366: Which One To Choose?",
+          "url": "https://medium.com/productivity-side/fantastical-vs-calendar-366-which-one-to-choose-130c96af8eb3"
+        },
+        {
+          "displayOrder": 3,
+          "heading": "Manage your time in 2025: Fantastical vs. Apple Calendar",
+          "url": "https://setapp.com/app-reviews/fantastical-vs-apple-calendar"
+        },
+        {
+          "displayOrder": 4,
+          "heading": "Sticking with Fantastical",
+          "url": "https://casabona.org/2022/12/sticking-with-fantastical/"
+        },
+        {
+          "displayOrder": 5,
+          "heading": "Exploring BusyCal vs. Fantastical in 2024 - Software - MPU Talk",
+          "url": "https://talk.macpowerusers.com/t/exploring-busycal-vs-fantastical-in-2024/36673"
+        },
+        {
+          "displayOrder": 6,
+          "heading": "The 9 best calendar apps for iPhone in 2026",
+          "url": "https://zapier.com/blog/best-iphone-calendar-apps/"
+        },
+        {
+          "displayOrder": 7,
+          "heading": "The Best Calendar App for iPhone",
+          "url": "https://thesweetsetup.com/apps/best-calendar-app-iphone/"
+        }
+      ],
+      "relatedQueries": [
+        "More results from www.reddit.com",
+        "Calendar 366 vs fantastical iphone reddit",
+        "BusyCal vs Fantastical",
+        "Fantastical calendar",
+        "Fantastical vs Google Calendar",
+        "Fantastical reminders",
+        "Fantastical review",
+        "Fantastical Apple Watch"
+      ]
+    },
+    {
+      "id": "cloud-calendar-definition",
+      "query": "what is a cloud calendar",
+      "evidenceFile": "google-observations.json",
+      "observedAt": "2026-10-22T20:50:19.390Z",
+      "canonical": "https://www.cloud-calendars.com/articles/what-is-a-cloud-calendar/",
+      "coverage": "new",
+      "assessment": "New beginner guide separates provider accounts, calendar apps, sharing and the Cloud Calendars brand.",
+      "observedResults": [
+        {
+          "displayOrder": 1,
+          "heading": "Understanding Cloud Calendars for Beginners",
+          "url": "https://www.youtube.com/watch?v=JCMxHKOpLhc"
+        },
+        {
+          "displayOrder": 2,
+          "heading": "Calendar - Apple iCloud",
+          "url": "https://www.icloud.com/calendar"
+        },
+        {
+          "displayOrder": 3,
+          "heading": "Keep your calendars up to date and share them with iCloud",
+          "url": "https://support.apple.com/guide/icloud/what-you-can-do-with-icloud-and-calendar-mm15eb200ab4/icloud"
+        },
+        {
+          "displayOrder": 4,
+          "heading": "Cloud Calendars — iCloud, Google and Outlook in one view",
+          "url": "https://www.cloud-calendars.com/"
+        },
+        {
+          "displayOrder": 5,
+          "heading": "Cloud Calendars Library | nsoftware",
+          "url": "https://www.nsoftware.com/cloudcalendars"
+        },
+        {
+          "displayOrder": 6,
+          "heading": "iCloud overview | Calendly Help",
+          "url": "https://calendly.com/help/icloud-overview"
+        },
+        {
+          "displayOrder": 7,
+          "heading": "Cloud-Based Email and Calendar - Cornell University",
+          "url": "https://it.cornell.edu/email-cornell/cloud-based-email-and-calendar"
+        },
+        {
+          "displayOrder": 8,
+          "heading": "iCloud Calendar Vs Calendar in iCloud Settings on iPhone",
+          "url": "https://www.youtube.com/watch?v=vdasg53YUBg"
+        },
+        {
+          "displayOrder": 9,
+          "heading": "Cloud Calendars: Sync & Widget",
+          "url": "https://arte-soft.com/apps/cloud-calendars-sync-widget/"
+        }
+      ],
+      "relatedQueries": [
+        "What is a cloud calendar on iphone",
+        "What is a cloud calendar vs icloud calendar",
+        "What is a cloud calendar vs icloud",
+        "iCloud calendar app",
+        "iCloud Calendar login",
+        "iCloud calendar for Windows",
+        "iCloud calendar on Android",
+        "iCloud Calendar on iPhone"
+      ]
     }
   ],
   "remaining": [
-    "Expand each observed competitor into branded, comparison, feature and troubleshooting queries.",
-    "Broaden real Google observations beyond English and uncontrolled desktop location.",
-    "Finish independent ChatGPT intent samples and record recommendation/source coverage.",
-    "Review discovered related-query strings individually; PAA and filters are not measured demand.",
-    "Complete explicit expand/research rows rather than treating every canonical as fully covered.",
-    "Use Search Console query data to prioritise existing impressions and CTR; do not claim causal gains from publication alone."
-  ]
+    "Complete competitor-by-competitor feature and alternative coverage, including Calendar 366, Readdle, Task planners and newly observed apps.",
+    "Expand independent ChatGPT samples to the remaining buyer intents, distinguishing seeded comparisons from blind discovery.",
+    "Verify the 20 distinct-intent leads identified in the original 212-row classified suggestion snapshot.",
+    "Classify new suggestion strings from later queries separately; old snapshot is not all current discovery.",
+    "Map own-site Search Console queries by intent and use actual impressions/CTR to prioritise meaningful improvements.",
+    "Broaden query languages and controlled market samples; current German/Japanese tests are language discovery only."
+  ],
+  "ownSiteEvidence": {
+    "file": "gsc-query-observations.json",
+    "queryRows": 150,
+    "range": "2026-08-25 to 2026-10-20",
+    "limitation": "Own-site impressions; not competitor keyword volume. Anonymized queries can be omitted."
+  }
 }

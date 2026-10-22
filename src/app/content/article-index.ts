@@ -168,7 +168,11 @@ export const ARTICLE_SLUGS: Readonly<Record<string, readonly string[]>> = {
     "taking-back-a-calendar-you-shared",
     "shift-work-calendar-iphone-rotating-schedules",
     "booking-link-or-shared-calendar",
-    "natural-language-calendar-events-iphone"
+    "natural-language-calendar-events-iphone",
+    "cozi-timetree-family-calendar-iphone-android",
+    "iphone-calendar-tasks-reminders-versus-event-alerts",
+    "automatic-time-blocking-versus-manual-calendar",
+    "what-is-a-cloud-calendar"
   ],
   "es-ES": [
     "month-view-on-a-bigger-screen",

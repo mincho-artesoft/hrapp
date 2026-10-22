@@ -1,0 +1,51 @@
+{
+  "discoveryGuides": [
+    {
+      "slug": "shift-work-calendar-iphone-rotating-schedules",
+      "indexable": true,
+      "sourceLinks": 3,
+      "sections": 5
+    },
+    {
+      "slug": "booking-link-or-shared-calendar",
+      "indexable": true,
+      "sourceLinks": 3,
+      "sections": 5
+    },
+    {
+      "slug": "natural-language-calendar-events-iphone",
+      "indexable": true,
+      "sourceLinks": 2,
+      "sections": 5
+    },
+    {
+      "slug": "cozi-timetree-family-calendar-iphone-android",
+      "indexable": true,
+      "sourceLinks": 4,
+      "sections": 6
+    },
+    {
+      "slug": "iphone-calendar-tasks-reminders-versus-event-alerts",
+      "indexable": true,
+      "sourceLinks": 3,
+      "sections": 5
+    },
+    {
+      "slug": "automatic-time-blocking-versus-manual-calendar",
+      "indexable": true,
+      "sourceLinks": 3,
+      "sections": 6
+    },
+    {
+      "slug": "what-is-a-cloud-calendar",
+      "indexable": true,
+      "sourceLinks": 3,
+      "sections": 6
+    }
+  ],
+  "heldTranslatedArticlesAndHubs": 436,
+  "sitemapUrls": 99,
+  "englishArticles": 65,
+  "privacySourceSha256": "25ce1d341a18967caf5ef68782358b48e3fb192346ff13aa7712b1935f5b28e4",
+  "scope": "Build-output assertions. No claim of search indexing or keyword rank."
+}
