@@ -130,7 +130,9 @@
           "priority": "boundary_not_missing_feature"
         }
       ],
-      "coverageScope": "Complete current English bodies reviewed for these tasks, not every provider repair/migration path or all translated bodies."
+      "coverageScope": "Complete current English bodies reviewed for these tasks, not every provider repair/migration path or all translated bodies.",
+      "targetedFollowupEvidence": "batch22-targeted-guides/mapping.json",
+      "currentFollowup": "Added goal routing to actual existing export and availability-copying guides. No Cloud bulk merge control inferred."
     },
     {
       "id": "sharing-permissions",
@@ -148,11 +150,75 @@
       "proposedTitle": "Share an event or a calendar: choose the right access",
       "originalContribution": "Original matrix: one-event guest, private editable calendar, read-only subscription, public URL. Show acceptance and ownership checks, and explain why family subscription access differs from shared calendar data.",
       "publicationGate": "Verify Cloud Calendars native sharing mechanism and recipient requirements; avoid assuming Apple or Google steps are its own.",
-      "status": "candidate_existing_content_comparison_pending",
+      "status": "english_existing_bodies_reviewed_substantive_core_coverage_scoped_gaps",
       "measuredRank": null,
       "measuredSearchVolume": null,
       "chatgptCitationEvidence": null,
-      "canonical": null
+      "canonical": "/articles/sharing-one-event-not-your-calendar/",
+      "bodyReviewEvidence": "batch22-coverage/sharing-work.json",
+      "latestIntentAssessment": {
+        "id": "sharing-permissions",
+        "beforeStatus": "candidate_existing_content_comparison_pending",
+        "proposedStatus": "english_existing_bodies_reviewed_substantive_sharing_coverage_bounded_gaps",
+        "canonical": "/articles/sharing-one-event-not-your-calendar/",
+        "supportingRoutes": [
+          "/articles/sharing-one-event-not-your-calendar/",
+          "/articles/inviting-people-who-do-not-have-the-app/",
+          "/articles/a-calendar-that-is-yours-to-share/",
+          "/articles/who-can-see-what-in-google-calendar/",
+          "/articles/keeping-track-of-who-replied/",
+          "/articles/taking-back-a-calendar-you-shared/",
+          "/articles/family-pickup-calendar-handoff/",
+          "/articles/what-a-subscription-actually-buys/",
+          "/articles/what-guests-can-do-to-your-event/"
+        ],
+        "coveredIntents": [
+          {
+            "intent": "One event versus whole calendar",
+            "evidence": "Single-event guide sections 1–4; whole-calendar guide sections 1–4: separate purpose, audience, calendar ownership, app-local/device/provider route and acceptance."
+          },
+          {
+            "intent": "Reader versus editor versus access manager",
+            "evidence": "Both Cloud guides explicitly distinguish Reader/Writer/Owner; Google guide sections 1–3 and guest-permission guide sections 1–5 distinguish calendar ACL, private-event editing restrictions and event-specific capabilities."
+          },
+          {
+            "intent": "Recipients without the app, read-only subscription and import",
+            "evidence": "Without-app guide complete six-section flow distinguishes App Clip preview, web landing, full app/writable destination, signed-in roles, verified-email calendar acceptance and import versus feed. No universal no-install or immediate-update claim."
+          },
+          {
+            "intent": "Attendance versus access acceptance",
+            "evidence": "RSVP guide complete six-section flow preserves provider original, unknown attendance, anonymous receipts, no guessed headcounts and no plan-based RSVP reliability."
+          },
+          {
+            "intent": "Private/public/group access and revocation",
+            "evidence": "Google-permissions and revocation guides inspect broader/public/group routes, private-event distinctions, secret feed reset, recipient removal and surviving copies; no one-switch erasure or guaranteed timing."
+          },
+          {
+            "intent": "Family calendar responsibility",
+            "evidence": "Family-pickup guide supplies a full worked example with explicit driver agreement, shared destination check, occurrence scope and direct urgent confirmation."
+          }
+        ],
+        "remainingGaps": [
+          {
+            "intent": "Family subscription purchase entitlement versus shared calendar data",
+            "status": "specific_distinction_not_explicit_in_reviewed_bodies",
+            "evidence": "Subscription guide separates Apple billing identity from provider/sharing identity, but does not establish whether a particular purchase is eligible for family entitlement sharing. Whole-calendar guide explains invitations but not this common purchase/access ambiguity.",
+            "recommendation": "Add one bounded FAQ to the existing whole-calendar or subscription guide only after checking current Apple entitlement guidance and the actual product eligibility. Explain that calendar access is separately granted; do not claim Cloud subscriptions are or are not Family Sharing eligible from these bodies."
+          },
+          {
+            "intent": "Compact choice matrix for all sharing routes",
+            "status": "concepts_already_covered_presentation_opportunity_only",
+            "recommendation": "If simplifying the entry guide, use its existing practical list to route viewing/editing/RSVP/feed readers to existing guides. A separate permissions keyword page would duplicate substantive content."
+          }
+        ],
+        "strongestExistingGuideImprovement": {
+          "route": "/articles/a-calendar-that-is-yours-to-share/",
+          "action": "Add the verified purchase-entitlement-versus-calendar-access FAQ after the narrow eligibility research gate, and related links to Google permissions and revocation. Current roles/recipient mechanics need no wholesale rewrite.",
+          "draftProvided": false,
+          "reason": "Do not fill the eligibility gap with an unsupported product claim; current research task is not a purchase-setting audit."
+        }
+      },
+      "coverageScope": "Complete reviewed current English bodies and recorded/fresh scoped primary evidence. Not all translated bodies, every provider/hardware path or measured ranking/citation coverage."
     },
     {
       "id": "calendar-views",
@@ -170,11 +236,53 @@
       "proposedTitle": "Choose a calendar view for the question you need answered",
       "originalContribution": "Compare spotting free time, reading full event titles, finding a date and reviewing a busy month using one original illustrative week. No best-app rankings.",
       "publicationGate": "Verify exact supported views and tablet layout.",
-      "status": "candidate_existing_content_comparison_pending",
+      "status": "english_existing_bodies_reviewed_substantive_core_coverage_scoped_gaps",
       "measuredRank": null,
       "measuredSearchVolume": null,
       "chatgptCitationEvidence": null,
-      "canonical": null
+      "canonical": "/articles/a-week-view-that-fits-a-week/",
+      "bodyReviewEvidence": "batch22-coverage/widgets-views.json",
+      "latestIntentAssessment": {
+        "id": "calendar-views",
+        "oldStatus": "candidate_existing_content_comparison_pending",
+        "proposedStatus": "english_existing_bodies_reviewed_substantive_core_coverage_scoped_gaps",
+        "canonical": "/articles/a-week-view-that-fits-a-week/",
+        "supportingRoutes": [
+          "/articles/month-view-on-a-bigger-screen/",
+          "/articles/a-list-for-people-who-dislike-grids/",
+          "/articles/the-year-in-one-screen/",
+          "/articles/drag-an-event-to-move-it/",
+          "/articles/planning-a-week-in-ten-minutes/"
+        ],
+        "intentAssessment": [
+          {
+            "intent": "Choose month versus agenda versus hour grid",
+            "status": "substantively_covered",
+            "bodyEvidence": "Month section1 distinguishes dates/hours; list section6 supplies a direct selection rule; week sections1–3 cover timed/all-day/selected data."
+          },
+          {
+            "intent": "Read crowded iPad month",
+            "status": "substantively_covered",
+            "bodyEvidence": "Month section2 explicitly covers capped chips/overflow, one-line titles, larger display versus app-window/text constraints."
+          },
+          {
+            "intent": "Plan a realistic week",
+            "status": "substantively_covered",
+            "bodyEvidence": "Week and weekly-review complete bodies cover fixed commitments, overlaps, transit/setup, responsibilities, weather and verification."
+          },
+          {
+            "intent": "Understand list/year omissions",
+            "status": "substantively_covered",
+            "bodyEvidence": "List has loaded-range/start-date grouping limits; year has colour markers versus counts, multi-day interval caveat and selected-source limits."
+          },
+          {
+            "intent": "One original illustrative week across several views",
+            "status": "optional_editorial_enhancement_not_missing_core_task",
+            "bodyEvidence": "Guides already use concrete examples and crosslinks. No new generic choose-a-view page justified merely to repeat them."
+          }
+        ]
+      },
+      "coverageScope": "Complete reviewed current English bodies and recorded/fresh scoped primary evidence. Not all translated bodies, every provider/hardware path or measured ranking/citation coverage."
     },
     {
       "id": "widgets",
@@ -192,11 +300,60 @@
       "proposedTitle": "Choose a month, next-event or agenda widget",
       "originalContribution": "Explain purpose, visible-calendar selection and private event-title exposure. Diagnose an absent event by first checking app view and selected calendars. Use current Apple widget documentation before instructions.",
       "publicationGate": "Verify supported Cloud Calendars widget families/surfaces and refresh limits; never promise instant refresh.",
-      "status": "candidate_existing_content_comparison_pending",
+      "status": "english_existing_bodies_reviewed_substantive_core_coverage_scoped_gaps",
       "measuredRank": null,
       "measuredSearchVolume": null,
       "chatgptCitationEvidence": null,
-      "canonical": null
+      "canonical": "/articles/the-widget-that-shows-what-is-next/",
+      "bodyReviewEvidence": "batch22-coverage/widgets-views.json",
+      "latestIntentAssessment": {
+        "id": "widgets",
+        "oldStatus": "candidate_existing_content_comparison_pending",
+        "proposedStatus": "english_existing_bodies_reviewed_substantive_core_coverage_scoped_gaps",
+        "canonical": "/articles/the-widget-that-shows-what-is-next/",
+        "supportingRoutes": [
+          "/articles/a-countdown-to-your-next-meeting/",
+          "/articles/lock-screen-without-unlocking/",
+          "/articles/choosing-a-widget-size/",
+          "/articles/the-calendar-on-a-bedside-table/"
+        ],
+        "intentAssessment": [
+          {
+            "intent": "Find next event; diagnose absent all-day/started/unselected event",
+            "status": "substantively_covered",
+            "bodyEvidence": "Next-event guide sections 1–4 identifies exact layouts, eligibility, calendar selection, app/provider comparison and no guaranteed refresh deadline."
+          },
+          {
+            "intent": "Choose widget content/size",
+            "status": "substantively_covered",
+            "bodyEvidence": "Size guide distinguishes date/weather from medium/large event lists, eleven-row ceiling, variable date span, readability and missing-data checks."
+          },
+          {
+            "intent": "Lock Screen, Live Activity and privacy",
+            "status": "substantively_covered",
+            "bodyEvidence": "Lock Screen and countdown guides distinguish accessory widgets, Live Activity, notifications, titles visible while locked, permissions and stale content."
+          },
+          {
+            "intent": "StandBy tomorrow plan",
+            "status": "substantively_covered_with_runtime_boundary",
+            "bodyEvidence": "Bedside guide qualifies actual picker availability, display persistence and complete tomorrow review; no unsupported special agenda promised."
+          },
+          {
+            "intent": "iPad-specific widget setup",
+            "status": "scoped_gap_not_new_article_approved",
+            "bodyEvidence": "Guides explain layout behavior but installation instructions and cited setup page are iPhone-specific. No complete iPad installation/placement walkthrough or device observation established."
+          },
+          {
+            "intent": "An eligible later appointment is not among displayed widget rows",
+            "status": "partially_covered_split_across_guides",
+            "bodyEvidence": "Size guide covers finite rows but missing-event guide could explicitly separate visible-list truncation from a missing nearest eligible event."
+          }
+        ],
+        "titleCorrection": "Do not retain proposed month/next-event/agenda-widget title as a Cloud capability list. Native families establish date/weather and event lists, not a month-grid widget."
+      },
+      "coverageScope": "Complete reviewed current English bodies and recorded/fresh scoped primary evidence. Not all translated bodies, every provider/hardware path or measured ranking/citation coverage.",
+      "targetedFollowupEvidence": "batch22-targeted-guides/mapping.json",
+      "currentFollowup": "iPad official gallery steps, same-device data check and nearest-eligible-versus-row-limit diagnosis integrated; website mobile/tablet layouts verified. Native installed-release behavior remains untested."
     },
     {
       "id": "work-personal-filtering",
@@ -213,11 +370,58 @@
       "proposedTitle": "Keep work and personal plans readable in one calendar",
       "originalContribution": "Use a simple color/visibility scheme, clarify hiding is not deletion, and make a weekly availability review. Separate calendar filtering from permission changes.",
       "publicationGate": "Verify Cloud Calendars filtering and coloring controls; no claim of Focus Filter integration without proof.",
-      "status": "candidate_existing_content_comparison_pending",
+      "status": "english_existing_bodies_reviewed_substantive_core_coverage_scoped_gaps",
       "measuredRank": null,
       "measuredSearchVolume": null,
       "chatgptCitationEvidence": null,
-      "canonical": null
+      "canonical": "/articles/work-and-personal-without-two-apps/",
+      "bodyReviewEvidence": "batch22-coverage/sharing-work.json",
+      "latestIntentAssessment": {
+        "id": "work-personal-filtering",
+        "beforeStatus": "candidate_existing_content_comparison_pending",
+        "proposedStatus": "english_existing_body_reviewed_substantive_core_with_selection_scope_correction_proposed",
+        "canonical": "/articles/work-and-personal-without-two-apps/",
+        "coveredIntents": [
+          {
+            "intent": "Read work and personal plans together",
+            "evidence": "Sections 1–3 distinguish overview, account/storage context, colours, visibility and destination; section 4 correctly distinguishes Base/Advanced/Premium and provider permission."
+          },
+          {
+            "intent": "Filtering versus permissions, notifications and deletion",
+            "evidence": "Section 2 separates visibility from sharing and advises checking notifications. However, Hiding is a display choice can understate selected-calendar effects on Google sync and notification input in the existing native proof record."
+          },
+          {
+            "intent": "Busy time without copying private details",
+            "evidence": "Section 5 already contains a worked approved manual-block workflow and recipient-side check. It explicitly does not advertise automatic masking."
+          }
+        ],
+        "remainingGaps": [
+          {
+            "intent": "Weekly availability review after filtering",
+            "status": "small_useful_workflow_step_missing",
+            "recommendation": "Restore the calendars relevant to the decision before judging an empty slot. Do not add calendar sets, per-person filters or Focus integration."
+          },
+          {
+            "intent": "Selection is not always a purely visual operation",
+            "status": "concrete_qualification_needed",
+            "recommendation": "Replace the display-only-sounding paragraph with bounded selection/synchronization/notification scope, using the existing source-backed proof. No claim that all providers stop or resume identically."
+          },
+          {
+            "intent": "Exact Cloud colour/filter menu tutorial",
+            "status": "not_established_by_this_review",
+            "recommendation": "Current article gives generic conventions and attributes checkbox instructions to Apple. Keep them as such; verify native controls before adding a Cloud-specific click path."
+          }
+        ],
+        "strongestExistingGuideImprovement": {
+          "route": "/articles/work-and-personal-without-two-apps/",
+          "action": "Clarify selected-calendar side effects, then add a brief restore-and-review step within the existing colour/visibility section.",
+          "draftProvided": true,
+          "file": "research/batch22-coverage/work-and-personal-without-two-apps.json"
+        }
+      },
+      "coverageScope": "Complete reviewed current English bodies and recorded/fresh scoped primary evidence. Not all translated bodies, every provider/hardware path or measured ranking/citation coverage.",
+      "targetedFollowupEvidence": "batch22-targeted-guides/mapping.json",
+      "currentFollowup": "Selected-calendar scope qualification and restore-relevant-calendars review step integrated. No all-provider stop/resume claim."
     },
     {
       "id": "sync-troubleshooting",
@@ -310,11 +514,20 @@
       "proposedTitle": "Plan a meeting across time zones without changing its meaning",
       "originalContribution": "Original example contrasts event time zone, device display zone and all-day date. Address daylight-saving changes with dated examples after primary verification.",
       "publicationGate": "Verify Cloud Calendars time-zone support; do not transfer competitor favorite-zone features.",
-      "status": "candidate_existing_content_comparison_pending",
+      "status": "english_existing_bodies_reviewed_substantive_core_coverage_scoped_gaps",
       "measuredRank": null,
       "measuredSearchVolume": null,
       "chatgptCitationEvidence": null,
-      "canonical": null
+      "canonical": "/articles/time-zones-and-the-flight-you-booked/",
+      "bodyReviewEvidence": "batch22-coverage/tasks-zones-primary.json",
+      "latestIntentAssessment": {
+        "id": "timezones",
+        "status": "covered_existing_canonical",
+        "canonical": "time-zones-and-the-flight-you-booked",
+        "basis": "Complete current seven-section guide distinguishes event and display zones, destination appointments, independent flight endpoints, seasonal recurring-call changes, all-day dates and feed diagnosis. Provider controls explicitly separated from Cloud.",
+        "remaining": "No new timezone page needed. Native/released behavior not reverified in this research; existing source qualification retained."
+      },
+      "coverageScope": "Complete reviewed current English bodies and recorded/fresh scoped primary evidence. Not all translated bodies, every provider/hardware path or measured ranking/citation coverage."
     },
     {
       "id": "tasks-timeblocking",
@@ -329,16 +542,27 @@
       "proposedTitle": "Turn a task list into a realistic calendar day",
       "originalContribution": "Explain due date versus reserved time, add travel/buffer intervals and show rescheduling an unfinished block. Treat manual events as generic workflow if no task integration.",
       "publicationGate": "Verify task/Reminders integration before product claims; further primary task documentation required.",
-      "status": "candidate_existing_content_comparison_pending",
+      "status": "english_existing_bodies_reviewed_substantive_core_coverage_scoped_gaps",
       "measuredRank": null,
       "measuredSearchVolume": null,
       "chatgptCitationEvidence": null,
-      "canonical": null
+      "canonical": "/articles/planning-a-week-in-ten-minutes/",
+      "bodyReviewEvidence": "batch22-coverage/tasks-zones-primary.json",
+      "latestIntentAssessment": {
+        "id": "tasks-timeblocking",
+        "status": "covered_existing_canonical_with_targeted_improvement",
+        "canonical": "planning-a-week-in-ten-minutes",
+        "basis": "Complete current guide covers deadlines versus proposed work blocks, travel/setup gaps, fixed commitments, destination/permission checks and shared responsibility. It lacks an explicit unfinished-block review example.",
+        "remaining": "Integrated task completion, Reminders/Google Tasks sync and carry-forward are competitor capabilities, not established Cloud capabilities."
+      },
+      "coverageScope": "Complete reviewed current English bodies and recorded/fresh scoped primary evidence. Not all translated bodies, every provider/hardware path or measured ranking/citation coverage.",
+      "targetedFollowupEvidence": "batch22-targeted-guides/mapping.json",
+      "currentFollowup": "Added original Tuesday work-block versus Friday deadline example. It is manual planning, not task completion or automatic carry-forward."
     }
   ],
   "remaining": [
     "Broaden actual query and competitor intent research beyond the bounded original71URLs and review remaining substantive linked bodies. A keyword variant alone does not justify a duplicate page.",
-    "Complete task-level quality reconciliation for remaining original clusters and provider-specific migration/repair gaps. Existing route counts are not completion evidence.",
+    "Deepen provider-specific migration/repair and purchase-entitlement-versus-calendar-access gaps beyond the now-reviewed nine original intent clusters. Core English coverage is not exhaustive query or translated-body approval.",
     "Review and improve remaining translated timezone/all-day/storage/CalDAV and newer English task-guide editions with accurate local terminology; no bulk quality approval.",
     "Confirm released-binary and production data-handling correspondence separately before making privacy/runtime claims or changing App Privacy.",
     "Integrate the actual new screenshot/video set after the generating task or folder is identified. Existing1240galleryrenditions and widgets playback verified separately; no new replacement assumed ready.",
@@ -347,7 +571,7 @@
     "Subscription-link destination advice now attributes Apple controls and distinguishes Cloud invitation links. Arbitrary external-feed handling and released/runtime subscription visibility are not established by source inspection; no blanket support claim."
   ],
   "existingCanonicalAudit": "competitors/existing-canonical-review-20261021-batch02.json",
-  "existingCanonicalAuditScope": "Initial 45-title/31-body review is historical. Latest targeted seven complete English objects reviewed in batch20-ledger-reconciliation-aso.json; two cluster statuses reconciled from substantive bodies. Other candidate statuses retain their bounded prior evidence.",
+  "existingCanonicalAuditScope": "All nine original intent clusters now have bounded substantive English coverage review records, with explicit remaining gaps. Batch20 reviewed seven complete bodies for two clusters; batch22 records ten sharing/work, eleven widgets/views and four tasks/timezones body comparisons (overlaps are not counted as unique additions). Route inventory is not quality or exhaustive-query approval.",
   "asc": {
     "version": "1.7.4",
     "state": "PREPARE_FOR_SUBMISSION",
@@ -696,5 +920,31 @@
     "scope": "Receiving app/account verification and diagnostic routing from actual guide bodies; semantic H1 spacing, all30built headings, representative LTR/RTL visual geometry and507public artifacts verified. Not exhaustive intent/ranking or product-runtime proof.",
     "goalComplete": false,
     "publicArtifactsExactBuild": 507
+  },
+  "twentySecondPublication": {
+    "date": "2026-10-22",
+    "targetedEnglishGuides": 4,
+    "newRoutes": 0,
+    "originalClustersReconciled": 6,
+    "allInitialClustersHaveBoundedBodyReview": 9,
+    "widgetGuideScope": "iPhone and iPad Home Screen setup plus visible-row versus missing-nearest-event diagnosis",
+    "coverageEvidence": [
+      "batch22-coverage/sharing-work.json",
+      "batch22-coverage/widgets-views.json",
+      "batch22-coverage/tasks-zones-primary.json",
+      "batch22-ipad-widget/evidence.json"
+    ],
+    "goalComplete": false,
+    "sourceAndDeliveryEvidence": [
+      "batch22-source-qa.json",
+      "batch22-static-qa.json",
+      "batch22-metadata-qa.json",
+      "batch22-browser-qa.json",
+      "batch22-public-qa.json",
+      "batch22-invalidation-status.json"
+    ],
+    "publicArtifactsExactBuild": 507,
+    "actualGoogleObservation": "batch22-coverage/google-ipad-widget-observation.json",
+    "actualGoogleScope": "One signed-in uncontrolled first-page observation. No causal improvement, stable rank or ChatGPT measurement."
   }
 }

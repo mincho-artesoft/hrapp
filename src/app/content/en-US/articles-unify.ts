@@ -10,7 +10,7 @@ import { LocalisedArticle } from '../types';
  */
 export const UNIFY_EN_US: Readonly<Record<string, LocalisedArticle>> = {
   'icloud-google-and-outlook-in-one-view': {
-  "updated": "2026-10-21",
+  "updated": "2026-10-22",
   "title": "iCloud, Google and Outlook in one view: accounts, copies and permissions",
   "short": "Three providers, one view",
   "description": "View iCloud, Google and Microsoft calendars together. Check account selection, edit permissions and copies before moving events or relying on availability.",
@@ -21,7 +21,8 @@ export const UNIFY_EN_US: Readonly<Record<string, LocalisedArticle>> = {
       "heading": "Identify the account and calendar behind each event",
       "body": [
         "Start with one ordinary event from each provider. Note the signed-in email address, calendar name and whether you own the event or received an invitation. Two calendars called “Calendar” can belong to entirely different accounts. A colour helps you scan a week; the account and calendar identify where an edit should go.",
-        "For example, a dentist appointment in your personal iCloud calendar and a project meeting in Microsoft can appear together for you. That does not, by itself, make the dentist appointment visible to your colleagues or reserve that time in their scheduling tools."
+        "For example, a dentist appointment in your personal iCloud calendar and a project meeting in Microsoft can appear together for you. That does not, by itself, make the dentist appointment visible to your colleagues or reserve that time in their scheduling tools.",
+        "Choose the outcome before changing a connection. To move event data to another account, use “Choose a calendar export format” below to find a supported transfer route and check representative events before relying on the destination. To compare times, keep the existing calendar owners and display selected sources together. If another account must receive busy time, “Cloud Calendars and OneCal by workflow” explains how availability copying differs from a personal overview."
       ]
     },
     {
@@ -99,11 +100,13 @@ export const UNIFY_EN_US: Readonly<Record<string, LocalisedArticle>> = {
     }
   ],
   "seeAlso": [
-  "exchange-calendars-on-an-iphone",
-  "what-calendar-sync-actually-does",
-  "when-two-calendars-disagree",
-  "caldav-calendar-on-iphone"
-]
+    "exchange-calendars-on-an-iphone",
+    "what-calendar-sync-actually-does",
+    "when-two-calendars-disagree",
+    "caldav-calendar-on-iphone",
+    "calendar-export-ics-pdf-and-backup",
+    "onecal-alternative-iphone-calendar-view-or-sync"
+  ]
 },
 
   'three-calendar-apps-is-two-too-many': {
@@ -312,7 +315,7 @@ export const UNIFY_EN_US: Readonly<Record<string, LocalisedArticle>> = {
 },
 
   'work-and-personal-without-two-apps': {
-  "updated": "2026-10-21",
+  "updated": "2026-10-22",
   "title": "Work and personal calendars in one app: keep ownership separate",
   "short": "Work and personal, one app",
   "description": "See work and personal calendars together without merging ownership. Check permissions, event destinations and Cloud Calendars plans before connecting accounts.",
@@ -330,8 +333,8 @@ export const UNIFY_EN_US: Readonly<Record<string, LocalisedArticle>> = {
     {
       "heading": "Use colour and visibility for the overview",
       "body": [
-        "Give work and personal calendars distinct colours, then check a busy day with both visible. When you want a narrower view, hide a calendar rather than deleting its events. Apple’s duplicate-calendar guide explains how to show and hide calendars with checkboxes.",
-        "Hiding is a display choice. It is not a change to who can access the calendar, and you should check notification settings separately if the goal is a quiet evening. Keep an approved work app available if your organisation requires it."
+        "Give work and personal calendars distinct colours, then check a busy day with both visible. When you want a narrower view, hide a calendar rather than deleting its events. Apple’s duplicate-calendar guide explains how to show and hide calendars with checkboxes. Before accepting a new commitment, restore the calendars relevant to that decision and compare the week with all of them visible. An empty filtered view does not establish that the time is free.",
+        "Hiding a calendar does not change who has permission to access it. In Cloud Calendars, calendar selection also matters to Google synchronization and notification scheduling, so do not assume that deselecting a calendar affects only the picture on screen. Check important changes at their provider and review notification settings separately if the goal is a quiet evening. Keep an approved work app available if your organisation requires it."
       ]
     },
     {
@@ -399,7 +402,8 @@ export const UNIFY_EN_US: Readonly<Record<string, LocalisedArticle>> = {
   ],
   "seeAlso": [
     "what-calendar-sync-actually-does",
-    "when-two-calendars-disagree"
+    "when-two-calendars-disagree",
+    "who-can-see-what-in-google-calendar"
   ]
 },
 

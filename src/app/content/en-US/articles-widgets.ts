@@ -9,10 +9,10 @@ import { LocalisedArticle } from '../types';
  */
 export const WIDGETS_EN_US: Readonly<Record<string, LocalisedArticle>> = {
   'the-widget-that-shows-what-is-next': {
-  "updated": "2026-10-21",
-  "title": "Show upcoming calendar events on your iPhone Home Screen",
+  "updated": "2026-10-22",
+  "title": "Calendar widgets on iPhone and iPad: show upcoming events",
   "short": "Upcoming events on the Home Screen",
-  "description": "Choose an event widget, check selected calendars and diagnose missing appointments. Understand why an empty widget is not proof of an empty calendar.",
+  "description": "Set up upcoming-event widgets on iPhone or iPad. Check selected calendars, visible rows and missing appointments before relying on the Home Screen.",
   "lede": "For a useful next-event view, choose a widget that actually lists events. A date-and-weather tile answers a different question. This guide is published by Arte Soft, the developer of Cloud Calendars.",
   "sections": [
     {
@@ -23,10 +23,25 @@ export const WIDGETS_EN_US: Readonly<Record<string, LocalisedArticle>> = {
       ]
     },
     {
+      "heading": "Add and check the widget on iPad",
+      "body": [
+        "On iPad, use Apple’s Home Screen widget gallery: hold the background, open Edit, then Add Widget. Search for Cloud Calendars, inspect the offered styles and sizes, add the layout you need, position it and finish with Done. Follow the controls shown by your iPadOS version; a preview is not confirmation that your calendar data has loaded.",
+        "Choose Calendar Events or Calendar Events Large when you need appointments. Compare the styles offered by the installed app; a date-and-weather tile answers a different question from an event list.",
+        "Open Cloud Calendars on that iPad and find a known future timed appointment in a selected calendar. A correct view on your iPhone does not confirm the iPad’s accounts, access or loaded data. Compare the title, date and start time, then continue with the eligibility and update checks below if the widget differs."
+      ]
+    },
+    {
       "heading": "Check what counts as upcoming",
       "body": [
         "The event display uses selected calendars and future timed appointments. All-day entries and appointments whose start time has already passed are excluded from this upcoming feed. A birthday or an ongoing meeting can therefore be visible in the app without appearing here.",
         "For example, if your only entry today is an all-day travel label, a blank upcoming list does not mean the travel label was lost. Open the app to inspect the complete day. Likewise, the next timed event may be tomorrow or later; read its date rather than assuming every row is today."
+      ]
+    },
+    {
+      "heading": "Separate a missing event from a list that has run out of rows",
+      "body": [
+        "A widget shows a limited set of upcoming appointments. If earlier events fill its rows, a later appointment can be absent even though it is present in the app and eligible for the upcoming list. A larger event layout can show more rows; it still is not the complete calendar.",
+        "Start with the nearest future timed appointment in a selected calendar. If it appears but a later one does not, open the app to inspect the rest of the schedule. If the nearest eligible event is also missing, continue with calendar selection, access and update checks. Do not move or delete appointments just to make a later entry appear."
       ]
     },
     {
@@ -81,6 +96,10 @@ export const WIDGETS_EN_US: Readonly<Record<string, LocalisedArticle>> = {
     {
       "label": "Apple: Keeping a widget up to date",
       "url": "https://developer.apple.com/documentation/widgetkit/keeping-a-widget-up-to-date"
+    },
+    {
+      "label": "Apple: Add, edit, and remove widgets on iPad",
+      "url": "https://support.apple.com/guide/ipad/add-edit-and-remove-widgets-ipadb0de8630/ipados"
     }
   ],
   "seeAlso": [

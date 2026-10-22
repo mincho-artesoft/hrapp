@@ -1,0 +1,77 @@
+{
+  "date": "2026-10-22",
+  "nativeReadOnly": [
+    {
+      "file": "/Users/minchomilev/work/hrapp/Calendar/Sources/CalendarViewModel.swift",
+      "sha256": "a0b207cb78810816775ff1aff4399a33dc3ce7331cbb1af2aa4468bb0828ccf4",
+      "rootReadRanges": [
+        [
+          1330,
+          1364
+        ]
+      ],
+      "scope": "Bounded current-source ranges; no runtime or release equivalence."
+    },
+    {
+      "file": "/Users/minchomilev/work/hrapp/Calendar/Sources/EventNotificationManager.swift",
+      "sha256": "d664f53078277e526245eca8aa38de1660faed643f5b992e761f4db4566ce26a",
+      "rootReadRanges": [
+        [
+          260,
+          292
+        ]
+      ],
+      "scope": "Bounded current-source ranges; no runtime or release equivalence."
+    },
+    {
+      "file": "/Users/minchomilev/work/hrapp/Calendar/Main/CalendarWidgetStore.swift",
+      "sha256": "0e766b69fcf12e3cbc99c40b033e5e80b1d34899627844676d989d52b552a2c7",
+      "rootReadRanges": [
+        [
+          174,
+          280
+        ]
+      ],
+      "scope": "Bounded current-source ranges; no runtime or release equivalence."
+    },
+    {
+      "file": "/Users/minchomilev/work/hrapp/CalendarWidget/CalendarWidget.swift",
+      "sha256": "202168b86e98d32b8e26314e9ff2e57ab61428bab784aa3f4fd060fe4ffa01e7",
+      "rootReadRanges": [
+        [
+          438,
+          465
+        ]
+      ],
+      "scope": "Bounded current-source ranges; no runtime or release equivalence."
+    }
+  ],
+  "localCompleteBodyReads": [
+    {
+      "file": "src/app/content/en-US/articles-help.ts",
+      "slug": "calendar-export-ics-pdf-and-backup",
+      "scope": "Complete8sections/practical4FAQ/sources/related object378–520; first combined output truncation followed by dedicated complete read."
+    },
+    {
+      "file": "src/app/content/en-US/articles-planning.ts",
+      "slug": "planning-a-week-in-ten-minutes",
+      "scope": "Complete6sections/12paragraphs/6practical/3FAQ/sources/related object290–385."
+    },
+    {
+      "file": "src/app/content/en-US/articles-widgets.ts",
+      "slug": "the-widget-that-shows-what-is-next",
+      "scope": "Complete current5sections/10paragraphs/4practical/3FAQ/sources/related object; additions reviewed separately."
+    }
+  ],
+  "primaryRead": {
+    "url": "https://support.apple.com/guide/ipad/add-edit-and-remove-widgets-ipadb0de8630/ipados",
+    "resolvedUrl": "https://support.apple.com/en-euro/guide/ipad/ipadb0de8630/ipados",
+    "scope": "Complete main body1029–1084 via canonical entry. Initial direct resolved-URL tool attempt inaccessible; no body or diagnosis inferred from failure.",
+    "boundary": "Generic Apple gallery steps only. Optional interactive/configuration/accessory surfaces not transferred to Cloud."
+  },
+  "notPerformed": [
+    "Native writes/build/simulator/customer operations",
+    "Purchase entitlement declaration",
+    "Source code platform/runtime certification"
+  ]
+}

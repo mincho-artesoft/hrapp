@@ -306,7 +306,8 @@ export const PLANNING_EN_US: Readonly<Record<string, LocalisedArticle>> = {
       "heading": "Separate fixed commitments from proposed blocks",
       "body": [
         "Keep an agreed lesson, client appointment or booked journey at its real time. A block for writing, preparation or errands is a proposal you control; it is not the same as an invitation someone else has accepted. Label a provisional block clearly when another decision is still needed.",
-        "For example, a report due on Friday may need preparation earlier in the week. Estimate the work from the actual task and choose a block that fits around existing commitments. There is no universal rule that exactly three discretionary items will fit everyone’s week."
+        "For example, a report due on Friday may need preparation earlier in the week. Estimate the work from the actual task and choose a block that fits around existing commitments. There is no universal rule that exactly three discretionary items will fit everyone’s week.",
+        "If Tuesday’s 45-minute preparation block ends with half a report still to write, estimate the remaining work and choose another realistic opening around agreed appointments. Keep Friday’s 17:00 deadline separate: moving the preparation block does not move the deadline. A calendar block records planned time, so check the task itself before calling it finished."
       ]
     },
     {

@@ -1,0 +1,15 @@
+{
+  "target": "research/batch22-targeted-guides/the-widget-that-shows-what-is-next.json",
+  "title": "Calendar widgets on iPhone and iPad: show upcoming events",
+  "description": "Set up upcoming-event widgets on iPhone or iPad. Check selected calendars, visible rows and missing appointments before relying on the Home Screen.",
+  "section": {
+    "heading": "Add and check the widget on iPad",
+    "body": [
+      "On iPad, use Apple’s Home Screen widget gallery: hold the background, open Edit, then Add Widget. Search for Cloud Calendars, inspect the offered styles and sizes, add the layout you need, position it and finish with Done. Follow the controls shown by your iPadOS version; a preview is not confirmation that your calendar data has loaded.",
+      "Choose Calendar Events or Calendar Events Large when you need appointments. Compare the styles offered by the installed app; a date-and-weather tile answers a different question from an event list.",
+      "Open Cloud Calendars on that iPad and find a known future timed appointment in a selected calendar. A correct view on your iPhone does not confirm the iPad’s accounts, access or loaded data. Compare the title, date and start time, then continue with the eligibility and update checks below if the widget differs."
+    ]
+  },
+  "reason": "Merge bounded official iPad setup into existing cross-device task guide; replace audit-speak and speculative absent-layout warnings with offered-style and same-device checks. Added row-limit section remains separate.",
+  "newRoute": false
+}

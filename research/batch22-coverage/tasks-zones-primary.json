@@ -1,0 +1,195 @@
+{
+  "schemaVersion": 1,
+  "date": "2026-10-22",
+  "queries": [
+    {
+      "query": "site.readdle.com calendars time blocking tasks reminders iPhone",
+      "date": "2026-10-22"
+    },
+    {
+      "query": "site.busymac.com busycal tasks time zones iPhone",
+      "date": "2026-10-22"
+    },
+    {
+      "query": "site.timetreeapp.com family shared calendar reminders widgets",
+      "date": "2026-10-22"
+    }
+  ],
+  "searchScope": "One batch of three focused public queries. Thirteen visible result URLs. Combined response does not attribute each result unambiguously to a query; no per-query positions claimed.",
+  "observedResultURLs": [
+    "https://support.readdle.com/calendars/calendars-premium/tasks-in-calendars",
+    "https://www.busymac.com/docs/busycal/70607-preferences/",
+    "https://apps.apple.com/us/app/busycal-calendar-tasks/id1035689743?platform=ipad",
+    "https://www.busymac.com/docs/busycalios/70670-settings/",
+    "https://www.busymac.com/docs/busycalios/70656-getting-started-with-busycal-for-ios/",
+    "https://apps.apple.com/us/app/busycal-calendar-reminders/id1173663647?mt=12",
+    "https://timetreeapp.com/intl/en/newsroom/2025-09-09/all-calendars-renewal",
+    "https://www.busymac.com/docs/busycal/70605-quick-entry/",
+    "https://readdle.com/calendars",
+    "https://www.busymac.com/docs/faqs/busycal-top-faqs/",
+    "https://support.timetreeapp.com/hc/en-us/articles/38977080563225-How-to-use-Public-Calendar-Widgets-iOS",
+    "https://support.apple.com/en-ae/guide/iphone/iph14f1d32a5/ios",
+    "https://www.busymac.com/download/tco-busycal.pdf"
+  ],
+  "primaryReads": [
+    {
+      "url": "https://support.readdle.com/calendars/calendars-premium/tasks-in-calendars",
+      "status": "full_extracted_main_body",
+      "ranges": [
+        [
+          103,
+          118
+        ]
+      ],
+      "totalLines": 161,
+      "summary": "Readdle documents tasks backed by iOS Reminders or Google Tasks, due dates, timeline duration, completion and starred carry-forward. Drag-to-timeline availability differs by device/view.",
+      "boundaries": "Publisher functionality, not Cloud functionality; no video/runtime test or seamless-sync guarantee adopted."
+    },
+    {
+      "url": "https://www.busymac.com/docs/busycalios/70670-settings/",
+      "status": "partial_selected_sections",
+      "ranges": [
+        [
+          233,
+          244
+        ],
+        [
+          328,
+          343
+        ]
+      ],
+      "totalLines": 449,
+      "summary": "BusyCal iOS separates start/end zone controls, favorite-zone shortcuts, floating-time defaults and display override. Some services do not support floating time.",
+      "boundaries": "Not a complete settings-page read; these menus and capabilities are not attributed to Cloud."
+    },
+    {
+      "url": "https://timetreeapp.com/intl/en/newsroom/2025-09-09/all-calendars-renewal",
+      "status": "full_extracted_main_body",
+      "ranges": [
+        [
+          17,
+          52
+        ]
+      ],
+      "totalLines": 155,
+      "summary": "TimeTree describes selecting displayed calendars and viewing family/shared and external schedules together.",
+      "boundaries": "Viewing together does not itself prove access, assignment or availability. No universal availability claim adopted."
+    },
+    {
+      "url": "https://support.timetreeapp.com/hc/en-us/articles/38977080563225-How-to-use-Public-Calendar-Widgets-iOS",
+      "status": "full_extracted_main_body",
+      "ranges": [
+        [
+          6,
+          35
+        ]
+      ],
+      "totalLines": 44,
+      "summary": "TimeTree distinguishes purchased public-calendar widgets from shared-calendar widgets. Its instructions identify a specific public-calendar layout and purchase condition.",
+      "boundaries": "No Cloud paid-widget or equivalent public-calendar store claim."
+    }
+  ],
+  "otherResultScopes": "All other listed results are search excerpts only this batch. Previously reviewed BusyCal overview not reopened; old PDF excluded.",
+  "failures": [],
+  "localReads": [
+    {
+      "slug": "the-widget-that-shows-what-is-next",
+      "file": "src/app/content/en-US/articles-widgets.ts",
+      "lines": [
+        11,
+        90
+      ],
+      "scope": "Complete current object including all section bodies, practical steps, FAQs and sources. Weekly guide reread separately after combined output truncation.",
+      "sha256": "87650182a3815b0dab71d8107c6378c18ec3e6f98c4aa0b18cc51e4dc163fcd1"
+    },
+    {
+      "slug": "planning-a-week-in-ten-minutes",
+      "file": "src/app/content/en-US/articles-planning.ts",
+      "lines": [
+        290,
+        381
+      ],
+      "scope": "Complete current object including all section bodies, practical steps, FAQs and sources. Weekly guide reread separately after combined output truncation.",
+      "sha256": "3fecb21ec5cf5a6572c796c85a77a059288d2d0a947a77ceda36040e4bd0d08b"
+    },
+    {
+      "slug": "time-zones-and-the-flight-you-booked",
+      "file": "src/app/content/en-US/articles-planning.ts",
+      "lines": [
+        477,
+        585
+      ],
+      "scope": "Complete current object including all section bodies, practical steps, FAQs and sources. Weekly guide reread separately after combined output truncation.",
+      "sha256": "29d82fd38bdba73fb173fd03a819377fc8f797070970ec97793a50c82a5f3517"
+    },
+    {
+      "slug": "family-pickup-calendar-handoff",
+      "file": "src/app/content/en-US/articles-help.ts",
+      "lines": [
+        605,
+        696
+      ],
+      "scope": "Complete current object including all section bodies, practical steps, FAQs and sources. Weekly guide reread separately after combined output truncation.",
+      "sha256": "29fd1ab11271f6e5d238399fae62d2394fc0f0de85cb76bc259d0522b38f8358"
+    }
+  ],
+  "ledgerReview": {
+    "file": "research/keyword-coverage-ledger.json",
+    "fields": [
+      "clusters[id=timezones]",
+      "clusters[id=tasks-timeblocking]"
+    ],
+    "priorStatus": "candidate_existing_content_comparison_pending"
+  },
+  "proposedLedgerStatuses": [
+    {
+      "id": "timezones",
+      "status": "covered_existing_canonical",
+      "canonical": "time-zones-and-the-flight-you-booked",
+      "basis": "Complete current seven-section guide distinguishes event and display zones, destination appointments, independent flight endpoints, seasonal recurring-call changes, all-day dates and feed diagnosis. Provider controls explicitly separated from Cloud.",
+      "remaining": "No new timezone page needed. Native/released behavior not reverified in this research; existing source qualification retained."
+    },
+    {
+      "id": "tasks-timeblocking",
+      "status": "covered_existing_canonical_with_targeted_improvement",
+      "canonical": "planning-a-week-in-ten-minutes",
+      "basis": "Complete current guide covers deadlines versus proposed work blocks, travel/setup gaps, fixed commitments, destination/permission checks and shared responsibility. It lacks an explicit unfinished-block review example.",
+      "remaining": "Integrated task completion, Reminders/Google Tasks sync and carry-forward are competitor capabilities, not established Cloud capabilities."
+    }
+  ],
+  "comparisons": [
+    {
+      "task": "Family shared schedule versus responsibility",
+      "canonical": "family-pickup-calendar-handoff",
+      "assessment": "Full guide already supplies a worked pickup example, correct destination/access, explicit driver confirmation, one-date change and urgent communication. No new family calendar page justified."
+    },
+    {
+      "task": "Choose the appropriate widget rather than assume every widget lists appointments",
+      "canonical": "the-widget-that-shows-what-is-next",
+      "assessment": "Full guide already distinguishes layouts, selected calendars, future timed events, all-day exclusions and update limits. TimeTree public-widget purchase conditions are irrelevant to Cloud; no new guide or change justified."
+    }
+  ],
+  "concreteRecommendation": {
+    "target": "planning-a-week-in-ten-minutes",
+    "location": "Separate fixed commitments from proposed blocks, or final review section",
+    "proposedOriginalAddition": "When a work block ends, review the task separately: did you finish it, or is work still outstanding? If more time is needed, estimate the remaining work and choose another realistic opening without moving an agreed appointment. Keep the actual deadline visible; moving a preparation block does not change when the report is due. A calendar block records planned time, not automatic task completion.",
+    "classification": "Original manual planning convention supported by the task-versus-event distinction, not a product feature claim.",
+    "gate": "Do not add completion buttons, automatic carry-forward, task sync or task-to-event conversion instructions without native evidence.",
+    "newPagesRecommended": 0
+  },
+  "measurementLimits": [
+    "No keyword search volumes, Google rank measurements or ChatGPT response/citation observations.",
+    "Result order and publisher feature wording are not evidence of demand or ranking.",
+    "No exhaustive query or competitor coverage claim."
+  ],
+  "notPerformed": [
+    "Ledger mutation",
+    "Source integration",
+    "Build",
+    "Deployment",
+    "Native operations",
+    "ASC changes",
+    "Customer actions",
+    "Paid APIs"
+  ]
+}

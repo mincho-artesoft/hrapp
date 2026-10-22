@@ -1,5 +1,5 @@
 {
-  "date": "2026-10-21T23:53:48.301Z",
+  "date": "2026-10-22T00:10:28.685Z",
   "status": "source_inventory_not_quality_approval",
   "articles": [
     {
@@ -1711,7 +1711,7 @@
       "descriptionCharacters": 152,
       "sections": 6,
       "faq": 3,
-      "words": 803,
+      "words": 857,
       "source": "articles-planning.ts",
       "sources": [
         "https://support.apple.com/guide/iphone/use-multiple-calendars-iph3d1110d4/ios",
@@ -1929,14 +1929,14 @@
       "descriptionCharacters": 155,
       "sections": 6,
       "faq": 3,
-      "words": 955,
+      "words": 1026,
       "source": "articles-unify.ts",
       "sources": [
         "https://support.apple.com/guide/icloud/set-up-calendar-mme4d73a8727/icloud",
         "https://support.google.com/calendar/answer/37082?hl=en",
         "https://learn.microsoft.com/en-us/graph/outlook-calendar-concept-overview"
       ],
-      "updated": "2026-10-21"
+      "updated": "2026-10-22"
     },
     {
       "locale": "en-US",
@@ -1978,7 +1978,7 @@
       "descriptionCharacters": 159,
       "sections": 5,
       "faq": 3,
-      "words": 758,
+      "words": 818,
       "source": "articles-unify.ts",
       "sources": [
         "https://support.apple.com/guide/iphone/use-multiple-calendars-iph3d1110d4/ios",
@@ -1986,7 +1986,7 @@
         "https://support.google.com/calendar/answer/15716974?hl=en",
         "https://support.microsoft.com/en-us/outlook/calendar/change-an-appointment-meeting-or-event-in-outlook"
       ],
-      "updated": "2026-10-21"
+      "updated": "2026-10-22"
     },
     {
       "locale": "en-US",
@@ -2187,18 +2187,19 @@
     {
       "locale": "en-US",
       "slug": "the-widget-that-shows-what-is-next",
-      "title": "Show upcoming calendar events on your iPhone Home Screen",
-      "description": "Choose an event widget, check selected calendars and diagnose missing appointments. Understand why an empty widget is not proof of an empty calendar.",
-      "descriptionCharacters": 149,
-      "sections": 5,
+      "title": "Calendar widgets on iPhone and iPad: show upcoming events",
+      "description": "Set up upcoming-event widgets on iPhone or iPad. Check selected calendars, visible rows and missing appointments before relying on the Home Screen.",
+      "descriptionCharacters": 147,
+      "sections": 7,
       "faq": 3,
-      "words": 607,
+      "words": 875,
       "source": "articles-widgets.ts",
       "sources": [
         "https://support.apple.com/118610",
-        "https://developer.apple.com/documentation/widgetkit/keeping-a-widget-up-to-date"
+        "https://developer.apple.com/documentation/widgetkit/keeping-a-widget-up-to-date",
+        "https://support.apple.com/guide/ipad/add-edit-and-remove-widgets-ipadb0de8630/ipados"
       ],
-      "updated": "2026-10-21"
+      "updated": "2026-10-22"
     },
     {
       "locale": "en-US",

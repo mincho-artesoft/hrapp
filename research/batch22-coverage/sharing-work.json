@@ -1,0 +1,343 @@
+{
+  "date": "2026-10-22",
+  "sourceHead": "434120b6625ceab9f608250fa81f78e267747347",
+  "status": "draft_reconciliation_only",
+  "reviewedBodies": [
+    {
+      "slug": "sharing-one-event-not-your-calendar",
+      "route": "/articles/sharing-one-event-not-your-calendar/",
+      "file": "src/app/content/en-US/articles-sharing.ts",
+      "objectSha256": "94df5d346cead4ad6e0d07bd244bdafc3d64e2a927f3d37b33eb14df4356704d",
+      "scope": "Complete current object, all body paragraphs, practical steps, FAQs, sources and related links.",
+      "sections": 6,
+      "paragraphs": 12,
+      "sourceUrls": [
+        "https://developer.apple.com/help/app-store-connect/offer-app-clip-experiences/overview-of-app-clips/",
+        "https://support.google.com/calendar/answer/37118?co=GENIE.Platform%3DDesktop&hl=en",
+        "https://support.microsoft.com/en-us/outlook/import-or-subscribe-to-a-calendar-in-outlook-com-or-outlook-on-the-web"
+      ]
+    },
+    {
+      "slug": "inviting-people-who-do-not-have-the-app",
+      "route": "/articles/inviting-people-who-do-not-have-the-app/",
+      "file": "src/app/content/en-US/articles-sharing.ts",
+      "objectSha256": "2fe1b7dfa3b2dffd8c942b7e98477b1882051563b84c8ef68b84885debd2fbd9",
+      "scope": "Complete current object, all body paragraphs, practical steps, FAQs, sources and related links.",
+      "sections": 6,
+      "paragraphs": 12,
+      "sourceUrls": [
+        "https://developer.apple.com/help/app-store-connect/offer-app-clip-experiences/overview-of-app-clips/",
+        "https://support.google.com/calendar/answer/37118?co=GENIE.Platform%3DDesktop&hl=en",
+        "https://support.microsoft.com/en-us/outlook/import-or-subscribe-to-a-calendar-in-outlook-com-or-outlook-on-the-web"
+      ]
+    },
+    {
+      "slug": "a-calendar-that-is-yours-to-share",
+      "route": "/articles/a-calendar-that-is-yours-to-share/",
+      "file": "src/app/content/en-US/articles-sharing.ts",
+      "objectSha256": "f9380ec60dfa6f263376f313897280e49bff0b11a42074ba0d3942d775c5c926",
+      "scope": "Complete current object, all body paragraphs, practical steps, FAQs, sources and related links.",
+      "sections": 6,
+      "paragraphs": 12,
+      "sourceUrls": [
+        "https://support.google.com/calendar/answer/37082?hl=en",
+        "https://support.microsoft.com/en-us/outlook/import-or-subscribe-to-a-calendar-in-outlook-com-or-outlook-on-the-web"
+      ]
+    },
+    {
+      "slug": "who-can-see-what-in-google-calendar",
+      "route": "/articles/who-can-see-what-in-google-calendar/",
+      "file": "src/app/content/en-US/articles-sharing.ts",
+      "objectSha256": "0d5b87e67777e7fb6565f2386243e8b5017749f65beab082edcec95dfb195b67",
+      "scope": "Complete current object, all body paragraphs, practical steps, FAQs, sources and related links.",
+      "sections": 6,
+      "paragraphs": 12,
+      "sourceUrls": [
+        "https://support.google.com/calendar/answer/15716974?hl=en",
+        "https://support.google.com/calendar/answer/37082?hl=en"
+      ]
+    },
+    {
+      "slug": "keeping-track-of-who-replied",
+      "route": "/articles/keeping-track-of-who-replied/",
+      "file": "src/app/content/en-US/articles-sharing.ts",
+      "objectSha256": "d2ea6b1527f77e9fbf4d065b96a5b527f0635a7da1725dec463d3701477c0e18",
+      "scope": "Complete current object, all body paragraphs, practical steps, FAQs, sources and related links.",
+      "sections": 6,
+      "paragraphs": 12,
+      "sourceUrls": [
+        "https://support.google.com/calendar/answer/37135?hl=en",
+        "https://support.apple.com/en-ph/guide/iphone/iphc0eddfe3c/ios",
+        "https://support.google.com/calendar/answer/37118?co=GENIE.Platform%3DDesktop&hl=en"
+      ]
+    },
+    {
+      "slug": "work-and-personal-without-two-apps",
+      "route": "/articles/work-and-personal-without-two-apps/",
+      "file": "src/app/content/en-US/articles-unify.ts",
+      "objectSha256": "01b2362f4dfc7794baefd3dd4cab687424751c5e762bca800ab1b2d497cfb000",
+      "scope": "Complete current object, all body paragraphs, practical steps, FAQs, sources and related links.",
+      "sections": 5,
+      "paragraphs": 11,
+      "sourceUrls": [
+        "https://support.apple.com/guide/iphone/use-multiple-calendars-iph3d1110d4/ios",
+        "https://support.apple.com/en-us/102180",
+        "https://support.google.com/calendar/answer/15716974?hl=en",
+        "https://support.microsoft.com/en-us/outlook/calendar/change-an-appointment-meeting-or-event-in-outlook"
+      ]
+    },
+    {
+      "slug": "taking-back-a-calendar-you-shared",
+      "route": "/articles/taking-back-a-calendar-you-shared/",
+      "file": "src/app/content/en-US/articles-google.ts",
+      "objectSha256": "e30ac1cd409604f99356bf5a8a99dfa1cf58241393df9c0e72b123f645f37f14",
+      "scope": "Complete current object, all body paragraphs, practical steps, FAQs, sources and related links.",
+      "sections": 6,
+      "paragraphs": 12,
+      "sourceUrls": [
+        "https://support.google.com/calendar/answer/37082?hl=en",
+        "https://support.google.com/calendar/answer/37648?hl=en"
+      ]
+    },
+    {
+      "slug": "family-pickup-calendar-handoff",
+      "route": "/articles/family-pickup-calendar-handoff/",
+      "file": "src/app/content/en-US/articles-help.ts",
+      "objectSha256": "5c20916b37b3f0d103beaaefcf79a32db99532176014b8386acc54e1e1c74682",
+      "scope": "Complete current object, all body paragraphs, practical steps, FAQs, sources and related links.",
+      "sections": 6,
+      "paragraphs": 15,
+      "sourceUrls": [
+        "https://support.apple.com/guide/iphone/use-multiple-calendars-iph3d1110d4/ios",
+        "https://support.google.com/calendar/answer/78739?co=GENIE.Platform%3DiOS&hl=en"
+      ]
+    },
+    {
+      "slug": "what-a-subscription-actually-buys",
+      "route": "/articles/what-a-subscription-actually-buys/",
+      "file": "src/app/content/en-US/articles-compare.ts",
+      "objectSha256": "4cc972a95a3a4f6e5662a33fa186af91a8eba366ce94a321e374b172ee18f2e9",
+      "scope": "Complete current object, all body paragraphs, practical steps, FAQs, sources and related links.",
+      "sections": 5,
+      "paragraphs": 10,
+      "sourceUrls": [
+        "https://support.apple.com/en-us/118428",
+        "https://apps.apple.com/us/app/cloud-calendars-sync-widget/id6744690319"
+      ]
+    },
+    {
+      "slug": "what-guests-can-do-to-your-event",
+      "route": "/articles/what-guests-can-do-to-your-event/",
+      "file": "src/app/content/en-US/articles-google.ts",
+      "objectSha256": "c7ccb76225c59ee8866766f960f01e9383b4ce70d74113ca74212f36bb3c6e44",
+      "scope": "Complete current object, all body paragraphs, practical steps, FAQs, sources and related links.",
+      "sections": 6,
+      "paragraphs": 12,
+      "sourceUrls": [
+        "https://support.google.com/a/users/answer/13293412?hl=en",
+        "https://developers.google.com/workspace/calendar/api/v3/reference/events"
+      ]
+    }
+  ],
+  "proposedClusters": [
+    {
+      "id": "sharing-permissions",
+      "beforeStatus": "candidate_existing_content_comparison_pending",
+      "proposedStatus": "english_existing_bodies_reviewed_substantive_sharing_coverage_bounded_gaps",
+      "canonical": "/articles/sharing-one-event-not-your-calendar/",
+      "supportingRoutes": [
+        "/articles/sharing-one-event-not-your-calendar/",
+        "/articles/inviting-people-who-do-not-have-the-app/",
+        "/articles/a-calendar-that-is-yours-to-share/",
+        "/articles/who-can-see-what-in-google-calendar/",
+        "/articles/keeping-track-of-who-replied/",
+        "/articles/taking-back-a-calendar-you-shared/",
+        "/articles/family-pickup-calendar-handoff/",
+        "/articles/what-a-subscription-actually-buys/",
+        "/articles/what-guests-can-do-to-your-event/"
+      ],
+      "coveredIntents": [
+        {
+          "intent": "One event versus whole calendar",
+          "evidence": "Single-event guide sections 1–4; whole-calendar guide sections 1–4: separate purpose, audience, calendar ownership, app-local/device/provider route and acceptance."
+        },
+        {
+          "intent": "Reader versus editor versus access manager",
+          "evidence": "Both Cloud guides explicitly distinguish Reader/Writer/Owner; Google guide sections 1–3 and guest-permission guide sections 1–5 distinguish calendar ACL, private-event editing restrictions and event-specific capabilities."
+        },
+        {
+          "intent": "Recipients without the app, read-only subscription and import",
+          "evidence": "Without-app guide complete six-section flow distinguishes App Clip preview, web landing, full app/writable destination, signed-in roles, verified-email calendar acceptance and import versus feed. No universal no-install or immediate-update claim."
+        },
+        {
+          "intent": "Attendance versus access acceptance",
+          "evidence": "RSVP guide complete six-section flow preserves provider original, unknown attendance, anonymous receipts, no guessed headcounts and no plan-based RSVP reliability."
+        },
+        {
+          "intent": "Private/public/group access and revocation",
+          "evidence": "Google-permissions and revocation guides inspect broader/public/group routes, private-event distinctions, secret feed reset, recipient removal and surviving copies; no one-switch erasure or guaranteed timing."
+        },
+        {
+          "intent": "Family calendar responsibility",
+          "evidence": "Family-pickup guide supplies a full worked example with explicit driver agreement, shared destination check, occurrence scope and direct urgent confirmation."
+        }
+      ],
+      "remainingGaps": [
+        {
+          "intent": "Family subscription purchase entitlement versus shared calendar data",
+          "status": "specific_distinction_not_explicit_in_reviewed_bodies",
+          "evidence": "Subscription guide separates Apple billing identity from provider/sharing identity, but does not establish whether a particular purchase is eligible for family entitlement sharing. Whole-calendar guide explains invitations but not this common purchase/access ambiguity.",
+          "recommendation": "Add one bounded FAQ to the existing whole-calendar or subscription guide only after checking current Apple entitlement guidance and the actual product eligibility. Explain that calendar access is separately granted; do not claim Cloud subscriptions are or are not Family Sharing eligible from these bodies."
+        },
+        {
+          "intent": "Compact choice matrix for all sharing routes",
+          "status": "concepts_already_covered_presentation_opportunity_only",
+          "recommendation": "If simplifying the entry guide, use its existing practical list to route viewing/editing/RSVP/feed readers to existing guides. A separate permissions keyword page would duplicate substantive content."
+        }
+      ],
+      "strongestExistingGuideImprovement": {
+        "route": "/articles/a-calendar-that-is-yours-to-share/",
+        "action": "Add the verified purchase-entitlement-versus-calendar-access FAQ after the narrow eligibility research gate, and related links to Google permissions and revocation. Current roles/recipient mechanics need no wholesale rewrite.",
+        "draftProvided": false,
+        "reason": "Do not fill the eligibility gap with an unsupported product claim; current research task is not a purchase-setting audit."
+      }
+    },
+    {
+      "id": "work-personal-filtering",
+      "beforeStatus": "candidate_existing_content_comparison_pending",
+      "proposedStatus": "english_existing_body_reviewed_substantive_core_with_selection_scope_correction_proposed",
+      "canonical": "/articles/work-and-personal-without-two-apps/",
+      "coveredIntents": [
+        {
+          "intent": "Read work and personal plans together",
+          "evidence": "Sections 1–3 distinguish overview, account/storage context, colours, visibility and destination; section 4 correctly distinguishes Base/Advanced/Premium and provider permission."
+        },
+        {
+          "intent": "Filtering versus permissions, notifications and deletion",
+          "evidence": "Section 2 separates visibility from sharing and advises checking notifications. However, Hiding is a display choice can understate selected-calendar effects on Google sync and notification input in the existing native proof record."
+        },
+        {
+          "intent": "Busy time without copying private details",
+          "evidence": "Section 5 already contains a worked approved manual-block workflow and recipient-side check. It explicitly does not advertise automatic masking."
+        }
+      ],
+      "remainingGaps": [
+        {
+          "intent": "Weekly availability review after filtering",
+          "status": "small_useful_workflow_step_missing",
+          "recommendation": "Restore the calendars relevant to the decision before judging an empty slot. Do not add calendar sets, per-person filters or Focus integration."
+        },
+        {
+          "intent": "Selection is not always a purely visual operation",
+          "status": "concrete_qualification_needed",
+          "recommendation": "Replace the display-only-sounding paragraph with bounded selection/synchronization/notification scope, using the existing source-backed proof. No claim that all providers stop or resume identically."
+        },
+        {
+          "intent": "Exact Cloud colour/filter menu tutorial",
+          "status": "not_established_by_this_review",
+          "recommendation": "Current article gives generic conventions and attributes checkbox instructions to Apple. Keep them as such; verify native controls before adding a Cloud-specific click path."
+        }
+      ],
+      "strongestExistingGuideImprovement": {
+        "route": "/articles/work-and-personal-without-two-apps/",
+        "action": "Clarify selected-calendar side effects, then add a brief restore-and-review step within the existing colour/visibility section.",
+        "draftProvided": true,
+        "file": "research/batch22-coverage/work-and-personal-without-two-apps.json"
+      }
+    }
+  ],
+  "optionalDraft": {
+    "slug": "work-and-personal-without-two-apps",
+    "beforeObjectSha256": "01b2362f4dfc7794baefd3dd4cab687424751c5e762bca800ab1b2d497cfb000",
+    "afterObjectSha256": "22a9844d2cefa22601168684cb8797ff59b9af549be0d445e94584977565b702",
+    "exactChanges": [
+      {
+        "path": "sections[1].body[0]",
+        "before": "Give work and personal calendars distinct colours, then check a busy day with both visible. When you want a narrower view, hide a calendar rather than deleting its events. Apple’s duplicate-calendar guide explains how to show and hide calendars with checkboxes.",
+        "after": "Give work and personal calendars distinct colours, then check a busy day with both visible. When you want a narrower view, hide a calendar rather than deleting its events. Apple’s duplicate-calendar guide explains how to show and hide calendars with checkboxes. Before accepting a new commitment, restore the calendars relevant to that decision and compare the week with all of them visible. An empty filtered view does not establish that the time is free."
+      },
+      {
+        "path": "sections[1].body[1]",
+        "before": "Hiding is a display choice. It is not a change to who can access the calendar, and you should check notification settings separately if the goal is a quiet evening. Keep an approved work app available if your organisation requires it.",
+        "after": "Hiding a calendar does not change who has permission to access it. In Cloud Calendars, calendar selection also matters to Google synchronization and notification scheduling, so do not assume that deselecting a calendar affects only the picture on screen. Check important changes at their provider and review notification settings separately if the goal is a quiet evening. Keep an approved work app available if your organisation requires it."
+      },
+      {
+        "path": "seeAlso",
+        "before": [
+          "what-calendar-sync-actually-does",
+          "when-two-calendars-disagree"
+        ],
+        "after": [
+          "what-calendar-sync-actually-does",
+          "when-two-calendars-disagree",
+          "who-can-see-what-in-google-calendar"
+        ]
+      },
+      {
+        "path": "updated",
+        "before": "2026-10-21",
+        "after": "2026-10-22"
+      }
+    ],
+    "dateReason": "Substantive selection-scope clarification and weekly review addition justify 2026-10-22 if integrated.",
+    "validation": {
+      "sectionsUnchanged": true,
+      "paragraphCountUnchanged": true,
+      "sourcesUnchanged": true,
+      "claimsEmpty": true,
+      "allRelatedRoutesExist": true,
+      "descriptionUnchanged": true
+    }
+  },
+  "recordedEvidence": [
+    {
+      "file": "research/batch08-sharing/evidence.json",
+      "readScope": "Native/backend proof findings, critical corrections, primary-source methods and uncertainty records reviewed; not a fresh code audit.",
+      "supports": "Preview-only App Clip, full-app email/QR, Reader/Writer/Owner, verified identity, receipt not RSVP, separate feed revoke, refresh hint not deadline.",
+      "limits": "Many primary citations are explicitly search-result reads. Do not promote to full body or runtime certification."
+    },
+    {
+      "file": "research/batch08-sharing/root-review.json",
+      "readScope": "Complete record.",
+      "supports": "Google15716974 full returned text and permission table;37082 main sections19–107. Broader access/private editing distinctions; App Clip and landing paths."
+    },
+    {
+      "file": "research/batch09-localized-sharing/revocation-evidence.json",
+      "readScope": "Complete record.",
+      "supports": "Google37082 main19–107 and37648 main20–55; route-specific removal and own-use secret address reset."
+    },
+    {
+      "file": "research/batch10-feed-review/evidence.json",
+      "readScope": "Recorded source findings, official URLs and corrections reviewed; source excerpts omitted in compact read.",
+      "supports": "Cloud roles not Google guest flags; selected Google sync, partial calendar list and feed refresh distinctions."
+    },
+    {
+      "file": "research/competitors/batch10-sharing-primary-20261021.json",
+      "readScope": "Complete competitor review record and old canonical observations.",
+      "supports": "Teamup access route/action separation, TimeTree overview versus shared calendar, Cozi filter versus responsibility, CalendarBridge copied fields versus RSVP.",
+      "limits": "Vendor semantics not Cloud capabilities. Old currentCanonicalReview complaints about guessed RSVPs/instant revocation are superseded by the fully reviewed current bodies."
+    },
+    {
+      "file": "research/batch15-home-claim-audit.json",
+      "readScope": "Targeted google-sync and notifications proof findings/excerpts.",
+      "supports": "selectedCalendarIDs guard for Google uploads and selected-calendar inputs to notification scheduling; source recorded ranges, not fresh runtime."
+    },
+    {
+      "file": "research/competitors/batch25-fantastical-settings-primary-20261022.json",
+      "readScope": "Complete record; original Settings main61–150.",
+      "supports": "Filtering and hidden/declined/mirrored records are distinct vendor concepts; no Cloud Focus/filter parity inferred."
+    }
+  ],
+  "noNewKeywordPagesRecommended": true,
+  "limitations": [
+    "Current English content only; no translation or live-page quality certification.",
+    "No new external primary fetch; prior recorded reads remain dated and retain their original scope.",
+    "No ledger/source mutation, build, deployment, ASC/native/customer operation.",
+    "No measured demand, ranking, citation, security or release-runtime claim."
+  ],
+  "metrics": {
+    "measuredRank": null,
+    "measuredSearchVolume": null,
+    "chatgptCitationEvidence": null
+  }
+}

@@ -1,0 +1,290 @@
+{
+  "date": "2026-10-22",
+  "requestedBaseline": "HEAD 434120b supplied by parent; no checkout changed.",
+  "scope": "Reconcile widgets and calendar-views ledger clusters from complete current English bodies. Eleven complete objects, not route-presence inference. Research only.",
+  "ledger": {
+    "file": "research/keyword-coverage-ledger.json",
+    "sha256": "7939b7be24831f9fef5acf1b7976e7c4a8369ec6a13217c5723abf752daa2d0a",
+    "mutated": false
+  },
+  "fullObjectReads": [
+    {
+      "slug": "the-widget-that-shows-what-is-next",
+      "file": "src/app/content/en-US/articles-widgets.ts",
+      "fileSha256": "f89b8367e105a01fb96325686e4f2edbc7a4fac62abfe26257ad0c94eff9497b",
+      "objectSha256": "23152083b7fb564d5944af3409fd5c19276931e4f427a5f6c4595660d3b9836e",
+      "readScope": "Complete object: title, short, description, lede, any commonBelief, all section headings/paragraphs, claims, practical steps, FAQs, source labels/URLs and seeAlso.",
+      "sections": 5,
+      "paragraphs": 10,
+      "faqs": 3,
+      "updated": "2026-10-21"
+    },
+    {
+      "slug": "a-countdown-to-your-next-meeting",
+      "file": "src/app/content/en-US/articles-widgets.ts",
+      "fileSha256": "f89b8367e105a01fb96325686e4f2edbc7a4fac62abfe26257ad0c94eff9497b",
+      "objectSha256": "8e4b0677a4e53d9e7f8059e1100f42131db75a0b8869a140ef679f36eb6f94e1",
+      "readScope": "Complete object: title, short, description, lede, any commonBelief, all section headings/paragraphs, claims, practical steps, FAQs, source labels/URLs and seeAlso.",
+      "sections": 5,
+      "paragraphs": 10,
+      "faqs": 3,
+      "updated": "2026-10-21"
+    },
+    {
+      "slug": "lock-screen-without-unlocking",
+      "file": "src/app/content/en-US/articles-widgets.ts",
+      "fileSha256": "f89b8367e105a01fb96325686e4f2edbc7a4fac62abfe26257ad0c94eff9497b",
+      "objectSha256": "b5be4dee42bf3e7d475a75abea47c9037c2b33625bbe2316f744cfe178eb68c7",
+      "readScope": "Complete object: title, short, description, lede, any commonBelief, all section headings/paragraphs, claims, practical steps, FAQs, source labels/URLs and seeAlso.",
+      "sections": 5,
+      "paragraphs": 10,
+      "faqs": 3,
+      "updated": "2026-10-21"
+    },
+    {
+      "slug": "choosing-a-widget-size",
+      "file": "src/app/content/en-US/articles-widgets.ts",
+      "fileSha256": "f89b8367e105a01fb96325686e4f2edbc7a4fac62abfe26257ad0c94eff9497b",
+      "objectSha256": "5481049130ce9965298d4e52e6664c55767190573b3a0696ccec3ba1a075ac84",
+      "readScope": "Complete object: title, short, description, lede, any commonBelief, all section headings/paragraphs, claims, practical steps, FAQs, source labels/URLs and seeAlso.",
+      "sections": 5,
+      "paragraphs": 10,
+      "faqs": 3,
+      "updated": "2026-10-21"
+    },
+    {
+      "slug": "the-calendar-on-a-bedside-table",
+      "file": "src/app/content/en-US/articles-widgets.ts",
+      "fileSha256": "f89b8367e105a01fb96325686e4f2edbc7a4fac62abfe26257ad0c94eff9497b",
+      "objectSha256": "7301a3908e30ae451cb1516c5ebe282f50457bd59c28f96e90e629af4e48208b",
+      "readScope": "Complete object: title, short, description, lede, any commonBelief, all section headings/paragraphs, claims, practical steps, FAQs, source labels/URLs and seeAlso.",
+      "sections": 5,
+      "paragraphs": 10,
+      "faqs": 3,
+      "updated": "2026-10-21"
+    },
+    {
+      "slug": "a-week-view-that-fits-a-week",
+      "file": "src/app/content/en-US/articles-planning.ts",
+      "fileSha256": "62bd5cbf96da54ba75a84d7c761b9e603dc20fc174c524fcff645198c05d745b",
+      "objectSha256": "2b4ba13d64eddb2bc0de630cf5c5499c929ddc7eb5027da628ba63187d6b75b7",
+      "readScope": "Complete object: title, short, description, lede, any commonBelief, all section headings/paragraphs, claims, practical steps, FAQs, source labels/URLs and seeAlso.",
+      "sections": 6,
+      "paragraphs": 12,
+      "faqs": 3,
+      "updated": "2026-10-22"
+    },
+    {
+      "slug": "month-view-on-a-bigger-screen",
+      "file": "src/app/content/en-US/articles-planning.ts",
+      "fileSha256": "62bd5cbf96da54ba75a84d7c761b9e603dc20fc174c524fcff645198c05d745b",
+      "objectSha256": "df6df1dcb8f77c9ecd74f3e24f16eed4f696005542da9eb2bd1f3d852ee8ca43",
+      "readScope": "Complete object: title, short, description, lede, any commonBelief, all section headings/paragraphs, claims, practical steps, FAQs, source labels/URLs and seeAlso.",
+      "sections": 6,
+      "paragraphs": 12,
+      "faqs": 3,
+      "updated": "2026-10-22"
+    },
+    {
+      "slug": "a-list-for-people-who-dislike-grids",
+      "file": "src/app/content/en-US/articles-planning.ts",
+      "fileSha256": "62bd5cbf96da54ba75a84d7c761b9e603dc20fc174c524fcff645198c05d745b",
+      "objectSha256": "de1ffeda8226dab3978bc6a42323b97b7534c8cc8abbeccb13a084afed7c04ff",
+      "readScope": "Complete object: title, short, description, lede, any commonBelief, all section headings/paragraphs, claims, practical steps, FAQs, source labels/URLs and seeAlso.",
+      "sections": 6,
+      "paragraphs": 12,
+      "faqs": 3,
+      "updated": "2026-10-22"
+    },
+    {
+      "slug": "the-year-in-one-screen",
+      "file": "src/app/content/en-US/articles-planning.ts",
+      "fileSha256": "62bd5cbf96da54ba75a84d7c761b9e603dc20fc174c524fcff645198c05d745b",
+      "objectSha256": "e1f3f320d856e84fc8d3104cbb7d51c05c08bd0176958a882d4818b37acec0d6",
+      "readScope": "Complete object: title, short, description, lede, any commonBelief, all section headings/paragraphs, claims, practical steps, FAQs, source labels/URLs and seeAlso.",
+      "sections": 6,
+      "paragraphs": 12,
+      "faqs": 3,
+      "updated": "2026-10-22"
+    },
+    {
+      "slug": "drag-an-event-to-move-it",
+      "file": "src/app/content/en-US/articles-planning.ts",
+      "fileSha256": "62bd5cbf96da54ba75a84d7c761b9e603dc20fc174c524fcff645198c05d745b",
+      "objectSha256": "e92385839b1172027f7592a5c72567872724949ed25f6fdb64b3d62f167a16b2",
+      "readScope": "Complete object: title, short, description, lede, any commonBelief, all section headings/paragraphs, claims, practical steps, FAQs, source labels/URLs and seeAlso.",
+      "sections": 6,
+      "paragraphs": 12,
+      "faqs": 3,
+      "updated": "2026-10-21"
+    },
+    {
+      "slug": "planning-a-week-in-ten-minutes",
+      "file": "src/app/content/en-US/articles-planning.ts",
+      "fileSha256": "62bd5cbf96da54ba75a84d7c761b9e603dc20fc174c524fcff645198c05d745b",
+      "objectSha256": "cc15623e7fdd4e082611bccf4c2cc00b96c0233f6d1858e2c0b4a05046314172",
+      "readScope": "Complete object: title, short, description, lede, any commonBelief, all section headings/paragraphs, claims, practical steps, FAQs, source labels/URLs and seeAlso.",
+      "sections": 6,
+      "paragraphs": 12,
+      "faqs": 3,
+      "updated": "2026-10-22"
+    }
+  ],
+  "proposedClusterUpdates": [
+    {
+      "id": "widgets",
+      "oldStatus": "candidate_existing_content_comparison_pending",
+      "proposedStatus": "english_existing_bodies_reviewed_substantive_core_coverage_scoped_gaps",
+      "canonical": "/articles/the-widget-that-shows-what-is-next/",
+      "supportingRoutes": [
+        "/articles/a-countdown-to-your-next-meeting/",
+        "/articles/lock-screen-without-unlocking/",
+        "/articles/choosing-a-widget-size/",
+        "/articles/the-calendar-on-a-bedside-table/"
+      ],
+      "intentAssessment": [
+        {
+          "intent": "Find next event; diagnose absent all-day/started/unselected event",
+          "status": "substantively_covered",
+          "bodyEvidence": "Next-event guide sections 1–4 identifies exact layouts, eligibility, calendar selection, app/provider comparison and no guaranteed refresh deadline."
+        },
+        {
+          "intent": "Choose widget content/size",
+          "status": "substantively_covered",
+          "bodyEvidence": "Size guide distinguishes date/weather from medium/large event lists, eleven-row ceiling, variable date span, readability and missing-data checks."
+        },
+        {
+          "intent": "Lock Screen, Live Activity and privacy",
+          "status": "substantively_covered",
+          "bodyEvidence": "Lock Screen and countdown guides distinguish accessory widgets, Live Activity, notifications, titles visible while locked, permissions and stale content."
+        },
+        {
+          "intent": "StandBy tomorrow plan",
+          "status": "substantively_covered_with_runtime_boundary",
+          "bodyEvidence": "Bedside guide qualifies actual picker availability, display persistence and complete tomorrow review; no unsupported special agenda promised."
+        },
+        {
+          "intent": "iPad-specific widget setup",
+          "status": "scoped_gap_not_new_article_approved",
+          "bodyEvidence": "Guides explain layout behavior but installation instructions and cited setup page are iPhone-specific. No complete iPad installation/placement walkthrough or device observation established."
+        },
+        {
+          "intent": "An eligible later appointment is not among displayed widget rows",
+          "status": "partially_covered_split_across_guides",
+          "bodyEvidence": "Size guide covers finite rows but missing-event guide could explicitly separate visible-list truncation from a missing nearest eligible event."
+        }
+      ],
+      "titleCorrection": "Do not retain proposed month/next-event/agenda-widget title as a Cloud capability list. Native families establish date/weather and event lists, not a month-grid widget."
+    },
+    {
+      "id": "calendar-views",
+      "oldStatus": "candidate_existing_content_comparison_pending",
+      "proposedStatus": "english_existing_bodies_reviewed_substantive_core_coverage_scoped_gaps",
+      "canonical": "/articles/a-week-view-that-fits-a-week/",
+      "supportingRoutes": [
+        "/articles/month-view-on-a-bigger-screen/",
+        "/articles/a-list-for-people-who-dislike-grids/",
+        "/articles/the-year-in-one-screen/",
+        "/articles/drag-an-event-to-move-it/",
+        "/articles/planning-a-week-in-ten-minutes/"
+      ],
+      "intentAssessment": [
+        {
+          "intent": "Choose month versus agenda versus hour grid",
+          "status": "substantively_covered",
+          "bodyEvidence": "Month section1 distinguishes dates/hours; list section6 supplies a direct selection rule; week sections1–3 cover timed/all-day/selected data."
+        },
+        {
+          "intent": "Read crowded iPad month",
+          "status": "substantively_covered",
+          "bodyEvidence": "Month section2 explicitly covers capped chips/overflow, one-line titles, larger display versus app-window/text constraints."
+        },
+        {
+          "intent": "Plan a realistic week",
+          "status": "substantively_covered",
+          "bodyEvidence": "Week and weekly-review complete bodies cover fixed commitments, overlaps, transit/setup, responsibilities, weather and verification."
+        },
+        {
+          "intent": "Understand list/year omissions",
+          "status": "substantively_covered",
+          "bodyEvidence": "List has loaded-range/start-date grouping limits; year has colour markers versus counts, multi-day interval caveat and selected-source limits."
+        },
+        {
+          "intent": "One original illustrative week across several views",
+          "status": "optional_editorial_enhancement_not_missing_core_task",
+          "bodyEvidence": "Guides already use concrete examples and crosslinks. No new generic choose-a-view page justified merely to repeat them."
+        }
+      ]
+    }
+  ],
+  "strongestExistingGuideImprovement": {
+    "slug": "the-widget-that-shows-what-is-next",
+    "changeType": "Small bounded insertion, no whole-object rewrite warranted",
+    "placement": "After section 2, before app comparison; link to choosing-a-widget-size.",
+    "proposedHeading": "Separate a missing event from a list that has run out of rows",
+    "proposedBody": [
+      "A widget shows a limited set of upcoming appointments. If earlier events fill its rows, a later appointment can be absent even though it is present in the app and eligible for the upcoming list. Changing the widget size may show more rows, but it does not make the widget a complete calendar.",
+      "Start your comparison with the nearest future timed appointment in a selected calendar. If that event appears but a later one does not, open the app to inspect the rest of the schedule. If the nearest eligible event is also missing, continue with calendar selection, access and update checks. Do not move or delete appointments just to make a later entry appear."
+    ],
+    "basis": "Current source prefixes a sorted snapshot; rendered large list is capped by available space and eleven rows. Existing missing-event guide does not explicitly apply this distinction during diagnosis.",
+    "boundary": "Avoid promising exact freshness, fixed forecast coverage, full-year provider sync or 25 visible events. Native source is not released/runtime proof.",
+    "fullReplacementDraftCreated": false
+  },
+  "evidence": {
+    "freshNativeReads": [
+      {
+        "file": "/Users/minchomilev/work/hrapp/Calendar/Main/CalendarWidgetStore.swift",
+        "sha256": "0e766b69fcf12e3cbc99c40b033e5e80b1d34899627844676d989d52b552a2c7",
+        "readRanges": [
+          [
+            174,
+            280
+          ]
+        ],
+        "finding": "Selected identities, native calendar access, one-year source query, default limit 25, future timed-only sort/prefix and saved shared snapshot. Those internal limits do not guarantee a year of provider data or display 25 rows."
+      },
+      {
+        "file": "/Users/minchomilev/work/hrapp/CalendarWidget/CalendarWidget.swift",
+        "sha256": "202168b86e98d32b8e26314e9ff2e57ab61428bab784aa3f4fd060fe4ffa01e7",
+        "readRanges": [
+          [
+            107,
+            116
+          ],
+          [
+            438,
+            465
+          ],
+          [
+            1099,
+            1147
+          ]
+        ],
+        "finding": "Saved events read from shared defaults; layout prefixes rows with dynamic large cap 11. Three static families date/weather small+medium, events medium, large events large. No declared month-grid or accessory families."
+      }
+    ],
+    "recordedEvidence": [
+      {
+        "file": "research/batch05-widgets/evidence.json",
+        "sha256": "52e00c87d26a335360272478b5eebaa5e4845d296b868f9d7dffe196b3007cd3",
+        "scope": "Read existing native/Apple evidence record; historical draft translation findings are not current translated-site findings."
+      },
+      {
+        "file": "research/batch13-views/evidence.json",
+        "sha256": "52bc6ba27e0928ef75922be75eefff17d8a25f11158088b659e3096025fd7fe6",
+        "scope": "Read complete prior proof record covering list/year/week source and attributed Apple/Teamup view docs. Did not freshly reread those native files or fetch provider URLs this task."
+      }
+    ]
+  },
+  "remainingGaps": [
+    "iPad-specific system widget setup requires current official iPad documentation and scoped implementation/installed-version verification; generic layout knowledge is not that walkthrough.",
+    "Live Activity/StandBy behavior on particular released versions and device sizes remains untested.",
+    "Translation coverage and quality not audited here; do not promote English body review into all-locale approval.",
+    "No rank, search-volume, indexing or ChatGPT citation measurement performed."
+  ],
+  "limits": [
+    "Status means current repository English body coverage, not new public-byte verification.",
+    "No source, ledger or native mutation; no build, simulator, customer action, deployment or ASC write.",
+    "No full replacement drafted because the strongest finding is a concise insertion to an existing substantive guide."
+  ]
+}

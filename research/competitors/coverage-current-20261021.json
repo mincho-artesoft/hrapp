@@ -3014,5 +3014,14 @@
     "navigationLandingsRevisited": 2,
     "originalExactUrls": 71,
     "scope": "Bounded original corpus, not all linked documents or all competitor keywords."
+  },
+  "latestQueryExpansion": {
+    "source": "research/batch22-coverage/tasks-zones-primary.json",
+    "queries": 3,
+    "observedResultUrls": 13,
+    "freshCompletePrimaryBodies": 3,
+    "freshSelectedSectionReview": 1,
+    "originalExactUrlCountUnchanged": 71,
+    "scope": "New broader task/widget/family query batch. BusyCal settings URL is already in original corpus, selected sections do not imply a new complete-body review. Other three body URLs are outside original bounded corpus. No search volumes/ranks or ChatGPT citation measurement."
   }
 }
