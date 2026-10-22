@@ -77,5 +77,11 @@
     "Native/backend/customer/provider changes",
     "ASC writes/review submission/release/build attachment/prices/privacy declarations"
   ],
-  "statusRule": "Progress exists, so not at an impasse or repeated no-progress blocker; full objective remains active."
+  "statusRule": "Progress exists, so not at an impasse or repeated no-progress blocker; full objective remains active.",
+  "nextConcreteWork": {
+    "localizedSelectionAudit": "batch31-selection-localization-audit.json",
+    "exchangeAppends": 3,
+    "legacyCombinedCalendarModernizations": 3,
+    "birthdaySourceSection": "After existing all-day full current-body read, draft/review bounded source-identification section; no standalone route now."
+  }
 }
