@@ -179,7 +179,7 @@ tabs: {"hourly":"Per jam","daily":"Harian","weekend":"Akhir pekan","range":"Rent
     billingPeriod: 'Periode penagihan',
     mostPopular: "Paket unggulan",
     everythingIn: 'Semua yang ada di {tier}, ditambah:',
-    forever: 'selamanya',
+    forever: "paket gratis",
     perMonth: '/ bln',
     perYear: '/ thn',
     downloadFree: 'Unduh gratis',

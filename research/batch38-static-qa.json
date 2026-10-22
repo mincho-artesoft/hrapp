@@ -1,0 +1,205 @@
+{
+  "allPassed": true,
+  "sitemapUrls": 523,
+  "all521PreviousCanonicalsPreserved": true,
+  "newRoutes": [
+    "https://www.cloud-calendars.com/articles/unwanted-calendar-events-iphone/",
+    "https://www.cloud-calendars.com/de/articles/time-zones-and-the-flight-you-booked/"
+  ],
+  "fullGuidesChecked": [
+    {
+      "url": "https://www.cloud-calendars.com/articles/unwanted-calendar-events-iphone/",
+      "allVisibleTextReferencesAndRelatedMatch": true,
+      "galleryImagesWithAlt": 5,
+      "sections": 7,
+      "faq": 4
+    },
+    {
+      "url": "https://www.cloud-calendars.com/de/articles/time-zones-and-the-flight-you-booked/",
+      "allVisibleTextReferencesAndRelatedMatch": true,
+      "galleryImagesWithAlt": 5,
+      "sections": 7,
+      "faq": 4
+    }
+  ],
+  "relatedOnlyBacklinks": 3,
+  "english58GuideExportIncludesFullNewGuide": true,
+  "robotsUnchanged": true,
+  "all29HomeLabels": [
+    {
+      "locale": "en-US",
+      "url": "https://www.cloud-calendars.com/",
+      "zeroPricePeriod": "free plan",
+      "threePlanPeriodsPresent": true
+    },
+    {
+      "locale": "ar-SA",
+      "url": "https://www.cloud-calendars.com/ar/",
+      "zeroPricePeriod": "\u0627\u0644\u062e\u0637\u0629 \u0627\u0644\u0645\u062c\u0627\u0646\u064a\u0629",
+      "threePlanPeriodsPresent": true
+    },
+    {
+      "locale": "bg",
+      "url": "https://www.cloud-calendars.com/bg/",
+      "zeroPricePeriod": "\u0431\u0435\u0437\u043f\u043b\u0430\u0442\u0435\u043d \u043f\u043b\u0430\u043d",
+      "threePlanPeriodsPresent": true
+    },
+    {
+      "locale": "cs",
+      "url": "https://www.cloud-calendars.com/cs/",
+      "zeroPricePeriod": "bezplatn\u00fd pl\u00e1n",
+      "threePlanPeriodsPresent": true
+    },
+    {
+      "locale": "da",
+      "url": "https://www.cloud-calendars.com/da/",
+      "zeroPricePeriod": "gratisversion",
+      "threePlanPeriodsPresent": true
+    },
+    {
+      "locale": "de-DE",
+      "url": "https://www.cloud-calendars.com/de/",
+      "zeroPricePeriod": "kostenloser Tarif",
+      "threePlanPeriodsPresent": true
+    },
+    {
+      "locale": "el",
+      "url": "https://www.cloud-calendars.com/el/",
+      "zeroPricePeriod": "\u03b4\u03c9\u03c1\u03b5\u03ac\u03bd \u03c0\u03c1\u03cc\u03b3\u03c1\u03b1\u03bc\u03bc\u03b1",
+      "threePlanPeriodsPresent": true
+    },
+    {
+      "locale": "es-ES",
+      "url": "https://www.cloud-calendars.com/es/",
+      "zeroPricePeriod": "plan gratuito",
+      "threePlanPeriodsPresent": true
+    },
+    {
+      "locale": "fi",
+      "url": "https://www.cloud-calendars.com/fi/",
+      "zeroPricePeriod": "ilmainen paketti",
+      "threePlanPeriodsPresent": true
+    },
+    {
+      "locale": "fr-FR",
+      "url": "https://www.cloud-calendars.com/fr/",
+      "zeroPricePeriod": "offre gratuite",
+      "threePlanPeriodsPresent": true
+    },
+    {
+      "locale": "he",
+      "url": "https://www.cloud-calendars.com/he/",
+      "zeroPricePeriod": "\u05de\u05e1\u05dc\u05d5\u05dc \u05d7\u05d9\u05e0\u05de\u05d9",
+      "threePlanPeriodsPresent": true
+    },
+    {
+      "locale": "hi",
+      "url": "https://www.cloud-calendars.com/hi/",
+      "zeroPricePeriod": "\u092e\u0941\u092b\u093c\u094d\u0924 \u092a\u094d\u0932\u093e\u0928",
+      "threePlanPeriodsPresent": true
+    },
+    {
+      "locale": "hu",
+      "url": "https://www.cloud-calendars.com/hu/",
+      "zeroPricePeriod": "ingyenes csomag",
+      "threePlanPeriodsPresent": true
+    },
+    {
+      "locale": "id",
+      "url": "https://www.cloud-calendars.com/id/",
+      "zeroPricePeriod": "paket gratis",
+      "threePlanPeriodsPresent": true
+    },
+    {
+      "locale": "ja",
+      "url": "https://www.cloud-calendars.com/ja/",
+      "zeroPricePeriod": "\u7121\u6599\u30d7\u30e9\u30f3",
+      "threePlanPeriodsPresent": true
+    },
+    {
+      "locale": "ko",
+      "url": "https://www.cloud-calendars.com/ko/",
+      "zeroPricePeriod": "\ubb34\ub8cc \ud50c\ub79c",
+      "threePlanPeriodsPresent": true
+    },
+    {
+      "locale": "ms",
+      "url": "https://www.cloud-calendars.com/ms/",
+      "zeroPricePeriod": "pelan percuma",
+      "threePlanPeriodsPresent": true
+    },
+    {
+      "locale": "nl-NL",
+      "url": "https://www.cloud-calendars.com/nl/",
+      "zeroPricePeriod": "gratis versie",
+      "threePlanPeriodsPresent": true
+    },
+    {
+      "locale": "no",
+      "url": "https://www.cloud-calendars.com/no/",
+      "zeroPricePeriod": "gratisversjon",
+      "threePlanPeriodsPresent": true
+    },
+    {
+      "locale": "pl",
+      "url": "https://www.cloud-calendars.com/pl/",
+      "zeroPricePeriod": "plan bezp\u0142atny",
+      "threePlanPeriodsPresent": true
+    },
+    {
+      "locale": "pt-BR",
+      "url": "https://www.cloud-calendars.com/pt/",
+      "zeroPricePeriod": "plano gratuito",
+      "threePlanPeriodsPresent": true
+    },
+    {
+      "locale": "ro",
+      "url": "https://www.cloud-calendars.com/ro/",
+      "zeroPricePeriod": "plan gratuit",
+      "threePlanPeriodsPresent": true
+    },
+    {
+      "locale": "ru",
+      "url": "https://www.cloud-calendars.com/ru/",
+      "zeroPricePeriod": "\u0431\u0435\u0441\u043f\u043b\u0430\u0442\u043d\u044b\u0439 \u043f\u043b\u0430\u043d",
+      "threePlanPeriodsPresent": true
+    },
+    {
+      "locale": "sv",
+      "url": "https://www.cloud-calendars.com/sv/",
+      "zeroPricePeriod": "gratisplan",
+      "threePlanPeriodsPresent": true
+    },
+    {
+      "locale": "th",
+      "url": "https://www.cloud-calendars.com/th/",
+      "zeroPricePeriod": "\u0e41\u0e1c\u0e19\u0e1f\u0e23\u0e35",
+      "threePlanPeriodsPresent": true
+    },
+    {
+      "locale": "tr",
+      "url": "https://www.cloud-calendars.com/tr/",
+      "zeroPricePeriod": "\u00fccretsiz plan",
+      "threePlanPeriodsPresent": true
+    },
+    {
+      "locale": "vi",
+      "url": "https://www.cloud-calendars.com/vi/",
+      "zeroPricePeriod": "g\u00f3i mi\u1ec5n ph\u00ed",
+      "threePlanPeriodsPresent": true
+    },
+    {
+      "locale": "zh-Hans",
+      "url": "https://www.cloud-calendars.com/zh-hans/",
+      "zeroPricePeriod": "\u514d\u8d39\u65b9\u6848",
+      "threePlanPeriodsPresent": true
+    },
+    {
+      "locale": "zh-Hant",
+      "url": "https://www.cloud-calendars.com/zh-hant/",
+      "zeroPricePeriod": "\u514d\u8cbb\u65b9\u6848",
+      "threePlanPeriodsPresent": true
+    }
+  ],
+  "scope": "Complete new EN/DE body, steps, FAQ, source and related links; 29 exact free-tier periods; all prior canonicals. Not ranking or runtime proof."
+}

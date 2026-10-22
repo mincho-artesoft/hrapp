@@ -1,0 +1,44 @@
+{
+  "checkedAt": "2026-10-22T04:54:18.722087+00:00",
+  "allPassed": true,
+  "guides": {
+    "englishUnwantedEvents": {
+      "viewport": 390,
+      "clientWidth": 379,
+      "scrollWidth": 379,
+      "allSevenSectionHeadingsPresent": true
+    },
+    "germanTimezone": {
+      "viewport": 390,
+      "clientWidth": 379,
+      "scrollWidth": 379,
+      "allSevenSectionHeadingsPresent": true,
+      "widerViewport": 575,
+      "widerClientAndScrollWidth": 564,
+      "screenshot": "/tmp/cloud-calendar-batch38-timezone-de.png"
+    }
+  },
+  "homeSamples": [
+    {
+      "locale": "bg",
+      "period": "безплатен план"
+    },
+    {
+      "locale": "ar-SA",
+      "period": "الخطة المجانية",
+      "rtl": true
+    },
+    {
+      "locale": "ja",
+      "period": "無料プラン"
+    }
+  ],
+  "allSampleHomeViewports": {
+    "width": 390,
+    "clientWidth": 379,
+    "scrollWidth": 379,
+    "paidPeriodsStillPresent": true
+  },
+  "viewportReset": true,
+  "limits": "Visible DOM/responsive samples, not native runtime, all-device layout or native-speaker certification."
+}

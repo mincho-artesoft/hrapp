@@ -1,0 +1,49 @@
+{
+  "checkedAt": "2026-10-22T04:52:14.544695+00:00",
+  "previousGoalTurn": "progress —79dc945 publishedandverifiedWatchguideEN/BG",
+  "germanTimezone": {
+    "queries": [
+      "site:readdle.com/de kalender zeitzone reise iPhone",
+      "site:support.apple.com/de-de Kalender Zeitzonen iPhone Ereignisse"
+    ],
+    "observed": "Provider German troubleshooting/setup topic exists; current DE canonical absent per full-source audit. No observed keywordvolume/rank.",
+    "completePrimaryReads": [
+      {
+        "url": "https://support.apple.com/de-at/guide/iphone/iph69525c028/26/ios/26",
+        "range": "1163–1192",
+        "fact": "Eventzone differsfromAppleCalendardisplayoverride; ApplecontrolsnotCloud."
+      },
+      {
+        "url": "https://support.google.com/calendar/answer/37064?co=GENIE.Platform%3DiOS&hl=de-BF",
+        "range": "17–45 plus51disclaimer",
+        "fact": "GoogleiOSdevicezone toggleandDSTlimitations; pagedisclosesAItranslation."
+      }
+    ],
+    "failedFetch": "ReaddleGermantravelblogcachemiss; onlysearchsnippetobserved, notfullbodyevidence. No repeatedURLvariantloop."
+  },
+  "newEnglishSpamGuide": {
+    "completePrimaryReads": [
+      {
+        "url": "https://support.google.com/calendar/answer/13155911?co=GENIE.Platform%3DiOS&hl=EN",
+        "range": "18–40"
+      },
+      {
+        "url": "https://support.google.com/calendar/answer/13159188",
+        "range": "17–66"
+      },
+      {
+        "url": "https://support.apple.com/en-au/102444",
+        "range": "28–50"
+      },
+      {
+        "url": "https://support.apple.com/en-gb/guide/icloud/mm6b1a8534/1.0/icloud/1.0",
+        "range": "303–344"
+      }
+    ],
+    "rootRead": "Full final EN draft read, seven sections/14paras/6steps/4FAQ/4sources. Existingfivefullcomparisons attributed to discoveryagent, no rootfullrereadclaim.",
+    "review": "batch38-discovery/exacthashreview.json"
+  },
+  "germanDraftRootRead": "Complete finalDE and fullENcomparator all7sections/14paras/5steps/4FAQ/4sources read; no omissionornewCloudcontrolclaim.",
+  "homeLabelRootRead": "All29before/afterpairs and actualcomponentperiodselection read; independentsemanticreviewpassed after3wordingfixes. No otherhomefields/priceschanged.",
+  "mediaStatus": "Freshlist_threads20pluspinned at04:43UTCshowed no identifiedseparateCloudgenerationtaskinreturnedtitles/summaries. Not exhaustiveabsenceproof; exactoutputquestion remainsunanswered. No file generation/deletion/upload or replacement assumed."
+}

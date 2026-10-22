@@ -1,8 +1,8 @@
 {
-  "guides": 57,
+  "guides": 58,
   "selection": "tools/guide-text-selection.json",
   "extraction": "Visible article headings, paragraphs, lists, FAQs and source links; gallery/other-app cards excluded.",
-  "exportedCharacters": 364475,
+  "exportedCharacters": 373581,
   "records": [
     {
       "slug": "what-calendar-sync-actually-does",
@@ -223,8 +223,8 @@
     {
       "slug": "the-secret-address-of-a-google-calendar",
       "source": "https://www.cloud-calendars.com/articles/the-secret-address-of-a-google-calendar/",
-      "blocks": 49,
-      "characters": 7190
+      "blocks": 50,
+      "characters": 7301
     },
     {
       "slug": "what-guests-can-do-to-your-event",
@@ -313,8 +313,8 @@
     {
       "slug": "disconnect-calendar-integration-without-losing-track",
       "source": "https://www.cloud-calendars.com/articles/disconnect-calendar-integration-without-losing-track/",
-      "blocks": 49,
-      "characters": 7153
+      "blocks": 50,
+      "characters": 7264
     },
     {
       "slug": "onecal-alternative-iphone-calendar-view-or-sync",
@@ -345,6 +345,12 @@
       "source": "https://www.cloud-calendars.com/articles/calendar-on-apple-watch/",
       "blocks": 49,
       "characters": 7576
+    },
+    {
+      "slug": "unwanted-calendar-events-iphone",
+      "source": "https://www.cloud-calendars.com/articles/unwanted-calendar-events-iphone/",
+      "blocks": 52,
+      "characters": 8794
     }
   ]
 }

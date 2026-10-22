@@ -179,7 +179,7 @@ tabs: {"hourly":"По часам","daily":"По дням","weekend":"Выход�
     billingPeriod: 'Расчётный период',
     mostPopular: "Выделенный тариф",
     everythingIn: 'Всё из «{tier}», а также:',
-    forever: 'навсегда',
+    forever: "бесплатный план",
     perMonth: '/ мес.',
     perYear: '/ год',
     downloadFree: 'Скачать бесплатно',

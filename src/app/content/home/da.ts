@@ -175,7 +175,7 @@ tabs: {"hourly":"Timevis","daily":"Dagligt","weekend":"Weekend","range":"Prognos
     billingPeriod: 'Faktureringsperiode',
     mostPopular: "Fremhævet abonnement",
     everythingIn: 'Alt i {tier}, plus:',
-    forever: 'for altid',
+    forever: "gratisversion",
     perMonth: '/ md.',
     perYear: '/ år',
     downloadFree: 'Hent gratis',

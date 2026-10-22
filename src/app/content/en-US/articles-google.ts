@@ -175,7 +175,8 @@ export const GOOGLE_EN_US: Readonly<Record<string, LocalisedArticle>> = {
   "seeAlso": [
     "who-can-see-what-in-google-calendar",
     "taking-back-a-calendar-you-shared",
-    "sharing-one-event-not-your-calendar"
+    "sharing-one-event-not-your-calendar",
+    "unwanted-calendar-events-iphone"
   ],
   "updated": "2026-10-22"
 },

@@ -1,5 +1,5 @@
 {
-  "date": "2026-10-22T04:38:31.620Z",
+  "date": "2026-10-22T04:52:14.494Z",
   "status": "source_inventory_not_quality_approval",
   "articles": [
     {
@@ -963,6 +963,24 @@
     },
     {
       "locale": "de-DE",
+      "slug": "time-zones-and-the-flight-you-booked",
+      "title": "Zeitzonen im Kalender: Termine vor der Reise prüfen",
+      "description": "Terminzeitzone und angezeigte Zeitzone unterscheiden: Prüfe Flüge, Termine am Reiseziel und wiederkehrende Anrufe, bevor du eine Uhrzeit änderst.",
+      "descriptionCharacters": 145,
+      "sections": 7,
+      "faq": 4,
+      "words": 1077,
+      "source": "articles-help.ts",
+      "sources": [
+        "https://support.apple.com/guide/iphone/schedule-display-events-a-time-zone-iph69525c028/ios",
+        "https://support.google.com/calendar/answer/37064?hl=en",
+        "https://support.google.com/calendar/answer/37118?hl=en",
+        "https://support.microsoft.com/en-us/outlook/share-your-calendar-in-outlook-on-the-web"
+      ],
+      "updated": "2026-10-22"
+    },
+    {
+      "locale": "de-DE",
       "slug": "work-and-personal-without-two-apps",
       "title": "Berufliche und private Kalender in einer App: Zuständigkeiten getrennt halten",
       "description": "Sieh berufliche und private Kalender gemeinsam. Prüfe Berechtigungen, Zielkalender und Cloud Calendars-Abos, bevor du Konten verbindest.",
@@ -1648,6 +1666,24 @@
         "https://support.google.com/calendar/answer/37648?hl=en"
       ],
       "updated": "2026-10-21"
+    },
+    {
+      "locale": "en-US",
+      "slug": "unwanted-calendar-events-iphone",
+      "title": "Unwanted calendar events on iPhone: invitations, subscriptions and spam",
+      "description": "Identify unwanted invitations or subscribed calendars on iPhone. Check Apple and Google reporting options and settings for future invitations.",
+      "descriptionCharacters": 142,
+      "sections": 7,
+      "faq": 4,
+      "words": 1173,
+      "source": "articles-help.ts",
+      "sources": [
+        "https://support.apple.com/en-au/102444",
+        "https://support.google.com/calendar/answer/13155911?co=GENIE.Platform%3DiOS&hl=EN",
+        "https://support.google.com/calendar/answer/13159188",
+        "https://support.apple.com/en-gb/guide/icloud/mm6b1a8534/1.0/icloud/1.0"
+      ],
+      "updated": "2026-10-22"
     },
     {
       "locale": "en-US",

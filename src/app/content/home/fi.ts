@@ -183,7 +183,7 @@ tabs: {"hourly":"Tunneittain","daily":"Päivittäin","weekend":"Viikonloppu","ra
     billingPeriod: 'Laskutusjakso',
     mostPopular: "Esittelyssä",
     everythingIn: 'Kaikki tasosta {tier}, lisäksi:',
-    forever: 'ikuisesti',
+    forever: "ilmainen paketti",
     perMonth: '/ kk',
     perYear: '/ v',
     downloadFree: 'Lataa ilmaiseksi',

@@ -175,7 +175,7 @@ tabs: {"hourly":"Timvis","daily":"Dagligen","weekend":"Helg","range":"Prognosper
     billingPeriod: 'Faktureringsperiod',
     mostPopular: "Utvald plan",
     everythingIn: 'Allt i {tier}, plus:',
-    forever: 'för alltid',
+    forever: "gratisplan",
     perMonth: '/ mån',
     perYear: '/ år',
     downloadFree: 'Hämta gratis',

@@ -179,7 +179,7 @@ tabs: {"hourly":"Timevis","daily":"Daglig","weekend":"Helg","range":"Varslingspe
     billingPeriod: 'Faktureringsperiode',
     mostPopular: "Fremhevet abonnement",
     everythingIn: 'Alt i {tier}, pluss:',
-    forever: 'for alltid',
+    forever: "gratisversjon",
     perMonth: '/ mnd',
     perYear: '/ år',
     downloadFree: 'Last ned gratis',

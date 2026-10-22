@@ -175,7 +175,7 @@ tabs: {"hourly":"시간별","daily":"일별","weekend":"주말","range":"예보 
     billingPeriod: '청구 주기',
     mostPopular: "주목할 요금제",
     everythingIn: '{tier}의 모든 것에 더해:',
-    forever: '영원히',
+    forever: "무료 플랜",
     perMonth: '/월',
     perYear: '/년',
     downloadFree: '무료로 받기',

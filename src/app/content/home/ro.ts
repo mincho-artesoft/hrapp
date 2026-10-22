@@ -175,7 +175,7 @@ tabs: {"hourly":"Pe ore","daily":"Pe zile","weekend":"Weekend","range":"Interval
     billingPeriod: 'Perioadă de facturare',
     mostPopular: "Plan evidențiat",
     everythingIn: 'Tot ce e în {tier}, plus:',
-    forever: 'pentru totdeauna',
+    forever: "plan gratuit",
     perMonth: '/ lună',
     perYear: '/ an',
     downloadFree: 'Descarcă gratuit',

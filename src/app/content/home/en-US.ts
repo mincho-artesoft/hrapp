@@ -187,7 +187,7 @@ tabs: {"hourly":"Hourly","daily":"Daily","weekend":"Weekend","range":"Forecast r
     billingPeriod: 'Billing period',
     mostPopular: "Featured plan",
     everythingIn: 'Everything in {tier}, plus:',
-    forever: 'forever',
+    forever: "free plan",
     perMonth: '/ month',
     perYear: '/ year',
     downloadFree: 'Download free',

@@ -176,7 +176,7 @@ tabs: {"hourly":"Per uur","daily":"Per dag","weekend":"Weekend","range":"Voorspe
     billingPeriod: 'Facturatieperiode',
     mostPopular: "Uitgelicht abonnement",
     everythingIn: 'Alles uit {tier}, en verder:',
-    forever: 'voor altijd',
+    forever: "gratis versie",
     perMonth: '/ maand',
     perYear: '/ jaar',
     downloadFree: 'Gratis downloaden',

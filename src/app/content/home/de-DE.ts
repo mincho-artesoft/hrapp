@@ -179,7 +179,7 @@ tabs: {"hourly":"Stündlich","daily":"Täglich","weekend":"Wochenende","range":"
     billingPeriod: 'Abrechnungszeitraum',
     mostPopular: "Hervorgehobener Tarif",
     everythingIn: 'Alles aus {tier}, dazu:',
-    forever: 'für immer',
+    forever: "kostenloser Tarif",
     perMonth: '/ Monat',
     perYear: '/ Jahr',
     downloadFree: 'Kostenlos laden',

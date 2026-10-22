@@ -175,7 +175,7 @@ tabs: {"hourly":"Por hora","daily":"Por dia","weekend":"Fim de semana","range":"
     billingPeriod: 'Período de cobrança',
     mostPopular: "Plano em destaque",
     everythingIn: 'Tudo do {tier}, e mais:',
-    forever: 'para sempre',
+    forever: "plano gratuito",
     perMonth: '/ mês',
     perYear: '/ ano',
     downloadFree: 'Baixar grátis',

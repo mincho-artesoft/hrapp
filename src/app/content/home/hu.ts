@@ -175,7 +175,7 @@ tabs: {"hourly":"Óránként","daily":"Naponta","weekend":"Hétvége","range":"E
     billingPeriod: 'Számlázási időszak',
     mostPopular: "Kiemelt csomag",
     everythingIn: 'Minden a(z) {tier} csomagból, valamint:',
-    forever: 'örökre',
+    forever: "ingyenes csomag",
     perMonth: '/ hó',
     perYear: '/ év',
     downloadFree: 'Letöltés ingyen',

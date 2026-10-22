@@ -1,0 +1,37 @@
+{
+  "reviewedAt": "2026-10-22T04:48:25.974257+00:00",
+  "decision": "PASS",
+  "draft": "research/batch38-localized/de-timezone.json",
+  "draftSha256": "aae96a8f2de09ac852e5bfee656f085e8bb7a42733cb3d22928bcf01879885ca",
+  "englishComparator": "research/batch38-localized/de-timezone-source-en.json",
+  "comparatorSha256": "460d932ae303c74241172001b62357faef922b5f19c7c4009ff7fcafbedf9d04",
+  "readScope": "Full DE draft and entire EN comparator, including all7sections/14paragraphs/5steps/4FAQ/4sourceURLs, metadata and relatedlinks.",
+  "requiredCorrections": [],
+  "optionalPolish": [],
+  "checks": {
+    "descriptionCharacters": 145,
+    "claimsEmpty": true,
+    "exactSourceURLs": true,
+    "relatedRoutesExist": true,
+    "dateMatchesEnglish": true
+  },
+  "findings": [
+    "Terminzeitzone versus angezeigte Zeitzone consistently preserves event/display distinction. A changed local display hour is not a reason to move the actual appointment.",
+    "Apple Calendar timezone field/override and Google computer separate endpoint controls remain explicitly provider features, not promised Cloud controls. Descriptive German feste Zeitzone is not presented as a verified exact UI label.",
+    "Cloud saved-event/device fallback is conditional, matching inspected current editor. Separate departure/arrival zones require an editor supporting them; no invented Cloud selector or global inheritance guarantee.",
+    "Flight date/airport local times, destination appointment, recurrence around seasonal changes and all-day cross-provider checks all preserved without blanket timezoneless or always-identical display claims.",
+    "Imported snapshot versus subscribed source, source/recipient comparison, possible feed interpretation error and calendar-data/access checks retained. No third-party feed service recommendation or automatic repair promise.",
+    "Original event/account preservation and non-sensitive support comparison remain intact. Developer disclosure retained; no permissions, live runtime or release-version guarantee added.",
+    "German prose is coherent and sufficiently complete; no material semantic omission found. Missing German weather-place route correctly omitted; two relevant existing routes retained."
+  ],
+  "productProof": {
+    "file": "research/batch38-product-facts.json",
+    "sha256": "41b7150efd723bac750f7bf5cf20bac873bd19aad6fd90340c28ccdf82cf47d3",
+    "scope": "Fresh bounded editor rows and unchanged prior timezone evidence; source inspection not released runtime proof."
+  },
+  "limits": [
+    "Own independent German semantic review, not native-speaker certification.",
+    "Provider assertions compared to complete current EN editorial source and recorded primary-source evidence; no new web recrawl in this translation review.",
+    "No source edits/builds/deployments or native/customer/provider actions."
+  ]
+}

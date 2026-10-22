@@ -175,7 +175,7 @@ tabs: {"hourly":"كل ساعة","daily":"يوميًا","weekend":"نهاية ا�
     billingPeriod: 'فترة الفوترة',
     mostPopular: "خطة مميزة",
     everythingIn: 'كل ما في {tier}، وإضافةً إليه:',
-    forever: 'إلى الأبد',
+    forever: "الخطة المجانية",
     perMonth: '/ شهر',
     perYear: '/ سنة',
     downloadFree: 'نزّله مجانًا',

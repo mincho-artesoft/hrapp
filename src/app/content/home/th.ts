@@ -175,7 +175,7 @@ tabs: {"hourly":"รายชั่วโมง","daily":"รายวัน","w
     billingPeriod: 'รอบการเรียกเก็บเงิน',
     mostPopular: "แพ็กเกจเด่น",
     everythingIn: 'ทุกอย่างใน {tier} และเพิ่ม:',
-    forever: 'ตลอดไป',
+    forever: "แผนฟรี",
     perMonth: '/ เดือน',
     perYear: '/ ปี',
     downloadFree: 'ดาวน์โหลดฟรี',

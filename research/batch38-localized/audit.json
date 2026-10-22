@@ -1,0 +1,297 @@
+{
+  "head": "79dc9452ce40219088c850cb0771240bde0d3df8",
+  "date": "2026-10-22",
+  "decision": "No replacement draft warranted in bounded current editions reviewed. Do not create absent editions or force uniformity.",
+  "hashMethod": {
+    "moduleRawSha256": "SHA-256 of exact source file bytes",
+    "objectSha256": "SHA-256 of UTF-8 JSON.stringify(parsed transpiled object), original insertion order",
+    "snapshotRawSha256": "SHA-256 of saved two-space JSON plus final newline"
+  },
+  "inventory": [
+    {
+      "locale": "de-DE",
+      "actualDefinitionCount": 27,
+      "targets": [
+        {
+          "slug": "time-zones-and-the-flight-you-booked",
+          "present": false
+        },
+        {
+          "slug": "what-an-all-day-event-really-means",
+          "present": false
+        },
+        {
+          "slug": "caldav-calendar-on-iphone",
+          "present": false
+        },
+        {
+          "slug": "a-calendar-that-is-yours-to-share",
+          "present": false
+        }
+      ]
+    },
+    {
+      "locale": "es-ES",
+      "actualDefinitionCount": 27,
+      "targets": [
+        {
+          "slug": "time-zones-and-the-flight-you-booked",
+          "present": false
+        },
+        {
+          "slug": "what-an-all-day-event-really-means",
+          "present": false
+        },
+        {
+          "slug": "caldav-calendar-on-iphone",
+          "present": false
+        },
+        {
+          "slug": "a-calendar-that-is-yours-to-share",
+          "present": false
+        }
+      ]
+    },
+    {
+      "locale": "fr-FR",
+      "actualDefinitionCount": 28,
+      "targets": [
+        {
+          "slug": "time-zones-and-the-flight-you-booked",
+          "present": false
+        },
+        {
+          "slug": "what-an-all-day-event-really-means",
+          "present": false
+        },
+        {
+          "slug": "caldav-calendar-on-iphone",
+          "present": true
+        },
+        {
+          "slug": "a-calendar-that-is-yours-to-share",
+          "present": false
+        }
+      ]
+    },
+    {
+      "locale": "it",
+      "actualDefinitionCount": 29,
+      "targets": [
+        {
+          "slug": "time-zones-and-the-flight-you-booked",
+          "present": false
+        },
+        {
+          "slug": "what-an-all-day-event-really-means",
+          "present": false
+        },
+        {
+          "slug": "caldav-calendar-on-iphone",
+          "present": true
+        },
+        {
+          "slug": "a-calendar-that-is-yours-to-share",
+          "present": true
+        }
+      ]
+    }
+  ],
+  "storageScope": "No separately storage-named canonical found in all current English definitions. Reviewed actual Italian a-calendar-that-is-yours-to-share for app-local versus provider account boundaries; not a claim to review every storage-related sentence in all articles.",
+  "completeReads": [
+    {
+      "locale": "en-US",
+      "slug": "caldav-calendar-on-iphone",
+      "file": "src/app/content/en-US/articles-help.ts",
+      "moduleRawSha256": "7fba09bd3f72ac722dd3ad47a2cd1cf823c804d66aab48da375494e7907987f3",
+      "objectSha256": "e1748b7d61934b5ca6812e3c8e99f27c763774e7e09761b8b87747e7708a1b94",
+      "snapshot": "en-US--caldav-calendar-on-iphone--before.json",
+      "snapshotRawSha256": "8d5f5a6321dc794390d59db3f5e43540c94aae28727bfd9854535e0a3cdc8e2a",
+      "readScope": "Complete object: metadata, all section paragraphs, practical steps, FAQs, sources and seeAlso.",
+      "structure": {
+        "sections": 6,
+        "paragraphs": 12,
+        "practical": 6,
+        "faq": 3,
+        "sources": 2
+      },
+      "related": [
+        {
+          "slug": "icloud-google-and-outlook-in-one-view",
+          "actualDefinition": true
+        },
+        {
+          "slug": "what-calendar-sync-actually-does",
+          "actualDefinition": true
+        },
+        {
+          "slug": "calendar-export-ics-pdf-and-backup",
+          "actualDefinition": true
+        }
+      ],
+      "verdict": "No material correction identified"
+    },
+    {
+      "locale": "fr-FR",
+      "slug": "caldav-calendar-on-iphone",
+      "file": "src/app/content/fr-FR/articles-help.ts",
+      "moduleRawSha256": "0efdd3c51bf9d420f111016490cff190bc8c5959b78e0e97c4babbc5ce8462a5",
+      "objectSha256": "8ce2f5890c922a17a153391d76311b4079dea9f3cf91a57ea863896e2c8245f9",
+      "snapshot": "fr-FR--caldav-calendar-on-iphone--before.json",
+      "snapshotRawSha256": "e9e4866418bf2de0bf03478b4e0ef5493846cbde282d89de4fc10af5558c0213",
+      "readScope": "Complete object: metadata, all section paragraphs, practical steps, FAQs, sources and seeAlso.",
+      "structure": {
+        "sections": 6,
+        "paragraphs": 12,
+        "practical": 6,
+        "faq": 3,
+        "sources": 2
+      },
+      "related": [
+        {
+          "slug": "icloud-google-and-outlook-in-one-view",
+          "actualDefinition": true
+        },
+        {
+          "slug": "calendar-export-ics-pdf-and-backup",
+          "actualDefinition": true
+        }
+      ],
+      "verdict": "No material correction identified"
+    },
+    {
+      "locale": "it",
+      "slug": "caldav-calendar-on-iphone",
+      "file": "src/app/content/it/articles-help.ts",
+      "moduleRawSha256": "abdd4c921183c4c64859bf5d04a0d5fe741a36cc6210415614ac7db945b7646c",
+      "objectSha256": "f8fa621e245d3360b6fca4f7e1308ee47f9f3f9f30acfbcc2848734446487bb8",
+      "snapshot": "it--caldav-calendar-on-iphone--before.json",
+      "snapshotRawSha256": "c5c99a847fe8451761bbc136cedcaf0b5cc3beaccb1ecef41bdfb20a78329917",
+      "readScope": "Complete object: metadata, all section paragraphs, practical steps, FAQs, sources and seeAlso.",
+      "structure": {
+        "sections": 6,
+        "paragraphs": 12,
+        "practical": 6,
+        "faq": 3,
+        "sources": 2
+      },
+      "related": [
+        {
+          "slug": "icloud-google-and-outlook-in-one-view",
+          "actualDefinition": true
+        },
+        {
+          "slug": "calendar-export-ics-pdf-and-backup",
+          "actualDefinition": true
+        }
+      ],
+      "verdict": "No material correction identified"
+    },
+    {
+      "locale": "en-US",
+      "slug": "a-calendar-that-is-yours-to-share",
+      "file": "src/app/content/en-US/articles-sharing.ts",
+      "moduleRawSha256": "bbdc19d1b8025dc1eda84b3e99e033e9b57b94ebc75dbcb7d05294f6757ad686",
+      "objectSha256": "7f720a59779ea72061148577ae4f3a82c84d949dedf2a8f12ca0d4b7426172fd",
+      "snapshot": "en-US--a-calendar-that-is-yours-to-share--before.json",
+      "snapshotRawSha256": "14cc7459f13e5281e0887853269184a2d29602eb6ab5eef8cccd4b4d5a898bce",
+      "readScope": "Complete object: metadata, all section paragraphs, practical steps, FAQs, sources and seeAlso.",
+      "structure": {
+        "sections": 6,
+        "paragraphs": 12,
+        "practical": 6,
+        "faq": 3,
+        "sources": 2
+      },
+      "related": [
+        {
+          "slug": "sharing-one-event-not-your-calendar",
+          "actualDefinition": true
+        },
+        {
+          "slug": "inviting-people-who-do-not-have-the-app",
+          "actualDefinition": true
+        },
+        {
+          "slug": "keeping-track-of-who-replied",
+          "actualDefinition": true
+        },
+        {
+          "slug": "what-a-subscription-actually-buys",
+          "actualDefinition": true
+        }
+      ],
+      "verdict": "No material correction identified"
+    },
+    {
+      "locale": "it",
+      "slug": "a-calendar-that-is-yours-to-share",
+      "file": "src/app/content/it/articles.ts",
+      "moduleRawSha256": "ca6ee0dc2bbac46700eed6dcb2bffb170118c8a08be1769f6e1b8bfc7be164cc",
+      "objectSha256": "be320b21391dd8a96eef6860ac515491ca1786be54bd8ebc1bba4bc3ccc9b8d6",
+      "snapshot": "it--a-calendar-that-is-yours-to-share--before.json",
+      "snapshotRawSha256": "519283da50d8069f71ce8d38b4503fa662240575e48f944b2b43dc026258ea7d",
+      "readScope": "Complete object: metadata, all section paragraphs, practical steps, FAQs, sources and seeAlso.",
+      "structure": {
+        "sections": 6,
+        "paragraphs": 12,
+        "practical": 6,
+        "faq": 3,
+        "sources": 2
+      },
+      "related": [
+        {
+          "slug": "sharing-one-event-not-your-calendar",
+          "actualDefinition": true
+        },
+        {
+          "slug": "keeping-track-of-who-replied",
+          "actualDefinition": true
+        },
+        {
+          "slug": "what-a-subscription-actually-buys",
+          "actualDefinition": true
+        }
+      ],
+      "verdict": "No material correction identified"
+    }
+  ],
+  "findings": [
+    {
+      "locales": [
+        "fr-FR",
+        "it"
+      ],
+      "slug": "caldav-calendar-on-iphone",
+      "decision": "No change",
+      "basis": "Account/feed/file distinction; Apple system account setup; full calendar access and selection; provider compatibility and edit rights; owned writable test; selection restoration plus widget/notification/Google effects; no direct universal Cloud CalDAV claim. Exact English source URLs retained."
+    },
+    {
+      "locales": [
+        "it"
+      ],
+      "slug": "a-calendar-that-is-yours-to-share",
+      "decision": "No change",
+      "basis": "App-local calendars are not automatically Google/iCloud calendars; app roles distinct from provider permissions; signed-in verified-email acceptance for whole-calendar sharing; preview not acceptance; no instant-update/copy-erasure claim. Italian wording faithfully preserves current six-section English meaning. Missing English invitation seeAlso is correctly omitted because absent in Italian."
+    }
+  ],
+  "evidence": [
+    {
+      "path": "research/batch38-product-facts.json",
+      "sha256": "41b7150efd723bac750f7bf5cf20bac873bd19aad6fd90340c28ccdf82cf47d3",
+      "scope": "Complete supplied report read; product agent reports current native hash checks and bounded code reads. This editorial reviewer did not run native runtime verification."
+    },
+    {
+      "path": "research/batch33-caldav-localization-audit.json",
+      "scope": "Prior complete CalDAV editorial audit; current full objects reread for this task."
+    }
+  ],
+  "corrections": [],
+  "limitations": [
+    "Bounded editorial review, not independent native-speaker certification.",
+    "No fresh primary webpage fetch; reuse established source evidence and supplied product review.",
+    "No blanket approval of all DE/ES/FR/IT articles or all storage prose.",
+    "Absence of a translated guide is not itself a misleading body or justification to synthesize a new route."
+  ],
+  "writes": "Research snapshots and audit only; no website, native, ASC, builds or deployments."
+}

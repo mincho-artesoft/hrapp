@@ -1,0 +1,287 @@
+[
+  {
+    "slug": "onecal-alternative-iphone-calendar-view-or-sync",
+    "file": "src/app/content/en-US/articles-compare.ts",
+    "title": "Cloud Calendars or OneCal? Compare iPhone views and calendar syncing"
+  },
+  {
+    "slug": "free-google-sync-without-adverts",
+    "file": "src/app/content/en-US/articles-compare.ts",
+    "title": "Free Google Calendar sync on iPhone: what is included and where ads fit"
+  },
+  {
+    "slug": "what-fantastical-costs-and-what-this-does",
+    "file": "src/app/content/en-US/articles-compare.ts",
+    "title": "Cloud Calendars or Fantastical? Compare your calendar workflow on iPhone"
+  },
+  {
+    "slug": "what-you-get-without-paying-anything",
+    "file": "src/app/content/en-US/articles-compare.ts",
+    "title": "What Cloud Calendars includes free on iPhone and iPad"
+  },
+  {
+    "slug": "what-a-subscription-actually-buys",
+    "file": "src/app/content/en-US/articles-compare.ts",
+    "title": "Cloud Calendars subscriptions: Base, Advanced and Premium explained"
+  },
+  {
+    "slug": "why-a-shared-calendar-does-not-appear",
+    "file": "src/app/content/en-US/articles-google.ts",
+    "title": "A calendar was shared with you and it is not there"
+  },
+  {
+    "slug": "the-secret-address-of-a-google-calendar",
+    "file": "src/app/content/en-US/articles-google.ts",
+    "title": "Google’s secret iCal address: subscribe without confusing it with sharing"
+  },
+  {
+    "slug": "what-guests-can-do-to-your-event",
+    "file": "src/app/content/en-US/articles-google.ts",
+    "title": "Google Calendar guest permissions: editing, invitations and the guest list"
+  },
+  {
+    "slug": "google-calendars-that-never-reach-your-iphone",
+    "file": "src/app/content/en-US/articles-google.ts",
+    "title": "A Google calendar is missing on iPhone: check the connection and selection"
+  },
+  {
+    "slug": "taking-back-a-calendar-you-shared",
+    "file": "src/app/content/en-US/articles-google.ts",
+    "title": "Stop sharing a calendar: remove access and check the remaining routes"
+  },
+  {
+    "slug": "change-calendar-color-iphone",
+    "file": "src/app/content/en-US/articles-help.ts",
+    "title": "Change calendar colors on iPhone without moving events"
+  },
+  {
+    "slug": "recover-deleted-calendar-events-iphone",
+    "file": "src/app/content/en-US/articles-help.ts",
+    "title": "Deleted calendar events on iPhone: Google and iCloud recovery"
+  },
+  {
+    "slug": "disconnect-calendar-integration-without-losing-track",
+    "file": "src/app/content/en-US/articles-help.ts",
+    "title": "Disconnect a calendar integration: access, sync and existing copies"
+  },
+  {
+    "slug": "caldav-calendar-on-iphone",
+    "file": "src/app/content/en-US/articles-help.ts",
+    "title": "CalDAV calendar on iPhone: setup, permissions and missing events"
+  },
+  {
+    "slug": "calendar-notifications-missing-silent-or-duplicated",
+    "file": "src/app/content/en-US/articles-help.ts",
+    "title": "Calendar notifications on iPhone: missing, silent or duplicated?"
+  },
+  {
+    "slug": "find-old-calendar-events-by-account-date-and-title",
+    "file": "src/app/content/en-US/articles-help.ts",
+    "title": "Find an old calendar event: check the account, dates and search fields"
+  },
+  {
+    "slug": "calendar-export-ics-pdf-and-backup",
+    "file": "src/app/content/en-US/articles-help.ts",
+    "title": "Calendar export on iPhone: ICS, CSV, PDF and subscriptions"
+  },
+  {
+    "slug": "event-saved-to-wrong-calendar",
+    "file": "src/app/content/en-US/articles-help.ts",
+    "title": "Event saved to the wrong calendar?"
+  },
+  {
+    "slug": "family-pickup-calendar-handoff",
+    "file": "src/app/content/en-US/articles-help.ts",
+    "title": "A family pickup plan with a clear handoff"
+  },
+  {
+    "slug": "drag-an-event-to-move-it",
+    "file": "src/app/content/en-US/articles-planning.ts",
+    "title": "Drag a calendar event to reschedule: check time, duration and scope"
+  },
+  {
+    "slug": "a-week-view-that-fits-a-week",
+    "file": "src/app/content/en-US/articles-planning.ts",
+    "title": "Week calendar on iPhone: compare hours without overlooking commitments"
+  },
+  {
+    "slug": "month-view-on-a-bigger-screen",
+    "file": "src/app/content/en-US/articles-planning.ts",
+    "title": "Month calendar on iPad and iPhone: see the dates, then check the details"
+  },
+  {
+    "slug": "planning-a-week-in-ten-minutes",
+    "file": "src/app/content/en-US/articles-planning.ts",
+    "title": "A weekly calendar review: commitments, time blocks and shared responsibilities"
+  },
+  {
+    "slug": "recurring-events-without-the-mess",
+    "file": "src/app/content/en-US/articles-planning.ts",
+    "title": "Recurring calendar events: change one date or the series safely"
+  },
+  {
+    "slug": "time-zones-and-the-flight-you-booked",
+    "file": "src/app/content/en-US/articles-planning.ts",
+    "title": "Calendar time zones: check the event before you travel"
+  },
+  {
+    "slug": "what-an-all-day-event-really-means",
+    "file": "src/app/content/en-US/articles-planning.ts",
+    "title": "All-day calendar events: dates, availability and missing widget entries"
+  },
+  {
+    "slug": "a-list-for-people-who-dislike-grids",
+    "file": "src/app/content/en-US/articles-planning.ts",
+    "title": "Calendar list view on iPhone: read the agenda and check what is missing"
+  },
+  {
+    "slug": "the-year-in-one-screen",
+    "file": "src/app/content/en-US/articles-planning.ts",
+    "title": "Year calendar on iPhone and iPad: inspect dates beyond the overview"
+  },
+  {
+    "slug": "calendar-event-or-room-reservation",
+    "file": "src/app/content/en-US/articles-sharing.ts",
+    "title": "Calendar event or room reservation? Check what is confirmed"
+  },
+  {
+    "slug": "sharing-one-event-not-your-calendar",
+    "file": "src/app/content/en-US/articles-sharing.ts",
+    "title": "Share one calendar event: choose the link and access you mean"
+  },
+  {
+    "slug": "inviting-people-who-do-not-have-the-app",
+    "file": "src/app/content/en-US/articles-sharing.ts",
+    "title": "Sharing an event with someone who does not have Cloud Calendars"
+  },
+  {
+    "slug": "a-calendar-that-is-yours-to-share",
+    "file": "src/app/content/en-US/articles-sharing.ts",
+    "title": "Share a calendar with the right people and permissions"
+  },
+  {
+    "slug": "who-can-see-what-in-google-calendar",
+    "file": "src/app/content/en-US/articles-sharing.ts",
+    "title": "Google Calendar sharing permissions: check the access you actually grant"
+  },
+  {
+    "slug": "keeping-track-of-who-replied",
+    "file": "src/app/content/en-US/articles-sharing.ts",
+    "title": "Calendar replies: separate attendance from sharing access"
+  },
+  {
+    "slug": "meeting-links-that-make-themselves",
+    "file": "src/app/content/en-US/articles-sharing.ts",
+    "title": "Google Meet and Microsoft Teams links: create, save and check"
+  },
+  {
+    "slug": "icloud-google-and-outlook-in-one-view",
+    "file": "src/app/content/en-US/articles-unify.ts",
+    "title": "iCloud, Google and Outlook in one view: accounts, copies and permissions"
+  },
+  {
+    "slug": "three-calendar-apps-is-two-too-many",
+    "file": "src/app/content/en-US/articles-unify.ts",
+    "title": "Combine calendar apps on iPhone without losing track of events"
+  },
+  {
+    "slug": "what-calendar-sync-actually-does",
+    "file": "src/app/content/en-US/articles-unify.ts",
+    "title": "Calendar sync on iPhone: accounts, subscriptions and missing events"
+  },
+  {
+    "slug": "work-and-personal-without-two-apps",
+    "file": "src/app/content/en-US/articles-unify.ts",
+    "title": "Work and personal calendars in one app: keep ownership separate"
+  },
+  {
+    "slug": "exchange-calendars-on-an-iphone",
+    "file": "src/app/content/en-US/articles-unify.ts",
+    "title": "Microsoft and Exchange calendars on iPhone: check the connection first"
+  },
+  {
+    "slug": "when-two-calendars-disagree",
+    "file": "src/app/content/en-US/articles-unify.ts",
+    "title": "When calendar events disagree: check ownership before editing"
+  },
+  {
+    "slug": "weather-inside-your-calendar",
+    "file": "src/app/content/en-US/articles-weather.ts",
+    "title": "Calendar with weather on iPhone and iPad: check a plan in context"
+  },
+  {
+    "slug": "forecast-beside-every-event",
+    "file": "src/app/content/en-US/articles-weather.ts",
+    "title": "Compare an appointment with the hourly weather forecast"
+  },
+  {
+    "slug": "a-fourteen-day-view-of-the-weather",
+    "file": "src/app/content/en-US/articles-weather.ts",
+    "title": "How far ahead can I see weather in Cloud Calendars?"
+  },
+  {
+    "slug": "planning-outdoors-without-being-rained-on",
+    "file": "src/app/content/en-US/articles-weather.ts",
+    "title": "Plan an outdoor event with a forecast and a fallback"
+  },
+  {
+    "slug": "what-a-forecast-can-and-cannot-tell-you",
+    "file": "src/app/content/en-US/articles-weather.ts",
+    "title": "How reliable is a weather forecast for a calendar event?"
+  },
+  {
+    "slug": "reading-a-chance-of-rain",
+    "file": "src/app/content/en-US/articles-weather.ts",
+    "title": "What does a chance of rain mean for a calendar event?"
+  },
+  {
+    "slug": "weather-where-the-event-is",
+    "file": "src/app/content/en-US/articles-weather.ts",
+    "title": "The weather where the event is, not where you are"
+  },
+  {
+    "slug": "the-commute-and-the-sky",
+    "file": "src/app/content/en-US/articles-weather.ts",
+    "title": "Plan travel around calendar events: route time, weather and arrival"
+  },
+  {
+    "slug": "daylight-as-a-planning-constraint",
+    "file": "src/app/content/en-US/articles-weather.ts",
+    "title": "Plan around sunset: check daylight, location and the event date"
+  },
+  {
+    "slug": "wind-the-forecast-nobody-reads",
+    "file": "src/app/content/en-US/articles-weather.ts",
+    "title": "Wind forecast for outdoor plans: speed, gusts, direction and time"
+  },
+  {
+    "slug": "calendar-on-apple-watch",
+    "file": "src/app/content/en-US/articles-widgets.ts",
+    "title": "Calendar on Apple Watch: check missing events and app support"
+  },
+  {
+    "slug": "the-widget-that-shows-what-is-next",
+    "file": "src/app/content/en-US/articles-widgets.ts",
+    "title": "Calendar widgets on iPhone and iPad: show upcoming events"
+  },
+  {
+    "slug": "a-countdown-to-your-next-meeting",
+    "file": "src/app/content/en-US/articles-widgets.ts",
+    "title": "Use a calendar Live Activity countdown without replacing alerts"
+  },
+  {
+    "slug": "lock-screen-without-unlocking",
+    "file": "src/app/content/en-US/articles-widgets.ts",
+    "title": "Calendar information on the Lock Screen: choose the right feature"
+  },
+  {
+    "slug": "choosing-a-widget-size",
+    "file": "src/app/content/en-US/articles-widgets.ts",
+    "title": "Choose a Cloud Calendars widget by its layout, not just its size"
+  },
+  {
+    "slug": "the-calendar-on-a-bedside-table",
+    "file": "src/app/content/en-US/articles-widgets.ts",
+    "title": "Use iPhone StandBy without mistaking a glance for tomorrow’s plan"
+  }
+]

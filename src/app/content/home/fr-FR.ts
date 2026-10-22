@@ -184,7 +184,7 @@ tabs: {"hourly":"Par heure","daily":"Par jour","weekend":"Week-end","range":"Pé
     billingPeriod: 'Période de facturation',
     mostPopular: "Formule mise en avant",
     everythingIn: 'Tout ce que contient {tier}, plus :',
-    forever: 'pour toujours',
+    forever: "offre gratuite",
     perMonth: '/ mois',
     perYear: '/ an',
     downloadFree: 'Télécharger gratuitement',

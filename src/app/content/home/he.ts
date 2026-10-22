@@ -175,7 +175,7 @@ tabs: {"hourly":"לפי שעה","daily":"לפי יום","weekend":"סוף שבו
     billingPeriod: 'תקופת חיוב',
     mostPopular: "מסלול מוצג",
     everythingIn: 'כל מה שיש ב‑{tier}, ובנוסף:',
-    forever: 'לתמיד',
+    forever: "מסלול חינמי",
     perMonth: '/ חודש',
     perYear: '/ שנה',
     downloadFree: 'הורדה חינם',

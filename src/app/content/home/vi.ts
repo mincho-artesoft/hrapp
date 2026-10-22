@@ -179,7 +179,7 @@ tabs: {"hourly":"Theo giờ","daily":"Theo ngày","weekend":"Cuối tuần","ran
     billingPeriod: 'Kỳ thanh toán',
     mostPopular: "Gói nổi bật",
     everythingIn: 'Mọi thứ trong {tier}, cộng thêm:',
-    forever: 'mãi mãi',
+    forever: "gói miễn phí",
     perMonth: '/ tháng',
     perYear: '/ năm',
     downloadFree: 'Tải miễn phí',

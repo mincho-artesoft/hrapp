@@ -1490,5 +1490,32 @@
       "research/batch37-public-qa.json"
     ],
     "limits": "No exhaustive keyword, all-localization approval, new media, released-runtime or measured discovery uplift proof."
+  },
+  "batch38": {
+    "date": "2026-10-22",
+    "action": "Incoming unwanted-event repair canonical EN plus full DE timezone edition; remove future-free-pricing promise in29home labels",
+    "newEnglishCanonical": "unwanted-calendar-events-iphone",
+    "newGermanEdition": "time-zones-and-the-flight-you-booked",
+    "candidateTasks": [
+      "calendar spam on iPhone",
+      "unwanted calendar invitations versus subscriptions",
+      "Kalender Zeitzonen Reise iPhone"
+    ],
+    "evidenceStatus": "Observed primary provider task topics and missing edition; candidate query phrasings are inferred, not measured rank/volume.",
+    "originalContribution": "Identify invitation/subscription/ordinaryrecord first; report only eligible provider event, check series effects, separate new-invitation filtering and cross-device source verification.",
+    "localization": "Complete7sectionDEtimezonearticle, not empty keywordlandingpage; providercontrol and event/display distinction retained.",
+    "home": "29 localized zero-price period labels replace forever promise; exact3subscription-wording corrections accepted, allotherfields/prices/component untouched; Italyalreadycorrectedbatch36.",
+    "noForcedChanges": "Complete bounded FR/ITCalDAV and ITownership audit found no materialcorrection.",
+    "evidence": [
+      "research/batch38-discovery/decision.json",
+      "research/batch38-discovery/exacthashreview.json",
+      "research/batch38-localized/de-timezone-independent-review.json",
+      "research/batch38-home-pricing/independent-label-review.json",
+      "research/batch38-root-discovery.json",
+      "research/batch38-static-qa.json",
+      "research/batch38-browser-qa.json",
+      "research/batch38-public-qa.json"
+    ],
+    "limits": "No newmedia/releasedsourcecorrespondence/alltranslatedquality/GoogleChatGPTliftproof."
   }
 }

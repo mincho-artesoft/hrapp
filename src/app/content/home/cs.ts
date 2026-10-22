@@ -175,7 +175,7 @@ tabs: {"hourly":"Po hodinách","daily":"Po dnech","weekend":"Víkend","range":"O
     billingPeriod: 'Zúčtovací období',
     mostPopular: "Vybraný tarif",
     everythingIn: 'Vše z {tier}, a navíc:',
-    forever: 'navždy',
+    forever: "bezplatný plán",
     perMonth: '/ měs.',
     perYear: '/ rok',
     downloadFree: 'Stáhnout zdarma',

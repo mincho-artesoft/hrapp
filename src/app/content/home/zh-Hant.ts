@@ -175,7 +175,7 @@ tabs: {"hourly":"逐小時","daily":"逐日","weekend":"週末","range":"預報�
     billingPeriod: '計費週期',
     mostPopular: "精選方案",
     everythingIn: '{tier} 的全部，另加：',
-    forever: '永久',
+    forever: "免費方案",
     perMonth: '／月',
     perYear: '／年',
     downloadFree: '免費下載',

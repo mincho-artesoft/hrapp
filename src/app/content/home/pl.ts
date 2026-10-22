@@ -179,7 +179,7 @@ tabs: {"hourly":"Godzinowa","daily":"Dzienna","weekend":"Weekend","range":"Zakre
     billingPeriod: 'Okres rozliczeniowy',
     mostPopular: "Wyróżniony plan",
     everythingIn: 'Wszystko z {tier}, a do tego:',
-    forever: 'na zawsze',
+    forever: "plan bezpłatny",
     perMonth: '/ mies.',
     perYear: '/ rok',
     downloadFree: 'Pobierz za darmo',

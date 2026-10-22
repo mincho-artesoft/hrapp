@@ -178,7 +178,7 @@ tabs: {"hourly":"時間別","daily":"日別","weekend":"週末","range":"予報�
     billingPeriod: '請求期間',
     mostPopular: "注目のプラン",
     everythingIn: '{tier} のすべてに加えて：',
-    forever: 'ずっと',
+    forever: "無料プラン",
     perMonth: '／月',
     perYear: '／年',
     downloadFree: '無料で入手',

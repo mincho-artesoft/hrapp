@@ -1,0 +1,55 @@
+{
+  "reviewedAt": "2026-10-22T04:49:31.003303+00:00",
+  "decision": "PASS",
+  "draft": "research/batch38-discovery/en-US.json",
+  "draftSha256": "892fc13578884237cdd333e2ee1fd997281c7481e56a56a3937508eb5b9f20ae",
+  "decisionFile": "research/batch38-discovery/decision.json",
+  "decisionSha256": "21f60ea811ddf12dcdda3cd6524b8818161ab031bead08ecf8ad67a61abc3fad",
+  "readScope": "Full draft and entire discovery decision; all7sections14paragraphs/6practical/4FAQ/4sourceURLs/3relatedlinks read. All four primary substantive bodies freshly read. Comparator full-body coverage is attributed to discovery author, not independently repeated here.",
+  "requiredCorrections": [],
+  "optionalPolish": [],
+  "substantiveAssessment": [
+    "Useful diagnosis sequence distinguishes incoming invitations, external subscriptions and ordinary/imported records before destructive actions. Scenario avoids claiming that opening a link necessarily created a subscription.",
+    "Provider-specific action descriptions are appropriately separated: Apple Calendar iOS26+ menus, Google iPhone/iPad reporting, Google computer future-invitation settings and iCloud web on tablet/computer. No invented Cloud anti-spam/control capability.",
+    "Google reporting eligibility is confined to Google Calendar-sent events. Recurring-series removal is explicit and checked before confirmation; no misleading single-occurrence advice.",
+    "Future settings apply to new invitations only, may be administrator-limited, and do not prevent every email. Known-sender definition and contact-disclosure caveat match current docs.",
+    "Apple subscription removal is not equated to deleting an owned calendar. Hiding is distinguished from source removal; unsupported all-calendar cleanup or secret-feed reset is not advised.",
+    "iCloud cross-device removal is correctly confined to the same Apple Account, with no universal provider/instant-propagation promise.",
+    "Checks are narrow, source-aware and usable; seven sections cover different decision points rather than padded synonym paragraphs. Related guides cover outgoing access, feed handling and disconnection; new incoming triage task is coherent."
+  ],
+  "primaryReads": [
+    {
+      "url": "https://support.apple.com/en-au/102444",
+      "ranges": "28–50; publication53",
+      "supports": "Explicit iOS26+ scope, Apple event report/delete, calendar unsubscribe/delete/hide."
+    },
+    {
+      "url": "https://support.google.com/calendar/answer/13155911?co=GENIE.Platform%3DiOS&hl=EN",
+      "ranges": "18–40",
+      "supports": "Google-source eligibility, recurring series removal, iOS menu and known-sender setting/caveat."
+    },
+    {
+      "url": "https://support.google.com/calendar/answer/13159188",
+      "ranges": "17–66",
+      "supports": "New-invitations-only, work/school restrictions, email-response option and continued invitation emails."
+    },
+    {
+      "url": "https://support.apple.com/en-gb/guide/icloud/mm6b1a8534/1.0/icloud/1.0",
+      "ranges": "303–344",
+      "supports": "Tablet/computer iCloud Calendar, Report Junk and same-Apple-Account device effect."
+    }
+  ],
+  "copyrightEditorialAssessment": "Original task framing, diagnosis examples and paraphrased explanations with visible attribution. No long block quotation or copied source passage found; exact short UI labels are used to identify controls. This is editorial review, not legal certification.",
+  "checks": {
+    "descriptionCharacters": 142,
+    "claimsEmpty": true,
+    "relatedRoutesExist": true,
+    "updated": "2026-10-22"
+  },
+  "limits": [
+    "No customer/provider actions, runtime tests, source edits, builds or deployment.",
+    "No Cloud released-binary feature inference.",
+    "Provider instructions are current retrieved documentation, not tested account/device behavior.",
+    "No quantitative search-demand/ranking/visibility claim established by discovery."
+  ]
+}

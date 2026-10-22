@@ -175,7 +175,7 @@ tabs: {"hourly":"Saatlik","daily":"Günlük","weekend":"Hafta sonu","range":"Tah
     billingPeriod: 'Faturalama dönemi',
     mostPopular: "Öne çıkan plan",
     everythingIn: '{tier} içindeki her şey, ayrıca:',
-    forever: 'sonsuza dek',
+    forever: "ücretsiz plan",
     perMonth: '/ ay',
     perYear: '/ yıl',
     downloadFree: 'Ücretsiz indir',

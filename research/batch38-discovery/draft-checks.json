@@ -1,0 +1,33 @@
+{
+  "date": "2026-10-22",
+  "draftSha256": "892fc13578884237cdd333e2ee1fd997281c7481e56a56a3937508eb5b9f20ae",
+  "sourceDecision": "decision.json",
+  "sectionCount": 7,
+  "paragraphCount": 14,
+  "practicalCount": 6,
+  "faqCount": 4,
+  "descriptionUnicodeCharacters": 142,
+  "exactSourceUrlsMatchReadEvidence": {
+    "https://support.apple.com/en-au/102444": true,
+    "https://support.google.com/calendar/answer/13155911?co=GENIE.Platform%3DiOS&hl=EN": true,
+    "https://support.google.com/calendar/answer/13159188": true,
+    "https://support.apple.com/en-gb/guide/icloud/mm6b1a8534/1.0/icloud/1.0": true
+  },
+  "actualRelatedRoutes": {
+    "disconnect-calendar-integration-without-losing-track": true,
+    "the-secret-address-of-a-google-calendar": true,
+    "keeping-track-of-who-replied": true
+  },
+  "selfReview": {
+    "status": "Prepared for independent review, not independently approved",
+    "checks": [
+      "Provider operations explicitly attributed; no Cloud anti-spam UI/capability promise.",
+      "Source diagnosis precedes removal; no whole-calendar deletion first step.",
+      "Google reporting origin eligibility and recurring-series effect explicit.",
+      "New-only invitation filter, admin restriction, potential email delivery and known-sender disclosure retained.",
+      "Apple iOS26+ and iCloud tablet/computer route qualifications explicit.",
+      "No immediate propagation, universal spam blocking or account compromise conclusion."
+    ],
+    "limits": "Own author self-check; no native or runtime operations, no customer changes, no ranking or volume evidence."
+  }
+}

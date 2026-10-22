@@ -1,0 +1,145 @@
+{
+  "date": "2026-10-22",
+  "head": "79dc9452ce40219088c850cb0771240bde0d3df8",
+  "decision": "One distinct incoming-unwanted-events repair guide is justified; do not append an unrelated micro-FAQ to outgoing sharing or make separate synonym pages.",
+  "candidateCanonical": "unwanted-calendar-events-iphone",
+  "userTask": "Identify an unwanted incoming invitation versus an unwanted subscribed calendar, use the owning provider’s appropriate report/unsubscribe route, and separately review future invitation settings without deleting the wrong calendar.",
+  "observedVsInferred": {
+    "observed": "Current Apple and Google provider pages explicitly document different reporting, subscription removal and invitation filtering workflows. Five relevant complete current English guides do not teach this incoming repair decision.",
+    "inferred": "A coherent reader need suitable for one guide; demand size and commercial priority are not measured.",
+    "notEvidence": [
+      "Google ranking",
+      "query volume",
+      "ChatGPT citations",
+      "exhaustive competitor keywords",
+      "Cloud runtime capability"
+    ]
+  },
+  "searches": [
+    {
+      "queries": [
+        "site:support.apple.com \"spam calendars\" iPhone",
+        "site:support.google.com/calendar \"spam\" \"provider\""
+      ],
+      "association": "Combined search output; individual result-to-query attribution unavailable.",
+      "observedPrimaryUrls": [
+        "https://support.google.com/calendar/answer/13155911?hl=en-US-u-mu-fahrenhe",
+        "https://support.google.com/calendar/answer/13155911?hl=en-PW",
+        "https://support.google.com/calendar/answer/12790228?hl=en-GB",
+        "https://support.google.com/calendar/answer/13155911?co=GENIE.Platform%3DiOS&hl=EN"
+      ],
+      "note": "Variants are not separate body reviews. Android results not used for iPhone instructions."
+    },
+    {
+      "queries": [
+        "site:support.apple.com \"Delete spam calendars\""
+      ],
+      "result": "No results returned; not an HTTP failure."
+    },
+    {
+      "queries": [
+        "site:support.apple.com/en-us unwanted calendar invitations spam iPhone"
+      ],
+      "observedPrimaryUrls": [
+        "https://support.apple.com/en-mide/102568",
+        "https://support.apple.com/en-gb/guide/icloud/mm6b1a8534/1.0/icloud/1.0",
+        "https://support.apple.com/en-au/102444",
+        "https://support.apple.com/en-kw/102444",
+        "https://support.apple.com/en-ie/102180"
+      ],
+      "note": "Selected pertinent results, not exhaustive result inventory or rank record. Different country/version URLs retained explicitly."
+    }
+  ],
+  "primaryReads": [
+    {
+      "url": "https://support.google.com/calendar/answer/13155911?co=GENIE.Platform%3DiOS&hl=EN",
+      "status": "full substantive body",
+      "ranges": "18–40 of118; related/navigation excluded",
+      "facts": [
+        "Google reporting requires a Google Calendar-sent event; other-provider events are outside this reporting feature.",
+        "Reporting a recurring event removes the series from the reporting calendar.",
+        "Google iPhone app provides a known-sender invitation setting. Known includes contacts, organization and prior interaction; it may reveal sender is not a contact."
+      ],
+      "boundary": "Google app controls, not Cloud controls."
+    },
+    {
+      "url": "https://support.google.com/calendar/answer/13159188",
+      "discovery": "Followed link7 from the Google iOS report guide.",
+      "status": "full substantive body",
+      "ranges": "17–66 of141",
+      "facts": [
+        "Changes apply only to new invitations; work/school administrators may restrict available settings.",
+        "Known-sender or email-response modes control automatic calendar addition; email may still arrive.",
+        "Pending invitation visibility for existing authorized viewers is a separate option."
+      ],
+      "boundary": "Computer instructions; do not label all menus iPhone menus or promise spam elimination."
+    },
+    {
+      "url": "https://support.apple.com/en-au/102444",
+      "status": "full substantive body",
+      "ranges": "28–50 of65; publication line53 also read",
+      "facts": [
+        "This current version explicitly scopes instructions to iOS26 or later.",
+        "Apple Calendar distinguishes deleting an event/reporting unknown-contact junk, calendar deletion/unsubscribe, and merely hiding a calendar."
+      ],
+      "boundary": "Do not recommend Delete Calendar as interchangeable with unsubscribing. Identify actual source first; not Cloud menu instructions."
+    },
+    {
+      "url": "https://support.apple.com/en-gb/guide/icloud/mm6b1a8534/1.0/icloud/1.0",
+      "status": "full substantive body",
+      "ranges": "303–344 of361; navigation0–302 is not substantive evidence",
+      "facts": [
+        "iCloud.com Calendar requires a tablet or computer in this guide.",
+        "Event receipt may use app notifications or email per address.",
+        "iCloud junk-report action removes the reported invitation across devices signed into that Apple Account."
+      ],
+      "boundary": "Apple-specific effect, no universal provider or instant propagation guarantee."
+    }
+  ],
+  "comparisonScope": {
+    "inventory": "current-inventory.json: all57 current EN object titles/slugs screened, not all57 bodies fully reread",
+    "fullObjects": "current-snapshots.json: complete metadata, sections, practical, FAQs, sources and related of five relevant guides",
+    "ledger": "Header/scope and targeted spam/unwanted/subscription/migration matches inspected; no broad ledger audit",
+    "snapshotSha256": "582f892cb9e9583209496dece14e98c41b3c105857dcdce0ade1d89be43e6cf0",
+    "ledgerSha256": "59e084cabb4b8bf90c9bfd6370ef35e1f45215b50b40fa20c4c3a2b0dcea5c23"
+  },
+  "canonicalComparisons": [
+    {
+      "slug": "the-secret-address-of-a-google-calendar",
+      "coverage": "Own-use secret feed, receiving app/account, refresh and compromised feed address; not recipient spam triage."
+    },
+    {
+      "slug": "taking-back-a-calendar-you-shared",
+      "coverage": "Outgoing grants/public/group/feed revocation; not incoming invitations."
+    },
+    {
+      "slug": "disconnect-calendar-integration-without-losing-track",
+      "coverage": "Account/integration disconnect and general feed unsubscribe distinction; no junk-report eligibility or future invitation filtering."
+    },
+    {
+      "slug": "what-guests-can-do-to-your-event",
+      "coverage": "Organizer guest permissions and attachment access; not recipient automatic-add settings."
+    },
+    {
+      "slug": "keeping-track-of-who-replied",
+      "coverage": "RSVP versus access receipts; no unwanted-event cleanup."
+    }
+  ],
+  "recommendedNextAction": {
+    "type": "Prepare one substantive provider-led draft for independent review before integration",
+    "outline": [
+      "Identify original calendar/account and whether this is an invitation, subscribed feed or owned/imported event. Do not follow suspicious event links.",
+      "Apple Calendar iOS26+ report versus unsubscribe versus hide, with source identification before removal.",
+      "Google reporting eligibility and recurring-series consequence.",
+      "Future Google invitations: new-only change, administrator limits, known-sender/email-response distinction.",
+      "iCloud web reporting on tablet/computer and correct Apple Account.",
+      "Recheck original provider and selected calendar; hiding is not removal. Route account disconnect and secret-feed exposure to existing guides."
+    ],
+    "productBoundary": "No Cloud Report Junk, blocking, anti-spam, subscription-removal or identical-settings capability is established by this research. Keep provider operations explicitly attributed. No native audit or customer operations performed.",
+    "scenario": "Unfamiliar appointments began after opening a calendar link. First determine whether they belong to a subscribed calendar; repeatedly deleting visible appointments or disconnecting the entire Google account is not the diagnosis."
+  },
+  "failures": [
+    "One Apple search returned no results; all four selected body URLs accessible. No known failed corpus URLs retried."
+  ],
+  "mutations": "Research JSON outputs only; no source/build/deployment/API/customer changes."
+}

@@ -184,7 +184,7 @@ tabs: {"hourly":"Ανά ώρα","daily":"Ανά ημέρα","weekend":"Σαββ�
     billingPeriod: 'Περίοδος χρέωσης',
     mostPopular: "Προβεβλημένο πρόγραμμα",
     everythingIn: 'Όλα του {tier}, και επιπλέον:',
-    forever: 'για πάντα',
+    forever: "δωρεάν πρόγραμμα",
     perMonth: '/ μήνα',
     perYear: '/ έτος',
     downloadFree: 'Δωρεάν λήψη',

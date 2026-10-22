@@ -183,7 +183,7 @@ tabs: {"hourly":"Setiap jam","daily":"Harian","weekend":"Hujung minggu","range":
     billingPeriod: 'Tempoh pengebilan',
     mostPopular: "Pelan pilihan",
     everythingIn: 'Semua dalam {tier}, tambahan:',
-    forever: 'selamanya',
+    forever: "pelan percuma",
     perMonth: '/ bln',
     perYear: '/ thn',
     downloadFree: 'Muat turun percuma',

@@ -1,0 +1,108 @@
+{
+  "updated": "2026-10-22",
+  "title": "Zeitzonen im Kalender: Termine vor der Reise prüfen",
+  "short": "Zeitzonen auf Reisen",
+  "description": "Terminzeitzone und angezeigte Zeitzone unterscheiden: Prüfe Flüge, Termine am Reiseziel und wiederkehrende Anrufe, bevor du eine Uhrzeit änderst.",
+  "lede": "Eine andere Uhrzeit nach einem Flug bedeutet nicht unbedingt, dass sich der Termin verschoben hat. Kläre zuerst, zu welchem Ort der Termin gehört und welche Zeitzone die App anzeigt. Diese Anleitung stammt von Arte Soft, dem Entwickler von Cloud Calendars.",
+  "commonBelief": "Die angezeigte Zeitzone des Kalenders zu ändern ist dasselbe, wie den Termin selbst zu ändern.",
+  "sections": [
+    {
+      "heading": "Prüfe zuerst den Termin, dann die Anzeige",
+      "body": [
+        "Eine Besprechung zu einem bestimmten Zeitpunkt kann an verschiedenen Orten mit unterschiedlichen Uhrzeiten angezeigt werden. Ein Zahnarzttermin um 09:00 Uhr am Reiseziel hat eine andere Bedeutung als eine persönliche Erinnerung, dich um 09:00 Uhr zu dehnen, egal wo du gerade bist. Halte fest, welche Bedeutung du brauchst, bevor du etwas anpasst.",
+        "Vergleiche die Buchung oder Bestätigung des Organisators mit Datum, Beginn und benannter Zeitzone des Termins. Prüfe anschließend, in welcher Zeitzone der Kalender angezeigt wird. Ziehe den Termin nicht auf eine andere Uhrzeit, nur weil nach der Reise eine andere Stunde erscheint: Damit könntest du den Termin statt seiner Darstellung ändern."
+      ]
+    },
+    {
+      "heading": "Nutze die Einstellungen des Anbieters für eine bestimmte Zeitzone",
+      "body": [
+        "Apple beschreibt ein Feld für die Zeitzone beim Erstellen oder Bearbeiten eines Termins in Apple Kalender auf dem iPhone. Die separate Einstellung für eine feste Zeitzone ändert die in Apple Kalender angezeigte Zeitzone. Diese Anweisungen gelten für Apple Kalender; sie bedeuten nicht, dass dieselben Einstellungen auch Cloud Calendars steuern.",
+        "In Google Kalender am Computer lässt sich im Termineditor eine Zeitzone auswählen. Google beschreibt außerdem getrennte Zeitzonen für Beginn und Ende eines Termins. Das sind Funktionen von Google. Verwende das Konto, dem der Termin gehört, und prüfe vor einer Änderung der Zeitzone, ob du den Termin bearbeiten darfst."
+      ]
+    },
+    {
+      "heading": "Prüfe den gespeicherten Termin in Cloud Calendars",
+      "body": [
+        "Ein vorhandener Termin kann seine gespeicherte Zeitzone in den Editor von Cloud Calendars übernehmen. Fehlt eine Zeitzone im Termin, kann der Editor die aktuelle Gerätezeitzone verwenden. Prüfe vor dem Anlegen eines Termins am Reiseziel die Gerätezeitzone sowie das beabsichtigte Datum und die Uhrzeit vor Ort. Öffne den gespeicherten Termin erneut und vergleiche ihn mit der Buchung.",
+        "Verwende für unterschiedliche Abflug- und Ankunftszeitzonen einen Editor, der diese ausdrücklich unterstützt. Gewöhnliche Felder für Beginn und Ende bieten nicht zwangsläufig unabhängige Zeitzonen. Wenn dein Editor in Cloud Calendars die benötigte Zeitzoneneinstellung nicht anbietet, nutze einen geeigneten Editor des Anbieters, dem der Termin gehört. Öffne den Termin danach erneut in Cloud Calendars und vergleiche Beginn und Ende."
+      ]
+    },
+    {
+      "heading": "Prüfe Flüge und Termine am Reiseziel unterschiedlich",
+      "body": [
+        "Halte bei einem Flug das Abflugdatum, die Uhrzeit am Abflughafen, das Ankunftsdatum und die Uhrzeit am Ankunftsflughafen aus den Angaben der Fluggesellschaft zusammen fest. Eine Ankunft am nächsten Tag ist ebenso wichtig wie die Uhrzeit. Unterstützt der Editor getrennte Zeitzonen für Beginn und Ende, ordne jede dem passenden Flughafen zu. Nutze andernfalls einen Anbietereditor, der die erforderliche Darstellung unterstützt. Zwei gewöhnliche Zeitfelder erkennen nicht automatisch zwei verschiedene Orte.",
+        "Vergleiche bei einem Termin am Reiseziel das örtliche Datum und die Uhrzeit mit der Buchung. Trage die Stadt in den Termindetails ein, wenn dir das bei der späteren Prüfung hilft. Ein Ortsname in den Notizen ist eine nützliche Erinnerung, aber kein Nachweis dafür, dass das tatsächliche Zeitzonenfeld des Termins gesetzt wurde. Öffne den gespeicherten Termin erneut, bevor du dich darauf verlässt."
+      ]
+    },
+    {
+      "heading": "Prüfe wiederkehrende Anrufe und ganztägige Einträge gesondert",
+      "body": [
+        "Vereinbare bei einem regelmäßigen internationalen Anruf, nach welcher Stadt sich die gleichbleibende Ortszeit richten soll. Prüfe neben dem nächsten Termin auch einen Termin nahe der jeweiligen Zeitumstellung der Beteiligten. Ein Vergleich an einem einzigen Datum belegt nicht, dass der Zeitunterschied das ganze Jahr über gleich bleibt.",
+        "Ein ganztägiger Reiseeintrag kann bei der Planung helfen, ersetzt aber keine Abflugzeiten, Termine oder Check-in-Fristen. Prüfe seine Datumsangaben nach der Übertragung zwischen Anbietern. Verlasse dich nicht darauf, dass jeder importierte ganztägige Eintrag in jedem Kalender gleich dargestellt wird."
+      ]
+    },
+    {
+      "heading": "Wenn nur ein importierter oder abonnierter Kalender abweicht",
+      "body": [
+        "Kläre vor einer Terminänderung den Übertragungsweg: Eine importierte Datei ist eine Momentaufnahme, während ein Abonnement einer veröffentlichten Quelle folgt. Vergleiche denselben Termin im ursprünglichen Kalender und beim Empfänger, einschließlich Datum, Terminzeitzone und angezeigter Zeitzone. Prüfe bei Wiederholungen auch ein Datum nahe einer Zeitumstellung. Lass das Original unverändert, während du feststellst, wo die Abweichung auftritt.",
+        "Ist der Kalender des Eigentümers korrekt, aber die Anzeige bei einem Empfänger falsch, dokumentiere genau diesen Vergleich für den Support. Eine abweichende Auslegung des Feedformats ist eine mögliche Ursache, erklärt aber nicht jede verschobene Uhrzeit. Prüfe Zugriffsrechte und den Umgang mit Kalenderdaten, bevor du einen Dienst zur Verarbeitung von Kalenderfeeds ausprobierst. Ein solcher Dienst ersetzt keine autorisierte Kontoverbindung. Das Verschieben des ursprünglichen Termins kann die tatsächliche Verabredung für alle ändern."
+      ]
+    },
+    {
+      "heading": "Wenn die Uhrzeiten weiterhin nicht übereinstimmen",
+      "body": [
+        "Vergleiche denselben Termin beim zuständigen Anbieter und in Cloud Calendars. Notiere jeweils Kalender, Datum, Zeitzone und angezeigte Uhrzeit. Prüfe, ob du versehentlich eine ähnlich benannte Kopie geöffnet hast. Ist der Termin beim Anbieter korrekt und nur eine andere Anzeige abweichend, melde diesen Vergleich, bevor du den Termin umschreibst.",
+        "Gib die App- und iOS-Version, die betroffenen Zeitzonen und eine mögliche Wiederholung an. Lass Buchungsnummern und Angaben zu Teilnehmenden aus öffentlichen Berichten heraus. Du musst weder ein Konto entfernen noch eine echte Einladung neu erstellen, um festzustellen, welche Anzeige abweicht."
+      ]
+    }
+  ],
+  "claims": {},
+  "practical": [
+    "Notiere das beabsichtigte örtliche Datum, die Uhrzeit und die Stadt aus der Buchung.",
+    "Unterscheide die gespeicherte Terminzeitzone von der angezeigten Zeitzone.",
+    "Nutze bei Bedarf die Zeitzoneneinstellungen des zuständigen Anbieters; setze entsprechende Cloud-Einstellungen nicht voraus.",
+    "Prüfe bei Flügen sowohl Abflug als auch Ankunft und bei Wiederholungen auch einen späteren Termin.",
+    "Öffne den gespeicherten Termin erneut und vergleiche ihn, bevor du seine Uhrzeit nochmals änderst."
+  ],
+  "faq": [
+    {
+      "q": "Ändert eine feste Zeitzone in Apple Kalender auch Cloud Calendars?",
+      "a": "Apple beschreibt diese Einstellung für die Anzeige in Apple Kalender. Diese Anleitung belegt nicht, dass Cloud Calendars ihr ebenfalls folgt."
+    },
+    {
+      "q": "Kann ich in Cloud Calendars unterschiedliche Abflug- und Ankunftszeitzonen eingeben?",
+      "a": "Gehe nicht davon aus, dass die gewöhnlichen Felder für Beginn und Ende getrennte Zeitzonen anbieten. Fehlen sie in deinem Editor in Cloud Calendars, verwende einen geeigneten Anbietereditor. Google beschreibt für Google Kalender am Computer getrennte Zeitzonen für Beginn und Ende."
+    },
+    {
+      "q": "Soll ich eine Besprechung nach einer Reise auf ihre alte Uhrzeit zurückverschieben?",
+      "a": "Prüfe zuerst den beabsichtigten Zeitpunkt und die angezeigte Zeitzone. Eine andere Ortszeit kann die korrekte Darstellung desselben Termins sein."
+    },
+    {
+      "q": "Soll ich den ursprünglichen Termin verschieben, wenn ein ICS-Abonnement die falsche Uhrzeit zeigt?",
+      "a": "Vergleiche zuerst denselben Termin an der Quelle und beim Empfänger, jeweils mit Terminzeitzone und angezeigter Zeitzone. Kläre, ob der Termin selbst oder nur die empfangende Anzeige betroffen ist. Ändere die echte Besprechung nicht, nur um die Abweichung eines Kalenders auszugleichen."
+    }
+  ],
+  "sourcesHeading": "Offizielle Hinweise zu Termin- und Anzeigezeitzonen",
+  "sources": [
+    {
+      "label": "Apple: Termine auf dem iPhone in einer anderen Zeitzone planen oder anzeigen",
+      "url": "https://support.apple.com/guide/iphone/schedule-display-events-a-time-zone-iph69525c028/ios"
+    },
+    {
+      "label": "Google: Google Kalender in verschiedenen Zeitzonen verwenden",
+      "url": "https://support.google.com/calendar/answer/37064?hl=en"
+    },
+    {
+      "label": "Google: Importierte Termine werden nicht weiter synchronisiert",
+      "url": "https://support.google.com/calendar/answer/37118?hl=en"
+    },
+    {
+      "label": "Microsoft: Veröffentlichte ICS-Kalender, Importe und Abonnements",
+      "url": "https://support.microsoft.com/en-us/outlook/share-your-calendar-in-outlook-on-the-web"
+    }
+  ],
+  "seeAlso": [
+    "recurring-events-without-the-mess",
+    "calendar-export-ics-pdf-and-backup"
+  ]
+}

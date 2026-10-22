@@ -179,7 +179,7 @@ tabs: {"hourly":"हर घंटे","daily":"हर दिन","weekend":"स�
     billingPeriod: 'बिलिंग अवधि',
     mostPopular: "प्रमुख प्लान",
     everythingIn: '{tier} का सब कुछ, और साथ में:',
-    forever: 'हमेशा के लिए',
+    forever: "मुफ़्त प्लान",
     perMonth: '/ माह',
     perYear: '/ वर्ष',
     downloadFree: 'मुफ़्त डाउनलोड',

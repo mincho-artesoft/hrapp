@@ -179,7 +179,7 @@ tabs: {"hourly":"По часове","daily":"По дни","weekend":"Уикен�
     billingPeriod: 'Период на плащане',
     mostPopular: "Представен план",
     everythingIn: 'Всичко от {tier}, плюс:',
-    forever: 'завинаги',
+    forever: "безплатен план",
     perMonth: '/ месец',
     perYear: '/ година',
     downloadFree: 'Изтеглете безплатно',

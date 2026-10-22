@@ -1,0 +1,49 @@
+{
+  "checkedAt": "2026-10-22T04:55:36.525734+00:00",
+  "previousGoalTurn": "progress —79dc945 published and verified reviewed Watch canonical EN/BG",
+  "currentTurn": "progress —original incoming unwanted-events guide, full German timezone edition,29homepricinglabels published and verified",
+  "published": {
+    "newEnglishCanonical": "unwanted-calendar-events-iphone",
+    "newGermanEdition": "time-zones-and-the-flight-you-booked",
+    "relatedOnlyBacklinks": 3,
+    "homeLabels": 29,
+    "sitemapUrls": 523,
+    "publicArtifactsMatchBuild": 527,
+    "cloudfrontInvalidation": "IE9VY62NC8CVCLHRVAZOTYY6WG",
+    "cloudfrontStatus": "Completed"
+  },
+  "requirements": [
+    {
+      "requirement": "CompetitorGoogle/ChatGPTkeywordandtaskresearch",
+      "status": "partial",
+      "evidence": "batch38-discovery/decision.json;batch38-root-discovery.json",
+      "limit": "Fresh primary topic discovery and full comparator research; not exhaustive ranks/queries/volume or freshChatGPTresultproof."
+    },
+    {
+      "requirement": "Excellentoriginalarticlesandlocalizations",
+      "status": "progress",
+      "evidence": "batch38-static-qa.json;batch38-current-english-coverage.json",
+      "limit": "FullnewEN and DE independentreviews,57oldENbodiespreserved;notall460localizedarticlesapproved."
+    },
+    {
+      "requirement": "Website/ASCoptimizationalignment",
+      "status": "progress withsavedASCevidence",
+      "evidence": "batch38-home-pricing/source-qa.json;batch38-product-facts.json",
+      "limit": "Websitecurrentfree-planwordingclarified; no newASCwrite/read,sourcefactsnotreleasedbinaryproof."
+    },
+    {
+      "requirement": "Actualnewimages/videosintegration",
+      "status": "incomplete",
+      "evidence": "batch28-readiness/media-audit.json",
+      "limit": "Noverifiednewgeneratingtask/outputmanifestyet; existingmediadidnotchange."
+    },
+    {
+      "requirement": "MeasuredmostdiscoverableGoogle/ChatGPTresult",
+      "status": "unproven",
+      "evidence": "measurement/gsc-baseline-20261021.json",
+      "limit": "Historicalcalendariocloudcontextnotcausalbeforeafterproof;noequalelapsedpostwindow."
+    }
+  ],
+  "goalComplete": false,
+  "preserved": "Prior57ENbodies/globalfacts and allold521canonicals; only3relatedlists extended. 29homechangesrestrictedtosingleleaf. Prices/legal/media/robots/components/ASC/native/backend/provider/customerstate unchanged."
+}
