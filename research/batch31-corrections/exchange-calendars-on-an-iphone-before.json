@@ -1,0 +1,95 @@
+{
+  "updated": "2026-10-21",
+  "title": "Microsoft and Exchange calendars on iPhone: check the connection first",
+  "short": "Microsoft calendars on iPhone",
+  "description": "Check Microsoft account type, employer approval and permissions before connecting a work calendar. See what Cloud Calendars Premium adds.",
+  "lede": "“Exchange calendar” can mean different services and different workplace rules. Before changing settings or buying a plan, identify where your mailbox is hosted and which connection your organization permits. This guide is written by Arte Soft, the developer of Cloud Calendars.",
+  "commonBelief": "Any app with Microsoft sign-in must work with every Exchange server and every shared work calendar.",
+  "sections": [
+    {
+      "heading": "Identify the mailbox, not just the Outlook app",
+      "body": [
+        "Outlook is an app as well as a name used for Microsoft services. Having an account in Outlook does not tell you which server hosts its calendar. Ask whether you have a personal Microsoft account, a Microsoft 365 mailbox in Exchange Online, or an organization’s own Exchange installation.",
+        "Cloud Calendars provides Microsoft sign-in and uses Microsoft’s calendar service connection. This is not a universal server-address and password setup for every Exchange installation. Microsoft documents its calendar API separately from generic Exchange configuration; confirm the intended route for your mailbox rather than guessing a server name."
+      ]
+    },
+    {
+      "heading": "Separate Apple’s device account from the app connection",
+      "body": [
+        "A work calendar already available to Apple Calendar through an approved device account is a different route from using “Sign in with Microsoft” inside Cloud Calendars. Calendars exposed by the phone’s calendar system also depend on calendar permission. A successful account setup in Apple’s settings does not prove a separate Microsoft sign-in will be approved.",
+        "Before adding another connection, inspect where the existing work calendar appears. If you later see two versions of a meeting, identify their calendar sources and hide one temporarily. Avoid using account removal or event deletion to diagnose which connection produced them."
+      ]
+    },
+    {
+      "heading": "Check Premium and organizational approval separately",
+      "body": [
+        "Premium adds Microsoft Calendar and Microsoft Teams features to Cloud Calendars. Advanced adds ad removal to Base; it does not unlock the app’s Microsoft sign-in. Check the current local purchase price and billing period rather than relying on a price quoted for another region.",
+        "A subscription cannot override an employer’s decision about app access. Microsoft allows organizations to control user consent and require administrator approval. If the sign-in page requests approval, give your administrator the app name, the account you intended to use and the exact message. Do not publish the work calendar or switch to a personal account to bypass that decision."
+      ]
+    },
+    {
+      "heading": "Diagnose the stage that failed",
+      "body": [
+        "If sign-in never completes, check the selected identity, the network and the message from Microsoft. An approval message is different from an expired session or a connection failure. There is no basis for assuming that every failed connection is an employer policy problem.",
+        "If sign-in succeeds but a calendar is missing, inspect the account group and calendar selection in Cloud Calendars, then compare with the same account in Outlook. If one shared or delegated calendar is absent while your own calendar appears, investigate access to that particular calendar. General Microsoft API capabilities do not guarantee that every shared-mailbox or delegation scenario is available in this app."
+      ]
+    },
+    {
+      "heading": "Distinguish a visible copy from a confirmed update",
+      "body": [
+        "The Microsoft connection uses calendar copies in the iPhone calendar system. Their storage destination can depend on the sources available on the device. For a work account, confirm that this arrangement fits your organization’s requirements before using it for sensitive meetings; do not assume a copy stays only in the original mailbox.",
+        "For example, a team calendar may show a meeting but refuse your update because you lack the required access. A successful local edit is not the final check. Compare the event in Outlook using the same account. Test only a disposable event in a calendar you own, without inviting colleagues or changing an established meeting."
+      ]
+    },
+    {
+      "heading": "Keep meeting ownership and availability explicit",
+      "body": [
+        "A meeting organized by a colleague is not yours to relocate or rewrite just because it appears beside your personal plans. Keep the organizer, work calendar and intended participants in mind when making a change. Use the provider’s approved workflow when the required action is unavailable or an update does not reach the server.",
+        "Likewise, displaying a personal appointment beside work does not automatically block work availability or conceal its details as a generic busy entry. If that is your goal, ask which availability-sharing method your organization supports and verify the result. A read-only calendar link is not a substitute for editable access, and publishing a link is not a troubleshooting shortcut."
+      ]
+    }
+  ],
+  "claims": {},
+  "practical": [
+    "Identify the mailbox hosting and ask which connection your organization permits.",
+    "Check whether the calendar already reaches the iPhone through a device account.",
+    "Review the Premium offer separately from Microsoft consent and calendar permissions.",
+    "At Microsoft sign-in, choose the intended identity and retain any error message for support.",
+    "After sign-in, select the required calendar and compare a recent event in Outlook.",
+    "Confirm an authorized disposable change at the provider; leave existing invitations and recurring meetings intact."
+  ],
+  "faq": [
+    {
+      "q": "Does Premium guarantee that my company’s Exchange server will connect?",
+      "a": "No. Premium enables the app’s Microsoft features. Mailbox compatibility, the organization’s approval and the permissions on individual calendars are separate requirements. Confirm the connection with your administrator before treating an Exchange installation as supported."
+    },
+    {
+      "q": "Why does Outlook work while another calendar app is refused?",
+      "a": "Applications can have different permissions and approval requirements. Outlook working is a useful reference for the account, but it does not establish approval for another application. Use the actual error or approval request to identify what needs attention."
+    },
+    {
+      "q": "Can I use a public calendar link if Microsoft sign-in is blocked?",
+      "a": "Do not publish work information to get around a blocked connection. A subscription is normally a read-only view, not equivalent to editable access. Ask the calendar owner or administrator for an approved method; do not assume a published link is permitted."
+    }
+  ],
+  "sourcesHeading": "Sources and provider guidance",
+  "sources": [
+    {
+      "label": "Microsoft: Outlook calendar API and supported mailbox data",
+      "url": "https://learn.microsoft.com/en-us/graph/outlook-calendar-concept-overview"
+    },
+    {
+      "label": "Microsoft: user and administrator consent",
+      "url": "https://learn.microsoft.com/en-us/entra/identity/enterprise-apps/user-admin-consent-overview"
+    },
+    {
+      "label": "Apple: multiple calendars and read-only subscriptions",
+      "url": "https://support.apple.com/en-lamr/guide/iphone/iph3d1110d4/ios"
+    }
+  ],
+  "seeAlso": [
+    "icloud-google-and-outlook-in-one-view",
+    "what-calendar-sync-actually-does",
+    "what-a-subscription-actually-buys"
+  ]
+}

@@ -1,0 +1,338 @@
+{
+  "date": "2026-10-22",
+  "decision": "pass_no_material_blockers",
+  "scope": "Two exact proposed append-only paragraph changes, current native selection handlers/consumers, and proposed one-token visible currency marker replacement. Not a complete re-review of both articles or all 30 home bodies.",
+  "paragraphReviews": [
+    {
+      "slug": "three-calendar-apps-is-two-too-many",
+      "proposalFile": "research/batch31-english-reviews/part-a.json",
+      "proposalRawSha256": "74e9f894732e88d281741974ff9ee34dc5cc6f4516bf3745cfafbb6ea9ef07a6",
+      "path": "sections[4].body[0]",
+      "beforeMatchesCurrent": true,
+      "before": "If the overview has duplicates, temporarily hide one calendar and note which entry disappears. Compare account, calendar, organiser and time before deciding whether you have two stored records or two display routes. Repeated names are not enough evidence for deletion.",
+      "after": "If the overview has duplicates, temporarily hide one calendar and note which entry disappears. Compare account, calendar, organiser and time before deciding whether you have two stored records or two display routes. Repeated names are not enough evidence for deletion. Record the original selection and restore it after comparing. In Cloud Calendars, selection can also affect widgets, notification scheduling and Google synchronization.",
+      "appendOnly": true,
+      "appendedText": "Record the original selection and restore it after comparing. In Cloud Calendars, selection can also affect widgets, notification scheduling and Google synchronization.",
+      "decision": "pass",
+      "reason": "Restore-selection advice is supported. Conditional widgets/notification effects stay distinct from display. Google synchronization is named only in the combined-account paragraph; no Microsoft synchronization or identical all-provider pause/resume semantics asserted."
+    },
+    {
+      "slug": "exchange-calendars-on-an-iphone",
+      "proposalFile": "research/batch31-english-reviews/part-b.json",
+      "proposalRawSha256": "900dbd23735f9fb162772fb189255f6205d1e9afa7eba5ca3c097f39b9b80198",
+      "path": "sections[1].body[1]",
+      "beforeMatchesCurrent": true,
+      "before": "Before adding another connection, inspect where the existing work calendar appears. If you later see two versions of a meeting, identify their calendar sources and hide one temporarily. Avoid using account removal or event deletion to diagnose which connection produced them.",
+      "after": "Before adding another connection, inspect where the existing work calendar appears. If you later see two versions of a meeting, identify their calendar sources and hide one temporarily. Avoid using account removal or event deletion to diagnose which connection produced them. In Cloud Calendars, record the original selection and restore it after comparing. Selection can also affect widgets and notification scheduling; do not assume it is only a display preference.",
+      "appendOnly": true,
+      "appendedText": "In Cloud Calendars, record the original selection and restore it after comparing. Selection can also affect widgets and notification scheduling; do not assume it is only a display preference.",
+      "decision": "pass",
+      "reason": "Restore-selection advice is supported. Conditional widgets/notification effects stay distinct from display. Google synchronization is named only in the combined-account paragraph; no Microsoft synchronization or identical all-provider pause/resume semantics asserted."
+    }
+  ],
+  "nativeEvidence": [
+    {
+      "file": "/Users/minchomilev/work/hrapp/Calendar/Calendar/CalendarsSheetView.swift",
+      "rawSha256": "901ac260f4566d8ef7b2c65997248c7a1ad241924bf2d998ad3008292d9d25e8",
+      "freshReadRanges": [
+        {
+          "first": 800,
+          "last": 835,
+          "rangeRawSha256": "f63df32d5af51eaf9248d994e04622a5bfca03402f5b519b318ecff79ffb82ab"
+        }
+      ],
+      "matchesBatch26RecordedFileHash": true
+    },
+    {
+      "file": "/Users/minchomilev/work/hrapp/Calendar/Sources/CalendarViewModel.swift",
+      "rawSha256": "a0b207cb78810816775ff1aff4399a33dc3ce7331cbb1af2aa4468bb0828ccf4",
+      "freshReadRanges": [
+        {
+          "first": 165,
+          "last": 200,
+          "rangeRawSha256": "74435ef7a8146088efde6dbdcef39e04b6f9b211f1929897370b026c9bd74711"
+        },
+        {
+          "first": 1236,
+          "last": 1254,
+          "rangeRawSha256": "a91b70c20ea572b1858f44d30df8f26dd8ee4cd1ec7853291c706baa0f05a24e"
+        },
+        {
+          "first": 1338,
+          "last": 1356,
+          "rangeRawSha256": "aa24cc65982902ff0c21b5d146a901cc6596cf764cd26f9c4f06c2c7291083bd"
+        }
+      ],
+      "matchesBatch26RecordedFileHash": true
+    },
+    {
+      "file": "/Users/minchomilev/work/hrapp/Calendar/Sources/EventNotificationManager.swift",
+      "rawSha256": "d664f53078277e526245eca8aa38de1660faed643f5b992e761f4db4566ce26a",
+      "freshReadRanges": [
+        {
+          "first": 260,
+          "last": 292,
+          "rangeRawSha256": "4e880961c215a86b775e4605b6e151f3b5f973f5cb044bfa5dd74b7870b07efe"
+        }
+      ],
+      "matchesBatch26RecordedFileHash": null
+    },
+    {
+      "file": "/Users/minchomilev/work/hrapp/Calendar/Main/CalendarWidgetStore.swift",
+      "rawSha256": "0e766b69fcf12e3cbc99c40b033e5e80b1d34899627844676d989d52b552a2c7",
+      "freshReadRanges": [
+        {
+          "first": 174,
+          "last": 230,
+          "rangeRawSha256": "a79e9194d296fe25de6aa30a859d5b97e677d8cc535d8d0708cb8eb94478131e"
+        }
+      ],
+      "matchesBatch26RecordedFileHash": null
+    }
+  ],
+  "nativeFindings": [
+    "Selection toggles update selectedCalendarIDs, not record deletion.",
+    "Selection observer persists selection, saves widget selection and schedules notifications/Live Activity updates.",
+    "Notification generation filters EventKit calendars and app-local events by selected IDs.",
+    "Widget snapshots filter selected native and app-local calendar identities.",
+    "Google download and local-to-Google upload paths have selected-calendar guards. These do not establish Microsoft or uniform cross-provider pause/resume behavior."
+  ],
+  "pricingReview": {
+    "decision": "pass",
+    "file": "src/app/components/pricing/pricing.component.html",
+    "line": 50,
+    "before": "<span class=\"tier__currency\">$</span>",
+    "after": "<span class=\"tier__currency\">US$</span>",
+    "replacementCount": 1,
+    "numericPlansUnchangedByProposedOperation": true,
+    "currentNumericPrices": {
+      "free": {
+        "monthly": "0"
+      },
+      "advanced": {
+        "monthly": "0.49",
+        "yearly": "4.99"
+      },
+      "premium": {
+        "monthly": "4.99",
+        "yearly": "49.99"
+      }
+    },
+    "templateNoteLine": 89,
+    "all30LocaleNotesPreservedByProposedOperation": true,
+    "localeNotesBaseline": [
+      {
+        "locale": "ar-SA",
+        "file": "src/app/content/home/ar-SA.ts",
+        "note": "تتجدد الاشتراكات تلقائيًا عبر حساب Apple. تحقق من السعر المحلي وفترة الفوترة قبل الشراء. أدِر الإلغاء في الإعدادات، ضمن اسمك ثم الاشتراكات.",
+        "rawFileSha256": "3a575d1bd1288a43bed44df39042e1d4f6bee526402bd03e39b7a7041bbec352"
+      },
+      {
+        "locale": "bg",
+        "file": "src/app/content/home/bg.ts",
+        "note": "Абонаментите се подновяват автоматично чрез вашия Apple акаунт. Проверете местната цена и периода на таксуване преди покупка. Управлявайте прекратяването в настройките, под името си → абонаменти.",
+        "rawFileSha256": "cd819de959c11e4eb054a0f3fd674bdfe04485eca59ae25e51e306608b0a98b0"
+      },
+      {
+        "locale": "cs",
+        "file": "src/app/content/home/cs.ts",
+        "note": "Předplatné se automaticky obnovuje přes váš účet Apple. Před nákupem ověřte místní cenu a zúčtovací období. Zrušení spravujte v Nastavení pod svým jménem → Předplatná.",
+        "rawFileSha256": "606f898c197b23f50de1b5794feba6f25e1dad6e1d0feb8d626b086dfa7c564a"
+      },
+      {
+        "locale": "da",
+        "file": "src/app/content/home/da.ts",
+        "note": "Abonnementer fornyes automatisk via din Apple-konto. Kontrollér den lokale pris og faktureringsperiode før køb. Administrér opsigelse i Indstillinger under dit navn → Abonnementer.",
+        "rawFileSha256": "6bfd8e5aa3432b1f46c610b556c2d994c9e52816bbf788aecc15019ca582d769"
+      },
+      {
+        "locale": "de-DE",
+        "file": "src/app/content/home/de-DE.ts",
+        "note": "Abonnements verlängern sich automatisch über Ihren Apple Account. Prüfen Sie vor dem Kauf den lokalen Preis und Abrechnungszeitraum. Verwalten Sie die Kündigung in den Einstellungen unter Ihrem Namen → Abonnements.",
+        "rawFileSha256": "a29c2d9d26db602a436916eaf802126ad6cd0d48a9f12315916bc45d2d7dd15e"
+      },
+      {
+        "locale": "el",
+        "file": "src/app/content/home/el.ts",
+        "note": "Οι συνδρομές ανανεώνονται αυτόματα μέσω του λογαριασμού Apple σας. Ελέγξτε την τοπική τιμή και την περίοδο χρέωσης πριν αγοράσετε. Διαχειριστείτε την ακύρωση στις Ρυθμίσεις, κάτω από το όνομά σας → Συνδρομές.",
+        "rawFileSha256": "828e699d6ea97ca23816afa42cc412d2e023cf773366d6ccf18f2419b5430c0e"
+      },
+      {
+        "locale": "en-US",
+        "file": "src/app/content/home/en-US.ts",
+        "note": "Subscriptions renew automatically through your Apple Account. Check the local price and billing period before purchase. Manage cancellation in Settings under your name → Subscriptions.",
+        "rawFileSha256": "8866accd9cdbe31a2591af482181d149b24b7344bfd105f525e5fb815886af78"
+      },
+      {
+        "locale": "es-ES",
+        "file": "src/app/content/home/es-ES.ts",
+        "note": "Las suscripciones se renuevan automáticamente a través de tu cuenta de Apple. Comprueba el precio local y el periodo de facturación antes de comprar. Gestiona la cancelación en Ajustes, bajo tu nombre → Suscripciones.",
+        "rawFileSha256": "f5c11719db7b2049fb31ff358dbf1147c6d5b46f38637c5599d0277d99646760"
+      },
+      {
+        "locale": "fi",
+        "file": "src/app/content/home/fi.ts",
+        "note": "Tilaukset uusiutuvat automaattisesti Apple-tilisi kautta. Tarkista paikallinen hinta ja laskutusjakso ennen ostoa. Hallitse peruutusta Asetuksissa oman nimesi alta → Tilaukset.",
+        "rawFileSha256": "177f3ad7c2cb36fe7c238aea93aaf66ab0542fb4986f2863c647d0edbcf5b11f"
+      },
+      {
+        "locale": "fr-FR",
+        "file": "src/app/content/home/fr-FR.ts",
+        "note": "Les abonnements se renouvellent automatiquement via votre compte Apple. Vérifiez le prix local et la période de facturation avant l’achat. Gérez la résiliation dans Réglages, sous votre nom → Abonnements.",
+        "rawFileSha256": "77bd90a156f610f627424dc84fc016debc7f969bcd6d9eabc9bcf8f2f0539aeb"
+      },
+      {
+        "locale": "he",
+        "file": "src/app/content/home/he.ts",
+        "note": "המינויים מתחדשים אוטומטית דרך חשבון Apple שלכם. בדקו את המחיר המקומי ואת תקופת החיוב לפני הרכישה. נהלו את הביטול בהגדרות, תחת שמכם ואז מינויים.",
+        "rawFileSha256": "d638eb423c8627861b145d12062b5a4aaf831d14271bc9cba04653e4440aabe0"
+      },
+      {
+        "locale": "hi",
+        "file": "src/app/content/home/hi.ts",
+        "note": "सदस्यताएँ आपके Apple खाते से अपने-आप नवीनीकृत होती हैं। खरीदने से पहले स्थानीय कीमत और बिलिंग अवधि जाँचें। रद्द करने के लिए सेटिंग में अपने नाम के अंतर्गत सदस्यताएँ खोलें।",
+        "rawFileSha256": "eb726356c250b568a989a4f70c588a8d59ea00224567688178e1459168c7bb18"
+      },
+      {
+        "locale": "hu",
+        "file": "src/app/content/home/hu.ts",
+        "note": "Az előfizetések automatikusan megújulnak az Apple-fiókján keresztül. Vásárlás előtt ellenőrizze a helyi árat és a számlázási időszakot. A lemondást a Beállításokban, a neve alatt, az Előfizetések menüben kezelheti.",
+        "rawFileSha256": "62f0d68650be3da278f7c31aec64dfc63bd50316d5322e54962572d3daca6ace"
+      },
+      {
+        "locale": "id",
+        "file": "src/app/content/home/id.ts",
+        "note": "Langganan diperpanjang otomatis melalui Akun Apple Anda. Periksa harga setempat dan periode penagihan sebelum membeli. Kelola pembatalan di Pengaturan, di bawah nama Anda → Langganan.",
+        "rawFileSha256": "87681780db6499efc75203dd33ad8e30f8554eee85d09c09ecb1dbe8decc1fd1"
+      },
+      {
+        "locale": "it",
+        "file": "src/app/content/home/it.ts",
+        "note": "Gli abbonamenti si rinnovano automaticamente tramite il tuo Apple Account. Controlla prezzo locale e periodo di fatturazione prima dell’acquisto. Gestisci la disdetta in Impostazioni, sotto il tuo nome → Abbonamenti.",
+        "rawFileSha256": "b00e32861df6d48d2a3789fc9125b5d59ca1cea306a74744ad7ff23e80ceb6b7"
+      },
+      {
+        "locale": "ja",
+        "file": "src/app/content/home/ja.ts",
+        "note": "サブスクリプションはApple Accountを通じて自動更新されます。購入前に地域の価格と請求期間を確認してください。解約は「設定」の自分の名前 →「サブスクリプション」で管理できます。",
+        "rawFileSha256": "116e5088238f9b390f92952c959f75800038f5972b1cf430e3ffe937567e8c1b"
+      },
+      {
+        "locale": "ko",
+        "file": "src/app/content/home/ko.ts",
+        "note": "구독은 Apple 계정을 통해 자동 갱신됩니다. 구매 전에 현지 가격과 청구 기간을 확인하세요. 취소는 설정의 본인 이름 → 구독에서 관리할 수 있습니다.",
+        "rawFileSha256": "f8e1013a8ddd05c1502d9440c0bc5c74634609cace910fe616b513e73567c980"
+      },
+      {
+        "locale": "ms",
+        "file": "src/app/content/home/ms.ts",
+        "note": "Langganan diperbaharui secara automatik melalui Akaun Apple anda. Semak harga tempatan dan tempoh pengebilan sebelum membeli. Urus pembatalan dalam Seting di bawah nama anda → Langganan.",
+        "rawFileSha256": "b6ae937a69fd841cadf7c43223098fb886fc01d01bd12c5c49c2272a13e26af4"
+      },
+      {
+        "locale": "nl-NL",
+        "file": "src/app/content/home/nl-NL.ts",
+        "note": "Abonnementen worden automatisch verlengd via uw Apple Account. Controleer vóór aankoop de lokale prijs en factureringsperiode. Beheer opzegging in Instellingen onder uw naam → Abonnementen.",
+        "rawFileSha256": "972ed02d27ba7e62f8022ff0846900771dfc9a0e857cbf4681df4ea9ad8304da"
+      },
+      {
+        "locale": "no",
+        "file": "src/app/content/home/no.ts",
+        "note": "Abonnementer fornyes automatisk via Apple-kontoen din. Sjekk lokal pris og faktureringsperiode før kjøp. Administrer oppsigelse i Innstillinger under navnet ditt → Abonnementer.",
+        "rawFileSha256": "5eac872781ed5338829be2011b0c189531af60194ec21e468ac53b1ccdadf1ff"
+      },
+      {
+        "locale": "pl",
+        "file": "src/app/content/home/pl.ts",
+        "note": "Subskrypcje odnawiają się automatycznie przez konto Apple. Przed zakupem sprawdź lokalną cenę i okres rozliczeniowy. Anulowaniem zarządzaj w Ustawieniach pod swoim imieniem i nazwiskiem → Subskrypcje.",
+        "rawFileSha256": "3c7f906a570ad736c29ce97be1e22d4f30dcd899924236646ba666e34a2c8995"
+      },
+      {
+        "locale": "pt-BR",
+        "file": "src/app/content/home/pt-BR.ts",
+        "note": "As assinaturas se renovam automaticamente pela sua Conta Apple. Confira o preço local e o período antes de comprar. Para cancelar, abra Ajustes, seu nome e Assinaturas.",
+        "rawFileSha256": "b13643b7863947f26d365b1b07d94e816d1b980b7a22720cab472b4e6f57870a"
+      },
+      {
+        "locale": "ro",
+        "file": "src/app/content/home/ro.ts",
+        "note": "Abonamentele se reînnoiesc automat prin contul Apple. Verificați prețul local și perioada de facturare înainte de cumpărare. Gestionați anularea din Configurări, numele dumneavoastră, Abonamente.",
+        "rawFileSha256": "42675abb6df8ffeb62742b6ccba49e66abf76dd322cc22e372412c004981303a"
+      },
+      {
+        "locale": "ru",
+        "file": "src/app/content/home/ru.ts",
+        "note": "Подписки автоматически продлеваются через Аккаунт Apple. Перед покупкой проверьте местную цену и расчётный период. Отмена доступна в «Настройках»: ваше имя → «Подписки».",
+        "rawFileSha256": "de2677e3e467fb9076895b80ef0fe590600a53f9dcbd999e7a0da70b01788d66"
+      },
+      {
+        "locale": "sv",
+        "file": "src/app/content/home/sv.ts",
+        "note": "Prenumerationer förnyas automatiskt via ditt Apple-konto. Kontrollera lokalt pris och faktureringsperiod före köp. Hantera uppsägning under Inställningar, ditt namn och Prenumerationer.",
+        "rawFileSha256": "60e47a666d2017d4e672ed972961cc50933b3bd392362955af4dcf5b9f7535e1"
+      },
+      {
+        "locale": "th",
+        "file": "src/app/content/home/th.ts",
+        "note": "การสมัครสมาชิกต่ออายุอัตโนมัติผ่านบัญชี Apple ตรวจราคาในพื้นที่และรอบเรียกเก็บก่อนซื้อ จัดการการยกเลิกในตั้งค่า ใต้ชื่อของคุณ แล้วเลือกการสมัครรับ",
+        "rawFileSha256": "23562988b04d09eb5b4492a0c1e6d0f01bfbd2b08281f8a3e3ba5ac6544583b9"
+      },
+      {
+        "locale": "tr",
+        "file": "src/app/content/home/tr.ts",
+        "note": "Abonelikler Apple Hesabınız üzerinden otomatik yenilenir. Satın almadan yerel fiyatı ve faturalama dönemini kontrol edin. İptali Ayarlar’da adınızın altındaki Abonelikler’den yönetin.",
+        "rawFileSha256": "6519a0b8cac95b593cc69a4099c2fddece22210a59a7a1ea90a4dde9b6d4ff66"
+      },
+      {
+        "locale": "vi",
+        "file": "src/app/content/home/vi.ts",
+        "note": "Đăng ký tự động gia hạn qua Tài khoản Apple. Kiểm tra giá địa phương và kỳ thanh toán trước khi mua. Quản lý hủy trong Cài đặt, tên bạn, rồi Đăng ký.",
+        "rawFileSha256": "5918a565f8dd22376cc41673765a2a225cb5e100cb7ff04a48b99a9cda685659"
+      },
+      {
+        "locale": "zh-Hans",
+        "file": "src/app/content/home/zh-Hans.ts",
+        "note": "订阅通过 Apple 账户自动续订。购买前请检查当地价格和计费周期。在“设置”中点按你的姓名，再进入“订阅”管理取消。",
+        "rawFileSha256": "a0786ec56afdaaf9a2e4b38aa538779e0b70b7a990b5abd22c879fb1e81787c7"
+      },
+      {
+        "locale": "zh-Hant",
+        "file": "src/app/content/home/zh-Hant.ts",
+        "note": "訂閱透過 Apple 帳號自動續訂。購買前請確認當地價格與計費週期。在「設定」點選你的姓名，再到「訂閱項目」管理取消。",
+        "rawFileSha256": "f9f69eccbe71f4ec0868e3171bb7b4fb15c2d8c19bd5ae91a613f8f141d23b27"
+      }
+    ],
+    "assessment": "US$ identifies the US dollar amounts already used by the shared price template. It does not imply local-market prices or modify the existing local-price caveats. Both billing-cycle price selection and PLANS remain untouched.",
+    "primaryEvidenceProvenance": "Parent reports fresh complete relevant US App Store IAP lines212–218 matching these four paid rates. This review does not independently fetch the listing or certify localized purchase prices.",
+    "verificationBoundary": "Exact proposed substitution reviewed before integration. No post-change DOM/rendering check performed; US$ width/RTL presentation remains ordinary root visual QA."
+  },
+  "rawSourceGuards": [
+    {
+      "file": "src/app/content/en-US/articles-unify.ts",
+      "rawSha256": "ef1e7b23e8b810c38657496727bd2e255aa6d02212a43721dfef1fc5113bb02c"
+    },
+    {
+      "file": "src/app/core/app-facts.ts",
+      "rawSha256": "abdfd840a6bf821dd9f095cf1986c3d310f09e52ae9575940cbe3cd3795b1dd8"
+    },
+    {
+      "file": "src/app/components/pricing/pricing.component.ts",
+      "rawSha256": "4b68dacdab502762e4cd2c6fe1e3502793d370e69eb06f2764754229419170b6"
+    },
+    {
+      "file": "src/app/components/pricing/pricing.component.html",
+      "rawSha256": "babfc3a6ade6d5ab9a8afd6678377bd32d29452dfcaadefe7bc276dbabf98a57"
+    },
+    {
+      "file": "research/batch26-duplicates/product-evidence.json",
+      "rawSha256": "69f2ac35e8f33a198a4e116cfbdbb199b128b29958bc556bbc62e66b1eb09bf7"
+    }
+  ],
+  "blockers": [],
+  "limits": [
+    "Native current-source inspection only, not released App Store binary or runtime certification.",
+    "No guaranteed immediate refresh, delivery or restoration time.",
+    "No new provider rights, Microsoft synchronization or privacy assurances.",
+    "Only this review artifact written; no source/native edits, build, API/customer action, deployment or commit."
+  ]
+}

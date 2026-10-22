@@ -147,7 +147,7 @@ export const UNIFY_EN_US: Readonly<Record<string, LocalisedArticle>> = {
     {
       "heading": "Narrow the view before deleting anything",
       "body": [
-        "If the overview has duplicates, temporarily hide one calendar and note which entry disappears. Compare account, calendar, organiser and time before deciding whether you have two stored records or two display routes. Repeated names are not enough evidence for deletion.",
+        "If the overview has duplicates, temporarily hide one calendar and note which entry disappears. Compare account, calendar, organiser and time before deciding whether you have two stored records or two display routes. Repeated names are not enough evidence for deletion. Record the original selection and restore it after comparing. In Cloud Calendars, selection can also affect widgets, notification scheduling and Google synchronization.",
         "Apple documents showing or hiding calendars using the calendar-list checkboxes. Hiding is a useful first display check; deleting a record or account can have wider effects. Preserve the source and any needed backup while you investigate."
       ]
     },
@@ -198,7 +198,7 @@ export const UNIFY_EN_US: Readonly<Record<string, LocalisedArticle>> = {
     "what-calendar-sync-actually-does",
     "calendar-notifications-missing-silent-or-duplicated"
   ],
-  "updated": "2026-10-21"
+  "updated": "2026-10-22"
 },
 
   'what-calendar-sync-actually-does': {
@@ -408,7 +408,7 @@ export const UNIFY_EN_US: Readonly<Record<string, LocalisedArticle>> = {
 },
 
   'exchange-calendars-on-an-iphone': {
-  "updated": "2026-10-21",
+  "updated": "2026-10-22",
   "title": "Microsoft and Exchange calendars on iPhone: check the connection first",
   "short": "Microsoft calendars on iPhone",
   "description": "Check Microsoft account type, employer approval and permissions before connecting a work calendar. See what Cloud Calendars Premium adds.",
@@ -426,7 +426,7 @@ export const UNIFY_EN_US: Readonly<Record<string, LocalisedArticle>> = {
       "heading": "Separate Apple’s device account from the app connection",
       "body": [
         "A work calendar already available to Apple Calendar through an approved device account is a different route from using “Sign in with Microsoft” inside Cloud Calendars. Calendars exposed by the phone’s calendar system also depend on calendar permission. A successful account setup in Apple’s settings does not prove a separate Microsoft sign-in will be approved.",
-        "Before adding another connection, inspect where the existing work calendar appears. If you later see two versions of a meeting, identify their calendar sources and hide one temporarily. Avoid using account removal or event deletion to diagnose which connection produced them."
+        "Before adding another connection, inspect where the existing work calendar appears. If you later see two versions of a meeting, identify their calendar sources and hide one temporarily. Avoid using account removal or event deletion to diagnose which connection produced them. In Cloud Calendars, record the original selection and restore it after comparing. Selection can also affect widgets and notification scheduling; do not assume it is only a display preference."
       ]
     },
     {

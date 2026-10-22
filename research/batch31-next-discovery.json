@@ -1,0 +1,665 @@
+{
+  "date": "2026-10-22",
+  "head": "db1e7ff047acf8ea5110e3a307536910c761ac72",
+  "decision": "One distinct source-diagnosis task warrants bounded product verification; no new route approved or drafted.",
+  "task": "Identify and correct the source of a missing or wrong contact birthday without creating a duplicate annual event or confusing app-only visibility with cross-device synchronization.",
+  "nextAction": {
+    "action": "Read-only native audit of device Birthdays calendar loading, direct Google birthday handling and contact permissions, then decide whether a substantive provider-labelled section in the all-day guide suffices. If the verified workflow needs a standalone guide, choose one birthday-source canonical, not separate missing/duplicate/reminder keyword pages.",
+    "specificQuestions": [
+      "Does Cloud display the Apple system Birthdays source through EventKit and under which calendar selection/read-permission conditions?",
+      "Do direct Google calendar downloads include provider birthday events or special birthday-calendar cases, and are updates one-time or recurring?",
+      "Does Cloud itself read/edit contact birthday fields, or must a provider/system Contacts editor be used?",
+      "Which existing widget and alert limitations apply to these all-day records without promising a birthday-specific widget or reminder?"
+    ],
+    "scopeGate": "No Cloud Contacts import, automatic contact mirroring, birthday editor, provider setting or refresh deadline established by this discovery. Do not transfer Google app controls or a competitor’s features to Cloud.",
+    "whyNotDraftNow": "Current official Google guidance includes source-edit and removal effects that differ from a simplistic Apple-derived read-only birthday model. The actual Cloud connection path changes the correct next action."
+  },
+  "ledgerAndCorpus": {
+    "ledger": "research/keyword-coverage-ledger.json",
+    "readScope": "All ten current cluster IDs/statuses inspected, including published deleted-event recovery.",
+    "originalCorpus": "research/competitors/coverage-current-20261021.json",
+    "counts": {
+      "exactUrls": 71,
+      "full": 59,
+      "partial": 5,
+      "failed": 6,
+      "discovered": 1
+    },
+    "priorCandidate": "research/competitors/batch26-original-corpus-completion-20261022.json had already identified Contacts birthdays as a possible future task, explicitly without complete body audit. This batch supplies fresh search/provider evidence and direct canonical comparison.",
+    "notRetried": "No original failed URLs or malformed Fantastical path opened. No original-corpus URL reopened merely to raise review counts."
+  },
+  "search": {
+    "query": "birthday calendar iPhone contacts missing birthdays BusyCal Fantastical official",
+    "date": "2026-10-22",
+    "toolScope": "One public web search query; not a fixed-location Google SERP or ChatGPT recommendation test.",
+    "observedRelevantUrls": [
+      "https://support.google.com/calendar/answer/13748346?co=GENIE.Platform%3DiOS&hl=en-GB",
+      "https://dailylifeapps.com/birthday-reminder/blog/how-to-show-birthdays-from-contacts-in-iphone-calendar",
+      "https://flexibits.com/fantastical-ios/faq",
+      "https://flexibits.com/fantastical-ios/help/getting-started",
+      "https://apps.apple.com/us/app/birthday-calendar-and-reminder/id1508329346",
+      "https://support.apple.com/en-au/102180"
+    ],
+    "limits": "Selected observed results, not exhaustive result export or rank claims. Third-party proxy Apple URLs were not adopted as official evidence; official Apple host opened separately. Reddit discussions, old PDFs, App Store release-note snippets and unread Fantastical pages were not used as factual body evidence."
+  },
+  "primaryReads": [
+    {
+      "url": "https://dailylifeapps.com/birthday-reminder/blog/how-to-show-birthdays-from-contacts-in-iphone-calendar",
+      "publisher": "Daily Life Apps / Birthday Reminder",
+      "status": "full_substantive_publisher_body_reviewed",
+      "readRanges": [
+        [
+          5,
+          190
+        ]
+      ],
+      "totalLines": 245,
+      "scope": "Main guide, all FAQ, product section and source list. Initial view ended around FAQ start; followup supplied remaining body. Images, linked guides and app not tested.",
+      "finding": "Publisher separates contact-card birthday fields, owning contact account, calendar visibility and alerts; it distinguishes optional contact import from ongoing contact synchronization for its own product.",
+      "boundary": "Publisher’s iCloud delay and Apple instructions require primary corroboration before reuse. Its birthday-specific widgets/countdowns/import/privacy claims are not Cloud capabilities."
+    },
+    {
+      "url": "https://support.google.com/calendar/answer/13748346?co=GENIE.Platform%3DiOS&hl=en-GB",
+      "publisher": "Google",
+      "status": "full_substantive_primary_body_reviewed",
+      "readRanges": [
+        [
+          17,
+          67
+        ]
+      ],
+      "totalLines": 145,
+      "finding": "Google distinguishes Contacts-linked birthdays from manually created birthday events. Calendar edits can update linked Google Contacts; deleting a birthday has a different contact-data effect. Disabling Sync from Contacts removes synced events and edits. Device Apple Contacts birthdays have iPhone/iPad-specific visibility rather than Google web/Android synchronization.",
+      "boundary": "These are Google Calendar app controls and behaviour, not Cloud controls. Do not recommend disabling sync as a harmless visibility test or assume all birthday sources propagate identically."
+    },
+    {
+      "requestedUrl": "https://support.apple.com/guide/icloud/create-and-edit-a-calendar-mmfbbb2cf9/icloud",
+      "url": "https://support.apple.com/en-euro/guide/icloud/mmfbbb2cf9/icloud",
+      "publisher": "Apple",
+      "status": "full_substantive_primary_body_reviewed",
+      "readRanges": [
+        [
+          277,
+          321
+        ]
+      ],
+      "totalLines": 340,
+      "scope": "Followup redirected to en-euro; main create/edit/calendar Birthdays body completely visible. Initial long navigation output truncated, not counted as complete navigation read.",
+      "finding": "Apple documents a special iCloud Birthdays calendar derived from iCloud Contacts, with changes made in Contacts. Web Calendar requires tablet/computer; calendar display is distinct from source data.",
+      "boundary": "This page does not establish Cloud Contacts access or an iPhone daily refresh guarantee. Exact regional redirect is retained rather than silently collapsing URL variants."
+    }
+  ],
+  "existingCoverageComparison": [
+    {
+      "slug": "what-an-all-day-event-really-means",
+      "fullRead": true,
+      "coverage": "Substantive birthday date labels, date span, free/busy, all-day widget exclusion, transfer boundaries and alerts. Does not distinguish generated contact birthday source from an editable manual yearly event.",
+      "possiblePlacement": "Source-identification section before event editor advice, conditional on verified Cloud path."
+    },
+    {
+      "slug": "recurring-events-without-the-mess",
+      "fullRead": true,
+      "coverage": "Complete edit-scope/exception/permission guide. Birthday is an example of a continuing repeat; no contact-source diagnosis."
+    },
+    {
+      "slug": "the-widget-that-shows-what-is-next",
+      "fullRead": true,
+      "coverage": "Explicit birthday all-day exclusion and same-device/selection checks. No new birthday-widget guide needed; link this existing explanation."
+    },
+    {
+      "slug": "calendar-notifications-missing-silent-or-duplicated",
+      "fullRead": true,
+      "coverage": "Complete alert/source-app/selection/system delivery diagnosis. No birthday contact-account generation workflow. Keep general notifications here."
+    }
+  ],
+  "allEnglishCoverageCheck": {
+    "count": 55,
+    "method": "Parsed every current article object, reviewed every title/canonical and searched all string fields for birthday/birthdays/contacts/anniversary roots; output relevant hits and read four matching complete guides. This is not a fresh complete read of all 55 bodies. A final new-route approval should retain this distinction.",
+    "articles": [
+      {
+        "slug": "calendar-event-or-room-reservation",
+        "title": "Calendar event or room reservation? Check what is confirmed",
+        "file": "src/app/content/en-US/articles-sharing.ts",
+        "rawObjectSha256": "b28727f7e19b5657948f86ef35dedda9bb8bc0a750980f2a9aac3682a5277b59",
+        "jsonSha256": "236b6b058e253ec0874eba0cbdbf53d72b1c313d80b8c5025e35cf1ac856c553",
+        "scope": "all-field topic scan plus title/route review; not fresh complete human body review",
+        "topicHits": []
+      },
+      {
+        "slug": "sharing-one-event-not-your-calendar",
+        "title": "Share one calendar event: choose the link and access you mean",
+        "file": "src/app/content/en-US/articles-sharing.ts",
+        "rawObjectSha256": "8b1e984d1796dd08cc4a60f5300696f472c27a28dbb3ecab9b2cd08dc46547d8",
+        "jsonSha256": "94df5d346cead4ad6e0d07bd244bdafc3d64e2a927f3d37b33eb14df4356704d",
+        "scope": "all-field topic scan plus title/route review; not fresh complete human body review",
+        "topicHits": []
+      },
+      {
+        "slug": "inviting-people-who-do-not-have-the-app",
+        "title": "Sharing an event with someone who does not have Cloud Calendars",
+        "file": "src/app/content/en-US/articles-sharing.ts",
+        "rawObjectSha256": "cd4b46ea9e44e4926caee36966ff38c83e937d5306d34d2cb22aad8719a89e45",
+        "jsonSha256": "2fe1b7dfa3b2dffd8c942b7e98477b1882051563b84c8ef68b84885debd2fbd9",
+        "scope": "all-field topic scan plus title/route review; not fresh complete human body review",
+        "topicHits": []
+      },
+      {
+        "slug": "a-calendar-that-is-yours-to-share",
+        "title": "Share a calendar with the right people and permissions",
+        "file": "src/app/content/en-US/articles-sharing.ts",
+        "rawObjectSha256": "8757e6e6b40cd88b814ff9e175593ad79d552dc1618dd860ec4a28a1d2493222",
+        "jsonSha256": "7f720a59779ea72061148577ae4f3a82c84d949dedf2a8f12ca0d4b7426172fd",
+        "scope": "all-field topic scan plus title/route review; not fresh complete human body review",
+        "topicHits": []
+      },
+      {
+        "slug": "who-can-see-what-in-google-calendar",
+        "title": "Google Calendar sharing permissions: check the access you actually grant",
+        "file": "src/app/content/en-US/articles-sharing.ts",
+        "rawObjectSha256": "640ec0b2673eb3f8fbaad91a9029ac229e5db9fbd03fde96ae834c58d641ab7c",
+        "jsonSha256": "0d5b87e67777e7fb6565f2386243e8b5017749f65beab082edcec95dfb195b67",
+        "scope": "all-field topic scan plus title/route review; not fresh complete human body review",
+        "topicHits": []
+      },
+      {
+        "slug": "keeping-track-of-who-replied",
+        "title": "Calendar replies: separate attendance from sharing access",
+        "file": "src/app/content/en-US/articles-sharing.ts",
+        "rawObjectSha256": "87f2556fe0ec1c5568edd757865cbbc09490c7c9d518f3a643022edacb28f796",
+        "jsonSha256": "d2ea6b1527f77e9fbf4d065b96a5b527f0635a7da1725dec463d3701477c0e18",
+        "scope": "all-field topic scan plus title/route review; not fresh complete human body review",
+        "topicHits": []
+      },
+      {
+        "slug": "meeting-links-that-make-themselves",
+        "title": "Google Meet and Microsoft Teams links: create, save and check",
+        "file": "src/app/content/en-US/articles-sharing.ts",
+        "rawObjectSha256": "6c45da36b7e2c97dd54c6c0efea3e5850fdbe6b30c7766df0e17e8197d758d55",
+        "jsonSha256": "cb8f8f00f00c3a7286471d30ce9e07164ec63e07fc04307f291955ccf8ede026",
+        "scope": "all-field topic scan plus title/route review; not fresh complete human body review",
+        "topicHits": []
+      },
+      {
+        "slug": "weather-inside-your-calendar",
+        "title": "Calendar with weather on iPhone and iPad: check a plan in context",
+        "file": "src/app/content/en-US/articles-weather.ts",
+        "rawObjectSha256": "6fb9e57c66c8d19d5c7e37abfb50abbc37b1b5e1757729743ad37c6d162666d2",
+        "jsonSha256": "bd24f07a80cf4e35b40d6b084e64d1865811ed89d902d4f7a74303df964b4748",
+        "scope": "all-field topic scan plus title/route review; not fresh complete human body review",
+        "topicHits": []
+      },
+      {
+        "slug": "forecast-beside-every-event",
+        "title": "Compare an appointment with the hourly weather forecast",
+        "file": "src/app/content/en-US/articles-weather.ts",
+        "rawObjectSha256": "a11cfc9e4b31b1361747c36816e79346f9869274fe512d1e897268ac4e8524f6",
+        "jsonSha256": "a1c4473d0f9742d4a292cf9bb379997b366d38e187984ade92a5dc43a25985bf",
+        "scope": "all-field topic scan plus title/route review; not fresh complete human body review",
+        "topicHits": []
+      },
+      {
+        "slug": "a-fourteen-day-view-of-the-weather",
+        "title": "How far ahead can I see weather in Cloud Calendars?",
+        "file": "src/app/content/en-US/articles-weather.ts",
+        "rawObjectSha256": "069435ac39284f108c6d5a95b33d1abc81c1da3729a9c498e7b9102cc5051cdc",
+        "jsonSha256": "f31a8eff8b72477a989691609a205ad0a816eca51a2519a303eba02df8c0bbfa",
+        "scope": "all-field topic scan plus title/route review; not fresh complete human body review",
+        "topicHits": []
+      },
+      {
+        "slug": "planning-outdoors-without-being-rained-on",
+        "title": "Plan an outdoor event with a forecast and a fallback",
+        "file": "src/app/content/en-US/articles-weather.ts",
+        "rawObjectSha256": "03df2936c31703db77fc45370001185fe53d033bdd1c65fa5aa0176283bfd1a2",
+        "jsonSha256": "93e479caf4334b7dab6970502def523aa2422523769acecc6a0e4a1af3dca99a",
+        "scope": "all-field topic scan plus title/route review; not fresh complete human body review",
+        "topicHits": []
+      },
+      {
+        "slug": "what-a-forecast-can-and-cannot-tell-you",
+        "title": "How reliable is a weather forecast for a calendar event?",
+        "file": "src/app/content/en-US/articles-weather.ts",
+        "rawObjectSha256": "2288eaa5f36835692504f40dec6e5206cfbcd3a371115b272f78542768045581",
+        "jsonSha256": "4016c59ba01ee40d978602528219c0fb6e7f16dd98f5a9f03b04f9820d9263b3",
+        "scope": "all-field topic scan plus title/route review; not fresh complete human body review",
+        "topicHits": []
+      },
+      {
+        "slug": "reading-a-chance-of-rain",
+        "title": "What does a chance of rain mean for a calendar event?",
+        "file": "src/app/content/en-US/articles-weather.ts",
+        "rawObjectSha256": "69f354ff1ec93e6c6fe7e08eb0f676d2ac87eebe4f9998665639cf8bef56f60d",
+        "jsonSha256": "e8dcd291157fc84d47e5f9b6d3d596af46f8a7dce4b217a9185efbe9751410a7",
+        "scope": "all-field topic scan plus title/route review; not fresh complete human body review",
+        "topicHits": []
+      },
+      {
+        "slug": "weather-where-the-event-is",
+        "title": "The weather where the event is, not where you are",
+        "file": "src/app/content/en-US/articles-weather.ts",
+        "rawObjectSha256": "0ca5a32429fd2e963e76d7572726884067cf4fba1a5945faed5e8b98a3c87140",
+        "jsonSha256": "43e35ed6a54f89a54a7912f7a8d1ced1e0de1ffd7567b7865d41cc8d944286b9",
+        "scope": "all-field topic scan plus title/route review; not fresh complete human body review",
+        "topicHits": []
+      },
+      {
+        "slug": "the-commute-and-the-sky",
+        "title": "Plan travel around calendar events: route time, weather and arrival",
+        "file": "src/app/content/en-US/articles-weather.ts",
+        "rawObjectSha256": "36809ff17620d4c0b9ddfa037098371f674f0c34914279e08cd48d8b1c0d2a5a",
+        "jsonSha256": "3150881338c0605dff117431f7ef4740e462d4cfdaa18bec12ad041bf9380e6c",
+        "scope": "all-field topic scan plus title/route review; not fresh complete human body review",
+        "topicHits": []
+      },
+      {
+        "slug": "daylight-as-a-planning-constraint",
+        "title": "Plan around sunset: check daylight, location and the event date",
+        "file": "src/app/content/en-US/articles-weather.ts",
+        "rawObjectSha256": "fc6daf721fed644f11ccd74e2409790304ae18ad658c231985bd4b332f238eb0",
+        "jsonSha256": "0062c49502203cd32ae3de160b948580a8d24f6305a22c13eed2a065232329f0",
+        "scope": "all-field topic scan plus title/route review; not fresh complete human body review",
+        "topicHits": []
+      },
+      {
+        "slug": "wind-the-forecast-nobody-reads",
+        "title": "Wind forecast for outdoor plans: speed, gusts, direction and time",
+        "file": "src/app/content/en-US/articles-weather.ts",
+        "rawObjectSha256": "f3e9f92525c226b171db19e72f3abb00c34074d2f651ed412648d6ac527b1a39",
+        "jsonSha256": "4c21c212291b30678072f92c4088c61b58a43997c9312faff77ee4cce98ad9bb",
+        "scope": "all-field topic scan plus title/route review; not fresh complete human body review",
+        "topicHits": []
+      },
+      {
+        "slug": "why-a-shared-calendar-does-not-appear",
+        "title": "A calendar was shared with you and it is not there",
+        "file": "src/app/content/en-US/articles-google.ts",
+        "rawObjectSha256": "700ffb28cc2b606294737e591ee2ad0a0da283f5b0a34012fa279ce8c913d552",
+        "jsonSha256": "002fdb0820828b0fab0c1005bd7b0818dae3ad485677c82899630fadf98b5cf8",
+        "scope": "all-field topic scan plus title/route review; not fresh complete human body review",
+        "topicHits": []
+      },
+      {
+        "slug": "the-secret-address-of-a-google-calendar",
+        "title": "Google’s secret iCal address: subscribe without confusing it with sharing",
+        "file": "src/app/content/en-US/articles-google.ts",
+        "rawObjectSha256": "4522a943481c86b0b18e57ac88cecf41a540893e27aee240a599da79122f8f16",
+        "jsonSha256": "44277f4bb46c15dc809b93f9d0e1cbe767f35ef7f982e8704eabf8185c1c509f",
+        "scope": "all-field topic scan plus title/route review; not fresh complete human body review",
+        "topicHits": []
+      },
+      {
+        "slug": "what-guests-can-do-to-your-event",
+        "title": "Google Calendar guest permissions: editing, invitations and the guest list",
+        "file": "src/app/content/en-US/articles-google.ts",
+        "rawObjectSha256": "819cc65f39d444dc5eca817987c9a338f831eb12b95227ddf244131b7fa2436e",
+        "jsonSha256": "c7ccb76225c59ee8866766f960f01e9383b4ce70d74113ca74212f36bb3c6e44",
+        "scope": "all-field topic scan plus title/route review; not fresh complete human body review",
+        "topicHits": []
+      },
+      {
+        "slug": "google-calendars-that-never-reach-your-iphone",
+        "title": "A Google calendar is missing on iPhone: check the connection and selection",
+        "file": "src/app/content/en-US/articles-google.ts",
+        "rawObjectSha256": "7e16a971b42d8d92a47dc3aa6c75c057c80e052d8620a4fa144d0dc3fd7f4668",
+        "jsonSha256": "9dd8865cffbeb8a48a4ccc344d0e9532b1b7a2274b83297eaf00c4eac25bfe3e",
+        "scope": "all-field topic scan plus title/route review; not fresh complete human body review",
+        "topicHits": []
+      },
+      {
+        "slug": "taking-back-a-calendar-you-shared",
+        "title": "Stop sharing a calendar: remove access and check the remaining routes",
+        "file": "src/app/content/en-US/articles-google.ts",
+        "rawObjectSha256": "8eea3407c2cdec5dca89e00158882fa9df4a502d64880e937e81c45cf5191f8f",
+        "jsonSha256": "e30ac1cd409604f99356bf5a8a99dfa1cf58241393df9c0e72b123f645f37f14",
+        "scope": "all-field topic scan plus title/route review; not fresh complete human body review",
+        "topicHits": []
+      },
+      {
+        "slug": "the-widget-that-shows-what-is-next",
+        "title": "Calendar widgets on iPhone and iPad: show upcoming events",
+        "file": "src/app/content/en-US/articles-widgets.ts",
+        "rawObjectSha256": "d604425c45a83392067d10284c0a4db29418ddaae05c89886cbdf891c89ae546",
+        "jsonSha256": "2020665809742071ae6d258146c8e0474768c6e2c44fcf5c85296bda9ea6044e",
+        "scope": "complete object read this batch",
+        "topicHits": [
+          {
+            "field": "sections[2].body[0]",
+            "text": "The event display uses selected calendars and future timed appointments. All-day entries and appointments whose start time has already passed are excluded from this upcoming feed. A birthday or an ongoing meeting can therefore be visible in the app without appearing here."
+          },
+          {
+            "field": "faq[0].q",
+            "text": "Why is my birthday missing?"
+          },
+          {
+            "field": "faq[0].a",
+            "text": "The upcoming feed excludes all-day events. Check the full calendar for birthdays and other date-only entries."
+          }
+        ]
+      },
+      {
+        "slug": "a-countdown-to-your-next-meeting",
+        "title": "Use a calendar Live Activity countdown without replacing alerts",
+        "file": "src/app/content/en-US/articles-widgets.ts",
+        "rawObjectSha256": "7dec3827b8167a0f894066a0e4eb37f8b225a9488ef7cc65c7118af125741393",
+        "jsonSha256": "8e4b0677a4e53d9e7f8059e1100f42131db75a0b8869a140ef679f36eb6f94e1",
+        "scope": "all-field topic scan plus title/route review; not fresh complete human body review",
+        "topicHits": []
+      },
+      {
+        "slug": "lock-screen-without-unlocking",
+        "title": "Calendar information on the Lock Screen: choose the right feature",
+        "file": "src/app/content/en-US/articles-widgets.ts",
+        "rawObjectSha256": "6cebcf3c5a03da60010b266850ad0cf9121b185bed7b4cc716c2dd59de49e3e6",
+        "jsonSha256": "b5be4dee42bf3e7d475a75abea47c9037c2b33625bbe2316f744cfe178eb68c7",
+        "scope": "all-field topic scan plus title/route review; not fresh complete human body review",
+        "topicHits": []
+      },
+      {
+        "slug": "choosing-a-widget-size",
+        "title": "Choose a Cloud Calendars widget by its layout, not just its size",
+        "file": "src/app/content/en-US/articles-widgets.ts",
+        "rawObjectSha256": "d55ca6551a8e7796e779fac7bfa04d070683a1b37743a94b0026170c19262453",
+        "jsonSha256": "5481049130ce9965298d4e52e6664c55767190573b3a0696ccec3ba1a075ac84",
+        "scope": "all-field topic scan plus title/route review; not fresh complete human body review",
+        "topicHits": []
+      },
+      {
+        "slug": "the-calendar-on-a-bedside-table",
+        "title": "Use iPhone StandBy without mistaking a glance for tomorrow’s plan",
+        "file": "src/app/content/en-US/articles-widgets.ts",
+        "rawObjectSha256": "54f65c1ca0c911b0d1d1944663d08e069afaac6192aacc63161488a8bf786600",
+        "jsonSha256": "7301a3908e30ae451cb1516c5ebe282f50457bd59c28f96e90e629af4e48208b",
+        "scope": "all-field topic scan plus title/route review; not fresh complete human body review",
+        "topicHits": []
+      },
+      {
+        "slug": "icloud-google-and-outlook-in-one-view",
+        "title": "iCloud, Google and Outlook in one view: accounts, copies and permissions",
+        "file": "src/app/content/en-US/articles-unify.ts",
+        "rawObjectSha256": "59c1312f6ea394f7edf6e1498bf3259efd0053c904f2b0c3d53267c81866e2f2",
+        "jsonSha256": "247e2c75295a5b966eb16baac402a6cb767f5d950565c6ce541188a71ae00e51",
+        "scope": "all-field topic scan plus title/route review; not fresh complete human body review",
+        "topicHits": []
+      },
+      {
+        "slug": "three-calendar-apps-is-two-too-many",
+        "title": "Combine calendar apps on iPhone without losing track of events",
+        "file": "src/app/content/en-US/articles-unify.ts",
+        "rawObjectSha256": "4292a3ae34a639d9ec94926ee7c92a0481e2f7099702a0a2e944ab3b928525a3",
+        "jsonSha256": "6fa402be531406b167448c6807d62cd4cb1dac671270996bce49497d6db45187",
+        "scope": "all-field topic scan plus title/route review; not fresh complete human body review",
+        "topicHits": []
+      },
+      {
+        "slug": "what-calendar-sync-actually-does",
+        "title": "Calendar sync on iPhone: accounts, subscriptions and missing events",
+        "file": "src/app/content/en-US/articles-unify.ts",
+        "rawObjectSha256": "06e1ccc907cf04143cae3ba4a727be7659cacbcb2876d1e060b2a774693abfa4",
+        "jsonSha256": "b1050afa8428e67ddd157855c69212080968ad218f7162cb90ed04775220b49c",
+        "scope": "all-field topic scan plus title/route review; not fresh complete human body review",
+        "topicHits": []
+      },
+      {
+        "slug": "work-and-personal-without-two-apps",
+        "title": "Work and personal calendars in one app: keep ownership separate",
+        "file": "src/app/content/en-US/articles-unify.ts",
+        "rawObjectSha256": "0f9f8317cd57c6ddd26cf31f5bdf9d8a497ed39a655cbfa77e8757293fc67cac",
+        "jsonSha256": "22a9844d2cefa22601168684cb8797ff59b9af549be0d445e94584977565b702",
+        "scope": "all-field topic scan plus title/route review; not fresh complete human body review",
+        "topicHits": []
+      },
+      {
+        "slug": "exchange-calendars-on-an-iphone",
+        "title": "Microsoft and Exchange calendars on iPhone: check the connection first",
+        "file": "src/app/content/en-US/articles-unify.ts",
+        "rawObjectSha256": "2c9583bb4b70546ee65f562eb21b078c815aa3039027bb4ecfc57861980267ff",
+        "jsonSha256": "b0ea163be60d89730ba63833c677807e6359bc108823291f200ab8a0ba8cd7c4",
+        "scope": "all-field topic scan plus title/route review; not fresh complete human body review",
+        "topicHits": []
+      },
+      {
+        "slug": "when-two-calendars-disagree",
+        "title": "When calendar events disagree: check ownership before editing",
+        "file": "src/app/content/en-US/articles-unify.ts",
+        "rawObjectSha256": "24241d00e1ece4cf67efb13d8b6588e28b0267adecdf2f3e48f87119a17fcd4d",
+        "jsonSha256": "69a1bb6728eb548dc853e28e9853f232a739713246d40e50d606ddde3b23645d",
+        "scope": "all-field topic scan plus title/route review; not fresh complete human body review",
+        "topicHits": []
+      },
+      {
+        "slug": "drag-an-event-to-move-it",
+        "title": "Drag a calendar event to reschedule: check time, duration and scope",
+        "file": "src/app/content/en-US/articles-planning.ts",
+        "rawObjectSha256": "3b4aa50d7fb952df35327ea7924780116d7b38393c0746a5986cfcaf659189bc",
+        "jsonSha256": "e92385839b1172027f7592a5c72567872724949ed25f6fdb64b3d62f167a16b2",
+        "scope": "all-field topic scan plus title/route review; not fresh complete human body review",
+        "topicHits": []
+      },
+      {
+        "slug": "a-week-view-that-fits-a-week",
+        "title": "Week calendar on iPhone: compare hours without overlooking commitments",
+        "file": "src/app/content/en-US/articles-planning.ts",
+        "rawObjectSha256": "9cabea12904a876b3684b9bc53a9c6d92b3a0eb8d8c56790263c71a79f5f1964",
+        "jsonSha256": "e5d7b1596cc825297b63351fa8c72a2b981bf8bf68336de373caec9b94f7c647",
+        "scope": "all-field topic scan plus title/route review; not fresh complete human body review",
+        "topicHits": []
+      },
+      {
+        "slug": "month-view-on-a-bigger-screen",
+        "title": "Month calendar on iPad and iPhone: see the dates, then check the details",
+        "file": "src/app/content/en-US/articles-planning.ts",
+        "rawObjectSha256": "1101dcadfe6af951d8a9bd0ea7075cca6a5db8a17d58cbe47649f80cd4284c6a",
+        "jsonSha256": "df6df1dcb8f77c9ecd74f3e24f16eed4f696005542da9eb2bd1f3d852ee8ca43",
+        "scope": "all-field topic scan plus title/route review; not fresh complete human body review",
+        "topicHits": []
+      },
+      {
+        "slug": "planning-a-week-in-ten-minutes",
+        "title": "A weekly calendar review: commitments, time blocks and shared responsibilities",
+        "file": "src/app/content/en-US/articles-planning.ts",
+        "rawObjectSha256": "9c9ef1538b97f2aabc2cf2efe69f90667752a874870be9cf97e43861f57a97a6",
+        "jsonSha256": "a08211e1c7d293ab165e06091a9a6f27012a5c8aba4840391e4201ee84962b3c",
+        "scope": "all-field topic scan plus title/route review; not fresh complete human body review",
+        "topicHits": []
+      },
+      {
+        "slug": "recurring-events-without-the-mess",
+        "title": "Recurring calendar events: change one date or the series safely",
+        "file": "src/app/content/en-US/articles-planning.ts",
+        "rawObjectSha256": "18614ec9491017594ab907ab568f37c40955b8594598c13ca2cac2e864d89f10",
+        "jsonSha256": "7fb4cbb8b72b124ad9561ff58801e21e5040ab3fee54b6a3b4db5f3f921b20d6",
+        "scope": "complete object read this batch",
+        "topicHits": [
+          {
+            "field": "sections[4].body[1]",
+            "text": "Use a known final date for a course or temporary rota when that matches the real schedule. An ongoing birthday or continuing meeting may reasonably have no planned end. Do not force an arbitrary cutoff onto every repeat, and do not delete and recreate a series merely because it contains several exceptions."
+          }
+        ]
+      },
+      {
+        "slug": "time-zones-and-the-flight-you-booked",
+        "title": "Calendar time zones: check the event before you travel",
+        "file": "src/app/content/en-US/articles-planning.ts",
+        "rawObjectSha256": "ea13808b5d6de5f3235a0a77927974d71d9f74584741327f1f440e2926358148",
+        "jsonSha256": "e146a6c29552c1241b547310ffc6a9cb1286fea6c5bdf40cb5dfc94724ad97d6",
+        "scope": "all-field topic scan plus title/route review; not fresh complete human body review",
+        "topicHits": []
+      },
+      {
+        "slug": "what-an-all-day-event-really-means",
+        "title": "All-day calendar events: dates, availability and missing widget entries",
+        "file": "src/app/content/en-US/articles-planning.ts",
+        "rawObjectSha256": "8ca84994a20d49193748e2c5d3be81b91e6fddcdeee0a328e836db3d94cb68ec",
+        "jsonSha256": "94ceee6711c1b50561b594e9add294d200de5c2b7bf6d8de6ebb2029b99883cd",
+        "scope": "complete object read this batch",
+        "topicHits": [
+          {
+            "field": "sections[0].body[0]",
+            "text": "A birthday, public holiday or trip label can belong to a date without requiring an arrival hour. A dentist visit or a conference session needs an actual start and end time. Choose the representation that lets someone understand the commitment without guessing."
+          },
+          {
+            "field": "sections[1].body[1]",
+            "text": "For a one-day birthday, check that it appears on the intended date without an unwanted extra day. For a three-day trip, check all three dates. If you change an existing repeating entry, follow the recurrence guide before saving: choosing All-day does not establish whether an edit affects one occurrence or future occurrences."
+          },
+          {
+            "field": "sections[2].body[1]",
+            "text": "If you need a day blocked for leave, check the owning provider's availability or out-of-office controls and the saved result. If you only want a birthday label, check that it does not block time unintentionally. This guide does not promise that Cloud Calendars exposes every provider's availability control or prevents scheduling conflicts. Use a supported provider editor when you need an option absent from the app."
+          },
+          {
+            "field": "sections[3].body[0]",
+            "text": "Cloud Calendars' upcoming-event widgets and Live Activity follow future timed appointments. They exclude all-day entries. A birthday may therefore be present in the full calendar but absent from the next-event display. Making the widget larger does not change that eligibility rule."
+          },
+          {
+            "field": "sections[3].body[1]",
+            "text": "Open the date in the app and check that the calendar is selected. If the entry is present there, distinguish an expected widget omission from lost calendar data. Do not convert a birthday into an artificial timed meeting merely to make a widget show it; decide first whether the event itself should really have an hour."
+          },
+          {
+            "field": "sections[5].body[0]",
+            "text": "A label across the top of a day is useful context, but it is not a reminder that has been delivered. If you need to act before a birthday, deadline or trip, inspect the saved alert and the app and system notification settings. The event's visible date alone does not guarantee an audible reminder."
+          }
+        ]
+      },
+      {
+        "slug": "a-list-for-people-who-dislike-grids",
+        "title": "Calendar list view on iPhone: read the agenda and check what is missing",
+        "file": "src/app/content/en-US/articles-planning.ts",
+        "rawObjectSha256": "01af60a3bfa72f15649c2f8a2da217fed0c28be4a99b1b81c8ae52d8dcd7ac37",
+        "jsonSha256": "de1ffeda8226dab3978bc6a42323b97b7534c8cc8abbeccb13a084afed7c04ff",
+        "scope": "all-field topic scan plus title/route review; not fresh complete human body review",
+        "topicHits": []
+      },
+      {
+        "slug": "the-year-in-one-screen",
+        "title": "Year calendar on iPhone and iPad: inspect dates beyond the overview",
+        "file": "src/app/content/en-US/articles-planning.ts",
+        "rawObjectSha256": "570930c6db1d504a419c47931ccd6d3b6fead2ec9ae2a57f4733bcca4cfe6388",
+        "jsonSha256": "e1f3f320d856e84fc8d3104cbb7d51c05c08bd0176958a882d4818b37acec0d6",
+        "scope": "all-field topic scan plus title/route review; not fresh complete human body review",
+        "topicHits": []
+      },
+      {
+        "slug": "onecal-alternative-iphone-calendar-view-or-sync",
+        "title": "Cloud Calendars or OneCal? Compare iPhone views and calendar syncing",
+        "file": "src/app/content/en-US/articles-compare.ts",
+        "rawObjectSha256": "251c8b8f7e04e436fc8a7828f042bc509780fbba7a9de293e8a8b9822bff899f",
+        "jsonSha256": "3c28e7d15dd525c206d50354e99b48296c7554d03b203c9800664e7fd5872266",
+        "scope": "all-field topic scan plus title/route review; not fresh complete human body review",
+        "topicHits": []
+      },
+      {
+        "slug": "free-google-sync-without-adverts",
+        "title": "Free Google Calendar sync on iPhone: what is included and where ads fit",
+        "file": "src/app/content/en-US/articles-compare.ts",
+        "rawObjectSha256": "1a0b3dc30cfcf17491bc72928a71a861d264447df23a4fe81f69e4f3c417a739",
+        "jsonSha256": "7051c9eff50013bba9d6a94f2714d70c8823d3de3a4455cb08c8df1ad095d856",
+        "scope": "all-field topic scan plus title/route review; not fresh complete human body review",
+        "topicHits": []
+      },
+      {
+        "slug": "what-fantastical-costs-and-what-this-does",
+        "title": "Cloud Calendars or Fantastical? Compare your calendar workflow on iPhone",
+        "file": "src/app/content/en-US/articles-compare.ts",
+        "rawObjectSha256": "c5fb0faf7583c225a65b61c99a0275d3467fa0c255a5c5229e4bac44a9c9bee5",
+        "jsonSha256": "d613cdf617949006ceea4449c928bf878fbee439e8dff376364a85762ff1e672",
+        "scope": "all-field topic scan plus title/route review; not fresh complete human body review",
+        "topicHits": []
+      },
+      {
+        "slug": "what-you-get-without-paying-anything",
+        "title": "What Cloud Calendars includes free on iPhone and iPad",
+        "file": "src/app/content/en-US/articles-compare.ts",
+        "rawObjectSha256": "1f2fb684b92cc5b75f551c22bdc03a66a1765bd1baa6c8baa5c29bb03a1d609a",
+        "jsonSha256": "76c8649aed6f69fc709a4cd4f9bf9efb1eae9f4028bbe1859cfa45bc3886ec82",
+        "scope": "all-field topic scan plus title/route review; not fresh complete human body review",
+        "topicHits": []
+      },
+      {
+        "slug": "what-a-subscription-actually-buys",
+        "title": "Cloud Calendars subscriptions: Base, Advanced and Premium explained",
+        "file": "src/app/content/en-US/articles-compare.ts",
+        "rawObjectSha256": "bbd78c2c4afd95826abadd14e4366947716c42d0058429622dd695422e01242a",
+        "jsonSha256": "6b067d4169e41e78facbbce16153037a017ead62e920508c522f16b6b588ea03",
+        "scope": "all-field topic scan plus title/route review; not fresh complete human body review",
+        "topicHits": []
+      },
+      {
+        "slug": "recover-deleted-calendar-events-iphone",
+        "title": "Deleted calendar events on iPhone: Google and iCloud recovery",
+        "file": "src/app/content/en-US/articles-help.ts",
+        "rawObjectSha256": "c34f82e3fb366ebb83853ed7f1640319c5fbb3ff3e7018df817c8277578c41e7",
+        "jsonSha256": "4a459cc58b23a0e9e3208f93a8081d059ed50f7a779ec4348485310caca64347",
+        "scope": "all-field topic scan plus title/route review; not fresh complete human body review",
+        "topicHits": []
+      },
+      {
+        "slug": "disconnect-calendar-integration-without-losing-track",
+        "title": "Disconnect a calendar integration: access, sync and existing copies",
+        "file": "src/app/content/en-US/articles-help.ts",
+        "rawObjectSha256": "1e6b337eb958e369ba1cd7ec07c4880a78d4dbe5a46b3ce8d20cf1c046dcda5d",
+        "jsonSha256": "3f1b443c0f7fe96da521ed0d2bfe4a79a48b0d48940fcbb7f5d51a77d6ababaa",
+        "scope": "all-field topic scan plus title/route review; not fresh complete human body review",
+        "topicHits": []
+      },
+      {
+        "slug": "caldav-calendar-on-iphone",
+        "title": "CalDAV calendar on iPhone: setup, permissions and missing events",
+        "file": "src/app/content/en-US/articles-help.ts",
+        "rawObjectSha256": "6002d4f3b2b75970b73b8a85f74d2af4b31fdcdbfa263e57657ee157929b0306",
+        "jsonSha256": "e1748b7d61934b5ca6812e3c8e99f27c763774e7e09761b8b87747e7708a1b94",
+        "scope": "all-field topic scan plus title/route review; not fresh complete human body review",
+        "topicHits": []
+      },
+      {
+        "slug": "calendar-notifications-missing-silent-or-duplicated",
+        "title": "Calendar notifications on iPhone: missing, silent or duplicated?",
+        "file": "src/app/content/en-US/articles-help.ts",
+        "rawObjectSha256": "2724575c4208d9c8839dd0320647e0200a58d5b933aee7b84791aa1d81bdd936",
+        "jsonSha256": "8c49e6acd0981d048b84a36e3d52d906f1ddf34d7ff6956ba9993f29d1caf9fb",
+        "scope": "complete object read this batch",
+        "topicHits": []
+      },
+      {
+        "slug": "find-old-calendar-events-by-account-date-and-title",
+        "title": "Find an old calendar event: check the account, dates and search fields",
+        "file": "src/app/content/en-US/articles-help.ts",
+        "rawObjectSha256": "f85ec2c3362343a2894ceb49fe582a04dfa4c5176abac282f5f70b610c8903f0",
+        "jsonSha256": "83df31db59ade9ecc3ed48a41d60c61eda5384914531f0d427e9b9ab0c296708",
+        "scope": "all-field topic scan plus title/route review; not fresh complete human body review",
+        "topicHits": []
+      },
+      {
+        "slug": "calendar-export-ics-pdf-and-backup",
+        "title": "Calendar export on iPhone: ICS, CSV, PDF and subscriptions",
+        "file": "src/app/content/en-US/articles-help.ts",
+        "rawObjectSha256": "e5997bcf600281c3abc91e7a19f42648deee22760d8df2fa4596bcdf5874ef03",
+        "jsonSha256": "2019588b0512ba28398d0cda4b8445f5eb2b5530cc5d3ea4a6ccd5ca43a9f49b",
+        "scope": "all-field topic scan plus title/route review; not fresh complete human body review",
+        "topicHits": []
+      },
+      {
+        "slug": "event-saved-to-wrong-calendar",
+        "title": "Event saved to the wrong calendar?",
+        "file": "src/app/content/en-US/articles-help.ts",
+        "rawObjectSha256": "c1ed8c5654d2724b0a20b3145980de8490af0041e3bc5638031a7ad1847d750e",
+        "jsonSha256": "f0afc74c230c3031a66714ef6c02d6c528ab35a56f907b6852fa07e73dd4a3ca",
+        "scope": "all-field topic scan plus title/route review; not fresh complete human body review",
+        "topicHits": []
+      },
+      {
+        "slug": "family-pickup-calendar-handoff",
+        "title": "A family pickup plan with a clear handoff",
+        "file": "src/app/content/en-US/articles-help.ts",
+        "rawObjectSha256": "48c6ac4d6abbcf40f4184aea067e3e5b9366e899dad0973556b0b9fc08db42bd",
+        "jsonSha256": "5c20916b37b3f0d103beaaefcf79a32db99532176014b8386acc54e1e1c74682",
+        "scope": "all-field topic scan plus title/route review; not fresh complete human body review",
+        "topicHits": []
+      }
+    ]
+  },
+  "failures": [],
+  "limits": [
+    "No Google ranking/search-volume/ChatGPT citation data or all-keyword guarantee.",
+    "Fresh publisher/provider evidence establishes a candidate task, not market priority or conversion demand.",
+    "No source/native/customer edits, builds, deployment, ASC writes, API account operations or commits. Only this research JSON written."
+  ]
+}

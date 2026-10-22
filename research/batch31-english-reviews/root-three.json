@@ -1,0 +1,59 @@
+{
+  "checkedAt": "2026-10-22T02:23:19.400Z",
+  "guides": [
+    {
+      "slug": "free-google-sync-without-adverts",
+      "file": "src/app/content/en-US/articles-compare.ts",
+      "rawObjectSha256": "1a0b3dc30cfcf17491bc72928a71a861d264447df23a4fe81f69e4f3c417a739",
+      "jsonStringifySha256": "7051c9eff50013bba9d6a94f2714d70c8823d3de3a4455cb08c8df1ad095d856",
+      "fullRead": true,
+      "scope": "Complete current object printed without truncation and read: allmetadata/lede/commonbelief/eachsectionparagraph/practical/FAQ/source/related.",
+      "decision": "pass_no_material_correction",
+      "assessment": "Provider/tier/account/workplace and comparison scope explicit; no competitor rank/speed or fixed price-gap claim."
+    },
+    {
+      "slug": "what-fantastical-costs-and-what-this-does",
+      "file": "src/app/content/en-US/articles-compare.ts",
+      "rawObjectSha256": "c5fb0faf7583c225a65b61c99a0275d3467fa0c255a5c5229e4bac44a9c9bee5",
+      "jsonStringifySha256": "d613cdf617949006ceea4449c928bf878fbee439e8dff376364a85762ff1e672",
+      "fullRead": true,
+      "scope": "Complete current object printed without truncation and read: allmetadata/lede/commonbelief/eachsectionparagraph/practical/FAQ/source/related.",
+      "decision": "pass_no_material_correction",
+      "assessment": "Provider/tier/account/workplace and comparison scope explicit; no competitor rank/speed or fixed price-gap claim."
+    },
+    {
+      "slug": "forecast-beside-every-event",
+      "file": "src/app/content/en-US/articles-weather.ts",
+      "rawObjectSha256": "a11cfc9e4b31b1361747c36816e79346f9869274fe512d1e897268ac4e8524f6",
+      "jsonStringifySha256": "a1c4473d0f9742d4a292cf9bb379997b366d38e187984ade92a5dc43a25985bf",
+      "fullRead": true,
+      "scope": "Complete current object printed without truncation and read: allmetadata/lede/commonbelief/eachsectionparagraph/practical/FAQ/source/related.",
+      "decision": "pass_no_material_correction",
+      "assessment": "Place/date/hour coverage, unresolved missing interval, draft review and permission boundaries explicit; no complete forecast/event-address inference."
+    }
+  ],
+  "primaryReadback": [
+    {
+      "url": "https://apps.apple.com/us/app/cloud-calendars-sync-widget/id6744690319",
+      "scope": "RelevantUSIAP212–218 and listing/releasefacts, not privacycorrespondence"
+    },
+    {
+      "url": "https://flexibits.com/fantastical",
+      "scope": "Currentprovider/platform89–101 and natural-language marketing146–149; publisher claims not independent performance"
+    },
+    {
+      "url": "https://developer.apple.com/weatherkit/",
+      "scope": "WeatherKit introductorydata135–140, not Cloud runtime forecasts"
+    },
+    {
+      "url": "https://support.apple.com/en-us/118428",
+      "scope": "iPhonecancellation44–53"
+    }
+  ],
+  "recordedSourceEvidence": "Prior nativeplan and weather-hour-draft evidence preserved; no new native runtime/release assertion.",
+  "limits": [
+    "Not a fresh complete review of external entire sites/linkedpages/testimonials",
+    "No customer or subscription action",
+    "No independent quality/ranking/translation/runtime certification"
+  ]
+}

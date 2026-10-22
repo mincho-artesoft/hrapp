@@ -1,0 +1,12 @@
+{
+  "checkedAt": "2026-10-22T02:35:56.822604+00:00",
+  "allPassed": true,
+  "articleObjectsChanged": 2,
+  "exactReviewedAppendOnlyDrafts": true,
+  "allOtherObjectsPreserved": true,
+  "currencyOnlyReplacement": "$ span \u2192 US$ isolated left-to-right bdi",
+  "numericPricesUnchanged": true,
+  "scope": "Source preservation and reviewed draft parity; not publication or native runtime proof.",
+  "bidiIsolationReason": "Observed Arabic screenshot reordered unisolated US$ as $US; final markup isolates the currency abbreviation.",
+  "unchangedNumericTierConfigurationLocaleCopiesFactsAndSelectionFiles": 37
+}

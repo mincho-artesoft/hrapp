@@ -1,5 +1,5 @@
 {
-  "date": "2026-10-22T02:01:53.529Z",
+  "date": "2026-10-22T02:35:57.405Z",
   "status": "source_inventory_not_quality_approval",
   "articles": [
     {
@@ -2037,13 +2037,13 @@
       "descriptionCharacters": 159,
       "sections": 6,
       "faq": 3,
-      "words": 775,
+      "words": 797,
       "source": "articles-unify.ts",
       "sources": [
         "https://support.apple.com/guide/iphone/use-multiple-calendars-iph3d1110d4/ios",
         "https://support.apple.com/en-us/102180"
       ],
-      "updated": "2026-10-21"
+      "updated": "2026-10-22"
     },
     {
       "locale": "en-US",
@@ -2087,14 +2087,14 @@
       "descriptionCharacters": 137,
       "sections": 6,
       "faq": 3,
-      "words": 948,
+      "words": 977,
       "source": "articles-unify.ts",
       "sources": [
         "https://learn.microsoft.com/en-us/graph/outlook-calendar-concept-overview",
         "https://learn.microsoft.com/en-us/entra/identity/enterprise-apps/user-admin-consent-overview",
         "https://support.apple.com/en-lamr/guide/iphone/iph3d1110d4/ios"
       ],
-      "updated": "2026-10-21"
+      "updated": "2026-10-22"
     },
     {
       "locale": "en-US",

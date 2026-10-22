@@ -1,0 +1,662 @@
+{
+  "date": "2026-10-22",
+  "status": "research_only_material_corrections_identified",
+  "scope": {
+    "requestedLocales": [
+      "bg",
+      "de-DE",
+      "es-ES",
+      "fr-FR",
+      "ja",
+      "ar-SA"
+    ],
+    "slugs": [
+      "three-calendar-apps-is-two-too-many",
+      "exchange-calendars-on-an-iphone"
+    ],
+    "actualFullObjectsRead": 6,
+    "absentEditions": 6,
+    "scopeComplete": true
+  },
+  "readMethod": "Two untruncated output groups:BG/DE/ES and FR/JA/AR. All six present objects read fully. Current corrected EN selection-bearing sections read separately as comparator; not claiming another fullENread in this followup.",
+  "findingsSummary": {
+    "exchangeSelectionAppends": 3,
+    "legacyOverviewEditions": 3,
+    "absent": 6,
+    "explanation": "DE/ES/FRExchange needs explicit restore and selected-calendar side effects. DE/ES/FRthree-apps has older two-section bodies with no hide step, plus deletion/availability/mirror problems. BG/JA/AR have neither requested definition."
+  },
+  "objects": [
+    {
+      "locale": "de-DE",
+      "slug": "three-calendar-apps-is-two-too-many",
+      "file": "src/app/content/de-DE/articles.ts",
+      "rawModuleSha256": "cca838ead2777a79b3a9d11fab0d6ac553595e659ce35b998115680e565e08cc",
+      "rawObjectSha256": "39e4772dbc9a0a53233cf8e163ac756b7c50c420dc3da4acefb41ddc7d8e49c8",
+      "jsonStringifySha256": "6b5a31c13e94ded350b7fab92504633bcddb455e6676af88efcb4ac273a231d0",
+      "fullObjectSnapshot": {
+        "title": "Drei Kalender-Apps sind zwei zu viel",
+        "short": "Drei Apps sind zwei zu viel",
+        "description": "Zwischen Kalender-Apps zu wechseln ist kein Arbeitsablauf, sondern eine Steuer. Was sie kostet und wie ihre Abschaffung aussieht.",
+        "lede": "Niemand hat sich entschieden, drei Kalender-Apps zu führen. Es ist Konto für Konto passiert, und jede einzelne Ergänzung wirkte vernünftig.",
+        "commonBelief": "Dass App-Wechsel eine kleine Unbequemlichkeit sind und nicht die Quelle des eigentlichen Problems.",
+        "sections": [
+          {
+            "heading": "Der Preis ist nicht das Tippen",
+            "body": [
+              "Zwei Sekunden Umschalten sind nichts. Teuer ist, dass Sie Terminfragen aus unvollständiger Information beantworten, weil jedes Mal alle drei zu prüfen mehr Mühe ist, als die Frage zu verdienen scheint.",
+              "Also antworten Sie aus der App, die gerade offen ist, und korrigieren später. Die Korrektur ist der teure Teil, und sie landet auch im Kalender von jemand anderem."
+            ]
+          },
+          {
+            "heading": "Was tatsächlich wahr sein muss",
+            "body": [
+              "Ein Ort muss Ja oder Nein zu Ihrer Zeit sagen können. Das ist die ganze Anforderung, und keine Anordnung erfüllt sie, bei der die Antwort in mehr als einer App liegt.",
+              "Alles andere — welche App, welche Farben, welche Ansichten — ist Geschmack. Das hier ist Struktur."
+            ]
+          }
+        ],
+        "claims": {
+          "accounts": "Kontotypen, die eine Ansicht fassen kann"
+        },
+        "practical": [
+          "Wählen Sie die App, die alle Ihre Konten hält, nicht die, die Ihnen einzeln am besten gefällt.",
+          "Wandern Sie über Konten, nicht über Termine — die Termine bleiben, wo sie sind.",
+          "Löschen Sie die anderen Apps, sobald die Ansicht vollständig ist, sonst schauen Sie weiter hinein."
+        ],
+        "seeAlso": [
+          "icloud-google-and-outlook-in-one-view"
+        ]
+      },
+      "fullRead": true,
+      "scope": "Every field and every paragraph/practical/FAQ/source where present read in untruncated grouped output.",
+      "structure": {
+        "sections": 2,
+        "paragraphs": 4,
+        "practical": 3,
+        "faq": 0,
+        "sources": 0
+      },
+      "decision": "legacy_body_has_distinct_material_gaps_not_a_selection_append",
+      "recommendations": [
+        {
+          "path": "sections[1].body[0]",
+          "before": "Ein Ort muss Ja oder Nein zu Ihrer Zeit sagen können. Das ist die ganze Anforderung, und keine Anordnung erfüllt sie, bei der die Antwort in mehr als einer App liegt.",
+          "proposedAfter": "Eine gemeinsame Ansicht hilft, Termine zu vergleichen. Prüfen Sie die relevanten Konten und ausgewählten Kalender; eine sichtbare Lücke bestätigt weder vollständige Verfügbarkeit noch die Zustimmung anderer Personen.",
+          "rationale": "A single view is not definitive availability or approval; original absolute yes/no framing is not supported."
+        },
+        {
+          "path": "practical[1]",
+          "before": "Wandern Sie über Konten, nicht über Termine — die Termine bleiben, wo sie sind.",
+          "proposedAfter": "Verbinden Sie die vorgesehenen Konten, statt Ereignisse ungeprüft zu verschieben. Cloud Calendars kann für Anbieter-Verbindungen Kalenderkopien im iPhone-Kalendersystem anlegen; prüfen Sie Quelle und Ziel.",
+          "rationale": "Originals need not be moved, but account connections can create provider mirrors. Avoid leaving a no-copy implication."
+        },
+        {
+          "path": "practical[2]",
+          "before": "Löschen Sie die anderen Apps, sobald die Ansicht vollständig ist, sonst schauen Sie weiter hinein.",
+          "proposedAfter": "Behalten Sie erforderliche Apps, bis Sie die benötigten Aufgaben geprüft haben. Eine vollständige Ansicht ersetzt nicht automatisch Einladungsantworten, Zugriffsrechte oder andere vom Arbeitgeber vorgeschriebene Abläufe.",
+          "rationale": "Deleting other apps merely because the view looks complete may discard required workplace/invitation workflows. Retain needed apps until task verification."
+        }
+      ],
+      "remainingScope": "These exact targeted candidates address material wording found. Full alignment with current six-section EN would be a separate authorized translation task; do not claim current draft parity after three edits. No hide/selection instruction exists in this legacy body, so do not transplant the EN selection append blindly."
+    },
+    {
+      "locale": "de-DE",
+      "slug": "exchange-calendars-on-an-iphone",
+      "file": "src/app/content/de-DE/articles.ts",
+      "rawModuleSha256": "cca838ead2777a79b3a9d11fab0d6ac553595e659ce35b998115680e565e08cc",
+      "rawObjectSha256": "2c4e4903c9781ebfeaf011d285f60a4f156499dbeb67bfb3b8a6d2780fa512cc",
+      "jsonStringifySha256": "96766e2ec78836cc99df2550a978e359dd896d62c9e462d4a045ad6d508ab5ec",
+      "fullObjectSnapshot": {
+        "updated": "2026-10-21",
+        "title": "Microsoft- und Exchange-Kalender auf dem iPhone: zuerst die Verbindung prüfen",
+        "short": "Microsoft-Kalender auf dem iPhone",
+        "description": "Prüfe Microsoft-Kontotyp, Arbeitgeberfreigabe und Rechte, bevor du einen Arbeitskalender verbindest. Erfahre, was Cloud Calendars Premium ergänzt.",
+        "lede": "„Exchange-Kalender“ kann unterschiedliche Dienste und Arbeitsplatzregeln bedeuten. Kläre vor Einstellungsänderungen oder einem Kauf, wo dein Postfach liegt und welche Verbindung deine Organisation erlaubt. Dieser Leitfaden stammt von Arte Soft, dem Entwickler von Cloud Calendars.",
+        "commonBelief": "Jede App mit Microsoft-Anmeldung müsse mit jedem Exchange-Server und jedem geteilten Arbeitskalender funktionieren.",
+        "sections": [
+          {
+            "heading": "1. Bestimme das Postfach, nicht nur die Outlook-App",
+            "body": [
+              "Outlook ist eine App und ein Name für Microsoft-Dienste. Ein Konto in Outlook sagt nicht, welcher Server dessen Kalender bereitstellt. Frage nach, ob du ein persönliches Microsoft-Konto, ein Microsoft-365-Postfach in Exchange Online oder eine eigene Exchange-Installation der Organisation nutzt.",
+              "Cloud Calendars bietet Microsoft-Anmeldung und verwendet die Verbindung zum Microsoft-Kalenderdienst. Das ist keine universelle Einrichtung mit Serveradresse und Passwort für jede Exchange-Installation. Microsoft dokumentiert seine Kalender-API getrennt von allgemeinen Exchange-Einstellungen. Kläre den vorgesehenen Weg für dein Postfach, statt einen Servernamen zu erraten."
+            ]
+          },
+          {
+            "heading": "2. Trenne Apples Gerätekonto von der App-Verbindung",
+            "body": [
+              "Ein über ein genehmigtes Gerätekonto bereits in Apple Kalender verfügbarer Arbeitskalender nutzt einen anderen Weg als „Sign in with Microsoft“ in Cloud Calendars. Auch Kalender aus dem Kalendersystem des Telefons benötigen Kalenderzugriff. Eine erfolgreiche Einrichtung in Apples Einstellungen beweist nicht, dass eine separate Microsoft-Anmeldung genehmigt wird.",
+              "Prüfe vor einer weiteren Verbindung, wo der bestehende Arbeitskalender erscheint. Siehst du später zwei Versionen einer Besprechung, bestimme ihre Kalenderquellen und blende eine vorübergehend aus. Entferne keine Konten und lösche keine Ereignisse, um herauszufinden, welche Verbindung sie erzeugt hat."
+            ]
+          },
+          {
+            "heading": "3. Prüfe Premium und organisatorische Freigabe getrennt",
+            "body": [
+              "Premium ergänzt Cloud Calendars um Microsoft-Kalender- und Microsoft-Teams-Funktionen. Advanced entfernt Werbung aus Base, schaltet aber die Microsoft-Anmeldung der App nicht frei. Prüfe den aktuellen lokalen Kaufpreis und Abrechnungszeitraum statt einer Preisangabe für eine andere Region.",
+              "Ein Abonnement kann die Entscheidung eines Arbeitgebers zum App-Zugriff nicht aufheben. Microsoft erlaubt Organisationen, Nutzereinwilligungen zu steuern und Administratorfreigaben zu verlangen. Wird eine Freigabe angefordert, gib der Administration App-Name, vorgesehenes Konto und exakten Meldungstext. Veröffentliche den Arbeitskalender nicht und wechsle nicht zu einem privaten Konto, um diese Entscheidung zu umgehen."
+            ]
+          },
+          {
+            "heading": "4. Untersuche die fehlgeschlagene Phase",
+            "body": [
+              "Wird die Anmeldung nicht abgeschlossen, prüfe gewählte Identität, Netzwerk und Microsoft-Meldung. Eine Freigabeanforderung ist etwas anderes als eine abgelaufene Sitzung oder ein Verbindungsfehler. Nicht jede fehlgeschlagene Verbindung lässt sich auf Arbeitgeberregeln zurückführen.",
+              "Gelingt die Anmeldung, fehlt aber ein Kalender, prüfe Kontogruppe und Kalenderauswahl in Cloud Calendars und vergleiche dasselbe Konto in Outlook. Fehlt nur ein geteilter oder delegierter Kalender, während der eigene erscheint, untersuche dessen Zugriff gesondert. Allgemeine Microsoft-API-Funktionen garantieren nicht, dass jedes Szenario mit geteilten Postfächern oder Delegierung in dieser App verfügbar ist."
+            ]
+          },
+          {
+            "heading": "5. Unterscheide eine sichtbare Kopie von einer bestätigten Änderung",
+            "body": [
+              "Die Microsoft-Verbindung verwendet Kalenderkopien im Kalendersystem des iPhones. Ihr Speicherziel kann von den verfügbaren Quellen auf dem Gerät abhängen. Kläre für ein Arbeitskonto vor sensiblen Besprechungen, ob diese Anordnung den Vorgaben deiner Organisation entspricht. Gehe nicht davon aus, dass eine Kopie ausschließlich im ursprünglichen Postfach bleibt.",
+              "Ein Teamkalender kann etwa eine Besprechung anzeigen, deine Änderung aber wegen fehlender Rechte ablehnen. Eine erfolgreiche lokale Bearbeitung ist nicht die abschließende Prüfung. Vergleiche das Ereignis in Outlook mit demselben Konto. Teste nur ein entbehrliches Ereignis in einem eigenen Kalender, ohne Kollegen einzuladen oder eine bestehende Besprechung zu verändern."
+            ]
+          },
+          {
+            "heading": "6. Halte Zuständigkeit und Verfügbarkeit ausdrücklich fest",
+            "body": [
+              "Eine von einem Kollegen organisierte Besprechung darfst du nicht allein deshalb verschieben oder umschreiben, weil sie neben privaten Plänen erscheint. Berücksichtige Organisator, Arbeitskalender und vorgesehene Teilnehmende. Nutze den genehmigten Anbieterprozess, wenn eine Aktion fehlt oder eine Änderung den Server nicht erreicht.",
+              "Ebenso sperrt ein privater Termin neben Arbeitsterminen nicht automatisch die berufliche Verfügbarkeit und verbirgt seine Details nicht automatisch als allgemeinen Belegt-Eintrag. Frage nach einer unterstützten Freigabemethode und prüfe das Ergebnis. Ein schreibgeschützter Kalenderlink ersetzt keinen Bearbeitungszugriff, und die Veröffentlichung eines Links ist keine Abkürzung bei der Fehlersuche."
+            ]
+          }
+        ],
+        "claims": {},
+        "practical": [
+          "Kläre den Postfachanbieter und den von der Organisation erlaubten Verbindungsweg.",
+          "Prüfe, ob der Kalender bereits über ein Gerätekonto auf das iPhone gelangt.",
+          "Prüfe Premium getrennt von Microsoft-Einwilligung und Kalenderrechten.",
+          "Wähle bei der Microsoft-Anmeldung die richtige Identität und bewahre Fehlermeldungen für den Support auf.",
+          "Wähle nach der Anmeldung den benötigten Kalender und vergleiche ein aktuelles Ereignis in Outlook.",
+          "Bestätige eine erlaubte Teständerung beim Anbieter; lasse bestehende Einladungen und Serientermine unverändert."
+        ],
+        "faq": [
+          {
+            "q": "Garantiert Premium die Verbindung zum Exchange-Server meiner Firma?",
+            "a": "Nein. Premium aktiviert die Microsoft-Funktionen der App. Postfachkompatibilität, Freigabe der Organisation und Rechte einzelner Kalender sind getrennte Voraussetzungen. Bestätige die Verbindung mit der Administration, bevor du eine Exchange-Installation als unterstützt betrachtest."
+          },
+          {
+            "q": "Warum funktioniert Outlook, während eine andere Kalender-App abgelehnt wird?",
+            "a": "Apps können unterschiedliche Rechte und Freigaben benötigen. Ein funktionierendes Outlook ist eine nützliche Referenz für das Konto, beweist aber keine Freigabe für eine andere App. Nutze den tatsächlichen Fehler oder die Freigabeanforderung zur Diagnose."
+          },
+          {
+            "q": "Kann ich bei blockierter Microsoft-Anmeldung einen öffentlichen Kalenderlink verwenden?",
+            "a": "Veröffentliche keine Arbeitsinformationen, um eine blockierte Verbindung zu umgehen. Ein Kalenderabonnement ist normalerweise schreibgeschützt und kein gleichwertiger Bearbeitungszugriff. Frage Eigentümer oder Administration nach einer genehmigten Methode; setze nicht voraus, dass ein veröffentlichter Link erlaubt ist."
+          }
+        ],
+        "sourcesHeading": "Quellen und Anbieterhinweise",
+        "sources": [
+          {
+            "label": "Microsoft: Outlook-Kalender-API und unterstützte Postfachdaten",
+            "url": "https://learn.microsoft.com/en-us/graph/outlook-calendar-concept-overview"
+          },
+          {
+            "label": "Microsoft: Einwilligung von Nutzern und Administratoren",
+            "url": "https://learn.microsoft.com/en-us/entra/identity/enterprise-apps/user-admin-consent-overview"
+          },
+          {
+            "label": "Apple: mehrere Kalender und schreibgeschützte Abonnements",
+            "url": "https://support.apple.com/en-lamr/guide/iphone/iph3d1110d4/ios"
+          }
+        ],
+        "seeAlso": [
+          "icloud-google-and-outlook-in-one-view",
+          "what-a-subscription-actually-buys"
+        ]
+      },
+      "fullRead": true,
+      "scope": "Every field and every paragraph/practical/FAQ/source where present read in untruncated grouped output.",
+      "structure": {
+        "sections": 6,
+        "paragraphs": 12,
+        "practical": 6,
+        "faq": 3,
+        "sources": 3
+      },
+      "decision": "targeted_selection_append_required",
+      "recommendations": [
+        {
+          "path": "sections[1].body[1]",
+          "before": "Prüfe vor einer weiteren Verbindung, wo der bestehende Arbeitskalender erscheint. Siehst du später zwei Versionen einer Besprechung, bestimme ihre Kalenderquellen und blende eine vorübergehend aus. Entferne keine Konten und lösche keine Ereignisse, um herauszufinden, welche Verbindung sie erzeugt hat.",
+          "proposedAfter": "Prüfe vor einer weiteren Verbindung, wo der bestehende Arbeitskalender erscheint. Siehst du später zwei Versionen einer Besprechung, bestimme ihre Kalenderquellen und blende eine vorübergehend aus. Entferne keine Konten und lösche keine Ereignisse, um herauszufinden, welche Verbindung sie erzeugt hat. Notiere in Cloud Calendars die ursprüngliche Auswahl und stelle sie nach dem Vergleich wieder her. Die Auswahl kann auch Widgets und die Planung von Benachrichtigungen beeinflussen; gehe nicht davon aus, dass sie nur die Anzeige verändert.",
+          "rationale": "Same diagnostic hiding step as corrected EN, without selection restoration or widget/notification consequences. No Google-specific effect added to Microsoft-focused text, no Microsoft pause/resume claim."
+        }
+      ],
+      "remainingScope": "Preserve all other provider/tier/permission/mirror/ownership text."
+    },
+    {
+      "locale": "es-ES",
+      "slug": "three-calendar-apps-is-two-too-many",
+      "file": "src/app/content/es-ES/articles.ts",
+      "rawModuleSha256": "6965abaed93325ca667163c6ac6d6c1f341ea773604e326e96f44cef941e58da",
+      "rawObjectSha256": "2e1f0857e035fa5cbd3e04aebd17eb0b1984e31f2a3780a49786fbbfd2a907c5",
+      "jsonStringifySha256": "c31be4e4ab684331a88a89b1e302b209623a42fe8b9240316deff327b2dfd47e",
+      "fullObjectSnapshot": {
+        "title": "Tres aplicaciones de calendario son dos de más",
+        "short": "Tres aplicaciones son dos de más",
+        "description": "Cambiar de aplicación de calendario no es un flujo de trabajo, es un impuesto. Lo que cuesta y cómo se ve sustituirlo.",
+        "lede": "Nadie eligió tener tres aplicaciones de calendario. Ocurrió una cuenta cada vez, y cada añadido parecía razonable.",
+        "commonBelief": "Que cambiar de aplicación es una molestia menor y no el origen del problema real.",
+        "sections": [
+          {
+            "heading": "El coste no son los toques",
+            "body": [
+              "Dos segundos cambiando no son nada. Lo caro es que responde a preguntas de agenda con información parcial, porque comprobar las tres cada vez cuesta más de lo que la pregunta parece merecer.",
+              "Así que responde desde la que tiene abierta y corrige después. La corrección es la parte cara, y además aterriza en el calendario de otra persona."
+            ]
+          },
+          {
+            "heading": "Qué tiene que ser cierto",
+            "body": [
+              "Un sitio tiene que poder decir sí o no sobre su tiempo. Ese es todo el requisito, y no lo cumple ningún arreglo en el que la respuesta viva en más de una aplicación.",
+              "Todo lo demás — qué aplicación, qué colores, qué vistas — es preferencia. Esto es estructura."
+            ]
+          }
+        ],
+        "claims": {
+          "accounts": "Tipos de cuenta que cabe en una vista"
+        },
+        "practical": [
+          "Elija la aplicación que sostiene todas sus cuentas, no la que más le gusta por separado.",
+          "Migre añadiendo cuentas, no moviendo eventos: los eventos se quedan donde están.",
+          "Borre las otras aplicaciones cuando la vista esté completa, o seguirá consultándolas."
+        ],
+        "seeAlso": [
+          "icloud-google-and-outlook-in-one-view"
+        ]
+      },
+      "fullRead": true,
+      "scope": "Every field and every paragraph/practical/FAQ/source where present read in untruncated grouped output.",
+      "structure": {
+        "sections": 2,
+        "paragraphs": 4,
+        "practical": 3,
+        "faq": 0,
+        "sources": 0
+      },
+      "decision": "legacy_body_has_distinct_material_gaps_not_a_selection_append",
+      "recommendations": [
+        {
+          "path": "sections[1].body[0]",
+          "before": "Un sitio tiene que poder decir sí o no sobre su tiempo. Ese es todo el requisito, y no lo cumple ningún arreglo en el que la respuesta viva en más de una aplicación.",
+          "proposedAfter": "Una vista conjunta ayuda a comparar compromisos. Compruebe las cuentas pertinentes y los calendarios seleccionados; un hueco visible no confirma toda la disponibilidad ni la aprobación de otras personas.",
+          "rationale": "A single view is not definitive availability or approval; original absolute yes/no framing is not supported."
+        },
+        {
+          "path": "practical[1]",
+          "before": "Migre añadiendo cuentas, no moviendo eventos: los eventos se quedan donde están.",
+          "proposedAfter": "Conecte las cuentas previstas en lugar de mover eventos sin comprobarlos. Las conexiones de proveedores de Cloud Calendars pueden crear copias de calendarios en el sistema del iPhone; revise el origen y el destino.",
+          "rationale": "Originals need not be moved, but account connections can create provider mirrors. Avoid leaving a no-copy implication."
+        },
+        {
+          "path": "practical[2]",
+          "before": "Borre las otras aplicaciones cuando la vista esté completa, o seguirá consultándolas.",
+          "proposedAfter": "Conserve las aplicaciones necesarias hasta comprobar las tareas que utiliza. Una vista completa no sustituye automáticamente las respuestas a invitaciones, los permisos ni otros procedimientos exigidos por su empresa.",
+          "rationale": "Deleting other apps merely because the view looks complete may discard required workplace/invitation workflows. Retain needed apps until task verification."
+        }
+      ],
+      "remainingScope": "These exact targeted candidates address material wording found. Full alignment with current six-section EN would be a separate authorized translation task; do not claim current draft parity after three edits. No hide/selection instruction exists in this legacy body, so do not transplant the EN selection append blindly."
+    },
+    {
+      "locale": "es-ES",
+      "slug": "exchange-calendars-on-an-iphone",
+      "file": "src/app/content/es-ES/articles.ts",
+      "rawModuleSha256": "6965abaed93325ca667163c6ac6d6c1f341ea773604e326e96f44cef941e58da",
+      "rawObjectSha256": "831cd26a3107baa12dfd2892051269340adec7e06fd6fe95725de509dded0a5b",
+      "jsonStringifySha256": "fbeef4df764b723dff3a31665a77aac082847d7231367239926eefa92e074675",
+      "fullObjectSnapshot": {
+        "updated": "2026-10-21",
+        "title": "Calendarios Microsoft y Exchange en iPhone: comprueba primero la conexión",
+        "short": "Calendarios Microsoft en iPhone",
+        "description": "Revisa el tipo de cuenta Microsoft, la autorización de la empresa y los permisos antes de conectar el calendario. Qué añade Cloud Calendars Premium.",
+        "lede": "«Calendario Exchange» puede significar servicios y normas laborales distintos. Antes de cambiar ajustes o comprar un plan, identifica dónde se aloja tu buzón y qué conexión permite tu organización. Esta guía la escribe Arte Soft, desarrollador de Cloud Calendars.",
+        "commonBelief": "Toda app con inicio de sesión Microsoft debe funcionar con cualquier servidor Exchange y calendario laboral compartido.",
+        "sections": [
+          {
+            "heading": "1. Identifica el buzón, no solo la app Outlook",
+            "body": [
+              "Outlook es una app y también un nombre usado para servicios de Microsoft. Tener una cuenta en Outlook no indica qué servidor aloja su calendario. Pregunta si usas una cuenta Microsoft personal, un buzón Microsoft 365 en Exchange Online o una instalación Exchange propia de la organización.",
+              "Cloud Calendars ofrece inicio de sesión Microsoft y usa la conexión a su servicio de calendarios. No es una configuración universal mediante dirección de servidor y contraseña para cualquier Exchange. Microsoft documenta su API de calendario por separado de la configuración genérica de Exchange: confirma la vía prevista para tu buzón en lugar de adivinar un servidor."
+            ]
+          },
+          {
+            "heading": "2. Separa la cuenta del dispositivo Apple de la conexión de la app",
+            "body": [
+              "Un calendario laboral ya disponible en Calendario de Apple mediante una cuenta de dispositivo autorizada utiliza una vía distinta de «Sign in with Microsoft» dentro de Cloud Calendars. Los calendarios expuestos por el sistema del teléfono también dependen del permiso de acceso. Configurar correctamente la cuenta en los ajustes de Apple no demuestra que se apruebe otro inicio de sesión Microsoft.",
+              "Antes de añadir otra conexión, revisa dónde aparece el calendario laboral existente. Si después ves dos versiones de una reunión, identifica sus fuentes y oculta una temporalmente. No uses la eliminación de cuentas o eventos para diagnosticar qué conexión los generó."
+            ]
+          },
+          {
+            "heading": "3. Comprueba Premium y la autorización de la organización por separado",
+            "body": [
+              "Premium añade funciones de Microsoft Calendar y Microsoft Teams a Cloud Calendars. Advanced elimina anuncios de Base; no desbloquea el inicio de sesión Microsoft de la app. Revisa el precio local actual y el periodo de facturación en lugar de confiar en un precio de otra región.",
+              "Una suscripción no puede anular la decisión de una empresa sobre el acceso de apps. Microsoft permite controlar el consentimiento del usuario y exigir aprobación administrativa. Si la página solicita aprobación, facilita al administrador el nombre de la app, la cuenta prevista y el mensaje exacto. No publiques el calendario laboral ni cambies a una cuenta personal para eludir esa decisión."
+            ]
+          },
+          {
+            "heading": "4. Diagnostica en qué fase se produjo el fallo",
+            "body": [
+              "Si el inicio de sesión no termina, revisa la identidad seleccionada, la red y el mensaje de Microsoft. Una solicitud de aprobación es distinta de una sesión caducada o un fallo de conexión. No hay base para suponer que todo fallo sea una política de la empresa.",
+              "Si entras pero falta un calendario, revisa el grupo de la cuenta y la selección en Cloud Calendars y compara con la misma cuenta en Outlook. Si falta un calendario compartido o delegado mientras aparece el tuyo, investiga el acceso a ese calendario concreto. Las capacidades generales de la API de Microsoft no garantizan todos los casos de buzones compartidos o delegación en esta app."
+            ]
+          },
+          {
+            "heading": "5. Distingue una copia visible de una actualización confirmada",
+            "body": [
+              "La conexión Microsoft usa copias de calendarios en el sistema del iPhone. Su destino de almacenamiento puede depender de las fuentes disponibles en el dispositivo. En una cuenta laboral, confirma que esta disposición cumple los requisitos de la organización antes de usarla para reuniones sensibles; no supongas que la copia permanece solo en el buzón original.",
+              "Por ejemplo, un calendario de equipo puede mostrar una reunión y rechazar tu cambio por falta de permisos. Una edición local correcta no es la comprobación final. Compara el evento en Outlook con la misma cuenta. Prueba solo un evento desechable en un calendario tuyo, sin invitar a compañeros ni modificar una reunión establecida."
+            ]
+          },
+          {
+            "heading": "6. Mantén explícitas la propiedad y la disponibilidad",
+            "body": [
+              "Una reunión organizada por un compañero no es tuya para trasladarla o reescribirla solo porque aparezca junto a tus planes personales. Ten presentes el organizador, el calendario laboral y los participantes previstos. Usa el proceso autorizado del proveedor si la acción necesaria no está disponible o el cambio no llega al servidor.",
+              "Del mismo modo, mostrar una cita personal junto al trabajo no bloquea automáticamente la disponibilidad laboral ni oculta sus detalles como una entrada genérica de ocupado. Si ese es tu objetivo, pregunta qué método admite la organización y verifica el resultado. Un enlace de solo lectura no sustituye el acceso editable, y publicar un enlace no es un atajo para resolver problemas."
+            ]
+          }
+        ],
+        "claims": {},
+        "practical": [
+          "Identifica dónde se aloja el buzón y qué conexión permite la organización.",
+          "Comprueba si el calendario ya llega al iPhone mediante una cuenta del dispositivo.",
+          "Revisa Premium por separado del consentimiento Microsoft y los permisos del calendario.",
+          "Elige la identidad prevista al iniciar sesión y conserva cualquier error para soporte.",
+          "Después de entrar, selecciona el calendario necesario y compara un evento reciente en Outlook.",
+          "Confirma un cambio de prueba autorizado en el proveedor; deja intactas invitaciones y reuniones recurrentes."
+        ],
+        "faq": [
+          {
+            "q": "¿Premium garantiza que se conecte el Exchange de mi empresa?",
+            "a": "No. Premium habilita las funciones Microsoft de la app. Compatibilidad del buzón, aprobación de la organización y permisos de cada calendario son requisitos separados. Confirma la conexión con el administrador antes de dar una instalación Exchange por compatible."
+          },
+          {
+            "q": "¿Por qué funciona Outlook y se rechaza otra app de calendario?",
+            "a": "Las apps pueden tener permisos y requisitos de aprobación distintos. Que Outlook funcione sirve de referencia para la cuenta, pero no establece autorización para otra app. Usa el error real o la solicitud de aprobación para identificar el problema."
+          },
+          {
+            "q": "¿Puedo usar un enlace público si se bloquea el inicio de sesión Microsoft?",
+            "a": "No publiques información laboral para sortear un bloqueo. Una suscripción suele ser una vista de solo lectura, no equivalente al acceso editable. Pide al propietario o administrador un método aprobado; no supongas que publicar un enlace esté permitido."
+          }
+        ],
+        "sourcesHeading": "Fuentes y orientación de los proveedores",
+        "sources": [
+          {
+            "label": "Microsoft: API de calendario de Outlook y datos de buzón compatibles",
+            "url": "https://learn.microsoft.com/en-us/graph/outlook-calendar-concept-overview"
+          },
+          {
+            "label": "Microsoft: consentimiento del usuario y del administrador",
+            "url": "https://learn.microsoft.com/en-us/entra/identity/enterprise-apps/user-admin-consent-overview"
+          },
+          {
+            "label": "Apple: varios calendarios y suscripciones de solo lectura",
+            "url": "https://support.apple.com/en-lamr/guide/iphone/iph3d1110d4/ios"
+          }
+        ],
+        "seeAlso": [
+          "icloud-google-and-outlook-in-one-view",
+          "what-a-subscription-actually-buys"
+        ]
+      },
+      "fullRead": true,
+      "scope": "Every field and every paragraph/practical/FAQ/source where present read in untruncated grouped output.",
+      "structure": {
+        "sections": 6,
+        "paragraphs": 12,
+        "practical": 6,
+        "faq": 3,
+        "sources": 3
+      },
+      "decision": "targeted_selection_append_required",
+      "recommendations": [
+        {
+          "path": "sections[1].body[1]",
+          "before": "Antes de añadir otra conexión, revisa dónde aparece el calendario laboral existente. Si después ves dos versiones de una reunión, identifica sus fuentes y oculta una temporalmente. No uses la eliminación de cuentas o eventos para diagnosticar qué conexión los generó.",
+          "proposedAfter": "Antes de añadir otra conexión, revisa dónde aparece el calendario laboral existente. Si después ves dos versiones de una reunión, identifica sus fuentes y oculta una temporalmente. No uses la eliminación de cuentas o eventos para diagnosticar qué conexión los generó. En Cloud Calendars, anota la selección original y restablécela después de comparar. La selección también puede afectar a los widgets y a la programación de notificaciones; no supongas que solo cambia la visualización.",
+          "rationale": "Same diagnostic hiding step as corrected EN, without selection restoration or widget/notification consequences. No Google-specific effect added to Microsoft-focused text, no Microsoft pause/resume claim."
+        }
+      ],
+      "remainingScope": "Preserve all other provider/tier/permission/mirror/ownership text."
+    },
+    {
+      "locale": "fr-FR",
+      "slug": "three-calendar-apps-is-two-too-many",
+      "file": "src/app/content/fr-FR/articles.ts",
+      "rawModuleSha256": "4ec1e59246b8bbe593ad20cbfcd4287fef94cc5f6425ca98faef4f501c44d209",
+      "rawObjectSha256": "590b2d10164a69c1d8c0e0d800428062d858fbc5c7da11bcb773f38033807140",
+      "jsonStringifySha256": "ab3f1fa3207a1fd04f1e6e113554fe7186991cfa41a976a23c5cd84c111eab23",
+      "fullObjectSnapshot": {
+        "title": "Trois applications d'agenda, c'est deux de trop",
+        "short": "Trois applications, deux de trop",
+        "description": "Passer d'une application d'agenda à l'autre n'est pas une méthode de travail, c'est un impôt. Ce qu'il coûte et à quoi ressemble sa suppression.",
+        "lede": "Personne n'a choisi d'avoir trois applications d'agenda. C'est arrivé un compte à la fois, et chaque ajout paraissait raisonnable.",
+        "commonBelief": "Que changer d'application est un désagrément mineur et non la source du vrai problème.",
+        "sections": [
+          {
+            "heading": "Le coût n'est pas dans les touches",
+            "body": [
+              "Deux secondes de bascule, ce n'est rien. Ce qui coûte cher, c'est de répondre à des questions d'emploi du temps avec une information partielle, parce que vérifier les trois à chaque fois demande plus d'effort que la question ne semble en mériter.",
+              "Alors vous répondez depuis celle qui est ouverte, et vous corrigez ensuite. La correction est la partie chère, et elle atterrit en plus dans l'agenda de quelqu'un d'autre."
+            ]
+          },
+          {
+            "heading": "Ce qui doit être vrai",
+            "body": [
+              "Un endroit doit pouvoir dire oui ou non à propos de votre temps. C'est toute l'exigence, et aucun arrangement où la réponse vit dans plus d'une application ne la satisfait.",
+              "Tout le reste — quelle application, quelles couleurs, quelles vues — relève du goût. Ceci relève de la structure."
+            ]
+          }
+        ],
+        "claims": {
+          "accounts": "Types de comptes qu'une seule vue peut contenir"
+        },
+        "practical": [
+          "Choisissez l'application qui tient tous vos comptes, pas celle que vous préférez isolément.",
+          "Migrez en ajoutant des comptes, pas en déplaçant des événements : les événements restent où ils sont.",
+          "Supprimez les autres applications une fois la vue complète, sinon vous continuerez d'y jeter un œil."
+        ],
+        "seeAlso": [
+          "icloud-google-and-outlook-in-one-view"
+        ]
+      },
+      "fullRead": true,
+      "scope": "Every field and every paragraph/practical/FAQ/source where present read in untruncated grouped output.",
+      "structure": {
+        "sections": 2,
+        "paragraphs": 4,
+        "practical": 3,
+        "faq": 0,
+        "sources": 0
+      },
+      "decision": "legacy_body_has_distinct_material_gaps_not_a_selection_append",
+      "recommendations": [
+        {
+          "path": "sections[1].body[0]",
+          "before": "Un endroit doit pouvoir dire oui ou non à propos de votre temps. C'est toute l'exigence, et aucun arrangement où la réponse vit dans plus d'une application ne la satisfait.",
+          "proposedAfter": "Une vue commune aide à comparer les engagements. Vérifiez les comptes pertinents et les calendriers sélectionnés ; une plage vide ne confirme ni toute la disponibilité ni l’accord d’autres personnes.",
+          "rationale": "A single view is not definitive availability or approval; original absolute yes/no framing is not supported."
+        },
+        {
+          "path": "practical[1]",
+          "before": "Migrez en ajoutant des comptes, pas en déplaçant des événements : les événements restent où ils sont.",
+          "proposedAfter": "Connectez les comptes prévus plutôt que de déplacer des événements sans vérification. Les connexions aux fournisseurs de Cloud Calendars peuvent créer des copies de calendriers dans le système de l’iPhone ; vérifiez la source et la destination.",
+          "rationale": "Originals need not be moved, but account connections can create provider mirrors. Avoid leaving a no-copy implication."
+        },
+        {
+          "path": "practical[2]",
+          "before": "Supprimez les autres applications une fois la vue complète, sinon vous continuerez d'y jeter un œil.",
+          "proposedAfter": "Conservez les applications nécessaires jusqu’à avoir vérifié les tâches dont vous avez besoin. Une vue complète ne remplace pas automatiquement les réponses aux invitations, les autorisations ou les procédures imposées par votre organisation.",
+          "rationale": "Deleting other apps merely because the view looks complete may discard required workplace/invitation workflows. Retain needed apps until task verification."
+        }
+      ],
+      "remainingScope": "These exact targeted candidates address material wording found. Full alignment with current six-section EN would be a separate authorized translation task; do not claim current draft parity after three edits. No hide/selection instruction exists in this legacy body, so do not transplant the EN selection append blindly."
+    },
+    {
+      "locale": "fr-FR",
+      "slug": "exchange-calendars-on-an-iphone",
+      "file": "src/app/content/fr-FR/articles.ts",
+      "rawModuleSha256": "4ec1e59246b8bbe593ad20cbfcd4287fef94cc5f6425ca98faef4f501c44d209",
+      "rawObjectSha256": "838ac4add1bbcb2138578aef4f1756147fd7e533678936fd96044926b3cc7220",
+      "jsonStringifySha256": "390729da58acf387ac352617535675d37ed4da72fa03e727f05e6db95efefe14",
+      "fullObjectSnapshot": {
+        "updated": "2026-10-21",
+        "title": "Calendriers Microsoft et Exchange sur iPhone : vérifiez d’abord la connexion",
+        "short": "Calendriers Microsoft sur iPhone",
+        "description": "Vérifiez le type de compte Microsoft, l’accord de l’employeur et les droits avant de connecter un calendrier. Ce qu’ajoute Cloud Calendars Premium.",
+        "lede": "« Calendrier Exchange » peut désigner différents services et règles professionnelles. Avant de modifier des réglages ou d’acheter une formule, identifiez l’hébergement de votre boîte aux lettres et la connexion autorisée. Ce guide est rédigé par Arte Soft, développeur de Cloud Calendars.",
+        "commonBelief": "Toute app avec connexion Microsoft devrait fonctionner avec chaque serveur Exchange et chaque calendrier professionnel partagé.",
+        "sections": [
+          {
+            "heading": "1. Identifiez la boîte aux lettres, pas seulement l’app Outlook",
+            "body": [
+              "Outlook désigne une app et des services Microsoft. Avoir un compte dans Outlook ne révèle pas quel serveur héberge son calendrier. Demandez si vous utilisez un compte Microsoft personnel, une boîte Microsoft 365 dans Exchange Online ou une installation Exchange propre à l’organisation.",
+              "Cloud Calendars propose la connexion Microsoft et utilise le service de calendrier Microsoft. Ce n’est pas une configuration universelle par adresse de serveur et mot de passe pour toutes les installations Exchange. Microsoft documente son API de calendrier séparément de la configuration Exchange générique : confirmez la voie prévue pour votre boîte plutôt que de deviner un serveur."
+            ]
+          },
+          {
+            "heading": "2. Séparez le compte de l’appareil Apple de la connexion de l’app",
+            "body": [
+              "Un calendrier professionnel déjà accessible dans Calendrier Apple via un compte d’appareil approuvé emprunte une autre voie que « Sign in with Microsoft » dans Cloud Calendars. Les calendriers exposés par le système du téléphone dépendent aussi de l’autorisation d’accès. Une configuration réussie dans les réglages Apple ne prouve pas qu’une connexion Microsoft distincte sera autorisée.",
+              "Avant d’ajouter une connexion, examinez où apparaît le calendrier existant. Si vous voyez ensuite deux versions d’une réunion, identifiez leurs sources et masquez-en une temporairement. Évitez de supprimer comptes ou événements pour déterminer quelle connexion les a produits."
+            ]
+          },
+          {
+            "heading": "3. Vérifiez Premium et l’accord de l’organisation séparément",
+            "body": [
+              "Premium ajoute les fonctions de calendrier Microsoft et Microsoft Teams à Cloud Calendars. Advanced supprime les publicités de Base ; il ne débloque pas la connexion Microsoft de l’app. Consultez le prix local actuel et la période de facturation plutôt qu’un prix annoncé pour une autre région.",
+              "Un abonnement ne peut pas annuler la décision d’un employeur sur l’accès d’une app. Microsoft permet aux organisations de contrôler le consentement des utilisateurs et d’exiger une approbation administrative. Si la page la demande, transmettez à l’administrateur le nom de l’app, le compte prévu et le message exact. Ne publiez pas le calendrier professionnel et ne passez pas à un compte personnel pour contourner cette décision."
+            ]
+          },
+          {
+            "heading": "4. Diagnostiquez l’étape qui a échoué",
+            "body": [
+              "Si la connexion ne se termine pas, vérifiez l’identité sélectionnée, le réseau et le message Microsoft. Une demande d’approbation diffère d’une session expirée ou d’une panne de connexion. Rien ne permet de supposer que chaque échec relève d’une règle de l’employeur.",
+              "Si la connexion réussit mais qu’un calendrier manque, examinez le groupe du compte et la sélection dans Cloud Calendars, puis comparez avec le même compte dans Outlook. Si seul un calendrier partagé ou délégué manque, étudiez ses droits spécifiques. Les capacités générales de l’API Microsoft ne garantissent pas que tous les cas de boîtes partagées ou de délégation soient disponibles dans cette app."
+            ]
+          },
+          {
+            "heading": "5. Distinguez une copie visible d’une mise à jour confirmée",
+            "body": [
+              "La connexion Microsoft utilise des copies dans le système de calendrier de l’iPhone. Leur destination de stockage peut dépendre des sources disponibles sur l’appareil. Pour un compte professionnel, confirmez que cette organisation respecte les exigences de votre entreprise avant de l’utiliser pour des réunions sensibles ; ne supposez pas qu’une copie reste uniquement dans la boîte d’origine.",
+              "Un calendrier d’équipe peut, par exemple, afficher une réunion mais refuser votre modification faute de droits. Une édition locale réussie n’est pas la vérification finale. Comparez l’événement dans Outlook avec le même compte. Testez uniquement un événement jetable dans un calendrier qui vous appartient, sans inviter de collègues ni modifier une réunion établie."
+            ]
+          },
+          {
+            "heading": "6. Gardez explicites la responsabilité et la disponibilité",
+            "body": [
+              "Une réunion organisée par un collègue n’est pas à déplacer ou réécrire simplement parce qu’elle apparaît près de vos plans personnels. Gardez à l’esprit l’organisateur, le calendrier professionnel et les participants prévus. Utilisez la procédure approuvée du fournisseur si l’action manque ou si une modification n’atteint pas le serveur.",
+              "De même, afficher un rendez-vous personnel près du travail ne bloque pas automatiquement la disponibilité professionnelle et ne masque pas ses détails dans une simple entrée occupée. Si c’est votre objectif, demandez quelle méthode l’organisation prend en charge et vérifiez le résultat. Un lien en lecture seule ne remplace pas un accès modifiable, et publier un lien n’est pas un raccourci de dépannage."
+            ]
+          }
+        ],
+        "claims": {},
+        "practical": [
+          "Identifiez l’hébergement de la boîte et la connexion autorisée par l’organisation.",
+          "Vérifiez si le calendrier arrive déjà sur l’iPhone via un compte d’appareil.",
+          "Examinez Premium séparément du consentement Microsoft et des droits du calendrier.",
+          "Choisissez l’identité prévue à la connexion et conservez les messages d’erreur pour l’assistance.",
+          "Après connexion, sélectionnez le calendrier nécessaire et comparez un événement récent dans Outlook.",
+          "Confirmez une modification de test autorisée chez le fournisseur ; préservez invitations et réunions récurrentes."
+        ],
+        "faq": [
+          {
+            "q": "Premium garantit-il la connexion au serveur Exchange de mon entreprise ?",
+            "a": "Non. Premium active les fonctions Microsoft de l’app. Compatibilité de la boîte, accord de l’organisation et autorisations des calendriers sont distincts. Confirmez la connexion avec l’administrateur avant de considérer une installation Exchange comme prise en charge."
+          },
+          {
+            "q": "Pourquoi Outlook fonctionne-t-il alors qu’une autre app est refusée ?",
+            "a": "Les apps peuvent avoir des permissions et exigences d’approbation différentes. Outlook est une référence utile pour le compte, mais ne prouve pas qu’une autre app est approuvée. Utilisez l’erreur réelle ou la demande d’approbation pour identifier le point à traiter."
+          },
+          {
+            "q": "Puis-je utiliser un lien public si la connexion Microsoft est bloquée ?",
+            "a": "Ne publiez pas d’informations professionnelles pour contourner un blocage. Un abonnement est généralement en lecture seule, sans équivalence avec un accès modifiable. Demandez au propriétaire ou à l’administrateur une méthode approuvée ; ne supposez pas qu’un lien publié soit autorisé."
+          }
+        ],
+        "sourcesHeading": "Sources et conseils des fournisseurs",
+        "sources": [
+          {
+            "label": "Microsoft : API de calendrier Outlook et données de boîte aux lettres prises en charge",
+            "url": "https://learn.microsoft.com/en-us/graph/outlook-calendar-concept-overview"
+          },
+          {
+            "label": "Microsoft : consentement des utilisateurs et administrateurs",
+            "url": "https://learn.microsoft.com/en-us/entra/identity/enterprise-apps/user-admin-consent-overview"
+          },
+          {
+            "label": "Apple : plusieurs calendriers et abonnements en lecture seule",
+            "url": "https://support.apple.com/en-lamr/guide/iphone/iph3d1110d4/ios"
+          }
+        ],
+        "seeAlso": [
+          "icloud-google-and-outlook-in-one-view",
+          "what-a-subscription-actually-buys"
+        ]
+      },
+      "fullRead": true,
+      "scope": "Every field and every paragraph/practical/FAQ/source where present read in untruncated grouped output.",
+      "structure": {
+        "sections": 6,
+        "paragraphs": 12,
+        "practical": 6,
+        "faq": 3,
+        "sources": 3
+      },
+      "decision": "targeted_selection_append_required",
+      "recommendations": [
+        {
+          "path": "sections[1].body[1]",
+          "before": "Avant d’ajouter une connexion, examinez où apparaît le calendrier existant. Si vous voyez ensuite deux versions d’une réunion, identifiez leurs sources et masquez-en une temporairement. Évitez de supprimer comptes ou événements pour déterminer quelle connexion les a produits.",
+          "proposedAfter": "Avant d’ajouter une connexion, examinez où apparaît le calendrier existant. Si vous voyez ensuite deux versions d’une réunion, identifiez leurs sources et masquez-en une temporairement. Évitez de supprimer comptes ou événements pour déterminer quelle connexion les a produits. Dans Cloud Calendars, notez la sélection initiale et rétablissez-la après la comparaison. La sélection peut aussi agir sur les widgets et la programmation des notifications ; ne supposez pas qu’elle concerne uniquement l’affichage.",
+          "rationale": "Same diagnostic hiding step as corrected EN, without selection restoration or widget/notification consequences. No Google-specific effect added to Microsoft-focused text, no Microsoft pause/resume claim."
+        }
+      ],
+      "remainingScope": "Preserve all other provider/tier/permission/mirror/ownership text."
+    }
+  ],
+  "absent": [
+    {
+      "locale": "bg",
+      "slug": "three-calendar-apps-is-two-too-many",
+      "status": "no_actual_definition",
+      "checked": "All actual articles*.ts exported objects in locale; no synthetic edition or route created."
+    },
+    {
+      "locale": "bg",
+      "slug": "exchange-calendars-on-an-iphone",
+      "status": "no_actual_definition",
+      "checked": "All actual articles*.ts exported objects in locale; no synthetic edition or route created."
+    },
+    {
+      "locale": "ja",
+      "slug": "three-calendar-apps-is-two-too-many",
+      "status": "no_actual_definition",
+      "checked": "All actual articles*.ts exported objects in locale; no synthetic edition or route created."
+    },
+    {
+      "locale": "ja",
+      "slug": "exchange-calendars-on-an-iphone",
+      "status": "no_actual_definition",
+      "checked": "All actual articles*.ts exported objects in locale; no synthetic edition or route created."
+    },
+    {
+      "locale": "ar-SA",
+      "slug": "three-calendar-apps-is-two-too-many",
+      "status": "no_actual_definition",
+      "checked": "All actual articles*.ts exported objects in locale; no synthetic edition or route created."
+    },
+    {
+      "locale": "ar-SA",
+      "slug": "exchange-calendars-on-an-iphone",
+      "status": "no_actual_definition",
+      "checked": "All actual articles*.ts exported objects in locale; no synthetic edition or route created."
+    }
+  ],
+  "evidence": {
+    "currentEnglish": "src/app/content/en-US/articles-unify.ts corrected three-apps section4body0 and Exchange section1body1",
+    "selection": "Reused research/batch26-duplicates/product-evidence.json and root-preparation-review.json: selected-calendar consumers include widgets/notifications, Google-specific sync guards; no identical all-provider behavior.",
+    "ownershipMirrors": "Current EN three-apps full review in research/batch31-english-reviews/part-a.json and established provider-copy evidence; required work apps retained."
+  },
+  "limits": [
+    "Own-language bounded semantic review, not native-speaker or runtime certification.",
+    "Exact before/after recommendations embedded only in this audit; no source or localization draft modified.",
+    "No native/API/customer/network/build/deploy/commit action.",
+    "Absence of editions is not an instruction to generate them."
+  ],
+  "hashMethod": "Rawmodule exactfilebytes; rawobject exactASTinitializertext; JSONhash UTF8JSON.stringify parsedobject preservingpropertyorder."
+}

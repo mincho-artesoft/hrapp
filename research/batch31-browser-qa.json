@@ -1,0 +1,59 @@
+{
+  "checkedAt": "2026-10-22T02:38:47.407834+00:00",
+  "allPassed": true,
+  "pricing": {
+    "finalMarker": "US$",
+    "isolation": "bdi dir=ltr",
+    "firstVisualFinding": "Unisolated marker visually reordered $US on Arabic; fixed and rebuilt/redeployed.",
+    "monthlyPaidAmounts": [
+      "0.49",
+      "4.99"
+    ],
+    "yearlyPaidAmounts": [
+      "4.99",
+      "49.99"
+    ],
+    "unchangedFreeAmount": "0",
+    "finalViews": [
+      {
+        "locale": "en-US",
+        "viewport": 575,
+        "documentWidth": 564,
+        "scrollWidth": 564
+      },
+      {
+        "locale": "ar-SA",
+        "viewport": 390,
+        "documentWidth": 379,
+        "scrollWidth": 379
+      },
+      {
+        "locale": "he",
+        "viewport": 390,
+        "documentWidth": 379,
+        "scrollWidth": 379
+      }
+    ],
+    "screenshot": "/tmp/cloud-calendar-batch31-pricing-final.png",
+    "arabicScreenshot": "/tmp/cloud-calendar-batch31-pricing-ar.png"
+  },
+  "articles": [
+    {
+      "slug": "three-calendar-apps-is-two-too-many",
+      "viewport": 575,
+      "documentWidth": 564,
+      "scrollWidth": 564,
+      "correctionInRenderedBody": true
+    },
+    {
+      "slug": "exchange-calendars-on-an-iphone",
+      "viewport": 390,
+      "documentWidth": 379,
+      "scrollWidth": 379,
+      "correctionInRenderedBody": true
+    }
+  ],
+  "viewportRestored": true,
+  "tabDeliverable": true,
+  "scope": "Representative rendered pricing/billing-state and article checks, not all-language semantic or native/runtime certification."
+}

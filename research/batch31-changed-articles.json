@@ -1,0 +1,30 @@
+{
+  "date": "2026-10-22T02:29:25.029Z",
+  "count": 2,
+  "articles": [
+    {
+      "locale": "en-US",
+      "slug": "three-calendar-apps-is-two-too-many",
+      "file": "src/app/content/en-US/articles-unify.ts",
+      "title": "Combine calendar apps on iPhone without losing track of events",
+      "sections": 6,
+      "faqs": 3,
+      "sources": 2,
+      "updated": "2026-10-22",
+      "description": "Bring calendar accounts into one iPhone overview. Check event destinations, duplicate routes, write-back and notifications before changing your daily workflow.",
+      "descriptionCharacters": 159
+    },
+    {
+      "locale": "en-US",
+      "slug": "exchange-calendars-on-an-iphone",
+      "file": "src/app/content/en-US/articles-unify.ts",
+      "title": "Microsoft and Exchange calendars on iPhone: check the connection first",
+      "sections": 6,
+      "faqs": 3,
+      "sources": 3,
+      "updated": "2026-10-22",
+      "description": "Check Microsoft account type, employer approval and permissions before connecting a work calendar. See what Cloud Calendars Premium adds.",
+      "descriptionCharacters": 137
+    }
+  ]
+}
