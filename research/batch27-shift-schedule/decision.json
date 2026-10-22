@@ -1,0 +1,111 @@
+{
+  "date": "2026-10-22",
+  "status": "draft_only_pending_root_exact_code_review",
+  "canonical": "a-week-view-that-fits-a-week",
+  "sourceFile": "src/app/content/en-US/articles-planning.ts",
+  "placement": {
+    "path": "sections[3].body[2]",
+    "section": "Include the parts of the plan that are not yet appointments",
+    "change": "Append one worked paragraph; append one existing recurrence route to seeAlso."
+  },
+  "decision": "Use the week-view guide only. The concrete gap is checking a timed overnight commitment against the following morning, including real journey and recovery needs. That develops this guide’s existing exact-endpoint and apparent-gap discussion. Repetition is optional, so making recurrence the canonical would unnecessarily narrow the example. Its existing scope and exception advice is linked instead.",
+  "rejectedAlternatives": [
+    {
+      "slug": "recurring-events-without-the-mess",
+      "reason": "Already substantively covers regular rules, temporary rotas, representative dates and one-occurrence edits. No second addition."
+    },
+    {
+      "slug": "what-an-all-day-event-really-means",
+      "reason": "Timed versus date-based semantics already covered; no duplicate example."
+    }
+  ],
+  "newParagraph": "For a confirmed shift from Monday at 22:00 to Tuesday at 06:00, record a timed event with Tuesday explicitly set as the ending date. Reopen the saved event to check both dates, times, calendar and relevant time zone. A Monday label alone does not communicate the Tuesday finish. Before offering a Tuesday morning appointment, allow for your actual journey home and recovery needs. Use the employer’s confirmed rota for the shift itself. If it repeats, follow the recurrence guide below and use a rule only when it matches that rota; a personal calendar change does not approve a shift swap.",
+  "newParagraphWords": 100,
+  "sourceEvidence": {
+    "completeReportsRead": [
+      "research/batch27-shift-schedule/intent-research.json",
+      "research/batch27-shift-schedule/product-evidence.json"
+    ],
+    "completeCurrentArticleReads": [
+      {
+        "slug": "a-week-view-that-fits-a-week",
+        "file": "src/app/content/en-US/articles-planning.ts",
+        "scope": "Complete object: metadata, all body paragraphs, practical steps, FAQs, sources and related routes.",
+        "parsedObjectSha256": "2b4ba13d64eddb2bc0de630cf5c5499c929ddc7eb5027da628ba63187d6b75b7"
+      },
+      {
+        "slug": "recurring-events-without-the-mess",
+        "file": "src/app/content/en-US/articles-planning.ts",
+        "scope": "Complete object: metadata, all body paragraphs, practical steps, FAQs, sources and related routes.",
+        "parsedObjectSha256": "7fb4cbb8b72b124ad9561ff58801e21e5040ab3fee54b6a3b4db5f3f921b20d6"
+      },
+      {
+        "slug": "what-an-all-day-event-really-means",
+        "file": "src/app/content/en-US/articles-planning.ts",
+        "scope": "Complete object: metadata, all body paragraphs, practical steps, FAQs, sources and related routes.",
+        "parsedObjectSha256": "94ceee6711c1b50561b594e9add294d200de5c2b7bf6d8de6ebb2029b99883cd"
+      },
+      {
+        "slug": "time-zones-and-the-flight-you-booked",
+        "file": "src/app/content/en-US/articles-planning.ts",
+        "scope": "Complete object: metadata, all body paragraphs, practical steps, FAQs, sources and related routes.",
+        "parsedObjectSha256": "e146a6c29552c1241b547310ffc6a9cb1286fea6c5bdf40cb5dfc94724ad97d6"
+      },
+      {
+        "slug": "planning-a-week-in-ten-minutes",
+        "file": "src/app/content/en-US/articles-planning.ts",
+        "scope": "Complete object: metadata, all body paragraphs, practical steps, FAQs, sources and related routes.",
+        "parsedObjectSha256": "a08211e1c7d293ab165e06091a9a6f27012a5c8aba4840391e4201ee84962b3c"
+      }
+    ],
+    "hashMethod": "SHA-256 of UTF-8 JSON.stringify(parsed article object), retaining JavaScript property order; not a sorted-key canonicalization or raw-file hash.",
+    "sourceModuleRawSha256": "5fb4e04379fa5a363c0263a19f0c648bc9e2ade757e978bf4aa9af2100bde87a",
+    "externalEvidence": "Supplied intent report records a complete Apple Mac Calendar body read supporting explicit timed start/end dates across midnight. This editor did not freshly fetch that page; it is not evidence of Cloud UI equivalence.",
+    "primaryUrl": "https://support.apple.com/guide/calendar/set-up-all-day-multiday-or-repeating-events-icl1018/mac",
+    "nativeEvidence": "Supplied product report records exact source ranges for timed date endpoints, end>=start persistence, time-zone handling and editable-calendar selection. This editorial pass did not independently inspect native code or execute the app."
+  },
+  "publicationGate": "Root must review the exact native code paths and recorded hashes supporting a next-date timed endpoint and persisted calendar/time-zone checks before publication. Source evidence is not release or runtime certification. No named Cloud controls, automatic overnight layout or automatic next-day inference are asserted.",
+  "relatedRouteCheck": {
+    "added": "recurring-events-without-the-mess",
+    "existsAsCompleteEnglishObject": true,
+    "consumption": "Plain slug appended to existing seeAlso array; no inline Markdown link or invented route."
+  },
+  "validation": {
+    "before": {
+      "sections": 6,
+      "bodyParagraphs": 12,
+      "practical": 6,
+      "faq": 3,
+      "sources": 2,
+      "related": 4
+    },
+    "after": {
+      "sections": 6,
+      "bodyParagraphs": 13,
+      "practical": 6,
+      "faq": 3,
+      "sources": 2,
+      "related": 5
+    },
+    "oldContentPreservedExactly": true,
+    "metadataPracticalFaqClaimsSourcesAndDateUnchanged": true,
+    "dateRetained": "2026-10-22",
+    "onlyChanges": [
+      "sections[3].body append",
+      "seeAlso append"
+    ],
+    "noSourceIntegration": true
+  },
+  "boundaries": [
+    "Manual agreed-shift example, not a rota generator, shift template, payroll or staffing feature.",
+    "No fixed eight-hour elapsed-duration claim; check the relevant zone.",
+    "No guarantee of overnight grid rendering, widget coverage or provider update timing.",
+    "Personal changes do not approve employer shift swaps.",
+    "No added claims about a Cloud occurrence-scope prompt; existing recurrence guide retains provider-editor fallback."
+  ],
+  "writes": [
+    "before.json",
+    "a-week-view-that-fits-a-week.json",
+    "decision.json"
+  ]
+}

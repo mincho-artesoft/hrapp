@@ -1,0 +1,211 @@
+{
+  "date": "2026-10-22",
+  "method": "Bounded public query discovery and primary-body review; research only.",
+  "queries": [
+    "shift calendar iPhone night shift official app",
+    "work rota calendar iPhone Supershift shift schedule"
+  ],
+  "queryAssociation": "Two queries submitted together; returned URLs are observed combined results, not reliably assigned per query. No measured Google rankings or volumes.",
+  "observedResults": [
+    {
+      "url": "https://apps.apple.com/us/app/shiftal-shift-work-calendar/id6789517698",
+      "status": "discovered_publisher_listing"
+    },
+    {
+      "url": "https://supershift.app/",
+      "status": "full_primary_body"
+    },
+    {
+      "url": "https://support.apple.com/en-us/HT207570",
+      "status": "irrelevant_display_colour_Night_Shift"
+    },
+    {
+      "url": "https://www.supershift.app/help.html",
+      "status": "full_primary_body"
+    },
+    {
+      "url": "https://shiftapp.com/iphone-app",
+      "status": "discovered_publisher"
+    },
+    {
+      "url": "https://www.shiftcal.com/ios-home.htm",
+      "status": "discovered_publisher"
+    },
+    {
+      "url": "https://apps.apple.com/gb/app/supershift-shift-work-calendar/id1104165041",
+      "status": "discovered_listing"
+    },
+    {
+      "url": "https://apps.apple.com/gb/app/supershift-shift-work-calendar/id1104165041?platform=ipad",
+      "status": "discovered_variant_not_assumed_identical"
+    },
+    {
+      "url": "https://stage.supershift.app/help.html",
+      "status": "discovered_staging_not_used"
+    },
+    {
+      "url": "https://apps.apple.com/us/app/supershift-work-shift-calendar/id1104165041?platform=ipad",
+      "status": "discovered_variant_not_assumed_identical"
+    },
+    {
+      "url": "https://apprecs.com/ios/1104165041/supershift-shift-work-calendar",
+      "status": "third_party_not_used"
+    },
+    {
+      "url": "https://shiftyourphone.com/",
+      "status": "irrelevant_distraction_app"
+    },
+    {
+      "url": "https://cuadraturnos.com/manuales/ShiftCal%20-%20CuadraTurnos%20%28iOS%29%20-%20Quick%20guide.pdf",
+      "status": "discovered_manual_not_read"
+    },
+    {
+      "url": "https://fcc.report/FCC-ID/BCG-E4083A/5700039.pdf",
+      "status": "third_party_mirror_not_used"
+    },
+    {
+      "url": "https://myshiftplanner.com/wp-content/uploads/2022/02/MyShiftPlanner-First-Time-Setup.pdf",
+      "status": "discovered_publisher_manual_not_read"
+    },
+    {
+      "url": "https://www.reddit.com/r/doctorsUK/comments/1t9zfg3/whats_a_good_app_to_download_from_the_app_store/",
+      "status": "community_not_technical_evidence"
+    },
+    {
+      "url": "https://www.reddit.com/r/ParamedicsUK/comments/1mqbr1b/which_app_do_you_use_to_log_your_shiftsrota_ios/",
+      "status": "community_not_technical_evidence"
+    }
+  ],
+  "primaryReads": [
+    {
+      "url": "https://supershift.app/",
+      "status": "full_main_body",
+      "lines": [
+        4,
+        70
+      ],
+      "totalLines": 71,
+      "findings": "Publisher advertises shift templates/rotations, sharing, shift-based alarms, hours/pay/overtime reports, PDF output, widgets and display/export through device-configured calendars.",
+      "limits": "Publisher claims only; no runtime validation. Marketing alarm certainty, ratings and App Store feature claims not adopted. These are not Cloud capabilities."
+    },
+    {
+      "url": "https://www.supershift.app/help.html",
+      "status": "full_main_body",
+      "lines": [
+        12,
+        127
+      ],
+      "totalLines": 134,
+      "findings": "Documents rotations with up to two years per insertion, external-calendar setup/display/export, and duplicate exports when enabled on multiple devices. Also documents reports and alarm limitations. Cloud Sync is its own account.",
+      "limits": "Supershift instructions only. Do not copy account reset, uninstall or disabling biometric protection advice into Cloud guidance. No Cloud rotation engine inferred."
+    },
+    {
+      "url": "https://support.apple.com/guide/calendar/set-up-all-day-multiday-or-repeating-events-icl1018/mac",
+      "discovery": "Existing recurrence/all-day guide source, not a new search result",
+      "status": "full_main_body",
+      "lines": [
+        89,
+        153
+      ],
+      "totalLines": 168,
+      "findings": "Apple distinguishes all-day spans from timed events beginning on one date and ending on another; Mac Calendar supports explicit start/end dates and times and repeat controls.",
+      "limits": "Apple Calendar on Mac, not Cloud UI. Supports general representation of overnight commitments, not a Cloud implementation promise."
+    }
+  ],
+  "failures": [],
+  "intentMapping": [
+    {
+      "task": "Build automatic rotating work patterns or calculate payroll",
+      "canonical": null,
+      "status": "competitor_specific_capability_not_established_for_Cloud",
+      "decision": "Do not create Cloud feature/metadata claims for templates, automatic rota generation, shift alarms, pay or overtime."
+    },
+    {
+      "task": "Edit one shift in a recurring schedule",
+      "canonical": "recurring-events-without-the-mess",
+      "status": "covered",
+      "detail": "Full guide covers permission, one-occurrence scope, future changes, exceptions and real end dates, including temporary rota example."
+    },
+    {
+      "task": "Check overnight date boundaries and next-day commitments",
+      "canonical": "a-week-view-that-fits-a-week",
+      "status": "bounded_example_gap",
+      "detail": "Week guide already covers exact endpoints, all-day distinctions, travel/recovery blocks and selected calendars; lacks a worked overnight shift spanning adjacent days."
+    },
+    {
+      "task": "Distinguish a shift from an all-day work label",
+      "canonical": "what-an-all-day-event-really-means",
+      "status": "covered_concept",
+      "detail": "Timed versus date-based commitment and independent availability are already substantive."
+    },
+    {
+      "task": "Verify schedules near seasonal clock changes",
+      "canonical": "time-zones-and-the-flight-you-booked",
+      "status": "covered_concept",
+      "detail": "Event/display zones and recurring seasonal transitions covered; avoid promising every 22:00–06:00 shift is eight elapsed hours."
+    }
+  ],
+  "decision": {
+    "newPage": false,
+    "oneUsefulChange": {
+      "canonical": "a-week-view-that-fits-a-week",
+      "placement": "Short worked example after exact start/end checks or in preparation/recovery section.",
+      "proposal": "For a shift starting Monday at 22:00 and ending Tuesday at 06:00, record both dates and inspect Monday evening and Tuesday morning. A label placed only on Monday does not communicate the Tuesday finish. Before offering a Tuesday morning appointment, include the actual journey and any personal recovery time you need; use the employer's confirmed rota for the shift itself. Follow existing recurrence guidance for a one-off swap rather than assuming an entire rotating pattern should change.",
+      "bounds": [
+        "Do not name a Cloud overnight editor workflow until native source confirms relevant controls and saved date handling.",
+        "Do not promise automatic rota generation, payroll, overtime totals, shift templates or wake-up alarms.",
+        "Do not label the shift universally eight hours: seasonal zone changes can affect elapsed duration.",
+        "Do not imply a personal calendar edit approves an employer shift swap or changes a colleague's rota."
+      ]
+    },
+    "rationale": "Current coverage handles general calendar mechanics. One concrete two-date example is a useful extension, whereas a new broad shift-calendar article would either duplicate those mechanics or imply unverified specialist features."
+  },
+  "limits": [
+    "No native inspection/runtime certification, customer actions, source edits, builds, dist changes, deployment, paid APIs or ASC operations.",
+    "No search volume, Google rank, ChatGPT citation, exhaustive market coverage or new media claims.",
+    "Initial lexical inventory and public queries were batched before complete candidate reads; all four relevant guides were then fully read before primary-body assessment and recommendation."
+  ],
+  "localFullReads": [
+    {
+      "canonical": "recurring-events-without-the-mess",
+      "path": "src/app/content/en-US/articles-planning.ts",
+      "scope": "Complete object including every paragraph, FAQ, practical, metadata, source and related link",
+      "lines": [
+        384,
+        476
+      ],
+      "sha256SourceObjectUtf8": "18614ec9491017594ab907ab568f37c40955b8594598c13ca2cac2e864d89f10"
+    },
+    {
+      "canonical": "time-zones-and-the-flight-you-booked",
+      "path": "src/app/content/en-US/articles-planning.ts",
+      "scope": "Complete object including every paragraph, FAQ, practical, metadata, source and related link",
+      "lines": [
+        478,
+        586
+      ],
+      "sha256SourceObjectUtf8": "ea13808b5d6de5f3235a0a77927974d71d9f74584741327f1f440e2926358148"
+    },
+    {
+      "canonical": "what-an-all-day-event-really-means",
+      "path": "src/app/content/en-US/articles-planning.ts",
+      "scope": "Complete object including every paragraph, FAQ, practical, metadata, source and related link",
+      "lines": [
+        588,
+        682
+      ],
+      "sha256SourceObjectUtf8": "8ca84994a20d49193748e2c5d3be81b91e6fddcdeee0a328e836db3d94cb68ec"
+    },
+    {
+      "canonical": "a-week-view-that-fits-a-week",
+      "path": "src/app/content/en-US/articles-planning.ts",
+      "scope": "Complete object including every paragraph, FAQ, practical, metadata, source and related link",
+      "lines": [
+        104,
+        195
+      ],
+      "sha256SourceObjectUtf8": "dcb67210cbda2f88422e2c8869ed9ad76fe933651dcf68447aac2cc3146048b9"
+    }
+  ],
+  "lexicalDiscoveryScope": "All EN articles-*.ts searched for shift, overnight, midnight and rota. This is not a full read of all EN articles."
+}

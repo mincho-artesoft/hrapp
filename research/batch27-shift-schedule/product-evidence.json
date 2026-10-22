@@ -1,0 +1,178 @@
+{
+  "date": "2026-10-22",
+  "status": "Source-backed task gap; targeted existing-guide example preferred before a new route.",
+  "method": "Read-only local source and complete relevant English bodies. No device/provider execution or newly verified external documentation. Source is not released/runtime certification.",
+  "existingGuideReads": [
+    {
+      "file": "/Users/minchomilev/cloud-calendars/src/app/content/en-US/articles-planning.ts",
+      "sha256": "5fb4e04379fa5a363c0263a19f0c648bc9e2ade757e978bf4aa9af2100bde87a",
+      "readRanges": [
+        [
+          104,
+          195
+        ],
+        [
+          290,
+          382
+        ],
+        [
+          383,
+          477
+        ],
+        [
+          478,
+          586
+        ],
+        [
+          588,
+          682
+        ]
+      ],
+      "establishes": "Complete week-view, weekly-planning, recurrence, time-zone and all-day objects including practical/FAQ/sources. They cover general schedule checks, scope, date spans and time zones but lack a worked timed overnight-shift entry with explicit next-date endpoint. Search across all English article modules found no shift/rota-specific workflow beyond temporary-rota end-date example."
+    }
+  ],
+  "nativeEvidence": [
+    {
+      "file": "/Users/minchomilev/work/hrapp/Calendar/AppLocal/AppLocalEventEditorView.swift",
+      "sha256": "5f021ab6f986148e70fe3b932e0e9e530fecb8d01fdc436e78217c6116f9a093",
+      "readRanges": [
+        [
+          186,
+          211
+        ],
+        [
+          482,
+          499
+        ],
+        [
+          612,
+          714
+        ],
+        [
+          1088,
+          1114
+        ],
+        [
+          1183,
+          1220
+        ],
+        [
+          1308,
+          1334
+        ],
+        [
+          1439,
+          1475
+        ]
+      ],
+      "establishes": "Reachable new/edit form exposes All-day, Starts and Ends date/time rows; end range starts at startDate, changing start preserves nonnegative duration. Custom menu navigates to recurrence editor. Repeat presets daily/weekly/monthly/yearly plus every2weeks; End Repeat Never/On Date. Timed persistence max(end,start), not automatic next-day inference. All-day stores inclusive UI end with next-day boundary. Event timezone comes from saved local/EK event or device fallback. Save requires title and editable selected calendar; recurring existing EK save uses futureEvents, no scope prompt established here."
+    },
+    {
+      "file": "/Users/minchomilev/work/hrapp/Calendar/Components/CalendarDateTimePickerRow.swift",
+      "sha256": "b3334dcab05ac8fa7eb358a9859d7560346a9c8d4bfd53ab9553bdc02b24eaa7",
+      "readRanges": [
+        [
+          1,
+          96
+        ]
+      ],
+      "establishes": "Separate date/time value buttons; date opens CalendarInlineDateGrid with range, time opens bounded wheel picker. Supports explicit endpoint date selection. Does not infer shift type or employer roster."
+    },
+    {
+      "file": "/Users/minchomilev/work/hrapp/Calendar/Components/CalendarRecurrenceEditor.swift",
+      "sha256": "ea0fa003077fe281e3ca3affd162aa5c27cd3ff2bdc07228e782a74d6a8f3a3d",
+      "readRanges": [
+        [
+          1,
+          165
+        ]
+      ],
+      "establishes": "Daily/weekly/monthly/yearly frequency, interval control1…999, weekly weekday selection; monthly/yearly pattern options. General recurrence editor, no shift-template selector in inspected controls."
+    },
+    {
+      "file": "/Users/minchomilev/work/hrapp/Calendar/Components/CalendarRecurrencePattern.swift",
+      "sha256": "e33a5273cbf88b60f0356881158dfe71b03bfd9fc711f1356afa73db2391b5cf",
+      "readRanges": [
+        [
+          1,
+          62
+        ]
+      ],
+      "establishes": "Builds EKRecurrenceRule with interval and selected day dimensions. Can preserve original rule dimensions when unedited; this does not prove every exception survives arbitrary edits or every provider uses identical results."
+    }
+  ],
+  "supportedBoundedAdvice": [
+    "For an overnight timed shift, keep All-day off, choose the correct start date/time and explicitly choose the next date for the end time.",
+    "Example: an agreed Monday22:00–Tuesday06:00 shift must have Tuesday as the ending date; a clock-only06:00 on Monday is not the intended interval.",
+    "Reopen the saved event and check both dates/times, destination and relevant time zone. Do not infer correct duration solely from a grid block.",
+    "Use Repeat only when a regular rule actually matches the agreed roster. Check representative later occurrences before relying on it.",
+    "For a one-date change, use an editor that explicitly supports the intended scope; do not assume a Cloud scope prompt.",
+    "An irregular or revised roster can be recorded as explicitly dated shifts rather than forcing an unsuitable repeat rule. This is a manual planning suggestion, not a tested bulk-entry feature."
+  ],
+  "unestablished": [
+    "Automatic rotating/night-shift templates or alternating-role generation.",
+    "Payroll, paid-duration calculation, labor-law rest checks, holiday exceptions or staffing optimization.",
+    "Automatic workplace availability copying, assignment approval or prevention of overlaps.",
+    "Automatic next-day adjustment when only an earlier end clock time is entered.",
+    "Guaranteed DST duration, provider recurrence equivalence or exception preservation.",
+    "Continuous overnight widget display: existing upcoming-widget boundary excludes already-started events; do not recommend it as an entire-shift status display."
+  ],
+  "canonicalMapping": [
+    {
+      "slug": "recurring-events-without-the-mess",
+      "existing": "Strong scope, ownership, representative-date and exception coverage.",
+      "bestAddition": "A small worked overnight repeating-shift example before applying a repeat rule."
+    },
+    {
+      "slug": "what-an-all-day-event-really-means",
+      "existing": "Date labels versus timed commitments, included all-day end date.",
+      "additionIfNeeded": "Short crosslink distinguishing a timed overnight shift from an all-day label; do not duplicate full workflow."
+    },
+    {
+      "slug": "planning-a-week-in-ten-minutes",
+      "existing": "Work blocks, transitions and confirmed responsibility.",
+      "boundary": "A roster is an agreed schedule, not generated or approved merely by adding blocks."
+    },
+    {
+      "slug": "time-zones-and-the-flight-you-booked",
+      "existing": "Event/display zones, seasonal-clock representative dates.",
+      "boundary": "Use for zone/DST checks; no new shift-specific timezone behavior established."
+    },
+    {
+      "slug": "a-week-view-that-fits-a-week",
+      "existing": "Exact endpoints and hidden/all-day commitments.",
+      "boundary": "No guarantee overnight event visually occupies every desired row/column without runtime verification."
+    }
+  ],
+  "proposedTargetedAddition": {
+    "slug": "recurring-events-without-the-mess",
+    "heading": "Set both dates before repeating an overnight shift",
+    "body": [
+      "For an agreed shift from Monday at 22:00 to Tuesday at 06:00, create a timed event and set the ending date to Tuesday. In Cloud Calendars, Starts and Ends include date choices as well as times. Read both endpoints before saving; entering an earlier clock time on the same date is not the same as specifying an overnight shift.",
+      "Check that first saved shift before choosing a repeat pattern. Use a regular rule only when it matches the confirmed roster, then inspect the next occurrence and a date where the schedule changes. For a one-off swap, use an editor that explicitly supports the required occurrence scope. A calendar entry does not approve the swap, calculate pay or establish another person’s availability."
+    ]
+  },
+  "newPageDecision": {
+    "justifyNow": false,
+    "reason": "There is a concrete missing overnight example, but the verified controls and surrounding checks fit the existing recurrence guide without creating a generic shift-keyword duplicate. A separate page would need a genuinely distinct multi-step roster workflow and primary evidence for its extra claims; no rotating-template product capability was established.",
+    "possibleFutureScope": "Manual entry and verification of an irregular roster across midnight, with one-date changes and communicating a confirmed shift swap; avoid payroll/automatic-template positioning."
+  },
+  "limits": [
+    "Local source snapshot only; no app launch, build or provider action.",
+    "No official provider pages newly read; current guide source URLs are navigation references, not fresh evidence in this audit.",
+    "No native or independent expert validation of shift/DST scenarios.",
+    "Only bounded editor/recurrence paths read; absence claims remain bounded."
+  ],
+  "writes": [
+    "research/batch27-shift-schedule/product-evidence.json only"
+  ],
+  "notPerformed": [
+    "Native/site edits",
+    "Builds",
+    "Simulators",
+    "Customer/provider actions",
+    "Deployment",
+    "ASC actions",
+    "Paid APIs"
+  ]
+}

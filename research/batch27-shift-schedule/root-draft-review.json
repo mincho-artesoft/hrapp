@@ -1,0 +1,79 @@
+{
+  "reviewedAt": "2026-10-22T01:06:06.665562+00:00",
+  "decision": "ready_for_scoped_integration_after_independent_final_review",
+  "fullLocalArticleReads": [
+    {
+      "file": "src/app/content/en-US/articles-planning.ts",
+      "ranges": [
+        [
+          104,
+          195
+        ],
+        [
+          383,
+          477
+        ]
+      ],
+      "scope": "Complete week-view and recurrence objects, all prose/steps/FAQ/source/related."
+    }
+  ],
+  "draftRead": "Full decision.json and new100wordparagraph; parsed full before/draft guard limits changes to paragraph and related route.",
+  "nativeReads": {
+    "file": "/Users/minchomilev/work/hrapp/Calendar/AppLocal/AppLocalEventEditorView.swift",
+    "sha256": "5f021ab6f986148e70fe3b932e0e9e530fecb8d01fdc436e78217c6116f9a093",
+    "ranges": [
+      [
+        186,
+        211
+      ],
+      [
+        482,
+        499
+      ],
+      [
+        612,
+        714
+      ],
+      [
+        1088,
+        1114
+      ],
+      [
+        1183,
+        1220
+      ],
+      [
+        1308,
+        1334
+      ],
+      [
+        1439,
+        1475
+      ]
+    ],
+    "establishes": [
+      "Reachable timed Starts/Ends with full next-date range and event timezone environment.",
+      "Timed persisted endpoint is max(endDate,startDate); explicitly choosing following date is preserved, no automatic overnight inference.",
+      "Writable destination guard and explicit EventKit start/end/timezone persistence.",
+      "Repeat controls define rules, not proof of one-occurrence edit prompt."
+    ]
+  },
+  "exactDraftScope": {
+    "oldSectionsPreserved": 6,
+    "oldParagraphsPreserved": 12,
+    "appendedParagraphs": 1,
+    "appendedExistingRelatedRoute": 1,
+    "metadataPracticalFaqClaimsSourcesDateUnchanged": true
+  },
+  "limits": [
+    "Current source is not released binary or runtime certification.",
+    "No root fresh Apple body read this turn; no new Apple workflow claim introduced.",
+    "No automatic rota, payroll, shift templates, eight-hour elapsed-duration, overnight layout or participant-approval guarantee.",
+    "No source integration, build, native simulator/customer/provider action."
+  ],
+  "independentFinalReview": {
+    "path": "research/batch27-shift-schedule/final-review.json",
+    "sha256": "bc6cf67fa4270c2096946898366faf5df8dde48a96eceee153aeb4184616e193",
+    "result": "pass_no_corrections_required"
+  }
+}
