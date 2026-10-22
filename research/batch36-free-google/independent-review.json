@@ -1,0 +1,87 @@
+{
+  "reviewedAt": "2026-10-22T04:13:11.960090+00:00",
+  "decision": "PASS — DE/ES/FR complete modernizations",
+  "articles": [
+    {
+      "locale": "de-DE",
+      "file": "research/batch36-free-google/de-DE/free-google-sync-without-adverts.json",
+      "sha256": "e80371f0bc276dabafeccd0535912ebffdd56d7f4945deb50730b5d319075105",
+      "before": "research/batch36-free-google/de-DE/de-DE-before.json",
+      "beforeSha256": "4f1a4457f31cedfcf94d32aaa7485b2328570cf966abfd17c54eb81543ea54ff",
+      "readScope": "Full draft and full prior locale article: all metadata, sections, paragraphs, steps, FAQs, sources and related routes. EN comparator object-identical to previously full-read comparator from this review session.",
+      "decision": "PASS",
+      "requiredCorrections": [],
+      "counts": {
+        "sections": 4,
+        "paragraphs": 8,
+        "steps": 5,
+        "faq": 2,
+        "descriptionCharacters": 142
+      },
+      "actualRelatedRoutesVerified": true,
+      "sourceUrlsExact": true
+    },
+    {
+      "locale": "es-ES",
+      "file": "research/batch36-free-google/es-ES/draft.json",
+      "sha256": "4a5ab1ba70ec2a0aa30f7ab66a35bccf07e5a89c4a344565f376c8e0db272da4",
+      "before": "research/batch36-free-google/es-ES/before.json",
+      "beforeSha256": "babe45208001c9add9bea2d0d2a0f5edeaeb925726cde0bd971b5082db1c5056",
+      "readScope": "Full draft and full prior locale article: all metadata, sections, paragraphs, steps, FAQs, sources and related routes. EN comparator object-identical to previously full-read comparator from this review session.",
+      "decision": "PASS",
+      "requiredCorrections": [],
+      "counts": {
+        "sections": 4,
+        "paragraphs": 8,
+        "steps": 5,
+        "faq": 2,
+        "descriptionCharacters": 141
+      },
+      "actualRelatedRoutesVerified": true,
+      "sourceUrlsExact": true
+    },
+    {
+      "locale": "fr-FR",
+      "file": "research/batch36-free-google/fr-FR/draft.json",
+      "sha256": "7e1d9e84d92fa80622123610c53404645f0c58c7ad85f9e3b58c19b47d0b73da",
+      "before": "research/batch36-free-google/fr-FR/before.json",
+      "beforeSha256": "6a7feb10ada890d8eabfa93df9e534bc1e68412c9f3b8d3f12cc290e1784fc96",
+      "readScope": "Full draft and full prior locale article: all metadata, sections, paragraphs, steps, FAQs, sources and related routes. EN comparator object-identical to previously full-read comparator from this review session.",
+      "decision": "PASS",
+      "requiredCorrections": [],
+      "counts": {
+        "sections": 4,
+        "paragraphs": 8,
+        "steps": 5,
+        "faq": 2,
+        "descriptionCharacters": 144
+      },
+      "actualRelatedRoutesVerified": true,
+      "sourceUrlsExact": true
+    }
+  ],
+  "englishComparator": {
+    "file": "research/batch36-free-google/en-US/before.json",
+    "sha256": "71e6bad1eac8e3df01dfe99ec7601dcc62e9dc1a94b06100a371c74a477757cd",
+    "fullReadReference": "research/batch36-italian/en-US--free-google-sync-without-adverts--before.json",
+    "objectEqualityConfirmed": true
+  },
+  "findings": [
+    "All three preserve4sections/8paragraphs/5steps/2FAQs, developer disclosure and full substantive EN distinctions. Legacy unsupported industry rhetoric and numeric claims labels removed.",
+    "Base Google/Meet/views/weather/widgets, Advanced ad removal and Premium Microsoft/Teams are correct. Paid plans do not alter provider sharing permissions, confer editing rights or grant weather priority.",
+    "Connection uses intended Google identity and selected calendars; device calendar permission does not establish all Google calendars connected. Local use does not imply provider/sharing sign-in is unnecessary.",
+    "Writable-calendar test event is bounded and destination checked; combined display is not assumed to merge records. No destructive first step or universal synchronization guarantee.",
+    "Provider/workplace restrictions remain separate from purchase; local pricing and billing period checked without asserting live amounts. Apple billing identity and cancellation are separate from app/provider accounts and data cleanup.",
+    "All related routes exist in current locale index. Exact EN Apple118428 URL retained; localized source labels do not claim body URL is localized.",
+    "No material German, Spanish or French meaning defect found in own semantic review."
+  ],
+  "evidence": [
+    "research/batch36-italian/product-facts.json",
+    "research/batch36-italian/independent-review.json"
+  ],
+  "limits": [
+    "No independent native-speaker certification.",
+    "No fresh runtime/source-to-released1.7.3 proof or live provider/purchase checks.",
+    "No source integration, builds, deployment, customer or ASC operations performed."
+  ]
+}

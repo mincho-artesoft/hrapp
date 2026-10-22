@@ -1426,5 +1426,38 @@
       "research/batch35-public-qa.json"
     ],
     "limits": "Text alternatives and crawl accessibility do not prove indexing/ranking/citation uplift. Existingcaptures unchanged; actual newmedia generation provenance stillmissing."
+  },
+  "batch36": {
+    "date": "2026-10-22",
+    "action": "Italian whole-calendar sharing localization plus full legacyfreeGoogle purchasing-guidance modernizations",
+    "newItalianCanonicalEdition": "a-calendar-that-is-yours-to-share",
+    "freeGoogleExistingEditionAudit": {
+      "existing": 5,
+      "legacyReplaced": [
+        "it",
+        "de-DE",
+        "es-ES",
+        "fr-FR"
+      ],
+      "currentEnglishUnchanged": true,
+      "absentEditionsNotInvented": 25
+    },
+    "italianSubscriptionGuide": "Complete five-section edition plus conditional purchaseFamilySharing/access distinction",
+    "italianHomeExactFields": 4,
+    "historicalSearchContext": "Ownsitecalendariocloud79impressions1click inOct21retrieval,notcurrentvolume/rank",
+    "discoverySources": [
+      "https://readdle.com/it/calendars",
+      "https://support.apple.com/it-it/guide/iphone/-iph7613c4fb/ios"
+    ],
+    "inferredTask": "Share wholecalendar with correct audience/roles/acceptedidentity instead ofequating singleevent invitations, providerACLs orpurchase withmembership",
+    "evidence": [
+      "research/batch36-italian-discovery/decision.json",
+      "research/batch36-italian/independent-review.json",
+      "research/batch36-free-google/independent-review.json",
+      "research/batch36-source-qa.json",
+      "research/batch36-static-qa.json",
+      "research/batch36-public-qa.json"
+    ],
+    "limits": "No exhaustivekeywords/newmeasuredGoogleorChatGPTlift/newmedia orreleasedsourcecorrespondenceproof. OldunusedUSDclaimlabels were notrenderednumericprices."
   }
 }

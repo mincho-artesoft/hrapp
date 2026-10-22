@@ -1,5 +1,5 @@
 {
-  "date": "2026-10-22T03:51:33.300Z",
+  "date": "2026-10-22T04:15:55.830Z",
   "status": "source_inventory_not_quality_approval",
   "articles": [
     {
@@ -1261,15 +1261,17 @@
     {
       "locale": "de-DE",
       "slug": "free-google-sync-without-adverts",
-      "title": "Kostenlose Google-Synchronisierung — und wofür die Werbung bezahlt",
-      "description": "Was die kostenlose Stufe wirklich enthält, wo Werbung erscheint und was ihre Entfernung kostet. Klar gesagt, weil die meisten Apps das nicht tun.",
-      "descriptionCharacters": 145,
-      "sections": 2,
-      "faq": 0,
-      "words": 200,
+      "title": "Kostenlose Google-Synchronisierung auf dem iPhone: Funktionen und Werbung",
+      "description": "Google-Synchronisierung ist in Base enthalten. Advanced entfernt Werbung, Premium ergänzt Microsoft und Teams. Prüfe Rechte und lokale Preise.",
+      "descriptionCharacters": 142,
+      "sections": 4,
+      "faq": 2,
+      "words": 491,
       "source": "articles.ts",
-      "sources": [],
-      "updated": "2026-08-27"
+      "sources": [
+        "https://support.apple.com/en-us/118428"
+      ],
+      "updated": "2026-10-22"
     },
     {
       "locale": "de-DE",
@@ -2812,15 +2814,17 @@
     {
       "locale": "es-ES",
       "slug": "free-google-sync-without-adverts",
-      "title": "Sincronización gratuita con Google, y qué paga la publicidad",
-      "description": "Qué incluye de verdad el plan gratuito, dónde aparece la publicidad y cuánto cuesta quitarla. Dicho claro, porque casi ninguna aplicación lo hace.",
-      "descriptionCharacters": 146,
-      "sections": 2,
-      "faq": 0,
-      "words": 208,
+      "title": "Sincronizar Google Calendar gratis en iPhone: funciones y publicidad",
+      "description": "Comprueba qué incluye Base, qué publicidad elimina Advanced y cuándo necesitas Premium para Microsoft. Separa la suscripción de los permisos.",
+      "descriptionCharacters": 141,
+      "sections": 4,
+      "faq": 2,
+      "words": 593,
       "source": "articles.ts",
-      "sources": [],
-      "updated": "2026-08-27"
+      "sources": [
+        "https://support.apple.com/en-us/118428"
+      ],
+      "updated": "2026-10-22"
     },
     {
       "locale": "es-ES",
@@ -3445,15 +3449,17 @@
     {
       "locale": "fr-FR",
       "slug": "free-google-sync-without-adverts",
-      "title": "Synchronisation Google gratuite, et ce que paie la publicité",
-      "description": "Découvrez ce que comprend la formule gratuite, où intervient la publicité et quelle formule permet de la retirer.",
-      "descriptionCharacters": 113,
-      "sections": 2,
-      "faq": 0,
-      "words": 224,
+      "title": "Synchronisation Google Calendar gratuite sur iPhone : fonctions et publicité",
+      "description": "Vérifiez les fonctions de Base, le retrait des publicités avec Advanced et l’accès à Microsoft avec Premium. Les permissions restent distinctes.",
+      "descriptionCharacters": 144,
+      "sections": 4,
+      "faq": 2,
+      "words": 616,
       "source": "articles.ts",
-      "sources": [],
-      "updated": "2026-08-27"
+      "sources": [
+        "https://support.apple.com/en-us/118428"
+      ],
+      "updated": "2026-10-22"
     },
     {
       "locale": "fr-FR",
@@ -4395,6 +4401,22 @@
     },
     {
       "locale": "it",
+      "slug": "a-calendar-that-is-yours-to-share",
+      "title": "Condividere un calendario: scegli persone, permessi e metodo",
+      "description": "Condividi un calendario su iPhone distinguendo accesso nell’app e permessi del provider. Controlla ruoli, accettazione e aggiornamenti.",
+      "descriptionCharacters": 135,
+      "sections": 6,
+      "faq": 3,
+      "words": 895,
+      "source": "articles.ts",
+      "sources": [
+        "https://support.google.com/calendar/answer/37082?hl=en",
+        "https://support.microsoft.com/en-us/outlook/import-or-subscribe-to-a-calendar-in-outlook-com-or-outlook-on-the-web"
+      ],
+      "updated": "2026-10-22"
+    },
+    {
+      "locale": "it",
       "slug": "month-view-on-a-bigger-screen",
       "title": "Calendario mensile su iPad e iPhone: scegli la data, poi verifica i dettagli",
       "description": "Confronta le date su iPad o iPhone. Controlla eventi nascosti, calendari selezionati e orari prima di spostare appuntamenti condivisi o ricorrenti.",
@@ -4606,30 +4628,34 @@
     {
       "locale": "it",
       "slug": "free-google-sync-without-adverts",
-      "title": "Sincronizzazione Google gratuita, e cosa paga la pubblicità",
-      "description": "Cosa contiene davvero il piano gratuito, dove compare la pubblicità e quanto costa toglierla. Detto chiaro, perché quasi nessuna app lo fa.",
-      "descriptionCharacters": 139,
-      "sections": 2,
-      "faq": 0,
-      "words": 206,
+      "title": "Sincronizzazione Google gratuita su iPhone: funzioni incluse e pubblicità",
+      "description": "Google Calendar è incluso in Base. Advanced rimuove la pubblicità; Premium aggiunge Microsoft e Teams. Verifica permessi e prezzo locale.",
+      "descriptionCharacters": 137,
+      "sections": 4,
+      "faq": 2,
+      "words": 549,
       "source": "articles.ts",
-      "sources": [],
-      "updated": "2026-08-27"
+      "sources": [
+        "https://support.apple.com/it-it/118428"
+      ],
+      "updated": "2026-10-22"
     },
     {
       "locale": "it",
       "slug": "what-a-subscription-actually-buys",
-      "title": "Cosa compra davvero un abbonamento, piano per piano",
-      "description": "Cosa compra un abbonamento: Base, Advanced, Premium.",
-      "descriptionCharacters": 52,
-      "sections": 3,
-      "faq": 1,
-      "words": 217,
+      "title": "Abbonamenti Cloud Calendars: Base, Advanced e Premium",
+      "description": "Base include Google, viste, meteo e widget. Advanced rimuove la pubblicità; Premium aggiunge Microsoft e Teams. Verifica acquisto e permessi.",
+      "descriptionCharacters": 141,
+      "sections": 5,
+      "faq": 4,
+      "words": 724,
       "source": "articles.ts",
       "sources": [
-        "https://support.apple.com/en-us/118428"
+        "https://support.apple.com/it-it/118428",
+        "https://apps.apple.com/us/app/cloud-calendars-sync-widget/id6744690319",
+        "https://support.apple.com/en-ie/111114"
       ],
-      "updated": "2026-10-21"
+      "updated": "2026-10-22"
     },
     {
       "locale": "ja",

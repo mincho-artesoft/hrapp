@@ -1,0 +1,42 @@
+{
+  "type": "appStoreVersionLocalizations",
+  "id": "a02e99d4-e709-463e-96c5-26e226d73427",
+  "attributes": {
+    "description": "Riunisci calendari e meteo su iPhone e iPad. Con Cloud Calendars puoi consultare gli impegni di lavoro e personali e organizzare la giornata.\n\nI TUOI CALENDARI, PIÙ VISTE\nUsa i calendari iCloud e collega Google Calendar. Premium aggiunge il supporto per i calendari Microsoft. Scegli tra le viste Giorno, Settimana, Mese, Anno ed Elenco.\n\nPuoi anche creare un calendario locale sul dispositivo senza un account Cloud Calendars. Il collegamento ai servizi e la condivisione possono richiedere l’accesso a un account.\n\nMETEO E WIDGET\nConsulta le previsioni mentre organizzi le tue attività. I widget per la schermata Home sono disponibili nei formati piccolo, medio e grande. La disponibilità delle previsioni dipende dal luogo e dal fornitore meteo.\n\nRIUNIONI E INVITI\nUsa Google Meet con Google Calendar. Premium supporta anche Microsoft Teams. Condividi eventi e calendari con inviti tramite email o codice QR. App Clip mostra un’anteprima dell’evento; per aggiungerlo a un calendario da questa anteprima serve l’app completa. I permessi dipendono dal calendario e dal tipo di invito.\n\nSCEGLI IL TUO PIANO\nBase è gratuito e include la sincronizzazione con Google Calendar, Google Meet, diverse viste del calendario, meteo e widget.\nAdvanced include le funzioni di Base e rimuove gli annunci.\nPremium include Advanced e aggiunge i calendari Microsoft e Microsoft Teams.\n\nIl download è gratuito, con abbonamenti facoltativi a rinnovo automatico. Consulta i prezzi attuali nell’app o nell’App Store. Il pagamento viene addebitato sul tuo account Apple alla conferma dell’acquisto. L’abbonamento si rinnova automaticamente, salvo disdetta almeno 24 ore prima della fine del periodo in corso. Il rinnovo viene addebitato nelle 24 ore precedenti la scadenza. Puoi gestire o annullare l’abbonamento nelle impostazioni del tuo account App Store.\n\nPrivacy: https://www.cloud-calendars.com/privacy-policy\nTermini di utilizzo: https://www.apple.com/legal/internet-services/itunes/dev/stdeula/",
+    "locale": "it",
+    "keywords": "agenda,pianificazione,settimana,mese,promemoria,riunione,evento,condivisione,invito,previsioni",
+    "marketingUrl": "https://www.cloud-calendars.com/",
+    "promotionalText": "Impegni e meteo nello stesso posto. Scopri i widget e le diverse viste, oppure crea un calendario locale senza un account nell’app.",
+    "supportUrl": "https://www.cloud-calendars.com/",
+    "whatsNew": null
+  },
+  "relationships": {
+    "appScreenshotSets": {
+      "links": {
+        "self": "https://api.appstoreconnect.apple.com/v1/appStoreVersionLocalizations/a02e99d4-e709-463e-96c5-26e226d73427/relationships/appScreenshotSets",
+        "related": "https://api.appstoreconnect.apple.com/v1/appStoreVersionLocalizations/a02e99d4-e709-463e-96c5-26e226d73427/appScreenshotSets"
+      }
+    },
+    "appPreviewSets": {
+      "links": {
+        "self": "https://api.appstoreconnect.apple.com/v1/appStoreVersionLocalizations/a02e99d4-e709-463e-96c5-26e226d73427/relationships/appPreviewSets",
+        "related": "https://api.appstoreconnect.apple.com/v1/appStoreVersionLocalizations/a02e99d4-e709-463e-96c5-26e226d73427/appPreviewSets"
+      }
+    },
+    "searchKeywords": {
+      "links": {
+        "self": "https://api.appstoreconnect.apple.com/v1/appStoreVersionLocalizations/a02e99d4-e709-463e-96c5-26e226d73427/relationships/searchKeywords",
+        "related": "https://api.appstoreconnect.apple.com/v1/appStoreVersionLocalizations/a02e99d4-e709-463e-96c5-26e226d73427/searchKeywords"
+      }
+    },
+    "placements": {
+      "links": {
+        "self": "https://api.appstoreconnect.apple.com/v1/appStoreVersionLocalizations/a02e99d4-e709-463e-96c5-26e226d73427/relationships/placements",
+        "related": "https://api.appstoreconnect.apple.com/v1/appStoreVersionLocalizations/a02e99d4-e709-463e-96c5-26e226d73427/placements"
+      }
+    }
+  },
+  "links": {
+    "self": "https://api.appstoreconnect.apple.com/v1/appStoreVersionLocalizations/a02e99d4-e709-463e-96c5-26e226d73427"
+  }
+}

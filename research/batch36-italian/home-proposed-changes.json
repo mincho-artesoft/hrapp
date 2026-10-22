@@ -1,0 +1,29 @@
+{
+  "locale": "it",
+  "changes": [
+    {
+      "path": "showcase.panels[2].body",
+      "before": "Dai a ogni calendario la sua colonna e smetti di districare sovrapposizioni colorate. L’unica vista che rende comprensibile una casa condivisa o una settimana di lavoro spezzata.",
+      "after": "Affianca i calendari nelle colonne disponibili per confrontare lavoro e impegni personali. Controlla quali calendari sono selezionati: una vista filtrata non basta per stabilire che un orario sia libero.",
+      "why": "Removes unsupported uniqueness claim “L’unica vista”; offers a concrete comparison task and visibility boundary."
+    },
+    {
+      "path": "pricing.lead",
+      "before": "La sincronizzazione iCloud, quella Google, tutte le viste, il centro meteo completo e tutti i widget non costano nulla. Paga solo se vuoi togliere la pubblicità o aggiungere anche il calendario Microsoft.",
+      "after": "Base include Google Calendar, Google Meet, viste del calendario, meteo e widget. Advanced rimuove la pubblicità; Premium include Advanced e aggiunge Microsoft Calendar e Teams. Controlla i permessi degli account e il prezzo locale prima di scegliere.",
+      "why": "Clear named tier allocation and Teams benefit; avoids complete/unbounded feature wording while preserving free Google support."
+    },
+    {
+      "path": "pricing.forever",
+      "before": "per sempre",
+      "after": "piano gratuito",
+      "why": "Pricing component renders this beside zero price; “per sempre” is an unnecessary future pricing guarantee, unlike current Base-free fact."
+    },
+    {
+      "path": "features.gestures.body",
+      "before": "Sposta gli eventi modificabili a un’altra ora o data, oppure ridimensionali nella sequenza temporale. Per un evento ricorrente, scegli quali occorrenze cambiare e controlla il risultato salvato.",
+      "after": "Sposta gli eventi modificabili a un’altra ora o data, oppure ridimensionali nella sequenza temporale. Per un evento ricorrente, controlla quali occorrenze verranno modificate e verifica il risultato salvato.",
+      "why": "Avoids implying a universal occurrence-scope choice for a drag/resize; current reviewed recurrence guidance says inspect actual scope and use provider editor if needed."
+    }
+  ]
+}

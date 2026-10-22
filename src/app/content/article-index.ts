@@ -286,6 +286,7 @@ export const ARTICLE_SLUGS: Readonly<Record<string, readonly string[]>> = {
     "taking-back-a-calendar-you-shared"
   ],
   "it": [
+    "a-calendar-that-is-yours-to-share",
     "month-view-on-a-bigger-screen",
     "keeping-track-of-who-replied",
     "exchange-calendars-on-an-iphone",

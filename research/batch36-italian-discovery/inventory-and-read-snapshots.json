@@ -1,0 +1,393 @@
+{
+  "count": 28,
+  "scope": "All 28 Italian canonical keys/titles inspected, three relevant complete objects read; no claim all 28 bodies reread.",
+  "inventory": [
+    {
+      "slug": "who-can-see-what-in-google-calendar",
+      "title": "Permessi di Google Calendar: controlla l’accesso effettivamente concesso",
+      "file": "src/app/content/it/articles-google.ts",
+      "jsonSha256": "c89abf94042b7881386ccdd840d865a316b72f61ab3011c08822e2d334d901dc"
+    },
+    {
+      "slug": "why-a-shared-calendar-does-not-appear",
+      "title": "Ti hanno condiviso un calendario e non c’è",
+      "file": "src/app/content/it/articles-google.ts",
+      "jsonSha256": "7c4682ad6e20705d6d13e60a1e5773939f6cd8d4690943a445c2513eff0ae62b"
+    },
+    {
+      "slug": "the-secret-address-of-a-google-calendar",
+      "title": "Indirizzo iCal segreto di Google: sottoscrizione e condivisione sono diverse",
+      "file": "src/app/content/it/articles-google.ts",
+      "jsonSha256": "a10c62e1260844939f0b3e06034569d5b694db975d0d4e075b992dc6baa164d6"
+    },
+    {
+      "slug": "what-guests-can-do-to-your-event",
+      "title": "Permessi degli invitati Google Calendar: modifiche, inviti e lista ospiti",
+      "file": "src/app/content/it/articles-google.ts",
+      "jsonSha256": "f3d7d321396fdb4e4faada66573b31c829c6630a7550149ab412375def189a0e"
+    },
+    {
+      "slug": "google-calendars-that-never-reach-your-iphone",
+      "title": "Un calendario Google manca su iPhone: verifica collegamento e selezione",
+      "file": "src/app/content/it/articles-google.ts",
+      "jsonSha256": "bc9a36cbf9e789d9cf00c82d0b59104083801c0386f4026cbca6fc4f48b2292b"
+    },
+    {
+      "slug": "taking-back-a-calendar-you-shared",
+      "title": "Interrompere la condivisione di un calendario: controllare ogni accesso",
+      "file": "src/app/content/it/articles-google.ts",
+      "jsonSha256": "2c922b9fc1328c1db938b50c29b8cdaf5183df15843b125852ebc847279edaf5"
+    },
+    {
+      "slug": "caldav-calendar-on-iphone",
+      "title": "Calendario CalDAV su iPhone: configurazione, permessi ed eventi mancanti",
+      "file": "src/app/content/it/articles-help.ts",
+      "jsonSha256": "f8fa621e245d3360b6fca4f7e1308ee47f9f3f9f30acfbcc2848734446487bb8"
+    },
+    {
+      "slug": "work-and-personal-without-two-apps",
+      "title": "Calendari di lavoro e personali in un’app: mantieni distinta la proprietà",
+      "file": "src/app/content/it/articles-help.ts",
+      "jsonSha256": "c6a0c9c8eeaed84673926602e0ba92b2d57df262f1057986c1df2cbf4c833da7"
+    },
+    {
+      "slug": "recurring-events-without-the-mess",
+      "title": "Eventi ricorrenti: modificare una data o la serie con attenzione",
+      "file": "src/app/content/it/articles-help.ts",
+      "jsonSha256": "ec8b7739c31dc4a8c45d300c937213da00474bbddbe3a644498d992e8573b91f"
+    },
+    {
+      "slug": "disconnect-calendar-integration-without-losing-track",
+      "title": "Disconnettere un’integrazione del calendario: accesso, sincronizzazione e copie esistenti",
+      "file": "src/app/content/it/articles-help.ts",
+      "jsonSha256": "8022609ef291e65e2b884ab20e3794906aa0df5958798c569a10c3d8afce1781"
+    },
+    {
+      "slug": "calendar-notifications-missing-silent-or-duplicated",
+      "title": "Notifiche del calendario su iPhone: assenti, silenziose o duplicate?",
+      "file": "src/app/content/it/articles-help.ts",
+      "jsonSha256": "ae3e1a091c5aeed38a318154ae359c08be5b39ce63b53929a906511554fac656"
+    },
+    {
+      "slug": "find-old-calendar-events-by-account-date-and-title",
+      "title": "Trovare un vecchio evento: controlla account, date e campi di ricerca",
+      "file": "src/app/content/it/articles-help.ts",
+      "jsonSha256": "64a11cf563e4a40fa4b5c12c2386b52d230ed6f5a3115d41a145973a24a41e7f"
+    },
+    {
+      "slug": "calendar-export-ics-pdf-and-backup",
+      "title": "Esportare un calendario: file ICS, PDF e iscrizioni",
+      "file": "src/app/content/it/articles-help.ts",
+      "jsonSha256": "77d4e8cb9c77dfdb583e41b8a0bbd8dfe3cce0b51ea3dc775ae6e2408b4c0186"
+    },
+    {
+      "slug": "month-view-on-a-bigger-screen",
+      "title": "Calendario mensile su iPad e iPhone: scegli la data, poi verifica i dettagli",
+      "file": "src/app/content/it/articles.ts",
+      "jsonSha256": "ab43dd7c6046fb30550820332d7452c23e7c85bf4e6bce110228e5eaf28582d8"
+    },
+    {
+      "slug": "keeping-track-of-who-replied",
+      "title": "Risposte agli inviti: distinguere partecipazione e accesso condiviso",
+      "file": "src/app/content/it/articles.ts",
+      "jsonSha256": "c66559fbfa22565f398d0fa840d738e7b0a4ed244cb2c5b50060ef9637daead3"
+    },
+    {
+      "slug": "exchange-calendars-on-an-iphone",
+      "title": "Calendari Microsoft ed Exchange su iPhone: verifica prima la connessione",
+      "file": "src/app/content/it/articles.ts",
+      "jsonSha256": "9815dcaafa8381d97fba354e4bd8d1fbb86e3fb401a04900a1fc3e3d9e890eb2"
+    },
+    {
+      "slug": "weather-inside-your-calendar",
+      "title": "Calendario con meteo su iPhone e iPad: valuta il contesto di un programma",
+      "file": "src/app/content/it/articles.ts",
+      "jsonSha256": "4a80ed0a1eb5bbbb1913e5af7d89a2a2a92bf6a3a2cc4e2d691a3b56bc1dafba"
+    },
+    {
+      "slug": "forecast-beside-every-event",
+      "title": "Confronta un appuntamento con le previsioni meteo orarie",
+      "file": "src/app/content/it/articles.ts",
+      "jsonSha256": "c5e175e313d94d79370755578fb6c1a7eefff969aaeff70af5057ac8b70c16cf"
+    },
+    {
+      "slug": "planning-outdoors-without-being-rained-on",
+      "title": "Organizza un evento all’aperto con una previsione e un’alternativa",
+      "file": "src/app/content/it/articles.ts",
+      "jsonSha256": "7ead1bf3cfdb40abada814a122d98d05503856f8d34400c01113718d92acd025"
+    },
+    {
+      "slug": "a-fourteen-day-view-of-the-weather",
+      "title": "Fino a quale data posso vedere il meteo in Cloud Calendars?",
+      "file": "src/app/content/it/articles.ts",
+      "jsonSha256": "06677230f28df4deffe77c9c7ad3cbfdf32e09f7379d5cb954599b75c5b395fe"
+    },
+    {
+      "slug": "icloud-google-and-outlook-in-one-view",
+      "title": "iCloud, Google e Outlook in una vista: account, copie e permessi",
+      "file": "src/app/content/it/articles.ts",
+      "jsonSha256": "99e2da48c8e3316e9ea1a03283d49d40622c6e2e09190c44f4b95c6356b091f4"
+    },
+    {
+      "slug": "three-calendar-apps-is-two-too-many",
+      "title": "Riunisci i calendari su iPhone senza perdere di vista gli eventi",
+      "file": "src/app/content/it/articles.ts",
+      "jsonSha256": "ecdf02fff4dcec95d2454f6839aad810ea52db5682bb44f28026b5998b2dc39f"
+    },
+    {
+      "slug": "the-widget-that-shows-what-is-next",
+      "title": "Widget calendario su iPhone e iPad: mostrare i prossimi eventi",
+      "file": "src/app/content/it/articles.ts",
+      "jsonSha256": "ed2bdb4a0d9d204c71da9fbed3a7b2f80ddf449faa43da1361f373ac68477c7d"
+    },
+    {
+      "slug": "a-countdown-to-your-next-meeting",
+      "title": "Un conto alla rovescia che affianca i promemoria",
+      "file": "src/app/content/it/articles.ts",
+      "jsonSha256": "0b42950477dd5581c475f45b418ec3a8fa98ab70c3047a2272b3df4855910a74"
+    },
+    {
+      "slug": "drag-an-event-to-move-it",
+      "title": "Spostare un evento trascinandolo",
+      "file": "src/app/content/it/articles.ts",
+      "jsonSha256": "2654bbcc38c758437c4b7d55d355b955bfd515981dfa733093cf7b80c656f9a0"
+    },
+    {
+      "slug": "sharing-one-event-not-your-calendar",
+      "title": "Condividere un evento: scegliere il link e i permessi",
+      "file": "src/app/content/it/articles.ts",
+      "jsonSha256": "b7c7ae0dd35bc30334e38a9af6f95127eaf8feb85534dedcb8aaab2d2ef97fcc"
+    },
+    {
+      "slug": "free-google-sync-without-adverts",
+      "title": "Sincronizzazione Google gratuita, e cosa paga la pubblicità",
+      "file": "src/app/content/it/articles.ts",
+      "jsonSha256": "428f9ba068c74d54a6a6ff91cf539aa64c15d2732ac706669b1923f28015dc0b"
+    },
+    {
+      "slug": "what-a-subscription-actually-buys",
+      "title": "Cosa compra davvero un abbonamento, piano per piano",
+      "file": "src/app/content/it/articles.ts",
+      "jsonSha256": "1380b478fabf4c5e57b018511b32bfbefea189eabc7213cd94ca67aca258189e"
+    }
+  ],
+  "completeReadObjects": {
+    "why-a-shared-calendar-does-not-appear": {
+      "object": {
+        "updated": "2026-10-21",
+        "title": "Ti hanno condiviso un calendario e non c’è",
+        "short": "Calendario condiviso che non compare",
+        "description": "Calendario Google condiviso assente? Controlla account invitato, gruppo, visibilità e tipo di link ricevuto.",
+        "lede": "Questa guida è di Arte Soft, sviluppatore di Cloud Calendars. Distingui prima un problema di accesso da un calendario semplicemente nascosto.",
+        "commonBelief": "Che accettare un calendario condiviso lo metta sul telefono.",
+        "sections": [
+          {
+            "heading": "Controlla account e gruppo",
+            "body": [
+              "Confronta il destinatario dell’invito con l’account Google sul telefono e nel browser. Apri il link con l’account corretto. Google permette la condivisione con persone e Gruppi Google. Per l’accesso tramite gruppo, chiedi al responsabile di confermare la tua appartenenza e al proprietario del calendario di verificare il gruppo autorizzato. Una mail inoltrata non concede da sola il permesso."
+            ]
+          },
+          {
+            "heading": "Nascosto, assente o limitato?",
+            "body": [
+              "Apri il menu di Google Calendar su iPhone o iPad. Se il calendario è elencato ma non selezionato, attivalo. Se manca, chiedi al proprietario di verificare l’accesso: una richiesta non è un’approvazione. Le regole aziendali o scolastiche possono limitare la condivisione. Confronta lo stesso account sul Web. Se lì funziona, controlla account collegato e calendari selezionati nell’altra app. L’accesso in sola lettura non consente modifiche."
+            ]
+          },
+          {
+            "heading": "Identifica il link",
+            "body": [
+              "Anche un invito di condivisione contiene un link: non tutti sono abbonamenti ICS. Chiedi se concede accesso a un calendario Google o pubblica un feed in sola lettura. Google richiede un browser su computer per un nuovo abbonamento; aprire un calendario già condiviso via mail è un’altra operazione. Gli aggiornamenti del feed dipendono dal servizio ricevente. Non esiste un’attesa universale: conferma le modifiche urgenti con l’organizzatore."
+            ]
+          }
+        ],
+        "claims": {},
+        "faq": [
+          {
+            "q": "Un Gruppo Google può ottenere accesso?",
+            "a": "Sì. Verifica gruppo selezionato, appartenenza e restrizioni dell’organizzazione. Una mail del gruppo inoltrata non dimostra l’accesso."
+          },
+          {
+            "q": "Devo eliminare e ricollegare l’account?",
+            "a": "Prima controlla identità, permessi e visibilità e confronta il calendario sul Web. Ricollegare non concede permessi mancanti."
+          }
+        ],
+        "practical": [
+          "Conferma account invitato e appartenenza al gruppo.",
+          "Attiva il calendario se è elencato ma nascosto.",
+          "Fai verificare l’accesso prima di cambiare le connessioni."
+        ],
+        "sourcesHeading": "Fonti e approfondimenti",
+        "sources": [
+          {
+            "label": "Google: Controlla account e gruppo",
+            "url": "https://support.google.com/calendar/answer/37082?hl=en&co=GENIE.Platform%3DiOS"
+          },
+          {
+            "label": "Google: Nascosto, assente o limitato?",
+            "url": "https://support.google.com/calendar/answer/37100?hl=en&co=GENIE.Platform%3DiOS"
+          },
+          {
+            "label": "Google: Identifica il link",
+            "url": "https://support.google.com/calendar/answer/37648?hl=en"
+          }
+        ],
+        "seeAlso": [
+          "who-can-see-what-in-google-calendar",
+          "google-calendars-that-never-reach-your-iphone"
+        ]
+      },
+      "file": "articles-google.ts"
+    },
+    "sharing-one-event-not-your-calendar": {
+      "object": {
+        "updated": "2026-10-21",
+        "title": "Condividere un evento: scegliere il link e i permessi",
+        "short": "Condividere un evento",
+        "description": "Condividi un evento senza l’intero calendario. Scopri i ruoli Reader, Writer e Owner, le anteprime, gli aggiornamenti e i limiti della revoca.",
+        "lede": "Inviare i dettagli di una cena, consentire modifiche a un coorganizzatore e raccogliere conferme di presenza sono attività diverse. Scegli prima lo scopo e poi il metodo di condivisione. Questa guida è scritta da Arte Soft, sviluppatore di Cloud Calendars.",
+        "commonBelief": "Ogni link è un abbonamento di sola lettura che si aggiorna subito e registra una risposta.",
+        "sections": [
+          {
+            "heading": "Controlla i dettagli del singolo evento",
+            "body": [
+              "La condivisione di un singolo evento riguarda quell’evento, non l’intero calendario. Prima di inviarlo, controlla titolo, fuso orario, luogo, note e link della riunione. Informazioni utili a un invitato potrebbero non essere adatte a una diffusione ampia.",
+              "Condividere una cena non richiede di condividere il calendario delle visite mediche. Tuttavia, luogo e link della cena vengono trasmessi con l’evento. Controlla il contenuto stesso."
+            ]
+          },
+          {
+            "heading": "Scegli anteprima, email o QR",
+            "body": [
+              "L’App Clip di Cloud Calendars mostra un’anteprima; per aggiungere l’evento tramite quel percorso serve l’app completa. Gli inviti via email e QR aprono una pagina web che propone di aprire Cloud Calendars. Non sono indirizzi di abbonamento intercambiabili.",
+              "Il mittente accede al proprio account per la condivisione sincronizzata. Link e codici QR possono essere inoltrati. Un QR trasmette un link, ma non dimostra chi lo abbia aperto."
+            ]
+          },
+          {
+            "heading": "Assegna soltanto l’accesso necessario",
+            "body": [
+              "Negli inviti email puoi scegliere Reader, Writer o Owner. Reader visualizza e sincronizza; Writer modifica; Owner può anche condividere e gestire gli accessi. Per chi deve solo consultare il programma, scegli Reader.",
+              "Writer è adatto a un coorganizzatore che deve modificare l’evento. Owner serve quando deve anche gestire l’accesso altrui. Per ottenere permessi superiori il destinatario deve accedere con l’identità corretta. Un destinatario anonimo non è un comproprietario identificato."
+            ]
+          },
+          {
+            "heading": "Comprendi come viene aggiunto l’evento",
+            "body": [
+              "Nell’app completa occorrono il permesso di accesso ai calendari e un calendario di destinazione modificabile. Il destinatario deve controllarlo prima di salvare. La copia ricevuta può essere associata all’evento condiviso per gli aggiornamenti successivi.",
+              "Importare un normale file ICS in un altro calendario è diverso: l’importazione crea una copia, mentre un abbonamento controlla periodicamente un feed. Se invii un feed ICS, spiega il percorso e verifica che il calendario del destinatario lo supporti."
+            ]
+          },
+          {
+            "heading": "Verifica gli aggiornamenti",
+            "body": [
+              "Una condivisione sincronizzata può trasmettere modifiche e annullamenti, ma il dispositivo deve poterli ricevere. L’intervallo suggerito dal feed non è una scadenza di consegna. Dispositivi offline, abbonamenti non aggiornati e copie importate indipendenti possono mostrare dati vecchi.",
+              "Se la cena cambia poco prima dell’inizio, aggiorna l’evento e contatta direttamente gli invitati. Chiedi conferma del nuovo orario. Ricevere un aggiornamento non equivale a confermare la presenza."
+            ]
+          },
+          {
+            "heading": "Gestisci l’accesso senza promettere di cancellare ogni copia",
+            "body": [
+              "Rivedi i destinatari e rimuovi i permessi inutili. Rimuovere una persona e revocare un link al feed sono operazioni distinte; nessuna equivale a cancellare da remoto ogni screenshot, messaggio o copia del calendario.",
+              "Se un link ha raggiunto altre persone, identifica il link o l’autorizzazione coinvolta e verifica il risultato dopo la modifica. Evita dettagli privati nei link distribuiti ampiamente, invece di confidare in una revoca successiva."
+            ]
+          }
+        ],
+        "claims": {},
+        "practical": [
+          "Controlla i dettagli e scegli tra visualizzazione, modifica e risposte sulla presenza.",
+          "Scegli il percorso di condivisione e accedi quando richiesto.",
+          "Usa Reader per i lettori; Writer o Owner solo per le responsabilità corrispondenti.",
+          "Chiedi di controllare orario e calendario di destinazione.",
+          "Per modifiche urgenti, aggiorna l’evento e invia un messaggio diretto.",
+          "Alla fine, verifica separatamente permessi dei destinatari e accesso tramite link."
+        ],
+        "faq": [
+          {
+            "q": "Condividere un evento rivela tutto il calendario?",
+            "a": "Il percorso sincronizzato per un singolo evento è limitato a quell’evento, ma ne espone i dettagli. Controllali ed evita un invito all’intero calendario quando vuoi condividere solo un appuntamento."
+          },
+          {
+            "q": "Il destinatario può modificarlo?",
+            "a": "Sì, con Writer o Owner e il percorso supportato con accesso all’account. Reader permette visualizzazione e sincronizzazione. Un normale abbonamento ICS non usa lo stesso meccanismo di modifica."
+          },
+          {
+            "q": "Rimuovere una persona annulla tutto ciò che ha ricevuto?",
+            "a": "Non è garantito. Cambia il rapporto di condivisione, ma copie salvate, screenshot e messaggi possono restare. Anche l’indirizzo di un feed condiviso va valutato separatamente."
+          }
+        ],
+        "sourcesHeading": "Riferimenti per i destinatari",
+        "sources": [
+          {
+            "label": "Apple: panoramica delle App Clip",
+            "url": "https://developer.apple.com/help/app-store-connect/offer-app-clip-experiences/overview-of-app-clips/"
+          },
+          {
+            "label": "Google: importazione di eventi e limiti",
+            "url": "https://support.google.com/calendar/answer/37118?co=GENIE.Platform%3DDesktop&hl=en"
+          },
+          {
+            "label": "Microsoft: importare un calendario o abbonarsi",
+            "url": "https://support.microsoft.com/en-us/outlook/import-or-subscribe-to-a-calendar-in-outlook-com-or-outlook-on-the-web"
+          }
+        ],
+        "seeAlso": [
+          "keeping-track-of-who-replied",
+          "who-can-see-what-in-google-calendar"
+        ]
+      },
+      "file": "articles.ts"
+    },
+    "what-a-subscription-actually-buys": {
+      "object": {
+        "updated": "2026-10-21",
+        "title": "Cosa compra davvero un abbonamento, piano per piano",
+        "short": "Cosa compra un abbonamento",
+        "description": "Cosa compra un abbonamento: Base, Advanced, Premium.",
+        "lede": "Questa guida è pubblicata da Arte Soft, sviluppatore di Cloud Calendars.",
+        "sections": [
+          {
+            "heading": "Base",
+            "body": [
+              "Base include sincronizzazione con Google Calendar, Google Meet, viste del calendario, meteo e widget. Il piano gratuito può mostrare pubblicità."
+            ]
+          },
+          {
+            "heading": "Advanced · Premium",
+            "body": [
+              "Advanced include Base e rimuove la pubblicità. Premium include Advanced e aggiunge Microsoft Calendar e Microsoft Teams.",
+              "Un abbonamento non concede permessi di modifica sui calendari altrui e non aggira le restrizioni di un account di lavoro."
+            ]
+          },
+          {
+            "heading": "Informazioni su acquisto e annullamento",
+            "body": [
+              "Prima dell’acquisto controlla prezzo locale, periodo di fatturazione e condizioni di rinnovo.",
+              "Per un abbonamento fatturato da Apple, apri Impostazioni → il tuo nome → Abbonamenti. Controlla stato e scadenza. Annullare il rinnovo è diverso dall’eliminare l’app o i dati del calendario; non presumere che le funzioni a pagamento restino disponibili dopo la scadenza."
+            ]
+          }
+        ],
+        "claims": {},
+        "practical": [
+          "Prima dell’acquisto controlla prezzo locale, periodo di fatturazione e condizioni di rinnovo.",
+          "Un abbonamento non concede permessi di modifica sui calendari altrui e non aggira le restrizioni di un account di lavoro."
+        ],
+        "faq": [
+          {
+            "q": "Come interrompo il rinnovo?",
+            "a": "Per un abbonamento fatturato da Apple, apri Impostazioni → il tuo nome → Abbonamenti. Controlla stato e scadenza. Annullare il rinnovo è diverso dall’eliminare l’app o i dati del calendario; non presumere che le funzioni a pagamento restino disponibili dopo la scadenza."
+          }
+        ],
+        "sourcesHeading": "Informazioni su acquisto e annullamento",
+        "sources": [
+          {
+            "label": "Apple: Come interrompo il rinnovo?",
+            "url": "https://support.apple.com/en-us/118428"
+          }
+        ],
+        "seeAlso": [
+          "free-google-sync-without-adverts"
+        ]
+      },
+      "file": "articles.ts"
+    }
+  },
+  "absentCanonical": "a-calendar-that-is-yours-to-share"
+}

@@ -70,7 +70,7 @@ export const HOME_IT: HomeCopy = {
       {
         kicker: 'Più calendari',
         title: 'Lavoro e vita affiancati invece che accatastati',
-        body: 'Dai a ogni calendario la sua colonna e smetti di districare sovrapposizioni colorate. L’unica vista che rende comprensibile una casa condivisa o una settimana di lavoro spezzata.',
+        body: "Affianca i calendari nelle colonne disponibili per confrontare lavoro e impegni personali. Controlla quali calendari sono selezionati: una vista filtrata non basta per stabilire che un orario sia libero.",
         alt: 'Vista giorno con più calendari, ciascuno nella propria colonna',
         bullets: [
           'Una colonna per calendario',
@@ -149,7 +149,7 @@ tabs: {"hourly":"Per ora","daily":"Per giorno","weekend":"Fine settimana","range
     },
     gestures: {
       title: "Trascina. Ridimensiona. Controlla.",
-      body: "Sposta gli eventi modificabili a un’altra ora o data, oppure ridimensionali nella sequenza temporale. Per un evento ricorrente, scegli quali occorrenze cambiare e controlla il risultato salvato.",
+      body: "Sposta gli eventi modificabili a un’altra ora o data, oppure ridimensionali nella sequenza temporale. Per un evento ricorrente, controlla quali occorrenze verranno modificate e verifica il risultato salvato.",
     },
     tiles: [
       {
@@ -177,14 +177,14 @@ tabs: {"hourly":"Per ora","daily":"Per giorno","weekend":"Fine settimana","range
   pricing: {
     eyebrow: 'Prezzi',
     title: ['Gratis è', 'davvero gratis.'],
-    lead: 'La sincronizzazione iCloud, quella Google, tutte le viste, il centro meteo completo e tutti i widget non costano nulla. Paga solo se vuoi togliere la pubblicità o aggiungere anche il calendario Microsoft.',
+    lead: "Base include Google Calendar, Google Meet, viste del calendario, meteo e widget. Advanced rimuove la pubblicità; Premium include Advanced e aggiunge Microsoft Calendar e Teams. Controlla i permessi degli account e il prezzo locale prima di scegliere.",
     monthly: 'Mensile',
     yearly: 'Annuale',
     saveMore: 'risparmi di più',
     billingPeriod: 'Periodo di fatturazione',
     mostPopular: "Piano in evidenza",
     everythingIn: 'Tutto quello di {tier}, più:',
-    forever: 'per sempre',
+    forever: "piano gratuito",
     perMonth: '/ mese',
     perYear: '/ anno',
     downloadFree: 'Scarica gratis',

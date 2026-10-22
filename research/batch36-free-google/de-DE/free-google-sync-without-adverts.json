@@ -1,0 +1,61 @@
+{
+  "updated": "2026-10-22",
+  "claims": {},
+  "title": "Kostenlose Google-Synchronisierung auf dem iPhone: Funktionen und Werbung",
+  "short": "Google kostenlos nutzen und Werbung entfernen",
+  "description": "Google-Synchronisierung ist in Base enthalten. Advanced entfernt Werbung, Premium ergänzt Microsoft und Teams. Prüfe Rechte und lokale Preise.",
+  "lede": "Cloud Calendars wird von Arte Soft entwickelt, dem Herausgeber dieses Leitfadens. Die Synchronisierung mit Google Kalender gehört zum kostenlosen Base-Plan. Die kostenlose App kann Werbung anzeigen; Advanced entfernt sie. Ein Abonnement und das Recht, fremde Kalender zu bearbeiten, sind zwei verschiedene Dinge.",
+  "commonBelief": "Eine kostenlose Kalenderverbindung sei nur eine Testphase, oder ein werbefreier Plan verleihe automatisch mehr Rechte an geteilten Kalendern.",
+  "sections": [
+    {
+      "heading": "Beginne mit der Verbindung, die du brauchst",
+      "body": [
+        "Base enthält Google-Kalender-Synchronisierung, Unterstützung für Google Meet, Kalenderansichten, Wetter und Widgets für den Home-Bildschirm. Du musst trotzdem das vorgesehene Google-Konto verbinden und die gewünschten Kalender auswählen. Ein schreibgeschützt geteilter Kalender bleibt unabhängig vom App-Plan schreibgeschützt.",
+        "Lokale Kalender kannst du auf dem Gerät verwenden, ohne ein App-Konto anzulegen. Für eine Anbieter-Verbindung und Freigabedienste kann eine Anmeldung nötig sein. Die Erlaubnis, iPhone-Kalender zu lesen, bedeutet nicht, dass alle deine Google-Kalender verbunden sind."
+      ]
+    },
+    {
+      "heading": "Was sich durch einen kostenpflichtigen Plan ändert",
+      "body": [
+        "Advanced enthält die Funktionen von Base und entfernt Werbung. Die Zahlung ändert keine Google-Freigaberechte und verschafft Wettervorhersagen keine Priorität. Das Entfernen von Werbung gibt dir nicht das Recht, Kalender anderer Konten zu bearbeiten.",
+        "Premium enthält Advanced und ergänzt Microsoft Kalender und Microsoft Teams. Wenn deine Organisation externe Verbindungen einschränkt, kann ein Kauf diese Regeln nicht aufheben. Prüfe die benötigte Verbindung, bevor du dich bei der Arbeit darauf verlässt."
+      ]
+    },
+    {
+      "heading": "Prüfe eine gewöhnliche Woche, bevor du dich entscheidest",
+      "body": [
+        "Wähle eine kleine Gruppe deiner tatsächlichen Kalender aus, kontrolliere die angezeigten Ereignisse und erstelle einen entbehrlichen Testtermin in einem beschreibbaren Kalender. Prüfe sein Speicherziel: Zwei Konten in derselben Ansicht bedeuten nicht, dass ihre Ereignisse zusammengeführt wurden.",
+        "Entscheide getrennt, ob dich die Werbung stört und ob du Microsoft-Unterstützung brauchst. Nur weil jemand anderes einen anderen Anbieter nutzt, musst du keinen höheren Plan kaufen. Prüfe vor dem Kauf den lokalen Preis und den Abrechnungszeitraum."
+      ]
+    },
+    {
+      "heading": "Verwalte den Kauf mit dem richtigen Apple Account",
+      "body": [
+        "Bei einem von Apple abgerechneten Abonnement öffnest du Einstellungen, deinen Namen und dann Abonnements, um den Plan und die Kündigungsoptionen zu prüfen. Fehlt der Kauf, kontrolliere den Apple Account auf dem Beleg. Die Anmeldung beim Kalenderanbieter ist nicht dieselbe wie beim Apple Account, dem das Abonnement gehört.",
+        "Das Entfernen der App ist kein Weg, die Verlängerung zu verwalten. Bevor du Konten wechselst oder lokale Daten löschst, kläre, welche Kalender lokal und welche bei einem Anbieter gespeichert sind."
+      ]
+    }
+  ],
+  "practical": [
+    "Verbinde das vorgesehene Google-Konto und prüfe die ausgewählten Kalender.",
+    "Prüfe die Bearbeitungsrechte mit einem entbehrlichen Testtermin im richtigen Zielkalender.",
+    "Beurteile mit Base die Ansichten, Wetterfunktionen und Widgets, die du brauchst.",
+    "Wähle Advanced zum Entfernen der Werbung und Premium, wenn du Microsoft Kalender oder Teams benötigst.",
+    "Prüfe den lokalen Preis, den Abrechnungszeitraum und den Apple Account des Kaufs."
+  ],
+  "faq": [
+    {
+      "q": "Brauche ich Advanced für die Google-Kalender-Synchronisierung?",
+      "a": "Nein. Die Google-Kalender-Synchronisierung ist in Base enthalten. Advanced entfernt Werbung; Premium ergänzt Microsoft Kalender und Teams."
+    },
+    {
+      "q": "Kann ich durch Bezahlen einen schreibgeschützt geteilten Kalender bearbeiten?",
+      "a": "Nein. Die Bearbeitungsrechte werden vom Kalendereigentümer und Anbieter bestimmt. Ein App-Abonnement verleiht dir keine Rechte an fremden Kalendern."
+    }
+  ],
+  "sourcesHeading": "Quellen und Hilfe zu Käufen",
+  "sources": [
+    {"label": "Apple: Ein Abonnement kündigen", "url": "https://support.apple.com/en-us/118428"}
+  ],
+  "seeAlso": ["what-a-subscription-actually-buys", "icloud-google-and-outlook-in-one-view"]
+}

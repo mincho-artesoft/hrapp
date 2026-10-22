@@ -1,0 +1,40 @@
+{
+  "checkedAt": "2026-10-22T04:19:57.763261+00:00",
+  "fullGuideRoutesChecked": [
+    "https://www.cloud-calendars.com/it/articles/free-google-sync-without-adverts/",
+    "https://www.cloud-calendars.com/it/articles/what-a-subscription-actually-buys/",
+    "https://www.cloud-calendars.com/it/articles/a-calendar-that-is-yours-to-share/",
+    "https://www.cloud-calendars.com/de/articles/free-google-sync-without-adverts/",
+    "https://www.cloud-calendars.com/es/articles/free-google-sync-without-adverts/",
+    "https://www.cloud-calendars.com/fr/articles/free-google-sync-without-adverts/"
+  ],
+  "narrowViewport": 390,
+  "documentWidths": [
+    379,
+    379,
+    379,
+    379,
+    379,
+    379
+  ],
+  "scrollWidths": [
+    379,
+    379,
+    379,
+    379,
+    379,
+    379
+  ],
+  "italianSharingMeaningfulScreenshot": "/tmp/cloud-calendar-batch36-italian-sharing.png",
+  "italianAcceptanceRolesSectionVisuallyRead": true,
+  "italianHome": {
+    "documentWidth": 379,
+    "scrollWidth": 379,
+    "namedPlansVisible": true,
+    "freePlanLabelVisible": true,
+    "unsupportedUniqueViewClaimAbsent": true
+  },
+  "sourceLinksAndFAQCountsChecked": true,
+  "viewportReset": true,
+  "scope": "Published sixguide narrowDOM/layout and meaningful newITsection screenshot; not fullnative-speaker/runtime/cancellation execution."
+}

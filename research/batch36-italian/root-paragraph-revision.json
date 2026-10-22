@@ -1,0 +1,28 @@
+{
+  "date": "2026-10-22",
+  "reason": "Exact parent-requested reader-facing clarification: no implied priority-weather or automatic-Meet feature merely allocated to another tier.",
+  "changes": [
+    {
+      "file": "research/batch36-italian/free-google-sync-without-adverts.json",
+      "path": "sections[1].body[0]",
+      "before": "Advanced comprende le funzioni di Base e rimuove la pubblicità. Non è un costo aggiuntivo per sbloccare permessi di condivisione Google, aggiornamenti meteo prioritari o modifiche tra account: queste non sono funzioni esclusive di Advanced.",
+      "after": "Advanced comprende le funzioni di Base e rimuove la pubblicità. Il pagamento non cambia i permessi di condivisione di Google e non dà priorità alle previsioni meteo. La rimozione della pubblicità non conferisce il diritto di modificare calendari appartenenti ad altri account.",
+      "beforeRawSha256": "6b4ee8d49f9b3448a5e2b0bc2b42e9dbbd7e6c6a6c14c437d5798429c71ca395",
+      "afterRawSha256": "a4a42e201f9c58ea62ae60258924bc99b9ce9a3a12e2bb77738bac7d457bfee2",
+      "beforeJsonStringifySha256": "50ada7b1a902b30b652b52b3a285711c2992d8dbad46d6ff5e9267bc1aab7580",
+      "afterJsonStringifySha256": "2b6bbd9a56885d16e0f4a50012e6b5866d91ce8e2379cfdb7b5b34dacb901115",
+      "onlyRequestedParagraphChanged": true
+    },
+    {
+      "file": "research/batch36-italian/what-a-subscription-actually-buys.json",
+      "path": "sections[1].body[0]",
+      "before": "Advanced comprende le funzioni di Base e rimuove la pubblicità. Non è un acquisto necessario per sbloccare la gestione tra calendari, i permessi di condivisione Google, la generazione automatica di link Meet o aggiornamenti meteo prioritari.",
+      "after": "Advanced comprende le funzioni di Base e rimuove la pubblicità. Il pagamento non cambia i permessi di condivisione di Google né aggiunge una priorità agli aggiornamenti meteo. La creazione di link Meet continua a dipendere dal calendario e dal contesto dell’evento.",
+      "beforeRawSha256": "2dfe2c054e569a645a87d9ed3afb04f22401a42f27d5c4b61afc953664760ff5",
+      "afterRawSha256": "1e2e4002f064af12331eb58b677f1b94d4e33994144d2077936e1a750611a141",
+      "beforeJsonStringifySha256": "ef7b2c10eb357bf75f796dbf718aad93ef70b64589266881eb23e03e0b49f604",
+      "afterJsonStringifySha256": "008671dc8de4dd50cc5b7ff2f7cfe8ade65542602dbef7999ecc426ee1549591",
+      "onlyRequestedParagraphChanged": true
+    }
+  ]
+}

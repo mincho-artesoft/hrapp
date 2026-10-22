@@ -1,0 +1,311 @@
+{
+  "scope": "All30 locale module sets parsed for exact canonical definition. Complete five existing bodies read: IT/EN in main audit; DE/ES/FR in separate untruncated1691-token output. Not eleven editions inferred from generic advancedMonthly key hits.",
+  "rows": [
+    {
+      "locale": "de-DE",
+      "file": "src/app/content/de-DE/articles.ts",
+      "object": {
+        "title": "Kostenlose Google-Synchronisierung — und wofür die Werbung bezahlt",
+        "short": "Kostenlos, und die Werbung",
+        "description": "Was die kostenlose Stufe wirklich enthält, wo Werbung erscheint und was ihre Entfernung kostet. Klar gesagt, weil die meisten Apps das nicht tun.",
+        "lede": "Kostenlose Kalender-Apps sind meist kostenlos, weil etwas anderes verkauft wird. Es lohnt sich zu wissen, was — bevor man ihr seine Woche anvertraut.",
+        "commonBelief": "Dass eine kostenlose Stufe eine Testphase ist und die richtige App hinter der Bezahlschranke liegt.",
+        "sections": [
+          {
+            "heading": "Was kostenlos tatsächlich abdeckt",
+            "body": [
+              "Alle Ansichten, iCloud-Synchronisierung, Google-Synchronisierung, das gesamte Wetter im Kalender, Widgets, Meet-Links an Terminen und Bearbeiten per Ziehen. Kein Test dieser Dinge — diese Dinge.",
+              "Liegen Ihre Kalender bei Apple und Google, was bei den meisten der Fall ist, dann ist die kostenlose Stufe die App."
+            ]
+          },
+          {
+            "heading": "Was die Werbung tut und was ihre Entfernung kostet",
+            "body": [
+              "Die kostenlose Stufe trägt Werbung. Sie zu entfernen ist die günstigste bezahlte Stufe, und Werbung zu entfernen ist ehrlich gesagt das meiste, wofür diese Stufe da ist.",
+              "Das so zu sagen scheint besser als die übliche Anordnung, in der die werbefreie Stufe mit Funktionen gebündelt wird, nach denen niemand gefragt hat, damit der Preis nach mehr aussieht."
+            ]
+          }
+        ],
+        "claims": {
+          "price": "Preis der kostenlosen Stufe",
+          "advancedMonthly": "Monatlicher Preis ohne Werbung, in Dollar"
+        },
+        "practical": [
+          "Fangen Sie kostenlos an; die Synchronisierung, die Sie brauchen, ist wahrscheinlich schon da.",
+          "Zahlen Sie, um Werbung loszuwerden, nicht weil Sie erwarten, dass die App sich ändert.",
+          "Die oberste Stufe lohnt sich nur, wenn Ihr Arbeitskalender bei Microsoft liegt."
+        ],
+        "seeAlso": [
+          "what-a-subscription-actually-buys",
+          "icloud-google-and-outlook-in-one-view"
+        ]
+      },
+      "rawModuleSha256": "a4e1e68284d679e815185db4c1f934940c40428012472ef6c73251760b1b04dd",
+      "jsonStringifySha256": "c85a42b5edf3252f491d7fe5d012d040f65b5115455137bf9e986919580b1d82",
+      "completeRead": true,
+      "decision": "material_legacy_rhetoric_and_purchase_guidance_followup",
+      "exactIssuePaths": [
+        "lede",
+        "sections[0].body[1]",
+        "sections[1].body[1]",
+        "practical"
+      ]
+    },
+    {
+      "locale": "en-US",
+      "file": "src/app/content/en-US/articles-compare.ts",
+      "object": {
+        "updated": "2026-10-21",
+        "claims": {},
+        "title": "Free Google Calendar sync on iPhone: what is included and where ads fit",
+        "short": "Free Google sync and ads",
+        "description": "Check what Cloud Calendars includes free, what Advanced removes and when Microsoft support needs Premium. Separate calendar access from subscription benefits.",
+        "lede": "Cloud Calendars is developed by Arte Soft, which also publishes this guide. Google Calendar sync is included in the free Base plan. The free app can display advertising; Advanced removes it. A subscription and permission to edit someone else’s calendar are separate things.",
+        "commonBelief": "A free calendar connection is only a trial, or buying an ad-free plan automatically grants more permission to shared calendars.",
+        "sections": [
+          {
+            "heading": "Start with the connection you actually need",
+            "body": [
+              "Base includes Google Calendar sync, Google Meet support, calendar views, weather and Home Screen widgets. You still need to connect the intended Google account and select the calendars you want to see. A calendar shared read-only remains read-only regardless of the app plan.",
+              "Local calendars can be used on the device without creating an app account. Connecting a provider and using sharing services may require sign-in. Do not confuse permission to read iPhone calendars with having connected every Google calendar you own."
+            ]
+          },
+          {
+            "heading": "What paying changes",
+            "body": [
+              "Advanced contains the Base features and removes ads. It is not an extra charge to unlock Google sharing permissions, priority weather updates or cross-account editing: those should not be advertised as separate Advanced benefits.",
+              "Premium includes Advanced and adds Microsoft Calendar and Microsoft Teams support. If your organisation limits third-party connections, a purchase cannot override those rules. Verify the connection you need before relying on it for work."
+            ]
+          },
+          {
+            "heading": "Test one ordinary week before deciding",
+            "body": [
+              "Select a small set of real calendars, check that the correct events appear and create a disposable event in a writable calendar. Confirm its destination rather than assuming that seeing two accounts means their events have merged.",
+              "Decide separately whether ads interrupt your use and whether Microsoft support is necessary. There is no need to buy a higher plan just because another user needs a different provider. Prices and billing periods are shown locally before purchase."
+            ]
+          },
+          {
+            "heading": "Manage the purchase through the right Apple Account",
+            "body": [
+              "For a subscription billed by Apple, use Settings, your name, then Subscriptions to inspect the plan and cancellation options. Check the Apple Account on the receipt if the purchase is missing. Signing into a calendar provider is not the same as signing into the Apple Account that owns the subscription.",
+              "Removing the app is not the way to manage renewal. Before changing accounts or cleaning local data, make sure you know which calendars are local and which are stored with a provider."
+            ]
+          }
+        ],
+        "practical": [
+          "Connect the intended Google account and check selected calendars.",
+          "Confirm edit permission with one disposable event in the right destination.",
+          "Use Base to assess the views, weather and widgets you need.",
+          "Choose Advanced for ad removal; choose Premium when Microsoft Calendar or Teams support is required.",
+          "Check local price, billing period and the Apple Account used for purchase."
+        ],
+        "faq": [
+          {
+            "q": "Do I need Advanced for Google Calendar sync?",
+            "a": "No. Google Calendar sync is included in Base. Advanced removes ads; Premium adds Microsoft Calendar and Teams support."
+          },
+          {
+            "q": "Will paying let me edit a calendar shared read-only?",
+            "a": "No. Editing permission is controlled by the calendar owner and provider. An app subscription does not grant permission to someone else’s calendar."
+          }
+        ],
+        "sourcesHeading": "Sources and purchase help",
+        "sources": [
+          {
+            "label": "Apple: Cancel a subscription",
+            "url": "https://support.apple.com/en-us/118428"
+          }
+        ],
+        "seeAlso": [
+          "what-you-get-without-paying-anything",
+          "what-a-subscription-actually-buys",
+          "what-calendar-sync-actually-does"
+        ]
+      },
+      "rawModuleSha256": "ec12c3eb69ec658b7e99820e24de80099ecfd8f2537f581cc1fa73220a3fb62f",
+      "jsonStringifySha256": "7051c9eff50013bba9d6a94f2714d70c8823d3de3a4455cb08c8df1ad095d856",
+      "completeRead": true,
+      "decision": "current_qualified_canonical"
+    },
+    {
+      "locale": "es-ES",
+      "file": "src/app/content/es-ES/articles.ts",
+      "object": {
+        "title": "Sincronización gratuita con Google, y qué paga la publicidad",
+        "short": "Gratis, y la publicidad",
+        "description": "Qué incluye de verdad el plan gratuito, dónde aparece la publicidad y cuánto cuesta quitarla. Dicho claro, porque casi ninguna aplicación lo hace.",
+        "lede": "Las aplicaciones de calendario gratuitas suelen serlo porque se está vendiendo otra cosa. Conviene saber cuál antes de confiarle la semana.",
+        "commonBelief": "Que un plan gratuito es una prueba y que la aplicación de verdad está detrás del muro de pago.",
+        "sections": [
+          {
+            "heading": "Qué cubre el plan gratuito",
+            "body": [
+              "Todas las vistas, sincronización con iCloud, sincronización con Google, todo el tiempo dentro del calendario, widgets, enlaces de Meet en los eventos y edición arrastrando. No una prueba de esas cosas: esas cosas.",
+              "Si sus calendarios son de Apple y de Google, que es el caso de la mayoría, el plan gratuito es la aplicación."
+            ]
+          },
+          {
+            "heading": "Qué hace la publicidad y qué cuesta quitarla",
+            "body": [
+              "El plan gratuito lleva publicidad. Quitarla es el plan de pago más barato, y quitar la publicidad es honestamente casi todo lo que ese plan hace.",
+              "Decirlo así parece mejor que el arreglo habitual, en el que el plan sin anuncios se empaqueta con funciones que nadie pidió para que el precio parezca comprar más."
+            ]
+          }
+        ],
+        "claims": {
+          "price": "Coste del plan gratuito",
+          "advancedMonthly": "Coste mensual de quitar la publicidad, en dólares"
+        },
+        "practical": [
+          "Empiece gratis: la sincronización que necesita probablemente ya está ahí.",
+          "Pague por quitar la publicidad, no porque espere que la aplicación cambie.",
+          "El plan superior solo tiene sentido si su calendario de trabajo es de Microsoft."
+        ],
+        "seeAlso": [
+          "what-a-subscription-actually-buys",
+          "icloud-google-and-outlook-in-one-view"
+        ]
+      },
+      "rawModuleSha256": "c3a216e4c262ae649ec37a41d648ac6629e3b134fb7e7211fb28096474a79a61",
+      "jsonStringifySha256": "5fed382000e92327f5c6353e313804e3f60cb08e43c38c938998bfd29cf7225c",
+      "completeRead": true,
+      "decision": "material_legacy_rhetoric_and_purchase_guidance_followup",
+      "exactIssuePaths": [
+        "lede",
+        "sections[0].body[1]",
+        "sections[1].body[1]",
+        "practical"
+      ]
+    },
+    {
+      "locale": "fr-FR",
+      "file": "src/app/content/fr-FR/articles.ts",
+      "object": {
+        "title": "Synchronisation Google gratuite, et ce que paie la publicité",
+        "short": "Gratuit, et la publicité",
+        "description": "Découvrez ce que comprend la formule gratuite, où intervient la publicité et quelle formule permet de la retirer.",
+        "lede": "Les applications d'agenda gratuites le sont généralement parce qu'autre chose se vend. Il vaut la peine de savoir quoi avant de leur confier sa semaine.",
+        "commonBelief": "Qu'une formule gratuite est un essai et que la vraie application se trouve derrière le paiement.",
+        "sections": [
+          {
+            "heading": "Ce que couvre le gratuit",
+            "body": [
+              "Toutes les vues, la synchronisation iCloud, la synchronisation Google, toute la météo dans l'agenda, les widgets, les liens Meet sur les événements et la modification par glisser. Pas un essai de ces choses : ces choses.",
+              "Si vos agendas sont chez Apple et Google, ce qui est le cas de la plupart des gens, la formule gratuite est l'application."
+            ]
+          },
+          {
+            "heading": "Ce que fait la publicité et ce que coûte son retrait",
+            "body": [
+              "La formule gratuite porte de la publicité. La retirer est la formule payante la moins chère, et retirer la publicité est honnêtement l'essentiel de ce que fait cette formule.",
+              "Le dire ainsi paraît préférable à l'arrangement habituel, où la formule sans publicité est empaquetée avec des fonctions que personne n'a demandées pour que le prix ait l'air d'acheter davantage."
+            ]
+          }
+        ],
+        "claims": {
+          "price": "Coût de la formule gratuite",
+          "advancedMonthly": "Coût mensuel du retrait de la publicité, en dollars"
+        },
+        "practical": [
+          "Commencez gratuitement : la synchronisation dont vous avez besoin est probablement déjà là.",
+          "Payez pour retirer la publicité, pas parce que vous attendez que l'application change.",
+          "La formule supérieure n'a de sens que si votre agenda professionnel est chez Microsoft."
+        ],
+        "seeAlso": [
+          "what-a-subscription-actually-buys",
+          "icloud-google-and-outlook-in-one-view"
+        ]
+      },
+      "rawModuleSha256": "d3e4438bc57d8f01b654c5eb35178836b99413902a623fe35a818f582bd336b2",
+      "jsonStringifySha256": "49c22d7612e3a8e8dcc07660e110fc32b3c06f80e63bc7fa242e7b332e05c9a7",
+      "completeRead": true,
+      "decision": "material_legacy_rhetoric_and_purchase_guidance_followup",
+      "exactIssuePaths": [
+        "lede",
+        "sections[0].body[1]",
+        "sections[1].body[1]",
+        "practical"
+      ]
+    },
+    {
+      "locale": "it",
+      "file": "src/app/content/it/articles.ts",
+      "object": {
+        "title": "Sincronizzazione Google gratuita, e cosa paga la pubblicità",
+        "short": "Gratis, e la pubblicità",
+        "description": "Cosa contiene davvero il piano gratuito, dove compare la pubblicità e quanto costa toglierla. Detto chiaro, perché quasi nessuna app lo fa.",
+        "lede": "Le app di calendario gratuite di solito lo sono perché si sta vendendo qualcos'altro. Vale la pena sapere cosa prima di affidarle la settimana.",
+        "commonBelief": "Che un piano gratuito sia una prova e che l'app vera stia dietro il muro a pagamento.",
+        "sections": [
+          {
+            "heading": "Cosa copre il gratuito",
+            "body": [
+              "Tutte le viste, sincronizzazione iCloud, sincronizzazione Google, tutto il meteo dentro il calendario, i widget, i link Meet sugli eventi e la modifica per trascinamento. Non una prova di queste cose: queste cose.",
+              "Se i vostri calendari stanno su Apple e Google, come per la maggior parte delle persone, il piano gratuito è l'app."
+            ]
+          },
+          {
+            "heading": "Cosa fa la pubblicità e quanto costa toglierla",
+            "body": [
+              "Il piano gratuito porta pubblicità. Toglierla è il piano a pagamento più economico, e togliere la pubblicità è onestamente quasi tutto quello che quel piano fa.",
+              "Dirlo così sembra meglio della sistemazione abituale, in cui il piano senza pubblicità viene impacchettato con funzioni che nessuno ha chiesto perché il prezzo sembri comprare di più."
+            ]
+          }
+        ],
+        "claims": {
+          "price": "Costo del piano gratuito",
+          "advancedMonthly": "Costo mensile per togliere la pubblicità, in dollari"
+        },
+        "practical": [
+          "Cominciate gratis: la sincronizzazione che vi serve probabilmente c'è già.",
+          "Pagate per togliere la pubblicità, non perché vi aspettate che l'app cambi.",
+          "Il piano superiore ha senso solo se il vostro calendario di lavoro sta su Microsoft."
+        ],
+        "seeAlso": [
+          "what-a-subscription-actually-buys",
+          "icloud-google-and-outlook-in-one-view"
+        ]
+      },
+      "rawModuleSha256": "e2661bcf7aa530506aeab83b6a5531209e3fe4d70d0add62f3e20b141691e5d4",
+      "jsonStringifySha256": "428f9ba068c74d54a6a6ff91cf539aa64c15d2732ac706669b1923f28015dc0b",
+      "completeRead": true,
+      "decision": "full_replacement_prepared",
+      "exactIssuePaths": [
+        "lede",
+        "sections[0].body[1]",
+        "sections[1].body[1]",
+        "practical"
+      ]
+    }
+  ],
+  "actualEditionCount": 5,
+  "absentLocales": [
+    "ar-SA",
+    "bg",
+    "cs",
+    "da",
+    "el",
+    "fi",
+    "he",
+    "hi",
+    "hu",
+    "id",
+    "ja",
+    "ko",
+    "ms",
+    "nl-NL",
+    "no",
+    "pl",
+    "pt-BR",
+    "ro",
+    "ru",
+    "sv",
+    "th",
+    "tr",
+    "vi",
+    "zh-Hans",
+    "zh-Hant"
+  ],
+  "followup": "DE/ES/FR retain same unsupported free-app/majority-user/competitor bundling rhetoric and unqualified purchase guidance found in IT. Recommend later deliberate full modernization in same canonical, not global claim-label replacement or new pages. No drafts for these three in current scope.",
+  "claimsBoundary": "advancedMonthly labels are not proof of visible numeric prices. Rendered rows depend on shared ARTICLE_FACTS; root confirmed empty facts for reviewed pricing canonicals. Generic key hits in eleven locales span other articles and cannot establish eleven freeGoogle editions."
+}

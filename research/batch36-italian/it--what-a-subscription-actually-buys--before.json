@@ -1,0 +1,50 @@
+{
+  "updated": "2026-10-21",
+  "title": "Cosa compra davvero un abbonamento, piano per piano",
+  "short": "Cosa compra un abbonamento",
+  "description": "Cosa compra un abbonamento: Base, Advanced, Premium.",
+  "lede": "Questa guida è pubblicata da Arte Soft, sviluppatore di Cloud Calendars.",
+  "sections": [
+    {
+      "heading": "Base",
+      "body": [
+        "Base include sincronizzazione con Google Calendar, Google Meet, viste del calendario, meteo e widget. Il piano gratuito può mostrare pubblicità."
+      ]
+    },
+    {
+      "heading": "Advanced · Premium",
+      "body": [
+        "Advanced include Base e rimuove la pubblicità. Premium include Advanced e aggiunge Microsoft Calendar e Microsoft Teams.",
+        "Un abbonamento non concede permessi di modifica sui calendari altrui e non aggira le restrizioni di un account di lavoro."
+      ]
+    },
+    {
+      "heading": "Informazioni su acquisto e annullamento",
+      "body": [
+        "Prima dell’acquisto controlla prezzo locale, periodo di fatturazione e condizioni di rinnovo.",
+        "Per un abbonamento fatturato da Apple, apri Impostazioni → il tuo nome → Abbonamenti. Controlla stato e scadenza. Annullare il rinnovo è diverso dall’eliminare l’app o i dati del calendario; non presumere che le funzioni a pagamento restino disponibili dopo la scadenza."
+      ]
+    }
+  ],
+  "claims": {},
+  "practical": [
+    "Prima dell’acquisto controlla prezzo locale, periodo di fatturazione e condizioni di rinnovo.",
+    "Un abbonamento non concede permessi di modifica sui calendari altrui e non aggira le restrizioni di un account di lavoro."
+  ],
+  "faq": [
+    {
+      "q": "Come interrompo il rinnovo?",
+      "a": "Per un abbonamento fatturato da Apple, apri Impostazioni → il tuo nome → Abbonamenti. Controlla stato e scadenza. Annullare il rinnovo è diverso dall’eliminare l’app o i dati del calendario; non presumere che le funzioni a pagamento restino disponibili dopo la scadenza."
+    }
+  ],
+  "sourcesHeading": "Informazioni su acquisto e annullamento",
+  "sources": [
+    {
+      "label": "Apple: Come interrompo il rinnovo?",
+      "url": "https://support.apple.com/en-us/118428"
+    }
+  ],
+  "seeAlso": [
+    "free-google-sync-without-adverts"
+  ]
+}

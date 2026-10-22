@@ -10,6 +10,98 @@ import { LocalisedArticle } from '../types';
  * riscrivere ogni frase senza toccare un numero.
  */
 export const ARTICLES_IT: Readonly<Record<string, LocalisedArticle>> = {
+  "a-calendar-that-is-yours-to-share": {
+  "updated": "2026-10-22",
+  "title": "Condividere un calendario: scegli persone, permessi e metodo",
+  "short": "Un calendario da condividere",
+  "description": "Condividi un calendario su iPhone distinguendo accesso nell’app e permessi del provider. Controlla ruoli, accettazione e aggiornamenti.",
+  "lede": "Un calendario delle prove o degli impegni di casa deve avere un proprietario e destinatari ben definiti. Prima di invitare qualcuno, decidi chi deve consultarlo, chi deve modificare gli eventi e chi deve gestire gli accessi. Questa guida è scritta da Arte Soft, sviluppatore di Cloud Calendars.",
+  "commonBelief": "Condividere un calendario crea sempre un’iscrizione di sola lettura collegata a un account già esistente presso un provider.",
+  "sections": [
+    {
+      "heading": "Scegli un calendario con uno scopo preciso",
+      "body": [
+        "Un calendario separato rende più chiaro a chi è destinato. Inserisci le prove nel calendario delle prove e tieni altrove gli appuntamenti che non riguardano il gruppo. Prima di condividere un calendario esistente, controlla gli eventi e i loro dettagli, senza affidarti soltanto al nome.",
+        "Per esempio, il segretario di un’associazione può gestire il programma degli incontri mentre i soci lo consultano soltanto. In famiglia, invece, può servire che due persone apportino modifiche. Nessuna delle due situazioni richiede di condividere tutti i calendari visibili nell’app dell’organizzatore."
+      ]
+    },
+    {
+      "heading": "Identifica il sistema di condivisione che stai usando",
+      "body": [
+        "Cloud Calendars dispone di un proprio sistema di condivisione dei calendari, che comprende calendari locali dell’app e calendari supportati accessibili tramite il sistema di calendario dell’iPhone. Offre anche un percorso separato per condividere calendari Google. Non si tratta di un unico meccanismo universale di iscrizione.",
+        "Un calendario locale dell’app non è automaticamente un calendario di un account Google o iCloud. Allo stesso modo, le regole di condivisione di un calendario del provider dipendono da quel provider. Controlla il calendario effettivo e la schermata di condivisione prima di stabilire cosa riceverà un’altra persona e dove comparirà."
+      ]
+    },
+    {
+      "heading": "Assegna ruoli diversi a chi legge e a chi modifica",
+      "body": [
+        "Nella condivisione di Cloud Calendars, Reader può visualizzare, Writer può modificare gli eventi e Owner può anche condividere il calendario e gestire gli accessi. Assegna Reader ai soci che devono soltanto consultare il programma. Assegna Writer a un coorganizzatore che deve aggiornarlo.",
+        "Owner comprende responsabilità più ampie della modifica. Assegnalo quando una persona deve anche decidere chi altro può usare il calendario. Google utilizza livelli di autorizzazione propri: non presumere che un ruolo di condivisione dell’app e un permesso Google abbiano gli stessi nomi o gli stessi effetti."
+      ]
+    },
+    {
+      "heading": "Aiuta il destinatario ad accettare il calendario",
+      "body": [
+        "Un invito al calendario può arrivare via email oppure tramite un link condiviso o un codice QR. Visualizzare l’anteprima non significa aver completato l’accettazione. In Cloud Calendars, il destinatario accede e aggiunge il calendario a “Shared with me”, l’area dei calendari condivisi con lui; per questo percorso è richiesta un’identità con indirizzo email verificato.",
+        "Se l’invito era rivolto a un indirizzo email specifico, verifica che il destinatario usi l’identità corrispondente. Chi apre un link con un altro account potrebbe non ricevere il ruolo previsto. Controlla il calendario visualizzato e l’accesso ottenuto: una pagina caricata correttamente non dimostra che la collaborazione sia già attiva."
+      ]
+    },
+    {
+      "heading": "Verifica una modifica prima di affidarti al programma completo",
+      "body": [
+        "Inizia con un evento di prova senza dati sensibili, chiarendo al gruppo che si tratta di un test. Chiedi a un Reader di confermare che lo vede e, se necessario, a un Writer autorizzato di modificarlo. Controlla il risultato dal lato del proprietario prima di usare questa configurazione per eventi importanti.",
+        "Gli aggiornamenti richiedono una connessione funzionante e un aggiornamento dei dati. Una condivisione dell’app è diversa da un’iscrizione ICS, e nessuna delle due giustifica la promessa che ogni modifica arrivi all’istante. Per un annullamento all’ultimo momento o un cambio di luogo, aggiorna il calendario e contatta direttamente le persone interessate."
+      ]
+    },
+    {
+      "heading": "Rivedi gli accessi quando cambia il gruppo",
+      "body": [
+        "Quando un coorganizzatore lascia il gruppo, controlla il suo ruolo e rimuovi gli accessi che non servono più. Uscire da un calendario ricevuto ed eliminare un calendario di cui sei proprietario sono azioni diverse. Leggi la conferma e identifica il proprietario prima di procedere.",
+        "Revocare l’accesso non garantisce che scompaiano vecchi screenshot, dati esportati o copie indipendenti. Annota il metodo di condivisione usato e verifica l’accesso interessato dopo una modifica. È particolarmente utile quando le stesse persone ricevono anche inviti del provider o link separati a singoli eventi."
+      ]
+    }
+  ],
+  "claims": {},
+  "practical": [
+    "Scegli un calendario dedicato al gruppo e controlla i contenuti già presenti.",
+    "Prima di invitare qualcuno, distingui la condivisione di un calendario locale dell’app, di un calendario del provider sul dispositivo o di Google.",
+    "Scegli Reader, Writer o Owner in base alle responsabilità di ogni persona.",
+    "Chiedi ai destinatari di accedere con l’identità prevista e accettare l’invito.",
+    "Verifica un evento di prova e una modifica autorizzata prima di fare affidamento sugli aggiornamenti.",
+    "Rivedi gli accessi quando cambiano i partecipanti e distingui l’uscita dal calendario dalla sua eliminazione."
+  ],
+  "faq": [
+    {
+      "q": "Le altre persone possono modificare un calendario condiviso?",
+      "a": "Sì, i ruoli Writer e Owner dell’app consentono di modificare gli eventi. Reader è il ruolo di visualizzazione. I calendari dei provider hanno regole di autorizzazione proprie: controlla il metodo di condivisione effettivamente usato."
+    },
+    {
+      "q": "Un nuovo calendario condiviso deve essere collegato al mio account Google o iCloud?",
+      "a": "Non darlo per scontato. Cloud Calendars offre anche calendari locali dell’app con un proprio sistema di condivisione. Identifica dove risiede il calendario prima di aspettarti che compaia nell’app di un altro provider."
+    },
+    {
+      "q": "Aprire l’invito significa essere entrati nel calendario?",
+      "a": "No. Un’anteprima non equivale all’accettazione. Il percorso dell’app per condividere un intero calendario richiede accesso e accettazione; l’identità invitata influisce sul ruolo concesso. Controlla il calendario condiviso risultante e l’accesso del destinatario."
+    }
+  ],
+  "sourcesHeading": "Riferimenti sui permessi dei provider",
+  "sources": [
+    {
+      "label": "Google: autorizzazioni per condividere un calendario",
+      "url": "https://support.google.com/calendar/answer/37082?hl=en"
+    },
+    {
+      "label": "Microsoft: importare un calendario o iscriversi a un calendario",
+      "url": "https://support.microsoft.com/en-us/outlook/import-or-subscribe-to-a-calendar-in-outlook-com-or-outlook-on-the-web"
+    }
+  ],
+  "seeAlso": [
+    "sharing-one-event-not-your-calendar",
+    "keeping-track-of-who-replied",
+    "what-a-subscription-actually-buys"
+  ]
+},
+
   "month-view-on-a-bigger-screen": {
   "updated": "2026-10-22",
   "title": "Calendario mensile su iPad e iPhone: scegli la data, poi verifica i dettagli",
@@ -1143,94 +1235,167 @@ export const ARTICLES_IT: Readonly<Record<string, LocalisedArticle>> = {
   ],
   "seeAlso": [
     "keeping-track-of-who-replied",
-    "who-can-see-what-in-google-calendar"
+    "who-can-see-what-in-google-calendar",
+    "a-calendar-that-is-yours-to-share"
   ]
 },
 
   'free-google-sync-without-adverts': {
-    title: 'Sincronizzazione Google gratuita, e cosa paga la pubblicità',
-    short: 'Gratis, e la pubblicità',
-    description:
-      'Cosa contiene davvero il piano gratuito, dove compare la pubblicità e quanto costa toglierla. Detto chiaro, perché quasi nessuna app lo fa.',
-    lede: "Le app di calendario gratuite di solito lo sono perché si sta vendendo qualcos'altro. Vale la pena sapere cosa prima di affidarle la settimana.",
-    commonBelief:
-      "Che un piano gratuito sia una prova e che l'app vera stia dietro il muro a pagamento.",
-    sections: [
-      {
-        heading: 'Cosa copre il gratuito',
-        body: [
-          'Tutte le viste, sincronizzazione iCloud, sincronizzazione Google, tutto il meteo dentro il calendario, i widget, i link Meet sugli eventi e la modifica per trascinamento. Non una prova di queste cose: queste cose.',
-          "Se i vostri calendari stanno su Apple e Google, come per la maggior parte delle persone, il piano gratuito è l'app.",
-        ],
-      },
-      {
-        heading: 'Cosa fa la pubblicità e quanto costa toglierla',
-        body: [
-          'Il piano gratuito porta pubblicità. Toglierla è il piano a pagamento più economico, e togliere la pubblicità è onestamente quasi tutto quello che quel piano fa.',
-          'Dirlo così sembra meglio della sistemazione abituale, in cui il piano senza pubblicità viene impacchettato con funzioni che nessuno ha chiesto perché il prezzo sembri comprare di più.',
-        ],
-      },
-    ],
-    claims: {
-      price: 'Costo del piano gratuito',
-      advancedMonthly: 'Costo mensile per togliere la pubblicità, in dollari',
-    },
-    practical: [
-      "Cominciate gratis: la sincronizzazione che vi serve probabilmente c'è già.",
-      "Pagate per togliere la pubblicità, non perché vi aspettate che l'app cambi.",
-      'Il piano superiore ha senso solo se il vostro calendario di lavoro sta su Microsoft.',
-    ],
-    seeAlso: ['what-a-subscription-actually-buys', 'icloud-google-and-outlook-in-one-view'],
-  },
-
-  'what-a-subscription-actually-buys': {
-  "updated": "2026-10-21",
-  "title": "Cosa compra davvero un abbonamento, piano per piano",
-  "short": "Cosa compra un abbonamento",
-  "description": "Cosa compra un abbonamento: Base, Advanced, Premium.",
-  "lede": "Questa guida è pubblicata da Arte Soft, sviluppatore di Cloud Calendars.",
+  "updated": "2026-10-22",
+  "title": "Sincronizzazione Google gratuita su iPhone: funzioni incluse e pubblicità",
+  "short": "Google gratis e pubblicità",
+  "description": "Google Calendar è incluso in Base. Advanced rimuove la pubblicità; Premium aggiunge Microsoft e Teams. Verifica permessi e prezzo locale.",
+  "lede": "Cloud Calendars è sviluppato da Arte Soft, che pubblica anche questa guida. La sincronizzazione con Google Calendar è inclusa nel piano gratuito Base. L’app gratuita può mostrare pubblicità; Advanced la rimuove. Un abbonamento e il permesso di modificare il calendario di un’altra persona sono due cose distinte.",
+  "commonBelief": "Una connessione gratuita al calendario sarebbe solo una prova, oppure un piano senza pubblicità darebbe automaticamente più permessi sui calendari condivisi.",
   "sections": [
     {
-      "heading": "Base",
+      "heading": "Parti dalla connessione che ti serve",
       "body": [
-        "Base include sincronizzazione con Google Calendar, Google Meet, viste del calendario, meteo e widget. Il piano gratuito può mostrare pubblicità."
+        "Base include sincronizzazione con Google Calendar, supporto per Google Meet, viste del calendario, meteo e widget della schermata Home. Devi comunque collegare l’account Google previsto e selezionare i calendari da visualizzare. Un calendario condiviso in sola lettura resta tale indipendentemente dal piano dell’app.",
+        "Puoi usare calendari locali sul dispositivo senza creare un account dell’app. Collegare un fornitore e usare i servizi di condivisione può richiedere l’accesso. Il permesso di leggere i calendari dell’iPhone non significa che tu abbia collegato tutti i tuoi calendari Google."
       ]
     },
     {
-      "heading": "Advanced · Premium",
+      "heading": "Che cosa cambia con un piano a pagamento",
       "body": [
-        "Advanced include Base e rimuove la pubblicità. Premium include Advanced e aggiunge Microsoft Calendar e Microsoft Teams.",
-        "Un abbonamento non concede permessi di modifica sui calendari altrui e non aggira le restrizioni di un account di lavoro."
+        "Advanced comprende le funzioni di Base e rimuove la pubblicità. Il pagamento non cambia i permessi di condivisione di Google e non dà priorità alle previsioni meteo. La rimozione della pubblicità non conferisce il diritto di modificare calendari appartenenti ad altri account.",
+        "Premium comprende Advanced e aggiunge Microsoft Calendar e Microsoft Teams. Un acquisto non può superare le restrizioni della tua organizzazione sulle connessioni esterne. Verifica la connessione che ti serve prima di farvi affidamento per il lavoro."
       ]
     },
     {
-      "heading": "Informazioni su acquisto e annullamento",
+      "heading": "Prova una settimana normale prima di decidere",
       "body": [
-        "Prima dell’acquisto controlla prezzo locale, periodo di fatturazione e condizioni di rinnovo.",
-        "Per un abbonamento fatturato da Apple, apri Impostazioni → il tuo nome → Abbonamenti. Controlla stato e scadenza. Annullare il rinnovo è diverso dall’eliminare l’app o i dati del calendario; non presumere che le funzioni a pagamento restino disponibili dopo la scadenza."
+        "Seleziona un piccolo gruppo di calendari reali, controlla che compaiano gli eventi corretti e crea un evento di prova eliminabile in un calendario modificabile. Verifica dove viene salvato: vedere due account nella stessa vista non significa che i loro eventi siano stati uniti.",
+        "Valuta separatamente se la pubblicità disturba il tuo uso e se ti serve il supporto Microsoft. Non occorre scegliere un piano superiore solo perché un’altra persona usa un fornitore diverso. Controlla prezzo locale e periodo di fatturazione prima dell’acquisto."
+      ]
+    },
+    {
+      "heading": "Gestisci l’acquisto con l’Apple Account corretto",
+      "body": [
+        "Per un abbonamento fatturato da Apple, apri Impostazioni, tocca il tuo nome e poi Abbonamenti per controllare piano e opzioni di disdetta. Se l’acquisto non compare, verifica l’Apple Account indicato sulla ricevuta. L’accesso a un fornitore di calendari è distinto dall’Apple Account che possiede l’abbonamento.",
+        "Rimuovere l’app non è il modo per gestire il rinnovo. Prima di cambiare account o cancellare dati locali, accertati di sapere quali calendari sono locali e quali sono conservati presso un fornitore."
       ]
     }
   ],
   "claims": {},
   "practical": [
-    "Prima dell’acquisto controlla prezzo locale, periodo di fatturazione e condizioni di rinnovo.",
-    "Un abbonamento non concede permessi di modifica sui calendari altrui e non aggira le restrizioni di un account di lavoro."
+    "Collega l’account Google previsto e controlla i calendari selezionati.",
+    "Verifica il permesso di modifica con un evento di prova nella destinazione corretta.",
+    "Usa Base per valutare le viste, il meteo e i widget che ti servono.",
+    "Scegli Advanced per rimuovere la pubblicità; valuta Premium se ti servono Microsoft Calendar o Teams.",
+    "Controlla prezzo locale, periodo di fatturazione e Apple Account usato per l’acquisto."
   ],
   "faq": [
     {
-      "q": "Come interrompo il rinnovo?",
-      "a": "Per un abbonamento fatturato da Apple, apri Impostazioni → il tuo nome → Abbonamenti. Controlla stato e scadenza. Annullare il rinnovo è diverso dall’eliminare l’app o i dati del calendario; non presumere che le funzioni a pagamento restino disponibili dopo la scadenza."
+      "q": "Serve Advanced per sincronizzare Google Calendar?",
+      "a": "No. La sincronizzazione con Google Calendar è inclusa in Base. Advanced rimuove la pubblicità; Premium aggiunge Microsoft Calendar e Teams."
+    },
+    {
+      "q": "Pagare mi permette di modificare un calendario condiviso in sola lettura?",
+      "a": "No. Il permesso di modifica dipende dal proprietario del calendario e dal fornitore. Un abbonamento all’app non concede diritti sul calendario di un’altra persona."
     }
   ],
-  "sourcesHeading": "Informazioni su acquisto e annullamento",
+  "sourcesHeading": "Fonti e assistenza per gli acquisti",
   "sources": [
     {
-      "label": "Apple: Come interrompo il rinnovo?",
-      "url": "https://support.apple.com/en-us/118428"
+      "label": "Apple: annullare un abbonamento",
+      "url": "https://support.apple.com/it-it/118428"
     }
   ],
   "seeAlso": [
-    "free-google-sync-without-adverts"
+    "what-a-subscription-actually-buys",
+    "icloud-google-and-outlook-in-one-view"
+  ]
+},
+
+  'what-a-subscription-actually-buys': {
+  "updated": "2026-10-22",
+  "claims": {},
+  "title": "Abbonamenti Cloud Calendars: Base, Advanced e Premium",
+  "short": "Scegli un piano Cloud Calendars",
+  "description": "Base include Google, viste, meteo e widget. Advanced rimuove la pubblicità; Premium aggiunge Microsoft e Teams. Verifica acquisto e permessi.",
+  "lede": "Cloud Calendars è sviluppato da Arte Soft, che pubblica anche questa guida. Scegli Advanced per rimuovere la pubblicità oppure Premium per aggiungere anche Microsoft Calendar e Teams. Distingui le funzioni del piano dai permessi del fornitore e dall’Apple Account che paga l’abbonamento.",
+  "commonBelief": "Advanced sbloccherebbe la condivisione Google o un meteo prioritario, mentre Premium permetterebbe di aggirare le restrizioni di un calendario di lavoro.",
+  "sections": [
+    {
+      "heading": "Base: il punto di partenza gratuito",
+      "body": [
+        "Base include sincronizzazione con Google Calendar, supporto per Google Meet, diverse viste del calendario, meteo e widget della schermata Home. L’app gratuita può mostrare pubblicità. I calendari locali permettono di iniziare sul dispositivo; collegamenti ai fornitori e condivisione hanno requisiti propri.",
+        "Se i tuoi calendari soddisfano già le tue esigenze con Base, la presenza di un piano a pagamento non è di per sé un motivo per cambiare. Valuta come usi effettivamente il calendario prima di scegliere."
+      ]
+    },
+    {
+      "heading": "Advanced: le funzioni di Base senza pubblicità",
+      "body": [
+        "Advanced comprende le funzioni di Base e rimuove la pubblicità. Il pagamento non cambia i permessi di condivisione di Google né aggiunge una priorità agli aggiornamenti meteo. La creazione di link Meet continua a dipendere dal calendario e dal contesto dell’evento.",
+        "Rimuovere la pubblicità cambia l’esperienza d’uso. Non concede al tuo account il diritto di modificare il calendario in sola lettura di un’altra persona e non risolve le restrizioni dell’organizzazione sulle connessioni."
+      ]
+    },
+    {
+      "heading": "Premium: Microsoft Calendar e Teams",
+      "body": [
+        "Premium comprende Advanced e aggiunge Microsoft Calendar e Microsoft Teams. Un’organizzazione lavorativa o scolastica può limitare app esterne, account o creazione di riunioni. Verifica la connessione prevista e i permessi, senza presumere che ogni configurazione Exchange sia supportata.",
+        "Anche la creazione di un link di riunione dipende dal fornitore e dal contesto dell’evento. Questa funzione non garantisce che ogni evento di ogni calendario riceva automaticamente un link per una conferenza."
+      ]
+    },
+    {
+      "heading": "Leggi la schermata di acquisto locale",
+      "body": [
+        "Prima di confermare, controlla piano, prezzo locale, periodo di fatturazione e condizioni di rinnovo. Confronta l’opzione mensile con quella annuale corrispondente, invece di moltiplicare un prezzo promozionale di un altro Paese. La schermata di acquisto attuale è più utile di un articolo con un importo fisso destinato a invecchiare.",
+        "L’Apple Account usato per il pagamento è distinto dagli account Google, Microsoft e dall’identità usata per condividere nell’app. Conserva la ricevuta e controlla quale Apple Account possiede l’abbonamento se non compare dove ti aspetti."
+      ]
+    },
+    {
+      "heading": "Disdici il rinnovo senza confonderlo con la cancellazione dei dati",
+      "body": [
+        "Su iPhone, Apple indica il percorso Impostazioni, il tuo nome, Abbonamenti e poi l’abbonamento interessato. Leggi lo stato e le informazioni sulla scadenza. Eliminare l’app, cancellare un evento o scollegare un fornitore non sostituisce la gestione del rinnovo.",
+        "Prima di cambiare piano o rimuovere dati locali, controlla a cosa potrai ancora accedere e quale calendario contiene gli eventi importanti. Questa guida non promette che ogni connessione o funzione a pagamento resti disponibile dopo la scadenza. Non consiglia neppure di eliminare calendari per risolvere problemi di fatturazione."
+      ]
+    }
+  ],
+  "practical": [
+    "Decidi se ti servono la rimozione della pubblicità, il supporto Microsoft o nessuno dei due.",
+    "Verifica proprietà del calendario e accesso al fornitore separatamente dal piano.",
+    "Leggi la schermata di acquisto locale e il periodo di fatturazione.",
+    "Conserva la ricevuta Apple e annota l’account usato per il pagamento.",
+    "Gestisci il rinnovo nelle impostazioni degli abbonamenti Apple; considera le modifiche ai dati del calendario un’operazione separata."
+  ],
+  "faq": [
+    {
+      "q": "Che cosa aggiunge Advanced?",
+      "a": "Advanced rimuove la pubblicità e comprende le funzioni di Base. Sincronizzazione con Google Calendar, viste, meteo, widget e supporto per Google Meet sono già inclusi in Base."
+    },
+    {
+      "q": "Che cosa aggiunge Premium?",
+      "a": "Premium comprende Advanced e aggiunge Microsoft Calendar e Microsoft Teams, nel rispetto dei permessi dell’account del fornitore e dell’organizzazione."
+    },
+    {
+      "q": "Eliminare Cloud Calendars annulla l’abbonamento?",
+      "a": "Gestisci un abbonamento fatturato da Apple nelle impostazioni degli abbonamenti Apple. Rimuovere l’app o scollegare un fornitore di calendari è un’operazione distinta."
+    },
+    {
+      "q": "Condividere un acquisto con la famiglia condivide anche i calendari?",
+      "a": "Controlla separatamente acquisto e calendario. In famiglia di Apple supporta acquisti e abbonamenti idonei: verifica l’idoneità attuale del prodotto specifico, senza presumere che ogni acquisto sia condivisibile. L’accesso al calendario dipende comunque dall’invito, dal link condiviso o dai permessi del fornitore. Per un calendario condiviso in Cloud Calendars, il destinatario deve usare l’identità prevista, accettare il calendario e controllare l’accesso ottenuto. Un acquisto condiviso non conferma che un familiare possa leggere o modificare il tuo calendario."
+    }
+  ],
+  "sourcesHeading": "Informazioni su acquisti e disdetta",
+  "sources": [
+    {
+      "label": "Apple: annullare un abbonamento",
+      "url": "https://support.apple.com/it-it/118428"
+    },
+    {
+      "label": "Cloud Calendars su App Store",
+      "url": "https://apps.apple.com/us/app/cloud-calendars-sync-widget/id6744690319"
+    },
+    {
+      "label": "Apple: contenuti e acquisti idonei per In famiglia",
+      "url": "https://support.apple.com/en-ie/111114"
+    }
+  ],
+  "seeAlso": [
+    "free-google-sync-without-adverts",
+    "icloud-google-and-outlook-in-one-view"
   ]
 },
 };

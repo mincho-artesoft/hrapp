@@ -1138,40 +1138,72 @@ export const ARTICLES_ES_ES: Readonly<Record<string, LocalisedArticle>> = {
 },
 
   'free-google-sync-without-adverts': {
-    title: 'Sincronización gratuita con Google, y qué paga la publicidad',
-    short: 'Gratis, y la publicidad',
-    description:
-      'Qué incluye de verdad el plan gratuito, dónde aparece la publicidad y cuánto cuesta quitarla. Dicho claro, porque casi ninguna aplicación lo hace.',
-    lede: 'Las aplicaciones de calendario gratuitas suelen serlo porque se está vendiendo otra cosa. Conviene saber cuál antes de confiarle la semana.',
-    commonBelief:
-      'Que un plan gratuito es una prueba y que la aplicación de verdad está detrás del muro de pago.',
-    sections: [
-      {
-        heading: 'Qué cubre el plan gratuito',
-        body: [
-          'Todas las vistas, sincronización con iCloud, sincronización con Google, todo el tiempo dentro del calendario, widgets, enlaces de Meet en los eventos y edición arrastrando. No una prueba de esas cosas: esas cosas.',
-          'Si sus calendarios son de Apple y de Google, que es el caso de la mayoría, el plan gratuito es la aplicación.',
-        ],
-      },
-      {
-        heading: 'Qué hace la publicidad y qué cuesta quitarla',
-        body: [
-          'El plan gratuito lleva publicidad. Quitarla es el plan de pago más barato, y quitar la publicidad es honestamente casi todo lo que ese plan hace.',
-          'Decirlo así parece mejor que el arreglo habitual, en el que el plan sin anuncios se empaqueta con funciones que nadie pidió para que el precio parezca comprar más.',
-        ],
-      },
-    ],
-    claims: {
-      price: 'Coste del plan gratuito',
-      advancedMonthly: 'Coste mensual de quitar la publicidad, en dólares',
+  "updated": "2026-10-22",
+  "claims": {},
+  "title": "Sincronizar Google Calendar gratis en iPhone: funciones y publicidad",
+  "short": "Google gratis y publicidad",
+  "description": "Comprueba qué incluye Base, qué publicidad elimina Advanced y cuándo necesitas Premium para Microsoft. Separa la suscripción de los permisos.",
+  "lede": "Arte Soft desarrolla Cloud Calendars y publica esta guía. La sincronización de Google Calendar está incluida en el plan gratuito Base. La aplicación gratuita puede mostrar publicidad; Advanced la elimina. Una suscripción y el permiso para editar el calendario de otra persona son cosas distintas.",
+  "commonBelief": "Una conexión gratuita al calendario es solo una prueba, o contratar un plan sin anuncios concede automáticamente más permisos sobre calendarios compartidos.",
+  "sections": [
+    {
+      "heading": "Empieza por la conexión que necesitas",
+      "body": [
+        "Base incluye sincronización de Google Calendar, compatibilidad con Google Meet, vistas del calendario, tiempo meteorológico y widgets de la pantalla de inicio. Debes conectar la cuenta de Google adecuada y seleccionar los calendarios que quieres ver. Un calendario compartido en modo de solo lectura sigue siendo de solo lectura, independientemente del plan.",
+        "Puedes usar calendarios locales en el dispositivo sin crear una cuenta en la aplicación. Conectar un proveedor y utilizar servicios de uso compartido puede requerir iniciar sesión. No confundas el permiso para leer los calendarios del iPhone con haber conectado todos los calendarios de Google que tienes."
+      ]
     },
-    practical: [
-      'Empiece gratis: la sincronización que necesita probablemente ya está ahí.',
-      'Pague por quitar la publicidad, no porque espere que la aplicación cambie.',
-      'El plan superior solo tiene sentido si su calendario de trabajo es de Microsoft.',
-    ],
-    seeAlso: ['what-a-subscription-actually-buys', 'icloud-google-and-outlook-in-one-view'],
-  },
+    {
+      "heading": "Qué cambia al pagar",
+      "body": [
+        "Advanced incluye las funciones de Base y elimina los anuncios. Pagar no cambia los permisos de uso compartido de Google ni da prioridad a las previsiones meteorológicas. Eliminar la publicidad no concede el derecho a editar calendarios de otras cuentas.",
+        "Premium incluye Advanced y añade compatibilidad con Microsoft Calendar y Microsoft Teams. Si tu organización limita las conexiones de terceros, una compra no puede anular esas reglas. Verifica la conexión que necesitas antes de depender de ella para el trabajo."
+      ]
+    },
+    {
+      "heading": "Prueba una semana normal antes de decidir",
+      "body": [
+        "Selecciona un pequeño conjunto de calendarios reales, comprueba que aparezcan los eventos correctos y crea un evento de prueba que puedas descartar en un calendario editable. Confirma su destino, en lugar de suponer que ver dos cuentas significa que sus eventos se han fusionado.",
+        "Decide por separado si la publicidad interrumpe tu uso y si necesitas compatibilidad con Microsoft. No hace falta contratar un plan superior solo porque otra persona necesite un proveedor distinto. Los precios y los periodos de facturación se muestran para tu región antes de comprar."
+      ]
+    },
+    {
+      "heading": "Gestiona la compra desde la Cuenta de Apple correcta",
+      "body": [
+        "Si Apple factura la suscripción, abre Ajustes, toca tu nombre y después Suscripciones para consultar el plan y las opciones de cancelación. Si no aparece la compra, comprueba la Cuenta de Apple del recibo. Iniciar sesión en un proveedor de calendarios no equivale a iniciar sesión en la Cuenta de Apple a la que pertenece la suscripción.",
+        "Eliminar la aplicación no es la forma de gestionar la renovación. Antes de cambiar cuentas o borrar datos locales, asegúrate de saber qué calendarios son locales y cuáles están almacenados con un proveedor."
+      ]
+    }
+  ],
+  "practical": [
+    "Conecta la cuenta de Google adecuada y comprueba los calendarios seleccionados.",
+    "Confirma el permiso de edición con un evento de prueba en el destino correcto.",
+    "Usa Base para valorar las vistas, el tiempo y los widgets que necesitas.",
+    "Elige Advanced para eliminar anuncios; Premium si necesitas Microsoft Calendar o Teams.",
+    "Comprueba el precio local, el periodo de facturación y la Cuenta de Apple usada para la compra."
+  ],
+  "faq": [
+    {
+      "q": "¿Necesito Advanced para sincronizar Google Calendar?",
+      "a": "No. La sincronización de Google Calendar está incluida en Base. Advanced elimina los anuncios; Premium añade compatibilidad con Microsoft Calendar y Teams."
+    },
+    {
+      "q": "¿Pagar me permite editar un calendario compartido en modo de solo lectura?",
+      "a": "No. El propietario del calendario y el proveedor controlan los permisos de edición. Una suscripción a la aplicación no concede acceso al calendario de otra persona."
+    }
+  ],
+  "sourcesHeading": "Fuentes y ayuda con las compras",
+  "sources": [
+    {
+      "label": "Apple: cancelar una suscripción",
+      "url": "https://support.apple.com/en-us/118428"
+    }
+  ],
+  "seeAlso": [
+    "what-a-subscription-actually-buys",
+    "icloud-google-and-outlook-in-one-view"
+  ]
+},
 
   'what-a-subscription-actually-buys': {
   "updated": "2026-10-21",

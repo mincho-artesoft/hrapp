@@ -1,0 +1,36 @@
+{
+  "date": "2026-10-22",
+  "status": "draft_ready_for_independent_review",
+  "pins": [
+    {
+      "locale": "de-DE",
+      "file": "src/app/content/de-DE/articles.ts",
+      "rawModuleSha256": "a4e1e68284d679e815185db4c1f934940c40428012472ef6c73251760b1b04dd",
+      "jsonStringifySha256": "c85a42b5edf3252f491d7fe5d012d040f65b5115455137bf9e986919580b1d82"
+    },
+    {
+      "locale": "en-US",
+      "file": "src/app/content/en-US/articles-compare.ts",
+      "rawModuleSha256": "ec12c3eb69ec658b7e99820e24de80099ecfd8f2537f581cc1fa73220a3fb62f",
+      "jsonStringifySha256": "7051c9eff50013bba9d6a94f2714d70c8823d3de3a4455cb08c8df1ad095d856"
+    }
+  ],
+  "draftRawSha256": "e80371f0bc276dabafeccd0535912ebffdd56d7f4945deb50730b5d319075105",
+  "draftJsonStringifySha256": "b68e7b1d808aad25f0ff807da0c4d5ddb1aff91b0cba4978d673ddd845a49a38",
+  "structure": {
+    "sections": 4,
+    "paragraphs": 8,
+    "practical": 5,
+    "faq": 2,
+    "descriptionUnicodeCharacters": 142,
+    "claimsEmpty": true,
+    "date": "2026-10-22"
+  },
+  "mapping": "Complete current EN four-section task translated, with parent-approved IT clarification semantics for Advanced: payment does not change Google permissions or give weather priority. No automatic Meet benefit inferred. Actual existing DE related links retained exactly.",
+  "readScope": "Complete current DE legacy and EN comparator previously read during batch36 broader inventory and Italian review; current extracted snapshots pinned. Full newly authored draft self-reviewed for account/provider/plan/Apple identity distinctions.",
+  "sourceURLs": "Exact current EN Apple cancellation source retained; no fabricated German primary read.",
+  "limits": [
+    "Own German translation/self-review, not native-speaker or runtime certification.",
+    "Research files only; IT drafts and website source unchanged."
+  ]
+}

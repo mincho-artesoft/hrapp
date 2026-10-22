@@ -1,0 +1,90 @@
+{
+  "date": "2026-10-22T04:14:33.122Z",
+  "count": 7,
+  "articles": [
+    {
+      "locale": "de-DE",
+      "slug": "free-google-sync-without-adverts",
+      "file": "src/app/content/de-DE/articles.ts",
+      "title": "Kostenlose Google-Synchronisierung auf dem iPhone: Funktionen und Werbung",
+      "sections": 4,
+      "faqs": 2,
+      "sources": 1,
+      "updated": "2026-10-22",
+      "description": "Google-Synchronisierung ist in Base enthalten. Advanced entfernt Werbung, Premium ergänzt Microsoft und Teams. Prüfe Rechte und lokale Preise.",
+      "descriptionCharacters": 142
+    },
+    {
+      "locale": "es-ES",
+      "slug": "free-google-sync-without-adverts",
+      "file": "src/app/content/es-ES/articles.ts",
+      "title": "Sincronizar Google Calendar gratis en iPhone: funciones y publicidad",
+      "sections": 4,
+      "faqs": 2,
+      "sources": 1,
+      "updated": "2026-10-22",
+      "description": "Comprueba qué incluye Base, qué publicidad elimina Advanced y cuándo necesitas Premium para Microsoft. Separa la suscripción de los permisos.",
+      "descriptionCharacters": 141
+    },
+    {
+      "locale": "fr-FR",
+      "slug": "free-google-sync-without-adverts",
+      "file": "src/app/content/fr-FR/articles.ts",
+      "title": "Synchronisation Google Calendar gratuite sur iPhone : fonctions et publicité",
+      "sections": 4,
+      "faqs": 2,
+      "sources": 1,
+      "updated": "2026-10-22",
+      "description": "Vérifiez les fonctions de Base, le retrait des publicités avec Advanced et l’accès à Microsoft avec Premium. Les permissions restent distinctes.",
+      "descriptionCharacters": 144
+    },
+    {
+      "locale": "it",
+      "slug": "sharing-one-event-not-your-calendar",
+      "file": "src/app/content/it/articles.ts",
+      "title": "Condividere un evento: scegliere il link e i permessi",
+      "sections": 6,
+      "faqs": 3,
+      "sources": 3,
+      "updated": "2026-10-21",
+      "description": "Condividi un evento senza l’intero calendario. Scopri i ruoli Reader, Writer e Owner, le anteprime, gli aggiornamenti e i limiti della revoca.",
+      "descriptionCharacters": 142
+    },
+    {
+      "locale": "it",
+      "slug": "free-google-sync-without-adverts",
+      "file": "src/app/content/it/articles.ts",
+      "title": "Sincronizzazione Google gratuita su iPhone: funzioni incluse e pubblicità",
+      "sections": 4,
+      "faqs": 2,
+      "sources": 1,
+      "updated": "2026-10-22",
+      "description": "Google Calendar è incluso in Base. Advanced rimuove la pubblicità; Premium aggiunge Microsoft e Teams. Verifica permessi e prezzo locale.",
+      "descriptionCharacters": 137
+    },
+    {
+      "locale": "it",
+      "slug": "what-a-subscription-actually-buys",
+      "file": "src/app/content/it/articles.ts",
+      "title": "Abbonamenti Cloud Calendars: Base, Advanced e Premium",
+      "sections": 5,
+      "faqs": 4,
+      "sources": 3,
+      "updated": "2026-10-22",
+      "description": "Base include Google, viste, meteo e widget. Advanced rimuove la pubblicità; Premium aggiunge Microsoft e Teams. Verifica acquisto e permessi.",
+      "descriptionCharacters": 141
+    },
+    {
+      "locale": "it",
+      "slug": "a-calendar-that-is-yours-to-share",
+      "file": "src/app/content/it/articles.ts",
+      "title": "Condividere un calendario: scegli persone, permessi e metodo",
+      "sections": 6,
+      "faqs": 3,
+      "sources": 2,
+      "updated": "2026-10-22",
+      "description": "Condividi un calendario su iPhone distinguendo accesso nell’app e permessi del provider. Controlla ruoli, accettazione e aggiornamenti.",
+      "descriptionCharacters": 135
+    }
+  ]
+}
