@@ -1,5 +1,5 @@
 {
-  "date": "2026-10-22T00:24:49.241Z",
+  "date": "2026-10-22T00:39:54.209Z",
   "status": "source_inventory_not_quality_approval",
   "articles": [
     {
@@ -1644,9 +1644,9 @@
       "title": "Calendar export on iPhone: ICS, CSV, PDF and subscriptions",
       "description": "Choose calendar data, spreadsheet rows, a printable schedule or a subscription. Use documented provider or Mac export routes and check what transfers.",
       "descriptionCharacters": 150,
-      "sections": 8,
+      "sections": 9,
       "faq": 4,
-      "words": 1357,
+      "words": 1509,
       "source": "articles-help.ts",
       "sources": [
         "https://support.google.com/calendar/answer/37111?hl=en",
@@ -1655,7 +1655,8 @@
         "https://support.apple.com/en-gb/guide/mac-help/mchlp1531/mac",
         "https://support.microsoft.com/en-us/outlook/share-your-calendar-in-outlook-on-the-web",
         "https://www.busymac.com/docs/busycalios/export-as-csv/",
-        "https://support.google.com/calendar/answer/37064?hl=en"
+        "https://support.google.com/calendar/answer/37064?hl=en",
+        "https://support.google.com/calendar/answer/78739?hl=en"
       ],
       "updated": "2026-10-22"
     },

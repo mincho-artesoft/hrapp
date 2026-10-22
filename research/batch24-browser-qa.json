@@ -1,0 +1,14 @@
+{
+  "checkedAt": "2026-10-22T00:46:34.375778+00:00",
+  "allPassed": true,
+  "route": "https://www.cloud-calendars.com/articles/calendar-export-ics-pdf-and-backup/",
+  "viewportWidth": 575,
+  "documentWidth": 564,
+  "articleSections": 9,
+  "faqCount": 4,
+  "newHeadingPresent": true,
+  "screenshot": "/tmp/cloud-calendar-batch24-google-handoff.png",
+  "visualInspection": "Stable published new section and both complete paragraphs visible, no horizontal overflow.",
+  "viewportReset": true,
+  "scope": "One changed public page mobile text/layout. Not a provider handoff, data migration, product runtime, indexing or ranking test."
+}

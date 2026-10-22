@@ -1,0 +1,11 @@
+{
+  "allPassed": true,
+  "changedArticleObjects": 1,
+  "originalSectionsPreserved": 8,
+  "appendedSections": 1,
+  "originalSourceOrderPreserved": true,
+  "appendedOfficialSource": 1,
+  "metadataPracticalFaqClaimsRelatedDateUnchanged": true,
+  "sharedFactsCuratedSelectionTemplatesUnchanged": true,
+  "scope": "Before/draft/current shape and field equality; not runtime, migration fidelity, rankings or every local language review."
+}

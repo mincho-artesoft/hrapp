@@ -445,6 +445,13 @@ export const HELP_EN_US: Readonly<Record<string, LocalisedArticle>> = {
         "Calendar transfer is not a promise to preserve every meeting feature. Google says imported events omit guests and conference data, and CSV recurrence can become separate one-time events. Check invitations, meeting links and recurrence explicitly before treating a migration as complete.",
         "Apple also offers File > Export > Calendar Archive on Mac, producing an ICBU archive. This is a different operation from exporting one ICS file. Apple warns that importing an archive replaces current calendar information and data; do not use an archive restore as a casual test import."
       ]
+    },
+    {
+      "heading": "For Google, distinguish a copy from an ownership handoff",
+      "body": [
+        "Exporting and importing event data creates a copy; it does not transfer ownership of the original Google calendar. If another person should take responsibility for an existing calendar, check Google’s ownership-transfer instructions on a computer. You must be its current owner, and a primary calendar cannot be transferred. For a work or school calendar, the new owner must belong to the same organisation.",
+        "Sending the transfer email does not complete the handoff. Google gives the recipient 60 days to accept, and you remain the owner until they do. Confirm acceptance before treating the responsibility as transferred. This is a Google calendar-ownership process, not a Cloud Calendars transfer control or a way to move ownership between providers. If you instead need copied events in another service, use the import checks above; do not assume that ownership, invitations or meeting features transfer with the file."
+      ]
     }
   ],
   "claims": {},
@@ -500,6 +507,10 @@ export const HELP_EN_US: Readonly<Record<string, LocalisedArticle>> = {
     {
       "label": "Google: event and display time zones",
       "url": "https://support.google.com/calendar/answer/37064?hl=en"
+    },
+    {
+      "label": "Google: transfer calendar ownership, move or copy events",
+      "url": "https://support.google.com/calendar/answer/78739?hl=en"
     }
   ],
   "seeAlso": [

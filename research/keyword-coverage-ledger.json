@@ -132,7 +132,13 @@
       ],
       "coverageScope": "Complete current English bodies reviewed for these tasks, not every provider repair/migration path or all translated bodies.",
       "targetedFollowupEvidence": "batch22-targeted-guides/mapping.json",
-      "currentFollowup": "Added goal routing to actual existing export and availability-copying guides. No Cloud bulk merge control inferred."
+      "currentFollowup": "Added goal routing to actual existing export and availability-copying guides. No Cloud bulk merge control inferred.",
+      "migrationFollowup": {
+        "evidence": "batch24-migration/intent-research.json",
+        "publishedCanonical": "calendar-export-ics-pdf-and-backup",
+        "status": "conditional_provider_ownership_vs_copy_distinction_published",
+        "limits": "Google-specific, no Cloud transfer UI or cross-provider ownership claim. Native cross-store move advice remains unintegrated pending root review."
+      }
     },
     {
       "id": "sharing-permissions",
@@ -997,5 +1003,26 @@
       "Actual Cloud IAP Family Sharing eligibility unverified; no claim made.",
       "No new runtime/native/ASC/media or ranking measurement."
     ]
+  },
+  "twentyFourthPublication": {
+    "date": "2026-10-22",
+    "changedEnglishGuides": 1,
+    "canonical": "calendar-export-ics-pdf-and-backup",
+    "newRoutes": 0,
+    "task": "Differentiate importing copied events from eligible Google calendar ownership transfer and recipient acceptance.",
+    "sourceResearch": "batch24-migration/intent-research.json",
+    "sourceProductBoundary": "batch24-migration/product-evidence.json",
+    "editorialReview": "batch24-migration/final-review.json",
+    "sourceAndDeliveryEvidence": [
+      "batch24-source-qa.json",
+      "batch24-static-qa.json",
+      "batch24-metadata-qa.json",
+      "batch24-invalidation-status.json",
+      "batch24-public-qa.json",
+      "batch24-browser-qa.json"
+    ],
+    "publicArtifactsExactBuild": 513,
+    "goalComplete": false,
+    "scope": "Four public tool queries/31 observed result URLs; four full official-provider bodies and three complete local guide comparisons. No measured Google rank or newly reviewed independent app competitor body."
   }
 }
