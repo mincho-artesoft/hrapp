@@ -2,7 +2,7 @@
   "guides": 58,
   "selection": "tools/guide-text-selection.json",
   "extraction": "Visible article headings, paragraphs, lists, FAQs and source links; gallery/other-app cards excluded.",
-  "exportedCharacters": 382361,
+  "exportedCharacters": 383326,
   "records": [
     {
       "slug": "what-calendar-sync-actually-does",
@@ -25,8 +25,8 @@
     {
       "slug": "work-and-personal-without-two-apps",
       "source": "https://www.cloud-calendars.com/articles/work-and-personal-without-two-apps/",
-      "blocks": 45,
-      "characters": 6611
+      "blocks": 50,
+      "characters": 7576
     },
     {
       "slug": "free-google-sync-without-adverts",

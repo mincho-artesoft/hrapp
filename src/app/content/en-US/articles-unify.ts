@@ -361,6 +361,13 @@ export const UNIFY_EN_US: Readonly<Record<string, LocalisedArticle>> = {
       ]
     },
     {
+      "heading": "Separate Focus filters from notification choices",
+      "body": [
+        "If calendars disappear when a Focus turns on, inspect that app’s filters before recreating events. Apple separates the apps allowed to notify you from filters controlling the information an app shows. In iPhone Settings, open Focus, choose the active Focus and inspect its Focus filters. Check the named app: a Calendar filter is not evidence that the same selection applies to Cloud Calendars.",
+        "Before agreeing a time, restore the calendars needed for the decision and check the original event. If the problem is a silent reminder, use the notification checks instead. Do not remove an account or move an event merely to investigate a filtered view."
+      ]
+    },
+    {
       "heading": "Check the destination before saving",
       "body": [
         "A default calendar is a useful starting point, not a guarantee that every appointment belongs there. For a personal appointment, check the selected calendar before saving. For a work meeting, use the work calendar and the organisation’s invitation process.",
@@ -421,13 +428,18 @@ export const UNIFY_EN_US: Readonly<Record<string, LocalisedArticle>> = {
     {
       "label": "Microsoft: Change an appointment, meeting, or event in Outlook",
       "url": "https://support.microsoft.com/en-us/outlook/calendar/change-an-appointment-meeting-or-event-in-outlook"
+    },
+    {
+      "label": "Apple: Focus filters and notification choices on iPhone",
+      "url": "https://support.apple.com/en-lamr/guide/iphone/iphd6288a67f/ios"
     }
   ],
   "seeAlso": [
     "what-calendar-sync-actually-does",
     "when-two-calendars-disagree",
     "who-can-see-what-in-google-calendar",
-    "change-calendar-color-iphone"
+    "change-calendar-color-iphone",
+    "calendar-notifications-missing-silent-or-duplicated"
   ]
 },
 

@@ -1,0 +1,56 @@
+{
+  "verdict": "approved_no_changes",
+  "proposalRawSha256": "1a66cff65c6b87074a4cfc697c51cffabba056409c83642990fea597ed31343f",
+  "nativeGateRawSha256": "69f9e929dcb0587279d2f01fe4bff5572163ac79c9f92172cc30eb1935605d81",
+  "currentFileRawSha256": "8c8785adab5d23195f1439a55d76f9d278d7e8ebb89d59ef63e6c89520111b46",
+  "currentArticleJsonSha256": "bf22692aca37ff61bd9c39b3b1f8cdece595e37cbed0f0ffae553b7613ee5e69",
+  "hashMethod": "Raw file bytes; article uses UTF-8 JSON.stringify insertion-order serialization.",
+  "readScope": {
+    "proposal": "Complete proposal read",
+    "native": "Complete supplied bounded immutable native gate read; not a new runtime/source-wide audit",
+    "article": "Initial multi-file read truncated unrelated module tail; superseded by complete extracted canonical object, all metadata/5sections11paragraphs/5practical/3FAQ/4sources/4related read without truncation.",
+    "primary": {
+      "url": "https://support.apple.com/en-lamr/guide/iphone/iphd6288a67f/ios",
+      "date": "2026-10-22",
+      "substantiveLines": "1145–1208 fresh read, notification choices1159–1168 and app filter1171–1184 decisive"
+    }
+  },
+  "checks": {
+    "beforeFileGuardMatches": true,
+    "insertAfterHeadingUnique": true,
+    "newSourceNotAlreadyPresent": true,
+    "relatedGuideActualDefinition": "src/app/content/en-US/articles-help.ts:524",
+    "relatedConsumed": "article-page.component.ts seeAlso resolver and template88–96",
+    "date": "Current article date2026-10-22 remains appropriate; no date-only change needed"
+  },
+  "findings": [
+    {
+      "area": "provider attribution",
+      "result": "pass",
+      "reason": "Settings→Focus inspection is Apple guidance. Named-app check explicitly prevents assuming a Calendar filter controls Cloud Calendars. No Cloud FocusFilterIntent/named calendar sets claim."
+    },
+    {
+      "area": "notification distinction",
+      "result": "pass",
+      "reason": "App notification allowances and information filters are separate settings in Apple documentation. Silent-reminder branch routes to existing notification guide; no claim that OS Focus cannot affect Cloud notifications."
+    },
+    {
+      "area": "selection",
+      "result": "pass",
+      "reason": "Restoration before availability decision follows existing guide. Prior paragraph retaining selection effects on Google synchronization/notification input remains intact; proposed paragraph does not call selection purely cosmetic."
+    },
+    {
+      "area": "proportion and preservation",
+      "result": "pass",
+      "reason": "Two short paragraphs add a concrete missing Focus diagnostic branch without rewriting the article. No account removal/event move recommended for visual diagnosis; current ownership, provider mirror, plans and busy-block boundaries preserved."
+    },
+    {
+      "area": "source limits",
+      "result": "pass",
+      "reason": "Brief paraphrase is below source summary allowance; no extended quotation, unrelated Apple Intelligence detail, cross-device-filter guarantee or OS/runtime certification."
+    }
+  ],
+  "requiredChanges": [],
+  "proposalEdited": false,
+  "limits": "Technical/editorial review only. No application source, API, native, build or publication mutation."
+}

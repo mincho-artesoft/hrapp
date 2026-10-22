@@ -1,0 +1,81 @@
+{
+  "createdAt": "2026-10-22T07:42:58.325238+00:00",
+  "app": "6744690319",
+  "version": "1.7.4",
+  "build": "16",
+  "status": "PRIVACY_PUBLICATION_APPROVAL_PENDING_NOT_SUBMITTED",
+  "completed": [
+    {
+      "requirement": "50 descriptions, keywords and bug-fix release notes",
+      "evidence": {
+        "path": "research/asc-priority-20261022/strong-aso-readback.json",
+        "sha256": "25a72ccbbb00de2818c91bbf9a76b38e99c85f507b8060c595a9b9b9931259ca"
+      },
+      "verifiedFields": 150,
+      "sourceCheckAt": "2026-10-22T07:06:11.435482+00:00"
+    },
+    {
+      "requirement": "Reviewer notes describe correct version and actual account/sharing/App Clip behavior",
+      "evidence": {
+        "path": "research/asc-priority-20261022/strong-aso-readback.json",
+        "sha256": "25a72ccbbb00de2818c91bbf9a76b38e99c85f507b8060c595a9b9b9931259ca"
+      },
+      "scope": "Corrected notes retained in final copy readback; no fresh native runtime test."
+    },
+    {
+      "requirement": "Media delivery for all50 localizations",
+      "evidence": {
+        "path": "research/asc-priority-20261022/media-readiness.json",
+        "sha256": "51ae1bb5bc1dea3380f391a49edacde46094bb15983697fa87ecbdff23a3c2d9"
+      },
+      "scope": "1050 screenshots and115 previews COMPLETE. Delivery evidence, not full visual-freshness approval."
+    },
+    {
+      "requirement": "Prepared accurate website privacy policy",
+      "evidence": {
+        "path": "research/asc-priority-20261022/privacy-policy-local-qa.json",
+        "sha256": "2b567b62f35a67ac7c2d4175231b09ae3a4eb3e6c172cf26d0e485dc1130e67d"
+      },
+      "currentSourceSha256": "06c43bab072b324f2ae8ee84bacbc843fab8afbed0972d86b2d3e9113ee3b05f",
+      "scope": "Local source, build and desktop preview; not deployed."
+    }
+  ],
+  "remainingBeforeSubmission": [
+    {
+      "action": "Receive explicit combined publication confirmation",
+      "state": "PENDING_HUMAN",
+      "scope": "Reviewed15-type ASC App Privacy declaration plus prepared website policy; server and ads fact confirmations alone are not publication approval."
+    },
+    {
+      "action": "Publish complete ASC questionnaire through existing privacy wizard",
+      "state": "WAIT_FOR_APPROVAL",
+      "resume": "Reacquire actual current tab state. Preserve pending Name/no tracking step; do not reset wizard or assume it survived. Configure remaining types from privacy-questionnaire-proposal.json and verify actual published label."
+    },
+    {
+      "action": "Publish reviewed website output and verify public privacy page",
+      "state": "WAIT_FOR_APPROVAL",
+      "resume": "Check current source matches reviewed proposal before build/deploy; existing local output also contains reviewed Focus clarification. Verify public policy and preserve all existing routes."
+    },
+    {
+      "action": "Run actual Add for Review readiness step after privacy corrections",
+      "state": "NOT_ATTEMPTED",
+      "scope": "If Apple reports a concrete additional issue, resolve it. Do not claim submission ready merely from recorded metadata/media audit."
+    }
+  ],
+  "preserved": {
+    "prices": "Unchanged",
+    "releaseSetting": "Existing AFTER_APPROVAL preserved; do not apply manual-release requests from other apps",
+    "namesSubtitlesUrls": "Preserved in strong ASO pass",
+    "privateContactSnapshots": "Local only; excluded from commits"
+  },
+  "broaderObjective": {
+    "state": "INCOMPLETE",
+    "remaining": [
+      "Additional evidence-based competitor/query coverage and translated-guide quality work",
+      "Identify and integrate actual newly generated final media when available",
+      "Compare equal complete Search Console windows and controlled ChatGPT prompt samples after indexing"
+    ],
+    "limits": "No exhaustive competitor keyword list, measured Apple Ads popularity or guaranteed most-discoverable ranking proven."
+  },
+  "approvalWaitingIsNotApproval": true
+}

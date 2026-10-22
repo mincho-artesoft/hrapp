@@ -1,0 +1,22 @@
+{
+  "date": "2026-10-22",
+  "status": "LOCALLY_INTEGRATED_NOT_PUBLISHED",
+  "review": "research/focus-clarification-review-20261022.json",
+  "source": "src/app/content/en-US/articles-unify.ts",
+  "sourceSha256": "1f7fa8fed7c0f98e29f539f60394578cdc992c418414d03a6257238d6d55016e",
+  "renderedSha256": "428246cc06d0aa12cc877e8f456dd398309bcde08575f620bb4d7bf9fd203d11",
+  "build": {
+    "exitCode": 0,
+    "log": "/tmp/cloud-calendar-focus-local-build.log",
+    "sitemapUrls": 528,
+    "articles": 465,
+    "internalLinksResolve": true
+  },
+  "preservation": "One section, one primary source and one related link added; inverse restored original complete object and other file bytes preserved. No new route or ASC write.",
+  "browser": {
+    "url": "http://127.0.0.1:8247/articles/work-and-personal-without-two-apps/",
+    "screenshot": "/tmp/cloud-calendar-focus-local-preview.png",
+    "checked": "Desktop section legible; complete AX content present. Not a mobile visual audit."
+  },
+  "publication": "Website output includes pending privacy-policy correction; no deployment until combined approval arrives."
+}
