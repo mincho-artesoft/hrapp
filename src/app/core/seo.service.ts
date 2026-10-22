@@ -12,6 +12,7 @@ export interface SeoInput {
   path: string;
   image?: string;
   noindex?: boolean;
+  robots?: 'index,follow' | 'noindex,follow';
   /** The language this page is written in. Sets <html lang> and og:locale. */
   locale?: Locale;
   /**
@@ -72,7 +73,7 @@ export class SeoService {
     this.title.setTitle(input.title);
 
     this.set('description', input.description);
-    this.set('robots', input.noindex ? 'noindex,nofollow' : 'index,follow');
+    this.set('robots', input.robots ?? (input.noindex ? 'noindex,nofollow' : 'index,follow'));
 
     this.setProperty('og:title', input.title);
     this.setProperty('og:description', input.description);

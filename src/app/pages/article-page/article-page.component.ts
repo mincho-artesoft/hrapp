@@ -11,6 +11,7 @@ import { APP_DEVELOPER, APP_NAME, APP_STORE_URL, SITE_URL } from '../../core/app
 import { DEFAULT_LOCALE, Locale, linkPath, localePath, storeUrl } from '../../core/locales';
 import { storeCta } from '../../core/store-cta';
 import { SeoService, absolute } from '../../core/seo.service';
+import { isArticleLocaleIndexable } from '../../core/article-indexing';
 
 interface SeeAlsoLink {
   readonly path: string;
@@ -80,7 +81,8 @@ export class ArticlePageComponent implements OnDestroy {
       description: this.article.description,
       path: localePath(this.locale, path),
       locale: this.locale,
-      alternates: localesWith(slug).map((other) => ({
+      robots: isArticleLocaleIndexable(this.locale) ? 'index,follow' : 'noindex,follow',
+      alternates: localesWith(slug).filter(isArticleLocaleIndexable).map((other) => ({
         hreflang: other.hreflang,
         path: localePath(other, path),
       })),

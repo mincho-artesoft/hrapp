@@ -7,6 +7,7 @@ import { ArticleChrome, ArticleLocale, Family } from '../../content/types';
 import { DEFAULT_LOCALE, Locale, linkPath, localePath } from '../../core/locales';
 import { MoreAppsComponent } from '../../components/more-apps/more-apps.component';
 import { SeoService } from '../../core/seo.service';
+import { isArticleLocaleIndexable } from '../../core/article-indexing';
 
 interface Card {
   readonly slug: string;
@@ -113,10 +114,9 @@ export class ArticlesPageComponent {
       description: this.chrome.hubDescription,
       path: localePath(this.locale, '/articles'),
       locale: this.locale,
-      // The hub exists in every published language, so its alternate set is
-      // simply the published languages. Without this, twenty-nine near-identical
-      // pages faced a search engine with nothing saying they were translations.
-      alternates: LIVE_LOCALES.map((other) => ({
+      robots: isArticleLocaleIndexable(this.locale) ? 'index,follow' : 'noindex,follow',
+      // Only approved, indexable article hubs belong to the search alternate set.
+      alternates: LIVE_LOCALES.filter(isArticleLocaleIndexable).map((other) => ({
         hreflang: other.hreflang,
         path: localePath(other, '/articles'),
       })),
