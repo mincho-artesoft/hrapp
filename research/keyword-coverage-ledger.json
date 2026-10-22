@@ -10,7 +10,7 @@
     "No content is declared researched merely because a corresponding route exists."
   ],
   "currentInventory": {
-    "articles": 447,
+    "articles": 449,
     "locales": [
       "ar-SA",
       "bg",
@@ -365,7 +365,28 @@
       },
       "coverageScope": "Complete reviewed current English bodies and recorded/fresh scoped primary evidence. Not all translated bodies, every provider/hardware path or measured ranking/citation coverage.",
       "targetedFollowupEvidence": "batch22-targeted-guides/mapping.json",
-      "currentFollowup": "iPad official gallery steps, same-device data check and nearest-eligible-versus-row-limit diagnosis integrated; website mobile/tablet layouts verified. Native installed-release behavior remains untested."
+      "currentFollowup": "iPad official gallery steps, same-device data check and nearest-eligible-versus-row-limit diagnosis integrated; website mobile/tablet layouts verified. Native installed-release behavior remains untested.",
+      "localizedFollowup": {
+        "date": "2026-10-22",
+        "newEditions": [
+          "bg",
+          "ja"
+        ],
+        "updatedEditions": [
+          "de-DE",
+          "es-ES",
+          "fr-FR",
+          "it"
+        ],
+        "canonical": "the-widget-that-shows-what-is-next",
+        "scope": "Full updated guide with iPad same-device check, timed-future eligibility and finite visible rows. Bounded translation review, no native-speaker or hardware certification.",
+        "evidence": [
+          "batch25-widget-localization/root-final-review.json",
+          "batch25-widget-localization/audit-other-four.json",
+          "batch25-widget-localization/audit-de-es-cross-review.json",
+          "batch25-public-qa.json"
+        ]
+      }
     },
     {
       "id": "work-personal-filtering",
@@ -1024,5 +1045,29 @@
     "publicArtifactsExactBuild": 513,
     "goalComplete": false,
     "scope": "Four public tool queries/31 observed result URLs; four full official-provider bodies and three complete local guide comparisons. No measured Google rank or newly reviewed independent app competitor body."
+  },
+  "twentyFifthPublication": {
+    "date": "2026-10-22",
+    "newLocalizedWidgetEditions": 2,
+    "updatedLocalizedWidgetEditions": 4,
+    "relatedOnlyBacklinks": 2,
+    "newRoutes": 2,
+    "articles": 449,
+    "englishArticles": 54,
+    "sitemapUrls": 512,
+    "publicArtifactsExactBuild": 515,
+    "sourceAndDeliveryEvidence": [
+      "batch25-source-qa.json",
+      "batch25-static-qa.json",
+      "batch25-metadata-qa.json",
+      "batch25-browser-qa.json",
+      "batch25-public-qa.json",
+      "batch25-invalidation-status.json"
+    ],
+    "goalComplete": false,
+    "limits": [
+      "Website viewport testing is not native hardware or widget runtime validation.",
+      "No new ASC, media, indexing or ranking measurement."
+    ]
   }
 }

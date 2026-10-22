@@ -173,7 +173,9 @@ export const ARTICLES_BG: Readonly<Record<string, LocalisedArticle>> = {
       "a": "Той започва чернова там, където действието се предлага. Проверете дата, часова зона, продължителност, календар и място, после запазете желаното събитие."
     }
   ],
-  "seeAlso": [],
+  "seeAlso": [
+    "the-widget-that-shows-what-is-next"
+  ],
   "sourcesHeading": "Официални източници и допълнително четене",
   "sources": [
     {

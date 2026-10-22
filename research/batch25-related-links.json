@@ -1,0 +1,14 @@
+[
+  {
+    "locale": "bg",
+    "file": "src/app/content/bg/articles.ts",
+    "slug": "weather-inside-your-calendar",
+    "target": "the-widget-that-shows-what-is-next"
+  },
+  {
+    "locale": "ja",
+    "file": "src/app/content/ja/articles.ts",
+    "slug": "weather-inside-your-calendar",
+    "target": "the-widget-that-shows-what-is-next"
+  }
+]

@@ -1,0 +1,38 @@
+[
+  {
+    "locale": "bg",
+    "file": "src/app/content/bg/articles-help.ts",
+    "slug": "the-widget-that-shows-what-is-next",
+    "kind": "new"
+  },
+  {
+    "locale": "ja",
+    "file": "src/app/content/ja/articles.ts",
+    "slug": "the-widget-that-shows-what-is-next",
+    "kind": "new"
+  },
+  {
+    "locale": "de-DE",
+    "file": "src/app/content/de-DE/articles.ts",
+    "slug": "the-widget-that-shows-what-is-next",
+    "kind": "updated"
+  },
+  {
+    "locale": "es-ES",
+    "file": "src/app/content/es-ES/articles.ts",
+    "slug": "the-widget-that-shows-what-is-next",
+    "kind": "updated"
+  },
+  {
+    "locale": "fr-FR",
+    "file": "src/app/content/fr-FR/articles.ts",
+    "slug": "the-widget-that-shows-what-is-next",
+    "kind": "updated"
+  },
+  {
+    "locale": "it",
+    "file": "src/app/content/it/articles.ts",
+    "slug": "the-widget-that-shows-what-is-next",
+    "kind": "updated"
+  }
+]

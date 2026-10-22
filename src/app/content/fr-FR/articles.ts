@@ -781,78 +781,97 @@ export const ARTICLES_FR_FR: Readonly<Record<string, LocalisedArticle>> = {
   },
 
   'the-widget-that-shows-what-is-next': {
-  "updated": "2026-10-21",
-  "title": "Afficher les prochains rendez-vous sur l’écran d’accueil",
-  "short": "Les prochains rendez-vous dans un widget",
-  "description": "Choisissez un widget avec événements et vérifiez les calendriers sélectionnés. Une liste vide ne signifie pas que votre agenda est vide.",
-  "lede": "Pour consulter le prochain rendez-vous, choisissez un widget qui contient une liste. Une vignette de date et de météo répond à une autre question. Ce guide est publié par Arte Soft, le développeur de Cloud Calendars.",
+  "title": "Widgets de calendrier sur iPhone et iPad : afficher les prochains événements",
+  "short": "Les prochains événements sur l’écran d’accueil",
+  "description": "Configurez les widgets de rendez-vous sur iPhone ou iPad. Vérifiez les calendriers sélectionnés, les lignes visibles et les événements manquants.",
+  "lede": "Pour consulter le prochain rendez-vous, choisissez un widget qui affiche réellement une liste d’événements. Une vignette de date et de météo répond à une autre question. Ce guide est publié par Arte Soft, le développeur de Cloud Calendars.",
   "sections": [
     {
-      "heading": "Choisir d’abord la présentation adaptée",
+      "heading": "Choisir d’abord la présentation avec événements",
       "body": [
-        "« Calendar Events » est la présentation moyenne avec une liste de rendez-vous. « Calendar Events Large » offre davantage de place. « Calendar & Weather » est une présentation distincte pour la date et la météo ; sa petite taille ne promet pas le prochain événement. Les noms peuvent être traduits sur votre appareil.",
-        "Maintenez le doigt sur une zone vide de l’écran d’accueil, puis ouvrez la galerie de widgets dans les options de modification. Recherchez Cloud Calendars et comparez l’aperçu avant l’ajout. Cette galerie de l’iPhone est indépendante des vues de l’agenda dans l’app."
+        "Dans la galerie de widgets de Cloud Calendars, Calendar Events est la présentation moyenne avec une liste d’événements. Calendar Events Large offre davantage de place pour les prochains rendez-vous. Calendar & Weather est une présentation distincte pour la date et la météo ; son petit format ne garantit pas une ligne pour le prochain événement. Les noms peuvent être traduits sur votre appareil.",
+        "Sur iPhone, maintenez le doigt sur une zone vide de l’écran d’accueil, ouvrez les options de modification, puis choisissez l’ajout d’un widget. Recherchez Cloud Calendars et sélectionnez la présentation souhaitée. Comparez l’aperçu avant de l’ajouter. Les instructions d’Apple concernent cette galerie du système, qui est distincte des vues de calendrier dans l’app."
       ]
     },
     {
-      "heading": "Comprendre les événements retenus",
+      "heading": "Ajouter et vérifier le widget sur iPad",
       "body": [
-        "La liste utilise les calendriers sélectionnés et les rendez-vous horaires dont le début est encore à venir. Les événements sur toute la journée et ceux qui ont déjà commencé en sont exclus. Un anniversaire ou une réunion en cours peut donc être visible dans l’app sans apparaître ici.",
-        "Si votre seule entrée du jour est un voyage sur toute la journée, une liste vide ne prouve pas sa disparition. Ouvrez la journée complète. Lisez aussi la date de chaque rendez-vous : le prochain peut être demain ou plus tard."
+        "Sur iPad, utilisez la galerie de widgets de l’écran d’accueil d’Apple : maintenez le doigt sur l’arrière-plan, ouvrez les options de modification, puis choisissez l’ajout d’un widget. Recherchez Cloud Calendars, examinez les styles et les tailles proposés, ajoutez la présentation souhaitée, placez-la, puis terminez la modification. Suivez les commandes affichées par votre version d’iPadOS ; un aperçu ne confirme pas que vos données de calendrier sont chargées.",
+        "Choisissez Calendar Events ou Calendar Events Large pour afficher des rendez-vous. Comparez les styles proposés par l’app installée ; une vignette de date et de météo répond à une autre question qu’une liste d’événements.",
+        "Ouvrez Cloud Calendars sur cet iPad et retrouvez un rendez-vous connu, avec une heure de début future, dans un calendrier sélectionné. Un affichage correct sur votre iPhone ne confirme ni les comptes, ni les autorisations, ni les données chargées sur l’iPad. Comparez le titre, la date et l’heure de début, puis poursuivez les vérifications ci-dessous sur les événements retenus et les mises à jour si le widget diffère."
       ]
     },
     {
-      "heading": "Comparer avec l’application en premier",
+      "heading": "Comprendre quels événements sont à venir",
       "body": [
-        "Retrouvez un rendez-vous futur précis dans Cloud Calendars. Vérifiez son calendrier, sa sélection et l’accès de l’app aux calendriers. Comparez le titre, la date et l’heure. S’il manque également dans l’app, commencez par le compte ou la synchronisation.",
-        "Pour un essai simple, créez un rendez-vous sans invités dans un calendrier personnel, avec un titre identifiable et un début futur. Ne modifiez pas une vraie invitation et ne retirez pas de compte pour tester l’écran d’accueil."
+        "L’affichage des événements utilise les calendriers sélectionnés et les rendez-vous dont l’heure de début est encore à venir. Les événements sur toute la journée et les rendez-vous dont l’heure de début est passée sont exclus de cette liste. Un anniversaire ou une réunion en cours peut donc être visible dans l’app sans apparaître ici.",
+        "Par exemple, si votre seule entrée du jour est un voyage indiqué sur toute la journée, une liste vide ne signifie pas que cette entrée a disparu. Ouvrez l’app pour consulter la journée complète. De même, le prochain événement avec un horaire peut être demain ou plus tard ; lisez sa date au lieu de supposer que chaque ligne concerne aujourd’hui."
       ]
     },
     {
-      "heading": "Ne pas supposer une mise à jour instantanée",
+      "heading": "Distinguer un événement manquant d’une liste sans place disponible",
       "body": [
-        "Les widgets affichent des informations enregistrées et ne fonctionnent pas en permanence comme une app ouverte. iOS organise leurs mises à jour. Ouvrir l’app donne un point de comparaison, sans garantir un délai précis avant le changement du widget.",
-        "Si l’app reste correcte et le widget incorrect, notez la présentation, le calendrier, l’heure et les versions de l’app et d’iOS. Distinguez une liste vide, un ancien rendez-vous et une heure erronée."
+        "Un widget affiche un nombre limité de prochains rendez-vous. Si les premiers événements occupent toutes les lignes, un rendez-vous ultérieur peut être absent alors qu’il figure dans l’app et remplit les critères de la liste. Une présentation plus grande peut afficher davantage de lignes ; elle ne représente toujours pas le calendrier complet.",
+        "Commencez par le rendez-vous à venir le plus proche, avec un horaire, dans un calendrier sélectionné. S’il apparaît mais qu’un rendez-vous ultérieur manque, ouvrez l’app pour consulter la suite du programme. Si même le premier événement admissible est absent, poursuivez les vérifications de sélection des calendriers, d’accès et de mise à jour. Ne déplacez ni ne supprimez de rendez-vous simplement pour faire apparaître une entrée ultérieure."
+      ]
+    },
+    {
+      "heading": "Comparer d’abord avec l’application",
+      "body": [
+        "Ouvrez Cloud Calendars et retrouvez un rendez-vous futur précis, avec un horaire. Confirmez que le calendrier auquel il appartient est sélectionné et que l’app dispose de l’accès nécessaire aux calendriers. Comparez le titre, la date et l’heure de début avec le widget. Si l’événement manque aussi dans l’app, examinez d’abord le compte ou la synchronisation.",
+        "Si vous avez besoin d’un exemple clair, utilisez un rendez-vous de test sans conséquence dans un calendrier qui vous appartient. Donnez-lui une heure de début future et un titre reconnaissable. Évitez de modifier une véritable invitation ou de retirer des comptes simplement pour tester l’écran d’accueil."
+      ]
+    },
+    {
+      "heading": "Tenir compte des mises à jour sans supposer un délai fixe",
+      "body": [
+        "Les widgets affichent des informations enregistrées et ne fonctionnent pas en continu comme une app ouverte. Apple organise leurs mises à jour. Ouvrir l’app et vérifier l’événement donne un nouveau point de comparaison, mais ne fixe pas un nombre précis de secondes avant que le widget doive changer.",
+        "Si l’app reste correcte alors que le widget reste incorrect, notez la présentation, le calendrier sélectionné, l’heure de l’événement et les versions de l’app et d’iOS. Une liste vide, un ancien rendez-vous et une heure incorrecte sont des observations différentes ; précisez laquelle vous constatez."
       ]
     },
     {
       "heading": "Lire la météo comme un résumé distinct",
       "body": [
-        "La météo près de la date n’est pas une prévision propre au lieu et à l’heure de chaque rendez-vous. Avant une activité dehors, vérifiez le lieu et le créneau souhaités dans la vue météo.",
-        "Gardez le widget pour vous orienter rapidement. Utilisez l’agenda complet pour les événements sur toute la journée, les détails et les décisions qui exigent une vue d’ensemble."
+        "La météo à côté de la date n’est pas une prévision associée au lieu et à l’heure de début de chaque rendez-vous. Avant un événement en extérieur, ouvrez la vue météo et vérifiez le lieu et l’heure souhaités. Une icône des conditions actuelles ne permet pas de connaître celles d’un rendez-vous ultérieur.",
+        "Gardez ce widget pour vous orienter rapidement. Utilisez le calendrier complet pour les engagements sur toute la journée, les détails des événements et les décisions qui nécessitent l’ensemble du programme."
       ]
     }
   ],
-  "claims": {},
   "practical": [
-    "Choisir une présentation avec liste de rendez-vous.",
-    "Vérifier un événement futur dans un calendrier sélectionné.",
-    "Comparer sa date et son heure avec l’app.",
-    "Noter les écarts persistants sans supprimer de données."
+    "Choisissez Calendar Events ou Calendar Events Large pour une liste d’événements.",
+    "Vérifiez un rendez-vous avec une heure de début future dans un calendrier sélectionné.",
+    "Comparez sa date et son heure dans l’app avant de chercher la cause du problème du widget.",
+    "Notez les écarts persistants au lieu de supprimer des données de calendrier."
   ],
   "faq": [
     {
       "q": "Pourquoi mon anniversaire manque-t-il ?",
-      "a": "La liste exclut les événements sur toute la journée. Consultez l’agenda complet."
+      "a": "La liste des événements à venir exclut les événements sur toute la journée. Consultez le calendrier complet pour les anniversaires et les autres entrées sans horaire."
     },
     {
-      "q": "Le petit widget affiche-t-il le prochain rendez-vous ?",
-      "a": "La petite présentation « Calendar & Weather » affiche la date et la météo. Choisissez une liste pour les rendez-vous."
+      "q": "Le petit widget affiche-t-il la prochaine réunion ?",
+      "a": "Le petit format de Calendar & Weather affiche la date et la météo. Choisissez une présentation avec une liste d’événements pour les rendez-vous."
     },
     {
-      "q": "Une liste vide signifie-t-elle que je suis libre ?",
-      "a": "Non. Les événements sur toute la journée, les réunions en cours, les calendriers non sélectionnés ou une mise à jour en attente peuvent manquer."
+      "q": "L’absence d’événement à venir signifie-t-elle que je suis libre aujourd’hui ?",
+      "a": "Non. Les événements sur toute la journée, ceux qui sont en cours, les calendriers non sélectionnés et des informations périmées peuvent modifier cette conclusion."
     }
   ],
   "sourcesHeading": "Sources et instructions Apple",
+  "updated": "2026-10-22",
+  "claims": {},
   "sources": [
     {
       "label": "Apple : ajouter et modifier des widgets sur iPhone",
       "url": "https://support.apple.com/118610"
     },
     {
-      "label": "Apple : actualiser un widget",
+      "label": "Apple : maintenir un widget à jour",
       "url": "https://developer.apple.com/documentation/widgetkit/keeping-a-widget-up-to-date"
+    },
+    {
+      "label": "Apple : ajouter, modifier et supprimer des widgets sur iPad",
+      "url": "https://support.apple.com/guide/ipad/add-edit-and-remove-widgets-ipadb0de8630/ipados"
     }
   ],
   "seeAlso": [

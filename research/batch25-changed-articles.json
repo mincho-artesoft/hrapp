@@ -1,0 +1,102 @@
+{
+  "date": "2026-10-22T00:49:05.944Z",
+  "count": 8,
+  "articles": [
+    {
+      "locale": "bg",
+      "slug": "the-widget-that-shows-what-is-next",
+      "file": "src/app/content/bg/articles-help.ts",
+      "title": "Уиджети за календар на iPhone и iPad: покажете предстоящите събития",
+      "sections": 7,
+      "faqs": 3,
+      "sources": 3,
+      "updated": "2026-10-22",
+      "description": "Настройте уиджет за предстоящи събития на iPhone или iPad. Проверете избраните календари, видимите редове и липсващите срещи.",
+      "descriptionCharacters": 125
+    },
+    {
+      "locale": "bg",
+      "slug": "weather-inside-your-calendar",
+      "file": "src/app/content/bg/articles.ts",
+      "title": "Календар с прогноза за времето на iPhone и iPad: проверете плана",
+      "sections": 6,
+      "faqs": 3,
+      "sources": 2,
+      "updated": "2026-10-22",
+      "description": "Планирайте с календар и прогноза за времето на iPhone и iPad. Проверете мястото, наличните прогнозни часове и събитието преди запазване.",
+      "descriptionCharacters": 136
+    },
+    {
+      "locale": "de-DE",
+      "slug": "the-widget-that-shows-what-is-next",
+      "file": "src/app/content/de-DE/articles.ts",
+      "title": "Kalender-Widgets auf iPhone und iPad: kommende Termine anzeigen",
+      "sections": 7,
+      "faqs": 3,
+      "sources": 3,
+      "updated": "2026-10-22",
+      "description": "Richten Sie Termin-Widgets auf iPhone oder iPad ein. Prüfen Sie Kalenderauswahl, sichtbare Zeilen und fehlende Termine vor der Planung.",
+      "descriptionCharacters": 135
+    },
+    {
+      "locale": "es-ES",
+      "slug": "the-widget-that-shows-what-is-next",
+      "file": "src/app/content/es-ES/articles.ts",
+      "title": "Widgets de calendario en iPhone y iPad: muestra los próximos eventos",
+      "sections": 7,
+      "faqs": 3,
+      "sources": 3,
+      "updated": "2026-10-22",
+      "description": "Configura widgets de eventos en iPhone o iPad. Revisa calendarios seleccionados, filas visibles y citas ausentes antes de fiarte de la pantalla de inicio.",
+      "descriptionCharacters": 154
+    },
+    {
+      "locale": "fr-FR",
+      "slug": "the-widget-that-shows-what-is-next",
+      "file": "src/app/content/fr-FR/articles.ts",
+      "title": "Widgets de calendrier sur iPhone et iPad : afficher les prochains événements",
+      "sections": 7,
+      "faqs": 3,
+      "sources": 3,
+      "updated": "2026-10-22",
+      "description": "Configurez les widgets de rendez-vous sur iPhone ou iPad. Vérifiez les calendriers sélectionnés, les lignes visibles et les événements manquants.",
+      "descriptionCharacters": 145
+    },
+    {
+      "locale": "it",
+      "slug": "the-widget-that-shows-what-is-next",
+      "file": "src/app/content/it/articles.ts",
+      "title": "Widget calendario su iPhone e iPad: mostrare i prossimi eventi",
+      "sections": 7,
+      "faqs": 3,
+      "sources": 3,
+      "updated": "2026-10-22",
+      "description": "Configura i widget degli appuntamenti su iPhone o iPad. Verifica calendari selezionati, righe visibili ed eventi mancanti prima di affidarti alla Home.",
+      "descriptionCharacters": 151
+    },
+    {
+      "locale": "ja",
+      "slug": "weather-inside-your-calendar",
+      "file": "src/app/content/ja/articles.ts",
+      "title": "iPhoneとiPadの天気付きカレンダー：予定の条件を確認する",
+      "sections": 6,
+      "faqs": 3,
+      "sources": 2,
+      "updated": "2026-10-22",
+      "description": "iPhoneとiPadでカレンダーと天気を活用。計画を保存する前に、選択した場所、利用可能な予報時間、予定の詳細を確認しましょう。",
+      "descriptionCharacters": 65
+    },
+    {
+      "locale": "ja",
+      "slug": "the-widget-that-shows-what-is-next",
+      "file": "src/app/content/ja/articles.ts",
+      "title": "iPhoneとiPadのカレンダーウィジェット：今後の予定を表示する",
+      "sections": 7,
+      "faqs": 3,
+      "sources": 3,
+      "updated": "2026-10-22",
+      "description": "iPhoneやiPadに予定一覧のウィジェットを追加。選択したカレンダー、表示行数、予定が見当たらない原因を確認してから活用しましょう。",
+      "descriptionCharacters": 68
+    }
+  ]
+}

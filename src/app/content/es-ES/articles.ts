@@ -777,67 +777,82 @@ export const ARTICLES_ES_ES: Readonly<Record<string, LocalisedArticle>> = {
   },
 
   'the-widget-that-shows-what-is-next': {
-  "updated": "2026-10-21",
-  "title": "Próximos eventos en la pantalla de inicio del iPhone",
-  "short": "Próximos eventos en el widget",
-  "description": "Elige un widget con eventos, comprueba los calendarios seleccionados y diagnostica ausencias. Una lista vacía no demuestra que tu agenda esté libre.",
-  "lede": "Para consultar la próxima cita, elige un widget que incluya eventos. Una tarjeta con fecha y tiempo responde a otra pregunta. Esta guía la publica Arte Soft, desarrollador de Cloud Calendars.",
+  "updated": "2026-10-22",
+  "title": "Widgets de calendario en iPhone y iPad: muestra los próximos eventos",
+  "short": "Próximos eventos en la pantalla de inicio",
+  "description": "Configura widgets de eventos en iPhone o iPad. Revisa calendarios seleccionados, filas visibles y citas ausentes antes de fiarte de la pantalla de inicio.",
+  "lede": "Para consultar de forma útil la próxima cita, elige un widget que realmente muestre eventos. Una tarjeta con fecha y tiempo responde a otra pregunta. Esta guía la publica Arte Soft, desarrollador de Cloud Calendars.",
   "sections": [
     {
       "heading": "Elige primero el diseño con eventos",
       "body": [
-        "«Calendar Events» es el diseño mediano con lista de eventos. «Calendar Events Large» ofrece más espacio. «Calendar & Weather» es un diseño independiente de fecha y tiempo; su tamaño pequeño no incluye automáticamente la próxima cita. Los nombres pueden aparecer traducidos.",
-        "Mantén pulsada una zona vacía de la pantalla de inicio y abre la galería de widgets desde las opciones de edición. Busca Cloud Calendars y revisa la vista previa antes de añadirlo. Esta galería del iPhone es distinta de las vistas del calendario dentro de la app."
+        "En la galería de widgets de Cloud Calendars, «Calendar Events» es el diseño mediano con lista de eventos. «Calendar Events Large» ofrece más espacio para las próximas citas. «Calendar & Weather» es un diseño independiente de fecha y tiempo; su tamaño pequeño no promete una fila con el próximo evento. Los nombres pueden aparecer traducidos en tu dispositivo.",
+        "En el iPhone, mantén pulsada una zona vacía de la pantalla de inicio, elige la opción de edición «Edit» y después «Add Widget» para añadir un widget. Busca Cloud Calendars y selecciona el diseño que quieras. Compara la vista previa antes de añadirlo. Las instrucciones de Apple describen esta galería del sistema, que es distinta de las vistas del calendario dentro de la app."
       ]
     },
     {
-      "heading": "Qué se considera próximo",
+      "heading": "Añade y comprueba el widget en el iPad",
       "body": [
-        "La lista utiliza los calendarios seleccionados y los eventos con hora de inicio futura. Excluye los eventos de todo el día y los que ya han empezado. Por eso un cumpleaños o una reunión en curso pueden aparecer en la app y no en el widget.",
-        "Si hoy solo tienes un viaje marcado como evento de todo el día, una lista vacía no significa que se haya perdido. Abre el día completo y lee la fecha de cada próxima cita: podría corresponder a mañana o más adelante."
+        "En el iPad, utiliza la galería de widgets de Apple para la pantalla de inicio: mantén pulsado el fondo, abre «Edit» y después «Add Widget». Busca Cloud Calendars, revisa los estilos y tamaños disponibles, añade el diseño que necesites, colócalo y termina con «Done». Estas etiquetas en inglés pueden aparecer traducidas en tu dispositivo. Sigue los controles que muestre tu versión de iPadOS; una vista previa no confirma que se hayan cargado tus datos de calendario.",
+        "Elige «Calendar Events» o «Calendar Events Large» si necesitas consultar citas. Compara los estilos que ofrece la app instalada: una tarjeta de fecha y tiempo responde a una pregunta distinta de una lista de eventos.",
+        "Abre Cloud Calendars en ese iPad y busca una cita conocida con hora de inicio futura en un calendario seleccionado. Que la vista del iPhone sea correcta no confirma las cuentas, el acceso ni los datos cargados en el iPad. Compara el título, la fecha y la hora de inicio y, si el widget difiere, continúa con las comprobaciones de inclusión y actualización que se explican a continuación."
+      ]
+    },
+    {
+      "heading": "Comprueba qué se considera próximo",
+      "body": [
+        "La lista utiliza los calendarios seleccionados y las citas con hora de inicio futura. Excluye los eventos de todo el día y las citas cuya hora de inicio ya ha pasado. Por eso un cumpleaños o una reunión en curso pueden aparecer en la app sin figurar aquí.",
+        "Por ejemplo, si tu única entrada de hoy es un viaje marcado como evento de todo el día, una lista vacía no significa que ese viaje se haya perdido. Abre la app para revisar el día completo. Del mismo modo, la siguiente cita con hora puede ser mañana o más adelante: lee su fecha en lugar de suponer que todas las filas corresponden a hoy."
+      ]
+    },
+    {
+      "heading": "Distingue un evento ausente de una lista sin más filas",
+      "body": [
+        "Un widget muestra un conjunto limitado de próximas citas. Si los eventos anteriores ocupan sus filas, una cita posterior puede no aparecer aunque exista en la app y cumpla los criterios de la lista. Un diseño de eventos más grande puede mostrar más filas, pero tampoco es el calendario completo.",
+        "Empieza por la cita con hora de inicio futura más cercana en un calendario seleccionado. Si aparece pero otra posterior no, abre la app para revisar el resto de la agenda. Si también falta el evento más cercano que cumple los criterios, continúa comprobando la selección de calendarios, el acceso y las actualizaciones. No muevas ni borres citas solo para que aparezca una entrada posterior."
       ]
     },
     {
       "heading": "Compara primero con la app",
       "body": [
-        "Localiza un evento futuro concreto en Cloud Calendars. Comprueba a qué calendario pertenece, que esté seleccionado y que la app tenga acceso al calendario. Compara título, fecha y hora. Si también falta en la app, investiga primero la cuenta o la sincronización.",
-        "Para una comprobación sencilla, crea una cita de prueba sin invitados en un calendario propio, con un título reconocible y un inicio futuro. No modifiques una invitación real ni elimines cuentas para probar el widget."
+        "Abre Cloud Calendars y localiza una cita concreta con hora de inicio futura. Confirma que el calendario al que pertenece está seleccionado y que la app tiene el acceso al calendario que necesita. Compara el título, la fecha y la hora de inicio con el widget. Si el evento también falta en la app, investiga primero la cuenta o la sincronización.",
+        "Si necesitas un ejemplo claro, utiliza una cita de prueba sin consecuencias en un calendario propio. Ponle un inicio futuro y un título reconocible. Evita modificar una invitación real o quitar cuentas solo para probar la pantalla de inicio."
       ]
     },
     {
-      "heading": "No presupongas una actualización inmediata",
+      "heading": "Ten en cuenta las actualizaciones sin suponer un plazo fijo",
       "body": [
-        "Los widgets muestran información guardada y no funcionan continuamente como una app abierta. iOS decide cuándo actualizarlos. Abrir la app y comprobar el evento proporciona una referencia, pero no establece un plazo exacto para que cambie el widget.",
-        "Si la app sigue correcta y el widget no, anota el diseño, el calendario, la hora del evento y las versiones de la app y de iOS. Distingue entre una lista vacía, una cita antigua y una hora equivocada."
+        "Los widgets muestran información guardada y no funcionan continuamente como una app abierta. Apple controla cuándo se actualizan. Abrir la app y comprobar el evento te proporciona una referencia actual, pero no establece un número exacto de segundos tras el cual el widget deba cambiar.",
+        "Si la app sigue mostrando la información correcta y el widget no, anota el diseño, el calendario seleccionado, la hora del evento y las versiones de la app y de iOS. Una lista vacía, una cita antigua y una hora incorrecta son observaciones distintas: indica cuál ves."
       ]
     },
     {
-      "heading": "Comprueba el tiempo por separado",
+      "heading": "Interpreta el tiempo como un resumen independiente",
       "body": [
-        "El tiempo junto a la fecha no es una previsión para el lugar y la hora de cada evento. Antes de una actividad al aire libre, consulta el lugar y la franja horaria adecuados en la vista del tiempo.",
-        "Usa el widget para orientarte y el calendario completo para eventos de todo el día, detalles y decisiones que requieren ver toda la agenda."
+        "El tiempo junto a la fecha no es una previsión asociada al lugar y a la hora de inicio de cada cita. Antes de un evento al aire libre, abre la vista del tiempo y comprueba el lugar y la hora previstos. Un icono de las condiciones actuales no demuestra qué tiempo hará en una reunión posterior.",
+        "Utiliza este widget para orientarte rápidamente. Consulta el calendario completo para los compromisos de todo el día, los detalles de los eventos y las decisiones que requieren ver toda la agenda."
       ]
     }
   ],
   "claims": {},
   "practical": [
-    "Elige un diseño con lista de eventos.",
-    "Comprueba una cita futura en un calendario seleccionado.",
-    "Compara fecha y hora con la app.",
-    "Documenta las diferencias persistentes sin borrar datos."
+    "Elige «Calendar Events» o «Calendar Events Large» para ver una lista de eventos.",
+    "Comprueba una cita con hora de inicio futura en un calendario seleccionado.",
+    "Compara su fecha y hora en la app antes de investigar el widget.",
+    "Anota las diferencias persistentes en lugar de borrar datos del calendario."
   ],
   "faq": [
     {
       "q": "¿Por qué falta mi cumpleaños?",
-      "a": "La lista de próximos eventos excluye los de todo el día. Comprueba el calendario completo."
+      "a": "La lista de próximos eventos excluye los de todo el día. Consulta el calendario completo para los cumpleaños y otras entradas que solo tienen fecha."
     },
     {
       "q": "¿El widget pequeño muestra la siguiente reunión?",
-      "a": "El diseño pequeño «Calendar & Weather» muestra fecha y tiempo. Para citas, elige una lista de eventos."
+      "a": "El diseño pequeño «Calendar & Weather» muestra fecha y tiempo. Para consultar citas, elige un diseño con lista de eventos."
     },
     {
-      "q": "¿Una lista vacía significa que hoy estoy libre?",
-      "a": "No. Puede omitir eventos de todo el día, reuniones en curso, calendarios no seleccionados o información pendiente de actualizar."
+      "q": "¿No tener próximos eventos significa que hoy estoy libre?",
+      "a": "No. Los eventos de todo el día, los que están en curso, los calendarios no seleccionados y la información desactualizada pueden cambiar esa conclusión."
     }
   ],
   "sourcesHeading": "Fuentes e instrucciones de Apple",
@@ -849,6 +864,10 @@ export const ARTICLES_ES_ES: Readonly<Record<string, LocalisedArticle>> = {
     {
       "label": "Apple: Mantener actualizado un widget",
       "url": "https://developer.apple.com/documentation/widgetkit/keeping-a-widget-up-to-date"
+    },
+    {
+      "label": "Apple: Añadir, editar y eliminar widgets en el iPad",
+      "url": "https://support.apple.com/guide/ipad/add-edit-and-remove-widgets-ipadb0de8630/ipados"
     }
   ],
   "seeAlso": [

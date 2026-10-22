@@ -1,0 +1,152 @@
+[
+  {
+    "locale": "en-US",
+    "path": "/",
+    "heading": "Your calendar. Your sky. One view."
+  },
+  {
+    "locale": "ar-SA",
+    "path": "/ar/",
+    "heading": "تقويمك. سماؤك. عرض واحد."
+  },
+  {
+    "locale": "bg",
+    "path": "/bg/",
+    "heading": "Вашият календар. Вашето небе. Един изглед."
+  },
+  {
+    "locale": "cs",
+    "path": "/cs/",
+    "heading": "Váš kalendář. Vaše obloha. Jeden pohled."
+  },
+  {
+    "locale": "da",
+    "path": "/da/",
+    "heading": "Din kalender. Din himmel. Én visning."
+  },
+  {
+    "locale": "de-DE",
+    "path": "/de/",
+    "heading": "Ihr Kalender. Ihr Himmel. Eine Ansicht."
+  },
+  {
+    "locale": "el",
+    "path": "/el/",
+    "heading": "Το ημερολόγιό σας. Ο ουρανός σας. Μία προβολή."
+  },
+  {
+    "locale": "es-ES",
+    "path": "/es/",
+    "heading": "Tu agenda. Tu cielo. Una vista."
+  },
+  {
+    "locale": "fi",
+    "path": "/fi/",
+    "heading": "Sinun kalenterisi. Sinun taivaasi. Yksi näkymä."
+  },
+  {
+    "locale": "fr-FR",
+    "path": "/fr/",
+    "heading": "Votre agenda. Votre ciel. Une seule vue."
+  },
+  {
+    "locale": "he",
+    "path": "/he/",
+    "heading": "היומן שלכם. השמיים שלכם. תצוגה אחת."
+  },
+  {
+    "locale": "hi",
+    "path": "/hi/",
+    "heading": "आपका कैलेंडर। आपका आसमान। एक दृश्य।"
+  },
+  {
+    "locale": "hu",
+    "path": "/hu/",
+    "heading": "Az Ön naptára. Az Ön ege. Egyetlen nézet."
+  },
+  {
+    "locale": "id",
+    "path": "/id/",
+    "heading": "Kalender Anda. Langit Anda. Satu tampilan."
+  },
+  {
+    "locale": "it",
+    "path": "/it/",
+    "heading": "Il tuo calendario. Il tuo cielo. Una sola vista."
+  },
+  {
+    "locale": "ja",
+    "path": "/ja/",
+    "heading": "あなたのカレンダー。 あなたの空。 ひとつの画面。"
+  },
+  {
+    "locale": "ko",
+    "path": "/ko/",
+    "heading": "당신의 달력. 당신의 하늘. 하나의 화면."
+  },
+  {
+    "locale": "ms",
+    "path": "/ms/",
+    "heading": "Kalendar anda. Langit anda. Satu paparan."
+  },
+  {
+    "locale": "nl-NL",
+    "path": "/nl/",
+    "heading": "Uw agenda. Uw lucht. Eén weergave."
+  },
+  {
+    "locale": "no",
+    "path": "/no/",
+    "heading": "Kalenderen din. Himmelen din. Én visning."
+  },
+  {
+    "locale": "pl",
+    "path": "/pl/",
+    "heading": "Twój kalendarz. Twoje niebo. Jeden widok."
+  },
+  {
+    "locale": "pt-BR",
+    "path": "/pt/",
+    "heading": "Sua agenda. Seu céu. Uma só vista."
+  },
+  {
+    "locale": "ro",
+    "path": "/ro/",
+    "heading": "Calendarul dumneavoastră. Cerul dumneavoastră. O singură vedere."
+  },
+  {
+    "locale": "ru",
+    "path": "/ru/",
+    "heading": "Ваш календарь. Ваше небо. Один вид."
+  },
+  {
+    "locale": "sv",
+    "path": "/sv/",
+    "heading": "Din kalender. Din himmel. En enda vy."
+  },
+  {
+    "locale": "th",
+    "path": "/th/",
+    "heading": "ปฏิทินของคุณ ท้องฟ้าของคุณ มุมมองเดียว"
+  },
+  {
+    "locale": "tr",
+    "path": "/tr/",
+    "heading": "Takviminiz. Gökyüzünüz. Tek görünüm."
+  },
+  {
+    "locale": "vi",
+    "path": "/vi/",
+    "heading": "Lịch của bạn. Bầu trời của bạn. Một khung nhìn."
+  },
+  {
+    "locale": "zh-Hans",
+    "path": "/zh-hans/",
+    "heading": "你的日历。 你的天空。 一个视图。"
+  },
+  {
+    "locale": "zh-Hant",
+    "path": "/zh-hant/",
+    "heading": "你的行事曆。 你的天空。 一個檢視。"
+  }
+]

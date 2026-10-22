@@ -872,67 +872,82 @@ export const ARTICLES_DE_DE: Readonly<Record<string, LocalisedArticle>> = {
   },
 
   'the-widget-that-shows-what-is-next': {
-  "updated": "2026-10-21",
-  "title": "Kommende Kalendertermine auf dem iPhone-Home-Bildschirm",
-  "short": "Kommende Termine im Widget",
-  "description": "Wählen Sie ein Termin-Widget, prüfen Sie ausgewählte Kalender und fehlende Einträge. Eine leere Liste bedeutet nicht, dass Ihr Kalender leer ist.",
-  "lede": "Für die nächsten Termine brauchen Sie ein Widget mit Terminliste. Eine Kachel mit Datum und Wetter beantwortet eine andere Frage. Dieser Leitfaden wird von Arte Soft, dem Entwickler von Cloud Calendars, veröffentlicht.",
+  "updated": "2026-10-22",
+  "title": "Kalender-Widgets auf iPhone und iPad: kommende Termine anzeigen",
+  "short": "Kommende Termine auf dem Home-Bildschirm",
+  "description": "Richten Sie Termin-Widgets auf iPhone oder iPad ein. Prüfen Sie Kalenderauswahl, sichtbare Zeilen und fehlende Termine vor der Planung.",
+  "lede": "Für eine nützliche Vorschau der nächsten Termine wählen Sie ein Widget, das tatsächlich Termine auflistet. Eine Kachel mit Datum und Wetter beantwortet eine andere Frage. Dieser Leitfaden wird von Arte Soft, dem Entwickler von Cloud Calendars, veröffentlicht.",
   "sections": [
     {
-      "heading": "Zuerst das passende Layout wählen",
+      "heading": "Zuerst das Layout mit Terminliste wählen",
       "body": [
-        "„Calendar Events“ ist das mittlere Layout mit Terminliste. „Calendar Events Large“ bietet mehr Platz. „Calendar & Weather“ ist ein eigenes Layout für Datum und Wetter; die kleine Variante zeigt nicht automatisch den nächsten Termin. Auf Ihrem Gerät können die Namen übersetzt sein.",
-        "Halten Sie einen freien Bereich des Home-Bildschirms gedrückt und öffnen Sie über die Bearbeitungsoptionen die Widget-Auswahl. Suchen Sie Cloud Calendars und vergleichen Sie die Vorschau, bevor Sie ein Layout hinzufügen. Diese iPhone-Auswahl ist von den Kalenderansichten in der App getrennt."
+        "In der Widget-Auswahl von Cloud Calendars ist „Calendar Events“ das mittlere Layout mit Terminliste. „Calendar Events Large“ bietet mehr Platz für kommende Termine. „Calendar & Weather“ ist ein separates Layout für Datum und Wetter; seine kleine Variante verspricht keine Zeile für den nächsten Termin. Auf Ihrem Gerät können die Namen übersetzt erscheinen.",
+        "Halten Sie auf dem iPhone einen leeren Bereich des Home-Bildschirms gedrückt, wählen Sie die Bearbeitungsoption „Edit“ und anschließend „Add Widget“ zum Hinzufügen eines Widgets. Suchen Sie Cloud Calendars und wählen Sie das gewünschte Layout. Vergleichen Sie vor dem Hinzufügen die Vorschau. Apples Widget-Anleitung beschreibt diese Systemauswahl; sie ist von den Kalenderansichten innerhalb der App getrennt."
       ]
     },
     {
-      "heading": "Welche Termine als kommend gelten",
+      "heading": "Das Widget auf dem iPad hinzufügen und prüfen",
       "body": [
-        "Die Liste berücksichtigt ausgewählte Kalender und zeitlich festgelegte Termine, deren Beginn noch bevorsteht. Ganztägige und bereits begonnene Einträge gehören nicht zu dieser Vorschau. Ein Geburtstag oder eine laufende Besprechung kann deshalb in der App sichtbar sein und im Widget fehlen.",
-        "Wenn heute nur ein ganztägiger Reiseeintrag vorhanden ist, beweist eine leere Liste keinen Datenverlust. Öffnen Sie den vollständigen Tag. Lesen Sie außerdem das Datum der nächsten Zeile: Sie kann zu morgen oder einem späteren Tag gehören."
+        "Nutzen Sie auf dem iPad Apples Widget-Auswahl für den Home-Bildschirm: Halten Sie den Hintergrund gedrückt, öffnen Sie „Edit“ und anschließend „Add Widget“. Suchen Sie Cloud Calendars, prüfen Sie die angebotenen Stile und Größen, fügen Sie das benötigte Layout hinzu, positionieren Sie es und schließen Sie mit „Done“ ab. Die hier genannten englischen Beschriftungen können auf Ihrem Gerät übersetzt sein. Folgen Sie den Bedienelementen Ihrer iPadOS-Version; eine Vorschau bestätigt noch nicht, dass Ihre Kalenderdaten geladen wurden.",
+        "Wählen Sie „Calendar Events“ oder „Calendar Events Large“, wenn Sie Termine sehen möchten. Vergleichen Sie die Stile der installierten App: Eine Kachel mit Datum und Wetter beantwortet eine andere Frage als eine Terminliste.",
+        "Öffnen Sie Cloud Calendars auf diesem iPad und suchen Sie in einem ausgewählten Kalender einen bekannten zukünftigen Termin mit fester Uhrzeit. Eine korrekte Anzeige auf Ihrem iPhone bestätigt nicht die Konten, Zugriffsrechte oder geladenen Daten auf dem iPad. Vergleichen Sie Titel, Datum und Beginn. Weicht das Widget ab, prüfen Sie anschließend die unten beschriebenen Auswahlkriterien und Aktualisierungen."
+      ]
+    },
+    {
+      "heading": "Prüfen, welche Termine als kommend gelten",
+      "body": [
+        "Die Terminanzeige berücksichtigt ausgewählte Kalender und zukünftige Termine mit fester Uhrzeit. Ganztägige Einträge und Termine, deren Beginn bereits vergangen ist, sind von dieser Vorschau ausgeschlossen. Ein Geburtstag oder eine laufende Besprechung kann deshalb in der App sichtbar sein, ohne hier aufzutauchen.",
+        "Wenn Ihr einziger heutiger Eintrag beispielsweise eine ganztägige Reisemarkierung ist, bedeutet eine leere Liste kommender Termine nicht, dass sie verloren ging. Öffnen Sie die App, um den vollständigen Tag zu prüfen. Ebenso kann der nächste Termin mit Uhrzeit erst morgen oder später liegen. Lesen Sie sein Datum, statt jede Zeile dem heutigen Tag zuzuordnen."
+      ]
+    },
+    {
+      "heading": "Fehlende Termine von einer vollen Zeilenliste unterscheiden",
+      "body": [
+        "Ein Widget zeigt nur eine begrenzte Auswahl kommender Termine. Wenn frühere Termine seine Zeilen belegen, kann ein späterer fehlen, obwohl er in der App vorhanden ist und die Kriterien für die Vorschau erfüllt. Ein größeres Terminlayout kann mehr Zeilen zeigen; der vollständige Kalender ist es trotzdem nicht.",
+        "Beginnen Sie mit dem zeitlich nächsten zukünftigen Termin mit fester Uhrzeit in einem ausgewählten Kalender. Erscheint er, ein späterer aber nicht, öffnen Sie die App für den restlichen Zeitplan. Fehlt auch der nächste passende Termin, prüfen Sie Kalenderauswahl, Zugriff und Aktualisierung. Verschieben oder löschen Sie keine Termine, nur damit ein späterer Eintrag erscheint."
       ]
     },
     {
       "heading": "Zuerst mit der App vergleichen",
       "body": [
-        "Suchen Sie in Cloud Calendars einen konkreten zukünftigen Termin. Prüfen Sie den zugehörigen Kalender, dessen Auswahl und den Kalenderzugriff der App. Vergleichen Sie Titel, Datum und Beginn. Fehlt der Termin auch in der App, beginnen Sie bei Konto und Synchronisierung.",
-        "Für einen übersichtlichen Vergleich eignet sich ein unverbindlicher Testtermin in einem eigenen Kalender. Verwenden Sie einen eindeutigen Titel und einen zukünftigen Beginn. Ändern Sie dafür keine echte Einladung und entfernen Sie kein Konto."
+        "Öffnen Sie Cloud Calendars und suchen Sie einen bestimmten zukünftigen Termin mit fester Uhrzeit. Prüfen Sie, ob sein Kalender ausgewählt ist und die App den benötigten Kalenderzugriff hat. Vergleichen Sie Titel, Datum und Beginn mit dem Widget. Fehlt der Termin auch in der App, untersuchen Sie zuerst das Konto oder die Synchronisierung.",
+        "Falls Sie ein eindeutiges Beispiel brauchen, verwenden Sie einen unverbindlichen Testtermin in einem eigenen Kalender. Geben Sie ihm einen zukünftigen Beginn und einen erkennbaren Titel. Ändern Sie keine echte Einladung und entfernen Sie keine Konten, nur um den Home-Bildschirm zu testen."
       ]
     },
     {
-      "heading": "Aktualisierungen richtig einordnen",
+      "heading": "Aktualisierungen ohne feste Frist einordnen",
       "body": [
-        "Widgets zeigen gespeicherte Informationen; sie laufen nicht ständig wie eine geöffnete App. iOS bestimmt die Aktualisierung. Öffnen Sie die App und kontrollieren Sie den Termin, ohne daraus eine feste Wartezeit für das Widget abzuleiten.",
-        "Bleibt die App korrekt und das Widget falsch, notieren Sie Layout, Kalender, Terminzeit sowie App- und iOS-Version. Eine leere Liste, ein alter Termin und eine falsche Uhrzeit sind unterschiedliche Beobachtungen."
+        "Widgets zeigen gespeicherte Informationen und laufen nicht ständig wie eine geöffnete App. Apple steuert ihre Aktualisierungsplanung. Die App zu öffnen und den Termin zu prüfen liefert einen aktuellen Vergleichspunkt, legt aber keine genaue Anzahl von Sekunden fest, nach der das Widget geändert sein muss.",
+        "Bleibt die App korrekt, während das Widget falsch bleibt, notieren Sie Layout, ausgewählten Kalender, Terminzeit sowie App- und iOS-Version. Eine leere Liste, ein alter Termin und eine falsche Uhrzeit sind unterschiedliche Beobachtungen. Geben Sie an, welche davon Sie sehen."
       ]
     },
     {
-      "heading": "Wetter getrennt vom Termin prüfen",
+      "heading": "Das Wetter als eigene Zusammenfassung lesen",
       "body": [
-        "Das Wetter neben dem Datum ist keine Vorhersage für den Ort und die Startzeit jeder Besprechung. Prüfen Sie für einen Ausflug den gewünschten Ort und die passende Stunde in der Wetteransicht.",
-        "Nutzen Sie das Widget zur Orientierung und den vollständigen Kalender für ganztägige Verpflichtungen, Details und die gesamte Tagesplanung."
+        "Das Wetter neben dem Datum ist keine Vorhersage für den Ort und die Startzeit jedes einzelnen Termins. Öffnen Sie vor einem Termin im Freien die Wetteransicht und prüfen Sie den vorgesehenen Ort und die Stunde. Ein Symbol für die aktuellen Bedingungen belegt nicht, wie das Wetter bei einer späteren Besprechung sein wird.",
+        "Nutzen Sie dieses Widget zur schnellen Orientierung. Verwenden Sie den vollständigen Kalender für ganztägige Verpflichtungen, Termindetails und Entscheidungen, die den gesamten Zeitplan erfordern."
       ]
     }
   ],
   "claims": {},
   "practical": [
-    "Ein Layout mit Terminliste auswählen.",
-    "Einen zukünftigen Termin im ausgewählten Kalender prüfen.",
-    "Datum und Uhrzeit zunächst mit der App vergleichen.",
-    "Dauerhafte Abweichungen dokumentieren, statt Daten zu löschen."
+    "Wählen Sie „Calendar Events“ oder „Calendar Events Large“ für eine Terminliste.",
+    "Prüfen Sie einen zukünftigen Termin mit fester Uhrzeit in einem ausgewählten Kalender.",
+    "Vergleichen Sie Datum und Uhrzeit in der App, bevor Sie das Widget untersuchen.",
+    "Dokumentieren Sie dauerhafte Abweichungen, statt Kalenderdaten zu löschen."
   ],
   "faq": [
     {
       "q": "Warum fehlt mein Geburtstag?",
-      "a": "Die Vorschau schließt ganztägige Einträge aus. Prüfen Sie Geburtstage im vollständigen Kalender."
+      "a": "Die Vorschau kommender Termine schließt ganztägige Ereignisse aus. Prüfen Sie Geburtstage und andere Einträge ohne Uhrzeit im vollständigen Kalender."
     },
     {
-      "q": "Zeigt das kleine Widget den nächsten Termin?",
-      "a": "Das kleine Layout „Calendar & Weather“ zeigt Datum und Wetter. Für Termine wählen Sie eine Terminliste."
+      "q": "Zeigt das kleine Widget die nächste Besprechung?",
+      "a": "Das kleine Layout „Calendar & Weather“ zeigt Datum und Wetter. Wählen Sie für Termine ein Layout mit Terminliste."
     },
     {
-      "q": "Bedeutet eine leere Liste, dass ich heute frei habe?",
-      "a": "Nein. Ganztägige oder laufende Termine, nicht ausgewählte Kalender und veraltete Informationen können fehlen."
+      "q": "Bedeutet eine leere Vorschau, dass ich heute frei habe?",
+      "a": "Nein. Ganztägige Einträge, laufende Termine, nicht ausgewählte Kalender und veraltete Informationen können dieser Schlussfolgerung entgegenstehen."
     }
   ],
   "sourcesHeading": "Quellen und Apple-Anleitungen",
@@ -942,8 +957,12 @@ export const ARTICLES_DE_DE: Readonly<Record<string, LocalisedArticle>> = {
       "url": "https://support.apple.com/118610"
     },
     {
-      "label": "Apple: Widgets aktuell halten",
+      "label": "Apple: Ein Widget aktuell halten",
       "url": "https://developer.apple.com/documentation/widgetkit/keeping-a-widget-up-to-date"
+    },
+    {
+      "label": "Apple: Widgets auf dem iPad hinzufügen, bearbeiten und entfernen",
+      "url": "https://support.apple.com/guide/ipad/add-edit-and-remove-widgets-ipadb0de8630/ipados"
     }
   ],
   "seeAlso": [

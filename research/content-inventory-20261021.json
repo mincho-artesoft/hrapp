@@ -1,5 +1,5 @@
 {
-  "date": "2026-10-22T00:39:54.209Z",
+  "date": "2026-10-22T00:49:07.927Z",
   "status": "source_inventory_not_quality_approval",
   "articles": [
     {
@@ -276,6 +276,23 @@
         "https://support.google.com/calendar/answer/37648?hl=en"
       ],
       "updated": "2026-10-21"
+    },
+    {
+      "locale": "bg",
+      "slug": "the-widget-that-shows-what-is-next",
+      "title": "Уиджети за календар на iPhone и iPad: покажете предстоящите събития",
+      "description": "Настройте уиджет за предстоящи събития на iPhone или iPad. Проверете избраните календари, видимите редове и липсващите срещи.",
+      "descriptionCharacters": 125,
+      "sections": 7,
+      "faq": 3,
+      "words": 847,
+      "source": "articles-help.ts",
+      "sources": [
+        "https://support.apple.com/118610",
+        "https://developer.apple.com/documentation/widgetkit/keeping-a-widget-up-to-date",
+        "https://support.apple.com/guide/ipad/add-edit-and-remove-widgets-ipadb0de8630/ipados"
+      ],
+      "updated": "2026-10-22"
     },
     {
       "locale": "bg",
@@ -1159,18 +1176,19 @@
     {
       "locale": "de-DE",
       "slug": "the-widget-that-shows-what-is-next",
-      "title": "Kommende Kalendertermine auf dem iPhone-Home-Bildschirm",
-      "description": "Wählen Sie ein Termin-Widget, prüfen Sie ausgewählte Kalender und fehlende Einträge. Eine leere Liste bedeutet nicht, dass Ihr Kalender leer ist.",
-      "descriptionCharacters": 145,
-      "sections": 5,
+      "title": "Kalender-Widgets auf iPhone und iPad: kommende Termine anzeigen",
+      "description": "Richten Sie Termin-Widgets auf iPhone oder iPad ein. Prüfen Sie Kalenderauswahl, sichtbare Zeilen und fehlende Termine vor der Planung.",
+      "descriptionCharacters": 135,
+      "sections": 7,
       "faq": 3,
-      "words": 492,
+      "words": 922,
       "source": "articles.ts",
       "sources": [
         "https://support.apple.com/118610",
-        "https://developer.apple.com/documentation/widgetkit/keeping-a-widget-up-to-date"
+        "https://developer.apple.com/documentation/widgetkit/keeping-a-widget-up-to-date",
+        "https://support.apple.com/guide/ipad/add-edit-and-remove-widgets-ipadb0de8630/ipados"
       ],
-      "updated": "2026-10-21"
+      "updated": "2026-10-22"
     },
     {
       "locale": "de-DE",
@@ -2651,18 +2669,19 @@
     {
       "locale": "es-ES",
       "slug": "the-widget-that-shows-what-is-next",
-      "title": "Próximos eventos en la pantalla de inicio del iPhone",
-      "description": "Elige un widget con eventos, comprueba los calendarios seleccionados y diagnostica ausencias. Una lista vacía no demuestra que tu agenda esté libre.",
-      "descriptionCharacters": 148,
-      "sections": 5,
+      "title": "Widgets de calendario en iPhone y iPad: muestra los próximos eventos",
+      "description": "Configura widgets de eventos en iPhone o iPad. Revisa calendarios seleccionados, filas visibles y citas ausentes antes de fiarte de la pantalla de inicio.",
+      "descriptionCharacters": 154,
+      "sections": 7,
       "faq": 3,
-      "words": 557,
+      "words": 1045,
       "source": "articles.ts",
       "sources": [
         "https://support.apple.com/118610",
-        "https://developer.apple.com/documentation/widgetkit/keeping-a-widget-up-to-date"
+        "https://developer.apple.com/documentation/widgetkit/keeping-a-widget-up-to-date",
+        "https://support.apple.com/guide/ipad/add-edit-and-remove-widgets-ipadb0de8630/ipados"
       ],
-      "updated": "2026-10-21"
+      "updated": "2026-10-22"
     },
     {
       "locale": "es-ES",
@@ -3264,18 +3283,19 @@
     {
       "locale": "fr-FR",
       "slug": "the-widget-that-shows-what-is-next",
-      "title": "Afficher les prochains rendez-vous sur l’écran d’accueil",
-      "description": "Choisissez un widget avec événements et vérifiez les calendriers sélectionnés. Une liste vide ne signifie pas que votre agenda est vide.",
-      "descriptionCharacters": 136,
-      "sections": 5,
+      "title": "Widgets de calendrier sur iPhone et iPad : afficher les prochains événements",
+      "description": "Configurez les widgets de rendez-vous sur iPhone ou iPad. Vérifiez les calendriers sélectionnés, les lignes visibles et les événements manquants.",
+      "descriptionCharacters": 145,
+      "sections": 7,
       "faq": 3,
-      "words": 573,
+      "words": 1044,
       "source": "articles.ts",
       "sources": [
         "https://support.apple.com/118610",
-        "https://developer.apple.com/documentation/widgetkit/keeping-a-widget-up-to-date"
+        "https://developer.apple.com/documentation/widgetkit/keeping-a-widget-up-to-date",
+        "https://support.apple.com/guide/ipad/add-edit-and-remove-widgets-ipadb0de8630/ipados"
       ],
-      "updated": "2026-10-21"
+      "updated": "2026-10-22"
     },
     {
       "locale": "fr-FR",
@@ -4405,18 +4425,19 @@
     {
       "locale": "it",
       "slug": "the-widget-that-shows-what-is-next",
-      "title": "I prossimi appuntamenti sulla schermata Home di iPhone",
-      "description": "Scegli un widget con eventi e controlla i calendari selezionati e gli appuntamenti mancanti. Una lista vuota non dimostra che l’agenda sia libera.",
-      "descriptionCharacters": 146,
-      "sections": 5,
+      "title": "Widget calendario su iPhone e iPad: mostrare i prossimi eventi",
+      "description": "Configura i widget degli appuntamenti su iPhone o iPad. Verifica calendari selezionati, righe visibili ed eventi mancanti prima di affidarti alla Home.",
+      "descriptionCharacters": 151,
+      "sections": 7,
       "faq": 3,
-      "words": 515,
+      "words": 974,
       "source": "articles.ts",
       "sources": [
         "https://support.apple.com/118610",
-        "https://developer.apple.com/documentation/widgetkit/keeping-a-widget-up-to-date"
+        "https://developer.apple.com/documentation/widgetkit/keeping-a-widget-up-to-date",
+        "https://support.apple.com/guide/ipad/add-edit-and-remove-widgets-ipadb0de8630/ipados"
       ],
-      "updated": "2026-10-21"
+      "updated": "2026-10-22"
     },
     {
       "locale": "it",
@@ -4590,6 +4611,23 @@
         "https://support.google.com/calendar/answer/37648?hl=en"
       ],
       "updated": "2026-10-21"
+    },
+    {
+      "locale": "ja",
+      "slug": "the-widget-that-shows-what-is-next",
+      "title": "iPhoneとiPadのカレンダーウィジェット：今後の予定を表示する",
+      "description": "iPhoneやiPadに予定一覧のウィジェットを追加。選択したカレンダー、表示行数、予定が見当たらない原因を確認してから活用しましょう。",
+      "descriptionCharacters": 68,
+      "sections": 7,
+      "faq": 3,
+      "words": 54,
+      "source": "articles.ts",
+      "sources": [
+        "https://support.apple.com/118610",
+        "https://developer.apple.com/documentation/widgetkit/keeping-a-widget-up-to-date",
+        "https://support.apple.com/guide/ipad/add-edit-and-remove-widgets-ipadb0de8630/ipados"
+      ],
+      "updated": "2026-10-22"
     },
     {
       "locale": "ja",
