@@ -2,7 +2,7 @@
   "guides": 72,
   "selection": "tools/guide-text-selection.json",
   "extraction": "Visible article headings, paragraphs, lists, FAQs and source links; gallery/other-app cards excluded.",
-  "exportedCharacters": 473284,
+  "exportedCharacters": 477109,
   "records": [
     {
       "slug": "what-calendar-sync-actually-does",
@@ -247,8 +247,8 @@
     {
       "slug": "reading-a-chance-of-rain",
       "source": "https://www.cloud-calendars.com/articles/reading-a-chance-of-rain/",
-      "blocks": 45,
-      "characters": 6023
+      "blocks": 52,
+      "characters": 7434
     },
     {
       "slug": "wind-the-forecast-nobody-reads",
@@ -343,8 +343,8 @@
     {
       "slug": "calendar-on-apple-watch",
       "source": "https://www.cloud-calendars.com/articles/calendar-on-apple-watch/",
-      "blocks": 49,
-      "characters": 7576
+      "blocks": 56,
+      "characters": 8947
     },
     {
       "slug": "unwanted-calendar-events-iphone",
@@ -403,8 +403,8 @@
     {
       "slug": "iphone-calendar-language-alternate-calendar-settings",
       "source": "https://www.cloud-calendars.com/articles/iphone-calendar-language-alternate-calendar-settings/",
-      "blocks": 39,
-      "characters": 5015
+      "blocks": 44,
+      "characters": 6058
     },
     {
       "slug": "share-assign-reminders-iphone-calendar-difference",

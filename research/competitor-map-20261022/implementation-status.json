@@ -1,7 +1,7 @@
 {
   "date": "2026-10-23",
   "goalStatus": "active_incomplete",
-  "previousGoalTurn": "Progress: round4 committed and pushed in 49f4bd9.",
+  "previousGoalTurn": "Progress: round5 published and pushed in c610a06.",
   "googleActualQueries": 45,
   "consumerChatGPTFreshSamples": 15,
   "historicalChatGPTSamples": 3,
@@ -26,37 +26,32 @@
     "weather-calendar-history-versus-forecast-iphone"
   ],
   "delivered": [
-    "40 saved actual Google UI observations with query-to-canonical mapping",
-    "14 saved fresh consumer ChatGPT answers and an intent map; seeded comparison separated",
-    "All 150 available own-site Search Console query rows given editorial dispositions",
-    "303 related/follow-up strings classified, including filters and navigational artifacts",
-    "Thirteen source-backed new English guides across four increments, with contextual incoming links",
-    "Existing guides expanded for calendar alternatives, widgets, couples and recurrence",
-    "Build checks, public readback, 105 successful sitemap URLs and S3 visual proof",
-    "Round5: 45 actual Google queries, 15 ChatGPT conversations; original missing brands queried and official help reviewed, one unavailable detail recorded.",
-    "Round5: weather-history guide and three source-backed competitor workflow expansions published."
+    "45 actual Google observations and 15 consumer ChatGPT conversations mapped to candidate canonical pages",
+    "All 150 available own-site GSC rows and 307 related strings given dispositions",
+    "14 new English articles and source-backed expansions published; 72 English articles total",
+    "Original 15 competitor labels audited, including publisher alias and one unavailable product detail",
+    "Combined evidence-to-page CSV and Bulgarian readable research status",
+    "Translated indexing hold and existing privacy policy preserved"
   ],
   "remaining": [
-    "Assess five explicit partial own-site query mappings and the Google Tasks-on-Watch lead against relevant primary sources.",
-    "Consolidate original competitor census, query observations, source checks and implemented pages into final auditable research deliverable.",
-    "Do not claim exhaustive keyword rankings, demand volumes or stable ChatGPT recommendation share; no such data is available."
+    "An existing competitor organic-keyword export or authenticated research-tool data is needed for substantially more complete query/rank inventories. User asked which existing tool is available; no credentials requested.",
+    "No public inspection can prove literally all competitors’ Google keywords or all prompts in ChatGPT. Do not call this exhaustive."
   ],
-  "completionAudit": "Active: original focused-query gaps addressed, with unavailable Weather Calendar Together detail explicitly recorded. Final consolidation and partial-intent audit remain.",
-  "lastIncrementArticles": 1,
+  "completionAudit": "Not achieved: observed sample and implementation do not prove exhaustive competitor query coverage. Known source-check gaps addressed or explicitly deferred for ambiguous intent; broader rank data remains needed.",
+  "lastIncrementArticles": 0,
   "ownSiteSearchConsoleQueries": 150,
   "classifiedOriginalSuggestionRows": 212,
   "distinctIntentLeads": 20,
   "lastIncrementPublication": {
-    "newArticles": 1,
+    "newArticles": 0,
     "expandedArticles": 3,
-    "build": "round5-build-check.json",
-    "public": "round5-public-check.json",
-    "deploy": "round5-deploy.log",
-    "screenshot": "round5-visual-proof.json",
-    "result": "Published, public HTML matches build; full deployment check passed."
+    "build": "round6-build-check.json",
+    "public": "round6-public-check.json",
+    "deploy": "round6-deploy.log",
+    "screenshot": "round6-visual-proof.json"
   },
   "lastIncrementExpandedArticles": 3,
-  "classifiedRelatedSuggestionRows": 303,
+  "classifiedRelatedSuggestionRows": 307,
   "originalDistinctIntentLeadsResolved": 20,
   "remainingOriginalDistinctIntentLeads": 0,
   "allAvailableOwnSiteQueryRowsReviewed": 150

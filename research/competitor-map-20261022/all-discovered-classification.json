@@ -15,7 +15,7 @@
     "adjacent-platform-research": 6,
     "shopping-or-category-artifact": 6,
     "same-intent-variant": 10,
-    "needs-watch-task-source-check": 1,
+    "expanded-with-official-watch-source": 1,
     "different-date-resource-intent": 2,
     "product-navigation-not-new-article": 3,
     "mapped-existing-intent-with-limits": 1
@@ -3120,7 +3120,8 @@
       "currentDisposition": "partial-comparison",
       "canonicalCandidate": "https://www.cloud-calendars.com/articles/cozi-timetree-family-calendar-iphone-android/",
       "currentReason": "Existing comparison covers display/import/feed distinctions.",
-      "measuredVolume": null
+      "measuredVolume": null,
+      "editorialDecision": "Retain focused family/external-source comparison; a complete provider/product benchmark remains outside the evidence and must not be implied."
     },
     {
       "text": "TimeTree vs Google Calendar",
@@ -3132,7 +3133,8 @@
       "currentDisposition": "partial-comparison",
       "canonicalCandidate": "https://www.cloud-calendars.com/articles/cozi-timetree-family-calendar-iphone-android/",
       "currentReason": "Cozi/TimeTree workflow comparison exists; Google-versus-TimeTree is not fully compared.",
-      "measuredVolume": null
+      "measuredVolume": null,
+      "editorialDecision": "Retain focused family/external-source comparison; a complete provider/product benchmark remains outside the evidence and must not be implied."
     },
     {
       "text": "TimeTree calendar",
@@ -3228,7 +3230,8 @@
       "currentDisposition": "partial-general-selection",
       "canonicalCandidate": "https://www.cloud-calendars.com/articles/fantastical-readdle-calendar366-iphone-comparison/",
       "currentReason": "Three-app workflow comparison is useful but not every planner in the market.",
-      "measuredVolume": null
+      "measuredVolume": null,
+      "editorialDecision": "Use the workflow comparison as a relevant candidate. No claim every app is benchmarked; not a reason to produce a generic best-of list."
     },
     {
       "text": "Meteomatics weather calendar",
@@ -3300,7 +3303,8 @@
       "currentDisposition": "partial-general-selection",
       "canonicalCandidate": "https://www.cloud-calendars.com/articles/fantastical-readdle-calendar366-iphone-comparison/",
       "currentReason": "Three-app workflow comparison is useful but not every planner in the market.",
-      "measuredVolume": null
+      "measuredVolume": null,
+      "editorialDecision": "Use the workflow comparison as a relevant candidate. No claim every app is benchmarked; not a reason to produce a generic best-of list."
     },
     {
       "text": "Calendar 366 vs fantastical iphone reddit",
@@ -3855,9 +3859,9 @@
       "discoveredFrom": "task-bridge",
       "reviewIndex": 290,
       "category": "round4-suggestion",
-      "currentDisposition": "needs-watch-task-source-check",
+      "currentDisposition": "expanded-with-official-watch-source",
       "canonicalCandidate": "https://www.cloud-calendars.com/articles/calendar-on-apple-watch/",
-      "currentReason": "Watch task-source capability needs official verification; a phone task bridge is not Watch-app support.",
+      "currentReason": "Google Calendar Watch seven-day scope, supported displays and no-creation limitation added from official Google help.",
       "measuredVolume": null
     },
     {

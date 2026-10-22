@@ -465,9 +465,9 @@ export const WEATHER_EN_US: Readonly<Record<string, LocalisedArticle>> = {
 },
 
   'reading-a-chance-of-rain': {
-  "title": "What does a chance of rain mean for a calendar event?",
+  "title": "Chance of rain or rainfall amount? Read 0.3 inches in context",
   "short": "Reading a chance of rain",
-  "description": "Read rain probability alongside the forecast period, amount and location. Compare the hours of your event without inventing a universal cancellation threshold.",
+  "description": "Separate rain probability, accumulation and hourly rate. Understand 0.3 inches of rain, compare your event’s hours and avoid a universal cancellation threshold.",
   "lede": "An outdoor booking needs a decision about a particular place and time. A percentage alone does not tell you the expected amount of rain, how long it will last or whether your activity can continue. This guide is published by Arte Soft, the developer of Cloud Calendars.",
   "commonBelief": "A forty per cent chance means rain for forty per cent of the day, or a universal rule about whether to cancel.",
   "sections": [
@@ -483,6 +483,14 @@ export const WEATHER_EN_US: Readonly<Record<string, LocalisedArticle>> = {
       "body": [
         "Probability answers a likelihood question. It is not a rainfall amount or a fraction of the period spent raining. Check an amount and its unit separately when the forecast provides one, and read the time interval attached to that amount.",
         "For example, an organiser choosing between two outdoor slots needs more than two percentages. Available timing and amount information may affect preparation differently. If the required detail is absent, record that gap rather than replacing it with an assumption that a lower percentage means lighter rain."
+      ]
+    },
+    {
+      "heading": "Is 0.3 inches of rain a lot? First ask over how long",
+      "body": [
+        "An amount of 0.3 inches is 7.62 millimetres. That depth does not say when the rain falls. If distributed evenly over twenty-four hours, its arithmetic average is about 0.0125 inches per hour; if it falls in one hour, the average rate is 0.3 inches per hour. Those are illustrative calculations, not predictions of a steady rate.",
+        "The National Weather Service’s Rain Rate Visualizer presents hourly-rate examples and explains how its sample rates were calculated from ten-minute accumulation windows. It illustrates why a rate must keep its time unit. A daily total alone cannot tell you the heaviest short burst or whether your appointment’s two hours are dry.",
+        "For “how much rain is a lot in a day?”, there is no single number that decides every activity or location. Compare the hourly timing, expected amount and relevant local guidance. Keep a covered alternative where practical. Treat official warnings separately from a personal comfort threshold; a small daily total is not a universal assurance about conditions."
       ]
     },
     {
@@ -535,6 +543,10 @@ export const WEATHER_EN_US: Readonly<Record<string, LocalisedArticle>> = {
     {
       "q": "At what percentage should I cancel?",
       "a": "There is no universal percentage for every activity. Use the venue’s conditions, consequences, relevant official guidance and an agreed alternative."
+    },
+    {
+      "q": "Is 0.3 inches of rain the same as a 30% chance of rain?",
+      "a": "No. The first is an amount, equal to 7.62 millimetres; the second is a probability for a stated place and period. Neither specifies the other."
     }
   ],
   "sourcesHeading": "Definitions and provider guidance",
@@ -546,6 +558,10 @@ export const WEATHER_EN_US: Readonly<Record<string, LocalisedArticle>> = {
     {
       "label": "Apple WeatherKit: hourly precipitation chance",
       "url": "https://developer.apple.com/documentation/weatherkit/hourweather/precipitationchance"
+    },
+    {
+      "label": "National Weather Service: hourly rain-rate examples and calculation windows",
+      "url": "https://www.weather.gov/lox/rainrate"
     }
   ],
   "seeAlso": [
@@ -553,7 +569,7 @@ export const WEATHER_EN_US: Readonly<Record<string, LocalisedArticle>> = {
     "weather-where-the-event-is",
     "planning-outdoors-without-being-rained-on"
   ],
-  "updated": "2026-10-22"
+  "updated": "2026-10-23"
 },
 
   'weather-where-the-event-is': {

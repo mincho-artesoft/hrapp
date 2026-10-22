@@ -1,0 +1,53 @@
+{
+  "date": "2026-10-23",
+  "status": "substantial_research_and_implementation_delivered_exhaustive_competitor_rank_inventory_not_proven",
+  "scope": "Cloud Calendars competitor discovery and useful keyword-intent articles. Preserve distinction between observed query results, publisher features and actual ranking exports.",
+  "counts": {
+    "actualGoogleQueries": 45,
+    "consumerChatGPTConversations": 15,
+    "ownSiteAvailableGscQueries": 150,
+    "classifiedRelatedStrings": 307,
+    "originalCompetitorLabels": 15,
+    "independentProductsAfterPublisherAlias": 14,
+    "newEnglishArticles": 14,
+    "totalEnglishArticles": 72,
+    "sitemapUrls": 106
+  },
+  "evidence": {
+    "queryToPage": "combined-query-page-map.csv",
+    "googleRaw": "google-observations.json",
+    "chatgptRaw": "chatgpt-*.json (visibleText records only)",
+    "originalCompetitors": "original-competitor-census.json",
+    "relatedStrings": "all-discovered-classification.json",
+    "ownSiteQueries": "gsc-query-content-map.json",
+    "productChecks": "round3-primary-checks.json, original-competitor-discovery-round4.json, round5-primary-checks.json, round6-primary-checks.json",
+    "publication": "round5-public-check.json, round6-public-check.json; deployment logs"
+  },
+  "methodLimits": [
+    "Google samples use hl=en gl=us pws=0; physical market and signed-in account are not a controlled international rank panel.",
+    "Google result headings that mention a product are not automatically a ranking of its owned domain.",
+    "Related strings include navigation, filters and shopping artifacts; 307 strings are not 307 independent keywords with measured demand.",
+    "ChatGPT has 14 unseeded discovery prompts and one seeded comparison. Account personalization and model version are uncontrolled. No stable recommendation-share claim.",
+    "Official help establishes publisher-documented capabilities, not hands-on performance or privacy verification.",
+    "Own-site Search Console covers available queries for our site, not competitor keywords. Period ends before these publication increments.",
+    "English articles indexable; translated articles and translated hubs remain noindex pending individual approval."
+  ],
+  "remainingRequiredEvidence": [
+    "An existing competitor organic-keyword export or authenticated research-tool data is needed for substantially more complete query/rank inventories. User asked which existing tool is available; no credentials requested.",
+    "No public inspection can prove literally all competitors’ Google keywords or all prompts in ChatGPT. Do not call this exhaustive."
+  ],
+  "unavailableDetail": {
+    "product": "Weather Calendar Together",
+    "finding": "Brand result observed; selected Apple detail page returned not found. No unverified product feature claims or global delisting claim."
+  },
+  "contentPolicy": "One substantive page per distinct intent. Same-intent variants mapped to an existing canonical; unsupported/platform-mismatched/navigation-only fragments do not justify thin pages.",
+  "currentIncrement": {
+    "newPages": 0,
+    "expandedPages": [
+      "calendar-on-apple-watch",
+      "iphone-calendar-language-alternate-calendar-settings",
+      "reading-a-chance-of-rain"
+    ],
+    "reason": "Close source-verifiable Watch, iPad and rain-amount gaps without duplicate numeric or brand pages."
+  }
+}

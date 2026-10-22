@@ -1,0 +1,26 @@
+{
+  "pages": [
+    {
+      "url": "https://www.cloud-calendars.com/articles/calendar-on-apple-watch/",
+      "httpStatus": 200,
+      "matchesBuildBytes": true,
+      "indexable": true,
+      "sha256": "5953a1c54a1bd4d233f574f21b939e5a1b03bfa9e5dab9163f3bb3434f255de9"
+    },
+    {
+      "url": "https://www.cloud-calendars.com/articles/iphone-calendar-language-alternate-calendar-settings/",
+      "httpStatus": 200,
+      "matchesBuildBytes": true,
+      "indexable": true,
+      "sha256": "6a62749585eef6c135b4ae596c9ef39eb00d709f8ea4684c9fc4fcc45bbfbb3d"
+    },
+    {
+      "url": "https://www.cloud-calendars.com/articles/reading-a-chance-of-rain/",
+      "httpStatus": 200,
+      "matchesBuildBytes": true,
+      "indexable": true,
+      "sha256": "f5d87450b2b2f00595c7afc62b2cd2464586323164bbc78f5dfc109b521a990e"
+    }
+  ],
+  "scope": "Published HTML matches tested build; not ranking or indexing proof."
+}

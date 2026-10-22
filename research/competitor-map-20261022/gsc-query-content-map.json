@@ -16,9 +16,9 @@
     "do-not-target-with-doorway": 6,
     "informational-target-implemented": 4,
     "comparison-target-existing": 1,
-    "partial-provider-comparison": 1,
-    "partial-device-coverage": 2,
-    "partial-weather-intent": 2
+    "defer-broad-provider-comparison": 1,
+    "defer-ambiguous-device": 1,
+    "informational-target-expanded": 3
   },
   "method": "Editorial grouping of every available own-site query row, using exact saved row ordinals. Candidate canonical does not mean full answer coverage, translated quality approval, competitor rank or search volume. Anonymized queries omitted by Google remain unavailable.",
   "rows": [
@@ -1565,8 +1565,8 @@
       "averagePosition": 38.0,
       "topic": "provider-comparison",
       "canonicalCandidate": "https://www.cloud-calendars.com/articles/icloud-google-and-outlook-in-one-view/",
-      "editorialDisposition": "partial-provider-comparison",
-      "reason": "Existing account/combined-view guide is relevant but is not a full Outlook-versus-iCloud service comparison.",
+      "editorialDisposition": "defer-broad-provider-comparison",
+      "reason": "One available impression; broad provider comparison could mean mail/storage/platform rather than calendar. Calendar guide remains a related route, not full query coverage. No thin page generated without clearer calendar intent.",
       "languageApproval": "Topic mapping only; no translated article or indexing approval inferred."
     },
     {
@@ -1578,8 +1578,8 @@
       "averagePosition": 38.0,
       "topic": "week-numbers",
       "canonicalCandidate": "https://www.cloud-calendars.com/articles/iphone-calendar-language-alternate-calendar-settings/",
-      "editorialDisposition": "partial-device-coverage",
-      "reason": "Week-number/display choices discussed with official iPhone scope. Do not invent equivalent iPad or Mac instructions.",
+      "editorialDisposition": "defer-ambiguous-device",
+      "reason": "iCal may refer to Mac software. iPhone/iPad display guide expanded, but no assumed device and no speculative Mac page from a single impression.",
       "languageApproval": "Topic mapping only; no translated article or indexing approval inferred."
     },
     {
@@ -1604,8 +1604,8 @@
       "averagePosition": 40.0,
       "topic": "rain-amount-planning",
       "canonicalCandidate": "https://www.cloud-calendars.com/articles/reading-a-chance-of-rain/",
-      "editorialDisposition": "partial-weather-intent",
-      "reason": "Related weather-planning guide; quantity and probability are different. Exact amount question needs source-checked context rather than a new literal-number page.",
+      "editorialDisposition": "informational-target-expanded",
+      "reason": "Rain guide now directly explains 0.3 inches, unit conversion, accumulation period versus hourly rate and activity-specific decisions.",
       "languageApproval": "Topic mapping only; no translated article or indexing approval inferred."
     },
     {
@@ -1656,8 +1656,8 @@
       "averagePosition": 43.0,
       "topic": "week-numbers",
       "canonicalCandidate": "https://www.cloud-calendars.com/articles/iphone-calendar-language-alternate-calendar-settings/",
-      "editorialDisposition": "partial-device-coverage",
-      "reason": "Week-number/display choices discussed with official iPhone scope. Do not invent equivalent iPad or Mac instructions.",
+      "editorialDisposition": "informational-target-expanded",
+      "reason": "Official iPad Calendar week-number steps added; does not infer Mac steps.",
       "languageApproval": "Topic mapping only; no translated article or indexing approval inferred."
     },
     {
@@ -1669,8 +1669,8 @@
       "averagePosition": 45.0,
       "topic": "rain-amount-planning",
       "canonicalCandidate": "https://www.cloud-calendars.com/articles/reading-a-chance-of-rain/",
-      "editorialDisposition": "partial-weather-intent",
-      "reason": "Related weather-planning guide; quantity and probability are different. Exact amount question needs source-checked context rather than a new literal-number page.",
+      "editorialDisposition": "informational-target-expanded",
+      "reason": "Rain guide now directly explains 0.3 inches, unit conversion, accumulation period versus hourly rate and activity-specific decisions.",
       "languageApproval": "Topic mapping only; no translated article or indexing approval inferred."
     },
     {

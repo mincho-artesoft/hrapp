@@ -1,6 +1,6 @@
 {
   "date": "2026-10-23",
-  "status": "focused_original_census_queries_reviewed_consolidation_pending",
+  "status": "observed_sample_mapped_broader_rank_inventory_unproven",
   "method": {
     "google": "45 actual Google UI queries. hl=en gl=us pws=0, signed-in desktop; language samples do not establish physical-market ranks. Captured order is not universal organic ranking.",
     "chatgpt": "15 fresh consumer conversations, 14 unseeded discovery and one named-competitor comparison; account personalization and backend model not controlled.",
@@ -2800,8 +2800,7 @@
     }
   ],
   "remaining": [
-    "Consolidate the final topic/competitor deliverable and audit remaining partial coverage.",
-    "No measured search volume or exhaustive competitor ranking export is available; do not mislabel observations as complete keyword inventories."
+    "Broader competitor organic-keyword/rank inventory requires additional source data; existing tool access question pending. No claim of exhaustive keyword coverage."
   ],
   "ownSiteEvidence": {
     "file": "gsc-query-observations.json",
@@ -2812,11 +2811,8 @@
     "allAvailableRowsReviewed": 150
   },
   "suggestionReview": {
-    "file": "all-discovered-classification.json",
-    "rowsReviewed": 275,
-    "originalDistinctIntentLeads": 20,
-    "implementedOrExpandedAmongOriginalLeads": 20,
-    "remainingOriginalLeads": 0,
-    "note": "The three household-display follow-up strings map to one distinct guide, not three doorway pages."
+    "rowsReviewed": 307,
+    "evidenceFile": "all-discovered-classification.json",
+    "scope": "Includes navigation and filters, not measured keyword volumes."
   }
 }

@@ -10,7 +10,7 @@
     "No content is declared researched merely because a corresponding route exists."
   ],
   "currentInventory": {
-    "articles": 478,
+    "articles": 479,
     "locales": [
       "ar-SA",
       "bg",
@@ -43,9 +43,9 @@
       "zh-Hans",
       "zh-Hant"
     ],
-    "englishArticles": 71,
+    "englishArticles": 72,
     "evidence": "src/app/content/article-index.ts generated from locale aggregates",
-    "scope": "Current generated route inventory after thirteen added English guides; not blanket quality approval."
+    "scope": "Generated inventory after fourteen added English guides; not blanket quality approval."
   },
   "clusters": [
     {
@@ -1799,17 +1799,17 @@
     "goalComplete": false
   },
   "currentSearchEvidence": {
-    "googleActualQueries": 40,
-    "freshConsumerChatGPTConversations": 14,
+    "googleActualQueries": 45,
+    "freshConsumerChatGPTConversations": 15,
     "seededComparisonsWithinFreshChatGPT": 1,
     "historicalConsumerChatGPTConversations": 3,
     "ownSiteSearchConsoleQueryRows": 150,
     "classifiedOriginalRelatedStrings": 212,
-    "evidence": "research/competitor-map-20261022/coverage-matrix.json",
+    "evidence": "research/competitor-map-20261022/research-report.json",
     "scope": "Explicit observed queries, not exhaustive rankings or search volumes.",
-    "classifiedRelatedStrings": 303,
+    "classifiedRelatedStrings": 307,
     "originalRelatedStrings": 212,
-    "laterRelatedStrings": 91,
+    "laterRelatedStrings": 95,
     "allAvailableOwnSiteQueryRowsReviewed": 150
   },
   "currentMediaEvidence": {
@@ -1841,11 +1841,13 @@
     "englishArticles": 72,
     "newArticle": "weather-calendar-history-versus-forecast-iphone",
     "expandedArticles": [
-      "booking-link-or-shared-calendar",
-      "iphone-calendar-tasks-reminders-versus-event-alerts",
-      "automatic-time-blocking-versus-manual-calendar"
+      "calendar-on-apple-watch",
+      "iphone-calendar-language-alternate-calendar-settings",
+      "reading-a-chance-of-rain"
     ],
     "evidenceDirectory": "research/competitor-map-20261022",
-    "completion": "Incomplete final consolidation and partial-intent audit; not exhaustive ranking export."
+    "completion": "Incomplete final consolidation and partial-intent audit; not exhaustive ranking export.",
+    "evidence": "research/competitor-map-20261022/research-report.json",
+    "remaining": "Broader competitor organic query/rank inventory requires source data; user asked which existing tool is available."
   }
 }

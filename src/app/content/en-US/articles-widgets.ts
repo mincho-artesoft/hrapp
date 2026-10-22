@@ -9,10 +9,10 @@ import { LocalisedArticle } from '../types';
  */
 export const WIDGETS_EN_US: Readonly<Record<string, LocalisedArticle>> = {
   "calendar-on-apple-watch": {
-  "updated": "2026-10-22",
-  "title": "Calendar on Apple Watch: check missing events and app support",
+  "updated": "2026-10-23",
+  "title": "Calendar and Google Tasks on Apple Watch: check app support and missing items",
   "short": "Calendar events on Apple Watch",
-  "description": "Trace a missing Apple Watch event to its calendar source. Distinguish Apple Calendar, companion apps, complications and phone widgets before changing data.",
+  "description": "Check calendar events and Google Tasks on Apple Watch. Compare the watch app, complications, seven-day coverage and phone calendar selection before changing data.",
   "lede": "A meeting visible on your iPhone is a starting point, not proof that every watch app or watch-face display receives it. Identify the calendar, the app and the surface before changing a connection. This guide is published by Arte Soft, the developer of Cloud Calendars.",
   "commonBelief": "An iPhone calendar widget means the same app and every displayed event are automatically available on Apple Watch.",
   "sections": [
@@ -35,6 +35,14 @@ export const WIDGETS_EN_US: Readonly<Record<string, LocalisedArticle>> = {
       "body": [
         "Fantastical documents a separate Apple Watch app. Its help describes installing that companion through Apple’s Watch app and completing initial setup with Fantastical on iPhone. Those are Fantastical instructions, not an installation procedure for Cloud Calendars.",
         "The same publisher documents a Calendar Set for its watch app and calendar choices for configurable complications. An event visible in the watch app but absent from a complication therefore calls for a display-selection check, not an assumption that the event was deleted. Check the settings offered by that specific app and complication."
+      ]
+    },
+    {
+      "heading": "Google Tasks on Apple Watch through Google Calendar",
+      "body": [
+        "Google’s official help documents events and tasks in the Google Calendar watch app on watchOS 11 or later. It describes the schedule view, notifications, Smart Stack and a next-event-or-task complication. This is a documented Google Calendar route; it does not establish that every phone task app has its own watch client.",
+        "The same help limits the watch view to seven days ahead and says new events and tasks cannot be created on the watch. Use the phone or web for creation. A task due beyond that window can be missing from the watch without being lost from Google Tasks.",
+        "For visibility, compare the Google Account on the watch with calendars selected in Google Calendar on the iPhone. Check a known dated task inside the watch app before examining a complication. Syncing Google Tasks with Apple Reminders through another phone tool is a separate workflow, not a prerequisite established by Google’s watch instructions."
       ]
     },
     {
@@ -84,6 +92,10 @@ export const WIDGETS_EN_US: Readonly<Record<string, LocalisedArticle>> = {
     {
       "q": "Should I copy the meeting to another calendar to make it appear?",
       "a": "First identify its owning calendar and compare the source, phone and chosen watch display. Copying or moving a real invitation can create a second record or change its destination instead of fixing visibility."
+    },
+    {
+      "q": "Can I see Google Tasks on Apple Watch?",
+      "a": "Google documents tasks in its Google Calendar watch app, with a seven-day future window. Its help says creating new tasks requires the phone or web. Check current watchOS and account requirements."
     }
   ],
   "sourcesHeading": "Apple and publisher setup instructions",
@@ -99,6 +111,10 @@ export const WIDGETS_EN_US: Readonly<Record<string, LocalisedArticle>> = {
     {
       "label": "Flexibits: watch synchronization and account requirements",
       "url": "https://flexibits.com/fantastical-watch/faq"
+    },
+    {
+      "label": "Google: Calendar and tasks on Apple Watch, limits and visibility",
+      "url": "https://support.google.com/calendar/answer/16404789?hl=en-RW"
     }
   ],
   "seeAlso": [
