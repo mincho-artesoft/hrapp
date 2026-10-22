@@ -1,0 +1,42 @@
+{
+  "date": "2026-10-22T05:17:07.808Z",
+  "count": 3,
+  "articles": [
+    {
+      "locale": "en-US",
+      "slug": "what-calendar-sync-actually-does",
+      "file": "src/app/content/en-US/articles-unify.ts",
+      "title": "Calendar sync on iPhone: accounts, subscriptions and missing events",
+      "sections": 8,
+      "faqs": 5,
+      "sources": 4,
+      "updated": "2026-10-22",
+      "description": "Understand calendar sync, read-only subscriptions and local events. Trace one event between iPhone and iPad before changing accounts or deleting duplicates.",
+      "descriptionCharacters": 156
+    },
+    {
+      "locale": "it",
+      "slug": "recurring-events-without-the-mess",
+      "file": "src/app/content/it/articles-help.ts",
+      "title": "Eventi ricorrenti: modificare una data o la serie con attenzione",
+      "sections": 6,
+      "faqs": 3,
+      "sources": 3,
+      "updated": "2026-10-21",
+      "description": "Controlla permessi e date interessate prima di modificare un evento ricorrente. Gestisci cambiamenti ed eccezioni senza eliminare la serie.",
+      "descriptionCharacters": 139
+    },
+    {
+      "locale": "it",
+      "slug": "time-zones-and-the-flight-you-booked",
+      "file": "src/app/content/it/articles-help.ts",
+      "title": "Fusi orari nel calendario: controlla gli eventi prima di partire",
+      "sections": 7,
+      "faqs": 4,
+      "sources": 4,
+      "updated": "2026-10-22",
+      "description": "Distingui il fuso dell’evento da quello di visualizzazione. Controlla voli, appuntamenti e chiamate ricorrenti prima di modificarne l’ora.",
+      "descriptionCharacters": 138
+    }
+  ]
+}

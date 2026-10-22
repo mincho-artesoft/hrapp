@@ -1,6 +1,115 @@
 import { LocalisedArticle } from '../types';
 
 export const HELP_IT: Readonly<Record<string, LocalisedArticle>> = {
+  "time-zones-and-the-flight-you-booked": {
+  "updated": "2026-10-22",
+  "title": "Fusi orari nel calendario: controlla gli eventi prima di partire",
+  "short": "Fusi orari e viaggi",
+  "description": "Distingui il fuso dell’evento da quello di visualizzazione. Controlla voli, appuntamenti e chiamate ricorrenti prima di modificarne l’ora.",
+  "lede": "Un’ora diversa dopo un volo non significa necessariamente che l’appuntamento sia stato spostato. Prima chiarisci a quale luogo si riferisce l’evento e quale fuso orario mostra l’app. Questa guida è pubblicata da Arte Soft, sviluppatore di Cloud Calendars.",
+  "commonBelief": "Cambiare il fuso orario visualizzato dal calendario equivale a modificare l’appuntamento stesso.",
+  "sections": [
+    {
+      "heading": "Parti dall’appuntamento, poi controlla la visualizzazione",
+      "body": [
+        "Una riunione fissata per un preciso istante può comparire con ore diverse in luoghi diversi. Un appuntamento dal dentista alle 09:00 nella città di destinazione ha uno scopo diverso da un promemoria personale per fare stretching alle 09:00 ovunque ti trovi. Annota quale significato ti serve prima di modificare qualcosa.",
+        "Confronta la prenotazione o la conferma dell’organizzatore con la data, l’ora di inizio e il fuso indicato nell’evento. Poi controlla il fuso usato per visualizzare il calendario. Non trascinare l’evento a un’altra ora solo perché l’ora mostrata è cambiata dopo il viaggio: potresti modificare l’appuntamento anziché la sua rappresentazione."
+      ]
+    },
+    {
+      "heading": "Usa i controlli del provider quando serve un fuso preciso",
+      "body": [
+        "Apple descrive un campo per il fuso orario durante la creazione o la modifica di un evento in Calendario di Apple su iPhone. L’impostazione separata che consente di fissare un fuso orario cambia il fuso mostrato in Calendario di Apple. Queste istruzioni riguardano Calendario di Apple: non promettono che le stesse impostazioni controllino Cloud Calendars.",
+        "In Google Calendar su computer, il controllo del fuso orario nell’editor dell’evento permette di scegliere un fuso. Google descrive anche fusi distinti per l’inizio e la fine di un evento. Sono controlli di Google. Usa l’account a cui appartiene l’evento e verifica di avere il permesso di modificarlo prima di cambiarne il fuso."
+      ]
+    },
+    {
+      "heading": "Controlla l’evento salvato in Cloud Calendars",
+      "body": [
+        "Un evento esistente può mantenere il proprio fuso orario salvato nell’editor di Cloud Calendars. Se l’evento non ne fornisce uno, l’editor può usare il fuso attuale del dispositivo. Prima di creare un appuntamento a destinazione, controlla il fuso del dispositivo e la data e l’ora locali desiderate. Riapri l’evento salvato e confrontalo con la prenotazione.",
+        "Per fusi distinti di partenza e arrivo, usa un editor che li supporti esplicitamente. Non presumere che i normali campi di inizio e fine offrano fusi indipendenti. Se il tuo editor di Cloud Calendars non presenta il controllo necessario, usa un editor del provider a cui appartiene l’evento che supporti questa funzione. Poi riapri l’evento in Cloud Calendars e confronta sia l’inizio sia la fine."
+      ]
+    },
+    {
+      "heading": "Un volo e un appuntamento a destinazione richiedono controlli diversi",
+      "body": [
+        "Per un volo, conserva insieme i dati della compagnia aerea: data di partenza, ora all’aeroporto di partenza, data di arrivo e ora all’aeroporto di arrivo. L’arrivo il giorno successivo conta quanto l’ora. Se l’editor supporta fusi separati per l’inizio e la fine, associa ciascuno all’aeroporto corrispondente. Altrimenti usa un editor del provider che consenta la rappresentazione necessaria: non presumere che due normali campi orari ricavino autonomamente due luoghi diversi.",
+        "Per un appuntamento a destinazione, verifica con la prenotazione la data e l’ora locali della città. Annota la città nei dettagli dell’evento se può aiutarti a controllare in seguito. Un luogo scritto nelle note è un promemoria utile, ma non dimostra che il vero campo del fuso orario sia stato impostato. Riapri l’evento salvato prima di farvi affidamento."
+      ]
+    },
+    {
+      "heading": "Controlla separatamente chiamate ricorrenti ed eventi di tutto il giorno",
+      "body": [
+        "Per una chiamata internazionale regolare, concordate quale città debba mantenere fissa la propria ora locale. Controlla la prossima occorrenza e anche una vicina al cambio stagionale dell’ora di ciascun partecipante. Un confronto su una sola data non dimostra che la differenza di orario resti identica tutto l’anno.",
+        "Un evento di viaggio di tutto il giorno può aiutare a organizzare l’itinerario, ma non sostituisce gli orari di partenza, gli appuntamenti o le scadenze del check-in. Controllane le date dopo il passaggio tra provider. Non dare per scontato che ogni evento di tutto il giorno importato venga visualizzato nello stesso modo in tutti i calendari."
+      ]
+    },
+    {
+      "heading": "Quando sbaglia solo un calendario importato o a cui sei iscritto",
+      "body": [
+        "Identifica il percorso prima di modificare l’appuntamento: un file importato è un’istantanea, mentre un’iscrizione segue una fonte pubblicata. Confronta la stessa occorrenza nel calendario di origine e presso il destinatario, includendo data, fuso dell’evento e fuso di visualizzazione. Se l’evento si ripete, controlla una data vicina a un cambio stagionale dell’ora. Lascia invariato l’originale mentre individui dove compare la differenza.",
+        "Se il calendario del proprietario è corretto ma un destinatario vede un orario sbagliato, documenta quel confronto preciso per l’assistenza. Un’interpretazione diversa del formato del feed è una possibile causa, ma non spiega ogni orario spostato. Verifica gli accessi e il trattamento dei dati del calendario prima di provare un servizio che elabori i feed. Non sostituisce una connessione autorizzata all’account, e spostare l’evento originale può modificare l’appuntamento reale per tutti."
+      ]
+    },
+    {
+      "heading": "Se gli orari continuano a non coincidere",
+      "body": [
+        "Confronta lo stesso evento nel provider a cui appartiene e in Cloud Calendars, annotando in entrambi calendario, data, fuso e ora visualizzata. Controlla di non aver aperto una copia con un titolo simile. Se il provider è corretto ma un’altra visualizzazione differisce, segnala il confronto prima di riscrivere l’appuntamento.",
+        "Includi le versioni dell’app e di iOS, i fusi interessati e l’eventuale ripetizione dell’evento. Non pubblicare riferimenti di prenotazione o dettagli dei partecipanti. Non occorre rimuovere un account o ricreare un invito reale per stabilire quale visualizzazione differisca."
+      ]
+    }
+  ],
+  "claims": {},
+  "practical": [
+    "Annota la data, l’ora locali e la città previste nella prenotazione.",
+    "Distingui il fuso salvato nell’evento dal fuso di visualizzazione.",
+    "Usa i controlli del fuso del provider interessato quando necessario; non presumere che esistano controlli equivalenti in Cloud Calendars.",
+    "Controlla sia la partenza sia l’arrivo del volo e un’occorrenza successiva di un evento ricorrente.",
+    "Riapri l’evento salvato e confrontalo prima di cambiarne nuovamente l’ora."
+  ],
+  "faq": [
+    {
+      "q": "Impostare un fuso fisso in Calendario di Apple modifica Cloud Calendars?",
+      "a": "Apple descrive questa impostazione per la visualizzazione in Calendario di Apple. Questa guida non stabilisce che Cloud Calendars la segua."
+    },
+    {
+      "q": "Posso inserire fusi diversi di partenza e arrivo in Cloud Calendars?",
+      "a": "Non presumere che i normali campi di inizio e fine consentano di scegliere fusi separati. Se il tuo editor di Cloud Calendars non li offre, usa un editor del provider che li supporti. Google descrive fusi distinti di inizio e fine in Google Calendar su computer."
+    },
+    {
+      "q": "Devo riportare una riunione alla vecchia ora dopo un viaggio?",
+      "a": "Controlla prima l’istante previsto e il fuso di visualizzazione. Un’ora locale diversa può essere la rappresentazione corretta dello stesso appuntamento."
+    },
+    {
+      "q": "Devo spostare l’evento originale se un’iscrizione ICS mostra l’ora sbagliata?",
+      "a": "Confronta prima quella occorrenza alla fonte e presso il destinatario, con i fusi dell’evento e di visualizzazione. Stabilisci se il problema riguarda l’appuntamento o solo la visualizzazione che lo riceve. Non modificare la riunione reale per compensare la differenza di un solo calendario."
+    }
+  ],
+  "sourcesHeading": "Indicazioni ufficiali sui fusi degli eventi e di visualizzazione",
+  "sources": [
+    {
+      "label": "Apple: programmare o visualizzare eventi in un altro fuso orario su iPhone",
+      "url": "https://support.apple.com/guide/iphone/schedule-display-events-a-time-zone-iph69525c028/ios"
+    },
+    {
+      "label": "Google: usare Google Calendar in diversi fusi orari",
+      "url": "https://support.google.com/calendar/answer/37064?hl=en"
+    },
+    {
+      "label": "Google: gli eventi importati non restano sincronizzati",
+      "url": "https://support.google.com/calendar/answer/37118?hl=en"
+    },
+    {
+      "label": "Microsoft: calendari ICS pubblicati, importazioni e iscrizioni",
+      "url": "https://support.microsoft.com/en-us/outlook/share-your-calendar-in-outlook-on-the-web"
+    }
+  ],
+  "seeAlso": [
+    "recurring-events-without-the-mess",
+    "calendar-export-ics-pdf-and-backup"
+  ]
+},
+
   "caldav-calendar-on-iphone": {
   "updated": "2026-10-22",
   "title": "Calendario CalDAV su iPhone: configurazione, permessi ed eventi mancanti",
@@ -275,7 +384,8 @@ export const HELP_IT: Readonly<Record<string, LocalisedArticle>> = {
   ],
   "seeAlso": [
     "drag-an-event-to-move-it",
-    "what-guests-can-do-to-your-event"
+    "what-guests-can-do-to-your-event",
+    "time-zones-and-the-flight-you-booked"
   ]
 },
 

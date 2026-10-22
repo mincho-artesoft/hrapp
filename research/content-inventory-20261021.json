@@ -1,5 +1,5 @@
 {
-  "date": "2026-10-22T05:05:16.930Z",
+  "date": "2026-10-22T05:18:42.034Z",
   "status": "source_inventory_not_quality_approval",
   "articles": [
     {
@@ -2148,13 +2148,15 @@
       "title": "Calendar sync on iPhone: accounts, subscriptions and missing events",
       "description": "Understand calendar sync, read-only subscriptions and local events. Trace one event between iPhone and iPad before changing accounts or deleting duplicates.",
       "descriptionCharacters": 156,
-      "sections": 7,
-      "faq": 4,
-      "words": 1354,
+      "sections": 8,
+      "faq": 5,
+      "words": 1768,
       "source": "articles-unify.ts",
       "sources": [
         "https://support.apple.com/guide/iphone/use-multiple-calendars-iph3d1110d4/ios",
-        "https://support.google.com/calendar/answer/37100?hl=en&co=GENIE.Platform%3DiOS"
+        "https://support.google.com/calendar/answer/37100?hl=en&co=GENIE.Platform%3DiOS",
+        "https://support.google.com/calendar/answer/1340696?co=GENIE.Platform%3DiOS&hl=en",
+        "https://support.google.com/calendar/answer/65923?hl=en-7"
       ],
       "updated": "2026-10-22"
     },
@@ -4384,6 +4386,24 @@
         "https://support.google.com/calendar/answer/37648?hl=en"
       ],
       "updated": "2026-10-21"
+    },
+    {
+      "locale": "it",
+      "slug": "time-zones-and-the-flight-you-booked",
+      "title": "Fusi orari nel calendario: controlla gli eventi prima di partire",
+      "description": "Distingui il fuso dell’evento da quello di visualizzazione. Controlla voli, appuntamenti e chiamate ricorrenti prima di modificarne l’ora.",
+      "descriptionCharacters": 138,
+      "sections": 7,
+      "faq": 4,
+      "words": 1130,
+      "source": "articles-help.ts",
+      "sources": [
+        "https://support.apple.com/guide/iphone/schedule-display-events-a-time-zone-iph69525c028/ios",
+        "https://support.google.com/calendar/answer/37064?hl=en",
+        "https://support.google.com/calendar/answer/37118?hl=en",
+        "https://support.microsoft.com/en-us/outlook/share-your-calendar-in-outlook-on-the-web"
+      ],
+      "updated": "2026-10-22"
     },
     {
       "locale": "it",

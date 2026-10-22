@@ -235,6 +235,15 @@ export const UNIFY_EN_US: Readonly<Record<string, LocalisedArticle>> = {
       ]
     },
     {
+      "heading": "Prepare before using a calendar offline",
+      "body": [
+        "Before travelling or losing connectivity, identify the app, account and calendar you will use. While online, open the dates and event details you need. For an important itinerary, consider a dated readable copy through the export guide below, and check that you can open that copy on the device. Seeing today’s events does not establish that every past or future appointment is available offline.",
+        "Google documents offline event creation, editing and responses in its own iPhone and iPad Calendar app after online setup, sign-in and synchronization. Changes do not reach your computer or other people’s calendars until you are online again, and you cannot email guests while offline. Its mobile-browser guidance differs: creating or editing events requires an internet connection. Do not assume a browser has the same offline capabilities as the installed Google app, or that either description establishes Cloud Calendars’ behaviour.",
+        "Check the actual app and calendar with a disposable event you own, without guests or a recurring series. Compare what remains visible without a connection and, if the app permits it, a harmless title change. A locally displayed edit is not proof of a queued update, successful conflict handling or delivery to another account. Do not sign out or remove a connection to simulate being offline.",
+        "Once connectivity returns, check a provider-backed event in its owning service and then on the receiving device. For example, changing tomorrow’s meeting time on a phone during a flight does not establish that participants received the change. Verify the provider’s saved result before relying on it, and confirm important arrangements through the appropriate invitation or communication route. A local-only calendar has no provider destination to check; saving there does not establish that another device received the event. Do not assume an immediate background update or repeatedly recreate the event while its status is unclear."
+      ]
+    },
+    {
       "heading": "Separate hidden, absent and read-only calendars",
       "body": [
         "A calendar listed but unchecked is hidden. A calendar absent from the account list needs a different check: verify the signed-in identity, that access was granted to that identity, and whether the account connection includes that calendar.",
@@ -272,6 +281,7 @@ export const UNIFY_EN_US: Readonly<Record<string, LocalisedArticle>> = {
     "Specific date missing: compare that date, calendar and recurring occurrence with the provider where available. Check the app’s date coverage before recreating anything; “Google calendars missing on iPhone” explains the Google case.",
     "Title search empty: try a distinctive title word and check the loaded dates. Use “Find past calendar events” below to separate search scope from missing provider data.",
     "Two entries disagree: compare account, calendar, organiser, time zone and recurrence before editing either. Use “When calendars disagree” below to trace copies without deleting the source.",
+    "Before going offline, check the needed dates in the actual app and calendar. Use only a disposable owned event without guests for testing. After reconnecting, verify a provider-backed change at its provider; a local-only save does not prove delivery to another device.",
     "If you need help, report the affected calendar type and failing direction without sending private event details or secret calendar URLs."
   ],
   "faq": [
@@ -290,6 +300,10 @@ export const UNIFY_EN_US: Readonly<Record<string, LocalisedArticle>> = {
     {
       "q": "Should I delete and add my account again?",
       "a": "First check identity, calendar selection, permissions and the provider’s own view. Reconnection may be relevant later, but deleting local data or an account can complicate diagnosis and should not be the first step."
+    },
+    {
+      "q": "Does seeing an offline edit mean other people received it?",
+      "a": "No. Google’s iPhone app documentation separates offline changes from synchronization after connectivity returns. Its mobile-browser editor requires internet access. For a provider-backed calendar, verify the saved event at the owning provider after reconnecting. A local-only calendar has no provider destination to check, and its local display does not prove delivery to another device."
     }
   ],
   "sourcesHeading": "Sources and further reading",
@@ -301,6 +315,14 @@ export const UNIFY_EN_US: Readonly<Record<string, LocalisedArticle>> = {
     {
       "label": "Google: Subscribe to someone else’s calendar — iPhone and iPad",
       "url": "https://support.google.com/calendar/answer/37100?hl=en&co=GENIE.Platform%3DiOS"
+    },
+    {
+      "label": "Google: offline Calendar use on iPhone and iPad",
+      "url": "https://support.google.com/calendar/answer/1340696?co=GENIE.Platform%3DiOS&hl=en"
+    },
+    {
+      "label": "Google: mobile-browser calendar capabilities and limits",
+      "url": "https://support.google.com/calendar/answer/65923?hl=en-7"
     }
   ],
   "seeAlso": [
@@ -310,7 +332,8 @@ export const UNIFY_EN_US: Readonly<Record<string, LocalisedArticle>> = {
     "when-two-calendars-disagree",
     "icloud-google-and-outlook-in-one-view",
     "disconnect-calendar-integration-without-losing-track",
-    "onecal-alternative-iphone-calendar-view-or-sync"
+    "onecal-alternative-iphone-calendar-view-or-sync",
+    "calendar-export-ics-pdf-and-backup"
   ]
 },
 

@@ -1,0 +1,42 @@
+{
+  "decision": "PASS",
+  "draft": {
+    "path": "research/batch40-timezones/it.json",
+    "rawSha256": "0970cbba38c7bfbb2af5c984271655a943aa4474235c375e9a88fcbc00840857"
+  },
+  "source": {
+    "path": "research/batch40-timezones/source-en.json",
+    "rawSha256": "460d932ae303c74241172001b62357faef922b5f19c7c4009ff7fcafbedf9d04",
+    "objectExactlyEqualsFullyReadBatch39English": true
+  },
+  "readScope": "Complete Italian draft, including all metadata, seven sections/fourteen paragraphs, five practical steps, four FAQs, disclosure, source labels and links. English comparator fully read in the immediately preceding batch39 review and exact object equality verified here. Actual Italian module definitions checked for both related routes.",
+  "structure": {
+    "sections": 7,
+    "paragraphs": 14,
+    "practical": 5,
+    "faq": 4,
+    "sourceUrlsExact": true,
+    "descriptionUnicodeCharacters": 138,
+    "updated": "2026-10-22",
+    "claims": {},
+    "relatedVerified": [
+      "recurring-events-without-the-mess",
+      "calendar-export-ics-pdf-and-backup"
+    ]
+  },
+  "semanticFindings": [
+    "Appointment instant versus display zone distinction preserved without advising readers to shift a real appointment solely because travel changes its displayed hour.",
+    "Apple Calendar override and Google desktop separate endpoint zones explicitly remain provider controls, not promised Cloud controls.",
+    "Cloud saved event-zone/device fallback wording remains conditional; supported provider editor used if necessary, then saved result reopened.",
+    "Departure/arrival dates, destination-city notes versus actual zone fields, seasonal changes for recurring calls, and all-day date review preserved.",
+    "Import snapshot versus subscribed source retained; feed interpretation is a possible bounded cause, with original preserved and no universal fix promised.",
+    "Developer disclosure present; all four exact source URLs preserved. Reader language is substantive and intelligible; no material mistranslation found."
+  ],
+  "requiredCorrections": [],
+  "optionalPolish": [],
+  "limits": [
+    "Independent semantic review, not native-speaker certification.",
+    "No fresh timezone primary-page or native runtime checks in this translation review; unchanged English and prior bounded product evidence reused.",
+    "No inference of released binary correspondence; no source edits/builds/provider/customer operations."
+  ]
+}

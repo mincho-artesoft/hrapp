@@ -1,0 +1,80 @@
+{
+  "date": "2026-10-22",
+  "slug": "what-calendar-sync-actually-does",
+  "status": "Draft prepared; author self-check, independent review pending",
+  "beforeSha256": "6d542c2db33b66272589ae53a06b6dbccc8d18cb39ca411ea0c48d370650dfa8",
+  "draftSha256": "c78c764152822b249b47e967699f0f777b30924ad12842b78730b0014838af1b",
+  "readScope": [
+    "Complete current EN object freshly AST-extracted from articles-unify.ts; before snapshot preserves all fields.",
+    "Complete batch39 primary-reads.json consulted; full source bodies and three complete comparator objects were read during this agent’s preceding batch39 task. No additional web fetch and no blocked URL retry."
+  ],
+  "additions": [
+    {
+      "path": "sections[3]",
+      "operation": "insert after two-device check",
+      "value": {
+        "heading": "Prepare before using a calendar offline",
+        "body": [
+          "Before travelling or losing connectivity, identify the app, account and calendar you will use. While online, open the dates and event details you need. For an important itinerary, consider a dated readable copy through the export guide below, and check that you can open that copy on the device. Seeing today’s events does not establish that every past or future appointment is available offline.",
+          "Google documents offline event creation, editing and responses in its own iPhone and iPad Calendar app after online setup, sign-in and synchronization. Changes do not reach your computer or other people’s calendars until you are online again, and you cannot email guests while offline. Its mobile-browser guidance differs: creating or editing events requires an internet connection. Do not assume a browser has the same offline capabilities as the installed Google app, or that either description establishes Cloud Calendars’ behaviour.",
+          "Check the actual app and calendar with a disposable event you own, without guests or a recurring series. Compare what remains visible without a connection and, if the app permits it, a harmless title change. A locally displayed edit is not proof of a queued update, successful conflict handling or delivery to another account. Do not sign out or remove a connection to simulate being offline.",
+          "Once connectivity returns, check a provider-backed event in its owning service and then on the receiving device. For example, changing tomorrow’s meeting time on a phone during a flight does not establish that participants received the change. Verify the provider’s saved result before relying on it, and confirm important arrangements through the appropriate invitation or communication route. A local-only calendar has no provider destination to check; saving there does not establish that another device received the event. Do not assume an immediate background update or repeatedly recreate the event while its status is unclear."
+        ]
+      }
+    },
+    {
+      "path": "practical[5]",
+      "operation": "insert",
+      "value": "Before going offline, check the needed dates in the actual app and calendar. Use only a disposable owned event without guests for testing. After reconnecting, verify a provider-backed change at its provider; a local-only save does not prove delivery to another device."
+    },
+    {
+      "path": "faq[4]",
+      "operation": "append",
+      "value": {
+        "q": "Does seeing an offline edit mean other people received it?",
+        "a": "No. Google’s iPhone app documentation separates offline changes from synchronization after connectivity returns. Its mobile-browser editor requires internet access. For a provider-backed calendar, verify the saved event at the owning provider after reconnecting. A local-only calendar has no provider destination to check, and its local display does not prove delivery to another device."
+      }
+    },
+    {
+      "path": "sources[2:4]",
+      "operation": "append",
+      "value": [
+        {
+          "label": "Google: offline Calendar use on iPhone and iPad",
+          "url": "https://support.google.com/calendar/answer/1340696?co=GENIE.Platform%3DiOS&hl=en"
+        },
+        {
+          "label": "Google: mobile-browser calendar capabilities and limits",
+          "url": "https://support.google.com/calendar/answer/65923?hl=en-7"
+        }
+      ]
+    },
+    {
+      "path": "seeAlso[7]",
+      "operation": "append",
+      "value": "calendar-export-ics-pdf-and-backup"
+    }
+  ],
+  "preservation": {
+    "inverseDeltaExactlyEqualsBefore": true,
+    "allOldMetadataDateClaimsAndTextUnchanged": true,
+    "allRelatedRoutesExistInCurrent58Inventory": true,
+    "sourceMutations": false
+  },
+  "limits": [
+    "Google app and mobile browser operations explicitly attributed, no Cloud offline queue/conflict/history guarantees.",
+    "Disposable owned no-guests test is diagnostic, not permission to alter customer data.",
+    "No provider delivery or background deadline promise; local visibility distinct from delivery.",
+    "No new canonical, deployment, build, native or API operations."
+  ],
+  "sourceEvidence": "../batch39-discovery/primary-reads.json",
+  "clarificationRevision": {
+    "previousDraftSha256": "25778e7cb405437d9ab03060c68471736252f6a555e754ed57513fccbc5157d6",
+    "changedOnly": [
+      "sections[3].body[3]",
+      "practical[5]",
+      "faq[4].a"
+    ],
+    "reason": "Provider verification applies to provider-backed events; local-only calendars have no provider destination and local save is not remote delivery proof."
+  }
+}

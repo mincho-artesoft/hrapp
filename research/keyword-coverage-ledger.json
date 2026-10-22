@@ -1552,5 +1552,26 @@
       "research/batch39-public-qa.json"
     ],
     "limits": "Publicationandfieldpersistence,notexhaustivekeywords/nativequality/runtime/newmedia/GoogleChatGPTliftproof."
+  },
+  "batch40": {
+    "date": "2026-10-22",
+    "action": "SubstantiveofflinepreparationwithinexistingEnglishsyncguideandcompleteItaliantimezoneedition",
+    "canonicalExpanded": "what-calendar-sync-actually-does",
+    "newItalianEdition": "time-zones-and-the-flight-you-booked",
+    "newEnglishCanonicals": 0,
+    "researchBasis": "batch39-discovery providerappvsbrowser/offline taskgap comparedwith3fullguides; notnewqueryvolume/rankproof.",
+    "originalContribution": "Preflightactualapp/dates/readableitinerary,disposableownednoguestofflinecheck,localeditvsremoteproviderdelivery,reconnectverificationandlocal-onlycalendarqualification. No newCloudspecificofflinepromise.",
+    "sourceBoundary": "Googleappandmobilebrowsercontrolsattributed; recordedpriorfullbodyevidenceusedafterfreshfetchblockedGoogle/sorry. No retry/bypass/newfullreadclaim.",
+    "preservation": "All7oldENsectionsandalloldfieldsrestoredexactlybyinversedelta;1new4paragraphsection+1step+1FAQ+2sources+1relatedroute. Italianfull7sections14paras5steps4FAQ4sources,actualrelatedonly.",
+    "asc": "No offline keyword or capability added to AppStoremetadata because Cloudspecificbehaviornotverified. Prior31marketingURLchangespreserved;noASCwrite.",
+    "evidence": [
+      "research/batch40-offline/final-review.json",
+      "research/batch40-timezones/independent-review.json",
+      "research/batch40-root-review.json",
+      "research/batch40-static-qa.json",
+      "research/batch40-browser-qa.json",
+      "research/batch40-public-qa.json"
+    ],
+    "limits": "No newmedia/releasedruntime/alllocalequality/measuredGoogleChatGPTupliftproof."
   }
 }
