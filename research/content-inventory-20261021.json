@@ -1,5 +1,5 @@
 {
-  "date": "2026-10-22T01:09:39.594Z",
+  "date": "2026-10-22T01:33:44.464Z",
   "status": "source_inventory_not_quality_approval",
   "articles": [
     {
@@ -1616,7 +1616,7 @@
       "descriptionCharacters": 152,
       "sections": 6,
       "faq": 3,
-      "words": 942,
+      "words": 957,
       "source": "articles-help.ts",
       "sources": [
         "https://support.apple.com/guide/iphone/change-calendar-settings-iphc37be2016/ios",
@@ -3035,6 +3035,22 @@
     },
     {
       "locale": "fr-FR",
+      "slug": "caldav-calendar-on-iphone",
+      "title": "Calendrier CalDAV sur iPhone : configuration, accès et événements manquants",
+      "description": "Ajoutez un compte CalDAV dans les réglages de l’iPhone, puis vérifiez les accès et calendriers sélectionnés. Distinguez compte, abonnement et copie.",
+      "descriptionCharacters": 148,
+      "sections": 6,
+      "faq": 3,
+      "words": 1134,
+      "source": "articles-help.ts",
+      "sources": [
+        "https://support.apple.com/guide/iphone/change-calendar-settings-iphc37be2016/ios",
+        "https://support.apple.com/en-ca/guide/iphone/iph251e92810/ios"
+      ],
+      "updated": "2026-10-22"
+    },
+    {
+      "locale": "fr-FR",
       "slug": "work-and-personal-without-two-apps",
       "title": "Calendriers professionnels et personnels dans une app : gardez leurs propriétaires distincts",
       "description": "Consultez vos calendriers professionnels et personnels ensemble. Vérifiez droits, destinations et offres avant de connecter vos comptes.",
@@ -4174,6 +4190,22 @@
         "https://support.google.com/calendar/answer/37648?hl=en"
       ],
       "updated": "2026-10-21"
+    },
+    {
+      "locale": "it",
+      "slug": "caldav-calendar-on-iphone",
+      "title": "Calendario CalDAV su iPhone: configurazione, permessi ed eventi mancanti",
+      "description": "Aggiungi un account CalDAV nelle impostazioni di iPhone e controlla accesso e calendari selezionati. Distingui account, abbonamenti e copie.",
+      "descriptionCharacters": 140,
+      "sections": 6,
+      "faq": 3,
+      "words": 1049,
+      "source": "articles-help.ts",
+      "sources": [
+        "https://support.apple.com/guide/iphone/change-calendar-settings-iphc37be2016/ios",
+        "https://support.apple.com/en-ca/guide/iphone/iph251e92810/ios"
+      ],
+      "updated": "2026-10-22"
     },
     {
       "locale": "it",

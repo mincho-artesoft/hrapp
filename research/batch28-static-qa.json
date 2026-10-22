@@ -1,0 +1,51 @@
+{
+  "allPassed": true,
+  "sitemapUrls": 514,
+  "previousCanonicalsPreserved": 512,
+  "newRoutes": [
+    "https://www.cloud-calendars.com/fr/articles/caldav-calendar-on-iphone/",
+    "https://www.cloud-calendars.com/it/articles/caldav-calendar-on-iphone/"
+  ],
+  "articles": [
+    {
+      "locale": "en-US",
+      "url": "https://www.cloud-calendars.com/articles/caldav-calendar-on-iphone/",
+      "completeSections": 6,
+      "paragraphs": 12,
+      "faq": 3,
+      "sources": 2,
+      "practical": 6,
+      "allVisibleTextAndLinksMatch": true
+    },
+    {
+      "locale": "fr-FR",
+      "url": "https://www.cloud-calendars.com/fr/articles/caldav-calendar-on-iphone/",
+      "completeSections": 6,
+      "paragraphs": 12,
+      "faq": 3,
+      "sources": 2,
+      "practical": 6,
+      "allVisibleTextAndLinksMatch": true
+    },
+    {
+      "locale": "it",
+      "url": "https://www.cloud-calendars.com/it/articles/caldav-calendar-on-iphone/",
+      "completeSections": 6,
+      "paragraphs": 12,
+      "faq": 3,
+      "sources": 2,
+      "practical": 6,
+      "allVisibleTextAndLinksMatch": true
+    }
+  ],
+  "relatedOnlyBacklinks": 2,
+  "support": {
+    "localizedHomePages": 30,
+    "canonicalPagesWithMailto": 513,
+    "standaloneLegacyPageWithoutSharedFooter": "https://www.cloud-calendars.com/how-cloud-calendars-rescued-my-schedule-and-sanity.html",
+    "ltrAddressIsolation": true,
+    "visibleAddressAndLocalizedLabel": true
+  },
+  "textExportContainsEnglishPolish": true,
+  "scope": "All canonical set/support links, 30 localized homepage labels, complete changed article text/source/FAQ/related links; not rankings/runtime/mailbox delivery."
+}

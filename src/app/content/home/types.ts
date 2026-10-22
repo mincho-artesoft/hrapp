@@ -172,6 +172,7 @@ export interface HomeCopy {
     readonly version: string;
     readonly iosOrLater: string;
     readonly viewOnStore: string;
+    readonly emailSupport: string;
     /** "© {year} {developer}. All rights reserved." */
     readonly rights: string;
     readonly weatherBy: string;

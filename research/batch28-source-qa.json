@@ -1,0 +1,23 @@
+{
+  "checkedAt": "2026-10-22T01:34:06.977Z",
+  "allPassed": true,
+  "support": {
+    "locales": 30,
+    "sourceFiles": 5,
+    "onlyFooterEmailLabelAdded": true,
+    "existingTermsSupportAddressUsed": true,
+    "otherHomeFieldsAndNumericFactsPreserved": true,
+    "legalCopyUnchanged": true,
+    "mailDeliveryNotTested": true
+  },
+  "articles": {
+    "new": 2,
+    "scopedEnglishPolish": 1,
+    "relatedOnlyBacklinks": 2,
+    "changedObjects": 5,
+    "completeDraftParity": true,
+    "allSourcesPreserved": true,
+    "sharedFactsAndCuratedSelectionUnchanged": true
+  },
+  "scope": "Source preservation and exact reviewed-draft checks; no runtime, native-speaker, discovery or publication claim."
+}

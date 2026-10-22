@@ -44,6 +44,12 @@
         <div class="ftr__col">
           <h3>{{ copy().footer.app }}</h3>
           <ul>
+            <li>
+              <a [href]="supportHref">
+                {{ copy().footer.emailSupport }}
+                <bdi class="ftr__support-address" dir="ltr">{{ supportEmail }}</bdi>
+              </a>
+            </li>
             <li><span>{{ versionLine() }}</span></li>
             <li><span>{{ iosLine() }}</span></li>
             <li>

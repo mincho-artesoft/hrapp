@@ -135,8 +135,8 @@ export const HELP_EN_US: Readonly<Record<string, LocalisedArticle>> = {
     {
       "heading": "Check Cloud Calendars access and calendar selection",
       "body": [
-        "Cloud Calendars reads device calendars through Apple’s calendar system. In iPhone Settings > Privacy & Security > Calendars, review its access. The app’s current device-event loading path requires full calendar access; permission only to add events is not permission to read the existing schedule.",
-        "Then open the calendar list in Cloud Calendars. Look for the intended calendar, including the Other group, and check that it is selected. The current code lists device calendar sources, but that does not certify every CalDAV service or every shared-calendar feature. If the calendar is visible in Apple Calendar and absent here, record that distinction rather than creating a second account connection."
+        "Cloud Calendars reads device calendars through Apple’s calendar system. In iPhone Settings > Privacy & Security > Calendars, review its access. Full calendar access is needed to read existing events; permission only to add events does not give access to the existing schedule.",
+        "Then open the calendar list in Cloud Calendars. Look for the intended calendar, including the Other group, and check that it is selected. A calendar available on the device can still have provider-specific compatibility or sharing limitations. If it appears in Apple Calendar but is absent here, record that difference rather than creating a second account connection."
       ]
     },
     {
@@ -149,7 +149,7 @@ export const HELP_EN_US: Readonly<Record<string, LocalisedArticle>> = {
     {
       "heading": "Diagnose duplicates without deleting the source",
       "body": [
-        "If the same appointment appears twice, note both calendar names and how each reached the phone. An account connection, a subscribed feed and an earlier import can coexist. Temporarily hide one calendar to identify which display it supplies; hiding is different from deleting an event or removing an account.",
+        "If the same appointment appears twice, note both calendar names and how each reached the phone. An account connection, a subscribed feed and an earlier import can coexist. Temporarily hide one calendar to identify which display it supplies; hiding is different from deleting an event or removing an account. Record the original selection and restore it after comparing. In Cloud Calendars, selection can also affect widgets, notification scheduling and Google synchronization.",
         "For a support report, describe the provider, iOS version, calendar name, connection route and where the test appointment is visible. Keep passwords, private feed URLs and sensitive event details out of screenshots. This guide covers a device-account workflow; it does not establish direct server-to-server CalDAV synchronisation or automatic availability copying between providers in Cloud Calendars."
       ]
     }

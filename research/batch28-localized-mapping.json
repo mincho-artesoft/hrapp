@@ -1,0 +1,20 @@
+[
+  {
+    "locale": "en-US",
+    "slug": "caldav-calendar-on-iphone",
+    "file": "src/app/content/en-US/articles-help.ts",
+    "kind": "updated"
+  },
+  {
+    "locale": "fr-FR",
+    "slug": "caldav-calendar-on-iphone",
+    "file": "src/app/content/fr-FR/articles-help.ts",
+    "kind": "new"
+  },
+  {
+    "locale": "it",
+    "slug": "caldav-calendar-on-iphone",
+    "file": "src/app/content/it/articles-help.ts",
+    "kind": "new"
+  }
+]

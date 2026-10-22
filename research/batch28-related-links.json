@@ -1,0 +1,392 @@
+[
+  {
+    "locale": "fr-FR",
+    "file": "src/app/content/fr-FR/articles.ts",
+    "slug": "icloud-google-and-outlook-in-one-view",
+    "target": "caldav-calendar-on-iphone",
+    "before": {
+      "updated": "2026-10-21",
+      "title": "iCloud, Google et Outlook dans une vue : comptes, copies et autorisations",
+      "short": "Trois fournisseurs, une vue",
+      "description": "Affichez ensemble iCloud, Google et Microsoft. Vérifiez comptes, droits et copies avant de déplacer des événements ou de vous fier aux disponibilités.",
+      "lede": "Un rendez-vous familial, un appel client et une réunion peuvent se chevaucher tout en appartenant à des comptes différents. Une vue commune révèle ce conflit, mais ne transforme pas ces comptes en calendrier partagé. Ce guide est rédigé par Arte Soft, développeur de Cloud Calendars.",
+      "commonBelief": "Réunir plusieurs calendriers dans une app maintiendrait automatiquement la cohérence des disponibilités, du partage et des copies d’événements.",
+      "sections": [
+        {
+          "heading": "1. Identifiez le compte et le calendrier de chaque événement",
+          "body": [
+            "Commencez par un événement ordinaire de chaque fournisseur. Notez l’adresse e-mail utilisée, le nom du calendrier et si vous possédez l’événement ou avez reçu une invitation. Deux calendriers nommés « Calendrier » peuvent appartenir à des comptes totalement différents. Une couleur aide à parcourir la semaine ; le compte et le calendrier indiquent où appliquer une modification.",
+            "Par exemple, un rendez-vous chez le dentiste dans votre iCloud personnel et une réunion de projet dans Microsoft peuvent apparaître ensemble pour vous. Cela ne rend pas le rendez-vous chez le dentiste visible à vos collègues et ne réserve pas automatiquement ce créneau dans leurs outils."
+          ]
+        },
+        {
+          "heading": "2. Utilisez la connexion adaptée",
+          "body": [
+            "Pour iCloud, activez d’abord Calendrier iCloud sur l’iPhone avec le compte Apple prévu. Le guide Apple explique les réglages de l’appareil. Cloud Calendars accède aux calendriers disponibles dans le système de calendrier de l’iPhone et a besoin d’une autorisation pour les lire. Un compte connecté sur un autre appareil ne suffit pas.",
+            "Cloud Calendars propose aussi « Sign in with Google » et « Sign in with Microsoft ». Vérifiez le compte choisi à la connexion, ouvrez son groupe de calendriers et sélectionnez ceux nécessaires. Utiliser le bon fournisseur avec la mauvaise identité personnelle ou professionnelle peut produire une liste valide, mais inattendue."
+          ]
+        },
+        {
+          "heading": "3. Distinguez les formules des autorisations",
+          "body": [
+            "Base comprend la synchronisation Google Agenda et les vues du calendrier. Advanced ajoute la suppression des publicités à Base. Premium ajoute les fonctions de calendrier Microsoft et Microsoft Teams. Vérifiez le prix local actuel et la période de facturation avant l’achat.",
+            "Une formule change les fonctions disponibles dans l’app ; elle ne vous rend pas propriétaire du calendrier d’autrui. Google distingue le droit de voir les événements de celui de les modifier. Les règles de l’employeur et les autorisations du calendrier Microsoft restent applicables. Un événement visible ou un éditeur accessible ne prouve pas que le fournisseur acceptera une modification."
+          ]
+        },
+        {
+          "heading": "4. Une vue commune peut contenir des copies de calendriers",
+          "body": [
+            "Les connexions Google et Microsoft utilisent des copies dans le système de calendrier de l’iPhone pour présenter et synchroniser les événements. Ne supposez pas que connecter un compte ne laisse aucune copie hors du fournisseur d’origine. La destination de ces copies peut dépendre des sources de calendrier disponibles sur l’appareil.",
+            "Si le même compte arrive aussi sur le téléphone par une autre voie, examinez les noms et les sources avant de traiter les rendez-vous répétés comme des événements distincts. Masquez temporairement un calendrier pour identifier ce qu’il affiche. Ne supprimez pas un événement ou un calendrier uniquement pour ranger l’écran : une copie connectée peut renvoyer les modifications au fournisseur."
+          ]
+        },
+        {
+          "heading": "5. Choisissez toujours la destination d’un nouvel événement",
+          "body": [
+            "Avant d’enregistrer, vérifiez le calendrier aussi soigneusement que la date et l’heure. Pour un rendez-vous familial, choisissez le calendrier réellement utilisé par la famille ; pour une réunion, la destination professionnelle autorisée. Voir les deux ensemble ne rend aucun des deux automatiquement destinataire de tous les nouveaux événements.",
+            "Changer le calendrier d’un événement ou le faire glisser entre calendriers peut être un déplacement, pas une simple seconde vue. Gardez invitations et réunions récurrentes dans leur calendrier habituel pendant le diagnostic. Si un changement est nécessaire, établissez d’abord qui possède l’événement et quel calendrier peut le recevoir."
+          ]
+        },
+        {
+          "heading": "6. Vérifiez la vue d’ensemble avant de vous y fier",
+          "body": [
+            "Comparez un événement récent dans le calendrier du fournisseur avec son équivalent dans Cloud Calendars. Vérifiez date, fuseau horaire, titre et calendrier sélectionné. Dans un calendrier modifiable qui vous appartient, un événement de test sans invités vaut mieux qu’une modification de réunion réelle. Confirmez le résultat chez le fournisseur avant de considérer la connexion comme prête.",
+            "Ne comptez pas sur la vue commune pour créer automatiquement des créneaux occupés anonymes dans un autre compte. Si vos collègues doivent voir votre indisponibilité sans détails personnels, utilisez une méthode expressément approuvée et vérifiez le résultat de leur côté. Une vue personnelle claire et la disponibilité partagée sont deux tâches distinctes."
+          ]
+        }
+      ],
+      "claims": {},
+      "practical": [
+        "Relevez le compte et le calendrier exacts d’un événement de chaque fournisseur.",
+        "Activez les calendriers iCloud prévus sur l’appareil et vérifiez l’autorisation d’accès.",
+        "Utilisez la connexion Google ou Microsoft adaptée et sélectionnez les calendriers voulus.",
+        "Comparez un événement récent avec la vue du fournisseur avant toute modification.",
+        "Masquez temporairement une source supposée en double ; conservez les événements intacts.",
+        "Vérifiez la destination de chaque nouvel événement et, séparément, le partage des créneaux occupés."
+      ],
+      "faq": [
+        {
+          "q": "Mes collègues voient-ils mes événements privés parce que j’affiche les deux calendriers ?",
+          "a": "L’affichage commun n’est ni une instruction de partage ni un transfert automatique de disponibilité. Vérifiez les réglages réels de chaque calendrier. Les connexions peuvent créer des copies sur l’appareil ; cette vue ne garantit donc pas non plus que les données existent uniquement chez leur fournisseur d’origine."
+        },
+        {
+          "q": "Pourquoi puis-je voir un événement sans réussir à le modifier ?",
+          "a": "Le calendrier peut être en lecture seule, l’événement appartenir à un autre organisateur ou le fournisseur refuser la mise à jour. Vérifiez propriété et autorisations chez le fournisseur. Acheter une formule supérieure ne change pas ces droits."
+        },
+        {
+          "q": "Faut-il connecter le même compte Google par toutes les voies disponibles ?",
+          "a": "Vérifiez d’abord comment il apparaît déjà sur le téléphone. Plusieurs connexions compliquent l’identification des copies. Choisissez la voie souhaitée, vérifiez ses événements et masquez l’affichage supplémentaire pendant l’enquête plutôt que de commencer par supprimer des données ou déconnecter des comptes."
+        }
+      ],
+      "sourcesHeading": "Sources et références de configuration",
+      "sources": [
+        {
+          "label": "Apple : configurer Calendrier iCloud sur vos appareils",
+          "url": "https://support.apple.com/guide/icloud/set-up-calendar-mme4d73a8727/icloud"
+        },
+        {
+          "label": "Google : partage de calendriers et autorisations",
+          "url": "https://support.google.com/calendar/answer/37082?hl=en"
+        },
+        {
+          "label": "Microsoft : API de calendrier Outlook et données de boîte aux lettres prises en charge",
+          "url": "https://learn.microsoft.com/en-us/graph/outlook-calendar-concept-overview"
+        }
+      ],
+      "seeAlso": [
+        "exchange-calendars-on-an-iphone",
+        "work-and-personal-without-two-apps"
+      ]
+    },
+    "after": {
+      "updated": "2026-10-21",
+      "title": "iCloud, Google et Outlook dans une vue : comptes, copies et autorisations",
+      "short": "Trois fournisseurs, une vue",
+      "description": "Affichez ensemble iCloud, Google et Microsoft. Vérifiez comptes, droits et copies avant de déplacer des événements ou de vous fier aux disponibilités.",
+      "lede": "Un rendez-vous familial, un appel client et une réunion peuvent se chevaucher tout en appartenant à des comptes différents. Une vue commune révèle ce conflit, mais ne transforme pas ces comptes en calendrier partagé. Ce guide est rédigé par Arte Soft, développeur de Cloud Calendars.",
+      "commonBelief": "Réunir plusieurs calendriers dans une app maintiendrait automatiquement la cohérence des disponibilités, du partage et des copies d’événements.",
+      "sections": [
+        {
+          "heading": "1. Identifiez le compte et le calendrier de chaque événement",
+          "body": [
+            "Commencez par un événement ordinaire de chaque fournisseur. Notez l’adresse e-mail utilisée, le nom du calendrier et si vous possédez l’événement ou avez reçu une invitation. Deux calendriers nommés « Calendrier » peuvent appartenir à des comptes totalement différents. Une couleur aide à parcourir la semaine ; le compte et le calendrier indiquent où appliquer une modification.",
+            "Par exemple, un rendez-vous chez le dentiste dans votre iCloud personnel et une réunion de projet dans Microsoft peuvent apparaître ensemble pour vous. Cela ne rend pas le rendez-vous chez le dentiste visible à vos collègues et ne réserve pas automatiquement ce créneau dans leurs outils."
+          ]
+        },
+        {
+          "heading": "2. Utilisez la connexion adaptée",
+          "body": [
+            "Pour iCloud, activez d’abord Calendrier iCloud sur l’iPhone avec le compte Apple prévu. Le guide Apple explique les réglages de l’appareil. Cloud Calendars accède aux calendriers disponibles dans le système de calendrier de l’iPhone et a besoin d’une autorisation pour les lire. Un compte connecté sur un autre appareil ne suffit pas.",
+            "Cloud Calendars propose aussi « Sign in with Google » et « Sign in with Microsoft ». Vérifiez le compte choisi à la connexion, ouvrez son groupe de calendriers et sélectionnez ceux nécessaires. Utiliser le bon fournisseur avec la mauvaise identité personnelle ou professionnelle peut produire une liste valide, mais inattendue."
+          ]
+        },
+        {
+          "heading": "3. Distinguez les formules des autorisations",
+          "body": [
+            "Base comprend la synchronisation Google Agenda et les vues du calendrier. Advanced ajoute la suppression des publicités à Base. Premium ajoute les fonctions de calendrier Microsoft et Microsoft Teams. Vérifiez le prix local actuel et la période de facturation avant l’achat.",
+            "Une formule change les fonctions disponibles dans l’app ; elle ne vous rend pas propriétaire du calendrier d’autrui. Google distingue le droit de voir les événements de celui de les modifier. Les règles de l’employeur et les autorisations du calendrier Microsoft restent applicables. Un événement visible ou un éditeur accessible ne prouve pas que le fournisseur acceptera une modification."
+          ]
+        },
+        {
+          "heading": "4. Une vue commune peut contenir des copies de calendriers",
+          "body": [
+            "Les connexions Google et Microsoft utilisent des copies dans le système de calendrier de l’iPhone pour présenter et synchroniser les événements. Ne supposez pas que connecter un compte ne laisse aucune copie hors du fournisseur d’origine. La destination de ces copies peut dépendre des sources de calendrier disponibles sur l’appareil.",
+            "Si le même compte arrive aussi sur le téléphone par une autre voie, examinez les noms et les sources avant de traiter les rendez-vous répétés comme des événements distincts. Masquez temporairement un calendrier pour identifier ce qu’il affiche. Ne supprimez pas un événement ou un calendrier uniquement pour ranger l’écran : une copie connectée peut renvoyer les modifications au fournisseur."
+          ]
+        },
+        {
+          "heading": "5. Choisissez toujours la destination d’un nouvel événement",
+          "body": [
+            "Avant d’enregistrer, vérifiez le calendrier aussi soigneusement que la date et l’heure. Pour un rendez-vous familial, choisissez le calendrier réellement utilisé par la famille ; pour une réunion, la destination professionnelle autorisée. Voir les deux ensemble ne rend aucun des deux automatiquement destinataire de tous les nouveaux événements.",
+            "Changer le calendrier d’un événement ou le faire glisser entre calendriers peut être un déplacement, pas une simple seconde vue. Gardez invitations et réunions récurrentes dans leur calendrier habituel pendant le diagnostic. Si un changement est nécessaire, établissez d’abord qui possède l’événement et quel calendrier peut le recevoir."
+          ]
+        },
+        {
+          "heading": "6. Vérifiez la vue d’ensemble avant de vous y fier",
+          "body": [
+            "Comparez un événement récent dans le calendrier du fournisseur avec son équivalent dans Cloud Calendars. Vérifiez date, fuseau horaire, titre et calendrier sélectionné. Dans un calendrier modifiable qui vous appartient, un événement de test sans invités vaut mieux qu’une modification de réunion réelle. Confirmez le résultat chez le fournisseur avant de considérer la connexion comme prête.",
+            "Ne comptez pas sur la vue commune pour créer automatiquement des créneaux occupés anonymes dans un autre compte. Si vos collègues doivent voir votre indisponibilité sans détails personnels, utilisez une méthode expressément approuvée et vérifiez le résultat de leur côté. Une vue personnelle claire et la disponibilité partagée sont deux tâches distinctes."
+          ]
+        }
+      ],
+      "claims": {},
+      "practical": [
+        "Relevez le compte et le calendrier exacts d’un événement de chaque fournisseur.",
+        "Activez les calendriers iCloud prévus sur l’appareil et vérifiez l’autorisation d’accès.",
+        "Utilisez la connexion Google ou Microsoft adaptée et sélectionnez les calendriers voulus.",
+        "Comparez un événement récent avec la vue du fournisseur avant toute modification.",
+        "Masquez temporairement une source supposée en double ; conservez les événements intacts.",
+        "Vérifiez la destination de chaque nouvel événement et, séparément, le partage des créneaux occupés."
+      ],
+      "faq": [
+        {
+          "q": "Mes collègues voient-ils mes événements privés parce que j’affiche les deux calendriers ?",
+          "a": "L’affichage commun n’est ni une instruction de partage ni un transfert automatique de disponibilité. Vérifiez les réglages réels de chaque calendrier. Les connexions peuvent créer des copies sur l’appareil ; cette vue ne garantit donc pas non plus que les données existent uniquement chez leur fournisseur d’origine."
+        },
+        {
+          "q": "Pourquoi puis-je voir un événement sans réussir à le modifier ?",
+          "a": "Le calendrier peut être en lecture seule, l’événement appartenir à un autre organisateur ou le fournisseur refuser la mise à jour. Vérifiez propriété et autorisations chez le fournisseur. Acheter une formule supérieure ne change pas ces droits."
+        },
+        {
+          "q": "Faut-il connecter le même compte Google par toutes les voies disponibles ?",
+          "a": "Vérifiez d’abord comment il apparaît déjà sur le téléphone. Plusieurs connexions compliquent l’identification des copies. Choisissez la voie souhaitée, vérifiez ses événements et masquez l’affichage supplémentaire pendant l’enquête plutôt que de commencer par supprimer des données ou déconnecter des comptes."
+        }
+      ],
+      "sourcesHeading": "Sources et références de configuration",
+      "sources": [
+        {
+          "label": "Apple : configurer Calendrier iCloud sur vos appareils",
+          "url": "https://support.apple.com/guide/icloud/set-up-calendar-mme4d73a8727/icloud"
+        },
+        {
+          "label": "Google : partage de calendriers et autorisations",
+          "url": "https://support.google.com/calendar/answer/37082?hl=en"
+        },
+        {
+          "label": "Microsoft : API de calendrier Outlook et données de boîte aux lettres prises en charge",
+          "url": "https://learn.microsoft.com/en-us/graph/outlook-calendar-concept-overview"
+        }
+      ],
+      "seeAlso": [
+        "exchange-calendars-on-an-iphone",
+        "work-and-personal-without-two-apps",
+        "caldav-calendar-on-iphone"
+      ]
+    }
+  },
+  {
+    "locale": "it",
+    "file": "src/app/content/it/articles.ts",
+    "slug": "icloud-google-and-outlook-in-one-view",
+    "target": "caldav-calendar-on-iphone",
+    "before": {
+      "updated": "2026-10-21",
+      "title": "iCloud, Google e Outlook in una vista: account, copie e permessi",
+      "short": "Tre provider, una vista",
+      "description": "Visualizza insieme calendari iCloud, Google e Microsoft. Controlla account, permessi e copie prima di spostare eventi o affidarti alla disponibilità.",
+      "lede": "Un appuntamento familiare, una chiamata con un cliente e una riunione possono sovrapporsi pur appartenendo ad account diversi. Una vista comune aiuta a notare il conflitto, ma non trasforma gli account in un calendario condiviso. Questa guida è scritta da Arte Soft, sviluppatore di Cloud Calendars.",
+      "commonBelief": "Riunire più calendari in un’app manterrebbe automaticamente coerenti disponibilità, condivisione e copie degli eventi.",
+      "sections": [
+        {
+          "heading": "1. Identifica account e calendario di ogni evento",
+          "body": [
+            "Parti da un evento normale di ogni provider. Annota l’indirizzo email dell’account connesso, il nome del calendario e se possiedi l’evento o hai ricevuto un invito. Due calendari chiamati “Calendario” possono appartenere ad account completamente diversi. Il colore aiuta a leggere la settimana; account e calendario indicano dove deve arrivare una modifica.",
+            "Per esempio, una visita dal dentista nel tuo iCloud personale e una riunione di progetto in Microsoft possono apparire insieme per te. Questo non rende di per sé la visita visibile ai colleghi né riserva quel tempo nei loro strumenti di pianificazione."
+          ]
+        },
+        {
+          "heading": "2. Usa il collegamento appropriato",
+          "body": [
+            "Per iCloud, attiva prima Calendario iCloud sull’iPhone con l’Apple Account previsto. La guida Apple spiega le impostazioni del dispositivo. Cloud Calendars accede ai calendari disponibili nel sistema di calendario dell’iPhone e richiede il permesso per leggerli. Un account collegato su un altro dispositivo non basta.",
+            "Cloud Calendars offre anche “Sign in with Google” e “Sign in with Microsoft”. Controlla l’account selezionato all’accesso, poi apri il suo gruppo e scegli i calendari necessari. Accedere al provider corretto con l’identità personale o lavorativa sbagliata può produrre un elenco valido ma inatteso."
+          ]
+        },
+        {
+          "heading": "3. Distingui i piani dai permessi",
+          "body": [
+            "Base include sincronizzazione con Google Calendar e viste del calendario. Advanced aggiunge la rimozione degli annunci a Base. Premium aggiunge funzioni per calendari Microsoft e Microsoft Teams. Controlla prezzo locale attuale e periodo di fatturazione prima dell’acquisto.",
+            "Un piano modifica le funzioni disponibili nell’app, non ti rende proprietario del calendario altrui. Google distingue il permesso di vedere eventi da quello di modificarli. Restano valide le regole del datore di lavoro e i permessi del calendario Microsoft. Vedere un evento o un editor disponibile non prova che il provider accetterà una modifica."
+          ]
+        },
+        {
+          "heading": "4. Una vista comune può includere copie dei calendari",
+          "body": [
+            "Le connessioni Google e Microsoft usano copie nel sistema di calendario dell’iPhone per mostrare e sincronizzare gli eventi. Non presumere che collegare un account non lasci copie fuori dal provider originale. La destinazione delle copie può dipendere dalle sorgenti di calendario disponibili sul dispositivo.",
+            "Se lo stesso account raggiunge il telefono anche attraverso un altro percorso, controlla nomi e sorgenti prima di considerare appuntamenti ripetuti come eventi distinti. Nascondi temporaneamente un calendario per identificarne il contributo alla vista. Non eliminare eventi o calendari solo per ordinare lo schermo: una copia collegata può inviare modifiche al provider."
+          ]
+        },
+        {
+          "heading": "5. Scegli sempre la destinazione quando crei un evento",
+          "body": [
+            "Prima di salvare, controlla il calendario con la stessa cura di data e ora. Per un appuntamento familiare scegli quello effettivamente usato dalla famiglia; per una riunione, la destinazione di lavoro consentita. Vederli entrambi non rende nessuno la destinazione automatica di tutti i nuovi eventi.",
+            "Cambiare il calendario di un evento o trascinarlo fra calendari può essere uno spostamento, non una seconda vista innocua. Mantieni inviti e riunioni ricorrenti nel calendario abituale durante la diagnosi. Se serve un cambiamento, stabilisci prima chi possiede l’evento e quale calendario può accoglierlo."
+          ]
+        },
+        {
+          "heading": "6. Verifica la panoramica prima di farci affidamento",
+          "body": [
+            "Confronta un evento recente nel calendario del provider con quello corrispondente in Cloud Calendars. Controlla data, fuso orario, titolo e calendario selezionato. In un calendario tuo e modificabile, un evento di prova senza ospiti è preferibile alla modifica di una riunione reale. Conferma il risultato presso il provider prima di considerare pronta la connessione.",
+            "Non affidarti alla vista comune per creare automaticamente blocchi anonimi di tempo occupato in un altro account. Se i colleghi devono vedere la tua indisponibilità senza dettagli personali, usa un sistema espressamente approvato e verificalo dal loro lato. Panoramica personale e disponibilità condivisa sono attività separate."
+          ]
+        }
+      ],
+      "claims": {},
+      "practical": [
+        "Annota account e calendario esatti di un evento di ogni provider.",
+        "Attiva i calendari iCloud previsti sul dispositivo e controlla l’accesso.",
+        "Usa l’accesso Google o Microsoft appropriato e scegli i calendari desiderati.",
+        "Confronta un evento recente con la vista del provider prima di modificare qualcosa.",
+        "Nascondi temporaneamente una sorgente sospetta di duplicati; conserva gli eventi intatti.",
+        "Controlla la destinazione di ogni nuovo evento e separatamente la condivisione del tempo occupato."
+      ],
+      "faq": [
+        {
+          "q": "I colleghi vedranno i miei eventi personali perché mostro entrambi i calendari?",
+          "a": "La visualizzazione comune non è un’istruzione di condivisione né un trasferimento automatico del tempo occupato. Controlla le impostazioni effettive di ciascun calendario. Le connessioni possono creare copie sul dispositivo: la vista comune non garantisce neppure che i dati esistano soltanto presso il provider originale."
+        },
+        {
+          "q": "Perché vedo un evento ma non riesco a modificarlo?",
+          "a": "Il calendario può essere di sola lettura, l’evento appartenere a un altro organizzatore o il provider rifiutare l’aggiornamento. Controlla proprietà e permessi presso il provider. Acquistare un piano superiore non cambia quei diritti."
+        },
+        {
+          "q": "Devo collegare lo stesso account Google attraverso ogni percorso disponibile?",
+          "a": "Controlla prima come appare già sul telefono. Più percorsi complicano l’identificazione delle copie. Scegli quello previsto, verifica gli eventi e nascondi la vista aggiuntiva durante l’indagine, anziché cominciare eliminando dati o scollegando account."
+        }
+      ],
+      "sourcesHeading": "Fonti e riferimenti per la configurazione",
+      "sources": [
+        {
+          "label": "Apple: configurare Calendario iCloud sui dispositivi",
+          "url": "https://support.apple.com/guide/icloud/set-up-calendar-mme4d73a8727/icloud"
+        },
+        {
+          "label": "Google: condivisione dei calendari e permessi",
+          "url": "https://support.google.com/calendar/answer/37082?hl=en"
+        },
+        {
+          "label": "Microsoft: API del calendario Outlook e dati delle caselle di posta supportati",
+          "url": "https://learn.microsoft.com/en-us/graph/outlook-calendar-concept-overview"
+        }
+      ],
+      "seeAlso": [
+        "exchange-calendars-on-an-iphone",
+        "work-and-personal-without-two-apps"
+      ]
+    },
+    "after": {
+      "updated": "2026-10-21",
+      "title": "iCloud, Google e Outlook in una vista: account, copie e permessi",
+      "short": "Tre provider, una vista",
+      "description": "Visualizza insieme calendari iCloud, Google e Microsoft. Controlla account, permessi e copie prima di spostare eventi o affidarti alla disponibilità.",
+      "lede": "Un appuntamento familiare, una chiamata con un cliente e una riunione possono sovrapporsi pur appartenendo ad account diversi. Una vista comune aiuta a notare il conflitto, ma non trasforma gli account in un calendario condiviso. Questa guida è scritta da Arte Soft, sviluppatore di Cloud Calendars.",
+      "commonBelief": "Riunire più calendari in un’app manterrebbe automaticamente coerenti disponibilità, condivisione e copie degli eventi.",
+      "sections": [
+        {
+          "heading": "1. Identifica account e calendario di ogni evento",
+          "body": [
+            "Parti da un evento normale di ogni provider. Annota l’indirizzo email dell’account connesso, il nome del calendario e se possiedi l’evento o hai ricevuto un invito. Due calendari chiamati “Calendario” possono appartenere ad account completamente diversi. Il colore aiuta a leggere la settimana; account e calendario indicano dove deve arrivare una modifica.",
+            "Per esempio, una visita dal dentista nel tuo iCloud personale e una riunione di progetto in Microsoft possono apparire insieme per te. Questo non rende di per sé la visita visibile ai colleghi né riserva quel tempo nei loro strumenti di pianificazione."
+          ]
+        },
+        {
+          "heading": "2. Usa il collegamento appropriato",
+          "body": [
+            "Per iCloud, attiva prima Calendario iCloud sull’iPhone con l’Apple Account previsto. La guida Apple spiega le impostazioni del dispositivo. Cloud Calendars accede ai calendari disponibili nel sistema di calendario dell’iPhone e richiede il permesso per leggerli. Un account collegato su un altro dispositivo non basta.",
+            "Cloud Calendars offre anche “Sign in with Google” e “Sign in with Microsoft”. Controlla l’account selezionato all’accesso, poi apri il suo gruppo e scegli i calendari necessari. Accedere al provider corretto con l’identità personale o lavorativa sbagliata può produrre un elenco valido ma inatteso."
+          ]
+        },
+        {
+          "heading": "3. Distingui i piani dai permessi",
+          "body": [
+            "Base include sincronizzazione con Google Calendar e viste del calendario. Advanced aggiunge la rimozione degli annunci a Base. Premium aggiunge funzioni per calendari Microsoft e Microsoft Teams. Controlla prezzo locale attuale e periodo di fatturazione prima dell’acquisto.",
+            "Un piano modifica le funzioni disponibili nell’app, non ti rende proprietario del calendario altrui. Google distingue il permesso di vedere eventi da quello di modificarli. Restano valide le regole del datore di lavoro e i permessi del calendario Microsoft. Vedere un evento o un editor disponibile non prova che il provider accetterà una modifica."
+          ]
+        },
+        {
+          "heading": "4. Una vista comune può includere copie dei calendari",
+          "body": [
+            "Le connessioni Google e Microsoft usano copie nel sistema di calendario dell’iPhone per mostrare e sincronizzare gli eventi. Non presumere che collegare un account non lasci copie fuori dal provider originale. La destinazione delle copie può dipendere dalle sorgenti di calendario disponibili sul dispositivo.",
+            "Se lo stesso account raggiunge il telefono anche attraverso un altro percorso, controlla nomi e sorgenti prima di considerare appuntamenti ripetuti come eventi distinti. Nascondi temporaneamente un calendario per identificarne il contributo alla vista. Non eliminare eventi o calendari solo per ordinare lo schermo: una copia collegata può inviare modifiche al provider."
+          ]
+        },
+        {
+          "heading": "5. Scegli sempre la destinazione quando crei un evento",
+          "body": [
+            "Prima di salvare, controlla il calendario con la stessa cura di data e ora. Per un appuntamento familiare scegli quello effettivamente usato dalla famiglia; per una riunione, la destinazione di lavoro consentita. Vederli entrambi non rende nessuno la destinazione automatica di tutti i nuovi eventi.",
+            "Cambiare il calendario di un evento o trascinarlo fra calendari può essere uno spostamento, non una seconda vista innocua. Mantieni inviti e riunioni ricorrenti nel calendario abituale durante la diagnosi. Se serve un cambiamento, stabilisci prima chi possiede l’evento e quale calendario può accoglierlo."
+          ]
+        },
+        {
+          "heading": "6. Verifica la panoramica prima di farci affidamento",
+          "body": [
+            "Confronta un evento recente nel calendario del provider con quello corrispondente in Cloud Calendars. Controlla data, fuso orario, titolo e calendario selezionato. In un calendario tuo e modificabile, un evento di prova senza ospiti è preferibile alla modifica di una riunione reale. Conferma il risultato presso il provider prima di considerare pronta la connessione.",
+            "Non affidarti alla vista comune per creare automaticamente blocchi anonimi di tempo occupato in un altro account. Se i colleghi devono vedere la tua indisponibilità senza dettagli personali, usa un sistema espressamente approvato e verificalo dal loro lato. Panoramica personale e disponibilità condivisa sono attività separate."
+          ]
+        }
+      ],
+      "claims": {},
+      "practical": [
+        "Annota account e calendario esatti di un evento di ogni provider.",
+        "Attiva i calendari iCloud previsti sul dispositivo e controlla l’accesso.",
+        "Usa l’accesso Google o Microsoft appropriato e scegli i calendari desiderati.",
+        "Confronta un evento recente con la vista del provider prima di modificare qualcosa.",
+        "Nascondi temporaneamente una sorgente sospetta di duplicati; conserva gli eventi intatti.",
+        "Controlla la destinazione di ogni nuovo evento e separatamente la condivisione del tempo occupato."
+      ],
+      "faq": [
+        {
+          "q": "I colleghi vedranno i miei eventi personali perché mostro entrambi i calendari?",
+          "a": "La visualizzazione comune non è un’istruzione di condivisione né un trasferimento automatico del tempo occupato. Controlla le impostazioni effettive di ciascun calendario. Le connessioni possono creare copie sul dispositivo: la vista comune non garantisce neppure che i dati esistano soltanto presso il provider originale."
+        },
+        {
+          "q": "Perché vedo un evento ma non riesco a modificarlo?",
+          "a": "Il calendario può essere di sola lettura, l’evento appartenere a un altro organizzatore o il provider rifiutare l’aggiornamento. Controlla proprietà e permessi presso il provider. Acquistare un piano superiore non cambia quei diritti."
+        },
+        {
+          "q": "Devo collegare lo stesso account Google attraverso ogni percorso disponibile?",
+          "a": "Controlla prima come appare già sul telefono. Più percorsi complicano l’identificazione delle copie. Scegli quello previsto, verifica gli eventi e nascondi la vista aggiuntiva durante l’indagine, anziché cominciare eliminando dati o scollegando account."
+        }
+      ],
+      "sourcesHeading": "Fonti e riferimenti per la configurazione",
+      "sources": [
+        {
+          "label": "Apple: configurare Calendario iCloud sui dispositivi",
+          "url": "https://support.apple.com/guide/icloud/set-up-calendar-mme4d73a8727/icloud"
+        },
+        {
+          "label": "Google: condivisione dei calendari e permessi",
+          "url": "https://support.google.com/calendar/answer/37082?hl=en"
+        },
+        {
+          "label": "Microsoft: API del calendario Outlook e dati delle caselle di posta supportati",
+          "url": "https://learn.microsoft.com/en-us/graph/outlook-calendar-concept-overview"
+        }
+      ],
+      "seeAlso": [
+        "exchange-calendars-on-an-iphone",
+        "work-and-personal-without-two-apps",
+        "caldav-calendar-on-iphone"
+      ]
+    }
+  }
+]

@@ -25,7 +25,7 @@ export const APP_RATING_COUNT = 12;
 export const APP_MIN_IOS = '18.0';
 export const APP_SIZE_MB = 49.8;
 export const SITE_URL = 'https://www.cloud-calendars.com';
-export const SUPPORT_EMAIL = 'support@cloud-calendars.com';
+export const SUPPORT_EMAIL = 'support@arte-soft.com';
 
 /** Subscription tiers, mirroring the App Store in-app purchase list. */
 export interface Plan {

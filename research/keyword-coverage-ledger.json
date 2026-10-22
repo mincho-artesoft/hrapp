@@ -10,7 +10,7 @@
     "No content is declared researched merely because a corresponding route exists."
   ],
   "currentInventory": {
-    "articles": 449,
+    "articles": 451,
     "locales": [
       "ar-SA",
       "bg",
@@ -1141,13 +1141,43 @@
       "batch28-readiness/privacy-release-evidence.json"
     ],
     "priorityWork": [
-      "Visible support contact at existing root destination; exact proposal and current review ready, source not changed.",
-      "Complete FR/IT CalDAV localization; source clarity/selection-restoration draft refinement underway.",
+      "Support contact published in shared footer on all30locales; destination matches existing Terms. Verified mobile/RTL/keyboard; mailbox delivery not tested.",
+      "FR/IT CalDAV editions and scoped EN clarity/restoration polish published and verified. Other translated guide bodies still require bounded review.",
       "Resolve released1.7.3/source and production data handling correspondence before privacy assurances or declarations.",
       "Obtain exact new media source/task; bounded repeated audit found only older set.",
       "Compare genuinely elapsed search/citation observations; no new repeated short-interval measurement."
     ],
     "staleGapPolicy": "Earlier embedded assessments and publication entries are historical; use currentFollowup/localizedFollowup and readiness evidence rather than re-adding resolved FAQs or synonym pages.",
     "asc": "50locale five-field persistence proof remains saved batch18, not current URL/semantic or performance certification. No broad rewrite justified by audit."
+  },
+  "twentyEighthPublication": {
+    "date": "2026-10-22",
+    "newLocalizedGuides": 2,
+    "locales": [
+      "fr-FR",
+      "it"
+    ],
+    "englishGuidesPolished": 1,
+    "canonical": "caldav-calendar-on-iphone",
+    "relatedOnlyBacklinks": 2,
+    "supportContact": {
+      "localizedLabels": 30,
+      "address": "support@arte-soft.com",
+      "canonicalPagesUsingSharedFooter": 513,
+      "standaloneLegacyPageUnchanged": "/how-cloud-calendars-rescued-my-schedule-and-sanity.html"
+    },
+    "sitemapUrls": 514,
+    "publicArtifactsExactBuild": 517,
+    "sourceAndDeliveryEvidence": [
+      "batch28-source-qa.json",
+      "batch28-static-qa.json",
+      "batch28-metadata-qa.json",
+      "batch28-invalidation-status.json",
+      "batch28-public-qa.json",
+      "batch28-browser-qa.json",
+      "batch28-caldav-localization/root-primary-readback.json"
+    ],
+    "goalComplete": false,
+    "limits": "Delivery and bounded editorial/visual checks; no discovery lift, mailbox delivery, universal CalDAV support, native runtime or all-language quality claim."
   }
 }
