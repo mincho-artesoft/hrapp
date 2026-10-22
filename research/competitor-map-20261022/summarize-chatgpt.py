@@ -2,7 +2,7 @@
 from pathlib import Path
 import json,re
 root=Path(__file__).resolve().parent
-names=['Cloud Calendars','Fantastical','Calendars by Readdle','Calendar 366','WeekCal','easyDays','Apple Calendar','Google Calendar','Outlook','OneCal','CalendarBridge','Supershift','My Shift Planner','MyShiftPlanner','TimeTree','Cozi','FamilyWall','Howbout','Structured','Motion','Morgen','Tiimo','Amie','Notion Calendar','Timepage','FlowSavvy','Reclaim','SkedPal','Sunsama','BusyCal','TickTick','OneCalendar']
+names=['Weather Events','Dejal','Skylight','Hearth','gtsync','SyncBridge','Cloud Calendars','Fantastical','Calendars by Readdle','Calendar 366','WeekCal','easyDays','Apple Calendar','Google Calendar','Outlook','OneCal','CalendarBridge','Supershift','My Shift Planner','MyShiftPlanner','TimeTree','Cozi','FamilyWall','Howbout','Structured','Motion','Morgen','Tiimo','Amie','Notion Calendar','Timepage','FlowSavvy','Reclaim','SkedPal','Sunsama','BusyCal','TickTick','OneCalendar']
 records=[]
 for file in sorted(root.glob('chatgpt-*.json')):
  data=json.loads(file.read_text())

@@ -89,7 +89,7 @@ export const DISCOVERY_EN_US: Readonly<Record<string, LocalisedArticle>> = {
     ]
   },
   "booking-link-or-shared-calendar": {
-    "updated": "2026-10-22",
+    "updated": "2026-10-23",
     "title": "Booking link, event invitation or shared calendar: which should you send?",
     "short": "Booking versus calendar sharing",
     "description": "Let someone choose a time, invite them to an existing meeting or share an ongoing schedule. Compare booking links with invitations and calendar access.",
@@ -107,6 +107,13 @@ export const DISCOVERY_EN_US: Readonly<Record<string, LocalisedArticle>> = {
         "body": [
           "If you have agreed Tuesday at 14:00, create the event with the right time zone and participants, then send an invitation through the calendar’s supported workflow. The recipient is responding to a proposed event; they are not selecting a free slot from your week.",
           "A meeting URL is another separate item. A video-call link explains where to join, while a calendar invitation carries scheduling details. Sending only a call link may leave the recipient without an appointment or a reminder. Check the saved event and the participant response before assuming the arrangement is complete."
+        ]
+      },
+      {
+        "heading": "Vimcal: availability sharing and delegate access are separate",
+        "body": [
+          "Vimcal’s iOS page promotes sharing availability, checking time zones and booking links. Its setup documentation describes signing in with Google or Microsoft and obtaining the underlying provider’s delegate access before managing an executive’s calendar. A convenient combined view is not permission to act for someone else.",
+          "If scheduling for a colleague, confirm whose calendar receives the appointment, which calendars affect the proposed slots and which identity sends the invitation. Check the guest’s time zone as well as the organiser’s. These are selection criteria; this guide has not benchmarked Vimcal’s speed or tested its booking workflow."
         ]
       },
       {
@@ -166,6 +173,14 @@ export const DISCOVERY_EN_US: Readonly<Record<string, LocalisedArticle>> = {
       {
         "label": "Apple: event details, invitees and video links",
         "url": "https://support.apple.com/guide/iphone/create-and-edit-events-iph3d110f84/ios"
+      },
+      {
+        "label": "Vimcal: iOS availability, time zones and booking links",
+        "url": "https://www.vimcal.com/downloads/ios"
+      },
+      {
+        "label": "Vimcal: account setup and provider delegate access",
+        "url": "https://docs.vimcal.com/getting-started/account-setup"
       }
     ],
     "seeAlso": [
@@ -361,7 +376,7 @@ export const DISCOVERY_EN_US: Readonly<Record<string, LocalisedArticle>> = {
     ]
   },
   "iphone-calendar-tasks-reminders-versus-event-alerts": {
-    "updated": "2026-10-22",
+    "updated": "2026-10-23",
     "title": "Tasks and reminders in an iPhone calendar: choose the right kind of item",
     "short": "Tasks, reminders and event alerts",
     "description": "See tasks beside appointments without confusing due dates, work time and alerts. Compare Apple Calendar and Readdle task integration on iPhone.",
@@ -401,6 +416,13 @@ export const DISCOVERY_EN_US: Readonly<Record<string, LocalisedArticle>> = {
           "Cloud Calendars lets you plan with calendar events in day, week, month, year and list views. You can reserve a period for work as an ordinary event and keep the associated task in your existing task app. This article does not promise a task-completion connection to Apple Reminders or Google Tasks in Cloud Calendars.",
           "Choose the simpler setup that satisfies your need. If checking off tasks inside the calendar is essential, test an app with documented task support. If you mainly need to compare available hours with appointments, an event-based planning view may be enough."
         ]
+      },
+      {
+        "heading": "Any.do: the mobile calendar source can differ from desktop",
+        "body": [
+          "Any.do’s help describes Calendar View as combining tasks with events from existing calendars. On iPhone, its documented route uses the device’s calendars; web and desktop use a direct account integration configured separately. If an event appears on the phone but not the computer, compare the connected sources before assuming a task-sync failure.",
+          "Its documentation also distinguishes calendar sharing through the underlying provider from direct in-app calendar sharing. A family task board and a shared provider calendar are not the same object. Check where the original item lives, who may edit it and whether completing a task changes only the task rather than the associated appointment."
+        ]
       }
     ],
     "claims": {},
@@ -438,6 +460,10 @@ export const DISCOVERY_EN_US: Readonly<Record<string, LocalisedArticle>> = {
       {
         "label": "Readdle: choose iOS Reminders or Google Tasks",
         "url": "https://support.readdle.com/calendars/synchronization/how-to-sync-tasks-with-ios-reminders-or-google-tasks"
+      },
+      {
+        "label": "Any.do: mobile versus desktop calendar integration and sharing",
+        "url": "https://support.any.do/en/articles/8610622-getting-started-with-the-calendar-integration"
       }
     ],
     "seeAlso": [
@@ -448,7 +474,7 @@ export const DISCOVERY_EN_US: Readonly<Record<string, LocalisedArticle>> = {
     ]
   },
   "automatic-time-blocking-versus-manual-calendar": {
-    "updated": "2026-10-22",
+    "updated": "2026-10-23",
     "title": "Automatic time blocking or manual calendar planning? Compare the controls",
     "short": "Automatic versus manual time blocking",
     "description": "Compare FlowSavvy, Motion and Morgen with manual calendar blocks. Check task duration, busy time, working hours and rescheduling before relying on automation.",
@@ -495,6 +521,13 @@ export const DISCOVERY_EN_US: Readonly<Record<string, LocalisedArticle>> = {
           "Try three harmless examples: a task that fits, a conflicting meeting added later and more work than the remaining day can hold. Check the warning, unscheduled work, changed blocks and any work pushed beyond your preferred hours. Do not test by sending invitations to real participants.",
           "Keep the original task list and calendar until the result is clear. Check which calendars influence availability, where generated blocks are saved and how to stop or undo the workflow using the service’s controls. Those details determine whether the setup is useful when plans change."
         ]
+      },
+      {
+        "heading": "Amie: event sync is not proof of task rescheduling",
+        "body": [
+          "Amie’s Google Calendar documentation describes two-way event sync, selected calendars, attendees and recurring events. That establishes the publisher’s intended event integration. It does not by itself establish how an unfinished task moves around a changed meeting. Evaluate task scheduling separately from event sync.",
+          "Test a harmless event creation, edit and deletion in the source account, then inspect a disposable task’s scheduling behaviour under the documented task controls. Confirm the calendar chosen for new events. This guide does not treat marketing claims about instant updates or server storage as an independently measured result."
+        ]
       }
     ],
     "claims": {},
@@ -532,6 +565,10 @@ export const DISCOVERY_EN_US: Readonly<Record<string, LocalisedArticle>> = {
       {
         "label": "Morgen: AI Planner previews, adjustments and task integrations",
         "url": "https://www.morgen.so/"
+      },
+      {
+        "label": "Amie: Google Calendar event integration",
+        "url": "https://amie.so/documentation/google-calendar-integration"
       }
     ],
     "seeAlso": [
@@ -1235,6 +1272,88 @@ export const DISCOVERY_EN_US: Readonly<Record<string, LocalisedArticle>> = {
       "iphone-calendar-tasks-reminders-versus-event-alerts",
       "can-others-see-google-calendar-tasks",
       "what-calendar-sync-actually-does"
+    ]
+  },
+  "weather-calendar-history-versus-forecast-iphone": {
+    "updated": "2026-10-23",
+    "title": "Weather calendar history on iPhone: save a diary or read a changing forecast?",
+    "short": "Weather history versus forecast",
+    "description": "Compare saved daily weather, editable calendar entries and a changing forecast. Understand Weather Events, locations, timestamps and the limits of a weather diary.",
+    "lede": "Looking back at the weather during a past trip is a different task from checking next weekend’s forecast. A calendar can contain a saved record, a forecast that changes, or a note you typed yourself. Identify which one you have before relying on it. Arte Soft, the developer of Cloud Calendars, publishes this guide.",
+    "sections": [
+      {
+        "heading": "Choose the question before choosing an app",
+        "body": [
+          "For a future picnic, you want the latest forecast for the venue and time. For a holiday journal, you want a record that remains associated with the day after the forecast has moved on. These needs can share a calendar interface while requiring different data handling.",
+          "A forecast captured on Monday for Friday is not the same thing as an observation made on Friday. If you save the earlier prediction, label it as a forecast and retain when it was captured. Do not silently turn a saved prediction into a claim about what actually happened."
+        ]
+      },
+      {
+        "heading": "What Dejal Weather Events documents",
+        "body": [
+          "The publisher describes Weather Events as saving weather to all-day calendar entries with descriptions in event notes. Its product page documents a default location, the option to choose a different place for each day and editing a day’s forecast or custom values. Those are publisher-described capabilities, not a hands-on accuracy test.",
+          "For a trip with several stops, a location per day can be more useful than assuming the phone’s current city describes the entire journey. Dejal is the publisher of Weather Events; it is not a second weather-calendar product to compare separately."
+        ]
+      },
+      {
+        "heading": "A forecast display is not automatically an archive",
+        "body": [
+          "Cloud Calendars shows weather for the current or selected place alongside calendar planning. That helps you inspect upcoming commitments. This guide does not claim it continuously writes a permanent history of daily weather to your calendar. Calendar navigation into a past month does not establish that historical weather data is available there.",
+          "A subscribed weather calendar also needs separate checking. Find out whether old entries remain, whether a provider changes or removes them, and whether you can export the information you need. Seeing an entry today does not prove it will remain accessible a year later."
+        ]
+      },
+      {
+        "heading": "Keep the record useful and honest",
+        "body": [
+          "For an ordinary personal diary, record the place, local date, source, capture time and whether the entry is a forecast, observation or your own note. A neutral note such as “rain during the afternoon walk” describes your experience without pretending it is a measurement for the whole city.",
+          "Weather Events allows custom editing according to its publisher. That is useful for journalling, but an editable calendar entry is not independent evidence of a measured condition. For insurance, contractual or other consequential questions, obtain appropriate historical observations from the relevant authoritative provider instead of relying on a personal calendar note."
+        ]
+      },
+      {
+        "heading": "Test retention without risking your main schedule",
+        "body": [
+          "Use a separate test calendar where the app supports choosing a destination. Inspect one day’s date, place and text, then check how the documented update behaviour affects it. If an export is available, open a test copy and confirm the notes and dates survived.",
+          "Check the destination calendar’s sharing before saving personal locations or trip details. A weather entry in a shared calendar can expose its title, notes and location under that calendar’s permissions. Keep a journal private when other people only need your availability."
+        ]
+      }
+    ],
+    "claims": {},
+    "practical": [
+      "Decide whether you need a future forecast or a retained diary.",
+      "Label forecasts, observations and personal notes distinctly.",
+      "Save the location, local date, source and capture time.",
+      "Check retention and export with a disposable calendar entry.",
+      "Review who can read the destination calendar."
+    ],
+    "faq": [
+      {
+        "q": "Does a weather symbol beside an old date prove historical weather is stored?",
+        "a": "No. Confirm the source and retention behaviour. A forecast display, saved prediction and observation are different records."
+      },
+      {
+        "q": "Does Cloud Calendars automatically make a daily weather archive?",
+        "a": "That is not a capability established by this guide. Its weather view supports planning for the current or selected place."
+      },
+      {
+        "q": "Is Dejal a separate alternative to Weather Events?",
+        "a": "Dejal is the publisher of Weather Events. Count it as one product when comparing options."
+      }
+    ],
+    "sourcesHeading": "Publisher documentation and related guidance",
+    "sources": [
+      {
+        "label": "Dejal: Weather Events, daily locations and editable calendar records",
+        "url": "https://dejal.com/weatherevents/"
+      },
+      {
+        "label": "Apple: WeatherKit forecast data",
+        "url": "https://developer.apple.com/weatherkit/"
+      }
+    ],
+    "seeAlso": [
+      "weather-inside-your-calendar",
+      "a-fourteen-day-view-of-the-weather",
+      "calendar-export-ics-pdf-and-backup"
     ]
   }
 };

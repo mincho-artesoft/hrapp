@@ -1,8 +1,8 @@
 {
   "date": "2026-10-23",
-  "rowsReviewed": 303,
+  "rowsReviewed": 307,
   "originalSnapshotRows": 212,
-  "laterRows": 91,
+  "laterRows": 95,
   "counts": {
     "same-intent-or-noncontent-disposition": 192,
     "implemented-or-expanded-canonical": 28,
@@ -16,7 +16,9 @@
     "shopping-or-category-artifact": 6,
     "same-intent-variant": 10,
     "needs-watch-task-source-check": 1,
-    "different-date-resource-intent": 2
+    "different-date-resource-intent": 2,
+    "product-navigation-not-new-article": 3,
+    "mapped-existing-intent-with-limits": 1
   },
   "scope": "Editorial triage of all saved related/follow-up link texts through 40 actual Google queries, including shopping artifacts and navigational filters. These are not independent search-volume measurements.",
   "rows": [
@@ -3976,6 +3978,46 @@
       "currentDisposition": "search-filter-or-navigation-artifact",
       "canonicalCandidate": "https://www.cloud-calendars.com/articles/fantastical-readdle-calendar366-iphone-comparison/",
       "currentReason": "Forum/marketplace qualifier does not create a new article intent.",
+      "measuredVolume": null
+    },
+    {
+      "text": "Any do Workspace",
+      "discoveredFrom": "anydo-calendar",
+      "reviewIndex": 303,
+      "category": "round5-suggestion",
+      "currentDisposition": "product-navigation-not-new-article",
+      "canonicalCandidate": "https://www.cloud-calendars.com/articles/iphone-calendar-tasks-reminders-versus-event-alerts/",
+      "currentReason": "Brand, platform or plan qualifier retained as discovery evidence; not measured demand or a reason to generate a thin page.",
+      "measuredVolume": null
+    },
+    {
+      "text": "Any do Family plan",
+      "discoveredFrom": "anydo-calendar",
+      "reviewIndex": 304,
+      "category": "round5-suggestion",
+      "currentDisposition": "product-navigation-not-new-article",
+      "canonicalCandidate": "https://www.cloud-calendars.com/articles/iphone-calendar-tasks-reminders-versus-event-alerts/",
+      "currentReason": "Brand, platform or plan qualifier retained as discovery evidence; not measured demand or a reason to generate a thin page.",
+      "measuredVolume": null
+    },
+    {
+      "text": "Amie google calendar tasks scheduling iphone ios 15",
+      "discoveredFrom": "amie-calendar",
+      "reviewIndex": 305,
+      "category": "round5-suggestion",
+      "currentDisposition": "mapped-existing-intent-with-limits",
+      "canonicalCandidate": "https://www.cloud-calendars.com/articles/automatic-time-blocking-versus-manual-calendar/",
+      "currentReason": "Relevant workflow covered; old-OS compatibility and free-plan claims not inferred from the query.",
+      "measuredVolume": null
+    },
+    {
+      "text": "Amie for Windows",
+      "discoveredFrom": "amie-calendar",
+      "reviewIndex": 306,
+      "category": "round5-suggestion",
+      "currentDisposition": "product-navigation-not-new-article",
+      "canonicalCandidate": "https://www.cloud-calendars.com/articles/automatic-time-blocking-versus-manual-calendar/",
+      "currentReason": "Brand, platform or plan qualifier retained as discovery evidence; not measured demand or a reason to generate a thin page.",
       "measuredVolume": null
     }
   ]

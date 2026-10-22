@@ -477,24 +477,45 @@
           "evidenceFile": "chatgpt-weather.json"
         }
       ],
-      "researchDisposition": "observed-needs-source-and-topic-review",
-      "limitations": "Heading/answer mention is not a verified product recommendation, domain ownership check or universal ranking."
+      "researchDisposition": "focused-query-and-official-source-reviewed",
+      "limitations": "Heading/answer mention is not a verified product recommendation, domain ownership check or universal ranking.",
+      "focusedQueryEvidence": {
+        "id": "dejal-weather-history",
+        "query": "Dejal Weather Events calendar weather history iPhone",
+        "evidenceFile": "google-observations.json"
+      },
+      "canonicalCandidate": "weather-calendar-history-versus-forecast-iphone",
+      "sourceReviewFile": "round5-primary-checks.json"
     },
     {
       "product": "Weather Calendar Together",
       "inOriginalDeclaredUniverse": true,
       "googleHeadingObservations": [],
       "consumerAnswerMentions": [],
-      "researchDisposition": "needs-focused-discovery",
-      "limitations": "Heading/answer mention is not a verified product recommendation, domain ownership check or universal ranking."
+      "researchDisposition": "focused-query-reviewed-official-detail-unavailable",
+      "limitations": "Heading/answer mention is not a verified product recommendation, domain ownership check or universal ranking.",
+      "focusedQueryEvidence": {
+        "id": "weather-together-brand",
+        "query": "\"Weather Calendar Together\" iPhone",
+        "evidenceFile": "google-observations.json"
+      },
+      "canonicalCandidate": "weather-inside-your-calendar",
+      "sourceReviewFile": "round5-primary-checks.json"
     },
     {
       "product": "Dejal",
       "inOriginalDeclaredUniverse": true,
       "googleHeadingObservations": [],
       "consumerAnswerMentions": [],
-      "researchDisposition": "needs-focused-discovery",
-      "limitations": "Heading/answer mention is not a verified product recommendation, domain ownership check or universal ranking."
+      "researchDisposition": "focused-query-and-official-source-reviewed",
+      "limitations": "Heading/answer mention is not a verified product recommendation, domain ownership check or universal ranking.",
+      "focusedQueryEvidence": {
+        "id": "dejal-weather-history",
+        "query": "Dejal Weather Events calendar weather history iPhone",
+        "evidenceFile": "google-observations.json"
+      },
+      "canonicalCandidate": "weather-calendar-history-versus-forecast-iphone",
+      "sourceReviewFile": "round5-primary-checks.json"
     },
     {
       "product": "Apple Calendar",
@@ -933,16 +954,30 @@
       "inOriginalDeclaredUniverse": true,
       "googleHeadingObservations": [],
       "consumerAnswerMentions": [],
-      "researchDisposition": "needs-focused-discovery",
-      "limitations": "Heading/answer mention is not a verified product recommendation, domain ownership check or universal ranking."
+      "researchDisposition": "focused-query-and-official-source-reviewed",
+      "limitations": "Heading/answer mention is not a verified product recommendation, domain ownership check or universal ranking.",
+      "focusedQueryEvidence": {
+        "id": "anydo-calendar",
+        "query": "Any.do calendar iPhone Google iCloud sync",
+        "evidenceFile": "google-observations.json"
+      },
+      "canonicalCandidate": "iphone-calendar-tasks-reminders-versus-event-alerts",
+      "sourceReviewFile": "round5-primary-checks.json"
     },
     {
       "product": "Vimcal",
       "inOriginalDeclaredUniverse": true,
       "googleHeadingObservations": [],
       "consumerAnswerMentions": [],
-      "researchDisposition": "needs-focused-discovery",
-      "limitations": "Heading/answer mention is not a verified product recommendation, domain ownership check or universal ranking."
+      "researchDisposition": "focused-query-and-official-source-reviewed",
+      "limitations": "Heading/answer mention is not a verified product recommendation, domain ownership check or universal ranking.",
+      "focusedQueryEvidence": {
+        "id": "vimcal-availability",
+        "query": "Vimcal iPhone calendar time zones availability",
+        "evidenceFile": "google-observations.json"
+      },
+      "canonicalCandidate": "booking-link-or-shared-calendar",
+      "sourceReviewFile": "round5-primary-checks.json"
     },
     {
       "product": "Notion Calendar",
@@ -969,8 +1004,15 @@
       "inOriginalDeclaredUniverse": true,
       "googleHeadingObservations": [],
       "consumerAnswerMentions": [],
-      "researchDisposition": "needs-focused-discovery",
-      "limitations": "Heading/answer mention is not a verified product recommendation, domain ownership check or universal ranking."
+      "researchDisposition": "focused-query-and-official-source-reviewed",
+      "limitations": "Heading/answer mention is not a verified product recommendation, domain ownership check or universal ranking.",
+      "focusedQueryEvidence": {
+        "id": "amie-calendar",
+        "query": "Amie Google Calendar tasks scheduling iPhone",
+        "evidenceFile": "google-observations.json"
+      },
+      "canonicalCandidate": "automatic-time-blocking-versus-manual-calendar",
+      "sourceReviewFile": "round5-primary-checks.json"
     },
     {
       "product": "Morgen",
@@ -1015,11 +1057,9 @@
       "limitations": "Heading/answer mention is not a verified product recommendation, domain ownership check or universal ranking."
     }
   ],
-  "notObservedInSavedSamples": [
-    "Weather Calendar Together",
-    "Dejal",
-    "Any.do",
-    "Vimcal",
-    "Amie"
-  ]
+  "notObservedInSavedSamples": [],
+  "unavailablePrimaryDetails": [
+    "Weather Calendar Together"
+  ],
+  "updatedScope": "Original missing labels now have focused Google observations. An observed brand query is not proof of all nonbranded rankings. Weather Calendar Together detail availability unresolved and explicitly limited."
 }

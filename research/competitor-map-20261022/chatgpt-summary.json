@@ -1,5 +1,5 @@
 {
-  "sampleSize": 14,
+  "sampleSize": 15,
   "independentConversations": true,
   "backendModel": "not exposed",
   "accountPersonalization": "not controlled",
@@ -133,6 +133,8 @@
       "promptClass": "unseeded-product-discovery",
       "file": "chatgpt-household-display.json",
       "mentionedBrands": [
+        "Skylight",
+        "Hearth",
         "Cloud Calendars",
         "Apple Calendar",
         "Google Calendar",
@@ -276,11 +278,35 @@
       "limitation": "Mention detection supports manual review; it is not recommendation ranking. Citation popup sources were not expanded."
     },
     {
+      "id": "weather-history",
+      "prompt": "Which iPhone apps can save a record of daily weather in my calendar so I can look back months later? Distinguish a historical weather diary from a changing forecast display or subscribed weather feed, compare suitable options and cite official sources.",
+      "promptClass": "unseeded-product-discovery",
+      "file": "chatgpt-weather-history.json",
+      "mentionedBrands": [
+        "Weather Events",
+        "Dejal",
+        "Apple Calendar",
+        "Google Calendar",
+        "Outlook"
+      ],
+      "cloudMentioned": false,
+      "directSourceUrls": [
+        "https://dejal.com/weatherevents/?utm_source=chatgpt.com",
+        "https://apps.apple.com/us/app/weather-events-for-calendar/id6475696867?utm_source=chatgpt.com",
+        "https://apps.apple.com/us/app/past-weathers-weather-log/id6474922220?utm_source=chatgpt.com",
+        "https://apps.apple.com/us/app/weather-diary-my-history/id6757074943?utm_source=chatgpt.com",
+        "https://apps.apple.com/us/app/weather-calendar-journal/id6797429182?utm_source=chatgpt.com",
+        "https://weathercal.app/?utm_source=chatgpt.com"
+      ],
+      "limitation": "Mention detection supports manual review; it is not recommendation ranking. Citation popup sources were not expanded."
+    },
+    {
       "id": "weather",
       "prompt": "Which iPhone or iPad calendar apps show weather alongside appointments? Compare suitable options, distinguish built-in weather from calendar feeds, and cite current official sources.",
       "promptClass": "unseeded-product-discovery",
       "file": "chatgpt-weather.json",
       "mentionedBrands": [
+        "Weather Events",
         "Fantastical",
         "Calendars by Readdle",
         "Calendar 366",

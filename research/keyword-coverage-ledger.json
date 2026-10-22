@@ -1833,5 +1833,19 @@
     "expandedThisIncrement": 2,
     "evidence": "research/competitor-map-20261022/round4-public-check.json",
     "goalComplete": false
+  },
+  "latestResearchIncrement": {
+    "date": "2026-10-23",
+    "googleQueries": 45,
+    "consumerChatGPTConversations": 15,
+    "englishArticles": 72,
+    "newArticle": "weather-calendar-history-versus-forecast-iphone",
+    "expandedArticles": [
+      "booking-link-or-shared-calendar",
+      "iphone-calendar-tasks-reminders-versus-event-alerts",
+      "automatic-time-blocking-versus-manual-calendar"
+    ],
+    "evidenceDirectory": "research/competitor-map-20261022",
+    "completion": "Incomplete final consolidation and partial-intent audit; not exhaustive ranking export."
   }
 }

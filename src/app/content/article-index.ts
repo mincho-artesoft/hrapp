@@ -178,7 +178,8 @@ export const ARTICLE_SLUGS: Readonly<Record<string, readonly string[]>> = {
     "share-assign-reminders-iphone-calendar-difference",
     "can-others-see-google-calendar-tasks",
     "ipad-family-calendar-display-skylight-dakboard",
-    "sync-google-tasks-apple-reminders-iphone"
+    "sync-google-tasks-apple-reminders-iphone",
+    "weather-calendar-history-versus-forecast-iphone"
   ],
   "es-ES": [
     "month-view-on-a-bigger-screen",

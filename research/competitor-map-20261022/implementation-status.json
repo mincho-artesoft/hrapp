@@ -1,13 +1,13 @@
 {
   "date": "2026-10-23",
   "goalStatus": "active_incomplete",
-  "previousGoalTurn": "Progress: four new guides and research expansion published and pushed in ce5dd7f.",
-  "googleActualQueries": 40,
-  "consumerChatGPTFreshSamples": 14,
+  "previousGoalTurn": "Progress: round4 committed and pushed in 49f4bd9.",
+  "googleActualQueries": 45,
+  "consumerChatGPTFreshSamples": 15,
   "historicalChatGPTSamples": 3,
-  "newEnglishArticles": 13,
-  "totalEnglishArticles": 71,
-  "sitemapUrls": 105,
+  "newEnglishArticles": 14,
+  "totalEnglishArticles": 72,
+  "sitemapUrls": 106,
   "heldTranslatedArticlesAndHubs": 436,
   "implementedSlugs": [
     "shift-work-calendar-iphone-rotating-schedules",
@@ -22,7 +22,8 @@
     "share-assign-reminders-iphone-calendar-difference",
     "can-others-see-google-calendar-tasks",
     "ipad-family-calendar-display-skylight-dakboard",
-    "sync-google-tasks-apple-reminders-iphone"
+    "sync-google-tasks-apple-reminders-iphone",
+    "weather-calendar-history-versus-forecast-iphone"
   ],
   "delivered": [
     "40 saved actual Google UI observations with query-to-canonical mapping",
@@ -31,29 +32,30 @@
     "303 related/follow-up strings classified, including filters and navigational artifacts",
     "Thirteen source-backed new English guides across four increments, with contextual incoming links",
     "Existing guides expanded for calendar alternatives, widgets, couples and recurrence",
-    "Build checks, public readback, 105 successful sitemap URLs and S3 visual proof"
+    "Build checks, public readback, 105 successful sitemap URLs and S3 visual proof",
+    "Round5: 45 actual Google queries, 15 ChatGPT conversations; original missing brands queried and official help reviewed, one unavailable detail recorded.",
+    "Round5: weather-history guide and three source-backed competitor workflow expansions published."
   ],
   "remaining": [
-    "Complete focused actual-query and substantive primary-source review for five originally named census entries: Weather Calendar Together, Dejal/Weather Events, Any.do, Vimcal and Amie. Dejal is a publisher alias, not a second independent calendar app.",
-    "Assess the explicit partial or insufficient-intent dispositions in the own-site query map without manufacturing low-value pages.",
-    "Consolidate competitor/topic evidence and current coverage into an auditable final research deliverable; observations cannot prove every possible ranking keyword.",
-    "Verify one later Google Tasks-on-Watch lead; a phone task bridge is not a Watch client."
+    "Assess five explicit partial own-site query mappings and the Google Tasks-on-Watch lead against relevant primary sources.",
+    "Consolidate original competitor census, query observations, source checks and implemented pages into final auditable research deliverable.",
+    "Do not claim exhaustive keyword rankings, demand volumes or stable ChatGPT recommendation share; no such data is available."
   ],
-  "completionAudit": "Not achieved: the original-competitor census exposed focused query/source gaps for five original labels, including Dejal as publisher alias of Weather Events. Own-site queries and all303 saved follow-up strings now have dispositions, but topic candidates and sparse ambiguous phrases do not prove comprehensive feature or ranking coverage.",
-  "lastIncrementArticles": 2,
+  "completionAudit": "Active: original focused-query gaps addressed, with unavailable Weather Calendar Together detail explicitly recorded. Final consolidation and partial-intent audit remain.",
+  "lastIncrementArticles": 1,
   "ownSiteSearchConsoleQueries": 150,
   "classifiedOriginalSuggestionRows": 212,
   "distinctIntentLeads": 20,
   "lastIncrementPublication": {
-    "newArticles": 2,
-    "expandedArticles": 2,
-    "build": "round4-build-check.json",
-    "public": "round4-public-check.json",
-    "deploy": "round4-deploy.log",
-    "screenshot": "round4-visual-proof.json",
-    "result": "Published and verified; 105/105 sitemap URLs successful."
+    "newArticles": 1,
+    "expandedArticles": 3,
+    "build": "round5-build-check.json",
+    "public": "round5-public-check.json",
+    "deploy": "round5-deploy.log",
+    "screenshot": "round5-visual-proof.json",
+    "result": "Published, public HTML matches build; full deployment check passed."
   },
-  "lastIncrementExpandedArticles": 2,
+  "lastIncrementExpandedArticles": 3,
   "classifiedRelatedSuggestionRows": 303,
   "originalDistinctIntentLeadsResolved": 20,
   "remainingOriginalDistinctIntentLeads": 0,

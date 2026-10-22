@@ -1,9 +1,9 @@
 {
   "date": "2026-10-23",
-  "status": "incomplete_original_competitor_census_gaps_identified",
+  "status": "focused_original_census_queries_reviewed_consolidation_pending",
   "method": {
-    "google": "40 actual Google UI queries. English plus German/Japanese language samples; hl=en gl=us pws=0, signed-in desktop, physical location not controlled. Captured order is not universal organic ranking.",
-    "chatgpt": "Twelve fresh consumer UI conversations, each in a new chat. Eleven unseeded product-discovery prompts and one named-competitor auto-scheduling comparison. Backend model and account personalization not controlled; no recommendation-share or causal-lift claim.",
+    "google": "45 actual Google UI queries. hl=en gl=us pws=0, signed-in desktop; language samples do not establish physical-market ranks. Captured order is not universal organic ranking.",
+    "chatgpt": "15 fresh consumer conversations, 14 unseeded discovery and one named-competitor comparison; account personalization and backend model not controlled.",
     "volume": "No measured keyword volume or difficulty; no claim that every competitor keyword is known.",
     "canonicalPolicy": "Group same-intent variants. New pages require a distinct reader task and source-backed substance.",
     "sources": "Competitor help pages verify publisher claims only, not runtime performance."
@@ -2544,12 +2544,264 @@
         "Fantastical calendar",
         "Fantastical vs Google Calendar reddit"
       ]
+    },
+    {
+      "id": "anydo-calendar",
+      "query": "Any.do calendar iPhone Google iCloud sync",
+      "evidenceFile": "google-observations.json",
+      "observedAt": "2026-10-22T21:36:20.444Z",
+      "canonical": "https://www.cloud-calendars.com/articles/iphone-calendar-tasks-reminders-versus-event-alerts/",
+      "coverage": "expanded",
+      "assessment": "Any.do mobile/device versus desktop/account integration and provider sharing added.",
+      "observedResults": [
+        {
+          "displayOrder": 1,
+          "heading": "Getting Started with the Calendar Integration",
+          "url": "https://support.any.do/en/articles/8610622-getting-started-with-the-calendar-integration"
+        },
+        {
+          "displayOrder": 2,
+          "heading": "How to Sync Any.do with Google Calendar: The Complete ...",
+          "url": "https://www.any.do/blog/how-to-sync-any-do-with-google-calendar-the-complete-2026-guide/"
+        },
+        {
+          "displayOrder": 3,
+          "heading": "How to sync and back up your Any.do account",
+          "url": "https://support.any.do/en/articles/8610074-how-to-sync-and-back-up-your-any-do-account"
+        },
+        {
+          "displayOrder": 4,
+          "heading": "The Best Calendar App for iPhone",
+          "url": "https://www.any.do/calendar-app-for-iphone"
+        },
+        {
+          "displayOrder": 5,
+          "heading": "Syncing iCloud calendar to Google calenda…",
+          "url": "https://discussions.apple.com/thread/255081263"
+        },
+        {
+          "displayOrder": 6,
+          "heading": "Organize your life in seconds",
+          "url": "https://www.any.do/personal"
+        },
+        {
+          "displayOrder": 7,
+          "heading": "Any.do & Google Calendar Integration Tutorial",
+          "url": "https://www.youtube.com/watch?v=OTr_TpZ3eyk"
+        },
+        {
+          "displayOrder": 8,
+          "heading": "Hack: How To Share Your Any.do Calendar",
+          "url": "https://www.any.do/blog/hack-how-to-share-your-any-do-calendar/"
+        },
+        {
+          "displayOrder": 9,
+          "heading": "How can I sync iCloud/Apple Calendar to Google ...",
+          "url": "https://www.reddit.com/r/iCloud/comments/1w3484g/how_can_i_sync_icloudapple_calendar_to_google/"
+        }
+      ],
+      "relatedQueries": [
+        "More results from discussions.apple.com",
+        "Any do Workspace",
+        "Any do Family plan",
+        "Best calendar app for iPhone free"
+      ]
+    },
+    {
+      "id": "vimcal-availability",
+      "query": "Vimcal iPhone calendar time zones availability",
+      "evidenceFile": "google-observations.json",
+      "observedAt": "2026-10-22T21:36:25.794Z",
+      "canonical": "https://www.cloud-calendars.com/articles/booking-link-or-shared-calendar/",
+      "coverage": "expanded",
+      "assessment": "Vimcal availability and underlying delegate access added with explicit testing limits.",
+      "observedResults": [
+        {
+          "displayOrder": 1,
+          "heading": "The Best Calendar App for Founders",
+          "url": "https://www.vimcal.com/blog/the-best-calendar-app-for-founders"
+        },
+        {
+          "displayOrder": 2,
+          "heading": "Vimcal: AI Calendar & Schedule - App Store - Apple",
+          "url": "https://apps.apple.com/us/app/vimcal-ai-calendar-schedule/id1608841561"
+        },
+        {
+          "displayOrder": 3,
+          "heading": "Download Vimcal for iOS: Manage Your Calendar On-the-Go",
+          "url": "https://www.vimcal.com/downloads/ios"
+        },
+        {
+          "displayOrder": 4,
+          "heading": "Vimcal | Fastest Calendar for People with Too Many Meetings",
+          "url": "https://www.vimcal.com/"
+        },
+        {
+          "displayOrder": 5,
+          "heading": "The Best Calendar App for VCs",
+          "url": "https://www.vimcal.com/blog/the-best-calendar-app-for-vcs"
+        },
+        {
+          "displayOrder": 6,
+          "heading": "Vimcal",
+          "url": "https://x.com/vimcal"
+        },
+        {
+          "displayOrder": 7,
+          "heading": "Vimcal: AI Calendar & Schedule - App Store - Apple",
+          "url": "https://apps.apple.com/ai/app/vimcal-ai-calendar-schedule/id1608841561"
+        },
+        {
+          "displayOrder": 8,
+          "heading": "Vimcal Pricing in 2026: Is It Worth It?",
+          "url": "https://lifestack.ai/blog/vimcal-pricing"
+        },
+        {
+          "displayOrder": 9,
+          "heading": "Vimcal Review 2026: Pros, Cons, Pricing & Verdict",
+          "url": "https://efficient.app/apps/vimcal"
+        }
+      ],
+      "relatedQueries": []
+    },
+    {
+      "id": "amie-calendar",
+      "query": "Amie Google Calendar tasks scheduling iPhone",
+      "evidenceFile": "google-observations.json",
+      "observedAt": "2026-10-22T21:36:34.785Z",
+      "canonical": "https://www.cloud-calendars.com/articles/automatic-time-blocking-versus-manual-calendar/",
+      "coverage": "expanded",
+      "assessment": "Amie event sync distinguished from unverified task scheduling behaviour.",
+      "observedResults": [
+        {
+          "displayOrder": 1,
+          "heading": "Amie - AI Note Taker",
+          "url": "https://amie.so/"
+        },
+        {
+          "displayOrder": 2,
+          "heading": "Amie - Todos, calendar - App Store - Apple",
+          "url": "https://apps.apple.com/us/app/amie-todos-calendar/id1548277133"
+        },
+        {
+          "displayOrder": 3,
+          "heading": "Google Calendar Integration - Amie Documentation",
+          "url": "https://amie.so/documentation/google-calendar-integration"
+        },
+        {
+          "displayOrder": 4,
+          "heading": "Amie Creating a task Flow on iOS",
+          "url": "https://pageflows.com/post/ios/creating-a-task/amie/"
+        },
+        {
+          "displayOrder": 5,
+          "heading": "Amie Review 2026: The Joyful Calendar + To-Do App That ...",
+          "url": "https://softcrit.com/review/amie-review/"
+        },
+        {
+          "displayOrder": 6,
+          "heading": "Amie vs Google Tasks: Comprehensive Comparison",
+          "url": "https://akiflow.com/blog/amie-vs-google-tasks"
+        },
+        {
+          "displayOrder": 7,
+          "heading": "Meet Amie, a joyful productivity tool.",
+          "url": "https://www.cal-staging.com/blog/meet-amie-a-joyful-productivity-tool"
+        },
+        {
+          "displayOrder": 8,
+          "heading": "Anyone who uses Google Calendar app, how do you add ...",
+          "url": "https://www.reddit.com/r/productivity/comments/10l1ntv/anyone_who_uses_google_calendar_app_how_do_you/"
+        },
+        {
+          "displayOrder": 9,
+          "heading": "Amie (@tryamie) / X",
+          "url": "https://x.com/tryamie"
+        }
+      ],
+      "relatedQueries": [
+        "Amie google calendar tasks scheduling iphone ios 15",
+        "Amie for Windows"
+      ]
+    },
+    {
+      "id": "dejal-weather-history",
+      "query": "Dejal Weather Events calendar weather history iPhone",
+      "evidenceFile": "google-observations.json",
+      "observedAt": "2026-10-22T21:36:39.744Z",
+      "canonical": "https://www.cloud-calendars.com/articles/weather-calendar-history-versus-forecast-iphone/",
+      "coverage": "new",
+      "assessment": "Distinct historical-diary intent, with forecasts versus observations and retention tests.",
+      "observedResults": [
+        {
+          "displayOrder": 1,
+          "heading": "Weather Events",
+          "url": "https://dejal.com/weatherevents/"
+        }
+      ],
+      "relatedQueries": []
+    },
+    {
+      "id": "weather-together-brand",
+      "query": "\"Weather Calendar Together\" iPhone",
+      "evidenceFile": "google-observations.json",
+      "observedAt": "2026-10-22T21:36:44.962Z",
+      "canonical": "https://www.cloud-calendars.com/articles/weather-inside-your-calendar/",
+      "coverage": "limited-source-unavailable",
+      "assessment": "Search-visible listing observed; chosen official detail page returned not-found. No specific unverified product features published.",
+      "observedResults": [
+        {
+          "displayOrder": 1,
+          "heading": "‎Weather Calendar Together - You Might Also Like - App Store",
+          "url": "https://apps.apple.com/us/app/weather-calendar-together/id6737379295?see-all=customers-also-bought-apps&platform=iphone"
+        },
+        {
+          "displayOrder": 2,
+          "heading": "Weather Calendar Together - App Store",
+          "url": "https://apps.apple.com/ec/app/weather-calendar-together/id6737379295?l=en-GB&platform=mac"
+        },
+        {
+          "displayOrder": 3,
+          "heading": "Weather Calendar Together - App Store",
+          "url": "https://apps.apple.com/us/app/weather-calendar-together/id6737379295?l=fr-FR&platform=watch"
+        },
+        {
+          "displayOrder": 4,
+          "heading": "Weather Calendar Together - Ratings & Reviews - App Store",
+          "url": "https://apps.apple.com/us/app/weather-calendar-together/id6737379295?see-all=reviews&platform=iphone"
+        },
+        {
+          "displayOrder": 5,
+          "heading": "Weather and astro for iPhone - Free App Download",
+          "url": "https://www.appbrain.com/appstore/weather-and-astro/ios-6771852198"
+        },
+        {
+          "displayOrder": 6,
+          "heading": "Weather Calendar Together - App Store",
+          "url": "https://apps.apple.com/ve/app/weather-calendar-together/id6737379295"
+        },
+        {
+          "displayOrder": 7,
+          "heading": "Weather Events - for Calendar - App Store - Apple",
+          "url": "https://apps.apple.com/bh/app/weather-events-for-calendar/id6475696867"
+        },
+        {
+          "displayOrder": 8,
+          "heading": "Open Window: Fresh Air for iPhone - Stats, Reviews & ...",
+          "url": "https://www.appbrain.com/appstore/open-window-fresh-air/ios-6782536028"
+        },
+        {
+          "displayOrder": 9,
+          "heading": "Weather Calendar Together - App Store",
+          "url": "https://apps.apple.com/br/app/weather-calendar-together/id6737379295"
+        }
+      ],
+      "relatedQueries": []
     }
   ],
   "remaining": [
-    "Complete focused actual-query and substantive primary-source review for five originally named census entries: Weather Calendar Together, Dejal/Weather Events, Any.do, Vimcal and Amie. Dejal is a publisher alias, not a second independent calendar app.",
-    "Assess the explicit partial or insufficient-intent dispositions in the own-site query map without manufacturing low-value pages.",
-    "Consolidate competitor/topic evidence and current coverage into an auditable final research deliverable; observations cannot prove every possible ranking keyword."
+    "Consolidate the final topic/competitor deliverable and audit remaining partial coverage.",
+    "No measured search volume or exhaustive competitor ranking export is available; do not mislabel observations as complete keyword inventories."
   ],
   "ownSiteEvidence": {
     "file": "gsc-query-observations.json",

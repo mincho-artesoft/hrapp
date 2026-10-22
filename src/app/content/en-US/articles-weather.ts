@@ -85,6 +85,7 @@ export const WEATHER_EN_US: Readonly<Record<string, LocalisedArticle>> = {
     }
   ],
   "seeAlso": [
+    "weather-calendar-history-versus-forecast-iphone",
     "forecast-beside-every-event",
     "a-fourteen-day-view-of-the-weather",
     "weather-where-the-event-is",

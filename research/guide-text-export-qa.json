@@ -1,8 +1,8 @@
 {
-  "guides": 71,
+  "guides": 72,
   "selection": "tools/guide-text-selection.json",
   "extraction": "Visible article headings, paragraphs, lists, FAQs and source links; gallery/other-app cards excluded.",
-  "exportedCharacters": 465248,
+  "exportedCharacters": 473284,
   "records": [
     {
       "slug": "what-calendar-sync-actually-does",
@@ -133,8 +133,8 @@
     {
       "slug": "weather-inside-your-calendar",
       "source": "https://www.cloud-calendars.com/articles/weather-inside-your-calendar/",
-      "blocks": 46,
-      "characters": 5683
+      "blocks": 47,
+      "characters": 5810
     },
     {
       "slug": "forecast-beside-every-event",
@@ -361,8 +361,8 @@
     {
       "slug": "booking-link-or-shared-calendar",
       "source": "https://www.cloud-calendars.com/articles/booking-link-or-shared-calendar/",
-      "blocks": 40,
-      "characters": 5561
+      "blocks": 45,
+      "characters": 6488
     },
     {
       "slug": "natural-language-calendar-events-iphone",
@@ -379,14 +379,14 @@
     {
       "slug": "iphone-calendar-tasks-reminders-versus-event-alerts",
       "source": "https://www.cloud-calendars.com/articles/iphone-calendar-tasks-reminders-versus-event-alerts/",
-      "blocks": 41,
-      "characters": 5494
+      "blocks": 45,
+      "characters": 6409
     },
     {
       "slug": "automatic-time-blocking-versus-manual-calendar",
       "source": "https://www.cloud-calendars.com/articles/automatic-time-blocking-versus-manual-calendar/",
-      "blocks": 43,
-      "characters": 6039
+      "blocks": 47,
+      "characters": 6846
     },
     {
       "slug": "what-is-a-cloud-calendar",
@@ -429,6 +429,12 @@
       "source": "https://www.cloud-calendars.com/articles/sync-google-tasks-apple-reminders-iphone/",
       "blocks": 52,
       "characters": 7314
+    },
+    {
+      "slug": "weather-calendar-history-versus-forecast-iphone",
+      "source": "https://www.cloud-calendars.com/articles/weather-calendar-history-versus-forecast-iphone/",
+      "blocks": 39,
+      "characters": 5154
     }
   ]
 }
