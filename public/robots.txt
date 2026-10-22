@@ -15,7 +15,9 @@
 User-agent: *
 Allow: /
 
-# Binary media. Not pages, and nothing a renderer needs.
+# Public screenshot renditions are embedded in article and product pages.
+# Allow crawlers to read those images; keep other media paths excluded.
+Allow: /media/panel/
 Disallow: /media/
 
 Sitemap: https://www.cloud-calendars.com/sitemap.xml

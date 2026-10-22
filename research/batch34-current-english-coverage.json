@@ -1,0 +1,955 @@
+{
+  "checkedAt": "2026-10-22T03:50:52.439Z",
+  "all56AccountedFor": true,
+  "preservedBodies": 55,
+  "reviewedExpandedBody": 1,
+  "remainingUnpinned": 0,
+  "scope": "Source body provenance only; not translation/runtime/ranking certification.",
+  "articles": [
+    {
+      "slug": "onecal-alternative-iphone-calendar-view-or-sync",
+      "file": "src/app/content/en-US/articles-compare.ts",
+      "currentRawObjectSha256": "251c8b8f7e04e436fc8a7828f042bc509780fbba7a9de293e8a8b9822bff899f",
+      "currentJsonStringifySha256": "3c28e7d15dd525c206d50354e99b48296c7554d03b203c9800664e7fd5872266",
+      "status": "fresh_complete_current_object_read",
+      "evidence": [
+        "research/batch31-english-reviews/part-a.json"
+      ]
+    },
+    {
+      "slug": "free-google-sync-without-adverts",
+      "file": "src/app/content/en-US/articles-compare.ts",
+      "currentRawObjectSha256": "1a0b3dc30cfcf17491bc72928a71a861d264447df23a4fe81f69e4f3c417a739",
+      "currentJsonStringifySha256": "7051c9eff50013bba9d6a94f2714d70c8823d3de3a4455cb08c8df1ad095d856",
+      "status": "fresh_complete_current_object_read",
+      "evidence": [
+        "research/batch31-english-reviews/root-three.json"
+      ]
+    },
+    {
+      "slug": "what-fantastical-costs-and-what-this-does",
+      "file": "src/app/content/en-US/articles-compare.ts",
+      "currentRawObjectSha256": "c5fb0faf7583c225a65b61c99a0275d3467fa0c255a5c5229e4bac44a9c9bee5",
+      "currentJsonStringifySha256": "d613cdf617949006ceea4449c928bf878fbee439e8dff376364a85762ff1e672",
+      "status": "fresh_complete_current_object_read",
+      "evidence": [
+        "research/batch31-english-reviews/root-three.json"
+      ]
+    },
+    {
+      "slug": "what-you-get-without-paying-anything",
+      "file": "src/app/content/en-US/articles-compare.ts",
+      "currentRawObjectSha256": "1f2fb684b92cc5b75f551c22bdc03a66a1765bd1baa6c8baa5c29bb03a1d609a",
+      "currentJsonStringifySha256": "76c8649aed6f69fc709a4cd4f9bf9efb1eae9f4028bbe1859cfa45bc3886ec82",
+      "status": "fresh_complete_current_object_read",
+      "evidence": [
+        "research/batch31-english-reviews/part-a.json"
+      ]
+    },
+    {
+      "slug": "what-a-subscription-actually-buys",
+      "file": "src/app/content/en-US/articles-compare.ts",
+      "currentRawObjectSha256": "bbd78c2c4afd95826abadd14e4366947716c42d0058429622dd695422e01242a",
+      "currentJsonStringifySha256": "6b067d4169e41e78facbbce16153037a017ead62e920508c522f16b6b588ea03",
+      "status": "prior_complete_review_current_body_preserved",
+      "evidence": [
+        {
+          "report": "research/batch23-family-access/final-review.json",
+          "pointer": "/scope or /readScope / reviewed-file hashes",
+          "proof": {
+            "chain": "Explicit complete proposed-object review; its pinned raw draft hash verified now; parsed draft body equals every current body field.",
+            "reviewedSnapshot": "research/batch23-family-access/what-a-subscription-actually-buys.json",
+            "snapshotRawSha256": "18c5fbddc25d4969cc3dd5a49b620a348cbae059ad8e314f0472d0378e522c8d",
+            "changedTopLevelFieldsSinceSnapshot": [],
+            "preservedFields": [
+              "lede",
+              "commonBelief",
+              "sections",
+              "claims",
+              "practical",
+              "faq",
+              "sourcesHeading",
+              "sources"
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "slug": "why-a-shared-calendar-does-not-appear",
+      "file": "src/app/content/en-US/articles-google.ts",
+      "currentRawObjectSha256": "700ffb28cc2b606294737e591ee2ad0a0da283f5b0a34012fa279ce8c913d552",
+      "currentJsonStringifySha256": "002fdb0820828b0fab0c1005bd7b0818dae3ad485677c82899630fadf98b5cf8",
+      "status": "fresh_complete_current_object_read",
+      "evidence": [
+        "research/batch31-english-reviews/part-a.json"
+      ]
+    },
+    {
+      "slug": "the-secret-address-of-a-google-calendar",
+      "file": "src/app/content/en-US/articles-google.ts",
+      "currentRawObjectSha256": "4522a943481c86b0b18e57ac88cecf41a540893e27aee240a599da79122f8f16",
+      "currentJsonStringifySha256": "44277f4bb46c15dc809b93f9d0e1cbe767f35ef7f982e8704eabf8185c1c509f",
+      "status": "prior_complete_review_current_body_preserved",
+      "evidence": [
+        {
+          "report": "research/batch21-feed-handoff/final-review.json",
+          "pointer": "/scope or /readScope / reviewed-file hashes",
+          "proof": {
+            "chain": "Explicit complete proposed-object review; its pinned raw draft hash verified now; parsed draft body equals every current body field.",
+            "reviewedSnapshot": "research/batch21-feed-handoff/the-secret-address-of-a-google-calendar.json",
+            "snapshotRawSha256": "0cadfbfc9dca3de4653cd7ecafaaea59ad7e5836b1d7a6cf28c600304f642271",
+            "changedTopLevelFieldsSinceSnapshot": [],
+            "preservedFields": [
+              "lede",
+              "commonBelief",
+              "sections",
+              "claims",
+              "practical",
+              "faq",
+              "sourcesHeading",
+              "sources"
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "slug": "what-guests-can-do-to-your-event",
+      "file": "src/app/content/en-US/articles-google.ts",
+      "currentRawObjectSha256": "3d8667eb5ff8ee5c04984fe31eb588dd5e65f798698f7fe86abebf1cff4339ca",
+      "currentJsonStringifySha256": "ee120379131f1588e27d0190e13b45e9e84c753806b50002013c98188ad4ed59",
+      "status": "prior_full_body_plus_independently_reviewed_document_access_section",
+      "evidence": [
+        "research/batch33-current-english-coverage.json",
+        "research/batch34-discovery/review.json",
+        "research/batch34-source-qa.json"
+      ]
+    },
+    {
+      "slug": "google-calendars-that-never-reach-your-iphone",
+      "file": "src/app/content/en-US/articles-google.ts",
+      "currentRawObjectSha256": "7e16a971b42d8d92a47dc3aa6c75c057c80e052d8620a4fa144d0dc3fd7f4668",
+      "currentJsonStringifySha256": "9dd8865cffbeb8a48a4ccc344d0e9532b1b7a2274b83297eaf00c4eac25bfe3e",
+      "status": "prior_complete_review_current_body_preserved",
+      "evidence": [
+        {
+          "report": "research/batch29-competitor-intents/decision.json",
+          "pointer": "/localBodyComparisons",
+          "proof": "Explicit complete named-object review, recorded raw object SHA-256 matches current literal exactly."
+        }
+      ]
+    },
+    {
+      "slug": "taking-back-a-calendar-you-shared",
+      "file": "src/app/content/en-US/articles-google.ts",
+      "currentRawObjectSha256": "8eea3407c2cdec5dca89e00158882fa9df4a502d64880e937e81c45cf5191f8f",
+      "currentJsonStringifySha256": "e30ac1cd409604f99356bf5a8a99dfa1cf58241393df9c0e72b123f645f37f14",
+      "status": "prior_complete_review_current_body_preserved",
+      "evidence": [
+        {
+          "report": "research/batch22-coverage/sharing-work.json",
+          "pointer": "/reviewedBodies/6",
+          "proof": "Explicit complete object/body read; recorded object hash exactly matches current source or JSON.stringify object."
+        }
+      ]
+    },
+    {
+      "slug": "recover-deleted-calendar-events-iphone",
+      "file": "src/app/content/en-US/articles-help.ts",
+      "currentRawObjectSha256": "c34f82e3fb366ebb83853ed7f1640319c5fbb3ff3e7018df817c8277578c41e7",
+      "currentJsonStringifySha256": "4a459cc58b23a0e9e3208f93a8081d059ed50f7a779ec4348485310caca64347",
+      "status": "prior_complete_review_current_body_preserved",
+      "evidence": [
+        {
+          "report": "research/batch29-competitor-intents/final-review.json",
+          "pointer": "/scope or /readScope / reviewed-file hashes",
+          "proof": {
+            "chain": "Explicit complete proposed-object review; its pinned raw draft hash verified now; parsed draft body equals every current body field.",
+            "reviewedSnapshot": "research/batch29-competitor-intents/recover-deleted-calendar-events-iphone.json",
+            "snapshotRawSha256": "c26bd855ffa4cadb3718d409a11af1ba55e2357abc98689b9e308f2af6a9539c",
+            "changedTopLevelFieldsSinceSnapshot": [],
+            "preservedFields": [
+              "lede",
+              "commonBelief",
+              "sections",
+              "claims",
+              "practical",
+              "faq",
+              "sourcesHeading",
+              "sources"
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "slug": "disconnect-calendar-integration-without-losing-track",
+      "file": "src/app/content/en-US/articles-help.ts",
+      "currentRawObjectSha256": "1e6b337eb958e369ba1cd7ec07c4880a78d4dbe5a46b3ce8d20cf1c046dcda5d",
+      "currentJsonStringifySha256": "3f1b443c0f7fe96da521ed0d2bfe4a79a48b0d48940fcbb7f5d51a77d6ababaa",
+      "status": "prior_complete_review_current_body_preserved",
+      "evidence": [
+        {
+          "report": "research/batch28-readiness/coverage-audit.json",
+          "pointer": "/currentFullBodyReads/1",
+          "proof": "Explicit complete object/body read; recorded object hash exactly matches current source or JSON.stringify object."
+        }
+      ]
+    },
+    {
+      "slug": "caldav-calendar-on-iphone",
+      "file": "src/app/content/en-US/articles-help.ts",
+      "currentRawObjectSha256": "6002d4f3b2b75970b73b8a85f74d2af4b31fdcdbfa263e57657ee157929b0306",
+      "currentJsonStringifySha256": "e1748b7d61934b5ca6812e3c8e99f27c763774e7e09761b8b87747e7708a1b94",
+      "status": "prior_complete_review_current_body_preserved",
+      "evidence": [
+        {
+          "report": "research/batch28-caldav-localization/cross-review.json",
+          "pointer": "/english and /revisionRevalidation/rows/0",
+          "proof": {
+            "chain": "Complete immutable English before reviewed; exact three changed paragraphs freshly reviewed, raw hashes pinned. Reapplying documented changes equals final draft; body equals current.",
+            "before": {
+              "file": "research/batch28-caldav-localization/source-en.json",
+              "rawFileSha256": "c29e10403cd304f2523ad9b60b133dc3a918418fe131bcb25260af23b64ab96b",
+              "currentSource": "src/app/content/en-US/articles-help.ts:caldav-calendar-on-iphone",
+              "matchesCurrentParsedObject": true,
+              "role": "Immutable English before used in original complete review; revised English comparator is en-US-proposal.json."
+            },
+            "after": {
+              "locale": "en-US",
+              "file": "research/batch28-caldav-localization/en-US-proposal.json",
+              "rawFileSha256": "8d5f5a6321dc794390d59db3f5e43540c94aae28727bfd9854535e0a3cdc8e2a",
+              "freshReadScope": [
+                "sections[3].body[0]",
+                "sections[3].body[1]",
+                "sections[5].body[0]"
+              ],
+              "structure": {
+                "sections": 6,
+                "paragraphs": 12,
+                "practical": 6,
+                "faq": 3
+              },
+              "qualityAuditHashMatches": true,
+              "assessment": "pass: direct reader language preserves full read access/add-only distinction and provider-specific limitations. Original-selection recording/restoration and conditional widget/notification/Google sync effects match recorded batch26 source evidence; no all-provider pause/resume or immediate updates promised."
+            },
+            "patchReport": "research/batch28-caldav-localization/quality-revision-audit.json",
+            "preservedFields": [
+              "lede",
+              "commonBelief",
+              "sections",
+              "claims",
+              "practical",
+              "faq",
+              "sourcesHeading",
+              "sources"
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "slug": "calendar-notifications-missing-silent-or-duplicated",
+      "file": "src/app/content/en-US/articles-help.ts",
+      "currentRawObjectSha256": "2724575c4208d9c8839dd0320647e0200a58d5b933aee7b84791aa1d81bdd936",
+      "currentJsonStringifySha256": "8c49e6acd0981d048b84a36e3d52d906f1ddf34d7ff6956ba9993f29d1caf9fb",
+      "status": "fresh_complete_current_object_read",
+      "evidence": [
+        "research/batch31-english-reviews/part-a.json"
+      ]
+    },
+    {
+      "slug": "find-old-calendar-events-by-account-date-and-title",
+      "file": "src/app/content/en-US/articles-help.ts",
+      "currentRawObjectSha256": "f85ec2c3362343a2894ceb49fe582a04dfa4c5176abac282f5f70b610c8903f0",
+      "currentJsonStringifySha256": "83df31db59ade9ecc3ed48a41d60c61eda5384914531f0d427e9b9ab0c296708",
+      "status": "fresh_complete_current_object_read",
+      "evidence": [
+        "research/batch31-english-reviews/part-a.json"
+      ]
+    },
+    {
+      "slug": "calendar-export-ics-pdf-and-backup",
+      "file": "src/app/content/en-US/articles-help.ts",
+      "currentRawObjectSha256": "e5997bcf600281c3abc91e7a19f42648deee22760d8df2fa4596bcdf5874ef03",
+      "currentJsonStringifySha256": "2019588b0512ba28398d0cda4b8445f5eb2b5530cc5d3ea4a6ccd5ca43a9f49b",
+      "status": "prior_complete_review_current_body_preserved",
+      "evidence": [
+        {
+          "report": "research/batch26-duplicates/final-review.json",
+          "pointer": "/scope or /readScope / reviewed-file hashes",
+          "proof": {
+            "chain": "Explicit complete proposed-object review; its pinned raw draft hash verified now; parsed draft body equals every current body field.",
+            "reviewedSnapshot": "research/batch26-duplicates/calendar-export-ics-pdf-and-backup.json",
+            "snapshotRawSha256": "12598e9da2b1d67877b8dafc126373b6eb2efbaa32a352dba275dca39f3f04dd",
+            "changedTopLevelFieldsSinceSnapshot": [
+              "seeAlso"
+            ],
+            "preservedFields": [
+              "lede",
+              "commonBelief",
+              "sections",
+              "claims",
+              "practical",
+              "faq",
+              "sourcesHeading",
+              "sources"
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "slug": "event-saved-to-wrong-calendar",
+      "file": "src/app/content/en-US/articles-help.ts",
+      "currentRawObjectSha256": "46dbe6f71f55a9c5edb9bdb7590c025f8fe0d880577822f2acaefdd24b1d7057",
+      "currentJsonStringifySha256": "8645411c72c23aa1a68a497b52044fb407d86f4b13a83958837954d8725f5c0e",
+      "status": "prior_full_body_preserved_with_related_only_link",
+      "evidence": [
+        "research/batch32-current-english-coverage.json",
+        "research/batch33-related-links.json",
+        "research/batch33-source-qa.json"
+      ]
+    },
+    {
+      "slug": "family-pickup-calendar-handoff",
+      "file": "src/app/content/en-US/articles-help.ts",
+      "currentRawObjectSha256": "48c6ac4d6abbcf40f4184aea067e3e5b9366e899dad0973556b0b9fc08db42bd",
+      "currentJsonStringifySha256": "5c20916b37b3f0d103beaaefcf79a32db99532176014b8386acc54e1e1c74682",
+      "status": "prior_complete_review_current_body_preserved",
+      "evidence": [
+        {
+          "report": "research/batch22-coverage/sharing-work.json",
+          "pointer": "/reviewedBodies/7",
+          "proof": "Explicit complete object/body read; recorded object hash exactly matches current source or JSON.stringify object."
+        }
+      ]
+    },
+    {
+      "slug": "drag-an-event-to-move-it",
+      "file": "src/app/content/en-US/articles-planning.ts",
+      "currentRawObjectSha256": "3b4aa50d7fb952df35327ea7924780116d7b38393c0746a5986cfcaf659189bc",
+      "currentJsonStringifySha256": "e92385839b1172027f7592a5c72567872724949ed25f6fdb64b3d62f167a16b2",
+      "status": "prior_complete_review_current_body_preserved",
+      "evidence": [
+        {
+          "report": "research/batch22-coverage/widgets-views.json",
+          "pointer": "/fullObjectReads/9",
+          "proof": "Explicit complete object/body read; recorded object hash exactly matches current source or JSON.stringify object."
+        }
+      ]
+    },
+    {
+      "slug": "a-week-view-that-fits-a-week",
+      "file": "src/app/content/en-US/articles-planning.ts",
+      "currentRawObjectSha256": "9cabea12904a876b3684b9bc53a9c6d92b3a0eb8d8c56790263c71a79f5f1964",
+      "currentJsonStringifySha256": "e5d7b1596cc825297b63351fa8c72a2b981bf8bf68336de373caec9b94f7c647",
+      "status": "prior_complete_review_current_body_preserved",
+      "evidence": [
+        {
+          "report": "research/batch27-shift-schedule/final-review.json",
+          "pointer": "/scope or /readScope / reviewed-file hashes",
+          "proof": {
+            "chain": "Explicit complete proposed-object review; its pinned raw draft hash verified now; parsed draft body equals every current body field.",
+            "reviewedSnapshot": "research/batch27-shift-schedule/a-week-view-that-fits-a-week.json",
+            "snapshotRawSha256": "7f90d249e37d16c20b786eaaf86bc52c88271d618e8d31103474bc0f6584c2d3",
+            "changedTopLevelFieldsSinceSnapshot": [],
+            "preservedFields": [
+              "lede",
+              "commonBelief",
+              "sections",
+              "claims",
+              "practical",
+              "faq",
+              "sourcesHeading",
+              "sources"
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "slug": "month-view-on-a-bigger-screen",
+      "file": "src/app/content/en-US/articles-planning.ts",
+      "currentRawObjectSha256": "1101dcadfe6af951d8a9bd0ea7075cca6a5db8a17d58cbe47649f80cd4284c6a",
+      "currentJsonStringifySha256": "df6df1dcb8f77c9ecd74f3e24f16eed4f696005542da9eb2bd1f3d852ee8ca43",
+      "status": "prior_complete_review_current_body_preserved",
+      "evidence": [
+        {
+          "report": "research/batch22-coverage/widgets-views.json",
+          "pointer": "/fullObjectReads/6",
+          "proof": "Explicit complete object/body read; recorded object hash exactly matches current source or JSON.stringify object."
+        }
+      ]
+    },
+    {
+      "slug": "planning-a-week-in-ten-minutes",
+      "file": "src/app/content/en-US/articles-planning.ts",
+      "currentRawObjectSha256": "9c9ef1538b97f2aabc2cf2efe69f90667752a874870be9cf97e43861f57a97a6",
+      "currentJsonStringifySha256": "a08211e1c7d293ab165e06091a9a6f27012a5c8aba4840391e4201ee84962b3c",
+      "status": "prior_complete_review_current_body_preserved",
+      "evidence": [
+        {
+          "report": "research/batch28-readiness/coverage-audit.json",
+          "pointer": "/currentFullBodyReads/3",
+          "proof": "Explicit complete object/body read; recorded object hash exactly matches current source or JSON.stringify object."
+        },
+        {
+          "report": "research/batch22-targeted-guides/final-review.json",
+          "pointer": "/scope or /readScope / reviewed-file hashes",
+          "proof": {
+            "chain": "Explicit complete proposed-object review; its pinned raw draft hash verified now; parsed draft body equals every current body field.",
+            "reviewedSnapshot": "research/batch22-targeted-guides/planning-a-week-in-ten-minutes.json",
+            "snapshotRawSha256": "bd881129f81c5e4e343f40edf5359ca439f2d6a210bef7411eb9f2aeaf7beb51",
+            "changedTopLevelFieldsSinceSnapshot": [],
+            "preservedFields": [
+              "lede",
+              "commonBelief",
+              "sections",
+              "claims",
+              "practical",
+              "faq",
+              "sourcesHeading",
+              "sources"
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "slug": "recurring-events-without-the-mess",
+      "file": "src/app/content/en-US/articles-planning.ts",
+      "currentRawObjectSha256": "18614ec9491017594ab907ab568f37c40955b8594598c13ca2cac2e864d89f10",
+      "currentJsonStringifySha256": "7fb4cbb8b72b124ad9561ff58801e21e5040ab3fee54b6a3b4db5f3f921b20d6",
+      "status": "prior_complete_review_current_body_preserved",
+      "evidence": [
+        {
+          "report": "research/batch20-independent-review.json",
+          "pointer": "/source",
+          "proof": {
+            "chain": "Explicit full English object read; recorded module hash matches git 434120b module; parsed named object body equals current.",
+            "historicalModuleSha256": "62bd5cbf96da54ba75a84d7c761b9e603dc20fc174c524fcff645198c05d745b",
+            "preservedFields": [
+              "lede",
+              "commonBelief",
+              "sections",
+              "claims",
+              "practical",
+              "faq",
+              "sourcesHeading",
+              "sources"
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "slug": "time-zones-and-the-flight-you-booked",
+      "file": "src/app/content/en-US/articles-planning.ts",
+      "currentRawObjectSha256": "ea13808b5d6de5f3235a0a77927974d71d9f74584741327f1f440e2926358148",
+      "currentJsonStringifySha256": "e146a6c29552c1241b547310ffc6a9cb1286fea6c5bdf40cb5dfc94724ad97d6",
+      "status": "prior_complete_review_current_body_preserved",
+      "evidence": [
+        {
+          "report": "research/batch29-bg-timezone/cross-review.json",
+          "pointer": "/scope and /files/0",
+          "proof": {
+            "chain": "Explicit complete supplied English source read; pinned snapshot raw hash verified and all substantive body fields equal current.",
+            "snapshot": {
+              "file": "research/batch29-bg-timezone/source-en.json",
+              "rawFileSha256": "460d932ae303c74241172001b62357faef922b5f19c7c4009ff7fcafbedf9d04"
+            }
+          }
+        }
+      ]
+    },
+    {
+      "slug": "what-an-all-day-event-really-means",
+      "file": "src/app/content/en-US/articles-planning.ts",
+      "currentRawObjectSha256": "620c5a088b12f6d71a7c6f4e5fde243fcb1622b2c914851158294e4002d6e709",
+      "currentJsonStringifySha256": "d833700e89965ddb4e2eea82073034566c4e81b5ea016a64d434e769d2a9a275",
+      "status": "complete_before_body_plus_independent_full_draft_review_and_exact_change_chain",
+      "evidence": [
+        "research/batch31-current-english-coverage.json",
+        "research/batch32-birthday/review.json",
+        "research/batch32-source-qa.json"
+      ]
+    },
+    {
+      "slug": "a-list-for-people-who-dislike-grids",
+      "file": "src/app/content/en-US/articles-planning.ts",
+      "currentRawObjectSha256": "01af60a3bfa72f15649c2f8a2da217fed0c28be4a99b1b81c8ae52d8dcd7ac37",
+      "currentJsonStringifySha256": "de1ffeda8226dab3978bc6a42323b97b7534c8cc8abbeccb13a084afed7c04ff",
+      "status": "prior_complete_review_current_body_preserved",
+      "evidence": [
+        {
+          "report": "research/batch22-coverage/widgets-views.json",
+          "pointer": "/fullObjectReads/7",
+          "proof": "Explicit complete object/body read; recorded object hash exactly matches current source or JSON.stringify object."
+        }
+      ]
+    },
+    {
+      "slug": "the-year-in-one-screen",
+      "file": "src/app/content/en-US/articles-planning.ts",
+      "currentRawObjectSha256": "570930c6db1d504a419c47931ccd6d3b6fead2ec9ae2a57f4733bcca4cfe6388",
+      "currentJsonStringifySha256": "e1f3f320d856e84fc8d3104cbb7d51c05c08bd0176958a882d4818b37acec0d6",
+      "status": "prior_complete_review_current_body_preserved",
+      "evidence": [
+        {
+          "report": "research/batch22-coverage/widgets-views.json",
+          "pointer": "/fullObjectReads/8",
+          "proof": "Explicit complete object/body read; recorded object hash exactly matches current source or JSON.stringify object."
+        }
+      ]
+    },
+    {
+      "slug": "calendar-event-or-room-reservation",
+      "file": "src/app/content/en-US/articles-sharing.ts",
+      "currentRawObjectSha256": "b28727f7e19b5657948f86ef35dedda9bb8bc0a750980f2a9aac3682a5277b59",
+      "currentJsonStringifySha256": "236b6b058e253ec0874eba0cbdbf53d72b1c313d80b8c5025e35cf1ac856c553",
+      "status": "fresh_complete_current_object_read",
+      "evidence": [
+        "research/batch31-english-reviews/part-a.json"
+      ]
+    },
+    {
+      "slug": "sharing-one-event-not-your-calendar",
+      "file": "src/app/content/en-US/articles-sharing.ts",
+      "currentRawObjectSha256": "8b1e984d1796dd08cc4a60f5300696f472c27a28dbb3ecab9b2cd08dc46547d8",
+      "currentJsonStringifySha256": "94df5d346cead4ad6e0d07bd244bdafc3d64e2a927f3d37b33eb14df4356704d",
+      "status": "prior_complete_review_current_body_preserved",
+      "evidence": [
+        {
+          "report": "research/batch22-coverage/sharing-work.json",
+          "pointer": "/reviewedBodies/0",
+          "proof": "Explicit complete object/body read; recorded object hash exactly matches current source or JSON.stringify object."
+        },
+        {
+          "report": "research/batch28-readiness/aso-audit.json",
+          "pointer": "/completeBodyReads/0",
+          "proof": "Explicit complete object/body read; recorded object hash exactly matches current source or JSON.stringify object."
+        }
+      ]
+    },
+    {
+      "slug": "inviting-people-who-do-not-have-the-app",
+      "file": "src/app/content/en-US/articles-sharing.ts",
+      "currentRawObjectSha256": "cd4b46ea9e44e4926caee36966ff38c83e937d5306d34d2cb22aad8719a89e45",
+      "currentJsonStringifySha256": "2fe1b7dfa3b2dffd8c942b7e98477b1882051563b84c8ef68b84885debd2fbd9",
+      "status": "prior_complete_review_current_body_preserved",
+      "evidence": [
+        {
+          "report": "research/batch22-coverage/sharing-work.json",
+          "pointer": "/reviewedBodies/1",
+          "proof": "Explicit complete object/body read; recorded object hash exactly matches current source or JSON.stringify object."
+        },
+        {
+          "report": "research/batch28-readiness/aso-audit.json",
+          "pointer": "/completeBodyReads/1",
+          "proof": "Explicit complete object/body read; recorded object hash exactly matches current source or JSON.stringify object."
+        }
+      ]
+    },
+    {
+      "slug": "a-calendar-that-is-yours-to-share",
+      "file": "src/app/content/en-US/articles-sharing.ts",
+      "currentRawObjectSha256": "8757e6e6b40cd88b814ff9e175593ad79d552dc1618dd860ec4a28a1d2493222",
+      "currentJsonStringifySha256": "7f720a59779ea72061148577ae4f3a82c84d949dedf2a8f12ca0d4b7426172fd",
+      "status": "prior_complete_review_current_body_preserved",
+      "evidence": [
+        {
+          "report": "research/batch22-coverage/sharing-work.json",
+          "pointer": "/reviewedBodies/2",
+          "proof": {
+            "chain": "Recorded reviewed JSON.stringify hash matches object from git 434120b; every body field equals current parsed object.",
+            "historicalObjectSha256": "f9380ec60dfa6f263376f313897280e49bff0b11a42074ba0d3942d775c5c926",
+            "changedTopLevelFields": [
+              "seeAlso"
+            ],
+            "preservedFields": [
+              "lede",
+              "commonBelief",
+              "sections",
+              "claims",
+              "practical",
+              "faq",
+              "sourcesHeading",
+              "sources"
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "slug": "who-can-see-what-in-google-calendar",
+      "file": "src/app/content/en-US/articles-sharing.ts",
+      "currentRawObjectSha256": "640ec0b2673eb3f8fbaad91a9029ac229e5db9fbd03fde96ae834c58d641ab7c",
+      "currentJsonStringifySha256": "0d5b87e67777e7fb6565f2386243e8b5017749f65beab082edcec95dfb195b67",
+      "status": "prior_complete_review_current_body_preserved",
+      "evidence": [
+        {
+          "report": "research/batch22-coverage/sharing-work.json",
+          "pointer": "/reviewedBodies/3",
+          "proof": "Explicit complete object/body read; recorded object hash exactly matches current source or JSON.stringify object."
+        }
+      ]
+    },
+    {
+      "slug": "keeping-track-of-who-replied",
+      "file": "src/app/content/en-US/articles-sharing.ts",
+      "currentRawObjectSha256": "87f2556fe0ec1c5568edd757865cbbc09490c7c9d518f3a643022edacb28f796",
+      "currentJsonStringifySha256": "d2ea6b1527f77e9fbf4d065b96a5b527f0635a7da1725dec463d3701477c0e18",
+      "status": "prior_complete_review_current_body_preserved",
+      "evidence": [
+        {
+          "report": "research/batch22-coverage/sharing-work.json",
+          "pointer": "/reviewedBodies/4",
+          "proof": "Explicit complete object/body read; recorded object hash exactly matches current source or JSON.stringify object."
+        }
+      ]
+    },
+    {
+      "slug": "meeting-links-that-make-themselves",
+      "file": "src/app/content/en-US/articles-sharing.ts",
+      "currentRawObjectSha256": "6c45da36b7e2c97dd54c6c0efea3e5850fdbe6b30c7766df0e17e8197d758d55",
+      "currentJsonStringifySha256": "cb8f8f00f00c3a7286471d30ce9e07164ec63e07fc04307f291955ccf8ede026",
+      "status": "fresh_complete_current_object_read",
+      "evidence": [
+        "research/batch31-english-reviews/part-a.json"
+      ]
+    },
+    {
+      "slug": "icloud-google-and-outlook-in-one-view",
+      "file": "src/app/content/en-US/articles-unify.ts",
+      "currentRawObjectSha256": "59c1312f6ea394f7edf6e1498bf3259efd0053c904f2b0c3d53267c81866e2f2",
+      "currentJsonStringifySha256": "247e2c75295a5b966eb16baac402a6cb767f5d950565c6ce541188a71ae00e51",
+      "status": "prior_complete_review_current_body_preserved",
+      "evidence": [
+        {
+          "report": "research/batch28-readiness/aso-audit.json",
+          "pointer": "/completeBodyReads/2",
+          "proof": "Explicit complete object/body read; recorded object hash exactly matches current source or JSON.stringify object."
+        },
+        {
+          "report": "research/batch22-targeted-guides/final-review.json",
+          "pointer": "/scope or /readScope / reviewed-file hashes",
+          "proof": {
+            "chain": "Explicit complete proposed-object review; its pinned raw draft hash verified now; parsed draft body equals every current body field.",
+            "reviewedSnapshot": "research/batch22-targeted-guides/icloud-google-and-outlook-in-one-view.json",
+            "snapshotRawSha256": "4a0a54c49ad56f4cefbdbef576ff32ba495431bb8373ffbb9809966c0a3ffb6e",
+            "changedTopLevelFieldsSinceSnapshot": [],
+            "preservedFields": [
+              "lede",
+              "commonBelief",
+              "sections",
+              "claims",
+              "practical",
+              "faq",
+              "sourcesHeading",
+              "sources"
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "slug": "three-calendar-apps-is-two-too-many",
+      "file": "src/app/content/en-US/articles-unify.ts",
+      "currentRawObjectSha256": "4292a3ae34a639d9ec94926ee7c92a0481e2f7099702a0a2e944ab3b928525a3",
+      "currentJsonStringifySha256": "6fa402be531406b167448c6807d62cd4cb1dac671270996bce49497d6db45187",
+      "status": "complete_before_body_read_and_exact_reviewed_change_chain",
+      "evidence": [
+        "research/batch31-english-reviews/part-a.json",
+        "research/batch31-english-reviews/corrections-cross-review.json",
+        "research/batch31-source-qa.json"
+      ]
+    },
+    {
+      "slug": "what-calendar-sync-actually-does",
+      "file": "src/app/content/en-US/articles-unify.ts",
+      "currentRawObjectSha256": "06e1ccc907cf04143cae3ba4a727be7659cacbcb2876d1e060b2a774693abfa4",
+      "currentJsonStringifySha256": "b1050afa8428e67ddd157855c69212080968ad218f7162cb90ed04775220b49c",
+      "status": "prior_complete_review_current_body_preserved",
+      "evidence": [
+        {
+          "report": "research/batch28-readiness/aso-audit.json",
+          "pointer": "/completeBodyReads/3",
+          "proof": "Explicit complete object/body read; recorded object hash exactly matches current source or JSON.stringify object."
+        },
+        {
+          "report": "research/batch26-duplicates/final-review.json",
+          "pointer": "/scope or /readScope / reviewed-file hashes",
+          "proof": {
+            "chain": "Explicit complete proposed-object review; its pinned raw draft hash verified now; parsed draft body equals every current body field.",
+            "reviewedSnapshot": "research/batch26-duplicates/what-calendar-sync-actually-does.json",
+            "snapshotRawSha256": "6d542c2db33b66272589ae53a06b6dbccc8d18cb39ca411ea0c48d370650dfa8",
+            "changedTopLevelFieldsSinceSnapshot": [],
+            "preservedFields": [
+              "lede",
+              "commonBelief",
+              "sections",
+              "claims",
+              "practical",
+              "faq",
+              "sourcesHeading",
+              "sources"
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "slug": "work-and-personal-without-two-apps",
+      "file": "src/app/content/en-US/articles-unify.ts",
+      "currentRawObjectSha256": "abbcbf4bc971e9b4fd1f6246b349c78e6a752b918bdf6cb73c4570d6d512c069",
+      "currentJsonStringifySha256": "bf22692aca37ff61bd9c39b3b1f8cdece595e37cbed0f0ffae553b7613ee5e69",
+      "status": "prior_full_body_preserved_with_related_only_link",
+      "evidence": [
+        "research/batch32-current-english-coverage.json",
+        "research/batch33-related-links.json",
+        "research/batch33-source-qa.json"
+      ]
+    },
+    {
+      "slug": "exchange-calendars-on-an-iphone",
+      "file": "src/app/content/en-US/articles-unify.ts",
+      "currentRawObjectSha256": "2c9583bb4b70546ee65f562eb21b078c815aa3039027bb4ecfc57861980267ff",
+      "currentJsonStringifySha256": "b0ea163be60d89730ba63833c677807e6359bc108823291f200ab8a0ba8cd7c4",
+      "status": "complete_before_body_read_and_exact_reviewed_change_chain",
+      "evidence": [
+        "research/batch31-english-reviews/part-b.json",
+        "research/batch31-english-reviews/corrections-cross-review.json",
+        "research/batch31-source-qa.json"
+      ]
+    },
+    {
+      "slug": "when-two-calendars-disagree",
+      "file": "src/app/content/en-US/articles-unify.ts",
+      "currentRawObjectSha256": "24241d00e1ece4cf67efb13d8b6588e28b0267adecdf2f3e48f87119a17fcd4d",
+      "currentJsonStringifySha256": "69a1bb6728eb548dc853e28e9853f232a739713246d40e50d606ddde3b23645d",
+      "status": "prior_complete_review_current_body_preserved",
+      "evidence": [
+        {
+          "report": "research/batch26-duplicates/final-review.json",
+          "pointer": "/scope or /readScope / reviewed-file hashes",
+          "proof": {
+            "chain": "Explicit complete proposed-object review; its pinned raw draft hash verified now; parsed draft body equals every current body field.",
+            "reviewedSnapshot": "research/batch26-duplicates/when-two-calendars-disagree.json",
+            "snapshotRawSha256": "b5aef1e3a8e4fc21a29a426fd1f8885b789ffb640aee9311c3e9617be5d4dc30",
+            "changedTopLevelFieldsSinceSnapshot": [],
+            "preservedFields": [
+              "lede",
+              "commonBelief",
+              "sections",
+              "claims",
+              "practical",
+              "faq",
+              "sourcesHeading",
+              "sources"
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "slug": "weather-inside-your-calendar",
+      "file": "src/app/content/en-US/articles-weather.ts",
+      "currentRawObjectSha256": "6fb9e57c66c8d19d5c7e37abfb50abbc37b1b5e1757729743ad37c6d162666d2",
+      "currentJsonStringifySha256": "bd24f07a80cf4e35b40d6b084e64d1865811ed89d902d4f7a74303df964b4748",
+      "status": "fresh_complete_current_object_read",
+      "evidence": [
+        "research/batch31-english-reviews/part-b.json"
+      ]
+    },
+    {
+      "slug": "forecast-beside-every-event",
+      "file": "src/app/content/en-US/articles-weather.ts",
+      "currentRawObjectSha256": "a11cfc9e4b31b1361747c36816e79346f9869274fe512d1e897268ac4e8524f6",
+      "currentJsonStringifySha256": "a1c4473d0f9742d4a292cf9bb379997b366d38e187984ade92a5dc43a25985bf",
+      "status": "fresh_complete_current_object_read",
+      "evidence": [
+        "research/batch31-english-reviews/root-three.json"
+      ]
+    },
+    {
+      "slug": "a-fourteen-day-view-of-the-weather",
+      "file": "src/app/content/en-US/articles-weather.ts",
+      "currentRawObjectSha256": "069435ac39284f108c6d5a95b33d1abc81c1da3729a9c498e7b9102cc5051cdc",
+      "currentJsonStringifySha256": "f31a8eff8b72477a989691609a205ad0a816eca51a2519a303eba02df8c0bbfa",
+      "status": "fresh_complete_current_object_read",
+      "evidence": [
+        "research/batch31-english-reviews/part-b.json"
+      ]
+    },
+    {
+      "slug": "planning-outdoors-without-being-rained-on",
+      "file": "src/app/content/en-US/articles-weather.ts",
+      "currentRawObjectSha256": "03df2936c31703db77fc45370001185fe53d033bdd1c65fa5aa0176283bfd1a2",
+      "currentJsonStringifySha256": "93e479caf4334b7dab6970502def523aa2422523769acecc6a0e4a1af3dca99a",
+      "status": "fresh_complete_current_object_read",
+      "evidence": [
+        "research/batch31-english-reviews/part-b.json"
+      ]
+    },
+    {
+      "slug": "what-a-forecast-can-and-cannot-tell-you",
+      "file": "src/app/content/en-US/articles-weather.ts",
+      "currentRawObjectSha256": "2288eaa5f36835692504f40dec6e5206cfbcd3a371115b272f78542768045581",
+      "currentJsonStringifySha256": "4016c59ba01ee40d978602528219c0fb6e7f16dd98f5a9f03b04f9820d9263b3",
+      "status": "fresh_complete_current_object_read",
+      "evidence": [
+        "research/batch31-english-reviews/part-b.json"
+      ]
+    },
+    {
+      "slug": "reading-a-chance-of-rain",
+      "file": "src/app/content/en-US/articles-weather.ts",
+      "currentRawObjectSha256": "69f354ff1ec93e6c6fe7e08eb0f676d2ac87eebe4f9998665639cf8bef56f60d",
+      "currentJsonStringifySha256": "e8dcd291157fc84d47e5f9b6d3d596af46f8a7dce4b217a9185efbe9751410a7",
+      "status": "fresh_complete_current_object_read",
+      "evidence": [
+        "research/batch31-english-reviews/part-b.json"
+      ]
+    },
+    {
+      "slug": "weather-where-the-event-is",
+      "file": "src/app/content/en-US/articles-weather.ts",
+      "currentRawObjectSha256": "0ca5a32429fd2e963e76d7572726884067cf4fba1a5945faed5e8b98a3c87140",
+      "currentJsonStringifySha256": "43e35ed6a54f89a54a7912f7a8d1ced1e0de1ffd7567b7865d41cc8d944286b9",
+      "status": "fresh_complete_current_object_read",
+      "evidence": [
+        "research/batch31-english-reviews/part-b.json"
+      ]
+    },
+    {
+      "slug": "the-commute-and-the-sky",
+      "file": "src/app/content/en-US/articles-weather.ts",
+      "currentRawObjectSha256": "36809ff17620d4c0b9ddfa037098371f674f0c34914279e08cd48d8b1c0d2a5a",
+      "currentJsonStringifySha256": "3150881338c0605dff117431f7ef4740e462d4cfdaa18bec12ad041bf9380e6c",
+      "status": "fresh_complete_current_object_read",
+      "evidence": [
+        "research/batch31-english-reviews/part-b.json"
+      ]
+    },
+    {
+      "slug": "daylight-as-a-planning-constraint",
+      "file": "src/app/content/en-US/articles-weather.ts",
+      "currentRawObjectSha256": "fc6daf721fed644f11ccd74e2409790304ae18ad658c231985bd4b332f238eb0",
+      "currentJsonStringifySha256": "0062c49502203cd32ae3de160b948580a8d24f6305a22c13eed2a065232329f0",
+      "status": "fresh_complete_current_object_read",
+      "evidence": [
+        "research/batch31-english-reviews/part-b.json"
+      ]
+    },
+    {
+      "slug": "wind-the-forecast-nobody-reads",
+      "file": "src/app/content/en-US/articles-weather.ts",
+      "currentRawObjectSha256": "f3e9f92525c226b171db19e72f3abb00c34074d2f651ed412648d6ac527b1a39",
+      "currentJsonStringifySha256": "4c21c212291b30678072f92c4088c61b58a43997c9312faff77ee4cce98ad9bb",
+      "status": "fresh_complete_current_object_read",
+      "evidence": [
+        "research/batch31-english-reviews/part-b.json"
+      ]
+    },
+    {
+      "slug": "the-widget-that-shows-what-is-next",
+      "file": "src/app/content/en-US/articles-widgets.ts",
+      "currentRawObjectSha256": "d604425c45a83392067d10284c0a4db29418ddaae05c89886cbdf891c89ae546",
+      "currentJsonStringifySha256": "2020665809742071ae6d258146c8e0474768c6e2c44fcf5c85296bda9ea6044e",
+      "status": "prior_complete_review_current_body_preserved",
+      "evidence": [
+        {
+          "report": "research/batch22-targeted-guides/final-review.json",
+          "pointer": "/scope or /readScope / reviewed-file hashes",
+          "proof": {
+            "chain": "Explicit complete proposed-object review; its pinned raw draft hash verified now; parsed draft body equals every current body field.",
+            "reviewedSnapshot": "research/batch22-targeted-guides/the-widget-that-shows-what-is-next.json",
+            "snapshotRawSha256": "eac35d4a48b4fdf2c75547d68844de5a15caa26b487f87350845d31443a5e6ee",
+            "changedTopLevelFieldsSinceSnapshot": [],
+            "preservedFields": [
+              "lede",
+              "commonBelief",
+              "sections",
+              "claims",
+              "practical",
+              "faq",
+              "sourcesHeading",
+              "sources"
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "slug": "a-countdown-to-your-next-meeting",
+      "file": "src/app/content/en-US/articles-widgets.ts",
+      "currentRawObjectSha256": "7dec3827b8167a0f894066a0e4eb37f8b225a9488ef7cc65c7118af125741393",
+      "currentJsonStringifySha256": "8e4b0677a4e53d9e7f8059e1100f42131db75a0b8869a140ef679f36eb6f94e1",
+      "status": "prior_complete_review_current_body_preserved",
+      "evidence": [
+        {
+          "report": "research/batch22-coverage/widgets-views.json",
+          "pointer": "/fullObjectReads/1",
+          "proof": "Explicit complete object/body read; recorded object hash exactly matches current source or JSON.stringify object."
+        }
+      ]
+    },
+    {
+      "slug": "lock-screen-without-unlocking",
+      "file": "src/app/content/en-US/articles-widgets.ts",
+      "currentRawObjectSha256": "6cebcf3c5a03da60010b266850ad0cf9121b185bed7b4cc716c2dd59de49e3e6",
+      "currentJsonStringifySha256": "b5be4dee42bf3e7d475a75abea47c9037c2b33625bbe2316f744cfe178eb68c7",
+      "status": "prior_complete_review_current_body_preserved",
+      "evidence": [
+        {
+          "report": "research/batch22-coverage/widgets-views.json",
+          "pointer": "/fullObjectReads/2",
+          "proof": "Explicit complete object/body read; recorded object hash exactly matches current source or JSON.stringify object."
+        }
+      ]
+    },
+    {
+      "slug": "choosing-a-widget-size",
+      "file": "src/app/content/en-US/articles-widgets.ts",
+      "currentRawObjectSha256": "d55ca6551a8e7796e779fac7bfa04d070683a1b37743a94b0026170c19262453",
+      "currentJsonStringifySha256": "5481049130ce9965298d4e52e6664c55767190573b3a0696ccec3ba1a075ac84",
+      "status": "prior_complete_review_current_body_preserved",
+      "evidence": [
+        {
+          "report": "research/batch22-coverage/widgets-views.json",
+          "pointer": "/fullObjectReads/3",
+          "proof": "Explicit complete object/body read; recorded object hash exactly matches current source or JSON.stringify object."
+        }
+      ]
+    },
+    {
+      "slug": "the-calendar-on-a-bedside-table",
+      "file": "src/app/content/en-US/articles-widgets.ts",
+      "currentRawObjectSha256": "54f65c1ca0c911b0d1d1944663d08e069afaac6192aacc63161488a8bf786600",
+      "currentJsonStringifySha256": "7301a3908e30ae451cb1516c5ebe282f50457bd59c28f96e90e629af4e48208b",
+      "status": "prior_complete_review_current_body_preserved",
+      "evidence": [
+        {
+          "report": "research/batch22-coverage/widgets-views.json",
+          "pointer": "/fullObjectReads/4",
+          "proof": "Explicit complete object/body read; recorded object hash exactly matches current source or JSON.stringify object."
+        }
+      ]
+    },
+    {
+      "slug": "change-calendar-color-iphone",
+      "file": "src/app/content/en-US/articles-help.ts",
+      "currentRawObjectSha256": "e560f013c352ddb6115f007ea9edb291e265e059be417dc49261afd0a3afa0ba",
+      "currentJsonStringifySha256": "7ab01f86b0ac1310b69f4eddd9a0a171a34307c3faf55415e7a0388f47a4e564",
+      "status": "new_full_draft_independently_reviewed_with_exact_precision_change_chain",
+      "evidence": [
+        "research/batch33-colors/editorial-review.json",
+        "research/batch33-colors/factual-review.json",
+        "research/batch33-colors/factual-review-final.json",
+        "research/batch33-source-qa.json"
+      ]
+    }
+  ]
+}

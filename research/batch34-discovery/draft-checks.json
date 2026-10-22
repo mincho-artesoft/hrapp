@@ -1,0 +1,84 @@
+{
+  "date": "2026-10-22",
+  "status": "prepared_for_root_and_independent_review",
+  "source": {
+    "file": "src/app/content/en-US/articles-google.ts",
+    "scope": "Complete exact current object reread immediately before preparation.",
+    "moduleRawSha256": "2457ecd3845aa25ffaa376a52825da334f1f73dae0a871b83f18364c7d40fbd5",
+    "objectRawSha256": "819cc65f39d444dc5eca817987c9a338f831eb12b95227ddf244131b7fa2436e",
+    "objectJsonSha256": "c7ccb76225c59ee8866766f960f01e9383b4ce70d74113ca74212f36bb3c6e44"
+  },
+  "artifacts": [
+    {
+      "file": "research/batch34-discovery/before.json",
+      "rawSha256": "9b070e426b48c3ae1d3b9f484c74aa447be1498c096e38f29c33715d8512090e",
+      "jsonSha256": "c7ccb76225c59ee8866766f960f01e9383b4ce70d74113ca74212f36bb3c6e44"
+    },
+    {
+      "file": "research/batch34-discovery/what-guests-can-do-to-your-event.json",
+      "rawSha256": "a70fc5e2db382e704e168910dfc8c53c91415a059f981760406bcf29803ca78d",
+      "jsonSha256": "ee120379131f1588e27d0190e13b45e9e84c753806b50002013c98188ad4ed59"
+    }
+  ],
+  "exactChanges": [
+    {
+      "op": "insert",
+      "path": "sections[4]",
+      "value": {
+        "heading": "Check document access separately from meeting access",
+        "body": [
+          "A guest who can see the meeting may still be unable to open its document. Google stores event attachments in Drive and checks the file’s sharing permissions separately. A filename can be visible even when the file itself is inaccessible. Identify the original event, the intended recipient account and the attached file before changing calendar permissions.",
+          "For a workshop, a participant may receive the invitation yet still need access to the agenda. Have the file owner review its Drive sharing for the intended audience and let the participant check again with the intended account. Do not publish a work document or broaden the whole calendar merely to resolve the error. If the attachment control is unavailable, check the organising Google identity and whether the organisation enables Drive. Cloud Calendars Reader, Writer and Owner roles do not establish Google Drive access."
+        ]
+      },
+      "existingItems": "Original sections[4..5] shift to [5..6] without content changes."
+    },
+    {
+      "op": "insert",
+      "path": "practical[4]",
+      "value": "Check attached documents in Google Drive with the intended recipient account; calendar access alone does not establish file access.",
+      "existingItems": "Original practical[4..5] shift to [5..6] unchanged."
+    },
+    {
+      "op": "append",
+      "path": "faq[3]",
+      "value": {
+        "q": "Why can a guest see the filename but not open the attachment?",
+        "a": "Google can show an attachment’s filename to people who can see the event details even when they cannot open the file. Check the file’s Google Drive sharing and the recipient’s intended account. Ask the file owner to review access rather than granting broader calendar permissions or publishing the document."
+      }
+    },
+    {
+      "op": "append",
+      "path": "sources[2]",
+      "value": {
+        "label": "Google: event attachments, Drive sharing and missing attachment controls",
+        "url": "https://support.google.com/calendar/answer/6192039?hl=en-RW"
+      }
+    },
+    {
+      "op": "replace",
+      "path": "updated",
+      "before": "2026-10-21",
+      "after": "2026-10-22"
+    }
+  ],
+  "checks": {
+    "removingListedAdditionsAndRestoringDateReproducesBeforeExactly": true,
+    "oldMetadataAndBodiesPreserved": true,
+    "sections": 7,
+    "paragraphs": 14,
+    "practical": 7,
+    "faq": 4,
+    "sources": 3,
+    "claims": {},
+    "seeAlsoUnchanged": true,
+    "sourceDateWas21UpdatedTo22": true
+  },
+  "evidence": "decision.json: Google computer main body 18–101 fully read, especially sharing 30–39 and troubleshooting 86–101.",
+  "boundaries": [
+    "Google-specific document access; no Cloud attachment UI/upload/preservation promise.",
+    "No granting permissions or publishing documents performed or prescribed as universal fix.",
+    "Root and independent factual/editorial review pending; own research and draft authorship disclosed.",
+    "No website source/native/API/build/deploy changes."
+  ]
+}

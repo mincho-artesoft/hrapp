@@ -1,5 +1,5 @@
 {
-  "date": "2026-10-22T03:27:15.135Z",
+  "date": "2026-10-22T03:51:33.300Z",
   "status": "source_inventory_not_quality_approval",
   "articles": [
     {
@@ -1586,15 +1586,16 @@
       "title": "Google Calendar guest permissions: editing, invitations and the guest list",
       "description": "Check Google event guest permissions and defaults. Separate invitation rights from calendar access and Cloud Calendars Reader, Writer and Owner roles.",
       "descriptionCharacters": 150,
-      "sections": 6,
-      "faq": 3,
-      "words": 782,
+      "sections": 7,
+      "faq": 4,
+      "words": 1009,
       "source": "articles-google.ts",
       "sources": [
         "https://support.google.com/a/users/answer/13293412?hl=en",
-        "https://developers.google.com/workspace/calendar/api/v3/reference/events"
+        "https://developers.google.com/workspace/calendar/api/v3/reference/events",
+        "https://support.google.com/calendar/answer/6192039?hl=en-RW"
       ],
-      "updated": "2026-10-21"
+      "updated": "2026-10-22"
     },
     {
       "locale": "en-US",

@@ -1,0 +1,94 @@
+{
+  "reviewedAt": "2026-10-22T03:47:10.925183+00:00",
+  "decision": "PASS — publish narrow screenshot allowance; no blocking issue found",
+  "reviewedRobotsSha256": "bf4ecce532a30e8feccb7b14bbce992dd5163f3668304778b702fe67f59bd513",
+  "exactOnlyIntendedChange": true,
+  "sources": [
+    {
+      "file": "public/robots.txt",
+      "sha256": "bf4ecce532a30e8feccb7b14bbce992dd5163f3668304778b702fe67f59bd513",
+      "readScope": "full current 27 lines and exact git diff"
+    },
+    {
+      "file": "src/app/core/media-manifest.json",
+      "sha256": "c7b74db44762cce88ec43b33b9fa5c53aaa042dbace39c135c29016fac4be679",
+      "readScope": "full JSON parsed: base, widths, all locale/device/name entries"
+    },
+    {
+      "file": "src/app/components/shot-rail/shot-rail.component.ts",
+      "sha256": "36980d5df8296df997c3a080e0da9d11614066f94153018b9a475db04aa52418",
+      "readScope": "full 1–118; markup35–45 and URL construction98–116"
+    },
+    {
+      "file": "src/app/pages/article-page/article-page.component.html",
+      "sha256": "f9f48285927e0a58fb9343aeb17c96a7e4e02bd45588a8ce7d8e87ce66f27c06",
+      "readScope": "49–52 gallery inclusion"
+    },
+    {
+      "file": "research/batch34-media-crawl/robots-before.txt",
+      "sha256": "1b821bb0ff3c4d5d3e175e80dad956128b51add2a8987d23b9f23942ee88eda5",
+      "readScope": "full saved prior robots"
+    },
+    {
+      "file": "research/batch34-media-crawl/root-qa.json",
+      "sha256": "895c3188e7036b18570ba4181041ef3151c12eae140d11b78dd3bfcb32043a6d",
+      "readScope": "full report"
+    },
+    {
+      "file": "research/media-origin-readback-20261022.json",
+      "sha256": "b44f86ec0160eaee19fb3bffb2d020e3d806ab605264a866812955b848e7e242",
+      "readScope": "top-level origin/mapping/count/limits metadata; object list not fully manually reviewed"
+    }
+  ],
+  "findings": [
+    "Current reviewed patch adds Allow: /media/panel/ in the same global user-agent group as retained Disallow: /media/ and replaces its inaccurate binary-media comment. All other bytes match saved prior robots.",
+    "Article gallery generates ordinary picture/source/img markup from the manifest. Fresh unauthenticated public HTML contains five screenshot img src URLs under the allowed prefix; WebP fallback and AVIF source sample both return HTTP200 with matching image Content-Type, public caching and no X-Robots-Tag header.",
+    "No confidentiality or intentional image-exclusion reason found in the inspected public marketing sources/recorded origin metadata. The assets are already served publicly and linked in page HTML. This review does not certify every screenshot pixel or every object under the prefix; future nonpublic material should not be placed there.",
+    "Google chooses the longest matching rule path, so the specific allowance overrides the broader media exclusion. Crawl permission does not guarantee indexing, ranking, image selection, or citations."
+  ],
+  "independentChecks": {
+    "manifestPaths": 1240,
+    "mediaLocales": 31,
+    "allManifestPathsAllowed": true,
+    "prefixChecks": {
+      "/media/panel/en-US/iPhone/01-hook-340.webp": true,
+      "/media/panel-other/test.webp": false,
+      "/media/panel": false,
+      "/media/source/test.mov": false,
+      "/media/test.webp": false,
+      "/app-ads.txt": true,
+      "/main.js": true,
+      "/articles/test": true,
+      "/sitemap.xml": true
+    },
+    "publicReadback": "public-readback.json",
+    "publicStillOldRuleAtRead": true,
+    "initialIncorrectLocaleUrl": "An initial /en-US/articles/... probe returned404; English canonical is /articles/... and returned200. Not a site defect."
+  },
+  "officialPrimaryReads": [
+    {
+      "url": "https://developers.google.com/crawling/docs/robots-txt/robots-txt-spec",
+      "ranges": "263–380",
+      "supports": "Path matching and longest-specific-rule precedence; slash ending limits allowance to this directory."
+    },
+    {
+      "url": "https://developers.google.com/search/docs/crawling-indexing/robots/intro",
+      "ranges": "128–156",
+      "supports": "Media crawling exclusions affect search appearance; robots is not access security; important page resources should remain crawlable."
+    },
+    {
+      "url": "https://developers.google.com/search/docs/appearance/google-images",
+      "ranges": "128–176",
+      "supports": "Discoverable HTML img src, picture fallback, supported WebP/AVIF. No index guarantee."
+    }
+  ],
+  "publicationChecks": [
+    "After deployment fetch canonical robots.txt and compare raw SHA to reviewed patch; retain both Allow: /media/panel/ and Disallow: /media/.",
+    "Recheck public article HTML and one existing WebP/AVIF asset if delivery changes. Actual Google re-crawl/index state is outside this review."
+  ],
+  "limitations": [
+    "No source edits/build/deployment or AWS/customer/account operations performed by reviewer. Only review/readback artifacts written.",
+    "Historical all1240 origin-match result is attributed to prior recorded readback, not a new origin inventory. Fresh sample is two public HEAD requests.",
+    "Empty gallery alt attributes observed; improving descriptive image context is a separate editorial/accessibility consideration and does not block the narrow robots correction."
+  ]
+}

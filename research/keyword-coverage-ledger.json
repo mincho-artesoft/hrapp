@@ -1384,5 +1384,27 @@
     ],
     "unchangedReviewedBodies": "CalDAV EN/FR/IT full-current-body audit passed without edits; report batch33-caldav-localization-audit.json.",
     "settingsQueue": "Canonicalsettings alreadycovered; malformedhistoricaldiscovery revalidated throughindex and nextAction reconciled without false fullbody count."
+  },
+  "batch34": {
+    "date": "2026-10-22",
+    "canonical": "what-guests-can-do-to-your-event",
+    "change": "Separate Google meeting visibility and Drive document access, filename exposure and intended account/file-owner checks. One section, practical item and FAQ on existing route.",
+    "inferredKeywordAliases": [
+      "google calendar attachment access denied",
+      "calendar guest cannot open document"
+    ],
+    "aliasesAreMeasuredQueries": false,
+    "mediaCrawl": "Allow public /media/panel/ screenshot renditions under retained other /media/ exclusion; 1240manifestpaths in31media locales. No replacement captures.",
+    "noChangeReview": "Four complete DE/ES/FR/IT export editions require no material fix; missing recovery editions not generated to fill grid.",
+    "evidence": [
+      "research/batch34-discovery/decision.json",
+      "research/batch34-discovery/review.json",
+      "research/batch34-source-qa.json",
+      "research/batch34-media-crawl/review.json",
+      "research/batch34-static-qa.json",
+      "research/batch34-metadata-qa.json",
+      "research/batch34-public-qa.json"
+    ],
+    "limits": "No exhaustive competitor query coverage, measured ranking/citation lift, new media identification or released native correspondence proof."
   }
 }

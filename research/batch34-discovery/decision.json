@@ -1,0 +1,149 @@
+{
+  "date": "2026-10-22",
+  "decision": "One material improvement to an existing guide; no new canonical recommended.",
+  "task": "A guest can see a Google Calendar meeting or filename but cannot open its document.",
+  "queries": [
+    {
+      "query": "site.support.readdle.com/calendars \"attachments\"",
+      "note": "Literal query has site.support rather than site: syntax; treated as actual submitted discovery query, not a guaranteed domain filter."
+    },
+    {
+      "query": "site.bonobolabs.com/timepage \"travel\""
+    },
+    {
+      "query": "site.nspektor.com/calendar366 \"search\""
+    },
+    {
+      "query": "site:support.google.com/calendar \"attachments\" \"access\""
+    }
+  ],
+  "searchScope": "First three queries returned a combined result set; per-query result association and rank are not established. Fourth query returned Google help/community results. No fixed-location Google SERP, measured ranking, volume or ChatGPT citation evidence.",
+  "observedRelevantResults": [
+    {
+      "url": "https://apphelp.readdle.com/index.php?id=1278&pg=kb.page",
+      "status": "full main body read"
+    },
+    {
+      "url": "https://calendar366.com/help/index.html",
+      "status": "selected complete Edit section read; long document partial"
+    },
+    {
+      "url": "https://bonobolabs.com/timepage/",
+      "status": "discovered snippet only; travel already has a canonical, not pursued"
+    },
+    {
+      "url": "https://bonobolabs.com/support/timepage/preferences/general/?source=mds",
+      "status": "discovered only"
+    },
+    {
+      "url": "https://support.google.com/calendar/answer/6192039?hl=en-RW",
+      "status": "complete computer main body read"
+    },
+    {
+      "url": "https://support.google.com/calendar/answer/6192039?co=GENIE.Platform%3DAndroid&hl=en-US-u-mu-fahrenhe",
+      "status": "search result only; not used for iPhone procedure"
+    },
+    {
+      "url": "https://support.google.com/calendar/thread/285792695/i-can-t-access-file-attachments-in-google-calendar-from-a-meeting-invite?hl=en",
+      "status": "community snippet observed; not relied on as authoritative technical evidence"
+    }
+  ],
+  "primaryReads": [
+    {
+      "url": "https://apphelp.readdle.com/index.php?id=1278&pg=kb.page",
+      "accessDate": "2026-10-22",
+      "status": "full_main_body",
+      "lines": "29–37 of 73",
+      "summary": "Legacy Calendars 5/iOS 11 drag-and-drop page distinguishes text transfer from unsupported file/photo attachment drops.",
+      "boundary": "Version-specific legacy publisher documentation, not evidence about present Calendars app support or Cloud support."
+    },
+    {
+      "url": "https://calendar366.com/help/index.html",
+      "accessDate": "2026-10-22",
+      "status": "partial_document_complete_relevant_section",
+      "lines": "Edit heading and all fields 782–802 of 1257; initial 0–210 also observed, surrounding settings 577–803 read during follow-up.",
+      "summary": "Publisher describes an attachment option using its app iCloud container and event links when native account attachments are unsupported.",
+      "boundary": "Publisher claim only, not an independent security/storage verification or Cloud feature. Entire 1257-line document not read."
+    },
+    {
+      "url": "https://support.google.com/calendar/answer/6192039?hl=en-RW",
+      "accessDate": "2026-10-22",
+      "status": "full_main_body",
+      "lines": "18–101 of 169, including all attachment, sharing, removal, notes and troubleshooting text.",
+      "summary": "Google separates Drive file access from event visibility. Filenames can be visible without file access; sharing choices and account/domain restrictions matter. Meeting-note document edits and event changes do not automatically update each other.",
+      "boundary": "Computer edition; not an iPhone UI procedure or Cloud attachment support."
+    }
+  ],
+  "failures": [
+    {
+      "url": "https://support.google.com/calendar/answer/6192039?co=GENIE.Platform%3DiOS&hl=en",
+      "status": "failed_nonretryable_redirect",
+      "detail": "Google sorry redirect/500. Requested in an initial combined call whose output was truncated, then repeated once to obtain visible scope; visible repeat failed. No further retry. No iOS procedural assertion taken from this URL."
+    }
+  ],
+  "corpusComparison": {
+    "ledger": "research/keyword-coverage-ledger.json",
+    "ledgerRawSha256": "e2b0259aa936c09f1bc060b2221237c72d8ead21f69df03b98c07961d9b821d4",
+    "ledgerScope": "Inspected search hits for attachment, search, travel and birthday; attachment term absent. Existing sharing/access canonical inspected below; this is not a complete ledger re-audit.",
+    "inventory": "research/batch34-discovery/current-inventory.json",
+    "count": 56,
+    "attachmentTermMatches": 0,
+    "fullBodyRead": [
+      {
+        "slug": "sharing-one-event-not-your-calendar",
+        "file": "src/app/content/en-US/articles-sharing.ts",
+        "rawHash": "8b1e984d1796dd08cc4a60f5300696f472c27a28dbb3ecab9b2cd08dc46547d8",
+        "jsonHash": "94df5d346cead4ad6e0d07bd244bdafc3d64e2a927f3d37b33eb14df4356704d",
+        "scope": "All metadata, six sections/twelve paragraphs, six practical steps, three FAQs, sources, related routes and date."
+      },
+      {
+        "slug": "what-guests-can-do-to-your-event",
+        "file": "src/app/content/en-US/articles-google.ts",
+        "rawHash": "819cc65f39d444dc5eca817987c9a338f831eb12b95227ddf244131b7fa2436e",
+        "jsonHash": "c7ccb76225c59ee8866766f960f01e9383b4ce70d74113ca74212f36bb3c6e44",
+        "scope": "All metadata, six sections/twelve paragraphs, six practical steps, three FAQs, sources, related routes and date."
+      },
+      {
+        "slug": "who-can-see-what-in-google-calendar",
+        "file": "src/app/content/en-US/articles-sharing.ts",
+        "rawHash": "640ec0b2673eb3f8fbaad91a9029ac229e5db9fbd03fde96ae834c58d641ab7c",
+        "jsonHash": "0d5b87e67777e7fb6565f2386243e8b5017749f65beab082edcec95dfb195b67",
+        "scope": "All metadata, six sections/twelve paragraphs, six practical steps, three FAQs, sources, related routes and date."
+      }
+    ],
+    "findings": [
+      {
+        "slug": "sharing-one-event-not-your-calendar",
+        "coverage": "Cloud links/roles, copying and revocation; reviews notes/meeting URLs, but does not explain document permissions."
+      },
+      {
+        "slug": "what-guests-can-do-to-your-event",
+        "coverage": "Google guest edit/invite/list permissions and Cloud role distinction; no document-access diagnostic."
+      },
+      {
+        "slug": "who-can-see-what-in-google-calendar",
+        "coverage": "Google calendar ACL/public/group access; no separate Drive file permission check."
+      }
+    ]
+  },
+  "nextAction": {
+    "canonical": "what-guests-can-do-to-your-event",
+    "type": "Add a substantive provider-specific section, not a synonym article.",
+    "proposedHeading": "Check document access separately from meeting access",
+    "proposedParagraphs": [
+      "A guest who can see the meeting may still be unable to open its document. Google stores event attachments in Drive and checks the file’s sharing permissions separately. A filename can be visible even when the file itself is inaccessible. Identify the original event, the intended recipient account and the attached file before changing calendar permissions.",
+      "For a workshop, a participant may receive the invitation yet still need access to the agenda. Have the file owner review its Drive sharing for the intended audience and let the participant check again with the intended account. Do not publish a work document or broaden the whole calendar merely to resolve the error. If the attachment control is unavailable, check the organising Google identity and whether the organisation enables Drive. Cloud Calendars Reader, Writer and Owner roles do not establish Google Drive access."
+    ],
+    "whyThisChangesAction": "Routes a common-looking calendar permission failure to the file owner/Drive rather than granting stronger guest or calendar rights. Filename exposure is a distinct privacy boundary.",
+    "sourceToAdd": "https://support.google.com/calendar/answer/6192039?hl=en-RW",
+    "beforePublication": "Root should review the current primary body and exact amendment. Keep procedure Google/provider-specific; do not claim attachment upload/display/preservation in Cloud without native evidence.",
+    "nativeAuditOnlyIfExpanding": "If a future guide claims Cloud attachments, inspect provider parsing, local EventKit preservation, editor/file links and shared-event payloads before describing them.",
+    "newCanonical": null
+  },
+  "limits": [
+    "No source edits, integration, build, deployment, ASC or account/calendar operations.",
+    "No attachment feature support or missing feature asserted for Cloud; no storage-security claim adopted from publisher language.",
+    "Readdle legacy version limited explicitly; primary Google evidence supports the proposed permission distinction independently.",
+    "This is bounded discovery, not exhaustive keywords or all competitor features."
+  ]
+}

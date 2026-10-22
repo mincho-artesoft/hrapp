@@ -2,7 +2,7 @@
   "guides": 56,
   "selection": "tools/guide-text-selection.json",
   "extraction": "Visible article headings, paragraphs, lists, FAQs and source links; gallery/other-app cards excluded.",
-  "exportedCharacters": 355021,
+  "exportedCharacters": 356613,
   "records": [
     {
       "slug": "what-calendar-sync-actually-does",
@@ -229,8 +229,8 @@
     {
       "slug": "what-guests-can-do-to-your-event",
       "source": "https://www.cloud-calendars.com/articles/what-guests-can-do-to-your-event/",
-      "blocks": 45,
-      "characters": 6053
+      "blocks": 52,
+      "characters": 7645
     },
     {
       "slug": "google-calendars-that-never-reach-your-iphone",

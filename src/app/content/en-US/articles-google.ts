@@ -216,6 +216,13 @@ export const GOOGLE_EN_US: Readonly<Record<string, LocalisedArticle>> = {
       ]
     },
     {
+      "heading": "Check document access separately from meeting access",
+      "body": [
+        "A guest who can see the meeting may still be unable to open its document. Google stores event attachments in Drive and checks the file’s sharing permissions separately. A filename can be visible even when the file itself is inaccessible. Identify the original event, the intended recipient account and the attached file before changing calendar permissions.",
+        "For a workshop, a participant may receive the invitation yet still need access to the agenda. Have the file owner review its Drive sharing for the intended audience and let the participant check again with the intended account. Do not publish a work document or broaden the whole calendar merely to resolve the error. If the attachment control is unavailable, check the organising Google identity and whether the organisation enables Drive. Cloud Calendars Reader, Writer and Owner roles do not establish Google Drive access."
+      ]
+    },
+    {
       "heading": "Keep Cloud Calendars roles distinct",
       "body": [
         "Cloud Calendars has a separate sharing arrangement with Reader, Writer and Owner roles. Reader provides viewing and syncing; Writer permits editing; Owner also manages sharing and access with the invited identity. These roles should not be presented as switches for Google’s three guest permissions.",
@@ -236,6 +243,7 @@ export const GOOGLE_EN_US: Readonly<Record<string, LocalisedArticle>> = {
     "Decide who should manage the meeting, invite others and see guests.",
     "Inspect the Google event’s actual guest permissions.",
     "Review Google defaults without assuming they change existing events.",
+    "Check attached documents in Google Drive with the intended recipient account; calendar access alone does not establish file access.",
     "Treat Cloud Calendars sharing roles as a separate permission system.",
     "Reopen the saved event and confirm attendance separately."
   ],
@@ -251,6 +259,10 @@ export const GOOGLE_EN_US: Readonly<Record<string, LocalisedArticle>> = {
     {
       "q": "Does hiding the guest list remove information already sent?",
       "a": "It does not demonstrate that earlier emails, descriptions, screenshots or independent copies were removed. Review what was actually distributed separately."
+    },
+    {
+      "q": "Why can a guest see the filename but not open the attachment?",
+      "a": "Google can show an attachment’s filename to people who can see the event details even when they cannot open the file. Check the file’s Google Drive sharing and the recipient’s intended account. Ask the file owner to review access rather than granting broader calendar permissions or publishing the document."
     }
   ],
   "sourcesHeading": "Provider guidance and further reading",
@@ -262,6 +274,10 @@ export const GOOGLE_EN_US: Readonly<Record<string, LocalisedArticle>> = {
     {
       "label": "Google: event guest permission fields",
       "url": "https://developers.google.com/workspace/calendar/api/v3/reference/events"
+    },
+    {
+      "label": "Google: event attachments, Drive sharing and missing attachment controls",
+      "url": "https://support.google.com/calendar/answer/6192039?hl=en-RW"
     }
   ],
   "seeAlso": [
@@ -269,7 +285,7 @@ export const GOOGLE_EN_US: Readonly<Record<string, LocalisedArticle>> = {
     "sharing-one-event-not-your-calendar",
     "keeping-track-of-who-replied"
   ],
-  "updated": "2026-10-21"
+  "updated": "2026-10-22"
 },
 
   'google-calendars-that-never-reach-your-iphone': {
