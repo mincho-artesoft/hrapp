@@ -441,6 +441,7 @@ export const DISCOVERY_EN_US: Readonly<Record<string, LocalisedArticle>> = {
       }
     ],
     "seeAlso": [
+      "sync-google-tasks-apple-reminders-iphone",
       "planning-a-week-in-ten-minutes",
       "calendar-notifications-missing-silent-or-duplicated",
       "natural-language-calendar-events-iphone"
@@ -634,16 +635,23 @@ export const DISCOVERY_EN_US: Readonly<Record<string, LocalisedArticle>> = {
   },
   "fantastical-readdle-calendar366-iphone-comparison": {
     "updated": "2026-10-23",
-    "title": "Fantastical, Readdle or Calendar 366? Compare the iPhone workflow you need",
-    "short": "Compare three iPhone calendar alternatives",
-    "description": "Compare Fantastical, Calendars by Readdle and Calendar 366 by accounts, tasks, quick entry and weather. Check plan requirements on your actual devices.",
-    "lede": "These three calendar apps can look similar in a screenshot but differ in their account setup and planning controls. Start with the workflow you need every day, then test it on your actual devices. Arte Soft, the developer of Cloud Calendars, publishes this source-based comparison; it is not an independent speed or reliability benchmark.",
+    "title": "iPhone calendar alternatives: Fantastical, Readdle, Calendar 366 and BusyCal",
+    "short": "Compare iPhone calendar alternatives",
+    "description": "Compare Fantastical, Readdle, Calendar 366 and BusyCal by accounts, tasks, event entry, weather and Watch support. Verify the workflow and current plan.",
+    "lede": "These calendar apps can look similar in a screenshot but differ in their account setup and planning controls. Start with the workflow you need every day, then test it on your actual devices. Arte Soft, the developer of Cloud Calendars, publishes this source-based comparison; it is not an independent speed or reliability benchmark.",
     "sections": [
       {
         "heading": "Choose what must work before comparing appearance",
         "body": [
           "Write down your calendar providers, devices and three essential actions. An example is: see work and personal calendars together, complete a reminder and add a meeting quickly. Test those actions with private sample data before importing an entire schedule.",
           "A product supporting the name of your provider does not establish that every connection method has identical permissions or features. A device calendar, a directly connected account and a subscribed feed can produce similar-looking entries while allowing different actions."
+        ]
+      },
+      {
+        "heading": "Use the provider’s own calendar as a baseline",
+        "body": [
+          "Google’s getting-started guide describes its own calendar interface for scheduling, tasks, sharing and multiple calendars. If your schedule already lives there, test the required action at the source before deciding whether you need another app.",
+          "For example, compare the same appointment in Google Calendar and Fantastical after connecting the intended account. Check whether the advantage you need is a combined view, a task connection, quick entry or a particular device interface. A different calendar client is not automatically a migration to a different provider."
         ]
       },
       {
@@ -665,6 +673,20 @@ export const DISCOVERY_EN_US: Readonly<Record<string, LocalisedArticle>> = {
         "body": [
           "Calendar 366’s documentation distinguishes access to system calendars and reminders from direct account integrations. It describes calendar sets that select visible calendars and lists. Those sets can also determine a default calendar, so check where a newly created event will belong.",
           "The same documentation describes its own natural-language parser and weather using Apple Weather, with system or custom location choices. For outdoor planning, verify the selected place instead of assuming the forecast follows each appointment’s address. These are publisher-documented capabilities, not features tested on your account."
+        ]
+      },
+      {
+        "heading": "BusyCal: check task display and the view used for weather",
+        "body": [
+          "BusyCal’s iOS task guide distinguishes dated, timed and undated tasks. It describes completion controls and carrying unfinished dated tasks forward. Its weather guide places forecasts in List, Day and Month views, so test the particular view you use instead of assuming weather appears everywhere.",
+          "BusyCal also documents natural-language entry as an option in its new-event defaults. Try the same private sample appointment used for the other apps, then check the calendar and saved time. These are BusyCal controls, not commands shared by every calendar app."
+        ]
+      },
+      {
+        "heading": "Check the Watch workflow separately from the phone",
+        "body": [
+          "Fantastical’s Watch guide documents Up Next, List and Tasks views, including task completion. BusyCal’s task guide distinguishes dated and timed tasks shown on Watch from undated tasks. If an undated backlog matters, include it in your trial rather than testing only the next appointment.",
+          "A Watch complication is a glance, while the Watch app may offer additional actions. Verify the data and action on the actual watch and phone, and review the current plan. Desktop, phone and watch interfaces are not interchangeable merely because they use the same product name."
         ]
       },
       {
@@ -729,6 +751,26 @@ export const DISCOVERY_EN_US: Readonly<Record<string, LocalisedArticle>> = {
       {
         "label": "Calendar 366: integrations, sets, quick entry and weather",
         "url": "https://calendar366.com/help/index.html"
+      },
+      {
+        "label": "BusyCal for iOS: tasks and Watch task limits",
+        "url": "https://www.busymac.com/docs/busycalios/70659-tasks/"
+      },
+      {
+        "label": "BusyCal for iOS: weather and supported views",
+        "url": "https://www.busymac.com/docs/busycalios/70665-weather/"
+      },
+      {
+        "label": "BusyCal for iOS: natural-language entry",
+        "url": "https://www.busymac.com/docs/busycalios/70669-natural-language/"
+      },
+      {
+        "label": "Fantastical: Apple Watch views and actions",
+        "url": "https://flexibits.com/fantastical-ios/help/apple-watch"
+      },
+      {
+        "label": "Google: Calendar’s own account-based interface",
+        "url": "https://support.google.com/calendar/answer/2465776?hl=en"
       }
     ],
     "seeAlso": [
@@ -981,6 +1023,218 @@ export const DISCOVERY_EN_US: Readonly<Record<string, LocalisedArticle>> = {
       "who-can-see-what-in-google-calendar",
       "iphone-calendar-tasks-reminders-versus-event-alerts",
       "work-and-personal-without-two-apps"
+    ]
+  },
+  "ipad-family-calendar-display-skylight-dakboard": {
+    "updated": "2026-10-23",
+    "title": "iPad family calendar display or dedicated hardware? Compare the update workflow",
+    "short": "An iPad as a family calendar display",
+    "description": "Compare an iPad calendar view, DAKboard display and Skylight hardware. Check shared calendars, update direction, refresh timing and everyday use.",
+    "lede": "An existing iPad can show a household schedule, but a calendar app and a dedicated family display solve different parts of the problem. Decide who edits the plan, where it is displayed and how changes reach that screen. Arte Soft, the developer of Cloud Calendars, publishes this guide.",
+    "sections": [
+      {
+        "heading": "Start with the household schedule, not the screen",
+        "body": [
+          "Choose one authoritative calendar for the plans everyone needs. A useful trial includes an afternoon pickup, an appointment and a changed start time. Check whether the intended person can read the screen from its normal position and whether they know where to make corrections.",
+          "A wall display is often a shared viewing surface, while a phone is a personal editing device. Agree who maintains each event and how urgent changes are acknowledged. The fact that a schedule is displayed in the kitchen does not prove that everybody has seen its latest revision."
+        ]
+      },
+      {
+        "heading": "Use an iPad app for an interactive planning view",
+        "body": [
+          "An iPad calendar app can let you inspect a day, week or month and open event details. Cloud Calendars offers those planning views alongside selected calendars, weather and widgets. It is an app for iPhone and iPad, not a promise of a dedicated always-on household kiosk.",
+          "Before repurposing a tablet, try the actual app in its intended orientation. Check text size, the calendars selected, charging arrangements and what happens when the device locks or another person uses it. Keep private appointments out of the family-facing view unless the household needs those details."
+        ]
+      },
+      {
+        "heading": "DAKboard: check the browser and refresh route",
+        "body": [
+          "DAKboard publishes an iPad setup guide that links a tablet browser to a configured display. It warns that older iPads whose browsers can no longer be updated may not display its screens correctly. Verify compatibility on the tablet you already own before buying a mount or another device.",
+          "Its refresh guide distinguishes subscription-dependent calendar collection intervals from the display’s own checks and cached content. It also says Google ICS links can update more slowly than direct Google connections. Treat a display refresh and a newly retrieved source calendar as separate stages."
+        ]
+      },
+      {
+        "heading": "Skylight: distinguish one-way and two-way connections",
+        "body": [
+          "Skylight’s current sync guide documents both directions, with availability depending on the calendar service. It lists two-way routes for Google and iCloud and one-way routes for services including Outlook, Yahoo and Cozi. Check the exact route you intend to use, not just a logo on a compatibility list.",
+          "With a one-way route, a change on the display should not be assumed to update the original calendar. For a two-way route, verify a disposable edit at the source as well. A dedicated screen may simplify where the family looks, but it does not remove the need to understand event ownership."
+        ]
+      },
+      {
+        "heading": "Test the change that will matter on a busy day",
+        "body": [
+          "Move the harmless pickup example by fifteen minutes at its owning source. Check when the screen shows the new time, then inspect a second phone. If supported, make another harmless edit from the display and verify which original account receives it.",
+          "Record whether the screen shows an imported copy, a subscribed feed or a connected account. Keep the example separate from real invitations and remove it using the ordinary owner controls afterwards. For an urgent pickup change, use an agreed direct message or call as well as updating the calendar."
+        ]
+      },
+      {
+        "heading": "Compare the whole setup before deciding",
+        "body": [
+          "Include any hardware, stand, mount, power arrangement and ongoing plan in the comparison. Check whether the functions you need remain available without a trial. An existing tablet can be worth testing first, but its age and browser support may limit the result.",
+          "Choose an iPad app if the household mainly needs an interactive planning view. Evaluate a display service or dedicated device if a fixed shared screen is the priority. Keep the calendar source and member permissions clear whichever screen you choose."
+        ]
+      }
+    ],
+    "claims": {},
+    "practical": [
+      "Choose one authoritative household calendar and an editor for each event.",
+      "Test the existing iPad in its real viewing position.",
+      "Check the connection direction and source-refresh behaviour.",
+      "Verify a harmless edit from the source and, if supported, from the display.",
+      "Compare the full setup and ongoing plan before replacing anything."
+    ],
+    "faq": [
+      {
+        "q": "Can an iPad replace a dedicated family calendar display?",
+        "a": "It can provide a shared calendar view or run a compatible display service. Test readability, browser support and everyday device behaviour; an app is not automatically an always-on kiosk."
+      },
+      {
+        "q": "Does Skylight sync every supported service both ways?",
+        "a": "Its current guide distinguishes one-way and two-way routes. Google and iCloud have documented two-way options; other listed routes can be one-way."
+      },
+      {
+        "q": "Why does a display still show an old appointment?",
+        "a": "Check the original calendar, connection type, source collection and display refresh. A feed or cached display may update on a different schedule from the source app."
+      }
+    ],
+    "sourcesHeading": "Official setup and capability references",
+    "sources": [
+      {
+        "label": "DAKboard: using an iPad as a display",
+        "url": "https://dakboard.freshdesk.com/support/solutions/articles/35000133204-how-to-use-dakboard-on-an-ipad"
+      },
+      {
+        "label": "DAKboard: calendar collection, cache and screen refresh",
+        "url": "https://dakboard.freshdesk.com/support/solutions/articles/35000139003-content-and-screen-refresh-rates"
+      },
+      {
+        "label": "Skylight: supported services and sync direction",
+        "url": "https://skylight.zendesk.com/hc/en-us/articles/35986090425627-What-does-Skylight-Calendar-sync-with"
+      }
+    ],
+    "seeAlso": [
+      "month-view-on-a-bigger-screen",
+      "cozi-timetree-family-calendar-iphone-android",
+      "what-calendar-sync-actually-does"
+    ]
+  },
+  "sync-google-tasks-apple-reminders-iphone": {
+    "updated": "2026-10-23",
+    "title": "Sync Google Tasks with Apple Reminders: check fields before connecting lists",
+    "short": "Google Tasks and Apple Reminders syncing",
+    "description": "Compare a unified task view, two-way task bridges and automation. Check supported fields, conflicts and date limits before connecting Google and Apple lists.",
+    "lede": "Seeing Google appointments beside Apple reminders is different from keeping two task systems matched. A bridge can create, update and complete items in another service, so test the fields you rely on before connecting a real backlog. Arte Soft, the developer of Cloud Calendars, publishes this guide.",
+    "sections": [
+      {
+        "heading": "Choose between viewing a task source and bridging two systems",
+        "body": [
+          "A calendar app may display tasks from a selected source without creating matching tasks in another account. If your aim is to complete an Apple reminder on an iPhone and see the corresponding Google task completed on a computer, you need a supported task-bridge workflow.",
+          "Write down the list that should own the original items and which direction changes should travel. Calendar event syncing alone does not establish task syncing, and importing a file is not proof of an ongoing two-way connection."
+        ]
+      },
+      {
+        "heading": "Check the fields the bridge actually supports",
+        "body": [
+          "gtsync’s publisher describes two-way Google Tasks and Apple Reminders syncing on iPhone and iPad. Its App Store listing names titles, notes, completion and due dates as supported fields.",
+          "The same listing excludes attachments, alerts, priority and repeating-task rules, and says time-specific due dates become date-only values. A task title appearing on both sides is therefore not proof that its alarm, repeat behaviour or exact due time survived."
+        ]
+      },
+      {
+        "heading": "Compare a second bridge and a unified workspace",
+        "body": [
+          "SyncBridge Tasks’ developer listing describes explicitly pairing one Reminders list with one Google Tasks list, then syncing basic task fields. It distinguishes the free single-pair option from multiple pairs in Pro and describes manual or app/Shortcut-triggered syncing. Check its current listing and local purchase terms for your intended setup.",
+          "Morgen’s integration page describes viewing both sources together, time blocking their tasks and syncing completion back to each original system. That is a unified workspace; it does not establish that each Apple reminder becomes a matching Google task. Choose according to whether you need one place to work or two original lists kept mirrored."
+        ]
+      },
+      {
+        "heading": "An automation needs its own change rules",
+        "body": [
+          "IFTTT lists Google Tasks and Apple Reminders triggers and actions, including applets that create an item when another item is added. Inspect the actual trigger and action instead of assuming a pair of creation rules handles later edits, completions and deletions.",
+          "For a small trial, add a neutral task once and count the resulting items in each system. Then test a harmless edit and completion. If using rules in both directions, check whether an item created by one rule triggers the other; repeated copies are not successful two-way synchronisation."
+        ]
+      },
+      {
+        "heading": "Start with separate disposable lists",
+        "body": [
+          "Create a small test list on each side and connect only those lists initially. Use one ordinary task with a title, short note and date. Add another with a timed due date or repeating rule if those features are essential to your routine, then inspect what arrives at the destination.",
+          "Compare the result in the original task apps, not only in a calendar view. If the bridge cannot preserve a field you depend on, keep that workflow in a system that supports it instead of assuming a copied title is an adequate replacement."
+        ]
+      },
+      {
+        "heading": "Review conflicts before enabling unattended changes",
+        "body": [
+          "gtsync’s product guide describes per-list selection, conflict comparison, manual resolution and an option that keeps the more recently modified version. It also describes background and Shortcut-triggered syncing. Choose the behaviour you understand before applying it to real lists.",
+          "In a harmless test, change the same task differently on each side and inspect the pending result. Check how creates, completions and deletions are represented. Keep a record of important existing lists before expanding the connection; do not start by merging two large backlogs with automatic conflict resolution."
+        ]
+      },
+      {
+        "heading": "Understand where synced task data goes",
+        "body": [
+          "A bridge between Apple Reminders and Google Tasks necessarily sends supported data to the destination service. gtsync’s privacy policy explicitly describes direct communication with Google’s APIs and local mapping/history storage. Local processing is not the same as never transmitting reminder content.",
+          "Review the access requested for the accounts and lists you intend to connect. Work-account restrictions still apply. Test using neutral sample text rather than personal or confidential task details."
+        ]
+      },
+      {
+        "heading": "Keep the calendar planning layer separate",
+        "body": [
+          "Once the task workflow is understood, decide how to view due dates and reserve work time. A due-date marker is not necessarily a block of available working time. Check completion in the task system and scheduling in the calendar as separate results.",
+          "Cloud Calendars helps you plan with calendar events, weather and selected calendar views. This guide does not claim that it bridges Apple Reminders and Google Tasks. Use a tool with documented task-bridge support when that is the requirement."
+        ]
+      }
+    ],
+    "claims": {},
+    "practical": [
+      "Specify whether you need a combined view or tasks mirrored between systems.",
+      "Review supported fields and unsupported timing or repeat rules.",
+      "Connect disposable lists before a real backlog.",
+      "Test a completion and a conflict in both original task apps.",
+      "Expand list access only after the result matches your workflow."
+    ],
+    "faq": [
+      {
+        "q": "Does adding Google Calendar to an iPhone sync Google Tasks with Apple Reminders?",
+        "a": "Do not assume so. Calendar events and task records are different data. Verify a task-specific connection that supports the intended direction."
+      },
+      {
+        "q": "Will a task bridge preserve every reminder field?",
+        "a": "Not necessarily. gtsync’s listing explicitly names unsupported fields and date-only handling. Check the bridge’s current field mapping before relying on it."
+      },
+      {
+        "q": "Does on-device processing mean reminders never go to Google?",
+        "a": "No. A bridge that creates or updates Google tasks must transmit supported data to Google. Read the product’s actual data-flow description rather than treating local processing as offline-only syncing."
+      }
+    ],
+    "sourcesHeading": "Official setup and capability references",
+    "sources": [
+      {
+        "label": "gtsync: supported fields and explicit limitations",
+        "url": "https://apps.apple.com/us/app/gtsync-sync-tasks-reminders/id6761292407"
+      },
+      {
+        "label": "gtsync: list selection, conflicts and sync triggers",
+        "url": "https://gtsync.fnkr.net/product"
+      },
+      {
+        "label": "gtsync: data flow and destination APIs",
+        "url": "https://gtsync.fnkr.net/privacy"
+      },
+      {
+        "label": "SyncBridge Tasks: chosen list pairs and sync controls",
+        "url": "https://apps.apple.com/us/app/syncbridge-tasks/id6795491976"
+      },
+      {
+        "label": "Morgen: unified task sources and completion back to origins",
+        "url": "https://www.morgen.so/google-tasks-apple-reminders-integration"
+      },
+      {
+        "label": "IFTTT: task/reminder triggers, actions and applets",
+        "url": "https://ifttt.com/connect/google_tasks/ios_reminders"
+      }
+    ],
+    "seeAlso": [
+      "iphone-calendar-tasks-reminders-versus-event-alerts",
+      "can-others-see-google-calendar-tasks",
+      "what-calendar-sync-actually-does"
     ]
   }
 };

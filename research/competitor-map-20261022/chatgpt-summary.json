@@ -1,5 +1,5 @@
 {
-  "sampleSize": 12,
+  "sampleSize": 14,
   "independentConversations": true,
   "backendModel": "not exposed",
   "accountPersonalization": "not controlled",
@@ -128,6 +128,28 @@
       "limitation": "Mention detection supports manual review; it is not recommendation ranking. Citation popup sources were not expanded."
     },
     {
+      "id": "household-display",
+      "prompt": "Can I use an iPad as a shared family calendar display instead of buying dedicated calendar hardware? Compare suitable approaches, distinguish a calendar app from a household display and explain sync limits using official sources.",
+      "promptClass": "unseeded-product-discovery",
+      "file": "chatgpt-household-display.json",
+      "mentionedBrands": [
+        "Cloud Calendars",
+        "Apple Calendar",
+        "Google Calendar",
+        "Outlook",
+        "Cozi"
+      ],
+      "cloudMentioned": true,
+      "directSourceUrls": [
+        "https://dakboard.com/c/family/?utm_source=chatgpt.com",
+        "https://support.apple.com/en-is/guide/ipad/ipadc2a14a22/ipados?utm_source=chatgpt.com",
+        "https://support.google.com/calendar/answer/37082?utm_source=chatgpt.com",
+        "https://dakboard.com/pricing?utm_source=chatgpt.com",
+        "https://skylight.zendesk.com/hc/en-us/articles/35986090425627-What-does-Skylight-Calendar-sync-with?utm_source=chatgpt.com"
+      ],
+      "limitation": "Mention detection supports manual review; it is not recommendation ranking. Citation popup sources were not expanded."
+    },
+    {
       "id": "ipad",
       "prompt": "Which iPad calendar apps offer useful month and week views with weather for planning? Compare suitable options, distinguish a full calendar view from a widget and cite current official product sources.",
       "promptClass": "unseeded-product-discovery",
@@ -212,6 +234,24 @@
         "https://support.apple.com/en-lamr/guide/iphone/-iph3d1110d4/ios?utm_source=chatgpt.com",
         "https://support.google.com/calendar/?utm_source=chatgpt.com",
         "https://flexibits.com/fantastical-ios/help/calendar-sets?utm_source=chatgpt.com"
+      ],
+      "limitation": "Mention detection supports manual review; it is not recommendation ranking. Citation popup sources were not expanded."
+    },
+    {
+      "id": "task-bridge",
+      "prompt": "How can I keep Google Tasks and Apple Reminders synchronized on iPhone? Compare a shared task view, true two-way syncing and automation. Explain fields or behaviours that may not transfer and cite official sources.",
+      "promptClass": "unseeded-product-discovery",
+      "file": "chatgpt-task-bridge.json",
+      "mentionedBrands": [
+        "Google Calendar"
+      ],
+      "cloudMentioned": false,
+      "directSourceUrls": [
+        "https://support.apple.com/en-ie/guide/iphone/iph8739025dd/ios?utm_source=chatgpt.com",
+        "https://support.apple.com/en-us/102484?utm_source=chatgpt.com",
+        "https://support.apple.com/guide/shortcuts/create-a-new-personal-automation-apdfbdbd7123/ios?utm_source=chatgpt.com",
+        "https://support.google.com/tasks/answer/7675772?hl=en&utm_source=chatgpt.com",
+        "https://developers.google.com/workspace/tasks/reference/rest/v1/tasks?utm_source=chatgpt.com"
       ],
       "limitation": "Mention detection supports manual review; it is not recommendation ranking. Citation popup sources were not expanded."
     },

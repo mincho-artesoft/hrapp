@@ -196,6 +196,34 @@
       "canonicalCandidate": "https://www.cloud-calendars.com/articles/the-widget-that-shows-what-is-next/",
       "coverageScope": "Candidate guide answers the workflow; not proof all recommended competitor features or all prompt clauses are fully covered.",
       "evidenceFile": "chatgpt-widgets.json"
+    },
+    {
+      "promptId": "household-display",
+      "prompt": "Can I use an iPad as a shared family calendar display instead of buying dedicated calendar hardware? Compare suitable approaches, distinguish a calendar app from a household display and explain sync limits using official sources.",
+      "promptClass": "unseeded-product-discovery",
+      "observedMentions": [
+        "Cloud Calendars",
+        "Apple Calendar",
+        "Google Calendar",
+        "Outlook",
+        "Cozi"
+      ],
+      "cloudMentioned": true,
+      "canonicalCandidate": "https://www.cloud-calendars.com/articles/ipad-family-calendar-display-skylight-dakboard/",
+      "coverageScope": "Candidate guide answers the workflow; not proof all recommended competitor features or all prompt clauses are fully covered.",
+      "evidenceFile": "chatgpt-household-display.json"
+    },
+    {
+      "promptId": "task-bridge",
+      "prompt": "How can I keep Google Tasks and Apple Reminders synchronized on iPhone? Compare a shared task view, true two-way syncing and automation. Explain fields or behaviours that may not transfer and cite official sources.",
+      "promptClass": "unseeded-product-discovery",
+      "observedMentions": [
+        "Google Calendar"
+      ],
+      "cloudMentioned": false,
+      "canonicalCandidate": "https://www.cloud-calendars.com/articles/sync-google-tasks-apple-reminders-iphone/",
+      "coverageScope": "Candidate guide answers the workflow; not proof all recommended competitor features or all prompt clauses are fully covered.",
+      "evidenceFile": "chatgpt-task-bridge.json"
     }
   ],
   "method": "Observed consumer answers, not API generation. Mention detection is not recommendation ranking; sources in answers need independent verification."

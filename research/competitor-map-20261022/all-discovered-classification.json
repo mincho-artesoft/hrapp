@@ -1,23 +1,24 @@
 {
   "date": "2026-10-23",
-  "rowsReviewed": 275,
+  "rowsReviewed": 303,
   "originalSnapshotRows": 212,
-  "laterRows": 63,
+  "laterRows": 91,
   "counts": {
     "same-intent-or-noncontent-disposition": 192,
-    "implemented-or-expanded-canonical": 17,
-    "needs-wall-display-research": 3,
-    "search-filter-or-navigation-artifact": 5,
-    "needs-task-bridge-research": 5,
+    "implemented-or-expanded-canonical": 28,
+    "search-filter-or-navigation-artifact": 12,
     "mapped-related-intent": 32,
     "partial-comparison": 2,
     "navigational": 5,
     "partial-general-selection": 2,
-    "needs-specific-competitor-research": 5,
-    "adjacent-platform-research": 4,
-    "needs-alternate-calendar-widget-research": 3
+    "expanded-comparison-with-limits": 5,
+    "adjacent-platform-research": 6,
+    "shopping-or-category-artifact": 6,
+    "same-intent-variant": 10,
+    "needs-watch-task-source-check": 1,
+    "different-date-resource-intent": 2
   },
-  "scope": "Editorial triage of all saved visible related/follow-up strings through 35 actual queries. These strings include search filters and generated suggestions; they are not 275 independent searches or measured demand.",
+  "scope": "Editorial triage of all saved related/follow-up link texts through 40 actual Google queries, including shopping artifacts and navigational filters. These are not independent search-volume measurements.",
   "rows": [
     {
       "text": "best calendar widget iPhone upcoming events weather",
@@ -1960,10 +1961,10 @@
       "reviewIndex": 138,
       "category": "distinct-intent-needs-research",
       "disposition": "Verify specific query, product facts and existing overlap before adding content",
-      "canonicalCandidate": null,
+      "canonicalCandidate": "https://www.cloud-calendars.com/articles/ipad-family-calendar-display-skylight-dakboard/",
       "reason": "Different task from the source query; do not force onto a weakly related page.",
-      "currentDisposition": "needs-wall-display-research",
-      "currentReason": "Shared household display, iPad app and dedicated hardware need comparison; do not label a bedside widget guide complete coverage."
+      "currentDisposition": "implemented-or-expanded-canonical",
+      "currentReason": "Three generated follow-up strings share the household-display intent; source-backed guide compares app, dashboard and dedicated hardware."
     },
     {
       "text": "Is there an iPad app similar to Skylight calendar? Compare Cozi to OurCal",
@@ -1974,10 +1975,10 @@
       "reviewIndex": 139,
       "category": "distinct-intent-needs-research",
       "disposition": "Verify specific query, product facts and existing overlap before adding content",
-      "canonicalCandidate": null,
+      "canonicalCandidate": "https://www.cloud-calendars.com/articles/ipad-family-calendar-display-skylight-dakboard/",
       "reason": "Different task from the source query; do not force onto a weakly related page.",
-      "currentDisposition": "needs-wall-display-research",
-      "currentReason": "Shared household display, iPad app and dedicated hardware need comparison; do not label a bedside widget guide complete coverage."
+      "currentDisposition": "implemented-or-expanded-canonical",
+      "currentReason": "Three generated follow-up strings share the household-display intent; source-backed guide compares app, dashboard and dedicated hardware."
     },
     {
       "text": "Is there an iPad app similar to Skylight calendar? List DAKboard's best features",
@@ -1988,10 +1989,10 @@
       "reviewIndex": 140,
       "category": "distinct-intent-needs-research",
       "disposition": "Verify specific query, product facts and existing overlap before adding content",
-      "canonicalCandidate": null,
+      "canonicalCandidate": "https://www.cloud-calendars.com/articles/ipad-family-calendar-display-skylight-dakboard/",
       "reason": "Different task from the source query; do not force onto a weakly related page.",
-      "currentDisposition": "needs-wall-display-research",
-      "currentReason": "Shared household display, iPad app and dedicated hardware need comparison; do not label a bedside widget guide complete coverage."
+      "currentDisposition": "implemented-or-expanded-canonical",
+      "currentReason": "Three generated follow-up strings share the household-display intent; source-backed guide compares app, dashboard and dedicated hardware."
     },
     {
       "text": "best iPad calendar week month view site:www.reddit.com",
@@ -3006,9 +3007,9 @@
       "volume": null,
       "reviewIndex": 213,
       "category": "later-suggestion",
-      "currentDisposition": "needs-task-bridge-research",
-      "canonicalCandidate": "https://www.cloud-calendars.com/articles/iphone-calendar-tasks-reminders-versus-event-alerts/",
-      "currentReason": "Displaying a selected task source is not bidirectional Apple/Google task migration. Existing guide only explains the distinction.",
+      "currentDisposition": "implemented-or-expanded-canonical",
+      "canonicalCandidate": "https://www.cloud-calendars.com/articles/sync-google-tasks-apple-reminders-iphone/",
+      "currentReason": "Bridge, unified view and automation now compared with source-checked field limits.",
       "measuredVolume": null
     },
     {
@@ -3018,9 +3019,9 @@
       "volume": null,
       "reviewIndex": 214,
       "category": "later-suggestion",
-      "currentDisposition": "needs-task-bridge-research",
-      "canonicalCandidate": "https://www.cloud-calendars.com/articles/iphone-calendar-tasks-reminders-versus-event-alerts/",
-      "currentReason": "Displaying a selected task source is not bidirectional Apple/Google task migration. Existing guide only explains the distinction.",
+      "currentDisposition": "implemented-or-expanded-canonical",
+      "canonicalCandidate": "https://www.cloud-calendars.com/articles/sync-google-tasks-apple-reminders-iphone/",
+      "currentReason": "Bridge, unified view and automation now compared with source-checked field limits.",
       "measuredVolume": null
     },
     {
@@ -3030,9 +3031,9 @@
       "volume": null,
       "reviewIndex": 215,
       "category": "later-suggestion",
-      "currentDisposition": "needs-task-bridge-research",
-      "canonicalCandidate": "https://www.cloud-calendars.com/articles/iphone-calendar-tasks-reminders-versus-event-alerts/",
-      "currentReason": "Displaying a selected task source is not bidirectional Apple/Google task migration. Existing guide only explains the distinction.",
+      "currentDisposition": "implemented-or-expanded-canonical",
+      "canonicalCandidate": "https://www.cloud-calendars.com/articles/sync-google-tasks-apple-reminders-iphone/",
+      "currentReason": "Bridge, unified view and automation now compared with source-checked field limits.",
       "measuredVolume": null
     },
     {
@@ -3042,9 +3043,9 @@
       "volume": null,
       "reviewIndex": 216,
       "category": "later-suggestion",
-      "currentDisposition": "needs-task-bridge-research",
-      "canonicalCandidate": "https://www.cloud-calendars.com/articles/iphone-calendar-tasks-reminders-versus-event-alerts/",
-      "currentReason": "Displaying a selected task source is not bidirectional Apple/Google task migration. Existing guide only explains the distinction.",
+      "currentDisposition": "implemented-or-expanded-canonical",
+      "canonicalCandidate": "https://www.cloud-calendars.com/articles/sync-google-tasks-apple-reminders-iphone/",
+      "currentReason": "Bridge, unified view and automation now compared with source-checked field limits.",
       "measuredVolume": null
     },
     {
@@ -3054,9 +3055,9 @@
       "volume": null,
       "reviewIndex": 217,
       "category": "later-suggestion",
-      "currentDisposition": "needs-task-bridge-research",
-      "canonicalCandidate": "https://www.cloud-calendars.com/articles/iphone-calendar-tasks-reminders-versus-event-alerts/",
-      "currentReason": "Displaying a selected task source is not bidirectional Apple/Google task migration. Existing guide only explains the distinction.",
+      "currentDisposition": "implemented-or-expanded-canonical",
+      "canonicalCandidate": "https://www.cloud-calendars.com/articles/sync-google-tasks-apple-reminders-iphone/",
+      "currentReason": "Bridge, unified view and automation now compared with source-checked field limits.",
       "measuredVolume": null
     },
     {
@@ -3318,9 +3319,9 @@
       "volume": null,
       "reviewIndex": 239,
       "category": "later-suggestion",
-      "currentDisposition": "needs-specific-competitor-research",
-      "canonicalCandidate": null,
-      "currentReason": "Named competitor comparison or device/task feature requires specific source verification.",
+      "currentDisposition": "expanded-comparison-with-limits",
+      "canonicalCandidate": "https://www.cloud-calendars.com/articles/fantastical-readdle-calendar366-iphone-comparison/",
+      "currentReason": "BusyCal, provider baseline and Watch/task distinctions added; no runtime benchmark or all-feature parity claim.",
       "measuredVolume": null
     },
     {
@@ -3330,9 +3331,9 @@
       "volume": null,
       "reviewIndex": 240,
       "category": "later-suggestion",
-      "currentDisposition": "needs-specific-competitor-research",
-      "canonicalCandidate": null,
-      "currentReason": "Named competitor comparison or device/task feature requires specific source verification.",
+      "currentDisposition": "expanded-comparison-with-limits",
+      "canonicalCandidate": "https://www.cloud-calendars.com/articles/fantastical-readdle-calendar366-iphone-comparison/",
+      "currentReason": "BusyCal, provider baseline and Watch/task distinctions added; no runtime benchmark or all-feature parity claim.",
       "measuredVolume": null
     },
     {
@@ -3342,9 +3343,9 @@
       "volume": null,
       "reviewIndex": 241,
       "category": "later-suggestion",
-      "currentDisposition": "needs-specific-competitor-research",
-      "canonicalCandidate": null,
-      "currentReason": "Named competitor comparison or device/task feature requires specific source verification.",
+      "currentDisposition": "expanded-comparison-with-limits",
+      "canonicalCandidate": "https://www.cloud-calendars.com/articles/fantastical-readdle-calendar366-iphone-comparison/",
+      "currentReason": "BusyCal, provider baseline and Watch/task distinctions added; no runtime benchmark or all-feature parity claim.",
       "measuredVolume": null
     },
     {
@@ -3354,9 +3355,9 @@
       "volume": null,
       "reviewIndex": 242,
       "category": "later-suggestion",
-      "currentDisposition": "needs-specific-competitor-research",
-      "canonicalCandidate": null,
-      "currentReason": "Named competitor comparison or device/task feature requires specific source verification.",
+      "currentDisposition": "expanded-comparison-with-limits",
+      "canonicalCandidate": "https://www.cloud-calendars.com/articles/fantastical-readdle-calendar366-iphone-comparison/",
+      "currentReason": "BusyCal, provider baseline and Watch/task distinctions added; no runtime benchmark or all-feature parity claim.",
       "measuredVolume": null
     },
     {
@@ -3366,9 +3367,9 @@
       "volume": null,
       "reviewIndex": 243,
       "category": "later-suggestion",
-      "currentDisposition": "needs-specific-competitor-research",
-      "canonicalCandidate": null,
-      "currentReason": "Named competitor comparison or device/task feature requires specific source verification.",
+      "currentDisposition": "expanded-comparison-with-limits",
+      "canonicalCandidate": "https://www.cloud-calendars.com/articles/fantastical-readdle-calendar366-iphone-comparison/",
+      "currentReason": "BusyCal, provider baseline and Watch/task distinctions added; no runtime benchmark or all-feature parity claim.",
       "measuredVolume": null
     },
     {
@@ -3522,9 +3523,9 @@
       "discoveredFrom": "calendar-language",
       "reviewIndex": 257,
       "category": "later-suggestion",
-      "currentDisposition": "needs-alternate-calendar-widget-research",
-      "canonicalCandidate": null,
-      "currentReason": "Calendar display and widget support are different capabilities.",
+      "currentDisposition": "implemented-or-expanded-canonical",
+      "canonicalCandidate": "https://www.cloud-calendars.com/articles/lock-screen-without-unlocking/",
+      "currentReason": "Date widget examples and Home/Lock surfaces added with first-party references; no universal accuracy claim.",
       "measuredVolume": null
     },
     {
@@ -3552,9 +3553,9 @@
       "discoveredFrom": "calendar-language",
       "reviewIndex": 260,
       "category": "later-suggestion",
-      "currentDisposition": "needs-alternate-calendar-widget-research",
-      "canonicalCandidate": null,
-      "currentReason": "Calendar display and widget support are different capabilities.",
+      "currentDisposition": "implemented-or-expanded-canonical",
+      "canonicalCandidate": "https://www.cloud-calendars.com/articles/lock-screen-without-unlocking/",
+      "currentReason": "Date widget examples and Home/Lock surfaces added with first-party references; no universal accuracy claim.",
       "measuredVolume": null
     },
     {
@@ -3572,9 +3573,9 @@
       "discoveredFrom": "calendar-language",
       "reviewIndex": 262,
       "category": "later-suggestion",
-      "currentDisposition": "needs-alternate-calendar-widget-research",
-      "canonicalCandidate": null,
-      "currentReason": "Calendar display and widget support are different capabilities.",
+      "currentDisposition": "implemented-or-expanded-canonical",
+      "canonicalCandidate": "https://www.cloud-calendars.com/articles/lock-screen-without-unlocking/",
+      "currentReason": "Date widget examples and Home/Lock surfaces added with first-party references; no universal accuracy claim.",
       "measuredVolume": null
     },
     {
@@ -3695,6 +3696,286 @@
       "currentDisposition": "mapped-related-intent",
       "canonicalCandidate": "https://www.cloud-calendars.com/articles/who-can-see-what-in-google-calendar/",
       "currentReason": "Candidate intent mapping; no independent volume claim.",
+      "measuredVolume": null
+    },
+    {
+      "text": "Digital Picture Frames",
+      "discoveredFrom": "household-display",
+      "reviewIndex": 275,
+      "category": "round4-suggestion",
+      "currentDisposition": "shopping-or-category-artifact",
+      "canonicalCandidate": null,
+      "currentReason": "Shopping/category text, not a calendar content intent. Displayed prices are not adopted as verified current offers.",
+      "measuredVolume": null
+    },
+    {
+      "text": "Dry Erase Boards",
+      "discoveredFrom": "household-display",
+      "reviewIndex": 276,
+      "category": "round4-suggestion",
+      "currentDisposition": "shopping-or-category-artifact",
+      "canonicalCandidate": null,
+      "currentReason": "Shopping/category text, not a calendar content intent. Displayed prices are not adopted as verified current offers.",
+      "measuredVolume": null
+    },
+    {
+      "text": "Wall & Tabletop Picture Frames",
+      "discoveredFrom": "household-display",
+      "reviewIndex": 277,
+      "category": "round4-suggestion",
+      "currentDisposition": "shopping-or-category-artifact",
+      "canonicalCandidate": null,
+      "currentReason": "Shopping/category text, not a calendar content intent. Displayed prices are not adopted as verified current offers.",
+      "measuredVolume": null
+    },
+    {
+      "text": "Hearth Display\n$699.00\nHearth Display& more",
+      "discoveredFrom": "household-display",
+      "reviewIndex": 278,
+      "category": "round4-suggestion",
+      "currentDisposition": "shopping-or-category-artifact",
+      "canonicalCandidate": null,
+      "currentReason": "Shopping/category text, not a calendar content intent. Displayed prices are not adopted as verified current offers.",
+      "measuredVolume": null
+    },
+    {
+      "text": "Cozyla Calendar Plus\n$699.99\n$900\nCozyla& more\n4.0\n(577)",
+      "discoveredFrom": "household-display",
+      "reviewIndex": 279,
+      "category": "round4-suggestion",
+      "currentDisposition": "shopping-or-category-artifact",
+      "canonicalCandidate": null,
+      "currentReason": "Shopping/category text, not a calendar content intent. Displayed prices are not adopted as verified current offers.",
+      "measuredVolume": null
+    },
+    {
+      "text": "Amazon Echo Show 15 / 21\n$185.14\n(€165.05)\neBay& more\n4.7\n(64)",
+      "discoveredFrom": "household-display",
+      "reviewIndex": 280,
+      "category": "round4-suggestion",
+      "currentDisposition": "shopping-or-category-artifact",
+      "canonicalCandidate": null,
+      "currentReason": "Shopping/category text, not a calendar content intent. Displayed prices are not adopted as verified current offers.",
+      "measuredVolume": null
+    },
+    {
+      "text": "Ipad wall calendar skylight alternative family display reddit",
+      "discoveredFrom": "household-display",
+      "reviewIndex": 281,
+      "category": "round4-suggestion",
+      "currentDisposition": "search-filter-or-navigation-artifact",
+      "canonicalCandidate": "https://www.cloud-calendars.com/articles/ipad-family-calendar-display-skylight-dakboard/",
+      "currentReason": "Forum/marketplace qualifier does not create a new article intent.",
+      "measuredVolume": null
+    },
+    {
+      "text": "Ipad wall calendar skylight alternative family display free",
+      "discoveredFrom": "household-display",
+      "reviewIndex": 282,
+      "category": "round4-suggestion",
+      "currentDisposition": "same-intent-variant",
+      "canonicalCandidate": "https://www.cloud-calendars.com/articles/ipad-family-calendar-display-skylight-dakboard/",
+      "currentReason": "Related link text, not independently observed demand.",
+      "measuredVolume": null
+    },
+    {
+      "text": "Ipad wall calendar skylight alternative family display amazon",
+      "discoveredFrom": "household-display",
+      "reviewIndex": 283,
+      "category": "round4-suggestion",
+      "currentDisposition": "search-filter-or-navigation-artifact",
+      "canonicalCandidate": "https://www.cloud-calendars.com/articles/ipad-family-calendar-display-skylight-dakboard/",
+      "currentReason": "Forum/marketplace qualifier does not create a new article intent.",
+      "measuredVolume": null
+    },
+    {
+      "text": "Best ipad wall calendar skylight alternative family display",
+      "discoveredFrom": "household-display",
+      "reviewIndex": 284,
+      "category": "round4-suggestion",
+      "currentDisposition": "same-intent-variant",
+      "canonicalCandidate": "https://www.cloud-calendars.com/articles/ipad-family-calendar-display-skylight-dakboard/",
+      "currentReason": "Related link text, not independently observed demand.",
+      "measuredVolume": null
+    },
+    {
+      "text": "Cheaper alternative to Skylight calendar",
+      "discoveredFrom": "household-display",
+      "reviewIndex": 285,
+      "category": "round4-suggestion",
+      "currentDisposition": "same-intent-variant",
+      "canonicalCandidate": "https://www.cloud-calendars.com/articles/ipad-family-calendar-display-skylight-dakboard/",
+      "currentReason": "Related link text, not independently observed demand.",
+      "measuredVolume": null
+    },
+    {
+      "text": "Skylight calendar alternative no subscription",
+      "discoveredFrom": "household-display",
+      "reviewIndex": 286,
+      "category": "round4-suggestion",
+      "currentDisposition": "same-intent-variant",
+      "canonicalCandidate": "https://www.cloud-calendars.com/articles/ipad-family-calendar-display-skylight-dakboard/",
+      "currentReason": "Related link text, not independently observed demand.",
+      "measuredVolume": null
+    },
+    {
+      "text": "Skylight wall Calendar",
+      "discoveredFrom": "household-display",
+      "reviewIndex": 287,
+      "category": "round4-suggestion",
+      "currentDisposition": "same-intent-variant",
+      "canonicalCandidate": "https://www.cloud-calendars.com/articles/ipad-family-calendar-display-skylight-dakboard/",
+      "currentReason": "Related link text, not independently observed demand.",
+      "measuredVolume": null
+    },
+    {
+      "text": "Skylight Calendar alternatives",
+      "discoveredFrom": "household-display",
+      "reviewIndex": 288,
+      "category": "round4-suggestion",
+      "currentDisposition": "same-intent-variant",
+      "canonicalCandidate": "https://www.cloud-calendars.com/articles/ipad-family-calendar-display-skylight-dakboard/",
+      "currentReason": "Related link text, not independently observed demand.",
+      "measuredVolume": null
+    },
+    {
+      "text": "Sync google tasks apple reminders two way iphone reddit",
+      "discoveredFrom": "task-bridge",
+      "reviewIndex": 289,
+      "category": "round4-suggestion",
+      "currentDisposition": "search-filter-or-navigation-artifact",
+      "canonicalCandidate": "https://www.cloud-calendars.com/articles/sync-google-tasks-apple-reminders-iphone/",
+      "currentReason": "Forum/marketplace qualifier does not create a new article intent.",
+      "measuredVolume": null
+    },
+    {
+      "text": "Google Tasks on Apple Watch",
+      "discoveredFrom": "task-bridge",
+      "reviewIndex": 290,
+      "category": "round4-suggestion",
+      "currentDisposition": "needs-watch-task-source-check",
+      "canonicalCandidate": "https://www.cloud-calendars.com/articles/calendar-on-apple-watch/",
+      "currentReason": "Watch task-source capability needs official verification; a phone task bridge is not Watch-app support.",
+      "measuredVolume": null
+    },
+    {
+      "text": "Google Tasks reminders",
+      "discoveredFrom": "task-bridge",
+      "reviewIndex": 291,
+      "category": "round4-suggestion",
+      "currentDisposition": "same-intent-variant",
+      "canonicalCandidate": "https://www.cloud-calendars.com/articles/sync-google-tasks-apple-reminders-iphone/",
+      "currentReason": "Related link text, not independently observed demand.",
+      "measuredVolume": null
+    },
+    {
+      "text": "Busycal vs fantastical iphone calendar reminders weather reddit",
+      "discoveredFrom": "busycal-comparison",
+      "reviewIndex": 292,
+      "category": "round4-suggestion",
+      "currentDisposition": "search-filter-or-navigation-artifact",
+      "canonicalCandidate": "https://www.cloud-calendars.com/articles/fantastical-readdle-calendar366-iphone-comparison/",
+      "currentReason": "Forum/marketplace qualifier does not create a new article intent.",
+      "measuredVolume": null
+    },
+    {
+      "text": "BusyCal vs Fantastical reddit",
+      "discoveredFrom": "busycal-comparison",
+      "reviewIndex": 293,
+      "category": "round4-suggestion",
+      "currentDisposition": "search-filter-or-navigation-artifact",
+      "canonicalCandidate": "https://www.cloud-calendars.com/articles/fantastical-readdle-calendar366-iphone-comparison/",
+      "currentReason": "Forum/marketplace qualifier does not create a new article intent.",
+      "measuredVolume": null
+    },
+    {
+      "text": "Hijri hebrew date iphone lock screen widget free",
+      "discoveredFrom": "alternate-date-widgets",
+      "reviewIndex": 294,
+      "category": "round4-suggestion",
+      "currentDisposition": "same-intent-variant",
+      "canonicalCandidate": "https://www.cloud-calendars.com/articles/lock-screen-without-unlocking/",
+      "currentReason": "Related link text, not independently observed demand.",
+      "measuredVolume": null
+    },
+    {
+      "text": "Hijri hebrew date iphone lock screen widget download",
+      "discoveredFrom": "alternate-date-widgets",
+      "reviewIndex": 295,
+      "category": "round4-suggestion",
+      "currentDisposition": "same-intent-variant",
+      "canonicalCandidate": "https://www.cloud-calendars.com/articles/lock-screen-without-unlocking/",
+      "currentReason": "Related link text, not independently observed demand.",
+      "measuredVolume": null
+    },
+    {
+      "text": "How to add Hebrew date To iPhone lock screen",
+      "discoveredFrom": "alternate-date-widgets",
+      "reviewIndex": 296,
+      "category": "round4-suggestion",
+      "currentDisposition": "same-intent-variant",
+      "canonicalCandidate": "https://www.cloud-calendars.com/articles/lock-screen-without-unlocking/",
+      "currentReason": "Related link text, not independently observed demand.",
+      "measuredVolume": null
+    },
+    {
+      "text": "How to add Hebrew calendar to Android",
+      "discoveredFrom": "alternate-date-widgets",
+      "reviewIndex": 297,
+      "category": "round4-suggestion",
+      "currentDisposition": "adjacent-platform-research",
+      "canonicalCandidate": null,
+      "currentReason": "Different platform; no iPhone instructions relabeled for Android.",
+      "measuredVolume": null
+    },
+    {
+      "text": "How to Set Islamic date on lock screen Android",
+      "discoveredFrom": "alternate-date-widgets",
+      "reviewIndex": 298,
+      "category": "round4-suggestion",
+      "currentDisposition": "adjacent-platform-research",
+      "canonicalCandidate": null,
+      "currentReason": "Different platform; no iPhone instructions relabeled for Android.",
+      "measuredVolume": null
+    },
+    {
+      "text": "Hebrew calendar download pdf",
+      "discoveredFrom": "alternate-date-widgets",
+      "reviewIndex": 299,
+      "category": "round4-suggestion",
+      "currentDisposition": "different-date-resource-intent",
+      "canonicalCandidate": null,
+      "currentReason": "Printable/year calendar is distinct from an iPhone widget; no near-duplicate calendar download page.",
+      "measuredVolume": null
+    },
+    {
+      "text": "Hebrew calendar 2026",
+      "discoveredFrom": "alternate-date-widgets",
+      "reviewIndex": 300,
+      "category": "round4-suggestion",
+      "currentDisposition": "different-date-resource-intent",
+      "canonicalCandidate": null,
+      "currentReason": "Printable/year calendar is distinct from an iPhone widget; no near-duplicate calendar download page.",
+      "measuredVolume": null
+    },
+    {
+      "text": "Google calendar vs fantastical iphone reddit",
+      "discoveredFrom": "google-fantastical",
+      "reviewIndex": 301,
+      "category": "round4-suggestion",
+      "currentDisposition": "search-filter-or-navigation-artifact",
+      "canonicalCandidate": "https://www.cloud-calendars.com/articles/fantastical-readdle-calendar366-iphone-comparison/",
+      "currentReason": "Forum/marketplace qualifier does not create a new article intent.",
+      "measuredVolume": null
+    },
+    {
+      "text": "Fantastical vs Google Calendar reddit",
+      "discoveredFrom": "google-fantastical",
+      "reviewIndex": 302,
+      "category": "round4-suggestion",
+      "currentDisposition": "search-filter-or-navigation-artifact",
+      "canonicalCandidate": "https://www.cloud-calendars.com/articles/fantastical-readdle-calendar366-iphone-comparison/",
+      "currentReason": "Forum/marketplace qualifier does not create a new article intent.",
       "measuredVolume": null
     }
   ]

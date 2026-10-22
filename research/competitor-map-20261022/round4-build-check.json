@@ -1,0 +1,20 @@
+{
+  "newGuides": [
+    {
+      "slug": "ipad-family-calendar-display-skylight-dakboard",
+      "indexable": true
+    },
+    {
+      "slug": "sync-google-tasks-apple-reminders-iphone",
+      "indexable": true
+    }
+  ],
+  "expandedGuides": [
+    "fantastical-readdle-calendar366-iphone-comparison",
+    "lock-screen-without-unlocking"
+  ],
+  "englishArticles": 71,
+  "sitemapUrls": 105,
+  "heldTranslatedArticlesAndHubs": 436,
+  "privacySourceSha256": "25ce1d341a18967caf5ef68782358b48e3fb192346ff13aa7712b1935f5b28e4"
+}

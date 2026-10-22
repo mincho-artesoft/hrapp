@@ -10,7 +10,7 @@
     "No content is declared researched merely because a corresponding route exists."
   ],
   "currentInventory": {
-    "articles": 476,
+    "articles": 478,
     "locales": [
       "ar-SA",
       "bg",
@@ -43,9 +43,9 @@
       "zh-Hans",
       "zh-Hant"
     ],
-    "englishArticles": 69,
+    "englishArticles": 71,
     "evidence": "src/app/content/article-index.ts generated from locale aggregates",
-    "scope": "Current generated route inventory after eleven added English guides; not blanket quality approval."
+    "scope": "Current generated route inventory after thirteen added English guides; not blanket quality approval."
   },
   "clusters": [
     {
@@ -812,17 +812,37 @@
       "observedEvidence": "research/competitor-map-20261022/coverage-matrix.json",
       "measuredSearchVolume": null,
       "qualityScope": "Publisher-source guide; public HTML and build verified, no device benchmark or rank promise."
+    },
+    {
+      "id": "ipad-family-calendar-display-skylight-dakboard",
+      "keywordCandidates": [
+        "iPad wall calendar Skylight alternative family display"
+      ],
+      "status": "english_published_verified",
+      "canonical": "/articles/ipad-family-calendar-display-skylight-dakboard/",
+      "observedEvidence": "research/competitor-map-20261022/coverage-matrix.json",
+      "measuredSearchVolume": null,
+      "qualityScope": "Source-backed workflow guide, not a device benchmark or general sync guarantee."
+    },
+    {
+      "id": "sync-google-tasks-apple-reminders-iphone",
+      "keywordCandidates": [
+        "sync Google Tasks Apple Reminders two way iPhone"
+      ],
+      "status": "english_published_verified",
+      "canonical": "/articles/sync-google-tasks-apple-reminders-iphone/",
+      "observedEvidence": "research/competitor-map-20261022/coverage-matrix.json",
+      "measuredSearchVolume": null,
+      "qualityScope": "Source-backed workflow guide, not a device benchmark or general sync guarantee."
     }
   ],
   "remaining": [
-    "Research shared household displays versus an iPad app for the three outstanding original leads.",
-    "Verify provider-to-provider task bridging versus selected task-source display.",
-    "Review remaining named BusyCal, Google Calendar and Fantastical device/task comparison leads.",
-    "Check alternate-calendar Home/Lock Screen widget support separately from Calendar display settings.",
-    "Finish mapping the remaining own-site GSC queries and evaluate landing-page/snippet fit.",
-    "Broaden market/language observations proportionately; current language samples are not local-country rank measurements.",
-    "Translated articles remain held from indexing until individual editorial approval.",
-    "App Privacy remains owner-managed; pending replacement privacy policy remains unpublished."
+    "Complete focused actual-query and substantive primary-source review for five originally named census entries: Weather Calendar Together, Dejal/Weather Events, Any.do, Vimcal and Amie. Dejal is a publisher alias, not a second independent calendar app.",
+    "Assess the explicit partial or insufficient-intent dispositions in the own-site query map without manufacturing low-value pages.",
+    "Consolidate competitor/topic evidence and current coverage into an auditable final research deliverable; observations cannot prove every possible ranking keyword.",
+    "Verify one later Google Tasks-on-Watch lead; a phone task bridge is not a Watch client.",
+    "Translated article indexing remains held until individual editorial approval.",
+    "App Privacy remains owner-managed; replacement privacy policy remains unpublished."
   ],
   "existingCanonicalAudit": "competitors/existing-canonical-review-20261021-batch02.json",
   "existingCanonicalAuditScope": "All nine original intent clusters now have bounded substantive English coverage review records, with explicit remaining gaps. Batch20 reviewed seven complete bodies for two clusters; batch22 records ten sharing/work, eleven widgets/views and four tasks/timezones body comparisons (overlaps are not counted as unique additions). Route inventory is not quality or exhaustive-query approval.",
@@ -1779,17 +1799,18 @@
     "goalComplete": false
   },
   "currentSearchEvidence": {
-    "googleActualQueries": 35,
-    "freshConsumerChatGPTConversations": 12,
+    "googleActualQueries": 40,
+    "freshConsumerChatGPTConversations": 14,
     "seededComparisonsWithinFreshChatGPT": 1,
     "historicalConsumerChatGPTConversations": 3,
     "ownSiteSearchConsoleQueryRows": 150,
     "classifiedOriginalRelatedStrings": 212,
     "evidence": "research/competitor-map-20261022/coverage-matrix.json",
     "scope": "Explicit observed queries, not exhaustive rankings or search volumes.",
-    "classifiedRelatedStrings": 275,
+    "classifiedRelatedStrings": 303,
     "originalRelatedStrings": 212,
-    "laterRelatedStrings": 63
+    "laterRelatedStrings": 91,
+    "allAvailableOwnSiteQueryRowsReviewed": 150
   },
   "currentMediaEvidence": {
     "verifiedPublicMediaObjects": 1882,
@@ -1802,15 +1823,15 @@
     "translatedArticlesAndHubs": "noindex,follow until individual approval",
     "englishArticles": "indexable",
     "localizedProductHomepages": "indexable",
-    "sitemapUrls": 103,
+    "sitemapUrls": 105,
     "evidence": "research/competitor-map-20261022/comparison-build-check.json"
   },
   "latestPublication": {
     "date": "2026-10-23",
-    "newEnglishGuidesSinceBatch43": 11,
-    "lastIncrement": 4,
+    "newEnglishGuidesSinceBatch43": 13,
+    "lastIncrement": 2,
     "expandedThisIncrement": 2,
-    "evidence": "research/competitor-map-20261022/round3-public-check.json",
+    "evidence": "research/competitor-map-20261022/round4-public-check.json",
     "goalComplete": false
   }
 }

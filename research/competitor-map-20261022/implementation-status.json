@@ -1,13 +1,13 @@
 {
   "date": "2026-10-23",
   "goalStatus": "active_incomplete",
-  "previousGoalTurn": "Progress: four guides and research expansion published and pushed in commit 57ee608.",
-  "googleActualQueries": 35,
-  "consumerChatGPTFreshSamples": 12,
+  "previousGoalTurn": "Progress: four new guides and research expansion published and pushed in ce5dd7f.",
+  "googleActualQueries": 40,
+  "consumerChatGPTFreshSamples": 14,
   "historicalChatGPTSamples": 3,
-  "newEnglishArticles": 11,
-  "totalEnglishArticles": 69,
-  "sitemapUrls": 103,
+  "newEnglishArticles": 13,
+  "totalEnglishArticles": 71,
+  "sitemapUrls": 105,
   "heldTranslatedArticlesAndHubs": 436,
   "implementedSlugs": [
     "shift-work-calendar-iphone-rotating-schedules",
@@ -20,42 +20,42 @@
     "fantastical-readdle-calendar366-iphone-comparison",
     "iphone-calendar-language-alternate-calendar-settings",
     "share-assign-reminders-iphone-calendar-difference",
-    "can-others-see-google-calendar-tasks"
+    "can-others-see-google-calendar-tasks",
+    "ipad-family-calendar-display-skylight-dakboard",
+    "sync-google-tasks-apple-reminders-iphone"
   ],
   "delivered": [
-    "35 saved actual Google UI observations with query-to-canonical mapping",
-    "12 saved fresh consumer ChatGPT answers and an intent map; seeded comparison separated",
-    "150 available own-site Search Console query rows and selected editorial priorities",
-    "275 related/follow-up strings classified, including filters and navigational artifacts",
-    "Eleven source-backed new English guides across three increments, with contextual incoming links",
-    "Two existing guides expanded for couples/friend groups and selected recurring weekdays",
-    "Build checks, public readback, full sitemap validation and visual proof"
+    "40 saved actual Google UI observations with query-to-canonical mapping",
+    "14 saved fresh consumer ChatGPT answers and an intent map; seeded comparison separated",
+    "All 150 available own-site Search Console query rows given editorial dispositions",
+    "303 related/follow-up strings classified, including filters and navigational artifacts",
+    "Thirteen source-backed new English guides across four increments, with contextual incoming links",
+    "Existing guides expanded for calendar alternatives, widgets, couples and recurrence",
+    "Build checks, public readback, 105 successful sitemap URLs and S3 visual proof"
   ],
   "remaining": [
-    "Research shared household displays versus an iPad app for the three outstanding original leads.",
-    "Verify provider-to-provider task bridging versus selected task-source display.",
-    "Review remaining named BusyCal, Google Calendar and Fantastical device/task comparison leads.",
-    "Check alternate-calendar Home/Lock Screen widget support separately from Calendar display settings.",
-    "Finish mapping the remaining own-site GSC queries and evaluate landing-page/snippet fit.",
-    "Broaden market/language observations proportionately; current language samples are not local-country rank measurements."
+    "Complete focused actual-query and substantive primary-source review for five originally named census entries: Weather Calendar Together, Dejal/Weather Events, Any.do, Vimcal and Amie. Dejal is a publisher alias, not a second independent calendar app.",
+    "Assess the explicit partial or insufficient-intent dispositions in the own-site query map without manufacturing low-value pages.",
+    "Consolidate competitor/topic evidence and current coverage into an auditable final research deliverable; observations cannot prove every possible ranking keyword.",
+    "Verify one later Google Tasks-on-Watch lead; a phone task bridge is not a Watch client."
   ],
-  "completionAudit": "Not achieved: three original leads concerning household displays remain unresolved, along with later task-bridge, named-competitor and alternate-calendar widget questions. Own-site query mapping and broader search coverage remain incomplete. Observations do not establish all competitor keywords.",
-  "lastIncrementArticles": 4,
+  "completionAudit": "Not achieved: the original-competitor census exposed focused query/source gaps for five original labels, including Dejal as publisher alias of Weather Events. Own-site queries and all303 saved follow-up strings now have dispositions, but topic candidates and sparse ambiguous phrases do not prove comprehensive feature or ranking coverage.",
+  "lastIncrementArticles": 2,
   "ownSiteSearchConsoleQueries": 150,
   "classifiedOriginalSuggestionRows": 212,
   "distinctIntentLeads": 20,
-  "laterUnclassifiedSuggestionRows": 40,
   "lastIncrementPublication": {
-    "newArticles": 4,
+    "newArticles": 2,
     "expandedArticles": 2,
-    "build": "round3-build-check.json",
-    "public": "round3-public-check.json",
-    "deploy": "round3-deploy.log",
-    "screenshot": "round3-visual-proof.json",
-    "result": "Published and verified; 103/103 sitemap URLs successful."
+    "build": "round4-build-check.json",
+    "public": "round4-public-check.json",
+    "deploy": "round4-deploy.log",
+    "screenshot": "round4-visual-proof.json",
+    "result": "Published and verified; 105/105 sitemap URLs successful."
   },
   "lastIncrementExpandedArticles": 2,
-  "classifiedRelatedSuggestionRows": 275,
-  "originalDistinctIntentLeadsResolved": 17,
-  "remainingOriginalDistinctIntentLeads": 3
+  "classifiedRelatedSuggestionRows": 303,
+  "originalDistinctIntentLeadsResolved": 20,
+  "remainingOriginalDistinctIntentLeads": 0,
+  "allAvailableOwnSiteQueryRowsReviewed": 150
 }

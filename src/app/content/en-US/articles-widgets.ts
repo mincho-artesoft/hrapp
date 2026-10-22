@@ -293,7 +293,7 @@ export const WIDGETS_EN_US: Readonly<Record<string, LocalisedArticle>> = {
 },
 
   'lock-screen-without-unlocking': {
-  "updated": "2026-10-21",
+  "updated": "2026-10-23",
   "title": "Calendar information on the Lock Screen: choose the right feature",
   "short": "Calendar on the Lock Screen",
   "description": "Distinguish Live Activity from Lock Screen widgets and notification previews. Check availability, privacy and freshness before relying on a calendar glance.",
@@ -333,6 +333,14 @@ export const WIDGETS_EN_US: Readonly<Record<string, LocalisedArticle>> = {
         "Use a future appointment with a non-sensitive test title. Start the activity, lock the phone and inspect which details appear. Then compare the same event after changing its time in the owning calendar and allowing the app to receive the update.",
         "Keep the test separate from real invitations. If the result differs from your expectations, note whether the problem is appearance, privacy, content or alert delivery. That distinction gives support a useful starting point without deleting any account or event history."
       ]
+    },
+    {
+      "heading": "For a Hijri or Hebrew date, check the widget itself",
+      "body": [
+        "An alternate date shown inside a calendar app does not establish that every widget uses that calendar. Choose a widget whose publisher explicitly supports the date and screen surface you want. Apple’s widget guide separates Home Screen placement from the Lock Screen picker.",
+        "For example, Hebrew Calendar’s publisher documents Hebrew-date Home and Lock Screen widgets. The App Store description for Widget: Prayer, Adhkar & Hijri lists Hijri dates and Lock Screen widgets. These are attributed capability examples, not accuracy tests or features promised by Cloud Calendars. Inspect the actual widget options and the date method before relying on a religious or holiday date.",
+        "To add an available Lock Screen widget, use Apple’s documented Customise and Add Widgets controls, then choose the installed app’s offered layout. If that layout is absent, a setting in another calendar app will not create it. Cloud Calendars’ Live Activity remains a separate feature."
+      ]
     }
   ],
   "claims": {},
@@ -354,6 +362,10 @@ export const WIDGETS_EN_US: Readonly<Record<string, LocalisedArticle>> = {
     {
       "q": "Can an empty activity prove the day is free?",
       "a": "No. It follows future timed events and does not represent the complete calendar."
+    },
+    {
+      "q": "Why does an alternate date appear in Calendar but not in my widget?",
+      "a": "The app view and widget layout are separate surfaces. Check that the chosen widget explicitly supports that date format and screen location; do not assume another app’s display setting changes every widget."
     }
   ],
   "sourcesHeading": "Sources and Apple instructions",
@@ -365,6 +377,18 @@ export const WIDGETS_EN_US: Readonly<Record<string, LocalisedArticle>> = {
     {
       "label": "Apple: Add and edit widgets on iPhone",
       "url": "https://support.apple.com/118610"
+    },
+    {
+      "label": "Apple: Home and Lock Screen widget controls",
+      "url": "https://support.apple.com/en-gb/118610"
+    },
+    {
+      "label": "Hebrew Calendar: publisher-documented date widgets",
+      "url": "https://lib.hebcal.co.il/features/widgets.html"
+    },
+    {
+      "label": "Widget: Prayer, Adhkar & Hijri: developer description",
+      "url": "https://apps.apple.com/ca/app/widget-prayer-adhkar-hijri/id6820719175"
     }
   ],
   "seeAlso": [

@@ -306,6 +306,7 @@ export const PLANNING_EN_US: Readonly<Record<string, LocalisedArticle>> = {
     }
   ],
   "seeAlso": [
+    "ipad-family-calendar-display-skylight-dakboard",
     "a-week-view-that-fits-a-week",
     "drag-an-event-to-move-it",
     "recurring-events-without-the-mess",

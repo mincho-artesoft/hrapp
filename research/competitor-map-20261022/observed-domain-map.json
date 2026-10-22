@@ -1,5 +1,5 @@
 {
-  "method": "All observed result domains, including forums and publishers; not a verified competitor list or keyword volume.",
+  "method": "All captured result domains, including forums/publishers, not only competing apps. No universal rank or volume claim.",
   "domains": {
     "9to5mac.com": [
       {
@@ -15,6 +15,14 @@
         "heading": "Free Time Blocking App for iPhone - Align",
         "url": "https://align.day/time-blocking-app/",
         "capturedDisplayOrder": 5
+      }
+    ],
+    "alltech.medium.com": [
+      {
+        "queryId": "busycal-comparison",
+        "heading": "Best Calendar Apps for Mac (2026): I Tested 7. Most Aren't ...",
+        "url": "https://alltech.medium.com/best-calendar-apps-for-mac-2026-i-tested-7-most-arent-worth-the-subscription-d4b90beee075",
+        "capturedDisplayOrder": 4
       }
     ],
     "alternativeto.net": [
@@ -289,6 +297,24 @@
         "heading": "‎Fantastical Calendarアプリ - App Store",
         "url": "https://apps.apple.com/jp/app/fantastical-calendar/id718043190",
         "capturedDisplayOrder": 6
+      },
+      {
+        "queryId": "task-bridge",
+        "heading": "gtsync: Sync Tasks & Reminders - App Store - Apple",
+        "url": "https://apps.apple.com/il/app/gtsync-sync-tasks-reminders/id6761292407",
+        "capturedDisplayOrder": 1
+      },
+      {
+        "queryId": "task-bridge",
+        "heading": "SyncBridge Tasks - App Store - Apple",
+        "url": "https://apps.apple.com/us/app/syncbridge-tasks/id6795491976",
+        "capturedDisplayOrder": 3
+      },
+      {
+        "queryId": "alternate-date-widgets",
+        "heading": "Hebrew Calendar HebDate - App Store - Apple",
+        "url": "https://apps.apple.com/il/app/hebrew-calendar-hebdate/id6502666411",
+        "capturedDisplayOrder": 7
       }
     ],
     "apptierlist.com": [
@@ -329,6 +355,14 @@
         "capturedDisplayOrder": 5
       }
     ],
+    "betweencarpools.com": [
+      {
+        "queryId": "alternate-date-widgets",
+        "heading": "Display the Hebrew Date on Your iPhone Calendar and ...",
+        "url": "https://betweencarpools.com/hebrew-date-on-iphone/",
+        "capturedDisplayOrder": 4
+      }
+    ],
     "blog.archcalendar.com": [
       {
         "queryId": "auto-scheduling",
@@ -358,6 +392,12 @@
         "queryId": "fantastical-brand",
         "heading": "Free Alternative to Fantastical — Top Picks 2026",
         "url": "https://bundl.run/free-alternative-to/fantastical",
+        "capturedDisplayOrder": 8
+      },
+      {
+        "queryId": "busycal-comparison",
+        "heading": "BusyCal vs Apple Calendar — Which is Better in 2026?",
+        "url": "https://bundl.run/compare/busycal-vs-apple-calendar",
         "capturedDisplayOrder": 8
       }
     ],
@@ -413,6 +453,12 @@
         "heading": "Best iPhone Calendar Apps Compared: Fantastical, Google ...",
         "url": "https://clipboardai.app/blog/articles/best-iphone-calendar-apps-compared",
         "capturedDisplayOrder": 7
+      },
+      {
+        "queryId": "google-fantastical",
+        "heading": "Best iPhone Calendar Apps Compared: Fantastical, Google ...",
+        "url": "https://clipboardai.app/blog/articles/best-iphone-calendar-apps-compared",
+        "capturedDisplayOrder": 7
       }
     ],
     "cupla.app": [
@@ -429,6 +475,14 @@
         "heading": "Assign Reminders",
         "url": "https://danstutorials.com/tutorials/tutor-for-reminders/lessons/lessons-for-reminders-on-the-iphone-with-ios/topics/assign-reminders-2/",
         "capturedDisplayOrder": 5
+      }
+    ],
+    "dayfourcalendar.com": [
+      {
+        "queryId": "alternate-date-widgets",
+        "heading": "Biblical Calendar Widgets for Your iPhone Home Screen",
+        "url": "https://dayfourcalendar.com/en/blog/biblical-calendar-widgets-for-iphone/",
+        "capturedDisplayOrder": 6
       }
     ],
     "dayprivate.com": [
@@ -509,6 +563,26 @@
         "heading": "Calendar randomly changed language?",
         "url": "https://discussions.apple.com/thread/255160313",
         "capturedDisplayOrder": 1
+      },
+      {
+        "queryId": "task-bridge",
+        "heading": "How can I sync reminders with Google ?",
+        "url": "https://discussions.apple.com/thread/4140082",
+        "capturedDisplayOrder": 7
+      },
+      {
+        "queryId": "alternate-date-widgets",
+        "heading": "How to put Hebrew calendar on iPhone's lock screen?",
+        "url": "https://discussions.apple.com/thread/254879746",
+        "capturedDisplayOrder": 1
+      }
+    ],
+    "efficient.app": [
+      {
+        "queryId": "google-fantastical",
+        "heading": "Fantastical vs Google Calendar: Which Should You Choose?",
+        "url": "https://efficient.app/compare/fantastical-vs-google-calendar",
+        "capturedDisplayOrder": 6
       }
     ],
     "escapesf.net": [
@@ -639,6 +713,18 @@
         "heading": "Apple Calendar vs Fantastical: Which Is Better?",
         "url": "https://horacal.app/blog/apple-calendar-vs-fantastical/",
         "capturedDisplayOrder": 8
+      },
+      {
+        "queryId": "busycal-comparison",
+        "heading": "BusyCal vs Fantastical: Which Should You Buy?",
+        "url": "https://horacal.app/blog/busycal-vs-fantastical/",
+        "capturedDisplayOrder": 2
+      },
+      {
+        "queryId": "google-fantastical",
+        "heading": "Fantastical vs Google Calendar: Compared",
+        "url": "https://horacal.app/blog/fantastical-vs-google-calendar/",
+        "capturedDisplayOrder": 4
       }
     ],
     "howbout.app": [
@@ -671,6 +757,12 @@
         "heading": "Connect Google Tasks to Apple Reminders",
         "url": "https://ifttt.com/connect/google_tasks/ios_reminders",
         "capturedDisplayOrder": 6
+      },
+      {
+        "queryId": "task-bridge",
+        "heading": "Connect Google Tasks to Apple Reminders",
+        "url": "https://ifttt.com/connect/google_tasks/ios_reminders",
+        "capturedDisplayOrder": 8
       }
     ],
     "imazing.com": [
@@ -711,6 +803,14 @@
         "heading": "Cloud-Based Email and Calendar - Cornell University",
         "url": "https://it.cornell.edu/email-cornell/cloud-based-email-and-calendar",
         "capturedDisplayOrder": 7
+      }
+    ],
+    "kayg.org": [
+      {
+        "queryId": "busycal-comparison",
+        "heading": "BusyCal vs Fantastical",
+        "url": "https://kayg.org/blog/busycal-vs-fantastical/",
+        "capturedDisplayOrder": 3
       }
     ],
     "koalendar.com": [
@@ -785,6 +885,14 @@
         "heading": "Cozi vs TimeTree: Family Lists and Calendar Access",
         "url": "https://lighthouse.mapquest.com/blog/cozi-vs-timetree/",
         "capturedDisplayOrder": 2
+      }
+    ],
+    "mangodisplay.com": [
+      {
+        "queryId": "household-display",
+        "heading": "7 Best Skylight Calendar Alternatives in 2026 (Ranked & ...",
+        "url": "https://mangodisplay.com/best-skylight-calendar-alternatives/",
+        "capturedDisplayOrder": 1
       }
     ],
     "medium.com": [
@@ -911,6 +1019,14 @@
         "capturedDisplayOrder": 6
       }
     ],
+    "productivityside.quora.com": [
+      {
+        "queryId": "busycal-comparison",
+        "heading": "Fantastical Vs Busycal: Which One To Choose?",
+        "url": "https://productivityside.quora.com/Fantastical-Vs-Busycal-Which-One-To-Choose",
+        "capturedDisplayOrder": 7
+      }
+    ],
     "readdle.com": [
       {
         "queryId": "combine",
@@ -983,6 +1099,14 @@
         "heading": "iPhoneのカレンダーに天気予報を自動で表示させる方法！",
         "url": "https://smahospital.jp/column/blogs/127947/",
         "capturedDisplayOrder": 7
+      }
+    ],
+    "smartnmagic.com": [
+      {
+        "queryId": "household-display",
+        "heading": "Skylight Alternative: Finding the Right Smart Family Display",
+        "url": "https://smartnmagic.com/blogs/solutions/skylight-alternative?srsltid=AYCX9vKUjgFGdnVSUC0YoMZ8TuoReXLeaJlxxkvMAOh5ztbFpWeUdWEG",
+        "capturedDisplayOrder": 5
       }
     ],
     "sourceforge.net": [
@@ -1097,6 +1221,12 @@
         "heading": "Can my coworkers that can see all my events also ...",
         "url": "https://support.google.com/calendar/thread/114064727/can-my-coworkers-that-can-see-all-my-events-also-see-all-my-tasks?hl=en",
         "capturedDisplayOrder": 7
+      },
+      {
+        "queryId": "task-bridge",
+        "heading": "Can Google tasks be synced with Apple reminders?",
+        "url": "https://support.google.com/calendar/thread/305159420/can-google-tasks-be-synced-with-apple-reminders?hl=en",
+        "capturedDisplayOrder": 5
       }
     ],
     "support.microsoft.com": [
@@ -1119,6 +1249,12 @@
         "heading": "How to sync Tasks with iOS Reminders or Google Tasks",
         "url": "https://support.readdle.com/calendars/synchronization/how-to-sync-tasks-with-ios-reminders-or-google-tasks",
         "capturedDisplayOrder": 3
+      },
+      {
+        "queryId": "task-bridge",
+        "heading": "How to sync Tasks with iOS Reminders or Google Tasks",
+        "url": "https://support.readdle.com/calendars/synchronization/how-to-sync-tasks-with-ios-reminders-or-google-tasks",
+        "capturedDisplayOrder": 6
       }
     ],
     "syncdate.app": [
@@ -1149,6 +1285,12 @@
         "heading": "Exploring BusyCal vs. Fantastical in 2024 - Software - MPU Talk",
         "url": "https://talk.macpowerusers.com/t/exploring-busycal-vs-fantastical-in-2024/36673",
         "capturedDisplayOrder": 5
+      },
+      {
+        "queryId": "busycal-comparison",
+        "heading": "Exploring BusyCal vs. Fantastical in 2024 - Software - MPU Talk",
+        "url": "https://talk.macpowerusers.com/t/exploring-busycal-vs-fantastical-in-2024/36673",
+        "capturedDisplayOrder": 6
       }
     ],
     "talk.tidbits.com": [
@@ -1235,6 +1377,12 @@
         "heading": "Best Free Calendar Apps for 2026",
         "url": "https://toolfinder.com/lists/free-calendar-apps",
         "capturedDisplayOrder": 3
+      },
+      {
+        "queryId": "google-fantastical",
+        "heading": "Google Calendar vs Fantastical (2026)",
+        "url": "https://toolfinder.com/comparisons/google-calendar-vs-fantastical",
+        "capturedDisplayOrder": 5
       }
     ],
     "tryhero.app": [
@@ -1273,12 +1421,28 @@
         "capturedDisplayOrder": 5
       }
     ],
+    "www.amazon.com": [
+      {
+        "queryId": "household-display",
+        "heading": "Digital Calendar",
+        "url": "https://www.amazon.com/digital-calendar/s?k=digital+calendar",
+        "capturedDisplayOrder": 7
+      }
+    ],
     "www.appbank.net": [
       {
         "queryId": "weather-ja",
         "heading": "カレンダーアプリ『CalCal』v3.1.0が公開！ iPhone Duoと ...",
         "url": "https://www.appbank.net/2026/10/22/iphone-news/3140223.php",
         "capturedDisplayOrder": 9
+      }
+    ],
+    "www.busymac.com": [
+      {
+        "queryId": "busycal-comparison",
+        "heading": "BusyCal vs Fantastical for Mac and iOS",
+        "url": "https://www.busymac.com/compare/fantastical/",
+        "capturedDisplayOrder": 1
       }
     ],
     "www.clickreach.io": [
@@ -1315,6 +1479,14 @@
         "heading": "Working with Time Zones in Apple's Calendar Apps",
         "url": "https://www.computerhardwareinc.com/2025/08/28/working-with-time-zones-in-apples-calendar-apps/",
         "capturedDisplayOrder": 7
+      }
+    ],
+    "www.consumerreports.org": [
+      {
+        "queryId": "household-display",
+        "heading": "Best Digital Wall Calendars",
+        "url": "https://www.consumerreports.org/electronics-computers/best-digital-calendars-a1935397155/",
+        "capturedDisplayOrder": 6
       }
     ],
     "www.cozi.com": [
@@ -1401,6 +1573,14 @@
         "capturedDisplayOrder": 3
       }
     ],
+    "www.forbes.com": [
+      {
+        "queryId": "household-display",
+        "heading": "Best Digital Calendars 2026 - Forbes Vetted",
+        "url": "https://www.forbes.com/sites/forbes-personal-shopper/article/best-digital-calendar/",
+        "capturedDisplayOrder": 3
+      }
+    ],
     "www.gadgetreview.com": [
       {
         "queryId": "reminders",
@@ -1447,6 +1627,12 @@
         "heading": "天気予報 まで自作！30年分の気象データと #AI で予定を立てて ...",
         "url": "https://www.instagram.com/reel/Dd8jar8tVRp/",
         "capturedDisplayOrder": 8
+      },
+      {
+        "queryId": "alternate-date-widgets",
+        "heading": "How to add the Hebrew calendar to your iPhone Lock Screen! I ...",
+        "url": "https://www.instagram.com/reel/DLaWd7qJ1Dj/?hl=en",
+        "capturedDisplayOrder": 5
       }
     ],
     "www.iphonelife.com": [
@@ -1501,6 +1687,18 @@
         "heading": "Google Calendar + Apple Reminders Integration - Morgen",
         "url": "https://www.morgen.so/google-calendar-apple-reminders-integration",
         "capturedDisplayOrder": 8
+      },
+      {
+        "queryId": "task-bridge",
+        "heading": "Google Tasks + Apple Reminders Integration - Morgen",
+        "url": "https://www.morgen.so/google-tasks-apple-reminders-integration",
+        "capturedDisplayOrder": 4
+      },
+      {
+        "queryId": "google-fantastical",
+        "heading": "Fantastical vs Google Calendar: 2026 Side-by-Side Comparison",
+        "url": "https://www.morgen.so/blog-posts/fantastical-vs-google-calendar",
+        "capturedDisplayOrder": 1
       }
     ],
     "www.nestifyapp.org": [
@@ -1779,6 +1977,36 @@
         "heading": "Can someone see all my google calendar events, just be ...",
         "url": "https://www.reddit.com/r/GMail/comments/1imkorc/can_someone_see_all_my_google_calendar_events/",
         "capturedDisplayOrder": 3
+      },
+      {
+        "queryId": "household-display",
+        "heading": "Skylight Alternatives? : r/skylightcalendar",
+        "url": "https://www.reddit.com/r/skylightcalendar/comments/1pwgcdk/skylight_alternatives/",
+        "capturedDisplayOrder": 4
+      },
+      {
+        "queryId": "task-bridge",
+        "heading": "Syncing apple reminders with google tasks? : r/gtd",
+        "url": "https://www.reddit.com/r/gtd/comments/1olp9p9/syncing_apple_reminders_with_google_tasks/",
+        "capturedDisplayOrder": 2
+      },
+      {
+        "queryId": "busycal-comparison",
+        "heading": "BusyCal better than Apple Calendar? : r/macapps",
+        "url": "https://www.reddit.com/r/macapps/comments/1iog0a3/busycal_better_than_apple_calendar/",
+        "capturedDisplayOrder": 5
+      },
+      {
+        "queryId": "alternate-date-widgets",
+        "heading": "How To Add Islamic Calendar To iPhone 2025 (Step-By- ...",
+        "url": "https://www.reddit.com/r/TechronaYT/comments/1pnvgs0/how_to_add_islamic_calendar_to_iphone_2025/",
+        "capturedDisplayOrder": 8
+      },
+      {
+        "queryId": "google-fantastical",
+        "heading": "Apple vs Google Calendar for calendar hosting?",
+        "url": "https://www.reddit.com/r/FantasticalCalendar/comments/1w5c606/apple_vs_google_calendar_for_calendar_hosting/",
+        "capturedDisplayOrder": 2
       }
     ],
     "www.saner.ai": [
@@ -1837,6 +2065,14 @@
         "capturedDisplayOrder": 3
       }
     ],
+    "www.tiktok.com": [
+      {
+        "queryId": "alternate-date-widgets",
+        "heading": "How to Add Islamic (Hijri) Calendar on iPhone Lock Screen",
+        "url": "https://www.tiktok.com/@oumarsolution/video/7479516048245525766?lang=en",
+        "capturedDisplayOrder": 3
+      }
+    ],
     "www.usecalendara.com": [
       {
         "queryId": "family",
@@ -1861,6 +2097,14 @@
         "heading": "Cozi vs TimeTree (2026): Which Shared Calendar Fits?",
         "url": "https://www.usecalendara.com/blog/cozi-vs-timetree",
         "capturedDisplayOrder": 4
+      }
+    ],
+    "www.usecarly.com": [
+      {
+        "queryId": "google-fantastical",
+        "heading": "Fantastical vs Google Calendar: Which to Pick in 2026?",
+        "url": "https://www.usecarly.com/blog/fantastical-vs-google-calendar/",
+        "capturedDisplayOrder": 8
       }
     ],
     "www.usemotion.com": [
@@ -1991,6 +2235,26 @@
         "heading": "How to Share a Google Tasks List in 2026",
         "url": "https://www.youtube.com/watch?v=ZdYDmeO5fao",
         "capturedDisplayOrder": 8
+      },
+      {
+        "queryId": "alternate-date-widgets",
+        "heading": "How To Add Islamic Date To iPhone Lock Screen 2026 (Step- ...",
+        "url": "https://www.youtube.com/watch?v=dGz6RDmdpsE",
+        "capturedDisplayOrder": 2
+      },
+      {
+        "queryId": "alternate-date-widgets",
+        "heading": "How To Add Islamic Date To iPhone Lock Screen",
+        "url": "https://www.youtube.com/watch?v=QVT-hFLCXxM",
+        "capturedDisplayOrder": 9
+      }
+    ],
+    "www.zdnet.com": [
+      {
+        "queryId": "household-display",
+        "heading": "3 Apple HomeView alternatives you can get today",
+        "url": "https://www.zdnet.com/home-and-office/apple-homeview-alternatives-cheaper/",
+        "capturedDisplayOrder": 2
       }
     ],
     "x.com": [
@@ -1999,6 +2263,14 @@
         "heading": "Apple News on X: \"How to Save & Export Calendar as PDF ...",
         "url": "https://x.com/applenws/status/1348310489005252610",
         "capturedDisplayOrder": 6
+      }
+    ],
+    "youcanbook.me": [
+      {
+        "queryId": "google-fantastical",
+        "heading": "Fantastical vs. Google Calendar: Which One is Best For You?",
+        "url": "https://youcanbook.me/blog/fantastical-vs-google-calendar",
+        "capturedDisplayOrder": 3
       }
     ],
     "zapier.com": [

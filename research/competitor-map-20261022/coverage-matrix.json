@@ -1,8 +1,8 @@
 {
   "date": "2026-10-23",
-  "status": "incomplete_research_with_eleven_implemented_intent_gaps",
+  "status": "incomplete_original_competitor_census_gaps_identified",
   "method": {
-    "google": "35 actual Google UI queries; English plus one German and one Japanese query. hl=en gl=us pws=0, signed-in desktop, physical location not controlled. Captured heading order is not universal organic rank.",
+    "google": "40 actual Google UI queries. English plus German/Japanese language samples; hl=en gl=us pws=0, signed-in desktop, physical location not controlled. Captured order is not universal organic ranking.",
     "chatgpt": "Twelve fresh consumer UI conversations, each in a new chat. Eleven unseeded product-discovery prompts and one named-competitor auto-scheduling comparison. Backend model and account personalization not controlled; no recommendation-share or causal-lift claim.",
     "volume": "No measured keyword volume or difficulty; no claim that every competitor keyword is known.",
     "canonicalPolicy": "Group same-intent variants. New pages require a distinct reader task and source-backed substance.",
@@ -2239,28 +2239,332 @@
         "What is Default visibility in Google Calendar",
         "Who can see my Google calendar"
       ]
+    },
+    {
+      "id": "household-display",
+      "query": "iPad wall calendar Skylight alternative family display",
+      "evidenceFile": "google-observations.json",
+      "observedAt": "2026-10-22T21:17:56.588Z",
+      "canonical": "https://www.cloud-calendars.com/articles/ipad-family-calendar-display-skylight-dakboard/",
+      "coverage": "new",
+      "assessment": "iPad app, browser dashboard and dedicated device compared; refresh and one/two-way sync distinguished.",
+      "observedResults": [
+        {
+          "displayOrder": 1,
+          "heading": "7 Best Skylight Calendar Alternatives in 2026 (Ranked & ...",
+          "url": "https://mangodisplay.com/best-skylight-calendar-alternatives/"
+        },
+        {
+          "displayOrder": 2,
+          "heading": "3 Apple HomeView alternatives you can get today",
+          "url": "https://www.zdnet.com/home-and-office/apple-homeview-alternatives-cheaper/"
+        },
+        {
+          "displayOrder": 3,
+          "heading": "Best Digital Calendars 2026 - Forbes Vetted",
+          "url": "https://www.forbes.com/sites/forbes-personal-shopper/article/best-digital-calendar/"
+        },
+        {
+          "displayOrder": 4,
+          "heading": "Skylight Alternatives? : r/skylightcalendar",
+          "url": "https://www.reddit.com/r/skylightcalendar/comments/1pwgcdk/skylight_alternatives/"
+        },
+        {
+          "displayOrder": 5,
+          "heading": "Skylight Alternative: Finding the Right Smart Family Display",
+          "url": "https://smartnmagic.com/blogs/solutions/skylight-alternative?srsltid=AYCX9vKUjgFGdnVSUC0YoMZ8TuoReXLeaJlxxkvMAOh5ztbFpWeUdWEG"
+        },
+        {
+          "displayOrder": 6,
+          "heading": "Best Digital Wall Calendars",
+          "url": "https://www.consumerreports.org/electronics-computers/best-digital-calendars-a1935397155/"
+        },
+        {
+          "displayOrder": 7,
+          "heading": "Digital Calendar",
+          "url": "https://www.amazon.com/digital-calendar/s?k=digital+calendar"
+        }
+      ],
+      "relatedQueries": [
+        "Digital Picture Frames",
+        "Dry Erase Boards",
+        "Wall & Tabletop Picture Frames",
+        "Skylight Calendar",
+        "Hearth Display\n$699.00\nHearth Display& more",
+        "Cozyla Calendar Plus\n$699.99\n$900\nCozyla& more\n4.0\n(577)",
+        "Amazon Echo Show 15 / 21\n$185.14\n(€165.05)\neBay& more\n4.7\n(64)",
+        "More results from www.reddit.com",
+        "Ipad wall calendar skylight alternative family display reddit",
+        "Ipad wall calendar skylight alternative family display free",
+        "Ipad wall calendar skylight alternative family display amazon",
+        "Best ipad wall calendar skylight alternative family display",
+        "Cheaper alternative to Skylight calendar",
+        "Skylight calendar alternative no subscription",
+        "Skylight wall Calendar",
+        "Skylight Calendar alternatives"
+      ]
+    },
+    {
+      "id": "task-bridge",
+      "query": "sync Google Tasks Apple Reminders two way iPhone",
+      "evidenceFile": "google-observations.json",
+      "observedAt": "2026-10-22T21:21:15.782Z",
+      "canonical": "https://www.cloud-calendars.com/articles/sync-google-tasks-apple-reminders-iphone/",
+      "coverage": "new",
+      "assessment": "gtsync, SyncBridge, Morgen and automation differentiated by fields and change direction.",
+      "observedResults": [
+        {
+          "displayOrder": 1,
+          "heading": "gtsync: Sync Tasks & Reminders - App Store - Apple",
+          "url": "https://apps.apple.com/il/app/gtsync-sync-tasks-reminders/id6761292407"
+        },
+        {
+          "displayOrder": 2,
+          "heading": "Syncing apple reminders with google tasks? : r/gtd",
+          "url": "https://www.reddit.com/r/gtd/comments/1olp9p9/syncing_apple_reminders_with_google_tasks/"
+        },
+        {
+          "displayOrder": 3,
+          "heading": "SyncBridge Tasks - App Store - Apple",
+          "url": "https://apps.apple.com/us/app/syncbridge-tasks/id6795491976"
+        },
+        {
+          "displayOrder": 4,
+          "heading": "Google Tasks + Apple Reminders Integration - Morgen",
+          "url": "https://www.morgen.so/google-tasks-apple-reminders-integration"
+        },
+        {
+          "displayOrder": 5,
+          "heading": "Can Google tasks be synced with Apple reminders?",
+          "url": "https://support.google.com/calendar/thread/305159420/can-google-tasks-be-synced-with-apple-reminders?hl=en"
+        },
+        {
+          "displayOrder": 6,
+          "heading": "How to sync Tasks with iOS Reminders or Google Tasks",
+          "url": "https://support.readdle.com/calendars/synchronization/how-to-sync-tasks-with-ios-reminders-or-google-tasks"
+        },
+        {
+          "displayOrder": 7,
+          "heading": "How can I sync reminders with Google ?",
+          "url": "https://discussions.apple.com/thread/4140082"
+        },
+        {
+          "displayOrder": 8,
+          "heading": "Connect Google Tasks to Apple Reminders",
+          "url": "https://ifttt.com/connect/google_tasks/ios_reminders"
+        }
+      ],
+      "relatedQueries": [
+        "More results from www.reddit.com",
+        "Sync google tasks apple reminders two way iphone reddit",
+        "Sync Google Tasks with Apple Reminders",
+        "Sync Google tasks with Apple Reminders reddit",
+        "Sync Google tasks with Apple calendar",
+        "Google Tasks on Apple Watch",
+        "Google Tasks reminders"
+      ]
+    },
+    {
+      "id": "busycal-comparison",
+      "query": "BusyCal vs Fantastical iPhone calendar reminders weather",
+      "evidenceFile": "google-observations.json",
+      "observedAt": "2026-10-22T21:21:56.604Z",
+      "canonical": "https://www.cloud-calendars.com/articles/fantastical-readdle-calendar366-iphone-comparison/",
+      "coverage": "expanded-comparison",
+      "assessment": "Existing comparison expanded with BusyCal task/weather controls and Watch distinctions.",
+      "observedResults": [
+        {
+          "displayOrder": 1,
+          "heading": "BusyCal vs Fantastical for Mac and iOS",
+          "url": "https://www.busymac.com/compare/fantastical/"
+        },
+        {
+          "displayOrder": 2,
+          "heading": "BusyCal vs Fantastical: Which Should You Buy?",
+          "url": "https://horacal.app/blog/busycal-vs-fantastical/"
+        },
+        {
+          "displayOrder": 3,
+          "heading": "BusyCal vs Fantastical",
+          "url": "https://kayg.org/blog/busycal-vs-fantastical/"
+        },
+        {
+          "displayOrder": 4,
+          "heading": "Best Calendar Apps for Mac (2026): I Tested 7. Most Aren't ...",
+          "url": "https://alltech.medium.com/best-calendar-apps-for-mac-2026-i-tested-7-most-arent-worth-the-subscription-d4b90beee075"
+        },
+        {
+          "displayOrder": 5,
+          "heading": "BusyCal better than Apple Calendar? : r/macapps",
+          "url": "https://www.reddit.com/r/macapps/comments/1iog0a3/busycal_better_than_apple_calendar/"
+        },
+        {
+          "displayOrder": 6,
+          "heading": "Exploring BusyCal vs. Fantastical in 2024 - Software - MPU Talk",
+          "url": "https://talk.macpowerusers.com/t/exploring-busycal-vs-fantastical-in-2024/36673"
+        },
+        {
+          "displayOrder": 7,
+          "heading": "Fantastical Vs Busycal: Which One To Choose?",
+          "url": "https://productivityside.quora.com/Fantastical-Vs-Busycal-Which-One-To-Choose"
+        },
+        {
+          "displayOrder": 8,
+          "heading": "BusyCal vs Apple Calendar — Which is Better in 2026?",
+          "url": "https://bundl.run/compare/busycal-vs-apple-calendar"
+        }
+      ],
+      "relatedQueries": [
+        "More results from www.reddit.com",
+        "Busycal vs fantastical iphone calendar reminders weather reddit",
+        "Fantastical calendar",
+        "BusyCal vs Fantastical reddit"
+      ]
+    },
+    {
+      "id": "alternate-date-widgets",
+      "query": "Hijri Hebrew date iPhone Lock Screen widget",
+      "evidenceFile": "google-observations.json",
+      "observedAt": "2026-10-22T21:27:09.427Z",
+      "canonical": "https://www.cloud-calendars.com/articles/lock-screen-without-unlocking/",
+      "coverage": "expanded-existing",
+      "assessment": "Publisher examples for alternate-date widgets added; no Cloud accessory-widget promise.",
+      "observedResults": [
+        {
+          "displayOrder": 1,
+          "heading": "How to put Hebrew calendar on iPhone's lock screen?",
+          "url": "https://discussions.apple.com/thread/254879746"
+        },
+        {
+          "displayOrder": 2,
+          "heading": "How To Add Islamic Date To iPhone Lock Screen 2026 (Step- ...",
+          "url": "https://www.youtube.com/watch?v=dGz6RDmdpsE"
+        },
+        {
+          "displayOrder": 3,
+          "heading": "How to Add Islamic (Hijri) Calendar on iPhone Lock Screen",
+          "url": "https://www.tiktok.com/@oumarsolution/video/7479516048245525766?lang=en"
+        },
+        {
+          "displayOrder": 4,
+          "heading": "Display the Hebrew Date on Your iPhone Calendar and ...",
+          "url": "https://betweencarpools.com/hebrew-date-on-iphone/"
+        },
+        {
+          "displayOrder": 5,
+          "heading": "How to add the Hebrew calendar to your iPhone Lock Screen! I ...",
+          "url": "https://www.instagram.com/reel/DLaWd7qJ1Dj/?hl=en"
+        },
+        {
+          "displayOrder": 6,
+          "heading": "Biblical Calendar Widgets for Your iPhone Home Screen",
+          "url": "https://dayfourcalendar.com/en/blog/biblical-calendar-widgets-for-iphone/"
+        },
+        {
+          "displayOrder": 7,
+          "heading": "Hebrew Calendar HebDate - App Store - Apple",
+          "url": "https://apps.apple.com/il/app/hebrew-calendar-hebdate/id6502666411"
+        },
+        {
+          "displayOrder": 8,
+          "heading": "How To Add Islamic Calendar To iPhone 2025 (Step-By- ...",
+          "url": "https://www.reddit.com/r/TechronaYT/comments/1pnvgs0/how_to_add_islamic_calendar_to_iphone_2025/"
+        },
+        {
+          "displayOrder": 9,
+          "heading": "How To Add Islamic Date To iPhone Lock Screen",
+          "url": "https://www.youtube.com/watch?v=QVT-hFLCXxM"
+        }
+      ],
+      "relatedQueries": [
+        "More results from discussions.apple.com",
+        "Hijri hebrew date iphone lock screen widget free",
+        "Hijri hebrew date iphone lock screen widget download",
+        "How to add Hebrew date To iPhone lock screen",
+        "How to get Islamic calendar on iPhone Lock Screen",
+        "How to add Hebrew calendar to Android",
+        "How to Set Islamic date on lock screen Android",
+        "Hebrew calendar download pdf",
+        "Hebrew calendar 2026"
+      ]
+    },
+    {
+      "id": "google-fantastical",
+      "query": "Google Calendar vs Fantastical iPhone",
+      "evidenceFile": "google-observations.json",
+      "observedAt": "2026-10-22T21:27:16.630Z",
+      "canonical": "https://www.cloud-calendars.com/articles/fantastical-readdle-calendar366-iphone-comparison/",
+      "coverage": "expanded-comparison",
+      "assessment": "Provider-own-interface baseline added; not a complete benchmark of every feature.",
+      "observedResults": [
+        {
+          "displayOrder": 1,
+          "heading": "Fantastical vs Google Calendar: 2026 Side-by-Side Comparison",
+          "url": "https://www.morgen.so/blog-posts/fantastical-vs-google-calendar"
+        },
+        {
+          "displayOrder": 2,
+          "heading": "Apple vs Google Calendar for calendar hosting?",
+          "url": "https://www.reddit.com/r/FantasticalCalendar/comments/1w5c606/apple_vs_google_calendar_for_calendar_hosting/"
+        },
+        {
+          "displayOrder": 3,
+          "heading": "Fantastical vs. Google Calendar: Which One is Best For You?",
+          "url": "https://youcanbook.me/blog/fantastical-vs-google-calendar"
+        },
+        {
+          "displayOrder": 4,
+          "heading": "Fantastical vs Google Calendar: Compared",
+          "url": "https://horacal.app/blog/fantastical-vs-google-calendar/"
+        },
+        {
+          "displayOrder": 5,
+          "heading": "Google Calendar vs Fantastical (2026)",
+          "url": "https://toolfinder.com/comparisons/google-calendar-vs-fantastical"
+        },
+        {
+          "displayOrder": 6,
+          "heading": "Fantastical vs Google Calendar: Which Should You Choose?",
+          "url": "https://efficient.app/compare/fantastical-vs-google-calendar"
+        },
+        {
+          "displayOrder": 7,
+          "heading": "Best iPhone Calendar Apps Compared: Fantastical, Google ...",
+          "url": "https://clipboardai.app/blog/articles/best-iphone-calendar-apps-compared"
+        },
+        {
+          "displayOrder": 8,
+          "heading": "Fantastical vs Google Calendar: Which to Pick in 2026?",
+          "url": "https://www.usecarly.com/blog/fantastical-vs-google-calendar/"
+        }
+      ],
+      "relatedQueries": [
+        "More results from www.reddit.com",
+        "Google calendar vs fantastical iphone reddit",
+        "Fantastical calendar",
+        "Fantastical vs Google Calendar reddit"
+      ]
     }
   ],
   "remaining": [
-    "Research shared household displays versus an iPad app for the three outstanding original leads.",
-    "Verify provider-to-provider task bridging versus selected task-source display.",
-    "Review remaining named BusyCal, Google Calendar and Fantastical device/task comparison leads.",
-    "Check alternate-calendar Home/Lock Screen widget support separately from Calendar display settings.",
-    "Finish mapping the remaining own-site GSC queries and evaluate landing-page/snippet fit.",
-    "Broaden market/language observations proportionately; current language samples are not local-country rank measurements."
+    "Complete focused actual-query and substantive primary-source review for five originally named census entries: Weather Calendar Together, Dejal/Weather Events, Any.do, Vimcal and Amie. Dejal is a publisher alias, not a second independent calendar app.",
+    "Assess the explicit partial or insufficient-intent dispositions in the own-site query map without manufacturing low-value pages.",
+    "Consolidate competitor/topic evidence and current coverage into an auditable final research deliverable; observations cannot prove every possible ranking keyword."
   ],
   "ownSiteEvidence": {
     "file": "gsc-query-observations.json",
     "queryRows": 150,
     "range": "2026-08-25 to 2026-10-20",
-    "limitation": "Own-site impressions; not competitor keyword volume. Anonymized queries can be omitted."
+    "limitation": "Own-site impressions; not competitor keyword volume. Anonymized queries can be omitted.",
+    "contentMap": "gsc-query-content-map.json",
+    "allAvailableRowsReviewed": 150
   },
   "suggestionReview": {
     "file": "all-discovered-classification.json",
     "rowsReviewed": 275,
     "originalDistinctIntentLeads": 20,
-    "implementedOrExpandedAmongOriginalLeads": 17,
-    "remainingOriginalLeads": 3,
-    "note": "Remaining three leads concern shared household displays. Broader competitor and provider/task bridge questions remain explicitly open."
+    "implementedOrExpandedAmongOriginalLeads": 20,
+    "remainingOriginalLeads": 0,
+    "note": "The three household-display follow-up strings map to one distinct guide, not three doorway pages."
   }
 }

@@ -1,0 +1,41 @@
+{
+  "date": "2026-10-23",
+  "scope": "Discovery and selected substantive excerpts only; fuller competitor-topic/query review remains. No apps installed or accounts connected.",
+  "records": [
+    {
+      "product": "Dejal / Weather Events",
+      "url": "https://dejal.com/weatherevents/",
+      "review": "Dejal app-catalog navigation followed to Weather Events product page.",
+      "finding": "Dejal is the publisher; avoid counting publisher and app as two independent competing products.",
+      "next": "Read substantive product capabilities and observe actual competitor queries."
+    },
+    {
+      "product": "Any.do",
+      "url": "https://support.any.do/en/articles/8610622-getting-started-with-the-calendar-integration",
+      "review": "Selected integration body and FAQ excerpts",
+      "finding": "Mobile device-calendar route differs from desktop direct integration; sharing uses underlying calendars.",
+      "next": "Map actual queries and add only a distinct source-backed improvement."
+    },
+    {
+      "product": "Vimcal",
+      "url": "https://www.vimcal.com/downloads/ios",
+      "review": "Substantive iOS page headings and paragraphs",
+      "finding": "Availability, time-zone and booking-link workflow promoted; fastest/double-booking claims not independently validated.",
+      "next": "Review setup/provider docs before specific integration advice."
+    },
+    {
+      "product": "Amie",
+      "url": "https://amie.so/documentation/google-calendar-integration",
+      "review": "Selected substantive integration sections",
+      "finding": "Publisher documents Google two-way event sync and recurring-event support; latency and privacy assurances untested.",
+      "next": "Inspect product scope and actual query results, not old third-party pivot claims."
+    },
+    {
+      "product": "Weather Calendar Together",
+      "url": "https://apps.apple.com/de/app/weather-calendar-together/id6737379295",
+      "review": "Cached listing/navigation discovery; later body fetch failed with 404",
+      "finding": "Current availability and substantive capabilities not verified; no global delisting conclusion.",
+      "next": "Use a valid official source or record unavailable evidence without fabricating feature coverage."
+    }
+  ]
+}
