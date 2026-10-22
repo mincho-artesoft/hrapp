@@ -1,0 +1,575 @@
+[
+  {
+    "locale": "en-US",
+    "slug": "work-and-personal-without-two-apps",
+    "file": "src/app/content/en-US/articles-unify.ts",
+    "before": {
+      "updated": "2026-10-22",
+      "title": "Work and personal calendars in one app: keep ownership separate",
+      "short": "Work and personal, one app",
+      "description": "See work and personal calendars together without merging ownership. Check permissions, event destinations and Cloud Calendars plans before connecting accounts.",
+      "lede": "An overview can help you spot clashes while keeping event ownership clear. Check both the calendars you display and the account routes used to store their copies. This guide is written by Arte Soft, the developer of Cloud Calendars.",
+      "commonBelief": "Putting work and personal calendars in one app also combines their sharing permissions.",
+      "sections": [
+        {
+          "heading": "An overview is different from shared access",
+          "body": [
+            "A calendar app can display selected calendars together while each keeps its own account and permissions. Apple’s multiple-calendar guide describes choosing calendars to display, assigning colours and selecting a default calendar. Those display choices are not a transfer of event ownership.",
+            "Before connecting a work account, check your organisation’s requirements. Google documents that administrators can restrict calendar sharing. A convenient personal overview does not give you permission to publish work details or bypass account restrictions.",
+            "Cloud Calendars’ Google and Microsoft connections use mirrored calendars in the iPhone calendar store. The available calendar sources can affect where these copies are held. A work-account connection therefore needs approval for its actual data flow, not just for the account name shown in the overview."
+          ]
+        },
+        {
+          "heading": "Use colour and visibility for the overview",
+          "body": [
+            "Give work and personal calendars distinct colours, then check a busy day with both visible. When you want a narrower view, hide a calendar rather than deleting its events. Apple’s duplicate-calendar guide explains how to show and hide calendars with checkboxes. Before accepting a new commitment, restore the calendars relevant to that decision and compare the week with all of them visible. An empty filtered view does not establish that the time is free.",
+            "Hiding a calendar does not change who has permission to access it. In Cloud Calendars, calendar selection also matters to Google synchronization and notification scheduling, so do not assume that deselecting a calendar affects only the picture on screen. Check important changes at their provider and review notification settings separately if the goal is a quiet evening. Keep an approved work app available if your organisation requires it."
+          ]
+        },
+        {
+          "heading": "Check the destination before saving",
+          "body": [
+            "A default calendar is a useful starting point, not a guarantee that every appointment belongs there. For a personal appointment, check the selected calendar before saving. For a work meeting, use the work calendar and the organisation’s invitation process.",
+            "Do not move or copy an invitation simply to make it appear in your overview. Microsoft distinguishes events you created from meetings organised by someone else: changing your own displayed copy is not a reliable way to update the organiser or attendees. Keep the original invitation and ask the organiser about a time change."
+          ]
+        },
+        {
+          "heading": "What the Cloud Calendars plans add",
+          "body": [
+            "Cloud Calendars supports calendar views on iPhone and iPad. Its Base plan includes Google Calendar sync and the multi-calendar view. Advanced adds ad removal; Premium adds Microsoft Calendar and Teams support. Current local prices are shown in the app and App Store.",
+            "Advanced is not a paid permission to manage every account. A subscription does not make a read-only calendar writable or override workplace policy. Local calendars can be used without an account; provider connections and sharing have their own sign-in requirements."
+          ]
+        },
+        {
+          "heading": "Check a privacy-preserving busy block from the other side",
+          "body": [
+            "Suppose a personal appointment should stop colleagues booking that time, but they should not learn its title. Seeing it beside work on your phone is only your overview. First establish whether your work account contains any availability entry at all, then check what an intended colleague can see.",
+            "If your organisation permits a manual work availability block, review the destination, title, notes, location, attendees and availability before saving. Avoid copying private appointment details into it. This is an approved arrangement you create and verify, not an automatic Cloud Calendars masking feature. Keep later changes consistent without turning the second entry into another invitation."
+          ]
+        }
+      ],
+      "claims": {},
+      "practical": [
+        "Check whether your workplace permits the account connection.",
+        "Choose distinct colours and display the calendars you need for an overview.",
+        "Verify the destination calendar when creating a new event.",
+        "Hide a calendar temporarily to narrow the view; do not delete events to tidy it.",
+        "Review sharing permissions and notifications separately from calendar visibility."
+      ],
+      "faq": [
+        {
+          "q": "Will my employer see my personal events just because both calendars are in one app?",
+          "a": "Displaying calendars together does not itself grant calendar-sharing permission. Check which account owns each event, its sharing settings and any employer device-management rules. Do not save a private appointment to a work calendar by accident."
+        },
+        {
+          "q": "Do I need Advanced to see Google and personal calendars together?",
+          "a": "Google Calendar sync and the multi-calendar view are Base features. Advanced removes ads. Microsoft Calendar support is part of Premium; account permissions still apply."
+        },
+        {
+          "q": "Does Cloud Calendars automatically replace personal details with a work busy block?",
+          "a": "Do not rely on that. Viewing calendars together and creating provider mirrors are different from an explicit privacy-masking rule that copies availability into another account. Verify the arrangement your organisation permits."
+        }
+      ],
+      "sourcesHeading": "Sources and further reading",
+      "sources": [
+        {
+          "label": "Apple: Set up multiple calendars on iPhone",
+          "url": "https://support.apple.com/guide/iphone/use-multiple-calendars-iph3d1110d4/ios"
+        },
+        {
+          "label": "Apple: If you have duplicate events on your iCloud Calendar",
+          "url": "https://support.apple.com/en-us/102180"
+        },
+        {
+          "label": "Google: Choose what others can do with your calendar",
+          "url": "https://support.google.com/calendar/answer/15716974?hl=en"
+        },
+        {
+          "label": "Microsoft: Change an appointment, meeting, or event in Outlook",
+          "url": "https://support.microsoft.com/en-us/outlook/calendar/change-an-appointment-meeting-or-event-in-outlook"
+        }
+      ],
+      "seeAlso": [
+        "what-calendar-sync-actually-does",
+        "when-two-calendars-disagree",
+        "who-can-see-what-in-google-calendar"
+      ]
+    },
+    "after": {
+      "updated": "2026-10-22",
+      "title": "Work and personal calendars in one app: keep ownership separate",
+      "short": "Work and personal, one app",
+      "description": "See work and personal calendars together without merging ownership. Check permissions, event destinations and Cloud Calendars plans before connecting accounts.",
+      "lede": "An overview can help you spot clashes while keeping event ownership clear. Check both the calendars you display and the account routes used to store their copies. This guide is written by Arte Soft, the developer of Cloud Calendars.",
+      "commonBelief": "Putting work and personal calendars in one app also combines their sharing permissions.",
+      "sections": [
+        {
+          "heading": "An overview is different from shared access",
+          "body": [
+            "A calendar app can display selected calendars together while each keeps its own account and permissions. Apple’s multiple-calendar guide describes choosing calendars to display, assigning colours and selecting a default calendar. Those display choices are not a transfer of event ownership.",
+            "Before connecting a work account, check your organisation’s requirements. Google documents that administrators can restrict calendar sharing. A convenient personal overview does not give you permission to publish work details or bypass account restrictions.",
+            "Cloud Calendars’ Google and Microsoft connections use mirrored calendars in the iPhone calendar store. The available calendar sources can affect where these copies are held. A work-account connection therefore needs approval for its actual data flow, not just for the account name shown in the overview."
+          ]
+        },
+        {
+          "heading": "Use colour and visibility for the overview",
+          "body": [
+            "Give work and personal calendars distinct colours, then check a busy day with both visible. When you want a narrower view, hide a calendar rather than deleting its events. Apple’s duplicate-calendar guide explains how to show and hide calendars with checkboxes. Before accepting a new commitment, restore the calendars relevant to that decision and compare the week with all of them visible. An empty filtered view does not establish that the time is free.",
+            "Hiding a calendar does not change who has permission to access it. In Cloud Calendars, calendar selection also matters to Google synchronization and notification scheduling, so do not assume that deselecting a calendar affects only the picture on screen. Check important changes at their provider and review notification settings separately if the goal is a quiet evening. Keep an approved work app available if your organisation requires it."
+          ]
+        },
+        {
+          "heading": "Check the destination before saving",
+          "body": [
+            "A default calendar is a useful starting point, not a guarantee that every appointment belongs there. For a personal appointment, check the selected calendar before saving. For a work meeting, use the work calendar and the organisation’s invitation process.",
+            "Do not move or copy an invitation simply to make it appear in your overview. Microsoft distinguishes events you created from meetings organised by someone else: changing your own displayed copy is not a reliable way to update the organiser or attendees. Keep the original invitation and ask the organiser about a time change."
+          ]
+        },
+        {
+          "heading": "What the Cloud Calendars plans add",
+          "body": [
+            "Cloud Calendars supports calendar views on iPhone and iPad. Its Base plan includes Google Calendar sync and the multi-calendar view. Advanced adds ad removal; Premium adds Microsoft Calendar and Teams support. Current local prices are shown in the app and App Store.",
+            "Advanced is not a paid permission to manage every account. A subscription does not make a read-only calendar writable or override workplace policy. Local calendars can be used without an account; provider connections and sharing have their own sign-in requirements."
+          ]
+        },
+        {
+          "heading": "Check a privacy-preserving busy block from the other side",
+          "body": [
+            "Suppose a personal appointment should stop colleagues booking that time, but they should not learn its title. Seeing it beside work on your phone is only your overview. First establish whether your work account contains any availability entry at all, then check what an intended colleague can see.",
+            "If your organisation permits a manual work availability block, review the destination, title, notes, location, attendees and availability before saving. Avoid copying private appointment details into it. This is an approved arrangement you create and verify, not an automatic Cloud Calendars masking feature. Keep later changes consistent without turning the second entry into another invitation."
+          ]
+        }
+      ],
+      "claims": {},
+      "practical": [
+        "Check whether your workplace permits the account connection.",
+        "Choose distinct colours and display the calendars you need for an overview.",
+        "Verify the destination calendar when creating a new event.",
+        "Hide a calendar temporarily to narrow the view; do not delete events to tidy it.",
+        "Review sharing permissions and notifications separately from calendar visibility."
+      ],
+      "faq": [
+        {
+          "q": "Will my employer see my personal events just because both calendars are in one app?",
+          "a": "Displaying calendars together does not itself grant calendar-sharing permission. Check which account owns each event, its sharing settings and any employer device-management rules. Do not save a private appointment to a work calendar by accident."
+        },
+        {
+          "q": "Do I need Advanced to see Google and personal calendars together?",
+          "a": "Google Calendar sync and the multi-calendar view are Base features. Advanced removes ads. Microsoft Calendar support is part of Premium; account permissions still apply."
+        },
+        {
+          "q": "Does Cloud Calendars automatically replace personal details with a work busy block?",
+          "a": "Do not rely on that. Viewing calendars together and creating provider mirrors are different from an explicit privacy-masking rule that copies availability into another account. Verify the arrangement your organisation permits."
+        }
+      ],
+      "sourcesHeading": "Sources and further reading",
+      "sources": [
+        {
+          "label": "Apple: Set up multiple calendars on iPhone",
+          "url": "https://support.apple.com/guide/iphone/use-multiple-calendars-iph3d1110d4/ios"
+        },
+        {
+          "label": "Apple: If you have duplicate events on your iCloud Calendar",
+          "url": "https://support.apple.com/en-us/102180"
+        },
+        {
+          "label": "Google: Choose what others can do with your calendar",
+          "url": "https://support.google.com/calendar/answer/15716974?hl=en"
+        },
+        {
+          "label": "Microsoft: Change an appointment, meeting, or event in Outlook",
+          "url": "https://support.microsoft.com/en-us/outlook/calendar/change-an-appointment-meeting-or-event-in-outlook"
+        }
+      ],
+      "seeAlso": [
+        "what-calendar-sync-actually-does",
+        "when-two-calendars-disagree",
+        "who-can-see-what-in-google-calendar",
+        "change-calendar-color-iphone"
+      ]
+    },
+    "target": "change-calendar-color-iphone"
+  },
+  {
+    "locale": "en-US",
+    "slug": "event-saved-to-wrong-calendar",
+    "file": "src/app/content/en-US/articles-help.ts",
+    "before": {
+      "updated": "2026-10-21",
+      "title": "Event saved to the wrong calendar?",
+      "short": "Event saved to the wrong calendar?",
+      "description": "Check the event destination, Cloud Calendars selection and Apple defaults before moving appointments or changing account settings.",
+      "lede": "This guide is published by Arte Soft, the developer of Cloud Calendars. An appointment can appear in the correct week while belonging to the wrong account. Read its Calendar value, then identify the account or local calendar behind that name before changing sync settings.",
+      "sections": [
+        {
+          "heading": "Identify the record, not just its color",
+          "body": [
+            "Two accounts can both contain a calendar called Personal. A title or color alone may not settle which received the event. If a family appointment is stored in your work calendar, hiding work from your overview does not move it or change its access. If the event is already in the intended calendar but disappears when that calendar is hidden, investigate display selection instead."
+          ]
+        },
+        {
+          "heading": "Choose the destination before saving a new event",
+          "body": [
+            "In the Cloud Calendars creation editor, open Calendar and choose the intended writable destination. Its picker can display an account or source alongside the calendar title; check that information when names are similar. Connecting an account does not make every calendar in it editable.",
+            "The initial choice can depend on where creation started and which writable calendars are selected. A specific calendar column can supply the destination. Otherwise, the selection policy prefers an available selected writable calendar before falling back to the system default and then another writable calendar. Do not assume the iPhone default always wins.",
+            "Create a harmless test appointment through your usual creation path, then reopen it and check the saved calendar. Repeat this check when you change selected calendars or begin from a different view, before relying on that path for a private event."
+          ]
+        },
+        {
+          "heading": "What Apple Calendar’s default changes",
+          "body": [
+            "Apple documents Settings > Apps > Calendar > Default Calendar for choosing where Apple Calendar places new events. These are Apple Calendar instructions; they are not a universal default for every calendar app.",
+            "Changing a default does not relocate existing records. After adjusting it, test the same creation path that produced the mistake. If Cloud Calendars still chooses another destination, inspect its Calendar field and selected calendars rather than repeatedly changing the Apple setting. A new-event default and an existing event’s destination are separate decisions."
+          ]
+        },
+        {
+          "heading": "If the intended calendar is unavailable",
+          "body": [
+            "The Cloud Calendars creation picker filters out destinations that cannot accept edits. An existing read-only event can still display its current calendar so you can identify it. A missing writable destination and a hidden calendar in your overview therefore need different checks.",
+            "Confirm the account is connected and that the calendar owner granted the necessary access. Apple describes external calendar subscriptions as read-only. Do not remove an account or create competing copies merely to make a destination selectable. If you only need to see a schedule, restoring its visibility may solve the problem."
+          ]
+        },
+        {
+          "heading": "Treat an existing destination change as an action",
+          "body": [
+            "For an ordinary appointment you own, first record the intended destination and check whether it repeats or has guests. In Cloud Calendars, choosing another Calendar in an existing event’s detail view can save the move immediately. Do not treat that selection as a preview that you can dismiss without consequence.",
+            "Apple Calendar documents moving an event through its Calendar field. Google Calendar on iPhone requires the event organizer to have edit access to the destination; its documented recurring-event move also moves future instances and cannot move only one instance. These provider-specific rules do not guarantee identical behavior for every Cloud transfer.",
+            "For an invitation organized by somebody else, ask the organizer about ownership or delivery. Moving your displayed copy is not proof that their meeting changed. For recurring or cross-account events, use a supported provider workflow when you need a scope or capability that the app does not clearly offer."
+          ]
+        },
+        {
+          "heading": "Check the result before cleanup",
+          "body": [
+            "Reopen the event and compare calendar, date, time, recurrence and important details. For connected accounts, inspect the intended provider’s own view where available. Verify guests and conferencing separately; a move is not a guarantee that every meeting feature is preserved.",
+            "Keep the original information until the result is clear. If two entries appear, identify their accounts before deleting either. A default-calendar diagnosis does not require cancelling invitations, clearing local storage or recreating a recurring series."
+          ]
+        }
+      ],
+      "claims": {},
+      "practical": [
+        "Identify the event’s saved calendar and account, not just its title or color.",
+        "Choose the intended writable Calendar explicitly before creating a new appointment.",
+        "Treat changing Calendar on an existing event as a possible immediate save.",
+        "Reopen the saved event and verify recurrence, guests and conferencing before cleanup."
+      ],
+      "faq": [
+        {
+          "q": "Why can Cloud Calendars differ from the iPhone default?",
+          "a": "Creation context and selected writable calendars can take priority over the system fallback. Check Calendar in the editor."
+        },
+        {
+          "q": "Will changing the default move existing appointments?",
+          "a": "No. Review existing destinations separately; the default concerns new events."
+        },
+        {
+          "q": "Can I preview another Calendar on an existing event without saving?",
+          "a": "Do not assume so. Selecting another Calendar in an existing Cloud Calendars detail view can save immediately. Decide on the intended change before choosing it."
+        }
+      ],
+      "sourcesHeading": "Official guidance",
+      "sources": [
+        {
+          "label": "Apple: multiple calendars, visibility and moving events",
+          "url": "https://support.apple.com/guide/iphone/use-multiple-calendars-iph3d1110d4/ios"
+        },
+        {
+          "label": "Apple: default calendar settings",
+          "url": "https://support.apple.com/en-my/guide/iphone/iphc37be2016/27/ios/27"
+        },
+        {
+          "label": "Google: moving events on iPhone and iPad",
+          "url": "https://support.google.com/calendar/answer/78739?co=GENIE.Platform%3DiOS&hl=en"
+        }
+      ],
+      "seeAlso": [
+        "work-and-personal-without-two-apps",
+        "what-calendar-sync-actually-does",
+        "recurring-events-without-the-mess"
+      ]
+    },
+    "after": {
+      "updated": "2026-10-21",
+      "title": "Event saved to the wrong calendar?",
+      "short": "Event saved to the wrong calendar?",
+      "description": "Check the event destination, Cloud Calendars selection and Apple defaults before moving appointments or changing account settings.",
+      "lede": "This guide is published by Arte Soft, the developer of Cloud Calendars. An appointment can appear in the correct week while belonging to the wrong account. Read its Calendar value, then identify the account or local calendar behind that name before changing sync settings.",
+      "sections": [
+        {
+          "heading": "Identify the record, not just its color",
+          "body": [
+            "Two accounts can both contain a calendar called Personal. A title or color alone may not settle which received the event. If a family appointment is stored in your work calendar, hiding work from your overview does not move it or change its access. If the event is already in the intended calendar but disappears when that calendar is hidden, investigate display selection instead."
+          ]
+        },
+        {
+          "heading": "Choose the destination before saving a new event",
+          "body": [
+            "In the Cloud Calendars creation editor, open Calendar and choose the intended writable destination. Its picker can display an account or source alongside the calendar title; check that information when names are similar. Connecting an account does not make every calendar in it editable.",
+            "The initial choice can depend on where creation started and which writable calendars are selected. A specific calendar column can supply the destination. Otherwise, the selection policy prefers an available selected writable calendar before falling back to the system default and then another writable calendar. Do not assume the iPhone default always wins.",
+            "Create a harmless test appointment through your usual creation path, then reopen it and check the saved calendar. Repeat this check when you change selected calendars or begin from a different view, before relying on that path for a private event."
+          ]
+        },
+        {
+          "heading": "What Apple Calendar’s default changes",
+          "body": [
+            "Apple documents Settings > Apps > Calendar > Default Calendar for choosing where Apple Calendar places new events. These are Apple Calendar instructions; they are not a universal default for every calendar app.",
+            "Changing a default does not relocate existing records. After adjusting it, test the same creation path that produced the mistake. If Cloud Calendars still chooses another destination, inspect its Calendar field and selected calendars rather than repeatedly changing the Apple setting. A new-event default and an existing event’s destination are separate decisions."
+          ]
+        },
+        {
+          "heading": "If the intended calendar is unavailable",
+          "body": [
+            "The Cloud Calendars creation picker filters out destinations that cannot accept edits. An existing read-only event can still display its current calendar so you can identify it. A missing writable destination and a hidden calendar in your overview therefore need different checks.",
+            "Confirm the account is connected and that the calendar owner granted the necessary access. Apple describes external calendar subscriptions as read-only. Do not remove an account or create competing copies merely to make a destination selectable. If you only need to see a schedule, restoring its visibility may solve the problem."
+          ]
+        },
+        {
+          "heading": "Treat an existing destination change as an action",
+          "body": [
+            "For an ordinary appointment you own, first record the intended destination and check whether it repeats or has guests. In Cloud Calendars, choosing another Calendar in an existing event’s detail view can save the move immediately. Do not treat that selection as a preview that you can dismiss without consequence.",
+            "Apple Calendar documents moving an event through its Calendar field. Google Calendar on iPhone requires the event organizer to have edit access to the destination; its documented recurring-event move also moves future instances and cannot move only one instance. These provider-specific rules do not guarantee identical behavior for every Cloud transfer.",
+            "For an invitation organized by somebody else, ask the organizer about ownership or delivery. Moving your displayed copy is not proof that their meeting changed. For recurring or cross-account events, use a supported provider workflow when you need a scope or capability that the app does not clearly offer."
+          ]
+        },
+        {
+          "heading": "Check the result before cleanup",
+          "body": [
+            "Reopen the event and compare calendar, date, time, recurrence and important details. For connected accounts, inspect the intended provider’s own view where available. Verify guests and conferencing separately; a move is not a guarantee that every meeting feature is preserved.",
+            "Keep the original information until the result is clear. If two entries appear, identify their accounts before deleting either. A default-calendar diagnosis does not require cancelling invitations, clearing local storage or recreating a recurring series."
+          ]
+        }
+      ],
+      "claims": {},
+      "practical": [
+        "Identify the event’s saved calendar and account, not just its title or color.",
+        "Choose the intended writable Calendar explicitly before creating a new appointment.",
+        "Treat changing Calendar on an existing event as a possible immediate save.",
+        "Reopen the saved event and verify recurrence, guests and conferencing before cleanup."
+      ],
+      "faq": [
+        {
+          "q": "Why can Cloud Calendars differ from the iPhone default?",
+          "a": "Creation context and selected writable calendars can take priority over the system fallback. Check Calendar in the editor."
+        },
+        {
+          "q": "Will changing the default move existing appointments?",
+          "a": "No. Review existing destinations separately; the default concerns new events."
+        },
+        {
+          "q": "Can I preview another Calendar on an existing event without saving?",
+          "a": "Do not assume so. Selecting another Calendar in an existing Cloud Calendars detail view can save immediately. Decide on the intended change before choosing it."
+        }
+      ],
+      "sourcesHeading": "Official guidance",
+      "sources": [
+        {
+          "label": "Apple: multiple calendars, visibility and moving events",
+          "url": "https://support.apple.com/guide/iphone/use-multiple-calendars-iph3d1110d4/ios"
+        },
+        {
+          "label": "Apple: default calendar settings",
+          "url": "https://support.apple.com/en-my/guide/iphone/iphc37be2016/27/ios/27"
+        },
+        {
+          "label": "Google: moving events on iPhone and iPad",
+          "url": "https://support.google.com/calendar/answer/78739?co=GENIE.Platform%3DiOS&hl=en"
+        }
+      ],
+      "seeAlso": [
+        "work-and-personal-without-two-apps",
+        "what-calendar-sync-actually-does",
+        "recurring-events-without-the-mess",
+        "change-calendar-color-iphone"
+      ]
+    },
+    "target": "change-calendar-color-iphone"
+  },
+  {
+    "locale": "bg",
+    "slug": "work-and-personal-without-two-apps",
+    "file": "src/app/content/bg/articles-help.ts",
+    "before": {
+      "updated": "2026-10-22",
+      "title": "Служебни и лични календари в едно приложение: достъп и права",
+      "short": "Работа и личен живот в едно приложение",
+      "description": "Вижте служебните и личните календари заедно. Проверете правата, мястото за запис на събитията и плановете на Cloud Calendars преди свързване.",
+      "lede": "Общият изглед помага да забележите застъпвания, без да губите яснота към кого принадлежи всяко събитие. Проверете както показваните календари, така и връзките с акаунти, чрез които се съхраняват техни копия. Това ръководство е написано от Arte Soft, разработчика на Cloud Calendars.",
+      "commonBelief": "Събирането на служебни и лични календари в едно приложение обединява и правата им за споделяне.",
+      "sections": [
+        {
+          "heading": "Общият изглед е различен от споделения достъп",
+          "body": [
+            "Приложението може да показва избрани календари заедно, като всеки запазва собствения си акаунт и права. Ръководството на Apple за няколко календара описва избора на показвани календари, задаването на цветове и избора на календар по подразбиране. Тези настройки на изгледа не прехвърлят собствеността върху събитията.",
+            "Преди да свържете служебен акаунт, проверете изискванията на организацията си. Google посочва, че администраторите могат да ограничават споделянето на календари. Удобният личен преглед не ви дава разрешение да публикувате служебни подробности или да заобикаляте ограниченията на акаунта.",
+            "Връзките на Cloud Calendars с Google и Microsoft използват огледални календари в хранилището за календари на iPhone. Наличните източници на календари могат да повлияят къде се съхраняват тези копия. Затова свързването на служебен акаунт изисква одобрение за действителния обмен и съхранение на данните, а не само за името на акаунта в общия изглед."
+          ]
+        },
+        {
+          "heading": "Използвайте цветовете и видимостта за по-ясен преглед",
+          "body": [
+            "Задайте различни цветове на служебните и личните календари и прегледайте натоварен ден, докато и двата вида са видими. Когато искате по-тесен изглед, скрийте календар, вместо да изтривате събитията му. Ръководството на Apple за дублирани календари обяснява показването и скриването чрез отметки. Преди да приемете нов ангажимент, покажете отново всички календари, които имат значение за решението, и сравнете седмицата с тях. Празният филтриран изглед не доказва, че времето е свободно.",
+            "Скриването на календар не променя кой има право на достъп до него. В Cloud Calendars изборът на календари има значение и за синхронизацията с Google и планирането на известия, затова не приемайте, че премахването на отметката променя само показаното на екрана. Проверявайте важните промени при съответния доставчик и преглеждайте отделно настройките за известия, ако целта е спокойна вечер. Запазете достъпа до одобрено служебно приложение, ако организацията ви го изисква."
+          ]
+        },
+        {
+          "heading": "Проверете къде ще се запише събитието",
+          "body": [
+            "Календарът по подразбиране е полезна отправна точка, но не гарантира, че всеки ангажимент принадлежи там. При лична среща проверете избрания календар преди запазване. За служебна среща използвайте служебния календар и установения в организацията процес за покани.",
+            "Не премествайте и не копирайте покана само за да се появи в общия ви изглед. Microsoft разграничава събитията, които сте създали, от срещите, организирани от друг: промяната на показваното при вас копие не е надежден начин да уведомите организатора или участниците за актуализация. Запазете оригиналната покана и обсъдете промяната на часа с организатора."
+          ]
+        },
+        {
+          "heading": "Какво добавят плановете на Cloud Calendars",
+          "body": [
+            "Cloud Calendars поддържа календарни изгледи на iPhone и iPad. Планът Base включва синхронизация с Google Calendar и изглед с няколко календара. Advanced добавя премахване на рекламите; Premium добавя поддръжка за Microsoft Calendar и Teams. Актуалните местни цени се показват в приложението и App Store.",
+            "Advanced не е платено разрешение за управление на всеки акаунт. Абонаментът не прави календар само за четене редактируем и не отменя служебната политика. Локалните календари могат да се използват без акаунт; връзките с доставчици и споделянето имат собствени изисквания за вход."
+          ]
+        },
+        {
+          "heading": "Проверете как колегите виждат заетото време",
+          "body": [
+            "Да предположим, че лична среща трябва да попречи на колегите да ви резервират този час, но те не бива да научават заглавието ѝ. Това, че я виждате до служебните събития на телефона, е само вашият преглед. Първо установете дали служебният акаунт изобщо съдържа запис за заетостта ви, а след това проверете какво вижда конкретният колега.",
+            "Ако организацията ви позволява ръчно добавен блок за заето време в служебния календар, преди запазване прегледайте календара, заглавието, бележките, мястото, участниците и статуса на заетост. Не копирайте в него подробности от личната среща. Това е одобрена уговорка, която създавате и проверявате сами, а не автоматична функция на Cloud Calendars за скриване на подробности. Поддържайте последващите промени съгласувани, без да превръщате втория запис в още една покана."
+          ]
+        }
+      ],
+      "claims": {},
+      "practical": [
+        "Проверете дали работодателят ви разрешава свързването на акаунта.",
+        "Изберете различни цветове и покажете необходимите за прегледа календари.",
+        "Проверявайте календара за запис при създаване на ново събитие.",
+        "Скривайте временно календар за по-тесен изглед; не изтривайте събития, за да го подредите.",
+        "Преглеждайте правата за споделяне и известията отделно от видимостта на календара."
+      ],
+      "faq": [
+        {
+          "q": "Ще вижда ли работодателят ми личните събития само защото двата календара са в едно приложение?",
+          "a": "Общото показване само по себе си не дава право за споделен достъп. Проверете към кой акаунт принадлежи всяко събитие, настройките му за споделяне и правилата на работодателя за управление на устройството. Внимавайте да не запишете лична среща в служебен календар по погрешка."
+        },
+        {
+          "q": "Нужен ли ми е Advanced, за да виждам Google и личните календари заедно?",
+          "a": "Синхронизацията с Google Calendar и изгледът с няколко календара са функции на Base. Advanced премахва рекламите. Поддръжката за Microsoft Calendar е част от Premium; правата на акаунта продължават да важат."
+        },
+        {
+          "q": "Cloud Calendars заменя ли автоматично личните подробности със служебен блок за заето време?",
+          "a": "Не разчитайте на това. Общото показване и създаването на огледални календари са различни от изрично правило, което копира заетостта в друг акаунт и скрива личните подробности. Проверете уговорката, която организацията ви разрешава."
+        }
+      ],
+      "sourcesHeading": "Източници и допълнителна информация",
+      "sources": [
+        {
+          "label": "Apple: настройване на няколко календара на iPhone",
+          "url": "https://support.apple.com/guide/iphone/use-multiple-calendars-iph3d1110d4/ios"
+        },
+        {
+          "label": "Apple: дублирани събития в iCloud Calendar",
+          "url": "https://support.apple.com/en-us/102180"
+        },
+        {
+          "label": "Google: избор какво могат да правят другите с календара ви",
+          "url": "https://support.google.com/calendar/answer/15716974?hl=en"
+        },
+        {
+          "label": "Microsoft: промяна на ангажимент, среща или събитие в Outlook",
+          "url": "https://support.microsoft.com/en-us/outlook/calendar/change-an-appointment-meeting-or-event-in-outlook"
+        }
+      ],
+      "seeAlso": [
+        "icloud-google-and-outlook-in-one-view",
+        "who-can-see-what-in-google-calendar"
+      ]
+    },
+    "after": {
+      "updated": "2026-10-22",
+      "title": "Служебни и лични календари в едно приложение: достъп и права",
+      "short": "Работа и личен живот в едно приложение",
+      "description": "Вижте служебните и личните календари заедно. Проверете правата, мястото за запис на събитията и плановете на Cloud Calendars преди свързване.",
+      "lede": "Общият изглед помага да забележите застъпвания, без да губите яснота към кого принадлежи всяко събитие. Проверете както показваните календари, така и връзките с акаунти, чрез които се съхраняват техни копия. Това ръководство е написано от Arte Soft, разработчика на Cloud Calendars.",
+      "commonBelief": "Събирането на служебни и лични календари в едно приложение обединява и правата им за споделяне.",
+      "sections": [
+        {
+          "heading": "Общият изглед е различен от споделения достъп",
+          "body": [
+            "Приложението може да показва избрани календари заедно, като всеки запазва собствения си акаунт и права. Ръководството на Apple за няколко календара описва избора на показвани календари, задаването на цветове и избора на календар по подразбиране. Тези настройки на изгледа не прехвърлят собствеността върху събитията.",
+            "Преди да свържете служебен акаунт, проверете изискванията на организацията си. Google посочва, че администраторите могат да ограничават споделянето на календари. Удобният личен преглед не ви дава разрешение да публикувате служебни подробности или да заобикаляте ограниченията на акаунта.",
+            "Връзките на Cloud Calendars с Google и Microsoft използват огледални календари в хранилището за календари на iPhone. Наличните източници на календари могат да повлияят къде се съхраняват тези копия. Затова свързването на служебен акаунт изисква одобрение за действителния обмен и съхранение на данните, а не само за името на акаунта в общия изглед."
+          ]
+        },
+        {
+          "heading": "Използвайте цветовете и видимостта за по-ясен преглед",
+          "body": [
+            "Задайте различни цветове на служебните и личните календари и прегледайте натоварен ден, докато и двата вида са видими. Когато искате по-тесен изглед, скрийте календар, вместо да изтривате събитията му. Ръководството на Apple за дублирани календари обяснява показването и скриването чрез отметки. Преди да приемете нов ангажимент, покажете отново всички календари, които имат значение за решението, и сравнете седмицата с тях. Празният филтриран изглед не доказва, че времето е свободно.",
+            "Скриването на календар не променя кой има право на достъп до него. В Cloud Calendars изборът на календари има значение и за синхронизацията с Google и планирането на известия, затова не приемайте, че премахването на отметката променя само показаното на екрана. Проверявайте важните промени при съответния доставчик и преглеждайте отделно настройките за известия, ако целта е спокойна вечер. Запазете достъпа до одобрено служебно приложение, ако организацията ви го изисква."
+          ]
+        },
+        {
+          "heading": "Проверете къде ще се запише събитието",
+          "body": [
+            "Календарът по подразбиране е полезна отправна точка, но не гарантира, че всеки ангажимент принадлежи там. При лична среща проверете избрания календар преди запазване. За служебна среща използвайте служебния календар и установения в организацията процес за покани.",
+            "Не премествайте и не копирайте покана само за да се появи в общия ви изглед. Microsoft разграничава събитията, които сте създали, от срещите, организирани от друг: промяната на показваното при вас копие не е надежден начин да уведомите организатора или участниците за актуализация. Запазете оригиналната покана и обсъдете промяната на часа с организатора."
+          ]
+        },
+        {
+          "heading": "Какво добавят плановете на Cloud Calendars",
+          "body": [
+            "Cloud Calendars поддържа календарни изгледи на iPhone и iPad. Планът Base включва синхронизация с Google Calendar и изглед с няколко календара. Advanced добавя премахване на рекламите; Premium добавя поддръжка за Microsoft Calendar и Teams. Актуалните местни цени се показват в приложението и App Store.",
+            "Advanced не е платено разрешение за управление на всеки акаунт. Абонаментът не прави календар само за четене редактируем и не отменя служебната политика. Локалните календари могат да се използват без акаунт; връзките с доставчици и споделянето имат собствени изисквания за вход."
+          ]
+        },
+        {
+          "heading": "Проверете как колегите виждат заетото време",
+          "body": [
+            "Да предположим, че лична среща трябва да попречи на колегите да ви резервират този час, но те не бива да научават заглавието ѝ. Това, че я виждате до служебните събития на телефона, е само вашият преглед. Първо установете дали служебният акаунт изобщо съдържа запис за заетостта ви, а след това проверете какво вижда конкретният колега.",
+            "Ако организацията ви позволява ръчно добавен блок за заето време в служебния календар, преди запазване прегледайте календара, заглавието, бележките, мястото, участниците и статуса на заетост. Не копирайте в него подробности от личната среща. Това е одобрена уговорка, която създавате и проверявате сами, а не автоматична функция на Cloud Calendars за скриване на подробности. Поддържайте последващите промени съгласувани, без да превръщате втория запис в още една покана."
+          ]
+        }
+      ],
+      "claims": {},
+      "practical": [
+        "Проверете дали работодателят ви разрешава свързването на акаунта.",
+        "Изберете различни цветове и покажете необходимите за прегледа календари.",
+        "Проверявайте календара за запис при създаване на ново събитие.",
+        "Скривайте временно календар за по-тесен изглед; не изтривайте събития, за да го подредите.",
+        "Преглеждайте правата за споделяне и известията отделно от видимостта на календара."
+      ],
+      "faq": [
+        {
+          "q": "Ще вижда ли работодателят ми личните събития само защото двата календара са в едно приложение?",
+          "a": "Общото показване само по себе си не дава право за споделен достъп. Проверете към кой акаунт принадлежи всяко събитие, настройките му за споделяне и правилата на работодателя за управление на устройството. Внимавайте да не запишете лична среща в служебен календар по погрешка."
+        },
+        {
+          "q": "Нужен ли ми е Advanced, за да виждам Google и личните календари заедно?",
+          "a": "Синхронизацията с Google Calendar и изгледът с няколко календара са функции на Base. Advanced премахва рекламите. Поддръжката за Microsoft Calendar е част от Premium; правата на акаунта продължават да важат."
+        },
+        {
+          "q": "Cloud Calendars заменя ли автоматично личните подробности със служебен блок за заето време?",
+          "a": "Не разчитайте на това. Общото показване и създаването на огледални календари са различни от изрично правило, което копира заетостта в друг акаунт и скрива личните подробности. Проверете уговорката, която организацията ви разрешава."
+        }
+      ],
+      "sourcesHeading": "Източници и допълнителна информация",
+      "sources": [
+        {
+          "label": "Apple: настройване на няколко календара на iPhone",
+          "url": "https://support.apple.com/guide/iphone/use-multiple-calendars-iph3d1110d4/ios"
+        },
+        {
+          "label": "Apple: дублирани събития в iCloud Calendar",
+          "url": "https://support.apple.com/en-us/102180"
+        },
+        {
+          "label": "Google: избор какво могат да правят другите с календара ви",
+          "url": "https://support.google.com/calendar/answer/15716974?hl=en"
+        },
+        {
+          "label": "Microsoft: промяна на ангажимент, среща или събитие в Outlook",
+          "url": "https://support.microsoft.com/en-us/outlook/calendar/change-an-appointment-meeting-or-event-in-outlook"
+        }
+      ],
+      "seeAlso": [
+        "icloud-google-and-outlook-in-one-view",
+        "who-can-see-what-in-google-calendar",
+        "change-calendar-color-iphone"
+      ]
+    },
+    "target": "change-calendar-color-iphone"
+  }
+]

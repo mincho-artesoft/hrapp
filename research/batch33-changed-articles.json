@@ -1,0 +1,66 @@
+{
+  "date": "2026-10-22T03:24:51.712Z",
+  "count": 5,
+  "articles": [
+    {
+      "locale": "bg",
+      "slug": "work-and-personal-without-two-apps",
+      "file": "src/app/content/bg/articles-help.ts",
+      "title": "Служебни и лични календари в едно приложение: достъп и права",
+      "sections": 5,
+      "faqs": 3,
+      "sources": 4,
+      "updated": "2026-10-22",
+      "description": "Вижте служебните и личните календари заедно. Проверете правата, мястото за запис на събитията и плановете на Cloud Calendars преди свързване.",
+      "descriptionCharacters": 141
+    },
+    {
+      "locale": "bg",
+      "slug": "change-calendar-color-iphone",
+      "file": "src/app/content/bg/articles-help.ts",
+      "title": "Промяна на цветовете на календарите на iPhone, без да местите събития",
+      "sections": 7,
+      "faqs": 4,
+      "sources": 4,
+      "updated": "2026-10-22",
+      "description": "Променете цвета на календар, разграничете цвета на отделно събитие и проверете разликите между приложенията, без да местите срещи.",
+      "descriptionCharacters": 130
+    },
+    {
+      "locale": "en-US",
+      "slug": "event-saved-to-wrong-calendar",
+      "file": "src/app/content/en-US/articles-help.ts",
+      "title": "Event saved to the wrong calendar?",
+      "sections": 6,
+      "faqs": 3,
+      "sources": 3,
+      "updated": "2026-10-21",
+      "description": "Check the event destination, Cloud Calendars selection and Apple defaults before moving appointments or changing account settings.",
+      "descriptionCharacters": 130
+    },
+    {
+      "locale": "en-US",
+      "slug": "change-calendar-color-iphone",
+      "file": "src/app/content/en-US/articles-help.ts",
+      "title": "Change calendar colors on iPhone without moving events",
+      "sections": 7,
+      "faqs": 4,
+      "sources": 4,
+      "updated": "2026-10-22",
+      "description": "Change calendar colors, distinguish individual-event overrides and check differences across apps. Keep ownership and sharing separate from appearance.",
+      "descriptionCharacters": 150
+    },
+    {
+      "locale": "en-US",
+      "slug": "work-and-personal-without-two-apps",
+      "file": "src/app/content/en-US/articles-unify.ts",
+      "title": "Work and personal calendars in one app: keep ownership separate",
+      "sections": 5,
+      "faqs": 3,
+      "sources": 4,
+      "updated": "2026-10-22",
+      "description": "See work and personal calendars together without merging ownership. Check permissions, event destinations and Cloud Calendars plans before connecting accounts.",
+      "descriptionCharacters": 159
+    }
+  ]
+}

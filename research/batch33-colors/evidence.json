@@ -1,0 +1,35 @@
+{
+  "date": "2026-10-22",
+  "decision": "Distinct original color-setting/diagnosis task supported after primary and native boundary research; publication pending independent review.",
+  "slug": "change-calendar-color-iphone",
+  "discoveryQueries": [
+    "iPhone calendar change calendar color event color Fantastical BusyCal official",
+    "site:support.google.com/calendar iPhone change event calendar color"
+  ],
+  "queryLimits": "Public web search, not fixed-location Google SERP, ranking,search volume or ChatGPT recommendation proof.",
+  "nativeEvidence": "research/batch33-calendar-color-source.json",
+  "primaryReads": [
+    {
+      "url": "https://support.apple.com/guide/iphone/use-multiple-calendars-iph3d1110d4/27/ios/27",
+      "lines": "1214–1229 color/move sections; broader context1162–1231 visible, not1247navigationlines claimedfull"
+    },
+    {
+      "url": "https://support.google.com/calendar/answer/37095?hl=en&pp=env",
+      "lines": "18–58 substantive create/name/hide/color body"
+    },
+    {
+      "url": "https://support.google.com/calendar/answer/72143/?co=GENIE.Platform%3DiOS&hl=en",
+      "lines": "18–102 complete substantive event guide body"
+    },
+    {
+      "url": "https://www.busymac.com/docs/busycalios/70670-settings/",
+      "lines": "215–245 targeted Appearance/EventDetails; not whole449linepage"
+    },
+    {
+      "url": "https://www.busymac.com/docs/faqs/71186-how-can-i-change-the-colors-in-busycal/",
+      "lines": "207–216 complete substantive colorFAQ, desktop gestures not repurposed as iPhone instructions"
+    }
+  ],
+  "articleScope": "Seven sections,14paragraphs,6steps,4FAQ,4sources; calendar/event/textstyle,ordinaryandreceivedcontrols,Googleproviderrecipe,mismatchesanddiagnosis. No generalper-eventCloudpicker,providerwriteback,categorymatching,instantpropagation or runtimeclaim.",
+  "noPaidAPI": true
+}

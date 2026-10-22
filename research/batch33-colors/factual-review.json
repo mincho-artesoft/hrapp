@@ -1,0 +1,103 @@
+{
+  "date": "2026-10-22",
+  "decision": "pass_no_material_blockers",
+  "draftFile": "research/batch33-colors/change-calendar-color-iphone.json",
+  "draftRawSha256": "bfb14c9caef85c8bfb90194fff43cfab74a9f0170a47536e748a64b2b0be302c",
+  "readScope": "Complete draft (all seven sections/fourteen paragraphs, practical, FAQs, source labels/URLs and related links), complete root evidence.json, and native audit positiveFindings/truthfulWorkflowOutline read. Native code inspected during preceding audit in this task; no new native execution or primary web fetch in this review.",
+  "inputs": [
+    {
+      "file": "research/batch33-colors/evidence.json",
+      "rawSha256": "59eec4fed73632d671d6f3d826a3c79663dc017d3912130729885b23eed57f7b"
+    },
+    {
+      "file": "research/batch33-calendar-color-source.json",
+      "rawSha256": "27837d60e659adf636cd80ee84329a342e3e47c1c12606faab1276d3ab23cbf2"
+    }
+  ],
+  "checks": {
+    "sections": 7,
+    "paragraphs": 14,
+    "practical": 6,
+    "faq": 4,
+    "sources": 4,
+    "descriptionUnicodeCharacters": 150,
+    "claims": {},
+    "updated": "2026-10-22"
+  },
+  "findings": [
+    {
+      "topic": "Calendar versus individual event",
+      "result": "pass",
+      "basis": "Calendar-wide control stays separate from provider event overrides/text styling; account/permissions/availability not inferred from color. No general Cloud per-event picker promised.",
+      "nativeProof": "EKMultiDayWrapper28–45; AppLocalCalendarStore608–620"
+    },
+    {
+      "topic": "Available local controls",
+      "result": "pass",
+      "basis": "Step is restricted to editable iOS calendar with info control; name remains unchanged, Done and Cancel scoped to this editor. No read-only or all-source edit promise.",
+      "nativeProof": "CalendarRowView49–57; CalendarsSheetView150–158,240–261; EditCalendarView42–118; CalendarColorSelectionView43–118"
+    },
+    {
+      "topic": "Received personal versus canonical creator color",
+      "result": "pass",
+      "basis": "Options qualified by where present. Personal override distinct from owned shared metadata, no everyone-sees-same or every-change-private claim.",
+      "nativeProof": "AppLocalCalendarViews105–210; SharedICloudCalendarLocalStore512–537; EditCalendarView91–172; AppLocalCalendarSyncService130–168"
+    },
+    {
+      "topic": "Google existing versus new calendar",
+      "result": "pass",
+      "basis": "Existing direct rows lack edit control; Google app/web recipes clearly belong to Google. Creation-only Cloud patch not repurposed as existing-calendar editor; no recommendation to create another calendar. Source background color may replace local mirror accurately bounded.",
+      "nativeProof": "CalendarsSheetView480–515; CalendarViewModel1186–1244,5031–5060,5094–5119"
+    },
+    {
+      "topic": "Microsoft and provider rendering",
+      "result": "pass",
+      "basis": "No Google event-color or Outlook category parity, Microsoft color write-back or timing promise. Conservative difference wording avoids presenting hardcoded source blue as universal released behavior.",
+      "nativeProof": "CalendarsSheetView592–620; CalendarViewModel3248–3294,4227–4260"
+    },
+    {
+      "topic": "Primary-source attribution",
+      "result": "pass_recorded_evidence_scope",
+      "basis": "Apple server-controlled colors, Google computer calendar colors, Google iOS event colors and BusyCal styling remain separately attributed. Root evidence records exact selected/complete body ranges; this reviewer does not claim fresh independent provider fetch."
+    },
+    {
+      "topic": "Diagnostic consequences",
+      "result": "pass",
+      "basis": "Reopen/save/source comparison precedes changes; no moving/deleting events for color, no guaranteed immediate propagation."
+    }
+  ],
+  "relatedRouteChecks": [
+    {
+      "slug": "work-and-personal-without-two-apps",
+      "actualDefinitionFiles": [
+        "src/app/content/en-US/articles-unify.ts"
+      ]
+    },
+    {
+      "slug": "event-saved-to-wrong-calendar",
+      "actualDefinitionFiles": [
+        "src/app/content/en-US/articles-help.ts"
+      ]
+    },
+    {
+      "slug": "when-two-calendars-disagree",
+      "actualDefinitionFiles": [
+        "src/app/content/en-US/articles-unify.ts"
+      ]
+    }
+  ],
+  "blockingCorrections": [],
+  "optionalReaderPolish": [
+    {
+      "path": "sections[2].body[0]",
+      "before": "Open COLOR, choose a preset or Custom..., return to the editor and choose Done.",
+      "suggestedAfter": "Under COLOR, tap the current color, choose a preset or Custom..., return to the editor and choose Done.",
+      "reason": "COLOR is the section header; the row with the current color opens the chooser. This improves tap-target precision, not a material capability correction."
+    }
+  ],
+  "limits": [
+    "Cross-author draft review; reviewer authored the prior native evidence, so not independent rediscovery of implementation.",
+    "Current source versus released/runtime correspondence remains unproven.",
+    "No draft/source mutation, build, deploy, ASC/provider/customer action or commit."
+  ]
+}

@@ -403,7 +403,8 @@ export const UNIFY_EN_US: Readonly<Record<string, LocalisedArticle>> = {
   "seeAlso": [
     "what-calendar-sync-actually-does",
     "when-two-calendars-disagree",
-    "who-can-see-what-in-google-calendar"
+    "who-can-see-what-in-google-calendar",
+    "change-calendar-color-iphone"
   ]
 },
 

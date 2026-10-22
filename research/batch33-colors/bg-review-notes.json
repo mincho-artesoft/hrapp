@@ -1,0 +1,67 @@
+{
+  "date": "2026-10-22",
+  "locale": "bg",
+  "status": "translation_prepared_final_english_precision_reconciled",
+  "source": {
+    "file": "research/batch33-colors/change-calendar-color-iphone.json",
+    "rawSha256": "01d7815d81e6f243dec507cf870ee2d3c7ba29b6e547d429c358caef3a2486f2",
+    "jsonSha256": "7ab01f86b0ac1310b69f4eddd9a0a171a34307c3faf55415e7a0388f47a4e564",
+    "scope": "Complete English object read including metadata, all seven sections/fourteen paragraphs, six steps, four FAQs, four sources and related routes.",
+    "previousRawSha256": "01d7815d81e6f243dec507cf870ee2d3c7ba29b6e547d429c358caef3a2486f2"
+  },
+  "draft": {
+    "file": "research/batch33-colors/bg.json",
+    "rawSha256": "83241bf384905368c0e3df98c9dbee151de4a9a9673162ccb989fba757860e30",
+    "jsonSha256": "26697dac838bfefa87982cbab2e8659657c49db6683e81ef57f6e5594f2b046b"
+  },
+  "checks": {
+    "sections": 7,
+    "paragraphs": 14,
+    "practical": 6,
+    "faq": 4,
+    "sources": 4,
+    "descriptionUnicodeCharacters": 130,
+    "exactSourceUrls": true,
+    "claimsEmpty": true,
+    "dateMatches": true,
+    "sectionParagraphCountsMatch": true,
+    "allRelatedRoutesExist": true
+  },
+  "relatedRoutes": {
+    "who-can-see-what-in-google-calendar": "src/app/content/bg/articles-google.ts",
+    "work-and-personal-without-two-apps": "src/app/content/bg/articles-help.ts",
+    "icloud-google-and-outlook-in-one-view": "src/app/content/bg/articles.ts"
+  },
+  "substitutions": [
+    {
+      "omitted": "event-saved-to-wrong-calendar",
+      "replacement": "icloud-google-and-outlook-in-one-view",
+      "reason": "Destination guide absent in Bulgarian; available overview explains account context."
+    },
+    {
+      "omitted": "when-two-calendars-disagree",
+      "replacement": "who-can-see-what-in-google-calendar",
+      "reason": "Use available Bulgarian permissions guide for color versus access distinction."
+    }
+  ],
+  "semanticSelfReview": [
+    "Complete translation, not summary; calendar/event/text-style distinctions retained.",
+    "Google and Microsoft direct connections separated from editable iOS calendar controls.",
+    "Quoted English UI labels retained with Bulgarian descriptions; no invented localized UI label asserted.",
+    "Received-calendar personal override separated from creator shared metadata.",
+    "Google provider background-color refresh and no cross-app color/category parity retained.",
+    "No changes to event destination advised for recoloring; ownership, permissions, provider acceptance and refresh limits retained."
+  ],
+  "limits": [
+    "Own Bulgarian translation and self-review; not independent native-speaker approval.",
+    "Final English precision correction reconciled against exact final source hash; no independent native or runtime verification.",
+    "No source integration, build, deployment, native inspection or paid translation API."
+  ],
+  "precisionReconciliation": {
+    "evidence": "research/batch33-colors/precision-change.json",
+    "path": "sections[2].body[0]",
+    "before": "За календар от iOS, който може да се редактира и има бутон за информация в списъка с календари, отворете „Edit Calendar“ — редактиране на календара. Ако променяте само цвета, оставете „Calendar Name“ — името на календара — непроменено. Отворете „COLOR“, изберете готов цвят или „Custom...“, върнете се в редактора и изберете „Done“, за да запазите. „Cancel“ затваря този редактор, без да прилага това запазване. Надписите и наличните настройки може да се различават според вида на календара и инсталираната версия.",
+    "after": "За календар от iOS, който може да се редактира и има бутон за информация в списъка с календари, отворете „Edit Calendar“ — редактиране на календара. Ако променяте само цвета, оставете „Calendar Name“ — името на календара — непроменено. Под заглавието „COLOR“ докоснете текущия цвят, изберете готов цвят или „Custom...“, върнете се в редактора и изберете „Done“, за да запазите. „Cancel“ затваря този редактор, без да прилага това запазване. Надписите и наличните настройки може да се различават според вида на календара и инсталираната версия.",
+    "meaning": "Tap current color below COLOR heading, not the heading."
+  }
+}

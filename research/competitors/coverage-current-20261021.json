@@ -344,7 +344,7 @@
         "weather-where-the-event-is"
       ],
       "canonicalMappingBasis": "Editorial candidate routing from recorded topic or URL label; not proof target body covers the task. Null/empty where unsupported.",
-      "nextAction": "Suspicious duplicated-path URL: discover canonical through official index before fetching; do not silently normalize or mark its body reviewed.",
+      "nextAction": "Historical malformed discovery superseded by canonical body already reviewed in batch25 and revalidated through official index in batch33. Do not refetch malformed URL or write another settings page; see research/batch33-settings-discovery.json.",
       "provenance": [
         {
           "file": "research/competitors/batch08-weather-accounts-discovery-20261021.json",
@@ -3004,7 +3004,8 @@
       "originalUrl": "https://flexibits.com/fantastical-ios/help/fantastical-ios/help/settings",
       "correctUrl": "https://flexibits.com/fantastical-ios/help/settings",
       "evidence": "research/competitors/batch25-fantastical-settings-primary-20261022.json",
-      "action": "Do not repeatedly fetch the malformed discovery link. Correct main body reviewed through actual publisher navigation; exact original corpus counts kept for provenance, not a fresh failure or full-body claim about the malformed URL."
+      "action": "Do not repeatedly fetch the malformed discovery link. Correct main body reviewed through actual publisher navigation; exact original corpus counts kept for provenance, not a fresh failure or full-body claim about the malformed URL.",
+      "freshRevalidation": "research/batch33-settings-discovery.json"
     }
   ],
   "latestBodyReadAddendum": {
@@ -3023,5 +3024,6 @@
     "freshSelectedSectionReview": 1,
     "originalExactUrlCountUnchanged": 71,
     "scope": "New broader task/widget/family query batch. BusyCal settings URL is already in original corpus, selected sections do not imply a new complete-body review. Other three body URLs are outside original bounded corpus. No search volumes/ranks or ChatGPT citation measurement."
-  }
+  },
+  "queueInterpretation": "Exact original statuses/counts preserved for historical provenance. Superseded settings discovery is not an outstanding substantive body gap. Partial index/listing scope does not mean every remaining line should be reread without a concrete question."
 }

@@ -1,5 +1,5 @@
 {
-  "date": "2026-10-22T03:03:18.851Z",
+  "date": "2026-10-22T03:27:15.135Z",
   "status": "source_inventory_not_quality_approval",
   "articles": [
     {
@@ -276,6 +276,24 @@
         "https://support.google.com/calendar/answer/37648?hl=en"
       ],
       "updated": "2026-10-21"
+    },
+    {
+      "locale": "bg",
+      "slug": "change-calendar-color-iphone",
+      "title": "Промяна на цветовете на календарите на iPhone, без да местите събития",
+      "description": "Променете цвета на календар, разграничете цвета на отделно събитие и проверете разликите между приложенията, без да местите срещи.",
+      "descriptionCharacters": 130,
+      "sections": 7,
+      "faq": 4,
+      "words": 1257,
+      "source": "articles-help.ts",
+      "sources": [
+        "https://support.apple.com/guide/iphone/use-multiple-calendars-iph3d1110d4/27/ios/27",
+        "https://support.google.com/calendar/answer/37095?hl=en&pp=env",
+        "https://support.google.com/calendar/answer/72143/?co=GENIE.Platform%3DiOS&hl=en",
+        "https://www.busymac.com/docs/busycalios/70670-settings/"
+      ],
+      "updated": "2026-10-22"
     },
     {
       "locale": "bg",
@@ -1610,6 +1628,24 @@
         "https://support.google.com/calendar/answer/37648?hl=en"
       ],
       "updated": "2026-10-21"
+    },
+    {
+      "locale": "en-US",
+      "slug": "change-calendar-color-iphone",
+      "title": "Change calendar colors on iPhone without moving events",
+      "description": "Change calendar colors, distinguish individual-event overrides and check differences across apps. Keep ownership and sharing separate from appearance.",
+      "descriptionCharacters": 150,
+      "sections": 7,
+      "faq": 4,
+      "words": 1127,
+      "source": "articles-help.ts",
+      "sources": [
+        "https://support.apple.com/guide/iphone/use-multiple-calendars-iph3d1110d4/27/ios/27",
+        "https://support.google.com/calendar/answer/37095?hl=en&pp=env",
+        "https://support.google.com/calendar/answer/72143/?co=GENIE.Platform%3DiOS&hl=en",
+        "https://www.busymac.com/docs/busycalios/70670-settings/"
+      ],
+      "updated": "2026-10-22"
     },
     {
       "locale": "en-US",

@@ -1,6 +1,117 @@
 import { LocalisedArticle } from '../types';
 
 export const HELP_EN_US: Readonly<Record<string, LocalisedArticle>> = {
+  "change-calendar-color-iphone": {
+  "updated": "2026-10-22",
+  "title": "Change calendar colors on iPhone without moving events",
+  "short": "Calendar colors and event colors",
+  "description": "Change calendar colors, distinguish individual-event overrides and check differences across apps. Keep ownership and sharing separate from appearance.",
+  "lede": "A color can identify a calendar, override one event or simply reflect an app’s display style. First choose which of those you want to change. This guide is published by Arte Soft, the developer of Cloud Calendars.",
+  "commonBelief": "Changing a calendar’s color changes only one event, appears identically in every app and has the same effect for every person viewing the calendar.",
+  "sections": [
+    {
+      "heading": "Decide whether you mean a calendar or one event",
+      "body": [
+        "A calendar-wide color helps you recognize a group of appointments. An individual-event color is a separate feature: changing one meeting in a provider’s app does not mean you have changed the calendar’s default. A text-style setting can change the appearance again without moving either record.",
+        "For example, a blue household calendar and a green club calendar can make a week easier to scan. Keep their names and owning accounts distinct too. Two blue events can belong to different accounts, and an event’s color does not establish its owner, sharing permissions, availability or invitation response."
+      ]
+    },
+    {
+      "heading": "Find the calendar and the control it actually offers",
+      "body": [
+        "Before changing anything, note the calendar name, owning account and connection route. An iOS calendar, an app-owned calendar and a received Cloud calendar can have different controls. Direct Google and Microsoft connections do not offer the same existing-calendar edit control as editable local or iCloud calendars.",
+        "If the expected info or edit control is absent, check the calendar type and the actions available for your role. Do not buy a different plan, create another calendar or move appointments just because a color option is missing. A provider editor may be the appropriate place for that provider’s setting."
+      ]
+    },
+    {
+      "heading": "Change an available calendar color in Cloud Calendars",
+      "body": [
+        "For an editable iOS calendar that offers the info control in the calendar list, open Edit Calendar. Leave Calendar Name unchanged for a color-only edit. Under COLOR, tap the current color, choose a preset or Custom..., return to the editor and choose Done. Cancel leaves that editor without applying this save. Labels and available controls can vary with the calendar type and installed version.",
+        "After saving, reopen the calendar list and inspect several appointments from that calendar. Then compare the same source in the relevant provider or system calendar. A successful local appearance change does not by itself prove that a provider accepted the color or that another device will show it immediately."
+      ]
+    },
+    {
+      "heading": "Separate a received calendar’s personal color from its creator’s default",
+      "body": [
+        "A received Cloud calendar may offer Default from creator and Custom on this device. Where those choices appear, the personal override is different from editing the creator’s calendar color. Use the displayed scope when deciding whether to follow the creator’s default or choose a color for this device.",
+        "Do not generalize that every color change is private to its viewer. Editing a calendar you own can update its shared metadata, while a received-calendar override has a different purpose. Neither a new color nor a familiar color establishes that access was granted, removed or changed. Check the actual sharing settings for those decisions."
+      ]
+    },
+    {
+      "heading": "Use Google’s own controls for Google calendar and event colors",
+      "body": [
+        "Google documents a calendar-wide color choice on its computer website: beside the intended calendar under My calendars or Other calendars, open Options and choose a color or Add custom color. For an individual event in Google’s iPhone or iPad app, open the event, choose Edit, select a color and save. These are Google controls, not instructions for a matching Cloud Calendars button.",
+        "Apple notes that some calendar colors, including Google’s, are set by the server. Cloud’s Google connection reads the provider’s calendar background color during synchronization. A different local mirror color can therefore be replaced. Compare the source before treating a changed-back color as lost events; do not create a duplicate calendar to repair its appearance."
+      ]
+    },
+    {
+      "heading": "Allow for different renderings and provider features",
+      "body": [
+        "Calendar colors and per-event features are not interchangeable between apps. Google event-color overrides, Outlook categories and another app’s colored tags should not be assumed to appear identically in Cloud Calendars. Microsoft calendar colors or categories may differ from the appearance you see here; compare the actual calendar and event details in Outlook.",
+        "Other apps can also style event text independently: BusyCal’s iOS settings distinguish plain text, calendar or tag colors and calendar-only colors. This is a BusyCal feature description, not a Cloud tag-control promise. Choose colors whose text and markers you can read in the views and appearance you use, and retain descriptive calendar names rather than relying on hue alone."
+      ]
+    },
+    {
+      "heading": "If a color returns, trace the source before changing data",
+      "body": [
+        "Check where you made the choice, whether you completed that editor’s save and whether it still appears after reopening. Compare the same calendar in Cloud Calendars, the owning provider and any second device separately. Record which appearance differs and whether it changes again after synchronization; these are observations, not a promised refresh-time test.",
+        "Keep appointments in their intended calendars while diagnosing appearance. Moving an event can change its destination, account or collaboration context; it is not merely a paint operation. For help, note the app version, calendar type, connection route and the control you used, with a non-sensitive example. Leave passwords and private event details out of screenshots."
+      ]
+    }
+  ],
+  "claims": {},
+  "practical": [
+    "Identify the calendar and owning account before using its color as a cue.",
+    "Choose between a whole-calendar color, an individual-event option and a display style.",
+    "Use an available calendar editor, leave its name unchanged and complete Done.",
+    "For a received calendar, read the scope of Default from creator or Custom on this device.",
+    "Compare Google or Microsoft appearance with the provider without assuming identical color support.",
+    "Keep event destinations intact while checking a changed-back color."
+  ],
+  "faq": [
+    {
+      "q": "Can I change just one event with the calendar color control?",
+      "a": "The calendar color control changes the calendar’s appearance, not a general independent event-color override. A provider’s own event editor may offer a separate option; that does not guarantee the same override will appear in Cloud Calendars."
+    },
+    {
+      "q": "Why is there no color-edit button for my connected calendar?",
+      "a": "Available controls depend on the calendar type and your role. Direct Google and Microsoft rows do not expose the same existing-calendar editor as editable local or iCloud calendars. Check the provider’s own settings rather than creating another calendar."
+    },
+    {
+      "q": "Will everyone see the color I choose?",
+      "a": "Do not assume so. A received-calendar personal override differs from the creator’s shared default, and different apps can render colors differently. Check the scope shown by the control and compare the relevant view."
+    },
+    {
+      "q": "Should I move an event to another calendar just to recolor it?",
+      "a": "No. Moving changes the event’s destination and can affect its account or collaboration context. Identify the available color or display option first, and keep the event in the calendar where it belongs."
+    }
+  ],
+  "sourcesHeading": "Official color controls and display guidance",
+  "sources": [
+    {
+      "label": "Apple: Calendar colors on iPhone and server-controlled accounts",
+      "url": "https://support.apple.com/guide/iphone/use-multiple-calendars-iph3d1110d4/27/ios/27"
+    },
+    {
+      "label": "Google: Change a calendar’s color on a computer",
+      "url": "https://support.google.com/calendar/answer/37095?hl=en&pp=env"
+    },
+    {
+      "label": "Google: Pick an event color on iPhone and iPad",
+      "url": "https://support.google.com/calendar/answer/72143/?co=GENIE.Platform%3DiOS&hl=en"
+    },
+    {
+      "label": "BusyCal: iOS appearance and event text styles",
+      "url": "https://www.busymac.com/docs/busycalios/70670-settings/"
+    }
+  ],
+  "seeAlso": [
+    "work-and-personal-without-two-apps",
+    "event-saved-to-wrong-calendar",
+    "when-two-calendars-disagree"
+  ]
+},
+
   "recover-deleted-calendar-events-iphone": {
   "updated": "2026-10-22",
   "title": "Deleted calendar events on iPhone: Google and iCloud recovery",
@@ -635,98 +746,99 @@ export const HELP_EN_US: Readonly<Record<string, LocalisedArticle>> = {
   ]
 },
   "event-saved-to-wrong-calendar": {
-    "updated": "2026-10-21",
-    "title": "Event saved to the wrong calendar?",
-    "short": "Event saved to the wrong calendar?",
-    "description": "Check the event destination, Cloud Calendars selection and Apple defaults before moving appointments or changing account settings.",
-    "lede": "This guide is published by Arte Soft, the developer of Cloud Calendars. An appointment can appear in the correct week while belonging to the wrong account. Read its Calendar value, then identify the account or local calendar behind that name before changing sync settings.",
-    "sections": [
-      {
-        "heading": "Identify the record, not just its color",
-        "body": [
-          "Two accounts can both contain a calendar called Personal. A title or color alone may not settle which received the event. If a family appointment is stored in your work calendar, hiding work from your overview does not move it or change its access. If the event is already in the intended calendar but disappears when that calendar is hidden, investigate display selection instead."
-        ]
-      },
-      {
-        "heading": "Choose the destination before saving a new event",
-        "body": [
-          "In the Cloud Calendars creation editor, open Calendar and choose the intended writable destination. Its picker can display an account or source alongside the calendar title; check that information when names are similar. Connecting an account does not make every calendar in it editable.",
-          "The initial choice can depend on where creation started and which writable calendars are selected. A specific calendar column can supply the destination. Otherwise, the selection policy prefers an available selected writable calendar before falling back to the system default and then another writable calendar. Do not assume the iPhone default always wins.",
-          "Create a harmless test appointment through your usual creation path, then reopen it and check the saved calendar. Repeat this check when you change selected calendars or begin from a different view, before relying on that path for a private event."
-        ]
-      },
-      {
-        "heading": "What Apple Calendar’s default changes",
-        "body": [
-          "Apple documents Settings > Apps > Calendar > Default Calendar for choosing where Apple Calendar places new events. These are Apple Calendar instructions; they are not a universal default for every calendar app.",
-          "Changing a default does not relocate existing records. After adjusting it, test the same creation path that produced the mistake. If Cloud Calendars still chooses another destination, inspect its Calendar field and selected calendars rather than repeatedly changing the Apple setting. A new-event default and an existing event’s destination are separate decisions."
-        ]
-      },
-      {
-        "heading": "If the intended calendar is unavailable",
-        "body": [
-          "The Cloud Calendars creation picker filters out destinations that cannot accept edits. An existing read-only event can still display its current calendar so you can identify it. A missing writable destination and a hidden calendar in your overview therefore need different checks.",
-          "Confirm the account is connected and that the calendar owner granted the necessary access. Apple describes external calendar subscriptions as read-only. Do not remove an account or create competing copies merely to make a destination selectable. If you only need to see a schedule, restoring its visibility may solve the problem."
-        ]
-      },
-      {
-        "heading": "Treat an existing destination change as an action",
-        "body": [
-          "For an ordinary appointment you own, first record the intended destination and check whether it repeats or has guests. In Cloud Calendars, choosing another Calendar in an existing event’s detail view can save the move immediately. Do not treat that selection as a preview that you can dismiss without consequence.",
-          "Apple Calendar documents moving an event through its Calendar field. Google Calendar on iPhone requires the event organizer to have edit access to the destination; its documented recurring-event move also moves future instances and cannot move only one instance. These provider-specific rules do not guarantee identical behavior for every Cloud transfer.",
-          "For an invitation organized by somebody else, ask the organizer about ownership or delivery. Moving your displayed copy is not proof that their meeting changed. For recurring or cross-account events, use a supported provider workflow when you need a scope or capability that the app does not clearly offer."
-        ]
-      },
-      {
-        "heading": "Check the result before cleanup",
-        "body": [
-          "Reopen the event and compare calendar, date, time, recurrence and important details. For connected accounts, inspect the intended provider’s own view where available. Verify guests and conferencing separately; a move is not a guarantee that every meeting feature is preserved.",
-          "Keep the original information until the result is clear. If two entries appear, identify their accounts before deleting either. A default-calendar diagnosis does not require cancelling invitations, clearing local storage or recreating a recurring series."
-        ]
-      }
-    ],
-    "claims": {},
-    "practical": [
-      "Identify the event’s saved calendar and account, not just its title or color.",
-      "Choose the intended writable Calendar explicitly before creating a new appointment.",
-      "Treat changing Calendar on an existing event as a possible immediate save.",
-      "Reopen the saved event and verify recurrence, guests and conferencing before cleanup."
-    ],
-    "faq": [
-      {
-        "q": "Why can Cloud Calendars differ from the iPhone default?",
-        "a": "Creation context and selected writable calendars can take priority over the system fallback. Check Calendar in the editor."
-      },
-      {
-        "q": "Will changing the default move existing appointments?",
-        "a": "No. Review existing destinations separately; the default concerns new events."
-      },
-      {
-        "q": "Can I preview another Calendar on an existing event without saving?",
-        "a": "Do not assume so. Selecting another Calendar in an existing Cloud Calendars detail view can save immediately. Decide on the intended change before choosing it."
-      }
-    ],
-    "sourcesHeading": "Official guidance",
-    "sources": [
-      {
-        "label": "Apple: multiple calendars, visibility and moving events",
-        "url": "https://support.apple.com/guide/iphone/use-multiple-calendars-iph3d1110d4/ios"
-      },
-      {
-        "label": "Apple: default calendar settings",
-        "url": "https://support.apple.com/en-my/guide/iphone/iphc37be2016/27/ios/27"
-      },
-      {
-        "label": "Google: moving events on iPhone and iPad",
-        "url": "https://support.google.com/calendar/answer/78739?co=GENIE.Platform%3DiOS&hl=en"
-      }
-    ],
-    "seeAlso": [
-      "work-and-personal-without-two-apps",
-      "what-calendar-sync-actually-does",
-      "recurring-events-without-the-mess"
-    ]
-  },
+  "updated": "2026-10-21",
+  "title": "Event saved to the wrong calendar?",
+  "short": "Event saved to the wrong calendar?",
+  "description": "Check the event destination, Cloud Calendars selection and Apple defaults before moving appointments or changing account settings.",
+  "lede": "This guide is published by Arte Soft, the developer of Cloud Calendars. An appointment can appear in the correct week while belonging to the wrong account. Read its Calendar value, then identify the account or local calendar behind that name before changing sync settings.",
+  "sections": [
+    {
+      "heading": "Identify the record, not just its color",
+      "body": [
+        "Two accounts can both contain a calendar called Personal. A title or color alone may not settle which received the event. If a family appointment is stored in your work calendar, hiding work from your overview does not move it or change its access. If the event is already in the intended calendar but disappears when that calendar is hidden, investigate display selection instead."
+      ]
+    },
+    {
+      "heading": "Choose the destination before saving a new event",
+      "body": [
+        "In the Cloud Calendars creation editor, open Calendar and choose the intended writable destination. Its picker can display an account or source alongside the calendar title; check that information when names are similar. Connecting an account does not make every calendar in it editable.",
+        "The initial choice can depend on where creation started and which writable calendars are selected. A specific calendar column can supply the destination. Otherwise, the selection policy prefers an available selected writable calendar before falling back to the system default and then another writable calendar. Do not assume the iPhone default always wins.",
+        "Create a harmless test appointment through your usual creation path, then reopen it and check the saved calendar. Repeat this check when you change selected calendars or begin from a different view, before relying on that path for a private event."
+      ]
+    },
+    {
+      "heading": "What Apple Calendar’s default changes",
+      "body": [
+        "Apple documents Settings > Apps > Calendar > Default Calendar for choosing where Apple Calendar places new events. These are Apple Calendar instructions; they are not a universal default for every calendar app.",
+        "Changing a default does not relocate existing records. After adjusting it, test the same creation path that produced the mistake. If Cloud Calendars still chooses another destination, inspect its Calendar field and selected calendars rather than repeatedly changing the Apple setting. A new-event default and an existing event’s destination are separate decisions."
+      ]
+    },
+    {
+      "heading": "If the intended calendar is unavailable",
+      "body": [
+        "The Cloud Calendars creation picker filters out destinations that cannot accept edits. An existing read-only event can still display its current calendar so you can identify it. A missing writable destination and a hidden calendar in your overview therefore need different checks.",
+        "Confirm the account is connected and that the calendar owner granted the necessary access. Apple describes external calendar subscriptions as read-only. Do not remove an account or create competing copies merely to make a destination selectable. If you only need to see a schedule, restoring its visibility may solve the problem."
+      ]
+    },
+    {
+      "heading": "Treat an existing destination change as an action",
+      "body": [
+        "For an ordinary appointment you own, first record the intended destination and check whether it repeats or has guests. In Cloud Calendars, choosing another Calendar in an existing event’s detail view can save the move immediately. Do not treat that selection as a preview that you can dismiss without consequence.",
+        "Apple Calendar documents moving an event through its Calendar field. Google Calendar on iPhone requires the event organizer to have edit access to the destination; its documented recurring-event move also moves future instances and cannot move only one instance. These provider-specific rules do not guarantee identical behavior for every Cloud transfer.",
+        "For an invitation organized by somebody else, ask the organizer about ownership or delivery. Moving your displayed copy is not proof that their meeting changed. For recurring or cross-account events, use a supported provider workflow when you need a scope or capability that the app does not clearly offer."
+      ]
+    },
+    {
+      "heading": "Check the result before cleanup",
+      "body": [
+        "Reopen the event and compare calendar, date, time, recurrence and important details. For connected accounts, inspect the intended provider’s own view where available. Verify guests and conferencing separately; a move is not a guarantee that every meeting feature is preserved.",
+        "Keep the original information until the result is clear. If two entries appear, identify their accounts before deleting either. A default-calendar diagnosis does not require cancelling invitations, clearing local storage or recreating a recurring series."
+      ]
+    }
+  ],
+  "claims": {},
+  "practical": [
+    "Identify the event’s saved calendar and account, not just its title or color.",
+    "Choose the intended writable Calendar explicitly before creating a new appointment.",
+    "Treat changing Calendar on an existing event as a possible immediate save.",
+    "Reopen the saved event and verify recurrence, guests and conferencing before cleanup."
+  ],
+  "faq": [
+    {
+      "q": "Why can Cloud Calendars differ from the iPhone default?",
+      "a": "Creation context and selected writable calendars can take priority over the system fallback. Check Calendar in the editor."
+    },
+    {
+      "q": "Will changing the default move existing appointments?",
+      "a": "No. Review existing destinations separately; the default concerns new events."
+    },
+    {
+      "q": "Can I preview another Calendar on an existing event without saving?",
+      "a": "Do not assume so. Selecting another Calendar in an existing Cloud Calendars detail view can save immediately. Decide on the intended change before choosing it."
+    }
+  ],
+  "sourcesHeading": "Official guidance",
+  "sources": [
+    {
+      "label": "Apple: multiple calendars, visibility and moving events",
+      "url": "https://support.apple.com/guide/iphone/use-multiple-calendars-iph3d1110d4/ios"
+    },
+    {
+      "label": "Apple: default calendar settings",
+      "url": "https://support.apple.com/en-my/guide/iphone/iphc37be2016/27/ios/27"
+    },
+    {
+      "label": "Google: moving events on iPhone and iPad",
+      "url": "https://support.google.com/calendar/answer/78739?co=GENIE.Platform%3DiOS&hl=en"
+    }
+  ],
+  "seeAlso": [
+    "work-and-personal-without-two-apps",
+    "what-calendar-sync-actually-does",
+    "recurring-events-without-the-mess",
+    "change-calendar-color-iphone"
+  ]
+},
   "family-pickup-calendar-handoff": {
     "updated": "2026-10-21",
     "title": "A family pickup plan with a clear handoff",

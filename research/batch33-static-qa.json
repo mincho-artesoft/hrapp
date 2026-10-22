@@ -1,0 +1,32 @@
+{
+  "allPassed": true,
+  "sitemapUrls": 518,
+  "all516PriorCanonicalsPreserved": true,
+  "newRoutes": [
+    "https://www.cloud-calendars.com/articles/change-calendar-color-iphone/",
+    "https://www.cloud-calendars.com/bg/articles/change-calendar-color-iphone/"
+  ],
+  "completeNewGuides": [
+    {
+      "url": "https://www.cloud-calendars.com/articles/change-calendar-color-iphone/",
+      "sections": 7,
+      "paragraphs": 14,
+      "practical": 6,
+      "faq": 4,
+      "sources": 4,
+      "allVisibleTextAndLinksMatch": true
+    },
+    {
+      "url": "https://www.cloud-calendars.com/bg/articles/change-calendar-color-iphone/",
+      "sections": 7,
+      "paragraphs": 14,
+      "practical": 6,
+      "faq": 4,
+      "sources": 4,
+      "allVisibleTextAndLinksMatch": true
+    }
+  ],
+  "relatedOnlyBacklinks": 3,
+  "englishExportContainsCompleteNewGuide": true,
+  "scope": "Complete new visible guide body/steps/FAQ/source/related,backlinks and canonical-set checks. Not native-speaker,runtime or ranking proof."
+}

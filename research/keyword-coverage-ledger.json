@@ -10,7 +10,7 @@
     "No content is declared researched merely because a corresponding route exists."
   ],
   "currentInventory": {
-    "articles": 453,
+    "articles": 455,
     "locales": [
       "ar-SA",
       "bg",
@@ -43,7 +43,7 @@
       "zh-Hans",
       "zh-Hant"
     ],
-    "englishArticles": 55,
+    "englishArticles": 56,
     "evidence": "research/content-inventory-20261021.json",
     "scope": "Current route inventory, not coverage or quality approval."
   },
@@ -648,6 +648,25 @@
       "measuredSearchVolume": null,
       "chatgptCitationEvidence": null,
       "publicationGate": "Root full before/body +fresh primary reads; independent full draft review and exact preservation; complete visible/static/public checks. No fabricated directGooglebirthdate import/editor or universal view/alert guarantee."
+    },
+    {
+      "id": "calendar-color-settings",
+      "keywordCandidates": [
+        "change calendar color iPhone",
+        "different calendar colors between apps",
+        "calendar color changes back",
+        "color one calendar event"
+      ],
+      "candidateBasis": "Inferred task aliases from two publicwebsearchqueries and primaryApple/Google/BusyCal publisher bodies; not fixed-locationGoogleSERP,measuredterms,rank orvolume.",
+      "researchEvidence": "batch33-colors/evidence.json",
+      "nativeBoundaryEvidence": "batch33-calendar-color-source.json",
+      "canonical": "/articles/change-calendar-color-iphone/",
+      "originalContribution": "Branch between calendar-wide color,per-eventproviderfeatures and displaystyle; actualeditableandreceivedcontrols,Google/Microsoftdifferences and reversible sourcecomparison without movingrecords.",
+      "status": "english_bulgarian_published_verified",
+      "measuredRank": null,
+      "measuredSearchVolume": null,
+      "chatgptCitationEvidence": null,
+      "publicationGate": "Rootauthored/fullBGread; independentfullENfactual/editorial andBGcrossreview; exact oneUIprecisionchangechain; completedeliverychecks."
     }
   ],
   "remaining": [
@@ -1341,5 +1360,29 @@
       "research/batch32-public-qa.json"
     ],
     "scope": "Bounded editorial and delivery evidence, not uniform all-localized quality, runtime or ranking certification."
+  },
+  "thirtyThirdPublication": {
+    "date": "2026-10-22",
+    "newCanonical": "/articles/change-calendar-color-iphone/",
+    "locales": [
+      "en-US",
+      "bg"
+    ],
+    "newLocalizedArticleObjects": 2,
+    "relatedOnlyBacklinks": 3,
+    "originalValue": "Calendar/event/displaystyle and provider distinctions,availableactualCloudcontrols,current-color-row action,receivedpersonalversuscreatorcolors,mismatchesdiagnosiswithoutmovingevents.",
+    "evidence": [
+      "research/batch33-colors/evidence.json",
+      "research/batch33-colors/factual-review-final.json",
+      "research/batch33-colors/bg-cross-review.json",
+      "research/batch33-source-qa.json",
+      "research/batch33-current-english-coverage.json",
+      "research/batch33-static-qa.json",
+      "research/batch33-metadata-qa.json",
+      "research/batch33-browser-qa.json",
+      "research/batch33-public-qa.json"
+    ],
+    "unchangedReviewedBodies": "CalDAV EN/FR/IT full-current-body audit passed without edits; report batch33-caldav-localization-audit.json.",
+    "settingsQueue": "Canonicalsettings alreadycovered; malformedhistoricaldiscovery revalidated throughindex and nextAction reconciled without false fullbody count."
   }
 }
