@@ -1,0 +1,262 @@
+{
+  "allPassed": true,
+  "checkedAt": "2026-10-22T05:40:27.836Z",
+  "articles": [
+    {
+      "locale": "en-US",
+      "file": "src/app/content/en-US/articles-sharing.ts",
+      "slug": "keeping-track-of-who-replied",
+      "article": {
+        "updated": "2026-10-22",
+        "title": "Calendar replies: separate attendance from sharing access",
+        "short": "Who replied and who has access",
+        "description": "Distinguish guest RSVPs from pending invitations, anonymous recipients and shared-calendar acceptance. Confirm attendance without inventing a headcount.",
+        "lede": "A person can open a link, add an event or accept calendar access without promising to attend. Decide which answer you need before interpreting a recipient list. This guide is written by Arte Soft, the developer of Cloud Calendars.",
+        "commonBelief": "Everyone recorded as a recipient or accepted share is a confirmed attendee, and silence can be converted into a reliable estimate.",
+        "sections": [
+          {
+            "heading": "Identify the kind of invitation",
+            "body": [
+              "A provider meeting invitation asks a guest for an attendance response. A Cloud Calendars share gives someone access to event details or a calendar, possibly with editing rights. An ICS subscription follows information. These actions can concern the same meeting without recording the same decision.",
+              "For example, a volunteer may accept Writer access to update an event but not attend it. A guest may read the details in a web preview and then reply by message. Neither case should be counted solely from an access-management screen."
+            ]
+          },
+          {
+            "heading": "Read sharing recipients as access information",
+            "body": [
+              "Cloud Calendars recipient information distinguishes pending email invitations, identified recipients, anonymous recipients and access roles. A pending invitation may offer a resend action. Reader, Writer and Owner describe what the recipient can do with shared information.",
+              "The sharing system records acceptance or receipt during its add/access flows. That record is useful for understanding the sharing relationship, but it is not a Yes/Maybe/No attendance answer. Anonymous reception also does not identify a named guest for your headcount."
+            ]
+          },
+          {
+            "heading": "Check attendance in the organizer’s invitation workflow",
+            "body": [
+              "For a Google meeting invitation, Google documents explicit Yes, No and Maybe responses. Apple Calendar likewise distinguishes Accept, Maybe and Decline for supported invitations. Use the organizer’s corresponding event and account when checking those replies.",
+              "If a reply looks wrong or missing, confirm the invited email and the event version with the person. An imported copy, a forwarded link or an event in another account may not represent the original invitation. Do not assume that every third-party display has the latest response."
+            ]
+          },
+          {
+            "heading": "Propose another time without treating it as agreed",
+            "body": [
+              "If you cannot attend, first identify the original invitation and the account that was invited. Moving a personal copy changes your own planning record; it does not ask the organiser to reschedule. A time proposal is also different from editing the original event with permission. Choose the action that matches your responsibility for the meeting.",
+              "In the Google Calendar app on iPhone or iPad, open the invitation, use the additional action beside Maybe and choose Propose a new time. Select the alternative and send the proposal. Google excludes all-day events and events with more than 200 guests from this workflow. In its computer guidance, the organiser reviews a suggested time and saves the event to accept the change; sending a proposal alone does not establish that the meeting moved.",
+              "Apple Calendar on iPhone has its own Propose New Time action for received meetings. Apple explains that the calendar server determines whether the organiser receives a counter-proposal or an email suggestion. Follow the application and account you actually use. These Apple and Google controls are not a claim that Cloud Calendars exposes the same proposal actions.",
+              "For example, you cannot attend Tuesday at 15:00 and suggest Wednesday at 10:00. Treat Wednesday as proposed until the organiser confirms and the original event reflects the intended arrangement. Recheck the date, time zone and relevant attendance responses. If the proposal control is unavailable, contact the organiser rather than moving a lookalike event or requesting broader editing rights just to suggest a time.",
+              "Keep the explanation appropriate for its audience. Google says a note added with an attendance response is visible to all guests; do not put a confidential reason there. Apple describes different visibility for response comments, subject to calendar support. Do not carry one application’s privacy expectation into another, or assume a proposal message and an attendance note have identical visibility."
+            ]
+          },
+          {
+            "heading": "Keep unknown attendance unknown",
+            "body": [
+              "A pending share, no response or an unread message is not a reliable acceptance or refusal. Record the people who explicitly confirmed, those who declined and those whose answer is still unknown. Do not add a fixed fraction of silent recipients to the confirmed total.",
+              "For a meal with a booking deadline, state the date by which you need a reply and ask the remaining people directly. The appropriate follow-up depends on the event; there is no universal rule that one reminder two days before is enough."
+            ]
+          },
+          {
+            "heading": "Treat meeting links as joining details",
+            "body": [
+              "A Google Meet or Microsoft Teams URL tells someone where to join, not whether they accepted or will attend. Cloud Calendars lists Google Meet with Base features and Microsoft Teams with Premium, subject to the relevant account and provider flow. A higher plan is not a more reliable attendance count.",
+              "Check that the intended link exists on the event and works for the intended audience. File imports and other conversions can lose conference information. If you change the meeting arrangement, tell participants which event and link to use instead of interpreting their old access record as confirmation."
+            ]
+          },
+          {
+            "heading": "Close the loop after an important change",
+            "body": [
+              "When an event moves substantially, update it through its owning calendar or sharing flow. Then tell the people whose attendance matters and ask for renewed confirmation where needed. A previous response to Tuesday is not necessarily an answer to Thursday.",
+              "Keep the final attendance list separate from the access list. Removing editing rights does not cancel a guest’s attendance, and declining shared access does not necessarily decline the underlying gathering. Use clear messages so people know which decision you are asking them to make."
+            ]
+          }
+        ],
+        "claims": {},
+        "practical": [
+          "Identify whether you sent a provider meeting invitation, an app share or a feed.",
+          "Use the sharing list to check access and pending invitations, not attendance totals.",
+          "Check provider RSVP status on the organizer’s actual event where applicable.",
+          "When suggesting another time, use the original provider invitation and distinguish sending a proposal from the organiser accepting and saving it. Check who can see any response note.",
+          "Keep unknown replies separate from confirmed and declined guests.",
+          "Ask for a direct answer by a deadline appropriate to your event.",
+          "After a major change, confirm the new arrangement and joining link with affected guests."
+        ],
+        "faq": [
+          {
+            "q": "Does accepted calendar access mean the person is coming?",
+            "a": "No. It means a sharing relationship was accepted through that flow. Attendance needs a provider RSVP or an explicit answer from the person."
+          },
+          {
+            "q": "Can I count anonymous recipients as confirmed guests?",
+            "a": "No. Anonymous reception is not an identified attendance commitment. It may help describe use of a shared event, but it cannot supply a reliable named guest list."
+          },
+          {
+            "q": "Do I need Premium to know who replied?",
+            "a": "Do not equate an app tier with RSVP reliability. Premium adds Microsoft Calendar and Teams features; access receipts and provider attendance responses remain different kinds of information. Check the original invitation and organizer account."
+          },
+          {
+            "q": "Does proposing a new time move the meeting for everyone?",
+            "a": "Not by itself. Google describes an organiser review and save step; Apple says server capabilities determine whether the suggestion arrives as a counter-proposal or email. Verify the original event and the organiser’s confirmation rather than treating your suggested time as agreed."
+          }
+        ],
+        "sourcesHeading": "Attendance and import references",
+        "sources": [
+          {
+            "label": "Google: responding to event invitations",
+            "url": "https://support.google.com/calendar/answer/37135?hl=en"
+          },
+          {
+            "label": "Apple: reply to Calendar invitations on iPhone",
+            "url": "https://support.apple.com/en-ph/guide/iphone/iphc0eddfe3c/ios"
+          },
+          {
+            "label": "Google: importing events and its limitations",
+            "url": "https://support.google.com/calendar/answer/37118?co=GENIE.Platform%3DDesktop&hl=en"
+          },
+          {
+            "label": "Google: responding and proposing a time on iPhone and iPad",
+            "url": "https://support.google.com/calendar/answer/37135?co=GENIE.Platform%3DiOS&hl=en-MP"
+          },
+          {
+            "label": "Google: organiser review of proposed meeting times",
+            "url": "https://support.google.com/a/users/answer/9283119?hl=en"
+          },
+          {
+            "label": "Apple: reply and suggest a meeting time on iPhone",
+            "url": "https://support.apple.com/en-gu/guide/iphone/iphc0eddfe3c/ios"
+          }
+        ],
+        "seeAlso": [
+          "sharing-one-event-not-your-calendar",
+          "inviting-people-who-do-not-have-the-app",
+          "meeting-links-that-make-themselves"
+        ]
+      }
+    },
+    {
+      "locale": "bg",
+      "file": "src/app/content/bg/articles-help.ts",
+      "slug": "what-an-all-day-event-really-means",
+      "article": {
+        "updated": "2026-10-22",
+        "title": "Целодневни събития: дати, заетост и липсващи записи в уиджетите",
+        "short": "Какво означава целодневно събитие",
+        "description": "Проверете датите, заетостта и уиджетите. При липсващ рожден ден намерете изходния контакт или календар, преди да добавите дубликат.",
+        "lede": "Целодневен запис, зает ден и среща в определен час са различни неща. Решете кое ви е нужно, преди да променяте събитието. Ръководството е публикувано от Arte Soft, разработчика на Cloud Calendars.",
+        "commonBelief": "Целодневният запис винаги оставя деня свободен, присъства във всеки списък с предстоящи събития и се държи еднакво при всички календарни услуги.",
+        "sections": [
+          {
+            "heading": "Изберете запис за дата или ангажимент с час",
+            "body": [
+              "Рожден ден, официален празник или пътуване може да се отнася за дата, без да изисква час на пристигане. Посещение при зъболекар или сесия на конференция има нужда от точни начало и край. Изберете начин на записване, който показва ангажимента ясно, без догадки.",
+              "За пътуване от петък до неделя целодневният запис може да обозначи целия период. Запазете полета в петък, резервацията в събота и освобождаването на хотела в неделя като отделни ангажименти с час, когато той е важен. Общият запис за пътуването не бива да заменя резервациите. Краен срок в 17:00 също се нуждае от час — целодневният запис сам по себе си не го съобщава."
+            ]
+          },
+          {
+            "heading": "При липсващ рожден ден първо намерете източника",
+            "body": [
+              "Преди да добавите липсващ рожден ден като ново ежегодно събитие, установете откъде идва: карта на контакт, календар с рождени дни, създаден от календарната услуга, или обикновено повтарящо се събитие. Apple посочва, че специалният календар Birthdays в iCloud използва iCloud Contacts и че рождените дати се променят в Contacts. Проверете контакта в профила, към който принадлежи.",
+              "Приложението на Google разграничава рождените дни, свързани с Google Contacts, от ръчно създадените събития за рожден ден. Според документацията редактирането на свързан рожден ден може да обнови контакта, докато изтриването на събитието не премахва информацията от Contacts. Изключването на Sync from Contacts премахва синхронизираните календарни записи и промени; не го използвайте като безобидна проверка на видимостта. Рождените дни от Apple Contacts, показани на iPhone, не се синхронизират само поради това с календара на Google в уеб или Android.",
+              "Cloud Calendars може да показва системен рожден ден, когато iOS предоставя съответния календар, разрешен е пълен достъп до календарите и календарът е избран. Не приемайте, че всеки изглед го включва или че приложението предлага специалните възможности на доставчика за редактиране на рождени дни. Сравнете източника при доставчика с календара на телефона, преди да добавите още един ежегоден запис. За промени в източника използвайте съответното приложение за контакти или календара на доставчика. Проверете отделно ръководствата за уиджети и известия за ограниченията при показване и напомняне."
+            ]
+          },
+          {
+            "heading": "Проверете и двете дати в Cloud Calendars",
+            "body": [
+              "В редактора на събитие използвайте All-day за запис, който се отнася за дата. Тогава Starts и Ends предлагат избор на дати вместо часове. Преди записване проверете първата и последната желана дата, после отворете резултата за тези дни. В разглеждания редактор избраният краен ден е включен в периода.",
+              "За еднодневен рожден ден проверете дали записът се показва на правилната дата, без нежелан допълнителен ден. За тридневно пътуване проверете и трите дати. Ако променяте съществуващ повтарящ се запис, прочетете ръководството за повторенията преди записване: включването на All-day не определя дали промяната засяга отделен случай или бъдещи повторения."
+            ]
+          },
+          {
+            "heading": "Проверете заетостта отделно",
+            "body": [
+              "Не решавайте дали денят е свободен само по целодневната лента. В документацията на Google Calendar настройката дали събитие блокира време е отделна от датите му. Правата за достъп и изгледът на получателя също могат да ограничават видимите подробности. Целодневният запис не е универсално указание да се приемат или отказват срещи.",
+              "Ако искате да блокирате ден за отпуск, проверете настройките за заетост или отсъствие при доставчика, на който принадлежи календарът, както и записания резултат. Ако искате само да отбележите рожден ден, проверете дали не блокира време неволно. Това ръководство не обещава, че Cloud Calendars предлага всяка настройка за заетост на всеки доставчик или предотвратява застъпване на срещи. Когато необходимата настройка липсва в приложението, използвайте поддържан редактор на доставчика."
+            ]
+          },
+          {
+            "heading": "Липсващ ред в уиджета не означава липсващо събитие",
+            "body": [
+              "Уиджетите за предстоящи събития и Live Activity на Cloud Calendars използват бъдещи ангажименти с определен час. Те изключват целодневните записи. Затова рожден ден може да присъства в пълния календар, но да липсва от показването на следващото събитие. По-големият уиджет не променя това правило.",
+              "Отворете датата в приложението и проверете дали календарът е избран. Ако записът е там, разграничете очакваното му отсъствие от уиджета от загуба на календарни данни. Не превръщайте рожден ден в изкуствена среща с час само за да се появи в уиджет; първо решете дали самото събитие действително трябва да има час."
+            ]
+          },
+          {
+            "heading": "Проверявайте датите след прехвърляне и пътуване",
+            "body": [
+              "Събитията само с дата могат да се съхраняват по различни правила от срещите с час. Google описва полета за дати при целодневните записи и отделна крайна граница във формата на събитията. Крайната дата в експортирания файл не е непременно последната дата, която календарът показва. Проверявайте прехвърлянето чрез показания резултат, вместо да редактирате файла само защото крайната му дата изглежда с един ден по-късна.",
+              "След импортиране или важна промяна на часовата зона сравнете желаните първа и последна дата в изходния календар и приложението. Не приемайте, че всеки доставчик, импортиран файл и инсталирана версия обработва границите еднакво. Запазете източника по време на проверката; местенето на събитието, за да компенсирате непознато показване, може да добави нова грешка."
+            ]
+          },
+          {
+            "heading": "Разграничете планирането от известията",
+            "body": [
+              "Записът в горната част на деня дава полезен контекст, но не доказва, че е получено напомняне. Ако трябва да предприемете нещо преди рожден ден, краен срок или пътуване, проверете записаното напомняне и настройките за известия в приложението и системата. Видимата дата на събитието сама по себе си не гарантира звуково известие.",
+              "При сигнал за проблем посочете желания период, дали е включено All-day, към кой календар принадлежи записът и къде се различава: в пълното приложение, при доставчика, в уиджета или в Live Activity. Когато е възможно, използвайте пример без лична информация. Запазете оригиналния запис, докато установявате причината."
+            ]
+          }
+        ],
+        "claims": {},
+        "practical": [
+          "Изберете запис само с дата за общ контекст и запис с час за ангажимент в определено време.",
+          "При липсващ рожден ден установете изходния контакт или календар, преди да добавите още едно ежегодно събитие.",
+          "След записване проверете първата и последната включена дата.",
+          "При нужда проверете свободното и заетото време отделно при доставчика на календара.",
+          "Потърсете целодневните записи в пълния календар, ако липсват от показването на предстоящи събития.",
+          "Проверете напомнянията и границите на импортираните дати, без да изтривате източника."
+        ],
+        "faq": [
+          {
+            "q": "Целодневно събитие означава ли, че съм свободен?",
+            "a": "Не. Проверете настройките за заетост отделно при доставчика на календара; целодневната лента не определя свободното и заетото време по един и същ начин при всички услуги."
+          },
+          {
+            "q": "Защо целодневното ми пътуване липсва от уиджета за следващо събитие?",
+            "a": "Този списък използва бъдещи ангажименти с час и изключва целодневните записи. Проверете пътуването в пълния календар."
+          },
+          {
+            "q": "Трябва ли да извадя един ден от крайната дата в експортирания файл?",
+            "a": "Не я променяйте само заради стойността на полето. Някои формати използват крайна граница, която не се включва в периода. Проверете показания период след импортиране и запазете оригинала."
+          },
+          {
+            "q": "Защо рожден ден липсва, въпреки че контактът съществува?",
+            "a": "Проверете към кой профил принадлежи контактът, дали съдържа рождена дата и дали съответният календар е достъпен и избран. Уиджетът за предстоящи събития изключва целодневните записи; това само по себе си не означава, че източникът липсва. Не създавайте още един ежегоден запис, преди да сравните източника и пълния календар."
+          }
+        ],
+        "sourcesHeading": "Официални указания за календарите и формата на събитията",
+        "sources": [
+          {
+            "label": "Apple: целодневни и многодневни събития в Calendar на Mac",
+            "url": "https://support.apple.com/guide/calendar/set-up-all-day-multiday-or-repeating-events-icl1018/mac"
+          },
+          {
+            "label": "Google: събития с час и целодневни събития",
+            "url": "https://developers.google.com/workspace/calendar/api/concepts/events-calendars"
+          },
+          {
+            "label": "Google: граници на събитията и полета за заетост",
+            "url": "https://developers.google.com/workspace/calendar/api/v3/reference/events"
+          },
+          {
+            "label": "Apple: календарът Birthdays в iCloud и промени в Contacts",
+            "url": "https://support.apple.com/en-euro/guide/icloud/mmfbbb2cf9/icloud"
+          },
+          {
+            "label": "Google: управление на рождени дни на iPhone и iPad",
+            "url": "https://support.google.com/calendar/answer/13748346?co=GENIE.Platform%3DiOS&hl=en-GB"
+          }
+        ],
+        "seeAlso": [
+          "time-zones-and-the-flight-you-booked",
+          "recurring-events-without-the-mess",
+          "the-widget-that-shows-what-is-next",
+          "calendar-notifications-missing-silent-or-duplicated"
+        ]
+      }
+    }
+  ],
+  "relatedOnlyBacklink": {
+    "locale": "bg",
+    "slug": "time-zones-and-the-flight-you-booked",
+    "to": "what-an-all-day-event-really-means",
+    "oldMetadataAndBodyPreserved": true
+  },
+  "allOtherArticlesPreserved": true,
+  "englishInversePreserved": true
+}

@@ -1,0 +1,28 @@
+{
+  "allPassed": true,
+  "sitemapUrls": 527,
+  "all526PreviousCanonicalsPreserved": true,
+  "newRoutes": [
+    "https://www.cloud-calendars.com/bg/articles/what-an-all-day-event-really-means/"
+  ],
+  "fullGuidesChecked": [
+    {
+      "url": "https://www.cloud-calendars.com/articles/keeping-track-of-who-replied/",
+      "allVisibleTextReferencesAndRelatedMatch": true,
+      "galleryImagesWithAlt": 5,
+      "sections": 7,
+      "faq": 4
+    },
+    {
+      "url": "https://www.cloud-calendars.com/bg/articles/what-an-all-day-event-really-means/",
+      "allVisibleTextReferencesAndRelatedMatch": true,
+      "galleryImagesWithAlt": 5,
+      "sections": 7,
+      "faq": 4
+    }
+  ],
+  "relatedOnlyBacklinks": 1,
+  "english58GuideExportIncludesFullExpandedGuide": true,
+  "robotsUnchanged": true,
+  "scope": "FullreviewedENexpandedguide+fullBGneweditionvisiblebody/steps/FAQ/sources/related;allpriorcanonicals. Not ranking/runtime proof."
+}

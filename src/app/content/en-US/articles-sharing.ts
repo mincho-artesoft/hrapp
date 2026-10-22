@@ -481,7 +481,7 @@ export const SHARING_EN_US: Readonly<Record<string, LocalisedArticle>> = {
 },
 
   'keeping-track-of-who-replied': {
-  "updated": "2026-10-21",
+  "updated": "2026-10-22",
   "title": "Calendar replies: separate attendance from sharing access",
   "short": "Who replied and who has access",
   "description": "Distinguish guest RSVPs from pending invitations, anonymous recipients and shared-calendar acceptance. Confirm attendance without inventing a headcount.",
@@ -507,6 +507,16 @@ export const SHARING_EN_US: Readonly<Record<string, LocalisedArticle>> = {
       "body": [
         "For a Google meeting invitation, Google documents explicit Yes, No and Maybe responses. Apple Calendar likewise distinguishes Accept, Maybe and Decline for supported invitations. Use the organizer’s corresponding event and account when checking those replies.",
         "If a reply looks wrong or missing, confirm the invited email and the event version with the person. An imported copy, a forwarded link or an event in another account may not represent the original invitation. Do not assume that every third-party display has the latest response."
+      ]
+    },
+    {
+      "heading": "Propose another time without treating it as agreed",
+      "body": [
+        "If you cannot attend, first identify the original invitation and the account that was invited. Moving a personal copy changes your own planning record; it does not ask the organiser to reschedule. A time proposal is also different from editing the original event with permission. Choose the action that matches your responsibility for the meeting.",
+        "In the Google Calendar app on iPhone or iPad, open the invitation, use the additional action beside Maybe and choose Propose a new time. Select the alternative and send the proposal. Google excludes all-day events and events with more than 200 guests from this workflow. In its computer guidance, the organiser reviews a suggested time and saves the event to accept the change; sending a proposal alone does not establish that the meeting moved.",
+        "Apple Calendar on iPhone has its own Propose New Time action for received meetings. Apple explains that the calendar server determines whether the organiser receives a counter-proposal or an email suggestion. Follow the application and account you actually use. These Apple and Google controls are not a claim that Cloud Calendars exposes the same proposal actions.",
+        "For example, you cannot attend Tuesday at 15:00 and suggest Wednesday at 10:00. Treat Wednesday as proposed until the organiser confirms and the original event reflects the intended arrangement. Recheck the date, time zone and relevant attendance responses. If the proposal control is unavailable, contact the organiser rather than moving a lookalike event or requesting broader editing rights just to suggest a time.",
+        "Keep the explanation appropriate for its audience. Google says a note added with an attendance response is visible to all guests; do not put a confidential reason there. Apple describes different visibility for response comments, subject to calendar support. Do not carry one application’s privacy expectation into another, or assume a proposal message and an attendance note have identical visibility."
       ]
     },
     {
@@ -536,6 +546,7 @@ export const SHARING_EN_US: Readonly<Record<string, LocalisedArticle>> = {
     "Identify whether you sent a provider meeting invitation, an app share or a feed.",
     "Use the sharing list to check access and pending invitations, not attendance totals.",
     "Check provider RSVP status on the organizer’s actual event where applicable.",
+    "When suggesting another time, use the original provider invitation and distinguish sending a proposal from the organiser accepting and saving it. Check who can see any response note.",
     "Keep unknown replies separate from confirmed and declined guests.",
     "Ask for a direct answer by a deadline appropriate to your event.",
     "After a major change, confirm the new arrangement and joining link with affected guests."
@@ -552,6 +563,10 @@ export const SHARING_EN_US: Readonly<Record<string, LocalisedArticle>> = {
     {
       "q": "Do I need Premium to know who replied?",
       "a": "Do not equate an app tier with RSVP reliability. Premium adds Microsoft Calendar and Teams features; access receipts and provider attendance responses remain different kinds of information. Check the original invitation and organizer account."
+    },
+    {
+      "q": "Does proposing a new time move the meeting for everyone?",
+      "a": "Not by itself. Google describes an organiser review and save step; Apple says server capabilities determine whether the suggestion arrives as a counter-proposal or email. Verify the original event and the organiser’s confirmation rather than treating your suggested time as agreed."
     }
   ],
   "sourcesHeading": "Attendance and import references",
@@ -567,6 +582,18 @@ export const SHARING_EN_US: Readonly<Record<string, LocalisedArticle>> = {
     {
       "label": "Google: importing events and its limitations",
       "url": "https://support.google.com/calendar/answer/37118?co=GENIE.Platform%3DDesktop&hl=en"
+    },
+    {
+      "label": "Google: responding and proposing a time on iPhone and iPad",
+      "url": "https://support.google.com/calendar/answer/37135?co=GENIE.Platform%3DiOS&hl=en-MP"
+    },
+    {
+      "label": "Google: organiser review of proposed meeting times",
+      "url": "https://support.google.com/a/users/answer/9283119?hl=en"
+    },
+    {
+      "label": "Apple: reply and suggest a meeting time on iPhone",
+      "url": "https://support.apple.com/en-gu/guide/iphone/iphc0eddfe3c/ios"
     }
   ],
   "seeAlso": [

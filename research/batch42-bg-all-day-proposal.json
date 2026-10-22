@@ -1,0 +1,295 @@
+{
+  "canonical": "what-an-all-day-event-really-means",
+  "locale": "bg",
+  "decision": "Worthwhile new localized edition, not a replacement of an existing Bulgarian object. No current Bulgarian definition or equivalent dedicated all-day guide found in bounded module inventory; existing widget and timezone guides cover partial related tasks.",
+  "sourceProvenance": {
+    "file": "src/app/content/en-US/articles-planning.ts",
+    "moduleRawSha256": "9aae88d851318f7562872f73561a371679ad34728675d8fbb405925360265cec",
+    "fullObjectRead": true,
+    "englishObject": {
+      "updated": "2026-10-22",
+      "title": "All-day calendar events: dates, availability and missing widget entries",
+      "short": "Understand all-day events",
+      "description": "Check all-day dates, availability and widget omissions. For a missing birthday, identify the contact or calendar source before adding a duplicate.",
+      "lede": "An all-day label, a busy day and an appointment at a particular hour are different ideas. Decide which you need before changing the event. This guide is published by Arte Soft, the developer of Cloud Calendars.",
+      "commonBelief": "An all-day entry always leaves you free, appears in every upcoming list and behaves identically across calendar providers.",
+      "sections": [
+        {
+          "heading": "Choose a date label or a timed commitment",
+          "body": [
+            "A birthday, public holiday or trip label can belong to a date without requiring an arrival hour. A dentist visit or a conference session needs an actual start and end time. Choose the representation that lets someone understand the commitment without guessing.",
+            "For a trip from Friday through Sunday, an all-day span can label the itinerary. Keep a Friday flight, Saturday booking and Sunday check-out as timed commitments when their hours matter. The trip label should not replace the bookings it summarizes. A deadline at 17:00 also needs its hour; an all-day label alone does not communicate that cutoff."
+          ]
+        },
+        {
+          "heading": "For a missing birthday, identify its source first",
+          "body": [
+            "Before adding a missing birthday as a new annual event, find its source: a contact card, a provider-generated birthday calendar or an ordinary repeating event. Apple documents that its special iCloud Birthdays calendar uses iCloud Contacts and that birthday changes belong in Contacts. Check the contact in the account that owns it.",
+            "Google’s own app distinguishes birthdays linked to Google Contacts from manually created birthday events. It documents that editing a linked birthday can update its contact, while deleting it does not remove the Contacts information. Turning off Sync from Contacts removes synced calendar entries and changes; do not use that switch as a harmless visibility test. Birthdays shown from Apple Contacts on an iPhone are not thereby synchronized to Google’s web or Android calendar.",
+            "Cloud Calendars may show a system birthday when that calendar is exposed by iOS, full calendar access is allowed and the calendar is selected. Do not assume every view includes it or that provider-specific birthday editing is available. Compare the original provider and the phone’s calendar before adding another annual record, and use the owning Contacts or provider app for source changes. Check the widget and notification guides separately for display and alert limits."
+          ]
+        },
+        {
+          "heading": "Check both dates in Cloud Calendars",
+          "body": [
+            "In the event editor, use All-day for a date-based entry. Starts and Ends then use date choices rather than clock times. Read the first and last intended dates before saving, and reopen the result across those days. The current editor treats the selected ending day as included in the span.",
+            "For a one-day birthday, check that it appears on the intended date without an unwanted extra day. For a three-day trip, check all three dates. If you change an existing repeating entry, follow the recurrence guide before saving: choosing All-day does not establish whether an edit affects one occurrence or future occurrences."
+          ]
+        },
+        {
+          "heading": "Check availability independently",
+          "body": [
+            "Do not decide whether a day is free just by seeing an all-day banner. Google Calendar documents whether an event blocks time as a separate setting from its dates. Calendar permissions and the recipient's view can also limit the details people see. An all-day entry is not a universal instruction to accept or reject meetings.",
+            "If you need a day blocked for leave, check the owning provider's availability or out-of-office controls and the saved result. If you only want a birthday label, check that it does not block time unintentionally. This guide does not promise that Cloud Calendars exposes every provider's availability control or prevents scheduling conflicts. Use a supported provider editor when you need an option absent from the app."
+          ]
+        },
+        {
+          "heading": "A missing widget row is not a missing event",
+          "body": [
+            "Cloud Calendars' upcoming-event widgets and Live Activity follow future timed appointments. They exclude all-day entries. A birthday may therefore be present in the full calendar but absent from the next-event display. Making the widget larger does not change that eligibility rule.",
+            "Open the date in the app and check that the calendar is selected. If the entry is present there, distinguish an expected widget omission from lost calendar data. Do not convert a birthday into an artificial timed meeting merely to make a widget show it; decide first whether the event itself should really have an hour."
+          ]
+        },
+        {
+          "heading": "Inspect transfers and travel dates",
+          "body": [
+            "Date-based events can use different storage conventions from timed appointments. Google documents date fields for all-day entries and a separate end boundary in its event format. A raw export's ending date is not necessarily the last date a calendar displays. Use the displayed result to check a transfer rather than editing a file solely because its end date looks one day later.",
+            "After an import or an important time-zone change, compare the intended first and last dates in the owning calendar and the app. Do not assume every provider, imported file and installed version handles the boundaries identically. Keep the source while checking; moving the event to compensate for an unfamiliar display can introduce another error."
+          ]
+        },
+        {
+          "heading": "Keep alerts and planning separate",
+          "body": [
+            "A label across the top of a day is useful context, but it is not a reminder that has been delivered. If you need to act before a birthday, deadline or trip, inspect the saved alert and the app and system notification settings. The event's visible date alone does not guarantee an audible reminder.",
+            "For a problem report, note the intended date range, whether All-day is enabled, the owning calendar and where the entry differs: full app, provider, widget or activity. Use a non-sensitive example when possible. Preserve the original entry while diagnosing the difference."
+          ]
+        }
+      ],
+      "claims": {},
+      "practical": [
+        "Choose a date label for context and a timed entry for a commitment with an hour.",
+        "For a missing birthday, identify the owning contact or calendar before adding another annual event.",
+        "Check the first and last included dates after saving.",
+        "Verify free/busy separately in the owning provider when needed.",
+        "Look in the full calendar for all-day entries omitted from upcoming displays.",
+        "Check reminders and imported date boundaries without deleting the source."
+      ],
+      "faq": [
+        {
+          "q": "Does an all-day event mean I am available?",
+          "a": "No. Check the owning calendar's availability settings separately; an all-day banner does not establish free/busy for every provider."
+        },
+        {
+          "q": "Why is my all-day trip absent from the next-event widget?",
+          "a": "That feed follows future timed appointments and excludes all-day entries. Check the trip in the full calendar."
+        },
+        {
+          "q": "Should I subtract a day from an export's end date?",
+          "a": "Do not change it just from the raw field. Some formats use an exclusive end boundary. Check the imported displayed range while retaining the original."
+        },
+        {
+          "q": "Why is a birthday missing even though the contact exists?",
+          "a": "Check which account owns the contact, whether it contains a birthday and whether the resulting calendar is available and selected. An upcoming widget excludes all-day entries; that alone does not show that the source is missing. Do not create another annual record until you have compared the source and the full calendar."
+        }
+      ],
+      "sourcesHeading": "Official event-format and calendar guidance",
+      "sources": [
+        {
+          "label": "Apple: All-day and multiday events in Calendar on Mac",
+          "url": "https://support.apple.com/guide/calendar/set-up-all-day-multiday-or-repeating-events-icl1018/mac"
+        },
+        {
+          "label": "Google: Timed and all-day event concepts",
+          "url": "https://developers.google.com/workspace/calendar/api/concepts/events-calendars"
+        },
+        {
+          "label": "Google: Event boundaries and availability fields",
+          "url": "https://developers.google.com/workspace/calendar/api/v3/reference/events"
+        },
+        {
+          "label": "Apple: iCloud Birthdays calendar and changes in Contacts",
+          "url": "https://support.apple.com/en-euro/guide/icloud/mmfbbb2cf9/icloud"
+        },
+        {
+          "label": "Google: Manage birthdays on iPhone and iPad",
+          "url": "https://support.google.com/calendar/answer/13748346?co=GENIE.Platform%3DiOS&hl=en-GB"
+        }
+      ],
+      "seeAlso": [
+        "time-zones-and-the-flight-you-booked",
+        "recurring-events-without-the-mess",
+        "the-widget-that-shows-what-is-next",
+        "calendar-notifications-missing-silent-or-duplicated"
+      ]
+    },
+    "priorProductEvidence": "research/batch31-birthday-source-evidence.json",
+    "priorProductEvidenceRawSha256": "e6b7a99982e5375fb456033c8639ee09c39642ba970e2b34440a036f8b75f0a6",
+    "limits": "English cited provider evidence reused; no fresh primary website or native runtime reads for this translation. No released binary correspondence claimed.",
+    "bgModuleInventory": [
+      {
+        "file": "src/app/content/bg/chrome.ts",
+        "sha256": "fbc710c938a7b5b2b2e93c6d16cbfadeb186935da5fc6523769e5696c472f315"
+      },
+      {
+        "file": "src/app/content/bg/articles.ts",
+        "sha256": "f47bb5c198eb4ffbd2deff9ec8deb306e2fdc4cf606b39cd4614b33f79c413cd"
+      },
+      {
+        "file": "src/app/content/bg/articles-google.ts",
+        "sha256": "9506eacc5faae26a3b147832d1f1c190b909c35db74b7a2add02b339602b87f9"
+      },
+      {
+        "file": "src/app/content/bg/articles-help.ts",
+        "sha256": "d00d9c396212bc7c35bd24f980cfa06abe3f160d17353548cdc25578007b1cd2"
+      }
+    ],
+    "bgBefore": null
+  },
+  "article": {
+    "updated": "2026-10-22",
+    "title": "Целодневни събития: дати, заетост и липсващи записи в уиджетите",
+    "short": "Какво означава целодневно събитие",
+    "description": "Проверете датите, заетостта и уиджетите. При липсващ рожден ден намерете изходния контакт или календар, преди да добавите дубликат.",
+    "lede": "Целодневен запис, зает ден и среща в определен час са различни неща. Решете кое ви е нужно, преди да променяте събитието. Ръководството е публикувано от Arte Soft, разработчика на Cloud Calendars.",
+    "commonBelief": "Целодневният запис винаги оставя деня свободен, присъства във всеки списък с предстоящи събития и се държи еднакво при всички календарни услуги.",
+    "sections": [
+      {
+        "heading": "Изберете запис за дата или ангажимент с час",
+        "body": [
+          "Рожден ден, официален празник или пътуване може да се отнася за дата, без да изисква час на пристигане. Посещение при зъболекар или сесия на конференция има нужда от точни начало и край. Изберете начин на записване, който показва ангажимента ясно, без догадки.",
+          "За пътуване от петък до неделя целодневният запис може да обозначи целия период. Запазете полета в петък, резервацията в събота и освобождаването на хотела в неделя като отделни ангажименти с час, когато той е важен. Общият запис за пътуването не бива да заменя резервациите. Краен срок в 17:00 също се нуждае от час — целодневният запис сам по себе си не го съобщава."
+        ]
+      },
+      {
+        "heading": "При липсващ рожден ден първо намерете източника",
+        "body": [
+          "Преди да добавите липсващ рожден ден като ново ежегодно събитие, установете откъде идва: карта на контакт, календар с рождени дни, създаден от календарната услуга, или обикновено повтарящо се събитие. Apple посочва, че специалният календар Birthdays в iCloud използва iCloud Contacts и че рождените дати се променят в Contacts. Проверете контакта в профила, към който принадлежи.",
+          "Приложението на Google разграничава рождените дни, свързани с Google Contacts, от ръчно създадените събития за рожден ден. Според документацията редактирането на свързан рожден ден може да обнови контакта, докато изтриването на събитието не премахва информацията от Contacts. Изключването на Sync from Contacts премахва синхронизираните календарни записи и промени; не го използвайте като безобидна проверка на видимостта. Рождените дни от Apple Contacts, показани на iPhone, не се синхронизират само поради това с календара на Google в уеб или Android.",
+          "Cloud Calendars може да показва системен рожден ден, когато iOS предоставя съответния календар, разрешен е пълен достъп до календарите и календарът е избран. Не приемайте, че всеки изглед го включва или че приложението предлага специалните възможности на доставчика за редактиране на рождени дни. Сравнете източника при доставчика с календара на телефона, преди да добавите още един ежегоден запис. За промени в източника използвайте съответното приложение за контакти или календара на доставчика. Проверете отделно ръководствата за уиджети и известия за ограниченията при показване и напомняне."
+        ]
+      },
+      {
+        "heading": "Проверете и двете дати в Cloud Calendars",
+        "body": [
+          "В редактора на събитие използвайте All-day за запис, който се отнася за дата. Тогава Starts и Ends предлагат избор на дати вместо часове. Преди записване проверете първата и последната желана дата, после отворете резултата за тези дни. В разглеждания редактор избраният краен ден е включен в периода.",
+          "За еднодневен рожден ден проверете дали записът се показва на правилната дата, без нежелан допълнителен ден. За тридневно пътуване проверете и трите дати. Ако променяте съществуващ повтарящ се запис, прочетете ръководството за повторенията преди записване: включването на All-day не определя дали промяната засяга отделен случай или бъдещи повторения."
+        ]
+      },
+      {
+        "heading": "Проверете заетостта отделно",
+        "body": [
+          "Не решавайте дали денят е свободен само по целодневната лента. В документацията на Google Calendar настройката дали събитие блокира време е отделна от датите му. Правата за достъп и изгледът на получателя също могат да ограничават видимите подробности. Целодневният запис не е универсално указание да се приемат или отказват срещи.",
+          "Ако искате да блокирате ден за отпуск, проверете настройките за заетост или отсъствие при доставчика, на който принадлежи календарът, както и записания резултат. Ако искате само да отбележите рожден ден, проверете дали не блокира време неволно. Това ръководство не обещава, че Cloud Calendars предлага всяка настройка за заетост на всеки доставчик или предотвратява застъпване на срещи. Когато необходимата настройка липсва в приложението, използвайте поддържан редактор на доставчика."
+        ]
+      },
+      {
+        "heading": "Липсващ ред в уиджета не означава липсващо събитие",
+        "body": [
+          "Уиджетите за предстоящи събития и Live Activity на Cloud Calendars използват бъдещи ангажименти с определен час. Те изключват целодневните записи. Затова рожден ден може да присъства в пълния календар, но да липсва от показването на следващото събитие. По-големият уиджет не променя това правило.",
+          "Отворете датата в приложението и проверете дали календарът е избран. Ако записът е там, разграничете очакваното му отсъствие от уиджета от загуба на календарни данни. Не превръщайте рожден ден в изкуствена среща с час само за да се появи в уиджет; първо решете дали самото събитие действително трябва да има час."
+        ]
+      },
+      {
+        "heading": "Проверявайте датите след прехвърляне и пътуване",
+        "body": [
+          "Събитията само с дата могат да се съхраняват по различни правила от срещите с час. Google описва полета за дати при целодневните записи и отделна крайна граница във формата на събитията. Крайната дата в експортирания файл не е непременно последната дата, която календарът показва. Проверявайте прехвърлянето чрез показания резултат, вместо да редактирате файла само защото крайната му дата изглежда с един ден по-късна.",
+          "След импортиране или важна промяна на часовата зона сравнете желаните първа и последна дата в изходния календар и приложението. Не приемайте, че всеки доставчик, импортиран файл и инсталирана версия обработва границите еднакво. Запазете източника по време на проверката; местенето на събитието, за да компенсирате непознато показване, може да добави нова грешка."
+        ]
+      },
+      {
+        "heading": "Разграничете планирането от известията",
+        "body": [
+          "Записът в горната част на деня дава полезен контекст, но не доказва, че е получено напомняне. Ако трябва да предприемете нещо преди рожден ден, краен срок или пътуване, проверете записаното напомняне и настройките за известия в приложението и системата. Видимата дата на събитието сама по себе си не гарантира звуково известие.",
+          "При сигнал за проблем посочете желания период, дали е включено All-day, към кой календар принадлежи записът и къде се различава: в пълното приложение, при доставчика, в уиджета или в Live Activity. Когато е възможно, използвайте пример без лична информация. Запазете оригиналния запис, докато установявате причината."
+        ]
+      }
+    ],
+    "claims": {},
+    "practical": [
+      "Изберете запис само с дата за общ контекст и запис с час за ангажимент в определено време.",
+      "При липсващ рожден ден установете изходния контакт или календар, преди да добавите още едно ежегодно събитие.",
+      "След записване проверете първата и последната включена дата.",
+      "При нужда проверете свободното и заетото време отделно при доставчика на календара.",
+      "Потърсете целодневните записи в пълния календар, ако липсват от показването на предстоящи събития.",
+      "Проверете напомнянията и границите на импортираните дати, без да изтривате източника."
+    ],
+    "faq": [
+      {
+        "q": "Целодневно събитие означава ли, че съм свободен?",
+        "a": "Не. Проверете настройките за заетост отделно при доставчика на календара; целодневната лента не определя свободното и заетото време по един и същ начин при всички услуги."
+      },
+      {
+        "q": "Защо целодневното ми пътуване липсва от уиджета за следващо събитие?",
+        "a": "Този списък използва бъдещи ангажименти с час и изключва целодневните записи. Проверете пътуването в пълния календар."
+      },
+      {
+        "q": "Трябва ли да извадя един ден от крайната дата в експортирания файл?",
+        "a": "Не я променяйте само заради стойността на полето. Някои формати използват крайна граница, която не се включва в периода. Проверете показания период след импортиране и запазете оригинала."
+      },
+      {
+        "q": "Защо рожден ден липсва, въпреки че контактът съществува?",
+        "a": "Проверете към кой профил принадлежи контактът, дали съдържа рождена дата и дали съответният календар е достъпен и избран. Уиджетът за предстоящи събития изключва целодневните записи; това само по себе си не означава, че източникът липсва. Не създавайте още един ежегоден запис, преди да сравните източника и пълния календар."
+      }
+    ],
+    "sourcesHeading": "Официални указания за календарите и формата на събитията",
+    "sources": [
+      {
+        "label": "Apple: целодневни и многодневни събития в Calendar на Mac",
+        "url": "https://support.apple.com/guide/calendar/set-up-all-day-multiday-or-repeating-events-icl1018/mac"
+      },
+      {
+        "label": "Google: събития с час и целодневни събития",
+        "url": "https://developers.google.com/workspace/calendar/api/concepts/events-calendars"
+      },
+      {
+        "label": "Google: граници на събитията и полета за заетост",
+        "url": "https://developers.google.com/workspace/calendar/api/v3/reference/events"
+      },
+      {
+        "label": "Apple: календарът Birthdays в iCloud и промени в Contacts",
+        "url": "https://support.apple.com/en-euro/guide/icloud/mmfbbb2cf9/icloud"
+      },
+      {
+        "label": "Google: управление на рождени дни на iPhone и iPad",
+        "url": "https://support.google.com/calendar/answer/13748346?co=GENIE.Platform%3DiOS&hl=en-GB"
+      }
+    ],
+    "seeAlso": [
+      "time-zones-and-the-flight-you-booked",
+      "recurring-events-without-the-mess",
+      "the-widget-that-shows-what-is-next",
+      "calendar-notifications-missing-silent-or-duplicated"
+    ]
+  },
+  "review": {
+    "decision": "PASS own semantic review",
+    "scope": "Complete current English canonical read and full Bulgarian proposed article reviewed. No existing BG object was available to read or preserve. Type definition reviewed.",
+    "counts": {
+      "sections": 7,
+      "paragraphs": 15,
+      "practical": 6,
+      "faq": 4,
+      "sources": 5,
+      "descriptionUnicodeCharacters": 131
+    },
+    "exactSourceUrlsPreserved": true,
+    "actualRelatedRoutesVerified": [
+      "time-zones-and-the-flight-you-booked",
+      "recurring-events-without-the-mess",
+      "the-widget-that-shows-what-is-next",
+      "calendar-notifications-missing-silent-or-duplicated"
+    ],
+    "claimsEmpty": true,
+    "qualifications": [
+      "Birthday source identification before duplicate creation; generated/contact-linked birthdays distinct from ordinary recurrence.",
+      "Google Contacts sync switch is not a harmless visibility test; Apple Contacts birthdays do not automatically propagate to Google web/Android.",
+      "System birthday exposure/full access/selection conditional, not every-view/provider-editing guarantee.",
+      "All-day versus availability separate; upcoming-event widgets and Live Activity exclude all-day records.",
+      "Ending-day inclusion in inspected editor distinct from raw export exclusive end; recurrence scope not promised.",
+      "Alerts and visible dates distinct; preserve originals."
+    ],
+    "uiLabels": "Unverified localized Cloud/Google control labels not invented; All-day/Starts/Ends/Sync from Contacts retained in English context.",
+    "certification": "Own translation and semantic review, not independent native-speaker or runtime certification."
+  },
+  "sourceIntegration": false
+}

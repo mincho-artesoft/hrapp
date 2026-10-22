@@ -1,0 +1,24 @@
+{
+  "checkedAt": "2026-10-22T05:45:00.138500+00:00",
+  "pages": [
+    {
+      "url": "https://www.cloud-calendars.com/bg/articles/what-an-all-day-event-really-means/",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "documentClientWidth": 379,
+      "documentScrollWidth": 379,
+      "allExpectedHeadingsVisibleInDOM": true,
+      "screenshot": "/tmp/cloud-calendar-batch42-bg.png",
+      "visualReview": "Readable Bulgarian paragraphs and heading; no horizontal overflow."
+    },
+    {
+      "url": "https://www.cloud-calendars.com/articles/keeping-track-of-who-replied/",
+      "documentClientWidth": 379,
+      "documentScrollWidth": 379,
+      "proposalHeadingAndExamplePresent": true
+    }
+  ],
+  "scope": "Targeted public mobile readability and new content; not all routes/device or native app tests."
+}

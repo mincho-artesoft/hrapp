@@ -1,5 +1,5 @@
 {
-  "date": "2026-10-22T05:18:42.034Z",
+  "date": "2026-10-22T05:40:28.430Z",
   "status": "source_inventory_not_quality_approval",
   "articles": [
     {
@@ -276,6 +276,25 @@
         "https://support.google.com/calendar/answer/37648?hl=en"
       ],
       "updated": "2026-10-21"
+    },
+    {
+      "locale": "bg",
+      "slug": "what-an-all-day-event-really-means",
+      "title": "Целодневни събития: дати, заетост и липсващи записи в уиджетите",
+      "description": "Проверете датите, заетостта и уиджетите. При липсващ рожден ден намерете изходния контакт или календар, преди да добавите дубликат.",
+      "descriptionCharacters": 131,
+      "sections": 7,
+      "faq": 4,
+      "words": 1173,
+      "source": "articles-help.ts",
+      "sources": [
+        "https://support.apple.com/guide/calendar/set-up-all-day-multiday-or-repeating-events-icl1018/mac",
+        "https://developers.google.com/workspace/calendar/api/concepts/events-calendars",
+        "https://developers.google.com/workspace/calendar/api/v3/reference/events",
+        "https://support.apple.com/en-euro/guide/icloud/mmfbbb2cf9/icloud",
+        "https://support.google.com/calendar/answer/13748346?co=GENIE.Platform%3DiOS&hl=en-GB"
+      ],
+      "updated": "2026-10-22"
     },
     {
       "locale": "bg",
@@ -2081,16 +2100,19 @@
       "title": "Calendar replies: separate attendance from sharing access",
       "description": "Distinguish guest RSVPs from pending invitations, anonymous recipients and shared-calendar acceptance. Confirm attendance without inventing a headcount.",
       "descriptionCharacters": 152,
-      "sections": 6,
-      "faq": 3,
-      "words": 796,
+      "sections": 7,
+      "faq": 4,
+      "words": 1191,
       "source": "articles-sharing.ts",
       "sources": [
         "https://support.google.com/calendar/answer/37135?hl=en",
         "https://support.apple.com/en-ph/guide/iphone/iphc0eddfe3c/ios",
-        "https://support.google.com/calendar/answer/37118?co=GENIE.Platform%3DDesktop&hl=en"
+        "https://support.google.com/calendar/answer/37118?co=GENIE.Platform%3DDesktop&hl=en",
+        "https://support.google.com/calendar/answer/37135?co=GENIE.Platform%3DiOS&hl=en-MP",
+        "https://support.google.com/a/users/answer/9283119?hl=en",
+        "https://support.apple.com/en-gu/guide/iphone/iphc0eddfe3c/ios"
       ],
-      "updated": "2026-10-21"
+      "updated": "2026-10-22"
     },
     {
       "locale": "en-US",

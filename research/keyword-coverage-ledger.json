@@ -10,7 +10,7 @@
     "No content is declared researched merely because a corresponding route exists."
   ],
   "currentInventory": {
-    "articles": 455,
+    "articles": 464,
     "locales": [
       "ar-SA",
       "bg",
@@ -43,9 +43,9 @@
       "zh-Hans",
       "zh-Hant"
     ],
-    "englishArticles": 56,
+    "englishArticles": 58,
     "evidence": "research/content-inventory-20261021.json",
-    "scope": "Current route inventory, not coverage or quality approval."
+    "scope": "Fresh source inventory after batch42; not quality approval for all translations."
   },
   "clusters": [
     {
@@ -122,7 +122,9 @@
         {
           "gap": "A reader using merge to mean actual migration still needs a clear next action.",
           "action": "In the existing provider overview, add a compact goal choice: view selected sources / move owned events / replicate availability. Refer actual transfer seekers to the existing export guide after reviewing that guide; do not invent a Cloud bulk merge control or repeat an import procedure without provider support.",
-          "priority": "medium"
+          "priority": "medium",
+          "status": "fulfilled_current_body_verified_batch42",
+          "evidence": "research/batch42-ledger-reconciliation.json"
         },
         {
           "gap": "Automatic cross-account availability replication is not established as a Cloud capability.",
@@ -520,7 +522,9 @@
         {
           "gap": "Readers have to assemble the symptom branches from several guides.",
           "action": "Add a short diagnostic routing list to what-calendar-sync-actually-does: calendar absent / listed but unchecked / exact event date absent / title search empty / two entries differ. Link each to the existing specific guide. This is navigation of existing depth, not a demand for another article.",
-          "priority": "medium"
+          "priority": "medium",
+          "status": "fulfilled_current_body_verified_batch42",
+          "evidence": "research/batch42-ledger-reconciliation.json"
         },
         {
           "gap": "A generated destination copy from a separate replication service is not worked through as an explicit example in the disagreement guide.",
@@ -1573,5 +1577,28 @@
       "research/batch40-public-qa.json"
     ],
     "limits": "No newmedia/releasedruntime/alllocalequality/measuredGoogleChatGPTupliftproof."
+  },
+  "batch41": {
+    "status": "source_and_ASC_release_evidence_completed",
+    "evidence": "research/batch41-release/README.md",
+    "draft": "1.7.4/build16 VALID; local animations fast-forwarded; active checkout preserved",
+    "limit": "Public1.7.3/build12 source correspondence and production data handling unresolved."
+  },
+  "batch42": {
+    "status": "published_and_verified",
+    "research": "research/batch42-discovery.json",
+    "editorial": "research/batch42-independent-review.json",
+    "reconciliation": "research/batch42-ledger-reconciliation.json",
+    "scope": "Existing EN replies guide expanded with provider-attributed time-proposal workflow; new full BG all-day/birthday guide; related-only BG timezone backlink. No new Cloud proposal capability claim or ASC changes.",
+    "verification": {
+      "build": "/tmp/cloud-calendar-batch42-build.log",
+      "static": "research/batch42-static-qa.json",
+      "public": "research/batch42-public-qa.json",
+      "browser": "research/batch42-browser-qa.json",
+      "sitemapUrls": 527,
+      "exactPublicArtifacts": 531,
+      "invalidation": "IEWE7T07ROC1Y2UGFV9YOUX02M",
+      "invalidationStatus": "Completed"
+    }
   }
 }
