@@ -1,0 +1,379 @@
+{
+  "disconnect-calendar-integration-without-losing-track": {
+    "file": "src/app/content/en-US/articles-help.ts",
+    "rawSha256": "910642d7c13d0c344c12b6107544f2929df866fab430427104723e915d2923f0",
+    "object": {
+      "updated": "2026-10-22",
+      "title": "Disconnect a calendar integration: access, sync and existing copies",
+      "short": "Disconnect a calendar integration carefully",
+      "description": "Separate calendar sign-out, provider access and existing copies. Check Cloud Calendars account routes before disconnecting or removing a calendar.",
+      "lede": "Stopping a connection and removing its calendar copies are different decisions. Identify the route you use and preserve needed information before choosing a disconnect action. This guide is published by Arte Soft, the developer of Cloud Calendars.",
+      "commonBelief": "Signing out only pauses updates, revokes every related permission and leaves all existing calendar data exactly as it was.",
+      "sections": [
+        {
+          "heading": "Identify the connection you intend to stop",
+          "body": [
+            "Start with the account and calendar that own the events. A provider account added through iPhone settings, a direct connection in Cloud Calendars, an iCalendar subscription and the app’s sharing identity are separate routes. The same email address does not make their controls interchangeable.",
+            "Write down the calendar names and which route displays them, without sharing private event details. Decide whether your aim is to stop future access, leave a shared arrangement or remove a copy. If you are investigating a missing or duplicate event, disconnecting is not the first diagnostic step."
+          ]
+        },
+        {
+          "heading": "Check what the app’s sign-out action removes",
+          "body": [
+            "The implementation reviewed for this guide attempts to disconnect the selected Google calendar profile and remove its mapped calendar copies from the iOS calendar store. Treat this as a removal action, not a pause. A connection error can still occur, so check the provider’s access status separately rather than assuming every permission was revoked.",
+            "The Microsoft calendar-profile sign-out path also attempts to remove its mapped calendars and local connection records. Do not assume those copies will remain visible. Calendar-copy storage can depend on the device’s available sources, so check the source and preserve needed information before proceeding."
+          ]
+        },
+        {
+          "heading": "Review future access at the provider separately",
+          "body": [
+            "Google’s linked-app controls distinguish Sign in with Google from access to Google Account data. Review the intended app, account and link type. Removing the relevant data access and stopping a sign-in link answer different questions; an app-level sign-out alone is not proof that every connection is gone.",
+            "For a Microsoft work or school account, Microsoft documents My Apps > Manage your application to review permissions. You can revoke permissions you personally granted, but administrator-granted access needs the organisation’s administrator. This is work-or-school guidance, not a universal procedure for personal Microsoft accounts."
+          ]
+        },
+        {
+          "heading": "Separate a sharing identity from calendar-provider sync",
+          "body": [
+            "Cloud Calendars also has an account used for sharing. Its current source treats signing out of that account separately from the calendar-profile connections: it clears the local sharing session and reduces locally tracked shared access to reader status. That is not a declaration that all server data has been deleted.",
+            "When multiple sharing identities are linked, disconnecting one retains the account through another identity. With the final identity, the current path signs out locally and leaves the server link for recovery. Do not use signing out as a substitute for a data-deletion request or assume it also disconnects every calendar provider."
+          ]
+        },
+        {
+          "heading": "Handle subscriptions and previous copies by their own rules",
+          "body": [
+            "Apple documents unsubscribing from an external calendar separately from selecting which calendars to display. If the item is a read-only subscription, identify that subscription before using its unsubscribe control. Hiding a calendar, unsubscribing from a feed and deleting an editable calendar are different operations.",
+            "Google notes that removing an app’s access may still require a separate request to delete data the developer already holds. Likewise, a previously exported file or another person’s copy is not recalled by a permission switch. Keep privacy or retention follow-up separate from whether new updates are still authorised."
+          ]
+        },
+        {
+          "heading": "Confirm the outcome before cleaning up anything else",
+          "body": [
+            "After an intentional change, check the provider’s connection status and compare the original calendar with the app. Identify what stopped updating, what disappeared locally and what remains elsewhere. Do not delete lookalike events merely because a connection name no longer appears.",
+            "If the result is unexpected, stop further cleanup and contact support with the account route, calendar source and the action you used. Do not send passwords, access tokens, private feed URLs or screenshots of sensitive appointments. Explain whether the original provider calendar still has the events so support can distinguish a connection problem from a missing copy."
+          ]
+        }
+      ],
+      "claims": {},
+      "practical": [
+        "Identify the exact account, calendar and connection route.",
+        "Decide whether you want to stop access, leave sharing or remove a copy.",
+        "Preserve needed information through a verified export or backup route.",
+        "Read what the installed sign-out or disconnect action removes before using it.",
+        "Review provider permissions separately; involve an administrator for managed access.",
+        "Check the result at the provider and app before any further cleanup."
+      ],
+      "faq": [
+        {
+          "q": "Does signing out of a direct Cloud Calendars connection keep its calendar copies?",
+          "a": "Do not assume that. The inspected Google and Microsoft calendar-profile paths attempt to remove their mapped calendars from the iOS store. Review the source and preserve needed information before disconnecting."
+        },
+        {
+          "q": "Does removing an app’s Google access delete data it already copied?",
+          "a": "Google says you may need to request deletion of data already held by the developer separately. Review future access and retained data as different outcomes."
+        },
+        {
+          "q": "Is signing out of the sharing account the same as deleting it?",
+          "a": "No. The current sharing path clears a local session and retains recovery behaviour; it is separate from the calendar-provider sign-out paths and is not proof of server-data deletion."
+        }
+      ],
+      "sourcesHeading": "Official access and subscription guidance",
+      "sources": [
+        {
+          "label": "Google: manage linked apps and different connection types",
+          "url": "https://support.google.com/accounts/answer/13533235?hl=en"
+        },
+        {
+          "label": "Google: access and data already held by a linked app",
+          "url": "https://support.google.com/accounts/answer/14012355?hl=en"
+        },
+        {
+          "label": "Microsoft: work or school My Apps permissions",
+          "url": "https://support.microsoft.com/en-us/accounts-billing/work-school/edit-or-revoke-application-permissions-in-the-my-apps-portal"
+        },
+        {
+          "label": "Apple: calendar selection and subscriptions on iPhone",
+          "url": "https://support.apple.com/guide/iphone/use-multiple-calendars-iph3d1110d4/ios"
+        }
+      ],
+      "seeAlso": [
+        "what-calendar-sync-actually-does",
+        "calendar-export-ics-pdf-and-backup",
+        "taking-back-a-calendar-you-shared",
+        "the-secret-address-of-a-google-calendar",
+        "when-two-calendars-disagree",
+        "unwanted-calendar-events-iphone"
+      ]
+    }
+  },
+  "calendar-export-ics-pdf-and-backup": {
+    "file": "src/app/content/en-US/articles-help.ts",
+    "rawSha256": "e5997bcf600281c3abc91e7a19f42648deee22760d8df2fa4596bcdf5874ef03",
+    "object": {
+      "updated": "2026-10-22",
+      "title": "Calendar export on iPhone: ICS, CSV, PDF and subscriptions",
+      "short": "Choose a calendar export format",
+      "description": "Choose calendar data, spreadsheet rows, a printable schedule or a subscription. Use documented provider or Mac export routes and check what transfers.",
+      "lede": "A calendar on your iPhone can be a view of several accounts. Getting a useful copy starts with identifying the source and deciding whether you need event data, a readable schedule or continuing updates.",
+      "sections": [
+        {
+          "heading": "Choose the result before choosing a format",
+          "body": [
+            "Exporting a calendar can mean several different jobs. If you want another calendar app to read event records, choose a supported structured format such as ICS. If someone needs a readable schedule, choose a PDF or printed page. If they should receive later changes, investigate a subscription or permission-based sharing instead.",
+            "A PDF records the layout you saved; it is not an event import file. A downloaded ICS file holds calendar data at the time you obtained it. An ICS subscription uses an address that a calendar client checks again. The extension alone does not tell you whether the recipient imported a snapshot or subscribed to updates.",
+            "For example, a weekend itinerary sent as a PDF is easy to read. A colleague moving appointments to another account needs event data. A club member following next month’s changing fixtures needs an updating source. Decide which of these outcomes you need before sending anything."
+          ]
+        },
+        {
+          "heading": "Start with the account that holds the events",
+          "body": [
+            "On your iPhone, identify the calendar and account containing the events you need. A combined view may contain several accounts, shared calendars and subscriptions. Seeing all of them together does not mean there is one source calendar to export.",
+            "For Google Calendar, use a computer: Google does not offer export from its Calendar app. In the web calendar, open Settings, then Import & export, then Export. The downloaded ZIP contains individual ICS files. For one calendar, open its Settings and sharing and choose Export calendar. Google requires permission to manage changes and sharing; an organization can also restrict export.",
+            "For a calendar available in Calendar on your Mac, select its name in the sidebar and use File > Export > Export to save an ICS file. This is a Mac workflow, not a hidden iPhone export command. Check that you selected the intended calendar before saving."
+          ]
+        },
+        {
+          "heading": "When you need a PDF schedule",
+          "body": [
+            "In Calendar on Mac, use File > Print and choose the layout, date range and calendars to include. In the macOS print dialog, use the PDF menu and Save as PDF. Open the result before sending it: a small grid may omit or truncate details that matter to the recipient.",
+            "Include a clear date range and the relevant time zone in the message accompanying the document. Review private appointments, notes and locations before sharing. Later edits to your calendar will not rewrite a PDF already sent; label a revised copy clearly so recipients know which schedule to follow."
+          ]
+        },
+        {
+          "heading": "When you need calendar rows in CSV",
+          "body": [
+            "CSV is useful when the next task is a spreadsheet report rather than adding events to another calendar. BusyCal documents an iOS CSV export: choose calendars in its export settings, then save or share the generated file. Its rows represent individual event occurrences. This is a BusyCal workflow, not a Cloud Calendars export button.",
+            "For a monthly activity report, decide which calendars and dates belong in the report before sharing it. Open the resulting spreadsheet and inspect timestamps, repeated appointments, notes and any private details. A table that is convenient to filter is not automatically a complete backup or an updating calendar subscription.",
+            "Keep the distinction when moving data: exporting spreadsheet rows, importing editable events and subscribing to future changes are different operations. BusyCal’s iOS export documentation points to its Mac app for ICS import; do not infer that every export control also supplies the reverse import workflow."
+          ]
+        },
+        {
+          "heading": "Subscription and publishing are different from backup",
+          "body": [
+            "Microsoft documents the distinction explicitly for Outlook on the web: downloading and importing a published ICS file creates a copy without later updates; subscribing to the ICS address follows changes. Refresh timing depends on the recipient’s provider, and the published calendar is read-only.",
+            "Where available, Outlook’s Settings > Shared calendars > Publish a calendar lets you choose a calendar and detail level. Publishing exposes it for viewing or subscription, so use this for an intended audience rather than as a private backup technique. A saved link still depends on the source remaining available."
+          ]
+        },
+        {
+          "heading": "If a subscribed calendar stops updating",
+          "body": [
+            "First identify whether you imported a file or subscribed to an address. Google explicitly says imported events do not stay in sync between accounts; Microsoft makes the same distinction for published ICS files. Importing the same file again is not a subscription refresh and can add another set of records.",
+            "For an actual subscription, compare a known changed appointment in its owning calendar and the receiving calendar. Check the intended source and whether its publishing or sharing arrangement is still available. Microsoft says ICS refresh frequency depends on the recipient’s provider. If an intermediary processes the feed, its own refresh and the recipient’s refresh are separate stages; do not assume updating one instantly updates the other.",
+            "Before giving a calendar address to a conversion service, check whether you may share that feed and what data the service will receive. Do not publish a work calendar to bypass an organization’s access restriction. Keep private feed addresses out of public support posts; a service that does not request your account password can still receive the calendar content you provide."
+          ]
+        },
+        {
+          "heading": "What Cloud Calendars sharing provides",
+          "body": [
+            "We develop Cloud Calendars. Its event-sharing flow offers App Clip, email and QR delivery paths for invitation links. Those links serve a different purpose from downloading your entire calendar as a file. A link may lead into an invitation or subscription workflow; it is not itself a portable archive of every calendar you see.",
+            "This guide does not offer a Cloud Calendars whole-calendar ICS, CSV or PDF export procedure. Use the documented provider or Mac routes above for those tasks. For sending a particular event, follow our event-sharing guide; for a continuing shared schedule, first decide who should have access and whether they need updates or editing rights."
+          ]
+        },
+        {
+          "heading": "Check a copy before relying on it",
+          "body": [
+            "Keep the original calendar while checking an export. Record its account, calendar name and export date. If you test an import, use a separate destination calendar where supported, then compare an ordinary appointment, an all-day event and a recurring series with a changed occurrence.",
+            "Calendar transfer is not a promise to preserve every meeting feature. Google says imported events omit guests and conference data, and CSV recurrence can become separate one-time events. Check invitations, meeting links and recurrence explicitly before treating a migration as complete.",
+            "Apple also offers File > Export > Calendar Archive on Mac, producing an ICBU archive. This is a different operation from exporting one ICS file. Apple warns that importing an archive replaces current calendar information and data; do not use an archive restore as a casual test import."
+          ]
+        },
+        {
+          "heading": "For Google, distinguish a copy from an ownership handoff",
+          "body": [
+            "Exporting and importing event data creates a copy; it does not transfer ownership of the original Google calendar. If another person should take responsibility for an existing calendar, check Google’s ownership-transfer instructions on a computer. You must be its current owner, and a primary calendar cannot be transferred. For a work or school calendar, the new owner must belong to the same organisation.",
+            "Sending the transfer email does not complete the handoff. Google gives the recipient 60 days to accept, and you remain the owner until they do. Confirm acceptance before treating the responsibility as transferred. This is a Google calendar-ownership process, not a Cloud Calendars transfer control or a way to move ownership between providers. If you instead need copied events in another service, use the import checks above; do not assume that ownership, invitations or meeting features transfer with the file."
+          ]
+        }
+      ],
+      "claims": {},
+      "practical": [
+        "Identify the account and calendar you need, then choose a snapshot, printable schedule or updating subscription.",
+        "Use the documented export route and keep the original while checking the result.",
+        "Review the destination, sensitive details and representative events before sending or relying on the copy."
+      ],
+      "faq": [
+        {
+          "q": "Can I export Google Calendar directly from its iPhone app?",
+          "a": "No. Google’s documented export workflow requires a computer. Exporting a calendar also requires the appropriate sharing-management permission."
+        },
+        {
+          "q": "Does subscribing to an ICS address give me a backup?",
+          "a": "A subscription follows a source that can change or become unavailable. Save an independent export if you need a dated copy, and verify what that file preserves."
+        },
+        {
+          "q": "Should I choose ICS or PDF?",
+          "a": "Choose ICS for event data that a compatible calendar can import. Choose PDF for a readable schedule. A PDF does not provide calendar updates or reconstruct editable events through the documented import workflows."
+        },
+        {
+          "q": "Will converting an ICS feed fix every one-hour difference?",
+          "a": "No. First compare the intended date, the event’s time zone, the display zone and the same recurring occurrence at the source and recipient. A format issue is a possibility to investigate, not the explanation for every time difference. Do not shift the original meeting merely to compensate for one display."
+        },
+        {
+          "q": "Google says “Processed zero events.” Should I import again?",
+          "a": "First check the calendar selected as the import destination. Google says this message can appear after a second click on Import when the first import already succeeded. Look for the expected events before retrying. The message alone does not prove that events are missing, and it is not a guarantee that repeated imports always avoid duplicates. If the result is still unclear, follow Google’s computer-based import troubleshooting and compare the destination before deleting anything."
+        }
+      ],
+      "sourcesHeading": "Official instructions and format limitations",
+      "sources": [
+        {
+          "label": "Google: export calendar events",
+          "url": "https://support.google.com/calendar/answer/37111?hl=en"
+        },
+        {
+          "label": "Google: import events and transfer limitations",
+          "url": "https://support.google.com/calendar/answer/37118?hl=en"
+        },
+        {
+          "label": "Apple: export ICS files and calendar archives on Mac",
+          "url": "https://support.apple.com/guide/calendar/import-or-export-calendars-icl1023/mac"
+        },
+        {
+          "label": "Apple: save a document as PDF on Mac",
+          "url": "https://support.apple.com/en-gb/guide/mac-help/mchlp1531/mac"
+        },
+        {
+          "label": "Microsoft: publishing, importing and subscribing in Outlook",
+          "url": "https://support.microsoft.com/en-us/outlook/share-your-calendar-in-outlook-on-the-web"
+        },
+        {
+          "label": "BusyCal: iOS CSV export and event-occurrence rows",
+          "url": "https://www.busymac.com/docs/busycalios/export-as-csv/"
+        },
+        {
+          "label": "Google: event and display time zones",
+          "url": "https://support.google.com/calendar/answer/37064?hl=en"
+        },
+        {
+          "label": "Google: transfer calendar ownership, move or copy events",
+          "url": "https://support.google.com/calendar/answer/78739?hl=en"
+        },
+        {
+          "label": "Google: fix problems importing calendar events",
+          "url": "https://support.google.com/calendar/answer/45654?hl=en"
+        }
+      ],
+      "seeAlso": [
+        "sharing-one-event-not-your-calendar",
+        "inviting-people-who-do-not-have-the-app",
+        "the-secret-address-of-a-google-calendar",
+        "time-zones-and-the-flight-you-booked",
+        "recover-deleted-calendar-events-iphone"
+      ]
+    }
+  },
+  "what-calendar-sync-actually-does": {
+    "file": "src/app/content/en-US/articles-unify.ts",
+    "rawSha256": "06e1ccc907cf04143cae3ba4a727be7659cacbcb2876d1e060b2a774693abfa4",
+    "object": {
+      "updated": "2026-10-22",
+      "title": "Calendar sync on iPhone: accounts, subscriptions and missing events",
+      "short": "Calendar sync explained",
+      "description": "Understand calendar sync, read-only subscriptions and local events. Trace one event between iPhone and iPad before changing accounts or deleting duplicates.",
+      "lede": "A missing appointment can mean the wrong account, a hidden calendar, an old imported copy or a connection problem. First identify where the event belongs. This guide is written by Arte Soft, the developer of Cloud Calendars.",
+      "commonBelief": "Seeing the same events in two apps means those apps have merged their calendars, and every event must be stored online.",
+      "sections": [
+        {
+          "heading": "Start with the calendar that owns the event",
+          "body": [
+            "An account, a calendar and a calendar app are different things. Your Google account can contain several calendars; an app can display several accounts. Showing them in one week does not move all their events into one shared calendar.",
+            "Open an event and inspect its calendar name and account. A work appointment can belong to a work Google calendar while a family appointment belongs to iCloud. A local calendar can instead belong to the device. The correct next step depends on this destination, not on which app you used to create the event."
+          ]
+        },
+        {
+          "heading": "Four connections that can look similar",
+          "body": [
+            "A provider account connects to calendars held by a service such as iCloud, Google or Microsoft. Whether you can change a particular calendar depends on your permission. Having connected an account does not make a calendar shared with you editable.",
+            "A subscribed calendar feed is a continuing, normally read-only view published by someone else. Apple describes external subscription calendars as read-only. A sports schedule or holiday feed is a useful example: follow the published schedule rather than expecting your edits to change its source.",
+            "Importing a calendar file creates a copy rather than a continuing relationship with the original file. Ask whether the operation says import or subscribe before relying on future updates. A URL ending in .ics alone is not enough to determine what the app will do with it.",
+            "An app account is a separate identity used for that app’s services. It is not proof that your provider calendars are connected. Cloud Calendars also supports local calendars on the device; provider connections and sharing have their own sign-in requirements.",
+            "Cloud Calendars’ Google and Microsoft connections also create mirrored calendars in the iPhone calendar store. Their storage destination depends on the calendar sources available on the device. Do not assume that an app connection only reads the original provider without creating another representation. Check the calendar source before connecting sensitive accounts."
+          ]
+        },
+        {
+          "heading": "Run a small two-device sync check",
+          "body": [
+            "Use a harmless new test event with a distinctive name, such as Calendar connection check. Choose the intended writable calendar explicitly. On the second device, confirm the same provider account and calendar are selected, then look for that exact event.",
+            "Change only the test event’s title on the second device and check the first again. This separates seeing an existing copy from successfully writing back. Record which direction fails and whether the provider’s own calendar shows the change. Do not use a real invitation or an important recurring meeting for this check.",
+            "The result is diagnostic, not a speed benchmark. Network access, account permissions, refresh behavior and organisation policies can affect it. No fixed number of seconds proves that every calendar connection is healthy."
+          ]
+        },
+        {
+          "heading": "Separate hidden, absent and read-only calendars",
+          "body": [
+            "A calendar listed but unchecked is hidden. A calendar absent from the account list needs a different check: verify the signed-in identity, that access was granted to that identity, and whether the account connection includes that calendar.",
+            "Google’s iPhone help explains how to show or hide subscribed calendars and how to open a calendar shared by email. It separately says that subscribing to a new calendar requires a computer browser. These are distinct operations; do not assume every missing-calendar problem needs a desktop or that accepting an email fixes every connection.",
+            "An event that appears but cannot be edited may be working correctly under read-only permissions. Request the appropriate access from the owner if editing is necessary. Repeatedly reconnecting an account will not grant permissions that its owner has not given."
+          ]
+        },
+        {
+          "heading": "Investigate duplicates without deleting the source",
+          "body": [
+            "Two similar events may be two records, or one source calendar displayed through two routes. Inspect both entries: compare calendar, account, organiser, start time and recurrence before deciding which explanation fits.",
+            "Temporarily hide one calendar to see which copy disappears. Hiding changes visibility; deleting an event can change the underlying calendar for other devices and participants. Do not delete an account, cancel a meeting or erase local data as a first troubleshooting step. In Cloud Calendars, record and restore the original selection: it can also affect widgets, notification scheduling and Google synchronization. See “When calendars disagree” below.",
+            "If you imported the same file more than once, preserve a backup and identify the imported destination before cleaning anything. A recurring series needs particular care because changing one occurrence and changing the whole series have different consequences."
+          ]
+        },
+        {
+          "heading": "Where Cloud Calendars fits",
+          "body": [
+            "Cloud Calendars brings calendar views and weather together on iPhone and iPad. The Base plan includes Google Calendar sync, multiple views, weather and Home Screen widgets. Advanced removes ads; Premium adds Microsoft Calendar and Teams support. Check current local subscription prices before purchasing.",
+            "Use the app to see your selected calendars together while keeping their ownership clear. This is not a promise to bypass workplace restrictions or turn every read-only feed into an editable calendar. Local calendars, provider calendars and shared content should be checked according to their actual connection."
+          ]
+        },
+        {
+          "heading": "Combining a view is different from copying availability",
+          "body": [
+            "A useful personal overview can show work and family commitments together without making either account aware of every commitment. If a colleague checks your work availability, the fact that your phone displays a personal event does not establish that the work system receives a busy block.",
+            "A calendar-to-calendar copying service needs a source, destination and explicit rules for what is replicated. Cloud Calendars’ provider mirrors do not establish a general rule that every personal appointment is copied into every work account with its details hidden. Define the result you need and verify it from the recipient’s account before relying on it."
+          ]
+        }
+      ],
+      "claims": {},
+      "practical": [
+        "Calendar absent from the list: identify its account or local source before changing a connection. For a provider calendar, confirm the same identity and access. For Google, use “Google calendars missing on iPhone”; for a shared Google calendar, use “Shared calendar not appearing” below.",
+        "Calendar listed but unchecked: select it for display, then check a known event. If it remains missing, follow the date or search branch rather than treating visibility as proof that synchronization succeeded.",
+        "Specific date missing: compare that date, calendar and recurring occurrence with the provider where available. Check the app’s date coverage before recreating anything; “Google calendars missing on iPhone” explains the Google case.",
+        "Title search empty: try a distinctive title word and check the loaded dates. Use “Find past calendar events” below to separate search scope from missing provider data.",
+        "Two entries disagree: compare account, calendar, organiser, time zone and recurrence before editing either. Use “When calendars disagree” below to trace copies without deleting the source.",
+        "If you need help, report the affected calendar type and failing direction without sending private event details or secret calendar URLs."
+      ],
+      "faq": [
+        {
+          "q": "Does combining Google and iCloud calendars move my events?",
+          "a": "A combined view is not itself a merge of provider accounts. Cloud Calendars’ Google and Microsoft connections use mirrored calendars in the iPhone calendar store; check the actual source and destination rather than assuming no copies are created."
+        },
+        {
+          "q": "Why can I see a subscribed calendar but not edit it?",
+          "a": "An external calendar subscription is normally read-only. Its owner publishes the schedule. Editing requires a writable calendar and the appropriate permission, not just a subscription link."
+        },
+        {
+          "q": "Will a local calendar appear on my other iPhone automatically?",
+          "a": "Do not assume that it will. Local storage is different from a connected provider account. Verify the calendar’s connection and use a disposable test event before relying on another device."
+        },
+        {
+          "q": "Should I delete and add my account again?",
+          "a": "First check identity, calendar selection, permissions and the provider’s own view. Reconnection may be relevant later, but deleting local data or an account can complicate diagnosis and should not be the first step."
+        }
+      ],
+      "sourcesHeading": "Sources and further reading",
+      "sources": [
+        {
+          "label": "Apple: Set up multiple calendars on iPhone",
+          "url": "https://support.apple.com/guide/iphone/use-multiple-calendars-iph3d1110d4/ios"
+        },
+        {
+          "label": "Google: Subscribe to someone else’s calendar — iPhone and iPad",
+          "url": "https://support.google.com/calendar/answer/37100?hl=en&co=GENIE.Platform%3DiOS"
+        }
+      ],
+      "seeAlso": [
+        "google-calendars-that-never-reach-your-iphone",
+        "why-a-shared-calendar-does-not-appear",
+        "find-old-calendar-events-by-account-date-and-title",
+        "when-two-calendars-disagree",
+        "icloud-google-and-outlook-in-one-view",
+        "disconnect-calendar-integration-without-losing-track",
+        "onecal-alternative-iphone-calendar-view-or-sync"
+      ]
+    }
+  }
+}

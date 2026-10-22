@@ -1,0 +1,50 @@
+{
+  "checkedAt": "2026-10-22T05:11:04.273902+00:00",
+  "previousGoalTurn": "progress —4aef5b7 published repairguide,DEtimezoneand29freelabels",
+  "currentTurn": "progress —FR/EStimezone,24homecopyfieldsand31ASCmarketingURLsupdates",
+  "published": {
+    "localizedGuides": 2,
+    "homeBodyFields": 24,
+    "relatedOnlyBacklinks": 2,
+    "sitemapUrls": 525,
+    "publicArtifactsMatchBuild": 529,
+    "cloudfrontInvalidation": "I7PIN6UP1BRZ5GVWT74K48Q5MP",
+    "cloudfrontStatus": "Completed",
+    "ascMarketingUrlWrites": 31,
+    "ascFreshReadbackLocales": 50
+  },
+  "requirements": [
+    {
+      "requirement": "CompetitorGoogle/ChatGPTkeywordandtaskresearch",
+      "status": "partial",
+      "evidence": "batch39-discovery/decision.json;batch39-root-review.json",
+      "limit": "ProviderFrenchSpanishtimezonetopics plus offlinegap research. No exhaustivekeywords/rank/volume/freshChatGPToutcomeproof."
+    },
+    {
+      "requirement": "Excellentoriginalarticlesandlocalizations",
+      "status": "progress",
+      "evidence": "batch39-static-qa.json;batch39-timezones/independent-review.json",
+      "limit": "Full2newlanguageeditionsreviewed,24singleleafhomefieldsreviewed;notall462localizedguidesapproved."
+    },
+    {
+      "requirement": "Website/ASCoptimizationalignment",
+      "status": "progress —fresh31draftURLwritesandall50readback",
+      "evidence": "batch39-asc-urls/applied-readback.json",
+      "limit": "Same-languageexistingmarketingdestinations;allotherlocaleattributesunchanged,nosubmissionorpublicreleasedlistingclaim."
+    },
+    {
+      "requirement": "Actualnewimages/videosintegration",
+      "status": "incomplete",
+      "evidence": "batch28-readiness/media-audit.json",
+      "limit": "Noverifiednewgeneratingtask/outputmanifestyet; existingmediadidnotchange."
+    },
+    {
+      "requirement": "MeasuredmostdiscoverableGoogle/ChatGPTresult",
+      "status": "unproven",
+      "evidence": "measurement/gsc-baseline-20261021.json",
+      "limit": "Historicalcalendariocloudcontextnotcausalbeforeafterproof;noequalelapsedpostwindow."
+    }
+  ],
+  "goalComplete": false,
+  "preserved": "All58Englishrawarticleobjects/text export,globalfacts/prices/legal/media/robots/components. Two relatedlists only extended;24homechanges singleleaf. ASC marketingUrl only;otherattributes/support/privacy/build/release unchanged. No native/backend/customer/providerwrites."
+}

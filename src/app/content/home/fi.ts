@@ -66,7 +66,7 @@ export const HOME_FI: HomeCopy = {
       {
         kicker: 'Useita kalentereita',
         title: 'Työ ja elämä rinnakkain eikä päällekkäin',
-        body: 'Anna jokaiselle kalenterille oma sarakkeensa ja lopeta väreillä koodatun päällekkäisyyden selvittäminen. Ainoa näkymä, joka saa yhteisen kodin tai jaetun työviikon käymään järkeen.',
+        body: "Vertaa työ- ja vapaa-ajan suunnitelmia käytettävissä olevissa kalenterisarakkeissa. Tarkista valitut kalenterit: pelkkä suodatettu näkymä ei kerro, onko ajankohta vapaa.",
         alt: 'Päivänäkymä useasta kalenterista, kukin omassa sarakkeessaan',
         bullets: [
           'Yksi sarake kalenteria kohti',

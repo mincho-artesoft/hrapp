@@ -66,7 +66,7 @@ export const HOME_VI: HomeCopy = {
       {
         kicker: 'Nhiều lịch',
         title: 'Công việc và đời sống cạnh nhau thay vì chồng lên nhau',
-        body: 'Cho mỗi cuốn lịch một cột riêng và thôi gỡ rối những mảng màu chồng chéo. Khung nhìn duy nhất khiến một mái nhà chung hay một tuần làm việc bị chia đôi trở nên dễ hiểu.',
+        body: "So sánh kế hoạch công việc và cá nhân trong các cột lịch có sẵn. Kiểm tra những lịch đang được chọn: chỉ dựa vào khung nhìn đã lọc thì chưa đủ để xác định một khoảng thời gian đang trống.",
         alt: 'Khung nhìn ngày nhiều lịch, mỗi lịch ở một cột riêng',
         bullets: ['Một cột cho mỗi lịch', 'Phân biệt bằng màu', 'Tắt được nguồn bất kỳ'],
       },

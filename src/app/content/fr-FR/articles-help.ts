@@ -1,6 +1,115 @@
 import { LocalisedArticle } from '../types';
 
 export const HELP_FR_FR: Readonly<Record<string, LocalisedArticle>> = {
+  "time-zones-and-the-flight-you-booked": {
+  "updated": "2026-10-22",
+  "title": "Fuseaux horaires du calendrier : vérifiez vos événements avant de partir",
+  "short": "Fuseaux horaires et voyages",
+  "description": "Distinguez le fuseau de l’événement de celui de l’affichage. Vérifiez vols, rendez-vous et appels récurrents avant de modifier leur heure.",
+  "lede": "Une heure différente après un vol ne signifie pas forcément que le rendez-vous a été déplacé. Déterminez d’abord à quel lieu il se rapporte et quel fuseau horaire l’app affiche. Ce guide est publié par Arte Soft, développeur de Cloud Calendars.",
+  "commonBelief": "Changer le fuseau horaire affiché par le calendrier revient à modifier le rendez-vous lui-même.",
+  "sections": [
+    {
+      "heading": "Commencez par le rendez-vous, puis vérifiez l’affichage",
+      "body": [
+        "Une réunion prévue à un instant précis peut apparaître à des heures différentes selon le lieu. Un rendez-vous chez le dentiste à 9 h dans la ville de destination n’a pas le même sens qu’un rappel personnel pour vous étirer à 9 h, où que vous soyez. Notez le sens recherché avant de modifier quoi que ce soit.",
+        "Comparez la réservation ou la confirmation de l’organisateur avec la date, l’heure de début et le fuseau indiqué dans l’événement. Vérifiez ensuite le fuseau utilisé pour afficher le calendrier. Ne faites pas glisser l’événement vers une autre heure simplement parce que l’heure affichée a changé après le voyage : vous risqueriez de modifier le rendez-vous plutôt que sa présentation."
+      ]
+    },
+    {
+      "heading": "Utilisez les réglages du fournisseur pour choisir un fuseau précis",
+      "body": [
+        "Apple décrit un champ de fuseau horaire lors de la création ou de la modification d’un événement dans Calendrier d’Apple sur iPhone. Son réglage distinct permettant d’imposer un fuseau horaire change le fuseau affiché dans Calendrier d’Apple. Ces instructions concernent Calendrier d’Apple ; elles ne promettent pas que les mêmes réglages commandent Cloud Calendars.",
+        "Dans Google Agenda sur ordinateur, le réglage de fuseau horaire de l’éditeur d’événement permet de choisir un fuseau. Google décrit aussi des fuseaux distincts pour le début et la fin d’un événement. Il s’agit des commandes de Google. Utilisez le compte auquel appartient l’événement et vérifiez que vous avez le droit de le modifier avant de changer son fuseau."
+      ]
+    },
+    {
+      "heading": "Vérifiez l’événement enregistré dans Cloud Calendars",
+      "body": [
+        "Un événement existant peut conserver son fuseau horaire enregistré dans l’éditeur de Cloud Calendars. Si l’événement n’en fournit pas, l’éditeur peut utiliser le fuseau actuel de l’appareil. Avant de créer un rendez-vous à destination, vérifiez le fuseau de l’appareil ainsi que la date et l’heure locales souhaitées. Rouvrez l’événement enregistré et comparez-le à la réservation.",
+        "Pour des fuseaux de départ et d’arrivée distincts, utilisez un éditeur qui les prend explicitement en charge. Ne supposez pas que de simples champs de début et de fin proposent des fuseaux indépendants. Si votre éditeur dans Cloud Calendars ne présente pas le réglage nécessaire, utilisez un éditeur compatible du fournisseur auquel appartient l’événement. Rouvrez ensuite l’événement dans Cloud Calendars et comparez le début et la fin."
+      ]
+    },
+    {
+      "heading": "Un vol et un rendez-vous à destination demandent des vérifications différentes",
+      "body": [
+        "Pour un vol, gardez ensemble les informations de la compagnie : date de départ, heure à l’aéroport de départ, date d’arrivée et heure à l’aéroport d’arrivée. Une arrivée le lendemain compte autant que l’heure. Si l’éditeur permet des fuseaux distincts pour le début et la fin, associez chacun à l’aéroport correspondant. Sinon, utilisez un éditeur du fournisseur qui permet la représentation nécessaire ; deux champs horaires ordinaires ne déduisent pas indépendamment deux lieux.",
+        "Pour un rendez-vous à destination, confirmez la date et l’heure locales de la ville à partir de la réservation. Indiquez cette ville dans les détails si cela facilite une vérification ultérieure. Un lieu inscrit dans les notes est un rappel utile, mais ne prouve pas que le véritable champ de fuseau horaire a été renseigné. Rouvrez l’événement enregistré avant de vous y fier."
+      ]
+    },
+    {
+      "heading": "Vérifiez séparément les appels récurrents et les événements sur toute la journée",
+      "body": [
+        "Pour un appel international régulier, convenez de la ville dont l’heure locale doit rester fixe. Vérifiez la prochaine occurrence, mais aussi une occurrence proche du changement d’heure saisonnier de chaque participant. Une comparaison à une seule date ne prouve pas que le décalage reste identique toute l’année.",
+        "Un événement de voyage sur toute la journée peut aider à organiser un itinéraire, mais ne remplace pas des heures de départ, des rendez-vous ou des limites d’enregistrement. Vérifiez ses dates après un transfert entre fournisseurs. Ne présumez pas que tous les événements importés sur toute la journée s’affichent à l’identique dans tous les calendriers."
+      ]
+    },
+    {
+      "heading": "Quand seul un calendrier importé ou un abonnement affiche une erreur",
+      "body": [
+        "Identifiez le mode de transmission avant de modifier le rendez-vous : un fichier importé est un instantané, tandis qu’un abonnement suit une source publiée. Comparez la même occurrence dans le calendrier d’origine et chez le destinataire, avec sa date, son fuseau d’événement et son fuseau d’affichage. Si elle se répète, vérifiez une date proche d’un changement d’heure. Gardez l’original intact pendant que vous repérez où apparaît la différence.",
+        "Si le calendrier du propriétaire est correct mais que l’affichage d’un destinataire est erroné, consignez précisément cette comparaison pour l’assistance. Une interprétation différente du format du flux est une cause possible, mais elle n’explique pas toutes les heures décalées. Examinez les accès et le traitement des données du calendrier avant d’essayer un service de traitement des flux. Ce service ne remplace pas une connexion autorisée au compte, et déplacer l’événement d’origine peut modifier le véritable rendez-vous pour tout le monde."
+      ]
+    },
+    {
+      "heading": "Si les heures ne concordent toujours pas",
+      "body": [
+        "Comparez le même événement chez le fournisseur auquel il appartient et dans Cloud Calendars, en notant dans chaque cas le calendrier, la date, le fuseau et l’heure affichée. Vérifiez que vous n’avez pas ouvert une copie au titre similaire. Si le fournisseur est correct mais qu’un autre affichage diffère, signalez cette comparaison avant de réécrire le rendez-vous.",
+        "Indiquez les versions de l’app et d’iOS, les fuseaux concernés et si l’événement se répète. Ne publiez pas les références de réservation ni les coordonnées des participants. Il n’est pas nécessaire de supprimer un compte ou de recréer une véritable invitation pour déterminer quel affichage diffère."
+      ]
+    }
+  ],
+  "claims": {},
+  "practical": [
+    "Notez la date, l’heure locales et la ville prévues dans la réservation.",
+    "Distinguez le fuseau enregistré dans l’événement du fuseau d’affichage.",
+    "Utilisez au besoin les réglages de fuseau du fournisseur concerné ; ne supposez pas que Cloud propose les mêmes commandes.",
+    "Vérifiez le départ et l’arrivée du vol, ainsi qu’une occurrence ultérieure d’un événement récurrent.",
+    "Rouvrez l’événement enregistré et comparez-le avant de modifier à nouveau son heure."
+  ],
+  "faq": [
+    {
+      "q": "Le réglage de fuseau imposé dans Calendrier d’Apple modifie-t-il Cloud Calendars ?",
+      "a": "Apple décrit ce réglage pour l’affichage dans Calendrier d’Apple. Ce guide n’établit pas que Cloud Calendars le suit."
+    },
+    {
+      "q": "Puis-je saisir des fuseaux de départ et d’arrivée différents dans Cloud Calendars ?",
+      "a": "Ne supposez pas que les champs ordinaires de début et de fin offrent des choix de fuseau distincts. Si votre éditeur dans Cloud Calendars ne les propose pas, utilisez un éditeur compatible du fournisseur : Google décrit des fuseaux de début et de fin distincts dans Google Agenda sur ordinateur."
+    },
+    {
+      "q": "Dois-je remettre une réunion à son ancienne heure après un voyage ?",
+      "a": "Vérifiez d’abord l’instant prévu et le fuseau d’affichage. Une heure locale différente peut être la représentation correcte du même rendez-vous."
+    },
+    {
+      "q": "Dois-je déplacer l’événement d’origine si un abonnement ICS affiche la mauvaise heure ?",
+      "a": "Comparez d’abord cette occurrence à sa source et chez le destinataire, avec les fuseaux de l’événement et de l’affichage. Déterminez si le problème concerne le rendez-vous ou seulement l’affichage qui le reçoit. Ne modifiez pas la véritable réunion pour compenser l’écart d’un seul calendrier."
+    }
+  ],
+  "sourcesHeading": "Conseils officiels sur les fuseaux des événements et de l’affichage",
+  "sources": [
+    {
+      "label": "Apple : programmer ou afficher des événements dans un autre fuseau horaire sur iPhone",
+      "url": "https://support.apple.com/guide/iphone/schedule-display-events-a-time-zone-iph69525c028/ios"
+    },
+    {
+      "label": "Google : utiliser Google Agenda dans différents fuseaux horaires",
+      "url": "https://support.google.com/calendar/answer/37064?hl=en"
+    },
+    {
+      "label": "Google : les événements importés ne restent pas synchronisés",
+      "url": "https://support.google.com/calendar/answer/37118?hl=en"
+    },
+    {
+      "label": "Microsoft : calendriers ICS publiés, importations et abonnements",
+      "url": "https://support.microsoft.com/en-us/outlook/share-your-calendar-in-outlook-on-the-web"
+    }
+  ],
+  "seeAlso": [
+    "recurring-events-without-the-mess",
+    "calendar-export-ics-pdf-and-backup"
+  ]
+},
+
   "caldav-calendar-on-iphone": {
   "updated": "2026-10-22",
   "title": "Calendrier CalDAV sur iPhone : configuration, accès et événements manquants",
@@ -275,7 +384,8 @@ export const HELP_FR_FR: Readonly<Record<string, LocalisedArticle>> = {
   ],
   "seeAlso": [
     "drag-an-event-to-move-it",
-    "what-guests-can-do-to-your-event"
+    "what-guests-can-do-to-your-event",
+    "time-zones-and-the-flight-you-booked"
   ]
 },
 

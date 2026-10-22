@@ -1,0 +1,36 @@
+{
+  "checkedAt": "2026-10-22T05:05:16.983493+00:00",
+  "previousGoalTurn": "progress —4aef5b7 published andverifiedspamguide,DEtimezoneand29freelabels",
+  "rootCompleteDraftReads": [
+    "batch39-timezones/fr-FR.json",
+    "batch39-timezones/es-ES.json"
+  ],
+  "englishComparator": "ExactcurrentENsameasbatch38fullrootread;hashguardandindependentreviewreconfirmcurrentobject.",
+  "primaryDiscovery": {
+    "queries": [
+      "site:support.apple.com/fr-fr calendrier iPhone fuseau horaire voyage",
+      "site:support.google.com/calendar horaire fuseau agenda iPhone hl=fr",
+      "site:support.apple.com/es-es calendario zona horaria iPhone viajes"
+    ],
+    "fullPrimaryBodies": [
+      {
+        "url": "https://support.apple.com/fr-fr/guide/iphone/iph69525c028/26/ios/26",
+        "range": "1165–1195"
+      },
+      {
+        "url": "https://support.apple.com/es-es/guide/iphone/iph69525c028/27/ios/27",
+        "range": "1140–1169"
+      }
+    ],
+    "topicEvidence": "ProviderFrenchandSpanishdate/timezonetask,notqueryvolume/ranking. ExactsourceURLs retained from reviewedEN, no newCloudUIlabels."
+  },
+  "homeRootRead": "All29fullafterpairsandall24targetedbeforebodiesread;only24targetedapplied,5optionalexcluded. Literalonlyclaimsandsoftone-viewrhetoricdistinguished;noinventedoldfreeavailabilityguarantee.",
+  "offlineResearchNext": {
+    "artifact": "batch39-discovery/decision.json",
+    "decision": "Distinctsubstantivepreflightgapwithinexistingsyncguide;no newpagejustified. Not edited thispublication.",
+    "rootAccessFailure": "Google1340696 iOS fetch redirected to inaccessible Google/sorry; no retry or bypass. Completefreshbodyattributedtoresearchagent,notrootread.",
+    "productBoundary": "NoCloudspecificofflinequeue/conflict/retentionpromiseverified. Provider-attributed section can beprepared next with full review."
+  },
+  "asc": "All50marketingURLmappingsread;31supported-languagechangesindependentlyreviewed,29publicdestinationsHTTP200/noRedirect/contactlinkchecked;19Englishfallbacks preserved. FreshAPI31writes+50readbackallunrelatedlocaleattributespreserved.",
+  "limits": "No rank/volume/ChatGPTcitationlift/released-runtime/newmedia proof."
+}

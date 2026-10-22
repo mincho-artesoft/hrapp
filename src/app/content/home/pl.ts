@@ -66,7 +66,7 @@ export const HOME_PL: HomeCopy = {
       {
         kicker: 'Wiele kalendarzy',
         title: 'Praca i życie obok siebie, a nie jedno na drugim',
-        body: 'Daj każdemu kalendarzowi własną kolumnę i przestań rozplątywać kolorowe nakładki. Jedyny widok, dzięki któremu wspólny dom albo podzielony tydzień pracy nabiera sensu.',
+        body: "Porównuj plany zawodowe i prywatne w dostępnych kolumnach kalendarzy. Sprawdź, które kalendarze są wybrane: sam przefiltrowany widok nie wystarczy, by uznać dany termin za wolny.",
         alt: 'Widok dnia z wieloma kalendarzami, każdy we własnej kolumnie',
         bullets: ['Jedna kolumna na kalendarz', 'Kodowane kolorem', 'Każde źródło można wyłączyć'],
       },

@@ -1,5 +1,5 @@
 {
-  "date": "2026-10-22T04:52:14.494Z",
+  "date": "2026-10-22T05:05:16.930Z",
   "status": "source_inventory_not_quality_approval",
   "articles": [
     {
@@ -2569,6 +2569,24 @@
     },
     {
       "locale": "es-ES",
+      "slug": "time-zones-and-the-flight-you-booked",
+      "title": "Zonas horarias del calendario: revisa tus eventos antes de viajar",
+      "description": "Distingue la zona del evento de la zona de visualización. Revisa vuelos, citas y llamadas recurrentes antes de cambiar su hora.",
+      "descriptionCharacters": 127,
+      "sections": 7,
+      "faq": 4,
+      "words": 1245,
+      "source": "articles-help.ts",
+      "sources": [
+        "https://support.apple.com/guide/iphone/schedule-display-events-a-time-zone-iph69525c028/ios",
+        "https://support.google.com/calendar/answer/37064?hl=en",
+        "https://support.google.com/calendar/answer/37118?hl=en",
+        "https://support.microsoft.com/en-us/outlook/share-your-calendar-in-outlook-on-the-web"
+      ],
+      "updated": "2026-10-22"
+    },
+    {
+      "locale": "es-ES",
       "slug": "work-and-personal-without-two-apps",
       "title": "Calendarios de trabajo y personales en una app: mantén clara su titularidad",
       "description": "Consulta juntos tus calendarios personales y de trabajo. Revisa permisos, calendarios de destino y planes de Cloud Calendars antes de conectar cuentas.",
@@ -3185,6 +3203,24 @@
         "https://support.google.com/calendar/answer/37648?hl=en"
       ],
       "updated": "2026-10-21"
+    },
+    {
+      "locale": "fr-FR",
+      "slug": "time-zones-and-the-flight-you-booked",
+      "title": "Fuseaux horaires du calendrier : vérifiez vos événements avant de partir",
+      "description": "Distinguez le fuseau de l’événement de celui de l’affichage. Vérifiez vols, rendez-vous et appels récurrents avant de modifier leur heure.",
+      "descriptionCharacters": 138,
+      "sections": 7,
+      "faq": 4,
+      "words": 1220,
+      "source": "articles-help.ts",
+      "sources": [
+        "https://support.apple.com/guide/iphone/schedule-display-events-a-time-zone-iph69525c028/ios",
+        "https://support.google.com/calendar/answer/37064?hl=en",
+        "https://support.google.com/calendar/answer/37118?hl=en",
+        "https://support.microsoft.com/en-us/outlook/share-your-calendar-in-outlook-on-the-web"
+      ],
+      "updated": "2026-10-22"
     },
     {
       "locale": "fr-FR",

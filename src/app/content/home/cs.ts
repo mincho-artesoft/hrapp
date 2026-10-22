@@ -66,7 +66,7 @@ export const HOME_CS: HomeCopy = {
       {
         kicker: 'Více kalendářů',
         title: 'Práce a život vedle sebe místo na sobě',
-        body: 'Dejte každému kalendáři vlastní sloupec a přestaňte rozplétat barevné překryvy. Jediný pohled, díky němuž sdílená domácnost nebo rozdělený pracovní týden dávají smysl.',
+        body: "Porovnejte pracovní a osobní plány v dostupných sloupcích kalendářů. Zkontrolujte vybrané kalendáře: samotný filtrovaný pohled nepotvrzuje, že je daný čas volný.",
         alt: 'Denní pohled s více kalendáři, každý ve vlastním sloupci',
         bullets: ['Jeden sloupec na kalendář', 'Barevně odlišené', 'Každý zdroj lze vypnout'],
       },

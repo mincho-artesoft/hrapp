@@ -66,7 +66,7 @@ export const HOME_PT_BR: HomeCopy = {
       {
         kicker: 'Várias agendas',
         title: 'Trabalho e vida lado a lado em vez de empilhados',
-        body: 'Dê a cada agenda a própria coluna e pare de desembaraçar sobreposições coloridas. A única vista que faz sentido para uma casa compartilhada ou uma semana de trabalho dividida.',
+        body: "Compare compromissos profissionais e pessoais nas colunas de calendário disponíveis. Confira quais calendários estão selecionados: uma visualização filtrada não basta para saber se um horário está livre.",
         alt: 'Vista de dia com várias agendas, cada uma na própria coluna',
         bullets: ['Uma coluna por agenda', 'Com código de cores', 'Qualquer origem pode sumir'],
       },

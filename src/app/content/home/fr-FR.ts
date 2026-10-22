@@ -71,7 +71,7 @@ export const HOME_FR_FR: HomeCopy = {
       {
         kicker: 'Plusieurs agendas',
         title: 'Le travail et la vie côte à côte plutôt qu’empilés',
-        body: 'Donnez à chaque agenda sa propre colonne et cessez de démêler des recouvrements colorés. La seule vue qui rend lisible un foyer partagé ou une semaine de travail éclatée.',
+        body: "Comparez les projets professionnels et personnels dans les colonnes d’agendas disponibles. Vérifiez les agendas sélectionnés : une vue filtrée ne suffit pas à établir qu’un créneau est libre.",
         alt: 'Vue journalière multi-agendas, chaque agenda dans sa propre colonne',
         bullets: ['Une colonne par agenda', 'Codé par couleur', 'Chaque source masquable'],
       },

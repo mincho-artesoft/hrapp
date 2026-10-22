@@ -78,7 +78,7 @@ export const HOME_EN_US: HomeCopy = {
       {
         kicker: 'Multi-calendar',
         title: 'Work and life, side by side instead of stacked',
-        body: 'Give each calendar its own column and stop untangling colour-coded overlap. The one view that makes a shared household or a split work week make sense.',
+        body: "Compare work and personal plans in the available calendar columns. Check which calendars are selected: a filtered view alone cannot establish that a time is free.",
         alt: 'Multi-calendar day view with each calendar in its own column',
         bullets: ['One column per calendar', 'Colour coded', 'Toggle any source'],
       },

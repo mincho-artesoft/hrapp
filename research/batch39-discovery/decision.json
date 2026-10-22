@@ -1,0 +1,78 @@
+{
+  "date": "2026-10-22",
+  "head": "4aef5b786997d8cd0e671cfee6bc703d86389c48",
+  "decision": "Substantive weak coverage: distinguish offline viewing or local edits from a change reaching others. Improve existing sync guide rather than create another generic calendar page.",
+  "canonical": "what-calendar-sync-actually-does",
+  "queries": [
+    {
+      "batch": [
+        "site.support.readdle.com calendars offline internet events",
+        "site:support.google.com/calendar offline iPhone calendar events"
+      ],
+      "queryLimitations": "First query literally used site.support rather than site: and therefore was not a reliable domain restriction. Combined output does not reliably attribute each result to a query. No Google ranking measurement.",
+      "observedSelectedUrls": [
+        "https://support.google.com/calendar/answer/1340696?co=GENIE.Platform%3DiOS&hl=en",
+        "https://readdle.com/calendars",
+        "https://support.readdle.com/calendars/troubleshooting/all-events-are-lost",
+        "https://support.google.com/calendar/answer/65923?hl=en-7",
+        "https://support.google.com/calendar/answer/15494354?hl=en-7"
+      ],
+      "unreadStatus": "Troubleshooting and supported-browser URLs discovered only, not primary evidence adopted. Search response truncated; this is selected observed results, not exhaustive result capture."
+    }
+  ],
+  "fullBodyEvidence": "primary-reads.json",
+  "currentCoverage": {
+    "inventory": "inventory.json:58 current English definitions screened by slug; not all58 bodies reread",
+    "fullComparatorArtifact": "full-comparators.json",
+    "fullComparatorSha256": "e3e44656a57106ceeced4d0d76fb9a798ba6bd1b1c02897d1c84504d3992aa6f",
+    "comparisons": [
+      {
+        "slug": "what-calendar-sync-actually-does",
+        "scope": "Complete object including all7sections, practical, FAQ, sources, related and metadata",
+        "alreadyCovered": "Account ownership, connection types, disposable two-device test, network-dependent sync, selection side effects and avoiding destructive reconnect.",
+        "missing": "No explicit offline preflight or distinction between seeing a locally saved edit and recipients receiving it. No provider app versus mobile browser distinction."
+      },
+      {
+        "slug": "calendar-export-ics-pdf-and-backup",
+        "scope": "Complete9section object and all fields",
+        "alreadyCovered": "PDF snapshot, ICS copy versus feed, backup verification and Google ownership transfer.",
+        "missing": "Itinerary example useful fallback but no offline-change workflow. Reuse existing export route rather than duplicate instructions."
+      },
+      {
+        "slug": "disconnect-calendar-integration-without-losing-track",
+        "scope": "Complete6section object and all fields",
+        "alreadyCovered": "Disconnect attempts can remove mirrors; preserve needed information and avoid first-step account deletion.",
+        "missing": "Not a guide to temporary loss of connectivity. Signing out must not be suggested as offline preparation."
+      }
+    ]
+  },
+  "recommendedAction": {
+    "type": "One meaningful section within existing sync guide, not new canonical",
+    "placement": "After small two-device sync check",
+    "suggestedHeading": "Before using your calendar without a connection",
+    "contentPlan": [
+      "Before travel or weak connectivity, identify the exact app/account and verify the needed dates while online. Keep a readable dated itinerary if appropriate using existing export guidance.",
+      "Attribute Google iPhone app offline support explicitly; explain online initial setup and later synchronization, and distinguish Google mobile-browser editing limits.",
+      "Use a disposable owned event without guests to check the actual app/account rather than a real meeting. Do not infer offline queue or conflict handling from merely seeing old events.",
+      "After reconnecting, verify the event at the owning provider before treating a meeting change as delivered. Do not promise background immediacy or guest responses."
+    ],
+    "productGate": "Before making ANY Cloud-specific offline editing, queued-write, history retention or retry promise, obtain targeted native evidence and appropriate validation. This research establishes none. A provider-attributed section can remain useful without those claims.",
+    "scenario": "A traveler changes tomorrow’s appointment during a flight. Seeing the changed time on that phone is not confirmation that the organizer or other participants received it.",
+    "relatedReuse": [
+      "calendar-export-ics-pdf-and-backup",
+      "disconnect-calendar-integration-without-losing-track"
+    ]
+  },
+  "limits": [
+    "Evidence establishes publisher topics and provider workflow, not demand size, rankings, ChatGPT citations or exhaustive keyword coverage.",
+    "No customer data, native app or browser-account operations performed.",
+    "No source edits/build/deployment/paid APIs.",
+    "No new page justified by the offline keyword alone."
+  ],
+  "filesWritten": [
+    "decision.json",
+    "primary-reads.json",
+    "full-comparators.json",
+    "inventory.json"
+  ]
+}

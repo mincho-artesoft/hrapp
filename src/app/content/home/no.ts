@@ -66,7 +66,7 @@ export const HOME_NO: HomeCopy = {
       {
         kicker: 'Flere kalendere',
         title: 'Jobb og liv side om side i stedet for oppå hverandre',
-        body: 'Gi hver kalender sin egen kolonne, og slutt å nøste opp fargekodet overlapp. Den ene visningen som får en delt husholdning eller en oppdelt arbeidsuke til å henge sammen.',
+        body: "Sammenlign jobb og private planer i de tilgjengelige kalenderkolonnene. Sjekk hvilke kalendere som er valgt: En filtrert visning alene er ikke nok til å fastslå at et tidspunkt er ledig.",
         alt: 'Dagsvisning med flere kalendere, hver i sin egen kolonne',
         bullets: ['Én kolonne per kalender', 'Fargekodet', 'Enhver kilde kan slås av'],
       },

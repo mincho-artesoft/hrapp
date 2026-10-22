@@ -66,7 +66,7 @@ export const HOME_ID: HomeCopy = {
       {
         kicker: 'Beberapa kalender',
         title: 'Kerja dan hidup berdampingan, bukan bertumpuk',
-        body: 'Beri setiap kalender kolomnya sendiri dan berhenti mengurai tumpang tindih berwarna. Satu-satunya tampilan yang membuat rumah bersama atau pekan kerja terbelah jadi masuk akal.',
+        body: "Bandingkan rencana kerja dan pribadi dalam kolom kalender yang tersedia. Periksa kalender yang dipilih: tampilan yang difilter saja tidak cukup untuk memastikan suatu waktu kosong.",
         alt: 'Tampilan hari dengan beberapa kalender, masing-masing di kolomnya sendiri',
         bullets: ['Satu kolom per kalender', 'Berkode warna', 'Setiap sumber bisa dimatikan'],
       },

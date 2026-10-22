@@ -66,7 +66,7 @@ export const HOME_DE_DE: HomeCopy = {
       {
         kicker: 'Mehrere Kalender',
         title: 'Arbeit und Leben nebeneinander statt übereinander',
-        body: 'Geben Sie jedem Kalender eine eigene Spalte und hören Sie auf, farbcodierte Überlappungen zu entwirren. Die eine Ansicht, die einen gemeinsamen Haushalt oder eine geteilte Arbeitswoche verständlich macht.',
+        body: "Vergleichen Sie berufliche und private Termine in den verfügbaren Kalenderspalten. Prüfen Sie die ausgewählten Kalender: Eine gefilterte Ansicht allein zeigt nicht, ob ein Zeitpunkt frei ist.",
         alt: 'Tagesansicht mit mehreren Kalendern, jeder in einer eigenen Spalte',
         bullets: ['Eine Spalte je Kalender', 'Farbcodiert', 'Jede Quelle umschaltbar'],
       },

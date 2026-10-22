@@ -66,7 +66,7 @@ export const HOME_MS: HomeCopy = {
       {
         kicker: 'Beberapa kalendar',
         title: 'Kerja dan kehidupan bersebelahan, bukan bertindih',
-        body: 'Beri setiap kalendar lajurnya sendiri dan berhenti merungkai pertindihan berwarna. Satu-satunya paparan yang menjadikan rumah yang dikongsi atau minggu kerja yang terbelah masuk akal.',
+        body: "Bandingkan rancangan kerja dan peribadi dalam lajur kalendar yang tersedia. Semak kalendar yang dipilih: paparan yang ditapis sahaja tidak cukup untuk memastikan sesuatu waktu itu lapang.",
         alt: 'Paparan hari dengan beberapa kalendar, setiap satu dalam lajurnya sendiri',
         bullets: [
           'Satu lajur bagi setiap kalendar',

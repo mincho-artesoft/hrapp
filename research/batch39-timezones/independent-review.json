@@ -1,0 +1,64 @@
+{
+  "decision": "PASS",
+  "reviewDate": "2026-10-22",
+  "canonical": "time-zones-and-the-flight-you-booked",
+  "readScope": "Complete English source snapshot and complete French and Spanish draft objects independently read, including metadata, all seven sections, practical steps, FAQs, disclosure, source labels and related links. Preparation checks read; actual localized article definitions checked for related routes.",
+  "source": {
+    "file": "research/batch39-timezones/source-en.json",
+    "rawSha256": "460d932ae303c74241172001b62357faef922b5f19c7c4009ff7fcafbedf9d04"
+  },
+  "drafts": [
+    {
+      "locale": "fr-FR",
+      "file": "research/batch39-timezones/fr-FR.json",
+      "rawSha256": "e92a815058a5a0aef39b1e9dbe9b4241817fca293af955bd1e8bf495aed90be9",
+      "decision": "PASS",
+      "fullObjectRead": true,
+      "sections": 7,
+      "paragraphs": 14,
+      "practical": 5,
+      "faq": 4,
+      "sourceUrlsExact": true,
+      "descriptionUnicodeCharacters": 138,
+      "relatedRoutesVerifiedInActualLocaleModules": [
+        "recurring-events-without-the-mess",
+        "calendar-export-ics-pdf-and-backup"
+      ]
+    },
+    {
+      "locale": "es-ES",
+      "file": "research/batch39-timezones/es-ES.json",
+      "rawSha256": "9be8138ebe9b68cf32a8ea4eb1008365c9e05fd3a8801860a5d390d177f5bbf6",
+      "decision": "PASS",
+      "fullObjectRead": true,
+      "sections": 7,
+      "paragraphs": 14,
+      "practical": 5,
+      "faq": 4,
+      "sourceUrlsExact": true,
+      "descriptionUnicodeCharacters": 127,
+      "relatedRoutesVerifiedInActualLocaleModules": [
+        "recurring-events-without-the-mess",
+        "calendar-export-ics-pdf-and-backup"
+      ]
+    }
+  ],
+  "semanticFindings": [
+    "Both distinguish the intended appointment instant from the display time zone and advise checking before dragging a real appointment.",
+    "Apple Calendar override and Google desktop endpoint-zone controls remain explicitly provider-specific; neither translation promises equivalent Cloud controls or Apple override propagation to Cloud.",
+    "Saved Cloud event zone/device fallback wording remains conditional, with provider-editor fallback where necessary and a reopen-and-compare check.",
+    "Flight dates and endpoints, recurring seasonal-clock differences, and all-day date checks are preserved without universal display guarantees.",
+    "Imported snapshots and subscribed sources remain distinct; a feed interpretation issue is a possibility, not a universal cause. The original event stays unchanged during diagnosis.",
+    "Neither translation adds account removal, destructive reset, universal sync, privacy assurance, or runtime verification claims. Arte Soft developer disclosure and all four exact primary source URLs are preserved."
+  ],
+  "requiredCorrections": [],
+  "optionalPolish": [],
+  "limits": [
+    "Independent semantic and editorial review, not native-speaker certification.",
+    "No fresh primary-page reads or native runtime test in this review; source-backed product boundaries reuse the reviewed English and batch38 evidence.",
+    "Local source inspection does not establish correspondence with the released App Store binary."
+  ],
+  "writes": [
+    "research/batch39-timezones/independent-review.json"
+  ]
+}

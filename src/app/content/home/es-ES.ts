@@ -66,7 +66,7 @@ export const HOME_ES_ES: HomeCopy = {
       {
         kicker: 'Varios calendarios',
         title: 'El trabajo y la vida en paralelo, no amontonados',
-        body: 'Dale a cada calendario su propia columna y deja de desenredar solapamientos de colores. La única vista que hace comprensible una casa compartida o una semana laboral partida.',
+        body: "Compara los planes de trabajo y personales en las columnas de calendario disponibles. Comprueba qué calendarios están seleccionados: una vista filtrada no basta para saber si una hora está libre.",
         alt: 'Vista de día con varios calendarios, cada uno en su propia columna',
         bullets: [
           'Una columna por calendario',

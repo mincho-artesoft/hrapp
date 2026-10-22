@@ -1,0 +1,67 @@
+{
+  "date": "2026-10-22",
+  "proposalSha256": "82c6864fcc79d440c6e6d5ccffc584ec4cc4ef7c6bc2377d4d5276e986f93285",
+  "status": "PASS targeted24; no required text correction",
+  "readScope": "Complete proposals.json: all29 full before/after pairs, all30 reviewed originals and semanticBasis/limits. Independent AST extraction of exact current showcase.panels[2].body for all29 proposed locales and whole-file hash guard. Not a whole-homepage or native runtime review.",
+  "targetedCount": 24,
+  "optionalCount": 5,
+  "materialFindings": [],
+  "requiredChanges": [],
+  "semanticAssessment": [
+    "All24 targeted after texts retain comparing work and personal schedules in available calendar columns and checking selected calendars.",
+    "No after text promises exhaustive availability, unlimited columns, automatic scheduling, provider write permissions, new pricing or plan features.",
+    "Filtered-view qualification is semantically intact across24 locales; no material mistranslation identified.",
+    "The availability caveat is new useful qualification; original text did not expressly guarantee global free/busy accuracy. Do not report24 discovered availability falsehoods."
+  ],
+  "evidenceClassification": {
+    "explicitUniquenessExamples": [
+      "ar-SA العرض الوحيد",
+      "cs Jediný",
+      "el Η μόνη",
+      "es-ES La única",
+      "fi Ainoa",
+      "fr-FR La seule",
+      "he היחידה",
+      "hu egyetlen",
+      "id Satu-satunya",
+      "ms Satu-satunya",
+      "pl Jedyny",
+      "pt-BR A única",
+      "ro Singura",
+      "ru Единственный",
+      "sv enda",
+      "tr tek",
+      "vi duy nhất"
+    ],
+    "softerOneViewMarketing": [
+      "en-US",
+      "da",
+      "de-DE",
+      "hi",
+      "nl-NL",
+      "no"
+    ],
+    "softMarketingNote": "English the one view, German die eine Ansicht, Danish den ene visning, Dutch de ene weergave, Norwegian den ene visningen and Hindi वही एक दृश्य can be rhetorical emphasis rather than a literal exclusive market claim. Replacement improves concrete usefulness, but these should not all be labelled proven factual errors. Thai มุมมองเดียว can likewise carry single/only-view rhetoric.",
+    "optional": [
+      "bg",
+      "ja",
+      "ko",
+      "zh-Hans",
+      "zh-Hant"
+    ],
+    "optionalAction": "Keep outside automatic publication scope as requested. No necessity to align merely for consistency.",
+    "italian": "No proposal; already aligned, preserve."
+  },
+  "preservation": {
+    "checksArtifact": "independent-preservation-checks.json",
+    "all29CurrentBeforeAndFileHashesMatch": true,
+    "allProposalPaths": "showcase.panels[2].body",
+    "sourceMutationByReviewer": false,
+    "integrationRequirement": "Only replace24 targeted path values. Leave5 optional locales, Italian, titles, URLs, prices, remaining homepage fields unchanged; post-integration preservation is root’s check."
+  },
+  "confidence": {
+    "semantic": "High for English and major European languages; moderate for Indic, RTL, Thai and some Nordic wording. No material issue detected in full review.",
+    "limits": "Own multilingual assessment, not independent native-speaker certification. Product selection basis is referenced author evidence and prior reviewed semantics, not fresh native/runtime verification."
+  },
+  "authorship": "Independent review of product agent’s home proposals; reviewer did not author these replacements."
+}

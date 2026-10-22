@@ -1,0 +1,151 @@
+{
+  "allPassed": true,
+  "sitemapUrls": 525,
+  "all523PreviousCanonicalsPreserved": true,
+  "newRoutes": [
+    "https://www.cloud-calendars.com/es/articles/time-zones-and-the-flight-you-booked/",
+    "https://www.cloud-calendars.com/fr/articles/time-zones-and-the-flight-you-booked/"
+  ],
+  "fullGuidesChecked": [
+    {
+      "url": "https://www.cloud-calendars.com/fr/articles/time-zones-and-the-flight-you-booked/",
+      "allVisibleTextReferencesAndRelatedMatch": true,
+      "galleryImagesWithAlt": 5,
+      "sections": 7,
+      "faq": 4
+    },
+    {
+      "url": "https://www.cloud-calendars.com/es/articles/time-zones-and-the-flight-you-booked/",
+      "allVisibleTextReferencesAndRelatedMatch": true,
+      "galleryImagesWithAlt": 5,
+      "sections": 7,
+      "faq": 4
+    }
+  ],
+  "relatedOnlyBacklinks": 2,
+  "english58GuideExportUnchanged": true,
+  "robotsUnchanged": true,
+  "all24HomePanelBodies": [
+    {
+      "locale": "ar-SA",
+      "url": "https://www.cloud-calendars.com/ar/",
+      "exactShowcaseBody": true
+    },
+    {
+      "locale": "cs",
+      "url": "https://www.cloud-calendars.com/cs/",
+      "exactShowcaseBody": true
+    },
+    {
+      "locale": "da",
+      "url": "https://www.cloud-calendars.com/da/",
+      "exactShowcaseBody": true
+    },
+    {
+      "locale": "de-DE",
+      "url": "https://www.cloud-calendars.com/de/",
+      "exactShowcaseBody": true
+    },
+    {
+      "locale": "el",
+      "url": "https://www.cloud-calendars.com/el/",
+      "exactShowcaseBody": true
+    },
+    {
+      "locale": "en-US",
+      "url": "https://www.cloud-calendars.com/",
+      "exactShowcaseBody": true
+    },
+    {
+      "locale": "es-ES",
+      "url": "https://www.cloud-calendars.com/es/",
+      "exactShowcaseBody": true
+    },
+    {
+      "locale": "fi",
+      "url": "https://www.cloud-calendars.com/fi/",
+      "exactShowcaseBody": true
+    },
+    {
+      "locale": "fr-FR",
+      "url": "https://www.cloud-calendars.com/fr/",
+      "exactShowcaseBody": true
+    },
+    {
+      "locale": "he",
+      "url": "https://www.cloud-calendars.com/he/",
+      "exactShowcaseBody": true
+    },
+    {
+      "locale": "hi",
+      "url": "https://www.cloud-calendars.com/hi/",
+      "exactShowcaseBody": true
+    },
+    {
+      "locale": "hu",
+      "url": "https://www.cloud-calendars.com/hu/",
+      "exactShowcaseBody": true
+    },
+    {
+      "locale": "id",
+      "url": "https://www.cloud-calendars.com/id/",
+      "exactShowcaseBody": true
+    },
+    {
+      "locale": "ms",
+      "url": "https://www.cloud-calendars.com/ms/",
+      "exactShowcaseBody": true
+    },
+    {
+      "locale": "nl-NL",
+      "url": "https://www.cloud-calendars.com/nl/",
+      "exactShowcaseBody": true
+    },
+    {
+      "locale": "no",
+      "url": "https://www.cloud-calendars.com/no/",
+      "exactShowcaseBody": true
+    },
+    {
+      "locale": "pl",
+      "url": "https://www.cloud-calendars.com/pl/",
+      "exactShowcaseBody": true
+    },
+    {
+      "locale": "pt-BR",
+      "url": "https://www.cloud-calendars.com/pt/",
+      "exactShowcaseBody": true
+    },
+    {
+      "locale": "ro",
+      "url": "https://www.cloud-calendars.com/ro/",
+      "exactShowcaseBody": true
+    },
+    {
+      "locale": "ru",
+      "url": "https://www.cloud-calendars.com/ru/",
+      "exactShowcaseBody": true
+    },
+    {
+      "locale": "sv",
+      "url": "https://www.cloud-calendars.com/sv/",
+      "exactShowcaseBody": true
+    },
+    {
+      "locale": "th",
+      "url": "https://www.cloud-calendars.com/th/",
+      "exactShowcaseBody": true
+    },
+    {
+      "locale": "tr",
+      "url": "https://www.cloud-calendars.com/tr/",
+      "exactShowcaseBody": true
+    },
+    {
+      "locale": "vi",
+      "url": "https://www.cloud-calendars.com/vi/",
+      "exactShowcaseBody": true
+    }
+  ],
+  "scope": "Complete FR/ES visible body, steps, FAQ, source, related;24exactpanelbodies;allpriorcanonicals. Not ranking/runtime proof."
+}

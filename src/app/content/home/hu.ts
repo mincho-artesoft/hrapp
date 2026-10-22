@@ -66,7 +66,7 @@ export const HOME_HU: HomeCopy = {
       {
         kicker: 'Több naptár',
         title: 'Munka és élet egymás mellett, nem egymáson',
-        body: 'Adjon minden naptárnak saját oszlopot, és ne bogozzon többé színkódolt átfedéseket. Az egyetlen nézet, amelytől egy közös háztartás vagy egy megosztott munkahét értelmet nyer.',
+        body: "Hasonlítsa össze munkahelyi és személyes terveit a rendelkezésre álló naptároszlopokban. Ellenőrizze a kijelölt naptárakat: a szűrt nézet önmagában nem igazolja, hogy egy időpont szabad.",
         alt: 'Napi nézet több naptárral, mindegyik a saját oszlopában',
         bullets: ['Naptáranként egy oszlop', 'Színkóddal', 'Bármelyik forrás kikapcsolható'],
       },

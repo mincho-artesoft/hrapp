@@ -66,7 +66,7 @@ export const HOME_SV: HomeCopy = {
       {
         kicker: 'Flera kalendrar',
         title: 'Arbete och liv sida vid sida i stället för på varandra',
-        body: 'Ge varje kalender en egen kolumn och sluta reda ut färgkodad överlappning. Den enda vy som får ett delat hushåll eller en uppdelad arbetsvecka att gå ihop.',
+        body: "Jämför arbete och privata planer i de tillgängliga kalenderkolumnerna. Kontrollera vilka kalendrar som är valda: en filtrerad vy räcker inte för att avgöra om en tid är ledig.",
         alt: 'Dagsvy med flera kalendrar, var och en i sin egen kolumn',
         bullets: ['En kolumn per kalender', 'Färgkodad', 'Varje källa går att stänga av'],
       },

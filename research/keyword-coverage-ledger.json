@@ -1517,5 +1517,40 @@
       "research/batch38-public-qa.json"
     ],
     "limits": "No newmedia/releasedsourcecorrespondence/alltranslatedquality/GoogleChatGPTliftproof."
+  },
+  "batch39": {
+    "date": "2026-10-22",
+    "action": "FullFrenchandSpanishtimezoneguides,concretemulticalendarhomecopyin24locales,localizedASCmarketingdestinations",
+    "newLocalizedEditions": [
+      "fr-FR/time-zones-and-the-flight-you-booked",
+      "es-ES/time-zones-and-the-flight-you-booked"
+    ],
+    "english58BodiesUnchanged": true,
+    "home": "24targetedonly/one-viewrhetoricreplacedbyconcretecomparisonandselected-calendarqualification. 5optionalrowsnotapplied,ITalreadycurrent. Softermarketingnotcalledfalsefact.",
+    "asc": {
+      "version": "1.7.4",
+      "state": "PREPARE_FOR_SUBMISSION",
+      "fieldOnly": "marketingUrl",
+      "writes": 31,
+      "freshReadbackLocales": 50,
+      "allOtherLocaleAttributesPreserved": true,
+      "fallbacksUnchanged": 19,
+      "sameLanguageRegionalAliases": [
+        "fr-CA→fr-FR",
+        "es-MX→es-ES",
+        "pt-PT→pt-BR"
+      ],
+      "notRankingGuarantee": true
+    },
+    "newDiscoveryPending": "ExistingEnglishsyncguideneedsofflinepreflight/providerappversusbrowserdistinction. No newcanonicaljustified,notyetintegrated;rootGooglefetchblockedbysorryredirect,no retry/bypass.",
+    "evidence": [
+      "research/batch39-root-review.json",
+      "research/batch39-timezones/independent-review.json",
+      "research/batch39-home/independent-review.json",
+      "research/batch39-asc-urls/applied-readback.json",
+      "research/batch39-static-qa.json",
+      "research/batch39-public-qa.json"
+    ],
+    "limits": "Publicationandfieldpersistence,notexhaustivekeywords/nativequality/runtime/newmedia/GoogleChatGPTliftproof."
   }
 }

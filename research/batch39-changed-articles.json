@@ -1,0 +1,54 @@
+{
+  "date": "2026-10-22T05:02:18.426Z",
+  "count": 4,
+  "articles": [
+    {
+      "locale": "es-ES",
+      "slug": "recurring-events-without-the-mess",
+      "file": "src/app/content/es-ES/articles-help.ts",
+      "title": "Eventos recurrentes: cambia una fecha o la serie con cuidado",
+      "sections": 6,
+      "faqs": 3,
+      "sources": 3,
+      "updated": "2026-10-21",
+      "description": "Comprueba el calendario, los permisos y el alcance antes de cambiar un evento recurrente. Revisa las excepciones sin borrar la serie.",
+      "descriptionCharacters": 133
+    },
+    {
+      "locale": "es-ES",
+      "slug": "time-zones-and-the-flight-you-booked",
+      "file": "src/app/content/es-ES/articles-help.ts",
+      "title": "Zonas horarias del calendario: revisa tus eventos antes de viajar",
+      "sections": 7,
+      "faqs": 4,
+      "sources": 4,
+      "updated": "2026-10-22",
+      "description": "Distingue la zona del evento de la zona de visualización. Revisa vuelos, citas y llamadas recurrentes antes de cambiar su hora.",
+      "descriptionCharacters": 127
+    },
+    {
+      "locale": "fr-FR",
+      "slug": "recurring-events-without-the-mess",
+      "file": "src/app/content/fr-FR/articles-help.ts",
+      "title": "Événements récurrents : modifier une date ou la série avec précaution",
+      "sections": 6,
+      "faqs": 3,
+      "sources": 3,
+      "updated": "2026-10-21",
+      "description": "Vérifiez vos droits et les dates concernées avant de modifier un événement récurrent. Gérez les changements ponctuels sans supprimer la série.",
+      "descriptionCharacters": 142
+    },
+    {
+      "locale": "fr-FR",
+      "slug": "time-zones-and-the-flight-you-booked",
+      "file": "src/app/content/fr-FR/articles-help.ts",
+      "title": "Fuseaux horaires du calendrier : vérifiez vos événements avant de partir",
+      "sections": 7,
+      "faqs": 4,
+      "sources": 4,
+      "updated": "2026-10-22",
+      "description": "Distinguez le fuseau de l’événement de celui de l’affichage. Vérifiez vols, rendez-vous et appels récurrents avant de modifier leur heure.",
+      "descriptionCharacters": 138
+    }
+  ]
+}

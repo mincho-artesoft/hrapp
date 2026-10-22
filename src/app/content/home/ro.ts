@@ -66,7 +66,7 @@ export const HOME_RO: HomeCopy = {
       {
         kicker: 'Mai multe calendare',
         title: 'Munca și viața alături, nu una peste alta',
-        body: 'Dați fiecărui calendar propria coloană și nu mai descurcați suprapuneri colorate. Singura vedere care face o casă comună sau o săptămână de lucru împărțită să aibă sens.',
+        body: "Comparați planurile profesionale și personale în coloanele de calendar disponibile. Verificați calendarele selectate: o vizualizare filtrată nu este suficientă pentru a stabili că un interval este liber.",
         alt: 'Vedere zilnică cu mai multe calendare, fiecare în propria coloană',
         bullets: ['O coloană per calendar', 'Codat pe culori', 'Orice sursă poate fi ascunsă'],
       },

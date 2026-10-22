@@ -66,7 +66,7 @@ export const HOME_TR: HomeCopy = {
       {
         kicker: 'Birden çok takvim',
         title: 'İş ve hayat üst üste değil, yan yana',
-        body: 'Her takvime kendi sütununu verin ve renk kodlu üst üste binmeleri çözmeyi bırakın. Paylaşılan bir evi ya da bölünmüş bir çalışma haftasını anlamlı kılan tek görünüm.',
+        body: "İş ve kişisel planlarınızı kullanılabilir takvim sütunlarında karşılaştırın. Hangi takvimlerin seçili olduğunu kontrol edin: yalnızca filtrelenmiş bir görünüm, bir saatin boş olduğunu belirlemeye yetmez.",
         alt: 'Her takvimin kendi sütununda olduğu çoklu takvim gün görünümü',
         bullets: ['Takvim başına bir sütun', 'Renk kodlu', 'Her kaynak kapatılabilir'],
       },

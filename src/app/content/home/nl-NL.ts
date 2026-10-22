@@ -66,7 +66,7 @@ export const HOME_NL_NL: HomeCopy = {
       {
         kicker: 'Meerdere agenda’s',
         title: 'Werk en privé naast elkaar in plaats van op elkaar',
-        body: 'Geef elke agenda een eigen kolom en houd op met het ontwarren van kleurgecodeerde overlap. De ene weergave die een gedeeld huishouden of een gesplitste werkweek begrijpelijk maakt.',
+        body: "Vergelijk werk- en privéplannen in de beschikbare agendakolommen. Controleer welke agenda’s zijn geselecteerd: een gefilterde weergave alleen bewijst niet dat een tijdstip vrij is.",
         alt: 'Dagweergave met meerdere agenda’s, elk in een eigen kolom',
         bullets: ['Eén kolom per agenda', 'Kleurgecodeerd', 'Elke bron uit te zetten'],
       },
