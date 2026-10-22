@@ -1,0 +1,85 @@
+{
+  "date": "2026-10-22",
+  "slug": "caldav-calendar-on-iphone",
+  "scope": "Preparation only. Own translations and structural/semantic review, not independent native-speaker approval or runtime certification. No source integration.",
+  "englishSource": {
+    "file": "src/app/content/en-US/articles-help.ts",
+    "objectSha256": "fdba3e21c99c02257715f0e8ed8ca37c888eb9c19c80455029539798f2b85429",
+    "readScope": "Complete object"
+  },
+  "locales": {
+    "fr-FR": {
+      "descriptionUnicodeCharacters": 148,
+      "sections": 6,
+      "paragraphs": 12,
+      "practical": 6,
+      "faq": 3,
+      "sources": 2,
+      "exactSourceUrlsPreserved": true,
+      "relatedGuides": [
+        {
+          "slug": "icloud-google-and-outlook-in-one-view",
+          "file": "src/app/content/fr-FR/articles.ts",
+          "objectSha256": "cad03bfe39f2eb81103c5fd4312fd941874ff83d7bc1d45c48e9cb6af337e0ba",
+          "readScope": "Complete object"
+        },
+        {
+          "slug": "calendar-export-ics-pdf-and-backup",
+          "file": "src/app/content/fr-FR/articles-help.ts",
+          "objectSha256": "3abdb81b018b60640018795d1db57139d77eca1a80778f44a2ba4353cfeacbc6",
+          "readScope": "Complete object"
+        }
+      ],
+      "relatedChange": {
+        "omitted": "what-calendar-sync-actually-does",
+        "reason": "No actual localized article definition; remaining two original related guides retained. No substitute or new route invented."
+      },
+      "checks": "Passed schema keys, paragraph distribution, source URL equality, date, empty claims, existing related definitions and description limit."
+    },
+    "it": {
+      "descriptionUnicodeCharacters": 140,
+      "sections": 6,
+      "paragraphs": 12,
+      "practical": 6,
+      "faq": 3,
+      "sources": 2,
+      "exactSourceUrlsPreserved": true,
+      "relatedGuides": [
+        {
+          "slug": "icloud-google-and-outlook-in-one-view",
+          "file": "src/app/content/it/articles.ts",
+          "objectSha256": "0e1be469693468f308b99c57e9896622af110fe82bc7c48c8df6bad8cc974026",
+          "readScope": "Complete object"
+        },
+        {
+          "slug": "calendar-export-ics-pdf-and-backup",
+          "file": "src/app/content/it/articles-help.ts",
+          "objectSha256": "d47dd47180c78d0bb636516a7b746edc6dca5f7b3faf41a67b4e2e933d29c909",
+          "readScope": "Complete object"
+        }
+      ],
+      "relatedChange": {
+        "omitted": "what-calendar-sync-actually-does",
+        "reason": "No actual localized article definition; remaining two original related guides retained. No substitute or new route invented."
+      },
+      "checks": "Passed schema keys, paragraph distribution, source URL equality, date, empty claims, existing related definitions and description limit."
+    }
+  },
+  "terminology": [
+    "CalDAV account, iCal subscription and imported copy remain distinct.",
+    "Apple account setup path retained in English as in source; no invented localized exact UI labels. Privacy settings described functionally. Other retained as the source group name, not an asserted localized label.",
+    "Full read access and selected device calendar differ from write permission and provider authentication.",
+    "Provider-specific compatibility and sharing limits retained without source-code audit language; no direct Cloud CalDAV server login, universal compatibility, or immediate refresh promise.",
+    "Developer authorship disclosure preserved."
+  ],
+  "qualityRevision": {
+    "record": "quality-revision-audit.json",
+    "englishProposal": "en-US-proposal.json",
+    "scope": "Three paragraph strings revised to match root-supplied English; original source-en.json remains immutable.",
+    "currentDraftRawSha256": {
+      "en-US": "8d5f5a6321dc794390d59db3f5e43540c94aae28727bfd9854535e0a3cdc8e2a",
+      "fr-FR": "e9e4866418bf2de0bf03478b4e0ef5493846cbde282d89de4fc10af5558c0213",
+      "it": "c5c99a847fe8451761bbc136cedcaf0b5cc3beaccb1ecef41bdfb20a78329917"
+    }
+  }
+}

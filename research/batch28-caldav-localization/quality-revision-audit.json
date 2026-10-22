@@ -1,0 +1,80 @@
+{
+  "date": "2026-10-22",
+  "scope": "Draft-only revision requested by root; own translation and semantic QA, not independent native-speaker approval or native/runtime verification.",
+  "immutableEnglishBefore": {
+    "file": "source-en.json",
+    "sha256": "c29e10403cd304f2523ad9b60b133dc3a918418fe131bcb25260af23b64ab96b"
+  },
+  "basis": "Root supplied the exact English replacements and reported the selection caveat verified and published in batch26. No new native inspection or product claim added in this revision.",
+  "drafts": {
+    "en-US": {
+      "file": "en-US-proposal.json",
+      "beforeRawSha256": "c29e10403cd304f2523ad9b60b133dc3a918418fe131bcb25260af23b64ab96b",
+      "afterRawSha256": "8d5f5a6321dc794390d59db3f5e43540c94aae28727bfd9854535e0a3cdc8e2a",
+      "changes": [
+        {
+          "path": "sections[3].body[0]",
+          "before": "Cloud Calendars reads device calendars through Apple’s calendar system. In iPhone Settings > Privacy & Security > Calendars, review its access. The app’s current device-event loading path requires full calendar access; permission only to add events is not permission to read the existing schedule.",
+          "after": "Cloud Calendars reads device calendars through Apple’s calendar system. In iPhone Settings > Privacy & Security > Calendars, review its access. Full calendar access is needed to read existing events; permission only to add events does not give access to the existing schedule."
+        },
+        {
+          "path": "sections[3].body[1]",
+          "before": "Then open the calendar list in Cloud Calendars. Look for the intended calendar, including the Other group, and check that it is selected. The current code lists device calendar sources, but that does not certify every CalDAV service or every shared-calendar feature. If the calendar is visible in Apple Calendar and absent here, record that distinction rather than creating a second account connection.",
+          "after": "Then open the calendar list in Cloud Calendars. Look for the intended calendar, including the Other group, and check that it is selected. A calendar available on the device can still have provider-specific compatibility or sharing limitations. If it appears in Apple Calendar but is absent here, record that difference rather than creating a second account connection."
+        },
+        {
+          "path": "sections[5].body[0]",
+          "before": "If the same appointment appears twice, note both calendar names and how each reached the phone. An account connection, a subscribed feed and an earlier import can coexist. Temporarily hide one calendar to identify which display it supplies; hiding is different from deleting an event or removing an account.",
+          "after": "If the same appointment appears twice, note both calendar names and how each reached the phone. An account connection, a subscribed feed and an earlier import can coexist. Temporarily hide one calendar to identify which display it supplies; hiding is different from deleting an event or removing an account. Record the original selection and restore it after comparing. In Cloud Calendars, selection can also affect widgets, notification scheduling and Google synchronization."
+        }
+      ],
+      "checks": "Exactly three paragraph strings changed; every other field unchanged. Six sections/twelve paragraphs/six practical steps/three FAQs/two exact source URLs/date/claims/related routes/description retained. Restore original selection is explicit; can affect is conditional and Google-specific, without universal pause/resume or refresh guarantees."
+    },
+    "fr-FR": {
+      "file": "fr-FR.json",
+      "beforeRawSha256": "dd542bbfb493c31fa633dd22b6319f31c9507cf7cdee6facd27cd1f43d6d0556",
+      "afterRawSha256": "e9e4866418bf2de0bf03478b4e0ef5493846cbde282d89de4fc10af5558c0213",
+      "changes": [
+        {
+          "path": "sections[3].body[0]",
+          "before": "Cloud Calendars lit les calendriers de l’appareil par l’intermédiaire du système de calendrier d’Apple. Dans les réglages de confidentialité et de sécurité de l’iPhone, consultez son accès aux calendriers. Le mécanisme actuel de chargement des événements de l’appareil exige un accès complet au calendrier ; l’autorisation d’ajouter des événements ne donne pas celle de lire le planning existant.",
+          "after": "Cloud Calendars lit les calendriers de l’appareil par l’intermédiaire du système de calendrier d’Apple. Dans les réglages de confidentialité et de sécurité de l’iPhone, consultez son accès aux calendriers. Un accès complet au calendrier est nécessaire pour lire les événements existants ; l’autorisation d’ajouter des événements ne donne pas accès au planning existant."
+        },
+        {
+          "path": "sections[3].body[1]",
+          "before": "Ouvrez ensuite la liste des calendriers dans Cloud Calendars. Recherchez le calendrier voulu, notamment dans le groupe Other, et vérifiez qu’il est sélectionné. Le code actuel répertorie les sources de calendrier de l’appareil, mais cela ne certifie pas la compatibilité avec tous les services CalDAV ou toutes les fonctions de calendrier partagé. Si le calendrier apparaît dans Calendrier d’Apple mais pas ici, notez cette différence plutôt que de créer une seconde connexion au compte.",
+          "after": "Ouvrez ensuite la liste des calendriers dans Cloud Calendars. Recherchez le calendrier voulu, notamment dans le groupe Other, et vérifiez qu’il est sélectionné. Un calendrier disponible sur l’appareil peut néanmoins présenter des limites de compatibilité ou de partage propres au fournisseur. S’il apparaît dans Calendrier d’Apple mais pas ici, notez cette différence plutôt que de créer une seconde connexion au compte."
+        },
+        {
+          "path": "sections[5].body[0]",
+          "before": "Si le même rendez-vous apparaît deux fois, notez les deux noms de calendrier et la méthode par laquelle chacun est arrivé sur le téléphone. Une connexion de compte, un abonnement à un flux et un ancien import peuvent coexister. Masquez temporairement un calendrier pour identifier l’affichage qu’il fournit ; masquer n’est pas supprimer un événement ni retirer un compte.",
+          "after": "Si le même rendez-vous apparaît deux fois, notez les deux noms de calendrier et la méthode par laquelle chacun est arrivé sur le téléphone. Une connexion de compte, un abonnement à un flux et un ancien import peuvent coexister. Masquez temporairement un calendrier pour identifier l’affichage qu’il fournit ; masquer n’est pas supprimer un événement ni retirer un compte. Notez la sélection initiale et rétablissez-la après la comparaison. Dans Cloud Calendars, la sélection peut aussi avoir un effet sur les widgets, la programmation des notifications et la synchronisation Google."
+        }
+      ],
+      "checks": "Exactly three paragraph strings changed; every other field unchanged. Six sections/twelve paragraphs/six practical steps/three FAQs/two exact source URLs/date/claims/related routes/description retained. Restore original selection is explicit; can affect is conditional and Google-specific, without universal pause/resume or refresh guarantees."
+    },
+    "it": {
+      "file": "it.json",
+      "beforeRawSha256": "a0daeed6f2bcef0dfd7b0f278d190a8c6723d448c67ef614ead90101a1402308",
+      "afterRawSha256": "c5c99a847fe8451761bbc136cedcaf0b5cc3beaccb1ecef41bdfb20a78329917",
+      "changes": [
+        {
+          "path": "sections[3].body[0]",
+          "before": "Cloud Calendars legge i calendari del dispositivo tramite il sistema di calendari di Apple. Nelle impostazioni di privacy e sicurezza di iPhone, controlla il suo accesso ai calendari. L’attuale meccanismo di caricamento degli eventi del dispositivo richiede l’accesso completo al calendario; il permesso di aggiungere eventi non autorizza a leggere gli impegni esistenti.",
+          "after": "Cloud Calendars legge i calendari del dispositivo tramite il sistema di calendari di Apple. Nelle impostazioni di privacy e sicurezza di iPhone, controlla il suo accesso ai calendari. Per leggere gli eventi esistenti serve l’accesso completo al calendario; il permesso di aggiungere eventi non dà accesso agli impegni esistenti."
+        },
+        {
+          "path": "sections[3].body[1]",
+          "before": "Apri poi l’elenco dei calendari in Cloud Calendars. Cerca il calendario desiderato, anche nel gruppo Other, e verifica che sia selezionato. Il codice attuale elenca le sorgenti dei calendari del dispositivo, ma questo non certifica tutti i servizi CalDAV o tutte le funzioni dei calendari condivisi. Se il calendario è visibile in Calendario di Apple ma qui manca, annota la differenza anziché creare un secondo collegamento all’account.",
+          "after": "Apri poi l’elenco dei calendari in Cloud Calendars. Cerca il calendario desiderato, anche nel gruppo Other, e verifica che sia selezionato. Un calendario disponibile sul dispositivo può comunque avere limitazioni di compatibilità o condivisione specifiche del fornitore. Se compare in Calendario di Apple ma qui manca, annota la differenza anziché creare un secondo collegamento all’account."
+        },
+        {
+          "path": "sections[5].body[0]",
+          "before": "Se lo stesso appuntamento compare due volte, annota i nomi di entrambi i calendari e come ciascuno sia arrivato sul telefono. Un collegamento a un account, un abbonamento a un feed e una precedente importazione possono coesistere. Nascondi temporaneamente un calendario per capire quale visualizzazione fornisca; nascondere è diverso dall’eliminare un evento o rimuovere un account.",
+          "after": "Se lo stesso appuntamento compare due volte, annota i nomi di entrambi i calendari e come ciascuno sia arrivato sul telefono. Un collegamento a un account, un abbonamento a un feed e una precedente importazione possono coesistere. Nascondi temporaneamente un calendario per capire quale visualizzazione fornisca; nascondere è diverso dall’eliminare un evento o rimuovere un account. Annota la selezione originale e ripristinala dopo il confronto. In Cloud Calendars, la selezione può influire anche sui widget, sulla programmazione delle notifiche e sulla sincronizzazione Google."
+        }
+      ],
+      "checks": "Exactly three paragraph strings changed; every other field unchanged. Six sections/twelve paragraphs/six practical steps/three FAQs/two exact source URLs/date/claims/related routes/description retained. Restore original selection is explicit; can affect is conditional and Google-specific, without universal pause/resume or refresh guarantees."
+    }
+  }
+}

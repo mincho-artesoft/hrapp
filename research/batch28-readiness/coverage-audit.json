@@ -1,0 +1,265 @@
+{
+  "date": "2026-10-22",
+  "decision": "Prioritize evidence, substantive localization and outcome measurement; no new English route justified by this bounded audit.",
+  "goalScope": "Website and App Store discovery, useful accurate original task coverage, metadata alignment and actual media integration. Delivery counts and metadata persistence are not outcome evidence.",
+  "method": {
+    "newSearches": 0,
+    "newPublisherFetches": 0,
+    "scope": "Reconciliation of existing recorded query/body evidence, current source bodies and ledger. No exhaustive competitor/query claim.",
+    "limitations": "Broad ledger/queue initial outputs were truncated. Follow-up reads covered cluster IDs/statuses, selected complete cluster records, remaining/ASC/homepage fields, every unresolved queue row and counts. Completed original-corpus records were inspected selectively, not every provenance object or all historical reports."
+  },
+  "originalCorpus": {
+    "source": "research/competitors/coverage-current-20261021.json",
+    "recordedCounts": {
+      "completedBodyReferences": 59,
+      "unresolvedQueue": {
+        "failed": 6,
+        "partial": 5,
+        "discovered": 1
+      }
+    },
+    "assessment": "These are URL-status records, not 59 independently useful tasks. The remaining discovered row is the malformed Fantastical path already superseded. Two help landings were later fully inspected as navigation; partial App Store descriptions already have relevant description scope. Completing release history/navigation simply to increase full counts is not a material next action.",
+    "laterResolution": "research/competitors/batch26-original-corpus-completion-20261022.json: complete BusyCal overview, selected Calendar366 listing sections, two navigation-only Fantastical landings.",
+    "failedUrlPolicy": "Do not retry known failures or silently normalize the malformed URL."
+  },
+  "staleGapReconciliation": [
+    {
+      "cluster": "combine-calendars",
+      "staleField": "clusters[id=combine-calendars].remainingIntentGaps[0]",
+      "current": "Provider overview now routes actual migration to export and availability replication to existing comparison; batch24 adds Google ownership versus copy.",
+      "evidence": [
+        "research/batch22-targeted-guides/mapping.json",
+        "research/batch24-migration/final-review.json"
+      ],
+      "decision": "Resolved bounded routing gap; not permission to assert complete provider migration/rollback."
+    },
+    {
+      "cluster": "sharing-permissions",
+      "staleField": "latestIntentAssessment.remainingGaps purchase entitlement",
+      "current": "Conditional purchase-versus-calendar-access FAQ supplied and published in batch23; actual purchase eligibility remains intentionally unverified.",
+      "evidence": [
+        "research/batch23-family-access/final-review.json",
+        "research/keyword-coverage-ledger.json#clusters.currentFollowup"
+      ],
+      "decision": "Do not append the same FAQ elsewhere or call it missing."
+    },
+    {
+      "cluster": "widgets",
+      "staleField": "latestIntentAssessment iPad setup and later row omission",
+      "current": "Seven-section guide has iPad same-device check and finite rows versus nearest eligible event; six localized editions handled batch25.",
+      "evidence": [
+        "research/batch25-widget-localization/audit-fr-it.json",
+        "research/keyword-coverage-ledger.json#clusters.localizedFollowup"
+      ],
+      "decision": "Substantive task coverage; installed runtime still separate."
+    },
+    {
+      "cluster": "tasks-timeblocking",
+      "staleField": "latestIntentAssessment lacks unfinished-block example",
+      "current": "Current complete planning guide has Tuesday45-minute unfinished report and Friday17:00 deadline.",
+      "decision": "Resolved manual-planning gap. Task sync/completion/carry-forward are not established Cloud features."
+    },
+    {
+      "cluster": "timezones",
+      "current": "Seven-section guide already covers event/display zones, flight endpoints, seasonal recurring dates and feed diagnosis; its recorded status should be read with latest assessment.",
+      "decision": "No second timezone English article from synonyms."
+    },
+    {
+      "cluster": "feed-link destination",
+      "current": "Batch21 receiving-app/account improvement exists in prior final-review evidence.",
+      "decision": "Resolved bounded handoff advice; arbitrary Cloud feed support still not established."
+    },
+    {
+      "cluster": "duplicate/import ambiguity",
+      "current": "Batch26 current guide changes already reviewed in this agent: zero-processed FAQ and Cloud selection caveat.",
+      "evidence": [
+        "research/batch26-duplicates/final-review.json"
+      ],
+      "decision": "No generic duplicates page or automatic micro-FAQ continuation."
+    },
+    {
+      "cluster": "shift/night rota",
+      "current": "Batch27 one overnight worked example passed cross-author review; root publication in progress during this audit.",
+      "evidence": [
+        "research/batch27-shift-schedule/final-review.json"
+      ],
+      "decision": "Do not label public delivery independently verified here; no generic rota page or specialist-feature claim."
+    }
+  ],
+  "priorityActions": [
+    {
+      "priority": 1,
+      "type": "resolve_material_evidence_gap_before_new_privacy_copy",
+      "userTask": "Decide whether connecting or sharing a work calendar is acceptable, identify where copies are held and how retained data is removed.",
+      "evidence": [
+        "research/competitors/batch03-primary-discovery-20261021.json#/bodyReviews[id=fantastical-privacy] records full primary FAQ14–123",
+        "research/privacy-dataflow-20261021.json#/dataFlows and /policyIssues",
+        "current complete work-and-personal-without-two-apps",
+        "current complete disconnect-calendar-integration-without-losing-track"
+      ],
+      "coverage": "Existing guides substantively explain mirrors, permission boundaries, removal attempts and sign-out versus deletion. They do not establish production storage/retention, release correspondence or a complete account-data deletion process. Do not call all privacy coverage absent.",
+      "nextAction": "Reconcile known data flows with the actually released binary and production feature/configuration inventory using non-customer evidence; obtain the missing retention/deletion/vendor facts. Then prepare one coherent owner-reviewable policy/help correction and matching ASC disclosure assessment, not another speculative FAQ.",
+      "canonicalMapping": [
+        "work-and-personal-without-two-apps",
+        "disconnect-calendar-integration-without-losing-track",
+        "/privacy-policy/"
+      ],
+      "missingEvidence": [
+        "Released-build to inspected native/backend correspondence",
+        "Production sharing/ads/push configuration",
+        "Retention and full-account deletion outcome/process",
+        "Current owner-approved disclosure/vendor facts"
+      ],
+      "boundary": "Prior report's public label discrepancy is a recorded concern, not fresh current-label verification or a legal conclusion. No ASC/privacy mutation authorized by this audit."
+    },
+    {
+      "priority": 2,
+      "type": "substantive_localized_task_coverage",
+      "userTask": "Connect a CalDAV account on iPhone and distinguish device account, read-only feed, permissions and missing calendar.",
+      "evidence": [
+        "research/competitors/coverage-current-20261021.json#/completedBodyReferences[url=https://docs.onecal.io/docs/calendars/connect-caldav-calendar]",
+        "current full caldav-calendar-on-iphone object",
+        "current locale-module definition scan"
+      ],
+      "coverage": "The English CalDAV guide is substantive: account/feed/file distinction, approved authentication, Apple Calendar first check, full read permission, selected calendar, writable owned test and duplicate-route diagnosis. Exact slug is present only in en-US. This is a verified locale availability gap, not evidence of poor untranslated quality or measured local demand.",
+      "nextAction": "Prepare complete FR/IT CalDAV editions as a bounded first localization batch, preserving Apple-versus-Cloud controls, provider compatibility and source-inspection limitations; local terminology/related-route review required. Reuse the same canonical task rather than new brand/provider synonym routes.",
+      "canonicalMapping": [
+        "caldav-calendar-on-iphone"
+      ],
+      "missingEvidence": [
+        "Locale-specific query demand is not established; prioritize these locales as an existing workflow choice, not a measured market ranking.",
+        "Translation/editorial review remains to be done; no native-speaker certification.",
+        "Provider-specific server/auth troubleshooting is outside current generic guide."
+      ]
+    },
+    {
+      "priority": 3,
+      "type": "measure_existing_task_discovery_before_more_content",
+      "userTask": "Find the appropriate iPhone calendar for combined accounts/weather, widgets and shared family responsibility.",
+      "evidence": [
+        "research/measurement/gsc-editorial-decisions-20261021.json",
+        "research/measurement/chatgpt-ui-20261021/summary.json",
+        "research/keyword-coverage-ledger.json#/asc"
+      ],
+      "coverage": "Recorded three-prompt ChatGPT sample mentions Cloud in one widget answer and not the two other prompts; that is bounded observation, not rank or representative visibility. Own-site GSC historical query/device concentration informed platform clarity, not competitor volume. Existing published task coverage cannot be scored by counts.",
+      "nextAction": "Maintain fixed prompt protocol and compare genuinely elapsed comparable GSC periods segmented by query/page/device/country. Use resulting task-level evidence to select substantive next work; retain no-change decisions if evidence does not justify another page. Review ASO semantic allocation separately from persisted-field readback.",
+      "canonicalMapping": [
+        "icloud-google-and-outlook-in-one-view",
+        "weather-inside-your-calendar",
+        "the-widget-that-shows-what-is-next",
+        "family-pickup-calendar-handoff"
+      ],
+      "missingEvidence": [
+        "Comparable post-change elapsed window not established in this audit",
+        "Controlled repeat prompt observations with method limitations",
+        "Actual new media source folder/task remains unidentified in ledger; existing assets are not proof replacement media integrated"
+      ],
+      "boundary": "No new measurement performed here, no causal lift claim, no automatic schedule or external action created."
+    }
+  ],
+  "rejectedExpansion": [
+    "General export/migration, duplicates, time-blocking or shift-calendar synonym articles would repeat current substantive coverage.",
+    "Competitor tasks/rotations/payroll/chat/meal plans are capability differences, not automatic Cloud editorial gaps.",
+    "Contacts birthday duplication remains a candidate from original BusyCal/Apple evidence, but this audit does not elevate a small possible FAQ above the material actions.",
+    "Full privacy publication or broad provider repair recipes must not fill missing facts with claims."
+  ],
+  "artifactScopes": [
+    {
+      "path": "research/competitors/intent-clusters-20261021-batch01.json",
+      "scope": "All nine original candidate records read; candidate status explicitly not site-absence evidence."
+    },
+    {
+      "path": "research/keyword-coverage-ledger.json",
+      "scope": "Objective/scope, all cluster identifiers/statuses, full combine/sharing/views/widgets/timezones/tasks records, remaining/ASC/homepage/responsive fields; publication tail summarized via CONTINUATION; not full all-history read."
+    },
+    {
+      "path": "research/competitors/coverage-current-20261021.json",
+      "scope": "All unresolved12rows and status counts; selected completed entries including privacy/CalDAV/family/provider bodies. Not every full provenance record."
+    },
+    {
+      "path": "research/competitors/batch26-original-corpus-completion-20261022.json",
+      "scope": "Complete JSON read."
+    },
+    {
+      "path": "research/competitors/batch03-primary-discovery-20261021.json",
+      "scope": "Privacy body-review record only."
+    },
+    {
+      "path": "research/batch22-coverage/tasks-zones-primary.json",
+      "scope": "Complete JSON read."
+    },
+    {
+      "path": "research/privacy-dataflow-20261021.json",
+      "scope": "Complete dataFlows/policyIssues visible; initial all-file output truncated in detailed evidence array, so not a complete evidence-path re-audit."
+    },
+    {
+      "path": "research/measurement/gsc-editorial-decisions-20261021.json",
+      "scope": "Complete JSON read; historical observations only."
+    },
+    {
+      "path": "research/measurement/chatgpt-ui-20261021/summary.json",
+      "scope": "Complete summary read; raw three conversations not reread."
+    },
+    {
+      "path": "research/CONTINUATION.md",
+      "scope": "Last70lines read, combined response truncated part of batch25; batch24/26/27 substantive sections visible. Not full historical file."
+    },
+    {
+      "path": "research/batch24-migration/final-review.json; research/batch26-duplicates/final-review.json; research/batch27-shift-schedule/final-review.json",
+      "scope": "Earlier completed same-agent full before/after reviews in this session; not fresh external publication verification."
+    }
+  ],
+  "limits": [
+    "No source, ledger, consolidated queue, native, dist, build, deployment, paid API, ASC or customer data changes.",
+    "No exhaustive all-keywords or all-competitors claim; absence from bounded research does not prove no demand.",
+    "No new ranking/volume/success inference from page counts or publisher feature titles."
+  ],
+  "currentFullBodyReads": [
+    {
+      "slug": "work-and-personal-without-two-apps",
+      "path": "src/app/content/en-US/articles-unify.ts",
+      "scope": "Complete object, every section/paragraph, practical, FAQ, metadata and related/sources",
+      "sha256ObjectSource": "0f9f8317cd57c6ddd26cf31f5bdf9d8a497ed39a655cbfa77e8757293fc67cac"
+    },
+    {
+      "slug": "disconnect-calendar-integration-without-losing-track",
+      "path": "src/app/content/en-US/articles-help.ts",
+      "scope": "Complete object, every section/paragraph, practical, FAQ, metadata and related/sources",
+      "sha256ObjectSource": "1e6b337eb958e369ba1cd7ec07c4880a78d4dbe5a46b3ce8d20cf1c046dcda5d"
+    },
+    {
+      "slug": "caldav-calendar-on-iphone",
+      "path": "src/app/content/en-US/articles-help.ts",
+      "scope": "Complete object, every section/paragraph, practical, FAQ, metadata and related/sources",
+      "sha256ObjectSource": "fdba3e21c99c02257715f0e8ed8ca37c888eb9c19c80455029539798f2b85429"
+    },
+    {
+      "slug": "planning-a-week-in-ten-minutes",
+      "path": "src/app/content/en-US/articles-planning.ts",
+      "scope": "Complete object, every section/paragraph, practical, FAQ, metadata and related/sources",
+      "sha256ObjectSource": "9c9ef1538b97f2aabc2cf2efe69f90667752a874870be9cf97e43861f57a97a6"
+    }
+  ],
+  "localePresenceScan": {
+    "scope": "All src/app/content/<locale>/articles*.ts exact object-key definitions; presence only, not translation quality",
+    "caldav-calendar-on-iphone": [
+      "en-US"
+    ],
+    "calendar-export-ics-pdf-and-backup": [
+      "fr-FR",
+      "de-DE",
+      "es-ES",
+      "it",
+      "pt-BR",
+      "bg",
+      "en-US"
+    ],
+    "disconnect-calendar-integration-without-losing-track": [
+      "fr-FR",
+      "de-DE",
+      "es-ES",
+      "it",
+      "en-US"
+    ]
+  }
+}

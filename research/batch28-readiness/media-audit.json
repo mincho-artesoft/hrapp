@@ -1,0 +1,120 @@
+{
+  "checkedAt": "2026-10-22T01:10:29.265149+00:00",
+  "finding": "No verified new October Cloud Calendars screenshot/video replacement candidate or generation-job reference found in this bounded check. This is not evidence of global absence or that generation has stopped.",
+  "priorEvidenceReviewed": [
+    {
+      "file": "/Users/minchomilev/cloud-calendars/research/media-availability-20261022.json",
+      "sha256": "bdc5cf1d8956cd4a3e6f8e8d458288182025bc71702e4e81ed3784d2cdccbebd",
+      "scope": "JSON parsed; findings, scope, candidates/provenance and limits reviewed; long object inventory treated as prior recorded readback, not fresh remote verification."
+    },
+    {
+      "file": "/Users/minchomilev/cloud-calendars/research/media-origin-readback-20261022.json",
+      "sha256": "b44f86ec0160eaee19fb3bffb2d020e3d806ab605264a866812955b848e7e242",
+      "scope": "JSON parsed; findings, scope, candidates/provenance and limits reviewed; long object inventory treated as prior recorded readback, not fresh remote verification."
+    }
+  ],
+  "journal": {
+    "file": "/Users/minchomilev/cloud-calendars/research/CONTINUATION.md",
+    "sha256": "3c1e12c7ddf4a3db12ec5b13b76c4f49af792e8fd7920f4b7d0832255343d0c6",
+    "readScope": "Media-related notes located with bounded text search, especially lines437,456,478,495,519. They continue to record unanswered exact new output task/folder and no new media replacement.",
+    "freshnessLimit": "Journal is project history, not a generation completion manifest."
+  },
+  "localChecks": [
+    {
+      "root": "/Users/minchomilev/cloud-calendars/media-source",
+      "method": "File paths/stat metadata only; no image pixels, video playback or JSON artifact content read.",
+      "matchingFiles": 1,
+      "latestMtimeUtc": "2026-07-28T17:14:37.229471+00:00",
+      "octoberMtimeCandidates": []
+    },
+    {
+      "root": "/Users/minchomilev/cloud-calendars/media-build",
+      "method": "File paths/stat metadata only; no image pixels, video playback or JSON artifact content read.",
+      "matchingFiles": 1240,
+      "latestMtimeUtc": "2026-08-27T08:59:46.747540+00:00",
+      "octoberMtimeCandidates": []
+    },
+    {
+      "root": "/Users/minchomilev/cloud-calendars/shots",
+      "method": "File paths/stat metadata only; no image pixels, video playback or JSON artifact content read.",
+      "matchingFiles": 14,
+      "latestMtimeUtc": "2026-08-31T15:09:01.224875+00:00",
+      "octoberMtimeCandidates": []
+    },
+    {
+      "root": "/Users/minchomilev/cloud-calendars/exports",
+      "method": "File paths/stat metadata only; no image pixels, video playback or JSON artifact content read.",
+      "matchingFiles": 112,
+      "latestMtimeUtc": "2026-07-29T22:20:45.577948+00:00",
+      "octoberMtimeCandidates": []
+    },
+    {
+      "root": "/Users/minchomilev/cloud-calendars/public/assets/video",
+      "method": "File paths/stat metadata only; no image pixels, video playback or JSON artifact content read.",
+      "matchingFiles": 4,
+      "latestMtimeUtc": "2026-07-29T22:18:04.822481+00:00",
+      "octoberMtimeCandidates": []
+    },
+    {
+      "root": "/Users/minchomilev/work/hrapp/WeatherPreviewVideos",
+      "method": "File paths/stat metadata only; no image pixels, video playback or JSON artifact content read.",
+      "matchingFiles": 0,
+      "latestMtimeUtc": null,
+      "octoberMtimeCandidates": []
+    },
+    {
+      "root": "/Users/minchomilev/work/hrapp/artifacts",
+      "method": "File paths/stat metadata only; no image pixels, video playback or JSON artifact content read.",
+      "matchingFiles": 25,
+      "latestMtimeUtc": "2026-09-30T09:57:28.925358+00:00",
+      "octoberMtimeCandidates": []
+    }
+  ],
+  "manifest": {
+    "file": "/Users/minchomilev/cloud-calendars/src/app/core/media-manifest.json",
+    "sha256": "c7b74db44762cce88ec43b33b9fa5c53aaa042dbace39c135c29016fac4be679",
+    "sameAsPriorAvailabilityAudit": true
+  },
+  "desktop": {
+    "scope": "Top-level names containing Cloud or Calendar only. No recursive Desktop search.",
+    "relevantFound": [
+      "Cloud Calendars Icon-iOS-Default-1024x1024@1x.png"
+    ],
+    "excluded": "Unrelated calendar-product folder was not traversed. Icon is already known, not new screenshot/video output."
+  },
+  "taskInventory": {
+    "tool": "list_threads limit50 plus all pinned entries",
+    "relevantTask": {
+      "id": "01a15ef4-65d1-7191-ae13-9f547f3fdba3",
+      "title": "Cloud Calendars",
+      "summaryMeaning": "Current website/ASC optimization task mentions media still generating, but the returned summary is truncated and contains no output path or completion evidence."
+    },
+    "result": "No separate clearly identified Cloud Calendars screenshot/video generation task in returned summaries. No unrelated tasks opened; no read_thread or messages sent.",
+    "limits": "Not an exhaustive archived or older-task search. Short summaries do not prove a job absent."
+  },
+  "priorOriginEvidence": {
+    "checkedAt": "2026-10-21T23:09:51.814653+00:00",
+    "mapping": "CloudFront /media/* -> cloud-calendars-media S3 origin with no origin path; object keys preserve media/panel/",
+    "all1240LocalGalleryRenditionsMatchS3BySizeAndMd5": true,
+    "latestObjectLastModified": "2026-08-27T09:08:43.000Z",
+    "newOctoberReplacementSetEstablished": false,
+    "freshRemoteRequestsPerformed": false
+  },
+  "newCandidates": [],
+  "olderNonReplacementOutputs": "Native artifacts contains September QA filenames, latest September30. They were not opened, approved as marketing assets or represented as newly generated replacements. WeatherPreviewVideos had no matching image/video/JSON files.",
+  "missingEvidence": [
+    "Exact output folder, manifest or originating task for the promised new media.",
+    "Job completion state and generated file list.",
+    "Capture/build provenance, device sizes and locale coverage for any proposed replacements."
+  ],
+  "nextAction": "Obtain the precise Cloud Calendars generation task or output path, then inspect only that location and verify candidate types, dimensions and checksums against old assets. Do not regenerate or publish substitute material to resolve an unknown location.",
+  "limits": [
+    "Modification times are not capture dates; absence of October mtimes is not proof of absence everywhere.",
+    "No new candidate found, so no new candidate type/dimension/checksum comparison was needed.",
+    "No pixels or customer content inspected.",
+    "No whole-gallery download, AWS query, process inspection, generation, copy, deletion, build, simulator, native edit or source integration."
+  ],
+  "writes": [
+    "research/batch28-readiness/media-audit.json only"
+  ]
+}

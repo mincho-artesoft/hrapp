@@ -1,0 +1,186 @@
+{
+  "date": "2026-10-22",
+  "priorityConclusion": "The most consequential missing evidence is a verified chain from App Store1.7.3/build to native source and from current production Lambda/configuration to backend revision. Recorded September production evidence narrows the gap but does not close it. A retention/deletion assurance also cannot be derived from the current source.",
+  "priorAudit": {
+    "file": "/Users/minchomilev/cloud-calendars/research/privacy-dataflow-20261021.json",
+    "sha256": "39f49b99827499bbc3552f44a396808c0ce91308d21ebb39cde3da23eaaf9824",
+    "ranges": null,
+    "finding": "Full JSON data-flow inventory, policy discrepancies and remaining uncertainties reviewed. It already records current-source versus release distinction."
+  },
+  "releaseEvidence": [
+    {
+      "file": "/Users/minchomilev/work/hrapp/Cloud Calendars for Google, Microsoft and iCloud.xcodeproj/project.pbxproj",
+      "sha256": "47a3450edd0e3067dbf2e94706c5f6ac29d6da967de56bd11068b22feef46bf3",
+      "ranges": [
+        [
+          563,
+          754
+        ]
+      ],
+      "finding": "Version-setting matches inspected only: all six CURRENT_PROJECT_VERSION values12 and MARKETING_VERSION1.7.2. Not a1.7.3 release attestation; command-line/archive overrides remain possible."
+    },
+    {
+      "file": "/Users/minchomilev/work/cloud-calendars-api-nest/PRODUCTION_RELEASE_2026-09-09.md",
+      "sha256": "f518e48e1cbe75fc21e0b46dc277b9b1ae19a2ec2e7cb140a20606a55a769f05",
+      "ranges": [
+        [
+          1,
+          54
+        ]
+      ],
+      "finding": "Recorded clean source revision9bc33b6 and completed production deployment timestamp2026-09-09T10:30:09Z. Recorded base64 archiveSHA256 /Y1AmuDxCmkndNMUkXS7hko+DPTuU4//bleDAXGhoL0= and matching live hash, unchanged env fingerprint. Report explicitly says exact distributed App Store binary end-to-end testing remains unconfirmed; production APNs/SQS unconfigured at that time."
+    },
+    {
+      "file": "/Users/minchomilev/work/cloud-calendars-api-nest/README.md",
+      "sha256": "b68c744f6ba32c4eaf67aac07acf6ded33277188dff37ee0ab24572b0f830f32",
+      "ranges": [
+        [
+          1,
+          99
+        ]
+      ],
+      "finding": "Documents isolated Debug and production deployment, older1.7.0/1.7.1 wire compatibility baselines and new1.7.2; points to September release report. Historical claims, not current live readback."
+    },
+    {
+      "file": "/Users/minchomilev/work/cloud-calendars-api-nest/deploy.sh",
+      "sha256": "ad4d030b5a7b684e25a06ee80db338ec7b9c01e08ce2412d053ead4f05f13a6a",
+      "ranges": [
+        [
+          1,
+          133
+        ]
+      ],
+      "finding": "Defaults to isolated Debug; production needs explicit safety flag; production packages current source then updates code/handler/runtime and leaves environment untouched. Script does not prove execution, deployed revision or latest production flags."
+    }
+  ],
+  "localMetadata": {
+    "nativeHEAD": "538c99ebd5616b59a92883fe247959b875cab6f9",
+    "backendHEAD": "ebaa80c26673cfd680962e6f36e20fa11ae49719",
+    "workingTreeScope": "Current file hashes captured; no assertion that working tree is clean or HEAD equals released content.",
+    "archiveSearch": {
+      "nativeRoot": "No matching archive/release directories within two levels.",
+      "xcodeArchiveRoot": "/Users/minchomilev/Library/Developer/Xcode/Archives exists; zero Calendar/HRApp-named .xcarchive directories within date-folder depth. Only names inspected, unrelated archives not opened.",
+      "limit": "Other archive names/locations, CI artifacts or another machine may exist. No IPA/archive/build receipt linking1.7.3 to inspected code established."
+    }
+  },
+  "retentionEvidence": [
+    {
+      "file": "/Users/minchomilev/work/cloud-calendars-api-nest/configure-debug-push.mjs",
+      "sha256": "b10dcdb4fb4026f3047efde09d27de9cbe0e4ee8e6d81068eb8bd62f8aa67828",
+      "ranges": [
+        [
+          1,
+          23
+        ],
+        [
+          32,
+          42
+        ],
+        [
+          63,
+          72
+        ]
+      ],
+      "finding": "Hardcoded Debug function with isolated-bucket guard. Queue retention345600seconds, DLQ1209600seconds and S3 push/receipts/ expiration7days provisioned by script. None establish current production retention or actual script execution."
+    },
+    {
+      "file": "/Users/minchomilev/work/cloud-calendars-api-nest/src/core/core.service.ts",
+      "sha256": "d445cf5dc00d0fd4ce53abdcc9a5abaeaab817f5e3bfa623bf7a69fd8d69d160",
+      "ranges": [
+        [
+          12,
+          99
+        ]
+      ],
+      "finding": "CANCELLED_TTL_DAYS30 used inside regenerate, not scheduled account-wide erasure. It compares (ev.updatedAt??0) directly against numeric cutoff before delete. Also rewrites only affected feeds when event-scoped."
+    },
+    {
+      "file": "/Users/minchomilev/work/cloud-calendars-api-nest/src/calendar/calendar.service.ts",
+      "sha256": "f9f253bfa7a8be3698012cb6c007364b0d14045b1b9354ba96dd5abc86d62ed1",
+      "ranges": [
+        [
+          2288,
+          2318
+        ],
+        [
+          2793,
+          2825
+        ]
+      ],
+      "finding": "Shared-calendar delete stores previous snapshot with deletedAt/updatedAt tombstone. cancelEvent stores updatedAt as ISO string. Thus no general all-content erasure demonstrated."
+    },
+    {
+      "file": "/Users/minchomilev/work/cloud-calendars-api-nest/src/util/revision.ts",
+      "sha256": "b5878316f985d620ccb2f076a929ae174593f72202c8b6be6b3930af5788ee77",
+      "ranges": [
+        [
+          1,
+          6
+        ]
+      ],
+      "finding": "Revision timestamps explicitly generated as ISO strings."
+    },
+    {
+      "file": "/Users/minchomilev/work/cloud-calendars-api-nest/src/store/store.service.ts",
+      "sha256": "14842159b2b211c1d15d352664666d10449c4b26b5feb001f3170d277b368294",
+      "ranges": [
+        [
+          17,
+          58
+        ],
+        [
+          112,
+          132
+        ]
+      ],
+      "finding": "S3 object operations and DeleteObject helper do not establish bucket-version purge, lifecycle, backups or log retention."
+    }
+  ],
+  "concreteSourceConcern": {
+    "issue": "Cancelled-event cleanup timestamp-type mismatch",
+    "proof": "CoreService.regenerate directly compares updatedAt to numeric cutoff; cancelEvent writes new Date().toISOString(). ISO date strings are not numeric epoch values for that comparison.",
+    "consequence": "Do not publish a guaranteed30-day cancellation erasure statement. The inspected branch may not delete ISO-timestamped records as intended. This is a static source concern, not a production reproduction or exhaustive retention finding.",
+    "requiredFollowUp": "Owner/backend engineer should verify deployed revision, timestamp types with synthetic fixtures and complete deletion scope before documenting a retention deadline. No production customer records are needed for the first check."
+  },
+  "productionFlags": {
+    "knownHistorically": "September release record states server invitation push implementation deployed but inactive; APNs credentials/SQS/allowed environments not configured then. Sharing/email retained existing configuration.",
+    "unknownNow": "No current production Lambda metadata, selected flag booleans, queue/lifecycle/versioning or log retention readback performed. Historical disabled state must not be described as current without verification."
+  },
+  "preciseMissingOwnerRuntimeFacts": [
+    {
+      "priority": 1,
+      "needed": "For distributed App Store1.7.3: selected build number, upload/archive provenance, source commit plus modifications, archive/IPA hash and build settings.",
+      "why": "Current project says1.7.2/build12; source privacy paths cannot be equated to1.7.3 solely by version text."
+    },
+    {
+      "priority": 1,
+      "needed": "Current production Lambda CodeSha256, LastModified, published version/alias mapping and deployment manifest tied to backend revision.",
+      "why": "September report records a deployment but current localHEAD differs and later production state is unknown."
+    },
+    {
+      "priority": 1,
+      "needed": "Owner-approved full-account erasure procedure and retained categories/durations, including shared snapshots, indexes, feeds, attachments, recipients and backups.",
+      "why": "Signout, cancellation and tombstone creation are not complete account erasure."
+    },
+    {
+      "priority": 2,
+      "needed": "Narrow configuration evidence for current enabled services: push queue configured boolean, APNs environment eligibility, email enabled boolean, relevant lifecycle rules, versioning and log retention periods.",
+      "why": "Request only allowlisted metadata; do not dump environment maps, keys or customer records."
+    },
+    {
+      "priority": 2,
+      "needed": "Released ad SDK/consent configuration and questionnaire mapping reviewed by owner against actual released paths.",
+      "why": "Existing public Data Not Collected observation cannot be reconciled solely through this source audit."
+    }
+  ],
+  "scopeAndExclusions": [
+    "Read project version matches, relevant release/deploy docs, retention implementation and archive directory names.",
+    "No secret file opened or secret value requested. Documentation mentioned key-storage setup; it was not accessed or copied into this report.",
+    "No production AWS calls, environment dumps, logs, events, accounts, user records or live API queries.",
+    "No native build/simulator/deployment/configuration/privacy/ASC changes.",
+    "No policy draft or legal declaration."
+  ],
+  "writes": [
+    "research/batch28-readiness/privacy-release-evidence.json only"
+  ]
+}
