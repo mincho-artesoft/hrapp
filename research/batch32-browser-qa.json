@@ -1,0 +1,99 @@
+{
+  "checkedAt": "2026-10-22T03:06:57.896320+00:00",
+  "allPassed": true,
+  "changedGuides": 9,
+  "localizedViews": [
+    {
+      "locale": "de-DE",
+      "guide": "three-calendar-apps-is-two-too-many",
+      "viewport": 390,
+      "documentWidth": 379,
+      "scrollWidth": 379,
+      "h1Present": true,
+      "selectionCaveatInRenderedBody": true
+    },
+    {
+      "locale": "de-DE",
+      "guide": "exchange-calendars-on-an-iphone",
+      "viewport": 390,
+      "documentWidth": 379,
+      "scrollWidth": 379,
+      "h1Present": true,
+      "selectionCaveatInRenderedBody": true
+    },
+    {
+      "locale": "es-ES",
+      "guide": "three-calendar-apps-is-two-too-many",
+      "viewport": 390,
+      "documentWidth": 379,
+      "scrollWidth": 379,
+      "h1Present": true,
+      "selectionCaveatInRenderedBody": true
+    },
+    {
+      "locale": "es-ES",
+      "guide": "exchange-calendars-on-an-iphone",
+      "viewport": 390,
+      "documentWidth": 379,
+      "scrollWidth": 379,
+      "h1Present": true,
+      "selectionCaveatInRenderedBody": true
+    },
+    {
+      "locale": "fr-FR",
+      "guide": "three-calendar-apps-is-two-too-many",
+      "viewport": 390,
+      "documentWidth": 379,
+      "scrollWidth": 379,
+      "h1Present": true,
+      "selectionCaveatInRenderedBody": true
+    },
+    {
+      "locale": "fr-FR",
+      "guide": "exchange-calendars-on-an-iphone",
+      "viewport": 390,
+      "documentWidth": 379,
+      "scrollWidth": 379,
+      "h1Present": true,
+      "selectionCaveatInRenderedBody": true
+    },
+    {
+      "locale": "it",
+      "guide": "three-calendar-apps-is-two-too-many",
+      "viewport": 390,
+      "documentWidth": 379,
+      "scrollWidth": 379,
+      "h1Present": true,
+      "selectionCaveatInRenderedBody": true
+    },
+    {
+      "locale": "it",
+      "guide": "exchange-calendars-on-an-iphone",
+      "viewport": 390,
+      "documentWidth": 379,
+      "scrollWidth": 379,
+      "h1Present": true,
+      "selectionCaveatInRenderedBody": true
+    }
+  ],
+  "englishBirthdayViews": [
+    {
+      "viewport": 575,
+      "documentWidth": 564,
+      "scrollWidth": 564,
+      "newSourceSectionAndPrimaryLinksPresent": true
+    },
+    {
+      "viewport": 390,
+      "documentWidth": 379,
+      "scrollWidth": 379
+    }
+  ],
+  "screenshots": [
+    "/tmp/cloud-calendar-batch32-birthday.png"
+  ],
+  "viewportRestored": true,
+  "tabDeliverable": true,
+  "timing": "DE/ES/FR/EN views checked after first publication; those exact draft bodies remained unchanged in final Italian followup build. IT views checked after final publication; all9source hashes rechecked.",
+  "scope": "Representative rendered heading/changedsection and responsive checks, not native/runtime,independent native-speaker or search-performance proof."
+}

@@ -1,0 +1,94 @@
+{
+  "updated": "2026-10-22",
+  "title": "Calendriers Microsoft et Exchange sur iPhone : vérifiez d’abord la connexion",
+  "short": "Calendriers Microsoft sur iPhone",
+  "description": "Vérifiez le type de compte Microsoft, l’accord de l’employeur et les droits avant de connecter un calendrier. Ce qu’ajoute Cloud Calendars Premium.",
+  "lede": "« Calendrier Exchange » peut désigner différents services et règles professionnelles. Avant de modifier des réglages ou d’acheter une formule, identifiez l’hébergement de votre boîte aux lettres et la connexion autorisée. Ce guide est rédigé par Arte Soft, développeur de Cloud Calendars.",
+  "commonBelief": "Toute app avec connexion Microsoft devrait fonctionner avec chaque serveur Exchange et chaque calendrier professionnel partagé.",
+  "sections": [
+    {
+      "heading": "1. Identifiez la boîte aux lettres, pas seulement l’app Outlook",
+      "body": [
+        "Outlook désigne une app et des services Microsoft. Avoir un compte dans Outlook ne révèle pas quel serveur héberge son calendrier. Demandez si vous utilisez un compte Microsoft personnel, une boîte Microsoft 365 dans Exchange Online ou une installation Exchange propre à l’organisation.",
+        "Cloud Calendars propose la connexion Microsoft et utilise le service de calendrier Microsoft. Ce n’est pas une configuration universelle par adresse de serveur et mot de passe pour toutes les installations Exchange. Microsoft documente son API de calendrier séparément de la configuration Exchange générique : confirmez la voie prévue pour votre boîte plutôt que de deviner un serveur."
+      ]
+    },
+    {
+      "heading": "2. Séparez le compte de l’appareil Apple de la connexion de l’app",
+      "body": [
+        "Un calendrier professionnel déjà accessible dans Calendrier Apple via un compte d’appareil approuvé emprunte une autre voie que « Sign in with Microsoft » dans Cloud Calendars. Les calendriers exposés par le système du téléphone dépendent aussi de l’autorisation d’accès. Une configuration réussie dans les réglages Apple ne prouve pas qu’une connexion Microsoft distincte sera autorisée.",
+        "Avant d’ajouter une connexion, examinez où apparaît le calendrier existant. Si vous voyez ensuite deux versions d’une réunion, identifiez leurs sources et masquez-en une temporairement. Évitez de supprimer comptes ou événements pour déterminer quelle connexion les a produits. Dans Cloud Calendars, notez la sélection initiale et rétablissez-la après la comparaison. La sélection peut aussi agir sur les widgets et la programmation des notifications ; ne supposez pas qu’elle concerne uniquement l’affichage."
+      ]
+    },
+    {
+      "heading": "3. Vérifiez Premium et l’accord de l’organisation séparément",
+      "body": [
+        "Premium ajoute les fonctions de calendrier Microsoft et Microsoft Teams à Cloud Calendars. Advanced supprime les publicités de Base ; il ne débloque pas la connexion Microsoft de l’app. Consultez le prix local actuel et la période de facturation plutôt qu’un prix annoncé pour une autre région.",
+        "Un abonnement ne peut pas annuler la décision d’un employeur sur l’accès d’une app. Microsoft permet aux organisations de contrôler le consentement des utilisateurs et d’exiger une approbation administrative. Si la page la demande, transmettez à l’administrateur le nom de l’app, le compte prévu et le message exact. Ne publiez pas le calendrier professionnel et ne passez pas à un compte personnel pour contourner cette décision."
+      ]
+    },
+    {
+      "heading": "4. Diagnostiquez l’étape qui a échoué",
+      "body": [
+        "Si la connexion ne se termine pas, vérifiez l’identité sélectionnée, le réseau et le message Microsoft. Une demande d’approbation diffère d’une session expirée ou d’une panne de connexion. Rien ne permet de supposer que chaque échec relève d’une règle de l’employeur.",
+        "Si la connexion réussit mais qu’un calendrier manque, examinez le groupe du compte et la sélection dans Cloud Calendars, puis comparez avec le même compte dans Outlook. Si seul un calendrier partagé ou délégué manque, étudiez ses droits spécifiques. Les capacités générales de l’API Microsoft ne garantissent pas que tous les cas de boîtes partagées ou de délégation soient disponibles dans cette app."
+      ]
+    },
+    {
+      "heading": "5. Distinguez une copie visible d’une mise à jour confirmée",
+      "body": [
+        "La connexion Microsoft utilise des copies dans le système de calendrier de l’iPhone. Leur destination de stockage peut dépendre des sources disponibles sur l’appareil. Pour un compte professionnel, confirmez que cette organisation respecte les exigences de votre entreprise avant de l’utiliser pour des réunions sensibles ; ne supposez pas qu’une copie reste uniquement dans la boîte d’origine.",
+        "Un calendrier d’équipe peut, par exemple, afficher une réunion mais refuser votre modification faute de droits. Une édition locale réussie n’est pas la vérification finale. Comparez l’événement dans Outlook avec le même compte. Testez uniquement un événement jetable dans un calendrier qui vous appartient, sans inviter de collègues ni modifier une réunion établie."
+      ]
+    },
+    {
+      "heading": "6. Gardez explicites la responsabilité et la disponibilité",
+      "body": [
+        "Une réunion organisée par un collègue n’est pas à déplacer ou réécrire simplement parce qu’elle apparaît près de vos plans personnels. Gardez à l’esprit l’organisateur, le calendrier professionnel et les participants prévus. Utilisez la procédure approuvée du fournisseur si l’action manque ou si une modification n’atteint pas le serveur.",
+        "De même, afficher un rendez-vous personnel près du travail ne bloque pas automatiquement la disponibilité professionnelle et ne masque pas ses détails dans une simple entrée occupée. Si c’est votre objectif, demandez quelle méthode l’organisation prend en charge et vérifiez le résultat. Un lien en lecture seule ne remplace pas un accès modifiable, et publier un lien n’est pas un raccourci de dépannage."
+      ]
+    }
+  ],
+  "claims": {},
+  "practical": [
+    "Identifiez l’hébergement de la boîte et la connexion autorisée par l’organisation.",
+    "Vérifiez si le calendrier arrive déjà sur l’iPhone via un compte d’appareil.",
+    "Examinez Premium séparément du consentement Microsoft et des droits du calendrier.",
+    "Choisissez l’identité prévue à la connexion et conservez les messages d’erreur pour l’assistance.",
+    "Après connexion, sélectionnez le calendrier nécessaire et comparez un événement récent dans Outlook.",
+    "Confirmez une modification de test autorisée chez le fournisseur ; préservez invitations et réunions récurrentes."
+  ],
+  "faq": [
+    {
+      "q": "Premium garantit-il la connexion au serveur Exchange de mon entreprise ?",
+      "a": "Non. Premium active les fonctions Microsoft de l’app. Compatibilité de la boîte, accord de l’organisation et autorisations des calendriers sont distincts. Confirmez la connexion avec l’administrateur avant de considérer une installation Exchange comme prise en charge."
+    },
+    {
+      "q": "Pourquoi Outlook fonctionne-t-il alors qu’une autre app est refusée ?",
+      "a": "Les apps peuvent avoir des permissions et exigences d’approbation différentes. Outlook est une référence utile pour le compte, mais ne prouve pas qu’une autre app est approuvée. Utilisez l’erreur réelle ou la demande d’approbation pour identifier le point à traiter."
+    },
+    {
+      "q": "Puis-je utiliser un lien public si la connexion Microsoft est bloquée ?",
+      "a": "Ne publiez pas d’informations professionnelles pour contourner un blocage. Un abonnement est généralement en lecture seule, sans équivalence avec un accès modifiable. Demandez au propriétaire ou à l’administrateur une méthode approuvée ; ne supposez pas qu’un lien publié soit autorisé."
+    }
+  ],
+  "sourcesHeading": "Sources et conseils des fournisseurs",
+  "sources": [
+    {
+      "label": "Microsoft : API de calendrier Outlook et données de boîte aux lettres prises en charge",
+      "url": "https://learn.microsoft.com/en-us/graph/outlook-calendar-concept-overview"
+    },
+    {
+      "label": "Microsoft : consentement des utilisateurs et administrateurs",
+      "url": "https://learn.microsoft.com/en-us/entra/identity/enterprise-apps/user-admin-consent-overview"
+    },
+    {
+      "label": "Apple : plusieurs calendriers et abonnements en lecture seule",
+      "url": "https://support.apple.com/en-lamr/guide/iphone/iph3d1110d4/ios"
+    }
+  ],
+  "seeAlso": [
+    "icloud-google-and-outlook-in-one-view",
+    "what-a-subscription-actually-buys"
+  ]
+}

@@ -1,0 +1,34 @@
+{
+  "title": "Drei Kalender-Apps sind zwei zu viel",
+  "short": "Drei Apps sind zwei zu viel",
+  "description": "Zwischen Kalender-Apps zu wechseln ist kein Arbeitsablauf, sondern eine Steuer. Was sie kostet und wie ihre Abschaffung aussieht.",
+  "lede": "Niemand hat sich entschieden, drei Kalender-Apps zu führen. Es ist Konto für Konto passiert, und jede einzelne Ergänzung wirkte vernünftig.",
+  "commonBelief": "Dass App-Wechsel eine kleine Unbequemlichkeit sind und nicht die Quelle des eigentlichen Problems.",
+  "sections": [
+    {
+      "heading": "Der Preis ist nicht das Tippen",
+      "body": [
+        "Zwei Sekunden Umschalten sind nichts. Teuer ist, dass Sie Terminfragen aus unvollständiger Information beantworten, weil jedes Mal alle drei zu prüfen mehr Mühe ist, als die Frage zu verdienen scheint.",
+        "Also antworten Sie aus der App, die gerade offen ist, und korrigieren später. Die Korrektur ist der teure Teil, und sie landet auch im Kalender von jemand anderem."
+      ]
+    },
+    {
+      "heading": "Was tatsächlich wahr sein muss",
+      "body": [
+        "Ein Ort muss Ja oder Nein zu Ihrer Zeit sagen können. Das ist die ganze Anforderung, und keine Anordnung erfüllt sie, bei der die Antwort in mehr als einer App liegt.",
+        "Alles andere — welche App, welche Farben, welche Ansichten — ist Geschmack. Das hier ist Struktur."
+      ]
+    }
+  ],
+  "claims": {
+    "accounts": "Kontotypen, die eine Ansicht fassen kann"
+  },
+  "practical": [
+    "Wählen Sie die App, die alle Ihre Konten hält, nicht die, die Ihnen einzeln am besten gefällt.",
+    "Wandern Sie über Konten, nicht über Termine — die Termine bleiben, wo sie sind.",
+    "Löschen Sie die anderen Apps, sobald die Ansicht vollständig ist, sonst schauen Sie weiter hinein."
+  ],
+  "seeAlso": [
+    "icloud-google-and-outlook-in-one-view"
+  ]
+}

@@ -1,0 +1,125 @@
+{
+  "date": "2026-10-22",
+  "locale": "es-ES",
+  "status": "draft_preparation_complete",
+  "readScope": [
+    "Complete current English objects for both canonicals, including corrected selection paragraphs, metadata, practical, FAQ, sources and related routes.",
+    "Complete Spanish source objects read; legacy combined guide uses TypeScript unquoted properties so extracted safely with TypeScript AST static literal traversal, not app execution.",
+    "Selection-localization audit scope/summary plus all Spanish recommendations inspected. Initial broad audit output truncated outside needed records; no full other-language audit claimed."
+  ],
+  "sourceRecords": [
+    {
+      "locale": "en-US",
+      "slug": "three-calendar-apps-is-two-too-many",
+      "file": "src/app/content/en-US/articles-unify.ts",
+      "rawModuleSha256": "aa447f8c19d27cbfcf813adff2b067fb6a0f8c1925f78b38bd10bacd073bf98b",
+      "rawObjectSha256": "4292a3ae34a639d9ec94926ee7c92a0481e2f7099702a0a2e944ab3b928525a3",
+      "jsonStringifySha256": "6fa402be531406b167448c6807d62cd4cb1dac671270996bce49497d6db45187",
+      "snapshot": "three-calendar-apps-is-two-too-many.source-en.json"
+    },
+    {
+      "locale": "en-US",
+      "slug": "exchange-calendars-on-an-iphone",
+      "file": "src/app/content/en-US/articles-unify.ts",
+      "rawModuleSha256": "aa447f8c19d27cbfcf813adff2b067fb6a0f8c1925f78b38bd10bacd073bf98b",
+      "rawObjectSha256": "2c9583bb4b70546ee65f562eb21b078c815aa3039027bb4ecfc57861980267ff",
+      "jsonStringifySha256": "b0ea163be60d89730ba63833c677807e6359bc108823291f200ab8a0ba8cd7c4",
+      "snapshot": "exchange-calendars-on-an-iphone.source-en.json"
+    },
+    {
+      "locale": "es-ES",
+      "slug": "exchange-calendars-on-an-iphone",
+      "file": "src/app/content/es-ES/articles.ts",
+      "rawModuleSha256": "6965abaed93325ca667163c6ac6d6c1f341ea773604e326e96f44cef941e58da",
+      "rawObjectSha256": "831cd26a3107baa12dfd2892051269340adec7e06fd6fe95725de509dded0a5b",
+      "jsonStringifySha256": "fbeef4df764b723dff3a31665a77aac082847d7231367239926eefa92e074675",
+      "snapshot": "exchange-calendars-on-an-iphone.before.json"
+    },
+    {
+      "locale": "es-ES",
+      "slug": "three-calendar-apps-is-two-too-many",
+      "file": "src/app/content/es-ES/articles.ts",
+      "rawModuleSha256": "6965abaed93325ca667163c6ac6d6c1f341ea773604e326e96f44cef941e58da",
+      "rawObjectSha256": "2e1f0857e035fa5cbd3e04aebd17eb0b1984e31f2a3780a49786fbbfd2a907c5",
+      "jsonStringifySha256": "c31be4e4ab684331a88a89b1e302b209623a42fe8b9240316deff327b2dfd47e",
+      "snapshot": "three-calendar-apps-is-two-too-many.before.json"
+    }
+  ],
+  "drafts": {
+    "three-calendar-apps-is-two-too-many": {
+      "file": "three-calendar-apps-is-two-too-many.json",
+      "rawFileSha256": "d70df73f836efe5f8c571ed42d72fe31cdbb4b6b702cf522f7570af8acdf81a4",
+      "jsonStringifySha256": "8081eef0684bf99fb02e2c898862e5d867071751049eaf7ac2a6938159686f21",
+      "sections": 6,
+      "paragraphs": 12,
+      "practical": 6,
+      "faq": 3,
+      "sources": 2,
+      "descriptionUnicodeCharacters": 135,
+      "comparison": "Full modernization from legacy two-section/four-paragraph object to current six-section English meaning, not a three-paragraph patch. Removed legacy accounts claim row; empty claims matches English.",
+      "relatedRoutes": [
+        {
+          "slug": "icloud-google-and-outlook-in-one-view",
+          "definitionFiles": [
+            "src/app/content/es-ES/articles.ts"
+          ],
+          "action": "retained"
+        },
+        {
+          "slug": "what-calendar-sync-actually-does",
+          "definitionFiles": [],
+          "action": "omitted because no actual Spanish article definition"
+        },
+        {
+          "slug": "calendar-notifications-missing-silent-or-duplicated",
+          "definitionFiles": [
+            "src/app/content/es-ES/articles-help.ts"
+          ],
+          "action": "retained"
+        }
+      ],
+      "semanticChecks": [
+        "Separate view, edit-original and availability-copy goals.",
+        "Preserve approved workplace apps/permissions and diagnose actual failed stage.",
+        "Provider mirror calendars disclosed; no no-copy/storage-only-at-provider promise.",
+        "Disposable owned, non-recurring, attendee-free test checks both directions without refresh guarantee.",
+        "Restore original selection; widgets, notification scheduling and Google synchronization can be affected. No all-provider pause/resume claim.",
+        "Keep required apps; no forced deletion or full-availability guarantee. Base/Advanced/Premium remain correct.",
+        "Full practical/FAQ and two exact English sources retained; developer disclosure present."
+      ]
+    },
+    "exchange-calendars-on-an-iphone": {
+      "file": "exchange-calendars-on-an-iphone.json",
+      "rawFileSha256": "84ccc6c9884adea132b201ce049a85761b547774750b338c78ecc17792965afb",
+      "jsonStringifySha256": "e80ff036c0387a3863d440e132143d6047ae5ab3685f060346952112f5e73ec4",
+      "changes": [
+        {
+          "path": "updated",
+          "before": "2026-10-21",
+          "after": "2026-10-22"
+        },
+        {
+          "path": "sections[1].body[1]",
+          "before": "Antes de añadir otra conexión, revisa dónde aparece el calendario laboral existente. Si después ves dos versiones de una reunión, identifica sus fuentes y oculta una temporalmente. No uses la eliminación de cuentas o eventos para diagnosticar qué conexión los generó.",
+          "after": "Antes de añadir otra conexión, revisa dónde aparece el calendario laboral existente. Si después ves dos versiones de una reunión, identifica sus fuentes y oculta una temporalmente. No uses la eliminación de cuentas o eventos para diagnosticar qué conexión los generó. En Cloud Calendars, anota la selección original y restablécela después de comparar. La selección también puede afectar a los widgets y a la programación de notificaciones; no supongas que solo cambia la visualización."
+        }
+      ],
+      "onlyTwoFieldsChanged": true,
+      "allOtherFieldsUnchanged": true,
+      "semanticChecks": [
+        "Exact Spanish append from reviewed audit: restore selection and widgets/notification scheduling only.",
+        "No Google-specific sync addition to Microsoft-focused paragraph; no Microsoft pause/resume claim.",
+        "Every other existing field, including title, sources, related links and prices, is unchanged."
+      ]
+    }
+  },
+  "snapshotHashes": {
+    "exchange-calendars-on-an-iphone.before.json": "0f1c47c92da68462eb33abf4c0f39825b4543d01401496fd575c5c2cf0542a2f",
+    "three-calendar-apps-is-two-too-many.before.json": "11ad6d5cc49e5c50067100a3c179ac7112e9816d020855a0c714e7a16bcc4c9f"
+  },
+  "limits": [
+    "Own Spanish translation and self-review, not independent native-speaker approval.",
+    "No native/runtime certification or new provider research; current English meaning is the comparator.",
+    "No source integration/build/deploy/ASC/native/customer action/commit or paid API."
+  ]
+}

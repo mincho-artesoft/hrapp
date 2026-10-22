@@ -1,0 +1,92 @@
+{
+  "date": "2026-10-22",
+  "decision": "pass_no_material_correction_required",
+  "scope": "Independent cross-author review of complete German drafts, current complete English comparator already read this task sequence and now exact snapshot identity checked; Exchange before/after compared in full and mechanically. Own language review, not native-speaker or runtime certification.",
+  "guides": [
+    {
+      "slug": "three-calendar-apps-is-two-too-many",
+      "draftRawFileSha256": "eadd7de5375758fdbe5c302fbdb50df340029352bdf3735397e81840daea1155",
+      "draftJsonStringifySha256": "665c4badc46a238b7d3c49d68f748742cf436dc672faf70cc0d958807831edff",
+      "currentEnglishRawObjectSha256": "4292a3ae34a639d9ec94926ee7c92a0481e2f7099702a0a2e944ab3b928525a3",
+      "currentGermanBeforeRawObjectSha256": "39e4772dbc9a0a53233cf8e163ac756b7c50c420dc3da4acefb41ddc7d8e49c8",
+      "currentEnglishEqualsProvidedSnapshot": true,
+      "currentGermanEqualsBeforeSnapshot": true,
+      "readScope": "Complete draft metadata, all six sections/twelve paragraphs, six practical steps, three FAQ, sources and related links.",
+      "descriptionUnicodeCharacters": 144,
+      "relatedRoutes": [
+        {
+          "slug": "icloud-google-and-outlook-in-one-view",
+          "definition": "src/app/content/de-DE/articles.ts"
+        },
+        {
+          "slug": "calendar-notifications-missing-silent-or-duplicated",
+          "definition": "src/app/content/de-DE/articles-help.ts"
+        }
+      ],
+      "omittedEnglishRelated": [
+        {
+          "slug": "what-calendar-sync-actually-does",
+          "actualGermanDefinition": null
+        }
+      ],
+      "status": "pass",
+      "assessment": [
+        "All six English task distinctions preserved: source/ownership and availability versus a combined view; approved workplace paths/apps; provider mirror storage; owned guest-free nonrecurring test in both directions without timing guarantee; selection restoration and widget/notification/Google effects; separate alerts and correct tiers.",
+        "No blanket no-copy, complete availability, compulsory deletion or universal provider pause/resume claim.",
+        "German is understandable and consistent in du address. Some technical/compact phrases are acceptable; no style-only rewrite requested.",
+        "Developer disclosure, empty claims, date and two exact sources preserved. Missing German sync guide correctly omitted; both retained routes exist."
+      ]
+    },
+    {
+      "slug": "exchange-calendars-on-an-iphone",
+      "draftRawFileSha256": "d69fb4d1c564baf6d742016d7a028cfcff0637be4b93cdf8a90dcb39de8d3bac",
+      "draftJsonStringifySha256": "2148889752964a8d715ae983270c075c557ce99fc80275d2a7720b930ecdd378",
+      "currentEnglishRawObjectSha256": "2c9583bb4b70546ee65f562eb21b078c815aa3039027bb4ecfc57861980267ff",
+      "currentGermanBeforeRawObjectSha256": "2c4e4903c9781ebfeaf011d285f60a4f156499dbeb67bfb3b8a6d2780fa512cc",
+      "currentEnglishEqualsProvidedSnapshot": true,
+      "currentGermanEqualsBeforeSnapshot": true,
+      "readScope": "Complete draft metadata, all six sections/twelve paragraphs, six practical steps, three FAQ, sources and related links.",
+      "descriptionUnicodeCharacters": 146,
+      "relatedRoutes": [
+        {
+          "slug": "icloud-google-and-outlook-in-one-view",
+          "definition": "src/app/content/de-DE/articles.ts"
+        },
+        {
+          "slug": "what-a-subscription-actually-buys",
+          "definition": "src/app/content/de-DE/articles.ts"
+        }
+      ],
+      "omittedEnglishRelated": [
+        {
+          "slug": "what-calendar-sync-actually-does",
+          "actualGermanDefinition": null
+        }
+      ],
+      "status": "pass",
+      "assessment": [
+        "Original German source is preserved except the date and paragraph append.",
+        "Append faithfully says record/restore selection, widgets and notification scheduling; it does not add Google synchronization or a Microsoft pause/resume guarantee.",
+        "Provider restrictions, mirror destination, workplace approval and tier distinctions remain unchanged."
+      ],
+      "changes": [
+        {
+          "path": "updated",
+          "before": "2026-10-21",
+          "after": "2026-10-22"
+        },
+        {
+          "path": "sections[1].body[1]",
+          "before": "Prüfe vor einer weiteren Verbindung, wo der bestehende Arbeitskalender erscheint. Siehst du später zwei Versionen einer Besprechung, bestimme ihre Kalenderquellen und blende eine vorübergehend aus. Entferne keine Konten und lösche keine Ereignisse, um herauszufinden, welche Verbindung sie erzeugt hat.",
+          "after": "Prüfe vor einer weiteren Verbindung, wo der bestehende Arbeitskalender erscheint. Siehst du später zwei Versionen einer Besprechung, bestimme ihre Kalenderquellen und blende eine vorübergehend aus. Entferne keine Konten und lösche keine Ereignisse, um herauszufinden, welche Verbindung sie erzeugt hat. Notiere in Cloud Calendars die ursprüngliche Auswahl und stelle sie nach dem Vergleich wieder her. Die Auswahl kann auch Widgets und die Planung von Benachrichtigungen beeinflussen; gehe nicht davon aus, dass sie nur die Anzeige verändert."
+        }
+      ]
+    }
+  ],
+  "corrections": [],
+  "limits": [
+    "No source edits or draft changes.",
+    "No native execution, account operations, deployment or new provider fetch.",
+    "This review is separate from the German author; reviewer authored Spanish preparation for the same task."
+  ]
+}

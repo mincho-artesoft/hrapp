@@ -588,10 +588,10 @@ export const PLANNING_EN_US: Readonly<Record<string, LocalisedArticle>> = {
 },
 
   'what-an-all-day-event-really-means': {
-  "updated": "2026-10-21",
+  "updated": "2026-10-22",
   "title": "All-day calendar events: dates, availability and missing widget entries",
   "short": "Understand all-day events",
-  "description": "Choose dates or timed appointments, check free/busy separately and verify multi-day ranges. Find all-day entries that do not appear in an upcoming widget.",
+  "description": "Check all-day dates, availability and widget omissions. For a missing birthday, identify the contact or calendar source before adding a duplicate.",
   "lede": "An all-day label, a busy day and an appointment at a particular hour are different ideas. Decide which you need before changing the event. This guide is published by Arte Soft, the developer of Cloud Calendars.",
   "commonBelief": "An all-day entry always leaves you free, appears in every upcoming list and behaves identically across calendar providers.",
   "sections": [
@@ -600,6 +600,14 @@ export const PLANNING_EN_US: Readonly<Record<string, LocalisedArticle>> = {
       "body": [
         "A birthday, public holiday or trip label can belong to a date without requiring an arrival hour. A dentist visit or a conference session needs an actual start and end time. Choose the representation that lets someone understand the commitment without guessing.",
         "For a trip from Friday through Sunday, an all-day span can label the itinerary. Keep a Friday flight, Saturday booking and Sunday check-out as timed commitments when their hours matter. The trip label should not replace the bookings it summarizes. A deadline at 17:00 also needs its hour; an all-day label alone does not communicate that cutoff."
+      ]
+    },
+    {
+      "heading": "For a missing birthday, identify its source first",
+      "body": [
+        "Before adding a missing birthday as a new annual event, find its source: a contact card, a provider-generated birthday calendar or an ordinary repeating event. Apple documents that its special iCloud Birthdays calendar uses iCloud Contacts and that birthday changes belong in Contacts. Check the contact in the account that owns it.",
+        "Google’s own app distinguishes birthdays linked to Google Contacts from manually created birthday events. It documents that editing a linked birthday can update its contact, while deleting it does not remove the Contacts information. Turning off Sync from Contacts removes synced calendar entries and changes; do not use that switch as a harmless visibility test. Birthdays shown from Apple Contacts on an iPhone are not thereby synchronized to Google’s web or Android calendar.",
+        "Cloud Calendars may show a system birthday when that calendar is exposed by iOS, full calendar access is allowed and the calendar is selected. Do not assume every view includes it or that provider-specific birthday editing is available. Compare the original provider and the phone’s calendar before adding another annual record, and use the owning Contacts or provider app for source changes. Check the widget and notification guides separately for display and alert limits."
       ]
     },
     {
@@ -641,6 +649,7 @@ export const PLANNING_EN_US: Readonly<Record<string, LocalisedArticle>> = {
   "claims": {},
   "practical": [
     "Choose a date label for context and a timed entry for a commitment with an hour.",
+    "For a missing birthday, identify the owning contact or calendar before adding another annual event.",
     "Check the first and last included dates after saving.",
     "Verify free/busy separately in the owning provider when needed.",
     "Look in the full calendar for all-day entries omitted from upcoming displays.",
@@ -658,6 +667,10 @@ export const PLANNING_EN_US: Readonly<Record<string, LocalisedArticle>> = {
     {
       "q": "Should I subtract a day from an export's end date?",
       "a": "Do not change it just from the raw field. Some formats use an exclusive end boundary. Check the imported displayed range while retaining the original."
+    },
+    {
+      "q": "Why is a birthday missing even though the contact exists?",
+      "a": "Check which account owns the contact, whether it contains a birthday and whether the resulting calendar is available and selected. An upcoming widget excludes all-day entries; that alone does not show that the source is missing. Do not create another annual record until you have compared the source and the full calendar."
     }
   ],
   "sourcesHeading": "Official event-format and calendar guidance",
@@ -673,6 +686,14 @@ export const PLANNING_EN_US: Readonly<Record<string, LocalisedArticle>> = {
     {
       "label": "Google: Event boundaries and availability fields",
       "url": "https://developers.google.com/workspace/calendar/api/v3/reference/events"
+    },
+    {
+      "label": "Apple: iCloud Birthdays calendar and changes in Contacts",
+      "url": "https://support.apple.com/en-euro/guide/icloud/mmfbbb2cf9/icloud"
+    },
+    {
+      "label": "Google: Manage birthdays on iPhone and iPad",
+      "url": "https://support.google.com/calendar/answer/13748346?co=GENIE.Platform%3DiOS&hl=en-GB"
     }
   ],
   "seeAlso": [

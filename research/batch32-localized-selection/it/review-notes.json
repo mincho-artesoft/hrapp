@@ -1,0 +1,96 @@
+{
+  "date": "2026-10-22",
+  "locale": "it",
+  "status": "drafts_ready_for_cross_review",
+  "readScope": "All four actual current objects, English and Italian combined-calendar and Exchange, read completely in untruncated extraction. Italian legacy two-section defect confirmed.",
+  "sourceGuards": {
+    "en-US:three-calendar-apps-is-two-too-many": {
+      "file": "src/app/content/en-US/articles-unify.ts",
+      "moduleSha256": "aa447f8c19d27cbfcf813adff2b067fb6a0f8c1925f78b38bd10bacd073bf98b",
+      "objectSha256": "4292a3ae34a639d9ec94926ee7c92a0481e2f7099702a0a2e944ab3b928525a3"
+    },
+    "en-US:exchange-calendars-on-an-iphone": {
+      "file": "src/app/content/en-US/articles-unify.ts",
+      "moduleSha256": "aa447f8c19d27cbfcf813adff2b067fb6a0f8c1925f78b38bd10bacd073bf98b",
+      "objectSha256": "2c9583bb4b70546ee65f562eb21b078c815aa3039027bb4ecfc57861980267ff"
+    },
+    "it:exchange-calendars-on-an-iphone": {
+      "file": "src/app/content/it/articles.ts",
+      "moduleSha256": "5425d08acc449a06501a3b337cedc05f0f20dba2a067819e510b21b3d8e09bc4",
+      "objectSha256": "65e0c51c98ad9ae03e2c7bdeb9dd77b4ac619423b0b9e5ba13139513cdffc7e6"
+    },
+    "it:three-calendar-apps-is-two-too-many": {
+      "file": "src/app/content/it/articles.ts",
+      "moduleSha256": "5425d08acc449a06501a3b337cedc05f0f20dba2a067819e510b21b3d8e09bc4",
+      "objectSha256": "3f47e925a41d90327afc2f629e4bb64d823fc201b76bc93670964e7afb1b94aa"
+    }
+  },
+  "combinedGuide": {
+    "slug": "three-calendar-apps-is-two-too-many",
+    "sections": 6,
+    "paragraphs": 12,
+    "practical": 6,
+    "faq": 3,
+    "sources": 2,
+    "claims": {},
+    "updated": "2026-10-22",
+    "descriptionUnicodeCharacters": 125,
+    "review": [
+      "All six English distinctions retained: overview/edit/availability tasks; workplace rules; provider copies; owned guest-free non-repeating two-way test; restore-selection diagnosis; notifications and tier boundaries.",
+      "No universal completeness, no-copy, automatic busy masking, delete-other-apps or refresh-deadline promise.",
+      "Consistent informal singular Italian, developer disclosure, exact primary source URLs and natural task-focused metadata.",
+      "Practical hiding step explicitly restores original selection; Google-specific synchronization consequence kept separate from permissions."
+    ],
+    "omittedUnavailableRelated": [
+      "what-calendar-sync-actually-does"
+    ]
+  },
+  "exchangeGuide": {
+    "slug": "exchange-calendars-on-an-iphone",
+    "changedPaths": [
+      "sections[1].body[1]",
+      "updated"
+    ],
+    "appendedText": "In Cloud Calendars, annota la selezione iniziale e ripristinala dopo il confronto. La selezione può influire anche sui widget e sulla programmazione delle notifiche; non presumere che riguardi soltanto la visualizzazione.",
+    "everyOtherFieldPreservedExactly": true,
+    "scope": "Only translated current-English restore-selection/widgets/notifications append; no Microsoft synchronization or all-provider pause/resume assertion."
+  },
+  "relatedRouteChecks": {
+    "icloud-google-and-outlook-in-one-view": [
+      "src/app/content/it/articles.ts"
+    ],
+    "what-a-subscription-actually-buys": [
+      "src/app/content/it/articles.ts"
+    ],
+    "calendar-notifications-missing-silent-or-duplicated": [
+      "src/app/content/it/articles-help.ts"
+    ]
+  },
+  "artifactHashes": [
+    {
+      "file": "research/batch32-localized-selection/it/exchange-calendars-on-an-iphone-before.json",
+      "rawSha256": "a8972d19b8b65b77e3b23f9879966fccc1db0a237056b88064e5e7dea446a6aa"
+    },
+    {
+      "file": "research/batch32-localized-selection/it/exchange-calendars-on-an-iphone.json",
+      "rawSha256": "0574565ca68b970075cf41ecacc7c4cf35fe368d5df5b9443dcb755007c8ce3b"
+    },
+    {
+      "file": "research/batch32-localized-selection/it/read-snapshots.json",
+      "rawSha256": "7c469f9b9e828db4102fe748205e02df1f1d94ed071915276fcde6c2840055b9"
+    },
+    {
+      "file": "research/batch32-localized-selection/it/three-calendar-apps-is-two-too-many-before.json",
+      "rawSha256": "aaeaae8388cf62ca927a4d48d72058c3fd744a529e077ed64ccea60b67348d8e"
+    },
+    {
+      "file": "research/batch32-localized-selection/it/three-calendar-apps-is-two-too-many.json",
+      "rawSha256": "175b37ff6c88cebbd88658720b2b62e9690e56b561761090bb42e5b09a00c95a"
+    }
+  ],
+  "limits": [
+    "Own translation and semantic review, not independent native-speaker approval.",
+    "No source integration, builds, deployment, ASC, native edits, runtime or account action.",
+    "No fresh provider-document verification or paid translation API."
+  ]
+}

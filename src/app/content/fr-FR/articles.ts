@@ -196,7 +196,7 @@ export const ARTICLES_FR_FR: Readonly<Record<string, LocalisedArticle>> = {
 },
 
 "exchange-calendars-on-an-iphone":{
-  "updated": "2026-10-21",
+  "updated": "2026-10-22",
   "title": "Calendriers Microsoft et Exchange sur iPhone : vérifiez d’abord la connexion",
   "short": "Calendriers Microsoft sur iPhone",
   "description": "Vérifiez le type de compte Microsoft, l’accord de l’employeur et les droits avant de connecter un calendrier. Ce qu’ajoute Cloud Calendars Premium.",
@@ -214,7 +214,7 @@ export const ARTICLES_FR_FR: Readonly<Record<string, LocalisedArticle>> = {
       "heading": "2. Séparez le compte de l’appareil Apple de la connexion de l’app",
       "body": [
         "Un calendrier professionnel déjà accessible dans Calendrier Apple via un compte d’appareil approuvé emprunte une autre voie que « Sign in with Microsoft » dans Cloud Calendars. Les calendriers exposés par le système du téléphone dépendent aussi de l’autorisation d’accès. Une configuration réussie dans les réglages Apple ne prouve pas qu’une connexion Microsoft distincte sera autorisée.",
-        "Avant d’ajouter une connexion, examinez où apparaît le calendrier existant. Si vous voyez ensuite deux versions d’une réunion, identifiez leurs sources et masquez-en une temporairement. Évitez de supprimer comptes ou événements pour déterminer quelle connexion les a produits."
+        "Avant d’ajouter une connexion, examinez où apparaît le calendrier existant. Si vous voyez ensuite deux versions d’une réunion, identifiez leurs sources et masquez-en une temporairement. Évitez de supprimer comptes ou événements pour déterminer quelle connexion les a produits. Dans Cloud Calendars, notez la sélection initiale et rétablissez-la après la comparaison. La sélection peut aussi agir sur les widgets et la programmation des notifications ; ne supposez pas qu’elle concerne uniquement l’affichage."
       ]
     },
     {
@@ -747,39 +747,96 @@ export const ARTICLES_FR_FR: Readonly<Record<string, LocalisedArticle>> = {
 },
 
   'three-calendar-apps-is-two-too-many': {
-    title: "Trois applications d'agenda, c'est deux de trop",
-    short: 'Trois applications, deux de trop',
-    description:
-      "Passer d'une application d'agenda à l'autre n'est pas une méthode de travail, c'est un impôt. Ce qu'il coûte et à quoi ressemble sa suppression.",
-    lede: "Personne n'a choisi d'avoir trois applications d'agenda. C'est arrivé un compte à la fois, et chaque ajout paraissait raisonnable.",
-    commonBelief:
-      "Que changer d'application est un désagrément mineur et non la source du vrai problème.",
-    sections: [
-      {
-        heading: "Le coût n'est pas dans les touches",
-        body: [
-          "Deux secondes de bascule, ce n'est rien. Ce qui coûte cher, c'est de répondre à des questions d'emploi du temps avec une information partielle, parce que vérifier les trois à chaque fois demande plus d'effort que la question ne semble en mériter.",
-          "Alors vous répondez depuis celle qui est ouverte, et vous corrigez ensuite. La correction est la partie chère, et elle atterrit en plus dans l'agenda de quelqu'un d'autre.",
-        ],
-      },
-      {
-        heading: 'Ce qui doit être vrai',
-        body: [
-          "Un endroit doit pouvoir dire oui ou non à propos de votre temps. C'est toute l'exigence, et aucun arrangement où la réponse vit dans plus d'une application ne la satisfait.",
-          'Tout le reste — quelle application, quelles couleurs, quelles vues — relève du goût. Ceci relève de la structure.',
-        ],
-      },
-    ],
-    claims: {
-      accounts: "Types de comptes qu'une seule vue peut contenir",
+  "title": "Réunir ses calendriers sur iPhone sans perdre le fil des événements",
+  "short": "Une vue commune, après vérification",
+  "description": "Réunissez vos calendriers sur iPhone. Vérifiez les comptes, les copies, les modifications et les alertes avant de changer vos habitudes.",
+  "lede": "Une vue commune peut vous aider à comparer les engagements de plusieurs comptes. Commencez par vérifier ce qu’elle affiche et où les modifications sont enregistrées. Ce guide est publié par Arte Soft, développeur de Cloud Calendars.",
+  "commonBelief": "Remplacer plusieurs apps de calendrier implique de fusionner tous les calendriers et de supprimer immédiatement les anciennes apps.",
+  "sections": [
+    {
+      "heading": "Définissez ce que vous attendez de la vue commune",
+      "body": [
+        "Listez les calendriers qui comptent pour une décision réelle : vos réunions professionnelles, vos rendez-vous personnels et un calendrier familial partagé, par exemple. Identifiez leurs comptes et le propriétaire de chaque calendrier. Plusieurs calendriers rattachés à un même compte Google restent des calendriers distincts.",
+        "Déterminez si vous souhaitez voir les engagements ensemble, modifier les événements d’origine ou copier vos disponibilités vers un autre compte. Ce sont des besoins différents. Une vue commune aide à comparer les horaires ; elle ne rend pas, à elle seule, un rendez-vous personnel visible dans l’outil de planification de vos collègues."
+      ]
     },
-    practical: [
-      "Choisissez l'application qui tient tous vos comptes, pas celle que vous préférez isolément.",
-      'Migrez en ajoutant des comptes, pas en déplaçant des événements : les événements restent où ils sont.',
-      "Supprimez les autres applications une fois la vue complète, sinon vous continuerez d'y jeter un œil.",
-    ],
-    seeAlso: ['icloud-google-and-outlook-in-one-view'],
-  },
+    {
+      "heading": "Vérifiez les règles de votre organisation avant la connexion",
+      "body": [
+        "Pour un compte professionnel, utilisez la méthode de connexion autorisée par votre organisation. Gardez son app approuvée lorsqu’elle est nécessaire pour répondre aux invitations, utiliser un accès délégué ou effectuer d’autres tâches professionnelles. Une app de calendrier personnelle payante ne peut pas vous accorder des droits manquants.",
+        "Si la connexion échoue, notez le type de compte et l’étape concernée au lieu de changer plusieurs fois de mot de passe ou de supprimer des comptes. Un refus d’accès, une erreur de connexion et un calendrier simplement masqué appellent des solutions différentes. Consultez votre administrateur si la méthode autorisée n’est pas claire."
+      ]
+    },
+    {
+      "heading": "Ajoutez les comptes sans supposer qu’aucune copie n’est créée",
+      "body": [
+        "Cloud Calendars peut afficher les calendriers iOS sélectionnés aux côtés des calendriers Google et Microsoft connectés. Ces connexions utilisent des copies synchronisées dans le système de calendrier de l’iPhone. Il ne s’agit donc pas de promettre un simple affichage qui ne stockerait jamais une autre représentation d’un événement.",
+        "Avant d’ajouter une seconde connexion au même compte, vérifiez comment ses calendriers apparaissent déjà sur le téléphone. Un calendrier accessible à la fois par iOS et par une connexion distincte dans l’app peut être difficile à identifier par son seul nom. Examinez le calendrier et sa source plutôt que de considérer deux entrées aux noms similaires comme interchangeables."
+      ]
+    },
+    {
+      "heading": "Vérifiez un rendez-vous de test dans les deux sens",
+      "body": [
+        "Créez un rendez-vous de test sans conséquence, avec un nom distinctif, dans le calendrier prévu où vous avez le droit d’écrire. Vérifiez sa présence dans l’interface du fournisseur. Modifiez son titre à cet endroit, revenez à la vue commune et vérifiez le même événement. Faites ensuite une petite modification depuis la vue commune et confirmez-la chez le fournisseur.",
+        "Ce contrôle porte sur votre configuration réelle ; il ne garantit aucun délai d’actualisation. Utilisez un rendez-vous ordinaire dont vous êtes propriétaire, sans invités ni répétition, afin que le dépannage n’envoie pas d’invitations modifiées à d’autres personnes. Ne changez pas les vraies réunions tant que vous ne savez pas quelle connexion pose problème."
+      ]
+    },
+    {
+      "heading": "Réduisez temporairement l’affichage avant toute suppression",
+      "body": [
+        "Si la vue commune présente des doublons, masquez temporairement un calendrier et notez quelle entrée disparaît. Comparez le compte, le calendrier, l’organisateur et l’horaire avant de conclure à deux événements enregistrés ou à deux voies d’affichage. Des noms identiques ne suffisent pas à justifier une suppression. Notez la sélection initiale et rétablissez-la après la comparaison. Dans Cloud Calendars, la sélection peut aussi agir sur les widgets, la programmation des notifications et la synchronisation Google.",
+        "Apple explique comment afficher ou masquer les calendriers à l’aide des cases de la liste des calendriers. Masquer permet un premier contrôle de l’affichage ; supprimer un événement ou un compte peut avoir des conséquences plus larges. Préservez la source et toute sauvegarde nécessaire pendant vos vérifications."
+      ]
+    },
+    {
+      "heading": "Adoptez une nouvelle habitude après les vérifications",
+      "body": [
+        "Utilisez la vue commune comme écran de planification habituel si elle couvre les calendriers dont vous avez besoin. Conservez une autre app approuvée pour les tâches qu’elle ne prend pas en charge, par exemple une procédure d’invitation propre à votre organisation. Réduire les changements d’app peut être utile sans confier toutes les fonctions de chaque compte à une seule application.",
+        "Vérifiez les notifications séparément. Voir un événement une seule fois ne prouve pas qu’une seule app ou qu’un seul appareil vous avertira. Dans Cloud Calendars, Base comprend la synchronisation Google et les vues de calendrier ; Advanced supprime les publicités, tandis que Premium ajoute les calendriers Microsoft et Microsoft Teams. Consultez les prix locaux et les droits des comptes avant de vous abonner."
+      ]
+    }
+  ],
+  "claims": {},
+  "practical": [
+    "Listez les calendriers et leurs comptes propriétaires nécessaires à votre vue commune.",
+    "Vérifiez l’accord de votre organisation et conservez les apps professionnelles requises.",
+    "Examinez les connexions existantes avant d’ajouter un nouvel accès au même fournisseur.",
+    "Suivez un rendez-vous de test jusqu’au fournisseur, puis dans le sens inverse.",
+    "Masquez le calendrier suspect avant d’envisager une suppression, puis rétablissez la sélection initiale.",
+    "Vérifiez les alertes séparément de la vue affichée."
+  ],
+  "faq": [
+    {
+      "q": "Dois-je supprimer les autres apps de calendrier ?",
+      "a": "Non. Conservez les apps requises et votre configuration actuelle pendant la vérification de la nouvelle vue. Utilisez chaque app pour les tâches que vous avez vérifiées."
+    },
+    {
+      "q": "Mes collègues verront-ils que mon temps personnel est occupé ?",
+      "a": "Une vue commune sur votre téléphone ne prouve pas qu’un autre compte reçoit vos disponibilités. Cela relève d’un besoin distinct de partage ou de synchronisation."
+    },
+    {
+      "q": "Connecter un fournisseur signifie-t-il que les données restent uniquement chez lui ?",
+      "a": "Ne le supposez pas. Cloud Calendars utilise des copies synchronisées des calendriers du fournisseur dans le système de calendrier iOS. Vérifiez la connexion utilisée et le contexte de stockage avant de connecter des calendriers sensibles."
+    }
+  ],
+  "sourcesHeading": "Conseils officiels sur la configuration et l’affichage des calendriers",
+  "sources": [
+    {
+      "label": "Apple : configurer plusieurs calendriers sur iPhone",
+      "url": "https://support.apple.com/guide/iphone/use-multiple-calendars-iph3d1110d4/ios"
+    },
+    {
+      "label": "Apple : masquer des calendriers pour rechercher l’origine des doublons",
+      "url": "https://support.apple.com/en-us/102180"
+    }
+  ],
+  "seeAlso": [
+    "icloud-google-and-outlook-in-one-view",
+    "exchange-calendars-on-an-iphone",
+    "calendar-notifications-missing-silent-or-duplicated"
+  ],
+  "updated": "2026-10-22"
+},
 
   'the-widget-that-shows-what-is-next': {
   "title": "Widgets de calendrier sur iPhone et iPad : afficher les prochains événements",

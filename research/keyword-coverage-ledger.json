@@ -630,6 +630,24 @@
       "measuredSearchVolume": null,
       "chatgptCitationEvidence": null,
       "publicationGate": "Root full primary and draft review plus independent factual review passed; no Cloud restore controls inferred."
+    },
+    {
+      "id": "birthday-source-diagnosis",
+      "keywordCandidates": [
+        "missing birthday in iPhone calendar",
+        "contact birthdays not showing",
+        "birthday calendar from contacts"
+      ],
+      "candidateBasis": "Inferred intent aliases from fresh publisher/provider task language and one bounded web discovery query; not measured Google terms/ranks or search volumes.",
+      "researchEvidence": "batch31-next-discovery.json",
+      "nativeBoundaryEvidence": "batch31-birthday-source-evidence.json",
+      "canonical": "/articles/what-an-all-day-event-really-means/",
+      "originalContribution": "Identify owning contact/provider/manual record before creating a duplicate yearly event; distinguish iCloud Contacts and Google linked/manual behavior, destructive sync-disable consequence and conditional Cloud display/edit boundaries.",
+      "status": "english_existing_canonical_expanded_published_verified",
+      "measuredRank": null,
+      "measuredSearchVolume": null,
+      "chatgptCitationEvidence": null,
+      "publicationGate": "Root full before/body +fresh primary reads; independent full draft review and exact preservation; complete visible/static/public checks. No fabricated directGooglebirthdate import/editor or universal view/alert guarantee."
     }
   ],
   "remaining": [
@@ -641,7 +659,7 @@
     "Measure equal elapsed Search Console windows and repeat controlled fixed ChatGPT prompts. IndexNow acceptance and successful delivery do not prove ranking/citation lift.",
     "Bounded editorial review now covers all50ASCdescriptions/250fields. Continue only evidence-based market/keyword refinement or concrete newly found defects; do not repeat broad copy churn.",
     "Subscription-link destination advice now attributes Apple controls and distinguishes Cloud invitation links. Arbitrary external-feed handling and released/runtime subscription visibility are not established by source inspection; no blanket support claim.",
-    "Birthday-source research and bounded native audit complete; next draft one source-identification section in existing all-day guide, then independent review. No standalone route currently justified. Current-source Contacts access must not be confused with birthday-field support or shipped release correspondence."
+    "Birthday source branch is published in existing English all-day guide. Broader provider-specific birthday workflow requires evidence before a separate route; current Contacts access is source evidence only, not shipped correspondence."
   ],
   "existingCanonicalAudit": "competitors/existing-canonical-review-20261021-batch02.json",
   "existingCanonicalAuditScope": "All nine original intent clusters now have bounded substantive English coverage review records, with explicit remaining gaps. Batch20 reviewed seven complete bodies for two clusters; batch22 records ten sharing/work, eleven widgets/views and four tasks/timezones body comparisons (overlaps are not counted as unique additions). Route inventory is not quality or exhaustive-query approval.",
@@ -1295,5 +1313,33 @@
     "nextDiscovery": "research/batch31-next-discovery.json",
     "scope": "Birthday-source task is candidate research; no new route or Cloud-specific contact support claim approved.",
     "birthdaySourceAudit": "research/batch31-birthday-source-evidence.json"
+  },
+  "thirtySecondPublication": {
+    "date": "2026-10-22",
+    "changedArticleObjects": 9,
+    "localizedModernizations": {
+      "locales": [
+        "de-DE",
+        "es-ES",
+        "fr-FR",
+        "it"
+      ],
+      "slug": "three-calendar-apps-is-two-too-many",
+      "completeSixSectionDrafts": true
+    },
+    "exactExchangeAppends": 4,
+    "birthdaySourceSection": "/articles/what-an-all-day-event-really-means/",
+    "inventory": "453articles/55English/30locales/516sitemapURLs unchanged",
+    "allActualEditions": "Both combine/Exchange canonicals have5actualeditions EN+DE+ES+FR+IT, now allcurrent and reviewed; no missing-locale editions invented.",
+    "evidence": [
+      "research/batch32-source-qa.json",
+      "research/batch32-existing-editions-qa.json",
+      "research/batch32-current-english-coverage.json",
+      "research/batch32-static-qa.json",
+      "research/batch32-metadata-qa.json",
+      "research/batch32-browser-qa.json",
+      "research/batch32-public-qa.json"
+    ],
+    "scope": "Bounded editorial and delivery evidence, not uniform all-localized quality, runtime or ranking certification."
   }
 }

@@ -1,0 +1,38 @@
+[
+  {
+    "locale": "en-US",
+    "slug": "three-calendar-apps-is-two-too-many",
+    "file": "src/app/content/en-US/articles-unify.ts",
+    "rawModuleSha256": "aa447f8c19d27cbfcf813adff2b067fb6a0f8c1925f78b38bd10bacd073bf98b",
+    "rawObjectSha256": "4292a3ae34a639d9ec94926ee7c92a0481e2f7099702a0a2e944ab3b928525a3",
+    "jsonStringifySha256": "6fa402be531406b167448c6807d62cd4cb1dac671270996bce49497d6db45187",
+    "snapshot": "three-calendar-apps-is-two-too-many.source-en.json"
+  },
+  {
+    "locale": "en-US",
+    "slug": "exchange-calendars-on-an-iphone",
+    "file": "src/app/content/en-US/articles-unify.ts",
+    "rawModuleSha256": "aa447f8c19d27cbfcf813adff2b067fb6a0f8c1925f78b38bd10bacd073bf98b",
+    "rawObjectSha256": "2c9583bb4b70546ee65f562eb21b078c815aa3039027bb4ecfc57861980267ff",
+    "jsonStringifySha256": "b0ea163be60d89730ba63833c677807e6359bc108823291f200ab8a0ba8cd7c4",
+    "snapshot": "exchange-calendars-on-an-iphone.source-en.json"
+  },
+  {
+    "locale": "es-ES",
+    "slug": "exchange-calendars-on-an-iphone",
+    "file": "src/app/content/es-ES/articles.ts",
+    "rawModuleSha256": "6965abaed93325ca667163c6ac6d6c1f341ea773604e326e96f44cef941e58da",
+    "rawObjectSha256": "831cd26a3107baa12dfd2892051269340adec7e06fd6fe95725de509dded0a5b",
+    "jsonStringifySha256": "fbeef4df764b723dff3a31665a77aac082847d7231367239926eefa92e074675",
+    "snapshot": "exchange-calendars-on-an-iphone.before.json"
+  },
+  {
+    "locale": "es-ES",
+    "slug": "three-calendar-apps-is-two-too-many",
+    "file": "src/app/content/es-ES/articles.ts",
+    "rawModuleSha256": "6965abaed93325ca667163c6ac6d6c1f341ea773604e326e96f44cef941e58da",
+    "rawObjectSha256": "2e1f0857e035fa5cbd3e04aebd17eb0b1984e31f2a3780a49786fbbfd2a907c5",
+    "jsonStringifySha256": "c31be4e4ab684331a88a89b1e302b209623a42fe8b9240316deff327b2dfd47e",
+    "snapshot": "three-calendar-apps-is-two-too-many.before.json"
+  }
+]

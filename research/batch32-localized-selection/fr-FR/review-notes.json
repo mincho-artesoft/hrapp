@@ -1,0 +1,110 @@
+{
+  "date": "2026-10-22",
+  "locale": "fr-FR",
+  "status": "drafts_ready_for_root_review",
+  "readScope": "All four current actual objects (EN+FR combined-calendar and Exchange) read in one untruncated extraction. Selection audit scope/findings and exact French recommendations reviewed; other-locale objects not claimed as complete rereads.",
+  "sourceGuards": {
+    "en-US:three-calendar-apps-is-two-too-many": {
+      "file": "src/app/content/en-US/articles-unify.ts",
+      "moduleSha256": "aa447f8c19d27cbfcf813adff2b067fb6a0f8c1925f78b38bd10bacd073bf98b",
+      "rawObjectSha256": "4292a3ae34a639d9ec94926ee7c92a0481e2f7099702a0a2e944ab3b928525a3",
+      "firstLine": 112
+    },
+    "en-US:exchange-calendars-on-an-iphone": {
+      "file": "src/app/content/en-US/articles-unify.ts",
+      "moduleSha256": "aa447f8c19d27cbfcf813adff2b067fb6a0f8c1925f78b38bd10bacd073bf98b",
+      "rawObjectSha256": "2c9583bb4b70546ee65f562eb21b078c815aa3039027bb4ecfc57861980267ff",
+      "firstLine": 410
+    },
+    "fr-FR:exchange-calendars-on-an-iphone": {
+      "file": "src/app/content/fr-FR/articles.ts",
+      "moduleSha256": "4ec1e59246b8bbe593ad20cbfcd4287fef94cc5f6425ca98faef4f501c44d209",
+      "rawObjectSha256": "838ac4add1bbcb2138578aef4f1756147fd7e533678936fd96044926b3cc7220",
+      "firstLine": 198
+    },
+    "fr-FR:three-calendar-apps-is-two-too-many": {
+      "file": "src/app/content/fr-FR/articles.ts",
+      "moduleSha256": "4ec1e59246b8bbe593ad20cbfcd4287fef94cc5f6425ca98faef4f501c44d209",
+      "rawObjectSha256": "590b2d10164a69c1d8c0e0d800428062d858fbc5c7da11bcb773f38033807140",
+      "firstLine": 749
+    }
+  },
+  "auditInput": {
+    "file": "research/batch31-selection-localization-audit.json",
+    "rawSha256": "9402503b27f5e880fa12d77f23b8e8c595f4c66580256914b1952558c3c65b34"
+  },
+  "drafts": [
+    {
+      "slug": "three-calendar-apps-is-two-too-many",
+      "scope": "Complete French modernization: six sections/twelve paragraphs/six practical steps/three FAQs/two original exact source URLs/empty claims/date22.",
+      "descriptionUnicodeCharacters": 136,
+      "semanticReview": [
+        "View together, edit originals and copy availability remain separate tasks.",
+        "Required work apps and administrator rules remain; no delete-other-apps recommendation.",
+        "Provider copies in iOS store stated explicitly; no no-copy or complete-availability guarantee.",
+        "Disposable owned guest-free non-recurring test checks both directions without a timing promise.",
+        "Duplicate diagnosis compares identity/source before deletion; original selection restored; Google synchronization named without all-provider pause/resume promise.",
+        "Base/Advanced/Premium, separate notification review, local price and permission checks retained.",
+        "Developer disclosure and provider-labelled Apple instructions retained; no invented French Cloud control labels."
+      ],
+      "relatedSubstitution": {
+        "missingFrenchSlug": "what-calendar-sync-actually-does",
+        "substitute": "exchange-calendars-on-an-iphone",
+        "reason": "No actual current French definition for sync guide; existing Microsoft connection guide is directly relevant. Other two English related slugs are available and retained."
+      }
+    },
+    {
+      "slug": "exchange-calendars-on-an-iphone",
+      "scope": "Only sections[1].body[1] exact reviewed append and updated date2026-10-22. Every other field deeply equal to before.",
+      "descriptionUnicodeCharacters": 147,
+      "appendExactToSelectionAudit": true,
+      "changedPaths": [
+        "sections[1].body[1]",
+        "updated"
+      ],
+      "semanticReview": "Restoration and conditional widgets/notification consequences only. No Google effect appended to Microsoft-specific paragraph; no Microsoft synchronization or universal pause/resume assertion."
+    }
+  ],
+  "actualRelatedDefinitionChecks": {
+    "calendar-notifications-missing-silent-or-duplicated": [
+      "src/app/content/fr-FR/articles-help.ts"
+    ],
+    "exchange-calendars-on-an-iphone": [
+      "src/app/content/fr-FR/articles.ts"
+    ],
+    "what-a-subscription-actually-buys": [
+      "src/app/content/fr-FR/articles.ts"
+    ],
+    "icloud-google-and-outlook-in-one-view": [
+      "src/app/content/fr-FR/articles.ts"
+    ]
+  },
+  "artifactHashes": [
+    {
+      "file": "research/batch32-localized-selection/fr-FR/exchange-calendars-on-an-iphone-before.json",
+      "rawSha256": "c35fe4f8a52ebce57ac17cec85ddc9f433f146559e0f50675f5a7c121383e816"
+    },
+    {
+      "file": "research/batch32-localized-selection/fr-FR/exchange-calendars-on-an-iphone.json",
+      "rawSha256": "bb9979c43bca26f085154dc37cfc8e0688f37b23683b659ddd41da0f7575a942"
+    },
+    {
+      "file": "research/batch32-localized-selection/fr-FR/read-snapshots.json",
+      "rawSha256": "f3346c61bf5b70b329b7bf4cf17c42925c4f00efa003091b58ed5d6dc5545ad1"
+    },
+    {
+      "file": "research/batch32-localized-selection/fr-FR/three-calendar-apps-is-two-too-many-before.json",
+      "rawSha256": "6362534e36cc7051e7f917eb6ed3cb2b199395216d4d0d3367fa7099f2b3bf4c"
+    },
+    {
+      "file": "research/batch32-localized-selection/fr-FR/three-calendar-apps-is-two-too-many.json",
+      "rawSha256": "9a67b909059c6ef3babc51f71dc6bc1a7c4ddc5af798d3dbb25add379464f830"
+    }
+  ],
+  "translationLimits": [
+    "Own French translation and semantic review, not independent native-speaker certification.",
+    "No new primary-source fetch or native/runtime/released-version claim.",
+    "No source integration, build, deployment, ASC, account action or paid translation API."
+  ],
+  "rootFollowup": "Review drafts, then integrate only exact intended objects with source guards; this artifact authorizes no live mutation."
+}

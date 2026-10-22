@@ -196,7 +196,7 @@ export const ARTICLES_ES_ES: Readonly<Record<string, LocalisedArticle>> = {
 },
 
 "exchange-calendars-on-an-iphone":{
-  "updated": "2026-10-21",
+  "updated": "2026-10-22",
   "title": "Calendarios Microsoft y Exchange en iPhone: comprueba primero la conexión",
   "short": "Calendarios Microsoft en iPhone",
   "description": "Revisa el tipo de cuenta Microsoft, la autorización de la empresa y los permisos antes de conectar el calendario. Qué añade Cloud Calendars Premium.",
@@ -214,7 +214,7 @@ export const ARTICLES_ES_ES: Readonly<Record<string, LocalisedArticle>> = {
       "heading": "2. Separa la cuenta del dispositivo Apple de la conexión de la app",
       "body": [
         "Un calendario laboral ya disponible en Calendario de Apple mediante una cuenta de dispositivo autorizada utiliza una vía distinta de «Sign in with Microsoft» dentro de Cloud Calendars. Los calendarios expuestos por el sistema del teléfono también dependen del permiso de acceso. Configurar correctamente la cuenta en los ajustes de Apple no demuestra que se apruebe otro inicio de sesión Microsoft.",
-        "Antes de añadir otra conexión, revisa dónde aparece el calendario laboral existente. Si después ves dos versiones de una reunión, identifica sus fuentes y oculta una temporalmente. No uses la eliminación de cuentas o eventos para diagnosticar qué conexión los generó."
+        "Antes de añadir otra conexión, revisa dónde aparece el calendario laboral existente. Si después ves dos versiones de una reunión, identifica sus fuentes y oculta una temporalmente. No uses la eliminación de cuentas o eventos para diagnosticar qué conexión los generó. En Cloud Calendars, anota la selección original y restablécela después de comparar. La selección también puede afectar a los widgets y a la programación de notificaciones; no supongas que solo cambia la visualización."
       ]
     },
     {
@@ -742,39 +742,95 @@ export const ARTICLES_ES_ES: Readonly<Record<string, LocalisedArticle>> = {
 },
 
   'three-calendar-apps-is-two-too-many': {
-    title: 'Tres aplicaciones de calendario son dos de más',
-    short: 'Tres aplicaciones son dos de más',
-    description:
-      'Cambiar de aplicación de calendario no es un flujo de trabajo, es un impuesto. Lo que cuesta y cómo se ve sustituirlo.',
-    lede: 'Nadie eligió tener tres aplicaciones de calendario. Ocurrió una cuenta cada vez, y cada añadido parecía razonable.',
-    commonBelief:
-      'Que cambiar de aplicación es una molestia menor y no el origen del problema real.',
-    sections: [
-      {
-        heading: 'El coste no son los toques',
-        body: [
-          'Dos segundos cambiando no son nada. Lo caro es que responde a preguntas de agenda con información parcial, porque comprobar las tres cada vez cuesta más de lo que la pregunta parece merecer.',
-          'Así que responde desde la que tiene abierta y corrige después. La corrección es la parte cara, y además aterriza en el calendario de otra persona.',
-        ],
-      },
-      {
-        heading: 'Qué tiene que ser cierto',
-        body: [
-          'Un sitio tiene que poder decir sí o no sobre su tiempo. Ese es todo el requisito, y no lo cumple ningún arreglo en el que la respuesta viva en más de una aplicación.',
-          'Todo lo demás — qué aplicación, qué colores, qué vistas — es preferencia. Esto es estructura.',
-        ],
-      },
-    ],
-    claims: {
-      accounts: 'Tipos de cuenta que cabe en una vista',
+  "title": "Reúne tus calendarios en iPhone sin perder de vista los eventos",
+  "short": "Una vista conjunta que hayas comprobado",
+  "description": "Reúne tus cuentas de calendario en iPhone. Comprueba destinos, duplicados, cambios en el proveedor y avisos antes de cambiar tu rutina.",
+  "lede": "Una sola vista de calendario puede ayudarte a comparar compromisos de varias cuentas. Empieza por comprobar qué incluye y dónde se guardan los cambios. Esta guía la publica Arte Soft, desarrollador de Cloud Calendars.",
+  "commonBelief": "Sustituir varias apps de calendario significa fusionar todos los calendarios y borrar las otras apps inmediatamente.",
+  "sections": [
+    {
+      "heading": "Decide para qué necesitas la vista conjunta",
+      "body": [
+        "Anota los calendarios que influyen en una decisión real de agenda: por ejemplo, las reuniones de trabajo, las citas personales y un calendario compartido del hogar. Identifica sus cuentas y quién es el propietario de cada calendario. Varios calendarios dentro de una misma cuenta de Google siguen siendo calendarios distintos.",
+        "Decide si necesitas ver los compromisos juntos, editar sus originales o copiar la disponibilidad a otra cuenta. Son tareas diferentes. Una vista conjunta ayuda a comparar horas, pero no hace por sí sola que tus compañeros vean una cita personal en el sistema de planificación del trabajo."
+      ]
     },
-    practical: [
-      'Elija la aplicación que sostiene todas sus cuentas, no la que más le gusta por separado.',
-      'Migre añadiendo cuentas, no moviendo eventos: los eventos se quedan donde están.',
-      'Borre las otras aplicaciones cuando la vista esté completa, o seguirá consultándolas.',
-    ],
-    seeAlso: ['icloud-google-and-outlook-in-one-view'],
-  },
+    {
+      "heading": "Comprueba la autorización de la empresa antes de conectar",
+      "body": [
+        "Para una cuenta de trabajo, utiliza el método de conexión que permita tu organización. Conserva su app autorizada cuando sea necesaria para responder a reuniones, acceder mediante delegación o realizar otras tareas laborales. Una app personal de pago no puede concederte permisos que no tienes.",
+        "Si falla una conexión, anota el tipo de cuenta y la fase del fallo en vez de cambiar contraseñas repetidamente o eliminar cuentas. Una decisión sobre el acceso, un error de conexión y un calendario que simplemente está oculto necesitan soluciones distintas. Consulta al administrador si no está clara la vía permitida."
+      ]
+    },
+    {
+      "heading": "Añade cuentas sin dar por hecho que no se crean copias",
+      "body": [
+        "Cloud Calendars puede mostrar los calendarios seleccionados de iOS junto a los calendarios conectados de Google y Microsoft. Sus conexiones con proveedores utilizan copias de los calendarios en el almacén de calendarios del iPhone. Esto no equivale a prometer una conexión que solo muestre datos y nunca guarde otra representación de un evento.",
+        "Antes de añadir una segunda vía a la misma cuenta, comprueba cómo aparece ya en el teléfono. Un calendario de un proveedor disponible tanto a través de iOS como mediante una conexión independiente de la app puede ser difícil de identificar solo por su nombre. Revisa el calendario y su fuente en lugar de suponer que las entradas con nombres parecidos son intercambiables."
+      ]
+    },
+    {
+      "heading": "Comprueba un evento de prueba en ambos sentidos",
+      "body": [
+        "Crea una cita de prueba sin datos sensibles y con un nombre distintivo en el calendario editable previsto. Comprueba que aparece en la vista del propio proveedor. Cambia allí su título, vuelve a la vista conjunta y revisa el mismo registro. Después realiza un pequeño cambio de prueba desde la vista conjunta y confírmalo en el proveedor.",
+        "Así compruebas tu configuración real; no estás verificando un plazo de actualización garantizado. Usa una cita normal que te pertenezca, sin invitados ni repetición, para que la prueba no envíe invitaciones modificadas a otras personas. Deja intactas las reuniones reales hasta entender qué vía está fallando."
+      ]
+    },
+    {
+      "heading": "Reduce lo que se muestra antes de borrar nada",
+      "body": [
+        "Si la vista conjunta muestra duplicados, oculta temporalmente un calendario y anota qué entrada desaparece. Compara la cuenta, el calendario, el organizador y la hora antes de decidir si hay dos registros guardados o dos vías de visualización. Los nombres repetidos no bastan para justificar una eliminación. Anota la selección original y restablécela después de comparar. En Cloud Calendars, la selección también puede afectar a los widgets, a la programación de notificaciones y a la sincronización con Google.",
+        "Apple documenta cómo mostrar u ocultar calendarios mediante las casillas de la lista de calendarios. Ocultar es una primera comprobación útil de la visualización; eliminar un registro o una cuenta puede tener efectos más amplios. Conserva la fuente y cualquier copia de seguridad necesaria mientras investigas."
+      ]
+    },
+    {
+      "heading": "Elige tu rutina después de completar las comprobaciones",
+      "body": [
+        "Utiliza la vista conjunta como pantalla habitual de planificación si incluye los calendarios que necesitas. Conserva otra app autorizada para las tareas que esa vista no admita, como un proceso de invitaciones específico de tu empresa. Reducir los cambios de app puede ser útil sin hacer que una sola aplicación se encargue de todas las funciones de cada cuenta.",
+        "Comprueba las notificaciones por separado. Ver un evento una sola vez no demuestra que solo vaya a avisarte una app o un dispositivo. Cloud Calendars Base incluye sincronización con Google y vistas de calendario; Advanced elimina anuncios y Premium añade compatibilidad con Microsoft Calendar y Teams. Revisa los precios locales y los permisos de las cuentas antes de suscribirte."
+      ]
+    }
+  ],
+  "claims": {},
+  "practical": [
+    "Enumera los calendarios y sus cuentas de origen que necesitas para planificar.",
+    "Confirma la autorización de la empresa y conserva cualquier app laboral necesaria.",
+    "Comprueba las vías de acceso existentes antes de añadir otra conexión al proveedor.",
+    "Sigue un evento de prueba desde la vista conjunta hasta el proveedor y de vuelta.",
+    "Oculta el calendario que parezca duplicado antes de plantearte borrar algo.",
+    "Revisa los avisos independientemente de lo que se ve en el calendario."
+  ],
+  "faq": [
+    {
+      "q": "¿Tengo que borrar las otras apps de calendario?",
+      "a": "No. Conserva las apps necesarias y mantén tu configuración actual mientras compruebas la nueva vista conjunta. Usa cada app para las tareas que hayas verificado."
+    },
+    {
+      "q": "¿Verán mis compañeros que estoy ocupado durante mis citas personales?",
+      "a": "Una vista conjunta en tu teléfono no demuestra que otra cuenta reciba tu disponibilidad. Eso requiere un proceso aparte de uso compartido o sincronización."
+    },
+    {
+      "q": "¿Conectar un proveedor significa que los datos se quedan solo allí?",
+      "a": "No lo des por hecho. Cloud Calendars utiliza copias de los calendarios de los proveedores en el almacén de calendarios de iOS. Comprueba la vía real de la cuenta y dónde se almacenan los datos antes de conectar calendarios sensibles."
+    }
+  ],
+  "sourcesHeading": "Guías oficiales de configuración y visibilidad de calendarios",
+  "sources": [
+    {
+      "label": "Apple: configurar varios calendarios en iPhone",
+      "url": "https://support.apple.com/guide/iphone/use-multiple-calendars-iph3d1110d4/ios"
+    },
+    {
+      "label": "Apple: ocultar calendarios al investigar duplicados",
+      "url": "https://support.apple.com/en-us/102180"
+    }
+  ],
+  "seeAlso": [
+    "icloud-google-and-outlook-in-one-view",
+    "calendar-notifications-missing-silent-or-duplicated"
+  ],
+  "updated": "2026-10-22"
+},
 
   'the-widget-that-shows-what-is-next': {
   "updated": "2026-10-22",

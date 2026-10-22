@@ -1,0 +1,84 @@
+{
+  "date": "2026-10-22",
+  "decision": "pass_no_material_blockers",
+  "readScope": "Complete Spanish combined-calendar and Exchange draft bodies read. Full current English comparators were read earlier in this batch while preparing French drafts; exact saved English sources independently matched to current source again here. Both Spanish before snapshots matched actual current objects; Exchange exact changed paths checked. No claim of new native/source-provider audit.",
+  "records": [
+    {
+      "slug": "three-calendar-apps-is-two-too-many",
+      "file": "research/batch32-localized-selection/es-ES/three-calendar-apps-is-two-too-many.json",
+      "rawSha256": "d70df73f836efe5f8c571ed42d72fe31cdbb4b6b702cf522f7570af8acdf81a4",
+      "sourceEnglishFile": "research/batch32-localized-selection/es-ES/three-calendar-apps-is-two-too-many.source-en.json",
+      "sourceEnglishRawSha256": "91096c330b4a5bf72fad2714f7955d8e9dee1a573c81376e55fecbe54ffb1da5",
+      "sourceEnglishMatchesCurrent": true,
+      "beforeMatchesCurrentSpanish": true,
+      "sections": 6,
+      "paragraphs": 12,
+      "practical": 6,
+      "faq": 3,
+      "sourceUrlsMatchEnglish": true,
+      "descriptionUnicodeCharacters": 135,
+      "updated": "2026-10-22",
+      "claims": {},
+      "related": [
+        {
+          "slug": "icloud-google-and-outlook-in-one-view",
+          "actualLocaleDefinition": true
+        },
+        {
+          "slug": "calendar-notifications-missing-silent-or-duplicated",
+          "actualLocaleDefinition": true
+        }
+      ],
+      "changedPaths": "Complete modernization; metadata, sections, practical, FAQ, sources, related links and date replaced."
+    },
+    {
+      "slug": "exchange-calendars-on-an-iphone",
+      "file": "research/batch32-localized-selection/es-ES/exchange-calendars-on-an-iphone.json",
+      "rawSha256": "84ccc6c9884adea132b201ce049a85761b547774750b338c78ecc17792965afb",
+      "sourceEnglishFile": "research/batch32-localized-selection/es-ES/exchange-calendars-on-an-iphone.source-en.json",
+      "sourceEnglishRawSha256": "2e36cca9578acfdcdbbba3980915096ccbd5abbb128ad0fd6f15a6df35909ba4",
+      "sourceEnglishMatchesCurrent": true,
+      "beforeMatchesCurrentSpanish": true,
+      "sections": 6,
+      "paragraphs": 12,
+      "practical": 6,
+      "faq": 3,
+      "sourceUrlsMatchEnglish": true,
+      "descriptionUnicodeCharacters": 148,
+      "updated": "2026-10-22",
+      "claims": {},
+      "related": [
+        {
+          "slug": "icloud-google-and-outlook-in-one-view",
+          "actualLocaleDefinition": true
+        },
+        {
+          "slug": "what-a-subscription-actually-buys",
+          "actualLocaleDefinition": true
+        }
+      ],
+      "changedPaths": [
+        "sections.1.body.1",
+        "updated"
+      ]
+    }
+  ],
+  "semanticAssessment": [
+    "Six complete combined-calendar sections retain distinct overview/edit/availability-copy tasks and multiple calendars under one account.",
+    "Workplace approval and retained required apps are explicit; no recommendation to delete other apps.",
+    "Copies in iOS calendar storage are explicit. Copy wording does not promise absence of copies or automatic propagation of busy time.",
+    "Owned non-sensitive test without guests or recurrence checks provider and combined view in both directions; no update-time guarantee.",
+    "Duplicate identity checks precede deletion; original selection restoration and conditional widget/notification/Google effects retained.",
+    "Base/Advanced/Premium, local prices, separate permissions and duplicate notification caution retained.",
+    "Exchange append is exactly limited to restore-selection and widget/notification consequences; no Microsoft synchronization or all-provider pause/resume claim.",
+    "Spanish is clear, substantive and consistent with informal singular address. No concrete language correction needed.",
+    "Missing Spanish sync canonical omitted; two existing relevant combined-guide links retained."
+  ],
+  "blockers": [],
+  "requiredCorrections": [],
+  "limits": [
+    "Bounded cross-agent semantic review, not independent native-speaker certification.",
+    "No runtime, released-build, price or fresh provider-document certification.",
+    "No draft/source changes, integration, build, deployment, API/customer or native actions; only cross-review.json written."
+  ]
+}

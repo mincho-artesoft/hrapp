@@ -1,0 +1,114 @@
+{
+  "date": "2026-10-22",
+  "status": "drafts_ready_for_parent_review",
+  "readScope": "All four current EN/DE objects fully read in one untruncated output. Prior audit first whole output truncated; relevant DE decisions/recommendations and evidence reread separately in untruncated output.",
+  "pins": [
+    {
+      "locale": "en-US",
+      "slug": "three-calendar-apps-is-two-too-many",
+      "rawModuleSha256": "aa447f8c19d27cbfcf813adff2b067fb6a0f8c1925f78b38bd10bacd073bf98b",
+      "rawObjectSha256": "4292a3ae34a639d9ec94926ee7c92a0481e2f7099702a0a2e944ab3b928525a3",
+      "jsonStringifySha256": "6fa402be531406b167448c6807d62cd4cb1dac671270996bce49497d6db45187",
+      "fullRead": true
+    },
+    {
+      "locale": "en-US",
+      "slug": "exchange-calendars-on-an-iphone",
+      "rawModuleSha256": "aa447f8c19d27cbfcf813adff2b067fb6a0f8c1925f78b38bd10bacd073bf98b",
+      "rawObjectSha256": "2c9583bb4b70546ee65f562eb21b078c815aa3039027bb4ecfc57861980267ff",
+      "jsonStringifySha256": "b0ea163be60d89730ba63833c677807e6359bc108823291f200ab8a0ba8cd7c4",
+      "fullRead": true
+    },
+    {
+      "locale": "de-DE",
+      "slug": "three-calendar-apps-is-two-too-many",
+      "rawModuleSha256": "cca838ead2777a79b3a9d11fab0d6ac553595e659ce35b998115680e565e08cc",
+      "rawObjectSha256": "39e4772dbc9a0a53233cf8e163ac756b7c50c420dc3da4acefb41ddc7d8e49c8",
+      "jsonStringifySha256": "6b5a31c13e94ded350b7fab92504633bcddb455e6676af88efcb4ac273a231d0",
+      "fullRead": true
+    },
+    {
+      "locale": "de-DE",
+      "slug": "exchange-calendars-on-an-iphone",
+      "rawModuleSha256": "cca838ead2777a79b3a9d11fab0d6ac553595e659ce35b998115680e565e08cc",
+      "rawObjectSha256": "2c4e4903c9781ebfeaf011d285f60a4f156499dbeb67bfb3b8a6d2780fa512cc",
+      "jsonStringifySha256": "96766e2ec78836cc99df2550a978e359dd896d62c9e462d4a045ad6d508ab5ec",
+      "fullRead": true
+    }
+  ],
+  "checks": [
+    {
+      "slug": "three-calendar-apps-is-two-too-many",
+      "rawDraftFileSha256": "eadd7de5375758fdbe5c302fbdb50df340029352bdf3735397e81840daea1155",
+      "jsonStringifySha256": "665c4badc46a238b7d3c49d68f748742cf436dc672faf70cc0d958807831edff",
+      "sections": 6,
+      "paragraphs": 12,
+      "practical": 6,
+      "faq": 3,
+      "sources": 2,
+      "descriptionUnicodeCharacters": 144,
+      "claimsEmpty": true,
+      "updated": "2026-10-22",
+      "sourceURLsMatchEnglish": true,
+      "related": [
+        {
+          "slug": "icloud-google-and-outlook-in-one-view",
+          "definition": "articles.ts"
+        },
+        {
+          "slug": "calendar-notifications-missing-silent-or-duplicated",
+          "definition": "articles-help.ts"
+        }
+      ]
+    },
+    {
+      "slug": "exchange-calendars-on-an-iphone",
+      "rawDraftFileSha256": "d69fb4d1c564baf6d742016d7a028cfcff0637be4b93cdf8a90dcb39de8d3bac",
+      "jsonStringifySha256": "2148889752964a8d715ae983270c075c557ce99fc80275d2a7720b930ecdd378",
+      "sections": 6,
+      "paragraphs": 12,
+      "practical": 6,
+      "faq": 3,
+      "sources": 3,
+      "descriptionUnicodeCharacters": 146,
+      "claimsEmpty": true,
+      "updated": "2026-10-22",
+      "sourceURLsMatchEnglish": true,
+      "related": [
+        {
+          "slug": "icloud-google-and-outlook-in-one-view",
+          "definition": "articles.ts"
+        },
+        {
+          "slug": "what-a-subscription-actually-buys",
+          "definition": "articles.ts"
+        }
+      ]
+    }
+  ],
+  "exchangeOnlyChangedPaths": [
+    "sections[1].body[1]",
+    "updated"
+  ],
+  "exchangeOtherFieldsUnchanged": true,
+  "overviewReview": [
+    "All six EN sections and twelve paragraphs translated in full, with six practical steps and three FAQ.",
+    "Workplace approval and required apps retained; no complete availability or delete-other-app instruction.",
+    "Provider mirrors and possible duplicate routes explicit; disposable owned nonrecurring guest-free bidirectional test is not a refresh guarantee.",
+    "Selection restoration plus widgets, notifications and Google sync effects preserved.",
+    "Base/Advanced/Premium distinctions, local price and permissions checks preserved."
+  ],
+  "relatedAdjustment": {
+    "removedEnglishSlug": "what-calendar-sync-actually-does",
+    "reason": "No actual German definition in current articles*.ts; kept two directly relevant actual German routes. Exchange existing related routes unchanged."
+  },
+  "evidence": [
+    "Current English canonical articles-unify.ts, both complete objects.",
+    "research/batch31-selection-localization-audit.json German recommendations and evidence mapping; previously recorded native selection effects reused, no new native read."
+  ],
+  "limits": [
+    "Own German translation and self-review; not independent native-speaker approval.",
+    "Source-level editorial comparison, not runtime certification.",
+    "No source integration, build, deploy, API, native or paid-service actions."
+  ]
+}

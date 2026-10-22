@@ -1,5 +1,5 @@
 {
-  "date": "2026-10-22T02:35:57.405Z",
+  "date": "2026-10-22T03:03:18.851Z",
   "status": "source_inventory_not_quality_approval",
   "articles": [
     {
@@ -1071,14 +1071,14 @@
       "descriptionCharacters": 146,
       "sections": 6,
       "faq": 3,
-      "words": 813,
+      "words": 849,
       "source": "articles.ts",
       "sources": [
         "https://learn.microsoft.com/en-us/graph/outlook-calendar-concept-overview",
         "https://learn.microsoft.com/en-us/entra/identity/enterprise-apps/user-admin-consent-overview",
         "https://support.apple.com/en-lamr/guide/iphone/iph3d1110d4/ios"
       ],
-      "updated": "2026-10-21"
+      "updated": "2026-10-22"
     },
     {
       "locale": "de-DE",
@@ -1181,15 +1181,18 @@
     {
       "locale": "de-DE",
       "slug": "three-calendar-apps-is-two-too-many",
-      "title": "Drei Kalender-Apps sind zwei zu viel",
-      "description": "Zwischen Kalender-Apps zu wechseln ist kein Arbeitsablauf, sondern eine Steuer. Was sie kostet und wie ihre Abschaffung aussieht.",
-      "descriptionCharacters": 129,
-      "sections": 2,
-      "faq": 0,
-      "words": 201,
+      "title": "Kalender auf dem iPhone bündeln und Termine im Blick behalten",
+      "description": "Kalenderkonten auf dem iPhone gemeinsam anzeigen. Prüfe Speicherziele, doppelte Verbindungen, Änderungen und Benachrichtigungen vor dem Wechsel.",
+      "descriptionCharacters": 144,
+      "sections": 6,
+      "faq": 3,
+      "words": 782,
       "source": "articles.ts",
-      "sources": [],
-      "updated": "2026-08-27"
+      "sources": [
+        "https://support.apple.com/guide/iphone/use-multiple-calendars-iph3d1110d4/ios",
+        "https://support.apple.com/en-us/102180"
+      ],
+      "updated": "2026-10-22"
     },
     {
       "locale": "de-DE",
@@ -1849,18 +1852,20 @@
       "locale": "en-US",
       "slug": "what-an-all-day-event-really-means",
       "title": "All-day calendar events: dates, availability and missing widget entries",
-      "description": "Choose dates or timed appointments, check free/busy separately and verify multi-day ranges. Find all-day entries that do not appear in an upcoming widget.",
-      "descriptionCharacters": 154,
-      "sections": 6,
-      "faq": 3,
-      "words": 873,
+      "description": "Check all-day dates, availability and widget omissions. For a missing birthday, identify the contact or calendar source before adding a duplicate.",
+      "descriptionCharacters": 146,
+      "sections": 7,
+      "faq": 4,
+      "words": 1157,
       "source": "articles-planning.ts",
       "sources": [
         "https://support.apple.com/guide/calendar/set-up-all-day-multiday-or-repeating-events-icl1018/mac",
         "https://developers.google.com/workspace/calendar/api/concepts/events-calendars",
-        "https://developers.google.com/workspace/calendar/api/v3/reference/events"
+        "https://developers.google.com/workspace/calendar/api/v3/reference/events",
+        "https://support.apple.com/en-euro/guide/icloud/mmfbbb2cf9/icloud",
+        "https://support.google.com/calendar/answer/13748346?co=GENIE.Platform%3DiOS&hl=en-GB"
       ],
-      "updated": "2026-10-21"
+      "updated": "2026-10-22"
     },
     {
       "locale": "en-US",
@@ -2598,14 +2603,14 @@
       "descriptionCharacters": 148,
       "sections": 6,
       "faq": 3,
-      "words": 1003,
+      "words": 1036,
       "source": "articles.ts",
       "sources": [
         "https://learn.microsoft.com/en-us/graph/outlook-calendar-concept-overview",
         "https://learn.microsoft.com/en-us/entra/identity/enterprise-apps/user-admin-consent-overview",
         "https://support.apple.com/en-lamr/guide/iphone/iph3d1110d4/ios"
       ],
-      "updated": "2026-10-21"
+      "updated": "2026-10-22"
     },
     {
       "locale": "es-ES",
@@ -2691,15 +2696,18 @@
     {
       "locale": "es-ES",
       "slug": "three-calendar-apps-is-two-too-many",
-      "title": "Tres aplicaciones de calendario son dos de más",
-      "description": "Cambiar de aplicación de calendario no es un flujo de trabajo, es un impuesto. Lo que cuesta y cómo se ve sustituirlo.",
-      "descriptionCharacters": 118,
-      "sections": 2,
-      "faq": 0,
-      "words": 200,
+      "title": "Reúne tus calendarios en iPhone sin perder de vista los eventos",
+      "description": "Reúne tus cuentas de calendario en iPhone. Comprueba destinos, duplicados, cambios en el proveedor y avisos antes de cambiar tu rutina.",
+      "descriptionCharacters": 135,
+      "sections": 6,
+      "faq": 3,
+      "words": 961,
       "source": "articles.ts",
-      "sources": [],
-      "updated": "2026-08-27"
+      "sources": [
+        "https://support.apple.com/guide/iphone/use-multiple-calendars-iph3d1110d4/ios",
+        "https://support.apple.com/en-us/102180"
+      ],
+      "updated": "2026-10-22"
     },
     {
       "locale": "es-ES",
@@ -3228,14 +3236,14 @@
       "descriptionCharacters": 147,
       "sections": 6,
       "faq": 3,
-      "words": 981,
+      "words": 1014,
       "source": "articles.ts",
       "sources": [
         "https://learn.microsoft.com/en-us/graph/outlook-calendar-concept-overview",
         "https://learn.microsoft.com/en-us/entra/identity/enterprise-apps/user-admin-consent-overview",
         "https://support.apple.com/en-lamr/guide/iphone/iph3d1110d4/ios"
       ],
-      "updated": "2026-10-21"
+      "updated": "2026-10-22"
     },
     {
       "locale": "fr-FR",
@@ -3321,15 +3329,18 @@
     {
       "locale": "fr-FR",
       "slug": "three-calendar-apps-is-two-too-many",
-      "title": "Trois applications d'agenda, c'est deux de trop",
-      "description": "Passer d'une application d'agenda à l'autre n'est pas une méthode de travail, c'est un impôt. Ce qu'il coûte et à quoi ressemble sa suppression.",
-      "descriptionCharacters": 144,
-      "sections": 2,
-      "faq": 0,
-      "words": 217,
+      "title": "Réunir ses calendriers sur iPhone sans perdre le fil des événements",
+      "description": "Réunissez vos calendriers sur iPhone. Vérifiez les comptes, les copies, les modifications et les alertes avant de changer vos habitudes.",
+      "descriptionCharacters": 136,
+      "sections": 6,
+      "faq": 3,
+      "words": 955,
       "source": "articles.ts",
-      "sources": [],
-      "updated": "2026-08-27"
+      "sources": [
+        "https://support.apple.com/guide/iphone/use-multiple-calendars-iph3d1110d4/ios",
+        "https://support.apple.com/en-us/102180"
+      ],
+      "updated": "2026-10-22"
     },
     {
       "locale": "fr-FR",
@@ -4386,14 +4397,14 @@
       "descriptionCharacters": 143,
       "sections": 6,
       "faq": 3,
-      "words": 904,
+      "words": 935,
       "source": "articles.ts",
       "sources": [
         "https://learn.microsoft.com/en-us/graph/outlook-calendar-concept-overview",
         "https://learn.microsoft.com/en-us/entra/identity/enterprise-apps/user-admin-consent-overview",
         "https://support.apple.com/en-lamr/guide/iphone/iph3d1110d4/ios"
       ],
-      "updated": "2026-10-21"
+      "updated": "2026-10-22"
     },
     {
       "locale": "it",
@@ -4479,15 +4490,18 @@
     {
       "locale": "it",
       "slug": "three-calendar-apps-is-two-too-many",
-      "title": "Tre app di calendario sono due di troppo",
-      "description": "Passare da un'app di calendario all'altra non è un metodo di lavoro, è una tassa. Quanto costa e com'è fatto toglierla.",
-      "descriptionCharacters": 119,
-      "sections": 2,
-      "faq": 0,
-      "words": 198,
+      "title": "Riunisci i calendari su iPhone senza perdere di vista gli eventi",
+      "description": "Riunisci i calendari su iPhone. Verifica account, copie, modifiche e notifiche prima di cambiare il tuo modo di organizzarti.",
+      "descriptionCharacters": 125,
+      "sections": 6,
+      "faq": 3,
+      "words": 919,
       "source": "articles.ts",
-      "sources": [],
-      "updated": "2026-08-27"
+      "sources": [
+        "https://support.apple.com/guide/iphone/use-multiple-calendars-iph3d1110d4/ios",
+        "https://support.apple.com/en-us/102180"
+      ],
+      "updated": "2026-10-22"
     },
     {
       "locale": "it",

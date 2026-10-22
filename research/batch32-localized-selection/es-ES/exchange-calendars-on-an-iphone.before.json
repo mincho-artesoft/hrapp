@@ -1,0 +1,94 @@
+{
+  "updated": "2026-10-21",
+  "title": "Calendarios Microsoft y Exchange en iPhone: comprueba primero la conexión",
+  "short": "Calendarios Microsoft en iPhone",
+  "description": "Revisa el tipo de cuenta Microsoft, la autorización de la empresa y los permisos antes de conectar el calendario. Qué añade Cloud Calendars Premium.",
+  "lede": "«Calendario Exchange» puede significar servicios y normas laborales distintos. Antes de cambiar ajustes o comprar un plan, identifica dónde se aloja tu buzón y qué conexión permite tu organización. Esta guía la escribe Arte Soft, desarrollador de Cloud Calendars.",
+  "commonBelief": "Toda app con inicio de sesión Microsoft debe funcionar con cualquier servidor Exchange y calendario laboral compartido.",
+  "sections": [
+    {
+      "heading": "1. Identifica el buzón, no solo la app Outlook",
+      "body": [
+        "Outlook es una app y también un nombre usado para servicios de Microsoft. Tener una cuenta en Outlook no indica qué servidor aloja su calendario. Pregunta si usas una cuenta Microsoft personal, un buzón Microsoft 365 en Exchange Online o una instalación Exchange propia de la organización.",
+        "Cloud Calendars ofrece inicio de sesión Microsoft y usa la conexión a su servicio de calendarios. No es una configuración universal mediante dirección de servidor y contraseña para cualquier Exchange. Microsoft documenta su API de calendario por separado de la configuración genérica de Exchange: confirma la vía prevista para tu buzón en lugar de adivinar un servidor."
+      ]
+    },
+    {
+      "heading": "2. Separa la cuenta del dispositivo Apple de la conexión de la app",
+      "body": [
+        "Un calendario laboral ya disponible en Calendario de Apple mediante una cuenta de dispositivo autorizada utiliza una vía distinta de «Sign in with Microsoft» dentro de Cloud Calendars. Los calendarios expuestos por el sistema del teléfono también dependen del permiso de acceso. Configurar correctamente la cuenta en los ajustes de Apple no demuestra que se apruebe otro inicio de sesión Microsoft.",
+        "Antes de añadir otra conexión, revisa dónde aparece el calendario laboral existente. Si después ves dos versiones de una reunión, identifica sus fuentes y oculta una temporalmente. No uses la eliminación de cuentas o eventos para diagnosticar qué conexión los generó."
+      ]
+    },
+    {
+      "heading": "3. Comprueba Premium y la autorización de la organización por separado",
+      "body": [
+        "Premium añade funciones de Microsoft Calendar y Microsoft Teams a Cloud Calendars. Advanced elimina anuncios de Base; no desbloquea el inicio de sesión Microsoft de la app. Revisa el precio local actual y el periodo de facturación en lugar de confiar en un precio de otra región.",
+        "Una suscripción no puede anular la decisión de una empresa sobre el acceso de apps. Microsoft permite controlar el consentimiento del usuario y exigir aprobación administrativa. Si la página solicita aprobación, facilita al administrador el nombre de la app, la cuenta prevista y el mensaje exacto. No publiques el calendario laboral ni cambies a una cuenta personal para eludir esa decisión."
+      ]
+    },
+    {
+      "heading": "4. Diagnostica en qué fase se produjo el fallo",
+      "body": [
+        "Si el inicio de sesión no termina, revisa la identidad seleccionada, la red y el mensaje de Microsoft. Una solicitud de aprobación es distinta de una sesión caducada o un fallo de conexión. No hay base para suponer que todo fallo sea una política de la empresa.",
+        "Si entras pero falta un calendario, revisa el grupo de la cuenta y la selección en Cloud Calendars y compara con la misma cuenta en Outlook. Si falta un calendario compartido o delegado mientras aparece el tuyo, investiga el acceso a ese calendario concreto. Las capacidades generales de la API de Microsoft no garantizan todos los casos de buzones compartidos o delegación en esta app."
+      ]
+    },
+    {
+      "heading": "5. Distingue una copia visible de una actualización confirmada",
+      "body": [
+        "La conexión Microsoft usa copias de calendarios en el sistema del iPhone. Su destino de almacenamiento puede depender de las fuentes disponibles en el dispositivo. En una cuenta laboral, confirma que esta disposición cumple los requisitos de la organización antes de usarla para reuniones sensibles; no supongas que la copia permanece solo en el buzón original.",
+        "Por ejemplo, un calendario de equipo puede mostrar una reunión y rechazar tu cambio por falta de permisos. Una edición local correcta no es la comprobación final. Compara el evento en Outlook con la misma cuenta. Prueba solo un evento desechable en un calendario tuyo, sin invitar a compañeros ni modificar una reunión establecida."
+      ]
+    },
+    {
+      "heading": "6. Mantén explícitas la propiedad y la disponibilidad",
+      "body": [
+        "Una reunión organizada por un compañero no es tuya para trasladarla o reescribirla solo porque aparezca junto a tus planes personales. Ten presentes el organizador, el calendario laboral y los participantes previstos. Usa el proceso autorizado del proveedor si la acción necesaria no está disponible o el cambio no llega al servidor.",
+        "Del mismo modo, mostrar una cita personal junto al trabajo no bloquea automáticamente la disponibilidad laboral ni oculta sus detalles como una entrada genérica de ocupado. Si ese es tu objetivo, pregunta qué método admite la organización y verifica el resultado. Un enlace de solo lectura no sustituye el acceso editable, y publicar un enlace no es un atajo para resolver problemas."
+      ]
+    }
+  ],
+  "claims": {},
+  "practical": [
+    "Identifica dónde se aloja el buzón y qué conexión permite la organización.",
+    "Comprueba si el calendario ya llega al iPhone mediante una cuenta del dispositivo.",
+    "Revisa Premium por separado del consentimiento Microsoft y los permisos del calendario.",
+    "Elige la identidad prevista al iniciar sesión y conserva cualquier error para soporte.",
+    "Después de entrar, selecciona el calendario necesario y compara un evento reciente en Outlook.",
+    "Confirma un cambio de prueba autorizado en el proveedor; deja intactas invitaciones y reuniones recurrentes."
+  ],
+  "faq": [
+    {
+      "q": "¿Premium garantiza que se conecte el Exchange de mi empresa?",
+      "a": "No. Premium habilita las funciones Microsoft de la app. Compatibilidad del buzón, aprobación de la organización y permisos de cada calendario son requisitos separados. Confirma la conexión con el administrador antes de dar una instalación Exchange por compatible."
+    },
+    {
+      "q": "¿Por qué funciona Outlook y se rechaza otra app de calendario?",
+      "a": "Las apps pueden tener permisos y requisitos de aprobación distintos. Que Outlook funcione sirve de referencia para la cuenta, pero no establece autorización para otra app. Usa el error real o la solicitud de aprobación para identificar el problema."
+    },
+    {
+      "q": "¿Puedo usar un enlace público si se bloquea el inicio de sesión Microsoft?",
+      "a": "No publiques información laboral para sortear un bloqueo. Una suscripción suele ser una vista de solo lectura, no equivalente al acceso editable. Pide al propietario o administrador un método aprobado; no supongas que publicar un enlace esté permitido."
+    }
+  ],
+  "sourcesHeading": "Fuentes y orientación de los proveedores",
+  "sources": [
+    {
+      "label": "Microsoft: API de calendario de Outlook y datos de buzón compatibles",
+      "url": "https://learn.microsoft.com/en-us/graph/outlook-calendar-concept-overview"
+    },
+    {
+      "label": "Microsoft: consentimiento del usuario y del administrador",
+      "url": "https://learn.microsoft.com/en-us/entra/identity/enterprise-apps/user-admin-consent-overview"
+    },
+    {
+      "label": "Apple: varios calendarios y suscripciones de solo lectura",
+      "url": "https://support.apple.com/en-lamr/guide/iphone/iph3d1110d4/ios"
+    }
+  ],
+  "seeAlso": [
+    "icloud-google-and-outlook-in-one-view",
+    "what-a-subscription-actually-buys"
+  ]
+}

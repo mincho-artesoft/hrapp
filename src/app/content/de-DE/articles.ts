@@ -196,7 +196,7 @@ export const ARTICLES_DE_DE: Readonly<Record<string, LocalisedArticle>> = {
 },
 
 "exchange-calendars-on-an-iphone":{
-  "updated": "2026-10-21",
+  "updated": "2026-10-22",
   "title": "Microsoft- und Exchange-Kalender auf dem iPhone: zuerst die Verbindung prüfen",
   "short": "Microsoft-Kalender auf dem iPhone",
   "description": "Prüfe Microsoft-Kontotyp, Arbeitgeberfreigabe und Rechte, bevor du einen Arbeitskalender verbindest. Erfahre, was Cloud Calendars Premium ergänzt.",
@@ -214,7 +214,7 @@ export const ARTICLES_DE_DE: Readonly<Record<string, LocalisedArticle>> = {
       "heading": "2. Trenne Apples Gerätekonto von der App-Verbindung",
       "body": [
         "Ein über ein genehmigtes Gerätekonto bereits in Apple Kalender verfügbarer Arbeitskalender nutzt einen anderen Weg als „Sign in with Microsoft“ in Cloud Calendars. Auch Kalender aus dem Kalendersystem des Telefons benötigen Kalenderzugriff. Eine erfolgreiche Einrichtung in Apples Einstellungen beweist nicht, dass eine separate Microsoft-Anmeldung genehmigt wird.",
-        "Prüfe vor einer weiteren Verbindung, wo der bestehende Arbeitskalender erscheint. Siehst du später zwei Versionen einer Besprechung, bestimme ihre Kalenderquellen und blende eine vorübergehend aus. Entferne keine Konten und lösche keine Ereignisse, um herauszufinden, welche Verbindung sie erzeugt hat."
+        "Prüfe vor einer weiteren Verbindung, wo der bestehende Arbeitskalender erscheint. Siehst du später zwei Versionen einer Besprechung, bestimme ihre Kalenderquellen und blende eine vorübergehend aus. Entferne keine Konten und lösche keine Ereignisse, um herauszufinden, welche Verbindung sie erzeugt hat. Notiere in Cloud Calendars die ursprüngliche Auswahl und stelle sie nach dem Vergleich wieder her. Die Auswahl kann auch Widgets und die Planung von Benachrichtigungen beeinflussen; gehe nicht davon aus, dass sie nur die Anzeige verändert."
       ]
     },
     {
@@ -837,39 +837,95 @@ export const ARTICLES_DE_DE: Readonly<Record<string, LocalisedArticle>> = {
 },
 
   'three-calendar-apps-is-two-too-many': {
-    title: 'Drei Kalender-Apps sind zwei zu viel',
-    short: 'Drei Apps sind zwei zu viel',
-    description:
-      'Zwischen Kalender-Apps zu wechseln ist kein Arbeitsablauf, sondern eine Steuer. Was sie kostet und wie ihre Abschaffung aussieht.',
-    lede: 'Niemand hat sich entschieden, drei Kalender-Apps zu führen. Es ist Konto für Konto passiert, und jede einzelne Ergänzung wirkte vernünftig.',
-    commonBelief:
-      'Dass App-Wechsel eine kleine Unbequemlichkeit sind und nicht die Quelle des eigentlichen Problems.',
-    sections: [
-      {
-        heading: 'Der Preis ist nicht das Tippen',
-        body: [
-          'Zwei Sekunden Umschalten sind nichts. Teuer ist, dass Sie Terminfragen aus unvollständiger Information beantworten, weil jedes Mal alle drei zu prüfen mehr Mühe ist, als die Frage zu verdienen scheint.',
-          'Also antworten Sie aus der App, die gerade offen ist, und korrigieren später. Die Korrektur ist der teure Teil, und sie landet auch im Kalender von jemand anderem.',
-        ],
-      },
-      {
-        heading: 'Was tatsächlich wahr sein muss',
-        body: [
-          'Ein Ort muss Ja oder Nein zu Ihrer Zeit sagen können. Das ist die ganze Anforderung, und keine Anordnung erfüllt sie, bei der die Antwort in mehr als einer App liegt.',
-          'Alles andere — welche App, welche Farben, welche Ansichten — ist Geschmack. Das hier ist Struktur.',
-        ],
-      },
-    ],
-    claims: {
-      accounts: 'Kontotypen, die eine Ansicht fassen kann',
+  "title": "Kalender auf dem iPhone bündeln und Termine im Blick behalten",
+  "short": "Eine geprüfte Übersicht statt ständiger App-Wechsel",
+  "description": "Kalenderkonten auf dem iPhone gemeinsam anzeigen. Prüfe Speicherziele, doppelte Verbindungen, Änderungen und Benachrichtigungen vor dem Wechsel.",
+  "lede": "Eine gemeinsame Kalenderansicht hilft dir, Termine aus verschiedenen Konten zu vergleichen. Prüfe zuerst, was sie enthält und wo Änderungen gespeichert werden. Dieser Leitfaden stammt von Arte Soft, dem Entwickler von Cloud Calendars.",
+  "commonBelief": "Wer mehrere Kalender-Apps ersetzt, müsse alle Kalender zusammenführen und die bisherigen Apps sofort löschen.",
+  "sections": [
+    {
+      "heading": "Kläre, wofür du die Übersicht brauchst",
+      "body": [
+        "Notiere die Kalender, die für eine konkrete Terminentscheidung wichtig sind: etwa Besprechungen bei der Arbeit, private Termine und ein gemeinsamer Haushaltskalender. Kläre, zu welchen Konten sie gehören und wem jeder Kalender gehört. Auch mehrere Kalender unter demselben Google-Konto bleiben eigenständige Kalender.",
+        "Entscheide, ob du Termine gemeinsam sehen, ihre Originale bearbeiten oder Verfügbarkeit in ein anderes Konto übertragen möchtest. Das sind unterschiedliche Aufgaben. Eine gemeinsame Ansicht hilft beim Zeitvergleich; allein dadurch sehen Kollegen einen privaten Termin noch nicht in ihrem beruflichen Planungssystem."
+      ]
     },
-    practical: [
-      'Wählen Sie die App, die alle Ihre Konten hält, nicht die, die Ihnen einzeln am besten gefällt.',
-      'Wandern Sie über Konten, nicht über Termine — die Termine bleiben, wo sie sind.',
-      'Löschen Sie die anderen Apps, sobald die Ansicht vollständig ist, sonst schauen Sie weiter hinein.',
-    ],
-    seeAlso: ['icloud-google-and-outlook-in-one-view'],
-  },
+    {
+      "heading": "Prüfe vor dem Verbinden die Freigabe am Arbeitsplatz",
+      "body": [
+        "Verwende für ein Arbeitskonto den Verbindungsweg, den deine Organisation erlaubt. Behalte die genehmigte App, wenn du sie für Besprechungsantworten, delegierten Zugriff oder andere Arbeitsaufgaben brauchst. Auch eine kostenpflichtige private Kalender-App kann dir keine fehlenden Rechte erteilen.",
+        "Scheitert eine Verbindung, notiere Kontotyp und fehlgeschlagenen Schritt, statt wiederholt Passwörter zu ändern oder Konten zu löschen. Eine Zugriffsentscheidung, ein Verbindungsfehler und ein lediglich ausgeblendeter Kalender erfordern unterschiedliche Lösungen. Frage bei der Administration nach, wenn der erlaubte Weg unklar ist."
+      ]
+    },
+    {
+      "heading": "Berücksichtige Kalenderkopien beim Hinzufügen von Konten",
+      "body": [
+        "Cloud Calendars kann ausgewählte iOS-Kalender neben verbundenen Google- und Microsoft-Kalendern anzeigen. Die Anbieter-Verbindungen verwenden gespiegelte Kalender im Kalenderspeicher des iPhones. Das ist keine Zusage einer reinen Anzeigeverbindung, die niemals eine weitere Darstellung eines Ereignisses speichert.",
+        "Prüfe vor einem zweiten Verbindungsweg zum selben Konto, wie es bereits auf dem Telefon erscheint. Ein Anbieter-Kalender, der sowohl über iOS als auch über eine separate App-Verbindung verfügbar ist, lässt sich am Namen allein möglicherweise nicht eindeutig erkennen. Prüfe Kalender und Quelle, statt ähnlich benannte Einträge für austauschbar zu halten."
+      ]
+    },
+    {
+      "heading": "Prüfe einen entbehrlichen Testtermin in beide Richtungen",
+      "body": [
+        "Erstelle einen harmlosen Testtermin mit einem eindeutigen Namen im vorgesehenen beschreibbaren Kalender. Prüfe ihn in der eigenen Ansicht des Anbieters. Ändere dort den Titel, kehre zur gemeinsamen Ansicht zurück und kontrolliere denselben Eintrag. Nimm anschließend in der gemeinsamen Ansicht eine kleine Teständerung vor und bestätige sie beim Anbieter.",
+        "Damit prüfst du deine tatsächliche Einrichtung, nicht eine garantierte Aktualisierungszeit. Verwende einen gewöhnlichen Termin, der dir gehört, ohne Gäste oder Wiederholung. So verschickt die Fehlersuche keine geänderten Einladungen an andere. Lasse echte Besprechungen unverändert, bis du weißt, welcher Verbindungsweg nicht funktioniert."
+      ]
+    },
+    {
+      "heading": "Grenze die Ansicht ein, bevor du etwas löschst",
+      "body": [
+        "Zeigt die Übersicht doppelte Einträge, blende einen Kalender vorübergehend aus und notiere, welcher Eintrag verschwindet. Vergleiche Konto, Kalender, Organisator und Uhrzeit, bevor du entscheidest, ob zwei gespeicherte Ereignisse oder zwei Anzeigewege vorliegen. Gleiche Namen reichen als Grund zum Löschen nicht aus. Notiere die ursprüngliche Auswahl und stelle sie nach dem Vergleich wieder her. In Cloud Calendars kann die Auswahl auch Widgets, die Planung von Benachrichtigungen und die Google-Synchronisierung beeinflussen.",
+        "Apple beschreibt das Ein- und Ausblenden über die Auswahlfelder der Kalenderliste. Ausblenden eignet sich als erste Prüfung der Anzeige; das Löschen eines Ereignisses oder Kontos kann weitergehende Folgen haben. Bewahre die Quelle und eine gegebenenfalls benötigte Sicherung während der Untersuchung auf."
+      ]
+    },
+    {
+      "heading": "Lege deinen Alltag erst nach den Prüfungen fest",
+      "body": [
+        "Nutze die gemeinsame Ansicht als deinen üblichen Planungsbildschirm, wenn sie die benötigten Kalender abdeckt. Behalte eine weitere genehmigte App für Aufgaben, die die Übersicht nicht unterstützt, etwa einen besonderen Einladungsablauf am Arbeitsplatz. Weniger App-Wechsel können hilfreich sein, ohne dass eine einzige App jede Kontofunktion übernehmen muss.",
+        "Prüfe Benachrichtigungen gesondert. Dass ein Ereignis nur einmal sichtbar ist, bedeutet nicht, dass dich nur eine App oder ein Gerät daran erinnert. Cloud Calendars Base enthält Google-Synchronisierung und Kalenderansichten. Advanced entfernt Werbung, Premium ergänzt Microsoft-Kalender und Teams. Prüfe lokale Preise und Kontoberechtigungen, bevor du ein Abonnement abschließt."
+      ]
+    }
+  ],
+  "claims": {},
+  "practical": [
+    "Liste die benötigten Kalender und die zugehörigen Eigentümerkonten für deine Planungsübersicht auf.",
+    "Kläre die Freigabe am Arbeitsplatz und behalte erforderliche Arbeits-Apps.",
+    "Prüfe bestehende Verbindungswege, bevor du eine weitere Anbieter-Verbindung hinzufügst.",
+    "Verfolge einen entbehrlichen Testtermin zum Anbieter und zurück.",
+    "Blende einen vermutlich doppelt eingebundenen Kalender aus, bevor du etwas löschst.",
+    "Prüfe Erinnerungen unabhängig von der sichtbaren Kalenderansicht."
+  ],
+  "faq": [
+    {
+      "q": "Muss ich die anderen Kalender-Apps löschen?",
+      "a": "Nein. Behalte erforderliche Apps und deine bisherige Einrichtung, während du die neue Übersicht prüfst. Nutze jede App für die Aufgaben, die du überprüft hast."
+    },
+    {
+      "q": "Sehen meine Kollegen, dass meine private Zeit belegt ist?",
+      "a": "Eine gemeinsame Ansicht auf deinem Telefon bestätigt nicht, dass ein anderes Konto deine Verfügbarkeit erhält. Dafür brauchst du eine gesonderte Freigabe oder Synchronisierung."
+    },
+    {
+      "q": "Bleiben Daten bei einer Anbieter-Verbindung ausschließlich beim Anbieter?",
+      "a": "Gehe nicht davon aus. Cloud Calendars verwendet gespiegelte Anbieter-Kalender im iOS-Kalenderspeicher. Prüfe den tatsächlichen Verbindungsweg und die Speicherumgebung, bevor du sensible Kalender verbindest."
+    }
+  ],
+  "sourcesHeading": "Offizielle Hinweise zur Einrichtung und Sichtbarkeit von Kalendern",
+  "sources": [
+    {
+      "label": "Apple: Mehrere Kalender auf dem iPhone einrichten",
+      "url": "https://support.apple.com/guide/iphone/use-multiple-calendars-iph3d1110d4/ios"
+    },
+    {
+      "label": "Apple: Kalender bei der Suche nach Duplikaten ausblenden",
+      "url": "https://support.apple.com/en-us/102180"
+    }
+  ],
+  "seeAlso": [
+    "icloud-google-and-outlook-in-one-view",
+    "calendar-notifications-missing-silent-or-duplicated"
+  ],
+  "updated": "2026-10-22"
+},
 
   'the-widget-that-shows-what-is-next': {
   "updated": "2026-10-22",

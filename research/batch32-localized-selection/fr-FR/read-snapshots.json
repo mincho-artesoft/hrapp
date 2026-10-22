@@ -1,0 +1,340 @@
+{
+  "en-US:three-calendar-apps-is-two-too-many": {
+    "object": {
+      "title": "Combine calendar apps on iPhone without losing track of events",
+      "short": "Replace app switching with a checked overview",
+      "description": "Bring calendar accounts into one iPhone overview. Check event destinations, duplicate routes, write-back and notifications before changing your daily workflow.",
+      "lede": "A single calendar view can help you compare commitments across accounts. Start by checking what it includes and where changes are saved. This guide is published by Arte Soft, the developer of Cloud Calendars.",
+      "commonBelief": "Replacing several calendar apps means merging all calendars and deleting the old apps immediately.",
+      "sections": [
+        {
+          "heading": "Choose the job you need the overview to do",
+          "body": [
+            "Write down the calendars that affect a real scheduling decision: your work meetings, personal appointments and a shared household schedule, for example. Identify their accounts and who owns each calendar. Several calendars under one Google account are still separate calendars.",
+            "Decide whether you need to see commitments together, edit their originals, or copy availability into another account. These are different jobs. A combined view helps you compare times; it does not by itself make colleagues see a personal appointment in their work scheduling system."
+          ]
+        },
+        {
+          "heading": "Check workplace approval before connecting",
+          "body": [
+            "For a work account, use the connection method your organisation permits. Keep its approved app available when it is required for meeting responses, delegated access or other work tasks. A paid personal calendar app cannot grant missing permissions.",
+            "If a connection fails, record which account type and stage failed rather than repeatedly changing passwords or deleting accounts. An access decision, a connection error and a calendar that is merely hidden need different remedies. Ask your administrator when the permitted route is unclear."
+          ]
+        },
+        {
+          "heading": "Add accounts without assuming there are no copies",
+          "body": [
+            "Cloud Calendars can present selected iOS calendars alongside connected Google and Microsoft calendars. Its provider connections use mirrored calendars in the iPhone calendar store. This is different from promising a display-only connection that never stores another representation of an event.",
+            "Before adding a second route to the same account, check how it already appears on the phone. A provider calendar available through iOS and through a separate app connection can be confusing to identify by name alone. Inspect the calendar and source instead of assuming similarly named entries are interchangeable."
+          ]
+        },
+        {
+          "heading": "Verify one disposable appointment in both directions",
+          "body": [
+            "Create a harmless test appointment with a distinctive name in the intended writable calendar. Confirm it in the provider’s own view. Change its title there, return to the combined view and check the same record. Then make a small test change from the combined view and confirm it at the provider.",
+            "This checks your actual setup; it is not a guaranteed refresh-time test. Use an ordinary appointment you own, without guests or recurrence, so troubleshooting does not send changed invitations to other people. Keep real meetings unchanged until you understand which route is failing."
+          ]
+        },
+        {
+          "heading": "Narrow the view before deleting anything",
+          "body": [
+            "If the overview has duplicates, temporarily hide one calendar and note which entry disappears. Compare account, calendar, organiser and time before deciding whether you have two stored records or two display routes. Repeated names are not enough evidence for deletion. Record the original selection and restore it after comparing. In Cloud Calendars, selection can also affect widgets, notification scheduling and Google synchronization.",
+            "Apple documents showing or hiding calendars using the calendar-list checkboxes. Hiding is a useful first display check; deleting a record or account can have wider effects. Preserve the source and any needed backup while you investigate."
+          ]
+        },
+        {
+          "heading": "Choose a routine after the checks pass",
+          "body": [
+            "Keep the combined view as your usual planning screen if it covers the calendars you need. Keep another approved app for a task the overview does not support, such as a workplace-specific invitation workflow. Fewer switches can be useful without making one app responsible for every account function.",
+            "Check notifications separately. Seeing an event once does not establish that only one app or device will alert you. Cloud Calendars Base includes Google sync and calendar views; Advanced removes ads, while Premium adds Microsoft Calendar and Teams support. Check local prices and account permissions before subscribing."
+          ]
+        }
+      ],
+      "claims": {},
+      "practical": [
+        "List the calendars and owning accounts needed for your planning overview.",
+        "Confirm workplace approval and keep any required work app.",
+        "Check existing account routes before adding another provider connection.",
+        "Trace one disposable appointment to the provider and back.",
+        "Hide a suspected duplicate calendar before considering deletion.",
+        "Review alerts independently of the visible calendar view."
+      ],
+      "faq": [
+        {
+          "q": "Must I delete the other calendar apps?",
+          "a": "No. Keep required apps and preserve your current setup while checking the new overview. Use each app for the tasks you have verified."
+        },
+        {
+          "q": "Will my colleagues see that my personal time is busy?",
+          "a": "A combined view on your phone does not establish that another account receives availability. That is a separate sharing or synchronization requirement."
+        },
+        {
+          "q": "Does connecting a provider mean data stays only at the provider?",
+          "a": "Do not assume that. Cloud Calendars uses mirrored provider calendars in the iOS calendar store. Check the actual account route and storage context before connecting sensitive calendars."
+        }
+      ],
+      "sourcesHeading": "Official calendar setup and visibility guidance",
+      "sources": [
+        {
+          "label": "Apple: Set up multiple calendars on iPhone",
+          "url": "https://support.apple.com/guide/iphone/use-multiple-calendars-iph3d1110d4/ios"
+        },
+        {
+          "label": "Apple: Hide calendars when investigating duplicates",
+          "url": "https://support.apple.com/en-us/102180"
+        }
+      ],
+      "seeAlso": [
+        "icloud-google-and-outlook-in-one-view",
+        "what-calendar-sync-actually-does",
+        "calendar-notifications-missing-silent-or-duplicated"
+      ],
+      "updated": "2026-10-22"
+    },
+    "file": "src/app/content/en-US/articles-unify.ts",
+    "moduleSha256": "aa447f8c19d27cbfcf813adff2b067fb6a0f8c1925f78b38bd10bacd073bf98b",
+    "rawObjectSha256": "4292a3ae34a639d9ec94926ee7c92a0481e2f7099702a0a2e944ab3b928525a3",
+    "firstLine": 112
+  },
+  "en-US:exchange-calendars-on-an-iphone": {
+    "object": {
+      "updated": "2026-10-22",
+      "title": "Microsoft and Exchange calendars on iPhone: check the connection first",
+      "short": "Microsoft calendars on iPhone",
+      "description": "Check Microsoft account type, employer approval and permissions before connecting a work calendar. See what Cloud Calendars Premium adds.",
+      "lede": "“Exchange calendar” can mean different services and different workplace rules. Before changing settings or buying a plan, identify where your mailbox is hosted and which connection your organization permits. This guide is written by Arte Soft, the developer of Cloud Calendars.",
+      "commonBelief": "Any app with Microsoft sign-in must work with every Exchange server and every shared work calendar.",
+      "sections": [
+        {
+          "heading": "Identify the mailbox, not just the Outlook app",
+          "body": [
+            "Outlook is an app as well as a name used for Microsoft services. Having an account in Outlook does not tell you which server hosts its calendar. Ask whether you have a personal Microsoft account, a Microsoft 365 mailbox in Exchange Online, or an organization’s own Exchange installation.",
+            "Cloud Calendars provides Microsoft sign-in and uses Microsoft’s calendar service connection. This is not a universal server-address and password setup for every Exchange installation. Microsoft documents its calendar API separately from generic Exchange configuration; confirm the intended route for your mailbox rather than guessing a server name."
+          ]
+        },
+        {
+          "heading": "Separate Apple’s device account from the app connection",
+          "body": [
+            "A work calendar already available to Apple Calendar through an approved device account is a different route from using “Sign in with Microsoft” inside Cloud Calendars. Calendars exposed by the phone’s calendar system also depend on calendar permission. A successful account setup in Apple’s settings does not prove a separate Microsoft sign-in will be approved.",
+            "Before adding another connection, inspect where the existing work calendar appears. If you later see two versions of a meeting, identify their calendar sources and hide one temporarily. Avoid using account removal or event deletion to diagnose which connection produced them. In Cloud Calendars, record the original selection and restore it after comparing. Selection can also affect widgets and notification scheduling; do not assume it is only a display preference."
+          ]
+        },
+        {
+          "heading": "Check Premium and organizational approval separately",
+          "body": [
+            "Premium adds Microsoft Calendar and Microsoft Teams features to Cloud Calendars. Advanced adds ad removal to Base; it does not unlock the app’s Microsoft sign-in. Check the current local purchase price and billing period rather than relying on a price quoted for another region.",
+            "A subscription cannot override an employer’s decision about app access. Microsoft allows organizations to control user consent and require administrator approval. If the sign-in page requests approval, give your administrator the app name, the account you intended to use and the exact message. Do not publish the work calendar or switch to a personal account to bypass that decision."
+          ]
+        },
+        {
+          "heading": "Diagnose the stage that failed",
+          "body": [
+            "If sign-in never completes, check the selected identity, the network and the message from Microsoft. An approval message is different from an expired session or a connection failure. There is no basis for assuming that every failed connection is an employer policy problem.",
+            "If sign-in succeeds but a calendar is missing, inspect the account group and calendar selection in Cloud Calendars, then compare with the same account in Outlook. If one shared or delegated calendar is absent while your own calendar appears, investigate access to that particular calendar. General Microsoft API capabilities do not guarantee that every shared-mailbox or delegation scenario is available in this app."
+          ]
+        },
+        {
+          "heading": "Distinguish a visible copy from a confirmed update",
+          "body": [
+            "The Microsoft connection uses calendar copies in the iPhone calendar system. Their storage destination can depend on the sources available on the device. For a work account, confirm that this arrangement fits your organization’s requirements before using it for sensitive meetings; do not assume a copy stays only in the original mailbox.",
+            "For example, a team calendar may show a meeting but refuse your update because you lack the required access. A successful local edit is not the final check. Compare the event in Outlook using the same account. Test only a disposable event in a calendar you own, without inviting colleagues or changing an established meeting."
+          ]
+        },
+        {
+          "heading": "Keep meeting ownership and availability explicit",
+          "body": [
+            "A meeting organized by a colleague is not yours to relocate or rewrite just because it appears beside your personal plans. Keep the organizer, work calendar and intended participants in mind when making a change. Use the provider’s approved workflow when the required action is unavailable or an update does not reach the server.",
+            "Likewise, displaying a personal appointment beside work does not automatically block work availability or conceal its details as a generic busy entry. If that is your goal, ask which availability-sharing method your organization supports and verify the result. A read-only calendar link is not a substitute for editable access, and publishing a link is not a troubleshooting shortcut."
+          ]
+        }
+      ],
+      "claims": {},
+      "practical": [
+        "Identify the mailbox hosting and ask which connection your organization permits.",
+        "Check whether the calendar already reaches the iPhone through a device account.",
+        "Review the Premium offer separately from Microsoft consent and calendar permissions.",
+        "At Microsoft sign-in, choose the intended identity and retain any error message for support.",
+        "After sign-in, select the required calendar and compare a recent event in Outlook.",
+        "Confirm an authorized disposable change at the provider; leave existing invitations and recurring meetings intact."
+      ],
+      "faq": [
+        {
+          "q": "Does Premium guarantee that my company’s Exchange server will connect?",
+          "a": "No. Premium enables the app’s Microsoft features. Mailbox compatibility, the organization’s approval and the permissions on individual calendars are separate requirements. Confirm the connection with your administrator before treating an Exchange installation as supported."
+        },
+        {
+          "q": "Why does Outlook work while another calendar app is refused?",
+          "a": "Applications can have different permissions and approval requirements. Outlook working is a useful reference for the account, but it does not establish approval for another application. Use the actual error or approval request to identify what needs attention."
+        },
+        {
+          "q": "Can I use a public calendar link if Microsoft sign-in is blocked?",
+          "a": "Do not publish work information to get around a blocked connection. A subscription is normally a read-only view, not equivalent to editable access. Ask the calendar owner or administrator for an approved method; do not assume a published link is permitted."
+        }
+      ],
+      "sourcesHeading": "Sources and provider guidance",
+      "sources": [
+        {
+          "label": "Microsoft: Outlook calendar API and supported mailbox data",
+          "url": "https://learn.microsoft.com/en-us/graph/outlook-calendar-concept-overview"
+        },
+        {
+          "label": "Microsoft: user and administrator consent",
+          "url": "https://learn.microsoft.com/en-us/entra/identity/enterprise-apps/user-admin-consent-overview"
+        },
+        {
+          "label": "Apple: multiple calendars and read-only subscriptions",
+          "url": "https://support.apple.com/en-lamr/guide/iphone/iph3d1110d4/ios"
+        }
+      ],
+      "seeAlso": [
+        "icloud-google-and-outlook-in-one-view",
+        "what-calendar-sync-actually-does",
+        "what-a-subscription-actually-buys"
+      ]
+    },
+    "file": "src/app/content/en-US/articles-unify.ts",
+    "moduleSha256": "aa447f8c19d27cbfcf813adff2b067fb6a0f8c1925f78b38bd10bacd073bf98b",
+    "rawObjectSha256": "2c9583bb4b70546ee65f562eb21b078c815aa3039027bb4ecfc57861980267ff",
+    "firstLine": 410
+  },
+  "fr-FR:exchange-calendars-on-an-iphone": {
+    "object": {
+      "updated": "2026-10-21",
+      "title": "Calendriers Microsoft et Exchange sur iPhone : vérifiez d’abord la connexion",
+      "short": "Calendriers Microsoft sur iPhone",
+      "description": "Vérifiez le type de compte Microsoft, l’accord de l’employeur et les droits avant de connecter un calendrier. Ce qu’ajoute Cloud Calendars Premium.",
+      "lede": "« Calendrier Exchange » peut désigner différents services et règles professionnelles. Avant de modifier des réglages ou d’acheter une formule, identifiez l’hébergement de votre boîte aux lettres et la connexion autorisée. Ce guide est rédigé par Arte Soft, développeur de Cloud Calendars.",
+      "commonBelief": "Toute app avec connexion Microsoft devrait fonctionner avec chaque serveur Exchange et chaque calendrier professionnel partagé.",
+      "sections": [
+        {
+          "heading": "1. Identifiez la boîte aux lettres, pas seulement l’app Outlook",
+          "body": [
+            "Outlook désigne une app et des services Microsoft. Avoir un compte dans Outlook ne révèle pas quel serveur héberge son calendrier. Demandez si vous utilisez un compte Microsoft personnel, une boîte Microsoft 365 dans Exchange Online ou une installation Exchange propre à l’organisation.",
+            "Cloud Calendars propose la connexion Microsoft et utilise le service de calendrier Microsoft. Ce n’est pas une configuration universelle par adresse de serveur et mot de passe pour toutes les installations Exchange. Microsoft documente son API de calendrier séparément de la configuration Exchange générique : confirmez la voie prévue pour votre boîte plutôt que de deviner un serveur."
+          ]
+        },
+        {
+          "heading": "2. Séparez le compte de l’appareil Apple de la connexion de l’app",
+          "body": [
+            "Un calendrier professionnel déjà accessible dans Calendrier Apple via un compte d’appareil approuvé emprunte une autre voie que « Sign in with Microsoft » dans Cloud Calendars. Les calendriers exposés par le système du téléphone dépendent aussi de l’autorisation d’accès. Une configuration réussie dans les réglages Apple ne prouve pas qu’une connexion Microsoft distincte sera autorisée.",
+            "Avant d’ajouter une connexion, examinez où apparaît le calendrier existant. Si vous voyez ensuite deux versions d’une réunion, identifiez leurs sources et masquez-en une temporairement. Évitez de supprimer comptes ou événements pour déterminer quelle connexion les a produits."
+          ]
+        },
+        {
+          "heading": "3. Vérifiez Premium et l’accord de l’organisation séparément",
+          "body": [
+            "Premium ajoute les fonctions de calendrier Microsoft et Microsoft Teams à Cloud Calendars. Advanced supprime les publicités de Base ; il ne débloque pas la connexion Microsoft de l’app. Consultez le prix local actuel et la période de facturation plutôt qu’un prix annoncé pour une autre région.",
+            "Un abonnement ne peut pas annuler la décision d’un employeur sur l’accès d’une app. Microsoft permet aux organisations de contrôler le consentement des utilisateurs et d’exiger une approbation administrative. Si la page la demande, transmettez à l’administrateur le nom de l’app, le compte prévu et le message exact. Ne publiez pas le calendrier professionnel et ne passez pas à un compte personnel pour contourner cette décision."
+          ]
+        },
+        {
+          "heading": "4. Diagnostiquez l’étape qui a échoué",
+          "body": [
+            "Si la connexion ne se termine pas, vérifiez l’identité sélectionnée, le réseau et le message Microsoft. Une demande d’approbation diffère d’une session expirée ou d’une panne de connexion. Rien ne permet de supposer que chaque échec relève d’une règle de l’employeur.",
+            "Si la connexion réussit mais qu’un calendrier manque, examinez le groupe du compte et la sélection dans Cloud Calendars, puis comparez avec le même compte dans Outlook. Si seul un calendrier partagé ou délégué manque, étudiez ses droits spécifiques. Les capacités générales de l’API Microsoft ne garantissent pas que tous les cas de boîtes partagées ou de délégation soient disponibles dans cette app."
+          ]
+        },
+        {
+          "heading": "5. Distinguez une copie visible d’une mise à jour confirmée",
+          "body": [
+            "La connexion Microsoft utilise des copies dans le système de calendrier de l’iPhone. Leur destination de stockage peut dépendre des sources disponibles sur l’appareil. Pour un compte professionnel, confirmez que cette organisation respecte les exigences de votre entreprise avant de l’utiliser pour des réunions sensibles ; ne supposez pas qu’une copie reste uniquement dans la boîte d’origine.",
+            "Un calendrier d’équipe peut, par exemple, afficher une réunion mais refuser votre modification faute de droits. Une édition locale réussie n’est pas la vérification finale. Comparez l’événement dans Outlook avec le même compte. Testez uniquement un événement jetable dans un calendrier qui vous appartient, sans inviter de collègues ni modifier une réunion établie."
+          ]
+        },
+        {
+          "heading": "6. Gardez explicites la responsabilité et la disponibilité",
+          "body": [
+            "Une réunion organisée par un collègue n’est pas à déplacer ou réécrire simplement parce qu’elle apparaît près de vos plans personnels. Gardez à l’esprit l’organisateur, le calendrier professionnel et les participants prévus. Utilisez la procédure approuvée du fournisseur si l’action manque ou si une modification n’atteint pas le serveur.",
+            "De même, afficher un rendez-vous personnel près du travail ne bloque pas automatiquement la disponibilité professionnelle et ne masque pas ses détails dans une simple entrée occupée. Si c’est votre objectif, demandez quelle méthode l’organisation prend en charge et vérifiez le résultat. Un lien en lecture seule ne remplace pas un accès modifiable, et publier un lien n’est pas un raccourci de dépannage."
+          ]
+        }
+      ],
+      "claims": {},
+      "practical": [
+        "Identifiez l’hébergement de la boîte et la connexion autorisée par l’organisation.",
+        "Vérifiez si le calendrier arrive déjà sur l’iPhone via un compte d’appareil.",
+        "Examinez Premium séparément du consentement Microsoft et des droits du calendrier.",
+        "Choisissez l’identité prévue à la connexion et conservez les messages d’erreur pour l’assistance.",
+        "Après connexion, sélectionnez le calendrier nécessaire et comparez un événement récent dans Outlook.",
+        "Confirmez une modification de test autorisée chez le fournisseur ; préservez invitations et réunions récurrentes."
+      ],
+      "faq": [
+        {
+          "q": "Premium garantit-il la connexion au serveur Exchange de mon entreprise ?",
+          "a": "Non. Premium active les fonctions Microsoft de l’app. Compatibilité de la boîte, accord de l’organisation et autorisations des calendriers sont distincts. Confirmez la connexion avec l’administrateur avant de considérer une installation Exchange comme prise en charge."
+        },
+        {
+          "q": "Pourquoi Outlook fonctionne-t-il alors qu’une autre app est refusée ?",
+          "a": "Les apps peuvent avoir des permissions et exigences d’approbation différentes. Outlook est une référence utile pour le compte, mais ne prouve pas qu’une autre app est approuvée. Utilisez l’erreur réelle ou la demande d’approbation pour identifier le point à traiter."
+        },
+        {
+          "q": "Puis-je utiliser un lien public si la connexion Microsoft est bloquée ?",
+          "a": "Ne publiez pas d’informations professionnelles pour contourner un blocage. Un abonnement est généralement en lecture seule, sans équivalence avec un accès modifiable. Demandez au propriétaire ou à l’administrateur une méthode approuvée ; ne supposez pas qu’un lien publié soit autorisé."
+        }
+      ],
+      "sourcesHeading": "Sources et conseils des fournisseurs",
+      "sources": [
+        {
+          "label": "Microsoft : API de calendrier Outlook et données de boîte aux lettres prises en charge",
+          "url": "https://learn.microsoft.com/en-us/graph/outlook-calendar-concept-overview"
+        },
+        {
+          "label": "Microsoft : consentement des utilisateurs et administrateurs",
+          "url": "https://learn.microsoft.com/en-us/entra/identity/enterprise-apps/user-admin-consent-overview"
+        },
+        {
+          "label": "Apple : plusieurs calendriers et abonnements en lecture seule",
+          "url": "https://support.apple.com/en-lamr/guide/iphone/iph3d1110d4/ios"
+        }
+      ],
+      "seeAlso": [
+        "icloud-google-and-outlook-in-one-view",
+        "what-a-subscription-actually-buys"
+      ]
+    },
+    "file": "src/app/content/fr-FR/articles.ts",
+    "moduleSha256": "4ec1e59246b8bbe593ad20cbfcd4287fef94cc5f6425ca98faef4f501c44d209",
+    "rawObjectSha256": "838ac4add1bbcb2138578aef4f1756147fd7e533678936fd96044926b3cc7220",
+    "firstLine": 198
+  },
+  "fr-FR:three-calendar-apps-is-two-too-many": {
+    "object": {
+      "title": "Trois applications d'agenda, c'est deux de trop",
+      "short": "Trois applications, deux de trop",
+      "description": "Passer d'une application d'agenda à l'autre n'est pas une méthode de travail, c'est un impôt. Ce qu'il coûte et à quoi ressemble sa suppression.",
+      "lede": "Personne n'a choisi d'avoir trois applications d'agenda. C'est arrivé un compte à la fois, et chaque ajout paraissait raisonnable.",
+      "commonBelief": "Que changer d'application est un désagrément mineur et non la source du vrai problème.",
+      "sections": [
+        {
+          "heading": "Le coût n'est pas dans les touches",
+          "body": [
+            "Deux secondes de bascule, ce n'est rien. Ce qui coûte cher, c'est de répondre à des questions d'emploi du temps avec une information partielle, parce que vérifier les trois à chaque fois demande plus d'effort que la question ne semble en mériter.",
+            "Alors vous répondez depuis celle qui est ouverte, et vous corrigez ensuite. La correction est la partie chère, et elle atterrit en plus dans l'agenda de quelqu'un d'autre."
+          ]
+        },
+        {
+          "heading": "Ce qui doit être vrai",
+          "body": [
+            "Un endroit doit pouvoir dire oui ou non à propos de votre temps. C'est toute l'exigence, et aucun arrangement où la réponse vit dans plus d'une application ne la satisfait.",
+            "Tout le reste — quelle application, quelles couleurs, quelles vues — relève du goût. Ceci relève de la structure."
+          ]
+        }
+      ],
+      "claims": {
+        "accounts": "Types de comptes qu'une seule vue peut contenir"
+      },
+      "practical": [
+        "Choisissez l'application qui tient tous vos comptes, pas celle que vous préférez isolément.",
+        "Migrez en ajoutant des comptes, pas en déplaçant des événements : les événements restent où ils sont.",
+        "Supprimez les autres applications une fois la vue complète, sinon vous continuerez d'y jeter un œil."
+      ],
+      "seeAlso": [
+        "icloud-google-and-outlook-in-one-view"
+      ]
+    },
+    "file": "src/app/content/fr-FR/articles.ts",
+    "moduleSha256": "4ec1e59246b8bbe593ad20cbfcd4287fef94cc5f6425ca98faef4f501c44d209",
+    "rawObjectSha256": "590b2d10164a69c1d8c0e0d800428062d858fbc5c7da11bcb773f38033807140",
+    "firstLine": 749
+  }
+}

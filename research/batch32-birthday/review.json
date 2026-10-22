@@ -1,0 +1,68 @@
+{
+  "date": "2026-10-22",
+  "decision": "pass_no_material_correction_required",
+  "independentEditorialReview": true,
+  "readScope": "Complete before and draft objects, complete evidence.json and complete batch31 birthday source evidence read in one untruncated 9518-token tool output. No fresh primary fetch or native inspection in this review.",
+  "pins": [
+    {
+      "file": "research/batch32-birthday/before.json",
+      "rawFileSha256": "672305a71dacb040dcd395d32bb188a5083742c4b58d5b72ac4099e61ee0441e",
+      "jsonStringifySha256": "94ceee6711c1b50561b594e9add294d200de5c2b7bf6d8de6ebb2029b99883cd"
+    },
+    {
+      "file": "research/batch32-birthday/draft.json",
+      "rawFileSha256": "6c5edd5ffba631f268a69d087f09cb53947960047fd6e131aaae24c6d9e4aa7c",
+      "jsonStringifySha256": "d833700e89965ddb4e2eea82073034566c4e81b5ea016a64d434e769d2a9a275"
+    },
+    {
+      "file": "research/batch32-birthday/evidence.json",
+      "rawFileSha256": "2992b80983e7be67179dbdc756cbb1b0c09ecbc708586f13fac05e34929f5608",
+      "jsonStringifySha256": "b3b652000aa52c73e409cdcb93f590c3fde8513d17d0d9bdc3119fe1d1ca79a4"
+    },
+    {
+      "file": "research/batch31-birthday-source-evidence.json",
+      "rawFileSha256": "e6b7a99982e5375fb456033c8639ee09c39642ba970e2b34440a036f8b75f0a6",
+      "jsonStringifySha256": "92dfe6c86ca90d62e3e3d695288e4d46a681219ea73c4bc190e3a0fe6c8b58b6"
+    }
+  ],
+  "checks": {
+    "sixOldSectionsUnchanged": true,
+    "oldPracticalUnchanged": true,
+    "oldFAQUnchanged": true,
+    "oldSourcesUnchanged": true,
+    "relatedUnchanged": true,
+    "otherMetadataUnchanged": true,
+    "descriptionCharacters": 146,
+    "sections": 7,
+    "paragraphs": 15,
+    "practical": 6,
+    "faq": 4,
+    "sources": 5,
+    "updated": "2026-10-22",
+    "claimsEmpty": true
+  },
+  "assessment": [
+    {
+      "topic": "Provider attribution",
+      "result": "Apple special iCloud Birthdays behavior is explicitly attributed to iCloud Contacts; Google linked/manual edit/delete/sync consequences are explicitly attributed to Google’s own app. Neither is presented as a Cloud birthday editor."
+    },
+    {
+      "topic": "Native limits",
+      "result": "System birthday display is conditional on iOS exposure, full calendar access and selection, with explicit nonuniform-view and provider-editing limits. No direct-Google birthday import, contact birthdate import or alarm propagation guarantee."
+    },
+    {
+      "topic": "Useful diagnostic distinction",
+      "result": "Find owning contact/provider/calendar before creating a duplicate annual event. Avoid using Google contact-sync disable as harmless hiding. This adds source identification instead of repeating date/widget instructions."
+    },
+    {
+      "topic": "Metadata and preservation",
+      "result": "Description accurately covers existing all-day guidance and new missing-birthday branch. Existing six sections, old steps/FAQ/sources and related links retained exactly; date22 justified by substantive new section."
+    },
+    {
+      "topic": "Evidence boundary",
+      "result": "Compared against supplied primary-read records and recorded native findings. No claim of independently refetched provider pages, release correspondence, native runtime or Contacts-data inspection."
+    }
+  ],
+  "materialCorrections": [],
+  "scope": "Review artifact only; no draft/source edits, build, deploy or API actions."
+}

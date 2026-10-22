@@ -1,0 +1,34 @@
+{
+  "title": "Trois applications d'agenda, c'est deux de trop",
+  "short": "Trois applications, deux de trop",
+  "description": "Passer d'une application d'agenda à l'autre n'est pas une méthode de travail, c'est un impôt. Ce qu'il coûte et à quoi ressemble sa suppression.",
+  "lede": "Personne n'a choisi d'avoir trois applications d'agenda. C'est arrivé un compte à la fois, et chaque ajout paraissait raisonnable.",
+  "commonBelief": "Que changer d'application est un désagrément mineur et non la source du vrai problème.",
+  "sections": [
+    {
+      "heading": "Le coût n'est pas dans les touches",
+      "body": [
+        "Deux secondes de bascule, ce n'est rien. Ce qui coûte cher, c'est de répondre à des questions d'emploi du temps avec une information partielle, parce que vérifier les trois à chaque fois demande plus d'effort que la question ne semble en mériter.",
+        "Alors vous répondez depuis celle qui est ouverte, et vous corrigez ensuite. La correction est la partie chère, et elle atterrit en plus dans l'agenda de quelqu'un d'autre."
+      ]
+    },
+    {
+      "heading": "Ce qui doit être vrai",
+      "body": [
+        "Un endroit doit pouvoir dire oui ou non à propos de votre temps. C'est toute l'exigence, et aucun arrangement où la réponse vit dans plus d'une application ne la satisfait.",
+        "Tout le reste — quelle application, quelles couleurs, quelles vues — relève du goût. Ceci relève de la structure."
+      ]
+    }
+  ],
+  "claims": {
+    "accounts": "Types de comptes qu'une seule vue peut contenir"
+  },
+  "practical": [
+    "Choisissez l'application qui tient tous vos comptes, pas celle que vous préférez isolément.",
+    "Migrez en ajoutant des comptes, pas en déplaçant des événements : les événements restent où ils sont.",
+    "Supprimez les autres applications une fois la vue complète, sinon vous continuerez d'y jeter un œil."
+  ],
+  "seeAlso": [
+    "icloud-google-and-outlook-in-one-view"
+  ]
+}
