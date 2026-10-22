@@ -1,5 +1,5 @@
 {
-  "date": "2026-10-22T00:10:28.685Z",
+  "date": "2026-10-22T00:24:49.241Z",
   "status": "source_inventory_not_quality_approval",
   "articles": [
     {
@@ -276,6 +276,24 @@
         "https://support.google.com/calendar/answer/37648?hl=en"
       ],
       "updated": "2026-10-21"
+    },
+    {
+      "locale": "bg",
+      "slug": "work-and-personal-without-two-apps",
+      "title": "Служебни и лични календари в едно приложение: достъп и права",
+      "description": "Вижте служебните и личните календари заедно. Проверете правата, мястото за запис на събитията и плановете на Cloud Calendars преди свързване.",
+      "descriptionCharacters": 141,
+      "sections": 5,
+      "faq": 3,
+      "words": 860,
+      "source": "articles-help.ts",
+      "sources": [
+        "https://support.apple.com/guide/iphone/use-multiple-calendars-iph3d1110d4/ios",
+        "https://support.apple.com/en-us/102180",
+        "https://support.google.com/calendar/answer/15716974?hl=en",
+        "https://support.microsoft.com/en-us/outlook/calendar/change-an-appointment-meeting-or-event-in-outlook"
+      ],
+      "updated": "2026-10-22"
     },
     {
       "locale": "bg",
@@ -875,6 +893,24 @@
     },
     {
       "locale": "de-DE",
+      "slug": "work-and-personal-without-two-apps",
+      "title": "Berufliche und private Kalender in einer App: Zuständigkeiten getrennt halten",
+      "description": "Sieh berufliche und private Kalender gemeinsam. Prüfe Berechtigungen, Zielkalender und Cloud Calendars-Abos, bevor du Konten verbindest.",
+      "descriptionCharacters": 136,
+      "sections": 5,
+      "faq": 3,
+      "words": 810,
+      "source": "articles-help.ts",
+      "sources": [
+        "https://support.apple.com/guide/iphone/use-multiple-calendars-iph3d1110d4/ios",
+        "https://support.apple.com/en-us/102180",
+        "https://support.google.com/calendar/answer/15716974?hl=en",
+        "https://support.microsoft.com/en-us/outlook/calendar/change-an-appointment-meeting-or-event-in-outlook"
+      ],
+      "updated": "2026-10-22"
+    },
+    {
+      "locale": "de-DE",
       "slug": "recurring-events-without-the-mess",
       "title": "Wiederkehrende Termine: einen einzelnen Termin oder die Serie gezielt ändern",
       "description": "Prüfe Kalender, Bearbeitungsrechte und Umfang einer Serienänderung. Behalte einzelne Ausnahmen im Blick, ohne die Terminserie zu löschen.",
@@ -1441,14 +1477,15 @@
       "description": "Base includes Google sync, views, weather and widgets. Advanced removes ads; Premium adds Microsoft and Teams. Check billing and access before buying.",
       "descriptionCharacters": 150,
       "sections": 5,
-      "faq": 3,
-      "words": 588,
+      "faq": 4,
+      "words": 674,
       "source": "articles-compare.ts",
       "sources": [
         "https://support.apple.com/en-us/118428",
-        "https://apps.apple.com/us/app/cloud-calendars-sync-widget/id6744690319"
+        "https://apps.apple.com/us/app/cloud-calendars-sync-widget/id6744690319",
+        "https://support.apple.com/en-ie/111114"
       ],
-      "updated": "2026-10-21"
+      "updated": "2026-10-22"
     },
     {
       "locale": "en-US",
@@ -2364,6 +2401,24 @@
     },
     {
       "locale": "es-ES",
+      "slug": "work-and-personal-without-two-apps",
+      "title": "Calendarios de trabajo y personales en una app: mantén clara su titularidad",
+      "description": "Consulta juntos tus calendarios personales y de trabajo. Revisa permisos, calendarios de destino y planes de Cloud Calendars antes de conectar cuentas.",
+      "descriptionCharacters": 151,
+      "sections": 5,
+      "faq": 3,
+      "words": 991,
+      "source": "articles-help.ts",
+      "sources": [
+        "https://support.apple.com/guide/iphone/use-multiple-calendars-iph3d1110d4/ios",
+        "https://support.apple.com/en-us/102180",
+        "https://support.google.com/calendar/answer/15716974?hl=en",
+        "https://support.microsoft.com/en-us/outlook/calendar/change-an-appointment-meeting-or-event-in-outlook"
+      ],
+      "updated": "2026-10-22"
+    },
+    {
+      "locale": "es-ES",
       "slug": "recurring-events-without-the-mess",
       "title": "Eventos recurrentes: cambia una fecha o la serie con cuidado",
       "description": "Comprueba el calendario, los permisos y el alcance antes de cambiar un evento recurrente. Revisa las excepciones sin borrar la serie.",
@@ -2956,6 +3011,24 @@
         "https://support.google.com/calendar/answer/37648?hl=en"
       ],
       "updated": "2026-10-21"
+    },
+    {
+      "locale": "fr-FR",
+      "slug": "work-and-personal-without-two-apps",
+      "title": "Calendriers professionnels et personnels dans une app : gardez leurs propriétaires distincts",
+      "description": "Consultez vos calendriers professionnels et personnels ensemble. Vérifiez droits, destinations et offres avant de connecter vos comptes.",
+      "descriptionCharacters": 136,
+      "sections": 5,
+      "faq": 3,
+      "words": 972,
+      "source": "articles-help.ts",
+      "sources": [
+        "https://support.apple.com/guide/iphone/use-multiple-calendars-iph3d1110d4/ios",
+        "https://support.apple.com/en-us/102180",
+        "https://support.google.com/calendar/answer/15716974?hl=en",
+        "https://support.microsoft.com/en-us/outlook/calendar/change-an-appointment-meeting-or-event-in-outlook"
+      ],
+      "updated": "2026-10-22"
     },
     {
       "locale": "fr-FR",
@@ -4082,6 +4155,24 @@
     },
     {
       "locale": "it",
+      "slug": "work-and-personal-without-two-apps",
+      "title": "Calendari di lavoro e personali in un’app: mantieni distinta la proprietà",
+      "description": "Vedi insieme calendari di lavoro e personali. Controlla permessi, destinazione degli eventi e piani Cloud Calendars prima di collegare gli account.",
+      "descriptionCharacters": 147,
+      "sections": 5,
+      "faq": 3,
+      "words": 905,
+      "source": "articles-help.ts",
+      "sources": [
+        "https://support.apple.com/guide/iphone/use-multiple-calendars-iph3d1110d4/ios",
+        "https://support.apple.com/en-us/102180",
+        "https://support.google.com/calendar/answer/15716974?hl=en",
+        "https://support.microsoft.com/en-us/outlook/calendar/change-an-appointment-meeting-or-event-in-outlook"
+      ],
+      "updated": "2026-10-22"
+    },
+    {
+      "locale": "it",
       "slug": "recurring-events-without-the-mess",
       "title": "Eventi ricorrenti: modificare una data o la serie con attenzione",
       "description": "Controlla permessi e date interessate prima di modificare un evento ricorrente. Gestisci cambiamenti ed eccezioni senza eliminare la serie.",
@@ -4498,6 +4589,24 @@
         "https://support.google.com/calendar/answer/37648?hl=en"
       ],
       "updated": "2026-10-21"
+    },
+    {
+      "locale": "ja",
+      "slug": "work-and-personal-without-two-apps",
+      "title": "仕事と個人のカレンダーを1つのアプリで見る：所有者と権限は分けて考える",
+      "description": "仕事と個人のカレンダーを、所有者や権限を混同せずにまとめて表示。接続前に編集権限、予定の保存先、Cloud Calendarsのプランを確認しましょう。",
+      "descriptionCharacters": 76,
+      "sections": 5,
+      "faq": 3,
+      "words": 43,
+      "source": "articles.ts",
+      "sources": [
+        "https://support.apple.com/guide/iphone/use-multiple-calendars-iph3d1110d4/ios",
+        "https://support.apple.com/en-us/102180",
+        "https://support.google.com/calendar/answer/15716974?hl=en",
+        "https://support.microsoft.com/en-us/outlook/calendar/change-an-appointment-meeting-or-event-in-outlook"
+      ],
+      "updated": "2026-10-22"
     },
     {
       "locale": "ja",

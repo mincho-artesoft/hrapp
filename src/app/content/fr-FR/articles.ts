@@ -740,7 +740,8 @@ export const ARTICLES_FR_FR: Readonly<Record<string, LocalisedArticle>> = {
     }
   ],
   "seeAlso": [
-    "exchange-calendars-on-an-iphone"
+    "exchange-calendars-on-an-iphone",
+    "work-and-personal-without-two-apps"
   ]
 },
 

@@ -1,0 +1,172 @@
+{
+  "date": "2026-10-22T00:24:48.587Z",
+  "count": 14,
+  "articles": [
+    {
+      "locale": "bg",
+      "slug": "work-and-personal-without-two-apps",
+      "file": "src/app/content/bg/articles-help.ts",
+      "title": "Служебни и лични календари в едно приложение: достъп и права",
+      "sections": 5,
+      "faqs": 3,
+      "sources": 4,
+      "updated": "2026-10-22",
+      "description": "Вижте служебните и личните календари заедно. Проверете правата, мястото за запис на събитията и плановете на Cloud Calendars преди свързване.",
+      "descriptionCharacters": 141
+    },
+    {
+      "locale": "bg",
+      "slug": "icloud-google-and-outlook-in-one-view",
+      "file": "src/app/content/bg/articles.ts",
+      "title": "iCloud, Google и Outlook в един изглед",
+      "sections": 2,
+      "faqs": 0,
+      "sources": 0,
+      "description": "Три приложения за календар означават три версии на седмицата ви и нито една пълна. Как изглежда, когато всички профили са в една решетка.",
+      "descriptionCharacters": 137
+    },
+    {
+      "locale": "de-DE",
+      "slug": "work-and-personal-without-two-apps",
+      "file": "src/app/content/de-DE/articles-help.ts",
+      "title": "Berufliche und private Kalender in einer App: Zuständigkeiten getrennt halten",
+      "sections": 5,
+      "faqs": 3,
+      "sources": 4,
+      "updated": "2026-10-22",
+      "description": "Sieh berufliche und private Kalender gemeinsam. Prüfe Berechtigungen, Zielkalender und Cloud Calendars-Abos, bevor du Konten verbindest.",
+      "descriptionCharacters": 136
+    },
+    {
+      "locale": "de-DE",
+      "slug": "icloud-google-and-outlook-in-one-view",
+      "file": "src/app/content/de-DE/articles.ts",
+      "title": "iCloud, Google und Outlook in einer Ansicht: Konten, Kopien und Rechte",
+      "sections": 6,
+      "faqs": 3,
+      "sources": 3,
+      "updated": "2026-10-21",
+      "description": "Zeige iCloud-, Google- und Microsoft-Kalender gemeinsam an. Prüfe Konten, Bearbeitungsrechte und Kopien, bevor du Termine verschiebst oder Verfügbarkeit nutzt.",
+      "descriptionCharacters": 159
+    },
+    {
+      "locale": "en-US",
+      "slug": "what-a-subscription-actually-buys",
+      "file": "src/app/content/en-US/articles-compare.ts",
+      "title": "Cloud Calendars subscriptions: Base, Advanced and Premium explained",
+      "sections": 5,
+      "faqs": 4,
+      "sources": 3,
+      "updated": "2026-10-22",
+      "description": "Base includes Google sync, views, weather and widgets. Advanced removes ads; Premium adds Microsoft and Teams. Check billing and access before buying.",
+      "descriptionCharacters": 150
+    },
+    {
+      "locale": "en-US",
+      "slug": "a-calendar-that-is-yours-to-share",
+      "file": "src/app/content/en-US/articles-sharing.ts",
+      "title": "Share a calendar with the right people and permissions",
+      "sections": 6,
+      "faqs": 3,
+      "sources": 2,
+      "updated": "2026-10-21",
+      "description": "Choose a separate calendar, distinguish app sharing from provider sharing, and assign Reader, Writer or Owner access without promising instant updates.",
+      "descriptionCharacters": 151
+    },
+    {
+      "locale": "es-ES",
+      "slug": "work-and-personal-without-two-apps",
+      "file": "src/app/content/es-ES/articles-help.ts",
+      "title": "Calendarios de trabajo y personales en una app: mantén clara su titularidad",
+      "sections": 5,
+      "faqs": 3,
+      "sources": 4,
+      "updated": "2026-10-22",
+      "description": "Consulta juntos tus calendarios personales y de trabajo. Revisa permisos, calendarios de destino y planes de Cloud Calendars antes de conectar cuentas.",
+      "descriptionCharacters": 151
+    },
+    {
+      "locale": "es-ES",
+      "slug": "icloud-google-and-outlook-in-one-view",
+      "file": "src/app/content/es-ES/articles.ts",
+      "title": "iCloud, Google y Outlook en una vista: cuentas, copias y permisos",
+      "sections": 6,
+      "faqs": 3,
+      "sources": 3,
+      "updated": "2026-10-21",
+      "description": "Ve juntos calendarios de iCloud, Google y Microsoft. Revisa cuentas, permisos y copias antes de mover eventos o confiar en la disponibilidad.",
+      "descriptionCharacters": 141
+    },
+    {
+      "locale": "fr-FR",
+      "slug": "work-and-personal-without-two-apps",
+      "file": "src/app/content/fr-FR/articles-help.ts",
+      "title": "Calendriers professionnels et personnels dans une app : gardez leurs propriétaires distincts",
+      "sections": 5,
+      "faqs": 3,
+      "sources": 4,
+      "updated": "2026-10-22",
+      "description": "Consultez vos calendriers professionnels et personnels ensemble. Vérifiez droits, destinations et offres avant de connecter vos comptes.",
+      "descriptionCharacters": 136
+    },
+    {
+      "locale": "fr-FR",
+      "slug": "icloud-google-and-outlook-in-one-view",
+      "file": "src/app/content/fr-FR/articles.ts",
+      "title": "iCloud, Google et Outlook dans une vue : comptes, copies et autorisations",
+      "sections": 6,
+      "faqs": 3,
+      "sources": 3,
+      "updated": "2026-10-21",
+      "description": "Affichez ensemble iCloud, Google et Microsoft. Vérifiez comptes, droits et copies avant de déplacer des événements ou de vous fier aux disponibilités.",
+      "descriptionCharacters": 150
+    },
+    {
+      "locale": "it",
+      "slug": "work-and-personal-without-two-apps",
+      "file": "src/app/content/it/articles-help.ts",
+      "title": "Calendari di lavoro e personali in un’app: mantieni distinta la proprietà",
+      "sections": 5,
+      "faqs": 3,
+      "sources": 4,
+      "updated": "2026-10-22",
+      "description": "Vedi insieme calendari di lavoro e personali. Controlla permessi, destinazione degli eventi e piani Cloud Calendars prima di collegare gli account.",
+      "descriptionCharacters": 147
+    },
+    {
+      "locale": "it",
+      "slug": "icloud-google-and-outlook-in-one-view",
+      "file": "src/app/content/it/articles.ts",
+      "title": "iCloud, Google e Outlook in una vista: account, copie e permessi",
+      "sections": 6,
+      "faqs": 3,
+      "sources": 3,
+      "updated": "2026-10-21",
+      "description": "Visualizza insieme calendari iCloud, Google e Microsoft. Controlla account, permessi e copie prima di spostare eventi o affidarti alla disponibilità.",
+      "descriptionCharacters": 149
+    },
+    {
+      "locale": "ja",
+      "slug": "icloud-google-and-outlook-in-one-view",
+      "file": "src/app/content/ja/articles.ts",
+      "title": "iCloud・Google・Outlook をひとつの画面に",
+      "sections": 2,
+      "faqs": 0,
+      "sources": 0,
+      "description": "ほとんどの人の生活は、個人の Apple カレンダー、Google アカウント、仕事の Exchange に分かれている。それらが同じ枠に収まると何が変わるか。",
+      "descriptionCharacters": 80
+    },
+    {
+      "locale": "ja",
+      "slug": "work-and-personal-without-two-apps",
+      "file": "src/app/content/ja/articles.ts",
+      "title": "仕事と個人のカレンダーを1つのアプリで見る：所有者と権限は分けて考える",
+      "sections": 5,
+      "faqs": 3,
+      "sources": 4,
+      "updated": "2026-10-22",
+      "description": "仕事と個人のカレンダーを、所有者や権限を混同せずにまとめて表示。接続前に編集権限、予定の保存先、Cloud Calendarsのプランを確認しましょう。",
+      "descriptionCharacters": 76
+    }
+  ]
+}

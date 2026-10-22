@@ -736,7 +736,8 @@ export const ARTICLES_DE_DE: Readonly<Record<string, LocalisedArticle>> = {
     }
   ],
   "seeAlso": [
-    "exchange-calendars-on-an-iphone"
+    "exchange-calendars-on-an-iphone",
+    "work-and-personal-without-two-apps"
   ]
 },
 

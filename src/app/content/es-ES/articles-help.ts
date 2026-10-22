@@ -1,6 +1,99 @@
 import { LocalisedArticle } from '../types';
 
 export const HELP_ES_ES: Readonly<Record<string, LocalisedArticle>> = {
+  "work-and-personal-without-two-apps": {
+  "updated": "2026-10-22",
+  "title": "Calendarios de trabajo y personales en una app: mantén clara su titularidad",
+  "short": "Trabajo y vida personal en una app",
+  "description": "Consulta juntos tus calendarios personales y de trabajo. Revisa permisos, calendarios de destino y planes de Cloud Calendars antes de conectar cuentas.",
+  "lede": "Una vista conjunta ayuda a detectar solapamientos sin perder de vista a quién pertenece cada evento. Comprueba tanto los calendarios que muestras como las conexiones de cuenta utilizadas para guardar sus copias. Esta guía la publica Arte Soft, desarrollador de Cloud Calendars.",
+  "commonBelief": "Reunir los calendarios de trabajo y personales en una app también combina sus permisos de uso compartido.",
+  "sections": [
+    {
+      "heading": "Una vista conjunta no equivale a compartir el acceso",
+      "body": [
+        "Una app de calendario puede mostrar juntos los calendarios seleccionados mientras cada uno conserva su cuenta y sus permisos. La guía de Apple sobre varios calendarios explica cómo elegir los que se muestran, asignar colores y seleccionar un calendario por omisión. Estas decisiones de visualización no transfieren la titularidad de los eventos.",
+        "Antes de conectar una cuenta de trabajo, comprueba los requisitos de tu organización. Google documenta que los administradores pueden restringir el uso compartido de calendarios. Una vista personal cómoda no te autoriza a publicar datos laborales ni a eludir las restricciones de una cuenta.",
+        "Las conexiones de Google y Microsoft de Cloud Calendars utilizan calendarios reflejados en el almacenamiento de calendarios del iPhone. Las fuentes de calendario disponibles pueden influir en dónde se guardan esas copias. Por tanto, la conexión de una cuenta de trabajo necesita autorización para su flujo de datos real, no solo para el nombre de cuenta que aparece en la vista conjunta."
+      ]
+    },
+    {
+      "heading": "Utiliza los colores y la visibilidad para organizar la vista",
+      "body": [
+        "Asigna colores distintos a los calendarios de trabajo y personales y revisa un día ocupado con ambos visibles. Si quieres reducir la vista, oculta un calendario en lugar de borrar sus eventos. La guía de Apple sobre calendarios duplicados explica cómo mostrarlos y ocultarlos mediante casillas. Antes de aceptar un nuevo compromiso, vuelve a mostrar los calendarios relevantes para esa decisión y compara la semana con todos ellos visibles. Una vista filtrada vacía no demuestra que esa hora esté libre.",
+        "Ocultar un calendario no cambia quién tiene permiso para acceder a él. En Cloud Calendars, la selección de calendarios también influye en la sincronización de Google y en la programación de notificaciones, así que no supongas que desmarcar un calendario solo cambia lo que aparece en pantalla. Comprueba los cambios importantes en su proveedor y revisa por separado los ajustes de notificaciones si buscas una tarde tranquila. Conserva una app de trabajo autorizada si tu organización la exige."
+      ]
+    },
+    {
+      "heading": "Comprueba el destino antes de guardar",
+      "body": [
+        "Un calendario por omisión es un punto de partida útil, no una garantía de que todas las citas deban ir allí. Para una cita personal, comprueba el calendario seleccionado antes de guardar. Para una reunión de trabajo, utiliza el calendario laboral y el proceso de invitación de tu organización.",
+        "No muevas ni copies una invitación solo para que aparezca en tu vista conjunta. Microsoft distingue los eventos que has creado de las reuniones organizadas por otra persona: cambiar la copia que ves no es una forma fiable de actualizar al organizador o a los asistentes. Conserva la invitación original y consulta al organizador cualquier cambio de hora."
+      ]
+    },
+    {
+      "heading": "Qué añaden los planes de Cloud Calendars",
+      "body": [
+        "Cloud Calendars ofrece vistas de calendario en iPhone y iPad. El plan Base incluye la sincronización de Google Calendar y la vista de varios calendarios. Advanced elimina los anuncios; Premium añade compatibilidad con Microsoft Calendar y Teams. Los precios locales actuales aparecen en la app y en el App Store.",
+        "Advanced no es un permiso de pago para gestionar todas las cuentas. Una suscripción no convierte un calendario de solo lectura en uno editable ni anula las políticas del trabajo. Los calendarios locales se pueden usar sin cuenta; las conexiones con proveedores y el uso compartido tienen sus propios requisitos de inicio de sesión."
+      ]
+    },
+    {
+      "heading": "Comprueba desde la otra cuenta un bloque de ocupado sin detalles privados",
+      "body": [
+        "Imagina que una cita personal debe impedir que tus compañeros reserven esa hora, pero no deben conocer su título. Verla junto a los eventos laborales en tu teléfono solo constituye tu vista conjunta. Primero comprueba si tu cuenta de trabajo contiene alguna entrada de disponibilidad y después verifica qué puede ver el compañero al que va destinada.",
+        "Si tu organización permite crear manualmente un bloque de disponibilidad en el calendario laboral, revisa el destino, el título, las notas, la ubicación, los asistentes y la disponibilidad antes de guardar. Evita copiar allí los detalles de la cita privada. Es un acuerdo autorizado que tú creas y compruebas, no una función automática de Cloud Calendars para ocultar detalles. Mantén coherentes los cambios posteriores sin convertir la segunda entrada en otra invitación."
+      ]
+    }
+  ],
+  "claims": {},
+  "practical": [
+    "Comprueba si tu trabajo permite conectar la cuenta.",
+    "Elige colores distintos y muestra los calendarios que necesitas para la vista conjunta.",
+    "Verifica el calendario de destino al crear un evento.",
+    "Oculta temporalmente un calendario para reducir la vista; no borres eventos para ordenarla.",
+    "Revisa los permisos de uso compartido y las notificaciones por separado de la visibilidad del calendario."
+  ],
+  "faq": [
+    {
+      "q": "¿Mi empresa verá mis eventos personales solo porque ambos calendarios estén en una app?",
+      "a": "Mostrar los calendarios juntos no concede por sí solo permiso para compartirlos. Comprueba a qué cuenta pertenece cada evento, sus ajustes de uso compartido y las normas de gestión de dispositivos de tu empresa. No guardes por error una cita privada en un calendario laboral."
+    },
+    {
+      "q": "¿Necesito Advanced para ver juntos los calendarios de Google y los personales?",
+      "a": "La sincronización de Google Calendar y la vista de varios calendarios son funciones de Base. Advanced elimina los anuncios. La compatibilidad con Microsoft Calendar forma parte de Premium; los permisos de la cuenta siguen aplicándose."
+    },
+    {
+      "q": "¿Cloud Calendars sustituye automáticamente los detalles personales por un bloque de ocupado en el trabajo?",
+      "a": "No des por hecho que lo hace. Ver calendarios juntos y crear copias reflejadas de los proveedores no equivale a una regla explícita que copie disponibilidad a otra cuenta ocultando los detalles privados. Verifica el acuerdo que permite tu organización."
+    }
+  ],
+  "sourcesHeading": "Fuentes y lecturas relacionadas",
+  "sources": [
+    {
+      "label": "Apple: Configurar varios calendarios en el iPhone",
+      "url": "https://support.apple.com/guide/iphone/use-multiple-calendars-iph3d1110d4/ios"
+    },
+    {
+      "label": "Apple: Eventos duplicados en el calendario de iCloud",
+      "url": "https://support.apple.com/en-us/102180"
+    },
+    {
+      "label": "Google: Elegir qué pueden hacer otros usuarios con tu calendario",
+      "url": "https://support.google.com/calendar/answer/15716974?hl=en"
+    },
+    {
+      "label": "Microsoft: Cambiar una cita, reunión o evento en Outlook",
+      "url": "https://support.microsoft.com/en-us/outlook/calendar/change-an-appointment-meeting-or-event-in-outlook"
+    }
+  ],
+  "seeAlso": [
+    "icloud-google-and-outlook-in-one-view",
+    "google-calendars-that-never-reach-your-iphone",
+    "who-can-see-what-in-google-calendar"
+  ]
+},
+
   "recurring-events-without-the-mess": {
   "updated": "2026-10-21",
   "title": "Eventos recurrentes: cambia una fecha o la serie con cuidado",

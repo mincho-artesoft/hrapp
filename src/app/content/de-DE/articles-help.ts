@@ -1,6 +1,99 @@
 import { LocalisedArticle } from '../types';
 
 export const HELP_DE_DE: Readonly<Record<string, LocalisedArticle>> = {
+  "work-and-personal-without-two-apps": {
+  "updated": "2026-10-22",
+  "title": "Berufliche und private Kalender in einer App: Zuständigkeiten getrennt halten",
+  "short": "Beruf und Privatleben in einer App",
+  "description": "Sieh berufliche und private Kalender gemeinsam. Prüfe Berechtigungen, Zielkalender und Cloud Calendars-Abos, bevor du Konten verbindest.",
+  "lede": "Eine Übersicht hilft dir, Überschneidungen zu erkennen, ohne die Zuständigkeit für Termine aus dem Blick zu verlieren. Prüfe sowohl die angezeigten Kalender als auch die Kontoverbindungen, über die ihre Kopien gespeichert werden. Dieser Leitfaden stammt von Arte Soft, dem Entwickler von Cloud Calendars.",
+  "commonBelief": "Wer berufliche und private Kalender in einer App zusammenführt, führt auch ihre Freigabeberechtigungen zusammen.",
+  "sections": [
+    {
+      "heading": "Eine gemeinsame Ansicht ist kein gemeinsamer Zugriff",
+      "body": [
+        "Eine Kalender-App kann ausgewählte Kalender gemeinsam anzeigen, während jeder seinem eigenen Konto und seinen Berechtigungen zugeordnet bleibt. Apples Anleitung für mehrere Kalender beschreibt die Auswahl sichtbarer Kalender, die Vergabe von Farben und die Wahl eines Standardkalenders. Diese Anzeigeentscheidungen übertragen nicht die Zuständigkeit für einen Termin.",
+        "Prüfe vor dem Verbinden eines Arbeitskontos die Vorgaben deiner Organisation. Google dokumentiert, dass Administratoren Kalenderfreigaben einschränken können. Eine praktische persönliche Übersicht berechtigt dich nicht dazu, berufliche Informationen zu veröffentlichen oder Kontobeschränkungen zu umgehen.",
+        "Die Google- und Microsoft-Verbindungen von Cloud Calendars verwenden gespiegelte Kalender im Kalenderspeicher des iPhones. Die verfügbaren Kalenderquellen können beeinflussen, wo diese Kopien liegen. Die Verbindung eines Arbeitskontos muss daher für den tatsächlichen Datenfluss genehmigt sein, nicht nur für den in der Übersicht angezeigten Kontonamen."
+      ]
+    },
+    {
+      "heading": "Nutze Farben und Sichtbarkeit für die Übersicht",
+      "body": [
+        "Gib beruflichen und privaten Kalendern unterschiedliche Farben und prüfe einen vollen Tag, während beide sichtbar sind. Blende für eine reduzierte Ansicht einen Kalender aus, statt seine Termine zu löschen. Apples Anleitung zu doppelten Kalendereinträgen erklärt das Ein- und Ausblenden über Markierungsfelder. Blende vor einer neuen Zusage alle für diese Entscheidung relevanten Kalender wieder ein und vergleiche die Woche mit allen diesen Kalendern. Eine leere gefilterte Ansicht belegt nicht, dass die Zeit frei ist.",
+        "Das Ausblenden eines Kalenders ändert nicht, wer darauf zugreifen darf. In Cloud Calendars spielt die Kalenderauswahl auch für die Google-Synchronisierung und die Planung von Benachrichtigungen eine Rolle. Gehe deshalb nicht davon aus, dass das Abwählen eines Kalenders nur die Bildschirmdarstellung verändert. Prüfe wichtige Änderungen beim jeweiligen Anbieter und kontrolliere die Benachrichtigungseinstellungen gesondert, wenn du einen ruhigen Abend möchtest. Halte eine zugelassene Arbeits-App bereit, falls deine Organisation sie verlangt."
+      ]
+    },
+    {
+      "heading": "Prüfe vor dem Speichern den Zielkalender",
+      "body": [
+        "Ein Standardkalender ist ein sinnvoller Ausgangspunkt, aber keine Garantie, dass jeder Termin dort hingehört. Prüfe bei einem privaten Termin vor dem Speichern den ausgewählten Kalender. Nutze für eine berufliche Besprechung den Arbeitskalender und das Einladungsverfahren deiner Organisation.",
+        "Verschiebe oder kopiere eine Einladung nicht nur, damit sie in deiner Übersicht erscheint. Microsoft unterscheidet selbst erstellte Ereignisse von Besprechungen, die jemand anderes organisiert: Deine angezeigte Kopie zu ändern ist kein verlässlicher Weg, den Organisator oder die Teilnehmer zu aktualisieren. Behalte die ursprüngliche Einladung und frage den Organisator nach einer Zeitänderung."
+      ]
+    },
+    {
+      "heading": "Was die Cloud Calendars-Abos ergänzen",
+      "body": [
+        "Cloud Calendars bietet Kalenderansichten auf iPhone und iPad. Base umfasst die Google-Kalender-Synchronisierung und die Mehrkalenderansicht. Advanced entfernt Werbung; Premium ergänzt die Unterstützung für Microsoft Calendar und Teams. Aktuelle lokale Preise findest du in der App und im App Store.",
+        "Advanced ist keine kostenpflichtige Berechtigung zur Verwaltung aller Konten. Ein Abo macht einen schreibgeschützten Kalender nicht bearbeitbar und setzt keine Arbeitsplatzrichtlinie außer Kraft. Lokale Kalender lassen sich ohne Konto nutzen; Anbieterverbindungen und Freigaben haben eigene Anmeldeanforderungen."
+      ]
+    },
+    {
+      "heading": "Prüfe einen neutralen Belegt-Eintrag aus Sicht der anderen Person",
+      "body": [
+        "Angenommen, ein privater Termin soll verhindern, dass Kollegen diese Zeit verplanen, ohne dass sie seinen Titel erfahren. Ihn auf deinem Telefon neben beruflichen Terminen zu sehen, ist nur deine Übersicht. Prüfe zunächst, ob dein Arbeitskonto überhaupt einen Verfügbarkeitseintrag enthält, und dann, was ein vorgesehener Kollege sehen kann.",
+        "Wenn deine Organisation einen manuellen Belegt-Eintrag im Arbeitskalender erlaubt, prüfe vor dem Speichern Zielkalender, Titel, Notizen, Ort, Teilnehmer und Verfügbarkeit. Kopiere keine privaten Termindetails hinein. Das ist eine genehmigte Vereinbarung, die du selbst umsetzt und prüfst, keine automatische Funktion von Cloud Calendars zum Verbergen von Details. Halte spätere Änderungen konsistent, ohne aus dem zweiten Eintrag eine weitere Einladung zu machen."
+      ]
+    }
+  ],
+  "claims": {},
+  "practical": [
+    "Prüfe, ob dein Arbeitsplatz die Kontoverbindung erlaubt.",
+    "Wähle unterschiedliche Farben und zeige die Kalender an, die du für deine Übersicht brauchst.",
+    "Prüfe beim Erstellen eines neuen Termins den Zielkalender.",
+    "Blende einen Kalender vorübergehend aus, um die Ansicht zu reduzieren; lösche keine Termine zum Aufräumen.",
+    "Prüfe Freigabeberechtigungen und Benachrichtigungen getrennt von der Kalendersichtbarkeit."
+  ],
+  "faq": [
+    {
+      "q": "Sieht mein Arbeitgeber meine privaten Termine allein deshalb, weil beide Kalender in einer App sind?",
+      "a": "Die gemeinsame Anzeige erteilt für sich genommen keine Kalenderfreigabe. Prüfe, zu welchem Konto jeder Termin gehört, welche Freigaben gelten und welche Regeln dein Arbeitgeber zur Geräteverwaltung hat. Speichere einen privaten Termin nicht versehentlich im Arbeitskalender."
+    },
+    {
+      "q": "Brauche ich Advanced, um Google- und private Kalender gemeinsam zu sehen?",
+      "a": "Google-Kalender-Synchronisierung und Mehrkalenderansicht gehören zu Base. Advanced entfernt Werbung. Microsoft-Kalender-Unterstützung gehört zu Premium; die Kontoberechtigungen gelten weiterhin."
+    },
+    {
+      "q": "Ersetzt Cloud Calendars private Details automatisch durch einen Belegt-Eintrag im Arbeitskalender?",
+      "a": "Verlasse dich nicht darauf. Kalender gemeinsam anzuzeigen und Anbieterkalender zu spiegeln ist etwas anderes als eine ausdrückliche Regel, die Verfügbarkeit ohne private Details in ein anderes Konto kopiert. Prüfe die von deiner Organisation erlaubte Vereinbarung."
+    }
+  ],
+  "sourcesHeading": "Quellen und weiterführende Informationen",
+  "sources": [
+    {
+      "label": "Apple: Mehrere Kalender auf dem iPhone einrichten",
+      "url": "https://support.apple.com/guide/iphone/use-multiple-calendars-iph3d1110d4/ios"
+    },
+    {
+      "label": "Apple: Doppelte Ereignisse im iCloud-Kalender",
+      "url": "https://support.apple.com/en-us/102180"
+    },
+    {
+      "label": "Google: Festlegen, was andere mit deinem Kalender tun dürfen",
+      "url": "https://support.google.com/calendar/answer/15716974?hl=en"
+    },
+    {
+      "label": "Microsoft: Termine, Besprechungen oder Ereignisse in Outlook ändern",
+      "url": "https://support.microsoft.com/en-us/outlook/calendar/change-an-appointment-meeting-or-event-in-outlook"
+    }
+  ],
+  "seeAlso": [
+    "icloud-google-and-outlook-in-one-view",
+    "google-calendars-that-never-reach-your-iphone",
+    "who-can-see-what-in-google-calendar"
+  ]
+},
+
   "recurring-events-without-the-mess": {
   "updated": "2026-10-21",
   "title": "Wiederkehrende Termine: einen einzelnen Termin oder die Serie gezielt ändern",

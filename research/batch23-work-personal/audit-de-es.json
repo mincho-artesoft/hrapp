@@ -1,0 +1,97 @@
+{
+  "date": "2026-10-22",
+  "slug": "work-and-personal-without-two-apps",
+  "sourceFile": "src/app/content/en-US/articles-unify.ts",
+  "sourceObjectSha256": "22a9844d2cefa22601168684cb8797ff59b9af549be0d445e94584977565b702",
+  "scope": "Complete German and Spanish translations of integrated current English object, including all five sections, eleven paragraphs, practical steps, FAQs, disclosure and source labels.",
+  "checks": [
+    {
+      "locale": "de-DE",
+      "descriptionUnicodeCharacters": 136,
+      "sections": 5,
+      "paragraphs": 11,
+      "practical": 5,
+      "faq": 3,
+      "sources": 4,
+      "exactUrls": true,
+      "sameSchema": true,
+      "date": "2026-10-22",
+      "emptyClaims": true,
+      "relatedRoutes": [
+        {
+          "slug": "icloud-google-and-outlook-in-one-view",
+          "exists": true
+        },
+        {
+          "slug": "google-calendars-that-never-reach-your-iphone",
+          "exists": true
+        },
+        {
+          "slug": "who-can-see-what-in-google-calendar",
+          "exists": true
+        }
+      ],
+      "unavailableEnglishRelated": [
+        "what-calendar-sync-actually-does",
+        "when-two-calendars-disagree"
+      ]
+    },
+    {
+      "locale": "es-ES",
+      "descriptionUnicodeCharacters": 151,
+      "sections": 5,
+      "paragraphs": 11,
+      "practical": 5,
+      "faq": 3,
+      "sources": 4,
+      "exactUrls": true,
+      "sameSchema": true,
+      "date": "2026-10-22",
+      "emptyClaims": true,
+      "relatedRoutes": [
+        {
+          "slug": "icloud-google-and-outlook-in-one-view",
+          "exists": true
+        },
+        {
+          "slug": "google-calendars-that-never-reach-your-iphone",
+          "exists": true
+        },
+        {
+          "slug": "who-can-see-what-in-google-calendar",
+          "exists": true
+        }
+      ],
+      "unavailableEnglishRelated": [
+        "what-calendar-sync-actually-does",
+        "when-two-calendars-disagree"
+      ]
+    }
+  ],
+  "relatedSubstitutions": {
+    "from": [
+      "what-calendar-sync-actually-does",
+      "when-two-calendars-disagree"
+    ],
+    "to": [
+      "icloud-google-and-outlook-in-one-view",
+      "google-calendars-that-never-reach-your-iphone"
+    ],
+    "reason": "The original two guides are absent from both current locale modules and article-index.ts. Existing provider-overview and missing-Google guides cover account/mirror distinctions and selection diagnostics. Google permissions route retained."
+  },
+  "ownReview": [
+    "Each source paragraph translated in order without summary or omitted qualification.",
+    "Provider mirrors and source-dependent storage retained; workplace approval refers to actual data flow.",
+    "Restoring relevant calendars before judging availability retained.",
+    "Selection affects Google sync and notification scheduling; no universal provider stop/resume claim.",
+    "Default calendar, organizer invitation ownership and local-calendar account qualification retained.",
+    "Base Google/multicalendar, Advanced ads, Premium Microsoft/Teams accurately retained.",
+    "Manual approved busy block explicitly separate from automatic privacy masking.",
+    "FAQ does not promise employer privacy merely from a combined view.",
+    "Exact source URLs, empty claims and 2026-10-22 preserved."
+  ],
+  "limitations": [
+    "Own-language translation and semantic review, not independent native-speaker certification.",
+    "No new external source fetch, source integration, build, deploy, native, ASC or customer action."
+  ]
+}

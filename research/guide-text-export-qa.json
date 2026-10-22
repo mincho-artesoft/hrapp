@@ -2,7 +2,7 @@
   "guides": 54,
   "selection": "tools/guide-text-selection.json",
   "extraction": "Visible article headings, paragraphs, lists, FAQs and source links; gallery/other-app cards excluded.",
-  "exportedCharacters": 330792,
+  "exportedCharacters": 331710,
   "records": [
     {
       "slug": "what-calendar-sync-actually-does",
@@ -49,8 +49,8 @@
     {
       "slug": "what-a-subscription-actually-buys",
       "source": "https://www.cloud-calendars.com/articles/what-a-subscription-actually-buys/",
-      "blocks": 41,
-      "characters": 4729
+      "blocks": 45,
+      "characters": 5536
     },
     {
       "slug": "calendar-notifications-missing-silent-or-duplicated",
@@ -193,8 +193,8 @@
     {
       "slug": "a-calendar-that-is-yours-to-share",
       "source": "https://www.cloud-calendars.com/articles/a-calendar-that-is-yours-to-share/",
-      "blocks": 45,
-      "characters": 5890
+      "blocks": 46,
+      "characters": 6001
     },
     {
       "slug": "keeping-track-of-who-replied",

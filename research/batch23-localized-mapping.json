@@ -1,0 +1,32 @@
+[
+  {
+    "locale": "bg",
+    "file": "src/app/content/bg/articles-help.ts",
+    "slug": "work-and-personal-without-two-apps"
+  },
+  {
+    "locale": "de-DE",
+    "file": "src/app/content/de-DE/articles-help.ts",
+    "slug": "work-and-personal-without-two-apps"
+  },
+  {
+    "locale": "es-ES",
+    "file": "src/app/content/es-ES/articles-help.ts",
+    "slug": "work-and-personal-without-two-apps"
+  },
+  {
+    "locale": "fr-FR",
+    "file": "src/app/content/fr-FR/articles-help.ts",
+    "slug": "work-and-personal-without-two-apps"
+  },
+  {
+    "locale": "it",
+    "file": "src/app/content/it/articles-help.ts",
+    "slug": "work-and-personal-without-two-apps"
+  },
+  {
+    "locale": "ja",
+    "file": "src/app/content/ja/articles.ts",
+    "slug": "work-and-personal-without-two-apps"
+  }
+]

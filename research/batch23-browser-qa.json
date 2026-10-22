@@ -1,0 +1,34 @@
+{
+  "checkedAt": "2026-10-22T00:35:09.402516+00:00",
+  "allPassed": true,
+  "pages": [
+    {
+      "locale": "bg",
+      "route": "/bg/articles/work-and-personal-without-two-apps/",
+      "viewportWidth": 575,
+      "documentWidth": 564,
+      "faqCount": 3,
+      "visualScreenshot": "/tmp/cloud-calendar-batch23-bg-work-personal.png"
+    },
+    {
+      "locale": "ja",
+      "route": "/ja/articles/work-and-personal-without-two-apps/",
+      "viewportWidth": 575,
+      "documentWidth": 564,
+      "faqCount": 3,
+      "visualScreenshot": "/tmp/cloud-calendar-batch23-ja-work-personal.png"
+    },
+    {
+      "locale": "en-US",
+      "route": "/articles/what-a-subscription-actually-buys/",
+      "viewportWidth": 575,
+      "documentWidth": 564,
+      "faqCount": 4,
+      "visualScreenshot": "/tmp/cloud-calendar-batch23-family-access.png",
+      "newFaqTextAndAppleSourceVisibleInAX": true
+    }
+  ],
+  "observationRecovery": "After successful FAQ text click, read-only evaluate timed out. Fresh accessibility observation verified full final FAQ text and source without repeating the click; screenshot completed.",
+  "viewportReset": true,
+  "scope": "Representative public web layout and text, not all-locale native-speaker approval, installed app, purchase eligibility, ranking or indexing evidence."
+}
