@@ -1,0 +1,53 @@
+{
+  "date": "2026-10-22",
+  "status": "pass",
+  "scope": "Complete Bulgarian metadata, six sections/twelve paragraphs, six practical steps, four FAQ pairs, all source labels/URLs and related routes read; compared with final complete English already independently reviewed this batch.",
+  "source": {
+    "file": "research/batch37-watch/en-US.json",
+    "rawSha256": "9785840e1ce40d3c4e6d4619042e34e16c7317e39f0932d69189aee31e09a95f",
+    "jsonSha256": "969129de88c99bbc11533d18dff42c7bcab9b221f1c60212bc90586b518a6773"
+  },
+  "draft": {
+    "file": "research/batch37-watch/bg.json",
+    "rawSha256": "35f0318210f30346f64a5d55d42ec3f4871590d21d51a8cda4414ff2015ec77a",
+    "jsonSha256": "e805ddb1b1eba4d8390a6c8ba955ea32925a523bf728f531b3e0b527712fce99"
+  },
+  "checks": {
+    "sections": 6,
+    "paragraphs": 12,
+    "practical": 6,
+    "faq": 4,
+    "descriptionCharacters": 142,
+    "paragraphStructureMatches": true,
+    "sourceUrlsExact": true,
+    "claimsEmpty": true,
+    "dateMatches": true,
+    "allRelatedRoutesExist": true
+  },
+  "relatedRoutes": {
+    "google-calendars-that-never-reach-your-iphone": "src/app/content/bg/articles-google.ts",
+    "the-widget-that-shows-what-is-next": "src/app/content/bg/articles-help.ts"
+  },
+  "omittedAbsentRoutes": [
+    "a-countdown-to-your-next-meeting",
+    "what-calendar-sync-actually-does"
+  ],
+  "materialFindings": [],
+  "requiredCorrections": [],
+  "semanticAssessment": [
+    "Phone widget, watch app, complication, notification and Live Activity distinctions retained. Complication is explained as an information field on the watch face.",
+    "Apple menu labels remain quoted English and explicitly attributed; no invented Bulgarian Cloud controls.",
+    "Fantastical companion setup, Calendar Set and complication choices remain publisher-specific.",
+    "Phone-powered-on and internet requirement is explicitly Flexibits-specific in both body and FAQ, not a universal Watch rule.",
+    "Provider mirror/source-dependent possibility retained: neither automatic visibility nor universal absence asserted.",
+    "No Cloud Watch installation or released support guarantee; no unsupported denial of OS-mediated Live Activity delivery.",
+    "Harmless editable test event, original destination and no destructive first troubleshooting step preserved.",
+    "Bulgarian prose communicates the task and limitations clearly; no material omission or mistranslation identified."
+  ],
+  "reviewRelationship": "Independent cross-agent review of another author’s Bulgarian draft; reviewer previously reviewed English and primary sources.",
+  "limits": [
+    "Own Bulgarian linguistic assessment, not independent native-speaker certification.",
+    "Primary sources reused from fresh English review recorded in independent-editorial-primary-review.json; not fetched again.",
+    "No native/runtime testing, source edits, builds or deployment."
+  ]
+}

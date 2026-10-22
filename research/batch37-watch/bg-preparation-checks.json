@@ -1,0 +1,33 @@
+{
+  "date": "2026-10-22",
+  "canonical": "calendar-on-apple-watch",
+  "finalEnglishRawSha256": "9785840e1ce40d3c4e6d4619042e34e16c7317e39f0932d69189aee31e09a95f",
+  "bulgarianRawSha256": "35f0318210f30346f64a5d55d42ec3f4871590d21d51a8cda4414ff2015ec77a",
+  "checks": {
+    "sections": 6,
+    "paragraphs": 12,
+    "steps": 6,
+    "faq": 4,
+    "descriptionCharacters": 142,
+    "sourcesExact": true,
+    "claimsEmpty": true,
+    "updated": "2026-10-22",
+    "related": [
+      {
+        "slug": "the-widget-that-shows-what-is-next",
+        "file": "articles-help.ts"
+      },
+      {
+        "slug": "google-calendars-that-never-reach-your-iphone",
+        "file": "articles-google.ts"
+      }
+    ]
+  },
+  "omittedRelated": [
+    "a-countdown-to-your-next-meeting",
+    "what-calendar-sync-actually-does"
+  ],
+  "mapping": "Complete six-section English translated with all12paragraphs6steps4FAQ. Exact providerURLs preserved. Apple/Fantastical UI labels retained in English where appropriate; complication explained as an information field on watch face. Device-source-dependent mirrors preserve both no automatic Watch visibility and no universal never-visible claim.",
+  "reviewBasis": "Final English hash confirmed by root and two PASS reviews. Full English object read before translation; own Bulgarian translation/self-review, not native-speaker or runtime certification.",
+  "limits": "Research draft only; no EN/source changes, build/deploy/native/ASC actions."
+}

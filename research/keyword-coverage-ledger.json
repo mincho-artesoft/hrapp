@@ -1459,5 +1459,36 @@
       "research/batch36-public-qa.json"
     ],
     "limits": "No exhaustivekeywords/newmeasuredGoogleorChatGPTlift/newmedia orreleasedsourcecorrespondenceproof. OldunusedUSDclaimlabels were notrenderednumericprices."
+  },
+  "batch37": {
+    "date": "2026-10-22",
+    "action": "New Apple Watch calendar diagnostic canonical with reviewed EN and BG editions",
+    "canonical": "calendar-on-apple-watch",
+    "candidateIntents": [
+      "calendar on Apple Watch",
+      "Apple Watch calendar missing events",
+      "calendar complication not updating"
+    ],
+    "queryEvidenceLimit": "Publisher-topic and task inference from fresh public discovery; not measured rank, volume or ChatGPT recommendation.",
+    "originalContribution": "Trace same event/source/phone/watch display; distinguish companion app/complication/widget/Live Activity, fresh updates and safe disposable-event diagnosis.",
+    "sourceEvidence": "research/batch37-watch/evidence.json",
+    "productBoundary": "Current source has EventKit mirrors and no declared Watch target; guide makes no released companion absence or guaranteed Watch visibility claim.",
+    "reviewEvidence": [
+      "research/batch37-watch/final-review.json",
+      "research/batch37-watch/independent-editorial-primary-review.json",
+      "research/batch37-watch/bg-review.json"
+    ],
+    "noChangeFindings": [
+      "research/batch37-appclip/audit.json",
+      "research/batch37-noapp-discovery/decision.json"
+    ],
+    "verification": [
+      "research/batch37-source-qa.json",
+      "research/batch37-static-qa.json",
+      "research/batch37-metadata-qa.json",
+      "research/batch37-browser-qa.json",
+      "research/batch37-public-qa.json"
+    ],
+    "limits": "No exhaustive keyword, all-localization approval, new media, released-runtime or measured discovery uplift proof."
   }
 }

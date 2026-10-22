@@ -1,0 +1,170 @@
+{
+  "date": "2026-10-22",
+  "decision": "No new English route or immediate DE/ES no-app guide localization justified; core workflow is substantively covered across existing localized guides.",
+  "queries": [
+    "site:readdle.com/de/calendars Einladung ohne App Kalender teilen",
+    "site:support.google.com/calendar invitación \"no\" \"Google Calendar\" \"es\""
+  ],
+  "queryLimits": "One combined batch of two public searches. Observed result associations not individually disambiguated; no Google rank, volume, ChatGPT citation or exhaustive coverage claimed.",
+  "observedRelevantResults": [
+    {
+      "url": "https://support.google.com/calendar/answer/37161?hl=es",
+      "status": "full primary body read"
+    },
+    {
+      "url": "https://readdle.com/de/calendars/how-to-share-outlook-calendar",
+      "status": "full publisher body read"
+    },
+    {
+      "url": "https://readdle.com/de/calendars",
+      "status": "discovered only"
+    },
+    {
+      "url": "https://support.google.com/calendar/answer/13159188?co=GENIE.Platform%3DDesktop&hl=es",
+      "status": "discovered only"
+    },
+    {
+      "url": "https://support.google.com/calendar/answer/37135?co=GENIE.Platform%3DDesktop&hl=es",
+      "status": "discovered only"
+    },
+    {
+      "url": "https://support.google.com/calendar/answer/13839531?co=GENIE.Platform%3DDesktop&hl=es",
+      "status": "discovered only"
+    }
+  ],
+  "primaryReads": [
+    {
+      "url": "https://support.google.com/calendar/answer/37161?hl=es",
+      "accessDate": "2026-10-22",
+      "lines": "18–131 of206",
+      "status": "complete substantive body",
+      "observation": "Google describes inviting an email address even if the recipient does not use Google Calendar, email RSVP links, provider-dependent calendar updating and recipient settings that affect addition.",
+      "boundary": "Computer instructions for Google invitations. Does not prove a Cloud link creates a provider RSVP or guarantee every recipient needs no account/app."
+    },
+    {
+      "url": "https://readdle.com/de/calendars/how-to-share-outlook-calendar",
+      "accessDate": "2026-10-22",
+      "lines": "32–89 of138",
+      "status": "complete substantive body",
+      "observation": "Publisher separates permission-based Outlook sharing from exporting a dated PDF in its iPhone app. A readable schedule and ongoing editable access are different recipient outcomes.",
+      "boundary": "Readdle PDF controls and Microsoft claims are publisher-specific; no Cloud export parity or universal real-time behavior inferred."
+    }
+  ],
+  "failures": [],
+  "localScope": {
+    "snapshots": "research/batch37-noapp-discovery/current-snapshots.json",
+    "rawSha256": "2f69dd5d51d10909e8fce9eff621ed8244247b6accc320f2d2d52bb7aae3701d",
+    "completeObjectsRead": [
+      {
+        "key": "en-US:inviting-people-who-do-not-have-the-app",
+        "file": "src/app/content/en-US/articles-sharing.ts",
+        "objectRawSha256": "cd4b46ea9e44e4926caee36966ff38c83e937d5306d34d2cb22aad8719a89e45",
+        "jsonSha256": "2fe1b7dfa3b2dffd8c942b7e98477b1882051563b84c8ef68b84885debd2fbd9"
+      },
+      {
+        "key": "de-DE:sharing-one-event-not-your-calendar",
+        "file": "src/app/content/de-DE/articles.ts",
+        "objectRawSha256": "c074025bfb28b9699345f836a2cd7f92688983ad09ef156d5db46d2b9c48db44",
+        "jsonSha256": "79488ac761b1797e52cdff342d6e6b92327ea401298d64c6b6cb6a305c26971e"
+      },
+      {
+        "key": "es-ES:sharing-one-event-not-your-calendar",
+        "file": "src/app/content/es-ES/articles.ts",
+        "objectRawSha256": "e97fa433b5bb440e70af8c08eb30cd653e8b8f09dc5b9873ce964c6c9d6e4734",
+        "jsonSha256": "1f3061b4ede99e3d2c4fcc330059a50bd5432d5be32f5f0e8401ec5f47d7c37d"
+      },
+      {
+        "key": "de-DE:calendar-export-ics-pdf-and-backup",
+        "file": "src/app/content/de-DE/articles-help.ts",
+        "objectRawSha256": "24db572668040c4d357f82c0db933bbbfd5fb76fec47c1129c7770ed521b0cd9",
+        "jsonSha256": "e6daa223b1fea89aaf4b0da8fcb4088070cfba6e44d95cb9c5ff388f668c80cc"
+      },
+      {
+        "key": "de-DE:keeping-track-of-who-replied",
+        "file": "src/app/content/de-DE/articles.ts",
+        "objectRawSha256": "788fce1c4ada837a9e895779e70ee7b1ff75928bfc6f61c3c2a29dfcf803d981",
+        "jsonSha256": "773760556e2c98f4f07104a7a15a6dcc9254cbdd83a584df5db8c2aa66ee049c"
+      },
+      {
+        "key": "es-ES:calendar-export-ics-pdf-and-backup",
+        "file": "src/app/content/es-ES/articles-help.ts",
+        "objectRawSha256": "0193cf1c9e154974dc3d013e9113b06cda42f25251ae93d554893c75a18e362f",
+        "jsonSha256": "31c6b4605e97d96f0654ed919d61734ac7b7d116898f75b9b397215c21d53811"
+      },
+      {
+        "key": "es-ES:keeping-track-of-who-replied",
+        "file": "src/app/content/es-ES/articles.ts",
+        "objectRawSha256": "55b141ff84bf3db9291a6ddb7bdbae61927e36e5cf3ae5b1cf5d1e5c033cbc5f",
+        "jsonSha256": "1161e4896baa44958c06bf4a924976600325e5162e5478207c16fb330c55e73c"
+      }
+    ],
+    "extraSnapshot": "English sharing-one-event object captured for provenance but not freshly semantically reread in this batch.",
+    "absentLocales": [
+      "de-DE:inviting-people-who-do-not-have-the-app",
+      "es-ES:inviting-people-who-do-not-have-the-app"
+    ],
+    "absenceMethod": "Static AST scan of all actual articles*.ts modules in each locale; no target object found."
+  },
+  "coverage": [
+    {
+      "task": "Read event details without adding or editing",
+      "localCanonical": "sharing-one-event-not-your-calendar",
+      "finding": "Both complete DE/ES bodies describe App Clip preview and email/QR web route; full app needed to add via that experience."
+    },
+    {
+      "task": "Add an event and obtain elevated rights",
+      "localCanonical": "sharing-one-event-not-your-calendar",
+      "finding": "Both specify writable destination/calendar access and correct signed-in identity for Writer/Owner, excluding anonymous co-owner assumption."
+    },
+    {
+      "task": "Receive later updates versus independent copy",
+      "localCanonical": "sharing-one-event-not-your-calendar",
+      "finding": "Both distinguish ICS import and feed, device opportunity, no deadline and direct contact for urgent changes."
+    },
+    {
+      "task": "Request attendance without confusing sharing receipt",
+      "localCanonical": "keeping-track-of-who-replied",
+      "finding": "Both full bodies distinguish provider invitation, web preview plus message reply, identified/anonymous receipt and explicit attendance."
+    },
+    {
+      "task": "Send a readable schedule or transferable data",
+      "localCanonical": "calendar-export-ics-pdf-and-backup",
+      "finding": "Both full bodies distinguish PDF, import and subscription, document provider/Mac routes and do not promise Cloud file export."
+    }
+  ],
+  "remainingDifference": {
+    "englishOnlyDetails": [
+      "Explicit diagnose what opened: browser, App Clip or full app.",
+      "Whole-calendar verified-email sign-in requirement (outside single-event scope).",
+      "Do not paste arbitrary invitation page into feed field."
+    ],
+    "assessment": "Useful detail, but current evidence does not establish a separate missing multi-section localized task. A recipient-facing choice/triage block can address the immediate friction without duplicating the full English guide."
+  },
+  "recommendedAction": {
+    "priority": "Optional bounded usability amendment, not new page",
+    "canonical": "sharing-one-event-not-your-calendar",
+    "locales": [
+      "de-DE",
+      "es-ES"
+    ],
+    "placement": "After preview/email/QR section",
+    "proposedMeaning": "If the recipient cannot continue, identify whether a web preview, App Clip or full app opened. For someone who only needs details, send date, time zone, venue and a direct way to reply. For a normal meeting invitation, use the organizer’s approved provider workflow; do not treat an app preview as a provider RSVP or a subscription URL.",
+    "existingRelatedRoutes": [
+      "keeping-track-of-who-replied",
+      "calendar-export-ics-pdf-and-backup"
+    ],
+    "whyBounded": "Adds a next action at the point of recipient friction; all deeper permission, update and export instructions already exist in the locale.",
+    "sourceBoundary": "Google Spanish body supports a provider invitation alternative, not a universal no-account Cloud flow.",
+    "noNewCanonical": true,
+    "doNotAutomaticallyLocalizeAbsentPage": true
+  },
+  "secondaryObservation": {
+    "fact": "DE/ES export objects retain the absent no-app slug in seeAlso.",
+    "limit": "This is a source-object observation only; rendered broken-link behavior not checked and must not be claimed. Root can inspect its route filter or choose an existing related guide when editing."
+  },
+  "limits": [
+    "All seven designated complete objects read, not all locale guides. Snapshots pinned to current source.",
+    "No native/runtime/customer operations or independent native-speaker claim.",
+    "No source/build/deploy/API mutations."
+  ]
+}

@@ -1,0 +1,78 @@
+{
+  "date": "2026-10-22",
+  "status": "pass",
+  "canonical": "calendar-on-apple-watch",
+  "draft": {
+    "file": "research/batch37-watch/en-US.json",
+    "rawSha256": "9785840e1ce40d3c4e6d4619042e34e16c7317e39f0932d69189aee31e09a95f",
+    "jsonSha256": "969129de88c99bbc11533d18dff42c7bcab9b221f1c60212bc90586b518a6773",
+    "scope": "Complete metadata, six sections/twelve paragraphs, six practical steps, four FAQs, source labels/URLs and related routes read."
+  },
+  "supportingEvidence": {
+    "file": "research/batch37-watch/product-facts.json",
+    "rawSha256": "99501244a47fe1b9309bafe7ab42c923e1d5e522bf88c99396d4ddadefa3fa15",
+    "scope": "Complete evidence report read. Native paths/ranges not independently reopened in this editorial/primary review; source inspection is not released/runtime certification."
+  },
+  "freshPrimaryReads": [
+    {
+      "url": "https://support.apple.com/en-kg/guide/watch/apd1b51754cc/watchos",
+      "accessDate": "2026-10-22",
+      "status": "complete_substantive_main_text",
+      "lines": "314–363 of379",
+      "finding": "Calendar event details and chosen calendars are documented; current Watch app route My Watch > Apps > Calendar matches draft.",
+      "boundary": "Current version-specific Apple controls; draft explicitly allows version differences."
+    },
+    {
+      "url": "https://flexibits.com/fantastical-ios/help/apple-watch",
+      "accessDate": "2026-10-22",
+      "status": "complete_substantive_main_text",
+      "lines": "58–166 of200",
+      "finding": "Companion installation/setup, watch Calendar Set and configurable complication calendar choices support the draft.",
+      "boundary": "Publisher-specific instructions remain explicitly attributed, not Cloud controls."
+    },
+    {
+      "url": "https://flexibits.com/fantastical-watch/faq",
+      "accessDate": "2026-10-22",
+      "status": "complete_substantive_main_text",
+      "lines": "21–67 of99",
+      "finding": "Phone-powered-on/online synchronization requirement supports both paragraph and FAQ. Draft correctly distinguishes away-from-phone viewing from fresh updates.",
+      "boundary": "Not generalized to Apple Calendar, all watches or all apps; reset/reinstall instructions and security promises from FAQ are not adopted."
+    }
+  ],
+  "materialFindings": [],
+  "requiredChanges": [],
+  "optionalChanges": [],
+  "editorialAssessment": [
+    "Distinct actionable device/surface diagnosis, not another generic sync keyword page. The concrete 18:00-to-18:30 example tests source, phone, app and complication separately.",
+    "Title and description promise calendar diagnosis and app-support checking, not a Cloud Watch companion. No unqualified watch-install, complication or automatic mirroring claim.",
+    "Cloud provider mirrors are described without claiming universal watch visibility or universal absence.",
+    "Live Activity is distinguished from a dedicated watch app without asserting it cannot appear through OS-mediated Watch features.",
+    "Harmless owned writable test and non-sensitive support details avoid destructive troubleshooting.",
+    "Paid subscription does not establish device capability or calendar permission. Developer authorship is clear."
+  ],
+  "distinctnessScope": {
+    "basis": "Parent reported 56-guide term scan and complete current widget/countdown/sync reads; own earlier discovery/body work established those phone surfaces. This review independently assesses new task substance, not a fresh full reread of all 56 guides.",
+    "newTask": "Trace an event separately through phone system calendar, named watch app and complication, with app-specific connectivity and selection boundaries.",
+    "judgment": "New canonical justified on this bounded evidence; no measured demand/ranking claim."
+  },
+  "checks": {
+    "descriptionUnicodeCharacters": 155,
+    "sections": 6,
+    "paragraphs": 12,
+    "practical": 6,
+    "faq": 4,
+    "claimsEmpty": true,
+    "allRelatedExist": true,
+    "routes": {
+      "google-calendars-that-never-reach-your-iphone": "src/app/content/en-US/articles-google.ts",
+      "what-calendar-sync-actually-does": "src/app/content/en-US/articles-unify.ts",
+      "the-widget-that-shows-what-is-next": "src/app/content/en-US/articles-widgets.ts",
+      "a-countdown-to-your-next-meeting": "src/app/content/en-US/articles-widgets.ts"
+    }
+  },
+  "limits": [
+    "No new web search query in this review; three exact draft primary URLs opened and substantive bodies read.",
+    "No runtime, customer/calendar operations, source edits or deployment.",
+    "Publisher page truth is attributed, not independently tested. No rank/volume/ChatGPT citation inference."
+  ]
+}

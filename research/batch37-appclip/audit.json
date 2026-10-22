@@ -1,0 +1,1609 @@
+{
+  "date": "2026-10-22",
+  "decision": "no_material_AppClip_no_install_or_no_account_correction_found_in_reviewed_contexts",
+  "counts": {
+    "parsedHomes": 30,
+    "parsedArticleDefinitions": 456,
+    "articleObjectsWithAppClip": 38,
+    "sharingGuides": 30,
+    "exportGuides": 7,
+    "invitationGuides": 1
+  },
+  "readScope": "Parsed all30actual homes and456article definitions. Reviewed complete AppClip-bearing sections for38objects; first combined output truncated centrally, Hebrew/Hindi/Hungarian sections reread separately. Complete EN invitation object read. All30 complete accountFAQ/localtile/CTA contexts read. Additional multilingual no-install/account lexical matches reviewed as full sections/FAQ in related-phrase-contexts.json. Not a claim of full456article-body or full30home semantic review; lexical search cannot establish absence of every conceivable paraphrase.",
+  "candidates": [],
+  "articleDecisions": [
+    {
+      "locale": "ar-SA",
+      "slug": "sharing-one-event-not-your-calendar",
+      "file": "src/app/content/ar-SA/articles.ts",
+      "objectHash": "be24dffc25614738339d172a10cb9374abf50692e702e0c22fa0a2e3d5836a5b",
+      "reviewedContexts": [
+        {
+          "path": "sections[1]",
+          "heading": "اختر المعاينة أو البريد الإلكتروني أو QR",
+          "body": [
+            "يوفر Cloud Calendars مسارات مختلفة. يعرض App Clip معاينة للحدث؛ وإضافته من تلك التجربة تحتاج التطبيق الكامل. تستخدم دعوات البريد وQR صفحة ويب تعرض فتح Cloud Calendars. لا تصف جميع هذه الروابط بأنها عناوين اشتراك قابلة للتبادل.",
+            "يسجل المرسل الدخول للمشاركة المتزامنة. يمكن إعادة إرسال الرابط أو رمز QR، لذا أرسله فقط حيث يناسب محتواه. رمز QR وسيلة لنقل رابط، وليس إثباتاً لهوية من فتحه."
+          ]
+        }
+      ],
+      "decision": "no_change",
+      "reason": "Explicit App Clip preview/full-app add distinction and separate email/QR landing route."
+    },
+    {
+      "locale": "bg",
+      "slug": "calendar-export-ics-pdf-and-backup",
+      "file": "src/app/content/bg/articles-help.ts",
+      "objectHash": "a3b6dff54e1fb0d3cd10783ba6852781fc4c602a861fe041dd2a22ed373c3efa",
+      "reviewedContexts": [
+        {
+          "path": "sections[4]",
+          "heading": "Какво предоставя споделянето в Cloud Calendars",
+          "body": [
+            "Ние разработваме Cloud Calendars. Споделянето на събития предлага App Clip, имейл и QR за връзки към покани. Тези връзки имат различна цел от изтегляне на целия календар във файл. Те могат да водят към покана или абонамент, но не са преносим архив на всички видими календари.",
+            "Това ръководство не предлага процедура за експортиране на цял календар като ICS, CSV или PDF от Cloud Calendars. Използвайте документираните инструменти на доставчика или Mac. За конкретно събитие вижте ръководството за споделяне; за общ график първо решете кой има нужда от достъп, обновявания или редакция."
+          ]
+        }
+      ],
+      "decision": "no_change",
+      "reason": "Invitations delivery route list contrasts links with portable archives; no promise of App Clip adding without full app. Optional clarification is not mandatory correction."
+    },
+    {
+      "locale": "bg",
+      "slug": "sharing-one-event-not-your-calendar",
+      "file": "src/app/content/bg/articles.ts",
+      "objectHash": "250058ee0e1db017054b14d87e22fc84e0c18c64b35b36b3fea9a50a0ecddf0d",
+      "reviewedContexts": [
+        {
+          "path": "sections[1]",
+          "heading": "Изберете преглед, имейл или QR код",
+          "body": [
+            "App Clip на Cloud Calendars показва преглед; за добавяне на събитието по този начин е нужно пълното приложение. Поканите по имейл и QR код отварят уеб страница с възможност да отворите Cloud Calendars. Това не са взаимозаменяеми адреси за абонамент.",
+            "За синхронизираното споделяне подателят влиза в профил. Връзка или QR код могат да бъдат препратени. Кодът пренася връзка, но не доказва кой я е отворил."
+          ]
+        }
+      ],
+      "decision": "no_change",
+      "reason": "Explicit App Clip preview/full-app add distinction and separate email/QR landing route."
+    },
+    {
+      "locale": "cs",
+      "slug": "sharing-one-event-not-your-calendar",
+      "file": "src/app/content/cs/articles.ts",
+      "objectHash": "ff02b40ace2dc237f467142fcb6350c8eaac6ca8e2eccde0392b4fd3660790ba",
+      "reviewedContexts": [
+        {
+          "path": "sections[1]",
+          "heading": "Vyberte náhled, e-mailovou pozvánku nebo QR kód",
+          "body": [
+            "Cloud Calendars nabízí různé cesty sdílení. App Clip zobrazuje náhled; k přidání události touto cestou je potřeba plná aplikace. E-mailové a QR pozvánky používají webovou stránku nabízející otevření Cloud Calendars. Tyto odkazy nejsou zaměnitelné adresy odběru.",
+            "Pro synchronizované sdílení v aplikaci se odesílatel přihlašuje. Odkaz i QR kód lze přeposlat, proto je posílejte jen tam, kde je jejich obsah vhodný. QR kód předává odkaz, nedokazuje totožnost člověka, který jej otevřel."
+          ]
+        }
+      ],
+      "decision": "no_change",
+      "reason": "Explicit App Clip preview/full-app add distinction and separate email/QR landing route."
+    },
+    {
+      "locale": "da",
+      "slug": "sharing-one-event-not-your-calendar",
+      "file": "src/app/content/da/articles.ts",
+      "objectHash": "b974bb8735ba81371c3f0a4b844817c35125d4fbe64c091dc4b2cdc4594be091",
+      "reviewedContexts": [
+        {
+          "path": "sections[1]",
+          "heading": "Vælg forhåndsvisning, e-mail eller QR",
+          "body": [
+            "Cloud Calendars har forskellige delingsveje. App Clip viser en forhåndsvisning; den fulde app kræves for at tilføje begivenheden derfra. E-mail- og QR-invitationer bruger en webside, der tilbyder at åbne Cloud Calendars. Disse links er ikke indbyrdes udskiftelige abonnementsadresser.",
+            "Afsenderen logger ind til appens synkroniserede deling. Links og QR-koder kan videresendes, så send dem kun steder, hvor indholdet passer. En QR-kode formidler et link; den beviser ikke, hvem der åbnede det."
+          ]
+        }
+      ],
+      "decision": "no_change",
+      "reason": "Explicit App Clip preview/full-app add distinction and separate email/QR landing route."
+    },
+    {
+      "locale": "de-DE",
+      "slug": "calendar-export-ics-pdf-and-backup",
+      "file": "src/app/content/de-DE/articles-help.ts",
+      "objectHash": "e6daa223b1fea89aaf4b0da8fcb4088070cfba6e44d95cb9c5ff388f668c80cc",
+      "reviewedContexts": [
+        {
+          "path": "sections[4]",
+          "heading": "Was Cloud Calendars beim Teilen bereitstellt",
+          "body": [
+            "Wir entwickeln Cloud Calendars. Die Ereignisfreigabe bietet App Clip, E-Mail und QR-Code als Wege für Einladungslinks. Diese erfüllen einen anderen Zweck als der Download eines ganzen Kalenders. Ein Link kann zu einer Einladung oder einem Abonnement führen, ist aber kein portables Archiv aller angezeigten Kalender.",
+            "Dieser Leitfaden enthält keine Anleitung zum vollständigen ICS-, CSV- oder PDF-Export aus Cloud Calendars. Nutzen Sie dafür die dokumentierten Anbieter- oder Mac-Verfahren. Für einen einzelnen Termin hilft unser Freigabeleitfaden. Für einen laufenden gemeinsamen Zeitplan klären Sie zuerst, wer Zugriff, Aktualisierungen oder Bearbeitungsrechte braucht."
+          ]
+        }
+      ],
+      "decision": "no_change",
+      "reason": "Invitations delivery route list contrasts links with portable archives; no promise of App Clip adding without full app. Optional clarification is not mandatory correction."
+    },
+    {
+      "locale": "de-DE",
+      "slug": "sharing-one-event-not-your-calendar",
+      "file": "src/app/content/de-DE/articles.ts",
+      "objectHash": "79488ac761b1797e52cdff342d6e6b92327ea401298d64c6b6cb6a305c26971e",
+      "reviewedContexts": [
+        {
+          "path": "sections[1]",
+          "heading": "Wählen Sie Vorschau, E-Mail oder QR-Code",
+          "body": [
+            "Der App Clip von Cloud Calendars zeigt eine Vorschau. Zum Hinzufügen über diesen Weg wird die vollständige App benötigt. E-Mail- und QR-Einladungen öffnen eine Webseite mit einer Option zum Öffnen von Cloud Calendars. Diese Links sind keine austauschbaren Abonnementadressen.",
+            "Für die synchronisierte Freigabe meldet sich der Absender an. Links und QR-Codes lassen sich weiterleiten. Ein QR-Code übermittelt einen Link, beweist aber nicht, wer ihn geöffnet hat."
+          ]
+        }
+      ],
+      "decision": "no_change",
+      "reason": "Explicit App Clip preview/full-app add distinction and separate email/QR landing route."
+    },
+    {
+      "locale": "el",
+      "slug": "sharing-one-event-not-your-calendar",
+      "file": "src/app/content/el/articles.ts",
+      "objectHash": "24bb9dfe80f024f5935bd269f0976e3c6b77003641a8b52afbddfa30f2af4b8a",
+      "reviewedContexts": [
+        {
+          "path": "sections[1]",
+          "heading": "Επιλέξτε προεπισκόπηση, πρόσκληση email ή κωδικό QR",
+          "body": [
+            "Το Cloud Calendars προσφέρει διαφορετικές διαδρομές. Το App Clip εμφανίζει προεπισκόπηση· για προσθήκη του συμβάντος από αυτή τη διαδρομή απαιτείται η πλήρης εφαρμογή. Οι προσκλήσεις email και QR χρησιμοποιούν ιστοσελίδα που προτείνει το άνοιγμα του Cloud Calendars. Αυτοί οι σύνδεσμοι δεν είναι εναλλάξιμες διευθύνσεις συνδρομής.",
+            "Ο αποστολέας συνδέεται για τη συγχρονισμένη κοινοποίηση της εφαρμογής. Σύνδεσμοι και QR μπορούν να προωθηθούν, οπότε στείλτε τα μόνο όπου το περιεχόμενο είναι κατάλληλο. Ο κωδικός QR μεταφέρει έναν σύνδεσμο, δεν αποδεικνύει ποιος τον άνοιξε."
+          ]
+        }
+      ],
+      "decision": "no_change",
+      "reason": "Explicit App Clip preview/full-app add distinction and separate email/QR landing route."
+    },
+    {
+      "locale": "en-US",
+      "slug": "calendar-export-ics-pdf-and-backup",
+      "file": "src/app/content/en-US/articles-help.ts",
+      "objectHash": "2019588b0512ba28398d0cda4b8445f5eb2b5530cc5d3ea4a6ccd5ca43a9f49b",
+      "reviewedContexts": [
+        {
+          "path": "sections[6]",
+          "heading": "What Cloud Calendars sharing provides",
+          "body": [
+            "We develop Cloud Calendars. Its event-sharing flow offers App Clip, email and QR delivery paths for invitation links. Those links serve a different purpose from downloading your entire calendar as a file. A link may lead into an invitation or subscription workflow; it is not itself a portable archive of every calendar you see.",
+            "This guide does not offer a Cloud Calendars whole-calendar ICS, CSV or PDF export procedure. Use the documented provider or Mac routes above for those tasks. For sending a particular event, follow our event-sharing guide; for a continuing shared schedule, first decide who should have access and whether they need updates or editing rights."
+          ]
+        }
+      ],
+      "decision": "no_change",
+      "reason": "Invitations delivery route list contrasts links with portable archives; no promise of App Clip adding without full app. Optional clarification is not mandatory correction."
+    },
+    {
+      "locale": "en-US",
+      "slug": "sharing-one-event-not-your-calendar",
+      "file": "src/app/content/en-US/articles-sharing.ts",
+      "objectHash": "94df5d346cead4ad6e0d07bd244bdafc3d64e2a927f3d37b33eb14df4356704d",
+      "reviewedContexts": [
+        {
+          "path": "sections[1]",
+          "heading": "Choose a preview, an email invitation or a QR route",
+          "body": [
+            "Cloud Calendars offers distinct sharing routes. Its App Clip presents an event preview; the full app is needed to add the event through that experience. Email and QR invitations use a web landing page that offers to open Cloud Calendars. Do not describe all these links as interchangeable subscription URLs.",
+            "The sender signs in for the app’s synchronized sharing flow. A link or QR code can be forwarded, so send it only where its contents are appropriate. A QR code is a way to convey a link, not proof of who opened it."
+          ]
+        }
+      ],
+      "decision": "no_change",
+      "reason": "Explicit App Clip preview/full-app add distinction and separate email/QR landing route."
+    },
+    {
+      "locale": "en-US",
+      "slug": "inviting-people-who-do-not-have-the-app",
+      "file": "src/app/content/en-US/articles-sharing.ts",
+      "objectHash": "2fe1b7dfa3b2dffd8c942b7e98477b1882051563b84c8ef68b84885debd2fbd9",
+      "reviewedContexts": [
+        {
+          "path": "sections[1]",
+          "heading": "Know what the App Clip actually offers",
+          "body": [
+            "On a supported iPhone, an App Clip can provide a small experience without downloading the full app. Cloud Calendars uses its event App Clip as a preview. Its action points to downloading Cloud Calendars to add the event to a calendar.",
+            "That distinction matters when choosing your wording: “preview the event” is accurate; “add it with no installation” is not a promise this flow supports. Availability also depends on the device and how the link is opened, so do not promise an immediate App Clip launch on every platform."
+          ]
+        },
+        {
+          "path": "sections[2]",
+          "heading": "Explain email and QR links separately",
+          "body": [
+            "Cloud Calendars email and QR event invitations open a web preview route with an option to open the full app. They are not simply another way of invoking the App Clip. A calendar invitation has its own preview and opens the app to add the shared calendar.",
+            "If someone cannot continue, first identify what opened: a browser preview, the App Clip or the full app. Then check what action they want to complete. Repeatedly sending the same link will not change a device’s available app or permissions."
+          ]
+        }
+      ],
+      "decision": "no_change",
+      "reason": "Complete object explicitly separates previews, full app import, identity and ICS; negative no-install example is rejected, not promised."
+    },
+    {
+      "locale": "es-ES",
+      "slug": "calendar-export-ics-pdf-and-backup",
+      "file": "src/app/content/es-ES/articles-help.ts",
+      "objectHash": "31c6b4605e97d96f0654ed919d61734ac7b7d116898f75b9b397215c21d53811",
+      "reviewedContexts": [
+        {
+          "path": "sections[4]",
+          "heading": "Qué ofrece el uso compartido de Cloud Calendars",
+          "body": [
+            "Desarrollamos Cloud Calendars. Su flujo para compartir eventos ofrece App Clip, correo electrónico y QR para entregar enlaces de invitación. Esos enlaces tienen una finalidad distinta a descargar todo el calendario en un archivo. Un enlace puede conducir a una invitación o suscripción; no es un archivo portátil de todos los calendarios que ves.",
+            "Esta guía no ofrece un procedimiento de Cloud Calendars para exportar calendarios completos a ICS, CSV o PDF. Para ello, usa las rutas documentadas del proveedor o del Mac anteriores. Para enviar un evento concreto, sigue nuestra guía de compartir eventos; para un calendario compartido continuo, decide primero quién debe acceder y si necesita actualizaciones o permisos de edición."
+          ]
+        }
+      ],
+      "decision": "no_change",
+      "reason": "Invitations delivery route list contrasts links with portable archives; no promise of App Clip adding without full app. Optional clarification is not mandatory correction."
+    },
+    {
+      "locale": "es-ES",
+      "slug": "sharing-one-event-not-your-calendar",
+      "file": "src/app/content/es-ES/articles.ts",
+      "objectHash": "1f3061b4ede99e3d2c4fcc330059a50bd5432d5be32f5f0e8401ec5f47d7c37d",
+      "reviewedContexts": [
+        {
+          "path": "sections[1]",
+          "heading": "Elige vista previa, invitación por correo o QR",
+          "body": [
+            "Cloud Calendars ofrece vías distintas. Su App Clip muestra una vista previa; para añadir el evento desde esa experiencia hace falta la app completa. Las invitaciones por correo y QR usan una página web que ofrece abrir Cloud Calendars. No describas todos estos enlaces como URL de suscripción intercambiables.",
+            "El remitente inicia sesión para el proceso sincronizado. Un enlace o QR puede reenviarse: envíalo solo donde su contenido sea apropiado. Un QR transmite un enlace, no demuestra quién lo abrió."
+          ]
+        }
+      ],
+      "decision": "no_change",
+      "reason": "Explicit App Clip preview/full-app add distinction and separate email/QR landing route."
+    },
+    {
+      "locale": "fi",
+      "slug": "sharing-one-event-not-your-calendar",
+      "file": "src/app/content/fi/articles.ts",
+      "objectHash": "db1305b22c250fddb7394d1ef6865ed9d1b0ac07dd29c51642ba692ca3dddaa4",
+      "reviewedContexts": [
+        {
+          "path": "sections[1]",
+          "heading": "Valitse esikatselu, sähköposti tai QR-koodi",
+          "body": [
+            "Cloud Calendarsin App Clip näyttää esikatselun. Tapahtuman lisääminen tätä kautta vaatii koko sovelluksen. Sähköposti- ja QR-kutsut avaavat verkkosivun, josta voi avata Cloud Calendarsin. Linkit eivät ole keskenään vaihdettavia tilausosoitteita.",
+            "Synkronoitua jakamista varten lähettäjä kirjautuu sisään. Linkin tai QR-koodin voi välittää eteenpäin. QR-koodi välittää linkin mutta ei todista, kuka sen avasi."
+          ]
+        }
+      ],
+      "decision": "no_change",
+      "reason": "Explicit App Clip preview/full-app add distinction and separate email/QR landing route."
+    },
+    {
+      "locale": "fr-FR",
+      "slug": "calendar-export-ics-pdf-and-backup",
+      "file": "src/app/content/fr-FR/articles-help.ts",
+      "objectHash": "49513823a57330044c8a2d37b44c37898035d2dfb23305031a0cf50d7e0fa279",
+      "reviewedContexts": [
+        {
+          "path": "sections[4]",
+          "heading": "Ce que propose le partage de Cloud Calendars",
+          "body": [
+            "Nous développons Cloud Calendars. Le partage d’événements propose App Clip, e-mail et QR pour transmettre des liens d’invitation. Ces liens servent un autre objectif que télécharger un calendrier entier. Ils peuvent ouvrir une invitation ou un abonnement, mais ne constituent pas une archive portable de tous les calendriers affichés.",
+            "Ce guide ne propose pas de procédure d’exportation complète en ICS, CSV ou PDF depuis Cloud Calendars. Utilisez les méthodes documentées du fournisseur ou du Mac. Pour un événement précis, consultez notre guide de partage ; pour un planning commun suivi dans le temps, décidez qui a besoin d’accès, de mises à jour ou de droits de modification."
+          ]
+        }
+      ],
+      "decision": "no_change",
+      "reason": "Invitations delivery route list contrasts links with portable archives; no promise of App Clip adding without full app. Optional clarification is not mandatory correction."
+    },
+    {
+      "locale": "fr-FR",
+      "slug": "sharing-one-event-not-your-calendar",
+      "file": "src/app/content/fr-FR/articles.ts",
+      "objectHash": "ab83a98f2f07bb3e6923754f06075fbccd55c260ce6e83547b05efab8e719ff5",
+      "reviewedContexts": [
+        {
+          "path": "sections[1]",
+          "heading": "Choisir un aperçu, une invitation par e-mail ou un code QR",
+          "body": [
+            "Cloud Calendars propose plusieurs modes de partage. Son App Clip affiche un aperçu ; l’application complète est nécessaire pour ajouter l’événement depuis ce parcours. Les invitations par e-mail et code QR passent par une page web proposant d’ouvrir Cloud Calendars. Ces liens ne sont pas des URL d’abonnement interchangeables.",
+            "L’expéditeur se connecte pour utiliser le partage synchronisé de l’application. Un lien ou un code QR peut être transféré : envoyez-le uniquement à un public auquel son contenu convient. Le code QR transmet un lien ; il ne prouve pas l’identité de la personne qui l’ouvre."
+          ]
+        }
+      ],
+      "decision": "no_change",
+      "reason": "Explicit App Clip preview/full-app add distinction and separate email/QR landing route."
+    },
+    {
+      "locale": "he",
+      "slug": "sharing-one-event-not-your-calendar",
+      "file": "src/app/content/he/articles.ts",
+      "objectHash": "5e222a48c01c76d6c34ff07e4e174c2d41b62c99c8d19d8cbefaea626c6460d0",
+      "reviewedContexts": [
+        {
+          "path": "sections[1]",
+          "heading": "בחרו תצוגה מקדימה, דוא״ל או QR",
+          "body": [
+            "Cloud Calendars מציעה מסלולים שונים. App Clip מציג תצוגה מקדימה; כדי להוסיף משם את האירוע נדרשת האפליקציה המלאה. הזמנות בדוא״ל וב-QR משתמשות בדף אינטרנט שמציע לפתוח את Cloud Calendars. אין לתאר את כל הקישורים ככתובות מינוי חלופיות זו לזו.",
+            "השולח נכנס לחשבון לצורך השיתוף המסונכרן. אפשר להעביר קישור או קוד QR הלאה, לכן שלחו רק למקום שבו התוכן מתאים. QR הוא דרך להעביר קישור, לא הוכחה לזהות מי שפתח אותו."
+          ]
+        }
+      ],
+      "decision": "no_change",
+      "reason": "Explicit App Clip preview/full-app add distinction and separate email/QR landing route."
+    },
+    {
+      "locale": "hi",
+      "slug": "sharing-one-event-not-your-calendar",
+      "file": "src/app/content/hi/articles.ts",
+      "objectHash": "f64062d164434cfe4c57fe9ec344b591f14f35a6fe5ab71c881b84a40af07808",
+      "reviewedContexts": [
+        {
+          "path": "sections[1]",
+          "heading": "प्रीव्यू, ईमेल या QR का तरीका चुनें",
+          "body": [
+            "Cloud Calendars का App Clip इवेंट का प्रीव्यू दिखाता है; इस रास्ते से इवेंट जोड़ने के लिए पूरा ऐप चाहिए। ईमेल और QR निमंत्रण एक वेब पेज खोलते हैं, जहाँ Cloud Calendars खोलने का विकल्प मिलता है। ये एक-दूसरे की जगह इस्तेमाल होने वाले सदस्यता पते नहीं हैं।",
+            "सिंक होने वाले साझा इवेंट के लिए भेजने वाला साइन इन करता है। लिंक या QR कोड आगे भेजे जा सकते हैं। QR कोड लिंक पहुँचाता है, यह प्रमाण नहीं है कि उसे किसने खोला।"
+          ]
+        }
+      ],
+      "decision": "no_change",
+      "reason": "Explicit App Clip preview/full-app add distinction and separate email/QR landing route."
+    },
+    {
+      "locale": "hu",
+      "slug": "sharing-one-event-not-your-calendar",
+      "file": "src/app/content/hu/articles.ts",
+      "objectHash": "63539e6a39ed12908dc04cd16d4cbd0c8c117452463d5e16f514c338157e4929",
+      "reviewedContexts": [
+        {
+          "path": "sections[1]",
+          "heading": "Válasszon előnézetet, e-mailes meghívót vagy QR-kódot",
+          "body": [
+            "A Cloud Calendars különböző megosztási útvonalakat kínál. Az App Clip előnézetet mutat; az esemény hozzáadásához ezen az útvonalon a teljes alkalmazás szükséges. Az e-mailes és QR-meghívók weboldalon ajánlják fel a Cloud Calendars megnyitását. Ezek a linkek nem felcserélhető előfizetési URL-ek.",
+            "Az alkalmazás szinkronizált megosztásához a küldő bejelentkezik. A link és a QR-kód továbbküldhető, ezért csak megfelelő közönségnek küldje. A QR-kód egy linket közvetít, nem igazolja, ki nyitotta meg."
+          ]
+        }
+      ],
+      "decision": "no_change",
+      "reason": "Explicit App Clip preview/full-app add distinction and separate email/QR landing route."
+    },
+    {
+      "locale": "id",
+      "slug": "sharing-one-event-not-your-calendar",
+      "file": "src/app/content/id/articles.ts",
+      "objectHash": "13a42a6c7d459afdb56ed5f395c2a67f57efdf27bd2bfd49c569a4c99908f2f3",
+      "reviewedContexts": [
+        {
+          "path": "sections[1]",
+          "heading": "Pilih pratinjau, undangan email, atau QR",
+          "body": [
+            "Cloud Calendars menawarkan jalur berbeda. App Clip menampilkan pratinjau; aplikasi lengkap diperlukan untuk menambahkan acara melalui pengalaman itu. Undangan email dan QR memakai halaman web yang menawarkan pembukaan Cloud Calendars. Jangan menyebut semua tautan ini sebagai URL langganan yang saling menggantikan.",
+            "Pengirim masuk untuk alur berbagi tersinkronisasi. Tautan atau kode QR dapat diteruskan, jadi kirim hanya ke tempat yang sesuai dengan isinya. QR menyampaikan tautan, bukan membuktikan siapa yang membukanya."
+          ]
+        }
+      ],
+      "decision": "no_change",
+      "reason": "Explicit App Clip preview/full-app add distinction and separate email/QR landing route."
+    },
+    {
+      "locale": "it",
+      "slug": "calendar-export-ics-pdf-and-backup",
+      "file": "src/app/content/it/articles-help.ts",
+      "objectHash": "77d4e8cb9c77dfdb583e41b8a0bbd8dfe3cce0b51ea3dc775ae6e2408b4c0186",
+      "reviewedContexts": [
+        {
+          "path": "sections[4]",
+          "heading": "Cosa offre la condivisione di Cloud Calendars",
+          "body": [
+            "Sviluppiamo Cloud Calendars. Il suo flusso di condivisione degli eventi offre App Clip, email e QR per distribuire link di invito. Questi link hanno uno scopo diverso dallo scaricare tutto il calendario come file. Un link può portare a un invito o a un’iscrizione; non è di per sé un archivio portatile di tutti i calendari visibili.",
+            "Questa guida non offre una procedura di Cloud Calendars per esportare un intero calendario in ICS, CSV o PDF. Per queste attività usa le procedure documentate del provider o del Mac indicate sopra. Per inviare un singolo evento segui la nostra guida alla condivisione; per un programma condiviso continuativo decidi prima chi deve accedere e se servono aggiornamenti o diritti di modifica."
+          ]
+        }
+      ],
+      "decision": "no_change",
+      "reason": "Invitations delivery route list contrasts links with portable archives; no promise of App Clip adding without full app. Optional clarification is not mandatory correction."
+    },
+    {
+      "locale": "it",
+      "slug": "sharing-one-event-not-your-calendar",
+      "file": "src/app/content/it/articles.ts",
+      "objectHash": "6e6368fe93f04d04bae641dc0ceaf57d7a36df54236fae481bf859858097a8e9",
+      "reviewedContexts": [
+        {
+          "path": "sections[1]",
+          "heading": "Scegli anteprima, email o QR",
+          "body": [
+            "L’App Clip di Cloud Calendars mostra un’anteprima; per aggiungere l’evento tramite quel percorso serve l’app completa. Gli inviti via email e QR aprono una pagina web che propone di aprire Cloud Calendars. Non sono indirizzi di abbonamento intercambiabili.",
+            "Il mittente accede al proprio account per la condivisione sincronizzata. Link e codici QR possono essere inoltrati. Un QR trasmette un link, ma non dimostra chi lo abbia aperto."
+          ]
+        }
+      ],
+      "decision": "no_change",
+      "reason": "Explicit App Clip preview/full-app add distinction and separate email/QR landing route."
+    },
+    {
+      "locale": "ja",
+      "slug": "sharing-one-event-not-your-calendar",
+      "file": "src/app/content/ja/articles.ts",
+      "objectHash": "606b937cd7613ef173ffa567d6d2dd3de8277a7f6a7ae4e3338aa83aa2d90ed6",
+      "reviewedContexts": [
+        {
+          "path": "sections[1]",
+          "heading": "プレビュー、メール招待、QRコードを選ぶ",
+          "body": [
+            "Cloud Calendarsには異なる共有経路があります。App Clipは予定のプレビューを表示し、その経路から予定を追加するには完全版アプリが必要です。メールやQRコードの招待は、Cloud Calendarsを開く操作を案内するウェブページを使います。すべてを同じ購読URLとして扱わないでください。",
+            "アプリの同期共有を使う送信者はサインインします。リンクやQRコードは転送できるため、内容を見せてよい相手にだけ送ってください。QRコードはリンクを伝える手段であり、誰が開いたかを証明するものではありません。"
+          ]
+        }
+      ],
+      "decision": "no_change",
+      "reason": "Explicit App Clip preview/full-app add distinction and separate email/QR landing route."
+    },
+    {
+      "locale": "ko",
+      "slug": "sharing-one-event-not-your-calendar",
+      "file": "src/app/content/ko/articles.ts",
+      "objectHash": "72ab32f9dedd72a74db7f8aacd91b1685126b5ecc8fdf44ac00571fb5fdda494",
+      "reviewedContexts": [
+        {
+          "path": "sections[1]",
+          "heading": "미리보기, 이메일 또는 QR 방식을 선택하세요",
+          "body": [
+            "Cloud Calendars는 서로 다른 공유 경로를 제공합니다. App Clip은 일정 미리보기를 보여주며, 그 경험에서 일정을 추가하려면 전체 앱이 필요합니다. 이메일과 QR 초대는 Cloud Calendars 열기를 안내하는 웹페이지를 사용합니다. 모두를 서로 바꿔 쓸 수 있는 구독 URL로 설명하지 마세요.",
+            "앱의 동기화 공유를 사용하려면 발신자가 로그인합니다. 링크나 QR 코드는 전달될 수 있으므로 내용에 적합한 곳에만 보내세요. QR 코드는 링크 전달 방식이지 누가 열었는지를 증명하지 않습니다."
+          ]
+        }
+      ],
+      "decision": "no_change",
+      "reason": "Explicit App Clip preview/full-app add distinction and separate email/QR landing route."
+    },
+    {
+      "locale": "ms",
+      "slug": "sharing-one-event-not-your-calendar",
+      "file": "src/app/content/ms/articles.ts",
+      "objectHash": "2ce3e7136da1954750162fb30dab19f105bd53264e779a8815d59ee4539cedd3",
+      "reviewedContexts": [
+        {
+          "path": "sections[1]",
+          "heading": "Pilih pratonton, e-mel atau QR",
+          "body": [
+            "App Clip Cloud Calendars memaparkan pratonton; aplikasi penuh diperlukan untuk menambah acara melalui laluan ini. Jemputan e-mel dan QR membuka halaman web yang menawarkan pembukaan Cloud Calendars. Pautan ini bukan alamat langganan yang boleh saling menggantikan.",
+            "Pengirim perlu mendaftar masuk untuk perkongsian terselaras. Pautan dan kod QR boleh diteruskan kepada orang lain. Kod QR menyampaikan pautan, bukan membuktikan siapa yang membukanya."
+          ]
+        }
+      ],
+      "decision": "no_change",
+      "reason": "Explicit App Clip preview/full-app add distinction and separate email/QR landing route."
+    },
+    {
+      "locale": "nl-NL",
+      "slug": "sharing-one-event-not-your-calendar",
+      "file": "src/app/content/nl-NL/articles.ts",
+      "objectHash": "9e0b13fe4a5dd2b274aa2f503add9318da2e3c6b1429fb037ff266bb71abb56c",
+      "reviewedContexts": [
+        {
+          "path": "sections[1]",
+          "heading": "Kies een voorvertoning, e-mailuitnodiging of QR-code",
+          "body": [
+            "Cloud Calendars heeft verschillende deelroutes. De App Clip toont een voorvertoning; om via die ervaring de afspraak toe te voegen is de volledige app nodig. E-mail- en QR-uitnodigingen gebruiken een webpagina die Cloud Calendars kan openen. Deze links zijn geen onderling uitwisselbare abonnements-URL’s.",
+            "Voor gesynchroniseerd delen meldt de afzender zich aan. Een link of QR-code kan worden doorgestuurd: verspreid die alleen waar de inhoud geschikt is. Een QR-code geeft een link door en bewijst niet wie deze heeft geopend."
+          ]
+        }
+      ],
+      "decision": "no_change",
+      "reason": "Explicit App Clip preview/full-app add distinction and separate email/QR landing route."
+    },
+    {
+      "locale": "no",
+      "slug": "sharing-one-event-not-your-calendar",
+      "file": "src/app/content/no/articles.ts",
+      "objectHash": "2103d977660e2d6ecef6ea69d5f6d1d813ca82f20417a293301496b03b244b7c",
+      "reviewedContexts": [
+        {
+          "path": "sections[1]",
+          "heading": "Velg forhåndsvisning, e-post eller QR",
+          "body": [
+            "Cloud Calendars har ulike delingsmåter. App Clip viser en forhåndsvisning; hele appen trengs for å legge til hendelsen derfra. E-post- og QR-invitasjoner bruker en nettside som tilbyr å åpne Cloud Calendars. Ikke beskriv alle disse lenkene som utskiftbare abonnementsadresser.",
+            "Avsenderen logger inn for appens synkroniserte deling. Lenker og QR-koder kan videresendes, så send dem bare dit innholdet passer. En QR-kode formidler en lenke; den beviser ikke hvem som åpnet den."
+          ]
+        }
+      ],
+      "decision": "no_change",
+      "reason": "Explicit App Clip preview/full-app add distinction and separate email/QR landing route."
+    },
+    {
+      "locale": "pl",
+      "slug": "sharing-one-event-not-your-calendar",
+      "file": "src/app/content/pl/articles.ts",
+      "objectHash": "76cfb2f3e79969ed268ad84074df044748e285ddca5821b1585a551191ff52eb",
+      "reviewedContexts": [
+        {
+          "path": "sections[1]",
+          "heading": "Wybierz podgląd, e-mail lub QR",
+          "body": [
+            "App Clip Cloud Calendars pokazuje podgląd; dodanie wydarzenia tą drogą wymaga pełnej aplikacji. Zaproszenia e-mail i QR otwierają stronę z możliwością otwarcia Cloud Calendars. To nie są zamienne adresy subskrypcji.",
+            "Nadawca loguje się do synchronizowanego udostępniania. Link lub kod QR można przekazać dalej. Kod przenosi adres, ale nie dowodzi, kto go otworzył."
+          ]
+        }
+      ],
+      "decision": "no_change",
+      "reason": "Explicit App Clip preview/full-app add distinction and separate email/QR landing route."
+    },
+    {
+      "locale": "pt-BR",
+      "slug": "calendar-export-ics-pdf-and-backup",
+      "file": "src/app/content/pt-BR/articles-help.ts",
+      "objectHash": "fc18178da30cfbb1f0fa667628dd21d48709ff1c9105e69dbfed47bdb2f972e2",
+      "reviewedContexts": [
+        {
+          "path": "sections[4]",
+          "heading": "O que o compartilhamento do Cloud Calendars oferece",
+          "body": [
+            "Nós desenvolvemos o Cloud Calendars. O fluxo de compartilhamento de eventos oferece App Clip, e-mail e QR para entregar links de convite. Esses links têm outra finalidade que não baixar o calendário inteiro em um arquivo. Um link pode abrir um convite ou uma assinatura; não é, por si só, um arquivo portátil de todos os calendários que você vê.",
+            "Este guia não oferece um procedimento do Cloud Calendars para exportar calendários completos em ICS, CSV ou PDF. Para isso, use os caminhos documentados do provedor ou do Mac acima. Para enviar um evento específico, siga nosso guia de compartilhamento; para uma programação compartilhada contínua, decida primeiro quem deve acessar e se precisa de atualizações ou direitos de edição."
+          ]
+        }
+      ],
+      "decision": "no_change",
+      "reason": "Invitations delivery route list contrasts links with portable archives; no promise of App Clip adding without full app. Optional clarification is not mandatory correction."
+    },
+    {
+      "locale": "pt-BR",
+      "slug": "sharing-one-event-not-your-calendar",
+      "file": "src/app/content/pt-BR/articles.ts",
+      "objectHash": "4c31bd8047662104e5588d88f5be1f3cf7691b7d5514f3a4cb296579e5c9dbe8",
+      "reviewedContexts": [
+        {
+          "path": "sections[1]",
+          "heading": "Escolha uma prévia, um convite por e-mail ou um código QR",
+          "body": [
+            "O Cloud Calendars oferece caminhos distintos. O App Clip apresenta uma prévia; para adicionar o evento por esse caminho, é necessário o aplicativo completo. Convites por e-mail e QR usam uma página web que oferece abrir o Cloud Calendars. Esses links não são URLs de assinatura intercambiáveis.",
+            "O remetente entra na conta para usar o compartilhamento sincronizado do aplicativo. Um link ou código QR pode ser encaminhado: envie-o apenas onde seu conteúdo for apropriado. O QR transmite um link, mas não comprova quem o abriu."
+          ]
+        }
+      ],
+      "decision": "no_change",
+      "reason": "Explicit App Clip preview/full-app add distinction and separate email/QR landing route."
+    },
+    {
+      "locale": "ro",
+      "slug": "sharing-one-event-not-your-calendar",
+      "file": "src/app/content/ro/articles.ts",
+      "objectHash": "fd5484e97c639df5c9b4ca51baaf678c353f19b9c10b2784a8fe70634d57efe4",
+      "reviewedContexts": [
+        {
+          "path": "sections[1]",
+          "heading": "Alege previzualizare, e-mail sau QR",
+          "body": [
+            "Cloud Calendars oferă metode distincte. App Clip prezintă o previzualizare; pentru adăugare prin acea experiență este necesară aplicația completă. Invitațiile prin e-mail și QR folosesc o pagină web care propune deschiderea Cloud Calendars. Nu considera toate linkurile adrese de abonare interschimbabile.",
+            "Expeditorul se autentifică pentru partajarea sincronizată. Linkul sau codul QR poate fi redirecționat, deci trimite-l doar unde conținutul este potrivit. Codul QR transmite un link, nu dovedește cine l-a deschis."
+          ]
+        }
+      ],
+      "decision": "no_change",
+      "reason": "Explicit App Clip preview/full-app add distinction and separate email/QR landing route."
+    },
+    {
+      "locale": "ru",
+      "slug": "sharing-one-event-not-your-calendar",
+      "file": "src/app/content/ru/articles.ts",
+      "objectHash": "d00e53faaf310eddd800abe34738b925ac70f63e004e6a051aee0e3a0f17b9c4",
+      "reviewedContexts": [
+        {
+          "path": "sections[1]",
+          "heading": "Выберите предпросмотр, почту или QR",
+          "body": [
+            "App Clip Cloud Calendars показывает предпросмотр; для добавления события этим способом нужно полное приложение. Приглашения по почте и QR открывают веб-страницу с предложением открыть Cloud Calendars. Это не взаимозаменяемые адреса подписки.",
+            "Для синхронизированного доступа отправитель входит в аккаунт. Ссылку и QR-код можно переслать. Код передаёт адрес, но не подтверждает, кто его открыл."
+          ]
+        }
+      ],
+      "decision": "no_change",
+      "reason": "Explicit App Clip preview/full-app add distinction and separate email/QR landing route."
+    },
+    {
+      "locale": "sv",
+      "slug": "sharing-one-event-not-your-calendar",
+      "file": "src/app/content/sv/articles.ts",
+      "objectHash": "e62a57aa427ab6f6b8ad57b22eeb2e7f60e69ad45e823d4e6cb4531dca01123e",
+      "reviewedContexts": [
+        {
+          "path": "sections[1]",
+          "heading": "Välj förhandsvisning, e-postinbjudan eller QR-kod",
+          "body": [
+            "Cloud Calendars har olika delningsvägar. App Clip visar en förhandsvisning; den fullständiga appen behövs för att lägga till händelsen därifrån. Inbjudningar via e-post och QR öppnar en webbsida som erbjuder att öppna Cloud Calendars. Länkarna är inte utbytbara prenumerationsadresser.",
+            "Avsändaren loggar in för appens synkroniserade delning. En länk eller QR-kod kan vidarebefordras, så skicka den bara där innehållet passar. En QR-kod förmedlar en länk och bevisar inte vem som öppnat den."
+          ]
+        }
+      ],
+      "decision": "no_change",
+      "reason": "Explicit App Clip preview/full-app add distinction and separate email/QR landing route."
+    },
+    {
+      "locale": "th",
+      "slug": "sharing-one-event-not-your-calendar",
+      "file": "src/app/content/th/articles.ts",
+      "objectHash": "132f7f31a80b8f73529d618ea059a28417fb9ac644bdb385f24fb53a7a81e7d3",
+      "reviewedContexts": [
+        {
+          "path": "sections[1]",
+          "heading": "เลือกระหว่างตัวอย่าง อีเมล หรือ QR",
+          "body": [
+            "Cloud Calendars มีเส้นทางแชร์ต่างกัน App Clip แสดงตัวอย่างกิจกรรม แต่ต้องใช้แอปเต็มเพื่อเพิ่มกิจกรรมผ่านประสบการณ์นั้น คำเชิญอีเมลและ QR ใช้หน้าเว็บที่เสนอให้เปิด Cloud Calendars อย่าอธิบายลิงก์ทั้งหมดว่าเป็น URL สมัครรับที่ใช้แทนกันได้",
+            "ผู้ส่งต้องลงชื่อเข้าใช้สำหรับการแชร์แบบซิงค์ ลิงก์หรือ QR ส่งต่อได้ จึงควรส่งเฉพาะที่ซึ่งเหมาะกับเนื้อหา QR เป็นวิธีส่งลิงก์ ไม่ใช่หลักฐานว่าใครเปิด"
+          ]
+        }
+      ],
+      "decision": "no_change",
+      "reason": "Explicit App Clip preview/full-app add distinction and separate email/QR landing route."
+    },
+    {
+      "locale": "tr",
+      "slug": "sharing-one-event-not-your-calendar",
+      "file": "src/app/content/tr/articles.ts",
+      "objectHash": "83f23032d4bdc52284ecafc1af61102231632d7c59b277356e003bbc8bf0a038",
+      "reviewedContexts": [
+        {
+          "path": "sections[1]",
+          "heading": "Önizleme, e-posta veya QR yolunu seçin",
+          "body": [
+            "Cloud Calendars App Clip bir önizleme sunar; bu yoldan etkinlik eklemek için tam uygulama gerekir. E-posta ve QR davetleri Cloud Calendars açma seçeneği sunan bir web sayfasına gider. Bunlar birbirinin yerine kullanılan abonelik adresleri değildir.",
+            "Eşzamanlanan paylaşım için gönderen oturum açar. Bağlantılar ve QR kodları başkalarına iletilebilir. QR kodu bağlantıyı taşır, kimin açtığını kanıtlamaz."
+          ]
+        }
+      ],
+      "decision": "no_change",
+      "reason": "Explicit App Clip preview/full-app add distinction and separate email/QR landing route."
+    },
+    {
+      "locale": "vi",
+      "slug": "sharing-one-event-not-your-calendar",
+      "file": "src/app/content/vi/articles.ts",
+      "objectHash": "c0c8046932f1f6120502d5fac49977800fb62bddd2033bef9e3ca7c49e65e794",
+      "reviewedContexts": [
+        {
+          "path": "sections[1]",
+          "heading": "Chọn bản xem trước, lời mời email hoặc mã QR",
+          "body": [
+            "Cloud Calendars có các cách chia sẻ riêng biệt. App Clip hiển thị bản xem trước; cần ứng dụng đầy đủ để thêm sự kiện qua trải nghiệm đó. Lời mời email và QR dùng trang web có tùy chọn mở Cloud Calendars. Không nên coi các liên kết này là URL đăng ký lịch có thể thay thế lẫn nhau.",
+            "Người gửi đăng nhập để dùng quy trình chia sẻ đồng bộ của ứng dụng. Liên kết hoặc mã QR có thể bị chuyển tiếp, nên chỉ gửi tới nơi phù hợp với nội dung. Mã QR truyền tải liên kết, không chứng minh ai đã mở."
+          ]
+        }
+      ],
+      "decision": "no_change",
+      "reason": "Explicit App Clip preview/full-app add distinction and separate email/QR landing route."
+    },
+    {
+      "locale": "zh-Hans",
+      "slug": "sharing-one-event-not-your-calendar",
+      "file": "src/app/content/zh-Hans/articles.ts",
+      "objectHash": "ca2200b476de464d755dda7a949f16dda2974ffe994589e9c4594146d802d350",
+      "reviewedContexts": [
+        {
+          "path": "sections[1]",
+          "heading": "选择预览、电子邮件或二维码方式",
+          "body": [
+            "Cloud Calendars 提供不同的分享途径。App Clip 展示活动预览；通过该体验添加活动需要完整应用。电子邮件和二维码邀请使用一个提供打开 Cloud Calendars 选项的网页。不要把这些链接都描述成可互换的订阅网址。",
+            "发送者需要登录才能使用应用的同步分享流程。链接和二维码可以被转发，因此只应发送到适合其内容的场合。二维码是传递链接的方式，不能证明谁打开了它。"
+          ]
+        }
+      ],
+      "decision": "no_change",
+      "reason": "Explicit App Clip preview/full-app add distinction and separate email/QR landing route."
+    },
+    {
+      "locale": "zh-Hant",
+      "slug": "sharing-one-event-not-your-calendar",
+      "file": "src/app/content/zh-Hant/articles.ts",
+      "objectHash": "6d9bdaa561b11d85957c71e7d4584841022180392afc32dc084cfee169c38094",
+      "reviewedContexts": [
+        {
+          "path": "sections[1]",
+          "heading": "選擇預覽、電子郵件或 QR 碼",
+          "body": [
+            "Cloud Calendars 的 App Clip 提供行程預覽；透過此流程加入行程需要完整 App。電子郵件與 QR 邀請會開啟網頁，提供開啟 Cloud Calendars 的選項。這些連結不是可以互換的訂閱網址。",
+            "寄件者需要登入才能使用同步分享。連結與 QR 碼可以轉傳，因此請只傳給適合接收內容的對象。QR 碼只是傳遞連結，無法證明誰開啟了它。"
+          ]
+        }
+      ],
+      "decision": "no_change",
+      "reason": "Explicit App Clip preview/full-app add distinction and separate email/QR landing route."
+    }
+  ],
+  "homeDecisions": [
+    {
+      "locale": "ar-SA",
+      "file": "src/app/content/home/ar-SA.ts",
+      "rawFileSha256": "3a575d1bd1288a43bed44df39042e1d4f6bee526402bd03e39b7a7041bbec352",
+      "appClipMention": false,
+      "contexts": {
+        "faq.items[0]": {
+          "q": "هل أحتاج إلى حساب لاستخدام Cloud Calendars؟",
+          "a": "يمكنك استخدام التقويمات المحلية دون حساب. قد يتطلب ربط خدمات التقويم والمشاركة تسجيل الدخول."
+        },
+        "features.tiles[2]": {
+          "title": "تقويمات محلية",
+          "body": "يمكنك استخدام التقويمات المحلية دون حساب. قد يتطلب ربط خدمات التقويم والمشاركة تسجيل الدخول.",
+          "badge": "تقويمات محلية"
+        },
+        "cta.lead": "نزّله مجانًا. يمكنك استخدام التقويمات المحلية دون حساب. قد يتطلب ربط خدمات التقويم والمشاركة تسجيل الدخول."
+      },
+      "decision": "no_change_local_calendar_qualification_retained"
+    },
+    {
+      "locale": "bg",
+      "file": "src/app/content/home/bg.ts",
+      "rawFileSha256": "cd819de959c11e4eb054a0f3fd674bdfe04485eca59ae25e51e306608b0a98b0",
+      "appClipMention": false,
+      "contexts": {
+        "faq.items[0]": {
+          "q": "Нужен ли ми е профил, за да ползвам Cloud Calendars?",
+          "a": "Използвайте локални календари без профил. Свързването на календарни услуги и споделянето може да изискват вход."
+        },
+        "features.tiles[2]": {
+          "title": "Локални календари",
+          "body": "Използвайте локални календари без профил. Свързването на календарни услуги и споделянето може да изискват вход.",
+          "badge": "Локални календари"
+        },
+        "cta.lead": "Изтеглете безплатно. Използвайте локални календари без профил. Свързването на календарни услуги и споделянето може да изискват вход."
+      },
+      "decision": "no_change_local_calendar_qualification_retained"
+    },
+    {
+      "locale": "cs",
+      "file": "src/app/content/home/cs.ts",
+      "rawFileSha256": "606f898c197b23f50de1b5794feba6f25e1dad6e1d0feb8d626b086dfa7c564a",
+      "appClipMention": false,
+      "contexts": {
+        "faq.items[0]": {
+          "q": "Potřebuji účet, abych mohl používat Cloud Calendars?",
+          "a": "Místní kalendáře můžete používat bez účtu. Připojení kalendářových služeb a sdílení může vyžadovat přihlášení."
+        },
+        "features.tiles[2]": {
+          "title": "Místní kalendáře",
+          "body": "Místní kalendáře můžete používat bez účtu. Připojení kalendářových služeb a sdílení může vyžadovat přihlášení.",
+          "badge": "Místní kalendáře"
+        },
+        "cta.lead": "Stáhnout zdarma. Místní kalendáře můžete používat bez účtu. Připojení kalendářových služeb a sdílení může vyžadovat přihlášení."
+      },
+      "decision": "no_change_local_calendar_qualification_retained"
+    },
+    {
+      "locale": "da",
+      "file": "src/app/content/home/da.ts",
+      "rawFileSha256": "6bfd8e5aa3432b1f46c610b556c2d994c9e52816bbf788aecc15019ca582d769",
+      "appClipMention": false,
+      "contexts": {
+        "faq.items[0]": {
+          "q": "Skal jeg have en konto for at bruge Cloud Calendars?",
+          "a": "Brug lokale kalendere uden en konto. Tilslutning af kalendertjenester og deling kan kræve login."
+        },
+        "features.tiles[2]": {
+          "title": "Lokale kalendere",
+          "body": "Brug lokale kalendere uden en konto. Tilslutning af kalendertjenester og deling kan kræve login.",
+          "badge": "Lokale kalendere"
+        },
+        "cta.lead": "Hent gratis. Brug lokale kalendere uden en konto. Tilslutning af kalendertjenester og deling kan kræve login."
+      },
+      "decision": "no_change_local_calendar_qualification_retained"
+    },
+    {
+      "locale": "de-DE",
+      "file": "src/app/content/home/de-DE.ts",
+      "rawFileSha256": "a29c2d9d26db602a436916eaf802126ad6cd0d48a9f12315916bc45d2d7dd15e",
+      "appClipMention": false,
+      "contexts": {
+        "faq.items[0]": {
+          "q": "Brauche ich ein Konto, um Cloud Calendars zu nutzen?",
+          "a": "Lokale Kalender können Sie ohne Konto nutzen. Das Verbinden von Kalenderdiensten und das Teilen können eine Anmeldung erfordern."
+        },
+        "features.tiles[2]": {
+          "title": "Lokale Kalender",
+          "body": "Lokale Kalender können Sie ohne Konto nutzen. Das Verbinden von Kalenderdiensten und das Teilen können eine Anmeldung erfordern.",
+          "badge": "Lokale Kalender"
+        },
+        "cta.lead": "Kostenlos laden. Lokale Kalender können Sie ohne Konto nutzen. Das Verbinden von Kalenderdiensten und das Teilen können eine Anmeldung erfordern."
+      },
+      "decision": "no_change_local_calendar_qualification_retained"
+    },
+    {
+      "locale": "el",
+      "file": "src/app/content/home/el.ts",
+      "rawFileSha256": "828e699d6ea97ca23816afa42cc412d2e023cf773366d6ccf18f2419b5430c0e",
+      "appClipMention": false,
+      "contexts": {
+        "faq.items[0]": {
+          "q": "Χρειάζομαι λογαριασμό για να χρησιμοποιήσω το Cloud Calendars;",
+          "a": "Χρησιμοποιήστε τοπικά ημερολόγια χωρίς λογαριασμό. Η σύνδεση υπηρεσιών ημερολογίου και η κοινή χρήση ενδέχεται να απαιτούν σύνδεση."
+        },
+        "features.tiles[2]": {
+          "title": "Τοπικά ημερολόγια",
+          "body": "Χρησιμοποιήστε τοπικά ημερολόγια χωρίς λογαριασμό. Η σύνδεση υπηρεσιών ημερολογίου και η κοινή χρήση ενδέχεται να απαιτούν σύνδεση.",
+          "badge": "Τοπικά ημερολόγια"
+        },
+        "cta.lead": "Δωρεάν λήψη. Χρησιμοποιήστε τοπικά ημερολόγια χωρίς λογαριασμό. Η σύνδεση υπηρεσιών ημερολογίου και η κοινή χρήση ενδέχεται να απαιτούν σύνδεση."
+      },
+      "decision": "no_change_local_calendar_qualification_retained"
+    },
+    {
+      "locale": "en-US",
+      "file": "src/app/content/home/en-US.ts",
+      "rawFileSha256": "8866accd9cdbe31a2591af482181d149b24b7344bfd105f525e5fb815886af78",
+      "appClipMention": false,
+      "contexts": {
+        "faq.items[0]": {
+          "q": "Do I need an account to use Cloud Calendars?",
+          "a": "Use local calendars without an account. Connecting calendar services and sharing may require sign-in."
+        },
+        "features.tiles[2]": {
+          "title": "Local calendars",
+          "body": "Use local calendars without an account. Connecting calendar services and sharing may require sign-in.",
+          "badge": "Local calendars"
+        },
+        "cta.lead": "Download free. Use local calendars without an account. Connecting calendar services and sharing may require sign-in."
+      },
+      "decision": "no_change_local_calendar_qualification_retained"
+    },
+    {
+      "locale": "es-ES",
+      "file": "src/app/content/home/es-ES.ts",
+      "rawFileSha256": "f5c11719db7b2049fb31ff358dbf1147c6d5b46f38637c5599d0277d99646760",
+      "appClipMention": false,
+      "contexts": {
+        "faq.items[0]": {
+          "q": "¿Necesito una cuenta para usar Cloud Calendars?",
+          "a": "Usa calendarios locales sin una cuenta. Conectar servicios de calendario y compartir puede requerir iniciar sesión."
+        },
+        "features.tiles[2]": {
+          "title": "Calendarios locales",
+          "body": "Usa calendarios locales sin una cuenta. Conectar servicios de calendario y compartir puede requerir iniciar sesión.",
+          "badge": "Calendarios locales"
+        },
+        "cta.lead": "Descargar gratis. Usa calendarios locales sin una cuenta. Conectar servicios de calendario y compartir puede requerir iniciar sesión."
+      },
+      "decision": "no_change_local_calendar_qualification_retained"
+    },
+    {
+      "locale": "fi",
+      "file": "src/app/content/home/fi.ts",
+      "rawFileSha256": "177f3ad7c2cb36fe7c238aea93aaf66ab0542fb4986f2863c647d0edbcf5b11f",
+      "appClipMention": false,
+      "contexts": {
+        "faq.items[0]": {
+          "q": "Tarvitsenko tilin käyttääkseni Cloud Calendarsia?",
+          "a": "Käytä paikallisia kalentereita ilman tiliä. Kalenteripalveluiden yhdistäminen ja jakaminen voivat edellyttää kirjautumista."
+        },
+        "features.tiles[2]": {
+          "title": "Paikalliset kalenterit",
+          "body": "Käytä paikallisia kalentereita ilman tiliä. Kalenteripalveluiden yhdistäminen ja jakaminen voivat edellyttää kirjautumista.",
+          "badge": "Paikalliset kalenterit"
+        },
+        "cta.lead": "Lataa ilmaiseksi. Käytä paikallisia kalentereita ilman tiliä. Kalenteripalveluiden yhdistäminen ja jakaminen voivat edellyttää kirjautumista."
+      },
+      "decision": "no_change_local_calendar_qualification_retained"
+    },
+    {
+      "locale": "fr-FR",
+      "file": "src/app/content/home/fr-FR.ts",
+      "rawFileSha256": "77bd90a156f610f627424dc84fc016debc7f969bcd6d9eabc9bcf8f2f0539aeb",
+      "appClipMention": false,
+      "contexts": {
+        "faq.items[0]": {
+          "q": "Ai-je besoin d’un compte pour utiliser Cloud Calendars ?",
+          "a": "Utilisez les calendriers locaux sans compte. La connexion de services de calendrier et le partage peuvent nécessiter une connexion à un compte."
+        },
+        "features.tiles[2]": {
+          "title": "Calendriers locaux",
+          "body": "Utilisez les calendriers locaux sans compte. La connexion de services de calendrier et le partage peuvent nécessiter une connexion à un compte.",
+          "badge": "Calendriers locaux"
+        },
+        "cta.lead": "Télécharger gratuitement. Utilisez les calendriers locaux sans compte. La connexion de services de calendrier et le partage peuvent nécessiter une connexion à un compte."
+      },
+      "decision": "no_change_local_calendar_qualification_retained"
+    },
+    {
+      "locale": "he",
+      "file": "src/app/content/home/he.ts",
+      "rawFileSha256": "d638eb423c8627861b145d12062b5a4aaf831d14271bc9cba04653e4440aabe0",
+      "appClipMention": false,
+      "contexts": {
+        "faq.items[0]": {
+          "q": "האם אני צריך חשבון כדי להשתמש ב‑Cloud Calendars?",
+          "a": "אפשר להשתמש בלוחות שנה מקומיים ללא חשבון. חיבור שירותי יומן ושיתוף עשויים לדרוש כניסה לחשבון."
+        },
+        "features.tiles[2]": {
+          "title": "לוחות שנה מקומיים",
+          "body": "אפשר להשתמש בלוחות שנה מקומיים ללא חשבון. חיבור שירותי יומן ושיתוף עשויים לדרוש כניסה לחשבון.",
+          "badge": "לוחות שנה מקומיים"
+        },
+        "cta.lead": "הורדה חינם. אפשר להשתמש בלוחות שנה מקומיים ללא חשבון. חיבור שירותי יומן ושיתוף עשויים לדרוש כניסה לחשבון."
+      },
+      "decision": "no_change_local_calendar_qualification_retained"
+    },
+    {
+      "locale": "hi",
+      "file": "src/app/content/home/hi.ts",
+      "rawFileSha256": "eb726356c250b568a989a4f70c588a8d59ea00224567688178e1459168c7bb18",
+      "appClipMention": false,
+      "contexts": {
+        "faq.items[0]": {
+          "q": "Cloud Calendars इस्तेमाल करने के लिए क्या खाता चाहिए?",
+          "a": "स्थानीय कैलेंडर का उपयोग बिना खाते के करें। कैलेंडर सेवाएँ जोड़ने और साझा करने के लिए साइन इन करना पड़ सकता है।"
+        },
+        "features.tiles[2]": {
+          "title": "स्थानीय कैलेंडर",
+          "body": "स्थानीय कैलेंडर का उपयोग बिना खाते के करें। कैलेंडर सेवाएँ जोड़ने और साझा करने के लिए साइन इन करना पड़ सकता है।",
+          "badge": "स्थानीय कैलेंडर"
+        },
+        "cta.lead": "मुफ़्त डाउनलोड. स्थानीय कैलेंडर का उपयोग बिना खाते के करें। कैलेंडर सेवाएँ जोड़ने और साझा करने के लिए साइन इन करना पड़ सकता है।"
+      },
+      "decision": "no_change_local_calendar_qualification_retained"
+    },
+    {
+      "locale": "hu",
+      "file": "src/app/content/home/hu.ts",
+      "rawFileSha256": "62f0d68650be3da278f7c31aec64dfc63bd50316d5322e54962572d3daca6ace",
+      "appClipMention": false,
+      "contexts": {
+        "faq.items[0]": {
+          "q": "Szükségem van fiókra a Cloud Calendars használatához?",
+          "a": "A helyi naptárakat fiók nélkül használhatja. A naptárszolgáltatások csatlakoztatásához és a megosztáshoz bejelentkezésre lehet szükség."
+        },
+        "features.tiles[2]": {
+          "title": "Helyi naptárak",
+          "body": "A helyi naptárakat fiók nélkül használhatja. A naptárszolgáltatások csatlakoztatásához és a megosztáshoz bejelentkezésre lehet szükség.",
+          "badge": "Helyi naptárak"
+        },
+        "cta.lead": "Letöltés ingyen. A helyi naptárakat fiók nélkül használhatja. A naptárszolgáltatások csatlakoztatásához és a megosztáshoz bejelentkezésre lehet szükség."
+      },
+      "decision": "no_change_local_calendar_qualification_retained"
+    },
+    {
+      "locale": "id",
+      "file": "src/app/content/home/id.ts",
+      "rawFileSha256": "87681780db6499efc75203dd33ad8e30f8554eee85d09c09ecb1dbe8decc1fd1",
+      "appClipMention": false,
+      "contexts": {
+        "faq.items[0]": {
+          "q": "Apakah saya butuh akun untuk memakai Cloud Calendars?",
+          "a": "Gunakan kalender lokal tanpa akun. Menghubungkan layanan kalender dan berbagi mungkin memerlukan login."
+        },
+        "features.tiles[2]": {
+          "title": "Kalender lokal",
+          "body": "Gunakan kalender lokal tanpa akun. Menghubungkan layanan kalender dan berbagi mungkin memerlukan login.",
+          "badge": "Kalender lokal"
+        },
+        "cta.lead": "Unduh gratis. Gunakan kalender lokal tanpa akun. Menghubungkan layanan kalender dan berbagi mungkin memerlukan login."
+      },
+      "decision": "no_change_local_calendar_qualification_retained"
+    },
+    {
+      "locale": "it",
+      "file": "src/app/content/home/it.ts",
+      "rawFileSha256": "22bf32307ab319d2839fbaab410cef352b2e146a548b39d7ab890e9ed9c4cfc1",
+      "appClipMention": false,
+      "contexts": {
+        "faq.items[0]": {
+          "q": "Mi serve un account per usare Cloud Calendars?",
+          "a": "Usa i calendari locali senza un account. Collegare servizi di calendario e condividere può richiedere l’accesso."
+        },
+        "features.tiles[2]": {
+          "title": "Calendari locali",
+          "body": "Usa i calendari locali senza un account. Collegare servizi di calendario e condividere può richiedere l’accesso.",
+          "badge": "Calendari locali"
+        },
+        "cta.lead": "Scarica gratis. Usa i calendari locali senza un account. Collegare servizi di calendario e condividere può richiedere l’accesso."
+      },
+      "decision": "no_change_local_calendar_qualification_retained"
+    },
+    {
+      "locale": "ja",
+      "file": "src/app/content/home/ja.ts",
+      "rawFileSha256": "116e5088238f9b390f92952c959f75800038f5972b1cf430e3ffe937567e8c1b",
+      "appClipMention": false,
+      "contexts": {
+        "faq.items[0]": {
+          "q": "Cloud Calendars を使うのにアカウントは必要ですか。",
+          "a": "ローカルカレンダーはアカウントなしで使えます。カレンダーサービスの接続や共有には、サインインが必要な場合があります。"
+        },
+        "features.tiles[2]": {
+          "title": "ローカルカレンダー",
+          "body": "ローカルカレンダーはアカウントなしで使えます。カレンダーサービスの接続や共有には、サインインが必要な場合があります。",
+          "badge": "ローカルカレンダー"
+        },
+        "cta.lead": "無料で入手. ローカルカレンダーはアカウントなしで使えます。カレンダーサービスの接続や共有には、サインインが必要な場合があります。"
+      },
+      "decision": "no_change_local_calendar_qualification_retained"
+    },
+    {
+      "locale": "ko",
+      "file": "src/app/content/home/ko.ts",
+      "rawFileSha256": "f8e1013a8ddd05c1502d9440c0bc5c74634609cace910fe616b513e73567c980",
+      "appClipMention": false,
+      "contexts": {
+        "faq.items[0]": {
+          "q": "Cloud Calendars를 쓰려면 계정이 필요한가요?",
+          "a": "로컬 캘린더는 계정 없이 사용할 수 있습니다. 캘린더 서비스 연결과 공유에는 로그인이 필요할 수 있습니다."
+        },
+        "features.tiles[2]": {
+          "title": "로컬 캘린더",
+          "body": "로컬 캘린더는 계정 없이 사용할 수 있습니다. 캘린더 서비스 연결과 공유에는 로그인이 필요할 수 있습니다.",
+          "badge": "로컬 캘린더"
+        },
+        "cta.lead": "무료로 받기. 로컬 캘린더는 계정 없이 사용할 수 있습니다. 캘린더 서비스 연결과 공유에는 로그인이 필요할 수 있습니다."
+      },
+      "decision": "no_change_local_calendar_qualification_retained"
+    },
+    {
+      "locale": "ms",
+      "file": "src/app/content/home/ms.ts",
+      "rawFileSha256": "b6ae937a69fd841cadf7c43223098fb886fc01d01bd12c5c49c2272a13e26af4",
+      "appClipMention": false,
+      "contexts": {
+        "faq.items[0]": {
+          "q": "Adakah saya perlukan akaun untuk menggunakan Cloud Calendars?",
+          "a": "Gunakan kalendar setempat tanpa akaun. Sambungan perkhidmatan kalendar dan perkongsian mungkin memerlukan log masuk."
+        },
+        "features.tiles[2]": {
+          "title": "Kalendar setempat",
+          "body": "Gunakan kalendar setempat tanpa akaun. Sambungan perkhidmatan kalendar dan perkongsian mungkin memerlukan log masuk.",
+          "badge": "Kalendar setempat"
+        },
+        "cta.lead": "Muat turun percuma. Gunakan kalendar setempat tanpa akaun. Sambungan perkhidmatan kalendar dan perkongsian mungkin memerlukan log masuk."
+      },
+      "decision": "no_change_local_calendar_qualification_retained"
+    },
+    {
+      "locale": "nl-NL",
+      "file": "src/app/content/home/nl-NL.ts",
+      "rawFileSha256": "972ed02d27ba7e62f8022ff0846900771dfc9a0e857cbf4681df4ea9ad8304da",
+      "appClipMention": false,
+      "contexts": {
+        "faq.items[0]": {
+          "q": "Heb ik een account nodig om Cloud Calendars te gebruiken?",
+          "a": "Gebruik lokale agenda’s zonder account. Voor het koppelen van agendadiensten en delen kan inloggen nodig zijn."
+        },
+        "features.tiles[2]": {
+          "title": "Lokale agenda’s",
+          "body": "Gebruik lokale agenda’s zonder account. Voor het koppelen van agendadiensten en delen kan inloggen nodig zijn.",
+          "badge": "Lokale agenda’s"
+        },
+        "cta.lead": "Gratis downloaden. Gebruik lokale agenda’s zonder account. Voor het koppelen van agendadiensten en delen kan inloggen nodig zijn."
+      },
+      "decision": "no_change_local_calendar_qualification_retained"
+    },
+    {
+      "locale": "no",
+      "file": "src/app/content/home/no.ts",
+      "rawFileSha256": "5eac872781ed5338829be2011b0c189531af60194ec21e468ac53b1ccdadf1ff",
+      "appClipMention": false,
+      "contexts": {
+        "faq.items[0]": {
+          "q": "Trenger jeg en konto for å bruke Cloud Calendars?",
+          "a": "Bruk lokale kalendere uten konto. Tilkobling av kalendertjenester og deling kan kreve innlogging."
+        },
+        "features.tiles[2]": {
+          "title": "Lokale kalendere",
+          "body": "Bruk lokale kalendere uten konto. Tilkobling av kalendertjenester og deling kan kreve innlogging.",
+          "badge": "Lokale kalendere"
+        },
+        "cta.lead": "Last ned gratis. Bruk lokale kalendere uten konto. Tilkobling av kalendertjenester og deling kan kreve innlogging."
+      },
+      "decision": "no_change_local_calendar_qualification_retained"
+    },
+    {
+      "locale": "pl",
+      "file": "src/app/content/home/pl.ts",
+      "rawFileSha256": "3c7f906a570ad736c29ce97be1e22d4f30dcd899924236646ba666e34a2c8995",
+      "appClipMention": false,
+      "contexts": {
+        "faq.items[0]": {
+          "q": "Czy potrzebuję konta, żeby korzystać z Cloud Calendars?",
+          "a": "Korzystaj z kalendarzy lokalnych bez konta. Łączenie usług kalendarza i udostępnianie może wymagać zalogowania."
+        },
+        "features.tiles[2]": {
+          "title": "Kalendarze lokalne",
+          "body": "Korzystaj z kalendarzy lokalnych bez konta. Łączenie usług kalendarza i udostępnianie może wymagać zalogowania.",
+          "badge": "Kalendarze lokalne"
+        },
+        "cta.lead": "Pobierz za darmo. Korzystaj z kalendarzy lokalnych bez konta. Łączenie usług kalendarza i udostępnianie może wymagać zalogowania."
+      },
+      "decision": "no_change_local_calendar_qualification_retained"
+    },
+    {
+      "locale": "pt-BR",
+      "file": "src/app/content/home/pt-BR.ts",
+      "rawFileSha256": "b13643b7863947f26d365b1b07d94e816d1b980b7a22720cab472b4e6f57870a",
+      "appClipMention": false,
+      "contexts": {
+        "faq.items[0]": {
+          "q": "Preciso de conta para usar o Cloud Calendars?",
+          "a": "Use calendários locais sem uma conta. Conectar serviços de calendário e compartilhar pode exigir login."
+        },
+        "features.tiles[2]": {
+          "title": "Calendários locais",
+          "body": "Use calendários locais sem uma conta. Conectar serviços de calendário e compartilhar pode exigir login.",
+          "badge": "Calendários locais"
+        },
+        "cta.lead": "Baixar grátis. Use calendários locais sem uma conta. Conectar serviços de calendário e compartilhar pode exigir login."
+      },
+      "decision": "no_change_local_calendar_qualification_retained"
+    },
+    {
+      "locale": "ro",
+      "file": "src/app/content/home/ro.ts",
+      "rawFileSha256": "42675abb6df8ffeb62742b6ccba49e66abf76dd322cc22e372412c004981303a",
+      "appClipMention": false,
+      "contexts": {
+        "faq.items[0]": {
+          "q": "Am nevoie de cont ca să folosesc Cloud Calendars?",
+          "a": "Folosiți calendarele locale fără cont. Conectarea serviciilor de calendar și partajarea pot necesita autentificare."
+        },
+        "features.tiles[2]": {
+          "title": "Calendare locale",
+          "body": "Folosiți calendarele locale fără cont. Conectarea serviciilor de calendar și partajarea pot necesita autentificare.",
+          "badge": "Calendare locale"
+        },
+        "cta.lead": "Descarcă gratuit. Folosiți calendarele locale fără cont. Conectarea serviciilor de calendar și partajarea pot necesita autentificare."
+      },
+      "decision": "no_change_local_calendar_qualification_retained"
+    },
+    {
+      "locale": "ru",
+      "file": "src/app/content/home/ru.ts",
+      "rawFileSha256": "de2677e3e467fb9076895b80ef0fe590600a53f9dcbd999e7a0da70b01788d66",
+      "appClipMention": false,
+      "contexts": {
+        "faq.items[0]": {
+          "q": "Нужна ли учётная запись, чтобы пользоваться Cloud Calendars?",
+          "a": "Используйте локальные календари без учётной записи. Для подключения календарных сервисов и общего доступа может потребоваться вход."
+        },
+        "features.tiles[2]": {
+          "title": "Локальные календари",
+          "body": "Используйте локальные календари без учётной записи. Для подключения календарных сервисов и общего доступа может потребоваться вход.",
+          "badge": "Локальные календари"
+        },
+        "cta.lead": "Скачать бесплатно. Используйте локальные календари без учётной записи. Для подключения календарных сервисов и общего доступа может потребоваться вход."
+      },
+      "decision": "no_change_local_calendar_qualification_retained"
+    },
+    {
+      "locale": "sv",
+      "file": "src/app/content/home/sv.ts",
+      "rawFileSha256": "60e47a666d2017d4e672ed972961cc50933b3bd392362955af4dcf5b9f7535e1",
+      "appClipMention": false,
+      "contexts": {
+        "faq.items[0]": {
+          "q": "Behöver jag ett konto för att använda Cloud Calendars?",
+          "a": "Använd lokala kalendrar utan konto. Anslutning av kalendertjänster och delning kan kräva inloggning."
+        },
+        "features.tiles[2]": {
+          "title": "Lokala kalendrar",
+          "body": "Använd lokala kalendrar utan konto. Anslutning av kalendertjänster och delning kan kräva inloggning.",
+          "badge": "Lokala kalendrar"
+        },
+        "cta.lead": "Hämta gratis. Använd lokala kalendrar utan konto. Anslutning av kalendertjänster och delning kan kräva inloggning."
+      },
+      "decision": "no_change_local_calendar_qualification_retained"
+    },
+    {
+      "locale": "th",
+      "file": "src/app/content/home/th.ts",
+      "rawFileSha256": "23562988b04d09eb5b4492a0c1e6d0f01bfbd2b08281f8a3e3ba5ac6544583b9",
+      "appClipMention": false,
+      "contexts": {
+        "faq.items[0]": {
+          "q": "ต้องมีบัญชีถึงจะใช้ Cloud Calendars ได้ไหม",
+          "a": "ใช้ปฏิทินในอุปกรณ์ได้โดยไม่ต้องมีบัญชี การเชื่อมต่อบริการปฏิทินและการแชร์อาจต้องลงชื่อเข้าใช้"
+        },
+        "features.tiles[2]": {
+          "title": "ปฏิทินในอุปกรณ์",
+          "body": "ใช้ปฏิทินในอุปกรณ์ได้โดยไม่ต้องมีบัญชี การเชื่อมต่อบริการปฏิทินและการแชร์อาจต้องลงชื่อเข้าใช้",
+          "badge": "ปฏิทินในอุปกรณ์"
+        },
+        "cta.lead": "ดาวน์โหลดฟรี. ใช้ปฏิทินในอุปกรณ์ได้โดยไม่ต้องมีบัญชี การเชื่อมต่อบริการปฏิทินและการแชร์อาจต้องลงชื่อเข้าใช้"
+      },
+      "decision": "no_change_local_calendar_qualification_retained"
+    },
+    {
+      "locale": "tr",
+      "file": "src/app/content/home/tr.ts",
+      "rawFileSha256": "6519a0b8cac95b593cc69a4099c2fddece22210a59a7a1ea90a4dde9b6d4ff66",
+      "appClipMention": false,
+      "contexts": {
+        "faq.items[0]": {
+          "q": "Cloud Calendars’ı kullanmak için hesap gerekir mi?",
+          "a": "Yerel takvimleri hesap olmadan kullanın. Takvim hizmetlerini bağlamak ve paylaşmak için oturum açmanız gerekebilir."
+        },
+        "features.tiles[2]": {
+          "title": "Yerel takvimler",
+          "body": "Yerel takvimleri hesap olmadan kullanın. Takvim hizmetlerini bağlamak ve paylaşmak için oturum açmanız gerekebilir.",
+          "badge": "Yerel takvimler"
+        },
+        "cta.lead": "Ücretsiz indir. Yerel takvimleri hesap olmadan kullanın. Takvim hizmetlerini bağlamak ve paylaşmak için oturum açmanız gerekebilir."
+      },
+      "decision": "no_change_local_calendar_qualification_retained"
+    },
+    {
+      "locale": "vi",
+      "file": "src/app/content/home/vi.ts",
+      "rawFileSha256": "5918a565f8dd22376cc41673765a2a225cb5e100cb7ff04a48b99a9cda685659",
+      "appClipMention": false,
+      "contexts": {
+        "faq.items[0]": {
+          "q": "Tôi có cần tài khoản để dùng Cloud Calendars không?",
+          "a": "Dùng lịch cục bộ mà không cần tài khoản. Việc kết nối dịch vụ lịch và chia sẻ có thể yêu cầu đăng nhập."
+        },
+        "features.tiles[2]": {
+          "title": "Lịch cục bộ",
+          "body": "Dùng lịch cục bộ mà không cần tài khoản. Việc kết nối dịch vụ lịch và chia sẻ có thể yêu cầu đăng nhập.",
+          "badge": "Lịch cục bộ"
+        },
+        "cta.lead": "Tải miễn phí. Dùng lịch cục bộ mà không cần tài khoản. Việc kết nối dịch vụ lịch và chia sẻ có thể yêu cầu đăng nhập."
+      },
+      "decision": "no_change_local_calendar_qualification_retained"
+    },
+    {
+      "locale": "zh-Hans",
+      "file": "src/app/content/home/zh-Hans.ts",
+      "rawFileSha256": "a0786ec56afdaaf9a2e4b38aa538779e0b70b7a990b5abd22c879fb1e81787c7",
+      "appClipMention": false,
+      "contexts": {
+        "faq.items[0]": {
+          "q": "用 Cloud Calendars 需要注册账户吗？",
+          "a": "本地日历无需账户即可使用。连接日历服务和共享功能可能需要登录。"
+        },
+        "features.tiles[2]": {
+          "title": "本地日历",
+          "body": "本地日历无需账户即可使用。连接日历服务和共享功能可能需要登录。",
+          "badge": "本地日历"
+        },
+        "cta.lead": "免费下载. 本地日历无需账户即可使用。连接日历服务和共享功能可能需要登录。"
+      },
+      "decision": "no_change_local_calendar_qualification_retained"
+    },
+    {
+      "locale": "zh-Hant",
+      "file": "src/app/content/home/zh-Hant.ts",
+      "rawFileSha256": "f9f69eccbe71f4ec0868e3171bb7b4fb15c2d8c19bd5ae91a613f8f141d23b27",
+      "appClipMention": false,
+      "contexts": {
+        "faq.items[0]": {
+          "q": "用 Cloud Calendars 需要註冊帳號嗎？",
+          "a": "本機行事曆無需帳號即可使用。連接行事曆服務和共享功能可能需要登入。"
+        },
+        "features.tiles[2]": {
+          "title": "本機行事曆",
+          "body": "本機行事曆無需帳號即可使用。連接行事曆服務和共享功能可能需要登入。",
+          "badge": "本機行事曆"
+        },
+        "cta.lead": "免費下載. 本機行事曆無需帳號即可使用。連接行事曆服務和共享功能可能需要登入。"
+      },
+      "decision": "no_change_local_calendar_qualification_retained"
+    }
+  ],
+  "metadataComparison": {
+    "file": "research/batch30-aso-remaining/applied.json",
+    "rawFileSha256": "8d90124907752da9b6b913121a9da978501a8337b03ab5cc6579944fcee27776",
+    "status": "saved postwrite afterLocalizations text only; no live ASC reads or writes",
+    "locales": [
+      {
+        "locale": "ar-SA",
+        "ascLocalizationId": "655ccbe8-e076-4bed-a61e-c119abd3e314",
+        "descriptionHash": "437855172e1d9f818405b34bfbabebedea24fb616b49adc847b2bb768b685705",
+        "reviewedParagraphs": [
+          "الطقس والأدوات والمشاركة\nتحقق من توقعات الطقس أثناء التخطيط. تتوفر أدوات الشاشة الرئيسية بأحجام صغيرة ومتوسطة وكبيرة. تعتمد التوقعات المتاحة على الموقع ومزود الطقس. شارك الأحداث والتقاويم وأرسل دعوات بالبريد الإلكتروني أو رمز QR أو App Clip. تعتمد صلاحيات الوصول على التقويم ونوع الدعوة."
+        ],
+        "decision": "no_material_conflict",
+        "reason": "Saved metadata either explicitly qualifies preview/full app or merely lists invitation routes; neither conflicts with more detailed site guidance. For id/ms/th/vi complete descriptions read; no AppClip mention."
+      },
+      {
+        "locale": "bg",
+        "ascLocalizationId": null,
+        "descriptionHash": null,
+        "reviewedParagraphs": [],
+        "decision": "no_corresponding_ASC_locale",
+        "reason": "Bulgarian website locale has no matching ASC locale; no fallback inferred."
+      },
+      {
+        "locale": "cs",
+        "ascLocalizationId": "407dc794-b4ed-4c4f-9319-6b2bb52f6af5",
+        "descriptionHash": "91af847dc3aecdfa59dc242e0aab71d6e70c9404fb9d30981a98ac6ff2677c55",
+        "reviewedParagraphs": [
+          "POČASÍ, WIDGETY A SDÍLENÍ\nPři plánování sledujte předpověď. Widgety na plochu jsou dostupné v malé, střední a velké velikosti. Dostupnost předpovědí závisí na místě a poskytovateli počasí. Sdílejte události a kalendáře a posílejte pozvánky e-mailem, QR kódem nebo přes App Clip. Oprávnění závisí na kalendáři a typu pozvánky."
+        ],
+        "decision": "no_material_conflict",
+        "reason": "Saved metadata either explicitly qualifies preview/full app or merely lists invitation routes; neither conflicts with more detailed site guidance. For id/ms/th/vi complete descriptions read; no AppClip mention."
+      },
+      {
+        "locale": "da",
+        "ascLocalizationId": "36c6b56c-545c-483e-92d9-c7a008289e00",
+        "descriptionHash": "7f88ed420dcb399847455ea6c418843ec74b7aa289c6e51c6c9388a8b45e4375",
+        "reviewedParagraphs": [
+          "VEJR, WIDGETS OG DELING\nSe vejrudsigten, mens du planlægger. Widgets til hjemmeskærmen findes i små, mellemstore og store størrelser. Tilgængelige prognoser afhænger af placering og vejrudbyder. Del begivenheder og kalendere, og send invitationer via e-mail, QR-kode eller App Clip. Adgang afhænger af kalenderen og invitationstypen."
+        ],
+        "decision": "no_material_conflict",
+        "reason": "Saved metadata either explicitly qualifies preview/full app or merely lists invitation routes; neither conflicts with more detailed site guidance. For id/ms/th/vi complete descriptions read; no AppClip mention."
+      },
+      {
+        "locale": "de-DE",
+        "ascLocalizationId": "f6802cbe-9871-490d-99e5-0c70bae5fd62",
+        "descriptionHash": "cf08a933c28e648effd889863288a0716052e2d05e3330adcd938c1ffbef9485",
+        "reviewedParagraphs": [
+          "BESPRECHUNGEN UND EINLADUNGEN\nNutze Google Meet mit Google Kalender. Premium unterstützt zusätzlich Microsoft Teams. Teile Ereignisse und Kalender und lade andere per E-Mail, QR-Code oder App Clip ein. Die Zugriffsrechte hängen vom Kalender und der Art der Einladung ab."
+        ],
+        "decision": "no_material_conflict",
+        "reason": "Saved metadata either explicitly qualifies preview/full app or merely lists invitation routes; neither conflicts with more detailed site guidance. For id/ms/th/vi complete descriptions read; no AppClip mention."
+      },
+      {
+        "locale": "el",
+        "ascLocalizationId": "ce3783f7-5b12-45e1-8456-6c0eacf1eee8",
+        "descriptionHash": "717f071dfcadd7e95587b45356ddfe133213f7bba418ce2979bfe1d67555d5bc",
+        "reviewedParagraphs": [
+          "ΚΑΙΡΟΣ, WIDGET ΚΑΙ ΚΟΙΝΟΠΟΙΗΣΗ\nΕλέγξτε την πρόγνωση καθώς σχεδιάζετε τη μέρα σας. Τα widget της οθόνης Αφετηρίας διατίθενται σε μικρό, μεσαίο και μεγάλο μέγεθος. Οι διαθέσιμες προγνώσεις εξαρτώνται από την τοποθεσία και τον πάροχο καιρού. Μοιραστείτε συμβάντα και ημερολόγια και στείλτε προσκλήσεις με email, κωδικό QR ή App Clip. Τα δικαιώματα εξαρτώνται από το ημερολόγιο και τον τύπο πρόσκλησης."
+        ],
+        "decision": "no_material_conflict",
+        "reason": "Saved metadata either explicitly qualifies preview/full app or merely lists invitation routes; neither conflicts with more detailed site guidance. For id/ms/th/vi complete descriptions read; no AppClip mention."
+      },
+      {
+        "locale": "en-US",
+        "ascLocalizationId": "69e0e01f-9691-4044-b52c-acd3728d2721",
+        "descriptionHash": "d3ec75fa40c5adb2d284b651b0df0df4741eaeb97392b8cc64bb468628ff0396",
+        "reviewedParagraphs": [
+          "MEETINGS AND SHARING\nUse Google Meet support with Google Calendar. Premium adds Microsoft Teams support. Share events and calendars with email or QR invitations. App Clip offers an event preview; adding the event through that experience requires the full app. Sharing access depends on the calendar and invitation type."
+        ],
+        "decision": "no_material_conflict",
+        "reason": "Saved metadata either explicitly qualifies preview/full app or merely lists invitation routes; neither conflicts with more detailed site guidance. For id/ms/th/vi complete descriptions read; no AppClip mention."
+      },
+      {
+        "locale": "es-ES",
+        "ascLocalizationId": "00a6748f-cdd1-4679-84bc-ac1e461426a0",
+        "descriptionHash": "c40f5626d205e79e0f12db12ab2bd57c0068739ad852e989a9f5ad11f5d3eea8",
+        "reviewedParagraphs": [
+          "REUNIONES E INVITACIONES\nUtiliza Google Meet con Google Calendar. Premium también admite Microsoft Teams. Comparte eventos y calendarios y envía invitaciones por correo electrónico, código QR o App Clip. Los permisos dependen del calendario y del tipo de invitación."
+        ],
+        "decision": "no_material_conflict",
+        "reason": "Saved metadata either explicitly qualifies preview/full app or merely lists invitation routes; neither conflicts with more detailed site guidance. For id/ms/th/vi complete descriptions read; no AppClip mention."
+      },
+      {
+        "locale": "fi",
+        "ascLocalizationId": "b8fa942f-a222-43d9-bc59-f6a9a56212c1",
+        "descriptionHash": "a4cbf938410e944c3bd0d31db1a7605e76d5c11f7919309f93304a4f7a6dd062",
+        "reviewedParagraphs": [
+          "SÄÄ, WIDGETIT JA JAKAMINEN\nTarkista sääennuste suunnittelun yhteydessä. Koti-valikon widgettejä on pienessä, keskikokoisessa ja suuressa koossa. Ennusteiden saatavuus riippuu sijainnista ja sääpalvelusta. Jaa tapahtumia ja kalentereita sekä lähetä kutsuja sähköpostitse, QR-koodilla tai App Clipillä. Käyttöoikeudet riippuvat kalenterista ja kutsun tyypistä."
+        ],
+        "decision": "no_material_conflict",
+        "reason": "Saved metadata either explicitly qualifies preview/full app or merely lists invitation routes; neither conflicts with more detailed site guidance. For id/ms/th/vi complete descriptions read; no AppClip mention."
+      },
+      {
+        "locale": "fr-FR",
+        "ascLocalizationId": "fc2a50aa-4f64-4c57-a6e9-6f427b144811",
+        "descriptionHash": "1945255a52ad015f9da73c95d77c079173214a498d5954000c3df4d331413e4f",
+        "reviewedParagraphs": [
+          "RÉUNIONS ET PARTAGE\nUtilisez Google Meet avec Google Agenda. Premium ajoute Microsoft Teams. Partagez des événements et des calendriers avec des invitations par e-mail ou code QR. App Clip propose un aperçu de l’événement ; pour l’ajouter à un calendrier depuis cet aperçu, il faut l’app complète. Les droits d’accès dépendent du calendrier et du type d’invitation."
+        ],
+        "decision": "no_material_conflict",
+        "reason": "Saved metadata either explicitly qualifies preview/full app or merely lists invitation routes; neither conflicts with more detailed site guidance. For id/ms/th/vi complete descriptions read; no AppClip mention."
+      },
+      {
+        "locale": "he",
+        "ascLocalizationId": "81dc22d5-6b74-4d6a-87fb-bb6eade3e389",
+        "descriptionHash": "85900243f47f93183784c0613d09072aa557c45294e2e2f2120eae011bb78906",
+        "reviewedParagraphs": [
+          "מזג אוויר, ווידג׳טים ושיתוף\nבדקו את התחזית בזמן התכנון. ווידג׳טים למסך הבית זמינים בגודל קטן, בינוני וגדול. זמינות התחזיות תלויה במיקום ובספק מזג האוויר. שתפו אירועים ולוחות שנה ושלחו הזמנות בדוא״ל, בקוד QR או ב-App Clip. הרשאות הגישה תלויות בלוח השנה ובסוג ההזמנה."
+        ],
+        "decision": "no_material_conflict",
+        "reason": "Saved metadata either explicitly qualifies preview/full app or merely lists invitation routes; neither conflicts with more detailed site guidance. For id/ms/th/vi complete descriptions read; no AppClip mention."
+      },
+      {
+        "locale": "hi",
+        "ascLocalizationId": "5c3939c4-55f7-4baf-b574-ff78c31486f0",
+        "descriptionHash": "b7c1473e3eb126f2bd2e06e9abf96e50f365871b60e1c88d4c45659e68430dbf",
+        "reviewedParagraphs": [
+          "मौसम, विजेट और साझा करना\nयोजना बनाते समय मौसम का पूर्वानुमान देखें। होम स्क्रीन विजेट छोटे, मध्यम और बड़े आकार में उपलब्ध हैं। उपलब्ध पूर्वानुमान स्थान और मौसम सेवा प्रदाता पर निर्भर करते हैं। इवेंट और कैलेंडर साझा करें तथा ईमेल, QR कोड या App Clip से निमंत्रण भेजें। पहुँच की अनुमति कैलेंडर और निमंत्रण के प्रकार पर निर्भर करती है।"
+        ],
+        "decision": "no_material_conflict",
+        "reason": "Saved metadata either explicitly qualifies preview/full app or merely lists invitation routes; neither conflicts with more detailed site guidance. For id/ms/th/vi complete descriptions read; no AppClip mention."
+      },
+      {
+        "locale": "hu",
+        "ascLocalizationId": "90e49b5b-cac5-4403-b411-c0114f969297",
+        "descriptionHash": "e4cbaf56e66b431768a31b14f272af0b15475796a9db7e2b967a6ddc9fd5ebd2",
+        "reviewedParagraphs": [
+          "IDŐJÁRÁS, WIDGETEK ÉS MEGOSZTÁS\nTervezés közben nézd meg az előrejelzést. A Főképernyő widgetjei kis, közepes és nagy méretben érhetők el. Az előrejelzések elérhetősége a helytől és az időjárási szolgáltatótól függ. Ossz meg eseményeket és naptárakat, és küldj meghívókat e-mailben, QR-kóddal vagy App Clippel. A hozzáférés a naptártól és a meghívó típusától függ."
+        ],
+        "decision": "no_material_conflict",
+        "reason": "Saved metadata either explicitly qualifies preview/full app or merely lists invitation routes; neither conflicts with more detailed site guidance. For id/ms/th/vi complete descriptions read; no AppClip mention."
+      },
+      {
+        "locale": "id",
+        "ascLocalizationId": "bacdbba0-8db2-4756-9b98-1a24e68f5416",
+        "descriptionHash": "042064db3cee1d7f5fcf626b66976ee9b17926f39162e233354e092493d5b3c5",
+        "reviewedParagraphs": [],
+        "decision": "no_AppClip_claim",
+        "reason": "Saved metadata either explicitly qualifies preview/full app or merely lists invitation routes; neither conflicts with more detailed site guidance. For id/ms/th/vi complete descriptions read; no AppClip mention."
+      },
+      {
+        "locale": "it",
+        "ascLocalizationId": "a02e99d4-e709-463e-96c5-26e226d73427",
+        "descriptionHash": "f63a75dd305547f4eb04bcb4dc9d42186b89fd6c0d6ca98c668fb1fdeab53055",
+        "reviewedParagraphs": [
+          "RIUNIONI E INVITI\nUsa Google Meet con Google Calendar. Premium supporta anche Microsoft Teams. Condividi eventi e calendari con inviti tramite email o codice QR. App Clip mostra un’anteprima dell’evento; per aggiungerlo a un calendario da questa anteprima serve l’app completa. I permessi dipendono dal calendario e dal tipo di invito."
+        ],
+        "decision": "no_material_conflict",
+        "reason": "Saved metadata either explicitly qualifies preview/full app or merely lists invitation routes; neither conflicts with more detailed site guidance. For id/ms/th/vi complete descriptions read; no AppClip mention."
+      },
+      {
+        "locale": "ja",
+        "ascLocalizationId": "ab762335-72a8-46b7-ae29-3f81e2f455f4",
+        "descriptionHash": "916b0068b33fea30f470059ac9b0c3396e1117e656328ec1a613019096101879",
+        "reviewedParagraphs": [
+          "会議と共有\nGoogle カレンダーでGoogle Meetを利用できます。PremiumではMicrosoft Teamsにも対応。メールやQRコードによる招待で、イベントやカレンダーを共有できます。App Clipではイベントのプレビューを確認できます。このプレビューからカレンダーにイベントを追加するには、フルアプリが必要です。アクセス権はカレンダーや招待の種類によって異なります。"
+        ],
+        "decision": "no_material_conflict",
+        "reason": "Saved metadata either explicitly qualifies preview/full app or merely lists invitation routes; neither conflicts with more detailed site guidance. For id/ms/th/vi complete descriptions read; no AppClip mention."
+      },
+      {
+        "locale": "ko",
+        "ascLocalizationId": "d1b5d0e0-4b29-4ac9-b98a-cc73c81bf9b6",
+        "descriptionHash": "818e4d5d9e42b837d58e6b6970507980c1ded7c6903344f15383e020f85c9356",
+        "reviewedParagraphs": [
+          "회의와 공유\nGoogle Calendar에서 Google Meet를 사용할 수 있어요. Premium은 Microsoft Teams도 지원합니다. 이메일이나 QR 코드 초대로 이벤트와 캘린더를 공유하세요. App Clip에서는 이벤트를 미리 볼 수 있습니다. 이 미리보기에서 캘린더에 이벤트를 추가하려면 전체 앱이 필요합니다. 접근 권한은 캘린더와 초대 유형에 따라 다릅니다."
+        ],
+        "decision": "no_material_conflict",
+        "reason": "Saved metadata either explicitly qualifies preview/full app or merely lists invitation routes; neither conflicts with more detailed site guidance. For id/ms/th/vi complete descriptions read; no AppClip mention."
+      },
+      {
+        "locale": "ms",
+        "ascLocalizationId": "c9261f10-b41e-4656-a9f2-bdecc9d9cf14",
+        "descriptionHash": "1d904f6cbdd984c4cd327acae496c34a0959ced293ebbed8ceaaf1b3fed10629",
+        "reviewedParagraphs": [],
+        "decision": "no_AppClip_claim",
+        "reason": "Saved metadata either explicitly qualifies preview/full app or merely lists invitation routes; neither conflicts with more detailed site guidance. For id/ms/th/vi complete descriptions read; no AppClip mention."
+      },
+      {
+        "locale": "nl-NL",
+        "ascLocalizationId": "330744ac-9574-4c5b-b2ac-749a724d3da9",
+        "descriptionHash": "e35343c0de817b026057bcfaf944169283be7d715c5c5fd0111b5f628336b6e9",
+        "reviewedParagraphs": [
+          "VERGADERINGEN EN DELEN\nGebruik Google Meet met Google Agenda. Premium ondersteunt ook Microsoft Teams. Deel evenementen en kalenders met uitnodigingen via e-mail of een QR-code. App Clip toont een voorbeeld van het evenement; om het vanuit dat voorbeeld aan een kalender toe te voegen, is de volledige app nodig. Toegangsrechten hangen af van de kalender en het type uitnodiging."
+        ],
+        "decision": "no_material_conflict",
+        "reason": "Saved metadata either explicitly qualifies preview/full app or merely lists invitation routes; neither conflicts with more detailed site guidance. For id/ms/th/vi complete descriptions read; no AppClip mention."
+      },
+      {
+        "locale": "no",
+        "ascLocalizationId": "617eb54f-399c-486c-8c51-85ad936b0ec6",
+        "descriptionHash": "811552aa8b205a9d99a824b4024b3094b2840a69dbacbbdd4a3638c558457b00",
+        "reviewedParagraphs": [
+          "VÆR, WIDGETER OG DELING\nSjekk værmeldingen mens du planlegger. Widgeter for Hjem-skjermen finnes i små, mellomstore og store størrelser. Tilgjengelige værprognoser avhenger av sted og værleverandør. Del hendelser og kalendere, og send invitasjoner via e-post, QR-kode eller App Clip. Tilgang avhenger av kalenderen og invitasjonstypen."
+        ],
+        "decision": "no_material_conflict",
+        "reason": "Saved metadata either explicitly qualifies preview/full app or merely lists invitation routes; neither conflicts with more detailed site guidance. For id/ms/th/vi complete descriptions read; no AppClip mention."
+      },
+      {
+        "locale": "pl",
+        "ascLocalizationId": "0bc52ccb-22c8-4b17-af7c-6783c1bd3428",
+        "descriptionHash": "f68b5043ab62b28d9f751c106114e0b188602ecc83405b3fd030ba1cb0a0f8dd",
+        "reviewedParagraphs": [
+          "SPOTKANIA I UDOSTĘPNIANIE\nKorzystaj z Google Meet z Kalendarzem Google. Premium obsługuje także Microsoft Teams. Udostępniaj wydarzenia i kalendarze oraz wysyłaj zaproszenia przez e-mail, kod QR lub App Clip. Uprawnienia zależą od kalendarza i rodzaju zaproszenia."
+        ],
+        "decision": "no_material_conflict",
+        "reason": "Saved metadata either explicitly qualifies preview/full app or merely lists invitation routes; neither conflicts with more detailed site guidance. For id/ms/th/vi complete descriptions read; no AppClip mention."
+      },
+      {
+        "locale": "pt-BR",
+        "ascLocalizationId": "792d84c7-d17d-40b7-890b-e18a097ee741",
+        "descriptionHash": "0dbd630a83bd4f7e2448a3fb28f21478607ba40da53323d1ffc5b3adb9a8c54f",
+        "reviewedParagraphs": [
+          "REUNIÕES E CONVITES\nUse o Google Meet com o Google Agenda. O Premium também oferece suporte ao Microsoft Teams. Compartilhe eventos e calendários com convites por e-mail ou código QR. O App Clip mostra uma prévia do evento; para adicioná-lo a um calendário a partir dessa prévia, é necessário o app completo. As permissões dependem do calendário e do tipo de convite."
+        ],
+        "decision": "no_material_conflict",
+        "reason": "Saved metadata either explicitly qualifies preview/full app or merely lists invitation routes; neither conflicts with more detailed site guidance. For id/ms/th/vi complete descriptions read; no AppClip mention."
+      },
+      {
+        "locale": "ro",
+        "ascLocalizationId": "3389ecf3-903f-46bd-8af0-45b591661311",
+        "descriptionHash": "879bdb7761d9310edc6acc1ee03302fd4753b15c14cf2332173aab231ee0fa9d",
+        "reviewedParagraphs": [
+          "VREME, WIDGETURI ȘI PARTAJARE\nConsultă prognoza în timp ce îți faci planuri. Widgeturile pentru ecranul principal sunt disponibile în dimensiuni mici, medii și mari. Prognozele disponibile depind de locație și de furnizorul meteo. Partajează evenimente și calendare și trimite invitații prin e-mail, cod QR sau App Clip. Permisiunile depind de calendar și de tipul invitației."
+        ],
+        "decision": "no_material_conflict",
+        "reason": "Saved metadata either explicitly qualifies preview/full app or merely lists invitation routes; neither conflicts with more detailed site guidance. For id/ms/th/vi complete descriptions read; no AppClip mention."
+      },
+      {
+        "locale": "ru",
+        "ascLocalizationId": "afc2183d-d280-4e21-8169-a08d65d4e1a6",
+        "descriptionHash": "e5e200ce55afe64778c5e67f2ec0b2d0075ea484f5b3e40911e6182ef532597a",
+        "reviewedParagraphs": [
+          "ПОГОДА, ВИДЖЕТЫ И ОБЩИЙ ДОСТУП\nПроверяйте прогноз, когда строите планы. Виджеты для экрана «Домой» доступны в малом, среднем и большом размерах. Наличие прогнозов зависит от местоположения и поставщика погодных данных. Делитесь событиями и календарями, отправляйте приглашения по электронной почте, с помощью QR-кода или через App Clip. Права доступа зависят от календаря и типа приглашения."
+        ],
+        "decision": "no_material_conflict",
+        "reason": "Saved metadata either explicitly qualifies preview/full app or merely lists invitation routes; neither conflicts with more detailed site guidance. For id/ms/th/vi complete descriptions read; no AppClip mention."
+      },
+      {
+        "locale": "sv",
+        "ascLocalizationId": "bcdb23cf-7623-4e3b-9c5a-37bd60bae990",
+        "descriptionHash": "f7260cea8e7a9914780156239d50b390783038e696d91090421d87e4f38bd34f",
+        "reviewedParagraphs": [
+          "MÖTEN OCH DELNING\nAnvänd Google Meet med Google Kalender. Premium stöder också Microsoft Teams. Dela händelser och kalendrar och skicka inbjudningar via e-post, QR-kod eller App Clip. Åtkomst beror på kalendern och typen av inbjudan."
+        ],
+        "decision": "no_material_conflict",
+        "reason": "Saved metadata either explicitly qualifies preview/full app or merely lists invitation routes; neither conflicts with more detailed site guidance. For id/ms/th/vi complete descriptions read; no AppClip mention."
+      },
+      {
+        "locale": "th",
+        "ascLocalizationId": "2e74d181-c85a-4c1e-a41e-340fdb64073e",
+        "descriptionHash": "85eb2ab08f9e5fe637660fbe0d69ea7959502c4962fcc20b80565a3beb2a28ee",
+        "reviewedParagraphs": [],
+        "decision": "no_AppClip_claim",
+        "reason": "Saved metadata either explicitly qualifies preview/full app or merely lists invitation routes; neither conflicts with more detailed site guidance. For id/ms/th/vi complete descriptions read; no AppClip mention."
+      },
+      {
+        "locale": "tr",
+        "ascLocalizationId": "2d04a31c-069d-4692-bf6e-4c0c06948d4c",
+        "descriptionHash": "d30c5f8853a6f78ca786d1e6b9267769c2164218f995799d489fade4873141af",
+        "reviewedParagraphs": [
+          "TOPLANTILAR VE PAYLAŞIM\nGoogle Takvim ile Google Meet’i kullanın. Premium, Microsoft Teams’i de destekler. Etkinlikleri ve takvimleri paylaşın; e-posta, QR kodu veya App Clip ile davet gönderin. Erişim izinleri takvime ve davet türüne bağlıdır."
+        ],
+        "decision": "no_material_conflict",
+        "reason": "Saved metadata either explicitly qualifies preview/full app or merely lists invitation routes; neither conflicts with more detailed site guidance. For id/ms/th/vi complete descriptions read; no AppClip mention."
+      },
+      {
+        "locale": "vi",
+        "ascLocalizationId": "7091d1fe-7462-481a-9735-0746ece5ce89",
+        "descriptionHash": "c058123c28f46a95c0112c884633f2603a8ae0ded70fe6a01bbda42f37c4f4ec",
+        "reviewedParagraphs": [],
+        "decision": "no_AppClip_claim",
+        "reason": "Saved metadata either explicitly qualifies preview/full app or merely lists invitation routes; neither conflicts with more detailed site guidance. For id/ms/th/vi complete descriptions read; no AppClip mention."
+      },
+      {
+        "locale": "zh-Hans",
+        "ascLocalizationId": "d1b9bc90-83d6-4a44-abb3-8a1fa3a3d978",
+        "descriptionHash": "0b73d2a48ce927e64aac7be0f61f451c9073034a69aa30eb8b3a4d8143bab14d",
+        "reviewedParagraphs": [
+          "会议与共享\n通过 Google 日历使用 Google Meet。Premium 还支持 Microsoft Teams。共享活动和日历，并通过电子邮件、二维码或 App Clip 发送邀请。访问权限取决于日历和邀请类型。"
+        ],
+        "decision": "no_material_conflict",
+        "reason": "Saved metadata either explicitly qualifies preview/full app or merely lists invitation routes; neither conflicts with more detailed site guidance. For id/ms/th/vi complete descriptions read; no AppClip mention."
+      },
+      {
+        "locale": "zh-Hant",
+        "ascLocalizationId": "db9bd915-8d55-49c3-b765-09dd83985839",
+        "descriptionHash": "9f428833b4caad08e982d74d754e6be0ff52def974a594093ba969c87ff7f383",
+        "reviewedParagraphs": [
+          "會議與共享\n透過 Google 日曆使用 Google Meet。Premium 也支援 Microsoft Teams。共享活動和行事曆，並透過電子郵件、QR 碼或 App Clip 傳送邀請。存取權限取決於行事曆與邀請類型。"
+        ],
+        "decision": "no_material_conflict",
+        "reason": "Saved metadata either explicitly qualifies preview/full app or merely lists invitation routes; neither conflicts with more detailed site guidance. For id/ms/th/vi complete descriptions read; no AppClip mention."
+      }
+    ]
+  },
+  "falsePositives": [
+    {
+      "type": "negated promise",
+      "example": "EN “add it with no installation” occurs in an explicit statement that the flow does not support that promise."
+    },
+    {
+      "type": "general invitation routes",
+      "example": "Seven export guides and some saved ASC descriptions list App Clip/email/QR delivery without asserting import or universally account-free access."
+    },
+    {
+      "type": "local use",
+      "example": "Home accountFAQ/localtile/CTA limit account-free use to local calendars, then qualify service connections and sharing."
+    },
+    {
+      "type": "lexical substring",
+      "example": "Italian “Contano account” matched a broad no-account regex; complete FAQ concerns calendar coverage, not account-free use."
+    }
+  ],
+  "evidence": [
+    "research/batch29-aso-semantic/appclip-facts.json",
+    "research/batch37-appclip/product-facts.json"
+  ],
+  "evidenceStatus": "Prior full native evidence read; product agent reports unchanged8native plus5flow hashes in current product-facts. No fresh native inspection by this agent; no released-build correspondence claim.",
+  "artifacts": {
+    "snapshots": "scan.json includes exact complete objects and homes plus456definition hashes; snapshots are evidence, not all claimed fully read.",
+    "relatedContexts": "related-phrase-contexts.json"
+  },
+  "limits": [
+    "Own-language bounded semantic assessment; lower confidence Indic/RTL wording, no native-speaker certification.",
+    "No source/ASC/native/build/deploy/customer operations.",
+    "Do not turn optional AppClip clarification into automatic multi-locale metadata rewrite."
+  ]
+}

@@ -1,0 +1,108 @@
+{
+  "date": "2026-10-22T04:24:40.097604+00:00",
+  "decision": "A provider/system-calendar diagnosis guide is supportable without promising Cloud Watch setup. No Watch companion target is declared in the inspected current project; released support absence is not proven from that fact alone.",
+  "sourceEvidence": [
+    {
+      "file": "/Users/minchomilev/work/hrapp/Cloud Calendars for Google, Microsoft and iCloud.xcodeproj/project.pbxproj",
+      "sha256": "47a3450edd0e3067dbf2e94706c5f6ac29d6da967de56bd11068b22feef46bf3",
+      "readScope": "189–265 full PBXNativeTarget section; settings hits492,550,589–595,632–638,664–670,696–702,727–733,758–764",
+      "finding": "Three declared targets: main iOS application, CalendarWidget app extension, CalendarAppClip. Configurations specify iphoneos/iphonesimulator and device families1,2. No watch target in this project."
+    },
+    {
+      "file": "/Users/minchomilev/work/hrapp/CalendarWidget/CalendarWidget.swift",
+      "sha256": "202168b86e98d32b8e26314e9ff2e57ab61428bab784aa3f4fd060fe4ffa01e7",
+      "readScope": "1098–1148",
+      "finding": "Bundle includes date/weather small+medium, event medium and large widgets, plus LiveActivity. These are not a Watch companion declaration."
+    },
+    {
+      "file": "/Users/minchomilev/work/hrapp/CalendarWidget/CalendarLiveActivityWidget.swift",
+      "sha256": "d6e512b62218f0d3319368e68362c6b5b27f45c25ba4f6326729fbfe6e0b844b",
+      "readScope": "299–322",
+      "finding": "ActivityConfiguration with lock-screen content and dynamicIsland closure; does not establish a Watch app/complication or runtime Watch delivery."
+    },
+    {
+      "file": "/Users/minchomilev/work/hrapp/Calendar/WeatherView/Card/MoonCard.swift",
+      "sha256": "2c8039e6234ffd7a157ef51ac6f1a4052c77536a79bf0a01ac72816ff6e3d15e",
+      "readScope": "1–12",
+      "finding": "watchOS availability annotation on shared SwiftUI view is not a Watch target, entitlement or shipped companion."
+    },
+    {
+      "file": "/Users/minchomilev/work/hrapp/Calendar/Sources/CalendarViewModel.swift",
+      "sha256": "a0b207cb78810816775ff1aff4399a33dc3ce7331cbb1af2aa4468bb0828ccf4",
+      "readScope": "1367–1385 fresh read; additional prior proof below",
+      "finding": "Google mirror creates EventKit calendar with local-source preference, firstCalDAV fallback then default-calendar source. calDAV name does not identify iCloud. Do not state direct Google can never enter system calendars."
+    },
+    {
+      "file": "/Users/minchomilev/work/hrapp/Calendar/AppLocal/AppLocalCalendarStore.swift",
+      "sha256": "2ed2d5ad2104857441a4f8d3bcafe80227058ef24cc49c24c8ec7f70189d6e42",
+      "readScope": "488–500",
+      "finding": "App-local snapshot JSON persistence and notifications are separate from proof of Watch calendar synchronization."
+    }
+  ],
+  "priorProviderEvidence": [
+    {
+      "file": "/Users/minchomilev/work/hrapp/Calendar/Sources/CalendarViewModel.swift",
+      "lines": "611-680",
+      "sha256": "a0b207cb78810816775ff1aff4399a33dc3ce7331cbb1af2aa4468bb0828ccf4",
+      "finding": "Full EventKit calendar access requested; EventKit calendars loaded.",
+      "currentSha256": "a0b207cb78810816775ff1aff4399a33dc3ce7331cbb1af2aa4468bb0828ccf4",
+      "unchanged": true,
+      "scope": "Prior recorded read reused; current raw hash checked."
+    },
+    {
+      "file": "/Users/minchomilev/work/hrapp/Calendar/Sources/CalendarViewModel.swift",
+      "lines": "1150-1255",
+      "sha256": "a0b207cb78810816775ff1aff4399a33dc3ce7331cbb1af2aa4468bb0828ccf4",
+      "finding": "Google calendar list and per-account mapping; holiday branch one-time download; selected-calendar filtering.",
+      "currentSha256": "a0b207cb78810816775ff1aff4399a33dc3ce7331cbb1af2aa4468bb0828ccf4",
+      "unchanged": true,
+      "scope": "Prior recorded read reused; current raw hash checked."
+    },
+    {
+      "file": "/Users/minchomilev/work/hrapp/Calendar/Sources/CalendarViewModel.swift",
+      "lines": "1367-1382",
+      "sha256": "a0b207cb78810816775ff1aff4399a33dc3ce7331cbb1af2aa4468bb0828ccf4",
+      "finding": "Mirror source fallback: local, then first calDAV, then default-calendar source. calDAV does not necessarily mean iCloud despite variable name.",
+      "currentSha256": "a0b207cb78810816775ff1aff4399a33dc3ce7331cbb1af2aa4468bb0828ccf4",
+      "unchanged": true,
+      "scope": "Prior recorded read reused; current raw hash checked."
+    },
+    {
+      "file": "/Users/minchomilev/work/hrapp/Calendar/Sources/CalendarViewModel.swift",
+      "lines": "1398-1420;1560-1640",
+      "sha256": "a0b207cb78810816775ff1aff4399a33dc3ce7331cbb1af2aa4468bb0828ccf4",
+      "finding": "Google bounded downloads and provider-specific local upload PATCH/POST/deletion. Not a general archive guarantee.",
+      "currentSha256": "a0b207cb78810816775ff1aff4399a33dc3ce7331cbb1af2aa4468bb0828ccf4",
+      "unchanged": true,
+      "scope": "Prior recorded read reused; current raw hash checked."
+    }
+  ],
+  "boundedSearch": {
+    "native": "Calendar,CalendarWidget,CalendarAppClip Swift/plist/entitlements searched case-insensitively for watchkit/watchos/apple watch/watchconnectivity/complication. Only MoonCard availability annotation matched. Filename search for Watch/watch and declaredproject files found no companion documentation/target. Not an exhaustive private filesystem or historical artifact search.",
+    "website": "src/app TS/JSON searched apple watch/watchos/complication/watch app; no matches. This is lexical absence, not a full56guide coverage judgment. Root separately reviewed title inventory and primary task sources."
+  },
+  "safeReaderWording": [
+    "A calendar visible in Cloud Calendars is not by itself proof that the same calendar is available in Apple Watch Calendar. First identify where the calendar is stored and whether the relevant event appears in Apple’s Calendar on the paired iPhone.",
+    "Use Apple’s documented Calendar and Watch settings for the system-calendar path. Treat them as Apple controls, not Cloud Calendars setup instructions.",
+    "Cloud Calendars Home Screen widgets and Lock Screen Live Activities are different experiences from a dedicated Watch app or watch-face complication. Do not infer one from the other.",
+    "Connecting Google directly in Cloud Calendars does not establish automatic Watch availability. The app can create EventKit calendar mirrors; their underlying source varies with the device, so check the actual calendar rather than assuming either universal visibility or universal absence.",
+    "An app-local calendar should not be assumed to be an iCloud or Google calendar. Verify a supported sharing/export/provider workflow separately instead of promising every app-local event appears on the watch."
+  ],
+  "avoid": [
+    "Cloud Calendars definitely has no Apple Watch support in released1.7.3.",
+    "Install the Cloud Watch app or add its complication without authoritative released-feature evidence.",
+    "Cloud Live Activities cannot appear on Apple Watch through any OS feature.",
+    "Every calendar visible in Cloud appears automatically on Watch.",
+    "Direct Google calendars never create system-calendar copies.",
+    "Signing into Google in Cloud is the same as enabling Google Calendar in iPhone system settings.",
+    "Reset/unpair/delete calendars as a first troubleshooting step."
+  ],
+  "unestablished": [
+    "Released AppStore1.7.3 target/binary correspondence and actual Watch companion eligibility.",
+    "OS-mediated notification or LiveActivity delivery to Watch, device/version settings and behavior; no runtime test.",
+    "Which EventKit mirror source exists on a particular user device and which calendars Apple Watch will display.",
+    "All app-local/shared calendars exporting or syncing automatically to Apple Calendar."
+  ],
+  "primaryDocs": "Root is freshly reading Apple Watch Calendar and official Fantastical Watch docs; this report supplies current-source boundaries only and does not claim those pages independently read. Competitor capabilities must not become Cloud claims.",
+  "actions": "Research JSON only; no source/native/backend edits, builds, simulators, customer actions, provider requests, deployments or ASC operations."
+}

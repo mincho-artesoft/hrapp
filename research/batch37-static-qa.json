@@ -1,0 +1,29 @@
+{
+  "allPassed": true,
+  "sitemapUrls": 521,
+  "all519PreviousCanonicalsPreserved": true,
+  "newRoutes": [
+    "https://www.cloud-calendars.com/articles/calendar-on-apple-watch/",
+    "https://www.cloud-calendars.com/bg/articles/calendar-on-apple-watch/"
+  ],
+  "fullGuidesChecked": [
+    {
+      "url": "https://www.cloud-calendars.com/articles/calendar-on-apple-watch/",
+      "allVisibleTextReferencesAndRelatedMatch": true,
+      "galleryImagesWithAlt": 5,
+      "sections": 6,
+      "faq": 4
+    },
+    {
+      "url": "https://www.cloud-calendars.com/bg/articles/calendar-on-apple-watch/",
+      "allVisibleTextReferencesAndRelatedMatch": true,
+      "galleryImagesWithAlt": 5,
+      "sections": 6,
+      "faq": 4
+    }
+  ],
+  "relatedOnlyBacklinks": 3,
+  "english57GuideExportIncludesFullNewGuide": true,
+  "robotsUnchanged": true,
+  "scope": "Complete new EN/BG visible body, steps, FAQ, source and related links; all prior canonicals; not ranking or runtime proof."
+}

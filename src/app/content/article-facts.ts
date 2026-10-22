@@ -18,6 +18,7 @@ import { ArticleFacts } from './types';
  * long tail around those twelve.
  */
 export const ARTICLE_FACTS: Readonly<Record<string, ArticleFacts>> = {
+  'calendar-on-apple-watch': { slug: 'calendar-on-apple-watch', family: 'widgets', intent: 'device', claims: [], updated: '2026-10-22' },
   'change-calendar-color-iphone': { slug: 'change-calendar-color-iphone', family: 'planning', intent: 'core', claims: [], updated: '2026-10-22' },
   'recover-deleted-calendar-events-iphone': { slug: 'recover-deleted-calendar-events-iphone', family: 'planning', intent: 'core', claims: [], updated: '2026-10-22' },
   'calendar-event-or-room-reservation': { slug: 'calendar-event-or-room-reservation', family: 'planning', intent: 'core', claims: [], updated: '2026-10-22' },

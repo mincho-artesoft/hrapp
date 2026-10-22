@@ -1,5 +1,5 @@
 {
-  "date": "2026-10-22T04:15:55.830Z",
+  "date": "2026-10-22T04:38:31.620Z",
   "status": "source_inventory_not_quality_approval",
   "articles": [
     {
@@ -276,6 +276,23 @@
         "https://support.google.com/calendar/answer/37648?hl=en"
       ],
       "updated": "2026-10-21"
+    },
+    {
+      "locale": "bg",
+      "slug": "calendar-on-apple-watch",
+      "title": "Календар на Apple Watch: липсващи събития и поддръжка от приложенията",
+      "description": "Проследете липсващо събитие на Apple Watch до неговия календар. Разграничете приложението, усложнението на циферблата и уиджетите на телефона.",
+      "descriptionCharacters": 142,
+      "sections": 6,
+      "faq": 4,
+      "words": 1007,
+      "source": "articles-help.ts",
+      "sources": [
+        "https://support.apple.com/en-kg/guide/watch/apd1b51754cc/watchos",
+        "https://flexibits.com/fantastical-ios/help/apple-watch",
+        "https://flexibits.com/fantastical-watch/faq"
+      ],
+      "updated": "2026-10-22"
     },
     {
       "locale": "bg",
@@ -2316,6 +2333,23 @@
       "sources": [
         "https://weather.metoffice.gov.uk/guides/what-does-this-forecast-mean",
         "https://developer.apple.com/documentation/weatherkit"
+      ],
+      "updated": "2026-10-22"
+    },
+    {
+      "locale": "en-US",
+      "slug": "calendar-on-apple-watch",
+      "title": "Calendar on Apple Watch: check missing events and app support",
+      "description": "Trace a missing Apple Watch event to its calendar source. Distinguish Apple Calendar, companion apps, complications and phone widgets before changing data.",
+      "descriptionCharacters": 155,
+      "sections": 6,
+      "faq": 4,
+      "words": 1024,
+      "source": "articles-widgets.ts",
+      "sources": [
+        "https://support.apple.com/en-kg/guide/watch/apd1b51754cc/watchos",
+        "https://flexibits.com/fantastical-ios/help/apple-watch",
+        "https://flexibits.com/fantastical-watch/faq"
       ],
       "updated": "2026-10-22"
     },

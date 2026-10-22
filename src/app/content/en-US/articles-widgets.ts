@@ -8,6 +8,107 @@ import { LocalisedArticle } from '../types';
  * of the tracked prompts land here.
  */
 export const WIDGETS_EN_US: Readonly<Record<string, LocalisedArticle>> = {
+  "calendar-on-apple-watch": {
+  "updated": "2026-10-22",
+  "title": "Calendar on Apple Watch: check missing events and app support",
+  "short": "Calendar events on Apple Watch",
+  "description": "Trace a missing Apple Watch event to its calendar source. Distinguish Apple Calendar, companion apps, complications and phone widgets before changing data.",
+  "lede": "A meeting visible on your iPhone is a starting point, not proof that every watch app or watch-face display receives it. Identify the calendar, the app and the surface before changing a connection. This guide is published by Arte Soft, the developer of Cloud Calendars.",
+  "commonBelief": "An iPhone calendar widget means the same app and every displayed event are automatically available on Apple Watch.",
+  "sections": [
+    {
+      "heading": "Identify the app and the display first",
+      "body": [
+        "A watch app, a watch-face complication, a notification and a Live Activity are different ways to present information. Start with the name of the app you are opening and the display that seems wrong. A Home Screen widget on your iPhone is not evidence that its publisher also supplies a dedicated watch app or a particular complication.",
+        "Write down one appointment’s title, date, time and owning calendar. Compare that same record rather than two events with similar names. If an event is absent everywhere, use the missing-calendar guide below; changing a watch face cannot recover an appointment that the source itself no longer contains."
+      ]
+    },
+    {
+      "heading": "For Apple Calendar, check the paired iPhone and selected calendars",
+      "body": [
+        "When using Apple’s Calendar app on the watch, first look for the appointment in Apple Calendar on the paired iPhone. Visibility only inside another calendar app does not establish the same system-calendar source. Note the account and calendar, including whether the item is local or belongs to a provider.",
+        "Apple’s current watch guide places calendar settings in the Watch app on iPhone: My Watch, Apps, then Calendar. Use the available settings to review which calendars appear. On the watch, open Calendar and inspect the event itself, not just the date or a compact preview. Controls can differ with the installed software version."
+      ]
+    },
+    {
+      "heading": "For a companion app, check its own installation and selection",
+      "body": [
+        "Fantastical documents a separate Apple Watch app. Its help describes installing that companion through Apple’s Watch app and completing initial setup with Fantastical on iPhone. Those are Fantastical instructions, not an installation procedure for Cloud Calendars.",
+        "The same publisher documents a Calendar Set for its watch app and calendar choices for configurable complications. An event visible in the watch app but absent from a complication therefore calls for a display-selection check, not an assumption that the event was deleted. Check the settings offered by that specific app and complication."
+      ]
+    },
+    {
+      "heading": "Separate being away from the phone from receiving fresh changes",
+      "body": [
+        "A watch showing an appointment while you are away from your iPhone does not prove that later edits will arrive with the phone powered off. Flexibits’ watch FAQ says its synchronization requires the iPhone to remain powered on and connected to the internet, even when the watch uses a remote connection. Treat this as that publisher’s requirement, not a rule for every watch app.",
+        "For a rehearsal moved from 18:00 to 18:30, compare the same date at the source, on the phone and inside the chosen watch app. Then check the watch-face display separately. Record where the old time remains and confirm the change with the organiser. A changing countdown or familiar title is not proof of the latest saved start time."
+      ]
+    },
+    {
+      "heading": "Keep the Cloud Calendars connection distinct from watch support",
+      "body": [
+        "Cloud Calendars provides calendar views, weather and Home Screen widgets on iPhone and iPad. Its iPhone Live Activity is a separate feature. This guide does not provide a Cloud Calendars watch-app installation procedure. Check the current product listing and installed device’s available features before choosing an app specifically for a watch requirement.",
+        "Cloud Calendars’ direct Google and Microsoft connections create mirrored calendars in the iPhone calendar store, with the destination depending on available calendar sources. An app connection alone does not establish Apple Watch visibility, but neither does it prove the event can never appear there. Compare the actual event in Apple Calendar and the selected watch app before adding another connection or copying the meeting."
+      ]
+    },
+    {
+      "heading": "Test one harmless event before changing real plans",
+      "body": [
+        "If you need a clear comparison, create a disposable future test appointment in a writable calendar you control. Record its destination explicitly, find it on the phone and then check the chosen watch app. Change only that test appointment’s title or time and compare the same record again.",
+        "Do not delete a provider account, erase calendar data or move a real meeting as the first test. If the problem persists, report the calendar source, failing display, expected time and app/device versions with private details removed. Manage a subscription through its billing account; buying a plan does not grant calendar permission or establish a missing companion app."
+      ]
+    }
+  ],
+  "claims": {},
+  "practical": [
+    "Identify the watch app and whether the problem concerns its event view, a complication or another display.",
+    "Confirm the same event, date and owning calendar on the paired iPhone.",
+    "For Apple Calendar, review calendar selection in the Watch app; for another app, inspect its documented companion settings.",
+    "Compare the watch app and watch-face display separately after an important change.",
+    "Test only a disposable event in a writable calendar and record which direction or display differs.",
+    "Check current device, account and purchase requirements before choosing an app for watch use."
+  ],
+  "faq": [
+    {
+      "q": "Does an iPhone Home Screen widget prove there is an Apple Watch app?",
+      "a": "No. A widget, a dedicated watch app and a watch-face complication are separate capabilities. Check the publisher’s current listing and the features available on your device."
+    },
+    {
+      "q": "Why is an event visible on the watch but missing from its complication?",
+      "a": "Compare the watch app and complication settings separately. For example, Fantastical documents calendar choices for configurable complications; do not treat every display as an identical view of the full calendar."
+    },
+    {
+      "q": "Does using a watch away from the phone mean the phone can be switched off?",
+      "a": "Do not assume that. Connectivity requirements depend on the app and operation. Flexibits’ watch FAQ requires its paired iPhone to remain powered on and online for synchronization."
+    },
+    {
+      "q": "Should I copy the meeting to another calendar to make it appear?",
+      "a": "First identify its owning calendar and compare the source, phone and chosen watch display. Copying or moving a real invitation can create a second record or change its destination instead of fixing visibility."
+    }
+  ],
+  "sourcesHeading": "Apple and publisher setup instructions",
+  "sources": [
+    {
+      "label": "Apple: check events and choose calendars on Apple Watch",
+      "url": "https://support.apple.com/en-kg/guide/watch/apd1b51754cc/watchos"
+    },
+    {
+      "label": "Flexibits: Fantastical Apple Watch setup, views and complications",
+      "url": "https://flexibits.com/fantastical-ios/help/apple-watch"
+    },
+    {
+      "label": "Flexibits: watch synchronization and account requirements",
+      "url": "https://flexibits.com/fantastical-watch/faq"
+    }
+  ],
+  "seeAlso": [
+    "the-widget-that-shows-what-is-next",
+    "a-countdown-to-your-next-meeting",
+    "what-calendar-sync-actually-does",
+    "google-calendars-that-never-reach-your-iphone"
+  ]
+},
+
   'the-widget-that-shows-what-is-next': {
   "updated": "2026-10-22",
   "title": "Calendar widgets on iPhone and iPad: show upcoming events",
@@ -104,7 +205,8 @@ export const WIDGETS_EN_US: Readonly<Record<string, LocalisedArticle>> = {
   ],
   "seeAlso": [
     "choosing-a-widget-size",
-    "a-countdown-to-your-next-meeting"
+    "a-countdown-to-your-next-meeting",
+    "calendar-on-apple-watch"
   ]
 },
 
@@ -185,7 +287,8 @@ export const WIDGETS_EN_US: Readonly<Record<string, LocalisedArticle>> = {
   ],
   "seeAlso": [
     "calendar-notifications-missing-silent-or-duplicated",
-    "lock-screen-without-unlocking"
+    "lock-screen-without-unlocking",
+    "calendar-on-apple-watch"
   ]
 },
 
