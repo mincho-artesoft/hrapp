@@ -1,0 +1,385 @@
+{
+  "date": "2026-10-22",
+  "scope": "Bounded immutable native privacy delta audit; all native contents obtained by git show/git grep at the pinned SHA, never the active dirty working tree. Prior privacy evidence and saved ASC version snapshot read. No backend, customer, credentials, production queries, app/build/simulator or API mutations.",
+  "commit": "eda40b44af01f813d7700d1e00ec8e62b30fd67e",
+  "baseline": {
+    "weatherModelMatchingPriorHashCommit": "acef9ed52e208d20a6d9a591efa92df89e52f3b6",
+    "method": "Searched up to 30 path commits for exact prior SHA-256; found a match. Entire WeatherKitViewModel diff from this baseline to pinned commit read. This baseline anchors this file only, not an asserted released source tree.",
+    "windMapStoreAbsentAtBaseline": true
+  },
+  "releaseEvidenceSeparation": {
+    "userAttestation": "Parent relayed user instruction to pull latest Alexander commit from yesterday; not a binary identity proof.",
+    "commitStatement": "Pinned commit message reports Prepare 1.7.4 (16), successful release archive/signature verification and upload. This is author-recorded validation, not an independently inspected archive or cryptographic match.",
+    "ascSnapshot": {
+      "path": "research/batch41-release/asc-versions.json",
+      "sha256": "600c7772ab30a7420f036c69db76b58f8df0c7d84adca7bf5934dac9abe6276d",
+      "facts": "1.7.4 PREPARE_FOR_SUBMISSION linked build16 VALID uploaded2026-10-21; 1.7.3 READY_FOR_SALE linked build12 VALID uploaded2026-09-30.",
+      "limit": "ASC metadata does not prove these exact source bytes produced either binary. No claim that new map behavior is public1.7.3 behavior."
+    }
+  },
+  "priorNativeEvidenceComparison": [
+    {
+      "id": "identity",
+      "path": "Calendar/Sharing/CloudCalendarsAPI.swift",
+      "priorSha256": "63e742af594d24c4ab9901dcefdd946c86be5a9836c23be8aa26bce529237f7d",
+      "immutableCommitSha256": "63e742af594d24c4ab9901dcefdd946c86be5a9836c23be8aa26bce529237f7d",
+      "unchanged": true,
+      "priorRanges": [
+        [
+          656,
+          670
+        ]
+      ],
+      "scope": "Byte identity check; unchanged prior content evidence retained, not fresh full reread."
+    },
+    {
+      "id": "session",
+      "path": "Calendar/Sharing/CalendarFeedSession.swift",
+      "priorSha256": "e56ab6eff562ab2f4c0563ed7af060ee2ab3c3e768261e9025078bd38163ae9c",
+      "immutableCommitSha256": "e56ab6eff562ab2f4c0563ed7af060ee2ab3c3e768261e9025078bd38163ae9c",
+      "unchanged": true,
+      "priorRanges": [
+        [
+          169,
+          216
+        ]
+      ],
+      "scope": "Byte identity check; unchanged prior content evidence retained, not fresh full reread."
+    },
+    {
+      "id": "signout",
+      "path": "Calendar/Sharing/CloudAccountManager.swift",
+      "priorSha256": "6187e83c930840548a2ef67ef83bb955d7a1b0f4c970b6c7293e922c58a27bbc",
+      "immutableCommitSha256": "6187e83c930840548a2ef67ef83bb955d7a1b0f4c970b6c7293e922c58a27bbc",
+      "unchanged": true,
+      "priorRanges": [
+        [
+          560,
+          609
+        ]
+      ],
+      "scope": "Byte identity check; unchanged prior content evidence retained, not fresh full reread."
+    },
+    {
+      "id": "content",
+      "path": "Calendar/Sharing/CloudCalendarsAPI.swift",
+      "priorSha256": "63e742af594d24c4ab9901dcefdd946c86be5a9836c23be8aa26bce529237f7d",
+      "immutableCommitSha256": "63e742af594d24c4ab9901dcefdd946c86be5a9836c23be8aa26bce529237f7d",
+      "unchanged": true,
+      "priorRanges": [
+        [
+          36,
+          73
+        ],
+        [
+          138,
+          194
+        ],
+        [
+          692,
+          704
+        ],
+        [
+          886,
+          918
+        ],
+        [
+          954,
+          984
+        ]
+      ],
+      "scope": "Byte identity check; unchanged prior content evidence retained, not fresh full reread."
+    },
+    {
+      "id": "provider-auth",
+      "path": "Calendar/Sources/CalendarViewModel.swift",
+      "priorSha256": "a0b207cb78810816775ff1aff4399a33dc3ce7331cbb1af2aa4468bb0828ccf4",
+      "immutableCommitSha256": "a0b207cb78810816775ff1aff4399a33dc3ce7331cbb1af2aa4468bb0828ccf4",
+      "unchanged": true,
+      "priorRanges": [
+        [
+          234,
+          261
+        ],
+        [
+          2231,
+          2244
+        ],
+        [
+          2436,
+          2443
+        ],
+        [
+          2923,
+          2947
+        ],
+        [
+          4288,
+          4295
+        ]
+      ],
+      "scope": "Byte identity check; unchanged prior content evidence retained, not fresh full reread."
+    },
+    {
+      "id": "contacts",
+      "path": "Calendar/Sources/CalendarViewModel.swift",
+      "priorSha256": "a0b207cb78810816775ff1aff4399a33dc3ce7331cbb1af2aa4468bb0828ccf4",
+      "immutableCommitSha256": "a0b207cb78810816775ff1aff4399a33dc3ce7331cbb1af2aa4468bb0828ccf4",
+      "unchanged": true,
+      "priorRanges": [
+        [
+          4710,
+          4780
+        ],
+        [
+          4807,
+          4815
+        ]
+      ],
+      "scope": "Byte identity check; unchanged prior content evidence retained, not fresh full reread."
+    },
+    {
+      "id": "local",
+      "path": "Calendar/AppLocal/AppLocalCalendarStore.swift",
+      "priorSha256": "2ed2d5ad2104857441a4f8d3bcafe80227058ef24cc49c24c8ec7f70189d6e42",
+      "immutableCommitSha256": "2ed2d5ad2104857441a4f8d3bcafe80227058ef24cc49c24c8ec7f70189d6e42",
+      "unchanged": true,
+      "priorRanges": [
+        [
+          488,
+          499
+        ]
+      ],
+      "scope": "Byte identity check; unchanged prior content evidence retained, not fresh full reread."
+    },
+    {
+      "id": "widgets",
+      "path": "Calendar/Main/CalendarWidgetStore.swift",
+      "priorSha256": "0e766b69fcf12e3cbc99c40b033e5e80b1d34899627844676d989d52b552a2c7",
+      "immutableCommitSha256": "0e766b69fcf12e3cbc99c40b033e5e80b1d34899627844676d989d52b552a2c7",
+      "unchanged": true,
+      "priorRanges": [
+        [
+          250,
+          275
+        ]
+      ],
+      "scope": "Byte identity check; unchanged prior content evidence retained, not fresh full reread."
+    },
+    {
+      "id": "weather",
+      "path": "Calendar/WeatherView/Sources/WeatherKitViewModel.swift",
+      "priorSha256": "50a39e84e91cd97436cc1c3a37d498d68fd50625841fef0bb94721462ad7361e",
+      "immutableCommitSha256": "c58e379ecd12021ef32c78a45c9a326f0bf845af6b5b0abc2853d1e72f4ba219",
+      "unchanged": false,
+      "priorRanges": [
+        [
+          88,
+          115
+        ]
+      ],
+      "scope": "Byte identity check; unchanged prior content evidence retained, not fresh full reread."
+    },
+    {
+      "id": "location",
+      "path": "Calendar/WeatherView/Sources/LocationManager.swift",
+      "priorSha256": "5a5d329dc42d8a7d87c73a524c43b1f257e5389f1d5ad9e98b288b319da2bffe",
+      "immutableCommitSha256": "5a5d329dc42d8a7d87c73a524c43b1f257e5389f1d5ad9e98b288b319da2bffe",
+      "unchanged": true,
+      "priorRanges": [
+        [
+          9,
+          23
+        ],
+        [
+          51,
+          66
+        ]
+      ],
+      "scope": "Byte identity check; unchanged prior content evidence retained, not fresh full reread."
+    },
+    {
+      "id": "ads",
+      "path": "Calendar/Ads/BannerAdView.swift",
+      "priorSha256": "257d7179bb09f7b04401870407e32655ffcbde24cafb2b8f7fb97837f199bb03",
+      "immutableCommitSha256": "257d7179bb09f7b04401870407e32655ffcbde24cafb2b8f7fb97837f199bb03",
+      "unchanged": true,
+      "priorRanges": [
+        [
+          55,
+          63
+        ]
+      ],
+      "scope": "Byte identity check; unchanged prior content evidence retained, not fresh full reread."
+    },
+    {
+      "id": "consent",
+      "path": "Calendar/Ads/ConsentManager.swift",
+      "priorSha256": "a3ab3128e4b36f38e9dd30a1446adbe29c55000fbeb6c29aaae517770dbeb3e2",
+      "immutableCommitSha256": "a3ab3128e4b36f38e9dd30a1446adbe29c55000fbeb6c29aaae517770dbeb3e2",
+      "unchanged": true,
+      "priorRanges": [
+        [
+          28,
+          74
+        ]
+      ],
+      "scope": "Byte identity check; unchanged prior content evidence retained, not fresh full reread."
+    },
+    {
+      "id": "purchases",
+      "path": "Calendar/Subscription/SubscriptionManager.swift",
+      "priorSha256": "5f001543a419b0779912f0e7b5c6cd8f181f4c7ecb953d16d422c87f061d209c",
+      "immutableCommitSha256": "5f001543a419b0779912f0e7b5c6cd8f181f4c7ecb953d16d422c87f061d209c",
+      "unchanged": true,
+      "priorRanges": [
+        [
+          102,
+          110
+        ],
+        [
+          124,
+          164
+        ]
+      ],
+      "scope": "Byte identity check; unchanged prior content evidence retained, not fresh full reread."
+    }
+  ],
+  "evidence": [
+    {
+      "path": "Calendar/WeatherView/WindMap/WindMapStore.swift",
+      "gitObject": "eda40b44af01f813d7700d1e00ec8e62b30fd67e:Calendar/WeatherView/WindMap/WindMapStore.swift",
+      "sha256": "91912b0ba8265533007a48c40015c9016b46b22b9c617a026c0aa16bf3693357",
+      "readRanges": [
+        {
+          "start": 1,
+          "end": 251,
+          "sha256": "91912b0ba8265533007a48c40015c9016b46b22b9c617a026c0aa16bf3693357"
+        }
+      ]
+    },
+    {
+      "path": "Calendar/WeatherView/Sources/WeatherKitViewModel.swift",
+      "gitObject": "eda40b44af01f813d7700d1e00ec8e62b30fd67e:Calendar/WeatherView/Sources/WeatherKitViewModel.swift",
+      "sha256": "c58e379ecd12021ef32c78a45c9a326f0bf845af6b5b0abc2853d1e72f4ba219",
+      "readRanges": [
+        {
+          "start": 85,
+          "end": 208,
+          "sha256": "c85edf14afba68e9d5332614c8082089799a4721e6ca73fa03c2efb099ff1fc3"
+        }
+      ]
+    },
+    {
+      "path": "Calendar/WeatherView/WindMap/WindMapView.swift",
+      "gitObject": "eda40b44af01f813d7700d1e00ec8e62b30fd67e:Calendar/WeatherView/WindMap/WindMapView.swift",
+      "sha256": "5e776fb5729261c772a7ff11c9e8b737407990b2e67fb78ece1661ef2bc7be66",
+      "readRanges": [
+        {
+          "start": 30,
+          "end": 103,
+          "sha256": "66c3f4add0be51e9ddb302f5035944ec073a4e11678bef168a2be287df100869"
+        },
+        {
+          "start": 190,
+          "end": 239,
+          "sha256": "da36226bd0007d7d6a75546b36ce446428f3261aa42b214a9ae775c3cf3d6974"
+        },
+        {
+          "start": 390,
+          "end": 424,
+          "sha256": "e687ab31e874ee5be25dfe0d16b96dce4a40c19d29aef1aa5111224a3b86a681"
+        }
+      ]
+    },
+    {
+      "path": "Calendar/WeatherView/WindMap/WindMapField.swift",
+      "gitObject": "eda40b44af01f813d7700d1e00ec8e62b30fd67e:Calendar/WeatherView/WindMap/WindMapField.swift",
+      "sha256": "e60d698268b679391965b22bf5b0801c048e3b0d75875418128575119649af8e",
+      "readRanges": [
+        {
+          "start": 51,
+          "end": 122,
+          "sha256": "ae297674ae1ca7b8a563196f69100ab68007731fef31743135ad78e9b0dcdec7"
+        }
+      ]
+    },
+    {
+      "path": "Calendar/WeatherView/WindMap/WindMapCanvas.swift",
+      "gitObject": "eda40b44af01f813d7700d1e00ec8e62b30fd67e:Calendar/WeatherView/WindMap/WindMapCanvas.swift",
+      "sha256": "944d7d5d5fb608998f6968bda51c9e36fa90b0098ef01f858890818abe320588",
+      "readRanges": [
+        {
+          "start": 1,
+          "end": 145,
+          "sha256": "e25fd8c1b30868aa42cffedfb93c90b053b425f48ece7566f1120faecf962f31"
+        },
+        {
+          "start": 266,
+          "end": 288,
+          "sha256": "047a62b4e32cacd72b3b2f839f5b5371c3f239cac9b57b2b677d8cb2cf202ef8"
+        }
+      ]
+    },
+    {
+      "path": "Calendar/WeatherView/WeatherKitView.swift",
+      "gitObject": "eda40b44af01f813d7700d1e00ec8e62b30fd67e:Calendar/WeatherView/WeatherKitView.swift",
+      "sha256": "f4b18dba07991280391d247c0b8ec3235ce01889d8aef5373245cf1316b90a03",
+      "readRanges": [
+        {
+          "start": 450,
+          "end": 468,
+          "sha256": "7093a743b5badfffc658f308be344a79b0c7721a8d0399ee72102267d60e4df3"
+        }
+      ]
+    }
+  ],
+  "findings": [
+    {
+      "id": "provider-continuity",
+      "finding": "All 12 other native evidence entries are byte-identical to the earlier audit; only weather-model entry changed. Duplicate entries refer to shared files. Prior identity, sharing, contacts, provider-auth, local/widget storage, location, ads/consent and purchase findings remain source-supported at this commit. Backend deployment and retention are not reverified."
+    },
+    {
+      "id": "weather-model-delta",
+      "finding": "Existing coordinate-based Apple WeatherKit current/hourly/daily/alerts call remains; coordinate diagnostic output and GPS-only alert-processing branch remain. Changes add request cancellation/timeout/loading state and reuse the returned hourly data as an in-memory map-point forecast. This diff does not introduce a non-Apple provider.",
+      "proof": "WeatherKitViewModel85–208 plus entire baseline diff."
+    },
+    {
+      "id": "map-grid-requests",
+      "finding": "New reachable map card and full-screen viewport load routes request Apple WeatherKit hourly forecasts at computed grid coordinates. Compact grid is3x3 with snapped center; expanded grid7x7 follows viewport scale. These are map sample positions, not necessarily exact GPS coordinates.",
+      "proof": "WeatherKitView450–468; WindMapView30–103/196–200; WindMapField62–98; WindMapStore34–104."
+    },
+    {
+      "id": "place-requests",
+      "finding": "Selected place forecast and visible place-list current conditions send corresponding coordinates to Apple WeatherKit. Available places include initial selection, current location if available, and saved regions. Unlike snapped grids, these paths pass the place coordinate directly.",
+      "proof": "WindMapView218–234/393–407; WindMapStore213–250."
+    },
+    {
+      "id": "local-cache",
+      "finding": "Grid forecasts, coordinates/grid keys and fetched timestamps are Codable and stored as JSON in Caches/WeatherMapForecast-v4.json; memory reuse uses30-minute freshness and pruning after successful fetch, with at most12 retained grids after the conditional eviction. On restore expired entries are filtered in memory. Place forecast/conditions dictionaries are in-memory with30-minute freshness filters.",
+      "caution": "30 minutes is a freshness rule, not proof the disk file is deleted within30 minutes. Disk rewrite depends on a later successful request; no provider/server retention claim is justified.",
+      "proof": "WindMapStore20–32/34–51/93–124/213–250; WindMapField51–122."
+    },
+    {
+      "id": "map-display-vendors",
+      "finding": "WindMapCanvas configures Apple MapKit MKMapView, including selected region. Natural Earth outlines are decoded from bundled geojson; visible Natural Earth URL is a user-facing attribution Link, not a forecast or background data-fetch endpoint. MapKit network fields/retention cannot be derived exactly from these SDK calls.",
+      "proof": "WindMapCanvas31–58/88–132/266–288; WindMapView411–424."
+    },
+    {
+      "id": "negative-scope",
+      "finding": "Bounded git grep over Calendar/WeatherView for explicit http URLs, URLSession, MKLocalSearch and CLGeocoder found Apple Weather attribution, Natural Earth attribution/license, Apple search/geocoding usage. No Open-Meteo or other non-Apple weather request found in inspected new map/model paths. This is not a whole-app dependency/traffic guarantee."
+    }
+  ],
+  "recommendedInventoryUpdate": [
+    "Extend weather inventory to include requested map-region sample coordinates, selected/saved-place forecasts and local grid forecast cache.",
+    "Distinguish Apple WeatherKit forecast calls, Apple MapKit map/search/geocoding SDK use and bundled Natural Earth geometry. Do not call Natural Earth a background recipient on this evidence.",
+    "Keep weather GPS/manual-place distinction and diagnostic coordinate-output caveat; do not promise exact server retention, anonymity, or deletion on signout.",
+    "Treat prior public Data Not Collected and own-server sharing/account findings as unresolved owner-review matters. This source delta does not resolve App Privacy or authorize policy changes."
+  ],
+  "remainingFacts": [
+    "Independent build-to-source artifact evidence or reproducible provenance for build16, and a separate source mapping for public1.7.3build12.",
+    "Production backend source/configuration and retention/deletion procedures remain unverified.",
+    "Actual SDK traffic, cache deletion/backups, provider request logging and retention, and source-to-binary/runtime correspondence untested."
+  ],
+  "readLimits": "WindMapStore full251lines and listed bounded callers/model ranges inspected. Initial combined model output truncated; relevant85–208 recovered in a separate untruncated read, and complete baseline diff read. Not claiming full756-line model or complete map renderer audit. No external provider documents fetched because this is source-delta evidence, not vendor retention verification."
+}

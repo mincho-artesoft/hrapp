@@ -1,0 +1,133 @@
+{
+  "date": "2026-10-22",
+  "nativeCommit": "eda40b44af01f813d7700d1e00ec8e62b30fd67e",
+  "method": "Read immutable git objects via git show/ls-tree/grep/log; no working-tree assumptions, no checkout or capture execution.",
+  "decision": "No exact October20–21 finalized marketing output path established in the bounded tracked artifacts reviewed. Duo capture environment is documented, but not its output directory. Older real candidates are distinguished below.",
+  "readScopes": [
+    {
+      "path": "AGENTS.md",
+      "blobId": "17f743c0717bbcd096e2907678bca29a15dc7526",
+      "rawSha256": "50011e4924316e177a50d4765dd01d8f67be8853e57ffb3339e12f4409fffe5e",
+      "scope": "full"
+    },
+    {
+      "path": "WeatherPreviewVideos/README.md",
+      "blobId": "56c7288eb435340beb4e4b3f941662ebbd988570",
+      "rawSha256": "248a72b8a4edc93a9dce7c01bdbad0ef3d3ace2d182ce7a895c5961052b144de",
+      "scope": "full"
+    },
+    {
+      "path": "Calendar/Screenshots/capture-weather-videos.sh",
+      "blobId": "931b3f7cc8f2dd7855dbdf2af628a1e36692f34c",
+      "rawSha256": "c1d22fee482cacf92e06f7977c35e4dd18b9d075f540ee8c85b741a9062e5599",
+      "scope": "full"
+    },
+    {
+      "path": "docs/references/hrapp-wind-map-2026-09-29/README.md",
+      "blobId": "adf5f11174a7496c273e92bd3b3f96fb8f43b367",
+      "rawSha256": "38c89e9db5d5438e9cc242427ca464a7a702967114ab05f429eeaa2c0607fc67",
+      "scope": "full"
+    },
+    {
+      "path": "docs/references/apple-weather-maps-iphone-se2-2026-09-30/hrapp-refined/capture-metadata.json",
+      "blobId": "1238094d4a627db2e5ef8dd20ea734f85dbd58cb",
+      "rawSha256": "0f319fbad6d1d84b14c4c5a65821ddf7a712c910f8d12b11c31ef0501deced14",
+      "scope": "JSON parsed fully; all5 metadata records reviewed without printing all per-frame timing numbers"
+    },
+    {
+      "path": "scripts/snapshot-event-extensions.sh",
+      "blobId": "90b5ec2de42a6094bfdcb47f2cef819312300cd1",
+      "rawSha256": "df92e84468c85738c4c52b726d1d15768cd52213ab3302ec1f099229c0021dcf",
+      "scope": "first70lines of script plus first14 output-directory lines reread"
+    }
+  ],
+  "trackedSearchScope": {
+    "inventoryCount": 1092,
+    "pathTerms": [
+      "readme",
+      "manifest",
+      "capture",
+      "screenshot",
+      "marketing",
+      "appstore",
+      "media",
+      "release",
+      "video",
+      "report"
+    ],
+    "textPatterns": [
+      "Duo",
+      "store.capture",
+      "marketing",
+      "app.store.*screen",
+      "WeatherPreviewVideos",
+      "capture.*output"
+    ],
+    "extensions": [
+      "md",
+      "sh",
+      "py",
+      "json"
+    ],
+    "limits": "Initial path and text results capped at180 and90lines; narrowed follow-up excluded bulk ASC metadata and reference trees. Not exhaustive text review of repository or filesystem."
+  },
+  "candidates": [
+    {
+      "path": "AGENTS.md",
+      "classification": "Current capture-environment provenance, not media output",
+      "evidence": "Receiver named HRApp Duo — Store captures, iPhone Duo iOS27.1; existing local demo calendars to preserve. User request dated2026-10-20.",
+      "missing": "No final output path, shot manifest, language list or export approval."
+    },
+    {
+      "path": "WeatherPreviewVideos.zip",
+      "classification": "Tracked older deterministic WeatherView previews, not established current marketing set",
+      "blobId": "c66bf90c79401fedfdce6c4d834e02d7742ba926",
+      "bytes": 2977139,
+      "readme": "WeatherPreviewVideos/README.md",
+      "script": "Calendar/Screenshots/capture-weather-videos.sh",
+      "scriptOutput": "Third argument, default $PWD/WeatherPreviewVideos;34baseconditions plus3astronomy clips.",
+      "provenance": "README says deterministic WeatherKit preview data. Script sets ScreenshotMode1/weather/English and records2.8seconds, converts540pxwide24fps. Latest relevant history commit3a3200e85e3505c0cfa99d46ebb441f459275914 dated2026-08-13.",
+      "limits": "Archive not extracted or visually inspected. Directory itself has only README tracked at this commit; named MP4s are documented, not separate tracked directory files."
+    },
+    {
+      "path": "docs/references/apple-weather-maps-iphone-se2-2026-09-30/hrapp-refined/",
+      "classification": "September QA/reference captures, not new marketing",
+      "manifest": "capture-metadata.json",
+      "files": [
+        "wind-card.mp4",
+        "wind-new-region.mp4",
+        "wind-paused.mp4",
+        "wind-playing.mp4",
+        "wind-scrub-paused.mp4"
+      ],
+      "provenance": "Metadata: iPhone SE2 via iPhone Mirroring sequential CUA frames, original times, no audio. One clip explicitly predates speed refinement. README distinguishes historical removed weather layers and subsequent refinements.",
+      "limits": "Do not relabel as October1.7.4(16) or Duo marketing footage."
+    },
+    {
+      "path": "scripts/snapshot-event-extensions.sh",
+      "classification": "Capture helper without fixed delivery location",
+      "output": "Required second positional argument; temporary EventExtensionSnapshots test app; AppClip light/dark and HTML variants.",
+      "limits": "Inspected script prefix, not executed; no actual final output proven."
+    },
+    {
+      "path": "artifacts/appclip-screenshots-2026-09-01/",
+      "classification": "Older tracked App Clip images",
+      "files": [
+        "artifacts/appclip-screenshots-2026-09-01/01-shared-event.png",
+        "artifacts/appclip-screenshots-2026-09-01/02-booking-pairing.png",
+        "artifacts/appclip-screenshots-2026-09-01/03-my-bookings.png",
+        "artifacts/appclip-screenshots-2026-09-01/04-shared-calendar.png"
+      ],
+      "limits": "Paths only; images not inspected or adopted."
+    }
+  ],
+  "nextAction": "Use the generating task or its exact capture command/output manifest to identify the new Duo marketing delivery. Do not substitute older WeatherPreviewVideos or reference-map files merely because they are tracked in latest commit.",
+  "prohibitedActionsNotTaken": [
+    "image generation/download/extraction/deletion",
+    "simulator operations",
+    "native or website edits",
+    "build/deploy",
+    "global Desktop/home search"
+  ],
+  "absenceBoundary": "No claim that new outputs do not exist outside this commit, in ignored files, another task directory or an external media service."
+}

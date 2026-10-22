@@ -1,0 +1,246 @@
+{
+  "checkedAt": "2026-10-22T05:29:34.679914+00:00",
+  "userEvidence": "User says latest Alexander commit uploaded yesterday; no archive checksum supplied.",
+  "repository": "/Users/minchomilev/work/hrapp",
+  "remote": "hrapp",
+  "localBranchUpdated": "animations",
+  "beforeBranchHead": "9a59dc593",
+  "afterBranchHead": "eda40b44af01f813d7700d1e00ec8e62b30fd67e",
+  "method": "git fetchhrapp; verifyoldanimationsancestor; fast-forwardlocalanimations via localfetch. Activefeatureworkingtreeunchanged.",
+  "activeWorkingBranch": "codex/calendar-travel-reminders",
+  "activeWorkingHead": "538c99ebd5616b59a92883fe247959b875cab6f9",
+  "authorCommitMessage": "Prepare 1.7.4 (16) with Duo layout and Live Activity fixes\n\nKeep Duo drawers aligned across display sizes and hide the compact countdown in its narrow island. Include launch-screen scaling, Mexican Spanish weather corrections, and Debug-only screenshot date stabilization.\n\nValidation: Release archive succeeded; app, widget and App Clip signatures and build numbers verified; build 1.7.4 (16) uploaded to App Store Connect. Debug simulator build succeeded.\n\n",
+  "projectVersionSettings": [
+    "CURRENT_PROJECT_VERSION = 16;",
+    "MARKETING_VERSION = 1.7.4;",
+    "CURRENT_PROJECT_VERSION = 16;",
+    "MARKETING_VERSION = 1.7.4;",
+    "CURRENT_PROJECT_VERSION = 16;",
+    "MARKETING_VERSION = 1.7.4;",
+    "CURRENT_PROJECT_VERSION = 16;",
+    "MARKETING_VERSION = 1.7.4;",
+    "CURRENT_PROJECT_VERSION = 16;",
+    "MARKETING_VERSION = 1.7.4;",
+    "CURRENT_PROJECT_VERSION = 16;",
+    "MARKETING_VERSION = 1.7.4;"
+  ],
+  "projectSha256": "b4768fd559f2e5302f00293675b158f30f105dcc33788c75ec858f878d25e92c",
+  "nativePriorEvidenceChecks": [
+    {
+      "evidenceId": "identity",
+      "path": "Calendar/Sharing/CloudCalendarsAPI.swift",
+      "oldSha256": "63e742af594d24c4ab9901dcefdd946c86be5a9836c23be8aa26bce529237f7d",
+      "latestCommitSha256": "63e742af594d24c4ab9901dcefdd946c86be5a9836c23be8aa26bce529237f7d",
+      "unchangedFromPriorProof": true,
+      "priorRanges": [
+        [
+          656,
+          670
+        ]
+      ]
+    },
+    {
+      "evidenceId": "session",
+      "path": "Calendar/Sharing/CalendarFeedSession.swift",
+      "oldSha256": "e56ab6eff562ab2f4c0563ed7af060ee2ab3c3e768261e9025078bd38163ae9c",
+      "latestCommitSha256": "e56ab6eff562ab2f4c0563ed7af060ee2ab3c3e768261e9025078bd38163ae9c",
+      "unchangedFromPriorProof": true,
+      "priorRanges": [
+        [
+          169,
+          216
+        ]
+      ]
+    },
+    {
+      "evidenceId": "signout",
+      "path": "Calendar/Sharing/CloudAccountManager.swift",
+      "oldSha256": "6187e83c930840548a2ef67ef83bb955d7a1b0f4c970b6c7293e922c58a27bbc",
+      "latestCommitSha256": "6187e83c930840548a2ef67ef83bb955d7a1b0f4c970b6c7293e922c58a27bbc",
+      "unchangedFromPriorProof": true,
+      "priorRanges": [
+        [
+          560,
+          609
+        ]
+      ]
+    },
+    {
+      "evidenceId": "content",
+      "path": "Calendar/Sharing/CloudCalendarsAPI.swift",
+      "oldSha256": "63e742af594d24c4ab9901dcefdd946c86be5a9836c23be8aa26bce529237f7d",
+      "latestCommitSha256": "63e742af594d24c4ab9901dcefdd946c86be5a9836c23be8aa26bce529237f7d",
+      "unchangedFromPriorProof": true,
+      "priorRanges": [
+        [
+          36,
+          73
+        ],
+        [
+          138,
+          194
+        ],
+        [
+          692,
+          704
+        ],
+        [
+          886,
+          918
+        ],
+        [
+          954,
+          984
+        ]
+      ]
+    },
+    {
+      "evidenceId": "provider-auth",
+      "path": "Calendar/Sources/CalendarViewModel.swift",
+      "oldSha256": "a0b207cb78810816775ff1aff4399a33dc3ce7331cbb1af2aa4468bb0828ccf4",
+      "latestCommitSha256": "a0b207cb78810816775ff1aff4399a33dc3ce7331cbb1af2aa4468bb0828ccf4",
+      "unchangedFromPriorProof": true,
+      "priorRanges": [
+        [
+          234,
+          261
+        ],
+        [
+          2231,
+          2244
+        ],
+        [
+          2436,
+          2443
+        ],
+        [
+          2923,
+          2947
+        ],
+        [
+          4288,
+          4295
+        ]
+      ]
+    },
+    {
+      "evidenceId": "contacts",
+      "path": "Calendar/Sources/CalendarViewModel.swift",
+      "oldSha256": "a0b207cb78810816775ff1aff4399a33dc3ce7331cbb1af2aa4468bb0828ccf4",
+      "latestCommitSha256": "a0b207cb78810816775ff1aff4399a33dc3ce7331cbb1af2aa4468bb0828ccf4",
+      "unchangedFromPriorProof": true,
+      "priorRanges": [
+        [
+          4710,
+          4780
+        ],
+        [
+          4807,
+          4815
+        ]
+      ]
+    },
+    {
+      "evidenceId": "local",
+      "path": "Calendar/AppLocal/AppLocalCalendarStore.swift",
+      "oldSha256": "2ed2d5ad2104857441a4f8d3bcafe80227058ef24cc49c24c8ec7f70189d6e42",
+      "latestCommitSha256": "2ed2d5ad2104857441a4f8d3bcafe80227058ef24cc49c24c8ec7f70189d6e42",
+      "unchangedFromPriorProof": true,
+      "priorRanges": [
+        [
+          488,
+          499
+        ]
+      ]
+    },
+    {
+      "evidenceId": "widgets",
+      "path": "Calendar/Main/CalendarWidgetStore.swift",
+      "oldSha256": "0e766b69fcf12e3cbc99c40b033e5e80b1d34899627844676d989d52b552a2c7",
+      "latestCommitSha256": "0e766b69fcf12e3cbc99c40b033e5e80b1d34899627844676d989d52b552a2c7",
+      "unchangedFromPriorProof": true,
+      "priorRanges": [
+        [
+          250,
+          275
+        ]
+      ]
+    },
+    {
+      "evidenceId": "weather",
+      "path": "Calendar/WeatherView/Sources/WeatherKitViewModel.swift",
+      "oldSha256": "50a39e84e91cd97436cc1c3a37d498d68fd50625841fef0bb94721462ad7361e",
+      "latestCommitSha256": "c58e379ecd12021ef32c78a45c9a326f0bf845af6b5b0abc2853d1e72f4ba219",
+      "unchangedFromPriorProof": false,
+      "priorRanges": [
+        [
+          88,
+          115
+        ]
+      ]
+    },
+    {
+      "evidenceId": "location",
+      "path": "Calendar/WeatherView/Sources/LocationManager.swift",
+      "oldSha256": "5a5d329dc42d8a7d87c73a524c43b1f257e5389f1d5ad9e98b288b319da2bffe",
+      "latestCommitSha256": "5a5d329dc42d8a7d87c73a524c43b1f257e5389f1d5ad9e98b288b319da2bffe",
+      "unchangedFromPriorProof": true,
+      "priorRanges": [
+        [
+          9,
+          23
+        ],
+        [
+          51,
+          66
+        ]
+      ]
+    },
+    {
+      "evidenceId": "ads",
+      "path": "Calendar/Ads/BannerAdView.swift",
+      "oldSha256": "257d7179bb09f7b04401870407e32655ffcbde24cafb2b8f7fb97837f199bb03",
+      "latestCommitSha256": "257d7179bb09f7b04401870407e32655ffcbde24cafb2b8f7fb97837f199bb03",
+      "unchangedFromPriorProof": true,
+      "priorRanges": [
+        [
+          55,
+          63
+        ]
+      ]
+    },
+    {
+      "evidenceId": "consent",
+      "path": "Calendar/Ads/ConsentManager.swift",
+      "oldSha256": "a3ab3128e4b36f38e9dd30a1446adbe29c55000fbeb6c29aaae517770dbeb3e2",
+      "latestCommitSha256": "a3ab3128e4b36f38e9dd30a1446adbe29c55000fbeb6c29aaae517770dbeb3e2",
+      "unchangedFromPriorProof": true,
+      "priorRanges": [
+        [
+          28,
+          74
+        ]
+      ]
+    },
+    {
+      "evidenceId": "purchases",
+      "path": "Calendar/Subscription/SubscriptionManager.swift",
+      "oldSha256": "5f001543a419b0779912f0e7b5c6cd8f181f4c7ecb953d16d422c87f061d209c",
+      "latestCommitSha256": "5f001543a419b0779912f0e7b5c6cd8f181f4c7ecb953d16d422c87f061d209c",
+      "unchangedFromPriorProof": true,
+      "priorRanges": [
+        [
+          102,
+          110
+        ],
+        [
+          124,
+          164
+        ]
+      ]
+    }
+  ],
+  "ascEvidence": "asc-versions.json",
+  "correspondenceAssessment": "Userattestation,authorcommitvalidationstatementandmatchingversion1.7.4/build16/Oct21upload support intendeddraftsource. This is not cryptographic archive-to-binary attestation and does not relabelpublic1.7.3build12 asbuild16.",
+  "preservation": "Nativeapplicationworkingfilesnotcheckedout/edited;preexistingxcschemechangesanduntrackedartifactspreserved. Nobuild/simulator/install/deploy/credential/customer/ASCwrite actions."
+}
