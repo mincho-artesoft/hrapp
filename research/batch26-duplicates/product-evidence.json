@@ -1,0 +1,196 @@
+{
+  "date": "2026-10-22",
+  "method": "Bounded current-source inspection only; no native execution, customer data or provider actions. No deployed/released equivalence inferred.",
+  "fullGuideReads": [
+    {
+      "file": "/Users/minchomilev/cloud-calendars/src/app/content/en-US/articles-unify.ts",
+      "sha256": "852acd7cd6363a9b4b2400587beb890ae471365d7ba357de42cdc7ddebe15656",
+      "readRanges": [
+        [
+          204,
+          315
+        ],
+        [
+          506,
+          602
+        ]
+      ],
+      "establishes": "Complete what-calendar-sync-actually-does and when-two-calendars-disagree bodies, metadata, practical steps, FAQs, sources and related routes read."
+    },
+    {
+      "file": "/Users/minchomilev/cloud-calendars/src/app/content/en-US/articles-help.ts",
+      "sha256": "287911afa199131b0d477839a06c8fa1e949132273ff37f4854ba543b68a69b8",
+      "readRanges": [
+        [
+          381,
+          522
+        ]
+      ],
+      "establishes": "Complete current calendar-export-ics-pdf-and-backup including newly added ownership-transfer section. Existing guide already warns against repeated imports as refresh and checks copies before cleanup."
+    }
+  ],
+  "evidence": [
+    {
+      "file": "/Users/minchomilev/work/hrapp/Calendar/Calendar/CalendarsSheetView.swift",
+      "sha256": "901ac260f4566d8ef7b2c65997248c7a1ad241924bf2d998ad3008292d9d25e8",
+      "readRanges": [
+        [
+          228,
+          264
+        ],
+        [
+          800,
+          835
+        ]
+      ],
+      "establishes": "Visible calendar rows use selection membership and toggleCalendar; toggles add/remove identifier from selectedCalendarIDs. They do not themselves remove stored events. Google copied-calendar list uses provider-to-local identity map."
+    },
+    {
+      "file": "/Users/minchomilev/work/hrapp/Calendar/Sources/CalendarViewModel.swift",
+      "sha256": "a0b207cb78810816775ff1aff4399a33dc3ce7331cbb1af2aa4468bb0828ccf4",
+      "readRanges": [
+        [
+          165,
+          200
+        ],
+        [
+          880,
+          944
+        ],
+        [
+          1236,
+          1254
+        ],
+        [
+          1338,
+          1356
+        ]
+      ],
+      "establishes": "Selection persists, updates widget snapshot and triggers notification rescheduling/Live Activity update; month loading filters selected EventKit/app-local calendars. Google selected-calendar guards apply to downloads and uploads. No identical cross-provider pause/resume claim follows."
+    },
+    {
+      "file": "/Users/minchomilev/work/hrapp/Calendar/Sharing/SharedEventImporter.swift",
+      "sha256": "61811420ef154abcf25d1aa58516b8d8b4683156b505f5cff4371a01650901f2",
+      "readRanges": [
+        [
+          20,
+          45
+        ],
+        [
+          133,
+          179
+        ]
+      ],
+      "establishes": "Invitation matching first uses tracked event ID plus feed ID and stored event identifier. Fallback scans EventKit calendars (calendars:nil) around payload time, matching trimmed title, start/end within one second, all-day flag and normalized location. Match is first result; not identity proof based on owner/account. Existing match is reused/tracked and may be refreshed; not a general duplicate-cleanup operation."
+    },
+    {
+      "file": "/Users/minchomilev/work/hrapp/Calendar/MultiDayView/MultiDayTimelineView.swift",
+      "sha256": "1cc47bf684d08fbc1bd9a69a73b22e1face9fce1ed54b478bcf9efbf541fed79",
+      "readRanges": [
+        [
+          204,
+          258
+        ],
+        [
+          265,
+          327
+        ],
+        [
+          328,
+          357
+        ]
+      ],
+      "establishes": "Reachable event menu distinguishes Duplicate and destructive Delete/Remove from My Calendar/Cancel for Everyone labels. Duplicate creates new local ID or a new EKEvent; EventKit copy explicitly assigns title/dates/all-day/notes/location/calendar, not complete meeting fidelity. Delete path removes app-local record or EventKit thisEvent and invokes tracking callback. This is not display-only suppression."
+    },
+    {
+      "file": "/Users/minchomilev/work/hrapp/Calendar/MultiDayView/TwoWayPinnedMultiDayWrapper.swift",
+      "sha256": "7a8e61a6da46fa4a6df2182cc2e49af048c7d0a781624fdc1eee7b36a016a8a6",
+      "readRanges": [
+        [
+          20,
+          45
+        ]
+      ],
+      "establishes": "Container wired into view, duplicate/delete callbacks reload range. This connects event menu actions to display refresh; no runtime operation performed."
+    },
+    {
+      "file": "/Users/minchomilev/work/hrapp/Calendar/Calendar/EditCalendarView.swift",
+      "sha256": "076b2b7df9c7a24f5049cc38faa8b513499e97cf708f415fde0865af568754f4",
+      "readRanges": [
+        [
+          40,
+          80
+        ],
+        [
+          191,
+          211
+        ]
+      ],
+      "establishes": "Calendar editor exposes destructive Delete Calendar conditionally on original-creator context. Handler calls EventKit removeCalendar, schedules owned-shared-calendar deletion marking and updates selection. Not interchangeable with a checkbox."
+    }
+  ],
+  "distinctions": [
+    {
+      "case": "Two visible entries",
+      "conclusion": "Appearance alone cannot tell whether independent records, repeated import copies or provider/mirror routes. Calendar and source identity must be compared. Selection can help trace the display without requesting record deletion."
+    },
+    {
+      "case": "Repeated app invitation",
+      "conclusion": "Importer has a bounded existing-event matching path, distinct from general ICS import and bulk dedup. Its fallback considers similar fields across calendars; do not promise perfect identity matching or all-duplicate removal."
+    },
+    {
+      "case": "Duplicate command",
+      "conclusion": "Creates another stored record where allowed; it is not a diagnose/remove-duplicates control. It does not prove all fields or meeting semantics are copied."
+    },
+    {
+      "case": "Deletion",
+      "conclusion": "Event/calendar handlers mutate storage; sharing and provider consequences differ. Labels and permissions matter, and a visible second entry does not make deletion harmless."
+    },
+    {
+      "case": "Calendar selection",
+      "conclusion": "Toggle itself changes selection, but downstream consumers include display, widgets, notifications, Live Activities and selected Google sync paths. Restore prior selection after diagnosis."
+    }
+  ],
+  "coverageDecision": {
+    "newRouteJustified": false,
+    "existingCoverage": "Conflict guide already covers compare-account/calendar/organizer/timezone/recurrence, provider comparison, hiding first, restore visibility, permissions and controlled corrections. Sync guide covers repeated imports and source ownership; export guide covers snapshot versus subscription. Generic duplicate article would repeat this coverage.",
+    "specificGap": "Cloud-specific selection side effects are not explained at the hide-first step. Current sync phrase “Hiding changes visibility” is true but incomplete if read as visibility-only for Cloud selection.",
+    "primaryCanonical": "when-two-calendars-disagree",
+    "placement": "After first paragraph in Hide first when two entries look duplicated",
+    "proposedParagraph": "In Cloud Calendars, make this a temporary check and note the original selection. Selected calendars also feed widgets and notification scheduling, and deselecting a connected Google calendar affects which calendars its sync paths process. Restore the calendars you need after the comparison, then check the schedule again before relying on availability or alerts. Do not assume every provider connection pauses or resumes in the same way.",
+    "secondaryCanonical": "what-calendar-sync-actually-does",
+    "secondaryEdit": "Qualify the hide-first paragraph with a short link or sentence pointing to the selection caveat, rather than duplicating a new long section.",
+    "optionalImportBoundary": "If the guide discusses accepting the same app invitation again, explain that it may reuse a recognized event; it is not a cleanup tool for unrelated duplicates. No need to expose matching internals in public prose."
+  },
+  "boundedSearch": {
+    "scope": "Calendar Swift source searched for duplicate/dedup/matchingEvent/selectedCalendar/removal; relevant callers and bodies read above. Search hits in test fixtures were not treated as executed tests or proof.",
+    "absenceLimit": "No general user-facing remove-all-duplicates control established by this bounded search. Do not claim exhaustive absence from all versions."
+  },
+  "doNotClaim": [
+    "Native dedup safely removes all duplicates.",
+    "Identical titles establish identical event identity.",
+    "Hiding a calendar has only cosmetic effects for all Cloud connections.",
+    "Deletion only removes one visible row and never affects others.",
+    "Repeated app invitation acceptance always preserves every record and field.",
+    "Reimporting a file is a subscription refresh."
+  ],
+  "limits": [
+    "Source hashes represent current working tree, not certified release artifacts.",
+    "Full provider deletion propagation and all view implementations were not re-audited.",
+    "No new official support pages read; existing source links in guides were reviewed as article contents only.",
+    "No automatic cleanup proposed or executed."
+  ],
+  "writes": [
+    "research/batch26-duplicates/product-evidence.json only"
+  ],
+  "notPerformed": [
+    "Native or website edits",
+    "Builds",
+    "Simulators",
+    "Runtime actions",
+    "Provider/customer actions",
+    "Deployment",
+    "ASC changes",
+    "dist changes"
+  ]
+}

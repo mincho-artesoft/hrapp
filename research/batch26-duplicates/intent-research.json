@@ -1,0 +1,150 @@
+{
+  "date": "2026-10-22",
+  "scope": "Bounded research only: three complete existing EN guides, three queries in one combined batch, three full official primary main bodies. No source or customer calendar changes.",
+  "queries": [
+    "site:support.apple.com duplicate events iCloud Calendar iPhone Google Outlook",
+    "site:support.google.com/calendar duplicate events importing calendar ICS",
+    "site:help.flexibits.com OR site:flexibits.com/fantastical duplicate events calendars"
+  ],
+  "searchInterpretation": "Combined web-tool results do not establish per-query attribution, Google ranking or search volume. No Apple result was explicitly returned in the combined set; Apple body was opened from the existing guide's cited source. Search snippets are discovery evidence, not full-body reviews.",
+  "observedResultUrls": [
+    "https://support.google.com/calendar/answer/45654?hl=en",
+    "https://flexibits.com/fantastical/tips",
+    "https://flexibits.com/support/kb/157",
+    "https://flexibits.com/fantastical/releasenotes",
+    "https://flexibits.com/pricing?product=fantastical&source=post_page",
+    "https://flexibits.com/fantastical/help/settings",
+    "https://flexibits.com/fantastical/faq",
+    "https://flexibits.com/fantastical-ios/releasenotes",
+    "https://support.google.com/calendar/thread/471124479/cannot-import-ics-file-into-primary-google-calendar?hl=en",
+    "https://flexibits.com/fantastical-windows/help/calendar-mirroring",
+    "https://support.google.com/calendar/answer/37118?hl=en-PW",
+    "https://flexibits.com/support/kb/100"
+  ],
+  "sources": [
+    {
+      "url": "https://support.apple.com/en-us/102180",
+      "status": "full_main_body",
+      "readLines": [
+        28,
+        80
+      ],
+      "totalLines": 92,
+      "findings": "Apple describes calendar visibility checkboxes on iPhone/iPad and Mac, separate Holidays/Birthdays visibility, and duplicate contact cards as a possible birthday source. Its local-calendar deletion guidance starts with a copy of calendar data and distinguishes permission/default-calendar limitations.",
+      "application": "Supports existing hide-first diagnosis; no new generic duplicate article. These are Apple Calendar controls, not established Cloud UI. Contact-card consolidation is not the selected addition."
+    },
+    {
+      "url": "https://support.google.com/calendar/answer/45654?hl=en",
+      "status": "full_main_body",
+      "readLines": [
+        18,
+        122
+      ],
+      "totalLines": 191,
+      "findings": "Google says a second Import click can produce Processed zero events after the first import succeeded, because no new events remain; inspect the calendar. Troubleshooting is computer-only. Partial processing, file limits, formatting, zones and exported recurrence are separate branches.",
+      "application": "A bounded Google-specific FAQ can prevent treating zero processed as proof of missing events or retrying blindly. The document does not establish universal repeat-import deduplication, nor that every repeated import creates duplicates. Some navigation wording appears older; link to official guidance rather than reproducing those menu labels."
+    },
+    {
+      "url": "https://flexibits.com/support/kb/157",
+      "status": "full_main_body",
+      "readLines": [
+        17,
+        36
+      ],
+      "totalLines": 68,
+      "findings": "Fantastical documents two iOS/iPadOS access paths: device accounts and accounts connected directly in the app. Its own recommended settings disable Calendars from iOS after direct connections to avoid duplicate display, while retaining Reminders from iOS.",
+      "application": "Concrete competitor evidence for a duplicate-access-route intent already covered in the sync guide. Do not transplant Fantastical menus, direct-connection effects or speed promises into Cloud Calendars."
+    }
+  ],
+  "failures": [],
+  "unreviewedScope": "The remaining ten observed result URLs were not body-reviewed in this batch. Google Community claims about removing UID fields and third-party conversion tools were not adopted as technical guidance. No failed original corpus URL was retried.",
+  "classification": [
+    {
+      "kind": "duplicate_display",
+      "diagnostic": "Compare calendars/accounts and temporarily hide one source; check provider view. A second access route can explain two displayed entries.",
+      "existingCanonical": "when-two-calendars-disagree",
+      "status": "already_substantively_covered"
+    },
+    {
+      "kind": "imported_copies",
+      "diagnostic": "Identify destination and import history; preserve original and inspect representative events before cleanup. An imported snapshot is not a live subscription.",
+      "existingCanonical": "calendar-export-ics-pdf-and-backup",
+      "status": "already_substantively_covered_with_one_message_specific_improvement"
+    },
+    {
+      "kind": "provider_records",
+      "diagnostic": "Compare same-account provider view with each local entry. Matching title alone does not prove record identity; two provider entries are not resolved merely by hiding a local display route.",
+      "existingCanonical": "when-two-calendars-disagree",
+      "status": "already_substantively_covered"
+    },
+    {
+      "kind": "ownership_and_permission",
+      "diagnostic": "Seeing a calendar does not grant editing authority. Preserve organizer/recurrence context, and avoid deleting invitations or accounts as an initial diagnostic.",
+      "existingCanonical": "when-two-calendars-disagree",
+      "status": "already_substantively_covered"
+    },
+    {
+      "kind": "Cloud_connection_mirrors",
+      "diagnostic": "Existing sync guide describes provider mirrors in the iPhone calendar store and source checking. This batch did not inspect native code or certify behavior.",
+      "existingCanonical": "what-calendar-sync-actually-does",
+      "status": "existing_copy_only_no_new_product_claim"
+    }
+  ],
+  "recommendation": {
+    "type": "one_bounded_existing_guide_improvement",
+    "canonical": "calendar-export-ics-pdf-and-backup",
+    "placement": "Append one Google-specific FAQ near import checks, with Google troubleshooting source; no new article.",
+    "question": "Google says “Processed zero events.” Should I import again?",
+    "proposedAnswer": "First check the calendar you selected as the import destination. Google says this message can appear after clicking Import a second time when the first import already succeeded. Look for the expected events before retrying. The message alone does not establish that events are missing, and it does not prove that every repeated import is safe or creates duplicates. If entries are missing or repeated, follow Google’s computer-based import troubleshooting and compare the destination before deleting anything.",
+    "rationale": "Existing guides explain copies and cautious cleanup but not this documented ambiguous success/error message. It is useful to the duplicate-after-import task without inventing a universal import rule.",
+    "notRecommended": "No new duplicate-calendar article or source-specific synonym pages. Do not add Fantastical settings as Cloud instructions; do not recommend removing event UIDs or bulk deletion."
+  },
+  "boundaries": [
+    "No measured search volume, Google position, ChatGPT citation, exhaustive keyword coverage, runtime or media claim.",
+    "Provider and publisher documentation is evidence for their own behavior; no new Cloud capability inferred.",
+    "No calendar operations, source integration, build, dist mutation, native edit, deployment or ASC action."
+  ],
+  "localFullReads": [
+    {
+      "canonical": "when-two-calendars-disagree",
+      "file": "src/app/content/en-US/articles-unify.ts",
+      "scope": "Entire object: metadata, every section/paragraph, practical steps, FAQs, sources and related links",
+      "lines": [
+        506,
+        600
+      ],
+      "sha256ObjectSourceUtf8": "cbd0a87060c2d40ee795cae80bcabacadfa633c2312c92aa033091f3cffaebad",
+      "sections": 5,
+      "paragraphs": 10
+    },
+    {
+      "canonical": "what-calendar-sync-actually-does",
+      "file": "src/app/content/en-US/articles-unify.ts",
+      "scope": "Entire object: metadata, every section/paragraph, practical steps, FAQs, sources and related links",
+      "lines": [
+        204,
+        315
+      ],
+      "sha256ObjectSourceUtf8": "88e0bf6d6d3dff8b7a66d5f3ca4ef164875843f0d8b5a82bc72934782c5b5113",
+      "sections": 7,
+      "paragraphs": 20
+    },
+    {
+      "canonical": "calendar-export-ics-pdf-and-backup",
+      "file": "src/app/content/en-US/articles-help.ts",
+      "scope": "Entire object: metadata, every section/paragraph, practical steps, FAQs, sources and related links",
+      "lines": [
+        381,
+        522
+      ],
+      "sha256ObjectSourceUtf8": "5714ee71fa16f66b6afdea576afde2c51de4a7c12e9bda09bfc2ec79cca4bd3e",
+      "sections": 9,
+      "paragraphs": 23
+    }
+  ],
+  "retrievalHashes": {
+    "scope": "UTF-8 rendered tool response including metadata/navigation, not HTTP body hashes",
+    "searchResponseSha256": "12b87ae2ae668e2975067a024a554c819292566715eec5a762c91860a604d31a",
+    "threeBodyResponseSha256": "b8fbd22523250ad72b0cfee01609679919b37445aa6a7c9ee56f209cff45cfba"
+  }
+}
