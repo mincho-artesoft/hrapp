@@ -1,0 +1,177 @@
+{
+  "date": "2026-10-22",
+  "purpose": "Bounded public calendar export/transfer/migration discovery; one improvement to an existing guide, no new synonym page.",
+  "searches": [
+    {
+      "batch": 1,
+      "queries": [
+        "iPhone calendar transfer iCloud Google Outlook export migration official calendar",
+        "site.support.google.com/calendar import calendar events guests conference data",
+        "site.support.microsoft.com outlook import calendar ics subscribe iPhone"
+      ],
+      "association": "Combined results; per-query attribution and Google ranking not established",
+      "observed_urls": [
+        "https://support.microsoft.com/en-us/outlook/import-or-subscribe-to-a-calendar-in-outlook-com-or-outlook-on-the-web",
+        "https://support.apple.com/en-ie/guide/iphone/ipha0d932e96/27/ios/27",
+        "https://support.microsoft.com/en-us/outlook/connect-outlook-and-apple-iphone-calendars",
+        "https://support.google.com/calendar/answer/37118?hl=en-PW",
+        "https://support.apple.com/en-lamr/guide/iphone/iph3d1110d4/ios",
+        "https://developers.google.com/workspace/calendar/api/v3/reference/events/import",
+        "https://its.uiowa.edu/services/microsoft-365-email-calendaring/sharing-your-microsoft-365-calendar",
+        "https://warwick.ac.uk/fac/soc/wbs/central/issu/help/kb/internet/my_wbs/icaloutlook/",
+        "https://www.itechguides.com/how-to-add-events-from-a-website-to-google-calendar/",
+        "https://www.hetk.io/blog/how-to-subscribe-ics-calendar-outlook/",
+        "https://appleinsider.com/inside/icloud/tips/how-to-leave-icloud-without-losing-your-data",
+        "https://docs.google.com/document/d/1dypmCAeVuCDRoDkBUTR8Yf__zxVNMwVFGsr7im61bww/mobilebasic",
+        "https://fcc.report/FCC-ID/BCG-E8064A/5701226.pdf",
+        "https://arkansasmetrochiefs.org/wp-content/uploads/2026/03/Training-Calendar-Subscription-Tutorial.pdf",
+        "https://resources.oreilly.com/examples/0636920032717/-/raw/master/Syncing%20Calendar%20with%20.ICS%20Files.pdf?inline=false",
+        "https://www.gsa.gov/system/files/ImportCalendarGoogle.pdf",
+        "https://cdn2.sportngin.com/attachments/document/0043/3067/Adding_iCal_Feed_to_an_iPhone.pdf",
+        "https://www.reddit.com/r/ios/comments/1tgyigw/ics_data_in_iphone_calendar/",
+        "https://www.youtube.com/watch?v=bgUL35CztVY"
+      ]
+    },
+    {
+      "batch": 2,
+      "queries": [
+        "site:support.google.com/calendar transfer ownership calendar event another account"
+      ],
+      "association": "Single query; results are observed tool output, not measured Google positions.",
+      "observed_urls": [
+        "https://support.google.com/calendar/answer/78739?hl=EN&ref_topic=10510447",
+        "https://support.google.com/calendar/answer/78739?co=GENIE.Platform%3DAndroid&hl=en-419",
+        "https://support.google.com/a/users/answer/13293412?hl=en",
+        "https://support.google.com/calendar/answer/78739?co=GENIE.Platform%3DiOS&hl=en-GB",
+        "https://support.google.com/meet/answer/10003792?hl=en",
+        "https://support.google.com/calendar/answer/78739?co=GENIE.Platform%3DDesktop&hl=es",
+        "https://support.google.com/calendar/thread/417880466/i-can-t-see-the-button-to-transfer-ownership-of-a-calendar?hl=en",
+        "https://support.google.com/calendar/answer/78739?co=GENIE.Platform%3DAndroid&hl=es",
+        "https://support.google.com/calendar/thread/435414160/changing-calendar-event-owners-without-sending-multiple-emails?hl=en",
+        "https://support.google.com/calendar/answer/37082?hl=en",
+        "https://support.google.com/calendar/thread/159440312/how-do-i-change-ownership-of-a-calendar?hl=en",
+        "https://support.google.com/calendar/thread/223347798/how-to-change-ownership-of-the-whole-calendar?hl=en"
+      ]
+    }
+  ],
+  "sources": [
+    {
+      "url": "https://support.google.com/calendar/answer/78739?hl=EN&ref_topic=10510447",
+      "status": "full_main_body",
+      "read_lines": [
+        [
+          18,
+          70
+        ]
+      ],
+      "total_lines": 151,
+      "findings": "Google separates calendar ownership transfer, event ownership change, moving an event, and copying. Primary calendars cannot transfer; current owner can transfer a secondary calendar. Work/school calendar ownership stays within the organization. Recipient must accept emailed transfer within 60 days; sender remains owner until acceptance. Account deletion deletes owned calendars. More than 200 guests prevents event transfer; Meet policies may change.",
+      "boundary": "Google computer instructions, not Cloud controls or cross-provider ownership migration. Do not generalize secondary calendar eligibility without the current-owner restriction."
+    },
+    {
+      "url": "https://support.google.com/calendar/answer/37118?hl=en",
+      "status": "full_main_body",
+      "read_lines": [
+        [
+          18,
+          161
+        ]
+      ],
+      "total_lines": 229,
+      "findings": "Computer imports ICS/CSV into a chosen calendar, default primary. ZIP requires extracting individual ICS. Imports omit guests/conference data, are not ongoing sync; CSV repeats may become individual events.",
+      "boundary": "Already covered in export guide. Source line35 unexpectedly says vCard for Apple, inconsistent with its ICS/CSV import section and Apple's ICS export instructions; do not repeat that line as calendar-format advice."
+    },
+    {
+      "url": "https://support.microsoft.com/en-us/outlook/import-or-subscribe-to-a-calendar-in-outlook-com-or-outlook-on-the-web",
+      "status": "full_main_body",
+      "read_lines": [
+        [
+          119,
+          249
+        ]
+      ],
+      "total_lines": 361,
+      "findings": "Personal and work/school web flows distinguish Upload from file, selected destination, and Subscribe from web. Import is a snapshot; subscription updates may take more than 24 hours.",
+      "boundary": "Web instructions, not native iPhone Outlook or Cloud UI. Refresh suggestions are not deadlines. Already covered conceptually."
+    },
+    {
+      "url": "https://support.apple.com/guide/calendar/import-or-export-calendars-icl1023/mac",
+      "resolved_url": "https://support.apple.com/en-gb/guide/calendar/icl1023/mac",
+      "status": "full_main_body",
+      "read_lines": [
+        [
+          87,
+          146
+        ]
+      ],
+      "total_lines": 160,
+      "findings": "Mac exports individual calendars as ICS, imports into selected calendar, and supports archive ICBU whose import replaces current calendar data. Provider-backed calendars stored on provider servers do not require manual device-to-device transfer.",
+      "boundary": "Mac instructions, not an iPhone export menu. Existing guide already has these distinctions."
+    }
+  ],
+  "failed_fetches": [],
+  "discovery_scope": "Four queries, 31 explicit result URLs. Four official provider documentation bodies reviewed. Other observed URLs remain discovery/snippet-only. No independent app competitor body newly reviewed in this bounded batch; Apple/Google/Microsoft are provider primary sources. No failed original corpus URL retried.",
+  "recommendation": {
+    "type": "improve_existing",
+    "canonical": "calendar-export-ics-pdf-and-backup",
+    "task": "Before retiring a Google account, decide whether you need a copied schedule or an ownership handoff, and verify acceptance before treating the handoff as finished.",
+    "rationale": "Current export guide covers import formats, destinations, representative checks and missing meeting metadata, but not ownership-transfer eligibility or acceptance. A short Google-specific decision paragraph/FAQ adds a distinct actionable decision without creating another migration page.",
+    "suggested_scope": [
+      "Add a brief subsection near safe import explaining that export/import copies event data; it is not an ownership transfer.",
+      "For a Google secondary-calendar handoff, point to current official computer instructions and require current owner/same-organization rule for work/school accounts; primary calendars cannot transfer.",
+      "Check that the recipient accepted ownership; sending the email alone is not completion. Google permits 60 days and retains old ownership until acceptance.",
+      "Keep Google-specific ownership restrictions separate from iCloud/Outlook migration. Do not imply a cross-provider transfer preserves guests, conferencing or organizational rights."
+    ],
+    "not_recommended": "No standalone iCloud-to-Google, Google-to-Outlook, or iPhone-migration synonym page; current export guide already addresses the shared file/import task."
+  },
+  "boundaries": [
+    "No search volume, Google rank, exhaustive keyword access or ChatGPT citation evidence.",
+    "No Cloud export, ownership transfer, runtime or preservation guarantee inferred from provider documentation.",
+    "No source integration, build, deployment, native operations, ASC changes or live account actions."
+  ],
+  "local_comparisons": [
+    {
+      "canonical": "calendar-export-ics-pdf-and-backup",
+      "file": "src/app/content/en-US/articles-help.ts",
+      "status": "full_object_read",
+      "lines": [
+        381,
+        511
+      ],
+      "sha256_object_source_utf8": "744f0d1963ea33df942811e9a94310eeabb2a0b5bcc10ddb1919451d8033537f",
+      "sections": 8,
+      "comparison": "Full object: formats, provider computer exports, file vs feed, safe destination/representative test, Google import losses, archive warning already covered."
+    },
+    {
+      "canonical": "icloud-google-and-outlook-in-one-view",
+      "file": "src/app/content/en-US/articles-unify.ts",
+      "status": "full_object_read",
+      "lines": [
+        12,
+        110
+      ],
+      "sha256_object_source_utf8": "59c1312f6ea394f7edf6e1498bf3259efd0053c904f2b0c3d53267c81866e2f2",
+      "sections": 6,
+      "comparison": "Full object: route choice distinguishes moving event data from combined views and busy-copy services; no new migration page needed."
+    },
+    {
+      "canonical": "what-calendar-sync-actually-does",
+      "file": "src/app/content/en-US/articles-unify.ts",
+      "status": "full_object_read",
+      "lines": [
+        204,
+        315
+      ],
+      "sha256_object_source_utf8": "88e0bf6d6d3dff8b7a66d5f3ca4ef164875843f0d8b5a82bc72934782c5b5113",
+      "sections": 7,
+      "comparison": "Full object: account/feed/file/app identity, mirrors, provider ownership, safe sync test, duplicates and busy copying covered; ownership transfer acceptance not covered."
+    }
+  ],
+  "corpus_keyword_check": {
+    "scope": "All current EN articles-*.ts searched for transfer ownership, 60 days, primary calendar, Change owner/change owner; zero matching lines. This lexical check is supplementary, not a full read of all EN guides."
+  },
+  "web_hashes": {
+    "sha256_initial_four_page_tool_response_utf8": "049b025b9f1ecefa4c061457aff6f2b03ce73a1b932fbafbf46a26db60c96886",
+    "scope": "Hash of initial rendered four-page web response including navigation and tool metadata, not raw HTTP bodies. Google import and Microsoft main-body reads were completed by subsequent ranged opens; those additional responses were read but not retained for hashing. Do not treat this as a hash of the fully assembled four article bodies."
+  }
+}

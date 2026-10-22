@@ -1,0 +1,55 @@
+{
+  "reviewedAt": "2026-10-22T00:38:37.268209+00:00",
+  "decision": "ready_for_scoped_integration_next_batch",
+  "rootReads": [
+    "Complete existing calendar-export-ics-pdf-and-backup object in articles-help.ts381–511",
+    "Complete intent-research.json and product-evidence.json",
+    "Full new subsection and draft-notes.json; exact before/draft parsed field guard"
+  ],
+  "freshPrimary": {
+    "url": "https://support.google.com/calendar/answer/78739?hl=en",
+    "readScope": "Complete main body18–70, computer instructions; no customer interaction.",
+    "confirmed": [
+      "Only current owner can transfer a secondary calendar; primary excluded.",
+      "Work/school new owner must be same organisation.",
+      "60day recipient acceptance; old owner remains until acceptance."
+    ]
+  },
+  "draftScope": {
+    "changedFields": [
+      "sections",
+      "sources"
+    ],
+    "oldSectionsPreserved": 8,
+    "newSections": 1,
+    "newSource": 1,
+    "metadataPracticalFaqClaimsRelatedDateUnchanged": true
+  },
+  "files": [
+    {
+      "path": "research/batch24-migration/before.json",
+      "sha256": "641858c6a2664cdb70f7b7b77a4850f2bca4788b13f773f95b76b7776343c162"
+    },
+    {
+      "path": "research/batch24-migration/calendar-export-ics-pdf-and-backup.json",
+      "sha256": "12184e43a82777b7314514b2f67dc1cdef83083c3fe693a43b6087f0d98a17aa"
+    },
+    {
+      "path": "research/batch24-migration/intent-research.json",
+      "sha256": "604ec656dc538c54f6a7ac72d15c0e955a57a6e326cac9fe33868b7fba29c889"
+    },
+    {
+      "path": "research/batch24-migration/product-evidence.json",
+      "sha256": "97240cc9e7ec37d253f72968260a781d2ca2782661769eaaea50b577127c5ea1"
+    },
+    {
+      "path": "research/batch24-migration/draft-notes.json",
+      "sha256": "2dce100d68b9ec8c84aec6b9d310781b2b2a3226a408f62f4a9316c7c53d70c8"
+    }
+  ],
+  "limits": [
+    "Not integrated, built or published yet.",
+    "No Google/Cloud customer action, released runtime or migration fidelity certification.",
+    "Wrong-calendar native move addition is separate; exact implementation must be root-reviewed before integration."
+  ]
+}

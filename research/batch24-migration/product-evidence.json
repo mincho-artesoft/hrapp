@@ -1,0 +1,214 @@
+{
+  "date": "2026-10-22",
+  "method": "Bounded read-only current source audit. No runtime, released-binary or deployed-backend verification. Official provider research is delegated separately; existing linked documents are not newly read by this audit.",
+  "completeExistingGuideReads": [
+    {
+      "file": "/Users/minchomilev/cloud-calendars/src/app/content/en-US/articles-help.ts",
+      "sha256": "af346d253bac914c1590c49385f40f4c199b4671396f0ec00b17ecb18604653e",
+      "rangesRead": [
+        [
+          381,
+          510
+        ],
+        [
+          511,
+          604
+        ]
+      ],
+      "proof": "Complete calendar-export-ics-pdf-and-backup and event-saved-to-wrong-calendar objects: all prose, steps, FAQs and sources read."
+    },
+    {
+      "file": "/Users/minchomilev/cloud-calendars/src/app/content/en-US/articles-unify.ts",
+      "sha256": "852acd7cd6363a9b4b2400587beb890ae471365d7ba357de42cdc7ddebe15656",
+      "rangesRead": [
+        [
+          112,
+          202
+        ]
+      ],
+      "proof": "Complete three-calendar-apps-is-two-too-many object. Already distinguishes checked overview from merging accounts and preserving source apps."
+    }
+  ],
+  "nativeEvidence": [
+    {
+      "file": "/Users/minchomilev/work/hrapp/Calendar/Main/CalendarApp.swift",
+      "sha256": "f07cc2ac3643c89526e5b10efaa2cbb5680346f98e83354a2fbae69e6b8e8a4c",
+      "rangesRead": [
+        [
+          165,
+          196
+        ]
+      ],
+      "proof": "URL/userActivity handlers parse calendar invitation or resolve shared-event payload then present import sheets. Not generic document import."
+    },
+    {
+      "file": "/Users/minchomilev/work/hrapp/Calendar/Sharing/SharedEventImportPayload.swift",
+      "sha256": "e054649e91629e750d0aec98157b4285b03fd2e67b0263d9aa8f3c6f54fea888",
+      "rangesRead": [
+        [
+          1,
+          105
+        ]
+      ],
+      "proof": "URL parser accepts app-specific App Clip, service invitation or cloudcalendars handoff. Syncable requires eventID and feedID. This parser does not accept arbitrary .ics files or webcal URLs."
+    },
+    {
+      "file": "/Users/minchomilev/work/hrapp/Calendar/Sharing/SharedEventImportView.swift",
+      "sha256": "05a0c0af4f6db594a8049c72f614df10d9742725b179b1bcf8f34bae5cdb1e1d",
+      "rangesRead": [
+        [
+          265,
+          324
+        ]
+      ],
+      "proof": "Add invokes SharedEventImporter with selected calendar; permissions and missing writable destination are distinct errors. Destination picker filters allowsContentModifications; preferred destination fallback is explicit."
+    },
+    {
+      "file": "/Users/minchomilev/work/hrapp/Calendar/Sharing/SharedEventImporter.swift",
+      "sha256": "61811420ef154abcf25d1aa58516b8d8b4683156b505f5cff4371a01650901f2",
+      "rangesRead": [
+        [
+          1,
+          115
+        ]
+      ],
+      "proof": "Full calendar access required. Existing matching event is reused/tracked; otherwise choose existing writable calendar, create EKEvent and save thisEvent. Initial copied fields: title/start/end/all-day/location/timezone/URL. Syncable payload then triggers refresh for fuller data; not arbitrary file import, not whole-calendar migration."
+    },
+    {
+      "file": "/Users/minchomilev/work/hrapp/Calendar/Sharing/SharedInviteRefresher.swift",
+      "sha256": "39aa3028f7e4e58a8feb9a4e933846229907a006e68854f9519f440442f52e18",
+      "rangesRead": [
+        [
+          253,
+          408
+        ]
+      ],
+      "proof": "Tracked shared event refresh reconciles sequence, cancellation title, time/location/URL, writable details and supplements; save may use futureEvents for recurrence. A recipient copy is not necessarily a detached backup, and refresh completion is not guaranteed."
+    },
+    {
+      "file": "/Users/minchomilev/work/hrapp/Calendar/Sharing/CloudCalendarsAPI.swift",
+      "sha256": "63e742af594d24c4ab9901dcefdd946c86be5a9836c23be8aa26bce529237f7d",
+      "rangesRead": [
+        [
+          240,
+          283
+        ]
+      ],
+      "proof": "Writable shared detail application sets notes/timezone/availability/alarms/recurrence/structured location. Does not assign organizer or attendees as native EventKit participant identities; no universal field fidelity claim."
+    },
+    {
+      "file": "/Users/minchomilev/work/hrapp/Calendar/AppLocal/AppLocalEventEditorView.swift",
+      "sha256": "5f021ab6f986148e70fe3b932e0e9e530fecb8d01fdc436e78217c6116f9a093",
+      "rangesRead": [
+        [
+          405,
+          427
+        ],
+        [
+          450,
+          493
+        ],
+        [
+          1324,
+          1381
+        ],
+        [
+          1390,
+          1539
+        ],
+        [
+          1570,
+          1616
+        ],
+        [
+          1656,
+          1692
+        ]
+      ],
+      "proof": "Reachable Share toolbar guarded by canShare; event/local descriptor dispatch to EventAppClipSharing. fileImporter adds attachments, max5 and <=1MB each, not calendar records. Save destination requires editable calendar. AppLocal<->EventKit move saves target then deletes source; EventKit->local rolls back target on failed removal. Recurring EventKit save/removal uses futureEvents. Immediate detail Calendar change invokes persistSelectedDestination. No guaranteed migration of guests, exception instances or all metadata."
+    },
+    {
+      "file": "/Users/minchomilev/work/hrapp/Calendar/Sharing/EventAppClipSharing.swift",
+      "sha256": "7865b1958517884be98991bfe26d4bcff86057d76b785c9fbbe732d8de87ab56",
+      "rangesRead": [
+        [
+          1,
+          110
+        ],
+        [
+          1582,
+          1685
+        ]
+      ],
+      "proof": "Share requires signed-in account and a generated shareable URL, then App Clip/email/QR delivery choices. No entire-calendar download UI established by these paths."
+    }
+  ],
+  "backendEvidence": [
+    {
+      "file": "/Users/minchomilev/work/cloud-calendars-api-nest/src/util/ics.ts",
+      "sha256": "42a0af6d6f10e75690170a90f204079d758cee7cbd7e63e4b830127c7dac8948",
+      "rangesRead": [
+        [
+          146,
+          245
+        ]
+      ],
+      "proof": "Backend can serialize feed VEVENTs (UID/sequence/dates/title/location/URL/notes/availability/geo/first recurrence/organizer/attendees/private metadata/alarms/status). BuildFeed publishes supplied events with one-hour refresh hints. This is feed serialization, not evidence of an app export button or guaranteed receiver fidelity; comments describing lossless sync are not treated as proof."
+    }
+  ],
+  "boundedSearch": {
+    "scope": "Native Calendar Swift source searched for export/Export/ICS/.ics/fileImporter/fileExporter/UIDocumentPicker; sharing and event editor call paths read as listed. Backend calendar/core/shared-event route names searched for feed/buildFeed/export. No runtime files or customer data accessed.",
+    "result": "No whole-calendar file-export UI, general ICS calendar-file importer, bulk provider-account transfer wizard or arbitrary feed-add UI established. Nonexistence beyond inspected scope is not claimed."
+  },
+  "supportedSourceSteps": [
+    "Share an eligible event through the app invitation paths after sign-in and successful URL generation.",
+    "Accept a recognized app invitation into an existing writable EventKit destination after permission; inspect the destination.",
+    "Move an eligible existing event through its Calendar selection; this is an action, not a preview or backup.",
+    "Use provider/Mac export instructions already distinguished in the website; this audit does not newly validate those external instructions."
+  ],
+  "unestablished": [
+    "A Cloud Calendars whole-calendar ICS/CSV/PDF export or restore workflow.",
+    "A Cloud Calendars general .ics-file import or arbitrary webcal-subscription UI.",
+    "Automatic cross-provider bulk migration or migration-completion guarantee.",
+    "Preservation of all organizer/attendee identities, invitation responses, recurrence exceptions, conferencing, attachments and provider-specific fields in every transfer.",
+    "Identical behavior for every destination/provider or installed version."
+  ],
+  "copiedFieldsAndRestrictions": {
+    "invitationInitial": "Title, start/end, all-day, location, timezone, event URL; writable destination and full calendar permission.",
+    "invitationRefresh": "Additional writable details and supplemental metadata may be reconciled when a syncable invite successfully refreshes. Do not promise immediate arrival or native recreation of organizer/attendee identities.",
+    "editorMove": "Editor serializes visible fields, two alert choices, recurrence rule, structured location and supplemental attachments/travel/video URL; local/eventkit representations differ. Existing EventKit object may retain other fields, but all-field portability is not established.",
+    "recurrence": "EventKit save/remove uses futureEvents for recurring records in these paths; no user-visible occurrence-scope prompt established by this audit.",
+    "filePicker": "Attachment ingestion is distinct from ICS event import even when allowedContentTypes is generic data."
+  },
+  "bestExistingCanonicalImprovement": {
+    "slug": "event-saved-to-wrong-calendar",
+    "placement": "Treat an existing destination change as an action",
+    "proposedParagraph": "Moving an event between an app-local calendar and a calendar in the iPhone calendar system is not a backup operation. Cloud Calendars saves it in the chosen destination and then removes the original backing record. For a repeating event, do not assume this moves only the date you opened. If you need a separate archival copy or a precise one-date exception, use an appropriate supported export or provider workflow first.",
+    "why": "Current guide already warns about immediate save and provider recurrence differences, but does not explicitly explain cross-store source removal. This fills a concrete decision gap without another migration route.",
+    "boundary": "Do not turn internal rollback into a public guarantee that every failure preserves every record; do not recommend moving real events as a transfer experiment."
+  },
+  "secondaryTargetedAddition": {
+    "slug": "calendar-export-ics-pdf-and-backup",
+    "placement": "What Cloud Calendars sharing provides",
+    "proposedParagraph": "Accepting a Cloud Calendars event invitation is a different operation from importing a downloaded calendar file. Review the writable destination before adding the event. An invitation that follows the sender’s updates should not be treated as an independent backup, and adding a document as an event attachment does not import its calendar records.",
+    "dedup": "Current eight-section guide already covers provider export, PDF, CSV, subscription refresh, privacy and representative verification. No standalone generic migration guide is justified from native evidence alone."
+  },
+  "limits": [
+    "Website source hashes reflect current working tree at inspection.",
+    "Source inspection does not establish production behavior, UI availability on a particular device or a completed migration.",
+    "No new external provider claim verified here; combine with keyword agent official-source research before publication."
+  ],
+  "writes": [
+    "research/batch24-migration/product-evidence.json only"
+  ],
+  "notPerformed": [
+    "Native/backend edits",
+    "Website integration",
+    "Builds",
+    "Simulators",
+    "Provider/customer actions",
+    "Deployment",
+    "ASC writes",
+    "Paid APIs"
+  ]
+}
