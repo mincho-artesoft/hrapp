@@ -1106,5 +1106,48 @@
     "publicArtifactsExactBuild": 515,
     "goalComplete": false,
     "scope": "Three public tool queries/twelve results/three full official bodies plus bounded native consumers and complete local guide review. No measured Google ranking, exhaustive query or runtime certification."
+  },
+  "twentySeventhPublication": {
+    "date": "2026-10-22",
+    "changedEnglishGuides": 1,
+    "canonical": "a-week-view-that-fits-a-week",
+    "newRoutes": 0,
+    "task": "Manual overnight shift example with explicit following-date endpoint, next-morning planning and recurrence reference.",
+    "research": [
+      "batch27-shift-schedule/intent-research.json",
+      "batch27-shift-schedule/product-evidence.json",
+      "batch27-shift-schedule/root-draft-review.json",
+      "batch27-shift-schedule/final-review.json"
+    ],
+    "sourceAndDeliveryEvidence": [
+      "batch27-source-qa.json",
+      "batch27-static-qa.json",
+      "batch27-metadata-qa.json",
+      "batch27-invalidation-status.json",
+      "batch27-public-qa.json",
+      "batch27-browser-qa.json"
+    ],
+    "sitemapUrls": 512,
+    "publicArtifactsExactBuild": 515,
+    "goalComplete": false,
+    "limits": "Not a new rota/template/payroll feature, runtime/overnight layout test or ranking/citation evidence."
+  },
+  "readinessAudit": {
+    "date": "2026-10-22",
+    "evidence": [
+      "batch28-readiness/aso-audit.json",
+      "batch28-readiness/coverage-audit.json",
+      "batch28-readiness/media-audit.json",
+      "batch28-readiness/privacy-release-evidence.json"
+    ],
+    "priorityWork": [
+      "Visible support contact at existing root destination; exact proposal and current review ready, source not changed.",
+      "Complete FR/IT CalDAV localization; source clarity/selection-restoration draft refinement underway.",
+      "Resolve released1.7.3/source and production data handling correspondence before privacy assurances or declarations.",
+      "Obtain exact new media source/task; bounded repeated audit found only older set.",
+      "Compare genuinely elapsed search/citation observations; no new repeated short-interval measurement."
+    ],
+    "staleGapPolicy": "Earlier embedded assessments and publication entries are historical; use currentFollowup/localizedFollowup and readiness evidence rather than re-adding resolved FAQs or synonym pages.",
+    "asc": "50locale five-field persistence proof remains saved batch18, not current URL/semantic or performance certification. No broad rewrite justified by audit."
   }
 }

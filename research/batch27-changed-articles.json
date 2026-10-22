@@ -1,0 +1,18 @@
+{
+  "date": "2026-10-22T01:09:39.044Z",
+  "count": 1,
+  "articles": [
+    {
+      "locale": "en-US",
+      "slug": "a-week-view-that-fits-a-week",
+      "file": "src/app/content/en-US/articles-planning.ts",
+      "title": "Week calendar on iPhone: compare hours without overlooking commitments",
+      "sections": 6,
+      "faqs": 3,
+      "sources": 2,
+      "updated": "2026-10-22",
+      "description": "Read a week calendar on iPhone: check dates, selected calendars, all-day events and exact hours before fitting another appointment into an apparent gap.",
+      "descriptionCharacters": 152
+    }
+  ]
+}

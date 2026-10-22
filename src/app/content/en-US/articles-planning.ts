@@ -134,7 +134,8 @@ export const PLANNING_EN_US: Readonly<Record<string, LocalisedArticle>> = {
       "heading": "Include the parts of the plan that are not yet appointments",
       "body": [
         "A calendar can only display the information available to it. A journey, preparation or recovery period may need its own agreed block if it affects a booking. Seeing space between two saved meetings does not establish that you can travel between their locations in that interval.",
-        "For a workshop after an existing appointment, write down the real travel and setup requirements before choosing a start. This is a planning method, not a claim that Cloud Calendars automatically calculates travel buffers or reserves time in colleagues’ scheduling systems."
+        "For a workshop after an existing appointment, write down the real travel and setup requirements before choosing a start. This is a planning method, not a claim that Cloud Calendars automatically calculates travel buffers or reserves time in colleagues’ scheduling systems.",
+        "For a confirmed shift from Monday at 22:00 to Tuesday at 06:00, record a timed event with Tuesday explicitly set as the ending date. Reopen the saved event to check both dates, times, calendar and relevant time zone. A Monday label alone does not communicate the Tuesday finish. Before offering a Tuesday morning appointment, allow for your actual journey home and recovery needs. Use the employer’s confirmed rota for the shift itself. If it repeats, follow the recurrence guide below and use a rule only when it matches that rota; a personal calendar change does not approve a shift swap."
       ]
     },
     {
@@ -187,11 +188,12 @@ export const PLANNING_EN_US: Readonly<Record<string, LocalisedArticle>> = {
     }
   ],
   "seeAlso": [
-  "month-view-on-a-bigger-screen",
-  "a-list-for-people-who-dislike-grids",
-  "drag-an-event-to-move-it",
-  "calendar-event-or-room-reservation"
-]
+    "month-view-on-a-bigger-screen",
+    "a-list-for-people-who-dislike-grids",
+    "drag-an-event-to-move-it",
+    "calendar-event-or-room-reservation",
+    "recurring-events-without-the-mess"
+  ]
 },
 
   'month-view-on-a-bigger-screen': {

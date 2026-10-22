@@ -1,5 +1,5 @@
 {
-  "date": "2026-10-22T00:59:37.837Z",
+  "date": "2026-10-22T01:09:39.594Z",
   "status": "source_inventory_not_quality_approval",
   "articles": [
     {
@@ -1736,7 +1736,7 @@
       "descriptionCharacters": 152,
       "sections": 6,
       "faq": 3,
-      "words": 775,
+      "words": 875,
       "source": "articles-planning.ts",
       "sources": [
         "https://support.apple.com/en-ca/guide/iphone/iphfd1054569/ios",
