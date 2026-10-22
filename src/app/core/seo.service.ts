@@ -67,7 +67,7 @@ export class SeoService {
 
   apply(input: SeoInput): void {
     const url = absolute(input.path);
-    const image = input.image ?? `${SITE_URL}/assets/images/app-screenshots/single-day-view.png`;
+    const image = input.image ?? `${SITE_URL}/media/panel/site-assets-20261022/images/app-screenshots/single-day-view.png`;
 
     this.title.setTitle(input.title);
 

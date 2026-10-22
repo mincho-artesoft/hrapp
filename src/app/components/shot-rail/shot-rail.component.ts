@@ -3,14 +3,18 @@ import { ChangeDetectionStrategy, Component, Input, computed, signal } from '@an
 import { Locale } from '../../core/locales';
 import MANIFEST from '../../core/media-manifest.json';
 import DESCRIPTIONS from '../../core/screenshot-descriptions.json';
+import { STORE_MEDIA, StoreMediaDevice } from '../../core/store-media';
 
 const SHOT_DESCRIPTIONS: Readonly<Record<string, Readonly<Record<string, string>>>> = DESCRIPTIONS;
 
 interface Shot {
   readonly name: string;
+  readonly width: number;
+  readonly height: number;
   readonly alt: string;
   readonly avif: string;
   readonly webp: string;
+  readonly fullWebp: string;
   readonly srcsetAvif: string;
   readonly srcsetWebp: string;
 }
@@ -29,18 +33,20 @@ interface Shot {
     <ul class="rail" tabindex="0" [attr.aria-label]="label" [attr.dir]="dir()">
       @for (shot of shots(); track shot.name) {
         <li class="rail__item">
+          <a [href]="shot.fullWebp" target="_blank" rel="noopener">
           <picture>
             <source type="image/avif" [attr.srcset]="shot.srcsetAvif" [attr.sizes]="sizes" />
             <source type="image/webp" [attr.srcset]="shot.srcsetWebp" [attr.sizes]="sizes" />
             <img
               [src]="shot.webp"
               [alt]="shot.alt"
-              width="340"
-              height="736"
+              [attr.width]="shot.width"
+              [attr.height]="shot.height"
               loading="lazy"
               decoding="async"
             />
           </picture>
+          </a>
         </li>
       }
     </ul>
@@ -65,6 +71,9 @@ interface Shot {
         scroll-snap-align: start;
       }
 
+      .rail__item a { display: block; border-radius: 22px; }
+      .rail__item a:focus-visible { outline: 2px solid currentColor; outline-offset: 4px; }
+
       .rail__item img {
         display: block;
         width: 100%;
@@ -81,7 +90,10 @@ export class ShotRailComponent {
   }
 
   /** Which device's shots to show. iPhone unless a page says otherwise. */
-  @Input() device: 'iPhone' | 'iPad' = 'iPhone';
+  @Input() set device(value: StoreMediaDevice) {
+    this.currentDevice.set(value);
+  }
+  private readonly currentDevice = signal<StoreMediaDevice>('iPhone');
 
   @Input() label = 'Screenshots, scrollable';
 
@@ -96,12 +108,33 @@ export class ShotRailComponent {
     const locale = this.current();
     if (!locale) return [];
 
+    const device = this.currentDevice();
+    const updated = STORE_MEDIA.locales[locale.media]?.[device];
+    if (updated?.screenshots.length) {
+      const widths = STORE_MEDIA.widths[device];
+      if (!widths?.length) throw new Error(`Missing screenshot widths: ${device}`);
+      const base = `${STORE_MEDIA.base}/${locale.media}/${device}`;
+      return updated.screenshots.map((shot) => {
+        const alt = SHOT_DESCRIPTIONS[locale.code]?.[shot.kind];
+        if (!alt) throw new Error(`Missing screenshot description: ${locale.code}/${shot.kind}`);
+        return {
+          name: shot.name, alt, width: shot.width, height: shot.height,
+          avif: `${base}/${shot.name}-${widths[0]}.avif`,
+          webp: `${base}/${shot.name}-${widths[0]}.webp`,
+          fullWebp: `${base}/${shot.name}-${Math.max(...widths)}.webp`,
+          srcsetAvif: widths.map((width) => `${base}/${shot.name}-${width}.avif ${width}w`).join(', '),
+          srcsetWebp: widths.map((width) => `${base}/${shot.name}-${width}.webp ${width}w`).join(', '),
+        };
+      });
+    }
+    // Older localized panels remain available until their replacement set exists.
+    if (device === 'iPhoneDuo') return [];
     const folder = MANIFEST.locales[locale.media as keyof typeof MANIFEST.locales];
-    const names: string[] = folder?.[this.device as 'iPhone' | 'iPad'] ?? [];
-    const widths: number[] = MANIFEST.widths[this.device as 'iPhone' | 'iPad'] ?? [];
+    const names: string[] = folder?.[device] ?? [];
+    const widths: number[] = MANIFEST.widths[device] ?? [];
     if (!names.length || widths.length < 2) return [];
 
-    const base = `${MANIFEST.base}/${locale.media}/${this.device}`;
+    const base = `${MANIFEST.base}/${locale.media}/${device}`;
     const [small, large] = widths;
 
     return names.map((name) => {
@@ -111,9 +144,12 @@ export class ShotRailComponent {
 
       return {
         name,
+        width: 340,
+        height: 736,
         alt,
         avif: `${base}/${name}-${small}.avif`,
         webp: `${base}/${name}-${small}.webp`,
+        fullWebp: `${base}/${name}-${large}.webp`,
         srcsetAvif: `${base}/${name}-${small}.avif ${small}w, ${base}/${name}-${large}.avif ${large}w`,
         srcsetWebp: `${base}/${name}-${small}.webp ${small}w, ${base}/${name}-${large}.webp ${large}w`,
       };

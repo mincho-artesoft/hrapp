@@ -1,0 +1,52 @@
+{
+  "completedAt": "2026-10-22T16:35:28.825004+00:00",
+  "publicURL": "https://www.cloud-calendars.com/#store-media-title",
+  "media": {
+    "screenshots": 435,
+    "renditions": 1740,
+    "videos": 71,
+    "posters": 71,
+    "mediaLocales": 29,
+    "siteLocales": 30,
+    "bulgarian": "existingen-USmediafallback",
+    "manifestSHA256": "1b1cc787c72908173d728d76466ac2b57543b2e8110963211a3063155414aa4d",
+    "all1882ObjectsPublicSHA256Verified": true,
+    "privacyUnchanged": true
+  },
+  "build": {
+    "result": "PASS",
+    "initialMB": 1.17,
+    "prerenderedRoutes": 587,
+    "postbuildPages": 592,
+    "articleEntries": 465,
+    "mainBundle": "main-AMNOFMNM.js"
+  },
+  "deployment": {
+    "result": "PASS",
+    "invalidation": "IEMLA6KN9HDP35QUMRDJA7TKBF",
+    "invalidationStatus": "Completed",
+    "indexNowHTTP": 200,
+    "sitemapURLs200": 528,
+    "llmsLinksResolved": 470,
+    "associatedDomains": "GET/HEAD all four paths PASS",
+    "rootStructuredData": "SoftwareApplication and FAQPage PASS"
+  },
+  "all30HomepageGalleryReadback": "PASS",
+  "publicPrivacyBodyPreserved": true,
+  "localMarketingFiles": "None in seven inspected source/output folders; see final-local-media-check.json. Native resources and Git history excluded.",
+  "videoAvailability": "All71 available selected ASC previews published.16 absent iPad preview sets are not invented; Bulgarian uses its existing en-US media fallback.",
+  "browserEvidence": "browser-runtime-review.json records representative EN three-device playback and Arabic phone playback; final post-deploy review is reported separately by root.",
+  "evidenceHashes": {
+    "manifest-completion.json": "caaf217b2e2b08f819d5cbb28e427f212e77dca4d61cdb0eb50d287b39f18617",
+    "public-media-verification.json": "b452ad5726ce630620133311611736f2c3ac3f8253c0f05fead686c202dfe459",
+    "final-public-readback.json": "aa30a47b952617d2f47e2065af463147b73c473cbd550e39e60bb18742be1943",
+    "final-local-media-check.json": "83feeef912afc14ee36fadde8f83f6f9fb17794c5776ff9d16d23732b5c30666",
+    "browser-runtime-review.json": "9543bdf725ae42a4a8ad882507e885971f2e5719fd5f4f5602ace0f03f483650"
+  },
+  "scopeExclusions": [
+    "No App Store metadata, price, release or App Privacy changes",
+    "No native application changes",
+    "No pending privacy rewrite published",
+    "Private ASC snapshots and archive journals excluded from commit"
+  ]
+}

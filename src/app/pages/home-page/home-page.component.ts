@@ -4,6 +4,7 @@ import { ActivatedRoute } from '@angular/router';
 
 import { HeroComponent } from '../../components/hero/hero.component';
 import { MarqueeComponent } from '../../components/marquee/marquee.component';
+import { StoreMediaComponent } from '../../components/store-media/store-media.component';
 import { ShowcaseComponent } from '../../components/showcase/showcase.component';
 import { WidgetsComponent } from '../../components/widgets/widgets.component';
 import { WeatherHubComponent } from '../../components/weather-hub/weather-hub.component';
@@ -24,6 +25,7 @@ import { APP_NAME, APP_DEVELOPER, APP_MIN_IOS, APP_VERSION, APP_SIZE_MB, APP_RAT
     HeroComponent,
     MarqueeComponent,
     ShowcaseComponent,
+    StoreMediaComponent,
     WidgetsComponent,
     WeatherHubComponent,
     FeaturesComponent,

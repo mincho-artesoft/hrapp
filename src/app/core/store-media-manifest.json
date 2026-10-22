@@ -1,0 +1,3461 @@
+{
+  "base": "/media/panel/asc-174-20261022",
+  "widths": {
+    "iPhone": [
+      340,
+      680
+    ],
+    "iPad": [
+      480,
+      960
+    ],
+    "iPhoneDuo": [
+      480,
+      960
+    ]
+  },
+  "locales": {
+    "ar-SA": {
+      "iPad": {
+        "screenshots": [
+          {
+            "name": "01-hook",
+            "kind": "hook",
+            "width": 2064,
+            "height": 2752
+          },
+          {
+            "name": "02-week-left",
+            "kind": "week-left",
+            "width": 2064,
+            "height": 2752
+          },
+          {
+            "name": "03-week-right",
+            "kind": "week-right",
+            "width": 2064,
+            "height": 2752
+          },
+          {
+            "name": "04-widgets",
+            "kind": "widgets",
+            "width": 2064,
+            "height": 2752
+          },
+          {
+            "name": "05-live",
+            "kind": "live",
+            "width": 2064,
+            "height": 2752
+          }
+        ],
+        "video": {
+          "src": "/media/panel/asc-174-20261022/ar-SA/iPad/preview.mp4",
+          "poster": "/media/panel/asc-174-20261022/ar-SA/iPad/preview-poster.jpg",
+          "width": 720,
+          "height": 960
+        }
+      },
+      "iPhone": {
+        "screenshots": [
+          {
+            "name": "01-hook",
+            "kind": "hook",
+            "width": 1179,
+            "height": 2556
+          },
+          {
+            "name": "02-week-left",
+            "kind": "week-left",
+            "width": 1179,
+            "height": 2556
+          },
+          {
+            "name": "03-week-right",
+            "kind": "week-right",
+            "width": 1179,
+            "height": 2556
+          },
+          {
+            "name": "04-widgets",
+            "kind": "widgets",
+            "width": 1179,
+            "height": 2556
+          },
+          {
+            "name": "05-live",
+            "kind": "live",
+            "width": 1179,
+            "height": 2556
+          }
+        ],
+        "video": {
+          "src": "/media/panel/asc-174-20261022/ar-SA/iPhone/preview.mp4",
+          "poster": "/media/panel/asc-174-20261022/ar-SA/iPhone/preview-poster.jpg",
+          "width": 332,
+          "height": 720
+        }
+      },
+      "iPhoneDuo": {
+        "screenshots": [
+          {
+            "name": "01-hook",
+            "kind": "hook",
+            "width": 1398,
+            "height": 2034
+          },
+          {
+            "name": "02-week-left",
+            "kind": "week-left",
+            "width": 2853,
+            "height": 2007
+          },
+          {
+            "name": "03-week-right",
+            "kind": "week-right",
+            "width": 1398,
+            "height": 2034
+          },
+          {
+            "name": "04-widgets",
+            "kind": "widgets",
+            "width": 2853,
+            "height": 2007
+          },
+          {
+            "name": "05-live",
+            "kind": "live",
+            "width": 1398,
+            "height": 2034
+          }
+        ],
+        "video": {
+          "src": "/media/panel/asc-174-20261022/ar-SA/iPhoneDuo/preview.mp4",
+          "poster": "/media/panel/asc-174-20261022/ar-SA/iPhoneDuo/preview-poster.jpg",
+          "width": 1920,
+          "height": 886
+        }
+      }
+    },
+    "cs": {
+      "iPad": {
+        "screenshots": [
+          {
+            "name": "01-hook",
+            "kind": "hook",
+            "width": 2064,
+            "height": 2752
+          },
+          {
+            "name": "02-week-left",
+            "kind": "week-left",
+            "width": 2064,
+            "height": 2752
+          },
+          {
+            "name": "03-week-right",
+            "kind": "week-right",
+            "width": 2064,
+            "height": 2752
+          },
+          {
+            "name": "04-widgets",
+            "kind": "widgets",
+            "width": 2064,
+            "height": 2752
+          },
+          {
+            "name": "05-live",
+            "kind": "live",
+            "width": 2064,
+            "height": 2752
+          }
+        ]
+      },
+      "iPhone": {
+        "screenshots": [
+          {
+            "name": "01-hook",
+            "kind": "hook",
+            "width": 1179,
+            "height": 2556
+          },
+          {
+            "name": "02-week-left",
+            "kind": "week-left",
+            "width": 1179,
+            "height": 2556
+          },
+          {
+            "name": "03-week-right",
+            "kind": "week-right",
+            "width": 1179,
+            "height": 2556
+          },
+          {
+            "name": "04-widgets",
+            "kind": "widgets",
+            "width": 1179,
+            "height": 2556
+          },
+          {
+            "name": "05-live",
+            "kind": "live",
+            "width": 1179,
+            "height": 2556
+          }
+        ],
+        "video": {
+          "src": "/media/panel/asc-174-20261022/cs/iPhone/preview.mp4",
+          "poster": "/media/panel/asc-174-20261022/cs/iPhone/preview-poster.jpg",
+          "width": 332,
+          "height": 720
+        }
+      },
+      "iPhoneDuo": {
+        "screenshots": [
+          {
+            "name": "01-hook",
+            "kind": "hook",
+            "width": 1398,
+            "height": 2034
+          },
+          {
+            "name": "02-week-left",
+            "kind": "week-left",
+            "width": 2853,
+            "height": 2007
+          },
+          {
+            "name": "03-week-right",
+            "kind": "week-right",
+            "width": 1398,
+            "height": 2034
+          },
+          {
+            "name": "04-widgets",
+            "kind": "widgets",
+            "width": 2853,
+            "height": 2007
+          },
+          {
+            "name": "05-live",
+            "kind": "live",
+            "width": 1398,
+            "height": 2034
+          }
+        ],
+        "video": {
+          "src": "/media/panel/asc-174-20261022/cs/iPhoneDuo/preview.mp4",
+          "poster": "/media/panel/asc-174-20261022/cs/iPhoneDuo/preview-poster.jpg",
+          "width": 1920,
+          "height": 886
+        }
+      }
+    },
+    "da": {
+      "iPad": {
+        "screenshots": [
+          {
+            "name": "01-hook",
+            "kind": "hook",
+            "width": 2064,
+            "height": 2752
+          },
+          {
+            "name": "02-week-left",
+            "kind": "week-left",
+            "width": 2064,
+            "height": 2752
+          },
+          {
+            "name": "03-week-right",
+            "kind": "week-right",
+            "width": 2064,
+            "height": 2752
+          },
+          {
+            "name": "04-widgets",
+            "kind": "widgets",
+            "width": 2064,
+            "height": 2752
+          },
+          {
+            "name": "05-live",
+            "kind": "live",
+            "width": 2064,
+            "height": 2752
+          }
+        ]
+      },
+      "iPhone": {
+        "screenshots": [
+          {
+            "name": "01-hook",
+            "kind": "hook",
+            "width": 1179,
+            "height": 2556
+          },
+          {
+            "name": "02-week-left",
+            "kind": "week-left",
+            "width": 1179,
+            "height": 2556
+          },
+          {
+            "name": "03-week-right",
+            "kind": "week-right",
+            "width": 1179,
+            "height": 2556
+          },
+          {
+            "name": "04-widgets",
+            "kind": "widgets",
+            "width": 1179,
+            "height": 2556
+          },
+          {
+            "name": "05-live",
+            "kind": "live",
+            "width": 1179,
+            "height": 2556
+          }
+        ],
+        "video": {
+          "src": "/media/panel/asc-174-20261022/da/iPhone/preview.mp4",
+          "poster": "/media/panel/asc-174-20261022/da/iPhone/preview-poster.jpg",
+          "width": 332,
+          "height": 720
+        }
+      },
+      "iPhoneDuo": {
+        "screenshots": [
+          {
+            "name": "01-hook",
+            "kind": "hook",
+            "width": 1398,
+            "height": 2034
+          },
+          {
+            "name": "02-week-left",
+            "kind": "week-left",
+            "width": 2853,
+            "height": 2007
+          },
+          {
+            "name": "03-week-right",
+            "kind": "week-right",
+            "width": 1398,
+            "height": 2034
+          },
+          {
+            "name": "04-widgets",
+            "kind": "widgets",
+            "width": 2853,
+            "height": 2007
+          },
+          {
+            "name": "05-live",
+            "kind": "live",
+            "width": 1398,
+            "height": 2034
+          }
+        ],
+        "video": {
+          "src": "/media/panel/asc-174-20261022/da/iPhoneDuo/preview.mp4",
+          "poster": "/media/panel/asc-174-20261022/da/iPhoneDuo/preview-poster.jpg",
+          "width": 1920,
+          "height": 886
+        }
+      }
+    },
+    "de-DE": {
+      "iPad": {
+        "screenshots": [
+          {
+            "name": "01-hook",
+            "kind": "hook",
+            "width": 2064,
+            "height": 2752
+          },
+          {
+            "name": "02-week-left",
+            "kind": "week-left",
+            "width": 2064,
+            "height": 2752
+          },
+          {
+            "name": "03-week-right",
+            "kind": "week-right",
+            "width": 2064,
+            "height": 2752
+          },
+          {
+            "name": "04-widgets",
+            "kind": "widgets",
+            "width": 2064,
+            "height": 2752
+          },
+          {
+            "name": "05-live",
+            "kind": "live",
+            "width": 2064,
+            "height": 2752
+          }
+        ],
+        "video": {
+          "src": "/media/panel/asc-174-20261022/de-DE/iPad/preview.mp4",
+          "poster": "/media/panel/asc-174-20261022/de-DE/iPad/preview-poster.jpg",
+          "width": 720,
+          "height": 960
+        }
+      },
+      "iPhone": {
+        "screenshots": [
+          {
+            "name": "01-hook",
+            "kind": "hook",
+            "width": 1179,
+            "height": 2556
+          },
+          {
+            "name": "02-week-left",
+            "kind": "week-left",
+            "width": 1179,
+            "height": 2556
+          },
+          {
+            "name": "03-week-right",
+            "kind": "week-right",
+            "width": 1179,
+            "height": 2556
+          },
+          {
+            "name": "04-widgets",
+            "kind": "widgets",
+            "width": 1179,
+            "height": 2556
+          },
+          {
+            "name": "05-live",
+            "kind": "live",
+            "width": 1179,
+            "height": 2556
+          }
+        ],
+        "video": {
+          "src": "/media/panel/asc-174-20261022/de-DE/iPhone/preview.mp4",
+          "poster": "/media/panel/asc-174-20261022/de-DE/iPhone/preview-poster.jpg",
+          "width": 332,
+          "height": 720
+        }
+      },
+      "iPhoneDuo": {
+        "screenshots": [
+          {
+            "name": "01-hook",
+            "kind": "hook",
+            "width": 1398,
+            "height": 2034
+          },
+          {
+            "name": "02-week-left",
+            "kind": "week-left",
+            "width": 2853,
+            "height": 2007
+          },
+          {
+            "name": "03-week-right",
+            "kind": "week-right",
+            "width": 1398,
+            "height": 2034
+          },
+          {
+            "name": "04-widgets",
+            "kind": "widgets",
+            "width": 2853,
+            "height": 2007
+          },
+          {
+            "name": "05-live",
+            "kind": "live",
+            "width": 1398,
+            "height": 2034
+          }
+        ],
+        "video": {
+          "src": "/media/panel/asc-174-20261022/de-DE/iPhoneDuo/preview.mp4",
+          "poster": "/media/panel/asc-174-20261022/de-DE/iPhoneDuo/preview-poster.jpg",
+          "width": 1920,
+          "height": 886
+        }
+      }
+    },
+    "el": {
+      "iPad": {
+        "screenshots": [
+          {
+            "name": "01-hook",
+            "kind": "hook",
+            "width": 2064,
+            "height": 2752
+          },
+          {
+            "name": "02-week-left",
+            "kind": "week-left",
+            "width": 2064,
+            "height": 2752
+          },
+          {
+            "name": "03-week-right",
+            "kind": "week-right",
+            "width": 2064,
+            "height": 2752
+          },
+          {
+            "name": "04-widgets",
+            "kind": "widgets",
+            "width": 2064,
+            "height": 2752
+          },
+          {
+            "name": "05-live",
+            "kind": "live",
+            "width": 2064,
+            "height": 2752
+          }
+        ]
+      },
+      "iPhone": {
+        "screenshots": [
+          {
+            "name": "01-hook",
+            "kind": "hook",
+            "width": 1179,
+            "height": 2556
+          },
+          {
+            "name": "02-week-left",
+            "kind": "week-left",
+            "width": 1179,
+            "height": 2556
+          },
+          {
+            "name": "03-week-right",
+            "kind": "week-right",
+            "width": 1179,
+            "height": 2556
+          },
+          {
+            "name": "04-widgets",
+            "kind": "widgets",
+            "width": 1179,
+            "height": 2556
+          },
+          {
+            "name": "05-live",
+            "kind": "live",
+            "width": 1179,
+            "height": 2556
+          }
+        ],
+        "video": {
+          "src": "/media/panel/asc-174-20261022/el/iPhone/preview.mp4",
+          "poster": "/media/panel/asc-174-20261022/el/iPhone/preview-poster.jpg",
+          "width": 332,
+          "height": 720
+        }
+      },
+      "iPhoneDuo": {
+        "screenshots": [
+          {
+            "name": "01-hook",
+            "kind": "hook",
+            "width": 1398,
+            "height": 2034
+          },
+          {
+            "name": "02-week-left",
+            "kind": "week-left",
+            "width": 2853,
+            "height": 2007
+          },
+          {
+            "name": "03-week-right",
+            "kind": "week-right",
+            "width": 1398,
+            "height": 2034
+          },
+          {
+            "name": "04-widgets",
+            "kind": "widgets",
+            "width": 2853,
+            "height": 2007
+          },
+          {
+            "name": "05-live",
+            "kind": "live",
+            "width": 1398,
+            "height": 2034
+          }
+        ],
+        "video": {
+          "src": "/media/panel/asc-174-20261022/el/iPhoneDuo/preview.mp4",
+          "poster": "/media/panel/asc-174-20261022/el/iPhoneDuo/preview-poster.jpg",
+          "width": 1920,
+          "height": 886
+        }
+      }
+    },
+    "en-US": {
+      "iPad": {
+        "screenshots": [
+          {
+            "name": "01-hook",
+            "kind": "hook",
+            "width": 2064,
+            "height": 2752
+          },
+          {
+            "name": "02-week-left",
+            "kind": "week-left",
+            "width": 2064,
+            "height": 2752
+          },
+          {
+            "name": "03-week-right",
+            "kind": "week-right",
+            "width": 2064,
+            "height": 2752
+          },
+          {
+            "name": "04-widgets",
+            "kind": "widgets",
+            "width": 2064,
+            "height": 2752
+          },
+          {
+            "name": "05-live",
+            "kind": "live",
+            "width": 2064,
+            "height": 2752
+          }
+        ],
+        "video": {
+          "src": "/media/panel/asc-174-20261022/en-US/iPad/preview.mp4",
+          "poster": "/media/panel/asc-174-20261022/en-US/iPad/preview-poster.jpg",
+          "width": 720,
+          "height": 960
+        }
+      },
+      "iPhone": {
+        "screenshots": [
+          {
+            "name": "01-hook",
+            "kind": "hook",
+            "width": 1179,
+            "height": 2556
+          },
+          {
+            "name": "02-week-left",
+            "kind": "week-left",
+            "width": 1179,
+            "height": 2556
+          },
+          {
+            "name": "03-week-right",
+            "kind": "week-right",
+            "width": 1179,
+            "height": 2556
+          },
+          {
+            "name": "04-widgets",
+            "kind": "widgets",
+            "width": 1179,
+            "height": 2556
+          },
+          {
+            "name": "05-live",
+            "kind": "live",
+            "width": 1179,
+            "height": 2556
+          }
+        ],
+        "video": {
+          "src": "/media/panel/asc-174-20261022/en-US/iPhone/preview.mp4",
+          "poster": "/media/panel/asc-174-20261022/en-US/iPhone/preview-poster.jpg",
+          "width": 332,
+          "height": 720
+        }
+      },
+      "iPhoneDuo": {
+        "screenshots": [
+          {
+            "name": "01-hook",
+            "kind": "hook",
+            "width": 1398,
+            "height": 2034
+          },
+          {
+            "name": "02-week-left",
+            "kind": "week-left",
+            "width": 2853,
+            "height": 2007
+          },
+          {
+            "name": "03-week-right",
+            "kind": "week-right",
+            "width": 1398,
+            "height": 2034
+          },
+          {
+            "name": "04-widgets",
+            "kind": "widgets",
+            "width": 2853,
+            "height": 2007
+          },
+          {
+            "name": "05-live",
+            "kind": "live",
+            "width": 1398,
+            "height": 2034
+          }
+        ],
+        "video": {
+          "src": "/media/panel/asc-174-20261022/en-US/iPhoneDuo/preview.mp4",
+          "poster": "/media/panel/asc-174-20261022/en-US/iPhoneDuo/preview-poster.jpg",
+          "width": 1920,
+          "height": 886
+        }
+      }
+    },
+    "es-ES": {
+      "iPad": {
+        "screenshots": [
+          {
+            "name": "01-hook",
+            "kind": "hook",
+            "width": 2064,
+            "height": 2752
+          },
+          {
+            "name": "02-week-left",
+            "kind": "week-left",
+            "width": 2064,
+            "height": 2752
+          },
+          {
+            "name": "03-week-right",
+            "kind": "week-right",
+            "width": 2064,
+            "height": 2752
+          },
+          {
+            "name": "04-widgets",
+            "kind": "widgets",
+            "width": 2064,
+            "height": 2752
+          },
+          {
+            "name": "05-live",
+            "kind": "live",
+            "width": 2064,
+            "height": 2752
+          }
+        ],
+        "video": {
+          "src": "/media/panel/asc-174-20261022/es-ES/iPad/preview.mp4",
+          "poster": "/media/panel/asc-174-20261022/es-ES/iPad/preview-poster.jpg",
+          "width": 720,
+          "height": 960
+        }
+      },
+      "iPhone": {
+        "screenshots": [
+          {
+            "name": "01-hook",
+            "kind": "hook",
+            "width": 1179,
+            "height": 2556
+          },
+          {
+            "name": "02-week-left",
+            "kind": "week-left",
+            "width": 1179,
+            "height": 2556
+          },
+          {
+            "name": "03-week-right",
+            "kind": "week-right",
+            "width": 1179,
+            "height": 2556
+          },
+          {
+            "name": "04-widgets",
+            "kind": "widgets",
+            "width": 1179,
+            "height": 2556
+          },
+          {
+            "name": "05-live",
+            "kind": "live",
+            "width": 1179,
+            "height": 2556
+          }
+        ],
+        "video": {
+          "src": "/media/panel/asc-174-20261022/es-ES/iPhone/preview.mp4",
+          "poster": "/media/panel/asc-174-20261022/es-ES/iPhone/preview-poster.jpg",
+          "width": 332,
+          "height": 720
+        }
+      },
+      "iPhoneDuo": {
+        "screenshots": [
+          {
+            "name": "01-hook",
+            "kind": "hook",
+            "width": 1398,
+            "height": 2034
+          },
+          {
+            "name": "02-week-left",
+            "kind": "week-left",
+            "width": 2853,
+            "height": 2007
+          },
+          {
+            "name": "03-week-right",
+            "kind": "week-right",
+            "width": 1398,
+            "height": 2034
+          },
+          {
+            "name": "04-widgets",
+            "kind": "widgets",
+            "width": 2853,
+            "height": 2007
+          },
+          {
+            "name": "05-live",
+            "kind": "live",
+            "width": 1398,
+            "height": 2034
+          }
+        ],
+        "video": {
+          "src": "/media/panel/asc-174-20261022/es-ES/iPhoneDuo/preview.mp4",
+          "poster": "/media/panel/asc-174-20261022/es-ES/iPhoneDuo/preview-poster.jpg",
+          "width": 1920,
+          "height": 886
+        }
+      }
+    },
+    "fi": {
+      "iPad": {
+        "screenshots": [
+          {
+            "name": "01-hook",
+            "kind": "hook",
+            "width": 2064,
+            "height": 2752
+          },
+          {
+            "name": "02-week-left",
+            "kind": "week-left",
+            "width": 2064,
+            "height": 2752
+          },
+          {
+            "name": "03-week-right",
+            "kind": "week-right",
+            "width": 2064,
+            "height": 2752
+          },
+          {
+            "name": "04-widgets",
+            "kind": "widgets",
+            "width": 2064,
+            "height": 2752
+          },
+          {
+            "name": "05-live",
+            "kind": "live",
+            "width": 2064,
+            "height": 2752
+          }
+        ]
+      },
+      "iPhone": {
+        "screenshots": [
+          {
+            "name": "01-hook",
+            "kind": "hook",
+            "width": 1179,
+            "height": 2556
+          },
+          {
+            "name": "02-week-left",
+            "kind": "week-left",
+            "width": 1179,
+            "height": 2556
+          },
+          {
+            "name": "03-week-right",
+            "kind": "week-right",
+            "width": 1179,
+            "height": 2556
+          },
+          {
+            "name": "04-widgets",
+            "kind": "widgets",
+            "width": 1179,
+            "height": 2556
+          },
+          {
+            "name": "05-live",
+            "kind": "live",
+            "width": 1179,
+            "height": 2556
+          }
+        ],
+        "video": {
+          "src": "/media/panel/asc-174-20261022/fi/iPhone/preview.mp4",
+          "poster": "/media/panel/asc-174-20261022/fi/iPhone/preview-poster.jpg",
+          "width": 332,
+          "height": 720
+        }
+      },
+      "iPhoneDuo": {
+        "screenshots": [
+          {
+            "name": "01-hook",
+            "kind": "hook",
+            "width": 1398,
+            "height": 2034
+          },
+          {
+            "name": "02-week-left",
+            "kind": "week-left",
+            "width": 2853,
+            "height": 2007
+          },
+          {
+            "name": "03-week-right",
+            "kind": "week-right",
+            "width": 1398,
+            "height": 2034
+          },
+          {
+            "name": "04-widgets",
+            "kind": "widgets",
+            "width": 2853,
+            "height": 2007
+          },
+          {
+            "name": "05-live",
+            "kind": "live",
+            "width": 1398,
+            "height": 2034
+          }
+        ],
+        "video": {
+          "src": "/media/panel/asc-174-20261022/fi/iPhoneDuo/preview.mp4",
+          "poster": "/media/panel/asc-174-20261022/fi/iPhoneDuo/preview-poster.jpg",
+          "width": 1920,
+          "height": 886
+        }
+      }
+    },
+    "fr-FR": {
+      "iPad": {
+        "screenshots": [
+          {
+            "name": "01-hook",
+            "kind": "hook",
+            "width": 2064,
+            "height": 2752
+          },
+          {
+            "name": "02-week-left",
+            "kind": "week-left",
+            "width": 2064,
+            "height": 2752
+          },
+          {
+            "name": "03-week-right",
+            "kind": "week-right",
+            "width": 2064,
+            "height": 2752
+          },
+          {
+            "name": "04-widgets",
+            "kind": "widgets",
+            "width": 2064,
+            "height": 2752
+          },
+          {
+            "name": "05-live",
+            "kind": "live",
+            "width": 2064,
+            "height": 2752
+          }
+        ],
+        "video": {
+          "src": "/media/panel/asc-174-20261022/fr-FR/iPad/preview.mp4",
+          "poster": "/media/panel/asc-174-20261022/fr-FR/iPad/preview-poster.jpg",
+          "width": 720,
+          "height": 960
+        }
+      },
+      "iPhone": {
+        "screenshots": [
+          {
+            "name": "01-hook",
+            "kind": "hook",
+            "width": 1179,
+            "height": 2556
+          },
+          {
+            "name": "02-week-left",
+            "kind": "week-left",
+            "width": 1179,
+            "height": 2556
+          },
+          {
+            "name": "03-week-right",
+            "kind": "week-right",
+            "width": 1179,
+            "height": 2556
+          },
+          {
+            "name": "04-widgets",
+            "kind": "widgets",
+            "width": 1179,
+            "height": 2556
+          },
+          {
+            "name": "05-live",
+            "kind": "live",
+            "width": 1179,
+            "height": 2556
+          }
+        ],
+        "video": {
+          "src": "/media/panel/asc-174-20261022/fr-FR/iPhone/preview.mp4",
+          "poster": "/media/panel/asc-174-20261022/fr-FR/iPhone/preview-poster.jpg",
+          "width": 332,
+          "height": 720
+        }
+      },
+      "iPhoneDuo": {
+        "screenshots": [
+          {
+            "name": "01-hook",
+            "kind": "hook",
+            "width": 1398,
+            "height": 2034
+          },
+          {
+            "name": "02-week-left",
+            "kind": "week-left",
+            "width": 2853,
+            "height": 2007
+          },
+          {
+            "name": "03-week-right",
+            "kind": "week-right",
+            "width": 1398,
+            "height": 2034
+          },
+          {
+            "name": "04-widgets",
+            "kind": "widgets",
+            "width": 2853,
+            "height": 2007
+          },
+          {
+            "name": "05-live",
+            "kind": "live",
+            "width": 1398,
+            "height": 2034
+          }
+        ],
+        "video": {
+          "src": "/media/panel/asc-174-20261022/fr-FR/iPhoneDuo/preview.mp4",
+          "poster": "/media/panel/asc-174-20261022/fr-FR/iPhoneDuo/preview-poster.jpg",
+          "width": 1920,
+          "height": 886
+        }
+      }
+    },
+    "he": {
+      "iPad": {
+        "screenshots": [
+          {
+            "name": "01-hook",
+            "kind": "hook",
+            "width": 2064,
+            "height": 2752
+          },
+          {
+            "name": "02-week-left",
+            "kind": "week-left",
+            "width": 2064,
+            "height": 2752
+          },
+          {
+            "name": "03-week-right",
+            "kind": "week-right",
+            "width": 2064,
+            "height": 2752
+          },
+          {
+            "name": "04-widgets",
+            "kind": "widgets",
+            "width": 2064,
+            "height": 2752
+          },
+          {
+            "name": "05-live",
+            "kind": "live",
+            "width": 2064,
+            "height": 2752
+          }
+        ],
+        "video": {
+          "src": "/media/panel/asc-174-20261022/he/iPad/preview.mp4",
+          "poster": "/media/panel/asc-174-20261022/he/iPad/preview-poster.jpg",
+          "width": 720,
+          "height": 960
+        }
+      },
+      "iPhone": {
+        "screenshots": [
+          {
+            "name": "01-hook",
+            "kind": "hook",
+            "width": 1179,
+            "height": 2556
+          },
+          {
+            "name": "02-week-left",
+            "kind": "week-left",
+            "width": 1179,
+            "height": 2556
+          },
+          {
+            "name": "03-week-right",
+            "kind": "week-right",
+            "width": 1179,
+            "height": 2556
+          },
+          {
+            "name": "04-widgets",
+            "kind": "widgets",
+            "width": 1179,
+            "height": 2556
+          },
+          {
+            "name": "05-live",
+            "kind": "live",
+            "width": 1179,
+            "height": 2556
+          }
+        ],
+        "video": {
+          "src": "/media/panel/asc-174-20261022/he/iPhone/preview.mp4",
+          "poster": "/media/panel/asc-174-20261022/he/iPhone/preview-poster.jpg",
+          "width": 332,
+          "height": 720
+        }
+      },
+      "iPhoneDuo": {
+        "screenshots": [
+          {
+            "name": "01-hook",
+            "kind": "hook",
+            "width": 1398,
+            "height": 2034
+          },
+          {
+            "name": "02-week-left",
+            "kind": "week-left",
+            "width": 2853,
+            "height": 2007
+          },
+          {
+            "name": "03-week-right",
+            "kind": "week-right",
+            "width": 1398,
+            "height": 2034
+          },
+          {
+            "name": "04-widgets",
+            "kind": "widgets",
+            "width": 2853,
+            "height": 2007
+          },
+          {
+            "name": "05-live",
+            "kind": "live",
+            "width": 1398,
+            "height": 2034
+          }
+        ],
+        "video": {
+          "src": "/media/panel/asc-174-20261022/he/iPhoneDuo/preview.mp4",
+          "poster": "/media/panel/asc-174-20261022/he/iPhoneDuo/preview-poster.jpg",
+          "width": 1920,
+          "height": 886
+        }
+      }
+    },
+    "hi": {
+      "iPad": {
+        "screenshots": [
+          {
+            "name": "01-hook",
+            "kind": "hook",
+            "width": 2064,
+            "height": 2752
+          },
+          {
+            "name": "02-week-left",
+            "kind": "week-left",
+            "width": 2064,
+            "height": 2752
+          },
+          {
+            "name": "03-week-right",
+            "kind": "week-right",
+            "width": 2064,
+            "height": 2752
+          },
+          {
+            "name": "04-widgets",
+            "kind": "widgets",
+            "width": 2064,
+            "height": 2752
+          },
+          {
+            "name": "05-live",
+            "kind": "live",
+            "width": 2064,
+            "height": 2752
+          }
+        ],
+        "video": {
+          "src": "/media/panel/asc-174-20261022/hi/iPad/preview.mp4",
+          "poster": "/media/panel/asc-174-20261022/hi/iPad/preview-poster.jpg",
+          "width": 720,
+          "height": 960
+        }
+      },
+      "iPhone": {
+        "screenshots": [
+          {
+            "name": "01-hook",
+            "kind": "hook",
+            "width": 1179,
+            "height": 2556
+          },
+          {
+            "name": "02-week-left",
+            "kind": "week-left",
+            "width": 1179,
+            "height": 2556
+          },
+          {
+            "name": "03-week-right",
+            "kind": "week-right",
+            "width": 1179,
+            "height": 2556
+          },
+          {
+            "name": "04-widgets",
+            "kind": "widgets",
+            "width": 1179,
+            "height": 2556
+          },
+          {
+            "name": "05-live",
+            "kind": "live",
+            "width": 1179,
+            "height": 2556
+          }
+        ],
+        "video": {
+          "src": "/media/panel/asc-174-20261022/hi/iPhone/preview.mp4",
+          "poster": "/media/panel/asc-174-20261022/hi/iPhone/preview-poster.jpg",
+          "width": 332,
+          "height": 720
+        }
+      },
+      "iPhoneDuo": {
+        "screenshots": [
+          {
+            "name": "01-hook",
+            "kind": "hook",
+            "width": 1398,
+            "height": 2034
+          },
+          {
+            "name": "02-week-left",
+            "kind": "week-left",
+            "width": 2853,
+            "height": 2007
+          },
+          {
+            "name": "03-week-right",
+            "kind": "week-right",
+            "width": 1398,
+            "height": 2034
+          },
+          {
+            "name": "04-widgets",
+            "kind": "widgets",
+            "width": 2853,
+            "height": 2007
+          },
+          {
+            "name": "05-live",
+            "kind": "live",
+            "width": 1398,
+            "height": 2034
+          }
+        ],
+        "video": {
+          "src": "/media/panel/asc-174-20261022/hi/iPhoneDuo/preview.mp4",
+          "poster": "/media/panel/asc-174-20261022/hi/iPhoneDuo/preview-poster.jpg",
+          "width": 1920,
+          "height": 886
+        }
+      }
+    },
+    "hu": {
+      "iPad": {
+        "screenshots": [
+          {
+            "name": "01-hook",
+            "kind": "hook",
+            "width": 2064,
+            "height": 2752
+          },
+          {
+            "name": "02-week-left",
+            "kind": "week-left",
+            "width": 2064,
+            "height": 2752
+          },
+          {
+            "name": "03-week-right",
+            "kind": "week-right",
+            "width": 2064,
+            "height": 2752
+          },
+          {
+            "name": "04-widgets",
+            "kind": "widgets",
+            "width": 2064,
+            "height": 2752
+          },
+          {
+            "name": "05-live",
+            "kind": "live",
+            "width": 2064,
+            "height": 2752
+          }
+        ]
+      },
+      "iPhone": {
+        "screenshots": [
+          {
+            "name": "01-hook",
+            "kind": "hook",
+            "width": 1179,
+            "height": 2556
+          },
+          {
+            "name": "02-week-left",
+            "kind": "week-left",
+            "width": 1179,
+            "height": 2556
+          },
+          {
+            "name": "03-week-right",
+            "kind": "week-right",
+            "width": 1179,
+            "height": 2556
+          },
+          {
+            "name": "04-widgets",
+            "kind": "widgets",
+            "width": 1179,
+            "height": 2556
+          },
+          {
+            "name": "05-live",
+            "kind": "live",
+            "width": 1179,
+            "height": 2556
+          }
+        ],
+        "video": {
+          "src": "/media/panel/asc-174-20261022/hu/iPhone/preview.mp4",
+          "poster": "/media/panel/asc-174-20261022/hu/iPhone/preview-poster.jpg",
+          "width": 332,
+          "height": 720
+        }
+      },
+      "iPhoneDuo": {
+        "screenshots": [
+          {
+            "name": "01-hook",
+            "kind": "hook",
+            "width": 1398,
+            "height": 2034
+          },
+          {
+            "name": "02-week-left",
+            "kind": "week-left",
+            "width": 2853,
+            "height": 2007
+          },
+          {
+            "name": "03-week-right",
+            "kind": "week-right",
+            "width": 1398,
+            "height": 2034
+          },
+          {
+            "name": "04-widgets",
+            "kind": "widgets",
+            "width": 2853,
+            "height": 2007
+          },
+          {
+            "name": "05-live",
+            "kind": "live",
+            "width": 1398,
+            "height": 2034
+          }
+        ],
+        "video": {
+          "src": "/media/panel/asc-174-20261022/hu/iPhoneDuo/preview.mp4",
+          "poster": "/media/panel/asc-174-20261022/hu/iPhoneDuo/preview-poster.jpg",
+          "width": 1920,
+          "height": 886
+        }
+      }
+    },
+    "id": {
+      "iPad": {
+        "screenshots": [
+          {
+            "name": "01-hook",
+            "kind": "hook",
+            "width": 2064,
+            "height": 2752
+          },
+          {
+            "name": "02-week-left",
+            "kind": "week-left",
+            "width": 2064,
+            "height": 2752
+          },
+          {
+            "name": "03-week-right",
+            "kind": "week-right",
+            "width": 2064,
+            "height": 2752
+          },
+          {
+            "name": "04-widgets",
+            "kind": "widgets",
+            "width": 2064,
+            "height": 2752
+          },
+          {
+            "name": "05-live",
+            "kind": "live",
+            "width": 2064,
+            "height": 2752
+          }
+        ]
+      },
+      "iPhone": {
+        "screenshots": [
+          {
+            "name": "01-hook",
+            "kind": "hook",
+            "width": 1179,
+            "height": 2556
+          },
+          {
+            "name": "02-week-left",
+            "kind": "week-left",
+            "width": 1179,
+            "height": 2556
+          },
+          {
+            "name": "03-week-right",
+            "kind": "week-right",
+            "width": 1179,
+            "height": 2556
+          },
+          {
+            "name": "04-widgets",
+            "kind": "widgets",
+            "width": 1179,
+            "height": 2556
+          },
+          {
+            "name": "05-live",
+            "kind": "live",
+            "width": 1179,
+            "height": 2556
+          }
+        ],
+        "video": {
+          "src": "/media/panel/asc-174-20261022/id/iPhone/preview.mp4",
+          "poster": "/media/panel/asc-174-20261022/id/iPhone/preview-poster.jpg",
+          "width": 332,
+          "height": 720
+        }
+      },
+      "iPhoneDuo": {
+        "screenshots": [
+          {
+            "name": "01-hook",
+            "kind": "hook",
+            "width": 1398,
+            "height": 2034
+          },
+          {
+            "name": "02-week-left",
+            "kind": "week-left",
+            "width": 2853,
+            "height": 2007
+          },
+          {
+            "name": "03-week-right",
+            "kind": "week-right",
+            "width": 1398,
+            "height": 2034
+          },
+          {
+            "name": "04-widgets",
+            "kind": "widgets",
+            "width": 2853,
+            "height": 2007
+          },
+          {
+            "name": "05-live",
+            "kind": "live",
+            "width": 1398,
+            "height": 2034
+          }
+        ],
+        "video": {
+          "src": "/media/panel/asc-174-20261022/id/iPhoneDuo/preview.mp4",
+          "poster": "/media/panel/asc-174-20261022/id/iPhoneDuo/preview-poster.jpg",
+          "width": 1920,
+          "height": 886
+        }
+      }
+    },
+    "it": {
+      "iPad": {
+        "screenshots": [
+          {
+            "name": "01-hook",
+            "kind": "hook",
+            "width": 2064,
+            "height": 2752
+          },
+          {
+            "name": "02-week-left",
+            "kind": "week-left",
+            "width": 2064,
+            "height": 2752
+          },
+          {
+            "name": "03-week-right",
+            "kind": "week-right",
+            "width": 2064,
+            "height": 2752
+          },
+          {
+            "name": "04-widgets",
+            "kind": "widgets",
+            "width": 2064,
+            "height": 2752
+          },
+          {
+            "name": "05-live",
+            "kind": "live",
+            "width": 2064,
+            "height": 2752
+          }
+        ],
+        "video": {
+          "src": "/media/panel/asc-174-20261022/it/iPad/preview.mp4",
+          "poster": "/media/panel/asc-174-20261022/it/iPad/preview-poster.jpg",
+          "width": 720,
+          "height": 960
+        }
+      },
+      "iPhone": {
+        "screenshots": [
+          {
+            "name": "01-hook",
+            "kind": "hook",
+            "width": 1179,
+            "height": 2556
+          },
+          {
+            "name": "02-week-left",
+            "kind": "week-left",
+            "width": 1179,
+            "height": 2556
+          },
+          {
+            "name": "03-week-right",
+            "kind": "week-right",
+            "width": 1179,
+            "height": 2556
+          },
+          {
+            "name": "04-widgets",
+            "kind": "widgets",
+            "width": 1179,
+            "height": 2556
+          },
+          {
+            "name": "05-live",
+            "kind": "live",
+            "width": 1179,
+            "height": 2556
+          }
+        ],
+        "video": {
+          "src": "/media/panel/asc-174-20261022/it/iPhone/preview.mp4",
+          "poster": "/media/panel/asc-174-20261022/it/iPhone/preview-poster.jpg",
+          "width": 332,
+          "height": 720
+        }
+      },
+      "iPhoneDuo": {
+        "screenshots": [
+          {
+            "name": "01-hook",
+            "kind": "hook",
+            "width": 1398,
+            "height": 2034
+          },
+          {
+            "name": "02-week-left",
+            "kind": "week-left",
+            "width": 2853,
+            "height": 2007
+          },
+          {
+            "name": "03-week-right",
+            "kind": "week-right",
+            "width": 1398,
+            "height": 2034
+          },
+          {
+            "name": "04-widgets",
+            "kind": "widgets",
+            "width": 2853,
+            "height": 2007
+          },
+          {
+            "name": "05-live",
+            "kind": "live",
+            "width": 1398,
+            "height": 2034
+          }
+        ],
+        "video": {
+          "src": "/media/panel/asc-174-20261022/it/iPhoneDuo/preview.mp4",
+          "poster": "/media/panel/asc-174-20261022/it/iPhoneDuo/preview-poster.jpg",
+          "width": 1920,
+          "height": 886
+        }
+      }
+    },
+    "ja": {
+      "iPad": {
+        "screenshots": [
+          {
+            "name": "01-hook",
+            "kind": "hook",
+            "width": 2064,
+            "height": 2752
+          },
+          {
+            "name": "02-week-left",
+            "kind": "week-left",
+            "width": 2064,
+            "height": 2752
+          },
+          {
+            "name": "03-week-right",
+            "kind": "week-right",
+            "width": 2064,
+            "height": 2752
+          },
+          {
+            "name": "04-widgets",
+            "kind": "widgets",
+            "width": 2064,
+            "height": 2752
+          },
+          {
+            "name": "05-live",
+            "kind": "live",
+            "width": 2064,
+            "height": 2752
+          }
+        ],
+        "video": {
+          "src": "/media/panel/asc-174-20261022/ja/iPad/preview.mp4",
+          "poster": "/media/panel/asc-174-20261022/ja/iPad/preview-poster.jpg",
+          "width": 720,
+          "height": 960
+        }
+      },
+      "iPhone": {
+        "screenshots": [
+          {
+            "name": "01-hook",
+            "kind": "hook",
+            "width": 1179,
+            "height": 2556
+          },
+          {
+            "name": "02-week-left",
+            "kind": "week-left",
+            "width": 1179,
+            "height": 2556
+          },
+          {
+            "name": "03-week-right",
+            "kind": "week-right",
+            "width": 1179,
+            "height": 2556
+          },
+          {
+            "name": "04-widgets",
+            "kind": "widgets",
+            "width": 1179,
+            "height": 2556
+          },
+          {
+            "name": "05-live",
+            "kind": "live",
+            "width": 1179,
+            "height": 2556
+          }
+        ],
+        "video": {
+          "src": "/media/panel/asc-174-20261022/ja/iPhone/preview.mp4",
+          "poster": "/media/panel/asc-174-20261022/ja/iPhone/preview-poster.jpg",
+          "width": 332,
+          "height": 720
+        }
+      },
+      "iPhoneDuo": {
+        "screenshots": [
+          {
+            "name": "01-hook",
+            "kind": "hook",
+            "width": 1398,
+            "height": 2034
+          },
+          {
+            "name": "02-week-left",
+            "kind": "week-left",
+            "width": 2853,
+            "height": 2007
+          },
+          {
+            "name": "03-week-right",
+            "kind": "week-right",
+            "width": 1398,
+            "height": 2034
+          },
+          {
+            "name": "04-widgets",
+            "kind": "widgets",
+            "width": 2853,
+            "height": 2007
+          },
+          {
+            "name": "05-live",
+            "kind": "live",
+            "width": 1398,
+            "height": 2034
+          }
+        ],
+        "video": {
+          "src": "/media/panel/asc-174-20261022/ja/iPhoneDuo/preview.mp4",
+          "poster": "/media/panel/asc-174-20261022/ja/iPhoneDuo/preview-poster.jpg",
+          "width": 1920,
+          "height": 886
+        }
+      }
+    },
+    "ko": {
+      "iPad": {
+        "screenshots": [
+          {
+            "name": "01-hook",
+            "kind": "hook",
+            "width": 2064,
+            "height": 2752
+          },
+          {
+            "name": "02-week-left",
+            "kind": "week-left",
+            "width": 2064,
+            "height": 2752
+          },
+          {
+            "name": "03-week-right",
+            "kind": "week-right",
+            "width": 2064,
+            "height": 2752
+          },
+          {
+            "name": "04-widgets",
+            "kind": "widgets",
+            "width": 2064,
+            "height": 2752
+          },
+          {
+            "name": "05-live",
+            "kind": "live",
+            "width": 2064,
+            "height": 2752
+          }
+        ],
+        "video": {
+          "src": "/media/panel/asc-174-20261022/ko/iPad/preview.mp4",
+          "poster": "/media/panel/asc-174-20261022/ko/iPad/preview-poster.jpg",
+          "width": 720,
+          "height": 960
+        }
+      },
+      "iPhone": {
+        "screenshots": [
+          {
+            "name": "01-hook",
+            "kind": "hook",
+            "width": 1179,
+            "height": 2556
+          },
+          {
+            "name": "02-week-left",
+            "kind": "week-left",
+            "width": 1179,
+            "height": 2556
+          },
+          {
+            "name": "03-week-right",
+            "kind": "week-right",
+            "width": 1179,
+            "height": 2556
+          },
+          {
+            "name": "04-widgets",
+            "kind": "widgets",
+            "width": 1179,
+            "height": 2556
+          },
+          {
+            "name": "05-live",
+            "kind": "live",
+            "width": 1179,
+            "height": 2556
+          }
+        ],
+        "video": {
+          "src": "/media/panel/asc-174-20261022/ko/iPhone/preview.mp4",
+          "poster": "/media/panel/asc-174-20261022/ko/iPhone/preview-poster.jpg",
+          "width": 332,
+          "height": 720
+        }
+      },
+      "iPhoneDuo": {
+        "screenshots": [
+          {
+            "name": "01-hook",
+            "kind": "hook",
+            "width": 1398,
+            "height": 2034
+          },
+          {
+            "name": "02-week-left",
+            "kind": "week-left",
+            "width": 2853,
+            "height": 2007
+          },
+          {
+            "name": "03-week-right",
+            "kind": "week-right",
+            "width": 1398,
+            "height": 2034
+          },
+          {
+            "name": "04-widgets",
+            "kind": "widgets",
+            "width": 2853,
+            "height": 2007
+          },
+          {
+            "name": "05-live",
+            "kind": "live",
+            "width": 1398,
+            "height": 2034
+          }
+        ],
+        "video": {
+          "src": "/media/panel/asc-174-20261022/ko/iPhoneDuo/preview.mp4",
+          "poster": "/media/panel/asc-174-20261022/ko/iPhoneDuo/preview-poster.jpg",
+          "width": 1920,
+          "height": 886
+        }
+      }
+    },
+    "ms": {
+      "iPad": {
+        "screenshots": [
+          {
+            "name": "01-hook",
+            "kind": "hook",
+            "width": 2064,
+            "height": 2752
+          },
+          {
+            "name": "02-week-left",
+            "kind": "week-left",
+            "width": 2064,
+            "height": 2752
+          },
+          {
+            "name": "03-week-right",
+            "kind": "week-right",
+            "width": 2064,
+            "height": 2752
+          },
+          {
+            "name": "04-widgets",
+            "kind": "widgets",
+            "width": 2064,
+            "height": 2752
+          },
+          {
+            "name": "05-live",
+            "kind": "live",
+            "width": 2064,
+            "height": 2752
+          }
+        ]
+      },
+      "iPhone": {
+        "screenshots": [
+          {
+            "name": "01-hook",
+            "kind": "hook",
+            "width": 1179,
+            "height": 2556
+          },
+          {
+            "name": "02-week-left",
+            "kind": "week-left",
+            "width": 1179,
+            "height": 2556
+          },
+          {
+            "name": "03-week-right",
+            "kind": "week-right",
+            "width": 1179,
+            "height": 2556
+          },
+          {
+            "name": "04-widgets",
+            "kind": "widgets",
+            "width": 1179,
+            "height": 2556
+          },
+          {
+            "name": "05-live",
+            "kind": "live",
+            "width": 1179,
+            "height": 2556
+          }
+        ],
+        "video": {
+          "src": "/media/panel/asc-174-20261022/ms/iPhone/preview.mp4",
+          "poster": "/media/panel/asc-174-20261022/ms/iPhone/preview-poster.jpg",
+          "width": 332,
+          "height": 720
+        }
+      },
+      "iPhoneDuo": {
+        "screenshots": [
+          {
+            "name": "01-hook",
+            "kind": "hook",
+            "width": 1398,
+            "height": 2034
+          },
+          {
+            "name": "02-week-left",
+            "kind": "week-left",
+            "width": 2853,
+            "height": 2007
+          },
+          {
+            "name": "03-week-right",
+            "kind": "week-right",
+            "width": 1398,
+            "height": 2034
+          },
+          {
+            "name": "04-widgets",
+            "kind": "widgets",
+            "width": 2853,
+            "height": 2007
+          },
+          {
+            "name": "05-live",
+            "kind": "live",
+            "width": 1398,
+            "height": 2034
+          }
+        ],
+        "video": {
+          "src": "/media/panel/asc-174-20261022/ms/iPhoneDuo/preview.mp4",
+          "poster": "/media/panel/asc-174-20261022/ms/iPhoneDuo/preview-poster.jpg",
+          "width": 1920,
+          "height": 886
+        }
+      }
+    },
+    "nl-NL": {
+      "iPad": {
+        "screenshots": [
+          {
+            "name": "01-hook",
+            "kind": "hook",
+            "width": 2064,
+            "height": 2752
+          },
+          {
+            "name": "02-week-left",
+            "kind": "week-left",
+            "width": 2064,
+            "height": 2752
+          },
+          {
+            "name": "03-week-right",
+            "kind": "week-right",
+            "width": 2064,
+            "height": 2752
+          },
+          {
+            "name": "04-widgets",
+            "kind": "widgets",
+            "width": 2064,
+            "height": 2752
+          },
+          {
+            "name": "05-live",
+            "kind": "live",
+            "width": 2064,
+            "height": 2752
+          }
+        ]
+      },
+      "iPhone": {
+        "screenshots": [
+          {
+            "name": "01-hook",
+            "kind": "hook",
+            "width": 1179,
+            "height": 2556
+          },
+          {
+            "name": "02-week-left",
+            "kind": "week-left",
+            "width": 1179,
+            "height": 2556
+          },
+          {
+            "name": "03-week-right",
+            "kind": "week-right",
+            "width": 1179,
+            "height": 2556
+          },
+          {
+            "name": "04-widgets",
+            "kind": "widgets",
+            "width": 1179,
+            "height": 2556
+          },
+          {
+            "name": "05-live",
+            "kind": "live",
+            "width": 1179,
+            "height": 2556
+          }
+        ],
+        "video": {
+          "src": "/media/panel/asc-174-20261022/nl-NL/iPhone/preview.mp4",
+          "poster": "/media/panel/asc-174-20261022/nl-NL/iPhone/preview-poster.jpg",
+          "width": 332,
+          "height": 720
+        }
+      },
+      "iPhoneDuo": {
+        "screenshots": [
+          {
+            "name": "01-hook",
+            "kind": "hook",
+            "width": 1398,
+            "height": 2034
+          },
+          {
+            "name": "02-week-left",
+            "kind": "week-left",
+            "width": 2853,
+            "height": 2007
+          },
+          {
+            "name": "03-week-right",
+            "kind": "week-right",
+            "width": 1398,
+            "height": 2034
+          },
+          {
+            "name": "04-widgets",
+            "kind": "widgets",
+            "width": 2853,
+            "height": 2007
+          },
+          {
+            "name": "05-live",
+            "kind": "live",
+            "width": 1398,
+            "height": 2034
+          }
+        ],
+        "video": {
+          "src": "/media/panel/asc-174-20261022/nl-NL/iPhoneDuo/preview.mp4",
+          "poster": "/media/panel/asc-174-20261022/nl-NL/iPhoneDuo/preview-poster.jpg",
+          "width": 1920,
+          "height": 886
+        }
+      }
+    },
+    "no": {
+      "iPad": {
+        "screenshots": [
+          {
+            "name": "01-hook",
+            "kind": "hook",
+            "width": 2064,
+            "height": 2752
+          },
+          {
+            "name": "02-week-left",
+            "kind": "week-left",
+            "width": 2064,
+            "height": 2752
+          },
+          {
+            "name": "03-week-right",
+            "kind": "week-right",
+            "width": 2064,
+            "height": 2752
+          },
+          {
+            "name": "04-widgets",
+            "kind": "widgets",
+            "width": 2064,
+            "height": 2752
+          },
+          {
+            "name": "05-live",
+            "kind": "live",
+            "width": 2064,
+            "height": 2752
+          }
+        ]
+      },
+      "iPhone": {
+        "screenshots": [
+          {
+            "name": "01-hook",
+            "kind": "hook",
+            "width": 1179,
+            "height": 2556
+          },
+          {
+            "name": "02-week-left",
+            "kind": "week-left",
+            "width": 1179,
+            "height": 2556
+          },
+          {
+            "name": "03-week-right",
+            "kind": "week-right",
+            "width": 1179,
+            "height": 2556
+          },
+          {
+            "name": "04-widgets",
+            "kind": "widgets",
+            "width": 1179,
+            "height": 2556
+          },
+          {
+            "name": "05-live",
+            "kind": "live",
+            "width": 1179,
+            "height": 2556
+          }
+        ],
+        "video": {
+          "src": "/media/panel/asc-174-20261022/no/iPhone/preview.mp4",
+          "poster": "/media/panel/asc-174-20261022/no/iPhone/preview-poster.jpg",
+          "width": 332,
+          "height": 720
+        }
+      },
+      "iPhoneDuo": {
+        "screenshots": [
+          {
+            "name": "01-hook",
+            "kind": "hook",
+            "width": 1398,
+            "height": 2034
+          },
+          {
+            "name": "02-week-left",
+            "kind": "week-left",
+            "width": 2853,
+            "height": 2007
+          },
+          {
+            "name": "03-week-right",
+            "kind": "week-right",
+            "width": 1398,
+            "height": 2034
+          },
+          {
+            "name": "04-widgets",
+            "kind": "widgets",
+            "width": 2853,
+            "height": 2007
+          },
+          {
+            "name": "05-live",
+            "kind": "live",
+            "width": 1398,
+            "height": 2034
+          }
+        ],
+        "video": {
+          "src": "/media/panel/asc-174-20261022/no/iPhoneDuo/preview.mp4",
+          "poster": "/media/panel/asc-174-20261022/no/iPhoneDuo/preview-poster.jpg",
+          "width": 1920,
+          "height": 886
+        }
+      }
+    },
+    "pl": {
+      "iPad": {
+        "screenshots": [
+          {
+            "name": "01-hook",
+            "kind": "hook",
+            "width": 2064,
+            "height": 2752
+          },
+          {
+            "name": "02-week-left",
+            "kind": "week-left",
+            "width": 2064,
+            "height": 2752
+          },
+          {
+            "name": "03-week-right",
+            "kind": "week-right",
+            "width": 2064,
+            "height": 2752
+          },
+          {
+            "name": "04-widgets",
+            "kind": "widgets",
+            "width": 2064,
+            "height": 2752
+          },
+          {
+            "name": "05-live",
+            "kind": "live",
+            "width": 2064,
+            "height": 2752
+          }
+        ]
+      },
+      "iPhone": {
+        "screenshots": [
+          {
+            "name": "01-hook",
+            "kind": "hook",
+            "width": 1179,
+            "height": 2556
+          },
+          {
+            "name": "02-week-left",
+            "kind": "week-left",
+            "width": 1179,
+            "height": 2556
+          },
+          {
+            "name": "03-week-right",
+            "kind": "week-right",
+            "width": 1179,
+            "height": 2556
+          },
+          {
+            "name": "04-widgets",
+            "kind": "widgets",
+            "width": 1179,
+            "height": 2556
+          },
+          {
+            "name": "05-live",
+            "kind": "live",
+            "width": 1179,
+            "height": 2556
+          }
+        ],
+        "video": {
+          "src": "/media/panel/asc-174-20261022/pl/iPhone/preview.mp4",
+          "poster": "/media/panel/asc-174-20261022/pl/iPhone/preview-poster.jpg",
+          "width": 332,
+          "height": 720
+        }
+      },
+      "iPhoneDuo": {
+        "screenshots": [
+          {
+            "name": "01-hook",
+            "kind": "hook",
+            "width": 1398,
+            "height": 2034
+          },
+          {
+            "name": "02-week-left",
+            "kind": "week-left",
+            "width": 2853,
+            "height": 2007
+          },
+          {
+            "name": "03-week-right",
+            "kind": "week-right",
+            "width": 1398,
+            "height": 2034
+          },
+          {
+            "name": "04-widgets",
+            "kind": "widgets",
+            "width": 2853,
+            "height": 2007
+          },
+          {
+            "name": "05-live",
+            "kind": "live",
+            "width": 1398,
+            "height": 2034
+          }
+        ],
+        "video": {
+          "src": "/media/panel/asc-174-20261022/pl/iPhoneDuo/preview.mp4",
+          "poster": "/media/panel/asc-174-20261022/pl/iPhoneDuo/preview-poster.jpg",
+          "width": 1920,
+          "height": 886
+        }
+      }
+    },
+    "pt-BR": {
+      "iPad": {
+        "screenshots": [
+          {
+            "name": "01-hook",
+            "kind": "hook",
+            "width": 2064,
+            "height": 2752
+          },
+          {
+            "name": "02-week-left",
+            "kind": "week-left",
+            "width": 2064,
+            "height": 2752
+          },
+          {
+            "name": "03-week-right",
+            "kind": "week-right",
+            "width": 2064,
+            "height": 2752
+          },
+          {
+            "name": "04-widgets",
+            "kind": "widgets",
+            "width": 2064,
+            "height": 2752
+          },
+          {
+            "name": "05-live",
+            "kind": "live",
+            "width": 2064,
+            "height": 2752
+          }
+        ],
+        "video": {
+          "src": "/media/panel/asc-174-20261022/pt-BR/iPad/preview.mp4",
+          "poster": "/media/panel/asc-174-20261022/pt-BR/iPad/preview-poster.jpg",
+          "width": 720,
+          "height": 960
+        }
+      },
+      "iPhone": {
+        "screenshots": [
+          {
+            "name": "01-hook",
+            "kind": "hook",
+            "width": 1179,
+            "height": 2556
+          },
+          {
+            "name": "02-week-left",
+            "kind": "week-left",
+            "width": 1179,
+            "height": 2556
+          },
+          {
+            "name": "03-week-right",
+            "kind": "week-right",
+            "width": 1179,
+            "height": 2556
+          },
+          {
+            "name": "04-widgets",
+            "kind": "widgets",
+            "width": 1179,
+            "height": 2556
+          },
+          {
+            "name": "05-live",
+            "kind": "live",
+            "width": 1179,
+            "height": 2556
+          }
+        ],
+        "video": {
+          "src": "/media/panel/asc-174-20261022/pt-BR/iPhone/preview.mp4",
+          "poster": "/media/panel/asc-174-20261022/pt-BR/iPhone/preview-poster.jpg",
+          "width": 332,
+          "height": 720
+        }
+      },
+      "iPhoneDuo": {
+        "screenshots": [
+          {
+            "name": "01-hook",
+            "kind": "hook",
+            "width": 1398,
+            "height": 2034
+          },
+          {
+            "name": "02-week-left",
+            "kind": "week-left",
+            "width": 2853,
+            "height": 2007
+          },
+          {
+            "name": "03-week-right",
+            "kind": "week-right",
+            "width": 1398,
+            "height": 2034
+          },
+          {
+            "name": "04-widgets",
+            "kind": "widgets",
+            "width": 2853,
+            "height": 2007
+          },
+          {
+            "name": "05-live",
+            "kind": "live",
+            "width": 1398,
+            "height": 2034
+          }
+        ],
+        "video": {
+          "src": "/media/panel/asc-174-20261022/pt-BR/iPhoneDuo/preview.mp4",
+          "poster": "/media/panel/asc-174-20261022/pt-BR/iPhoneDuo/preview-poster.jpg",
+          "width": 1920,
+          "height": 886
+        }
+      }
+    },
+    "ro": {
+      "iPad": {
+        "screenshots": [
+          {
+            "name": "01-hook",
+            "kind": "hook",
+            "width": 2064,
+            "height": 2752
+          },
+          {
+            "name": "02-week-left",
+            "kind": "week-left",
+            "width": 2064,
+            "height": 2752
+          },
+          {
+            "name": "03-week-right",
+            "kind": "week-right",
+            "width": 2064,
+            "height": 2752
+          },
+          {
+            "name": "04-widgets",
+            "kind": "widgets",
+            "width": 2064,
+            "height": 2752
+          },
+          {
+            "name": "05-live",
+            "kind": "live",
+            "width": 2064,
+            "height": 2752
+          }
+        ]
+      },
+      "iPhone": {
+        "screenshots": [
+          {
+            "name": "01-hook",
+            "kind": "hook",
+            "width": 1179,
+            "height": 2556
+          },
+          {
+            "name": "02-week-left",
+            "kind": "week-left",
+            "width": 1179,
+            "height": 2556
+          },
+          {
+            "name": "03-week-right",
+            "kind": "week-right",
+            "width": 1179,
+            "height": 2556
+          },
+          {
+            "name": "04-widgets",
+            "kind": "widgets",
+            "width": 1179,
+            "height": 2556
+          },
+          {
+            "name": "05-live",
+            "kind": "live",
+            "width": 1179,
+            "height": 2556
+          }
+        ],
+        "video": {
+          "src": "/media/panel/asc-174-20261022/ro/iPhone/preview.mp4",
+          "poster": "/media/panel/asc-174-20261022/ro/iPhone/preview-poster.jpg",
+          "width": 332,
+          "height": 720
+        }
+      },
+      "iPhoneDuo": {
+        "screenshots": [
+          {
+            "name": "01-hook",
+            "kind": "hook",
+            "width": 1398,
+            "height": 2034
+          },
+          {
+            "name": "02-week-left",
+            "kind": "week-left",
+            "width": 2853,
+            "height": 2007
+          },
+          {
+            "name": "03-week-right",
+            "kind": "week-right",
+            "width": 1398,
+            "height": 2034
+          },
+          {
+            "name": "04-widgets",
+            "kind": "widgets",
+            "width": 2853,
+            "height": 2007
+          },
+          {
+            "name": "05-live",
+            "kind": "live",
+            "width": 1398,
+            "height": 2034
+          }
+        ],
+        "video": {
+          "src": "/media/panel/asc-174-20261022/ro/iPhoneDuo/preview.mp4",
+          "poster": "/media/panel/asc-174-20261022/ro/iPhoneDuo/preview-poster.jpg",
+          "width": 1920,
+          "height": 886
+        }
+      }
+    },
+    "ru": {
+      "iPad": {
+        "screenshots": [
+          {
+            "name": "01-hook",
+            "kind": "hook",
+            "width": 2064,
+            "height": 2752
+          },
+          {
+            "name": "02-week-left",
+            "kind": "week-left",
+            "width": 2064,
+            "height": 2752
+          },
+          {
+            "name": "03-week-right",
+            "kind": "week-right",
+            "width": 2064,
+            "height": 2752
+          },
+          {
+            "name": "04-widgets",
+            "kind": "widgets",
+            "width": 2064,
+            "height": 2752
+          },
+          {
+            "name": "05-live",
+            "kind": "live",
+            "width": 2064,
+            "height": 2752
+          }
+        ]
+      },
+      "iPhone": {
+        "screenshots": [
+          {
+            "name": "01-hook",
+            "kind": "hook",
+            "width": 1179,
+            "height": 2556
+          },
+          {
+            "name": "02-week-left",
+            "kind": "week-left",
+            "width": 1179,
+            "height": 2556
+          },
+          {
+            "name": "03-week-right",
+            "kind": "week-right",
+            "width": 1179,
+            "height": 2556
+          },
+          {
+            "name": "04-widgets",
+            "kind": "widgets",
+            "width": 1179,
+            "height": 2556
+          },
+          {
+            "name": "05-live",
+            "kind": "live",
+            "width": 1179,
+            "height": 2556
+          }
+        ],
+        "video": {
+          "src": "/media/panel/asc-174-20261022/ru/iPhone/preview.mp4",
+          "poster": "/media/panel/asc-174-20261022/ru/iPhone/preview-poster.jpg",
+          "width": 332,
+          "height": 720
+        }
+      },
+      "iPhoneDuo": {
+        "screenshots": [
+          {
+            "name": "01-hook",
+            "kind": "hook",
+            "width": 1398,
+            "height": 2034
+          },
+          {
+            "name": "02-week-left",
+            "kind": "week-left",
+            "width": 2853,
+            "height": 2007
+          },
+          {
+            "name": "03-week-right",
+            "kind": "week-right",
+            "width": 1398,
+            "height": 2034
+          },
+          {
+            "name": "04-widgets",
+            "kind": "widgets",
+            "width": 2853,
+            "height": 2007
+          },
+          {
+            "name": "05-live",
+            "kind": "live",
+            "width": 1398,
+            "height": 2034
+          }
+        ],
+        "video": {
+          "src": "/media/panel/asc-174-20261022/ru/iPhoneDuo/preview.mp4",
+          "poster": "/media/panel/asc-174-20261022/ru/iPhoneDuo/preview-poster.jpg",
+          "width": 1920,
+          "height": 886
+        }
+      }
+    },
+    "sv": {
+      "iPad": {
+        "screenshots": [
+          {
+            "name": "01-hook",
+            "kind": "hook",
+            "width": 2064,
+            "height": 2752
+          },
+          {
+            "name": "02-week-left",
+            "kind": "week-left",
+            "width": 2064,
+            "height": 2752
+          },
+          {
+            "name": "03-week-right",
+            "kind": "week-right",
+            "width": 2064,
+            "height": 2752
+          },
+          {
+            "name": "04-widgets",
+            "kind": "widgets",
+            "width": 2064,
+            "height": 2752
+          },
+          {
+            "name": "05-live",
+            "kind": "live",
+            "width": 2064,
+            "height": 2752
+          }
+        ]
+      },
+      "iPhone": {
+        "screenshots": [
+          {
+            "name": "01-hook",
+            "kind": "hook",
+            "width": 1179,
+            "height": 2556
+          },
+          {
+            "name": "02-week-left",
+            "kind": "week-left",
+            "width": 1179,
+            "height": 2556
+          },
+          {
+            "name": "03-week-right",
+            "kind": "week-right",
+            "width": 1179,
+            "height": 2556
+          },
+          {
+            "name": "04-widgets",
+            "kind": "widgets",
+            "width": 1179,
+            "height": 2556
+          },
+          {
+            "name": "05-live",
+            "kind": "live",
+            "width": 1179,
+            "height": 2556
+          }
+        ],
+        "video": {
+          "src": "/media/panel/asc-174-20261022/sv/iPhone/preview.mp4",
+          "poster": "/media/panel/asc-174-20261022/sv/iPhone/preview-poster.jpg",
+          "width": 332,
+          "height": 720
+        }
+      },
+      "iPhoneDuo": {
+        "screenshots": [
+          {
+            "name": "01-hook",
+            "kind": "hook",
+            "width": 1398,
+            "height": 2034
+          },
+          {
+            "name": "02-week-left",
+            "kind": "week-left",
+            "width": 2853,
+            "height": 2007
+          },
+          {
+            "name": "03-week-right",
+            "kind": "week-right",
+            "width": 1398,
+            "height": 2034
+          },
+          {
+            "name": "04-widgets",
+            "kind": "widgets",
+            "width": 2853,
+            "height": 2007
+          },
+          {
+            "name": "05-live",
+            "kind": "live",
+            "width": 1398,
+            "height": 2034
+          }
+        ],
+        "video": {
+          "src": "/media/panel/asc-174-20261022/sv/iPhoneDuo/preview.mp4",
+          "poster": "/media/panel/asc-174-20261022/sv/iPhoneDuo/preview-poster.jpg",
+          "width": 1920,
+          "height": 886
+        }
+      }
+    },
+    "th": {
+      "iPad": {
+        "screenshots": [
+          {
+            "name": "01-hook",
+            "kind": "hook",
+            "width": 2064,
+            "height": 2752
+          },
+          {
+            "name": "02-week-left",
+            "kind": "week-left",
+            "width": 2064,
+            "height": 2752
+          },
+          {
+            "name": "03-week-right",
+            "kind": "week-right",
+            "width": 2064,
+            "height": 2752
+          },
+          {
+            "name": "04-widgets",
+            "kind": "widgets",
+            "width": 2064,
+            "height": 2752
+          },
+          {
+            "name": "05-live",
+            "kind": "live",
+            "width": 2064,
+            "height": 2752
+          }
+        ]
+      },
+      "iPhone": {
+        "screenshots": [
+          {
+            "name": "01-hook",
+            "kind": "hook",
+            "width": 1179,
+            "height": 2556
+          },
+          {
+            "name": "02-week-left",
+            "kind": "week-left",
+            "width": 1179,
+            "height": 2556
+          },
+          {
+            "name": "03-week-right",
+            "kind": "week-right",
+            "width": 1179,
+            "height": 2556
+          },
+          {
+            "name": "04-widgets",
+            "kind": "widgets",
+            "width": 1179,
+            "height": 2556
+          },
+          {
+            "name": "05-live",
+            "kind": "live",
+            "width": 1179,
+            "height": 2556
+          }
+        ],
+        "video": {
+          "src": "/media/panel/asc-174-20261022/th/iPhone/preview.mp4",
+          "poster": "/media/panel/asc-174-20261022/th/iPhone/preview-poster.jpg",
+          "width": 332,
+          "height": 720
+        }
+      },
+      "iPhoneDuo": {
+        "screenshots": [
+          {
+            "name": "01-hook",
+            "kind": "hook",
+            "width": 1398,
+            "height": 2034
+          },
+          {
+            "name": "02-week-left",
+            "kind": "week-left",
+            "width": 2853,
+            "height": 2007
+          },
+          {
+            "name": "03-week-right",
+            "kind": "week-right",
+            "width": 1398,
+            "height": 2034
+          },
+          {
+            "name": "04-widgets",
+            "kind": "widgets",
+            "width": 2853,
+            "height": 2007
+          },
+          {
+            "name": "05-live",
+            "kind": "live",
+            "width": 1398,
+            "height": 2034
+          }
+        ],
+        "video": {
+          "src": "/media/panel/asc-174-20261022/th/iPhoneDuo/preview.mp4",
+          "poster": "/media/panel/asc-174-20261022/th/iPhoneDuo/preview-poster.jpg",
+          "width": 1920,
+          "height": 886
+        }
+      }
+    },
+    "tr": {
+      "iPad": {
+        "screenshots": [
+          {
+            "name": "01-hook",
+            "kind": "hook",
+            "width": 2064,
+            "height": 2752
+          },
+          {
+            "name": "02-week-left",
+            "kind": "week-left",
+            "width": 2064,
+            "height": 2752
+          },
+          {
+            "name": "03-week-right",
+            "kind": "week-right",
+            "width": 2064,
+            "height": 2752
+          },
+          {
+            "name": "04-widgets",
+            "kind": "widgets",
+            "width": 2064,
+            "height": 2752
+          },
+          {
+            "name": "05-live",
+            "kind": "live",
+            "width": 2064,
+            "height": 2752
+          }
+        ]
+      },
+      "iPhone": {
+        "screenshots": [
+          {
+            "name": "01-hook",
+            "kind": "hook",
+            "width": 1179,
+            "height": 2556
+          },
+          {
+            "name": "02-week-left",
+            "kind": "week-left",
+            "width": 1179,
+            "height": 2556
+          },
+          {
+            "name": "03-week-right",
+            "kind": "week-right",
+            "width": 1179,
+            "height": 2556
+          },
+          {
+            "name": "04-widgets",
+            "kind": "widgets",
+            "width": 1179,
+            "height": 2556
+          },
+          {
+            "name": "05-live",
+            "kind": "live",
+            "width": 1179,
+            "height": 2556
+          }
+        ],
+        "video": {
+          "src": "/media/panel/asc-174-20261022/tr/iPhone/preview.mp4",
+          "poster": "/media/panel/asc-174-20261022/tr/iPhone/preview-poster.jpg",
+          "width": 332,
+          "height": 720
+        }
+      },
+      "iPhoneDuo": {
+        "screenshots": [
+          {
+            "name": "01-hook",
+            "kind": "hook",
+            "width": 1398,
+            "height": 2034
+          },
+          {
+            "name": "02-week-left",
+            "kind": "week-left",
+            "width": 2853,
+            "height": 2007
+          },
+          {
+            "name": "03-week-right",
+            "kind": "week-right",
+            "width": 1398,
+            "height": 2034
+          },
+          {
+            "name": "04-widgets",
+            "kind": "widgets",
+            "width": 2853,
+            "height": 2007
+          },
+          {
+            "name": "05-live",
+            "kind": "live",
+            "width": 1398,
+            "height": 2034
+          }
+        ],
+        "video": {
+          "src": "/media/panel/asc-174-20261022/tr/iPhoneDuo/preview.mp4",
+          "poster": "/media/panel/asc-174-20261022/tr/iPhoneDuo/preview-poster.jpg",
+          "width": 1920,
+          "height": 886
+        }
+      }
+    },
+    "vi": {
+      "iPad": {
+        "screenshots": [
+          {
+            "name": "01-hook",
+            "kind": "hook",
+            "width": 2064,
+            "height": 2752
+          },
+          {
+            "name": "02-week-left",
+            "kind": "week-left",
+            "width": 2064,
+            "height": 2752
+          },
+          {
+            "name": "03-week-right",
+            "kind": "week-right",
+            "width": 2064,
+            "height": 2752
+          },
+          {
+            "name": "04-widgets",
+            "kind": "widgets",
+            "width": 2064,
+            "height": 2752
+          },
+          {
+            "name": "05-live",
+            "kind": "live",
+            "width": 2064,
+            "height": 2752
+          }
+        ]
+      },
+      "iPhone": {
+        "screenshots": [
+          {
+            "name": "01-hook",
+            "kind": "hook",
+            "width": 1179,
+            "height": 2556
+          },
+          {
+            "name": "02-week-left",
+            "kind": "week-left",
+            "width": 1179,
+            "height": 2556
+          },
+          {
+            "name": "03-week-right",
+            "kind": "week-right",
+            "width": 1179,
+            "height": 2556
+          },
+          {
+            "name": "04-widgets",
+            "kind": "widgets",
+            "width": 1179,
+            "height": 2556
+          },
+          {
+            "name": "05-live",
+            "kind": "live",
+            "width": 1179,
+            "height": 2556
+          }
+        ],
+        "video": {
+          "src": "/media/panel/asc-174-20261022/vi/iPhone/preview.mp4",
+          "poster": "/media/panel/asc-174-20261022/vi/iPhone/preview-poster.jpg",
+          "width": 332,
+          "height": 720
+        }
+      },
+      "iPhoneDuo": {
+        "screenshots": [
+          {
+            "name": "01-hook",
+            "kind": "hook",
+            "width": 1398,
+            "height": 2034
+          },
+          {
+            "name": "02-week-left",
+            "kind": "week-left",
+            "width": 2853,
+            "height": 2007
+          },
+          {
+            "name": "03-week-right",
+            "kind": "week-right",
+            "width": 1398,
+            "height": 2034
+          },
+          {
+            "name": "04-widgets",
+            "kind": "widgets",
+            "width": 2853,
+            "height": 2007
+          },
+          {
+            "name": "05-live",
+            "kind": "live",
+            "width": 1398,
+            "height": 2034
+          }
+        ],
+        "video": {
+          "src": "/media/panel/asc-174-20261022/vi/iPhoneDuo/preview.mp4",
+          "poster": "/media/panel/asc-174-20261022/vi/iPhoneDuo/preview-poster.jpg",
+          "width": 1920,
+          "height": 886
+        }
+      }
+    },
+    "zh-Hans": {
+      "iPad": {
+        "screenshots": [
+          {
+            "name": "01-hook",
+            "kind": "hook",
+            "width": 2064,
+            "height": 2752
+          },
+          {
+            "name": "02-week-left",
+            "kind": "week-left",
+            "width": 2064,
+            "height": 2752
+          },
+          {
+            "name": "03-week-right",
+            "kind": "week-right",
+            "width": 2064,
+            "height": 2752
+          },
+          {
+            "name": "04-widgets",
+            "kind": "widgets",
+            "width": 2064,
+            "height": 2752
+          },
+          {
+            "name": "05-live",
+            "kind": "live",
+            "width": 2064,
+            "height": 2752
+          }
+        ],
+        "video": {
+          "src": "/media/panel/asc-174-20261022/zh-Hans/iPad/preview.mp4",
+          "poster": "/media/panel/asc-174-20261022/zh-Hans/iPad/preview-poster.jpg",
+          "width": 720,
+          "height": 960
+        }
+      },
+      "iPhone": {
+        "screenshots": [
+          {
+            "name": "01-hook",
+            "kind": "hook",
+            "width": 1179,
+            "height": 2556
+          },
+          {
+            "name": "02-week-left",
+            "kind": "week-left",
+            "width": 1179,
+            "height": 2556
+          },
+          {
+            "name": "03-week-right",
+            "kind": "week-right",
+            "width": 1179,
+            "height": 2556
+          },
+          {
+            "name": "04-widgets",
+            "kind": "widgets",
+            "width": 1179,
+            "height": 2556
+          },
+          {
+            "name": "05-live",
+            "kind": "live",
+            "width": 1179,
+            "height": 2556
+          }
+        ],
+        "video": {
+          "src": "/media/panel/asc-174-20261022/zh-Hans/iPhone/preview.mp4",
+          "poster": "/media/panel/asc-174-20261022/zh-Hans/iPhone/preview-poster.jpg",
+          "width": 332,
+          "height": 720
+        }
+      },
+      "iPhoneDuo": {
+        "screenshots": [
+          {
+            "name": "01-hook",
+            "kind": "hook",
+            "width": 1398,
+            "height": 2034
+          },
+          {
+            "name": "02-week-left",
+            "kind": "week-left",
+            "width": 2853,
+            "height": 2007
+          },
+          {
+            "name": "03-week-right",
+            "kind": "week-right",
+            "width": 1398,
+            "height": 2034
+          },
+          {
+            "name": "04-widgets",
+            "kind": "widgets",
+            "width": 2853,
+            "height": 2007
+          },
+          {
+            "name": "05-live",
+            "kind": "live",
+            "width": 1398,
+            "height": 2034
+          }
+        ],
+        "video": {
+          "src": "/media/panel/asc-174-20261022/zh-Hans/iPhoneDuo/preview.mp4",
+          "poster": "/media/panel/asc-174-20261022/zh-Hans/iPhoneDuo/preview-poster.jpg",
+          "width": 1920,
+          "height": 886
+        }
+      }
+    },
+    "zh-Hant": {
+      "iPad": {
+        "screenshots": [
+          {
+            "name": "01-hook",
+            "kind": "hook",
+            "width": 2064,
+            "height": 2752
+          },
+          {
+            "name": "02-week-left",
+            "kind": "week-left",
+            "width": 2064,
+            "height": 2752
+          },
+          {
+            "name": "03-week-right",
+            "kind": "week-right",
+            "width": 2064,
+            "height": 2752
+          },
+          {
+            "name": "04-widgets",
+            "kind": "widgets",
+            "width": 2064,
+            "height": 2752
+          },
+          {
+            "name": "05-live",
+            "kind": "live",
+            "width": 2064,
+            "height": 2752
+          }
+        ],
+        "video": {
+          "src": "/media/panel/asc-174-20261022/zh-Hant/iPad/preview.mp4",
+          "poster": "/media/panel/asc-174-20261022/zh-Hant/iPad/preview-poster.jpg",
+          "width": 720,
+          "height": 960
+        }
+      },
+      "iPhone": {
+        "screenshots": [
+          {
+            "name": "01-hook",
+            "kind": "hook",
+            "width": 1179,
+            "height": 2556
+          },
+          {
+            "name": "02-week-left",
+            "kind": "week-left",
+            "width": 1179,
+            "height": 2556
+          },
+          {
+            "name": "03-week-right",
+            "kind": "week-right",
+            "width": 1179,
+            "height": 2556
+          },
+          {
+            "name": "04-widgets",
+            "kind": "widgets",
+            "width": 1179,
+            "height": 2556
+          },
+          {
+            "name": "05-live",
+            "kind": "live",
+            "width": 1179,
+            "height": 2556
+          }
+        ],
+        "video": {
+          "src": "/media/panel/asc-174-20261022/zh-Hant/iPhone/preview.mp4",
+          "poster": "/media/panel/asc-174-20261022/zh-Hant/iPhone/preview-poster.jpg",
+          "width": 332,
+          "height": 720
+        }
+      },
+      "iPhoneDuo": {
+        "screenshots": [
+          {
+            "name": "01-hook",
+            "kind": "hook",
+            "width": 1398,
+            "height": 2034
+          },
+          {
+            "name": "02-week-left",
+            "kind": "week-left",
+            "width": 2853,
+            "height": 2007
+          },
+          {
+            "name": "03-week-right",
+            "kind": "week-right",
+            "width": 1398,
+            "height": 2034
+          },
+          {
+            "name": "04-widgets",
+            "kind": "widgets",
+            "width": 2853,
+            "height": 2007
+          },
+          {
+            "name": "05-live",
+            "kind": "live",
+            "width": 1398,
+            "height": 2034
+          }
+        ],
+        "video": {
+          "src": "/media/panel/asc-174-20261022/zh-Hant/iPhoneDuo/preview.mp4",
+          "poster": "/media/panel/asc-174-20261022/zh-Hant/iPhoneDuo/preview-poster.jpg",
+          "width": 1920,
+          "height": 886
+        }
+      }
+    }
+  }
+}

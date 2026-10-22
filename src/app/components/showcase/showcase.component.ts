@@ -85,11 +85,11 @@ export class ShowcaseComponent implements AfterViewInit, OnDestroy {
    * point a panel at the wrong image.
    */
   private readonly visuals = [
-    { id: 'day', shot: 'assets/images/app-screenshots/single-day-view.webp', hue: '210' },
-    { id: 'week', shot: 'assets/images/app-screenshots/multi-day-view-v.webp', hue: '190' },
-    { id: 'multi', shot: 'assets/images/app-screenshots/multi-calndar-view.webp', hue: '265' },
-    { id: 'month', shot: 'assets/images/app-screenshots/month-view.webp', hue: '35' },
-    { id: 'list', shot: 'assets/images/app-screenshots/list-view.webp', hue: '150' },
+    { id: 'day', shot: '/media/panel/site-assets-20261022/images/app-screenshots/single-day-view.webp', hue: '210' },
+    { id: 'week', shot: '/media/panel/site-assets-20261022/images/app-screenshots/multi-day-view-v.webp', hue: '190' },
+    { id: 'multi', shot: '/media/panel/site-assets-20261022/images/app-screenshots/multi-calndar-view.webp', hue: '265' },
+    { id: 'month', shot: '/media/panel/site-assets-20261022/images/app-screenshots/month-view.webp', hue: '35' },
+    { id: 'list', shot: '/media/panel/site-assets-20261022/images/app-screenshots/list-view.webp', hue: '150' },
   ];
 
   readonly steps = computed<ShowcaseStep[]>(() =>

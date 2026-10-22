@@ -189,9 +189,13 @@ silent**; the Simulator capture has no audio track at all, so the control is
 play/pause rather than mute. If sound is ever added, `toggle()` is the only
 thing that needs to change.
 
-The 19 MB source recording lives in `media-source/`, outside `public/`, for the
-same reason as the icon master: everything in `public/` is copied verbatim into
-the build and deployed.
+Marketing screenshots, exported images and recordings are stored in S3 rather
+than local media folders (owner instruction, 22 October 2026). Website media uses
+S3-backed `/media/` URLs; do not recreate local `media-source`, `media-build`,
+`shots`, `exports` or `art` collections. Process in memory where possible; upload,
+checksum-verify and immediately remove any unavoidable scratch recording.
+Recovery mappings are in `research/media-asc-20261022/` and in the private
+`s3://cloud-calendars-appstore-media/1.7.4/local-media-archive-20261022/` archive.
 
 **Fonts are self-hosted.** Sora, Inter and JetBrains Mono ship from
 `@fontsource-variable/*` rather than Google Fonts, so there is no third-party
@@ -203,10 +207,9 @@ production builds depend on reaching Google.
 favicon PNGs, the opaque 180px Apple touch icon (iOS composites its own mask,
 so that one must not be transparent) and `mark-128.webp`, the 4 KB mark used in
 the header, footer, orbit, dock and Live Activity. `public/favicon.ico` is a
-multi-resolution 16/32/48/64 file for legacy requests. Regenerate them all from
-`brand/Cloud Calendars Icon-iOS-Default-1024x1024@1x.png` — that 3.7 MB master
-lives outside `public/` deliberately, since everything in `public/` is copied
-verbatim into the build.
+multi-resolution 16/32/48/64 file for legacy requests. The icon master is archived in S3; use the recovery mapping rather than keeping
+a local master. Small runtime icons remain part of the website code; marketing
+images and recordings do not.
 
 **The weather is live.** The hub calls [Open-Meteo](https://open-meteo.com)
 directly from the browser — `core/weather.service.ts` is the whole integration.

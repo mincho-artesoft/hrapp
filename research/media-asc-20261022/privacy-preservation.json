@@ -1,0 +1,7 @@
+{
+  "decision": "Preserve existing public policy in all subsequent builds; pending rewritten policy remains fully saved in its reviewed proposal, not deployed.",
+  "publicPolicySha256": "25ce1d341a18967caf5ef68782358b48e3fb192346ff13aa7712b1935f5b28e4",
+  "pendingDraftSha256": "06c43bab072b324f2ae8ee84bacbc843fab8afbed0972d86b2d3e9113ee3b05f",
+  "reason": "User reserved privacy editing for themselves and has not approved website policy publication. Media publication must not include unapproved pending legal copy.",
+  "ascPrivacy": "No interaction or write."
+}
