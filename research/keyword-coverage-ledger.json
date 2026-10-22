@@ -1406,5 +1406,25 @@
       "research/batch34-public-qa.json"
     ],
     "limits": "No exhaustive competitor query coverage, measured ranking/citation lift, new media identification or released native correspondence proof."
+  },
+  "batch35": {
+    "date": "2026-10-22",
+    "type": "existing_article_image_accessibility_and_search_context",
+    "change": "Replace emptyalt with concise localized descriptions of actual screenshot subjects in all455article galleries. Semantic filename key preservesRTL ordering; page locale preservesBulgarian description ofENfallbackimages.",
+    "localeDescriptions": 30,
+    "distinctStrings": 150,
+    "renderedImageDescriptions": 2275,
+    "newKeywordsOrPages": 0,
+    "articleBodiesMetadataDatesUnchanged": true,
+    "evidence": [
+      "research/batch35-media-accessibility/visual-review.json",
+      "research/batch35-media-accessibility/locale-proposal/independent-review.json",
+      "research/batch35-media-accessibility/implementation-review.json",
+      "research/batch35-source-qa.json",
+      "research/batch35-static-qa.json",
+      "research/batch35-browser-qa.json",
+      "research/batch35-public-qa.json"
+    ],
+    "limits": "Text alternatives and crawl accessibility do not prove indexing/ranking/citation uplift. Existingcaptures unchanged; actual newmedia generation provenance stillmissing."
   }
 }

@@ -1,0 +1,7 @@
+{
+  "hook": "Day calendar with appointments and weather",
+  "week-left": "Week calendar with color-coded appointments",
+  "week-right": "Weather view with hourly and daily forecasts",
+  "widgets": "Home Screen widgets with the date, weather and upcoming events",
+  "live": "Lock Screen Live Activity showing the next event and time until it starts"
+}

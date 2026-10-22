@@ -2,9 +2,13 @@ import { ChangeDetectionStrategy, Component, Input, computed, signal } from '@an
 
 import { Locale } from '../../core/locales';
 import MANIFEST from '../../core/media-manifest.json';
+import DESCRIPTIONS from '../../core/screenshot-descriptions.json';
+
+const SHOT_DESCRIPTIONS: Readonly<Record<string, Readonly<Record<string, string>>>> = DESCRIPTIONS;
 
 interface Shot {
   readonly name: string;
+  readonly alt: string;
   readonly avif: string;
   readonly webp: string;
   readonly srcsetAvif: string;
@@ -12,17 +16,10 @@ interface Shot {
 }
 
 /**
- * The App Store screenshots, in the reader's own language.
- *
- * Every shot in the bucket was rendered in all twenty-nine languages, so a
- * German reader sees German screenshots rather than English ones with a
- * caption apologising for it.
- *
- * The order is read from the manifest rather than assumed. Arabic and Hebrew
- * ship their five shots mirrored, and a hard-coded `01-hook` would have
- * pointed at a file that does not exist in exactly the two languages nobody
- * here can proofread — and S3 answers a missing key with the site's own error
- * page, so it would have failed silently rather than loudly.
+ * Public screenshot renditions selected by the locale's media folder.
+ * Descriptions use the page language, including Bulgarian's English-image
+ * fallback. Semantic filename suffixes identify the subject independently
+ * of the numbered order used by right-to-left screenshot sets.
  */
 @Component({
   selector: 'cc-shot-rail',
@@ -37,7 +34,7 @@ interface Shot {
             <source type="image/webp" [attr.srcset]="shot.srcsetWebp" [attr.sizes]="sizes" />
             <img
               [src]="shot.webp"
-              alt=""
+              [alt]="shot.alt"
               width="340"
               height="736"
               loading="lazy"
@@ -107,12 +104,19 @@ export class ShotRailComponent {
     const base = `${MANIFEST.base}/${locale.media}/${this.device}`;
     const [small, large] = widths;
 
-    return names.map((name) => ({
-      name,
-      avif: `${base}/${name}-${small}.avif`,
-      webp: `${base}/${name}-${small}.webp`,
-      srcsetAvif: `${base}/${name}-${small}.avif ${small}w, ${base}/${name}-${large}.avif ${large}w`,
-      srcsetWebp: `${base}/${name}-${small}.webp ${small}w, ${base}/${name}-${large}.webp ${large}w`,
-    }));
+    return names.map((name) => {
+      const kind = name.replace(/^\d+-/, '');
+      const alt = SHOT_DESCRIPTIONS[locale.code]?.[kind];
+      if (!alt) throw new Error(`Missing screenshot description: ${locale.code}/${name}`);
+
+      return {
+        name,
+        alt,
+        avif: `${base}/${name}-${small}.avif`,
+        webp: `${base}/${name}-${small}.webp`,
+        srcsetAvif: `${base}/${name}-${small}.avif ${small}w, ${base}/${name}-${large}.avif ${large}w`,
+        srcsetWebp: `${base}/${name}-${small}.webp ${small}w, ${base}/${name}-${large}.webp ${large}w`,
+      };
+    });
   });
 }

@@ -1,0 +1,212 @@
+{
+  "en-US": {
+    "hook": "Day calendar with appointments and weather",
+    "week-left": "Week calendar with color-coded appointments",
+    "week-right": "Weather view with hourly and daily forecasts",
+    "widgets": "Home Screen widgets with the date, weather and upcoming events",
+    "live": "Lock Screen Live Activity showing the next event and time until it starts"
+  },
+  "bg": {
+    "hook": "Дневен календар с ангажименти и прогноза за времето",
+    "week-left": "Седмичен календар с ангажименти, обозначени с цветове",
+    "week-right": "Изглед за времето с почасова и дневна прогноза",
+    "widgets": "Уиджети на началния екран с дата, време и предстоящи събития",
+    "live": "Live Activity на заключения екран със следващото събитие и времето до началото му"
+  },
+  "de-DE": {
+    "hook": "Tageskalender mit Terminen und Wetter",
+    "week-left": "Wochenkalender mit farblich gekennzeichneten Terminen",
+    "week-right": "Wetteransicht mit stündlicher und täglicher Vorhersage",
+    "widgets": "Widgets auf dem Home-Bildschirm mit Datum, Wetter und kommenden Ereignissen",
+    "live": "Live-Aktivität auf dem Sperrbildschirm mit dem nächsten Ereignis und der Zeit bis zum Beginn"
+  },
+  "es-ES": {
+    "hook": "Calendario diario con citas y tiempo",
+    "week-left": "Calendario semanal con citas identificadas por colores",
+    "week-right": "Vista del tiempo con previsiones por horas y días",
+    "widgets": "Widgets de la pantalla de inicio con la fecha, el tiempo y próximos eventos",
+    "live": "Actividad en directo en la pantalla bloqueada con el próximo evento y el tiempo hasta su inicio"
+  },
+  "fr-FR": {
+    "hook": "Calendrier quotidien avec rendez-vous et météo",
+    "week-left": "Calendrier hebdomadaire avec rendez-vous différenciés par couleur",
+    "week-right": "Vue météo avec prévisions horaires et quotidiennes",
+    "widgets": "Widgets de l’écran d’accueil avec la date, la météo et les événements à venir",
+    "live": "Activité en direct sur l’écran verrouillé avec le prochain événement et le temps avant son début"
+  },
+  "it": {
+    "hook": "Calendario giornaliero con appuntamenti e meteo",
+    "week-left": "Calendario settimanale con appuntamenti distinti per colore",
+    "week-right": "Vista meteo con previsioni orarie e giornaliere",
+    "widgets": "Widget della schermata Home con data, meteo ed eventi in programma",
+    "live": "Attività in tempo reale sulla schermata di blocco con il prossimo evento e il tempo al suo inizio"
+  },
+  "nl-NL": {
+    "hook": "Dagkalender met afspraken en weer",
+    "week-left": "Weekkalender met afspraken in verschillende kleuren",
+    "week-right": "Weerweergave met voorspellingen per uur en per dag",
+    "widgets": "Widgets op het beginscherm met datum, weer en komende afspraken",
+    "live": "Liveactiviteit op het toegangsscherm met de volgende afspraak en de tijd tot het begin"
+  },
+  "pt-BR": {
+    "hook": "Calendário diário com compromissos e previsão do tempo",
+    "week-left": "Calendário semanal com compromissos identificados por cores",
+    "week-right": "Visualização do tempo com previsões por hora e por dia",
+    "widgets": "Widgets da Tela de Início com data, tempo e próximos eventos",
+    "live": "Atividade ao Vivo na Tela Bloqueada com o próximo evento e o tempo até seu início"
+  },
+  "pl": {
+    "hook": "Kalendarz dzienny z terminami i pogodą",
+    "week-left": "Kalendarz tygodniowy z terminami oznaczonymi kolorami",
+    "week-right": "Widok pogody z prognozą godzinową i dzienną",
+    "widgets": "Widżety na ekranie początkowym z datą, pogodą i nadchodzącymi wydarzeniami",
+    "live": "Aktywność na żywo na ekranie blokady z następnym wydarzeniem i czasem do jego rozpoczęcia"
+  },
+  "ru": {
+    "hook": "Дневной календарь со встречами и погодой",
+    "week-left": "Недельный календарь со встречами, отмеченными разными цветами",
+    "week-right": "Экран погоды с почасовым и ежедневным прогнозом",
+    "widgets": "Виджеты на экране «Домой» с датой, погодой и предстоящими событиями",
+    "live": "Live Activity на экране блокировки со следующим событием и временем до его начала"
+  },
+  "sv": {
+    "hook": "Dagskalender med möten och väder",
+    "week-left": "Veckokalender med färgkodade möten",
+    "week-right": "Vädervy med prognoser per timme och dag",
+    "widgets": "Widgetar på hemskärmen med datum, väder och kommande händelser",
+    "live": "Liveaktivitet på låsskärmen med nästa händelse och tiden till dess start"
+  },
+  "da": {
+    "hook": "Dagskalender med aftaler og vejr",
+    "week-left": "Ugekalender med farvekodede aftaler",
+    "week-right": "Vejrvisning med time- og dagsprognoser",
+    "widgets": "Widgets på hjemmeskærmen med dato, vejr og kommende begivenheder",
+    "live": "Liveaktivitet på låseskærmen med næste begivenhed og tiden til dens start"
+  },
+  "no": {
+    "hook": "Dagskalender med avtaler og vær",
+    "week-left": "Ukekalender med fargekodede avtaler",
+    "week-right": "Værvisning med time- og dagsvarsler",
+    "widgets": "Widgeter på Hjem-skjermen med dato, vær og kommende hendelser",
+    "live": "Direkteaktivitet på låseskjermen med neste hendelse og tiden til den starter"
+  },
+  "fi": {
+    "hook": "Päiväkalenteri, jossa on tapaamisia ja säätiedot",
+    "week-left": "Viikkokalenteri, jossa tapaamiset on merkitty väreillä",
+    "week-right": "Säänäkymä, jossa on tunti- ja päiväennusteet",
+    "widgets": "Koti-valikon widgetit, joissa näkyvät päivämäärä, sää ja tulevat tapahtumat",
+    "live": "Lukitun näytön live-aktiviteetti, jossa näkyvät seuraava tapahtuma ja aika sen alkuun"
+  },
+  "cs": {
+    "hook": "Denní kalendář se schůzkami a počasím",
+    "week-left": "Týdenní kalendář s barevně rozlišenými schůzkami",
+    "week-right": "Zobrazení počasí s hodinovou a denní předpovědí",
+    "widgets": "Widgety na ploše s datem, počasím a nadcházejícími událostmi",
+    "live": "Živá aktivita na zamčené obrazovce s příští událostí a časem do jejího začátku"
+  },
+  "hu": {
+    "hook": "Napi naptár találkozókkal és időjárással",
+    "week-left": "Heti naptár színekkel jelölt találkozókkal",
+    "week-right": "Időjárásnézet óránkénti és napi előrejelzéssel",
+    "widgets": "Főképernyős widgetek dátummal, időjárással és közelgő eseményekkel",
+    "live": "Élő tevékenység a zárolási képernyőn a következő eseménnyel és a kezdésig hátralévő idővel"
+  },
+  "ro": {
+    "hook": "Calendar zilnic cu întâlniri și vreme",
+    "week-left": "Calendar săptămânal cu întâlniri diferențiate prin culori",
+    "week-right": "Vizualizare meteo cu prognoze orare și zilnice",
+    "widgets": "Widgeturi pe ecranul principal cu data, vremea și evenimentele viitoare",
+    "live": "Activitate live pe ecranul blocat cu următorul eveniment și timpul până la începerea lui"
+  },
+  "el": {
+    "hook": "Ημερήσιο ημερολόγιο με ραντεβού και καιρό",
+    "week-left": "Εβδομαδιαίο ημερολόγιο με ραντεβού σε διαφορετικά χρώματα",
+    "week-right": "Προβολή καιρού με ωριαίες και ημερήσιες προβλέψεις",
+    "widgets": "Widget στην αρχική οθόνη με ημερομηνία, καιρό και επερχόμενα γεγονότα",
+    "live": "Ζωντανή δραστηριότητα στην οθόνη κλειδώματος με το επόμενο γεγονός και τον χρόνο μέχρι την έναρξή του"
+  },
+  "tr": {
+    "hook": "Randevular ve hava durumu içeren günlük takvim",
+    "week-left": "Renklerle ayrılmış randevular içeren haftalık takvim",
+    "week-right": "Saatlik ve günlük tahminler içeren hava durumu görünümü",
+    "widgets": "Tarih, hava durumu ve yaklaşan etkinlikleri gösteren Ana Ekran araç takımları",
+    "live": "Sıradaki etkinliği ve başlamasına kalan süreyi gösteren Kilit Ekranı Canlı Etkinliği"
+  },
+  "id": {
+    "hook": "Kalender harian dengan janji temu dan cuaca",
+    "week-left": "Kalender mingguan dengan janji temu berkode warna",
+    "week-right": "Tampilan cuaca dengan prakiraan per jam dan harian",
+    "widgets": "Widget Layar Utama dengan tanggal, cuaca, dan acara mendatang",
+    "live": "Aktivitas Langsung di Layar Terkunci yang menampilkan acara berikutnya dan waktu hingga dimulai"
+  },
+  "ms": {
+    "hook": "Kalendar harian dengan janji temu dan cuaca",
+    "week-left": "Kalendar mingguan dengan janji temu berkod warna",
+    "week-right": "Paparan cuaca dengan ramalan setiap jam dan harian",
+    "widgets": "Widget Skrin Utama dengan tarikh, cuaca dan acara akan datang",
+    "live": "Aktiviti Langsung pada Skrin Kunci yang menunjukkan acara seterusnya dan masa sehingga ia bermula"
+  },
+  "vi": {
+    "hook": "Lịch ngày với các cuộc hẹn và thời tiết",
+    "week-left": "Lịch tuần với các cuộc hẹn được phân biệt bằng màu",
+    "week-right": "Chế độ xem thời tiết với dự báo theo giờ và theo ngày",
+    "widgets": "Tiện ích trên Màn hình chính với ngày, thời tiết và các sự kiện sắp tới",
+    "live": "Hoạt động trực tiếp trên Màn hình khóa hiển thị sự kiện tiếp theo và thời gian đến lúc bắt đầu"
+  },
+  "ja": {
+    "hook": "予定と天気を表示した日表示カレンダー",
+    "week-left": "予定を色分けした週表示カレンダー",
+    "week-right": "時間ごとと日ごとの予報を表示した天気画面",
+    "widgets": "日付、天気、今後の予定を表示したホーム画面のウィジェット",
+    "live": "次の予定と開始までの時間を表示したロック画面のライブアクティビティ"
+  },
+  "ko": {
+    "hook": "일정과 날씨가 표시된 일간 캘린더",
+    "week-left": "일정을 색상으로 구분한 주간 캘린더",
+    "week-right": "시간별 및 일별 예보가 표시된 날씨 화면",
+    "widgets": "날짜, 날씨, 다가오는 일정을 보여 주는 홈 화면 위젯",
+    "live": "다음 일정과 시작까지 남은 시간을 보여 주는 잠금 화면의 실시간 현황"
+  },
+  "zh-Hans": {
+    "hook": "显示日程和天气的日历日视图",
+    "week-left": "以颜色区分日程的日历周视图",
+    "week-right": "显示逐小时和逐日预报的天气视图",
+    "widgets": "显示日期、天气和即将开始的日程的主屏幕小组件",
+    "live": "显示下一项日程及距开始时间的锁定屏幕实时活动"
+  },
+  "zh-Hant": {
+    "hook": "顯示行程和天氣的日曆日視圖",
+    "week-left": "以顏色區分行程的日曆週視圖",
+    "week-right": "顯示逐小時和逐日預報的天氣畫面",
+    "widgets": "顯示日期、天氣和即將開始的行程的主畫面小工具",
+    "live": "顯示下一項行程及距開始時間的鎖定畫面即時動態"
+  },
+  "hi": {
+    "hook": "मुलाकातों और मौसम वाला दैनिक कैलेंडर",
+    "week-left": "रंगों से अलग की गई मुलाकातों वाला साप्ताहिक कैलेंडर",
+    "week-right": "घंटेवार और दैनिक पूर्वानुमान वाला मौसम दृश्य",
+    "widgets": "तारीख, मौसम और आने वाले इवेंट दिखाने वाले होम स्क्रीन विजेट",
+    "live": "अगला इवेंट और उसके शुरू होने तक का समय दिखाने वाली लॉक स्क्रीन लाइव ऐक्टिविटी"
+  },
+  "th": {
+    "hook": "ปฏิทินรายวันพร้อมนัดหมายและสภาพอากาศ",
+    "week-left": "ปฏิทินรายสัปดาห์พร้อมนัดหมายที่แยกด้วยสี",
+    "week-right": "มุมมองสภาพอากาศพร้อมพยากรณ์รายชั่วโมงและรายวัน",
+    "widgets": "วิดเจ็ตหน้าจอโฮมที่แสดงวันที่ สภาพอากาศ และกิจกรรมที่กำลังจะมาถึง",
+    "live": "กิจกรรมสดบนหน้าจอล็อคที่แสดงกิจกรรมถัดไปและเวลาที่เหลือก่อนเริ่ม"
+  },
+  "ar-SA": {
+    "hook": "تقويم يومي يعرض المواعيد والطقس",
+    "week-left": "تقويم أسبوعي يعرض المواعيد بألوان مختلفة",
+    "week-right": "عرض للطقس مع توقعات لكل ساعة ولكل يوم",
+    "widgets": "أدوات على الشاشة الرئيسية تعرض التاريخ والطقس والأحداث القادمة",
+    "live": "نشاط مباشر على شاشة القفل يعرض الحدث التالي والوقت المتبقي حتى بدايته"
+  },
+  "he": {
+    "hook": "תצוגת יום ביומן עם פגישות ומזג אוויר",
+    "week-left": "תצוגת שבוע ביומן עם פגישות המסומנות בצבעים",
+    "week-right": "תצוגת מזג אוויר עם תחזיות לפי שעה ולפי יום",
+    "widgets": "וידג׳טים במסך הבית עם התאריך, מזג האוויר ואירועים קרובים",
+    "live": "פעילות חיה במסך הנעילה המציגה את האירוע הבא ואת הזמן עד תחילתו"
+  }
+}

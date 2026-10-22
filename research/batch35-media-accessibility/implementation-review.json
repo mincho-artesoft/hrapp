@@ -1,0 +1,38 @@
+{
+  "date": "2026-10-22T03:58:43.824367+00:00",
+  "decision": "PASS",
+  "requiredCorrections": [],
+  "scope": "Full current component and git diff; full description JSON structurally parsed/hash matched to separate complete linguistic review. This review does not repeat all150 language assessments.",
+  "hashes": {
+    "src/app/components/shot-rail/shot-rail.component.ts": "c4cc32e4bdbe2f9bc3d94c231f2f01548cc57d41d50b1a22136e5cdcf49af7fe",
+    "src/app/core/screenshot-descriptions.json": "f84ac0422a13a9c69b9760b6e830f5a775064c22b1fe96b6ed69399f05efde7a",
+    "src/app/core/media-manifest.json": "c7b74db44762cce88ec43b33b9fa5c53aaa042dbace39c135c29016fac4be679",
+    "src/app/core/locales.ts": "4a98935b56015f8f151a1c49aaeea94063c2806999ebe6bea9b899805952ae96",
+    "research/batch35-media-accessibility/shot-rail-before.ts.txt": "36980d5df8296df997c3a080e0da9d11614066f94153018b9a475db04aa52418",
+    "research/batch35-media-accessibility/locale-proposal/independent-review.json": "58871d7986916d96ba012e30430bf5e5438c6e4ce2cce7f07c6508ff52ddaf8e"
+  },
+  "checks": {
+    "descriptionHashMatchesLinguisticReview": true,
+    "locales": 30,
+    "localeDeviceShotMappings": 300,
+    "allNonempty": true,
+    "unchangedTemplateExceptAlt": true,
+    "unchangedStyles": true,
+    "unchangedAssetPathAndSrcsetExpressions": true,
+    "allFiveSemanticKeys": true,
+    "unchangedManifestSinceVisualReview": true
+  },
+  "findings": [
+    "Leading numeric-prefix removal preserves full week-left/week-right keys. Description lookup is exact key lookup, not positional indexing. RTL reversed order remains manifest order.",
+    "Descriptions use locale.code while image URLs continue to use locale.media. Bulgarian gets Bulgarian alt for English-image fallback; it does not claim Bulgarian UI.",
+    "Original image URLs, format sources, width selection, name tracking, order, dimensions, lazy loading, async decoding, sizes, focusability, group label and direction remain unchanged. Only new rendered semantic behavior is image alternative text.",
+    "For a populated manifest entry with absent/empty description, the component throws an explicit locale/name error. It does not silently use a wrong subject or language. All300 current combinations resolve.",
+    "Existing early empty-array behavior for null locale/missing media folder/insufficient width configuration is unchanged. Thus fail-fast concerns missing descriptions for actual entries, not every possible absent manifest configuration.",
+    "A future unknown suffix causes an error and can stop rendering: this is the requested editorial guard, not graceful fallback. New media/locale additions must provide matching descriptions."
+  ],
+  "preservationLimits": [
+    "No Angular build, browser or screen-reader execution performed in this review.",
+    "Existing plain device Input/computed dependency behavior is unchanged; no reactive-input refactor undertaken.",
+    "No source edits, deployment or unrelated repository review performed."
+  ]
+}

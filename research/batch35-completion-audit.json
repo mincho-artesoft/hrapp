@@ -1,0 +1,54 @@
+{
+  "checkedAt": "2026-10-22T04:03:50.664212+00:00",
+  "previousGoalTurn": "progress — batch34published/pushed3b3d4f4 removed screenshot crawl block and added document-access diagnostic",
+  "currentTurn": "progress",
+  "completedWork": {
+    "meaningfulLocalizedDescriptions": 150,
+    "websiteLocales": 30,
+    "publicArticleGalleries": 455,
+    "renderedImagesWithExactDescriptions": 2275,
+    "bothDeviceManifestAssociationsVerified": 300,
+    "allPublicArtifactsMatchBuild": 522,
+    "cloudfrontInvalidation": "I9JNJX9DLOD0W3ERVC24FL6S79",
+    "cloudfrontStatus": "Completed"
+  },
+  "preserved": [
+    "All article bodies, titles, descriptions, dates and keyword allocation",
+    "All screenshot source URLs/srcsets/order/loading/styles",
+    "Public robots crawl allowance frombatch34",
+    "ASC/native/backend/customer/provider/production/release/privacy/prices untouched"
+  ],
+  "requirements": [
+    {
+      "requirement": "Competitor Google/ChatGPT query research",
+      "status": "partial",
+      "evidence": "keyword-coverage-ledger.json",
+      "limit": "No exhaustive keyword/volume/ranking proof; thisturn removes image-description obstacle rather than moreduplicative articles."
+    },
+    {
+      "requirement": "Useful original accurate articles and localization",
+      "status": "partial",
+      "evidence": "batch35-static-qa.json",
+      "limit": "All455existing galleries improved; fullarticlelanguagequality notcertified."
+    },
+    {
+      "requirement": "Website and AppStore metadata alignment",
+      "status": "previous ASC applied; website image context progressed",
+      "evidence": "aso/all-locales-readback-batch30.json",
+      "limit": "No newASCwrite/read thisturn, releasednativecorrespondence unproven."
+    },
+    {
+      "requirement": "Actual new media integration",
+      "status": "incomplete",
+      "evidence": "batch28-readiness/media-audit.json",
+      "limit": "Existing screenshot subjects described, no newreplacementoutput provenance available."
+    },
+    {
+      "requirement": "Improved measured Google/ChatGPT discovery",
+      "status": "unproven",
+      "evidence": "measurement/gsc-baseline-20261021.json",
+      "limit": "No comparable postchange elapsedwindow or causaloutcome established."
+    }
+  ],
+  "goalComplete": false
+}
