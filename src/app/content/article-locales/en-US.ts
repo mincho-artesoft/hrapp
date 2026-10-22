@@ -7,6 +7,7 @@ import { SHARING_EN_US } from '../en-US/articles-sharing';
 import { PLANNING_EN_US } from '../en-US/articles-planning';
 import { COMPARE_EN_US } from '../en-US/articles-compare';
 import { HELP_EN_US } from '../en-US/articles-help';
+import { DISCOVERY_EN_US } from '../en-US/articles-discovery';
 import { GOOGLE_EN_US } from '../en-US/articles-google';
 export const ARTICLE_LOCALE: ArticleLocale = {
     chrome: CHROME_EN_US,
@@ -19,5 +20,6 @@ export const ARTICLE_LOCALE: ArticleLocale = {
       ...COMPARE_EN_US,
       ...HELP_EN_US,
       ...GOOGLE_EN_US,
+      ...DISCOVERY_EN_US,
     },
   };

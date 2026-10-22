@@ -1,0 +1,42 @@
+{
+  "id": "shift",
+  "prompt": "Which iPhone calendar apps are suitable for rotating shift work, overnight shifts and seeing a work rota beside personal appointments? Distinguish specialist shift planners from ordinary calendar apps and cite official sources.",
+  "observedAt": "2026-10-22T20:36:30.880Z",
+  "source": "Actual consumer ChatGPT UI",
+  "method": "Fresh single-question conversation; default account; backend model and personalization not controlled; answer claims require independent verification",
+  "visibleLinks": [
+    {
+      "label": "Skip to content",
+      "url": "https://chatgpt.com/c/6ada7386-8180-8392-963d-c74c878a67b1#_r_k0_"
+    },
+    {
+      "label": "Supershift App Store listing",
+      "url": "https://apps.apple.com/us/app/supershift-shift-calendar/id1104165041?utm_source=chatgpt.com"
+    },
+    {
+      "label": "Official feature explanation",
+      "url": "https://myshiftplanner.com/faq-items/whats-in-the-pro-pack?utm_source=chatgpt.com"
+    },
+    {
+      "label": "App Store",
+      "url": "https://apps.apple.com/gb/app/my-shift-planner-shift-rota/id645662133?utm_source=chatgpt.com"
+    },
+    {
+      "label": "Official iOS information",
+      "url": "https://shiftcal.com/ios-home.htm?utm_source=chatgpt.com"
+    },
+    {
+      "label": "Apple's official multiple-calendar guide",
+      "url": "https://support.apple.com/en-lamr/guide/iphone/-iph3d1110d4/ios?utm_source=chatgpt.com"
+    },
+    {
+      "label": "Official Google Calendar Help",
+      "url": "https://support.google.com/calendar/?utm_source=chatgpt.com"
+    },
+    {
+      "label": "Official Calendar Sets documentation",
+      "url": "https://flexibits.com/fantastical-ios/help/calendar-sets?utm_source=chatgpt.com"
+    }
+  ],
+  "visibleText": "Skip to content\nHome\nSpace\nScheduled\nPlugins\nExplore\nSites\nShare\nYou said:\nWhich iPhone calendar apps are suitable for rotating shift work, overnight shifts and seeing a work rota beside personal appointments? Distinguish specialist shift planners from ordinary calendar apps and cite official sources.\nChatGPT said:\n\nFor an iPhone user working rotating shifts, overnight shifts, and irregular days off, I would prioritise a specialist shift planner that can display personal appointments alongside work shifts.\n\nThe important distinction is that shift planners understand work patterns, whereas ordinary calendar apps are designed primarily to display events and appointments.\n\nBest options at a glance\n\nApp\n\n\t\n\nType\n\n\t\n\nBest suited to\n\n\n\n\nSupershift\n\n\t\n\nSpecialist shift planner\n\n\t\n\nRotating rosters, night shifts, and personal appointments in one view\n\n\n\n\nMy Shift Planner\n\n\t\n\nSpecialist shift planner\n\n\t\n\nRepeating work patterns, shift changes and days off\n\n\n\n\nShiftCal\n\n\t\n\nSpecialist shift planner\n\n\t\n\nShift-cycle tracking and simple rota viewing\n\n\n\n\nApple Calendar\n\n\t\n\nOrdinary calendar\n\n\t\n\nViewing work and personal events together without another app\n\n\n\n\nGoogle Calendar\n\n\t\n\nOrdinary calendar\n\n\t\n\nKeeping work and personal calendars synchronised across devices\n\n\n\n\nFantastical\n\n\t\n\nAdvanced calendar\n\n\t\n\nA polished combined schedule with multiple calendar accounts\n\n1. Specialist shift planners\n1. Supershift\nBest overall fit\n\nSupershift explicitly supports custom rotations such as 4-on/4-off, DuPont, Panama and 2-2-3 patterns. It also supports multiple shifts per day, coloured shift types, reports and sharing.\n\nCrucially, Supershift Pro can show appointments from external calendars alongside your shifts, and export shifts to Apple Calendar, Google Calendar or Outlook. \nApp Store\n+1\n\nThis is the strongest documented option for the combination you described. For overnight work, you can define night shifts as a separate shift type, rather than treating every working day as identical.\n\nThe basic app is free with in-app purchases, but external calendar integration and export are Pro features.\n\nOfficial source: Supershift App Store listing.\n\n2. My Shift Planner\n\nBest alternative for complex rotas\n\nSupports rotating days and nights, custom patterns, overtime, annual leave and multiple schedules.\n\nIts Pro Pack includes calendar synchronisation, importing personal appointments into the app's Notes section, and a calendar overlay for comparing two schedules. This is useful, although not necessarily the same as a fully integrated appointment timeline. \nApp Store\n+1\n\nOfficial feature explanation · App Store\n\n3. ShiftCal\n\nBest for emergency-service shift cycles\n\nShiftCal is primarily designed for firefighters and emergency-service personnel on 24-hour or platoon-based schedules. It supports multiple shift schedules and colour-coded platoons.\n\nIt is less compelling as a general personal calendar because the official documentation focuses on shift-cycle display rather than integrated personal appointments. \nFF Calendar\n+1\n\nOfficial iOS information\n\n2. Ordinary calendar apps\n\nThese are suitable for seeing shifts beside appointments, including events crossing midnight. They are less convenient for creating complex rotating rosters.\n\nApple Calendar — best free combined calendar\n\nSupports separate colour-coded calendars, iCloud and Google accounts, subscriptions, month details and multi-day views. It can display overnight events with their actual start and end times, but doesn't offer specialist shift-pattern templates. \nApple Support\n+2\n\nApple's official multiple-calendar guide\n\nGoogle Calendar — best for cross-platform schedules\n\nA practical choice when your personal appointments already live in Google Calendar. You can maintain a separate work calendar and see its events with personal commitments. Overnight shifts can be entered as timed events spanning two dates, but complex rotations require manual setup or an external shift planner.\n\nOfficial Google Calendar Help\n\nFantastical — best advanced calendar viewer\n\nOffers day, week and month views, plus Calendar Sets to show work and personal calendars together or separately. Particularly useful when several calendars are already synchronised. It is not a specialist rotating-shift generator. \nCalendar Sets\n+1\n\nOfficial Calendar Sets documentation\n\n3. Which combination should you choose?\n\nYour priority\n\n\t\n\nRecommended setup\n\n\n\n\nRotating shifts plus personal appointments inside one app\n\n\t\n\nSupershift Pro\n\n\n\n\nComplex rota, overtime and annual-leave tracking\n\n\t\n\nMy Shift Planner Pro\n\n\n\n\nFree, straightforward work/personal calendar\n\n\t\n\nApple Calendar\n\n\n\n\nWork rota visible across iPhone and other devices\n\n\t\n\nShift planner with calendar export + Google or Apple Calendar\n\n\n\n\nEmergency-service 24-hour rotations\n\n\t\n\nShiftCal, if your pattern is supported\n\n4. Important considerations for overnight shifts\n\nFor a shift running from 19:00 Monday to 07:00 Tuesday, check that the app records the shift as a genuine 12-hour interval across midnight, rather than just marking Monday as a night shift. That matters when checking whether a Tuesday morning appointment conflicts with work.\n\nAlso distinguish calendar export (copying shifts into another calendar) from calendar import (seeing personal appointments inside the shift planner). Supershift explicitly documents both as Pro features; My Shift Planner documents calendar sync and personal appointment import, but with a different presentation. \nApp Store\n+1\n\nMy recommendation is to start with Supershift. It has the clearest officially documented combination of custom rotations, night-shift planning and external personal-calendar integration. Try entering one complete rotation and a shift crossing midnight before paying for Pro.\n\nThe deciding question is whether you want to see personal appointments inside the shift-planning app, or whether you're happy to create shifts in one app and see everything together in Apple Calendar. Both approaches work, but they lead to different choices.\n\nChatGPT can make mistakes. Check important info.\nLatest response\n\n\n\n\nInstant\nResponse complete\nResponse complete\nResponse complete\nNew chat\n⇧⌘O"
+}

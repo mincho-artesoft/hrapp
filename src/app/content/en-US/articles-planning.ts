@@ -94,6 +94,7 @@ export const PLANNING_EN_US: Readonly<Record<string, LocalisedArticle>> = {
     }
   ],
   "seeAlso": [
+    "natural-language-calendar-events-iphone",
     "recurring-events-without-the-mess",
     "event-saved-to-wrong-calendar",
     "when-two-calendars-disagree"
@@ -495,6 +496,7 @@ export const PLANNING_EN_US: Readonly<Record<string, LocalisedArticle>> = {
     }
   ],
   "seeAlso": [
+    "shift-work-calendar-iphone-rotating-schedules",
     "when-two-calendars-disagree",
     "time-zones-and-the-flight-you-booked"
   ]

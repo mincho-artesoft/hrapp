@@ -1,0 +1,38 @@
+{
+  "id": "widgets",
+  "prompt": "Which iPhone calendar apps have Home Screen widgets for upcoming appointments and weather? Distinguish a Home Screen widget, a Lock Screen widget and a Live Activity, and cite current official product sources.",
+  "observedAt": "2026-10-22T20:33:23.495Z",
+  "source": "Actual consumer ChatGPT UI",
+  "method": "Fresh single-question conversation; default account; backend model and personalization not controlled; answer claims require independent verification",
+  "visibleLinks": [
+    {
+      "label": "Skip to content",
+      "url": "https://chatgpt.com/c/6ada7132-092c-832c-a643-0fb92b6a6f04#_r_3u_"
+    },
+    {
+      "label": "Official widget documentation",
+      "url": "https://flexibits.com/fantastical-ios/help/widgets?utm_source=chatgpt.com"
+    },
+    {
+      "label": "Features and plans",
+      "url": "https://flexibits.com/pricing?utm_source=chatgpt.com"
+    },
+    {
+      "label": "Official App Store listing",
+      "url": "https://apps.apple.com/us/app/cloud-calendars-sync-widget/id6744690319?utm_source=chatgpt.com"
+    },
+    {
+      "label": "Official App Store listing",
+      "url": "https://apps.apple.com/us/app/easydays-calendar-weather/id6775474988?utm_source=chatgpt.com"
+    },
+    {
+      "label": "Official App Store listing",
+      "url": "https://apps.apple.com/vu/app/void-widgets-retro-minimal/id6755325764?utm_source=chatgpt.com"
+    },
+    {
+      "label": "Apple Weather widget guide",
+      "url": "https://support.apple.com/en-ie/guide/iphone/iph8bf15cb61/27/ios/27?utm_source=chatgpt.com"
+    }
+  ],
+  "visibleText": "Skip to content\nHome\nSpace\nScheduled\nPlugins\nExplore\nSites\nShare\nYou said:\nWhich iPhone calendar apps have Home Screen widgets for upcoming appointments and weather? Distinguish a Home Screen widget, a Lock Screen widget and a Live Activity, and cite current official product sources.\nChatGPT said:\n\nAs of October 2026, several iPhone calendar apps offer Home Screen widgets showing upcoming appointments and weather. The important distinction is whether an app shows both in the same widget, offers separate widgets, or only displays weather inside the calendar app.\n\nFor your specific requirement, Fantastical, Cloud Calendars, and easyDays are worth considering first. Apple's built-in Calendar and Weather apps are also a good free solution if two separate widgets are acceptable.\n\n1. Home Screen widget vs. Lock Screen widget vs. Live Activity\n\nFeature\n\n\t\n\nWhere it appears\n\n\t\n\nWhat it does\n\n\n\n\nHome Screen widget\n\n\t\n\nAmong your app icons\n\n\t\n\nDisplays your upcoming appointments, weather forecast, or both, without opening the app\n\n\n\n\nLock Screen widget\n\n\t\n\nAbove or below the clock on the locked screen\n\n\t\n\nShows compact information such as your next appointment or current temperature\n\n\n\n\nLive Activity\n\n\t\n\nLock Screen and, on supported iPhones, Dynamic Island\n\n\t\n\nTracks an ongoing or time-sensitive activity, such as a delivery, journey, or countdown\n\nThese are three different iOS features. An app advertising Lock Screen widgets or Live Activities does not necessarily provide a Home Screen widget.\n\nApple confirms that Home Screen widgets can display weather and calendar events, while Live Activities are designed for tracking the progress of activities. \nApple Support (IN)\n+1\n\n2. Calendar apps with appointment and weather widgets\n\nFantastical\n\nBest full-featured calendar\n\nCalendar + weather supported\n\nOffers Up Next and Event List Home Screen widgets in multiple sizes. Flexibits explicitly documents weather as a widget customization option. Also has Lock Screen widgets and a separate Live Activities feature.\n\nOfficial widget documentation · Features and plans \nWidgets and Share Extension\n+1\n\nCloud Calendars: Sync & Widget\n\nBest explicit combined-widget option\n\nIts App Store description specifically confirms Home Screen widgets combining calendar events, upcoming schedules, weather forecasts, temperature, and wind. Supports iCloud, Google, and Microsoft calendars.\n\nOfficial App Store listing \nApp Store\n\neasyDays: Calendar & Weather\n\nBest simple combined daily widget\n\nExplicitly offers a Today's events and weather Home Screen widget, plus a month view. A dedicated upcoming-events widget and five-day forecast widget require Plus, a one-time purchase. The combined daily widget is also available on the Lock Screen.\n\nOfficial App Store listing \nApp Store\n\nVoid Widgets – Retro & Minimal\n\nBest for visual customization\n\nOffers Event Timeline, Weather Forecast, and a large Luminous widget combining events and weather. More of a widget-customization app than a full calendar replacement.\n\nOfficial App Store listing \nApp Store\n\nApple Calendar + Apple Weather\n\nBest free built-in solution\n\nCalendar provides upcoming appointments, and Weather provides current conditions and forecasts. Both offer Home Screen widgets, but you need two separate widgets rather than one combined calendar-and-weather widget.\n\nApple Weather widget guide \nApple Support (MT)\n+1\n\n3. Which should you choose?\n\nYour priority\n\n\t\n\nMy pick\n\n\n\n\nUpcoming appointments and weather in one widget\n\n\t\n\nFantastical or Cloud Calendars\n\n\n\n\nSimple daily appointments + weather\n\n\t\n\neasyDays\n\n\n\n\nCustom widget appearance\n\n\t\n\nVoid Widgets\n\n\n\n\nNo additional apps or subscriptions\n\n\t\n\nApple Calendar + Weather\n\nOne caveat: the official sources establish these widget capabilities, but they don't guarantee every layout, forecast detail, or feature is available on the free tier. Check the widget gallery and any premium restrictions before subscribing.\n\nTo install a Home Screen widget, long-press an empty area of the Home Screen, tap Edit → Add Widget, choose the calendar app, select a size, and tap Add Widget. For Fantastical, long-press the added widget and select Edit Widget to check the weather setting. \nApple Support (IN)\n+1\n\nBottom line: I would try Fantastical first for a full calendar, and easyDays or Cloud Calendars if the main goal is simply seeing your next appointments alongside the forecast without opening an app.\n\nIs this conversation helpful so far?\nChatGPT can make mistakes. Check important info.\nLatest response\n\n\n\n\nInstant\nResponse complete"
+}

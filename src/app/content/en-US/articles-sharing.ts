@@ -194,6 +194,7 @@ export const SHARING_EN_US: Readonly<Record<string, LocalisedArticle>> = {
     }
   ],
   "seeAlso": [
+    "booking-link-or-shared-calendar",
     "inviting-people-who-do-not-have-the-app",
     "a-calendar-that-is-yours-to-share",
     "keeping-track-of-who-replied"

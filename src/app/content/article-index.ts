@@ -165,7 +165,10 @@ export const ARTICLE_SLUGS: Readonly<Record<string, readonly string[]>> = {
     "the-secret-address-of-a-google-calendar",
     "what-guests-can-do-to-your-event",
     "google-calendars-that-never-reach-your-iphone",
-    "taking-back-a-calendar-you-shared"
+    "taking-back-a-calendar-you-shared",
+    "shift-work-calendar-iphone-rotating-schedules",
+    "booking-link-or-shared-calendar",
+    "natural-language-calendar-events-iphone"
   ],
   "es-ES": [
     "month-view-on-a-bigger-screen",

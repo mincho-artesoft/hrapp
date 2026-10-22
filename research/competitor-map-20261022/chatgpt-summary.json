@@ -1,0 +1,124 @@
+{
+  "sampleSize": 5,
+  "independentConversations": true,
+  "backendModel": "not exposed",
+  "accountPersonalization": "not controlled",
+  "records": [
+    {
+      "id": "combine",
+      "prompt": "Which iPhone apps let me see iCloud, Google and Outlook calendars together? Distinguish a combined view from copying busy time between accounts, and cite official sources for the products you recommend.",
+      "file": "chatgpt-combine.json",
+      "mentionedBrands": [
+        "Cloud Calendars",
+        "Fantastical",
+        "Calendars by Readdle",
+        "Apple Calendar",
+        "Google Calendar",
+        "Outlook"
+      ],
+      "cloudMentioned": true,
+      "directSourceUrls": [
+        "https://support.apple.com/en-by/guide/iphone/iphc37be2016/ios?utm_source=chatgpt.com",
+        "https://support.microsoft.com/en-us/outlook/connect-outlook-and-apple-iphone-calendars?utm_source=chatgpt.com",
+        "https://flexibits.com/fantastical-ios/faq?utm_source=chatgpt.com",
+        "https://flexibits.com/fantastical-ios/help/getting-started?utm_source=chatgpt.com",
+        "https://support.readdle.com/calendars/adding-accounts/first-steps-adding-accounts-to-calendars?utm_source=chatgpt.com",
+        "https://support.microsoft.com/en-us/outlook/how-do-i-connect-my-native-ios-calendar-to-outlook-mobile?utm_source=chatgpt.com",
+        "https://support.microsoft.com/en-us/outlook/getstarted/sync-your-account-in-outlook-to-the-microsoft-cloud?utm_source=chatgpt.com"
+      ],
+      "limitation": "Mention detection supports manual review; it is not recommendation ranking. Citation popup sources were not expanded."
+    },
+    {
+      "id": "family",
+      "prompt": "Which shared family calendar apps work for an iPhone and Android household coordinating school pickups and changing schedules? Compare practical sharing and responsibility handoff, and cite official sources.",
+      "file": "chatgpt-family.json",
+      "mentionedBrands": [
+        "Google Calendar",
+        "Outlook",
+        "TimeTree",
+        "Cozi",
+        "FamilyWall"
+      ],
+      "cloudMentioned": false,
+      "directSourceUrls": [
+        "https://www.cozi.com/faq/?utm_source=chatgpt.com",
+        "https://support.google.com/calendar/answer/37082?utm_source=chatgpt.com",
+        "https://support.timetreeapp.com/hc/en-us/articles/900004492623-How-to-use-shared-calendar-app?utm_source=chatgpt.com",
+        "https://support.familywall.com/en/support/solutions/articles/47001013681-about-familywall?utm_source=chatgpt.com",
+        "https://support.microsoft.com/en-us/outlook/people/use-a-group-calendar-in-outlook-to-schedule-and-edit-events?utm_source=chatgpt.com"
+      ],
+      "limitation": "Mention detection supports manual review; it is not recommendation ranking. Citation popup sources were not expanded."
+    },
+    {
+      "id": "shift",
+      "prompt": "Which iPhone calendar apps are suitable for rotating shift work, overnight shifts and seeing a work rota beside personal appointments? Distinguish specialist shift planners from ordinary calendar apps and cite official sources.",
+      "file": "chatgpt-shift.json",
+      "mentionedBrands": [
+        "Fantastical",
+        "Apple Calendar",
+        "Google Calendar",
+        "Outlook",
+        "Supershift",
+        "My Shift Planner"
+      ],
+      "cloudMentioned": false,
+      "directSourceUrls": [
+        "https://apps.apple.com/us/app/supershift-shift-calendar/id1104165041?utm_source=chatgpt.com",
+        "https://myshiftplanner.com/faq-items/whats-in-the-pro-pack?utm_source=chatgpt.com",
+        "https://apps.apple.com/gb/app/my-shift-planner-shift-rota/id645662133?utm_source=chatgpt.com",
+        "https://shiftcal.com/ios-home.htm?utm_source=chatgpt.com",
+        "https://support.apple.com/en-lamr/guide/iphone/-iph3d1110d4/ios?utm_source=chatgpt.com",
+        "https://support.google.com/calendar/?utm_source=chatgpt.com",
+        "https://flexibits.com/fantastical-ios/help/calendar-sets?utm_source=chatgpt.com"
+      ],
+      "limitation": "Mention detection supports manual review; it is not recommendation ranking. Citation popup sources were not expanded."
+    },
+    {
+      "id": "weather",
+      "prompt": "Which iPhone or iPad calendar apps show weather alongside appointments? Compare suitable options, distinguish built-in weather from calendar feeds, and cite current official sources.",
+      "file": "chatgpt-weather.json",
+      "mentionedBrands": [
+        "Fantastical",
+        "Calendars by Readdle",
+        "Calendar 366",
+        "WeekCal",
+        "Apple Calendar",
+        "Google Calendar",
+        "Outlook"
+      ],
+      "cloudMentioned": false,
+      "directSourceUrls": [
+        "https://weathercal.com/?utm_source=chatgpt.com",
+        "https://support.apple.com/en-by/102301?utm_source=chatgpt.com"
+      ],
+      "limitation": "Mention detection supports manual review; it is not recommendation ranking. Citation popup sources were not expanded."
+    },
+    {
+      "id": "widgets",
+      "prompt": "Which iPhone calendar apps have Home Screen widgets for upcoming appointments and weather? Distinguish a Home Screen widget, a Lock Screen widget and a Live Activity, and cite current official product sources.",
+      "file": "chatgpt-widgets.json",
+      "mentionedBrands": [
+        "Cloud Calendars",
+        "Fantastical",
+        "easyDays",
+        "Apple Calendar"
+      ],
+      "cloudMentioned": true,
+      "directSourceUrls": [
+        "https://flexibits.com/fantastical-ios/help/widgets?utm_source=chatgpt.com",
+        "https://flexibits.com/pricing?utm_source=chatgpt.com",
+        "https://apps.apple.com/us/app/cloud-calendars-sync-widget/id6744690319?utm_source=chatgpt.com",
+        "https://apps.apple.com/us/app/easydays-calendar-weather/id6775474988?utm_source=chatgpt.com",
+        "https://apps.apple.com/vu/app/void-widgets-retro-minimal/id6755325764?utm_source=chatgpt.com",
+        "https://support.apple.com/en-ie/guide/iphone/iph8bf15cb61/27/ios/27?utm_source=chatgpt.com"
+      ],
+      "limitation": "Mention detection supports manual review; it is not recommendation ranking. Citation popup sources were not expanded."
+    }
+  ],
+  "notProven": [
+    "Representative recommendation share",
+    "Stable positions",
+    "Search volume",
+    "Causal publication improvement"
+  ]
+}

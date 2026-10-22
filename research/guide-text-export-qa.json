@@ -1,8 +1,8 @@
 {
-  "guides": 58,
+  "guides": 61,
   "selection": "tools/guide-text-selection.json",
   "extraction": "Visible article headings, paragraphs, lists, FAQs and source links; gallery/other-app cards excluded.",
-  "exportedCharacters": 383326,
+  "exportedCharacters": 400181,
   "records": [
     {
       "slug": "what-calendar-sync-actually-does",
@@ -73,8 +73,8 @@
     {
       "slug": "recurring-events-without-the-mess",
       "source": "https://www.cloud-calendars.com/articles/recurring-events-without-the-mess/",
-      "blocks": 44,
-      "characters": 6473
+      "blocks": 45,
+      "characters": 6592
     },
     {
       "slug": "time-zones-and-the-flight-you-booked",
@@ -181,8 +181,8 @@
     {
       "slug": "sharing-one-event-not-your-calendar",
       "source": "https://www.cloud-calendars.com/articles/sharing-one-event-not-your-calendar/",
-      "blocks": 46,
-      "characters": 6124
+      "blocks": 47,
+      "characters": 6235
     },
     {
       "slug": "inviting-people-who-do-not-have-the-app",
@@ -241,8 +241,8 @@
     {
       "slug": "drag-an-event-to-move-it",
       "source": "https://www.cloud-calendars.com/articles/drag-an-event-to-move-it/",
-      "blocks": 45,
-      "characters": 5855
+      "blocks": 46,
+      "characters": 5971
     },
     {
       "slug": "reading-a-chance-of-rain",
@@ -351,6 +351,24 @@
       "source": "https://www.cloud-calendars.com/articles/unwanted-calendar-events-iphone/",
       "blocks": 52,
       "characters": 8794
+    },
+    {
+      "slug": "shift-work-calendar-iphone-rotating-schedules",
+      "source": "https://www.cloud-calendars.com/articles/shift-work-calendar-iphone-rotating-schedules/",
+      "blocks": 40,
+      "characters": 5404
+    },
+    {
+      "slug": "booking-link-or-shared-calendar",
+      "source": "https://www.cloud-calendars.com/articles/booking-link-or-shared-calendar/",
+      "blocks": 40,
+      "characters": 5561
+    },
+    {
+      "slug": "natural-language-calendar-events-iphone",
+      "source": "https://www.cloud-calendars.com/articles/natural-language-calendar-events-iphone/",
+      "blocks": 39,
+      "characters": 5252
     }
   ]
 }

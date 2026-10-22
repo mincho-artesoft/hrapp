@@ -1,0 +1,26 @@
+{
+  "newPages": [
+    {
+      "slug": "shift-work-calendar-iphone-rotating-schedules",
+      "prerendered": true,
+      "indexable": true,
+      "bytes": 57944
+    },
+    {
+      "slug": "booking-link-or-shared-calendar",
+      "prerendered": true,
+      "indexable": true,
+      "bytes": 57988
+    },
+    {
+      "slug": "natural-language-calendar-events-iphone",
+      "prerendered": true,
+      "indexable": true,
+      "bytes": 57634
+    }
+  ],
+  "heldTranslatedArticlesAndHubs": 436,
+  "sitemapUrls": 95,
+  "privacySourceSha256": "25ce1d341a18967caf5ef68782358b48e3fb192346ff13aa7712b1935f5b28e4",
+  "scope": "Build output content/indexing assertions; public and visual checks follow deployment."
+}

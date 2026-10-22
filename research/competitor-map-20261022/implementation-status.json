@@ -1,0 +1,33 @@
+{
+  "date": "2026-10-22",
+  "goalStatus": "active_incomplete",
+  "previousGoalTurn": "No progress: status explanation only. Revalidated worktree and resumed research and publication.",
+  "googleActualQueries": 24,
+  "consumerChatGPTFreshSamples": 5,
+  "historicalChatGPTSamples": 3,
+  "newEnglishArticles": 3,
+  "totalEnglishArticles": 61,
+  "sitemapUrls": 95,
+  "heldTranslatedArticlesAndHubs": 436,
+  "implementedSlugs": [
+    "shift-work-calendar-iphone-rotating-schedules",
+    "booking-link-or-shared-calendar",
+    "natural-language-calendar-events-iphone"
+  ],
+  "delivered": [
+    "Query-to-canonical matrix in JSON and CSV",
+    "Separate unvalidated related-query backlog",
+    "Five saved fresh consumer ChatGPT answers with method limitations",
+    "Three source-backed English guides with contextual incoming links",
+    "Build and public URL checks; live deployment; visual inspection"
+  ],
+  "remaining": [
+    "Branded feature comparisons for Readdle, Fantastical, Cozi and TimeTree",
+    "Task/reminder and automatic time-blocking comparison gaps",
+    "Offline/privacy workflow verification before new claims",
+    "Classify 212 discovered follow-up strings, then verify useful distinct searches",
+    "Broaden languages/markets and independent consumer ChatGPT prompts",
+    "Use actual Search Console query data to prioritise and later measure changes"
+  ],
+  "completionAudit": "Not achieved: 24 English Google queries and five fresh consumer samples do not establish all competitor keywords or all markets. Canonical mapping is a coverage assessment, not proof every existing article completely satisfies its query."
+}
