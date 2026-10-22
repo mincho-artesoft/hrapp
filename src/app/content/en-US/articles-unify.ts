@@ -199,7 +199,7 @@ export const UNIFY_EN_US: Readonly<Record<string, LocalisedArticle>> = {
 },
 
   'what-calendar-sync-actually-does': {
-  "updated": "2026-10-21",
+  "updated": "2026-10-22",
   "title": "Calendar sync on iPhone: accounts, subscriptions and missing events",
   "short": "Calendar sync explained",
   "description": "Understand calendar sync, read-only subscriptions and local events. Trace one event between iPhone and iPad before changing accounts or deleting duplicates.",
@@ -264,11 +264,11 @@ export const UNIFY_EN_US: Readonly<Record<string, LocalisedArticle>> = {
   ],
   "claims": {},
   "practical": [
-    "Inspect the missing event’s calendar and owning account before changing any connection.",
-    "Check whether the calendar is listed but hidden, absent, read-only, or an imported copy.",
-    "Select the same account and calendar on both devices.",
-    "Create and rename one disposable test event in both directions; check the provider’s own view when available.",
-    "For duplicates, hide one source temporarily and compare ownership before deleting anything.",
+    "Calendar absent from the list: identify its account or local source before changing a connection. For a provider calendar, confirm the same identity and access. For Google, use “Google calendars missing on iPhone”; for a shared Google calendar, use “Shared calendar not appearing” below.",
+    "Calendar listed but unchecked: select it for display, then check a known event. If it remains missing, follow the date or search branch rather than treating visibility as proof that synchronization succeeded.",
+    "Specific date missing: compare that date, calendar and recurring occurrence with the provider where available. Check the app’s date coverage before recreating anything; “Google calendars missing on iPhone” explains the Google case.",
+    "Title search empty: try a distinctive title word and check the loaded dates. Use “Find past calendar events” below to separate search scope from missing provider data.",
+    "Two entries disagree: compare account, calendar, organiser, time zone and recurrence before editing either. Use “When calendars disagree” below to trace copies without deleting the source.",
     "If you need help, report the affected calendar type and failing direction without sending private event details or secret calendar URLs."
   ],
   "faq": [
@@ -301,12 +301,14 @@ export const UNIFY_EN_US: Readonly<Record<string, LocalisedArticle>> = {
     }
   ],
   "seeAlso": [
-  "when-two-calendars-disagree",
-  "icloud-google-and-outlook-in-one-view",
-  "why-a-shared-calendar-does-not-appear",
-  "disconnect-calendar-integration-without-losing-track",
-  "onecal-alternative-iphone-calendar-view-or-sync"
-]
+    "google-calendars-that-never-reach-your-iphone",
+    "why-a-shared-calendar-does-not-appear",
+    "find-old-calendar-events-by-account-date-and-title",
+    "when-two-calendars-disagree",
+    "icloud-google-and-outlook-in-one-view",
+    "disconnect-calendar-integration-without-losing-track",
+    "onecal-alternative-iphone-calendar-view-or-sync"
+  ]
 },
 
   'work-and-personal-without-two-apps': {

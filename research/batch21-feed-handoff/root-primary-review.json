@@ -1,0 +1,60 @@
+{
+  "date": "2026-10-22",
+  "sources": [
+    {
+      "url": "https://support.apple.com/en-gb/102301",
+      "scope": "Complete main body28–75 freshly read by root; specific Account=iCloud and same Apple Account conditions, separate platform/version labels."
+    },
+    {
+      "url": "https://support.apple.com/guide/iphone/use-multiple-calendars-iph3d1110d4/ios",
+      "scope": "Complete main body1157–1231 read after positioned follow-up; external read-only subscription versus visibility selection."
+    }
+  ],
+  "boundary": "Apple Calendar controls; no universal default-app dispatch, automatic Cloud visibility or refresh timing inferred. No actual subscription/user data operation.",
+  "rootNativeReadOnlyConfirmation": [
+    {
+      "file": "/Users/minchomilev/work/hrapp/Calendar/Main/CalendarApp.swift",
+      "ranges": [
+        [
+          165,
+          194
+        ]
+      ],
+      "sha256": "f07cc2ac3643c89526e5b10efaa2cbb5680346f98e83354a2fbae69e6b8e8a4c",
+      "scope": "These bounded ranges only, not whole file/runtime."
+    },
+    {
+      "file": "/Users/minchomilev/work/hrapp/Calendar/Sharing/SharedEventImportPayload.swift",
+      "ranges": [
+        [
+          55,
+          99
+        ]
+      ],
+      "sha256": "e054649e91629e750d0aec98157b4285b03fd2e67b0263d9aa8f3c6f54fea888",
+      "scope": "These bounded ranges only, not whole file/runtime."
+    },
+    {
+      "file": "/Users/minchomilev/work/hrapp/Calendar/Sharing/EventAppClipSharing.swift",
+      "ranges": [
+        [
+          345,
+          390
+        ]
+      ],
+      "sha256": "7865b1958517884be98991bfe26d4bcff86057d76b785c9fbbe732d8de87ab56",
+      "scope": "These bounded ranges only, not whole file/runtime."
+    },
+    {
+      "file": "/Users/minchomilev/work/hrapp/Calendar/Calendar/CalendarsSheetView.swift",
+      "ranges": [
+        [
+          641,
+          675
+        ]
+      ],
+      "sha256": "901ac260f4566d8ef7b2c65997248c7a1ad241924bf2d998ad3008292d9d25e8",
+      "scope": "These bounded ranges only, not whole file/runtime."
+    }
+  ]
+}

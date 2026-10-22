@@ -161,15 +161,12 @@
 
 .hero__word {
   display: inline-block;
-  margin-right: 0.24em;
   opacity: 0;
   transform: translate3d(0, 105%, 0) rotateX(-42deg);
   transform-origin: bottom center;
   filter: blur(9px);
   animation: word-rise 1.25s var(--ease-out) forwards;
   animation-delay: calc(0.24s + var(--i) * 0.075s);
-
-  &:last-child { margin-right: 0; }
 
   &--accent {
     @include gradient-text(#9ff6ff, var(--aurora-1));

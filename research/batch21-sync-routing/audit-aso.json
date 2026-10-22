@@ -1,0 +1,167 @@
+{
+  "date": "2026-10-22",
+  "sourceHead": "ddb3e91ab5f22e8cb2e61f30680884bba17e3189",
+  "sourceFile": "src/app/content/en-US/articles-unify.ts",
+  "slug": "what-calendar-sync-actually-does",
+  "status": "draft_only",
+  "beforeObjectSha256": "8e8413b51e1d775503ebd65721ee65eb80d982440c925ad85c36a9e86fbdef37",
+  "afterObjectSha256": "902d90b196c1186f5e6c9916ba040bd435834982effbee4455d1b861f0734ddc",
+  "exactChanges": [
+    {
+      "path": "practical",
+      "before": [
+        "Inspect the missing event’s calendar and owning account before changing any connection.",
+        "Check whether the calendar is listed but hidden, absent, read-only, or an imported copy.",
+        "Select the same account and calendar on both devices.",
+        "Create and rename one disposable test event in both directions; check the provider’s own view when available.",
+        "For duplicates, hide one source temporarily and compare ownership before deleting anything.",
+        "If you need help, report the affected calendar type and failing direction without sending private event details or secret calendar URLs."
+      ],
+      "after": [
+        "Calendar absent from the list: check the same account at the provider and confirm access. For Google, use “Google calendars missing on iPhone”; for a shared Google calendar, use “Shared calendar not appearing” below.",
+        "Calendar listed but unchecked: select it for display, then check a known event. If it remains missing, follow the date or search branch rather than treating visibility as proof that synchronization succeeded.",
+        "Specific date missing: compare that date, calendar and recurring occurrence with the provider where available. Check the app’s date coverage before recreating anything; “Google calendars missing on iPhone” explains the Google case.",
+        "Title search empty: try a distinctive title word and check the loaded dates. Use “Find past calendar events” below to separate search scope from missing provider data.",
+        "Two entries disagree: compare account, calendar, organiser, time zone and recurrence before editing either. Use “When calendars disagree” below to trace copies without deleting the source.",
+        "If you need help, report the affected calendar type and failing direction without sending private event details or secret calendar URLs."
+      ]
+    },
+    {
+      "path": "seeAlso",
+      "before": [
+        "when-two-calendars-disagree",
+        "icloud-google-and-outlook-in-one-view",
+        "why-a-shared-calendar-does-not-appear",
+        "disconnect-calendar-integration-without-losing-track",
+        "onecal-alternative-iphone-calendar-view-or-sync"
+      ],
+      "after": [
+        "google-calendars-that-never-reach-your-iphone",
+        "why-a-shared-calendar-does-not-appear",
+        "find-old-calendar-events-by-account-date-and-title",
+        "when-two-calendars-disagree",
+        "icloud-google-and-outlook-in-one-view",
+        "disconnect-calendar-integration-without-losing-track",
+        "onecal-alternative-iphone-calendar-view-or-sync"
+      ]
+    },
+    {
+      "path": "updated",
+      "before": "2026-10-21",
+      "after": "2026-10-22"
+    }
+  ],
+  "rationale": "Replace the existing practical summary with a compact five-symptom routing checklist plus the unchanged support-reporting step. Main article already supplies the detailed reasoning, so no extra section or duplicate explanatory paragraphs are added.",
+  "dateDecision": "Updated to 2026-10-22 because the practical diagnostic structure and related-guide navigation are substantively revised; sources unchanged, no claim of a new primary-source check.",
+  "completeBodyReads": [
+    {
+      "slug": "what-calendar-sync-actually-does",
+      "scope": "All fields, body paragraphs, practical steps, FAQs, sources and related links from current English object."
+    },
+    {
+      "slug": "when-two-calendars-disagree",
+      "scope": "All fields, body paragraphs, practical steps, FAQs, sources and related links from current English object."
+    },
+    {
+      "slug": "why-a-shared-calendar-does-not-appear",
+      "scope": "All fields, body paragraphs, practical steps, FAQs, sources and related links from current English object."
+    },
+    {
+      "slug": "google-calendars-that-never-reach-your-iphone",
+      "scope": "All fields, body paragraphs, practical steps, FAQs, sources and related links from current English object."
+    },
+    {
+      "slug": "find-old-calendar-events-by-account-date-and-title",
+      "scope": "All fields, body paragraphs, practical steps, FAQs, sources and related links from current English object."
+    }
+  ],
+  "routingEvidence": [
+    {
+      "branch": "calendar absent",
+      "source": "google-calendars-that-never-reach-your-iphone sections 1–4; why-a-shared-calendar-does-not-appear sections 1–2",
+      "boundary": "Google guide references are explicitly Google-specific, not universal provider instructions."
+    },
+    {
+      "branch": "listed unchecked",
+      "source": "what-calendar-sync-actually-does section 4; shared-calendar guide section 2",
+      "boundary": "Selection is a display check, not proof of complete synchronization."
+    },
+    {
+      "branch": "specific date absent",
+      "source": "google-calendars-that-never-reach-your-iphone section 5; old-event guide sections 2–5",
+      "boundary": "No universal history guarantee or assertion that every local event has a provider copy."
+    },
+    {
+      "branch": "title search empty",
+      "source": "find-old-calendar-events-by-account-date-and-title sections 1–5",
+      "boundary": "No new search-field capability or unlimited history claim."
+    },
+    {
+      "branch": "two records disagree",
+      "source": "when-two-calendars-disagree sections 1–5",
+      "boundary": "No last-edit-wins rule, deletion recommendation or new clone-detection feature."
+    }
+  ],
+  "templateChecks": {
+    "plainText": "article-page.component.html:21–22 and 57–58 interpolate paragraph/step strings; no Markdown or HTML linking assumed.",
+    "relatedLinks": "article-page.component.ts:70–76 filters slugs against content.articles and uses the target short label. HTML:88–96 renders anchors.",
+    "verifiedTargets": [
+      {
+        "slug": "google-calendars-that-never-reach-your-iphone",
+        "route": "/articles/google-calendars-that-never-reach-your-iphone",
+        "label": "Google calendars missing on iPhone"
+      },
+      {
+        "slug": "why-a-shared-calendar-does-not-appear",
+        "route": "/articles/why-a-shared-calendar-does-not-appear",
+        "label": "Shared calendar not appearing"
+      },
+      {
+        "slug": "find-old-calendar-events-by-account-date-and-title",
+        "route": "/articles/find-old-calendar-events-by-account-date-and-title",
+        "label": "Find past calendar events"
+      },
+      {
+        "slug": "when-two-calendars-disagree",
+        "route": "/articles/when-two-calendars-disagree",
+        "label": "When calendars disagree"
+      },
+      {
+        "slug": "icloud-google-and-outlook-in-one-view",
+        "route": "/articles/icloud-google-and-outlook-in-one-view",
+        "label": "Three providers, one view"
+      },
+      {
+        "slug": "disconnect-calendar-integration-without-losing-track",
+        "route": "/articles/disconnect-calendar-integration-without-losing-track",
+        "label": "Disconnect a calendar integration carefully"
+      },
+      {
+        "slug": "onecal-alternative-iphone-calendar-view-or-sync",
+        "route": "/articles/onecal-alternative-iphone-calendar-view-or-sync",
+        "label": "Cloud Calendars and OneCal by workflow"
+      }
+    ],
+    "allRoutesExist": true,
+    "inlineMarkdown": false
+  },
+  "validation": {
+    "sameFieldShape": true,
+    "sectionsUnchanged": true,
+    "sourcesUnchanged": true,
+    "faqsUnchanged": true,
+    "practicalSteps": 6,
+    "seeAlsoUnique": true,
+    "claimsEmpty": true,
+    "changedFields": [
+      "practical",
+      "seeAlso",
+      "updated"
+    ]
+  },
+  "limits": [
+    "No source integration, build, deployment, account operation, native action or paid API.",
+    "Related-route existence checked from current English modules and article index; no deployed-page runtime test.",
+    "Existing primary-source citations retained; no fresh external research performed or implied."
+  ]
+}

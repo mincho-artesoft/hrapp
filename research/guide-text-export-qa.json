@@ -2,13 +2,13 @@
   "guides": 54,
   "selection": "tools/guide-text-selection.json",
   "extraction": "Visible article headings, paragraphs, lists, FAQs and source links; gallery/other-app cards excluded.",
-  "exportedCharacters": 325638,
+  "exportedCharacters": 327473,
   "records": [
     {
       "slug": "what-calendar-sync-actually-does",
       "source": "https://www.cloud-calendars.com/articles/what-calendar-sync-actually-does/",
-      "blocks": 58,
-      "characters": 9144
+      "blocks": 60,
+      "characters": 10049
     },
     {
       "slug": "why-a-shared-calendar-does-not-appear",
@@ -223,8 +223,8 @@
     {
       "slug": "the-secret-address-of-a-google-calendar",
       "source": "https://www.cloud-calendars.com/articles/the-secret-address-of-a-google-calendar/",
-      "blocks": 46,
-      "characters": 6260
+      "blocks": 49,
+      "characters": 7190
     },
     {
       "slug": "what-guests-can-do-to-your-event",

@@ -285,7 +285,17 @@
           "priority": "research_gate"
         }
       ],
-      "coverageScope": "Complete current English bodies reviewed for these tasks, not every provider repair/migration path or all translated bodies."
+      "coverageScope": "Complete current English bodies reviewed for these tasks, not every provider repair/migration path or all translated bodies.",
+      "diagnosticRoutingFollowup": {
+        "date": "2026-10-22",
+        "evidence": [
+          "batch21-sync-routing/audit-aso.json",
+          "batch21-sync-routing/root-polish.json",
+          "batch21-static-qa.json"
+        ],
+        "change": "Five symptom branches now point to actual existing guide labels/related links; local calendars remain distinct from provider accounts. Main sections/FAQ/sources unchanged.",
+        "remaining": "Provider-specific repair/recovery and migration gaps remain; branch routing is not universal repair."
+      }
     },
     {
       "id": "timezones",
@@ -334,8 +344,7 @@
     "Integrate the actual new screenshot/video set after the generating task or folder is identified. Existing1240galleryrenditions and widgets playback verified separately; no new replacement assumed ready.",
     "Measure equal elapsed Search Console windows and repeat controlled fixed ChatGPT prompts. IndexNow acceptance and successful delivery do not prove ranking/citation lift.",
     "Continue localized ASO semantic/keyword allocation review where evidence is weak;50locale250fieldAPIreadback proves persistence only.",
-    "Investigate subscription-link destination-app/account handoff against Apple documentation and native read-only evidence before product-specific instructions.",
-    "Inspect hero title word spacing/accessibility in RTL: animated inline word spans use physical margin-right and concatenated textContent. Confirm a real defect before a separate template change."
+    "Subscription-link destination advice now attributes Apple controls and distinguishes Cloud invitation links. Arbitrary external-feed handling and released/runtime subscription visibility are not established by source inspection; no blanket support claim."
   ],
   "existingCanonicalAudit": "competitors/existing-canonical-review-20261021-batch02.json",
   "existingCanonicalAuditScope": "Initial 45-title/31-body review is historical. Latest targeted seven complete English objects reviewed in batch20-ledger-reconciliation-aso.json; two cluster statuses reconciled from substantive bodies. Other candidate statuses retain their bounded prior evidence.",
@@ -362,7 +371,9 @@
     "latestCorrections": "Selected iCloud/Google calendars, available weather, Microsoft calendar connections with Premium; hero lead and search descriptions. Earlier CTA/week/provider/account/weather corrections have separate publication evidence.",
     "evidence": [
       "batch20-home-built-qa.json",
-      "batch20-public-qa.json"
+      "batch20-public-qa.json",
+      "batch21-static-qa.json",
+      "batch21-public-qa.json"
     ],
     "sitemapUrls": 504,
     "publicArtifactsExactBuild": 507,
@@ -372,7 +383,12 @@
       "ChatGPT citations",
       "Released app feature parity",
       "Independent native-speaker review"
-    ]
+    ],
+    "headingSpacing": {
+      "locales": 30,
+      "evidence": "batch21-static-qa.json",
+      "change": "Actual text separators between animated words and lines replace physical right margins; responsive visual checks separate."
+    }
   },
   "responsive": {
     "viewport": 575,
@@ -660,5 +676,25 @@
     ],
     "goalComplete": false
   },
-  "historyNote": "Publication-numbered fields through earlier batches retain historical counts and scope. currentInventory/asc/homepage and latest publication evidence are the current accounting; none establishes exhaustive competitor/query coverage."
+  "historyNote": "Publication-numbered fields through earlier batches retain historical counts and scope. currentInventory/asc/homepage and latest publication evidence are the current accounting; none establishes exhaustive competitor/query coverage.",
+  "twentyFirstPublication": {
+    "date": "2026-10-22",
+    "newGuides": 0,
+    "targetedEnglishGuideUpdates": 2,
+    "heroHeadingSpacingLocales": 30,
+    "articles": 441,
+    "englishArticles": 54,
+    "sitemapUrls": 504,
+    "evidence": [
+      "batch21-source-qa.json",
+      "batch21-static-qa.json",
+      "batch21-metadata-qa.json",
+      "batch21-browser-qa.json",
+      "batch21-public-qa.json",
+      "batch21-invalidation-status.json"
+    ],
+    "scope": "Receiving app/account verification and diagnostic routing from actual guide bodies; semantic H1 spacing, all30built headings, representative LTR/RTL visual geometry and507public artifacts verified. Not exhaustive intent/ranking or product-runtime proof.",
+    "goalComplete": false,
+    "publicArtifactsExactBuild": 507
+  }
 }

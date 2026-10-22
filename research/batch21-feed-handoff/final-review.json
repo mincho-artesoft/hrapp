@@ -1,0 +1,55 @@
+{
+  "date": "2026-10-22",
+  "decision": "pass_no_material_blocker",
+  "reviewScope": "Complete final article object, complete native evidence and primary research; before object parsed for structural context. This is a draft/evidence review, not a new native or runtime audit.",
+  "reviewedFiles": [
+    {
+      "file": "research/batch21-feed-handoff/the-secret-address-of-a-google-calendar.json",
+      "sha256": "0cadfbfc9dca3de4653cd7ecafaaea59ad7e5836b1d7a6cf28c600304f642271"
+    },
+    {
+      "file": "research/batch21-feed-handoff/before.json",
+      "sha256": "a0fe98d6277f677aa04cfaf4f60a6ace2cb451ec5e164d90450e8b49193bb492"
+    },
+    {
+      "file": "research/batch21-feed-handoff/primary-research.json",
+      "sha256": "a2157321281a20ba5008cdc781370a413b232f581c919c19d1ad74a2ac519fc2"
+    },
+    {
+      "file": "research/batch21-feed-handoff/native-evidence.json",
+      "sha256": "f0c6461d3ec873979721d0145c8e54c0c4e9b7e695741103bc8d9c746e6a95d2"
+    }
+  ],
+  "blockers": [],
+  "findings": [],
+  "checks": {
+    "sections": 6,
+    "paragraphs": 13,
+    "practicalSteps": 6,
+    "faqs": 3,
+    "sources": 5,
+    "emptyClaims": true,
+    "updated": "2026-10-22"
+  },
+  "reasoning": [
+    "Apple-specific Account/iCloud and same-Apple-Account wording matches the official iCloud subscription instructions. It does not instruct users to select iCloud in Cloud Calendars.",
+    "Checking the opened app and named calendar is actionable verification, not a claim of universal OS routing.",
+    "The final sentence explicitly avoids promising that opening a link saves a subscription or establishes Cloud visibility.",
+    "Google external subscription versus Cloud invitation is made explicit without claiming globally absent webcal support.",
+    "Generic downloaded-file import distinction is not extended into a claim that app-tracked Cloud invitations never refresh.",
+    "Existing receiver-controlled refresh and non-recall boundaries remain; no automatic/immediate delivery claim added.",
+    "No material audit-speak: wording tells readers what to inspect and does not expose code-search or certification machinery."
+  ],
+  "limits": [
+    "Original Google/Microsoft sources were not freshly fetched in this review; targeted Apple evidence and existing article context were reviewed.",
+    "Native evidence establishes bounded current-source behavior, not released/runtime behavior.",
+    "No special tracked-refresh capability was added to user copy."
+  ],
+  "notPerformed": [
+    "Source edits",
+    "Native operations",
+    "Build",
+    "Deployment",
+    "Customer actions"
+  ]
+}

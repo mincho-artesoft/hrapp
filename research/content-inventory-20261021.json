@@ -1,5 +1,5 @@
 {
-  "date": "2026-10-21T23:36:10.045Z",
+  "date": "2026-10-21T23:53:48.301Z",
   "status": "source_inventory_not_quality_approval",
   "articles": [
     {
@@ -1475,14 +1475,16 @@
       "descriptionCharacters": 156,
       "sections": 6,
       "faq": 3,
-      "words": 801,
+      "words": 914,
       "source": "articles-google.ts",
       "sources": [
         "https://support.google.com/calendar/answer/37648?hl=en",
         "https://support.google.com/calendar/answer/37082?hl=en",
-        "https://support.microsoft.com/en-us/outlook/import-or-subscribe-to-a-calendar-in-outlook-com-or-outlook-on-the-web"
+        "https://support.microsoft.com/en-us/outlook/import-or-subscribe-to-a-calendar-in-outlook-com-or-outlook-on-the-web",
+        "https://support.apple.com/en-gb/102301",
+        "https://support.apple.com/guide/iphone/use-multiple-calendars-iph3d1110d4/ios"
       ],
-      "updated": "2026-10-21"
+      "updated": "2026-10-22"
     },
     {
       "locale": "en-US",
@@ -1960,13 +1962,13 @@
       "descriptionCharacters": 156,
       "sections": 7,
       "faq": 4,
-      "words": 1233,
+      "words": 1330,
       "source": "articles-unify.ts",
       "sources": [
         "https://support.apple.com/guide/iphone/use-multiple-calendars-iph3d1110d4/ios",
         "https://support.google.com/calendar/answer/37100?hl=en&co=GENIE.Platform%3DiOS"
       ],
-      "updated": "2026-10-21"
+      "updated": "2026-10-22"
     },
     {
       "locale": "en-US",

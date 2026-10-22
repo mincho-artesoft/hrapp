@@ -1,0 +1,6 @@
+{
+  "path": "practical[0]",
+  "before": "Calendar absent from the list: check the same account at the provider and confirm access. For Google, use “Google calendars missing on iPhone”; for a shared Google calendar, use “Shared calendar not appearing” below.",
+  "after": "Calendar absent from the list: identify its account or local source before changing a connection. For a provider calendar, confirm the same identity and access. For Google, use “Google calendars missing on iPhone”; for a shared Google calendar, use “Shared calendar not appearing” below.",
+  "reason": "Retain local calendars as a separate source rather than require every absent calendar to have a provider account. Other draft fields unchanged."
+}

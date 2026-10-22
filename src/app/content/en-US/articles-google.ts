@@ -100,13 +100,14 @@ export const GOOGLE_EN_US: Readonly<Record<string, LocalisedArticle>> = {
       "heading": "Check what the receiving application actually added",
       "body": [
         "A subscription follows a feed; an imported file creates a separate copy. Read the receiving application’s instructions and confirm which action you are taking. If you simply open a downloaded calendar file, do not assume the resulting appointments will follow later changes.",
+        "Check which app actually opens the link and which account its subscription setup shows. In Apple Calendar, Apple’s instructions select iCloud in Account and use the same Apple Account on the devices intended to show that subscription. After saving, look for the named calendar in the receiving app’s calendar list and select it for viewing. An opened link alone does not confirm that a subscription was saved or that Cloud Calendars can display it.",
         "Use an ordinary, non-sensitive event you already recognise to compare the calendar name, date and displayed details. Avoid creating a second subscription to diagnose the first: two visible copies can make a delayed update look like a conflicting appointment. Hide one calendar temporarily when identifying the source."
       ]
     },
     {
       "heading": "Keep Google and Cloud Calendars links separate",
       "body": [
-        "Cloud Calendars has its own event and calendar sharing flows, including subscription feeds. Those are not Google secret addresses. Establish whether the sender shared one event, a calendar, or an account-based invitation before choosing how to open it.",
+        "Cloud Calendars has its own event and calendar sharing flows, including subscription feeds. Those are not Google secret addresses. Establish whether the sender shared one event, a calendar, or an account-based invitation before choosing how to open it. A Google secret iCal address belongs in a compatible app’s external-subscription flow; it is not a Cloud Calendars invitation link.",
         "A Cloud Calendars recipient can have a Reader, Writer or Owner role. A feed address alone should not be treated as proof of editing rights. Likewise, receiving a Google viewing address does not make you the owner of its calendar. Ask the sender which system should be used for changes."
       ]
     },
@@ -130,7 +131,7 @@ export const GOOGLE_EN_US: Readonly<Record<string, LocalisedArticle>> = {
     "Identify whether you have an account connection, invitation, subscription or file.",
     "Check the owning calendar before copying an address.",
     "Keep a Google secret address for your own compatible applications.",
-    "Verify the receiving application subscribed rather than imported.",
+    "Verify which app and account received the calendar, and that it subscribed rather than imported. Check the named calendar and a known event before adding anything again.",
     "Confirm urgent changes with the organiser instead of relying on refresh timing.",
     "If a secret address was exposed, follow Google’s reset guidance and update intended connections."
   ],
@@ -161,6 +162,14 @@ export const GOOGLE_EN_US: Readonly<Record<string, LocalisedArticle>> = {
     {
       "label": "Microsoft: importing versus subscribing and update timing",
       "url": "https://support.microsoft.com/en-us/outlook/import-or-subscribe-to-a-calendar-in-outlook-com-or-outlook-on-the-web"
+    },
+    {
+      "label": "Apple: add calendar subscriptions in iCloud",
+      "url": "https://support.apple.com/en-gb/102301"
+    },
+    {
+      "label": "Apple: multiple calendars, subscriptions and display selection on iPhone",
+      "url": "https://support.apple.com/guide/iphone/use-multiple-calendars-iph3d1110d4/ios"
     }
   ],
   "seeAlso": [
@@ -168,7 +177,7 @@ export const GOOGLE_EN_US: Readonly<Record<string, LocalisedArticle>> = {
     "taking-back-a-calendar-you-shared",
     "sharing-one-event-not-your-calendar"
   ],
-  "updated": "2026-10-21"
+  "updated": "2026-10-22"
 },
 
   'what-guests-can-do-to-your-event': {

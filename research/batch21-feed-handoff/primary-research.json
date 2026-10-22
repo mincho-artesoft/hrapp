@@ -1,0 +1,121 @@
+{
+  "schemaVersion": 1,
+  "date": "2026-10-22",
+  "scope": "Two fresh official Apple main bodies, complete current English secret-address article and complete batch26 evidence. No native or runtime investigation.",
+  "localReads": [
+    {
+      "file": "research/competitors/batch26-original-corpus-completion-20261022.json",
+      "scope": "Complete evidence JSON."
+    },
+    {
+      "file": "src/app/content/en-US/articles-google.ts",
+      "slug": "the-secret-address-of-a-google-calendar",
+      "scope": "Complete object: lede, six sections/twelve paragraphs, practical steps, three FAQs, sources and related routes.",
+      "lines": [
+        78,
+        172
+      ],
+      "objectSHA256": "ff572e59b1927882fc167514f82f547aa4b91fbf29de4f1416acde9146035621"
+    }
+  ],
+  "discovery": {
+    "query": "site.support.apple.com guide iphone subscribe calendar link URL iCloud account subscription calendar",
+    "date": "2026-10-22",
+    "limits": "Search returned official pages plus proxy/mirror pages despite domain text. Mirrors and old manuals were excluded. No result position, volume or citation measurement.",
+    "officialSearchResultOpened": "https://support.apple.com/en-gb/102301",
+    "directPrimaryURLFromObservedMirrorTarget": "https://support.apple.com/guide/iphone/use-multiple-calendars-iph3d1110d4/ios",
+    "note": "Opened the actual Apple host for the guide; did not use mirrored body as evidence."
+  },
+  "sources": [
+    {
+      "id": "apple-icloud-subscription",
+      "url": "https://support.apple.com/en-gb/102301",
+      "title": "Add calendar subscriptions in iCloud",
+      "status": "full_extracted_main_body_reviewed",
+      "readRanges": [
+        [
+          28,
+          75
+        ]
+      ],
+      "totalExtractedLines": 90,
+      "publishedDate": "2026-05-27",
+      "facts": [
+        "Apple gives separate iOS/iPadOS 26-or-later and 18-or-earlier instructions, with different confirmation labels.",
+        "Its Calendar subscription flow takes a web address and a calendar title/name. Selecting iCloud in Account is explicit.",
+        "Cross-device availability is described for subscriptions added to iCloud with the same Apple Account on the devices.",
+        "Mac subscription setup selects iCloud through Location, a different UI."
+      ],
+      "limits": [
+        "These are Apple Calendar controls, not Cloud Calendars controls.",
+        "No assurance that every destination supports iCloud or that third-party apps automatically display the subscription."
+      ]
+    },
+    {
+      "id": "apple-multiple-calendars",
+      "url": "https://support.apple.com/guide/iphone/use-multiple-calendars-iph3d1110d4/ios",
+      "title": "Set up multiple calendars on iPhone",
+      "status": "full_extracted_main_body_reviewed",
+      "readRanges": [
+        [
+          1157,
+          1231
+        ]
+      ],
+      "totalExtractedLines": 1247,
+      "retrievalNote": "Initial open returned lengthy navigation. Follow-up find and positioned open exposed and allowed full main body review.",
+      "facts": [
+        "Apple describes external calendar subscriptions as read-only.",
+        "The guide documents entering an ICS URL through Calendar and also subscribing by tapping a calendar link.",
+        "The Calendars list lets users select calendars for viewing; its Info controls manage individual calendar settings."
+      ],
+      "limits": [
+        "The page does not specify universal operating-system dispatch rules for all HTTPS, webcal and downloaded ICS links.",
+        "It does not establish that every link goes to Apple Calendar or that Cloud Calendars receives any particular link.",
+        "Documented unsubscribe and move actions were not performed and are not recommended as diagnostic steps."
+      ]
+    }
+  ],
+  "failures": [],
+  "notEstablished": [
+    "A universal default receiving app for every URL/file type.",
+    "A successful link open proving that a subscription was saved.",
+    "Cloud Calendars incoming subscription handling, permissions or visibility.",
+    "A universal post-save Account inspection menu across all iOS versions.",
+    "Immediate refresh or cross-device display in every third-party app."
+  ],
+  "currentGuideAssessment": {
+    "alreadyCovered": [
+      "Feed subscription versus imported copy",
+      "Owning calendar and source identity",
+      "Read-only access versus sharing roles",
+      "Receiver-controlled refresh",
+      "Avoiding duplicate subscriptions",
+      "Keeping secret URLs private"
+    ],
+    "specificMissingCheck": "Section three does not explicitly ask the reader to identify the app that opened and the subscription account chosen during setup.",
+    "decision": "Improve existing section, not a new article."
+  },
+  "proposedExistingSectionAddition": {
+    "heading": "Check what the receiving application actually added",
+    "text": "Check which app actually opens the link and which account the subscription setup shows. In Apple Calendar, Apple’s iCloud instructions explicitly select iCloud in Account; they also require the same Apple Account on devices intended to show that subscription. After saving, look for the named calendar in the receiving app’s calendar list and select it for viewing. Opening a link alone is not confirmation that the subscription was saved or is visible in Cloud Calendars.",
+    "classification": "Apple-specific documented facts plus a conservative verification recommendation; the final Cloud boundary states absence of proof rather than asserting behavior.",
+    "integrationNotes": [
+      "Keep the existing subscription-versus-import distinction and non-sensitive event comparison.",
+      "Do not instruct readers to resubscribe or remove the first subscription before identifying its destination.",
+      "Avoid exact Find/Subscribe or Done/Add instructions unless version is identified.",
+      "Add the Apple sources visibly if integrating.",
+      "Parent/native delegate must approve any Cloud-specific steps separately."
+    ]
+  },
+  "notPerformed": [
+    "Source integration",
+    "Build",
+    "Deployment",
+    "Native inspection or edits",
+    "Customer/account/calendar operations",
+    "Live subscription",
+    "Paid APIs",
+    "Original failed URL retries"
+  ]
+}

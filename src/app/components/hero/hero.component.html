@@ -22,9 +22,9 @@
                 class="hero__word"
                 [class.hero__word--accent]="line.accent"
                 [style.--i]="li * 4 + wi"
-              >{{ word }}</span>
+              >{{ word }}</span>{{ wi < line.words.length - 1 ? ' ' : '' }}
             }
-          </span>
+          </span>{{ li < titleLines().length - 1 ? ' ' : '' }}
         }
       </h1>
 
