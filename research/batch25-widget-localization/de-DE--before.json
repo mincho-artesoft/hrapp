@@ -1,0 +1,79 @@
+{
+  "updated": "2026-10-21",
+  "title": "Kommende Kalendertermine auf dem iPhone-Home-Bildschirm",
+  "short": "Kommende Termine im Widget",
+  "description": "Wählen Sie ein Termin-Widget, prüfen Sie ausgewählte Kalender und fehlende Einträge. Eine leere Liste bedeutet nicht, dass Ihr Kalender leer ist.",
+  "lede": "Für die nächsten Termine brauchen Sie ein Widget mit Terminliste. Eine Kachel mit Datum und Wetter beantwortet eine andere Frage. Dieser Leitfaden wird von Arte Soft, dem Entwickler von Cloud Calendars, veröffentlicht.",
+  "sections": [
+    {
+      "heading": "Zuerst das passende Layout wählen",
+      "body": [
+        "„Calendar Events“ ist das mittlere Layout mit Terminliste. „Calendar Events Large“ bietet mehr Platz. „Calendar & Weather“ ist ein eigenes Layout für Datum und Wetter; die kleine Variante zeigt nicht automatisch den nächsten Termin. Auf Ihrem Gerät können die Namen übersetzt sein.",
+        "Halten Sie einen freien Bereich des Home-Bildschirms gedrückt und öffnen Sie über die Bearbeitungsoptionen die Widget-Auswahl. Suchen Sie Cloud Calendars und vergleichen Sie die Vorschau, bevor Sie ein Layout hinzufügen. Diese iPhone-Auswahl ist von den Kalenderansichten in der App getrennt."
+      ]
+    },
+    {
+      "heading": "Welche Termine als kommend gelten",
+      "body": [
+        "Die Liste berücksichtigt ausgewählte Kalender und zeitlich festgelegte Termine, deren Beginn noch bevorsteht. Ganztägige und bereits begonnene Einträge gehören nicht zu dieser Vorschau. Ein Geburtstag oder eine laufende Besprechung kann deshalb in der App sichtbar sein und im Widget fehlen.",
+        "Wenn heute nur ein ganztägiger Reiseeintrag vorhanden ist, beweist eine leere Liste keinen Datenverlust. Öffnen Sie den vollständigen Tag. Lesen Sie außerdem das Datum der nächsten Zeile: Sie kann zu morgen oder einem späteren Tag gehören."
+      ]
+    },
+    {
+      "heading": "Zuerst mit der App vergleichen",
+      "body": [
+        "Suchen Sie in Cloud Calendars einen konkreten zukünftigen Termin. Prüfen Sie den zugehörigen Kalender, dessen Auswahl und den Kalenderzugriff der App. Vergleichen Sie Titel, Datum und Beginn. Fehlt der Termin auch in der App, beginnen Sie bei Konto und Synchronisierung.",
+        "Für einen übersichtlichen Vergleich eignet sich ein unverbindlicher Testtermin in einem eigenen Kalender. Verwenden Sie einen eindeutigen Titel und einen zukünftigen Beginn. Ändern Sie dafür keine echte Einladung und entfernen Sie kein Konto."
+      ]
+    },
+    {
+      "heading": "Aktualisierungen richtig einordnen",
+      "body": [
+        "Widgets zeigen gespeicherte Informationen; sie laufen nicht ständig wie eine geöffnete App. iOS bestimmt die Aktualisierung. Öffnen Sie die App und kontrollieren Sie den Termin, ohne daraus eine feste Wartezeit für das Widget abzuleiten.",
+        "Bleibt die App korrekt und das Widget falsch, notieren Sie Layout, Kalender, Terminzeit sowie App- und iOS-Version. Eine leere Liste, ein alter Termin und eine falsche Uhrzeit sind unterschiedliche Beobachtungen."
+      ]
+    },
+    {
+      "heading": "Wetter getrennt vom Termin prüfen",
+      "body": [
+        "Das Wetter neben dem Datum ist keine Vorhersage für den Ort und die Startzeit jeder Besprechung. Prüfen Sie für einen Ausflug den gewünschten Ort und die passende Stunde in der Wetteransicht.",
+        "Nutzen Sie das Widget zur Orientierung und den vollständigen Kalender für ganztägige Verpflichtungen, Details und die gesamte Tagesplanung."
+      ]
+    }
+  ],
+  "claims": {},
+  "practical": [
+    "Ein Layout mit Terminliste auswählen.",
+    "Einen zukünftigen Termin im ausgewählten Kalender prüfen.",
+    "Datum und Uhrzeit zunächst mit der App vergleichen.",
+    "Dauerhafte Abweichungen dokumentieren, statt Daten zu löschen."
+  ],
+  "faq": [
+    {
+      "q": "Warum fehlt mein Geburtstag?",
+      "a": "Die Vorschau schließt ganztägige Einträge aus. Prüfen Sie Geburtstage im vollständigen Kalender."
+    },
+    {
+      "q": "Zeigt das kleine Widget den nächsten Termin?",
+      "a": "Das kleine Layout „Calendar & Weather“ zeigt Datum und Wetter. Für Termine wählen Sie eine Terminliste."
+    },
+    {
+      "q": "Bedeutet eine leere Liste, dass ich heute frei habe?",
+      "a": "Nein. Ganztägige oder laufende Termine, nicht ausgewählte Kalender und veraltete Informationen können fehlen."
+    }
+  ],
+  "sourcesHeading": "Quellen und Apple-Anleitungen",
+  "sources": [
+    {
+      "label": "Apple: Widgets auf dem iPhone hinzufügen und bearbeiten",
+      "url": "https://support.apple.com/118610"
+    },
+    {
+      "label": "Apple: Widgets aktuell halten",
+      "url": "https://developer.apple.com/documentation/widgetkit/keeping-a-widget-up-to-date"
+    }
+  ],
+  "seeAlso": [
+    "a-countdown-to-your-next-meeting"
+  ]
+}

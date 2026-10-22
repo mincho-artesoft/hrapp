@@ -1,0 +1,242 @@
+{
+  "date": "2026-10-22",
+  "slug": "the-widget-that-shows-what-is-next",
+  "verdict": "pass_no_material_corrections_required",
+  "scope": "All four actual FR/IT/BG/JA draft files existed and were completely read, including all metadata, body paragraphs, practical steps, FAQs, source labels and related slugs. Compared with full English source previously read in this task chain; current hash confirms unchanged.",
+  "sourceObjectSha256": "2020665809742071ae6d258146c8e0474768c6e2c44fcf5c85296bda9ea6044e",
+  "sourceUnchangedSinceCompleteRead": true,
+  "reviewerIndependence": "These four drafts were authored by other agents. This is a bounded cross-agent semantic review, not independent native-speaker certification or product runtime testing. DE/ES author self-review is separately recorded, not included in this cross-review.",
+  "localeChecks": [
+    {
+      "locale": "fr-FR",
+      "file": "research/batch25-widget-localization/fr-FR.json",
+      "fullTextRead": true,
+      "descriptionCharacters": 145,
+      "sections": 7,
+      "paragraphs": 15,
+      "paragraphDistribution": [
+        2,
+        3,
+        2,
+        2,
+        2,
+        2,
+        2
+      ],
+      "practical": 4,
+      "faq": 3,
+      "sources": 3,
+      "exactSourceUrls": true,
+      "date": "2026-10-22",
+      "emptyClaims": true,
+      "sameSchema": true,
+      "relatedRoutes": [
+        {
+          "slug": "a-countdown-to-your-next-meeting",
+          "inLocaleModules": true,
+          "inArticleIndex": true
+        }
+      ],
+      "pass": true,
+      "rawFileSha256": "c6c8e0f08fb66622a7a0a6e650700d84d96ab6b3ac7977492569a4421cb2f6cc",
+      "parsedObjectSha256": "83f65ac037f3446f7f0552e98b63bcab44f5fde70611efd7a05109d4159c4a10",
+      "priorReviewedParsedObjectSha256": "83f65ac037f3446f7f0552e98b63bcab44f5fde70611efd7a05109d4159c4a10",
+      "changedSincePriorReview": false
+    },
+    {
+      "locale": "it",
+      "file": "research/batch25-widget-localization/it.json",
+      "fullTextRead": true,
+      "descriptionCharacters": 151,
+      "sections": 7,
+      "paragraphs": 15,
+      "paragraphDistribution": [
+        2,
+        3,
+        2,
+        2,
+        2,
+        2,
+        2
+      ],
+      "practical": 4,
+      "faq": 3,
+      "sources": 3,
+      "exactSourceUrls": true,
+      "date": "2026-10-22",
+      "emptyClaims": true,
+      "sameSchema": true,
+      "relatedRoutes": [
+        {
+          "slug": "a-countdown-to-your-next-meeting",
+          "inLocaleModules": true,
+          "inArticleIndex": true
+        }
+      ],
+      "pass": true,
+      "rawFileSha256": "20ea30e849df5ade487471f04345747158f138d380165731d0573ca872c5c36f",
+      "parsedObjectSha256": "ed2bdb4a0d9d204c71da9fbed3a7b2f80ddf449faa43da1361f373ac68477c7d",
+      "priorReviewedParsedObjectSha256": "ed2bdb4a0d9d204c71da9fbed3a7b2f80ddf449faa43da1361f373ac68477c7d",
+      "changedSincePriorReview": false
+    },
+    {
+      "locale": "bg",
+      "file": "research/batch25-widget-localization/bg.json",
+      "fullTextRead": true,
+      "descriptionCharacters": 125,
+      "sections": 7,
+      "paragraphs": 15,
+      "paragraphDistribution": [
+        2,
+        3,
+        2,
+        2,
+        2,
+        2,
+        2
+      ],
+      "practical": 4,
+      "faq": 3,
+      "sources": 3,
+      "exactSourceUrls": true,
+      "date": "2026-10-22",
+      "emptyClaims": true,
+      "sameSchema": true,
+      "relatedRoutes": [
+        {
+          "slug": "calendar-notifications-missing-silent-or-duplicated",
+          "inLocaleModules": true,
+          "inArticleIndex": true
+        },
+        {
+          "slug": "weather-inside-your-calendar",
+          "inLocaleModules": true,
+          "inArticleIndex": true
+        }
+      ],
+      "pass": true,
+      "rawFileSha256": "45502a5d7eb1d04276a33d8fac610ba3653d331504b8926357a38ae9d83eacc8",
+      "parsedObjectSha256": "08599bb1d6307bd41641d5758c08c8b6a9c3dc8dfdf2914534671290280e03b8",
+      "priorReviewedParsedObjectSha256": "08599bb1d6307bd41641d5758c08c8b6a9c3dc8dfdf2914534671290280e03b8",
+      "changedSincePriorReview": false,
+      "revalidation": "Complete actual current file reread, structure/sources/date/routes rechecked."
+    },
+    {
+      "locale": "ja",
+      "file": "research/batch25-widget-localization/ja.json",
+      "fullTextRead": true,
+      "descriptionCharacters": 68,
+      "sections": 7,
+      "paragraphs": 15,
+      "paragraphDistribution": [
+        2,
+        3,
+        2,
+        2,
+        2,
+        2,
+        2
+      ],
+      "practical": 4,
+      "faq": 3,
+      "sources": 3,
+      "exactSourceUrls": true,
+      "date": "2026-10-22",
+      "emptyClaims": true,
+      "sameSchema": true,
+      "relatedRoutes": [
+        {
+          "slug": "icloud-google-and-outlook-in-one-view",
+          "inLocaleModules": true,
+          "inArticleIndex": true
+        },
+        {
+          "slug": "weather-inside-your-calendar",
+          "inLocaleModules": true,
+          "inArticleIndex": true
+        }
+      ],
+      "pass": true,
+      "rawFileSha256": "d37dc43a095376c1fc6652e82d87236e318c687d0944c08ab763723b66cfb30d",
+      "parsedObjectSha256": "35c290f444d327216987e5ed3a25fc13c414ffafdf2b53fa7004f9ca4cb44170",
+      "priorReviewedParsedObjectSha256": "35c290f444d327216987e5ed3a25fc13c414ffafdf2b53fa7004f9ca4cb44170",
+      "changedSincePriorReview": false,
+      "revalidation": "Complete actual current file reread, structure/sources/date/routes rechecked."
+    }
+  ],
+  "materialFindings": [],
+  "semanticReview": [
+    {
+      "scope": "titles and prose",
+      "finding": "All four titles naturally identify calendar widgets on iPhone and iPad and upcoming events. No title promises completeness or instant updates."
+    },
+    {
+      "scope": "sections[0], sections[1]",
+      "finding": "Named layouts preserved in English with device-translation caveat. Medium event list versus larger list and separate small date/weather tile remain distinct. System add-widget actions described without inventing localized named layouts."
+    },
+    {
+      "scope": "sections[1].body[2]",
+      "finding": "All four require a comparison on the actual iPad and do not infer iPad accounts/access/data from correct iPhone display."
+    },
+    {
+      "scope": "sections[2]",
+      "finding": "All four preserve future start-time eligibility from selected calendars and exclusion of all-day and already-started events, including ongoing meetings."
+    },
+    {
+      "scope": "sections[3]",
+      "finding": "All four distinguish a later eligible item beyond the finite visible rows from a missing nearest eligible event. They do not recommend moving/deleting appointments to make a row appear."
+    },
+    {
+      "scope": "sections[4], sections[5]",
+      "finding": "App-first checks, harmless owned test appointments, no account removal and no fixed Apple widget-refresh deadline preserved."
+    },
+    {
+      "scope": "sections[6], faq",
+      "finding": "Weather summary is not automatic venue/hour forecast; empty upcoming list does not establish free time. Full calendar remains needed for all-day/ongoing commitments."
+    }
+  ],
+  "optionalWording": [
+    {
+      "locale": "ja",
+      "path": "sections[3].body[0]",
+      "beforeFragment": "先の予定で表示行が埋まっていると",
+      "suggestedFragment": "開始時刻がより早い予定で表示行が埋まっていると",
+      "reason": "先の予定 can mean future plans as well as preceding entries. The existing contrast with 後の予定 is understandable; this optional wording makes earlier-starting order explicit.",
+      "severity": "nonblocking",
+      "applied": false,
+      "status": "resolved_in_current_draft",
+      "currentFragment": "開始時刻が早い予定で表示行が埋まっていると",
+      "appliedByThisReviewer": false,
+      "note": "Original optional observation referred to the earlier text-read version. Corrected wording was already present by original audit hash capture. Current entire JA file reread and accepted; no further correction requested."
+    }
+  ],
+  "limits": [
+    "Only this audit file written; drafts and source unchanged.",
+    "No build/deploy/native/ASC/customer operation.",
+    "Exact source URL parity checked, not a fresh read of external Apple documentation."
+  ],
+  "hashMethods": {
+    "rawFileSha256": "SHA-256 of exact fs.readFileSync bytes, including indentation and final newline.",
+    "parsedObjectSha256": "SHA-256 of UTF-8 JSON.stringify(JSON.parse(rawFile)), no indentation, preserving parsed key order. This was the prior sha256 field. It is not a sorted-key canonical JSON standard.",
+    "sourceObjectSha256": "SHA-256 of UTF-8 JSON.stringify(current exported English article object)."
+  },
+  "revalidation": {
+    "date": "2026-10-22",
+    "scope": "Current BG and JA completely reread; all four current raw/parsed hashes captured. Both current parsed hashes match the original audit hashes. JA prose shown in the original full-text read used 先の予定, whereas the original audit hash already matches the current corrected wording: the draft changed between the original text read and hash capture. The original optional observation was therefore stale despite its hash matching the corrected file.",
+    "changes": [
+      {
+        "locale": "ja",
+        "path": "sections[3].body[0]",
+        "previousFragment": "先の予定で表示行が埋まっていると",
+        "currentFragment": "開始時刻が早い予定で表示行が埋まっていると",
+        "onlyParsedObjectChange": false,
+        "review": "Current corrected sentence and full JA file reread against English; optional ambiguity resolved. Audit now certifies this exact current file, not the earlier text-read version.",
+        "hashInterpretation": "No parsed-object change since the original audit hash capture. The earlier text-read output and later hash capture represented different JA versions; reconstructed old text does not match the stored original hash."
+      }
+    ],
+    "expectedRootRawHashes": {
+      "bg": "45502a5d7eb1d04276a33d8fac610ba3653d331504b8926357a38ae9d83eacc8",
+      "ja": "d37dc43a095376c1fc6652e82d87236e318c687d0944c08ab763723b66cfb30d"
+    }
+  }
+}

@@ -1,0 +1,53 @@
+{
+  "date": "2026-10-22",
+  "source": "src/app/content/en-US/articles-widgets.ts",
+  "sourceObjectSha256": "d604425c45a83392067d10284c0a4db29418ddaae05c89886cbdf891c89ae546",
+  "readScope": "Complete current English object and complete existing French/Italian objects read. All seven English sections translated in full.",
+  "locales": {
+    "fr-FR": {
+      "existingFile": "src/app/content/fr-FR/articles.ts",
+      "beforeObjectSha256": "b205f2da11947d5f60c7deb25339080fd08818c017121ec1763c27bce931f594",
+      "draftFile": "research/batch25-widget-localization/fr-FR.json",
+      "draftSha256": "c6c8e0f08fb66622a7a0a6e650700d84d96ab6b3ac7977492569a4421cb2f6cc",
+      "descriptionCharacters": 145,
+      "sections": 7,
+      "paragraphs": 15,
+      "practical": 4,
+      "faq": 3,
+      "sources": 3,
+      "sourceUrlsMatchEnglish": true,
+      "relatedRetained": [
+        "a-countdown-to-your-next-meeting"
+      ],
+      "relatedOmittedUnavailable": [
+        "choosing-a-widget-size"
+      ],
+      "relatedSubstitutions": []
+    },
+    "it": {
+      "existingFile": "src/app/content/it/articles.ts",
+      "beforeObjectSha256": "40b3016ac8dbfe889e463a73264698fe9040d89a651d15cd7dc1bd04f269dff4",
+      "draftFile": "research/batch25-widget-localization/it.json",
+      "draftSha256": "20ea30e849df5ade487471f04345747158f138d380165731d0573ca872c5c36f",
+      "descriptionCharacters": 151,
+      "sections": 7,
+      "paragraphs": 15,
+      "practical": 4,
+      "faq": 3,
+      "sources": 3,
+      "sourceUrlsMatchEnglish": true,
+      "relatedRetained": [
+        "a-countdown-to-your-next-meeting"
+      ],
+      "relatedOmittedUnavailable": [
+        "choosing-a-widget-size"
+      ],
+      "relatedSubstitutions": []
+    }
+  },
+  "boundaries": [
+    "Own translations; no independent native-speaker approval.",
+    "English product layout names preserved; Apple system controls described by function rather than claiming verified translated button labels.",
+    "No source integration, build, deployment, native or ASC operations."
+  ]
+}

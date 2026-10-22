@@ -1,0 +1,77 @@
+{
+  "date": "2026-10-22",
+  "verdict": "pass",
+  "requiredWordingCorrections": [],
+  "source": {
+    "file": "src/app/content/en-US/articles-widgets.ts",
+    "sha256": "dffb03e43a84f5786e29ff85b98fc53badd50a3eacba6aa6068adb8a003bb3b3",
+    "fullObjectRead": true,
+    "currentObjectMatchesPreviouslyFullyReadSnapshot": true
+  },
+  "results": [
+    {
+      "locale": "de-DE",
+      "file": "research/batch25-widget-localization/de-DE.json",
+      "sha256": "3a10b9a22d654a5d28d7f4e67e2308883d068d1fb749d5db6391e5aebc853bea",
+      "readScope": "Entire object including metadata, all seven sections/fifteen paragraphs, four practical steps, three FAQs, sources and related routes.",
+      "descriptionUnicodeCharacters": 135,
+      "checks": {
+        "sections": true,
+        "paragraphs": true,
+        "practical": true,
+        "faq": true,
+        "claims": true,
+        "date": true,
+        "sources": true,
+        "description": true,
+        "routes": true,
+        "schemaKeys": true
+      },
+      "relatedRoutes": [
+        "a-countdown-to-your-next-meeting"
+      ],
+      "missingEnglishRelated": [
+        "choosing-a-widget-size"
+      ],
+      "findings": []
+    },
+    {
+      "locale": "es-ES",
+      "file": "research/batch25-widget-localization/es-ES.json",
+      "sha256": "713dcf92360a41e2a79e47ccc630faa3d8ee13f31eb299cc0d12ef739a989935",
+      "readScope": "Entire object including metadata, all seven sections/fifteen paragraphs, four practical steps, three FAQs, sources and related routes.",
+      "descriptionUnicodeCharacters": 154,
+      "checks": {
+        "sections": true,
+        "paragraphs": true,
+        "practical": true,
+        "faq": true,
+        "claims": true,
+        "date": true,
+        "sources": true,
+        "description": true,
+        "routes": true,
+        "schemaKeys": true
+      },
+      "relatedRoutes": [
+        "a-countdown-to-your-next-meeting"
+      ],
+      "missingEnglishRelated": [
+        "choosing-a-widget-size"
+      ],
+      "findings": []
+    }
+  ],
+  "semanticReview": {
+    "futureTimed": "Both explicitly exclude all-day events and appointments whose start has passed; ongoing-meeting and birthday examples and FAQs retain this meaning.",
+    "rows": "Both distinguish finite display rows from a missing nearest eligible future appointment and forbid move/delete as a workaround.",
+    "iPad": "Both require checking the same iPad; correct iPhone view is not proof of iPad account/access/loaded data. Preview not data-load confirmation.",
+    "names": "Calendar Events, Calendar Events Large and Calendar & Weather retained exactly; medium event list and small date/weather roles preserved. English system-control labels identified as potentially translated.",
+    "refresh": "Both retain saved-information/system scheduling distinction and reject exact-seconds deadline.",
+    "weather": "Neither attaches weather automatically to venue/time of each appointment.",
+    "disclosure": "Arte Soft identified as Cloud Calendars developer.",
+    "related": "Both retain existing countdown article; choosing-a-widget-size absent in those locales and omitted rather than fabricated."
+  },
+  "limits": "Bounded cross-agent semantic and structural review of drafts authored by another agent. Not independent native-speaker certification, installed UI verification or runtime/product testing.",
+  "changes": "Only this audit JSON written; no source integration."
+}
