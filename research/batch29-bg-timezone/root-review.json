@@ -1,0 +1,15 @@
+{
+  "checkedAt": "2026-10-22T01:58:31.030102+00:00",
+  "rawDraftSha256": "1da3ed85b4b8a71f04e761e612b08fedcce23c30c371b45c5c0a1dee648c678a",
+  "scope": "Root read complete current English source and complete Bulgarian draft, all metadata,7sections14paragraphs5steps4FAQ4sources/related; preparation only.",
+  "decision": "No material root wording or semantic blocker. Independent review still pending.",
+  "checks": [
+    "Event saved zone versus display zone retained.",
+    "Provider UI controls explicitly Apple/Google with English labels, no invented Cloud separate endpoint selector.",
+    "Device fallback conditional and saved result reopened.",
+    "Flight endpoint dates/zones and DST recurrence comparisons preserved.",
+    "Import snapshot versus live feed, no moving original to compensate recipient display.",
+    "Two actual BG related routes retained; absent weather route omitted."
+  ],
+  "limits": "No new source integration, provider action or runtime/released certification. Supplied English factual evidence retained; no new external claim."
+}

@@ -1,0 +1,19 @@
+{
+  "locale": "bg",
+  "slug": "time-zones-and-the-flight-you-booked",
+  "article": null,
+  "checkedModules": [
+    {
+      "file": "src/app/content/bg/articles-google.ts",
+      "sha256": "9506eacc5faae26a3b147832d1f1c190b909c35db74b7a2add02b339602b87f9"
+    },
+    {
+      "file": "src/app/content/bg/articles-help.ts",
+      "sha256": "6613af3ed69d6e29f1dac86861da544b4a412e7eba9eb535bcf0dfd4395b4c3d"
+    },
+    {
+      "file": "src/app/content/bg/articles.ts",
+      "sha256": "f47bb5c198eb4ffbd2deff9ec8deb306e2fdc4cf606b39cd4614b33f79c413cd"
+    }
+  ]
+}

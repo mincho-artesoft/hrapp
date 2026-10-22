@@ -1,6 +1,110 @@
 import { LocalisedArticle } from '../types';
 
 export const HELP_EN_US: Readonly<Record<string, LocalisedArticle>> = {
+  "recover-deleted-calendar-events-iphone": {
+  "updated": "2026-10-22",
+  "title": "Deleted calendar events on iPhone: Google and iCloud recovery",
+  "short": "Recover a deleted calendar event",
+  "description": "Check whether an event is missing or deleted, then compare Google Trash with iCloud calendar recovery and their sharing and meeting consequences.",
+  "lede": "A missing appointment does not always need restoring. First establish where it was stored and whether it still exists there. If it was deleted, the recovery method depends on that provider. This guide is published by Arte Soft, the developer of Cloud Calendars.",
+  "commonBelief": "Restoring a calendar always brings back just the missing appointment, with every invitation and sharing arrangement unchanged.",
+  "sections": [
+    {
+      "heading": "First separate a missing display from a deleted record",
+      "body": [
+        "Identify the account and calendar that held the appointment, then check its approximate date in the provider’s own calendar. Confirm the signed-in identity, especially when work and personal accounts have similar calendar names. If the event is still there, use the missing-calendar or search guide below. Do not restore data merely because one app cannot display or find it.",
+        "A shared calendar that you can no longer access is also a different problem from a deleted event. Ask the owner to confirm the calendar and your access before choosing a recovery operation. For a calendar stored only on a device, do not assume that Google or iCloud holds an independent copy. Avoid adding a second account connection or importing an old file while the original location is uncertain."
+      ]
+    },
+    {
+      "heading": "For Google, inspect the right calendar’s Trash on a computer",
+      "body": [
+        "Google documents recovery on a computer: open Google Calendar with the relevant account, then Settings > Trash. Each calendar has its own Trash. Restoring requires at least the calendar permission to make changes to events. Identify the intended record before using its Restore control; Google also provides restoration of selected records.",
+        "Google normally keeps trashed events for 30 days, but permanent deletion can remove that opportunity. Its spam checks can also place an invitation there. An empty Trash is not proof that you checked the right calendar or have the required access. Consult Google’s current instructions before acting."
+      ]
+    },
+    {
+      "heading": "Check Google recurrence and meeting consequences",
+      "body": [
+        "Google says instances removed with “This and following events” do not enter Trash and cannot be restored. Other recurring deletions may appear as one grouped row; restoring it can restore multiple deleted instances. Check the scope rather than assuming one row means one date.",
+        "When an event creator restores an event, Google says guests must RSVP again. A previously booked room may no longer be available. Compare the restored meeting with its intended participants, dates and resource arrangements before treating it as ready to attend."
+      ]
+    },
+    {
+      "heading": "For iCloud, understand calendar replacement before proceeding",
+      "body": [
+        "Apple’s iCloud recovery restores an earlier calendar version across devices, replacing the existing calendars. It saves the current version first, but recent changes may be lost. This is not Google’s selected-event Trash workflow. Read Apple’s linked instructions and assess the replacement consequences before choosing an archive.",
+        "Apple advises making a backup before restoring. Its documented route is iCloud.com > Data Recovery > Restore Calendars, where available versions are dated. Do not select a version solely because it predates the missing appointment: first consider other changes made since then and what you need to preserve."
+      ]
+    },
+    {
+      "heading": "Account for iCloud sharing and invitation effects",
+      "body": [
+        "Apple says calendar sharing settings are erased by restoration. You must share your calendars again or ask their owners to share them again. It also describes cases where invitation and cancellation messages are not sent again. Read those details rather than assuming that restoring the calendar reconstructs everyone’s current understanding.",
+        "Before deciding, record which calendars you share, who needs access and which arrangements changed recently. Afterward, check access with the people involved and confirm any uncertain meeting directly. Keep this record private; it is a checklist for rebuilding the intended arrangement, not a reason to redistribute invitation links or everyone’s event details."
+      ]
+    },
+    {
+      "heading": "Use the smallest recovery task that matches the evidence",
+      "body": [
+        "Suppose a club’s Tuesday planning meeting disappears from your phone after you changed next month’s venue. First check the club’s owning account and the Tuesday date. If the meeting remains there, investigate the phone’s view. If it was deleted, establish the provider and the available recovery scope. A dated archive deserves a broader review than a single identified record: the newer venue arrangement also matters.",
+        "Write down the intended outcome before acting: recover this appointment, preserve the later venue change and confirm the current participants. Do not turn the exercise into moving the club calendar to another account. After any recovery, compare those specific facts with the organiser rather than assuming that an event with the familiar title means the whole problem is solved."
+      ]
+    },
+    {
+      "heading": "Verify the result at the source before relying on your phone",
+      "body": [
+        "Recheck the owning calendar, the exact date and time, relevant recurring dates, access and meeting arrangements. Then compare the same event on the iPhone. If the source is correct but the app differs, return to connection, selection and date-coverage checks; do not repeat a recovery operation to force the display to change.",
+        "For support, keep a non-sensitive record of the provider, calendar type, approximate date, action taken and where the event is now visible. Omit private links, passwords and confidential notes. These are Google and iCloud procedures, not Cloud Calendars Trash or restore controls. They do not establish recovery options for Outlook, another provider, a device-only calendar or Cloud Calendars sharing data; consult the appropriate service rather than applying these steps to it."
+      ]
+    }
+  ],
+  "claims": {},
+  "practical": [
+    "Present at the owning provider, missing on the phone: investigate display, selection, connection and search scope before recovery.",
+    "Access to a shared calendar has disappeared: confirm identity and permission with its owner before assuming deletion.",
+    "Deleted from a Google calendar: review that calendar’s computer-based Trash and the documented access, recurrence and meeting limits.",
+    "Deleted from iCloud: assess the earlier-version replacement and sharing consequences before choosing a recovery version.",
+    "Stored somewhere else or location uncertain: identify the actual service and its recovery guidance; do not guess from the app displaying it.",
+    "After recovery: compare the original scheduling facts at the provider, confirm uncertain arrangements, then check the phone."
+  ],
+  "faq": [
+    {
+      "q": "The event still appears on the provider’s website. Should I restore a backup?",
+      "a": "Start with the phone’s account, selected calendar, date range and search behaviour. Preserve the existing provider record; a missing display alone does not establish that data needs restoring."
+    },
+    {
+      "q": "Can I follow these steps for a calendar someone shared with me?",
+      "a": "First distinguish lost access from deletion and identify who controls the calendar. Use the relevant provider’s permission rules, and involve the owner when needed. Receiving a shared calendar does not by itself establish authority to restore it."
+    },
+    {
+      "q": "Should I import an old ICS file if recovery is unavailable?",
+      "a": "Treat that as a separate copy/import decision. Check its date, destination and what it preserves using the export guide below. Do not assume that importing recreates the original meeting or its participants’ arrangements."
+    },
+    {
+      "q": "Does Cloud Calendars offer the recovery controls described here?",
+      "a": "The controls in this guide belong to Google Calendar and iCloud.com. No Cloud Calendars recovery procedure is established here. Identify the event’s storage service before deciding which instructions apply."
+    }
+  ],
+  "sourcesHeading": "Official recovery procedures and consequences",
+  "sources": [
+    {
+      "label": "Google: calendar Trash, restoration, recurrence and guest responses",
+      "url": "https://support.google.com/calendar/answer/37113?co=GENIE.Platform%3DDesktop&hl=en"
+    },
+    {
+      "label": "Apple: restore iCloud calendars and understand replacement and sharing effects",
+      "url": "https://support.apple.com/en-gb/102508"
+    }
+  ],
+  "seeAlso": [
+    "find-old-calendar-events-by-account-date-and-title",
+    "google-calendars-that-never-reach-your-iphone",
+    "calendar-export-ics-pdf-and-backup",
+    "why-a-shared-calendar-does-not-appear"
+  ]
+},
+
   "disconnect-calendar-integration-without-losing-track": {
   "updated": "2026-10-22",
   "title": "Disconnect a calendar integration: access, sync and existing copies",
@@ -286,98 +390,99 @@ export const HELP_EN_US: Readonly<Record<string, LocalisedArticle>> = {
     ]
   },
   "find-old-calendar-events-by-account-date-and-title": {
-    "updated": "2026-10-21",
-    "title": "Find an old calendar event: check the account, dates and search fields",
-    "short": "Find past calendar events",
-    "description": "A blank search is not proof an event was deleted. Check calendar ownership, date coverage and searchable fields before looking in the provider’s own archive.",
-    "lede": "When you remember a meeting but cannot find it, separate three questions: which account held it, which dates the current view covers, and which fields the search matches. This guide is published by Arte Soft, the developer of Cloud Calendars.",
-    "commonBelief": "Every search box in a calendar app searches every field of every event ever stored by the provider.",
-    "sections": [
-      {
-        "heading": "Write down the smallest useful clue",
-        "body": [
-          "Start with an approximate month or year, a distinctive word from the title, and the account you probably used. Keep those clues separate. A colleague’s name may have been an attendee rather than part of the title; a street address may have lived only in the location field.",
-          "Try a short title fragment before a long phrase. A negative result does not tell you whether the record is absent, outside the loaded dates or in a field that is not searched."
-        ]
-      },
-      {
-        "heading": "Check ownership and calendar selection",
-        "body": [
-          "Look for the account and calendar that originally owned the event. A work Google calendar, a personal iCloud calendar and a local calendar on the device are different destinations, even if one app displayed them together. Confirm you still have access to the expected account and that its calendar is selected.",
-          "Do not create a new copy just because the search is empty. If you can locate the event by browsing its approximate date, inspect its title, calendar and organiser. That gives you evidence to compare with the search result without changing the record."
-        ]
-      },
-      {
-        "heading": "Check the dates and fields used by Cloud Calendars search",
-        "body": [
-          "Cloud Calendars searches the titles of loaded events without requiring the same letter case. Use a distinctive title word. Do not expect a location, attendee address or note to match merely because it appears elsewhere in an event.",
-          "The current search view loads events for the current calendar year from selected calendars. A meeting from a previous year can therefore be absent from this search while still existing with the provider. Check the date range before interpreting an empty result.",
-          "Browsing to an older date and searching an older year are different actions. For historical search, use the provider’s own tools where available and verify the same account. Check the controls in your installed app version rather than assuming the search covers every year."
-        ]
-      },
-      {
-        "heading": "Use provider tools for their documented fields and dates",
-        "body": [
-          "In Google Calendar on a computer, the search options let you narrow by calendar, event information, people, location and date range. Google recommends a date-limited advanced search when older events do not appear and documents a limit of 200 search results. Divide a broad search into smaller date ranges instead of assuming the first result set is complete.",
-          "Those are Google Calendar web controls, not a description of Cloud Calendars. Likewise, Apple’s Calendar guide says its iPhone search can match titles, invitees, locations and notes. That describes Apple Calendar’s own search. Using Apple’s EventKit in another app does not automatically give that app the same search interface or matching rules."
-        ]
-      },
-      {
-        "heading": "Interpret where the event does and does not appear",
-        "body": [
-          "Found in the provider, absent in Cloud Calendars: check account identity, selected calendar, date coverage and the title being searched. Preserve the provider record. The next question is what the app has loaded or matched, not whether the appointment needs recreating.",
-          "Found by browsing, absent from search: compare the actual title with the query and note the date. This is useful evidence of a search-scope or matching issue. Do not alter an old meeting title solely to make a diagnostic test pass.",
-          "Absent from the provider too: confirm the account, calendar access and date range before investigating retention or deletion with that provider. For a local calendar, a provider website is not an independent copy unless you established a separate connection. Do not assume a cloud archive exists for every local event."
-        ]
-      },
-      {
-        "heading": "Keep a useful search record without exposing the event",
-        "body": [
-          "For support, record the app version, calendar provider or local-storage type, approximate event year and whether the event appears in the provider or by date browsing. Say whether the query was a title word, a location or an attendee. This is more useful than simply reporting that search is broken.",
-          "Avoid sending private notes, invitation links or secret calendar-feed URLs. Keep accounts and local data intact; clearing storage or importing an old file again can add uncertainty."
-        ]
-      }
-    ],
-    "claims": {},
-    "practical": [
-      "Identify the likely owning account and approximate date.",
-      "Check that the calendar is selected and accessible.",
-      "Try a distinctive word from the event title.",
-      "Treat current-year app search separately from provider archive search.",
-      "Use Google Calendar web date filters or Apple Calendar’s documented fields when relevant.",
-      "Record where the event appears before changing any data."
-    ],
-    "faq": [
-      {
-        "q": "Does an empty result mean my old event was deleted?",
-        "a": "No. The wrong account, an unselected calendar, a date outside the loaded range or a field that is not searched can all explain an empty result. Check the provider and the event’s approximate date."
-      },
-      {
-        "q": "Can I search Cloud Calendars by an attendee’s email or a note?",
-        "a": "The current search path matches event-title text. For attendee, note or location queries, use the appropriate provider’s documented search tools for those fields."
-      },
-      {
-        "q": "Will browsing to last year make the search cover last year?",
-        "a": "Do not rely on that. The current search view loads the current year when it opens. Use a provider’s date-range search for historical records rather than assuming an unlimited history search in the app."
-      }
-    ],
-    "sourcesHeading": "Sources and provider search help",
-    "sources": [
-      {
-        "label": "Google: Search on Google Calendar — computer",
-        "url": "https://support.google.com/calendar/answer/37176?hl=en&co=GENIE.Platform%3DDesktop"
-      },
-      {
-        "label": "Apple: Search for events in Calendar on iPhone",
-        "url": "https://support.apple.com/guide/iphone/search-for-events-iph2c9ef44ad/ios"
-      }
-    ],
-    "seeAlso": [
-      "what-calendar-sync-actually-does",
-      "a-list-for-people-who-dislike-grids",
-      "when-two-calendars-disagree"
-    ]
-  },
+  "updated": "2026-10-21",
+  "title": "Find an old calendar event: check the account, dates and search fields",
+  "short": "Find past calendar events",
+  "description": "A blank search is not proof an event was deleted. Check calendar ownership, date coverage and searchable fields before looking in the provider’s own archive.",
+  "lede": "When you remember a meeting but cannot find it, separate three questions: which account held it, which dates the current view covers, and which fields the search matches. This guide is published by Arte Soft, the developer of Cloud Calendars.",
+  "commonBelief": "Every search box in a calendar app searches every field of every event ever stored by the provider.",
+  "sections": [
+    {
+      "heading": "Write down the smallest useful clue",
+      "body": [
+        "Start with an approximate month or year, a distinctive word from the title, and the account you probably used. Keep those clues separate. A colleague’s name may have been an attendee rather than part of the title; a street address may have lived only in the location field.",
+        "Try a short title fragment before a long phrase. A negative result does not tell you whether the record is absent, outside the loaded dates or in a field that is not searched."
+      ]
+    },
+    {
+      "heading": "Check ownership and calendar selection",
+      "body": [
+        "Look for the account and calendar that originally owned the event. A work Google calendar, a personal iCloud calendar and a local calendar on the device are different destinations, even if one app displayed them together. Confirm you still have access to the expected account and that its calendar is selected.",
+        "Do not create a new copy just because the search is empty. If you can locate the event by browsing its approximate date, inspect its title, calendar and organiser. That gives you evidence to compare with the search result without changing the record."
+      ]
+    },
+    {
+      "heading": "Check the dates and fields used by Cloud Calendars search",
+      "body": [
+        "Cloud Calendars searches the titles of loaded events without requiring the same letter case. Use a distinctive title word. Do not expect a location, attendee address or note to match merely because it appears elsewhere in an event.",
+        "The current search view loads events for the current calendar year from selected calendars. A meeting from a previous year can therefore be absent from this search while still existing with the provider. Check the date range before interpreting an empty result.",
+        "Browsing to an older date and searching an older year are different actions. For historical search, use the provider’s own tools where available and verify the same account. Check the controls in your installed app version rather than assuming the search covers every year."
+      ]
+    },
+    {
+      "heading": "Use provider tools for their documented fields and dates",
+      "body": [
+        "In Google Calendar on a computer, the search options let you narrow by calendar, event information, people, location and date range. Google recommends a date-limited advanced search when older events do not appear and documents a limit of 200 search results. Divide a broad search into smaller date ranges instead of assuming the first result set is complete.",
+        "Those are Google Calendar web controls, not a description of Cloud Calendars. Likewise, Apple’s Calendar guide says its iPhone search can match titles, invitees, locations and notes. That describes Apple Calendar’s own search. Using Apple’s EventKit in another app does not automatically give that app the same search interface or matching rules."
+      ]
+    },
+    {
+      "heading": "Interpret where the event does and does not appear",
+      "body": [
+        "Found in the provider, absent in Cloud Calendars: check account identity, selected calendar, date coverage and the title being searched. Preserve the provider record. The next question is what the app has loaded or matched, not whether the appointment needs recreating.",
+        "Found by browsing, absent from search: compare the actual title with the query and note the date. This is useful evidence of a search-scope or matching issue. Do not alter an old meeting title solely to make a diagnostic test pass.",
+        "Absent from the provider too: confirm the account, calendar access and date range before investigating retention or deletion with that provider. For a local calendar, a provider website is not an independent copy unless you established a separate connection. Do not assume a cloud archive exists for every local event."
+      ]
+    },
+    {
+      "heading": "Keep a useful search record without exposing the event",
+      "body": [
+        "For support, record the app version, calendar provider or local-storage type, approximate event year and whether the event appears in the provider or by date browsing. Say whether the query was a title word, a location or an attendee. This is more useful than simply reporting that search is broken.",
+        "Avoid sending private notes, invitation links or secret calendar-feed URLs. Keep accounts and local data intact; clearing storage or importing an old file again can add uncertainty."
+      ]
+    }
+  ],
+  "claims": {},
+  "practical": [
+    "Identify the likely owning account and approximate date.",
+    "Check that the calendar is selected and accessible.",
+    "Try a distinctive word from the event title.",
+    "Treat current-year app search separately from provider archive search.",
+    "Use Google Calendar web date filters or Apple Calendar’s documented fields when relevant.",
+    "Record where the event appears before changing any data."
+  ],
+  "faq": [
+    {
+      "q": "Does an empty result mean my old event was deleted?",
+      "a": "No. The wrong account, an unselected calendar, a date outside the loaded range or a field that is not searched can all explain an empty result. Check the provider and the event’s approximate date."
+    },
+    {
+      "q": "Can I search Cloud Calendars by an attendee’s email or a note?",
+      "a": "The current search path matches event-title text. For attendee, note or location queries, use the appropriate provider’s documented search tools for those fields."
+    },
+    {
+      "q": "Will browsing to last year make the search cover last year?",
+      "a": "Do not rely on that. The current search view loads the current year when it opens. Use a provider’s date-range search for historical records rather than assuming an unlimited history search in the app."
+    }
+  ],
+  "sourcesHeading": "Sources and provider search help",
+  "sources": [
+    {
+      "label": "Google: Search on Google Calendar — computer",
+      "url": "https://support.google.com/calendar/answer/37176?hl=en&co=GENIE.Platform%3DDesktop"
+    },
+    {
+      "label": "Apple: Search for events in Calendar on iPhone",
+      "url": "https://support.apple.com/guide/iphone/search-for-events-iph2c9ef44ad/ios"
+    }
+  ],
+  "seeAlso": [
+    "what-calendar-sync-actually-does",
+    "a-list-for-people-who-dislike-grids",
+    "when-two-calendars-disagree",
+    "recover-deleted-calendar-events-iphone"
+  ]
+},
   "calendar-export-ics-pdf-and-backup": {
   "updated": "2026-10-22",
   "title": "Calendar export on iPhone: ICS, CSV, PDF and subscriptions",
@@ -525,7 +630,8 @@ export const HELP_EN_US: Readonly<Record<string, LocalisedArticle>> = {
     "sharing-one-event-not-your-calendar",
     "inviting-people-who-do-not-have-the-app",
     "the-secret-address-of-a-google-calendar",
-    "time-zones-and-the-flight-you-booked"
+    "time-zones-and-the-flight-you-booked",
+    "recover-deleted-calendar-events-iphone"
   ]
 },
   "event-saved-to-wrong-calendar": {

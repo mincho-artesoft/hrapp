@@ -1,0 +1,161 @@
+{
+  "date": "2026-10-22",
+  "result": "pass_no_factual_blockers",
+  "draft": "research/batch29-competitor-intents/recover-deleted-calendar-events-iphone.json",
+  "draftRawSha256": "c26bd855ffa4cadb3718d409a11af1ba55e2357abc98689b9e308f2af6a9539c",
+  "reviewScope": {
+    "fullDocuments": [
+      {
+        "file": "research/batch29-competitor-intents/recover-deleted-calendar-events-iphone.json",
+        "rawSha256": "c26bd855ffa4cadb3718d409a11af1ba55e2357abc98689b9e308f2af6a9539c"
+      },
+      {
+        "file": "research/batch29-competitor-intents/decision.json",
+        "rawSha256": "6b40094d3c4ac26a170169adff733a6a4f12acb2ec2a83691260a8325dbbaee5"
+      },
+      {
+        "file": "research/batch29-competitor-intents/draft-checks.json",
+        "rawSha256": "06c3949166f156c974dd6c3a5c9c114bd159a5ea8d79a007940b167b4ab5569d"
+      }
+    ],
+    "statement": "Complete draft, decision and draft-checks documents read. Independent semantic review against freshly opened official substantive bodies. Existing related route definitions and English index checked; not a fresh complete reread of all linked article bodies."
+  },
+  "structure": {
+    "sections": 7,
+    "paragraphs": 14,
+    "practical": 6,
+    "faq": 4,
+    "sources": 2,
+    "descriptionUnicodeCharacters": 145,
+    "updated": "2026-10-22",
+    "claims": {}
+  },
+  "primaryEvidence": [
+    {
+      "url": "https://support.google.com/calendar/answer/37113?co=GENIE.Platform%3DDesktop&hl=en",
+      "status": "fresh_full_extracted_substantive_body_read",
+      "readRanges": [
+        [
+          17,
+          123
+        ]
+      ],
+      "totalExtractedLines": 203,
+      "keyRanges": {
+        "recurrencePermanentExceptions": [
+          [
+            58,
+            60
+          ],
+          [
+            114,
+            123
+          ]
+        ],
+        "trashRetentionRightsComputer": [
+          [
+            75,
+            107
+          ]
+        ],
+        "rsvpAndRoom": [
+          [
+            110,
+            112
+          ]
+        ]
+      },
+      "assessment": "Google documents computer-based calendar-specific Trash, 30 days subject to permanent removal, and sufficient event-edit permission. This-and-following deletion is excluded from Trash; other recurring deletions can restore grouped instances. Creator restoration requires renewed guest responses and a booked room may be unavailable. Draft preserves these limits."
+    },
+    {
+      "url": "https://support.apple.com/en-gb/102508",
+      "status": "fresh_full_extracted_substantive_body_read",
+      "readRanges": [
+        [
+          28,
+          83
+        ]
+      ],
+      "relevantCalendarRange": [
+        45,
+        63
+      ],
+      "totalExtractedLines": 96,
+      "assessment": "Apple describes earlier calendar-version replacement across devices, saving the current version first, possible loss of recent changes and backup advice. Sharing is erased. Its specific recent-cancellation and recent-creation cases do not resend the respective messages. Draft accurately flags these effects and directs readers to those details before acting."
+    }
+  ],
+  "semanticChecks": [
+    {
+      "topic": "Provider versus Cloud and local storage",
+      "result": "pass",
+      "detail": "Google/iCloud controls remain explicitly provider-labelled. Device-only calendars, Outlook, other providers and Cloud sharing data are outside the established procedures. No Cloud restore or universal recovery guarantee."
+    },
+    {
+      "topic": "Safe diagnosis and scope",
+      "result": "pass",
+      "detail": "Ownership, identity, date and provider presence are checked before restore. Lost shared access is distinct from deletion. No account reset, reimport or permanent-deletion diagnostic instruction."
+    },
+    {
+      "topic": "Google recurrence and meeting state",
+      "result": "pass",
+      "detail": "Permanent This-and-following exception, grouped recurring restoration, renewed RSVPs and uncertain resource availability all retained."
+    },
+    {
+      "topic": "iCloud replacement",
+      "result": "pass",
+      "detail": "Replacement, recent changes, saved current version, backup and erased sharing precede archive selection. No selected-event or unchanged-invitation promise."
+    },
+    {
+      "topic": "Research decision consistency",
+      "result": "pass",
+      "detail": "Decision is an earlier preparation-stage document; draft-checks explicitly reconciles its working slug to the single current proposed canonical. Its earlier no-draft statement is historical, not a second proposed page."
+    }
+  ],
+  "relatedRouteChecks": [
+    {
+      "slug": "find-old-calendar-events-by-account-date-and-title",
+      "presentInCurrentEnglishIndex": true
+    },
+    {
+      "slug": "google-calendars-that-never-reach-your-iphone",
+      "presentInCurrentEnglishIndex": true
+    },
+    {
+      "slug": "calendar-export-ics-pdf-and-backup",
+      "presentInCurrentEnglishIndex": true
+    },
+    {
+      "slug": "why-a-shared-calendar-does-not-appear",
+      "presentInCurrentEnglishIndex": true
+    }
+  ],
+  "relatedEvidence": {
+    "index": "src/app/content/article-index.ts",
+    "indexRawSha256": "0ea47c345886d2f5609ed0b533cb4bcc182f0ae59f1ee58e717158ee161f1094",
+    "definitionRanges": {
+      "src/app/content/en-US/articles-help.ts": [
+        288,
+        381
+      ],
+      "src/app/content/en-US/articles-google.ts": [
+        14,
+        275
+      ]
+    },
+    "scope": "Definition start lines and English index membership verified, not runtime navigation."
+  },
+  "blockers": [],
+  "optionalReaderPolish": [
+    {
+      "path": "sections[4].body[0]",
+      "suggestion": "Optionally summarize the two documented notification cases directly for readers: cancellation messages are not resent for recently cancelled events contained in the restored version; invitations are not resent for recently created events, which invitees may still see. Current concise referral to Apple is already truthful and is not a publication blocker."
+    }
+  ],
+  "limits": [
+    "No draft mutation or source integration.",
+    "No account, restoration, API write, native runtime, build or deployment action.",
+    "Source inspection and official documentation do not establish released Cloud binary behavior or successful recovery for an individual account.",
+    "Independent bounded factual/editorial review, not legal or native-speaker certification.",
+    "Linked provider pages and media beyond the two specified complete extracted bodies were not treated as read."
+  ]
+}

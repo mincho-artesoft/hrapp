@@ -1,0 +1,89 @@
+{
+  "date": "2026-10-22",
+  "decision": "pass_no_material_blockers",
+  "scope": "Complete Bulgarian draft, complete supplied English source and complete preparation audit read. Bounded cross-agent editorial comparison; not independent native-speaker certification, runtime testing or fresh primary-doc verification.",
+  "files": [
+    {
+      "file": "research/batch29-bg-timezone/source-en.json",
+      "rawFileSha256": "460d932ae303c74241172001b62357faef922b5f19c7c4009ff7fcafbedf9d04"
+    },
+    {
+      "file": "research/batch29-bg-timezone/bg.json",
+      "rawFileSha256": "1da3ed85b4b8a71f04e761e612b08fedcce23c30c371b45c5c0a1dee648c678a"
+    },
+    {
+      "file": "research/batch29-bg-timezone/preparation-audit.json",
+      "rawFileSha256": "545b9141b55d0ab9157271ce5da0b9a2dca953e41982f58ccbd3b1811c1233ac"
+    }
+  ],
+  "hashMethod": "SHA-256 of exact current raw file bytes, including whitespace and final newline.",
+  "checks": {
+    "sourceMatchesCurrentEnglish": true,
+    "schemaKeysMatch": true,
+    "sections": 7,
+    "paragraphs": 14,
+    "practical": 5,
+    "faq": 4,
+    "exactSourceUrls": true,
+    "sourceCount": 4,
+    "dateUnchanged": true,
+    "date": "2026-10-22",
+    "claimsEmpty": true,
+    "descriptionUnicodeCharacters": 145,
+    "developerDisclosurePreserved": true
+  },
+  "relatedRoutes": [
+    {
+      "slug": "recurring-events-without-the-mess",
+      "inBgIndex": true,
+      "actualDefinitions": [
+        "src/app/content/bg/articles-help.ts"
+      ]
+    },
+    {
+      "slug": "calendar-export-ics-pdf-and-backup",
+      "inBgIndex": true,
+      "actualDefinitions": [
+        "src/app/content/bg/articles-help.ts"
+      ]
+    }
+  ],
+  "omittedEnglishRelatedRoute": {
+    "slug": "weather-where-the-event-is",
+    "reason": "No actual Bulgarian definition recorded in preparation; remaining two relevant routes independently confirmed in current index and module exports."
+  },
+  "semanticAssessment": [
+    {
+      "scope": "sections0and2; practical1; FAQ0and2",
+      "result": "Saved event zone and displayed zone remain distinct. Device-zone fallback is conditional. Reopening and checking actual booking precedes moving the event."
+    },
+    {
+      "scope": "section1andFAQ0",
+      "result": "Apple Time Zone/Time Zone Override remain Apple Calendar controls; no extension to Cloud behavior asserted. Google computer editor controls remain Google-specific."
+    },
+    {
+      "scope": "sections2–3andFAQ1",
+      "result": "Independent start/end zones depend on explicit editor support; provider-editor fallback remains conditional. Notes containing a city do not establish the saved time-zone field."
+    },
+    {
+      "scope": "section4",
+      "result": "Seasonal changes checked near each participant’s clock change and next occurrence. No fixed year-round offset; all-day labels do not replace timed deadlines."
+    },
+    {
+      "scope": "sections5–6andFAQ3",
+      "result": "Imported snapshot and subscribed source remain distinct. Compare source/recipient event and display zones before altering original. Feed-format problems are only one possibility, no automatic repair or authorized-account replacement promised."
+    }
+  ],
+  "languageAssessment": "Natural, complete Bulgarian with appropriate formal plural address and clear practical examples. Technical terms are understandable; unchanged English UI names avoid fabricated localized controls. No language issue requires a revision.",
+  "materialBlockers": [],
+  "requiredCorrections": [],
+  "publicationStatus": "Unpublished draft at review time; this review authorizes no integration or deployment.",
+  "evidenceLimit": "Supplied-source comparison only; official URLs preserved, not freshly fetched. Actual related route existence is checked, not a new full review of related article bodies.",
+  "notPerformed": [
+    "Draft/source mutation",
+    "Build",
+    "Deploy",
+    "Native/API/customer actions",
+    "Commit"
+  ]
+}

@@ -10,7 +10,7 @@
     "No content is declared researched merely because a corresponding route exists."
   ],
   "currentInventory": {
-    "articles": 451,
+    "articles": 452,
     "locales": [
       "ar-SA",
       "bg",
@@ -43,7 +43,7 @@
       "zh-Hans",
       "zh-Hant"
     ],
-    "englishArticles": 54,
+    "englishArticles": 55,
     "evidence": "research/content-inventory-20261021.json",
     "scope": "Current route inventory, not coverage or quality approval."
   },
@@ -613,6 +613,23 @@
       "coverageScope": "Complete reviewed current English bodies and recorded/fresh scoped primary evidence. Not all translated bodies, every provider/hardware path or measured ranking/citation coverage.",
       "targetedFollowupEvidence": "batch22-targeted-guides/mapping.json",
       "currentFollowup": "Added original Tuesday work-block versus Friday deadline example. It is manual planning, not task completion or automatic carry-forward."
+    },
+    {
+      "id": "deleted-event-recovery",
+      "keywordCandidates": [
+        "recover deleted calendar events iPhone",
+        "restore deleted Google Calendar events",
+        "iCloud calendar recovery"
+      ],
+      "candidateBasis": "Provider/publisher task language from two new BusyCal bodies and exact Google/Apple recovery documentation; inferred user-intent aliases, not measured search terms/ranks.",
+      "researchEvidence": "batch29-competitor-intents/decision.json",
+      "canonical": "/articles/recover-deleted-calendar-events-iphone/",
+      "originalContribution": "Missing-versus-deleted gate, Google selective Trash versus iCloud calendar-version replacement, recurrence/guest/resource/sharing consequences, club venue example and postrecovery verification.",
+      "status": "english_published_verified",
+      "measuredRank": null,
+      "measuredSearchVolume": null,
+      "chatgptCitationEvidence": null,
+      "publicationGate": "Root full primary and draft review plus independent factual review passed; no Cloud restore controls inferred."
     }
   ],
   "remaining": [
@@ -1148,7 +1165,7 @@
       "Compare genuinely elapsed search/citation observations; no new repeated short-interval measurement."
     ],
     "staleGapPolicy": "Earlier embedded assessments and publication entries are historical; use currentFollowup/localizedFollowup and readiness evidence rather than re-adding resolved FAQs or synonym pages.",
-    "asc": "50locale five-field persistence proof remains saved batch18, not current URL/semantic or performance certification. No broad rewrite justified by audit."
+    "asc": "Current batch29postwrite response proves50locales250expected textfields with seven-description overlay; names/keywords/otherattrs unchanged. Semantic scope now includes six additional locales. No submission."
   },
   "twentyEighthPublication": {
     "date": "2026-10-22",
@@ -1179,5 +1196,45 @@
     ],
     "goalComplete": false,
     "limits": "Delivery and bounded editorial/visual checks; no discovery lift, mailbox delivery, universal CalDAV support, native runtime or all-language quality claim."
+  },
+  "twentyNinthPublication": {
+    "date": "2026-10-22",
+    "newEnglishGuide": "recover-deleted-calendar-events-iphone",
+    "relatedOnlyBacklinks": 2,
+    "reviewEvidence": [
+      "batch29-competitor-intents/decision.json",
+      "batch29-competitor-intents/root-draft-review.json",
+      "batch29-competitor-intents/final-review.json"
+    ],
+    "websiteEvidence": [
+      "batch29-source-qa.json",
+      "batch29-static-qa.json",
+      "batch29-metadata-qa.json",
+      "batch29-invalidation-status.json",
+      "batch29-browser-qa.json",
+      "batch29-public-qa.json"
+    ],
+    "sitemapUrls": 515,
+    "expectedPublicArtifacts": 518,
+    "asc": {
+      "version": "1.7.4",
+      "state": "PREPARE_FOR_SUBMISSION",
+      "descriptionsChanged": [
+        "en-US",
+        "fr-FR",
+        "it",
+        "ja",
+        "ko",
+        "pt-BR",
+        "nl-NL"
+      ],
+      "otherFieldsPreserved": true,
+      "fullPostwriteFieldChecks": 250,
+      "evidence": "aso/all-locales-readback-batch29.json",
+      "semanticReviewScope": "Six additional complete five-field locale bodies; excerpt cross-review for seven replacements. Not all50native-language quality approval."
+    },
+    "goalComplete": false,
+    "limits": "No restore operation, new product feature, universal recovery, released-binary correspondence or rankings/citation improvement claim.",
+    "publicArtifactsExactBuild": 518
   }
 }

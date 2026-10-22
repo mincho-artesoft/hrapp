@@ -1,0 +1,194 @@
+{
+  "schemaVersion": 1,
+  "date": "2026-10-22",
+  "decision": "One justified distinct task candidate: choose the appropriate provider recovery route after checking that a missing event is actually absent from its owning calendar. No article drafted or approved for publication in this batch.",
+  "recommendedNextAction": {
+    "type": "new_canonical_candidate_after_editorial_review",
+    "slug": "recover-deleted-google-icloud-calendar-events",
+    "workingTitle": "A calendar event was deleted: Google Trash or iCloud recovery?",
+    "userTask": "Recover an accidentally deleted event while understanding whether the operation restores selected records or replaces a calendar version, and what must be rechecked for guests and sharing.",
+    "whyDistinct": "Current full search and missing-Google guides diagnose identity, permissions, selection, date coverage and search fields, then stop at investigating provider retention/deletion. The full export guide explains copies, imports and the Mac ICBU replacement warning, but not provider Trash versus iCloud archived-version recovery. These recovery decisions have different consequences and cannot be supplied by another synonym for sync or export.",
+    "boundedOutline": [
+      "Establish the owning provider and calendar. Route a record still present at the provider back to existing visibility/search guides. Do not reconnect, reimport or delete as a diagnostic test.",
+      "For Google on a computer, identify the particular calendar and appropriate edit permission, then inspect its Trash. Explain the documented retention period and exceptions before any restore instruction.",
+      "Separate a recoverable deleted event or series from Google's permanently removed 'This and following events' cases. Recheck guest responses and room availability after restoration; do not promise old meeting state is preserved.",
+      "For iCloud, explain archived calendar version replacement across devices and sharing consequences before directing readers to Apple's recovery procedure. Record current sharing and recent changes; do not imply a single-event Trash equivalent.",
+      "After recovery, compare the owning provider, dates, series, sharing and meeting arrangements before relying on the phone display. Local calendars, Cloud shared storage, Outlook and other providers are outside these two documented procedures."
+    ],
+    "editorialAlternative": "If adding a route is undesirable, add a substantive recovery-choice section to the current old-event search guide and link official procedures. A one-line FAQ would omit material restore-scope and invitation consequences. Do not expand the already nine-section export guide into a generic troubleshooting catch-all.",
+    "publicationGates": [
+      "Root review of current exact provider guidance and complete proposed body, particularly recurrence exceptions, restore scope and guest/sharing consequences.",
+      "No Cloud recycle bin, automatic backup, direct restore UI, universal recovery window or preservation guarantee may be inferred.",
+      "No native feature audit is needed for purely provider-labelled instructions; any added Cloud-specific restoration claim requires separate native/release evidence.",
+      "Do not execute a restore, create an event or change any account as part of preparing this guide."
+    ]
+  },
+  "coverageRevalidation": {
+    "ledger": "research/keyword-coverage-ledger.json",
+    "readScope": "Parsed all nine cluster IDs, current statuses, canonical mappings and currentFollowup fields; reviewed initial detailed combine/sharing/views/widgets records. Not a claim of reading every historic nested publication record.",
+    "ledgerInventory": {
+      "englishArticles": 54,
+      "allArticles": 451
+    },
+    "originalCorpus": "research/competitors/coverage-current-20261021.json",
+    "counts": {
+      "exactUrls": 71,
+      "full": 59,
+      "partial": 5,
+      "failed": 6,
+      "discovered": 1
+    },
+    "corpusReadScope": "All twelve unresolved queue URL/status pairs inspected; scope and status definitions reviewed. Original full-body completion evidence consulted at research/competitors/batch26-original-corpus-completion-20261022.json. The malformed discovered Fantastical path is superseded, not a fresh task. No failed URL retried and no consolidated record changed.",
+    "newPageNoveltyCheck": "Both BusyCal exact paths returned no matches in research/**/*.json before fetching. This establishes no recorded exact-path review in that local corpus, not proof nobody has read a URL variant.",
+    "articleScan": "Searched all current English articles*.ts for restore/recover/deleted/backup and scanned article definition names for search/old/find/recover/restor. Then read the three directly relevant complete article objects recorded below. Other English bodies were not all reread."
+  },
+  "searches": [
+    {
+      "queries": [
+        "site.busymac.com restore deleted events calendar backup",
+        "site.flexibits.com deleted events restore calendar"
+      ],
+      "association": "Two-query tool batch; result-to-individual-query attribution unavailable. The first query was entered with site.busymac.com, not the colon operator. Record the exact query rather than silently correcting it.",
+      "observedRelevantUrls": [
+        "https://www.busymac.com/docs/busycal/70617-backing-up-and-restoring/",
+        "https://www.busymac.com/docs/faqs/98754-i-cannot-see-any-of-my-events-in-busycal-my-calendar-is-suddenly-empty/",
+        "https://support.busymac.com/blog/112990",
+        "https://flexibits.com/privacy/faq",
+        "https://www.busymac.com/docs/busycal/70622-archiving-old-events/",
+        "https://www.busymac.com/docs/busycal/70618-exporting-importing-and-merging-calendars/",
+        "https://www.busymac.com/docs/busycalios/70670-settings/"
+      ],
+      "scope": "Selected exact observed URLs preserved, not an exhaustive result export; combined tool output truncated. Only the first two competitor bodies newly opened. Old blog, privacy, archive, export and settings results not adopted as new body evidence."
+    },
+    {
+      "queries": [
+        "site.support.google.com/calendar delete restore events trash 30 days",
+        "site:support.apple.com restore calendars events iCloud archive sharing invitations"
+      ],
+      "association": "Two-query batch with no reliable individual-result attribution. Google query also lacks the site: colon; exact typed text retained.",
+      "observedRelevantUrls": [
+        "https://support.google.com/calendar/answer/37113?co=GENIE.Platform%3DDesktop&hl=en",
+        "https://support.apple.com/en-gb/102508",
+        "https://support.apple.com/en-sg/guide/icloud/mm7478c562f3/1.0/icloud/1.0",
+        "https://support.apple.com/guide/calendar/deleted-icloud-calendars-events-mac-iclfab4eec41/mac",
+        "https://support.google.com/calendar/answer/37113?hl=en-7",
+        "https://support.apple.com/en-ph/102508"
+      ],
+      "scope": "Relevant provider result subset. First two full bodies opened; remaining variants and guides only discovered. Exact query variants are not silently treated as the same reviewed body."
+    }
+  ],
+  "primaryReads": [
+    {
+      "publisher": "BusyMac / BusyCal",
+      "url": "https://www.busymac.com/docs/busycal/70617-backing-up-and-restoring/",
+      "status": "full_extracted_substantive_body_reviewed",
+      "readRanges": [
+        [
+          91,
+          151
+        ]
+      ],
+      "totalExtractedLines": 163,
+      "observations": "Publisher describes its Mac backup schedule and restoration workflows. Whole-calendar restoration replaces current contents; a local On My Mac restoration offers a separate place to recover individual records. The page warns that later changes can be lost when replacing a calendar.",
+      "limits": "BusyCal Mac publisher behaviour, not Cloud or iPhone backup support. Embedded video/images and linked guides not reviewed; no operation tested. This source identifies a recovery task, not a safe universal transfer prescription."
+    },
+    {
+      "publisher": "BusyMac / BusyCal",
+      "url": "https://www.busymac.com/docs/faqs/98754-i-cannot-see-any-of-my-events-in-busycal-my-calendar-is-suddenly-empty/",
+      "status": "full_extracted_substantive_body_reviewed",
+      "readRanges": [
+        [
+          209,
+          269
+        ]
+      ],
+      "totalExtractedLines": 281,
+      "observations": "Publisher checks selected calendars, hidden sources, account exclusion and search/filter settings before account or backup recovery. This distinguishes display absence from deleted data.",
+      "limits": "BusyCal-specific controls and its claimed frequency of display problems are not Cloud features or measured frequencies. Long navigation is discovery only, not review of its linked topics."
+    },
+    {
+      "publisher": "Google",
+      "url": "https://support.google.com/calendar/answer/37113?co=GENIE.Platform%3DDesktop&hl=en",
+      "status": "full_extracted_substantive_body_reviewed",
+      "readRanges": [
+        [
+          17,
+          123
+        ]
+      ],
+      "totalExtractedLines": 203,
+      "observations": "Computer Trash recovery is calendar-specific and requires sufficient edit rights. Documented retention is 30 days, subject to permanent removal. Some recurring-event deletion scopes do not enter Trash. Restored creator events require new guest RSVPs; room availability can have changed. Suspicious invitations can also be routed to Trash.",
+      "limits": "Do not generalize the window or recoverability to other providers, all recurrence scopes or permanently deleted events. Restoring a record is not proof that prior attendance or resource arrangements remain valid. No live account inspected."
+    },
+    {
+      "publisher": "Apple",
+      "url": "https://support.apple.com/en-gb/102508",
+      "status": "full_extracted_substantive_body_reviewed",
+      "readRanges": [
+        [
+          28,
+          83
+        ]
+      ],
+      "relevantCalendarRange": [
+        45,
+        63
+      ],
+      "totalExtractedLines": 96,
+      "observations": "iCloud restores an earlier calendar version across devices and saves the current version first. Recent changes may be lost; sharing settings are erased. The page distinguishes existing invitation and cancellation notification behaviour rather than promising these messages replay.",
+      "limits": "Archived-version restoration is not a selected-event Trash equivalent and not a Cloud Calendars or local-calendar restore feature. No account or restore action performed."
+    }
+  ],
+  "localBodyComparisons": [
+    {
+      "slug": "find-old-calendar-events-by-account-date-and-title",
+      "canonical": "/articles/find-old-calendar-events-by-account-date-and-title/",
+      "file": "src/app/content/en-US/articles-help.ts",
+      "readScope": "Complete object: sections, paragraphs, practical, FAQ, sources and related routes. Export ending sources/related and Google ending related/date read in separate followup ranges.",
+      "lineRange": [
+        288,
+        380
+      ],
+      "rawObjectSha256": "86b36372e4f90fb90a0e95b72a0b1d79ee6f6e2f622be9e5a69ea359f459891e",
+      "sections": 6,
+      "assessment": "Complete diagnosis of ownership, selection, current-year title search, provider advanced search and where a record is visible. Section5 ends with investigating provider retention/deletion; no provider recovery-choice workflow."
+    },
+    {
+      "slug": "calendar-export-ics-pdf-and-backup",
+      "canonical": "/articles/calendar-export-ics-pdf-and-backup/",
+      "file": "src/app/content/en-US/articles-help.ts",
+      "readScope": "Complete object: sections, paragraphs, practical, FAQ, sources and related routes. Export ending sources/related and Google ending related/date read in separate followup ranges.",
+      "lineRange": [
+        381,
+        530
+      ],
+      "rawObjectSha256": "e204877e09ec4b5095585330a69f5ea73ac6c5570a4178945b177f3a74bb4e0d",
+      "sections": 9,
+      "assessment": "Full nine-section guide covers export formats, feed refresh, copy validation and Google ownership. Mac ICBU replacement warning is present. Google Trash and iCloud calendar-version recovery, permissions and invitation consequences are not covered."
+    },
+    {
+      "slug": "google-calendars-that-never-reach-your-iphone",
+      "canonical": "/articles/google-calendars-that-never-reach-your-iphone/",
+      "file": "src/app/content/en-US/articles-google.ts",
+      "readScope": "Complete object: sections, paragraphs, practical, FAQ, sources and related routes. Export ending sources/related and Google ending related/date read in separate followup ranges.",
+      "lineRange": [
+        275,
+        369
+      ],
+      "rawObjectSha256": "7e16a971b42d8d92a47dc3aa6c75c057c80e052d8620a4fa144d0dc3fd7f4668",
+      "sections": 6,
+      "assessment": "Complete six-section guide distinguishes account/calendar access, display selection, connection route and date horizon. It advises provider comparison and escalation, not deleted-event restoration."
+    }
+  ],
+  "failures": [],
+  "evidenceLimits": [
+    "Public web-tool discovery is not a fixed-location Google SERP audit. Result order is not a measured Google rank; no search volume collected.",
+    "No ChatGPT recommendation/citation experiment performed. These are candidate user intents from primary publisher bodies, not ChatGPT keyword evidence.",
+    "No exhaustive all-keyword or competitor coverage claim; two new competitor bodies from one publisher and two provider bodies reviewed.",
+    "No app runtime, restoration, source integration, deployment, ASC mutation, commit or paid API operation."
+  ],
+  "artifactHashes": {
+    "research/keyword-coverage-ledger.json": "26eb3f8ebf1e0b85df1001b3ad774344c71724913cfb4a6d641d8d3b3e90fb95",
+    "research/competitors/coverage-current-20261021.json": "b2e323fa0b50693b2e43459f890f62402b0155e9b5649d2ea5df3f68e059d770"
+  }
+}

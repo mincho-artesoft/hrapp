@@ -1,0 +1,42 @@
+{
+  "date": "2026-10-22T01:51:18.475Z",
+  "count": 3,
+  "articles": [
+    {
+      "locale": "en-US",
+      "slug": "find-old-calendar-events-by-account-date-and-title",
+      "file": "src/app/content/en-US/articles-help.ts",
+      "title": "Find an old calendar event: check the account, dates and search fields",
+      "sections": 6,
+      "faqs": 3,
+      "sources": 2,
+      "updated": "2026-10-21",
+      "description": "A blank search is not proof an event was deleted. Check calendar ownership, date coverage and searchable fields before looking in the provider’s own archive.",
+      "descriptionCharacters": 157
+    },
+    {
+      "locale": "en-US",
+      "slug": "calendar-export-ics-pdf-and-backup",
+      "file": "src/app/content/en-US/articles-help.ts",
+      "title": "Calendar export on iPhone: ICS, CSV, PDF and subscriptions",
+      "sections": 9,
+      "faqs": 5,
+      "sources": 9,
+      "updated": "2026-10-22",
+      "description": "Choose calendar data, spreadsheet rows, a printable schedule or a subscription. Use documented provider or Mac export routes and check what transfers.",
+      "descriptionCharacters": 150
+    },
+    {
+      "locale": "en-US",
+      "slug": "recover-deleted-calendar-events-iphone",
+      "file": "src/app/content/en-US/articles-help.ts",
+      "title": "Deleted calendar events on iPhone: Google and iCloud recovery",
+      "sections": 7,
+      "faqs": 4,
+      "sources": 2,
+      "updated": "2026-10-22",
+      "description": "Check whether an event is missing or deleted, then compare Google Trash with iCloud calendar recovery and their sharing and meeting consequences.",
+      "descriptionCharacters": 145
+    }
+  ]
+}

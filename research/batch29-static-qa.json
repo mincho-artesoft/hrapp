@@ -1,0 +1,19 @@
+{
+  "allPassed": true,
+  "sitemapUrls": 515,
+  "previousCanonicalsPreserved": 514,
+  "newRoute": "https://www.cloud-calendars.com/articles/recover-deleted-calendar-events-iphone/",
+  "completeNewGuide": {
+    "sections": 7,
+    "paragraphs": 14,
+    "practical": 6,
+    "faq": 4,
+    "sources": 2,
+    "allVisibleTextAndLinksMatch": true
+  },
+  "relatedOnlyBacklinks": 2,
+  "textExportCompleteNewGuide": true,
+  "sharedFooterSupportLinks": 514,
+  "standaloneLegacyException": "https://www.cloud-calendars.com/how-cloud-calendars-rescued-my-schedule-and-sanity.html",
+  "scope": "Complete visible article and canonical/source/FAQ/related/text-export checks; no provider restoration, native runtime or discoverability proof."
+}
