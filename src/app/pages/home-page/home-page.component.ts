@@ -12,6 +12,7 @@ import { FeaturesComponent } from '../../components/features/features.component'
 import { MoreAppsComponent } from '../../components/more-apps/more-apps.component';
 import { PricingComponent } from '../../components/pricing/pricing.component';
 import { FaqComponent } from '../../components/faq/faq.component';
+import { GuidesPreviewComponent } from '../../components/guides-preview/guides-preview.component';
 import { CtaComponent } from '../../components/cta/cta.component';
 import { homeCopyFor } from '../../content/home/registry';
 import { DEFAULT_LOCALE, LOCALES, Locale, localePath } from '../../core/locales';
@@ -32,6 +33,7 @@ import { APP_NAME, APP_DEVELOPER, APP_MIN_IOS, APP_VERSION, APP_SIZE_MB, APP_RAT
     MoreAppsComponent,
     PricingComponent,
     FaqComponent,
+    GuidesPreviewComponent,
     CtaComponent,
   ],
   changeDetection: ChangeDetectionStrategy.OnPush,

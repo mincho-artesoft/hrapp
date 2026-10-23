@@ -33,31 +33,64 @@ interface Group {
   changeDetection: ChangeDetectionStrategy.OnPush,
   template: `
     <div class="hub">
-      <h1>{{ heading }}</h1>
-      @if (isTopic) { <a href="/articles/">{{ chrome.allArticles }}</a> }
-      @if (!isTopic && locale.code === 'en-US') {
-        <nav aria-label="Article topics">
-          @for (group of groups; track group.family) { <a [href]="topicAnchor(group.family)">{{ group.heading }}</a> }
+      <header class="hub__head">
+        @if (isTopic) {
+          <p class="hub__crumbs">
+            <a class="hub__back" href="/articles/">← {{ chrome.allArticles }}</a>
+          </p>
+        }
+        <h1>{{ heading }}</h1>
+        <p class="hub__lead">{{ chrome.hubDescription }}</p>
+      </header>
+
+      @if (!isTopic && groups.length > 1) {
+        <nav class="hub__topics" aria-label="Article topics">
+          @for (group of groups; track group.family) {
+            <a class="chip hub__topic" [href]="topicAnchor(group.family)">
+              <span class="hub__topic-dot" [attr.data-family]="group.family" aria-hidden="true"></span>
+              <span>{{ group.heading }}</span>
+              <span class="hub__topic-count">{{ group.total }}</span>
+            </a>
+          }
         </nav>
       }
+
       @for (group of groups; track group.family) {
-        <section [id]="'topic-' + group.family">
-          <h2>{{ group.heading }}</h2>
-          <ul>
+        <section class="hub__group" [id]="'topic-' + group.family">
+          <div class="hub__group-head">
+            <h2>{{ group.heading }}</h2>
+            <span class="hub__group-count">{{ group.total }}</span>
+          </div>
+          <ul class="hub__grid">
             @for (card of group.cards; track card.slug) {
-              <li>
-                <a [href]="card.path">{{ card.title }}</a>
-                <p>{{ card.description }}</p>
+              <li class="card hub__card">
+                <a class="hub__card-link" [href]="card.path">
+                  <span class="hub__card-title">{{ card.title }}</span>
+                  <span class="hub__card-arrow" aria-hidden="true">↗</span>
+                </a>
+                <p class="hub__card-desc">{{ card.description }}</p>
               </li>
             }
           </ul>
-          @if (group.topicPath) { <p><a [href]="group.topicPath">Browse all {{ group.total }} {{ group.heading.toLowerCase() }} guides</a></p> }
+          @if (group.topicPath) {
+            <p class="hub__more">
+              <a class="btn btn--ghost hub__more-btn" [href]="group.topicPath">
+                <span>Browse all {{ group.total }} {{ group.heading.toLowerCase() }} guides</span>
+                <span aria-hidden="true">→</span>
+              </a>
+            </p>
+          }
         </section>
       }
+
       @if (pages.length > 1) {
-        <nav aria-label="Article pages">
+        <nav class="hub__pages" aria-label="Article pages">
           @for (page of pages; track page.number) {
-            <a [href]="page.path" [attr.aria-current]="page.number === currentPage ? 'page' : null">{{ page.number }}</a>
+            <a
+              class="hub__page"
+              [href]="page.path"
+              [attr.aria-current]="page.number === currentPage ? 'page' : null"
+            >{{ page.number }}</a>
           }
         </nav>
       }
@@ -67,27 +100,248 @@ interface Group {
   styles: [
     `
       .hub {
-        max-width: 52rem;
+        max-width: 68rem;
         margin: 0 auto;
-        padding: calc(72px + clamp(32px, 6vw, 72px)) 20px 80px;
+        padding: calc(var(--header-h) + clamp(36px, 6vw, 76px)) 20px 88px;
         display: grid;
-        gap: clamp(28px, 4vw, 44px);
+        grid-template-columns: minmax(0, 1fr);
+        overflow-wrap: anywhere;
+        gap: clamp(32px, 5vw, 52px);
       }
 
-      nav { display: flex; flex-wrap: wrap; gap: 1rem; }
-      nav a[aria-current="page"] { font-weight: 700; text-decoration-thickness: 3px; }
-      section { scroll-margin-top: 6rem; }
-      ul {
+      .hub__head {
+        display: grid;
+        gap: 0.85rem;
+        padding-bottom: clamp(1.5rem, 3vw, 2.25rem);
+        border-bottom: 1px solid var(--hair);
+      }
+
+      .hub__crumbs {
+        margin: 0;
+      }
+
+      .hub__back {
+        display: inline-flex;
+        align-items: center;
+        gap: 0.45rem;
+        padding: 0.42rem 0.9rem;
+        border-radius: var(--r-pill);
+        font-size: 0.84rem;
+        font-weight: 500;
+        color: var(--aurora-2);
+        border: 1px solid rgba(56, 224, 240, 0.28);
+        background: rgba(56, 224, 240, 0.08);
+        transition: background 0.3s var(--ease-out), border-color 0.3s var(--ease-out), transform 0.3s var(--ease-out);
+      }
+      .hub__back:hover {
+        background: rgba(56, 224, 240, 0.15);
+        border-color: rgba(56, 224, 240, 0.48);
+        transform: translateX(-2px);
+      }
+
+      .hub__head h1 {
+        font-size: clamp(2.1rem, 5vw, 3.5rem);
+        letter-spacing: -0.035em;
+      }
+
+      .hub__lead {
+        font-size: var(--t-lead);
+        color: var(--ink-3);
+        max-width: 58ch;
+        line-height: 1.62;
+      }
+
+      .hub__topics {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 0.65rem;
+      }
+
+      .hub__topic {
+        transition:
+          border-color 0.3s var(--ease-out),
+          background 0.3s var(--ease-out),
+          color 0.3s var(--ease-out),
+          transform 0.3s var(--ease-out);
+      }
+      .hub__topic:hover {
+        color: var(--ink);
+        border-color: rgba(56, 224, 240, 0.42);
+        background: rgba(56, 224, 240, 0.1);
+        transform: translateY(-2px);
+      }
+
+      .hub__topic-dot {
+        width: 7px;
+        height: 7px;
+        border-radius: 50%;
+        background: var(--aurora-2);
+        box-shadow: 0 0 8px rgba(56, 224, 240, 0.7);
+      }
+      .hub__topic-dot[data-family='unify'] { background: var(--aurora-1); box-shadow: 0 0 8px rgba(77, 124, 255, 0.7); }
+      .hub__topic-dot[data-family='widgets'] { background: var(--aurora-3); box-shadow: 0 0 8px rgba(165, 102, 255, 0.7); }
+      .hub__topic-dot[data-family='sharing'] { background: var(--aurora-4); box-shadow: 0 0 8px rgba(255, 122, 89, 0.7); }
+      .hub__topic-dot[data-family='planning'] { background: var(--aurora-5); box-shadow: 0 0 8px rgba(255, 203, 92, 0.7); }
+      .hub__topic-dot[data-family='compare'] { background: #52e39b; box-shadow: 0 0 8px rgba(82, 227, 155, 0.7); }
+
+      .hub__topic-count {
+        font-family: var(--font-mono);
+        font-size: 0.7rem;
+        color: var(--ink-3);
+        padding: 0.08rem 0.42rem;
+        border-radius: var(--r-pill);
+        background: rgba(255, 255, 255, 0.06);
+      }
+
+      .hub__group {
+        scroll-margin-top: calc(var(--header-h) + 1.5rem);
+        display: grid;
+        gap: 1.25rem;
+      }
+
+      .hub__group-head {
+        display: flex;
+        align-items: center;
+        gap: 0.75rem;
+      }
+
+      .hub__group-head h2 {
+        font-size: clamp(1.35rem, 2.5vw, 1.85rem);
+        letter-spacing: -0.03em;
+      }
+
+      .hub__group-count {
+        font-family: var(--font-mono);
+        font-size: 0.74rem;
+        color: var(--aurora-2);
+        padding: 0.18rem 0.58rem;
+        border-radius: var(--r-pill);
+        background: rgba(56, 224, 240, 0.1);
+        border: 1px solid rgba(56, 224, 240, 0.24);
+      }
+
+      .hub__grid {
         margin: 0;
         padding: 0;
         list-style: none;
         display: grid;
-        gap: 18px;
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        gap: 1rem;
       }
 
-      li p {
-        margin: 4px 0 0;
-        opacity: 0.75;
+      @media (max-width: 720px) {
+        .hub__grid {
+          grid-template-columns: 1fr;
+        }
+      }
+
+      .hub__card {
+        position: relative;
+        padding: clamp(1.2rem, 2.2vw, 1.55rem);
+        display: flex;
+        flex-direction: column;
+        gap: 0.55rem;
+        transition:
+          transform 0.35s var(--ease-out),
+          border-color 0.35s var(--ease-out),
+          box-shadow 0.35s var(--ease-out);
+      }
+
+      .hub__card:hover {
+        border-color: rgba(56, 224, 240, 0.34);
+        box-shadow: var(--shadow-mid), 0 0 48px -22px rgba(56, 224, 240, 0.6);
+      }
+
+      .hub__card-link {
+        display: flex;
+        align-items: flex-start;
+        justify-content: space-between;
+        gap: 0.75rem;
+        font-family: var(--font-display);
+        font-weight: 600;
+        font-size: 1.05rem;
+        line-height: 1.32;
+        letter-spacing: -0.02em;
+        color: var(--ink);
+        transition: color 0.25s var(--ease-out);
+      }
+
+      .hub__card-link::after {
+        content: '';
+        position: absolute;
+        inset: 0;
+        border-radius: inherit;
+      }
+
+      .hub__card:hover .hub__card-link {
+        color: #9beeff;
+      }
+
+      .hub__card-arrow {
+        flex: 0 0 auto;
+        font-family: var(--font-mono);
+        font-size: 0.88rem;
+        color: var(--ink-4);
+        transition: transform 0.3s var(--ease-out), color 0.3s var(--ease-out);
+      }
+
+      .hub__card:hover .hub__card-arrow {
+        color: var(--aurora-2);
+        transform: translate(2px, -2px);
+      }
+
+      .hub__card-desc {
+        margin: 0;
+        font-size: 0.9rem;
+        line-height: 1.58;
+        color: var(--ink-3);
+      }
+
+      .hub__more {
+        margin: 0.25rem 0 0;
+      }
+
+      .hub__more-btn {
+        max-width: 100%;
+        white-space: normal;
+        font-size: 0.88rem;
+        padding: 0.72rem 1.3rem;
+      }
+
+      .hub__pages {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 0.55rem;
+        padding-top: 0.5rem;
+      }
+
+      .hub__page {
+        display: inline-grid;
+        place-items: center;
+        min-width: 2.5rem;
+        height: 2.5rem;
+        padding: 0 0.75rem;
+        border-radius: 12px;
+        font-family: var(--font-mono);
+        font-size: 0.86rem;
+        color: var(--ink-2);
+        border: 1px solid var(--hair-strong);
+        background: rgba(255, 255, 255, 0.04);
+        transition: border-color 0.25s, background 0.25s, color 0.25s;
+      }
+
+      .hub__page:hover {
+        border-color: rgba(56, 224, 240, 0.4);
+        background: rgba(56, 224, 240, 0.1);
+        color: var(--ink);
+      }
+
+      .hub__page[aria-current="page"] {
+        font-weight: 700;
+        color: #030614;
+        background: var(--aurora-2);
+        border-color: var(--aurora-2);
+        box-shadow: 0 0 20px rgba(56, 224, 240, 0.45);
       }
     `,
   ],
@@ -102,7 +356,7 @@ export class ArticlesPageComponent {
   readonly pages: { number: number; path: string }[] = [];
 
   topicAnchor(family: Family): string {
-    return `${localePath(this.locale, '/articles')}/#topic-${family}`;
+    return `${linkPath(this.locale, '/articles')}#topic-${family}`;
   }
 
   constructor() {

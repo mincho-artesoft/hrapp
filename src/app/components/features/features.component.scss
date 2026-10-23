@@ -169,9 +169,9 @@
   /* flattened into perspective — reads as a disc, not a circle */
   transform: rotateX(60deg);
 
-  &--1 { width: 15rem; height: 15rem; }
-  &--2 { width: 19rem; height: 19rem; border-color: rgba(255, 255, 255, 0.07); }
-  &--3 { width: 23rem; height: 23rem; border-color: rgba(255, 255, 255, 0.05); }
+  &--1 { width: 12.5rem; height: 12.5rem; }
+  &--2 { width: 16rem; height: 16rem; border-color: rgba(255, 255, 255, 0.07); }
+  &--3 { width: 19.5rem; height: 19.5rem; border-color: rgba(255, 255, 255, 0.05); }
 }
 
 .orbit__core {
@@ -193,8 +193,8 @@
 .orbit__node {
   position: absolute;
   z-index: 2;
-  width: 15rem;
-  height: 15rem;
+  width: 12.5rem;
+  height: 12.5rem;
   transform-style: preserve-3d;
   pointer-events: none;
   animation: orbit-spin 24s linear infinite;
@@ -202,8 +202,8 @@
   /* Explicit, unequal offsets — a uniform stagger puts all three nodes at
      the same point of their ellipse whenever the durations line up. */
   &[data-src='icloud']    { animation-delay: -2s; }
-  &[data-src='google']    { width: 19rem; height: 19rem; animation-duration: 32s; animation-delay: -14s; }
-  &[data-src='microsoft'] { width: 23rem; height: 23rem; animation-duration: 42s; animation-delay: -27s; }
+  &[data-src='google']    { width: 16rem; height: 16rem; animation-duration: 32s; animation-delay: -14s; }
+  &[data-src='microsoft'] { width: 19.5rem; height: 19.5rem; animation-duration: 42s; animation-delay: -27s; }
 }
 
 /* Counter-rotate the chip so the label stays upright while it orbits. */
@@ -332,6 +332,8 @@
   }
 
   &--live {
+    top: 3.8rem;
+    height: 2.6rem;
     background: linear-gradient(150deg, rgba(56, 160, 255, 0.44), rgba(40, 90, 220, 0.32));
     border-left: 2.5px solid #6cc7ff;
     box-shadow: 0 10px 26px -10px rgba(50, 140, 255, 0.9);
@@ -375,6 +377,9 @@
 /* The finger. */
 .gesture__cursor {
   position: absolute;
+  left: 55%;
+  top: 4.4rem;
+  opacity: 0;
   width: 22px;
   height: 22px;
   border-radius: 50%;

@@ -32,7 +32,7 @@ interface Shot {
   template: `
     <ul class="rail" tabindex="0" [attr.aria-label]="label" [attr.dir]="dir()">
       @for (shot of shots(); track shot.name) {
-        <li class="rail__item">
+        <li class="rail__item" [class.is-landscape]="shot.width > shot.height">
           <a [href]="shot.fullWebp" target="_blank" rel="noopener">
           <picture>
             <source type="image/avif" [attr.srcset]="shot.srcsetAvif" [attr.sizes]="sizes" />
@@ -67,18 +67,33 @@ interface Shot {
 
       .rail__item {
         flex: none;
-        width: 170px;
+        width: 184px;
         scroll-snap-align: start;
       }
 
-      .rail__item a { display: block; border-radius: 22px; }
+      .rail__item.is-landscape {
+        width: min(320px, 78vw);
+      }
+
+      .rail__item a {
+        display: block;
+        border-radius: 22px;
+        border: 1px solid rgba(255, 255, 255, 0.1);
+        box-shadow: 0 14px 36px -14px rgba(0, 0, 0, 0.72);
+        overflow: hidden;
+        transition: transform 0.35s var(--ease-out), border-color 0.35s var(--ease-out);
+      }
+      .rail__item a:hover {
+        transform: translateY(-3px);
+        border-color: rgba(56, 224, 240, 0.35);
+      }
       .rail__item a:focus-visible { outline: 2px solid currentColor; outline-offset: 4px; }
 
       .rail__item img {
         display: block;
         width: 100%;
         height: auto;
-        border-radius: 22px;
+        border-radius: 21px;
         background: rgb(0 0 0 / 0.2);
       }
     `,

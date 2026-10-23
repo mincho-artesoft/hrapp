@@ -1,6 +1,7 @@
 import { ChangeDetectionStrategy, Component, computed, inject } from '@angular/core';
 
 import { ActiveLocaleService } from '../../core/active-locale.service';
+import { linkPath } from '../../core/locales';
 import { storeCta } from '../../core/store-cta';
 import { APP_DEVELOPER, APP_MIN_IOS, APP_STORE_URL, APP_VERSION, SUPPORT_EMAIL } from '../../core/app-facts';
 
@@ -45,6 +46,7 @@ export class FooterComponent {
       { label: n.features, href: `${base}#features` },
       { label: n.pricing, href: `${base}#pricing` },
       { label: n.faq, href: `${base}#faq` },
+      { label: n.articles, href: linkPath(this.active.locale(), '/articles') },
     ];
   });
 

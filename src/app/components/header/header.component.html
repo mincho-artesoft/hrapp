@@ -22,8 +22,14 @@
     </a>
 
     <nav class="hdr__nav" aria-label="Primary">
-      @for (item of nav(); track item.fragment) {
-        <a class="hdr__link" [href]="homePath() + '#' + item.fragment">
+      @for (item of nav(); track item.key) {
+        <a
+          class="hdr__link"
+          [class.hdr__link--route]="item.isRoute"
+          [class.is-active]="item.isRoute && isArticlesRoute()"
+          [href]="item.href"
+          [attr.aria-current]="item.isRoute && isArticlesRoute() ? 'page' : null"
+        >
           <span>{{ item.label }}</span>
         </a>
       }
@@ -63,10 +69,10 @@
   [attr.inert]="menuOpen() ? null : ''"
 >
   <nav class="sheet__nav" aria-label="Mobile">
-    @for (item of nav(); track item.fragment; let i = $index) {
+    @for (item of nav(); track item.key; let i = $index) {
       <a
         class="sheet__link"
-        [href]="homePath() + '#' + item.fragment"
+        [href]="item.href"
         [style.--i]="i"
         (click)="closeMenu()"
       >

@@ -9,12 +9,15 @@ import {
 
 import { ScrollService } from '../../core/scroll.service';
 import { ActiveLocaleService } from '../../core/active-locale.service';
+import { linkPath } from '../../core/locales';
 import { storeCta } from '../../core/store-cta';
 import { LanguageSwitcherComponent } from '../language-switcher/language-switcher.component';
 
 interface NavItem {
   label: string;
-  fragment: string;
+  href: string;
+  key: string;
+  isRoute?: boolean;
 }
 
 @Component({
@@ -42,15 +45,20 @@ export class HeaderComponent {
 
   readonly copy = this.active.copy;
   readonly storeCta = computed(() => storeCta(this.active.locale().code));
+  readonly isArticlesRoute = computed(() => this.active.currentPath().includes('/articles/'));
+
   /** Labels come from the active language; the fragments never change. */
   readonly nav = computed<NavItem[]>(() => {
     const n = this.copy().nav;
+    const base = this.homePath();
+    const articlesHref = linkPath(this.active.locale(), '/articles');
     return [
-      { label: n.tour, fragment: 'showcase' },
-      { label: n.widgets, fragment: 'widgets' },
-      { label: n.weather, fragment: 'weather' },
-      { label: n.features, fragment: 'features' },
-      { label: n.pricing, fragment: 'pricing' },
+      { label: n.tour, href: `${base}#showcase`, key: 'showcase' },
+      { label: n.widgets, href: `${base}#widgets`, key: 'widgets' },
+      { label: n.weather, href: `${base}#weather`, key: 'weather' },
+      { label: n.features, href: `${base}#features`, key: 'features' },
+      { label: n.pricing, href: `${base}#pricing`, key: 'pricing' },
+      { label: n.articles, href: articlesHref, key: 'articles', isRoute: true },
     ];
   });
 

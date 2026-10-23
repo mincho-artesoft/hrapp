@@ -27,11 +27,14 @@ import { TermsPageComponent } from './pages/terms-page/terms-page.component';
  * choose Japanese and land back on English, which reads as the switcher being
  * broken rather than the page being untranslated.
  */
+const resolveArticleContent: ResolveFn<ArticleLocale> = route => loadArticleContentFor(route.data['locale'].code, route.paramMap.get('slug') ?? undefined);
+
 const homeRoutes: Routes = LOCALES.map((locale) => ({
   path: locale.slug,
   component: HomePageComponent,
   pathMatch: 'full' as const,
   data: { locale },
+  resolve: { articleContent: resolveArticleContent },
 }));
 
 /**
@@ -56,8 +59,6 @@ const eventRoutes: Routes = LOCALES.flatMap((locale) => {
   ];
 });
 
-const resolveArticleContent: ResolveFn<ArticleLocale> = route => loadArticleContentFor(route.data['locale'].code, route.paramMap.get('slug') ?? undefined);
-
 const articleRoutes: Routes = LIVE_LOCALES.flatMap((locale) => {
   const prefix = locale.slug ? `${locale.slug}/` : '';
   return [
@@ -81,7 +82,13 @@ const articleRoutes: Routes = LIVE_LOCALES.flatMap((locale) => {
 });
 
 export const routes: Routes = [
-  { path: '', component: HomePageComponent, pathMatch: 'full', data: { locale: DEFAULT_LOCALE } },
+  {
+    path: '',
+    component: HomePageComponent,
+    pathMatch: 'full',
+    data: { locale: DEFAULT_LOCALE },
+    resolve: { articleContent: resolveArticleContent },
+  },
   ...homeRoutes,
   ...eventRoutes,
   {

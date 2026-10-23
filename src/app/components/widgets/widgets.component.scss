@@ -69,18 +69,39 @@
     background: #cfe6ff;
   }
 
-  /* stacked-cards glyph */
+  /* 3-size widget grid glyph */
+  &[data-icon='grid'],
   &[data-icon='stack'] {
     &::before {
-      inset: 11px 10px auto 10px;
-      height: 6px;
-      border-radius: 2px;
-      opacity: 0.55;
+      inset: 10px 9px auto 9px;
+      height: 8px;
+      border-radius: 3px;
+      opacity: 0.78;
     }
     &::after {
-      inset: auto 8px 10px 8px;
+      inset: auto 9px 10px 9px;
       height: 10px;
       border-radius: 3px;
+      background: linear-gradient(90deg, #cfe6ff 0 44%, transparent 44% 56%, rgba(207, 230, 255, 0.65) 56% 100%);
+    }
+  }
+
+  /* lock-screen Live Activity glyph */
+  &[data-icon='lock'] {
+    &::before {
+      width: 12px;
+      height: 9px;
+      top: 9px;
+      left: 13px;
+      background: transparent;
+      border: 2px solid #cfe6ff;
+      border-bottom: 0;
+      border-radius: 6px 6px 0 0;
+      box-sizing: border-box;
+    }
+    &::after {
+      inset: 17px 10px 10px 10px;
+      border-radius: 4px;
     }
   }
 

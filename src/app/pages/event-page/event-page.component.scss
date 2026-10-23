@@ -2,7 +2,7 @@
 
 .ev {
   min-height: calc(100vh - var(--header-h));
-  padding: clamp(1.4rem, 4vw, 3rem) 0 5rem;
+  padding: calc(var(--header-h) + clamp(2rem, 5vw, 3.8rem)) 0 5rem;
 }
 .ev__shell {
   width: min(560px, 92vw);

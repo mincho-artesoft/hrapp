@@ -1,0 +1,39 @@
+{
+  "reviewedAt": "2026-10-23T13:32:20.912064+00:00",
+  "result": "published_verified",
+  "reviewScope": "Argon navigation and design changes; two mobile review fixes applied before final publication",
+  "fixedIssues": [
+    {
+      "issue": "Article hub min-content overflow on 390px viewport",
+      "beforeDocumentWidth": 434,
+      "afterDocumentWidth": 379,
+      "viewportWidth": 390,
+      "fix": "Constrain grid tracks and wrap long guide buttons"
+    },
+    {
+      "issue": "Mobile menu covered its own close button",
+      "fix": "Keep navigation bar above the mobile sheet",
+      "verified": "Visible close control; click closes menu and aria-expanded becomes false"
+    }
+  ],
+  "checks": {
+    "typescript": "passed",
+    "editorialValidator": "173 English /73 baseline /100 new; zero errors and warnings",
+    "staticAudit": "navigation-review-20261023.json; route and indexing audit before the CSS-only mobile amendments",
+    "finalProductionBuild": "passed;818 prerender routes;all internal links resolve",
+    "publicDeployment": "passed;217/217 sitemap URLs return200",
+    "new100ArticleLiveCheck": "100/100 passed",
+    "publicPagination": "Clicked planning page1 to page2;24 cards and aria-current=2",
+    "homepageGuides": "Six featured guides;total173",
+    "translations": "542 article/hub holds preserved",
+    "desktopAndMobile": "1280 desktop and390 mobile layouts checked"
+  },
+  "privacyPolicySha256": "25ce1d341a18967caf5ef68782358b48e3fb192346ff13aa7712b1935f5b28e4",
+  "proof": {
+    "url": "https://www.cloud-calendars.com/media/panel/asc-174-20261022/qa/navigation-20261023.png",
+    "bytes": 52955,
+    "sha256": "1d046285ca937c6bbff67cb012df497aff33aeac2f8d163fae65e085a138709b",
+    "s3AndPublicVerified": true,
+    "localScratchRemoved": true
+  }
+}

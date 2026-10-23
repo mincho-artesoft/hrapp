@@ -29,7 +29,7 @@
       <section class="article__action">
         <h2>{{ article.actionHeading }}</h2>
         <p>{{ article.actionText }}</p>
-        <a class="button" [href]="store" target="_blank" rel="noopener">{{ storeLabel }}</a>
+        <a class="btn btn--primary" [href]="store" target="_blank" rel="noopener">{{ storeLabel }}</a>
         @if (articleLinks.length) {
           <ul>@for (link of articleLinks; track link.path) { <li><a [href]="link.path">{{ link.label }}</a></li> }</ul>
         }
