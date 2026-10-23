@@ -401,6 +401,7 @@ export const PLANNING_EN_US: Readonly<Record<string, LocalisedArticle>> = {
     }
   ],
   "seeAlso": [
+    "weekly-schedule-builder",
     "automatic-time-blocking-versus-manual-calendar",
     "a-week-view-that-fits-a-week",
     "family-pickup-calendar-handoff",

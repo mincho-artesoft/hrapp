@@ -1,0 +1,64 @@
+{
+  "date": "2026-10-23",
+  "decisions": [
+    {
+      "keywords": [
+        "schedule builder",
+        "schedule calendar",
+        "calendar schedule"
+      ],
+      "action": "implemented-useful-page-and-interactive-draft",
+      "canonical": "https://www.cloud-calendars.com/articles/weekly-schedule-builder/",
+      "evidence": "Morgen visible positions and https://www.morgen.so/schedule-builder; 90.5K is a Semrush estimate for one phrase, not combined demand or guaranteed traffic.",
+      "readerTask": "Arrange a weekly pattern with block validation, overlap warnings and a copyable plan; no calendar writes or auto-scheduling."
+    },
+    {
+      "keywords": [
+        "best calendar app"
+      ],
+      "action": "map-existing-comparison",
+      "canonical": "https://www.cloud-calendars.com/articles/fantastical-readdle-calendar366-iphone-comparison/",
+      "limitation": "Useful workflow comparison, not a benchmark of every app or a claim of best overall."
+    },
+    {
+      "keywords": [
+        "phone planner"
+      ],
+      "action": "defer-intent-validation",
+      "canonical": null,
+      "limitation": "Could mean an app, paper planner or a product/device accessory. Volume alone does not justify a new generic article."
+    },
+    {
+      "keywords": [
+        "20 minute timer"
+      ],
+      "action": "do-not-create-unrelated-page",
+      "canonical": null,
+      "limitation": "Utility intent belongs to the timer, not proof a calendar article answers it. No timer page generated simply for volume."
+    },
+    {
+      "keywords": [
+        "cardhop",
+        "fantasical",
+        "fantastical",
+        "fantastical calendar",
+        "flexbits",
+        "flexibit",
+        "flexibits",
+        "morgen calendar",
+        "morgen calendar app",
+        "time tree",
+        "time tree app",
+        "time tree calendar",
+        "timetree",
+        "timetree app",
+        "timetree calendar",
+        "timetree shared calendar app",
+        "timing tree"
+      ],
+      "action": "brand-navigation-or-ambiguous-product-name-no-doorways",
+      "canonical": null,
+      "limitation": "Do not manufacture pages for brand typos, Cardhop or every spelling; fantastical can also have dictionary intent."
+    }
+  ]
+}

@@ -1,0 +1,43 @@
+<section class="builder" aria-labelledby="schedule-builder-heading">
+  <h2 id="schedule-builder-heading">Build a weekly draft</h2>
+  <p>Edit the example or remove it, then add your own blocks. Times are in your chosen local planning convention; this draft has no dates or time-zone conversion.</p>
+  <p class="builder__note">Your draft is temporary in this tab. It is not saved, sent to a calendar or checked against existing appointments. Closing or reloading the page resets it.</p>
+  <div class="builder__editor">
+    @for (block of blocks(); track block.id) {
+      <fieldset>
+        <legend>Block {{ block.id }}</legend>
+        <label [for]="'day-' + block.id">Day</label>
+        <select [id]="'day-' + block.id" [ngModel]="block.day" (ngModelChange)="setDay(block.id, $event)">
+          @for (day of days; track day; let i = $index) { <option [ngValue]="i">{{ day }}</option> }
+        </select>
+        <label [for]="'title-' + block.id">Title</label>
+        <input [id]="'title-' + block.id" maxlength="120" [ngModel]="block.title" (ngModelChange)="update(block.id, 'title', $event)" autocomplete="off">
+        <div class="builder__times">
+          <label>Start <input type="time" [ngModel]="block.start" (ngModelChange)="update(block.id, 'start', $event)"></label>
+          <label>End <input type="time" [ngModel]="block.end" (ngModelChange)="update(block.id, 'end', $event)"></label>
+        </div>
+        <button type="button" (click)="remove(block.id)" [attr.aria-label]="'Remove block ' + block.id">Remove block</button>
+      </fieldset>
+    }
+  </div>
+  <button type="button" class="builder__add" (click)="add()">Add a time block</button>
+  <p role="status">{{ notice() }}</p>
+  <div aria-live="polite">
+    @if (warnings().length) {
+      <div class="builder__warnings"><h3>Review your draft</h3><ul>@for (warning of warnings(); track $index) { <li>{{ warning }}</li> }</ul></div>
+    }
+    <h3>Your week</h3>
+    <p>{{ summary() }}. Empty time is unallocated, not confirmed availability.</p>
+    <div class="builder__week">
+      @for (day of days; track day; let i = $index) {
+        <section><h4>{{ day }}</h4>
+          @for (block of forDay(i); track block.id) { <p><strong>{{ block.start }}–{{ block.end }}</strong><br>{{ block.title }}</p> }
+          @empty { <p class="builder__empty">No blocks</p> }
+        </section>
+      }
+    </div>
+  </div>
+  <label for="weekly-draft-text">Plain-text draft — select and copy before leaving</label>
+  <textarea id="weekly-draft-text" readonly [value]="planText()" rows="12"></textarea>
+  <p>Invalid blocks are excluded from the preview and text. Overlapping valid blocks remain visible so you can decide what to change.</p>
+</section>

@@ -1,0 +1,7 @@
+{
+  "url": "https://www.cloud-calendars.com/media/panel/asc-174-20261022/qa/schedule-builder-20261023.jpg",
+  "bytes": 64493,
+  "sha256": "0bd56234d0699184a4dd60ad29297d314dfd701c2defac26c0aad206beb031b0",
+  "localScratchRemoved": true,
+  "review": "Two synthetic blocks on the live builder; editable times, different days, correct total; no horizontal overflow."
+}

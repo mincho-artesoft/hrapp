@@ -3,6 +3,7 @@ import { ChangeDetectionStrategy, Component, OnDestroy, inject } from '@angular/
 import { ActivatedRoute } from '@angular/router';
 
 import { MoreAppsComponent } from '../../components/more-apps/more-apps.component';
+import { WeeklyScheduleBuilderComponent } from '../../components/weekly-schedule-builder/weekly-schedule-builder.component';
 import { ShotRailComponent } from '../../components/shot-rail/shot-rail.component';
 import { ARTICLE_FACTS } from '../../content/article-facts';
 import { localesWith } from '../../content/article-index';
@@ -30,7 +31,7 @@ interface SeeAlsoLink {
   selector: 'cc-article-page',
   standalone: true,
   changeDetection: ChangeDetectionStrategy.OnPush,
-  imports: [ShotRailComponent, MoreAppsComponent],
+  imports: [ShotRailComponent, MoreAppsComponent, WeeklyScheduleBuilderComponent],
   templateUrl: './article-page.component.html',
   styleUrl: './article-page.component.scss',
 })
@@ -44,10 +45,12 @@ export class ArticlePageComponent implements OnDestroy {
   readonly updated: string = '';
   readonly store: string;
   readonly storeLabel: string;
+  readonly showScheduleBuilder: boolean;
 
   constructor() {
     const route = inject(ActivatedRoute).snapshot;
     const slug = route.paramMap.get('slug') ?? '';
+    this.showScheduleBuilder = slug === 'weekly-schedule-builder' && ((route.data['locale'] as Locale | undefined)?.code ?? 'en-US') === 'en-US';
 
     this.locale = (route.data['locale'] as Locale | undefined) ?? DEFAULT_LOCALE;
     const content = route.data['articleContent'] as ArticleLocale;

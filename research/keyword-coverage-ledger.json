@@ -10,7 +10,7 @@
     "No content is declared researched merely because a corresponding route exists."
   ],
   "currentInventory": {
-    "articles": 479,
+    "articles": 480,
     "locales": [
       "ar-SA",
       "bg",
@@ -43,9 +43,9 @@
       "zh-Hans",
       "zh-Hant"
     ],
-    "englishArticles": 72,
+    "englishArticles": 73,
     "evidence": "src/app/content/article-index.ts generated from locale aggregates",
-    "scope": "Generated inventory after fourteen added English guides; not blanket quality approval."
+    "scope": "Generated inventory after15 newEnglishguides; one includes an interactive schedule draft."
   },
   "clusters": [
     {
@@ -1810,7 +1810,17 @@
     "classifiedRelatedStrings": 307,
     "originalRelatedStrings": 212,
     "laterRelatedStrings": 95,
-    "allAvailableOwnSiteQueryRowsReviewed": 150
+    "allAvailableOwnSiteQueryRowsReviewed": 150,
+    "semrush": {
+      "domains": 3,
+      "visibleRows": 30,
+      "uniquePhrases": 23,
+      "database": "US",
+      "device": "Desktop",
+      "reportDate": "2026-10-21",
+      "limitation": "Free preview only; full list/filter/export and AI analysis gated.",
+      "evidence": "research/semrush-20261023"
+    }
   },
   "currentMediaEvidence": {
     "verifiedPublicMediaObjects": 1882,
@@ -1828,11 +1838,10 @@
   },
   "latestPublication": {
     "date": "2026-10-23",
-    "newEnglishGuidesSinceBatch43": 13,
-    "lastIncrement": 2,
-    "expandedThisIncrement": 2,
-    "evidence": "research/competitor-map-20261022/round4-public-check.json",
-    "goalComplete": false
+    "slug": "weekly-schedule-builder",
+    "url": "https://www.cloud-calendars.com/articles/weekly-schedule-builder/",
+    "source": "Semrush observed Morgen schedule-builder demand plus publisher documentation; own original implementation",
+    "checks": "research/semrush-20261023/publication-check.json"
   },
   "latestResearchIncrement": {
     "date": "2026-10-23",

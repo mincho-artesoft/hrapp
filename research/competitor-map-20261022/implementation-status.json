@@ -1,13 +1,13 @@
 {
   "date": "2026-10-23",
-  "goalStatus": "active_incomplete",
-  "previousGoalTurn": "Progress: round5 published and pushed in c610a06.",
+  "goalStatus": "incomplete_semrush_free_tier_limits",
+  "previousGoalTurn": "Progress: Semrush account now authenticated, three free reports inspected; new useful schedule-builder page implemented and published.",
   "googleActualQueries": 45,
   "consumerChatGPTFreshSamples": 15,
   "historicalChatGPTSamples": 3,
-  "newEnglishArticles": 14,
-  "totalEnglishArticles": 72,
-  "sitemapUrls": 106,
+  "newEnglishArticles": 15,
+  "totalEnglishArticles": 73,
+  "sitemapUrls": 107,
   "heldTranslatedArticlesAndHubs": 436,
   "implementedSlugs": [
     "shift-work-calendar-iphone-rotating-schedules",
@@ -23,7 +23,8 @@
     "can-others-see-google-calendar-tasks",
     "ipad-family-calendar-display-skylight-dakboard",
     "sync-google-tasks-apple-reminders-iphone",
-    "weather-calendar-history-versus-forecast-iphone"
+    "weather-calendar-history-versus-forecast-iphone",
+    "weekly-schedule-builder"
   ],
   "delivered": [
     "45 actual Google observations and 15 consumer ChatGPT conversations mapped to candidate canonical pages",
@@ -34,21 +35,21 @@
     "Translated indexing hold and existing privacy policy preserved"
   ],
   "remaining": [
-    "An existing competitor organic-keyword export or authenticated research-tool data is needed for substantially more complete query/rank inventories. User asked which existing tool is available; no credentials requested.",
-    "No public inspection can prove literally all competitors’ Google keywords or all prompts in ChatGPT. Do not call this exhaustive."
+    "Full organic ranking rows, filters and CSV/Excel export require access beyond the observed free tier.",
+    "AI competitor analysis returned a trial modal; no AI gap data extracted.",
+    "Owner may activate suitable access; no subscription/trial activated by agent."
   ],
-  "completionAudit": "Not achieved: observed sample and implementation do not prove exhaustive competitor query coverage. Known source-check gaps addressed or explicitly deferred for ambiguous intent; broader rank data remains needed.",
+  "completionAudit": "Not achieved: 30 visible Semrush rows are useful evidence but not the full competitive inventory. New schedule-builder intent implemented with live interaction verification.",
   "lastIncrementArticles": 0,
   "ownSiteSearchConsoleQueries": 150,
   "classifiedOriginalSuggestionRows": 212,
   "distinctIntentLeads": 20,
   "lastIncrementPublication": {
-    "newArticles": 0,
-    "expandedArticles": 3,
-    "build": "round6-build-check.json",
-    "public": "round6-public-check.json",
-    "deploy": "round6-deploy.log",
-    "screenshot": "round6-visual-proof.json"
+    "newArticles": 1,
+    "interactiveTools": 1,
+    "expandedArticles": 0,
+    "evidenceDirectory": "research/semrush-20261023",
+    "result": "Published and verified with107sitemapURLs"
   },
   "lastIncrementExpandedArticles": 3,
   "classifiedRelatedSuggestionRows": 307,

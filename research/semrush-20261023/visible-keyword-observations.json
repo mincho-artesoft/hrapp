@@ -1,0 +1,517 @@
+{
+  "method": "Normalized visible rendered grid columns, including position-cell feature labels. No hidden rows retrieved. Volume and KD are third-party estimates; duplicate phrases across SERP features must not be summed.",
+  "rowCount": 30,
+  "uniquePhrases": 23,
+  "rows": [
+    {
+      "domain": "flexibits.com",
+      "keyword": "fantastical",
+      "intentLabel": "I",
+      "displayedPosition": 3,
+      "resultTypes": [
+        "Organic position"
+      ],
+      "monthlyVolumeEstimateUS": 12100,
+      "keywordDifficultyEstimate": 41,
+      "landingUrl": "https://flexibits.com/fantastical/faq",
+      "rowUpdatedDisplay": "Oct 19",
+      "sourceFile": "flexibits-visible-cell-details.json",
+      "database": "US",
+      "device": "Desktop",
+      "reportDate": "2026-10-21"
+    },
+    {
+      "domain": "flexibits.com",
+      "keyword": "fantastical",
+      "intentLabel": "I",
+      "displayedPosition": null,
+      "resultTypes": [
+        "AI Overview"
+      ],
+      "monthlyVolumeEstimateUS": 12100,
+      "keywordDifficultyEstimate": 41,
+      "landingUrl": "https://flexibits.com/fantastical",
+      "rowUpdatedDisplay": "Oct 19",
+      "sourceFile": "flexibits-visible-cell-details.json",
+      "database": "US",
+      "device": "Desktop",
+      "reportDate": "2026-10-21"
+    },
+    {
+      "domain": "flexibits.com",
+      "keyword": "flexibits",
+      "intentLabel": "N",
+      "displayedPosition": 1,
+      "resultTypes": [
+        "Sitelinks"
+      ],
+      "monthlyVolumeEstimateUS": 480,
+      "keywordDifficultyEstimate": 36,
+      "landingUrl": "https://flexibits.com/",
+      "rowUpdatedDisplay": "Sep 09",
+      "sourceFile": "flexibits-visible-cell-details.json",
+      "database": "US",
+      "device": "Desktop",
+      "reportDate": "2026-10-21"
+    },
+    {
+      "domain": "flexibits.com",
+      "keyword": "cardhop",
+      "intentLabel": "N",
+      "displayedPosition": 1,
+      "resultTypes": [
+        "Sitelinks"
+      ],
+      "monthlyVolumeEstimateUS": 390,
+      "keywordDifficultyEstimate": 34,
+      "landingUrl": "https://flexibits.com/cardhop",
+      "rowUpdatedDisplay": "Oct 17",
+      "sourceFile": "flexibits-visible-cell-details.json",
+      "database": "US",
+      "device": "Desktop",
+      "reportDate": "2026-10-21"
+    },
+    {
+      "domain": "flexibits.com",
+      "keyword": "flexbits",
+      "intentLabel": "N",
+      "displayedPosition": 1,
+      "resultTypes": [
+        "Sitelinks"
+      ],
+      "monthlyVolumeEstimateUS": 320,
+      "keywordDifficultyEstimate": 33,
+      "landingUrl": "https://flexibits.com/",
+      "rowUpdatedDisplay": "Sep 12",
+      "sourceFile": "flexibits-visible-cell-details.json",
+      "database": "US",
+      "device": "Desktop",
+      "reportDate": "2026-10-21"
+    },
+    {
+      "domain": "flexibits.com",
+      "keyword": "flexibit",
+      "intentLabel": "N",
+      "displayedPosition": 1,
+      "resultTypes": [
+        "Sitelinks"
+      ],
+      "monthlyVolumeEstimateUS": 210,
+      "keywordDifficultyEstimate": 24,
+      "landingUrl": "https://flexibits.com/",
+      "rowUpdatedDisplay": "Oct 18",
+      "sourceFile": "flexibits-visible-cell-details.json",
+      "database": "US",
+      "device": "Desktop",
+      "reportDate": "2026-10-21"
+    },
+    {
+      "domain": "flexibits.com",
+      "keyword": "fantastical calendar",
+      "intentLabel": "I",
+      "displayedPosition": 2,
+      "resultTypes": [
+        "Organic position"
+      ],
+      "monthlyVolumeEstimateUS": 1600,
+      "keywordDifficultyEstimate": 45,
+      "landingUrl": "https://flexibits.com/fantastical",
+      "rowUpdatedDisplay": "Sep 13",
+      "sourceFile": "flexibits-visible-cell-details.json",
+      "database": "US",
+      "device": "Desktop",
+      "reportDate": "2026-10-21"
+    },
+    {
+      "domain": "flexibits.com",
+      "keyword": "best calendar app",
+      "intentLabel": "C",
+      "displayedPosition": null,
+      "resultTypes": [
+        "AI Overview"
+      ],
+      "monthlyVolumeEstimateUS": 3600,
+      "keywordDifficultyEstimate": 42,
+      "landingUrl": "https://flexibits.com/fantastical",
+      "rowUpdatedDisplay": "Oct 16",
+      "sourceFile": "flexibits-visible-cell-details.json",
+      "database": "US",
+      "device": "Desktop",
+      "reportDate": "2026-10-21"
+    },
+    {
+      "domain": "flexibits.com",
+      "keyword": "fantastical calendar",
+      "intentLabel": "I",
+      "displayedPosition": null,
+      "resultTypes": [
+        "AI Overview"
+      ],
+      "monthlyVolumeEstimateUS": 1600,
+      "keywordDifficultyEstimate": 45,
+      "landingUrl": "https://flexibits.com/fantastical",
+      "rowUpdatedDisplay": "Sep 13",
+      "sourceFile": "flexibits-visible-cell-details.json",
+      "database": "US",
+      "device": "Desktop",
+      "reportDate": "2026-10-21"
+    },
+    {
+      "domain": "flexibits.com",
+      "keyword": "fantasical",
+      "intentLabel": "I",
+      "displayedPosition": 1,
+      "resultTypes": [
+        "Organic position"
+      ],
+      "monthlyVolumeEstimateUS": 720,
+      "keywordDifficultyEstimate": 46,
+      "landingUrl": "https://flexibits.com/fantastical",
+      "rowUpdatedDisplay": "Sep 18",
+      "sourceFile": "flexibits-visible-cell-details.json",
+      "database": "US",
+      "device": "Desktop",
+      "reportDate": "2026-10-21"
+    },
+    {
+      "domain": "timetreeapp.com",
+      "keyword": "time tree",
+      "intentLabel": "I",
+      "displayedPosition": 1,
+      "resultTypes": [
+        "Sitelinks"
+      ],
+      "monthlyVolumeEstimateUS": 12100,
+      "keywordDifficultyEstimate": 63,
+      "landingUrl": "https://timetreeapp.com/",
+      "rowUpdatedDisplay": "Oct 16",
+      "sourceFile": "timetree-visible-cell-details.json",
+      "database": "US",
+      "device": "Desktop",
+      "reportDate": "2026-10-21"
+    },
+    {
+      "domain": "timetreeapp.com",
+      "keyword": "timetree",
+      "intentLabel": "I",
+      "displayedPosition": null,
+      "resultTypes": [
+        "AI Overview"
+      ],
+      "monthlyVolumeEstimateUS": 18100,
+      "keywordDifficultyEstimate": 56,
+      "landingUrl": "https://timetreeapp.com/",
+      "rowUpdatedDisplay": "Oct 18",
+      "sourceFile": "timetree-visible-cell-details.json",
+      "database": "US",
+      "device": "Desktop",
+      "reportDate": "2026-10-21"
+    },
+    {
+      "domain": "timetreeapp.com",
+      "keyword": "timetree",
+      "intentLabel": "I",
+      "displayedPosition": null,
+      "resultTypes": [
+        "AI Overview"
+      ],
+      "monthlyVolumeEstimateUS": 18100,
+      "keywordDifficultyEstimate": 56,
+      "landingUrl": "https://timetreeapp.com/",
+      "rowUpdatedDisplay": "Oct 18",
+      "sourceFile": "timetree-visible-cell-details.json",
+      "database": "US",
+      "device": "Desktop",
+      "reportDate": "2026-10-21"
+    },
+    {
+      "domain": "timetreeapp.com",
+      "keyword": "timing tree",
+      "intentLabel": "C",
+      "displayedPosition": 1,
+      "resultTypes": [
+        "Sitelinks"
+      ],
+      "monthlyVolumeEstimateUS": 1900,
+      "keywordDifficultyEstimate": 62,
+      "landingUrl": "https://timetreeapp.com/",
+      "rowUpdatedDisplay": "Oct 15",
+      "sourceFile": "timetree-visible-cell-details.json",
+      "database": "US",
+      "device": "Desktop",
+      "reportDate": "2026-10-21"
+    },
+    {
+      "domain": "timetreeapp.com",
+      "keyword": "timetree shared calendar app",
+      "intentLabel": "I",
+      "displayedPosition": 1,
+      "resultTypes": [
+        "Organic position"
+      ],
+      "monthlyVolumeEstimateUS": 1600,
+      "keywordDifficultyEstimate": 33,
+      "landingUrl": "https://timetreeapp.com/",
+      "rowUpdatedDisplay": "Sep 19",
+      "sourceFile": "timetree-visible-cell-details.json",
+      "database": "US",
+      "device": "Desktop",
+      "reportDate": "2026-10-21"
+    },
+    {
+      "domain": "timetreeapp.com",
+      "keyword": "time tree app",
+      "intentLabel": "I",
+      "displayedPosition": 1,
+      "resultTypes": [
+        "Organic position"
+      ],
+      "monthlyVolumeEstimateUS": 1300,
+      "keywordDifficultyEstimate": 34,
+      "landingUrl": "https://timetreeapp.com/",
+      "rowUpdatedDisplay": "Aug 28",
+      "sourceFile": "timetree-visible-cell-details.json",
+      "database": "US",
+      "device": "Desktop",
+      "reportDate": "2026-10-21"
+    },
+    {
+      "domain": "timetreeapp.com",
+      "keyword": "time tree calendar",
+      "intentLabel": "N",
+      "displayedPosition": 1,
+      "resultTypes": [
+        "Sitelinks"
+      ],
+      "monthlyVolumeEstimateUS": 1300,
+      "keywordDifficultyEstimate": 36,
+      "landingUrl": "https://timetreeapp.com/",
+      "rowUpdatedDisplay": "Aug 29",
+      "sourceFile": "timetree-visible-cell-details.json",
+      "database": "US",
+      "device": "Desktop",
+      "reportDate": "2026-10-21"
+    },
+    {
+      "domain": "timetreeapp.com",
+      "keyword": "timetree calendar",
+      "intentLabel": "N",
+      "displayedPosition": 1,
+      "resultTypes": [
+        "Sitelinks"
+      ],
+      "monthlyVolumeEstimateUS": 1000,
+      "keywordDifficultyEstimate": 32,
+      "landingUrl": "https://timetreeapp.com/",
+      "rowUpdatedDisplay": "Sep 23",
+      "sourceFile": "timetree-visible-cell-details.json",
+      "database": "US",
+      "device": "Desktop",
+      "reportDate": "2026-10-21"
+    },
+    {
+      "domain": "timetreeapp.com",
+      "keyword": "timetree app",
+      "intentLabel": "I",
+      "displayedPosition": 1,
+      "resultTypes": [
+        "Organic position"
+      ],
+      "monthlyVolumeEstimateUS": 720,
+      "keywordDifficultyEstimate": 36,
+      "landingUrl": "https://timetreeapp.com/",
+      "rowUpdatedDisplay": "Sep 18",
+      "sourceFile": "timetree-visible-cell-details.json",
+      "database": "US",
+      "device": "Desktop",
+      "reportDate": "2026-10-21"
+    },
+    {
+      "domain": "timetreeapp.com",
+      "keyword": "timetree",
+      "intentLabel": "I",
+      "displayedPosition": null,
+      "resultTypes": [
+        "Knowledge panel"
+      ],
+      "monthlyVolumeEstimateUS": 18100,
+      "keywordDifficultyEstimate": 56,
+      "landingUrl": "https://timetreeapp.com/",
+      "rowUpdatedDisplay": "Oct 18",
+      "sourceFile": "timetree-visible-cell-details.json",
+      "database": "US",
+      "device": "Desktop",
+      "reportDate": "2026-10-21"
+    },
+    {
+      "domain": "morgen.so",
+      "keyword": "schedule builder",
+      "intentLabel": "I",
+      "displayedPosition": 3,
+      "resultTypes": [
+        "Organic position"
+      ],
+      "monthlyVolumeEstimateUS": 90500,
+      "keywordDifficultyEstimate": 13,
+      "landingUrl": "https://www.morgen.so/schedule-builder",
+      "rowUpdatedDisplay": "3 days",
+      "sourceFile": "morgen-visible-cell-details.json",
+      "database": "US",
+      "device": "Desktop",
+      "reportDate": "2026-10-21"
+    },
+    {
+      "domain": "morgen.so",
+      "keyword": "morgen calendar",
+      "intentLabel": "N",
+      "displayedPosition": 1,
+      "resultTypes": [
+        "Sitelinks"
+      ],
+      "monthlyVolumeEstimateUS": 880,
+      "keywordDifficultyEstimate": 32,
+      "landingUrl": "https://www.morgen.so/",
+      "rowUpdatedDisplay": "Aug 30",
+      "sourceFile": "morgen-visible-cell-details.json",
+      "database": "US",
+      "device": "Desktop",
+      "reportDate": "2026-10-21"
+    },
+    {
+      "domain": "morgen.so",
+      "keyword": "schedule builder",
+      "intentLabel": "I",
+      "displayedPosition": null,
+      "resultTypes": [
+        "AI Overview"
+      ],
+      "monthlyVolumeEstimateUS": 90500,
+      "keywordDifficultyEstimate": 13,
+      "landingUrl": "https://www.morgen.so/schedule-builder",
+      "rowUpdatedDisplay": "3 days",
+      "sourceFile": "morgen-visible-cell-details.json",
+      "database": "US",
+      "device": "Desktop",
+      "reportDate": "2026-10-21"
+    },
+    {
+      "domain": "morgen.so",
+      "keyword": "schedule builder",
+      "intentLabel": "I",
+      "displayedPosition": 12,
+      "resultTypes": [
+        "Organic position"
+      ],
+      "monthlyVolumeEstimateUS": 90500,
+      "keywordDifficultyEstimate": 13,
+      "landingUrl": "https://www.morgen.so/schedule-builder",
+      "rowUpdatedDisplay": "3 days",
+      "sourceFile": "morgen-visible-cell-details.json",
+      "database": "US",
+      "device": "Desktop",
+      "reportDate": "2026-10-21"
+    },
+    {
+      "domain": "morgen.so",
+      "keyword": "20 minute timer",
+      "intentLabel": "I",
+      "displayedPosition": 25,
+      "resultTypes": [
+        "Organic position"
+      ],
+      "monthlyVolumeEstimateUS": 246000,
+      "keywordDifficultyEstimate": 44,
+      "landingUrl": "https://www.morgen.so/pomodoro-timer",
+      "rowUpdatedDisplay": "3 days",
+      "sourceFile": "morgen-visible-cell-details.json",
+      "database": "US",
+      "device": "Desktop",
+      "reportDate": "2026-10-21"
+    },
+    {
+      "domain": "morgen.so",
+      "keyword": "fantastical",
+      "intentLabel": "I",
+      "displayedPosition": 4,
+      "resultTypes": [
+        "Organic position"
+      ],
+      "monthlyVolumeEstimateUS": 12100,
+      "keywordDifficultyEstimate": 41,
+      "landingUrl": "https://www.morgen.so/blog-posts/fantastical-pricing",
+      "rowUpdatedDisplay": "Oct 19",
+      "sourceFile": "morgen-visible-cell-details.json",
+      "database": "US",
+      "device": "Desktop",
+      "reportDate": "2026-10-21"
+    },
+    {
+      "domain": "morgen.so",
+      "keyword": "schedule calendar",
+      "intentLabel": "I",
+      "displayedPosition": null,
+      "resultTypes": [
+        "AI Overview"
+      ],
+      "monthlyVolumeEstimateUS": 1600,
+      "keywordDifficultyEstimate": 93,
+      "landingUrl": "https://www.morgen.so/schedule-builder",
+      "rowUpdatedDisplay": "Sep 08",
+      "sourceFile": "morgen-visible-cell-details.json",
+      "database": "US",
+      "device": "Desktop",
+      "reportDate": "2026-10-21"
+    },
+    {
+      "domain": "morgen.so",
+      "keyword": "morgen calendar app",
+      "intentLabel": "N",
+      "displayedPosition": 1,
+      "resultTypes": [
+        "Sitelinks"
+      ],
+      "monthlyVolumeEstimateUS": 260,
+      "keywordDifficultyEstimate": 36,
+      "landingUrl": "https://www.morgen.so/",
+      "rowUpdatedDisplay": "Aug 28",
+      "sourceFile": "morgen-visible-cell-details.json",
+      "database": "US",
+      "device": "Desktop",
+      "reportDate": "2026-10-21"
+    },
+    {
+      "domain": "morgen.so",
+      "keyword": "phone planner",
+      "intentLabel": "C",
+      "displayedPosition": 8,
+      "resultTypes": [
+        "Organic position"
+      ],
+      "monthlyVolumeEstimateUS": 22200,
+      "keywordDifficultyEstimate": 57,
+      "landingUrl": "https://www.morgen.so/",
+      "rowUpdatedDisplay": "Oct 18",
+      "sourceFile": "morgen-visible-cell-details.json",
+      "database": "US",
+      "device": "Desktop",
+      "reportDate": "2026-10-21"
+    },
+    {
+      "domain": "morgen.so",
+      "keyword": "calendar schedule",
+      "intentLabel": "I",
+      "displayedPosition": null,
+      "resultTypes": [
+        "AI Overview"
+      ],
+      "monthlyVolumeEstimateUS": 1000,
+      "keywordDifficultyEstimate": 83,
+      "landingUrl": "https://www.morgen.so/schedule-builder",
+      "rowUpdatedDisplay": "Sep 13",
+      "sourceFile": "morgen-visible-cell-details.json",
+      "database": "US",
+      "device": "Desktop",
+      "reportDate": "2026-10-21"
+    }
+  ]
+}

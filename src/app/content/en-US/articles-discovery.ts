@@ -817,99 +817,99 @@ export const DISCOVERY_EN_US: Readonly<Record<string, LocalisedArticle>> = {
     ]
   },
   "iphone-calendar-language-alternate-calendar-settings": {
-  "updated": "2026-10-23",
-  "title": "Calendar language and week numbers on iPhone and iPad: check display settings",
-  "short": "Calendar language and alternate dates",
-  "description": "Separate calendar language, regional dates, alternate calendars and week numbers on iPhone and iPad. Change display settings without removing events.",
-  "lede": "Unexpected characters beside a date do not necessarily mean the calendar app changed language. Interface language, regional formatting, alternate dates and event text are separate things. Identify which changed before adjusting settings. Arte Soft, the developer of Cloud Calendars, publishes this guide.",
-  "sections": [
-    {
-      "heading": "Identify the part of the screen that changed",
-      "body": [
-        "Look at a menu label, a month name, the date numbers and an event title separately. If menus remain in your usual language but extra date labels appear, investigate calendar display settings. If only one appointment has unfamiliar text, inspect that appointment’s title and source.",
-        "For example, a travel reservation can keep the organiser’s original title while the surrounding app menus remain English. Changing your device language is not an instruction to translate all saved appointment text. Avoid deleting an event or removing an account merely because its text looks unfamiliar."
-      ]
-    },
-    {
-      "heading": "Check the iPhone’s language and regional format",
-      "body": [
-        "Apple’s language-and-region guide places these controls in Settings, General, Language & Region. It separates language preferences from regional choices such as calendar format, first weekday and date format. Check the specific choice relevant to your problem.",
-        "If day and month order looks different, inspect the actual saved date before rescheduling. A date displayed as 03/04 can be ambiguous without its format. Use a month name or the full event details to confirm the intended appointment."
-      ]
-    },
-    {
-      "heading": "Check alternate calendars in Apple Calendar",
-      "body": [
-        "Apple’s Calendar settings guide documents alternate Chinese, Hebrew and Hijri calendars displayed alongside the Gregorian calendar. In the documented iOS 26 workflow, the control is Settings, Apps, Calendar, Alternate Calendars. Menu labels can differ by installed version.",
-        "The guide also separates Week Numbers and Start Week On. A number next to a week is not an extra appointment, and changing which weekday starts a grid does not itself move a saved event. Change one relevant display setting, return to the calendar and compare."
-      ]
-    },
-    {
-      "heading": "Show week numbers on iPad without moving events",
-      "body": [
-        "Apple’s iPad guide documents Settings, Apps, Calendar, then Week Numbers. The same settings area separates Start Week On, Week View Starts On Today and Alternate Calendars. A week label, the first displayed column and a second date system solve different display questions.",
-        "Turn on the relevant control, return to Calendar and inspect the intended dates. If a school or workplace uses a week number to arrange a meeting, confirm the actual date as well, especially around the start of a year. Do not move an appointment simply to make its displayed week label match another person’s convention.",
-        "These are Apple Calendar instructions for the documented iPadOS version, not a promise that each third-party app copies the same controls. Older searches mentioning iCal may refer to Mac software; this iPhone and iPad guide does not invent a Mac menu path."
-      ]
-    },
-    {
-      "heading": "Use the controls belonging to the app you opened",
-      "body": [
-        "Apple Calendar settings are not universal instructions for every calendar app. A third-party app can have its own language, view and formatting choices. Check its help and device settings rather than assuming the same menu path exists inside it.",
-        "In Cloud Calendars, inspect the actual view and event details to establish whether the issue is a label, formatting or saved content. This guide does not claim that every Apple alternate-calendar setting is reproduced by Cloud Calendars. Keep the account connection intact while investigating a display issue."
-      ]
-    },
-    {
-      "heading": "Verify a harmless example before changing real plans",
-      "body": [
-        "Use one private appointment with an unambiguous date and title. Compare it in the app and the provider’s own view. If both identify the same day and time, a formatting difference is not evidence that the appointment moved.",
-        "If the saved date or time is genuinely wrong, correct that specific event using the usual owner and recurrence checks. Keep time-zone troubleshooting separate: changing interface language does not by itself explain a shifted meeting hour."
-      ]
-    }
-  ],
-  "claims": {},
-  "practical": [
-    "Identify whether menus, dates or event text are affected.",
-    "Inspect language and regional format separately.",
-    "In Apple Calendar, check alternate dates, week numbers and first weekday.",
-    "Change one display setting and compare the same appointment.",
-    "Correct a real event only after confirming its saved date and time."
-  ],
-  "faq": [
-    {
-      "q": "Why are there Chinese or Hebrew labels beside the date?",
-      "a": "One possible explanation is an alternate calendar display. Apple documents alternate calendars alongside Gregorian dates; inspect that setting before assuming your event text changed."
-    },
-    {
-      "q": "Will changing language translate all event titles?",
-      "a": "Do not assume so. Appointment titles are saved content and may retain the organiser’s wording even when app menus use another language."
-    },
-    {
-      "q": "Should I remove my calendar account to fix date labels?",
-      "a": "Start with display and regional settings. Removing an account is unnecessary for identifying whether a label or format is the issue."
-    }
-  ],
-  "sourcesHeading": "Official documentation checked for this guide",
-  "sources": [
-    {
-      "label": "Apple: language, region, calendar and date format",
-      "url": "https://support.apple.com/en-ie/guide/iphone/iphce20717a3/ios"
-    },
-    {
-      "label": "Apple: alternate calendars, week numbers and first weekday in iOS 26",
-      "url": "https://support.apple.com/en-gb/guide/iphone/iphc37be2016/26/ios/26"
-    },
-    {
-      "label": "Apple: iPad week numbers, start of week and alternate calendars",
-      "url": "https://support.apple.com/en-ie/guide/ipad/ipad581be0bc/27/ipados/27"
-    }
-  ],
-  "seeAlso": [
-    "time-zones-and-the-flight-you-booked",
-    "what-an-all-day-event-really-means",
-    "change-calendar-color-iphone"
-  ]
-},
+    "updated": "2026-10-23",
+    "title": "Calendar language and week numbers on iPhone and iPad: check display settings",
+    "short": "Calendar language and alternate dates",
+    "description": "Separate calendar language, regional dates, alternate calendars and week numbers on iPhone and iPad. Change display settings without removing events.",
+    "lede": "Unexpected characters beside a date do not necessarily mean the calendar app changed language. Interface language, regional formatting, alternate dates and event text are separate things. Identify which changed before adjusting settings. Arte Soft, the developer of Cloud Calendars, publishes this guide.",
+    "sections": [
+      {
+        "heading": "Identify the part of the screen that changed",
+        "body": [
+          "Look at a menu label, a month name, the date numbers and an event title separately. If menus remain in your usual language but extra date labels appear, investigate calendar display settings. If only one appointment has unfamiliar text, inspect that appointment’s title and source.",
+          "For example, a travel reservation can keep the organiser’s original title while the surrounding app menus remain English. Changing your device language is not an instruction to translate all saved appointment text. Avoid deleting an event or removing an account merely because its text looks unfamiliar."
+        ]
+      },
+      {
+        "heading": "Check the iPhone’s language and regional format",
+        "body": [
+          "Apple’s language-and-region guide places these controls in Settings, General, Language & Region. It separates language preferences from regional choices such as calendar format, first weekday and date format. Check the specific choice relevant to your problem.",
+          "If day and month order looks different, inspect the actual saved date before rescheduling. A date displayed as 03/04 can be ambiguous without its format. Use a month name or the full event details to confirm the intended appointment."
+        ]
+      },
+      {
+        "heading": "Check alternate calendars in Apple Calendar",
+        "body": [
+          "Apple’s Calendar settings guide documents alternate Chinese, Hebrew and Hijri calendars displayed alongside the Gregorian calendar. In the documented iOS 26 workflow, the control is Settings, Apps, Calendar, Alternate Calendars. Menu labels can differ by installed version.",
+          "The guide also separates Week Numbers and Start Week On. A number next to a week is not an extra appointment, and changing which weekday starts a grid does not itself move a saved event. Change one relevant display setting, return to the calendar and compare."
+        ]
+      },
+      {
+        "heading": "Show week numbers on iPad without moving events",
+        "body": [
+          "Apple’s iPad guide documents Settings, Apps, Calendar, then Week Numbers. The same settings area separates Start Week On, Week View Starts On Today and Alternate Calendars. A week label, the first displayed column and a second date system solve different display questions.",
+          "Turn on the relevant control, return to Calendar and inspect the intended dates. If a school or workplace uses a week number to arrange a meeting, confirm the actual date as well, especially around the start of a year. Do not move an appointment simply to make its displayed week label match another person’s convention.",
+          "These are Apple Calendar instructions for the documented iPadOS version, not a promise that each third-party app copies the same controls. Older searches mentioning iCal may refer to Mac software; this iPhone and iPad guide does not invent a Mac menu path."
+        ]
+      },
+      {
+        "heading": "Use the controls belonging to the app you opened",
+        "body": [
+          "Apple Calendar settings are not universal instructions for every calendar app. A third-party app can have its own language, view and formatting choices. Check its help and device settings rather than assuming the same menu path exists inside it.",
+          "In Cloud Calendars, inspect the actual view and event details to establish whether the issue is a label, formatting or saved content. This guide does not claim that every Apple alternate-calendar setting is reproduced by Cloud Calendars. Keep the account connection intact while investigating a display issue."
+        ]
+      },
+      {
+        "heading": "Verify a harmless example before changing real plans",
+        "body": [
+          "Use one private appointment with an unambiguous date and title. Compare it in the app and the provider’s own view. If both identify the same day and time, a formatting difference is not evidence that the appointment moved.",
+          "If the saved date or time is genuinely wrong, correct that specific event using the usual owner and recurrence checks. Keep time-zone troubleshooting separate: changing interface language does not by itself explain a shifted meeting hour."
+        ]
+      }
+    ],
+    "claims": {},
+    "practical": [
+      "Identify whether menus, dates or event text are affected.",
+      "Inspect language and regional format separately.",
+      "In Apple Calendar, check alternate dates, week numbers and first weekday.",
+      "Change one display setting and compare the same appointment.",
+      "Correct a real event only after confirming its saved date and time."
+    ],
+    "faq": [
+      {
+        "q": "Why are there Chinese or Hebrew labels beside the date?",
+        "a": "One possible explanation is an alternate calendar display. Apple documents alternate calendars alongside Gregorian dates; inspect that setting before assuming your event text changed."
+      },
+      {
+        "q": "Will changing language translate all event titles?",
+        "a": "Do not assume so. Appointment titles are saved content and may retain the organiser’s wording even when app menus use another language."
+      },
+      {
+        "q": "Should I remove my calendar account to fix date labels?",
+        "a": "Start with display and regional settings. Removing an account is unnecessary for identifying whether a label or format is the issue."
+      }
+    ],
+    "sourcesHeading": "Official documentation checked for this guide",
+    "sources": [
+      {
+        "label": "Apple: language, region, calendar and date format",
+        "url": "https://support.apple.com/en-ie/guide/iphone/iphce20717a3/ios"
+      },
+      {
+        "label": "Apple: alternate calendars, week numbers and first weekday in iOS 26",
+        "url": "https://support.apple.com/en-gb/guide/iphone/iphc37be2016/26/ios/26"
+      },
+      {
+        "label": "Apple: iPad week numbers, start of week and alternate calendars",
+        "url": "https://support.apple.com/en-ie/guide/ipad/ipad581be0bc/27/ipados/27"
+      }
+    ],
+    "seeAlso": [
+      "time-zones-and-the-flight-you-booked",
+      "what-an-all-day-event-really-means",
+      "change-calendar-color-iphone"
+    ]
+  },
   "share-assign-reminders-iphone-calendar-difference": {
     "updated": "2026-10-23",
     "title": "Share and assign reminders on iPhone: lists are different from calendars",
@@ -1365,6 +1365,88 @@ export const DISCOVERY_EN_US: Readonly<Record<string, LocalisedArticle>> = {
     "seeAlso": [
       "weather-inside-your-calendar",
       "a-fourteen-day-view-of-the-weather",
+      "calendar-export-ics-pdf-and-backup"
+    ]
+  },
+  "weekly-schedule-builder": {
+    "updated": "2026-10-23",
+    "title": "Weekly schedule builder: make a draft before adding calendar events",
+    "short": "Build a weekly schedule",
+    "description": "Build a weekly draft with editable time blocks, overlap warnings and a text preview. Separate an ideal-week template from dated appointments and calendar sync.",
+    "lede": "Use this small schedule builder to arrange a repeatable week before committing dates to your calendar. Add fixed appointments, work periods and breaks, then review overlaps. Arte Soft, the developer of Cloud Calendars, provides this temporary planning worksheet. It does not connect to your calendar.",
+    "sections": [
+      {
+        "heading": "Start with commitments, then allocate work",
+        "body": [
+          "Enter fixed commitments first: a class, a work shift or an agreed appointment. Add preparation and travel as separate blocks when they consume time. Use a realistic end time, not only a deadline label.",
+          "For example, a call from 10:00 to 10:30 and a preparation block from 09:30 to 10:00 fit without overlapping. A second block from 09:45 to 10:15 conflicts with both. The editor points out intersections in your draft; it does not move anything automatically."
+        ]
+      },
+      {
+        "heading": "An ideal week is a template, not a dated booking",
+        "body": [
+          "Monday at 09:00 describes a weekly pattern. A real invitation also needs a calendar date, time zone, organiser and destination calendar. The builder deliberately does not invent those values or send invitations.",
+          "A week that normally works can still contain a holiday, overnight shift or one-off appointment. Before reusing the draft, compare it with the actual week. Split overnight work into the relevant days rather than entering an end time earlier than its start."
+        ]
+      },
+      {
+        "heading": "Understand the preview and overlap warning",
+        "body": [
+          "Blocks with a title and an end later than their start appear in the preview, sorted by day and time. Adjacent blocks that meet at the same minute do not count as overlapping. Invalid blocks remain in the editor with a warning so you can correct them.",
+          "The total adds block durations, including overlaps separately. It is not a measure of unique busy hours, remaining capacity or work completed. Blank space means you have not allocated it here; your real calendars may contain other commitments."
+        ]
+      },
+      {
+        "heading": "Keep a copy before leaving",
+        "body": [
+          "This draft lives in the current tab’s memory. Reloading or closing resets it. Select the plain-text draft and copy it somewhere you choose before leaving. Nothing in this tool saves a file, creates an account or writes events to a calendar.",
+          "When you are satisfied, create or update the intended events in your calendar using confirmed dates and time zones. Check the saved destination, recurrence and sharing. A text copy is a planning note, not a live feed that updates when an event changes."
+        ]
+      },
+      {
+        "heading": "Choose a builder, an import or automatic scheduling",
+        "body": [
+          "Morgen’s published schedule-builder guide describes visual blocks and an ICS export. Its page also contains a specific note that direct integration into Morgen is not yet available, despite broader wording elsewhere on the page. Check the actual export and integration controls rather than treating an exported file as a live connection.",
+          "Our worksheet here is simpler: edit blocks, inspect overlaps and copy text. For an ICS import or automatic task rescheduling, choose a tool that documents those operations and test a disposable example. Cloud Calendars provides iPhone and iPad calendar planning; this website draft is not a new automatic scheduling or task-sync feature in the app."
+        ]
+      }
+    ],
+    "claims": {},
+    "practical": [
+      "Replace or remove the example block.",
+      "Enter fixed commitments before flexible work.",
+      "Resolve overlapping or invalid blocks.",
+      "Copy the text before closing the tab.",
+      "Check dates, time zones and calendar destinations when transferring the plan."
+    ],
+    "faq": [
+      {
+        "q": "Does this builder automatically save my week?",
+        "a": "No. It keeps a temporary draft in this tab. Copy the text before leaving; reload or closing resets it."
+      },
+      {
+        "q": "Does it sync with Google Calendar, Apple Calendar or Outlook?",
+        "a": "No. It neither reads existing calendars nor writes events. Transfer confirmed plans through your chosen calendar’s normal controls."
+      },
+      {
+        "q": "Why does the total include overlapping blocks?",
+        "a": "It sums each valid block’s duration. The warning identifies collisions, but the total is not the number of unique busy hours."
+      },
+      {
+        "q": "Is this an automatic scheduler?",
+        "a": "No. You choose the blocks and times. The tool reports overlaps without moving commitments for you."
+      }
+    ],
+    "sourcesHeading": "Related official product documentation",
+    "sources": [
+      {
+        "label": "Morgen: schedule builder, file export and integration note",
+        "url": "https://www.morgen.so/schedule-builder"
+      }
+    ],
+    "seeAlso": [
+      "planning-a-week-in-ten-minutes",
+      "automatic-time-blocking-versus-manual-calendar",
       "calendar-export-ics-pdf-and-backup"
     ]
   }

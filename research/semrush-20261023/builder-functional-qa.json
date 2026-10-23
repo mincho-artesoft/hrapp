@@ -1,0 +1,16 @@
+{
+  "source": "Actual browser interaction with built local page",
+  "syntheticDataOnly": true,
+  "checks": {
+    "initialExampleVisible": true,
+    "addBlock": true,
+    "overlapDetected": true,
+    "adjacentBlocksNotFlagged": true,
+    "twoHourTotal": true,
+    "endBeforeStartWarned": true,
+    "invalidBlockExcludedFromText": true,
+    "moveToTuesday": true,
+    "removeBlock": true
+  },
+  "initialObservation": "An initial interaction did not update before reload; clean reload and full functional sequence passed. No workaround or unchecked publication."
+}
