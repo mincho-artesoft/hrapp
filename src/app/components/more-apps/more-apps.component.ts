@@ -18,10 +18,11 @@ const SRC = 'https://arte-soft.com/promo/more-apps.js';
   template: `<arte-more-apps></arte-more-apps>`,
   styles: [
     `
-      :host { display: block; }
-      arte-more-apps { --ama-max: 76rem; --ama-gutter: 20px; --ama-margin: clamp(40px, 6vw, 72px) auto; }
+      :host { display: block; box-sizing: border-box; width: 100%; max-width: calc(76rem + 40px); margin-inline: auto; padding-inline: 20px; }
+      arte-more-apps { --ama-max: none; --ama-gutter: 0; --ama-margin: clamp(40px, 6vw, 72px) 0; }
       /* Inside a column that already has its padding (an article, the guides list). */
-      :host(.inline) arte-more-apps { --ama-max: none; --ama-gutter: 0; --ama-margin: 44px 0; }
+      :host(.inline) { max-width: none; padding-inline: 0; }
+      :host(.inline) arte-more-apps { --ama-margin: 44px 0; }
     `,
   ],
 })
