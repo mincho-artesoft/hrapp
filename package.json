@@ -4,7 +4,7 @@
   "scripts": {
     "ng": "ng",
     "start": "node tools/build-article-index.mjs && ng serve",
-    "build": "node tools/build-article-index.mjs && ng build && node tools/postbuild.mjs",
+    "build": "node tools/build-article-index.mjs && node tools/validate-editorial-manifest.mjs && ng build && node tools/postbuild.mjs",
     "watch": "ng build --watch --configuration development",
     "test": "ng test",
     "deploy": "bash scripts/deploy.sh",
@@ -14,7 +14,8 @@
     "check:associated-domain": "node scripts/check-associated-domain.mjs",
     "visibility:live": "node ai-visibility/live-check.mjs https://www.cloud-calendars.com",
     "visibility:indexnow": "node ai-visibility/indexnow.mjs https://www.cloud-calendars.com",
-    "visibility:logs": "bash scripts/fetch-crawler-logs.sh && node ai-visibility/crawler-log.mjs .crawler-logs/cloudfront --days=30"
+    "visibility:logs": "bash scripts/fetch-crawler-logs.sh && node ai-visibility/crawler-log.mjs .crawler-logs/cloudfront --days=30",
+    "check:editorial": "node tools/validate-editorial-manifest.mjs"
   },
   "private": true,
   "dependencies": {

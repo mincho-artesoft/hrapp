@@ -15,7 +15,8 @@ class ArticleText(HTMLParser):
    return
   if tag=='cc-more-apps' or(tag=='section'and'__gallery'in attrs.get('class','')):
    self.skip=1;return
-  if tag in ['h1','h2','p','dt','dd','li'] and self.block is None:self.block=tag;self.buf=[]
+  if tag in ['h1','h2','p','dt','dd','li','tr'] and self.block is None:self.block=tag;self.buf=[]
+  if tag in ['td','th'] and self.block=='tr' and self.buf:self.buf.append(' | ')
   if tag=='a'and self.block:self.links.append(attrs.get('href',''))
  def handle_startendtag(self,tag,attrs):
   self.handle_starttag(tag,attrs)
@@ -31,7 +32,7 @@ class ArticleText(HTMLParser):
     self.buf.append(' ('+url+')')
   if tag==self.block:
    text=re.sub(r'\s+',' ',''.join(self.buf)).strip()
-   if text:self.lines.append(({'h1':'# ','h2':'## ','dt':'### ','li':'- '}.get(tag,'')+text))
+   if text:self.lines.append(('| '+text+' |') if tag=='tr' else ({'h1':'# ','h2':'## ','dt':'### ','li':'- '}.get(tag,'')+text))
    self.block=None;self.buf=[]
   if tag=='article':
    self.article_depth-=1
@@ -50,5 +51,5 @@ for slug in selection:
  proof.append({'slug':slug,'source':canonical,'blocks':len(parser.lines),'characters':len(text)})
 full='# Cloud Calendars — selected English guide text\n\nExported from the published HTML for the guides listed below. Arte Soft develops Cloud Calendars and publishes these guides. They include product-source checks and provider references; they are not independent device benchmarks. Other English guides and translations remain available through llms.txt.\n\n'+'\n\n---\n\n'.join(sections)+'\n'
 (DIST/'llms-full.txt').write_text(full)
-(ROOT/'research/guide-text-export-qa.json').write_text(json.dumps({'guides':len(proof),'selection':'tools/guide-text-selection.json','extraction':'Visible article headings, paragraphs, lists, FAQs and source links; gallery/other-app cards excluded.','exportedCharacters':len(full),'records':proof},indent=2)+'\n')
+(ROOT/'research/guide-text-export-qa.json').write_text(json.dumps({'guides':len(proof),'selection':'tools/guide-text-selection.json','extraction':'Visible article headings, paragraphs, table rows, lists, FAQs and source links; gallery/other-app cards excluded.','exportedCharacters':len(full),'records':proof},indent=2)+'\n')
 print('guide text export:',len(proof),'English guides,',len(full),'characters')

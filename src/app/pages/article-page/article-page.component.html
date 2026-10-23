@@ -8,7 +8,7 @@
       <p class="article__lede">{{ article.lede }}</p>
     </header>
 
-    @if (article.galleryCaption) {
+    @if (article.galleryCaption && !article.galleryAfterContent) {
       <section class="article__gallery" [attr.aria-label]="chrome.gallery">
         <cc-shot-rail [locale]="locale" [label]="chrome.gallery" [subjects]="article.galleryKinds ?? []" [device]="article.galleryDevice ?? 'iPhone'" />
         <p class="article__caption">{{ article.galleryCaption }}</p>
@@ -76,10 +76,11 @@
       </section>
     }
 
-    @if (!article.galleryCaption) {
+    @if (!article.galleryCaption || article.galleryAfterContent) {
     <section class="article__gallery">
       <h2>{{ chrome.gallery }}</h2>
-      <cc-shot-rail [locale]="locale" [label]="chrome.gallery" />
+      <cc-shot-rail [locale]="locale" [label]="chrome.gallery" [subjects]="article.galleryKinds ?? []" [device]="article.galleryDevice ?? 'iPhone'" />
+      @if (article.galleryCaption) { <p class="article__caption">{{ article.galleryCaption }}</p> }
     </section>
     }
 

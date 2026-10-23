@@ -382,7 +382,17 @@ export const GOOGLE_EN_US: Readonly<Record<string, LocalisedArticle>> = {
     "icloud-google-and-outlook-in-one-view",
     "what-calendar-sync-actually-does"
   ],
-  "updated": "2026-10-21"
+  "updated": "2026-10-21",
+  "articleLinks": [
+    {
+      "slug": "google-calendar-offline-desktop-limits",
+      "label": "Google Calendar offline on a computer"
+    },
+    {
+      "slug": "google-calendar-android-personal-work-profile",
+      "label": "Show personal calendars in an Android Work Profile without confusing it with sharing"
+    }
+  ]
 },
 
   'taking-back-a-calendar-you-shared': {
@@ -474,6 +484,12 @@ export const GOOGLE_EN_US: Readonly<Record<string, LocalisedArticle>> = {
     "the-secret-address-of-a-google-calendar",
     "a-calendar-that-is-yours-to-share"
   ],
-  "updated": "2026-10-21"
+  "updated": "2026-10-21",
+  "articleLinks": [
+    {
+      "slug": "outlook-change-meeting-organizer-or-copy-meeting",
+      "label": "Change an Outlook organizer"
+    }
+  ]
 },
 };

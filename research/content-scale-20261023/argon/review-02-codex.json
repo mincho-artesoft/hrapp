@@ -1,0 +1,403 @@
+{
+  "reviewer": "Codex independent source and intent review",
+  "checkedAt": "2026-10-23",
+  "originalSha256": "c018509b142ecac8161b394fcd8f894bc0a49a7f1c39305880e29499619b09cc",
+  "currentOriginalSha256AtWrite": "c018509b142ecac8161b394fcd8f894bc0a49a7f1c39305880e29499619b09cc",
+  "scope": "Full12pinned drafts;81existing metadata/full closest neighbors plus first12Argon reviewed and8RFC baseline. No publication approval or live behavior measurement.",
+  "summary": {
+    "originalApprove": 0,
+    "originalRevise": 8,
+    "holdMergeOrDefer": 4,
+    "reviewedApprovable": 8
+  },
+  "evidenceIndex": "review-source-index-02.json",
+  "articles": [
+    {
+      "slug": "display-multiple-time-zone-columns-google-calendar-outlook",
+      "originalVerdict": "revise",
+      "reviewedVerdict": "approvable_after_amendments",
+      "reason": "All required corrections applied in reviewed snapshot; root final editorial acceptance required.",
+      "nearestCanonical": "a-week-view-that-fits-a-week",
+      "amendments": [
+        "Removed unsupported three-zone ceiling for new/web Outlook; classic version-qualified limits retained.",
+        "Replaced generic all-events UTC/DTSTART mapping assertions with display-only workflow.",
+        "Date-fixed winter ruler and overlap arithmetic."
+      ],
+      "sources": [
+        {
+          "label": "Google: additional time zones and world clock",
+          "url": "https://support.google.com/calendar/answer/37064?hl=en"
+        },
+        {
+          "label": "Microsoft: version-specific time-zone controls",
+          "url": "https://support.microsoft.com/en-us/outlook/getstarted/manage-time-zone-settings-in-outlook"
+        }
+      ],
+      "uniqueValue": "Version-specific additional-ruler setup and dated three-city check."
+    },
+    {
+      "slug": "viewer-display-time-zone-versus-event-time-zone-calendar",
+      "originalVerdict": "hold",
+      "reviewedVerdict": "hold_merge_or_defer",
+      "reason": "Same decision: distinguish display zone from event zone; per-calendar ownership detail can enrich the existing guide.",
+      "nearestCanonical": "time-zones-and-the-flight-you-booked",
+      "amendments": [],
+      "sources": [
+        {
+          "label": "Google Calendar Help — Use Google Calendar in different time zones",
+          "url": "https://support.google.com/calendar/answer/37064?hl=en"
+        },
+        {
+          "label": "Microsoft Support — Manage time zone settings in Outlook",
+          "url": "https://support.microsoft.com/en-us/outlook/getstarted/manage-time-zone-settings-in-outlook"
+        },
+        {
+          "label": "Apple Support — Schedule or display events in a different time zone in Calendar on iPhone",
+          "url": "https://support.apple.com/guide/iphone/iph69525c028/ios"
+        },
+        {
+          "label": "IETF RFC 5545 — Internet Calendaring and Scheduling Core Object Specification (Section 3.2.19 TZID & Section 3.8.2.4 DTSTART)",
+          "url": "https://www.rfc-editor.org/rfc/rfc5545"
+        }
+      ],
+      "uniqueValue": "Merge or defer; not counted as a unique publishable page."
+    },
+    {
+      "slug": "recurring-calendar-event-anchored-in-utc-versus-local-tzid",
+      "originalVerdict": "hold",
+      "reviewedVerdict": "hold_merge_or_defer",
+      "reason": "UTC/TZID recurrence and DST are already the baseline standards guide’s core distinction; merge the worked dates instead of another intent.",
+      "nearestCanonical": "icalendar-floating-time-utc-tzid",
+      "amendments": [],
+      "sources": [
+        {
+          "label": "IETF RFC 5545 — Internet Calendaring and Scheduling Core Object Specification (Section 3.3.5 DATE-TIME & Section 3.8.5.3 RRULE)",
+          "url": "https://www.rfc-editor.org/rfc/rfc5545"
+        },
+        {
+          "label": "Google Calendar Help — Use Google Calendar in different time zones",
+          "url": "https://support.google.com/calendar/answer/37064?hl=en"
+        },
+        {
+          "label": "U.S. Naval Observatory — Daylight Saving Time FAQ",
+          "url": "https://aa.usno.navy.mil/faq/daylight_time"
+        }
+      ],
+      "uniqueValue": "Merge or defer; not counted as a unique publishable page."
+    },
+    {
+      "slug": "non-integer-30-and-45-minute-utc-offset-calendar-scheduling",
+      "originalVerdict": "revise",
+      "reviewedVerdict": "approvable_after_amendments",
+      "reason": "All required corrections applied in reviewed snapshot; root final editorial acceptance required.",
+      "nearestCanonical": "time-zones-and-the-flight-you-booked",
+      "amendments": [
+        "Corrected Adelaide 09–18 overlap: January none, July 09:00–09:30 London, not 08:00–08:30 nor 1.5h.",
+        "Used dated named-zone fixture rather than vague winter/summer, removed warning guarantee and invented 15-minute grid option.",
+        "Clarified valid ICS DATE-TIME forms versus UTC-OFFSET syntax."
+      ],
+      "sources": [
+        {
+          "label": "IANA: Time Zone Database",
+          "url": "https://www.iana.org/time-zones"
+        },
+        {
+          "label": "RFC 5545: UTC-OFFSET",
+          "url": "https://www.rfc-editor.org/rfc/rfc5545.html#section-3.3.14"
+        },
+        {
+          "label": "RFC 5545: DATE-TIME forms",
+          "url": "https://www.rfc-editor.org/rfc/rfc5545.html#section-3.3.5"
+        },
+        {
+          "label": "Google: time zones",
+          "url": "https://support.google.com/calendar/answer/37064?hl=en"
+        },
+        {
+          "label": "Google: work or school working hours",
+          "url": "https://support.google.com/calendar/answer/7638168?hl=en&co=GENIE.Platform%3DDesktop"
+        }
+      ],
+      "uniqueValue": "Date-specific fractional-offset pairwise workday intersection."
+    },
+    {
+      "slug": "iso-week-1-and-week-53-calendar-boundary-dates",
+      "originalVerdict": "hold",
+      "reviewedVerdict": "hold_merge_or_defer",
+      "reason": "ISO year-boundary calculations belong in the week-number diagnostic guide selected for this wave.",
+      "nearestCanonical": "calendar-week-numbers-iso-monday-versus-sunday-start-mismatch",
+      "amendments": [],
+      "sources": [
+        {
+          "label": "IETF RFC 5545 — Internet Calendaring and Scheduling Core Object Specification (Section 3.3.10 RECUR: BYWEEKNO & WKST)",
+          "url": "https://www.rfc-editor.org/rfc/rfc5545"
+        },
+        {
+          "label": "Apple Support — Change your Calendar settings on iPhone (Week Numbers & Start Week On)",
+          "url": "https://support.apple.com/guide/iphone/iphc37be2016/ios"
+        }
+      ],
+      "uniqueValue": "Merge or defer; not counted as a unique publishable page."
+    },
+    {
+      "slug": "calendar-week-numbers-iso-monday-versus-sunday-start-mismatch",
+      "originalVerdict": "revise",
+      "reviewedVerdict": "approvable_after_amendments",
+      "reason": "All required corrections applied in reviewed snapshot; root final editorial acceptance required.",
+      "nearestCanonical": "iphone-calendar-language-alternate-calendar-settings",
+      "amendments": [
+        "Merged ISO boundary facts, removed false all-year +1 and national default assertions.",
+        "Separated WKST/first weekday from first-week policy; removed unsupported Outlook dropdown recipe.",
+        "Removed unverified first-full-week previous-year numbers."
+      ],
+      "sources": [
+        {
+          "label": "RFC 5545: BYWEEKNO and WKST",
+          "url": "https://www.rfc-editor.org/rfc/rfc5545.html#section-3.3.10"
+        },
+        {
+          "label": "Apple: Week Numbers and Start Week On",
+          "url": "https://support.apple.com/guide/iphone/iphc37be2016/ios"
+        }
+      ],
+      "uniqueValue": "Diagnosis of two independently defined week-label conventions with year-boundary dates."
+    },
+    {
+      "slug": "monthly-recurring-last-weekday-byday-minus-1-versus-fixed-date",
+      "originalVerdict": "revise",
+      "reviewedVerdict": "approvable_after_amendments",
+      "reason": "All required corrections applied in reviewed snapshot; root final editorial acceptance required.",
+      "nearestCanonical": "recurring-events-without-the-mess",
+      "amendments": [
+        "Weekday rule explicitly excludes weekends only, not holidays.",
+        "Fixed all-day DTSTART syntax and removed unsupported GUI/import preservation guarantees."
+      ],
+      "sources": [
+        {
+          "label": "RFC 5545: monthly recurrence and invalid dates",
+          "url": "https://www.rfc-editor.org/rfc/rfc5545.html#section-3.3.10"
+        },
+        {
+          "label": "RFC 5545: DTSTART value types",
+          "url": "https://www.rfc-editor.org/rfc/rfc5545.html#section-3.8.2.4"
+        },
+        {
+          "label": "Apple: custom monthly repetition",
+          "url": "https://support.apple.com/guide/calendar/icl1018/mac"
+        },
+        {
+          "label": "Microsoft: monthly recurrence examples",
+          "url": "https://support.microsoft.com/en-gb/outlook/get-started-with-the-outlook-calendar"
+        },
+        {
+          "label": "Google: recurring events",
+          "url": "https://support.google.com/calendar/answer/37115?hl=en"
+        }
+      ],
+      "uniqueValue": "Four raw monthly recurrence patterns with12month fixture, distinct from edit-scope guide."
+    },
+    {
+      "slug": "4-4-5-calendar-quarter-cycles-and-53-week-leap-year-math",
+      "originalVerdict": "hold",
+      "reviewedVerdict": "hold_merge_or_defer",
+      "reason": "Root excludes retail calendar from this wave. Generic RFC/Google sources do not establish fiscal-year policy. NRF has an explicit 4-5-4 policy; do not pretend the arbitrary 2031 illustration is its official year.",
+      "nearestCanonical": "deferred-retail-policy-source-review",
+      "amendments": [],
+      "sources": [
+        {
+          "label": "IETF RFC 5545 — Internet Calendaring and Scheduling Core Object Specification (Section 3.3.10 RECUR: WEEKLY INTERVAL & BYWEEKNO)",
+          "url": "https://www.rfc-editor.org/rfc/rfc5545"
+        },
+        {
+          "label": "Google Calendar Help — Create a recurring event",
+          "url": "https://support.google.com/calendar/answer/37115?hl=en"
+        }
+      ],
+      "uniqueValue": "Merge or defer; not counted as a unique publishable page."
+    },
+    {
+      "slug": "google-calendar-task-deadline-versus-scheduled-time-block",
+      "originalVerdict": "revise",
+      "reviewedVerdict": "approvable_after_amendments",
+      "reason": "All required corrections applied in reviewed snapshot; root final editorial acceptance required.",
+      "nearestCanonical": "can-others-see-google-calendar-tasks",
+      "amendments": [
+        "Removed claim Busy universally blocks invitations or works in every connected client.",
+        "Separated Google timed tasks from unproven literal VTODO export mapping.",
+        "Removed inconsistent fully-booked Thursday premise; kept 270-minute example, verified 30.5h.",
+        "All-day Deadline remains a date; 17:00 cut-off recorded separately."
+      ],
+      "sources": [
+        {
+          "label": "Google: task deadline, timed tasks and notifications",
+          "url": "https://support.google.com/calendar/answer/9901136?hl=en"
+        },
+        {
+          "label": "Google: Focus time eligibility and decline controls",
+          "url": "https://support.google.com/calendar/answer/11190973?hl=en"
+        },
+        {
+          "label": "RFC 5545: VTODO",
+          "url": "https://www.rfc-editor.org/rfc/rfc5545.html#section-3.6.2"
+        },
+        {
+          "label": "RFC 5545: TRANSP",
+          "url": "https://www.rfc-editor.org/rfc/rfc5545.html#section-3.8.2.7"
+        }
+      ],
+      "uniqueValue": "Google deadline versus execution duration and cross-system availability verification, not permission rules."
+    },
+    {
+      "slug": "backward-planning-project-deadlines-across-weekends-and-holidays",
+      "originalVerdict": "revise",
+      "reviewedVerdict": "approvable_after_amendments",
+      "reason": "All required corrections applied in reviewed snapshot; root final editorial acceptance required.",
+      "nearestCanonical": "automatic-time-blocking-versus-manual-calendar",
+      "amendments": [
+        "Removed unsafe add-one-calendar-day-per-holiday shortcut and mixed inclusive/prior counting.",
+        "Corrected November11 holiday attribution and stage3 range: not actually crossing Nov11.",
+        "Confirmed 15 working dates /22 inclusive calendar dates /21 elapsed days.",
+        "Removed GUI-delete-always-EXDATE claim."
+      ],
+      "sources": [
+        {
+          "label": "RFC 5545: recurrence rules",
+          "url": "https://www.rfc-editor.org/rfc/rfc5545.html#section-3.3.10"
+        },
+        {
+          "label": "Google: recurring events and edit scope",
+          "url": "https://support.google.com/calendar/answer/37115?hl=en"
+        },
+        {
+          "label": "Microsoft: weekday and recurrence controls",
+          "url": "https://support.microsoft.com/en-gb/outlook/get-started-with-the-outlook-calendar"
+        }
+      ],
+      "uniqueValue": "Inclusive backward count through an explicitly chosen day off with reproducible stage dates."
+    },
+    {
+      "slug": "calendar-travel-time-versus-separate-buffer-event-blocks",
+      "originalVerdict": "revise",
+      "reviewedVerdict": "approvable_after_amendments",
+      "reason": "All required corrections applied in reviewed snapshot; root final editorial acceptance required.",
+      "nearestCanonical": "the-commute-and-the-sky",
+      "amendments": [
+        "Removed universal free/busy and privacy enforcement guarantees; native Travel Time evidence is bounded.",
+        "Three records total120minutes; publication makes no claim of measured route time.",
+        "Booking calendar-selection source added; title/task now availability verification, distinct from baseline weather/route planning."
+      ],
+      "sources": [
+        {
+          "label": "Apple: Travel Time and location-change caveat",
+          "url": "https://support.apple.com/guide/calendar/add-modify-or-delete-events-icalwr13-events/mac"
+        },
+        {
+          "label": "Google: appointment schedule buffers",
+          "url": "https://support.google.com/calendar/answer/10729749?hl=en"
+        },
+        {
+          "label": "Google: booking availability calendar selection",
+          "url": "https://support.google.com/calendar/answer/16287054?hl=en"
+        },
+        {
+          "label": "RFC 5545: time transparency",
+          "url": "https://www.rfc-editor.org/rfc/rfc5545.html#section-3.8.2.7"
+        }
+      ],
+      "uniqueValue": "Verify which buffer record availability tools read, not route/weather forecasting."
+    },
+    {
+      "slug": "alternating-a-b-week-school-timetable-calendar-vacation-exceptions",
+      "originalVerdict": "revise",
+      "reviewedVerdict": "approvable_after_amendments",
+      "reason": "All required corrections applied in reviewed snapshot; root final editorial acceptance required.",
+      "nearestCanonical": "recurring-events-without-the-mess",
+      "amendments": [
+        "Replaced contradictory 8-week term vs Dec18 ending with explicit fictional Monday-only block.",
+        "Bounded two policy models rather than claiming all schools fit them.",
+        "Removed invalid UNTIL placeholders and universal GUI EXDATE mapping; linked standards guidance."
+      ],
+      "sources": [
+        {
+          "label": "RFC 5545: weekly interval and UNTIL types",
+          "url": "https://www.rfc-editor.org/rfc/rfc5545.html#section-3.3.10"
+        },
+        {
+          "label": "RFC 5545: EXDATE",
+          "url": "https://www.rfc-editor.org/rfc/rfc5545.html#section-3.8.5.1"
+        },
+        {
+          "label": "Google: recurring events",
+          "url": "https://support.google.com/calendar/answer/37115?hl=en"
+        },
+        {
+          "label": "Microsoft: every-other-Monday recurrence",
+          "url": "https://support.microsoft.com/en-gb/outlook/get-started-with-the-outlook-calendar"
+        }
+      ],
+      "uniqueValue": "Two-week recurrence phase after a skipped vs paused teaching week."
+    }
+  ],
+  "evidenceSections": [
+    {
+      "source": "https://support.microsoft.com/en-us/outlook/getstarted/manage-time-zone-settings-in-outlook",
+      "section": "Add additional time zones (Classic); Swap time zone positions (Web)",
+      "support": "Classic: latest M365 up to3; other classic including2019LTSC/2016two. Web explicitly describes three or more. No universal new/web cap."
+    },
+    {
+      "source": "https://support.google.com/calendar/answer/37064?hl=en",
+      "section": "Show additional time zones; Show world clock",
+      "support": "Secondary and Tertiary are documented separately from world-clock sidebar."
+    },
+    {
+      "source": "https://www.rfc-editor.org/rfc/rfc5545.html#section-3.3.10",
+      "section": "BYWEEKNO, WKST, BYSETPOS and invalid recurrence dates",
+      "support": "First week at least4days depends on WKST; invalid dates ignored; BYSETPOS selects within interval. None of those provisions gives a national default or holiday policy."
+    },
+    {
+      "source": "https://www.rfc-editor.org/rfc/rfc5545.html#section-3.8.2.4",
+      "section": "DTSTART value type",
+      "support": "Default DATE-TIME; VALUE=DATE used for eight-digit all-day sample."
+    },
+    {
+      "source": "https://support.apple.com/guide/calendar/icl1018/mac",
+      "section": "Set up a repeating event",
+      "support": "Custom Frequency and On the menus include last weekday monthly; source does not establish every importing platform’s preservation."
+    },
+    {
+      "source": "https://support.google.com/calendar/answer/9901136?hl=en",
+      "section": "Learn about task settings; Edit start/end time; Learn about task notifications",
+      "support": "Deadline in All day, timed Free/Busy, no end time recurring tasks, deadline9AMlocal. No proof that timed task is exported as literal VTODO."
+    },
+    {
+      "source": "https://support.google.com/calendar/answer/11190973?hl=en",
+      "section": "Learn who can use focus time; Schedule focus time; Change how meetings are declined",
+      "support": "Eligible work/school plans; Day/Week with specific endpoints; decline settings separate from generic Busy."
+    },
+    {
+      "source": "https://support.apple.com/guide/calendar/add-modify-or-delete-events-icalwr13-events/mac",
+      "section": "Add/edit duration, location, travel time",
+      "support": "Travel Time menu; value does not update automatically on location change. Not evidence for cross-provider freebusy or a universal return-trip block."
+    },
+    {
+      "source": "https://support.google.com/calendar/answer/10729749?hl=en",
+      "section": "Booked appointment settings / Buffer time",
+      "support": "Add time between appointments within appointment schedule. Not a promise of a standalone universal Busy event."
+    },
+    {
+      "source": "https://www.rfc-editor.org/rfc/rfc5545.html#section-3.8.2.7",
+      "section": "Time Transparency",
+      "support": "VEVENT opaque/transparent informs busy search; does not mandate invitation rejection or a client integration."
+    },
+    {
+      "source": "https://www.rfc-editor.org/rfc/rfc5545.html#section-3.8.5.1",
+      "section": "EXDATE recurrence set exclusion",
+      "support": "Excludes matching instances from a recurrence set; does not re-anchor interval. GUI provider storage mapping unproven."
+    },
+    {
+      "source": "https://support.google.com/calendar/answer/16287054?hl=en",
+      "section": "Learn how Calendar checks for conflicts; Review secondary calendars for conflicts",
+      "support": "Busy removes booking slots only from reviewed calendars; secondary-calendar checking requires an eligible plan. Calendar choices are material."
+    }
+  ]
+}

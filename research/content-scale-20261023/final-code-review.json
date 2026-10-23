@@ -1,0 +1,48 @@
+{
+  "checkedAt": "2026-10-23",
+  "reviewer": "Codex independent source review",
+  "scope": "English loader and topic pagination; ArticlePage related-link merging/galleryAfterContent; table text exporter. Read-only, no build/source edits/deploy.",
+  "materialFindings": [
+    {
+      "priority": "P1",
+      "file": "src/app/content/pilot-article-facts.ts",
+      "lines": [
+        145,
+        292,
+        551
+      ],
+      "title": "Three new articles use families outside the supported union",
+      "detail": "Two facts use sync and one help. Family and ARTICLE_FAMILIES support weather/unify/widgets/sharing/planning/compare only. Static English hub/topic filtering omits these pages and TypeScript should reject the invalid values.",
+      "slugs": [
+        "display-multiple-time-zone-columns-google-calendar-outlook",
+        "non-integer-30-and-45-minute-utc-offset-calendar-scheduling",
+        "iana-tzdb-government-time-zone-rule-change-calendar"
+      ],
+      "recommendedFix": "Use planning for both scheduling pages and unify for time-zone-rule troubleshooting; regenerate/rebuild as root owns integration.",
+      "reportedToParent": true
+    }
+  ],
+  "checks": {
+    "generatedParity": "All173 English cards match authoring metadata;73legacy bodies and100individual bodies match source; no missing fact keys.",
+    "proseIsolation": "English hub card metadata carries empty lede/sections/practical; complete article loader merges only requested body onto card map.",
+    "relatedLinks": "Lightweight metadata preserves short labels and slug membership. Authored articleLinks override generic short label on same path through Map merging; no action block means links still appear.",
+    "navigation": "Site article/topic links are ordinary href anchors, which perform full navigation. Direct routes resolve body before component construction. No introduced constructor-snapshot reuse issue in this navigation pattern.",
+    "pagination": "Topic route precedes article route; server params use same family/order/count source; self-canonical includes page path via SEO normalised trailing slash. Unsupported families are the material exception above.",
+    "translatedHold": "Registry translated import paths unchanged; isArticleLocaleIndexable still English only; ArticlePage/hub robots use it, topic routes English only, alternates filtered to indexable locales.",
+    "gallery": "Mutually exclusive caption/galleryAfterContent branches render exactly one rail while preserving selected subjects/device.",
+    "textExport": "tr starts capture and td/th add separators. No double export of cell text; gallery skip retained.",
+    "limitations": "No final build or browser execution performed; root running build14452 and owns deployment proof."
+  },
+  "sourceHashes": {
+    "src/app/content/registry.ts": "7c666694bcb3e011840e78aa3e9f19fdbb4f8062a938d70ca71ea19c080af08b",
+    "src/app/content/article-topics.ts": "59fda122d12983751e8663bc48385446414bef42df7c4fd4829ee00dfa7a8fbe",
+    "src/app/app.routes.ts": "7f62d795b1d199387432b5acbbe2b56afc6a827a46f79f0e8d75b117691df104",
+    "src/app/app.routes.server.ts": "8149aa4b974bb6caf666fb5232b26cc9bf4c4744e494d5a191132526d6c8f2de",
+    "src/app/pages/articles-page/articles-page.component.ts": "9f9aca2385d9cb2818c0ab893171b8b692191c44895a85914e3c2f679af9ae9a",
+    "src/app/pages/article-page/article-page.component.ts": "484587968e344a0f0df40087eeb2447ef4f9b3d56a1e180c6f522f9f8aa482ed",
+    "src/app/pages/article-page/article-page.component.html": "28c93847f02553dbf759f27a654242735897f45c8fd9f8c2e7b8f823b8c5859c",
+    "src/app/core/article-indexing.ts": "2d40484f6a5f034e420ce540d96f65907da64ccab0767d2197a7d7edb2e4c318",
+    "tools/build-article-index.mjs": "c961574068f8781dd632de13ff7c559af22caf751064148f8917422339b570f6",
+    "tools/export-guide-text.py": "2face27317331bb599ecd82ca96695dfefaa496442245bf50625546f8cfbb811"
+  }
+}

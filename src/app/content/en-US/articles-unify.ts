@@ -395,6 +395,16 @@ export const UNIFY_EN_US: Readonly<Record<string, LocalisedArticle>> = {
     "disconnect-calendar-integration-without-losing-track",
     "onecal-alternative-iphone-calendar-view-or-sync",
     "calendar-export-ics-pdf-and-backup"
+  ],
+  "articleLinks": [
+    {
+      "slug": "icalendar-uid-sequence-event-updates",
+      "label": "Match an ICS event update"
+    },
+    {
+      "slug": "google-calendar-android-app-not-syncing",
+      "label": "Android Calendar not syncing"
+    }
   ]
 },
 
@@ -501,6 +511,20 @@ export const UNIFY_EN_US: Readonly<Record<string, LocalisedArticle>> = {
     "who-can-see-what-in-google-calendar",
     "change-calendar-color-iphone",
     "calendar-notifications-missing-silent-or-duplicated"
+  ],
+  "articleLinks": [
+    {
+      "slug": "google-calendar-working-hours-location-out-of-office-focus-time",
+      "label": "Working hours, location, OOO or focus time"
+    },
+    {
+      "slug": "outlook-show-as-free-busy-tentative-working-elsewhere",
+      "label": "Outlook Show As statuses"
+    },
+    {
+      "slug": "outlook-work-hours-and-location",
+      "label": "Outlook work hours and location"
+    }
   ]
 },
 
@@ -597,6 +621,28 @@ export const UNIFY_EN_US: Readonly<Record<string, LocalisedArticle>> = {
     "icloud-google-and-outlook-in-one-view",
     "what-calendar-sync-actually-does",
     "what-a-subscription-actually-buys"
+  ],
+  "articleLinks": [
+    {
+      "slug": "outlook-calendar-delegate-or-editor-permission",
+      "label": "Outlook delegate or editor"
+    },
+    {
+      "slug": "outlook-schedule-meeting-on-behalf-of-someone",
+      "label": "Scheduling on behalf of someone"
+    },
+    {
+      "slug": "outlook-calendar-sharing-levels-busy-titles-details",
+      "label": "Outlook sharing levels"
+    },
+    {
+      "slug": "outlook-share-calendar-outside-organization",
+      "label": "Outlook sharing with externals"
+    },
+    {
+      "slug": "outlook-group-calendar-versus-shared-calendar",
+      "label": "Group calendar vs shared calendar"
+    }
   ]
 },
 

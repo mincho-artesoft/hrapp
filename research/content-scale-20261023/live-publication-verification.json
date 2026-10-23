@@ -1,0 +1,1728 @@
+{
+  "checkedAt": "2026-10-23T11:43:17.127964+00:00",
+  "newEnglishPages": 100,
+  "passed": 100,
+  "failed": [],
+  "discovery": [
+    {
+      "path": "sitemap.xml",
+      "status": 200,
+      "missingNewUrls": [],
+      "bytes": 109061
+    },
+    {
+      "path": "llms.txt",
+      "status": 200,
+      "missingNewUrls": [],
+      "bytes": 16488
+    },
+    {
+      "path": "llms-full.txt",
+      "status": 200,
+      "missingNewUrls": [],
+      "bytes": 1009424
+    }
+  ],
+  "records": [
+    {
+      "slug": "mac-calendar-siri-suggestions-confirm-ignore",
+      "url": "https://www.cloud-calendars.com/articles/mac-calendar-siri-suggestions-confirm-ignore/",
+      "status": 200,
+      "finalUrl": "https://www.cloud-calendars.com/articles/mac-calendar-siri-suggestions-confirm-ignore/",
+      "h1": "A booking appeared in Siri Suggestions on Mac: confirm it or ignore it",
+      "canonical": [
+        "https://www.cloud-calendars.com/articles/mac-calendar-siri-suggestions-confirm-ignore/"
+      ],
+      "robots": [
+        "index,follow"
+      ],
+      "bytes": 56422,
+      "sha256": "5b5b6da68b30b84c0f5de3bf94c43849963fe9ecb3b81fae2b0263020efa7eaa",
+      "matchesDeployedBuild": true,
+      "ok": true
+    },
+    {
+      "slug": "mac-calendar-subscription-icloud-on-my-mac",
+      "url": "https://www.cloud-calendars.com/articles/mac-calendar-subscription-icloud-on-my-mac/",
+      "status": 200,
+      "finalUrl": "https://www.cloud-calendars.com/articles/mac-calendar-subscription-icloud-on-my-mac/",
+      "h1": "A calendar subscription is only on your Mac: check its Location",
+      "canonical": [
+        "https://www.cloud-calendars.com/articles/mac-calendar-subscription-icloud-on-my-mac/"
+      ],
+      "robots": [
+        "index,follow"
+      ],
+      "bytes": 56186,
+      "sha256": "1efd9a5859d86e35d93f9e0564a4107a2bbd6123384fd1fd7dbcad2fe2cfe1f8",
+      "matchesDeployedBuild": true,
+      "ok": true
+    },
+    {
+      "slug": "google-calendar-keyboard-shortcuts-workflow",
+      "url": "https://www.cloud-calendars.com/articles/google-calendar-keyboard-shortcuts-workflow/",
+      "status": 200,
+      "finalUrl": "https://www.cloud-calendars.com/articles/google-calendar-keyboard-shortcuts-workflow/",
+      "h1": "A Google Calendar keyboard workflow: navigate, create, verify and return",
+      "canonical": [
+        "https://www.cloud-calendars.com/articles/google-calendar-keyboard-shortcuts-workflow/"
+      ],
+      "robots": [
+        "index,follow"
+      ],
+      "bytes": 56256,
+      "sha256": "dedf7d3194a17cf1e577870d8a9d1a7d3eb8b888269648de085b2d769d56c637",
+      "matchesDeployedBuild": true,
+      "ok": true
+    },
+    {
+      "slug": "mac-calendar-subscription-auto-refresh",
+      "url": "https://www.cloud-calendars.com/articles/mac-calendar-subscription-auto-refresh/",
+      "status": 200,
+      "finalUrl": "https://www.cloud-calendars.com/articles/mac-calendar-subscription-auto-refresh/",
+      "h1": "A subscribed calendar is stale on Mac: check Auto-refresh before importing again",
+      "canonical": [
+        "https://www.cloud-calendars.com/articles/mac-calendar-subscription-auto-refresh/"
+      ],
+      "robots": [
+        "index,follow"
+      ],
+      "bytes": 56437,
+      "sha256": "316e0e4d8b3c49a065c91f0962f67c7a4d252f38a36833e0a5f3d06e376a66d3",
+      "matchesDeployedBuild": true,
+      "ok": true
+    },
+    {
+      "slug": "outlook-subscribe-or-import-ics-calendar",
+      "url": "https://www.cloud-calendars.com/articles/outlook-subscribe-or-import-ics-calendar/",
+      "status": 200,
+      "finalUrl": "https://www.cloud-calendars.com/articles/outlook-subscribe-or-import-ics-calendar/",
+      "h1": "Add an internet calendar to Outlook: subscribe for updates or import a snapshot",
+      "canonical": [
+        "https://www.cloud-calendars.com/articles/outlook-subscribe-or-import-ics-calendar/"
+      ],
+      "robots": [
+        "index,follow"
+      ],
+      "bytes": 57531,
+      "sha256": "239bea231a8faaab9b91e9633c58d075cebc70daa01f3cca40ae51f12d9cb3f3",
+      "matchesDeployedBuild": true,
+      "ok": true
+    },
+    {
+      "slug": "mac-calendar-holidays-different-region",
+      "url": "https://www.cloud-calendars.com/articles/mac-calendar-holidays-different-region/",
+      "status": 200,
+      "finalUrl": "https://www.cloud-calendars.com/articles/mac-calendar-holidays-different-region/",
+      "h1": "Add another country’s holidays on Mac without duplicating your own events",
+      "canonical": [
+        "https://www.cloud-calendars.com/articles/mac-calendar-holidays-different-region/"
+      ],
+      "robots": [
+        "index,follow"
+      ],
+      "bytes": 56495,
+      "sha256": "34a0473c380a72c150bc2f9cc782d1c753d40068171b39d8060bd9da993cd772",
+      "matchesDeployedBuild": true,
+      "ok": true
+    },
+    {
+      "slug": "google-calendar-holidays-by-country-and-religion",
+      "url": "https://www.cloud-calendars.com/articles/google-calendar-holidays-by-country-and-religion/",
+      "status": 200,
+      "finalUrl": "https://www.cloud-calendars.com/articles/google-calendar-holidays-by-country-and-religion/",
+      "h1": "Add holidays to Google Calendar for more than one country",
+      "canonical": [
+        "https://www.cloud-calendars.com/articles/google-calendar-holidays-by-country-and-religion/"
+      ],
+      "robots": [
+        "index,follow"
+      ],
+      "bytes": 56074,
+      "sha256": "0a962d490e357a79632523ead15b8fade90cff0dac3d5b63db7d09e33fb582ea",
+      "matchesDeployedBuild": true,
+      "ok": true
+    },
+    {
+      "slug": "alternating-a-b-week-school-timetable-calendar-vacation-exceptions",
+      "url": "https://www.cloud-calendars.com/articles/alternating-a-b-week-school-timetable-calendar-vacation-exceptions/",
+      "status": 200,
+      "finalUrl": "https://www.cloud-calendars.com/articles/alternating-a-b-week-school-timetable-calendar-vacation-exceptions/",
+      "h1": "Alternating A/B week timetable: decide what a holiday skips",
+      "canonical": [
+        "https://www.cloud-calendars.com/articles/alternating-a-b-week-school-timetable-calendar-vacation-exceptions/"
+      ],
+      "robots": [
+        "index,follow"
+      ],
+      "bytes": 58522,
+      "sha256": "5680846bffc7ced42dc98a4c2df34092b359c3e1c547950ccb58dc179d0a2160",
+      "matchesDeployedBuild": true,
+      "ok": true
+    },
+    {
+      "slug": "icloud-private-calendar-pending-invitations",
+      "url": "https://www.cloud-calendars.com/articles/icloud-private-calendar-pending-invitations/",
+      "status": 200,
+      "finalUrl": "https://www.cloud-calendars.com/articles/icloud-private-calendar-pending-invitations/",
+      "h1": "An iCloud private calendar invitation is still pending: verify, resend, then check access",
+      "canonical": [
+        "https://www.cloud-calendars.com/articles/icloud-private-calendar-pending-invitations/"
+      ],
+      "robots": [
+        "index,follow"
+      ],
+      "bytes": 56683,
+      "sha256": "e00e323411d6a12ac9b52eb9bace61af4e954a3bdd58aef9a4b25c606cb0e88a",
+      "matchesDeployedBuild": true,
+      "ok": true
+    },
+    {
+      "slug": "iphone-calendar-add-remove-event-attachments",
+      "url": "https://www.cloud-calendars.com/articles/iphone-calendar-add-remove-event-attachments/",
+      "status": 200,
+      "finalUrl": "https://www.cloud-calendars.com/articles/iphone-calendar-add-remove-event-attachments/",
+      "h1": "Attach the right file to an iPhone Calendar event, then check the saved version",
+      "canonical": [
+        "https://www.cloud-calendars.com/articles/iphone-calendar-add-remove-event-attachments/"
+      ],
+      "robots": [
+        "index,follow"
+      ],
+      "bytes": 56700,
+      "sha256": "dce19698a251293fc79354456e0ee5e147a8354befb1a3ad688088a5f05046a6",
+      "matchesDeployedBuild": true,
+      "ok": true
+    },
+    {
+      "slug": "backward-planning-project-deadlines-across-weekends-and-holidays",
+      "url": "https://www.cloud-calendars.com/articles/backward-planning-project-deadlines-across-weekends-and-holidays/",
+      "status": 200,
+      "finalUrl": "https://www.cloud-calendars.com/articles/backward-planning-project-deadlines-across-weekends-and-holidays/",
+      "h1": "Plan backward across weekends and days off: a counted example",
+      "canonical": [
+        "https://www.cloud-calendars.com/articles/backward-planning-project-deadlines-across-weekends-and-holidays/"
+      ],
+      "robots": [
+        "index,follow"
+      ],
+      "bytes": 57380,
+      "sha256": "d8f541c21ddbd7d198006a4dee46dd4e03af0d00856f49126a301201a9b29782",
+      "matchesDeployedBuild": true,
+      "ok": true
+    },
+    {
+      "slug": "calendar-travel-time-versus-separate-buffer-event-blocks",
+      "url": "https://www.cloud-calendars.com/articles/calendar-travel-time-versus-separate-buffer-event-blocks/",
+      "status": 200,
+      "finalUrl": "https://www.cloud-calendars.com/articles/calendar-travel-time-versus-separate-buffer-event-blocks/",
+      "h1": "Calendar travel time or separate buffers? Check both journeys",
+      "canonical": [
+        "https://www.cloud-calendars.com/articles/calendar-travel-time-versus-separate-buffer-event-blocks/"
+      ],
+      "robots": [
+        "index,follow"
+      ],
+      "bytes": 57174,
+      "sha256": "bacec8ecb4267f5cff8fa79295c2b71a1017879009802e2bd3822b87a24869b2",
+      "matchesDeployedBuild": true,
+      "ok": true
+    },
+    {
+      "slug": "calendar-week-numbers-iso-monday-versus-sunday-start-mismatch",
+      "url": "https://www.cloud-calendars.com/articles/calendar-week-numbers-iso-monday-versus-sunday-start-mismatch/",
+      "status": 200,
+      "finalUrl": "https://www.cloud-calendars.com/articles/calendar-week-numbers-iso-monday-versus-sunday-start-mismatch/",
+      "h1": "Calendar week numbers disagree: compare the year rule and first weekday",
+      "canonical": [
+        "https://www.cloud-calendars.com/articles/calendar-week-numbers-iso-monday-versus-sunday-start-mismatch/"
+      ],
+      "robots": [
+        "index,follow"
+      ],
+      "bytes": 56954,
+      "sha256": "a6a263350e1514c64416e9f7c75737786c47e6d8d8b6ee7c1991fe9958ad3dd6",
+      "matchesDeployedBuild": true,
+      "ok": true
+    },
+    {
+      "slug": "google-appointment-cancel-booked-slot",
+      "url": "https://www.cloud-calendars.com/articles/google-appointment-cancel-booked-slot/",
+      "status": 200,
+      "finalUrl": "https://www.cloud-calendars.com/articles/google-appointment-cancel-booked-slot/",
+      "h1": "Cancel a booked Google Calendar appointment and what happens to the slot",
+      "canonical": [
+        "https://www.cloud-calendars.com/articles/google-appointment-cancel-booked-slot/"
+      ],
+      "robots": [
+        "index,follow"
+      ],
+      "bytes": 58210,
+      "sha256": "b1f67c7d324a0f9f46fee3202388714ac20ced3f66d818e3bdc3d849ed0c85d5",
+      "matchesDeployedBuild": true,
+      "ok": true
+    },
+    {
+      "slug": "google-calendar-change-event-owner-before-handover",
+      "url": "https://www.cloud-calendars.com/articles/google-calendar-change-event-owner-before-handover/",
+      "status": 200,
+      "finalUrl": "https://www.cloud-calendars.com/articles/google-calendar-change-event-owner-before-handover/",
+      "h1": "Change the owner of a Google Calendar event before you hand over a meeting",
+      "canonical": [
+        "https://www.cloud-calendars.com/articles/google-calendar-change-event-owner-before-handover/"
+      ],
+      "robots": [
+        "index,follow"
+      ],
+      "bytes": 60753,
+      "sha256": "f11cfe4c7746c20a33c479ae88d9bdd0e732584e30366a4df473948289ca0abc",
+      "matchesDeployedBuild": true,
+      "ok": true
+    },
+    {
+      "slug": "mac-calendar-travel-time-after-location-change",
+      "url": "https://www.cloud-calendars.com/articles/mac-calendar-travel-time-after-location-change/",
+      "status": 200,
+      "finalUrl": "https://www.cloud-calendars.com/articles/mac-calendar-travel-time-after-location-change/",
+      "h1": "Changed a meeting’s location on Mac? Recheck Travel Time as well",
+      "canonical": [
+        "https://www.cloud-calendars.com/articles/mac-calendar-travel-time-after-location-change/"
+      ],
+      "robots": [
+        "index,follow"
+      ],
+      "bytes": 56754,
+      "sha256": "13d391564d5a19fc0d4793676c432d772aeecf29f97d681eef936a1433e3d8a2",
+      "matchesDeployedBuild": true,
+      "ok": true
+    },
+    {
+      "slug": "mac-calendar-check-invitee-availability",
+      "url": "https://www.cloud-calendars.com/articles/mac-calendar-check-invitee-availability/",
+      "status": 200,
+      "finalUrl": "https://www.cloud-calendars.com/articles/mac-calendar-check-invitee-availability/",
+      "h1": "Check invitee availability in Mac Calendar—and why the button may be missing",
+      "canonical": [
+        "https://www.cloud-calendars.com/articles/mac-calendar-check-invitee-availability/"
+      ],
+      "robots": [
+        "index,follow"
+      ],
+      "bytes": 56494,
+      "sha256": "274fcca8f7366456928a250e8ebf38e47ef904941d277b1fa4b70473128de975",
+      "matchesDeployedBuild": true,
+      "ok": true
+    },
+    {
+      "slug": "icloud-calendar-invitation-sender-email",
+      "url": "https://www.cloud-calendars.com/articles/icloud-calendar-invitation-sender-email/",
+      "status": 200,
+      "finalUrl": "https://www.cloud-calendars.com/articles/icloud-calendar-invitation-sender-email/",
+      "h1": "Choose the email address that sends your iCloud event invitations",
+      "canonical": [
+        "https://www.cloud-calendars.com/articles/icloud-calendar-invitation-sender-email/"
+      ],
+      "robots": [
+        "index,follow"
+      ],
+      "bytes": 56436,
+      "sha256": "02bb29fe34631fca669dd4adff61839a269f50e1f53167211b504d7771baa766",
+      "matchesDeployedBuild": true,
+      "ok": true
+    },
+    {
+      "slug": "outlook-calendar-color-categories",
+      "url": "https://www.cloud-calendars.com/articles/outlook-calendar-color-categories/",
+      "status": 200,
+      "finalUrl": "https://www.cloud-calendars.com/articles/outlook-calendar-color-categories/",
+      "h1": "Colour-code your Outlook calendar with categories",
+      "canonical": [
+        "https://www.cloud-calendars.com/articles/outlook-calendar-color-categories/"
+      ],
+      "robots": [
+        "index,follow"
+      ],
+      "bytes": 55710,
+      "sha256": "e1a2fa2049684e45f97caf5c9781c684558cca6a591d0c67625d590ddcd24c21",
+      "matchesDeployedBuild": true,
+      "ok": true
+    },
+    {
+      "slug": "icloud-delete-calendar-every-device",
+      "url": "https://www.cloud-calendars.com/articles/icloud-delete-calendar-every-device/",
+      "status": 200,
+      "finalUrl": "https://www.cloud-calendars.com/articles/icloud-delete-calendar-every-device/",
+      "h1": "Delete an iCloud calendar or just stop seeing it? Check the scope first",
+      "canonical": [
+        "https://www.cloud-calendars.com/articles/icloud-delete-calendar-every-device/"
+      ],
+      "robots": [
+        "index,follow"
+      ],
+      "bytes": 56765,
+      "sha256": "cdcc7c541c11c6311363df6835276e8138b4dff032870d35fbe1e7fe7f49f9f6",
+      "matchesDeployedBuild": true,
+      "ok": true
+    },
+    {
+      "slug": "display-multiple-time-zone-columns-google-calendar-outlook",
+      "url": "https://www.cloud-calendars.com/articles/display-multiple-time-zone-columns-google-calendar-outlook/",
+      "status": 200,
+      "finalUrl": "https://www.cloud-calendars.com/articles/display-multiple-time-zone-columns-google-calendar-outlook/",
+      "h1": "Show additional time zones in Google Calendar and Outlook",
+      "canonical": [
+        "https://www.cloud-calendars.com/articles/display-multiple-time-zone-columns-google-calendar-outlook/"
+      ],
+      "robots": [
+        "index,follow"
+      ],
+      "bytes": 56900,
+      "sha256": "e443f00fa229b82782d76167de4d5da8aa8c35247220863474ca762726bb76e0",
+      "matchesDeployedBuild": true,
+      "ok": true
+    },
+    {
+      "slug": "google-calendar-public-embed-on-website",
+      "url": "https://www.cloud-calendars.com/articles/google-calendar-public-embed-on-website/",
+      "status": 200,
+      "finalUrl": "https://www.cloud-calendars.com/articles/google-calendar-public-embed-on-website/",
+      "h1": "Embed a Google Calendar on your website: public details or free/busy only",
+      "canonical": [
+        "https://www.cloud-calendars.com/articles/google-calendar-public-embed-on-website/"
+      ],
+      "robots": [
+        "index,follow"
+      ],
+      "bytes": 59894,
+      "sha256": "fef16dd9bb8ee2bce2d5e7f1681b3594db8fe688655cf02a8ea4005972a7625a",
+      "matchesDeployedBuild": true,
+      "ok": true
+    },
+    {
+      "slug": "outlook-end-recurring-meeting-early-keep-history",
+      "url": "https://www.cloud-calendars.com/articles/outlook-end-recurring-meeting-early-keep-history/",
+      "status": 200,
+      "finalUrl": "https://www.cloud-calendars.com/articles/outlook-end-recurring-meeting-early-keep-history/",
+      "h1": "End a recurring Outlook meeting early without wiping its history",
+      "canonical": [
+        "https://www.cloud-calendars.com/articles/outlook-end-recurring-meeting-early-keep-history/"
+      ],
+      "robots": [
+        "index,follow"
+      ],
+      "bytes": 58648,
+      "sha256": "371d786674adcbd76cff579949ed25d37650fb8848d34f2810e60da76b3eb60e",
+      "matchesDeployedBuild": true,
+      "ok": true
+    },
+    {
+      "slug": "outlook-events-from-email-flights-hotels",
+      "url": "https://www.cloud-calendars.com/articles/outlook-events-from-email-flights-hotels/",
+      "status": 200,
+      "finalUrl": "https://www.cloud-calendars.com/articles/outlook-events-from-email-flights-hotels/",
+      "h1": "Flights and hotels added to Outlook from email: control what appears",
+      "canonical": [
+        "https://www.cloud-calendars.com/articles/outlook-events-from-email-flights-hotels/"
+      ],
+      "robots": [
+        "index,follow"
+      ],
+      "bytes": 56972,
+      "sha256": "90b9ce83557d096088bed7e04f476d69e9565b6cac42294a55e684c9994a500c",
+      "matchesDeployedBuild": true,
+      "ok": true
+    },
+    {
+      "slug": "google-calendar-events-from-gmail-visibility",
+      "url": "https://www.cloud-calendars.com/articles/google-calendar-events-from-gmail-visibility/",
+      "status": 200,
+      "finalUrl": "https://www.cloud-calendars.com/articles/google-calendar-events-from-gmail-visibility/",
+      "h1": "Flights and reservations from Gmail in Google Calendar: who can see them",
+      "canonical": [
+        "https://www.cloud-calendars.com/articles/google-calendar-events-from-gmail-visibility/"
+      ],
+      "robots": [
+        "index,follow"
+      ],
+      "bytes": 59152,
+      "sha256": "00535305aef072669bb605f4bf969e218abc145c0dc9f661bd0ce578285a1581",
+      "matchesDeployedBuild": true,
+      "ok": true
+    },
+    {
+      "slug": "outlook-forward-meeting-and-allow-forwarding",
+      "url": "https://www.cloud-calendars.com/articles/outlook-forward-meeting-and-allow-forwarding/",
+      "status": 200,
+      "finalUrl": "https://www.cloud-calendars.com/articles/outlook-forward-meeting-and-allow-forwarding/",
+      "h1": "Forwarding Outlook meetings: what attendees can do and how to stop it",
+      "canonical": [
+        "https://www.cloud-calendars.com/articles/outlook-forward-meeting-and-allow-forwarding/"
+      ],
+      "robots": [
+        "index,follow"
+      ],
+      "bytes": 60898,
+      "sha256": "fc421de37c86bdbc9691abf6c47ba32a05f68fc720da557d6b5d3aae180750d6",
+      "matchesDeployedBuild": true,
+      "ok": true
+    },
+    {
+      "slug": "google-calendar-gemini-suggested-meeting-times",
+      "url": "https://www.cloud-calendars.com/articles/google-calendar-gemini-suggested-meeting-times/",
+      "status": 200,
+      "finalUrl": "https://www.cloud-calendars.com/articles/google-calendar-gemini-suggested-meeting-times/",
+      "h1": "Gemini suggested meeting times in Google Calendar: check eligibility and review the result",
+      "canonical": [
+        "https://www.cloud-calendars.com/articles/google-calendar-gemini-suggested-meeting-times/"
+      ],
+      "robots": [
+        "index,follow"
+      ],
+      "bytes": 56520,
+      "sha256": "b391456b8a9b8cbdd913355d6a87109a68a8680d0d54d7a419bae0ef000e97cb",
+      "matchesDeployedBuild": true,
+      "ok": true
+    },
+    {
+      "slug": "mac-calendar-caldav-delegation-allow-write",
+      "url": "https://www.cloud-calendars.com/articles/mac-calendar-caldav-delegation-allow-write/",
+      "status": 200,
+      "finalUrl": "https://www.cloud-calendars.com/articles/mac-calendar-caldav-delegation-allow-write/",
+      "h1": "Give a colleague CalDAV calendar-account access in Mac Calendar",
+      "canonical": [
+        "https://www.cloud-calendars.com/articles/mac-calendar-caldav-delegation-allow-write/"
+      ],
+      "robots": [
+        "index,follow"
+      ],
+      "bytes": 56759,
+      "sha256": "960ed920b49a3bdd060b8c71656bc5d76eb1850fb01d0c4c1ea2e24a19766b14",
+      "matchesDeployedBuild": true,
+      "ok": true
+    },
+    {
+      "slug": "google-calendar-alternate-calendar-moon-sports",
+      "url": "https://www.cloud-calendars.com/articles/google-calendar-alternate-calendar-moon-sports/",
+      "status": 200,
+      "finalUrl": "https://www.cloud-calendars.com/articles/google-calendar-alternate-calendar-moon-sports/",
+      "h1": "Google alternate dates, Moon phases or sports: choose the right calendar source",
+      "canonical": [
+        "https://www.cloud-calendars.com/articles/google-calendar-alternate-calendar-moon-sports/"
+      ],
+      "robots": [
+        "index,follow"
+      ],
+      "bytes": 56479,
+      "sha256": "9a75ba8fd539620713ba7c35725314ff5637e2b4771f08466c90c76db29bb165",
+      "matchesDeployedBuild": true,
+      "ok": true
+    },
+    {
+      "slug": "google-appointment-email-verification",
+      "url": "https://www.cloud-calendars.com/articles/google-appointment-email-verification/",
+      "status": 200,
+      "finalUrl": "https://www.cloud-calendars.com/articles/google-appointment-email-verification/",
+      "h1": "Google appointment email verification: what guests must do and what it proves",
+      "canonical": [
+        "https://www.cloud-calendars.com/articles/google-appointment-email-verification/"
+      ],
+      "robots": [
+        "index,follow"
+      ],
+      "bytes": 56311,
+      "sha256": "d110b6787ba1406d9cda6311ee83e2c0d6c560c0e3db8686dbabe107505b5a42",
+      "matchesDeployedBuild": true,
+      "ok": true
+    },
+    {
+      "slug": "google-appointment-schedule-which-calendars-block-booking-slots",
+      "url": "https://www.cloud-calendars.com/articles/google-appointment-schedule-which-calendars-block-booking-slots/",
+      "status": 200,
+      "finalUrl": "https://www.cloud-calendars.com/articles/google-appointment-schedule-which-calendars-block-booking-slots/",
+      "h1": "Google appointment schedule: which calendars and events block a booking slot",
+      "canonical": [
+        "https://www.cloud-calendars.com/articles/google-appointment-schedule-which-calendars-block-booking-slots/"
+      ],
+      "robots": [
+        "index,follow"
+      ],
+      "bytes": 62099,
+      "sha256": "099eff4ccf185a3b700a96d88dd820bf0f9f34212eb74a551dc780c337543bb0",
+      "matchesDeployedBuild": true,
+      "ok": true
+    },
+    {
+      "slug": "google-calendar-birthdays-from-contacts",
+      "url": "https://www.cloud-calendars.com/articles/google-calendar-birthdays-from-contacts/",
+      "status": 200,
+      "finalUrl": "https://www.cloud-calendars.com/articles/google-calendar-birthdays-from-contacts/",
+      "h1": "Google Calendar birthdays: check the contact, manual entry and account behind a date",
+      "canonical": [
+        "https://www.cloud-calendars.com/articles/google-calendar-birthdays-from-contacts/"
+      ],
+      "robots": [
+        "index,follow"
+      ],
+      "bytes": 59388,
+      "sha256": "53553026cb38dc7a1cfa000ed9251c6d5aa57ee8d198f0fddd9667ff9ce50695",
+      "matchesDeployedBuild": true,
+      "ok": true
+    },
+    {
+      "slug": "google-calendar-find-a-time-blank-is-not-free",
+      "url": "https://www.cloud-calendars.com/articles/google-calendar-find-a-time-blank-is-not-free/",
+      "status": 200,
+      "finalUrl": "https://www.cloud-calendars.com/articles/google-calendar-find-a-time-blank-is-not-free/",
+      "h1": "Google Calendar Find a time: a blank column does not mean the guest is free",
+      "canonical": [
+        "https://www.cloud-calendars.com/articles/google-calendar-find-a-time-blank-is-not-free/"
+      ],
+      "robots": [
+        "index,follow"
+      ],
+      "bytes": 60210,
+      "sha256": "e074eaa58fe4b561452454524bd678675b2056a7be4f437703012c7b085ab11c",
+      "matchesDeployedBuild": true,
+      "ok": true
+    },
+    {
+      "slug": "google-calendar-meeting-notes-not-updating",
+      "url": "https://www.cloud-calendars.com/articles/google-calendar-meeting-notes-not-updating/",
+      "status": 200,
+      "finalUrl": "https://www.cloud-calendars.com/articles/google-calendar-meeting-notes-not-updating/",
+      "h1": "Google Calendar meeting notes not updating? The document is not a live event mirror",
+      "canonical": [
+        "https://www.cloud-calendars.com/articles/google-calendar-meeting-notes-not-updating/"
+      ],
+      "robots": [
+        "index,follow"
+      ],
+      "bytes": 58443,
+      "sha256": "806268e36cef92f3411d5ee7e278cba161c1306131b5e24c0d98f5a08b315afc",
+      "matchesDeployedBuild": true,
+      "ok": true
+    },
+    {
+      "slug": "google-calendar-android-app-not-syncing",
+      "url": "https://www.cloud-calendars.com/articles/google-calendar-android-app-not-syncing/",
+      "status": 200,
+      "finalUrl": "https://www.cloud-calendars.com/articles/google-calendar-android-app-not-syncing/",
+      "h1": "Google Calendar not syncing on Android: checks in a safe order",
+      "canonical": [
+        "https://www.cloud-calendars.com/articles/google-calendar-android-app-not-syncing/"
+      ],
+      "robots": [
+        "index,follow"
+      ],
+      "bytes": 58096,
+      "sha256": "f876591f60fb4a0fef1ffd0373060bc738751d7e4e3ed6f1c6e53ef2ec7059f2",
+      "matchesDeployedBuild": true,
+      "ok": true
+    },
+    {
+      "slug": "google-calendar-offline-desktop-limits",
+      "url": "https://www.cloud-calendars.com/articles/google-calendar-offline-desktop-limits/",
+      "status": 200,
+      "finalUrl": "https://www.cloud-calendars.com/articles/google-calendar-offline-desktop-limits/",
+      "h1": "Google Calendar offline on a computer: prepare the view and know what cannot change",
+      "canonical": [
+        "https://www.cloud-calendars.com/articles/google-calendar-offline-desktop-limits/"
+      ],
+      "robots": [
+        "index,follow"
+      ],
+      "bytes": 56482,
+      "sha256": "58efb1835684f076f6b158d6dd6e5b960a9bae87a70ff5ae513f86214e57cfad",
+      "matchesDeployedBuild": true,
+      "ok": true
+    },
+    {
+      "slug": "google-calendar-ownership-transfer-pending-acceptance",
+      "url": "https://www.cloud-calendars.com/articles/google-calendar-ownership-transfer-pending-acceptance/",
+      "status": 200,
+      "finalUrl": "https://www.cloud-calendars.com/articles/google-calendar-ownership-transfer-pending-acceptance/",
+      "h1": "Google Calendar ownership transfer: finish the handoff before an account closes",
+      "canonical": [
+        "https://www.cloud-calendars.com/articles/google-calendar-ownership-transfer-pending-acceptance/"
+      ],
+      "robots": [
+        "index,follow"
+      ],
+      "bytes": 58017,
+      "sha256": "eb5eddd6f61bbe7abf0887f129836066f2b13a8330952e19307b981df7c33202",
+      "matchesDeployedBuild": true,
+      "ok": true
+    },
+    {
+      "slug": "google-calendar-event-visibility-private-public-default",
+      "url": "https://www.cloud-calendars.com/articles/google-calendar-event-visibility-private-public-default/",
+      "status": 200,
+      "finalUrl": "https://www.cloud-calendars.com/articles/google-calendar-event-visibility-private-public-default/",
+      "h1": "Google Calendar private events: what each person with access actually sees",
+      "canonical": [
+        "https://www.cloud-calendars.com/articles/google-calendar-event-visibility-private-public-default/"
+      ],
+      "robots": [
+        "index,follow"
+      ],
+      "bytes": 61666,
+      "sha256": "8aee479f6281d0029dfe17e61d2d4f1dae1af275279bb6e36b0a42f8efaab4d7",
+      "matchesDeployedBuild": true,
+      "ok": true
+    },
+    {
+      "slug": "google-calendar-time-insights-counted-meetings",
+      "url": "https://www.cloud-calendars.com/articles/google-calendar-time-insights-counted-meetings/",
+      "status": 200,
+      "finalUrl": "https://www.cloud-calendars.com/articles/google-calendar-time-insights-counted-meetings/",
+      "h1": "Google Calendar Time Insights: reconcile the meetings that actually count",
+      "canonical": [
+        "https://www.cloud-calendars.com/articles/google-calendar-time-insights-counted-meetings/"
+      ],
+      "robots": [
+        "index,follow"
+      ],
+      "bytes": 56539,
+      "sha256": "c7273d9db6217ae960cb16993a054c09d1c29fa779bdd82a5fd92940196621a6",
+      "matchesDeployedBuild": true,
+      "ok": true
+    },
+    {
+      "slug": "google-calendar-working-hours-location-out-of-office-focus-time",
+      "url": "https://www.cloud-calendars.com/articles/google-calendar-working-hours-location-out-of-office-focus-time/",
+      "status": 200,
+      "finalUrl": "https://www.cloud-calendars.com/articles/google-calendar-working-hours-location-out-of-office-focus-time/",
+      "h1": "Google Calendar working hours, working location, out of office or focus time: which one to set",
+      "canonical": [
+        "https://www.cloud-calendars.com/articles/google-calendar-working-hours-location-out-of-office-focus-time/"
+      ],
+      "robots": [
+        "index,follow"
+      ],
+      "bytes": 63796,
+      "sha256": "d536c5c0d63b4e194f5eb4dcf8970105266d94ba0576da03e8f7231200bf8035",
+      "matchesDeployedBuild": true,
+      "ok": true
+    },
+    {
+      "slug": "google-family-calendar-membership",
+      "url": "https://www.cloud-calendars.com/articles/google-family-calendar-membership/",
+      "status": 200,
+      "finalUrl": "https://www.cloud-calendars.com/articles/google-family-calendar-membership/",
+      "h1": "Google family calendar: who gets it, who can edit, what happens when someone leaves",
+      "canonical": [
+        "https://www.cloud-calendars.com/articles/google-family-calendar-membership/"
+      ],
+      "robots": [
+        "index,follow"
+      ],
+      "bytes": 57343,
+      "sha256": "be98f45a09d62a19c718d97ae508366633a0338e74a1e35659c51658aefc0096",
+      "matchesDeployedBuild": true,
+      "ok": true
+    },
+    {
+      "slug": "non-integer-30-and-45-minute-utc-offset-calendar-scheduling",
+      "url": "https://www.cloud-calendars.com/articles/non-integer-30-and-45-minute-utc-offset-calendar-scheduling/",
+      "status": 200,
+      "finalUrl": "https://www.cloud-calendars.com/articles/non-integer-30-and-45-minute-utc-offset-calendar-scheduling/",
+      "h1": "Half-hour and quarter-hour time zones: calculate a meeting that fits",
+      "canonical": [
+        "https://www.cloud-calendars.com/articles/non-integer-30-and-45-minute-utc-offset-calendar-scheduling/"
+      ],
+      "robots": [
+        "index,follow"
+      ],
+      "bytes": 57797,
+      "sha256": "42d5871997a3bc9ea29dec8accf8d14df81c6fbf6298bb78483a5d01ea9523c0",
+      "matchesDeployedBuild": true,
+      "ok": true
+    },
+    {
+      "slug": "google-calendar-hide-unsubscribe-or-delete",
+      "url": "https://www.cloud-calendars.com/articles/google-calendar-hide-unsubscribe-or-delete/",
+      "status": 200,
+      "finalUrl": "https://www.cloud-calendars.com/articles/google-calendar-hide-unsubscribe-or-delete/",
+      "h1": "Hide, unsubscribe or delete a Google calendar: pick the one you can undo",
+      "canonical": [
+        "https://www.cloud-calendars.com/articles/google-calendar-hide-unsubscribe-or-delete/"
+      ],
+      "robots": [
+        "index,follow"
+      ],
+      "bytes": 59416,
+      "sha256": "05ef624ac692838eefa3e4472e86d20318848ca5f5b605cdbd7b865fff749be0",
+      "matchesDeployedBuild": true,
+      "ok": true
+    },
+    {
+      "slug": "icloud-shared-calendar-update-emails",
+      "url": "https://www.cloud-calendars.com/articles/icloud-shared-calendar-update-emails/",
+      "status": 200,
+      "finalUrl": "https://www.cloud-calendars.com/articles/icloud-shared-calendar-update-emails/",
+      "h1": "iCloud shared calendar update emails: choose the right inbox and signal",
+      "canonical": [
+        "https://www.cloud-calendars.com/articles/icloud-shared-calendar-update-emails/"
+      ],
+      "robots": [
+        "index,follow"
+      ],
+      "bytes": 56948,
+      "sha256": "c0d92f2b53deb7f02d234b49f3dece2c26d714a05c2d339c1b6341a23dfd7a31",
+      "matchesDeployedBuild": true,
+      "ok": true
+    },
+    {
+      "slug": "iphone-calendar-add-only-full-access",
+      "url": "https://www.cloud-calendars.com/articles/iphone-calendar-add-only-full-access/",
+      "status": 200,
+      "finalUrl": "https://www.cloud-calendars.com/articles/iphone-calendar-add-only-full-access/",
+      "h1": "iPhone calendar access: why an app can add events but cannot show your schedule",
+      "canonical": [
+        "https://www.cloud-calendars.com/articles/iphone-calendar-add-only-full-access/"
+      ],
+      "robots": [
+        "index,follow"
+      ],
+      "bytes": 57031,
+      "sha256": "a3a376bbab7336eb775ad290b0e5ed17bc9790ba613be1d81ad335534c5416eb",
+      "matchesDeployedBuild": true,
+      "ok": true
+    },
+    {
+      "slug": "outlook-show-declined-meetings-on-calendar",
+      "url": "https://www.cloud-calendars.com/articles/outlook-show-declined-meetings-on-calendar/",
+      "status": 200,
+      "finalUrl": "https://www.cloud-calendars.com/articles/outlook-show-declined-meetings-on-calendar/",
+      "h1": "Keep declined meetings visible in Outlook, or get one back",
+      "canonical": [
+        "https://www.cloud-calendars.com/articles/outlook-show-declined-meetings-on-calendar/"
+      ],
+      "robots": [
+        "index,follow"
+      ],
+      "bytes": 57047,
+      "sha256": "ae14eca40cd7ec9011ee770131a86af14fc9bca0ca6db8ddb4f637bc3226b880",
+      "matchesDeployedBuild": true,
+      "ok": true
+    },
+    {
+      "slug": "outlook-shorten-meetings-automatically",
+      "url": "https://www.cloud-calendars.com/articles/outlook-shorten-meetings-automatically/",
+      "status": 200,
+      "finalUrl": "https://www.cloud-calendars.com/articles/outlook-shorten-meetings-automatically/",
+      "h1": "Make Outlook meetings end early or start late automatically",
+      "canonical": [
+        "https://www.cloud-calendars.com/articles/outlook-shorten-meetings-automatically/"
+      ],
+      "robots": [
+        "index,follow"
+      ],
+      "bytes": 56355,
+      "sha256": "05098e00d0e169d12a4fe0f0dd341ed1edc79f20cc2a17874d290f7146be55db",
+      "matchesDeployedBuild": true,
+      "ok": true
+    },
+    {
+      "slug": "outlook-calendar-delegate-or-editor-permission",
+      "url": "https://www.cloud-calendars.com/articles/outlook-calendar-delegate-or-editor-permission/",
+      "status": 200,
+      "finalUrl": "https://www.cloud-calendars.com/articles/outlook-calendar-delegate-or-editor-permission/",
+      "h1": "Microsoft 365 calendar: give an assistant Can edit or Delegate access?",
+      "canonical": [
+        "https://www.cloud-calendars.com/articles/outlook-calendar-delegate-or-editor-permission/"
+      ],
+      "robots": [
+        "index,follow"
+      ],
+      "bytes": 61909,
+      "sha256": "d4c28f40377cb88ac9931cb1c6b061b26b406918ff22cf7ec54d38579d10c7f6",
+      "matchesDeployedBuild": true,
+      "ok": true
+    },
+    {
+      "slug": "outlook-group-calendar-versus-shared-calendar",
+      "url": "https://www.cloud-calendars.com/articles/outlook-group-calendar-versus-shared-calendar/",
+      "status": 200,
+      "finalUrl": "https://www.cloud-calendars.com/articles/outlook-group-calendar-versus-shared-calendar/",
+      "h1": "Microsoft 365 group calendar or a shared calendar: who can cancel, who gets invited",
+      "canonical": [
+        "https://www.cloud-calendars.com/articles/outlook-group-calendar-versus-shared-calendar/"
+      ],
+      "robots": [
+        "index,follow"
+      ],
+      "bytes": 59084,
+      "sha256": "d65e3b852aae17b0aadb444dca94175c2028c9d2e08c9068c1496b9a67071700",
+      "matchesDeployedBuild": true,
+      "ok": true
+    },
+    {
+      "slug": "mac-calendar-ignore-alerts-one-calendar",
+      "url": "https://www.cloud-calendars.com/articles/mac-calendar-ignore-alerts-one-calendar/",
+      "status": 200,
+      "finalUrl": "https://www.cloud-calendars.com/articles/mac-calendar-ignore-alerts-one-calendar/",
+      "h1": "Mute one calendar on Mac without deleting its appointments",
+      "canonical": [
+        "https://www.cloud-calendars.com/articles/mac-calendar-ignore-alerts-one-calendar/"
+      ],
+      "robots": [
+        "index,follow"
+      ],
+      "bytes": 56236,
+      "sha256": "53a11f77554bcda0f57830a7ce0a5a25401e4c4b5bf6a7d1bf1d7ca6453119e4",
+      "matchesDeployedBuild": true,
+      "ok": true
+    },
+    {
+      "slug": "outlook-teams-meeting-button-missing",
+      "url": "https://www.cloud-calendars.com/articles/outlook-teams-meeting-button-missing/",
+      "status": 200,
+      "finalUrl": "https://www.cloud-calendars.com/articles/outlook-teams-meeting-button-missing/",
+      "h1": "No Teams meeting option in Outlook: check which Outlook you have first",
+      "canonical": [
+        "https://www.cloud-calendars.com/articles/outlook-teams-meeting-button-missing/"
+      ],
+      "robots": [
+        "index,follow"
+      ],
+      "bytes": 58030,
+      "sha256": "cb496b6971b535325bf59f342e0908540a01ed1357d9cf5d86f893ecffa93c26",
+      "matchesDeployedBuild": true,
+      "ok": true
+    },
+    {
+      "slug": "icloud-calendar-hide-past-events",
+      "url": "https://www.cloud-calendars.com/articles/icloud-calendar-hide-past-events/",
+      "status": 200,
+      "finalUrl": "https://www.cloud-calendars.com/articles/icloud-calendar-hide-past-events/",
+      "h1": "Old iCloud events disappeared? Check the web hide-past-events setting",
+      "canonical": [
+        "https://www.cloud-calendars.com/articles/icloud-calendar-hide-past-events/"
+      ],
+      "robots": [
+        "index,follow"
+      ],
+      "bytes": 56448,
+      "sha256": "97deb4e8c9f3e79e2539149ca9abce074131a56dc0b58d2166d16bc223251d9a",
+      "matchesDeployedBuild": true,
+      "ok": true
+    },
+    {
+      "slug": "on-call-standby-calendar-versus-confirmed-shift",
+      "url": "https://www.cloud-calendars.com/articles/on-call-standby-calendar-versus-confirmed-shift/",
+      "status": 200,
+      "finalUrl": "https://www.cloud-calendars.com/articles/on-call-standby-calendar-versus-confirmed-shift/",
+      "h1": "On-call calendar: separate coverage from confirmed work",
+      "canonical": [
+        "https://www.cloud-calendars.com/articles/on-call-standby-calendar-versus-confirmed-shift/"
+      ],
+      "robots": [
+        "index,follow"
+      ],
+      "bytes": 55437,
+      "sha256": "a28f0b0df240768361b498a2915812484555d967ba63afb4f45f6cac2c637bd1",
+      "matchesDeployedBuild": true,
+      "ok": true
+    },
+    {
+      "slug": "outlook-appointment-meeting-event-convert-and-update",
+      "url": "https://www.cloud-calendars.com/articles/outlook-appointment-meeting-event-convert-and-update/",
+      "status": 200,
+      "finalUrl": "https://www.cloud-calendars.com/articles/outlook-appointment-meeting-event-convert-and-update/",
+      "h1": "Outlook appointment, meeting or event: convert one to another and update correctly",
+      "canonical": [
+        "https://www.cloud-calendars.com/articles/outlook-appointment-meeting-event-convert-and-update/"
+      ],
+      "robots": [
+        "index,follow"
+      ],
+      "bytes": 58282,
+      "sha256": "feb450e2f2db1532552ccd7286dd14229a4ee99fc7c762dd57e6960ab0a57158",
+      "matchesDeployedBuild": true,
+      "ok": true
+    },
+    {
+      "slug": "outlook-birthday-calendar-from-contacts",
+      "url": "https://www.cloud-calendars.com/articles/outlook-birthday-calendar-from-contacts/",
+      "status": 200,
+      "finalUrl": "https://www.cloud-calendars.com/articles/outlook-birthday-calendar-from-contacts/",
+      "h1": "Outlook birthday calendar: turn it on, fix dates in contacts, hide it",
+      "canonical": [
+        "https://www.cloud-calendars.com/articles/outlook-birthday-calendar-from-contacts/"
+      ],
+      "robots": [
+        "index,follow"
+      ],
+      "bytes": 56523,
+      "sha256": "8517d78d15f01e14ea6caa651592d83bc9da296aaf51f58cd06c546babf9d972",
+      "matchesDeployedBuild": true,
+      "ok": true
+    },
+    {
+      "slug": "outlook-calendar-sharing-levels-busy-titles-details",
+      "url": "https://www.cloud-calendars.com/articles/outlook-calendar-sharing-levels-busy-titles-details/",
+      "status": 200,
+      "finalUrl": "https://www.cloud-calendars.com/articles/outlook-calendar-sharing-levels-busy-titles-details/",
+      "h1": "Outlook calendar sharing levels: busy only, titles and locations, or all details",
+      "canonical": [
+        "https://www.cloud-calendars.com/articles/outlook-calendar-sharing-levels-busy-titles-details/"
+      ],
+      "robots": [
+        "index,follow"
+      ],
+      "bytes": 60559,
+      "sha256": "63897208e3997e68800d710749e331c7c45237f84cb5214d8769ff8bd60c120b",
+      "matchesDeployedBuild": true,
+      "ok": true
+    },
+    {
+      "slug": "google-calendar-response-emails-outlook-rsvp",
+      "url": "https://www.cloud-calendars.com/articles/google-calendar-response-emails-outlook-rsvp/",
+      "status": 200,
+      "finalUrl": "https://www.cloud-calendars.com/articles/google-calendar-response-emails-outlook-rsvp/",
+      "h1": "Outlook RSVP missing in Google Calendar? Check the event’s response-email switch",
+      "canonical": [
+        "https://www.cloud-calendars.com/articles/google-calendar-response-emails-outlook-rsvp/"
+      ],
+      "robots": [
+        "index,follow"
+      ],
+      "bytes": 56637,
+      "sha256": "84f9d90067f7606a8f7c84025f266bc12ce9bd57873648a1524d2373bac5c16d",
+      "matchesDeployedBuild": true,
+      "ok": true
+    },
+    {
+      "slug": "outlook-show-as-free-busy-tentative-working-elsewhere",
+      "url": "https://www.cloud-calendars.com/articles/outlook-show-as-free-busy-tentative-working-elsewhere/",
+      "status": 200,
+      "finalUrl": "https://www.cloud-calendars.com/articles/outlook-show-as-free-busy-tentative-working-elsewhere/",
+      "h1": "Outlook Show As: free, tentative, busy, working elsewhere or out of office",
+      "canonical": [
+        "https://www.cloud-calendars.com/articles/outlook-show-as-free-busy-tentative-working-elsewhere/"
+      ],
+      "robots": [
+        "index,follow"
+      ],
+      "bytes": 60670,
+      "sha256": "80f25b080ccc244d6731b09c6ee62956d59c54332846a6f48fc138343e7a2465",
+      "matchesDeployedBuild": true,
+      "ok": true
+    },
+    {
+      "slug": "outlook-work-hours-and-location",
+      "url": "https://www.cloud-calendars.com/articles/outlook-work-hours-and-location/",
+      "status": 200,
+      "finalUrl": "https://www.cloud-calendars.com/articles/outlook-work-hours-and-location/",
+      "h1": "Outlook work hours and location: set office and remote days",
+      "canonical": [
+        "https://www.cloud-calendars.com/articles/outlook-work-hours-and-location/"
+      ],
+      "robots": [
+        "index,follow"
+      ],
+      "bytes": 57683,
+      "sha256": "a0de18ab90ac728ad19f524f00d979f15360c7bde86cc42f7c86ca8d7e810100",
+      "matchesDeployedBuild": true,
+      "ok": true
+    },
+    {
+      "slug": "overnight-shift-crossing-midnight-calendar-end-date",
+      "url": "https://www.cloud-calendars.com/articles/overnight-shift-crossing-midnight-calendar-end-date/",
+      "status": 200,
+      "finalUrl": "https://www.cloud-calendars.com/articles/overnight-shift-crossing-midnight-calendar-end-date/",
+      "h1": "Overnight shift calendar: put the end on the next date",
+      "canonical": [
+        "https://www.cloud-calendars.com/articles/overnight-shift-crossing-midnight-calendar-end-date/"
+      ],
+      "robots": [
+        "index,follow"
+      ],
+      "bytes": 55373,
+      "sha256": "3b9d121f2ceea80994fecb821ac1b91e51c1f6e8a42ea32b4301070d9a11770b",
+      "matchesDeployedBuild": true,
+      "ok": true
+    },
+    {
+      "slug": "google-appointment-payments-stripe-refunds",
+      "url": "https://www.cloud-calendars.com/articles/google-appointment-payments-stripe-refunds/",
+      "status": 200,
+      "finalUrl": "https://www.cloud-calendars.com/articles/google-appointment-payments-stripe-refunds/",
+      "h1": "Paid Google appointments: separate booking cancellation from a Stripe refund",
+      "canonical": [
+        "https://www.cloud-calendars.com/articles/google-appointment-payments-stripe-refunds/"
+      ],
+      "robots": [
+        "index,follow"
+      ],
+      "bytes": 56549,
+      "sha256": "842ee2e1204b39b1a7ca91f27a616faf8d74f5aa9bb288fc5ac999eb2e56c65d",
+      "matchesDeployedBuild": true,
+      "ok": true
+    },
+    {
+      "slug": "non-dst-time-zone-arizona-hawaii-recurring-calendar",
+      "url": "https://www.cloud-calendars.com/articles/non-dst-time-zone-arizona-hawaii-recurring-calendar/",
+      "status": 200,
+      "finalUrl": "https://www.cloud-calendars.com/articles/non-dst-time-zone-arizona-hawaii-recurring-calendar/",
+      "h1": "Phoenix and Hawaii meeting times: use the right city zone",
+      "canonical": [
+        "https://www.cloud-calendars.com/articles/non-dst-time-zone-arizona-hawaii-recurring-calendar/"
+      ],
+      "robots": [
+        "index,follow"
+      ],
+      "bytes": 55593,
+      "sha256": "7077a52d7a3312f7dcb29c6eff4925192fc8f8df9024639d420b48f6093dc5cc",
+      "matchesDeployedBuild": true,
+      "ok": true
+    },
+    {
+      "slug": "google-calendar-print-date-range",
+      "url": "https://www.cloud-calendars.com/articles/google-calendar-print-date-range/",
+      "status": 200,
+      "finalUrl": "https://www.cloud-calendars.com/articles/google-calendar-print-date-range/",
+      "h1": "Print a Google Calendar: choose the range, the calendars and the details",
+      "canonical": [
+        "https://www.cloud-calendars.com/articles/google-calendar-print-date-range/"
+      ],
+      "robots": [
+        "index,follow"
+      ],
+      "bytes": 56020,
+      "sha256": "6d08dbfd5ee4fe2ca34d7774560cc7750776aea19786c69b012e174b63e5c249",
+      "matchesDeployedBuild": true,
+      "ok": true
+    },
+    {
+      "slug": "outlook-print-calendar-styles",
+      "url": "https://www.cloud-calendars.com/articles/outlook-print-calendar-styles/",
+      "status": 200,
+      "finalUrl": "https://www.cloud-calendars.com/articles/outlook-print-calendar-styles/",
+      "h1": "Print an Outlook calendar: pick the style that shows what you need",
+      "canonical": [
+        "https://www.cloud-calendars.com/articles/outlook-print-calendar-styles/"
+      ],
+      "robots": [
+        "index,follow"
+      ],
+      "bytes": 56759,
+      "sha256": "7946cc90b53afe3df619233718d314490ab7d6f51726e3331ecbeae5a5e6ace5",
+      "matchesDeployedBuild": true,
+      "ok": true
+    },
+    {
+      "slug": "outlook-propose-new-meeting-time",
+      "url": "https://www.cloud-calendars.com/articles/outlook-propose-new-meeting-time/",
+      "status": 200,
+      "finalUrl": "https://www.cloud-calendars.com/articles/outlook-propose-new-meeting-time/",
+      "h1": "Propose a new meeting time in Outlook, and accept one as organizer",
+      "canonical": [
+        "https://www.cloud-calendars.com/articles/outlook-propose-new-meeting-time/"
+      ],
+      "robots": [
+        "index,follow"
+      ],
+      "bytes": 58435,
+      "sha256": "3adcf458106421bb6935b737c495cb8e33efcd710d5091a9d793148c1ebf5187",
+      "matchesDeployedBuild": true,
+      "ok": true
+    },
+    {
+      "slug": "icloud-public-calendar-publish-stop",
+      "url": "https://www.cloud-calendars.com/articles/icloud-public-calendar-publish-stop/",
+      "status": 200,
+      "finalUrl": "https://www.cloud-calendars.com/articles/icloud-public-calendar-publish-stop/",
+      "h1": "Publish an iCloud calendar as a public feed, then retire it deliberately",
+      "canonical": [
+        "https://www.cloud-calendars.com/articles/icloud-public-calendar-publish-stop/"
+      ],
+      "robots": [
+        "index,follow"
+      ],
+      "bytes": 56834,
+      "sha256": "df0f12ef70957762aa636ece4ad19274cdc871ff0ab119bed18fe410ab1f0bf5",
+      "matchesDeployedBuild": true,
+      "ok": true
+    },
+    {
+      "slug": "outlook-scheduling-assistant-read-colleague-availability",
+      "url": "https://www.cloud-calendars.com/articles/outlook-scheduling-assistant-read-colleague-availability/",
+      "status": 200,
+      "finalUrl": "https://www.cloud-calendars.com/articles/outlook-scheduling-assistant-read-colleague-availability/",
+      "h1": "Reading a colleague’s availability in Outlook’s Scheduling Assistant",
+      "canonical": [
+        "https://www.cloud-calendars.com/articles/outlook-scheduling-assistant-read-colleague-availability/"
+      ],
+      "robots": [
+        "index,follow"
+      ],
+      "bytes": 59486,
+      "sha256": "ecb892b65ee18fe0851749982221dd9b8320605c0012534f92fa6dd5f4a3bc4d",
+      "matchesDeployedBuild": true,
+      "ok": true
+    },
+    {
+      "slug": "outlook-recover-deleted-calendar-items",
+      "url": "https://www.cloud-calendars.com/articles/outlook-recover-deleted-calendar-items/",
+      "status": 200,
+      "finalUrl": "https://www.cloud-calendars.com/articles/outlook-recover-deleted-calendar-items/",
+      "h1": "Recover a deleted Outlook calendar event: Deleted Items first, then the server",
+      "canonical": [
+        "https://www.cloud-calendars.com/articles/outlook-recover-deleted-calendar-items/"
+      ],
+      "robots": [
+        "index,follow"
+      ],
+      "bytes": 57348,
+      "sha256": "dfa3528def8d181f663ccece20f1005bf24e94b14652b1fc1c8f54ca5c6abdd6",
+      "matchesDeployedBuild": true,
+      "ok": true
+    },
+    {
+      "slug": "monthly-recurring-last-weekday-byday-minus-1-versus-fixed-date",
+      "url": "https://www.cloud-calendars.com/articles/monthly-recurring-last-weekday-byday-minus-1-versus-fixed-date/",
+      "status": 200,
+      "finalUrl": "https://www.cloud-calendars.com/articles/monthly-recurring-last-weekday-byday-minus-1-versus-fixed-date/",
+      "h1": "Last weekday of the month or the 31st? Check the recurrence rule",
+      "canonical": [
+        "https://www.cloud-calendars.com/articles/monthly-recurring-last-weekday-byday-minus-1-versus-fixed-date/"
+      ],
+      "robots": [
+        "index,follow"
+      ],
+      "bytes": 59766,
+      "sha256": "b877b36ec1acaa8ae083ad4dcd645d87cd0f5efe0cee2f919da1febab4d1a7bd",
+      "matchesDeployedBuild": true,
+      "ok": true
+    },
+    {
+      "slug": "google-tasks-repeating-task-complete-delete",
+      "url": "https://www.cloud-calendars.com/articles/google-tasks-repeating-task-complete-delete/",
+      "status": 200,
+      "finalUrl": "https://www.cloud-calendars.com/articles/google-tasks-repeating-task-complete-delete/",
+      "h1": "Repeating tasks in Google Tasks and Calendar: complete, skip or stop them",
+      "canonical": [
+        "https://www.cloud-calendars.com/articles/google-tasks-repeating-task-complete-delete/"
+      ],
+      "robots": [
+        "index,follow"
+      ],
+      "bytes": 56669,
+      "sha256": "12844d9c47d773f9791aa24e981531a10d4d2d7eca0379c69866fdd737b0042e",
+      "matchesDeployedBuild": true,
+      "ok": true
+    },
+    {
+      "slug": "outlook-schedule-meeting-on-behalf-of-someone",
+      "url": "https://www.cloud-calendars.com/articles/outlook-schedule-meeting-on-behalf-of-someone/",
+      "status": 200,
+      "finalUrl": "https://www.cloud-calendars.com/articles/outlook-schedule-meeting-on-behalf-of-someone/",
+      "h1": "Schedule a meeting on someone else’s Outlook calendar: save, send and check",
+      "canonical": [
+        "https://www.cloud-calendars.com/articles/outlook-schedule-meeting-on-behalf-of-someone/"
+      ],
+      "robots": [
+        "index,follow"
+      ],
+      "bytes": 59581,
+      "sha256": "8c8aa9fa9407f8a0a474015d3a99aeca15631db8dec5c5f53e9371c9aba632c4",
+      "matchesDeployedBuild": true,
+      "ok": true
+    },
+    {
+      "slug": "google-booking-page-link-button-embed",
+      "url": "https://www.cloud-calendars.com/articles/google-booking-page-link-button-embed/",
+      "status": 200,
+      "finalUrl": "https://www.cloud-calendars.com/articles/google-booking-page-link-button-embed/",
+      "h1": "Share a Google booking page: link, popup button or inline embed",
+      "canonical": [
+        "https://www.cloud-calendars.com/articles/google-booking-page-link-button-embed/"
+      ],
+      "robots": [
+        "index,follow"
+      ],
+      "bytes": 56334,
+      "sha256": "6b02e5874352993b291c4a24797c65d5d42bec42e53d86f028b28f465c67ab48",
+      "matchesDeployedBuild": true,
+      "ok": true
+    },
+    {
+      "slug": "outlook-share-calendar-outside-organization",
+      "url": "https://www.cloud-calendars.com/articles/outlook-share-calendar-outside-organization/",
+      "status": 200,
+      "finalUrl": "https://www.cloud-calendars.com/articles/outlook-share-calendar-outside-organization/",
+      "h1": "Share a Microsoft 365 calendar with someone outside your organisation",
+      "canonical": [
+        "https://www.cloud-calendars.com/articles/outlook-share-calendar-outside-organization/"
+      ],
+      "robots": [
+        "index,follow"
+      ],
+      "bytes": 60074,
+      "sha256": "04da40ee9cdeeec1f2324263f81f8eb2adcc2658ed509edf54faca62c7b74b31",
+      "matchesDeployedBuild": true,
+      "ok": true
+    },
+    {
+      "slug": "outlook-shared-mailbox-calendar",
+      "url": "https://www.cloud-calendars.com/articles/outlook-shared-mailbox-calendar/",
+      "status": 200,
+      "finalUrl": "https://www.cloud-calendars.com/articles/outlook-shared-mailbox-calendar/",
+      "h1": "Shared mailbox calendar in Outlook: who can use it and its limits",
+      "canonical": [
+        "https://www.cloud-calendars.com/articles/outlook-shared-mailbox-calendar/"
+      ],
+      "robots": [
+        "index,follow"
+      ],
+      "bytes": 56860,
+      "sha256": "b2912eee2350608d707b68a939c95db6c9bea71c25626bbb596d8f8a781e1482",
+      "matchesDeployedBuild": true,
+      "ok": true
+    },
+    {
+      "slug": "google-calendar-android-personal-work-profile",
+      "url": "https://www.cloud-calendars.com/articles/google-calendar-android-personal-work-profile/",
+      "status": 200,
+      "finalUrl": "https://www.cloud-calendars.com/articles/google-calendar-android-personal-work-profile/",
+      "h1": "Show personal calendars in an Android Work Profile without confusing it with sharing",
+      "canonical": [
+        "https://www.cloud-calendars.com/articles/google-calendar-android-personal-work-profile/"
+      ],
+      "robots": [
+        "index,follow"
+      ],
+      "bytes": 56698,
+      "sha256": "3019e42d73ea3ea9ca91c2720d6979129ce49265501fac36b1f9e42e8b7f15c3",
+      "matchesDeployedBuild": true,
+      "ok": true
+    },
+    {
+      "slug": "split-shift-two-work-periods-calendar-blocking",
+      "url": "https://www.cloud-calendars.com/articles/split-shift-two-work-periods-calendar-blocking/",
+      "status": 200,
+      "finalUrl": "https://www.cloud-calendars.com/articles/split-shift-two-work-periods-calendar-blocking/",
+      "h1": "Split-shift calendar: keep two work periods and the gap separate",
+      "canonical": [
+        "https://www.cloud-calendars.com/articles/split-shift-two-work-periods-calendar-blocking/"
+      ],
+      "robots": [
+        "index,follow"
+      ],
+      "bytes": 55449,
+      "sha256": "72a494f7edc09454cebe460d509cef80b3d4fa142ef68b0c1e4ee092680df5ee",
+      "matchesDeployedBuild": true,
+      "ok": true
+    },
+    {
+      "slug": "southern-hemisphere-reverse-dst-two-hour-meeting-shift",
+      "url": "https://www.cloud-calendars.com/articles/southern-hemisphere-reverse-dst-two-hour-meeting-shift/",
+      "status": 200,
+      "finalUrl": "https://www.cloud-calendars.com/articles/southern-hemisphere-reverse-dst-two-hour-meeting-shift/",
+      "h1": "Sydney–New York recurring meetings: plan the two-hour seasonal swing",
+      "canonical": [
+        "https://www.cloud-calendars.com/articles/southern-hemisphere-reverse-dst-two-hour-meeting-shift/"
+      ],
+      "robots": [
+        "index,follow"
+      ],
+      "bytes": 55628,
+      "sha256": "7d57064841db9f1765971c8b20bf99d2a9f1b8458dc5241c7e69ddb6b0d9a9b6",
+      "matchesDeployedBuild": true,
+      "ok": true
+    },
+    {
+      "slug": "google-calendar-task-deadline-versus-scheduled-time-block",
+      "url": "https://www.cloud-calendars.com/articles/google-calendar-task-deadline-versus-scheduled-time-block/",
+      "status": 200,
+      "finalUrl": "https://www.cloud-calendars.com/articles/google-calendar-task-deadline-versus-scheduled-time-block/",
+      "h1": "Google task deadline or work block? Reserve the time before it is due",
+      "canonical": [
+        "https://www.cloud-calendars.com/articles/google-calendar-task-deadline-versus-scheduled-time-block/"
+      ],
+      "robots": [
+        "index,follow"
+      ],
+      "bytes": 57800,
+      "sha256": "d06fa1a360c8fd0600a88698add19a4ce8d6d6504b54dd07682fa4f93cc2c004",
+      "matchesDeployedBuild": true,
+      "ok": true
+    },
+    {
+      "slug": "iana-tzdb-government-time-zone-rule-change-calendar",
+      "url": "https://www.cloud-calendars.com/articles/iana-tzdb-government-time-zone-rule-change-calendar/",
+      "status": 200,
+      "finalUrl": "https://www.cloud-calendars.com/articles/iana-tzdb-government-time-zone-rule-change-calendar/",
+      "h1": "Time-zone rule changes: diagnose a calendar before moving events",
+      "canonical": [
+        "https://www.cloud-calendars.com/articles/iana-tzdb-government-time-zone-rule-change-calendar/"
+      ],
+      "robots": [
+        "index,follow"
+      ],
+      "bytes": 56019,
+      "sha256": "074be40ba10f1d6501b3f35e0b9132205bf31e09c2aa23835a36e729bf551676",
+      "matchesDeployedBuild": true,
+      "ok": true
+    },
+    {
+      "slug": "google-calendar-email-notifications-filter",
+      "url": "https://www.cloud-calendars.com/articles/google-calendar-email-notifications-filter/",
+      "status": 200,
+      "finalUrl": "https://www.cloud-calendars.com/articles/google-calendar-email-notifications-filter/",
+      "h1": "Too many Google Calendar emails: choose categories, then filter in Gmail",
+      "canonical": [
+        "https://www.cloud-calendars.com/articles/google-calendar-email-notifications-filter/"
+      ],
+      "robots": [
+        "index,follow"
+      ],
+      "bytes": 57679,
+      "sha256": "11b26b5ba66d9c47b57403ba538a19e2196f9532bd7b9b3a15c1e2b5cccd4330",
+      "matchesDeployedBuild": true,
+      "ok": true
+    },
+    {
+      "slug": "outlook-create-meeting-from-email",
+      "url": "https://www.cloud-calendars.com/articles/outlook-create-meeting-from-email/",
+      "status": 200,
+      "finalUrl": "https://www.cloud-calendars.com/articles/outlook-create-meeting-from-email/",
+      "h1": "Turn an Outlook email thread into a meeting request",
+      "canonical": [
+        "https://www.cloud-calendars.com/articles/outlook-create-meeting-from-email/"
+      ],
+      "robots": [
+        "index,follow"
+      ],
+      "bytes": 57830,
+      "sha256": "870a80cd9bcad6caa797177926db9d5a15e5814319da43d30c9eaca6b6ba9815",
+      "matchesDeployedBuild": true,
+      "ok": true
+    },
+    {
+      "slug": "google-calendar-report-assigned-task-spam",
+      "url": "https://www.cloud-calendars.com/articles/google-calendar-report-assigned-task-spam/",
+      "status": 200,
+      "finalUrl": "https://www.cloud-calendars.com/articles/google-calendar-report-assigned-task-spam/",
+      "h1": "Unwanted assigned Google task? Identify the shared source before reporting it",
+      "canonical": [
+        "https://www.cloud-calendars.com/articles/google-calendar-report-assigned-task-spam/"
+      ],
+      "robots": [
+        "index,follow"
+      ],
+      "bytes": 56608,
+      "sha256": "c4f9d4822db6308c5829217de76f44ad82c02bc9dfb47186e9e64462ebfd8504",
+      "matchesDeployedBuild": true,
+      "ok": true
+    },
+    {
+      "slug": "mac-calendar-custom-alert-email-open-file",
+      "url": "https://www.cloud-calendars.com/articles/mac-calendar-custom-alert-email-open-file/",
+      "status": 200,
+      "finalUrl": "https://www.cloud-calendars.com/articles/mac-calendar-custom-alert-email-open-file/",
+      "h1": "Use a custom Mac Calendar alert to open a file or send yourself email",
+      "canonical": [
+        "https://www.cloud-calendars.com/articles/mac-calendar-custom-alert-email-open-file/"
+      ],
+      "robots": [
+        "index,follow"
+      ],
+      "bytes": 55964,
+      "sha256": "a02c6659943df65997e8a318038e09fcd919e7608970b7d31903638962072d08",
+      "matchesDeployedBuild": true,
+      "ok": true
+    },
+    {
+      "slug": "us-uk-dst-mismatch-weeks-recurring-meeting-calendar",
+      "url": "https://www.cloud-calendars.com/articles/us-uk-dst-mismatch-weeks-recurring-meeting-calendar/",
+      "status": 200,
+      "finalUrl": "https://www.cloud-calendars.com/articles/us-uk-dst-mismatch-weeks-recurring-meeting-calendar/",
+      "h1": "US–UK DST mismatch: check each recurring meeting date",
+      "canonical": [
+        "https://www.cloud-calendars.com/articles/us-uk-dst-mismatch-weeks-recurring-meeting-calendar/"
+      ],
+      "robots": [
+        "index,follow"
+      ],
+      "bytes": 55546,
+      "sha256": "affe7f3d1c4172132883e352e9f8234ce5fd9213ce78e4987cc615afa0813e35",
+      "matchesDeployedBuild": true,
+      "ok": true
+    },
+    {
+      "slug": "outlook-split-view-overlay-calendars",
+      "url": "https://www.cloud-calendars.com/articles/outlook-split-view-overlay-calendars/",
+      "status": 200,
+      "finalUrl": "https://www.cloud-calendars.com/articles/outlook-split-view-overlay-calendars/",
+      "h1": "View several Outlook calendars at once: split view or overlay",
+      "canonical": [
+        "https://www.cloud-calendars.com/articles/outlook-split-view-overlay-calendars/"
+      ],
+      "robots": [
+        "index,follow"
+      ],
+      "bytes": 55889,
+      "sha256": "ec74de737872c5e381133f5b591bfed0321922e8ca0fda6c5028a7bcb6d25b23",
+      "matchesDeployedBuild": true,
+      "ok": true
+    },
+    {
+      "slug": "google-keep-reminders-moved-to-tasks",
+      "url": "https://www.cloud-calendars.com/articles/google-keep-reminders-moved-to-tasks/",
+      "status": 200,
+      "finalUrl": "https://www.cloud-calendars.com/articles/google-keep-reminders-moved-to-tasks/",
+      "h1": "Where Google Keep reminders went: finding them in Google Tasks",
+      "canonical": [
+        "https://www.cloud-calendars.com/articles/google-keep-reminders-moved-to-tasks/"
+      ],
+      "robots": [
+        "index,follow"
+      ],
+      "bytes": 57806,
+      "sha256": "fc571438ba1646ec1f534c71397439a0a0859a042abc644bab3012ceeeea9cf8",
+      "matchesDeployedBuild": true,
+      "ok": true
+    },
+    {
+      "slug": "outlook-change-meeting-organizer-or-copy-meeting",
+      "url": "https://www.cloud-calendars.com/articles/outlook-change-meeting-organizer-or-copy-meeting/",
+      "status": 200,
+      "finalUrl": "https://www.cloud-calendars.com/articles/outlook-change-meeting-organizer-or-copy-meeting/",
+      "h1": "You can’t change an Outlook meeting’s organizer: hand it over instead",
+      "canonical": [
+        "https://www.cloud-calendars.com/articles/outlook-change-meeting-organizer-or-copy-meeting/"
+      ],
+      "robots": [
+        "index,follow"
+      ],
+      "bytes": 57131,
+      "sha256": "0bbbc8d4eb114bb69c3b110880a826c9791435816514679f3b0e63ce52ab80fd",
+      "matchesDeployedBuild": true,
+      "ok": true
+    },
+    {
+      "slug": "firefighter-24-48-kelly-day-calendar-pattern",
+      "url": "https://www.cloud-calendars.com/articles/firefighter-24-48-kelly-day-calendar-pattern/",
+      "status": 200,
+      "finalUrl": "https://www.cloud-calendars.com/articles/firefighter-24-48-kelly-day-calendar-pattern/",
+      "h1": "24/48 firefighter calendar: add a Kelly day without shifting the roster",
+      "canonical": [
+        "https://www.cloud-calendars.com/articles/firefighter-24-48-kelly-day-calendar-pattern/"
+      ],
+      "robots": [
+        "index,follow"
+      ],
+      "bytes": 55621,
+      "sha256": "ab83d69c30e29ee7857cc393ab00959a413333ff73d36a2413242d7956d6fe34",
+      "matchesDeployedBuild": true,
+      "ok": true
+    },
+    {
+      "slug": "dupont-28-day-rotating-shift-calendar-cycle",
+      "url": "https://www.cloud-calendars.com/articles/dupont-28-day-rotating-shift-calendar-cycle/",
+      "status": 200,
+      "finalUrl": "https://www.cloud-calendars.com/articles/dupont-28-day-rotating-shift-calendar-cycle/",
+      "h1": "DuPont 28-day shift calendar: map the cycle before repeating it",
+      "canonical": [
+        "https://www.cloud-calendars.com/articles/dupont-28-day-rotating-shift-calendar-cycle/"
+      ],
+      "robots": [
+        "index,follow"
+      ],
+      "bytes": 56500,
+      "sha256": "d520c0161646c93c70b8b4cb42d33c8d7bb74101231f32468fade1352942f81e",
+      "matchesDeployedBuild": true,
+      "ok": true
+    },
+    {
+      "slug": "icalendar-exdate-recurrence-id-moved-instance",
+      "url": "https://www.cloud-calendars.com/articles/icalendar-exdate-recurrence-id-moved-instance/",
+      "status": 200,
+      "finalUrl": "https://www.cloud-calendars.com/articles/icalendar-exdate-recurrence-id-moved-instance/",
+      "h1": "EXDATE or RECURRENCE-ID: skip one meeting or move it to another day",
+      "canonical": [
+        "https://www.cloud-calendars.com/articles/icalendar-exdate-recurrence-id-moved-instance/"
+      ],
+      "robots": [
+        "index,follow"
+      ],
+      "bytes": 56807,
+      "sha256": "0b7742d670ef4985f0ab2b61aefd68d489e68f2cedc52d6a569f5830c82c4473",
+      "matchesDeployedBuild": true,
+      "ok": true
+    },
+    {
+      "slug": "icalendar-floating-time-utc-tzid",
+      "url": "https://www.cloud-calendars.com/articles/icalendar-floating-time-utc-tzid/",
+      "status": 200,
+      "finalUrl": "https://www.cloud-calendars.com/articles/icalendar-floating-time-utc-tzid/",
+      "h1": "iCalendar floating time, UTC and TZID: which time does the file mean?",
+      "canonical": [
+        "https://www.cloud-calendars.com/articles/icalendar-floating-time-utc-tzid/"
+      ],
+      "robots": [
+        "index,follow"
+      ],
+      "bytes": 56390,
+      "sha256": "73875c99c5fe89000b002c1d7f2c4ff422217961f0ceb34e0241d0c8af49e577",
+      "matchesDeployedBuild": true,
+      "ok": true
+    },
+    {
+      "slug": "icalendar-duration-p1d-pt24h-dst",
+      "url": "https://www.cloud-calendars.com/articles/icalendar-duration-p1d-pt24h-dst/",
+      "status": 200,
+      "finalUrl": "https://www.cloud-calendars.com/articles/icalendar-duration-p1d-pt24h-dst/",
+      "h1": "iCalendar P1D versus PT24H: why a day can end at a different hour",
+      "canonical": [
+        "https://www.cloud-calendars.com/articles/icalendar-duration-p1d-pt24h-dst/"
+      ],
+      "robots": [
+        "index,follow"
+      ],
+      "bytes": 56597,
+      "sha256": "0737a4fdb889f9a46731df356ae6223f17ae653bd7e8473c6bafd18dd93240a2",
+      "matchesDeployedBuild": true,
+      "ok": true
+    },
+    {
+      "slug": "icalendar-valarm-relative-absolute-trigger",
+      "url": "https://www.cloud-calendars.com/articles/icalendar-valarm-relative-absolute-trigger/",
+      "status": 200,
+      "finalUrl": "https://www.cloud-calendars.com/articles/icalendar-valarm-relative-absolute-trigger/",
+      "h1": "ICS alarm TRIGGER: before the start, after the end or at a fixed time?",
+      "canonical": [
+        "https://www.cloud-calendars.com/articles/icalendar-valarm-relative-absolute-trigger/"
+      ],
+      "robots": [
+        "index,follow"
+      ],
+      "bytes": 56685,
+      "sha256": "4f8fb23014dfc3cf7bddae7f77beeecd7a3547c430e7a2ddc0f9c396d2691c71",
+      "matchesDeployedBuild": true,
+      "ok": true
+    },
+    {
+      "slug": "ics-method-cancel-versus-delete-event",
+      "url": "https://www.cloud-calendars.com/articles/ics-method-cancel-versus-delete-event/",
+      "status": 200,
+      "finalUrl": "https://www.cloud-calendars.com/articles/ics-method-cancel-versus-delete-event/",
+      "h1": "ICS METHOD:CANCEL is not the same as deleting your calendar copy",
+      "canonical": [
+        "https://www.cloud-calendars.com/articles/ics-method-cancel-versus-delete-event/"
+      ],
+      "robots": [
+        "index,follow"
+      ],
+      "bytes": 57456,
+      "sha256": "be7cf3b8954d8114ea621bc19799c6f23ec7f02cda45bba93cdd7922eb578e88",
+      "matchesDeployedBuild": true,
+      "ok": true
+    },
+    {
+      "slug": "icalendar-transp-class-busy-private",
+      "url": "https://www.cloud-calendars.com/articles/icalendar-transp-class-busy-private/",
+      "status": 200,
+      "finalUrl": "https://www.cloud-calendars.com/articles/icalendar-transp-class-busy-private/",
+      "h1": "ICS TRANSP versus CLASS: private and busy are different settings",
+      "canonical": [
+        "https://www.cloud-calendars.com/articles/icalendar-transp-class-busy-private/"
+      ],
+      "robots": [
+        "index,follow"
+      ],
+      "bytes": 56568,
+      "sha256": "dec7c02fa014000321574cbf6e87b0f724ca6746366742ffd769fcdc4e244358",
+      "matchesDeployedBuild": true,
+      "ok": true
+    },
+    {
+      "slug": "icalendar-uid-sequence-event-updates",
+      "url": "https://www.cloud-calendars.com/articles/icalendar-uid-sequence-event-updates/",
+      "status": 200,
+      "finalUrl": "https://www.cloud-calendars.com/articles/icalendar-uid-sequence-event-updates/",
+      "h1": "ICS UID and SEQUENCE: why a changed title is still the same meeting",
+      "canonical": [
+        "https://www.cloud-calendars.com/articles/icalendar-uid-sequence-event-updates/"
+      ],
+      "robots": [
+        "index,follow"
+      ],
+      "bytes": 57230,
+      "sha256": "7fa73b22d4da2241103d4128b846fdeec99125b8c4a5d47650152e391818d130",
+      "matchesDeployedBuild": true,
+      "ok": true
+    },
+    {
+      "slug": "pitman-2-2-3-shift-schedule-calendar-setup",
+      "url": "https://www.cloud-calendars.com/articles/pitman-2-2-3-shift-schedule-calendar-setup/",
+      "status": 200,
+      "finalUrl": "https://www.cloud-calendars.com/articles/pitman-2-2-3-shift-schedule-calendar-setup/",
+      "h1": "Pitman 2-2-3 shift calendar: verify the 14-day pattern",
+      "canonical": [
+        "https://www.cloud-calendars.com/articles/pitman-2-2-3-shift-schedule-calendar-setup/"
+      ],
+      "robots": [
+        "index,follow"
+      ],
+      "bytes": 55597,
+      "sha256": "7c2733c86e4791ae8c3676da85f150353659d9f0016c31c916a61a1f344b8beb",
+      "matchesDeployedBuild": true,
+      "ok": true
+    },
+    {
+      "slug": "rrule-count-until-excluded-occurrences",
+      "url": "https://www.cloud-calendars.com/articles/rrule-count-until-excluded-occurrences/",
+      "status": 200,
+      "finalUrl": "https://www.cloud-calendars.com/articles/rrule-count-until-excluded-occurrences/",
+      "h1": "RRULE COUNT or UNTIL: end a recurring schedule without an extra session",
+      "canonical": [
+        "https://www.cloud-calendars.com/articles/rrule-count-until-excluded-occurrences/"
+      ],
+      "robots": [
+        "index,follow"
+      ],
+      "bytes": 56464,
+      "sha256": "bf90bcf1de3f0b48ba37994b3c7dce0c60be98e0252ddc28ff8b0843a78181fd",
+      "matchesDeployedBuild": true,
+      "ok": true
+    },
+    {
+      "slug": "ics-all-day-dtend-exclusive-end-date",
+      "url": "https://www.cloud-calendars.com/articles/ics-all-day-dtend-exclusive-end-date/",
+      "status": 200,
+      "finalUrl": "https://www.cloud-calendars.com/articles/ics-all-day-dtend-exclusive-end-date/",
+      "h1": "Why an ICS all-day event ends one date after its last visible day",
+      "canonical": [
+        "https://www.cloud-calendars.com/articles/ics-all-day-dtend-exclusive-end-date/"
+      ],
+      "robots": [
+        "index,follow"
+      ],
+      "bytes": 56139,
+      "sha256": "6570856f13b7896c9f7010c2ee896a698aca96522916a26facbca22caaa3e502",
+      "matchesDeployedBuild": true,
+      "ok": true
+    },
+    {
+      "slug": "google-calendar-add-ons-conferencing-permissions",
+      "url": "https://www.cloud-calendars.com/articles/google-calendar-add-ons-conferencing-permissions/",
+      "status": 200,
+      "finalUrl": "https://www.cloud-calendars.com/articles/google-calendar-add-ons-conferencing-permissions/",
+      "h1": "Google Calendar add-ons: install the intended integration and check its meeting account",
+      "canonical": [
+        "https://www.cloud-calendars.com/articles/google-calendar-add-ons-conferencing-permissions/"
+      ],
+      "robots": [
+        "index,follow"
+      ],
+      "bytes": 56433,
+      "sha256": "d23464353e3a264b13dee5556e310da718fdd51bd05669c383eaccf18aaf043e",
+      "matchesDeployedBuild": true,
+      "ok": true
+    }
+  ]
+}

@@ -82,6 +82,12 @@ export class ArticlePageComponent implements OnDestroy {
     this.articleLinks = (this.article.articleLinks ?? [])
       .filter(link => link.slug in content.articles)
       .map(link => ({ path: linkPath(this.locale, `/articles/${link.slug}`), label: link.label }));
+    // Reference guides do not need a promotional action block to expose their
+    // contextual links. Prefer the authored label and render each target once.
+    if (!this.article.actionHeading) {
+      this.seeAlso = [...new Map([...this.seeAlso, ...this.articleLinks]
+        .map(link => [link.path, link])).values()];
+    }
 
     const path = `/articles/${slug}`;
     inject(SeoService).apply({

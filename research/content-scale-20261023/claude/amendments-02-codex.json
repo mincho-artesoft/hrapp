@@ -1,0 +1,942 @@
+{
+  "amendedAt": "2026-10-23T10:11:44.518273+00:00",
+  "originalFile": "claude-drafts-02.json",
+  "outputFile": "claude-drafts-02-reviewed.json",
+  "originalSha256": "04c1cda3fd6efefee97f68c779ccf3f2261266c8f94586476e9c6e54f80babef",
+  "reviewedSha256": "e4ee40eb6dd08a6178d838d8b1365dc9ef02b1dec46f4449c96a6d238b259194",
+  "scope": "Required batch02 corrections and bounded clarifiers applied to a new snapshot;no src,build or deployment changes. Root retains final publication decision.",
+  "sourceEvidenceIndex": [
+    "review-source-index-02.json",
+    "review-source-index.json"
+  ],
+  "articles": {
+    "google-calendar-hide-unsubscribe-or-delete": {
+      "originalVerdict": "revise",
+      "reviewedSnapshotVerdict": "approve",
+      "remainingCoreFactHold": false,
+      "requiredSourceSections": [
+        {
+          "url": "https://support.google.com/calendar/answer/37188?hl=en",
+          "section": "Bring back a calendar you removed"
+        },
+        {
+          "url": "https://support.google.com/calendar/answer/37188?hl=en",
+          "section": "Remove a calendar from your list permanently;Restore a calendar you unsubscribed from"
+        },
+        {
+          "url": "https://support.google.com/calendar/answer/37188?hl=en",
+          "section": "Delete all events in your primary calendar"
+        }
+      ],
+      "integrationNotes": []
+    },
+    "google-calendar-public-embed-on-website": {
+      "originalVerdict": "revise",
+      "reviewedSnapshotVerdict": "approve",
+      "remainingCoreFactHold": false,
+      "requiredSourceSections": [
+        {
+          "url": "https://support.google.com/calendar/answer/41207?hl=en",
+          "section": "Embed a calendar on your website"
+        },
+        {
+          "url": "https://support.google.com/calendar/answer/37083?hl=en",
+          "section": "Stop sharing your calendar publicly"
+        },
+        {
+          "url": "https://support.google.com/calendar/answer/37083?hl=en",
+          "section": "How public calendars work"
+        }
+      ],
+      "integrationNotes": []
+    },
+    "google-calendar-birthdays-from-contacts": {
+      "originalVerdict": "revise",
+      "reviewedSnapshotVerdict": "approve",
+      "remainingCoreFactHold": false,
+      "requiredSourceSections": [
+        {
+          "url": "https://support.google.com/calendar/answer/13748346?hl=en",
+          "section": "Opening bullet list;Hide all birthdays"
+        },
+        {
+          "url": "https://support.google.com/calendar/answer/13748346?hl=en",
+          "section": "Turn off birthdays from one of your accounts"
+        },
+        {
+          "url": "https://support.google.com/calendar/answer/13748346?hl=en",
+          "section": "Turn off birthdays from one of your accounts"
+        }
+      ],
+      "integrationNotes": [
+        "Link/trim old all-day birthday subsection so this page is the dedicated Google-account control guide."
+      ]
+    },
+    "google-calendar-holidays-by-country-and-religion": {
+      "originalVerdict": "approve",
+      "reviewedSnapshotVerdict": "approve",
+      "remainingCoreFactHold": false,
+      "requiredSourceSections": [],
+      "integrationNotes": []
+    },
+    "google-calendar-events-from-gmail-visibility": {
+      "originalVerdict": "revise",
+      "reviewedSnapshotVerdict": "approve",
+      "remainingCoreFactHold": false,
+      "requiredSourceSections": [
+        {
+          "url": "https://support.google.com/calendar/answer/15454771?hl=en",
+          "section": "Learn about visibility settings"
+        },
+        {
+          "url": "https://support.google.com/calendar/answer/15454771?hl=en",
+          "section": "Important warning;Learn about visibility settings"
+        },
+        {
+          "url": "https://support.google.com/calendar/answer/15454771?hl=en",
+          "section": "Change default visibility;cross-reference current calendar permission definitions"
+        }
+      ],
+      "integrationNotes": []
+    },
+    "google-keep-reminders-moved-to-tasks": {
+      "originalVerdict": "revise",
+      "reviewedSnapshotVerdict": "approve",
+      "remainingCoreFactHold": false,
+      "requiredSourceSections": [
+        {
+          "url": "https://support.google.com/calendar/answer/16540694?hl=en",
+          "section": "Opening migration notice;Find Keep reminders"
+        },
+        {
+          "url": "https://support.google.com/calendar/answer/16540694?hl=en",
+          "section": "Limits on tasks;Work or school accounts managed by administrator"
+        },
+        {
+          "url": "https://support.google.com/calendar/answer/16540694?hl=en",
+          "section": "Get reminder notifications on mobile;Edit and delete Keep reminders"
+        }
+      ],
+      "integrationNotes": []
+    },
+    "google-tasks-repeating-task-complete-delete": {
+      "originalVerdict": "approve",
+      "reviewedSnapshotVerdict": "approve",
+      "remainingCoreFactHold": false,
+      "requiredSourceSections": [],
+      "integrationNotes": []
+    },
+    "google-calendar-email-notifications-filter": {
+      "originalVerdict": "approve",
+      "reviewedSnapshotVerdict": "approve",
+      "remainingCoreFactHold": false,
+      "requiredSourceSections": [],
+      "integrationNotes": []
+    },
+    "google-appointment-cancel-booked-slot": {
+      "originalVerdict": "revise",
+      "reviewedSnapshotVerdict": "approve",
+      "remainingCoreFactHold": false,
+      "requiredSourceSections": [
+        {
+          "url": "https://support.google.com/calendar/answer/10730791?hl=en",
+          "section": "Learn how appointment schedule syncs;additional primary references16287054 and11423292"
+        },
+        {
+          "url": "https://support.google.com/calendar/answer/10737245?hl=en",
+          "section": "Cancel a booked appointment;read with availability settings"
+        },
+        {
+          "url": "https://support.google.com/calendar/answer/10737245?hl=en",
+          "section": "Cancel a booked appointment"
+        }
+      ],
+      "integrationNotes": []
+    },
+    "google-calendar-android-app-not-syncing": {
+      "originalVerdict": "revise",
+      "reviewedSnapshotVerdict": "approve",
+      "remainingCoreFactHold": false,
+      "requiredSourceSections": [
+        {
+          "url": "https://support.google.com/calendar/answer/6261951?hl=en",
+          "section": "Clear your Calendar app data"
+        },
+        {
+          "url": "https://support.google.com/calendar/answer/6261951?hl=en",
+          "section": "Confirm correct calendar syncs in Calendar app"
+        },
+        {
+          "url": "https://support.google.com/calendar/answer/6261951?hl=en",
+          "section": "Confirm correct calendar syncs;Manually sync your calendar"
+        }
+      ],
+      "integrationNotes": []
+    },
+    "google-family-calendar-membership": {
+      "originalVerdict": "revise",
+      "reviewedSnapshotVerdict": "approve",
+      "remainingCoreFactHold": false,
+      "requiredSourceSections": [
+        {
+          "url": "https://support.google.com/calendar/answer/7157782?hl=en",
+          "section": "Learn how family calendar works"
+        },
+        {
+          "url": "https://support.google.com/calendar/answer/7157782?hl=en",
+          "section": "Share family calendar with non-family members"
+        },
+        {
+          "url": "https://support.google.com/calendar/answer/7157782?hl=en",
+          "section": "Family-group deletion and owner-only calendar deletion"
+        }
+      ],
+      "integrationNotes": []
+    },
+    "google-calendar-print-date-range": {
+      "originalVerdict": "revise",
+      "reviewedSnapshotVerdict": "approve",
+      "remainingCoreFactHold": false,
+      "requiredSourceSections": [
+        {
+          "url": "https://support.google.com/calendar/answer/41067?hl=en",
+          "section": "Include calendar event details"
+        },
+        {
+          "url": "https://support.google.com/calendar/answer/41067?hl=en",
+          "section": "Change font size"
+        }
+      ],
+      "integrationNotes": []
+    }
+  },
+  "boundedUncertainty": [
+    "Gmail-specific Calendar default interaction with every permission role is not invented;recipient verification and user-only sensitive default remain explicit.",
+    "Keep future-tense2025 announcement is not treated as proof of account migration;check From Keep markers."
+  ],
+  "fieldChanges": [
+    {
+      "path": "/google-calendar-hide-unsubscribe-or-delete/comparison/rows/1/cells/3",
+      "before": "You keep access; Google’s page does not detail the un-hide steps, so check Settings",
+      "after": "Settings > choose the hidden calendar in the left column > Preview"
+    },
+    {
+      "path": "/google-calendar-hide-unsubscribe-or-delete/comparison/rows/2/cells/3",
+      "before": "Owner must re-share it with you",
+      "after": "Owner or someone with Make changes and manage sharing must provide access again;previous editing rights are not automatically established"
+    },
+    {
+      "path": "/google-calendar-hide-unsubscribe-or-delete/comparison/rows/4/cells/3",
+      "before": "Treat as permanent; export first",
+      "after": "Treat as destructive;an export is not a complete undo of invitations and sharing"
+    },
+    {
+      "path": "/google-calendar-hide-unsubscribe-or-delete/practical/2",
+      "before": "Unsubscribe only from calendars you will not need; re-adding needs the owner.",
+      "after": "Unsubscribe only when you no longer need access;restoration needs the owner or someone with Make changes and manage sharing. Keep secret calendar addresses private."
+    },
+    {
+      "path": "/google-calendar-hide-unsubscribe-or-delete/practical/4",
+      "before": "Never clear a primary calendar to fix a view; export first if you must.",
+      "after": "Do not clear a primary calendar to fix a view;planned deletion needs an independent copy and separate review of affected events and people."
+    },
+    {
+      "path": "/google-calendar-hide-unsubscribe-or-delete/sections/0/body/1",
+      "before": "Hide from list. Hover over the calendar, choose More, then Hide from list. Google says you then won’t find it under My calendars or Other calendars. You are still subscribed or still own it; it is just out of the sidebar.",
+      "after": "Hide from list removes the calendar from the My calendars or Other calendars sidebar without deleting the calendar. To bring it back, Google gives an explicit route: open Settings, find the calendar in the left column and click Preview. This restores a hidden-list entry; it is not the same as regaining access after unsubscribing."
+    },
+    {
+      "path": "/google-calendar-hide-unsubscribe-or-delete/sections/1/body/1",
+      "before": "Before clearing a primary calendar, export it first so you have a copy, and consider who receives invitations from it.",
+      "after": "Do not clear a primary calendar to troubleshoot an unwanted view. If a genuine planned deletion is necessary, retain an independent dated copy and review invitations and affected users first. An export is not proof that every sharing, guest or invitation state can be restored; the export guide explains those limits."
+    },
+    {
+      "path": "/google-calendar-hide-unsubscribe-or-delete/sections/2/body/0",
+      "before": "A fictional parent sees five calendars: their primary calendar, “Under-11s football” which they created and share with eight families, “School term dates” subscribed from the school, a colleague’s calendar shared for a project that ended, and a holidays calendar.",
+      "after": "A fictional parent sees five calendars: their primary calendar, “Under-11 s football” which they created and share with eight families, “School term dates” subscribed from the school, a colleague’s calendar shared for a project that ended, and a holidays calendar."
+    },
+    {
+      "path": "/google-calendar-public-embed-on-website/comparison/rows/1/cells/0",
+      "before": "Show when you are booked",
+      "after": "Show when booked to the general public"
+    },
+    {
+      "path": "/google-calendar-public-embed-on-website/comparison/rows/1/cells/2",
+      "before": "See only free/busy (hide details)",
+      "after": "Public with See only free/busy"
+    },
+    {
+      "path": "/google-calendar-public-embed-on-website/comparison/rows/1/cells/3",
+      "before": "Embed or shareable link",
+      "after": "Embed or public link;anyone may see the published busy pattern"
+    },
+    {
+      "path": "/google-calendar-public-embed-on-website/comparison/rows/3/cells/1",
+      "before": "Any",
+      "after": "Dedicated or appropriate existing calendar"
+    },
+    {
+      "path": "/google-calendar-public-embed-on-website/comparison/rows/3/cells/2",
+      "before": "Not public",
+      "after": "Keep restricted and grant named access"
+    },
+    {
+      "path": "/google-calendar-public-embed-on-website/comparison/rows/3/cells/3",
+      "before": "Named sharing, not embedding",
+      "after": "Named sharing;an embed remains access-controlled"
+    },
+    {
+      "path": "/google-calendar-public-embed-on-website/practical/1",
+      "before": "Make it public, choosing full details or See only free/busy.",
+      "after": "For an anonymous public audience, enable public sharing with the intended detail level. For a restricted audience, use appropriate named sharing instead."
+    },
+    {
+      "path": "/google-calendar-public-embed-on-website/practical/4",
+      "before": "Allow up to four hours for sharing changes to appear.",
+      "after": "When stopping public sharing, note Google’s documented possible access-change delay and verify the visitor result;do not use that timing as an event-edit refresh guarantee."
+    },
+    {
+      "path": "/google-calendar-public-embed-on-website/lede",
+      "before": "An embedded calendar is only visible to visitors if the calendar is public, and public means more than “on my site”. Decide what visitors should read before you copy the embed code. This guide is written by Arte Soft, the developer of Cloud Calendars.",
+      "after": "A calendar embedded on a website still follows Google’s sharing rules. To let everyone view it without an individual sharing grant, make it public deliberately. An embed does not turn a private calendar into a public one. Arte Soft, the developer of Cloud Calendars, publishes this guide."
+    },
+    {
+      "path": "/google-calendar-public-embed-on-website/faq/0/a",
+      "before": "Google says the calendar is only visible to people you share it with; to make it visible to everyone, it must be public.",
+      "after": "Yes, an embed can remain restricted to people with appropriate access. Google says public sharing is needed to make it visible to everyone. Do not make a private calendar public just to bypass an embed-access problem."
+    },
+    {
+      "path": "/google-calendar-public-embed-on-website/faq/2/a",
+      "before": "Google says the change usually takes a few minutes and may take up to four hours.",
+      "after": "Check the intended audience, the saved calendar sharing and the calendar chosen in the embed. The source’s up-to-four-hour note concerns stopping public sharing, not every error after publication or event edit."
+    },
+    {
+      "path": "/google-calendar-public-embed-on-website/sections/0/heading",
+      "before": "Public is the prerequisite",
+      "after": "Choose the audience before the embed"
+    },
+    {
+      "path": "/google-calendar-public-embed-on-website/sections/0/body/0",
+      "before": "Google’s embed guidance says your calendar is only visible to people you share it with, and to make it visible to everyone you must make it public. In Settings, under Settings for my calendars, pick the calendar and tick Make available to public.",
+      "after": "Google says an embedded calendar is visible only to people with whom it is shared. Public sharing is needed for an everyone-access audience;it is not a technical prerequisite for every restricted embed. A viewer of a restricted embed still needs appropriate calendar access, and embedding does not bypass sign-in or browser restrictions. For anonymous public visitors, use a dedicated public calendar rather than broaden a private one accidentally."
+    },
+    {
+      "path": "/google-calendar-public-embed-on-website/sections/3/body/0",
+      "before": "A fictional choir secretary wants concerts on the choir website and rehearsals visible only as busy blocks to a partner venue. They create two calendars: “Choir concerts”, made public with full details, embedded on the website; and “Choir rehearsals”, made public as See only free/busy, whose link they send to the venue.",
+      "after": "A fictional choir secretary wants concerts visible to anonymous website visitors, while a partner venue only needs rehearsal busy times. They create Choir concerts as a dedicated public calendar with suitable event details and embed that calendar. They keep Choir rehearsals restricted and use named free/busy sharing for the venue. Publishing its free/busy calendar would make that information available to anyone, not only the venue."
+    },
+    {
+      "path": "/google-calendar-public-embed-on-website/sections/3/body/2",
+      "before": "When a concert moves, the secretary checks the website after a few minutes and again later. Google says sharing changes usually take a few minutes but may take up to four hours.",
+      "after": "When a concert moves, the secretary checks the saved source event and the actual embedded view without assuming a documented event-refresh deadline. Google’s up-to-four-hour tip is under stopping public sharing;it is not a promise that every concert edit or embed error resolves within that interval."
+    },
+    {
+      "path": "/google-calendar-public-embed-on-website/sections/4/body/0",
+      "before": "To stop publishing, open the calendar’s Settings and sharing and untick Make available to public. Anyone who already subscribed or copied events may keep what they saw; removing public access cannot recall that.",
+      "after": "To stop public access, open Settings and sharing and uncheck Make available to public. Google says this access change usually takes minutes but may take up to four hours. Check an appropriate visitor’s view;the change does not recall screenshots, independent copies or information already read."
+    },
+    {
+      "path": "/google-calendar-birthdays-from-contacts/comparison/rows",
+      "before": [
+        {
+          "cells": [
+            "Correct a date",
+            "Google Contacts",
+            "Calendar follows the contact"
+          ]
+        },
+        {
+          "cells": [
+            "Delete the birthday event",
+            "Calendar",
+            "Contact data unchanged"
+          ]
+        },
+        {
+          "cells": [
+            "Uncheck Birthdays",
+            "Calendar list",
+            "Hidden from view, nothing deleted"
+          ]
+        },
+        {
+          "cells": [
+            "Change colour",
+            "Birthdays → Options",
+            "Display only"
+          ]
+        },
+        {
+          "cells": [
+            "Turn off Sync from Contacts",
+            "Calendar settings",
+            "Deletes all synced birthdays, important dates and your changes to them"
+          ]
+        }
+      ],
+      "after": [
+        {
+          "cells": [
+            "Correct a Contacts-linked birthday",
+            "Google Contacts or supported mobile Google Calendar linked edit",
+            "A Calendar linked edit also changes the contact;verify the intended account"
+          ]
+        },
+        {
+          "cells": [
+            "Remove only the Calendar birthday entry",
+            "Calendar delete",
+            "Does not change birthday data in Google Contacts"
+          ]
+        },
+        {
+          "cells": [
+            "Hide all birthday rows",
+            "Uncheck Birthdays in Calendar list",
+            "Hides manual and imported birthday rows"
+          ]
+        },
+        {
+          "cells": [
+            "Change birthday colour",
+            "Birthdays > Options",
+            "Display choice"
+          ]
+        },
+        {
+          "cells": [
+            "Stop one account’s imported entries",
+            "Settings > Birthdays > Sync from Contacts",
+            "Removes that account’s synced Calendar entries;contact information remains"
+          ]
+        },
+        {
+          "cells": [
+            "Investigate duplicate-looking rows",
+            "Compare selected accounts and known manual/contact sources",
+            "Do not infer duplicate contacts or merge them as a test"
+          ]
+        }
+      ]
+    },
+    {
+      "path": "/google-calendar-birthdays-from-contacts/practical",
+      "before": [
+        "Correct wrong dates in Google Contacts.",
+        "Look for duplicate contacts when a birthday appears twice.",
+        "Uncheck Birthdays to hide them; do not turn off Sync from Contacts for that.",
+        "Use Options to recolour birthdays."
+      ],
+      "after": [
+        "Identify whether the birthday is manual or Contacts-linked and which Google account owns its source.",
+        "For a linked date correction, use Google Contacts or the supported mobile Calendar edit, then verify the contact.",
+        "Inspect selected accounts and known manual entries before diagnosing duplicate-looking birthdays.",
+        "Use the Birthdays list checkbox for temporary hiding;do not use Sync from Contacts as a harmless visual test.",
+        "Keep source records while verifying any change;do not merge contacts only to remove duplicate-looking calendar rows."
+      ]
+    },
+    {
+      "path": "/google-calendar-birthdays-from-contacts/description",
+      "before": "Correct, hide or recolour birthdays in Google Calendar. See why edits belong in Google Contacts and which setting deletes every synced birthday.",
+      "after": "Distinguish Contacts-linked and manual Google birthdays. Check mobile edits, multiple accounts and hiding before changing contact data."
+    },
+    {
+      "path": "/google-calendar-birthdays-from-contacts/short",
+      "before": "Birthdays in Google Calendar",
+      "after": "Find the source of a Google birthday"
+    },
+    {
+      "path": "/google-calendar-birthdays-from-contacts/lede",
+      "before": "The birthdays in Google Calendar are not ordinary events. They come from Google Contacts, so the fix for a wrong date lives there, and one calendar setting can remove them all at once. Arte Soft, the developer of Cloud Calendars, explains which control to use.",
+      "after": "A birthday on Google Calendar can be manually created or linked to Google Contacts. Find the source and Google account before changing a date or removing a duplicate-looking row. Hiding the Birthdays calendar and turning off contact sync have different effects. Arte Soft develops Cloud Calendars."
+    },
+    {
+      "path": "/google-calendar-birthdays-from-contacts/faq",
+      "before": [
+        {
+          "q": "I deleted a birthday from Calendar. Is it gone from my contact?",
+          "a": "No. Google says deleting a birthday from Calendar does not affect what is stored in Google Contacts."
+        },
+        {
+          "q": "How do I stop seeing birthdays without losing them?",
+          "a": "Uncheck the Birthdays calendar in the calendar list. Turning off Sync from Contacts deletes them."
+        }
+      ],
+      "after": [
+        {
+          "q": "I deleted a birthday from Calendar. Is it gone from my contact?",
+          "a": "No. Google says deleting a birthday from Calendar does not affect what is stored in Google Contacts."
+        },
+        {
+          "q": "How do I stop seeing birthdays without losing them?",
+          "a": "Uncheck the Birthdays calendar in the list to hide its manual and imported entries. Turning off Sync from Contacts instead removes synced Calendar entries and their changes;the underlying contact information remains in Contacts."
+        },
+        {
+          "q": "Can I fix a linked birthday directly in the Google Calendar app?",
+          "a": "Google documents this on Android, iPhone and iPad:editing a Contacts-linked birthday in Calendar also changes Google Contacts. Identify the intended account first."
+        }
+      ]
+    },
+    {
+      "path": "/google-calendar-birthdays-from-contacts/title",
+      "before": "Google Calendar birthdays: fix them in Contacts, not in the calendar",
+      "after": "Google Calendar birthdays: check the contact, manual entry and account behind a date"
+    },
+    {
+      "path": "/google-calendar-birthdays-from-contacts/sections/0/heading",
+      "before": "Where the dates come from",
+      "after": "Find the source before choosing an edit"
+    },
+    {
+      "path": "/google-calendar-birthdays-from-contacts/sections/0/body/0",
+      "before": "Google says birthday information syncs to your calendar when you add a person and include their birthday in Google Contacts. The Birthdays calendar is a view of that data.",
+      "after": "Google explicitly distinguishes manually created birthdays from birthdays imported from Contacts. For a Contacts-linked birthday, you can edit the birthday in Google Contacts or the Android Contacts app. Google also documents editing linked birthdays in the Google Calendar app on Android, iPhone and iPad;those edits also apply to Google Contacts. Do not assume Calendar is always a display-only destination."
+    },
+    {
+      "path": "/google-calendar-birthdays-from-contacts/sections/0/body/1",
+      "before": "So a wrong date is a contact problem. Google says to edit or remove the birthday in Google Contacts or the Contacts app for Android. It also notes that deleting a birthday from Calendar does not affect the information stored in Contacts.",
+      "after": "Deleting a birthday from Calendar does not change the stored birthday in Contacts. Editing a linked birthday and deleting its Calendar entry are therefore different operations. Compare the actual contact and account before deciding which result you need."
+    },
+    {
+      "path": "/google-calendar-birthdays-from-contacts/sections/2/body",
+      "before": [
+        "Google warns that turning off Sync from Contacts in calendar settings deletes all synced events in Calendar, which includes birthdays, important dates and any changes you made to those events. If you only want birthdays out of sight, uncheck the Birthdays calendar instead."
+      ],
+      "after": [
+        "Turning off Sync from Contacts is more than hiding the list. Google warns that it removes synced Calendar events, including birthdays, important dates and changes made to them. Contact information remains in Contacts. Do not toggle it merely to see whether duplicate-looking rows disappear.",
+        "For multiple Google accounts, Google documents Settings > Birthdays > Sync from Contacts, with a checkbox beside each account. Inspect which accounts contribute birthdays before changing anything. If you only want a temporary uncluttered view, unchecking the Birthdays calendar hides both manual and imported birthdays without using those account-sync removal controls."
+      ]
+    },
+    {
+      "path": "/google-calendar-birthdays-from-contacts/sections/3/body/0",
+      "before": "A fictional user sees a friend’s birthday on 4 March; it should be 3 April. They open Google Contacts, find the friend, correct the birthday and save. Deleting the calendar entry would not have changed the contact and would not have produced the right date.",
+      "after": "In this fictional example, a person’s contact birthday is 4March, but the user confirms the correct date is 3April. They first identify the Google account holding that contact. They can correct the linked birthday in Google Contacts, or use the supported mobile Calendar edit and check the resulting contact. Simply deleting the Calendar entry would not correct the source birthday."
+    },
+    {
+      "path": "/google-calendar-birthdays-from-contacts/sections/3/body/1",
+      "before": "The same friend appears twice on 3 April afterwards. The likely cause is two contact records with a birthday each, so the user checks Contacts for a duplicate person and merges or cleans it there. Google’s page does not describe a calendar-side duplicate fix, so this guide does not offer one.",
+      "after": "If two rows remain on 3April, the user checks which selected accounts supply Contacts birthdays and whether they had also created a manual birthday. Two contact records are only one possibility, not a diagnosis. They preserve both calendars and contacts while identifying the sources;they do not merge or delete contacts merely because two rows look alike."
+    },
+    {
+      "path": "/google-calendar-birthdays-from-contacts/sections/3/body/2",
+      "before": "Check: reopen the calendar on 3 April and confirm one entry with the right name.",
+      "after": "For a useful before-and-after record, note the selected Google accounts, the intended birthday and whether it is manual or Contacts-linked. Check both Calendar and the relevant contact after a supported linked edit. If choosing to remove an account’s synced Calendar entries, review the documented consequences first rather than assume the change is a reversible visual filter."
+    },
+    {
+      "path": "/google-calendar-events-from-gmail-visibility/comparison/heading",
+      "before": "Privacy of email events",
+      "after": "Gmail privacy labels and the checks they require"
+    },
+    {
+      "path": "/google-calendar-events-from-gmail-visibility/comparison/columns/1",
+      "before": "Who sees name and time (per Google)",
+      "after": "Google’s documented description"
+    },
+    {
+      "path": "/google-calendar-events-from-gmail-visibility/comparison/columns/2",
+      "before": "Good for",
+      "after": "Check before using"
+    },
+    {
+      "path": "/google-calendar-events-from-gmail-visibility/comparison/rows/0/cells/1",
+      "before": "Only you",
+      "after": "Only the user of this Google account"
+    },
+    {
+      "path": "/google-calendar-events-from-gmail-visibility/comparison/rows/0/cells/2",
+      "before": "Default; sensitive bookings",
+      "after": "Check device/account access;this does not hide events from someone signed into the same account"
+    },
+    {
+      "path": "/google-calendar-events-from-gmail-visibility/comparison/rows/1/cells/1",
+      "before": "You and people who can make changes to your calendar",
+      "after": "Includes the user and people with permitted calendar editing access"
+    },
+    {
+      "path": "/google-calendar-events-from-gmail-visibility/comparison/rows/1/cells/2",
+      "before": "An assistant or co-manager",
+      "after": "Not equivalent to user-only;verify the exact permission context"
+    },
+    {
+      "path": "/google-calendar-events-from-gmail-visibility/comparison/rows/2/cells/1",
+      "before": "Anyone with access to your calendar",
+      "after": "Gmail help describes name/time visibility to calendar viewers"
+    },
+    {
+      "path": "/google-calendar-events-from-gmail-visibility/comparison/rows/2/cells/2",
+      "before": "Travel a partner should see",
+      "after": "The full interaction with all viewer roles is not explicit;test a harmless recipient view before widening"
+    },
+    {
+      "path": "/google-calendar-events-from-gmail-visibility/comparison/rows/3/cells/0",
+      "before": "Public (single event)",
+      "after": "Public for one event"
+    },
+    {
+      "path": "/google-calendar-events-from-gmail-visibility/comparison/rows/3/cells/1",
+      "before": "Anyone who finds your public calendar",
+      "after": "Visible through a publicly shared calendar"
+    },
+    {
+      "path": "/google-calendar-events-from-gmail-visibility/comparison/rows/3/cells/2",
+      "before": "Rarely appropriate",
+      "after": "Review the actual public audience and sensitive event fields"
+    },
+    {
+      "path": "/google-calendar-events-from-gmail-visibility/practical/3",
+      "before": "Change individual sensitive events back to Private if you widen the default.",
+      "after": "Do not treat Private as Only me. Keep sensitive bookings under the intended user-only setting and verify old events after any global change."
+    },
+    {
+      "path": "/google-calendar-events-from-gmail-visibility/sources",
+      "before": [
+        {
+          "label": "Google: manage your events from Gmail",
+          "url": "https://support.google.com/calendar/answer/6084018?hl=en"
+        },
+        {
+          "label": "Google: manage the visibility of events from Gmail",
+          "url": "https://support.google.com/calendar/answer/15454771?hl=en"
+        }
+      ],
+      "after": [
+        {
+          "label": "Google: manage your events from Gmail",
+          "url": "https://support.google.com/calendar/answer/6084018?hl=en"
+        },
+        {
+          "label": "Google: manage the visibility of events from Gmail",
+          "url": "https://support.google.com/calendar/answer/15454771?hl=en"
+        },
+        {
+          "label": "Google: current calendar permission definitions",
+          "url": "https://support.google.com/calendar/answer/15716974?hl=en"
+        }
+      ]
+    },
+    {
+      "path": "/google-calendar-events-from-gmail-visibility/sections/1/body",
+      "before": [
+        "Google states that by default only you can find events from Gmail, even if you share your calendar. You can change this under Settings, Google Workspace smart features, Show events from Gmail, Privacy of email events, choosing Calendar default, Private or Only me, and then whether to apply it to new events or all events.",
+        "Google’s definitions: Calendar default shows the event name and time to anyone who can access your calendar; Private shows them to you and specific people who can make changes to your calendar; Only me keeps them to you. For a single event you can also open it, choose Edit event and set Default visibility, Public or Private; Google says Public exposes it to anyone who finds a publicly shared calendar."
+      ],
+      "after": [
+        "Google states that by default only you can find events from Gmail, even if you share your calendar. You can change this under Settings, Google Workspace smart features, Show events from Gmail, Privacy of email events, choosing Calendar default, Private or Only me, and then whether to apply it to new events or all events.",
+        "Google’s Gmail-specific help describes Calendar default as showing name and time to calendar viewers, and Private as including people allowed to edit. The generic calendar-permission documentation describes more detailed viewer/editor levels. These sources do not give a fully explicit matrix for every combination. Do not infer exactly what a particular free/busy viewer or restricted editor receives without checking a harmless example from that account.",
+        "Only me is different from Private. Private can still expose an event to permitted editors, while the Gmail help describes Only me as user-only. Anyone using your signed-in Google account on a device can still see its events;the setting is not a way to hide information from someone with access to that same account. A single Gmail-derived event also has documented Default visibility, Public and Private choices;review their actual audience before changing one."
+      ]
+    },
+    {
+      "path": "/google-calendar-events-from-gmail-visibility/sections/2/body/0",
+      "before": "A fictional user shares their primary calendar with a partner at See all event details and with a manager at free/busy. A train booking and an appointment confirmation arrive in Gmail and appear on the calendar.",
+      "after": "A fictional user shares a calendar with a partner at See event details and a manager at free/busy. A train reservation and a sensitive appointment are added from Gmail. The user checks that the global Gmail setting remains Only me instead of assuming either recipient can or cannot see a later widened setting."
+    },
+    {
+      "path": "/google-calendar-events-from-gmail-visibility/sections/2/body/1",
+      "before": "With Only me (Google’s default behaviour), neither person sees them. The user wants the partner to see travel, so they switch Privacy of email events to Calendar default and apply it to new events only. The appointment, which arrived earlier, stays private. Google’s definition of Calendar default says the name and time are visible to anyone who can access the calendar, so before choosing it the user also considers the manager, who has free/busy access, and is comfortable with a train time and title being seen.",
+      "after": "Before sharing travel through Calendar, the user inspects the documented per-event visibility options and verifies a harmless record with the intended recipient. They do not widen all future Gmail events merely to share one train journey. If the audience cannot be established confidently, they send the necessary travel details directly through an appropriate channel and leave sensitive bookings user-only."
+    },
+    {
+      "path": "/google-calendar-events-from-gmail-visibility/sections/2/body/2",
+      "before": "Check: ask the partner whether the next train booking appears, and confirm the earlier appointment still does not.",
+      "after": "Changing a global setting can apply to new events or all events, so read that choice explicitly. Verify the earlier sensitive appointment separately after any change. This example does not claim the free/busy manager sees a particular title, or that Private is equivalent to Only me."
+    },
+    {
+      "path": "/google-keep-reminders-moved-to-tasks/practical",
+      "before": [
+        "Open Google Tasks and the Calendar grid and look for “From Keep”.",
+        "Check the “Old Google Keep Reminders” list.",
+        "Give former location reminders a date and time.",
+        "Check repeating reminders with very long intervals.",
+        "On a work account, ask the administrator if nothing migrated."
+      ],
+      "after": [
+        "Check the actual account for From Keep markers rather than treating the old announcement date as proof of migration.",
+        "Open Google Tasks and the Calendar grid and look for “From Keep”.",
+        "Check the “Old Google Keep Reminders” list.",
+        "Give former location reminders a date and time.",
+        "Check repeating reminders with very long intervals.",
+        "On a work account, ask the administrator if nothing migrated.",
+        "For missing notifications, check Calendar or Tasks installation and notification permission;for a reminder title change, edit it in Tasks or Calendar, not only the Keep note."
+      ]
+    },
+    {
+      "path": "/google-keep-reminders-moved-to-tasks/lede",
+      "before": "If reminders you set on Keep notes now look different, they have probably become tasks. Google’s migration kept most of the data but changed a few behaviours that are easy to miss. Arte Soft, the developer of Cloud Calendars, summarises what Google documents.",
+      "after": "Google announced that Keep reminders would move to Tasks in the second half of 2025. Its help page still uses that dated future-tense wording, so it does not prove that every account has completed migration. Use the documented markers and behavior below to check your actual reminders. Arte Soft develops Cloud Calendars."
+    },
+    {
+      "path": "/google-keep-reminders-moved-to-tasks/sections/0/heading",
+      "before": "What Google says happened",
+      "after": "Check the account rather than assume the rollout state"
+    },
+    {
+      "path": "/google-keep-reminders-moved-to-tasks/sections/0/body/0",
+      "before": "Google’s page states that Keep reminders migrate to Google Tasks and that new reminders are saved as tasks; it dates the migration to the second half of 2025. Migrated reminders move with the same data and stay visible on the Keep note and in Tasks.",
+      "after": "Google’s page describes new Keep reminders being saved as Tasks and existing reminders moving with their data. It names the second half of 2025 as the migration period but still phrases that announcement in future tense. Treat the behaviors below as Google’s documented migration design, not a fresh measurement that every current account has finished it."
+    },
+    {
+      "path": "/google-keep-reminders-moved-to-tasks/sections/1/body",
+      "before": [
+        "Location-based reminders: Google says you can no longer create or receive them; existing location data can be reviewed in the task description. If you relied on “remind me when I get to the shop”, you now need a time instead.",
+        "Long titles are shortened. Repeating reminders are capped: Google says the maximum interval for repeating tasks in Calendar is 1,000 days, weeks, months or years, and longer intervals are adjusted down. Dates beyond the year 3000 are adjusted to 2900."
+      ],
+      "after": [
+        "Location-based reminders: Google says you can no longer create or receive them; existing location data can be reviewed in the task description. If you relied on “remind me when I get to the shop”, you now need a time instead.",
+        "Long titles are shortened. Repeating reminders are capped: Google says the maximum interval for repeating tasks in Calendar is 1,000 days, weeks, months or years, and longer intervals are adjusted down. Dates beyond the year 3000 are adjusted to 2900.",
+        "Notification and title changes deserve their own check. Google says reminder notifications no longer come from Keep;install Calendar or Tasks on the mobile device and allow its notifications. To rename the reminder, use Tasks or Calendar:changing only the Keep note’s title does not update the reminder title. The From Keep link can return you to the original note."
+      ]
+    },
+    {
+      "path": "/google-keep-reminders-moved-to-tasks/sections/2/body/0",
+      "before": "Google says non-repeating reminders older than one year go to a list called “Old Google Keep Reminders”. If an account had more than 100,000 tasks, the oldest reminders do not migrate. And for Workspace accounts where the Tasks service is turned off, data does not migrate; that is an administrator setting, not something you can fix yourself.",
+      "after": "Google gives a 100,000-task limit and says that if the number of Keep reminders exceeds that limit, the oldest reminders do not migrate. Non-repeating reminders older than a year go to Old Google Keep Reminders. For work or school accounts, the Tasks service must be enabled;Google also excludes reminders for suspended Workspace licenses. Check the actual account and ask the administrator rather than infer a migration result from a missing row."
+    },
+    {
+      "path": "/google-keep-reminders-moved-to-tasks/sections/3/body/0",
+      "before": "A fictional user had three Keep reminders: renew a passport (dated, one-off, two years old), water plants (repeating every 3 days) and buy stamps (location: post office).",
+      "after": "For an illustration conditional on migration, a user compares three Keep reminders:an old one-off passport reminder, a plant reminder every 3 days and a former post-office location reminder. They first look for From Keep and compare the original notes, without assuming the dated rollout notice proves what happened in their account."
+    },
+    {
+      "path": "/google-keep-reminders-moved-to-tasks/sections/3/body/1",
+      "before": "In Tasks, the passport reminder is in “Old Google Keep Reminders” because it is older than a year and does not repeat. The plant reminder repeats as before. The stamps reminder has no location trigger; its description shows the location, so the user gives it a date and time.",
+      "after": "The documented outcomes would put the non-repeating reminder older than a year in Old Google Keep Reminders, retain an ordinary three-day interval within the stated limit, and keep former location data in the task description without a location trigger. The user can add a time if a scheduled reminder fits the real need. They also check Calendar or Tasks notification permission and avoid renaming only the Keep note when the reminder title needs changing."
+    },
+    {
+      "path": "/google-tasks-repeating-task-complete-delete/sections/1/body",
+      "before": [
+        "Google says that when you complete it, the task is crossed out and the next instance appears in your task list on the date specified. The page does not say whether completing early or late moves the next date, so check the next occurrence after completing one."
+      ],
+      "after": [
+        "Google says that when you complete it, the task is crossed out and the next instance appears in your task list on the date specified. The page does not say whether completing early or late moves the next date, so check the next occurrence after completing one.",
+        "Google also says only a limited number of future recurring tasks appear on the Calendar grid at once;new ones become visible as time passes. A partial future list alone does not establish that the series has stopped."
+      ]
+    },
+    {
+      "path": "/google-tasks-repeating-task-complete-delete/sections/4/body/1",
+      "before": "Later they want the task on a shared list. Google says recurring tasks can’t be moved to other lists and shared tasks can’t repeat, so instead of moving it they keep it personal and add a calendar event for the household.",
+      "after": "Later they want to share the recurring responsibility with others. Google says shared tasks cannot repeat and a recurring task cannot move to another list. They keep the personal task and coordinate the household separately, for example with an appropriately shared calendar event. This is not a claim that every Tasks client has a general shared-list control."
+    },
+    {
+      "path": "/google-calendar-email-notifications-filter/comparison/rows/3/cells/2",
+      "before": "Label; review daily",
+      "after": "Keep in the inbox or another deliberately reviewed location;the worked example keeps these visible"
+    },
+    {
+      "path": "/google-calendar-email-notifications-filter/sections/0/body",
+      "before": [
+        "On a computer, open Settings and, under Settings for my calendars, click the calendar. Under Other notifications, set each category, such as Changed events or Event responses, to Email or None. Event and all-day event notifications are separate: there you choose a notification or an email for reminders.",
+        "Because these are per calendar, a shared team calendar can stay quiet while your primary calendar still emails you about responses."
+      ],
+      "after": [
+        "On a computer, open Settings and, under Settings for my calendars, click the calendar. Under Other notifications, set each category, such as Changed events or Event responses, to Email or None. Event and all-day event notifications are separate: there you choose a notification or an email for reminders.",
+        "Because these are per calendar, a shared team calendar can stay quiet while your primary calendar still emails you about responses.",
+        "Google says notification settings are personal to your account. Changing your emails for a team calendar does not change every teammate’s reminders or inbox settings."
+      ]
+    },
+    {
+      "path": "/google-appointment-cancel-booked-slot/comparison/rows/0/cells/2",
+      "before": "Guest emailed; slot shown as available",
+      "after": "Guest emailed and time released from the cancelled booking;other availability rules still apply"
+    },
+    {
+      "path": "/google-appointment-cancel-booked-slot/comparison/rows/3/cells/1",
+      "before": "Add a Busy hold first",
+      "after": "Use a full-duration Busy hold on a reviewed calendar with checks enabled, or supported adjusted availability"
+    },
+    {
+      "path": "/google-appointment-cancel-booked-slot/comparison/rows/3/cells/2",
+      "before": "Slot stays hidden while checks are on",
+      "after": "Verify visitor-side output;other settings and refresh can affect what appears"
+    },
+    {
+      "path": "/google-appointment-cancel-booked-slot/faq/0/a",
+      "before": "Yes. Google says the cancelled time appears available on your booking page.",
+      "after": "Google says cancelled appointment time returns to the booking page’s available inventory. It can still be unavailable because of enabled conflict checks, adjusted availability, notice limits or other schedule rules. Check the actual visitor page rather than assume every cancelled time is bookable."
+    },
+    {
+      "path": "/google-appointment-cancel-booked-slot/sources",
+      "before": [
+        {
+          "label": "Google: cancel appointments on your calendar",
+          "url": "https://support.google.com/calendar/answer/10737245?hl=en"
+        },
+        {
+          "label": "Google: edit your appointment schedule",
+          "url": "https://support.google.com/calendar/answer/10730791?hl=en"
+        }
+      ],
+      "after": [
+        {
+          "label": "Google: cancel appointments on your calendar",
+          "url": "https://support.google.com/calendar/answer/10737245?hl=en"
+        },
+        {
+          "label": "Google: edit your appointment schedule",
+          "url": "https://support.google.com/calendar/answer/10730791?hl=en"
+        },
+        {
+          "label": "Google: selected-calendar Busy conflict checks",
+          "url": "https://support.google.com/calendar/answer/16287054?hl=en"
+        },
+        {
+          "label": "Google: adjusted availability and scheduling windows",
+          "url": "https://support.google.com/calendar/answer/11423292?hl=en"
+        }
+      ]
+    },
+    {
+      "path": "/google-appointment-cancel-booked-slot/sections/0/body/1",
+      "before": "If you do not want the slot rebooked, block it before cancelling: add a Busy event on a calendar the schedule checks, or use adjusted availability for that date.",
+      "after": "If the time must not be offered again, use a supported availability change. With Check calendars for availability enabled, a Busy hold on a calendar selected for conflict checks can protect the entire appointment interval. Adjusted availability is another documented date-specific control. Do not assume a hold on an unchecked calendar or a zero-duration entry protects the slot;verify the booking page."
+    },
+    {
+      "path": "/google-appointment-cancel-booked-slot/sections/4/body/0",
+      "before": "A fictional consultant must cancel a 10:00 Friday booking and does not want it rebooked. They first add a Busy event “Hold” at 10:00 on their primary calendar, which the schedule checks, then cancel the appointment. The client gets Google’s cancellation email; the consultant also sends a personal note with alternative times.",
+      "after": "In this fictional example, the consultant must cancel a 30-minute Friday booking at 10:00 and keep 10:00–10:30 unavailable. They confirm that availability checking is enabled and the primary calendar is selected, then add a Busy hold covering that full interval before cancelling through the booking workflow. They check that the client receives the supported cancellation notice and send appropriate alternative times separately."
+    },
+    {
+      "path": "/google-calendar-android-app-not-syncing/comparison/rows/0/cells/1",
+      "before": "None",
+      "after": "Non-deletion check;does not clear app storage"
+    },
+    {
+      "path": "/google-calendar-android-app-not-syncing/comparison/rows/1/cells/1",
+      "before": "None",
+      "after": "Non-deletion check;does not clear app storage"
+    },
+    {
+      "path": "/google-calendar-android-app-not-syncing/comparison/rows/2/cells/1",
+      "before": "None",
+      "after": "Non-deletion check;does not clear app storage"
+    },
+    {
+      "path": "/google-calendar-android-app-not-syncing/comparison/rows/3/cells/0",
+      "before": "Android account sync and per-calendar Sync",
+      "after": "Android account sync;per-calendar Sync where offered for a created calendar"
+    },
+    {
+      "path": "/google-calendar-android-app-not-syncing/comparison/rows/3/cells/1",
+      "before": "None",
+      "after": "Non-deletion check;does not clear app storage"
+    },
+    {
+      "path": "/google-calendar-android-app-not-syncing/comparison/rows/4/cells/1",
+      "before": "None",
+      "after": "Review storage carefully;do not erase unsynced Calendar data"
+    },
+    {
+      "path": "/google-calendar-android-app-not-syncing/comparison/rows/5/cells/0",
+      "before": "Any step Google warns may lose data",
+      "after": "Last resort:Clear Calendar app storage/data"
+    },
+    {
+      "path": "/google-calendar-android-app-not-syncing/practical/3",
+      "before": "Turn on Android account sync for Calendar and the calendar’s own Sync.",
+      "after": "Enable Android account Calendar sync and, for a calendar you created, its per-calendar Sync control if available;the primary calendar does not have that same switch."
+    },
+    {
+      "path": "/google-calendar-android-app-not-syncing/lede",
+      "before": "Most Android sync problems are one of a handful of settings. The order matters because Google warns that some fixes can lose events that never reached its servers. Arte Soft, the developer of Cloud Calendars, laid out Google’s checks from safest to riskiest.",
+      "after": "Google’s Android Calendar troubleshooting separates connection and visibility checks from the last-resort option to clear app data. Preserve any unsynced information before a destructive step, and identify the exact Google Calendar app and account first. These are Google’s Android instructions, not Cloud Calendars settings. Arte Soft develops Cloud Calendars."
+    },
+    {
+      "path": "/google-calendar-android-app-not-syncing/faq/1/a",
+      "before": "Google warns troubleshooting may lose unsynced data; anything not on the web version will be lost. Try the safe checks first.",
+      "after": "Google reserves clearing Calendar app data for after other fixes fail and warns it can lose unsynced information absent from the web calendar. First use the non-deletion checks and preserve any unsynced details. Checking a visibility box is not the same operation as clearing app storage."
+    },
+    {
+      "path": "/google-calendar-android-app-not-syncing/sections/0/body/0",
+      "before": "Open Google Calendar on a computer with the same account. Google warns that its troubleshooting steps may cause you to lose some unsynced data, and that any event information you can’t find on Google Calendar on your computer will be lost. Note any event on the phone that is missing on the web, and copy its details before going further.",
+      "after": "Compare the same account in Google Calendar on a computer and note any event present only on the phone. Google’s explicit data-loss warning is under Clear your Calendar app data:that action can erase unsynced event information absent from the web calendar. It is not a statement that merely checking connectivity or visibility deletes events. Preserve unsynced details before considering storage clearing, which Google reserves for when other steps fail."
+    },
+    {
+      "path": "/google-calendar-android-app-not-syncing/sections/2/body/0",
+      "before": "In Android settings, make sure account sync is on for Calendar. In the Calendar app’s settings for the specific calendar, make sure Sync is on at the top of the page. Both must be on; one does not imply the other.",
+      "after": "In Android’s account settings, check that Calendar account sync is enabled. Inside Google Calendar, the separate Sync switch is documented for calendars the user created, not the primary calendar, which normally appears as Events. Do not assume every primary or received calendar has an identical per-calendar switch. Check the setting only where the actual calendar supports it."
+    },
+    {
+      "path": "/google-calendar-android-app-not-syncing/sections/4/body/0",
+      "before": "A fictional user created “Car service, Thu 08:30” on their phone, but their partner cannot see it on the shared calendar. On a computer, the event is not there. The user writes down the details first.",
+      "after": "A fictional user created Car service on Thursday at 08:30 in Home maintenance, a secondary Google calendar they created and shared with a partner. The event is absent from the web calendar, so they preserve its details before considering any destructive operation."
+    },
+    {
+      "path": "/google-calendar-android-app-not-syncing/sections/4/body/1",
+      "before": "They check: Wi-Fi on; app up to date; the shared calendar is ticked; the event was saved to “Family”, which belongs to their Google account. Android account sync for Calendar is on, but Sync for the Family calendar in the app is off. Turning it on and tapping Refresh uploads the event; it appears on the web a moment later.",
+      "after": "They check connectivity, the account, the selected calendar and account-level Calendar sync. For this created secondary calendar, they also find its Sync setting off. They enable it, refresh and allow time for the event to appear, as Google warns synchronization can take time. A possible successful result is the same appointment appearing on the web and then for the partner;it is verified rather than promised immediately."
+    },
+    {
+      "path": "/google-family-calendar-membership/comparison/rows/2/cells/2",
+      "before": "Share by name if they still need it",
+      "after": "If providing a new named grant, inspect and choose its permission;do not assume read-only"
+    },
+    {
+      "path": "/google-family-calendar-membership/comparison/rows/3/cells/2",
+      "before": "Owner keeps or deletes it",
+      "after": "Owner inspects remaining ownership/audience before deciding to retain or delete"
+    },
+    {
+      "path": "/google-family-calendar-membership/comparison/rows/4/cells/1",
+      "before": "Guardians emailed",
+      "after": "Permission holders with Make changes and manage sharing are emailed"
+    },
+    {
+      "path": "/google-family-calendar-membership/comparison/rows/4/cells/2",
+      "before": "Review sharing",
+      "after": "Review actual recipients and changes;guardian status alone is not the email rule"
+    },
+    {
+      "path": "/google-family-calendar-membership/practical/2",
+      "before": "Share by name with anyone leaving the group who still needs dates.",
+      "after": "If sharing again with a former member, inspect the named grant and its permission;non-family sharing defaults can permit editing."
+    },
+    {
+      "path": "/google-family-calendar-membership/practical/3",
+      "before": "After deleting a family group, decide what to do with the calendar.",
+      "after": "After deleting a family group, inspect the remaining calendar’s owner and audience before retaining or deleting it."
+    },
+    {
+      "path": "/google-family-calendar-membership/sections/2/body/1",
+      "before": "For under-13 members, Google says guardians receive emails if the child shares the family calendar or makes it public.",
+      "after": "Google says anyone with Make changes and manage sharing permission receives an email when a user under 13 shares the family calendar, makes it public or changes member permissions. That audience is permission-based;do not assume it is exactly the guardians or that every guardian necessarily receives the notice."
+    },
+    {
+      "path": "/google-family-calendar-membership/sections/3/body/0",
+      "before": "A fictional family of four uses Family for school runs and holidays. The eldest moves out and leaves the family group, losing access. They still want holiday dates, so a parent shares the calendar with them by name at See all event details. Because any member can manage sharing, the parents agree that only they will change who has access.",
+      "after": "A fictional family of four uses Family for school runs and holidays. The eldest leaves the family group and loses that membership-based access. If the family wants to provide selected continuing access, they inspect the named sharing grant deliberately. Google warns non-family members can edit by default, so a parent should choose and verify the intended view-only permission, not assume that sending another invitation is automatically read-only. An agreement that only parents change sharing is a household rule;it does not technically remove other members’ existing capabilities."
+    },
+    {
+      "path": "/google-family-calendar-membership/sections/3/body/1",
+      "before": "Later the family group is dissolved. The calendar remains, so the owner decides whether to keep it as an ordinary shared calendar or delete it.",
+      "after": "If the family group is later deleted, the calendar and events are not automatically deleted according to Google. The owner then inspects the remaining ownership and recipients before deciding whether to retain or delete it. Group deletion is not proof the remaining calendar has exactly the audience the family wants."
+    },
+    {
+      "path": "/google-calendar-print-date-range/comparison/rows/3/cells/1",
+      "before": "Print descriptions, Print your response",
+      "after": "Schedule view > Print > Print descriptions / Print your response"
+    },
+    {
+      "path": "/google-calendar-print-date-range/practical/3",
+      "before": "Set font, orientation, weekends and colour.",
+      "after": "Set supported layout options;for descriptions and response details, use the documented Schedule-view print workflow."
+    },
+    {
+      "path": "/google-calendar-print-date-range/sections/1/body",
+      "before": [
+        "Click Settings menu, then Print. On the preview page you can change font size, orientation (Landscape or Portrait), deselect Show weekends and choose a colour style. You can also select Print descriptions and Print your response. Google notes that when space is available, event locations or rooms are shown too.",
+        "Leave descriptions off for anything handed to others; notes often hold phone numbers, links or private context."
+      ],
+      "after": [
+        "Click Settings menu > Print to inspect the preview. Google documents font, orientation, weekends and colour options. For the specific Print descriptions and Print your response controls, its instructions first switch the view to Schedule, then open Print. Do not assume those detail controls appear in every grid view. Event locations or rooms may also appear when space permits.",
+        "Leave descriptions off for anything handed to others; notes often hold phone numbers, links or private context.",
+        "Changing font size can improve readability, but Google says it does not change the number of days on the page. Choose the view and period separately, then inspect the actual preview rather than infer a new date range from larger text."
+      ]
+    },
+    {
+      "path": "/google-calendar-print-date-range/sections/2/body/1",
+      "before": "For a babysitter, they print the coming Week view with Print descriptions on, so pickup notes appear, but only after checking those descriptions contain nothing beyond what the babysitter needs.",
+      "after": "For a babysitter who needs pickup notes, the parent switches to Schedule, opens Print and chooses Print descriptions only after reviewing the notes. They verify the intended dates in that preview rather than assume a Week grid has the same controls. The printed details are restricted to what the babysitter actually needs."
+    }
+  ],
+  "publicationApproved": false
+}

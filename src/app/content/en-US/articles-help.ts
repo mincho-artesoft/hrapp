@@ -109,7 +109,17 @@ export const HELP_EN_US: Readonly<Record<string, LocalisedArticle>> = {
     "the-secret-address-of-a-google-calendar",
     "keeping-track-of-who-replied"
   ],
-  "updated": "2026-10-22"
+  "updated": "2026-10-22",
+  "articleLinks": [
+    {
+      "slug": "iphone-calendar-add-only-full-access",
+      "label": "Calendar permission levels"
+    },
+    {
+      "slug": "google-calendar-report-assigned-task-spam",
+      "label": "Unwanted assigned Google task? Identify the shared source before reporting it"
+    }
+  ]
 },
 
   "change-calendar-color-iphone": {
@@ -220,6 +230,12 @@ export const HELP_EN_US: Readonly<Record<string, LocalisedArticle>> = {
     "work-and-personal-without-two-apps",
     "event-saved-to-wrong-calendar",
     "when-two-calendars-disagree"
+  ],
+  "articleLinks": [
+    {
+      "slug": "outlook-calendar-color-categories",
+      "label": "Outlook colour categories"
+    }
   ]
 },
 
@@ -324,6 +340,12 @@ export const HELP_EN_US: Readonly<Record<string, LocalisedArticle>> = {
     "google-calendars-that-never-reach-your-iphone",
     "calendar-export-ics-pdf-and-backup",
     "why-a-shared-calendar-does-not-appear"
+  ],
+  "articleLinks": [
+    {
+      "slug": "outlook-recover-deleted-calendar-items",
+      "label": "Recover deleted Outlook events"
+    }
   ]
 },
 
@@ -427,6 +449,16 @@ export const HELP_EN_US: Readonly<Record<string, LocalisedArticle>> = {
     "the-secret-address-of-a-google-calendar",
     "when-two-calendars-disagree",
     "unwanted-calendar-events-iphone"
+  ],
+  "articleLinks": [
+    {
+      "slug": "icloud-delete-calendar-every-device",
+      "label": "Delete an iCloud calendar deliberately"
+    },
+    {
+      "slug": "google-calendar-hide-unsubscribe-or-delete",
+      "label": "Hide, unsubscribe or delete"
+    }
   ]
 },
 
@@ -519,100 +551,136 @@ export const HELP_EN_US: Readonly<Record<string, LocalisedArticle>> = {
     "icloud-google-and-outlook-in-one-view",
     "what-calendar-sync-actually-does",
     "calendar-export-ics-pdf-and-backup"
+  ],
+  "articleLinks": [
+    {
+      "slug": "mac-calendar-subscription-auto-refresh",
+      "label": "Refresh a subscribed calendar"
+    },
+    {
+      "slug": "mac-calendar-subscription-icloud-on-my-mac",
+      "label": "Choose where a subscription lives"
+    },
+    {
+      "slug": "mac-calendar-caldav-delegation-allow-write",
+      "label": "CalDAV account delegation on Mac"
+    }
   ]
 },
   "calendar-notifications-missing-silent-or-duplicated": {
-    "updated": "2026-10-21",
-    "title": "Calendar notifications on iPhone: missing, silent or duplicated?",
-    "short": "Troubleshoot calendar notifications",
-    "description": "Separate event alerts, Cloud Calendars settings and iPhone delivery controls. Diagnose absent, silent or duplicate reminders without deleting calendar data.",
-    "lede": "Start with what actually happened: was the event missing, was its notification absent, did it appear without sound, or did two apps alert you? Each points to a different check. This guide is published by Arte Soft, the developer of Cloud Calendars.",
-    "commonBelief": "If an event appears in the calendar, every alert and notification permission must already be configured.",
-    "sections": [
-      {
-        "heading": "First choose the right branch",
-        "body": [
-          "If the event itself is absent, check its owning account and selected calendar before changing sound settings. An alert cannot establish whether the correct event has reached the app. Use the calendar-sync guide for that separate problem.",
-          "If the event is visible but no notification appears, check the saved alert and both notification controls below. If a notification appears silently, concentrate on iPhone delivery and sound settings. If you receive more than one, identify each sending app and each configured alert before removing anything."
-        ]
-      },
-      {
-        "heading": "No notification: inspect the event and app controls",
-        "body": [
-          "Open the event and inspect its alert time. The Cloud Calendars event editor has Alert and, when applicable, Second Alert controls, including None and choices before the event. A second alert can be intentional. Check the saved event again after an edit, especially when a provider or shared-calendar permission limits what you can change.",
-          "In Cloud Calendars settings, look for Event Notifications. The settings also separate invitation and weather notifications; enabling one is not proof that ordinary event reminders are enabled. Check both the app’s Event Notifications preference and iOS notification permission.",
-          "Calendar selection also matters: the current scheduling path uses alarms from selected calendars. Check that the relevant calendar is selected. Do not assume hiding a calendar changes only its appearance in this app, and do not delete events to stop reminders."
-        ]
-      },
-      {
-        "heading": "A silent or delayed alert: check iPhone delivery",
-        "body": [
-          "In the iPhone Settings app, open Notifications and choose Cloud Calendars. Review Allow Notifications, the available alert locations and sound controls. Check whether Scheduled Summary or an active Focus is changing delivery. These are Apple’s system settings, not the Alert menu inside an event. Labels can vary with iOS version.",
-          "A banner seen without sound is a different observation from no notification anywhere. Note whether it appeared on the Lock Screen or in Notification Center, whether the phone was in use, and which Focus was active. Change one relevant setting at a time so the next result tells you something. A Live Activity countdown is another surface; seeing it does not prove an audible reminder will arrive."
-        ]
-      },
-      {
-        "heading": "Two alerts: identify the senders before changing the event",
-        "body": [
-          "Read the app name on each notification. Apple Calendar, Google Calendar and Cloud Calendars can be separate notification sources even when they display related events. Two notifications are not enough evidence that two event records exist. Also compare the alert times: a reminder the day before and another near the start may match the saved alert choices.",
-          "Google’s notification guide explains that its settings are personal to the account and that event-specific choices can differ from calendar defaults. Its instructions apply to Google Calendar, not to Cloud Calendars settings. Inspect the relevant sender rather than assuming one app’s switch controls every other app.",
-          "Choose which app you want to notify you, then adjust only the relevant reminder or notification preference. If two actual event records remain, compare their calendars and ownership using the duplicate-event guide. Do not cancel a real meeting just to silence an extra alert."
-        ]
-      },
-      {
-        "heading": "Use one disposable event to narrow the problem",
-        "body": [
-          "Create a clearly named test appointment in a writable calendar you own. Set its start far enough ahead that the chosen alert time is still in the future. Confirm the calendar is selected, the saved alert is present, and both notification controls are enabled. Record the expected alert time and which app should send it.",
-          "Observe whether a notification appears and whether it makes sound; those are separate results. Repeat only after changing one suspected setting. Use an ordinary test event without attendees, not an important meeting or a recurring series. Keep the result with your app and iOS versions so you can compare later."
-        ]
-      },
-      {
-        "heading": "If the result is still inconsistent",
-        "body": [
-          "The app schedules a limited set of upcoming alarms; do not rely on an unlimited queue of distant reminders. Check the controls in your installed version and keep a record of inconsistent delivery. Report the app and iOS versions, calendar type, saved alert offset, expected time and observed result.",
-          "Keep private event titles, attendee addresses and calendar subscription links out of a public report. Reinstalling, clearing local storage or removing accounts is not the first diagnostic step. Preserve the event and account arrangement while support investigates."
-        ]
-      }
-    ],
-    "claims": {},
-    "practical": [
-      "Classify the failure: missing event, absent notification, silent delivery or duplicate alerts.",
-      "Check the saved alert and selected calendar.",
-      "Check Cloud Calendars Event Notifications separately from iPhone notification permission.",
-      "For duplicates, compare sending apps and configured alert times.",
-      "Use one disposable future event and record the result without changing real invitations."
-    ],
-    "faq": [
-      {
-        "q": "Does turning on weather notifications enable event reminders?",
-        "a": "No. The app settings separate event, invitation and weather notifications. Check Event Notifications and iOS permission for ordinary event alarms."
-      },
-      {
-        "q": "Should I delete one event when two alerts arrive?",
-        "a": "First identify the sending apps and alert times. Multiple notifications can come from separate apps or multiple alerts on one event. Deletion is not a safe way to diagnose that."
-      },
-      {
-        "q": "Does an alert setting guarantee delivery?",
-        "a": "No. It is one part of the chain. App preferences, system permission and delivery settings also matter, so check the result on your device."
-      }
-    ],
-    "sourcesHeading": "Sources and notification settings",
-    "sources": [
-      {
-        "label": "Apple: Change notification settings on iPhone",
-        "url": "https://support.apple.com/guide/iphone/change-notification-settings-iph7c3d96bab/ios"
-      },
-      {
-        "label": "Google: Change Google Calendar notifications on iPhone and iPad",
-        "url": "https://support.google.com/calendar/answer/37242?hl=en&co=GENIE.Platform%3DiOS"
-      }
-    ],
-    "seeAlso": [
+  "updated": "2026-10-21",
+  "title": "Calendar notifications on iPhone: missing, silent or duplicated?",
+  "short": "Troubleshoot calendar notifications",
+  "description": "Separate event alerts, Cloud Calendars settings and iPhone delivery controls. Diagnose absent, silent or duplicate reminders without deleting calendar data.",
+  "lede": "Start with what actually happened: was the event missing, was its notification absent, did it appear without sound, or did two apps alert you? Each points to a different check. This guide is published by Arte Soft, the developer of Cloud Calendars.",
+  "commonBelief": "If an event appears in the calendar, every alert and notification permission must already be configured.",
+  "sections": [
+    {
+      "heading": "First choose the right branch",
+      "body": [
+        "If the event itself is absent, check its owning account and selected calendar before changing sound settings. An alert cannot establish whether the correct event has reached the app. Use the calendar-sync guide for that separate problem.",
+        "If the event is visible but no notification appears, check the saved alert and both notification controls below. If a notification appears silently, concentrate on iPhone delivery and sound settings. If you receive more than one, identify each sending app and each configured alert before removing anything."
+      ]
+    },
+    {
+      "heading": "No notification: inspect the event and app controls",
+      "body": [
+        "Open the event and inspect its alert time. The Cloud Calendars event editor has Alert and, when applicable, Second Alert controls, including None and choices before the event. A second alert can be intentional. Check the saved event again after an edit, especially when a provider or shared-calendar permission limits what you can change.",
+        "In Cloud Calendars settings, look for Event Notifications. The settings also separate invitation and weather notifications; enabling one is not proof that ordinary event reminders are enabled. Check both the app’s Event Notifications preference and iOS notification permission.",
+        "Calendar selection also matters: the current scheduling path uses alarms from selected calendars. Check that the relevant calendar is selected. Do not assume hiding a calendar changes only its appearance in this app, and do not delete events to stop reminders."
+      ]
+    },
+    {
+      "heading": "A silent or delayed alert: check iPhone delivery",
+      "body": [
+        "In the iPhone Settings app, open Notifications and choose Cloud Calendars. Review Allow Notifications, the available alert locations and sound controls. Check whether Scheduled Summary or an active Focus is changing delivery. These are Apple’s system settings, not the Alert menu inside an event. Labels can vary with iOS version.",
+        "A banner seen without sound is a different observation from no notification anywhere. Note whether it appeared on the Lock Screen or in Notification Center, whether the phone was in use, and which Focus was active. Change one relevant setting at a time so the next result tells you something. A Live Activity countdown is another surface; seeing it does not prove an audible reminder will arrive."
+      ]
+    },
+    {
+      "heading": "Two alerts: identify the senders before changing the event",
+      "body": [
+        "Read the app name on each notification. Apple Calendar, Google Calendar and Cloud Calendars can be separate notification sources even when they display related events. Two notifications are not enough evidence that two event records exist. Also compare the alert times: a reminder the day before and another near the start may match the saved alert choices.",
+        "Google’s notification guide explains that its settings are personal to the account and that event-specific choices can differ from calendar defaults. Its instructions apply to Google Calendar, not to Cloud Calendars settings. Inspect the relevant sender rather than assuming one app’s switch controls every other app.",
+        "Choose which app you want to notify you, then adjust only the relevant reminder or notification preference. If two actual event records remain, compare their calendars and ownership using the duplicate-event guide. Do not cancel a real meeting just to silence an extra alert."
+      ]
+    },
+    {
+      "heading": "Use one disposable event to narrow the problem",
+      "body": [
+        "Create a clearly named test appointment in a writable calendar you own. Set its start far enough ahead that the chosen alert time is still in the future. Confirm the calendar is selected, the saved alert is present, and both notification controls are enabled. Record the expected alert time and which app should send it.",
+        "Observe whether a notification appears and whether it makes sound; those are separate results. Repeat only after changing one suspected setting. Use an ordinary test event without attendees, not an important meeting or a recurring series. Keep the result with your app and iOS versions so you can compare later."
+      ]
+    },
+    {
+      "heading": "If the result is still inconsistent",
+      "body": [
+        "The app schedules a limited set of upcoming alarms; do not rely on an unlimited queue of distant reminders. Check the controls in your installed version and keep a record of inconsistent delivery. Report the app and iOS versions, calendar type, saved alert offset, expected time and observed result.",
+        "Keep private event titles, attendee addresses and calendar subscription links out of a public report. Reinstalling, clearing local storage or removing accounts is not the first diagnostic step. Preserve the event and account arrangement while support investigates."
+      ]
+    }
+  ],
+  "claims": {},
+  "practical": [
+    "Classify the failure: missing event, absent notification, silent delivery or duplicate alerts.",
+    "Check the saved alert and selected calendar.",
+    "Check Cloud Calendars Event Notifications separately from iPhone notification permission.",
+    "For duplicates, compare sending apps and configured alert times.",
+    "Use one disposable future event and record the result without changing real invitations."
+  ],
+  "faq": [
+    {
+      "q": "Does turning on weather notifications enable event reminders?",
+      "a": "No. The app settings separate event, invitation and weather notifications. Check Event Notifications and iOS permission for ordinary event alarms."
+    },
+    {
+      "q": "Should I delete one event when two alerts arrive?",
+      "a": "First identify the sending apps and alert times. Multiple notifications can come from separate apps or multiple alerts on one event. Deletion is not a safe way to diagnose that."
+    },
+    {
+      "q": "Does an alert setting guarantee delivery?",
+      "a": "No. It is one part of the chain. App preferences, system permission and delivery settings also matter, so check the result on your device."
+    }
+  ],
+  "sourcesHeading": "Sources and notification settings",
+  "sources": [
+    {
+      "label": "Apple: Change notification settings on iPhone",
+      "url": "https://support.apple.com/guide/iphone/change-notification-settings-iph7c3d96bab/ios"
+    },
+    {
+      "label": "Google: Change Google Calendar notifications on iPhone and iPad",
+      "url": "https://support.google.com/calendar/answer/37242?hl=en&co=GENIE.Platform%3DiOS"
+    }
+  ],
+  "seeAlso": [
     "iphone-calendar-tasks-reminders-versus-event-alerts",
-      "what-calendar-sync-actually-does",
-      "when-two-calendars-disagree"
-    ]
-  },
+    "what-calendar-sync-actually-does",
+    "when-two-calendars-disagree"
+  ],
+  "articleLinks": [
+    {
+      "slug": "icalendar-valarm-relative-absolute-trigger",
+      "label": "Read an alarm trigger"
+    },
+    {
+      "slug": "icloud-shared-calendar-update-emails",
+      "label": "Shared-calendar update emails"
+    },
+    {
+      "slug": "mac-calendar-ignore-alerts-one-calendar",
+      "label": "Ignore alerts for one calendar"
+    },
+    {
+      "slug": "mac-calendar-custom-alert-email-open-file",
+      "label": "Choose a custom alert action"
+    },
+    {
+      "slug": "google-calendar-email-notifications-filter",
+      "label": "Google Calendar email noise"
+    }
+  ]
+},
   "find-old-calendar-events-by-account-date-and-title": {
   "updated": "2026-10-21",
   "title": "Find an old calendar event: check the account, dates and search fields",
@@ -705,10 +773,16 @@ export const HELP_EN_US: Readonly<Record<string, LocalisedArticle>> = {
     "a-list-for-people-who-dislike-grids",
     "when-two-calendars-disagree",
     "recover-deleted-calendar-events-iphone"
+  ],
+  "articleLinks": [
+    {
+      "slug": "icloud-calendar-hide-past-events",
+      "label": "Hidden past iCloud events"
+    }
   ]
 },
   "calendar-export-ics-pdf-and-backup": {
-  "updated": "2026-10-22",
+  "updated": "2026-10-23",
   "title": "Calendar export on iPhone: ICS, CSV, PDF and subscriptions",
   "short": "Choose a calendar export format",
   "description": "Choose calendar data, spreadsheet rows, a printable schedule or a subscription. Use documented provider or Mac export routes and check what transfers.",
@@ -778,8 +852,7 @@ export const HELP_EN_US: Readonly<Record<string, LocalisedArticle>> = {
     {
       "heading": "For Google, distinguish a copy from an ownership handoff",
       "body": [
-        "Exporting and importing event data creates a copy; it does not transfer ownership of the original Google calendar. If another person should take responsibility for an existing calendar, check Google’s ownership-transfer instructions on a computer. You must be its current owner, and a primary calendar cannot be transferred. For a work or school calendar, the new owner must belong to the same organisation.",
-        "Sending the transfer email does not complete the handoff. Google gives the recipient 60 days to accept, and you remain the owner until they do. Confirm acceptance before treating the responsibility as transferred. This is a Google calendar-ownership process, not a Cloud Calendars transfer control or a way to move ownership between providers. If you instead need copied events in another service, use the import checks above; do not assume that ownership, invitations or meeting features transfer with the file."
+        "An export/import is a data copy, not a transfer of the original Google calendar. If responsibility for an existing secondary calendar must pass to another person, complete Google’s ownership-transfer workflow and verify acceptance before retiring the owning account. The dedicated handoff guide below supplies the state table, access checks and current provider requirements."
       ]
     }
   ],
@@ -856,6 +929,24 @@ export const HELP_EN_US: Readonly<Record<string, LocalisedArticle>> = {
     "the-secret-address-of-a-google-calendar",
     "time-zones-and-the-flight-you-booked",
     "recover-deleted-calendar-events-iphone"
+  ],
+  "articleLinks": [
+    {
+      "slug": "google-calendar-ownership-transfer-pending-acceptance",
+      "label": "Complete a pending Google ownership handoff"
+    },
+    {
+      "slug": "google-calendar-print-date-range",
+      "label": "Print Google Calendar"
+    },
+    {
+      "slug": "outlook-subscribe-or-import-ics-calendar",
+      "label": "Subscribe or import in Outlook"
+    },
+    {
+      "slug": "outlook-print-calendar-styles",
+      "label": "Print an Outlook calendar"
+    }
   ]
 },
   "event-saved-to-wrong-calendar": {
@@ -950,100 +1041,116 @@ export const HELP_EN_US: Readonly<Record<string, LocalisedArticle>> = {
     "what-calendar-sync-actually-does",
     "recurring-events-without-the-mess",
     "change-calendar-color-iphone"
+  ],
+  "articleLinks": [
+    {
+      "slug": "icloud-calendar-invitation-sender-email",
+      "label": "Invitation sender identity"
+    },
+    {
+      "slug": "google-calendar-change-event-owner-before-handover",
+      "label": "Hand a meeting to a new owner"
+    }
   ]
 },
   "family-pickup-calendar-handoff": {
-    "updated": "2026-10-21",
-    "title": "A family pickup plan with a clear handoff",
-    "short": "A family pickup plan with a clear handoff",
-    "description": "A worked family pickup plan: agree the driver, check shared access, record the meeting point and confirm one-off changes.",
-    "lede": "This guide is published by Arte Soft, the developer of Cloud Calendars. A lesson on the calendar says where someone needs to be. It may not say who is taking them home. A useful handoff plan records that decision explicitly.",
-    "sections": [
-      {
-        "heading": "Separate the activity from the responsibility",
-        "body": [
-          "Imagine a Tuesday swimming lesson from 16:30 to 17:15. Maya handles drop-off and Leo handles collection. An event called Swimming leaves the driver, entrance and departure time unclear. Keep the lesson at its real time. Record the agreed responsibility in its title or notes, or create a separate timed pickup commitment when that is clearer.",
-          "This is a suggested planning convention. It does not depend on an automatic assignment feature, and putting a name in a title does not itself notify or assign that person."
-        ]
-      },
-      {
-        "heading": "Check access before relying on the plan",
-        "body": [
-          "Agree which calendar holds the family schedule and who maintains it. A combined personal overview does not automatically give another adult access to every calendar you can see. Check the actual shared destination and the permission the provider grants.",
-          "When creating the handoff in Cloud Calendars, inspect Calendar explicitly. A pickup accidentally saved to a private or work calendar can look correct on your phone while remaining absent for the driver. Use a harmless test record to confirm both adults can open the intended shared calendar.",
-          "Keep unrelated private appointments and sensitive access information out of a broadly shared schedule. Share the details needed for the handoff with the people who need them."
-        ]
-      },
-      {
-        "heading": "Write a handoff someone else can follow",
-        "body": [
-          "In this example, use a clear collection entry such as “Swimming pickup — Leo” at 17:15. Record “pool reception, east entrance” and the real address when venues have similar names. Agree where to wait if the lesson runs late.",
-          "Keep collection time separate from departure time. Leo may need to leave at 16:55, but that does not mean the lesson finishes earlier. He can choose a personal reminder or departure commitment appropriate to his journey. One adult’s alert configuration is not proof another will receive a useful notification.",
-          "Ask Leo to confirm the driving responsibility through your normal conversation. Receiving an event or accepting attendance may not mean agreeing to collect someone. The calendar should record an arrangement you have actually made."
-        ]
-      },
-      {
-        "heading": "Change one Tuesday without changing the whole term",
-        "body": [
-          "Suppose Leo cannot collect on 3 November and Maya agrees to do it. State the exact date and responsibility first. Then update that pickup using an editor that clearly supports the required occurrence scope.",
-          "For a repeating pickup, check the changed date and the following Tuesday afterward. Do not rewrite the repeat rule to represent one swap. If the editor lacks a single-occurrence option, use the owning provider’s supported editor; do not assume every Save action asks which dates should change.",
-          "The driver change does not necessarily change the lesson itself. Preserve the school or club’s original invitation. If its schedule is a read-only subscription, use a separate writable handoff entry instead of expecting to edit the published lesson."
-        ]
-      },
-      {
-        "heading": "Confirm urgent changes directly",
-        "body": [
-          "A different entrance or a delayed driver shortly before collection is an urgent communication task. Update the calendar where needed, then contact the responsible adult through the agreed channel and get a reply. A saved edit is not a read receipt.",
-          "If the change is not confirmed, follow the family’s agreed backup arrangement and the venue’s collection rules. Do not infer arrival from a calendar status. This workflow makes no claim that Cloud Calendars provides chat, live location, attendance tracking or automatic task reassignment."
-        ]
-      },
-      {
-        "heading": "Review the handoffs, not just the activities",
-        "body": [
-          "During the weekly review, check the named adult, collection time, meeting point and exceptions. Agree who will update the record and how changes will be confirmed. Adding more unassigned reminders does not resolve an undecided responsibility.",
-          "For a course with a known finish date, check the last actual lesson before carrying a pickup into another term. A clear household routine works alongside permissions and provider rules; it does not replace them."
-        ]
-      }
-    ],
-    "claims": {},
-    "practical": [
-      "Agree who is responsible for the pickup separately from attendance at the activity.",
-      "Save the handoff in a calendar both intended adults can access.",
-      "Record the actual collection time and meeting point, then confirm the driving responsibility directly.",
-      "For a one-off swap, check the occurrence scope and the following week after saving.",
-      "Confirm urgent changes through your agreed communication channel."
-    ],
-    "faq": [
-      {
-        "q": "Do both adults need editing access?",
-        "a": "Only if both must update the shared schedule. Otherwise agree who maintains it and how changes are requested; check the actual provider permissions."
-      },
-      {
-        "q": "Does accepting an invitation confirm pickup?",
-        "a": "Confirm the responsibility explicitly. Attendance and driving are different commitments."
-      },
-      {
-        "q": "Does adding a name automatically assign the driver?",
-        "a": "This guide uses an agreed naming convention, not automatic assignment. Get a direct confirmation from the responsible adult and record the arrangement."
-      }
-    ],
-    "sourcesHeading": "Official guidance",
-    "sources": [
-      {
-        "label": "Apple: multiple calendars, visibility and moving events",
-        "url": "https://support.apple.com/guide/iphone/use-multiple-calendars-iph3d1110d4/ios"
-      },
-      {
-        "label": "Google: moving events on iPhone and iPad",
-        "url": "https://support.google.com/calendar/answer/78739?co=GENIE.Platform%3DiOS&hl=en"
-      }
-    ],
-    "seeAlso": [
+  "updated": "2026-10-21",
+  "title": "A family pickup plan with a clear handoff",
+  "short": "A family pickup plan with a clear handoff",
+  "description": "A worked family pickup plan: agree the driver, check shared access, record the meeting point and confirm one-off changes.",
+  "lede": "This guide is published by Arte Soft, the developer of Cloud Calendars. A lesson on the calendar says where someone needs to be. It may not say who is taking them home. A useful handoff plan records that decision explicitly.",
+  "sections": [
+    {
+      "heading": "Separate the activity from the responsibility",
+      "body": [
+        "Imagine a Tuesday swimming lesson from 16:30 to 17:15. Maya handles drop-off and Leo handles collection. An event called Swimming leaves the driver, entrance and departure time unclear. Keep the lesson at its real time. Record the agreed responsibility in its title or notes, or create a separate timed pickup commitment when that is clearer.",
+        "This is a suggested planning convention. It does not depend on an automatic assignment feature, and putting a name in a title does not itself notify or assign that person."
+      ]
+    },
+    {
+      "heading": "Check access before relying on the plan",
+      "body": [
+        "Agree which calendar holds the family schedule and who maintains it. A combined personal overview does not automatically give another adult access to every calendar you can see. Check the actual shared destination and the permission the provider grants.",
+        "When creating the handoff in Cloud Calendars, inspect Calendar explicitly. A pickup accidentally saved to a private or work calendar can look correct on your phone while remaining absent for the driver. Use a harmless test record to confirm both adults can open the intended shared calendar.",
+        "Keep unrelated private appointments and sensitive access information out of a broadly shared schedule. Share the details needed for the handoff with the people who need them."
+      ]
+    },
+    {
+      "heading": "Write a handoff someone else can follow",
+      "body": [
+        "In this example, use a clear collection entry such as “Swimming pickup — Leo” at 17:15. Record “pool reception, east entrance” and the real address when venues have similar names. Agree where to wait if the lesson runs late.",
+        "Keep collection time separate from departure time. Leo may need to leave at 16:55, but that does not mean the lesson finishes earlier. He can choose a personal reminder or departure commitment appropriate to his journey. One adult’s alert configuration is not proof another will receive a useful notification.",
+        "Ask Leo to confirm the driving responsibility through your normal conversation. Receiving an event or accepting attendance may not mean agreeing to collect someone. The calendar should record an arrangement you have actually made."
+      ]
+    },
+    {
+      "heading": "Change one Tuesday without changing the whole term",
+      "body": [
+        "Suppose Leo cannot collect on 3 November and Maya agrees to do it. State the exact date and responsibility first. Then update that pickup using an editor that clearly supports the required occurrence scope.",
+        "For a repeating pickup, check the changed date and the following Tuesday afterward. Do not rewrite the repeat rule to represent one swap. If the editor lacks a single-occurrence option, use the owning provider’s supported editor; do not assume every Save action asks which dates should change.",
+        "The driver change does not necessarily change the lesson itself. Preserve the school or club’s original invitation. If its schedule is a read-only subscription, use a separate writable handoff entry instead of expecting to edit the published lesson."
+      ]
+    },
+    {
+      "heading": "Confirm urgent changes directly",
+      "body": [
+        "A different entrance or a delayed driver shortly before collection is an urgent communication task. Update the calendar where needed, then contact the responsible adult through the agreed channel and get a reply. A saved edit is not a read receipt.",
+        "If the change is not confirmed, follow the family’s agreed backup arrangement and the venue’s collection rules. Do not infer arrival from a calendar status. This workflow makes no claim that Cloud Calendars provides chat, live location, attendance tracking or automatic task reassignment."
+      ]
+    },
+    {
+      "heading": "Review the handoffs, not just the activities",
+      "body": [
+        "During the weekly review, check the named adult, collection time, meeting point and exceptions. Agree who will update the record and how changes will be confirmed. Adding more unassigned reminders does not resolve an undecided responsibility.",
+        "For a course with a known finish date, check the last actual lesson before carrying a pickup into another term. A clear household routine works alongside permissions and provider rules; it does not replace them."
+      ]
+    }
+  ],
+  "claims": {},
+  "practical": [
+    "Agree who is responsible for the pickup separately from attendance at the activity.",
+    "Save the handoff in a calendar both intended adults can access.",
+    "Record the actual collection time and meeting point, then confirm the driving responsibility directly.",
+    "For a one-off swap, check the occurrence scope and the following week after saving.",
+    "Confirm urgent changes through your agreed communication channel."
+  ],
+  "faq": [
+    {
+      "q": "Do both adults need editing access?",
+      "a": "Only if both must update the shared schedule. Otherwise agree who maintains it and how changes are requested; check the actual provider permissions."
+    },
+    {
+      "q": "Does accepting an invitation confirm pickup?",
+      "a": "Confirm the responsibility explicitly. Attendance and driving are different commitments."
+    },
+    {
+      "q": "Does adding a name automatically assign the driver?",
+      "a": "This guide uses an agreed naming convention, not automatic assignment. Get a direct confirmation from the responsible adult and record the arrangement."
+    }
+  ],
+  "sourcesHeading": "Official guidance",
+  "sources": [
+    {
+      "label": "Apple: multiple calendars, visibility and moving events",
+      "url": "https://support.apple.com/guide/iphone/use-multiple-calendars-iph3d1110d4/ios"
+    },
+    {
+      "label": "Google: moving events on iPhone and iPad",
+      "url": "https://support.google.com/calendar/answer/78739?co=GENIE.Platform%3DiOS&hl=en"
+    }
+  ],
+  "seeAlso": [
     "share-assign-reminders-iphone-calendar-difference",
     "cozi-timetree-family-calendar-iphone-android",
-      "planning-a-week-in-ten-minutes",
-      "a-calendar-that-is-yours-to-share",
-      "recurring-events-without-the-mess"
-    ]
-  }
+    "planning-a-week-in-ten-minutes",
+    "a-calendar-that-is-yours-to-share",
+    "recurring-events-without-the-mess"
+  ],
+  "articleLinks": [
+    {
+      "slug": "google-calendar-birthdays-from-contacts",
+      "label": "Find the source of a Google birthday"
+    }
+  ]
+}
 };

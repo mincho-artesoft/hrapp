@@ -3,7 +3,7 @@ export { LIVE_LOCALES, localesWith } from './article-index';
 
 // Each route loads only its own language; the shell uses article-index, not bodies.
 const LOADERS: Readonly<Record<string, () => Promise<{ ARTICLE_LOCALE: ArticleLocale }>>> = {
-  "en-US": () => import('./article-locales/en-US'),
+  "en-US": () => import('./generated-english/hub.generated'),
   "bg": () => import('./article-locales/bg'),
   "de-DE": () => import('./article-locales/de-DE'),
   "es-ES": () => import('./article-locales/es-ES'),
@@ -44,4 +44,15 @@ export function loadContentFor(code: string): Promise<ArticleLocale> {
     void result.catch(() => pending.delete(key));
   }
   return result;
+}
+
+/** Hubs resolve metadata; English article routes additionally load only their body. */
+export async function loadArticleContentFor(code: string, slug?: string): Promise<ArticleLocale> {
+  const content = await loadContentFor(code);
+  const key = Object.hasOwn(LOADERS, code) ? code : 'en-US';
+  if (key !== 'en-US' || !slug) return content;
+  const { loadEnglishArticle } = await import('./generated-english/loaders.generated');
+  const article = await loadEnglishArticle(slug);
+  if (!article) return content;
+  return { chrome: content.chrome, articles: { ...content.articles, [slug]: article } };
 }

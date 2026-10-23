@@ -64,6 +64,8 @@ export interface LocalisedArticle {
   readonly galleryKinds?: readonly string[];
   readonly galleryDevice?: 'iPhone' | 'iPad' | 'iPhoneDuo';
   readonly galleryCaption?: string;
+  /** Keep reference-guide answers ahead of optional product photographs. */
+  readonly galleryAfterContent?: boolean;
   readonly actionHeading?: string;
   readonly actionText?: string;
   readonly articleLinks?: readonly { readonly slug: string; readonly label: string }[];

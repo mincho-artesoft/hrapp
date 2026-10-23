@@ -217,6 +217,16 @@ export const PLANNING_EN_US: Readonly<Record<string, LocalisedArticle>> = {
     "drag-an-event-to-move-it",
     "calendar-event-or-room-reservation",
     "recurring-events-without-the-mess"
+  ],
+  "articleLinks": [
+    {
+      "slug": "outlook-split-view-overlay-calendars",
+      "label": "Outlook split view and overlay"
+    },
+    {
+      "slug": "display-multiple-time-zone-columns-google-calendar-outlook",
+      "label": "display multiple time zones google calendar outlook"
+    }
   ]
 },
 
@@ -407,6 +417,28 @@ export const PLANNING_EN_US: Readonly<Record<string, LocalisedArticle>> = {
     "family-pickup-calendar-handoff",
     "recurring-events-without-the-mess",
     "reading-a-chance-of-rain"
+  ],
+  "articleLinks": [
+    {
+      "slug": "google-calendar-time-insights-counted-meetings",
+      "label": "Google Calendar Time Insights"
+    },
+    {
+      "slug": "google-calendar-keyboard-shortcuts-workflow",
+      "label": "A Google Calendar keyboard workflow"
+    },
+    {
+      "slug": "outlook-shorten-meetings-automatically",
+      "label": "Shorten Outlook meetings"
+    },
+    {
+      "slug": "calendar-week-numbers-iso-monday-versus-sunday-start-mismatch",
+      "label": "calendar week numbers wrong sunday vs monday start"
+    },
+    {
+      "slug": "backward-planning-project-deadlines-across-weekends-and-holidays",
+      "label": "backward planning calendar business days vs calendar days"
+    }
   ]
 },
 
@@ -470,7 +502,10 @@ export const PLANNING_EN_US: Readonly<Record<string, LocalisedArticle>> = {
     "Keep existing exceptions and the original invitation while diagnosing a mismatch."
   ],
   "faq": [
-    {"q": "How do I repeat an event only on selected days?", "a": "Write the intended dates first, then use the owning provider’s supported repeat controls. Google’s desktop guide starts with the repeat menu; Apple’s Mac guide documents custom frequency and pattern choices. Verify several resulting dates and the end condition. Do not assume those desktop controls exist in every iPhone editor."},
+    {
+      "q": "How do I repeat an event only on selected days?",
+      "a": "Write the intended dates first, then use the owning provider’s supported repeat controls. Google’s desktop guide starts with the repeat menu; Apple’s Mac guide documents custom frequency and pattern choices. Verify several resulting dates and the end condition. Do not assume those desktop controls exist in every iPhone editor."
+    },
     {
       "q": "Does every recurring-event edit ask about scope?",
       "a": "No. Do not assume Cloud Calendars will ask you to choose the scope. Verify the options before saving; use a supported provider editor for a single-date exception if that choice is absent."
@@ -503,6 +538,32 @@ export const PLANNING_EN_US: Readonly<Record<string, LocalisedArticle>> = {
     "shift-work-calendar-iphone-rotating-schedules",
     "when-two-calendars-disagree",
     "time-zones-and-the-flight-you-booked"
+  ],
+  "articleLinks": [
+    {
+      "slug": "rrule-count-until-excluded-occurrences",
+      "label": "Calculate COUNT, UNTIL and excluded dates"
+    },
+    {
+      "slug": "icalendar-exdate-recurrence-id-moved-instance",
+      "label": "Distinguish a skipped occurrence from a moved instance"
+    },
+    {
+      "slug": "ics-method-cancel-versus-delete-event",
+      "label": "Cancel a meeting or remove a copy"
+    },
+    {
+      "slug": "outlook-end-recurring-meeting-early-keep-history",
+      "label": "End an Outlook series early"
+    },
+    {
+      "slug": "monthly-recurring-last-weekday-byday-minus-1-versus-fixed-date",
+      "label": "repeat on last weekday of month vs 31st calendar"
+    },
+    {
+      "slug": "alternating-a-b-week-school-timetable-calendar-vacation-exceptions",
+      "label": "alternating a b week school schedule calendar holidays"
+    }
   ]
 },
 
@@ -614,11 +675,33 @@ export const PLANNING_EN_US: Readonly<Record<string, LocalisedArticle>> = {
     "recurring-events-without-the-mess",
     "weather-where-the-event-is",
     "calendar-export-ics-pdf-and-backup"
+  ],
+  "articleLinks": [
+    {
+      "slug": "icalendar-floating-time-utc-tzid",
+      "label": "Floating time or a fixed instant"
+    },
+    {
+      "slug": "us-uk-dst-mismatch-weeks-recurring-meeting-calendar",
+      "label": "US–UK DST mismatch"
+    },
+    {
+      "slug": "non-dst-time-zone-arizona-hawaii-recurring-calendar",
+      "label": "Phoenix and Hawaii meeting times"
+    },
+    {
+      "slug": "southern-hemisphere-reverse-dst-two-hour-meeting-shift",
+      "label": "Sydney–New York recurring meetings"
+    },
+    {
+      "slug": "iana-tzdb-government-time-zone-rule-change-calendar",
+      "label": "Time-zone rule changes"
+    }
   ]
 },
 
   'what-an-all-day-event-really-means': {
-  "updated": "2026-10-22",
+  "updated": "2026-10-23",
   "title": "All-day calendar events: dates, availability and missing widget entries",
   "short": "Understand all-day events",
   "description": "Check all-day dates, availability and widget omissions. For a missing birthday, identify the contact or calendar source before adding a duplicate.",
@@ -635,9 +718,7 @@ export const PLANNING_EN_US: Readonly<Record<string, LocalisedArticle>> = {
     {
       "heading": "For a missing birthday, identify its source first",
       "body": [
-        "Before adding a missing birthday as a new annual event, find its source: a contact card, a provider-generated birthday calendar or an ordinary repeating event. Apple documents that its special iCloud Birthdays calendar uses iCloud Contacts and that birthday changes belong in Contacts. Check the contact in the account that owns it.",
-        "Google’s own app distinguishes birthdays linked to Google Contacts from manually created birthday events. It documents that editing a linked birthday can update its contact, while deleting it does not remove the Contacts information. Turning off Sync from Contacts removes synced calendar entries and changes; do not use that switch as a harmless visibility test. Birthdays shown from Apple Contacts on an iPhone are not thereby synchronized to Google’s web or Android calendar.",
-        "Cloud Calendars may show a system birthday when that calendar is exposed by iOS, full calendar access is allowed and the calendar is selected. Do not assume every view includes it or that provider-specific birthday editing is available. Compare the original provider and the phone’s calendar before adding another annual record, and use the owning Contacts or provider app for source changes. Check the widget and notification guides separately for display and alert limits."
+        "A birthday can be an all-day date while its editable source is a contact, a manually created birthday or another connected account. Identify that source before changing or duplicating the date. Use the dedicated Google and Outlook birthday guides below for their provider-specific controls."
       ]
     },
     {
@@ -731,6 +812,32 @@ export const PLANNING_EN_US: Readonly<Record<string, LocalisedArticle>> = {
     "recurring-events-without-the-mess",
     "the-widget-that-shows-what-is-next",
     "calendar-notifications-missing-silent-or-duplicated"
+  ],
+  "articleLinks": [
+    {
+      "slug": "ics-all-day-dtend-exclusive-end-date",
+      "label": "ICS all-day end dates"
+    },
+    {
+      "slug": "icalendar-duration-p1d-pt24h-dst",
+      "label": "One day or exactly 24 hours?"
+    },
+    {
+      "slug": "outlook-appointment-meeting-event-convert-and-update",
+      "label": "Appointment, meeting or event"
+    },
+    {
+      "slug": "overnight-shift-crossing-midnight-calendar-end-date",
+      "label": "Overnight shift calendar"
+    },
+    {
+      "slug": "google-calendar-birthdays-from-contacts",
+      "label": "Find or edit the source of a Google birthday"
+    },
+    {
+      "slug": "outlook-birthday-calendar-from-contacts",
+      "label": "Manage Outlook birthdays through the right contact"
+    }
   ]
 },
 

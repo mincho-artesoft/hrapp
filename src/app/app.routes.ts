@@ -1,7 +1,7 @@
 import { Routes, ResolveFn } from '@angular/router';
 
 import { LIVE_LOCALES } from './content/article-index';
-import { loadContentFor } from './content/registry';
+import { loadArticleContentFor } from './content/registry';
 import type { ArticleLocale } from './content/types';
 import { DEFAULT_LOCALE, LOCALES } from './core/locales';
 import { HomePageComponent } from './pages/home-page/home-page.component';
@@ -56,7 +56,7 @@ const eventRoutes: Routes = LOCALES.flatMap((locale) => {
   ];
 });
 
-const resolveArticleContent: ResolveFn<ArticleLocale> = route => loadContentFor(route.data['locale'].code);
+const resolveArticleContent: ResolveFn<ArticleLocale> = route => loadArticleContentFor(route.data['locale'].code, route.paramMap.get('slug') ?? undefined);
 
 const articleRoutes: Routes = LIVE_LOCALES.flatMap((locale) => {
   const prefix = locale.slug ? `${locale.slug}/` : '';
@@ -84,6 +84,12 @@ export const routes: Routes = [
   { path: '', component: HomePageComponent, pathMatch: 'full', data: { locale: DEFAULT_LOCALE } },
   ...homeRoutes,
   ...eventRoutes,
+  {
+    path: 'articles/topics/:family/:page',
+    loadComponent: () => import('./pages/articles-page/articles-page.component').then(m => m.ArticlesPageComponent),
+    data: { locale: DEFAULT_LOCALE, topicHub: true },
+    resolve: { articleContent: resolveArticleContent },
+  },
   ...articleRoutes,
   { path: 'privacy-policy', component: PrivacyPolicyPageComponent },
   { path: 'terms-of-service', component: TermsPageComponent },

@@ -862,6 +862,16 @@ export const WEATHER_EN_US: Readonly<Record<string, LocalisedArticle>> = {
     "reading-a-chance-of-rain",
     "calendar-notifications-missing-silent-or-duplicated",
     "planning-a-week-in-ten-minutes"
+  ],
+  "articleLinks": [
+    {
+      "slug": "mac-calendar-travel-time-after-location-change",
+      "label": "Recheck travel time after a move"
+    },
+    {
+      "slug": "calendar-travel-time-versus-separate-buffer-event-blocks",
+      "label": "calendar buffer time between meetings vs travel time"
+    }
   ]
 },
 

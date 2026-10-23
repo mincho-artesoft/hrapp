@@ -1,0 +1,272 @@
+{
+  "schemaVersion": 1,
+  "reviewer": "Codex keyword_intent_map (independent of technical-batch author)",
+  "reviewedAt": "2026-10-23",
+  "scope": "Technical batch8 only, against actual RFC text, independent arithmetic/encoding fixtures and closest baseline/first-batch intent. No app/source edits or publication.",
+  "inputSha256": "e98d8d94036c9840515c73b4cc680a1d792b6ce35aaeb5fd90791d384e6a962a",
+  "primarySource": {
+    "url": "https://www.rfc-editor.org/rfc/rfc5545.txt",
+    "freshRetrievedSha256": "c256f809479d98aa23d71bbd1658b3800ea9f13f41ca56e59c8d2de1b31cbfcb",
+    "matchesAuthorSourceSha256": true,
+    "sectionsIndependentlyRead": [
+      "3.8.7.1",
+      "3.8.7.2",
+      "3.8.7.3",
+      "3.8.7.4",
+      "3.3.6",
+      "3.8.2.5",
+      "3.6.1",
+      "3.8.6.3",
+      "3.6.6",
+      "3.8.6.2",
+      "3.8.2.7",
+      "3.8.1.3",
+      "3.6.4",
+      "3.8.2.6",
+      "3.2.9",
+      "3.3.9",
+      "3.1",
+      "3.1.1",
+      "3.1.4",
+      "3.3.11"
+    ]
+  },
+  "summary": {
+    "articles": 8,
+    "approve": 2,
+    "reviseCopyOnly": 6,
+    "merge": 0,
+    "hold": 0,
+    "technicalErrors": 0,
+    "copyCorrections": 14
+  },
+  "fixtureChecks": [
+    {
+      "check": "UTF-8 prefix+22/23 CJK values",
+      "result": "74 and77 octets, matching the table",
+      "passed": true
+    },
+    {
+      "check": "Fold removes exactly CRLF+one whitespace",
+      "result": "Quarterly restored with no inserted space",
+      "passed": true
+    },
+    {
+      "check": "Noon-to-noon assumed forward/backward offsets",
+      "result": "23/25 elapsed hours; adding24elapsedhours yields13:00/11:00 local",
+      "passed": true
+    },
+    {
+      "check": "Initial+REPEAT4 five-minute alarm targets",
+      "result": [
+        "09:45Z",
+        "09:50Z",
+        "09:55Z",
+        "10:00Z",
+        "10:05Z"
+      ],
+      "passed": true
+    },
+    {
+      "check": "START/END alarm offset tables before and after move",
+      "result": "All six relative targets match; fixed09:45Z instant remains its literal value",
+      "passed": true
+    },
+    {
+      "check": "TEXT punctuation/newline/backslash example",
+      "result": "Decodes to the intended two-line value",
+      "passed": true
+    }
+  ],
+  "reviews": [
+    {
+      "slug": "icalendar-dtstamp-last-modified-created",
+      "decision": "approve",
+      "technicalAccuracy": "pass_no_normative_error_found",
+      "sourceAssessment": "RFC5545 §§3.8.7.1–4 support UTC timestamps and METHOD-sensitive DTSTAMP interpretation; illustrative message dates are internally consistent.",
+      "intentAssessment": "Timestamp inspection differs from the already integrated UID/SEQUENCE identity article. It answers which clock a timestamp denotes, not which revision supersedes another.",
+      "requiredCorrections": [],
+      "mergeRequired": false,
+      "holdRequired": false,
+      "afterCorrections": "approve_for_independent_technical_accuracy_and_intent_distinctness; root retains final relevance/editorial/publication decision",
+      "priorityCaveat": "Useful format/debugging task for users inspecting exports; no demand, rank or consumer-traffic evidence supplied."
+    },
+    {
+      "slug": "icalendar-duration-p1d-pt24h-dst",
+      "decision": "revise",
+      "technicalAccuracy": "pass_no_normative_error_found",
+      "sourceAssessment": "RFC5545 §§3.3.6,3.8.2.5,3.6.1 support nominal days versus accurate hours, DATE restrictions and exclusive DTEND/DURATION choice; independent arithmetic passed.",
+      "intentAssessment": "Nominal-day versus elapsed-hour representation is narrower than ordinary travel/display-zone guidance and the first-batch floating/UTC/TZID article. Keep explicit hypothetical offsets.",
+      "requiredCorrections": [
+        {
+          "jsonPointer": "/icalendar-duration-p1d-pt24h-dst/sections/1/body/0",
+          "find": "10:00Z:23",
+          "replaceWith": "10:00Z: 23",
+          "reason": "Copyediting only: restore a missing prose space without changing ICS syntax or numerical meaning."
+        },
+        {
+          "jsonPointer": "/icalendar-duration-p1d-pt24h-dst/sections/2/body/0",
+          "find": "11:00Z:25",
+          "replaceWith": "11:00Z: 25",
+          "reason": "Copyediting only: restore a missing prose space without changing ICS syntax or numerical meaning."
+        },
+        {
+          "jsonPointer": "/icalendar-duration-p1d-pt24h-dst/sections/2/body/0",
+          "find": "Exactly24",
+          "replaceWith": "Exactly 24",
+          "reason": "Copyediting only: restore a missing prose space without changing ICS syntax or numerical meaning."
+        },
+        {
+          "jsonPointer": "/icalendar-duration-p1d-pt24h-dst/comparison/rows/2/cells/1",
+          "find": "12:00;24",
+          "replaceWith": "12:00; 24",
+          "reason": "Copyediting only: restore a missing prose space without changing ICS syntax or numerical meaning."
+        },
+        {
+          "jsonPointer": "/icalendar-duration-p1d-pt24h-dst/comparison/rows/2/cells/2",
+          "find": "12:00;24",
+          "replaceWith": "12:00; 24",
+          "reason": "Copyediting only: restore a missing prose space without changing ICS syntax or numerical meaning."
+        }
+      ],
+      "mergeRequired": false,
+      "holdRequired": false,
+      "afterCorrections": "approve_for_independent_technical_accuracy_and_intent_distinctness; root retains final relevance/editorial/publication decision",
+      "priorityCaveat": "Useful format/debugging task for users inspecting exports; no demand, rank or consumer-traffic evidence supplied."
+    },
+    {
+      "slug": "icalendar-valarm-relative-absolute-trigger",
+      "decision": "revise",
+      "technicalAccuracy": "pass_no_normative_error_found",
+      "sourceAssessment": "RFC5545 §§3.8.6.3,3.6.6 support START default, END requirements, absolute UTC and one specified absolute instant for recurring parents.",
+      "intentAssessment": "Alarm reference/value type differs from notification-delivery diagnostics and from alarm repeat count. Both can link together without repeating whole tables.",
+      "requiredCorrections": [
+        {
+          "jsonPointer": "/icalendar-valarm-relative-absolute-trigger/comparison/rows/3/cells/0",
+          "find": "Absolute09:45Z",
+          "replaceWith": "Absolute 09:45Z",
+          "reason": "Copyediting only: restore a missing prose space without changing ICS syntax or numerical meaning."
+        }
+      ],
+      "mergeRequired": false,
+      "holdRequired": false,
+      "afterCorrections": "approve_for_independent_technical_accuracy_and_intent_distinctness; root retains final relevance/editorial/publication decision",
+      "priorityCaveat": "Useful format/debugging task for users inspecting exports; no demand, rank or consumer-traffic evidence supplied."
+    },
+    {
+      "slug": "icalendar-alarm-repeat-duration-count",
+      "decision": "revise",
+      "technicalAccuracy": "pass_no_normative_error_found",
+      "sourceAssessment": "RFC5545 §§3.8.6.2,3.8.2.5,3.6.6 support initial+REPEAT count, repeat-interval DURATION pairing and DISPLAY requirements; independent five-target calculation passed.",
+      "intentAssessment": "Alarm additional-trigger count is not RRULE occurrence count. Independent timing example answers a different task from the integrated recurrence-count guide.",
+      "requiredCorrections": [
+        {
+          "jsonPointer": "/icalendar-alarm-repeat-duration-count/sections/1/body/1",
+          "find": "targets:09:45,09:50,09:55,10:00",
+          "replaceWith": "targets: 09:45, 09:50, 09:55, 10:00",
+          "reason": "Copyediting only: restore a missing prose space without changing ICS syntax or numerical meaning."
+        }
+      ],
+      "mergeRequired": false,
+      "holdRequired": false,
+      "afterCorrections": "approve_for_independent_technical_accuracy_and_intent_distinctness; root retains final relevance/editorial/publication decision",
+      "priorityCaveat": "Useful format/debugging task for users inspecting exports; no demand, rank or consumer-traffic evidence supplied."
+    },
+    {
+      "slug": "icalendar-transp-class-busy-private",
+      "decision": "approve",
+      "technicalAccuracy": "pass_no_normative_error_found",
+      "sourceAssessment": "RFC5545 §§3.8.2.7,3.8.1.3 support OPAQUE default, TRANSPARENT busy-search meaning, CLASS public default and classification not enforcing receiver access.",
+      "intentAssessment": "Format fields for busy participation versus classification are distinct from Google-specific sharing permissions and Outlook Show As. Keep the non-enforcement explanation central.",
+      "requiredCorrections": [],
+      "mergeRequired": false,
+      "holdRequired": false,
+      "afterCorrections": "approve_for_independent_technical_accuracy_and_intent_distinctness; root retains final relevance/editorial/publication decision",
+      "priorityCaveat": "Useful format/debugging task for users inspecting exports; no demand, rank or consumer-traffic evidence supplied."
+    },
+    {
+      "slug": "icalendar-vfreebusy-periods-not-event-details",
+      "decision": "revise",
+      "technicalAccuracy": "pass_no_normative_error_found",
+      "sourceAssessment": "RFC5545 §§3.6.4,3.8.2.6,3.2.9,3.3.9 support UTC periods, common FBTYPE on a value list, BUSY default and excluded recurrence properties.",
+      "intentAssessment": "Availability-component inspection differs from full event export and consumer Find a time. The data cannot be treated as a missing-title event backup.",
+      "requiredCorrections": [
+        {
+          "jsonPointer": "/icalendar-vfreebusy-periods-not-event-details/comparison/rows/1/cells/1",
+          "find": "Occupied13:00",
+          "replaceWith": "Occupied 13:00",
+          "reason": "Copyediting only: restore a missing prose space without changing ICS syntax or numerical meaning."
+        }
+      ],
+      "mergeRequired": false,
+      "holdRequired": false,
+      "afterCorrections": "approve_for_independent_technical_accuracy_and_intent_distinctness; root retains final relevance/editorial/publication decision",
+      "priorityCaveat": "Useful format/debugging task for users inspecting exports; no demand, rank or consumer-traffic evidence supplied."
+    },
+    {
+      "slug": "ics-line-folding-utf8-octets",
+      "decision": "revise",
+      "technicalAccuracy": "pass_no_normative_error_found",
+      "sourceAssessment": "RFC5545 §§3.1,3.1.4 support recommended75octet physical lines and exact unfolding; independent UTF8/fold fixtures passed.",
+      "intentAssessment": "Physical line reconstruction and octet accounting differ from the next TEXT-value encoding article. Navigation to the text-escaping sibling would help readers keep layers separate.",
+      "requiredCorrections": [
+        {
+          "jsonPointer": "/ics-line-folding-utf8-octets/sections/2/body/0",
+          "find": "character会",
+          "replaceWith": "character 会",
+          "reason": "Copyediting only: restore a missing prose space without changing ICS syntax or numerical meaning."
+        },
+        {
+          "jsonPointer": "/ics-line-folding-utf8-octets/sections/2/body/0",
+          "find": "total.23",
+          "replaceWith": "total. 23",
+          "reason": "Copyediting only: restore a missing prose space without changing ICS syntax or numerical meaning."
+        },
+        {
+          "jsonPointer": "/ics-line-folding-utf8-octets/comparison/rows/1/cells/0",
+          "find": "of会",
+          "replaceWith": "of 会",
+          "reason": "Copyediting only: restore a missing prose space without changing ICS syntax or numerical meaning."
+        },
+        {
+          "jsonPointer": "/ics-line-folding-utf8-octets/comparison/rows/2/cells/0",
+          "find": "of会",
+          "replaceWith": "of 会",
+          "reason": "Copyediting only: restore a missing prose space without changing ICS syntax or numerical meaning."
+        },
+        {
+          "jsonPointer": "/ics-line-folding-utf8-octets/comparison/rows/2/cells/2",
+          "find": "77;folding",
+          "replaceWith": "77; folding",
+          "reason": "Copyediting only: restore a missing prose space without changing ICS syntax or numerical meaning."
+        }
+      ],
+      "mergeRequired": false,
+      "holdRequired": false,
+      "afterCorrections": "approve_for_independent_technical_accuracy_and_intent_distinctness; root retains final relevance/editorial/publication decision",
+      "priorityCaveat": "Useful format/debugging task for users inspecting exports; no demand, rank or consumer-traffic evidence supplied."
+    },
+    {
+      "slug": "ics-text-escaping-commas-semicolons-newlines",
+      "decision": "revise",
+      "technicalAccuracy": "pass_no_normative_error_found",
+      "sourceAssessment": "RFC5545 §§3.3.11,3.1.1,3.1 support required TEXT escapes, unescaped colon, separate parameter quoting and unfolding; independent two-line example passed.",
+      "intentAssessment": "TEXT punctuation/newline value encoding differs from physical folding and parameter quoting. Both are justified only while preserving this layer distinction.",
+      "requiredCorrections": [
+        {
+          "jsonPointer": "/ics-text-escaping-commas-semicolons-newlines/faq/0/q",
+          "find": "as%2C",
+          "replaceWith": "as %2C",
+          "reason": "Copyediting only: restore a missing prose space without changing ICS syntax or numerical meaning."
+        }
+      ],
+      "mergeRequired": false,
+      "holdRequired": false,
+      "afterCorrections": "approve_for_independent_technical_accuracy_and_intent_distinctness; root retains final relevance/editorial/publication decision",
+      "priorityCaveat": "Useful format/debugging task for users inspecting exports; no demand, rank or consumer-traffic evidence supplied."
+    }
+  ],
+  "independentTestingBoundary": "Fixtures verify specification arithmetic and byte/text reconstruction only. They are not complete ICS parser validation, integration tests or device/runtime observations.",
+  "publicationBoundary": "These are editorial technical recommendations. Source status and fixtures do not establish Google indexing or search demand. New English-only first wave remains limited to100totalnewpages.",
+  "noPaidApiUsed": true
+}

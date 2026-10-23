@@ -1,3 +1,4 @@
+import { PILOT_EN_US } from '../en-US/articles-pilot-20261023';
 import type { ArticleLocale } from '../types';
 import { CHROME_EN_US } from '../en-US/chrome';
 import { WEATHER_EN_US } from '../en-US/articles-weather';
@@ -11,7 +12,7 @@ import { DISCOVERY_EN_US } from '../en-US/articles-discovery';
 import { GOOGLE_EN_US } from '../en-US/articles-google';
 export const ARTICLE_LOCALE: ArticleLocale = {
     chrome: CHROME_EN_US,
-    articles: {
+    articles: { ...PILOT_EN_US,
       ...WEATHER_EN_US,
       ...UNIFY_EN_US,
       ...WIDGETS_EN_US,

@@ -101,6 +101,24 @@ export const SHARING_EN_US: Readonly<Record<string, LocalisedArticle>> = {
     "what-calendar-sync-actually-does",
     "meeting-links-that-make-themselves",
     "time-zones-and-the-flight-you-booked"
+  ],
+  "articleLinks": [
+    {
+      "slug": "mac-calendar-check-invitee-availability",
+      "label": "Check availability before sending"
+    },
+    {
+      "slug": "google-calendar-gemini-suggested-meeting-times",
+      "label": "Gemini suggested meeting times in Google Calendar"
+    },
+    {
+      "slug": "google-calendar-find-a-time-blank-is-not-free",
+      "label": "Reading Find a time correctly"
+    },
+    {
+      "slug": "outlook-scheduling-assistant-read-colleague-availability",
+      "label": "Read the Scheduling Assistant"
+    }
   ]
 },
 
@@ -198,6 +216,12 @@ export const SHARING_EN_US: Readonly<Record<string, LocalisedArticle>> = {
     "inviting-people-who-do-not-have-the-app",
     "a-calendar-that-is-yours-to-share",
     "keeping-track-of-who-replied"
+  ],
+  "articleLinks": [
+    {
+      "slug": "iphone-calendar-add-remove-event-attachments",
+      "label": "Add or remove an event attachment"
+    }
   ]
 },
 
@@ -293,6 +317,12 @@ export const SHARING_EN_US: Readonly<Record<string, LocalisedArticle>> = {
   "seeAlso": [
     "sharing-one-event-not-your-calendar",
     "a-calendar-that-is-yours-to-share"
+  ],
+  "articleLinks": [
+    {
+      "slug": "google-calendar-public-embed-on-website",
+      "label": "Embed a calendar on a website"
+    }
   ]
 },
 
@@ -386,6 +416,24 @@ export const SHARING_EN_US: Readonly<Record<string, LocalisedArticle>> = {
     "inviting-people-who-do-not-have-the-app",
     "keeping-track-of-who-replied",
     "what-a-subscription-actually-buys"
+  ],
+  "articleLinks": [
+    {
+      "slug": "google-calendar-ownership-transfer-pending-acceptance",
+      "label": "Finish a Google calendar handoff"
+    },
+    {
+      "slug": "icloud-public-calendar-publish-stop",
+      "label": "Publish and retire a public calendar"
+    },
+    {
+      "slug": "google-family-calendar-membership",
+      "label": "Google family calendar"
+    },
+    {
+      "slug": "outlook-shared-mailbox-calendar",
+      "label": "Shared mailbox calendar"
+    }
   ]
 },
 
@@ -479,7 +527,21 @@ export const SHARING_EN_US: Readonly<Record<string, LocalisedArticle>> = {
     "why-a-shared-calendar-does-not-appear",
     "work-and-personal-without-two-apps"
   ],
-  "updated": "2026-10-21"
+  "updated": "2026-10-21",
+  "articleLinks": [
+    {
+      "slug": "icalendar-transp-class-busy-private",
+      "label": "Private does not mean free"
+    },
+    {
+      "slug": "google-calendar-event-visibility-private-public-default",
+      "label": "Private, public and default events"
+    },
+    {
+      "slug": "google-calendar-events-from-gmail-visibility",
+      "label": "Events from Gmail"
+    }
+  ]
 },
 
   'keeping-track-of-who-replied': {
@@ -602,6 +664,28 @@ export const SHARING_EN_US: Readonly<Record<string, LocalisedArticle>> = {
     "sharing-one-event-not-your-calendar",
     "inviting-people-who-do-not-have-the-app",
     "meeting-links-that-make-themselves"
+  ],
+  "articleLinks": [
+    {
+      "slug": "icloud-private-calendar-pending-invitations",
+      "label": "Pending private invitations"
+    },
+    {
+      "slug": "google-calendar-response-emails-outlook-rsvp",
+      "label": "Outlook RSVP missing in Google Calendar? Check the event’s response-email switch"
+    },
+    {
+      "slug": "outlook-forward-meeting-and-allow-forwarding",
+      "label": "Outlook meeting forwarding"
+    },
+    {
+      "slug": "outlook-propose-new-meeting-time",
+      "label": "Propose a new time in Outlook"
+    },
+    {
+      "slug": "outlook-show-declined-meetings-on-calendar",
+      "label": "Declined meetings in Outlook"
+    }
   ]
 },
 
@@ -695,10 +779,24 @@ export const SHARING_EN_US: Readonly<Record<string, LocalisedArticle>> = {
     }
   ],
   "seeAlso": [
-  "exchange-calendars-on-an-iphone",
-  "keeping-track-of-who-replied",
-  "icloud-google-and-outlook-in-one-view",
-  "calendar-event-or-room-reservation"
-]
+    "exchange-calendars-on-an-iphone",
+    "keeping-track-of-who-replied",
+    "icloud-google-and-outlook-in-one-view",
+    "calendar-event-or-room-reservation"
+  ],
+  "articleLinks": [
+    {
+      "slug": "google-calendar-meeting-notes-not-updating",
+      "label": "Meeting notes and event changes"
+    },
+    {
+      "slug": "outlook-teams-meeting-button-missing",
+      "label": "Teams option missing in Outlook"
+    },
+    {
+      "slug": "google-calendar-add-ons-conferencing-permissions",
+      "label": "Install or remove a Google conferencing add-on and check its permissions"
+    }
+  ]
 },
 };

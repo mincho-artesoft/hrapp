@@ -1,0 +1,578 @@
+{
+  "generatedAt": "2026-10-23",
+  "batchId": "argon-batch-01-codex-corrected",
+  "records": {
+    "pitman-2-2-3-shift-schedule-calendar-setup": {
+      "slug": "pitman-2-2-3-shift-schedule-calendar-setup",
+      "primaryKeyword": "pitman 2 2 3 shift calendar",
+      "intentKey": "shift:pitman-2-2-3-biweekly-decomposition",
+      "cluster": "C03",
+      "language": "en-US",
+      "readerOutcome": "Build and audit a Pitman 14-day roster with two biweekly patterns, a dated example and checks for night-shift end dates.",
+      "distinctValue": "Worked example to check against your calendar: 1 / 2, 3, 6, 7, 8 / 60; 2 / 11, 12 / 24; Next cycle begins / 16 / 84 across each complete two-week cycle",
+      "closestNeighbor": "shift-work-calendar-iphone-rotating-schedules",
+      "boundary": "Distinct worked procedure; links to the existing overview rather than restating it.",
+      "canonicalDecision": "standalone-candidate; check explicit neighbor warning before integration",
+      "proposedFamily": "planning",
+      "proposedIntent": "how-to",
+      "adjacentArticlesRead": [
+        "shift-work-calendar-iphone-rotating-schedules",
+        "recurring-events-without-the-mess",
+        "a-week-view-that-fits-a-week"
+      ],
+      "originalExampleStatus": "illustrative; independent UTC/date arithmetic checks in math-fixtures-codex.json",
+      "firsthandTesting": false,
+      "evidence": [
+        {
+          "type": "primary",
+          "url": "https://www.nantucket-ma.gov/m/faq?cat=154",
+          "label": "Nantucket Police: working-hours FAQ",
+          "verifiedAt": "2026-10-23",
+          "readScope": "Relevant actual primary body, not title-only; see review-01-codex.json sourceReading and source corrections."
+        },
+        {
+          "type": "primary",
+          "url": "https://www.rfc-editor.org/rfc/rfc5545#section-3.3.10",
+          "label": "RFC 5545: recurrence rules and week start",
+          "verifiedAt": "2026-10-23",
+          "readScope": "Relevant actual primary body, not title-only; see review-01-codex.json sourceReading and source corrections."
+        },
+        {
+          "type": "primary",
+          "url": "https://support.google.com/calendar/answer/37115?hl=en",
+          "label": "Google Calendar: create a recurring event",
+          "verifiedAt": "2026-10-23",
+          "readScope": "Relevant actual primary body, not title-only; see review-01-codex.json sourceReading and source corrections."
+        }
+      ],
+      "review": {
+        "status": "draft",
+        "reviewer": "Codex independent reviewer and corrective rewrite",
+        "checkedAt": "2026-10-23",
+        "reason": "Raw draft held; substantive corrections applied separately. Root must review revised article, especially noted neighboring intents, before integration."
+      }
+    },
+    "dupont-28-day-rotating-shift-calendar-cycle": {
+      "slug": "dupont-28-day-rotating-shift-calendar-cycle",
+      "primaryKeyword": "dupont shift schedule calendar",
+      "intentKey": "shift:dupont-28-day-four-week-rotation",
+      "cluster": "C03",
+      "language": "en-US",
+      "readerOutcome": "Audit an illustrative 28-day DuPont roster, including next-day night endpoints, 72-hour gaps and safe recurrence boundaries.",
+      "distinctValue": "Worked example to check against your calendar: 1–4 / 7–10 / Night; 5–7 / 11–13 / Off start-dates; 8–10 / 14–16 / Day; 11 / 17 / Off; 12–14 / 18–20 / Night; 15–17 / 21–23 / Off start-dates; 18–21 / 24–27 / Day; 22–28 / 28 November–4 December / Off",
+      "closestNeighbor": "pitman-2-2-3-shift-schedule-calendar-setup",
+      "boundary": "Distinct worked procedure; links to the existing overview rather than restating it.",
+      "canonicalDecision": "standalone-candidate; check explicit neighbor warning before integration",
+      "proposedFamily": "planning",
+      "proposedIntent": "how-to",
+      "adjacentArticlesRead": [
+        "shift-work-calendar-iphone-rotating-schedules",
+        "month-view-on-a-bigger-screen",
+        "the-year-in-one-screen"
+      ],
+      "originalExampleStatus": "illustrative; independent UTC/date arithmetic checks in math-fixtures-codex.json",
+      "firsthandTesting": false,
+      "evidence": [
+        {
+          "type": "primary",
+          "url": "https://www.hendersoncountync.gov/ems/page/working-hcems",
+          "label": "Henderson County EMS: modified DuPont schedule",
+          "verifiedAt": "2026-10-23",
+          "readScope": "Relevant actual primary body, not title-only; see review-01-codex.json sourceReading and source corrections."
+        },
+        {
+          "type": "primary",
+          "url": "https://www.rfc-editor.org/rfc/rfc5545#section-3.3.10",
+          "label": "RFC 5545: recurrence",
+          "verifiedAt": "2026-10-23",
+          "readScope": "Relevant actual primary body, not title-only; see review-01-codex.json sourceReading and source corrections."
+        },
+        {
+          "type": "primary",
+          "url": "https://support.google.com/calendar/answer/37115?hl=en",
+          "label": "Google Calendar: recurring-event controls and limits",
+          "verifiedAt": "2026-10-23",
+          "readScope": "Relevant actual primary body, not title-only; see review-01-codex.json sourceReading and source corrections."
+        }
+      ],
+      "review": {
+        "status": "draft",
+        "reviewer": "Codex independent reviewer and corrective rewrite",
+        "checkedAt": "2026-10-23",
+        "reason": "Raw draft held; substantive corrections applied separately. Root must review revised article, especially noted neighboring intents, before integration."
+      }
+    },
+    "firefighter-24-48-kelly-day-calendar-pattern": {
+      "slug": "firefighter-24-48-kelly-day-calendar-pattern",
+      "primaryKeyword": "24 48 shift calendar kelly day",
+      "intentKey": "shift:24-48-three-platoon-kelly-day-exdate",
+      "cluster": "C03",
+      "language": "en-US",
+      "readerOutcome": "Model a 24-on/48-off roster and a Kelly-day exception while preserving the base cycle and checking exact handover dates.",
+      "distinctValue": "Worked example to check against your calendar: Day 16 / 16 November, 07:00 / Tour ends 17 November, 07:00; Day 19 / 19 November, 07:00 / Kelly exception in this illustration; Day 22 / 22 November, 07:00 / Original base start retained",
+      "closestNeighbor": "shift-work-calendar-iphone-rotating-schedules",
+      "boundary": "Distinct worked procedure; links to the existing overview rather than restating it.",
+      "canonicalDecision": "standalone-candidate; check explicit neighbor warning before integration",
+      "proposedFamily": "planning",
+      "proposedIntent": "how-to",
+      "adjacentArticlesRead": [
+        "shift-work-calendar-iphone-rotating-schedules",
+        "recurring-events-without-the-mess",
+        "the-year-in-one-screen"
+      ],
+      "originalExampleStatus": "illustrative; independent UTC/date arithmetic checks in math-fixtures-codex.json",
+      "firsthandTesting": false,
+      "evidence": [
+        {
+          "type": "primary",
+          "url": "https://www.southburlingtonvt.gov/170/Careers",
+          "label": "South Burlington Fire: 24/48 and every-seventh-shift Kelly day",
+          "verifiedAt": "2026-10-23",
+          "readScope": "Relevant actual primary body, not title-only; see review-01-codex.json sourceReading and source corrections."
+        },
+        {
+          "type": "primary",
+          "url": "https://www.rfc-editor.org/rfc/rfc5545#section-3.8.5.1",
+          "label": "RFC 5545: recurrence exclusions",
+          "verifiedAt": "2026-10-23",
+          "readScope": "Relevant actual primary body, not title-only; see review-01-codex.json sourceReading and source corrections."
+        },
+        {
+          "type": "primary",
+          "url": "https://support.google.com/calendar/answer/37115?hl=en",
+          "label": "Google Calendar: edit a recurring event",
+          "verifiedAt": "2026-10-23",
+          "readScope": "Relevant actual primary body, not title-only; see review-01-codex.json sourceReading and source corrections."
+        }
+      ],
+      "review": {
+        "status": "draft",
+        "reviewer": "Codex independent reviewer and corrective rewrite",
+        "checkedAt": "2026-10-23",
+        "reason": "Raw draft held; substantive corrections applied separately. Root must review revised article, especially noted neighboring intents, before integration."
+      }
+    },
+    "overnight-shift-crossing-midnight-calendar-end-date": {
+      "slug": "overnight-shift-crossing-midnight-calendar-end-date",
+      "primaryKeyword": "night shift crossing midnight calendar",
+      "intentKey": "shift:overnight-cross-midnight-dtstart-dtend-anchoring",
+      "cluster": "C03",
+      "language": "en-US",
+      "readerOutcome": "Enter a night shift that crosses midnight with the correct start date, next-day end and a checkable interval instead of an all-day label.",
+      "distinctValue": "Worked example to check against your calendar: Correct timed shift / 2 November 2026, 19:00 / 3 November 2026, 07:00; Incorrect same-date endpoint / 2 November, 19:00 / 2 November, 07:00; All-day context label / Date-based / Does not express exact working hours",
+      "closestNeighbor": "what-an-all-day-event-really-means",
+      "boundary": "Distinct worked procedure; links to the existing overview rather than restating it.",
+      "canonicalDecision": "standalone-candidate; check explicit neighbor warning before integration",
+      "proposedFamily": "planning",
+      "proposedIntent": "how-to",
+      "adjacentArticlesRead": [
+        "shift-work-calendar-iphone-rotating-schedules",
+        "what-an-all-day-event-really-means",
+        "a-week-view-that-fits-a-week"
+      ],
+      "originalExampleStatus": "illustrative; independent UTC/date arithmetic checks in math-fixtures-codex.json",
+      "firsthandTesting": false,
+      "evidence": [
+        {
+          "type": "primary",
+          "url": "https://www.rfc-editor.org/rfc/rfc5545#section-3.6.1",
+          "label": "RFC 5545: event start and end",
+          "verifiedAt": "2026-10-23",
+          "readScope": "Relevant actual primary body, not title-only; see review-01-codex.json sourceReading and source corrections."
+        },
+        {
+          "type": "primary",
+          "url": "https://support.google.com/calendar/answer/37064?hl=en",
+          "label": "Google Calendar: event time zones",
+          "verifiedAt": "2026-10-23",
+          "readScope": "Relevant actual primary body, not title-only; see review-01-codex.json sourceReading and source corrections."
+        }
+      ],
+      "review": {
+        "status": "draft",
+        "reviewer": "Codex independent reviewer and corrective rewrite",
+        "checkedAt": "2026-10-23",
+        "reason": "Raw draft held; substantive corrections applied separately. Root must review revised article, especially noted neighboring intents, before integration."
+      }
+    },
+    "split-shift-two-work-periods-calendar-blocking": {
+      "slug": "split-shift-two-work-periods-calendar-blocking",
+      "primaryKeyword": "split shift calendar two work periods",
+      "intentKey": "shift:split-shift-dual-work-blocks-unpaid-break",
+      "cluster": "C03",
+      "language": "en-US",
+      "readerOutcome": "Plan a split shift as two timed blocks, distinguish occupied hours from the overall span and keep optional travel buffers explicit.",
+      "distinctValue": "Worked example to check against your calendar: Two scheduled periods / 4 + 4 / 8 hours; Overall span / 06:00 to 19:30 / 13.5 hours; Middle gap / 10:00 to 15:30 / 5.5 hours; Gap after the example buffers / 10:30 to 15:00 / 4.5 hours",
+      "closestNeighbor": "planning-a-week-in-ten-minutes",
+      "boundary": "Distinct worked procedure; links to the existing overview rather than restating it.",
+      "canonicalDecision": "standalone-candidate; check explicit neighbor warning before integration",
+      "proposedFamily": "planning",
+      "proposedIntent": "how-to",
+      "adjacentArticlesRead": [
+        "planning-a-week-in-ten-minutes",
+        "a-week-view-that-fits-a-week",
+        "shift-work-calendar-iphone-rotating-schedules"
+      ],
+      "originalExampleStatus": "illustrative; independent UTC/date arithmetic checks in math-fixtures-codex.json",
+      "firsthandTesting": false,
+      "evidence": [
+        {
+          "type": "primary",
+          "url": "https://www.rfc-editor.org/rfc/rfc5545#section-3.6.1",
+          "label": "RFC 5545: event intervals",
+          "verifiedAt": "2026-10-23",
+          "readScope": "Relevant actual primary body, not title-only; see review-01-codex.json sourceReading and source corrections."
+        },
+        {
+          "type": "primary",
+          "url": "https://www.rfc-editor.org/rfc/rfc5545#section-3.8.2.7",
+          "label": "RFC 5545: time transparency",
+          "verifiedAt": "2026-10-23",
+          "readScope": "Relevant actual primary body, not title-only; see review-01-codex.json sourceReading and source corrections."
+        }
+      ],
+      "review": {
+        "status": "draft",
+        "reviewer": "Codex independent reviewer and corrective rewrite",
+        "checkedAt": "2026-10-23",
+        "reason": "Raw draft held; substantive corrections applied separately. Root must review revised article, especially noted neighboring intents, before integration."
+      }
+    },
+    "on-call-standby-calendar-versus-confirmed-shift": {
+      "slug": "on-call-standby-calendar-versus-confirmed-shift",
+      "primaryKeyword": "on call calendar without blocking availability",
+      "intentKey": "shift:on-call-standby-free-busy-transp-separation",
+      "cluster": "C03",
+      "language": "en-US",
+      "readerOutcome": "Keep an on-call coverage window, regular work and call-outs distinct; choose busy status from the real duty constraints.",
+      "distinctValue": "Worked example to check against your calendar: Coverage envelope / 168 hours / Responsibility window; Regular work / 40 hours / Planned activity; Non-overlapping call-outs / 7 hours / Additional activity; Remainder inside coverage / 121 hours / Not automatically available or unpaid",
+      "closestNeighbor": "booking-link-or-shared-calendar",
+      "boundary": "Distinct worked procedure; links to the existing overview rather than restating it.",
+      "canonicalDecision": "standalone-candidate; check explicit neighbor warning before integration",
+      "proposedFamily": "planning",
+      "proposedIntent": "how-to",
+      "adjacentArticlesRead": [
+        "booking-link-or-shared-calendar",
+        "shift-work-calendar-iphone-rotating-schedules",
+        "what-an-all-day-event-really-means"
+      ],
+      "originalExampleStatus": "illustrative; independent UTC/date arithmetic checks in math-fixtures-codex.json",
+      "firsthandTesting": false,
+      "evidence": [
+        {
+          "type": "primary",
+          "url": "https://www.rfc-editor.org/rfc/rfc5545#section-3.8.2.7",
+          "label": "RFC 5545: transparency and busy-time searches",
+          "verifiedAt": "2026-10-23",
+          "readScope": "Relevant actual primary body, not title-only; see review-01-codex.json sourceReading and source corrections."
+        },
+        {
+          "type": "primary",
+          "url": "https://www.rfc-editor.org/rfc/rfc5545#section-3.6.1",
+          "label": "RFC 5545: event endpoints",
+          "verifiedAt": "2026-10-23",
+          "readScope": "Relevant actual primary body, not title-only; see review-01-codex.json sourceReading and source corrections."
+        }
+      ],
+      "review": {
+        "status": "draft",
+        "reviewer": "Codex independent reviewer and corrective rewrite",
+        "checkedAt": "2026-10-23",
+        "reason": "Raw draft held; substantive corrections applied separately. Root must review revised article, especially noted neighboring intents, before integration."
+      }
+    },
+    "us-uk-dst-mismatch-weeks-recurring-meeting-calendar": {
+      "slug": "us-uk-dst-mismatch-weeks-recurring-meeting-calendar",
+      "primaryKeyword": "us uk daylight saving time difference meeting",
+      "intentKey": "tz:us-uk-europe-asynchronous-dst-gap-weeks",
+      "cluster": "C04",
+      "language": "en-US",
+      "readerOutcome": "Check New York–London meetings during the unequal 2026 and 2027 daylight-saving transitions instead of assuming four weeks every year.",
+      "distinctValue": "Worked example to check against your calendar: 2026 spring / 8–28 March / 21 days; 2026 autumn / 25–31 October / 7 days; 2027 spring / 14–27 March / 14 days; 2027 autumn / 31 October–6 November / 7 days",
+      "closestNeighbor": "when-two-calendars-disagree",
+      "boundary": "Distinct worked procedure; links to the existing overview rather than restating it.",
+      "canonicalDecision": "standalone-candidate; check explicit neighbor warning before integration",
+      "proposedFamily": "planning",
+      "proposedIntent": "guide",
+      "adjacentArticlesRead": [
+        "when-two-calendars-disagree",
+        "time-zones-and-the-flight-you-booked",
+        "recurring-events-without-the-mess"
+      ],
+      "originalExampleStatus": "illustrative; independent UTC/date arithmetic checks in math-fixtures-codex.json",
+      "firsthandTesting": false,
+      "evidence": [
+        {
+          "type": "primary",
+          "url": "https://aa.usno.navy.mil/faq/daylight_time",
+          "label": "US Naval Observatory: US daylight-saving rules",
+          "verifiedAt": "2026-10-23",
+          "readScope": "Relevant actual primary body, not title-only; see review-01-codex.json sourceReading and source corrections."
+        },
+        {
+          "type": "primary",
+          "url": "https://www.gov.uk/when-do-the-clocks-change",
+          "label": "GOV.UK: 2026 and 2027 clock-change dates",
+          "verifiedAt": "2026-10-23",
+          "readScope": "Relevant actual primary body, not title-only; see review-01-codex.json sourceReading and source corrections."
+        },
+        {
+          "type": "primary",
+          "url": "https://support.google.com/calendar/answer/37064?hl=en",
+          "label": "Google Calendar: event time zones",
+          "verifiedAt": "2026-10-23",
+          "readScope": "Relevant actual primary body, not title-only; see review-01-codex.json sourceReading and source corrections."
+        }
+      ],
+      "review": {
+        "status": "draft",
+        "reviewer": "Codex independent reviewer and corrective rewrite",
+        "checkedAt": "2026-10-23",
+        "reason": "Raw draft held; substantive corrections applied separately. Root must review revised article, especially noted neighboring intents, before integration."
+      }
+    },
+    "non-dst-time-zone-arizona-hawaii-recurring-calendar": {
+      "slug": "non-dst-time-zone-arizona-hawaii-recurring-calendar",
+      "primaryKeyword": "arizona time zone daylight saving calendar meeting",
+      "intentKey": "tz:non-dst-jurisdiction-arizona-hawaii-offset-shift",
+      "cluster": "C04",
+      "language": "en-US",
+      "readerOutcome": "Compare Phoenix and Honolulu meetings with seasonal New York, Denver and Los Angeles times using dated 2026 examples.",
+      "distinctValue": "Worked example to check against your calendar: 14 January 2026 / 11:00 / 09:00 / 08:00 / 06:00; 15 July 2026 / 12:00 / 10:00 / 09:00 / 06:00; 4 November 2026 / 11:00 / 09:00 / 08:00 / 06:00",
+      "closestNeighbor": "time-zones-and-the-flight-you-booked",
+      "boundary": "Distinct worked procedure; links to the existing overview rather than restating it.",
+      "canonicalDecision": "standalone-candidate; check explicit neighbor warning before integration",
+      "proposedFamily": "planning",
+      "proposedIntent": "guide",
+      "adjacentArticlesRead": [
+        "time-zones-and-the-flight-you-booked",
+        "when-two-calendars-disagree",
+        "recurring-events-without-the-mess"
+      ],
+      "originalExampleStatus": "illustrative; independent UTC/date arithmetic checks in math-fixtures-codex.json",
+      "firsthandTesting": false,
+      "evidence": [
+        {
+          "type": "primary",
+          "url": "https://aa.usno.navy.mil/faq/daylight_time",
+          "label": "US Naval Observatory: Hawaii and most Arizona exemptions",
+          "verifiedAt": "2026-10-23",
+          "readScope": "Relevant actual primary body, not title-only; see review-01-codex.json sourceReading and source corrections."
+        },
+        {
+          "type": "primary",
+          "url": "https://support.google.com/calendar/answer/37064?hl=en",
+          "label": "Google Calendar: calendar versus event zones",
+          "verifiedAt": "2026-10-23",
+          "readScope": "Relevant actual primary body, not title-only; see review-01-codex.json sourceReading and source corrections."
+        },
+        {
+          "type": "primary",
+          "url": "https://www.iana.org/time-zones",
+          "label": "IANA: geographic time-zone data",
+          "verifiedAt": "2026-10-23",
+          "readScope": "Relevant actual primary body, not title-only; see review-01-codex.json sourceReading and source corrections."
+        }
+      ],
+      "review": {
+        "status": "draft",
+        "reviewer": "Codex independent reviewer and corrective rewrite",
+        "checkedAt": "2026-10-23",
+        "reason": "Raw draft held; substantive corrections applied separately. Root must review revised article, especially noted neighboring intents, before integration."
+      }
+    },
+    "overnight-event-across-dst-spring-forward-fall-back-duration": {
+      "slug": "overnight-event-across-dst-spring-forward-fall-back-duration",
+      "primaryKeyword": "night shift daylight saving time change duration",
+      "intentKey": "tz:overnight-event-across-dst-discontinuity-dtend-vs-duration",
+      "cluster": "C04",
+      "language": "en-US",
+      "readerOutcome": "Check New York overnight events across the 2026 clock changes and distinguish a fixed finish time from an eight-hour recurring duration.",
+      "distinctValue": "Worked example to check against your calendar: 7 March 2026, 22:00 / 7 elapsed hours / 8 March, 07:00; 31 October 2026, 22:00 / 9 elapsed hours / 1 November, 05:00",
+      "closestNeighbor": "overnight-shift-crossing-midnight-calendar-end-date",
+      "boundary": "Close to technical icalendar-duration-p1d-pt24h-dst, but retained as a consumer transition-occurrence audit with dated endpoints. Link rather than duplicate abstract duration exposition; root may merge if both lack distinct navigation.",
+      "canonicalDecision": "standalone-candidate; check explicit neighbor warning before integration",
+      "proposedFamily": "planning",
+      "proposedIntent": "guide",
+      "adjacentArticlesRead": [
+        "shift-work-calendar-iphone-rotating-schedules",
+        "when-two-calendars-disagree",
+        "calendar-notifications-missing-silent-or-duplicated"
+      ],
+      "originalExampleStatus": "illustrative; independent UTC/date arithmetic checks in math-fixtures-codex.json",
+      "firsthandTesting": false,
+      "evidence": [
+        {
+          "type": "primary",
+          "url": "https://www.rfc-editor.org/rfc/rfc5545#section-3.8.5.3",
+          "label": "RFC 5545: recurring exact and nominal duration",
+          "verifiedAt": "2026-10-23",
+          "readScope": "Relevant actual primary body, not title-only; see review-01-codex.json sourceReading and source corrections."
+        },
+        {
+          "type": "primary",
+          "url": "https://www.rfc-editor.org/rfc/rfc5545#section-3.3.10",
+          "label": "RFC 5545: recurrence and invalid local times",
+          "verifiedAt": "2026-10-23",
+          "readScope": "Relevant actual primary body, not title-only; see review-01-codex.json sourceReading and source corrections."
+        },
+        {
+          "type": "primary",
+          "url": "https://aa.usno.navy.mil/faq/daylight_time",
+          "label": "US Naval Observatory: clock-change rules",
+          "verifiedAt": "2026-10-23",
+          "readScope": "Relevant actual primary body, not title-only; see review-01-codex.json sourceReading and source corrections."
+        }
+      ],
+      "review": {
+        "status": "draft",
+        "reviewer": "Codex independent reviewer and corrective rewrite",
+        "checkedAt": "2026-10-23",
+        "reason": "Raw draft held; substantive corrections applied separately. Root must review revised article, especially noted neighboring intents, before integration."
+      }
+    },
+    "separate-start-and-end-time-zones-calendar-events": {
+      "slug": "separate-start-and-end-time-zones-calendar-events",
+      "primaryKeyword": "separate start and end time zones calendar",
+      "intentKey": "tz:dual-endpoint-tzid-dtstart-dtend-elapsed-duration",
+      "cluster": "C04",
+      "language": "en-US",
+      "readerOutcome": "Create an event with different departure and arrival zones in Google Calendar and verify the elapsed interval using both dated endpoints.",
+      "distinctValue": "Worked example to check against your calendar: Los Angeles 08:00 → New York 16:30 / 16:00 → 21:30 / 5.5 hours; London 11:00 → New York 14:00 / 11:00 → 19:00 / 8 hours; Tokyo 17:00 → Los Angeles 10:00 / 08:00 → 18:00 / 10 hours",
+      "closestNeighbor": "time-zones-and-the-flight-you-booked",
+      "boundary": "Baseline time-zones-and-the-flight-you-booked already covers travel zones. This page is defensible only as the documented separate-endpoint workflow plus three independently calculated examples; merge if baseline is expanded to answer the same task.",
+      "canonicalDecision": "standalone-candidate; check explicit neighbor warning before integration",
+      "proposedFamily": "planning",
+      "proposedIntent": "how-to",
+      "adjacentArticlesRead": [
+        "time-zones-and-the-flight-you-booked",
+        "when-two-calendars-disagree",
+        "a-week-view-that-fits-a-week"
+      ],
+      "originalExampleStatus": "illustrative; independent UTC/date arithmetic checks in math-fixtures-codex.json",
+      "firsthandTesting": false,
+      "evidence": [
+        {
+          "type": "primary",
+          "url": "https://support.google.com/calendar/answer/37064?hl=en",
+          "label": "Google Calendar: separate start and end zones",
+          "verifiedAt": "2026-10-23",
+          "readScope": "Relevant actual primary body, not title-only; see review-01-codex.json sourceReading and source corrections."
+        },
+        {
+          "type": "primary",
+          "url": "https://www.rfc-editor.org/rfc/rfc5545#section-3.6.5",
+          "label": "RFC 5545: time-zone components",
+          "verifiedAt": "2026-10-23",
+          "readScope": "Relevant actual primary body, not title-only; see review-01-codex.json sourceReading and source corrections."
+        }
+      ],
+      "review": {
+        "status": "draft",
+        "reviewer": "Codex independent reviewer and corrective rewrite",
+        "checkedAt": "2026-10-23",
+        "reason": "Raw draft held; substantive corrections applied separately. Root must review revised article, especially noted neighboring intents, before integration."
+      }
+    },
+    "southern-hemisphere-reverse-dst-two-hour-meeting-shift": {
+      "slug": "southern-hemisphere-reverse-dst-two-hour-meeting-shift",
+      "primaryKeyword": "southern hemisphere daylight saving time meeting shift",
+      "intentKey": "tz:northern-vs-southern-hemisphere-opposite-dst-2h-swing",
+      "cluster": "C04",
+      "language": "en-US",
+      "readerOutcome": "Compare Sydney and New York meetings across 2026 seasons, then choose an explicit anchor or an agreed seasonal compromise.",
+      "distinctValue": "Worked example to check against your calendar: 6 July 2026, 17:00 New York / 7 July, 07:00 / July baseline; 7 December 2026, 17:00 New York / 8 December, 09:00 / Unchanged New York hour; 7 December 2026, 16:00 New York / 8 December, 08:00 / Illustrative shared seasonal adjustment",
+      "closestNeighbor": "us-uk-dst-mismatch-weeks-recurring-meeting-calendar",
+      "boundary": "Distinct worked procedure; links to the existing overview rather than restating it.",
+      "canonicalDecision": "standalone-candidate; check explicit neighbor warning before integration",
+      "proposedFamily": "planning",
+      "proposedIntent": "guide",
+      "adjacentArticlesRead": [
+        "time-zones-and-the-flight-you-booked",
+        "when-two-calendars-disagree",
+        "a-week-view-that-fits-a-week"
+      ],
+      "originalExampleStatus": "illustrative; independent UTC/date arithmetic checks in math-fixtures-codex.json",
+      "firsthandTesting": false,
+      "evidence": [
+        {
+          "type": "primary",
+          "url": "https://dcj.nsw.gov.au/about-us/daylight-saving.html",
+          "label": "NSW Government: daylight-saving rule",
+          "verifiedAt": "2026-10-23",
+          "readScope": "Relevant actual primary body, not title-only; see review-01-codex.json sourceReading and source corrections."
+        },
+        {
+          "type": "primary",
+          "url": "https://aa.usno.navy.mil/faq/daylight_time",
+          "label": "US Naval Observatory: US daylight-saving rule",
+          "verifiedAt": "2026-10-23",
+          "readScope": "Relevant actual primary body, not title-only; see review-01-codex.json sourceReading and source corrections."
+        },
+        {
+          "type": "primary",
+          "url": "https://support.google.com/calendar/answer/37064?hl=en",
+          "label": "Google Calendar: event versus display zone",
+          "verifiedAt": "2026-10-23",
+          "readScope": "Relevant actual primary body, not title-only; see review-01-codex.json sourceReading and source corrections."
+        }
+      ],
+      "review": {
+        "status": "draft",
+        "reviewer": "Codex independent reviewer and corrective rewrite",
+        "checkedAt": "2026-10-23",
+        "reason": "Raw draft held; substantive corrections applied separately. Root must review revised article, especially noted neighboring intents, before integration."
+      }
+    },
+    "iana-tzdb-government-time-zone-rule-change-calendar": {
+      "slug": "iana-tzdb-government-time-zone-rule-change-calendar",
+      "primaryKeyword": "time zone rule change calendar wrong hour",
+      "intentKey": "tz:iana-tzdb-legislation-change-stale-utc-or-vtimezone",
+      "cluster": "C04",
+      "language": "en-US",
+      "readerOutcome": "Collect dated evidence after a government time-zone change, distinguish stale rules from changed event data and avoid bulk one-hour repairs.",
+      "distinctValue": "Worked example to check against your calendar: Same 14:00 UTC; offset −05:00 → −06:00 / Display changes 09:00 → 08:00 / That the event was edited; Same local 09:00; UTC instant changes / Rules may have been reapplied / That every provider behaves this way; Different zones selected by viewers / Display comparison is not controlled / A server-side rule error",
+      "closestNeighbor": "when-two-calendars-disagree",
+      "boundary": "Distinct worked procedure; links to the existing overview rather than restating it.",
+      "canonicalDecision": "standalone-candidate; check explicit neighbor warning before integration",
+      "proposedFamily": "help",
+      "proposedIntent": "troubleshooting",
+      "adjacentArticlesRead": [
+        "when-two-calendars-disagree",
+        "time-zones-and-the-flight-you-booked",
+        "what-calendar-sync-actually-does"
+      ],
+      "originalExampleStatus": "illustrative; independent UTC/date arithmetic checks in math-fixtures-codex.json",
+      "firsthandTesting": false,
+      "evidence": [
+        {
+          "type": "primary",
+          "url": "https://www.iana.org/time-zones",
+          "label": "IANA: time-zone database and vendor delivery",
+          "verifiedAt": "2026-10-23",
+          "readScope": "Relevant actual primary body, not title-only; see review-01-codex.json sourceReading and source corrections."
+        },
+        {
+          "type": "primary",
+          "url": "https://support.google.com/calendar/answer/37064?hl=en",
+          "label": "Google Calendar: daylight-saving and regional rule changes",
+          "verifiedAt": "2026-10-23",
+          "readScope": "Relevant actual primary body, not title-only; see review-01-codex.json sourceReading and source corrections."
+        },
+        {
+          "type": "primary",
+          "url": "https://www.rfc-editor.org/rfc/rfc5545#section-3.6.5",
+          "label": "RFC 5545: time-zone components",
+          "verifiedAt": "2026-10-23",
+          "readScope": "Relevant actual primary body, not title-only; see review-01-codex.json sourceReading and source corrections."
+        }
+      ],
+      "review": {
+        "status": "draft",
+        "reviewer": "Codex independent reviewer and corrective rewrite",
+        "checkedAt": "2026-10-23",
+        "reason": "Raw draft held; substantive corrections applied separately. Root must review revised article, especially noted neighboring intents, before integration."
+      }
+    }
+  }
+}

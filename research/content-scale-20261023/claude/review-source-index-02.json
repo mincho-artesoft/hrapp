@@ -1,0 +1,189 @@
+[
+  {
+    "url": "https://support.google.com/calendar/answer/37188?hl=en",
+    "resolvedUrl": "https://support.google.com/calendar/answer/37188?hl=en",
+    "status": "fetched",
+    "httpStatus": 200,
+    "method": "direct_primary_body_fetch",
+    "file": "claude/review-source-text/df46dd4dc756c008.txt",
+    "textCharacters": 4195,
+    "bodySha256": "7683900e33893472f339a3796d0e3559d4e9ee693ca7cb63decc41b942acce74",
+    "checkedAt": "2026-10-23"
+  },
+  {
+    "url": "https://support.google.com/calendar/answer/41067?hl=en",
+    "resolvedUrl": "https://support.google.com/calendar/answer/41067?hl=en",
+    "status": "fetched",
+    "httpStatus": 200,
+    "method": "direct_primary_body_fetch",
+    "file": "claude/review-source-text/07ee9a0eb962a91d.txt",
+    "textCharacters": 2367,
+    "bodySha256": "b1bb36fa5a56fa39fafe3b9b8ab05f2e261fd9e792deba40d2749025845ab4e3",
+    "checkedAt": "2026-10-23"
+  },
+  {
+    "url": "https://support.google.com/calendar/answer/37083?hl=en",
+    "resolvedUrl": "https://support.google.com/calendar/answer/37083?hl=en",
+    "status": "fetched",
+    "httpStatus": 200,
+    "method": "direct_primary_body_fetch",
+    "file": "claude/review-source-text/1634297efe5c8ff1.txt",
+    "textCharacters": 3487,
+    "bodySha256": "45d986890bd40a6d223d7eda12fcde42c9d74050dc03cfe1c517b12d45efbd67",
+    "checkedAt": "2026-10-23"
+  },
+  {
+    "url": "https://support.google.com/calendar/answer/41207?hl=en",
+    "resolvedUrl": "https://support.google.com/calendar/answer/41207?hl=en",
+    "status": "fetched",
+    "httpStatus": 200,
+    "method": "direct_primary_body_fetch",
+    "file": "claude/review-source-text/287d5207374faaeb.txt",
+    "textCharacters": 2597,
+    "bodySha256": "484d5e117b8b02fe1f0c162c5b12b6155482b7e4e4e7ac3ef438d78d417e1791",
+    "checkedAt": "2026-10-23"
+  },
+  {
+    "url": "https://support.google.com/calendar/answer/13748346?hl=en",
+    "resolvedUrl": "https://support.google.com/calendar/answer/13748346?hl=en",
+    "status": "fetched",
+    "httpStatus": 200,
+    "method": "existing_exact_primary_body",
+    "file": "claude/review-source-text/e64d2d3dda55c130.txt",
+    "textCharacters": 2397,
+    "bodySha256": "0ff0f2d1c3c72409309ae7acb5be871d82879c70f76240e28a65e101492d2fa7",
+    "checkedAt": "2026-10-23"
+  },
+  {
+    "url": "https://support.google.com/calendar/answer/13748345?hl=en",
+    "resolvedUrl": "https://support.google.com/calendar/answer/13748345?hl=en",
+    "status": "fetched",
+    "httpStatus": 200,
+    "method": "direct_primary_body_fetch",
+    "file": "claude/review-source-text/d232067e1a24af2c.txt",
+    "textCharacters": 3684,
+    "bodySha256": "23854b08b4989b8b64d649e83d76d6a2d8510c34b5b6f0f840ea90f5a8816a56",
+    "checkedAt": "2026-10-23"
+  },
+  {
+    "url": "https://support.google.com/calendar/answer/6084018?hl=en",
+    "resolvedUrl": "https://support.google.com/calendar/answer/6084018?hl=en",
+    "status": "fetched",
+    "httpStatus": 200,
+    "method": "direct_primary_body_fetch",
+    "file": "claude/review-source-text/7b97017b874950d4.txt",
+    "textCharacters": 4221,
+    "bodySha256": "b4f5e288c6a6524f14744ac5c5f715f5a8960c46d8ec74eccf76044e579a1dd3",
+    "checkedAt": "2026-10-23"
+  },
+  {
+    "url": "https://support.google.com/calendar/answer/15454771?hl=en",
+    "resolvedUrl": "https://support.google.com/calendar/answer/15454771?hl=en",
+    "status": "fetched",
+    "httpStatus": 200,
+    "method": "direct_primary_body_fetch",
+    "file": "claude/review-source-text/ae9414fd13b1e375.txt",
+    "textCharacters": 2277,
+    "bodySha256": "f352f4a21c9c96f4a210fd629998b8c935eb0168222939191484551b42a0a9bb",
+    "checkedAt": "2026-10-23"
+  },
+  {
+    "url": "https://support.google.com/calendar/answer/16540694?hl=en",
+    "resolvedUrl": "https://support.google.com/calendar/answer/16540694?hl=en",
+    "status": "fetched",
+    "httpStatus": 200,
+    "method": "direct_primary_body_fetch",
+    "file": "claude/review-source-text/88da1c69852cee57.txt",
+    "textCharacters": 3277,
+    "bodySha256": "39b54a132e71acef7985dd44128717cb96d540c6dda0c8b6d801844bc293dd35",
+    "checkedAt": "2026-10-23"
+  },
+  {
+    "url": "https://support.google.com/calendar/answer/12132599?hl=en",
+    "resolvedUrl": "https://support.google.com/calendar/answer/12132599?hl=en",
+    "status": "fetched",
+    "httpStatus": 200,
+    "method": "direct_primary_body_fetch",
+    "file": "claude/review-source-text/aa5c42e5b097f375.txt",
+    "textCharacters": 2799,
+    "bodySha256": "ac1bc675ff18d1ddcb83d50556c1ea585a08725d9f6bded80ec0518ad11af454",
+    "checkedAt": "2026-10-23"
+  },
+  {
+    "url": "https://support.google.com/calendar/answer/17366804?hl=en",
+    "resolvedUrl": "https://support.google.com/calendar/answer/17366804?hl=en",
+    "status": "fetched",
+    "httpStatus": 200,
+    "method": "direct_primary_body_fetch",
+    "file": "claude/review-source-text/36ffd7a6e137c81f.txt",
+    "textCharacters": 3697,
+    "bodySha256": "c06ba247103b7d4698e67a9646b96e7f115dfb56faeafc00a2df36dc4e337821",
+    "checkedAt": "2026-10-23"
+  },
+  {
+    "url": "https://support.google.com/calendar/answer/37242?hl=en&co=GENIE.Platform%3DDesktop",
+    "resolvedUrl": "https://support.google.com/calendar/answer/37242?hl=en",
+    "status": "fetched",
+    "httpStatus": 200,
+    "method": "existing_exact_primary_body",
+    "file": "claude/review-source-text/cba4073b2967be4a.txt",
+    "textCharacters": 5207,
+    "bodySha256": "2a7c05c85b681b0d1a62a7ff67b631c4f3e1be57bce6b9011a0a843e001a5b55",
+    "checkedAt": "2026-10-23"
+  },
+  {
+    "url": "https://support.google.com/calendar/answer/15077640?hl=en",
+    "resolvedUrl": "https://support.google.com/calendar/answer/15077640?hl=en",
+    "status": "fetched",
+    "httpStatus": 200,
+    "method": "direct_primary_body_fetch",
+    "file": "claude/review-source-text/f3742f630b776a85.txt",
+    "textCharacters": 1140,
+    "bodySha256": "8b7d35ba693e1e6116829f206e4c4fd499c6fa1aa73a917bf293c750dd64c62f",
+    "checkedAt": "2026-10-23"
+  },
+  {
+    "url": "https://support.google.com/calendar/answer/10737245?hl=en",
+    "resolvedUrl": "https://support.google.com/calendar/answer/10737245?hl=en",
+    "status": "fetched",
+    "httpStatus": 200,
+    "method": "direct_primary_body_fetch",
+    "file": "claude/review-source-text/cb9286d6c467cc20.txt",
+    "textCharacters": 1543,
+    "bodySha256": "2ccb03f369c3ab94434c5b26375e720566f656d8430acb1d2203f3f322f6f1ba",
+    "checkedAt": "2026-10-23"
+  },
+  {
+    "url": "https://support.google.com/calendar/answer/10730791?hl=en",
+    "resolvedUrl": "https://support.google.com/calendar/answer/10730791?hl=en",
+    "status": "fetched",
+    "httpStatus": 200,
+    "method": "direct_primary_body_fetch",
+    "file": "claude/review-source-text/99c8f0074d3f4376.txt",
+    "textCharacters": 3192,
+    "bodySha256": "bb57af216c1b5e96ede90a5730f885d12b10a981d418f5a081ba8c2f6d063716",
+    "checkedAt": "2026-10-23"
+  },
+  {
+    "url": "https://support.google.com/calendar/answer/6261951?hl=en",
+    "resolvedUrl": "https://support.google.com/calendar/answer/6261951?hl=en",
+    "status": "fetched",
+    "httpStatus": 200,
+    "method": "existing_exact_primary_body",
+    "file": "claude/review-source-text/0a692a776b84f9a2.txt",
+    "textCharacters": 4200,
+    "bodySha256": "33533bcd5d5cd2e8695bb94a8100a8063a732760083f0075c6aec44fd131462e",
+    "checkedAt": "2026-10-23"
+  },
+  {
+    "url": "https://support.google.com/calendar/answer/7157782?hl=en",
+    "resolvedUrl": "https://support.google.com/calendar/answer/7157782?hl=en",
+    "status": "fetched",
+    "httpStatus": 200,
+    "method": "direct_primary_body_fetch",
+    "file": "claude/review-source-text/9d8f14ca1fb43338.txt",
+    "textCharacters": 2909,
+    "bodySha256": "db0e1181182f8b7118980710f2b39748e08372382eee955d8d830b98e829306d",
+    "checkedAt": "2026-10-23"
+  }
+]

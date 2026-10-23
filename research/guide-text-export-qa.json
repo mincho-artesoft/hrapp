@@ -1,14 +1,14 @@
 {
-  "guides": 73,
+  "guides": 173,
   "selection": "tools/guide-text-selection.json",
-  "extraction": "Visible article headings, paragraphs, lists, FAQs and source links; gallery/other-app cards excluded.",
-  "exportedCharacters": 487194,
+  "extraction": "Visible article headings, paragraphs, table rows, lists, FAQs and source links; gallery/other-app cards excluded.",
+  "exportedCharacters": 1005612,
   "records": [
     {
       "slug": "what-calendar-sync-actually-does",
       "source": "https://www.cloud-calendars.com/articles/what-calendar-sync-actually-does/",
-      "blocks": 72,
-      "characters": 13429
+      "blocks": 74,
+      "characters": 13655
     },
     {
       "slug": "why-a-shared-calendar-does-not-appear",
@@ -25,8 +25,8 @@
     {
       "slug": "work-and-personal-without-two-apps",
       "source": "https://www.cloud-calendars.com/articles/work-and-personal-without-two-apps/",
-      "blocks": 50,
-      "characters": 7576
+      "blocks": 53,
+      "characters": 7967
     },
     {
       "slug": "free-google-sync-without-adverts",
@@ -55,44 +55,44 @@
     {
       "slug": "calendar-notifications-missing-silent-or-duplicated",
       "source": "https://www.cloud-calendars.com/articles/calendar-notifications-missing-silent-or-duplicated/",
-      "blocks": 46,
-      "characters": 6891
+      "blocks": 51,
+      "characters": 7471
     },
     {
       "slug": "find-old-calendar-events-by-account-date-and-title",
       "source": "https://www.cloud-calendars.com/articles/find-old-calendar-events-by-account-date-and-title/",
-      "blocks": 48,
-      "characters": 6577
+      "blocks": 49,
+      "characters": 6683
     },
     {
       "slug": "calendar-export-ics-pdf-and-backup",
       "source": "https://www.cloud-calendars.com/articles/calendar-export-ics-pdf-and-backup/",
-      "blocks": 67,
-      "characters": 11899
+      "blocks": 70,
+      "characters": 11822
     },
     {
       "slug": "recurring-events-without-the-mess",
       "source": "https://www.cloud-calendars.com/articles/recurring-events-without-the-mess/",
-      "blocks": 47,
-      "characters": 6975
+      "blocks": 53,
+      "characters": 7822
     },
     {
       "slug": "time-zones-and-the-flight-you-booked",
       "source": "https://www.cloud-calendars.com/articles/time-zones-and-the-flight-you-booked/",
-      "blocks": 52,
-      "characters": 7928
+      "blocks": 57,
+      "characters": 8550
     },
     {
       "slug": "what-an-all-day-event-really-means",
       "source": "https://www.cloud-calendars.com/articles/what-an-all-day-event-really-means/",
-      "blocks": 55,
-      "characters": 8641
+      "blocks": 59,
+      "characters": 8382
     },
     {
       "slug": "the-widget-that-shows-what-is-next",
       "source": "https://www.cloud-calendars.com/articles/the-widget-that-shows-what-is-next/",
-      "blocks": 52,
-      "characters": 6955
+      "blocks": 57,
+      "characters": 7542
     },
     {
       "slug": "a-countdown-to-your-next-meeting",
@@ -121,26 +121,26 @@
     {
       "slug": "event-saved-to-wrong-calendar",
       "source": "https://www.cloud-calendars.com/articles/event-saved-to-wrong-calendar/",
-      "blocks": 44,
-      "characters": 6406
+      "blocks": 46,
+      "characters": 6648
     },
     {
       "slug": "family-pickup-calendar-handoff",
       "source": "https://www.cloud-calendars.com/articles/family-pickup-calendar-handoff/",
-      "blocks": 47,
-      "characters": 6272
+      "blocks": 48,
+      "characters": 6396
     },
     {
       "slug": "weather-inside-your-calendar",
       "source": "https://www.cloud-calendars.com/articles/weather-inside-your-calendar/",
-      "blocks": 53,
-      "characters": 6506
+      "blocks": 58,
+      "characters": 7209
     },
     {
       "slug": "forecast-beside-every-event",
       "source": "https://www.cloud-calendars.com/articles/forecast-beside-every-event/",
-      "blocks": 45,
-      "characters": 4836
+      "blocks": 50,
+      "characters": 5343
     },
     {
       "slug": "a-fourteen-day-view-of-the-weather",
@@ -163,14 +163,14 @@
     {
       "slug": "icloud-google-and-outlook-in-one-view",
       "source": "https://www.cloud-calendars.com/articles/icloud-google-and-outlook-in-one-view/",
-      "blocks": 56,
-      "characters": 8632
+      "blocks": 61,
+      "characters": 9329
     },
     {
       "slug": "exchange-calendars-on-an-iphone",
       "source": "https://www.cloud-calendars.com/articles/exchange-calendars-on-an-iphone/",
-      "blocks": 46,
-      "characters": 7463
+      "blocks": 51,
+      "characters": 8080
     },
     {
       "slug": "three-calendar-apps-is-two-too-many",
@@ -181,44 +181,44 @@
     {
       "slug": "sharing-one-event-not-your-calendar",
       "source": "https://www.cloud-calendars.com/articles/sharing-one-event-not-your-calendar/",
-      "blocks": 47,
-      "characters": 6235
+      "blocks": 48,
+      "characters": 6361
     },
     {
       "slug": "inviting-people-who-do-not-have-the-app",
       "source": "https://www.cloud-calendars.com/articles/inviting-people-who-do-not-have-the-app/",
-      "blocks": 45,
-      "characters": 5952
+      "blocks": 46,
+      "characters": 6069
     },
     {
       "slug": "a-calendar-that-is-yours-to-share",
       "source": "https://www.cloud-calendars.com/articles/a-calendar-that-is-yours-to-share/",
-      "blocks": 46,
-      "characters": 6001
+      "blocks": 50,
+      "characters": 6462
     },
     {
       "slug": "keeping-track-of-who-replied",
       "source": "https://www.cloud-calendars.com/articles/keeping-track-of-who-replied/",
-      "blocks": 58,
-      "characters": 8975
+      "blocks": 63,
+      "characters": 9615
     },
     {
       "slug": "meeting-links-that-make-themselves",
       "source": "https://www.cloud-calendars.com/articles/meeting-links-that-make-themselves/",
-      "blocks": 47,
-      "characters": 6287
+      "blocks": 50,
+      "characters": 6694
     },
     {
       "slug": "who-can-see-what-in-google-calendar",
       "source": "https://www.cloud-calendars.com/articles/who-can-see-what-in-google-calendar/",
-      "blocks": 46,
-      "characters": 5989
+      "blocks": 49,
+      "characters": 6347
     },
     {
       "slug": "taking-back-a-calendar-you-shared",
       "source": "https://www.cloud-calendars.com/articles/taking-back-a-calendar-you-shared/",
-      "blocks": 45,
-      "characters": 6196
+      "blocks": 46,
+      "characters": 6320
     },
     {
       "slug": "the-secret-address-of-a-google-calendar",
@@ -235,8 +235,8 @@
     {
       "slug": "google-calendars-that-never-reach-your-iphone",
       "source": "https://www.cloud-calendars.com/articles/google-calendars-that-never-reach-your-iphone/",
-      "blocks": 46,
-      "characters": 6453
+      "blocks": 48,
+      "characters": 6755
     },
     {
       "slug": "drag-an-event-to-move-it",
@@ -265,8 +265,8 @@
     {
       "slug": "caldav-calendar-on-iphone",
       "source": "https://www.cloud-calendars.com/articles/caldav-calendar-on-iphone/",
-      "blocks": 45,
-      "characters": 7112
+      "blocks": 48,
+      "characters": 7475
     },
     {
       "slug": "month-view-on-a-bigger-screen",
@@ -277,8 +277,8 @@
     {
       "slug": "a-week-view-that-fits-a-week",
       "source": "https://www.cloud-calendars.com/articles/a-week-view-that-fits-a-week/",
-      "blocks": 59,
-      "characters": 9171
+      "blocks": 61,
+      "characters": 9444
     },
     {
       "slug": "a-list-for-people-who-dislike-grids",
@@ -295,14 +295,14 @@
     {
       "slug": "planning-a-week-in-ten-minutes",
       "source": "https://www.cloud-calendars.com/articles/planning-a-week-in-ten-minutes/",
-      "blocks": 49,
-      "characters": 6659
+      "blocks": 54,
+      "characters": 7351
     },
     {
       "slug": "the-commute-and-the-sky",
       "source": "https://www.cloud-calendars.com/articles/the-commute-and-the-sky/",
-      "blocks": 46,
-      "characters": 6038
+      "blocks": 48,
+      "characters": 6322
     },
     {
       "slug": "what-a-forecast-can-and-cannot-tell-you",
@@ -313,32 +313,32 @@
     {
       "slug": "disconnect-calendar-integration-without-losing-track",
       "source": "https://www.cloud-calendars.com/articles/disconnect-calendar-integration-without-losing-track/",
-      "blocks": 50,
-      "characters": 7264
+      "blocks": 52,
+      "characters": 7504
     },
     {
       "slug": "onecal-alternative-iphone-calendar-view-or-sync",
       "source": "https://www.cloud-calendars.com/articles/onecal-alternative-iphone-calendar-view-or-sync/",
-      "blocks": 56,
-      "characters": 8095
+      "blocks": 61,
+      "characters": 8936
     },
     {
       "slug": "calendar-event-or-room-reservation",
       "source": "https://www.cloud-calendars.com/articles/calendar-event-or-room-reservation/",
-      "blocks": 49,
-      "characters": 7251
+      "blocks": 53,
+      "characters": 7773
     },
     {
       "slug": "recover-deleted-calendar-events-iphone",
       "source": "https://www.cloud-calendars.com/articles/recover-deleted-calendar-events-iphone/",
-      "blocks": 51,
-      "characters": 8720
+      "blocks": 52,
+      "characters": 8837
     },
     {
       "slug": "change-calendar-color-iphone",
       "source": "https://www.cloud-calendars.com/articles/change-calendar-color-iphone/",
-      "blocks": 52,
-      "characters": 8386
+      "blocks": 53,
+      "characters": 8493
     },
     {
       "slug": "calendar-on-apple-watch",
@@ -349,26 +349,26 @@
     {
       "slug": "unwanted-calendar-events-iphone",
       "source": "https://www.cloud-calendars.com/articles/unwanted-calendar-events-iphone/",
-      "blocks": 52,
-      "characters": 8794
+      "blocks": 54,
+      "characters": 9072
     },
     {
       "slug": "shift-work-calendar-iphone-rotating-schedules",
       "source": "https://www.cloud-calendars.com/articles/shift-work-calendar-iphone-rotating-schedules/",
-      "blocks": 40,
-      "characters": 5404
+      "blocks": 45,
+      "characters": 5988
     },
     {
       "slug": "booking-link-or-shared-calendar",
       "source": "https://www.cloud-calendars.com/articles/booking-link-or-shared-calendar/",
-      "blocks": 45,
-      "characters": 6488
+      "blocks": 50,
+      "characters": 7100
     },
     {
       "slug": "natural-language-calendar-events-iphone",
       "source": "https://www.cloud-calendars.com/articles/natural-language-calendar-events-iphone/",
-      "blocks": 39,
-      "characters": 5252
+      "blocks": 41,
+      "characters": 5480
     },
     {
       "slug": "cozi-timetree-family-calendar-iphone-android",
@@ -379,8 +379,8 @@
     {
       "slug": "iphone-calendar-tasks-reminders-versus-event-alerts",
       "source": "https://www.cloud-calendars.com/articles/iphone-calendar-tasks-reminders-versus-event-alerts/",
-      "blocks": 45,
-      "characters": 6409
+      "blocks": 47,
+      "characters": 6682
     },
     {
       "slug": "automatic-time-blocking-versus-manual-calendar",
@@ -397,14 +397,14 @@
     {
       "slug": "fantastical-readdle-calendar366-iphone-comparison",
       "source": "https://www.cloud-calendars.com/articles/fantastical-readdle-calendar366-iphone-comparison/",
-      "blocks": 66,
-      "characters": 9526
+      "blocks": 72,
+      "characters": 10527
     },
     {
       "slug": "iphone-calendar-language-alternate-calendar-settings",
       "source": "https://www.cloud-calendars.com/articles/iphone-calendar-language-alternate-calendar-settings/",
-      "blocks": 44,
-      "characters": 6058
+      "blocks": 47,
+      "characters": 6439
     },
     {
       "slug": "share-assign-reminders-iphone-calendar-difference",
@@ -427,8 +427,8 @@
     {
       "slug": "sync-google-tasks-apple-reminders-iphone",
       "source": "https://www.cloud-calendars.com/articles/sync-google-tasks-apple-reminders-iphone/",
-      "blocks": 52,
-      "characters": 7314
+      "blocks": 53,
+      "characters": 7422
     },
     {
       "slug": "weather-calendar-history-versus-forecast-iphone",
@@ -441,6 +441,606 @@
       "source": "https://www.cloud-calendars.com/articles/weekly-schedule-builder/",
       "blocks": 52,
       "characters": 5454
+    },
+    {
+      "slug": "mac-calendar-siri-suggestions-confirm-ignore",
+      "source": "https://www.cloud-calendars.com/articles/mac-calendar-siri-suggestions-confirm-ignore/",
+      "blocks": 37,
+      "characters": 4450
+    },
+    {
+      "slug": "mac-calendar-subscription-icloud-on-my-mac",
+      "source": "https://www.cloud-calendars.com/articles/mac-calendar-subscription-icloud-on-my-mac/",
+      "blocks": 37,
+      "characters": 4399
+    },
+    {
+      "slug": "google-calendar-keyboard-shortcuts-workflow",
+      "source": "https://www.cloud-calendars.com/articles/google-calendar-keyboard-shortcuts-workflow/",
+      "blocks": 37,
+      "characters": 4366
+    },
+    {
+      "slug": "mac-calendar-subscription-auto-refresh",
+      "source": "https://www.cloud-calendars.com/articles/mac-calendar-subscription-auto-refresh/",
+      "blocks": 38,
+      "characters": 4436
+    },
+    {
+      "slug": "outlook-subscribe-or-import-ics-calendar",
+      "source": "https://www.cloud-calendars.com/articles/outlook-subscribe-or-import-ics-calendar/",
+      "blocks": 43,
+      "characters": 4883
+    },
+    {
+      "slug": "mac-calendar-holidays-different-region",
+      "source": "https://www.cloud-calendars.com/articles/mac-calendar-holidays-different-region/",
+      "blocks": 37,
+      "characters": 4556
+    },
+    {
+      "slug": "google-calendar-holidays-by-country-and-religion",
+      "source": "https://www.cloud-calendars.com/articles/google-calendar-holidays-by-country-and-religion/",
+      "blocks": 42,
+      "characters": 3652
+    },
+    {
+      "slug": "alternating-a-b-week-school-timetable-calendar-vacation-exceptions",
+      "source": "https://www.cloud-calendars.com/articles/alternating-a-b-week-school-timetable-calendar-vacation-exceptions/",
+      "blocks": 47,
+      "characters": 4875
+    },
+    {
+      "slug": "icloud-private-calendar-pending-invitations",
+      "source": "https://www.cloud-calendars.com/articles/icloud-private-calendar-pending-invitations/",
+      "blocks": 38,
+      "characters": 4524
+    },
+    {
+      "slug": "iphone-calendar-add-remove-event-attachments",
+      "source": "https://www.cloud-calendars.com/articles/iphone-calendar-add-remove-event-attachments/",
+      "blocks": 38,
+      "characters": 4583
+    },
+    {
+      "slug": "backward-planning-project-deadlines-across-weekends-and-holidays",
+      "source": "https://www.cloud-calendars.com/articles/backward-planning-project-deadlines-across-weekends-and-holidays/",
+      "blocks": 43,
+      "characters": 4651
+    },
+    {
+      "slug": "calendar-travel-time-versus-separate-buffer-event-blocks",
+      "source": "https://www.cloud-calendars.com/articles/calendar-travel-time-versus-separate-buffer-event-blocks/",
+      "blocks": 42,
+      "characters": 4605
+    },
+    {
+      "slug": "calendar-week-numbers-iso-monday-versus-sunday-start-mismatch",
+      "source": "https://www.cloud-calendars.com/articles/calendar-week-numbers-iso-monday-versus-sunday-start-mismatch/",
+      "blocks": 43,
+      "characters": 4225
+    },
+    {
+      "slug": "google-appointment-cancel-booked-slot",
+      "source": "https://www.cloud-calendars.com/articles/google-appointment-cancel-booked-slot/",
+      "blocks": 46,
+      "characters": 5211
+    },
+    {
+      "slug": "google-calendar-change-event-owner-before-handover",
+      "source": "https://www.cloud-calendars.com/articles/google-calendar-change-event-owner-before-handover/",
+      "blocks": 49,
+      "characters": 7108
+    },
+    {
+      "slug": "mac-calendar-travel-time-after-location-change",
+      "source": "https://www.cloud-calendars.com/articles/mac-calendar-travel-time-after-location-change/",
+      "blocks": 39,
+      "characters": 4553
+    },
+    {
+      "slug": "mac-calendar-check-invitee-availability",
+      "source": "https://www.cloud-calendars.com/articles/mac-calendar-check-invitee-availability/",
+      "blocks": 38,
+      "characters": 4422
+    },
+    {
+      "slug": "icloud-calendar-invitation-sender-email",
+      "source": "https://www.cloud-calendars.com/articles/icloud-calendar-invitation-sender-email/",
+      "blocks": 37,
+      "characters": 4562
+    },
+    {
+      "slug": "outlook-calendar-color-categories",
+      "source": "https://www.cloud-calendars.com/articles/outlook-calendar-color-categories/",
+      "blocks": 38,
+      "characters": 3717
+    },
+    {
+      "slug": "icloud-delete-calendar-every-device",
+      "source": "https://www.cloud-calendars.com/articles/icloud-delete-calendar-every-device/",
+      "blocks": 39,
+      "characters": 4678
+    },
+    {
+      "slug": "display-multiple-time-zone-columns-google-calendar-outlook",
+      "source": "https://www.cloud-calendars.com/articles/display-multiple-time-zone-columns-google-calendar-outlook/",
+      "blocks": 40,
+      "characters": 4367
+    },
+    {
+      "slug": "google-calendar-public-embed-on-website",
+      "source": "https://www.cloud-calendars.com/articles/google-calendar-public-embed-on-website/",
+      "blocks": 49,
+      "characters": 6516
+    },
+    {
+      "slug": "outlook-end-recurring-meeting-early-keep-history",
+      "source": "https://www.cloud-calendars.com/articles/outlook-end-recurring-meeting-early-keep-history/",
+      "blocks": 47,
+      "characters": 5592
+    },
+    {
+      "slug": "outlook-events-from-email-flights-hotels",
+      "source": "https://www.cloud-calendars.com/articles/outlook-events-from-email-flights-hotels/",
+      "blocks": 40,
+      "characters": 4617
+    },
+    {
+      "slug": "google-calendar-events-from-gmail-visibility",
+      "source": "https://www.cloud-calendars.com/articles/google-calendar-events-from-gmail-visibility/",
+      "blocks": 47,
+      "characters": 6232
+    },
+    {
+      "slug": "outlook-forward-meeting-and-allow-forwarding",
+      "source": "https://www.cloud-calendars.com/articles/outlook-forward-meeting-and-allow-forwarding/",
+      "blocks": 53,
+      "characters": 7300
+    },
+    {
+      "slug": "google-calendar-gemini-suggested-meeting-times",
+      "source": "https://www.cloud-calendars.com/articles/google-calendar-gemini-suggested-meeting-times/",
+      "blocks": 37,
+      "characters": 4537
+    },
+    {
+      "slug": "mac-calendar-caldav-delegation-allow-write",
+      "source": "https://www.cloud-calendars.com/articles/mac-calendar-caldav-delegation-allow-write/",
+      "blocks": 38,
+      "characters": 4740
+    },
+    {
+      "slug": "google-calendar-alternate-calendar-moon-sports",
+      "source": "https://www.cloud-calendars.com/articles/google-calendar-alternate-calendar-moon-sports/",
+      "blocks": 37,
+      "characters": 4495
+    },
+    {
+      "slug": "google-appointment-email-verification",
+      "source": "https://www.cloud-calendars.com/articles/google-appointment-email-verification/",
+      "blocks": 37,
+      "characters": 4446
+    },
+    {
+      "slug": "google-appointment-schedule-which-calendars-block-booking-slots",
+      "source": "https://www.cloud-calendars.com/articles/google-appointment-schedule-which-calendars-block-booking-slots/",
+      "blocks": 52,
+      "characters": 7979
+    },
+    {
+      "slug": "google-calendar-birthdays-from-contacts",
+      "source": "https://www.cloud-calendars.com/articles/google-calendar-birthdays-from-contacts/",
+      "blocks": 46,
+      "characters": 6172
+    },
+    {
+      "slug": "google-calendar-find-a-time-blank-is-not-free",
+      "source": "https://www.cloud-calendars.com/articles/google-calendar-find-a-time-blank-is-not-free/",
+      "blocks": 52,
+      "characters": 6531
+    },
+    {
+      "slug": "google-calendar-meeting-notes-not-updating",
+      "source": "https://www.cloud-calendars.com/articles/google-calendar-meeting-notes-not-updating/",
+      "blocks": 44,
+      "characters": 5730
+    },
+    {
+      "slug": "google-calendar-android-app-not-syncing",
+      "source": "https://www.cloud-calendars.com/articles/google-calendar-android-app-not-syncing/",
+      "blocks": 46,
+      "characters": 5116
+    },
+    {
+      "slug": "google-calendar-offline-desktop-limits",
+      "source": "https://www.cloud-calendars.com/articles/google-calendar-offline-desktop-limits/",
+      "blocks": 37,
+      "characters": 4542
+    },
+    {
+      "slug": "google-calendar-ownership-transfer-pending-acceptance",
+      "source": "https://www.cloud-calendars.com/articles/google-calendar-ownership-transfer-pending-acceptance/",
+      "blocks": 44,
+      "characters": 5428
+    },
+    {
+      "slug": "google-calendar-event-visibility-private-public-default",
+      "source": "https://www.cloud-calendars.com/articles/google-calendar-event-visibility-private-public-default/",
+      "blocks": 52,
+      "characters": 7672
+    },
+    {
+      "slug": "google-calendar-time-insights-counted-meetings",
+      "source": "https://www.cloud-calendars.com/articles/google-calendar-time-insights-counted-meetings/",
+      "blocks": 37,
+      "characters": 4616
+    },
+    {
+      "slug": "google-calendar-working-hours-location-out-of-office-focus-time",
+      "source": "https://www.cloud-calendars.com/articles/google-calendar-working-hours-location-out-of-office-focus-time/",
+      "blocks": 56,
+      "characters": 9167
+    },
+    {
+      "slug": "google-family-calendar-membership",
+      "source": "https://www.cloud-calendars.com/articles/google-family-calendar-membership/",
+      "blocks": 43,
+      "characters": 4773
+    },
+    {
+      "slug": "non-integer-30-and-45-minute-utc-offset-calendar-scheduling",
+      "source": "https://www.cloud-calendars.com/articles/non-integer-30-and-45-minute-utc-offset-calendar-scheduling/",
+      "blocks": 43,
+      "characters": 4589
+    },
+    {
+      "slug": "google-calendar-hide-unsubscribe-or-delete",
+      "source": "https://www.cloud-calendars.com/articles/google-calendar-hide-unsubscribe-or-delete/",
+      "blocks": 49,
+      "characters": 6090
+    },
+    {
+      "slug": "icloud-shared-calendar-update-emails",
+      "source": "https://www.cloud-calendars.com/articles/icloud-shared-calendar-update-emails/",
+      "blocks": 37,
+      "characters": 5050
+    },
+    {
+      "slug": "iphone-calendar-add-only-full-access",
+      "source": "https://www.cloud-calendars.com/articles/iphone-calendar-add-only-full-access/",
+      "blocks": 38,
+      "characters": 4927
+    },
+    {
+      "slug": "outlook-show-declined-meetings-on-calendar",
+      "source": "https://www.cloud-calendars.com/articles/outlook-show-declined-meetings-on-calendar/",
+      "blocks": 43,
+      "characters": 4628
+    },
+    {
+      "slug": "outlook-shorten-meetings-automatically",
+      "source": "https://www.cloud-calendars.com/articles/outlook-shorten-meetings-automatically/",
+      "blocks": 40,
+      "characters": 4105
+    },
+    {
+      "slug": "outlook-calendar-delegate-or-editor-permission",
+      "source": "https://www.cloud-calendars.com/articles/outlook-calendar-delegate-or-editor-permission/",
+      "blocks": 54,
+      "characters": 7746
+    },
+    {
+      "slug": "outlook-group-calendar-versus-shared-calendar",
+      "source": "https://www.cloud-calendars.com/articles/outlook-group-calendar-versus-shared-calendar/",
+      "blocks": 47,
+      "characters": 5961
+    },
+    {
+      "slug": "mac-calendar-ignore-alerts-one-calendar",
+      "source": "https://www.cloud-calendars.com/articles/mac-calendar-ignore-alerts-one-calendar/",
+      "blocks": 37,
+      "characters": 4345
+    },
+    {
+      "slug": "outlook-teams-meeting-button-missing",
+      "source": "https://www.cloud-calendars.com/articles/outlook-teams-meeting-button-missing/",
+      "blocks": 42,
+      "characters": 5198
+    },
+    {
+      "slug": "icloud-calendar-hide-past-events",
+      "source": "https://www.cloud-calendars.com/articles/icloud-calendar-hide-past-events/",
+      "blocks": 37,
+      "characters": 4599
+    },
+    {
+      "slug": "on-call-standby-calendar-versus-confirmed-shift",
+      "source": "https://www.cloud-calendars.com/articles/on-call-standby-calendar-versus-confirmed-shift/",
+      "blocks": 36,
+      "characters": 3685
+    },
+    {
+      "slug": "outlook-appointment-meeting-event-convert-and-update",
+      "source": "https://www.cloud-calendars.com/articles/outlook-appointment-meeting-event-convert-and-update/",
+      "blocks": 48,
+      "characters": 5300
+    },
+    {
+      "slug": "outlook-birthday-calendar-from-contacts",
+      "source": "https://www.cloud-calendars.com/articles/outlook-birthday-calendar-from-contacts/",
+      "blocks": 41,
+      "characters": 4117
+    },
+    {
+      "slug": "outlook-calendar-sharing-levels-busy-titles-details",
+      "source": "https://www.cloud-calendars.com/articles/outlook-calendar-sharing-levels-busy-titles-details/",
+      "blocks": 50,
+      "characters": 6616
+    },
+    {
+      "slug": "google-calendar-response-emails-outlook-rsvp",
+      "source": "https://www.cloud-calendars.com/articles/google-calendar-response-emails-outlook-rsvp/",
+      "blocks": 37,
+      "characters": 4706
+    },
+    {
+      "slug": "outlook-show-as-free-busy-tentative-working-elsewhere",
+      "source": "https://www.cloud-calendars.com/articles/outlook-show-as-free-busy-tentative-working-elsewhere/",
+      "blocks": 52,
+      "characters": 6977
+    },
+    {
+      "slug": "outlook-work-hours-and-location",
+      "source": "https://www.cloud-calendars.com/articles/outlook-work-hours-and-location/",
+      "blocks": 44,
+      "characters": 4960
+    },
+    {
+      "slug": "overnight-shift-crossing-midnight-calendar-end-date",
+      "source": "https://www.cloud-calendars.com/articles/overnight-shift-crossing-midnight-calendar-end-date/",
+      "blocks": 35,
+      "characters": 3576
+    },
+    {
+      "slug": "google-appointment-payments-stripe-refunds",
+      "source": "https://www.cloud-calendars.com/articles/google-appointment-payments-stripe-refunds/",
+      "blocks": 37,
+      "characters": 4673
+    },
+    {
+      "slug": "non-dst-time-zone-arizona-hawaii-recurring-calendar",
+      "source": "https://www.cloud-calendars.com/articles/non-dst-time-zone-arizona-hawaii-recurring-calendar/",
+      "blocks": 36,
+      "characters": 3506
+    },
+    {
+      "slug": "google-calendar-print-date-range",
+      "source": "https://www.cloud-calendars.com/articles/google-calendar-print-date-range/",
+      "blocks": 42,
+      "characters": 3793
+    },
+    {
+      "slug": "outlook-print-calendar-styles",
+      "source": "https://www.cloud-calendars.com/articles/outlook-print-calendar-styles/",
+      "blocks": 42,
+      "characters": 4104
+    },
+    {
+      "slug": "outlook-propose-new-meeting-time",
+      "source": "https://www.cloud-calendars.com/articles/outlook-propose-new-meeting-time/",
+      "blocks": 48,
+      "characters": 5403
+    },
+    {
+      "slug": "icloud-public-calendar-publish-stop",
+      "source": "https://www.cloud-calendars.com/articles/icloud-public-calendar-publish-stop/",
+      "blocks": 39,
+      "characters": 4712
+    },
+    {
+      "slug": "outlook-scheduling-assistant-read-colleague-availability",
+      "source": "https://www.cloud-calendars.com/articles/outlook-scheduling-assistant-read-colleague-availability/",
+      "blocks": 49,
+      "characters": 6096
+    },
+    {
+      "slug": "outlook-recover-deleted-calendar-items",
+      "source": "https://www.cloud-calendars.com/articles/outlook-recover-deleted-calendar-items/",
+      "blocks": 42,
+      "characters": 4894
+    },
+    {
+      "slug": "monthly-recurring-last-weekday-byday-minus-1-versus-fixed-date",
+      "source": "https://www.cloud-calendars.com/articles/monthly-recurring-last-weekday-byday-minus-1-versus-fixed-date/",
+      "blocks": 49,
+      "characters": 5439
+    },
+    {
+      "slug": "google-tasks-repeating-task-complete-delete",
+      "source": "https://www.cloud-calendars.com/articles/google-tasks-repeating-task-complete-delete/",
+      "blocks": 44,
+      "characters": 4014
+    },
+    {
+      "slug": "outlook-schedule-meeting-on-behalf-of-someone",
+      "source": "https://www.cloud-calendars.com/articles/outlook-schedule-meeting-on-behalf-of-someone/",
+      "blocks": 50,
+      "characters": 6163
+    },
+    {
+      "slug": "google-booking-page-link-button-embed",
+      "source": "https://www.cloud-calendars.com/articles/google-booking-page-link-button-embed/",
+      "blocks": 37,
+      "characters": 4463
+    },
+    {
+      "slug": "outlook-share-calendar-outside-organization",
+      "source": "https://www.cloud-calendars.com/articles/outlook-share-calendar-outside-organization/",
+      "blocks": 48,
+      "characters": 6673
+    },
+    {
+      "slug": "outlook-shared-mailbox-calendar",
+      "source": "https://www.cloud-calendars.com/articles/outlook-shared-mailbox-calendar/",
+      "blocks": 44,
+      "characters": 4444
+    },
+    {
+      "slug": "google-calendar-android-personal-work-profile",
+      "source": "https://www.cloud-calendars.com/articles/google-calendar-android-personal-work-profile/",
+      "blocks": 37,
+      "characters": 4643
+    },
+    {
+      "slug": "split-shift-two-work-periods-calendar-blocking",
+      "source": "https://www.cloud-calendars.com/articles/split-shift-two-work-periods-calendar-blocking/",
+      "blocks": 36,
+      "characters": 3564
+    },
+    {
+      "slug": "southern-hemisphere-reverse-dst-two-hour-meeting-shift",
+      "source": "https://www.cloud-calendars.com/articles/southern-hemisphere-reverse-dst-two-hour-meeting-shift/",
+      "blocks": 36,
+      "characters": 3742
+    },
+    {
+      "slug": "google-calendar-task-deadline-versus-scheduled-time-block",
+      "source": "https://www.cloud-calendars.com/articles/google-calendar-task-deadline-versus-scheduled-time-block/",
+      "blocks": 43,
+      "characters": 5075
+    },
+    {
+      "slug": "iana-tzdb-government-time-zone-rule-change-calendar",
+      "source": "https://www.cloud-calendars.com/articles/iana-tzdb-government-time-zone-rule-change-calendar/",
+      "blocks": 36,
+      "characters": 4067
+    },
+    {
+      "slug": "google-calendar-email-notifications-filter",
+      "source": "https://www.cloud-calendars.com/articles/google-calendar-email-notifications-filter/",
+      "blocks": 46,
+      "characters": 4748
+    },
+    {
+      "slug": "outlook-create-meeting-from-email",
+      "source": "https://www.cloud-calendars.com/articles/outlook-create-meeting-from-email/",
+      "blocks": 45,
+      "characters": 5076
+    },
+    {
+      "slug": "google-calendar-report-assigned-task-spam",
+      "source": "https://www.cloud-calendars.com/articles/google-calendar-report-assigned-task-spam/",
+      "blocks": 37,
+      "characters": 4604
+    },
+    {
+      "slug": "mac-calendar-custom-alert-email-open-file",
+      "source": "https://www.cloud-calendars.com/articles/mac-calendar-custom-alert-email-open-file/",
+      "blocks": 37,
+      "characters": 4123
+    },
+    {
+      "slug": "us-uk-dst-mismatch-weeks-recurring-meeting-calendar",
+      "source": "https://www.cloud-calendars.com/articles/us-uk-dst-mismatch-weeks-recurring-meeting-calendar/",
+      "blocks": 37,
+      "characters": 3547
+    },
+    {
+      "slug": "outlook-split-view-overlay-calendars",
+      "source": "https://www.cloud-calendars.com/articles/outlook-split-view-overlay-calendars/",
+      "blocks": 39,
+      "characters": 3688
+    },
+    {
+      "slug": "google-keep-reminders-moved-to-tasks",
+      "source": "https://www.cloud-calendars.com/articles/google-keep-reminders-moved-to-tasks/",
+      "blocks": 45,
+      "characters": 5244
+    },
+    {
+      "slug": "outlook-change-meeting-organizer-or-copy-meeting",
+      "source": "https://www.cloud-calendars.com/articles/outlook-change-meeting-organizer-or-copy-meeting/",
+      "blocks": 42,
+      "characters": 4530
+    },
+    {
+      "slug": "firefighter-24-48-kelly-day-calendar-pattern",
+      "source": "https://www.cloud-calendars.com/articles/firefighter-24-48-kelly-day-calendar-pattern/",
+      "blocks": 36,
+      "characters": 3761
+    },
+    {
+      "slug": "dupont-28-day-rotating-shift-calendar-cycle",
+      "source": "https://www.cloud-calendars.com/articles/dupont-28-day-rotating-shift-calendar-cycle/",
+      "blocks": 41,
+      "characters": 3900
+    },
+    {
+      "slug": "icalendar-exdate-recurrence-id-moved-instance",
+      "source": "https://www.cloud-calendars.com/articles/icalendar-exdate-recurrence-id-moved-instance/",
+      "blocks": 39,
+      "characters": 4731
+    },
+    {
+      "slug": "icalendar-floating-time-utc-tzid",
+      "source": "https://www.cloud-calendars.com/articles/icalendar-floating-time-utc-tzid/",
+      "blocks": 37,
+      "characters": 4557
+    },
+    {
+      "slug": "icalendar-duration-p1d-pt24h-dst",
+      "source": "https://www.cloud-calendars.com/articles/icalendar-duration-p1d-pt24h-dst/",
+      "blocks": 39,
+      "characters": 4578
+    },
+    {
+      "slug": "icalendar-valarm-relative-absolute-trigger",
+      "source": "https://www.cloud-calendars.com/articles/icalendar-valarm-relative-absolute-trigger/",
+      "blocks": 39,
+      "characters": 4508
+    },
+    {
+      "slug": "ics-method-cancel-versus-delete-event",
+      "source": "https://www.cloud-calendars.com/articles/ics-method-cancel-versus-delete-event/",
+      "blocks": 40,
+      "characters": 5167
+    },
+    {
+      "slug": "icalendar-transp-class-busy-private",
+      "source": "https://www.cloud-calendars.com/articles/icalendar-transp-class-busy-private/",
+      "blocks": 39,
+      "characters": 4481
+    },
+    {
+      "slug": "icalendar-uid-sequence-event-updates",
+      "source": "https://www.cloud-calendars.com/articles/icalendar-uid-sequence-event-updates/",
+      "blocks": 41,
+      "characters": 4949
+    },
+    {
+      "slug": "pitman-2-2-3-shift-schedule-calendar-setup",
+      "source": "https://www.cloud-calendars.com/articles/pitman-2-2-3-shift-schedule-calendar-setup/",
+      "blocks": 36,
+      "characters": 3804
+    },
+    {
+      "slug": "rrule-count-until-excluded-occurrences",
+      "source": "https://www.cloud-calendars.com/articles/rrule-count-until-excluded-occurrences/",
+      "blocks": 39,
+      "characters": 4382
+    },
+    {
+      "slug": "ics-all-day-dtend-exclusive-end-date",
+      "source": "https://www.cloud-calendars.com/articles/ics-all-day-dtend-exclusive-end-date/",
+      "blocks": 37,
+      "characters": 4298
+    },
+    {
+      "slug": "google-calendar-add-ons-conferencing-permissions",
+      "source": "https://www.cloud-calendars.com/articles/google-calendar-add-ons-conferencing-permissions/",
+      "blocks": 37,
+      "characters": 4471
     }
   ]
 }

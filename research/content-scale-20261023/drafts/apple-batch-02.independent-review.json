@@ -1,0 +1,80 @@
+{
+  "reviewer": "Codex root, independent of author",
+  "checkedAt": "2026-10-23",
+  "method": "Read all11 complete draft bodies and substantive Apple sources directly viaweb; source-specific clauses checked against controls, scope, and side effects. Compared with existingcalendar subscription/notification/recovery/travel and Google-specific tasks.",
+  "sourceEvidence": "Apple guide bodies:icl1024,icl32362,icl624fd1912,iclead4e0ec3,icalwr13-events,icl27527,iclc121e66ee,mmfbbb36ac,iph3d110f84,icl1016. Official sources visible in each article.",
+  "decisions": [
+    {
+      "slug": "mac-calendar-subscription-auto-refresh",
+      "decision": "approve_after_amendments",
+      "distinctTask": "A subscribed calendar is stale on Mac: check Auto-refresh before importing again"
+    },
+    {
+      "slug": "mac-calendar-subscription-icloud-on-my-mac",
+      "decision": "approve_after_amendments",
+      "distinctTask": "A calendar subscription is only on your Mac: check its Location"
+    },
+    {
+      "slug": "mac-calendar-ignore-alerts-one-calendar",
+      "decision": "approve_after_amendments",
+      "distinctTask": "Mute one calendar on Mac without deleting its appointments"
+    },
+    {
+      "slug": "mac-calendar-custom-alert-email-open-file",
+      "decision": "approve_after_amendments",
+      "distinctTask": "Use a custom Mac Calendar alert to open a file or send yourself email"
+    },
+    {
+      "slug": "mac-calendar-holidays-different-region",
+      "decision": "approve_after_amendments",
+      "distinctTask": "Add another country’s holidays on Mac without duplicating your own events"
+    },
+    {
+      "slug": "mac-calendar-travel-time-after-location-change",
+      "decision": "approve_after_amendments",
+      "distinctTask": "Changed a meeting’s location on Mac? Recheck Travel Time as well"
+    },
+    {
+      "slug": "mac-calendar-caldav-delegation-allow-write",
+      "decision": "approve_after_amendments",
+      "distinctTask": "Give a colleague CalDAV calendar-account access in Mac Calendar"
+    },
+    {
+      "slug": "mac-calendar-siri-suggestions-confirm-ignore",
+      "decision": "approve_after_amendments",
+      "distinctTask": "A booking appeared in Siri Suggestions on Mac: confirm it or ignore it"
+    },
+    {
+      "slug": "icloud-delete-calendar-every-device",
+      "decision": "approve_after_amendments",
+      "distinctTask": "Delete an iCloud calendar or just stop seeing it? Check the scope first"
+    },
+    {
+      "slug": "iphone-calendar-add-remove-event-attachments",
+      "decision": "approve_after_amendments",
+      "distinctTask": "Attach the right file to an iPhone Calendar event, then check the saved version"
+    },
+    {
+      "slug": "mac-calendar-check-invitee-availability",
+      "decision": "approve_after_amendments",
+      "distinctTask": "Check invitee availability in Mac Calendar—and why the button may be missing"
+    }
+  ],
+  "changes": [
+    {
+      "slug": "mac-calendar-holidays-different-region",
+      "before": "In Calendar on Mac, choose File > New Holiday Calendar. Use the Region menu to select the desired country or region, then click Add. Check the new calendar in the list and inspect a known holiday date in that region.",
+      "after": "In Calendar on Mac, choose File > New Holiday Calendar. Use the Region menu to select the desired country or region, then click Add. Choose the calendar name, location, alert and refresh settings, then click OK. Check the new calendar in the list and inspect a known holiday date in that region.",
+      "reason": "Apple source requires subscription options and OK after Add."
+    },
+    {
+      "slug": "mac-calendar-caldav-delegation-allow-write",
+      "before": "Apple separately documents Calendar > Settings > Accounts > Delegation for viewing accounts available to you. A CalDAV account appears in Accounts I can access. Have the substitute check the intended account rather than treating an email or familiar event title as proof.",
+      "after": "Apple separately documents Calendar > Settings > Accounts > Delegation for viewing accounts available to you. A CalDAV account appears in Accounts I can access. Have the substitute check the intended account rather than treating an email or familiar event title as proof. Select Show to display the delegated account’s calendars in the main Calendar window.",
+      "reason": "Apple manage-shared-calendars step4 needed for visible recipient outcome."
+    }
+  ],
+  "firsthandTesting": false,
+  "overlapResolution": "Subscription location answers recipient-device availability; Auto-refresh answers freshness of a known changed event. Ignore alerts answers per-calendar mute; custom action answers alert action/target. These do not substitute newplatformwords for identicaltasks. Apple and Googleholidaypages have provider-specific setup and sourcecontrols.",
+  "noNewCanonicalForDefaultCalendar": true
+}

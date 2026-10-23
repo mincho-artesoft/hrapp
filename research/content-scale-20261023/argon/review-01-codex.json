@@ -1,0 +1,248 @@
+{
+  "reviewer": "Codex independent review",
+  "date": "2026-10-23",
+  "actualDraftCount": 12,
+  "claimedBriefCount": 48,
+  "rawBatchPublishDecision": "HOLD: substantive source, arithmetic and recurrence corrections required",
+  "reviewedBatch": "argon-drafts-01-reviewed.json",
+  "reviewedBatchStatus": "12 substantively rewritten candidates; root review required, no publication",
+  "limitations": [
+    "No firsthand provider UI/device test performed.",
+    "Official documentation establishes only explicitly described controls, not arbitrary recurrence selectors.",
+    "Exact dates checked against installed zoneinfo 2026e-rearguard; future government rule changes can alter future examples.",
+    "No measured search volume or ranking evidence asserted.",
+    "Travel and DST duration articles have explicit neighbor-overlap warnings."
+  ],
+  "articles": [
+    {
+      "slug": "pitman-2-2-3-shift-schedule-calendar-setup",
+      "rawDecision": "revise",
+      "reviewedDecision": "candidate for root editorial approval",
+      "requiredCorrectionsApplied": [
+        "Replaced unsupported universal editor instructions with conditional controls and a date audit.",
+        "Made WKST explicit; removed the false grid-preference equivalence.",
+        "Corrected four work blocks to three; removed unqualified full-weekend-off and indefinite recurrence promises."
+      ],
+      "neighborIntentReview": "Distinct worked procedure; links to the existing overview rather than restating it.",
+      "evidenceKind": [
+        "primary documentation",
+        "independent arithmetic or dated worked example"
+      ],
+      "firsthandDeviceTest": false,
+      "searchVolumeOrRankClaim": false
+    },
+    {
+      "slug": "dupont-28-day-rotating-shift-calendar-cycle",
+      "rawDecision": "revise",
+      "reviewedDecision": "candidate for root editorial approval",
+      "requiredCorrectionsApplied": [
+        "Removed unsupported four-week UI controls and universal DuPont ordering.",
+        "Recomputed both night-to-day gaps as 72 hours; rewritten dates require fixture recheck.",
+        "Removed medical and payroll assertions."
+      ],
+      "neighborIntentReview": "Distinct worked procedure; links to the existing overview rather than restating it.",
+      "evidenceKind": [
+        "primary documentation",
+        "independent arithmetic or dated worked example"
+      ],
+      "firsthandDeviceTest": false,
+      "searchVolumeOrRankClaim": false
+    },
+    {
+      "slug": "firefighter-24-48-kelly-day-calendar-pattern",
+      "rawDecision": "revise",
+      "reviewedDecision": "candidate for root editorial approval",
+      "requiredCorrectionsApplied": [
+        "Fixed weekday arithmetic and used an internally consistent seventh-tour exception.",
+        "Removed guaranteed EXDATE and UNTIL serialization claims.",
+        "Removed pay/rest prescriptions and distinguished wall-clock from elapsed hours."
+      ],
+      "neighborIntentReview": "Distinct worked procedure; links to the existing overview rather than restating it.",
+      "evidenceKind": [
+        "primary documentation",
+        "independent arithmetic or dated worked example"
+      ],
+      "firsthandDeviceTest": false,
+      "searchVolumeOrRankClaim": false
+    },
+    {
+      "slug": "overnight-shift-crossing-midnight-calendar-end-date",
+      "rawDecision": "revise",
+      "reviewedDecision": "candidate for root editorial approval",
+      "requiredCorrectionsApplied": [
+        "Corrected mandatory-DTEND claim and removed untested universal rendering behavior.",
+        "Scoped 12-hour arithmetic to a specified no-transition date.",
+        "Removed sleep scheduling and universal 363-night claims."
+      ],
+      "neighborIntentReview": "Distinct worked procedure; links to the existing overview rather than restating it.",
+      "evidenceKind": [
+        "primary documentation",
+        "independent arithmetic or dated worked example"
+      ],
+      "firsthandDeviceTest": false,
+      "searchVolumeOrRankClaim": false
+    },
+    {
+      "slug": "split-shift-two-work-periods-calendar-blocking",
+      "rawDecision": "revise",
+      "reviewedDecision": "candidate for root editorial approval",
+      "requiredCorrectionsApplied": [
+        "Removed payroll, universal report and undocumented split-template claims.",
+        "Made free/busy conditional and separated occupied union from overall span."
+      ],
+      "neighborIntentReview": "Distinct worked procedure; links to the existing overview rather than restating it.",
+      "evidenceKind": [
+        "primary documentation",
+        "independent arithmetic or dated worked example"
+      ],
+      "firsthandDeviceTest": false,
+      "searchVolumeOrRankClaim": false
+    },
+    {
+      "slug": "on-call-standby-calendar-versus-confirmed-shift",
+      "rawDecision": "revise",
+      "reviewedDecision": "candidate for root editorial approval",
+      "requiredCorrectionsApplied": [
+        "Removed unsafe always-Free prescription.",
+        "Corrected remainder to 121 hours and distinguished coverage from activity/pay.",
+        "Removed undocumented integrations and calendar-default claims."
+      ],
+      "neighborIntentReview": "Distinct worked procedure; links to the existing overview rather than restating it.",
+      "evidenceKind": [
+        "primary documentation",
+        "independent arithmetic or dated worked example"
+      ],
+      "firsthandDeviceTest": false,
+      "searchVolumeOrRankClaim": false
+    },
+    {
+      "slug": "us-uk-dst-mismatch-weeks-recurring-meeting-calendar",
+      "rawDecision": "revise",
+      "reviewedDecision": "candidate for root editorial approval",
+      "requiredCorrectionsApplied": [
+        "Corrected four-weeks-every-year and organizer-zone assumptions.",
+        "Verified inclusive dated ranges with zoneinfo 2026e.",
+        "Removed unsupported EU-wide and provider-storage generalizations."
+      ],
+      "neighborIntentReview": "Distinct worked procedure; links to the existing overview rather than restating it.",
+      "evidenceKind": [
+        "primary documentation",
+        "independent arithmetic or dated worked example"
+      ],
+      "firsthandDeviceTest": false,
+      "searchVolumeOrRankClaim": false
+    },
+    {
+      "slug": "non-dst-time-zone-arizona-hawaii-recurring-calendar",
+      "rawDecision": "revise",
+      "reviewedDecision": "candidate for root editorial approval",
+      "requiredCorrectionsApplied": [
+        "Scoped permanent-offset language to current dated rules.",
+        "Removed unsourced Arizona subregion detail and all-cities transition claims.",
+        "Verified January, July and November conversion table."
+      ],
+      "neighborIntentReview": "Distinct worked procedure; links to the existing overview rather than restating it.",
+      "evidenceKind": [
+        "primary documentation",
+        "independent arithmetic or dated worked example"
+      ],
+      "firsthandDeviceTest": false,
+      "searchVolumeOrRankClaim": false
+    },
+    {
+      "slug": "overnight-event-across-dst-spring-forward-fall-back-duration",
+      "rawDecision": "revise",
+      "reviewedDecision": "candidate for root editorial approval",
+      "requiredCorrectionsApplied": [
+        "Corrected central DTEND recurrence error.",
+        "Verified 7/9-hour explicit intervals and 07:00/05:00 fixed-eight-hour endpoints.",
+        "Distinguished explicit gap timestamps from skipped generated starts."
+      ],
+      "neighborIntentReview": "Close to technical icalendar-duration-p1d-pt24h-dst, but retained as a consumer transition-occurrence audit with dated endpoints. Link rather than duplicate abstract duration exposition; root may merge if both lack distinct navigation.",
+      "evidenceKind": [
+        "primary documentation",
+        "independent arithmetic or dated worked example"
+      ],
+      "firsthandDeviceTest": false,
+      "searchVolumeOrRankClaim": false
+    },
+    {
+      "slug": "separate-start-and-end-time-zones-calendar-events",
+      "rawDecision": "revise",
+      "reviewedDecision": "candidate for root editorial approval",
+      "requiredCorrectionsApplied": [
+        "Removed unsupported mobile/Outlook UI paths.",
+        "Removed incorrect westbound description and verified all three UTC calculations.",
+        "Made import fragments and VTIMEZONE requirements explicit."
+      ],
+      "neighborIntentReview": "Baseline time-zones-and-the-flight-you-booked already covers travel zones. This page is defensible only as the documented separate-endpoint workflow plus three independently calculated examples; merge if baseline is expanded to answer the same task.",
+      "evidenceKind": [
+        "primary documentation",
+        "independent arithmetic or dated worked example"
+      ],
+      "firsthandDeviceTest": false,
+      "searchVolumeOrRankClaim": false
+    },
+    {
+      "slug": "southern-hemisphere-reverse-dst-two-hour-meeting-shift",
+      "rawDecision": "revise",
+      "reviewedDecision": "candidate for root editorial approval",
+      "requiredCorrectionsApplied": [
+        "Replaced wrong three-hour compromise with verified 17→16 New York / 07→08 Sydney example.",
+        "Added actual NSW primary support and scoped claims to Sydney/New York.",
+        "Removed unsupported universal city lists and misleading regime count."
+      ],
+      "neighborIntentReview": "Distinct worked procedure; links to the existing overview rather than restating it.",
+      "evidenceKind": [
+        "primary documentation",
+        "independent arithmetic or dated worked example"
+      ],
+      "firsthandDeviceTest": false,
+      "searchVolumeOrRankClaim": false
+    },
+    {
+      "slug": "iana-tzdb-government-time-zone-rule-change-calendar",
+      "rawDecision": "revise",
+      "reviewedDecision": "candidate for root editorial approval",
+      "requiredCorrectionsApplied": [
+        "Removed universal fixed-UTC storage and snapshot claims.",
+        "Replaced risky bulk edits, neighboring-zone workaround and manual SEQUENCE advice with evidence-led escalation.",
+        "Separated legal rule authority, technical database and vendor delivery."
+      ],
+      "neighborIntentReview": "Distinct worked procedure; links to the existing overview rather than restating it.",
+      "evidenceKind": [
+        "primary documentation",
+        "independent arithmetic or dated worked example"
+      ],
+      "firsthandDeviceTest": false,
+      "searchVolumeOrRankClaim": false
+    }
+  ],
+  "mathFixtures": "math-fixtures-codex.json",
+  "sourceReading": [
+    "RFC 5545 sections 3.3.5, 3.3.6, 3.3.10, 3.6.1, 3.6.5, 3.8.2.2, 3.8.2.5, 3.8.2.7, 3.8.5.1 and 3.8.5.3; neighboring body text read.",
+    "Google Calendar 37064 and 37115: full current fetched bodies, including recurrence controls/730 limit and separate endpoint zones.",
+    "USNO daylight_time: full current body.",
+    "Nantucket working-hours FAQ: full Pitman answer.",
+    "Henderson EMS: full schedule paragraph, modified DuPont only.",
+    "South Burlington Fire Careers: full current 24/48 Kelly-day schedule section.",
+    "GOV.UK: full current dates table 2026/2027 and recurring rule.",
+    "NSW: relevant body 824–850; old example dates are not relied upon, recurring rule used.",
+    "IANA time-zones: full current overview, including vendor distribution."
+  ],
+  "countEvidence": "progress.json and claimed-briefs.json report 48 claims; the actual draft dictionary has exactly 12 complete article objects. No remaining claim was counted as written.",
+  "sourceCorrections": [
+    {
+      "url": "https://support.apple.com/guide/iphone/iph69525c028/ios",
+      "problem": "Raw records label this as separate subcalendars; it is a time-zone/display document. Removed rather than retaining an incorrect source claim."
+    },
+    {
+      "url": "https://support.apple.com/guide/calendar/icl1018/mac",
+      "problem": "Raw source label described calendar creation/deletion; actual subject is repeating/all-day events. Removed from rewritten articles where irrelevant."
+    },
+    {
+      "url": "https://www.supershift.app/help.html",
+      "problem": "Rotation feature and bounded entries are documented, but generic split-template and availability defaults were not established; those unsupported claims were removed."
+    }
+  ]
+}

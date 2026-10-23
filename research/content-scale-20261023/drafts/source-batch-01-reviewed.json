@@ -1,0 +1,981 @@
+{
+  "ics-all-day-dtend-exclusive-end-date": {
+    "updated": "2026-10-23",
+    "title": "Why an ICS all-day event ends one date after its last visible day",
+    "short": "ICS all-day end dates",
+    "description": "Read an all-day ICS date range correctly: DTEND is exclusive. Check one-day and multiday examples before changing an imported event.",
+    "lede": "An all-day ICS event ending at 20261105 can correctly describe a trip whose last day is 4 November. The ending date is a boundary, not necessarily a day to display. This guide explains how to inspect that boundary without moving the real trip.",
+    "sections": [
+      {
+        "heading": "Use calendar dates, not midnight timestamps",
+        "body": [
+          "RFC 5545 section 3.6.1 defines DTSTART as included and DTEND as excluded for a VEVENT. When the start uses the DATE value type, an explicit end must also use DATE. A record beginning DTSTART;VALUE=DATE:20261102 and ending DTEND;VALUE=DATE:20261105 covers 2, 3 and 4 November. It stops before 5 November begins.",
+          "A value such as DTSTART:20261102T000000Z describes a timed instant in UTC. It is not interchangeable with DTSTART;VALUE=DATE:20261102. Converting one representation into the other can introduce a time-zone question that the original date-only label did not have."
+        ]
+      },
+      {
+        "heading": "Work through the boundary before editing",
+        "body": [
+          "Imagine a fictional three-day exhibition from Monday 2 November through Wednesday 4 November 2026. Write those three included dates first. The corresponding excluded end boundary is Thursday 5 November. A file showing that later boundary is therefore consistent with the brief, not proof of an extra day.",
+          "For a one-day entry on 2 November, an explicit DATE end is 3 November. The RFC also defines a one-day duration when a DATE start has neither DTEND nor DURATION. Do not add a second visible date merely because the end property is absent."
+        ]
+      },
+      {
+        "heading": "Compare the export with the displayed result",
+        "body": [
+          "Keep the original file and compare the first and final included dates in a separate disposable destination calendar where the provider supports imports. Check the next date too. The expected result for the exhibition is a label on 2–4 November and no label on 5 November.",
+          "If a destination actually displays the extra date, record its name, import route and the exact DATE fields. Do not subtract one day from every export as a general repair. An incorrect start, a timed representation or an importing application’s interpretation can require a different fix."
+        ]
+      },
+      {
+        "heading": "Keep format semantics separate from Cloud Calendars controls",
+        "body": [
+          "This page explains the iCalendar interchange format. It does not provide a raw ICS editor in Cloud Calendars or claim identical import behavior across providers. Use the owning service’s supported import and editing tools, then inspect the resulting dates in the calendar view.",
+          "The existing all-day planning guide covers the app’s date selection, availability and widget eligibility. This technical check answers the narrower question of what a DATE-valued DTEND in an exchanged file means. A displayed date range and a free/busy decision remain separate checks."
+        ]
+      }
+    ],
+    "comparison": {
+      "heading": "Illustrative DATE boundaries",
+      "columns": [
+        "Intended visible dates",
+        "DTSTART value",
+        "Exclusive DTEND value"
+      ],
+      "rows": [
+        {
+          "cells": [
+            "2 November only",
+            "20261102",
+            "20261103"
+          ]
+        },
+        {
+          "cells": [
+            "2–4 November",
+            "20261102",
+            "20261105"
+          ]
+        },
+        {
+          "cells": [
+            "30 November–2 December",
+            "20261130",
+            "20261203"
+          ]
+        }
+      ]
+    },
+    "claims": {},
+    "practical": [
+      "List the intended included dates.",
+      "Confirm that the fields use VALUE=DATE rather than timed values.",
+      "Treat DTEND as the first excluded date.",
+      "Compare the displayed start, final included day and following day without deleting the original."
+    ],
+    "faq": [
+      {
+        "q": "Should I remove a day from the ICS end date?",
+        "a": "Not just because the raw date looks later. An exclusive boundary is correct when the destination displays the intended included dates."
+      },
+      {
+        "q": "Is an all-day entry the same as a midnight appointment?",
+        "a": "No. A DATE value and a DATE-TIME value have different meanings. Retain the representation that matches the actual commitment."
+      }
+    ],
+    "sourcesHeading": "Primary documentation used for this guide",
+    "sources": [
+      {
+        "label": "RFC 5545 §3.6.1: VEVENT inclusive start and non-inclusive end",
+        "url": "https://www.rfc-editor.org/rfc/rfc5545.html#section-3.6.1"
+      }
+    ],
+    "articleLinks": [
+      {
+        "slug": "what-an-all-day-event-really-means",
+        "label": "Check all-day dates and availability"
+      },
+      {
+        "slug": "calendar-export-ics-pdf-and-backup",
+        "label": "Choose the right export or import route"
+      },
+      {
+        "slug": "time-zones-and-the-flight-you-booked",
+        "label": "Separate event time zones from display zones"
+      }
+    ],
+    "seeAlso": [
+      "what-an-all-day-event-really-means",
+      "calendar-export-ics-pdf-and-backup",
+      "time-zones-and-the-flight-you-booked"
+    ]
+  },
+  "icalendar-floating-time-utc-tzid": {
+    "updated": "2026-10-23",
+    "title": "iCalendar floating time, UTC and TZID: which time does the file mean?",
+    "short": "Floating time or a fixed instant",
+    "description": "Compare floating DATE-TIME, UTC Z and TZID values in an ICS file. Avoid changing a real meeting when the display zone changes.",
+    "lede": "A bare 09:00 in an ICS timestamp does not always mean a meeting fixed to one instant. Identify whether the file uses floating time, UTC or a named time zone before deciding that another calendar moved the appointment.",
+    "sections": [
+      {
+        "heading": "Recognize the three representations",
+        "body": [
+          "RFC 5545 section 3.3.5 defines three DATE-TIME forms. A value without Z and without a TZID parameter is floating. A trailing Z means UTC. A local value with a TZID parameter refers to a time-zone definition. A VTIMEZONE component elsewhere in the file does not make a bare floating value zone-specific.",
+          "For example, DTSTART:20261102T090000 is floating. DTSTART:20261102T090000Z identifies 09:00 UTC. DTSTART;TZID=Europe/Paris:20261102T090000 uses a named zone; a complete interoperable calendar object must provide the necessary time-zone information. These are property illustrations, not three equivalent full import files."
+        ]
+      },
+      {
+        "heading": "Decide whether the clock hour or the instant should stay fixed",
+        "body": [
+          "Consider two fictional people using fixed offsets UTC+02:00 and UTC+09:00. A floating 09:00 is intended to remain 09:00 in each person’s applicable local zone, so they would act at different actual instants. A 09:00Z meeting appears at 11:00 and 18:00 respectively. The table uses fixed offsets for arithmetic, not a claim about any city’s seasonal rules.",
+          "A local stretching reminder might reasonably follow the clock hour wherever the person is. A video meeting normally needs one shared instant. Ask the organizer which intention applies. Merely adding Z to a floating timestamp changes its meaning; it is not cosmetic cleanup."
+        ]
+      },
+      {
+        "heading": "Do not paste an ISO offset into an iCalendar DATE-TIME",
+        "body": [
+          "The RFC does not permit a numeric UTC offset as part of this DATE-TIME value. A value such as 20261102T090000+0200 is not the iCalendar DATE-TIME form, even though similar offset notation is familiar elsewhere. Use a valid UTC value or a time-zone reference generated by the supported calendar system.",
+          "For named-zone recurring events, inspect occurrences around clock changes as well as the first date. A fixed offset used for this example is not a substitute for a named zone’s changing rules. This guide does not supply a complete VTIMEZONE generator."
+        ]
+      },
+      {
+        "heading": "Trace an apparent shift without rescheduling everyone",
+        "body": [
+          "Compare the organizer’s confirmation, the original timestamp form and the receiving display zone. If the original represents one instant, a changed local display hour can be correct. Moving the event to restore the old visible hour can then change the actual meeting.",
+          "Cloud Calendars is a calendar application, not the authority that redefines RFC timestamps. This guide does not claim that its editor exposes raw TZID or floating-time controls. Make a necessary representation correction at the owning provider using supported controls, preserve the original and verify the result."
+        ]
+      }
+    ],
+    "comparison": {
+      "heading": "Illustrative result for two fixed-offset readers",
+      "columns": [
+        "Property form",
+        "Reader at UTC+02:00",
+        "Reader at UTC+09:00"
+      ],
+      "rows": [
+        {
+          "cells": [
+            "20261102T090000, no TZID",
+            "09:00 local",
+            "09:00 local"
+          ]
+        },
+        {
+          "cells": [
+            "20261102T090000Z",
+            "11:00 local",
+            "18:00 local"
+          ]
+        },
+        {
+          "cells": [
+            "TZID=… with local value",
+            "Depends on referenced zone",
+            "Same instant, converted for this reader"
+          ]
+        }
+      ]
+    },
+    "claims": {},
+    "practical": [
+      "Inspect Z and the TZID parameter before comparing visible hours.",
+      "Write down whether the appointment means one shared instant or a local clock routine.",
+      "Check the display zone separately from the stored event.",
+      "Use the owning provider to correct a genuine mismatch; do not manually append offsets."
+    ],
+    "faq": [
+      {
+        "q": "Does VTIMEZONE make every timestamp in a file local to that zone?",
+        "a": "No. A DATE-TIME without Z or TZID is floating regardless of other VTIMEZONE components."
+      },
+      {
+        "q": "Can two recipients see the same floating time but attend at different moments?",
+        "a": "Yes. Floating time can follow each recipient’s local clock. That is why it is usually unsuitable for a shared meeting instant."
+      }
+    ],
+    "sourcesHeading": "Primary documentation used for this guide",
+    "sources": [
+      {
+        "label": "RFC 5545 §3.3.5: DATE-TIME forms and floating time",
+        "url": "https://www.rfc-editor.org/rfc/rfc5545.html#section-3.3.5"
+      }
+    ],
+    "articleLinks": [
+      {
+        "slug": "time-zones-and-the-flight-you-booked",
+        "label": "Check event and display zones"
+      },
+      {
+        "slug": "when-two-calendars-disagree",
+        "label": "Trace a disagreement to its source"
+      },
+      {
+        "slug": "calendar-export-ics-pdf-and-backup",
+        "label": "Check what an exported file preserves"
+      }
+    ],
+    "seeAlso": [
+      "time-zones-and-the-flight-you-booked",
+      "when-two-calendars-disagree",
+      "calendar-export-ics-pdf-and-backup"
+    ]
+  },
+  "icalendar-uid-sequence-event-updates": {
+    "updated": "2026-10-23",
+    "title": "ICS UID and SEQUENCE: why a changed title is still the same meeting",
+    "short": "Match an ICS event update",
+    "description": "Use UID, SEQUENCE and recurrence identity to investigate an ICS update. Distinguish a revision from a new event or a repeated file import.",
+    "lede": "A meeting renamed from “Planning” to “Launch planning” can remain the same event. Its title is not the interchange identifier. When an update creates a second entry, compare the event identity and delivery route before deleting either copy.",
+    "sections": [
+      {
+        "heading": "Start with UID, not the title",
+        "body": [
+          "RFC 5545 section 3.8.4.7 defines UID as a persistent, globally unique identifier. Calendar systems use it to correlate scheduling requests with later replies, modifications and cancellation requests. Two different meetings may share a title, while one meeting may change its title and time.",
+          "A UID that resembles an email address is still an identifier; it does not by itself establish the organizer’s email address or grant permission. Preserve the complete value while investigating a harmless sample. Do not replace it with a newly generated value merely because a meeting was edited."
+        ]
+      },
+      {
+        "heading": "Read the revision number in context",
+        "body": [
+          "SEQUENCE describes the component’s revision sequence. Section 3.8.7.4 says it begins at zero and the organizer’s calendar system increments it for significant revisions. It is not an attendance count, a timestamp or an instruction requesting an RSVP.",
+          "Imagine a fictional event with UID:planning-demo@example.invalid. The original is SEQUENCE:0 at 10:00Z. A revised invitation has the same UID, SEQUENCE:1 and a new 11:00Z start. That is an illustrative revision relationship. It is not a promise that every file-import command recognizes or replaces the first entry."
+        ]
+      },
+      {
+        "heading": "Distinguish delivery from identity",
+        "body": [
+          "An account connection or scheduling message and a user importing a downloaded file are different paths. Google explicitly says imported events do not stay in sync between accounts. A matching UID does not turn a one-time import into a live subscription or guarantee how every application resolves repeated imports.",
+          "For a duplicate report, record whether the second entry arrived through an invitation email, an account sync, a subscription or another import. Compare both owning calendars as well as UID and the revision information you can inspect. Similar text on two calendars is not enough to prove the records are the same."
+        ]
+      },
+      {
+        "heading": "Handle recurring events and suspicious updates carefully",
+        "body": [
+          "A recurring series uses UID for the set, with RECURRENCE-ID identifying a particular instance. Comparing only the UID can mistake a legitimate exception for a duplicate. The occurrence identifier refers to the original scheduled start, even when that occurrence has been moved.",
+          "This diagnostic guide does not claim Cloud Calendars exposes raw UID or SEQUENCE fields. Use the original provider or an authorized support export if needed. Do not accept a calendar file as an authorized update solely because its text contains a familiar UID: sender identity and scheduling authorization also matter."
+        ]
+      }
+    ],
+    "comparison": {
+      "heading": "Illustrative identity comparison",
+      "columns": [
+        "Observation",
+        "Likely interpretation to investigate",
+        "Next check"
+      ],
+      "rows": [
+        {
+          "cells": [
+            "Same title, different UID",
+            "Separate identities, possibly a copy",
+            "Owning calendars and creation route"
+          ]
+        },
+        {
+          "cells": [
+            "Same UID, higher SEQUENCE",
+            "A later revision may be involved",
+            "Organizer and supported update route"
+          ]
+        },
+        {
+          "cells": [
+            "Same UID, different RECURRENCE-ID",
+            "Different instances in one series",
+            "Original occurrence dates"
+          ]
+        },
+        {
+          "cells": [
+            "Same file imported twice",
+            "Repeated snapshot operation",
+            "Destination import behavior; not live sync"
+          ]
+        }
+      ]
+    },
+    "claims": {},
+    "practical": [
+      "Keep both records while identifying their owning calendars.",
+      "Compare UID rather than relying on titles alone.",
+      "For a recurring series, include RECURRENCE-ID in the comparison.",
+      "Check revision and delivery route with the organizer or provider before removing a copy."
+    ],
+    "faq": [
+      {
+        "q": "Does a higher SEQUENCE request an RSVP?",
+        "a": "No. The RFC distinguishes revision numbering from the RSVP parameter on an attendee."
+      },
+      {
+        "q": "Will importing another file with the same UID always replace the old event?",
+        "a": "No universal import behavior is promised. A scheduling identity does not make a snapshot import an updating connection."
+      }
+    ],
+    "sourcesHeading": "Primary documentation used for this guide",
+    "sources": [
+      {
+        "label": "RFC 5545 §3.8.4.7: persistent UID",
+        "url": "https://www.rfc-editor.org/rfc/rfc5545.html#section-3.8.4.7"
+      },
+      {
+        "label": "RFC 5545 §3.8.7.4: revision SEQUENCE",
+        "url": "https://www.rfc-editor.org/rfc/rfc5545.html#section-3.8.7.4"
+      },
+      {
+        "label": "Google: importing is not continuing synchronization",
+        "url": "https://support.google.com/calendar/answer/37118?hl=en"
+      },
+      {
+        "label": "RFC 5545 §3.8.4.4: original recurrence-instance identity",
+        "url": "https://www.rfc-editor.org/rfc/rfc5545.html#section-3.8.4.4"
+      }
+    ],
+    "articleLinks": [
+      {
+        "slug": "when-two-calendars-disagree",
+        "label": "Compare the owning records"
+      },
+      {
+        "slug": "what-calendar-sync-actually-does",
+        "label": "Identify the update route"
+      },
+      {
+        "slug": "recurring-events-without-the-mess",
+        "label": "Check the intended occurrence scope"
+      }
+    ],
+    "seeAlso": [
+      "when-two-calendars-disagree",
+      "what-calendar-sync-actually-does",
+      "recurring-events-without-the-mess"
+    ]
+  },
+  "ics-method-cancel-versus-delete-event": {
+    "updated": "2026-10-23",
+    "title": "ICS METHOD:CANCEL is not the same as deleting your calendar copy",
+    "short": "Cancel a meeting or remove a copy",
+    "description": "Understand iTIP cancellation identity, recurring-instance scope and organizer authority before treating a deleted calendar entry as a cancelled meeting.",
+    "lede": "Removing a meeting from your own screen does not establish that the organizer cancelled it for everyone. In iCalendar scheduling, an organizer’s cancellation is a message about an identified event and a defined audience.",
+    "sections": [
+      {
+        "heading": "Separate personal removal from organizer cancellation",
+        "body": [
+          "RFC 5546 section 3.2.5 describes METHOD:CANCEL as a cancellation notice sent by the organizer to affected attendees. Deleting a locally imported copy is a different operation. An attendee who no longer plans to attend should use the provider’s appropriate response or removal controls rather than impersonating the organizer.",
+          "For an important cancellation, check the original organizer and the current event in the owning service. A missing row in one application may reflect hiding, removal or an outdated connection. It is not by itself evidence that the meeting no longer exists for its guests."
+        ]
+      },
+      {
+        "heading": "Keep the original identity and specify the scope",
+        "body": [
+          "The cancellation’s UID must match the original request. Under the RFC, cancelling the entire recurring series omits RECURRENCE-ID, while cancelling one instance includes its occurrence identity. That distinction is more precise than the event title or the date a recipient happens to read the email.",
+          "Imagine a fictional weekly meeting whose original 16 November occurrence has moved to 17 November. An instance cancellation still identifies the original 16 November occurrence through RECURRENCE-ID. Do not substitute its new start just because that is the date currently displayed."
+        ]
+      },
+      {
+        "heading": "Inspect the fields without building an unauthorized message",
+        "body": [
+          "An iTIP cancellation uses METHOD:CANCEL at the calendar-object level and the corresponding event properties inside VEVENT. The RFC requires identity, organizer, timestamp and revision information; it also specifies incrementing SEQUENCE when an event is cancelled. STATUS:CANCELLED is used when the entire event is cancelled, but not merely when selected attendees are uninvited.",
+          "These are diagnostic distinctions, not a complete message-generation recipe. A file containing the right field names does not prove authority. The RFC’s security discussion requires attention to sender authentication and unauthorized organizer changes. Use the supported organizer interface to send a real cancellation."
+        ]
+      },
+      {
+        "heading": "Verify the recipient result through the right route",
+        "body": [
+          "For a harmless agreed test, record one ordinary invitation and one recurring occurrence before cancelling through the organizing provider. Ask the intended test attendee to inspect that exact event. Keep delivery, acceptance of the update and the resulting calendar display as separate observations.",
+          "Cloud Calendars sharing receipts, provider invitations and imported files are different mechanisms. This guide does not claim that a Cloud Calendars delete control sends every provider’s cancellation message. When the required organizer or occurrence controls are absent, use the owning provider and verify the remaining dates."
+        ]
+      }
+    ],
+    "comparison": {
+      "heading": "Cancellation scope to identify before acting",
+      "columns": [
+        "Intended outcome",
+        "Identity information",
+        "Who should act"
+      ],
+      "rows": [
+        {
+          "cells": [
+            "Remove my independent imported copy",
+            "Destination record and calendar",
+            "The person managing that copy"
+          ]
+        },
+        {
+          "cells": [
+            "Cancel one recurring instance",
+            "Original UID plus original occurrence RECURRENCE-ID",
+            "Organizer through a supported interface"
+          ]
+        },
+        {
+          "cells": [
+            "Cancel the entire series",
+            "Original UID; no instance RECURRENCE-ID",
+            "Organizer through a supported interface"
+          ]
+        },
+        {
+          "cells": [
+            "Stop one person attending",
+            "Affected attendee and provider workflow",
+            "Organizer; this is not automatically whole-event cancellation"
+          ]
+        }
+      ]
+    },
+    "claims": {},
+    "practical": [
+      "Establish whether you are the organizer, attendee or owner of an independent copy.",
+      "Name the exact occurrence or whole-series scope.",
+      "Use the owning provider’s supported cancellation workflow.",
+      "Verify the intended recipient and unaffected occurrences without deleting the original as a test."
+    ],
+    "faq": [
+      {
+        "q": "Does deleting my ICS import notify everyone?",
+        "a": "An independent import is not an organizer cancellation channel. Use the original provider’s documented meeting controls for a real cancellation."
+      },
+      {
+        "q": "Does a moved occurrence use its new start as RECURRENCE-ID?",
+        "a": "No. The recurrence identifier refers to the original scheduled occurrence, even when its current start has changed."
+      }
+    ],
+    "sourcesHeading": "Primary documentation used for this guide",
+    "sources": [
+      {
+        "label": "RFC 5546 §3.2.5: CANCEL for VEVENT",
+        "url": "https://www.rfc-editor.org/rfc/rfc5546.html#section-3.2.5"
+      },
+      {
+        "label": "RFC 5546 §6: scheduling security considerations",
+        "url": "https://www.rfc-editor.org/rfc/rfc5546.html#section-6"
+      },
+      {
+        "label": "RFC 5545 §3.8.4.4: original occurrence identity",
+        "url": "https://www.rfc-editor.org/rfc/rfc5545.html#section-3.8.4.4"
+      }
+    ],
+    "articleLinks": [
+      {
+        "slug": "recurring-events-without-the-mess",
+        "label": "Choose one occurrence or series scope"
+      },
+      {
+        "slug": "keeping-track-of-who-replied",
+        "label": "Keep attendance separate from sharing"
+      },
+      {
+        "slug": "calendar-export-ics-pdf-and-backup",
+        "label": "Identify an independent imported copy"
+      }
+    ],
+    "seeAlso": [
+      "recurring-events-without-the-mess",
+      "keeping-track-of-who-replied",
+      "calendar-export-ics-pdf-and-backup"
+    ]
+  },
+  "rrule-count-until-excluded-occurrences": {
+    "updated": "2026-10-23",
+    "title": "RRULE COUNT or UNTIL: end a recurring schedule without an extra session",
+    "short": "COUNT, UNTIL and skipped dates",
+    "description": "Calculate a recurring ICS schedule with COUNT, inclusive UNTIL and EXDATE. See why skipping a date does not add a replacement session.",
+    "lede": "“Four generated Mondays” and “four sessions after a skipped holiday” are different schedules. COUNT bounds the recurrence rule; an exclusion can still remove one of those occurrences. Work out the final dates before changing a course or rota.",
+    "sections": [
+      {
+        "heading": "Choose the boundary that matches the real agreement",
+        "body": [
+          "RFC 5545 section 3.3.10 defines COUNT as an occurrence limit and UNTIL as an inclusive date or date-time boundary. DTSTART counts as the first occurrence. COUNT and UNTIL must not both appear in the same recurrence rule.",
+          "For a fictional weekly course starting at 09:00 UTC on Monday 2 November 2026, RRULE:FREQ=WEEKLY;COUNT=4 generates 2, 9, 16 and 23 November. COUNT=4 does not mean four additional weeks after the first lesson."
+        ]
+      },
+      {
+        "heading": "Calculate an inclusive UNTIL",
+        "body": [
+          "With DTSTART:20261102T090000Z, the alternative rule RRULE:FREQ=WEEKLY;UNTIL=20261123T090000Z includes the occurrence at the boundary, so the same four Mondays result. An UNTIL one second before that final start would exclude 23 November. The end of a meeting’s duration does not determine whether its start is generated by the rule.",
+          "Match the required value type and time basis. A DATE start uses a DATE boundary; a UTC or time-zone-referenced DATE-TIME start requires a UTC UNTIL under the RFC. This page uses UTC to keep the arithmetic explicit. It does not claim every calendar editor lets users type raw rule strings."
+        ]
+      },
+      {
+        "heading": "Apply exclusions after generating the dates",
+        "body": [
+          "Now add EXDATE:20261109T090000Z to the COUNT=4 example. The final visible starts are 2, 16 and 23 November: three sessions. Section 3.8.5.1 says exclusion dates take precedence over the rule’s included starts. The rule does not automatically grow a fifth generated Monday to compensate.",
+          "If the actual agreement requires four attended dates while skipping 9 November, choose a schedule whose final set is 2, 16, 23 and 30 November. For this simple weekly example, COUNT=5 plus that exclusion produces those dates. A provider may expose a different supported control or representation; inspect the final dates rather than assuming a label means attended sessions."
+        ]
+      },
+      {
+        "heading": "Verify the tail as well as the first week",
+        "body": [
+          "Write down the first occurrence, the skipped date, the intended last occurrence and the following week. Check each after a supported edit in the owning provider. A correct next appointment does not prove the series ends correctly.",
+          "Cloud Calendars can display a schedule, but this technical example does not promise raw RRULE or EXDATE editing in its interface. For a change the app does not expose, use the provider’s documented recurrence controls. Preserve existing exceptions before making a series-wide change."
+        ]
+      }
+    ],
+    "comparison": {
+      "heading": "Worked weekly course starting 2 November 2026 at 09:00Z",
+      "columns": [
+        "Rule and exception",
+        "Final November starts",
+        "Number of sessions"
+      ],
+      "rows": [
+        {
+          "cells": [
+            "COUNT=4, no exception",
+            "2, 9, 16, 23",
+            "4"
+          ]
+        },
+        {
+          "cells": [
+            "UNTIL=20261123T090000Z",
+            "2, 9, 16, 23",
+            "4"
+          ]
+        },
+        {
+          "cells": [
+            "COUNT=4; EXDATE for 9 November",
+            "2, 16, 23",
+            "3"
+          ]
+        },
+        {
+          "cells": [
+            "COUNT=5; EXDATE for 9 November",
+            "2, 16, 23, 30",
+            "4"
+          ]
+        }
+      ]
+    },
+    "claims": {},
+    "practical": [
+      "Decide whether the agreement limits generated occurrences or a final date.",
+      "Count DTSTART as the first occurrence.",
+      "Apply exclusions and count the remaining dates.",
+      "Inspect the last intended occurrence and following week using the owning provider."
+    ],
+    "faq": [
+      {
+        "q": "Can I use COUNT and UNTIL together?",
+        "a": "Not in the same RRULE under RFC 5545. Choose a valid rule and verify the actual generated set."
+      },
+      {
+        "q": "Does a skipped holiday automatically add another session?",
+        "a": "No. An EXDATE removes an included occurrence; it does not automatically extend a COUNT-limited rule."
+      }
+    ],
+    "sourcesHeading": "Primary documentation used for this guide",
+    "sources": [
+      {
+        "label": "RFC 5545 §3.3.10: COUNT and inclusive UNTIL",
+        "url": "https://www.rfc-editor.org/rfc/rfc5545.html#section-3.3.10"
+      },
+      {
+        "label": "RFC 5545 §3.8.5.1: exclusion precedence",
+        "url": "https://www.rfc-editor.org/rfc/rfc5545.html#section-3.8.5.1"
+      }
+    ],
+    "articleLinks": [
+      {
+        "slug": "recurring-events-without-the-mess",
+        "label": "Check safe recurrence editing scope"
+      },
+      {
+        "slug": "shift-work-calendar-iphone-rotating-schedules",
+        "label": "Distinguish recurring patterns from a rota"
+      },
+      {
+        "slug": "when-two-calendars-disagree",
+        "label": "Compare the saved source schedule"
+      }
+    ],
+    "seeAlso": [
+      "recurring-events-without-the-mess",
+      "shift-work-calendar-iphone-rotating-schedules",
+      "when-two-calendars-disagree"
+    ]
+  },
+  "icalendar-exdate-recurrence-id-moved-instance": {
+    "updated": "2026-10-23",
+    "title": "EXDATE or RECURRENCE-ID: skip one meeting or move it to another day",
+    "short": "Skip or move a recurring instance",
+    "description": "Compare an ICS exclusion with a moved recurrence override. Keep the original occurrence identity when one meeting changes date.",
+    "lede": "Skipping a weekly meeting and moving that same meeting are different operations. EXDATE removes a generated start; a recurrence override can retain the instance’s identity while giving it a different start. The distinction matters when diagnosing a missing or doubled appointment.",
+    "sections": [
+      {
+        "heading": "Start with a three-date schedule",
+        "body": [
+          "Imagine a fictional weekly series starting at 09:00Z on 2 November 2026 with COUNT=3. Its ordinary starts are 2, 9 and 16 November. If the 9 November meeting is cancelled with no replacement, an exclusion of that original start leaves 2 and 16 November.",
+          "RFC 5545 section 3.8.5.1 defines EXDATE as a set of exceptions removed from the recurrence set. Its values must use the matching value type. Excluding an occurrence is not itself a new start time for that occurrence."
+        ]
+      },
+      {
+        "heading": "Retain original identity when an instance moves",
+        "body": [
+          "Suppose instead that the 9 November meeting moves to Tuesday 10 November at 14:00Z. Section 3.8.4.4 defines RECURRENCE-ID using the original scheduled DTSTART of that instance. The override therefore refers to RECURRENCE-ID:20261109T090000Z even though its new DTSTART is 20261110T140000Z.",
+          "The override belongs to the same series UID. Using 10 November as the recurrence identifier would describe a different identity, not simply document the new time. The field identifies which original occurrence is being changed; the new DTSTART describes where it goes."
+        ]
+      },
+      {
+        "heading": "Do not confuse a matching date list with matching identity",
+        "body": [
+          "Adding a separate event on 10 November and excluding 9 November can make a screen show the same dates. That does not establish that the separate event retains the original recurrence relationship, invitation state or later update behavior. Identify which operation your provider actually performed.",
+          "RFC 5545 also supports RDATE as an additional inclusion date. A union of dates and an override of an identified instance answer different structural questions, even when the resulting grid initially looks similar. A screenshot alone cannot prove how a series exception is represented."
+        ]
+      },
+      {
+        "heading": "Check the source and neighboring dates",
+        "body": [
+          "For the fictional move, verify 2 November stays at 09:00Z, 9 November no longer shows the ordinary meeting, 10 November shows the replacement at 14:00Z and 16 November remains unchanged. Record the owning calendar and organizer as well as the visible dates.",
+          "This is an interchange diagnostic, not a claim that Cloud Calendars exposes raw EXDATE, RDATE or RECURRENCE-ID editing. Use the original provider’s supported single-instance change when necessary. Do not rewrite a real file or recreate the series just to investigate one unfamiliar field."
+        ]
+      }
+    ],
+    "comparison": {
+      "heading": "Two different outcomes from the same original series",
+      "columns": [
+        "Intended outcome",
+        "Relevant original identity",
+        "Expected visible starts"
+      ],
+      "rows": [
+        {
+          "cells": [
+            "Skip 9 November",
+            "EXDATE:20261109T090000Z",
+            "2 and 16 November at 09:00Z"
+          ]
+        },
+        {
+          "cells": [
+            "Move 9 November to 10 November",
+            "RECURRENCE-ID:20261109T090000Z; new DTSTART:20261110T140000Z",
+            "2 November 09:00Z; 10 November 14:00Z; 16 November 09:00Z"
+          ]
+        },
+        {
+          "cells": [
+            "Create an unrelated extra event",
+            "A separate event identity",
+            "May look similar; series relationship not established"
+          ]
+        }
+      ]
+    },
+    "claims": {},
+    "practical": [
+      "Write the original scheduled start before changing one occurrence.",
+      "Decide whether it is being skipped, moved or replaced by an unrelated event.",
+      "For a move, distinguish the old recurrence identity from the new start.",
+      "Check the changed date and neighboring occurrences at the owning source."
+    ],
+    "faq": [
+      {
+        "q": "Why does RECURRENCE-ID show the old date after a move?",
+        "a": "That is its purpose: it identifies the original occurrence being changed. The new DTSTART supplies the moved time."
+      },
+      {
+        "q": "Does EXDATE itself specify the replacement time?",
+        "a": "No. It excludes starts. A replacement requires an appropriate additional representation or supported provider operation."
+      }
+    ],
+    "sourcesHeading": "Primary documentation used for this guide",
+    "sources": [
+      {
+        "label": "RFC5545 §3.8.4.4: recurrence identity of a moved instance",
+        "url": "https://www.rfc-editor.org/rfc/rfc5545.html#section-3.8.4.4"
+      },
+      {
+        "label": "RFC5545 §3.8.5.1: exception dates",
+        "url": "https://www.rfc-editor.org/rfc/rfc5545.html#section-3.8.5.1"
+      },
+      {
+        "label": "RFC5545 §3.8.5.2: additional recurrence dates",
+        "url": "https://www.rfc-editor.org/rfc/rfc5545.html#section-3.8.5.2"
+      }
+    ],
+    "articleLinks": [
+      {
+        "slug": "recurring-events-without-the-mess",
+        "label": "Choose the supported one-occurrence edit"
+      },
+      {
+        "slug": "drag-an-event-to-move-it",
+        "label": "Distinguish a move from a series change"
+      },
+      {
+        "slug": "calendar-export-ics-pdf-and-backup",
+        "label": "Check a recurrence exception after export"
+      }
+    ],
+    "seeAlso": [
+      "recurring-events-without-the-mess",
+      "drag-an-event-to-move-it",
+      "calendar-export-ics-pdf-and-backup"
+    ]
+  },
+  "google-calendar-ownership-transfer-pending-acceptance": {
+    "updated": "2026-10-23",
+    "title": "Google Calendar ownership transfer: finish the handoff before an account closes",
+    "short": "Finish a Google calendar handoff",
+    "description": "Check eligibility, pending acceptance and remaining access in a Google Calendar ownership handoff. A transfer email is not a completed transfer.",
+    "lede": "A team calendar is not safely handed over just because its owner sent an email. Google keeps the current owner responsible until the recipient accepts the transfer. Use a short handoff record to distinguish a pending request from completed ownership.",
+    "sections": [
+      {
+        "heading": "Check whether the calendar can be handed over",
+        "body": [
+          "Google’s transfer guide says a primary calendar cannot be transferred; ownership transfer applies to secondary calendars. Only the current owner can initiate it. For work or school accounts, the new owner must be in the same organization. If those conditions do not hold, do not treat export/import as a transfer of the existing calendar.",
+          "Identify the calendar itself rather than an individual event. Google documents separate commands for changing an event’s owner, moving an event to another calendar you own and copying an event. Those operations do not amount to transferring the calendar’s ownership."
+        ]
+      },
+      {
+        "heading": "Send the transfer from the existing owner",
+        "body": [
+          "On a computer, open Google Calendar using the owner’s account. Under My calendars, open the intended calendar’s Options, then Settings and sharing. In Shared with, use the intended person’s permission menu and choose Transfer ownership, then confirm. Check the exact recipient identity before sending.",
+          "If the person is not available in that sharing arrangement, establish the appropriate calendar sharing first using Google’s supported controls. Do not add a public audience or share account credentials to bypass a missing ownership control. Organization policy can require administrator help."
+        ]
+      },
+      {
+        "heading": "Use acceptance as the handoff milestone",
+        "body": [
+          "Google sends the proposed owner an email link and allows 60 days for acceptance. Until acceptance, the existing person remains the owner. The team should record both “request sent” and “accepted and verified”; these are separate milestones.",
+          "For example, a fictional coordinator plans to close an old project account on 30 November. Sending a request on 20 November does not make account deletion safe. The team first needs the intended colleague to accept and the saved calendar settings to show the resulting ownership. Google warns that deleting an account also deletes calendars it still owns."
+        ]
+      },
+      {
+        "heading": "Review the former owner’s remaining access",
+        "body": [
+          "After acceptance, Google says the former owner automatically becomes a person with “Make changes and manage sharing” permission. Ownership transfer therefore does not automatically remove that person’s access. Review any access that should change through the appropriate sharing controls after the successful handoff.",
+          "Inspect the calendar’s intended audience, a harmless existing event and who should administer later access. Do not edit a live customer meeting just to prove the new owner can make changes. Keep the acceptance and calendar identity in the team’s handoff record."
+        ]
+      },
+      {
+        "heading": "Keep the handoff separate from Cloud Calendars sharing",
+        "body": [
+          "This procedure concerns ownership inside Google Calendar. It is not a Cloud Calendars Reader, Writer or Owner-role transfer, and seeing the calendar in an iPhone app does not certify the Google ownership status.",
+          "If only one event is being transferred, follow Google’s event-specific route instead. Google notes limits for events with more than 200 guests and points out that transferring events with Meet links can affect conferencing policies. Resolve those event-specific requirements before changing ownership, rather than assuming every meeting follows the calendar handoff."
+        ]
+      }
+    ],
+    "comparison": {
+      "heading": "Illustrative team handoff record",
+      "columns": [
+        "State",
+        "Who owns the calendar",
+        "Required check"
+      ],
+      "rows": [
+        {
+          "cells": [
+            "Request sent",
+            "Existing owner",
+            "Recipient identity and intended calendar"
+          ]
+        },
+        {
+          "cells": [
+            "Recipient has not accepted",
+            "Existing owner",
+            "Keep source account available; follow up"
+          ]
+        },
+        {
+          "cells": [
+            "Acceptance completed",
+            "New owner",
+            "Inspect saved ownership and intended access"
+          ]
+        },
+        {
+          "cells": [
+            "Former owner still listed",
+            "Former owner retains a sharing-management role by default",
+            "Review access separately if it should end"
+          ]
+        }
+      ]
+    },
+    "claims": {},
+    "practical": [
+      "Identify a secondary calendar and its current owner.",
+      "Confirm the new owner is eligible and uses the intended identity.",
+      "Send the request through Google Calendar on a computer.",
+      "Record acceptance before closing the old account.",
+      "Review former-owner access separately after completion."
+    ],
+    "faq": [
+      {
+        "q": "Can I transfer my primary Google calendar?",
+        "a": "Google says no. Its ownership-transfer process is for secondary calendars."
+      },
+      {
+        "q": "Does the former owner automatically lose access?",
+        "a": "No. Google says the former owner becomes a sharing-management editor after acceptance. Review access separately."
+      },
+      {
+        "q": "Is an export/import a completed ownership handoff?",
+        "a": "No. It creates copied event data; it does not transfer ownership of the original calendar."
+      }
+    ],
+    "sourcesHeading": "Primary documentation used for this guide",
+    "sources": [
+      {
+        "label": "Google: transfer calendar or event ownership",
+        "url": "https://support.google.com/calendar/answer/78739?hl=en"
+      }
+    ],
+    "articleLinks": [
+      {
+        "slug": "calendar-export-ics-pdf-and-backup",
+        "label": "Distinguish a copy from a transfer"
+      },
+      {
+        "slug": "who-can-see-what-in-google-calendar",
+        "label": "Review permissions after the handoff"
+      },
+      {
+        "slug": "disconnect-calendar-integration-without-losing-track",
+        "label": "Separate access removal from existing copies"
+      }
+    ],
+    "seeAlso": [
+      "calendar-export-ics-pdf-and-backup",
+      "who-can-see-what-in-google-calendar",
+      "disconnect-calendar-integration-without-losing-track"
+    ]
+  },
+  "google-calendar-meeting-notes-not-updating": {
+    "updated": "2026-10-23",
+    "title": "Google Calendar meeting notes not updating? The document is not a live event mirror",
+    "short": "Meeting notes and event changes",
+    "description": "Check why Google meeting notes retain an old time or guest list. Separate document content, event attachments and Drive access before correcting them.",
+    "lede": "A Google Doc created as meeting notes can keep an old attendee list after the event changes. Google documents that meeting-note content and Calendar event details do not update one another. Check both records before inviting someone or correcting the schedule.",
+    "sections": [
+      {
+        "heading": "Identify three separate things",
+        "body": [
+          "The Calendar event owns its time and guest list. A meeting-notes document contains text that can be pre-populated with event details. The attachment connects the event to the document. That connection does not make the two records a continuously synchronized pair.",
+          "Google’s attachment guide gives explicit examples: changing the document’s attendee list does not invite new people; changing its title does not rename the Calendar event; and changing the event does not update the details already placed in the notes. A useful agenda can therefore contain outdated metadata without the event itself being wrong."
+        ]
+      },
+      {
+        "heading": "Work through a rescheduled meeting",
+        "body": [
+          "Imagine a fictional workshop first scheduled for 10:00 with Alex and Morgan. Its organizer creates meeting notes, then moves the Calendar event to 11:00 and adds Sam. The organizer should inspect the event at 11:00 and its actual guest list, then separately update the document’s copied time and participant text where necessary.",
+          "Adding “Sam” to a document is not an invitation. Conversely, inviting Sam does not prove Sam can open the attached file. Check the actual event invitation and the document’s Drive sharing from Sam’s intended account. The comparison table separates these actions so one successful edit is not mistaken for all three."
+        ]
+      },
+      {
+        "heading": "Create or attach notes through the supported route",
+        "body": [
+          "Google documents creating meeting notes from Calendar on a computer. For a new event, the Create meeting notes action in the description/attachment area makes a pre-populated document and attaches it when saved. Existing events need permission to modify the event; Google also notes that another already-attached meeting-notes document can prevent creating a second one through that action.",
+          "In Google Docs, an @ meeting-notes insertion can add event details to the document. Google distinguishes the organizer’s Share & attach route from a non-organizer’s Share route: the latter shares the document without attaching it to the event. A document mentioning the meeting is therefore not proof that every guest can find it from Calendar."
+        ]
+      },
+      {
+        "heading": "Review file sharing without widening the calendar",
+        "body": [
+          "Calendar attachments are stored in Google Drive. Google offers different sharing choices when saving an event with guests who lack access, including sharing with event guests or saving without sharing. In the latter case, a guest can see the file title yet be unable to open it.",
+          "Choose the intended file audience and access level deliberately. Do not make the whole calendar public to fix a Drive permission issue. File names can themselves be visible to people with event-detail access, so use an appropriate title even when the document body is restricted."
+        ]
+      },
+      {
+        "heading": "Use the owning service for the repair",
+        "body": [
+          "This page describes Google Calendar and Google Docs behavior, not a new Cloud Calendars meeting-notes editor. Correct the real schedule and invitations in Calendar, document text in Docs, and file permissions in Drive. An iPhone calendar view is not evidence that those three settings match.",
+          "For a repeatable check, record the event’s current time and guests, the document’s copied details, whether the document is attached, and whether the intended guest can open it. Use a harmless example with a consenting colleague; no firsthand app test is claimed here."
+        ]
+      }
+    ],
+    "comparison": {
+      "heading": "Illustrative workshop changed from 10:00 to 11:00",
+      "columns": [
+        "Desired change",
+        "Where to change it",
+        "What that does not establish"
+      ],
+      "rows": [
+        {
+          "cells": [
+            "Move workshop to 11:00",
+            "Calendar event",
+            "Notes text has changed"
+          ]
+        },
+        {
+          "cells": [
+            "Add Sam as an attendee",
+            "Calendar guest list",
+            "Sam can open the Drive file"
+          ]
+        },
+        {
+          "cells": [
+            "Correct copied time and attendee text",
+            "Meeting-notes document",
+            "A new invitation was sent"
+          ]
+        },
+        {
+          "cells": [
+            "Allow Sam to read the notes",
+            "Drive sharing for the file",
+            "Sam was added to the Calendar event"
+          ]
+        }
+      ]
+    },
+    "claims": {},
+    "practical": [
+      "Check the authoritative event time and guest list in Calendar.",
+      "Compare copied details in the meeting-notes document.",
+      "Verify that the intended document is actually attached.",
+      "Check Drive access using the intended recipient identity.",
+      "Correct each record separately rather than treating the document as a live mirror."
+    ],
+    "faq": [
+      {
+        "q": "Will adding someone to the notes invite them?",
+        "a": "No. Google says updating the document attendee list does not automatically invite people to the Calendar event."
+      },
+      {
+        "q": "Why can a guest see the document title but not open it?",
+        "a": "Calendar event visibility and Drive file access are separate. Ask the file owner to check the document’s sharing for that recipient."
+      },
+      {
+        "q": "Does creating meeting notes in Docs always attach them to the event?",
+        "a": "No. Google distinguishes organizer Share & attach from non-organizer Share; the latter does not attach the document to the event."
+      }
+    ],
+    "sourcesHeading": "Primary documentation used for this guide",
+    "sources": [
+      {
+        "label": "Google: attachments, meeting notes and unsynchronized event details",
+        "url": "https://support.google.com/calendar/answer/6192039?hl=en"
+      }
+    ],
+    "articleLinks": [
+      {
+        "slug": "what-guests-can-do-to-your-event",
+        "label": "Separate guest permissions from file access"
+      },
+      {
+        "slug": "keeping-track-of-who-replied",
+        "label": "Check the actual attendance response"
+      },
+      {
+        "slug": "sharing-one-event-not-your-calendar",
+        "label": "Choose the intended event-sharing route"
+      }
+    ],
+    "seeAlso": [
+      "what-guests-can-do-to-your-event",
+      "keeping-track-of-who-replied",
+      "sharing-one-event-not-your-calendar"
+    ]
+  }
+}

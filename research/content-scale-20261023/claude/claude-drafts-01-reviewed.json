@@ -1,0 +1,1678 @@
+{
+  "google-calendar-working-hours-location-out-of-office-focus-time": {
+    "updated": "2026-10-23",
+    "title": "Google Calendar working hours, working location, out of office or focus time: which one to set",
+    "short": "Working hours, location, OOO or focus time",
+    "description": "Pick the right Google Calendar availability signal: working hours, working location, out of office or focus time. See which ones decline meetings.",
+    "lede": "Google Workspace gives you four ways to tell colleagues about your time, and only two of them can turn down meetings for you. Choosing the wrong one either leaves your calendar looking open when you are not, or declines meetings you meant to attend. Arte Soft, the developer of Cloud Calendars, wrote this guide; every control below is Google’s own.",
+    "commonBelief": "Working location and out of office are two names for the same “I’m not at my desk” setting.",
+    "sections": [
+      {
+        "heading": "Four signals, four different questions",
+        "body": [
+          "Working hours answer “when do I normally work?”. Working location answers “where am I working today?”. An out-of-office event answers “am I unavailable?”. Focus time answers “am I working but should not be interrupted?”. Treat them as separate answers rather than escalating levels of the same setting.",
+          "The distinction matters because of side effects. Google describes an out-of-office event as declining meetings while you are away, with optional decline settings and a message. Focus time has an “Automatically decline meetings” option. Working hours and working location are informational: Google documents them as showing people your availability and location, not as declining anything."
+        ]
+      },
+      {
+        "heading": "Set the weekly pattern first: working hours",
+        "body": [
+          "On a computer, Google’s path is Settings, then under General, Working hours, then Enable working hours, choosing the days and times you work. To add more than one period in a day, such as a split shift or an overnight shift, use Add. Google requires each period’s start time to be before its end time and only supports working hours as a recurring weekly schedule.",
+          "Google says that if you travel, set a working location or change time zone, your working hours adjust to local time. For a one-off change such as an appointment, Google’s own advice is to edit your regular hours and then revert them; there is no separate one-day working-hours exception. On Android, Google directs you to calendar.google.com in a computer browser to set them. If the option is absent, Google says your administrator may not have turned it on."
+        ]
+      },
+      {
+        "heading": "Say where, not whether: working location",
+        "body": [
+          "Working location needs working hours switched on first and an eligible edition; Google lists Business Standard, Business Plus, Enterprise Starter, Enterprise Standard, Enterprise Plus, Education Fundamentals, Education Standard, Education Plus and Nonprofits. Set a default per weekday under Settings, Working hours & location, choosing Home, Office or another location.",
+          "For one day, use the location chip at the top of the calendar and Edit working location. For part of a day, click an empty slot and choose Working location at the top of the new entry, then set the times. A working location is not the address of a meeting: it describes where you are, while each event keeps its own location field.",
+          "Google states that people with free/busy access to your calendar can see your availability and working location. Before choosing a precise address over “Home” or “Office”, consider who already has that level of access."
+        ]
+      },
+      {
+        "heading": "Decline on purpose: out of office and focus time",
+        "body": [
+          "Create an out-of-office event with Create, then Out of office, and pick the dates. For a partial day, deselect All day. It can repeat, and Google marks the decline settings and message as optional changes. Google also says your status can be shown to people who email you, provided they have access to your calendar and the out-of-office event lasts the whole day or runs past your regular working hours.",
+          "Focus time is created from Day or Week view on a specific start and end time, then Focus time at the top of the event. Google says it declines new and existing meetings by default, and lets you limit that to only new meeting invitations. The first time you use it, Do not disturb for Chat is turned on; Google allows Chat muting only when the organisation enables Chat and the focus block is under 24 hours. Google lists Business Standard and Plus, Enterprise Standard and Plus, Education and Nonprofits editions for focus time.",
+          "“New and existing meetings” is the setting with consequences for other people: meetings you had already accepted inside the block can be declined. If you only want to protect empty time, choose new invitations only."
+        ]
+      },
+      {
+        "heading": "Worked example: one illustrative week",
+        "body": [
+          "A fictional support lead works Monday to Thursday, 08:00–12:00 and 13:00–16:30, and takes Friday off. They set working hours with two periods on each of those days and leave Friday unticked. Their default location is Office; on Tuesday they add a part-day working location of Home until 12:00 and Office afterwards.",
+          "On Wednesday 09:00–11:00 they need uninterrupted time but have already accepted a 10:00 customer call. They create focus time and choose “Only new meeting invitations” so the accepted call survives. Friday gets an all-day out-of-office event with a short decline message naming a colleague to contact.",
+          "Check: open Wednesday and confirm the 10:00 call still shows as accepted; open Friday and confirm the out-of-office entry spans the whole day. If a meeting was declined that you meant to keep, open it, change your response and tell the organiser, because the decline was already sent."
+        ]
+      },
+      {
+        "heading": "Where Cloud Calendars fits",
+        "body": [
+          "These four controls live in Google Calendar for Workspace accounts. Set and edit them there. This guide does not describe a Cloud Calendars control for creating them, and a calendar overview on your phone is not a substitute for checking how Google recorded your status."
+        ]
+      }
+    ],
+    "comparison": {
+      "heading": "Which signal to use",
+      "columns": [
+        "Signal",
+        "Answers",
+        "Can decline meetings?",
+        "Who can see it (per Google)",
+        "Set up"
+      ],
+      "rows": [
+        {
+          "cells": [
+            "Working hours",
+            "When you normally work",
+            "No",
+            "Used to show people your availability",
+            "Settings → Working hours; weekly pattern only, split periods via Add"
+          ]
+        },
+        {
+          "cells": [
+            "Working location",
+            "Where you work today or part of a day",
+            "No",
+            "People with free/busy access or more",
+            "Requires working hours on; eligible editions only"
+          ]
+        },
+        {
+          "cells": [
+            "Out of office",
+            "You are unavailable",
+            "Yes, with optional decline settings and message",
+            "Calendar viewers; Gmail senders who have calendar access",
+            "Create → Out of office; partial days by deselecting All day"
+          ]
+        },
+        {
+          "cells": [
+            "Focus time",
+            "Working, do not interrupt",
+            "Yes: new and existing by default, or new only",
+            "Calendar viewers per event visibility",
+            "Day or Week view, timed block; eligible editions only"
+          ]
+        }
+      ]
+    },
+    "claims": {},
+    "practical": [
+      "Turn on working hours first; add a second period for split days.",
+      "Set a default working location per weekday, then override single days or part days with the location chip or a Working location entry.",
+      "Use out of office when you are unavailable, and write a decline message that names an alternative contact.",
+      "Use focus time when you are working but protecting time; choose “Only new meeting invitations” if accepted meetings in that block must stay.",
+      "After saving, reopen affected days and check that no meeting you need was declined; if one was, change your response and tell the organiser."
+    ],
+    "faq": [
+      {
+        "q": "Does setting my working location to Home decline in-person meetings?",
+        "a": "No. Google documents working location as information about where you work, visible to people with free/busy access or more. It does not decline invitations; use out of office or focus time when you need declines."
+      },
+      {
+        "q": "Can I set different working hours just for next Tuesday?",
+        "a": "Google only supports working hours as a weekly recurring schedule and suggests editing your regular hours and reverting them afterwards. A part-day working location or an out-of-office block may describe a one-off change better."
+      },
+      {
+        "q": "Why can’t I find working location or focus time?",
+        "a": "Both are limited to particular Google Workspace editions, and working location also requires working hours to be on. Google says an administrator may not have enabled the feature. A personal Google account will not show them."
+      },
+      {
+        "q": "Will focus time decline a meeting I already accepted?",
+        "a": "By default Google says focus time declines new and existing meetings. Choose “Only new meeting invitations” before saving if you want existing acceptances to stand."
+      }
+    ],
+    "sourcesHeading": "Google Calendar Help pages used",
+    "sources": [
+      {
+        "label": "Google: set your working hours and out-of-office events (computer)",
+        "url": "https://support.google.com/calendar/answer/7638168?hl=en&co=GENIE.Platform%3DDesktop"
+      },
+      {
+        "label": "Google: set your working location (computer)",
+        "url": "https://support.google.com/calendar/answer/18616218?hl=en&co=GENIE.Platform%3DDesktop"
+      },
+      {
+        "label": "Google: use focus time in Google Calendar",
+        "url": "https://support.google.com/calendar/answer/11190973?hl=en"
+      }
+    ],
+    "seeAlso": [
+      "work-and-personal-without-two-apps",
+      "who-can-see-what-in-google-calendar",
+      "keeping-track-of-who-replied",
+      "planning-a-week-in-ten-minutes"
+    ],
+    "articleLinks": [
+      {
+        "slug": "work-and-personal-without-two-apps",
+        "label": "Keep work and personal calendars separate in one view"
+      }
+    ]
+  },
+  "google-calendar-event-visibility-private-public-default": {
+    "updated": "2026-10-23",
+    "title": "Google Calendar private events: what each person with access actually sees",
+    "short": "Private, public and default events",
+    "description": "See what Default, Public and Private event visibility show to each Google Calendar permission level, and why a Public event can expose a busy-only calendar.",
+    "lede": "Marking an event Private feels like closing a door, but who is on the other side depends on the calendar’s sharing. Marking one Public can do the opposite of what people expect. This guide crosses Google’s three event visibility options with its calendar permission levels so you can predict the result before you save.",
+    "commonBelief": "Private hides an event from everyone, and Public only matters on a public calendar.",
+    "sections": [
+      {
+        "heading": "Two settings decide what someone sees",
+        "body": [
+          "Calendar sharing sets a person’s baseline: Google’s levels are “See only free/busy (hide details)”, “See event details”, “Make changes (see private events as free/busy)”, “Make changes and see event details” and “Make changes and manage sharing”. Event visibility then adjusts that baseline for one event: Default visibility, Public or Private.",
+          "Default visibility follows the calendar’s sharing settings, so it changes nothing. The other two override the baseline in opposite directions, which is where surprises happen."
+        ]
+      },
+      {
+        "heading": "Public widens access for that one event",
+        "body": [
+          "Google defines Public as: anyone who has access to view your calendar can see all the details of this event, even if your overall calendar is restricted to free/busy. A colleague who normally sees only grey busy blocks will see the title, place and description of that one event.",
+          "This is useful for, say, an office-hours slot you want everyone with access to read. It is a poor choice for anything you would not show to every person and group on your sharing list, including organisation-wide or public sharing if you have it."
+        ]
+      },
+      {
+        "heading": "Private narrows access, but not for everyone",
+        "body": [
+          "Google says Private hides all details from everyone except you and people with “Make changes and see event details” or higher. So a co-manager with that level still reads your private events in full. Someone with “Make changes (see private events as free/busy)” does not.",
+          "Google explicitly describes an additional distinction for the “Make changes (see private events as free/busy)” permission: a private item marked Busy appears as a busy block, while a private item marked Free is hidden from that recipient’s calendar grid. Do not generalise that exact display rule to every other permission level without checking the recipient’s view. Private controls details; Busy or Free separately describes availability.",
+          "An invitation and a calendar-sharing grant are separate routes. Private does not recall information already sent in an invitation. Google warns that some details can remain visible when guests or rooms are involved, including the event’s start, end and creator. Check the actual audience rather than treating Private as a confidentiality guarantee."
+        ]
+      },
+      {
+        "heading": "Worked example: one appointment, four viewers",
+        "body": [
+          "A fictional manager adds “Contract renewal — Northwind, Room 4” on Thursday at 14:00 and marks it Private and Busy. Their calendar is shared four ways: a team Google Group with free/busy only, a peer with See event details, an assistant with Make changes (see private events as free/busy), and a deputy with Make changes and see event details.",
+          "The group, the peer and the restricted editor each see a busy block at 14:00 without the private title; the deputy can read the details. For the restricted editor specifically, Google says changing that private event to Free hides it from their grid. Do not assume all other viewers have the same Free display. If this otherwise non-private event were marked Public, everyone with calendar-view access could read its details.",
+          "Recovery check: if a Public event was a mistake, set it back to Default visibility and save, then remember that anyone who already looked may have read it. Changing visibility affects what is shown from now on; it does not recall what was seen."
+        ]
+      },
+      {
+        "heading": "Change and verify one event",
+        "body": [
+          "Open the event, choose edit, find the visibility control (shown as Default visibility until changed), pick Default visibility, Public or Private, and save. For tasks, Google says only tasks with a start and end time can have their visibility changed; tasks without times are always private.",
+          "To verify without exposing real data, ask a colleague who holds a known permission level to look at a harmless test event you mark Private and Busy, then Public. Do not share your account credentials to “see what they see”. On a work or school account, Google notes your administrator can limit sharing or turn off permission settings, so the levels you see may be fewer.",
+          "Recurring events have an important limit: Google documents one visibility setting for the whole series. Trying to change one occurrence or a subset applies the visibility change to the entire series. Use a harmless non-recurring event for the recipient-side test above."
+        ]
+      }
+    ],
+    "comparison": {
+      "heading": "What each viewer sees for one event (from Google’s definitions)",
+      "columns": [
+        "Viewer’s calendar permission",
+        "Default visibility",
+        "Public",
+        "Private, marked Busy"
+      ],
+      "rows": [
+        {
+          "cells": [
+            "See only free/busy",
+            "Busy/free only",
+            "All details",
+            "Busy block, no details"
+          ]
+        },
+        {
+          "cells": [
+            "See event details",
+            "All details",
+            "All details",
+            "Busy block, no details"
+          ]
+        },
+        {
+          "cells": [
+            "Make changes (see private events as free/busy)",
+            "All details, can edit",
+            "All details, can edit",
+            "Busy block, no details"
+          ]
+        },
+        {
+          "cells": [
+            "Make changes and see event details",
+            "All details, can edit",
+            "All details, can edit",
+            "All details"
+          ]
+        },
+        {
+          "cells": [
+            "Make changes and manage sharing",
+            "Full control",
+            "Full control",
+            "All details"
+          ]
+        }
+      ]
+    },
+    "claims": {},
+    "practical": [
+      "List who has each permission level on the calendar before relying on Private.",
+      "Check Busy or Free separately when the time must count as unavailable; Private alone is not an availability setting. Verify the intended recipient’s view.",
+      "Use Public only for events every person with any access may read.",
+      "Review invitation and room audiences as well as calendar sharing; Private does not erase information already distributed.",
+      "Test with a harmless event and a colleague who holds a known permission level."
+    ],
+    "faq": [
+      {
+        "q": "My assistant can edit my calendar. Can they read my private events?",
+        "a": "It depends on the exact level. Google’s “Make changes (see private events as free/busy)” shows private events as free/busy only; “Make changes and see event details” and “Make changes and manage sharing” show them in full."
+      },
+      {
+        "q": "Why did a colleague with busy-only access see my event title?",
+        "a": "The event was probably marked Public. Google says Public reveals the event’s details to anyone who can view your calendar, even when the calendar is restricted to free/busy."
+      },
+      {
+        "q": "Why can people book over my private appointment?",
+        "a": "Check the event’s Busy or Free setting separately from its privacy. Google explicitly says a Private, Free item is hidden from a recipient with “Make changes (see private events as free/busy)” access. Verify other recipients’ actual views rather than inferring the same result for every permission level."
+      }
+    ],
+    "sourcesHeading": "Google Calendar Help pages used",
+    "sources": [
+      {
+        "label": "Google: change event and task visibility",
+        "url": "https://support.google.com/calendar/answer/34580?hl=en"
+      },
+      {
+        "label": "Google: choose what others can do with your calendar",
+        "url": "https://support.google.com/calendar/answer/15716974?hl=en"
+      }
+    ],
+    "seeAlso": [
+      "who-can-see-what-in-google-calendar",
+      "can-others-see-google-calendar-tasks",
+      "a-calendar-that-is-yours-to-share",
+      "taking-back-a-calendar-you-shared"
+    ],
+    "articleLinks": [
+      {
+        "slug": "who-can-see-what-in-google-calendar",
+        "label": "Choose the calendar-level permission first"
+      }
+    ]
+  },
+  "google-appointment-schedule-which-calendars-block-booking-slots": {
+    "updated": "2026-10-23",
+    "title": "Google appointment schedule: which calendars and events block a booking slot",
+    "short": "Why a booking slot is open or hidden",
+    "description": "Diagnose why a Google appointment schedule shows or hides a slot: conflict calendars, Busy vs Free events, RSVPs, all-day events and date exceptions.",
+    "lede": "A booking page is only as trustworthy as its availability settings and the calendars it checks. An unexpected open or missing slot can have several causes. This diagnostic concerns Google appointment schedules; Arte Soft develops Cloud Calendars and does not run Google’s booking pages.",
+    "commonBelief": "A booking page automatically avoids everything I can see in my calendar view.",
+    "sections": [
+      {
+        "heading": "What Google says blocks a slot",
+        "body": [
+          "First confirm that “Check calendars for availability” is enabled on the appointment schedule. Google says that when availability checks are off, other Busy events do not protect those time blocks, even if you accepted the event. A booked appointment slot still cannot be booked twice. After checking that switch, inspect which calendars are selected for conflict checks.",
+          "Google states that appointment times during events set to Busy do not appear on the booking page, and that no times appear on a day with an all-day event set to Busy. It also says that an event you have RSVPed Yes or Maybe to, or any busy event in a calendar reviewed for conflicts, does not appear as open.",
+          "The calendars reviewed are, in Google’s words, your primary calendar and any calendars you own, manage or are subscribed to — but only those you select. Open the schedule, choose Edit appointment schedule, then Calendars, and tick the calendars to check for conflicts. Google notes that checking secondary calendars requires an eligible Google Workspace or Google One plan, and that a schedule created on a shared calendar may not let you select other calendars."
+        ]
+      },
+      {
+        "heading": "Where Google’s pages disagree: tentative and Maybe",
+        "body": [
+          "One Google page says Yes and Maybe responses block time. Another says unaccepted or tentative Google Calendar events do not block appointment availability. These may describe different states, but the wording overlaps. Do not rely on a Maybe response to protect a slot. If the time matters, put a Busy event on a checked calendar or use adjusted availability."
+        ]
+      },
+      {
+        "heading": "Date exceptions and booking rules",
+        "body": [
+          "For holidays and unusual days, use adjusted availability rather than rewriting the weekly pattern. Google lets you choose specific dates where you are more or less available, and Unavailable all day for a date you cannot take bookings. Adjustments can also cover dates outside a recurring schedule with start and end dates.",
+          "Other settings hide slots for reasons unrelated to conflicts. Google applies a 4-hour minimum notice by default, and you can set a maximum number of bookings per day and buffer time between appointments. A slot that looks free on your calendar may still be hidden because of one of these rules."
+        ]
+      },
+      {
+        "heading": "Worked example: a tutor’s Tuesday",
+        "body": [
+          "In this fictional example, a tutor offers 30-minute sessions from 15:00 to 18:00 on their primary calendar. Assume availability checks are enabled, no extra buffer or daily limit has been reached, and no other holds apply. They also own a Family calendar and subscribe to a School term dates calendar, but only the primary calendar is selected for conflict checks.",
+          "On Tuesday a Family event “Pick-up” 16:00–16:30 is marked Busy, but the 16:00 slot still appears, because Family is not checked. A primary-calendar event “Lunch with Sam” at 15:00 marked Free also leaves 15:00 open. A team meeting at 17:00 accepted with Maybe may or may not block 17:00, given the conflicting Google wording. And at 13:00 the same day, nothing before 17:00 can be booked because of the default 4-hour notice.",
+          "Check the master availability switch, then select Family under Calendars if the plan permits checking secondary calendars. Change the lunch to Busy only if it should genuinely protect that time. Use an explicit Busy hold or adjusted availability for 17:00 instead of relying on the unresolved Maybe wording, and decide whether the four-hour notice suits the service. Reload the booking page as a visitor after each change and compare the actual slots."
+        ]
+      },
+      {
+        "heading": "Verify the fix from the visitor’s side",
+        "body": [
+          "Your own calendar view is not the test. Open the booking page link as a visitor, check the specific day and time, and compare with a list of what you expect to see. Repeat after each change; changing several settings at once makes it hard to tell which one mattered.",
+          "If a client has already booked a slot that should have been blocked, the booking exists independently of your corrected settings. Contact them and use Google’s cancellation or rescheduling route for that appointment rather than deleting the event silently."
+        ]
+      }
+    ],
+    "comparison": {
+      "heading": "Slot diagnosis",
+      "columns": [
+        "What you see",
+        "Likely cause (per Google)",
+        "Check or fix"
+      ],
+      "rows": [
+        {
+          "cells": [
+            "Slots open over Busy events despite the intended calendar selection",
+            "Check calendars for availability may be off",
+            "Verify the master switch before changing calendar selection or events"
+          ]
+        },
+        {
+          "cells": [
+            "Slot open over a busy personal event",
+            "Event’s calendar not selected for conflicts, or plan does not allow secondary calendars",
+            "Edit appointment schedule → Calendars; check plan eligibility"
+          ]
+        },
+        {
+          "cells": [
+            "Slot open over an event in a checked calendar",
+            "Event is marked Free",
+            "Set the event to Busy"
+          ]
+        },
+        {
+          "cells": [
+            "Whole day missing",
+            "An all-day Busy event, or Unavailable all day in adjusted availability",
+            "Make the all-day event Free if it should not block; review adjusted availability"
+          ]
+        },
+        {
+          "cells": [
+            "Near-term slots missing",
+            "Minimum notice (4 hours by default)",
+            "Adjust the scheduling window"
+          ]
+        },
+        {
+          "cells": [
+            "Later slots missing on a busy day",
+            "Maximum bookings per day reached, or buffer time",
+            "Review booked appointment settings"
+          ]
+        },
+        {
+          "cells": [
+            "Cannot choose other calendars",
+            "Schedule was created on a shared calendar",
+            "Check schedule ownership and plan eligibility. If a replacement schedule is needed, verify its conflict checks before retiring the existing page or affecting bookings."
+          ]
+        }
+      ]
+    },
+    "claims": {},
+    "practical": [
+      "List the calendars that hold commitments you must protect.",
+      "Confirm Check calendars for availability is on, then select the calendars to check; verify eligibility for secondary calendars.",
+      "Mark events that should block as Busy, including all-day ones; do not rely on Maybe responses.",
+      "Use adjusted availability for holidays instead of editing the weekly pattern.",
+      "Reload the booking page as a visitor after each change and compare with your expected slots."
+    ],
+    "faq": [
+      {
+        "q": "Does my booking page check every calendar I can see?",
+        "a": "No. First enable Check calendars for availability, then select eligible calendars for conflicts. The primary and calendars you own, manage or subscribe to can be considered; secondary-calendar checks require an eligible plan. Viewing a calendar in your own grid is not enough."
+      },
+      {
+        "q": "Why can a client book during my Free-marked lunch?",
+        "a": "A Free-marked personal event is not a Busy hold. Check that availability checking is enabled, the correct calendar is reviewed, and the event’s Busy/Free state matches your intention. For Maybe or tentative responses, Google’s two cited help pages differ; verify visitor-side output rather than relying on that response alone."
+      },
+      {
+        "q": "How do I close the page for a bank holiday without changing every week?",
+        "a": "Use adjusted availability for that date and choose Unavailable all day."
+      }
+    ],
+    "sourcesHeading": "Google Calendar Help pages used",
+    "sources": [
+      {
+        "label": "Google: check your availability across calendars",
+        "url": "https://support.google.com/calendar/answer/16287054?hl=en"
+      },
+      {
+        "label": "Google: update your availability for appointments",
+        "url": "https://support.google.com/calendar/answer/11423292?hl=en"
+      },
+      {
+        "label": "Google: create an appointment schedule",
+        "url": "https://support.google.com/calendar/answer/10729749?hl=en"
+      }
+    ],
+    "seeAlso": [
+      "booking-link-or-shared-calendar",
+      "what-an-all-day-event-really-means",
+      "work-and-personal-without-two-apps"
+    ],
+    "articleLinks": [
+      {
+        "slug": "booking-link-or-shared-calendar",
+        "label": "Decide whether a booking page is the right tool"
+      }
+    ]
+  },
+  "google-calendar-change-event-owner-before-handover": {
+    "updated": "2026-10-23",
+    "title": "Change the owner of a Google Calendar event before you hand over a meeting",
+    "short": "Hand a meeting to a new owner",
+    "description": "Transfer a Google Calendar event to a colleague, see the 60-day acceptance window and 200-guest limit, and check the Google Meet consequences before you leave.",
+    "lede": "When you change roles, the meetings you organise do not follow your job title. Until someone else owns them, you remain the organiser, and a Meet link can depend on you staying in the organisation. Arte Soft, the developer of Cloud Calendars, wrote this checklist; the transfer itself happens in Google Calendar on a computer.",
+    "commonBelief": "Sending a colleague “Change owner” hands the meeting over immediately.",
+    "sections": [
+      {
+        "heading": "What a transfer does and does not do",
+        "body": [
+          "Google’s steps are: select an event you own, open Options, choose Change owner, enter the new owner and a message. The new owner receives an email with a link. Google states they have 60 days to accept and that you remain the owner until then.",
+          "Google says events with more than 200 guests cannot be transferred to another owner or calendar. Its same-organisation requirement is stated under whole-calendar ownership transfer, not the separate event Change owner procedure. For an individual event, inspect the actual Change owner options and your organisation’s policy; this guide does not promise that every proposed recipient is eligible. Moving an event between calendars and changing its owner are separate operations."
+        ]
+      },
+      {
+        "heading": "The Google Meet consequence",
+        "body": [
+          "Google’s Meet documentation says that when an event is created on or transferred to someone else’s primary calendar, that person becomes the calendar event organiser, and the meeting’s features depend on the video-conferencing policies that apply to them. Its example: if the new organiser’s edition or admin settings do not allow recording, they will not be able to record the meeting.",
+          "If an event is instead put on a non-primary calendar, Google says the organiser does not change, so Meet features stay the same — and if you then leave the organisation before the meeting, the link stops working. Parking meetings on a team calendar is therefore not a safe substitute for a real owner transfer when you are leaving."
+        ]
+      },
+      {
+        "heading": "Worked example: a handover list",
+        "body": [
+          "A fictional programme coordinator moving teams on 30 November organises three items: a weekly partner check-in, a one-off quarterly review with a Meet link that is usually recorded, and an all-hands briefing with 240 guests.",
+          "The coordinator checks the actual Change owner options for the check-in and review and confirms the intended recipient before sending. Before the review’s transfer, they ask whether the successor’s account supports Meet recording. The 240-guest all-hands exceeds Google’s documented transfer limit, so they coordinate a supported replacement owned by the successor and inform attendees how the original will be retired. A recurring meeting needs deliberate future-occurrence scope and preservation of useful history; do not delete an entire historical series as a handoff shortcut.",
+          "For illustration, the coordinator starts a week before leaving and follows up on pending requests. That is a planning example, not a required or sufficient lead time. Completion depends on the recipient actually accepting; afterwards, inspect the saved event’s organiser and required Meet features before closing the old account."
+        ]
+      },
+      {
+        "heading": "Checks after acceptance",
+        "body": [
+          "Open the event as the new owner and confirm the organiser, guest list, time zone and Meet link. Ask the new owner to start the Meet call briefly before the first real session if recording or other host features matter. For a recurring meeting, look at several future occurrences, not only the next one, before assuming the whole series moved.",
+          "If the transfer has not been accepted when you leave, you are still the owner. Do not let the 60-day window run out silently: chase the recipient or plan a replacement event with the attendees informed."
+        ]
+      },
+      {
+        "heading": "What this page does not cover",
+        "body": [
+          "Transferring ownership of a whole secondary calendar is a different decision with its own consequences and is handled in a separate guide. Cloud Calendars can display Google events but does not perform Google’s ownership transfer; use Google Calendar for that step."
+        ]
+      }
+    ],
+    "comparison": {
+      "heading": "Handover options compared",
+      "columns": [
+        "Action",
+        "Organiser changes?",
+        "Meet features after",
+        "Risk if you leave"
+      ],
+      "rows": [
+        {
+          "cells": [
+            "Change owner, accepted, to colleague’s primary calendar",
+            "Yes",
+            "Follow the new organiser’s policies",
+            "Verify saved organiser, access and required Meet features; acceptance alone is not a guarantee of every host capability"
+          ]
+        },
+        {
+          "cells": [
+            "Change owner sent, not yet accepted",
+            "You remain the owner until acceptance; the recipient has a 60-day acceptance window",
+            "Unchanged",
+            "High; meeting still depends on you"
+          ]
+        },
+        {
+          "cells": [
+            "Move to a non-primary calendar",
+            "No",
+            "Unchanged",
+            "Google says the Meet link stops working if you leave the organisation"
+          ]
+        },
+        {
+          "cells": [
+            "Event with more than 200 guests",
+            "Cannot be transferred",
+            "—",
+            "Coordinate an appropriate successor-owned replacement and supported cancellation scope; preserve relevant history"
+          ]
+        }
+      ]
+    },
+    "claims": {},
+    "practical": [
+      "List every event you organise that will outlive your role.",
+      "Check the proposed recipient in the event’s actual Change owner workflow and ask whether the successor’s account supports the Meet features you rely on.",
+      "Send Change owner with a message well before your last day.",
+      "For events over 200 guests, coordinate a successor-owned replacement and clearly communicate the appropriate retirement or cancellation scope for the original.",
+      "Chase acceptances; you remain owner until each is accepted.",
+      "After acceptance, check the organiser, several recurring occurrences and the Meet link."
+    ],
+    "faq": [
+      {
+        "q": "Is the meeting transferred as soon as I click Change owner?",
+        "a": "No. Google says the new owner gets an email link, has 60 days to accept, and you stay owner until then."
+      },
+      {
+        "q": "Can I transfer a meeting to someone at a client company?",
+        "a": "Do not infer the answer from the whole-calendar ownership rule. Google states a same-organisation requirement under calendar transfer, while documenting Change owner separately for events. Check the event’s available controls and organisation policy; neither universal eligibility nor universal rejection across domains is established here."
+      },
+      {
+        "q": "Will recording still work after the transfer?",
+        "a": "Only if the new organiser’s edition and admin settings allow it. Google says Meet features follow the policies of the calendar event organiser."
+      }
+    ],
+    "sourcesHeading": "Google Help pages used",
+    "sources": [
+      {
+        "label": "Google: transfer calendars or events in Google Calendar",
+        "url": "https://support.google.com/calendar/answer/78739?hl=en"
+      },
+      {
+        "label": "Google Meet: how settings apply to events created on or transferred to other calendars",
+        "url": "https://support.google.com/meet/answer/10003792?hl=en"
+      }
+    ],
+    "seeAlso": [
+      "event-saved-to-wrong-calendar",
+      "what-guests-can-do-to-your-event",
+      "meeting-links-that-make-themselves",
+      "recurring-events-without-the-mess"
+    ]
+  },
+  "google-calendar-find-a-time-blank-is-not-free": {
+    "updated": "2026-10-23",
+    "title": "Google Calendar Find a time: a blank column does not mean the guest is free",
+    "short": "Reading Find a time correctly",
+    "description": "Before booking into a gap in Google Calendar’s Find a time, check calendar sharing, private Free events and the 50-guest limit. A blank can mean no access.",
+    "lede": "Find a time lays guests’ calendars side by side so you can spot a common gap. The trap is that it can only draw what each guest has shared with you. This guide gives a short diagnostic for deciding whether a gap is real before you send the invitation.",
+    "commonBelief": "If Find a time shows nothing for a guest at 15:00, they are free at 15:00.",
+    "sections": [
+      {
+        "heading": "How Find a time works, per Google",
+        "body": [
+          "On a computer, choose Create, then Event, add guests and open Find a time. Google documents availability comparison for up to 50 guests; beyond that, only 50 schedules are shown. Filter and view lets you choose No guests, Required guests or All guests and show or hide rooms.",
+          "The key condition is Google’s own: these guests must have shared their calendars with you. If a person does not share their calendar with you, Google says you can send them a request to share it. Rooms are added with Add rooms or Add room booking.",
+          "A separate workflow puts subscribed calendars in dedicated columns in the main calendar grid: Settings > View options > View calendars side by side in Day View, then use Day view. That persistent subscribed-calendar setting is not a Find a time control."
+        ]
+      },
+      {
+        "heading": "Four reasons a gap may not be free",
+        "body": [
+          "No access. A guest who has not shared a calendar with you has nothing to draw. Their column can look empty without telling you anything about their day.",
+          "Private details and Free time. The event’s privacy, availability and your permission affect what is visible. Google explicitly documents hidden Private, Free items for the restricted-editor permission. A blank column does not reveal whether an unseen private appointment exists, and that role-specific display rule should not be projected onto every viewer.",
+          "Not on a shared calendar. You see only what the guest shared. Commitments they keep on other calendars, or in another account, are outside the view.",
+          "Over 50 guests. Beyond 50, Google shows only 50 schedules. A large invitation’s comparison is necessarily partial; use the Required guests filter to focus on people whose attendance decides the time."
+        ]
+      },
+      {
+        "heading": "Worked example: five guests plus the organiser",
+        "body": [
+          "A fictional organiser needs one hour on Thursday with four colleagues and an external consultant. Find a time shows three colleagues busy 10:00–12:00 and free 14:00–15:00. The fourth colleague’s column is empty all day. The consultant, outside the organisation, also shows nothing.",
+          "The organiser does not treat 14:00 as agreed. They check whether the fourth colleague shares their calendar; they do not, so the organiser requests access or simply asks. The consultant’s availability is unknown, so the organiser sends two candidate times by message before inviting. Once both reply, the organiser books 14:00 and adds a room through Add room booking.",
+          "Result check: after sending, open the event and watch the responses. A Yes from each required guest, not the empty column, confirms the slot."
+        ]
+      },
+      {
+        "heading": "Make your own calendar readable to schedulers",
+        "body": [
+          "If colleagues keep booking over you, the fix is on your side. Share your calendar with at least free/busy access with the people who schedule you, and mark private appointments Busy rather than Free so they show as blocks without details. Workspace users can also set working hours and a working location, which Google says people with free/busy access can see.",
+          "Check your own sharing in your calendar’s settings and, if you are on a work or school account, remember that an administrator may limit the sharing options available."
+        ]
+      }
+    ],
+    "comparison": {
+      "heading": "Diagnosing an empty column",
+      "columns": [
+        "Check",
+        "If yes",
+        "Next step"
+      ],
+      "rows": [
+        {
+          "cells": [
+            "Has this guest shared a calendar with you?",
+            "Gaps are at least partly meaningful",
+            "Continue to the next checks"
+          ]
+        },
+        {
+          "cells": [
+            "No sharing at all",
+            "The column carries no information",
+            "Request access or ask the guest directly"
+          ]
+        },
+        {
+          "cells": [
+            "Could privacy, availability or your permission hide useful information?",
+            "An apparently empty view may be incomplete",
+            "Check the sharing context or ask the guest; do not infer a particular hidden event"
+          ]
+        },
+        {
+          "cells": [
+            "More than 50 guests on the event?",
+            "Only 50 schedules are shown",
+            "Filter to Required guests"
+          ]
+        },
+        {
+          "cells": [
+            "Is the guest external?",
+            "Their identity alone does not establish whether anything is shared",
+            "Check the actual sharing relationship or agree candidate times directly"
+          ]
+        }
+      ]
+    },
+    "claims": {},
+    "practical": [
+      "Add guests, then open Find a time and switch to Required guests.",
+      "For each empty column, check whether that person shares a calendar with you.",
+      "Request access or ask directly when a column is blank.",
+      "Treat the invitation responses, not the gap, as confirmation.",
+      "Share at least free/busy and mark private appointments Busy so others can schedule around you."
+    ],
+    "faq": [
+      {
+        "q": "Why does one colleague always look free in Find a time?",
+        "a": "Missing calendar sharing is one possible explanation; a blank view does not establish it. Google’s comparison depends on the calendars shared with you and the available permission. Check the relationship or ask the colleague directly."
+      },
+      {
+        "q": "Can Find a time see private appointments?",
+        "a": "It shows what the calendar permission and event visibility allow. Busy time can be visible without private details. Google’s explicit hidden Private, Free rule concerns the restricted-editor role; do not assume a blank column proves the guest is free or that a private appointment exists."
+      },
+      {
+        "q": "Is there a guest limit?",
+        "a": "Google compares availability for up to 50 guests; beyond that only 50 schedules are shown."
+      }
+    ],
+    "sourcesHeading": "Google Calendar Help pages used",
+    "sources": [
+      {
+        "label": "Google: find times to meet in Google Calendar",
+        "url": "https://support.google.com/calendar/answer/6294878?hl=en"
+      },
+      {
+        "label": "Google: choose what others can do with your calendar",
+        "url": "https://support.google.com/calendar/answer/15716974?hl=en"
+      },
+      {
+        "label": "Google: change event and task visibility",
+        "url": "https://support.google.com/calendar/answer/34580?hl=en"
+      },
+      {
+        "label": "Google: set your working location",
+        "url": "https://support.google.com/calendar/answer/18616218?hl=en&co=GENIE.Platform%3DDesktop"
+      }
+    ],
+    "seeAlso": [
+      "who-can-see-what-in-google-calendar",
+      "keeping-track-of-who-replied",
+      "calendar-event-or-room-reservation",
+      "booking-link-or-shared-calendar"
+    ]
+  },
+  "outlook-calendar-delegate-or-editor-permission": {
+    "updated": "2026-10-23",
+    "title": "Microsoft 365 calendar: give an assistant Can edit or Delegate access?",
+    "short": "Outlook delegate or editor",
+    "description": "Choose editor or delegate access for a Microsoft 365 work calendar. Check request routing, private-item settings and client differences.",
+    "lede": "This guide concerns Microsoft 365 or Exchange work-or-school calendars, mainly in new Outlook and Outlook on the web. Can edit and Delegate do different jobs, and invitation routing has separate consequences. Personal Outlook.com sharing and classic folder permissions are distinct cases. Arte Soft develops Cloud Calendars.",
+    "commonBelief": "Edit access and delegate access are the same thing with different names.",
+    "sections": [
+      {
+        "heading": "The difference in one sentence each",
+        "body": [
+          "Microsoft says Can edit lets the person view and make changes to your calendar. Delegate lets them edit your calendar items and, in addition, schedule and respond to meetings on your behalf.",
+          "So the question is not how much you trust the person but which job they do. A colleague maintaining a team rota needs Can edit. An assistant who accepts, declines and sends invitations for you needs Delegate. Microsoft states that you cannot give editor or delegate access to people outside your organisation, and that delegate access requires a work or school account in Microsoft 365 or Exchange Online."
+        ]
+      },
+      {
+        "heading": "Delegate options that change your inbox",
+        "body": [
+          "Under Send invitations and responses to, Microsoft lists three choices. Delegate only sends requests and responses to delegates. Delegate and send me a copy sends both a copy, but the owner’s copy is a normal email without Accept/Decline controls there; the owner can still respond by opening the calendar item. Both my delegate and me gives both people actionable invitations. Agree who processes each request to avoid conflicting actions.",
+          "Microsoft also offers “Let delegate view private events”. Without it, most people you share with see only the time of items marked Private, not the subject, location or other details. A separate option lets a delegate manage categories, so colour-coding is not automatically part of delegate access."
+        ]
+      },
+      {
+        "heading": "Classic delegate levels in Exchange",
+        "body": [
+          "Microsoft’s delegate overview describes three per-folder levels. Reviewer can read items. Author can read and create items and change or delete items they created. Editor can do everything an Author can and also change and delete items you created.",
+          "Author is a sensible middle ground for someone who adds holds to your calendar but should not touch meetings you set up. Editor is needed when they must rework your existing entries.",
+          "Do not treat the classic Private flag as a universal security boundary. Microsoft’s classic Outlook instructions explicitly warn against relying on it to prevent access when folder-read permissions such as Reviewer are granted. The classic checkbox is called Delegate can see my private items and can affect several Exchange folders; that is not the same scope as the new Outlook/web calendar checkbox."
+        ]
+      },
+      {
+        "heading": "Setups Microsoft advises against",
+        "body": [
+          "Microsoft’s organisational best practice recommends granting Editor to only one delegate and avoiding many delegates with Reviewer or Contributor permissions; it says its testing used a maximum of four delegates. It also states that setting a security group as a delegate is not supported — add individual people instead.",
+          "Two editing delegates processing the same requests can leave meetings in conflicting states. If you need cover during absences, name one primary delegate and agree when the backup acts."
+        ]
+      },
+      {
+        "heading": "Worked example: a director and two helpers",
+        "body": [
+          "A fictional director has an executive assistant who runs their diary and a project coordinator who adds review sessions. The assistant gets Delegate, with requests sent to the delegate with a copy to the director, and “Let delegate view private events” ticked because they need to work around private appointments. The coordinator gets Can edit only.",
+          "The director keeps a few entries Private. The coordinator sees those as time only; the assistant sees their details. Nobody else is a delegate, and the director does not add the whole admin team as a security-group delegate.",
+          "For a harmless test, ask a consenting colleague to send an invitation to the director. The assistant first accepts the calendar-sharing invitation. Then check the director’s normal-email copy and the assistant’s actionable request according to the selected routing option, rather than expecting identical buttons in both inboxes."
+        ]
+      },
+      {
+        "heading": "Cloud Calendars and delegated calendars",
+        "body": [
+          "Cloud Calendars’ Microsoft connection is part of its Premium plan, but general Microsoft capabilities do not guarantee that every delegated or shared-mailbox calendar appears in a third-party app. Grant and test delegation in Outlook itself."
+        ]
+      }
+    ],
+    "comparison": {
+      "heading": "Which access fits the job",
+      "columns": [
+        "Job",
+        "Grant",
+        "Private items",
+        "Receives your meeting requests"
+      ],
+      "rows": [
+        {
+          "cells": [
+            "Reads your schedule to plan around you",
+            "Can view all details (or less)",
+            "Time only",
+            "No"
+          ]
+        },
+        {
+          "cells": [
+            "Maintains entries on your calendar",
+            "Can edit",
+            "Time only",
+            "No"
+          ]
+        },
+        {
+          "cells": [
+            "Accepts, declines and sends meetings for you",
+            "Delegate",
+            "New Outlook/web: check Let delegate view private events; classic folder permissions need separate review",
+            "Yes, per the routing option you choose"
+          ]
+        },
+        {
+          "cells": [
+            "Person outside the work/school organisation",
+            "Neither Can edit nor Delegate is available",
+            "—",
+            "—"
+          ]
+        },
+        {
+          "cells": [
+            "A whole team via a security group",
+            "Not supported as a delegate",
+            "—",
+            "Add individuals instead"
+          ]
+        }
+      ]
+    },
+    "claims": {},
+    "practical": [
+      "Decide whether the helper edits your calendar or also handles your meetings.",
+      "Grant Can edit for maintenance; grant Delegate only for meeting handling.",
+      "Choose meeting-request routing on purpose, keeping a copy for yourself if you still want to see invitations.",
+      "Tick “Let delegate view private events” only if they need private details.",
+      "Keep to one Editor delegate; never use a security group as a delegate.",
+      "Test with a harmless invitation and confirm where it arrives."
+    ],
+    "faq": [
+      {
+        "q": "Can my delegate see my private appointments?",
+        "a": "New Outlook and Outlook on the web document a Let delegate view private events option for this calendar-sharing flow. Classic folder permissions have different scope, and Microsoft warns not to rely on Private alone to prevent access where folder-read permissions exist. Check the actual client, grant and checkbox rather than treating an unticked box as a universal confidentiality guarantee."
+      },
+      {
+        "q": "Can I make an external virtual assistant my delegate?",
+        "a": "For the Microsoft 365/Exchange work-or-school flow covered here, Microsoft limits editor and delegate grants to people in the organisation. Personal Outlook.com has a different view/edit sharing model; do not apply this work-account rule universally."
+      },
+      {
+        "q": "How many delegates should I have?",
+        "a": "Microsoft recommends only one delegate with Editor permissions and avoiding large numbers of delegates; its testing used up to four."
+      }
+    ],
+    "sourcesHeading": "Microsoft Support pages used",
+    "sources": [
+      {
+        "label": "Microsoft: share and access a calendar with edit or delegate permissions",
+        "url": "https://support.microsoft.com/en-us/outlook/sharing/share-and-access-a-calendar-with-edit-or-delegate-permissions-in-outlook"
+      },
+      {
+        "label": "Microsoft: about delegates and permission levels",
+        "url": "https://support.microsoft.com/en-gb/outlook/sharing/about-delegates-allow-someone-to-manage-your-mail-and-calendar-in-outlook"
+      },
+      {
+        "label": "Microsoft: best practices for organisations using the Outlook calendar",
+        "url": "https://support.microsoft.com/en-us/outlook/best-practices-for-organizations-when-using-the-outlook-calendar"
+      }
+    ],
+    "seeAlso": [
+      "a-calendar-that-is-yours-to-share",
+      "exchange-calendars-on-an-iphone",
+      "who-can-see-what-in-google-calendar"
+    ]
+  },
+  "outlook-schedule-meeting-on-behalf-of-someone": {
+    "updated": "2026-10-23",
+    "title": "Schedule a meeting on someone else’s Outlook calendar: save, send and check",
+    "short": "Scheduling on behalf of someone",
+    "description": "As an Outlook delegate, save a meeting to the owner’s calendar, know what attendees see, and avoid the one choice Microsoft says cannot be changed later.",
+    "lede": "When you organise meetings for a manager, the meeting has to land on their calendar, not yours. In Outlook on the web that hinges on one field, and Microsoft says it cannot be changed once the invitation is sent. This guide walks through the delegate’s side of the job.",
+    "commonBelief": "If I can see my manager’s calendar, any meeting I create will be theirs.",
+    "sections": [
+      {
+        "heading": "Before you start: permission and the calendar list",
+        "body": [
+          "Microsoft says you can only edit someone else’s calendar after they give you permission by sharing it. Accept their sharing invitation to add their calendar to your list. When you create an event, Outlook on the web only offers calendars that are in your list and for which you hold editor or delegate permission.",
+          "If the owner’s calendar is missing from the list, the fix is on the permission side, not in your event form. Ask them to check what they granted; the owner’s decision between Can edit and Delegate is covered in a separate guide."
+        ]
+      },
+      {
+        "heading": "Create the meeting on the right calendar",
+        "body": [
+          "Choose New event, then set the Save to calendar field to the owner’s calendar before adding attendees or sending. Microsoft states that once a meeting invitation has been sent, you cannot change the calendar on which it was scheduled.",
+          "That makes the practical recovery for a mis-filed meeting blunt: cancel it from the calendar where it was saved, then create it again on the correct calendar and tell the attendees why they received a cancellation and a new invitation. That fictional correction concerns a one-off meeting. For a recurring series, review the supported future-occurrence scope and preserve useful historical records before cancelling or replacing it."
+        ]
+      },
+      {
+        "heading": "What attendees see and where replies go",
+        "body": [
+          "Microsoft says the invitation will show that it is from you on the calendar owner’s behalf. If you need messages to appear as sent directly by the owner, that is Send As permission, which Microsoft says only your organisation’s administrator can set.",
+          "If you are a delegate, Microsoft says meeting requests and updates are sent to you and appear in your inbox like any other request. Microsoft’s best practice is to process each one properly by accepting or declining it, and to use Remove from Calendar for cancellations, rather than deleting messages."
+        ]
+      },
+      {
+        "heading": "Worked example: a board pre-read session",
+        "body": [
+          "A fictional assistant schedules a 45-minute pre-read for their director with three board members. In Outlook on the web they choose New event, set Save to calendar to the director’s calendar, add the attendees and a Teams link, and send.",
+          "The board members see an invitation from the assistant on behalf of the director. Their acceptances arrive in the assistant’s inbox, and the assistant opens each response rather than deleting it unread.",
+          "Mistake scenario: had the assistant left Save to calendar on their own calendar, the director would not be the organiser. The correction is to cancel that meeting and recreate it on the director’s calendar, with a short note to the board members."
+        ]
+      },
+      {
+        "heading": "Verify before the day",
+        "body": [
+          "Open the owner’s calendar and confirm the meeting appears there with the right time zone and attendees. Check that responses are arriving where you expect. If the owner also processes the same requests, agree who acts on them to avoid conflicting replies.",
+          "Cloud Calendars, made by Arte Soft, can show Microsoft calendars on its Premium plan, but it does not provide Outlook’s Save to calendar or Send As controls. Schedule delegated meetings in Outlook."
+        ]
+      }
+    ],
+    "comparison": {
+      "heading": "Delegate scheduling checklist",
+      "columns": [
+        "Step",
+        "What to check",
+        "If wrong"
+      ],
+      "rows": [
+        {
+          "cells": [
+            "Owner’s calendar in your list",
+            "Accepted sharing invitation; editor or delegate permission",
+            "Ask the owner to share with the right permission"
+          ]
+        },
+        {
+          "cells": [
+            "Save to calendar",
+            "Set to the owner’s calendar before sending",
+            "After sending it cannot be changed: cancel and recreate"
+          ]
+        },
+        {
+          "cells": [
+            "Sender identity",
+            "Appears as you on behalf of the owner",
+            "Send As requires the administrator"
+          ]
+        },
+        {
+          "cells": [
+            "Responses",
+            "Arrive in your inbox as delegate",
+            "Ask the owner to review delegate routing"
+          ]
+        },
+        {
+          "cells": [
+            "Cancellations",
+            "Use Remove from Calendar",
+            "Deleted messages can leave stale entries"
+          ]
+        }
+      ]
+    },
+    "claims": {},
+    "practical": [
+      "Accept the owner’s sharing invitation so their calendar is in your list.",
+      "Choose New event and set Save to calendar to the owner’s calendar first.",
+      "Send, then confirm the meeting is on the owner’s calendar.",
+      "Process responses and cancellations properly rather than deleting them.",
+      "Ask the administrator if the owner genuinely needs Send As."
+    ],
+    "faq": [
+      {
+        "q": "I sent the meeting from my own calendar by mistake. Can I move it?",
+        "a": "Microsoft says you cannot change the calendar once the invitation has been sent. Cancel it and recreate it on the owner’s calendar."
+      },
+      {
+        "q": "Why does the invitation say “on behalf of”?",
+        "a": "That is how Microsoft shows a meeting sent by a delegate. Sending as the owner without that label needs Send As, which only an administrator can grant."
+      },
+      {
+        "q": "Why can’t I select my manager’s calendar in Save to calendar?",
+        "a": "Microsoft only lists calendars that are in your calendar list and for which you have editor or delegate permission."
+      }
+    ],
+    "sourcesHeading": "Microsoft Support pages used",
+    "sources": [
+      {
+        "label": "Microsoft: manage someone else’s calendar in Outlook on the web",
+        "url": "https://support.microsoft.com/en-us/outlook/manage-someone-else-s-calendar-in-outlook-on-the-web"
+      },
+      {
+        "label": "Microsoft: about delegates and Send As",
+        "url": "https://support.microsoft.com/en-gb/outlook/sharing/about-delegates-allow-someone-to-manage-your-mail-and-calendar-in-outlook"
+      },
+      {
+        "label": "Microsoft: best practices for organisations using the Outlook calendar",
+        "url": "https://support.microsoft.com/en-us/outlook/best-practices-for-organizations-when-using-the-outlook-calendar"
+      }
+    ],
+    "seeAlso": [
+      "what-guests-can-do-to-your-event",
+      "keeping-track-of-who-replied",
+      "exchange-calendars-on-an-iphone"
+    ]
+  },
+  "outlook-calendar-sharing-levels-busy-titles-details": {
+    "updated": "2026-10-23",
+    "title": "Outlook calendar sharing levels: busy only, titles and locations, or all details",
+    "short": "Outlook sharing levels",
+    "description": "Compare Outlook’s calendar sharing levels with one example entry, see what private items show, and check the My organization default after removing access.",
+    "lede": "Outlook offers several sharing levels, and the difference between the first three is exactly the information a colleague learns about each appointment. Removing someone does not always take them to zero, because of an organisation-wide default. Arte Soft, the developer of Cloud Calendars, wrote this guide to Microsoft 365’s own sharing controls.",
+    "commonBelief": "Removing a colleague from my sharing list means they can no longer see anything on my calendar.",
+    "sections": [
+      {
+        "heading": "The levels, in Microsoft’s words",
+        "body": [
+          "Microsoft lists: Can view when I’m busy (availability without details such as location), Can view titles and locations (availability plus titles and locations), Can view all details, Can edit, and Delegate. Can edit and Delegate are only available when sharing with people in your organisation.",
+          "Microsoft also says calendar items marked Private are protected: most people you share with see only the time of a private item, not its title or location, while delegates can be allowed to see details."
+        ]
+      },
+      {
+        "heading": "Worked example: one entry, three viewers",
+        "body": [
+          "A fictional account manager has a non-private entry, “Pricing review — Contoso — Room 3B, 14:00–15:00”. A colleague with Can view when I’m busy sees the busy interval. Can view titles and locations reveals the title and room but not the appointment’s other fields. Can view all details reveals the calendar event’s available details; it does not establish permission to open a separately protected linked document or file.",
+          "If the manager marks the entry Private, all three see only that 14:00–15:00 is taken. Choose the lowest level that lets each person do their job: scheduling around you needs only the first."
+        ]
+      },
+      {
+        "heading": "The My organization default",
+        "body": [
+          "Outlook may list a “My organization” entry in sharing. Microsoft describes it as the default level colleagues get, for example when they use the Scheduling Assistant. When you remove a named person, Microsoft says that if My organization is set to anything other than None, that person’s view updates to the default level rather than disappearing.",
+          "So a colleague you remove from Can view all details may still see titles and locations if that is your organisation default. Check the My organization row after every removal."
+        ]
+      },
+      {
+        "heading": "Change, remove and confirm",
+        "body": [
+          "In Outlook on the web, right-click the calendar name, choose Sharing and permissions, then select a new level or remove the person. Microsoft notes that calendar sharing may be unavailable for your account or limited to your organisation, depending on organisation settings.",
+          "Microsoft’s newer sharing model displays simplified permission levels. Intermediate levels can still be configured by an administrator using mailbox-folder permission commands and appear as Custom. Client interfaces may allow an attempted action that the service then rejects; the service evaluates the underlying rights. Ask the administrator what the effective grant allows rather than treating every Custom level as unsupported."
+        ]
+      },
+      {
+        "heading": "How recipients receive your calendar",
+        "body": [
+          "In the newer Exchange Online model, a copy of the shared calendar is held in the recipient’s mailbox. Instant syncing is supported for specified configurations, including users within the same Microsoft 365 tenant, and supported Outlook, REST and Exchange ActiveSync applications. It is not universal for cross-tenant sharing. Microsoft says EWS does not support instant syncing; that is not a statement that EWS cannot access calendars at all. After an automatic upgrade, the copy includes the previous year and future events, including recurring series with relevant instances.",
+          "Microsoft also warns that some Exchange ActiveSync apps let a read-only recipient try to create or respond to a meeting on your calendar; the change saves locally and is then rejected by the server. A recipient who “edited” your calendar on a phone may simply be seeing a rejected local change."
+        ]
+      }
+    ],
+    "comparison": {
+      "heading": "What each level reveals",
+      "columns": [
+        "Level",
+        "Busy times",
+        "Title and location",
+        "Notes and other details",
+        "Can change items",
+        "Outside organisation?"
+      ],
+      "rows": [
+        {
+          "cells": [
+            "Can view when I’m busy",
+            "Yes",
+            "No",
+            "No",
+            "No",
+            "Yes, if allowed by the organisation"
+          ]
+        },
+        {
+          "cells": [
+            "Can view titles and locations",
+            "Yes",
+            "Yes",
+            "No",
+            "No",
+            "Yes, if allowed by the organisation"
+          ]
+        },
+        {
+          "cells": [
+            "Can view all details",
+            "Yes",
+            "Yes",
+            "Yes",
+            "No",
+            "Yes, if allowed by the organisation"
+          ]
+        },
+        {
+          "cells": [
+            "Can edit",
+            "Yes",
+            "Yes",
+            "Yes",
+            "Yes",
+            "No"
+          ]
+        },
+        {
+          "cells": [
+            "Delegate",
+            "Yes",
+            "Yes",
+            "Yes, plus private items if allowed",
+            "Yes, and handles meetings",
+            "No"
+          ]
+        }
+      ]
+    },
+    "claims": {},
+    "practical": [
+      "Decide what each colleague needs: availability, titles and places, or full details.",
+      "Grant the lowest level that does that job.",
+      "Mark sensitive entries Private; most viewers then see only the time.",
+      "After removing anyone, check the My organization default.",
+      "If a grant appears as Custom, ask the administrator what the actual permission permits; clients and the service may handle attempted actions differently."
+    ],
+    "faq": [
+      {
+        "q": "Can “Can view when I’m busy” reveal where I am?",
+        "a": "Microsoft describes it as showing availability without details such as location. Titles and locations require the next level."
+      },
+      {
+        "q": "I removed someone but they still see my appointment titles. Why?",
+        "a": "Microsoft says removed people fall back to the My organization default if it is set above None. Lower or remove that default."
+      },
+      {
+        "q": "A colleague with view access says they moved my meeting on their phone.",
+        "a": "Microsoft notes that some ActiveSync apps let read-only recipients make local changes that the server then rejects. Check your calendar in Outlook."
+      }
+    ],
+    "sourcesHeading": "Microsoft Support pages used",
+    "sources": [
+      {
+        "label": "Microsoft: share your calendar in Outlook on the web",
+        "url": "https://support.microsoft.com/en-us/outlook/share-your-calendar-in-outlook-on-the-web"
+      },
+      {
+        "label": "Microsoft: calendar sharing in Microsoft 365",
+        "url": "https://support.microsoft.com/en-us/outlook/calendar-sharing-in-microsoft-365"
+      },
+      {
+        "label": "Microsoft: best practices for organisations using the Outlook calendar",
+        "url": "https://support.microsoft.com/en-us/outlook/best-practices-for-organizations-when-using-the-outlook-calendar"
+      }
+    ],
+    "seeAlso": [
+      "who-can-see-what-in-google-calendar",
+      "taking-back-a-calendar-you-shared",
+      "a-calendar-that-is-yours-to-share",
+      "exchange-calendars-on-an-iphone"
+    ]
+  },
+  "outlook-share-calendar-outside-organization": {
+    "updated": "2026-10-23",
+    "title": "Share a Microsoft 365 calendar with someone outside your organisation",
+    "short": "Outlook sharing with externals",
+    "description": "Find out whether your admin, your sharing choice or the partner’s calendar service limits external Outlook calendar sharing, and what the partner receives.",
+    "lede": "Sharing a work calendar with a contractor or client involves three parties: your tenant’s administrator, you, and whatever calendar service the recipient uses. Each can limit the result. Arte Soft, the developer of Cloud Calendars, wrote this guide to help you find which one is limiting yours.",
+    "commonBelief": "If I can share my calendar with a colleague, I can share it the same way with anyone.",
+    "sections": [
+      {
+        "heading": "Layer one: what the administrator allows",
+        "body": [
+          "Microsoft’s admin documentation places external calendar sharing under Microsoft 365 admin center, Settings, Org Settings, Services, Calendar. An administrator can let users share with people outside the organisation who have Office 365 or Exchange, and, only after that, allow anyone to access calendars with an email invitation.",
+          "For those anonymous recipients, the administrator chooses the maximum detail: free/busy with time only; free/busy with time, subject and location; or all calendar appointment information. Sharing with an on-premises Exchange organisation needs a federation relationship configured by the Exchange administrator."
+        ]
+      },
+      {
+        "heading": "Layer two: what you choose",
+        "body": [
+          "Once the administrator enables it, Microsoft says users decide whether to share, how much and when to stop. In Outlook on the web you choose a level for the external address. Can edit and Delegate are only available for people in your organisation, and Microsoft separately states you cannot give editor or delegate access to people outside it.",
+          "Microsoft notes that sharing can be unavailable or limited by organisation settings. A missing option is a reason to check the account, policy and intended recipient route with IT; it is not proof of one disabled switch or a broken mailbox."
+        ]
+      },
+      {
+        "heading": "Layer three: what the recipient’s service does",
+        "body": [
+          "Outside the organisation does not always mean an ICS subscription. Microsoft distinguishes Microsoft 365-to-Microsoft 365 sharing between tenants with external sharing enabled: a full shared calendar is created and syncs periodically, approximately every three hours in the documented configuration. If external sharing is disabled, that other-tenant Microsoft 365 recipient falls into the ICS route instead.",
+          "Microsoft 365 sharing to Outlook.com or to a third-party service such as Gmail uses an ICS route. The recipient’s service decides when to refresh it. Microsoft gives Outlook.com at approximately three hours and Gmail at a possible 24–48 hours as service examples, not a universal maximum or delivery deadline. Confirm urgent changes directly. Publishing an HTML or ICS link is a separate read-only route and must not be used to bypass an organisation’s restrictions."
+        ]
+      },
+      {
+        "heading": "Worked example: a freelance designer",
+        "body": [
+          "A fictional marketing lead wants a freelance designer with a personal email address to see when the team’s review slots are free. The lead tries to choose Can edit; it is not offered, because the designer is external. They choose Can view when I’m busy instead.",
+          "If the external share option is unavailable, the lead asks IT to check the account, external-sharing policy and intended recipient route. If the designer sees stale information, they first identify the actual calendar service and whether the share uses a cross-tenant calendar or an ICS subscription, then compare the source and confirm the important time by message. No fixed refresh deadline is assumed.",
+          "Result check: the designer sees busy blocks without titles, as intended; nothing editable has been granted."
+        ]
+      }
+    ],
+    "comparison": {
+      "heading": "Which layer is blocking you",
+      "columns": [
+        "Symptom",
+        "Most likely layer",
+        "Who can fix it"
+      ],
+      "rows": [
+        {
+          "cells": [
+            "No way to share with an external address at all",
+            "Account eligibility, organisation policy or intended recipient route needs checking",
+            "Microsoft 365 administrator"
+          ]
+        },
+        {
+          "cells": [
+            "Detail level capped below what you choose",
+            "Administrator: anonymous access detail limit",
+            "Microsoft 365 administrator"
+          ]
+        },
+        {
+          "cells": [
+            "Can edit or Delegate not offered",
+            "Microsoft rule for external recipients",
+            "No one; use a view level"
+          ]
+        },
+        {
+          "cells": [
+            "Partner sees stale times",
+            "Sharing route and recipient-controlled refresh; documented timing examples are not guarantees",
+            "Identify the route, compare the source and confirm urgent changes directly"
+          ]
+        },
+        {
+          "cells": [
+            "Partner on another company’s on-premises Exchange",
+            "Federation not configured",
+            "Exchange administrators on both sides"
+          ]
+        }
+      ]
+    },
+    "claims": {},
+    "practical": [
+      "Decide the least detail the external person needs, usually busy times only.",
+      "Share from Outlook on the web with a view level; Can edit and Delegate are internal only.",
+      "If the option is missing or capped, ask your Microsoft 365 administrator which setting applies.",
+      "Warn the recipient that their calendar service controls refresh timing.",
+      "Confirm urgent changes by message rather than relying on the subscription."
+    ],
+    "faq": [
+      {
+        "q": "Can a client edit my Outlook calendar?",
+        "a": "The Microsoft 365 work-or-school sharing flow covered here does not offer editor or delegate grants outside the organisation. Do not generalise that restriction to every personal Outlook.com sharing arrangement."
+      },
+      {
+        "q": "Why does my contractor see changes so late?",
+        "a": "First identify the recipient’s service and sharing route. Cross-tenant Microsoft 365 and ICS subscriptions have different behavior; the recipient’s service chooses ICS refresh timing. Microsoft’s three-hour and Gmail 24–48-hour examples are not a guaranteed maximum."
+      },
+      {
+        "q": "The share option for external people is missing. Is my account broken?",
+        "a": "Not necessarily. Ask the administrator to inspect account eligibility, external-sharing policy and the intended recipient path. An absent option does not establish which condition failed."
+      }
+    ],
+    "sourcesHeading": "Microsoft pages used",
+    "sources": [
+      {
+        "label": "Microsoft Learn: share Microsoft 365 calendars with users outside your organisation (admin)",
+        "url": "https://learn.microsoft.com/en-us/microsoft-365/admin/manage/share-calendars-with-external-users"
+      },
+      {
+        "label": "Microsoft: share your calendar in Outlook on the web",
+        "url": "https://support.microsoft.com/en-us/outlook/share-your-calendar-in-outlook-on-the-web"
+      },
+      {
+        "label": "Microsoft: calendar sharing in Microsoft 365",
+        "url": "https://support.microsoft.com/en-us/outlook/calendar-sharing-in-microsoft-365"
+      }
+    ],
+    "seeAlso": [
+      "exchange-calendars-on-an-iphone",
+      "the-secret-address-of-a-google-calendar",
+      "taking-back-a-calendar-you-shared",
+      "what-calendar-sync-actually-does"
+    ]
+  },
+  "outlook-show-as-free-busy-tentative-working-elsewhere": {
+    "updated": "2026-10-23",
+    "title": "Outlook Show As: free, tentative, busy, working elsewhere or out of office",
+    "short": "Outlook Show As statuses",
+    "description": "Choose the right Outlook Show As status for each appointment and decide when automatic replies should block your calendar or decline meetings.",
+    "lede": "Every Outlook appointment carries a status that colleagues see when they try to book you. Accepting a meeting or adding an item usually marks the time Busy, which is not always what you mean. Arte Soft, the developer of Cloud Calendars, explains how to choose each status and when automatic replies should do the work instead.",
+    "commonBelief": "Out of office and Working elsewhere both just mean “not at my desk”.",
+    "sections": [
+      {
+        "heading": "The five statuses",
+        "body": [
+          "Microsoft says appointments can be marked free, busy, tentative, out of the office or working elsewhere. Its developer reference defines them plainly: Free means available; Tentative means a tentative appointment is scheduled; Busy means busy; Out of office means out of the office; Working elsewhere means working in a location away from the office.",
+          "Microsoft states this choice affects the free/busy time others see when they try to schedule a meeting with you. It also says that, by default, when you add an item or accept an invitation in classic Outlook, the item is marked Busy."
+        ]
+      },
+      {
+        "heading": "Change the status of one item",
+        "body": [
+          "In classic Outlook or new Outlook for Windows, right-click the item on your calendar, choose Show As, then the status. Do this for entries that should not block bookings, such as a reminder to submit expenses, which would otherwise default to Busy.",
+          "Read the status name and pattern in your actual client rather than relying on a universal colour. Microsoft’s Scheduling Assistant guidance illustrates busy and tentative with blue patterns, while its new Outlook availability page says Busy, Tentative and Working elsewhere colours adjust to the chosen calendar colour. A different palette is not itself evidence of a different availability state.",
+          "In new Outlook, changing an item’s availability after the initial invitation changes your calendar only. Microsoft says the organiser cannot rewrite every participant’s availability after that first invitation; attendees can customise their own. Verify the owner’s actual free/busy result rather than expecting your Show As edit to change everyone."
+        ]
+      },
+      {
+        "heading": "For whole periods away: automatic replies",
+        "body": [
+          "For Outlook.com and Outlook on the web, Microsoft’s automatic replies settings include three calendar options alongside the reply message: “Block my calendar for this period”, “Automatically decline new invitations for events that occur during this period”, and “Decline and cancel my meetings during this period”. You can limit replies to a time period, and choose whether replies go outside your organisation.",
+          "The third option affects other people’s calendars, not just yours. Read the confirmation and consider telling attendees of meetings you organise before using it."
+        ]
+      },
+      {
+        "heading": "Worked example: one illustrative week",
+        "body": [
+          "A fictional consultant marks Monday’s client workshop Busy. Tuesday they add a Working elsewhere label for a day at a partner’s site. That communicates a location category; it does not enforce room-booking rules or establish whether another booking system treats it as unavailable. Wednesday’s optional vendor demo is Tentative. A Thursday lunchtime personal reminder is Free because it should not protect a meeting slot.",
+          "For leave from the start of Friday through the end of the following Monday, including the weekend, the consultant chooses an explicit automatic-reply time interval. They select Block my calendar for this period and Automatically decline new invitations. They leave Decline and cancel my meetings unticked because a recurring team meeting they organise should continue without them.",
+          "Check the saved status names and patterns in the actual Outlook client and compare the intended calendar’s availability using an agreed test. Do not require a particular blue colour or infer room restrictions from Working elsewhere."
+        ]
+      }
+    ],
+    "comparison": {
+      "heading": "Pick the status",
+      "columns": [
+        "Situation",
+        "Status or setting",
+        "Effect for schedulers"
+      ],
+      "rows": [
+        {
+          "cells": [
+            "Committed meeting or focused work",
+            "Busy",
+            "Shown as busy"
+          ]
+        },
+        {
+          "cells": [
+            "Unconfirmed or optional",
+            "Tentative",
+            "Shown as tentative; the pattern and colour depend on the client and selected calendar colour"
+          ]
+        },
+        {
+          "cells": [
+            "Personal reminder that should not block",
+            "Free",
+            "Time shows as available"
+          ]
+        },
+        {
+          "cells": [
+            "Working, but away from your usual office",
+            "Working elsewhere",
+            "Not out, but not in the usual location"
+          ]
+        },
+        {
+          "cells": [
+            "Away from work",
+            "Out of office",
+            "Unavailable"
+          ]
+        },
+        {
+          "cells": [
+            "Several days away with declines",
+            "Automatic replies with calendar options",
+            "Blocks time and can decline new invitations"
+          ]
+        }
+      ]
+    },
+    "claims": {},
+    "practical": [
+      "Review items that defaulted to Busy and change reminders to Free.",
+      "Use Working elsewhere to communicate working away; check actual room and booking arrangements separately.",
+      "Use Tentative for meetings you may attend.",
+      "For leave, use automatic replies with “Block my calendar” and “Automatically decline new invitations”.",
+      "Only use “Decline and cancel my meetings” after considering the attendees of meetings you organise.",
+      "Check the status and free/busy result in the actual client, remembering that your later Show As change does not rewrite every attendee’s calendar."
+    ],
+    "faq": [
+      {
+        "q": "Why does everything I accept show as Busy?",
+        "a": "Microsoft says that, by default in classic Outlook, items you add or invitations you accept are marked Busy. Change individual items with Show As."
+      },
+      {
+        "q": "What is the difference between Working elsewhere and Out of office?",
+        "a": "Microsoft defines Working elsewhere as working away from the office and Out of office as out of the office. Use the first when you are still working."
+      },
+      {
+        "q": "Will automatic replies cancel my meetings?",
+        "a": "Only if you choose “Decline and cancel my meetings during this period”. Blocking your calendar and declining new invitations are separate options."
+      }
+    ],
+    "sourcesHeading": "Microsoft pages used",
+    "sources": [
+      {
+        "label": "Microsoft: manage your availability in your Outlook calendar",
+        "url": "https://support.microsoft.com/en-us/office/manage-your-availability-in-your-outlook-calendar-fbbf6d5c-bdb8-4018-a2e0-2e2f60642117"
+      },
+      {
+        "label": "Microsoft Learn: OlBusyStatus definitions",
+        "url": "https://learn.microsoft.com/en-us/office/vba/api/Outlook.OlBusyStatus"
+      },
+      {
+        "label": "Microsoft: get started with the Outlook calendar",
+        "url": "https://support.microsoft.com/en-gb/outlook/get-started-with-the-outlook-calendar"
+      },
+      {
+        "label": "Microsoft: automatic replies in Outlook.com and Outlook on the web",
+        "url": "https://support.microsoft.com/en-US/Outlook/send-automatic-out-of-office-replies-from-outlook-com-or-outlook-on-the-web"
+      },
+      {
+        "label": "Microsoft: Scheduling Assistant and Room Finder",
+        "url": "https://support.microsoft.com/en-us/outlook/use-the-scheduling-assistant-and-room-finder-for-meetings-in-outlook"
+      }
+    ],
+    "seeAlso": [
+      "what-an-all-day-event-really-means",
+      "exchange-calendars-on-an-iphone",
+      "work-and-personal-without-two-apps"
+    ]
+  },
+  "outlook-forward-meeting-and-allow-forwarding": {
+    "updated": "2026-10-23",
+    "title": "Forwarding Outlook meetings: what attendees can do and how to stop it",
+    "short": "Outlook meeting forwarding",
+    "description": "What happens when an attendee forwards your Outlook meeting, how Allow forwarding works, and what attendees can still copy or reply after it is off.",
+    "lede": "An attendee who forwards your meeting effectively adds a guest. Outlook tells the organiser in some cases and lets you switch forwarding off in others, but neither is a confidentiality guarantee. Arte Soft, the developer of Cloud Calendars, explains the controls and their limits.",
+    "commonBelief": "Turning off Allow forwarding makes a meeting invitation impossible to pass on.",
+    "sections": [
+      {
+        "heading": "What forwarding does",
+        "body": [
+          "Microsoft describes forwarding as the way to invite someone to a meeting you did not organise. The recipient’s request appears to come from the meeting organiser, and the organiser receives a notification that you forwarded it. Microsoft specifies that classic Outlook sends this meeting forward notification when the recipient was not originally invited.",
+          "For a recurring meeting, Microsoft lets you forward just this one occurrence or the entire series. If you are the organiser, Microsoft’s advice is not to forward your own meeting but to add the person as an attendee and send an update."
+        ]
+      },
+      {
+        "heading": "Turning forwarding off",
+        "body": [
+          "As organiser, open Response Options while creating or editing the meeting and clear Allow forwarding. Microsoft says forwarding is allowed by default. Attendees then do not get the forward option. Microsoft limits the organiser’s feature to mailboxes hosted in Microsoft 365 or Exchange Server 2019; check mailbox eligibility as well as the client.",
+          "Microsoft lists support for Microsoft 365 users of Outlook for Windows (version 1808 or later on Current Channel, 1902 or later on Semi-Annual Enterprise Channel), Outlook for Mac 16.20 or later, and Outlook on the web for Microsoft 365 and Exchange 2019. It says iOS and Android are not yet supported for this setting."
+        ]
+      },
+      {
+        "heading": "What still gets through",
+        "body": [
+          "Microsoft is explicit that even with forwarding prevented, attendees can still reply or reply all to the invitation with an email message, and copy the meeting message or event. When an attendee uses an older client against an older Exchange version or a third-party service, the forward is handled by servers that do not support the feature, so it cannot be prevented.",
+          "Treat Allow forwarding as a guard against casual additions, not as access control. Keep sensitive material out of the invitation body and share documents with named people through their own permissions.",
+          "An older attendee client is not enough to establish a bypass. Microsoft says Exchange Online, Exchange 2016 and Exchange 2019 can reject a forwarding attempt even if an older client displays the command. Receiving and enforcing a restriction on mobile is also different from offering the organiser’s setting there."
+        ]
+      },
+      {
+        "heading": "Worked example: a recruitment panel",
+        "body": [
+          "A fictional hiring manager organises a 60-minute panel with three interviewers and does not want the slot passed around. They create the meeting in Outlook on the web, open Response options and clear Allow forwarding, and keep the candidate’s CV out of the invitation, sharing it with the three interviewers separately.",
+          "A fourth colleague later needs to join. One interviewer asks the manager instead of forwarding, and the manager adds the colleague as an attendee and sends an update. That keeps the attendee list in the organiser’s hands and avoids relying on forward notifications.",
+          "Check: open the meeting and confirm the attendee list matches the people you invited; compare with any forward notifications you received."
+        ]
+      },
+      {
+        "heading": "Two special cases",
+        "body": [
+          "Delegates: Microsoft’s best practice notes that Outlook delegates do not receive meeting forward notifications. If an assistant manages your meetings, check the attendee list rather than expecting a notice.",
+          "Shared calendars: Microsoft documented a known issue in which Allow forwarding was missing from Response Options for a meeting on a shared calendar in Outlook for Microsoft 365 versions earlier than Version 2008 Build 13127.20296, fixed in that build; the workaround was to ensure Download Shared folder is checked for the shared mailbox.",
+          "If you only want to tell someone about a meeting without inviting them, Microsoft describes dragging the meeting to the Mail icon in classic Outlook to send its details by email; that email does not add the recipient to the meeting."
+        ]
+      }
+    ],
+    "comparison": {
+      "heading": "Forwarding controls and their limits",
+      "columns": [
+        "Action",
+        "Who it affects",
+        "Organiser told?",
+        "Limit"
+      ],
+      "rows": [
+        {
+          "cells": [
+            "Attendee forwards (forwarding allowed)",
+            "Adds the recipient as an invitee",
+            "Yes, a meeting forward notification in classic Outlook",
+            "Delegates do not receive these notifications"
+          ]
+        },
+        {
+          "cells": [
+            "Organiser clears Allow forwarding",
+            "Attendees lose the forward option",
+            "—",
+            "Replies, copies and older or third-party systems can bypass it"
+          ]
+        },
+        {
+          "cells": [
+            "Organiser adds attendee and sends update",
+            "Adds the person under the organiser’s control",
+            "Organiser does it",
+            "Recommended instead of forwarding your own meeting"
+          ]
+        },
+        {
+          "cells": [
+            "Send meeting details by email",
+            "Informs without inviting",
+            "No",
+            "The recipient is not added to the meeting"
+          ]
+        }
+      ]
+    },
+    "claims": {},
+    "practical": [
+      "For sensitive meetings, clear Allow forwarding in Response Options before sending.",
+      "Keep confidential material out of the invitation body.",
+      "Ask attendees to request additions instead of forwarding; add people yourself and send an update.",
+      "If a delegate manages your calendar, review the attendee list periodically.",
+      "Use an information email, not a forward, to tell someone about a meeting without inviting them."
+    ],
+    "faq": [
+      {
+        "q": "Will I know if someone forwards my meeting?",
+        "a": "Microsoft says the organiser receives a meeting forward notification, which classic Outlook sends when the recipient was not originally invited. Delegates do not receive these notifications."
+      },
+      {
+        "q": "Does turning off Allow forwarding stop all sharing of the invite?",
+        "a": "No. Microsoft says attendees can still reply with an email or copy the meeting, and forwards through older or third-party systems cannot be prevented."
+      },
+      {
+        "q": "Can I prevent forwarding from the Outlook mobile app?",
+        "a": "Microsoft lists iOS and Android as not yet supported for this setting. Use Outlook on the web or the desktop app."
+      }
+    ],
+    "sourcesHeading": "Microsoft Support pages used",
+    "sources": [
+      {
+        "label": "Microsoft: forward a meeting in Outlook",
+        "url": "https://support.microsoft.com/en-us/outlook/calendar/forward-a-meeting-in-outlook"
+      },
+      {
+        "label": "Microsoft: prevent forwarding of a meeting",
+        "url": "https://support.microsoft.com/en-US/Outlook/prevent-forwarding-of-a-meeting"
+      },
+      {
+        "label": "Microsoft known issue: Allow Forwarding missing for a shared calendar",
+        "url": "https://support.microsoft.com/en-us/Support/known-issues/allow-forwarding-option-is-missing-from-response-options-for-a-shared-calendar"
+      },
+      {
+        "label": "Microsoft: best practices for organisations using the Outlook calendar",
+        "url": "https://support.microsoft.com/en-us/outlook/best-practices-for-organizations-when-using-the-outlook-calendar"
+      },
+      {
+        "label": "Microsoft: get started with the Outlook calendar",
+        "url": "https://support.microsoft.com/en-gb/outlook/get-started-with-the-outlook-calendar"
+      }
+    ],
+    "seeAlso": [
+      "what-guests-can-do-to-your-event",
+      "keeping-track-of-who-replied",
+      "sharing-one-event-not-your-calendar"
+    ]
+  },
+  "outlook-group-calendar-versus-shared-calendar": {
+    "updated": "2026-10-23",
+    "title": "Microsoft 365 group calendar or a shared calendar: who can cancel, who gets invited",
+    "short": "Group calendar vs shared calendar",
+    "description": "Choose a Microsoft 365 group calendar or a shared personal calendar for a team: who can edit or cancel events, and who actually gets invited.",
+    "lede": "A team schedule in Outlook can live on a Microsoft 365 group calendar or on one person’s calendar shared with the team. They behave differently in two ways that matter in practice: who can cancel an event, and whether members are invited at all. Arte Soft, the developer of Cloud Calendars, compares them.",
+    "commonBelief": "Putting an event on the group calendar invites everyone in the group.",
+    "sections": [
+      {
+        "heading": "Group calendar: shared ownership",
+        "body": [
+          "Microsoft says each Microsoft 365 group has a shared calendar where every member can schedule, edit and see upcoming events. It also says that when an event is created on the group calendar, anyone in the group can cancel it — unlike an event on your own calendar, where you are in charge of editing or cancelling.",
+          "That suits a rota or shared deadlines list maintained by everyone. It does not suit a client meeting whose time only the organiser should control."
+        ]
+      },
+      {
+        "heading": "Inspect invitations: the default differs by client",
+        "body": [
+          "In new Outlook, Outlook on the web and Outlook.com, Microsoft says creating a group-calendar event does not invite every member by default. Add the group to attendees when an invitation is intended; new Outlook also offers Invite members. The creator is automatically added as an attendee and receives the group event on their personal calendar in these documented flows.",
+          "Classic Outlook is different: Microsoft says the group alias is already in Required attendees when you create the group meeting. Remove the group if you do not intend invitations to its members. Whichever client you use, inspect the actual attendee list before sending rather than relying on one universal default."
+        ]
+      },
+      {
+        "heading": "Shared personal calendar: one owner",
+        "body": [
+          "The alternative is a calendar you own and share with the team at a chosen level: Can view when I’m busy, Can view titles and locations, Can view all details, Can edit or Delegate (the last two only inside your organisation). You decide who can change it, and can remove access later.",
+          "Do not try to give a whole team delegate rights through a security group: Microsoft’s best practice says setting a security group as a delegate is not supported."
+        ]
+      },
+      {
+        "heading": "Worked example: an events team",
+        "body": [
+          "A fictional events team of six has two needs. First, a shared list of venue deadlines and staff on-site days, which any member updates. Second, client walkthroughs that the team lead schedules and that should not be moved by others.",
+          "Deadlines and on-site days go on the group calendar. Before saving, the creator makes sure the group is not in the attendee list when no invitations are intended; in classic Outlook that can require removing the pre-populated group alias. Client walkthroughs go on the lead’s own calendar with the client and relevant staff invited. The team gets Can view titles and locations on that calendar, not editing or delegation rights.",
+          "Check: a member opens the group calendar and confirms they can edit a deadline; another member confirms they can see the walkthrough title but cannot move it."
+        ]
+      }
+    ],
+    "comparison": {
+      "heading": "Choose where the event lives",
+      "columns": [
+        "Question",
+        "Group calendar",
+        "Shared personal calendar"
+      ],
+      "rows": [
+        {
+          "cells": [
+            "Who can edit or cancel events?",
+            "Anyone in the group",
+            "The owner and appropriately authorised editors or delegates; meeting actions still need the applicable organising or delegation rights"
+          ]
+        },
+        {
+          "cells": [
+            "Are members invited?",
+            "New/web: add the group or use Invite members. Classic: group alias is pre-populated; remove it if invitations are not intended.",
+            "Only the attendees you add"
+          ]
+        },
+        {
+          "cells": [
+            "Who controls access?",
+            "Group membership",
+            "You, per person"
+          ]
+        },
+        {
+          "cells": [
+            "Best for",
+            "Rotas, deadlines, shared logistics",
+            "Meetings one person must control"
+          ]
+        }
+      ]
+    },
+    "claims": {},
+    "practical": [
+      "Put shared, low-stakes items on the group calendar.",
+      "Keep meetings whose time must not change on an owned calendar.",
+      "For group events, inspect attendees before saving: add the group when invitations are needed; in classic Outlook remove its pre-populated alias when they are not.",
+      "Share your owned calendar at the lowest useful level instead of making everyone a delegate.",
+      "Test that a member can or cannot change an event as intended."
+    ],
+    "faq": [
+      {
+        "q": "Why didn’t members get an invitation for a group calendar event?",
+        "a": "In new Outlook, Outlook on the web and Outlook.com, Microsoft says the whole group is not invited by default; add it as an attendee. In classic Outlook the group alias is pre-populated in Required, so check whether it was removed. Inspect the actual attendee list and client rather than assuming one shared default."
+      },
+      {
+        "q": "A colleague cancelled an event I put on the group calendar. Is that allowed?",
+        "a": "Yes. Microsoft states anyone in the group can cancel an event created on the group calendar."
+      },
+      {
+        "q": "Can I make a security group my delegate instead?",
+        "a": "Microsoft says setting a security group as a delegate is not supported; add individual people."
+      }
+    ],
+    "sourcesHeading": "Microsoft Support pages used",
+    "sources": [
+      {
+        "label": "Microsoft: use a group calendar in Outlook",
+        "url": "https://support.microsoft.com/en-us/outlook/people/use-a-group-calendar-in-outlook-to-schedule-and-edit-events"
+      },
+      {
+        "label": "Microsoft: share your calendar in Outlook on the web",
+        "url": "https://support.microsoft.com/en-us/outlook/share-your-calendar-in-outlook-on-the-web"
+      },
+      {
+        "label": "Microsoft: best practices for organisations using the Outlook calendar",
+        "url": "https://support.microsoft.com/en-us/outlook/best-practices-for-organizations-when-using-the-outlook-calendar"
+      }
+    ],
+    "seeAlso": [
+      "a-calendar-that-is-yours-to-share",
+      "family-pickup-calendar-handoff",
+      "keeping-track-of-who-replied",
+      "exchange-calendars-on-an-iphone"
+    ]
+  }
+}

@@ -1,0 +1,92 @@
+{
+  "date": "2026-10-23",
+  "source": "technical-batch-02.json",
+  "reviewedOutput": "technical-batch-02-reviewed.json",
+  "changes": [
+    {
+      "jsonPointer": "/icalendar-duration-p1d-pt24h-dst/sections/1/body/0",
+      "find": "10:00Z:23",
+      "replaceWith": "10:00Z: 23",
+      "reason": "Copyediting only: restore a missing prose space without changing ICS syntax or numerical meaning."
+    },
+    {
+      "jsonPointer": "/icalendar-duration-p1d-pt24h-dst/sections/2/body/0",
+      "find": "11:00Z:25",
+      "replaceWith": "11:00Z: 25",
+      "reason": "Copyediting only: restore a missing prose space without changing ICS syntax or numerical meaning."
+    },
+    {
+      "jsonPointer": "/icalendar-duration-p1d-pt24h-dst/sections/2/body/0",
+      "find": "Exactly24",
+      "replaceWith": "Exactly 24",
+      "reason": "Copyediting only: restore a missing prose space without changing ICS syntax or numerical meaning."
+    },
+    {
+      "jsonPointer": "/icalendar-duration-p1d-pt24h-dst/comparison/rows/2/cells/1",
+      "find": "12:00;24",
+      "replaceWith": "12:00; 24",
+      "reason": "Copyediting only: restore a missing prose space without changing ICS syntax or numerical meaning."
+    },
+    {
+      "jsonPointer": "/icalendar-duration-p1d-pt24h-dst/comparison/rows/2/cells/2",
+      "find": "12:00;24",
+      "replaceWith": "12:00; 24",
+      "reason": "Copyediting only: restore a missing prose space without changing ICS syntax or numerical meaning."
+    },
+    {
+      "jsonPointer": "/icalendar-valarm-relative-absolute-trigger/comparison/rows/3/cells/0",
+      "find": "Absolute09:45Z",
+      "replaceWith": "Absolute 09:45Z",
+      "reason": "Copyediting only: restore a missing prose space without changing ICS syntax or numerical meaning."
+    },
+    {
+      "jsonPointer": "/icalendar-alarm-repeat-duration-count/sections/1/body/1",
+      "find": "targets:09:45,09:50,09:55,10:00",
+      "replaceWith": "targets: 09:45, 09:50, 09:55, 10:00",
+      "reason": "Copyediting only: restore a missing prose space without changing ICS syntax or numerical meaning."
+    },
+    {
+      "jsonPointer": "/icalendar-vfreebusy-periods-not-event-details/comparison/rows/1/cells/1",
+      "find": "Occupied13:00",
+      "replaceWith": "Occupied 13:00",
+      "reason": "Copyediting only: restore a missing prose space without changing ICS syntax or numerical meaning."
+    },
+    {
+      "jsonPointer": "/ics-line-folding-utf8-octets/sections/2/body/0",
+      "find": "character会",
+      "replaceWith": "character 会",
+      "reason": "Copyediting only: restore a missing prose space without changing ICS syntax or numerical meaning."
+    },
+    {
+      "jsonPointer": "/ics-line-folding-utf8-octets/sections/2/body/0",
+      "find": "total.23",
+      "replaceWith": "total. 23",
+      "reason": "Copyediting only: restore a missing prose space without changing ICS syntax or numerical meaning."
+    },
+    {
+      "jsonPointer": "/ics-line-folding-utf8-octets/comparison/rows/1/cells/0",
+      "find": "of会",
+      "replaceWith": "of 会",
+      "reason": "Copyediting only: restore a missing prose space without changing ICS syntax or numerical meaning."
+    },
+    {
+      "jsonPointer": "/ics-line-folding-utf8-octets/comparison/rows/2/cells/0",
+      "find": "of会",
+      "replaceWith": "of 会",
+      "reason": "Copyediting only: restore a missing prose space without changing ICS syntax or numerical meaning."
+    },
+    {
+      "jsonPointer": "/ics-line-folding-utf8-octets/comparison/rows/2/cells/2",
+      "find": "77;folding",
+      "replaceWith": "77; folding",
+      "reason": "Copyediting only: restore a missing prose space without changing ICS syntax or numerical meaning."
+    },
+    {
+      "jsonPointer": "/ics-text-escaping-commas-semicolons-newlines/faq/0/q",
+      "find": "as%2C",
+      "replaceWith": "as %2C",
+      "reason": "Copyediting only: restore a missing prose space without changing ICS syntax or numerical meaning."
+    }
+  ],
+  "sourceFileUnmodified": true
+}

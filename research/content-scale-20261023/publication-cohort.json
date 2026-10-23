@@ -1,0 +1,421 @@
+{
+  "status": "published_verified",
+  "publishedAt": "2026-10-23T11:29:28.143796+00:00",
+  "baselineEnglish": 73,
+  "newEnglish": 100,
+  "totalEnglish": 173,
+  "translatedIndexing": "held",
+  "urls": [
+    {
+      "slug": "mac-calendar-siri-suggestions-confirm-ignore",
+      "url": "https://www.cloud-calendars.com/articles/mac-calendar-siri-suggestions-confirm-ignore/"
+    },
+    {
+      "slug": "mac-calendar-subscription-icloud-on-my-mac",
+      "url": "https://www.cloud-calendars.com/articles/mac-calendar-subscription-icloud-on-my-mac/"
+    },
+    {
+      "slug": "google-calendar-keyboard-shortcuts-workflow",
+      "url": "https://www.cloud-calendars.com/articles/google-calendar-keyboard-shortcuts-workflow/"
+    },
+    {
+      "slug": "mac-calendar-subscription-auto-refresh",
+      "url": "https://www.cloud-calendars.com/articles/mac-calendar-subscription-auto-refresh/"
+    },
+    {
+      "slug": "outlook-subscribe-or-import-ics-calendar",
+      "url": "https://www.cloud-calendars.com/articles/outlook-subscribe-or-import-ics-calendar/"
+    },
+    {
+      "slug": "mac-calendar-holidays-different-region",
+      "url": "https://www.cloud-calendars.com/articles/mac-calendar-holidays-different-region/"
+    },
+    {
+      "slug": "google-calendar-holidays-by-country-and-religion",
+      "url": "https://www.cloud-calendars.com/articles/google-calendar-holidays-by-country-and-religion/"
+    },
+    {
+      "slug": "alternating-a-b-week-school-timetable-calendar-vacation-exceptions",
+      "url": "https://www.cloud-calendars.com/articles/alternating-a-b-week-school-timetable-calendar-vacation-exceptions/"
+    },
+    {
+      "slug": "icloud-private-calendar-pending-invitations",
+      "url": "https://www.cloud-calendars.com/articles/icloud-private-calendar-pending-invitations/"
+    },
+    {
+      "slug": "iphone-calendar-add-remove-event-attachments",
+      "url": "https://www.cloud-calendars.com/articles/iphone-calendar-add-remove-event-attachments/"
+    },
+    {
+      "slug": "backward-planning-project-deadlines-across-weekends-and-holidays",
+      "url": "https://www.cloud-calendars.com/articles/backward-planning-project-deadlines-across-weekends-and-holidays/"
+    },
+    {
+      "slug": "calendar-travel-time-versus-separate-buffer-event-blocks",
+      "url": "https://www.cloud-calendars.com/articles/calendar-travel-time-versus-separate-buffer-event-blocks/"
+    },
+    {
+      "slug": "calendar-week-numbers-iso-monday-versus-sunday-start-mismatch",
+      "url": "https://www.cloud-calendars.com/articles/calendar-week-numbers-iso-monday-versus-sunday-start-mismatch/"
+    },
+    {
+      "slug": "google-appointment-cancel-booked-slot",
+      "url": "https://www.cloud-calendars.com/articles/google-appointment-cancel-booked-slot/"
+    },
+    {
+      "slug": "google-calendar-change-event-owner-before-handover",
+      "url": "https://www.cloud-calendars.com/articles/google-calendar-change-event-owner-before-handover/"
+    },
+    {
+      "slug": "mac-calendar-travel-time-after-location-change",
+      "url": "https://www.cloud-calendars.com/articles/mac-calendar-travel-time-after-location-change/"
+    },
+    {
+      "slug": "mac-calendar-check-invitee-availability",
+      "url": "https://www.cloud-calendars.com/articles/mac-calendar-check-invitee-availability/"
+    },
+    {
+      "slug": "icloud-calendar-invitation-sender-email",
+      "url": "https://www.cloud-calendars.com/articles/icloud-calendar-invitation-sender-email/"
+    },
+    {
+      "slug": "outlook-calendar-color-categories",
+      "url": "https://www.cloud-calendars.com/articles/outlook-calendar-color-categories/"
+    },
+    {
+      "slug": "icloud-delete-calendar-every-device",
+      "url": "https://www.cloud-calendars.com/articles/icloud-delete-calendar-every-device/"
+    },
+    {
+      "slug": "display-multiple-time-zone-columns-google-calendar-outlook",
+      "url": "https://www.cloud-calendars.com/articles/display-multiple-time-zone-columns-google-calendar-outlook/"
+    },
+    {
+      "slug": "google-calendar-public-embed-on-website",
+      "url": "https://www.cloud-calendars.com/articles/google-calendar-public-embed-on-website/"
+    },
+    {
+      "slug": "outlook-end-recurring-meeting-early-keep-history",
+      "url": "https://www.cloud-calendars.com/articles/outlook-end-recurring-meeting-early-keep-history/"
+    },
+    {
+      "slug": "outlook-events-from-email-flights-hotels",
+      "url": "https://www.cloud-calendars.com/articles/outlook-events-from-email-flights-hotels/"
+    },
+    {
+      "slug": "google-calendar-events-from-gmail-visibility",
+      "url": "https://www.cloud-calendars.com/articles/google-calendar-events-from-gmail-visibility/"
+    },
+    {
+      "slug": "outlook-forward-meeting-and-allow-forwarding",
+      "url": "https://www.cloud-calendars.com/articles/outlook-forward-meeting-and-allow-forwarding/"
+    },
+    {
+      "slug": "google-calendar-gemini-suggested-meeting-times",
+      "url": "https://www.cloud-calendars.com/articles/google-calendar-gemini-suggested-meeting-times/"
+    },
+    {
+      "slug": "mac-calendar-caldav-delegation-allow-write",
+      "url": "https://www.cloud-calendars.com/articles/mac-calendar-caldav-delegation-allow-write/"
+    },
+    {
+      "slug": "google-calendar-alternate-calendar-moon-sports",
+      "url": "https://www.cloud-calendars.com/articles/google-calendar-alternate-calendar-moon-sports/"
+    },
+    {
+      "slug": "google-appointment-email-verification",
+      "url": "https://www.cloud-calendars.com/articles/google-appointment-email-verification/"
+    },
+    {
+      "slug": "google-appointment-schedule-which-calendars-block-booking-slots",
+      "url": "https://www.cloud-calendars.com/articles/google-appointment-schedule-which-calendars-block-booking-slots/"
+    },
+    {
+      "slug": "google-calendar-birthdays-from-contacts",
+      "url": "https://www.cloud-calendars.com/articles/google-calendar-birthdays-from-contacts/"
+    },
+    {
+      "slug": "google-calendar-find-a-time-blank-is-not-free",
+      "url": "https://www.cloud-calendars.com/articles/google-calendar-find-a-time-blank-is-not-free/"
+    },
+    {
+      "slug": "google-calendar-meeting-notes-not-updating",
+      "url": "https://www.cloud-calendars.com/articles/google-calendar-meeting-notes-not-updating/"
+    },
+    {
+      "slug": "google-calendar-android-app-not-syncing",
+      "url": "https://www.cloud-calendars.com/articles/google-calendar-android-app-not-syncing/"
+    },
+    {
+      "slug": "google-calendar-offline-desktop-limits",
+      "url": "https://www.cloud-calendars.com/articles/google-calendar-offline-desktop-limits/"
+    },
+    {
+      "slug": "google-calendar-ownership-transfer-pending-acceptance",
+      "url": "https://www.cloud-calendars.com/articles/google-calendar-ownership-transfer-pending-acceptance/"
+    },
+    {
+      "slug": "google-calendar-event-visibility-private-public-default",
+      "url": "https://www.cloud-calendars.com/articles/google-calendar-event-visibility-private-public-default/"
+    },
+    {
+      "slug": "google-calendar-time-insights-counted-meetings",
+      "url": "https://www.cloud-calendars.com/articles/google-calendar-time-insights-counted-meetings/"
+    },
+    {
+      "slug": "google-calendar-working-hours-location-out-of-office-focus-time",
+      "url": "https://www.cloud-calendars.com/articles/google-calendar-working-hours-location-out-of-office-focus-time/"
+    },
+    {
+      "slug": "google-family-calendar-membership",
+      "url": "https://www.cloud-calendars.com/articles/google-family-calendar-membership/"
+    },
+    {
+      "slug": "non-integer-30-and-45-minute-utc-offset-calendar-scheduling",
+      "url": "https://www.cloud-calendars.com/articles/non-integer-30-and-45-minute-utc-offset-calendar-scheduling/"
+    },
+    {
+      "slug": "google-calendar-hide-unsubscribe-or-delete",
+      "url": "https://www.cloud-calendars.com/articles/google-calendar-hide-unsubscribe-or-delete/"
+    },
+    {
+      "slug": "icloud-shared-calendar-update-emails",
+      "url": "https://www.cloud-calendars.com/articles/icloud-shared-calendar-update-emails/"
+    },
+    {
+      "slug": "iphone-calendar-add-only-full-access",
+      "url": "https://www.cloud-calendars.com/articles/iphone-calendar-add-only-full-access/"
+    },
+    {
+      "slug": "outlook-show-declined-meetings-on-calendar",
+      "url": "https://www.cloud-calendars.com/articles/outlook-show-declined-meetings-on-calendar/"
+    },
+    {
+      "slug": "outlook-shorten-meetings-automatically",
+      "url": "https://www.cloud-calendars.com/articles/outlook-shorten-meetings-automatically/"
+    },
+    {
+      "slug": "outlook-calendar-delegate-or-editor-permission",
+      "url": "https://www.cloud-calendars.com/articles/outlook-calendar-delegate-or-editor-permission/"
+    },
+    {
+      "slug": "outlook-group-calendar-versus-shared-calendar",
+      "url": "https://www.cloud-calendars.com/articles/outlook-group-calendar-versus-shared-calendar/"
+    },
+    {
+      "slug": "mac-calendar-ignore-alerts-one-calendar",
+      "url": "https://www.cloud-calendars.com/articles/mac-calendar-ignore-alerts-one-calendar/"
+    },
+    {
+      "slug": "outlook-teams-meeting-button-missing",
+      "url": "https://www.cloud-calendars.com/articles/outlook-teams-meeting-button-missing/"
+    },
+    {
+      "slug": "icloud-calendar-hide-past-events",
+      "url": "https://www.cloud-calendars.com/articles/icloud-calendar-hide-past-events/"
+    },
+    {
+      "slug": "on-call-standby-calendar-versus-confirmed-shift",
+      "url": "https://www.cloud-calendars.com/articles/on-call-standby-calendar-versus-confirmed-shift/"
+    },
+    {
+      "slug": "outlook-appointment-meeting-event-convert-and-update",
+      "url": "https://www.cloud-calendars.com/articles/outlook-appointment-meeting-event-convert-and-update/"
+    },
+    {
+      "slug": "outlook-birthday-calendar-from-contacts",
+      "url": "https://www.cloud-calendars.com/articles/outlook-birthday-calendar-from-contacts/"
+    },
+    {
+      "slug": "outlook-calendar-sharing-levels-busy-titles-details",
+      "url": "https://www.cloud-calendars.com/articles/outlook-calendar-sharing-levels-busy-titles-details/"
+    },
+    {
+      "slug": "google-calendar-response-emails-outlook-rsvp",
+      "url": "https://www.cloud-calendars.com/articles/google-calendar-response-emails-outlook-rsvp/"
+    },
+    {
+      "slug": "outlook-show-as-free-busy-tentative-working-elsewhere",
+      "url": "https://www.cloud-calendars.com/articles/outlook-show-as-free-busy-tentative-working-elsewhere/"
+    },
+    {
+      "slug": "outlook-work-hours-and-location",
+      "url": "https://www.cloud-calendars.com/articles/outlook-work-hours-and-location/"
+    },
+    {
+      "slug": "overnight-shift-crossing-midnight-calendar-end-date",
+      "url": "https://www.cloud-calendars.com/articles/overnight-shift-crossing-midnight-calendar-end-date/"
+    },
+    {
+      "slug": "google-appointment-payments-stripe-refunds",
+      "url": "https://www.cloud-calendars.com/articles/google-appointment-payments-stripe-refunds/"
+    },
+    {
+      "slug": "non-dst-time-zone-arizona-hawaii-recurring-calendar",
+      "url": "https://www.cloud-calendars.com/articles/non-dst-time-zone-arizona-hawaii-recurring-calendar/"
+    },
+    {
+      "slug": "google-calendar-print-date-range",
+      "url": "https://www.cloud-calendars.com/articles/google-calendar-print-date-range/"
+    },
+    {
+      "slug": "outlook-print-calendar-styles",
+      "url": "https://www.cloud-calendars.com/articles/outlook-print-calendar-styles/"
+    },
+    {
+      "slug": "outlook-propose-new-meeting-time",
+      "url": "https://www.cloud-calendars.com/articles/outlook-propose-new-meeting-time/"
+    },
+    {
+      "slug": "icloud-public-calendar-publish-stop",
+      "url": "https://www.cloud-calendars.com/articles/icloud-public-calendar-publish-stop/"
+    },
+    {
+      "slug": "outlook-scheduling-assistant-read-colleague-availability",
+      "url": "https://www.cloud-calendars.com/articles/outlook-scheduling-assistant-read-colleague-availability/"
+    },
+    {
+      "slug": "outlook-recover-deleted-calendar-items",
+      "url": "https://www.cloud-calendars.com/articles/outlook-recover-deleted-calendar-items/"
+    },
+    {
+      "slug": "monthly-recurring-last-weekday-byday-minus-1-versus-fixed-date",
+      "url": "https://www.cloud-calendars.com/articles/monthly-recurring-last-weekday-byday-minus-1-versus-fixed-date/"
+    },
+    {
+      "slug": "google-tasks-repeating-task-complete-delete",
+      "url": "https://www.cloud-calendars.com/articles/google-tasks-repeating-task-complete-delete/"
+    },
+    {
+      "slug": "outlook-schedule-meeting-on-behalf-of-someone",
+      "url": "https://www.cloud-calendars.com/articles/outlook-schedule-meeting-on-behalf-of-someone/"
+    },
+    {
+      "slug": "google-booking-page-link-button-embed",
+      "url": "https://www.cloud-calendars.com/articles/google-booking-page-link-button-embed/"
+    },
+    {
+      "slug": "outlook-share-calendar-outside-organization",
+      "url": "https://www.cloud-calendars.com/articles/outlook-share-calendar-outside-organization/"
+    },
+    {
+      "slug": "outlook-shared-mailbox-calendar",
+      "url": "https://www.cloud-calendars.com/articles/outlook-shared-mailbox-calendar/"
+    },
+    {
+      "slug": "google-calendar-android-personal-work-profile",
+      "url": "https://www.cloud-calendars.com/articles/google-calendar-android-personal-work-profile/"
+    },
+    {
+      "slug": "split-shift-two-work-periods-calendar-blocking",
+      "url": "https://www.cloud-calendars.com/articles/split-shift-two-work-periods-calendar-blocking/"
+    },
+    {
+      "slug": "southern-hemisphere-reverse-dst-two-hour-meeting-shift",
+      "url": "https://www.cloud-calendars.com/articles/southern-hemisphere-reverse-dst-two-hour-meeting-shift/"
+    },
+    {
+      "slug": "google-calendar-task-deadline-versus-scheduled-time-block",
+      "url": "https://www.cloud-calendars.com/articles/google-calendar-task-deadline-versus-scheduled-time-block/"
+    },
+    {
+      "slug": "iana-tzdb-government-time-zone-rule-change-calendar",
+      "url": "https://www.cloud-calendars.com/articles/iana-tzdb-government-time-zone-rule-change-calendar/"
+    },
+    {
+      "slug": "google-calendar-email-notifications-filter",
+      "url": "https://www.cloud-calendars.com/articles/google-calendar-email-notifications-filter/"
+    },
+    {
+      "slug": "outlook-create-meeting-from-email",
+      "url": "https://www.cloud-calendars.com/articles/outlook-create-meeting-from-email/"
+    },
+    {
+      "slug": "google-calendar-report-assigned-task-spam",
+      "url": "https://www.cloud-calendars.com/articles/google-calendar-report-assigned-task-spam/"
+    },
+    {
+      "slug": "mac-calendar-custom-alert-email-open-file",
+      "url": "https://www.cloud-calendars.com/articles/mac-calendar-custom-alert-email-open-file/"
+    },
+    {
+      "slug": "us-uk-dst-mismatch-weeks-recurring-meeting-calendar",
+      "url": "https://www.cloud-calendars.com/articles/us-uk-dst-mismatch-weeks-recurring-meeting-calendar/"
+    },
+    {
+      "slug": "outlook-split-view-overlay-calendars",
+      "url": "https://www.cloud-calendars.com/articles/outlook-split-view-overlay-calendars/"
+    },
+    {
+      "slug": "google-keep-reminders-moved-to-tasks",
+      "url": "https://www.cloud-calendars.com/articles/google-keep-reminders-moved-to-tasks/"
+    },
+    {
+      "slug": "outlook-change-meeting-organizer-or-copy-meeting",
+      "url": "https://www.cloud-calendars.com/articles/outlook-change-meeting-organizer-or-copy-meeting/"
+    },
+    {
+      "slug": "firefighter-24-48-kelly-day-calendar-pattern",
+      "url": "https://www.cloud-calendars.com/articles/firefighter-24-48-kelly-day-calendar-pattern/"
+    },
+    {
+      "slug": "dupont-28-day-rotating-shift-calendar-cycle",
+      "url": "https://www.cloud-calendars.com/articles/dupont-28-day-rotating-shift-calendar-cycle/"
+    },
+    {
+      "slug": "icalendar-exdate-recurrence-id-moved-instance",
+      "url": "https://www.cloud-calendars.com/articles/icalendar-exdate-recurrence-id-moved-instance/"
+    },
+    {
+      "slug": "icalendar-floating-time-utc-tzid",
+      "url": "https://www.cloud-calendars.com/articles/icalendar-floating-time-utc-tzid/"
+    },
+    {
+      "slug": "icalendar-duration-p1d-pt24h-dst",
+      "url": "https://www.cloud-calendars.com/articles/icalendar-duration-p1d-pt24h-dst/"
+    },
+    {
+      "slug": "icalendar-valarm-relative-absolute-trigger",
+      "url": "https://www.cloud-calendars.com/articles/icalendar-valarm-relative-absolute-trigger/"
+    },
+    {
+      "slug": "ics-method-cancel-versus-delete-event",
+      "url": "https://www.cloud-calendars.com/articles/ics-method-cancel-versus-delete-event/"
+    },
+    {
+      "slug": "icalendar-transp-class-busy-private",
+      "url": "https://www.cloud-calendars.com/articles/icalendar-transp-class-busy-private/"
+    },
+    {
+      "slug": "icalendar-uid-sequence-event-updates",
+      "url": "https://www.cloud-calendars.com/articles/icalendar-uid-sequence-event-updates/"
+    },
+    {
+      "slug": "pitman-2-2-3-shift-schedule-calendar-setup",
+      "url": "https://www.cloud-calendars.com/articles/pitman-2-2-3-shift-schedule-calendar-setup/"
+    },
+    {
+      "slug": "rrule-count-until-excluded-occurrences",
+      "url": "https://www.cloud-calendars.com/articles/rrule-count-until-excluded-occurrences/"
+    },
+    {
+      "slug": "ics-all-day-dtend-exclusive-end-date",
+      "url": "https://www.cloud-calendars.com/articles/ics-all-day-dtend-exclusive-end-date/"
+    },
+    {
+      "slug": "google-calendar-add-ons-conferencing-permissions",
+      "url": "https://www.cloud-calendars.com/articles/google-calendar-add-ons-conferencing-permissions/"
+    }
+  ],
+  "publicationStatus": "published_verified",
+  "liveVerification": "live-publication-verification.json",
+  "publicationDetails": {
+    "newEnglishPages": 100,
+    "totalEnglishPages": 173,
+    "sitemapSubmittedToGoogleAt": "2026-10-23T11:33:16.862204+00:00",
+    "sitemapSubmissionResult": "Sitemap submitted successfully; confirmed in Search Console UI",
+    "cdnInvalidation": "I15YOERB9ZCDIXBNLI55DK46LB",
+    "finalUiCdnInvalidation": "I4KCQMYIWW0CMVQ59SGHBBT21"
+  },
+  "lastVerifiedAt": "2026-10-23T11:43:17.127964+00:00"
+}
