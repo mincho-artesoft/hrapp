@@ -1,0 +1,322 @@
+{
+  "ar-SA": {
+    "updatedModules": [
+      "src/app/content/ar-SA/articles.ts"
+    ],
+    "addedSlugs": [
+      "forecast-beside-every-event",
+      "the-widget-that-shows-what-is-next",
+      "onecal-alternative-iphone-calendar-view-or-sync",
+      "fantastical-readdle-calendar366-iphone-comparison"
+    ]
+  },
+  "bg": {
+    "updatedModules": [
+      "src/app/content/bg/articles.ts",
+      "src/app/content/bg/articles-help.ts"
+    ],
+    "addedSlugs": [
+      "forecast-beside-every-event",
+      "onecal-alternative-iphone-calendar-view-or-sync",
+      "fantastical-readdle-calendar366-iphone-comparison"
+    ]
+  },
+  "cs": {
+    "updatedModules": [
+      "src/app/content/cs/articles.ts"
+    ],
+    "addedSlugs": [
+      "forecast-beside-every-event",
+      "the-widget-that-shows-what-is-next",
+      "onecal-alternative-iphone-calendar-view-or-sync",
+      "fantastical-readdle-calendar366-iphone-comparison"
+    ]
+  },
+  "da": {
+    "updatedModules": [
+      "src/app/content/da/articles.ts"
+    ],
+    "addedSlugs": [
+      "forecast-beside-every-event",
+      "the-widget-that-shows-what-is-next",
+      "onecal-alternative-iphone-calendar-view-or-sync",
+      "fantastical-readdle-calendar366-iphone-comparison"
+    ]
+  },
+  "de-DE": {
+    "updatedModules": [
+      "src/app/content/de-DE/articles.ts"
+    ],
+    "addedSlugs": [
+      "onecal-alternative-iphone-calendar-view-or-sync",
+      "fantastical-readdle-calendar366-iphone-comparison"
+    ]
+  },
+  "el": {
+    "updatedModules": [
+      "src/app/content/el/articles.ts"
+    ],
+    "addedSlugs": [
+      "forecast-beside-every-event",
+      "the-widget-that-shows-what-is-next",
+      "onecal-alternative-iphone-calendar-view-or-sync",
+      "fantastical-readdle-calendar366-iphone-comparison"
+    ]
+  },
+  "en-US": {
+    "updatedModules": [
+      "src/app/content/en-US/articles-weather.ts",
+      "src/app/content/en-US/articles-unify.ts",
+      "src/app/content/en-US/articles-widgets.ts",
+      "src/app/content/en-US/articles-compare.ts",
+      "src/app/content/en-US/articles-discovery.ts"
+    ],
+    "addedSlugs": []
+  },
+  "es-ES": {
+    "updatedModules": [
+      "src/app/content/es-ES/articles.ts"
+    ],
+    "addedSlugs": [
+      "onecal-alternative-iphone-calendar-view-or-sync",
+      "fantastical-readdle-calendar366-iphone-comparison"
+    ]
+  },
+  "fi": {
+    "updatedModules": [
+      "src/app/content/fi/articles.ts"
+    ],
+    "addedSlugs": [
+      "forecast-beside-every-event",
+      "the-widget-that-shows-what-is-next",
+      "onecal-alternative-iphone-calendar-view-or-sync",
+      "fantastical-readdle-calendar366-iphone-comparison"
+    ]
+  },
+  "fr-FR": {
+    "updatedModules": [
+      "src/app/content/fr-FR/articles.ts"
+    ],
+    "addedSlugs": [
+      "onecal-alternative-iphone-calendar-view-or-sync",
+      "fantastical-readdle-calendar366-iphone-comparison"
+    ]
+  },
+  "he": {
+    "updatedModules": [
+      "src/app/content/he/articles.ts"
+    ],
+    "addedSlugs": [
+      "forecast-beside-every-event",
+      "the-widget-that-shows-what-is-next",
+      "onecal-alternative-iphone-calendar-view-or-sync",
+      "fantastical-readdle-calendar366-iphone-comparison"
+    ]
+  },
+  "hi": {
+    "updatedModules": [
+      "src/app/content/hi/articles.ts"
+    ],
+    "addedSlugs": [
+      "forecast-beside-every-event",
+      "the-widget-that-shows-what-is-next",
+      "onecal-alternative-iphone-calendar-view-or-sync",
+      "fantastical-readdle-calendar366-iphone-comparison"
+    ]
+  },
+  "hu": {
+    "updatedModules": [
+      "src/app/content/hu/articles.ts"
+    ],
+    "addedSlugs": [
+      "forecast-beside-every-event",
+      "the-widget-that-shows-what-is-next",
+      "onecal-alternative-iphone-calendar-view-or-sync",
+      "fantastical-readdle-calendar366-iphone-comparison"
+    ]
+  },
+  "id": {
+    "updatedModules": [
+      "src/app/content/id/articles.ts"
+    ],
+    "addedSlugs": [
+      "forecast-beside-every-event",
+      "the-widget-that-shows-what-is-next",
+      "onecal-alternative-iphone-calendar-view-or-sync",
+      "fantastical-readdle-calendar366-iphone-comparison"
+    ]
+  },
+  "it": {
+    "updatedModules": [
+      "src/app/content/it/articles.ts"
+    ],
+    "addedSlugs": [
+      "onecal-alternative-iphone-calendar-view-or-sync",
+      "fantastical-readdle-calendar366-iphone-comparison"
+    ]
+  },
+  "ja": {
+    "updatedModules": [
+      "src/app/content/ja/articles.ts"
+    ],
+    "addedSlugs": [
+      "forecast-beside-every-event",
+      "onecal-alternative-iphone-calendar-view-or-sync",
+      "fantastical-readdle-calendar366-iphone-comparison"
+    ]
+  },
+  "ko": {
+    "updatedModules": [
+      "src/app/content/ko/articles.ts"
+    ],
+    "addedSlugs": [
+      "forecast-beside-every-event",
+      "the-widget-that-shows-what-is-next",
+      "onecal-alternative-iphone-calendar-view-or-sync",
+      "fantastical-readdle-calendar366-iphone-comparison"
+    ]
+  },
+  "ms": {
+    "updatedModules": [
+      "src/app/content/ms/articles.ts"
+    ],
+    "addedSlugs": [
+      "forecast-beside-every-event",
+      "the-widget-that-shows-what-is-next",
+      "onecal-alternative-iphone-calendar-view-or-sync",
+      "fantastical-readdle-calendar366-iphone-comparison"
+    ]
+  },
+  "nl-NL": {
+    "updatedModules": [
+      "src/app/content/nl-NL/articles.ts"
+    ],
+    "addedSlugs": [
+      "forecast-beside-every-event",
+      "the-widget-that-shows-what-is-next",
+      "onecal-alternative-iphone-calendar-view-or-sync",
+      "fantastical-readdle-calendar366-iphone-comparison"
+    ]
+  },
+  "no": {
+    "updatedModules": [
+      "src/app/content/no/articles.ts"
+    ],
+    "addedSlugs": [
+      "forecast-beside-every-event",
+      "the-widget-that-shows-what-is-next",
+      "onecal-alternative-iphone-calendar-view-or-sync",
+      "fantastical-readdle-calendar366-iphone-comparison"
+    ]
+  },
+  "pl": {
+    "updatedModules": [
+      "src/app/content/pl/articles.ts"
+    ],
+    "addedSlugs": [
+      "forecast-beside-every-event",
+      "the-widget-that-shows-what-is-next",
+      "onecal-alternative-iphone-calendar-view-or-sync",
+      "fantastical-readdle-calendar366-iphone-comparison"
+    ]
+  },
+  "pt-BR": {
+    "updatedModules": [
+      "src/app/content/pt-BR/articles.ts"
+    ],
+    "addedSlugs": [
+      "forecast-beside-every-event",
+      "the-widget-that-shows-what-is-next",
+      "onecal-alternative-iphone-calendar-view-or-sync",
+      "fantastical-readdle-calendar366-iphone-comparison"
+    ]
+  },
+  "ro": {
+    "updatedModules": [
+      "src/app/content/ro/articles.ts"
+    ],
+    "addedSlugs": [
+      "forecast-beside-every-event",
+      "the-widget-that-shows-what-is-next",
+      "onecal-alternative-iphone-calendar-view-or-sync",
+      "fantastical-readdle-calendar366-iphone-comparison"
+    ]
+  },
+  "ru": {
+    "updatedModules": [
+      "src/app/content/ru/articles.ts"
+    ],
+    "addedSlugs": [
+      "forecast-beside-every-event",
+      "the-widget-that-shows-what-is-next",
+      "onecal-alternative-iphone-calendar-view-or-sync",
+      "fantastical-readdle-calendar366-iphone-comparison"
+    ]
+  },
+  "sv": {
+    "updatedModules": [
+      "src/app/content/sv/articles.ts"
+    ],
+    "addedSlugs": [
+      "forecast-beside-every-event",
+      "the-widget-that-shows-what-is-next",
+      "onecal-alternative-iphone-calendar-view-or-sync",
+      "fantastical-readdle-calendar366-iphone-comparison"
+    ]
+  },
+  "th": {
+    "updatedModules": [
+      "src/app/content/th/articles.ts"
+    ],
+    "addedSlugs": [
+      "forecast-beside-every-event",
+      "the-widget-that-shows-what-is-next",
+      "onecal-alternative-iphone-calendar-view-or-sync",
+      "fantastical-readdle-calendar366-iphone-comparison"
+    ]
+  },
+  "tr": {
+    "updatedModules": [
+      "src/app/content/tr/articles.ts"
+    ],
+    "addedSlugs": [
+      "forecast-beside-every-event",
+      "the-widget-that-shows-what-is-next",
+      "onecal-alternative-iphone-calendar-view-or-sync",
+      "fantastical-readdle-calendar366-iphone-comparison"
+    ]
+  },
+  "vi": {
+    "updatedModules": [
+      "src/app/content/vi/articles.ts"
+    ],
+    "addedSlugs": [
+      "forecast-beside-every-event",
+      "the-widget-that-shows-what-is-next",
+      "onecal-alternative-iphone-calendar-view-or-sync",
+      "fantastical-readdle-calendar366-iphone-comparison"
+    ]
+  },
+  "zh-Hans": {
+    "updatedModules": [
+      "src/app/content/zh-Hans/articles.ts"
+    ],
+    "addedSlugs": [
+      "forecast-beside-every-event",
+      "the-widget-that-shows-what-is-next",
+      "onecal-alternative-iphone-calendar-view-or-sync",
+      "fantastical-readdle-calendar366-iphone-comparison"
+    ]
+  },
+  "zh-Hant": {
+    "updatedModules": [
+      "src/app/content/zh-Hant/articles.ts"
+    ],
+    "addedSlugs": [
+      "forecast-beside-every-event",
+      "the-widget-that-shows-what-is-next",
+      "onecal-alternative-iphone-calendar-view-or-sync",
+      "fantastical-readdle-calendar366-iphone-comparison"
+    ]
+  }
+}

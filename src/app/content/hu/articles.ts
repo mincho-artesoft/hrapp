@@ -102,132 +102,317 @@ export const ARTICLES_HU: Readonly<Record<string, LocalisedArticle>> = {
 },
 
   'weather-inside-your-calendar': {
-  "updated": "2026-10-22",
-  "title": "Naptár időjárással iPhone-on és iPaden: vizsgálja meg a terv körülményeit",
-  "short": "Naptár és időjárás együtt",
-  "description": "Használja együtt a naptárt és időjárást iPhone-on, iPaden. Mentés előtt ellenőrizze a helyet, az elérhető órás előrejelzést és az eseményt.",
-  "lede": "A naptár megmondja, mikorra szól egy program. Az időjárás más kérdésre válaszol: milyen körülmények várhatók a szükséges helyen és időszakban? Használja együtt őket, de tartsa egyértelműen szem előtt a helyeket és dátumokat. Az útmutatót a Cloud Calendars fejlesztője, az Arte Soft adja ki.",
-  "commonBelief": "A naptár mellett látható időjárás automatikusan minden találkozó címére, minden órára és minden jövőbeli dátumra vonatkozik.",
+  "updated": "2026-10-23",
+  "title": "Naptár időjárással iPhone-on és iPaden: tervezze meg a napját egyetlen nézetben",
+  "short": "Használja együtt a naptárt és az időjárást",
+  "description": "Hasonlítsa össze naptárát a kiválasztott hely időjárásával iPhone-on és iPaden.",
+  "lede": "A Cloud Calendars egyetlen iPhone- vagy iPad-alkalmazásban jeleníti meg az időbeosztását és az időjárást. A naptárban válasszon dátumot, az időjárás nézetben pedig tekintse meg a kiválasztott helyet és az elérhető előrejelzési órákat. Kültéri program esetén azt az időszakot ellenőrizze, amely valóban számít, ne csak a napi ikonra hagyatkozzon. Ezt az útmutatót az alkalmazás fejlesztője, az Arte Soft adta ki.",
+  "commonBelief": "A naptár mellett megjelenő időjárás automatikusan leírja minden esemény címét, minden órát és minden jövőbeli dátumot.",
   "sections": [
     {
-      "heading": "Válasszon valós tervezési kérdést",
+      "heading": "Válasszon egy valódi tervezési kérdést",
       "body": [
-        "Induljon egy konkrét programból, például délutáni parklátogatásból. Határozza meg, mi változhat: az időpont, a helyszín, a felkészülés vagy egy alternatíva választása. Nem kell az egész naptárt átszervezni pusztán azért, mert a napi jel esőt mutat.",
-        "Írja fel a tevékenység tényleges kezdetét és végét, szükség esetén az előkészülettel együtt. A naptári áttekintés lehetséges dátumokat keres, az előrejelzés vizsgálata viszont konkrét helyre és időszakra vonatkozik. Az opciók összehasonlításakor különítse el a két feladatot."
+        "Induljon ki egy konkrét eseményből, például egy délutáni parklátogatásból. Határozza meg, min változtathat az időjárás: az időponton, a helyszínen, a felkészülésen vagy azon a döntésen, hogy alternatívát választ-e. Nem kell az egész naptárat átrendeznie csak azért, mert a napi szimbólum esőt mutat.",
+        "Írja fel a tevékenység tényleges kezdetét és végét, szükség esetén az előkészületekkel együtt. A naptár áttekintése segít a lehetséges dátumok megtalálásában, míg az előrejelzés ellenőrzése egy adott helyre és időszakra vonatkozik. Lehetőségek összehasonlításakor tartsa külön ezt a két feladatot."
       ]
     },
     {
-      "heading": "Az értékek olvasása előtt ellenőrizze az időjárási helyet",
+      "heading": "Az értékek értelmezése előtt erősítse meg az időjárási helyet",
       "body": [
-        "A Cloud Calendars az aktuális vagy kiválasztott hely időjárását kínálja. Ellenőrizze a megjelenített helyet, ne feltételezze, hogy az esemény címe észrevétlenül átállítja az előrejelzést. Más városban lévő találkozóhoz annak a városnak az időjárását kell összevetni.",
-        "Például múzeumi érkezést tervezhet, miközben a telefon még otthon van. Összehasonlítás előtt olvassa el az előrejelzés helyét és a találkozó helyi időpontját. A képernyőn közeli értékek nem bizonyítják, hogy a program és az időjárás ugyanarra a helyre vonatkozik."
+        "A Cloud Calendars az aktuális vagy a kiválasztott hely időjárását kínálja. Ellenőrizze a megjelenített helyet, és ne feltételezze, hogy egy esemény címe észrevétlenül módosítja az előrejelzést. Egy másik városban lévő eseményt annak a városnak az időjárásával kell összevetni.",
+        "Például egy látogató múzeumi érkezést tervezhet, miközben a telefon még otthon van. Összehasonlítás előtt olvassa el az előrejelzés helyét és az esemény helyi időpontját. A képernyőn egymáshoz közelinek tűnő értékek nem bizonyítják, hogy a naptár és az időjárás ugyanazt a helyet használja."
       ]
     },
     {
-      "heading": "Az órás és napi lefedettséget külön ellenőrizze",
+      "heading": "Az óránkénti és a napi lefedettséget külön ellenőrizze",
       "body": [
-        "A napi adatot tájékozódásra, az elérhető órás adatokat a nap egy részére vonatkozó kérdéshez használja. A kettőtől ötig tartó programhoz egyetlen jel megtekintése nem elég. Ellenőrizze, hogy a szükséges órák ténylegesen szerepelnek-e.",
-        "Az alkalmazás jelenlegi forráskódjában a napi lista legfeljebb tíz, a WeatherKit által visszaadott napot vesz át. Ez különálló a naptárban való léptetéstől és az éppen biztosított óráktól. Egy jövőbeli találkozó nem hosszabbítja meg az előrejelzést. Ha az időszak hiányzik, tervezzen későbbi időjárás-ellenőrzést."
+        "Tájékozódáshoz használjon napi bejegyzést, a nap egy részére vonatkozó kérdésekhez pedig az elérhető óránkénti bejegyzéseket. Egy kettőtől ötig tartó foglaláshoz több kell egyetlen szimbólum gyors megnézésénél. Ellenőrizze, hogy a releváns órák valóban rendelkezésre állnak-e.",
+        "Az alkalmazás jelenlegi forrásában a napi lista legfeljebb a WeatherKit által visszaadott tíz napot tartalmazza. Ez külön áll a naptárban való navigációtól és a jelenleg szolgáltatott óráktól. Egy jövőbeli esemény nem hosszabbítja meg az időjárási lefedettséget. Ha az adott időszak hiányzik, tervezzen későbbi időjárás-ellenőrzést."
       ]
     },
     {
-      "heading": "Értse meg az időjárási érték jelentését",
+      "heading": "Értse, mit jelent az időjárási érték",
       "body": [
-        "Az Apple többek között hőmérséklet-, csapadék-, szél- és UV-adatokat dokumentál a WeatherKithez; bizonyos termékek csak egyes régiókban érhetők el. A választott helyhez rendelkezésre álló értékeket olvassa, ne várjon minden időjárási terméket mindenhol.",
-        "A Met Office útmutatója megmutatja, miért fontos az előrejelzés időszaka és a változók meghatározása: egyes értékek pillanatra, mások időszakra vonatkoznak. Kövesse az adott szolgáltató jelöléseit. Az eső valószínűsége, mennyisége és időtartama külön kérdés; egyetlen szám nem dönt minden szabadtéri tevékenységről."
+        "Az Apple dokumentálja a WeatherKit adatait, például a hőmérsékletet, a csapadékot, a szelet és az UV értéket, egyes termékek pedig csak bizonyos régiókban érhetők el. A kiválasztott helyen rendelkezésre álló értékeket olvassa, és ne várja el, hogy minden időjárási termék mindenhol elérhető legyen.",
+        "A Met Office útmutatása jól mutatja, miért számít az előrejelzési időszak és a változók meghatározása: egyes értékek egy adott pillanatra, mások egy időszakra vonatkoznak. Használja az adott szolgáltató címkéit. Az eső valószínűsége, mennyisége és időtartama külön kérdés, és nincs egyetlen szám, amely minden kültéri tevékenységről döntene."
       ]
     },
     {
-      "heading": "Vizsgálja meg az időjárási órából létrehozott tervezetet",
+      "heading": "Ellenőrizzen egy időjárási órából létrehozott piszkozatot",
       "body": [
-        "Ahol az alkalmazás lehetővé teszi esemény indítását egy órából, tervezet nyílik meg. A jelenlegi kód az időjárási hely időzónáját használja, egyórás időtartamot javasol, és az új események alapértelmezett naptárát választja. Mentés előtt ellenőrizzen minden értéket.",
-        "Erősítse meg a címet, célnaptárt, kezdést, befejezést és kívánt helyszínt. Az előrejelzés kiválasztása nem ad megosztott naptári szerkesztési jogot, nem értesít helyszínt, és nem foglal termet. Ellenőrizze a mentett eseményt, és szerezze meg a szükséges megállapodásokat."
+        "Ahol az alkalmazás lehetővé teszi, hogy egy órából eseményt hozzon létre, ott egy piszkozat nyílik meg. A jelenlegi forrás az időjárási hely időzónáját használja, egyórás időtartamot javasol, és az alapértelmezett új eseménynaptárt választja ki. Mentés előtt ellenőrizze az összes értéket.",
+        "Erősítse meg a címet, a cél naptárat, a kezdést, a befejezést és a tervezett helyszínt. Az előrejelzési időpont kiválasztása nem ad engedélyt megosztott naptár szerkesztésére, helyszín értesítésére vagy teremfoglalásra. Ellenőrizze a mentett eseményt, és szerezzen be minden szükséges jóváhagyást."
       ]
     },
     {
-      "heading": "Különítse el a webhely bemutatóját",
+      "heading": "Kezelje külön a webhelyes bemutatót",
       "body": [
-        "A webhely interaktív időjárás-bemutatója Open-Meteót használ. Az alkalmazás Apple WeatherKitet használ. A webes bemutató segít megismerni a megjelenítést, de helye, adatai és elérhető dátumai eltérhetnek az alkalmazástól.",
-        "Valós döntéshez nyissa meg az alkalmazást, és hasonlítsa össze a találkozót az elérhető előrejelzéssel. Megosztott terv módosításakor ellenőrizze a szervezőt, az ismétlődés hatókörét és a résztvevőket. A körülményektől függő programhoz legyen egyeztetett alternatíva."
+        "A webhely interaktív időjárás-bemutatója az Open-Meteo szolgáltatást használja. Az alkalmazás az Apple WeatherKitet használja. A webes bemutató hasznos a megjelenítés megismeréséhez, de a hely, az adatok és az elérhető dátumok eltérhetnek az alkalmazásétól.",
+        "Valódi döntéshez nyissa meg az alkalmazást, és hasonlítsa össze a tervezett eseményt az ahhoz elérhető előrejelzéssel. Ha megosztott tervet módosít, erősítse meg a szervezőt, az ismétlődés hatókörét és a résztvevőket. Tartson kéznél egy egyeztetett alternatívát, ha a tevékenység a körülményektől függ."
       ]
     }
   ],
   "claims": {},
   "practical": [
-    "Azonosítsa a programot és a döntést, amelyet az időjárás megváltoztathat.",
-    "Erősítse meg az időjárási helyet, valamint a találkozó helyi dátumát és idejét.",
-    "Az elérhető órás lefedettséget a napi összefoglalótól külön vizsgálja.",
-    "A valószínűséget, mennyiséget és más értékeket a jelölések szerint olvassa.",
-    "Mentés előtt ellenőrizze az eseménytervezet minden részletét és célnaptárát.",
-    "A döntéskor nézze meg újra, és a közös változásokat közvetlenül egyeztesse."
+    "Azonosítsa az eseményt és azt a döntést, amelyet az időjárás befolyásolhat.",
+    "Erősítse meg az időjárási helyet, valamint az esemény helyi dátumát és időpontját.",
+    "Az elérhető óránkénti lefedettséget külön vizsgálja meg a napi összefoglalótól.",
+    "Olvassa el a valószínűséget, a mennyiséget és a többi releváns értéket a címkéik alapján.",
+    "Mentés előtt nézze át az eseménypiszkozat minden részletét és a cél naptárat.",
+    "A döntés időpontjában ellenőrizze újra, és a megosztott változtatásokat közvetlenül erősítse meg."
   ],
   "faq": [
     {
-      "q": "A naptár melletti időjárás követi minden esemény címét?",
-      "a": "Ne feltételezze ezt. Ellenőrizze a megjelenített időjárási helyet, és vesse össze a helyszínnel; a képernyőn való közelség nem bizonyít egyezést."
+      "q": "A naptáram melletti időjárás követi az egyes események címét?",
+      "a": "Ezt ne feltételezze. Ellenőrizze a megjelenített időjárási helyet, és vesse össze a helyszínnel; a képernyőn való közelség nem bizonyít egyezést."
     },
     {
       "q": "Az alkalmazás a webhely időjárás-szolgáltatóját használja?",
-      "a": "Nem. Az alkalmazás Apple WeatherKitet, a webhely bemutatója külön Open-Meteót használ."
+      "a": "Nem. Az alkalmazás az Apple WeatherKitet használja; a webhely bemutatója külön az Open-Meteót használja."
     },
     {
-      "q": "Az előrejelzési óra kiválasztása automatikusan ment találkozót?",
-      "a": "Ahol ez a művelet elérhető, tervezetet indít. Ellenőrizze a dátumot, időzónát, időtartamot, naptárt és helyet, majd mentse a kívánt eseményt."
+      "q": "Az előrejelzési óra kiválasztása automatikusan elment egy eseményt?",
+      "a": "Ahol ez a művelet elérhető, ott egy piszkozatot indít. Ellenőrizze annak dátumát, időzónáját, időtartamát, naptárát és helyét, majd mentse a kívánt eseményt."
     }
   ],
   "seeAlso": [
-    "month-view-on-a-bigger-screen",
-    "icloud-google-and-outlook-in-one-view",
-    "sharing-one-event-not-your-calendar"
+    "weather-calendar-history-versus-forecast-iphone",
+    "forecast-beside-every-event",
+    "a-fourteen-day-view-of-the-weather",
+    "weather-where-the-event-is",
+    "planning-outdoors-without-being-rained-on"
   ],
-  "sourcesHeading": "Hivatalos források és további olvasnivalók",
+  "sourcesHeading": "Hivatalos források és további olvasnivaló",
   "sources": [
     {
-      "label": "Apple: WeatherKit-előrejelzések és regionális elérhetőség",
+      "label": "Apple: WeatherKit előrejelzési információk és regionális elérhetőség",
       "url": "https://developer.apple.com/weatherkit/"
     },
     {
       "label": "Met Office: az előrejelzés helye, időszakai és időjárási értékei",
       "url": "https://weather.metoffice.gov.uk/guides/what-does-this-forecast-mean"
     }
+  ],
+  "comparison": {
+    "heading": "Melyik időjárásnézet válaszolja meg a kérdését?",
+    "columns": [
+      "Az Ön kérdése",
+      "Mit érdemes ellenőrizni",
+      "Mit nem bizonyít"
+    ],
+    "rows": [
+      {
+        "cells": [
+          "Mi következik ma?",
+          "A naptár napi vagy heti nézete a kiválasztott hely időjárása mellett.",
+          "Hogy minden esemény címe automatikusan módosítja az időjárási helyet."
+        ]
+      },
+      {
+        "cells": [
+          "Befolyásolhatja az eső a délutáni eseményemet?",
+          "Óránkénti adatok a helyszínre és az esemény teljes időtartamára.",
+          "Hogy egy napi szimbólum minden órát leír."
+        ]
+      },
+      {
+        "cells": [
+          "Tervezhetek a jövő hónapra az időjárás alapján?",
+          "Most a naptárát, később pedig a dátumhoz közelebbi előrejelzés-ellenőrzést.",
+          "Hogy a naptárban való navigáció kiterjeszti az előrejelzés lefedettségét."
+        ]
+      },
+      {
+        "cells": [
+          "Láthatok gyors áttekintést az Otthon képernyőn?",
+          "A megfelelő Otthon képernyő widgetet.",
+          "Hogy minden widgetelrendezés tartalmaz eseményeket vagy teljes előrejelzést."
+        ]
+      }
+    ]
+  },
+  "galleryKinds": [
+    "week-right",
+    "hook"
+  ],
+  "galleryCaption": "Valós Cloud Calendars képernyők: az időjárásnézet és egy eseményekkel teli nap. Ellenőrizze a kiválasztott helyet és dátumot az alkalmazásban.",
+  "actionHeading": "Tervezzen együtt az időbeosztásával és az előrejelzéssel",
+  "actionText": "A Cloud Calendars iPhone-ra és iPadre készült. Kezdje a Base csomaggal, amely tartalmazza a nézeteket, az időjárást és a Google Calendar szinkronizálást; az Advanced eltávolítja a hirdetéseket, míg a Premium Microsoft Calendar- és Teams-támogatást ad hozzá.",
+  "articleLinks": [
+    {
+      "slug": "forecast-beside-every-event",
+      "label": "Ellenőrizze az időjárást egy esemény óráira"
+    },
+    {
+      "slug": "the-widget-that-shows-what-is-next",
+      "label": "Válasszon naptár- és időjárás-widgetet"
+    },
+    {
+      "slug": "icloud-google-and-outlook-in-one-view",
+      "label": "Hozza egyetlen nézetbe a naptárfiókokat"
+    }
   ]
 },
 
   'icloud-google-and-outlook-in-one-view': {
-    title: 'iCloud, Google és Outlook egyetlen nézetben',
-    short: 'Három fiók, egy nézet',
-    description:
-      'Szinte mindenki élete megoszlik egy személyes Apple-naptár, egy Google-fiók és egy munkahelyi Exchange között. Mi változik, ha egy rácsba kerülnek.',
-    lede: 'A baj szinte soha nem az, hogy valamelyik naptár rossz. Az, hogy három van, hét pedig egy.',
-    commonBelief:
-      'Hogy a munkát és a magánéletet külön alkalmazásban tartani határ, és nem hiányosság.',
-    sections: [
-      {
-        heading: 'A kettős foglalás szerkezeti',
-        body: [
-          'Ha a kötelezettségei három helyen élnek, egyik hely sem tudja megmondani, hogy szabad-e. Az összefésülő lépés Ön, és fejből futtatja, rendszerint miközben valaki választ vár.',
-          'Ezért a klasszikus hiba nem az, hogy elfelejt egy eseményt; hanem hogy igent mond valamire, ami ütközik egy eseménnyel, amit nem láthatott.',
-        ],
-      },
-      {
-        heading: 'Mit ad egyetlen rács',
-        body: [
-          'Minden fiók ugyanabban a hétben, eredet szerint színezve, helyben szerkeszthetően. Megszűnik a kérdés, melyik alkalmazásban van a válasz, mert a kérdés megszűnik többes számban lenni.',
-          'Az iCloud és a Google az ingyenes változatban szinkronizál. A Microsoft-fiókok — Outlook és Exchange — a fizetőshöz tartoznak, mert annak a kapcsolatnak visszatérő költsége van, ami a többinek nincs.',
-        ],
-      },
-    ],
-    claims: {
-      accounts: 'Fióktípusok, amelyek egy nézetbe férnek',
-      premiumMonthly: 'A Microsoft hozzáadásának havi ára dollárban',
+  "updated": "2026-10-23",
+  "title": "Google-, iCloud- és Outlook-naptárak együtt iPhone-on és iPaden",
+  "short": "Három szolgáltató, egy nézet",
+  "description": "Kombinálja a naptárnézeteket, és értse meg a fiókengedélyeket, másolatokat és csomagkövetelményeket.",
+  "lede": "Ha a munkahelyi és a személyes eseményeket együtt szeretné látni, csatlakoztassa a kívánt fiókokat, válassza ki a naptáraikat, és ugyanazokat az eseményeket egy nézetben ellenőrizze. A Cloud Calendars az iPhone és iPad tervezését támogatja iCloud és Google Calendar használatával; a Microsoft Calendar támogatása a Premium csomag része. Az események együttes megjelenítése nem ugyanaz, mint a foglaltsági idő másolása a szolgáltatói fiókok között. Ezt az útmutatót a fejlesztő, az Arte Soft teszi közzé.",
+  "commonBelief": "Ha több naptárt egy alkalmazásba teszek, az automatikusan összhangban tartja azok rendelkezésre állását, megosztását és eseménymásolatait.",
+  "sections": [
+    {
+      "heading": "Azonosítsa az egyes események mögötti fiókot és naptárt",
+      "body": [
+        "Kezdjen szolgáltatónként egy-egy hétköznapi eseménnyel. Jegyezze fel a bejelentkezett e-mail-címet, a naptár nevét, valamint azt, hogy az esemény az Öné-e vagy meghívásként kapta. Két „Calendar” nevű naptár teljesen eltérő fiókokhoz tartozhat. A szín segít egy hét gyors áttekintésében; a fiók és a naptár azonosítja, hová kell küldeni egy szerkesztést.",
+        "Például egy fogorvosi időpont a személyes iCloud-naptárában és egy projektmegbeszélés a Microsoftban együtt is megjelenhet Önnek. Ez önmagában nem teszi láthatóvá a fogorvosi időpontot a kollégái számára, és nem foglalja le azt az időt az ő ütemezőeszközeikben.",
+        "Mielőtt kapcsolatot módosítana, döntse el a kívánt eredményt. Ha eseményadatokat szeretne másik fiókba áthelyezni, használja alább a „Naptárexport-formátum kiválasztása” részt a támogatott átviteli útvonal megtalálásához, és ellenőrizzen jellemző eseményeket, mielőtt a célhelyre hagyatkozna. Ha az időpontokat szeretné összehasonlítani, hagyja meg a meglévő naptártulajdonosokat, és jelenítse meg együtt a kijelölt forrásokat. Ha egy másik fióknak foglaltsági időt kell kapnia, a „Cloud Calendars és OneCal munkafolyamat szerint” ismerteti, miben különbözik a rendelkezésre állás másolása a személyes áttekintéstől."
+      ]
     },
-    practical: [
-      'Először a személyes fiókot vegye fel, aztán azt, amelyik az ütközéseket okozza.',
-      'Fiók szerint színezzen, ne kategória szerint: az eredetet kell egy pillantással látni.',
-      'Továbbra is abba a naptárba írjon, amelyet mások már olvasnak.',
+    {
+      "heading": "Csatlakozzon a megfelelő úton",
+      "body": [
+        "iCloud esetén először kapcsolja be az iCloud Calendar szolgáltatást az iPhone-on a kívánt Apple Account alatt. Az Apple beállítási útmutatója ismerteti az eszköz beállításait. A Cloud Calendars az iPhone naptárrendszerén keresztül elérhető naptárakhoz fér hozzá, és olvasásukhoz naptárhozzáférésre van szüksége. Nem elég, ha a fiók egy másik eszközön van csatlakoztatva.",
+        "A Cloud Calendarsban a „Sign in with Google” és a „Sign in with Microsoft” műveletek is elérhetők. Ellenőrizze, melyik fiókot választja bejelentkezéskor, majd nyissa meg annak naptárcsoportját, és válassza ki a szükséges naptárakat. Ha a megfelelő szolgáltatóhoz, de rossz személyes vagy munkahelyi azonosítóval jelentkezik be, az teljesen érvényes, mégis váratlan naptárlistát eredményezhet."
+      ]
+    },
+    {
+      "heading": "Értse meg a csomagokat anélkül, hogy összekeverné őket az engedélyekkel",
+      "body": [
+        "A Base csomag tartalmazza a Google Calendar szinkronizálást és a naptárnézeteket. Az Advanced a Base csomagot reklámmentességgel egészíti ki. A Premium a Microsoft Calendar- és Microsoft Teams-funkciókat adja hozzá. Vásárlás előtt ellenőrizze az aktuális helyi árat és a számlázási időszakot.",
+        "Egy csomag azt változtatja meg, hogy mely alkalmazásfunkciók érhetők el; nem ad tulajdonjogot valaki más naptárához. A Google különbséget tesz az események megtekintésének és módosításának joga között. A munkahelyi szabályzatok és a Microsoft-naptárhoz tartozó engedélyek továbbra is érvényesek. Egy látható esemény vagy egy elérhető szerkesztő nem bizonyítja, hogy a szolgáltató elfogad egy frissítést."
+      ]
+    },
+    {
+      "heading": "Az egyesített nézet naptármásolatokat is tartalmazhat",
+      "body": [
+        "A Google- és Microsoft-kapcsolatok naptármásolatokat használnak az iPhone naptárrendszerében az események megjelenítéséhez és szinkronizálásához. Ne feltételezze, hogy egy fiók csatlakoztatása nem hagy másolatot az eredeti szolgáltatón kívül. Az ilyen másolatok célhelye függhet attól, milyen naptárforrások érhetők el az eszközön.",
+        "Ha ugyanaz a fiók más úton is eléri a telefont, az ismétlődő eseményeket ne tekintse különálló eseményeknek anélkül, hogy ellenőrizné a naptárneveket és forrásokat. Azonosítsa, melyik megjelenítést melyik naptár adja úgy, hogy ideiglenesen elrejti az egyiket. Ne töröljön eseményt vagy naptárat csak azért, hogy rendezettebbnek tűnjön a képernyő: egy csatlakoztatott másolat visszaküldheti a módosításokat a szolgáltatónak."
+      ]
+    },
+    {
+      "heading": "Esemény létrehozásakor továbbra is mindig válassza ki a célhelyet",
+      "body": [
+        "Mentés előtt az esemény naptárát ugyanolyan figyelmesen ellenőrizze, mint a dátumát és idejét. Családi eseménynél azt a naptárat válassza, amelyet a család ténylegesen használ; munkahelyi megbeszélésnél a jóváhagyott munkahelyi célhelyet használja. Az, hogy mindkét naptárt együtt látja, még nem teszi egyiket sem automatikus célhellyé minden új eseményhez.",
+        "Egy esemény naptárának módosítása vagy naptárak közti áthúzása áthelyezés lehet, nem pedig ártalmatlan második nézet. Megjelenítési probléma vizsgálatakor tartsa a meghívásokat és az ismétlődő megbeszéléseket a megszokott naptárukban. Ha változtatásra van szükség, először állapítsa meg, ki az esemény tulajdonosa, és melyik naptár fogadhatja el azt."
+      ]
+    },
+    {
+      "heading": "Ellenőrizze az áttekintést, mielőtt rábízná magát",
+      "body": [
+        "Hasonlítson össze egy friss eseményt a szolgáltató saját naptárában a Cloud Calendars megfelelő eseményével. Ellenőrizze a dátumot, az időzónát, a címet és a kijelölt naptárat. Egy olyan szerkeszthető naptár esetén, amely az Ön tulajdona, vendégek nélküli, eldobható eseménnyel jobb ellenőrizni, mint egy élő megbeszélést módosítani. Mielőtt késznek tekintené a kapcsolatot, erősítse meg az eredményt a szolgáltatónál.",
+        "Ne számítson arra, hogy az egyesített nézet automatikusan névtelen foglaltsági blokkokat hoz létre egy másik fiókban. Ha azt szeretné, hogy a kollégái elérhetetlennek lássák Önt anélkül, hogy a személyes részleteket látnák, használjon kifejezetten jóváhagyott rendelkezésreállási megoldást, és ezt az ő oldalukról is ellenőrizze. A világos személyes áttekintés és a megosztott rendelkezésre állás két külön feladat."
+      ]
+    }
+  ],
+  "claims": {},
+  "practical": [
+    "Sorolja fel szolgáltatónként egy esemény pontos fiókját és naptárát.",
+    "Kapcsolja be a kívánt iCloud-naptárakat az eszközön, és ellenőrizze a naptárhozzáférést.",
+    "Használja a megfelelő Google- vagy Microsoft-bejelentkezést, és válassza ki a kívánt naptárakat.",
+    "Mielőtt bármit módosítana, hasonlítson össze egy friss eseményt a szolgáltató saját nézetével.",
+    "Ideiglenesen rejtse el a feltételezett duplikált forrást; a mögöttes eseményeket hagyja érintetlenül.",
+    "Minden új eseménynél ellenőrizze a célnaptárt, és külön ellenőrizze a szükséges foglaltságimegosztást."
+  ],
+  "faq": [
+    {
+      "q": "A munkahelyi kollégáim látni fogják a személyes eseményeimet azért, mert mindkét naptárt megjelenítem?",
+      "a": "A naptárak együttes megjelenítése nem megosztási utasítás és nem automatikus foglaltsági híd. Ellenőrizze az egyes naptárak tényleges megosztási beállításait. A szolgáltatói kapcsolatok naptármásolatokat hozhatnak létre az eszközön, ezért az egyesített nézet arra sem garancia, hogy az eseményadatok csak az eredeti szolgáltatónál léteznek."
+    },
+    {
+      "q": "Miért látok egy eseményt, de miért nem tudom sikeresen szerkeszteni?",
+      "a": "Lehet, hogy a naptár csak olvasható, az esemény más szervezőhöz tartozik, vagy a szolgáltató elutasítja a módosítást. Ellenőrizze a tulajdonjogot és az engedélyeket a szolgáltató naptárában. Magasabb alkalmazáscsomag vásárlása nem változtat ezeken az engedélyeken."
+    },
+    {
+      "q": "Ugyanazt a Google-fiókot minden elérhető módon csatlakoztassam?",
+      "a": "Először ellenőrizze, hogyan jelenik meg már most a telefonon. Több kapcsolódási út megnehezítheti a naptármásolatok azonosítását. Válassza ki a használni kívánt módot, ellenőrizze annak eseményeit, és a vizsgálat idejére inkább rejtsen el egy plusz megjelenítést, ne pedig adatokat töröljön vagy fiókokat kapcsoljon le első lépésként."
+    }
+  ],
+  "sourcesHeading": "Források és beállítási hivatkozások",
+  "sources": [
+    {
+      "label": "Apple: az iCloud Calendar beállítása az eszközein",
+      "url": "https://support.apple.com/guide/icloud/set-up-calendar-mme4d73a8727/icloud"
+    },
+    {
+      "label": "Google: naptármegosztás és engedélyek",
+      "url": "https://support.google.com/calendar/answer/37082?hl=en"
+    },
+    {
+      "label": "Microsoft: Outlook Calendar API és támogatott postaládaadatok",
+      "url": "https://learn.microsoft.com/en-us/graph/outlook-calendar-concept-overview"
+    }
+  ],
+  "seeAlso": [
+    "exchange-calendars-on-an-iphone",
+    "what-calendar-sync-actually-does",
+    "when-two-calendars-disagree",
+    "caldav-calendar-on-iphone",
+    "calendar-export-ics-pdf-and-backup",
+    "onecal-alternative-iphone-calendar-view-or-sync"
+  ],
+  "comparison": {
+    "heading": "Egyesített nézet, előfizetés vagy átmásolt foglaltsági idő?",
+    "columns": [
+      "Amire szüksége van",
+      "Mit ellenőrizzen",
+      "Mit ne feltételezzen"
     ],
-    seeAlso: ['weather-inside-your-calendar', 'what-a-subscription-actually-buys'],
+    "rows": [
+      {
+        "cells": [
+          "Több fiók egy nézetben",
+          "A csatlakoztatott fiókot, a kiválasztott naptárt és a szükséges csomagot.",
+          "Hogy egy megosztott képernyő egyesíti a tulajdonjogot vagy az engedélyeket."
+        ]
+      },
+      {
+        "cells": [
+          "Az eseménymódosítás eljut a szolgáltatóhoz",
+          "Az eredeti eseményt, az írási jogosultságot és a forrásnál mentett eredményt.",
+          "Hogy egy látható helyi szerkesztés bizonyítja a szolgáltatóval való sikeres szinkronizálást."
+        ]
+      },
+      {
+        "cells": [
+          "Foglaltsági idő egy másik fiókban",
+          "Olyan szolgáltatást, amely kifejezett forrásból célba szinkronszabályokkal rendelkezik.",
+          "Hogy az egyesített nézet automatikusan foglaltsági blokkokat hoz létre a kollégáknak."
+        ]
+      },
+      {
+        "cells": [
+          "Egy feliratkozott naptárhírfolyam",
+          "A közzétevőt, a frissítési működést és a csak olvasható állapotot.",
+          "Hogy egy ICS-előfizetés szerkeszthető, kétirányú kapcsolat."
+        ]
+      }
+    ]
   },
+  "galleryKinds": [
+    "week-left",
+    "hook"
+  ],
+  "galleryDevice": "iPad",
+  "galleryCaption": "Valódi iPad naptárnézetek szemléltetik az időbeosztás áttekintését. Egy képernyőkép nem mutatja meg a szolgáltatói szinkron irányát vagy a fiókengedélyeket.",
+  "actionHeading": "Tekintse át együtt a naptárait iPhone-on és iPaden",
+  "actionText": "A Google Calendar szinkron a Base csomag része. Az Advanced eltávolítja a hirdetéseket; a Premium Microsoft Calendar és Teams támogatást ad. A fiók engedélyeit a vásárlási csomagtól függetlenül erősítse meg.",
+  "articleLinks": [
+    {
+      "slug": "onecal-alternative-iphone-calendar-view-or-sync",
+      "label": "Az egyesített nézet összevetése a OneCal szinkronszabályaival"
+    },
+    {
+      "slug": "fantastical-readdle-calendar366-iphone-comparison",
+      "label": "iPhone-os naptáras munkafolyamatok összehasonlítása"
+    },
+    {
+      "slug": "weather-inside-your-calendar",
+      "label": "Tervezés időjárással és eseményekkel együtt"
+    }
+  ]
+},
 
   'sharing-one-event-not-your-calendar': {
   "updated": "2026-10-21",

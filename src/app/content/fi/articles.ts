@@ -98,127 +98,317 @@ export const ARTICLES_FI: Readonly<Record<string, LocalisedArticle>> = {
 },
 
   'weather-inside-your-calendar': {
-  "updated": "2026-10-22",
-  "title": "Kalenteri ja sää iPhonella ja iPadilla: tarkista suunnitelman olosuhteet",
+  "updated": "2026-10-23",
+  "title": "Kalenteri säällä iPhonessa ja iPadissa: suunnittele päiväsi yhdellä näkymällä",
   "short": "Käytä kalenteria ja säätä yhdessä",
-  "description": "Käytä kalenteria ja säätä yhdessä iPhonella ja iPadilla. Tarkista paikka, saatavilla olevat ennustetunnit ja tapahtuman tiedot ennen tallennusta.",
-  "lede": "Kalenteri kertoo, milloin meno on sovittu. Sää vastaa toiseen kysymykseen: millaisia olosuhteita tarvittavaan paikkaan ja ajanjaksoon ennustetaan? Käytä molempia pitäen paikat ja päivät selvinä. Oppaan julkaisee Cloud Calendarsin kehittäjä Arte Soft.",
-  "commonBelief": "Kalenterin vieressä näkyvä sää kuvaa automaattisesti jokaisen tapaamisen osoitetta, jokaista tuntia ja kaikkia tulevia päiviä.",
+  "description": "Vertaa kalenteriasi valitun paikan säähän iPhonessa ja iPadissa.",
+  "lede": "Cloud Calendars näyttää aikataulusi ja sään samassa iPhone- tai iPad-apissa. Valitse kalenterista päivämäärä ja tarkista säänäkymästä valittu paikka sekä saatavilla olevat ennustetunnit. Ulkoilusuunnitelmissa kannattaa tarkistaa juuri merkityksellinen ajanjakso sen sijaan, että luottaisit päivän yleiseen kuvakkeeseen. Tämän oppaan julkaisee sovelluksen kehittäjä Arte Soft.",
+  "commonBelief": "Kalenterin vieressä näkyvä sää kuvaa automaattisesti jokaisen tapahtuman osoitetta, jokaista tuntia ja jokaista tulevaa päivää.",
   "sections": [
     {
       "heading": "Valitse todellinen suunnittelukysymys",
       "body": [
-        "Aloita tietystä menosta, kuten iltapäivän puistokäynnistä. Tunnista mahdollinen muutos: aika, paikka, valmistelu tai vaihtoehdon valinta. Koko kalenteria ei tarvitse järjestellä uudelleen vain siksi, että päivän symbolissa on sadetta.",
-        "Kirjaa toiminnan todellinen alku ja loppu sekä tarvittaessa valmistelut. Kalenterin yleiskuva auttaa löytämään mahdollisia päiviä, kun taas ennusteen tarkistus koskee tiettyä paikkaa ja aikaväliä. Erota tehtävät vaihtoehtoja verratessasi."
+        "Aloita tietystä tapahtumasta, kuten iltapäiväkäynnistä puistossa. Tunnista, mikä voisi muuttua: sen ajankohta, paikka, valmistautuminen tai päätös käyttää vaihtoehtoa. Koko kalenteria ei tarvitse järjestellä uudelleen vain siksi, että päivän symboli näyttää sadetta.",
+        "Kirjaa toiminnan todellinen alkamis- ja päättymisaika, mukaan lukien valmistelut, jos se on olennaista. Kalenterin yleisnäkymä auttaa löytämään mahdollisia päiviä, kun taas ennusteen tarkistus koskee tiettyä paikkaa ja aikaväliä. Pidä nämä kaksi tehtävää erillään, kun vertailet vaihtoehtoja."
       ]
     },
     {
-      "heading": "Varmista sääpaikka ennen arvojen lukemista",
+      "heading": "Varmista sääsijainti ennen arvojen lukemista",
       "body": [
-        "Cloud Calendars tarjoaa nykyisen tai valitun paikan sään. Tarkista näkyvä sijainti sen sijaan, että olettaisit tapahtuman osoitteen muuttavan ennustetta huomaamatta. Toisessa kaupungissa oleva meno on verrattava sen kaupungin säähän.",
-        "Vierailija voi esimerkiksi suunnitella museolle saapumista puhelimen ollessa vielä kotona. Lue ennusteen sijainti ja tapaamisen paikallinen aika ennen vertailua. Näytöllä vierekkäiset arvot eivät todista aikataulun ja sään koskevan samaa paikkaa."
+        "Cloud Calendars näyttää sään nykyiselle tai valitulle paikalle. Tarkista näkyvä sijainti sen sijaan, että olettaisit tapahtuman osoitteen vaihtavan ennusteen huomaamatta. Toisessa kaupungissa oleva tapahtuma täytyy verrata kyseisen kaupungin säähän.",
+        "Esimerkiksi kävijä voi suunnitella saapumista museoon, vaikka puhelin on yhä kotona. Tarkista ennusteen sijainti ja tapahtuman paikallinen aika ennen vertailua. Lähekkäin näkyvät arvot eivät todista, että aikataulu ja sää koskevat samaa paikkaa."
       ]
     },
     {
-      "heading": "Tarkista tunti- ja päiväkattavuus erikseen",
+      "heading": "Tarkista tunti- ja päiväkohtainen kattavuus erikseen",
       "body": [
-        "Käytä päivätietoa yleiskuvaksi ja saatavilla olevia tuntitietoja päivän osaa koskevaan kysymykseen. Meno kahdesta viiteen vaatii enemmän kuin yhden symbolin vilkaisemisen. Tarkista, että tarvittavat tunnit ovat oikeasti saatavilla.",
-        "Nykyisessä sovelluskoodissa päiväluettelo ottaa enintään kymmenen WeatherKitin palauttamaa päivää. Se on erillinen kalenterin navigoinnista ja toimitetuista tunneista. Tuleva tapaaminen ei pidennä sääennustetta. Jos ajanjakso puuttuu, sovi myöhempi säätarkistus."
+        "Käytä päiväkohtaista tietoa yleiskuvaan ja saatavilla olevia tuntikohtaisia tietoja kysymyksiin, jotka koskevat osaa päivästä. Kello kahdesta viiteen kestävä varaus vaatii enemmän kuin nopean vilkaisun yhteen symboliin. Tarkista, että olennaiset tunnit ovat todella saatavilla.",
+        "Sovelluksen nykyisessä lähteessä päivälista sisältää enintään kymmenen WeatherKitin palauttamaa päivää. Tämä on erillinen asia kalenterissa siirtymisestä ja tällä hetkellä tarjolla olevista tunneista. Tuleva tapahtuma ei pidennä sääennusteen kattavuutta. Jos sen ajanjakso puuttuu, sovi uusi sään tarkistus myöhemmäksi."
       ]
     },
     {
-      "heading": "Ymmärrä sääarvon merkitys",
+      "heading": "Lue, mitä sääarvo tarkoittaa",
       "body": [
-        "Apple kuvaa WeatherKitin tietoja kuten lämpötila, sade, tuuli ja UV; osa tuotteista on saatavilla vain tietyillä alueilla. Lue valitsemasi paikan arvot odottamatta kaikkia säätuotteita kaikkialla.",
-        "Met Officen ohje osoittaa ennustejakson ja muuttujamääritelmien merkityksen: osa arvoista koskee hetkeä, osa ajanjaksoa. Käytä kyseisen palveluntarjoajan nimikkeitä. Sateen todennäköisyys, määrä ja kesto ovat eri kysymyksiä, eikä yksi luku ratkaise kaikkea ulkotoimintaa."
+        "Apple dokumentoi WeatherKitin tietoja, kuten lämpötilaa, sadetta, tuulta ja UV-arvoja, ja osa tuotteista on saatavilla vain valituilla alueilla. Lue valitsemaasi paikkaa koskevat saatavilla olevat arvot sen sijaan, että odottaisit kaikkia säätuotteita kaikkialle.",
+        "Met Officen ohjeistus havainnollistaa, miksi ennustejakson ja muuttujien määritelmät ovat tärkeitä: osa arvoista viittaa hetkeen ja osa ajanjaksoon. Käytä kyseisen palveluntarjoajan nimityksiä. Sateen todennäköisyys, määrä ja kesto ovat eri kysymyksiä, eikä yksi luku ratkaise kaikkia ulkoiluun liittyviä päätöksiä."
       ]
     },
     {
-      "heading": "Tarkista sääajasta luotu luonnos",
+      "heading": "Tarkista sääennustetunnista luotu luonnos",
       "body": [
-        "Kun sovellus tarjoaa tapahtuman luomista tunnista, se avaa luonnoksen. Nykyinen koodi käyttää sääpaikan aikavyöhykettä, ehdottaa tunnin kestoa ja valitsee uusien tapahtumien oletuskalenterin. Tarkista jokainen arvo ennen tallennusta.",
-        "Varmista nimi, kohdekalenteri, alku, loppu ja tarkoitettu paikka. Ennusteen valinta ei anna jaetun kalenterin muokkausoikeutta, ilmoita tilan pitäjälle tai varaa huonetta. Tarkista tallennettu tapahtuma ja hanki suunnitelman vaatimat sopimukset."
+        "Jos sovellus tarjoaa tapahtuman luomista tunnista, se avaa luonnoksen. Nykyinen lähde käyttää sääsijainnin aikavyöhykettä, ehdottaa yhden tunnin kestoa ja valitsee uusille tapahtumille oletuskalenterin. Tarkista jokainen arvo ennen tallentamista.",
+        "Vahvista otsikko, kohdekalenteri, alku, loppu ja tarkoitettu sijainti. Ennusteen valinta ei anna lupaa muokata jaettua kalenteria, ilmoittaa tapahtumapaikalle tai varata huonetta. Tarkista tallennettu tapahtuma ja hanki kaikki suunnitelman vaatimat hyväksynnät."
       ]
     },
     {
-      "heading": "Pidä verkkosivun esittely erillisenä",
+      "heading": "Pidä verkkosivuston esittely erillään",
       "body": [
-        "Sivuston vuorovaikutteinen sääesittely käyttää Open-Meteota. Sovellus käyttää Apple WeatherKitiä. Verkkoesittely auttaa tutustumaan esitystapaan, mutta sen paikka, tiedot ja saatavilla olevat päivät voivat erota sovelluksesta.",
-        "Todellista päätöstä varten avaa sovellus ja vertaa suunniteltua menoa saatavilla olevaan ennusteeseen. Jaettua suunnitelmaa muuttaessasi varmista järjestäjä, toiston laajuus ja osallistujat. Pidä sovittu vaihtoehto, jos toiminta riippuu olosuhteista."
+        "Verkkosivuston interaktiivinen sääesittely käyttää Open-Meteo-palvelua. Sovellus käyttää Apple WeatherKitia. Verkkodemosta on hyötyä esitystavan tutkimisessa, mutta sen paikka, tiedot ja saatavilla olevat päivämäärät voivat poiketa sovelluksesta.",
+        "Todellista päätöstä varten avaa sovellus ja vertaa suunniteltua tapahtumaa sen saatavilla olevaan ennusteeseen. Jos muutat jaettua suunnitelmaa, varmista järjestäjä, toistuvuuden laajuus ja osallistujat. Pidä sovittu vaihtoehto valmiina, jos toiminta riippuu olosuhteista."
       ]
     }
   ],
   "claims": {},
   "practical": [
-    "Tunnista tapaaminen ja päätös, johon sää voi vaikuttaa.",
-    "Varmista sääpaikka sekä tapaamisen paikallinen päivä ja aika.",
-    "Tarkista saatavilla olevat tunnit erillään päiväyhteenvedosta.",
-    "Lue todennäköisyys, määrä ja muut arvot nimikkeiden mukaan.",
-    "Tarkista luonnoksen kaikki tiedot ja kohdekalenteri ennen tallennusta.",
-    "Tarkista uudelleen päätöshetkellä ja vahvista yhteiset muutokset suoraan."
+    "Tunnista tapahtuma ja päätös, johon sää voisi vaikuttaa.",
+    "Varmista sääsijainti sekä tapahtuman paikallinen päivämäärä ja aika.",
+    "Tarkista saatavilla oleva tuntikohtainen kattavuus erillään päiväyhteenvedosta.",
+    "Lue todennäköisyys, määrä ja muut olennaiset arvot niiden nimitysten mukaisesti.",
+    "Tarkista kaikki tapahtumaluonnoksen tiedot ja kohdekalenteri ennen tallentamista.",
+    "Tarkista tiedot uudelleen päätöshetkellä ja vahvista jaetut muutokset suoraan."
   ],
   "faq": [
     {
-      "q": "Seuraako kalenterin sää jokaisen tapahtuman osoitetta?",
-      "a": "Älä oleta niin. Varmista näkyvä sääpaikka ja vertaa sitä tapahtumapaikkaan; läheisyys näytöllä ei osoita vastaavuutta."
+      "q": "Seuraako kalenterini vieressä näkyvä sää jokaisen tapahtuman osoitetta?",
+      "a": "Älä oleta niin. Varmista näytetty sääsijainti ja vertaa sitä tapahtumapaikkaan; läheisyys näytöllä ei todista niiden vastaavan toisiaan."
     },
     {
-      "q": "Käyttääkö sovellus verkkosivun sääpalvelua?",
-      "a": "Ei. Sovellus käyttää Apple WeatherKitiä ja sivuston esittely erikseen Open-Meteota."
+      "q": "Käyttääkö sovellus verkkosivuston sääpalveluntarjoajaa?",
+      "a": "Ei. Sovellus käyttää Apple WeatherKitia; verkkosivuston esittely käyttää erikseen Open-Meteo-palvelua."
     },
     {
-      "q": "Tallentaako ennustetunnin valinta tapaamisen automaattisesti?",
-      "a": "Se aloittaa luonnoksen siellä, missä toiminto on tarjolla. Tarkista päivä, aikavyöhyke, kesto, kalenteri ja paikka ja tallenna sitten tarkoitettu tapahtuma."
+      "q": "Tallentaako ennustetunnin valitseminen tapahtuman automaattisesti?",
+      "a": "Se aloittaa luonnoksen, jos tämä toiminto on tarjolla. Tarkista sen päivämäärä, aikavyöhyke, kesto, kalenteri ja sijainti ja tallenna sitten haluamasi tapahtuma."
     }
   ],
-  "seeAlso": [],
-  "sourcesHeading": "Viralliset lähteet ja lisätietoa",
+  "seeAlso": [
+    "weather-calendar-history-versus-forecast-iphone",
+    "forecast-beside-every-event",
+    "a-fourteen-day-view-of-the-weather",
+    "weather-where-the-event-is",
+    "planning-outdoors-without-being-rained-on"
+  ],
+  "sourcesHeading": "Viralliset lähteet ja lisälukemista",
   "sources": [
     {
-      "label": "Apple: WeatherKit-ennusteet ja alueellinen saatavuus",
+      "label": "Apple: WeatherKitin ennustetiedot ja alueellinen saatavuus",
       "url": "https://developer.apple.com/weatherkit/"
     },
     {
-      "label": "Met Office: ennustepaikka, ajanjaksot ja sääarvot",
+      "label": "Met Office: ennusteen paikka, jaksot ja sääarvot",
       "url": "https://weather.metoffice.gov.uk/guides/what-does-this-forecast-mean"
+    }
+  ],
+  "comparison": {
+    "heading": "Mikä säänäkymä vastaa kysymykseesi?",
+    "columns": [
+      "Kysymyksesi",
+      "Mitä tarkistaa",
+      "Mitä se ei osoita"
+    ],
+    "rows": [
+      {
+        "cells": [
+          "Mitä tänään on tulossa?",
+          "Kalenterin päivä- tai viikkonäkymä valitun paikan sään vieressä.",
+          "Että jokainen tapahtuman osoite vaihtaa sääsijainnin automaattisesti."
+        ]
+      },
+      {
+        "cells": [
+          "Voiko sade vaikuttaa iltapäivän tapahtumaani?",
+          "Tuntikohtaiset tiedot tapahtumapaikalle ja tapahtuman koko ajanjaksolle.",
+          "Että päiväsymboli kuvaa jokaista tuntia."
+        ]
+      },
+      {
+        "cells": [
+          "Voinko suunnitella ensi kuun sään perusteella?",
+          "Kalenterisi nyt, sitten uusi ennusteen tarkistus lähempänä päivämäärää.",
+          "Että kalenterissa siirtyminen laajentaa ennusteen kattavuutta."
+        ]
+      },
+      {
+        "cells": [
+          "Voinko nähdä kotona nopean yleiskuvan?",
+          "Sopiva Koti-valikon widgetti.",
+          "Että jokainen widgettiasettelu sisältää tapahtumat tai täydellisen ennusteen."
+        ]
+      }
+    ]
+  },
+  "galleryKinds": [
+    "week-right",
+    "hook"
+  ],
+  "galleryCaption": "Aidot Cloud Calendars -näkymät: säänäkymä ja päivä, jolla on tapahtumia. Tarkista sovelluksessa valittu paikka ja päivämäärä.",
+  "actionHeading": "Suunnittele aikataulun ja ennusteen avulla yhdessä",
+  "actionText": "Cloud Calendars on saatavilla iPhonelle ja iPadille. Aloita näkymillä, säällä ja Google Calendar -synkronoinnilla, jotka sisältyvät Baseen; Advanced poistaa mainokset, ja Premium lisää Microsoft Calendar- ja Teams-tuen.",
+  "articleLinks": [
+    {
+      "slug": "forecast-beside-every-event",
+      "label": "Tarkista sää tapahtuman tunneille"
+    },
+    {
+      "slug": "the-widget-that-shows-what-is-next",
+      "label": "Valitse kalenteri- ja sääwidgetti"
+    },
+    {
+      "slug": "icloud-google-and-outlook-in-one-view",
+      "label": "Tuo kalenteritilit yhteen näkymään"
     }
   ]
 },
 
   'icloud-google-and-outlook-in-one-view': {
-    title: 'iCloud, Google ja Outlook yhdessä näkymässä',
-    short: 'Kolme tiliä, yksi näkymä',
-    description:
-      'Lähes jokaisen elämä jakautuu henkilökohtaisen Apple-kalenterin, Google-tilin ja työn Exchangen kesken. Mikä muuttuu, kun ne päätyvät samaan ruudukkoon.',
-    lede: 'Ongelma ei lähes koskaan ole se, että jokin näistä kalentereista olisi huono. Ongelma on se, että niitä on kolme ja viikkoja yksi.',
-    commonBelief: 'Että työn ja yksityiselämän pitäminen eri sovelluksissa on raja eikä puute.',
-    sections: [
-      {
-        heading: 'Päällekkäinen varaaminen on rakenteellista',
-        body: [
-          'Jos sitoumuksesi asuvat kolmessa paikassa, mikään paikka ei voi kertoa, oletko vapaa. Yhdistämisvaihe olet sinä, ja suoritat sen muistista, yleensä samalla kun joku odottaa vastausta.',
-          'Siksi klassinen epäonnistuminen ei ole tapahtuman unohtaminen; se on suostuminen johonkin, joka törmää tapahtumaan, jota et voinut nähdä.',
-        ],
-      },
-      {
-        heading: 'Mitä yksi ruudukko antaa',
-        body: [
-          'Kaikki tilit samassa viikossa, väritettyinä alkuperän mukaan, muokattavissa paikan päällä. Lakkaat miettimästä, missä sovelluksessa vastaus on, koska kysymys lakkaa olemasta monikossa.',
-          'iCloud ja Google synkronoituvat ilmaisversiossa. Microsoft-tilit — Outlook ja Exchange — kuuluvat maksulliseen, koska sillä yhteydellä on toistuva kustannus, jota muilla ei ole.',
-        ],
-      },
-    ],
-    claims: {
-      accounts: 'Tilityyppejä, jotka mahtuvat yhteen näkymään',
-      premiumMonthly: 'Kuukausihinta Microsoftin lisäämisestä, dollareina',
+  "updated": "2026-10-23",
+  "title": "Näe Google-, iCloud- ja Outlook-kalenterit yhdessä iPhonessa ja iPadissa",
+  "short": "Kolme palveluntarjoajaa, yksi näkymä",
+  "description": "Yhdistä kalenterinäkymät ja ymmärrä käyttöoikeudet, kopiot ja tilausvaatimukset.",
+  "lede": "Jos haluat nähdä työ- ja henkilökohtaiset tapahtumat yhdessä, yhdistä halutut tilit, valitse niiden kalenterit ja tarkista samat tapahtumat yhdessä näkymässä. Cloud Calendars tukee iPhonen ja iPadin suunnittelua iCloudin ja Google Calendarin kanssa; Microsoft Calendar -tuki kuuluu Premiumiin. Tapahtumien katsominen yhdessä on eri asia kuin varattunaolojen kopiointi palveluntarjoajien tilien välillä. Kehittäjä Arte Soft julkaisee tämän oppaan.",
+  "commonBelief": "Usean kalenterin lisääminen samaan sovellukseen pitää automaattisesti niiden varattunaolot, jakamisen ja tapahtumakopiot keskenään yhdenmukaisina.",
+  "sections": [
+    {
+      "heading": "Tunnista jokaisen tapahtuman tili ja kalenteri",
+      "body": [
+        "Aloita yhdellä tavallisella tapahtumalla kustakin palveluntarjoajasta. Kirjaa ylös sisäänkirjautunut sähköpostiosoite, kalenterin nimi ja omistatko tapahtuman vai oletko saanut kutsun. Kaksi kalenteria nimeltä ”Kalenteri” voivat kuulua täysin eri tileille. Väri helpottaa viikon silmäilyä; tili ja kalenteri kertovat, minne muutos kuuluu tehdä.",
+        "Esimerkiksi henkilökohtaisen iCloud-kalenterisi hammaslääkäriaika ja Microsoftin projektikokous voivat näkyä sinulle yhdessä. Tämä ei kuitenkaan itsessään tee hammaslääkäriajasta näkyvää kollegoillesi eikä varaa aikaa heidän aikataulutustyökaluissaan.",
+        "Valitse tavoite ennen yhteyden muuttamista. Jos haluat siirtää tapahtumatietoja toiseen tiliin, käytä alla olevaa kohtaa ”Valitse kalenterin vientimuoto” löytääksesi tuetun siirtoreitin ja tarkista edustavat tapahtumat ennen kuin luotat kohteeseen. Jos haluat vertailla aikoja, säilytä nykyiset kalenterin omistajat ja näytä valitut lähteet yhdessä. Jos toisen tilin pitää saada varattunaoloaika, ”Cloud Calendars ja OneCal työnkulun mukaan” selittää, miten varattunaolojen kopiointi eroaa henkilökohtaisesta yleisnäkymästä."
+      ]
     },
-    practical: [
-      'Lisää henkilökohtainen tili ensin ja sitten se, joka aiheuttaa törmäykset.',
-      'Väritä tilin mukaan äläkä luokan: alkuperä on se, joka pitää nähdä yhdellä silmäyksellä.',
-      'Jatka kirjoittamista siihen kalenteriin, jota muut jo lukevat.',
+    {
+      "heading": "Yhdistä oikeaa reittiä käyttäen",
+      "body": [
+        "Ota iCloudia varten ensin iCloud-kalenteri käyttöön iPhonessa halutun Apple Accountin alla. Applen määritysopas selittää laitteen asetukset. Cloud Calendars käyttää iPhonen kalenterijärjestelmässä saatavilla olevia kalentereita ja tarvitsee kalenterin käyttöoikeuden niiden lukemiseen. Toisella laitteella yhdistetty tili ei riitä.",
+        "Cloud Calendarsissa on myös toiminnot ”Sign in with Google” ja ”Sign in with Microsoft”. Tarkista, minkä tilin valitset sisäänkirjautuessa, avaa sitten sen kalenteriryhmä ja valitse tarvitsemasi kalenterit. Oikeaan palveluntarjoajaan kirjautuminen väärällä henkilö- tai työidentiteetillä voi tuottaa täysin kelvollisen mutta odottamattoman kalenteriluettelon."
+      ]
+    },
+    {
+      "heading": "Ymmärrä tilaukset sekoittamatta niitä käyttöoikeuksiin",
+      "body": [
+        "Base sisältää Google Calendar -synkronoinnin ja kalenterinäkymät. Advanced lisää Baseen mainosten poiston. Premium lisää Microsoft Calendar- ja Microsoft Teams -ominaisuudet. Tarkista ajantasainen paikallinen hinta ja laskutusjakso ennen ostoa.",
+        "Tilaus muuttaa sitä, mitkä sovelluksen ominaisuudet ovat käytettävissä; se ei anna omistusoikeutta toisen henkilön kalenteriin. Google erottaa tapahtumien katseluoikeuden niiden muokkausoikeudesta. Työnantajan käytännöt ja Microsoft-kalenteriin liitetyt käyttöoikeudet ovat edelleen voimassa. Näkyvä tapahtuma tai käytettävissä oleva muokkaustoiminto ei todista, että palveluntarjoaja hyväksyy päivityksen."
+      ]
+    },
+    {
+      "heading": "Yhdistetty näkymä voi sisältää kalenterikopioita",
+      "body": [
+        "Google- ja Microsoft-yhteydet käyttävät iPhonen kalenterijärjestelmässä kalenterikopioita tapahtumien näyttämiseen ja synkronointiin. Älä oleta, että tilin yhdistäminen tarkoittaa, ettei alkuperäisen palveluntarjoajan ulkopuolelle jää mitään kopiota. Näihin kopioihin käytetty kohde voi riippua laitteessa saatavilla olevista kalenterilähteistä.",
+        "Jos sama tili päätyy puhelimeen myös toista reittiä, tarkista kalenterien nimet ja lähteet ennen kuin pidät toistuvia tapahtumia erillisinä tapahtumina. Piilota yksi kalenteri väliaikaisesti selvittääksesi, minkä näkymän se tuottaa. Älä poista tapahtumaa tai kalenteria vain siistiäksesi näkymää: yhdistetty kopio voi lähettää muutokset takaisin palveluntarjoajalleen."
+      ]
+    },
+    {
+      "heading": "Valitse kohde jatkossakin aina, kun luot tapahtuman",
+      "body": [
+        "Tarkista ennen tallentamista tapahtuman kalenteri yhtä huolellisesti kuin päivämäärä ja kellonaika. Perhetapahtumaa varten valitse kalenteri, jota perhe oikeasti käyttää; työkokousta varten käytä sallittua työkohdetta. Se, että näet molemmat kalenterit yhdessä, ei tee kummastakaan automaattista kohdetta kaikille uusille tapahtumille.",
+        "Tapahtuman kalenterin vaihtaminen tai sen vetäminen kalenterista toiseen voi olla siirto, ei harmiton toinen näkymä. Pidä kutsut ja toistuvat kokoukset niiden vakiintuneessa kalenterissa, kun selvität näyttöongelmaa. Jos tarvitset muutoksen, selvitä ensin, kuka omistaa tapahtuman ja mikä kalenteri voi hyväksyä sen."
+      ]
+    },
+    {
+      "heading": "Vahvista yleisnäkymä ennen kuin luotat siihen",
+      "body": [
+        "Vertaa palveluntarjoajan omassa kalenterissa olevaa tuoretta tapahtumaa vastaavaan tapahtumaan Cloud Calendarsissa. Tarkista päivämäärä, aikavyöhyke, otsikko ja valittu kalenteri. Muokattavissa olevassa omassa kalenterissasi kertakäyttöinen tapahtuma ilman vieraita on parempi testi kuin käynnissä olevan kokouksen muuttaminen. Vahvista tulos palveluntarjoajalla ennen kuin pidät yhteyttä valmiina.",
+        "Älä luota siihen, että yhdistetty näkymä luo automaattisesti nimettömiä varattunaolohkoja toiseen tiliin. Jos tarvitset kollegoiden näkevän sinut varattuna ilman henkilökohtaisia tietoja, käytä nimenomaisesti hyväksyttyä varattunaolojärjestelyä ja vahvista se heidän puoleltaan. Selkeä henkilökohtainen yleisnäkymä ja jaettu varattunaolo ovat eri tehtäviä."
+      ]
+    }
+  ],
+  "claims": {},
+  "practical": [
+    "Listaa tarkka tili ja kalenteri yhdelle tapahtumalle kustakin palveluntarjoajasta.",
+    "Ota halutut iCloud-kalenterit käyttöön laitteessa ja tarkista kalenterin käyttöoikeus.",
+    "Käytä oikeaa Google- tai Microsoft-sisäänkirjautumista ja valitse halutut kalenterit.",
+    "Vertaa yhtä tuoretta tapahtumaa sen palveluntarjoajan näkymään ennen kuin muutat mitään.",
+    "Piilota epäilty päällekkäinen lähde väliaikaisesti; pidä varsinaiset tapahtumat ennallaan.",
+    "Tarkista kohdekalenteri jokaisessa uudessa tapahtumassa ja varmista erikseen mahdollinen tarvitsemasi varattunaolojen jakaminen."
+  ],
+  "faq": [
+    {
+      "q": "Näkevätkö työkaverini henkilökohtaiset tapahtumani, koska näytän molemmat kalenterit?",
+      "a": "Kalenterien näyttäminen yhdessä ei ole jakamiskäsky eikä automaattinen varattunaolosilta. Tarkista kunkin kalenterin todelliset jakoasetukset. Palveluntarjoajayhteydet voivat luoda laitteelle kalenterikopioita, joten yhdistetty näkymä ei myöskään takaa, että tapahtumatiedot ovat vain alkuperäisellä palveluntarjoajalla."
+    },
+    {
+      "q": "Miksi näen tapahtuman, mutta en pysty muokkaamaan sitä onnistuneesti?",
+      "a": "Kalenteri voi olla vain luku -tilassa, tapahtuma voi kuulua toiselle järjestäjälle tai palveluntarjoaja voi hylätä päivityksen. Tarkista omistajuus ja käyttöoikeudet palveluntarjoajan kalenterista. Korkeamman sovellustason ostaminen ei muuta näitä oikeuksia."
+    },
+    {
+      "q": "Kannattaako sama Google-tili yhdistää jokaisen saatavilla olevan reitin kautta?",
+      "a": "Tarkista ensin, miten se näkyy jo puhelimessa. Useat reitit voivat vaikeuttaa kalenterikopioiden tunnistamista. Valitse reitti, jota aiot käyttää, varmista sen tapahtumat ja piilota ylimääräinen näkymä selvityksen ajaksi sen sijaan, että poistaisit tietoja tai katkaisisit tilien yhteyksiä ensimmäisenä toimenpiteenä."
+    }
+  ],
+  "sourcesHeading": "Lähteet ja käyttöönoton viitteet",
+  "sources": [
+    {
+      "label": "Apple: iCloud Calendarin käyttöönotto laitteissasi",
+      "url": "https://support.apple.com/guide/icloud/set-up-calendar-mme4d73a8727/icloud"
+    },
+    {
+      "label": "Google: kalenterin jakaminen ja käyttöoikeudet",
+      "url": "https://support.google.com/calendar/answer/37082?hl=en"
+    },
+    {
+      "label": "Microsoft: Outlook-kalenterin API ja tuetut postilaatikkotiedot",
+      "url": "https://learn.microsoft.com/en-us/graph/outlook-calendar-concept-overview"
+    }
+  ],
+  "seeAlso": [
+    "exchange-calendars-on-an-iphone",
+    "what-calendar-sync-actually-does",
+    "when-two-calendars-disagree",
+    "caldav-calendar-on-iphone",
+    "calendar-export-ics-pdf-and-backup",
+    "onecal-alternative-iphone-calendar-view-or-sync"
+  ],
+  "comparison": {
+    "heading": "Yhdistetty näkymä, tilaus vai kopioitu varattu aika?",
+    "columns": [
+      "Mitä tarvitset",
+      "Mitä tarkistaa",
+      "Mitä ei pidä olettaa"
     ],
-    seeAlso: ['weather-inside-your-calendar', 'what-a-subscription-actually-buys'],
+    "rows": [
+      {
+        "cells": [
+          "Yksi näkymä useista tileistä",
+          "Yhdistetty tili, valittu kalenteri ja vaadittu tilaus.",
+          "Että jaettu näyttö yhdistää omistajuuden tai käyttöoikeudet."
+        ]
+      },
+      {
+        "cells": [
+          "Tapahtuman muokkaus, joka päätyy palveluntarjoajalle",
+          "Alkuperäinen tapahtuma, kirjoitusoikeus ja lähteeseen tallennettu tulos.",
+          "Että näkyvä paikallinen muokkaus todistaa onnistuneen synkronoinnin palveluntarjoajalle."
+        ]
+      },
+      {
+        "cells": [
+          "Varattu aika toisella tilillä",
+          "Palvelu, jossa on selkeät säännöt synkronoinnille lähteestä kohteeseen.",
+          "Että yhdistetty näkymä luo kollegoille varausten estoja."
+        ]
+      },
+      {
+        "cells": [
+          "Tilattu kalenterisyöte",
+          "Julkaisija, päivittymiskäytäntö ja vain luku -tila.",
+          "Että ICS-tilaus on muokattava kaksisuuntainen yhteys."
+        ]
+      }
+    ]
   },
+  "galleryKinds": [
+    "week-left",
+    "hook"
+  ],
+  "galleryDevice": "iPad",
+  "galleryCaption": "Aidot iPad-kalenterinäkymät havainnollistavat aikataulun tarkastelua. Kuvakaappaus ei osoita palveluntarjoajan synkronoinnin suuntaa eikä tilin käyttöoikeuksia.",
+  "actionHeading": "Tarkastele kalentereitasi yhdessä iPhonessa ja iPadissa",
+  "actionText": "Google Calendarin synkronointi sisältyy Baseen. Advanced poistaa mainokset; Premium lisää Microsoft Calendar- ja Teams-tuen. Vahvista tilin käyttöoikeudet erikseen ostetusta tilauksesta riippumatta.",
+  "articleLinks": [
+    {
+      "slug": "onecal-alternative-iphone-calendar-view-or-sync",
+      "label": "Vertaa yhdistettyä näkymää OneCalin synkronointisääntöihin"
+    },
+    {
+      "slug": "fantastical-readdle-calendar366-iphone-comparison",
+      "label": "Vertaa iPhonen kalenterityönkulkuja"
+    },
+    {
+      "slug": "weather-inside-your-calendar",
+      "label": "Suunnittele sää ja tapahtumat yhdessä"
+    }
+  ]
+},
 
   'sharing-one-event-not-your-calendar': {
   "updated": "2026-10-21",

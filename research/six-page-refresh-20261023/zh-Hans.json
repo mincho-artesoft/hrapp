@@ -1,0 +1,990 @@
+{
+  "weather-inside-your-calendar": {
+    "updated": "2026-10-23",
+    "title": "iPhone 和 iPad 上带天气的日历：一屏规划你的一天",
+    "short": "同时查看日历和天气",
+    "description": "在 iPhone 和 iPad 上，将你的日历与所选地点的天气进行对照。",
+    "lede": "Cloud Calendars 可在同一款 iPhone 或 iPad app 中同时显示你的日程和天气。你可以用日历选择日期，再通过天气视图查看所选地点及可用的预报小时。安排户外活动时，应查看真正相关的时段，而不是只依赖当天的天气图标。本指南由该 app 的开发者 Arte Soft 发布。",
+    "commonBelief": "日历旁显示的天气会自动对应每个日程的地址、每个小时以及未来的每一天。",
+    "sections": [
+      {
+        "heading": "先明确一个真实的规划问题",
+        "body": [
+          "先从某个具体日程开始，例如下午去公园。想清楚天气可能改变什么：时间、地点、准备事项，或是否改用替代方案。不要仅因为当天图标显示有雨，就重排整天的日历。",
+          "写下该活动的实际开始和结束时间，如有需要也包括准备时间。日历总览有助于寻找可选日期，而天气预报核对关注的是某个具体地点和时间段。比较方案时，要把这两项工作区分开。"
+        ]
+      },
+      {
+        "heading": "查看数值前先确认天气地点",
+        "body": [
+          "Cloud Calendars 提供当前地点或所选地点的天气。请查看界面显示的位置，不要默认某个事件的地址会自动悄然改动天气预报。若日程在另一座城市，就需要对照那座城市的天气。",
+          "例如，访客可能正在规划到达博物馆的时间，而手机仍在家中。比较前，请先查看天气预报对应的位置，以及该事件的当地时间。屏幕上看起来接近，并不能证明日程和天气使用的是同一地点。"
+        ]
+      },
+      {
+        "heading": "分别查看按小时和按天的覆盖范围",
+        "body": [
+          "如需整体把握，可先看按天条目；若问题涉及一天中的某段时间，则看可用的按小时条目。一个从 2 点到 5 点的预约，不能只看一个图标就下判断。还要确认相关小时数据是否确实提供。",
+          "在当前 app 的数据源中，按天列表最多显示 WeatherKit 返回的 10 天数据。这与日历导航无关，也与当前提供的小时数据无关。未来的事件不会延长天气覆盖范围。如果所需时段尚未提供，请稍后再查看天气。"
+        ]
+      },
+      {
+        "heading": "看懂天气数值的含义",
+        "body": [
+          "Apple 说明了 WeatherKit 提供的温度、降水、风力、UV 等数据，其中部分产品仅在特定地区可用。请根据你所选地点实际提供的数值来判断，不要预期所有地方都能看到全部天气产品。",
+          "Met Office 的说明展示了为什么预报时段和变量定义很重要：有些数值对应某一时刻，有些则对应某一时间段。请以相关提供方的标签为准。降雨概率、降雨量和降雨持续时间是不同的问题，没有任何一个数字能决定所有户外活动。"
+        ]
+      },
+      {
+        "heading": "根据某个天气小时生成草稿后要复核",
+        "body": [
+          "当 app 提供从某个小时创建事件的功能时，它打开的是草稿。当前数据源会使用天气地点所在时区、建议 1 小时时长，并选用默认的新建事件日历。保存前请检查每一项值。",
+          "确认标题、目标日历、开始时间、结束时间和预期地点。选择某个预报时段，并不意味着你获得了编辑共享日历、通知场地或预订会议室的权限。请检查已保存的事件，并取得该计划所需的任何同意。"
+        ]
+      },
+      {
+        "heading": "将网站演示与 app 分开看待",
+        "body": [
+          "网站上的交互式天气演示使用 Open-Meteo。app 使用 Apple WeatherKit。网页演示有助于了解展示方式，但其地点、数据和可用日期可能与 app 不同。",
+          "要做实际决定时，请打开 app，将目标事件与其中可用的天气预报进行对照。如果你要修改共享计划，请确认组织者、重复范围和参与者。若活动受天气条件影响，请保留一个已商定的替代方案。"
+        ]
+      }
+    ],
+    "claims": {},
+    "practical": [
+      "确认是哪个事件，以及天气可能改变什么决定。",
+      "确认天气地点，以及该事件的当地日期和时间。",
+      "将可用的小时覆盖范围与每日摘要分开查看。",
+      "根据标签解读概率、降水量及其他相关数值。",
+      "保存前，检查所有事件草稿细节和目标日历。",
+      "在需要作出决定时再次核对，并直接确认共享变更。"
+    ],
+    "faq": [
+      {
+        "q": "我日历旁边的天气会跟随每个事件地址变化吗？",
+        "a": "不要这样假设。请确认界面显示的天气地点，并将其与活动地点进行对照；屏幕上位置接近，并不能证明二者匹配。"
+      },
+      {
+        "q": "app 使用网站上的天气提供方吗？",
+        "a": "不是。app 使用 Apple WeatherKit；网站演示则单独使用 Open-Meteo。"
+      },
+      {
+        "q": "选择某个预报小时会自动保存一个日程吗？",
+        "a": "在提供该操作时，它会先创建一个草稿。请检查其中的日期、时区、时长、日历和地点，然后再保存你想要的事件。"
+      }
+    ],
+    "seeAlso": [
+      "weather-calendar-history-versus-forecast-iphone",
+      "forecast-beside-every-event",
+      "a-fourteen-day-view-of-the-weather",
+      "weather-where-the-event-is",
+      "planning-outdoors-without-being-rained-on"
+    ],
+    "sourcesHeading": "官方来源与延伸阅读",
+    "sources": [
+      {
+        "label": "Apple：WeatherKit 预报信息与地区可用性",
+        "url": "https://developer.apple.com/weatherkit/"
+      },
+      {
+        "label": "Met Office：预报地点、时段与天气数值",
+        "url": "https://weather.metoffice.gov.uk/guides/what-does-this-forecast-mean"
+      }
+    ],
+    "comparison": {
+      "heading": "哪种天气视图能回答你的问题？",
+      "columns": [
+        "你的问题",
+        "应查看什么",
+        "它不能证明什么"
+      ],
+      "rows": [
+        {
+          "cells": [
+            "今天接下来会发生什么？",
+            "日历的日视图或周视图，配合所选地点的天气查看。",
+            "不能证明每个事件地址都会自动改变天气地点。"
+          ]
+        },
+        {
+          "cells": [
+            "下雨会影响我下午的日程吗？",
+            "查看活动地点以及该事件完整时段的小时数据。",
+            "不能证明一个每日图标就代表每个小时。"
+          ]
+        },
+        {
+          "cells": [
+            "我可以根据天气来安排下个月吗？",
+            "先看你当前的日历，再在更接近该日期时重新查看天气预报。",
+            "不能证明浏览日历会延长天气预报的覆盖范围。"
+          ]
+        },
+        {
+          "cells": [
+            "我能在主屏幕上快速总览吗？",
+            "选择合适的主屏幕小组件。",
+            "不能证明每种小组件布局都包含事件或完整天气预报。"
+          ]
+        }
+      ]
+    },
+    "galleryKinds": [
+      "week-right",
+      "hook"
+    ],
+    "galleryCaption": "真实的 Cloud Calendars 界面：天气视图与包含事件的一天。请在 app 中确认所选地点和日期。",
+    "actionHeading": "结合日程与天气预报来安排计划",
+    "actionText": "Cloud Calendars 适用于 iPhone 和 iPad。你可以从 Base 开始，其中包含视图、天气和 Google Calendar 同步；Advanced 去除广告，Premium 则增加 Microsoft Calendar 和 Teams 支持。",
+    "articleLinks": [
+      {
+        "slug": "forecast-beside-every-event",
+        "label": "查看某个事件所在时段的天气"
+      },
+      {
+        "slug": "the-widget-that-shows-what-is-next",
+        "label": "选择日历和天气小组件"
+      },
+      {
+        "slug": "icloud-google-and-outlook-in-one-view",
+        "label": "将多个日历账户汇集到一个视图中"
+      }
+    ]
+  },
+  "forecast-beside-every-event": {
+    "title": "在 iPhone 和 iPad 上查看日历事件的小时天气",
+    "short": "活动时段天气",
+    "description": "将事件的地点、日期和小时与可用的天气预报进行匹配。",
+    "lede": "要查看某个日历事件的天气，需要匹配三项内容：地点、当地日期，以及该日程从开始到结束的时段。在 Cloud Calendars 中，请选择天气地点并查看可用的小时数据。事件地址和附近的天气图标本身，并不能证明这些信息是匹配的。本指南由开发者 Arte Soft 发布。",
+    "commonBelief": "认为日历上的每日天气图标与附加到事件的天气预报是同一功能。",
+    "sections": [
+      {
+        "heading": "先确认地点和日期",
+        "body": [
+          "打开目标地点的天气预报，并将其日期与日历条目进行比对。日历天气可能反映的是所选天气地点，因此请确认它适用于该事件，不要想当然地认为事件地址会自动决定天气地点。",
+          "下个月的事件可能已经存在，但该日期的天气数据尚未提供。请保留该事件，并在临近日期时再查看天气预报；缺少天气条目并不表示预测为晴天。"
+        ]
+      },
+      {
+        "heading": "按小时的问题，要看按小时的详情",
+        "body": [
+          "每日摘要和逐小时预报回答的是不同问题。如果事件从两点持续到五点，应查看覆盖该时段的可用小时数据，而不要把一个每日图标当作全部情况。",
+          "如果只有部分时段有数据，其余部分应视为尚无结果。应用并不承诺你创建的每个事件都提供完整的逐小时天气，本指南也不保证打开任意事件时总能显示其整个天气时段。"
+        ]
+      },
+      {
+        "heading": "区分概率、量值和时间",
+        "body": [
+          "请看清你查看的数值标签。降水概率并不等于降雨量或持续时间。同样，逐小时数值和每日摘要覆盖的时间范围不同；比较两个候选时间时，应比较相同时间范围的数据。",
+          "不要把单一百分比当作通用的“去还是取消”规则，而应根据你的方案选择合适的备选安排。天气信息可能变化，因此在需要作出决定时应再次查看。"
+        ]
+      },
+      {
+        "heading": "按天气创建事件前先复核",
+        "body": [
+          "应用可根据某个预报小时启动事件草稿。保存前，请检查草稿的日期、开始时间、结束时间以及目标日历。选择预报时段并不能替代你确认所创建事项是否正确。",
+          "如果因日历访问权限或目标日历限制而无法保存，请将该权限问题与天气访问分开处理。找到天气预报并不会授予你编辑共享日历的权限。"
+        ]
+      },
+      {
+        "heading": "当摘要不够时，请查看完整预报",
+        "body": [
+          "对于户外活动，请查看与该活动相关的变量，以及你实际选择的位置。当前天气小组件或首页演示不能替代查看应用中可用的预报小时数据。",
+          "如果你发现显示有差异，请先比较地点和时间戳。不同提供方、所选地点和预报时段可能导致显示不同，这并不能证明日历事件本身已发生变化。"
+        ]
+      }
+    ],
+    "claims": {},
+    "practical": [
+      "确认地点和事件日期。",
+      "查看活动全程内可用的小时数据。",
+      "将概率和量值视为不同数据。",
+      "保存前检查事件草稿。"
+    ],
+    "seeAlso": [
+      "weather-inside-your-calendar",
+      "planning-outdoors-without-being-rained-on"
+    ],
+    "updated": "2026-10-23",
+    "faq": [
+      {
+        "q": "每个事件都有完整天气预报吗？",
+        "a": "没有。覆盖情况取决于所选地点，以及可用的日期和小时数据。"
+      },
+      {
+        "q": "天气图标是否针对事件地址？",
+        "a": "不要仅因它显示在事件旁边就作此推断。请单独确认天气地点。"
+      },
+      {
+        "q": "点按某个小时会保存新事件吗？",
+        "a": "在支持的情况下，它会启动事件草稿。保存前请检查其日期、时间和日历。"
+      }
+    ],
+    "sourcesHeading": "天气来源和位置设置",
+    "sources": [
+      {
+        "label": "Apple：WeatherKit 预报和区域可用性",
+        "url": "https://developer.apple.com/weatherkit/"
+      },
+      {
+        "label": "Apple：隐私与定位服务",
+        "url": "https://support.apple.com/en-us/102515"
+      }
+    ],
+    "comparison": {
+      "heading": "户外活动前的实用检查",
+      "columns": [
+        "检查项",
+        "示例",
+        "决定"
+      ],
+      "rows": [
+        {
+          "cells": [
+            "地点",
+            "该事件在另一座城市。",
+            "在天气视图中选择该目的地，并查看其名称。"
+          ]
+        },
+        {
+          "cells": [
+            "时段",
+            "该活动从 14:00 持续到 16:00。",
+            "查看这两个小时，以及相关的准备或出行时间。"
+          ]
+        },
+        {
+          "cells": [
+            "覆盖范围",
+            "所需的小时数据只提供了一部分。",
+            "先将计划保持为暂定，并安排再次查看。"
+          ]
+        },
+        {
+          "cells": [
+            "已保存的事件",
+            "你从某个天气小时开始创建草稿。",
+            "保存前检查日期、时区、时长和目标日历。"
+          ]
+        }
+      ]
+    },
+    "galleryKinds": [
+      "week-right",
+      "week-left"
+    ],
+    "galleryCaption": "天气视图和周视图展示的是同一项规划任务中的不同部分。请将预报地点与事件地点分开确认。",
+    "actionHeading": "对照真实日程查看天气预报",
+    "actionText": "在 iPhone 或 iPad 上使用 Cloud Calendars 查看可用天气预报和你的日程。天气只为你的选择提供参考；它不会自动移动事件，也不会替你向参与者确认变更。",
+    "articleLinks": [
+      {
+        "slug": "weather-inside-your-calendar",
+        "label": "了解日历与天气视图"
+      },
+      {
+        "slug": "the-widget-that-shows-what-is-next",
+        "label": "选择一个便捷的主屏幕总览"
+      },
+      {
+        "slug": "icloud-google-and-outlook-in-one-view",
+        "label": "查看构成你日程的各个日历"
+      }
+    ]
+  },
+  "the-widget-that-shows-what-is-next": {
+    "updated": "2026-10-23",
+    "title": "iPhone 和 iPad 上的日历小组件：即将到来的事件与天气",
+    "short": "主屏幕上的即将到来的事件",
+    "description": "为即将到来的事件、日期或天气选择一个 Cloud Calendars 小组件。",
+    "lede": "如果你想在主屏幕查看即将到来的日程，请选择 Calendar Events 或 Calendar Events Large。若要显示日期和天气，请选择 Calendar & Weather。这些布局回答的是不同问题；添加前，请先预览你的设备上提供的版本。本指南由 Cloud Calendars 的开发者 Arte Soft 发布。",
+    "sections": [
+      {
+        "heading": "先选择活动布局",
+        "body": [
+          "在 Cloud Calendars 小组件库中，Calendar Events 是中号的活动列表布局。Calendar Events Large 可为即将到来的日程提供更多显示空间。Calendar & Weather 是单独的日期与天气布局；其小尺寸并不保证会显示下一项活动。名称在你的设备上可能会以本地语言显示。",
+          "在 iPhone 上，按住主屏幕空白区域，选择“编辑”和“添加小组件”，然后找到 Cloud Calendars 并选择所需布局。添加前请先查看预览。Apple 的小组件说明针对的是这个系统小组件库；它与 app 内的日历视图是分开的。"
+        ]
+      },
+      {
+        "heading": "在 iPad 上添加并检查小组件",
+        "body": [
+          "在 iPad 上，请使用 Apple 的主屏幕小组件库：按住背景，打开“编辑”，然后点“添加小组件”。搜索 Cloud Calendars，查看可用样式和尺寸，添加你需要的布局，放到合适位置，最后点“完成”。请以你的 iPadOS 版本显示的控件为准；预览并不表示你的日历数据已经加载完成。",
+          "如果你需要查看日程，请选择 Calendar Events 或 Calendar Events Large。比较已安装 app 提供的样式；日期与天气磁贴回答的是与活动列表不同的问题。",
+          "在这台 iPad 上打开 Cloud Calendars，在已选日历中找到一个你确定存在的未来定时活动。iPhone 上显示正常，并不能证明 iPad 上的账户、访问权限或已加载数据也正常。请比较标题、日期和开始时间；如果小组件显示不同，再继续检查下方的适用条件和更新情况。"
+        ]
+      },
+      {
+        "heading": "确认哪些内容算作“即将到来”",
+        "body": [
+          "活动显示基于已选日历和未来的定时活动。全天事项以及开始时间已经过去的活动，不会包含在这个“即将到来”列表中。因此，生日或正在进行中的会议可能会在 app 里可见，但不会显示在这里。",
+          "例如，如果你今天唯一的条目是一个全天的旅行标签，那么“即将到来”列表为空，并不表示这个旅行标签丢失了。请打开 app 查看当天完整安排。同样，下一项定时活动也可能在明天或更晚；请查看其日期，不要默认每一行都是今天的活动。"
+        ]
+      },
+      {
+        "heading": "区分“活动缺失”和“列表行数已满”",
+        "body": [
+          "小组件只会显示有限数量的即将到来的活动。如果较早的活动已经占满可显示行数，那么较晚的活动即使在 app 中存在，且符合“即将到来”列表条件，也可能不会显示。更大的活动布局可以显示更多行，但依然不是完整日历。",
+          "先看已选日历中最近的一项未来定时活动。如果它能显示，但更晚的活动不能显示，请打开 app 查看其余安排。如果最近这项符合条件的活动也缺失了，再继续检查日历选择、访问权限和更新情况。不要为了让较晚的条目显示出来而移动或删除活动。"
+        ]
+      },
+      {
+        "heading": "先把 app 作为对照基准",
+        "body": [
+          "打开 Cloud Calendars，找到一项明确的未来定时活动。确认其所属日历已被选中，并且 app 拥有所需的日历访问权限。将标题、日期和开始时间与小组件进行比较。如果这项活动在 app 中也缺失，请先排查账户或同步问题。",
+          "如果你需要一个清晰的示例，可以在你拥有的日历中创建一个无风险的测试活动。给它设置未来的开始时间，并使用容易识别的标题。不要为了测试主屏幕而修改真实邀请，或删除账户。"
+        ]
+      },
+      {
+        "heading": "预留更新时间，不要假定有固定时限",
+        "body": [
+          "小组件显示的是已保存的信息，不会像已打开的 app 那样持续运行。它们的更新时间由 Apple 控制。打开 app 并检查活动，可以为你提供一个新的对照点，但这并不能说明小组件必须在几秒内完成更新。",
+          "如果 app 始终正确，而小组件仍然显示错误，请记录布局、所选日历、活动时间以及 app/iOS 版本。空列表、旧活动和错误时间是不同的现象；请明确说明你看到的是哪一种。"
+        ]
+      },
+      {
+        "heading": "将天气视为单独的概览信息",
+        "body": [
+          "日期旁边的天气，并不是附加到每项活动地点和开始时间上的天气预报。在参加户外活动前，请打开天气视图并查看目标地点和时间段。当前天气图标不能用来判断稍后开会时的天气状况。",
+          "这个小组件适合用来快速了解情况。对于全天安排、活动详情以及需要查看完整日程的决策，请使用完整日历。"
+        ]
+      }
+    ],
+    "claims": {},
+    "practical": [
+      "如需活动列表，请选择 Calendar Events 或 Calendar Events Large。",
+      "确认已选日历中有一项未来的定时活动。",
+      "先在 app 中核对它的日期和时间，再排查小组件问题。",
+      "如果差异持续存在，请记录下来，不要删除日历数据。"
+    ],
+    "faq": [
+      {
+        "q": "为什么我的生日没有显示？",
+        "a": "“即将到来”列表不包含全天活动。请在完整日历中查看生日和其他仅含日期的条目。"
+      },
+      {
+        "q": "小号小组件会显示下一场会议吗？",
+        "a": "小号的 Calendar & Weather 布局显示的是日期和天气。如需查看日程，请选择活动列表布局。"
+      },
+      {
+        "q": "没有“即将到来”的活动，是否表示我今天有空？",
+        "a": "不是。全天事项、进行中的活动、未选中的日历以及过期的显示信息，都可能改变这个结论。"
+      }
+    ],
+    "sourcesHeading": "来源与 Apple 说明",
+    "sources": [
+      {
+        "label": "Apple：在 iPhone 上添加和编辑小组件",
+        "url": "https://support.apple.com/118610"
+      },
+      {
+        "label": "Apple：让小组件保持最新",
+        "url": "https://developer.apple.com/documentation/widgetkit/keeping-a-widget-up-to-date"
+      },
+      {
+        "label": "Apple：在 iPad 上添加、编辑和移除小组件",
+        "url": "https://support.apple.com/guide/ipad/add-edit-and-remove-widgets-ipadb0de8630/ipados"
+      }
+    ],
+    "seeAlso": [
+      "choosing-a-widget-size",
+      "a-countdown-to-your-next-meeting",
+      "calendar-on-apple-watch"
+    ],
+    "comparison": {
+      "heading": "选择你实际需要的显示方式",
+      "columns": [
+        "显示方式",
+        "适用场景",
+        "依赖前请先检查"
+      ],
+      "rows": [
+        {
+          "cells": [
+            "Calendar Events",
+            "以紧凑方式查看即将到来的定时活动。",
+            "该活动属于已选日历，且尚未开始。"
+          ]
+        },
+        {
+          "cells": [
+            "Calendar Events Large",
+            "为即将到来的活动提供更多显示空间。",
+            "即使是更大的布局，显示行数仍然有限。"
+          ]
+        },
+        {
+          "cells": [
+            "Calendar & Weather",
+            "快速查看日期和天气概况。",
+            "其小尺寸布局并不保证会显示“即将到来”的活动行。"
+          ]
+        },
+        {
+          "cells": [
+            "Live Activity",
+            "在受支持的 iPhone 界面上单独显示下一项活动的倒计时。",
+            "它不是主屏幕小组件，也不是专门的锁定屏幕小组件布局。"
+          ]
+        }
+      ]
+    },
+    "galleryKinds": [
+      "widgets",
+      "live"
+    ],
+    "galleryCaption": "主屏幕小组件和 Live Activity 是彼此独立的显示方式。请选择与你所需信息相匹配的布局。",
+    "actionHeading": "把日程中真正有用的部分放到主屏幕上",
+    "actionText": "打开 Cloud Calendars，确认一个已知的未来定时活动，然后在你的 iPhone 或 iPad 上添加合适的小组件。完整日历仍应在 app 中查看。",
+    "articleLinks": [
+      {
+        "slug": "weather-inside-your-calendar",
+        "label": "在日程旁查看天气"
+      },
+      {
+        "slug": "forecast-beside-every-event",
+        "label": "查看户外活动所在时段的天气"
+      },
+      {
+        "slug": "icloud-google-and-outlook-in-one-view",
+        "label": "检查你已连接的日历账户"
+      }
+    ]
+  },
+  "icloud-google-and-outlook-in-one-view": {
+    "updated": "2026-10-23",
+    "title": "在 iPhone 和 iPad 上同时查看 Google、iCloud 和 Outlook 日历",
+    "short": "三个提供商，一个视图",
+    "description": "整合多个日历视图，并了解账户权限、日历副本和套餐要求。",
+    "lede": "若要同时查看工作和个人日程，请连接目标账户，选中相应日历，并在同一视图中核对这些活动。Cloud Calendars 支持在 iPhone 和 iPad 上通过 iCloud 和 Google Calendar 进行规划；Microsoft Calendar 支持包含在 Premium 中。把活动放在一起查看，与在不同提供商账户之间复制忙闲时间，是两回事。本文由开发者 Arte Soft 发布。",
+    "commonBelief": "把多个日历放进同一个 app，就会自动让它们的忙闲状态、共享设置和活动副本保持一致。",
+    "sections": [
+      {
+        "heading": "识别每项活动背后的账户和日历",
+        "body": [
+          "先从每个提供商各选一项普通活动开始。记下登录的电子邮件地址、日历名称，以及该活动是你创建的还是你收到的邀请。两个都叫“Calendar”的日历，可能属于完全不同的账户。颜色便于你快速查看一周安排；而账户和日历才能确定应当把修改提交到哪里。",
+          "例如，你个人 iCloud 日历中的牙医预约，以及 Microsoft 中的项目会议，都可以同时显示给你看。但这本身并不会让同事看到你的牙医预约，也不会在他们的排期工具中自动占用那段时间。",
+          "在更改连接之前，先明确你想达到的结果。如果你要把活动数据转移到另一个账户，请使用下方的“选择日历导出格式”查找受支持的转移方式，并在依赖目标账户之前核对有代表性的活动。如果你只是想比较时间，请保留现有日历所有者，并把选定来源一起显示。如果另一个账户必须收到忙闲时间，请参阅“按工作流了解 Cloud Calendars 和 OneCal”，其中解释了可用性复制与个人总览的区别。"
+        ]
+      },
+      {
+        "heading": "通过合适的方式连接",
+        "body": [
+          "对于 iCloud，请先在 iPhone 上的目标 Apple Account 下启用 iCloud Calendar。设备设置请参阅 Apple 的设置指南。Cloud Calendars 访问的是 iPhone 日历系统中可用的日历，并需要日历访问权限才能读取它们。仅在另一台设备上连接该账户是不够的。",
+          "Cloud Calendars 还提供“Sign in with Google”和“Sign in with Microsoft”操作。请确认登录时选择的是哪个账户，然后打开其日历分组并选中你需要的日历。登录到了正确的提供商，但使用了错误的个人或工作身份，可能会得到一份完全有效却不符合预期的日历列表。"
+        ]
+      },
+      {
+        "heading": "理解套餐，不要把它和权限混为一谈",
+        "body": [
+          "Base 套餐包含 Google Calendar 同步和日历视图。Advanced 在 Base 的基础上增加去广告。Premium 增加 Microsoft Calendar 和 Microsoft Teams 功能。购买前请查看当前本地价格和计费周期。",
+          "套餐改变的是 app 可用的功能，并不会赋予你对他人日历的所有权。Google 会区分“查看活动”的权限和“修改活动”的权限。雇主政策以及附加在 Microsoft 日历上的权限仍然适用。活动可见，或出现可编辑界面，并不等于提供商一定会接受更新。"
+        ]
+      },
+      {
+        "heading": "合并视图中可能包含日历副本",
+        "body": [
+          "Google 和 Microsoft 连接会在 iPhone 日历系统中使用日历副本来展示和同步活动。不要以为连接账户后，除了原始提供商之外就不会存在任何副本。这些副本使用的目标位置，可能取决于设备上可用的日历来源。",
+          "如果同一个账户还通过其他方式连接到手机，在把重复出现的预约当作不同活动之前，请先检查日历名称和来源。可暂时隐藏其中一个日历，以识别它提供的是哪一组显示内容。不要只是为了让界面看起来整洁，就删除某个活动或日历：已连接的副本可能会把更改回传给其提供商。"
+        ]
+      },
+      {
+        "heading": "创建活动时，继续主动选择目标日历",
+        "body": [
+          "保存前，请像检查日期和时间一样仔细检查活动所属日历。家庭安排请选择家人实际使用的日历；工作会议请选择允许使用的工作目标日历。把两个日历同时显示，并不会让其中任何一个自动成为每个新活动的默认目标。",
+          "更改活动所属日历，或在日历之间拖动活动，可能意味着“移动”，而不是无害地多看一份。排查显示问题时，请将邀请和重复会议保留在它们原有的日历中。如果你确实需要更改，请先确认谁拥有该活动，以及哪个日历能够接收它。"
+        ]
+      },
+      {
+        "heading": "在依赖总览之前先验证",
+        "body": [
+          "请将提供商自带日历中的一项最近活动，与 Cloud Calendars 中对应的活动进行比较。检查日期、时区、标题和所选日历。对于你拥有且可编辑的日历，用一个不带来宾、可随时删除的活动来测试，比去改动正在进行中的会议更合适。在认为连接已准备就绪之前，请先到提供商一侧确认结果。",
+          "不要依赖合并视图去自动在另一个账户中创建匿名的忙碌时间块。如果你需要让同事看到你不可用，但又不显示个人细节，请使用明确获批的可用性共享方案，并从他们那一侧进行验证。清晰的个人总览和共享可用性是两项不同任务。"
+        ]
+      }
+    ],
+    "claims": {},
+    "practical": [
+      "列出每个提供商各一项活动对应的准确账户和日历。",
+      "在设备上启用目标 iCloud 日历，并检查日历访问权限。",
+      "使用相应的 Google 或 Microsoft 登录方式，并选择目标日历。",
+      "在做任何更改前，先将一项最近活动与其提供商视图进行比较。",
+      "暂时隐藏你怀疑重复的来源；保留底层活动不变。",
+      "为每个新活动检查目标日历，并单独验证你需要的任何忙闲时间共享。"
+    ],
+    "faq": [
+      {
+        "q": "如果我同时显示工作和个人日历，我的同事会看到我的私人活动吗？",
+        "a": "把多个日历一起显示，并不是共享指令，也不会自动在不同账户之间建立忙闲时间桥接。请检查每个日历的实际共享设置。提供商连接还可能在设备上创建日历副本，因此合并视图也不能保证活动数据只存在于其原始提供商处。"
+      },
+      {
+        "q": "为什么我能看到某个事件，却无法成功编辑它？",
+        "a": "该日历可能是只读的，事件也可能属于其他组织者，或者服务提供方拒绝了更新。请在提供方的日历中检查所有权和权限。购买更高等级的应用方案不会改变这些权限。"
+      },
+      {
+        "q": "我是否应该通过所有可用方式连接同一个 Google 账号？",
+        "a": "请先检查它目前在手机上是如何显示的。通过多种方式接入，会让你更难分辨哪些是同一日历的副本。选择你打算使用的接入方式，核对其中的事件；在排查时，优先先隐藏多余的显示项，而不是一开始就删除数据或断开账号连接。"
+      }
+    ],
+    "sourcesHeading": "来源与设置参考",
+    "sources": [
+      {
+        "label": "Apple：在你的设备上设置 iCloud Calendar",
+        "url": "https://support.apple.com/guide/icloud/set-up-calendar-mme4d73a8727/icloud"
+      },
+      {
+        "label": "Google：日历共享与权限",
+        "url": "https://support.google.com/calendar/answer/37082?hl=en"
+      },
+      {
+        "label": "Microsoft：Outlook 日历 API 与受支持的邮箱数据",
+        "url": "https://learn.microsoft.com/en-us/graph/outlook-calendar-concept-overview"
+      }
+    ],
+    "seeAlso": [
+      "exchange-calendars-on-an-iphone",
+      "what-calendar-sync-actually-does",
+      "when-two-calendars-disagree",
+      "caldav-calendar-on-iphone",
+      "calendar-export-ics-pdf-and-backup",
+      "onecal-alternative-iphone-calendar-view-or-sync"
+    ],
+    "comparison": {
+      "heading": "合并视图、订阅，还是复制忙碌时间？",
+      "columns": [
+        "你需要什么",
+        "需要检查什么",
+        "不要想当然地认为"
+      ],
+      "rows": [
+        {
+          "cells": [
+            "在一个视图中查看多个账号",
+            "已连接的账号、所选日历以及所需方案。",
+            "共享的屏幕显示会合并所有权或权限。"
+          ]
+        },
+        {
+          "cells": [
+            "让事件编辑真正提交到其提供方",
+            "原始事件、写入权限，以及源端保存后的结果。",
+            "本地可见的编辑就证明已成功同步到提供方。"
+          ]
+        },
+        {
+          "cells": [
+            "在另一个账号中显示忙碌时间",
+            "具有明确“源到目标”同步规则的服务。",
+            "合并视图会自动为同事创建可用性忙碌时段。"
+          ]
+        },
+        {
+          "cells": [
+            "一个已订阅的日历源",
+            "发布方、刷新方式以及只读状态。",
+            "ICS 订阅是可编辑的双向连接。"
+          ]
+        }
+      ]
+    },
+    "galleryKinds": [
+      "week-left",
+      "hook"
+    ],
+    "galleryDevice": "iPad",
+    "galleryCaption": "真实的 iPad 日历视图可用于说明如何查看日程。截图并不能证明提供方同步的方向，也不能证明账号权限。",
+    "actionHeading": "在 iPhone 和 iPad 上集中查看你的日历",
+    "actionText": "Google Calendar 同步包含在 Base 中。Advanced 可去除广告；Premium 增加 Microsoft Calendar 和 Teams 支持。账号权限需要独立确认，不取决于所购方案。",
+    "articleLinks": [
+      {
+        "slug": "onecal-alternative-iphone-calendar-view-or-sync",
+        "label": "对比合并视图与 OneCal 的同步规则"
+      },
+      {
+        "slug": "fantastical-readdle-calendar366-iphone-comparison",
+        "label": "对比 iPhone 日历工作流"
+      },
+      {
+        "slug": "weather-inside-your-calendar",
+        "label": "将天气与日程安排结合起来规划"
+      }
+    ]
+  },
+  "onecal-alternative-iphone-calendar-view-or-sync": {
+    "updated": "2026-10-23",
+    "title": "Cloud Calendars 还是 OneCal？选择合并视图或日历同步",
+    "short": "按工作流比较 Cloud Calendars 与 OneCal",
+    "description": "从视图、复制事件、移动端控制和方案等方面比较 OneCal 与 Cloud Calendars。",
+    "lede": "请根据你真正需要的结果来选择：是将多个日程放在一起查看、编辑原始事件，还是把忙碌时间复制到另一个账号。Cloud Calendars 提供 iPhone 和 iPad 规划视图；OneCal 则将统一日历视图与单独的 Calendar Sync 规则分开说明。本文比较由 Cloud Calendars 的开发者 Arte Soft 发布。",
+    "commonBelief": "凡是能显示 Google、iCloud 和 Outlook 日历的两个产品，就一定会以相同方式同步可用性、事件编辑和副本。",
+    "sections": [
+      {
+        "heading": "在总览查看与修改另一个账号之间做选择",
+        "body": [
+          "如果你的目标是把个人日程与工作会议并排查看，你需要的是合并视图。如果你的工作日历还必须包含该个人日程对应的忙碌时段，你需要的是明确的“源到目标”工作流。前者并不等于后者。",
+          "Cloud Calendars 会将所选日历汇集到 iPhone 和 iPad 的规划视图中。OneCal 将 Unified Calendar View 与 Calendar Sync 分开说明；其发布方表示，不配置同步规则也可以使用该视图。在连接账号或比较订阅名称之前，先确定你最在意的是哪种结果。"
+        ]
+      },
+      {
+        "heading": "了解复制出的事件能够改动什么",
+        "body": [
+          "OneCal 的 Calendar Sync 文档说明，其单向和多向规则会创建克隆事件。其另一份覆盖范围指南则指出，对克隆的编辑不会回传到原始事件。在把复制出的日程当作改期会议的位置之前，请先识别原始事件及其所属日历。",
+          "Cloud Calendars 的提供方连接也可能会在 iOS 存储中创建镜像日历。合并显示并不能证明记录已被合并，也不能证明编辑已提交到提供方。对于一个由你拥有且可编辑的日历，请在提供方和应用中都检查一个没有来宾的临时测试事件。"
+        ]
+      },
+      {
+        "heading": "检查你实际会使用的设备上的控制方式",
+        "body": [
+          "OneCal 当前的移动端指南介绍了创建和编辑日历事件、重复选项、RSVP 以及加入会议。它也单独说明，创建、编辑、暂停或删除 Calendar Sync 配置需要在网页应用中进行；移动端仅显示这些配置。预订链接设置也被描述为网页端任务。",
+          "Cloud Calendars 是一款适用于 iPhone 和 iPad 的应用，提供日、周、月、年和列表视图。请在你已安装的视图中实际尝试所需编辑，查看任何重复选项，并确认事件已保存。不要假定另一款产品的移动端菜单、预订流程或自动化控制在这里也一定存在。"
+        ]
+      },
+      {
+        "heading": "核实覆盖范围，不要默认历史记录无限制",
+        "body": [
+          "OneCal 当前的覆盖范围指南列出了未来同步窗口：Google 和 iCloud 最多可到 1 年，Outlook 最多可到 3 个月。它还区分了未来的重复系列事件与独立的历史事件。这些是发布方说明的限制，不是对你具体账号的测试，也不代表其日历视图中的每项功能都如此。",
+          "Cloud Calendars 同样需要检查账号接入方式、所选日历和相关日期。如果旧会议很重要，请在提供方和应用中对照核实某个已识别的事件。日历应用并不自动等同于完整备份，也不能保证已取回每一条历史记录。"
+        ]
+      },
+      {
+        "heading": "比较方案要求和付费渠道",
+        "body": [
+          "Cloud Calendars 在 Base 中包含 Google Calendar 同步；Advanced 去除广告；Premium 增加 Microsoft Calendar 和 Teams 支持。账号权限需与方案分开核实。购买前请查看当前本地价格和计费周期，而不是依赖固定的国际价格比较。",
+          "OneCal 的网页方案指南说明了按成员计费的方案和十四天试用期，其中包括试用到期后删除克隆的处理方式。其移动端计费指南则说明了由应用商店管理的购买方式，以及添加团队成员方面的限制。请确认哪些功能需要持续订阅，以及购买由哪里管理；仅凭免费下载并不能回答这些问题。"
+        ]
+      },
+      {
+        "heading": "切换前先测试你的实际规划工作流",
+        "body": [
+          "如果天气、小组件或 Live Activity 很重要，请在你实际使用的设备上把这些也纳入试用。Cloud Calendars 提供这些规划界面，其中天气仅限于可用日期和所选地点。这里审阅的 OneCal 页面并不能证明这些界面上的功能完全对等；请查看其当前产品，而不要因为指南未提及就推断它一定没有。",
+          "在确认达到所需结果之前，请保留原始应用和连接详情。记录你核实的是可见性、原始事件编辑、复制的忙碌时间，还是提醒事项；这些是不同的结果。断开某项服务前，请先查看现有副本会如何处理，并避免拿真实邀请或真实客户会议做实验。"
+        ]
+      }
+    ],
+    "claims": {},
+    "practical": [
+      "写下来：你需要的是合并视图，还是将事件复制到另一个账号。",
+      "识别原始事件、复制事件，以及每个重要事件归属的账号。",
+      "在你实际使用的手机、平板或网页工作流中检查所需控制项。",
+      "比较一个普通周的情况，以及你依赖的任何历史日期。",
+      "检查当前方案要求、本地价格和购买提供方。",
+      "切换前先验证一个临时测试事件，并查看副本删除规则。"
+    ],
+    "faq": [
+      {
+        "q": "合并日历视图是否等同于同步忙碌时间？",
+        "a": "不是。合并视图让你可以对照各项安排。要在另一个账号中创建条目，则需要单独的受支持工作流；OneCal 将 Calendar Sync 规则与其 Unified Calendar View 分开说明。"
+      },
+      {
+        "q": "我可以修改 OneCal 的克隆事件来改期原始会议吗？",
+        "a": "其覆盖范围指南指出，对克隆的编辑不会同步回原始事件。请识别原始事件，并遵循其所属日历的编辑权限和组织者权限。"
+      },
+      {
+        "q": "哪款应用对我的配置来说更便宜？",
+        "a": "这取决于你需要的功能、账号、计费方式和本地价格。Cloud Calendars 在 Base 中包含 Google 同步，在 Premium 中提供 Microsoft 支持。请根据你计划使用的工作流查看 OneCal 当前的方案和移动端计费条款；本指南并不声称存在一个对所有人都更便宜的统一答案。"
+      }
+    ],
+    "sourcesHeading": "OneCal 官方工作流与方案文档",
+    "sources": [
+      {
+        "label": "OneCal：移动端功能与仅限网页端的配置任务",
+        "url": "https://docs.onecal.io/docs/mobile-apps"
+      },
+      {
+        "label": "OneCal：Calendar Sync 与源到目标规则",
+        "url": "https://docs.onecal.io/docs/calendar-sync/calendar-sync-intro"
+      },
+      {
+        "label": "OneCal：同步时间窗口与对克隆事件的编辑",
+        "url": "https://docs.onecal.io/docs/calendar-sync/what-does-onecal-sync"
+      },
+      {
+        "label": "OneCal：方案、试用与到期后的处理方式",
+        "url": "https://docs.onecal.io/docs/billing/plans-and-free-trial"
+      },
+      {
+        "label": "OneCal：App Store 和 Google Play 订阅",
+        "url": "https://docs.onecal.io/docs/billing/mobile-subscriptions"
+      }
+    ],
+    "seeAlso": [
+      "what-calendar-sync-actually-does",
+      "three-calendar-apps-is-two-too-many",
+      "free-google-sync-without-adverts",
+      "disconnect-calendar-integration-without-losing-track",
+      "what-fantastical-costs-and-what-this-does"
+    ],
+    "comparison": {
+      "heading": "先比较工作流，再决定订阅",
+      "columns": [
+        "问题",
+        "Cloud Calendars",
+        "OneCal 文档"
+      ],
+      "rows": [
+        {
+          "cells": [
+            "我在哪里查看我的日程？",
+            "在 iPhone 和 iPad 上，提供日、周、月、年和列表视图。",
+            "Unified Calendar View 与配置 Calendar Sync 是分开的。"
+          ]
+        },
+        {
+          "cells": [
+            "我是否需要在账号之间复制忙碌时段？",
+            "不要从合并视图直接推断这一点；提供方连接可能只是在本地镜像日历。",
+            "Calendar Sync 会通过单向或多向规则创建克隆事件。"
+          ]
+        },
+        {
+          "cells": [
+            "我在哪里更改同步规则？",
+            "请使用该应用账号连接所记录的控制方式。",
+            "所审阅的移动端指南将同步配置更改归为网页应用中的操作。"
+          ]
+        },
+        {
+          "cells": [
+            "我需要哪个 Cloud Calendars 方案？",
+            "Base 包含 Google Calendar 同步；Advanced 去除广告；Premium 增加 Microsoft Calendar 和 Teams。",
+            "请根据所需工作流查看 OneCal 当前的方案和计费方式。"
+          ]
+        }
+      ]
+    },
+    "galleryKinds": [
+      "week-left",
+      "hook"
+    ],
+    "galleryCaption": "Cloud Calendars 的真实日历界面展示的是规划视图。本文比较区分了这种视图与服务在服务器端执行的克隆规则。",
+    "actionHeading": "选择你想验证的结果",
+    "actionText": "如果你需要在 iPhone 或 iPad 上查看带天气和小组件的总览，可以用一个无风险的测试事件试试 Cloud Calendars。如果你的需求是在另一个账号中复制忙碌时间，请评估那些明确说明支持该操作的服务。",
+    "articleLinks": [
+      {
+        "slug": "icloud-google-and-outlook-in-one-view",
+        "label": "设置组合日历视图"
+      },
+      {
+        "slug": "fantastical-readdle-calendar366-iphone-comparison",
+        "label": "比较其他 iPhone 日历选项"
+      },
+      {
+        "slug": "the-widget-that-shows-what-is-next",
+        "label": "选择你的主屏幕显示方式"
+      }
+    ]
+  },
+  "fantastical-readdle-calendar366-iphone-comparison": {
+    "updated": "2026-10-23",
+    "title": "iPhone 日历替代方案：Cloud Calendars、Fantastical、Readdle 和 BusyCal",
+    "short": "比较 iPhone 日历替代方案",
+    "description": "按天气、视图、任务和所需工作流程比较 iPhone 日历。",
+    "lede": "按你想完成的任务来选日历：结合天气查看事件、快速录入事件、管理任务，或整合多个账户视图。Cloud Calendars、Fantastical、Calendars by Readdle、Calendar 366 和 BusyCal 在这些工作流程及其方案要求上各不相同。Cloud Calendars 由 Arte Soft 开发，本比较也由其发布。",
+    "sections": [
+      {
+        "heading": "先明确哪些功能必须可用，再比较外观",
+        "body": [
+          "先列出你的日历服务提供商、设备，以及三项核心操作。例如：同时查看工作与个人日历、完成一项提醒、快速添加会议。导入完整日程前，先用私密测试数据验证这些操作。",
+          "某产品支持你的服务提供商名称，并不意味着所有连接方式都有相同权限或功能。设备日历、直接连接的账户和订阅的日历源，可能显示相似的条目，但可执行的操作并不相同。"
+        ]
+      },
+      {
+        "heading": "先把服务提供商自带日历作为基准",
+        "body": [
+          "Google 的入门指南介绍了其自有日历界面中的排程、任务、共享和多日历功能。如果你的日程本来就在那里，先在源头测试所需操作，再决定是否需要另一款应用。",
+          "例如，连接目标账户后，在 Google Calendar 和 Fantastical 中比较同一个事件。确认你需要的优势究竟是组合视图、任务连接、快速录入，还是特定的设备界面。更换日历客户端，并不自动等于迁移到另一家服务提供商。"
+        ]
+      },
+      {
+        "heading": "Fantastical：检查账户连接方式和快速录入",
+        "body": [
+          "Flexibits 说明了两种方式：直接连接日历账户，以及使用 iOS 中已配置的日历和提醒事项。其入门指南建议使用直接连接，以完整使用应用功能。请确认你选择的是哪条路径，不要无故把同一个日历连接两次。",
+          "Fantastical 还说明了基于句子的录入方式，以及可重复使用的事件或任务模板。测试时请指定明确的日期、时长和目标日历，然后检查保存结果。其语法属于 Fantastical；换到别的应用，同一句话在文本框中可能会被不同地解析。"
+        ]
+      },
+      {
+        "heading": "Calendars by Readdle：检查任务来源",
+        "body": [
+          "Readdle 提供 Google、Outlook 和 iCloud 日历，并配有任务和自然语言录入功能。其任务设置指南说明，可在 Task Options 中选择 iOS Reminders 或 Google Tasks。如果你要求在手机上完成任务后，必须同步更新到某个特定原始列表，这一选择就很关键。",
+          "请用一个可随时删除的任务，测试两端是否都能完成同步，而不只是看标题是否出现在时间线上。如果你还需要在 Mac 上使用某个视图或操作，也要一并测试。不要因为产品名称相同，就假定控制方式完全一致。"
+        ]
+      },
+      {
+        "heading": "Calendar 366：检查系统访问、集合和天气位置",
+        "body": [
+          "Calendar 366 的文档区分了对系统日历与提醒事项的访问，以及直接账户集成。它还介绍了可选择显示哪些日历和列表的 calendar sets。这些集合也可能决定默认日历，因此请确认新建事件会归属到哪里。",
+          "同一份文档还介绍了其自有自然语言解析器，以及使用 Apple Weather 的天气功能，并支持系统位置或自定义位置。若用于户外安排，请核实所选地点，不要默认天气预报会跟随每个事件的地址。这些是发布方文档说明的能力，不代表已在你的账户上完成验证。"
+        ]
+      },
+      {
+        "heading": "BusyCal：检查任务显示方式和显示天气的视图",
+        "body": [
+          "BusyCal 的 iOS 任务指南区分了有日期、有时间和无日期的任务，并说明了完成控制以及如何将未完成的有日期任务顺延。其天气指南指出，预报显示在列表、日和月视图中，因此请测试你实际使用的视图，不要假设天气会在所有地方显示。",
+          "BusyCal 也说明，自然语言录入可作为新建事件默认设置中的一个选项。请使用与其他应用相同的私密测试事件，然后检查所保存的日历和时间。这些是 BusyCal 的控制方式，不是所有日历应用通用的命令。"
+        ]
+      },
+      {
+        "heading": "将 Watch 工作流程与手机分开检查",
+        "body": [
+          "Fantastical 的 Watch 指南说明了 Up Next、列表和任务视图，包括任务完成操作。BusyCal 的任务指南则区分了 Watch 上显示的有日期和有时间任务，与不显示的无日期任务。如果无日期待办积压对你很重要，试用时应将其纳入，而不只测试下一个事件。",
+          "Watch complication 只是快速一瞥，而 Watch 应用本身可能提供更多操作。请在实际手表和手机上核实数据与操作，并查看当前方案。桌面、手机和手表界面并不会因为产品名称相同就能互相替代。"
+        ]
+      },
+      {
+        "heading": "将价格和权益单独核查",
+        "body": [
+          "请查看你当前所在地区的购买页面、试用结束后仍可使用的功能，以及过往购买是否会影响你的权益。免费下载、持续订阅和旧版购买，不一定会解锁相同的功能集。",
+          "发布方页面的更新时间可能并不一致。Readdle 当前的产品 FAQ 将若干核心功能描述为免费，而另一份“免费版与完整版”帮助页面却列出了不同的划分。与其把某一种说法视为通用承诺，不如直接在已安装应用中验证所需操作，并查看当前购买条款。"
+        ]
+      },
+      {
+        "heading": "Cloud Calendars 在候选名单中的定位",
+        "body": [
+          "Cloud Calendars 是另一款适用于 iPhone 和 iPad 的选择，提供所选日历、多种规划视图、天气和小组件。Google 同步包含在 Base 中，Advanced 去除广告，Premium 增加 Microsoft calendar 支持。请结合你的设置，检查当前方案和服务提供商权限。",
+          "如果某项专业任务连接、模板命令或桌面工作流程至关重要，请选择那款已在文档中说明且实际能完成该要求的产品。比较保存结果与日常操作成本；这份清单的作用是帮助你选择，而不是暗示文中提到的每项功能都存在于 Cloud Calendars 中。"
+        ]
+      }
+    ],
+    "claims": {},
+    "practical": [
+      "列出你的账户、设备和核心操作。",
+      "选择一种账户连接方式，并检查它会显示哪些日历。",
+      "用无风险示例测试快速录入和任务完成。",
+      "核实天气位置，以及各设备上使用的是哪些视图。",
+      "在任何试用或旧版权益之后，检查当前购买条款。"
+    ],
+    "faq": [
+      {
+        "q": "Fantastical 的最佳替代方案是哪一个？",
+        "a": "这取决于你所需的工作流程。请比较日历和任务来源、事件录入、设备支持以及当前权益。本指南不认定存在一个放之四海皆准的性能优胜者。"
+      },
+      {
+        "q": "服务提供商名称相同，是否意味着每个应用的同步方式都完全一样？",
+        "a": "不是。请分别检查直接连接、设备日历、订阅源和权限，然后在源头验证一次实际修改。"
+      },
+      {
+        "q": "我可以默认所有宣传的功能都是免费的吗？",
+        "a": "不可以。请查看已安装的应用、本地购买页面，以及试用结束后保留的功能。发布方文档可能描述的是不同版本或不同权益。"
+      }
+    ],
+    "sourcesHeading": "本指南查阅的官方文档",
+    "sources": [
+      {
+        "label": "Fantastical：账户连接方式",
+        "url": "https://flexibits.com/fantastical-ios/help/getting-started"
+      },
+      {
+        "label": "Fantastical：自然语言录入与模板",
+        "url": "https://flexibits.com/fantastical-ios/help/adding-events-and-tasks"
+      },
+      {
+        "label": "Readdle：当前产品功能与 FAQ",
+        "url": "https://readdle.com/calendars"
+      },
+      {
+        "label": "Readdle：选择任务来源",
+        "url": "https://support.readdle.com/calendars/synchronization/how-to-sync-tasks-with-ios-reminders-or-google-tasks"
+      },
+      {
+        "label": "Readdle：免费版/完整版的单独说明",
+        "url": "https://apphelp.readdle.com/en/index.php?id=585&pg=kb.page"
+      },
+      {
+        "label": "Calendar 366：集成、集合、快速录入和天气",
+        "url": "https://calendar366.com/help/index.html"
+      },
+      {
+        "label": "BusyCal for iOS：任务与 Watch 任务限制",
+        "url": "https://www.busymac.com/docs/busycalios/70659-tasks/"
+      },
+      {
+        "label": "BusyCal for iOS：天气与支持的视图",
+        "url": "https://www.busymac.com/docs/busycalios/70665-weather/"
+      },
+      {
+        "label": "BusyCal for iOS：自然语言录入",
+        "url": "https://www.busymac.com/docs/busycalios/70669-natural-language/"
+      },
+      {
+        "label": "Fantastical：Apple Watch 视图与操作",
+        "url": "https://flexibits.com/fantastical-ios/help/apple-watch"
+      },
+      {
+        "label": "Google：Calendar 自有的基于账户的界面",
+        "url": "https://support.google.com/calendar/answer/2465776?hl=en"
+      }
+    ],
+    "seeAlso": [
+      "what-fantastical-costs-and-what-this-does",
+      "natural-language-calendar-events-iphone",
+      "iphone-calendar-tasks-reminders-versus-event-alerts"
+    ],
+    "comparison": {
+      "heading": "从你的主要需求开始",
+      "columns": [
+        "需求",
+        "值得检查的相关选项",
+        "重要区别"
+      ],
+      "rows": [
+        {
+          "cells": [
+            "带天气的事件和 iPhone/iPad 视图",
+            "Cloud Calendars，以及对比应用中已文档说明的天气视图。",
+            "请检查预报位置、可用时段和显示视图；天气覆盖并非无限制。"
+          ]
+        },
+        {
+          "cells": [
+            "自然语言事件录入",
+            "Fantastical，以及 Readdle 或 BusyCal 中对应的相关功能。",
+            "句子解析不同于语音听写，也不同于普通事件编辑。"
+          ]
+        },
+        {
+          "cells": [
+            "事件旁显示任务",
+            "Readdle、Calendar 366、BusyCal 或 Fantastical 中已文档说明的任务来源。",
+            "事件提醒并不等同于任务完成集成。"
+          ]
+        },
+        {
+          "cells": [
+            "Google Calendar 同步和可选去广告",
+            "Cloud Calendars Base 包含 Google Calendar 同步；Advanced 去除广告。",
+            "Microsoft Calendar 和 Teams 支持需要 Premium。"
+          ]
+        },
+        {
+          "cells": [
+            "不同的购买模式",
+            "各应用和各平台当前的商店页面与权益。",
+            "免费下载并不能证明所有功能都免费；地区价格和方案可能会变动。"
+          ]
+        }
+      ]
+    },
+    "galleryKinds": [
+      "week-left",
+      "week-right",
+      "widgets"
+    ],
+    "galleryDevice": "iPad",
+    "galleryCaption": "这些是 Cloud Calendars 中的视图、天气和小组件界面，并非本次比较中其他产品的截图。",
+    "actionHeading": "围绕一个真实的规划需求来试用日历",
+    "actionText": "如果你的主要需求是在 iPhone 或 iPad 上查看带天气和小组件的日程，请用一个可删除的测试事件来评估 Cloud Calendars。比较产品时，应将专业任务、预订和自然语言需求单独考量。",
+    "articleLinks": [
+      {
+        "slug": "weather-inside-your-calendar",
+        "label": "了解天气如何融入日历工作流程"
+      },
+      {
+        "slug": "the-widget-that-shows-what-is-next",
+        "label": "比较 Cloud Calendars 小组件"
+      },
+      {
+        "slug": "onecal-alternative-iphone-calendar-view-or-sync",
+        "label": "区分组合视图与复制的忙碌时间"
+      }
+    ]
+  }
+}

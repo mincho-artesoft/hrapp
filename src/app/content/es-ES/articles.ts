@@ -291,164 +291,225 @@ export const ARTICLES_ES_ES: Readonly<Record<string, LocalisedArticle>> = {
 },
 
   'weather-inside-your-calendar': {
-  "updated": "2026-10-22",
-  "title": "Calendario con tiempo en iPhone y iPad: revisa tus planes en contexto",
+  "updated": "2026-10-23",
+  "title": "Calendario con tiempo en iPhone y iPad: planifica tu día de un vistazo",
   "short": "Usa el calendario y el tiempo juntos",
-  "description": "Usa calendario y tiempo juntos en iPhone y iPad. Comprueba el lugar, las horas de previsión disponibles y los detalles antes de guardar un plan.",
-  "lede": "El calendario indica cuándo tienes un compromiso. El tiempo responde a otra pregunta: qué condiciones se prevén para el lugar y periodo que necesitas. Úsalos juntos sin perder de vista sus lugares y fechas. Esta guía la publica Arte Soft, desarrollador de Cloud Calendars.",
-  "commonBelief": "El tiempo junto al calendario describe automáticamente la dirección de cada cita, todas las horas y cualquier fecha futura.",
+  "description": "Compara tu calendario con el tiempo del lugar seleccionado en iPhone y iPad.",
+  "lede": "Cloud Calendars reúne tu agenda y el tiempo en la misma app para iPhone o iPad. Usa el calendario para elegir una fecha y la vista del tiempo para consultar el lugar seleccionado y las horas de previsión disponibles. Si tienes un plan al aire libre, comprueba el periodo que te interesa en lugar de fiarte de un icono diario. Esta guía la publica Arte Soft, desarrollador de la app.",
+  "commonBelief": "El tiempo que se muestra junto al calendario describe automáticamente la dirección de cada evento, cada hora y cualquier fecha futura.",
   "sections": [
     {
-      "heading": "Elige una pregunta concreta de planificación",
+      "heading": "Elige una pregunta de planificación real",
       "body": [
-        "Empieza por una cita específica, como una visita al parque por la tarde. Identifica qué podría cambiar: hora, lugar, preparación o decisión de optar por una alternativa. No hace falta reorganizar todo el calendario porque el símbolo del día muestre lluvia.",
-        "Anota el inicio y final reales de la actividad, incluido el montaje si corresponde. La vista general ayuda a encontrar fechas posibles; la consulta meteorológica se refiere a un lugar y un intervalo concretos. Mantén separadas ambas tareas al comparar opciones."
+        "Empieza por un evento concreto, como una visita al parque por la tarde. Identifica qué podría cambiar: la hora, el lugar, la preparación o la decisión de optar por una alternativa. No necesitas reorganizar todo el calendario solo porque el símbolo del día muestre lluvia.",
+        "Anota la hora real de inicio y fin de la actividad, incluida la preparación si procede. La vista general del calendario ayuda a encontrar fechas posibles, mientras que la comprobación de la previsión se refiere a un lugar y a un intervalo concretos. Mantén separadas esas dos tareas al comparar opciones."
       ]
     },
     {
       "heading": "Confirma el lugar del tiempo antes de leer los valores",
       "body": [
-        "Cloud Calendars ofrece el tiempo de la ubicación actual o seleccionada. Comprueba el lugar mostrado en vez de asumir que la dirección de un evento cambia la previsión silenciosamente. Una cita en otra ciudad necesita compararse con el tiempo de esa ciudad.",
-        "Por ejemplo, puedes estar preparando la llegada a un museo mientras el teléfono sigue en casa. Lee el lugar de la previsión y la hora local de la cita antes de compararlos. La proximidad visual de los valores no demuestra que la agenda y el tiempo usen el mismo lugar."
+        "Cloud Calendars ofrece el tiempo del lugar actual o del lugar seleccionado. Comprueba la ubicación mostrada en vez de dar por hecho que la dirección de un evento cambia la previsión sin indicarlo. Un evento en otra ciudad requiere compararlo con el tiempo de esa ciudad.",
+        "Por ejemplo, alguien puede estar planeando llegar a un museo mientras el teléfono sigue en casa. Lee la ubicación de la previsión y la hora local del evento antes de compararlas. Que los valores parezcan cercanos en pantalla no demuestra que la agenda y el tiempo usen el mismo lugar."
       ]
     },
     {
-      "heading": "Comprueba por separado la cobertura diaria y horaria",
+      "heading": "Comprueba por separado la cobertura por horas y por días",
       "body": [
-        "Usa el dato diario como orientación y las horas disponibles para una parte del día. Una cita de dos a cinco necesita algo más que mirar un símbolo. Comprueba si esas horas están realmente presentes.",
-        "En el código actual, la lista diaria toma hasta diez días devueltos por WeatherKit. Es independiente de la navegación del calendario y de las horas recibidas. Una cita futura no amplía la cobertura del tiempo. Si su periodo no aparece, programa una revisión meteorológica posterior."
+        "Usa una entrada diaria para orientarte y las entradas horarias disponibles cuando tengas una pregunta sobre una parte del día. Una reserva de dos a cinco necesita algo más que un vistazo a un solo símbolo. Comprueba si las horas relevantes están realmente disponibles.",
+        "En la fuente actual de la app, la lista diaria incluye hasta diez días devueltos por WeatherKit. Esto es independiente de la navegación del calendario y de las horas que se suministran en ese momento. Un evento futuro no amplía la cobertura meteorológica. Si su periodo no aparece, programa una nueva revisión de la previsión más adelante."
       ]
     },
     {
-      "heading": "Entiende qué significa el valor meteorológico",
+      "heading": "Interpreta correctamente lo que significa cada valor meteorológico",
       "body": [
-        "Apple documenta datos de WeatherKit como temperatura, precipitación, viento y UV, con algunos productos disponibles solo en determinadas regiones. Lee los valores disponibles para tu lugar, sin esperar todos los productos meteorológicos en cualquier zona.",
-        "La orientación de Met Office ilustra por qué importan el periodo y la definición de cada variable: unos valores corresponden a un instante y otros a un intervalo. Usa las etiquetas del proveedor correspondiente. Probabilidad, cantidad y duración de lluvia son preguntas diferentes; ningún número decide por sí solo toda actividad al aire libre."
+        "Apple documenta datos de WeatherKit como temperatura, precipitación, viento y UV, con algunos productos disponibles solo en determinadas regiones. Lee los valores disponibles para el lugar que hayas elegido en vez de esperar todos los productos meteorológicos en cualquier sitio.",
+        "La guía del Met Office muestra por qué importan el periodo de la previsión y las definiciones de las variables: algunos valores se refieren a un momento y otros a un periodo. Usa las etiquetas del proveedor correspondiente. La probabilidad de lluvia, la cantidad y la duración responden a preguntas distintas, y ningún número por sí solo decide cualquier actividad al aire libre."
       ]
     },
     {
-      "heading": "Revisa el borrador creado desde una hora del tiempo",
+      "heading": "Revisa el borrador creado a partir de una hora meteorológica",
       "body": [
-        "Donde la aplicación permite crear un evento desde una hora, abre un borrador. El código actual usa la zona horaria del lugar del tiempo, propone una duración de una hora y selecciona el calendario predeterminado para eventos nuevos. Revisa cada valor antes de guardar.",
-        "Confirma título, calendario de destino, inicio, final y lugar previsto. Elegir una previsión no concede permisos para editar un calendario compartido, no avisa a un establecimiento ni reserva una sala. Comprueba el evento guardado y consigue los acuerdos necesarios."
+        "Cuando la app ofrece crear un evento a partir de una hora, abre un borrador. La fuente actual usa la zona horaria de la ubicación meteorológica, propone una duración de una hora y selecciona el calendario predeterminado para eventos nuevos. Revisa cada valor antes de guardar.",
+        "Confirma el título, el calendario de destino, el inicio, el fin y la ubicación prevista. Seleccionar una previsión no te da permiso para editar un calendario compartido, avisar a un recinto ni reservar una sala. Comprueba el evento guardado y consigue cualquier acuerdo que el plan necesite."
       ]
     },
     {
-      "heading": "Distingue la demostración del sitio web",
+      "heading": "Mantén separada la demostración del sitio web",
       "body": [
-        "La demostración meteorológica interactiva del sitio usa Open-Meteo. La aplicación utiliza Apple WeatherKit. La demo sirve para explorar la presentación, pero el lugar, los datos y las fechas disponibles pueden diferir de los de la aplicación.",
-        "Para una decisión real, abre la aplicación y compara la cita prevista con su previsión disponible. Si cambias un plan compartido, confirma organizador, alcance de repetición y participantes. Mantén una alternativa acordada cuando la actividad dependa de las condiciones."
+        "La demostración interactiva del tiempo en el sitio web usa Open-Meteo. La app usa Apple WeatherKit. Una demostración web es útil para explorar la presentación, pero su lugar, sus datos y las fechas disponibles pueden diferir de los de la app.",
+        "Para una decisión real, abre la app y compara el evento previsto con la previsión disponible. Si cambias un plan compartido, confirma el organizador, el alcance de la recurrencia y los participantes. Ten preparada una alternativa acordada cuando la actividad dependa de las condiciones."
       ]
     }
   ],
   "claims": {},
   "practical": [
-    "Identifica la cita y la decisión que podría cambiar el tiempo.",
-    "Confirma el lugar del tiempo y la fecha y hora locales de la cita.",
-    "Examina las horas disponibles por separado del resumen diario.",
-    "Lee probabilidad, cantidad y otros valores según sus etiquetas.",
-    "Revisa todos los detalles del borrador y el calendario de destino antes de guardar.",
-    "Vuelve a comprobar al decidir y confirma directamente los cambios compartidos."
+    "Identifica el evento y la decisión que el tiempo podría cambiar.",
+    "Confirma la ubicación meteorológica y la fecha y hora locales del evento.",
+    "Revisa por separado la cobertura horaria disponible y el resumen diario.",
+    "Lee la probabilidad, la cantidad y otros valores relevantes según sus etiquetas.",
+    "Revisa todos los detalles del borrador del evento y el calendario de destino antes de guardar.",
+    "Vuelve a comprobarlo en el momento de decidir y confirma directamente los cambios compartidos."
   ],
   "faq": [
     {
-      "q": "¿El tiempo junto al calendario sigue la dirección de cada evento?",
-      "a": "No lo supongas. Confirma la ubicación meteorológica mostrada y compárala con el lugar de la cita; estar cerca en pantalla no acredita que coincidan."
+      "q": "¿El tiempo junto a mi calendario sigue la dirección de cada evento?",
+      "a": "No lo des por hecho. Confirma la ubicación meteorológica mostrada y compárala con el lugar; que aparezcan cerca en pantalla no demuestra que coincidan."
     },
     {
-      "q": "¿La aplicación usa el proveedor meteorológico del sitio web?",
-      "a": "No. La aplicación usa Apple WeatherKit y la demostración web utiliza Open-Meteo por separado."
+      "q": "¿La app usa el proveedor meteorológico del sitio web?",
+      "a": "No. La app usa Apple WeatherKit; la demostración del sitio web usa Open-Meteo por separado."
     },
     {
-      "q": "¿Elegir una hora de previsión guarda una cita automáticamente?",
-      "a": "Inicia un borrador donde se ofrece esa acción. Comprueba fecha, zona horaria, duración, calendario y lugar, y después guarda el evento previsto."
+      "q": "¿Elegir una hora de previsión guarda un evento automáticamente?",
+      "a": "Inicia un borrador cuando se ofrece esa acción. Comprueba la fecha, la zona horaria, la duración, el calendario y la ubicación, y después guarda el evento previsto."
     }
   ],
   "seeAlso": [
+    "weather-calendar-history-versus-forecast-iphone",
     "forecast-beside-every-event",
     "a-fourteen-day-view-of-the-weather",
+    "weather-where-the-event-is",
     "planning-outdoors-without-being-rained-on"
   ],
-  "sourcesHeading": "Fuentes oficiales y lecturas adicionales",
+  "sourcesHeading": "Fuentes oficiales y lecturas complementarias",
   "sources": [
     {
-      "label": "Apple: previsiones WeatherKit y disponibilidad regional",
+      "label": "Apple: información de previsión de WeatherKit y disponibilidad regional",
       "url": "https://developer.apple.com/weatherkit/"
     },
     {
-      "label": "Met Office: lugar, periodos y valores de la previsión",
+      "label": "Met Office: lugar de la previsión, periodos y valores meteorológicos",
       "url": "https://weather.metoffice.gov.uk/guides/what-does-this-forecast-mean"
+    }
+  ],
+  "comparison": {
+    "heading": "¿Qué vista del tiempo responde a tu pregunta?",
+    "columns": [
+      "Tu pregunta",
+      "Qué revisar",
+      "Qué no demuestra"
+    ],
+    "rows": [
+      {
+        "cells": [
+          "¿Qué toca hoy?",
+          "La vista diaria o semanal del calendario junto al tiempo del lugar seleccionado.",
+          "Que la dirección de cada evento cambie automáticamente la ubicación meteorológica."
+        ]
+      },
+      {
+        "cells": [
+          "¿Puede la lluvia afectar a mi evento de la tarde?",
+          "Datos horarios del lugar y del periodo completo del evento.",
+          "Que un símbolo diario describa cada hora."
+        ]
+      },
+      {
+        "cells": [
+          "¿Puedo planificar el mes que viene en función del tiempo?",
+          "Tu calendario ahora y, después, una revisión de la previsión más cerca de la fecha.",
+          "Que navegar por el calendario amplíe la cobertura de la previsión."
+        ]
+      },
+      {
+        "cells": [
+          "¿Puedo ver un resumen rápido en casa?",
+          "El widget adecuado de la pantalla de inicio.",
+          "Que todos los diseños de widget incluyan eventos o una previsión completa."
+        ]
+      }
+    ]
+  },
+  "galleryKinds": [
+    "week-right",
+    "hook"
+  ],
+  "galleryCaption": "Pantallas reales de Cloud Calendars: la vista del tiempo y un día con eventos. Comprueba en la app el lugar y la fecha seleccionados.",
+  "actionHeading": "Planifica con tu agenda y la previsión juntas",
+  "actionText": "Cloud Calendars está disponible para iPhone y iPad. Empieza con las vistas, el tiempo y la sincronización con Google Calendar incluidos en Base; Advanced elimina los anuncios, y Premium añade compatibilidad con Microsoft Calendar y Teams.",
+  "articleLinks": [
+    {
+      "slug": "forecast-beside-every-event",
+      "label": "Consulta el tiempo en las horas de un evento"
+    },
+    {
+      "slug": "the-widget-that-shows-what-is-next",
+      "label": "Elige un widget de calendario y tiempo"
+    },
+    {
+      "slug": "icloud-google-and-outlook-in-one-view",
+      "label": "Reúne cuentas de calendario en una sola vista"
     }
   ]
 },
 
   'forecast-beside-every-event': {
-  "title": "Compara una cita con la previsión del tiempo por horas",
-  "short": "El tiempo a la hora de tu cita",
-  "description": "Comprueba el lugar, la fecha y las horas de previsión disponibles para tu cita. Revisa el borrador antes de guardar un plan basado en el tiempo.",
-  "lede": "Para comparar el tiempo con una cita, deben coincidir tres cosas: el lugar seleccionado, la fecha de la previsión y las horas que ocupa tu plan. Un icono del tiempo cercano no demuestra que coincidan. Esta guía la publica Arte Soft, desarrollador de Cloud Calendars.",
-  "commonBelief": "Un icono diario del tiempo en el calendario es lo mismo que una previsión asociada a un evento.",
+  "title": "Consulta el tiempo por horas para un evento del calendario en iPhone y iPad",
+  "short": "Tiempo durante las horas del evento",
+  "description": "Relaciona el lugar, la fecha y las horas de tu evento con la previsión meteorológica disponible.",
+  "lede": "Para consultar el tiempo de un evento del calendario, haz coincidir tres cosas: el lugar, su fecha local y el periodo completo del evento. En Cloud Calendars, elige la ubicación meteorológica y revisa las horas disponibles. La dirección de un evento y un icono del tiempo cercano no son, por sí solos, prueba de que coincidan. Arte Soft, el desarrollador, publica esta guía.",
+  "commonBelief": "Que un icono meteorológico diario en un calendario es la misma función que una previsión asociada a un evento.",
   "sections": [
     {
       "heading": "Empieza por el lugar y la fecha",
       "body": [
-        "Abre la previsión del lugar previsto y compara su fecha con la entrada del calendario. El tiempo del calendario puede corresponder al lugar seleccionado para la previsión. Comprueba que sea adecuado para la cita en lugar de suponer que lo determina la dirección del evento.",
-        "Puede existir una cita para el mes próximo antes de que haya datos meteorológicos para esa fecha. Conserva la cita y vuelve a consultar la previsión cuando se acerque; que falte una entrada meteorológica no significa que se prevea buen tiempo."
+        "Abre la previsión del lugar previsto y compara su fecha con la de la entrada del calendario. La meteorología del calendario puede reflejar el lugar meteorológico seleccionado, así que comprueba que sea el adecuado para el evento en lugar de dar por hecho que la dirección del evento lo determina.",
+        "Un evento del mes que viene puede existir antes de que haya datos meteorológicos disponibles para esa fecha. Conserva el evento y vuelve a consultar la previsión cuando se acerque el día; que no aparezca información meteorológica no significa que se prevea cielo despejado."
       ]
     },
     {
-      "heading": "Usa el detalle horario para una pregunta sobre horas",
+      "heading": "Usa el detalle por horas para una consulta por horas",
       "body": [
-        "El resumen diario y la previsión por horas responden a preguntas distintas. Si la cita dura de dos a cinco, revisa las horas disponibles de ese intervalo en lugar de tratar un icono diario como una imagen completa.",
-        "Si solo hay datos para parte del intervalo, deja el resto sin resolver. La app no promete una previsión horaria completa para cada evento que puedas crear, y esta guía tampoco promete que abrir cualquier evento muestre siempre todo su intervalo meteorológico."
+        "Un resumen diario y una previsión por horas responden a preguntas distintas. Si el evento dura de dos a cinco, revisa las horas disponibles que cubren ese intervalo en lugar de tomar un único icono diario como si fuera la imagen completa.",
+        "Si solo está disponible una parte del intervalo, deja el resto sin resolver. La app no promete información meteorológica completa por horas para todos los eventos que puedas crear, y esta guía tampoco promete que al abrir cualquier evento siempre se muestre toda su franja meteorológica."
       ]
     },
     {
-      "heading": "Distingue probabilidad, cantidad y momento",
+      "heading": "Distingue entre probabilidad, cantidad y momento",
       "body": [
-        "Lee la etiqueta del valor que estás consultando. La probabilidad de precipitación no es la cantidad ni la duración de la lluvia. Del mismo modo, un valor horario y un resumen diario abarcan periodos distintos; compara periodos equivalentes al valorar dos posibles horarios.",
-        "Elige una alternativa apropiada para tu plan en lugar de usar un porcentaje como regla universal para seguir adelante o cancelar. La información meteorológica puede cambiar; revísala cuando llegue el momento de decidir."
+        "Lee la etiqueta del valor que estás consultando. La probabilidad de precipitación no es la cantidad de lluvia ni su duración. Del mismo modo, un valor por horas y un resumen diario abarcan periodos distintos; compara periodos equivalentes al valorar dos posibles horarios.",
+        "Elige una alternativa adecuada a tu plan en lugar de tratar un único porcentaje como una regla universal para seguir adelante o cancelar. La información meteorológica puede cambiar, así que vuelve a consultarla cuando haya que tomar una decisión."
       ]
     },
     {
-      "heading": "Revisa la cita basada en el tiempo antes de guardarla",
+      "heading": "Revisa antes de guardar un evento basado en el tiempo",
       "body": [
-        "La app puede iniciar un borrador de evento desde una hora de la previsión. Revisa su fecha, inicio, final y calendario de destino antes de guardarlo. Elegir una hora de la previsión no sustituye a comprobar que estás creando el compromiso correcto.",
-        "Si el acceso al calendario o el calendario de destino impide guardar, resuelve ese permiso por separado del acceso al tiempo. Encontrar una previsión no otorga permisos de edición sobre un calendario compartido."
+        "La app puede iniciar un borrador de evento a partir de una hora de la previsión. Revisa la fecha, la hora de inicio, la hora de fin y el calendario de destino del borrador antes de guardarlo. Seleccionar una previsión no sustituye comprobar que estás creando el compromiso correcto.",
+        "Si el acceso al calendario o el calendario de destino impiden guardar, resuelve ese permiso por separado del acceso a la información meteorológica. Encontrar una previsión no concede derechos de edición sobre un calendario compartido."
       ]
     },
     {
-      "heading": "Consulta la previsión completa si el resumen no basta",
+      "heading": "Usa la previsión completa cuando el resumen no sea suficiente",
       "body": [
-        "Para una actividad al aire libre, revisa las variables relevantes para esa actividad y el lugar que realmente has elegido. Un widget del tiempo actual o una demo de la página de inicio no sustituye a comprobar las horas de previsión disponibles en la app.",
-        "Si observas una discrepancia, compara primero el lugar y la marca de tiempo. Distintos proveedores, lugares seleccionados y periodos de previsión pueden producir pantallas distintas sin demostrar que haya cambiado el evento."
+        "Para una actividad al aire libre, revisa las variables relevantes para esa actividad y para el lugar que realmente has elegido. Un widget del tiempo actual o una demostración en la página de inicio no sustituyen la comprobación de las horas de previsión disponibles en la app.",
+        "Si observas una discrepancia, compara primero el lugar y la marca de tiempo. Distintos proveedores, lugares seleccionados y periodos de previsión pueden dar lugar a visualizaciones diferentes sin demostrar que el evento del calendario haya cambiado."
       ]
     }
   ],
   "claims": {},
   "practical": [
-    "Confirma el lugar y la fecha del evento.",
+    "Confirma la ubicación y la fecha del evento.",
     "Comprueba las horas disponibles durante toda la actividad.",
-    "Interpreta probabilidad y cantidad como valores diferentes.",
+    "Interpreta la probabilidad y la cantidad como valores distintos.",
     "Revisa el borrador del evento antes de guardarlo."
   ],
   "seeAlso": [
     "weather-inside-your-calendar",
     "planning-outdoors-without-being-rained-on"
   ],
-  "updated": "2026-10-21",
+  "updated": "2026-10-23",
   "faq": [
     {
       "q": "¿Todos los eventos tienen una previsión completa?",
       "a": "No. La cobertura depende del lugar seleccionado y de las fechas y horas disponibles."
     },
     {
-      "q": "¿El icono del tiempo corresponde a la dirección del evento?",
-      "a": "No lo deduzcas por su cercanía al evento. Confirma por separado el lugar de la previsión."
+      "q": "¿El icono del tiempo es específico de la dirección del evento?",
+      "a": "No lo deduzcas por su proximidad al evento. Confirma por separado la ubicación meteorológica."
     },
     {
-      "q": "¿Tocar una hora guarda una cita nueva?",
-      "a": "Cuando está disponible, inicia un borrador de evento. Revisa fecha, hora y calendario antes de guardarlo."
+      "q": "¿Tocar una hora guarda un nuevo evento?",
+      "a": "Inicia un borrador de evento cuando está disponible. Revisa su fecha, hora y calendario antes de guardarlo."
     }
   ],
   "sourcesHeading": "Fuentes meteorológicas y ajustes de ubicación",
@@ -458,8 +519,67 @@ export const ARTICLES_ES_ES: Readonly<Record<string, LocalisedArticle>> = {
       "url": "https://developer.apple.com/weatherkit/"
     },
     {
-      "label": "Apple: privacidad y servicios de localización",
+      "label": "Apple: privacidad y Servicios de Localización",
       "url": "https://support.apple.com/en-us/102515"
+    }
+  ],
+  "comparison": {
+    "heading": "Una comprobación práctica antes de un evento al aire libre",
+    "columns": [
+      "Comprobación",
+      "Ejemplo",
+      "Decisión"
+    ],
+    "rows": [
+      {
+        "cells": [
+          "Lugar",
+          "El evento es en otra ciudad.",
+          "Selecciona ese destino en la vista del tiempo y lee su nombre."
+        ]
+      },
+      {
+        "cells": [
+          "Periodo",
+          "La actividad va de 14:00 a 16:00.",
+          "Revisa ambas horas, además de la preparación o el desplazamiento pertinentes."
+        ]
+      },
+      {
+        "cells": [
+          "Cobertura",
+          "Solo están disponibles algunas de las horas necesarias.",
+          "Mantén el plan como provisional y programa otra comprobación."
+        ]
+      },
+      {
+        "cells": [
+          "Evento guardado",
+          "Inicias un borrador desde una hora meteorológica.",
+          "Revisa la fecha, la zona horaria, la duración y el calendario de destino antes de guardar."
+        ]
+      }
+    ]
+  },
+  "galleryKinds": [
+    "week-right",
+    "week-left"
+  ],
+  "galleryCaption": "Las vistas del tiempo y de la semana muestran partes distintas de la misma tarea de planificación. Confirma por separado el lugar de la previsión y la ubicación del evento.",
+  "actionHeading": "Comprueba la previsión frente a tus eventos reales",
+  "actionText": "Usa Cloud Calendars en iPhone o iPad para revisar la previsión disponible y tu agenda. El tiempo orienta tu elección; no mueve automáticamente un evento ni confirma un cambio con los participantes.",
+  "articleLinks": [
+    {
+      "slug": "weather-inside-your-calendar",
+      "label": "Entiende las vistas de calendario y tiempo"
+    },
+    {
+      "slug": "the-widget-that-shows-what-is-next",
+      "label": "Elige una vista rápida de la pantalla de inicio"
+    },
+    {
+      "slug": "icloud-google-and-outlook-in-one-view",
+      "label": "Comprueba los calendarios detrás de tu agenda"
     }
   ]
 },
@@ -647,87 +767,88 @@ export const ARTICLES_ES_ES: Readonly<Record<string, LocalisedArticle>> = {
 },
 
   'icloud-google-and-outlook-in-one-view': {
-  "updated": "2026-10-21",
-  "title": "iCloud, Google y Outlook en una vista: cuentas, copias y permisos",
-  "short": "Tres proveedores, una vista",
-  "description": "Ve juntos calendarios de iCloud, Google y Microsoft. Revisa cuentas, permisos y copias antes de mover eventos o confiar en la disponibilidad.",
-  "lede": "Una cita familiar, una llamada con un cliente y una reunión de trabajo pueden solaparse aunque pertenezcan a cuentas distintas. Una vista conjunta permite detectar el conflicto, pero no convierte esas cuentas en un calendario compartido. Esta guía la escribe Arte Soft, desarrollador de Cloud Calendars.",
-  "commonBelief": "Reunir varios calendarios en una app mantiene automáticamente de acuerdo la disponibilidad, el uso compartido y las copias de eventos.",
+  "updated": "2026-10-23",
+  "title": "Ve juntos los calendarios de Google, iCloud y Outlook en iPhone y iPad",
+  "short": "Tres proveedores, una sola vista",
+  "description": "Combina vistas de calendario y entiende los permisos de la cuenta, las copias y los requisitos del plan.",
+  "lede": "Para ver juntos los eventos del trabajo y los personales, conecta las cuentas que quieras, selecciona sus calendarios y comprueba los mismos eventos en una sola vista. Cloud Calendars es compatible con la planificación en iPhone y iPad con iCloud y Google Calendar; la compatibilidad con Microsoft Calendar está en Premium. Ver los eventos juntos es distinto de copiar el tiempo ocupado entre cuentas de distintos proveedores. Arte Soft, el desarrollador, publica esta guía.",
+  "commonBelief": "Poner varios calendarios en una sola app hace automáticamente que su disponibilidad, el uso compartido y las copias de eventos se mantengan sincronizados entre sí.",
   "sections": [
     {
-      "heading": "1. Identifica la cuenta y el calendario de cada evento",
+      "heading": "Identifica la cuenta y el calendario detrás de cada evento",
       "body": [
-        "Empieza por un evento normal de cada proveedor. Anota el correo de la sesión iniciada, el nombre del calendario y si el evento es tuyo o recibiste una invitación. Dos calendarios llamados «Calendario» pueden pertenecer a cuentas completamente distintas. El color ayuda a revisar la semana; la cuenta y el calendario identifican dónde debe aplicarse un cambio.",
-        "Por ejemplo, una cita con el dentista en tu iCloud personal y una reunión de proyecto en Microsoft pueden aparecer juntas para ti. Eso no hace por sí solo que tus compañeros vean la cita dental ni reserva ese tiempo en sus herramientas de planificación."
+        "Empieza con un evento corriente de cada proveedor. Anota la dirección de correo con la que has iniciado sesión, el nombre del calendario y si el evento es tuyo o si recibiste una invitación. Dos calendarios llamados “Calendar” pueden pertenecer a cuentas completamente distintas. Un color ayuda a revisar una semana de un vistazo; la cuenta y el calendario identifican dónde debe hacerse una edición.",
+        "Por ejemplo, una cita con el dentista en tu calendario personal de iCloud y una reunión de proyecto en Microsoft pueden aparecer juntas para ti. Eso, por sí solo, no hace que la cita con el dentista sea visible para tus compañeros ni reserva ese tiempo en sus herramientas de programación.",
+        "Decide el resultado que quieres antes de cambiar una conexión. Si quieres mover datos de eventos a otra cuenta, usa «Elige un formato de exportación de calendario» más abajo para encontrar una vía de transferencia compatible y comprueba eventos representativos antes de confiar en el destino. Si quieres comparar horarios, mantén los propietarios actuales de los calendarios y muestra juntas las fuentes seleccionadas. Si otra cuenta debe recibir el tiempo ocupado, «Cloud Calendars y OneCal según el flujo de trabajo» explica en qué se diferencia la copia de disponibilidad de una vista personal general."
       ]
     },
     {
-      "heading": "2. Conecta por la vía adecuada",
+      "heading": "Conecta mediante la vía adecuada",
       "body": [
-        "Para iCloud, activa primero Calendario de iCloud en el iPhone con la cuenta de Apple prevista. La guía de Apple explica los ajustes del dispositivo. Cloud Calendars accede a los calendarios disponibles en el sistema de calendarios del iPhone y necesita permiso para leerlos. Que la cuenta esté conectada en otro dispositivo no basta.",
-        "Cloud Calendars también incluye «Sign in with Google» y «Sign in with Microsoft». Comprueba la cuenta elegida al iniciar sesión y después abre su grupo de calendarios y selecciona los necesarios. Entrar en el proveedor correcto con la identidad personal o laboral equivocada puede mostrar una lista válida, pero inesperada."
+        "Para iCloud, activa primero iCloud Calendar en el iPhone con la Apple Account correspondiente. La guía de configuración de Apple explica los ajustes del dispositivo. Cloud Calendars accede a los calendarios disponibles a través del sistema de calendario del iPhone y necesita acceso al calendario para leerlos. No basta con que una cuenta esté conectada en otro dispositivo.",
+        "Cloud Calendars también incluye las acciones «Sign in with Google» y «Sign in with Microsoft». Comprueba qué cuenta seleccionas al iniciar sesión y luego abre su grupo de calendarios y selecciona los calendarios que necesites. Iniciar sesión en el proveedor correcto con una identidad personal o de trabajo equivocada puede producir una lista de calendarios perfectamente válida, pero inesperada."
       ]
     },
     {
-      "heading": "3. Distingue los planes de los permisos",
+      "heading": "Entiende los planes sin confundirlos con los permisos",
       "body": [
-        "Base incluye sincronización con Google Calendar y las vistas de calendario. Advanced añade la eliminación de anuncios a Base. Premium añade funciones de Microsoft Calendar y Microsoft Teams. Revisa el precio local actual y el periodo de facturación antes de comprar.",
-        "Un plan cambia las funciones disponibles en la app; no te convierte en propietario del calendario de otra persona. Google distingue entre ver eventos y modificarlos. Siguen aplicándose las políticas de la empresa y los permisos del calendario Microsoft. Ver un evento o disponer de un editor no demuestra que el proveedor vaya a aceptar el cambio."
+        "El plan Base incluye la sincronización con Google Calendar y las vistas de calendario. Advanced añade la eliminación de anuncios a Base. Premium añade funciones de Microsoft Calendar y Microsoft Teams. Revisa el precio local actual y el periodo de facturación antes de comprar.",
+        "Un plan cambia qué funciones de la app están disponibles; no te concede la propiedad del calendario de otra persona. Google distingue entre permiso para ver eventos y permiso para cambiarlos. Las políticas de la empresa y los permisos asociados a un calendario de Microsoft siguen aplicándose. Que un evento sea visible o que haya un editor disponible no demuestra que el proveedor vaya a aceptar una actualización."
       ]
     },
     {
-      "heading": "4. Una vista conjunta puede incluir copias de calendarios",
+      "heading": "Una vista combinada puede incluir copias de calendarios",
       "body": [
-        "Las conexiones de Google y Microsoft usan copias de calendarios en el sistema del iPhone para mostrar y sincronizar eventos. No supongas que conectar una cuenta no deja ninguna copia fuera del proveedor original. El destino de esas copias puede depender de las fuentes de calendario disponibles en el dispositivo.",
-        "Si la misma cuenta también llega al teléfono por otra vía, revisa nombres y fuentes antes de tratar las citas repetidas como eventos distintos. Oculta temporalmente un calendario para identificar qué parte de la vista aporta. No borres eventos ni calendarios solo para ordenar la pantalla: una copia conectada puede devolver cambios al proveedor."
+        "Las conexiones con Google y Microsoft usan copias de calendarios en el sistema de calendario del iPhone para presentar y sincronizar eventos. No des por hecho que conectar una cuenta no deja ninguna copia fuera del proveedor original. El destino usado para esas copias puede depender de las fuentes de calendario disponibles en el dispositivo.",
+        "Si la misma cuenta también llega al teléfono por otra vía, revisa los nombres y las fuentes de los calendarios antes de tratar eventos repetidos como si fueran eventos distintos. Oculta temporalmente un calendario para identificar qué visualización aporta. No elimines un evento o un calendario solo para que la pantalla quede más ordenada: una copia conectada puede enviar cambios de vuelta a su proveedor."
       ]
     },
     {
-      "heading": "5. Sigue eligiendo el destino al crear eventos",
+      "heading": "Sigue eligiendo el destino cuando crees un evento",
       "body": [
-        "Antes de guardar, revisa el calendario del evento con el mismo cuidado que la fecha y la hora. Para una cita familiar, elige el calendario que usa realmente la familia; para una reunión laboral, el destino autorizado del trabajo. Ver ambos juntos no convierte a ninguno en destino automático de todos los eventos nuevos.",
-        "Cambiar el calendario de un evento o arrastrarlo entre calendarios puede ser un traslado, no una segunda vista inocua. Mantén invitaciones y reuniones recurrentes en su calendario habitual mientras investigas un problema de visualización. Si necesitas un cambio, establece primero quién es el propietario y qué calendario puede aceptarlo."
+        "Antes de guardar, comprueba el calendario del evento con el mismo cuidado que su fecha y su hora. Para un evento familiar, elige el calendario que realmente usa la familia; para una reunión de trabajo, usa el destino de trabajo permitido. Ver ambos calendarios juntos no convierte automáticamente ninguno de los dos en el destino de todos los eventos nuevos.",
+        "Cambiar el calendario de un evento o arrastrarlo entre calendarios puede ser un traslado, no una segunda vista inocua. Mantén las invitaciones y las reuniones recurrentes en su calendario habitual mientras diagnosticas un problema de visualización. Si necesitas hacer un cambio, determina primero quién es el propietario del evento y qué calendario puede aceptarlo."
       ]
     },
     {
-      "heading": "6. Verifica la vista antes de depender de ella",
+      "heading": "Verifica la vista general antes de confiar en ella",
       "body": [
-        "Compara un evento reciente en el calendario del proveedor con el correspondiente en Cloud Calendars. Revisa fecha, zona horaria, título y calendario seleccionado. En un calendario tuyo editable, es mejor usar un evento de prueba sin invitados que cambiar una reunión real. Confirma el resultado en el proveedor antes de dar la conexión por lista.",
-        "No confíes en que la vista conjunta cree automáticamente bloques anónimos de tiempo ocupado en otra cuenta. Si necesitas que los compañeros vean que no estás disponible sin conocer detalles personales, usa un sistema expresamente aprobado y verifícalo desde su lado. La visión personal clara y la disponibilidad compartida son tareas distintas."
+        "Compara un evento reciente en el propio calendario del proveedor con el evento correspondiente en Cloud Calendars. Comprueba la fecha, la zona horaria, el título y el calendario seleccionado. En un calendario editable que sea tuyo, un evento desechable sin invitados es una mejor comprobación que modificar una reunión real. Confirma el resultado en el proveedor antes de considerar que la conexión está lista.",
+        "No confíes en que la vista combinada cree automáticamente bloques anónimos de tiempo ocupado en otra cuenta. Si necesitas que tus compañeros te vean como no disponible sin ver detalles personales, usa una configuración de disponibilidad aprobada explícitamente y verifícala desde su lado. Una vista personal clara y la disponibilidad compartida son tareas distintas."
       ]
     }
   ],
   "claims": {},
   "practical": [
-    "Anota la cuenta y el calendario exactos de un evento de cada proveedor.",
-    "Activa en el dispositivo los calendarios iCloud previstos y revisa el permiso de acceso.",
-    "Usa el inicio de sesión adecuado de Google o Microsoft y selecciona los calendarios previstos.",
-    "Compara un evento reciente con la vista del proveedor antes de cambiar nada.",
-    "Oculta temporalmente una fuente que parezca duplicada; conserva los eventos originales.",
-    "Revisa el calendario de destino de cada evento nuevo y verifica aparte cualquier uso compartido de tiempo ocupado."
+    "Anota la cuenta exacta y el calendario de un evento de cada proveedor.",
+    "Activa en el dispositivo los calendarios de iCloud que quieras y revisa el acceso al calendario.",
+    "Usa el inicio de sesión adecuado de Google o Microsoft y selecciona los calendarios deseados.",
+    "Compara un evento reciente con su vista en el proveedor antes de cambiar nada.",
+    "Oculta temporalmente una fuente sospechosa de estar duplicada; mantén intactos los eventos subyacentes.",
+    "Comprueba el calendario de destino en cada evento nuevo y verifica por separado cualquier uso compartido de tiempo ocupado que necesites."
   ],
   "faq": [
     {
-      "q": "¿Verán mis compañeros mis eventos personales porque muestro ambos calendarios?",
-      "a": "Mostrarlos juntos no es una instrucción para compartir ni un puente automático de disponibilidad. Revisa los ajustes reales de cada calendario. Las conexiones pueden crear copias en el dispositivo; la vista conjunta tampoco garantiza que los datos existan solo en el proveedor original."
+      "q": "¿Verán mis compañeros de trabajo mis eventos personales porque muestro ambos calendarios?",
+      "a": "Mostrar calendarios juntos no es una instrucción para compartir ni un puente automático de tiempo ocupado. Comprueba la configuración real de uso compartido de cada calendario. Las conexiones con proveedores pueden crear copias de calendarios en el dispositivo, así que una vista combinada tampoco garantiza que los datos de los eventos existan solo en su proveedor original."
     },
     {
-      "q": "¿Por qué veo un evento pero no consigo editarlo?",
-      "a": "El calendario puede ser de solo lectura, el evento pertenecer a otro organizador o el proveedor rechazar la actualización. Comprueba propiedad y permisos en el proveedor. Comprar un plan superior no cambia esos permisos."
+      "q": "¿Por qué puedo ver un evento pero no editarlo correctamente?",
+      "a": "Puede que el calendario sea de solo lectura, que el evento pertenezca a otro organizador o que el proveedor rechace la actualización. Comprueba la propiedad y los permisos en el calendario del proveedor. Contratar un plan superior de la app no cambia esos permisos."
     },
     {
-      "q": "¿Conviene conectar la misma cuenta Google por todas las vías disponibles?",
-      "a": "Primero comprueba cómo aparece ya en el teléfono. Varias vías dificultan identificar las copias. Elige la que quieras usar, verifica sus eventos y oculta la visualización extra mientras investigas, en lugar de empezar borrando datos o desconectando cuentas."
+      "q": "¿Debo conectar la misma cuenta de Google por todas las vías disponibles?",
+      "a": "Primero comprueba cómo aparece ya en el teléfono. Varias vías pueden dificultar la identificación de copias del calendario. Elige la vía que vayas a usar, verifica sus eventos y, mientras investigas, oculta una visualización adicional en lugar de borrar datos o desconectar cuentas como primer paso."
     }
   ],
   "sourcesHeading": "Fuentes y referencias de configuración",
   "sources": [
     {
-      "label": "Apple: configurar Calendario de iCloud en tus dispositivos",
+      "label": "Apple: configurar iCloud Calendar en tus dispositivos",
       "url": "https://support.apple.com/guide/icloud/set-up-calendar-mme4d73a8727/icloud"
     },
     {
-      "label": "Google: compartir calendarios y permisos",
+      "label": "Google: uso compartido y permisos del calendario",
       "url": "https://support.google.com/calendar/answer/37082?hl=en"
     },
     {
@@ -737,7 +858,71 @@ export const ARTICLES_ES_ES: Readonly<Record<string, LocalisedArticle>> = {
   ],
   "seeAlso": [
     "exchange-calendars-on-an-iphone",
-    "work-and-personal-without-two-apps"
+    "what-calendar-sync-actually-does",
+    "when-two-calendars-disagree",
+    "caldav-calendar-on-iphone",
+    "calendar-export-ics-pdf-and-backup",
+    "onecal-alternative-iphone-calendar-view-or-sync"
+  ],
+  "comparison": {
+    "heading": "¿Vista combinada, suscripción o tiempo ocupado copiado?",
+    "columns": [
+      "Lo que necesitas",
+      "Qué comprobar",
+      "Qué no debes dar por hecho"
+    ],
+    "rows": [
+      {
+        "cells": [
+          "Una sola vista de varias cuentas",
+          "La cuenta conectada, el calendario seleccionado y el plan necesario.",
+          "Que una pantalla compartida combine la propiedad o los permisos."
+        ]
+      },
+      {
+        "cells": [
+          "Que la edición de un evento llegue a su proveedor",
+          "El evento original, el permiso de escritura y el resultado guardado en el origen.",
+          "Que una edición local visible demuestre una sincronización correcta con el proveedor."
+        ]
+      },
+      {
+        "cells": [
+          "Tiempo ocupado en otra cuenta",
+          "Un servicio con reglas explícitas de sincronización de origen a destino.",
+          "Que una vista combinada cree bloques de disponibilidad para compañeros."
+        ]
+      },
+      {
+        "cells": [
+          "Un calendario suscrito",
+          "El editor, el comportamiento de actualización y el estado de solo lectura.",
+          "Que una suscripción ICS sea una conexión editable y bidireccional."
+        ]
+      }
+    ]
+  },
+  "galleryKinds": [
+    "week-left",
+    "hook"
+  ],
+  "galleryDevice": "iPad",
+  "galleryCaption": "Las vistas reales del calendario en iPad ilustran la revisión de un horario. Una captura de pantalla no demuestra la dirección de la sincronización del proveedor ni los permisos de la cuenta.",
+  "actionHeading": "Revisa tus calendarios juntos en iPhone y iPad",
+  "actionText": "La sincronización con Google Calendar está incluida en Base. Advanced añade la eliminación de anuncios; Premium añade compatibilidad con Microsoft Calendar y Teams. Confirma los permisos de la cuenta independientemente del plan contratado.",
+  "articleLinks": [
+    {
+      "slug": "onecal-alternative-iphone-calendar-view-or-sync",
+      "label": "Comparar una vista combinada con las reglas de sincronización de OneCal"
+    },
+    {
+      "slug": "fantastical-readdle-calendar366-iphone-comparison",
+      "label": "Comparar flujos de trabajo del calendario en iPhone"
+    },
+    {
+      "slug": "weather-inside-your-calendar",
+      "label": "Planificar con la meteorología y los eventos juntos"
+    }
   ]
 },
 
@@ -833,101 +1018,162 @@ export const ARTICLES_ES_ES: Readonly<Record<string, LocalisedArticle>> = {
 },
 
   'the-widget-that-shows-what-is-next': {
-  "updated": "2026-10-22",
-  "title": "Widgets de calendario en iPhone y iPad: muestra los próximos eventos",
+  "updated": "2026-10-23",
+  "title": "Widgets de calendario en iPhone y iPad: próximos eventos y tiempo",
   "short": "Próximos eventos en la pantalla de inicio",
-  "description": "Configura widgets de eventos en iPhone o iPad. Revisa calendarios seleccionados, filas visibles y citas ausentes antes de fiarte de la pantalla de inicio.",
-  "lede": "Para consultar de forma útil la próxima cita, elige un widget que realmente muestre eventos. Una tarjeta con fecha y tiempo responde a otra pregunta. Esta guía la publica Arte Soft, desarrollador de Cloud Calendars.",
+  "description": "Elige un widget de Cloud Calendars para próximos eventos, la fecha o el tiempo.",
+  "lede": "Elige Calendar Events o Calendar Events Large si quieres ver próximos eventos en tu pantalla de inicio. Elige Calendar & Weather para mostrar la fecha y el tiempo. Estos diseños responden a preguntas distintas; previsualiza el que se ofrezca en tu dispositivo antes de añadirlo. Esta guía la publica Arte Soft, desarrollador de Cloud Calendars.",
   "sections": [
     {
-      "heading": "Elige primero el diseño con eventos",
+      "heading": "Elige primero el diseño de eventos",
       "body": [
-        "En la galería de widgets de Cloud Calendars, «Calendar Events» es el diseño mediano con lista de eventos. «Calendar Events Large» ofrece más espacio para las próximas citas. «Calendar & Weather» es un diseño independiente de fecha y tiempo; su tamaño pequeño no promete una fila con el próximo evento. Los nombres pueden aparecer traducidos en tu dispositivo.",
-        "En el iPhone, mantén pulsada una zona vacía de la pantalla de inicio, elige la opción de edición «Edit» y después «Add Widget» para añadir un widget. Busca Cloud Calendars y selecciona el diseño que quieras. Compara la vista previa antes de añadirlo. Las instrucciones de Apple describen esta galería del sistema, que es distinta de las vistas del calendario dentro de la app."
+        "En la galería de widgets de Cloud Calendars, Calendar Events es el diseño mediano de lista de eventos. Calendar Events Large ofrece más espacio para próximos eventos. Calendar & Weather es un diseño independiente de fecha y tiempo; su tamaño pequeño no garantiza una fila para el próximo evento. Los nombres pueden aparecer traducidos en tu dispositivo.",
+        "En iPhone, mantén pulsada una zona vacía de la pantalla de inicio, toca Editar y Añadir widget, luego busca Cloud Calendars y selecciona el diseño que quieras. Compara la vista previa antes de añadirlo. Las instrucciones de Apple sobre widgets se refieren a esta galería del sistema; es independiente de las vistas de calendario dentro de la app."
       ]
     },
     {
-      "heading": "Añade y comprueba el widget en el iPad",
+      "heading": "Añade y comprueba el widget en iPad",
       "body": [
-        "En el iPad, utiliza la galería de widgets de Apple para la pantalla de inicio: mantén pulsado el fondo, abre «Edit» y después «Add Widget». Busca Cloud Calendars, revisa los estilos y tamaños disponibles, añade el diseño que necesites, colócalo y termina con «Done». Estas etiquetas en inglés pueden aparecer traducidas en tu dispositivo. Sigue los controles que muestre tu versión de iPadOS; una vista previa no confirma que se hayan cargado tus datos de calendario.",
-        "Elige «Calendar Events» o «Calendar Events Large» si necesitas consultar citas. Compara los estilos que ofrece la app instalada: una tarjeta de fecha y tiempo responde a una pregunta distinta de una lista de eventos.",
-        "Abre Cloud Calendars en ese iPad y busca una cita conocida con hora de inicio futura en un calendario seleccionado. Que la vista del iPhone sea correcta no confirma las cuentas, el acceso ni los datos cargados en el iPad. Compara el título, la fecha y la hora de inicio y, si el widget difiere, continúa con las comprobaciones de inclusión y actualización que se explican a continuación."
+        "En iPad, usa la galería de widgets de la pantalla de inicio de Apple: mantén pulsado el fondo, abre Editar y después Añadir widget. Busca Cloud Calendars, revisa los estilos y tamaños disponibles, añade el diseño que necesites, colócalo y termina con OK. Sigue los controles que muestre tu versión de iPadOS; una vista previa no confirma que se hayan cargado los datos de tu calendario.",
+        "Elige Calendar Events o Calendar Events Large cuando necesites ver eventos. Compara los estilos que ofrece la app instalada; un recuadro de fecha y tiempo responde a una necesidad distinta de la de una lista de eventos.",
+        "Abre Cloud Calendars en ese iPad y localiza un evento futuro con hora de inicio en un calendario seleccionado. Que se vea correctamente en tu iPhone no confirma las cuentas, el acceso ni los datos cargados en el iPad. Compara el título, la fecha y la hora de inicio, y después sigue con las comprobaciones de compatibilidad y actualización de abajo si el widget es distinto."
       ]
     },
     {
       "heading": "Comprueba qué se considera próximo",
       "body": [
-        "La lista utiliza los calendarios seleccionados y las citas con hora de inicio futura. Excluye los eventos de todo el día y las citas cuya hora de inicio ya ha pasado. Por eso un cumpleaños o una reunión en curso pueden aparecer en la app sin figurar aquí.",
-        "Por ejemplo, si tu única entrada de hoy es un viaje marcado como evento de todo el día, una lista vacía no significa que ese viaje se haya perdido. Abre la app para revisar el día completo. Del mismo modo, la siguiente cita con hora puede ser mañana o más adelante: lee su fecha en lugar de suponer que todas las filas corresponden a hoy."
+        "La visualización de eventos usa los calendarios seleccionados y los eventos futuros con hora de inicio. Las entradas de todo el día y los eventos cuya hora de inicio ya ha pasado se excluyen de esta lista de próximos eventos. Por eso, un cumpleaños o una reunión ya iniciada pueden verse en la app sin aparecer aquí.",
+        "Por ejemplo, si hoy tu única entrada es una etiqueta de viaje de todo el día, una lista de próximos eventos vacía no significa que esa etiqueta se haya perdido. Abre la app para revisar el día completo. Del mismo modo, el siguiente evento con hora de inicio puede ser mañana o más adelante; mira la fecha en lugar de asumir que todas las filas son de hoy."
       ]
     },
     {
-      "heading": "Distingue un evento ausente de una lista sin más filas",
+      "heading": "Distingue entre un evento que falta y una lista que ya no tiene más filas",
       "body": [
-        "Un widget muestra un conjunto limitado de próximas citas. Si los eventos anteriores ocupan sus filas, una cita posterior puede no aparecer aunque exista en la app y cumpla los criterios de la lista. Un diseño de eventos más grande puede mostrar más filas, pero tampoco es el calendario completo.",
-        "Empieza por la cita con hora de inicio futura más cercana en un calendario seleccionado. Si aparece pero otra posterior no, abre la app para revisar el resto de la agenda. Si también falta el evento más cercano que cumple los criterios, continúa comprobando la selección de calendarios, el acceso y las actualizaciones. No muevas ni borres citas solo para que aparezca una entrada posterior."
+        "Un widget muestra un conjunto limitado de próximos eventos. Si los eventos anteriores ocupan sus filas, puede que un evento posterior no aparezca aunque sí esté en la app y cumpla los requisitos para la lista de próximos eventos. Un diseño de eventos más grande puede mostrar más filas, pero sigue sin ser el calendario completo.",
+        "Empieza por el evento futuro con hora de inicio más cercano en un calendario seleccionado. Si aparece, pero uno posterior no, abre la app para revisar el resto de la programación. Si también falta el evento apto más cercano, continúa con las comprobaciones de selección de calendario, acceso y actualización. No muevas ni elimines eventos solo para que aparezca una entrada posterior."
       ]
     },
     {
-      "heading": "Compara primero con la app",
+      "heading": "Haz de la app tu primera comparación",
       "body": [
-        "Abre Cloud Calendars y localiza una cita concreta con hora de inicio futura. Confirma que el calendario al que pertenece está seleccionado y que la app tiene el acceso al calendario que necesita. Compara el título, la fecha y la hora de inicio con el widget. Si el evento también falta en la app, investiga primero la cuenta o la sincronización.",
-        "Si necesitas un ejemplo claro, utiliza una cita de prueba sin consecuencias en un calendario propio. Ponle un inicio futuro y un título reconocible. Evita modificar una invitación real o quitar cuentas solo para probar la pantalla de inicio."
+        "Abre Cloud Calendars y localiza un evento futuro concreto con hora de inicio. Confirma que su calendario esté seleccionado y que la app tenga el acceso al calendario que necesita. Compara el título, la fecha y la hora de inicio con el widget. Si el evento tampoco aparece en la app, investiga primero la cuenta o la sincronización.",
+        "Usa un evento de prueba inocuo en un calendario tuyo si necesitas un ejemplo claro. Asígnale una hora de inicio futura y un título reconocible. Evita modificar una invitación real o eliminar cuentas solo para probar la pantalla de inicio."
       ]
     },
     {
-      "heading": "Ten en cuenta las actualizaciones sin suponer un plazo fijo",
+      "heading": "Ten en cuenta las actualizaciones sin asumir un plazo fijo",
       "body": [
-        "Los widgets muestran información guardada y no funcionan continuamente como una app abierta. Apple controla cuándo se actualizan. Abrir la app y comprobar el evento te proporciona una referencia actual, pero no establece un número exacto de segundos tras el cual el widget deba cambiar.",
-        "Si la app sigue mostrando la información correcta y el widget no, anota el diseño, el calendario seleccionado, la hora del evento y las versiones de la app y de iOS. Una lista vacía, una cita antigua y una hora incorrecta son observaciones distintas: indica cuál ves."
+        "Los widgets muestran información guardada y no se ejecutan continuamente como una app abierta. Apple controla su programación de actualización. Abrir la app y comprobar el evento te da un punto de comparación reciente, pero no establece un número exacto de segundos tras los cuales el widget deba cambiar.",
+        "Si la app sigue mostrando la información correcta mientras el widget sigue siendo incorrecto, anota el diseño, el calendario seleccionado, la hora del evento y las versiones de la app y de iOS. Una lista vacía, un evento antiguo y una hora incorrecta son observaciones distintas; indica cuál ves."
       ]
     },
     {
-      "heading": "Interpreta el tiempo como un resumen independiente",
+      "heading": "Lee el tiempo como un resumen independiente",
       "body": [
-        "El tiempo junto a la fecha no es una previsión asociada al lugar y a la hora de inicio de cada cita. Antes de un evento al aire libre, abre la vista del tiempo y comprueba el lugar y la hora previstos. Un icono de las condiciones actuales no demuestra qué tiempo hará en una reunión posterior.",
-        "Utiliza este widget para orientarte rápidamente. Consulta el calendario completo para los compromisos de todo el día, los detalles de los eventos y las decisiones que requieren ver toda la agenda."
+        "El tiempo que aparece junto a la fecha no es una previsión asociada al lugar y la hora de inicio de cada evento. Antes de un evento al aire libre, abre la vista del tiempo y consulta el lugar y la hora previstos. Un icono de condiciones actuales no puede determinar qué condiciones habrá en una reunión posterior.",
+        "Mantén este widget para orientarte rápidamente. Usa el calendario completo para compromisos de todo el día, detalles de los eventos y decisiones que requieran ver toda la programación."
       ]
     }
   ],
   "claims": {},
   "practical": [
-    "Elige «Calendar Events» o «Calendar Events Large» para ver una lista de eventos.",
-    "Comprueba una cita con hora de inicio futura en un calendario seleccionado.",
-    "Compara su fecha y hora en la app antes de investigar el widget.",
-    "Anota las diferencias persistentes en lugar de borrar datos del calendario."
+    "Elige Calendar Events o Calendar Events Large para ver una lista de eventos.",
+    "Verifica un evento futuro con hora de inicio en un calendario seleccionado.",
+    "Compara su fecha y su hora en la app antes de solucionar problemas del widget.",
+    "Anota las diferencias persistentes en lugar de eliminar datos del calendario."
   ],
   "faq": [
     {
-      "q": "¿Por qué falta mi cumpleaños?",
-      "a": "La lista de próximos eventos excluye los de todo el día. Consulta el calendario completo para los cumpleaños y otras entradas que solo tienen fecha."
+      "q": "¿Por qué no aparece mi cumpleaños?",
+      "a": "La lista de próximos eventos excluye los eventos de todo el día. Consulta el calendario completo para ver cumpleaños y otras entradas solo de fecha."
     },
     {
-      "q": "¿El widget pequeño muestra la siguiente reunión?",
-      "a": "El diseño pequeño «Calendar & Weather» muestra fecha y tiempo. Para consultar citas, elige un diseño con lista de eventos."
+      "q": "¿El widget pequeño muestra la próxima reunión?",
+      "a": "El diseño pequeño Calendar & Weather muestra la fecha y el tiempo. Elige un diseño de lista de eventos para ver eventos."
     },
     {
-      "q": "¿No tener próximos eventos significa que hoy estoy libre?",
-      "a": "No. Los eventos de todo el día, los que están en curso, los calendarios no seleccionados y la información desactualizada pueden cambiar esa conclusión."
+      "q": "¿Que no haya ningún próximo evento significa que hoy estoy libre?",
+      "a": "No. Las entradas de todo el día, los eventos ya iniciados, los calendarios no seleccionados y la información desactualizada pueden cambiar esa conclusión."
     }
   ],
   "sourcesHeading": "Fuentes e instrucciones de Apple",
   "sources": [
     {
-      "label": "Apple: Añadir y editar widgets en el iPhone",
+      "label": "Apple: añadir y editar widgets en iPhone",
       "url": "https://support.apple.com/118610"
     },
     {
-      "label": "Apple: Mantener actualizado un widget",
+      "label": "Apple: mantener un widget actualizado",
       "url": "https://developer.apple.com/documentation/widgetkit/keeping-a-widget-up-to-date"
     },
     {
-      "label": "Apple: Añadir, editar y eliminar widgets en el iPad",
+      "label": "Apple: añadir, editar y eliminar widgets en iPad",
       "url": "https://support.apple.com/guide/ipad/add-edit-and-remove-widgets-ipadb0de8630/ipados"
     }
   ],
   "seeAlso": [
-    "a-countdown-to-your-next-meeting"
+    "choosing-a-widget-size",
+    "a-countdown-to-your-next-meeting",
+    "calendar-on-apple-watch"
+  ],
+  "comparison": {
+    "heading": "Elige la visualización que realmente necesitas",
+    "columns": [
+      "Visualización",
+      "Úsalo para",
+      "Compruébalo antes de confiar en ello"
+    ],
+    "rows": [
+      {
+        "cells": [
+          "Calendar Events",
+          "Una vista compacta de próximos eventos con hora de inicio.",
+          "El evento pertenece a un calendario seleccionado y aún no ha empezado."
+        ]
+      },
+      {
+        "cells": [
+          "Calendar Events Large",
+          "Más espacio para próximos eventos.",
+          "Un diseño más grande sigue teniendo un número limitado de filas."
+        ]
+      },
+      {
+        "cells": [
+          "Calendar & Weather",
+          "Un resumen rápido de fecha y tiempo.",
+          "Su diseño pequeño no garantiza una fila de próximo evento."
+        ]
+      },
+      {
+        "cells": [
+          "Live Activity",
+          "Una cuenta atrás independiente para el próximo evento en las superficies compatibles del iPhone.",
+          "No es un widget de la pantalla de inicio ni un diseño específico de widget para la pantalla bloqueada."
+        ]
+      }
+    ]
+  },
+  "galleryKinds": [
+    "widgets",
+    "live"
+  ],
+  "galleryCaption": "Los widgets de la pantalla de inicio y la Live Activity son visualizaciones independientes. Selecciona el diseño que se ajuste a la información que necesitas.",
+  "actionHeading": "Pon la parte útil de tu agenda en la pantalla de inicio",
+  "actionText": "Abre Cloud Calendars, comprueba un evento futuro conocido con hora de inicio y luego añade el widget adecuado en tu iPhone o iPad. La app sigue siendo el lugar para revisar el calendario completo.",
+  "articleLinks": [
+    {
+      "slug": "weather-inside-your-calendar",
+      "label": "Consulta el tiempo junto a tu agenda"
+    },
+    {
+      "slug": "forecast-beside-every-event",
+      "label": "Comprueba las horas de un evento al aire libre"
+    },
+    {
+      "slug": "icloud-google-and-outlook-in-one-view",
+      "label": "Comprueba tus cuentas de calendario conectadas"
+    }
   ]
 },
 

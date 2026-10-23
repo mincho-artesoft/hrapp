@@ -11,11 +11,11 @@ import { LocalisedArticle } from '../types';
  */
 export const WEATHER_EN_US: Readonly<Record<string, LocalisedArticle>> = {
   'weather-inside-your-calendar': {
-  "updated": "2026-10-22",
-  "title": "Calendar with weather on iPhone and iPad: check a plan in context",
+  "updated": "2026-10-23",
+  "title": "Calendar with weather on iPhone and iPad: plan your day in one view",
   "short": "Use calendar and weather together",
-  "description": "Use calendar and weather together on iPhone and iPad. Check the selected place, available forecast hours and event details before saving a plan.",
-  "lede": "A calendar tells you when a commitment is scheduled. Weather helps answer a different question: what conditions are forecast for the place and period you need. Use the two together while keeping their locations and dates explicit. This guide is published by Arte Soft, the developer of Cloud Calendars.",
+  "description": "Compare your calendar with weather for the selected place on iPhone and iPad.",
+  "lede": "Cloud Calendars puts your schedule and weather in the same iPhone or iPad app. Use the calendar to choose a date and the weather view to inspect the selected place and available forecast hours. For an outdoor plan, check the period that matters rather than relying on a daily icon. This guide is published by Arte Soft, the app’s developer.",
   "commonBelief": "Weather shown beside a calendar automatically describes every appointment’s address, every hour and every future date.",
   "sections": [
     {
@@ -101,14 +101,73 @@ export const WEATHER_EN_US: Readonly<Record<string, LocalisedArticle>> = {
       "label": "Met Office: forecast place, periods and weather values",
       "url": "https://weather.metoffice.gov.uk/guides/what-does-this-forecast-mean"
     }
+  ],
+  "comparison": {
+    "heading": "Which weather view answers your question?",
+    "columns": [
+      "Your question",
+      "What to inspect",
+      "What it does not establish"
+    ],
+    "rows": [
+      {
+        "cells": [
+          "What is coming up today?",
+          "Calendar day or week view beside the selected-place weather.",
+          "That every event address automatically changes the weather location."
+        ]
+      },
+      {
+        "cells": [
+          "Could rain affect my afternoon appointment?",
+          "Hourly data for the venue and the appointment’s full period.",
+          "That a daily symbol describes every hour."
+        ]
+      },
+      {
+        "cells": [
+          "Can I plan next month around the weather?",
+          "Your calendar now, then a forecast review closer to the date.",
+          "That navigating the calendar extends forecast coverage."
+        ]
+      },
+      {
+        "cells": [
+          "Can I see a quick overview at home?",
+          "The appropriate Home Screen widget.",
+          "That every widget layout includes appointments or a full forecast."
+        ]
+      }
+    ]
+  },
+  "galleryKinds": [
+    "week-right",
+    "hook"
+  ],
+  "galleryCaption": "Real Cloud Calendars screens: the weather view and a day with appointments. Check the selected place and date in the app.",
+  "actionHeading": "Plan with your schedule and the forecast together",
+  "actionText": "Cloud Calendars is for iPhone and iPad. Start with the views, weather and Google Calendar sync included in Base; Advanced removes ads, while Premium adds Microsoft Calendar and Teams support.",
+  "articleLinks": [
+    {
+      "slug": "forecast-beside-every-event",
+      "label": "Check weather for the hours of an appointment"
+    },
+    {
+      "slug": "the-widget-that-shows-what-is-next",
+      "label": "Choose a calendar and weather widget"
+    },
+    {
+      "slug": "icloud-google-and-outlook-in-one-view",
+      "label": "Bring calendar accounts into one view"
+    }
   ]
 },
 
   'forecast-beside-every-event': {
-  "title": "Compare an appointment with the hourly weather forecast",
+  "title": "Check the hourly weather for a calendar event on iPhone and iPad",
   "short": "Weather for appointment hours",
-  "description": "Match your appointment to the selected place, date and available forecast hours. Check the event draft before saving a weather-based plan.",
-  "lede": "To compare weather with an appointment, match three things: the selected place, the forecast date and the hours your plan occupies. A nearby weather icon is not proof that all three match. This guide is published by Arte Soft, the developer of Cloud Calendars.",
+  "description": "Match your event’s place, date and hours with the available weather forecast.",
+  "lede": "To check weather for a calendar event, match three things: the venue, its local date and the appointment’s start-to-end period. In Cloud Calendars, choose the weather place and inspect the available hours. An event’s address and a nearby weather icon are not, by themselves, proof that these match. Arte Soft, the developer, publishes this guide.",
   "commonBelief": "That a daily weather icon on a calendar is the same feature as a forecast attached to an event.",
   "sections": [
     {
@@ -158,7 +217,7 @@ export const WEATHER_EN_US: Readonly<Record<string, LocalisedArticle>> = {
     "weather-inside-your-calendar",
     "planning-outdoors-without-being-rained-on"
   ],
-  "updated": "2026-10-21",
+  "updated": "2026-10-23",
   "faq": [
     {
       "q": "Does every event have a complete forecast?",
@@ -182,6 +241,65 @@ export const WEATHER_EN_US: Readonly<Record<string, LocalisedArticle>> = {
     {
       "label": "Apple: Privacy and Location Services",
       "url": "https://support.apple.com/en-us/102515"
+    }
+  ],
+  "comparison": {
+    "heading": "A practical check before an outdoor appointment",
+    "columns": [
+      "Check",
+      "Example",
+      "Decision"
+    ],
+    "rows": [
+      {
+        "cells": [
+          "Place",
+          "The appointment is in another city.",
+          "Select that destination in the weather view and read its name."
+        ]
+      },
+      {
+        "cells": [
+          "Period",
+          "The activity runs from 14:00 to 16:00.",
+          "Inspect both hours, plus relevant preparation or travel."
+        ]
+      },
+      {
+        "cells": [
+          "Coverage",
+          "Only some of the needed hours are available.",
+          "Keep the plan provisional and arrange another check."
+        ]
+      },
+      {
+        "cells": [
+          "Saved event",
+          "You start a draft from a weather hour.",
+          "Review date, time zone, duration and destination calendar before saving."
+        ]
+      }
+    ]
+  },
+  "galleryKinds": [
+    "week-right",
+    "week-left"
+  ],
+  "galleryCaption": "The weather and week views show different parts of the same planning task. Confirm the forecast place separately from the event’s location.",
+  "actionHeading": "Check the forecast against your real appointments",
+  "actionText": "Use Cloud Calendars on iPhone or iPad to review the available forecast and your schedule. Weather informs your choice; it does not automatically move an event or confirm a change with participants.",
+  "articleLinks": [
+    {
+      "slug": "weather-inside-your-calendar",
+      "label": "Understand the calendar and weather views"
+    },
+    {
+      "slug": "the-widget-that-shows-what-is-next",
+      "label": "Choose a quick Home Screen overview"
+    },
+    {
+      "slug": "icloud-google-and-outlook-in-one-view",
+      "label": "Check the calendars behind your schedule"
     }
   ]
 },

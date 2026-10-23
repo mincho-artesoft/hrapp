@@ -98,128 +98,317 @@ export const ARTICLES_RO: Readonly<Record<string, LocalisedArticle>> = {
 },
 
   'weather-inside-your-calendar': {
-  "updated": "2026-10-22",
-  "title": "Calendar cu vreme pe iPhone și iPad: verifică planul în context",
+  "updated": "2026-10-23",
+  "title": "Calendar cu vreme pe iPhone și iPad: planifică-ți ziua dintr-o singură privire",
   "short": "Folosește calendarul și vremea împreună",
-  "description": "Folosește calendarul și vremea pe iPhone și iPad. Verifică locul, orele de prognoză disponibile și detaliile evenimentului înainte de salvare.",
-  "lede": "Calendarul arată când este programat un angajament. Vremea răspunde la altă întrebare: ce condiții sunt prognozate pentru locul și perioada necesare. Folosește-le împreună, păstrând clare locurile și datele. Ghidul este publicat de Arte Soft, dezvoltatorul Cloud Calendars.",
-  "commonBelief": "Vremea afișată lângă calendar descrie automat adresa fiecărei întâlniri, fiecare oră și orice dată viitoare.",
+  "description": "Compară calendarul tău cu vremea pentru locul selectat pe iPhone și iPad.",
+  "lede": "Cloud Calendars îți aduce programul și vremea în aceeași aplicație pe iPhone sau iPad. Folosește calendarul pentru a alege o dată și vizualizarea meteo pentru a examina locul selectat și orele de prognoză disponibile. Pentru un plan în aer liber, verifică intervalul care contează, în loc să te bazezi pe o pictogramă zilnică. Acest ghid este publicat de Arte Soft, dezvoltatorul aplicației.",
+  "commonBelief": "Vremea afișată lângă un calendar descrie automat adresa fiecărui eveniment, fiecare oră și orice dată viitoare.",
   "sections": [
     {
-      "heading": "Alege o întrebare concretă de planificare",
+      "heading": "Alege o întrebare reală de planificare",
       "body": [
-        "Începe cu o întâlnire concretă, precum o vizită în parc după-amiaza. Identifică ce s-ar putea schimba: ora, locul, pregătirea sau alegerea unei alternative. Nu trebuie să reorganizezi tot calendarul doar fiindcă simbolul zilei arată ploaie.",
-        "Notează începutul și sfârșitul real al activității, inclusiv pregătirea când contează. Ansamblul calendarului ajută la găsirea datelor posibile, iar verificarea vremii privește un loc și interval precis. Separă aceste roluri când compari opțiuni."
+        "Pornește de la un eveniment concret, cum ar fi o vizită după-amiaza într-un parc. Stabilește ce s-ar putea schimba: ora, locul, pregătirea sau decizia de a folosi o alternativă. Nu trebuie să rearanjezi tot calendarul doar pentru că simbolul zilei arată ploaie.",
+        "Notează începutul și sfârșitul reale ale activității, incluzând pregătirea dacă este relevantă. O privire de ansamblu asupra calendarului ajută la găsirea datelor posibile, în timp ce verificarea prognozei privește un anumit loc și un anumit interval. Păstrează distincte aceste două roluri când compari opțiunile."
       ]
     },
     {
-      "heading": "Confirmă locul prognozei",
+      "heading": "Confirmă locul pentru vreme înainte de a citi valorile",
       "body": [
-        "Cloud Calendars oferă vreme pentru locul curent sau selectat. Verifică locația afișată, fără să presupui că adresa unui eveniment schimbă automat prognoza. O întâlnire în alt oraș trebuie comparată cu vremea acelui oraș.",
-        "De exemplu, un vizitator poate planifica sosirea la muzeu când telefonul este încă acasă. Citește locația prognozei și ora locală a întâlnirii înainte să le compari. Valorile apropiate pe ecran nu dovedesc folosirea aceluiași loc."
+        "Cloud Calendars oferă vremea pentru locul curent sau selectat. Verifică locația afișată, în loc să presupui că adresa unui eveniment schimbă implicit prognoza. Un eveniment din alt oraș trebuie comparat cu vremea din acel oraș.",
+        "De exemplu, cineva poate planifica sosirea la un muzeu în timp ce telefonul este încă acasă. Citește locația prognozei și ora locală a evenimentului înainte să le compari. Valorile care par apropiate nu dovedesc că programul și vremea folosesc același loc."
       ]
     },
     {
-      "heading": "Verifică separat orele și zilele disponibile",
+      "heading": "Verifică separat acoperirea pe ore și pe zile",
       "body": [
-        "Folosește rezumatul zilnic pentru orientare și orele disponibile pentru o parte a zilei. O rezervare de la două la cinci cere mai mult decât privirea unui simbol. Verifică dacă orele relevante chiar sunt prezente.",
-        "În sursa actuală a aplicației, lista zilnică preia până la zece zile returnate de WeatherKit. Aceasta diferă de navigarea calendarului și de orele furnizate. O întâlnire viitoare nu extinde prognoza. Dacă perioada lipsește, planifică o verificare meteo ulterioară."
+        "Folosește o intrare zilnică pentru orientare și intrările orare disponibile pentru o întrebare despre o parte a zilei. O rezervare de la două la cinci are nevoie de mai mult decât o privire la un singur simbol. Verifică dacă orele relevante sunt într-adevăr prezente.",
+        "În sursa actuală a aplicației, lista zilnică preia până la zece zile returnate de WeatherKit. Acest lucru este separat de navigarea în calendar și de orele furnizate în prezent. Un eveniment viitor nu extinde acoperirea meteo. Dacă intervalul lui lipsește, programează o nouă verificare a vremii mai târziu."
       ]
     },
     {
-      "heading": "Înțelege semnificația valorilor",
+      "heading": "Înțelege ce înseamnă valoarea meteo",
       "body": [
-        "Apple documentează date WeatherKit precum temperatură, precipitații, vânt și UV, unele produse fiind disponibile doar în anumite regiuni. Citește valorile pentru locul ales, fără să aștepți toate produsele meteo peste tot.",
-        "Ghidul Met Office arată de ce contează perioada și definiția variabilei: unele valori descriu un moment, altele un interval. Folosește etichetele furnizorului relevant. Probabilitatea, cantitatea și durata ploii sunt întrebări diferite; un singur număr nu decide orice activitate în aer liber."
+        "Apple documentează datele WeatherKit precum temperatura, precipitațiile, vântul și UV, unele produse fiind disponibile doar în anumite regiuni. Citește valorile disponibile pentru locul ales, în loc să te aștepți ca fiecare produs meteo să existe peste tot.",
+        "Ghidul Met Office arată de ce contează perioada prognozei și definițiile variabilelor: unele valori se referă la un moment, altele la o perioadă. Folosește etichetele furnizorului relevant. Probabilitatea de ploaie, cantitatea și durata sunt întrebări diferite, iar niciun număr unic nu decide orice activitate în aer liber."
       ]
     },
     {
-      "heading": "Revizuiește schița creată dintr-o oră meteo",
+      "heading": "Verifică o schiță creată dintr-o oră meteo",
       "body": [
-        "Acolo unde aplicația permite crearea unui eveniment dintr-o oră, deschide o schiță. Sursa actuală folosește fusul locului prognozei, propune o oră durată și alege calendarul implicit pentru evenimente noi. Inspectează fiecare valoare înainte de salvare.",
-        "Confirmă titlul, calendarul destinație, începutul, sfârșitul și locul dorit. Selectarea prognozei nu acordă drept de editare a unui calendar partajat, nu anunță locația și nu rezervă o sală. Verifică evenimentul salvat și obține acordurile necesare."
+        "Acolo unde aplicația oferă crearea unui eveniment dintr-o oră, aceasta deschide o schiță. Sursa actuală folosește fusul orar al locației meteo, propune o durată de o oră și selectează calendarul implicit pentru evenimente noi. Verifică fiecare valoare înainte de salvare.",
+        "Confirmă titlul, calendarul de destinație, începutul, sfârșitul și locația dorită. O selecție din prognoză nu îți dă permisiunea să editezi un calendar partajat, să anunți un loc sau să rezervi o sală. Verifică evenimentul salvat și obține orice acord necesar planului."
       ]
     },
     {
-      "heading": "Separă demonstrația de pe site",
+      "heading": "Păstrează separată demonstrația de pe site",
       "body": [
-        "Demonstrația meteo interactivă de pe site folosește Open-Meteo. Aplicația folosește Apple WeatherKit. Demonstrația ajută la explorarea prezentării, dar locul, datele și perioada disponibilă pot diferi de aplicație.",
-        "Pentru o decizie reală, deschide aplicația și compară întâlnirea cu prognoza disponibilă. Dacă schimbi un plan comun, confirmă organizatorul, domeniul repetării și participanții. Stabiliți o alternativă când activitatea depinde de condiții."
+        "Demonstrația interactivă meteo de pe site folosește Open-Meteo. Aplicația folosește Apple WeatherKit. O demonstrație web este utilă pentru a explora prezentarea, dar locul, datele și datele calendaristice disponibile pot diferi față de aplicație.",
+        "Pentru o decizie reală, deschide aplicația și compară evenimentul planificat cu prognoza disponibilă. Dacă modifici un plan partajat, confirmă organizatorul, domeniul recurenței și participanții. Păstrează o alternativă agreată când activitatea depinde de condiții."
       ]
     }
   ],
   "claims": {},
   "practical": [
-    "Identifică întâlnirea și decizia influențată de vreme.",
-    "Confirmă locația meteo și data și ora locală ale întâlnirii.",
-    "Verifică orele disponibile separat de rezumatul zilnic.",
-    "Citește probabilitatea, cantitatea și alte valori după etichete.",
-    "Revizuiește toate detaliile schiței și calendarul destinație înainte de salvare.",
+    "Identifică evenimentul și decizia pe care vremea ar putea să o schimbe.",
+    "Confirmă locația vremii și data și ora locale ale evenimentului.",
+    "Examinează separat acoperirea orară disponibilă față de rezumatul zilnic.",
+    "Citește probabilitatea, cantitatea și celelalte valori relevante folosind etichetele lor.",
+    "Verifică toate detaliile schiței de eveniment și calendarul de destinație înainte de salvare.",
     "Verifică din nou la momentul deciziei și confirmă direct schimbările comune."
   ],
   "faq": [
     {
-      "q": "Vremea de lângă calendar urmează adresa fiecărui eveniment?",
-      "a": "Nu presupune asta. Verifică locația meteo afișată și compar-o cu destinația; apropierea pe ecran nu dovedește potrivirea."
+      "q": "Vremea afișată lângă calendarul meu urmărește adresa fiecărui eveniment?",
+      "a": "Nu presupune asta. Confirmă locația meteo afișată și compar-o cu locul desfășurării; apropierea pe ecran nu dovedește corespondența."
     },
     {
-      "q": "Aplicația folosește furnizorul meteo al site-ului?",
-      "a": "Nu. Aplicația folosește Apple WeatherKit, iar demonstrația site-ului folosește separat Open-Meteo."
+      "q": "Aplicația folosește furnizorul meteo de pe site?",
+      "a": "Nu. Aplicația folosește Apple WeatherKit; demonstrația de pe site folosește separat Open-Meteo."
     },
     {
-      "q": "Alegerea unei ore de prognoză salvează automat întâlnirea?",
-      "a": "Pornește o schiță unde acțiunea este oferită. Verifică data, fusul, durata, calendarul și locul, apoi salvează evenimentul dorit."
+      "q": "Alegerea unei ore din prognoză salvează automat un eveniment?",
+      "a": "Pornește o schiță acolo unde această acțiune este oferită. Verifică data, fusul orar, durata, calendarul și locația, apoi salvează evenimentul dorit."
     }
+  ],
+  "seeAlso": [
+    "weather-calendar-history-versus-forecast-iphone",
+    "forecast-beside-every-event",
+    "a-fourteen-day-view-of-the-weather",
+    "weather-where-the-event-is",
+    "planning-outdoors-without-being-rained-on"
   ],
   "sourcesHeading": "Surse oficiale și lecturi suplimentare",
   "sources": [
     {
-      "label": "Apple: informații WeatherKit și disponibilitate regională",
+      "label": "Apple: informații despre prognoza WeatherKit și disponibilitatea regională",
       "url": "https://developer.apple.com/weatherkit/"
     },
     {
-      "label": "Met Office: locul, perioadele și valorile prognozei",
+      "label": "Met Office: locul prognozei, perioadele și valorile meteo",
       "url": "https://weather.metoffice.gov.uk/guides/what-does-this-forecast-mean"
     }
   ],
-  "seeAlso": []
+  "comparison": {
+    "heading": "Ce vizualizare meteo răspunde la întrebarea ta?",
+    "columns": [
+      "Întrebarea ta",
+      "Ce să verifici",
+      "Ce nu dovedește"
+    ],
+    "rows": [
+      {
+        "cells": [
+          "Ce urmează astăzi?",
+          "Vizualizarea pe zi sau pe săptămână a calendarului alături de vremea pentru locul selectat.",
+          "Că adresa fiecărui eveniment schimbă automat locația vremii."
+        ]
+      },
+      {
+        "cells": [
+          "Ar putea ploaia să afecteze evenimentul meu de după-amiază?",
+          "Datele orare pentru locul desfășurării și pentru întreaga durată a evenimentului.",
+          "Că un simbol zilnic descrie fiecare oră."
+        ]
+      },
+      {
+        "cells": [
+          "Pot să-mi planific luna viitoare în funcție de vreme?",
+          "Calendarul tău acum, apoi o verificare a prognozei mai aproape de dată.",
+          "Că navigarea în calendar extinde acoperirea prognozei."
+        ]
+      },
+      {
+        "cells": [
+          "Pot vedea rapid o privire de ansamblu acasă?",
+          "Widgetul potrivit pentru Ecran principal.",
+          "Că fiecare aranjare de widget include evenimente sau o prognoză completă."
+        ]
+      }
+    ]
+  },
+  "galleryKinds": [
+    "week-right",
+    "hook"
+  ],
+  "galleryCaption": "Ecrane reale din Cloud Calendars: vizualizarea meteo și o zi cu evenimente. Verifică în aplicație locul și data selectate.",
+  "actionHeading": "Planifică folosind împreună programul și prognoza",
+  "actionText": "Cloud Calendars este pentru iPhone și iPad. Începe cu vizualizările, vremea și sincronizarea Google Calendar incluse în Base; Advanced elimină reclamele, iar Premium adaugă suport pentru Microsoft Calendar și Teams.",
+  "articleLinks": [
+    {
+      "slug": "forecast-beside-every-event",
+      "label": "Verifică vremea pentru orele unui eveniment"
+    },
+    {
+      "slug": "the-widget-that-shows-what-is-next",
+      "label": "Alege un widget de calendar și vreme"
+    },
+    {
+      "slug": "icloud-google-and-outlook-in-one-view",
+      "label": "Adu conturile de calendar într-o singură vizualizare"
+    }
+  ]
 },
 
   'icloud-google-and-outlook-in-one-view': {
-    title: 'iCloud, Google și Outlook într-o singură vedere',
-    short: 'Trei conturi, o vedere',
-    description:
-      'Viața aproape oricui este împărțită între un calendar personal Apple, un cont Google și un Exchange de la serviciu. Ce se schimbă când ajung în aceeași grilă.',
-    lede: 'Problema aproape niciodată nu este că vreunul dintre calendare ar fi prost. Este că aveți trei și o singură săptămână.',
-    commonBelief:
-      'Că a ține munca și viața personală în aplicații separate este o graniță, nu un defect.',
-    sections: [
-      {
-        heading: 'Suprapunerea programărilor este structurală',
-        body: [
-          'Dacă angajamentele dumneavoastră trăiesc în trei locuri, niciun loc nu vă poate spune dacă sunteți liber. Pasul de îmbinare sunteți dumneavoastră și îl executați din memorie, de obicei în timp ce cineva așteaptă un răspuns.',
-          'De aceea eșecul clasic nu este să uitați un eveniment; este să acceptați ceva care se ciocnește de un eveniment pe care nu-l puteați vedea.',
-        ],
-      },
-      {
-        heading: 'Ce dă o singură grilă',
-        body: [
-          'Toate conturile în aceeași săptămână, colorate după proveniență, editabile pe loc. Încetați să vă întrebați ce aplicație are răspunsul, pentru că întrebarea încetează să fie la plural.',
-          'iCloud și Google se sincronizează în versiunea gratuită. Conturile Microsoft — Outlook și Exchange — țin de cea plătită, pentru că acea conexiune are un cost recurent pe care celelalte nu îl au.',
-        ],
-      },
-    ],
-    claims: {
-      accounts: 'Tipuri de cont care încap într-o vedere',
-      premiumMonthly: 'Costul lunar al adăugării Microsoft, în dolari',
+  "updated": "2026-10-23",
+  "title": "Vedeți împreună calendarele Google, iCloud și Outlook pe iPhone și iPad",
+  "short": "Trei furnizori, o singură vizualizare",
+  "description": "Combinați vizualizări de calendar și înțelegeți permisiunile contului, copiile și cerințele planului.",
+  "lede": "Pentru a vedea împreună evenimentele de serviciu și cele personale, conectați conturile dorite, selectați calendarele lor și verificați aceleași evenimente într-o singură vizualizare. Cloud Calendars acceptă planificarea pe iPhone și iPad cu iCloud și Google Calendar; suportul pentru Microsoft Calendar este disponibil în Premium. A vedea evenimentele împreună este diferit de copierea intervalelor ocupate între conturile furnizorilor. Arte Soft, dezvoltatorul, publică acest ghid.",
+  "commonBelief": "Punerea mai multor calendare într-o singură aplicație menține automat în acord disponibilitatea, partajarea și copiile evenimentelor lor.",
+  "sections": [
+    {
+      "heading": "Identificați contul și calendarul din spatele fiecărui eveniment",
+      "body": [
+        "Începeți cu un eveniment obișnuit de la fiecare furnizor. Notați adresa de e-mail conectată, numele calendarului și dacă dețineți evenimentul sau ați primit o invitație. Două calendare numite „Calendar” pot aparține unor conturi complet diferite. O culoare vă ajută să parcurgeți rapid o săptămână; contul și calendarul identifică locul unde trebuie făcută o modificare.",
+        "De exemplu, o programare la dentist din calendarul dvs. personal iCloud și o întâlnire de proiect din Microsoft pot apărea împreună pentru dvs. Asta nu face, de la sine, ca programarea la dentist să devină vizibilă colegilor sau să rezerve acel interval în instrumentele lor de planificare.",
+        "Stabiliți rezultatul dorit înainte de a modifica o conexiune. Pentru a muta datele evenimentelor într-un alt cont, folosiți „Alegeți un format de export al calendarului” de mai jos pentru a găsi o rută de transfer acceptată și verificați evenimente reprezentative înainte de a vă baza pe destinație. Pentru a compara orele, păstrați proprietarii actuali ai calendarelor și afișați împreună sursele selectate. Dacă alt cont trebuie să primească intervalele ocupate, „Cloud Calendars și OneCal după fluxul de lucru” explică modul în care copierea disponibilității diferă de o prezentare personală."
+      ]
     },
-    practical: [
-      'Adăugați întâi contul personal și apoi pe cel care provoacă ciocnirile.',
-      'Colorați după cont, nu după categorie: proveniența este ce trebuie văzut dintr-o privire.',
-      'Continuați să scrieți în calendarul pe care ceilalți îl citesc deja.',
+    {
+      "heading": "Conectați-vă prin ruta potrivită",
+      "body": [
+        "Pentru iCloud, activați mai întâi iCloud Calendar pe iPhone în Apple Account-ul dorit. Ghidul de configurare Apple explică setările dispozitivului. Cloud Calendars accesează calendarele disponibile prin sistemul de calendare al iPhone-ului și are nevoie de acces la calendare pentru a le citi. Nu este suficient ca un cont să fie conectat pe alt dispozitiv.",
+        "Cloud Calendars are și acțiunile „Sign in with Google” și „Sign in with Microsoft”. Verificați ce cont selectați la autentificare, apoi deschideți grupul lui de calendare și selectați calendarele de care aveți nevoie. Autentificarea la furnizorul corect cu identitatea personală sau de serviciu greșită poate produce o listă de calendare perfect validă, dar neașteptată."
+      ]
+    },
+    {
+      "heading": "Înțelegeți planurile fără să le confundați cu permisiunile",
+      "body": [
+        "Planul Base include sincronizarea Google Calendar și vizualizările calendarului. Advanced adaugă eliminarea reclamelor la Base. Premium adaugă funcții Microsoft Calendar și Microsoft Teams. Verificați prețul local curent și perioada de facturare înainte de achiziție.",
+        "Un plan schimbă ce funcții ale aplicației sunt disponibile; nu vă oferă dreptul de proprietate asupra calendarului altcuiva. Google face distincție între permisiunea de a vedea evenimente și permisiunea de a le modifica. Politicile angajatorului și permisiunile asociate unui calendar Microsoft se aplică în continuare. Un eveniment vizibil sau un editor disponibil nu reprezintă o dovadă că furnizorul va accepta o actualizare."
+      ]
+    },
+    {
+      "heading": "O vizualizare combinată poate include copii ale calendarelor",
+      "body": [
+        "Conexiunile Google și Microsoft folosesc copii ale calendarelor în sistemul de calendare al iPhone-ului pentru a prezenta și sincroniza evenimentele. Nu presupuneți că, prin conectarea unui cont, nu rămâne nicio copie în afara furnizorului original. Destinația folosită pentru aceste copii poate depinde de sursele de calendar disponibile pe dispozitiv.",
+        "Dacă același cont ajunge la telefon și prin altă rută, verificați numele calendarelor și sursele înainte de a trata programările repetate ca evenimente separate. Ascundeți temporar un calendar pentru a identifica ce afișare furnizează. Nu ștergeți un eveniment sau un calendar doar pentru a face ecranul să pară ordonat: o copie conectată poate trimite modificările înapoi la furnizorul ei."
+      ]
+    },
+    {
+      "heading": "Continuați să alegeți destinația atunci când creați un eveniment",
+      "body": [
+        "Înainte de salvare, verificați calendarul evenimentului la fel de atent ca data și ora. Pentru un eveniment de familie, alegeți calendarul pe care familia îl folosește efectiv; pentru o întâlnire de serviciu, folosiți destinația de serviciu permisă. Faptul că vedeți ambele calendare împreună nu face din niciunul destinația automată pentru fiecare eveniment nou.",
+        "Schimbarea calendarului unui eveniment sau mutarea lui între calendare poate fi o mutare, nu doar o a doua vizualizare inofensivă. Păstrați invitațiile și întâlnirile recurente în calendarul lor stabilit în timp ce diagnosticați o problemă de afișare. Dacă aveți nevoie de o schimbare, stabiliți mai întâi cine deține evenimentul și care calendar îl poate accepta."
+      ]
+    },
+    {
+      "heading": "Verificați prezentarea generală înainte de a vă baza pe ea",
+      "body": [
+        "Comparați un eveniment recent din calendarul propriu al furnizorului cu evenimentul corespunzător din Cloud Calendars. Verificați data, fusul orar, titlul și calendarul selectat. Pentru un calendar editabil pe care îl dețineți, un eveniment temporar fără invitați este o verificare mai bună decât modificarea unei întâlniri reale. Confirmați rezultatul la furnizor înainte de a considera conexiunea pregătită.",
+        "Nu vă bazați pe vizualizarea combinată pentru a crea automat blocuri de timp ocupat anonime într-un alt cont. Dacă aveți nevoie ca colegii să vă vadă indisponibil fără să vadă detalii personale, folosiți un aranjament de disponibilitate aprobat explicit și verificați-l din partea lor. O prezentare personală clară și disponibilitatea partajată sunt sarcini separate."
+      ]
+    }
+  ],
+  "claims": {},
+  "practical": [
+    "Enumerați contul exact și calendarul exact pentru câte un eveniment de la fiecare furnizor.",
+    "Activați pe dispozitiv calendarele iCloud dorite și verificați accesul la calendare.",
+    "Folosiți autentificarea Google sau Microsoft potrivită și selectați calendarele dorite.",
+    "Comparați un eveniment recent cu vizualizarea furnizorului înainte de a modifica orice.",
+    "Ascundeți temporar o sursă suspectată de duplicat; păstrați evenimentele de bază intacte.",
+    "Verificați calendarul de destinație pentru fiecare eveniment nou și verificați separat orice partajare a timpului ocupat de care aveți nevoie."
+  ],
+  "faq": [
+    {
+      "q": "Colegii mei de la serviciu îmi vor vedea evenimentele personale pentru că afișez ambele calendare?",
+      "a": "Afișarea calendarelor împreună nu reprezintă o instrucțiune de partajare și nici o punte automată pentru timpul ocupat. Verificați setările reale de partajare ale fiecărui calendar. Conexiunile la furnizori pot crea copii ale calendarelor pe dispozitiv, așa că o vizualizare combinată nu garantează nici că datele evenimentelor există doar la furnizorul lor original."
+    },
+    {
+      "q": "De ce pot vedea un eveniment, dar nu îl pot edita cu succes?",
+      "a": "Calendarul poate fi doar pentru citire, evenimentul poate aparține altui organizator sau furnizorul poate respinge actualizarea. Verificați proprietatea și permisiunile în calendarul furnizorului. Achiziționarea unui plan superior al aplicației nu modifică aceste permisiuni."
+    },
+    {
+      "q": "Ar trebui să conectez același cont Google prin toate rutele disponibile?",
+      "a": "Mai întâi verificați cum apare deja pe telefon. Mai multe rute pot complica identificarea copiilor de calendar. Alegeți ruta pe care intenționați să o folosiți, verificați-i evenimentele și ascundeți o afișare suplimentară cât timp investigați, în loc să ștergeți date sau să deconectați conturi ca prim pas."
+    }
+  ],
+  "sourcesHeading": "Surse și referințe pentru configurare",
+  "sources": [
+    {
+      "label": "Apple: configurați iCloud Calendar pe dispozitivele dvs.",
+      "url": "https://support.apple.com/guide/icloud/set-up-calendar-mme4d73a8727/icloud"
+    },
+    {
+      "label": "Google: partajarea calendarului și permisiuni",
+      "url": "https://support.google.com/calendar/answer/37082?hl=en"
+    },
+    {
+      "label": "Microsoft: API-ul calendarului Outlook și datele de cutie poștală acceptate",
+      "url": "https://learn.microsoft.com/en-us/graph/outlook-calendar-concept-overview"
+    }
+  ],
+  "seeAlso": [
+    "exchange-calendars-on-an-iphone",
+    "what-calendar-sync-actually-does",
+    "when-two-calendars-disagree",
+    "caldav-calendar-on-iphone",
+    "calendar-export-ics-pdf-and-backup",
+    "onecal-alternative-iphone-calendar-view-or-sync"
+  ],
+  "comparison": {
+    "heading": "Vizualizare combinată, abonament sau intervale ocupate copiate?",
+    "columns": [
+      "De ce aveți nevoie",
+      "Ce trebuie verificat",
+      "Ce să nu presupuneți"
     ],
-    seeAlso: ['weather-inside-your-calendar', 'what-a-subscription-actually-buys'],
+    "rows": [
+      {
+        "cells": [
+          "O singură vizualizare pentru mai multe conturi",
+          "Contul conectat, calendarul selectat și planul necesar.",
+          "Că un ecran partajat combină proprietatea sau permisiunile."
+        ]
+      },
+      {
+        "cells": [
+          "O editare a unui eveniment care ajunge la furnizorul său",
+          "Evenimentul original, permisiunea de scriere și rezultatul salvat la sursă.",
+          "Că o editare locală vizibilă dovedește o sincronizare reușită cu furnizorul."
+        ]
+      },
+      {
+        "cells": [
+          "Interval ocupat într-un alt cont",
+          "Un serviciu cu reguli explicite de sincronizare de la sursă la destinație.",
+          "Că o vizualizare combinată creează blocuri de disponibilitate pentru colegi."
+        ]
+      },
+      {
+        "cells": [
+          "Un flux de calendar abonat",
+          "Publicatorul, comportamentul de reîmprospătare și starea doar pentru citire.",
+          "Că un abonament ICS este o conexiune bidirecțională editabilă."
+        ]
+      }
+    ]
   },
+  "galleryKinds": [
+    "week-left",
+    "hook"
+  ],
+  "galleryDevice": "iPad",
+  "galleryCaption": "Vizualizările reale de calendar pe iPad ilustrează examinarea unui program. O captură de ecran nu demonstrează direcția sincronizării furnizorului sau permisiunile contului.",
+  "actionHeading": "Examinați-vă calendarele împreună pe iPhone și iPad",
+  "actionText": "Sincronizarea Google Calendar este inclusă în Base. Advanced elimină reclamele; Premium adaugă suport pentru Microsoft Calendar și Teams. Confirmați permisiunile contului separat de planul achiziționat.",
+  "articleLinks": [
+    {
+      "slug": "onecal-alternative-iphone-calendar-view-or-sync",
+      "label": "Comparați o vizualizare combinată cu regulile de sincronizare OneCal"
+    },
+    {
+      "slug": "fantastical-readdle-calendar366-iphone-comparison",
+      "label": "Comparați fluxurile de lucru pentru calendar pe iPhone"
+    },
+    {
+      "slug": "weather-inside-your-calendar",
+      "label": "Planificați cu vremea și evenimentele împreună"
+    }
+  ]
+},
 
   'sharing-one-event-not-your-calendar': {
   "updated": "2026-10-21",

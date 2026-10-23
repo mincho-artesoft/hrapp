@@ -671,151 +671,219 @@ export const DISCOVERY_EN_US: Readonly<Record<string, LocalisedArticle>> = {
     ]
   },
   "fantastical-readdle-calendar366-iphone-comparison": {
-    "updated": "2026-10-23",
-    "title": "iPhone calendar alternatives: Fantastical, Readdle, Calendar 366 and BusyCal",
-    "short": "Compare iPhone calendar alternatives",
-    "description": "Compare Fantastical, Readdle, Calendar 366 and BusyCal by accounts, tasks, event entry, weather and Watch support. Verify the workflow and current plan.",
-    "lede": "These calendar apps can look similar in a screenshot but differ in their account setup and planning controls. Start with the workflow you need every day, then test it on your actual devices. Arte Soft, the developer of Cloud Calendars, publishes this source-based comparison; it is not an independent speed or reliability benchmark.",
-    "sections": [
+  "updated": "2026-10-23",
+  "title": "iPhone calendar alternatives: Cloud Calendars, Fantastical, Readdle and BusyCal",
+  "short": "Compare iPhone calendar alternatives",
+  "description": "Compare iPhone calendars by weather, views, tasks and the workflow you need.",
+  "lede": "Choose a calendar by the job you want to finish: review appointments with weather, enter an event quickly, manage tasks or combine account views. Cloud Calendars, Fantastical, Calendars by Readdle, Calendar 366 and BusyCal differ in these workflows and their plan requirements. Arte Soft develops Cloud Calendars and publishes this comparison.",
+  "sections": [
+    {
+      "heading": "Choose what must work before comparing appearance",
+      "body": [
+        "Write down your calendar providers, devices and three essential actions. An example is: see work and personal calendars together, complete a reminder and add a meeting quickly. Test those actions with private sample data before importing an entire schedule.",
+        "A product supporting the name of your provider does not establish that every connection method has identical permissions or features. A device calendar, a directly connected account and a subscribed feed can produce similar-looking entries while allowing different actions."
+      ]
+    },
+    {
+      "heading": "Use the provider’s own calendar as a baseline",
+      "body": [
+        "Google’s getting-started guide describes its own calendar interface for scheduling, tasks, sharing and multiple calendars. If your schedule already lives there, test the required action at the source before deciding whether you need another app.",
+        "For example, compare the same appointment in Google Calendar and Fantastical after connecting the intended account. Check whether the advantage you need is a combined view, a task connection, quick entry or a particular device interface. A different calendar client is not automatically a migration to a different provider."
+      ]
+    },
+    {
+      "heading": "Fantastical: check account connections and quick entry",
+      "body": [
+        "Flexibits documents both direct calendar-account connections and options for calendars and reminders already configured in iOS. Its getting-started guide recommends direct connections for full use of the app’s features. Identify which route you selected instead of connecting the same calendar twice without a reason.",
+        "Fantastical also documents sentence-based entry and reusable event or task templates. Test an explicit date, duration and destination calendar, then inspect the saved result. Its syntax belongs to Fantastical; another app’s text field may interpret the same sentence differently."
+      ]
+    },
+    {
+      "heading": "Calendars by Readdle: check the task source",
+      "body": [
+        "Readdle presents Google, Outlook and iCloud calendars alongside task and natural-language entry features. Its task setup guide describes selecting iOS Reminders or Google Tasks in Task Options. That choice matters if completing a task on the phone must update a specific original list.",
+        "Use a disposable task to test completion at both ends, not just whether a title appears on a timeline. If you need a view or action on Mac as well as iPhone, test it there too. Do not assume identical controls from a shared product name."
+      ]
+    },
+    {
+      "heading": "Calendar 366: check system access, sets and weather location",
+      "body": [
+        "Calendar 366’s documentation distinguishes access to system calendars and reminders from direct account integrations. It describes calendar sets that select visible calendars and lists. Those sets can also determine a default calendar, so check where a newly created event will belong.",
+        "The same documentation describes its own natural-language parser and weather using Apple Weather, with system or custom location choices. For outdoor planning, verify the selected place instead of assuming the forecast follows each appointment’s address. These are publisher-documented capabilities, not features tested on your account."
+      ]
+    },
+    {
+      "heading": "BusyCal: check task display and the view used for weather",
+      "body": [
+        "BusyCal’s iOS task guide distinguishes dated, timed and undated tasks. It describes completion controls and carrying unfinished dated tasks forward. Its weather guide places forecasts in List, Day and Month views, so test the particular view you use instead of assuming weather appears everywhere.",
+        "BusyCal also documents natural-language entry as an option in its new-event defaults. Try the same private sample appointment used for the other apps, then check the calendar and saved time. These are BusyCal controls, not commands shared by every calendar app."
+      ]
+    },
+    {
+      "heading": "Check the Watch workflow separately from the phone",
+      "body": [
+        "Fantastical’s Watch guide documents Up Next, List and Tasks views, including task completion. BusyCal’s task guide distinguishes dated and timed tasks shown on Watch from undated tasks. If an undated backlog matters, include it in your trial rather than testing only the next appointment.",
+        "A Watch complication is a glance, while the Watch app may offer additional actions. Verify the data and action on the actual watch and phone, and review the current plan. Desktop, phone and watch interfaces are not interchangeable merely because they use the same product name."
+      ]
+    },
+    {
+      "heading": "Treat price and entitlement as a separate check",
+      "body": [
+        "Check the current local purchase screen, the features available after a trial ends and whether an earlier purchase changes your entitlement. Free download, a recurring subscription and a legacy purchase do not necessarily unlock the same feature set.",
+        "Publisher pages can change at different times. Readdle’s current product FAQ describes several core capabilities as free, while a separate free-versus-full help page lists a different division. Rather than treating one description as a universal promise, verify the required action in the installed app and its current purchase terms."
+      ]
+    },
+    {
+      "heading": "Where Cloud Calendars belongs in the shortlist",
+      "body": [
+        "Cloud Calendars is another iPhone and iPad option for selected calendars, multiple planning views, weather and widgets. Google sync is included in Base, Advanced removes ads and Premium adds Microsoft calendar support. Check the current plan and provider permissions for your setup.",
+        "If a specialist task connection, template command or desktop workflow is essential, use the product that documents and successfully performs that requirement. Compare saved results and daily effort; a checklist should help you choose, not imply that every feature mentioned here exists in Cloud Calendars."
+      ]
+    }
+  ],
+  "claims": {},
+  "practical": [
+    "List your accounts, devices and essential actions.",
+    "Choose one account-connection route and inspect the calendars it exposes.",
+    "Test quick entry and task completion with harmless examples.",
+    "Verify the weather location and the views used on each device.",
+    "Check current purchase terms after any trial or legacy entitlement."
+  ],
+  "faq": [
+    {
+      "q": "Which is the best alternative to Fantastical?",
+      "a": "It depends on your required workflow. Compare calendar and task sources, event entry, device support and current entitlement. This guide does not declare a universal performance winner."
+    },
+    {
+      "q": "Does the same provider name mean every app syncs identically?",
+      "a": "No. Check direct connections, device calendars, feeds and permissions separately, then verify an example change at its source."
+    },
+    {
+      "q": "Can I assume every advertised feature is free?",
+      "a": "No. Check the installed app, the local purchase screen and the features remaining after a trial. Publisher documentation may describe different versions or entitlements."
+    }
+  ],
+  "sourcesHeading": "Official documentation checked for this guide",
+  "sources": [
+    {
+      "label": "Fantastical: account connection routes",
+      "url": "https://flexibits.com/fantastical-ios/help/getting-started"
+    },
+    {
+      "label": "Fantastical: natural-language entry and templates",
+      "url": "https://flexibits.com/fantastical-ios/help/adding-events-and-tasks"
+    },
+    {
+      "label": "Readdle: current product capabilities and FAQ",
+      "url": "https://readdle.com/calendars"
+    },
+    {
+      "label": "Readdle: selecting a task source",
+      "url": "https://support.readdle.com/calendars/synchronization/how-to-sync-tasks-with-ios-reminders-or-google-tasks"
+    },
+    {
+      "label": "Readdle: separate free/full plan guidance",
+      "url": "https://apphelp.readdle.com/en/index.php?id=585&pg=kb.page"
+    },
+    {
+      "label": "Calendar 366: integrations, sets, quick entry and weather",
+      "url": "https://calendar366.com/help/index.html"
+    },
+    {
+      "label": "BusyCal for iOS: tasks and Watch task limits",
+      "url": "https://www.busymac.com/docs/busycalios/70659-tasks/"
+    },
+    {
+      "label": "BusyCal for iOS: weather and supported views",
+      "url": "https://www.busymac.com/docs/busycalios/70665-weather/"
+    },
+    {
+      "label": "BusyCal for iOS: natural-language entry",
+      "url": "https://www.busymac.com/docs/busycalios/70669-natural-language/"
+    },
+    {
+      "label": "Fantastical: Apple Watch views and actions",
+      "url": "https://flexibits.com/fantastical-ios/help/apple-watch"
+    },
+    {
+      "label": "Google: Calendar’s own account-based interface",
+      "url": "https://support.google.com/calendar/answer/2465776?hl=en"
+    }
+  ],
+  "seeAlso": [
+    "what-fantastical-costs-and-what-this-does",
+    "natural-language-calendar-events-iphone",
+    "iphone-calendar-tasks-reminders-versus-event-alerts"
+  ],
+  "comparison": {
+    "heading": "Start with your main requirement",
+    "columns": [
+      "Requirement",
+      "Relevant options to check",
+      "Important distinction"
+    ],
+    "rows": [
       {
-        "heading": "Choose what must work before comparing appearance",
-        "body": [
-          "Write down your calendar providers, devices and three essential actions. An example is: see work and personal calendars together, complete a reminder and add a meeting quickly. Test those actions with private sample data before importing an entire schedule.",
-          "A product supporting the name of your provider does not establish that every connection method has identical permissions or features. A device calendar, a directly connected account and a subscribed feed can produce similar-looking entries while allowing different actions."
+        "cells": [
+          "Appointments with weather and iPhone/iPad views",
+          "Cloud Calendars and the documented weather views in the compared apps.",
+          "Check the forecast location, available period and view; weather coverage is not unlimited."
         ]
       },
       {
-        "heading": "Use the provider’s own calendar as a baseline",
-        "body": [
-          "Google’s getting-started guide describes its own calendar interface for scheduling, tasks, sharing and multiple calendars. If your schedule already lives there, test the required action at the source before deciding whether you need another app.",
-          "For example, compare the same appointment in Google Calendar and Fantastical after connecting the intended account. Check whether the advantage you need is a combined view, a task connection, quick entry or a particular device interface. A different calendar client is not automatically a migration to a different provider."
+        "cells": [
+          "Natural-language event entry",
+          "Fantastical and the relevant Readdle or BusyCal feature.",
+          "Sentence parsing is not the same as dictation or ordinary event editing."
         ]
       },
       {
-        "heading": "Fantastical: check account connections and quick entry",
-        "body": [
-          "Flexibits documents both direct calendar-account connections and options for calendars and reminders already configured in iOS. Its getting-started guide recommends direct connections for full use of the app’s features. Identify which route you selected instead of connecting the same calendar twice without a reason.",
-          "Fantastical also documents sentence-based entry and reusable event or task templates. Test an explicit date, duration and destination calendar, then inspect the saved result. Its syntax belongs to Fantastical; another app’s text field may interpret the same sentence differently."
+        "cells": [
+          "Tasks beside appointments",
+          "The documented task source in Readdle, Calendar 366, BusyCal or Fantastical.",
+          "An event reminder is not a task-completion integration."
         ]
       },
       {
-        "heading": "Calendars by Readdle: check the task source",
-        "body": [
-          "Readdle presents Google, Outlook and iCloud calendars alongside task and natural-language entry features. Its task setup guide describes selecting iOS Reminders or Google Tasks in Task Options. That choice matters if completing a task on the phone must update a specific original list.",
-          "Use a disposable task to test completion at both ends, not just whether a title appears on a timeline. If you need a view or action on Mac as well as iPhone, test it there too. Do not assume identical controls from a shared product name."
+        "cells": [
+          "Google Calendar sync and optional ad removal",
+          "Cloud Calendars Base includes Google Calendar sync; Advanced removes ads.",
+          "Microsoft Calendar and Teams support require Premium."
         ]
       },
       {
-        "heading": "Calendar 366: check system access, sets and weather location",
-        "body": [
-          "Calendar 366’s documentation distinguishes access to system calendars and reminders from direct account integrations. It describes calendar sets that select visible calendars and lists. Those sets can also determine a default calendar, so check where a newly created event will belong.",
-          "The same documentation describes its own natural-language parser and weather using Apple Weather, with system or custom location choices. For outdoor planning, verify the selected place instead of assuming the forecast follows each appointment’s address. These are publisher-documented capabilities, not features tested on your account."
-        ]
-      },
-      {
-        "heading": "BusyCal: check task display and the view used for weather",
-        "body": [
-          "BusyCal’s iOS task guide distinguishes dated, timed and undated tasks. It describes completion controls and carrying unfinished dated tasks forward. Its weather guide places forecasts in List, Day and Month views, so test the particular view you use instead of assuming weather appears everywhere.",
-          "BusyCal also documents natural-language entry as an option in its new-event defaults. Try the same private sample appointment used for the other apps, then check the calendar and saved time. These are BusyCal controls, not commands shared by every calendar app."
-        ]
-      },
-      {
-        "heading": "Check the Watch workflow separately from the phone",
-        "body": [
-          "Fantastical’s Watch guide documents Up Next, List and Tasks views, including task completion. BusyCal’s task guide distinguishes dated and timed tasks shown on Watch from undated tasks. If an undated backlog matters, include it in your trial rather than testing only the next appointment.",
-          "A Watch complication is a glance, while the Watch app may offer additional actions. Verify the data and action on the actual watch and phone, and review the current plan. Desktop, phone and watch interfaces are not interchangeable merely because they use the same product name."
-        ]
-      },
-      {
-        "heading": "Treat price and entitlement as a separate check",
-        "body": [
-          "Check the current local purchase screen, the features available after a trial ends and whether an earlier purchase changes your entitlement. Free download, a recurring subscription and a legacy purchase do not necessarily unlock the same feature set.",
-          "Publisher pages can change at different times. Readdle’s current product FAQ describes several core capabilities as free, while a separate free-versus-full help page lists a different division. Rather than treating one description as a universal promise, verify the required action in the installed app and its current purchase terms."
-        ]
-      },
-      {
-        "heading": "Where Cloud Calendars belongs in the shortlist",
-        "body": [
-          "Cloud Calendars is another iPhone and iPad option for selected calendars, multiple planning views, weather and widgets. Google sync is included in Base, Advanced removes ads and Premium adds Microsoft calendar support. Check the current plan and provider permissions for your setup.",
-          "If a specialist task connection, template command or desktop workflow is essential, use the product that documents and successfully performs that requirement. Compare saved results and daily effort; a checklist should help you choose, not imply that every feature mentioned here exists in Cloud Calendars."
+        "cells": [
+          "A different purchase model",
+          "The current store listing and entitlement for each app and platform.",
+          "A free download is not proof every feature is free; regional prices and plans can change."
         ]
       }
-    ],
-    "claims": {},
-    "practical": [
-      "List your accounts, devices and essential actions.",
-      "Choose one account-connection route and inspect the calendars it exposes.",
-      "Test quick entry and task completion with harmless examples.",
-      "Verify the weather location and the views used on each device.",
-      "Check current purchase terms after any trial or legacy entitlement."
-    ],
-    "faq": [
-      {
-        "q": "Which is the best alternative to Fantastical?",
-        "a": "It depends on your required workflow. Compare calendar and task sources, event entry, device support and current entitlement. This guide does not declare a universal performance winner."
-      },
-      {
-        "q": "Does the same provider name mean every app syncs identically?",
-        "a": "No. Check direct connections, device calendars, feeds and permissions separately, then verify an example change at its source."
-      },
-      {
-        "q": "Can I assume every advertised feature is free?",
-        "a": "No. Check the installed app, the local purchase screen and the features remaining after a trial. Publisher documentation may describe different versions or entitlements."
-      }
-    ],
-    "sourcesHeading": "Official documentation checked for this guide",
-    "sources": [
-      {
-        "label": "Fantastical: account connection routes",
-        "url": "https://flexibits.com/fantastical-ios/help/getting-started"
-      },
-      {
-        "label": "Fantastical: natural-language entry and templates",
-        "url": "https://flexibits.com/fantastical-ios/help/adding-events-and-tasks"
-      },
-      {
-        "label": "Readdle: current product capabilities and FAQ",
-        "url": "https://readdle.com/calendars"
-      },
-      {
-        "label": "Readdle: selecting a task source",
-        "url": "https://support.readdle.com/calendars/synchronization/how-to-sync-tasks-with-ios-reminders-or-google-tasks"
-      },
-      {
-        "label": "Readdle: separate free/full plan guidance",
-        "url": "https://apphelp.readdle.com/en/index.php?id=585&pg=kb.page"
-      },
-      {
-        "label": "Calendar 366: integrations, sets, quick entry and weather",
-        "url": "https://calendar366.com/help/index.html"
-      },
-      {
-        "label": "BusyCal for iOS: tasks and Watch task limits",
-        "url": "https://www.busymac.com/docs/busycalios/70659-tasks/"
-      },
-      {
-        "label": "BusyCal for iOS: weather and supported views",
-        "url": "https://www.busymac.com/docs/busycalios/70665-weather/"
-      },
-      {
-        "label": "BusyCal for iOS: natural-language entry",
-        "url": "https://www.busymac.com/docs/busycalios/70669-natural-language/"
-      },
-      {
-        "label": "Fantastical: Apple Watch views and actions",
-        "url": "https://flexibits.com/fantastical-ios/help/apple-watch"
-      },
-      {
-        "label": "Google: Calendar’s own account-based interface",
-        "url": "https://support.google.com/calendar/answer/2465776?hl=en"
-      }
-    ],
-    "seeAlso": [
-      "what-fantastical-costs-and-what-this-does",
-      "natural-language-calendar-events-iphone",
-      "iphone-calendar-tasks-reminders-versus-event-alerts"
     ]
   },
+  "galleryKinds": [
+    "week-left",
+    "week-right",
+    "widgets"
+  ],
+  "galleryDevice": "iPad",
+  "galleryCaption": "These are Cloud Calendars screens for the app’s views, weather and widgets. They are not screenshots of the other products in the comparison.",
+  "actionHeading": "Try the calendar against one real planning need",
+  "actionText": "If your main requirement is an iPhone or iPad schedule with weather and widgets, assess Cloud Calendars with a disposable appointment. Keep specialist task, booking and natural-language requirements separate when comparing products.",
+  "articleLinks": [
+    {
+      "slug": "weather-inside-your-calendar",
+      "label": "See how weather fits the calendar workflow"
+    },
+    {
+      "slug": "the-widget-that-shows-what-is-next",
+      "label": "Compare the Cloud Calendars widgets"
+    },
+    {
+      "slug": "onecal-alternative-iphone-calendar-view-or-sync",
+      "label": "Distinguish a combined view from copied busy time"
+    }
+  ]
+},
   "iphone-calendar-language-alternate-calendar-settings": {
     "updated": "2026-10-23",
     "title": "Calendar language and week numbers on iPhone and iPad: check display settings",

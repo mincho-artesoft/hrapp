@@ -2,6 +2,10 @@
 import { LOCALES, Locale } from '../core/locales';
 export const ARTICLE_SLUGS: Readonly<Record<string, readonly string[]>> = {
   "ar-SA": [
+    "forecast-beside-every-event",
+    "the-widget-that-shows-what-is-next",
+    "onecal-alternative-iphone-calendar-view-or-sync",
+    "fantastical-readdle-calendar366-iphone-comparison",
     "month-view-on-a-bigger-screen",
     "weather-inside-your-calendar",
     "icloud-google-and-outlook-in-one-view",
@@ -15,6 +19,9 @@ export const ARTICLE_SLUGS: Readonly<Record<string, readonly string[]>> = {
     "taking-back-a-calendar-you-shared"
   ],
   "bg": [
+    "forecast-beside-every-event",
+    "onecal-alternative-iphone-calendar-view-or-sync",
+    "fantastical-readdle-calendar366-iphone-comparison",
     "month-view-on-a-bigger-screen",
     "weather-inside-your-calendar",
     "icloud-google-and-outlook-in-one-view",
@@ -38,6 +45,10 @@ export const ARTICLE_SLUGS: Readonly<Record<string, readonly string[]>> = {
     "calendar-export-ics-pdf-and-backup"
   ],
   "cs": [
+    "forecast-beside-every-event",
+    "the-widget-that-shows-what-is-next",
+    "onecal-alternative-iphone-calendar-view-or-sync",
+    "fantastical-readdle-calendar366-iphone-comparison",
     "month-view-on-a-bigger-screen",
     "weather-inside-your-calendar",
     "icloud-google-and-outlook-in-one-view",
@@ -51,6 +62,10 @@ export const ARTICLE_SLUGS: Readonly<Record<string, readonly string[]>> = {
     "taking-back-a-calendar-you-shared"
   ],
   "da": [
+    "forecast-beside-every-event",
+    "the-widget-that-shows-what-is-next",
+    "onecal-alternative-iphone-calendar-view-or-sync",
+    "fantastical-readdle-calendar366-iphone-comparison",
     "month-view-on-a-bigger-screen",
     "weather-inside-your-calendar",
     "icloud-google-and-outlook-in-one-view",
@@ -64,6 +79,8 @@ export const ARTICLE_SLUGS: Readonly<Record<string, readonly string[]>> = {
     "taking-back-a-calendar-you-shared"
   ],
   "de-DE": [
+    "onecal-alternative-iphone-calendar-view-or-sync",
+    "fantastical-readdle-calendar366-iphone-comparison",
     "month-view-on-a-bigger-screen",
     "keeping-track-of-who-replied",
     "exchange-calendars-on-an-iphone",
@@ -95,6 +112,10 @@ export const ARTICLE_SLUGS: Readonly<Record<string, readonly string[]>> = {
     "calendar-export-ics-pdf-and-backup"
   ],
   "el": [
+    "forecast-beside-every-event",
+    "the-widget-that-shows-what-is-next",
+    "onecal-alternative-iphone-calendar-view-or-sync",
+    "fantastical-readdle-calendar366-iphone-comparison",
     "month-view-on-a-bigger-screen",
     "weather-inside-your-calendar",
     "icloud-google-and-outlook-in-one-view",
@@ -183,6 +204,8 @@ export const ARTICLE_SLUGS: Readonly<Record<string, readonly string[]>> = {
     "weekly-schedule-builder"
   ],
   "es-ES": [
+    "onecal-alternative-iphone-calendar-view-or-sync",
+    "fantastical-readdle-calendar366-iphone-comparison",
     "month-view-on-a-bigger-screen",
     "keeping-track-of-who-replied",
     "exchange-calendars-on-an-iphone",
@@ -213,6 +236,10 @@ export const ARTICLE_SLUGS: Readonly<Record<string, readonly string[]>> = {
     "calendar-export-ics-pdf-and-backup"
   ],
   "fi": [
+    "forecast-beside-every-event",
+    "the-widget-that-shows-what-is-next",
+    "onecal-alternative-iphone-calendar-view-or-sync",
+    "fantastical-readdle-calendar366-iphone-comparison",
     "month-view-on-a-bigger-screen",
     "weather-inside-your-calendar",
     "icloud-google-and-outlook-in-one-view",
@@ -226,6 +253,8 @@ export const ARTICLE_SLUGS: Readonly<Record<string, readonly string[]>> = {
     "taking-back-a-calendar-you-shared"
   ],
   "fr-FR": [
+    "onecal-alternative-iphone-calendar-view-or-sync",
+    "fantastical-readdle-calendar366-iphone-comparison",
     "month-view-on-a-bigger-screen",
     "keeping-track-of-who-replied",
     "exchange-calendars-on-an-iphone",
@@ -257,6 +286,10 @@ export const ARTICLE_SLUGS: Readonly<Record<string, readonly string[]>> = {
     "calendar-export-ics-pdf-and-backup"
   ],
   "he": [
+    "forecast-beside-every-event",
+    "the-widget-that-shows-what-is-next",
+    "onecal-alternative-iphone-calendar-view-or-sync",
+    "fantastical-readdle-calendar366-iphone-comparison",
     "month-view-on-a-bigger-screen",
     "weather-inside-your-calendar",
     "icloud-google-and-outlook-in-one-view",
@@ -270,6 +303,10 @@ export const ARTICLE_SLUGS: Readonly<Record<string, readonly string[]>> = {
     "taking-back-a-calendar-you-shared"
   ],
   "hi": [
+    "forecast-beside-every-event",
+    "the-widget-that-shows-what-is-next",
+    "onecal-alternative-iphone-calendar-view-or-sync",
+    "fantastical-readdle-calendar366-iphone-comparison",
     "month-view-on-a-bigger-screen",
     "weather-inside-your-calendar",
     "icloud-google-and-outlook-in-one-view",
@@ -283,6 +320,10 @@ export const ARTICLE_SLUGS: Readonly<Record<string, readonly string[]>> = {
     "taking-back-a-calendar-you-shared"
   ],
   "hu": [
+    "forecast-beside-every-event",
+    "the-widget-that-shows-what-is-next",
+    "onecal-alternative-iphone-calendar-view-or-sync",
+    "fantastical-readdle-calendar366-iphone-comparison",
     "month-view-on-a-bigger-screen",
     "weather-inside-your-calendar",
     "icloud-google-and-outlook-in-one-view",
@@ -296,6 +337,10 @@ export const ARTICLE_SLUGS: Readonly<Record<string, readonly string[]>> = {
     "taking-back-a-calendar-you-shared"
   ],
   "id": [
+    "forecast-beside-every-event",
+    "the-widget-that-shows-what-is-next",
+    "onecal-alternative-iphone-calendar-view-or-sync",
+    "fantastical-readdle-calendar366-iphone-comparison",
     "month-view-on-a-bigger-screen",
     "weather-inside-your-calendar",
     "icloud-google-and-outlook-in-one-view",
@@ -309,6 +354,8 @@ export const ARTICLE_SLUGS: Readonly<Record<string, readonly string[]>> = {
     "taking-back-a-calendar-you-shared"
   ],
   "it": [
+    "onecal-alternative-iphone-calendar-view-or-sync",
+    "fantastical-readdle-calendar366-iphone-comparison",
     "a-calendar-that-is-yours-to-share",
     "month-view-on-a-bigger-screen",
     "keeping-track-of-who-replied",
@@ -341,6 +388,9 @@ export const ARTICLE_SLUGS: Readonly<Record<string, readonly string[]>> = {
     "calendar-export-ics-pdf-and-backup"
   ],
   "ja": [
+    "forecast-beside-every-event",
+    "onecal-alternative-iphone-calendar-view-or-sync",
+    "fantastical-readdle-calendar366-iphone-comparison",
     "the-widget-that-shows-what-is-next",
     "work-and-personal-without-two-apps",
     "recurring-events-without-the-mess",
@@ -357,6 +407,10 @@ export const ARTICLE_SLUGS: Readonly<Record<string, readonly string[]>> = {
     "taking-back-a-calendar-you-shared"
   ],
   "ko": [
+    "forecast-beside-every-event",
+    "the-widget-that-shows-what-is-next",
+    "onecal-alternative-iphone-calendar-view-or-sync",
+    "fantastical-readdle-calendar366-iphone-comparison",
     "month-view-on-a-bigger-screen",
     "weather-inside-your-calendar",
     "icloud-google-and-outlook-in-one-view",
@@ -370,6 +424,10 @@ export const ARTICLE_SLUGS: Readonly<Record<string, readonly string[]>> = {
     "taking-back-a-calendar-you-shared"
   ],
   "ms": [
+    "forecast-beside-every-event",
+    "the-widget-that-shows-what-is-next",
+    "onecal-alternative-iphone-calendar-view-or-sync",
+    "fantastical-readdle-calendar366-iphone-comparison",
     "month-view-on-a-bigger-screen",
     "weather-inside-your-calendar",
     "icloud-google-and-outlook-in-one-view",
@@ -383,6 +441,10 @@ export const ARTICLE_SLUGS: Readonly<Record<string, readonly string[]>> = {
     "taking-back-a-calendar-you-shared"
   ],
   "nl-NL": [
+    "forecast-beside-every-event",
+    "the-widget-that-shows-what-is-next",
+    "onecal-alternative-iphone-calendar-view-or-sync",
+    "fantastical-readdle-calendar366-iphone-comparison",
     "month-view-on-a-bigger-screen",
     "weather-inside-your-calendar",
     "icloud-google-and-outlook-in-one-view",
@@ -396,6 +458,10 @@ export const ARTICLE_SLUGS: Readonly<Record<string, readonly string[]>> = {
     "taking-back-a-calendar-you-shared"
   ],
   "no": [
+    "forecast-beside-every-event",
+    "the-widget-that-shows-what-is-next",
+    "onecal-alternative-iphone-calendar-view-or-sync",
+    "fantastical-readdle-calendar366-iphone-comparison",
     "month-view-on-a-bigger-screen",
     "weather-inside-your-calendar",
     "icloud-google-and-outlook-in-one-view",
@@ -409,6 +475,10 @@ export const ARTICLE_SLUGS: Readonly<Record<string, readonly string[]>> = {
     "taking-back-a-calendar-you-shared"
   ],
   "pl": [
+    "forecast-beside-every-event",
+    "the-widget-that-shows-what-is-next",
+    "onecal-alternative-iphone-calendar-view-or-sync",
+    "fantastical-readdle-calendar366-iphone-comparison",
     "month-view-on-a-bigger-screen",
     "weather-inside-your-calendar",
     "icloud-google-and-outlook-in-one-view",
@@ -422,6 +492,10 @@ export const ARTICLE_SLUGS: Readonly<Record<string, readonly string[]>> = {
     "taking-back-a-calendar-you-shared"
   ],
   "pt-BR": [
+    "forecast-beside-every-event",
+    "the-widget-that-shows-what-is-next",
+    "onecal-alternative-iphone-calendar-view-or-sync",
+    "fantastical-readdle-calendar366-iphone-comparison",
     "month-view-on-a-bigger-screen",
     "weather-inside-your-calendar",
     "icloud-google-and-outlook-in-one-view",
@@ -438,6 +512,10 @@ export const ARTICLE_SLUGS: Readonly<Record<string, readonly string[]>> = {
     "calendar-export-ics-pdf-and-backup"
   ],
   "ro": [
+    "forecast-beside-every-event",
+    "the-widget-that-shows-what-is-next",
+    "onecal-alternative-iphone-calendar-view-or-sync",
+    "fantastical-readdle-calendar366-iphone-comparison",
     "month-view-on-a-bigger-screen",
     "weather-inside-your-calendar",
     "icloud-google-and-outlook-in-one-view",
@@ -451,6 +529,10 @@ export const ARTICLE_SLUGS: Readonly<Record<string, readonly string[]>> = {
     "taking-back-a-calendar-you-shared"
   ],
   "ru": [
+    "forecast-beside-every-event",
+    "the-widget-that-shows-what-is-next",
+    "onecal-alternative-iphone-calendar-view-or-sync",
+    "fantastical-readdle-calendar366-iphone-comparison",
     "month-view-on-a-bigger-screen",
     "weather-inside-your-calendar",
     "icloud-google-and-outlook-in-one-view",
@@ -464,6 +546,10 @@ export const ARTICLE_SLUGS: Readonly<Record<string, readonly string[]>> = {
     "taking-back-a-calendar-you-shared"
   ],
   "sv": [
+    "forecast-beside-every-event",
+    "the-widget-that-shows-what-is-next",
+    "onecal-alternative-iphone-calendar-view-or-sync",
+    "fantastical-readdle-calendar366-iphone-comparison",
     "month-view-on-a-bigger-screen",
     "weather-inside-your-calendar",
     "icloud-google-and-outlook-in-one-view",
@@ -477,6 +563,10 @@ export const ARTICLE_SLUGS: Readonly<Record<string, readonly string[]>> = {
     "taking-back-a-calendar-you-shared"
   ],
   "th": [
+    "forecast-beside-every-event",
+    "the-widget-that-shows-what-is-next",
+    "onecal-alternative-iphone-calendar-view-or-sync",
+    "fantastical-readdle-calendar366-iphone-comparison",
     "month-view-on-a-bigger-screen",
     "weather-inside-your-calendar",
     "icloud-google-and-outlook-in-one-view",
@@ -490,6 +580,10 @@ export const ARTICLE_SLUGS: Readonly<Record<string, readonly string[]>> = {
     "taking-back-a-calendar-you-shared"
   ],
   "tr": [
+    "forecast-beside-every-event",
+    "the-widget-that-shows-what-is-next",
+    "onecal-alternative-iphone-calendar-view-or-sync",
+    "fantastical-readdle-calendar366-iphone-comparison",
     "month-view-on-a-bigger-screen",
     "weather-inside-your-calendar",
     "icloud-google-and-outlook-in-one-view",
@@ -503,6 +597,10 @@ export const ARTICLE_SLUGS: Readonly<Record<string, readonly string[]>> = {
     "taking-back-a-calendar-you-shared"
   ],
   "vi": [
+    "forecast-beside-every-event",
+    "the-widget-that-shows-what-is-next",
+    "onecal-alternative-iphone-calendar-view-or-sync",
+    "fantastical-readdle-calendar366-iphone-comparison",
     "month-view-on-a-bigger-screen",
     "weather-inside-your-calendar",
     "icloud-google-and-outlook-in-one-view",
@@ -516,6 +614,10 @@ export const ARTICLE_SLUGS: Readonly<Record<string, readonly string[]>> = {
     "taking-back-a-calendar-you-shared"
   ],
   "zh-Hans": [
+    "forecast-beside-every-event",
+    "the-widget-that-shows-what-is-next",
+    "onecal-alternative-iphone-calendar-view-or-sync",
+    "fantastical-readdle-calendar366-iphone-comparison",
     "month-view-on-a-bigger-screen",
     "weather-inside-your-calendar",
     "icloud-google-and-outlook-in-one-view",
@@ -529,6 +631,10 @@ export const ARTICLE_SLUGS: Readonly<Record<string, readonly string[]>> = {
     "taking-back-a-calendar-you-shared"
   ],
   "zh-Hant": [
+    "forecast-beside-every-event",
+    "the-widget-that-shows-what-is-next",
+    "onecal-alternative-iphone-calendar-view-or-sync",
+    "fantastical-readdle-calendar366-iphone-comparison",
     "month-view-on-a-bigger-screen",
     "weather-inside-your-calendar",
     "icloud-google-and-outlook-in-one-view",

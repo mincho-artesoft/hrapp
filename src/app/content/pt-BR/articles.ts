@@ -98,128 +98,317 @@ export const ARTICLES_PT_BR: Readonly<Record<string, LocalisedArticle>> = {
 },
 
   'weather-inside-your-calendar': {
-  "updated": "2026-10-22",
-  "title": "Calendário com previsão no iPhone e iPad: avalie seu plano no contexto",
-  "short": "Use calendário e previsão juntos",
-  "description": "Use calendário e previsão no iPhone e iPad. Confira o local selecionado, os horários disponíveis e os detalhes do evento antes de salvar.",
-  "lede": "O calendário informa quando um compromisso está marcado. A previsão responde a outra pergunta: quais condições são esperadas no lugar e período de que você precisa. Use os dois juntos, conferindo locais e datas. Este guia é publicado pela Arte Soft, desenvolvedora do Cloud Calendars.",
-  "commonBelief": "A previsão ao lado do calendário corresponde automaticamente ao endereço de cada compromisso, a todas as horas e a qualquer data futura.",
+  "updated": "2026-10-23",
+  "title": "Calendário com tempo no iPhone e iPad: planeje seu dia em uma única visualização",
+  "short": "Use calendário e tempo juntos",
+  "description": "Compare seu calendário com a previsão do tempo do local selecionado no iPhone e iPad.",
+  "lede": "Cloud Calendars reúne sua agenda e a previsão do tempo no mesmo app para iPhone ou iPad. Use o calendário para escolher uma data e a visualização do tempo para consultar o local selecionado e os horários de previsão disponíveis. Para um plano ao ar livre, verifique o período que importa em vez de confiar em um ícone diário. Este guia é publicado pela Arte Soft, desenvolvedora do app.",
+  "commonBelief": "O tempo exibido ao lado de um calendário descreve automaticamente o endereço de todos os eventos, todas as horas e todas as datas futuras.",
   "sections": [
     {
-      "heading": "Comece por uma decisão concreta",
+      "heading": "Escolha uma pergunta real de planejamento",
       "body": [
-        "Comece por um compromisso específico, como uma visita ao parque à tarde. Identifique o que poderia mudar: horário, local, preparação ou uso de uma alternativa. Não é preciso reorganizar todo o calendário só porque o símbolo do dia indica chuva.",
-        "Anote o início e o término reais da atividade, incluindo a preparação quando relevante. O panorama do calendário ajuda a encontrar datas possíveis; a previsão diz respeito a um local e intervalo específicos. Mantenha essas tarefas separadas ao comparar opções."
+        "Comece com um evento específico, como uma visita a um parque à tarde. Identifique o que pode mudar: o horário, o local, a preparação ou a decisão de usar uma alternativa. Você não precisa reorganizar o calendário inteiro só porque o símbolo do dia indica chuva.",
+        "Anote o horário real de início e término da atividade, incluindo preparação, se for relevante. Uma visão geral do calendário ajuda a encontrar datas possíveis, enquanto a verificação da previsão diz respeito a um local e a um intervalo específicos. Mantenha essas duas funções separadas ao comparar opções."
       ]
     },
     {
-      "heading": "Confirme o local da previsão",
+      "heading": "Confirme o local da previsão antes de ler os valores",
       "body": [
-        "O Cloud Calendars oferece previsão para o local atual ou selecionado. Confira o lugar exibido, sem presumir que o endereço de um evento altera a previsão silenciosamente. Um compromisso em outra cidade precisa ser comparado com o tempo daquela cidade.",
-        "Por exemplo, alguém pode planejar a chegada a um museu enquanto o celular ainda está em casa. Leia o local da previsão e o horário local do compromisso antes de comparar. Valores próximos na tela não comprovam que calendário e previsão usam o mesmo lugar."
+        "Cloud Calendars oferece previsão do tempo para o local atual ou selecionado. Verifique o local exibido em vez de presumir que o endereço de um evento altera a previsão automaticamente. Um evento em outra cidade precisa ser comparado com a previsão dessa cidade.",
+        "Por exemplo, uma pessoa pode estar planejando chegar a um museu enquanto o telefone ainda está em casa. Leia o local da previsão e o horário local do evento antes de compará-los. Valores que parecem próximos não provam que a agenda e a previsão usam o mesmo local."
       ]
     },
     {
-      "heading": "Confira a cobertura horária e diária separadamente",
+      "heading": "Verifique separadamente a cobertura horária e a diária",
       "body": [
-        "Use o resumo diário para se orientar e os horários disponíveis para avaliar parte do dia. Uma reserva das duas às cinco exige mais que olhar um símbolo. Confira se as horas relevantes estão presentes.",
-        "No código atual do aplicativo, a lista diária usa até dez dias retornados pelo WeatherKit. Isso é separado da navegação do calendário e das horas fornecidas. Um compromisso futuro não amplia a previsão. Se o período não está disponível, programe uma revisão posterior."
+        "Use uma entrada diária para se orientar e as entradas horárias disponíveis para uma dúvida sobre parte do dia. Uma reserva das duas às cinco precisa de mais do que uma olhada em um único símbolo. Verifique se as horas relevantes estão realmente disponíveis.",
+        "Na fonte atual do app, a lista diária mostra até dez dias retornados pelo WeatherKit. Isso é separado da navegação no calendário e das horas atualmente fornecidas. Um evento futuro não amplia a cobertura da previsão. Se o período não aparecer, programe uma nova verificação depois."
       ]
     },
     {
-      "heading": "Entenda o significado dos valores",
+      "heading": "Entenda o que significa cada valor da previsão",
       "body": [
-        "A Apple documenta dados WeatherKit como temperatura, precipitação, vento e UV, com alguns produtos disponíveis apenas em certas regiões. Leia os valores do local escolhido, sem esperar todos os produtos meteorológicos em qualquer lugar.",
-        "As orientações do Met Office mostram por que o período e a definição da variável importam: alguns valores se referem a um instante, outros a um intervalo. Use os rótulos do provedor relevante. Probabilidade, volume e duração da chuva são perguntas diferentes; nenhum número decide toda atividade ao ar livre."
+        "A Apple documenta dados do WeatherKit, como temperatura, precipitação, vento e UV, com alguns produtos disponíveis apenas em regiões selecionadas. Leia os valores disponíveis para o local escolhido em vez de esperar todos os produtos de tempo em qualquer lugar.",
+        "As orientações do Met Office mostram por que o período da previsão e as definições das variáveis importam: alguns valores se referem a um momento e outros a um período. Use os rótulos do provedor relevante. Probabilidade de chuva, volume e duração são questões diferentes, e nenhum número único decide toda atividade ao ar livre."
       ]
     },
     {
-      "heading": "Revise o rascunho criado a partir de uma hora",
+      "heading": "Revise um rascunho criado a partir de um horário da previsão",
       "body": [
-        "Onde o aplicativo permite criar um evento a partir de uma hora, ele abre um rascunho. O código atual usa o fuso do local da previsão, propõe duração de uma hora e escolhe o calendário padrão para novos eventos. Revise cada valor antes de salvar.",
-        "Confirme título, calendário de destino, início, término e local pretendido. Escolher uma previsão não concede permissão para editar calendário compartilhado, não avisa um estabelecimento nem reserva uma sala. Confira o evento salvo e obtenha os acordos necessários."
+        "Quando o app oferece a criação de um evento a partir de um horário da previsão, ele abre um rascunho. Na fonte atual, ele usa o fuso horário do local da previsão, propõe duração de uma hora e seleciona o calendário padrão de novos eventos. Verifique cada valor antes de salvar.",
+        "Confirme o título, o calendário de destino, o início, o término e o local pretendido. Selecionar um horário da previsão não dá permissão para editar um calendário compartilhado, avisar um local ou reservar uma sala. Confira o evento salvo e obtenha qualquer aprovação necessária para o plano."
       ]
     },
     {
-      "heading": "Separe a demonstração do site",
+      "heading": "Mantenha separada a demonstração do site",
       "body": [
-        "A demonstração meteorológica interativa do site usa Open-Meteo. O aplicativo usa Apple WeatherKit. A demonstração ajuda a conhecer a apresentação, mas local, dados e datas disponíveis podem diferir do aplicativo.",
-        "Para decidir de verdade, abra o aplicativo e compare o compromisso pretendido com a previsão disponível. Ao mudar um plano compartilhado, confirme organizador, alcance da recorrência e participantes. Combine uma alternativa quando a atividade depender das condições."
+        "A demonstração interativa de tempo no site usa Open-Meteo. O app usa Apple WeatherKit. Uma demonstração na web é útil para explorar a apresentação, mas o local, os dados e as datas disponíveis podem ser diferentes dos do app.",
+        "Para uma decisão real, abra o app e compare o evento pretendido com a previsão disponível. Se você alterar um plano compartilhado, confirme o organizador, o escopo da recorrência e os participantes. Tenha uma alternativa combinada quando a atividade depender das condições."
       ]
     }
   ],
   "claims": {},
   "practical": [
-    "Identifique o compromisso e a decisão que o tempo pode mudar.",
-    "Confirme o local da previsão e a data e hora locais do compromisso.",
-    "Confira os horários disponíveis separadamente do resumo diário.",
-    "Leia probabilidade, volume e outros valores pelos respectivos rótulos.",
-    "Revise o rascunho e o calendário de destino antes de salvar.",
-    "Confira novamente no momento de decidir e confirme mudanças compartilhadas diretamente."
+    "Identifique o evento e a decisão que o tempo pode alterar.",
+    "Confirme o local da previsão e a data e hora locais do evento.",
+    "Verifique a cobertura horária disponível separadamente do resumo diário.",
+    "Leia a probabilidade, o volume e outros valores relevantes usando seus rótulos.",
+    "Revise todos os detalhes do rascunho do evento e o calendário de destino antes de salvar.",
+    "Verifique novamente no momento da decisão e confirme diretamente as mudanças compartilhadas."
   ],
   "faq": [
     {
-      "q": "A previsão junto ao calendário acompanha cada endereço de evento?",
-      "a": "Não presuma isso. Confira o local meteorológico exibido e compare com o destino; proximidade na tela não comprova correspondência."
+      "q": "O tempo ao lado do meu calendário acompanha o endereço de cada evento?",
+      "a": "Não presuma isso. Confirme o local da previsão exibido e compare-o com o local do evento; a proximidade na tela não comprova a correspondência."
     },
     {
-      "q": "O aplicativo usa o provedor meteorológico do site?",
-      "a": "Não. O aplicativo usa Apple WeatherKit; a demonstração do site usa Open-Meteo separadamente."
+      "q": "O app usa o provedor de tempo do site?",
+      "a": "Não. O app usa Apple WeatherKit; a demonstração do site usa Open-Meteo separadamente."
     },
     {
-      "q": "Escolher uma hora da previsão salva um compromisso automaticamente?",
-      "a": "Onde essa ação existe, ela inicia um rascunho. Confira data, fuso, duração, calendário e local antes de salvar o evento desejado."
+      "q": "Escolher um horário da previsão salva um evento automaticamente?",
+      "a": "Isso inicia um rascunho quando essa ação é oferecida. Verifique a data, o fuso horário, a duração, o calendário e o local, e então salve o evento desejado."
     }
   ],
-  "sourcesHeading": "Fontes oficiais e leitura complementar",
+  "seeAlso": [
+    "weather-calendar-history-versus-forecast-iphone",
+    "forecast-beside-every-event",
+    "a-fourteen-day-view-of-the-weather",
+    "weather-where-the-event-is",
+    "planning-outdoors-without-being-rained-on"
+  ],
+  "sourcesHeading": "Fontes oficiais e leituras adicionais",
   "sources": [
     {
-      "label": "Apple: informações e disponibilidade regional do WeatherKit",
+      "label": "Apple: informações de previsão do WeatherKit e disponibilidade regional",
       "url": "https://developer.apple.com/weatherkit/"
     },
     {
-      "label": "Met Office: local, períodos e valores da previsão",
+      "label": "Met Office: local da previsão, períodos e valores meteorológicos",
       "url": "https://weather.metoffice.gov.uk/guides/what-does-this-forecast-mean"
     }
   ],
-  "seeAlso": []
+  "comparison": {
+    "heading": "Qual visualização do tempo responde à sua pergunta?",
+    "columns": [
+      "Sua pergunta",
+      "O que verificar",
+      "O que isso não comprova"
+    ],
+    "rows": [
+      {
+        "cells": [
+          "O que vem pela frente hoje?",
+          "Visualização diária ou semanal do calendário ao lado da previsão do local selecionado.",
+          "Que o endereço de cada evento altera automaticamente o local da previsão."
+        ]
+      },
+      {
+        "cells": [
+          "A chuva pode afetar meu evento da tarde?",
+          "Dados por hora do local do evento e de todo o período do evento.",
+          "Que um símbolo diário descreve todas as horas."
+        ]
+      },
+      {
+        "cells": [
+          "Posso planejar o próximo mês com base no tempo?",
+          "Seu calendário agora e, depois, uma nova verificação da previsão mais perto da data.",
+          "Que navegar pelo calendário amplia a cobertura da previsão."
+        ]
+      },
+      {
+        "cells": [
+          "Posso ver uma visão geral rápida na tela inicial?",
+          "O widget apropriado da Tela de Início.",
+          "Que todo layout de widget inclui eventos ou uma previsão completa."
+        ]
+      }
+    ]
+  },
+  "galleryKinds": [
+    "week-right",
+    "hook"
+  ],
+  "galleryCaption": "Telas reais do Cloud Calendars: a visualização do tempo e um dia com eventos. Verifique o local e a data selecionados no app.",
+  "actionHeading": "Planeje com sua agenda e a previsão juntas",
+  "actionText": "Cloud Calendars está disponível para iPhone e iPad. Comece com as visualizações, o tempo e a sincronização com Google Calendar incluídos no Base; o Advanced remove anúncios, enquanto o Premium adiciona suporte a Microsoft Calendar e Teams.",
+  "articleLinks": [
+    {
+      "slug": "forecast-beside-every-event",
+      "label": "Verifique a previsão do tempo para as horas de um evento"
+    },
+    {
+      "slug": "the-widget-that-shows-what-is-next",
+      "label": "Escolha um widget de calendário e tempo"
+    },
+    {
+      "slug": "icloud-google-and-outlook-in-one-view",
+      "label": "Reúna contas de calendário em uma única visualização"
+    }
+  ]
 },
 
   'icloud-google-and-outlook-in-one-view': {
-    title: 'iCloud, Google e Outlook em uma só vista',
-    short: 'Três contas, uma vista',
-    description:
-      "Veja como reunir agendas da Apple, do Google e do trabalho em uma visualização ajuda a comparar compromissos e identificar conflitos de horário.",
-    lede: 'O problema quase nunca é que alguma dessas agendas seja ruim. É que você tem três e uma só semana.',
-    commonBelief:
-      'Que manter trabalho e vida pessoal em aplicativos separados é uma fronteira, e não um defeito.',
-    sections: [
-      {
-        heading: 'Marcar duas coisas no mesmo horário é estrutural',
-        body: [
-          'Se seus compromissos vivem em três lugares, nenhum lugar pode dizer se você está livre. O passo de fusão é você, e você o executa de memória, em geral enquanto alguém espera resposta.',
-          'Por isso a falha clássica não é esquecer um compromisso; é aceitar algo que colide com um compromisso que você não podia ver.',
-        ],
-      },
-      {
-        heading: 'O que uma grade só entrega',
-        body: [
-          'Todas as contas na mesma semana, coloridas pela origem, editáveis ali mesmo. Você para de se perguntar qual aplicativo tem a resposta, porque a pergunta deixa de estar no plural.',
-          'iCloud e Google sincronizam no plano gratuito. As contas Microsoft — Outlook e Exchange — ficam no pago, porque essa conexão tem um custo recorrente que as outras não têm.',
-        ],
-      },
-    ],
-    claims: {
-      accounts: 'Tipos de conta que cabem numa vista',
-      premiumMonthly: 'Custo mensal para acrescentar a Microsoft, em dólares',
+  "updated": "2026-10-23",
+  "title": "Veja calendários do Google, iCloud e Outlook juntos no iPhone e iPad",
+  "short": "Três provedores, uma visualização",
+  "description": "Combine visualizações de calendário e entenda permissões de conta, cópias e requisitos de plano.",
+  "lede": "Para ver juntos eventos de trabalho e pessoais, conecte as contas desejadas, selecione os calendários delas e confira os mesmos eventos em uma única visualização. Cloud Calendars oferece suporte ao planejamento no iPhone e iPad com iCloud e Google Calendar; o suporte ao Microsoft Calendar está no Premium. Ver eventos juntos é diferente de copiar períodos ocupados entre contas de provedores. A Arte Soft, desenvolvedora do app, publica este guia.",
+  "commonBelief": "Colocar vários calendários em um único app mantém automaticamente alinhadas a disponibilidade, o compartilhamento e as cópias de eventos deles.",
+  "sections": [
+    {
+      "heading": "Identifique a conta e o calendário por trás de cada evento",
+      "body": [
+        "Comece com um evento comum de cada provedor. Anote o endereço de e-mail conectado, o nome do calendário e se o evento é seu ou se você recebeu um convite. Dois calendários chamados “Calendar” podem pertencer a contas totalmente diferentes. Uma cor ajuda a visualizar a semana; a conta e o calendário identificam onde uma edição deve ser feita.",
+        "Por exemplo, uma consulta no dentista no seu calendário pessoal do iCloud e uma reunião de projeto no Microsoft podem aparecer juntos para você. Isso, por si só, não torna a consulta visível para seus colegas nem reserva esse horário nas ferramentas de agendamento deles.",
+        "Escolha o resultado desejado antes de alterar uma conexão. Para mover dados de eventos para outra conta, use “Escolher um formato de exportação de calendário” abaixo para encontrar uma rota de transferência compatível e verifique eventos representativos antes de confiar no destino. Para comparar horários, mantenha os proprietários atuais dos calendários e exiba juntas as fontes selecionadas. Se outra conta precisar receber períodos ocupados, “Cloud Calendars e OneCal por fluxo de trabalho” explica como a cópia de disponibilidade difere de uma visão pessoal."
+      ]
     },
-    practical: [
-      'Acrescente primeiro a conta pessoal e depois a que provoca as colisões.',
-      'Colora por conta e não por categoria: a origem é o que se precisa ver de relance.',
-      'Continue escrevendo na agenda que as outras pessoas já leem.',
+    {
+      "heading": "Conecte-se pela rota apropriada",
+      "body": [
+        "No caso do iCloud, primeiro ative o iCloud Calendar no iPhone na Apple Account desejada. O guia de configuração da Apple explica os ajustes do dispositivo. O Cloud Calendars acessa os calendários disponíveis pelo sistema de calendário do iPhone e precisa de acesso ao calendário para lê-los. Não basta que uma conta esteja conectada em outro dispositivo.",
+        "O Cloud Calendars também oferece as ações “Sign in with Google” e “Sign in with Microsoft”. Verifique qual conta você seleciona ao entrar e depois abra o grupo de calendários dela e selecione os calendários de que precisa. Entrar no provedor certo com a identidade pessoal ou de trabalho errada pode produzir uma lista de calendários perfeitamente válida, mas inesperada."
+      ]
+    },
+    {
+      "heading": "Entenda os planos sem confundi-los com permissões",
+      "body": [
+        "O plano Base inclui sincronização com Google Calendar e as visualizações de calendário. O Advanced adiciona remoção de anúncios ao Base. O Premium adiciona recursos do Microsoft Calendar e do Microsoft Teams. Revise o preço local atual e o período de cobrança antes de comprar.",
+        "Um plano altera quais recursos do app estão disponíveis; ele não concede propriedade sobre o calendário de outra pessoa. O Google distingue a permissão para ver eventos da permissão para alterá-los. As políticas do empregador e as permissões vinculadas a um calendário do Microsoft continuam valendo. Um evento visível ou um editor disponível não prova que o provedor aceitará uma atualização."
+      ]
+    },
+    {
+      "heading": "Uma visualização combinada pode incluir cópias de calendário",
+      "body": [
+        "As conexões com Google e Microsoft usam cópias de calendário no sistema de calendário do iPhone para apresentar e sincronizar eventos. Não presuma que conectar uma conta não deixa nenhuma cópia fora do provedor original. O destino usado para essas cópias pode depender das fontes de calendário disponíveis no dispositivo.",
+        "Se a mesma conta também chegar ao telefone por outra rota, verifique os nomes e as fontes dos calendários antes de tratar eventos repetidos como eventos separados. Oculte temporariamente um calendário para identificar qual visualização ele fornece. Não exclua um evento ou calendário apenas para deixar a tela mais organizada: uma cópia conectada pode enviar alterações de volta ao provedor."
+      ]
+    },
+    {
+      "heading": "Continue escolhendo o destino ao criar um evento",
+      "body": [
+        "Antes de salvar, verifique o calendário do evento com o mesmo cuidado que a data e o horário. Para um compromisso de família, escolha o calendário que a família realmente usa; para uma reunião de trabalho, use o destino de trabalho permitido. Ver os dois calendários juntos não faz de nenhum deles o destino automático para todo novo evento.",
+        "Alterar o calendário de um evento ou arrastá-lo entre calendários pode ser uma transferência, não uma segunda visualização inofensiva. Mantenha convites e reuniões recorrentes no calendário já estabelecido enquanto diagnostica um problema de exibição. Se precisar fazer uma mudança, primeiro determine quem é o proprietário do evento e qual calendário pode aceitá-lo."
+      ]
+    },
+    {
+      "heading": "Verifique a visão geral antes de confiar nela",
+      "body": [
+        "Compare um evento recente no calendário do próprio provedor com o evento correspondente no Cloud Calendars. Verifique a data, o fuso horário, o título e o calendário selecionado. Para um calendário editável que seja seu, um evento descartável sem convidados é um teste melhor do que alterar uma reunião real. Confirme o resultado no provedor antes de considerar a conexão pronta.",
+        "Não conte com a visualização combinada para criar automaticamente blocos de ocupado anônimos em outra conta. Se você precisa que colegas vejam você como indisponível sem ver detalhes pessoais, use um arranjo de disponibilidade explicitamente aprovado e verifique do lado deles. Uma visão pessoal clara e disponibilidade compartilhada são tarefas separadas."
+      ]
+    }
+  ],
+  "claims": {},
+  "practical": [
+    "Liste a conta exata e o calendário de um evento de cada provedor.",
+    "Ative os calendários do iCloud desejados no dispositivo e revise o acesso ao calendário.",
+    "Use a entrada apropriada do Google ou Microsoft e selecione os calendários desejados.",
+    "Compare um evento recente com a visualização do provedor antes de mudar qualquer coisa.",
+    "Oculte temporariamente uma fonte suspeita de duplicação; mantenha os eventos subjacentes intactos.",
+    "Verifique o calendário de destino em cada novo evento e, separadamente, confirme qualquer compartilhamento de períodos ocupados de que você precise."
+  ],
+  "faq": [
+    {
+      "q": "Meus colegas de trabalho verão meus eventos pessoais porque exibo os dois calendários?",
+      "a": "Exibir calendários juntos não é uma instrução de compartilhamento nem uma ponte automática de períodos ocupados. Verifique as configurações reais de compartilhamento de cada calendário. As conexões com provedores podem criar cópias de calendário no dispositivo, portanto uma visualização combinada também não garante que os dados dos eventos existam apenas no provedor original."
+    },
+    {
+      "q": "Por que consigo ver um evento, mas não editá-lo com sucesso?",
+      "a": "O calendário pode ser somente leitura, o evento pode pertencer a outro organizador ou o provedor pode rejeitar a atualização. Verifique a propriedade e as permissões no calendário do provedor. Comprar um plano mais alto do app não altera essas permissões."
+    },
+    {
+      "q": "Devo conectar a mesma conta do Google por todas as rotas disponíveis?",
+      "a": "Primeiro, verifique como ela já aparece no telefone. Várias rotas podem dificultar a identificação de cópias de calendários. Escolha a rota que pretende usar, confira os eventos dela e, durante a análise, oculte uma exibição extra em vez de apagar dados ou desconectar contas como primeiro passo."
+    }
+  ],
+  "sourcesHeading": "Fontes e referências de configuração",
+  "sources": [
+    {
+      "label": "Apple: configure o iCloud Calendar nos seus dispositivos",
+      "url": "https://support.apple.com/guide/icloud/set-up-calendar-mme4d73a8727/icloud"
+    },
+    {
+      "label": "Google: compartilhamento e permissões do calendário",
+      "url": "https://support.google.com/calendar/answer/37082?hl=en"
+    },
+    {
+      "label": "Microsoft: API do calendário do Outlook e dados de caixa de correio compatíveis",
+      "url": "https://learn.microsoft.com/en-us/graph/outlook-calendar-concept-overview"
+    }
+  ],
+  "seeAlso": [
+    "exchange-calendars-on-an-iphone",
+    "what-calendar-sync-actually-does",
+    "when-two-calendars-disagree",
+    "caldav-calendar-on-iphone",
+    "calendar-export-ics-pdf-and-backup",
+    "onecal-alternative-iphone-calendar-view-or-sync"
+  ],
+  "comparison": {
+    "heading": "Visualização combinada, assinatura ou horários ocupados copiados?",
+    "columns": [
+      "O que você precisa",
+      "O que verificar",
+      "O que não presumir"
     ],
-    seeAlso: ['weather-inside-your-calendar', 'what-a-subscription-actually-buys'],
+    "rows": [
+      {
+        "cells": [
+          "Uma única visualização de várias contas",
+          "A conta conectada, o calendário selecionado e o plano necessário.",
+          "Que uma tela compartilhada una propriedade ou permissões."
+        ]
+      },
+      {
+        "cells": [
+          "Uma edição de evento chegando ao provedor",
+          "O evento original, a permissão de escrita e o resultado salvo na origem.",
+          "Que uma edição local visível comprove uma sincronização bem-sucedida com o provedor."
+        ]
+      },
+      {
+        "cells": [
+          "Horário ocupado em outra conta",
+          "Um serviço com regras explícitas de sincronização da origem para o destino.",
+          "Que uma visualização combinada crie blocos de disponibilidade para colegas."
+        ]
+      },
+      {
+        "cells": [
+          "Um feed de calendário assinado",
+          "O publicador, o comportamento de atualização e o status de somente leitura.",
+          "Que uma assinatura ICS seja uma conexão editável de mão dupla."
+        ]
+      }
+    ]
   },
+  "galleryKinds": [
+    "week-left",
+    "hook"
+  ],
+  "galleryDevice": "iPad",
+  "galleryCaption": "Visualizações reais de calendário no iPad ilustram a revisão de uma agenda. Uma captura de tela não demonstra a direção da sincronização do provedor nem as permissões da conta.",
+  "actionHeading": "Revise seus calendários juntos no iPhone e no iPad",
+  "actionText": "A sincronização com Google Calendar está incluída no Base. O Advanced remove anúncios; o Premium adiciona suporte a Microsoft Calendar e Teams. Confirme as permissões da conta independentemente do plano adquirido.",
+  "articleLinks": [
+    {
+      "slug": "onecal-alternative-iphone-calendar-view-or-sync",
+      "label": "Compare uma visualização combinada com as regras de sincronização do OneCal"
+    },
+    {
+      "slug": "fantastical-readdle-calendar366-iphone-comparison",
+      "label": "Compare fluxos de trabalho de calendário no iPhone"
+    },
+    {
+      "slug": "weather-inside-your-calendar",
+      "label": "Planeje com meteorologia e eventos juntos"
+    }
+  ]
+},
 
   'sharing-one-event-not-your-calendar': {
   "updated": "2026-10-21",

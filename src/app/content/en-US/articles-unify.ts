@@ -10,11 +10,11 @@ import { LocalisedArticle } from '../types';
  */
 export const UNIFY_EN_US: Readonly<Record<string, LocalisedArticle>> = {
   'icloud-google-and-outlook-in-one-view': {
-  "updated": "2026-10-22",
-  "title": "iCloud, Google and Outlook in one view: accounts, copies and permissions",
+  "updated": "2026-10-23",
+  "title": "See Google, iCloud and Outlook calendars together on iPhone and iPad",
   "short": "Three providers, one view",
-  "description": "View iCloud, Google and Microsoft calendars together. Check account selection, edit permissions and copies before moving events or relying on availability.",
-  "lede": "A family appointment, a client call and a work meeting can overlap even when they belong to different accounts. A combined calendar view helps you spot that collision, but it does not turn the accounts into one shared calendar. This guide is written by Arte Soft, the developer of Cloud Calendars.",
+  "description": "Combine calendar views and understand account permissions, copies and plan requirements.",
+  "lede": "To see work and personal appointments together, connect the intended accounts, select their calendars and check the same events in one view. Cloud Calendars supports iPhone and iPad planning with iCloud and Google Calendar; Microsoft Calendar support is in Premium. Seeing appointments together is different from copying busy time between provider accounts. Arte Soft, the developer, publishes this guide.",
   "commonBelief": "Putting several calendars in one app automatically keeps their availability, sharing and event copies in agreement.",
   "sections": [
     {
@@ -106,6 +106,66 @@ export const UNIFY_EN_US: Readonly<Record<string, LocalisedArticle>> = {
     "caldav-calendar-on-iphone",
     "calendar-export-ics-pdf-and-backup",
     "onecal-alternative-iphone-calendar-view-or-sync"
+  ],
+  "comparison": {
+    "heading": "Combined view, subscription or copied busy time?",
+    "columns": [
+      "What you need",
+      "What to check",
+      "What not to assume"
+    ],
+    "rows": [
+      {
+        "cells": [
+          "One view of several accounts",
+          "The connected account, selected calendar and required plan.",
+          "That a shared screen merges ownership or permissions."
+        ]
+      },
+      {
+        "cells": [
+          "An event edit reaching its provider",
+          "The original event, write permission and the saved result at the source.",
+          "That a visible local edit proves successful provider sync."
+        ]
+      },
+      {
+        "cells": [
+          "Busy time in another account",
+          "A service with explicit source-to-destination sync rules.",
+          "That a combined view creates availability blocks for colleagues."
+        ]
+      },
+      {
+        "cells": [
+          "A subscribed calendar feed",
+          "The publisher, refresh behaviour and read-only status.",
+          "That an ICS subscription is an editable two-way connection."
+        ]
+      }
+    ]
+  },
+  "galleryKinds": [
+    "week-left",
+    "hook"
+  ],
+  "galleryDevice": "iPad",
+  "galleryCaption": "Real iPad calendar views illustrate reviewing a schedule. A screenshot does not demonstrate the direction of provider sync or account permissions.",
+  "actionHeading": "Review your calendars together on iPhone and iPad",
+  "actionText": "Google Calendar sync is included in Base. Advanced adds ad removal; Premium adds Microsoft Calendar and Teams support. Confirm the account’s permissions independently of the purchase plan.",
+  "articleLinks": [
+    {
+      "slug": "onecal-alternative-iphone-calendar-view-or-sync",
+      "label": "Compare a combined view with OneCal sync rules"
+    },
+    {
+      "slug": "fantastical-readdle-calendar366-iphone-comparison",
+      "label": "Compare iPhone calendar workflows"
+    },
+    {
+      "slug": "weather-inside-your-calendar",
+      "label": "Plan with weather and appointments together"
+    }
   ]
 },
 

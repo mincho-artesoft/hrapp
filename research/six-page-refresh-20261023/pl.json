@@ -1,0 +1,990 @@
+{
+  "weather-inside-your-calendar": {
+    "updated": "2026-10-23",
+    "title": "Kalendarz z pogodą na iPhone i iPadzie: zaplanuj dzień w jednym widoku",
+    "short": "Korzystaj z kalendarza i pogody razem",
+    "description": "Porównaj kalendarz z pogodą dla wybranego miejsca na iPhonie i iPadzie.",
+    "lede": "Cloud Calendars łączy harmonogram i pogodę w jednej aplikacji na iPhone’a lub iPada. Użyj kalendarza, aby wybrać datę, a widoku pogody, aby sprawdzić wybrane miejsce i dostępne godziny prognozy. Przy planach na zewnątrz sprawdzaj interesujący Cię przedział czasu, zamiast polegać na dziennej ikonie. Ten przewodnik publikuje Arte Soft, twórca aplikacji.",
+    "commonBelief": "Pogoda wyświetlana obok kalendarza automatycznie opisuje adres każdego wydarzenia, każdą godzinę i każdą przyszłą datę.",
+    "sections": [
+      {
+        "heading": "Wybierz rzeczywiste pytanie planistyczne",
+        "body": [
+          "Zacznij od konkretnego wydarzenia, na przykład popołudniowej wizyty w parku. Ustal, co może się zmienić: godzina, miejsce, przygotowanie lub decyzja o skorzystaniu z alternatywy. Nie musisz przestawiać całego kalendarza tylko dlatego, że symbol dnia pokazuje deszcz.",
+          "Zapisz rzeczywisty czas rozpoczęcia i zakończenia aktywności, uwzględniając przygotowania, jeśli to istotne. Widok kalendarza pomaga znaleźć możliwe terminy, a sprawdzenie prognozy dotyczy konkretnego miejsca i przedziału czasu. Porównując opcje, rozdziel te dwa zadania."
+        ]
+      },
+      {
+        "heading": "Potwierdź miejsce pogody przed odczytaniem wartości",
+        "body": [
+          "Cloud Calendars oferuje pogodę dla bieżącego lub wybranego miejsca. Sprawdź wyświetlaną lokalizację, zamiast zakładać, że adres wydarzenia po cichu zmienia prognozę. Wydarzenie w innym mieście wymaga porównania z pogodą dla tego miasta.",
+          "Na przykład ktoś może planować przyjazd do muzeum, gdy telefon nadal jest w domu. Przed porównaniem sprawdź lokalizację prognozy i czas lokalny wydarzenia. Zbliżone wartości nie dowodzą, że harmonogram i pogoda dotyczą tego samego miejsca."
+        ]
+      },
+      {
+        "heading": "Sprawdzaj zakres godzinowy i dzienny osobno",
+        "body": [
+          "Użyj pozycji dziennej do orientacji, a dostępnych pozycji godzinowych do pytania o część dnia. Rezerwacja od drugiej do piątej wymaga więcej niż spojrzenia na jeden symbol. Sprawdź, czy odpowiednie godziny są faktycznie dostępne.",
+          "W obecnym źródle aplikacji lista dzienna obejmuje maksymalnie dziesięć dni zwróconych przez WeatherKit. To jest niezależne od nawigacji po kalendarzu i od godzin obecnie dostarczanych w prognozie. Przyszłe wydarzenie nie wydłuża zakresu prognozy. Jeśli jego okres nie jest dostępny, zaplanuj późniejsze sprawdzenie pogody."
+        ]
+      },
+      {
+        "heading": "Sprawdź, co oznacza dana wartość pogody",
+        "body": [
+          "Apple dokumentuje dane WeatherKit, takie jak temperatura, opady, wiatr i UV, przy czym niektóre produkty są dostępne tylko w wybranych regionach. Odczytuj wartości dostępne dla wybranego miejsca, zamiast oczekiwać wszystkich produktów pogodowych wszędzie.",
+          "Wskazówki Met Office pokazują, dlaczego znaczenie ma okres prognozy i definicje zmiennych: niektóre wartości odnoszą się do chwili, a inne do przedziału czasu. Korzystaj z etykiet danego dostawcy. Prawdopodobieństwo deszczu, jego ilość i czas trwania to różne kwestie, a jedna liczba nie rozstrzyga o każdej aktywności na zewnątrz."
+        ]
+      },
+      {
+        "heading": "Sprawdź wersję roboczą utworzoną z godziny prognozy",
+        "body": [
+          "Tam, gdzie aplikacja umożliwia utworzenie wydarzenia na podstawie godziny, otwiera wersję roboczą. Obecne źródło używa strefy czasowej lokalizacji pogody, proponuje czas trwania jednej godziny i wybiera domyślny kalendarz dla nowych wydarzeń. Przed zapisaniem sprawdź każdą wartość.",
+          "Potwierdź tytuł, kalendarz docelowy, początek, koniec i zamierzoną lokalizację. Wybranie godziny prognozy nie daje uprawnień do edycji współdzielonego kalendarza, powiadomienia miejsca spotkania ani rezerwacji sali. Sprawdź zapisane wydarzenie i uzyskaj wszystkie zgody potrzebne do realizacji planu."
+        ]
+      },
+      {
+        "heading": "Oddziel demonstrację na stronie od aplikacji",
+        "body": [
+          "Interaktywna demonstracja pogody na stronie korzysta z Open-Meteo. Aplikacja korzysta z Apple WeatherKit. Demonstracja internetowa jest przydatna do poznania sposobu prezentacji, ale jej lokalizacja, dane i dostępne daty mogą różnić się od tych w aplikacji.",
+          "Przy podejmowaniu rzeczywistej decyzji otwórz aplikację i porównaj planowane wydarzenie z dostępną dla niego prognozą. Jeśli zmieniasz wspólny plan, potwierdź organizatora, zakres cykliczności i uczestników. Zachowaj uzgodnioną alternatywę, gdy aktywność zależy od warunków."
+        ]
+      }
+    ],
+    "claims": {},
+    "practical": [
+      "Określ wydarzenie i decyzję, na którą pogoda może wpłynąć.",
+      "Potwierdź lokalizację pogody oraz lokalną datę i godzinę wydarzenia.",
+      "Sprawdź dostępny zakres godzinowy osobno od podsumowania dziennego.",
+      "Odczytuj prawdopodobieństwo, ilość i inne istotne wartości zgodnie z ich etykietami.",
+      "Przed zapisaniem sprawdź wszystkie szczegóły wersji roboczej wydarzenia i kalendarz docelowy.",
+      "Sprawdź ponownie w momencie podejmowania decyzji i bezpośrednio potwierdź wspólne zmiany."
+    ],
+    "faq": [
+      {
+        "q": "Czy pogoda obok mojego kalendarza uwzględnia adres każdego wydarzenia?",
+        "a": "Nie zakładaj tego. Potwierdź wyświetlaną lokalizację pogody i porównaj ją z miejscem wydarzenia; bliskość na ekranie nie potwierdza zgodności."
+      },
+      {
+        "q": "Czy aplikacja korzysta z dostawcy pogody ze strony internetowej?",
+        "a": "Nie. Aplikacja korzysta z Apple WeatherKit, a demonstracja na stronie osobno z Open-Meteo."
+      },
+      {
+        "q": "Czy wybranie godziny prognozy automatycznie zapisuje wydarzenie?",
+        "a": "Uruchamia wersję roboczą tam, gdzie ta funkcja jest dostępna. Sprawdź datę, strefę czasową, czas trwania, kalendarz i lokalizację, a następnie zapisz właściwe wydarzenie."
+      }
+    ],
+    "seeAlso": [
+      "weather-calendar-history-versus-forecast-iphone",
+      "forecast-beside-every-event",
+      "a-fourteen-day-view-of-the-weather",
+      "weather-where-the-event-is",
+      "planning-outdoors-without-being-rained-on"
+    ],
+    "sourcesHeading": "Oficjalne źródła i dalsza lektura",
+    "sources": [
+      {
+        "label": "Apple: informacje o prognozie WeatherKit i dostępności regionalnej",
+        "url": "https://developer.apple.com/weatherkit/"
+      },
+      {
+        "label": "Met Office: miejsce prognozy, okresy i wartości pogodowe",
+        "url": "https://weather.metoffice.gov.uk/guides/what-does-this-forecast-mean"
+      }
+    ],
+    "comparison": {
+      "heading": "Który widok pogody odpowiada na Twoje pytanie?",
+      "columns": [
+        "Twoje pytanie",
+        "Co sprawdzić",
+        "Czego to nie potwierdza"
+      ],
+      "rows": [
+        {
+          "cells": [
+            "Co czeka mnie dzisiaj?",
+            "Widok dnia lub tygodnia w kalendarzu obok pogody dla wybranego miejsca.",
+            "Że adres każdego wydarzenia automatycznie zmienia lokalizację pogody."
+          ]
+        },
+        {
+          "cells": [
+            "Czy deszcz może wpłynąć na moje popołudniowe wydarzenie?",
+            "Dane godzinowe dla miejsca wydarzenia i całego czasu jego trwania.",
+            "Że dzienny symbol opisuje każdą godzinę."
+          ]
+        },
+        {
+          "cells": [
+            "Czy mogę planować przyszły miesiąc pod kątem pogody?",
+            "Najpierw kalendarz teraz, potem ponowne sprawdzenie prognozy bliżej terminu.",
+            "Że poruszanie się po kalendarzu wydłuża zakres prognozy."
+          ]
+        },
+        {
+          "cells": [
+            "Czy mogę zobaczyć szybki przegląd na ekranie początkowym?",
+            "Odpowiedni widżet ekranu początkowego.",
+            "Że każdy układ widżetu obejmuje wydarzenia lub pełną prognozę."
+          ]
+        }
+      ]
+    },
+    "galleryKinds": [
+      "week-right",
+      "hook"
+    ],
+    "galleryCaption": "Rzeczywiste ekrany Cloud Calendars: widok pogody i dzień z wydarzeniami. Sprawdź w aplikacji wybrane miejsce i datę.",
+    "actionHeading": "Planuj, korzystając jednocześnie z harmonogramu i prognozy",
+    "actionText": "Cloud Calendars jest dostępne na iPhone’a i iPada. Zacznij od widoków, pogody i synchronizacji z Google Calendar dostępnych w Base; Advanced usuwa reklamy, a Premium dodaje obsługę Microsoft Calendar i Teams.",
+    "articleLinks": [
+      {
+        "slug": "forecast-beside-every-event",
+        "label": "Sprawdź pogodę dla godzin wydarzenia"
+      },
+      {
+        "slug": "the-widget-that-shows-what-is-next",
+        "label": "Wybierz widżet kalendarza i pogody"
+      },
+      {
+        "slug": "icloud-google-and-outlook-in-one-view",
+        "label": "Połącz konta kalendarza w jednym widoku"
+      }
+    ]
+  },
+  "forecast-beside-every-event": {
+    "title": "Sprawdź godzinową pogodę dla wydarzenia w kalendarzu na iPhonie i iPadzie",
+    "short": "Pogoda na godziny wydarzenia",
+    "description": "Dopasuj miejsce, datę i godziny wydarzenia do dostępnej prognozy pogody.",
+    "lede": "Aby sprawdzić pogodę dla wydarzenia w kalendarzu, dopasuj trzy elementy: miejsce, lokalną datę i przedział od początku do końca wydarzenia. W Cloud Calendars wybierz lokalizację pogody i sprawdź dostępne godziny. Adres wydarzenia i pobliska ikona pogody same w sobie nie dowodzą, że to się zgadza. Ten przewodnik publikuje Arte Soft, twórca aplikacji.",
+    "commonBelief": "Że dzienna ikona pogody w kalendarzu to ta sama funkcja co prognoza przypisana do wydarzenia.",
+    "sections": [
+      {
+        "heading": "Zacznij od miejsca i daty",
+        "body": [
+          "Otwórz prognozę dla wybranej lokalizacji i porównaj jej datę z wpisem w kalendarzu. Pogoda w kalendarzu może odzwierciedlać wybrane miejsce pogody, więc upewnij się, że jest ono właściwe dla wydarzenia, zamiast zakładać, że decyduje o tym adres wydarzenia.",
+          "Wydarzenie w przyszłym miesiącu może istnieć jeszcze przed udostępnieniem danych pogodowych na ten dzień. Zachowaj wydarzenie i wróć do prognozy bliżej jego daty; brak informacji o pogodzie nie oznacza prognozy bezchmurnej pogody."
+        ]
+      },
+      {
+        "heading": "Przy pytaniu o konkretną godzinę korzystaj ze szczegółów godzinowych",
+        "body": [
+          "Podsumowanie dzienne i prognoza godzinowa odpowiadają na różne pytania. Jeśli wydarzenie trwa od drugiej do piątej, sprawdź dostępne godziny obejmujące ten przedział, zamiast traktować jedną dzienną ikonę jako pełny obraz sytuacji.",
+          "Jeśli dostępna jest tylko część tego przedziału, pozostaw resztę jako nierozstrzygniętą. Aplikacja nie obiecuje pełnej prognozy godzinowej dla każdego wydarzenia, które możesz utworzyć, a ten przewodnik nie obiecuje, że otwarcie dowolnego wydarzenia zawsze pokaże całe odpowiadające mu okno pogodowe."
+        ]
+      },
+      {
+        "heading": "Oddziel prawdopodobieństwo, ilość i czas",
+        "body": [
+          "Przeczytaj etykietę przy sprawdzanej wartości. Prawdopodobieństwo opadów to nie ilość ani czas trwania opadów. Podobnie wartość godzinowa i podsumowanie dzienne obejmują różne okresy; porównuj te same okresy, gdy rozważasz dwa możliwe terminy.",
+          "Wybierz rozwiązanie zapasowe odpowiednie dla swojego planu, zamiast traktować jeden procent jako uniwersalną zasadę „idź albo odwołaj”. Informacje pogodowe mogą się zmieniać, więc sprawdź je ponownie, gdy trzeba podjąć decyzję."
+        ]
+      },
+      {
+        "heading": "Sprawdź przed zapisaniem wydarzenia zależnego od pogody",
+        "body": [
+          "Aplikacja może rozpocząć szkic wydarzenia na podstawie godziny z prognozy. Przed zapisaniem sprawdź datę, godzinę rozpoczęcia, godzinę zakończenia i kalendarz docelowy w szkicu. Wybranie prognozy nie zastępuje sprawdzenia, czy tworzysz właściwe zobowiązanie.",
+          "Jeśli dostęp do kalendarza lub kalendarz docelowy uniemożliwia zapisanie, rozwiąż ten problem z uprawnieniami niezależnie od dostępu do pogody. Znalezienie prognozy nie daje uprawnień do edytowania współdzielonego kalendarza."
+        ]
+      },
+      {
+        "heading": "Korzystaj z pełnej prognozy, gdy podsumowanie nie wystarcza",
+        "body": [
+          "W przypadku aktywności na zewnątrz sprawdź zmienne istotne dla tej aktywności oraz dla faktycznie wybranej lokalizacji. Widżet bieżącej pogody lub demonstracja na stronie głównej nie zastępują sprawdzenia dostępnych w aplikacji godzin prognozy.",
+          "Jeśli zauważysz rozbieżność, najpierw porównaj miejsce i znacznik czasu. Różni dostawcy, wybrane lokalizacje i okresy prognozy mogą dawać różne widoki, co nie dowodzi, że wydarzenie w kalendarzu się zmieniło."
+        ]
+      }
+    ],
+    "claims": {},
+    "practical": [
+      "Potwierdź lokalizację i datę wydarzenia.",
+      "Sprawdź dostępne godziny w całym czasie aktywności.",
+      "Traktuj prawdopodobieństwo i ilość jako różne wartości.",
+      "Przed zapisaniem sprawdź szkic wydarzenia."
+    ],
+    "seeAlso": [
+      "weather-inside-your-calendar",
+      "planning-outdoors-without-being-rained-on"
+    ],
+    "updated": "2026-10-23",
+    "faq": [
+      {
+        "q": "Czy każde wydarzenie ma pełną prognozę?",
+        "a": "Nie. Zakres zależy od wybranej lokalizacji oraz dostępnych dat i godzin."
+      },
+      {
+        "q": "Czy ikona pogody dotyczy konkretnie adresu wydarzenia?",
+        "a": "Nie wyciągaj takiego wniosku tylko na podstawie bliskości do wydarzenia. Potwierdź lokalizację pogody osobno."
+      },
+      {
+        "q": "Czy stuknięcie godziny zapisuje nowe wydarzenie?",
+        "a": "Tam, gdzie to dostępne, rozpoczyna szkic wydarzenia. Przed zapisaniem sprawdź jego datę, godzinę i kalendarz."
+      }
+    ],
+    "sourcesHeading": "Źródła pogody i ustawienia lokalizacji",
+    "sources": [
+      {
+        "label": "Apple: prognozy WeatherKit i dostępność regionalna",
+        "url": "https://developer.apple.com/weatherkit/"
+      },
+      {
+        "label": "Apple: Prywatność i usługi lokalizacji",
+        "url": "https://support.apple.com/en-us/102515"
+      }
+    ],
+    "comparison": {
+      "heading": "Praktyczna kontrola przed wydarzeniem na zewnątrz",
+      "columns": [
+        "Sprawdzenie",
+        "Przykład",
+        "Decyzja"
+      ],
+      "rows": [
+        {
+          "cells": [
+            "Miejsce",
+            "Wydarzenie odbywa się w innym mieście.",
+            "Wybierz to miejsce docelowe w widoku pogody i odczytaj jego nazwę."
+          ]
+        },
+        {
+          "cells": [
+            "Przedział czasu",
+            "Aktywność trwa od 14:00 do 16:00.",
+            "Sprawdź obie godziny oraz istotny czas na przygotowanie lub dojazd."
+          ]
+        },
+        {
+          "cells": [
+            "Zakres danych",
+            "Dostępna jest tylko część potrzebnych godzin.",
+            "Pozostaw plan jako wstępny i zaplanuj kolejne sprawdzenie."
+          ]
+        },
+        {
+          "cells": [
+            "Zapisywane wydarzenie",
+            "Rozpoczynasz wersję roboczą z godziny prognozy.",
+            "Przed zapisaniem sprawdź datę, strefę czasową, czas trwania i kalendarz docelowy."
+          ]
+        }
+      ]
+    },
+    "galleryKinds": [
+      "week-right",
+      "week-left"
+    ],
+    "galleryCaption": "Widoki pogody i tygodnia pokazują różne części tego samego zadania planistycznego. Potwierdź miejsce prognozy osobno od lokalizacji wydarzenia.",
+    "actionHeading": "Porównaj prognozę z rzeczywistymi wydarzeniami",
+    "actionText": "Używaj Cloud Calendars na iPhonie lub iPadzie, aby sprawdzać dostępną prognozę i swój harmonogram. Pogoda pomaga w wyborze; nie przenosi automatycznie wydarzenia ani nie potwierdza zmiany z uczestnikami.",
+    "articleLinks": [
+      {
+        "slug": "weather-inside-your-calendar",
+        "label": "Poznaj widoki kalendarza i pogody"
+      },
+      {
+        "slug": "the-widget-that-shows-what-is-next",
+        "label": "Wybierz szybki przegląd na ekranie początkowym"
+      },
+      {
+        "slug": "icloud-google-and-outlook-in-one-view",
+        "label": "Sprawdź kalendarze stojące za Twoim harmonogramem"
+      }
+    ]
+  },
+  "the-widget-that-shows-what-is-next": {
+    "updated": "2026-10-23",
+    "title": "Widżety kalendarza na iPhone’a i iPada: nadchodzące wydarzenia i pogoda",
+    "short": "Nadchodzące wydarzenia na ekranie początkowym",
+    "description": "Wybierz widżet Cloud Calendars dla nadchodzących wydarzeń, daty lub pogody.",
+    "lede": "Wybierz Calendar Events lub Calendar Events Large, gdy chcesz widzieć nadchodzące wydarzenia na ekranie początkowym. Wybierz Calendar & Weather, jeśli chcesz wyświetlać datę i pogodę. Te układy odpowiadają na różne pytania; przed dodaniem sprawdź podgląd tego, który jest dostępny na Twoim urządzeniu. Ten przewodnik publikuje Arte Soft, twórca Cloud Calendars.",
+    "sections": [
+      {
+        "heading": "Najpierw wybierz układ wydarzeń",
+        "body": [
+          "W galerii widżetów Cloud Calendars układ Calendar Events to średni widok listy wydarzeń. Calendar Events Large daje więcej miejsca na nadchodzące wydarzenia. Calendar & Weather to osobny układ z datą i pogodą; jego mały rozmiar nie gwarantuje wiersza z następnym wydarzeniem. Nazwy na Twoim urządzeniu mogą być wyświetlane w tłumaczeniu.",
+          "Na iPhone przytrzymaj puste miejsce na ekranie początkowym, wybierz Edytuj i Dodaj widżet, a następnie znajdź Cloud Calendars i wybierz odpowiedni układ. Przed dodaniem porównaj podgląd. Instrukcje Apple dotyczą tej systemowej galerii widżetów; jest ona oddzielna od widoków kalendarza w aplikacji."
+        ]
+      },
+      {
+        "heading": "Dodaj widżet i sprawdź go na iPadzie",
+        "body": [
+          "Na iPadzie użyj galerii widżetów ekranu początkowego Apple: przytrzymaj tło, otwórz Edytuj, a potem Dodaj widżet. Wyszukaj Cloud Calendars, przejrzyj dostępne style i rozmiary, dodaj potrzebny układ, ustaw go w wybranym miejscu i zakończ przyciskiem Gotowe. Korzystaj z elementów sterujących widocznych w Twojej wersji iPadOS; podgląd nie potwierdza, że dane kalendarza zostały już wczytane.",
+          "Wybierz Calendar Events lub Calendar Events Large, gdy potrzebujesz widoku wydarzeń. Porównaj style oferowane przez zainstalowaną aplikację; kafelek z datą i pogodą odpowiada na inne potrzeby niż lista wydarzeń.",
+          "Otwórz Cloud Calendars na tym iPadzie i znajdź znane przyszłe wydarzenie z określoną godziną w wybranym kalendarzu. Prawidłowy widok na iPhone nie potwierdza kont, dostępu ani wczytanych danych na iPadzie. Porównaj tytuł, datę i godzinę rozpoczęcia, a jeśli widżet pokazuje coś innego, przejdź do poniższych kontroli kwalifikowania i aktualizacji."
+        ]
+      },
+      {
+        "heading": "Sprawdź, co liczy się jako nadchodzące",
+        "body": [
+          "Widok wydarzeń korzysta z wybranych kalendarzy i przyszłych wydarzeń z określoną godziną. Wydarzenia całodniowe oraz wydarzenia, których godzina rozpoczęcia już minęła, są wykluczone z tej listy nadchodzących. Dlatego urodziny lub trwające spotkanie mogą być widoczne w aplikacji, ale nie pojawią się tutaj.",
+          "Na przykład jeśli jedyny wpis na dziś to całodniowa informacja o podróży, pusta lista nadchodzących nie oznacza, że ten wpis zniknął. Otwórz aplikację, aby sprawdzić cały dzień. Podobnie następne wydarzenie z określoną godziną może przypadać jutro lub później; sprawdź jego datę, zamiast zakładać, że każdy wiersz dotyczy dzisiaj."
+        ]
+      },
+      {
+        "heading": "Odróżnij brakujące wydarzenie od listy, na której skończyło się miejsce",
+        "body": [
+          "Widżet pokazuje ograniczoną liczbę nadchodzących wydarzeń. Jeśli wcześniejsze wydarzenia zajmują jego wiersze, późniejsze może się nie pojawić, mimo że jest widoczne w aplikacji i kwalifikuje się do listy nadchodzących. Większy układ wydarzeń może pokazać więcej wierszy, ale nadal nie jest to pełny kalendarz.",
+          "Zacznij od najbliższego przyszłego wydarzenia z określoną godziną w wybranym kalendarzu. Jeśli ono się pojawia, ale późniejsze nie, otwórz aplikację, aby sprawdzić resztę planu. Jeśli brakuje także najbliższego kwalifikującego się wydarzenia, przejdź do kontroli wyboru kalendarzy, dostępu i aktualizacji. Nie przenoś ani nie usuwaj wydarzeń tylko po to, aby wyświetlić późniejszy wpis."
+        ]
+      },
+      {
+        "heading": "Niech aplikacja będzie pierwszym punktem odniesienia",
+        "body": [
+          "Otwórz Cloud Calendars i znajdź jedno konkretne przyszłe wydarzenie z określoną godziną. Potwierdź, że jego kalendarz jest wybrany i że aplikacja ma wymagany dostęp do kalendarza. Porównaj tytuł, datę i godzinę rozpoczęcia z widżetem. Jeśli wydarzenia brakuje także w aplikacji, najpierw sprawdź konto lub synchronizację.",
+          "Jeśli potrzebujesz wyraźnego przykładu, użyj nieszkodliwego wydarzenia testowego w kalendarzu, którego jesteś właścicielem. Ustaw mu przyszłą godzinę rozpoczęcia i łatwy do rozpoznania tytuł. Nie zmieniaj prawdziwego zaproszenia ani nie usuwaj kont tylko po to, by testować ekran początkowy."
+        ]
+      },
+      {
+        "heading": "Uwzględnij aktualizacje, nie zakładając sztywnego terminu",
+        "body": [
+          "Widżety wyświetlają zapisane informacje i nie działają stale tak jak otwarta aplikacja. Harmonogramem ich aktualizacji zarządza Apple. Otwarcie aplikacji i sprawdzenie wydarzenia daje świeży punkt odniesienia, ale nie określa dokładnej liczby sekund, po których widżet musi się zmienić.",
+          "Jeśli aplikacja nadal pokazuje poprawne dane, a widżet pozostaje błędny, zanotuj układ, wybrany kalendarz, godzinę wydarzenia oraz wersje aplikacji i iOS. Pusta lista, stare wydarzenie i nieprawidłowa godzina to różne obserwacje; zgłoś dokładnie to, co widzisz."
+        ]
+      },
+      {
+        "heading": "Traktuj pogodę jako osobne podsumowanie",
+        "body": [
+          "Pogoda obok daty nie jest prognozą przypisaną do miejsca i godziny rozpoczęcia każdego wydarzenia. Przed wydarzeniem na zewnątrz otwórz widok pogody i sprawdź planowane miejsce oraz godzinę. Ikona bieżących warunków nie pozwala stwierdzić, jakie warunki będą podczas późniejszego spotkania.",
+          "Traktuj ten widżet jako szybki punkt orientacyjny. W przypadku zobowiązań całodniowych, szczegółów wydarzeń i decyzji wymagających pełnego planu używaj pełnego kalendarza."
+        ]
+      }
+    ],
+    "claims": {},
+    "practical": [
+      "Wybierz Calendar Events lub Calendar Events Large, aby wyświetlić listę wydarzeń.",
+      "Sprawdź przyszłe wydarzenie z określoną godziną w wybranym kalendarzu.",
+      "Przed rozpoczęciem diagnozowania widżetu porównaj jego datę i godzinę w aplikacji.",
+      "Zapisz utrzymujące się różnice, zamiast usuwać dane kalendarza."
+    ],
+    "faq": [
+      {
+        "q": "Dlaczego nie widzę moich urodzin?",
+        "a": "Lista nadchodzących nie obejmuje wydarzeń całodniowych. Sprawdź pełny kalendarz, aby zobaczyć urodziny i inne wpisy tylko z datą."
+      },
+      {
+        "q": "Czy mały widżet pokazuje następne spotkanie?",
+        "a": "Mały układ Calendar & Weather pokazuje datę i pogodę. Wybierz układ listy wydarzeń, jeśli chcesz widzieć wydarzenia."
+      },
+      {
+        "q": "Czy brak nadchodzącego wydarzenia oznacza, że mam dziś wolne?",
+        "a": "Nie. Na ten wniosek mogą wpływać wydarzenia całodniowe, trwające wydarzenia, niewybrane kalendarze i nieaktualne informacje."
+      }
+    ],
+    "sourcesHeading": "Źródła i instrukcje Apple",
+    "sources": [
+      {
+        "label": "Apple: dodawanie i edycja widżetów na iPhone",
+        "url": "https://support.apple.com/118610"
+      },
+      {
+        "label": "Apple: utrzymywanie aktualności widżetu",
+        "url": "https://developer.apple.com/documentation/widgetkit/keeping-a-widget-up-to-date"
+      },
+      {
+        "label": "Apple: dodawanie, edytowanie i usuwanie widżetów na iPadzie",
+        "url": "https://support.apple.com/guide/ipad/add-edit-and-remove-widgets-ipadb0de8630/ipados"
+      }
+    ],
+    "seeAlso": [
+      "choosing-a-widget-size",
+      "a-countdown-to-your-next-meeting",
+      "calendar-on-apple-watch"
+    ],
+    "comparison": {
+      "heading": "Wybierz widok, którego naprawdę potrzebujesz",
+      "columns": [
+        "Widok",
+        "Zastosowanie",
+        "Sprawdź przed użyciem"
+      ],
+      "rows": [
+        {
+          "cells": [
+            "Calendar Events",
+            "Kompaktowy widok nadchodzących wydarzeń z określoną godziną.",
+            "Wydarzenie należy do wybranego kalendarza i jeszcze się nie rozpoczęło."
+          ]
+        },
+        {
+          "cells": [
+            "Calendar Events Large",
+            "Więcej miejsca na nadchodzące wydarzenia.",
+            "Większy układ nadal ma ograniczoną liczbę wierszy."
+          ]
+        },
+        {
+          "cells": [
+            "Calendar & Weather",
+            "Szybki przegląd daty i pogody.",
+            "Jego mały układ nie gwarantuje wiersza z nadchodzącym wydarzeniem."
+          ]
+        },
+        {
+          "cells": [
+            "Live Activity",
+            "Osobne odliczanie do następnego wydarzenia na obsługiwanych ekranach iPhone.",
+            "To nie jest widżet ekranu początkowego ani osobny układ widżetu ekranu blokady."
+          ]
+        }
+      ]
+    },
+    "galleryKinds": [
+      "widgets",
+      "live"
+    ],
+    "galleryCaption": "Widżety ekranu początkowego i Live Activity to osobne widoki. Wybierz układ odpowiadający potrzebnym informacjom.",
+    "actionHeading": "Umieść przydatną część swojego planu na ekranie początkowym",
+    "actionText": "Otwórz Cloud Calendars, sprawdź znane przyszłe wydarzenie z określoną godziną, a następnie dodaj odpowiedni widżet na iPhone lub iPadzie. Aplikacja pozostaje miejscem do przeglądania pełnego kalendarza.",
+    "articleLinks": [
+      {
+        "slug": "weather-inside-your-calendar",
+        "label": "Sprawdź pogodę obok swojego planu"
+      },
+      {
+        "slug": "forecast-beside-every-event",
+        "label": "Sprawdź godziny wydarzenia na zewnątrz"
+      },
+      {
+        "slug": "icloud-google-and-outlook-in-one-view",
+        "label": "Sprawdź podłączone konta kalendarza"
+      }
+    ]
+  },
+  "icloud-google-and-outlook-in-one-view": {
+    "updated": "2026-10-23",
+    "title": "Zobacz razem kalendarze Google, iCloud i Outlook na iPhone i iPadzie",
+    "short": "Trzech dostawców, jeden widok",
+    "description": "Połącz widoki kalendarza i poznaj uprawnienia kont, kopie oraz wymagania planów.",
+    "lede": "Aby widzieć razem wydarzenia służbowe i prywatne, połącz odpowiednie konta, wybierz ich kalendarze i sprawdź te same wydarzenia w jednym widoku. Cloud Calendars obsługuje planowanie na iPhone i iPadzie z iCloud i Google Calendar; obsługa Microsoft Calendar jest dostępna w Premium. Wspólne wyświetlanie wydarzeń to coś innego niż kopiowanie zajętości między kontami różnych dostawców. Arte Soft, twórca aplikacji, publikuje ten przewodnik.",
+    "commonBelief": "Dodanie kilku kalendarzy w jednej aplikacji automatycznie utrzymuje zgodność ich dostępności, udostępniania i kopii wydarzeń.",
+    "sections": [
+      {
+        "heading": "Ustal konto i kalendarz stojące za każdym wydarzeniem",
+        "body": [
+          "Zacznij od jednego zwykłego wydarzenia od każdego dostawcy. Zanotuj zalogowany adres e-mail, nazwę kalendarza oraz to, czy jesteś właścicielem wydarzenia, czy otrzymałeś zaproszenie. Dwa kalendarze o nazwie „Calendar” mogą należeć do całkowicie różnych kont. Kolor pomaga przeglądać tydzień, ale to konto i kalendarz wskazują, gdzie należy wprowadzić zmianę.",
+          "Na przykład wizyta u dentysty w Twoim prywatnym kalendarzu iCloud i spotkanie projektowe w Microsoft mogą być wyświetlane razem. To samo w sobie nie sprawia jednak, że wizyta u dentysty stanie się widoczna dla współpracowników ani że ten czas zostanie zarezerwowany w ich narzędziach do planowania.",
+          "Zanim zmienisz sposób połączenia, określ oczekiwany efekt. Jeśli chcesz przenieść dane wydarzeń na inne konto, skorzystaj z sekcji „Wybierz format eksportu kalendarza” poniżej, aby znaleźć obsługiwaną drogę przeniesienia, i sprawdź reprezentatywne wydarzenia, zanim zaczniesz polegać na miejscu docelowym. Jeśli chcesz tylko porównywać terminy, zachowaj obecnych właścicieli kalendarzy i wyświetlaj razem wybrane źródła. Jeśli inne konto ma otrzymywać informacje o zajętości, sekcja „Cloud Calendars i OneCal według sposobu pracy” wyjaśnia, czym kopiowanie dostępności różni się od osobistego widoku zbiorczego."
+        ]
+      },
+      {
+        "heading": "Połącz przez odpowiednią ścieżkę",
+        "body": [
+          "W przypadku iCloud najpierw włącz iCloud Calendar na iPhone w ramach właściwego Apple Account. Przewodnik konfiguracji Apple wyjaśnia ustawienia urządzenia. Cloud Calendars uzyskuje dostęp do kalendarzy dostępnych przez system kalendarza iPhone i potrzebuje dostępu do kalendarza, aby je odczytywać. Samo połączenie konta na innym urządzeniu nie wystarczy.",
+          "Cloud Calendars ma też opcje „Zaloguj się przez Google” i „Zaloguj się przez Microsoft”. Sprawdź, które konto wybierasz podczas logowania, a następnie otwórz jego grupę kalendarzy i zaznacz potrzebne kalendarze. Zalogowanie się do właściwego dostawcy przy użyciu niewłaściwej tożsamości prywatnej lub służbowej może dać całkowicie prawidłową, ale nieoczekiwaną listę kalendarzy."
+        ]
+      },
+      {
+        "heading": "Zrozum plany, nie myląc ich z uprawnieniami",
+        "body": [
+          "Plan Base obejmuje synchronizację Google Calendar i widoki kalendarza. Advanced dodaje do Base usunięcie reklam. Premium dodaje funkcje Microsoft Calendar i Microsoft Teams. Przed zakupem sprawdź aktualną cenę lokalną oraz okres rozliczeniowy.",
+          "Plan zmienia to, które funkcje aplikacji są dostępne; nie daje własności do cudzego kalendarza. Google rozróżnia uprawnienie do przeglądania wydarzeń od uprawnienia do ich zmieniania. Nadal obowiązują zasady pracodawcy i uprawnienia przypisane do kalendarza Microsoft. Widoczne wydarzenie lub dostępny edytor nie są dowodem, że dostawca zaakceptuje aktualizację."
+        ]
+      },
+      {
+        "heading": "Widok łączony może obejmować kopie kalendarzy",
+        "body": [
+          "Połączenia Google i Microsoft używają kopii kalendarzy w systemie kalendarza iPhone, aby prezentować i synchronizować wydarzenia. Nie zakładaj, że połączenie konta nie pozostawia żadnej kopii poza oryginalnym systemem dostawcy. Miejsce docelowe używane dla tych kopii może zależeć od źródeł kalendarza dostępnych na urządzeniu.",
+          "Jeśli to samo konto trafia do telefonu również inną drogą, sprawdź nazwy kalendarzy i źródła, zanim uznasz powtarzające się wydarzenia za odrębne wpisy. Tymczasowo ukryj jeden kalendarz, aby ustalić, który widok z niego pochodzi. Nie usuwaj wydarzenia ani kalendarza tylko po to, aby ekran wyglądał schludniej: podłączona kopia może odesłać zmiany z powrotem do swojego dostawcy."
+        ]
+      },
+      {
+        "heading": "Przy tworzeniu wydarzenia nadal wybieraj kalendarz docelowy",
+        "body": [
+          "Przed zapisaniem sprawdź kalendarz wydarzenia równie uważnie jak datę i godzinę. W przypadku rodzinnego wydarzenia wybierz kalendarz, którego rodzina rzeczywiście używa; w przypadku spotkania służbowego użyj dozwolonego kalendarza służbowego. To, że widzisz oba kalendarze razem, nie oznacza, że którykolwiek z nich staje się automatycznym miejscem docelowym dla każdego nowego wydarzenia.",
+          "Zmiana kalendarza wydarzenia lub przeciągnięcie go między kalendarzami może być przeniesieniem, a nie nieszkodliwym drugim widokiem. Podczas diagnozowania problemu z wyświetlaniem pozostaw zaproszenia i spotkania cykliczne w ich dotychczasowym kalendarzu. Jeśli potrzebujesz zmiany, najpierw ustal, kto jest właścicielem wydarzenia i który kalendarz może je przyjąć."
+        ]
+      },
+      {
+        "heading": "Zweryfikuj widok zbiorczy, zanim zaczniesz na nim polegać",
+        "body": [
+          "Porównaj niedawne wydarzenie w natywnym kalendarzu dostawcy z odpowiadającym mu wydarzeniem w Cloud Calendars. Sprawdź datę, strefę czasową, tytuł i wybrany kalendarz. W przypadku edytowalnego kalendarza, którego jesteś właścicielem, jednorazowe wydarzenie bez gości jest lepszym testem niż zmienianie aktywnego spotkania. Potwierdź wynik u dostawcy, zanim uznasz połączenie za gotowe.",
+          "Nie zakładaj, że widok łączony automatycznie utworzy anonimowe bloki zajętości na innym koncie. Jeśli chcesz, aby współpracownicy widzieli Cię jako niedostępnego bez ujawniania szczegółów prywatnych, użyj wyraźnie zatwierdzonego sposobu udostępniania dostępności i sprawdź go z ich strony. Czytelny osobisty widok zbiorczy i współdzielona dostępność to dwa różne zadania."
+        ]
+      }
+    ],
+    "claims": {},
+    "practical": [
+      "Wypisz dokładne konto i kalendarz dla jednego wydarzenia od każdego dostawcy.",
+      "Włącz odpowiednie kalendarze iCloud na urządzeniu i sprawdź dostęp do kalendarza.",
+      "Użyj właściwego logowania Google lub Microsoft i wybierz odpowiednie kalendarze.",
+      "Przed wprowadzaniem zmian porównaj jedno niedawne wydarzenie z widokiem u dostawcy.",
+      "Tymczasowo ukryj źródło podejrzewane o duplikowanie; pozostaw same wydarzenia bez zmian.",
+      "Przy każdym nowym wydarzeniu sprawdzaj kalendarz docelowy, a wszelkie potrzebne udostępnianie zajętości weryfikuj osobno."
+    ],
+    "faq": [
+      {
+        "q": "Czy moi współpracownicy zobaczą moje prywatne wydarzenia, ponieważ wyświetlam oba kalendarze?",
+        "a": "Wspólne wyświetlanie kalendarzy nie jest poleceniem udostępnienia ani automatycznym mostem zajętości. Sprawdź rzeczywiste ustawienia udostępniania każdego kalendarza. Połączenia z dostawcami mogą tworzyć kopie kalendarzy na urządzeniu, więc widok łączony nie gwarantuje też, że dane wydarzeń istnieją wyłącznie u pierwotnego dostawcy."
+      },
+      {
+        "q": "Dlaczego widzę wydarzenie, ale nie mogę go skutecznie edytować?",
+        "a": "Kalendarz może być tylko do odczytu, wydarzenie może należeć do innego organizatora albo dostawca może odrzucać aktualizację. Sprawdź własność i uprawnienia w kalendarzu dostawcy. Zakup wyższego planu aplikacji nie zmienia tych uprawnień."
+      },
+      {
+        "q": "Czy powinienem połączyć to samo konto Google wszystkimi dostępnymi sposobami?",
+        "a": "Najpierw sprawdź, jak konto jest już widoczne na telefonie. Wiele sposobów połączenia może utrudniać rozpoznanie kopii kalendarzy. Wybierz sposób, którego chcesz używać, sprawdź jego wydarzenia i podczas analizy ukryj dodatkowy widok zamiast od razu usuwać dane lub odłączać konta."
+      }
+    ],
+    "sourcesHeading": "Źródła i materiały konfiguracyjne",
+    "sources": [
+      {
+        "label": "Apple: skonfiguruj iCloud Calendar na swoich urządzeniach",
+        "url": "https://support.apple.com/guide/icloud/set-up-calendar-mme4d73a8727/icloud"
+      },
+      {
+        "label": "Google: udostępnianie kalendarza i uprawnienia",
+        "url": "https://support.google.com/calendar/answer/37082?hl=en"
+      },
+      {
+        "label": "Microsoft: API kalendarza Outlook i obsługiwane dane skrzynki pocztowej",
+        "url": "https://learn.microsoft.com/en-us/graph/outlook-calendar-concept-overview"
+      }
+    ],
+    "seeAlso": [
+      "exchange-calendars-on-an-iphone",
+      "what-calendar-sync-actually-does",
+      "when-two-calendars-disagree",
+      "caldav-calendar-on-iphone",
+      "calendar-export-ics-pdf-and-backup",
+      "onecal-alternative-iphone-calendar-view-or-sync"
+    ],
+    "comparison": {
+      "heading": "Widok łączony, subskrypcja czy skopiowane zajęte terminy?",
+      "columns": [
+        "Czego potrzebujesz",
+        "Co sprawdzić",
+        "Czego nie zakładać"
+      ],
+      "rows": [
+        {
+          "cells": [
+            "Jeden widok dla kilku kont",
+            "Połączone konto, wybrany kalendarz i wymagany plan.",
+            "Że wspólny ekran łączy własność lub uprawnienia."
+          ]
+        },
+        {
+          "cells": [
+            "Edycja wydarzenia docierająca do dostawcy",
+            "Oryginalne wydarzenie, uprawnienie do zapisu i zapisany wynik u źródła.",
+            "Że widoczna lokalna edycja potwierdza udaną synchronizację z dostawcą."
+          ]
+        },
+        {
+          "cells": [
+            "Zajęte terminy na innym koncie",
+            "Usługa z jasno określonymi regułami synchronizacji ze źródła do miejsca docelowego.",
+            "Że widok łączony tworzy bloki dostępności dla współpracowników."
+          ]
+        },
+        {
+          "cells": [
+            "Subskrybowany kanał kalendarza",
+            "Wydawcę, sposób odświeżania i status tylko do odczytu.",
+            "Że subskrypcja ICS jest edytowalnym połączeniem dwukierunkowym."
+          ]
+        }
+      ]
+    },
+    "galleryKinds": [
+      "week-left",
+      "hook"
+    ],
+    "galleryDevice": "iPad",
+    "galleryCaption": "Rzeczywiste widoki kalendarza na iPadzie pokazują przegląd harmonogramu. Zrzut ekranu nie pokazuje kierunku synchronizacji z dostawcą ani uprawnień konta.",
+    "actionHeading": "Przeglądaj swoje kalendarze razem na iPhone i iPad",
+    "actionText": "Synchronizacja z Google Calendar jest dostępna w planie Base. Advanced usuwa reklamy, a Premium dodaje obsługę Microsoft Calendar i Teams. Uprawnienia konta potwierdź niezależnie od zakupionego planu.",
+    "articleLinks": [
+      {
+        "slug": "onecal-alternative-iphone-calendar-view-or-sync",
+        "label": "Porównaj widok łączony z regułami synchronizacji OneCal"
+      },
+      {
+        "slug": "fantastical-readdle-calendar366-iphone-comparison",
+        "label": "Porównaj sposoby pracy z kalendarzem na iPhone"
+      },
+      {
+        "slug": "weather-inside-your-calendar",
+        "label": "Planuj, mając pogodę i wydarzenia razem"
+      }
+    ]
+  },
+  "onecal-alternative-iphone-calendar-view-or-sync": {
+    "updated": "2026-10-23",
+    "title": "Cloud Calendars czy OneCal? Wybierz widok łączony albo synchronizację kalendarza",
+    "short": "Cloud Calendars i OneCal według sposobu pracy",
+    "description": "Porównaj OneCal i Cloud Calendars pod kątem widoków, kopiowanych wydarzeń, sterowania mobilnego i planów.",
+    "lede": "Wybieraj według potrzebnego efektu: wspólnego przeglądu kilku harmonogramów, edycji oryginalnego wydarzenia albo skopiowania zajętych terminów na inne konto. Cloud Calendars oferuje widoki planowania na iPhone i iPadzie; OneCal opisuje Unified Calendar View oraz osobne reguły Calendar Sync. To porównanie publikuje Arte Soft, twórca Cloud Calendars.",
+    "commonBelief": "Dwa produkty, które pokazują kalendarze Google, iCloud i Outlook, muszą w ten sam sposób synchronizować dostępność, edycje wydarzeń i kopie.",
+    "sections": [
+      {
+        "heading": "Wybierz między podglądem a zmianą na innym koncie",
+        "body": [
+          "Jeśli chcesz zobaczyć prywatne wydarzenie obok służbowego spotkania, potrzebujesz widoku łączonego. Jeśli w kalendarzu służbowym ma się też pojawić blok zajętości dla prywatnego wydarzenia, potrzebujesz określonego procesu ze źródła do miejsca docelowego. Pierwszy efekt nie oznacza automatycznie drugiego.",
+          "Cloud Calendars zbiera wybrane kalendarze w widoku planowania na iPhone i iPadzie. OneCal opisuje Unified Calendar View oddzielnie od Calendar Sync; według wydawcy z tego widoku można korzystać bez konfigurowania reguł synchronizacji. Zdecyduj, jaki efekt jest ważny, zanim połączysz konta lub zaczniesz porównywać nazwy subskrypcji."
+        ]
+      },
+      {
+        "heading": "Zrozum, co może zmienić skopiowane wydarzenie",
+        "body": [
+          "Dokumentacja Calendar Sync w OneCal opisuje reguły jednokierunkowe i wielokierunkowe, które tworzą zdublowane wydarzenia. Osobny przewodnik dotyczący zakresu działania informuje, że edycje kopii nie są przenoszone z powrotem do oryginału. Ustal, które wydarzenie jest oryginałem i do którego kalendarza należy, zanim potraktujesz skopiowane wydarzenie jako miejsce do przełożenia spotkania.",
+          "Połączenia z dostawcami w Cloud Calendars także mogą tworzyć lustrzane kalendarze w magazynie iOS. Widok łączony nie dowodzi, że rekordy zostały scalone ani że edycja dotarła do dostawcy. W przypadku kalendarza, który należy do Ciebie i który możesz edytować, sprawdź testowe wydarzenie bez gości zarówno u dostawcy, jak i w aplikacji."
+        ]
+      },
+      {
+        "heading": "Sprawdź sterowanie na urządzeniu, z którego naprawdę będziesz korzystać",
+        "body": [
+          "Aktualny przewodnik mobilny OneCal opisuje tworzenie i edytowanie wydarzeń, opcje powtarzania, RSVP oraz dołączanie do spotkań. Osobno wskazuje, że tworzenie, edytowanie, wstrzymywanie i usuwanie konfiguracji Calendar Sync odbywa się w aplikacji webowej; na urządzeniach mobilnych te konfiguracje są tylko wyświetlane. Konfiguracja linków do rezerwacji jest również opisana jako zadanie wykonywane w wersji webowej.",
+          "Cloud Calendars to aplikacja na iPhone i iPad z widokami dnia, tygodnia, miesiąca, roku i listy. Wypróbuj potrzebną edycję w zainstalowanym widoku, przeczytaj każdą opcję powtarzania i potwierdź zapisane wydarzenie. Nie zakładaj, że menu mobilne, proces rezerwacji lub sterowanie automatyzacją z innego produktu występują także tutaj."
+        ]
+      },
+      {
+        "heading": "Weryfikuj zakres zamiast zakładać nieograniczoną historię",
+        "body": [
+          "Aktualny przewodnik OneCal dotyczący zakresu działania podaje przyszłe okno synchronizacji do roku dla Google i iCloud oraz do trzech miesięcy dla Outlook. Rozróżnia też przyszłe serie cykliczne od pojedynczych wydarzeń historycznych. To limity opisane przez wydawcę, a nie test Twojego konkretnego konta ani stwierdzenie dotyczące każdej funkcji w widoku kalendarza.",
+          "Cloud Calendars również wymaga sprawdzenia sposobu połączenia konta, wybranych kalendarzy i odpowiednich dat. Jeśli starsze spotkania są istotne, porównaj konkretne wydarzenie u dostawcy i w aplikacji. Aplikacja kalendarza nie jest automatycznie pełną kopią zapasową ani gwarancją, że pobrano każdy zapis z przeszłości."
+        ]
+      },
+      {
+        "heading": "Porównaj wymagania planów i sposób rozliczenia",
+        "body": [
+          "Cloud Calendars obejmuje synchronizację z Google Calendar w planie Base; Advanced usuwa reklamy, a Premium dodaje obsługę Microsoft Calendar i Teams. Uprawnienia konta weryfikuj niezależnie od planu. Przed zakupem sprawdź aktualną lokalną cenę i okres rozliczeniowy, zamiast opierać się na stałym międzynarodowym porównaniu cen.",
+          "Przewodnik OneCal po planach w wersji webowej opisuje plany na członka zespołu i czternastodniowy okres próbny, w tym usuwanie kopii po jego wygaśnięciu. Przewodnik dotyczący rozliczeń mobilnych opisuje zakupy zarządzane przez sklep i ograniczenia związane z dodawaniem członków zespołu. Sprawdź, które funkcje wymagają aktywnego planu i gdzie zarządzany jest zakup; samo bezpłatne pobranie nie odpowiada na te pytania."
+        ]
+      },
+      {
+        "heading": "Przetestuj rzeczywisty sposób planowania przed zmianą",
+        "body": [
+          "Jeśli ważne są dla Ciebie pogoda, widżety lub Live Activity, uwzględnij je w teście na urządzeniu, którego używasz. Cloud Calendars oferuje te powierzchnie planowania, przy czym pogoda jest ograniczona do dostępnych dat i wybranego miejsca. Omawiane tu strony OneCal nie potwierdzają zgodności funkcji w tych obszarach; sprawdź aktualny produkt, zamiast wnioskować o braku funkcji na podstawie samego przewodnika.",
+          "Zachowaj oryginalne aplikacje i szczegóły połączeń, dopóki nie sprawdzisz wymaganego efektu. Zanotuj, czy weryfikujesz widoczność, edycję oryginalnego wydarzenia, skopiowane zajęte terminy czy przypomnienie — to różne rezultaty. Zanim odłączysz usługę, sprawdź, co stanie się z istniejącymi kopiami, i nie eksperymentuj na aktywnym zaproszeniu ani na prawdziwym spotkaniu z klientem."
+        ]
+      }
+    ],
+    "claims": {},
+    "practical": [
+      "Zapisz, czy potrzebujesz widoku łączonego, czy kopiowania wydarzeń na inne konto.",
+      "Ustal, które wydarzenia są oryginałami, które kopiami i które konto jest właścicielem każdego ważnego wydarzenia.",
+      "Sprawdź potrzebne funkcje na swoim rzeczywistym telefonie, tablecie lub w procesie pracy w wersji webowej.",
+      "Porównaj jeden zwykły tydzień oraz wszystkie daty historyczne, na których polegasz.",
+      "Sprawdź aktualne wymagania planu, lokalną cenę i dostawcę zakupu.",
+      "Przed zmianą zweryfikuj testowe wydarzenie i sprawdź zasady usuwania kopii."
+    ],
+    "faq": [
+      {
+        "q": "Czy widok kalendarza łączonego to to samo co synchronizacja zajętych terminów?",
+        "a": "Nie. Widok łączony pozwala porównać zobowiązania. Utworzenie wpisu na innym koncie wymaga osobnego obsługiwanego procesu; OneCal opisuje reguły Calendar Sync oddzielnie od Unified Calendar View."
+      },
+      {
+        "q": "Czy mogę zmienić kopię w OneCal, aby przełożyć oryginalne spotkanie?",
+        "a": "Przewodnik dotyczący zakresu działania informuje, że edycje kopii nie są przenoszone do oryginału. Ustal, które wydarzenie jest oryginalne, i stosuj uprawnienia edycji oraz organizatora obowiązujące w jego kalendarzu."
+      },
+      {
+        "q": "Która aplikacja jest tańsza w mojej konfiguracji?",
+        "a": "To zależy od potrzebnych funkcji, kont, sposobu rozliczenia i lokalnej ceny. Cloud Calendars obejmuje synchronizację z Google w planie Base oraz obsługę Microsoft w Premium. Sprawdź aktualny plan OneCal i warunki rozliczeń mobilnych dla zamierzonego sposobu pracy; ten przewodnik nie wskazuje jednego uniwersalnie najtańszego rozwiązania."
+      }
+    ],
+    "sourcesHeading": "Oficjalna dokumentacja OneCal dotycząca sposobu pracy i planów",
+    "sources": [
+      {
+        "label": "OneCal: funkcje mobilne i zadania konfiguracyjne tylko w wersji webowej",
+        "url": "https://docs.onecal.io/docs/mobile-apps"
+      },
+      {
+        "label": "OneCal: Calendar Sync i reguły ze źródła do celu",
+        "url": "https://docs.onecal.io/docs/calendar-sync/calendar-sync-intro"
+      },
+      {
+        "label": "OneCal: okna synchronizacji i edycje skopiowanych wydarzeń",
+        "url": "https://docs.onecal.io/docs/calendar-sync/what-does-onecal-sync"
+      },
+      {
+        "label": "OneCal: plany, okres próbny i sposób działania po wygaśnięciu",
+        "url": "https://docs.onecal.io/docs/billing/plans-and-free-trial"
+      },
+      {
+        "label": "OneCal: subskrypcje App Store i Google Play",
+        "url": "https://docs.onecal.io/docs/billing/mobile-subscriptions"
+      }
+    ],
+    "seeAlso": [
+      "what-calendar-sync-actually-does",
+      "three-calendar-apps-is-two-too-many",
+      "free-google-sync-without-adverts",
+      "disconnect-calendar-integration-without-losing-track",
+      "what-fantastical-costs-and-what-this-does"
+    ],
+    "comparison": {
+      "heading": "Porównaj sposób pracy przed subskrypcją",
+      "columns": [
+        "Pytanie",
+        "Cloud Calendars",
+        "Dokumentacja OneCal"
+      ],
+      "rows": [
+        {
+          "cells": [
+            "Gdzie przeglądam swój harmonogram?",
+            "Na iPhone i iPadzie, w widokach dnia, tygodnia, miesiąca, roku i listy.",
+            "Unified Calendar View jest oddzielony od konfiguracji Calendar Sync."
+          ]
+        },
+        {
+          "cells": [
+            "Czy potrzebuję kopiowania bloków zajętości między kontami?",
+            "Nie wnioskuj tego z widoku łączonego; połączenia z dostawcami mogą lokalnie odzwierciedlać kalendarze.",
+            "Calendar Sync tworzy zdublowane wydarzenia za pomocą reguł jednokierunkowych lub wielokierunkowych."
+          ]
+        },
+        {
+          "cells": [
+            "Gdzie zmieniam reguły synchronizacji?",
+            "Użyj mechanizmów opisanych dla połączenia konta w aplikacji.",
+            "W analizowanym przewodniku mobilnym zmiany konfiguracji synchronizacji przypisano do aplikacji webowej."
+          ]
+        },
+        {
+          "cells": [
+            "Którego planu Cloud Calendars potrzebuję?",
+            "Base obejmuje synchronizację z Google Calendar; Advanced usuwa reklamy; Premium dodaje Microsoft Calendar i Teams.",
+            "Sprawdź aktualny plan OneCal i sposób rozliczenia dla potrzebnego sposobu pracy."
+          ]
+        }
+      ]
+    },
+    "galleryKinds": [
+      "week-left",
+      "hook"
+    ],
+    "galleryCaption": "Rzeczywiste ekrany kalendarza w Cloud Calendars pokazują widok planowania. To porównanie odróżnia ten widok od serwerowych reguł tworzenia kopii w usłudze.",
+    "actionHeading": "Wybierz efekt, który chcesz zweryfikować",
+    "actionText": "Jeśli potrzebujesz przeglądu na iPhone lub iPadzie z pogodą i widżetami, wypróbuj Cloud Calendars z nieszkodliwym wydarzeniem testowym. Jeśli wymagasz kopiowania zajętych terminów na inne konto, oceń usługę, która jednoznacznie opisuje takie działanie.",
+    "articleLinks": [
+      {
+        "slug": "icloud-google-and-outlook-in-one-view",
+        "label": "Skonfiguruj połączony widok kalendarza"
+      },
+      {
+        "slug": "fantastical-readdle-calendar366-iphone-comparison",
+        "label": "Porównaj inne opcje kalendarza na iPhone’a"
+      },
+      {
+        "slug": "the-widget-that-shows-what-is-next",
+        "label": "Wybierz widok na ekranie początkowym"
+      }
+    ]
+  },
+  "fantastical-readdle-calendar366-iphone-comparison": {
+    "updated": "2026-10-23",
+    "title": "Alternatywy dla kalendarza na iPhone’a: Cloud Calendars, Fantastical, Readdle i BusyCal",
+    "short": "Porównaj alternatywy kalendarza na iPhone’a",
+    "description": "Porównaj kalendarze na iPhone’a pod kątem pogody, widoków, zadań i potrzebnego sposobu pracy.",
+    "lede": "Wybierz kalendarz według zadania, które chcesz wykonać: przeglądaj wydarzenia z pogodą, szybko dodawaj wydarzenie, zarządzaj zadaniami lub łącz widoki kont. Cloud Calendars, Fantastical, Calendars by Readdle, Calendar 366 i BusyCal różnią się pod tym względem oraz wymaganiami planów. Arte Soft rozwija Cloud Calendars i publikuje to porównanie.",
+    "sections": [
+      {
+        "heading": "Najpierw określ, co musi działać, a dopiero potem porównuj wygląd",
+        "body": [
+          "Zapisz swoich dostawców kalendarza, urządzenia i trzy kluczowe działania. Na przykład: widzieć razem kalendarz służbowy i prywatny, ukończyć przypomnienie i szybko dodać spotkanie. Przetestuj te działania na prywatnych danych testowych, zanim zaimportujesz cały harmonogram.",
+          "To, że produkt obsługuje nazwę Twojego dostawcy, nie oznacza jeszcze, że każda metoda połączenia ma identyczne uprawnienia i funkcje. Kalendarz urządzenia, konto połączone bezpośrednio i subskrybowany kanał mogą tworzyć podobnie wyglądające wpisy, ale pozwalać na różne działania."
+        ]
+      },
+      {
+        "heading": "Jako punkt odniesienia użyj własnego kalendarza dostawcy",
+        "body": [
+          "Przewodnik Google dla początkujących opisuje własny interfejs kalendarza do planowania, zadań, udostępniania i wielu kalendarzy. Jeśli Twój harmonogram już tam jest, przetestuj wymagane działanie u źródła, zanim zdecydujesz, czy potrzebujesz innej aplikacji.",
+          "Na przykład porównaj to samo wydarzenie w Google Calendar i Fantastical po połączeniu odpowiedniego konta. Sprawdź, czy potrzebną przewagą jest widok łączony, połączenie z zadaniami, szybkie dodawanie czy konkretny interfejs urządzenia. Inny klient kalendarza nie oznacza automatycznie migracji do innego dostawcy."
+        ]
+      },
+      {
+        "heading": "Fantastical: sprawdź połączenia kont i szybkie dodawanie",
+        "body": [
+          "Flexibits dokumentuje zarówno bezpośrednie połączenia z kontami kalendarza, jak i opcje dla kalendarzy oraz przypomnień już skonfigurowanych w iOS. Przewodnik dla początkujących zaleca bezpośrednie połączenia, aby w pełni korzystać z funkcji aplikacji. Ustal, którą drogę wybrano, zamiast bez potrzeby podłączać ten sam kalendarz dwa razy.",
+          "Fantastical opisuje też wprowadzanie na podstawie zdań oraz wielokrotnego użytku szablony wydarzeń i zadań. Przetestuj jednoznaczną datę, czas trwania i kalendarz docelowy, a potem sprawdź zapisany wynik. Ta składnia należy do Fantastical; pole tekstowe innej aplikacji może zinterpretować to samo zdanie inaczej."
+        ]
+      },
+      {
+        "heading": "Calendars by Readdle: sprawdź źródło zadań",
+        "body": [
+          "Readdle prezentuje kalendarze Google, Outlook i iCloud obok funkcji zadań oraz wprowadzania w języku naturalnym. Przewodnik konfiguracji zadań opisuje wybór iOS Reminders lub Google Tasks w opcjach zadań. To ważne, jeśli ukończenie zadania na telefonie ma aktualizować konkretną listę źródłową.",
+          "Użyj tymczasowego zadania, aby sprawdzić ukończenie po obu stronach, a nie tylko to, czy tytuł pojawia się na osi czasu. Jeśli potrzebujesz danego widoku lub działania także na Macu, a nie tylko na iPhone, przetestuj to również tam. Nie zakładaj identycznych mechanizmów tylko na podstawie wspólnej nazwy produktu."
+        ]
+      },
+      {
+        "heading": "Calendar 366: sprawdź dostęp systemowy, zestawy i lokalizację pogody",
+        "body": [
+          "Dokumentacja Calendar 366 rozróżnia dostęp do kalendarzy systemowych i przypomnień od bezpośrednich integracji z kontami. Opisuje zestawy kalendarzy, które wybierają widoczne kalendarze i listy. Zestawy te mogą też określać kalendarz domyślny, więc sprawdź, do czego będzie należeć nowo utworzone wydarzenie.",
+          "Ta sama dokumentacja opisuje własny parser języka naturalnego oraz pogodę z Apple Weather, z wyborem lokalizacji systemowej lub własnej. Przy planowaniu na zewnątrz sprawdź wybrane miejsce, zamiast zakładać, że prognoza podąża za adresem każdego wydarzenia. To możliwości opisane przez wydawcę, a nie funkcje przetestowane na Twoim koncie."
+        ]
+      },
+      {
+        "heading": "BusyCal: sprawdź wyświetlanie zadań i widok używany do pogody",
+        "body": [
+          "Przewodnik BusyCal dla iOS rozróżnia zadania z datą, z godziną i bez daty. Opisuje mechanizmy oznaczania ukończenia oraz przenoszenia nieukończonych zadań z datą na kolejne dni. Przewodnik po pogodzie umieszcza prognozy w widokach List, Day i Month, więc przetestuj konkretny używany widok, zamiast zakładać, że pogoda pojawia się wszędzie.",
+          "BusyCal dokumentuje też wprowadzanie w języku naturalnym jako opcję w domyślnych ustawieniach nowego wydarzenia. Wypróbuj to samo prywatne przykładowe wydarzenie co w innych aplikacjach, a potem sprawdź kalendarz i zapisany czas. To mechanizmy BusyCal, a nie polecenia wspólne dla każdej aplikacji kalendarza."
+        ]
+      },
+      {
+        "heading": "Sprawdź sposób pracy na Watch osobno od telefonu",
+        "body": [
+          "Przewodnik Fantastical dla Watch opisuje widoki Up Next, List i Tasks, w tym ukończenie zadania. Przewodnik BusyCal dotyczący zadań rozróżnia zadania z datą i godziną wyświetlane na Watch od zadań bez daty. Jeśli zależy Ci na nieprzypisanych zadaniach zaległych, uwzględnij je w teście, zamiast sprawdzać tylko najbliższe wydarzenie.",
+          "Komplikacja na Watch służy do szybkiego podglądu, podczas gdy aplikacja na Watch może oferować dodatkowe działania. Sprawdź dane i działanie na rzeczywistym zegarku i telefonie oraz przejrzyj bieżący plan. Interfejsy na komputerze, telefonie i zegarku nie są wymienne tylko dlatego, że używają tej samej nazwy produktu."
+        ]
+      },
+      {
+        "heading": "Traktuj cenę i zakres uprawnień jako osobny etap sprawdzania",
+        "body": [
+          "Sprawdź aktualny lokalny ekran zakupu, funkcje dostępne po zakończeniu okresu próbnego oraz to, czy wcześniejszy zakup zmienia Twój zakres uprawnień. Darmowe pobranie, cykliczna subskrypcja i starszy zakup nie muszą odblokowywać tego samego zestawu funkcji.",
+          "Strony wydawcy mogą zmieniać się w różnym czasie. Bieżące FAQ produktu Readdle opisuje kilka podstawowych możliwości jako darmowe, podczas gdy osobna strona pomocy o wersji darmowej i pełnej pokazuje inny podział. Zamiast traktować jeden opis jako uniwersalną obietnicę, sprawdź wymagane działanie w zainstalowanej aplikacji i jej aktualnych warunkach zakupu."
+        ]
+      },
+      {
+        "heading": "Gdzie Cloud Calendars mieści się na krótkiej liście",
+        "body": [
+          "Cloud Calendars to kolejna opcja na iPhone i iPad do wybranych kalendarzy, wielu widoków planowania, pogody i widżetów. Synchronizacja z Google jest zawarta w Base, Advanced usuwa reklamy, a Premium dodaje obsługę Microsoft Calendar. Sprawdź aktualny plan i uprawnienia dostawcy dla swojej konfiguracji.",
+          "Jeśli kluczowe jest specjalistyczne połączenie z zadaniami, polecenie szablonu lub sposób pracy na komputerze, wybierz produkt, który dokumentuje ten wymóg i rzeczywiście go spełnia. Porównuj zapisane wyniki i codzienny nakład pracy; lista kontrolna ma pomóc w wyborze, a nie sugerować, że każda wspomniana tu funkcja istnieje w Cloud Calendars."
+        ]
+      }
+    ],
+    "claims": {},
+    "practical": [
+      "Wypisz swoje konta, urządzenia i kluczowe działania.",
+      "Wybierz jedną drogę połączenia z kontem i sprawdź, jakie kalendarze udostępnia.",
+      "Przetestuj szybkie dodawanie i kończenie zadań na nieszkodliwych przykładach.",
+      "Sprawdź lokalizację pogody i widoki używane na każdym urządzeniu.",
+      "Sprawdź aktualne warunki zakupu po okresie próbnym lub wcześniejszych uprawnieniach."
+    ],
+    "faq": [
+      {
+        "q": "Która alternatywa dla Fantastical jest najlepsza?",
+        "a": "To zależy od wymaganego sposobu pracy. Porównaj źródła kalendarzy i zadań, dodawanie wydarzeń, obsługę urządzeń i aktualny zakres uprawnień. Ten przewodnik nie wskazuje jednego uniwersalnego zwycięzcy pod względem działania."
+      },
+      {
+        "q": "Czy ta sama nazwa dostawcy oznacza, że każda aplikacja synchronizuje się identycznie?",
+        "a": "Nie. Sprawdź osobno połączenia bezpośrednie, kalendarze urządzenia, kanały i uprawnienia, a następnie zweryfikuj przykładową zmianę u źródła."
+      },
+      {
+        "q": "Czy mogę założyć, że każda reklamowana funkcja jest darmowa?",
+        "a": "Nie. Sprawdź zainstalowaną aplikację, lokalny ekran zakupu i funkcje pozostające po okresie próbnym. Dokumentacja wydawcy może opisywać różne wersje lub zakresy uprawnień."
+      }
+    ],
+    "sourcesHeading": "Oficjalna dokumentacja sprawdzona na potrzeby tego przewodnika",
+    "sources": [
+      {
+        "label": "Fantastical: sposoby połączenia konta",
+        "url": "https://flexibits.com/fantastical-ios/help/getting-started"
+      },
+      {
+        "label": "Fantastical: wprowadzanie w języku naturalnym i szablony",
+        "url": "https://flexibits.com/fantastical-ios/help/adding-events-and-tasks"
+      },
+      {
+        "label": "Readdle: bieżące możliwości produktu i FAQ",
+        "url": "https://readdle.com/calendars"
+      },
+      {
+        "label": "Readdle: wybór źródła zadań",
+        "url": "https://support.readdle.com/calendars/synchronization/how-to-sync-tasks-with-ios-reminders-or-google-tasks"
+      },
+      {
+        "label": "Readdle: osobne wskazówki dotyczące planu darmowego i pełnego",
+        "url": "https://apphelp.readdle.com/en/index.php?id=585&pg=kb.page"
+      },
+      {
+        "label": "Calendar 366: integracje, zestawy, szybkie dodawanie i pogoda",
+        "url": "https://calendar366.com/help/index.html"
+      },
+      {
+        "label": "BusyCal dla iOS: zadania i ograniczenia zadań na Watch",
+        "url": "https://www.busymac.com/docs/busycalios/70659-tasks/"
+      },
+      {
+        "label": "BusyCal dla iOS: pogoda i obsługiwane widoki",
+        "url": "https://www.busymac.com/docs/busycalios/70665-weather/"
+      },
+      {
+        "label": "BusyCal dla iOS: wprowadzanie w języku naturalnym",
+        "url": "https://www.busymac.com/docs/busycalios/70669-natural-language/"
+      },
+      {
+        "label": "Fantastical: widoki i działania na Apple Watch",
+        "url": "https://flexibits.com/fantastical-ios/help/apple-watch"
+      },
+      {
+        "label": "Google: własny interfejs Calendar oparty na koncie",
+        "url": "https://support.google.com/calendar/answer/2465776?hl=en"
+      }
+    ],
+    "seeAlso": [
+      "what-fantastical-costs-and-what-this-does",
+      "natural-language-calendar-events-iphone",
+      "iphone-calendar-tasks-reminders-versus-event-alerts"
+    ],
+    "comparison": {
+      "heading": "Zacznij od najważniejszego wymagania",
+      "columns": [
+        "Wymaganie",
+        "Odpowiednie opcje do sprawdzenia",
+        "Ważne rozróżnienie"
+      ],
+      "rows": [
+        {
+          "cells": [
+            "Wydarzenia z pogodą oraz widoki na iPhone i iPad",
+            "Cloud Calendars oraz udokumentowane widoki pogody w porównywanych aplikacjach.",
+            "Sprawdź lokalizację prognozy, dostępny okres i widok; zakres pogody nie jest nieograniczony."
+          ]
+        },
+        {
+          "cells": [
+            "Wprowadzanie wydarzeń w języku naturalnym",
+            "Fantastical oraz odpowiednia funkcja Readdle lub BusyCal.",
+            "Analiza zdań to nie to samo co dyktowanie lub zwykła edycja wydarzenia."
+          ]
+        },
+        {
+          "cells": [
+            "Zadania obok wydarzeń",
+            "Udokumentowane źródło zadań w Readdle, Calendar 366, BusyCal lub Fantastical.",
+            "Przypomnienie o wydarzeniu nie jest integracją ukończenia zadania."
+          ]
+        },
+        {
+          "cells": [
+            "Synchronizacja z Google Calendar i opcjonalne usunięcie reklam",
+            "Cloud Calendars Base zawiera synchronizację z Google Calendar; Advanced usuwa reklamy.",
+            "Obsługa Microsoft Calendar i Teams wymaga Premium."
+          ]
+        },
+        {
+          "cells": [
+            "Inny model zakupu",
+            "Aktualna oferta sklepu i zakres uprawnień dla każdej aplikacji i platformy.",
+            "Darmowe pobranie nie dowodzi, że każda funkcja jest darmowa; ceny regionalne i plany mogą się zmieniać."
+          ]
+        }
+      ]
+    },
+    "galleryKinds": [
+      "week-left",
+      "week-right",
+      "widgets"
+    ],
+    "galleryDevice": "iPad",
+    "galleryCaption": "To są ekrany Cloud Calendars pokazujące widoki aplikacji, pogodę i widżety. Nie są to zrzuty ekranu innych produktów z tego porównania.",
+    "actionHeading": "Sprawdź kalendarz pod kątem jednej rzeczywistej potrzeby planowania",
+    "actionText": "Jeśli Twoim głównym wymaganiem jest harmonogram na iPhone lub iPad z pogodą i widżetami, oceń Cloud Calendars na tymczasowym wydarzeniu. Przy porównywaniu produktów trzymaj specjalistyczne wymagania dotyczące zadań, rezerwacji i języka naturalnego oddzielnie.",
+    "articleLinks": [
+      {
+        "slug": "weather-inside-your-calendar",
+        "label": "Zobacz, jak pogoda wpisuje się w pracę z kalendarzem"
+      },
+      {
+        "slug": "the-widget-that-shows-what-is-next",
+        "label": "Porównaj widżety Cloud Calendars"
+      },
+      {
+        "slug": "onecal-alternative-iphone-calendar-view-or-sync",
+        "label": "Odróżnij widok łączony od skopiowanego czasu zajętości"
+      }
+    ]
+  }
+}

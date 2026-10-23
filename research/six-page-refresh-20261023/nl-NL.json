@@ -1,0 +1,990 @@
+{
+  "weather-inside-your-calendar": {
+    "updated": "2026-10-23",
+    "title": "Kalender met weer op iPhone en iPad: plan je dag in één oogopslag",
+    "short": "Gebruik kalender en weer samen",
+    "description": "Vergelijk je kalender met het weer voor de gekozen locatie op iPhone en iPad.",
+    "lede": "Cloud Calendars brengt je agenda en het weer samen in dezelfde app voor iPhone of iPad. Gebruik de kalender om een datum te kiezen en de weerweergave om de gekozen locatie en beschikbare voorspeluren te bekijken. Kijk voor een buitenactiviteit naar de periode die ertoe doet, in plaats van alleen op een dagsymbool af te gaan. Deze gids is gepubliceerd door Arte Soft, de ontwikkelaar van de app.",
+    "commonBelief": "Weer dat naast een kalender wordt getoond, beschrijft automatisch het adres van elke afspraak, elk uur en elke toekomstige datum.",
+    "sections": [
+      {
+        "heading": "Kies een echte planningsvraag",
+        "body": [
+          "Begin met een concrete afspraak, zoals een bezoek aan een park in de middag. Bepaal wat kan veranderen: het tijdstip, de locatie, de voorbereiding of de keuze voor een alternatief. Je hoeft niet je hele agenda om te gooien alleen omdat het dagsymbool regen toont.",
+          "Noteer het werkelijke begin en einde van de activiteit, inclusief opbouw als dat relevant is. Een agendaoverzicht helpt om mogelijke data te vinden, terwijl de weerscontrole over een specifieke locatie en periode gaat. Houd die twee taken uit elkaar wanneer je opties vergelijkt."
+        ]
+      },
+      {
+        "heading": "Controleer eerst de weerlocatie voordat je de waarden leest",
+        "body": [
+          "Cloud Calendars biedt weer voor de huidige of gekozen locatie. Controleer de getoonde locatie in plaats van aan te nemen dat het adres van een event stilzwijgend de voorspelling wijzigt. Een afspraak in een andere stad moet je vergelijken met het weer in die stad.",
+          "Een bezoeker kan bijvoorbeeld de aankomst bij een museum plannen terwijl de telefoon nog thuis is. Lees de locatie van de voorspelling en de lokale tijd van de afspraak voordat je ze vergelijkt. Waarden die op het scherm dicht bij elkaar staan, bewijzen niet dat agenda en weer dezelfde locatie gebruiken."
+        ]
+      },
+      {
+        "heading": "Controleer uurlijkse en dagelijkse dekking apart",
+        "body": [
+          "Gebruik een dagvermelding ter oriëntatie en de beschikbare uurvermeldingen voor een vraag over een deel van de dag. Een reservering van twee tot vijf vraagt om meer dan een snelle blik op één symbool. Controleer of de relevante uren daadwerkelijk aanwezig zijn.",
+          "In de huidige broncode van de app bevat de daglijst maximaal tien door WeatherKit teruggegeven dagen. Dat staat los van navigatie in de kalender en van de uren die momenteel worden geleverd. Een toekomstige afspraak verlengt de weerdekking niet. Ontbreekt de betreffende periode, plan dan later nog een weerscontrole."
+        ]
+      },
+      {
+        "heading": "Lees wat de weerwaarde betekent",
+        "body": [
+          "Apple documenteert WeatherKit-gegevens zoals temperatuur, neerslag, wind en UV, waarbij sommige producten alleen in bepaalde regio’s beschikbaar zijn. Lees de waarden die voor je gekozen locatie beschikbaar zijn, in plaats van overal elk weerproduct te verwachten.",
+          "De uitleg van het Met Office laat zien waarom de definities van voorspelperiode en variabelen belangrijk zijn: sommige waarden gelden voor een moment en andere voor een periode. Gebruik de labels van de betreffende aanbieder. Neerslagkans, hoeveelheid en duur zijn verschillende vragen, en geen enkel getal beslist over elke buitenactiviteit."
+        ]
+      },
+      {
+        "heading": "Controleer een concept dat is gemaakt vanuit een weeruur",
+        "body": [
+          "Waar de app het aanmaken van een event vanuit een uur aanbiedt, wordt een concept geopend. In de huidige broncode gebruikt dat de tijdzone van de weerlocatie, stelt het een duur van één uur voor en kiest het de standaardkalender voor nieuwe events. Controleer elke waarde voordat je opslaat.",
+          "Controleer de titel, de doelkalender, het begin, het einde en de bedoelde locatie. Een gekozen voorspelling geeft geen toestemming om een gedeelde kalender te bewerken, een locatie op de hoogte te stellen of een ruimte te reserveren. Controleer het opgeslagen event en regel alle instemming die het plan vereist."
+        ]
+      },
+      {
+        "heading": "Houd de demonstratie op de website apart",
+        "body": [
+          "De interactieve weerdemonstratie op de website gebruikt Open-Meteo. De app gebruikt Apple WeatherKit. Een webdemonstratie is nuttig om de presentatie te verkennen, maar de locatie, gegevens en beschikbare datums kunnen afwijken van de app.",
+          "Open voor een echte beslissing de app en vergelijk de bedoelde afspraak met de beschikbare voorspelling. Als je een gedeeld plan wijzigt, controleer dan de organisator, de omvang van de herhaling en de deelnemers. Houd een afgesproken alternatief achter de hand wanneer de activiteit van de omstandigheden afhangt."
+        ]
+      }
+    ],
+    "claims": {},
+    "practical": [
+      "Bepaal om welke afspraak het gaat en welke beslissing door het weer kan veranderen.",
+      "Controleer de weerlocatie en de lokale datum en tijd van de afspraak.",
+      "Bekijk de beschikbare uurlijke dekking apart van de dagsamenvatting.",
+      "Lees kans, hoeveelheid en andere relevante waarden aan de hand van hun labels.",
+      "Controleer alle details van het eventconcept en de doelkalender voordat je opslaat.",
+      "Controleer opnieuw op het beslismoment en bevestig gedeelde wijzigingen direct."
+    ],
+    "faq": [
+      {
+        "q": "Volgt het weer naast mijn kalender het adres van elk event?",
+        "a": "Ga daar niet van uit. Controleer de getoonde weerlocatie en vergelijk die met de locatie; nabijheid op het scherm bewijst geen overeenkomst."
+      },
+      {
+        "q": "Gebruikt de app de weersprovider van de website?",
+        "a": "Nee. De app gebruikt Apple WeatherKit; de demonstratie op de website gebruikt apart Open-Meteo."
+      },
+      {
+        "q": "Slaat het kiezen van een voorspeluur automatisch een afspraak op?",
+        "a": "Er wordt een concept gestart waar die actie wordt aangeboden. Controleer datum, tijdzone, duur, kalender en locatie en sla daarna het bedoelde event op."
+      }
+    ],
+    "seeAlso": [
+      "weather-calendar-history-versus-forecast-iphone",
+      "forecast-beside-every-event",
+      "a-fourteen-day-view-of-the-weather",
+      "weather-where-the-event-is",
+      "planning-outdoors-without-being-rained-on"
+    ],
+    "sourcesHeading": "Officiële bronnen en verder lezen",
+    "sources": [
+      {
+        "label": "Apple: informatie over WeatherKit-voorspellingen en regionale beschikbaarheid",
+        "url": "https://developer.apple.com/weatherkit/"
+      },
+      {
+        "label": "Met Office: voorspellocatie, perioden en weerwaarden",
+        "url": "https://weather.metoffice.gov.uk/guides/what-does-this-forecast-mean"
+      }
+    ],
+    "comparison": {
+      "heading": "Welke weerweergave beantwoordt je vraag?",
+      "columns": [
+        "Je vraag",
+        "Wat je moet bekijken",
+        "Wat het niet aantoont"
+      ],
+      "rows": [
+        {
+          "cells": [
+            "Wat staat er vandaag op de planning?",
+            "Dag- of weekweergave van de kalender naast het weer voor de gekozen locatie.",
+            "Dat elk eventadres de weerlocatie automatisch wijzigt."
+          ]
+        },
+        {
+          "cells": [
+            "Kan regen mijn afspraak in de middag beïnvloeden?",
+            "Uurgegevens voor de locatie en voor de volledige periode van de afspraak.",
+            "Dat een dagsymbool elk uur beschrijft."
+          ]
+        },
+        {
+          "cells": [
+            "Kan ik volgende maand plannen op basis van het weer?",
+            "Nu je kalender, en daarna een nieuwe weerscontrole dichter bij de datum.",
+            "Dat navigeren in de kalender de weerdekking verlengt."
+          ]
+        },
+        {
+          "cells": [
+            "Kan ik thuis snel een overzicht zien?",
+            "De geschikte widget voor het beginscherm.",
+            "Dat elke widgetindeling afspraken of een volledige voorspelling bevat."
+          ]
+        }
+      ]
+    },
+    "galleryKinds": [
+      "week-right",
+      "hook"
+    ],
+    "galleryCaption": "Echte schermen van Cloud Calendars: de weerweergave en een dag met afspraken. Controleer de gekozen locatie en datum in de app.",
+    "actionHeading": "Plan met je agenda en de voorspelling samen",
+    "actionText": "Cloud Calendars is er voor iPhone en iPad. Begin met de weergaven, weer en Google Calendar-sync die in Base zijn inbegrepen; Advanced verwijdert advertenties, terwijl Premium ondersteuning voor Microsoft Calendar en Teams toevoegt.",
+    "articleLinks": [
+      {
+        "slug": "forecast-beside-every-event",
+        "label": "Bekijk het weer voor de uren van een afspraak"
+      },
+      {
+        "slug": "the-widget-that-shows-what-is-next",
+        "label": "Kies een kalender- en weerwidget"
+      },
+      {
+        "slug": "icloud-google-and-outlook-in-one-view",
+        "label": "Breng kalenderaccounts samen in één weergave"
+      }
+    ]
+  },
+  "forecast-beside-every-event": {
+    "title": "Bekijk het weer per uur voor een agenda-event op iPhone en iPad",
+    "short": "Weer tijdens de uren van een gebeurtenis",
+    "description": "Koppel de locatie, datum en uren van je event aan de beschikbare weersvoorspelling.",
+    "lede": "Om het weer voor een agenda-event te controleren, moeten drie dingen overeenkomen: de locatie, de lokale datum en de periode van begin tot eind van de afspraak. Kies in Cloud Calendars de weerlocatie en bekijk de beschikbare uren. Het adres van een event en een nabij weerpictogram zijn op zichzelf geen bewijs dat dit overeenkomt. Arte Soft, de ontwikkelaar, publiceert deze gids.",
+    "commonBelief": "Dat een dagelijks weerpictogram in een agenda dezelfde functie is als een weersverwachting die aan een gebeurtenis is gekoppeld.",
+    "sections": [
+      {
+        "heading": "Begin met plaats en datum",
+        "body": [
+          "Open de weersverwachting voor de bedoelde locatie en vergelijk de datum met die van de agenda-item. Agendaweer kan de geselecteerde weerlocatie weerspiegelen, dus controleer of die geschikt is voor de gebeurtenis in plaats van aan te nemen dat het adres van de gebeurtenis dit bepaalt.",
+          "Een gebeurtenis volgende maand kan al bestaan voordat er weergegevens voor die datum beschikbaar zijn. Laat de gebeurtenis staan en bekijk de verwachting dichter bij de datum opnieuw; een ontbrekende weersvermelding is geen voorspelling van helder weer."
+        ]
+      },
+      {
+        "heading": "Gebruik uurlijkse details bij een vraag per uur",
+        "body": [
+          "Een dagsamenvatting en een uurlijkse verwachting beantwoorden verschillende vragen. Als de gebeurtenis van twee tot vijf duurt, bekijk dan de beschikbare uren binnen dat interval in plaats van één dagelijks pictogram als het volledige beeld te zien.",
+          "Als slechts een deel van het interval beschikbaar is, laat de rest dan open. De app belooft geen volledige uurlijkse weersinformatie voor elke gebeurtenis die u kunt aanmaken, en deze gids belooft ook niet dat het openen van een gebeurtenis altijd het volledige weervenster toont."
+        ]
+      },
+      {
+        "heading": "Houd kans, hoeveelheid en timing uit elkaar",
+        "body": [
+          "Lees het label bij de waarde die u controleert. De kans op neerslag is niet hetzelfde als de hoeveelheid of duur van regen. Ook bestrijken een uurlijkse waarde en een dagsamenvatting verschillende perioden; vergelijk dezelfde perioden wanneer u twee mogelijke tijden afweegt.",
+          "Kies een alternatief dat past bij uw plan, in plaats van één percentage als universele regel voor doorgaan of annuleren te gebruiken. Weerinformatie kan veranderen, dus controleer die opnieuw wanneer er een beslissing moet worden genomen."
+        ]
+      },
+      {
+        "heading": "Controleer alles voordat u een weersafhankelijke gebeurtenis opslaat",
+        "body": [
+          "De app kan een conceptgebeurtenis starten vanuit een uur in de weersverwachting. Controleer vóór het opslaan de datum, begintijd, eindtijd en doelagenda van het concept. Een selectie uit de verwachting vervangt niet de controle of u de juiste afspraak aanmaakt.",
+          "Als agendatoegang of de doelagenda opslaan verhindert, los die toestemming dan apart van weertoegang op. Het vinden van een weersverwachting geeft geen bewerkingsrechten voor een gedeelde agenda."
+        ]
+      },
+      {
+        "heading": "Gebruik de volledige weersverwachting als de samenvatting niet genoeg is",
+        "body": [
+          "Bekijk voor een buitenactiviteit de variabelen die relevant zijn voor die activiteit en voor de locatie die u daadwerkelijk hebt gekozen. Een widget met het huidige weer of een demo op de homepage is geen vervanging voor het controleren van de beschikbare uren in de verwachting van de app.",
+          "Als u een verschil opmerkt, vergelijk dan eerst de plaats en de tijdstempel. Verschillende providers, geselecteerde plaatsen en verwachtingsperioden kunnen verschillende weergaven opleveren zonder te bewijzen dat de agendagebeurtenis is gewijzigd."
+        ]
+      }
+    ],
+    "claims": {},
+    "practical": [
+      "Controleer locatie en datum van de gebeurtenis.",
+      "Controleer de beschikbare uren gedurende de activiteit.",
+      "Lees kans en hoeveelheid als verschillende waarden.",
+      "Controleer het concept van de gebeurtenis voordat u opslaat."
+    ],
+    "seeAlso": [
+      "weather-inside-your-calendar",
+      "planning-outdoors-without-being-rained-on"
+    ],
+    "updated": "2026-10-23",
+    "faq": [
+      {
+        "q": "Heeft elke gebeurtenis een volledige weersverwachting?",
+        "a": "Nee. De dekking hangt af van de geselecteerde plaats en de beschikbare datums en uren."
+      },
+      {
+        "q": "Is het weerpictogram specifiek voor het adres van de gebeurtenis?",
+        "a": "Leid dat niet af uit de nabijheid tot de gebeurtenis. Controleer de weerlocatie apart."
+      },
+      {
+        "q": "Slaat tikken op een uur een nieuwe afspraak op?",
+        "a": "Waar beschikbaar start dit een conceptgebeurtenis. Controleer vóór het opslaan de datum, tijd en agenda."
+      }
+    ],
+    "sourcesHeading": "Weerbronnen en locatie-instellingen",
+    "sources": [
+      {
+        "label": "Apple: WeatherKit-verwachtingen en regionale beschikbaarheid",
+        "url": "https://developer.apple.com/weatherkit/"
+      },
+      {
+        "label": "Apple: Privacy en Locatievoorzieningen",
+        "url": "https://support.apple.com/en-us/102515"
+      }
+    ],
+    "comparison": {
+      "heading": "Een praktische controle vóór een afspraak buiten",
+      "columns": [
+        "Controle",
+        "Voorbeeld",
+        "Beslissing"
+      ],
+      "rows": [
+        {
+          "cells": [
+            "Locatie",
+            "De afspraak is in een andere stad.",
+            "Kies die bestemming in de weerweergave en lees de naam ervan."
+          ]
+        },
+        {
+          "cells": [
+            "Periode",
+            "De activiteit duurt van 14:00 tot 16:00.",
+            "Controleer beide uren, plus relevante voorbereiding of reistijd."
+          ]
+        },
+        {
+          "cells": [
+            "Dekking",
+            "Slechts een deel van de benodigde uren is beschikbaar.",
+            "Houd het plan voorlopig en plan nog een controle."
+          ]
+        },
+        {
+          "cells": [
+            "Opgeslagen event",
+            "Je start een concept vanuit een weeruur.",
+            "Controleer datum, tijdzone, duur en doelkalender voordat je opslaat."
+          ]
+        }
+      ]
+    },
+    "galleryKinds": [
+      "week-right",
+      "week-left"
+    ],
+    "galleryCaption": "De weer- en weekweergaven tonen verschillende delen van dezelfde planningsopgave. Controleer de voorspellocatie apart van de eventlocatie.",
+    "actionHeading": "Controleer de voorspelling aan de hand van je echte afspraken",
+    "actionText": "Gebruik Cloud Calendars op iPhone of iPad om de beschikbare voorspelling en je planning te bekijken. Het weer helpt bij je keuze; het verplaatst niet automatisch een event en bevestigt geen wijziging met deelnemers.",
+    "articleLinks": [
+      {
+        "slug": "weather-inside-your-calendar",
+        "label": "Begrijp de kalender- en weerweergaven"
+      },
+      {
+        "slug": "the-widget-that-shows-what-is-next",
+        "label": "Kies een snel overzicht voor het beginscherm"
+      },
+      {
+        "slug": "icloud-google-and-outlook-in-one-view",
+        "label": "Bekijk de kalenders achter je planning"
+      }
+    ]
+  },
+  "the-widget-that-shows-what-is-next": {
+    "updated": "2026-10-23",
+    "title": "Kalenderwidgets op iPhone en iPad: komende events en weer",
+    "short": "Komende events op het beginscherm",
+    "description": "Kies een Cloud Calendars-widget voor komende events, de datum of het weer.",
+    "lede": "Kies Calendar Events of Calendar Events Large als je komende afspraken op je beginscherm wilt. Kies Calendar & Weather voor een weergave met datum en weer. Deze indelingen beantwoorden verschillende vragen; bekijk op je apparaat eerst de beschikbare voorvertoning voordat je de widget toevoegt. Deze gids is gepubliceerd door Arte Soft, de ontwikkelaar van Cloud Calendars.",
+    "sections": [
+      {
+        "heading": "Kies eerst de gebeurtenisindeling",
+        "body": [
+          "In de widgetgalerij van Cloud Calendars is Calendar Events de middelgrote indeling met een lijst van gebeurtenissen. Calendar Events Large biedt meer ruimte voor komende afspraken. Calendar & Weather is een aparte indeling met datum en weer; het kleine formaat garandeert geen rij met de volgende gebeurtenis. Namen kunnen op je apparaat vertaald worden weergegeven.",
+          "Houd op de iPhone een leeg deel van het beginscherm ingedrukt, kies Wijzig en Voeg widget toe, zoek daarna Cloud Calendars en selecteer de gewenste indeling. Vergelijk de voorvertoning voordat je de widget toevoegt. De widgetinstructies van Apple gaan over deze systeemgalerij; die staat los van de kalenderweergaven in de app."
+        ]
+      },
+      {
+        "heading": "Voeg de widget toe op iPad en controleer hem",
+        "body": [
+          "Gebruik op iPad de widgetgalerij van Apple op het beginscherm: houd de achtergrond ingedrukt, open Wijzig en tik op Voeg widget toe. Zoek naar Cloud Calendars, bekijk de beschikbare stijlen en formaten, voeg de indeling toe die je nodig hebt, plaats hem en rond af met Gereed. Volg de knoppen die jouw iPadOS-versie toont; een voorvertoning bevestigt niet dat je agendagegevens al zijn geladen.",
+          "Kies Calendar Events of Calendar Events Large als je afspraken wilt zien. Vergelijk de stijlen die de geïnstalleerde app aanbiedt; een tegel met datum en weer beantwoordt iets anders dan een gebeurtenissenlijst.",
+          "Open Cloud Calendars op die iPad en zoek een bekende toekomstige afspraak met tijd in een geselecteerde agenda. Een correcte weergave op je iPhone bevestigt niet de accounts, toegang of geladen gegevens op de iPad. Vergelijk de titel, datum en begintijd en ga daarna verder met de controles hieronder voor geschiktheid en updates als de widget afwijkt."
+        ]
+      },
+      {
+        "heading": "Controleer wat als aankomend telt",
+        "body": [
+          "De gebeurtenissenweergave gebruikt geselecteerde agenda’s en toekomstige afspraken met tijd. Items voor de hele dag en afspraken waarvan de begintijd al voorbij is, worden uitgesloten van deze lijst met komende gebeurtenissen. Daarom kan een verjaardag of een lopende vergadering wel in de app zichtbaar zijn, maar hier niet verschijnen.",
+          "Als je bijvoorbeeld vandaag alleen een reisitem voor de hele dag hebt, betekent een lege lijst met komende gebeurtenissen niet dat dat item verdwenen is. Open de app om de volledige dag te bekijken. Ook kan de volgende afspraak met tijd morgen of later zijn; lees de datum in plaats van aan te nemen dat elke regel over vandaag gaat."
+        ]
+      },
+      {
+        "heading": "Maak onderscheid tussen een ontbrekende gebeurtenis en een lijst zonder vrije regels",
+        "body": [
+          "Een widget toont een beperkt aantal komende afspraken. Als eerdere gebeurtenissen alle regels vullen, kan een latere afspraak ontbreken terwijl die wel in de app staat en wel in aanmerking komt voor de lijst met komende gebeurtenissen. Een grotere gebeurtenissenindeling kan meer regels tonen; het is nog steeds niet de volledige agenda.",
+          "Begin met de eerstvolgende toekomstige afspraak met tijd in een geselecteerde agenda. Als die wel verschijnt maar een latere niet, open dan de app om de rest van het schema te bekijken. Ontbreekt ook de dichtstbijzijnde geschikte gebeurtenis, ga dan verder met controles op agendaselectie, toegang en updates. Verplaats of verwijder geen afspraken alleen om een latere invoer te laten verschijnen."
+        ]
+      },
+      {
+        "heading": "Maak van de app je eerste vergelijking",
+        "body": [
+          "Open Cloud Calendars en zoek één specifieke toekomstige afspraak met tijd. Controleer of de bijbehorende agenda is geselecteerd en of de app de benodigde toegang tot agenda’s heeft. Vergelijk de titel, datum en begintijd met de widget. Ontbreekt de gebeurtenis ook in de app, onderzoek dan eerst het account of de synchronisatie.",
+          "Gebruik zo nodig een onschuldige testafspraak in een agenda die van jou is voor een duidelijk voorbeeld. Geef die een begintijd in de toekomst en een herkenbare titel. Pas geen echte uitnodiging aan en verwijder geen accounts alleen om het beginscherm te testen."
+        ]
+      },
+      {
+        "heading": "Houd rekening met updates zonder uit te gaan van een vaste termijn",
+        "body": [
+          "Widgets tonen opgeslagen informatie en draaien niet continu zoals een geopende app. Apple bepaalt wanneer ze worden bijgewerkt. De app openen en de gebeurtenis controleren geeft je een nieuw vergelijkingspunt, maar legt niet vast na exact hoeveel seconden de widget moet veranderen.",
+          "Als de app correct blijft terwijl de widget onjuist blijft, noteer dan de indeling, de geselecteerde agenda, de tijd van de gebeurtenis en de versies van app en iOS. Een lege lijst, een oude afspraak en een onjuiste tijd zijn verschillende waarnemingen; meld welke jij ziet."
+        ]
+      },
+      {
+        "heading": "Lees het weer als een aparte samenvatting",
+        "body": [
+          "Het weer naast de datum is geen voorspelling die is gekoppeld aan de locatie en begintijd van elke afspraak. Open vóór een buitenactiviteit de weerweergave en controleer de bedoelde plaats en het bedoelde uur. Een pictogram met de actuele omstandigheden kan niet vaststellen welke omstandigheden er later bij een vergadering zullen zijn.",
+          "Gebruik deze widget voor snelle oriëntatie. Gebruik de volledige agenda voor afspraken voor de hele dag, gebeurtenisdetails en beslissingen waarvoor je het hele schema nodig hebt."
+        ]
+      }
+    ],
+    "claims": {},
+    "practical": [
+      "Kies Calendar Events of Calendar Events Large voor een gebeurtenissenlijst.",
+      "Controleer een toekomstige afspraak met tijd in een geselecteerde agenda.",
+      "Vergelijk eerst de datum en tijd in de app voordat je de widget gaat oplossen.",
+      "Leg blijvende verschillen vast in plaats van agendagegevens te verwijderen."
+    ],
+    "faq": [
+      {
+        "q": "Waarom ontbreekt mijn verjaardag?",
+        "a": "De lijst met komende gebeurtenissen sluit gebeurtenissen voor de hele dag uit. Bekijk de volledige agenda voor verjaardagen en andere items met alleen een datum."
+      },
+      {
+        "q": "Toont de kleine widget de volgende vergadering?",
+        "a": "De kleine indeling Calendar & Weather toont datum en weer. Kies een indeling met gebeurtenissenlijst voor afspraken."
+      },
+      {
+        "q": "Betekent geen komende gebeurtenis dat ik vandaag vrij ben?",
+        "a": "Nee. Items voor de hele dag, lopende gebeurtenissen, niet-geselecteerde agenda’s en verouderde informatie kunnen die conclusie veranderen."
+      }
+    ],
+    "sourcesHeading": "Bronnen en Apple-instructies",
+    "sources": [
+      {
+        "label": "Apple: Widgets toevoegen en bewerken op iPhone",
+        "url": "https://support.apple.com/118610"
+      },
+      {
+        "label": "Apple: Een widget actueel houden",
+        "url": "https://developer.apple.com/documentation/widgetkit/keeping-a-widget-up-to-date"
+      },
+      {
+        "label": "Apple: Widgets toevoegen, bewerken en verwijderen op iPad",
+        "url": "https://support.apple.com/guide/ipad/add-edit-and-remove-widgets-ipadb0de8630/ipados"
+      }
+    ],
+    "seeAlso": [
+      "choosing-a-widget-size",
+      "a-countdown-to-your-next-meeting",
+      "calendar-on-apple-watch"
+    ],
+    "comparison": {
+      "heading": "Kies de weergave die je echt nodig hebt",
+      "columns": [
+        "Weergave",
+        "Gebruik dit voor",
+        "Controleer voordat je erop vertrouwt"
+      ],
+      "rows": [
+        {
+          "cells": [
+            "Calendar Events",
+            "Een compacte weergave van komende afspraken met tijd.",
+            "De gebeurtenis hoort bij een geselecteerde agenda en is nog niet begonnen."
+          ]
+        },
+        {
+          "cells": [
+            "Calendar Events Large",
+            "Meer ruimte voor komende afspraken.",
+            "Ook een grotere indeling heeft nog steeds een beperkt aantal regels."
+          ]
+        },
+        {
+          "cells": [
+            "Calendar & Weather",
+            "Een snel overzicht van datum en weer.",
+            "De kleine indeling garandeert geen regel met een komende gebeurtenis."
+          ]
+        },
+        {
+          "cells": [
+            "Live Activity",
+            "Een aparte aftelling naar de volgende gebeurtenis op ondersteunde iPhone-onderdelen.",
+            "Dit is geen widget voor het beginscherm en ook geen aparte widgetindeling voor het toegangsscherm."
+          ]
+        }
+      ]
+    },
+    "galleryKinds": [
+      "widgets",
+      "live"
+    ],
+    "galleryCaption": "De widgets op het beginscherm en de Live Activity zijn aparte weergaven. Kies de indeling die past bij de informatie die je nodig hebt.",
+    "actionHeading": "Zet het nuttigste deel van je planning op het beginscherm",
+    "actionText": "Open Cloud Calendars, controleer een bekende toekomstige gebeurtenis met tijd en voeg daarna de passende widget toe op je iPhone of iPad. De app blijft de plek om de volledige agenda te bekijken.",
+    "articleLinks": [
+      {
+        "slug": "weather-inside-your-calendar",
+        "label": "Bekijk het weer naast je planning"
+      },
+      {
+        "slug": "forecast-beside-every-event",
+        "label": "Controleer de uren van een afspraak in de buitenlucht"
+      },
+      {
+        "slug": "icloud-google-and-outlook-in-one-view",
+        "label": "Controleer je gekoppelde agenda-accounts"
+      }
+    ]
+  },
+  "icloud-google-and-outlook-in-one-view": {
+    "updated": "2026-10-23",
+    "title": "Bekijk Google-, iCloud- en Outlook-agenda’s samen op iPhone en iPad",
+    "short": "Drie aanbieders, één weergave",
+    "description": "Combineer agendaweergaven en begrijp accountmachtigingen, kopieën en abonnementsvereisten.",
+    "lede": "Om werk- en privéafspraken samen te zien, koppel je de bedoelde accounts, selecteer je hun agenda’s en controleer je dezelfde gebeurtenissen in één weergave. Cloud Calendars ondersteunt planning op iPhone en iPad met iCloud en Google Calendar; ondersteuning voor Microsoft Calendar zit in Premium. Afspraken samen zien is iets anders dan bezettijd kopiëren tussen accounts van aanbieders. Arte Soft, de ontwikkelaar, publiceert deze handleiding.",
+    "commonBelief": "Meerdere agenda’s in één app zetten houdt hun beschikbaarheid, delen en gebeurteniskopieën automatisch op elkaar afgestemd.",
+    "sections": [
+      {
+        "heading": "Bepaal bij elke gebeurtenis welk account en welke agenda erachter zitten",
+        "body": [
+          "Begin met één gewone gebeurtenis van elke aanbieder. Noteer het aangemelde e-mailadres, de naam van de agenda en of de gebeurtenis van jou is of dat je een uitnodiging hebt ontvangen. Twee agenda’s met de naam ‘Agenda’ kunnen bij heel verschillende accounts horen. Een kleur helpt om snel een week te scannen; het account en de agenda bepalen waar een wijziging moet gebeuren.",
+          "Een tandartsafspraak in je persoonlijke iCloud-agenda en een projectvergadering in Microsoft kunnen bijvoorbeeld samen voor jou zichtbaar zijn. Dat maakt de tandartsafspraak op zichzelf niet zichtbaar voor je collega’s en reserveert die tijd ook niet in hun planningshulpmiddelen.",
+          "Bepaal eerst het doel voordat je een verbinding wijzigt. Wil je gebeurtenisgegevens naar een ander account verplaatsen, gebruik dan hieronder ‘Kies een agenda-exportindeling’ om een ondersteunde overdrachtsroute te vinden en controleer representatieve gebeurtenissen voordat je op de bestemming vertrouwt. Wil je tijden vergelijken, laat dan de bestaande agenda-eigenaars staan en toon geselecteerde bronnen samen. Moet een ander account bezettijd ontvangen, dan legt ‘Cloud Calendars and OneCal by workflow’ uit hoe het kopiëren van beschikbaarheid verschilt van een persoonlijk overzicht."
+        ]
+      },
+      {
+        "heading": "Maak verbinding via de juiste route",
+        "body": [
+          "Schakel voor iCloud eerst iCloud-agenda in op de iPhone onder het bedoelde Apple Account. De installatiehandleiding van Apple legt de apparaatinstellingen uit. Cloud Calendars heeft toegang tot agenda’s die beschikbaar zijn via het agendasysteem van de iPhone en heeft agendatoegang nodig om ze te lezen. Een account dat alleen op een ander apparaat is verbonden, is niet genoeg.",
+          "Cloud Calendars heeft ook de acties ‘Sign in with Google’ en ‘Sign in with Microsoft’. Controleer met welk account je inlogt en open daarna de agendagroep om de agenda’s te selecteren die je nodig hebt. Bij de juiste aanbieder inloggen met de verkeerde privé- of werkidentiteit kan een volledig geldige maar onverwachte lijst met agenda’s opleveren."
+        ]
+      },
+      {
+        "heading": "Begrijp de abonnementen zonder ze met machtigingen te verwarren",
+        "body": [
+          "Het Base-abonnement bevat synchronisatie met Google Calendar en de agendaweergaven. Advanced voegt advertentievrij gebruik toe aan Base. Premium voegt functies voor Microsoft Calendar en Microsoft Teams toe. Controleer vóór aankoop de actuele lokale prijs en factureringsperiode.",
+          "Een abonnement bepaalt welke appfuncties beschikbaar zijn; het geeft je geen eigendom over iemands anders agenda. Google maakt onderscheid tussen toestemming om gebeurtenissen te zien en toestemming om ze te wijzigen. Beleid van werkgevers en de machtigingen die aan een Microsoft-agenda zijn gekoppeld, blijven gelden. Een zichtbare gebeurtenis of een beschikbare editor is geen bewijs dat de aanbieder een update zal accepteren."
+        ]
+      },
+      {
+        "heading": "Een gecombineerde weergave kan agenda-kopieën bevatten",
+        "body": [
+          "Verbindingen met Google en Microsoft gebruiken agenda-kopieën in het agendasysteem van de iPhone om gebeurtenissen weer te geven en te synchroniseren. Ga er niet van uit dat het verbinden van een account geen kopie buiten de oorspronkelijke aanbieder achterlaat. De bestemming die voor die kopieën wordt gebruikt, kan afhangen van de agendabronnen die op het apparaat beschikbaar zijn.",
+          "Als hetzelfde account de telefoon ook via een andere route bereikt, controleer dan de namen van agenda’s en bronnen voordat je dubbele afspraken als aparte gebeurtenissen behandelt. Verberg tijdelijk één agenda om vast te stellen welke weergave die levert. Verwijder geen gebeurtenis of agenda alleen om het scherm netter te laten ogen: een gekoppelde kopie kan wijzigingen terugsturen naar de aanbieder."
+        ]
+      },
+      {
+        "heading": "Blijf de bestemming kiezen wanneer je een gebeurtenis maakt",
+        "body": [
+          "Controleer vóór het opslaan de agenda van de gebeurtenis net zo zorgvuldig als de datum en tijd. Kies voor een familieafspraak de agenda die de familie werkelijk gebruikt; gebruik voor een werkvergadering de toegestane werkbestemming. Dat je beide agenda’s samen ziet, maakt geen van beide automatisch de bestemming voor elke nieuwe gebeurtenis.",
+          "De agenda van een gebeurtenis wijzigen of die tussen agenda’s slepen kan een verplaatsing zijn, niet zomaar een onschuldige tweede weergave. Laat uitnodigingen en terugkerende vergaderingen in hun bestaande agenda staan terwijl je een weergaveprobleem onderzoekt. Als je toch iets moet wijzigen, stel dan eerst vast wie eigenaar is van de gebeurtenis en welke agenda die kan accepteren."
+        ]
+      },
+      {
+        "heading": "Controleer het overzicht voordat je erop vertrouwt",
+        "body": [
+          "Vergelijk een recente gebeurtenis in de eigen agenda van de aanbieder met de overeenkomstige gebeurtenis in Cloud Calendars. Controleer de datum, tijdzone, titel en geselecteerde agenda. Voor een bewerkbare agenda die van jou is, is een wegwerpgebeurtenis zonder gasten een betere controle dan een lopende vergadering wijzigen. Bevestig het resultaat bij de aanbieder voordat je de verbinding als gereed beschouwt.",
+          "Vertrouw er niet op dat de gecombineerde weergave automatisch anonieme bezetblokken in een ander account aanmaakt. Als je wilt dat collega’s zien dat je niet beschikbaar bent zonder persoonlijke details te zien, gebruik dan een expliciet goedgekeurde beschikbaarheidsregeling en controleer die vanaf hun kant. Een duidelijk persoonlijk overzicht en gedeelde beschikbaarheid zijn aparte taken."
+        ]
+      }
+    ],
+    "claims": {},
+    "practical": [
+      "Noteer het exacte account en de agenda voor één gebeurtenis van elke aanbieder.",
+      "Schakel de bedoelde iCloud-agenda’s op het apparaat in en controleer de agendatoegang.",
+      "Gebruik de juiste aanmelding voor Google of Microsoft en selecteer de bedoelde agenda’s.",
+      "Vergelijk één recente gebeurtenis met de weergave bij de aanbieder voordat je iets wijzigt.",
+      "Verberg een vermoedelijke dubbele bron tijdelijk; laat de onderliggende gebeurtenissen intact.",
+      "Controleer bij elke nieuwe gebeurtenis de doelagenda en verifieer afzonderlijk elke deling van bezettijd die je nodig hebt."
+    ],
+    "faq": [
+      {
+        "q": "Zien mijn collega’s op het werk mijn persoonlijke gebeurtenissen omdat ik beide agenda’s toon?",
+        "a": "Agenda’s samen weergeven is geen deelinstructie en ook geen automatische brug voor bezettijd. Controleer de werkelijke deelinstellingen van elke agenda. Verbindingen met aanbieders kunnen agenda-kopieën op het apparaat maken, dus een gecombineerde weergave garandeert ook niet dat gebeurtenisgegevens alleen bij de oorspronkelijke aanbieder bestaan."
+      },
+      {
+        "q": "Waarom kan ik een activiteit wel zien, maar niet met succes bewerken?",
+        "a": "De agenda kan alleen-lezen zijn, de activiteit kan van een andere organisator zijn, of de provider kan de wijziging weigeren. Controleer eigendom en rechten in de agenda van de provider. Een hoger appabonnement verandert die rechten niet."
+      },
+      {
+        "q": "Moet ik hetzelfde Google-account via elke beschikbare route koppelen?",
+        "a": "Controleer eerst hoe het account al op de telefoon wordt weergegeven. Meerdere routes kunnen het lastiger maken om agendakopieën te herkennen. Kies de route die je wilt gebruiken, controleer de activiteiten daarvan en verberg tijdens het onderzoeken liever een extra weergave dan meteen gegevens te verwijderen of accounts los te koppelen."
+      }
+    ],
+    "sourcesHeading": "Bronnen en referenties voor de configuratie",
+    "sources": [
+      {
+        "label": "Apple: iCloud Calendar instellen op je apparaten",
+        "url": "https://support.apple.com/guide/icloud/set-up-calendar-mme4d73a8727/icloud"
+      },
+      {
+        "label": "Google: agenda delen en rechten",
+        "url": "https://support.google.com/calendar/answer/37082?hl=en"
+      },
+      {
+        "label": "Microsoft: Outlook agenda-API en ondersteunde mailboxgegevens",
+        "url": "https://learn.microsoft.com/en-us/graph/outlook-calendar-concept-overview"
+      }
+    ],
+    "seeAlso": [
+      "exchange-calendars-on-an-iphone",
+      "what-calendar-sync-actually-does",
+      "when-two-calendars-disagree",
+      "caldav-calendar-on-iphone",
+      "calendar-export-ics-pdf-and-backup",
+      "onecal-alternative-iphone-calendar-view-or-sync"
+    ],
+    "comparison": {
+      "heading": "Gecombineerde weergave, abonnement of gekopieerde bezettijden?",
+      "columns": [
+        "Wat je nodig hebt",
+        "Wat je moet controleren",
+        "Wat je niet moet aannemen"
+      ],
+      "rows": [
+        {
+          "cells": [
+            "Eén weergave van meerdere accounts",
+            "Het gekoppelde account, de geselecteerde agenda en het vereiste abonnement.",
+            "Dat een gedeeld scherm eigendom of rechten samenvoegt."
+          ]
+        },
+        {
+          "cells": [
+            "Een wijziging aan een activiteit die de provider bereikt",
+            "De oorspronkelijke activiteit, schrijfrechten en het opgeslagen resultaat bij de bron.",
+            "Dat een zichtbare lokale wijziging bewijst dat de synchronisatie met de provider is geslaagd."
+          ]
+        },
+        {
+          "cells": [
+            "Bezettijd in een ander account",
+            "Een service met expliciete synchronisatieregels van bron naar doel.",
+            "Dat een gecombineerde weergave beschikbaarheidsblokken voor collega’s aanmaakt."
+          ]
+        },
+        {
+          "cells": [
+            "Een geabonneerde agenda-feed",
+            "De uitgever, het vernieuwingsgedrag en de alleen-lezenstatus.",
+            "Dat een ICS-abonnement een bewerkbare verbinding in twee richtingen is."
+          ]
+        }
+      ]
+    },
+    "galleryKinds": [
+      "week-left",
+      "hook"
+    ],
+    "galleryDevice": "iPad",
+    "galleryCaption": "Echte agendaweergaven op iPad laten zien hoe je een planning controleert. Een schermafbeelding toont niet de richting van providersynchronisatie of accountrechten.",
+    "actionHeading": "Bekijk je agenda’s samen op iPhone en iPad",
+    "actionText": "Google Calendar-sync is inbegrepen in Base. Advanced voegt advertentievrij gebruik toe; Premium voegt ondersteuning voor Microsoft Calendar en Teams toe. Controleer de rechten van het account los van het gekochte abonnement.",
+    "articleLinks": [
+      {
+        "slug": "onecal-alternative-iphone-calendar-view-or-sync",
+        "label": "Vergelijk een gecombineerde weergave met de synchronisatieregels van OneCal"
+      },
+      {
+        "slug": "fantastical-readdle-calendar366-iphone-comparison",
+        "label": "Vergelijk agenda-workflows op iPhone"
+      },
+      {
+        "slug": "weather-inside-your-calendar",
+        "label": "Plan met weer en activiteiten samen"
+      }
+    ]
+  },
+  "onecal-alternative-iphone-calendar-view-or-sync": {
+    "updated": "2026-10-23",
+    "title": "Cloud Calendars of OneCal? Kies een gecombineerde weergave of agendasynchronisatie",
+    "short": "Cloud Calendars en OneCal per workflow",
+    "description": "Vergelijk OneCal en Cloud Calendars op weergaven, gekopieerde activiteiten, mobiele bediening en abonnementen.",
+    "lede": "Kies op basis van het resultaat dat je nodig hebt: meerdere planningen samen bekijken, een oorspronkelijke activiteit bewerken of bezettijd naar een ander account kopiëren. Cloud Calendars biedt planningsweergaven op iPhone en iPad; OneCal beschrijft een Unified Calendar View en aparte Calendar Sync-regels. Deze vergelijking is gepubliceerd door Arte Soft, de ontwikkelaar van Cloud Calendars.",
+    "commonBelief": "Twee producten die Google-, iCloud- en Outlook-agenda’s tonen, houden beschikbaarheid, wijzigingen aan activiteiten en kopieën noodzakelijkerwijs op dezelfde manier gesynchroniseerd.",
+    "sections": [
+      {
+        "heading": "Kies tussen een overzicht en een wijziging in een ander account",
+        "body": [
+          "Als je een privéafspraak naast een werkoverleg wilt zien, heb je een gecombineerde weergave nodig. Als je werkagenda ook een bezetblok voor die privéafspraak moet bevatten, heb je een gedefinieerde workflow van bron naar doel nodig. Het eerste resultaat leidt niet automatisch tot het tweede.",
+          "Cloud Calendars brengt geselecteerde agenda’s samen in een planningsweergave op iPhone en iPad. OneCal beschrijft een Unified Calendar View afzonderlijk van Calendar Sync; volgens de uitgever kun je die weergave gebruiken zonder synchronisatieregels te configureren. Bepaal welk resultaat telt voordat je accounts koppelt of abonnementsnamen vergelijkt."
+        ]
+      },
+      {
+        "heading": "Begrijp wat een gekopieerde activiteit kan veranderen",
+        "body": [
+          "De documentatie van OneCal voor Calendar Sync beschrijft eenrichtings- en meerwegregels die kloonactiviteiten aanmaken. In de aparte handleiding over dekking staat dat wijzigingen aan een kloon niet worden teruggezet naar het origineel. Bepaal wat het origineel is en welke agenda daarvan eigenaar is voordat je een gekopieerde afspraak gebruikt om een vergadering te verplaatsen.",
+          "Providerverbindingen van Cloud Calendars kunnen ook gespiegelde agenda’s in de iOS-store aanmaken. Een gecombineerde weergave bewijst niet dat gegevens zijn samengevoegd of dat een wijziging de provider heeft bereikt. Controleer voor een agenda die van jou is en die je mag bewerken een wegwerpactiviteit zonder gasten zowel bij de provider als in de app."
+        ]
+      },
+      {
+        "heading": "Controleer de bediening op het apparaat dat je echt gebruikt",
+        "body": [
+          "De huidige mobiele handleiding van OneCal beschrijft het maken en bewerken van agenda-activiteiten, herhalingsopties, RSVP en deelnemen aan vergaderingen. Daarnaast staat er dat het maken, bewerken, pauzeren of verwijderen van Calendar Sync-configuraties in de webapp gebeurt; op mobiel worden die configuraties alleen getoond. Ook het instellen van boekingslinks wordt beschreven als een webtaak.",
+          "Cloud Calendars is een app voor iPhone en iPad met dag-, week-, maand-, jaar- en lijstweergaven. Probeer de benodigde wijziging in de geïnstalleerde weergave, lees eventuele herhalingskeuzes en controleer de opgeslagen activiteit. Ga er niet van uit dat het mobiele menu, de boekingsworkflow of de automatiseringsopties van een ander product daar ook bestaan."
+        ]
+      },
+      {
+        "heading": "Controleer de dekking in plaats van onbeperkte geschiedenis aan te nemen",
+        "body": [
+          "De huidige handleiding van OneCal over dekking noemt een toekomstig synchronisatievenster tot een jaar voor Google en iCloud en tot drie maanden voor Outlook. Er wordt ook onderscheid gemaakt tussen toekomstige terugkerende reeksen en losse historische activiteiten. Dit zijn door de uitgever gedocumenteerde limieten, geen test van jouw specifieke account en ook geen claim over elke functie in de agendaweergave.",
+          "Ook bij Cloud Calendars moet je de accountroute, geselecteerde agenda’s en relevante datums controleren. Als oude vergaderingen essentieel zijn, vergelijk dan een geïdentificeerde activiteit bij de provider en in de app. Een agenda-app is niet automatisch een volledige back-up of een garantie dat elk record uit het verleden is opgehaald."
+        ]
+      },
+      {
+        "heading": "Vergelijk abonnementsvereisten en de factureringsroute",
+        "body": [
+          "Cloud Calendars bevat Google Calendar-sync in Base; Advanced verwijdert advertenties en Premium voegt ondersteuning voor Microsoft Calendar en Teams toe. Controleer accountrechten los van het abonnement. Controleer vóór aankoop de actuele lokale prijs en factureringsperiode in plaats van uit te gaan van een vaste internationale prijsvergelijking.",
+          "De handleiding van OneCal voor webabonnementen beschrijft abonnementen per lid en een proefperiode van veertien dagen, inclusief het verwijderen van klonen wanneer de proefperiode afloopt. De mobiele factureringshandleiding beschrijft aankopen via de store en beperkingen bij het toevoegen van teamleden. Controleer welke functies een doorlopend abonnement vereisen en waar de aankoop wordt beheerd; een gratis download alleen geeft daarop geen antwoord."
+        ]
+      },
+      {
+        "heading": "Test je echte planningsworkflow voordat je overstapt",
+        "body": [
+          "Als weer, widgets of een Live Activity belangrijk zijn, neem die dan mee in de proef op het apparaat dat je gebruikt. Cloud Calendars biedt die planningsweergaven, waarbij weer beperkt is tot beschikbare datums en de geselecteerde locatie. De hier bekeken pagina’s van OneCal tonen geen functiegelijkheid voor die onderdelen; controleer het huidige product in plaats van uit een handleiding af te leiden dat iets ontbreekt.",
+          "Behoud de oorspronkelijke apps en verbindingsgegevens totdat je het vereiste resultaat hebt gecontroleerd. Noteer of je zichtbaarheid, bewerken van de oorspronkelijke activiteit, gekopieerde bezettijd of een herinnering hebt geverifieerd; dat zijn verschillende resultaten. Bekijk vóór het loskoppelen van een service wat er met bestaande kopieën gebeurt en experimenteer niet op een actieve uitnodiging of een echte klantafspraak."
+        ]
+      }
+    ],
+    "claims": {},
+    "practical": [
+      "Schrijf op of je een gecombineerde weergave nodig hebt of activiteiten die naar een ander account worden gekopieerd.",
+      "Bepaal wat de originelen en kopieën zijn, en welk account eigenaar is van elke belangrijke activiteit.",
+      "Controleer de vereiste bediening in je daadwerkelijke workflow op telefoon, tablet of web.",
+      "Vergelijk één gewone week en alle historische datums waarop je vertrouwt.",
+      "Controleer de huidige abonnementsvereisten, lokale prijs en de aanbieder van de aankoop.",
+      "Verifieer een wegwerpactiviteit en bekijk de regels voor het verwijderen van kopieën voordat je overstapt."
+    ],
+    "faq": [
+      {
+        "q": "Is een gecombineerde agendaweergave hetzelfde als het synchroniseren van bezettijd?",
+        "a": "Nee. Met een gecombineerde weergave kun je verplichtingen vergelijken. Voor het aanmaken van een vermelding in een ander account is een aparte ondersteunde workflow nodig; OneCal beschrijft Calendar Sync-regels apart van de Unified Calendar View."
+      },
+      {
+        "q": "Kan ik een OneCal-kloon wijzigen om de oorspronkelijke vergadering te verplaatsen?",
+        "a": "Volgens de handleiding over dekking worden wijzigingen aan klonen niet doorgegeven aan het origineel. Bepaal welke activiteit het origineel is en volg de bewerkings- en organisatierechten van die agenda."
+      },
+      {
+        "q": "Welke app is goedkoper voor mijn situatie?",
+        "a": "Dat hangt af van de functies, accounts, factureringsroute en lokale prijs die je nodig hebt. Cloud Calendars bevat Google-sync in Base en Microsoft-ondersteuning in Premium. Bekijk voor OneCal het huidige abonnement en de mobiele factureringsvoorwaarden voor je beoogde workflow; deze gids noemt geen universele prijswinnaar."
+      }
+    ],
+    "sourcesHeading": "Officiële documentatie van OneCal over workflows en abonnementen",
+    "sources": [
+      {
+        "label": "OneCal: mobiele functies en configuratietaken die alleen via het web kunnen",
+        "url": "https://docs.onecal.io/docs/mobile-apps"
+      },
+      {
+        "label": "OneCal: Calendar Sync en regels van bron naar doel",
+        "url": "https://docs.onecal.io/docs/calendar-sync/calendar-sync-intro"
+      },
+      {
+        "label": "OneCal: synchronisatievensters en wijzigingen aan kloonactiviteiten",
+        "url": "https://docs.onecal.io/docs/calendar-sync/what-does-onecal-sync"
+      },
+      {
+        "label": "OneCal: abonnementen, proefperiode en gedrag bij afloop",
+        "url": "https://docs.onecal.io/docs/billing/plans-and-free-trial"
+      },
+      {
+        "label": "OneCal: abonnementen in de App Store en Google Play",
+        "url": "https://docs.onecal.io/docs/billing/mobile-subscriptions"
+      }
+    ],
+    "seeAlso": [
+      "what-calendar-sync-actually-does",
+      "three-calendar-apps-is-two-too-many",
+      "free-google-sync-without-adverts",
+      "disconnect-calendar-integration-without-losing-track",
+      "what-fantastical-costs-and-what-this-does"
+    ],
+    "comparison": {
+      "heading": "Vergelijk de workflow vóór het abonnement",
+      "columns": [
+        "Vraag",
+        "Cloud Calendars",
+        "Documentatie van OneCal"
+      ],
+      "rows": [
+        {
+          "cells": [
+            "Waar bekijk ik mijn planning?",
+            "Op iPhone en iPad, met dag-, week-, maand-, jaar- en lijstweergaven.",
+            "Unified Calendar View staat los van het configureren van Calendar Sync."
+          ]
+        },
+        {
+          "cells": [
+            "Heb ik bezetblokken nodig die tussen accounts worden gekopieerd?",
+            "Leid dat niet af uit de gecombineerde weergave; providerverbindingen kunnen agenda’s lokaal spiegelen.",
+            "Calendar Sync maakt kloonactiviteiten aan met eenrichtings- of meerwegregels."
+          ]
+        },
+        {
+          "cells": [
+            "Waar wijzig ik synchronisatieregels?",
+            "Gebruik de bediening die is gedocumenteerd voor de accountverbinding van de app.",
+            "In de beoordeelde mobiele handleiding worden wijzigingen aan synchronisatieconfiguraties toegewezen aan de webapp."
+          ]
+        },
+        {
+          "cells": [
+            "Welk Cloud Calendars-abonnement heb ik nodig?",
+            "Base bevat Google Calendar-sync; Advanced verwijdert advertenties; Premium voegt Microsoft Calendar en Teams toe.",
+            "Controleer voor de vereiste workflow het huidige OneCal-abonnement en de factureringsroute."
+          ]
+        }
+      ]
+    },
+    "galleryKinds": [
+      "week-left",
+      "hook"
+    ],
+    "galleryCaption": "Echte agendaschermen van Cloud Calendars tonen de planningsweergave. De vergelijking maakt onderscheid tussen die weergave en de server-side kloonregels van een service.",
+    "actionHeading": "Kies het resultaat dat je wilt verifiëren",
+    "actionText": "Voor een overzicht op iPhone of iPad met weer en widgets kun je Cloud Calendars proberen met een onschuldige testactiviteit. Als je bezettijd naar een ander account wilt kopiëren, beoordeel dan een service die die handeling expliciet documenteert.",
+    "articleLinks": [
+      {
+        "slug": "icloud-google-and-outlook-in-one-view",
+        "label": "Een gecombineerde kalenderweergave instellen"
+      },
+      {
+        "slug": "fantastical-readdle-calendar366-iphone-comparison",
+        "label": "Andere iPhone-kalenderopties vergelijken"
+      },
+      {
+        "slug": "the-widget-that-shows-what-is-next",
+        "label": "Je beginschermweergave kiezen"
+      }
+    ]
+  },
+  "fantastical-readdle-calendar366-iphone-comparison": {
+    "updated": "2026-10-23",
+    "title": "iPhone-kalenderalternatieven: Cloud Calendars, Fantastical, Readdle en BusyCal",
+    "short": "iPhone-kalenderalternatieven vergelijken",
+    "description": "Vergelijk iPhone-kalenders op weer, weergaven, taken en de workflow die je nodig hebt.",
+    "lede": "Kies een kalender op basis van wat je wilt afronden: afspraken bekijken met weer, snel een gebeurtenis invoeren, taken beheren of accountweergaven combineren. Cloud Calendars, Fantastical, Calendars by Readdle, Calendar 366 en BusyCal verschillen in deze workflows en in hun planvereisten. Arte Soft ontwikkelt Cloud Calendars en publiceert deze vergelijking.",
+    "sections": [
+      {
+        "heading": "Bepaal eerst wat moet werken en vergelijk daarna pas het uiterlijk",
+        "body": [
+          "Noteer je kalenderproviders, apparaten en drie essentiële handelingen. Bijvoorbeeld: werk- en privékalenders samen bekijken, een herinnering voltooien en snel een vergadering toevoegen. Test die handelingen met privé-voorbeeldgegevens voordat je een volledig schema importeert.",
+          "Dat een product de naam van je provider ondersteunt, betekent niet dat elke verbindingsmethode dezelfde rechten of functies heeft. Een apparaatkalender, een rechtstreeks gekoppeld account en een geabonneerde feed kunnen vergelijkbare vermeldingen tonen, maar verschillende handelingen toestaan."
+        ]
+      },
+      {
+        "heading": "Gebruik de eigen kalender van de provider als uitgangspunt",
+        "body": [
+          "Google’s handleiding voor beginners beschrijft de eigen kalenderinterface voor plannen, taken, delen en meerdere kalenders. Als je planning daar al staat, test de vereiste handeling dan eerst bij de bron voordat je beslist of je een andere app nodig hebt.",
+          "Vergelijk bijvoorbeeld dezelfde afspraak in Google Calendar en Fantastical nadat je het bedoelde account hebt gekoppeld. Controleer of het voordeel dat je nodig hebt een gecombineerde weergave, een takenkoppeling, snelle invoer of een specifieke apparaatinterface is. Een andere kalenderclient betekent niet automatisch een migratie naar een andere provider."
+        ]
+      },
+      {
+        "heading": "Fantastical: controleer accountverbindingen en snelle invoer",
+        "body": [
+          "Flexibits documenteert zowel rechtstreekse koppelingen met kalenderaccounts als opties voor kalenders en herinneringen die al in iOS zijn ingesteld. De startersgids raadt rechtstreekse koppelingen aan voor volledig gebruik van de functies van de app. Bepaal welke route je hebt gekozen in plaats van zonder reden dezelfde kalender twee keer te koppelen.",
+          "Fantastical documenteert ook invoer op basis van zinnen en herbruikbare sjablonen voor gebeurtenissen of taken. Test een expliciete datum, duur en doelkalender en controleer daarna het opgeslagen resultaat. De syntaxis hoort bij Fantastical; het tekstveld van een andere app kan dezelfde zin anders interpreteren."
+        ]
+      },
+      {
+        "heading": "Calendars by Readdle: controleer de bron van taken",
+        "body": [
+          "Readdle presenteert Google-, Outlook- en iCloud-kalenders naast functies voor taken en natuurlijke-taalinvoer. De handleiding voor taakinstellingen beschrijft het kiezen van iOS Reminders of Google Tasks in Taakopties. Die keuze is belangrijk als het voltooien van een taak op de telefoon een specifieke oorspronkelijke lijst moet bijwerken.",
+          "Gebruik een wegwerptaak om voltooiing aan beide kanten te testen, niet alleen of een titel op een tijdlijn verschijnt. Als je een weergave of handeling ook op de Mac nodig hebt naast op de iPhone, test die daar dan ook. Ga niet uit van identieke bediening alleen omdat de productnaam gedeeld wordt."
+        ]
+      },
+      {
+        "heading": "Calendar 366: controleer systeemtoegang, sets en weerlocatie",
+        "body": [
+          "De documentatie van Calendar 366 maakt onderscheid tussen toegang tot systeemkalenders en herinneringen en rechtstreekse accountintegraties. Er worden kalendersets beschreven die zichtbare kalenders en lijsten selecteren. Die sets kunnen ook een standaardkalender bepalen, dus controleer waar een nieuw aangemaakte gebeurtenis terechtkomt.",
+          "Dezelfde documentatie beschrijft de eigen parser voor natuurlijke taal en weer via Apple Weather, met systeemlocatie of een aangepaste locatie. Controleer voor buitenplanning de geselecteerde plaats in plaats van aan te nemen dat de voorspelling het adres van elke afspraak volgt. Dit zijn door de uitgever gedocumenteerde mogelijkheden, geen functies die op jouw account zijn getest."
+        ]
+      },
+      {
+        "heading": "BusyCal: controleer de taakweergave en de weergave voor weer",
+        "body": [
+          "De iOS-handleiding voor taken van BusyCal maakt onderscheid tussen taken met datum, met tijd en zonder datum. Ook worden bediening voor voltooiing en het doorschuiven van onafgemaakte taken met datum beschreven. De weergids plaatst voorspellingen in de weergaven Lijst, Dag en Maand, dus test de specifieke weergave die je gebruikt in plaats van aan te nemen dat weer overal verschijnt.",
+          "BusyCal documenteert ook natuurlijke-taalinvoer als optie in de standaardinstellingen voor nieuwe gebeurtenissen. Probeer dezelfde privé-voorbeeldafspraak als bij de andere apps en controleer daarna de kalender en de opgeslagen tijd. Dit zijn bedieningselementen van BusyCal, geen opdrachten die elke kalenderapp deelt."
+        ]
+      },
+      {
+        "heading": "Controleer de workflow op de Watch los van die op de telefoon",
+        "body": [
+          "De Watch-handleiding van Fantastical documenteert de weergaven Up Next, Lijst en Taken, inclusief het voltooien van taken. De taakhandleiding van BusyCal maakt onderscheid tussen taken met datum en tijd die op de Watch worden getoond en taken zonder datum. Als een achterstand zonder datum belangrijk is, neem die dan mee in je test in plaats van alleen de volgende afspraak te proberen.",
+          "Een Watch-complicatie is een snelle blik, terwijl de Watch-app extra handelingen kan bieden. Controleer de gegevens en handeling op de echte watch en telefoon en bekijk het huidige plan. Desktop-, telefoon- en watchinterfaces zijn niet uitwisselbaar alleen omdat ze dezelfde productnaam gebruiken."
+        ]
+      },
+      {
+        "heading": "Behandel prijs en aanspraak als een afzonderlijke controle",
+        "body": [
+          "Controleer het huidige lokale aankoopscherm, welke functies beschikbaar blijven nadat een proefperiode afloopt en of een eerdere aankoop je aanspraak verandert. Een gratis download, een doorlopend abonnement en een oudere aankoop ontgrendelen niet noodzakelijk dezelfde functieset.",
+          "Pagina’s van uitgevers kunnen op verschillende momenten veranderen. De huidige product-FAQ van Readdle beschrijft verschillende kernfuncties als gratis, terwijl een aparte help-pagina over gratis versus volledig een andere verdeling toont. Behandel één beschrijving niet als een universele belofte, maar controleer de vereiste handeling in de geïnstalleerde app en de huidige aankoopvoorwaarden."
+        ]
+      },
+      {
+        "heading": "Waar Cloud Calendars thuishoort op de shortlist",
+        "body": [
+          "Cloud Calendars is nog een optie voor iPhone en iPad voor geselecteerde kalenders, meerdere planningsweergaven, weer en widgets. Google-sync is inbegrepen in Base, Advanced verwijdert advertenties en Premium voegt ondersteuning voor Microsoft calendar toe. Controleer het huidige plan en de providerrechten voor jouw configuratie.",
+          "Als een gespecialiseerde takenkoppeling, sjabloonopdracht of desktopworkflow essentieel is, gebruik dan het product dat die vereiste documenteert en succesvol uitvoert. Vergelijk opgeslagen resultaten en dagelijkse inspanning; een checklist moet je helpen kiezen, niet suggereren dat elke hier genoemde functie in Cloud Calendars bestaat."
+        ]
+      }
+    ],
+    "claims": {},
+    "practical": [
+      "Maak een lijst van je accounts, apparaten en essentiële handelingen.",
+      "Kies één route voor accountverbinding en controleer welke kalenders die beschikbaar maakt.",
+      "Test snelle invoer en het voltooien van taken met onschuldige voorbeelden.",
+      "Controleer de weerlocatie en de gebruikte weergaven op elk apparaat.",
+      "Controleer de huidige aankoopvoorwaarden na een proefperiode of oudere aanspraak."
+    ],
+    "faq": [
+      {
+        "q": "Wat is het beste alternatief voor Fantastical?",
+        "a": "Dat hangt af van de workflow die je nodig hebt. Vergelijk kalender- en taakbronnen, gebeurtenisinvoer, apparaatondersteuning en huidige aanspraak. Deze gids wijst geen universele winnaar aan."
+      },
+      {
+        "q": "Betekent dezelfde providernaam dat elke app identiek synchroniseert?",
+        "a": "Nee. Controleer rechtstreekse koppelingen, apparaatkalenders, feeds en rechten afzonderlijk en verifieer daarna een voorbeeldwijziging bij de bron."
+      },
+      {
+        "q": "Kan ik ervan uitgaan dat elke geadverteerde functie gratis is?",
+        "a": "Nee. Controleer de geïnstalleerde app, het lokale aankoopscherm en welke functies overblijven na een proefperiode. Documentatie van de uitgever kan verschillende versies of aanspraken beschrijven."
+      }
+    ],
+    "sourcesHeading": "Officiële documentatie gecontroleerd voor deze gids",
+    "sources": [
+      {
+        "label": "Fantastical: routes voor accountverbinding",
+        "url": "https://flexibits.com/fantastical-ios/help/getting-started"
+      },
+      {
+        "label": "Fantastical: natuurlijke-taalinvoer en sjablonen",
+        "url": "https://flexibits.com/fantastical-ios/help/adding-events-and-tasks"
+      },
+      {
+        "label": "Readdle: huidige productmogelijkheden en FAQ",
+        "url": "https://readdle.com/calendars"
+      },
+      {
+        "label": "Readdle: een taakbron selecteren",
+        "url": "https://support.readdle.com/calendars/synchronization/how-to-sync-tasks-with-ios-reminders-or-google-tasks"
+      },
+      {
+        "label": "Readdle: aparte uitleg voor gratis/volledig plan",
+        "url": "https://apphelp.readdle.com/en/index.php?id=585&pg=kb.page"
+      },
+      {
+        "label": "Calendar 366: integraties, sets, snelle invoer en weer",
+        "url": "https://calendar366.com/help/index.html"
+      },
+      {
+        "label": "BusyCal voor iOS: taken en beperkingen van taken op Watch",
+        "url": "https://www.busymac.com/docs/busycalios/70659-tasks/"
+      },
+      {
+        "label": "BusyCal voor iOS: weer en ondersteunde weergaven",
+        "url": "https://www.busymac.com/docs/busycalios/70665-weather/"
+      },
+      {
+        "label": "BusyCal voor iOS: natuurlijke-taalinvoer",
+        "url": "https://www.busymac.com/docs/busycalios/70669-natural-language/"
+      },
+      {
+        "label": "Fantastical: Apple Watch-weergaven en handelingen",
+        "url": "https://flexibits.com/fantastical-ios/help/apple-watch"
+      },
+      {
+        "label": "Google: de eigen accountgebaseerde interface van Calendar",
+        "url": "https://support.google.com/calendar/answer/2465776?hl=en"
+      }
+    ],
+    "seeAlso": [
+      "what-fantastical-costs-and-what-this-does",
+      "natural-language-calendar-events-iphone",
+      "iphone-calendar-tasks-reminders-versus-event-alerts"
+    ],
+    "comparison": {
+      "heading": "Begin met je belangrijkste vereiste",
+      "columns": [
+        "Vereiste",
+        "Relevante opties om te controleren",
+        "Belangrijk onderscheid"
+      ],
+      "rows": [
+        {
+          "cells": [
+            "Afspraken met weer en iPhone/iPad-weergaven",
+            "Cloud Calendars en de gedocumenteerde weerweergaven in de vergeleken apps.",
+            "Controleer de locatie van de voorspelling, de beschikbare periode en de weergave; weerdekking is niet onbeperkt."
+          ]
+        },
+        {
+          "cells": [
+            "Natuurlijke-taalinvoer voor gebeurtenissen",
+            "Fantastical en de relevante functie van Readdle of BusyCal.",
+            "Zinsanalyse is niet hetzelfde als dicteren of gewone bewerking van gebeurtenissen."
+          ]
+        },
+        {
+          "cells": [
+            "Taken naast afspraken",
+            "De gedocumenteerde taakbron in Readdle, Calendar 366, BusyCal of Fantastical.",
+            "Een herinnering bij een gebeurtenis is geen integratie voor het voltooien van taken."
+          ]
+        },
+        {
+          "cells": [
+            "Google Calendar-sync en optionele advertentieverwijdering",
+            "Cloud Calendars Base bevat Google Calendar-sync; Advanced verwijdert advertenties.",
+            "Ondersteuning voor Microsoft Calendar en Teams vereist Premium."
+          ]
+        },
+        {
+          "cells": [
+            "Een ander aankoopmodel",
+            "De huidige storevermelding en aanspraak voor elke app en elk platform.",
+            "Een gratis download bewijst niet dat elke functie gratis is; regionale prijzen en plannen kunnen veranderen."
+          ]
+        }
+      ]
+    },
+    "galleryKinds": [
+      "week-left",
+      "week-right",
+      "widgets"
+    ],
+    "galleryDevice": "iPad",
+    "galleryCaption": "Dit zijn schermen van Cloud Calendars voor de weergaven, het weer en de widgets van de app. Het zijn geen screenshots van de andere producten in de vergelijking.",
+    "actionHeading": "Probeer de kalender uit voor één echte planningsbehoefte",
+    "actionText": "Als je belangrijkste vereiste een planning op iPhone of iPad met weer en widgets is, beoordeel Cloud Calendars dan met een wegwerpafspraak. Houd gespecialiseerde vereisten voor taken, boekingen en natuurlijke taal apart wanneer je producten vergelijkt.",
+    "articleLinks": [
+      {
+        "slug": "weather-inside-your-calendar",
+        "label": "Bekijk hoe weer in de kalenderworkflow past"
+      },
+      {
+        "slug": "the-widget-that-shows-what-is-next",
+        "label": "De widgets van Cloud Calendars vergelijken"
+      },
+      {
+        "slug": "onecal-alternative-iphone-calendar-view-or-sync",
+        "label": "Onderscheid een gecombineerde weergave van gekopieerde bezette tijd"
+      }
+    ]
+  }
+}

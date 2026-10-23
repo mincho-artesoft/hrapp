@@ -126,11 +126,11 @@ export const WIDGETS_EN_US: Readonly<Record<string, LocalisedArticle>> = {
 },
 
   'the-widget-that-shows-what-is-next': {
-  "updated": "2026-10-22",
-  "title": "Calendar widgets on iPhone and iPad: show upcoming events",
+  "updated": "2026-10-23",
+  "title": "Calendar widgets on iPhone and iPad: upcoming events and weather",
   "short": "Upcoming events on the Home Screen",
-  "description": "Set up upcoming-event widgets on iPhone or iPad. Check selected calendars, visible rows and missing appointments before relying on the Home Screen.",
-  "lede": "For a useful next-event view, choose a widget that actually lists events. A date-and-weather tile answers a different question. This guide is published by Arte Soft, the developer of Cloud Calendars.",
+  "description": "Choose a Cloud Calendars widget for upcoming events, the date or weather.",
+  "lede": "Choose Calendar Events or Calendar Events Large when you want upcoming appointments on your Home Screen. Choose Calendar & Weather for a date-and-weather display. These layouts answer different questions; preview the one offered on your device before adding it. This guide is published by Arte Soft, the developer of Cloud Calendars.",
   "sections": [
     {
       "heading": "Choose the event layout first",
@@ -223,6 +223,65 @@ export const WIDGETS_EN_US: Readonly<Record<string, LocalisedArticle>> = {
     "choosing-a-widget-size",
     "a-countdown-to-your-next-meeting",
     "calendar-on-apple-watch"
+  ],
+  "comparison": {
+    "heading": "Choose the display you actually need",
+    "columns": [
+      "Display",
+      "Use it for",
+      "Check before relying on it"
+    ],
+    "rows": [
+      {
+        "cells": [
+          "Calendar Events",
+          "A compact view of upcoming timed appointments.",
+          "The event belongs to a selected calendar and has not started."
+        ]
+      },
+      {
+        "cells": [
+          "Calendar Events Large",
+          "More room for upcoming appointments.",
+          "A larger layout still has a limited number of rows."
+        ]
+      },
+      {
+        "cells": [
+          "Calendar & Weather",
+          "A quick date-and-weather overview.",
+          "Its small layout does not promise an upcoming-event row."
+        ]
+      },
+      {
+        "cells": [
+          "Live Activity",
+          "A separate next-event countdown on supported iPhone surfaces.",
+          "It is not a Home Screen widget or a dedicated Lock Screen widget layout."
+        ]
+      }
+    ]
+  },
+  "galleryKinds": [
+    "widgets",
+    "live"
+  ],
+  "galleryCaption": "The Home Screen widgets and the Live Activity are separate displays. Select the layout that matches the information you need.",
+  "actionHeading": "Put the useful part of your schedule on the Home Screen",
+  "actionText": "Open Cloud Calendars, check a known future timed event and then add the appropriate widget on your iPhone or iPad. The app remains the place to inspect the complete calendar.",
+  "articleLinks": [
+    {
+      "slug": "weather-inside-your-calendar",
+      "label": "Review weather beside your schedule"
+    },
+    {
+      "slug": "forecast-beside-every-event",
+      "label": "Check the hours of an outdoor appointment"
+    },
+    {
+      "slug": "icloud-google-and-outlook-in-one-view",
+      "label": "Check your connected calendar accounts"
+    }
   ]
 },
 

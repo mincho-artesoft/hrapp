@@ -42,6 +42,7 @@ export class ArticlePageComponent implements OnDestroy {
   readonly article: LocalisedArticle | undefined;
   readonly claims: ClaimRow[] = [];
   readonly seeAlso: SeeAlsoLink[] = [];
+  readonly articleLinks: SeeAlsoLink[] = [];
   readonly updated: string = '';
   readonly store: string;
   readonly storeLabel: string;
@@ -77,6 +78,10 @@ export class ArticlePageComponent implements OnDestroy {
         path: linkPath(this.locale, `/articles/${other}`),
         label: content.articles[other].short,
       }));
+
+    this.articleLinks = (this.article.articleLinks ?? [])
+      .filter(link => link.slug in content.articles)
+      .map(link => ({ path: linkPath(this.locale, `/articles/${link.slug}`), label: link.label }));
 
     const path = `/articles/${slug}`;
     inject(SeoService).apply({

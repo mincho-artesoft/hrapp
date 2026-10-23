@@ -102,130 +102,317 @@ export const ARTICLES_ID: Readonly<Record<string, LocalisedArticle>> = {
 },
 
   'weather-inside-your-calendar': {
-  "updated": "2026-10-22",
-  "title": "Kalender dengan cuaca di iPhone dan iPad: periksa konteks rencana",
+  "updated": "2026-10-23",
+  "title": "Kalender dengan cuaca di iPhone dan iPad: rencanakan hari Anda dalam satu tampilan",
   "short": "Gunakan kalender dan cuaca bersama",
-  "description": "Gunakan kalender dan cuaca di iPhone dan iPad. Periksa lokasi, jam prakiraan yang tersedia, dan detail acara sebelum menyimpan rencana.",
-  "lede": "Kalender memberi tahu kapan suatu janji dijadwalkan. Cuaca membantu menjawab pertanyaan berbeda: kondisi apa yang diperkirakan untuk tempat dan periode yang dibutuhkan? Gunakan keduanya dengan tetap memperjelas lokasi dan tanggal. Panduan ini diterbitkan oleh Arte Soft, pengembang Cloud Calendars.",
-  "commonBelief": "Cuaca di samping kalender otomatis menjelaskan alamat setiap janji, setiap jam, dan semua tanggal mendatang.",
+  "description": "Bandingkan kalender Anda dengan cuaca untuk lokasi yang dipilih di iPhone dan iPad.",
+  "lede": "Cloud Calendars menampilkan jadwal dan cuaca Anda dalam aplikasi yang sama di iPhone atau iPad. Gunakan kalender untuk memilih tanggal dan tampilan cuaca untuk meninjau lokasi yang dipilih serta jam prakiraan yang tersedia. Untuk rencana di luar ruangan, periksa periode yang benar-benar penting alih-alih mengandalkan ikon harian. Panduan ini diterbitkan oleh Arte Soft, pengembang aplikasi ini.",
+  "commonBelief": "Cuaca yang ditampilkan di samping kalender otomatis menggambarkan alamat setiap acara, setiap jam, dan setiap tanggal di masa mendatang.",
   "sections": [
     {
       "heading": "Pilih pertanyaan perencanaan yang nyata",
       "body": [
-        "Mulailah dengan janji tertentu, misalnya kunjungan sore ke taman. Tentukan apa yang mungkin berubah: waktu, tempat, persiapan, atau keputusan memilih alternatif. Anda tidak perlu mengatur ulang seluruh kalender hanya karena simbol harian menunjukkan hujan.",
-        "Catat awal dan akhir kegiatan yang sebenarnya, termasuk persiapan jika relevan. Ringkasan kalender membantu mencari tanggal yang memungkinkan, sedangkan pemeriksaan prakiraan menyangkut tempat dan interval tertentu. Pisahkan kedua tugas itu saat membandingkan pilihan."
+        "Mulailah dengan acara tertentu, misalnya kunjungan ke taman pada sore hari. Tentukan apa yang mungkin berubah: waktunya, tempatnya, persiapannya, atau keputusan untuk memakai alternatif lain. Anda tidak perlu menata ulang seluruh kalender hanya karena simbol hari itu menunjukkan hujan.",
+        "Catat waktu mulai dan selesai kegiatan yang sebenarnya, termasuk persiapan jika relevan. Gambaran umum kalender membantu menemukan tanggal yang mungkin, sedangkan pemeriksaan prakiraan berkaitan dengan lokasi dan rentang waktu tertentu. Pisahkan kedua tugas itu saat membandingkan pilihan."
       ]
     },
     {
-      "heading": "Pastikan lokasi cuaca sebelum membaca nilainya",
+      "heading": "Konfirmasikan lokasi cuaca sebelum membaca nilainya",
       "body": [
-        "Cloud Calendars menyediakan cuaca untuk lokasi saat ini atau lokasi pilihan. Periksa lokasi yang ditampilkan, bukan menganggap alamat acara diam-diam mengubah prakiraan. Janji di kota lain perlu dibandingkan dengan cuaca kota tersebut.",
-        "Misalnya, pengunjung merencanakan kedatangan di museum saat ponselnya masih di rumah. Baca lokasi prakiraan dan waktu setempat janji sebelum membandingkannya. Nilai yang terlihat berdekatan bukan bukti bahwa jadwal dan cuaca menggunakan tempat yang sama."
+        "Cloud Calendars menyediakan cuaca untuk lokasi saat ini atau lokasi yang dipilih. Periksa lokasi yang ditampilkan, jangan berasumsi bahwa alamat acara diam-diam mengubah prakiraan. Acara di kota lain perlu dibandingkan dengan cuaca di kota tersebut.",
+        "Misalnya, seseorang mungkin sedang merencanakan waktu tiba di museum saat ponselnya masih berada di rumah. Bacalah lokasi prakiraan dan waktu lokal acara sebelum membandingkannya. Nilai yang terlihat berdekatan bukan bukti bahwa jadwal dan cuaca memakai lokasi yang sama."
       ]
     },
     {
       "heading": "Periksa cakupan per jam dan harian secara terpisah",
       "body": [
-        "Gunakan entri harian sebagai gambaran umum dan entri per jam yang tersedia untuk pertanyaan tentang sebagian hari. Janji dari pukul dua sampai lima membutuhkan lebih dari sekilas melihat satu simbol. Periksa apakah jam yang relevan benar-benar tersedia.",
-        "Dalam kode aplikasi saat ini, daftar harian mengambil hingga sepuluh hari yang dikembalikan WeatherKit. Ini terpisah dari navigasi kalender maupun jam yang sedang disediakan. Janji di masa depan tidak memperpanjang cakupan cuaca. Jika periodenya tidak ada, jadwalkan pemeriksaan cuaca kemudian."
+        "Gunakan entri harian untuk orientasi dan entri per jam yang tersedia untuk pertanyaan tentang sebagian hari. Pemesanan dari pukul dua hingga lima memerlukan lebih dari sekadar melihat satu simbol. Periksa apakah jam yang relevan benar-benar tersedia.",
+        "Dalam sumber aplikasi saat ini, daftar harian memuat hingga sepuluh hari WeatherKit yang dikembalikan. Ini terpisah dari navigasi kalender dan dari jam yang saat ini disediakan. Acara di masa mendatang tidak memperluas cakupan cuaca. Jika periodenya belum tersedia, jadwalkan pemeriksaan cuaca di lain waktu."
       ]
     },
     {
       "heading": "Pahami arti nilai cuaca",
       "body": [
-        "Apple mendokumentasikan data WeatherKit seperti suhu, curah hujan, angin, dan UV, dengan beberapa produk hanya tersedia di wilayah tertentu. Baca nilai yang tersedia untuk lokasi pilihan, bukan mengharapkan semua produk cuaca di setiap tempat.",
-        "Panduan Met Office menunjukkan mengapa periode prakiraan dan definisi variabel penting: beberapa nilai berlaku pada satu saat, lainnya pada suatu periode. Gunakan label penyedia terkait. Peluang, jumlah, dan durasi hujan merupakan pertanyaan berbeda; satu angka tidak menentukan semua kegiatan luar ruangan."
+        "Apple mendokumentasikan data WeatherKit seperti suhu, presipitasi, angin, dan UV, dengan beberapa produk hanya tersedia di wilayah tertentu. Bacalah nilai yang tersedia untuk lokasi pilihan Anda, alih-alih mengharapkan semua produk cuaca tersedia di mana-mana.",
+        "Panduan Met Office menunjukkan mengapa periode prakiraan dan definisi variabel itu penting: beberapa nilai merujuk pada satu waktu, dan yang lain pada suatu periode. Gunakan label dari penyedia yang relevan. Probabilitas hujan, jumlah hujan, dan durasi hujan adalah pertanyaan yang berbeda, dan tidak ada satu angka pun yang menentukan setiap aktivitas luar ruangan."
       ]
     },
     {
-      "heading": "Tinjau draf yang dibuat dari jam cuaca",
+      "heading": "Tinjau draf yang dibuat dari satu jam cuaca",
       "body": [
-        "Jika aplikasi menawarkan pembuatan acara dari suatu jam, yang dibuka adalah draf. Kode saat ini menggunakan zona waktu lokasi cuaca, mengusulkan durasi satu jam, dan memilih kalender default untuk acara baru. Periksa setiap nilai sebelum menyimpan.",
-        "Konfirmasikan judul, kalender tujuan, awal, akhir, dan lokasi yang dimaksud. Memilih prakiraan tidak memberi izin mengedit kalender bersama, memberi tahu tempat acara, atau memesan ruang. Periksa acara tersimpan dan dapatkan kesepakatan yang dibutuhkan rencana."
+        "Jika aplikasi menawarkan pembuatan acara dari satu jam, aplikasi akan membuka draf. Sumber saat ini memakai zona waktu lokasi cuaca, mengusulkan durasi satu jam, dan memilih kalender bawaan untuk acara baru. Periksa setiap nilai sebelum menyimpan.",
+        "Konfirmasikan judul, kalender tujuan, waktu mulai, waktu selesai, dan lokasi yang dimaksud. Pemilihan prakiraan tidak memberi izin untuk mengedit kalender bersama, memberi tahu suatu tempat, atau memesan ruangan. Periksa acara yang disimpan dan dapatkan persetujuan apa pun yang dibutuhkan rencana tersebut."
       ]
     },
     {
-      "heading": "Bedakan demonstrasi situs web",
+      "heading": "Pisahkan demonstrasi situs web",
       "body": [
-        "Demonstrasi cuaca interaktif di situs menggunakan Open-Meteo. Aplikasi menggunakan Apple WeatherKit. Demo web berguna untuk menjelajahi tampilannya, tetapi lokasi, data, dan tanggal yang tersedia dapat berbeda dari aplikasi.",
-        "Untuk keputusan nyata, buka aplikasi dan bandingkan janji yang dimaksud dengan prakiraan yang tersedia. Jika mengubah rencana bersama, pastikan penyelenggara, cakupan pengulangan, dan peserta. Siapkan alternatif yang disepakati jika kegiatan bergantung pada kondisi."
+        "Demonstrasi cuaca interaktif di situs web menggunakan Open-Meteo. Aplikasi menggunakan Apple WeatherKit. Demonstrasi web berguna untuk mengeksplorasi tampilan, tetapi lokasi, data, dan tanggal yang tersedia bisa berbeda dari aplikasi.",
+        "Untuk keputusan yang nyata, buka aplikasi dan bandingkan acara yang dimaksud dengan prakiraan yang tersedia. Jika Anda mengubah rencana bersama, konfirmasikan penyelenggara, cakupan pengulangan, dan peserta. Siapkan alternatif yang telah disepakati bila kegiatan bergantung pada kondisi."
       ]
     }
   ],
   "claims": {},
   "practical": [
-    "Tentukan janji dan keputusan yang dapat dipengaruhi cuaca.",
-    "Pastikan lokasi cuaca serta tanggal dan waktu setempat janji.",
+    "Tentukan acara dan keputusan yang bisa berubah karena cuaca.",
+    "Konfirmasikan lokasi cuaca serta tanggal dan waktu lokal acara.",
     "Periksa cakupan per jam yang tersedia secara terpisah dari ringkasan harian.",
-    "Baca peluang, jumlah, dan nilai terkait lainnya menurut labelnya.",
+    "Bacalah probabilitas, jumlah, dan nilai relevan lainnya sesuai labelnya.",
     "Tinjau semua detail draf acara dan kalender tujuan sebelum menyimpan.",
-    "Periksa kembali saat mengambil keputusan dan konfirmasikan perubahan bersama secara langsung."
+    "Periksa kembali pada saat keputusan diambil dan konfirmasikan perubahan bersama secara langsung."
   ],
   "faq": [
     {
-      "q": "Apakah cuaca di samping kalender mengikuti alamat setiap acara?",
-      "a": "Jangan menganggap demikian. Pastikan lokasi cuaca yang ditampilkan dan bandingkan dengan tempat acara; kedekatan di layar tidak membuktikan kecocokan."
+      "q": "Apakah cuaca di samping kalender saya mengikuti setiap alamat acara?",
+      "a": "Jangan berasumsi demikian. Konfirmasikan lokasi cuaca yang ditampilkan dan bandingkan dengan tempat acara; kedekatan di layar tidak membuktikan kecocokannya."
     },
     {
-      "q": "Apakah aplikasi memakai penyedia cuaca situs web?",
-      "a": "Tidak. Aplikasi memakai Apple WeatherKit; demonstrasi situs memakai Open-Meteo secara terpisah."
+      "q": "Apakah aplikasi menggunakan penyedia cuaca dari situs web?",
+      "a": "Tidak. Aplikasi menggunakan Apple WeatherKit; demonstrasi situs web menggunakan Open-Meteo secara terpisah."
     },
     {
-      "q": "Apakah memilih jam prakiraan otomatis menyimpan janji?",
-      "a": "Pilihan itu memulai draf jika tindakan tersebut tersedia. Periksa tanggal, zona waktu, durasi, kalender, dan lokasi, lalu simpan acara yang dimaksud."
+      "q": "Apakah memilih satu jam prakiraan akan otomatis menyimpan acara?",
+      "a": "Tindakan itu memulai draf jika fitur tersebut tersedia. Periksa tanggal, zona waktu, durasi, kalender, dan lokasinya, lalu simpan acara yang dimaksud."
     }
   ],
   "seeAlso": [
-    "month-view-on-a-bigger-screen",
-    "icloud-google-and-outlook-in-one-view",
-    "sharing-one-event-not-your-calendar"
+    "weather-calendar-history-versus-forecast-iphone",
+    "forecast-beside-every-event",
+    "a-fourteen-day-view-of-the-weather",
+    "weather-where-the-event-is",
+    "planning-outdoors-without-being-rained-on"
   ],
   "sourcesHeading": "Sumber resmi dan bacaan lanjutan",
   "sources": [
     {
-      "label": "Apple: informasi prakiraan WeatherKit dan ketersediaan wilayah",
+      "label": "Apple: informasi prakiraan WeatherKit dan ketersediaan regional",
       "url": "https://developer.apple.com/weatherkit/"
     },
     {
-      "label": "Met Office: lokasi, periode, dan nilai prakiraan cuaca",
+      "label": "Met Office: lokasi prakiraan, periode, dan nilai cuaca",
       "url": "https://weather.metoffice.gov.uk/guides/what-does-this-forecast-mean"
+    }
+  ],
+  "comparison": {
+    "heading": "Tampilan cuaca mana yang menjawab pertanyaan Anda?",
+    "columns": [
+      "Pertanyaan Anda",
+      "Yang perlu diperiksa",
+      "Yang tidak dibuktikan"
+    ],
+    "rows": [
+      {
+        "cells": [
+          "Apa yang akan datang hari ini?",
+          "Tampilan kalender harian atau mingguan di samping cuaca untuk lokasi yang dipilih.",
+          "Bahwa setiap alamat acara otomatis mengubah lokasi cuaca."
+        ]
+      },
+      {
+        "cells": [
+          "Apakah hujan bisa memengaruhi acara saya sore ini?",
+          "Data per jam untuk tempat acara dan seluruh periode acara.",
+          "Bahwa satu simbol harian menggambarkan setiap jam."
+        ]
+      },
+      {
+        "cells": [
+          "Bisakah saya merencanakan bulan depan berdasarkan cuaca?",
+          "Kalender Anda sekarang, lalu tinjauan prakiraan lebih dekat ke tanggalnya.",
+          "Bahwa menavigasi kalender memperluas cakupan prakiraan."
+        ]
+      },
+      {
+        "cells": [
+          "Bisakah saya melihat gambaran singkat di rumah?",
+          "Widget Home Screen yang sesuai.",
+          "Bahwa setiap tata letak widget mencakup acara atau prakiraan lengkap."
+        ]
+      }
+    ]
+  },
+  "galleryKinds": [
+    "week-right",
+    "hook"
+  ],
+  "galleryCaption": "Layar Cloud Calendars yang nyata: tampilan cuaca dan satu hari dengan acara. Periksa lokasi dan tanggal yang dipilih di aplikasi.",
+  "actionHeading": "Rencanakan dengan jadwal dan prakiraan bersama-sama",
+  "actionText": "Cloud Calendars tersedia untuk iPhone dan iPad. Mulailah dengan tampilan, cuaca, dan sinkronisasi Google Calendar yang disertakan di Base; Advanced menghapus iklan, sedangkan Premium menambahkan dukungan Microsoft Calendar dan Teams.",
+  "articleLinks": [
+    {
+      "slug": "forecast-beside-every-event",
+      "label": "Periksa cuaca untuk jam-jam acara"
+    },
+    {
+      "slug": "the-widget-that-shows-what-is-next",
+      "label": "Pilih widget kalender dan cuaca"
+    },
+    {
+      "slug": "icloud-google-and-outlook-in-one-view",
+      "label": "Gabungkan akun kalender dalam satu tampilan"
     }
   ]
 },
 
   'icloud-google-and-outlook-in-one-view': {
-    title: 'iCloud, Google, dan Outlook dalam satu tampilan',
-    short: 'Tiga akun, satu tampilan',
-    description: 'Hidup hampir setiap orang terbelah antara kalender Apple pribadi, akun Google, dan Exchange kantor. Apa yang berubah ketika ketiganya masuk ke kisi yang sama.',
-    lede: 'Masalahnya hampir tidak pernah salah satu kalender itu buruk. Masalahnya Anda punya tiga dan pekan hanya satu.',
-    commonBelief: 'Bahwa memisahkan kerja dan kehidupan pribadi ke aplikasi berbeda adalah batas, bukan kekurangan.',
-    sections: [
-      {
-        heading: 'Bentrok jadwal itu soal struktur',
-        body: [
-          'Kalau komitmen Anda hidup di tiga tempat, tidak ada satu tempat pun yang bisa memberi tahu apakah Anda luang. Langkah penggabungnya adalah Anda, dan Anda menjalankannya dari ingatan, biasanya sementara seseorang menunggu jawaban.',
-          'Karena itu kegagalan klasiknya bukan melupakan sebuah acara; melainkan menyanggupi sesuatu yang bertabrakan dengan acara yang tak bisa Anda lihat.',
-        ],
-      },
-      {
-        heading: 'Apa yang diberikan satu kisi',
-        body: [
-          'Semua akun di pekan yang sama, diwarnai menurut asalnya, dapat disunting di tempat. Anda berhenti bertanya-tanya aplikasi mana yang menyimpan jawabannya, karena pertanyaannya berhenti berbentuk jamak.',
-          'iCloud dan Google tersinkron di versi gratis. Akun Microsoft — Outlook dan Exchange — masuk ke versi berbayar, karena sambungan itu punya biaya berulang yang tidak dimiliki yang lain.',
-        ],
-      },
-    ],
-    claims: {
-      accounts: 'Jenis akun yang muat dalam satu tampilan',
-      premiumMonthly: 'Biaya bulanan menambahkan Microsoft, dalam dolar',
+  "updated": "2026-10-23",
+  "title": "Lihat kalender Google, iCloud, dan Outlook bersama di iPhone dan iPad",
+  "short": "Tiga penyedia, satu tampilan",
+  "description": "Gabungkan tampilan kalender dan pahami izin akun, salinan, serta persyaratan paket.",
+  "lede": "Untuk melihat acara kerja dan pribadi bersama-sama, hubungkan akun yang dimaksud, pilih kalendernya, dan periksa acara yang sama dalam satu tampilan. Cloud Calendars mendukung perencanaan di iPhone dan iPad dengan iCloud dan Google Calendar; dukungan Microsoft Calendar tersedia di Premium. Melihat acara bersama-sama berbeda dari menyalin status sibuk antar akun penyedia. Arte Soft, pengembangnya, menerbitkan panduan ini.",
+  "commonBelief": "Menempatkan beberapa kalender dalam satu app secara otomatis menjaga ketersediaan, pembagian, dan salinan acaranya tetap selaras.",
+  "sections": [
+    {
+      "heading": "Identifikasi akun dan kalender di balik setiap acara",
+      "body": [
+        "Mulailah dengan satu acara biasa dari tiap penyedia. Catat alamat email yang masuk, nama kalender, dan apakah acara itu milik Anda atau Anda menerimanya sebagai undangan. Dua kalender bernama “Calendar” bisa berasal dari akun yang sama sekali berbeda. Warna membantu Anda memindai satu minggu; akun dan kalender menunjukkan tempat pengeditan yang tepat.",
+        "Misalnya, janji dokter gigi di kalender iCloud pribadi Anda dan rapat proyek di Microsoft dapat muncul bersama untuk Anda. Itu tidak serta-merta membuat janji dokter gigi tersebut terlihat oleh rekan kerja Anda atau memesan waktu itu di alat penjadwalan mereka.",
+        "Tentukan hasil yang Anda inginkan sebelum mengubah koneksi. Untuk memindahkan data acara ke akun lain, gunakan “Choose a calendar export format” di bawah untuk menemukan jalur transfer yang didukung dan periksa acara perwakilan sebelum mengandalkan tujuan tersebut. Untuk membandingkan waktu, pertahankan pemilik kalender yang ada dan tampilkan sumber yang dipilih bersama-sama. Jika akun lain harus menerima status sibuk, “Cloud Calendars and OneCal by workflow” menjelaskan bagaimana penyalinan ketersediaan berbeda dari ringkasan pribadi."
+      ]
     },
-    practical: [
-      'Tambahkan akun pribadi lebih dulu, lalu yang menyebabkan tabrakan.',
-      'Warnai menurut akun, bukan menurut kategori: asal itulah yang perlu terlihat sekilas.',
-      'Teruslah menulis di kalender yang sudah dibaca orang lain.',
+    {
+      "heading": "Hubungkan melalui jalur yang sesuai",
+      "body": [
+        "Untuk iCloud, terlebih dahulu aktifkan iCloud Calendar di iPhone pada Apple Account yang dimaksud. Panduan pengaturan Apple menjelaskan pengaturan perangkat ini. Cloud Calendars mengakses kalender yang tersedia melalui sistem kalender iPhone dan memerlukan akses kalender untuk membacanya. Akun yang terhubung di perangkat lain saja tidak cukup.",
+        "Cloud Calendars juga memiliki tindakan “Sign in with Google” dan “Sign in with Microsoft”. Periksa akun mana yang Anda pilih saat masuk, lalu buka grup kalendernya dan pilih kalender yang Anda perlukan. Masuk ke penyedia yang benar dengan identitas pribadi atau kerja yang salah dapat menghasilkan daftar kalender yang sepenuhnya valid tetapi tidak sesuai harapan."
+      ]
+    },
+    {
+      "heading": "Pahami paket tanpa mencampurkannya dengan izin",
+      "body": [
+        "Paket Base mencakup sinkronisasi Google Calendar dan tampilan kalender. Advanced menambahkan penghapusan iklan ke Base. Premium menambahkan fitur Microsoft Calendar dan Microsoft Teams. Tinjau harga lokal dan periode penagihan saat ini sebelum membeli.",
+        "Paket mengubah fitur app yang tersedia; paket tidak memberikan kepemilikan atas kalender milik orang lain. Google membedakan izin untuk melihat acara dari izin untuk mengubahnya. Kebijakan perusahaan dan izin yang melekat pada kalender Microsoft tetap berlaku. Acara yang terlihat atau editor yang tersedia bukan bukti bahwa penyedia akan menerima pembaruan."
+      ]
+    },
+    {
+      "heading": "Tampilan gabungan dapat mencakup salinan kalender",
+      "body": [
+        "Koneksi Google dan Microsoft menggunakan salinan kalender di sistem kalender iPhone untuk menampilkan dan menyinkronkan acara. Jangan menganggap bahwa menghubungkan akun berarti tidak ada salinan di luar penyedia aslinya. Tujuan yang digunakan untuk salinan tersebut dapat bergantung pada sumber kalender yang tersedia di perangkat.",
+        "Jika akun yang sama juga menjangkau ponsel melalui jalur lain, periksa nama kalender dan sumbernya sebelum menganggap acara yang berulang sebagai acara terpisah. Sembunyikan sementara satu kalender untuk mengidentifikasi tampilan mana yang disediakannya. Jangan hapus acara atau kalender hanya agar layar terlihat rapi: salinan yang terhubung dapat mengirim perubahan kembali ke penyedianya."
+      ]
+    },
+    {
+      "heading": "Terus pilih tujuan saat Anda membuat acara",
+      "body": [
+        "Sebelum menyimpan, periksa kalender acara sama telitinya dengan tanggal dan waktunya. Untuk acara keluarga, pilih kalender yang benar-benar digunakan keluarga; untuk rapat kerja, gunakan tujuan kerja yang diizinkan. Melihat kedua kalender bersama-sama tidak membuat salah satunya menjadi tujuan otomatis untuk setiap acara baru.",
+        "Mengubah kalender sebuah acara atau menyeretnya antar kalender bisa merupakan pemindahan, bukan sekadar tampilan kedua yang tidak berbahaya. Biarkan undangan dan rapat berulang tetap di kalender yang sudah digunakan saat Anda mendiagnosis masalah tampilan. Jika Anda perlu melakukan perubahan, tentukan dulu siapa pemilik acara itu dan kalender mana yang dapat menerimanya."
+      ]
+    },
+    {
+      "heading": "Verifikasi ringkasan sebelum mengandalkannya",
+      "body": [
+        "Bandingkan acara terbaru di kalender penyedianya sendiri dengan acara yang sesuai di Cloud Calendars. Periksa tanggal, zona waktu, judul, dan kalender yang dipilih. Untuk kalender yang dapat diedit dan Anda miliki, acara sekali pakai tanpa tamu adalah pemeriksaan yang lebih baik daripada mengubah rapat aktif. Konfirmasikan hasilnya pada penyedia sebelum menganggap koneksi siap digunakan.",
+        "Jangan mengandalkan tampilan gabungan untuk membuat blok sibuk anonim di akun lain secara otomatis. Jika Anda perlu agar rekan kerja melihat Anda tidak tersedia tanpa melihat detail pribadi, gunakan pengaturan ketersediaan yang disetujui secara eksplisit dan verifikasi dari sisi mereka. Ringkasan pribadi yang jelas dan ketersediaan bersama adalah tugas yang terpisah."
+      ]
+    }
+  ],
+  "claims": {},
+  "practical": [
+    "Daftarkan akun dan kalender yang tepat untuk satu acara dari tiap penyedia.",
+    "Aktifkan kalender iCloud yang dimaksud di perangkat dan tinjau akses kalender.",
+    "Gunakan metode masuk Google atau Microsoft yang sesuai dan pilih kalender yang dimaksud.",
+    "Bandingkan satu acara terbaru dengan tampilan penyedianya sebelum mengubah apa pun.",
+    "Sembunyikan sementara sumber yang diduga duplikat; biarkan acara dasarnya tetap utuh.",
+    "Periksa kalender tujuan pada setiap acara baru, dan verifikasi secara terpisah setiap pembagian status sibuk yang Anda perlukan."
+  ],
+  "faq": [
+    {
+      "q": "Apakah rekan kerja saya akan melihat acara pribadi saya karena saya menampilkan kedua kalender?",
+      "a": "Menampilkan kalender bersama-sama bukanlah instruksi berbagi atau jembatan status sibuk otomatis. Periksa pengaturan berbagi sebenarnya pada tiap kalender. Koneksi penyedia dapat membuat salinan kalender di perangkat, jadi tampilan gabungan juga bukan jaminan bahwa data acara hanya ada pada penyedia aslinya."
+    },
+    {
+      "q": "Mengapa saya bisa melihat sebuah acara tetapi tidak berhasil mengeditnya?",
+      "a": "Kalender tersebut mungkin hanya-baca, acara itu mungkin milik penyelenggara lain, atau penyedia menolak pembaruannya. Periksa kepemilikan dan izin di kalender penyedia. Membeli paket aplikasi yang lebih tinggi tidak mengubah izin tersebut."
+    },
+    {
+      "q": "Haruskah saya menghubungkan akun Google yang sama melalui semua jalur yang tersedia?",
+      "a": "Pertama, periksa bagaimana akun itu sudah tampil di ponsel. Beberapa jalur dapat mempersulit identifikasi salinan kalender. Pilih jalur yang ingin Anda gunakan, verifikasi acaranya, dan sembunyikan tampilan tambahan saat menyelidiki, alih-alih menghapus data atau memutuskan akun sebagai langkah pertama."
+    }
+  ],
+  "sourcesHeading": "Sumber dan referensi penyiapan",
+  "sources": [
+    {
+      "label": "Apple: atur iCloud Calendar di perangkat Anda",
+      "url": "https://support.apple.com/guide/icloud/set-up-calendar-mme4d73a8727/icloud"
+    },
+    {
+      "label": "Google: berbagi kalender dan izin",
+      "url": "https://support.google.com/calendar/answer/37082?hl=en"
+    },
+    {
+      "label": "Microsoft: API kalender Outlook dan data kotak surat yang didukung",
+      "url": "https://learn.microsoft.com/en-us/graph/outlook-calendar-concept-overview"
+    }
+  ],
+  "seeAlso": [
+    "exchange-calendars-on-an-iphone",
+    "what-calendar-sync-actually-does",
+    "when-two-calendars-disagree",
+    "caldav-calendar-on-iphone",
+    "calendar-export-ics-pdf-and-backup",
+    "onecal-alternative-iphone-calendar-view-or-sync"
+  ],
+  "comparison": {
+    "heading": "Tampilan gabungan, langganan, atau waktu sibuk yang disalin?",
+    "columns": [
+      "Yang Anda butuhkan",
+      "Yang perlu diperiksa",
+      "Yang tidak boleh diasumsikan"
     ],
-    seeAlso: ['weather-inside-your-calendar', 'what-a-subscription-actually-buys'],
+    "rows": [
+      {
+        "cells": [
+          "Satu tampilan untuk beberapa akun",
+          "Akun yang terhubung, kalender yang dipilih, dan paket yang diperlukan.",
+          "Bahwa layar bersama menggabungkan kepemilikan atau izin."
+        ]
+      },
+      {
+        "cells": [
+          "Edit acara yang sampai ke penyedianya",
+          "Acara asli, izin menulis, dan hasil tersimpan di sumbernya.",
+          "Bahwa edit lokal yang terlihat membuktikan sinkronisasi penyedia berhasil."
+        ]
+      },
+      {
+        "cells": [
+          "Waktu sibuk di akun lain",
+          "Layanan dengan aturan sinkronisasi sumber-ke-tujuan yang dinyatakan secara eksplisit.",
+          "Bahwa tampilan gabungan membuat blok ketersediaan untuk rekan kerja."
+        ]
+      },
+      {
+        "cells": [
+          "Feed kalender berlangganan",
+          "Penerbit, perilaku penyegaran, dan status hanya-baca.",
+          "Bahwa langganan ICS adalah koneksi dua arah yang dapat diedit."
+        ]
+      }
+    ]
   },
+  "galleryKinds": [
+    "week-left",
+    "hook"
+  ],
+  "galleryDevice": "iPad",
+  "galleryCaption": "Tampilan kalender iPad asli menggambarkan peninjauan jadwal. Tangkapan layar tidak menunjukkan arah sinkronisasi penyedia atau izin akun.",
+  "actionHeading": "Tinjau kalender Anda bersama-sama di iPhone dan iPad",
+  "actionText": "Sinkronisasi Google Calendar sudah termasuk dalam Base. Advanced menambahkan penghapusan iklan; Premium menambahkan dukungan Microsoft Calendar dan Teams. Konfirmasikan izin akun secara terpisah dari paket pembelian.",
+  "articleLinks": [
+    {
+      "slug": "onecal-alternative-iphone-calendar-view-or-sync",
+      "label": "Bandingkan tampilan gabungan dengan aturan sinkronisasi OneCal"
+    },
+    {
+      "slug": "fantastical-readdle-calendar366-iphone-comparison",
+      "label": "Bandingkan alur kerja kalender iPhone"
+    },
+    {
+      "slug": "weather-inside-your-calendar",
+      "label": "Rencanakan dengan weather dan acara sekaligus"
+    }
+  ]
+},
 
   'sharing-one-event-not-your-calendar': {
   "updated": "2026-10-21",

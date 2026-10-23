@@ -59,6 +59,14 @@ export interface LocalisedArticle {
   /** What most people assume, named before it is answered. */
   readonly commonBelief?: string;
   readonly sections: readonly { readonly heading: string; readonly body: readonly string[] }[];
+  /** Optional workflow table, with visible localized headings and cells. */
+  readonly comparison?: { readonly heading: string; readonly columns: readonly string[]; readonly rows: readonly { readonly cells: readonly string[] }[] };
+  readonly galleryKinds?: readonly string[];
+  readonly galleryDevice?: 'iPhone' | 'iPad' | 'iPhoneDuo';
+  readonly galleryCaption?: string;
+  readonly actionHeading?: string;
+  readonly actionText?: string;
+  readonly articleLinks?: readonly { readonly slug: string; readonly label: string }[];
   /** Wording for each fact id this article cites. */
   readonly claims: Readonly<Record<string, string>>;
   /** What to actually do, in order. */

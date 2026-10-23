@@ -95,6 +95,9 @@ export class ShotRailComponent {
   }
   private readonly currentDevice = signal<StoreMediaDevice>('iPhone');
 
+  @Input() set subjects(value: readonly string[]) { this.currentSubjects.set(value); }
+  private readonly currentSubjects = signal<readonly string[]>([]);
+
   @Input() label = 'Screenshots, scrollable';
 
   private readonly current = signal<Locale | null>(null);
@@ -114,7 +117,7 @@ export class ShotRailComponent {
       const widths = STORE_MEDIA.widths[device];
       if (!widths?.length) throw new Error(`Missing screenshot widths: ${device}`);
       const base = `${STORE_MEDIA.base}/${locale.media}/${device}`;
-      return updated.screenshots.map((shot) => {
+      return updated.screenshots.filter(shot => !this.currentSubjects().length || this.currentSubjects().includes(shot.kind)).map((shot) => {
         const alt = SHOT_DESCRIPTIONS[locale.code]?.[shot.kind];
         if (!alt) throw new Error(`Missing screenshot description: ${locale.code}/${shot.kind}`);
         return {
@@ -137,7 +140,7 @@ export class ShotRailComponent {
     const base = `${MANIFEST.base}/${locale.media}/${device}`;
     const [small, large] = widths;
 
-    return names.map((name) => {
+    return names.filter(name => !this.currentSubjects().length || this.currentSubjects().includes(name.replace(/^\d+-/, ''))).map((name) => {
       const kind = name.replace(/^\d+-/, '');
       const alt = SHOT_DESCRIPTIONS[locale.code]?.[kind];
       if (!alt) throw new Error(`Missing screenshot description: ${locale.code}/${name}`);

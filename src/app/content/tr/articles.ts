@@ -98,126 +98,317 @@ export const ARTICLES_TR: Readonly<Record<string, LocalisedArticle>> = {
 },
 
   'weather-inside-your-calendar': {
-  "updated": "2026-10-22",
-  "title": "iPhone ve iPad’de hava durumlu takvim: planı bağlamıyla kontrol edin",
+  "updated": "2026-10-23",
+  "title": "iPhone ve iPad’de hava durumlu takvim: gününüzü tek ekranda planlayın",
   "short": "Takvim ve hava durumunu birlikte kullanın",
-  "description": "iPhone ve iPad’de takvimle hava durumunu birlikte kullanın. Kaydetmeden seçili yeri, mevcut tahmin saatlerini ve etkinlik ayrıntılarını kontrol edin.",
-  "lede": "Takvim bir işin ne zaman planlandığını söyler. Hava durumu başka soruya yanıt verir: gereken yer ve dönem için hangi koşullar bekleniyor? Yerleri ve tarihleri açık tutarak ikisini birlikte kullanın. Rehber Cloud Calendars geliştiricisi Arte Soft tarafından yayımlanmıştır.",
-  "commonBelief": "Takvimin yanındaki hava durumu otomatik olarak her randevu adresini, her saati ve tüm gelecek tarihleri kapsar.",
+  "description": "iPhone ve iPad’de seçilen yer için takviminizi hava durumuyla karşılaştırın.",
+  "lede": "Cloud Calendars, programınızı ve hava durumunu aynı iPhone veya iPad uygulamasında bir araya getirir. Bir tarih seçmek için takvimi, seçilen yeri ve mevcut tahmin saatlerini incelemek için hava durumu görünümünü kullanın. Dış mekân planlarında, yalnızca günlük simgeye bakmak yerine sizin için önemli zaman aralığını kontrol edin. Bu kılavuz, uygulamanın geliştiricisi Arte Soft tarafından yayımlanmıştır.",
+  "commonBelief": "Takvimin yanında gösterilen hava durumu, otomatik olarak her etkinliğin adresini, her saati ve gelecekteki tüm tarihleri açıklar.",
   "sections": [
     {
-      "heading": "Somut bir planlama sorusu seçin",
+      "heading": "Gerçek bir planlama sorusu seçin",
       "body": [
-        "Öğleden sonra park ziyareti gibi belirli bir randevuyla başlayın. Neyin değişebileceğini belirleyin: saat, yer, hazırlık veya alternatif seçimi. Günün simgesinde yağmur var diye bütün takvimi yeniden düzenlemek gerekmez.",
-        "Gerekliyse hazırlık dahil etkinliğin gerçek başlangıç ve bitişini yazın. Takvim görünümü olası tarihleri bulmaya, tahmin kontrolü belirli yer ve aralığı değerlendirmeye yarar. Seçenekleri karşılaştırırken bu işleri ayırın."
+        "Öğleden sonra parka yapılacak bir ziyaret gibi belirli bir etkinlikle başlayın. Nelerin değişebileceğini belirleyin: saat, yer, hazırlık ya da alternatif bir seçeneği kullanma kararı. Gün simgesinde yağmur görünüyor diye tüm takvimi yeniden düzenlemeniz gerekmez.",
+        "Gerekliyse kurulum süresini de ekleyerek etkinliğin gerçek başlangıç ve bitişini not edin. Takvim genel görünümü olası tarihleri bulmaya yardımcı olur; tahmin kontrolü ise belirli bir yer ve zaman aralığıyla ilgilidir. Seçenekleri karşılaştırırken bu iki işi ayrı tutun."
       ]
     },
     {
-      "heading": "Önce tahminin yerini doğrulayın",
+      "heading": "Değerleri okumadan önce hava durumu yerini doğrulayın",
       "body": [
-        "Cloud Calendars mevcut veya seçili yer için hava durumu sunar. Etkinlik adresinin tahmini sessizce değiştirdiğini varsaymak yerine gösterilen konumu kontrol edin. Başka şehirdeki randevuyu o şehrin havasıyla karşılaştırmak gerekir.",
-        "Örneğin telefon hâlâ evdeyken müzeye varış planlanıyor olabilir. Karşılaştırmadan önce tahmin konumunu ve randevunun yerel saatini okuyun. Ekranda yakın duran değerler, program ve tahminin aynı yeri kullandığını kanıtlamaz."
+        "Cloud Calendars, mevcut veya seçilen yer için hava durumu sunar. Bir etkinliğin adresinin tahmini kendiliğinden değiştirdiğini varsaymak yerine gösterilen konumu kontrol edin. Başka bir şehirdeki etkinlik, o şehrin hava durumuyla karşılaştırılmalıdır.",
+        "Örneğin, telefon hâlâ evdeyken bir ziyaretçi müzeye varışı planlıyor olabilir. Karşılaştırma yapmadan önce tahmin konumunu ve etkinliğin yerel saatini okuyun. Ekranda birbirine yakın görünen değerler, programın ve hava durumunun aynı yeri kullandığını kanıtlamaz."
       ]
     },
     {
-      "heading": "Saatlik ve günlük kapsamı ayrı kontrol edin",
+      "heading": "Saatlik ve günlük kapsamı ayrı ayrı kontrol edin",
       "body": [
-        "Genel fikir için günlük girdiyi, günün bir bölümü için mevcut saatlik girdileri kullanın. İkiden beşe kadar rezervasyon tek simgeden fazlasını gerektirir. İlgili saatlerin gerçekten bulunduğunu kontrol edin.",
-        "Uygulamanın mevcut kaynak kodunda günlük liste WeatherKit’in döndürdüğü en fazla on günü alır. Bu, takvim gezinmesinden ve sağlanan saatlerden ayrıdır. Gelecek randevu tahmin kapsamını uzatmaz. Dönemi yoksa daha sonra tekrar hava kontrolü planlayın."
+        "Günlük girişi genel yönelim için, günün bir bölümüyle ilgili sorularda ise mevcut saatlik girişleri kullanın. İkiden beşe kadar süren bir rezervasyon için tek bir simgeye bakmak yeterli değildir. İlgili saatlerin gerçekten mevcut olup olmadığını kontrol edin.",
+        "Uygulamanın mevcut kaynağında günlük liste, döndürülen en fazla on WeatherKit gününü gösterir. Bu, takvimde gezinmeden ve şu anda sağlanan saatlerden ayrıdır. Gelecekteki bir etkinlik, hava durumu kapsamını genişletmez. İlgili zaman aralığı yoksa daha sonra yeniden hava durumu kontrolü planlayın."
       ]
     },
     {
-      "heading": "Hava değerinin anlamını okuyun",
+      "heading": "Hava durumu değerinin ne anlama geldiğini okuyun",
       "body": [
-        "Apple sıcaklık, yağış, rüzgâr ve UV gibi WeatherKit verilerini açıklar; bazı ürünler yalnızca belirli bölgelerde bulunur. Her ürünün her yerde olmasını beklemek yerine seçtiğiniz yerin mevcut değerlerini okuyun.",
-        "Met Office rehberi dönem ve değişken tanımının önemini gösterir: bazı değerler bir anı, bazıları süreyi anlatır. İlgili sağlayıcının etiketlerini kullanın. Yağmur olasılığı, miktarı ve süresi ayrı sorulardır; tek sayı her açık hava etkinliğini belirlemez."
+        "Apple, sıcaklık, yağış, rüzgâr ve UV gibi WeatherKit verilerini belgeler; bazı ürünler yalnızca belirli bölgelerde kullanılabilir. Her yerde tüm hava durumu ürünlerini beklemek yerine, seçtiğiniz yer için sunulan değerleri okuyun.",
+        "Met Office’in rehberi, tahmin dönemi ve değişken tanımlarının neden önemli olduğunu gösterir: bazı değerler bir ana, bazılarıysa bir döneme karşılık gelir. İlgili sağlayıcının etiketlerini kullanın. Yağmur olasılığı, miktarı ve süresi farklı sorulardır; tek bir sayı her dış mekân etkinliğini belirlemez."
       ]
     },
     {
-      "heading": "Tahmin saatinden oluşan taslağı inceleyin",
+      "heading": "Bir hava durumu saatinden oluşturulan taslağı gözden geçirin",
       "body": [
-        "Uygulama bir saatten etkinlik oluşturmayı sunduğunda taslak açar. Mevcut kaynak, hava konumunun saat dilimini kullanır, bir saat süre önerir ve yeni etkinlikler için varsayılan takvimi seçer. Kaydetmeden her değeri inceleyin.",
-        "Başlığı, hedef takvimi, başlangıç ve bitişi, amaçlanan konumu doğrulayın. Tahmin seçmek ortak takvimi düzenleme izni vermez, mekâna haber göndermez veya oda ayırtmaz. Kaydedilen etkinliği kontrol edip gereken anlaşmaları sağlayın."
+        "Uygulama bir saatten etkinlik oluşturma seçeneği sunduğunda, bir taslak açar. Mevcut kaynakta hava durumu konumunun saat dilimi kullanılır, bir saatlik süre önerilir ve varsayılan yeni etkinlik takvimi seçilir. Kaydetmeden önce her değeri inceleyin.",
+        "Başlığı, hedef takvimi, başlangıç ve bitişi ve amaçlanan konumu doğrulayın. Bir tahmin seçimi, paylaşılan bir takvimi düzenleme, bir mekânı bilgilendirme veya oda ayırtma izni vermez. Kaydedilen etkinliği kontrol edin ve planın gerektirdiği onayı alın."
       ]
     },
     {
-      "heading": "Web sitesi demosunu ayrı tutun",
+      "heading": "Web sitesi demosunu ayrı değerlendirin",
       "body": [
-        "Web sitesinin etkileşimli hava demosu Open-Meteo kullanır. Uygulama Apple WeatherKit kullanır. Demo sunumu keşfetmek için yararlıdır ama yeri, verisi ve mevcut tarihleri uygulamadan farklı olabilir.",
-        "Gerçek karar için uygulamayı açıp randevuyu mevcut tahminle karşılaştırın. Ortak plan değişiyorsa düzenleyiciyi, tekrar kapsamını ve katılımcıları doğrulayın. Etkinlik koşullara bağlıysa üzerinde anlaşılmış bir alternatif bulundurun."
+        "Web sitesindeki etkileşimli hava durumu demosu Open-Meteo kullanır. Uygulama ise Apple WeatherKit kullanır. Web demosu sunumu keşfetmek için yararlıdır, ancak yeri, verileri ve kullanılabilir tarihleri uygulamadan farklı olabilir.",
+        "Gerçek bir karar için uygulamayı açın ve planlanan etkinliği mevcut tahminiyle karşılaştırın. Paylaşılan bir planı değiştiriyorsanız düzenleyiciyi, tekrar kapsamını ve katılımcıları doğrulayın. Etkinlik koşullara bağlıysa üzerinde anlaşılmış bir alternatifi hazır tutun."
       ]
     }
   ],
   "claims": {},
   "practical": [
-    "Randevuyu ve havanın değiştirebileceği kararı belirleyin.",
-    "Tahmin konumunu ve randevunun yerel tarih ve saatini doğrulayın.",
-    "Mevcut saatlik kapsamı günlük özetten ayrı inceleyin.",
-    "Olasılık, miktar ve diğer değerleri etiketleriyle okuyun.",
-    "Kaydetmeden taslağı ve hedef takvimi kontrol edin.",
-    "Karar anında yeniden kontrol edip ortak değişiklikleri doğrudan doğrulayın."
+    "Etkinliği ve hava durumunun değiştirebileceği kararı belirleyin.",
+    "Hava durumu konumunu ve etkinliğin yerel tarih ve saatini doğrulayın.",
+    "Mevcut saatlik kapsamı günlük özetten ayrı olarak inceleyin.",
+    "Olasılık, miktar ve diğer ilgili değerleri etiketlerine göre okuyun.",
+    "Kaydetmeden önce tüm etkinlik taslağı ayrıntılarını ve hedef takvimi gözden geçirin.",
+    "Karar anında yeniden kontrol edin ve ortak değişiklikleri doğrudan doğrulayın."
   ],
   "faq": [
     {
-      "q": "Takvimin yanındaki hava her etkinliğin adresini takip eder mi?",
-      "a": "Varsaymayın. Gösterilen hava konumunu mekânla karşılaştırın; ekranda yakın olmaları eşleşmeyi kanıtlamaz."
+      "q": "Takvimimin yanındaki hava durumu her etkinlik adresini takip eder mi?",
+      "a": "Bunu varsaymayın. Gösterilen hava durumu konumunu doğrulayın ve mekânla karşılaştırın; ekranda yakın görünmeleri eşleştiğini kanıtlamaz."
     },
     {
-      "q": "Uygulama sitenin hava sağlayıcısını mı kullanır?",
-      "a": "Hayır. Uygulama Apple WeatherKit, site demosu ayrı olarak Open-Meteo kullanır."
+      "q": "Uygulama, web sitesindeki hava durumu sağlayıcısını mı kullanıyor?",
+      "a": "Hayır. Uygulama Apple WeatherKit kullanır; web sitesi demosu ise ayrı olarak Open-Meteo kullanır."
     },
     {
-      "q": "Tahmin saati seçmek randevuyu otomatik kaydeder mi?",
-      "a": "Bu işlem sunulduğunda taslak başlatır. Tarih, saat dilimi, süre, takvim ve konumu kontrol edip istediğiniz etkinliği kaydedin."
+      "q": "Bir tahmin saatini seçmek etkinliği otomatik olarak kaydeder mi?",
+      "a": "Bu işlem, o seçeneğin sunulduğu bir taslak başlatır. Tarihi, saat dilimini, süreyi, takvimi ve konumu kontrol edin; ardından istediğiniz etkinliği kaydedin."
     }
+  ],
+  "seeAlso": [
+    "weather-calendar-history-versus-forecast-iphone",
+    "forecast-beside-every-event",
+    "a-fourteen-day-view-of-the-weather",
+    "weather-where-the-event-is",
+    "planning-outdoors-without-being-rained-on"
   ],
   "sourcesHeading": "Resmî kaynaklar ve ek okumalar",
   "sources": [
     {
-      "label": "Apple: WeatherKit tahminleri ve bölgesel kullanılabilirlik",
+      "label": "Apple: WeatherKit tahmin bilgileri ve bölgesel kullanılabilirlik",
       "url": "https://developer.apple.com/weatherkit/"
     },
     {
-      "label": "Met Office: tahmin yeri, dönemleri ve hava değerleri",
+      "label": "Met Office: tahmin yeri, dönemler ve hava durumu değerleri",
       "url": "https://weather.metoffice.gov.uk/guides/what-does-this-forecast-mean"
     }
   ],
-  "seeAlso": []
+  "comparison": {
+    "heading": "Hangi hava durumu görünümü sorunuza yanıt verir?",
+    "columns": [
+      "Sorunuz",
+      "Neye bakılmalı",
+      "Neyi kanıtlamaz"
+    ],
+    "rows": [
+      {
+        "cells": [
+          "Bugün sırada ne var?",
+          "Seçilen yerin hava durumunun yanındaki günlük veya haftalık takvim görünümü.",
+          "Her etkinlik adresinin hava durumu konumunu otomatik olarak değiştirdiğini."
+        ]
+      },
+      {
+        "cells": [
+          "Yağmur öğleden sonraki etkinliğimi etkileyebilir mi?",
+          "Mekân için saatlik veriler ve etkinliğin tüm zaman aralığı.",
+          "Günlük bir simgenin her saati açıkladığını."
+        ]
+      },
+      {
+        "cells": [
+          "Gelecek ayı hava durumuna göre planlayabilir miyim?",
+          "Önce şimdi takviminiz, sonra tarihe yaklaştıkça tahmin kontrolü.",
+          "Takvimde gezinmenin tahmin kapsamını genişlettiğini."
+        ]
+      },
+      {
+        "cells": [
+          "Evde hızlı bir genel görünüm görebilir miyim?",
+          "Uygun Ana Ekran araç takımını.",
+          "Her araç takımı düzeninin etkinlikleri veya tam tahmini içerdiğini."
+        ]
+      }
+    ]
+  },
+  "galleryKinds": [
+    "week-right",
+    "hook"
+  ],
+  "galleryCaption": "Gerçek Cloud Calendars ekranları: hava durumu görünümü ve etkinliklerin olduğu bir gün. Uygulamada seçilen yeri ve tarihi kontrol edin.",
+  "actionHeading": "Programınız ve tahmini birlikte kullanarak plan yapın",
+  "actionText": "Cloud Calendars, iPhone ve iPad içindir. Base ile görünümler, hava durumu ve Google Calendar eşzamanlaması dahildir; Advanced reklamları kaldırır, Premium ise Microsoft Calendar ve Teams desteği ekler.",
+  "articleLinks": [
+    {
+      "slug": "forecast-beside-every-event",
+      "label": "Bir etkinliğin saatleri için hava durumunu kontrol edin"
+    },
+    {
+      "slug": "the-widget-that-shows-what-is-next",
+      "label": "Bir takvim ve hava durumu araç takımı seçin"
+    },
+    {
+      "slug": "icloud-google-and-outlook-in-one-view",
+      "label": "Takvim hesaplarını tek görünümde bir araya getirin"
+    }
+  ]
 },
 
   'icloud-google-and-outlook-in-one-view': {
-    title: 'iCloud, Google ve Outlook tek görünümde',
-    short: 'Üç hesap, tek görünüm',
-    description: 'Neredeyse herkesin hayatı kişisel bir Apple takvimi, bir Google hesabı ve işten bir Exchange arasında bölünmüştür. Aynı ızgaraya girdiklerinde ne değişir.',
-    lede: 'Sorun neredeyse hiçbir zaman takvimlerden birinin kötü olması değildir. Sorun üç tane olması ve haftanın bir tane olmasıdır.',
-    commonBelief: 'İşi ve özel hayatı ayrı uygulamalarda tutmanın bir sınır olduğu, bir eksiklik olmadığı.',
-    sections: [
-      {
-        heading: 'Çift randevu yapısaldır',
-        body: [
-          'Taahhütleriniz üç yerde yaşıyorsa, hiçbir yer size boş olup olmadığınızı söyleyemez. Birleştirme adımı sizsiniz ve onu ezberden çalıştırırsınız, genellikle biri yanıt beklerken.',
-          'Bu yüzden klasik hata bir etkinliği unutmak değildir; göremediğiniz bir etkinlikle çakışan bir şeye evet demektir.',
-        ],
-      },
-      {
-        heading: 'Tek ızgara ne verir',
-        body: [
-          'Tüm hesaplar aynı haftada, kaynağına göre renklendirilmiş, yerinde düzenlenebilir. Yanıtın hangi uygulamada olduğunu merak etmeyi bırakırsınız, çünkü soru çoğul olmaktan çıkar.',
-          'iCloud ve Google ücretsiz sürümde eşitlenir. Microsoft hesapları — Outlook ve Exchange — ücretliye aittir, çünkü o bağlantının diğerlerinde olmayan yinelenen bir maliyeti vardır.',
-        ],
-      },
-    ],
-    claims: {
-      accounts: 'Tek görünüme sığan hesap türü sayısı',
-      premiumMonthly: 'Microsoft eklemenin aylık ücreti, dolar olarak',
+  "updated": "2026-10-23",
+  "title": "Google, iCloud ve Outlook takvimlerini iPhone ve iPad’de birlikte görün",
+  "short": "Üç sağlayıcı, tek görünüm",
+  "description": "Takvim görünümlerini birleştirin; hesap izinlerini, kopyaları ve plan gereksinimlerini anlayın.",
+  "lede": "İş ve kişisel etkinlikleri birlikte görmek için ilgili hesapları bağlayın, takvimlerini seçin ve aynı etkinlikleri tek görünümde kontrol edin. Cloud Calendars, iPhone ve iPad planlamasında iCloud ve Google Calendar’ı destekler; Microsoft Calendar desteği Premium’dadır. Etkinlikleri birlikte görmek, sağlayıcı hesapları arasında meşguliyet bilgisini kopyalamaktan farklıdır. Bu kılavuz, geliştirici Arte Soft tarafından yayımlanmıştır.",
+  "commonBelief": "Bir uygulamada birden fazla takvimi göstermek, bunların uygunluk, paylaşım ve etkinlik kopyalarını otomatik olarak birbiriyle uyumlu tutar.",
+  "sections": [
+    {
+      "heading": "Her etkinliğin arkasındaki hesap ve takvimi belirleyin",
+      "body": [
+        "Her sağlayıcıdan bir sıradan etkinlikle başlayın. Oturum açılmış e-posta adresini, takvim adını ve etkinliğin size mi ait olduğunu yoksa bir davet mi aldığınızı not edin. “Calendar” adlı iki takvim tamamen farklı hesaplara ait olabilir. Renk, haftayı taramanıza yardımcı olur; ancak düzenlemenin nereye yapılacağını hesap ve takvim belirler.",
+        "Örneğin kişisel iCloud takviminizdeki bir diş hekimi randevusu ile Microsoft’taki bir proje toplantısı sizin için birlikte görünebilir. Bu, tek başına, diş hekimi randevusunu iş arkadaşlarınıza görünür yapmaz veya onların planlama araçlarında bu zamanı ayırmaz.",
+        "Bağlantıyı değiştirmeden önce sonucu belirleyin. Etkinlik verilerini başka bir hesaba taşımak için, desteklenen aktarım yolunu bulmak üzere aşağıdaki “Bir takvim dışa aktarma biçimi seçin” bölümünü kullanın ve hedefe güvenmeden önce temsilî etkinlikleri kontrol edin. Saatleri karşılaştırmak için mevcut takvim sahiplerini koruyun ve seçili kaynakları birlikte görüntüleyin. Başka bir hesabın meşguliyet bilgisini alması gerekiyorsa, “İş akışına göre Cloud Calendars ve OneCal”, uygunluk kopyalamanın kişisel genel bakıştan nasıl farklı olduğunu açıklar."
+      ]
     },
-    practical: [
-      'Önce kişisel hesabı, sonra çakışmalara yol açanı ekleyin.',
-      'Kategoriye değil hesaba göre renklendirin: bir bakışta görülmesi gereken kaynaktır.',
-      'Başkalarının zaten okuduğu takvime yazmayı sürdürün.',
+    {
+      "heading": "Uygun yöntemle bağlanın",
+      "body": [
+        "iCloud için önce iPhone’da ilgili Apple Account altında iCloud Calendar’ı etkinleştirin. Apple’ın kurulum kılavuzu cihaz ayarlarını açıklar. Cloud Calendars, iPhone’un takvim sistemi üzerinden kullanılabilen takvimlere erişir ve bunları okumak için takvim erişimine ihtiyaç duyar. Hesabın başka bir cihazda bağlı olması yeterli değildir.",
+        "Cloud Calendars’ta ayrıca “Sign in with Google” ve “Sign in with Microsoft” işlemleri de vardır. Oturum açarken hangi hesabı seçtiğinizi kontrol edin, ardından ilgili takvim grubunu açın ve ihtiyacınız olan takvimleri seçin. Doğru sağlayıcıda, yanlış kişisel veya iş kimliğiyle oturum açmak tamamen geçerli ama beklenmedik bir takvim listesi oluşturabilir."
+      ]
+    },
+    {
+      "heading": "Planları, izinlerle karıştırmadan anlayın",
+      "body": [
+        "Base planı Google Calendar eşitlemesini ve takvim görünümlerini içerir. Advanced, Base’e reklam kaldırmayı ekler. Premium, Microsoft Calendar ve Microsoft Teams özelliklerini ekler. Satın almadan önce güncel yerel fiyatı ve faturalandırma dönemini inceleyin.",
+        "Bir plan, uygulamada hangi özelliklerin kullanılabildiğini değiştirir; size başkasının takvimi üzerinde sahiplik vermez. Google, etkinlikleri görme izni ile onları değiştirme iznini birbirinden ayırır. İşveren politikaları ve bir Microsoft takvimine bağlı izinler geçerliliğini korur. Görünen bir etkinlik veya kullanılabilir bir düzenleyici, sağlayıcının bir güncellemeyi kabul edeceğinin kanıtı değildir."
+      ]
+    },
+    {
+      "heading": "Birleşik görünüm takvim kopyaları içerebilir",
+      "body": [
+        "Google ve Microsoft bağlantıları, etkinlikleri sunmak ve eşitlemek için iPhone takvim sisteminde takvim kopyaları kullanır. Bir hesabı bağlamanın, özgün sağlayıcının dışında hiçbir kopya bırakmadığını varsaymayın. Bu kopyalar için kullanılan hedef, cihazda mevcut olan takvim kaynaklarına bağlı olabilir.",
+        "Aynı hesap telefona başka bir yolla da ulaşıyorsa, yinelenen etkinlikleri ayrı etkinlikler saymadan önce takvim adlarını ve kaynaklarını inceleyin. Hangi görünümü hangi takvimin sağladığını belirlemek için bir takvimi geçici olarak gizleyin. Sadece ekran daha düzenli görünsün diye bir etkinliği veya takvimi silmeyin: bağlı bir kopya, değişiklikleri sağlayıcısına geri gönderebilir."
+      ]
+    },
+    {
+      "heading": "Etkinlik oluştururken hedefi seçmeye devam edin",
+      "body": [
+        "Kaydetmeden önce etkinliğin takvimini en az tarih ve saat kadar dikkatle kontrol edin. Bir aile etkinliği için ailenin gerçekten kullandığı takvimi seçin; bir iş toplantısı için izin verilen iş hedefini kullanın. Her iki takvimi birlikte görmek, bunlardan herhangi birini her yeni etkinlik için otomatik hedef yapmaz.",
+        "Bir etkinliğin takvimini değiştirmek veya onu takvimler arasında sürüklemek, zararsız bir ikinci görünüm değil, bir taşıma işlemi olabilir. Görünüm sorununu teşhis ederken davetleri ve yinelenen toplantıları yerleşik takvimlerinde tutun. Bir değişiklik yapmanız gerekiyorsa önce etkinliğin sahibini ve hangi takvimin bunu kabul edebileceğini belirleyin."
+      ]
+    },
+    {
+      "heading": "Güvenmeden önce genel görünümü doğrulayın",
+      "body": [
+        "Sağlayıcının kendi takvimindeki yakın tarihli bir etkinliği, Cloud Calendars’taki karşılığıyla karşılaştırın. Tarihi, saat dilimini, başlığı ve seçili takvimi kontrol edin. Düzenlenebilir, sahibi olduğunuz bir takvim için konuksuz, geçici bir etkinlik, aktif bir toplantıyı değiştirmekten daha iyi bir kontroldür. Bağlantıyı hazır kabul etmeden önce sonucu sağlayıcı tarafında doğrulayın.",
+        "Birleşik görünüme, başka bir hesapta otomatik olarak anonim meşguliyet blokları oluşturması için güvenmeyin. İş arkadaşlarınızın kişisel ayrıntıları görmeden sizi müsait değil olarak görmesi gerekiyorsa, açıkça onaylanmış bir uygunluk düzeni kullanın ve bunu onların tarafından doğrulayın. Net bir kişisel genel bakış ile paylaşılan uygunluk ayrı işlerdir."
+      ]
+    }
+  ],
+  "claims": {},
+  "practical": [
+    "Her sağlayıcıdan bir etkinlik için tam hesabı ve takvimi listeleyin.",
+    "Cihazda ilgili iCloud takvimlerini etkinleştirin ve takvim erişimini gözden geçirin.",
+    "Uygun Google veya Microsoft oturum açma yöntemini kullanın ve hedeflenen takvimleri seçin.",
+    "Herhangi bir şeyi değiştirmeden önce yakın tarihli bir etkinliği sağlayıcı görünümüyle karşılaştırın.",
+    "Şüpheli yinelenen kaynağı geçici olarak gizleyin; alttaki etkinlikleri olduğu gibi bırakın.",
+    "Her yeni etkinlikte hedef takvimi kontrol edin ve ihtiyacınız olan meşguliyet paylaşımını ayrıca doğrulayın."
+  ],
+  "faq": [
+    {
+      "q": "Her iki takvimi de görüntülediğim için iş arkadaşlarım kişisel etkinliklerimi görecek mi?",
+      "a": "Takvimleri birlikte görüntülemek, bir paylaşım talimatı veya otomatik meşguliyet köprüsü değildir. Her takvimin gerçek paylaşım ayarlarını kontrol edin. Sağlayıcı bağlantıları cihazda takvim kopyaları oluşturabilir; bu nedenle birleşik görünüm, etkinlik verilerinin yalnızca özgün sağlayıcısında bulunduğunun da garantisi değildir."
+    },
+    {
+      "q": "Bir etkinliği neden görebiliyorum ama başarıyla düzenleyemiyorum?",
+      "a": "Takvim salt okunur olabilir, etkinlik başka bir düzenleyiciye ait olabilir veya sağlayıcı güncellemeyi reddedebilir. Sahipliği ve izinleri sağlayıcının takviminde kontrol edin. Daha yüksek bir uygulama planı satın almak bu izinleri değiştirmez."
+    },
+    {
+      "q": "Aynı Google hesabını mevcut tüm yollarla bağlamalı mıyım?",
+      "a": "Önce telefonunuzda bunun zaten nasıl göründüğünü kontrol edin. Birden fazla yol, takvim kopyalarını ayırt etmeyi zorlaştırabilir. Kullanmayı düşündüğünüz yolu seçin, etkinliklerini doğrulayın ve ilk adım olarak verileri silmek veya hesapların bağlantısını kesmek yerine, inceleme sırasında fazla görünen bir görünümü gizleyin."
+    }
+  ],
+  "sourcesHeading": "Kaynaklar ve kurulum başvuruları",
+  "sources": [
+    {
+      "label": "Apple: aygıtlarınızda iCloud Calendar’ı ayarlama",
+      "url": "https://support.apple.com/guide/icloud/set-up-calendar-mme4d73a8727/icloud"
+    },
+    {
+      "label": "Google: takvim paylaşımı ve izinler",
+      "url": "https://support.google.com/calendar/answer/37082?hl=en"
+    },
+    {
+      "label": "Microsoft: Outlook takvim API’si ve desteklenen posta kutusu verileri",
+      "url": "https://learn.microsoft.com/en-us/graph/outlook-calendar-concept-overview"
+    }
+  ],
+  "seeAlso": [
+    "exchange-calendars-on-an-iphone",
+    "what-calendar-sync-actually-does",
+    "when-two-calendars-disagree",
+    "caldav-calendar-on-iphone",
+    "calendar-export-ics-pdf-and-backup",
+    "onecal-alternative-iphone-calendar-view-or-sync"
+  ],
+  "comparison": {
+    "heading": "Birleşik görünüm mü, abonelik mi, yoksa kopyalanmış meşguliyet zamanı mı?",
+    "columns": [
+      "İhtiyacınız olan",
+      "Kontrol edilmesi gerekenler",
+      "Varsaymamanız gerekenler"
     ],
-    seeAlso: ['weather-inside-your-calendar', 'what-a-subscription-actually-buys'],
+    "rows": [
+      {
+        "cells": [
+          "Birden fazla hesabın tek görünümü",
+          "Bağlı hesap, seçili takvim ve gerekli plan.",
+          "Paylaşılan bir ekranın sahipliği veya izinleri birleştirdiği."
+        ]
+      },
+      {
+        "cells": [
+          "Sağlayıcısına ulaşan bir etkinlik düzenlemesi",
+          "Orijinal etkinlik, yazma izni ve kaynaktaki kayıtlı sonuç.",
+          "Görünür bir yerel düzenlemenin sağlayıcıyla başarılı eşitlemeyi kanıtladığı."
+        ]
+      },
+      {
+        "cells": [
+          "Başka bir hesaptaki meşguliyet zamanı",
+          "Kaynak-hedef eşitleme kurallarını açıkça tanımlayan bir hizmet.",
+          "Birleşik görünümün iş arkadaşları için müsaitlik blokları oluşturduğu."
+        ]
+      },
+      {
+        "cells": [
+          "Abone olunan bir takvim akışı",
+          "Yayıncı, yenileme davranışı ve salt okunur durum.",
+          "Bir ICS aboneliğinin düzenlenebilir, çift yönlü bir bağlantı olduğu."
+        ]
+      }
+    ]
   },
+  "galleryKinds": [
+    "week-left",
+    "hook"
+  ],
+  "galleryDevice": "iPad",
+  "galleryCaption": "Gerçek iPad takvim görünümleri, bir programın gözden geçirilmesini örnekler. Bir ekran görüntüsü, sağlayıcı eşitlemesinin yönünü veya hesap izinlerini göstermez.",
+  "actionHeading": "Takvimlerinizi iPhone ve iPad’de birlikte gözden geçirin",
+  "actionText": "Google Calendar eşitlemesi Base’e dahildir. Advanced reklam kaldırma ekler; Premium ise Microsoft Calendar ve Teams desteği ekler. Hesabın izinlerini, satın alma planından bağımsız olarak doğrulayın.",
+  "articleLinks": [
+    {
+      "slug": "onecal-alternative-iphone-calendar-view-or-sync",
+      "label": "Birleşik görünümü OneCal eşitleme kurallarıyla karşılaştırın"
+    },
+    {
+      "slug": "fantastical-readdle-calendar366-iphone-comparison",
+      "label": "iPhone takvim iş akışlarını karşılaştırın"
+    },
+    {
+      "slug": "weather-inside-your-calendar",
+      "label": "Hava durumu ve etkinliklerle birlikte plan yapın"
+    }
+  ]
+},
 
   'sharing-one-event-not-your-calendar': {
   "updated": "2026-10-21",

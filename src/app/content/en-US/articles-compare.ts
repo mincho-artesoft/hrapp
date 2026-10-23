@@ -3,11 +3,11 @@ import { LocalisedArticle } from '../types';
 /** Developer-authored plan and workflow guides; publisher sources are not independent runtime tests. */
 export const COMPARE_EN_US: Readonly<Record<string, LocalisedArticle>> = {
   "onecal-alternative-iphone-calendar-view-or-sync": {
-  "updated": "2026-10-22",
-  "title": "Cloud Calendars or OneCal? Compare iPhone views and calendar syncing",
+  "updated": "2026-10-23",
+  "title": "Cloud Calendars or OneCal? Choose a combined view or calendar sync",
   "short": "Cloud Calendars and OneCal by workflow",
-  "description": "Compare Cloud Calendars and OneCal for iPhone: combined views, calendar copies, mobile controls and plans. Choose by the task you need to complete.",
-  "lede": "Seeing several calendars together is different from copying their events into other accounts. Start with that distinction before comparing an iPhone calendar app with a calendar-sync service. Arte Soft develops Cloud Calendars and publishes this comparison; it is not an independent performance benchmark.",
+  "description": "Compare OneCal and Cloud Calendars by views, copied events, mobile controls and plans.",
+  "lede": "Choose by the result you need: reviewing several schedules together, editing an original event or copying busy time into another account. Cloud Calendars provides iPhone and iPad planning views; OneCal documents a unified view and separate Calendar Sync rules. This comparison is published by Arte Soft, the developer of Cloud Calendars.",
   "commonBelief": "Two products that show Google, iCloud and Outlook calendars necessarily keep availability, event edits and copies in sync in the same way.",
   "sections": [
     {
@@ -105,6 +105,65 @@ export const COMPARE_EN_US: Readonly<Record<string, LocalisedArticle>> = {
     "free-google-sync-without-adverts",
     "disconnect-calendar-integration-without-losing-track",
     "what-fantastical-costs-and-what-this-does"
+  ],
+  "comparison": {
+    "heading": "Compare the workflow before the subscription",
+    "columns": [
+      "Question",
+      "Cloud Calendars",
+      "OneCal documentation"
+    ],
+    "rows": [
+      {
+        "cells": [
+          "Where do I review my schedule?",
+          "iPhone and iPad, with day, week, month, year and list views.",
+          "Unified Calendar View is separate from configuring Calendar Sync."
+        ]
+      },
+      {
+        "cells": [
+          "Do I need busy blocks copied between accounts?",
+          "Do not infer that from the combined view; provider connections can mirror calendars locally.",
+          "Calendar Sync creates clone events using one-way or multi-way rules."
+        ]
+      },
+      {
+        "cells": [
+          "Where do I change sync rules?",
+          "Use the controls documented for the app’s account connection.",
+          "The reviewed mobile guide assigns sync-configuration changes to the web app."
+        ]
+      },
+      {
+        "cells": [
+          "Which Cloud Calendars plan do I need?",
+          "Base includes Google Calendar sync; Advanced removes ads; Premium adds Microsoft Calendar and Teams.",
+          "Check the current OneCal plan and billing route for the required workflow."
+        ]
+      }
+    ]
+  },
+  "galleryKinds": [
+    "week-left",
+    "hook"
+  ],
+  "galleryCaption": "Cloud Calendars’ real calendar screens show the planning view. The comparison distinguishes that view from a service’s server-side clone rules.",
+  "actionHeading": "Choose the outcome you want to verify",
+  "actionText": "For an iPhone or iPad overview with weather and widgets, try Cloud Calendars with a harmless test event. If your requirement is copied busy time in another account, assess a service that explicitly documents that operation.",
+  "articleLinks": [
+    {
+      "slug": "icloud-google-and-outlook-in-one-view",
+      "label": "Set up a combined calendar view"
+    },
+    {
+      "slug": "fantastical-readdle-calendar366-iphone-comparison",
+      "label": "Compare other iPhone calendar options"
+    },
+    {
+      "slug": "the-widget-that-shows-what-is-next",
+      "label": "Choose your Home Screen display"
+    }
   ]
 },
 

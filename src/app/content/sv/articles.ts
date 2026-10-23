@@ -98,83 +98,90 @@ export const ARTICLES_SV: Readonly<Record<string, LocalisedArticle>> = {
 },
 
   'weather-inside-your-calendar': {
-  "updated": "2026-10-22",
-  "title": "Kalender med väder på iPhone och iPad: granska planen i sitt sammanhang",
+  "updated": "2026-10-23",
+  "title": "Kalender med väder på iPhone och iPad: planera dagen i en vy",
   "short": "Använd kalender och väder tillsammans",
-  "description": "Använd kalender och väder på iPhone och iPad. Kontrollera vald plats, tillgängliga prognostimmar och händelsens detaljer innan du sparar.",
-  "lede": "Kalendern visar när ett åtagande är planerat. Vädret svarar på en annan fråga: vilka förhållanden väntas på platsen och under perioden du behöver? Använd båda, men håll platser och datum tydliga. Guiden publiceras av Arte Soft, utvecklaren bakom Cloud Calendars.",
-  "commonBelief": "Väder bredvid kalendern beskriver automatiskt varje mötesadress, varje timme och varje framtida datum.",
+  "description": "Jämför din kalender med vädret för den valda platsen på iPhone och iPad.",
+  "lede": "Cloud Calendars samlar ditt schema och vädret i samma app för iPhone och iPad. Använd kalendern för att välja ett datum och vädervyn för att granska den valda platsen och tillgängliga prognostimmar. För planer utomhus bör du kontrollera den period som faktiskt är relevant i stället för att förlita dig på en dagssymbol. Den här guiden publiceras av Arte Soft, appens utvecklare.",
+  "commonBelief": "Väder som visas bredvid en kalender beskriver automatiskt adressen för varje händelse, varje timme och varje framtida datum.",
   "sections": [
     {
-      "heading": "Välj en konkret planeringsfråga",
+      "heading": "Välj en verklig planeringsfråga",
       "body": [
-        "Börja med ett särskilt åtagande, till exempel ett parkbesök på eftermiddagen. Identifiera vad som kan ändras: tid, plats, förberedelser eller ett alternativ. Hela kalendern behöver inte göras om bara för att dagens symbol visar regn.",
-        "Skriv upp aktivitetens verkliga start och slut, inklusive förberedelser när de är relevanta. Kalenderöversikten hjälper dig hitta möjliga datum, medan prognoskontrollen gäller en bestämd plats och period. Håll isär uppgifterna när du jämför alternativ."
+        "Börja med en konkret händelse, till exempel ett besök i en park på eftermiddagen. Avgör vad som kan behöva ändras: tiden, platsen, förberedelserna eller beslutet att välja ett alternativ. Du behöver inte lägga om hela kalendern bara för att dagens symbol visar regn.",
+        "Skriv ned aktivitetens faktiska start- och sluttid, inklusive förberedelsetid om det är relevant. En kalenderöversikt hjälper dig att hitta möjliga datum, medan prognoskontrollen gäller en viss plats och tidsperiod. Håll isär de två uppgifterna när du jämför alternativ."
       ]
     },
     {
-      "heading": "Bekräfta prognosplatsen",
+      "heading": "Bekräfta väderplatsen innan du läser värdena",
       "body": [
-        "Cloud Calendars erbjuder väder för aktuell eller vald plats. Kontrollera platsnamnet i stället för att anta att händelsens adress ändrar prognosen i bakgrunden. Ett möte i en annan stad behöver jämföras med den stadens väder.",
-        "En besökare kan exempelvis planera ankomsten till ett museum medan telefonen fortfarande är hemma. Läs prognosplatsen och mötets lokala tid innan du jämför. Närliggande värden på skärmen bevisar inte att kalender och väder gäller samma plats."
+        "Cloud Calendars visar väder för den aktuella eller valda platsen. Kontrollera den plats som visas i stället för att anta att en händelses adress automatiskt ändrar prognosen. En händelse i en annan stad kräver en jämförelse med vädret i den staden.",
+        "En besökare kan till exempel planera ankomsten till ett museum medan telefonen fortfarande är hemma. Kontrollera prognosens plats och händelsens lokala tid innan du jämför dem. Värden som ser närliggande ut är inte bevis på att schema och väder använder samma plats."
       ]
     },
     {
-      "heading": "Kontrollera tim- och dygnstäckning separat",
+      "heading": "Kontrollera timvis och daglig täckning var för sig",
       "body": [
-        "Använd dygnsvärdet som orientering och tillgängliga timvärden för en del av dagen. En bokning från två till fem kräver mer än en blick på en symbol. Kontrollera att de relevanta timmarna faktiskt finns.",
-        "I appens nuvarande källkod tar dygnslistan upp till tio dagar som WeatherKit returnerar. Detta är separat från kalendernavigeringen och de timmar som tillhandahålls. Ett framtida möte utökar inte prognosen. Planera en senare väderkontroll om perioden saknas."
+        "Använd en post på dagsnivå för överblick och de tillgängliga timposterna för frågor som gäller en del av dagen. En bokning från två till fem kräver mer än en snabb blick på en enda symbol. Kontrollera om de relevanta timmarna faktiskt finns med.",
+        "I den nuvarande appkällan visar dagslistan upp till tio dagar från WeatherKit. Det är separat från kalendernavigeringen och från de timmar som för närvarande tillhandahålls. En framtida händelse utökar inte vädertäckningen. Om perioden saknas, planera in en senare väderkontroll."
       ]
     },
     {
-      "heading": "Förstå vädervärdets betydelse",
+      "heading": "Förstå vad vädervärdet betyder",
       "body": [
-        "Apple beskriver WeatherKit-data som temperatur, nederbörd, vind och UV, med vissa produkter endast i utvalda regioner. Läs värdena för vald plats i stället för att förvänta dig alla väderprodukter överallt.",
-        "Met Offices vägledning visar varför period och variabeldefinition spelar roll: vissa värden gäller ett ögonblick, andra en period. Använd respektive leverantörs etiketter. Regnsannolikhet, mängd och varaktighet är olika frågor; inget enskilt tal avgör varje utomhusaktivitet."
+        "Apple dokumenterar WeatherKit-data som temperatur, nederbörd, vind och UV, och vissa produkter är bara tillgängliga i utvalda regioner. Utgå från de värden som är tillgängliga för den plats du har valt i stället för att förvänta dig alla väderprodukter överallt.",
+        "Met Office visar i sin vägledning varför prognosperiod och definitioner av variabler spelar roll: vissa värden avser en tidpunkt och andra en period. Använd etiketterna från den relevanta leverantören. Sannolikhet för regn, mängd och varaktighet är olika frågor, och ett enda tal avgör inte alla aktiviteter utomhus."
       ]
     },
     {
-      "heading": "Granska utkastet från en prognostimme",
+      "heading": "Granska ett utkast som skapats från en vädertimme",
       "body": [
-        "Där appen erbjuder händelseskapande från en timme öppnas ett utkast. Nuvarande källkod använder väderplatsens tidszon, föreslår en timmes längd och väljer standardkalendern för nya händelser. Granska varje värde innan du sparar.",
-        "Bekräfta titel, målkalender, start, slut och avsedd plats. Ett prognosval ger inte redigeringsrätt i en delad kalender, meddelar inte lokalen och bokar inget rum. Kontrollera den sparade händelsen och skaffa de överenskommelser planen kräver."
+        "Där appen erbjuder att skapa en händelse från en timme öppnas ett utkast. Den nuvarande källan använder väderplatsens tidszon, föreslår en längd på en timme och väljer standardkalendern för nya händelser. Kontrollera varje värde innan du sparar.",
+        "Bekräfta titel, målkalender, start, slut och avsedd plats. Ett valt prognostillfälle ger inte rätt att redigera en delad kalender, meddela en plats eller boka ett rum. Kontrollera den sparade händelsen och ordna de godkännanden som planen kräver."
       ]
     },
     {
-      "heading": "Håll webbplatsens demonstration separat",
+      "heading": "Håll webbplatsens demonstration åtskild",
       "body": [
-        "Webbplatsens interaktiva väderdemonstration använder Open-Meteo. Appen använder Apple WeatherKit. Demonstrationen hjälper dig utforska presentationen, men plats, data och tillgängliga datum kan skilja sig från appen.",
-        "Öppna appen för ett verkligt beslut och jämför mötet med tillgänglig prognos. Om du ändrar en gemensam plan, bekräfta arrangör, upprepningsomfattning och deltagare. Ha ett överenskommet alternativ när aktiviteten beror på förhållandena."
+        "Webbplatsens interaktiva väderdemonstration använder Open-Meteo. Appen använder Apple WeatherKit. En webbdemonstration är användbar för att utforska presentationen, men dess plats, data och tillgängliga datum kan skilja sig från appens.",
+        "För ett verkligt beslut öppnar du appen och jämför den avsedda händelsen med den tillgängliga prognosen. Om du ändrar en delad plan, bekräfta organisatören, återkomstdelens omfattning och deltagarna. Ha ett överenskommet alternativ om aktiviteten beror på förhållandena."
       ]
     }
   ],
   "claims": {},
   "practical": [
-    "Identifiera åtagandet och beslutet som vädret kan påverka.",
-    "Bekräfta väderplatsen och mötets lokala datum och tid.",
-    "Granska tillgängliga timmar separat från dygnsöversikten.",
-    "Läs sannolikhet, mängd och andra värden med deras etiketter.",
-    "Kontrollera utkastets detaljer och målkalender innan du sparar.",
-    "Kontrollera igen vid beslutstillfället och bekräfta gemensamma ändringar direkt."
+    "Identifiera händelsen och vilket beslut vädret kan påverka.",
+    "Bekräfta väderplatsen samt händelsens lokala datum och tid.",
+    "Granska tillgänglig timvis täckning separat från den dagliga sammanfattningen.",
+    "Läs sannolikhet, mängd och andra relevanta värden utifrån deras etiketter.",
+    "Granska alla detaljer i händelseutkastet och målkalendern innan du sparar.",
+    "Kontrollera igen när beslutet ska tas och bekräfta delade ändringar direkt."
   ],
   "faq": [
     {
-      "q": "Följer vädret bredvid kalendern varje händelses adress?",
-      "a": "Utgå inte från det. Kontrollera visad väderplats mot mötesplatsen; närhet på skärmen bevisar ingen matchning."
+      "q": "Följer vädret bredvid min kalender adressen för varje händelse?",
+      "a": "Utgå inte från det. Bekräfta den visade väderplatsen och jämför den med platsen för händelsen; närhet på skärmen betyder inte att de stämmer överens."
     },
     {
-      "q": "Använder appen webbplatsens väderleverantör?",
-      "a": "Nej. Appen använder Apple WeatherKit; webbplatsens demonstration använder Open-Meteo separat."
+      "q": "Använder appen samma väderleverantör som webbplatsen?",
+      "a": "Nej. Appen använder Apple WeatherKit, medan webbplatsens demonstration använder Open-Meteo separat."
     },
     {
-      "q": "Sparas ett möte automatiskt när jag väljer prognostimme?",
-      "a": "Det startar ett utkast där funktionen finns. Kontrollera datum, tidszon, längd, kalender och plats och spara sedan önskad händelse."
+      "q": "Sparas en händelse automatiskt när jag väljer en prognostimme?",
+      "a": "Den startar ett utkast där den åtgärden erbjuds. Kontrollera datum, tidszon, längd, kalender och plats, och spara sedan den avsedda händelsen."
     }
+  ],
+  "seeAlso": [
+    "weather-calendar-history-versus-forecast-iphone",
+    "forecast-beside-every-event",
+    "a-fourteen-day-view-of-the-weather",
+    "weather-where-the-event-is",
+    "planning-outdoors-without-being-rained-on"
   ],
   "sourcesHeading": "Officiella källor och vidare läsning",
   "sources": [
     {
-      "label": "Apple: WeatherKit-prognoser och regional tillgänglighet",
+      "label": "Apple: prognosinformation i WeatherKit och regional tillgänglighet",
       "url": "https://developer.apple.com/weatherkit/"
     },
     {
@@ -182,43 +189,226 @@ export const ARTICLES_SV: Readonly<Record<string, LocalisedArticle>> = {
       "url": "https://weather.metoffice.gov.uk/guides/what-does-this-forecast-mean"
     }
   ],
-  "seeAlso": []
+  "comparison": {
+    "heading": "Vilken vädervy besvarar din fråga?",
+    "columns": [
+      "Din fråga",
+      "Vad du ska granska",
+      "Vad det inte fastställer"
+    ],
+    "rows": [
+      {
+        "cells": [
+          "Vad händer i dag?",
+          "Kalenderns dag- eller veckovy bredvid vädret för den valda platsen.",
+          "Att adressen för varje händelse automatiskt ändrar väderplatsen."
+        ]
+      },
+      {
+        "cells": [
+          "Kan regn påverka min händelse i eftermiddag?",
+          "Timdata för platsen och för hela händelsens period.",
+          "Att en dagssymbol beskriver varje timme."
+        ]
+      },
+      {
+        "cells": [
+          "Kan jag planera nästa månad utifrån vädret?",
+          "Din kalender nu och sedan en prognoskontroll närmare datumet.",
+          "Att kalendernavigering utökar prognostäckningen."
+        ]
+      },
+      {
+        "cells": [
+          "Kan jag få en snabb överblick hemma?",
+          "Den lämpliga widgeten för hemskärmen.",
+          "Att varje widgetlayout innehåller händelser eller en fullständig prognos."
+        ]
+      }
+    ]
+  },
+  "galleryKinds": [
+    "week-right",
+    "hook"
+  ],
+  "galleryCaption": "Verkliga skärmar från Cloud Calendars: vädervyn och en dag med händelser. Kontrollera den valda platsen och datumet i appen.",
+  "actionHeading": "Planera med ditt schema och prognosen tillsammans",
+  "actionText": "Cloud Calendars finns för iPhone och iPad. Börja med vyerna, väder och synkronisering med Google Calendar som ingår i Base; Advanced tar bort annonser, medan Premium lägger till stöd för Microsoft Calendar och Teams.",
+  "articleLinks": [
+    {
+      "slug": "forecast-beside-every-event",
+      "label": "Kontrollera vädret för timmarna i en händelse"
+    },
+    {
+      "slug": "the-widget-that-shows-what-is-next",
+      "label": "Välj en kalender- och väderwidget"
+    },
+    {
+      "slug": "icloud-google-and-outlook-in-one-view",
+      "label": "Samla kalenderkonton i en vy"
+    }
+  ]
 },
 
   'icloud-google-and-outlook-in-one-view': {
-    title: 'iCloud, Google och Outlook i en enda vy',
-    short: 'Tre konton, en vy',
-    description:
-      'Nästan allas liv är uppdelat mellan en privat Apple-kalender, ett Google-konto och ett Exchange från jobbet. Vad som ändras när de hamnar i samma rutnät.',
-    lede: 'Problemet är nästan aldrig att någon av kalendrarna är dålig. Det är att du har tre och en enda vecka.',
-    commonBelief: 'Att hålla arbete och privatliv i skilda appar är en gräns och inte ett fel.',
-    sections: [
-      {
-        heading: 'Dubbelbokning är strukturell',
-        body: [
-          'Om dina åtaganden bor på tre ställen kan inget ställe säga om du är ledig. Sammanslagningssteget är du, och du kör det ur minnet, oftast medan någon väntar på svar.',
-          'Därför är det klassiska misslyckandet inte att glömma en händelse; det är att tacka ja till något som krockar med en händelse du inte kunde se.',
-        ],
-      },
-      {
-        heading: 'Vad ett enda rutnät ger',
-        body: [
-          'Alla konton i samma vecka, färgade efter ursprung, redigerbara på plats. Du slutar undra vilken app som har svaret, eftersom frågan slutar vara i plural.',
-          'iCloud och Google synkar i gratisversionen. Microsoft-konton — Outlook och Exchange — ligger i den betalda, eftersom den anslutningen har en löpande kostnad som de andra inte har.',
-        ],
-      },
-    ],
-    claims: {
-      accounts: 'Kontotyper som ryms i en vy',
-      premiumMonthly: 'Månadskostnad för att lägga till Microsoft, i dollar',
+  "updated": "2026-10-23",
+  "title": "Se Google-, iCloud- och Outlook-kalendrar tillsammans på iPhone och iPad",
+  "short": "Tre leverantörer, en vy",
+  "description": "Kombinera kalendervyer och förstå kontobehörigheter, kopior och plankrav.",
+  "lede": "För att se jobb- och personliga händelser tillsammans ansluter du de avsedda kontona, väljer deras kalendrar och kontrollerar samma händelser i en vy. Cloud Calendars stöder planering på iPhone och iPad med iCloud och Google Calendar; stöd för Microsoft Calendar ingår i Premium. Att se händelser tillsammans skiljer sig från att kopiera upptagen tid mellan konton hos olika leverantörer. Arte Soft, utvecklaren, publicerar den här guiden.",
+  "commonBelief": "Om man lägger flera kalendrar i en app hålls deras tillgänglighet, delning och händelsekopior automatiskt samordnade.",
+  "sections": [
+    {
+      "heading": "Identifiera kontot och kalendern bakom varje händelse",
+      "body": [
+        "Börja med en vanlig händelse från varje leverantör. Notera den inloggade e-postadressen, kalendernamnet och om du äger händelsen eller har fått en inbjudan. Två kalendrar som heter ”Calendar” kan tillhöra helt olika konton. En färg hjälper dig att överblicka en vecka; kontot och kalendern visar var en ändring ska göras.",
+        "Till exempel kan en tandläkartid i din personliga iCloud-kalender och ett projektmöte i Microsoft visas tillsammans för dig. Det gör inte i sig att tandläkartiden blir synlig för dina kollegor eller reserverar den tiden i deras schemaläggningsverktyg.",
+        "Bestäm vilket resultat du vill ha innan du ändrar en anslutning. Om du vill flytta händelsedata till ett annat konto, använd ”Välj ett exportformat för kalender” nedan för att hitta en överföringsväg som stöds och kontrollera representativa händelser innan du förlitar dig på målet. Om du vill jämföra tider, behåll de befintliga kalenderägarna och visa valda källor tillsammans. Om ett annat konto måste få upptagen tid, förklarar ”Cloud Calendars och OneCal efter arbetsflöde” hur kopiering av tillgänglighet skiljer sig från en personlig översikt."
+      ]
     },
-    practical: [
-      'Lägg till privatkontot först och sedan det som orsakar krockarna.',
-      'Färga per konto och inte per kategori: det är ursprunget du behöver se på en gång.',
-      'Fortsätt skriva i den kalender som andra redan läser.',
+    {
+      "heading": "Anslut via rätt väg",
+      "body": [
+        "För iCloud aktiverar du först iCloud Calendar på iPhone under rätt Apple-konto. Apples installationsguide förklarar enhetsinställningarna. Cloud Calendars får åtkomst till kalendrar som är tillgängliga via iPhones kalendersystem och behöver kalenderåtkomst för att läsa dem. Det räcker inte att ett konto är anslutet på en annan enhet.",
+        "Cloud Calendars har också åtgärderna ”Logga in med Google” och ”Logga in med Microsoft”. Kontrollera vilket konto du väljer när du loggar in och öppna sedan dess kalendergrupp och välj de kalendrar du behöver. Om du loggar in hos rätt leverantör med fel personlig eller arbetsrelaterad identitet kan du få en helt giltig men oväntad kalenderlista."
+      ]
+    },
+    {
+      "heading": "Förstå planerna utan att blanda ihop dem med behörigheter",
+      "body": [
+        "Base-planen inkluderar synkronisering med Google Calendar och kalendervyerna. Advanced lägger till borttagning av annonser i Base. Premium lägger till funktioner för Microsoft Calendar och Microsoft Teams. Granska aktuellt lokalt pris och faktureringsperiod innan du köper.",
+        "En plan ändrar vilka appfunktioner som är tillgängliga; den ger dig inte äganderätt till någon annans kalender. Google skiljer mellan behörighet att se händelser och behörighet att ändra dem. Arbetsgivarens policyer och de behörigheter som är kopplade till en Microsoft-kalender gäller fortfarande. En synlig händelse eller en tillgänglig redigerare är inget bevis på att leverantören kommer att godkänna en uppdatering."
+      ]
+    },
+    {
+      "heading": "En kombinerad vy kan innehålla kalenderkopior",
+      "body": [
+        "Google- och Microsoft-anslutningar använder kalenderkopior i iPhones kalendersystem för att visa och synkronisera händelser. Utgå inte från att en kontoanslutning innebär att ingen kopia finns utanför den ursprungliga leverantören. Målet som används för dessa kopior kan bero på vilka kalenderkällor som finns tillgängliga på enheten.",
+        "Om samma konto också når telefonen via en annan väg, granska kalendernamn och källor innan du behandlar upprepade händelser som separata händelser. Dölj tillfälligt en kalender för att identifiera vilken visning den bidrar med. Ta inte bort en händelse eller kalender bara för att få skärmen att se prydligare ut: en ansluten kopia kan skicka ändringar tillbaka till sin leverantör."
+      ]
+    },
+    {
+      "heading": "Fortsätt välja målkalender när du skapar en händelse",
+      "body": [
+        "Kontrollera händelsens kalender lika noggrant som datum och tid innan du sparar. För en familjehändelse väljer du den kalender som familjen faktiskt använder; för ett arbetsmöte använder du den tillåtna arbetsdestinationen. Att se båda kalendrarna tillsammans gör inte någon av dem till det automatiska målet för varje ny händelse.",
+        "Att ändra en händelses kalender eller dra den mellan kalendrar kan vara en flytt, inte en ofarlig andra vy. Låt inbjudningar och återkommande möten ligga kvar i sin etablerade kalender medan du felsöker ett visningsproblem. Om du behöver göra en ändring, fastställ först vem som äger händelsen och vilken kalender som kan ta emot den."
+      ]
+    },
+    {
+      "heading": "Verifiera översikten innan du förlitar dig på den",
+      "body": [
+        "Jämför en nylig händelse i leverantörens egen kalender med motsvarande händelse i Cloud Calendars. Kontrollera datum, tidszon, titel och vald kalender. För en redigerbar kalender som du äger är en tillfällig händelse utan gäster en bättre kontroll än att ändra ett pågående möte. Bekräfta resultatet hos leverantören innan du anser att anslutningen är klar.",
+        "Förlita dig inte på den kombinerade vyn för att automatiskt skapa anonyma upptagen-block i ett annat konto. Om du behöver att kollegor ska se dig som otillgänglig utan att se personliga detaljer, använd en uttryckligen godkänd lösning för tillgänglighet och verifiera den från deras sida. En tydlig personlig översikt och delad tillgänglighet är två separata uppgifter."
+      ]
+    }
+  ],
+  "claims": {},
+  "practical": [
+    "Lista exakt konto och kalender för en händelse från varje leverantör.",
+    "Aktivera de avsedda iCloud-kalendrarna på enheten och granska kalenderåtkomsten.",
+    "Använd rätt Google- eller Microsoft-inloggning och välj de avsedda kalendrarna.",
+    "Jämför en nylig händelse med leverantörens vy innan du ändrar något.",
+    "Dölj tillfälligt en misstänkt dubblettkälla; låt de underliggande händelserna vara oförändrade.",
+    "Kontrollera målkalendern för varje ny händelse och verifiera separat all delning av upptagen tid som du behöver."
+  ],
+  "faq": [
+    {
+      "q": "Kommer mina arbetskollegor att se mina personliga händelser eftersom jag visar båda kalendrarna?",
+      "a": "Att visa kalendrar tillsammans är inte en delningsinstruktion eller en automatisk brygga för upptagen tid. Kontrollera varje kalenders faktiska delningsinställningar. Leverantörsanslutningar kan skapa kalenderkopior på enheten, så en kombinerad vy är inte heller en garanti för att händelsedata bara finns hos den ursprungliga leverantören."
+    },
+    {
+      "q": "Varför kan jag se en händelse men inte redigera den utan problem?",
+      "a": "Kalendern kan vara skrivskyddad, händelsen kan tillhöra en annan organisatör eller så kan leverantören neka uppdateringen. Kontrollera ägarskap och behörigheter i leverantörens kalender. Att köpa en högre appplan ändrar inte dessa behörigheter."
+    },
+    {
+      "q": "Bör jag ansluta samma Google-konto via alla tillgängliga vägar?",
+      "a": "Kontrollera först hur det redan visas på telefonen. Flera vägar kan göra det svårare att identifiera kalenderkopior. Välj den väg du tänker använda, verifiera dess händelser och dölj en extra visning medan du undersöker i stället för att radera data eller koppla från konton som första steg."
+    }
+  ],
+  "sourcesHeading": "Källor och referenser för konfiguration",
+  "sources": [
+    {
+      "label": "Apple: konfigurera iCloud Calendar på dina enheter",
+      "url": "https://support.apple.com/guide/icloud/set-up-calendar-mme4d73a8727/icloud"
+    },
+    {
+      "label": "Google: kalenderdelning och behörigheter",
+      "url": "https://support.google.com/calendar/answer/37082?hl=en"
+    },
+    {
+      "label": "Microsoft: Outlook Calendar API och mailboxdata som stöds",
+      "url": "https://learn.microsoft.com/en-us/graph/outlook-calendar-concept-overview"
+    }
+  ],
+  "seeAlso": [
+    "exchange-calendars-on-an-iphone",
+    "what-calendar-sync-actually-does",
+    "when-two-calendars-disagree",
+    "caldav-calendar-on-iphone",
+    "calendar-export-ics-pdf-and-backup",
+    "onecal-alternative-iphone-calendar-view-or-sync"
+  ],
+  "comparison": {
+    "heading": "Samlad vy, prenumeration eller kopierad upptagen tid?",
+    "columns": [
+      "Det du behöver",
+      "Det du ska kontrollera",
+      "Det du inte ska utgå från"
     ],
-    seeAlso: ['weather-inside-your-calendar', 'what-a-subscription-actually-buys'],
+    "rows": [
+      {
+        "cells": [
+          "En vy över flera konton",
+          "Det anslutna kontot, vald kalender och plan som krävs.",
+          "Att en delad skärm slår ihop ägarskap eller behörigheter."
+        ]
+      },
+      {
+        "cells": [
+          "En händelseredigering som når leverantören",
+          "Den ursprungliga händelsen, skrivbehörighet och det sparade resultatet vid källan.",
+          "Att en synlig lokal redigering bevisar lyckad synkronisering med leverantören."
+        ]
+      },
+      {
+        "cells": [
+          "Upptagen tid i ett annat konto",
+          "En tjänst med uttryckliga synkroniseringsregler från källa till mål.",
+          "Att en samlad vy skapar tillgänglighetsblock för kollegor."
+        ]
+      },
+      {
+        "cells": [
+          "Ett prenumererat kalenderflöde",
+          "Utgivaren, uppdateringsbeteendet och status som skrivskyddad.",
+          "Att en ICS-prenumeration är en redigerbar tvåvägsanslutning."
+        ]
+      }
+    ]
   },
+  "galleryKinds": [
+    "week-left",
+    "hook"
+  ],
+  "galleryDevice": "iPad",
+  "galleryCaption": "Riktiga kalendervyer på iPad illustrerar hur man granskar ett schema. En skärmbild visar inte riktningen för leverantörssynkronisering eller kontobehörigheter.",
+  "actionHeading": "Granska dina kalendrar tillsammans på iPhone och iPad",
+  "actionText": "Google Calendar-synkronisering ingår i Base. Advanced tar bort annonser; Premium lägger till stöd för Microsoft Calendar och Teams. Bekräfta kontots behörigheter oberoende av köpt plan.",
+  "articleLinks": [
+    {
+      "slug": "onecal-alternative-iphone-calendar-view-or-sync",
+      "label": "Jämför en samlad vy med OneCal:s synkroniseringsregler"
+    },
+    {
+      "slug": "fantastical-readdle-calendar366-iphone-comparison",
+      "label": "Jämför kalenderarbetsflöden på iPhone"
+    },
+    {
+      "slug": "weather-inside-your-calendar",
+      "label": "Planera med väder och händelser tillsammans"
+    }
+  ]
+},
 
   'sharing-one-event-not-your-calendar': {
   "updated": "2026-10-21",

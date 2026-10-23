@@ -98,127 +98,317 @@ export const ARTICLES_CS: Readonly<Record<string, LocalisedArticle>> = {
 },
 
   'weather-inside-your-calendar': {
-  "updated": "2026-10-22",
-  "title": "Kalendář s počasím na iPhonu a iPadu: ověřte plán v souvislostech",
+  "updated": "2026-10-23",
+  "title": "Kalendář s počasím na iPhone a iPadu: naplánujte si den v jednom přehledu",
   "short": "Používejte kalendář a počasí společně",
-  "description": "Spojte kalendář a počasí na iPhonu a iPadu. Před uložením plánu ověřte vybrané místo, dostupné hodiny předpovědi a podrobnosti události.",
-  "lede": "Kalendář říká, kdy je naplánovaný závazek. Počasí pomáhá s jinou otázkou: jaké podmínky se očekávají pro potřebné místo a období. Používejte obojí a jasně rozlišujte místa a data. Průvodce vydává Arte Soft, vývojář Cloud Calendars.",
-  "commonBelief": "Počasí vedle kalendáře automaticky popisuje adresu každé schůzky, každou hodinu a všechny budoucí dny.",
+  "description": "Porovnejte si na iPhone a iPadu kalendář s počasím pro vybrané místo.",
+  "lede": "Cloud Calendars spojuje váš plán a počasí v jedné aplikaci pro iPhone nebo iPad. V kalendáři si vyberte datum a v zobrazení počasí si prohlédněte vybrané místo i dostupné hodiny předpovědi. Pokud plánujete venkovní aktivitu, kontrolujte období, na kterém záleží, místo spoléhání na denní ikonu. Tento průvodce vydává Arte Soft, vývojář aplikace.",
+  "commonBelief": "Počasí zobrazené vedle kalendáře automaticky popisuje adresu každé události, každou hodinu i každé budoucí datum.",
   "sections": [
     {
-      "heading": "Vyberte skutečnou plánovací otázku",
+      "heading": "Zvolte si skutečnou plánovací otázku",
       "body": [
-        "Začněte konkrétní schůzkou, například odpolední návštěvou parku. Určete, co se může změnit: čas, místo, příprava nebo volba alternativy. Nemusíte přeorganizovat celý kalendář jen kvůli dešťovému symbolu dne.",
-        "Zapište skutečný začátek a konec aktivity, případně včetně příprav. Kalendářový přehled pomáhá najít možná data, zatímco kontrola předpovědi se týká konkrétního místa a intervalu. Při porovnávání možností tyto úkoly oddělte."
+        "Začněte konkrétní událostí, například odpolední návštěvou parku. Určete, co by se mohlo změnit: čas, místo, příprava nebo rozhodnutí zvolit jinou možnost. Nemusíte přeorganizovat celý kalendář jen proto, že symbol dne ukazuje déšť.",
+        "Poznamenejte si skutečný začátek a konec aktivity, včetně přípravy, pokud je relevantní. Přehled kalendáře pomáhá najít možné termíny, zatímco kontrola předpovědi se týká konkrétního místa a časového úseku. Při porovnávání možností tyto dvě úlohy nepléste."
       ]
     },
     {
-      "heading": "Před čtením hodnot potvrďte místo počasí",
+      "heading": "Než začnete číst hodnoty, ověřte místo počasí",
       "body": [
-        "Cloud Calendars nabízí počasí pro aktuální nebo vybrané místo. Ověřte zobrazenou polohu místo předpokladu, že adresa události skrytě mění předpověď. Schůzka v jiném městě potřebuje porovnání s počasím toho města.",
-        "Například návštěvník může plánovat příchod do muzea, zatímco telefon je ještě doma. Před porovnáním přečtěte místo předpovědi a místní čas schůzky. Blízkost hodnot na obrazovce nedokazuje stejné místo pro rozvrh a počasí."
+        "Cloud Calendars nabízí počasí pro aktuální nebo vybrané místo. Ověřte zobrazenou lokalitu, místo abyste předpokládali, že adresa události předpověď automaticky změní. Událost v jiném městě vyžaduje porovnání s počasím v tomto městě.",
+        "Například návštěvník může plánovat příchod do muzea, zatímco telefon je stále doma. Před porovnáním si přečtěte místo předpovědi a místní čas události. Podobné hodnoty neznamenají, že plán a počasí používají stejné místo."
       ]
     },
     {
-      "heading": "Hodinové a denní pokrytí ověřte zvlášť",
+      "heading": "Hodinové a denní pokrytí kontrolujte zvlášť",
       "body": [
-        "Denní údaj použijte pro orientaci, dostupné hodinové údaje pro otázku o části dne. Schůzka od dvou do pěti vyžaduje víc než pohled na symbol. Ověřte, zda jsou příslušné hodiny skutečně přítomné.",
-        "V aktuálním zdrojovém kódu denní seznam přebírá až deset dní vrácených WeatherKitem. To je oddělené od navigace kalendáře i aktuálně dodaných hodin. Budoucí schůzka nerozšiřuje pokrytí počasí. Pokud její období chybí, naplánujte pozdější kontrolu."
+        "Denní údaj použijte pro orientaci a dostupné hodinové údaje pro otázky týkající se části dne. Rezervace od dvou do pěti vyžaduje víc než letmý pohled na jeden symbol. Ověřte, zda jsou příslušné hodiny skutečně k dispozici.",
+        "V aktuálním zdroji aplikace denní seznam obsahuje až deset vrácených dnů z WeatherKit. To je oddělené od pohybu v kalendáři i od právě poskytovaných hodin. Budoucí událost nerozšiřuje pokrytí počasí. Pokud její období chybí, naplánujte pozdější kontrolu předpovědi."
       ]
     },
     {
-      "heading": "Zjistěte, co hodnota počasí znamená",
+      "heading": "Čtěte, co daná hodnota počasí znamená",
       "body": [
-        "Apple dokumentuje data WeatherKit jako teplotu, srážky, vítr a UV; některé produkty jsou dostupné jen ve vybraných regionech. Čtěte hodnoty pro vybrané místo místo očekávání všech meteorologických produktů všude.",
-        "Pokyny Met Office ukazují důležitost období a definic proměnných: některé hodnoty patří okamžiku, jiné období. Používejte označení příslušného poskytovatele. Pravděpodobnost, množství a trvání deště jsou různé otázky a jediné číslo nerozhoduje o každé venkovní aktivitě."
+        "Apple dokumentuje data WeatherKit, jako jsou teplota, srážky, vítr a UV, přičemž některé produkty jsou dostupné jen ve vybraných regionech. Čtěte hodnoty dostupné pro zvolené místo, místo očekávání, že všechny produkty počasí budou dostupné všude.",
+        "Pokyny Met Office ukazují, proč záleží na období předpovědi a definicích proměnných: některé hodnoty se vztahují k okamžiku a jiné k období. Používejte popisky příslušného poskytovatele. Pravděpodobnost deště, množství a trvání jsou různé otázky a žádné jedno číslo nerozhodne o každé venkovní aktivitě."
       ]
     },
     {
-      "heading": "Prověřte koncept vytvořený z hodiny počasí",
+      "heading": "Zkontrolujte koncept vytvořený z hodiny počasí",
       "body": [
-        "Kde aplikace nabízí vytvoření události z hodiny, otevře koncept. Aktuální kód používá časové pásmo místa počasí, navrhuje hodinové trvání a vybírá výchozí kalendář nových událostí. Před uložením ověřte každou hodnotu.",
-        "Potvrďte název, cílový kalendář, začátek, konec a zamýšlené místo. Výběr předpovědi nedává oprávnění upravovat sdílený kalendář, neupozorňuje provozovnu ani nerezervuje místnost. Zkontrolujte uloženou událost a zajistěte potřebné dohody."
+        "Tam, kde aplikace nabízí vytvoření události z hodiny, otevře koncept. Aktuální zdroj používá časové pásmo místa počasí, navrhuje hodinovou délku a vybírá výchozí kalendář pro nové události. Před uložením zkontrolujte každou hodnotu.",
+        "Potvrďte název, cílový kalendář, začátek, konec i zamýšlené místo. Výběr předpovědi nedává oprávnění upravovat sdílený kalendář, informovat místo konání ani rezervovat místnost. Zkontrolujte uloženou událost a získejte všechna potvrzení, která plán vyžaduje."
       ]
     },
     {
-      "heading": "Oddělte ukázku na webu",
+      "heading": "Webovou ukázku posuzujte odděleně",
       "body": [
-        "Interaktivní ukázka počasí na webu používá Open-Meteo. Aplikace používá Apple WeatherKit. Webová ukázka pomáhá prozkoumat zobrazení, ale její místo, data a dostupná období se mohou od aplikace lišit.",
-        "Pro skutečné rozhodnutí otevřete aplikaci a porovnejte schůzku s dostupnou předpovědí. Při změně sdíleného plánu potvrďte organizátora, rozsah opakování a účastníky. Pokud aktivita závisí na podmínkách, mějte dohodnutou alternativu."
+        "Interaktivní ukázka počasí na webu používá Open-Meteo. Aplikace používá Apple WeatherKit. Webová ukázka je užitečná pro prozkoumání způsobu zobrazení, ale její místo, data i dostupná data se mohou od aplikace lišit.",
+        "Pro skutečné rozhodnutí otevřete aplikaci a porovnejte zamýšlenou událost s dostupnou předpovědí. Pokud měníte sdílený plán, potvrďte organizátora, rozsah opakování a účastníky. Mějte domluvenou alternativu pro případ, že aktivita závisí na podmínkách."
       ]
     }
   ],
   "claims": {},
   "practical": [
-    "Určete schůzku a rozhodnutí, které může počasí změnit.",
-    "Potvrďte místo počasí i místní datum a čas schůzky.",
-    "Prohlédněte dostupné hodiny odděleně od denního souhrnu.",
-    "Čtěte pravděpodobnost, množství a další hodnoty podle označení.",
-    "Před uložením prověřte všechny údaje konceptu a cílový kalendář.",
-    "Znovu ověřte počasí při rozhodování a společné změny potvrďte přímo."
+    "Určete událost a rozhodnutí, které by počasí mohlo změnit.",
+    "Potvrďte místo počasí a místní datum a čas události.",
+    "Dostupné hodinové pokrytí zkontrolujte odděleně od denního souhrnu.",
+    "Pravděpodobnost, množství a další relevantní hodnoty čtěte podle jejich popisků.",
+    "Před uložením zkontrolujte všechny údaje konceptu události i cílový kalendář.",
+    "V čase rozhodnutí vše znovu ověřte a sdílené změny potvrďte přímo."
   ],
   "faq": [
     {
-      "q": "Sleduje počasí vedle kalendáře každou adresu události?",
-      "a": "Nepředpokládejte to. Ověřte zobrazené místo počasí a porovnejte ho s místem schůzky; blízkost na obrazovce shodu nedokazuje."
+      "q": "Sleduje počasí vedle mého kalendáře adresu každé události?",
+      "a": "To nepředpokládejte. Ověřte zobrazené místo počasí a porovnejte je s místem konání; blízkost na obrazovce shodu nedokazuje."
     },
     {
       "q": "Používá aplikace stejného poskytovatele počasí jako web?",
-      "a": "Ne. Aplikace používá Apple WeatherKit; webová ukázka samostatně Open-Meteo."
+      "a": "Ne. Aplikace používá Apple WeatherKit; webová ukázka používá samostatně Open-Meteo."
     },
     {
-      "q": "Uloží výběr hodiny předpovědi schůzku automaticky?",
-      "a": "Kde je tato akce nabízena, zahájí koncept. Ověřte datum, pásmo, trvání, kalendář a místo, pak uložte zamýšlenou událost."
+      "q": "Uloží výběr hodiny předpovědi událost automaticky?",
+      "a": "Tam, kde je tato akce nabízena, spustí koncept. Zkontrolujte jeho datum, časové pásmo, délku, kalendář a místo a potom uložte zamýšlenou událost."
     }
   ],
-  "seeAlso": [],
-  "sourcesHeading": "Oficiální zdroje a další informace",
+  "seeAlso": [
+    "weather-calendar-history-versus-forecast-iphone",
+    "forecast-beside-every-event",
+    "a-fourteen-day-view-of-the-weather",
+    "weather-where-the-event-is",
+    "planning-outdoors-without-being-rained-on"
+  ],
+  "sourcesHeading": "Oficiální zdroje a další čtení",
   "sources": [
     {
-      "label": "Apple: předpovědi WeatherKit a regionální dostupnost",
+      "label": "Apple: informace o předpovědi WeatherKit a regionální dostupnost",
       "url": "https://developer.apple.com/weatherkit/"
     },
     {
-      "label": "Met Office: místo, období a hodnoty předpovědi",
+      "label": "Met Office: místo předpovědi, období a hodnoty počasí",
       "url": "https://weather.metoffice.gov.uk/guides/what-does-this-forecast-mean"
+    }
+  ],
+  "comparison": {
+    "heading": "Které zobrazení počasí odpoví na vaši otázku?",
+    "columns": [
+      "Vaše otázka",
+      "Co zkontrolovat",
+      "Co to nepotvrzuje"
+    ],
+    "rows": [
+      {
+        "cells": [
+          "Co mě dnes čeká?",
+          "Denní nebo týdenní zobrazení kalendáře vedle počasí pro vybrané místo.",
+          "Že adresa každé události automaticky mění místo počasí."
+        ]
+      },
+      {
+        "cells": [
+          "Může déšť ovlivnit mou odpolední událost?",
+          "Hodinová data pro místo konání a celé období události.",
+          "Že denní symbol popisuje každou hodinu."
+        ]
+      },
+      {
+        "cells": [
+          "Mohu plánovat příští měsíc podle počasí?",
+          "Teď svůj kalendář, pak kontrolu předpovědi blíž k datu.",
+          "Že pohyb v kalendáři rozšiřuje pokrytí předpovědi."
+        ]
+      },
+      {
+        "cells": [
+          "Mohu doma vidět rychlý přehled?",
+          "Vhodný widget na plochu.",
+          "Že každé rozložení widgetu zahrnuje události nebo úplnou předpověď."
+        ]
+      }
+    ]
+  },
+  "galleryKinds": [
+    "week-right",
+    "hook"
+  ],
+  "galleryCaption": "Skutečné obrazovky Cloud Calendars: zobrazení počasí a den s událostmi. V aplikaci zkontrolujte vybrané místo a datum.",
+  "actionHeading": "Plánujte s rozvrhem i předpovědí společně",
+  "actionText": "Cloud Calendars je pro iPhone a iPad. Začněte se zobrazeními, počasím a synchronizací Google Calendar, které jsou součástí Base; Advanced odstraňuje reklamy, zatímco Premium přidává podporu Microsoft Calendar a Teams.",
+  "articleLinks": [
+    {
+      "slug": "forecast-beside-every-event",
+      "label": "Zkontrolujte počasí pro hodiny události"
+    },
+    {
+      "slug": "the-widget-that-shows-what-is-next",
+      "label": "Vyberte widget kalendáře a počasí"
+    },
+    {
+      "slug": "icloud-google-and-outlook-in-one-view",
+      "label": "Spojte kalendářové účty do jednoho přehledu"
     }
   ]
 },
 
   'icloud-google-and-outlook-in-one-view': {
-    title: 'iCloud, Google a Outlook v jednom pohledu',
-    short: 'Tři účty, jeden pohled',
-    description:
-      'Život téměř každého je rozdělen mezi osobní kalendář Apple, účet Google a pracovní Exchange. Co se změní, když se octnou v téže mřížce.',
-    lede: 'Problém téměř nikdy není v tom, že by některý z těch kalendářů byl špatný. Problém je, že máte tři a týden jeden.',
-    commonBelief: 'Že držet práci a soukromí v oddělených aplikacích je hranice, a ne nedostatek.',
-    sections: [
-      {
-        heading: 'Dvojí zadání je strukturální',
-        body: [
-          'Pokud vaše závazky žijí na třech místech, žádné místo vám nepoví, zda máte volno. Slučovacím krokem jste vy a provádíte jej zpaměti, obvykle zatímco někdo čeká na odpověď.',
-          'Proto klasické selhání není zapomenout na událost; je jím souhlas s něčím, co se sráží s událostí, kterou jste nemohli vidět.',
-        ],
-      },
-      {
-        heading: 'Co dá jedna mřížka',
-        body: [
-          'Všechny účty v témž týdnu, obarvené podle původu, upravitelné na místě. Přestanete se ptát, která aplikace má odpověď, protože otázka přestane být v množném čísle.',
-          'iCloud a Google se synchronizují v bezplatné verzi. Účty Microsoftu — Outlook a Exchange — spadají do placené, protože to spojení má opakované náklady, jaké ostatní nemají.',
-        ],
-      },
-    ],
-    claims: {
-      accounts: 'Typů účtů, které se vejdou do jednoho pohledu',
-      premiumMonthly: 'Měsíční cena za přidání Microsoftu, v dolarech',
+  "updated": "2026-10-23",
+  "title": "Zobrazte si kalendáře Google, iCloud a Outlook společně na iPhone a iPad",
+  "short": "Tři poskytovatelé, jedno zobrazení",
+  "description": "Spojte zobrazení kalendářů a pochopte oprávnění účtů, kopie i požadavky na tarif.",
+  "lede": "Chcete-li vidět pracovní i osobní události pohromadě, připojte zamýšlené účty, vyberte jejich kalendáře a zkontrolujte stejné události v jednom zobrazení. Cloud Calendars podporuje plánování na iPhone a iPad s iCloud a Google Calendar; podpora Microsoft Calendar je v Premium. Společné zobrazení událostí se liší od kopírování obsazenosti mezi účty různých poskytovatelů. Tento návod vydává vývojář Arte Soft.",
+  "commonBelief": "Když vložím několik kalendářů do jedné aplikace, automaticky to udrží jejich dostupnost, sdílení a kopie událostí ve shodě.",
+  "sections": [
+    {
+      "heading": "Určete účet a kalendář za každou událostí",
+      "body": [
+        "Začněte jednou běžnou událostí od každého poskytovatele. Poznamenejte si přihlášenou e-mailovou adresu, název kalendáře a to, zda událost vlastníte, nebo jste dostali pozvánku. Dva kalendáře s názvem „Kalendář“ mohou patřit úplně jiným účtům. Barva pomáhá při orientaci v týdnu; účet a kalendář určují, kam má případná úprava směřovat.",
+        "Například návštěva zubaře ve vašem osobním kalendáři iCloud a projektová schůzka v Microsoft se vám mohou zobrazovat společně. To samo o sobě neznamená, že návštěvu zubaře uvidí i vaši kolegové nebo že se tento čas zablokuje v jejich plánovacích nástrojích.",
+        "Než změníte připojení, určete si požadovaný výsledek. Pokud chcete přesunout data událostí do jiného účtu, použijte níže možnost „Zvolte formát exportu kalendáře“ a najděte podporovanou cestu přenosu; než se na cílové umístění spolehnete, zkontrolujte reprezentativní události. Pokud chcete porovnávat časy, ponechte stávající vlastníky kalendářů a zobrazte vybrané zdroje společně. Pokud má jiný účet dostávat informaci o obsazenosti, část „Cloud Calendars a OneCal podle pracovního postupu“ vysvětluje, jak se kopírování dostupnosti liší od osobního přehledu."
+      ]
     },
-    practical: [
-      'Nejprve přidejte osobní účet a teprve pak ten, který způsobuje kolize.',
-      'Barvěte podle účtu, ne podle kategorie: na první pohled potřebujete vidět původ.',
-      'Dál pište do toho kalendáře, který ostatní už čtou.',
+    {
+      "heading": "Připojte se vhodnou cestou",
+      "body": [
+        "U iCloud nejprve na iPhone v zamýšleném Apple Account zapněte iCloud Calendar. Nastavení zařízení vysvětluje návod Apple. Cloud Calendars přistupuje ke kalendářům dostupným přes kalendářový systém iPhone a pro jejich čtení potřebuje přístup ke kalendáři. Nestačí, že je účet připojený na jiném zařízení.",
+        "Cloud Calendars má také akce „Sign in with Google“ a „Sign in with Microsoft“. Zkontrolujte, který účet při přihlášení vybíráte, pak otevřete jeho skupinu kalendářů a vyberte kalendáře, které potřebujete. Přihlášení ke správnému poskytovateli se špatnou osobní nebo pracovní identitou může vytvořit zcela platný, ale nečekaný seznam kalendářů."
+      ]
+    },
+    {
+      "heading": "Rozumějte tarifům a nepleťte si je s oprávněními",
+      "body": [
+        "Tarif Base zahrnuje synchronizaci Google Calendar a zobrazení kalendáře. Advanced k Base přidává odstranění reklam. Premium přidává funkce Microsoft Calendar a Microsoft Teams. Před nákupem si zkontrolujte aktuální místní cenu a fakturační období.",
+        "Tarif mění, které funkce aplikace jsou dostupné; neuděluje vám vlastnictví cizího kalendáře. Google rozlišuje oprávnění k zobrazení událostí od oprávnění je měnit. Stále platí zásady zaměstnavatele i oprávnění přiřazená kalendáři Microsoft. Viditelná událost nebo dostupný editor nejsou důkazem, že poskytovatel aktualizaci přijme."
+      ]
+    },
+    {
+      "heading": "Kombinované zobrazení může zahrnovat kopie kalendářů",
+      "body": [
+        "Připojení Google a Microsoft používají v kalendářovém systému iPhone kopie kalendářů k zobrazení a synchronizaci událostí. Nepředpokládejte, že připojení účtu nezanechá žádnou kopii mimo původního poskytovatele. Cíl použitý pro tyto kopie může záviset na zdrojích kalendářů dostupných v zařízení.",
+        "Pokud se stejný účet dostává do telefonu i jinou cestou, zkontrolujte názvy kalendářů a zdroje dříve, než budete opakované události považovat za samostatné. Dočasně skryjte jeden kalendář, abyste zjistili, které zobrazení dodává. Nemažte událost ani kalendář jen proto, aby obrazovka vypadala přehledněji: připojená kopie může posílat změny zpět poskytovateli."
+      ]
+    },
+    {
+      "heading": "Při vytváření události vždy znovu volte cíl",
+      "body": [
+        "Před uložením kontrolujte kalendář události stejně pečlivě jako její datum a čas. Pro rodinnou událost vyberte kalendář, který rodina skutečně používá; pro pracovní schůzku použijte povolený pracovní cíl. To, že vidíte oba kalendáře společně, neznamená, že se některý z nich automaticky stane cílem pro každou novou událost.",
+        "Změna kalendáře události nebo její přetažení mezi kalendáři může být přesun, ne neškodné druhé zobrazení. Při řešení problému se zobrazením ponechte pozvánky a opakující se schůzky v jejich zavedeném kalendáři. Pokud změnu potřebujete, nejprve zjistěte, kdo událost vlastní a který kalendář ji může přijmout."
+      ]
+    },
+    {
+      "heading": "Než se na přehled spolehnete, ověřte ho",
+      "body": [
+        "Porovnejte nedávnou událost v kalendáři samotného poskytovatele s odpovídající událostí v Cloud Calendars. Zkontrolujte datum, časové pásmo, název a vybraný kalendář. U upravitelného kalendáře, který vlastníte, je jednorázová testovací událost bez hostů lepší kontrolou než změna probíhající schůzky. Než budete připojení považovat za připravené, potvrďte výsledek u poskytovatele.",
+        "Nespoléhejte na to, že kombinované zobrazení automaticky vytvoří anonymní bloky obsazenosti v jiném účtu. Pokud potřebujete, aby kolegové viděli vaši nedostupnost bez osobních detailů, použijte výslovně schválené řešení sdílení dostupnosti a ověřte ho z jejich strany. Jasný osobní přehled a sdílená dostupnost jsou dvě různé úlohy."
+      ]
+    }
+  ],
+  "claims": {},
+  "practical": [
+    "Uveďte přesný účet a kalendář pro jednu událost od každého poskytovatele.",
+    "Na zařízení zapněte zamýšlené kalendáře iCloud a zkontrolujte přístup ke kalendářům.",
+    "Použijte odpovídající přihlášení ke Google nebo Microsoft a vyberte zamýšlené kalendáře.",
+    "Než cokoli změníte, porovnejte jednu nedávnou událost s jejím zobrazením u poskytovatele.",
+    "Podezřelý duplicitní zdroj dočasně skryjte; původní události ponechte beze změny.",
+    "U každé nové události zkontrolujte cílový kalendář a zvlášť ověřte jakékoli sdílení obsazenosti, které potřebujete."
+  ],
+  "faq": [
+    {
+      "q": "Uvidí moji pracovní kolegové moje osobní události, když zobrazuji oba kalendáře?",
+      "a": "Společné zobrazení kalendářů není pokyn ke sdílení ani automatický most pro přenos obsazenosti. Zkontrolujte skutečná nastavení sdílení každého kalendáře. Připojení poskytovatelů mohou v zařízení vytvářet kopie kalendářů, takže ani kombinované zobrazení nezaručuje, že data událostí existují jen u původního poskytovatele."
+    },
+    {
+      "q": "Proč událost vidím, ale nejde ji úspěšně upravit?",
+      "a": "Kalendář může být jen pro čtení, událost může patřit jinému organizátorovi nebo poskytovatel může aktualizaci odmítnout. Zkontrolujte vlastnictví a oprávnění v kalendáři poskytovatele. Vyšší tarif aplikace tato oprávnění nemění."
+    },
+    {
+      "q": "Mám stejný účet Google připojit všemi dostupnými způsoby?",
+      "a": "Nejprve zkontrolujte, jak se už zobrazuje v telefonu. Více způsobů připojení může ztížit rozlišení kopií kalendáře. Zvolte cestu, kterou chcete používat, ověřte její události a při prověřování raději skryjte nadbytečné zobrazení, než abyste jako první krok mazali data nebo odpojovali účty."
+    }
+  ],
+  "sourcesHeading": "Zdroje a odkazy k nastavení",
+  "sources": [
+    {
+      "label": "Apple: nastavení iCloud Calendar na vašich zařízeních",
+      "url": "https://support.apple.com/guide/icloud/set-up-calendar-mme4d73a8727/icloud"
+    },
+    {
+      "label": "Google: sdílení kalendáře a oprávnění",
+      "url": "https://support.google.com/calendar/answer/37082?hl=en"
+    },
+    {
+      "label": "Microsoft: Outlook calendar API a podporovaná data poštovních schránek",
+      "url": "https://learn.microsoft.com/en-us/graph/outlook-calendar-concept-overview"
+    }
+  ],
+  "seeAlso": [
+    "exchange-calendars-on-an-iphone",
+    "what-calendar-sync-actually-does",
+    "when-two-calendars-disagree",
+    "caldav-calendar-on-iphone",
+    "calendar-export-ics-pdf-and-backup",
+    "onecal-alternative-iphone-calendar-view-or-sync"
+  ],
+  "comparison": {
+    "heading": "Společné zobrazení, odběr nebo zkopírovaná zaneprázdněnost?",
+    "columns": [
+      "Co potřebujete",
+      "Co zkontrolovat",
+      "Co nepředpokládat"
     ],
-    seeAlso: ['weather-inside-your-calendar', 'what-a-subscription-actually-buys'],
+    "rows": [
+      {
+        "cells": [
+          "Jedno zobrazení několika účtů",
+          "Připojený účet, vybraný kalendář a požadovaný tarif.",
+          "Že sdílená obrazovka slučuje vlastnictví nebo oprávnění."
+        ]
+      },
+      {
+        "cells": [
+          "Aby se úprava události propsala k poskytovateli",
+          "Původní událost, oprávnění k zápisu a uložený výsledek u zdroje.",
+          "Že viditelná místní úprava dokazuje úspěšnou synchronizaci s poskytovatelem."
+        ]
+      },
+      {
+        "cells": [
+          "Zaneprázdněnost v jiném účtu",
+          "Službu s výslovně popsanými pravidly synchronizace ze zdroje do cíle.",
+          "Že společné zobrazení vytváří bloky dostupnosti pro kolegy."
+        ]
+      },
+      {
+        "cells": [
+          "Odebíraný kalendářní feed",
+          "Vydavatele, chování obnovování a stav jen pro čtení.",
+          "Že odběr ICS je upravitelné obousměrné propojení."
+        ]
+      }
+    ]
   },
+  "galleryKinds": [
+    "week-left",
+    "hook"
+  ],
+  "galleryDevice": "iPad",
+  "galleryCaption": "Skutečná zobrazení kalendáře na iPadu ukazují, jak kontrolovat plán. Snímek obrazovky nedokládá směr synchronizace poskytovatele ani oprávnění účtu.",
+  "actionHeading": "Prohlédněte si své kalendáře společně na iPhone a iPad",
+  "actionText": "Synchronizace Google Calendar je součástí Base. Advanced odstraňuje reklamy; Premium přidává podporu Microsoft Calendar a Teams. Oprávnění účtu ověřujte nezávisle na zakoupeném tarifu.",
+  "articleLinks": [
+    {
+      "slug": "onecal-alternative-iphone-calendar-view-or-sync",
+      "label": "Porovnat společné zobrazení s pravidly synchronizace OneCal"
+    },
+    {
+      "slug": "fantastical-readdle-calendar366-iphone-comparison",
+      "label": "Porovnat pracovní postupy kalendáře na iPhone"
+    },
+    {
+      "slug": "weather-inside-your-calendar",
+      "label": "Plánujte s počasím a událostmi pohromadě"
+    }
+  ]
+},
 
   'sharing-one-event-not-your-calendar': {
   "updated": "2026-10-21",
