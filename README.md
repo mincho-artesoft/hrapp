@@ -103,3 +103,32 @@ bash ~/work/cloud-calendars-api-backup-2026-08-30/restore.sh
 That redeploys the original `index.mjs` code and resets the handler to
 `index.handler` with the original env. The HTTP API, domain, IAM role, and S3
 bucket are untouched by either direction, so the swap is fully reversible.
+
+## Email abuse guard — 2026-10-31
+
+The email service now requires `EMAIL_GUARD_TABLE=mail-forwarder-security` before
+sending. Its role needs DynamoDB PutItem/UpdateItem only on this shared private
+us-east-1 table. Production and debug were configured independently. Each sender
+has atomic limits of30 emails/hour and150/day, and each recipient5/hour and15/day.
+Identical destination/subject/body is claimed once per10-minute time bucket.
+Claims and quota updates are transactional across Lambda instances. Hashes, counters
+and expiries are stored; message text and email addresses are not stored in the table.
+The table TTL attribute is `expires`. These limits do not replace endpoint auth.
+
+SES SDK send retries are disabled because SES lacks an idempotency key. Uncertain
+acceptance is not automatically retried within the deduplication window. Rate-limited
+or failed mail is logged without recipient/subject/body. Existing calendar writes
+continue; throttled mail needs manual review and is not automatically queued. This
+is a delivery-versus-abuse tradeoff; do not describe this mechanism as exactly-once
+or guaranteed delivery. IAM limits each function to its own From address and the
+cloud-calendars.com identity. Do not restore the old unscoped `ses-send` policy.
+
+Before deploying a new environment configure the table and role permissions; an
+unconfigured guard fails closed for email. Existing SES BOUNCE/COMPLAINT account
+suppression remains enabled. Local tests intercept both SES and the guard:
+
+```bash
+npx ts-node test/email-send-guard.ts
+TS_NODE_TRANSPILE_ONLY=true npx ts-node test/email-qr-regression.ts /tmp/calendar-mail-qa
+TS_NODE_TRANSPILE_ONLY=true npx ts-node test/email-qr-compatibility.ts /tmp/calendar-mail-compat
+```

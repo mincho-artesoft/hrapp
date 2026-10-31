@@ -15,6 +15,7 @@ async function main() {
     const service = new EmailService();
     const captured: any[] = [];
     (service as any).ses.send = async (command: any) => { captured.push(command.input); return { MessageId: 'intercepted' }; };
+    (service as any).sendGuard.claim = async () => undefined; // Pure template test; no DynamoDB or email.
     const url = new URL('/event-invites/open', api);
     url.search = new URLSearchParams({ e: 'qa-event', c: 'qa-feed', title: 'اجتماع'.repeat(20),
       start: '1788951600', end: '1788957000', location: 'عنوان'.repeat(32),

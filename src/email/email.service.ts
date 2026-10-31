@@ -3,6 +3,7 @@ import { SESv2Client, SendEmailCommand, Attachment } from '@aws-sdk/client-sesv2
 import QRCode from 'qrcode';
 import { eventPalette } from '../presentation/event-card';
 import { canonicalInvitationURL, eventInvitationURLWithPreview } from './invitation-url';
+import { EmailSendGuard } from './send-guard';
 
 const PNGJS: any = require('pngjs');
 
@@ -20,7 +21,8 @@ export class EmailService {
   private readonly EMAIL_REGION = process.env.EMAIL_REGION ?? process.env.AWS_REGION ?? 'us-east-1';
   private readonly SITE_URL = process.env.SITE_URL ?? 'https://www.cloud-calendars.com';
   private readonly API_URL = process.env.API_URL ?? 'https://api.cloud-calendars.com';
-  private readonly ses = this.EMAIL_FROM ? new SESv2Client({ region: this.EMAIL_REGION }) : null;
+  private readonly ses = this.EMAIL_FROM ? new SESv2Client({ region: this.EMAIL_REGION, maxAttempts: 1 }) : null;
+  private readonly sendGuard = new EmailSendGuard();
 
   private readonly ACCENT = '#5b9bff';
   private get LOGO_URL() { return `${this.SITE_URL}/icons/icon-192.png`; }
@@ -36,10 +38,11 @@ export class EmailService {
     options: { replyTo?: string | null; attachments?: Attachment[] } = {},
   ): Promise<void> {
     if (!this.ses || !this.EMAIL_FROM) {
-      console.log(`[email skipped — not configured] "${subject}" → ${to}`);
+      console.log('[email skipped — not configured]');
       return;
     }
     try {
+      await this.sendGuard.claim(this.EMAIL_FROM, to, subject, html);
       const sent = await this.ses.send(
         new SendEmailCommand({
           FromEmailAddress: this.EMAIL_FROM,
@@ -57,10 +60,10 @@ export class EmailService {
           },
         }),
       );
-      console.info('[email sent]', JSON.stringify({ messageId: sent.MessageId, to, subject }));
+      console.info('[email sent]', JSON.stringify({ messageId: sent.MessageId }));
     } catch (err: any) {
       // Delivery failure must not roll back an already-saved calendar action.
-      console.error(`[email failed] "${subject}" → ${to}: ${err?.name ?? ''} ${err?.message ?? err}`);
+      console.error('[email not sent or needs review]', JSON.stringify({ type: err?.name ?? 'Error' }));
     }
   }
 

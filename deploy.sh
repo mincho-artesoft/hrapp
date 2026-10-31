@@ -62,7 +62,9 @@ ensure_debug_infrastructure() {
 
   aws iam put-role-policy --role-name "$DEBUG_ROLE_NAME" --policy-name ses-send \
     --policy-document \
-    '{"Version":"2012-10-17","Statement":[{"Effect":"Allow","Action":["ses:SendEmail"],"Resource":"*"}]}'
+    '{"Version":"2012-10-17","Statement":[{"Effect":"Allow","Action":["ses:SendEmail"],"Resource":"arn:aws:ses:us-east-1:303803840503:identity/cloud-calendars.com","Condition":{"StringEquals":{"ses:FromAddress":"no-reply@cloud-calendars.com"}}}]}'
+  aws iam put-role-policy --role-name "$DEBUG_ROLE_NAME" --policy-name mail-volume-guard \
+    --policy-document '{"Version":"2012-10-17","Statement":[{"Effect":"Allow","Action":["dynamodb:PutItem","dynamodb:UpdateItem"],"Resource":"arn:aws:dynamodb:us-east-1:303803840503:table/mail-forwarder-security"}]}'
 }
 
 deploy_debug() {
@@ -77,7 +79,7 @@ deploy_debug() {
     aws lambda create-function --function-name "$DEBUG_NAME" \
       --runtime "$RUNTIME" --handler "$HANDLER" --role "$DEBUG_ROLE_ARN" \
       --zip-file "fileb://$ZIP" --timeout 30 --memory-size 512 \
-      --environment "Variables={CAL_BUCKET=${DEBUG_BUCKET},FEED_HOST=invalid.local}" \
+      --environment "Variables={CAL_BUCKET=${DEBUG_BUCKET},FEED_HOST=invalid.local,EMAIL_GUARD_TABLE=mail-forwarder-security}" \
       --region "$REGION" >/dev/null
     aws lambda wait function-active --function-name "$DEBUG_NAME" --region "$REGION"
   fi

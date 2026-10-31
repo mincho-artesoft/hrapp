@@ -12,6 +12,7 @@
     "deploy": "bash deploy.sh"
   },
   "dependencies": {
+    "@aws-sdk/client-dynamodb": "^3.1121.0",
     "@aws-sdk/client-sesv2": "3.1121.0",
     "@aws-sdk/client-sqs": "3.1121.0",
     "@codegenie/serverless-express": "^4.16.0",
