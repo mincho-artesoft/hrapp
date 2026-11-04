@@ -11,6 +11,7 @@ export interface SeoInput {
   /** Route path, e.g. '/privacy-policy'. Used for the canonical URL. */
   path: string;
   image?: string;
+  type?: 'website' | 'article';
   noindex?: boolean;
   robots?: 'index,follow' | 'noindex,follow';
   /** The language this page is written in. Sets <html lang> and og:locale. */
@@ -79,7 +80,7 @@ export class SeoService {
     this.setProperty('og:description', input.description);
     this.setProperty('og:url', url);
     this.setProperty('og:image', image);
-    this.setProperty('og:type', 'website');
+    this.setProperty('og:type', input.type ?? 'website');
     this.setProperty('og:site_name', 'Cloud Calendars');
 
     this.set('twitter:card', 'summary_large_image');

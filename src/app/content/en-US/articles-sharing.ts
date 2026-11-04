@@ -438,9 +438,9 @@ export const SHARING_EN_US: Readonly<Record<string, LocalisedArticle>> = {
 },
 
   'who-can-see-what-in-google-calendar': {
-  "title": "Google Calendar sharing permissions: check the access you actually grant",
+  "title": "Who Can See My Google Calendar? Sharing & Privacy Levels",
   "short": "Google Calendar access and privacy",
-  "description": "Choose Google Calendar access for availability, details or editing. Check public and group access as well as individual permissions before sharing.",
+  "description": "Check who can see your Google Calendar events, compare free/busy vs full details permissions, and verify public, group, or work sharing settings safely.",
   "lede": "Before sharing a calendar, decide what the other person needs to do. Scheduling around you, reading event details and maintaining the calendar are different tasks. This guide is published by Arte Soft, the developer of Cloud Calendars.",
   "commonBelief": "Giving one person a restricted setting guarantees they cannot see details through any other route.",
   "sections": [
@@ -498,6 +498,10 @@ export const SHARING_EN_US: Readonly<Record<string, LocalisedArticle>> = {
   ],
   "faq": [
     {
+      "q": "Can I see when someone views my Google Calendar?",
+      "a": "Google’s sharing documentation describes access levels rather than a viewer-history log. Check the calendar’s sharing settings—individual, group, organisation and public—to verify who currently has permission to view it."
+    },
+    {
       "q": "Does a restricted individual grant override a public calendar?",
       "a": "No. Google documents that broader calendar permissions take priority when access settings conflict. Review public and organisation settings as well as the person’s entry."
     },
@@ -527,7 +531,7 @@ export const SHARING_EN_US: Readonly<Record<string, LocalisedArticle>> = {
     "why-a-shared-calendar-does-not-appear",
     "work-and-personal-without-two-apps"
   ],
-  "updated": "2026-10-21",
+  "updated": "2026-11-04",
   "articleLinks": [
     {
       "slug": "icalendar-transp-class-busy-private",

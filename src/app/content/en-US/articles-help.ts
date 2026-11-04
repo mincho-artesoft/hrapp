@@ -123,10 +123,10 @@ export const HELP_EN_US: Readonly<Record<string, LocalisedArticle>> = {
 },
 
   "change-calendar-color-iphone": {
-  "updated": "2026-10-22",
-  "title": "Change calendar colors on iPhone without moving events",
+  "updated": "2026-11-04",
+  "title": "How to Change Calendar Colors on iPhone (iCloud & Google)",
   "short": "Calendar colors and event colors",
-  "description": "Change calendar colors, distinguish individual-event overrides and check differences across apps. Keep ownership and sharing separate from appearance.",
+  "description": "Change calendar colors on iPhone without moving events: compare iCloud, local, Google Calendar, and shared-calendar color settings and per-event colors.",
   "lede": "A color can identify a calendar, override one event or simply reflect an app’s display style. First choose which of those you want to change. This guide is published by Arte Soft, the developer of Cloud Calendars.",
   "commonBelief": "Changing a calendar’s color changes only one event, appears identically in every app and has the same effect for every person viewing the calendar.",
   "sections": [
@@ -240,10 +240,10 @@ export const HELP_EN_US: Readonly<Record<string, LocalisedArticle>> = {
 },
 
   "recover-deleted-calendar-events-iphone": {
-  "updated": "2026-10-22",
-  "title": "Deleted calendar events on iPhone: Google and iCloud recovery",
+  "updated": "2026-11-04",
+  "title": "How to Recover Deleted Calendar Events on iPhone Safely",
   "short": "Recover a deleted calendar event",
-  "description": "Check whether an event is missing or deleted, then compare Google Trash with iCloud calendar recovery and their sharing and meeting consequences.",
+  "description": "Check whether a missing iPhone event is hidden or deleted, then restore it safely via Google Calendar Trash or iCloud.com Data Recovery without surprises.",
   "lede": "A missing appointment does not always need restoring. First establish where it was stored and whether it still exists there. If it was deleted, the recovery method depends on that provider. This guide is published by Arte Soft, the developer of Cloud Calendars.",
   "commonBelief": "Restoring a calendar always brings back just the missing appointment, with every invitation and sharing arrangement unchanged.",
   "sections": [
@@ -568,10 +568,10 @@ export const HELP_EN_US: Readonly<Record<string, LocalisedArticle>> = {
   ]
 },
   "calendar-notifications-missing-silent-or-duplicated": {
-  "updated": "2026-10-21",
-  "title": "Calendar notifications on iPhone: missing, silent or duplicated?",
+  "updated": "2026-11-04",
+  "title": "iPhone Calendar Alerts Not Working, Silent, or Duplicated?",
   "short": "Troubleshoot calendar notifications",
-  "description": "Separate event alerts, Cloud Calendars settings and iPhone delivery controls. Diagnose absent, silent or duplicate reminders without deleting calendar data.",
+  "description": "Fix missing, silent, or duplicate calendar notifications on iPhone: check saved event alerts, iOS Notification & Focus settings, and multiple apps.",
   "lede": "Start with what actually happened: was the event missing, was its notification absent, did it appear without sound, or did two apps alert you? Each points to a different check. This guide is published by Arte Soft, the developer of Cloud Calendars.",
   "commonBelief": "If an event appears in the calendar, every alert and notification permission must already be configured.",
   "sections": [
@@ -782,10 +782,10 @@ export const HELP_EN_US: Readonly<Record<string, LocalisedArticle>> = {
   ]
 },
   "calendar-export-ics-pdf-and-backup": {
-  "updated": "2026-10-23",
-  "title": "Calendar export on iPhone: ICS, CSV, PDF and subscriptions",
+  "updated": "2026-11-04",
+  "title": "Export iPhone Calendar Events to ICS, PDF, or CSV Safely",
   "short": "Choose a calendar export format",
-  "description": "Choose calendar data, spreadsheet rows, a printable schedule or a subscription. Use documented provider or Mac export routes and check what transfers.",
+  "description": "Export calendars shown on your iPhone using official Google Calendar, iCloud/Mac Calendar, or Outlook routes: choose ICS data, printable PDF, or CSV rows.",
   "lede": "A calendar on your iPhone can be a view of several accounts. Getting a useful copy starts with identifying the source and deciding whether you need event data, a readable schedule or continuing updates.",
   "sections": [
     {

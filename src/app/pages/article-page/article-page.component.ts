@@ -94,6 +94,7 @@ export class ArticlePageComponent implements OnDestroy {
       title: this.article.title,
       description: this.article.description,
       path: localePath(this.locale, path),
+      type: 'article',
       locale: this.locale,
       robots: isArticleLocaleIndexable(this.locale) ? 'index,follow' : 'noindex,follow',
       alternates: localesWith(slug).filter(isArticleLocaleIndexable).map((other) => ({
@@ -155,6 +156,22 @@ export class ArticlePageComponent implements OnDestroy {
     });
     doc.head.appendChild(script);
 
+    const breadcrumbId = 'article-breadcrumb-jsonld';
+    doc.getElementById(breadcrumbId)?.remove();
+    const breadcrumbScript = doc.createElement('script');
+    breadcrumbScript.id = breadcrumbId;
+    breadcrumbScript.type = 'application/ld+json';
+    breadcrumbScript.textContent = JSON.stringify({
+      '@context': 'https://schema.org',
+      '@type': 'BreadcrumbList',
+      itemListElement: [
+        { '@type': 'ListItem', position: 1, name: APP_NAME, item: absolute(localePath(this.locale, '/')) },
+        { '@type': 'ListItem', position: 2, name: this.chrome.allArticles, item: absolute(localePath(this.locale, '/articles')) },
+        { '@type': 'ListItem', position: 3, name: this.article!.short, item: url },
+      ],
+    });
+    doc.head.appendChild(breadcrumbScript);
+
     // FAQPage only where the page actually shows questions. Google's own rule
     // is that the marked-up answer must be the visible one, and the article
     // renders these above; an article without a written FAQ emits nothing
@@ -182,6 +199,7 @@ export class ArticlePageComponent implements OnDestroy {
 
   ngOnDestroy(): void {
     this.doc.getElementById('article-jsonld')?.remove();
+    this.doc.getElementById('article-breadcrumb-jsonld')?.remove();
     this.doc.getElementById('article-faq-jsonld')?.remove();
   }
 

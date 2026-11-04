@@ -10,9 +10,9 @@ export const HOME_EN_US: HomeCopy = {
   // Clarify the app's platforms for generic calendar searches. Baseline and
   // segmentation: research/measurement/gsc-baseline-20261021.json.
   // This editorial change is a hypothesis, not a demonstrated CTR improvement.
-  metaTitle: 'Cloud Calendars — Calendar App for iPhone & iPad',
+  metaTitle: 'Cloud Calendars — Google, iCloud & Weather Calendar for iOS',
   metaDescription:
-    "iCloud and Google calendars, weather and widgets on iPhone and iPad. Download free; Premium adds Microsoft calendars and Teams.",
+    "View iCloud and Google Calendar together with hourly weather and Home Screen widgets on iPhone and iPad. Free download; Premium adds Outlook and Teams.",
 
   nav: {
     tour: 'Tour',
