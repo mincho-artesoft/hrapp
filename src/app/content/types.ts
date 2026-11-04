@@ -45,9 +45,24 @@ export interface ClaimRow {
   readonly value: string;
 }
 
+export interface ComparisonTable {
+  readonly heading: string;
+  readonly caption?: string;
+  readonly columns: readonly string[];
+  readonly rows: readonly { readonly cells: readonly string[] }[];
+}
+
+export interface ArticleSection {
+  readonly heading: string;
+  readonly body: readonly string[];
+  readonly table?: ComparisonTable;
+}
+
 export interface LocalisedArticle {
   /** Date this language version was substantively revised; other translations keep their original date. */
   readonly updated?: string;
+  /** Optional concise <title> override (<= 60 chars) when headline differs. */
+  readonly seoTitle?: string;
   /** Full headline. */
   readonly title: string;
   /** Short form, for cards and breadcrumbs. */
@@ -58,9 +73,10 @@ export interface LocalisedArticle {
   readonly lede: string;
   /** What most people assume, named before it is answered. */
   readonly commonBelief?: string;
-  readonly sections: readonly { readonly heading: string; readonly body: readonly string[] }[];
+  readonly sections: readonly ArticleSection[];
   /** Optional workflow table, with visible localized headings and cells. */
-  readonly comparison?: { readonly heading: string; readonly columns: readonly string[]; readonly rows: readonly { readonly cells: readonly string[] }[] };
+  readonly comparison?: ComparisonTable;
+  readonly relatedComparisons?: readonly { readonly slug: string; readonly label: string }[];
   readonly galleryKinds?: readonly string[];
   readonly galleryDevice?: 'iPhone' | 'iPad' | 'iPhoneDuo';
   readonly galleryCaption?: string;

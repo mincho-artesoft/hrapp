@@ -40,7 +40,11 @@ export class ArticlePageComponent implements OnDestroy {
   readonly locale: Locale;
   readonly chrome: ArticleChrome;
   readonly article: LocalisedArticle | undefined;
+  readonly isComparison: boolean;
+  readonly hubHref: string;
+  readonly hubLabel: string;
   readonly claims: ClaimRow[] = [];
+  readonly relatedComparisons: SeeAlsoLink[] = [];
   readonly seeAlso: SeeAlsoLink[] = [];
   readonly articleLinks: SeeAlsoLink[] = [];
   readonly updated: string = '';
@@ -51,26 +55,36 @@ export class ArticlePageComponent implements OnDestroy {
   constructor() {
     const route = inject(ActivatedRoute).snapshot;
     const slug = route.paramMap.get('slug') ?? '';
-    this.showScheduleBuilder = slug === 'weekly-schedule-builder' && ((route.data['locale'] as Locale | undefined)?.code ?? 'en-US') === 'en-US';
+    this.isComparison = route.data['isComparison'] === true;
+    this.showScheduleBuilder = !this.isComparison && slug === 'weekly-schedule-builder' && ((route.data['locale'] as Locale | undefined)?.code ?? 'en-US') === 'en-US';
 
     this.locale = (route.data['locale'] as Locale | undefined) ?? DEFAULT_LOCALE;
     const content = route.data['articleContent'] as ArticleLocale;
     if (!content) throw new Error('Article content was not resolved');
     this.chrome = content.chrome;
     this.article = content.articles[slug];
+    this.hubHref = this.isComparison ? '/compare/' : linkPath(this.locale, '/articles');
+    this.hubLabel = this.isComparison ? 'All comparisons' : this.chrome.allArticles;
     this.store = storeUrl(this.locale, APP_STORE_URL);
     this.storeLabel = storeCta(this.locale.code);
 
     const facts = ARTICLE_FACTS[slug];
-    if (!this.article || !facts) return;
+    if (!this.article || (!this.isComparison && !facts)) return;
 
-    this.updated = this.article.updated ?? facts.updated;
+    this.updated = this.article.updated ?? facts?.updated ?? '2026-11-04';
 
     // Numbers from facts, words from the translation, joined by id — so a row
     // cannot end up carrying the wrong figure however the wording is edited.
-    this.claims = facts.claims
-      .filter((fact) => fact.id in this.article!.claims)
-      .map((fact) => ({ label: this.article!.claims[fact.id], value: fact.value }));
+    if (facts) {
+      this.claims = facts.claims
+        .filter((fact) => fact.id in this.article!.claims)
+        .map((fact) => ({ label: this.article!.claims[fact.id], value: fact.value }));
+    }
+
+    this.relatedComparisons = (this.article.relatedComparisons ?? []).map((item) => ({
+      path: `/compare/${item.slug}/`,
+      label: item.label,
+    }));
 
     this.seeAlso = (this.article.seeAlso ?? [])
       .filter((other) => other in content.articles)
@@ -89,18 +103,20 @@ export class ArticlePageComponent implements OnDestroy {
         .map(link => [link.path, link])).values()];
     }
 
-    const path = `/articles/${slug}`;
+    const path = this.isComparison ? `/compare/${slug}` : `/articles/${slug}`;
     inject(SeoService).apply({
-      title: this.article.title,
+      title: this.article.seoTitle ?? this.article.title,
       description: this.article.description,
-      path: localePath(this.locale, path),
+      path: this.isComparison ? path : localePath(this.locale, path),
       type: 'article',
       locale: this.locale,
-      robots: isArticleLocaleIndexable(this.locale) ? 'index,follow' : 'noindex,follow',
-      alternates: localesWith(slug).filter(isArticleLocaleIndexable).map((other) => ({
-        hreflang: other.hreflang,
-        path: localePath(other, path),
-      })),
+      robots: this.isComparison || isArticleLocaleIndexable(this.locale) ? 'index,follow' : 'noindex,follow',
+      alternates: this.isComparison
+        ? []
+        : localesWith(slug).filter(isArticleLocaleIndexable).map((other) => ({
+            hreflang: other.hreflang,
+            path: localePath(other, path),
+          })),
     });
 
     this.describeAsArticle(slug, this.updated);
@@ -136,7 +152,7 @@ export class ArticlePageComponent implements OnDestroy {
     // The same function the canonical uses, so the two cannot drift: this site
     // is served from an S3 website endpoint that answers the slashless form with
     // a redirect, and an @id pointing at a redirect describes a different page.
-    const url = absolute(localePath(this.locale, `/articles/${slug}`));
+    const url = absolute(this.isComparison ? `/compare/${slug}` : localePath(this.locale, `/articles/${slug}`));
     const publisher = { '@type': 'Organization', name: APP_DEVELOPER, url: SITE_URL };
     const script = doc.createElement('script');
     script.id = id;
@@ -166,7 +182,12 @@ export class ArticlePageComponent implements OnDestroy {
       '@type': 'BreadcrumbList',
       itemListElement: [
         { '@type': 'ListItem', position: 1, name: APP_NAME, item: absolute(localePath(this.locale, '/')) },
-        { '@type': 'ListItem', position: 2, name: this.chrome.allArticles, item: absolute(localePath(this.locale, '/articles')) },
+        {
+          '@type': 'ListItem',
+          position: 2,
+          name: this.isComparison ? 'Comparisons' : this.chrome.allArticles,
+          item: absolute(this.isComparison ? '/compare' : localePath(this.locale, '/articles')),
+        },
         { '@type': 'ListItem', position: 3, name: this.article!.short, item: url },
       ],
     });

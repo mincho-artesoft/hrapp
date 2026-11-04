@@ -12,9 +12,48 @@
 # anyway: blocking them makes a page look broken to a renderer that does run
 # them, which is a worse signal than the bandwidth is worth.
 
+User-agent: OAI-SearchBot
+Allow: /
+Allow: /media/panel/
+Disallow: /media/
+
+User-agent: GPTBot
+Allow: /
+Allow: /media/panel/
+Disallow: /media/
+
+User-agent: ChatGPT-User
+Allow: /
+Allow: /media/panel/
+Disallow: /media/
+
+User-agent: ClaudeBot
+Allow: /
+Allow: /media/panel/
+Disallow: /media/
+
+User-agent: Claude-SearchBot
+Allow: /
+Allow: /media/panel/
+Disallow: /media/
+
+User-agent: PerplexityBot
+Allow: /
+Allow: /media/panel/
+Disallow: /media/
+
+User-agent: Google-Extended
+Allow: /
+Allow: /media/panel/
+Disallow: /media/
+
+User-agent: Applebot-Extended
+Allow: /
+Allow: /media/panel/
+Disallow: /media/
+
 User-agent: *
 Allow: /
-
 # Public screenshot renditions are embedded in article and product pages.
 # Allow crawlers to read those images; keep other media paths excluded.
 Allow: /media/panel/
@@ -22,6 +61,6 @@ Disallow: /media/
 
 Sitemap: https://www.cloud-calendars.com/sitemap.xml
 
-# Plain-language summary of the product for LLM crawlers. No provider has
-# committed to reading this, so treat it as a hedge rather than a channel.
+# Plain-language summary and Markdown exports for LLM crawlers:
 # https://www.cloud-calendars.com/llms.txt
+# https://www.cloud-calendars.com/llms-full.txt

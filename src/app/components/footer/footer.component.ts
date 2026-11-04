@@ -37,17 +37,22 @@ export class FooterComponent {
   /** Fragment links point at the home page of the reader's own language. */
   readonly productLinks = computed(() => {
     const n = this.copy().nav;
+    const locale = this.active.locale();
     const home = this.active.path('/');
     const base = home.endsWith('/') ? home : `${home}/`;
-    return [
+    const links = [
       { label: n.tour, href: `${base}#showcase` },
       { label: n.widgets, href: `${base}#widgets` },
       { label: n.weather, href: `${base}#weather` },
       { label: n.features, href: `${base}#features` },
       { label: n.pricing, href: `${base}#pricing` },
       { label: n.faq, href: `${base}#faq` },
-      { label: n.articles, href: linkPath(this.active.locale(), '/articles') },
     ];
+    if (locale.code === 'en-US') {
+      links.push({ label: 'Comparisons', href: '/compare/' });
+    }
+    links.push({ label: n.articles, href: linkPath(locale, '/articles') });
+    return links;
   });
 
   readonly rights = computed(() =>

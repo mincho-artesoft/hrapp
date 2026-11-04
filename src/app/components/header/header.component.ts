@@ -46,20 +46,26 @@ export class HeaderComponent {
   readonly copy = this.active.copy;
   readonly storeCta = computed(() => storeCta(this.active.locale().code));
   readonly isArticlesRoute = computed(() => this.active.currentPath().includes('/articles/'));
+  readonly isCompareRoute = computed(() => this.active.currentPath().startsWith('/compare/'));
 
   /** Labels come from the active language; the fragments never change. */
   readonly nav = computed<NavItem[]>(() => {
     const n = this.copy().nav;
     const base = this.homePath();
-    const articlesHref = linkPath(this.active.locale(), '/articles');
-    return [
+    const locale = this.active.locale();
+    const articlesHref = linkPath(locale, '/articles');
+    const items: NavItem[] = [
       { label: n.tour, href: `${base}#showcase`, key: 'showcase' },
       { label: n.widgets, href: `${base}#widgets`, key: 'widgets' },
       { label: n.weather, href: `${base}#weather`, key: 'weather' },
       { label: n.features, href: `${base}#features`, key: 'features' },
       { label: n.pricing, href: `${base}#pricing`, key: 'pricing' },
-      { label: n.articles, href: articlesHref, key: 'articles', isRoute: true },
     ];
+    if (locale.code === 'en-US') {
+      items.push({ label: 'Compare', href: '/compare/', key: 'compare', isRoute: true });
+    }
+    items.push({ label: n.articles, href: articlesHref, key: 'articles', isRoute: true });
+    return items;
   });
 
   toggleMenu(): void {

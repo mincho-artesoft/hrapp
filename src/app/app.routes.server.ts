@@ -2,6 +2,7 @@ import { RenderMode, ServerRoute } from '@angular/ssr';
 
 import { ARTICLE_SLUGS, LIVE_LOCALES } from './content/article-index';
 import { topicPrerenderParams } from './content/article-topics';
+import { COMPARISON_SLUGS } from './content/comparisons';
 
 /**
  * Which routes the build renders, and how.
@@ -18,6 +19,11 @@ import { topicPrerenderParams } from './content/article-topics';
  * for real pages, and would ship none of them.
  */
 export const serverRoutes: ServerRoute[] = [
+  {
+    path: 'compare/:slug',
+    renderMode: RenderMode.Prerender,
+    getPrerenderParams: async () => COMPARISON_SLUGS.map((slug) => ({ slug })),
+  },
   {
     path: 'articles/topics/:family/:page',
     renderMode: RenderMode.Prerender,

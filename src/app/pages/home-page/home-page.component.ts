@@ -11,6 +11,7 @@ import { WeatherHubComponent } from '../../components/weather-hub/weather-hub.co
 import { FeaturesComponent } from '../../components/features/features.component';
 import { MoreAppsComponent } from '../../components/more-apps/more-apps.component';
 import { PricingComponent } from '../../components/pricing/pricing.component';
+import { ComparisonsPreviewComponent } from '../../components/comparisons-preview/comparisons-preview.component';
 import { FaqComponent } from '../../components/faq/faq.component';
 import { GuidesPreviewComponent } from '../../components/guides-preview/guides-preview.component';
 import { CtaComponent } from '../../components/cta/cta.component';
@@ -32,6 +33,7 @@ import { APP_NAME, APP_DEVELOPER, APP_MIN_IOS, APP_VERSION, APP_SIZE_MB, APP_RAT
     FeaturesComponent,
     MoreAppsComponent,
     PricingComponent,
+    ComparisonsPreviewComponent,
     FaqComponent,
     GuidesPreviewComponent,
     CtaComponent,

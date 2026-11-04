@@ -26,9 +26,9 @@
         <a
           class="hdr__link"
           [class.hdr__link--route]="item.isRoute"
-          [class.is-active]="item.isRoute && isArticlesRoute()"
+          [class.is-active]="(item.key === 'articles' && isArticlesRoute()) || (item.key === 'compare' && isCompareRoute())"
           [href]="item.href"
-          [attr.aria-current]="item.isRoute && isArticlesRoute() ? 'page' : null"
+          [attr.aria-current]="(item.key === 'articles' && isArticlesRoute()) || (item.key === 'compare' && isCompareRoute()) ? 'page' : null"
         >
           <span>{{ item.label }}</span>
         </a>

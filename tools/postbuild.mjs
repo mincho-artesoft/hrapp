@@ -148,13 +148,19 @@ ${body}
 // llms.txt: the same list in the form a language model can read cheaply.
 // An article URL has a slug after /articles/. The hubs end there, so matching
 // on the segment alone would count all twenty-nine of them as articles.
+const comparisons = urls.filter((u) => new URL(u.loc).pathname.startsWith('/compare/'));
 const articles = urls.filter((u) => /\/articles\/[^/]+\/$/.test(u.loc));
 const llms = readFileSync(join(ROOT, 'public/llms.txt'), 'utf8')
+  .split('\n## Comparisons')[0]
   .split('\n## Articles')[0]
   .trimEnd();
 writeFileSync(
   join(DIST, 'llms.txt'),
   `${llms}
+
+## Comparisons
+
+${comparisons.map((c) => `- ${c.loc}`).join('\n')}
 
 ## Articles
 
@@ -240,5 +246,5 @@ if (unslashed.size) {
 const withAlternates = urls.filter((u) => u.alternates.length > 1).length;
 console.log(
   `postbuild: sitemap (${urls.length} urls, ${withAlternates} with alternates), ` +
-    `llms.txt (${articles.length} articles), ${built.size} pages, every internal link resolves without a redirect`,
+    `llms.txt (${comparisons.length} comparisons, ${articles.length} articles), ${built.size} pages, every internal link resolves without a redirect`,
 );

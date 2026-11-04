@@ -43,6 +43,23 @@ interface Group {
         <p class="hub__lead">{{ chrome.hubDescription }}</p>
       </header>
 
+      @if (!isTopic && locale.code === 'en-US') {
+        <section class="card hub__compare-banner" aria-labelledby="hub-compare-cta">
+          <div class="hub__compare-copy">
+            <p class="eyebrow">30 Multi-Table Matrices</p>
+            <h2 id="hub-compare-cta">Side-by-Side Calendar App &amp; Sync Comparisons</h2>
+            <p>
+              Compare Cloud Calendars against Apple Calendar, Google Calendar, Fantastical, Outlook Mobile,
+              BusyCal, Notion Calendar, CalDAV vs ICS vs OAuth, weather forecasts, and widgets across 90+ structured tables.
+            </p>
+          </div>
+          <a class="btn btn--primary" href="/compare/">
+            <span>Explore All 30 Comparisons</span>
+            <span aria-hidden="true">→</span>
+          </a>
+        </section>
+      }
+
       @if (!isTopic && groups.length > 1) {
         <nav class="hub__topics" aria-label="Article topics">
           @for (group of groups; track group.family) {
@@ -155,6 +172,34 @@ interface Group {
         display: flex;
         flex-wrap: wrap;
         gap: 0.65rem;
+      }
+
+      .hub__compare-banner {
+        padding: clamp(1.3rem, 2.8vw, 1.85rem);
+        display: flex;
+        flex-wrap: wrap;
+        align-items: center;
+        justify-content: space-between;
+        gap: 1.25rem 2rem;
+        border-color: rgba(56, 224, 240, 0.34);
+        background: linear-gradient(150deg, rgba(56, 224, 240, 0.1), rgba(77, 124, 255, 0.06));
+      }
+
+      .hub__compare-copy {
+        max-width: 44rem;
+      }
+
+      .hub__compare-copy h2 {
+        font-size: clamp(1.25rem, 2.3vw, 1.65rem);
+        letter-spacing: -0.028em;
+        margin: 0.25rem 0 0.45rem;
+      }
+
+      .hub__compare-copy p:last-child {
+        margin: 0;
+        color: var(--ink-2);
+        line-height: 1.58;
+        font-size: 0.94rem;
       }
 
       .hub__topic {

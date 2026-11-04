@@ -1,7 +1,7 @@
 import { Routes, ResolveFn } from '@angular/router';
 
 import { LIVE_LOCALES } from './content/article-index';
-import { loadArticleContentFor } from './content/registry';
+import { loadArticleContentFor, loadComparisonContentFor } from './content/registry';
 import type { ArticleLocale } from './content/types';
 import { DEFAULT_LOCALE, LOCALES } from './core/locales';
 import { HomePageComponent } from './pages/home-page/home-page.component';
@@ -28,6 +28,7 @@ import { TermsPageComponent } from './pages/terms-page/terms-page.component';
  * broken rather than the page being untranslated.
  */
 const resolveArticleContent: ResolveFn<ArticleLocale> = route => loadArticleContentFor(route.data['locale'].code, route.paramMap.get('slug') ?? undefined);
+const resolveComparisonContent: ResolveFn<ArticleLocale> = route => loadComparisonContentFor(route.paramMap.get('slug') ?? '');
 
 const homeRoutes: Routes = LOCALES.map((locale) => ({
   path: locale.slug,
@@ -98,6 +99,17 @@ export const routes: Routes = [
     resolve: { articleContent: resolveArticleContent },
   },
   ...articleRoutes,
+  {
+    path: 'compare',
+    loadComponent: () => import('./pages/compare-page/compare-page.component').then((m) => m.ComparePageComponent),
+    data: { locale: DEFAULT_LOCALE },
+  },
+  {
+    path: 'compare/:slug',
+    loadComponent: () => import('./pages/article-page/article-page.component').then((m) => m.ArticlePageComponent),
+    data: { locale: DEFAULT_LOCALE, isComparison: true },
+    resolve: { articleContent: resolveComparisonContent },
+  },
   { path: 'privacy-policy', component: PrivacyPolicyPageComponent },
   { path: 'terms-of-service', component: TermsPageComponent },
 ];

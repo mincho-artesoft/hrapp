@@ -6,19 +6,20 @@
 
 - [Cloud Calendars](https://www.cloud-calendars.com/): calendar views, weather, Home Screen widgets and plan information.
 - [App Store listing](https://apps.apple.com/us/app/cloud-calendars-sync-widget/id6744690319): current version, availability, local pricing and supported devices.
+- [Calendar comparisons hub](https://www.cloud-calendars.com/compare/): multi-table comparisons across iPhone calendar apps, unified account views, CalDAV vs ICS vs native OAuth sync, and shared household setups.
 
 ## Capabilities and limits
 
-- Day, Week, Month, Year and List views, including a multi-calendar overview.
-- Base includes Google Calendar sync, Google Meet support, weather and Home Screen widgets. Advanced removes ads. Premium adds Microsoft Calendar and Microsoft Teams support.
+- Day, Week, Month, Year and List views, including a multi-calendar side-by-side day overview.
+- Base (Free) includes iCloud/device calendar access, Google Calendar sync, Google Meet support, Apple WeatherKit forecasts and Home Screen widgets. Advanced removes ads. Premium adds Microsoft Calendar (Outlook / Exchange / Microsoft 365) and Microsoft Teams support.
 - Local calendars can be used on the device without an app account. Provider connections and sharing services may require sign-in and the appropriate permissions.
-- Available weather depends on location, dates and the provider. A month of calendar dates is not a month of available forecasts.
-- Read-only calendars remain read-only; a subscription does not override calendar-owner or workplace restrictions.
+- Available weather depends on location, dates and Apple WeatherKit (up to 10 returned daily forecast days plus hourly forecasts). A month of calendar dates is not a month of available forecasts.
+- Read-only calendars and subscribed ICS feeds remain read-only; a subscription does not override calendar-owner or workplace restrictions, nor does a combined view automatically copy busy blocks between separate accounts.
 
-Requires iOS 18 or later. Check current local subscription terms before purchase. This website contains English guides and translations; only existing versions are linked. Availability in a language does not imply that every article has a translation.
+Requires iOS / iPadOS 18.0 or later on iPhone and iPad. Check current local subscription terms before purchase. This website contains English comparisons, guides and translations; only existing versions are linked.
 
 ## Reference
 
 - [Privacy policy](https://www.cloud-calendars.com/privacy-policy/): published data-handling policy.
 - [Terms of service](https://www.cloud-calendars.com/terms-of-service/).
-- [Selected guide text](https://www.cloud-calendars.com/llms-full.txt): readable text exported from selected source-backed English guides, with original page URLs and references.
+- [Full comparison tables and selected guide text](https://www.cloud-calendars.com/llms-full.txt): Markdown tables and full text exported from English comparisons and selected source-backed guides, with canonical URLs and primary references.

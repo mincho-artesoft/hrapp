@@ -79,6 +79,9 @@ export class ActiveLocaleService {
    */
   equivalentPath(target: Locale): string {
     const url = this.url();
+    if (url === '/compare' || url.startsWith('/compare/')) {
+      return target.code === 'en-US' ? withSlash(url) : withSlash(localePath(target, '/'));
+    }
     const match = url.match(/\/articles\/([^/]+)$/);
 
     if (match) {

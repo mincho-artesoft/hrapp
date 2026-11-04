@@ -56,3 +56,14 @@ export async function loadArticleContentFor(code: string, slug?: string): Promis
   if (!article) return content;
   return { chrome: content.chrome, articles: { ...content.articles, [slug]: article } };
 }
+
+/** Resolves one English comparison page lazily alongside the English hub metadata for seeAlso links. */
+export async function loadComparisonContentFor(slug: string): Promise<ArticleLocale> {
+  const [content, { loadComparisonArticle }] = await Promise.all([
+    loadContentFor('en-US'),
+    import('./comparisons'),
+  ]);
+  const article = await loadComparisonArticle(slug);
+  if (!article) return content;
+  return { chrome: content.chrome, articles: { ...content.articles, [slug]: article } };
+}
