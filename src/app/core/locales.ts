@@ -343,14 +343,66 @@ export function linkPath(locale: Locale, path: string): string {
 }
 
 /**
+ * The provider token for the Arte Soft developer account in App Store Connect
+ * (Analytics → Acquisition → Campaigns). Apple attributes a campaign only when
+ * the link carries both `pt` (provider token) and `ct` (campaign token, max 30
+ * characters) plus `mt=8` for iOS.
+ */
+export const APP_STORE_PROVIDER_TOKEN = '127093297';
+
+/**
+ * A page's campaign token with the visit's traffic source appended after an
+ * underscore (e.g. `home_chatgpt`, `compare_perplexity`, or a long article slug
+ * clipped so `page + '_' + source` stays within Apple's 30-character `ct` limit).
+ */
+export function campaignFor(page: string, source = ''): string {
+  const cleanPage = (page || 'home').replace(/^-+|-+$/g, '');
+  if (!source) {
+    return cleanPage.slice(0, 30).replace(/-+$/, '') || 'home';
+  }
+  const tail = `_${source}`;
+  const maxPageLen = Math.max(1, 30 - tail.length);
+  return cleanPage.slice(0, maxPageLen).replace(/-+$/, '') + tail;
+}
+
+/**
+ * Add Apple App Store Connect campaign parameters (`pt`, `ct`, `mt=8`) to an
+ * App Store URL while preserving any existing query parameters.
+ */
+export function campaignLink(
+  url: string,
+  campaign: string,
+  providerToken = APP_STORE_PROVIDER_TOKEN,
+): string {
+  const ct = campaignFor(campaign)
+    .toLowerCase()
+    .replace(/[^a-z0-9_-]+/g, '-')
+    .replace(/^-+|-+$/g, '')
+    .slice(0, 30)
+    .replace(/-+$/, '');
+  if (!ct) return url;
+  const u = new URL(url);
+  if (providerToken) u.searchParams.set('pt', providerToken);
+  u.searchParams.set('ct', ct);
+  if (providerToken && !u.searchParams.has('mt')) u.searchParams.set('mt', '8');
+  return u.toString();
+}
+
+/**
  * The App Store link for a locale.
  *
  * Apple resolves the storefront from the path segment, so a German reader
  * lands on the German listing instead of the American one and sees prices in
  * the currency they will actually be charged in.
  */
-export function storeUrl(locale: Locale, base: string): string {
-  return base.replace(/\/[a-z]{2}\/app\//, `/${locale.storefront}/app/`);
+export function storeUrl(
+  locale: Locale,
+  base: string,
+  campaign = 'home',
+  providerToken = APP_STORE_PROVIDER_TOKEN,
+): string {
+  const url = base.replace(/\/[a-z]{2}\/app\//, `/${locale.storefront}/app/`);
+  return campaign ? campaignLink(url, campaign, providerToken) : url;
 }
 
 /**

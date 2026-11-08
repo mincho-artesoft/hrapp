@@ -1,5 +1,5 @@
 import { DOCUMENT } from '@angular/common';
-import { ChangeDetectionStrategy, Component, OnDestroy, inject } from '@angular/core';
+import { ChangeDetectionStrategy, Component, OnDestroy, computed, inject } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 
 import { MoreAppsComponent } from '../../components/more-apps/more-apps.component';
@@ -8,6 +8,7 @@ import { ShotRailComponent } from '../../components/shot-rail/shot-rail.componen
 import { ARTICLE_FACTS } from '../../content/article-facts';
 import { localesWith } from '../../content/article-index';
 import { ArticleChrome, ArticleLocale, ClaimRow, LocalisedArticle } from '../../content/types';
+import { ActiveLocaleService } from '../../core/active-locale.service';
 import { APP_DEVELOPER, APP_NAME, APP_STORE_URL, SITE_URL } from '../../core/app-facts';
 import { DEFAULT_LOCALE, Locale, linkPath, localePath, storeUrl } from '../../core/locales';
 import { storeCta } from '../../core/store-cta';
@@ -37,6 +38,8 @@ interface SeeAlsoLink {
 })
 export class ArticlePageComponent implements OnDestroy {
   private readonly doc = inject(DOCUMENT);
+  private readonly active = inject(ActiveLocaleService);
+  private readonly slug: string;
   readonly locale: Locale;
   readonly chrome: ArticleChrome;
   readonly article: LocalisedArticle | undefined;
@@ -48,13 +51,16 @@ export class ArticlePageComponent implements OnDestroy {
   readonly seeAlso: SeeAlsoLink[] = [];
   readonly articleLinks: SeeAlsoLink[] = [];
   readonly updated: string = '';
-  readonly store: string;
+  readonly store = computed(() =>
+    storeUrl(this.locale, APP_STORE_URL, this.active.tagged(this.slug || 'articles')),
+  );
   readonly storeLabel: string;
   readonly showScheduleBuilder: boolean;
 
   constructor() {
     const route = inject(ActivatedRoute).snapshot;
     const slug = route.paramMap.get('slug') ?? '';
+    this.slug = slug;
     this.isComparison = route.data['isComparison'] === true;
     this.showScheduleBuilder = !this.isComparison && slug === 'weekly-schedule-builder' && ((route.data['locale'] as Locale | undefined)?.code ?? 'en-US') === 'en-US';
 
@@ -65,7 +71,6 @@ export class ArticlePageComponent implements OnDestroy {
     this.article = content.articles[slug];
     this.hubHref = this.isComparison ? '/compare/' : linkPath(this.locale, '/articles');
     this.hubLabel = this.isComparison ? 'All comparisons' : this.chrome.allArticles;
-    this.store = storeUrl(this.locale, APP_STORE_URL);
     this.storeLabel = storeCta(this.locale.code);
 
     const facts = ARTICLE_FACTS[slug];
@@ -124,6 +129,12 @@ export class ArticlePageComponent implements OnDestroy {
 
   localised(path: string): string {
     return linkPath(this.locale, path);
+  }
+
+  sourceUrl(url: string): string {
+    return url.includes('id6744690319')
+      ? storeUrl(this.locale, url, this.active.tagged(this.slug || 'articles'))
+      : url;
   }
 
   /**

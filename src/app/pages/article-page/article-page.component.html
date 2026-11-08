@@ -30,7 +30,7 @@
       <section class="article__action">
         <h2>{{ article.actionHeading }}</h2>
         <p>{{ article.actionText }}</p>
-        <a class="btn btn--primary" [href]="store" target="_blank" rel="noopener">{{ storeLabel }}</a>
+        <a class="btn btn--primary" [href]="store()" target="_blank" rel="noopener">{{ storeLabel }}</a>
         @if (articleLinks.length) {
           <ul>@for (link of articleLinks; track link.path) { <li><a [href]="link.path">{{ link.label }}</a></li> }</ul>
         }
@@ -125,7 +125,7 @@
         <h2>{{ article.sourcesHeading }}</h2>
         <ul>
           @for (source of article.sources; track source.url) {
-            <li><a [href]="source.url" target="_blank" rel="noopener">{{ source.label }}</a></li>
+            <li><a [href]="sourceUrl(source.url)" target="_blank" rel="noopener">{{ source.label }}</a></li>
           }
         </ul>
       </section>
@@ -157,7 +157,7 @@
     <footer class="article__foot">
       <p class="article__updated">{{ chrome.updated }}: {{ updated }}</p>
       <p class="article__cta">{{ chrome.ctaLine }}</p>
-      <a class="btn btn--primary" [href]="store" target="_blank" rel="noopener">
+      <a class="btn btn--primary" [href]="store()" target="_blank" rel="noopener">
         {{ storeLabel }}
       </a>
     </footer>

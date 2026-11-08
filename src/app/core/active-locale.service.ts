@@ -6,11 +6,63 @@ import { filter } from 'rxjs/operators';
 import { homeCopyFor } from '../content/home/registry';
 import { ARTICLE_SLUGS } from '../content/article-index';
 import { APP_STORE_URL } from './app-facts';
-import { DEFAULT_LOCALE, LOCALES, Locale, localePath, storeUrl } from './locales';
+import {
+  APP_STORE_PROVIDER_TOKEN,
+  DEFAULT_LOCALE,
+  LOCALES,
+  Locale,
+  campaignFor,
+  localePath,
+  storeUrl,
+} from './locales';
+import { isBrowser } from './motion';
 
 /** The site is served from an S3 website endpoint; see the note in seo.service. */
 function withSlash(path: string): string {
   return path.endsWith('/') ? path : `${path}/`;
+}
+
+/**
+ * Traffic sources worth distinguishing in App Store Connect (`ct=<page>_<source>`),
+ * matched against `utm_source` or `document.referrer` hostname and persisted in
+ * `sessionStorage` (`visit-source`) for the rest of the visit.
+ */
+const SOURCES: readonly (readonly [RegExp, string])[] = [
+  [/^chatgpt$|(^|\.)chatgpt\.com$|(^|\.)openai\.com$/i, 'chatgpt'],
+  [/^perplexity$|(^|\.)perplexity\.ai$/i, 'perplexity'],
+  [/^(bing|copilot)$|(^|\.)bing\.com$|(^|\.)copilot\.microsoft\.com$/i, 'bing'],
+  [/^google$|(^|\.)google\./i, 'google'],
+  [/^(ph|producthunt)$|(^|\.)producthunt\.com$/i, 'ph'],
+  [/^(altto|alternativeto)$|(^|\.)alternativeto\.net$/i, 'altto'],
+  [/^(devto|dev\.to)$|(^|\.)dev\.to$/i, 'devto'],
+  [/^hashnode$|(^|\.)hashnode\./i, 'hashnode'],
+  [/^medium$|(^|\.)medium\.com$/i, 'medium'],
+  [/^reddit$|(^|\.)reddit\.com$/i, 'reddit'],
+];
+const SOURCE_KEY = 'visit-source';
+
+export function readSource(): string {
+  if (typeof window === 'undefined') return '';
+  let from = '';
+  try {
+    from = new URLSearchParams(window.location.search).get('utm_source')?.trim().toLowerCase() ?? '';
+  } catch {
+    /* ignore */
+  }
+  let referrer = '';
+  try {
+    referrer = document.referrer ? new URL(document.referrer).hostname.toLowerCase() : '';
+  } catch {
+    /* an unparsable referrer names nobody */
+  }
+  const found =
+    SOURCES.find(([re]) => (from && re.test(from)) || (referrer && re.test(referrer)))?.[1] ?? '';
+  try {
+    if (found) sessionStorage.setItem(SOURCE_KEY, found);
+    return found || sessionStorage.getItem(SOURCE_KEY) || '';
+  } catch {
+    return found;
+  }
 }
 
 /**
@@ -43,8 +95,11 @@ export class ActiveLocaleService {
    * language's home page instead of the page the reader was on.
    */
   private readonly url = signal('/');
+  private readonly browser = isBrowser();
+  private readonly source = signal(this.browser ? readSource() : '');
 
   readonly locale = this.current.asReadonly();
+  readonly visitSource = this.source.asReadonly();
 
   /** Root-relative same-page path so base href cannot send fragment links home. */
   readonly currentPath = computed(() => {
@@ -52,8 +107,36 @@ export class ActiveLocaleService {
     return path.endsWith('.html') ? path : withSlash(path);
   });
 
-  /** The App Store link for this reader's storefront, not the American one. */
-  readonly storeHref = computed(() => storeUrl(this.current(), APP_STORE_URL));
+  /**
+   * Which page of this site the reader is on, as a campaign token: `home`,
+   * `compare`, `articles`, or the bare `<slug>` of an article or comparison.
+   */
+  readonly pageCampaign = computed(() => {
+    const slug = this.current().slug;
+    let rest = this.url().split('#')[0].split('?')[0];
+    if (slug && (rest === `/${slug}` || rest.startsWith(`/${slug}/`))) {
+      rest = rest.slice(slug.length + 1);
+    }
+    rest = rest.replace(/^\/+|\/+$/g, '');
+    if (!rest) return 'home';
+    const articleOrCompare = rest.match(/^(?:articles|compare)\/(.+)$/);
+    return (articleOrCompare ? articleOrCompare[1] : rest).replace(/\//g, '-');
+  });
+
+  /** A page's campaign token with any detected traffic source appended. */
+  tagged(campaign: string): string {
+    return campaignFor(campaign, this.source());
+  }
+
+  /** The App Store link for this reader's storefront and current page campaign. */
+  readonly storeHref = computed(() =>
+    storeUrl(this.current(), APP_STORE_URL, this.tagged(this.pageCampaign()), APP_STORE_PROVIDER_TOKEN),
+  );
+
+  /** The App Store link with an explicit campaign name chosen by the caller. */
+  storeHrefFor(campaign: string): string {
+    return storeUrl(this.current(), APP_STORE_URL, this.tagged(campaign), APP_STORE_PROVIDER_TOKEN);
+  }
 
   /** Home-page copy in the language of the page being read. */
   readonly copy = computed(() => homeCopyFor(this.current().code));
@@ -109,5 +192,11 @@ export class ActiveLocaleService {
     const requestedLocale = LOCALES.find(locale => locale.slug === prefix) ?? DEFAULT_LOCALE;
     this.current.set((route.snapshot.data['locale'] as Locale | undefined) ?? requestedLocale);
     this.url.set(path);
+    if (this.browser) {
+      const nextSource = readSource();
+      if (nextSource && nextSource !== this.source()) {
+        this.source.set(nextSource);
+      }
+    }
   }
 }

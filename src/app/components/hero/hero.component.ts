@@ -49,12 +49,12 @@ export class HeroComponent implements AfterViewInit, OnDestroy {
   private observer?: IntersectionObserver;
   private visible = true;
 
-  readonly appStoreUrl = APP_STORE_URL;
+  private readonly active = inject(ActiveLocaleService);
+  readonly appStoreUrl = this.active.storeHref;
   readonly version = APP_VERSION;
   readonly rating = APP_RATING;
   readonly ratingCount = APP_RATING_COUNT;
 
-  private readonly active = inject(ActiveLocaleService);
   readonly copy = computed(() => this.active.copy().hero);
   readonly appStore = this.active.storeHref;
   readonly tourHref = computed(() => {

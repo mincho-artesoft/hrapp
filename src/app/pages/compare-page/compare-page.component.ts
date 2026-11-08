@@ -1,5 +1,5 @@
 import { DOCUMENT } from '@angular/common';
-import { ChangeDetectionStrategy, Component, OnDestroy, inject } from '@angular/core';
+import { ChangeDetectionStrategy, Component, OnDestroy, computed, inject } from '@angular/core';
 
 import { MoreAppsComponent } from '../../components/more-apps/more-apps.component';
 import {
@@ -8,6 +8,7 @@ import {
   ComparisonCardMeta,
   ComparisonGroup,
 } from '../../content/comparisons';
+import { ActiveLocaleService } from '../../core/active-locale.service';
 import { APP_DEVELOPER, APP_NAME, APP_STORE_URL, SITE_URL } from '../../core/app-facts';
 import { DEFAULT_LOCALE, storeUrl } from '../../core/locales';
 import { SeoService, absolute } from '../../core/seo.service';
@@ -161,7 +162,7 @@ const GROUP_ORDER: readonly ComparisonGroup[] = ['apps', 'sync', 'views', 'devic
       <footer class="cmp-hub__foot">
         <p>Download Cloud Calendars free on iPhone and iPad, or inspect every guide in our library.</p>
         <div class="cmp-hub__actions">
-          <a class="btn btn--primary" [href]="store" target="_blank" rel="noopener">{{ storeLabel }}</a>
+          <a class="btn btn--primary" [href]="store()" target="_blank" rel="noopener">{{ storeLabel }}</a>
           <a class="btn btn--ghost" href="/articles/">Browse all guides →</a>
         </div>
       </footer>
@@ -489,8 +490,11 @@ const GROUP_ORDER: readonly ComparisonGroup[] = ['apps', 'sync', 'views', 'devic
 })
 export class ComparePageComponent implements OnDestroy {
   private readonly doc = inject(DOCUMENT);
+  private readonly active = inject(ActiveLocaleService);
   readonly clusters: readonly ComparisonCluster[];
-  readonly store = storeUrl(DEFAULT_LOCALE, APP_STORE_URL);
+  readonly store = computed(() =>
+    storeUrl(DEFAULT_LOCALE, APP_STORE_URL, this.active.tagged('compare')),
+  );
   readonly storeLabel = storeCta(DEFAULT_LOCALE.code);
 
   constructor() {

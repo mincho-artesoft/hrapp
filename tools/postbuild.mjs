@@ -53,7 +53,15 @@ const esc = (s) => s.replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/"/g, 
 
 const entries = [];
 for (const file of pages(DIST)) {
-  const html = readFileSync(file, 'utf8');
+  let html = readFileSync(file, 'utf8');
+  const normalisedHtml = html.replace(
+    /href="(https:\/\/apps\.apple\.com\/[^"]+)"/g,
+    (_, url) => `href="${url.replace(/&amp;/g, '&')}"`,
+  );
+  if (normalisedHtml !== html) {
+    html = normalisedHtml;
+    writeFileSync(file, html);
+  }
 
   // Private tools and tokenized invitation pages must stay out of the sitemap.
   if (/<meta name="robots" content="noindex/i.test(html)) continue;
