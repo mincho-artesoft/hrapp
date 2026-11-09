@@ -56,6 +56,7 @@ export class ArticlePageComponent implements OnDestroy {
   );
   readonly storeLabel: string;
   readonly showScheduleBuilder: boolean;
+  readonly inlineCtaAfter: number = -1;
 
   constructor() {
     const route = inject(ActivatedRoute).snapshot;
@@ -75,6 +76,10 @@ export class ArticlePageComponent implements OnDestroy {
 
     const facts = ARTICLE_FACTS[slug];
     if (!this.article || (!this.isComparison && !facts)) return;
+
+    this.inlineCtaAfter = this.article.sections.length
+      ? Math.floor((this.article.sections.length - 1) / 2)
+      : -1;
 
     this.updated = this.article.updated ?? facts?.updated ?? '2026-11-04';
 

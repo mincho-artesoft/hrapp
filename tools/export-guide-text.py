@@ -48,6 +48,8 @@ class ArticleText(HTMLParser):
         if (
             tag in {'cc-more-apps', 'nav'}
             or (tag == 'section' and '__gallery' in attrs.get('class', ''))
+            or (tag == 'div' and 'art__top-cta' in attrs.get('class', ''))
+            or (tag == 'aside' and 'cta--inline' in attrs.get('class', ''))
         ):
             self.skip = 1
             return

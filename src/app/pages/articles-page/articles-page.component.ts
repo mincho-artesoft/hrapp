@@ -1,11 +1,14 @@
-import { ChangeDetectionStrategy, Component, inject } from '@angular/core';
+import { ChangeDetectionStrategy, Component, computed, inject } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 
 import { ARTICLE_FAMILIES, ARTICLE_PAGE_SIZE, topicPath } from '../../content/article-topics';
 import { ARTICLE_FACTS } from '../../content/article-facts';
 import { LIVE_LOCALES } from '../../content/article-index';
 import { ArticleChrome, ArticleLocale, Family } from '../../content/types';
-import { DEFAULT_LOCALE, Locale, linkPath, localePath } from '../../core/locales';
+import { ActiveLocaleService } from '../../core/active-locale.service';
+import { APP_STORE_URL } from '../../core/app-facts';
+import { DEFAULT_LOCALE, Locale, linkPath, localePath, storeUrl } from '../../core/locales';
+import { storeCta } from '../../core/store-cta';
 import { MoreAppsComponent } from '../../components/more-apps/more-apps.component';
 import { SeoService } from '../../core/seo.service';
 import { isArticleLocaleIndexable } from '../../core/article-indexing';
@@ -41,6 +44,9 @@ interface Group {
         }
         <h1>{{ heading }}</h1>
         <p class="hub__lead">{{ chrome.hubDescription }}</p>
+        <div class="art__top-cta">
+          <a class="btn btn--primary" [href]="store()" target="_blank" rel="noopener">{{ storeLabel }}</a>
+        </div>
       </header>
 
       @if (!isTopic && locale.code === 'en-US') {
@@ -111,6 +117,10 @@ interface Group {
           }
         </nav>
       }
+      <aside class="cta cta--inline">
+        <p>{{ chrome.ctaLine }}</p>
+        <a class="btn btn--primary" [href]="store()" target="_blank" rel="noopener">{{ storeLabel }}</a>
+      </aside>
       <cc-more-apps [inline]="true" />
     </div>
   `,
@@ -166,6 +176,29 @@ interface Group {
         color: var(--ink-3);
         max-width: 58ch;
         line-height: 1.62;
+      }
+
+      .art__top-cta {
+        display: flex;
+        flex-wrap: wrap;
+        align-items: center;
+        gap: 0.75rem;
+        margin-top: 0.25rem;
+      }
+
+      .cta--inline {
+        padding: clamp(1.25rem, 2.8vw, 1.65rem);
+        border: 1px dashed rgba(56, 224, 240, 0.36);
+        border-radius: var(--r-md);
+        background: linear-gradient(155deg, rgba(56, 224, 240, 0.08), rgba(77, 124, 255, 0.05));
+        display: grid;
+        gap: 0.85rem;
+        justify-items: start;
+      }
+
+      .cta--inline p {
+        margin: 0;
+        color: var(--ink-2);
       }
 
       .hub__topics {
@@ -392,6 +425,7 @@ interface Group {
   ],
 })
 export class ArticlesPageComponent {
+  private readonly active = inject(ActiveLocaleService);
   readonly locale: Locale;
   readonly chrome: ArticleChrome;
   readonly groups: Group[] = [];
@@ -399,6 +433,10 @@ export class ArticlesPageComponent {
   readonly currentPage: number;
   readonly heading: string;
   readonly pages: { number: number; path: string }[] = [];
+  readonly store = computed(() =>
+    storeUrl(this.locale, APP_STORE_URL, this.active.tagged('articles')),
+  );
+  readonly storeLabel: string;
 
   topicAnchor(family: Family): string {
     return `${linkPath(this.locale, '/articles')}#topic-${family}`;
@@ -407,6 +445,7 @@ export class ArticlesPageComponent {
   constructor() {
     const route = inject(ActivatedRoute).snapshot;
     this.locale = (route.data['locale'] as Locale | undefined) ?? DEFAULT_LOCALE;
+    this.storeLabel = storeCta(this.locale.code);
 
     const content = route.data['articleContent'] as ArticleLocale;
     if (!content) throw new Error('Article hub content was not resolved');

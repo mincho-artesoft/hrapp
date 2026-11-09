@@ -79,7 +79,7 @@
     color: var(--ink-3);
   }
 
-  @media (max-width: 360px) { display: none; }
+  @media (max-width: 480px) { display: none; }
 }
 
 /* ---------------------------------------------------------------
@@ -141,7 +141,10 @@
   padding: 0.62rem 1.15rem;
   font-size: 0.86rem;
 
-  @include upto($bp-xs) { display: none; }
+  @include upto($bp-xs) {
+    padding: 0.48rem 0.82rem;
+    font-size: 0.78rem;
+  }
 }
 
 .hdr__burger {

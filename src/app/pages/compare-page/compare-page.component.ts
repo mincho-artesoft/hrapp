@@ -45,6 +45,9 @@ const GROUP_ORDER: readonly ComparisonGroup[] = ['apps', 'sync', 'views', 'devic
           to compare exact features, trade-offs, sync protocols, privacy models, and pricing—including where
           Apple Calendar, Google Calendar, Outlook Mobile, Fantastical, BusyCal, Notion Calendar, or Proton win.
         </p>
+        <div class="art__top-cta">
+          <a class="btn btn--primary" [href]="store()" target="_blank" rel="noopener">{{ storeLabel }}</a>
+        </div>
       </header>
 
       <nav class="cmp-hub__topics" aria-label="Comparison categories">
@@ -118,6 +121,11 @@ const GROUP_ORDER: readonly ComparisonGroup[] = ['apps', 'sync', 'views', 'devic
           </table>
         </div>
       </section>
+
+      <aside class="cta cta--inline">
+        <p>Unify iCloud, Google Calendar, and Microsoft schedules on iPhone and iPad with built-in Apple WeatherKit hourly forecasts and Home Screen widgets.</p>
+        <a class="btn btn--primary" [href]="store()" target="_blank" rel="noopener">{{ storeLabel }}</a>
+      </aside>
 
       @for (cluster of clusters; track cluster.id) {
         <section class="cmp-hub__group" [id]="'group-' + cluster.id">
@@ -225,6 +233,29 @@ const GROUP_ORDER: readonly ComparisonGroup[] = ['apps', 'sync', 'views', 'devic
         line-height: 1.66;
         color: var(--ink-2);
         max-width: 68ch;
+      }
+
+      .art__top-cta {
+        display: flex;
+        flex-wrap: wrap;
+        align-items: center;
+        gap: 0.75rem;
+        margin-top: 0.25rem;
+      }
+
+      .cta--inline {
+        padding: clamp(1.25rem, 2.8vw, 1.65rem);
+        border: 1px dashed rgba(56, 224, 240, 0.36);
+        border-radius: var(--r-md);
+        background: linear-gradient(155deg, rgba(56, 224, 240, 0.08), rgba(77, 124, 255, 0.05));
+        display: grid;
+        gap: 0.85rem;
+        justify-items: start;
+      }
+
+      .cta--inline p {
+        margin: 0;
+        color: var(--ink-2);
       }
 
       .cmp-hub__topics {
