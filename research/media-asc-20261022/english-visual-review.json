@@ -1,0 +1,29 @@
+{
+  "date": "2026-10-22",
+  "app": "6744690319",
+  "localeReviewed": "en-US",
+  "screenshots": {
+    "scope": "All21screenshots viewed in3device contact sheets; selected first5 perdevice for existing subject mapping",
+    "devices": [
+      "iPhone",
+      "iPad",
+      "iPhoneDuo"
+    ],
+    "selectedSubjects": {
+      "01-hook": "Day calendar and weather",
+      "02-week-left": "Week calendar",
+      "03-week-right": "Weather",
+      "04-widgets": "Home Screen widgets",
+      "05-live": "Lock Screen Live Activity"
+    },
+    "decision": "Use first5; retain sharing/devices07in source readback but do not force them into existing5subject alt mapping.",
+    "observations": "Readable English product headings, actual UI calendar/weather/widget/LiveActivity subjects, no ad or purchase screens in inspected screenshots. Duo includes native mixed portrait/landscape; preserve dimensions, do not crop."
+  },
+  "videos": {
+    "scope": "English3device previews fully decoded without errors after selecting one highest-resolution stream; sampled every3seconds visually via sheets. Browser playback check follows on integrated website.",
+    "decision": "Suitable product demonstrations; no ad or purchase screen in sampled scenes. Use authentic existing DuoMP4 from S3 where checksum matches uploaded source. iPhone/iPad downloaded files are Apple-processed remuxes, not claimed original MP4.",
+    "limits": "Contact sheets are not full frame-by-frame or audio review; no native currentbuild equivalence inferred."
+  },
+  "localizations": "Other website locales use corresponding same-position ASCasset sets. English visualreview does not certify every translated line. Bulgarian preserves explicit existing English-media fallback.",
+  "privacy": "User will fillASCprivacy; do not modify it. Website deploy must use preexisting public privacy template from7a05a8a, keeping reviewed pending template untouched in main checkout."
+}

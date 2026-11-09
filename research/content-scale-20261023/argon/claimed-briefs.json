@@ -1,0 +1,788 @@
+{
+  "generatedAt": "2026-10-23T12:28:00+03:00",
+  "agent": "argon",
+  "scope": "C03 Real Shift / Rota Cycles and C04 Time Zones & DST Transitions",
+  "methodologyNote": "Contains 48 genuinely distinct standalone briefs (24 in C03 and 24 in C04) where the cycle mathematics, calendar protocol rule, procedure, or worked artifact differs materially. Does NOT inflate by cloning parameterized shift names or swapping city/device labels. Covers calendar planning and arithmetic only (zero medical, circadian, or labor-law advice). All primary source URLs listed were read and verified.",
+  "summary": {
+    "totalClaimedBriefs": 48,
+    "c03Count": 24,
+    "c04Count": 24,
+    "draftedInBatch01Count": 12
+  },
+  "briefs": [
+    {
+      "primaryKeyword": "pitman 2 2 3 shift calendar",
+      "slug": "pitman-2-2-3-shift-schedule-calendar-setup",
+      "cluster": "C03",
+      "intentKey": "shift:pitman-2-2-3-biweekly-decomposition",
+      "distinctQuestion": "How do you map a 14-day Pitman 2-2-3 shift pattern (2 on, 2 off, 3 on, 2 off, 2 on, 3 off) into a standard calendar using two alternating weekly rules without manually entering every day?",
+      "originalArtifact": "Illustrative 14-day four-crew Pitman matrix (Teams A, B, C, D across Days 1–14) decomposed into two `FREQ=WEEKLY;INTERVAL=2` rules (`BYDAY=MO,TU,FR,SA,SU` and `BYDAY=WE,TH`) with 12-hour shift arithmetic (7 workdays / 84 hours per 14-day cycle).",
+      "sourceUrls": [
+        "https://www.rfc-editor.org/rfc/rfc5545",
+        "https://support.google.com/calendar/answer/37115?hl=en",
+        "https://support.apple.com/guide/iphone/iph69525c028/ios",
+        "https://www.supershift.app/help.html"
+      ],
+      "closestNeighbor": "shift-work-calendar-iphone-rotating-schedules",
+      "boundary": "Covers only the 14-day Pitman 2-2-3 fixed or day/night rotation and its exact two-series biweekly `BYDAY` decomposition; excludes general shift app overviews, 28-day DuPont cycles, and 4-on-4-off 8-day cycles.",
+      "draftedInBatch01": true
+    },
+    {
+      "primaryKeyword": "dupont shift schedule calendar",
+      "slug": "dupont-28-day-rotating-shift-calendar-cycle",
+      "cluster": "C03",
+      "intentKey": "shift:dupont-28-day-four-week-rotation",
+      "distinctQuestion": "How do you build a 28-day DuPont rotating shift schedule in a calendar so the four unequal weeks—including the 7-day stretch off—repeat accurately every 4 weeks?",
+      "originalArtifact": "Illustrative 28-day 4-crew DuPont cycle table (4 nights, 3 off, 3 days, 1 off, 3 nights, 3 off, 4 days, 7 off = 14 shifts / 168 hours per 28 days, averaging 42 hours/week) mapped to 4-week (`FREQ=WEEKLY;INTERVAL=4`) or 28-day (`FREQ=DAILY;INTERVAL=28`) calendar rules.",
+      "sourceUrls": [
+        "https://www.rfc-editor.org/rfc/rfc5545",
+        "https://support.google.com/calendar/answer/37115?hl=en",
+        "https://www.supershift.app/help.html"
+      ],
+      "closestNeighbor": "pitman-2-2-3-shift-schedule-calendar-setup",
+      "boundary": "Covers only the 28-day DuPont 4-week day/night rotating cycle with its signature 7 consecutive days off; excludes 14-day Pitman 2-2-3 and 3-shift 8-hour continental rotations.",
+      "draftedInBatch01": true
+    },
+    {
+      "primaryKeyword": "24 48 shift calendar kelly day",
+      "slug": "firefighter-24-48-kelly-day-calendar-pattern",
+      "cluster": "C03",
+      "intentKey": "shift:24-48-three-platoon-kelly-day-exdate",
+      "distinctQuestion": "How do you set up a 24 hours on / 48 hours off three-platoon shift calendar and remove recurring Kelly Days without breaking the 3-day rotation?",
+      "originalArtifact": "Illustrative 21-day three-platoon (A/B/C) 24/48 cycle table (`FREQ=DAILY;INTERVAL=3`) paired with an every-nth-shift Kelly Day reduction calculation (56.0 hours/week reduced to 50.4 hours/week when 1 shift per 10 shifts / 30 days is removed via single-instance deletion / `EXDATE`).",
+      "sourceUrls": [
+        "https://www.rfc-editor.org/rfc/rfc5545",
+        "https://support.google.com/calendar/answer/37115?hl=en",
+        "https://support.apple.com/guide/iphone/iph69525c028/ios",
+        "https://www.supershift.app/help.html"
+      ],
+      "closestNeighbor": "shift-work-calendar-iphone-rotating-schedules",
+      "boundary": "Covers only the 3-day (72-hour) 24/48 three-platoon cycle and Kelly Day single-instance removal (`EXDATE`); excludes 48/96 six-day cycles and 9-day Berkeley/California rotations.",
+      "draftedInBatch01": true
+    },
+    {
+      "primaryKeyword": "night shift crossing midnight calendar",
+      "slug": "overnight-shift-crossing-midnight-calendar-end-date",
+      "cluster": "C03",
+      "intentKey": "shift:overnight-cross-midnight-dtstart-dtend-anchoring",
+      "distinctQuestion": "How should you enter an overnight shift that starts at 19:00 or 23:00 and ends the next morning so month, week, and day views do not put your shift on the wrong calendar date?",
+      "originalArtifact": "Illustrative side-by-side comparison of three calendar representations for a `19:00 Day N` to `07:00 Day N+1` night shift (single cross-midnight timed event, split midnight blocks, and start-date shift badge) showing exact `DTSTART`/`DTEND` behavior, `BYDAY` weekday anchoring, and visual rendering across Day, Week, and Month views.",
+      "sourceUrls": [
+        "https://www.rfc-editor.org/rfc/rfc5545",
+        "https://support.apple.com/guide/iphone/iph3d110f84/ios",
+        "https://support.google.com/calendar/answer/37115?hl=en",
+        "https://www.supershift.app/help.html"
+      ],
+      "closestNeighbor": "what-an-all-day-event-really-means",
+      "boundary": "Covers only timed overnight shifts crossing the `00:00` midnight boundary (`DTEND` on Day N+1 and `BYDAY` start-day anchoring); excludes all-day `VALUE=DATE` exclusive end dates and DST spring-forward/fall-back hour changes.",
+      "draftedInBatch01": true
+    },
+    {
+      "primaryKeyword": "split shift calendar two work periods",
+      "slug": "split-shift-two-work-periods-calendar-blocking",
+      "cluster": "C03",
+      "intentKey": "shift:split-shift-dual-work-blocks-unpaid-break",
+      "distinctQuestion": "How do you schedule a split shift with two separate work windows on the same day so the unpaid midday gap stays free for personal appointments while daily work hours stay accurate?",
+      "originalArtifact": "Illustrative split-shift comparison table for a `06:30–10:30` and `16:00–20:00` schedule (8.0 paid work hours inside a 13.5-hour daily spread with a 5.5-hour unpaid midday break) comparing two linked recurring events vs one 13.5-hour block across availability (`TRANSP`) and hour totals.",
+      "sourceUrls": [
+        "https://www.rfc-editor.org/rfc/rfc5545",
+        "https://support.google.com/calendar/answer/37115?hl=en",
+        "https://support.apple.com/guide/iphone/iph3d110f84/ios",
+        "https://www.supershift.app/help.html"
+      ],
+      "closestNeighbor": "planning-a-week-in-ten-minutes",
+      "boundary": "Covers only split shifts with two distinct active work blocks separated by an unpaid multi-hour off-duty gap on the same calendar day; excludes standard single-block shifts and on-call standby windows.",
+      "draftedInBatch01": true
+    },
+    {
+      "primaryKeyword": "on call calendar without blocking availability",
+      "slug": "on-call-standby-calendar-versus-confirmed-shift",
+      "cluster": "C03",
+      "intentKey": "shift:on-call-standby-free-busy-transp-separation",
+      "distinctQuestion": "How do you track a 24-hour or 7-day on-call standby rotation on your calendar without blocking every daytime slot as busy or losing track of actual callback hours worked?",
+      "originalArtifact": "Illustrative two-layer on-call calendar architecture table separating the Free (`TRANSP:TRANSPARENT`) standby banner from Busy (`TRANSP:OPAQUE`) active call-out blocks and confirmed shifts, with an illustrative 7-day standby + 3 callback event hour audit.",
+      "sourceUrls": [
+        "https://www.rfc-editor.org/rfc/rfc5545",
+        "https://support.apple.com/guide/calendar/icl1018/mac",
+        "https://support.google.com/calendar/answer/37115?hl=en",
+        "https://www.supershift.app/help.html"
+      ],
+      "closestNeighbor": "booking-link-or-shared-calendar",
+      "boundary": "Covers only separating unworked standby/pager coverage (`TRANSP:TRANSPARENT`) from confirmed work shifts and active callback blocks (`TRANSP:OPAQUE`); excludes external booking links and general calendar sharing.",
+      "draftedInBatch01": true
+    },
+    {
+      "primaryKeyword": "4 on 4 off shift calendar",
+      "slug": "4-on-4-off-eight-day-shift-calendar-cycle",
+      "cluster": "C03",
+      "intentKey": "shift:4-on-4-off-eight-day-drift-math",
+      "distinctQuestion": "How do you schedule a 4-on-4-off shift pattern in a standard calendar when an 8-day cycle drifts forward by one weekday every single week?",
+      "originalArtifact": "Illustrative 56-day (8-week / 7-cycle) weekday-drift matrix showing how four staggereddaily series (`FREQ=DAILY;INTERVAL=8` starting on Days 1, 2, 3, and 4) reproduce the exact 4-on-4-off cycle until the pattern realigns with the same weekday after `LCM(7, 8) = 56` days.",
+      "sourceUrls": [
+        "https://www.rfc-editor.org/rfc/rfc5545",
+        "https://support.google.com/calendar/answer/37115?hl=en",
+        "https://www.supershift.app/help.html"
+      ],
+      "closestNeighbor": "shift-work-calendar-iphone-rotating-schedules",
+      "boundary": "Covers only the 8-day (4-on-4-off) non-7-day-divisible cycle and its 4 staggered `INTERVAL=8` daily rules; excludes 14-day Pitman and 28-day DuPont weekly-aligned patterns.",
+      "draftedInBatch01": false
+    },
+    {
+      "primaryKeyword": "panama 2 2 3 vs pitman shift calendar",
+      "slug": "panama-2-2-3- four-week-day-night-rotation-calendar",
+      "cluster": "C03",
+      "intentKey": "shift:panama-28-day-day-night-flip-vs-fixed-pitman",
+      "distinctQuestion": "How does a 28-day rotating Panama 2-2-3 schedule (2 weeks of days followed by 2 weeks of nights) differ in calendar setup from a fixed 14-day Pitman 2-2-3 schedule?",
+      "originalArtifact": "Illustrative 28-day comparison matrix contrasting two biweekly rules (fixed Pitman) against four 4-week rules (`FREQ=WEEKLY;INTERVAL=4`, two at `07:00–19:00` and two at `19:00–07:00`) required when crews flip between days and nights every 14 days.",
+      "sourceUrls": [
+        "https://www.rfc-editor.org/rfc/rfc5545",
+        "https://support.google.com/calendar/answer/37115?hl=en",
+        "https://www.supershift.app/help.html"
+      ],
+      "closestNeighbor": "pitman-2-2-3-shift-schedule-calendar-setup",
+      "boundary": "Covers specifically the 28-day day-to-night transition architecture (four `INTERVAL=4` weekly rules with distinct start/end times) versus a static 14-day two-rule setup.",
+      "draftedInBatch01": false
+    },
+    {
+      "primaryKeyword": "48 96 firefighter shift calendar",
+      "slug": "firefighter-48-96-six-day-shift-calendar-setup",
+      "cluster": "C03",
+      "intentKey": "shift:48-96-six-day-cycle-42-day-weekday-alignment",
+      "distinctQuestion": "How do you enter a 48/96 shift schedule (2 days on, 4 days off) in a calendar and calculate how the 6-day cycle moves one weekday earlier each week?",
+      "originalArtifact": "Illustrative 42-day (`LCM(6, 7) = 42`) three-platoon 48/96 schedule table built from two staggered `FREQ=DAILY;INTERVAL=6` series (Tour Day 1 and Tour Day 2) showing the exact 1-weekday-earlier weekly shift.",
+      "sourceUrls": [
+        "https://www.rfc-editor.org/rfc/rfc5545",
+        "https://support.google.com/calendar/answer/37115?hl=en",
+        "https://www.supershift.app/help.html"
+      ],
+      "closestNeighbor": "firefighter-24-48-kelly-day-calendar-pattern",
+      "boundary": "Covers only the 6-day (144-hour) 48/96 two-on/four-off cycle and its 42-day weekday realignment; excludes 3-day 24/48 and 9-day California cycles.",
+      "draftedInBatch01": false
+    },
+    {
+      "primaryKeyword": "california 24 hour shift calendar 9 day cycle",
+      "slug": "california-berkeley-9-day-firefighter-shift-calendar",
+      "cluster": "C03",
+      "intentKey": "shift:california-9-day-24h-on-off-on-off-on-4-off",
+      "distinctQuestion": "How do you map the 9-day California/Berkeley shift pattern (24 on, 24 off, 24 on, 24 off, 24 on, 96 off) into a standard recurring calendar?",
+      "originalArtifact": "Illustrative 63-day (`LCM(9, 7) = 63`) three-platoon schedule table using three `FREQ=DAILY;INTERVAL=9` series spaced at Days 1, 3, and 5 followed by a 4-day (96-hour) recovery block.",
+      "sourceUrls": [
+        "https://www.rfc-editor.org/rfc/rfc5545",
+        "https://support.google.com/calendar/answer/37115?hl=en",
+        "https://www.supershift.app/help.html"
+      ],
+      "closestNeighbor": "firefighter-24-48-kelly-day-calendar-pattern",
+      "boundary": "Covers only the 9-day (`X-O-X-O-X-O-O-O-O`) three-shift-then-four-off pattern and its three `INTERVAL=9` daily rules; excludes 24/48 and 48/96 patterns.",
+      "draftedInBatch01": false
+    },
+    {
+      "primaryKeyword": "continental shift pattern 2 2 3 8 hour calendar",
+      "slug": "continental-three-shift-8-hour-rotating-calendar",
+      "cluster": "C03",
+      "intentKey": "shift:continental-8h-morning-evening-night-28-day-cycle",
+      "distinctQuestion": "How do you build a four-team Continental 8-hour three-shift rotation (Mornings, Evenings, Nights) where shift times change every 2 or 3 days across a 28-day cycle?",
+      "originalArtifact": "Illustrative 28-day four-team Continental 8-hour table (`06:00–14:00`, `14:00–22:00`, `22:00–06:00`) contrasting 2-2-3 fast forward rotation against 7-day slow rotation and calculating rest hours at each shift transition.",
+      "sourceUrls": [
+        "https://www.rfc-editor.org/rfc/rfc5545",
+        "https://support.google.com/calendar/answer/37115?hl=en",
+        "https://www.supershift.app/help.html"
+      ],
+      "closestNeighbor": "dupont-28-day-rotating-shift-calendar-cycle",
+      "boundary": "Covers only 3-shift 8-hour (Morning/Afternoon/Night) 4-team Continental rotations; excludes 2-shift 12-hour DuPont and Pitman schedules.",
+      "draftedInBatch01": false
+    },
+    {
+      "primaryKeyword": "5 on 2 off 5 on 3 off shift calendar",
+      "slug": "5-2-5-3-fourteen-day-shift-schedule-calendar",
+      "cluster": "C03",
+      "intentKey": "shift:5-2-5-3-fourteen-day-asymmetric-workweek",
+      "distinctQuestion": "How do you represent an asymmetric 5-on-2-off / 5-on-3-off schedule in a weekly calendar when the 15-day raw block is compressed into a 14-day biweekly cycle or left as a 15-day drifting cycle?",
+      "originalArtifact": "Illustrative arithmetic comparison between the true 15-day (`5+2+5+3 = 15` days, `FREQ=DAILY;INTERVAL=15`) drifting cycle and the 14-day (`5+2+4+3` or `5+2+5+2`) biweekly calendar adaptation.",
+      "sourceUrls": [
+        "https://www.rfc-editor.org/rfc/rfc5545",
+        "https://support.google.com/calendar/answer/37115?hl=en",
+        "https://www.supershift.app/help.html"
+      ],
+      "closestNeighbor": "pitman-2-2-3-shift-schedule-calendar-setup",
+      "boundary": "Covers specifically the 15-day vs 14-day arithmetic distinction of `5-2-5-3` / `5-2-4-3` patrol and operations schedules.",
+      "draftedInBatch01": false
+    },
+    {
+      "primaryKeyword": "6 on 3 off shift calendar",
+      "slug": "6-on-3-off-nine-day-rotating-weekend-calendar",
+      "cluster": "C03",
+      "intentKey": "shift:6-on-3-off-nine-day-weekend-progression",
+      "distinctQuestion": "How do you set up a 6-days-on, 3-days-off (9-day) shift schedule in a calendar and track which weeks include a full Friday–Sunday weekend off?",
+      "originalArtifact": "Illustrative 63-day (9-week) 6-on-3-off progression table showing how the 3-day off block advances by +2 weekdays each cycle and delivers three consecutive weekend-overlapping rest blocks every 9 weeks.",
+      "sourceUrls": [
+        "https://www.rfc-editor.org/rfc/rfc5545",
+        "https://support.google.com/calendar/answer/37115?hl=en",
+        "https://www.supershift.app/help.html"
+      ],
+      "closestNeighbor": "california-berkeley-9-day-firefighter-shift-calendar",
+      "boundary": "Covers only the 6 consecutive 8-hour/8.5-hour workdays followed by 3 consecutive days off (9-day continuous block); excludes 24-hour alternating firefighter tours.",
+      "draftedInBatch01": false
+    },
+    {
+      "primaryKeyword": "4 10 shift schedule calendar",
+      "slug": "compressed-4-10-workweek-rotating-day-off-calendar",
+      "cluster": "C03",
+      "intentKey": "shift:4x10-compressed-workweek-rotating-drop-day",
+      "distinctQuestion": "How do you schedule a 4/10 compressed workweek (four 10-hour shifts) when your weekday off rotates forward each week (Monday off Week 1, Tuesday off Week 2, through Friday off Week 4)?",
+      "originalArtifact": "Illustrative 5-week rotating drop-day matrix (`FREQ=WEEKLY;INTERVAL=5` per week template) showing the transition from Friday-off in Week 4 to Monday-off in Week 5 that creates a 4-day Friday–Monday weekend once every 5 weeks.",
+      "sourceUrls": [
+        "https://www.rfc-editor.org/rfc/rfc5545",
+        "https://support.google.com/calendar/answer/37115?hl=en",
+        "https://www.supershift.app/help.html"
+      ],
+      "closestNeighbor": "planning-a-week-in-ten-minutes",
+      "boundary": "Covers only the 4x10 compressed workweek with a fixed or 5-week rotating weekday drop day; excludes 9/80 biweekly split Fridays and 12-hour shift cycles.",
+      "draftedInBatch01": false
+    },
+    {
+      "primaryKeyword": "9 80 work schedule calendar setup",
+      "slug": "9-80-compressed-work-schedule-biweekly-friday-calendar",
+      "cluster": "C03",
+      "intentKey": "shift:9-80-biweekly-80-hour-split-friday-cutoff",
+      "distinctQuestion": "How do you set up a 9/80 compressed schedule in a calendar (eight 9-hour days, one 8-hour Friday, and every other Friday off) including the midday Friday pay-period split?",
+      "originalArtifact": "Illustrative 14-day 9/80 calendar table showing Week 1 (Mon–Thu 9h + Fri 8h = 44 clock hours, split into two 4-hour Friday blocks at 12:00 so each 7-day workweek totals exactly 40.0 hours) and Week 2 (Mon–Thu 9h + Fri off = 36 clock hours).",
+      "sourceUrls": [
+        "https://www.rfc-editor.org/rfc/rfc5545",
+        "https://support.google.com/calendar/answer/37115?hl=en",
+        "https://support.apple.com/guide/iphone/iph69525c028/ios"
+      ],
+      "closestNeighbor": "compressed-4-10-workweek-rotating-day-off-calendar",
+      "boundary": "Covers only the 14-day 9/80 schedule (nine workdays totaling 80 hours across two weeks with alternating Fridays off and split working Fridays); excludes 4/10 schedules.",
+      "draftedInBatch01": false
+    },
+    {
+      "primaryKeyword": "7 on 7 off hospitalist night float calendar",
+      "slug": "7-on-7-off-schedule-calendar-handover-transitions",
+      "cluster": "C03",
+      "intentKey": "shift:7-on-7-off-14-day-night-recovery-transition",
+      "distinctQuestion": "How do you model a 7-on-7-off schedule in a calendar when the 7-shift stretch starts on a midweek handover day (such as Tuesday or Wednesday) and ends on the morning of Day 8?",
+      "originalArtifact": "Illustrative 14-day two-partner (Partner A / Partner B) 7-on-7-off nocturnal schedule table showing why the 7th night shift (`Day 7 19:00` to `Day 8 07:00`) occupies the morning of the first nominal 'off' day and how to represent the post-night recovery block.",
+      "sourceUrls": [
+        "https://www.rfc-editor.org/rfc/rfc5545",
+        "https://support.google.com/calendar/answer/37115?hl=en",
+        "https://www.supershift.app/help.html"
+      ],
+      "closestNeighbor": "overnight-shift-crossing-midnight-calendar-end-date",
+      "boundary": "Covers specifically the 14-day 7-on-7-off two-partner block schedule (`FREQ=WEEKLY;INTERVAL=2` across all 7 days) and Day 8 morning handover overlap.",
+      "draftedInBatch01": false
+    },
+    {
+      "primaryKeyword": "baylor weekend shift calendar 2 12s",
+      "slug": "weekend-program-baylor-shift-calendar-setup",
+      "cluster": "C03",
+      "intentKey": "shift:weekend-baylor-2x12-or-2x16-plus-weekday-supplement",
+      "distinctQuestion": "How do you track a weekend-only (Baylor) shift schedule—such as two 12-hour or 16-hour Saturday/Sunday shifts plus one rotating weekday shift—in a standard calendar?",
+      "originalArtifact": "Illustrative 4-week weekend-program calendar table comparing `2x12h` (24 actual hours) and `2x12h + 1x12h rotating weekday` (36 actual hours) using a fixed `BYDAY=SA,SU` rule plus a 4-week rotating weekday supplement.",
+      "sourceUrls": [
+        "https://www.rfc-editor.org/rfc/rfc5545",
+        "https://support.google.com/calendar/answer/37115?hl=en",
+        "https://www.supershift.app/help.html"
+      ],
+      "closestNeighbor": "pitman-2-2-3-shift-schedule-calendar-setup",
+      "boundary": "Covers only fixed weekend-anchor schedules (`BYDAY=SA,SU`) with optional rotating weekday supplemental shifts; excludes alternating-weekend rotations.",
+      "draftedInBatch01": false
+    },
+    {
+      "primaryKeyword": "shift swap calendar without breaking recurring series",
+      "slug": "shift-swap-calendar-single-occurrence-exception-audit",
+      "cluster": "C03",
+      "intentKey": "shift:shift-swap-recurrence-id-exdate-pay-period-balance",
+      "distinctQuestion": "How do you record a two-way shift swap with a coworker on a recurring shift calendar without accidentally moving every future shift or losing track of whether the swap stays within the same 14-day period?",
+      "originalArtifact": "Illustrative shift-swap audit table showing the exact calendar edits for a two-way trade (`This event only` / `RECURRENCE-ID` or `EXDATE` on the giveaway date + standalone event on the payback date) and how intra-period vs cross-period swaps change 14-day hour totals (e.g., 84h/84h vs 72h/96h).",
+      "sourceUrls": [
+        "https://www.rfc-editor.org/rfc/rfc5545",
+        "https://support.google.com/calendar/answer/37115?hl=en",
+        "https://support.apple.com/guide/iphone/iph69525c028/ios",
+        "https://www.supershift.app/help.html"
+      ],
+      "closestNeighbor": "recurring-events-without-the-mess",
+      "boundary": "Covers specifically two-way shift swaps between coworkers and their 14-day hour-balance impact; excludes general recurring meeting edits and protocol-level iCalendar `RECURRENCE-ID` parsing.",
+      "draftedInBatch01": false
+    },
+    {
+      "primaryKeyword": "2 week on 2 week off hitch calendar",
+      "slug": "14-14-and-21-21-offshore-rotational-hitch-calendar",
+      "cluster": "C03",
+      "intentKey": "shift:offshore-14-14-hitch-crew-change-travel-day",
+      "distinctQuestion": "How do you set up a 14/14 or 21/21 rotational hitch calendar that separates crew-change travel/mobilization days from active 12-hour on-site day/night towers?",
+      "originalArtifact": "Illustrative 28-day 14/14 hitch schedule table showing Crew Change Day 1 (mobilization + evening handover), Days 2–14 active 12h shifts, and Day 15 demobilization flight so travel days are not double-counted as full off-duty home days.",
+      "sourceUrls": [
+        "https://www.rfc-editor.org/rfc/rfc5545",
+        "https://support.google.com/calendar/answer/37115?hl=en",
+        "https://www.supershift.app/help.html"
+      ],
+      "closestNeighbor": "7-on-7-off-schedule-calendar-handover-transitions",
+      "boundary": "Covers only multi-week remote/offshore rotational hitches (14/14, 21/21, 28/28) where mobilization/demobilization travel days bracket the work block.",
+      "draftedInBatch01": false
+    },
+    {
+      "primaryKeyword": "clopening shift turnaround rest hours calendar",
+      "slug": "late-close-to-early-open-turnaround-gap-calendar-check",
+      "cluster": "C03",
+      "intentKey": "shift:close-to-open-turnaround-rest-hour-calculation",
+      "distinctQuestion": "How do you spot and calculate short turnaround gaps (such as a late evening close ending at 23:00 followed by an early morning open starting at 06:00) when building or reviewing a weekly shift calendar?",
+      "originalArtifact": "Illustrative turnaround-gap calculation table (`Start_Shift_2 - End_Shift_1`) across five common shift transitions (Evening->Morning, Night->Evening, Late Close->Early Open) showing how to visualize <10-hour turnaround buffers on a week grid.",
+      "sourceUrls": [
+        "https://www.rfc-editor.org/rfc/rfc5545",
+        "https://support.apple.com/guide/iphone/iph3d110f84/ios",
+        "https://www.supershift.app/help.html"
+      ],
+      "closestNeighbor": "a-week-view-that-fits-a-week",
+      "boundary": "Covers only the mathematical calculation and visual calendar inspection of inter-shift turnaround hours (`DTSTART_next - DTEND_prev`); gives zero medical or labor-law advice.",
+      "draftedInBatch01": false
+    },
+    {
+      "primaryKeyword": "export shift calendar to family calendar without duplicates",
+      "slug": "shift-calendar-export-shared-family-calendar-deduplication",
+      "cluster": "C03",
+      "intentKey": "shift:dedicated-shift-subcalendar-single-device-export",
+      "distinctQuestion": "Why do shift calendars create duplicate events or overwrite all shifts with a single color when exported to iCloud or Google Calendar, and how do you share shifts cleanly with family?",
+      "originalArtifact": "Illustrative multi-device sync architecture table showing why enabling automatic shift export on both an iPhone and an iPad duplicates every shift in a shared iCloud/Google calendar, and how dedicated per-shift-type subcalendars preserve color coding.",
+      "sourceUrls": [
+        "https://www.supershift.app/help.html",
+        "https://support.apple.com/guide/iphone/iph3d1110d4/ios",
+        "https://support.apple.com/guide/calendar/icl1018/mac"
+      ],
+      "closestNeighbor": "shift-work-calendar-iphone-rotating-schedules",
+      "boundary": "Covers specifically single-device export deduplication and per-shift-color subcalendar mapping documented in shift calendar export workflows.",
+      "draftedInBatch01": false
+    },
+    {
+      "primaryKeyword": "overtime hours tracking on shift calendar",
+      "slug": "shift-calendar-regular-hours-versus-overtime-extension",
+      "cluster": "C03",
+      "intentKey": "shift:overtime-end-time-extension-vs-separate-event",
+      "distinctQuestion": "Should you record overtime by extending your regular shift's end time or by adding a separate overtime calendar event when you want accurate regular vs extra hour totals?",
+      "originalArtifact": "Illustrative 14-day shift + overtime audit table comparing Method A (extending a `07:00–19:00` shift to `07:00–21:00` against a 12.0h baseline) and Method B (adding a separate `19:00–21:00` Overtime event or standalone extra-day shift).",
+      "sourceUrls": [
+        "https://www.supershift.app/help.html",
+        "https://www.rfc-editor.org/rfc/rfc5545",
+        "https://support.google.com/calendar/answer/37115?hl=en"
+      ],
+      "closestNeighbor": "pitman-2-2-3-shift-schedule-calendar-setup",
+      "boundary": "Covers only the calendar data-entry mechanics for recording shift extensions and extra overtime shifts against baseline shift hours.",
+      "draftedInBatch01": false
+    },
+    {
+      "primaryKeyword": "6 week self scheduling nursing roster calendar",
+      "slug": "six-week-self-scheduling-shift-block-calendar-planning",
+      "cluster": "C03",
+      "intentKey": "shift:42-day-self-scheduling-window-weekend-quota-check",
+      "distinctQuestion": "How do you plan a 6-week (42-day) self-scheduled shift block on your calendar to verify that you hit exactly three 12-hour shifts per Sunday–Saturday week and your required weekend shift count before submitting requests?",
+      "originalArtifact": "Illustrative 6-week (42-day) pre-submission checklist and matrix (`6 weeks x 36 hours = 216 hours`, 18 total 12-hour shifts, 4–6 weekend shifts) separating `[Requested]` draft calendar blocks from `[Confirmed]` posted roster shifts.",
+      "sourceUrls": [
+        "https://www.rfc-editor.org/rfc/rfc5545",
+        "https://support.apple.com/guide/calendar/icl1018/mac",
+        "https://www.supershift.app/help.html"
+      ],
+      "closestNeighbor": "month-view-on-a-bigger-screen",
+      "boundary": "Covers only 42-day non-repeating self-scheduled roster blocks where every week has custom requested dates rather than a fixed mathematical rotation.",
+      "draftedInBatch01": false
+    },
+    {
+      "primaryKeyword": "21 team 20 day 5 shift rotation calendar",
+      "slug": "five-crew-20-day-and-35-day-continuous-shift-calendar",
+      "cluster": "C03",
+      "intentKey": "shift:5-crew-20-day-or-35-day-continuous-coverage-matrix",
+      "distinctQuestion": "How does a 5-crew continuous shift schedule (20-day or 35-day cycle) work in a calendar when four crews cover 24/7 operations and the fifth crew rotates through relief, training, and extended rest?",
+      "originalArtifact": "Illustrative 5-crew 35-day (5-week) continuous rotation table (`168 hours/week / 5 crews = 33.6 average shift hours/week` plus relief/day-shift week) mapped to `FREQ=WEEKLY;INTERVAL=5` calendar series.",
+      "sourceUrls": [
+        "https://www.rfc-editor.org/rfc/rfc5545",
+        "https://support.google.com/calendar/answer/37115?hl=en",
+        "https://www.supershift.app/help.html"
+      ],
+      "closestNeighbor": "dupont-28-day-rotating-shift-calendar-cycle",
+      "boundary": "Covers only 5-crew (35-day / 5-week or 20-day) rotations where 168 weekly plant hours are divided across 5 teams rather than 4 teams.",
+      "draftedInBatch01": false
+    },
+    {
+      "primaryKeyword": "us uk daylight saving time difference meeting",
+      "slug": "us-uk-dst-mismatch-weeks-recurring-meeting-calendar",
+      "cluster": "C04",
+      "intentKey": "tz:us-uk-europe-asynchronous-dst-gap-weeks",
+      "distinctQuestion": "Why do recurring meetings between the United States and the UK/Europe shift by one hour for three weeks in March and one week in October/November, and which calendar owns the stable wall-clock hour?",
+      "originalArtifact": "Illustrative 2026–2027 US (`America/New_York`) vs UK (`Europe/London`) offset transition table across all four annual regimes—including the 21-day March 8–29, 2026 gap (4-hour difference instead of 5) and the 7-day October 25–November 1, 2026 gap (4-hour difference instead of 5)—showing attendee wall-clock times when anchored in NY vs London.",
+      "sourceUrls": [
+        "https://aa.usno.navy.mil/faq/daylight_time",
+        "https://www.gov.uk/when-do-the-clocks-change",
+        "https://www.rfc-editor.org/rfc/rfc5545",
+        "https://support.google.com/calendar/answer/37064?hl=en",
+        "https://support.microsoft.com/en-us/outlook/getstarted/manage-time-zone-settings-in-outlook"
+      ],
+      "closestNeighbor": "when-two-calendars-disagree",
+      "boundary": "Covers specifically the asynchronous US (2nd Sunday March / 1st Sunday November) vs UK/EU (last Sunday March / last Sunday October) DST switch weeks and organizer `TZID` anchoring; excludes general sync bugs and flight bookings.",
+      "draftedInBatch01": true
+    },
+    {
+      "primaryKeyword": "arizona time zone daylight saving calendar meeting",
+      "slug": "non-dst-time-zone-arizona-hawaii-recurring-calendar",
+      "cluster": "C04",
+      "intentKey": "tz:non-dst-jurisdiction-arizona-hawaii-offset-shift",
+      "distinctQuestion": "Why do recurring calendar invites with Phoenix, Arizona (`America/Phoenix`) or Honolulu, Hawaii (`Pacific/Honolulu`) appear to jump by an hour twice a year, and why does choosing `America/Denver` break Arizona schedules from March to November?",
+      "originalArtifact": "Illustrative Winter vs Summer UTC offset and wall-clock meeting table comparing `America/Phoenix` (`UTC-07:00` year-round) and `Pacific/Honolulu` (`UTC-10:00` year-round) against `America/Los_Angeles`, `America/Denver`, and `America/New_York` across March 8, 2026 and November 1, 2026.",
+      "sourceUrls": [
+        "https://aa.usno.navy.mil/faq/daylight_time",
+        "https://www.iana.org/time-zones",
+        "https://www.rfc-editor.org/rfc/rfc5545",
+        "https://support.google.com/calendar/answer/37064?hl=en"
+      ],
+      "closestNeighbor": "time-zones-and-the-flight-you-booked",
+      "boundary": "Covers specifically year-round standard-time jurisdictions (`America/Phoenix`, `Pacific/Honolulu`, `UTC`) interacting with DST-observing zones; excludes US-UK mismatch weeks and Southern Hemisphere reverse DST.",
+      "draftedInBatch01": true
+    },
+    {
+      "primaryKeyword": "night shift daylight saving time change duration",
+      "slug": "overnight-event-across-dst-spring-forward-fall-back-duration",
+      "cluster": "C04",
+      "intentKey": "tz:overnight-event-across-dst-discontinuity-dtend-vs-duration",
+      "distinctQuestion": "What happens to an overnight shift or event (`22:00` to `06:00`) on the exact night clocks spring forward or fall back, and why do `DTEND` and `DURATION` produce different results in iCalendar?",
+      "originalArtifact": "Illustrative RFC 5545 calculation table comparing `DTSTART` + wall-clock `DTEND` (`06:00`) versus `DTSTART` + `DURATION:PT8H` across the March 8, 2026 spring-forward night (7 elapsed hours for `22:00–06:00`, or `07:00` end for `PT8H`) and the November 1, 2026 fall-back night (9 elapsed hours for `22:00–06:00`, or `05:00` end for `PT8H`), plus nonexistent `02:30` gap and repeated `01:30` fold behavior.",
+      "sourceUrls": [
+        "https://www.rfc-editor.org/rfc/rfc5545",
+        "https://aa.usno.navy.mil/faq/daylight_time",
+        "https://www.gov.uk/when-do-the-clocks-change",
+        "https://support.google.com/calendar/answer/37064?hl=en"
+      ],
+      "closestNeighbor": "overnight-shift-crossing-midnight-calendar-end-date",
+      "boundary": "Covers specifically the two annual DST transition nights (nonexistent spring-forward hour and repeated fall-back hour) and RFC 5545 `DTEND` vs `DURATION` math; excludes ordinary midnight-crossing shifts on standard 24-hour days.",
+      "draftedInBatch01": true
+    },
+    {
+      "primaryKeyword": "separate start and end time zones calendar",
+      "slug": "separate-start-and-end-time-zones-calendar-events",
+      "cluster": "C04",
+      "intentKey": "tz:dual-endpoint-tzid-dtstart-dtend-elapsed-duration",
+      "distinctQuestion": "How do separate start and end time zones on a single calendar event work in Google Calendar, Apple Calendar, and Outlook, and how is elapsed UTC duration calculated when departure and arrival cities are in different time zones?",
+      "originalArtifact": "Illustrative cross-time-zone event calculation table (eastbound `America/Los_Angeles` to `America/New_York`, westbound `Europe/London` to `America/New_York`, and cross-International-Date-Line flights) showing exact `DTSTART;TZID=...`, `DTEND;TZID=...`, UTC conversions, and why entering arrival wall time in the departure time zone corrupts elapsed duration by the offset difference.",
+      "sourceUrls": [
+        "https://www.rfc-editor.org/rfc/rfc5545",
+        "https://support.google.com/calendar/answer/37064?hl=en",
+        "https://support.microsoft.com/en-us/outlook/getstarted/manage-time-zone-settings-in-outlook",
+        "https://support.apple.com/guide/iphone/iph69525c028/ios"
+      ],
+      "closestNeighbor": "time-zones-and-the-flight-you-booked",
+      "boundary": "Covers specifically the mechanics and UTC math of assigning distinct `TZID` parameters to `DTSTART` and `DTEND` across Google, Outlook, and Apple Calendar and how each viewer renders dual-zone events; complements the narrative overview in `time-zones-and-the-flight-you-booked`.",
+      "draftedInBatch01": true
+    },
+    {
+      "primaryKeyword": "southern hemisphere daylight saving time meeting shift",
+      "slug": "southern-hemisphere-reverse-dst-two-hour-meeting-shift",
+      "cluster": "C04",
+      "intentKey": "tz:northern-vs-southern-hemisphere-opposite-dst-2h-swing",
+      "distinctQuestion": "Why does the time difference between North America or Europe and Southern Hemisphere cities (like Sydney, Auckland, or Santiago) swing by a full two hours between Northern summer and Northern winter?",
+      "originalArtifact": "Illustrative four-season offset and meeting-time matrix between New York (`America/New_York`), London (`Europe/London`), and Sydney (`Australia/Sydney`, AEDT `UTC+11` in Oct–Apr vs AEST `UTC+10` in Apr–Oct) showing the 14h -> 15h -> 16h offset progression and how a fixed `16:00 NY` call lands at `06:00`, `07:00`, or `08:00` next-day in Sydney.",
+      "sourceUrls": [
+        "https://aa.usno.navy.mil/faq/daylight_time",
+        "https://www.gov.uk/when-do-the-clocks-change",
+        "https://www.iana.org/time-zones",
+        "https://support.google.com/calendar/answer/37064?hl=en"
+      ],
+      "closestNeighbor": "us-uk-dst-mismatch-weeks-recurring-meeting-calendar",
+      "boundary": "Covers specifically opposite-hemisphere DST schedules where one endpoint springs forward while the other falls back (creating a 2-hour annual swing plus intermediate 1-hour step weeks); excludes same-hemisphere US-UK mismatch weeks.",
+      "draftedInBatch01": true
+    },
+    {
+      "primaryKeyword": "time zone rule change calendar wrong hour",
+      "slug": "iana-tzdb-government-time-zone-rule-change-calendar",
+      "cluster": "C04",
+      "intentKey": "tz:iana-tzdb-legislation-change-stale-utc-or-vtimezone",
+      "distinctQuestion": "Why do existing calendar events show up an hour off after a country or state abolishes DST or changes its time zone law, and how do IANA `tzdb` updates and embedded `VTIMEZONE` blocks interact with pre-existing events?",
+      "originalArtifact": "Illustrative trace table showing how an event created before a government time-zone policy change is stored in UTC vs local `TZID` + `VTIMEZONE`, why Google Calendar explicitly warns that events created before a time zone rule change may sit in the wrong UTC hour, and how to repair affected series.",
+      "sourceUrls": [
+        "https://www.iana.org/time-zones",
+        "https://support.google.com/calendar/answer/37064?hl=en",
+        "https://www.rfc-editor.org/rfc/rfc5545",
+        "https://aa.usno.navy.mil/faq/daylight_time"
+      ],
+      "closestNeighbor": "when-two-calendars-disagree",
+      "boundary": "Covers specifically political/legislative time zone rule changes, IANA `tzdb` version updates, and pre-change event UTC conversion drift documented by Google Calendar and IANA; excludes routine semi-annual DST transitions.",
+      "draftedInBatch01": true
+    },
+    {
+      "primaryKeyword": "google calendar tasks vs events time zone change",
+      "slug": "google-calendar-tasks-versus-events-time-zone-travel-shift",
+      "cluster": "C04",
+      "intentKey": "tz:google-calendar-tasks-vs-events-timezone-adaptation",
+      "distinctQuestion": "How do Google Calendar Tasks and regular Calendar Events behave differently when you travel across time zones and your Calendar time zone updates?",
+      "originalArtifact": "Illustrative side-by-side trace using Google's official Mountain Time (`UTC-7`) to Eastern Time (`UTC-5`) example (`09:00 MT` moves to `11:00 ET` after time zone update) comparing timed events, all-day events, and Tasks across web and mobile.",
+      "sourceUrls": [
+        "https://support.google.com/calendar/answer/37064?hl=en",
+        "https://www.rfc-editor.org/rfc/rfc5545"
+      ],
+      "closestNeighbor": "what-an-all-day-event-really-means",
+      "boundary": "Covers specifically Google Calendar's documented behavior for Tasks vs Events when the calendar's primary time zone changes during travel.",
+      "draftedInBatch01": false
+    },
+    {
+      "primaryKeyword": "secondary time zone google calendar outlook week view",
+      "slug": "display-multiple-time-zone-columns-google-calendar-outlook",
+      "cluster": "C04",
+      "intentKey": "tz:multi-timezone-gutter-columns-google-outlook-limits",
+      "distinctQuestion": "How many time zones can you display side by side in Google Calendar and Microsoft Outlook, and why do secondary time zones appear in Day/Week view without changing your stored event times?",
+      "originalArtifact": "Illustrative comparison matrix of primary, secondary, and tertiary time-zone display rules across Google Calendar (primary + secondary + world clock) and Outlook (up to 3 time zones in New Outlook/Web/M365 vs 2 in Outlook 2019/2016, visible only in Day/Week view).",
+      "sourceUrls": [
+        "https://support.google.com/calendar/answer/37064?hl=en",
+        "https://support.microsoft.com/en-us/outlook/getstarted/manage-time-zone-settings-in-outlook"
+      ],
+      "closestNeighbor": "a-week-view-that-fits-a-week",
+      "boundary": "Covers specifically multi-zone time-axis gutter configuration and version limits in Google Calendar and Outlook without altering underlying event `TZID` data.",
+      "draftedInBatch01": false
+    },
+    {
+      "primaryKeyword": "half hour 45 minute time zone offset calendar",
+      "slug": "non-integer-30-and-45-minute-utc-offset-calendar-scheduling",
+      "cluster": "C04",
+      "intentKey": "tz:fractional-utc-offsets-30m-45m-hour-grid-alignment",
+      "distinctQuestion": "How do `:30` and `:45` UTC offsets—such as India (`UTC+05:30`), Adelaide (`UTC+09:30`/`+10:30`), Newfoundland (`UTC-03:30`/`-02:30`), and Nepal (`UTC+05:45`)—affect top-of-the-hour calendar slots and secondary time-zone ruler labels?",
+      "originalArtifact": "Illustrative cross-zone slot alignment table showing how a `09:00–10:00` meeting in `America/New_York` (`UTC-5`/`UTC-4`) or `Europe/London` (`UTC+0`/`UTC+1`) maps onto `:30` and `:45` minute boundaries in `Asia/Kolkata`, `Australia/Adelaide`, `America/St_Johns`, and `Asia/Kathmandu`.",
+      "sourceUrls": [
+        "https://www.iana.org/time-zones",
+        "https://www.rfc-editor.org/rfc/rfc5545",
+        "https://support.google.com/calendar/answer/37064?hl=en"
+      ],
+      "closestNeighbor": "display-multiple-time-zone-columns-google-calendar-outlook",
+      "boundary": "Covers specifically non-integer (`+05:30`, `+09:30`, `-03:30`, `+05:45`) UTC offsets and half-hour/quarter-hour grid straddling.",
+      "draftedInBatch01": false
+    },
+    {
+      "primaryKeyword": "international date line calendar event wrong day",
+      "slug": "international-date-line-weekday-shift-recurring-meetings",
+      "cluster": "C04",
+      "intentKey": "tz:international-date-line-byday-weekday-offset",
+      "distinctQuestion": "Why does a recurring weekly Monday afternoon meeting in California or New York appear on Tuesday morning for participants in Tokyo, Sydney, or Auckland, and what happens when someone edits the weekday list?",
+      "originalArtifact": "Illustrative International Date Line weekday-mapping table (`UTC-08:00` / `UTC-05:00` vs `UTC+09:00` / `UTC+12:00` / `UTC+13:00`) showing how an organizer's `RRULE:FREQ=WEEKLY;BYDAY=MO,WE,FR` at `16:00 America/Los_Angeles` renders as Tuesday, Thursday, and Saturday in `Pacific/Auckland`.",
+      "sourceUrls": [
+        "https://www.rfc-editor.org/rfc/rfc5545",
+        "https://support.google.com/calendar/answer/37064?hl=en",
+        "https://support.microsoft.com/en-us/outlook/getstarted/manage-time-zone-settings-in-outlook"
+      ],
+      "closestNeighbor": "separate-start-and-end-time-zones-calendar-events",
+      "boundary": "Covers specifically recurring weekday (`BYDAY`) date-boundary shifts across the International Date Line where the local calendar date is `Day N+1` or `Day N-1` relative to the organizer.",
+      "draftedInBatch01": false
+    },
+    {
+      "primaryKeyword": "iphone time zone override calendar setting",
+      "slug": "iphone-time-zone-override-versus-system-automatic-time-zone",
+      "cluster": "C04",
+      "intentKey": "tz:ios-calendar-time-zone-override-vs-system-clock",
+      "distinctQuestion": "What does 'Time Zone Override' in iPhone Calendar Settings actually freeze, and how does it differ from turning off 'Set Automatically' in iOS Date & Time?",
+      "originalArtifact": "Illustrative behavioral comparison table contrasting (1) Default Automatic Time Zone, (2) Calendar Time Zone Override enabled (`Settings > Apps > Calendar > Time Zone Override`), and (3) System Date & Time manual zone across Calendar grid display, alarm firing times, and system clock.",
+      "sourceUrls": [
+        "https://support.apple.com/guide/iphone/iph69525c028/ios",
+        "https://support.apple.com/guide/calendar/icl1018/mac"
+      ],
+      "closestNeighbor": "time-zones-and-the-flight-you-booked",
+      "boundary": "Covers specifically Apple's Calendar-level Time Zone Override setting on iPhone/iPad/Mac versus OS-wide system clock settings.",
+      "draftedInBatch01": false
+    },
+    {
+      "primaryKeyword": "recurring event anchored in utc shifts with daylight saving",
+      "slug": "recurring-calendar-event-anchored-in-utc-versus-local-tzid",
+      "cluster": "C04",
+      "intentKey": "tz:recurring-dtstart-utc-z-vs-local-tzid-dst-drift",
+      "distinctQuestion": "Why does an imported or API-created recurring calendar series with `DTSTART:...Z` (UTC) shift by an hour in local wall-clock time when Daylight Saving Time begins or ends?",
+      "originalArtifact": "Illustrative side-by-side RFC 5545 trace comparing `DTSTART:20260115T140000Z` (`09:00 EST` in January, `10:00 EDT` in April) against `DTSTART;TZID=America/New_York:20260115T090000` (`09:00` local wall-clock year-round).",
+      "sourceUrls": [
+        "https://www.rfc-editor.org/rfc/rfc5545",
+        "https://support.google.com/calendar/answer/37064?hl=en",
+        "https://aa.usno.navy.mil/faq/daylight_time"
+      ],
+      "closestNeighbor": "us-uk-dst-mismatch-weeks-recurring-meeting-calendar",
+      "boundary": "Covers specifically the difference between recurring series anchored in fixed `UTC` (`Z`) vs named `TZID` local wall time for a single user's own calendar; excludes Codex's non-recurring floating/UTC/TZID syntax overview (`icalendar-floating-time-utc-tzid`).",
+      "draftedInBatch01": false
+    },
+    {
+      "primaryKeyword": "shared calendar time zone cannot change google calendar",
+      "slug": "shared-secondary-calendar-time-zone-versus-viewer-time-zone",
+      "cluster": "C04",
+      "intentKey": "tz:calendar-level-timezone-ownership-vs-viewer-display",
+      "distinctQuestion": "Why does Google Calendar block non-owners from changing a shared calendar's time zone, and how does the calendar's own time zone interact with each viewer's personal display time zone?",
+      "originalArtifact": "Illustrative permission and display matrix showing how a shared calendar configured in `Europe/London` stores all-day and default-zone events while team members viewing it in `America/Chicago` or `Asia/Tokyo` see timed events converted to their viewer primary time zone.",
+      "sourceUrls": [
+        "https://support.google.com/calendar/answer/37064?hl=en",
+        "https://support.microsoft.com/en-us/outlook/getstarted/manage-time-zone-settings-in-outlook"
+      ],
+      "closestNeighbor": "when-two-calendars-disagree",
+      "boundary": "Covers specifically Google Calendar's documented rule that only the calendar owner can modify a calendar's time zone and how calendar-level vs account-level display time zones interact.",
+      "draftedInBatch01": false
+    },
+    {
+      "primaryKeyword": "all day event shifting one day across time zones",
+      "slug": "all-day-event-date-shift-when-stored-as-midnight-utc",
+      "cluster": "C04",
+      "intentKey": "tz:all-day-value-date-vs-midnight-datetime-west-of-utc",
+      "distinctQuestion": "Why do some imported all-day holidays or birthdays span two days or shift back to the previous evening when viewed in time zones west of UTC?",
+      "originalArtifact": "Illustrative protocol comparison between true `DTSTART;VALUE=DATE:20260704` (date-only floating across zones) and misformatted `DTSTART:20260704T000000Z` (midnight UTC, which converts to `2026-07-03 20:00 EDT` / `17:00 PDT` in North America).",
+      "sourceUrls": [
+        "https://www.rfc-editor.org/rfc/rfc5545",
+        "https://support.google.com/calendar/answer/37064?hl=en"
+      ],
+      "closestNeighbor": "what-an-all-day-event-really-means",
+      "boundary": "Covers specifically why midnight-UTC `DATE-TIME` timestamps shift to `Day N-1` in negative UTC offsets (`UTC-4` to `UTC-10`) compared with true `VALUE=DATE` properties; excludes Codex's exclusive `DTEND` article (`ics-all-day-dtend-exclusive-end-date`).",
+      "draftedInBatch01": false
+    },
+    {
+      "primaryKeyword": "vtimezone rrule daylight standard transition ics",
+      "slug": "vtimezone-standard-and-daylight-subcomponents-in-ics-files",
+      "cluster": "C04",
+      "intentKey": "tz:vtimezone-daylight-standard-tzoffsetfrom-tzoffsetto",
+      "distinctQuestion": "How do `VTIMEZONE`, `STANDARD`, and `DAYLIGHT` blocks inside an `.ics` file define `TZOFFSETFROM` and `TZOFFSETTO`, and why does a truncated `VTIMEZONE` cause historical or future events to land an hour off?",
+      "originalArtifact": "Illustrative annotated RFC 5545 `VTIMEZONE` block for `America/New_York` (`TZOFFSETFROM:-0500` -> `TZOFFSETTO:-0400` on `BYMONTH=3;BYDAY=2SU` and reverse on `BYMONTH=11;BYDAY=1SU`) showing what breaks when an exporter hardcodes a single static offset.",
+      "sourceUrls": [
+        "https://www.rfc-editor.org/rfc/rfc5545",
+        "https://www.iana.org/time-zones"
+      ],
+      "closestNeighbor": "calendar-export-ics-pdf-and-backup",
+      "boundary": "Covers specifically the internal structure of RFC 5545 `§3.6.5 VTIMEZONE` (`STANDARD`/`DAYLIGHT`, `TZOFFSETFROM`, `TZOFFSETTO`) and single-year vs recurring `RRULE` transition rules.",
+      "draftedInBatch01": false
+    },
+    {
+      "primaryKeyword": "rrule until timestamp utc requirement time zone",
+      "slug": "rrule-until-utc-timestamp-boundary-across-time-zones",
+      "cluster": "C04",
+      "intentKey": "tz:rrule-until-utc-conversion-final-occurrence-cutoff",
+      "distinctQuestion": "Why does RFC 5545 require `UNTIL` in a zoned `RRULE` to be specified in UTC (`Z`), and how can setting `UNTIL` to `00:00:00Z` accidentally cut off the final occurrence of a recurring event in North or South America?",
+      "originalArtifact": "Illustrative final-occurrence cutoff table showing how a series at `17:00 America/New_York` (`21:00:00Z` EDT / `22:00:00Z` EST) is excluded on its final date if `UNTIL=20261030T000000Z` is used instead of `UNTIL=20261030T210000Z`.",
+      "sourceUrls": [
+        "https://www.rfc-editor.org/rfc/rfc5545",
+        "https://support.google.com/calendar/answer/37115?hl=en"
+      ],
+      "closestNeighbor": "recurring-events-without-the-mess",
+      "boundary": "Covers specifically the UTC time-zone offset math of the `UNTIL` timestamp (`00:00:00Z` vs local end-of-day UTC equivalent); excludes Codex's `COUNT` vs `UNTIL` + `EXDATE` article (`rrule-count-until-excluded-occurrences`).",
+      "draftedInBatch01": false
+    },
+    {
+      "primaryKeyword": "windows time zone name vs iana tzid outlook",
+      "slug": "windows-time-zone-names-versus-iana-tzid-calendar-invites",
+      "cluster": "C04",
+      "intentKey": "tz:windows-tzid-to-iana-olson-mapping-mismatch",
+      "distinctQuestion": "How do Microsoft Windows time zone identifiers (such as `Eastern Standard Time` or `Romance Standard Time`) map to IANA identifiers (`America/New_York`, `Europe/Paris`) in cross-platform calendar invites, and when can a shared Windows zone name group cities with different historical DST rules?",
+      "originalArtifact": "Illustrative mapping table between Windows Registry time zone IDs used in Exchange/Outlook `TZID` headers and canonical IANA `Area/Location` identifiers across 8 major regions.",
+      "sourceUrls": [
+        "https://www.iana.org/time-zones",
+        "https://www.rfc-editor.org/rfc/rfc5545",
+        "https://support.microsoft.com/en-us/outlook/getstarted/manage-time-zone-settings-in-outlook"
+      ],
+      "closestNeighbor": "exchange-calendars-on-an-iphone",
+      "boundary": "Covers specifically the translation between Windows Registry `TZID` strings and IANA `tzdb` identifiers in `.ics` invites across Outlook, Apple Calendar, and Google Calendar.",
+      "draftedInBatch01": false
+    },
+    {
+      "primaryKeyword": "2am spring forward calendar event nonexistent time",
+      "slug": "events-scheduled-during-nonexistent-spring-forward-hour",
+      "cluster": "C04",
+      "intentKey": "tz:spring-forward-nonexistent-0200-0259-gap-resolution",
+      "distinctQuestion": "What happens to a recurring cron reminder, maintenance window, or calendar event scheduled between `02:00` and `02:59` on the Sunday morning when clocks jump directly from `02:00` to `03:00`?",
+      "originalArtifact": "Illustrative RFC 5545 `§3.3.5` resolution table for `02:30` on March 8, 2026 (`America/New_York`) and `01:30` on March 29, 2026 (`Europe/London`), showing how the `+01:00` gap adjustment shifts `02:30 EST` to `03:30 EDT` (`07:30:00Z`).",
+      "sourceUrls": [
+        "https://www.rfc-editor.org/rfc/rfc5545",
+        "https://aa.usno.navy.mil/faq/daylight_time",
+        "https://www.gov.uk/when-do-the-clocks-change"
+      ],
+      "closestNeighbor": "overnight-event-across-dst-spring-forward-fall-back-duration",
+      "boundary": "Covers specifically events whose `DTSTART` itself falls inside the skipped 60-minute spring-forward gap (`02:00–02:59` US / `01:00–01:59` UK); complements overnight events that start before midnight and span across the transition.",
+      "draftedInBatch01": false
+    },
+    {
+      "primaryKeyword": "1am fall back repeated hour calendar event",
+      "slug": "events-scheduled-during-ambiguous-fall-back-repeated-hour",
+      "cluster": "C04",
+      "intentKey": "tz:fall-back-ambiguous-0100-0159-first-vs-second-occurrence",
+      "distinctQuestion": "When clocks fall back from `02:00` to `01:00` and the `01:00–01:59` hour happens twice on the same Sunday morning, which occurrence does a calendar event or alarm use?",
+      "originalArtifact": "Illustrative RFC 5545 `§3.3.5` disambiguation table for `01:30` on November 1, 2026 (`America/New_York`) and October 25, 2026 (`Europe/London`) comparing First Occurrence (`01:30 EDT = 05:30:00Z`) vs Second Occurrence (`01:30 EST = 06:30:00Z`).",
+      "sourceUrls": [
+        "https://www.rfc-editor.org/rfc/rfc5545",
+        "https://aa.usno.navy.mil/faq/daylight_time",
+        "https://www.gov.uk/when-do-the-clocks-change"
+      ],
+      "closestNeighbor": "events-scheduled-during-nonexistent-spring-forward-hour",
+      "boundary": "Covers specifically events whose `DTSTART` falls inside the repeated 60-minute fall-back fold (`01:00–01:59`) and RFC 5545 first-occurrence interpretation.",
+      "draftedInBatch01": false
+    },
+    {
+      "primaryKeyword": "indiana kentucky county split time zone calendar",
+      "slug": "split-state-time-zone-boundaries-indiana-kentucky-florida-calendar",
+      "cluster": "C04",
+      "intentKey": "tz:sub-state-county-iana-tzid-selection",
+      "distinctQuestion": "How does IANA `tzdb` handle U.S. states split between Eastern and Central or Mountain and Pacific time (such as Indiana, Kentucky, Tennessee, Florida, and Oregon), and why does picking a state-level label put border-county meetings an hour off?",
+      "originalArtifact": "Illustrative county-to-IANA-TZID reference table (`America/Indiana/Indianapolis` vs `America/Chicago` / `America/Indiana/Tell_City`, `America/Kentucky/Louisville` vs `America/Chicago`, `America/Boise` vs `America/Los_Angeles`) with UTC offsets.",
+      "sourceUrls": [
+        "https://aa.usno.navy.mil/faq/daylight_time",
+        "https://www.iana.org/time-zones",
+        "https://support.google.com/calendar/answer/37064?hl=en"
+      ],
+      "closestNeighbor": "non-dst-time-zone-arizona-hawaii-recurring-calendar",
+      "boundary": "Covers specifically states divided across two DST-observing time zones where both halves observe DST on the same dates but maintain a constant 1-hour offset difference.",
+      "draftedInBatch01": false
+    },
+    {
+      "primaryKeyword": "organizer time zone changes meeting when organizer travels",
+      "slug": "recurring-meeting-organizer-time-zone-anchor-when-traveling",
+      "cluster": "C04",
+      "intentKey": "tz:organizer-tzid-reference-point-vs-organizer-travel",
+      "distinctQuestion": "If the organizer of a recurring team meeting travels from New York to London or Tokyo, does the recurring meeting move for everyone else on the invite, and what happens if the organizer edits the series while abroad?",
+      "originalArtifact": "Illustrative organizer-travel scenario table showing that the series remains anchored to its stored event `TZID` (`America/New_York`) while the organizer simply views it converted to their temporary travel zone—unless the organizer edits and saves the series time using their temporary local zone.",
+      "sourceUrls": [
+        "https://support.microsoft.com/en-us/outlook/getstarted/manage-time-zone-settings-in-outlook",
+        "https://support.google.com/calendar/answer/37064?hl=en",
+        "https://www.rfc-editor.org/rfc/rfc5545"
+      ],
+      "closestNeighbor": "time-zones-and-the-flight-you-booked",
+      "boundary": "Covers specifically how a multi-attendee recurring meeting behaves when the meeting organizer changes their device/account display time zone during travel.",
+      "draftedInBatch01": false
+    },
+    {
+      "primaryKeyword": "australian time zones aest acst aedt acdt awst calendar",
+      "slug": "australian-five-summer-time-zones-recurring-calendar-matrix",
+      "cluster": "C04",
+      "intentKey": "tz:australia-three-winter-to-five-summer-zones-half-hour-dst",
+      "distinctQuestion": "Why does Australia split from three time zones in winter (`AEST`, `ACST`, `AWST`) into five distinct time zones in summer (`AEDT`, `AEST`, `ACDT`, `ACST`, `AWST`), and how does that affect national recurring calendar invites between October and April?",
+      "originalArtifact": "Illustrative Australian state/territory offset matrix comparing Sydney/Melbourne (`Australia/Sydney`, `UTC+10` -> `UTC+11`), Brisbane (`Australia/Brisbane`, `UTC+10` year-round), Adelaide (`Australia/Adelaide`, `UTC+09:30` -> `UTC+10:30`), Darwin (`Australia/Darwin`, `UTC+09:30` year-round), and Perth (`Australia/Perth`, `UTC+08:00` year-round).",
+      "sourceUrls": [
+        "https://www.iana.org/time-zones",
+        "https://aa.usno.navy.mil/faq/daylight_time",
+        "https://support.google.com/calendar/answer/37064?hl=en"
+      ],
+      "closestNeighbor": "southern-hemisphere-reverse-dst-two-hour-meeting-shift",
+      "boundary": "Covers specifically intra-Australian scheduling where DST-observing states (`NSW`, `VIC`, `SA`, `TAS`, `ACT`) diverge from non-DST states (`QLD`, `NT`, `WA`) across `:00` and `:30` offsets.",
+      "draftedInBatch01": false
+    },
+    {
+      "primaryKeyword": "utc offset vs named time zone tzid calendar",
+      "slug": "fixed-utc-offset-gmt-minus-5-versus-named-iana-time-zone",
+      "cluster": "C04",
+      "intentKey": "tz:etc-gmt-fixed-offset-vs-iana-location-tzid",
+      "distinctQuestion": "What is the difference between selecting a fixed UTC offset (like `GMT-05:00` or `Etc/GMT+5`) and selecting a named city time zone (like `America/New_York` or `America/Bogota`) in a calendar?",
+      "originalArtifact": "Illustrative year-round comparison table showing how `America/New_York` (`UTC-5`/`UTC-4`), `America/Bogota` (`UTC-5` year-round), `America/Chicago` (`UTC-6`/`UTC-5`), and fixed `GMT-05:00` behave in January vs July, plus why POSIX `Etc/GMT+5` uses inverted sign notation (`UTC-05:00`).",
+      "sourceUrls": [
+        "https://www.iana.org/time-zones",
+        "https://www.rfc-editor.org/rfc/rfc5545",
+        "https://support.google.com/calendar/answer/37064?hl=en"
+      ],
+      "closestNeighbor": "non-dst-time-zone-arizona-hawaii-recurring-calendar",
+      "boundary": "Covers specifically fixed numeric offset zones (`GMT-05:00`, `Etc/GMT+5`) versus geographical IANA `Region/City` zones that encapsulate historical and seasonal rule changes.",
+      "draftedInBatch01": false
+    },
+    {
+      "primaryKeyword": "calendar alarm notification time zone travel",
+      "slug": "calendar-event-reminders-and-alarms-across-time-zone-changes",
+      "cluster": "C04",
+      "intentKey": "tz:valarm-relative-trigger-vs-absolute-utc-trigger-across-zones",
+      "distinctQuestion": "How do relative calendar reminders (`-PT15M` before event start) and absolute time triggers (`TRIGGER;VALUE=DATE-TIME:...Z`) fire when you cross time zones on an iPhone, Mac, or Google Calendar?",
+      "originalArtifact": "Illustrative RFC 5545 `VALARM` trigger evaluation table comparing relative triggers (`TRIGGER:-PT30M` anchored to zoned `DTSTART` vs floating `DTSTART`) and absolute UTC triggers when a user flies from `America/New_York` (`UTC-5`) to `Europe/London` (`UTC+0`).",
+      "sourceUrls": [
+        "https://www.rfc-editor.org/rfc/rfc5545",
+        "https://support.apple.com/guide/iphone/iph69525c028/ios",
+        "https://support.google.com/calendar/answer/37064?hl=en"
+      ],
+      "closestNeighbor": "calendar-notifications-missing-silent-or-duplicated",
+      "boundary": "Covers specifically how time-zone changes and `DTSTART` time-zone forms affect when `VALARM` reminders fire; excludes OS notification permission troubleshooting.",
+      "draftedInBatch01": false
+    }
+  ]
+}

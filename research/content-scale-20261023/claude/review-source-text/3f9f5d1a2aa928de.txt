@@ -1,0 +1,26 @@
+Teams Meeting add-in missing in new Outlook
+Applies To
+Outlook for Microsoft 365
+Outlook 2024
+Outlook 2021
+Outlook 2019
+Outlook 2016
+The Teams meeting add-in is integrated into new Outlook. It has a
+Teams meeting
+toggle built into the event window, so there is no separate add‑in to install.
+Teams and Outlook integration requirements
+To see the
+Teams meeting
+toggle in new Outlook, your computer must meet the following requirements:
+You must be signed in to both Outlook and Teams with the same work or school account.
+You must use the new Teams client.
+Reinitiate Teams integration with Outlook
+If your computer meets these requirements but you don't see the
+Teams meeting
+toggle, use the following steps to force the Teams and Outlook integration:
+Close Outlook.
+Right-click the Teams icon in the toolbar and select
+Quit Teams
+.
+Start Teams and sign in.
+Start Outlook.

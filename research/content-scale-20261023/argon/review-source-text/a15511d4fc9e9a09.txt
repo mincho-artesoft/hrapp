@@ -1,0 +1,44 @@
+Daylight Saving Time To find the start and end date for Daylight Saving Time in a given year, go here . Daylight Saving Time and time zones in the U.S. are defined in the U.S.
+Code, Title 15, Chapter 6, Subchapter IX - Standard Time . By act of Congress, civil clocks in most areas of the United States
+are adjusted ahead one hour in the summer months (known as Daylight Saving Time) 
+and returned back one hour in the winter months (known as standard time).  
+The dates marking the beginning and end of Daylight Saving Time have 
+changed as Congress has passed new statutes.  As of 2007, Daylight Saving Time 
+begins in the United States on the second Sunday in March and ends
+on the first Sunday in November.  On the second Sunday in March, clocks
+are set ahead one hour at 2:00 a.m. local standard time (which becomes 
+3:00 a.m. local Daylight Saving Time).  On the first Sunday in November, clocks
+are set back one hour at 2:00 a.m. local Daylight Saving Time (which becomes 1:00 a.m. 
+local standard time).  These dates were established by Congress in the Energy Policy Act of 2005, Pub. L. no. 109-58, 119 Stat 594 (2005) . Not all places in the U.S. observe Daylight Saving Time.  Hawaii and most of Arizona observe standard time only. Many countries observe some form of "summer time." Most of the 
+Northern Hemisphere countries which observe Daylight Saving Time are
+located in Europe and North America. A handful of nations in the southern
+hemisphere observe summer time, but their starting and ending periods are 
+reversed since summer in the southern hemisphere occurs during the
+Northern Hemisphere's winter months. The dates when Daylight Saving Time 
+changes are made are various and not determined by any international 
+agreements. History of Daylight Saving Time in the U.S. Although standard time in time
+zones was instituted in the U.S. and Canada by the railroads in
+1883, it was not established in U.S. law until passage of The Standard Time Act on March 19, 1918. The Standard Time
+Act also established Daylight Saving Time, which was a contentious idea at the time. Daylight saving time was
+repealed in 1919, but standard time in time zones remained in law.
+Daylight time became a local matter.  It was re-established nationally
+early in World War II, and was continuously observed from 9 February
+1942 to 30 September 1945.  After the war its use varied among states
+and localities.  The Uniform Time Act of 1966 provided standardization
+in the dates of beginning and end of Daylight Saving Time in the U.S. but
+allowed for local exemptions from its observance.  The Uniform Time Act provided that
+Daylight Saving Time begin on the last Sunday in April and end on the last
+Sunday in October, with the changeover to occur at 2 a.m. local time. During the "energy crisis" years, Congress enacted earlier
+starting dates for Daylight Saving Time.  In 1974, Daylight Saving Time began on
+6 January and in 1975 it began on 23 February.  After those two
+years the starting date reverted to the last Sunday in April.
+In 1986, a law was passed that shifted the starting date
+of Daylight Saving Time to the first Sunday in April, beginning in 1987.
+The ending date of Daylight Saving Time was not subject to such
+changes, and remained the last Sunday in October. The
+Energy Policy Act of 2005 changed both the starting and ending dates.
+Beginning in 2007, Daylight Saving Time starts on
+the second Sunday in March and ends on the first Sunday in November. For a very readable account of the history of standard and daylight
+time in the U.S., see Ian R. Bartky and Elizabeth Harrison: "Standard
+   and Daylight-saving Time", Scientific American , May 1979 (Vol. 240,
+   No. 5), pp. 46-53.

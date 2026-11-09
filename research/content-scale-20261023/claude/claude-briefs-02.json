@@ -1,0 +1,115 @@
+{
+  "schemaVersion": 1,
+  "batch": "02",
+  "author": "Claude (claude-opus-5-5), logged-in subscription session; no API keys, no paid calls",
+  "date": "2026-10-23",
+  "scope": "Google Calendar consumer and calendar-admin tasks not answered by the 73 baseline pages, Claude batch 01, Codex source/technical batches, Codex Apple batch, or Argon's shift/time-zone claims.",
+  "evidenceMethod": "Official Google Help bodies read via WebFetch on 2026-10-23 (tool returns extracted page text, not byte-exact HTML). Claims limited to passages returned as quotations. No firsthand UI tests, search volumes or ranks.",
+  "excludedBecauseOwnedElsewhere": [
+    "Codex: RFC/iCalendar topics, google-calendar-ownership-transfer-pending-acceptance, google-calendar-meeting-notes-not-updating, Apple/iCloud batch",
+    "Argon: shift patterns and all time-zone topics, including display-multiple-time-zone-columns-google-calendar-outlook, google-calendar-tasks-versus-events-time-zone-travel-shift, shared-secondary-calendar-time-zone-versus-viewer-time-zone, and Canadian DST repair (expanded brief 045)"
+  ],
+  "heldOrDropped": [
+    { "topic": "Edit an appointment schedule after bookings (answer/10730791)", "reason": "Fetched body does not state what happens to already-booked appointments when hours or duration change; the brief's core question is unsourced. Held; only its two documented limits are used in the cancellation article." },
+    { "topic": "Google Calendar offline (answer/1340696)", "reason": "Sourceable but lower relevance than the 12 chosen; moved to next candidates." },
+    { "topic": "Google invitations in other services (answer/15077640)", "reason": "Body covers email filtering only; its filter content is used in the notifications article instead of a separate page." }
+  ],
+  "briefs": [
+    {
+      "slug": "google-calendar-hide-unsubscribe-or-delete",
+      "primaryKeyword": "delete Google Calendar vs unsubscribe",
+      "distinctTask": "Remove a calendar from view without destroying a schedule other people rely on.",
+      "existingOverlapSlug": "unwanted-calendar-events-iphone",
+      "boundary": "Google web controls for hide/unsubscribe/delete/clear primary. Apple unsubscribe and spam reporting stay on the existing page; ownership transfer is Codex's.",
+      "sourceUrls": ["https://support.google.com/calendar/answer/37188?hl=en", "https://support.google.com/calendar/answer/41067?hl=en"]
+    },
+    {
+      "slug": "google-calendar-public-embed-on-website",
+      "primaryKeyword": "embed Google Calendar on website",
+      "distinctTask": "Put a calendar on a website while choosing between full details and free/busy, and knowing what public means.",
+      "existingOverlapSlug": "the-secret-address-of-a-google-calendar",
+      "boundary": "Public calendar + embed code. Secret iCal address and named sharing stay on existing pages.",
+      "sourceUrls": ["https://support.google.com/calendar/answer/37083?hl=en", "https://support.google.com/calendar/answer/41207?hl=en"]
+    },
+    {
+      "slug": "google-calendar-birthdays-from-contacts",
+      "primaryKeyword": "Google Calendar birthdays wrong or missing",
+      "distinctTask": "Fix, hide or remove birthdays at their real source (Google Contacts) without wiping synced dates.",
+      "existingOverlapSlug": "what-an-all-day-event-really-means",
+      "boundary": "Google birthdays calendar only; not Apple contacts birthdays.",
+      "sourceUrls": ["https://support.google.com/calendar/answer/13748346?hl=en"]
+    },
+    {
+      "slug": "google-calendar-holidays-by-country-and-religion",
+      "primaryKeyword": "add holidays to Google Calendar",
+      "distinctTask": "Show the right public holidays and observances for a household or team spanning countries, and hide individual ones.",
+      "existingOverlapSlug": "iphone-calendar-language-alternate-calendar-settings",
+      "boundary": "Google holiday calendars; alternate calendar systems and Apple settings are out of scope.",
+      "sourceUrls": ["https://support.google.com/calendar/answer/13748345?hl=en"]
+    },
+    {
+      "slug": "google-calendar-events-from-gmail-visibility",
+      "primaryKeyword": "Gmail events in Google Calendar privacy",
+      "distinctTask": "Understand why reservations appear from Gmail, who can see them on a shared calendar, and how to turn them off.",
+      "existingOverlapSlug": "google-calendar-event-visibility-private-public-default",
+      "boundary": "Gmail-created events and their dedicated visibility setting. General event visibility is Claude batch 01.",
+      "sourceUrls": ["https://support.google.com/calendar/answer/6084018?hl=en", "https://support.google.com/calendar/answer/15454771?hl=en"]
+    },
+    {
+      "slug": "google-keep-reminders-moved-to-tasks",
+      "primaryKeyword": "where did Google Keep reminders go",
+      "distinctTask": "Find Keep reminders after their migration to Google Tasks and check what changed (location reminders, long titles, old reminders).",
+      "existingOverlapSlug": "sync-google-tasks-apple-reminders-iphone",
+      "boundary": "Keep-to-Tasks migration consequences only. Tasks/Reminders bridging stays on the existing page.",
+      "sourceUrls": ["https://support.google.com/calendar/answer/16540694?hl=en"]
+    },
+    {
+      "slug": "google-tasks-repeating-task-complete-delete",
+      "primaryKeyword": "Google Tasks repeating task",
+      "distinctTask": "Set up a repeating task and complete, skip or end it without breaking the series.",
+      "existingOverlapSlug": "can-others-see-google-calendar-tasks",
+      "boundary": "Repeat behaviour and limits. Task visibility is the existing page; time-zone travel of tasks is Argon's.",
+      "sourceUrls": ["https://support.google.com/calendar/answer/12132599?hl=en"]
+    },
+    {
+      "slug": "google-calendar-email-notifications-filter",
+      "primaryKeyword": "stop Google Calendar emails",
+      "distinctTask": "Reduce Google Calendar email noise by choosing per-calendar email categories and filtering the rest in Gmail.",
+      "existingOverlapSlug": "calendar-notifications-missing-silent-or-duplicated",
+      "boundary": "Email notifications and Gmail filters; phone alert delivery stays on the existing page.",
+      "sourceUrls": ["https://support.google.com/calendar/answer/17366804?hl=en", "https://support.google.com/calendar/answer/37242?hl=en&co=GENIE.Platform%3DDesktop", "https://support.google.com/calendar/answer/15077640?hl=en"]
+    },
+    {
+      "slug": "google-appointment-cancel-booked-slot",
+      "primaryKeyword": "cancel Google Calendar appointment booking",
+      "distinctTask": "Cancel a booked appointment from either side and understand that the slot reopens and that forwarded confirmations can cancel.",
+      "existingOverlapSlug": "google-appointment-schedule-which-calendars-block-booking-slots",
+      "boundary": "Cancellation lifecycle; availability mechanics are batch 01. Effect of editing a schedule on existing bookings is NOT documented in the fetched source and is not claimed.",
+      "sourceUrls": ["https://support.google.com/calendar/answer/10737245?hl=en", "https://support.google.com/calendar/answer/10730791?hl=en"]
+    },
+    {
+      "slug": "google-calendar-android-app-not-syncing",
+      "primaryKeyword": "Google Calendar not syncing Android",
+      "distinctTask": "Work through Google's Android sync checks in a safe order, before any step that can lose unsynced events.",
+      "existingOverlapSlug": "google-calendars-that-never-reach-your-iphone",
+      "boundary": "Google Calendar app on Android. iPhone/Apple Calendar route stays on the existing page.",
+      "sourceUrls": ["https://support.google.com/calendar/answer/6261951?hl=en"]
+    },
+    {
+      "slug": "google-family-calendar-membership",
+      "primaryKeyword": "Google family calendar",
+      "distinctTask": "Know who gets the automatic Family calendar, what happens when someone leaves, and what to do when the family group is deleted.",
+      "existingOverlapSlug": "cozi-timetree-family-calendar-iphone-android",
+      "boundary": "Google family group calendar mechanics. App comparisons and pickup workflows stay on existing pages.",
+      "sourceUrls": ["https://support.google.com/calendar/answer/7157782?hl=en"]
+    },
+    {
+      "slug": "google-calendar-print-date-range",
+      "primaryKeyword": "print Google Calendar",
+      "distinctTask": "Print or save as PDF the intended Google calendars and date range without exposing hidden details.",
+      "existingOverlapSlug": "calendar-export-ics-pdf-and-backup",
+      "boundary": "Google web print preview. The existing page covers Mac Calendar print and ICS/CSV export.",
+      "sourceUrls": ["https://support.google.com/calendar/answer/41067?hl=en"]
+    }
+  ]
+}

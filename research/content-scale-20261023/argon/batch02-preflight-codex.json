@@ -1,0 +1,178 @@
+{
+  "createdAt": "2026-10-23",
+  "status": "Brief-stage independent arithmetic only;not review of an absent draft",
+  "pythonTZPATH": [
+    "/usr/share/zoneinfo",
+    "/usr/lib/zoneinfo",
+    "/usr/share/lib/zoneinfo",
+    "/etc/zoneinfo"
+  ],
+  "monthly2026": [
+    {
+      "month": 1,
+      "day31": "2026-01-31",
+      "lastCalendarDay": "2026-01-31",
+      "lastCalendarWeekday": "Saturday",
+      "lastFriday": "2026-01-30",
+      "lastMondayToFridayIgnoringHolidays": "2026-01-30"
+    },
+    {
+      "month": 2,
+      "day31": null,
+      "lastCalendarDay": "2026-02-28",
+      "lastCalendarWeekday": "Saturday",
+      "lastFriday": "2026-02-27",
+      "lastMondayToFridayIgnoringHolidays": "2026-02-27"
+    },
+    {
+      "month": 3,
+      "day31": "2026-03-31",
+      "lastCalendarDay": "2026-03-31",
+      "lastCalendarWeekday": "Tuesday",
+      "lastFriday": "2026-03-27",
+      "lastMondayToFridayIgnoringHolidays": "2026-03-31"
+    },
+    {
+      "month": 4,
+      "day31": null,
+      "lastCalendarDay": "2026-04-30",
+      "lastCalendarWeekday": "Thursday",
+      "lastFriday": "2026-04-24",
+      "lastMondayToFridayIgnoringHolidays": "2026-04-30"
+    },
+    {
+      "month": 5,
+      "day31": "2026-05-31",
+      "lastCalendarDay": "2026-05-31",
+      "lastCalendarWeekday": "Sunday",
+      "lastFriday": "2026-05-29",
+      "lastMondayToFridayIgnoringHolidays": "2026-05-29"
+    },
+    {
+      "month": 6,
+      "day31": null,
+      "lastCalendarDay": "2026-06-30",
+      "lastCalendarWeekday": "Tuesday",
+      "lastFriday": "2026-06-26",
+      "lastMondayToFridayIgnoringHolidays": "2026-06-30"
+    },
+    {
+      "month": 7,
+      "day31": "2026-07-31",
+      "lastCalendarDay": "2026-07-31",
+      "lastCalendarWeekday": "Friday",
+      "lastFriday": "2026-07-31",
+      "lastMondayToFridayIgnoringHolidays": "2026-07-31"
+    },
+    {
+      "month": 8,
+      "day31": "2026-08-31",
+      "lastCalendarDay": "2026-08-31",
+      "lastCalendarWeekday": "Monday",
+      "lastFriday": "2026-08-28",
+      "lastMondayToFridayIgnoringHolidays": "2026-08-31"
+    },
+    {
+      "month": 9,
+      "day31": null,
+      "lastCalendarDay": "2026-09-30",
+      "lastCalendarWeekday": "Wednesday",
+      "lastFriday": "2026-09-25",
+      "lastMondayToFridayIgnoringHolidays": "2026-09-30"
+    },
+    {
+      "month": 10,
+      "day31": "2026-10-31",
+      "lastCalendarDay": "2026-10-31",
+      "lastCalendarWeekday": "Saturday",
+      "lastFriday": "2026-10-30",
+      "lastMondayToFridayIgnoringHolidays": "2026-10-30"
+    },
+    {
+      "month": 11,
+      "day31": null,
+      "lastCalendarDay": "2026-11-30",
+      "lastCalendarWeekday": "Monday",
+      "lastFriday": "2026-11-27",
+      "lastMondayToFridayIgnoringHolidays": "2026-11-30"
+    },
+    {
+      "month": 12,
+      "day31": "2026-12-31",
+      "lastCalendarDay": "2026-12-31",
+      "lastCalendarWeekday": "Thursday",
+      "lastFriday": "2026-12-25",
+      "lastMondayToFridayIgnoringHolidays": "2026-12-31"
+    }
+  ],
+  "corrections": {
+    "weekendMonthEnds": 4,
+    "monthsWithout31": 5,
+    "weekdayIsNotHolidayAware": "BYDAY Monday-Friday with BYSETPOS -1 excludes weekends,not public holidays or employer closures."
+  },
+  "ISOYearBoundaries": [
+    {
+      "year": 2025,
+      "January1Weekday": "Wednesday",
+      "weeks": 52,
+      "week1Starts": "2024-12-30",
+      "week1Ends": "2025-01-05",
+      "lastWeekStarts": "2025-12-22",
+      "lastWeekEnds": "2025-12-28"
+    },
+    {
+      "year": 2026,
+      "January1Weekday": "Thursday",
+      "weeks": 53,
+      "week1Starts": "2025-12-29",
+      "week1Ends": "2026-01-04",
+      "lastWeekStarts": "2026-12-28",
+      "lastWeekEnds": "2027-01-03"
+    },
+    {
+      "year": 2027,
+      "January1Weekday": "Friday",
+      "weeks": 52,
+      "week1Starts": "2027-01-04",
+      "week1Ends": "2027-01-10",
+      "lastWeekStarts": "2027-12-27",
+      "lastWeekEnds": "2028-01-02"
+    },
+    {
+      "year": 2028,
+      "January1Weekday": "Saturday",
+      "weeks": 52,
+      "week1Starts": "2028-01-03",
+      "week1Ends": "2028-01-09",
+      "lastWeekStarts": "2028-12-25",
+      "lastWeekEnds": "2028-12-31"
+    }
+  ],
+  "weeklyUTCvsLocalRecurrence": [
+    {
+      "UTCanchoredStart": "2026-01-15T14:00:00+00:00",
+      "UTCanchoredShownInNewYork": "2026-01-15T09:00:00-05:00",
+      "NewYork09AnchoredStart": "2026-01-15T09:00:00-05:00",
+      "NewYork09ShownInUTC": "2026-01-15T14:00:00+00:00"
+    },
+    {
+      "UTCanchoredStart": "2026-03-12T14:00:00+00:00",
+      "UTCanchoredShownInNewYork": "2026-03-12T10:00:00-04:00",
+      "NewYork09AnchoredStart": "2026-03-12T09:00:00-04:00",
+      "NewYork09ShownInUTC": "2026-03-12T13:00:00+00:00"
+    },
+    {
+      "UTCanchoredStart": "2026-10-29T14:00:00+00:00",
+      "UTCanchoredShownInNewYork": "2026-10-29T10:00:00-04:00",
+      "NewYork09AnchoredStart": "2026-10-29T09:00:00-04:00",
+      "NewYork09ShownInUTC": "2026-10-29T13:00:00+00:00"
+    },
+    {
+      "UTCanchoredStart": "2026-11-05T14:00:00+00:00",
+      "UTCanchoredShownInNewYork": "2026-11-05T09:00:00-05:00",
+      "NewYork09AnchoredStart": "2026-11-05T09:00:00-05:00",
+      "NewYork09ShownInUTC": "2026-11-05T14:00:00+00:00"
+    }
+  ],
+  "providerVersionCaution": "Microsoft latest Classic M365 <=3,older Classic <=2;do not infer max3 for new/web from a source that says three or more."
+}

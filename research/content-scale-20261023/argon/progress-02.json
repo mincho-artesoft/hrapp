@@ -1,0 +1,85 @@
+{
+  "generatedAt": "2026-10-23T13:43:00+03:00",
+  "agent": "argon",
+  "batchId": "argon-batch-02",
+  "status": "completed_batch_02",
+  "immediateWaveTarget": "100 new high-utility standalone English articles across agents (measure before scaling toward 1100)",
+  "assignedClusters": [
+    "C04 — Multi-Time-Zone Rulers, 3-Setting Calendar Time Zone Hierarchy, UTC vs Local TZID Recurrence Anchors, Fractional :30/:45 UTC Offsets",
+    "C03 — ISO Week 1/Week 53 Boundaries, Sunday vs Monday Week-Number Mismatch, Last Weekday vs Fixed Month-End Recurrence, 4-4-5 Quarter Calendar Math, Task Deadline vs Scheduled Block, Backward Project Planning Across Weekends/Holidays, Travel Time vs Buffer Event Blocks, Alternating Week A/B School Timetables"
+  ],
+  "deliverables": {
+    "claimedBriefs02Path": "research/content-scale-20261023/argon/claimed-briefs-02.json",
+    "draftsBatch02Path": "research/content-scale-20261023/argon/argon-drafts-02.json",
+    "editorialRecords02Path": "research/content-scale-20261023/argon/editorial-records-02.json",
+    "progress02Path": "research/content-scale-20261023/argon/progress-02.json"
+  },
+  "counts": {
+    "claimedBriefsBatch02": 12,
+    "claimedBriefsC04": 4,
+    "claimedBriefsC03": 8,
+    "draftedArticlesBatch02": 12,
+    "editorialRecordsBatch02": 12,
+    "cumulativeArgonDraftedArticles": 24
+  },
+  "reviewCorrectionsAppliedInBatch02": [
+    "2026 weekend month-ends (`BYMONTHDAY=-1`): verified and stated as FOUR months (`Jan 31` Sat, `Feb 28` Sat, `May 31` Sun, `Oct 31` Sat), not three; clarified that `BYDAY=MO,TU,WE,TH,FR;BYSETPOS=-1` excludes weekends (`SA,SU`) only and not public holidays or employer closures.",
+    "Microsoft Outlook multiple time zones (`manage-time-zone-settings-in-outlook`): distinguished latest Classic Outlook for Microsoft 365 (up to 3 time zones: Primary, Second, Third + `Swap Time Zones`) from older Classic Outlook 2019 LTSC / 2016 (up to 2 time zones), and New Outlook / Outlook.com / Outlook on the web (`Add time zone` under `Other time zones`, supporting two, three, or more zones without a hard cap of 3); confirmed Google Calendar Primary + Secondary + Tertiary (`World clock`).",
+    "`viewer-display-time-zone-versus-event-time-zone-calendar`: refocused strictly on Google Calendar's 3-setting hierarchy (`All calendars` Primary time zone vs `One calendar` owner-locked time zone vs `One event`), Outlook's organizer reference zone conversion (`2:00 PM Pacific -> 3:00 PM Mountain = 10:00 PM UTC`), and Google Calendar Tasks adapting (`9 AM MT -> 11 AM ET`), removing Apple `Time Zone Override` and RFC 5545 `floating/UTC/TZID` syntax so there is zero overlap with `time-zones-and-the-flight-you-booked` or `icalendar-floating-time-utc-tzid`.",
+    "`non-integer-30-and-45-minute-utc-offset-calendar-scheduling`: verified Adelaide (`ACDT UTC+10:30` in Jan, `ACST UTC+09:30` in Jul) vs London (`09:00–18:00`) overlap as `0 minutes` in January (`18:00 UTC` = `04:30 ACDT` next day) and `30 minutes` (`09:00–09:30 BST` = `17:30–18:00 ACST`) in July.",
+    "Batch 01 audit preservation: left all Batch 01 files (`argon-drafts-01.json`, `editorial-records-01.json`, `argon-drafts-01-reviewed.json`, `review-01-codex.json`, `claimed-briefs.json`, `progress.json`) completely untouched."
+  ],
+  "qaSummary": {
+    "validationErrors": 0,
+    "maxDescriptionLength": 160,
+    "minWordCount": 1128,
+    "maxWordCount": 1461,
+    "totalWordsAcross12Drafts": 15610,
+    "maxFiveWordShingleOverlapAcrossBatch01AndBatch02": 0.0168,
+    "shingleOverlapThreshold": 0.65,
+    "allPrimarySourcesVerifiedAndLinkedInArticleSources": true
+  },
+  "draftedSlugsBatch02": [
+    "display-multiple-time-zone-columns-google-calendar-outlook",
+    "viewer-display-time-zone-versus-event-time-zone-calendar",
+    "recurring-calendar-event-anchored-in-utc-versus-local-tzid",
+    "non-integer-30-and-45-minute-utc-offset-calendar-scheduling",
+    "iso-week-1-and-week-53-calendar-boundary-dates",
+    "calendar-week-numbers-iso-monday-versus-sunday-start-mismatch",
+    "monthly-recurring-last-weekday-byday-minus-1-versus-fixed-date",
+    "4-4-5-calendar-quarter-cycles-and-53-week-leap-year-math",
+    "google-calendar-task-deadline-versus-scheduled-time-block",
+    "backward-planning-project-deadlines-across-weekends-and-holidays",
+    "calendar-travel-time-versus-separate-buffer-event-blocks",
+    "alternating-a-b-week-school-timetable-calendar-vacation-exceptions"
+  ],
+  "verifiedPrimarySourcesRead": [
+    "https://www.rfc-editor.org/rfc/rfc5545",
+    "https://support.google.com/calendar/answer/37064?hl=en",
+    "https://support.google.com/calendar/answer/37115?hl=en",
+    "https://support.google.com/calendar/answer/7638168?hl=en&co=GENIE.Platform%3DDesktop",
+    "https://support.google.com/calendar/answer/9901136?hl=en",
+    "https://support.google.com/calendar/answer/10729749?hl=en",
+    "https://support.google.com/calendar/answer/11190973?hl=en",
+    "https://support.microsoft.com/en-us/outlook/getstarted/manage-time-zone-settings-in-outlook",
+    "https://support.microsoft.com/en-gb/outlook/get-started-with-the-outlook-calendar",
+    "https://support.apple.com/guide/calendar/icl1018/mac",
+    "https://support.apple.com/guide/calendar/add-modify-or-delete-events-icalwr13-events/mac",
+    "https://support.apple.com/en-gb/guide/iphone/iphc37be2016/26/ios/26",
+    "https://aa.usno.navy.mil/faq/daylight_time",
+    "https://www.iana.org/time-zones"
+  ],
+  "constraintsAndGuardrails": {
+    "language": "en-US only (zero translations generated)",
+    "paidApisUsed": false,
+    "srcOrSiteModified": false,
+    "batch01FilesModified": false,
+    "gitCommitsCreated": false,
+    "medicalLaborLawOrAccountingAdviceIncluded": false,
+    "allWorkedExamplesMarkedIllustrative": true,
+    "firsthandRuntimeTestingClaimed": false,
+    "allDescriptionsMax160Chars": true,
+    "allSeeAlsoAndArticleLinksExistInBaseline73": true,
+    "allEditorialRecordsReviewStatusDraft": true
+  }
+}

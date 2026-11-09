@@ -1,0 +1,11 @@
+{
+  "updatedAt": "2026-10-22T10:49:59.497110+00:00",
+  "owner": "calendar_product_facts agent, authorized continuation of media/site integration",
+  "screenshotSession": 56473,
+  "videoSession": 43440,
+  "localCleanup": "complete; local-media-final-audit.json",
+  "privateRecovery": "s3://cloud-calendars-appstore-media/1.7.4/local-media-archive-20261022/",
+  "localRetentionPolicy": "RAM-only subsequent screenshot/video processing; no persistent marketingfiles",
+  "sitePublication": "not performed yet; full manifest/import/CDN/browser/deploy checks still needed",
+  "privacy": "User fills ASCprivacy manually; preserve preexisting public website policy"
+}

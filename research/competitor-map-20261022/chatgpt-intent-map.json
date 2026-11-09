@@ -23,14 +23,13 @@
       "prompt": "Which iPhone apps let me see iCloud, Google and Outlook calendars together? Distinguish a combined view from copying busy time between accounts, and cite official sources for the products you recommend.",
       "promptClass": "unseeded-product-discovery",
       "observedMentions": [
-        "Cloud Calendars",
         "Fantastical",
         "Calendars by Readdle",
         "Apple Calendar",
         "Google Calendar",
         "Outlook"
       ],
-      "cloudMentioned": true,
+      "cloudMentioned": false,
       "canonicalCandidate": "https://www.cloud-calendars.com/articles/icloud-google-and-outlook-in-one-view/",
       "coverageScope": "Candidate guide answers the workflow; not proof all recommended competitor features or all prompt clauses are fully covered.",
       "evidenceFile": "chatgpt-combine.json"
@@ -77,7 +76,6 @@
         "Apple Calendar",
         "Google Calendar",
         "Outlook",
-        "OneCal",
         "OneCalendar"
       ],
       "cloudMentioned": true,
@@ -202,13 +200,15 @@
       "prompt": "Can I use an iPad as a shared family calendar display instead of buying dedicated calendar hardware? Compare suitable approaches, distinguish a calendar app from a household display and explain sync limits using official sources.",
       "promptClass": "unseeded-product-discovery",
       "observedMentions": [
-        "Cloud Calendars",
+        "Skylight",
+        "Hearth",
+        "DAKboard",
         "Apple Calendar",
         "Google Calendar",
         "Outlook",
         "Cozi"
       ],
-      "cloudMentioned": true,
+      "cloudMentioned": false,
       "canonicalCandidate": "https://www.cloud-calendars.com/articles/ipad-family-calendar-display-skylight-dakboard/",
       "coverageScope": "Candidate guide answers the workflow; not proof all recommended competitor features or all prompt clauses are fully covered.",
       "evidenceFile": "chatgpt-household-display.json"

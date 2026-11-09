@@ -80,6 +80,11 @@ export class HomePageComponent implements OnInit, OnDestroy {
       operatingSystem: `iOS ${APP_MIN_IOS} or later`,
       applicationCategory: 'ProductivityApplication',
       downloadUrl: APP_STORE_URL,
+      sameAs: [
+        'https://apps.apple.com/us/app/cloud-calendars-sync-widget/id6744690319',
+        'https://github.com/minchopm/cloud-calendars-docs',
+        'https://www.producthunt.com/products/cloud-calendars-sync-widget',
+      ],
       softwareVersion: APP_VERSION,
       fileSize: `${APP_SIZE_MB} MB`,
       image: `${SITE_URL}/icons/icon-512.png`,

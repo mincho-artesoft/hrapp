@@ -36,14 +36,13 @@
       "promptClass": "unseeded-product-discovery",
       "file": "chatgpt-combine.json",
       "mentionedBrands": [
-        "Cloud Calendars",
         "Fantastical",
         "Calendars by Readdle",
         "Apple Calendar",
         "Google Calendar",
         "Outlook"
       ],
-      "cloudMentioned": true,
+      "cloudMentioned": false,
       "directSourceUrls": [
         "https://support.apple.com/en-by/guide/iphone/iphc37be2016/ios?utm_source=chatgpt.com",
         "https://support.microsoft.com/en-us/outlook/connect-outlook-and-apple-iphone-calendars?utm_source=chatgpt.com",
@@ -109,7 +108,6 @@
         "Apple Calendar",
         "Google Calendar",
         "Outlook",
-        "OneCal",
         "OneCalendar"
       ],
       "cloudMentioned": true,
@@ -135,13 +133,13 @@
       "mentionedBrands": [
         "Skylight",
         "Hearth",
-        "Cloud Calendars",
+        "DAKboard",
         "Apple Calendar",
         "Google Calendar",
         "Outlook",
         "Cozi"
       ],
-      "cloudMentioned": true,
+      "cloudMentioned": false,
       "directSourceUrls": [
         "https://dakboard.com/c/family/?utm_source=chatgpt.com",
         "https://support.apple.com/en-is/guide/ipad/ipadc2a14a22/ipados?utm_source=chatgpt.com",
@@ -306,7 +304,6 @@
       "promptClass": "unseeded-product-discovery",
       "file": "chatgpt-weather.json",
       "mentionedBrands": [
-        "Weather Events",
         "Fantastical",
         "Calendars by Readdle",
         "Calendar 366",

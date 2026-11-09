@@ -1,0 +1,54 @@
+{
+  "scope": "First wave: exactly100newEnglish article URLs; existing73kept. No new translations or paidAIAPI requests.",
+  "baseline": {
+    "searchConsolePeriod": [
+      "2026-09-24",
+      "2026-10-21"
+    ],
+    "clicks": 42,
+    "impressions": 29767,
+    "averagePosition": 9.3,
+    "indexingReportUpdated": "2026-10-16",
+    "indexedSitewide": 547,
+    "notIndexedSitewide": 191,
+    "files": [
+      "gsc-baseline-28days-pages.json",
+      "gsc-baseline-28days-queries.json",
+      "gsc-baseline-indexing.json"
+    ]
+  },
+  "earlyFollowup": {
+    "delayAfterPublicationDays": 3,
+    "checks": [
+      "New100URLs return real200with correct title, canonical and index,follow",
+      "Updated sitemap contains all100and excludes heldtranslations",
+      "SearchConsole lastreportdate/crawl/discovery/indexing signals for the newcohort",
+      "Firstcohortimpressions and queryterms, onlywhenreported"
+    ],
+    "interpretation": "Early crawling/indexing signal only; data delay and a small window cannot establish traffic effect. No guaranteeofindexing or rankings."
+  },
+  "laterFollowup": {
+    "delayAfterPublicationDays": 7,
+    "checks": [
+      "Clicks/impressions/queries by100newURLcohort versus baseline73 and productpages separately",
+      "Report complete datewindows and anonymizedquerylimitations",
+      "Identify crawl/indexing failures or intentoverlap for specificURLs before rewriting",
+      "Repeat fixedbrand-qualified ChatGPT prompts through existing subscription onlyifavailable; distinguish exactCloudCalendars brand from generic iCloud/cloudcalendar recommendations"
+    ],
+    "interpretation": "Descriptive before/after, not controlledcausal A/Btest. No fabricated searchvolumes or attribution."
+  },
+  "confounders": [
+    "Translatedarticle noindex rollout onOctober22",
+    "SixexistingEnglishguides andtranslationsrefreshedonOctober23",
+    "SearchConsole indexingreport currentlyseven days behind capture",
+    "Normalweekday/seasonal/querymixchanges",
+    "Navigation and article card design refreshed on2026-10-23 after the initial100-page release; header/footer/home guide links improve discovery."
+  ],
+  "publicationTimestamp": "2026-10-23T11:29:28.143796+00:00",
+  "newUrlCohort": "publication-cohort.json",
+  "scheduledAssessmentDates": [
+    "2026-10-26",
+    "2026-10-30"
+  ],
+  "automationId": "cloud-calendars-100"
+}

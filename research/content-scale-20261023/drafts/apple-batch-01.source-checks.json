@@ -1,0 +1,93 @@
+{
+  "date": "2026-10-23",
+  "author": "keyword_intent_map",
+  "status": "drafts_require_independent_review",
+  "sourcesRead": [
+    {
+      "key": "updates",
+      "url": "https://support.apple.com/guide/icloud/receive-emails-updates-shared-calendars-mm8074582205/icloud",
+      "readScope": "Substantive lines277–294",
+      "supports": "Update-email switch and owner/participant destination-address routing."
+    },
+    {
+      "key": "hide",
+      "url": "https://support.apple.com/guide/icloud/delete-or-hide-an-event-mmfbbb4470/icloud",
+      "readScope": "Substantive lines277–298",
+      "supports": "Reversible hide-past-events preference distinct from owned-event deletion and invited-event decline."
+    },
+    {
+      "key": "invite",
+      "url": "https://support.apple.com/guide/icloud/invite-people-to-an-event-mm6b1a805a/icloud",
+      "readScope": "Substantive lines277–324",
+      "supports": "Invitation sender choice, associated email eligibility and absent menu with one configured address."
+    },
+    {
+      "key": "share",
+      "url": "https://support.apple.com/guide/icloud/share-a-calendar-mm6b1a9479/icloud",
+      "readScope": "Substantive lines277–369, including explicit reopen338 onward",
+      "supports": "Private eligibility, owner role, privileges, participant state, Invite Again, public-link viewing and notification routes."
+    },
+    {
+      "key": "accept",
+      "url": "https://support.apple.com/guide/icloud/accept-a-shared-calendar-invitation-mm6b1a88ad/icloud",
+      "readScope": "Substantive lines277–290",
+      "supports": "Calendar inbox Join Calendar and same-account iCloud-enabled device presence."
+    },
+    {
+      "key": "stop",
+      "url": "https://support.apple.com/guide/icloud/stop-sharing-a-calendar-mm6b1a8f9f/icloud",
+      "readScope": "Substantive lines301–330",
+      "supports": "Remove Person versus Stop Sharing versus Public Calendar off, and saving."
+    },
+    {
+      "key": "restore",
+      "url": "https://support.apple.com/guide/icloud/restore-your-calendars-and-events-mm7478c562f3/icloud",
+      "readScope": "Substantive lines277–306",
+      "supports": "Archived versions, erased sharing, pre-restore inventory and no edits during restore."
+    },
+    {
+      "key": "archive",
+      "url": "https://support.apple.com/guide/calendar/import-or-export-calendars-icl1023/mac",
+      "readScope": "Substantive lines89–148",
+      "supports": "ICS/ICBU operations, explicit archive replacement warning and custom-color effects."
+    },
+    {
+      "key": "privacy",
+      "url": "https://support.apple.com/guide/iphone/control-access-to-information-in-apps-iph251e92810/ios",
+      "readScope": "Substantive lines1109–1127",
+      "supports": "Settings Privacy & Security information-category app grants; not exact per-OS access option labels."
+    },
+    {
+      "key": "eventkit",
+      "url": "https://developer.apple.com/documentation/eventkit/accessing-the-event-store",
+      "readScope": "Official extracted substantive Overview and write-only access sections",
+      "supports": "Write-only/full access distinction and separate system UI permission behavior."
+    }
+  ],
+  "closestExistingBodiesRead": [
+    "a-calendar-that-is-yours-to-share",
+    "calendar-export-ics-pdf-and-backup",
+    "calendar-notifications-missing-silent-or-duplicated",
+    "event-saved-to-wrong-calendar",
+    "find-old-calendar-events-by-account-date-and-title",
+    "keeping-track-of-who-replied",
+    "recover-deleted-calendar-events-iphone",
+    "recurring-events-without-the-mess",
+    "sharing-one-event-not-your-calendar",
+    "taking-back-a-calendar-you-shared",
+    "what-calendar-sync-actually-does",
+    "what-guests-can-do-to-your-event",
+    "when-two-calendars-disagree",
+    "who-can-see-what-in-google-calendar",
+    "why-a-shared-calendar-does-not-appear"
+  ],
+  "overlapWarnings": [
+    "iCloud restore-sharing inventory overlaps known recovery discussion; independent editor must decide whether worksheet earns standalone canonical.",
+    "ICBU replacement checklist overlaps existing export guide; merge if complete preflight does not add a distinct reader task.",
+    "Public publication and private invitation articles share a primary help source but cover different state/eligibility workflows; avoid treating source count as intent count."
+  ],
+  "firsthandTests": false,
+  "noPaidApiUsed": true,
+  "applicationFilesChanged": false,
+  "publicationPerformed": false
+}

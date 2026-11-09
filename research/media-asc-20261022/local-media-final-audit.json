@@ -1,0 +1,9 @@
+{
+  "marketingMediaFilesRemaining": [],
+  "removedMediaFiles": 1609,
+  "mediaBytesFreed": 597802776,
+  "additionalRedundantDeploymentCopyBytesRemoved": 31085496,
+  "privateArchive": "s3://cloud-calendars-appstore-media/1.7.4/local-media-archive-20261022/",
+  "runtimeIconsAndNativeCode": "Preserved; native Xcode resources and website UI icons are not marketing exports.",
+  "newMediaProcessing": "Resumed screenshot and video imports operate in RAM/pipes and write only JSON manifests/checkpoints locally."
+}

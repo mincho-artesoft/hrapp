@@ -1,0 +1,25 @@
+Use Dark theme in Calendar
+In Google Calendar, you can switch the default bright background to a dark background.
+Turn on Dark theme in Calendar
+On your computer, open
+Google Calendar
+.
+At the top right, click Settings menu
+Appearance
+.
+In the “Appearance” window, select
+Dark
+.
+To apply the changes, click
+Done
+.
+Tips:
+If your background is set to “Light,” you can change the color set.
+If your background is set to “Dark” or “Device default,” you can’t change the color set.
+Related resources
+Change your Calendar settings
+Get started with Google Calendar
+Computer
+Android phone & tablet
+iPhone & iPad
+More

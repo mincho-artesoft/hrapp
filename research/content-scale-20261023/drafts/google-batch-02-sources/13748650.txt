@@ -1,0 +1,63 @@
+Add or remove alternate calendars
+You can add different types of calendars, including lunar or solar, Moon phase, and sports. To add or remove alternate calendars, update your calendar settings.
+There are several calendars available, like:
+Lunar:
+Based on the Moon’s phases.
+Solar:
+Based on the Sun's annual cycles.
+Moon phases:
+Based on the primary moon phases: New Moon, First Quarter, Full Moon, and Last Quarter.
+Sports:
+A schedule of upcoming sports games. You can add sports calendars for baseball, basketball, cricket, football, hockey, or rugby.
+Add or remove lunar and solar calendars
+On your computer, open
+Google Calendar
+.
+At the top right, click Settings
+Settings
+.
+Click
+View options
+.
+Under “General,” click
+Alternate calendars
+drop-down.
+Select your preferred calendar.
+Tip:
+To remove an alternate calendar, select
+None
+.
+Add or remove Moon phases
+On your computer, open
+Google Calendar
+.
+At the top right, click Settings
+Settings
+.
+Under “Add calendar,” click
+Browse calendars of interest
+.
+Check or uncheck the box next to “Phases of the Moon.”
+Add a Moon phase calendar
+Add or remove sports calendars
+On your computer, open
+Google Calendar
+.
+At the top right, click Settings
+Settings
+.
+Under “Add calendar,” click
+Browse calendars of interest
+.
+Scroll to the “Sports” section.
+Select a sports category.
+Check or uncheck the box next to a sports team to add their game schedule to your calendar.
+Add a sports calendar
+Related resources
+Change your Calendar settings
+Add or remove holidays on your calendar
+Manage birthdays on your calendar
+Computer
+Android phone & tablet
+iPhone & iPad
+More

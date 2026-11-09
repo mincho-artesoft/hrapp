@@ -1,0 +1,233 @@
+[
+  {
+    "device": "ipad_pro_3gen_129",
+    "index": 1,
+    "assetId": "3ac60d94-a16c-4892-befa-c19db25fe39c",
+    "ascFileName": "01-day.png",
+    "downloadUrl": "https://is1-ssl.mzstatic.com/image/thumb/OC8jnm56dBB67exGrkVNdg/2064x2752bb.png",
+    "localPath": "/tmp/cloud-calendar-asc-en/ipad_pro_3gen_129/01.png",
+    "bytes": 5311709,
+    "sha256": "00077f02d59c7d084cff57eadc12d341cf857b31650c77dece4d2277bbbe49d2",
+    "provenance": "Apple CDN rendered PNG at reported dimensions, not necessarily original uploaded byte stream."
+  },
+  {
+    "device": "ipad_pro_3gen_129",
+    "index": 2,
+    "assetId": "1166b2f1-bbce-4c9f-b6da-c05b0a051a3d",
+    "ascFileName": "02-week.png",
+    "downloadUrl": "https://is1-ssl.mzstatic.com/image/thumb/O9pMBKkPC2s8OYW592TuXA/2064x2752bb.png",
+    "localPath": "/tmp/cloud-calendar-asc-en/ipad_pro_3gen_129/02.png",
+    "bytes": 5510254,
+    "sha256": "bf2bfb21910bc2420ab204297e9e193c8eed6602950a969fd66e9d755d1291af",
+    "provenance": "Apple CDN rendered PNG at reported dimensions, not necessarily original uploaded byte stream."
+  },
+  {
+    "device": "ipad_pro_3gen_129",
+    "index": 3,
+    "assetId": "cd34148e-0c21-49c9-bdc5-ff8854d96f61",
+    "ascFileName": "03-weather.png",
+    "downloadUrl": "https://is1-ssl.mzstatic.com/image/thumb/XaZX7tZv0dgpYC0eRco1XQ/2064x2752bb.png",
+    "localPath": "/tmp/cloud-calendar-asc-en/ipad_pro_3gen_129/03.png",
+    "bytes": 6854367,
+    "sha256": "f7157f25bc8274cd9f72211e0f0124d181eb5ca23a817448c905115369a5733b",
+    "provenance": "Apple CDN rendered PNG at reported dimensions, not necessarily original uploaded byte stream."
+  },
+  {
+    "device": "ipad_pro_3gen_129",
+    "index": 4,
+    "assetId": "5b589951-d225-425f-9699-e80d1fadac64",
+    "ascFileName": "04-widgets.png",
+    "downloadUrl": "https://is1-ssl.mzstatic.com/image/thumb/AM4NRC76hvlCGWaT8wQC7A/2064x2752bb.png",
+    "localPath": "/tmp/cloud-calendar-asc-en/ipad_pro_3gen_129/04.png",
+    "bytes": 7132457,
+    "sha256": "5b5f2b535c8cacecf8c60d81a37ea055d9008bed7502f7c5a40ee829a5cc0184",
+    "provenance": "Apple CDN rendered PNG at reported dimensions, not necessarily original uploaded byte stream."
+  },
+  {
+    "device": "ipad_pro_3gen_129",
+    "index": 5,
+    "assetId": "2beba5c0-3578-46d0-ba75-e0ab840d6f22",
+    "ascFileName": "05-live.png",
+    "downloadUrl": "https://is1-ssl.mzstatic.com/image/thumb/CSPPaR_s3YzYCa4VILkY1Q/2064x2752bb.png",
+    "localPath": "/tmp/cloud-calendar-asc-en/ipad_pro_3gen_129/05.png",
+    "bytes": 7150590,
+    "sha256": "4da3c826d13657a3f46c508b007e0fb1cd5e3581e243f2ac36011b7453a6143a",
+    "provenance": "Apple CDN rendered PNG at reported dimensions, not necessarily original uploaded byte stream."
+  },
+  {
+    "device": "ipad_pro_3gen_129",
+    "index": 6,
+    "assetId": "8e25b062-6718-49a3-b6af-bfea436d8149",
+    "ascFileName": "06-sharing.png",
+    "downloadUrl": "https://is1-ssl.mzstatic.com/image/thumb/OPItr9AlT14NeaMWyFfQGQ/2064x2752bb.png",
+    "localPath": "/tmp/cloud-calendar-asc-en/ipad_pro_3gen_129/06.png",
+    "bytes": 5545333,
+    "sha256": "48a974ecf57cf55b0720086331f73175734e6ac5877db29a519986c122c5be8c",
+    "provenance": "Apple CDN rendered PNG at reported dimensions, not necessarily original uploaded byte stream."
+  },
+  {
+    "device": "ipad_pro_3gen_129",
+    "index": 7,
+    "assetId": "b86c7f81-7751-452c-b73b-c0d2fa24456f",
+    "ascFileName": "07-devices.png",
+    "downloadUrl": "https://is1-ssl.mzstatic.com/image/thumb/x4bUjAnH3frQ1YIVA1hQsQ/2064x2752bb.png",
+    "localPath": "/tmp/cloud-calendar-asc-en/ipad_pro_3gen_129/07.png",
+    "bytes": 5169186,
+    "sha256": "9c9d14623d7eadf73c795cb37961778de9a5840d7822463f2090f1ea08af6539",
+    "provenance": "Apple CDN rendered PNG at reported dimensions, not necessarily original uploaded byte stream."
+  },
+  {
+    "device": "iphone_61",
+    "index": 1,
+    "assetId": "d96d5099-df1f-42a1-8e21-2832a96f1540",
+    "ascFileName": "01-day-medium.png",
+    "downloadUrl": "https://is1-ssl.mzstatic.com/image/thumb/PfzP2gGiXX-DE8_hu95Rjg/1179x2556bb.png",
+    "localPath": "/tmp/cloud-calendar-asc-en/iphone_61/01.png",
+    "bytes": 2660682,
+    "sha256": "ee85ff607bfe8547fad49f8ef0f36047ce4e2ff792e839a354af7e312194d114",
+    "provenance": "Apple CDN rendered PNG at reported dimensions, not necessarily original uploaded byte stream."
+  },
+  {
+    "device": "iphone_61",
+    "index": 2,
+    "assetId": "14ae282e-39bf-43dc-8053-059691459862",
+    "ascFileName": "02-week-medium.png",
+    "downloadUrl": "https://is1-ssl.mzstatic.com/image/thumb/q_0SEgGPdAUhPznggfBPtg/1179x2556bb.png",
+    "localPath": "/tmp/cloud-calendar-asc-en/iphone_61/02.png",
+    "bytes": 2730291,
+    "sha256": "049d396a9d40441f52a5f61b0113a2869dc3e7452b10885ffb3a92ca1194be5d",
+    "provenance": "Apple CDN rendered PNG at reported dimensions, not necessarily original uploaded byte stream."
+  },
+  {
+    "device": "iphone_61",
+    "index": 3,
+    "assetId": "b2fb8ed2-af7e-416e-ae11-9b730b54a34c",
+    "ascFileName": "03-weather-medium.png",
+    "downloadUrl": "https://is1-ssl.mzstatic.com/image/thumb/pJWvIEGifSXKxh9kaF9sWQ/1179x2556bb.png",
+    "localPath": "/tmp/cloud-calendar-asc-en/iphone_61/03.png",
+    "bytes": 3422454,
+    "sha256": "df4dcc871af01df434646b64c60ccd295b903efb3fe962f076e4e33f839b77b7",
+    "provenance": "Apple CDN rendered PNG at reported dimensions, not necessarily original uploaded byte stream."
+  },
+  {
+    "device": "iphone_61",
+    "index": 4,
+    "assetId": "0b98d3cc-99c2-4db8-89f6-173299e12c7f",
+    "ascFileName": "04-widgets-medium.png",
+    "downloadUrl": "https://is1-ssl.mzstatic.com/image/thumb/aOyuigRWL3NuwQ5qw9tJ1Q/1179x2556bb.png",
+    "localPath": "/tmp/cloud-calendar-asc-en/iphone_61/04.png",
+    "bytes": 3514229,
+    "sha256": "0864b5ac27e0c0cde1ba0e0603e2ac7e968ca903b555d4642f527e9bf8daf683",
+    "provenance": "Apple CDN rendered PNG at reported dimensions, not necessarily original uploaded byte stream."
+  },
+  {
+    "device": "iphone_61",
+    "index": 5,
+    "assetId": "6d9d4f40-6337-4b2f-8933-30e028fe0488",
+    "ascFileName": "05-live-medium.png",
+    "downloadUrl": "https://is1-ssl.mzstatic.com/image/thumb/uQLeNbVWleek9GXHdtXFFA/1179x2556bb.png",
+    "localPath": "/tmp/cloud-calendar-asc-en/iphone_61/05.png",
+    "bytes": 3489922,
+    "sha256": "b59462683518d17e015c0cae4071690c2ea8efb0603f04f2b842562aa8315e0a",
+    "provenance": "Apple CDN rendered PNG at reported dimensions, not necessarily original uploaded byte stream."
+  },
+  {
+    "device": "iphone_61",
+    "index": 6,
+    "assetId": "41a60b28-d805-4c9c-8b06-47c67657ad9a",
+    "ascFileName": "06-sharing-medium.png",
+    "downloadUrl": "https://is1-ssl.mzstatic.com/image/thumb/lDnObIiIChsBS6UN2j5t9A/1179x2556bb.png",
+    "localPath": "/tmp/cloud-calendar-asc-en/iphone_61/06.png",
+    "bytes": 2873804,
+    "sha256": "15a8cef297be1379a01a2e79e92a9dd57338c84319a5898058bf10fdb7f8a01e",
+    "provenance": "Apple CDN rendered PNG at reported dimensions, not necessarily original uploaded byte stream."
+  },
+  {
+    "device": "iphone_61",
+    "index": 7,
+    "assetId": "692905a7-ae0d-4be5-9abc-00191dacf8c7",
+    "ascFileName": "07-devices-medium.png",
+    "downloadUrl": "https://is1-ssl.mzstatic.com/image/thumb/HpWZs8bwnyDdOdmRa9E18Q/1179x2556bb.png",
+    "localPath": "/tmp/cloud-calendar-asc-en/iphone_61/07.png",
+    "bytes": 3167280,
+    "sha256": "ce4abe52c34905b8e3c2fbd7aa0159cf975811ab9e13f0ecd557818db8307f52",
+    "provenance": "Apple CDN rendered PNG at reported dimensions, not necessarily original uploaded byte stream."
+  },
+  {
+    "device": "iphone_duo",
+    "index": 1,
+    "assetId": "8f984b9e-0646-41d4-b359-e76e109a7506",
+    "ascFileName": "CC-174-Duo-en-US-01-day-0f30615cd1.png",
+    "downloadUrl": "https://is1-ssl.mzstatic.com/image/thumb/tlW_ryRNfEBHViis714IvQ/1398x2034bb.png",
+    "localPath": "/tmp/cloud-calendar-asc-en/iphone_duo/01.png",
+    "bytes": 2708706,
+    "sha256": "11be81c6a42372b6bc3c7bb7b632736fb8475f24f00055b1e4b5d51b520c0909",
+    "provenance": "Apple CDN rendered PNG at reported dimensions, not necessarily original uploaded byte stream."
+  },
+  {
+    "device": "iphone_duo",
+    "index": 2,
+    "assetId": "10db73d7-a5d7-458f-bcff-688306a2bb6f",
+    "ascFileName": "CC-174-Duo-en-US-02-week-cf7be8b080.png",
+    "downloadUrl": "https://is1-ssl.mzstatic.com/image/thumb/1ptiG0kRQg6e3oqGTWfNMA/2853x2007bb.png",
+    "localPath": "/tmp/cloud-calendar-asc-en/iphone_duo/02.png",
+    "bytes": 5240328,
+    "sha256": "4909a1e4c414477bb9a0dee096feaeb83165d809a70104e7aff1b825a5b93370",
+    "provenance": "Apple CDN rendered PNG at reported dimensions, not necessarily original uploaded byte stream."
+  },
+  {
+    "device": "iphone_duo",
+    "index": 3,
+    "assetId": "93eb4f63-f4e0-4f6e-a166-9be484af0975",
+    "ascFileName": "CC-174-Duo-en-US-03-weather-51a67b6e41.png",
+    "downloadUrl": "https://is1-ssl.mzstatic.com/image/thumb/0bRQsK-ZpRdNd9xN_Gblqw/1398x2034bb.png",
+    "localPath": "/tmp/cloud-calendar-asc-en/iphone_duo/03.png",
+    "bytes": 3242118,
+    "sha256": "21dc6cfdc2f45096073ee032b942f2571de3911a1e84e94c4335db0d2bc2ae9f",
+    "provenance": "Apple CDN rendered PNG at reported dimensions, not necessarily original uploaded byte stream."
+  },
+  {
+    "device": "iphone_duo",
+    "index": 4,
+    "assetId": "5b108e82-3d4c-4863-8038-1243212252f3",
+    "ascFileName": "CC-174-Duo-en-US-04-widgets-46db00f44b.png",
+    "downloadUrl": "https://is1-ssl.mzstatic.com/image/thumb/NMzHpfgVyOxxSXUTTjCgeg/2853x2007bb.png",
+    "localPath": "/tmp/cloud-calendar-asc-en/iphone_duo/04.png",
+    "bytes": 6946588,
+    "sha256": "ecc8c6c4d9f236390c5ae584c68bc723f488f4661de84a45c914376ea373ceb2",
+    "provenance": "Apple CDN rendered PNG at reported dimensions, not necessarily original uploaded byte stream."
+  },
+  {
+    "device": "iphone_duo",
+    "index": 5,
+    "assetId": "8346b894-ad6c-4372-b932-1158b3961b09",
+    "ascFileName": "CC-174-Duo-en-US-05-live-296f995387.png",
+    "downloadUrl": "https://is1-ssl.mzstatic.com/image/thumb/Eb67zfYx4V8IlwXyFwhtRg/1398x2034bb.png",
+    "localPath": "/tmp/cloud-calendar-asc-en/iphone_duo/05.png",
+    "bytes": 3362398,
+    "sha256": "f11ee30d01a76580c3d786e91027ea3c13e0f42d1b1bab1000175628c2055ea7",
+    "provenance": "Apple CDN rendered PNG at reported dimensions, not necessarily original uploaded byte stream."
+  },
+  {
+    "device": "iphone_duo",
+    "index": 6,
+    "assetId": "20a72704-edf1-4112-9e35-7df8d2a7a01c",
+    "ascFileName": "CC-174-Duo-en-US-06-sharing-2031bc028a.png",
+    "downloadUrl": "https://is1-ssl.mzstatic.com/image/thumb/WVJChnsJUT8Eu-21_Roe-w/2007x2853bb.png",
+    "localPath": "/tmp/cloud-calendar-asc-en/iphone_duo/06.png",
+    "bytes": 5030742,
+    "sha256": "71adf3124843bca34bcca1d7a60334771bb2021140159dc9b94cabca23d02320",
+    "provenance": "Apple CDN rendered PNG at reported dimensions, not necessarily original uploaded byte stream."
+  },
+  {
+    "device": "iphone_duo",
+    "index": 7,
+    "assetId": "0e805df2-93d5-44cb-9fd2-1d4bac63d024",
+    "ascFileName": "CC-174-Duo-en-US-07-devices-f75b47371c.png",
+    "downloadUrl": "https://is1-ssl.mzstatic.com/image/thumb/6t9T96jXKQ8IdBkKpWwA4g/2853x2007bb.png",
+    "localPath": "/tmp/cloud-calendar-asc-en/iphone_duo/07.png",
+    "bytes": 5897788,
+    "sha256": "ffb2796a43cd59715c85410d373b7b8c89c5a81229bbc1e6247582e856a97f8a",
+    "provenance": "Apple CDN rendered PNG at reported dimensions, not necessarily original uploaded byte stream."
+  }
+]

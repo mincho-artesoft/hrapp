@@ -1,0 +1,88 @@
+Share your appointment schedule
+When you create a booking page, you can share a link on your website or through online communications that link to:
+Your appointment booking page
+All booking pages on your primary calendar
+Your booking page is always public. Anyone with the link can view your:
+Booking page
+Profile photo
+Account name
+Tip:
+To find schedules on secondary calendars, you need to turn on the calendar in the calendar list. This helps you access the schedule in your calendar and doesn’t affect the visibility of the booking page.
+Share an appointment schedule link
+On your computer, open
+Google Calendar
+.
+On the left, under "Booking pages," hover over the booking page you want to share.
+Click Copy link
+.
+Add an appointment schedule button to your website
+On your computer, open
+Google Calendar
+.
+Under "Booking pages," hover over a booking page.
+Click Options
+Sharing options
+Website embed
+.
+Select an option:
+To share a link for all services on your calendar:
+Click
+All booking pages
+.
+To share a link for a specific service on your calendar:
+Click
+A single booking page
+.
+Click
+Button with popup
+.
+Under "Button text," type what you want your button to display.
+Edit the color of the button.
+Click
+Copy code
+Done
+.
+Paste the code into your website’s HTML.
+Embed the booking page on your website
+On your computer, open
+Google Calendar
+.
+Under "Booking pages," hover over a booking page.
+Click Options
+Sharing options
+Website embed
+.
+Select an option:
+To share a link for all services on your calendar:
+Click
+All booking pages
+.
+To share a link for a specific service on your calendar:
+Click
+A single booking page
+.
+Click
+Inline booking page
+.
+Optional: In the embed code, you can edit the width and height of your booking page.
+Click
+Copy code
+Done
+.
+Paste the code into your website’s HTML.
+Embed options available for website providers
+Website provider
+Appointment schedule button
+Booking page on website
+Google Sites
+Shopify
+Squarespace
+Unbounce
+Weebly
+Wix
+Wordpress.com
+Wordpress.org
+Computer
+Android phone & tablet
+iPhone & iPad
+More

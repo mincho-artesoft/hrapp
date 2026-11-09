@@ -1,0 +1,67 @@
+Recover deleted items from the server
+Applies To
+Outlook for Microsoft 365
+New Outlook for Windows
+Classic Outlook
+New Outlook
+If a deleted message isn't in the
+Deleted Items
+folder in classic Outlook for Windows, you may be able to get it from the server.
+In the left pane, select the
+Deleted Items
+folder.
+On the classic ribbon, select the
+Home
+tab, then select
+Recover Deleted Items from Server
+.
+In the
+Recover Deleted Items
+dialog, select items to recover. (To choose multiple items, hold down the Ctrl key and select separate items; to choose a range, hold down the Shift key and select first and last items; or pick
+Select All
+.)
+Check the
+Restore Selected Items
+option and then select
+OK
+.
+For more on recovering deleted items, see
+Recover deleted items in Outlook for Windows
+.
+If a deleted message isn't in the
+Deleted Items
+folder in new Outlook​​​​​​​, you still may be able to recover it.
+In the left pane, select the
+Deleted Items
+folder.
+At the top of the message list, select
+Recover items deleted from this folder
+.
+Point at an item you want to recover, then select the check box next to the sender's name.
+When you've selected all the items you want to recover, on the
+Home
+tab, select
+Restore
+.
+Items are restored as follows:
+Messages go to your inbox.
+Calendar items go to your calendar.
+Contacts go to your contacts folder.
+Tasks go to your tasks folder.
+For more on recovering deleted items, see
+Recover and restore deleted items in Outlook
+.
+Need more help?
+Want more options?
+Discover
+Community
+Explore subscription benefits, browse training courses, learn how to secure your device, and more.
+Microsoft 365 subscription benefits
+Microsoft 365 training
+Microsoft security
+Accessibility center
+Communities help you ask and answer questions, give feedback, and hear from experts with rich knowledge.
+Ask the Microsoft Community
+Microsoft Tech Community
+Windows Insiders
+Microsoft 365 Insiders

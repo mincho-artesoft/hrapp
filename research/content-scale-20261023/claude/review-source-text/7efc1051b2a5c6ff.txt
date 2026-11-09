@@ -1,0 +1,100 @@
+Print a calendar in Outlook
+Applies To
+Outlook for Microsoft 365
+Outlook for Microsoft 365 for Mac
+Outlook on the web
+New Outlook for Windows
+Classic Outlook
+New Outlook
+Microsoft 365 for Mac
+For classic Outlook, in your
+calendar, select
+File
+>
+Print
+.
+Under
+Settings
+, select the calendar style you want, such as
+Weekly Agenda Style
+or
+Monthly Style
+.
+Select
+Print Options
+for more options like
+Page Setup
+or
+Page range
+.
+When you've selected the settings you want, select
+Print
+.
+Tip:
+To save calendar to a PDF file, select
+Microsoft Print to PDF
+under
+Printer
+.
+For new Outlook, in
+Calendar
+, on the
+Home
+tab, select
+Print
+.
+In the preview dialog, under
+Calendar
+, select the calendar you want to print.
+Under
+View
+, select the calendar layout you want, such as
+Work week
+or
+Month
+.
+Select a time range and whether you want a mini-month or a detailed agenda. (Each selection you make is immediately reflected in the preview image.)
+When you've selected the settings you want, select
+Print
+.
+In the
+Print
+dialog, choose a printer, then select
+Print
+again.
+Tip:
+To save the calendar as a PDF file, under
+Printer
+, choose
+Microsoft Print to PDF
+.
+For Outlook for Mac​​​​​​​, in calendar, choose the calendar you want to print and select
+File
+>
+Print
+.
+In the preview dialog, under
+Calendar
+, select the calendar you want to print.
+Select the calendar layout you want, such as
+Work week
+or
+Month
+, and a time range.
+When you've selected the settings you want, select
+Print
+.
+Need more help?
+Want more options?
+Discover
+Community
+Explore subscription benefits, browse training courses, learn how to secure your device, and more.
+Microsoft 365 subscription benefits
+Microsoft 365 training
+Microsoft security
+Accessibility center
+Communities help you ask and answer questions, give feedback, and hear from experts with rich knowledge.
+Ask the Microsoft Community
+Microsoft Tech Community
+Windows Insiders
+Microsoft 365 Insiders

@@ -1,0 +1,44 @@
+Add another account to Google Calendar
+In Google Calendar, you can add more than one account.
+Add an account
+On your Android phone or tablet, open the Google Calendar app
+.
+At the top right, tap your
+Profile photo
+Add another account
+.
+To finish the sign-in process, follow the instructions on the screen.
+Turn off auto-sync for an account
+Important:
+To save data and battery life, you can limit your sync to happen only while you use the app. For example, when you open your calendar or create and change events.
+If you close the Calendar app while a sync’s in progress, it might take some time before the sync stops.
+On your Android phone or tablet, open the Google Calendar app
+.
+At the top right, tap your
+Profile photo
+Manage accounts on this device
+.
+Select an account.
+Tap
+Account sync
+.
+Turn off
+Calendar
+.
+Remove an account
+On your Android phone or tablet, open the Google Calendar app
+.
+At the top right, tap your
+Profile photo
+Manage accounts on this device
+.
+Select an account.
+Tap
+Remove account
+.
+Related resources
+Switch between accounts in the Google Calendar app
+Create a new calendar
+Android phone & tablet
+iPhone & iPad
+More

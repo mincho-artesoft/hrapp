@@ -1,0 +1,74 @@
+{
+  "generatedAt": "2026-10-23T12:44:30+03:00",
+  "agent": "argon",
+  "status": "completed_batch_01",
+  "assignedClusters": [
+    "C03 — Real Shift / Rota Cycles (calendar planning & cycle arithmetic only; zero medical or labor-law advice)",
+    "C04 — Time Zones & DST Transitions (asynchronous DST switch weeks, non-DST jurisdictions, overnight DST discontinuities, dual-endpoint TZIDs, Southern Hemisphere reverse DST, IANA tzdb policy changes)"
+  ],
+  "deliverables": {
+    "claimedBriefsPath": "research/content-scale-20261023/argon/claimed-briefs.json",
+    "draftsBatch01Path": "research/content-scale-20261023/argon/argon-drafts-01.json",
+    "editorialRecords01Path": "research/content-scale-20261023/argon/editorial-records-01.json",
+    "progressPath": "research/content-scale-20261023/argon/progress.json"
+  },
+  "counts": {
+    "claimedBriefsTotal": 48,
+    "claimedBriefsC03": 24,
+    "claimedBriefsC04": 24,
+    "draftedArticlesTotal": 12,
+    "draftedArticlesC03": 6,
+    "draftedArticlesC04": 6,
+    "editorialRecordsTotal": 12,
+    "remainingClaimedBriefsReadyForNextBatches": 36
+  },
+  "qaSummary": {
+    "validationErrors": 0,
+    "maxDescriptionLength": 159,
+    "minWordCount": 1349,
+    "maxWordCount": 1890,
+    "totalWordsAcross12Drafts": 18618,
+    "maxFiveWordShingleOverlapAcrossBaselineAndDrafts": 0.0158,
+    "shingleOverlapThreshold": 0.65,
+    "allPrimarySourcesVerifiedAndLinkedInArticleSources": true
+  },
+  "draftedSlugsBatch01": [
+    "pitman-2-2-3-shift-schedule-calendar-setup",
+    "dupont-28-day-rotating-shift-calendar-cycle",
+    "firefighter-24-48-kelly-day-calendar-pattern",
+    "overnight-shift-crossing-midnight-calendar-end-date",
+    "split-shift-two-work-periods-calendar-blocking",
+    "on-call-standby-calendar-versus-confirmed-shift",
+    "us-uk-dst-mismatch-weeks-recurring-meeting-calendar",
+    "non-dst-time-zone-arizona-hawaii-recurring-calendar",
+    "overnight-event-across-dst-spring-forward-fall-back-duration",
+    "separate-start-and-end-time-zones-calendar-events",
+    "southern-hemisphere-reverse-dst-two-hour-meeting-shift",
+    "iana-tzdb-government-time-zone-rule-change-calendar"
+  ],
+  "verifiedPrimarySourcesRead": [
+    "https://www.rfc-editor.org/rfc/rfc5545",
+    "https://support.google.com/calendar/answer/37064?hl=en",
+    "https://support.google.com/calendar/answer/37115?hl=en",
+    "https://support.microsoft.com/en-us/outlook/getstarted/manage-time-zone-settings-in-outlook",
+    "https://support.apple.com/guide/calendar/icl1018/mac",
+    "https://support.apple.com/guide/iphone/iph69525c028/ios",
+    "https://support.apple.com/guide/iphone/iph3d110f84/ios",
+    "https://support.apple.com/guide/iphone/iph3d1110d4/ios",
+    "https://www.supershift.app/help.html",
+    "https://www.gov.uk/when-do-the-clocks-change",
+    "https://aa.usno.navy.mil/faq/daylight_time",
+    "https://www.iana.org/time-zones"
+  ],
+  "constraintsAndGuardrails": {
+    "language": "en-US only (zero translations generated)",
+    "paidApisUsed": false,
+    "srcOrSiteModified": false,
+    "gitCommitsCreated": false,
+    "medicalOrLaborLawAdviceIncluded": false,
+    "allWorkedExamplesMarkedIllustrative": true,
+    "firsthandRuntimeTestingClaimed": false,
+    "allDescriptionsMax160Chars": true,
+    "allSeeAlsoAndArticleLinksExistInBaseline73": true
+  }
+}

@@ -1,0 +1,58 @@
+Let Gemini in Google Calendar find times to meet
+Important:
+This feature requires an eligible Google Workspace plan.
+Learn about Gemini features and plans
+.
+To save you time, you can use Gemini in Google Calendar to search for everyone's availability and suggest times to meet that work best for everyone.
+Get suggested times when you create an event
+On your computer, open
+Google Calendar
+.
+At the top left, click
+Create
+Event
+.
+Add guests to your event.
+Click
+Suggested times
+.
+Select a suggested time.
+If you want to see other times, click
+More suggestions
+.
+Or, you can directly edit on the grid.
+If you edit on the grid, you can click Filter and view
+. This lets you toggle rooms and filter guests by required or optional status.
+Tip:
+To collapse or expand the suggestions, on the left, click
+Suggested times
+.
+Get suggested times when you reschedule an event
+On your computer, open
+Google Calendar
+.
+Click the event you want to reschedule.
+Click Edit event
+.
+Click
+Suggested times
+.
+Tip:
+If you're the event organizer and several guests decline, a banner might appear at the top of the event with alternative schedule suggestions.
+To accept the suggestion, click
+Reschedule to [date and time]
+.
+To manually find a different time, click
+More times
+.
+Learn why you don't get suggested times
+You can't get suggested times if:
+You use the Calendar app for Android, iPhone, or iPad.
+The event is longer than 8 hours.
+The meeting has too many attendees.
+The date range you are viewing is in the past.
+Related resources
+Get started with Google Workspace with Gemini
+Change your event visibility settings
+Share your calendar with someone
+See someone's calendar availability

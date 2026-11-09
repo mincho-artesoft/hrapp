@@ -1,0 +1,446 @@
+{
+  "outlook-show-declined-meetings-on-calendar": {
+    "updated": "2026-10-23",
+    "title": "Keep declined meetings visible in Outlook, or get one back",
+    "short": "Declined meetings in Outlook",
+    "description": "Show declined meetings on your Outlook calendar in new Outlook with a work or school account, or re-accept one you declined in classic Outlook.",
+    "lede": "Declining a meeting usually makes it vanish, which is awkward when you want to remember it exists or change your mind. New Outlook can keep declined meetings on view; classic Outlook cannot, but offers a way back. Arte Soft, the developer of Cloud Calendars, explains Microsoft’s documented options.",
+    "commonBelief": "Once I decline a meeting it is gone unless the organiser re-sends it.",
+    "sections": [
+      {
+        "heading": "Who can use the setting",
+        "body": [
+          "Microsoft says showing declined meetings is available only for Microsoft 365 work or school accounts. Personal Microsoft accounts (outlook.com, hotmail.com, live.com, msn.com) and IMAP or POP accounts from other providers are not supported."
+        ]
+      },
+      {
+        "heading": "New Outlook for Windows",
+        "body": [
+          "In Calendar, on the View tab, select Calendar Settings. Go to Calendar, Events and invitations, and under Save declined events turn on Show declined events on your calendar, then Save.",
+          "Microsoft says declined events then appear on your calendar but your time shows as free. To hide them temporarily, use View, Filter, Hide declined events.",
+          "Microsoft adds that declined events sync to other Outlook apps, Teams and third-party calendar apps only when you decline them through those newer apps, not through classic Outlook. This page does not say whether meetings declined before you turned the setting on will reappear; check a known example."
+        ]
+      },
+      {
+        "heading": "Classic Outlook",
+        "body": [
+          "Microsoft states there is no way to show a declined meeting on your calendar in classic Outlook; only accepted or tentative meetings appear. When you decline, the meeting isn’t saved to your calendar and the request moves to Deleted Items.",
+          "To change your mind, open Deleted Items (Microsoft notes you may need View, Folder Pane, Normal to see the folder list), double-click the original request and choose Accept or Tentative. If Deleted Items has been emptied, ask the organiser to send the invitation again."
+        ]
+      },
+      {
+        "heading": "Worked example: a declined review that comes back",
+        "body": [
+          "A fictional designer on a work account declines Thursday’s design review in classic Outlook because of a clash. On Wednesday the clash is cancelled. They open Deleted Items, find the review request, and choose Accept.",
+          "Later the designer switches to new Outlook, turns on Show declined events, and declines another meeting there. It stays on the grid with their time shown as free, so they can still see what they are missing.",
+          "Check: after accepting from Deleted Items, confirm the review appears on Thursday and that its time shows as you expect."
+        ]
+      }
+    ],
+    "comparison": {
+      "heading": "Declined meetings by client (per Microsoft)",
+      "columns": ["Client", "Show declined on calendar?", "Change your mind"],
+      "rows": [
+        { "cells": ["New Outlook, work/school account", "Yes: Show declined events on your calendar; time shows as free", "Respond again from the event (steps not detailed on this page)"] },
+        { "cells": ["Classic Outlook", "No", "Deleted Items → original request → Accept or Tentative"] },
+        { "cells": ["Personal or IMAP/POP account", "Not supported", "Ask the organiser to resend"] },
+        { "cells": ["Deleted Items already emptied (classic)", "—", "Ask the organiser to resend"] }
+      ]
+    },
+    "claims": {},
+    "practical": [
+      "Confirm you have a work or school account.",
+      "In new Outlook, turn on Show declined events on your calendar.",
+      "Use Hide declined events when the grid gets busy.",
+      "In classic Outlook, accept from Deleted Items if you change your mind.",
+      "If the request is gone, ask the organiser to resend."
+    ],
+    "faq": [
+      {
+        "q": "Will a declined meeting block my time?",
+        "a": "No. Microsoft says declined events shown in new Outlook display your time as free."
+      },
+      {
+        "q": "Can classic Outlook show declined meetings?",
+        "a": "Microsoft says there is no way to do this in classic Outlook."
+      }
+    ],
+    "sourcesHeading": "Microsoft Support page used",
+    "sources": [
+      { "label": "Microsoft: show a declined meeting on my calendar in Outlook", "url": "https://support.microsoft.com/en-us/office/show-a-declined-meeting-on-my-calendar-in-outlook-24e81b9b-3906-4c02-8b63-f97b02161763" }
+    ],
+    "seeAlso": [
+      "keeping-track-of-who-replied",
+      "exchange-calendars-on-an-iphone",
+      "find-old-calendar-events-by-account-date-and-title"
+    ]
+  },
+
+  "outlook-shorten-meetings-automatically": {
+    "updated": "2026-10-23",
+    "title": "Make Outlook meetings end early or start late automatically",
+    "short": "Shorten Outlook meetings",
+    "description": "Turn on Outlook’s shorten-duration setting to end events early or start them late, set separate minutes for short and long events, and check existing meetings.",
+    "lede": "Back-to-back meetings leave no time to move between rooms or calls. Outlook can trim the events you create by a few minutes. The setting is per account, and Microsoft doesn’t say it rewrites what is already on your calendar. Arte Soft, the developer of Cloud Calendars, explains.",
+    "commonBelief": "Turning this on shortens every meeting already in my calendar, including ones other people organise.",
+    "sections": [
+      {
+        "heading": "Where to find it",
+        "body": [
+          "New Outlook for Windows and Outlook on the web: Settings, Calendar, Events and invitations, tick Shorten duration for all events, choose minutes for events under one hour and for events of one hour or longer, and Save. Microsoft notes new Outlook needs the latest Monthly Enterprise Channel build of Outlook Desktop.",
+          "Classic Outlook: File, Options, Calendar, Calendar options, tick Shorten appointments and meetings, choose End early or Start late, set the minutes for each length, and select OK.",
+          "Microsoft lists Outlook for Microsoft 365, 2024, 2021, 2019, new Outlook for Windows and Outlook on the web for Exchange Server 2019 as covered."
+        ]
+      },
+      {
+        "heading": "What it affects",
+        "body": [
+          "Microsoft says that once set, the setting is honoured across Outlook for Windows, Mac, the web, iOS and Android, and that it is per email account: with several accounts you set each one.",
+          "Microsoft’s page does not say whether it changes events already on your calendar, applies to meetings you are invited to, or changes what attendees see. Don’t assume it does. Check an existing meeting after turning it on, and create a test event to see the new default."
+        ]
+      },
+      {
+        "heading": "Worked example: building travel time",
+        "body": [
+          "A fictional manager walks between two buildings and wants five minutes after short meetings and ten after longer ones. In Outlook on the web they tick Shorten duration for all events, choose 5 minutes for events under an hour and 10 for an hour or longer, and Save. Assumed: one work account, current client.",
+          "They then create a 30-minute one-to-one at 14:00 and check that it ends at 14:25, and a 60-minute review from 15:00 that ends at 15:50. They also open an existing 16:00 meeting a colleague organised, to see whether it changed, rather than assuming either way.",
+          "Check: open one existing and one new event to see which changed."
+        ]
+      }
+    ],
+    "comparison": {
+      "heading": "Shorten settings by client",
+      "columns": ["Client", "Location", "Options"],
+      "rows": [
+        { "cells": ["New Outlook / Outlook on the web", "Settings → Calendar → Events and invitations", "Shorten duration for all events; minutes for <1 h and ≥1 h"] },
+        { "cells": ["Classic Outlook", "File → Options → Calendar → Calendar options", "Shorten appointments and meetings; End early or Start late; minutes for <1 h and ≥1 h"] },
+        { "cells": ["Mac, iOS, Android", "Set elsewhere", "Microsoft says the setting is honoured"] },
+        { "cells": ["Several accounts", "Each account", "Set separately"] }
+      ]
+    },
+    "claims": {},
+    "practical": [
+      "Pick end early or start late and the minutes for short and long events.",
+      "Set it in each email account you use.",
+      "Create a test event to confirm the new default.",
+      "Check an existing meeting rather than assuming it changed."
+    ],
+    "faq": [
+      {
+        "q": "Will this shorten meetings other people send me?",
+        "a": "Microsoft’s page does not say. Check an invited meeting after turning it on."
+      },
+      {
+        "q": "I have a work and a personal account. Do I set it twice?",
+        "a": "Yes. Microsoft says the setting is per email account."
+      }
+    ],
+    "sourcesHeading": "Microsoft Support page used",
+    "sources": [
+      { "label": "Microsoft: make all your events shorter automatically", "url": "https://support.microsoft.com/en-us/office/make-all-your-events-shorter-automatically-8fa0fdcb-5eee-4e12-9452-8d59ee33f70a" }
+    ],
+    "seeAlso": [
+      "planning-a-week-in-ten-minutes",
+      "the-commute-and-the-sky",
+      "a-week-view-that-fits-a-week"
+    ]
+  },
+
+  "outlook-create-meeting-from-email": {
+    "updated": "2026-10-23",
+    "title": "Turn an Outlook email thread into a meeting request",
+    "short": "Meeting from an email",
+    "description": "Create a meeting from an Outlook email: who becomes required or optional, what text carries over, account requirements and why encrypted mail won’t convert.",
+    "lede": "When an email thread ends with “let’s meet”, Outlook can start the meeting request for you, with the thread’s people already invited. It only works for some accounts and messages. Arte Soft, the developer of Cloud Calendars, explains what Microsoft documents.",
+    "commonBelief": "Any email in any Outlook account can be turned into a meeting.",
+    "sections": [
+      {
+        "heading": "Steps",
+        "body": [
+          "New Outlook: select the message and, on the Home tab, select Meeting; or open the message and use Meeting on the Message tab. Enter the date, times and location, adjust attendees and send.",
+          "Classic Outlook: select the message and choose Meeting on the Home tab, or open it and choose Reply with Meeting on the Message tab. Microsoft’s other page also lists Ctrl+Alt+R, and the More (…) menu if the button isn’t visible."
+        ]
+      },
+      {
+        "heading": "Who gets invited and what carries over",
+        "body": [
+          "Microsoft says people on the original To line become Required attendees and people on Cc become Optional. Its other page says each person in the thread is listed as an invitee by default. Review the list before sending.",
+          "Microsoft says the header and body of the original message are included in the meeting body. Its pages don’t say that the email’s attachments are carried over; add any files you need explicitly."
+        ]
+      },
+      {
+        "heading": "When it won’t work",
+        "body": [
+          "Microsoft says Reply with Meeting is only available with Business Exchange accounts, and won’t work for emails encrypted with a sensitivity label or Information Rights Management. For those, create a new meeting and summarise what is needed instead of pasting protected content."
+        ]
+      },
+      {
+        "heading": "Worked example: a supplier thread",
+        "body": [
+          "A fictional buyer on a work account has a thread with a supplier (To) and a finance colleague (Cc). They select the last message, choose Meeting, and see the supplier as Required and the colleague as Optional, with the thread quoted in the body.",
+          "They delete internal pricing remarks from the quoted text, attach the latest quote file (it wasn’t carried over), set Tuesday 10:00, and send.",
+          "Check: open the sent meeting and confirm attendees and body before the supplier reads it."
+        ]
+      }
+    ],
+    "comparison": {
+      "heading": "Email to meeting at a glance",
+      "columns": ["Question", "Per Microsoft"],
+      "rows": [
+        { "cells": ["Clients", "New Outlook and classic Outlook (Home → Meeting; classic also Reply with Meeting)"] },
+        { "cells": ["Account", "Business Exchange accounts"] },
+        { "cells": ["Attendees", "To → Required; Cc → Optional"] },
+        { "cells": ["Message text", "Header and body included"] },
+        { "cells": ["Attachments", "Not stated; attach again if needed"] },
+        { "cells": ["Encrypted / IRM mail", "Won’t work"] }
+      ]
+    },
+    "claims": {},
+    "practical": [
+      "Select the last message in the thread.",
+      "Choose Meeting (or Reply with Meeting in classic Outlook).",
+      "Review Required and Optional attendees.",
+      "Trim the quoted text and re-attach needed files.",
+      "Send, then reopen to check."
+    ],
+    "faq": [
+      {
+        "q": "Why is the Meeting button missing?",
+        "a": "Microsoft says the feature needs a Business Exchange account and won’t work for encrypted or IRM-protected mail. In classic Outlook check the More (…) menu."
+      },
+      {
+        "q": "Are attachments included?",
+        "a": "Microsoft says the header and body are included; it doesn’t state attachments are. Add them yourself."
+      }
+    ],
+    "sourcesHeading": "Microsoft Support pages used",
+    "sources": [
+      { "label": "Microsoft: respond to an email message with a meeting request in Outlook", "url": "https://support.microsoft.com/en-us/office/respond-to-an-email-message-with-a-meeting-request-in-outlook-b04e0d58-b221-4ffd-9981-26ceb2bef0ae" },
+      { "label": "Microsoft: create a meeting from an email message in Outlook", "url": "https://support.microsoft.com/en-gb/office/create-a-meeting-from-an-email-message-in-outlook-ef65f361-cee9-41fb-8cb6-e00300b765d3" }
+    ],
+    "seeAlso": [
+      "inviting-people-who-do-not-have-the-app",
+      "keeping-track-of-who-replied",
+      "meeting-links-that-make-themselves"
+    ]
+  },
+
+  "outlook-events-from-email-flights-hotels": {
+    "updated": "2026-10-23",
+    "title": "Flights and hotels added to Outlook from email: control what appears",
+    "short": "Outlook events from email",
+    "description": "Why Outlook adds flights, hotels, car rentals and parcels from email to your calendar, which accounts it applies to, and how to change display or privacy per type.",
+    "lede": "Outlook can read booking emails and put the trip on your calendar without being asked. You can choose per type whether that happens and whether the entries are private. Arte Soft, the developer of Cloud Calendars, explains what Microsoft documents.",
+    "commonBelief": "Every booking email becomes a calendar event.",
+    "sections": [
+      {
+        "heading": "What gets added",
+        "body": [
+          "Microsoft lists flight, hotel and rental car reservations and package deliveries. It says bills, dining, event and service reservations were discontinued in mid-August 2020. Past events and unsupported providers aren’t added. Flight, car and hotel reservations are added automatically; Microsoft says other types need turning on."
+        ]
+      },
+      {
+        "heading": "Which accounts",
+        "body": [
+          "Microsoft’s page applies to Outlook 2024, Outlook 2021 and Outlook.com and refers to Microsoft accounts (Outlook.com or Microsoft 365). It says the feature isn’t available for Office 365 operated by 21Vianet, Office 365 Germany or government plans, and lists the regions where it is available."
+        ]
+      },
+      {
+        "heading": "Change it per type",
+        "body": [
+          "In Calendar settings, open Events from email. For each type choose Don’t show event summaries in email or on my calendar, Only show event summaries in email, or Show event summaries in email and on my calendar. Microsoft says events are marked private by default, with an option to make them public.",
+          "Microsoft says turning the feature off must be done in Outlook on the web or Outlook.com."
+        ]
+      },
+      {
+        "heading": "Worked example: shared calendar, private trips",
+        "body": [
+          "A fictional traveller shares their calendar with a partner and wants flights visible but hotel bookings out of the calendar. In Outlook.com they open Events from email, keep flights on Show event summaries in email and on my calendar, set hotels to Only show event summaries in email, and leave flight entries private.",
+          "These entries are private by default, and Microsoft’s calendar-sharing guidance says most people you share with see only the time of private items. So the partner would likely see the time but not the flight details; the traveller confirms this with the partner rather than assuming it, and changes the private option only deliberately.",
+          "Check: after the next booking email, confirm what the partner can see before relying on it."
+        ]
+      }
+    ],
+    "comparison": {
+      "heading": "Per-type choices",
+      "columns": ["Choice", "In email", "On calendar"],
+      "rows": [
+        { "cells": ["Don’t show event summaries in email or on my calendar", "No", "No"] },
+        { "cells": ["Only show event summaries in email", "Yes", "No"] },
+        { "cells": ["Show event summaries in email and on my calendar", "Yes", "Yes (private by default)"] }
+      ]
+    },
+    "claims": {},
+    "practical": [
+      "Open Calendar settings → Events from email in Outlook.com or Outlook on the web.",
+      "Choose a display option for each reservation type.",
+      "Keep entries private unless others need details.",
+      "Confirm what calendar viewers see with a real booking."
+    ],
+    "faq": [
+      {
+        "q": "Why doesn’t my restaurant booking appear?",
+        "a": "Microsoft says dining reservations were discontinued in mid-August 2020."
+      },
+      {
+        "q": "Can my shared-calendar viewers see flight details?",
+        "a": "Microsoft says these events are private by default; change the option deliberately if you want details shown."
+      }
+    ],
+    "sourcesHeading": "Microsoft Support page used",
+    "sources": [
+      { "label": "Microsoft: automatically add events from your email to your calendar", "url": "https://support.microsoft.com/en-US/Outlook/automatically-add-events-from-your-email-to-your-calendar" },
+      { "label": "Microsoft: share your calendar (private items)", "url": "https://support.microsoft.com/en-us/outlook/share-your-calendar-in-outlook-on-the-web" }
+    ],
+    "seeAlso": [
+      "time-zones-and-the-flight-you-booked",
+      "who-can-see-what-in-google-calendar",
+      "event-saved-to-wrong-calendar"
+    ]
+  },
+
+  "outlook-recover-deleted-calendar-items": {
+    "updated": "2026-10-23",
+    "title": "Recover a deleted Outlook calendar event: Deleted Items first, then the server",
+    "short": "Recover deleted Outlook events",
+    "description": "Restore a deleted Outlook appointment or meeting from Deleted Items, then from the server’s recoverable items, in new and classic Outlook.",
+    "lede": "A deleted Outlook appointment usually goes to Deleted Items first, and can sometimes be recovered from the server after that. The steps differ between new and classic Outlook. Arte Soft, the developer of Cloud Calendars, explains what Microsoft documents.",
+    "commonBelief": "Once Deleted Items is emptied, a calendar event is gone for good.",
+    "sections": [
+      {
+        "heading": "Step 1: Deleted Items",
+        "body": [
+          "New Outlook: switch to Mail, select Deleted Items, select the event and choose Restore on the Home tab. Microsoft says the item is restored to your calendar.",
+          "Classic Outlook: select Deleted Items (or Trash), select the calendar item, then Home, Move, Other folder, choose Calendar and OK."
+        ]
+      },
+      {
+        "heading": "Step 2: recover from the server",
+        "body": [
+          "If it isn’t in Deleted Items, Microsoft directs you to recover deleted items from the server. New Outlook: select Deleted Items, then Recover items deleted from this folder at the top of the list, tick the item and choose Restore. Classic Outlook: select Deleted Items, then Home, Recover Deleted Items from Server, select the items, choose Restore Selected Items and OK.",
+          "Microsoft says calendar items are restored to your calendar. The pages used here don’t state a time limit or which account types support server recovery; if the option is missing or the item isn’t listed, ask your administrator rather than assuming either way."
+        ]
+      },
+      {
+        "heading": "Meetings are different from appointments",
+        "body": [
+          "The recovery pages describe restoring the item to your calendar; they don’t say that restoring notifies anyone. If you cancelled a meeting you organised, attendees already received a cancellation, so don’t assume a restore undoes it. Contact attendees, and if needed send a new invitation."
+        ]
+      },
+      {
+        "heading": "Worked example: a personal appointment and a team meeting",
+        "body": [
+          "A fictional user on a work account deletes a personal appointment by mistake and empties Deleted Items. In new Outlook they open Deleted Items, choose Recover items deleted from this folder, find the appointment, tick it and Restore. It reappears on the calendar.",
+          "The same day they had cancelled a team meeting they organised. They restore it the same way, but because attendees already had the cancellation, they send a fresh invitation with a short note.",
+          "Check: open the restored items on the calendar and confirm date, time and attendees."
+        ]
+      }
+    ],
+    "comparison": {
+      "heading": "Where to look",
+      "columns": ["Situation", "New Outlook", "Classic Outlook"],
+      "rows": [
+        { "cells": ["Item in Deleted Items", "Deleted Items → select → Restore", "Deleted Items → Move → Other folder → Calendar"] },
+        { "cells": ["Deleted Items emptied", "Recover items deleted from this folder → Restore", "Recover Deleted Items from Server → Restore Selected Items"] },
+        { "cells": ["Not listed on the server", "Ask your administrator", "Ask your administrator"] },
+        { "cells": ["Restored meeting you cancelled", "Notification not documented; contact attendees", "Notification not documented; contact attendees"] }
+      ]
+    },
+    "claims": {},
+    "practical": [
+      "Look in Deleted Items first.",
+      "If emptied, use the server recovery option for your client.",
+      "Confirm the restored item on your calendar.",
+      "For meetings you cancelled, send a new invitation.",
+      "Ask your administrator if recovery options are missing."
+    ],
+    "faq": [
+      {
+        "q": "How long can I recover deleted calendar items?",
+        "a": "The Microsoft pages used here don’t state a time limit. Ask your administrator."
+      },
+      {
+        "q": "Does restoring a cancelled meeting re-invite attendees?",
+        "a": "These pages don’t say it does. Send a new invitation or contact attendees."
+      }
+    ],
+    "sourcesHeading": "Microsoft Support pages used",
+    "sources": [
+      { "label": "Microsoft: recover deleted calendar items", "url": "https://support.microsoft.com/en-au/office/recover-deleted-calendar-items-7ea77612-660b-4781-963d-8c08a8dfce6d" },
+      { "label": "Microsoft: recover deleted items from the server", "url": "https://support.microsoft.com/en-au/office/recover-deleted-items-from-the-server-9e070d4e-d03a-46af-a9b2-8288f625279c" }
+    ],
+    "seeAlso": [
+      "recover-deleted-calendar-events-iphone",
+      "find-old-calendar-events-by-account-date-and-title",
+      "calendar-export-ics-pdf-and-backup"
+    ]
+  },
+
+  "outlook-calendar-color-categories": {
+    "updated": "2026-10-23",
+    "title": "Colour-code your Outlook calendar with categories",
+    "short": "Outlook colour categories",
+    "description": "Use Outlook colour categories to tag calendar items in new Outlook, classic Outlook or the web. Categories are personal: attendees don’t see yours.",
+    "lede": "Categories let you colour individual Outlook items by project, client or type, independently of which calendar they’re on. They are your labels, not the organiser’s. Arte Soft, the developer of Cloud Calendars, explains.",
+    "commonBelief": "If I colour a meeting red, everyone in the meeting sees it red.",
+    "sections": [
+      {
+        "heading": "Assign a category",
+        "body": [
+          "New Outlook and Outlook on the web: right-click the event and choose Categorize, or open it and choose Categorize on the Event tab, then pick a category. Repeat to add more than one. Use Manage categories or All Categories for more options.",
+          "Classic Outlook: right-click the item and point to Categorize, or use Categorize in the Tags group of an open item. All Categories lets you create new ones."
+        ]
+      },
+      {
+        "heading": "Categories are personal",
+        "body": [
+          "Microsoft says that if you categorise a meeting you received, it doesn’t affect the other person’s Outlook view; categories apply only to items in your calendar. The same category list is used across Outlook item types such as mail, contacts and tasks.",
+          "Categories also differ from calendar colours, which colour a whole calendar. Use calendar colours to tell accounts apart and categories to tag individual items."
+        ]
+      },
+      {
+        "heading": "Worked example: a consultant with three clients",
+        "body": [
+          "A fictional consultant creates three categories, Client A (blue), Client B (green) and Admin (grey), and applies them to meetings in their work calendar. A meeting with both clients gets two categories.",
+          "When Client A’s project manager sends an invitation, the consultant tags it blue on their own calendar; the project manager’s calendar is unaffected.",
+          "Check: at week view, count how much of the week is blue versus green before agreeing more work."
+        ]
+      }
+    ],
+    "comparison": {
+      "heading": "Categories vs calendar colour",
+      "columns": ["", "Category", "Calendar colour"],
+      "rows": [
+        { "cells": ["Applies to", "Individual items (several per item)", "A whole calendar"] },
+        { "cells": ["Seen by attendees", "No (Microsoft)", "Not applicable"] },
+        { "cells": ["Also used for", "Mail, contacts, tasks", "—"] }
+      ]
+    },
+    "claims": {},
+    "practical": [
+      "Create a small set of categories for your main projects or types.",
+      "Apply them with Categorize; add more than one where needed.",
+      "Use calendar colours to separate accounts, categories to tag items.",
+      "Don’t rely on categories to signal anything to attendees."
+    ],
+    "faq": [
+      {
+        "q": "Will attendees see my categories?",
+        "a": "No. Microsoft says categories on meetings you receive don’t affect others’ views."
+      },
+      {
+        "q": "Can one meeting have two categories?",
+        "a": "Yes. Microsoft says you can assign more than one."
+      }
+    ],
+    "sourcesHeading": "Microsoft Support page used",
+    "sources": [
+      { "label": "Microsoft: assign a color category to a calendar event in Outlook", "url": "https://support.microsoft.com/en-US/Outlook/calendar/assign-a-color-category-to-a-calendar-event-in-outlook" }
+    ],
+    "seeAlso": [
+      "change-calendar-color-iphone",
+      "planning-a-week-in-ten-minutes",
+      "a-week-view-that-fits-a-week"
+    ]
+  }
+}

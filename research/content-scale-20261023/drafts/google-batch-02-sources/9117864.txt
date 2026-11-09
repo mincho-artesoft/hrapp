@@ -1,0 +1,54 @@
+Find and install Calendar add-ons
+In the Google Workspace Marketplace, you can find a wide range of add-ons to use with Google Calendar.
+Install add-ons
+Important
+: For work or school accounts, if you don’t see "Get add-ons" or can’t install an add-on,
+contact your administrator
+.
+On your computer, open
+Google Calendar
+.
+In the top right, click Settings
+Get add-ons
+.
+From the Marketplace, install the add-on.
+Learn more about installing add-ons
+.
+Tip
+: To access the Marketplace from the side panel in Calendar, on the right, click Get add-ons
+.
+Learn more about the side panel
+.
+Find Calendar add-ons
+Set up conferencing add-ons
+Important
+: If the add-on doesn’t work, contact the app developer through the
+Marketplace
+.
+On your computer, open
+Google Calendar
+.
+In the top left corner, click Create
+Event
+.
+Next to "Add Google Meet video conferencing,"
+click the Down arrow
+.
+Select the add-on you want to use.
+Choose your account and follow the steps to sign in to the add-on.
+Uninstall add-ons
+Important
+: For work or school accounts, some apps can only be uninstalled by your administrator.
+On your computer, open
+Google Calendar
+.
+In the top right, click Settings
+Get add-ons
+.
+From the Marketplace, uninstall the add-on.
+Learn how to uninstall add-ons
+.
+Related resources
+Find and install an app from the Marketplace
+Uninstall a Marketplace app or add-on
+Use Google products side by side

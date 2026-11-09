@@ -1,0 +1,47 @@
+Cancel all future meetings in a series
+Applies To
+Outlook for Microsoft 365
+Outlook 2024
+Outlook 2021
+Get help with Copilot
+How do I delete all future meetings in a series if I'm?
+What if I can't delete an appointment or a meeting?
+Explain how to cancel a meeting.
+The best way to cancel remaining meetings in a series is to send a meeting update with a new end date.
+Note
+: Once you click
+OK
+, the meeting agenda, notes, and attachments that were added to the previous instances of the series will be deleted.
+On the navigation bar, click
+Calendar
+.
+Double-click any meeting in the series.
+Click
+The entire series
+, and then click
+OK
+.
+Click
+Recurrence
+.
+Under
+Range of recurrence
+, click
+End by
+, and then enter a date prior to the next meeting in the series.
+Click OK and you will receive the following dialog.
+Type a message to let the attendees know the future meetings are cancelled.
+Click
+Send Update
+.
+Only the meeting organizer—the person who sends a meeting request—can send a meeting update or a cancellation to all attendees.
+Delete all future meetings in a series if you're not the meeting organizer
+If you're not the meeting organizer, you can't edit the meeting details, so to remove all future meetings in a series from your calendar, you'll need to delete the meeting series.
+Note
+These steps will also remove all past occurrences of the meeting series from your calendar. If you are not the meeting organizer, the only way to remove future occurrences without removing past occurrences is to delete each instance of a recurring meeting individually.
+Right-click the meeting in your calendar and select
+Delete
+.
+Under
+Series
+, select the appropriate option.

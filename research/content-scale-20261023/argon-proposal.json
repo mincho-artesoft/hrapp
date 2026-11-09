@@ -1,0 +1,1037 @@
+{
+  "schemaVersion": 1,
+  "agent": "argon",
+  "date": "2026-10-23",
+  "baseCommit": "77ca2c9",
+  "existingEnglishArticlesCount": 73,
+  "targetTotalEnglishArticles": 1100,
+  "requiredNewEnglishArticles": 1027,
+  "sitemapEmpiricalAudit": {
+    "date": "2026-10-23",
+    "thesisVerification": "Confirmed: raw competitor sitemap URL counts heavily overstate unique English calendar articles due to multi-locale translations, tag/pagination archives, release notes, and multi-product blogs.",
+    "domainsInspected": [
+      {
+        "domain": "morgen.so",
+        "sitemapUrl": "https://www.morgen.so/sitemap.xml",
+        "totalSitemapUrls": 1546,
+        "englishOnlyUrls": 270,
+        "nonEnglishTranslatedUrls": 1276,
+        "notes": "1,276 of 1,546 URLs are /de/, /es/, /fr/, /it/, /pt/ translations (~70 blog posts and ~61 guides per locale). Of the 270 English URLs, ~145 are blog posts/guides, including general task-app comparisons (ClickUp, Linear, Todoist, Asana)."
+      },
+      {
+        "domain": "onecal.io",
+        "sitemapUrl": "https://www.onecal.io/sitemap-0.xml",
+        "totalSitemapUrls": 1305,
+        "englishOnlyUrls": 224,
+        "nonEnglishTranslatedUrls": 1081,
+        "notes": "1,081 of 1,305 URLs are /de/, /es/, /fr/, /it/, /ja/ translations. Of the 224 English URLs, ~30 are monthly product update announcements, ~14 are /compare/ pages, ~9 are /use-cases/, and ~135 are English how-to/blog articles."
+      },
+      {
+        "domain": "usemotion.com",
+        "sitemapUrl": "https://www.usemotion.com/sitemap-0.xml",
+        "totalSitemapUrls": 947,
+        "englishOnlyUrls": 947,
+        "calendarAndSchedulingSubset": 87,
+        "notes": "Includes 73 /blog/tag/ archives and 52 /blog/page/ pagination URLs. Of 783 actual blog posts, only ~87 are calendar/scheduling-related, and several cannibalize each other (e.g., daily-planner, best-daily-planner-app, best-daily-planner-apps, daily-schedule, daily-schedule-template)."
+      },
+      {
+        "domain": "busymac.com",
+        "sitemapUrl": "https://www.busymac.com/sitemap.xml",
+        "totalSitemapUrls": 369,
+        "calendarAndSchedulingSubset": 294,
+        "notes": "Excludes 35 BusyContacts docs. Includes 191 specific troubleshooting FAQs (/docs/faqs/), 71 BusyCal Mac docs, 36 BusyCal iOS docs, 11 comparisons, and 9 Bookings docs. Strongest model for granular, non-overlapping technical troubleshooting FAQs."
+      },
+      {
+        "domain": "calendarbridge.com",
+        "sitemapUrl": "https://calendarbridge.com/sitemap_index.xml",
+        "totalSitemapUrls": 251,
+        "calendarAndSchedulingSubset": 219,
+        "notes": "96 English blog posts in post-sitemap.xml + 32 product pages + 123 help articles in help.calendarbridge.com."
+      },
+      {
+        "domain": "readdle.com",
+        "sitemapUrl": "https://readdle.com/sitemap-en.xml",
+        "totalSitemapUrls": 513,
+        "calendarAndSchedulingSubset": 68,
+        "notes": "Most of the 513 English blog posts cover PDF Expert, Spark, Scanner Pro, and Documents. Only 68 mention Calendars, and >40 of those are legacy release notes or promo-code giveaways."
+      },
+      {
+        "domain": "cozi.com",
+        "sitemapUrl": "https://www.cozi.com/sitemap_index.xml",
+        "totalSitemapUrls": 726,
+        "notes": "412 posts in post-sitemap.xml (mostly recipes and family lifestyle tips) + 287 pages in page-sitemap.xml (including /support/ articles)."
+      }
+    ]
+  },
+  "scaleFeasibilityAndTaxonomy": {
+    "currentEnglishArticles": 73,
+    "targetTotalEnglishArticles": 1100,
+    "requiredNewEnglishArticles": 1027,
+    "honestAssessment": "A narrow 'how to sync iPhone calendar' scope only supports ~180–250 distinct articles before synonym/device cannibalization occurs. To reach 1,100 genuinely unique English articles where every page answers a distinct user question with verifiable mechanics, we must structure the 1,027 new articles across 10 orthogonal, rule-driven clusters.",
+    "antiCannibalizationRules": [
+      "Never create separate pages for iPhone vs iPad vs Apple Watch unless the operating system settings path, UI constraint, or sync architecture genuinely differs (e.g., watchOS 11 7-day window vs iPadOS split-screen month grid).",
+      "Never create separate pages for synonyms ('merge calendars', 'combine calendars', 'unify calendars') or modifier stuffing ('free', 'best', '2026', 'no ads').",
+      "Every page must pass the 'Distinct Rule / Artifact Gate': it must contain a unique protocol/permission matrix, a mathematical schedule cycle table, a deterministic troubleshooting isolation test, or an interactive calculator/validator not duplicated on any other route.",
+      "Every topic must declare its closest existing or planned neighbor (existingOverlapSlug) and an explicit boundary statement."
+    ],
+    "clusterAllocationTo1100": [
+      {
+        "clusterId": "C01-provider-sync-auth-architecture",
+        "clusterName": "Provider Sync, Delegation, OAuth, CalDAV & Account Architecture",
+        "existingCount": 14,
+        "proposedNewCount": 96,
+        "targetTotal": 110,
+        "whyDistinctIntentsExist": "Each calendar server protocol (iCloud CalDAV, Google OAuth/CalDAV, Microsoft Graph vs Exchange ActiveSync vs EWS, Fastmail, Nextcloud, Synology Calendar, Proton Bridge/ICS, Yahoo, Zoho, Kerio, Zimbra, Baïkal, Radicale) and each permission model (delegate, shared ACL, public ICS, resource mailbox, secondary calendar) has distinct authentication steps, sync intervals, and read/write limits."
+      },
+      {
+        "clusterId": "C02-troubleshooting-failure-modes",
+        "clusterName": "Deterministic Calendar Troubleshooting & Failure-Mode Isolation",
+        "existingCount": 10,
+        "proposedNewCount": 130,
+        "targetTotal": 140,
+        "whyDistinctIntentsExist": "Modeled on BusyCal's 191 technical FAQs and Apple/Google/Microsoft support forums: each failure symptom (e.g., HTTP 403 rate limit, moving a meeting turns calendar into guest, Exchange stripping multiple alarms, end-timezone ignored, duplicate birthday entries, greyed-out read-only calendars, detached recurring exceptions, rich-text HTML stripping, stale widget caches) has a distinct root cause and isolation test."
+      },
+      {
+        "clusterId": "C03-shift-work-and-rota-cycles",
+        "clusterName": "Shift Work, Industrial Rotas & Non-Standard Work Patterns",
+        "existingCount": 1,
+        "proposedNewCount": 119,
+        "targetTotal": 120,
+        "whyDistinctIntentsExist": "Each shift pattern (2-2-3 Panama, DuPont 12-hour, Pitman, 4-on-4-off, 5-2-5-3, 24/48 and 48/96 firefighter Kelly schedules, Continental 8-hour, Pitman fixed vs rotating, hospital 7-on-7-off nocturnist, ACGME resident 24+4 call, airline reserve blocks, offshore 14/14 and 28/28 hitches, split shifts, on-call pager rotations) has a mathematically distinct cycle length, weekend cadence, sleep/recovery window, and recurrence setup."
+      },
+      {
+        "clusterId": "C04-time-zones-dst-and-global-travel",
+        "clusterName": "Time Zones, DST Transitions, Aviation & Multi-Region Coordination",
+        "existingCount": 2,
+        "proposedNewCount": 88,
+        "targetTotal": 90,
+        "whyDistinctIntentsExist": "Distinct mathematical and protocol problems: asynchronous DST switch weeks (US vs UK/EU 1–2 week gap in March and October/November), non-DST jurisdictions (Arizona vs Navajo Nation, Hawaii, Japan, India), Southern Hemisphere reverse DST shifts, International Date Line crossings, floating vs anchored events, half-hour/45-minute offset zones (UTC+5:30, UTC+9:30, UTC+5:45), and multi-hub overlap matrices."
+      },
+      {
+        "clusterId": "C05-tasks-reminders-and-time-blocking",
+        "clusterName": "Tasks, Reminders, Time Blocking & Execution Workflows",
+        "existingCount": 5,
+        "proposedNewCount": 105,
+        "targetTotal": 110,
+        "whyDistinctIntentsExist": "Covers distinct scheduling mechanics: due date vs do date, earliest start date, recurring task rollover vs fixed recurring events, subtasks vs split work sessions, buffer/travel padding, Maker vs Manager calendars, ADHD low-friction 'minimum viable day' templates, and specific calendar-task bridge mechanics (Apple Reminders, Google Tasks, Microsoft To Do, Todoist, Things 3, OmniFocus, Notion, Linear, Obsidian)."
+      },
+      {
+        "clusterId": "C06-household-family-custody-and-education",
+        "clusterName": "Shared Household, Co-Parenting Custody Patterns, Caregiving & Academic Schedules",
+        "existingCount": 5,
+        "proposedNewCount": 105,
+        "targetTotal": 110,
+        "whyDistinctIntentsExist": "Includes mathematically distinct co-parenting custody schedules (2-2-5-5, 2-2-3, 3-4-4-3, alternating weeks with midweek visit, step-up parenting plans, holiday/summer override priority rules), eldercare medication/caregiver shift handoffs, university A/B block & lab schedules, academic syllabus-to-calendar batch planning, and short-term rental (Airbnb/VRBO) turnover ICS feeds."
+      },
+      {
+        "clusterId": "C07-meetings-invitations-rsvp-and-booking",
+        "clusterName": "Meeting Governance, Invitations, RSVP Mechanics, Rooms & Booking Links",
+        "existingCount": 8,
+        "proposedNewCount": 97,
+        "targetTotal": 105,
+        "whyDistinctIntentsExist": "Each invitation and booking scenario has distinct RFC 5545 (iCalendar) / ITIP behavior: forwarding invites without organizer permission, silent response updates, optional vs required attendees, tentative vs out-of-office free/busy masking, conference room auto-decline conflicts, round-robin vs collective availability links, and cross-tenant M&A free/busy federation."
+      },
+      {
+        "clusterId": "C08-weather-daylight-and-environmental-planning",
+        "clusterName": "Weather-Aware Planning, Daylight Constraints, Seasonality & Outdoor Thresholds",
+        "existingCount": 11,
+        "proposedNewCount": 79,
+        "targetTotal": 90,
+        "whyDistinctIntentsExist": "Each outdoor activity or environmental constraint depends on a different meteorological variable and threshold: dew point vs relative humidity, wet-bulb globe temperature (WBGT) for athletics/outdoor work, wind gust vs sustained wind for cycling/boating/drone flights, civil vs nautical twilight, UV index windows, frost/soil windows, barometric pressure shifts, and tide/lunar tables in calendar feeds."
+      },
+      {
+        "clusterId": "C09-ios-system-widgets-shortcuts-and-calendrical-systems",
+        "clusterName": "iOS/iPadOS/watchOS System Integration, Shortcuts, Accessibility & Calendar Systems",
+        "existingCount": 10,
+        "proposedNewCount": 95,
+        "targetTotal": 105,
+        "whyDistinctIntentsExist": "Covers Apple Shortcuts actions (Find/Filter Calendar Events, batch templating, travel-time calculators, meeting-note linked creation), Focus Filter automation rules, StandBy/Smart Stack/Lock Screen widget timelines, VoiceOver & Dynamic Type grid legibility, and calendrical math (ISO-8601 week 53 rules, 4-4-5 retail fiscal calendars, Hijri lunar sightings vs tabular calculation, Hebrew Tekufot/Metonic leap years, Chinese solar terms)."
+      },
+      {
+        "clusterId": "C10-documented-competitor-and-workflow-comparisons",
+        "clusterName": "Source-Backed Architectural & Workflow Comparisons",
+        "existingCount": 7,
+        "proposedNewCount": 113,
+        "targetTotal": 120,
+        "whyDistinctIntentsExist": "Honest, source-cited workflow comparisons answering specific buyer Trade-offs (e.g., local EventKit privacy vs cloud-mirroring servers, one-time purchase vs subscription cost over 3 years, read-only ICS feed vs two-way OAuth sync, and specific feature/limit comparisons across documented competitors)."
+      }
+    ]
+  },
+  "initialConcreteProposalsCount": 50,
+  "proposals": [
+    {
+      "id": "P001",
+      "priorityTier": "tier1-observed-search-or-gsc-gap",
+      "provenanceType": "observed_query_or_rank",
+      "observedEvidence": "Google SERP (45-query sample): queryId='adhd' ('best visual calendar planner ADHD iPhone'); Morgen Semrush/blog: 'morgen.so/blog-posts/best-daily-planner-for-adhd'; OneCal blog: 'onecal.io/blog/apps-for-adhd'. Cloud Calendars currently has 0 articles addressing ADHD/visual time-blindness calendar setup.",
+      "primaryKeyword": "visual calendar planner adhd iphone",
+      "slug": "visual-calendar-planner-adhd-time-blindness-iphone",
+      "cluster": "C05-tasks-reminders-and-time-blocking",
+      "distinctQuestion": "How do you configure an iPhone calendar to counter time blindness and schedule overwhelm (visual blocks, transition buffers, and fewer alert chimes) without switching to a rigid gamified habit app?",
+      "uniquePracticalValue": "A 3-step 'Minimum Viable Day' calendar setup checklist, a side-by-side comparison of visual timeline apps (Tiimo, Structured, RoutineFlow) vs standard multi-account calendars, and a concrete 3-color energy/transition coding table.",
+      "sourceUrls": [
+        "https://www.tiimoapp.com/",
+        "https://www.morgen.so/blog-posts/best-daily-planner-for-adhd",
+        "https://www.morgen.so/blog-posts/sometimes-we-all-need-a-minimum-viable-day"
+      ],
+      "existingOverlapSlug": "automatic-time-blocking-versus-manual-calendar",
+      "differentiationFromClosest": "Existing 'automatic-time-blocking-versus-manual-calendar' compares algorithmic task rescheduling (Motion/FlowSavvy) with manual dragging; this page addresses visual cueing, transition buffers, alert fatigue, and 'minimum viable day' recovery for users managing time blindness."
+    },
+    {
+      "id": "P002",
+      "priorityTier": "tier1-observed-search-or-gsc-gap",
+      "provenanceType": "observed_query_or_rank",
+      "observedEvidence": "Google SERP (45-query sample): queryId='privacy' ('privacy calendar app iPhone offline no account') + ChatGPT promptId='offline' ('chatgpt-offline.json'). Currently mapped broadly to 'what-calendar-sync-actually-does', which does not cover local-only/no-account iPhone calendar operation and offline cache limits.",
+      "primaryKeyword": "offline calendar app iphone no account",
+      "slug": "offline-calendar-iphone-local-storage-without-account",
+      "cluster": "C01-provider-sync-auth-architecture",
+      "distinctQuestion": "What actually works offline on an iPhone calendar without creating a vendor cloud account, and which edits (recurring exceptions, attendee invites, search history) still require a server round-trip?",
+      "uniquePracticalValue": "A 4-column verification matrix (On-Device Local Calendar vs iCloud/Google Cached Calendar vs Subscribed ICS vs Server-Backed App) showing offline create/edit/delete behavior, search window limits, and an airplane-mode verification test.",
+      "sourceUrls": [
+        "https://support.google.com/calendar/answer/6261951?hl=en&co=GENIE.Platform%3DiOS",
+        "https://support.apple.com/guide/iphone/calendar/",
+        "https://www.busymac.com/docs/faqs/143979-does-busycal-have-access-to-my-calendars-events"
+      ],
+      "existingOverlapSlug": "what-calendar-sync-actually-does",
+      "differentiationFromClosest": "'what-calendar-sync-actually-does' explains sync vs subscription feeds; this article focuses specifically on zero-account / local-device storage, offline edit queues, sync-window cutoffs, and privacy boundaries."
+    },
+    {
+      "id": "P003",
+      "priorityTier": "tier1-observed-search-or-gsc-gap",
+      "provenanceType": "observed_query_or_rank",
+      "observedEvidence": "Google SERP (45-query sample): queryId='alternate-date-widgets' ('Hijri Hebrew date iPhone Lock Screen widget') + round6-primary-checks.json. Currently mapped to 'iphone-calendar-language-alternate-calendar-settings' (which covers turning alternate calendars on/off in Settings) rather than Lock Screen / Home Screen alternate-date widget behavior.",
+      "primaryKeyword": "hijri hebrew lunar date iphone lock screen widget",
+      "slug": "hijri-hebrew-chinese-lunar-date-iphone-lock-screen-widget",
+      "cluster": "C09-ios-system-widgets-shortcuts-and-calendrical-systems",
+      "distinctQuestion": "How do you display Hijri, Hebrew, or Chinese lunar dates alongside Gregorian dates on the iPhone Lock Screen and Month grid, and why do sighting-based holidays sometimes differ by one day from tabular iOS dates?",
+      "uniquePracticalValue": "Step-by-step iOS Lock Screen inline date widget configuration, a comparison table of Hijri (Umm al-Qura / tabular), Hebrew (sunset rollover vs midnight), and Chinese lunar-solar leap months on iOS, plus a 1-day offset verification checklist.",
+      "sourceUrls": [
+        "https://support.apple.com/en-gb/guide/iphone/iphc37be2016/26/ios/26",
+        "https://support.apple.com/en-ie/guide/ipad/ipad581be0bc/27/ipados/27"
+      ],
+      "existingOverlapSlug": "iphone-calendar-language-alternate-calendar-settings",
+      "differentiationFromClosest": "'iphone-calendar-language-alternate-calendar-settings' troubleshoots accidental Chinese characters and language/region settings; this page solves the intentional setup of dual Gregorian + Hijri/Hebrew/Lunar dates on Lock Screen widgets and explains sunset/moon-sighting offsets."
+    },
+    {
+      "id": "P004",
+      "priorityTier": "tier1-observed-search-or-gsc-gap",
+      "provenanceType": "observed_query_or_rank",
+      "observedEvidence": "Google SERP (45-query sample): queryId='ipad' ('best iPad calendar week month view', #5 Pencil Planner, #7 Best Monthly Planner App for iPad with Apple Pencil). Readers searching iPad calendars frequently confuse PDF/Apple Pencil handwriting planners (GoodNotes/Pencil Planner) with live EventKit/cloud calendar grids.",
+      "primaryKeyword": "apple pencil digital planner vs synced calendar app ipad",
+      "slug": "ipad-apple-pencil-planner-versus-synced-calendar-app",
+      "cluster": "C10-documented-competitor-and-workflow-comparisons",
+      "distinctQuestion": "When should you use an Apple Pencil handwriting planner (PDF/canvas) versus a structured, synced calendar app on iPad, and what happens to handwritten ink when an underlying Google or Outlook meeting moves?",
+      "uniquePracticalValue": "A 6-point architectural comparison table (ink layer vs EventKit database, recurring event updates, shared family visibility, searchability, and widget support) plus a hybrid workflow for keeping live meetings synced while taking handwritten notes.",
+      "sourceUrls": [
+        "https://support.apple.com/en-ie/guide/ipad/ipad581be0bc/27/ipados/27",
+        "https://readdle.com/calendars"
+      ],
+      "existingOverlapSlug": "month-view-on-a-bigger-screen",
+      "differentiationFromClosest": "'month-view-on-a-bigger-screen' covers reading density and week/month layouts on iPad; this page resolves the buyer decision between PDF/Apple Pencil handwriting planners and live synced calendar apps."
+    },
+    {
+      "id": "P005",
+      "priorityTier": "tier1-observed-search-or-gsc-gap",
+      "provenanceType": "observed_query_or_rank",
+      "observedEvidence": "Google SERP (45-query sample): queryId='google-fantastical' ('Google Calendar vs Fantastical iPhone', #1 morgen.so/blog-posts/fantastical-vs-google-calendar) + OneCal blog ('onecal.io/blog/google-calendar-vs-apple-calendar', 'onecal.io/blog/google-calendar-vs-outlook-calendar').",
+      "primaryKeyword": "apple calendar vs google calendar vs outlook app iphone",
+      "slug": "apple-calendar-versus-google-calendar-versus-outlook-iphone",
+      "cluster": "C10-documented-competitor-and-workflow-comparisons",
+      "distinctQuestion": "How do the three free first-party iPhone calendar apps (Apple Calendar, Google Calendar for iOS, and Microsoft Outlook for iOS) differ when handling each other's accounts, push sync, invitations, and tasks?",
+      "uniquePracticalValue": "A cross-compatibility matrix (3 apps × 3 account providers = 9 combinations) showing push vs fetch delay, task visibility (Apple Reminders vs Google Tasks vs Microsoft To Do), room/delegate support, and widget capabilities.",
+      "sourceUrls": [
+        "https://support.google.com/calendar/answer/99358?hl=en&co=GENIE.Platform%3DiOS",
+        "https://support.microsoft.com/en-us/outlook/can-t-sync-calendar-and-contacts-with-my-phone-or-tablet",
+        "https://www.onecal.io/blog/google-calendar-vs-apple-calendar",
+        "https://www.onecal.io/blog/google-calendar-vs-outlook-calendar"
+      ],
+      "existingOverlapSlug": "fantastical-readdle-calendar366-iphone-comparison",
+      "differentiationFromClosest": "'fantastical-readdle-calendar366-iphone-comparison' compares third-party paid/freemium iOS calendar apps; this article compares the three first-party provider apps (Apple, Google, Outlook) and their cross-provider limitations on iPhone."
+    },
+    {
+      "id": "P006",
+      "priorityTier": "tier1-observed-search-or-gsc-gap",
+      "provenanceType": "observed_query_or_rank",
+      "observedEvidence": "Google SERP (45-query sample): queryId='busycal-comparison' ('BusyCal vs Fantastical iPhone calendar reminders weather', #1 busymac.com/compare/fantastical/). Currently mapped to 'fantastical-readdle-calendar366-iphone-comparison' which does not deeply cover BusyCal's iOS tag/filter/blocking-event architecture.",
+      "primaryKeyword": "busycal vs fantastical iphone",
+      "slug": "busycal-versus-fantastical-iphone-ipad-comparison",
+      "cluster": "C10-documented-competitor-and-workflow-comparisons",
+      "distinctQuestion": "How does BusyCal for iOS compare with Fantastical and Cloud Calendars on iPhone and iPad across licensing (one-time/bundle vs subscription), local vs server account handling, Reminders integration, and custom views?",
+      "uniquePracticalValue": "A source-verified feature & architecture table comparing BusyCal iOS, Fantastical, and Cloud Calendars across account connection model, Reminders/Tasks support, Calendar Sets/Smart Filters, Live Activities, and multi-year cost.",
+      "sourceUrls": [
+        "https://www.busymac.com/compare/fantastical/",
+        "https://www.busymac.com/busycalios/index.html",
+        "https://flexibits.com/fantastical"
+      ],
+      "existingOverlapSlug": "fantastical-readdle-calendar366-iphone-comparison",
+      "differentiationFromClosest": "Dedicated to the specific architectural differences documented by BusyMac (local direct CalDAV/Graph connections, tags, smart filters, one-time iOS purchase) versus Flexibits' account/subscription model."
+    },
+    {
+      "id": "P007",
+      "priorityTier": "tier1-observed-search-or-gsc-gap",
+      "provenanceType": "observed_query_or_rank",
+      "observedEvidence": "Google Related Searches (all-discovered-classification.json, ADC 'generated-follow-up'): 'How can I export my Apple Calendar as a PDF? Compare Mac vs iPhone export methods' + OneCal blog ('onecal.io/blog/how-to-print-google-calendar', 'onecal.io/blog/how-to-print-outlook-calendar').",
+      "primaryKeyword": "print google outlook icloud calendar monthly weekly layout",
+      "slug": "print-calendar-monthly-weekly-agenda-layout-iphone-web",
+      "cluster": "C01-provider-sync-auth-architecture",
+      "distinctQuestion": "How do you print a clean, readable monthly grid or weekly agenda from iPhone (via AirPrint/PDF) versus Google Calendar Web or Outlook Web without truncated event titles or missing color keys?",
+      "uniquePracticalValue": "A layout comparison table (iOS AirPrint print preview vs Google Calendar Web print dialog vs Outlook print styles) and a 5-point pre-print checklist (font scaling, black-and-white contrast, hidden declined events, page orientation, and date range).",
+      "sourceUrls": [
+        "https://www.onecal.io/blog/how-to-print-google-calendar",
+        "https://www.onecal.io/blog/how-to-print-outlook-calendar",
+        "https://www.busymac.com/docs/busycal/70610-printing"
+      ],
+      "existingOverlapSlug": "calendar-export-ics-pdf-and-backup",
+      "differentiationFromClosest": "'calendar-export-ics-pdf-and-backup' focuses on data portability, ICS backups, and migrating events between accounts; this page solves the visual paper/PDF printing problem (page breaks, truncated text, orientation, and color legibility)."
+    },
+    {
+      "id": "P008",
+      "priorityTier": "tier2-documented-competitor-troubleshooting-or-workflow",
+      "provenanceType": "editorial_candidate_from_official_docs",
+      "observedEvidence": null,
+      "primaryKeyword": "due date vs do date calendar time blocking",
+      "slug": "due-date-versus-do-date-calendar-planning",
+      "cluster": "C05-tasks-reminders-and-time-blocking",
+      "distinctQuestion": "Why does putting task deadlines ('due dates') directly onto your calendar grid break your schedule, and how do you separate a hard deadline from the work session ('do date') on iPhone?",
+      "uniquePracticalValue": "A worked 5-day project example showing how a Friday 17:00 deadline differs from three 45-minute execution blocks, plus a decision table for when to use an all-day banner, a timed reminder, or a calendar event.",
+      "sourceUrls": [
+        "https://www.morgen.so/guides/due-date-vs-do-date",
+        "https://www.morgen.so/guides/how-to-see-due-dates-in-your-calendar",
+        "https://www.morgen.so/guides/earliest-start-date-in-morgen"
+      ],
+      "existingOverlapSlug": "iphone-calendar-tasks-reminders-versus-event-alerts",
+      "differentiationFromClosest": "'iphone-calendar-tasks-reminders-versus-event-alerts' explains the technical difference between a completion-tracked task and an event notification; this page teaches the planning methodology of separating external deadlines (due dates) from scheduled execution blocks (do dates)."
+    },
+    {
+      "id": "P009",
+      "priorityTier": "tier2-documented-competitor-troubleshooting-or-workflow",
+      "provenanceType": "editorial_candidate_from_official_docs",
+      "observedEvidence": null,
+      "primaryKeyword": "need admin approval microsoft 365 calendar app iphone",
+      "slug": "microsoft-365-admin-consent-approval-calendar-app-iphone",
+      "cluster": "C01-provider-sync-auth-architecture",
+      "distinctQuestion": "Why does connecting a work Microsoft 365 / Outlook calendar to a third-party app show 'Need admin approval' (AADSTS90094), and what are your safe options when IT blocks third-party OAuth apps?",
+      "uniquePracticalValue": "An architecture diagram contrasting Direct OAuth (Microsoft Graph API requiring Entra ID consent) vs iOS System Account (Exchange ActiveSync already approved for native iOS) vs Read-Only ICS link, plus a template email for requesting IT admin approval.",
+      "sourceUrls": [
+        "https://www.onecal.io/blog/need-approval-how-to-request-admin-approval-outlook-microsoft",
+        "https://www.morgen.so/guides/outlook-morgen-admin-consent-guide",
+        "https://www.busymac.com/docs/faqs/134278-how-do-i-setup-microsoft-teams-or-graph-api-access-in-busycal"
+      ],
+      "existingOverlapSlug": "exchange-calendars-on-an-iphone",
+      "differentiationFromClosest": "'exchange-calendars-on-an-iphone' covers general Exchange setup on iOS; this page specifically diagnoses the Microsoft Entra ID 'Need admin approval' OAuth screen and explains why iOS EventKit system accounts often work when cloud-to-cloud OAuth is blocked."
+    },
+    {
+      "id": "P010",
+      "priorityTier": "tier2-documented-competitor-troubleshooting-or-workflow",
+      "provenanceType": "editorial_candidate_from_official_docs",
+      "observedEvidence": null,
+      "primaryKeyword": "moving meeting to another calendar sends cancellation or adds guest",
+      "slug": "moving-invited-meeting-between-calendars-organizer-risks",
+      "cluster": "C02-troubleshooting-failure-modes",
+      "distinctQuestion": "Why does moving an invited meeting from one calendar to another on iPhone fail, send unexpected emails to attendees, or make your own calendar name appear as a guest?",
+      "uniquePracticalValue": "A 4-scenario consequence matrix (Organizer moving within same account vs Organizer moving across providers vs Attendee moving invited event vs Copying as private busy block) and a safe-check procedure before changing an event's calendar field.",
+      "sourceUrls": [
+        "https://www.busymac.com/docs/faqs/calendar-name-appears-as-guest-after-moving-meeting",
+        "https://www.busymac.com/docs/faqs/meeting-invite-disappears-after-moving"
+      ],
+      "existingOverlapSlug": "event-saved-to-wrong-calendar",
+      "differentiationFromClosest": "'event-saved-to-wrong-calendar' deals with solo appointments accidentally saved to the wrong default calendar; this article explains the RFC 5545 / CalDAV organizer-ownership rules that break when you try to move a multi-person meeting with attendees."
+    },
+    {
+      "id": "P011",
+      "priorityTier": "tier2-documented-competitor-troubleshooting-or-workflow",
+      "provenanceType": "editorial_candidate_from_official_docs",
+      "observedEvidence": null,
+      "primaryKeyword": "google calendar adding unwanted default notifications iphone",
+      "slug": "google-calendar-adding-unwanted-default-alarms-iphone",
+      "cluster": "C02-troubleshooting-failure-modes",
+      "distinctQuestion": "Why do new events created on iPhone automatically get a 10-minute or 30-minute notification even when you selected 'None', and how do Google Calendar's server-side default reminders interact with iOS default alert settings?",
+      "uniquePracticalValue": "A two-layer inspection table (iOS Settings > Apps > Calendar > Default Alert Times vs Google Calendar Web Per-Calendar Event Notifications) showing how both layers stack and how to stop server-injected alerts.",
+      "sourceUrls": [
+        "https://www.busymac.com/docs/faqs/google-calendar-adding-unwanted-default-alarms",
+        "https://www.busymac.com/docs/faqs/115308-alarm-field-in-meeting-events-syncing-with-google-is-disabled"
+      ],
+      "existingOverlapSlug": "calendar-notifications-missing-silent-or-duplicated",
+      "differentiationFromClosest": "'calendar-notifications-missing-silent-or-duplicated' troubleshoots why alerts fail to chime or fire twice across two apps; this page solves the specific bug where Google's server overwrites 'Alert: None' with a default 10/30-minute alarm upon sync."
+    },
+    {
+      "id": "P012",
+      "priorityTier": "tier2-documented-competitor-troubleshooting-or-workflow",
+      "provenanceType": "editorial_candidate_from_official_docs",
+      "observedEvidence": null,
+      "primaryKeyword": "calendar colors keep reverting iphone icloud google",
+      "slug": "why-calendar-colors-revert-after-sync-iphone",
+      "cluster": "C02-troubleshooting-failure-modes",
+      "distinctQuestion": "Why does a custom calendar or event color you pick on iPhone revert to a standard preset color a few seconds later when syncing with Google Calendar, Exchange, or CalDAV?",
+      "uniquePracticalValue": "A provider color-palette support table (iCloud arbitrary RGB hex vs Google Calendar 24 fixed palette IDs vs Exchange/Outlook preset categories vs local view-only overrides) and steps to keep colors stable across devices.",
+      "sourceUrls": [
+        "https://www.busymac.com/docs/faqs/calendar-colors-keep-reverting",
+        "https://www.onecal.io/blog/google-calendar-colors",
+        "https://www.onecal.io/blog/outlook-calendar-colors"
+      ],
+      "existingOverlapSlug": "change-calendar-color-iphone",
+      "differentiationFromClosest": "'change-calendar-color-iphone' shows how to change calendar colors for visual organization; this page diagnoses the server-side palette restriction bug that causes chosen colors to snap back after sync."
+    },
+    {
+      "id": "P013",
+      "priorityTier": "tier2-documented-competitor-troubleshooting-or-workflow",
+      "provenanceType": "editorial_candidate_from_official_docs",
+      "observedEvidence": null,
+      "primaryKeyword": "calendars greyed out read only iphone cannot add event",
+      "slug": "why-calendar-is-greyed-out-read-only-iphone",
+      "cluster": "C02-troubleshooting-failure-modes",
+      "distinctQuestion": "Why is a calendar greyed out or missing from the 'Calendar' picker when creating a new event on iPhone, even though its events are visible on your grid?",
+      "uniquePracticalValue": "A 6-row diagnostic table distinguishing read-only ICS subscriptions, Holiday/Birthday system feeds, Google 'See only free/busy' or 'See all event details' ACLs, expired OAuth tokens, and iCloud storage/terms locks.",
+      "sourceUrls": [
+        "https://www.busymac.com/docs/faqs/calendars-greyed-out-and-disabled",
+        "https://www.busymac.com/docs/faqs/apple-calendar-read-only",
+        "https://www.busymac.com/docs/faqs/permission-modify-events-error"
+      ],
+      "existingOverlapSlug": "why-a-shared-calendar-does-not-appear",
+      "differentiationFromClosest": "'why-a-shared-calendar-does-not-appear' covers calendars that are completely invisible on the device; this page diagnoses calendars that ARE visible on the grid but cannot be selected as a writable destination for new events."
+    },
+    {
+      "id": "P014",
+      "priorityTier": "tier2-documented-competitor-troubleshooting-or-workflow",
+      "provenanceType": "editorial_candidate_from_official_docs",
+      "observedEvidence": null,
+      "primaryKeyword": "subscribed ics calendar not syncing to iphone from mac or google",
+      "slug": "why-subscribed-ics-calendars-do-not-sync-across-accounts",
+      "cluster": "C01-provider-sync-auth-architecture",
+      "distinctQuestion": "Why does an `.ics` web calendar you subscribed to in Google Calendar Web or on a Mac fail to appear automatically on your iPhone, and how do you enable cross-device feed syncing?",
+      "uniquePracticalValue": "A provider feed-forwarding table (iCloud subscribed calendars vs Google Calendar SyncSelect page vs Outlook Web subscriptions vs direct iOS Settings > Calendar > Accounts > Subscribed Calendars) with exact verification URLs.",
+      "sourceUrls": [
+        "https://www.busymac.com/docs/faqs/subscribed-calendars-not-showing-on-iphone",
+        "https://www.busymac.com/docs/busycal/70629-syncing-calendar-subscriptions-with-an-ios-device",
+        "https://www.onecal.io/blog/how-to-subscribe-to-a-web-ics-calendar-in-google-calendar"
+      ],
+      "existingOverlapSlug": "google-calendars-that-never-reach-your-iphone",
+      "differentiationFromClosest": "'google-calendars-that-never-reach-your-iphone' explains Google's SyncSelect checkbox for secondary/shared Google calendars; this article covers external `.ics` webcal feeds across iCloud, Google, and Outlook and refresh-interval differences."
+    },
+    {
+      "id": "P015",
+      "priorityTier": "tier2-documented-competitor-troubleshooting-or-workflow",
+      "provenanceType": "editorial_candidate_from_official_docs",
+      "observedEvidence": null,
+      "primaryKeyword": "duplicate events from shared calendar iphone",
+      "slug": "why-shared-calendars-show-duplicate-events-iphone",
+      "cluster": "C02-troubleshooting-failure-modes",
+      "distinctQuestion": "Why do you see every family or team appointment twice on your iPhone after joining a shared calendar, and how do you hide the redundant feed without deleting the event for everyone else?",
+      "uniquePracticalValue": "A 5-cause isolation checklist (1: invited as attendee + viewing shared calendar; 2: same account enabled in both iOS EventKit and direct app OAuth; 3: OneCal/CalendarBridge blocker clone + source calendar both checked; 4: imported ICS file into existing calendar; 5: iCloud Family calendar + separate shared iCloud calendar).",
+      "sourceUrls": [
+        "https://www.busymac.com/docs/faqs/155263-why-do-i-see-duplicate-events-from-a-shared-calendar",
+        "https://www.busymac.com/docs/busycal/133794-combine-identical-events"
+      ],
+      "existingOverlapSlug": "when-two-calendars-disagree",
+      "differentiationFromClosest": "'when-two-calendars-disagree' addresses conflicting times or missing updates between two calendars; this article specifically diagnoses visual duplication (seeing the exact same event 2x or 3x) and prevents accidental deletion of shared data."
+    },
+    {
+      "id": "P016",
+      "priorityTier": "tier2-documented-competitor-troubleshooting-or-workflow",
+      "provenanceType": "editorial_candidate_from_official_docs",
+      "observedEvidence": null,
+      "primaryKeyword": "sync airbnb vrbo booking calendar iphone ics",
+      "slug": "view-airbnb-vrbo-booking-turnover-calendars-on-iphone",
+      "cluster": "C06-household-family-custody-and-education",
+      "distinctQuestion": "How can a host or cleaner view Airbnb, VRBO, and Booking.com reservation calendars on an iPhone alongside personal appointments, and why shouldn't you rely on a mobile ICS subscription alone to prevent double bookings?",
+      "uniquePracticalValue": "A latency & data-field comparison table (Platform-to-Platform iCal export vs Channel Manager API vs iPhone ICS subscription view for checkout/cleaning coordination) plus a turnover-window checklist (check-out 11:00 vs check-in 15:00 vs all-day reservation blocks).",
+      "sourceUrls": [
+        "https://www.onecal.io/blog/how-to-sync-airbnb-and-booking-calendars",
+        "https://calendarbridge.com/blog/how-to-view-airbnb-booking-com-and-vrbo-bookings-in-one-calendar/"
+      ],
+      "existingOverlapSlug": "what-an-all-day-event-really-means",
+      "differentiationFromClosest": "'what-an-all-day-event-really-means' explains general all-day banners vs timed events; this page solves the short-term rental host/cleaner problem where multi-night ICS feeds arrive as all-day blocks that obscure 11:00 check-out and 15:00 check-in turnover windows."
+    },
+    {
+      "id": "P017",
+      "priorityTier": "tier2-documented-competitor-troubleshooting-or-workflow",
+      "provenanceType": "editorial_candidate_from_official_docs",
+      "observedEvidence": null,
+      "primaryKeyword": "outlook flagged emails appearing as tasks in calendar",
+      "slug": "outlook-flagged-emails-microsoft-to-do-tasks-on-iphone-calendar",
+      "cluster": "C05-tasks-reminders-and-time-blocking",
+      "distinctQuestion": "Why do flagged Outlook emails suddenly appear as overdue tasks in task-enabled calendar apps, and how do Microsoft To Do, Exchange tasks, and iOS Reminders interact on iPhone?",
+      "uniquePracticalValue": "A data-flow diagram tracing an Outlook Flagged Email -> Exchange Mailbox Task / Microsoft To Do 'Flagged email' list -> iOS Reminders / Calendar app, with steps to filter out flagged emails while keeping real dated tasks.",
+      "sourceUrls": [
+        "https://www.busymac.com/docs/faqs/outlook-flagged-emails-appearing-as-tasks",
+        "https://www.morgen.so/blog-posts/todoist-vs-microsoft-to-do"
+      ],
+      "existingOverlapSlug": "iphone-calendar-tasks-reminders-versus-event-alerts",
+      "differentiationFromClosest": "Addresses the specific Microsoft 365 / Exchange mechanism where flagging an email generates a task object that clutters calendar task lists."
+    },
+    {
+      "id": "P018",
+      "priorityTier": "tier2-documented-competitor-troubleshooting-or-workflow",
+      "provenanceType": "editorial_candidate_from_official_docs",
+      "observedEvidence": null,
+      "primaryKeyword": "google calendar end time zone ignored flight event",
+      "slug": "different-start-and-end-time-zones-google-icloud-calendar",
+      "cluster": "C04-time-zones-dst-and-global-travel",
+      "distinctQuestion": "Why do some calendar servers ignore or reset the end time zone when you enter a flight departing in one time zone and landing in another, and how do you verify the arrival time on iPhone?",
+      "uniquePracticalValue": "A worked transatlantic/transpacific flight calculation (e.g., LHR 10:30 BST to JFK 13:25 EDT) showing how Google Calendar API, iCloud CalDAV, and Exchange store DTSTART/DTEND TZIDs, and how to check whether the end zone was converted to the start zone.",
+      "sourceUrls": [
+        "https://www.busymac.com/docs/faqs/115393-end-timezone-is-ignored-when-creating-events-in-a-google-calendar-account",
+        "https://support.google.com/calendar/answer/37064?hl=en&co=GENIE.Platform%3DiOS"
+      ],
+      "existingOverlapSlug": "time-zones-and-the-flight-you-booked",
+      "differentiationFromClosest": "'time-zones-and-the-flight-you-booked' explains how time-zone override works when traveling; this page diagnoses the specific provider storage limitation where Google Calendar converts a separate end time zone back into the start time zone's offset."
+    },
+    {
+      "id": "P019",
+      "priorityTier": "tier2-documented-competitor-troubleshooting-or-workflow",
+      "provenanceType": "editorial_candidate_from_official_docs",
+      "observedEvidence": null,
+      "primaryKeyword": "calendar widget not updating automatically iphone background refresh",
+      "slug": "why-iphone-calendar-widgets-stop-updating-timeline-limits",
+      "cluster": "C09-ios-system-widgets-shortcuts-and-calendrical-systems",
+      "distinctQuestion": "Why does an iPhone Home Screen or Lock Screen calendar widget sometimes lag behind a newly added Google or Outlook meeting, and how does WidgetKit's daily refresh budget work?",
+      "uniquePracticalValue": "A 5-step diagnostic flow separating WidgetKit timeline refresh budgets (15–60 min system throttling), iOS Low Power Mode, Background App Refresh, and Push vs Fetch account intervals, plus how opening the host app forces an immediate timeline reload.",
+      "sourceUrls": [
+        "https://www.busymac.com/docs/faqs/ios-background-sync-limits",
+        "https://www.busymac.com/docs/faqs/widgets-or-watch-missing-events",
+        "https://www.busymac.com/docs/faqs/138539-two-week-widget-appears-blank"
+      ],
+      "existingOverlapSlug": "the-widget-that-shows-what-is-next",
+      "differentiationFromClosest": "'the-widget-that-shows-what-is-next' helps readers choose and read an Up Next widget; this page troubleshoots stale/blank widgets and explains iOS WidgetKit background refresh constraints."
+    },
+    {
+      "id": "P020",
+      "priorityTier": "tier2-documented-competitor-troubleshooting-or-workflow",
+      "provenanceType": "editorial_candidate_from_official_docs",
+      "observedEvidence": null,
+      "primaryKeyword": "shared pto vacation calendar outlook google team",
+      "slug": "shared-team-pto-vacation-calendar-without-cluttering-day-view",
+      "cluster": "C07-meetings-invitations-rsvp-and-booking",
+      "distinctQuestion": "How do you set up or view a shared team PTO / vacation calendar on iPhone so you can see who is away without burying your own daily hourly meetings under 10 all-day banners?",
+      "uniquePracticalValue": "A comparison of 3 PTO calendar architectures (Dedicated secondary shared calendar vs Free/Busy Out-of-Office event type vs Calendar Set toggle) and an all-day banner decluttering checklist.",
+      "sourceUrls": [
+        "https://calendarbridge.com/blog/how-to-create-a-shared-pto-or-vacation-calendar-in-outlook-with-calendarbridge/",
+        "https://calendarbridge.com/blog/how-to-create-a-shared-pto-calendar-in-google-with-calendarbridge/",
+        "https://www.busymac.com/docs/faqs/declutter-day-week-view"
+      ],
+      "existingOverlapSlug": "what-an-all-day-event-really-means",
+      "differentiationFromClosest": "Solves the specific team PTO / Out-of-Office visibility and banner-overflow problem rather than individual all-day reminders."
+    },
+    {
+      "id": "P021",
+      "priorityTier": "tier3-structured-domain-expansion",
+      "provenanceType": "editorial_candidate_from_official_docs",
+      "observedEvidence": "Motion sitemap: https://www.usemotion.com/blog/2-2-3-schedule",
+      "primaryKeyword": "2-2-3 panama shift schedule calendar iphone",
+      "slug": "2-2-3-panama-shift-schedule-calendar-setup-iphone",
+      "cluster": "C03-shift-work-and-rota-cycles",
+      "distinctQuestion": "How does the 2-2-3 (Panama) 28-day rotating shift cycle work, why can't a standard weekly repeat rule generate it, and how do you enter the 4-week pattern accurately on an iPhone calendar?",
+      "uniquePracticalValue": "A complete 28-day 4-crew (A/B/C/D) Panama cycle table, proof of why the pattern repeats every 28 days (not 7 or 14), and a 4-event every-4-weeks recurrence setup recipe that requires only 14 entries to generate an entire year.",
+      "sourceUrls": [
+        "https://www.usemotion.com/blog/2-2-3-schedule",
+        "https://supershift.app/"
+      ],
+      "existingOverlapSlug": "shift-work-calendar-iphone-rotating-schedules",
+      "differentiationFromClosest": "'shift-work-calendar-iphone-rotating-schedules' is the general overview of rotating shifts using an 8-day (2D-2N-4Off) example; this page provides the exact 28-day mathematical decomposition and 4-week recurrence setup for the 2-2-3 Panama schedule."
+    },
+    {
+      "id": "P022",
+      "priorityTier": "tier3-structured-domain-expansion",
+      "provenanceType": "editorial_candidate_from_official_docs",
+      "observedEvidence": null,
+      "primaryKeyword": "dupont 12 hour shift schedule calendar setup",
+      "slug": "dupont-12-hour-shift-schedule-calendar-setup-iphone",
+      "cluster": "C03-shift-work-and-rota-cycles",
+      "distinctQuestion": "How do you map the DuPont 28-day rotating shift schedule (including its 7-day stretch off and 3-night/4-day transitions) onto a personal calendar alongside family commitments?",
+      "uniquePracticalValue": "A 28-day DuPont cycle grid showing exact day/night transition recovery windows (especially the 72-hour turnaround vs the 7-day break) and a step-by-step 4-week custom recurrence method.",
+      "sourceUrls": [
+        "https://www.teamup.com/shift-schedule-calendar/",
+        "https://supershift.app/"
+      ],
+      "existingOverlapSlug": "shift-work-calendar-iphone-rotating-schedules",
+      "differentiationFromClosest": "Specifically models the DuPont 4-week 12-hour cycle and its unique 7-consecutive-days-off block."
+    },
+    {
+      "id": "P023",
+      "priorityTier": "tier3-structured-domain-expansion",
+      "provenanceType": "editorial_candidate_from_official_docs",
+      "observedEvidence": null,
+      "primaryKeyword": "firefighter 24 48 shift calendar kelly days iphone",
+      "slug": "firefighter-24-48-and-48-96-kelly-day-calendar-iphone",
+      "cluster": "C03-shift-work-and-rota-cycles",
+      "distinctQuestion": "How do you set up a 24/48 (3-platoon, 3-day cycle) or 48/96 (6-day cycle) firefighter shift calendar on iPhone and account for recurring Kelly days (FLSA cycle reductions)?",
+      "uniquePracticalValue": "A 21-day / 28-day platoon color table (A/B/C Shift) plus a worked example of inserting a recurring Kelly day exception every 9th or 12th shift without deleting the base rotation.",
+      "sourceUrls": [
+        "https://supershift.app/",
+        "https://www.teamup.com/shift-schedule-calendar/"
+      ],
+      "existingOverlapSlug": "shift-work-calendar-iphone-rotating-schedules",
+      "differentiationFromClosest": "Covers 24-hour/48-hour continuous platoon rotations and Kelly-day exceptions, which behave differently from 8- or 12-hour hospital/factory shifts."
+    },
+    {
+      "id": "P024",
+      "priorityTier": "tier3-structured-domain-expansion",
+      "provenanceType": "editorial_candidate_from_official_docs",
+      "observedEvidence": null,
+      "primaryKeyword": "2-2-5-5 vs 2-2-3 custody schedule shared calendar",
+      "slug": "co-parenting-2-2-5-5-versus-2-2-3-custody-calendar-setup",
+      "cluster": "C06-household-family-custody-and-education",
+      "distinctQuestion": "What is the practical difference between a 2-2-5-5 and a 2-2-3 co-parenting custody schedule on a shared calendar, and how do you represent school-drop-off versus evening-pickup handoff times?",
+      "uniquePracticalValue": "A 14-day side-by-side comparison table showing why 2-2-5-5 locks Monday/Tuesday to Parent A and Wednesday/Thursday to Parent B (simplifying weekly extracurriculars), plus a holiday-override priority rule checklist.",
+      "sourceUrls": [
+        "https://support.timetreeapp.com/hc/en-us/articles/360000375902-How-to-create-and-share-a-calendar",
+        "https://www.cozi.com/calendar/"
+      ],
+      "existingOverlapSlug": "family-pickup-calendar-handoff",
+      "differentiationFromClosest": "'family-pickup-calendar-handoff' covers single-day school pickup changes and responsibility handoffs; this article models the two-week repeating legal custody patterns (2-2-5-5 vs 2-2-3) and fixed-weekday extracurricular stability."
+    },
+    {
+      "id": "P025",
+      "priorityTier": "tier3-structured-domain-expansion",
+      "provenanceType": "editorial_candidate_from_official_docs",
+      "observedEvidence": null,
+      "primaryKeyword": "us uk europe daylight saving time gap meeting calendar",
+      "slug": "us-uk-europe-daylight-saving-time-gap-weeks-calendar",
+      "cluster": "C04-time-zones-dst-and-global-travel",
+      "distinctQuestion": "Why do recurring transatlantic meetings between the US and UK/Europe shift by one hour for three weeks in March and one week in October/November, and which calendar account owns the anchor time?",
+      "uniquePracticalValue": "A 2026–2027 transition-week reference table showing exact UTC offsets during the March and October/November mismatch windows, plus how to tell whether a recurring invite is anchored to America/New_York or Europe/London.",
+      "sourceUrls": [
+        "https://support.google.com/calendar/answer/37064?hl=en&co=GENIE.Platform%3DiOS",
+        "https://www.busymac.com/docs/busycal/70609-time-zones"
+      ],
+      "existingOverlapSlug": "time-zones-and-the-flight-you-booked",
+      "differentiationFromClosest": "'time-zones-and-the-flight-you-booked' covers personal flights across time zones; this article solves the stationary remote-team problem where asynchronous DST dates move recurring meetings by an hour for 1–3 weeks."
+    },
+    {
+      "id": "P026",
+      "priorityTier": "tier3-structured-domain-expansion",
+      "provenanceType": "editorial_candidate_from_official_docs",
+      "observedEvidence": "Motion sitemap: https://www.usemotion.com/blog/maker-schedule-vs-manager-schedule",
+      "primaryKeyword": "maker schedule vs manager schedule calendar blocking",
+      "slug": "maker-schedule-versus-manager-schedule-calendar-design",
+      "cluster": "C05-tasks-reminders-and-time-blocking",
+      "distinctQuestion": "How do you structure a weekly calendar when your role requires both 3-hour uninterrupted deep-work blocks ('Maker time') and 30-minute availability slots ('Manager time')?",
+      "uniquePracticalValue": "Three concrete weekly calendar templates (Half-Day Split, Tuesday/Thursday Maker Days, and Morning Maker / Afternoon Office Hours) with exact rules for defensive busy blocks and booking-link windows.",
+      "sourceUrls": [
+        "https://www.usemotion.com/blog/maker-schedule-vs-manager-schedule",
+        "https://www.morgen.so/blog-posts/ultimate-guide-to-deep-work",
+        "https://www.morgen.so/guides/how-to-use-frames"
+      ],
+      "existingOverlapSlug": "planning-a-week-in-ten-minutes",
+      "differentiationFromClosest": "'planning-a-week-in-ten-minutes' is a general Friday/Sunday weekly review routine; this page teaches the structural partitioning of a calendar grid into half-day Maker blocks and clustered Manager meeting windows."
+    },
+    {
+      "id": "P027",
+      "priorityTier": "tier3-structured-domain-expansion",
+      "provenanceType": "editorial_candidate_from_official_docs",
+      "observedEvidence": "Morgen sitemap: https://www.morgen.so/guides/how-to-use-buffer-time-workflow & https://www.morgen.so/auto-schedule-buffer-travel",
+      "primaryKeyword": "calendar buffer time between meetings travel padding",
+      "slug": "meeting-buffer-time-and-travel-padding-on-iphone-calendar",
+      "cluster": "C05-tasks-reminders-and-time-blocking",
+      "distinctQuestion": "What is the difference between a 5-minute video-call decompression buffer, iOS Calendar's built-in 'Travel Time' field, and a separate defensive blocker event?",
+      "uniquePracticalValue": "A 3-method comparison matrix showing whether each buffer type blocks colleagues from booking you in Exchange/Google Free-Busy lookups, triggers separate departure alerts, or shifts when the main meeting moves.",
+      "sourceUrls": [
+        "https://www.morgen.so/guides/how-to-use-buffer-time-workflow",
+        "https://www.busymac.com/docs/busycalios/70666-maps-travel-time",
+        "https://www.usemotion.com/blog/back-to-back-meetings"
+      ],
+      "existingOverlapSlug": "the-commute-and-the-sky",
+      "differentiationFromClosest": "'the-commute-and-the-sky' focuses on checking weather for your morning/evening commute; this page explains the calendar mechanics of Travel Time fields vs separate buffer events and whether they mark you 'Busy' to coworkers."
+    },
+    {
+      "id": "P028",
+      "priorityTier": "tier3-structured-domain-expansion",
+      "provenanceType": "editorial_candidate_from_official_docs",
+      "observedEvidence": "OneCal sitemap: https://www.onecal.io/blog/how-to-revoke-third-party-app-access-from-google-account & https://www.onecal.io/blog/how-to-revoke-third-party-app-access-from-microsoft-account",
+      "primaryKeyword": "revoke third party calendar app access google microsoft icloud",
+      "slug": "revoke-third-party-calendar-app-permissions-google-microsoft-apple",
+      "cluster": "C01-provider-sync-auth-architecture",
+      "distinctQuestion": "When you stop using a calendar or scheduling app, how do you completely revoke its OAuth tokens, app-specific passwords, and iOS EventKit permissions across Google, Microsoft, and Apple?",
+      "uniquePracticalValue": "A 4-layer security audit checklist: (1) iOS Settings > Privacy & Security > Calendars, (2) Google Account Third-party connections, (3) Microsoft My Apps / Account consent portal, and (4) Apple ID App-Specific Passwords, plus how to clean up orphaned sync-cloned events.",
+      "sourceUrls": [
+        "https://www.onecal.io/blog/how-to-revoke-third-party-app-access-from-google-account",
+        "https://www.onecal.io/blog/how-to-revoke-third-party-app-access-from-microsoft-account"
+      ],
+      "existingOverlapSlug": "disconnect-calendar-integration-without-losing-track",
+      "differentiationFromClosest": "'disconnect-calendar-integration-without-losing-track' covers disconnecting an account inside a calendar app without losing local awareness of events; this page provides the external security/OAuth revocation audit across Google, Microsoft, and Apple portals."
+    },
+    {
+      "id": "P029",
+      "priorityTier": "tier3-structured-domain-expansion",
+      "provenanceType": "editorial_candidate_from_official_docs",
+      "observedEvidence": "CalendarBridge sitemap: https://calendarbridge.com/blog/beat-brain-rot-with-ai-that-turns-screenshots-and-links-into-calendar-events/ & https://calendarbridge.com/blog/how-to-import-flyers-pictures-events-to-your-calendar-with-ai/",
+      "primaryKeyword": "add event from screenshot flyer email to iphone calendar",
+      "slug": "turn-screenshots-flyers-and-messages-into-iphone-calendar-events",
+      "cluster": "C09-ios-system-widgets-shortcuts-and-calendrical-systems",
+      "distinctQuestion": "How can you turn a school flyer photo, screenshot, or text message with dates into a calendar event on iPhone using iOS Live Text, Siri Data Detectors, or Shortcuts—and what fields still need manual verification?",
+      "uniquePracticalValue": "A step-by-step comparison of iOS Live Text date tapping in Photos, Mail/Messages underlined data detectors, and Shortcuts OCR extraction, plus a 4-point error check (AM/PM confusion, wrong year on yearless flyers, default destination calendar, and time zone).",
+      "sourceUrls": [
+        "https://www.busymac.com/docs/faqs/notes-data-detectors-and-smart-links",
+        "https://calendarbridge.com/blog/how-to-import-flyers-pictures-events-to-your-calendar-with-ai/"
+      ],
+      "existingOverlapSlug": "natural-language-calendar-events-iphone",
+      "differentiationFromClosest": "'natural-language-calendar-events-iphone' covers typing text strings into a parser; this page covers extracting dates from images, screenshots, paper flyers, and message bubbles via iOS Live Text and Data Detectors."
+    },
+    {
+      "id": "P030",
+      "priorityTier": "tier3-structured-domain-expansion",
+      "provenanceType": "editorial_candidate_from_official_docs",
+      "observedEvidence": "BusyMac sitemap: https://www.busymac.com/docs/faqs/advanced-data-protection-icloud",
+      "primaryKeyword": "icloud advanced data protection calendar encryption limits",
+      "slug": "icloud-advanced-data-protection-and-calendar-privacy-limits",
+      "cluster": "C01-provider-sync-auth-architecture",
+      "distinctQuestion": "Why does Apple exclude iCloud Calendar and Contacts from end-to-end encryption even when iCloud Advanced Data Protection (ADP) is turned on, and what does that mean for sensitive appointments?",
+      "uniquePracticalValue": "A clear protocol explanation of why CalDAV/CardDAV server-side scheduling and email invitations prevent Apple from end-to-end encrypting iCloud Calendars under ADP, plus practical rules for what not to store in event notes.",
+      "sourceUrls": [
+        "https://www.busymac.com/docs/faqs/advanced-data-protection-icloud",
+        "https://support.apple.com/guide/icloud/what-you-can-do-with-icloud-and-calendar-mm15eb200ab4/icloud"
+      ],
+      "existingOverlapSlug": "what-is-a-cloud-calendar",
+      "differentiationFromClosest": "'what-is-a-cloud-calendar' defines device vs cloud calendars; this page explains the specific cryptographic and protocol exception for iCloud Calendar under Apple's Advanced Data Protection."
+    },
+    {
+      "id": "P031",
+      "priorityTier": "tier2-documented-competitor-troubleshooting-or-workflow",
+      "provenanceType": "editorial_candidate_from_official_docs",
+      "observedEvidence": "BusyMac sitemap: https://www.busymac.com/docs/faqs/google-403-rate-limit & https://www.busymac.com/docs/faqs/google-calendar-limitations",
+      "primaryKeyword": "google calendar 403 rate limit quota exceeded iphone sync",
+      "slug": "google-calendar-rate-limit-403-quota-errors-iphone",
+      "cluster": "C02-troubleshooting-failure-modes",
+      "distinctQuestion": "Why does Google Calendar return a 403 Rate Limit or Quota Exceeded error when syncing a large calendar or batch-editing recurring events on iPhone, and how do you clear stuck sync queues?",
+      "uniquePracticalValue": "A table of documented Google Calendar operational limits (max invites per day, rapid CalDAV/API write throttling, large attendee list limits) and a safe recovery procedure that avoids deleting unsynced local changes.",
+      "sourceUrls": [
+        "https://www.busymac.com/docs/faqs/google-403-rate-limit",
+        "https://www.busymac.com/docs/faqs/google-calendar-limitations"
+      ],
+      "existingOverlapSlug": "when-two-calendars-disagree",
+      "differentiationFromClosest": "Specifically diagnoses Google API/CalDAV 403 rate-limit throttling and batch-operation locks."
+    },
+    {
+      "id": "P032",
+      "priorityTier": "tier2-documented-competitor-troubleshooting-or-workflow",
+      "provenanceType": "editorial_candidate_from_official_docs",
+      "observedEvidence": "BusyMac sitemap: https://www.busymac.com/docs/faqs/google-birthdays-showing-in-primary-calendar & https://www.busymac.com/docs/faqs/98762-birthdays-anniversaries-are-not-showing-up",
+      "primaryKeyword": "birthdays calendar duplicate or missing iphone google contacts",
+      "slug": "manage-duplicate-or-missing-birthdays-calendar-iphone",
+      "cluster": "C02-troubleshooting-failure-modes",
+      "distinctQuestion": "Why do birthdays appear twice (or not at all) when you connect both iCloud Contacts and Google Calendar on iPhone, and why did Google change how Contacts birthdays sync to primary calendars?",
+      "uniquePracticalValue": "A source-by-source comparison (iOS Contacts Birthdays virtual calendar vs Google Calendar Birthdays feed vs Facebook/linked ICS feeds) and a 3-step check to show each birthday once with a single 09:00 alert.",
+      "sourceUrls": [
+        "https://www.busymac.com/docs/faqs/google-birthdays-showing-in-primary-calendar",
+        "https://www.busymac.com/docs/faqs/98762-birthdays-anniversaries-are-not-showing-up",
+        "https://www.busymac.com/docs/busycalios/70663-birthdays-and-anniversaries"
+      ],
+      "existingOverlapSlug": "unwanted-calendar-events-iphone",
+      "differentiationFromClosest": "'unwanted-calendar-events-iphone' covers calendar spam/phishing invites; this page solves legitimate Birthday/Anniversary feed duplication and missing contact dates."
+    },
+    {
+      "id": "P033",
+      "priorityTier": "tier2-documented-competitor-troubleshooting-or-workflow",
+      "provenanceType": "editorial_candidate_from_official_docs",
+      "observedEvidence": "BusyMac sitemap: https://www.busymac.com/docs/faqs/alarm-dismissals-not-syncing-across-devices & https://www.busymac.com/docs/faqs/71172-how-can-i-avoid-duplicate-alarms-from-being-displayed",
+      "primaryKeyword": "dismissed calendar alert still ringing on ipad watch mac",
+      "slug": "why-dismissed-calendar-alerts-still-fire-on-other-devices",
+      "cluster": "C02-troubleshooting-failure-modes",
+      "distinctQuestion": "Why does dismissing or snoozing a calendar notification on your iPhone sometimes fail to silence the same alert on your iPad, Apple Watch, or Mac?",
+      "uniquePracticalValue": "A protocol table showing which providers sync alarm acknowledgement state via CalDAV/EAS vs which treat alerts as device-local timers, plus how to stop double chimes between Apple Calendar and a third-party calendar app.",
+      "sourceUrls": [
+        "https://www.busymac.com/docs/faqs/alarm-dismissals-not-syncing-across-devices",
+        "https://www.busymac.com/docs/faqs/71172-how-can-i-avoid-duplicate-alarms-from-being-displayed"
+      ],
+      "existingOverlapSlug": "calendar-notifications-missing-silent-or-duplicated",
+      "differentiationFromClosest": "Focuses specifically on cross-device alarm dismissal/snooze state synchronization across iPhone, iPad, and Apple Watch."
+    },
+    {
+      "id": "P034",
+      "priorityTier": "tier2-documented-competitor-troubleshooting-or-workflow",
+      "provenanceType": "editorial_candidate_from_official_docs",
+      "observedEvidence": "BusyMac sitemap: https://www.busymac.com/docs/faqs/139601-cannot-add-multiple-alarms-to-events-on-exchange-o365 & Morgen guide: https://www.morgen.so/guides/how-to-add-multiple-alerts-to-calendar-events",
+      "primaryKeyword": "multiple alerts per event iphone exchange google icloud limits",
+      "slug": "multiple-alerts-per-calendar-event-provider-limits-iphone",
+      "cluster": "C01-provider-sync-auth-architecture",
+      "distinctQuestion": "Why can you add two alerts (e.g., 1 day before and 15 minutes before) to an iCloud or Google event on iPhone, but Microsoft Exchange / Office 365 silently drops the second alert?",
+      "uniquePracticalValue": "A provider VALARM specification table (iCloud CalDAV multiple VALARMs vs Google Calendar max 5 notifications vs Exchange ActiveSync single-reminder schema limit) and a workaround for critical Exchange flights/deadlines.",
+      "sourceUrls": [
+        "https://www.busymac.com/docs/faqs/139601-cannot-add-multiple-alarms-to-events-on-exchange-o365",
+        "https://www.morgen.so/guides/how-to-add-multiple-alerts-to-calendar-events"
+      ],
+      "existingOverlapSlug": "exchange-calendars-on-an-iphone",
+      "differentiationFromClosest": "Pinpoints the single-reminder schema limitation in Exchange/ActiveSync versus iCloud and Google Calendar's multi-alert support."
+    },
+    {
+      "id": "P035",
+      "priorityTier": "tier2-documented-competitor-troubleshooting-or-workflow",
+      "provenanceType": "editorial_candidate_from_official_docs",
+      "observedEvidence": "BusyMac sitemap: https://www.busymac.com/docs/faqs/104149-shared-calendars-keep-disappearing-from-our-exchange-account & https://www.busymac.com/docs/faqs/microsoft-graph-group-calendars-not-showing",
+      "primaryKeyword": "shared outlook delegate or group calendar not showing on iphone",
+      "slug": "outlook-shared-delegate-and-microsoft-365-group-calendars-iphone",
+      "cluster": "C01-provider-sync-auth-architecture",
+      "distinctQuestion": "Why do certain Outlook shared calendars, delegated executive mailboxes, or Microsoft 365 Group calendars appear in Outlook Web but fail to show up under iOS Exchange accounts?",
+      "uniquePracticalValue": "A compatibility matrix comparing Exchange ActiveSync (EAS), Microsoft Graph API, and ICS publishing for (a) user-shared calendars, (b) full mailbox delegates, (c) Microsoft 365 Group calendars, and (d) SharePoint calendars.",
+      "sourceUrls": [
+        "https://www.busymac.com/docs/faqs/microsoft-graph-group-calendars-not-showing",
+        "https://www.busymac.com/docs/faqs/104149-shared-calendars-keep-disappearing-from-our-exchange-account",
+        "https://www.morgen.so/guides/outlook-shared-calendars-in-morgen"
+      ],
+      "existingOverlapSlug": "why-a-shared-calendar-does-not-appear",
+      "differentiationFromClosest": "'why-a-shared-calendar-does-not-appear' focuses on iCloud/Google acceptance and SyncSelect; this article covers Microsoft 365 Group, Delegate, and EAS protocol boundaries."
+    },
+    {
+      "id": "P036",
+      "priorityTier": "tier2-documented-competitor-troubleshooting-or-workflow",
+      "provenanceType": "editorial_candidate_from_official_docs",
+      "observedEvidence": "CalendarBridge sitemap: https://calendarbridge.com/blog/microsoft-retiring-calendar-sync-between-teams-and-google-workspace/ & OneCal: https://www.onecal.io/blog/microsoft-retiring-google-workspace-teams-calendar-sync",
+      "primaryKeyword": "sync google workspace and microsoft teams outlook calendar iphone",
+      "slug": "coexisting-google-workspace-and-microsoft-teams-calendars-iphone",
+      "cluster": "C01-provider-sync-auth-architecture",
+      "distinctQuestion": "When your company uses Microsoft Teams for calls but Google Workspace for email/calendar (or vice versa), how do you see all meeting join links and free/busy status in one iPhone view?",
+      "uniquePracticalValue": "A step-by-step setup guide for dual Google Workspace + Microsoft Teams environments, showing how to prevent split invitations where internal colleagues book you on Teams while external clients book you on Google.",
+      "sourceUrls": [
+        "https://www.onecal.io/blog/microsoft-retiring-google-workspace-teams-calendar-sync",
+        "https://calendarbridge.com/blog/microsoft-retiring-calendar-sync-between-teams-and-google-workspace/"
+      ],
+      "existingOverlapSlug": "icloud-google-and-outlook-in-one-view",
+      "differentiationFromClosest": "Addresses the specific corporate split-stack problem (Microsoft Teams + Google Workspace) and meeting-link routing."
+    },
+    {
+      "id": "P037",
+      "priorityTier": "tier3-structured-domain-expansion",
+      "provenanceType": "editorial_candidate_from_official_docs",
+      "observedEvidence": "Morgen sitemap: https://www.morgen.so/blog-posts/fastmail-calendar & BusyMac: https://www.busymac.com/docs/faqs/100599-how-to-setup-sync-with-synology",
+      "primaryKeyword": "fastmail nextcloud synology caldav calendar iphone setup",
+      "slug": "fastmail-nextcloud-and-synology-caldav-calendar-setup-iphone",
+      "cluster": "C01-provider-sync-auth-architecture",
+      "distinctQuestion": "How do you connect self-hosted or independent CalDAV servers (Fastmail, Nextcloud, Synology Calendar, Baïkal) to an iPhone using app-specific passwords and principal discovery URLs?",
+      "uniquePracticalValue": "An exact server-URL and port reference table for Fastmail, Nextcloud (`/remote.php/dav/principals/users/...`), and Synology Calendar, plus how to troubleshoot SSL certificate and `.well-known/caldav` redirect failures on iOS.",
+      "sourceUrls": [
+        "https://www.morgen.so/blog-posts/fastmail-calendar",
+        "https://www.busymac.com/docs/faqs/100599-how-to-setup-sync-with-synology",
+        "https://www.busymac.com/docs/busycalios/70678-using-busycal-with-caldav"
+      ],
+      "existingOverlapSlug": "caldav-calendar-on-iphone",
+      "differentiationFromClosest": "'caldav-calendar-on-iphone' introduces generic CalDAV concepts; this page gives the concrete principal path patterns, `.well-known/caldav` redirect checks, and app-password requirements for Fastmail, Nextcloud, and Synology."
+    },
+    {
+      "id": "P038",
+      "priorityTier": "tier3-structured-domain-expansion",
+      "provenanceType": "editorial_candidate_from_official_docs",
+      "observedEvidence": "OneCal sitemap: https://www.onecal.io/blog/how-to-sync-class-calendars-into-one",
+      "primaryKeyword": "canvas blackboard schoology ics calendar feed iphone",
+      "slug": "canvas-blackboard-and-university-lms-calendar-feeds-on-iphone",
+      "cluster": "C06-household-family-custody-and-education",
+      "distinctQuestion": "How do you subscribe to a Canvas, Blackboard, or Moodle `.ics` assignment feed on iPhone, and why do 23:59 submission deadlines clutter your daytime lecture grid unless you pair them with study blocks?",
+      "uniquePracticalValue": "A walkthrough of subscribing to an LMS `.ics` feed in iOS Settings vs Google Calendar, plus a semester setup pattern that separates read-only 23:59 LMS assignment markers from editable lecture/lab and exam prep blocks.",
+      "sourceUrls": [
+        "https://www.onecal.io/blog/how-to-sync-class-calendars-into-one",
+        "https://www.busymac.com/docs/busycalios/70664-subscribing-to-public-calendars"
+      ],
+      "existingOverlapSlug": "what-calendar-sync-actually-does",
+      "differentiationFromClosest": "Solves the specific student/faculty LMS `.ics` feed workflow (read-only 23:59 assignment markers vs editable study blocks and A/B lab weeks)."
+    },
+    {
+      "id": "P039",
+      "priorityTier": "tier3-structured-domain-expansion",
+      "provenanceType": "editorial_candidate_from_official_docs",
+      "observedEvidence": "BusyMac sitemap: https://www.busymac.com/docs/faqs/98756-does-busycal-ios-support-syncing-attachments & https://www.busymac.com/docs/faqs/rich-text-notes-not-showing-after-export",
+      "primaryKeyword": "calendar event attachments and rich text notes iphone sync",
+      "slug": "calendar-event-attachments-and-formatted-notes-sync-limits-iphone",
+      "cluster": "C07-meetings-invitations-rsvp-and-booking",
+      "distinctQuestion": "Which calendar providers actually sync PDF/file attachments to an iPhone event versus stripping them or converting Google Drive / OneDrive attachments into plain URLs, and why do HTML tags sometimes appear in event notes?",
+      "uniquePracticalValue": "A provider attachment & description-field matrix (iCloud managed attachments vs Google Calendar Drive links vs Exchange/M365 attachments) and a best-practice rule for sharing pre-read documents with external guests.",
+      "sourceUrls": [
+        "https://www.busymac.com/docs/faqs/98756-does-busycal-ios-support-syncing-attachments",
+        "https://www.busymac.com/docs/faqs/rich-text-notes-not-showing-after-export",
+        "https://www.busymac.com/docs/faqs/157364-how-do-i-remove-a-file-attachment-from-an-event"
+      ],
+      "existingOverlapSlug": "sharing-one-event-not-your-calendar",
+      "differentiationFromClosest": "Focuses specifically on file attachments, Drive/OneDrive link permissions, and HTML-to-plain-text description stripping across calendar servers."
+    },
+    {
+      "id": "P040",
+      "priorityTier": "tier3-structured-domain-expansion",
+      "provenanceType": "editorial_candidate_from_official_docs",
+      "observedEvidence": "BusyMac sitemap: https://www.busymac.com/docs/busycalios/140000-shortcuts & https://www.busymac.com/docs/busycalios/139998-url-handler",
+      "primaryKeyword": "iphone shortcuts calendar automation batch create events template",
+      "slug": "apple-shortcuts-calendar-automation-project-templates-iphone",
+      "cluster": "C09-ios-system-widgets-shortcuts-and-calendrical-systems",
+      "distinctQuestion": "How can you use Apple's built-in Shortcuts app on iPhone to generate a multi-date event template (such as a 5-step client onboarding or trip preparation sequence) relative to a single anchor date?",
+      "uniquePracticalValue": "A complete, step-by-step Apple Shortcuts recipe ('Ask for Date' -> 'Adjust Date -7 days / -2 days / +1 day' -> 'Add New Event' to a specific calendar) with a safety preview step so you never batch-create events on the wrong calendar.",
+      "sourceUrls": [
+        "https://www.busymac.com/docs/busycalios/140000-shortcuts",
+        "https://support.apple.com/guide/iphone/calendar/"
+      ],
+      "existingOverlapSlug": "recurring-events-without-the-mess",
+      "differentiationFromClosest": "'recurring-events-without-the-mess' covers standard repeating rules for a single repeating event; this page solves multi-event project templating at fixed offsets (T-7d, T-2d, T+0, T+3d) using iOS Shortcuts."
+    },
+    {
+      "id": "P041",
+      "priorityTier": "tier3-structured-domain-expansion",
+      "provenanceType": "editorial_candidate_from_official_docs",
+      "observedEvidence": "Morgen sitemap: https://www.morgen.so/guides/how-to-use-calendar-sets-in-morgen & BusyMac: https://www.busymac.com/docs/busycalios/131439-calendar-sets & https://www.busymac.com/docs/busycal/116037-do-not-disturb",
+      "primaryKeyword": "ios focus filter calendar sets work personal switch iphone",
+      "slug": "ios-focus-filters-and-calendar-sets-work-personal-iphone",
+      "cluster": "C09-ios-system-widgets-shortcuts-and-calendrical-systems",
+      "distinctQuestion": "How do iOS Focus Filters (Work, Personal, Sleep, Do Not Disturb) compare with in-app Calendar Sets for hiding work calendars after 18:00 without disconnecting your accounts?",
+      "uniquePracticalValue": "A comparison matrix between system-level iOS Focus Calendar Filters and in-app Calendar Visibility Sets (effect on Lock Screen widgets, notification silencing, quick one-tap override to check Monday's first meeting on Sunday night).",
+      "sourceUrls": [
+        "https://www.morgen.so/guides/how-to-use-calendar-sets-in-morgen",
+        "https://www.busymac.com/docs/busycalios/131439-calendar-sets",
+        "https://flexibits.com/fantastical-ios/help/calendar-sets"
+      ],
+      "existingOverlapSlug": "work-and-personal-without-two-apps",
+      "differentiationFromClosest": "'work-and-personal-without-two-apps' explains keeping work and personal accounts in one app; this page details the mechanics of automated iOS Focus Filters versus manual Calendar Sets and their impact on widgets and alerts."
+    },
+    {
+      "id": "P042",
+      "priorityTier": "tier3-structured-domain-expansion",
+      "provenanceType": "editorial_candidate_from_official_docs",
+      "observedEvidence": "OneCal sitemap: https://www.onecal.io/use-cases/fractional-executive & https://www.onecal.io/use-cases/consultant",
+      "primaryKeyword": "fractional executive consultant multiple client calendars iphone",
+      "slug": "fractional-executive-and-consultant-multi-client-calendar-setup",
+      "cluster": "C07-meetings-invitations-rsvp-and-booking",
+      "distinctQuestion": "How should a fractional executive or consultant with three separate client Microsoft 365 / Google Workspace accounts manage their schedule on iPhone so Client A never sees Client B's name, yet nobody double-books them?",
+      "uniquePracticalValue": "A 3-tier architecture blueprint (Tier 1: Master mobile view on iPhone; Tier 2: Cross-tenant privacy-masked 'Busy' block rules; Tier 3: Client-specific outbound email identity check when sending invites) with a pre-flight privacy checklist.",
+      "sourceUrls": [
+        "https://www.onecal.io/use-cases/fractional-executive",
+        "https://www.onecal.io/use-cases/consultant",
+        "https://calendarbridge.com/blog/3-tips-for-managing-consultant-calendars/"
+      ],
+      "existingOverlapSlug": "onecal-alternative-iphone-calendar-view-or-sync",
+      "differentiationFromClosest": "'onecal-alternative-iphone-calendar-view-or-sync' compares unified viewing with two-way sync tools; this page provides the complete multi-tenant operational playbook for consultants holding 3+ client logins simultaneously."
+    },
+    {
+      "id": "P043",
+      "priorityTier": "tier3-structured-domain-expansion",
+      "provenanceType": "editorial_candidate_from_official_docs",
+      "observedEvidence": "Morgen sitemap: https://www.morgen.so/guides/how-to-Manage-recurring-tasks & BusyMac: https://www.busymac.com/docs/faqs/how-to-manage-recurring-tasks",
+      "primaryKeyword": "recurring task vs recurring calendar event completion rollover",
+      "slug": "recurring-tasks-versus-recurring-calendar-events-iphone",
+      "cluster": "C05-tasks-reminders-and-time-blocking",
+      "distinctQuestion": "When should a repeating responsibility (like paying rent, taking medication, or weekly expense reports) be a recurring task that rolls over until checked off versus a fixed recurring calendar event?",
+      "uniquePracticalValue": "A 5-rule decision table comparing Fixed Recurrence (calendar event passes into history whether done or not), Completion-Triggered Recurrence (next instance generated X days after check-off), and Calendar-Blocked Due Dates.",
+      "sourceUrls": [
+        "https://www.busymac.com/docs/faqs/how-to-manage-recurring-tasks",
+        "https://www.morgen.so/guides/recurring-due-dates"
+      ],
+      "existingOverlapSlug": "recurring-events-without-the-mess",
+      "differentiationFromClosest": "'recurring-events-without-the-mess' covers editing/splitting repeating calendar appointments; this page contrasts state-dependent recurring tasks (overdue rollover) against time-fixed calendar occurrences."
+    },
+    {
+      "id": "P044",
+      "priorityTier": "tier3-structured-domain-expansion",
+      "provenanceType": "editorial_candidate_from_official_docs",
+      "observedEvidence": "OneCal sitemap: https://www.onecal.io/blog/how-to-migrate-from-google-workspace-to-microsoft-365 & https://www.onecal.io/blog/how-to-migrate-from-microsoft-365-to-google-workspace",
+      "primaryKeyword": "migrate google calendar to microsoft 365 outlook recurring meetings",
+      "slug": "calendar-migration-checklist-google-workspace-microsoft-365-icloud",
+      "cluster": "C01-provider-sync-auth-architecture",
+      "distinctQuestion": "When migrating your historical and future calendar from Google Workspace to Microsoft 365 (or iCloud to Google), why do imported `.ics` files break organizer ownership on future recurring meetings?",
+      "uniquePracticalValue": "A pre- and post-migration verification checklist distinguishing historical archive events (safe for static `.ics` import) from active future multi-attendee recurring series (which must be recreated or re-invited so you remain the editable organizer).",
+      "sourceUrls": [
+        "https://www.onecal.io/blog/how-to-migrate-from-google-workspace-to-microsoft-365",
+        "https://www.onecal.io/blog/how-to-migrate-from-microsoft-365-to-google-workspace",
+        "https://www.busymac.com/docs/busycal/70618-exporting-importing-and-merging-calendars"
+      ],
+      "existingOverlapSlug": "calendar-export-ics-pdf-and-backup",
+      "differentiationFromClosest": "'calendar-export-ics-pdf-and-backup' covers creating an export/backup; this article addresses the post-import organizer-UID corruption problem when switching primary calendar providers."
+    },
+    {
+      "id": "P045",
+      "priorityTier": "tier3-structured-domain-expansion",
+      "provenanceType": "editorial_candidate_from_official_docs",
+      "observedEvidence": "BusyMac sitemap: https://www.busymac.com/docs/faqs/show-equinox-solstice-world-season-calendar & https://www.busymac.com/docs/busycal/70600-holidays",
+      "primaryKeyword": "add public holidays school terms sports fixtures ics iphone calendar",
+      "slug": "public-holidays-school-terms-and-sports-ics-calendars-iphone",
+      "cluster": "C06-household-family-custody-and-education",
+      "distinctQuestion": "How do you subscribe to regional public holidays, school district term dates, or sports team fixtures on iPhone without mixing read-only events into your personal calendar?",
+      "uniquePracticalValue": "A step-by-step guide explaining the critical difference between 'Subscribe to URL' (stays in its own toggleable layer and updates automatically when match times change) and 'Import ICS file' (dumps hundreds of permanent events into your personal calendar).",
+      "sourceUrls": [
+        "https://www.onecal.io/blog/how-to-add-holidays-to-google-calendar",
+        "https://www.busymac.com/docs/busycal/70600-holidays",
+        "https://www.busymac.com/docs/faqs/how-to-unsubscribe-or-delete-subscribed-calendars"
+      ],
+      "existingOverlapSlug": "what-calendar-sync-actually-does",
+      "differentiationFromClosest": "Provides the practical workflow for holiday, school-term, and sports fixture calendars, including how to cleanly remove an accidentally imported `.ics` file vs unsubscribing a feed."
+    },
+    {
+      "id": "P046",
+      "priorityTier": "tier3-structured-domain-expansion",
+      "provenanceType": "editorial_candidate_from_official_docs",
+      "observedEvidence": null,
+      "primaryKeyword": "heat index dew point uv outdoor workout calendar planning",
+      "slug": "summer-heat-humidity-and-uv-thresholds-for-calendar-planning",
+      "cluster": "C08-weather-daylight-and-environmental-planning",
+      "distinctQuestion": "Why is air temperature alone misleading when scheduling outdoor runs, kids' sports practices, or site work in summer, and how do you use morning/evening dew-point and UV windows in your calendar?",
+      "uniquePracticalValue": "A reference table comparing dry-bulb temperature, dew point (<15°C comfortable vs >20°C oppressive), and UV index curve by hour of day (10:00–16:00 solar peak), showing how shifting an outdoor block from 16:00 to 07:30 changes thermal load.",
+      "sourceUrls": [
+        "https://www.weather.gov/",
+        "https://support.apple.com/guide/iphone/weather/"
+      ],
+      "existingOverlapSlug": "planning-outdoors-without-being-rained-on",
+      "differentiationFromClosest": "'planning-outdoors-without-being-rained-on' focuses on precipitation and rain windows; this page covers thermal, humidity/dew-point, and solar UV scheduling constraints."
+    },
+    {
+      "id": "P047",
+      "priorityTier": "tier3-structured-domain-expansion",
+      "provenanceType": "editorial_candidate_from_official_docs",
+      "observedEvidence": null,
+      "primaryKeyword": "freezing rain black ice snow commute calendar buffer",
+      "slug": "winter-frost-snow-and-freezing-rain-calendar-buffers",
+      "cluster": "C08-weather-daylight-and-environmental-planning",
+      "distinctQuestion": "How do you read overnight temperature-plus-precipitation forecasts in your calendar to spot morning black-ice, frost, or snow delays the night before?",
+      "uniquePracticalValue": "A 4-condition overnight weather matrix (Dry sub-zero vs Wet + dropping below 0°C vs Freezing rain inversion vs Fresh snow accumulation) and a practical evening check for adjusting morning departure buffers and school drop-off times.",
+      "sourceUrls": [
+        "https://www.weather.gov/",
+        "https://dejal.com/weatherevents/"
+      ],
+      "existingOverlapSlug": "the-commute-and-the-sky",
+      "differentiationFromClosest": "'the-commute-and-the-sky' covers general commute weather; this page specifically addresses sub-zero phase transitions (rain-to-ice, overnight freeze after rain, snow clearance buffers)."
+    },
+    {
+      "id": "P048",
+      "priorityTier": "tier3-structured-domain-expansion",
+      "provenanceType": "editorial_candidate_from_official_docs",
+      "observedEvidence": "CalendarBridge sitemap: https://calendarbridge.com/blog/are-scheduling-links-rude-hint-not-if-you-follow-this-advice/ & https://calendarbridge.com/blog/eliminate-scheduling-polls-with-an-ai-calendar-assistant/",
+      "primaryKeyword": "when to send booking link vs propose 3 times vs meeting poll",
+      "slug": "booking-link-versus-offered-times-versus-group-meeting-poll",
+      "cluster": "C07-meetings-invitations-rsvp-and-booking",
+      "distinctQuestion": "When is sending a booking link appropriate versus writing three specific time slots in an email or running a multi-person meeting poll, and how do you hold offered slots so you don't double-book yourself while waiting for a reply?",
+      "uniquePracticalValue": "A 3-way etiquette & mechanics matrix (1-on-1 external booking link vs 3 curated time slots with temporary 'HOLD:' calendar blocks vs 5-person Doodle/Fantastical/Calendly poll) plus a timezone-explicit email snippet template.",
+      "sourceUrls": [
+        "https://calendarbridge.com/blog/are-scheduling-links-rude-hint-not-if-you-follow-this-advice/",
+        "https://flexibits.com/fantastical/scheduling",
+        "https://www.onecal.io/compare/doodle-alternative"
+      ],
+      "existingOverlapSlug": "booking-link-or-shared-calendar",
+      "differentiationFromClosest": "'booking-link-or-shared-calendar' compares booking links with full calendar sharing; this page solves outbound external scheduling (holding offered times in your calendar vs booking links vs group polls)."
+    },
+    {
+      "id": "P049",
+      "priorityTier": "tier3-structured-domain-expansion",
+      "provenanceType": "editorial_candidate_from_official_docs",
+      "observedEvidence": "Morgen sitemap: https://www.morgen.so/blog-posts/decline-meeting & Motion: https://www.usemotion.com/blog/how-to-reduce-meetings",
+      "primaryKeyword": "decline or propose new time calendar invite iphone etiquette",
+      "slug": "tentative-decline-and-propose-new-time-on-iphone-calendar",
+      "cluster": "C07-meetings-invitations-rsvp-and-booking",
+      "distinctQuestion": "What actually happens on the organizer's calendar when you tap 'Maybe' (Tentative), 'Decline', or 'Propose New Time' on an iPhone invite across Google, Exchange, and iCloud?",
+      "uniquePracticalValue": "A protocol compatibility table showing which providers support 'Propose New Time' (Exchange/M365 vs Google Calendar Web vs iCloud CalDAV), whether 'Declined' events stay visible as faded/strikethrough rows, and how to recover a declined invite.",
+      "sourceUrls": [
+        "https://www.morgen.so/blog-posts/decline-meeting",
+        "https://www.busymac.com/docs/busycalios/70673-meetings-and-invitations"
+      ],
+      "existingOverlapSlug": "keeping-track-of-who-replied",
+      "differentiationFromClosest": "'keeping-track-of-who-replied' is written from the meeting organizer's perspective checking guest RSVPs; this page is written from the invite recipient's perspective managing conflicts, 'Propose New Time' protocol support, and hidden declined events."
+    },
+    {
+      "id": "P050",
+      "priorityTier": "tier3-structured-domain-expansion",
+      "provenanceType": "editorial_candidate_from_official_docs",
+      "observedEvidence": "BusyMac sitemap: https://www.busymac.com/docs/busycalios/142141-event-text-style & Apple Accessibility docs",
+      "primaryKeyword": "make iphone calendar text larger readable bold high contrast",
+      "slug": "iphone-calendar-readability-dynamic-type-bold-text-contrast",
+      "cluster": "C09-ios-system-widgets-shortcuts-and-calendrical-systems",
+      "distinctQuestion": "How can you make an iPhone or iPad calendar easier to read (larger text, bold labels, high-contrast colors, or Per-App Accessibility settings) without making every other app on your phone oversized?",
+      "uniquePracticalValue": "A step-by-step guide to iOS Per-App Settings (`Settings > Accessibility > Per-App Settings > Add App`), a comparison of Month Grid dot-vs-text density vs List/Day view at large Dynamic Type sizes, and a color-blind-safe palette guide.",
+      "sourceUrls": [
+        "https://www.busymac.com/docs/busycalios/142141-event-text-style",
+        "https://support.apple.com/guide/iphone/calendar/"
+      ],
+      "existingOverlapSlug": "a-list-for-people-who-dislike-grids",
+      "differentiationFromClosest": "'a-list-for-people-who-dislike-grids' compares agenda/list view against grid views; this page covers iOS Per-App Dynamic Type scaling, Bold Text, Increase Contrast, and color-vision accessibility."
+    }
+  ]
+}

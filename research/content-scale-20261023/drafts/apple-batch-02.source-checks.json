@@ -1,0 +1,84 @@
+{
+  "reviewedAt": "2026-10-23",
+  "method": "Exact substantive Apple web bodies read; no paid APIs, no screenshots downloaded, no firsthand UI test.",
+  "sourcesRead": [
+    {
+      "key": "refresh",
+      "url": "https://support.apple.com/guide/calendar/refresh-calendars-icl1024/mac",
+      "title": "Apple: refresh calendars on Mac",
+      "readScope": "Complete substantive body63–107; subscription Auto-refresh, account Refresh Calendars/Push, manual Refresh Calendars, connection warning. Main subscription path corroborated with share-calendars body."
+    },
+    {
+      "key": "subscribe",
+      "url": "https://support.apple.com/guide/calendar/share-calendars-icl32362/mac",
+      "title": "Apple: subscribe to calendars and choose subscription location",
+      "readScope": "Substantive body89–204; subscription170–201 and CalDAV delegation153–169 read independently."
+    },
+    {
+      "key": "alerts",
+      "url": "https://support.apple.com/guide/calendar/manage-notifications-icl624fd1912/mac",
+      "title": "Apple: manage notifications from Calendar on Mac",
+      "readScope": "Complete substantive body79–174; custom alerts, one-alert Exchange limit, per-calendar Ignore alerts and system notification layers."
+    },
+    {
+      "key": "holidays",
+      "url": "https://support.apple.com/guide/calendar/show-holidays-and-birthdays-iclead4e0ec3/mac",
+      "title": "Apple: holiday calendars for different regions on Mac",
+      "readScope": "Substantive body87–122; regional calendar visibility, read-only subscription, File>New Holiday Calendar."
+    },
+    {
+      "key": "edit",
+      "url": "https://support.apple.com/guide/calendar/add-modify-or-delete-events-icalwr13-events/mac",
+      "title": "Apple: location, travel time and event details on Mac",
+      "readScope": "Complete substantive body89–167; travel-time field and explicit warning it does not update automatically after location changes."
+    },
+    {
+      "key": "delegates",
+      "url": "https://support.apple.com/guide/calendar/manage-shared-calendars-icl27527/mac",
+      "title": "Apple: manage calendar accounts you can access",
+      "readScope": "Substantive body89–149; Accounts>Delegation>Accounts I can access for CalDAV; publication/removal controls also reviewed."
+    },
+    {
+      "key": "siri",
+      "url": "https://support.apple.com/guide/calendar/use-siri-suggestions-iclc121e66ee/mac",
+      "title": "Apple: review and remove Siri event suggestions on Mac",
+      "readScope": "Complete substantive body59–96; suggestions from known providers, add/default/other calendar, Ignore, and disabling deletes unconfirmed suggestions."
+    },
+    {
+      "key": "delete",
+      "url": "https://support.apple.com/guide/icloud/delete-a-calendar-mmfbbb36ac/icloud",
+      "title": "Apple: delete a calendar on iCloud.com",
+      "readScope": "Complete substantive body303–319; associated events deleted across iCloud-enabled devices, at least one calendar remains, Actions>Delete Calendar."
+    },
+    {
+      "key": "stop",
+      "url": "https://support.apple.com/guide/icloud/stop-sharing-a-calendar-mm6b1a8f9f/icloud",
+      "title": "Apple: stop sharing instead of deleting an iCloud calendar",
+      "readScope": "Complete substantive body277–306 independently reviewed; Remove Person/Stop Sharing/Public Calendar off and Save."
+    },
+    {
+      "key": "iphone",
+      "url": "https://support.apple.com/guide/iphone/create-and-edit-events-in-calendar-iph3d110f84/ios",
+      "title": "Apple: add and remove event attachments on iPhone",
+      "readScope": "Substantive attachment section1149–1164; Edit>Add attachment, Files browsing and Done; removal swipes left then Remove."
+    },
+    {
+      "key": "invites",
+      "url": "https://support.apple.com/guide/calendar/send-and-receive-invitations-to-events-icl1016/mac",
+      "title": "Apple: invite people and check availability on Mac",
+      "readScope": "Complete substantive body63–141; correct name/address completion, provider-dependent Check Availability and Next Available Time, Send."
+    }
+  ],
+  "excludedCandidates": [
+    {
+      "candidate": "iCloud web default destination",
+      "mergeTarget": "event-saved-to-wrong-calendar",
+      "reason": "Existing full article already resolves defaults versus existing records. A different platform-specific menu alone does not earn a new canonical."
+    }
+  ],
+  "remainingOverlapCautions": [
+    "Mac subscription location and refresh are different outcomes; keep recipient-device setup separate from freshness, and crosslink if approved.",
+    "Per-calendar mute and custom-action choice are separate native Mac tasks; avoid expanding both into generic notification troubleshooting.",
+    "Apple attachment article is native file-version/attachment procedure, not a rewording of Google Drive access troubleshooting."
+  ]
+}

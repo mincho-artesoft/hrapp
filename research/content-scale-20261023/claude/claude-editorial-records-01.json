@@ -1,0 +1,197 @@
+[
+  {
+    "slug": "google-calendar-working-hours-location-out-of-office-focus-time",
+    "family": "planning",
+    "primaryKeyword": "Google Calendar working location vs out of office",
+    "intentKey": "google-choose-availability-signal-hours-location-ooo-focus",
+    "readerOutcome": "Chooses the correct Google Workspace availability signal for each situation and avoids unintended meeting declines.",
+    "distinctValue": "Four-signal decision matrix (answers / declines? / who sees / prerequisites) plus an illustrative week that keeps an accepted meeting inside focus time.",
+    "evidence": [
+      { "url": "https://support.google.com/calendar/answer/7638168?hl=en&co=GENIE.Platform%3DDesktop", "note": "Working hours path, Add for multiple periods, weekly-only, auto-adjust to local time, revert advice; out-of-office creation, partial day, optional decline settings/message, Gmail status conditions; admin may not enable.", "type": "primary", "verifiedAt": "2026-10-23" },
+      { "url": "https://support.google.com/calendar/answer/18616218?hl=en&co=GENIE.Platform%3DDesktop", "note": "Eligible editions, requires working hours, default/one-day/part-day/delete steps, visible to people with free/busy access.", "type": "primary", "verifiedAt": "2026-10-23" },
+      { "url": "https://support.google.com/calendar/answer/11190973?hl=en", "note": "Focus time editions, Day/Week view only, auto-decline new and existing by default or new only, Chat Do not disturb default and under-24-hour limit.", "type": "primary", "verifiedAt": "2026-10-23" }
+    ],
+    "review": { "status": "draft", "reviewer": "Claude", "checkedAt": "2026-10-23" },
+    "existingOverlapSlug": "work-and-personal-without-two-apps",
+    "boundary": "Google Workspace availability signals only; no Cloud Calendars control claimed; Outlook statuses are a separate page."
+  },
+  {
+    "slug": "google-calendar-event-visibility-private-public-default",
+    "family": "sharing",
+    "primaryKeyword": "Google Calendar private event who can see",
+    "intentKey": "google-event-visibility-by-permission-level",
+    "readerOutcome": "Predicts what each person with a given calendar permission sees for a Default, Public or Private event, including Busy vs Free private events.",
+    "distinctValue": "Permission × visibility matrix derived from Google's textual definitions; worked example with four viewers; flags that Public exposes details to busy-only viewers.",
+    "evidence": [
+      { "url": "https://support.google.com/calendar/answer/34580?hl=en", "note": "Definitions of Default, Public (details even when calendar is free/busy only) and Private (hidden except 'Make changes and see event details' and higher); guests control their own copy; untimed tasks always private.", "type": "primary", "verifiedAt": "2026-10-23" },
+      { "url": "https://support.google.com/calendar/answer/15716974?hl=en", "note": "Exact permission level names; private Busy shows as block, private Free does not appear; broader permissions win; admin may limit.", "type": "primary", "verifiedAt": "2026-10-23" }
+    ],
+    "review": { "status": "draft", "reviewer": "Claude", "checkedAt": "2026-10-23" },
+    "existingOverlapSlug": "who-can-see-what-in-google-calendar",
+    "boundary": "Event-level visibility; calendar-level permission choice stays on the existing page. Reviewer note: Google's own HTML table rendered as ambiguous checkmarks in the fetch; the matrix uses the prose definitions instead."
+  },
+  {
+    "slug": "google-appointment-schedule-which-calendars-block-booking-slots",
+    "family": "planning",
+    "primaryKeyword": "Google appointment schedule check calendars for conflicts",
+    "intentKey": "google-appointment-schedule-slot-availability-diagnosis",
+    "readerOutcome": "Finds why a booking slot is offered or hidden and fixes the responsible calendar, event status or rule.",
+    "distinctValue": "Symptom → cause → fix table, a tutor worked example, and an explicit note that two Google pages describe Maybe/tentative inconsistently.",
+    "evidence": [
+      { "url": "https://support.google.com/calendar/answer/16287054?hl=en", "note": "Primary/owned/managed/subscribed calendars eligible; select under Edit appointment schedule → Calendars; Busy and all-day Busy block; Yes/Maybe block; secondary calendars need eligible plan; shared-calendar schedules may not allow selection.", "type": "primary", "verifiedAt": "2026-10-23" },
+      { "url": "https://support.google.com/calendar/answer/11423292?hl=en", "note": "Adjusted availability, Unavailable all day, 4-hour default minimum notice, max bookings per day, buffer; unaccepted or tentative events do not block.", "type": "primary", "verifiedAt": "2026-10-23" },
+      { "url": "https://support.google.com/calendar/answer/10729749?hl=en", "note": "Personal or Workspace account; some features need eligible subscription; check calendars for availability; booked-appointment settings.", "type": "primary", "verifiedAt": "2026-10-23" }
+    ],
+    "review": { "status": "draft", "reviewer": "Claude", "checkedAt": "2026-10-23" },
+    "existingOverlapSlug": "booking-link-or-shared-calendar",
+    "boundary": "Availability mechanics only; payments, email verification and cancellation are separate candidates."
+  },
+  {
+    "slug": "google-calendar-change-event-owner-before-handover",
+    "family": "sharing",
+    "primaryKeyword": "Google Calendar change event owner",
+    "intentKey": "google-transfer-event-organiser-handover",
+    "readerOutcome": "Hands meetings to a successor so they remain owned and Meet links keep working after the original organiser leaves.",
+    "distinctValue": "Handover options matrix (accepted transfer / pending / non-primary calendar / >200 guests) with Meet-policy consequences and a role-change worked example.",
+    "evidence": [
+      { "url": "https://support.google.com/calendar/answer/78739?hl=en", "note": "Options → Change owner; email link; 60 days to accept, original remains owner until then; same organisation for work/school; >200 guests cannot be transferred; Meet policies affected.", "type": "primary", "verifiedAt": "2026-10-23" },
+      { "url": "https://support.google.com/meet/answer/10003792?hl=en", "note": "Primary-calendar owner becomes organiser and Meet features follow their policies (recording example); non-primary calendar keeps organiser; link stops working if original organiser leaves the organisation.", "type": "primary", "verifiedAt": "2026-10-23" }
+    ],
+    "review": { "status": "draft", "reviewer": "Claude", "checkedAt": "2026-10-23" },
+    "existingOverlapSlug": "event-saved-to-wrong-calendar",
+    "boundary": "Event organiser transfer only. Whole secondary-calendar ownership is Codex's assignment and excluded. Recurring-series transfer behaviour is not stated in the source; article only advises checking several occurrences."
+  },
+  {
+    "slug": "google-calendar-find-a-time-blank-is-not-free",
+    "family": "planning",
+    "primaryKeyword": "Google Calendar find a time not showing availability",
+    "intentKey": "google-find-a-time-interpret-empty-availability",
+    "readerOutcome": "Distinguishes a genuinely free guest from one whose calendar is not visible before sending an invitation.",
+    "distinctValue": "Five-check diagnostic for an empty Find a time column, combining sharing requirement, private-Free invisibility and the 50-guest cap.",
+    "evidence": [
+      { "url": "https://support.google.com/calendar/answer/6294878?hl=en", "note": "Create → Event → Find a time; up to 50 guests; guests must have shared calendars; request to share; room booking; guest filters; Day view.", "type": "primary", "verifiedAt": "2026-10-23" },
+      { "url": "https://support.google.com/calendar/answer/15716974?hl=en", "note": "Free/busy permission; private Free events do not appear; admin limits.", "type": "primary", "verifiedAt": "2026-10-23" },
+      { "url": "https://support.google.com/calendar/answer/34580?hl=en", "note": "Private visibility hides details except from higher permission levels.", "type": "primary", "verifiedAt": "2026-10-23" },
+      { "url": "https://support.google.com/calendar/answer/18616218?hl=en&co=GENIE.Platform%3DDesktop", "note": "Working location visible to people with free/busy access.", "type": "primary", "verifiedAt": "2026-10-23" }
+    ],
+    "review": { "status": "draft", "reviewer": "Claude", "checkedAt": "2026-10-23" },
+    "existingOverlapSlug": "booking-link-or-shared-calendar",
+    "boundary": "Organiser reading of Find a time; not booking pages, room policy or Gemini-suggested times. The 'not on a shared calendar' and 'external guest' rows are reasoning from the sharing requirement, not separate Google statements."
+  },
+  {
+    "slug": "outlook-calendar-delegate-or-editor-permission",
+    "family": "sharing",
+    "primaryKeyword": "Outlook calendar delegate vs editor",
+    "intentKey": "outlook-grant-can-edit-or-delegate",
+    "readerOutcome": "Grants the right Outlook access to a helper and configures private-item and meeting-request routing deliberately.",
+    "distinctValue": "Job-to-permission matrix, classic Reviewer/Author/Editor explanation, unsupported-setup warnings (security group, many Editors) and a director/two-helpers example.",
+    "evidence": [
+      { "url": "https://support.microsoft.com/en-us/outlook/sharing/share-and-access-a-calendar-with-edit-or-delegate-permissions-in-outlook", "note": "Can edit vs Delegate definitions; three meeting-request routing choices; Let delegate view private events; manage categories; no editor/delegate outside organisation; accepting adds calendar to list.", "type": "primary", "verifiedAt": "2026-10-23" },
+      { "url": "https://support.microsoft.com/en-gb/outlook/sharing/about-delegates-allow-someone-to-manage-your-mail-and-calendar-in-outlook", "note": "Reviewer/Author/Editor definitions; delegate access requires Microsoft 365 or Exchange Online work/school account.", "type": "primary", "verifiedAt": "2026-10-23" },
+      { "url": "https://support.microsoft.com/en-us/outlook/best-practices-for-organizations-when-using-the-outlook-calendar", "note": "One Editor delegate recommended; tested up to four; security group as delegate unsupported.", "type": "primary", "verifiedAt": "2026-10-23" }
+    ],
+    "review": { "status": "draft", "reviewer": "Claude", "checkedAt": "2026-10-23" },
+    "existingOverlapSlug": "a-calendar-that-is-yours-to-share",
+    "boundary": "Owner's grant decision; acting on behalf is the companion page. Reviewer note: the fetch returned the routing labels in condensed form; confirm exact current UI labels before approval."
+  },
+  {
+    "slug": "outlook-schedule-meeting-on-behalf-of-someone",
+    "family": "sharing",
+    "primaryKeyword": "Outlook send meeting on behalf of manager",
+    "intentKey": "outlook-delegate-create-meeting-on-owner-calendar",
+    "readerOutcome": "Creates a meeting on the owner's calendar correctly the first time and knows how to recover if it was filed on the wrong calendar.",
+    "distinctValue": "Delegate checklist centred on the irreversible Save to calendar choice, sender identity and response handling, with a mis-filing recovery path.",
+    "evidence": [
+      { "url": "https://support.microsoft.com/en-us/outlook/manage-someone-else-s-calendar-in-outlook-on-the-web", "note": "Permission prerequisite; accept to add calendar; Save to calendar lists only calendars with editor/delegate permission; invitation shows from you on owner's behalf; requests go to delegate; calendar cannot be changed after sending.", "type": "primary", "verifiedAt": "2026-10-23" },
+      { "url": "https://support.microsoft.com/en-gb/outlook/sharing/about-delegates-allow-someone-to-manage-your-mail-and-calendar-in-outlook", "note": "Delegate sends on owner's behalf; Send As only set by organisation admin.", "type": "primary", "verifiedAt": "2026-10-23" },
+      { "url": "https://support.microsoft.com/en-us/outlook/best-practices-for-organizations-when-using-the-outlook-calendar", "note": "Process requests by accepting/declining; use Remove from Calendar for cancellations.", "type": "primary", "verifiedAt": "2026-10-23" }
+    ],
+    "review": { "status": "draft", "reviewer": "Claude", "checkedAt": "2026-10-23" },
+    "existingOverlapSlug": "what-guests-can-do-to-your-event",
+    "boundary": "Helper's procedure in Outlook on the web; the cancel-and-recreate recovery is an inference from Microsoft's 'cannot change the calendar' statement."
+  },
+  {
+    "slug": "outlook-calendar-sharing-levels-busy-titles-details",
+    "family": "sharing",
+    "primaryKeyword": "Outlook share calendar can view when I'm busy",
+    "intentKey": "outlook-choose-internal-sharing-level",
+    "readerOutcome": "Chooses the minimum Outlook sharing level and catches the My organization default after removing someone.",
+    "distinctValue": "One-entry, three-viewer worked example; level-by-field matrix; removal fallback to My organization; ActiveSync read-only rejection explained.",
+    "evidence": [
+      { "url": "https://support.microsoft.com/en-us/outlook/share-your-calendar-in-outlook-on-the-web", "note": "Level names and meanings; edit/delegate only inside organisation; sharing may be limited by organisation; Sharing and permissions path; private items show time only; My organization entry.", "type": "primary", "verifiedAt": "2026-10-23" },
+      { "url": "https://support.microsoft.com/en-us/outlook/calendar-sharing-in-microsoft-365", "note": "New model copy and instant sync, supported clients, EWS excluded; Custom label for PowerShell permissions; removal falls back to My Organization default; one-year history; EAS read-only local changes rejected.", "type": "primary", "verifiedAt": "2026-10-23" },
+      { "url": "https://support.microsoft.com/en-us/outlook/best-practices-for-organizations-when-using-the-outlook-calendar", "note": "Prefer simplified levels; custom levels unsupported in new model sharing.", "type": "primary", "verifiedAt": "2026-10-23" }
+    ],
+    "review": { "status": "draft", "reviewer": "Claude", "checkedAt": "2026-10-23" },
+    "existingOverlapSlug": "who-can-see-what-in-google-calendar",
+    "boundary": "Internal Microsoft 365 sharing; external sharing is a separate page. 'Notes and attachments not shown at titles-and-locations level' is inferred from the level's name and the existence of a higher 'all details' level."
+  },
+  {
+    "slug": "outlook-share-calendar-outside-organization",
+    "family": "sharing",
+    "primaryKeyword": "share Outlook calendar with external user",
+    "intentKey": "outlook-external-calendar-sharing-layers",
+    "readerOutcome": "Identifies whether the tenant admin, Microsoft's external rule, or the recipient's service is limiting an external calendar share.",
+    "distinctValue": "Three-layer model (admin / user / recipient service) with a symptom-to-layer table and a freelancer example.",
+    "evidence": [
+      { "url": "https://learn.microsoft.com/en-us/microsoft-365/admin/manage/share-calendars-with-external-users", "note": "Admin center path; external Office 365/Exchange sharing then anonymous email-invitation option; three anonymous detail levels; users decide how much to share; external people receive a URL; on-prem federation note. Page updated 2026-05-06 per metadata.", "type": "primary", "verifiedAt": "2026-10-23" },
+      { "url": "https://support.microsoft.com/en-us/outlook/share-your-calendar-in-outlook-on-the-web", "note": "Edit/delegate only internal; sharing may be limited to organisation; HTML/ICS publishing read-only.", "type": "primary", "verifiedAt": "2026-10-23" },
+      { "url": "https://support.microsoft.com/en-us/outlook/calendar-sharing-in-microsoft-365", "note": "External share generates ICS URL; sync roughly every three hours or 24–48 hours depending on recipient service.", "type": "primary", "verifiedAt": "2026-10-23" }
+    ],
+    "review": { "status": "draft", "reviewer": "Claude", "checkedAt": "2026-10-23" },
+    "existingOverlapSlug": "exchange-calendars-on-an-iphone",
+    "boundary": "Tenant/user/recipient restrictions on calendar sharing; not app consent; not website publishing."
+  },
+  {
+    "slug": "outlook-show-as-free-busy-tentative-working-elsewhere",
+    "family": "planning",
+    "primaryKeyword": "Outlook show as working elsewhere vs out of office",
+    "intentKey": "outlook-choose-show-as-status-and-auto-reply-calendar-options",
+    "readerOutcome": "Sets each Outlook item's availability correctly and uses automatic-reply calendar options without cancelling meetings unintentionally.",
+    "distinctValue": "Situation-to-status table, illustrative week, and an explicit warning about 'Decline and cancel my meetings'.",
+    "evidence": [
+      { "url": "https://support.microsoft.com/en-us/office/manage-your-availability-in-your-outlook-calendar-fbbf6d5c-bdb8-4018-a2e0-2e2f60642117", "note": "Default Busy in classic Outlook; Show As right-click steps in classic and new Outlook; affects free/busy others see.", "type": "primary", "verifiedAt": "2026-10-23" },
+      { "url": "https://learn.microsoft.com/en-us/office/vba/api/Outlook.OlBusyStatus", "note": "Definitions of Free, Tentative, Busy, Out of office, Working elsewhere.", "type": "primary", "verifiedAt": "2026-10-23" },
+      { "url": "https://support.microsoft.com/en-gb/outlook/get-started-with-the-outlook-calendar", "note": "Appointments can be marked free, busy, tentative, out of the office or working elsewhere.", "type": "primary", "verifiedAt": "2026-10-23" },
+      { "url": "https://support.microsoft.com/en-US/Outlook/send-automatic-out-of-office-replies-from-outlook-com-or-outlook-on-the-web", "note": "Three calendar options in automatic replies; time period; replies outside organisation.", "type": "primary", "verifiedAt": "2026-10-23" },
+      { "url": "https://support.microsoft.com/en-us/outlook/use-the-scheduling-assistant-and-room-finder-for-meetings-in-outlook", "note": "Busy dark blue, tentative light blue hashed, outside working hours light grey.", "type": "primary", "verifiedAt": "2026-10-23" }
+    ],
+    "review": { "status": "draft", "reviewer": "Claude", "checkedAt": "2026-10-23" },
+    "existingOverlapSlug": "what-an-all-day-event-really-means",
+    "boundary": "Outlook statuses and automatic-reply calendar options; Google signals are a separate page. Exact effect of 'Decline and cancel my meetings' is described only by its label."
+  },
+  {
+    "slug": "outlook-forward-meeting-and-allow-forwarding",
+    "family": "sharing",
+    "primaryKeyword": "Outlook prevent forwarding meeting invite",
+    "intentKey": "outlook-meeting-forwarding-control-and-limits",
+    "readerOutcome": "Controls attendee forwarding of Outlook meetings and understands what the setting cannot prevent.",
+    "distinctValue": "Controls-and-limits table, recruitment-panel example, version support list and the delegate/shared-calendar edge cases.",
+    "evidence": [
+      { "url": "https://support.microsoft.com/en-us/outlook/calendar/forward-a-meeting-in-outlook", "note": "Forward appears from organiser; organiser notified; unavailable if Allow forwarding disabled; Just this one vs entire series; organiser should add attendee and Send Update.", "type": "primary", "verifiedAt": "2026-10-23" },
+      { "url": "https://support.microsoft.com/en-US/Outlook/prevent-forwarding-of-a-meeting", "note": "Response Options → Allow Forwarding; on by default; version support; mobile not supported; reply/reply all and copy still possible; older/third-party servers cannot prevent.", "type": "primary", "verifiedAt": "2026-10-23" },
+      { "url": "https://support.microsoft.com/en-us/Support/known-issues/allow-forwarding-option-is-missing-from-response-options-for-a-shared-calendar", "note": "Missing option for shared calendar before Version 2008 Build 13127.20296; workaround Download Shared folder.", "type": "primary", "verifiedAt": "2026-10-23" },
+      { "url": "https://support.microsoft.com/en-us/outlook/best-practices-for-organizations-when-using-the-outlook-calendar", "note": "Delegates do not receive Meeting Forward Notifications; organisers should not forward own meetings.", "type": "primary", "verifiedAt": "2026-10-23" },
+      { "url": "https://support.microsoft.com/en-gb/outlook/get-started-with-the-outlook-calendar", "note": "Drag meeting to Mail to send information; email does not add recipients.", "type": "primary", "verifiedAt": "2026-10-23" }
+    ],
+    "review": { "status": "draft", "reviewer": "Claude", "checkedAt": "2026-10-23" },
+    "existingOverlapSlug": "what-guests-can-do-to-your-event",
+    "boundary": "Outlook forwarding only; Google guest permissions remain on the existing page."
+  },
+  {
+    "slug": "outlook-group-calendar-versus-shared-calendar",
+    "family": "sharing",
+    "primaryKeyword": "Microsoft 365 group calendar vs shared calendar",
+    "intentKey": "outlook-choose-group-calendar-or-owned-shared-calendar",
+    "readerOutcome": "Places team events on the calendar type whose edit/cancel and invitation behaviour matches the event.",
+    "distinctValue": "Comparison of edit/cancel rights and invitation defaults, with an events-team split example.",
+    "evidence": [
+      { "url": "https://support.microsoft.com/en-us/outlook/people/use-a-group-calendar-in-outlook-to-schedule-and-edit-events", "note": "Every member can schedule/edit/see; invitations not sent to members by default; add group as attendee or Invite members; creator auto-added; anyone in group can cancel group-calendar events.", "type": "primary", "verifiedAt": "2026-10-23" },
+      { "url": "https://support.microsoft.com/en-us/outlook/share-your-calendar-in-outlook-on-the-web", "note": "Sharing levels for owned calendar; edit/delegate internal only.", "type": "primary", "verifiedAt": "2026-10-23" },
+      { "url": "https://support.microsoft.com/en-us/outlook/best-practices-for-organizations-when-using-the-outlook-calendar", "note": "Security group as delegate unsupported.", "type": "primary", "verifiedAt": "2026-10-23" }
+    ],
+    "review": { "status": "draft", "reviewer": "Claude", "checkedAt": "2026-10-23" },
+    "existingOverlapSlug": "a-calendar-that-is-yours-to-share",
+    "boundary": "Microsoft 365 group calendar semantics; not Google Groups, not Cloud Calendars roles. Mobile/guest behaviour not documented in the source and not claimed."
+  }
+]

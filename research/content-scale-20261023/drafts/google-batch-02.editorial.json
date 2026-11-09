@@ -1,0 +1,402 @@
+{
+  "schemaVersion": 1,
+  "createdAt": "2026-10-23",
+  "articles": [
+    {
+      "slug": "google-appointment-payments-stripe-refunds",
+      "primaryKeyword": "Google Calendar appointment payment refund",
+      "intentKey": "google/appointment-schedule/payment-cancellation-refund",
+      "readerOutcome": "A cancelled appointment is not automatically a refunded payment. If you use Google Calendar’s eligible paid appointment schedules, trace the booking and the Stripe payment as separate records. That distinction matters both when introducing a paid service and when a customer later cancels.",
+      "distinctValue": "Two-record cancellation/refund ledger and an account-responsibility preflight.",
+      "proposedFamily": "sharing",
+      "proposedIntent": "unify",
+      "language": "en-US",
+      "evidence": [
+        {
+          "type": "primary",
+          "url": "https://support.google.com/calendar/answer/13762729?hl=en",
+          "verifiedAt": "2026-10-23",
+          "note": "Complete body read: eligible Workspace/administrator gate; Stripe connection; required payment setup; cancellation does not automatically refund; Stripe handles refund; disconnect removes payment requirement from all schedules.",
+          "retrievedAt": "2026-10-23"
+        }
+      ],
+      "review": {
+        "status": "draft",
+        "reason": "Independent editorial/source/overlap review before publication."
+      },
+      "adjacentArticlesRead": [
+        "booking-link-or-shared-calendar",
+        "keeping-track-of-who-replied",
+        "calendar-event-or-room-reservation"
+      ],
+      "existingOverlapSlug": "booking-link-or-shared-calendar",
+      "canonicalDecision": "proposed_separate_complete_provider_task_pending_review",
+      "overlapReview": "Baseline booking guide chooses a scheduling method; Claude cancellation guide reopens slots. Neither owns Stripe refund reconciliation.",
+      "firsthandTesting": false,
+      "originalExampleStatus": "Fictional scenario, calculation or checklist created for this article, not an observed customer result."
+    },
+    {
+      "slug": "google-appointment-email-verification",
+      "primaryKeyword": "Google appointment schedule email verification",
+      "intentKey": "google/appointment-schedule/guest-email-verification",
+      "readerOutcome": "Google appointment email verification checks access to an email inbox during booking. The journey differs for someone already signed into a Google Account. Check those two paths before telling every customer to wait for a PIN or assuming that one verification step establishes a person’s identity.",
+      "distinctValue": "Two-path guest worksheet and privacy-conscious failure-stage diagnosis.",
+      "proposedFamily": "sharing",
+      "proposedIntent": "unify",
+      "language": "en-US",
+      "evidence": [
+        {
+          "type": "primary",
+          "url": "https://support.google.com/calendar/answer/11902347?hl=en",
+          "verifiedAt": "2026-10-23",
+          "note": "Complete body read: eligible Workspace, verification initially off, schedule booking-form checkbox, signed-in Google users not asked for PIN, guest inbox PIN workflow.",
+          "retrievedAt": "2026-10-23"
+        }
+      ],
+      "review": {
+        "status": "draft",
+        "reason": "Independent editorial/source/overlap review before publication."
+      },
+      "adjacentArticlesRead": [
+        "booking-link-or-shared-calendar",
+        "keeping-track-of-who-replied",
+        "sharing-one-event-not-your-calendar"
+      ],
+      "existingOverlapSlug": "booking-link-or-shared-calendar",
+      "canonicalDecision": "proposed_separate_complete_provider_task_pending_review",
+      "overlapReview": "Existing and Claude booking pages do not explain signed-in bypass versus guest PIN behavior.",
+      "firsthandTesting": false,
+      "originalExampleStatus": "Fictional scenario, calculation or checklist created for this article, not an observed customer result."
+    },
+    {
+      "slug": "google-booking-page-link-button-embed",
+      "primaryKeyword": "Google appointment schedule website embed",
+      "intentKey": "google/appointment-schedule/publication-destination",
+      "readerOutcome": "A direct booking link, a website button and an inline booking page can lead visitors into the same scheduling service through different presentations. Choose the destination first: one specific service or all booking pages on the primary calendar. Then inspect what a public visitor will see.",
+      "distinctValue": "Specific-service versus all-services publishing brief and a maintainable distribution map.",
+      "proposedFamily": "sharing",
+      "proposedIntent": "unify",
+      "language": "en-US",
+      "evidence": [
+        {
+          "type": "primary",
+          "url": "https://support.google.com/calendar/answer/10733297?hl=en",
+          "verifiedAt": "2026-10-23",
+          "note": "Complete body read: booking-page public identity; direct link, popup button and inline embed; one booking page versus all booking pages; calendar-list visibility does not hide the booking page.",
+          "retrievedAt": "2026-10-23"
+        }
+      ],
+      "review": {
+        "status": "draft",
+        "reason": "Independent editorial/source/overlap review before publication."
+      },
+      "adjacentArticlesRead": [
+        "booking-link-or-shared-calendar",
+        "the-secret-address-of-a-google-calendar",
+        "sharing-one-event-not-your-calendar"
+      ],
+      "existingOverlapSlug": "booking-link-or-shared-calendar",
+      "canonicalDecision": "proposed_separate_complete_provider_task_pending_review",
+      "overlapReview": "Baseline already states booking pages are public; this is the separate link/popup/inline publication task. Claude public embed covers calendar grids, not booking forms.",
+      "firsthandTesting": false,
+      "originalExampleStatus": "Fictional scenario, calculation or checklist created for this article, not an observed customer result."
+    },
+    {
+      "slug": "google-calendar-time-insights-counted-meetings",
+      "primaryKeyword": "Google Calendar Time Insights meetings not counted",
+      "intentKey": "google/time-insights/meeting-total-reconciliation",
+      "readerOutcome": "Time Insights is a calendar-derived meeting view, not a measurement of everything you worked on. If its total differs from the hours you counted manually, first check qualifying events, the displayed range and overlaps. A larger number of calendar blocks does not necessarily mean more counted meeting time.",
+      "distinctValue": "Calculated overlapping-meeting example and a qualifying-event audit.",
+      "proposedFamily": "planning",
+      "proposedIntent": "editing",
+      "language": "en-US",
+      "evidence": [
+        {
+          "type": "primary",
+          "url": "https://support.google.com/calendar/answer/10738043?hl=en",
+          "verifiedAt": "2026-10-23",
+          "note": "Complete body read: primary-calendar and computer access; qualifying Yes/Busy/guest/duration criteria; range-dependent averages; overlapping meeting intervals counted once. Worked 90-minute example is author arithmetic, not runtime observation.",
+          "retrievedAt": "2026-10-23"
+        }
+      ],
+      "review": {
+        "status": "draft",
+        "reason": "Independent editorial/source/overlap review before publication."
+      },
+      "adjacentArticlesRead": [
+        "planning-a-week-in-ten-minutes",
+        "automatic-time-blocking-versus-manual-calendar",
+        "who-can-see-what-in-google-calendar"
+      ],
+      "existingOverlapSlug": "planning-a-week-in-ten-minutes",
+      "canonicalDecision": "proposed_separate_complete_provider_task_pending_review",
+      "overlapReview": "Existing weekly review is forward planning; this reconciles a specific Google analytics definition.",
+      "firsthandTesting": false,
+      "originalExampleStatus": "Fictional scenario, calculation or checklist created for this article, not an observed customer result."
+    },
+    {
+      "slug": "google-calendar-offline-desktop-limits",
+      "primaryKeyword": "Google Calendar offline desktop",
+      "intentKey": "google/calendar/desktop-offline-readiness",
+      "readerOutcome": "Google Calendar’s documented offline desktop workflow is for reading a prepared calendar in Chrome. It does not provide the same editing behavior as every mobile app. Prepare and verify the browser while connected, then keep unavailable actions out of the plan.",
+      "distinctValue": "Preflight, disconnected check and reconnect decision path for a specific Chrome workflow.",
+      "proposedFamily": "planning",
+      "proposedIntent": "editing",
+      "language": "en-US",
+      "evidence": [
+        {
+          "type": "primary",
+          "url": "https://support.google.com/calendar/answer/1340696?hl=en",
+          "verifiedAt": "2026-10-23",
+          "note": "Complete computer body read: Chrome offline setup/reload/readiness, previous four weeks and future view, no creation/edit/guest email/tasks, clearing cache removes support. Mobile behavior not generalized.",
+          "retrievedAt": "2026-10-23"
+        }
+      ],
+      "review": {
+        "status": "draft",
+        "reason": "Independent editorial/source/overlap review before publication."
+      },
+      "adjacentArticlesRead": [
+        "what-calendar-sync-actually-does",
+        "calendar-export-ics-pdf-and-backup",
+        "time-zones-and-the-flight-you-booked"
+      ],
+      "existingOverlapSlug": "what-calendar-sync-actually-does",
+      "canonicalDecision": "proposed_separate_complete_provider_task_pending_review",
+      "overlapReview": "Existing sync guide describes iPhone offline behavior and mobile-browser limits; desktop Chrome preparation and read-only limits are distinct.",
+      "firsthandTesting": false,
+      "originalExampleStatus": "Fictional scenario, calculation or checklist created for this article, not an observed customer result."
+    },
+    {
+      "slug": "google-calendar-keyboard-shortcuts-workflow",
+      "primaryKeyword": "Google Calendar keyboard shortcuts create event",
+      "intentKey": "google/calendar/keyboard/verified-entry-routine",
+      "readerOutcome": "A useful keyboard routine ends with the intended saved event, not just fewer keystrokes. Enable Google Calendar’s desktop shortcuts, practice with a disposable appointment and check where focus is before using a single-letter command. Keep editing and deletion out of an unverified navigation sequence.",
+      "distinctValue": "Written acceptance criteria and a low-risk create/save/reopen rehearsal.",
+      "proposedFamily": "planning",
+      "proposedIntent": "editing",
+      "language": "en-US",
+      "evidence": [
+        {
+          "type": "primary",
+          "url": "https://support.google.com/calendar/answer/37034?hl=en",
+          "verifiedAt": "2026-10-23",
+          "note": "Complete computer body read: enable shortcuts, question-mark reference, specific date/week/create/Escape and platform save commands; avoid relying on unknown focus or using delete experimentally.",
+          "retrievedAt": "2026-10-23"
+        }
+      ],
+      "review": {
+        "status": "draft",
+        "reason": "Independent editorial/source/overlap review before publication."
+      },
+      "adjacentArticlesRead": [
+        "natural-language-calendar-events-iphone",
+        "event-saved-to-wrong-calendar",
+        "recurring-events-without-the-mess"
+      ],
+      "existingOverlapSlug": "natural-language-calendar-events-iphone",
+      "canonicalDecision": "proposed_separate_complete_provider_task_pending_review",
+      "overlapReview": "Existing entry guide compares parsers and templates; no Google keyboard command workflow is already covered.",
+      "firsthandTesting": false,
+      "originalExampleStatus": "Fictional scenario, calculation or checklist created for this article, not an observed customer result."
+    },
+    {
+      "slug": "google-calendar-alternate-calendar-moon-sports",
+      "primaryKeyword": "Google Calendar alternate calendar moon phases",
+      "intentKey": "google/calendar/optional-date-and-interest-source-selection",
+      "readerOutcome": "An alternate date label and an additional calendar source do different jobs. In Google Calendar, lunar or solar date displays, Moon phases and sports schedules use different controls. Identify which result you want before adding sources or changing the date of an existing appointment.",
+      "distinctValue": "Label-versus-event worksheet and an unchanged-date verification case.",
+      "proposedFamily": "planning",
+      "proposedIntent": "editing",
+      "language": "en-US",
+      "evidence": [
+        {
+          "type": "primary",
+          "url": "https://support.google.com/calendar/answer/13748650?hl=en",
+          "verifiedAt": "2026-10-23",
+          "note": "Complete computer body read: alternate lunar/solar display through View options; Moon-phase and sports sources through calendars of interest; no claim every team is available.",
+          "retrievedAt": "2026-10-23"
+        }
+      ],
+      "review": {
+        "status": "draft",
+        "reason": "Independent editorial/source/overlap review before publication."
+      },
+      "adjacentArticlesRead": [
+        "iphone-calendar-language-alternate-calendar-settings",
+        "time-zones-and-the-flight-you-booked",
+        "weather-calendar-history-versus-forecast-iphone"
+      ],
+      "existingOverlapSlug": "iphone-calendar-language-alternate-calendar-settings",
+      "canonicalDecision": "proposed_separate_complete_provider_task_pending_review",
+      "overlapReview": "Existing alternate-calendar guide documents Apple controls; this addresses Google’s distinct alternate display versus interest-source mechanisms.",
+      "firsthandTesting": false,
+      "originalExampleStatus": "Fictional scenario, calculation or checklist created for this article, not an observed customer result."
+    },
+    {
+      "slug": "google-calendar-add-ons-conferencing-permissions",
+      "primaryKeyword": "Google Calendar conferencing add on setup",
+      "intentKey": "google/calendar/add-on/conference-integration-lifecycle",
+      "readerOutcome": "Installing an add-on and creating a usable meeting are separate checkpoints. First establish whether the Google account may install the integration; then select the intended conferencing provider in the event and verify which service account is signing in. A Marketplace installation alone does not confirm the meeting’s joining details.",
+      "distinctValue": "Installation/sign-in/conference/join failure-stage matrix and a two-identity host check.",
+      "proposedFamily": "sharing",
+      "proposedIntent": "unify",
+      "language": "en-US",
+      "evidence": [
+        {
+          "type": "primary",
+          "url": "https://support.google.com/calendar/answer/9117864?hl=en",
+          "verifiedAt": "2026-10-23",
+          "note": "Complete computer body read: Marketplace installation, administrator restrictions, event conferencing dropdown and provider sign-in, uninstall limits and provider support. No assumption that uninstall revokes every grant or edits invitations.",
+          "retrievedAt": "2026-10-23"
+        }
+      ],
+      "review": {
+        "status": "draft",
+        "reason": "Independent editorial/source/overlap review before publication."
+      },
+      "adjacentArticlesRead": [
+        "meeting-links-that-make-themselves",
+        "disconnect-calendar-integration-without-losing-track",
+        "what-guests-can-do-to-your-event"
+      ],
+      "existingOverlapSlug": "meeting-links-that-make-themselves",
+      "canonicalDecision": "proposed_separate_complete_provider_task_pending_review",
+      "overlapReview": "Existing meeting-links guide covers native app/provider flows, not Google Marketplace conferencing installation and selection.",
+      "firsthandTesting": false,
+      "originalExampleStatus": "Fictional scenario, calculation or checklist created for this article, not an observed customer result."
+    },
+    {
+      "slug": "google-calendar-android-personal-work-profile",
+      "primaryKeyword": "Google Calendar personal calendars Android work profile",
+      "intentKey": "google/android/work-profile/personal-view-versus-share",
+      "readerOutcome": "On a managed Android device, seeing personal events in the work Google Calendar app need not mean the personal calendar has been shared with your employer. Google documents an administrator-approved cross-profile view. Identify that route before changing account permissions or assuming coworkers can see the same combined schedule.",
+      "distinctValue": "Cross-profile versus direct-share route inventory with a non-destructive duplicate example.",
+      "proposedFamily": "unify",
+      "proposedIntent": "unify",
+      "language": "en-US",
+      "evidence": [
+        {
+          "type": "primary",
+          "url": "https://support.google.com/calendar/answer/15620294?hl=en",
+          "verifiedAt": "2026-10-23",
+          "note": "Complete Android body read and web corroboration: managed Work Profile plus administrator allowance, separate storage, personal-calendar connection, direct sharing distinction and duplicate-route control. Not a blanket device-management privacy guarantee.",
+          "retrievedAt": "2026-10-23"
+        }
+      ],
+      "review": {
+        "status": "draft",
+        "reason": "Independent editorial/source/overlap review before publication."
+      },
+      "adjacentArticlesRead": [
+        "work-and-personal-without-two-apps",
+        "who-can-see-what-in-google-calendar",
+        "when-two-calendars-disagree"
+      ],
+      "existingOverlapSlug": "work-and-personal-without-two-apps",
+      "canonicalDecision": "proposed_separate_complete_provider_task_pending_review",
+      "overlapReview": "Baseline combines accounts generically; this addresses Android managed-profile permission and storage boundaries.",
+      "firsthandTesting": false,
+      "originalExampleStatus": "Fictional scenario, calculation or checklist created for this article, not an observed customer result."
+    },
+    {
+      "slug": "google-calendar-gemini-suggested-meeting-times",
+      "primaryKeyword": "Gemini Google Calendar suggested times unavailable",
+      "intentKey": "google/gemini-calendar/meeting-suggestion-review",
+      "readerOutcome": "Gemini can suggest meeting times in an eligible Google Calendar desktop workflow. A missing suggestion does not necessarily mean a broken account, and a selected suggestion is not proof that every human or room requirement has been settled. Check eligibility first, then review the intended event.",
+      "distinctValue": "Eligibility diagnosis and an event-specific required-guest/resource acceptance rubric.",
+      "proposedFamily": "planning",
+      "proposedIntent": "editing",
+      "language": "en-US",
+      "evidence": [
+        {
+          "type": "primary",
+          "url": "https://support.google.com/calendar/answer/16690875?hl=en",
+          "verifiedAt": "2026-10-23",
+          "note": "Complete computer body read: eligible Workspace, guest-based suggested times/create/reschedule workflow, mobile/long-duration/past-range exclusions; no invented numerical guest limit or room acceptance guarantee.",
+          "retrievedAt": "2026-10-23"
+        }
+      ],
+      "review": {
+        "status": "draft",
+        "reason": "Independent editorial/source/overlap review before publication."
+      },
+      "adjacentArticlesRead": [
+        "automatic-time-blocking-versus-manual-calendar",
+        "calendar-event-or-room-reservation",
+        "keeping-track-of-who-replied"
+      ],
+      "existingOverlapSlug": "automatic-time-blocking-versus-manual-calendar",
+      "canonicalDecision": "proposed_separate_complete_provider_task_pending_review",
+      "overlapReview": "Claude Find a time explains manual availability; this covers the eligible Gemini suggestion control, unsupported cases and reviewed organizer update.",
+      "firsthandTesting": false,
+      "originalExampleStatus": "Fictional scenario, calculation or checklist created for this article, not an observed customer result."
+    },
+    {
+      "slug": "google-calendar-response-emails-outlook-rsvp",
+      "primaryKeyword": "Google Calendar Outlook RSVP missing response emails",
+      "intentKey": "google/calendar/responses/event-email-third-party-status",
+      "readerOutcome": "Turning off response emails for a Google Calendar event can affect more than inbox noise. Google’s current help says this event-level choice also stops third-party RSVP statuses, including Outlook replies. Inspect that setting before treating an unknown response as proof that a guest did not reply.",
+      "distinctValue": "Two-service response ledger and explicit historical-backfill limitation.",
+      "proposedFamily": "sharing",
+      "proposedIntent": "unify",
+      "language": "en-US",
+      "evidence": [
+        {
+          "type": "primary",
+          "url": "https://support.google.com/calendar/answer/16713792?hl=en",
+          "verifiedAt": "2026-10-23",
+          "note": "Complete computer body read and web corroboration: calendar-wide response mail versus per-event/series checkbox, disabling per-event response mail excludes third-party RSVP status including Outlook; no historical-backfill promise.",
+          "retrievedAt": "2026-10-23"
+        }
+      ],
+      "review": {
+        "status": "draft",
+        "reason": "Independent editorial/source/overlap review before publication."
+      },
+      "adjacentArticlesRead": [
+        "keeping-track-of-who-replied",
+        "calendar-notifications-missing-silent-or-duplicated",
+        "what-guests-can-do-to-your-event"
+      ],
+      "existingOverlapSlug": "keeping-track-of-who-replied",
+      "canonicalDecision": "proposed_separate_complete_provider_task_pending_review",
+      "overlapReview": "Baseline RSVP page and Claude notification-email filters do not document this per-event switch’s third-party status consequence.",
+      "firsthandTesting": false,
+      "originalExampleStatus": "Fictional scenario, calculation or checklist created for this article, not an observed customer result."
+    },
+    {
+      "slug": "google-calendar-report-assigned-task-spam",
+      "primaryKeyword": "report assigned Google task spam",
+      "intentKey": "google/tasks/assigned-spam/source-unassignment",
+      "readerOutcome": "An unwanted assigned task is not the same record as a calendar invitation or a subscribed event. Google provides a reporting action for assigned tasks from shared surfaces such as a space or document. Identify that source before removing anything from a legitimate project.",
+      "distinctValue": "Shared-source classification table and a narrow action/consequence checklist.",
+      "proposedFamily": "sharing",
+      "proposedIntent": "unify",
+      "language": "en-US",
+      "evidence": [
+        {
+          "type": "primary",
+          "url": "https://support.google.com/calendar/answer/13012543?hl=en",
+          "verifiedAt": "2026-10-23",
+          "note": "Complete computer body read: assigned-task report removes personal-list entry and assignment in shared space; Tasks side panel or Calendar task menu; no claim of deleting source document or banning every sender.",
+          "retrievedAt": "2026-10-23"
+        }
+      ],
+      "review": {
+        "status": "draft",
+        "reason": "Independent editorial/source/overlap review before publication."
+      },
+      "adjacentArticlesRead": [
+        "unwanted-calendar-events-iphone",
+        "iphone-calendar-tasks-reminders-versus-event-alerts",
+        "can-others-see-google-calendar-tasks"
+      ],
+      "existingOverlapSlug": "unwanted-calendar-events-iphone",
+      "canonicalDecision": "proposed_separate_complete_provider_task_pending_review",
+      "overlapReview": "Existing unwanted-calendar guide addresses events and subscriptions; this is assigned task removal/unassignment, not another event-spam page.",
+      "firsthandTesting": false,
+      "originalExampleStatus": "Fictional scenario, calculation or checklist created for this article, not an observed customer result."
+    }
+  ]
+}

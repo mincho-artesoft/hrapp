@@ -1,0 +1,30 @@
+Outlook blocks copying meetings with “Copying meetings is not supported.”
+Applies To
+Outlook for Microsoft 365
+Last Updated: October 25, 2024
+ISSUE
+After updating Outlook Desktop to Version 2311 Build 17029.20000+ and you attempt to copy a meeting, you get the following message:
+Copying meetings is not supported.
+This is an intentional change to prevent copying meetings. Actions related to copied meetings yield unexpected results, so we recommend avoiding copying meetings. This has been a long-standing documented best practice. To limit the unexpected issues, the Outlook Team implemented blocking copying meetings.
+STATUS: FIXED
+The error dialog to prevent copying is an intentional change.
+WORKAROUND
+If you have a need to re-enable copying meetings, you can set a non-policy registry key. As noted above, the practice of copying meetings can cause unexpected issues. If you re-enable the functionality and experience issues, please delete the copied meeting, and start with a new meeting. The Outlook Support Team will not troubleshoot issues related to copied meetings.
+Use this registry key to re-enable copying meetings:
+[HKEY_CURRENT_USER\Software\Microsoft\Office\16.0\Outlook\Options\Calendar]
+"EnableMeetingCopy"=DWORD:1
+ADDITIONAL RESOURCES
+Best practices for organizations when using the Outlook Calendar
+Shared calendars updates in Outlook for Windows
+More Resources
+Ask the experts
+Connect with experts, discuss the latest Outlook news and best practices, and read our blog.
+Outlook Tech Community
+Get help in the community
+Ask a question and find solutions from Support Agents, MVPs, Engineers, and Outlook users.
+Outlook Forum on Answers
+Suggest a new feature
+We love reading your suggestions and feedback! Share your thoughts. We're listening.
+Find out how
+See Also
+Fixes or workarounds for recent issues in Outlook for PC

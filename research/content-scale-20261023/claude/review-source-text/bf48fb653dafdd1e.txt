@@ -1,0 +1,43 @@
+Cancel a recurring meeting series in Outlook
+Applies To
+Outlook for Microsoft 365
+New Outlook for Windows
+Classic Outlook​​​​​​​
+New Outlook
+In classic Outlook, on the navigation bar, select
+Calendar
+.
+On the calendar grid, select an instance of the meeting you want to cancel.
+On the ribbon, select
+Cancel Meeting
+>
+Cancel Series
+.
+Type a message to let the attendees know the future meetings are cancelled, then select
+Send Cancellation
+.
+In new Outlook​​​​​​​, open your calendar and double-click on any meeting in the series.
+Below the toolbar, select
+Edit series
+.
+Below the end date, select the text that describes the recurrence pattern ("Occurs every ...").
+In the Repeat dialog, select the end date, and change it to a date prior to the next meeting in the series. Then select
+Save
+.
+Click
+Send
+to save the changes and notify the attendees.
+Need more help?
+Want more options?
+Discover
+Community
+Explore subscription benefits, browse training courses, learn how to secure your device, and more.
+Microsoft 365 subscription benefits
+Microsoft 365 training
+Microsoft security
+Accessibility center
+Communities help you ask and answer questions, give feedback, and hear from experts with rich knowledge.
+Ask the Microsoft Community
+Microsoft Tech Community
+Windows Insiders
+Microsoft 365 Insiders

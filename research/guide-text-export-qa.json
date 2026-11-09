@@ -2,7 +2,7 @@
   "guides": 173,
   "selection": "tools/guide-text-selection.json",
   "extraction": "Visible article headings, paragraphs, table rows, lists, FAQs and source links; gallery/other-app cards excluded.",
-  "exportedCharacters": 1005612,
+  "exportedCharacters": 1006280,
   "records": [
     {
       "slug": "what-calendar-sync-actually-does",
@@ -56,7 +56,7 @@
       "slug": "calendar-notifications-missing-silent-or-duplicated",
       "source": "https://www.cloud-calendars.com/articles/calendar-notifications-missing-silent-or-duplicated/",
       "blocks": 51,
-      "characters": 7471
+      "characters": 7465
     },
     {
       "slug": "find-old-calendar-events-by-account-date-and-title",
@@ -68,7 +68,7 @@
       "slug": "calendar-export-ics-pdf-and-backup",
       "source": "https://www.cloud-calendars.com/articles/calendar-export-ics-pdf-and-backup/",
       "blocks": 70,
-      "characters": 11822
+      "characters": 11820
     },
     {
       "slug": "recurring-events-without-the-mess",
@@ -211,8 +211,8 @@
     {
       "slug": "who-can-see-what-in-google-calendar",
       "source": "https://www.cloud-calendars.com/articles/who-can-see-what-in-google-calendar/",
-      "blocks": 49,
-      "characters": 6347
+      "blocks": 51,
+      "characters": 6607
     },
     {
       "slug": "taking-back-a-calendar-you-shared",
@@ -332,13 +332,13 @@
       "slug": "recover-deleted-calendar-events-iphone",
       "source": "https://www.cloud-calendars.com/articles/recover-deleted-calendar-events-iphone/",
       "blocks": 52,
-      "characters": 8837
+      "characters": 8831
     },
     {
       "slug": "change-calendar-color-iphone",
       "source": "https://www.cloud-calendars.com/articles/change-calendar-color-iphone/",
       "blocks": 53,
-      "characters": 8493
+      "characters": 8496
     },
     {
       "slug": "calendar-on-apple-watch",
@@ -524,13 +524,13 @@
       "slug": "google-appointment-cancel-booked-slot",
       "source": "https://www.cloud-calendars.com/articles/google-appointment-cancel-booked-slot/",
       "blocks": 46,
-      "characters": 5211
+      "characters": 5194
     },
     {
       "slug": "google-calendar-change-event-owner-before-handover",
       "source": "https://www.cloud-calendars.com/articles/google-calendar-change-event-owner-before-handover/",
       "blocks": 49,
-      "characters": 7108
+      "characters": 7089
     },
     {
       "slug": "mac-calendar-travel-time-after-location-change",
@@ -578,7 +578,7 @@
       "slug": "outlook-end-recurring-meeting-early-keep-history",
       "source": "https://www.cloud-calendars.com/articles/outlook-end-recurring-meeting-early-keep-history/",
       "blocks": 47,
-      "characters": 5592
+      "characters": 5587
     },
     {
       "slug": "outlook-events-from-email-flights-hotels",
@@ -595,8 +595,8 @@
     {
       "slug": "outlook-forward-meeting-and-allow-forwarding",
       "source": "https://www.cloud-calendars.com/articles/outlook-forward-meeting-and-allow-forwarding/",
-      "blocks": 53,
-      "characters": 7300
+      "blocks": 55,
+      "characters": 7539
     },
     {
       "slug": "google-calendar-gemini-suggested-meeting-times",
@@ -650,7 +650,7 @@
       "slug": "google-calendar-android-app-not-syncing",
       "source": "https://www.cloud-calendars.com/articles/google-calendar-android-app-not-syncing/",
       "blocks": 46,
-      "characters": 5116
+      "characters": 5109
     },
     {
       "slug": "google-calendar-offline-desktop-limits",
@@ -668,7 +668,7 @@
       "slug": "google-calendar-event-visibility-private-public-default",
       "source": "https://www.cloud-calendars.com/articles/google-calendar-event-visibility-private-public-default/",
       "blocks": 52,
-      "characters": 7672
+      "characters": 7653
     },
     {
       "slug": "google-calendar-time-insights-counted-meetings",
@@ -680,7 +680,7 @@
       "slug": "google-calendar-working-hours-location-out-of-office-focus-time",
       "source": "https://www.cloud-calendars.com/articles/google-calendar-working-hours-location-out-of-office-focus-time/",
       "blocks": 56,
-      "characters": 9167
+      "characters": 9128
     },
     {
       "slug": "google-family-calendar-membership",
@@ -716,7 +716,7 @@
       "slug": "outlook-show-declined-meetings-on-calendar",
       "source": "https://www.cloud-calendars.com/articles/outlook-show-declined-meetings-on-calendar/",
       "blocks": 43,
-      "characters": 4628
+      "characters": 4619
     },
     {
       "slug": "outlook-shorten-meetings-automatically",
@@ -746,7 +746,7 @@
       "slug": "outlook-teams-meeting-button-missing",
       "source": "https://www.cloud-calendars.com/articles/outlook-teams-meeting-button-missing/",
       "blocks": 42,
-      "characters": 5198
+      "characters": 5187
     },
     {
       "slug": "icloud-calendar-hide-past-events",
@@ -770,13 +770,13 @@
       "slug": "outlook-birthday-calendar-from-contacts",
       "source": "https://www.cloud-calendars.com/articles/outlook-birthday-calendar-from-contacts/",
       "blocks": 41,
-      "characters": 4117
+      "characters": 4106
     },
     {
       "slug": "outlook-calendar-sharing-levels-busy-titles-details",
       "source": "https://www.cloud-calendars.com/articles/outlook-calendar-sharing-levels-busy-titles-details/",
       "blocks": 50,
-      "characters": 6616
+      "characters": 6593
     },
     {
       "slug": "google-calendar-response-emails-outlook-rsvp",
@@ -787,14 +787,14 @@
     {
       "slug": "outlook-show-as-free-busy-tentative-working-elsewhere",
       "source": "https://www.cloud-calendars.com/articles/outlook-show-as-free-busy-tentative-working-elsewhere/",
-      "blocks": 52,
-      "characters": 6977
+      "blocks": 54,
+      "characters": 7152
     },
     {
       "slug": "outlook-work-hours-and-location",
       "source": "https://www.cloud-calendars.com/articles/outlook-work-hours-and-location/",
       "blocks": 44,
-      "characters": 4960
+      "characters": 4954
     },
     {
       "slug": "overnight-shift-crossing-midnight-calendar-end-date",
@@ -824,13 +824,13 @@
       "slug": "outlook-print-calendar-styles",
       "source": "https://www.cloud-calendars.com/articles/outlook-print-calendar-styles/",
       "blocks": 42,
-      "characters": 4104
+      "characters": 4094
     },
     {
       "slug": "outlook-propose-new-meeting-time",
       "source": "https://www.cloud-calendars.com/articles/outlook-propose-new-meeting-time/",
       "blocks": 48,
-      "characters": 5403
+      "characters": 5389
     },
     {
       "slug": "icloud-public-calendar-publish-stop",
@@ -847,8 +847,8 @@
     {
       "slug": "outlook-recover-deleted-calendar-items",
       "source": "https://www.cloud-calendars.com/articles/outlook-recover-deleted-calendar-items/",
-      "blocks": 42,
-      "characters": 4894
+      "blocks": 44,
+      "characters": 5096
     },
     {
       "slug": "monthly-recurring-last-weekday-byday-minus-1-versus-fixed-date",
@@ -950,7 +950,7 @@
       "slug": "outlook-split-view-overlay-calendars",
       "source": "https://www.cloud-calendars.com/articles/outlook-split-view-overlay-calendars/",
       "blocks": 39,
-      "characters": 3688
+      "characters": 3681
     },
     {
       "slug": "google-keep-reminders-moved-to-tasks",

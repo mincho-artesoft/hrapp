@@ -1,0 +1,30 @@
+Verify emails for appointments
+To prevent unwanted bookings, you can ask guests without a Google Account to verify their email before they book an appointment.
+Learn how email verification works
+To use email verification for appointment schedules, you need to have an eligible Google Workspace subscription.
+Learn more about premium features for appointment schedules
+.
+By default, email verification is off.
+When you sign in to a Google Account and make an appointment:
+Your booking details are pre-filled.
+You aren't asked to submit a PIN.
+Turn email verification on or off
+On your computer, open
+Google Calendar
+.
+Create or edit an appointment schedule.
+Under “Booking form,” check or uncheck the “Require email verification” box.
+Click
+Save
+.
+Verify your email to you book an appointment
+Fill out the booking form with your email address.
+Check your email for a PIN.
+On the booking page, enter the PIN.
+Click
+Submit
+.
+Computer
+Android phone & tablet
+iPhone & iPad
+More

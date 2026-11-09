@@ -1,0 +1,49 @@
+{
+  "updatedAt": "2026-10-23",
+  "batch": "02",
+  "stage": "batch_02_drafts_complete_awaiting_root_review",
+  "files": {
+    "briefs": "research/content-scale-20261023/claude/claude-briefs-02.json",
+    "drafts": "research/content-scale-20261023/claude/claude-drafts-02.json",
+    "editorialRecords": "research/content-scale-20261023/claude/claude-editorial-records-02.json"
+  },
+  "batch01Untouched": true,
+  "completedDrafts": [
+    "google-calendar-hide-unsubscribe-or-delete",
+    "google-calendar-public-embed-on-website",
+    "google-calendar-birthdays-from-contacts",
+    "google-calendar-holidays-by-country-and-religion",
+    "google-calendar-events-from-gmail-visibility",
+    "google-keep-reminders-moved-to-tasks",
+    "google-tasks-repeating-task-complete-delete",
+    "google-calendar-email-notifications-filter",
+    "google-appointment-cancel-booked-slot",
+    "google-calendar-android-app-not-syncing",
+    "google-family-calendar-membership",
+    "google-calendar-print-date-range"
+  ],
+  "heldOrDropped": [
+    { "topic": "Edit appointment schedule: effect on existing bookings (answer/10730791)", "reason": "Fetched source silent on the core question; held instead of inventing an answer." },
+    { "topic": "Google Calendar offline (answer/1340696)", "reason": "Sourced but lower priority; next candidate." }
+  ],
+  "sourceContradictionsOrGapsReported": [
+    "Gmail events: Google defines 'Calendar default' as visible to anyone who can access your calendar; unclear how that interacts with free/busy-only access. Flagged in the article, not resolved.",
+    "Keep reminders: Google's page uses future tense for a migration dated 'second half of 2025'; article reports Google's stated timing only.",
+    "Repeating tasks: source is the Android variant; web labels unverified.",
+    "Batch 01 carry-over (unchanged): Google appointment pages conflict on Maybe/tentative blocking."
+  ],
+  "nextCandidates": [
+    { "slug": "google-calendar-offline-chrome", "source": "https://support.google.com/calendar/answer/1340696?hl=en", "status": "source read: Chrome only; view last 4 weeks and future; cannot create/edit, email guests or access tasks; clearing cache removes offline support" },
+    { "slug": "google-appointment-paid-bookings", "source": "https://support.google.com/calendar/answer/13762729?hl=en", "status": "not yet read" },
+    { "slug": "google-appointment-email-verification", "source": "https://support.google.com/calendar/answer/11902347?hl=en", "status": "not yet read; consider merging with paid bookings" },
+    { "slug": "google-calendar-share-single-event-link", "source": "https://support.google.com/calendar/answer/13839531?hl=en", "status": "in catalogue; check overlap with sharing-one-event-not-your-calendar" },
+    { "slug": "google-calendar-time-insights", "source": "https://support.google.com/calendar/answer/10738043?hl=en", "status": "not yet read" }
+  ],
+  "blockers": [],
+  "limitations": [
+    "WebFetch returns extracted text; quotations not byte-verified. Spot-check UI labels before approval.",
+    "JSON validity checked by pattern search only; no parser available in this session.",
+    "seeAlso uses only baseline published slugs; links to Claude batch-01 slugs are noted in records but not added, since batch 01 is unpublished.",
+    "No firsthand testing; all worked examples are fictional and labelled."
+  ]
+}

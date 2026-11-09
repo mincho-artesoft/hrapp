@@ -1,0 +1,57 @@
+Recover deleted calendar items
+Applies To
+Outlook for Microsoft 365
+New Outlook for Windows
+Classic Outlook
+New Outlook
+In the left folder pane of classic Outlook, select
+Deleted Items
+or
+Trash
+.
+If you don't see the left folder pane, select the greater than (
+>
+) icon.
+Find and select the calendar item to recover.
+If you can't find the calendar item in
+Deleted Items
+, see
+Recover deleted items from the server.
+Select
+Home
+>
+Move
+>
+Other folder
+.
+Calendar
+should be highlighted. If not select it, then select
+OK
+.
+Switch to
+Mail
+in new Outlook.
+In the folder pane on the left, select
+Deleted items
+.
+In the item list, select the event you want to recover.
+On the
+Home
+tab, select
+Restore
+.
+The item is restored to your calendar.
+Need more help?
+Want more options?
+Discover
+Community
+Explore subscription benefits, browse training courses, learn how to secure your device, and more.
+Microsoft 365 subscription benefits
+Microsoft 365 training
+Microsoft security
+Accessibility center
+Communities help you ask and answer questions, give feedback, and hear from experts with rich knowledge.
+Ask the Microsoft Community
+Microsoft Tech Community
+Windows Insiders
+Microsoft 365 Insiders

@@ -1,0 +1,20 @@
+{
+  "checkedAt": "2026-10-22T11:13:14.866762+00:00",
+  "rows": [
+    {
+      "locale": "en-US",
+      "url": "https://www.cloud-calendars.com/",
+      "newMediaSection": true,
+      "newAssetURLs": true,
+      "mainBundleCurrent": true
+    },
+    {
+      "locale": "ar-SA",
+      "url": "https://www.cloud-calendars.com/ar/",
+      "newMediaSection": true,
+      "newAssetURLs": true,
+      "mainBundleCurrent": true
+    }
+  ],
+  "scope": "Interim20completeddevicesets7mediafolders; remaining importsongoing"
+}

@@ -472,9 +472,9 @@
       ],
       "consumerAnswerMentions": [
         {
-          "promptId": "weather",
+          "promptId": "weather-history",
           "promptClass": "unseeded-product-discovery",
-          "evidenceFile": "chatgpt-weather.json"
+          "evidenceFile": "chatgpt-weather-history.json"
         }
       ],
       "researchDisposition": "focused-query-and-official-source-reviewed",
@@ -506,7 +506,13 @@
       "product": "Dejal",
       "inOriginalDeclaredUniverse": true,
       "googleHeadingObservations": [],
-      "consumerAnswerMentions": [],
+      "consumerAnswerMentions": [
+        {
+          "promptId": "weather-history",
+          "promptClass": "unseeded-product-discovery",
+          "evidenceFile": "chatgpt-weather-history.json"
+        }
+      ],
       "researchDisposition": "focused-query-and-official-source-reviewed",
       "limitations": "Heading/answer mention is not a verified product recommendation, domain ownership check or universal ranking.",
       "focusedQueryEvidence": {

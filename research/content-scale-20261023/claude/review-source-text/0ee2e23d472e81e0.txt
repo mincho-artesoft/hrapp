@@ -1,0 +1,49 @@
+Create a meeting from an email message in Outlook
+Applies To
+Outlook for Microsoft 365
+Outlook on the web
+New Outlook for Windows
+Classic Outlook
+New Outlook
+Open classic Outlook and select an email message.
+Select
+Meeting
+or press Ctrl+Alt+R.
+Note:
+If you don't see
+Meeting
+, select the ellipsis (
+...
+) at the right and choose
+Meeting
+.
+Enter the meeting date, the start and end times for your meeting, and invitees.
+(By default, each person included in the email thread is listed as a meeting invitee.)
+Update your message in the body and select
+Send
+.
+Open new Outlook and select an email message.
+On the
+Home
+tab, select
+Meeting
+.
+Enter the meeting date, the start and end times for your meeting, and add attendees.
+(By default, each person included in the email thread is listed as a meeting invitee.)
+Update your message in the body and select
+Send
+.
+Need more help?
+Want more options?
+Discover
+Community
+Explore subscription benefits, browse training courses, learn how to secure your device, and more.
+Microsoft 365 subscription benefits
+Microsoft 365 training
+Microsoft security
+Accessibility center
+Communities help you ask and answer questions, give feedback, and hear from experts with rich knowledge.
+Ask the Microsoft Community
+Microsoft Tech Community
+Windows Insiders
+Microsoft 365 Insiders
