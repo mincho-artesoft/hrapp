@@ -14,6 +14,7 @@ export interface SeoInput {
   type?: 'website' | 'article';
   noindex?: boolean;
   robots?: 'index,follow' | 'noindex,follow';
+  googlebot?: 'index,follow' | 'noindex,follow';
   /** The language this page is written in. Sets <html lang> and og:locale. */
   locale?: Locale;
   /**
@@ -75,6 +76,12 @@ export class SeoService {
 
     this.set('description', input.description);
     this.set('robots', input.robots ?? (input.noindex ? 'noindex,nofollow' : 'index,follow'));
+    if (input.googlebot) {
+      this.set('googlebot', input.googlebot);
+    } else {
+      this.meta.removeTag("name='googlebot'");
+      this.doc.querySelector('meta[name="googlebot"]')?.remove();
+    }
 
     this.setProperty('og:title', input.title);
     this.setProperty('og:description', input.description);

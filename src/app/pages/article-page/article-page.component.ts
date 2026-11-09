@@ -109,14 +109,16 @@ export class ArticlePageComponent implements OnDestroy {
     }
 
     const path = this.isComparison ? `/compare/${slug}` : `/articles/${slug}`;
+    const googleIndexable = this.isComparison || isArticleLocaleIndexable(this.locale);
     inject(SeoService).apply({
       title: this.article.seoTitle ?? this.article.title,
       description: this.article.description,
       path: this.isComparison ? path : localePath(this.locale, path),
       type: 'article',
       locale: this.locale,
-      robots: this.isComparison || isArticleLocaleIndexable(this.locale) ? 'index,follow' : 'noindex,follow',
-      alternates: this.isComparison
+      robots: 'index,follow',
+      googlebot: googleIndexable ? undefined : 'noindex,follow',
+      alternates: this.isComparison || !googleIndexable
         ? []
         : localesWith(slug).filter(isArticleLocaleIndexable).map((other) => ({
             hreflang: other.hreflang,
@@ -179,7 +181,18 @@ export class ArticlePageComponent implements OnDestroy {
       author: publisher,
       publisher,
       isPartOf: { '@type': 'WebSite', name: APP_NAME, url: SITE_URL },
-      about: { '@type': 'SoftwareApplication', name: APP_NAME, applicationCategory: 'ProductivityApplication', operatingSystem: 'iOS', url: APP_STORE_URL },
+      about: {
+        '@type': 'SoftwareApplication',
+        name: APP_NAME,
+        applicationCategory: 'ProductivityApplication',
+        operatingSystem: 'iOS',
+        url: APP_STORE_URL,
+        sameAs: [
+          'https://apps.apple.com/us/app/cloud-calendars-sync-widget/id6744690319',
+          'https://github.com/minchopm/cloud-calendars-docs',
+          'https://www.producthunt.com/products/cloud-calendars-sync-widget',
+        ],
+      },
     });
     doc.head.appendChild(script);
 

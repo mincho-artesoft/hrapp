@@ -63,8 +63,8 @@ for (const file of pages(DIST)) {
     writeFileSync(file, html);
   }
 
-  // Private tools and tokenized invitation pages must stay out of the sitemap.
-  if (/<meta name="robots" content="noindex/i.test(html)) continue;
+  // Private tools, tokenized invitation pages, and non-Google-indexed locales must stay out of the sitemap.
+  if (/<meta name="(?:robots|googlebot)" content="noindex/i.test(html)) continue;
 
   // The canonical is what the page says its own address is. Trusting it rather
   // than deriving one from the file path means a canonical bug shows up here

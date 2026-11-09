@@ -40,6 +40,7 @@ for url in urls:
   page=Page(file.read_text());assert page.canonical==[url],f'Canonical {page.canonical}'
   assert page.meta.get('description'), 'Missing description'
   assert page.meta.get('robots')=='index,follow','Unexpected sitemap robots'
+  assert 'noindex' not in (page.meta.get('googlebot') or ''),'Unexpected sitemap googlebot noindex'
   pages[url]=page
   for data in page.schemas:
    typ=data.get('@type')

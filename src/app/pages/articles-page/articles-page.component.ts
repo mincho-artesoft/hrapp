@@ -454,14 +454,16 @@ export class ArticlesPageComponent {
 
     this.heading = this.isTopic ? `${headings[requestedFamily]} guides — page ${this.currentPage}` : this.chrome.allArticles;
     const path = this.isTopic ? topicPath(requestedFamily, this.currentPage) : localePath(this.locale, '/articles');
+    const googleIndexable = isArticleLocaleIndexable(this.locale);
     inject(SeoService).apply({
       title: this.isTopic ? `${this.heading} | Cloud Calendars` : this.chrome.hubTitle,
       description: this.chrome.hubDescription,
       path,
       locale: this.locale,
-      robots: isArticleLocaleIndexable(this.locale) ? 'index,follow' : 'noindex,follow',
+      robots: 'index,follow',
+      googlebot: googleIndexable ? undefined : 'noindex,follow',
       // Only approved, indexable article hubs belong to the search alternate set.
-      alternates: this.isTopic ? [] : LIVE_LOCALES.filter(isArticleLocaleIndexable).map((other) => ({
+      alternates: this.isTopic || !googleIndexable ? [] : LIVE_LOCALES.filter(isArticleLocaleIndexable).map((other) => ({
         hreflang: other.hreflang,
         path: localePath(other, '/articles'),
       })),
