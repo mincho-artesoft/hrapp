@@ -13,6 +13,7 @@ import { WebglBackdropComponent } from '../webgl-backdrop/webgl-backdrop.compone
 import { DeviceFrameComponent } from '../device-frame/device-frame.component';
 import { RevealDirective } from '../../core/reveal.directive';
 import { ActiveLocaleService } from '../../core/active-locale.service';
+import { linkPath } from '../../core/locales';
 import { ScrollService } from '../../core/scroll.service';
 import { storeCta } from '../../core/store-cta';
 import { isBrowser, prefersReducedMotion } from '../../core/motion';
@@ -59,8 +60,9 @@ export class HeroComponent implements AfterViewInit, OnDestroy {
   readonly appStore = this.active.storeHref;
   readonly tourHref = computed(() => {
     const path = this.active.path('/');
-    return `${path.endsWith('/') ? path : `${path}/`}#showcase`;
+    return `${path.endsWith('/') ? path : `${path}/`}#booking`;
   });
+  readonly webCalendarHref = computed(() => linkPath(this.active.locale(), '/calendar'));
   readonly storeCta = computed(() => storeCta(this.active.locale().code));
   readonly badge = computed(() => this.copy().badge.replace('{v}', APP_VERSION));
   readonly ratingLabel = computed(() =>

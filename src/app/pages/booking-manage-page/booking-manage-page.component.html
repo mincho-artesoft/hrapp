@@ -1,0 +1,114 @@
+<section class="manage-page">
+  <div class="shell">
+    @if (state() === 'loading') {
+      <div class="m-card m-card--center">
+        <p>Loading your appointment…</p>
+      </div>
+    } @else if (state() === 'notfound') {
+      <div class="m-card m-card--center">
+        <h1>Booking link not found</h1>
+        <p>Sign in to the Guest Portal to view and manage all of your appointments.</p>
+        <a class="btn btn--primary" [href]="guestPortalHref()">Open Guest Portal →</a>
+      </div>
+    } @else if (booking()) {
+      @let b = booking()!;
+      <div class="m-card">
+        <span class="m-eyebrow">BOOKING SELF-SERVICE</span>
+        <h1>{{ b.title }}</h1>
+
+        @if (feedback()) {
+          <div class="m-alert">{{ feedback() }}</div>
+        }
+
+        <div class="m-summary" [ngStyle]="cardStyle(b.color)">
+          <span class="m-summary__bar"></span>
+          <div class="m-summary__row">
+            <strong>Status: {{ b.status.toUpperCase() }}</strong>
+            <span>Host: {{ b.hostName }}</span>
+          </div>
+          <p>{{ formatWhen(b) }}</p>
+          @if (b.videoCallURL && b.status !== 'cancelled') {
+            <a class="m-join" [href]="b.videoCallURL" target="_blank" rel="noopener noreferrer">
+              Join Video Call ↗
+            </a>
+          }
+        </div>
+
+        @if (mode() === 'view') {
+          <div class="m-exports">
+            @if (b.icsContent) {
+              <button type="button" class="m-btn" (click)="downloadIcs()">Download .ics</button>
+            }
+            <a class="m-btn" [href]="googleUrl()" target="_blank" rel="noopener noreferrer">Google Calendar ↗</a>
+            <a class="m-btn" [href]="outlookUrl()" target="_blank" rel="noopener noreferrer">Outlook ↗</a>
+            @if (b.webcalUrl) {
+              <a class="m-btn" [href]="b.webcalUrl">Subscribe (webcal://)</a>
+            }
+          </div>
+
+          @if (b.status !== 'cancelled') {
+            <div class="m-actions">
+              <button type="button" class="btn btn--primary" (click)="startReschedule()">
+                Reschedule Time
+              </button>
+              <button type="button" class="m-btn m-btn--danger" (click)="mode.set('cancel')">
+                Cancel Appointment
+              </button>
+            </div>
+          }
+        } @else if (mode() === 'reschedule') {
+          <div class="m-subform">
+            <h3>Select a new available slot</h3>
+            <select [ngModel]="chosenSlot()" (ngModelChange)="chosenSlot.set($event)">
+              @for (s of slots(); track s.start) {
+                <option [value]="s.start">{{ formatSlot(s, b.guestTimeZone) }}</option>
+              }
+            </select>
+            <input
+              type="text"
+              placeholder="Optional note to host…"
+              [ngModel]="reason()"
+              (ngModelChange)="reason.set($event)"
+            />
+            <div class="m-actions">
+              <button type="button" class="m-btn" (click)="mode.set('view')">Back</button>
+              <button
+                type="button"
+                class="btn btn--primary"
+                [disabled]="busy() || !chosenSlot()"
+                (click)="submitReschedule()"
+              >
+                {{ busy() ? 'Moving…' : 'Confirm Reschedule' }}
+              </button>
+            </div>
+          </div>
+        } @else if (mode() === 'cancel') {
+          <div class="m-subform">
+            <h3>Cancel this appointment?</h3>
+            <input
+              type="text"
+              placeholder="Optional reason…"
+              [ngModel]="reason()"
+              (ngModelChange)="reason.set($event)"
+            />
+            <div class="m-actions">
+              <button type="button" class="m-btn" (click)="mode.set('view')">Keep Booking</button>
+              <button
+                type="button"
+                class="m-btn m-btn--danger"
+                [disabled]="busy()"
+                (click)="submitCancel()"
+              >
+                {{ busy() ? 'Cancelling…' : 'Yes, Cancel Booking' }}
+              </button>
+            </div>
+          </div>
+        }
+
+        <div class="m-foot">
+          <a [href]="guestPortalHref()">View all your appointments in Guest Portal →</a>
+        </div>
+      </div>
+    }
+  </div>
+</section>

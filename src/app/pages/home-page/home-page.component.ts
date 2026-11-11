@@ -4,6 +4,7 @@ import { ActivatedRoute } from '@angular/router';
 
 import { HeroComponent } from '../../components/hero/hero.component';
 import { MarqueeComponent } from '../../components/marquee/marquee.component';
+import { LiveBookingShowcaseComponent } from '../../components/live-booking-showcase/live-booking-showcase.component';
 import { StoreMediaComponent } from '../../components/store-media/store-media.component';
 import { ShowcaseComponent } from '../../components/showcase/showcase.component';
 import { WidgetsComponent } from '../../components/widgets/widgets.component';
@@ -26,6 +27,7 @@ import { APP_NAME, APP_DEVELOPER, APP_MIN_IOS, APP_VERSION, APP_SIZE_MB, APP_RAT
   imports: [
     HeroComponent,
     MarqueeComponent,
+    LiveBookingShowcaseComponent,
     ShowcaseComponent,
     StoreMediaComponent,
     WidgetsComponent,
