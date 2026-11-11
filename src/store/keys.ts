@@ -42,4 +42,23 @@ export const keys = {
   eventPub: (handle: string) => `idx/eventpub/${handle}.json`, // public handle -> {calId, eventId}
   eventRegs: (calId: string, eventId: string) => `idx/eventreg/${calId}/${eventId}/`, // prefix: all registrants
   eventReg: (calId: string, eventId: string, token: string) => `idx/eventreg/${calId}/${eventId}/${token}.json`,
+
+  // Web Scheduling, Interactive Calendar, Guest Bookings & Admin Platform
+  authOtp: (emailHash: string) => `idx/auth-otp/${emailHash}.json`,
+  bookingConfig: (calId: string) => `cal/${calId}/booking.json`,
+  bookingBusy: (calId: string) => `cal/${calId}/booking-busy.json`,
+  oauthConnections: (calId: string) => `cal/${calId}/oauth-connections.json`,
+  bookedBucket: (calId: string, bucketKey: string) => `cal/${calId}/booked-v2/${bucketKey}.json`,
+  bookingHandle: (handle: string) => `idx/booking-handle/${handle}.json`,
+  bookingInvite: (token: string) => `idx/booking-invite/${token}.json`,
+  hostBookingInvitesPrefix: (calId: string) => `cal/${calId}/booking-invites/`,
+  hostBookingInvite: (calId: string, token: string) => `cal/${calId}/booking-invites/${token}.json`,
+  bookingOtp: (handle: string, emailHash: string) => `idx/booking-otp/${handle}--${emailHash}.json`,
+  guestBookingsPrefix: (emailHash: string) => `idx/guest-bookings/${emailHash}/`,
+  guestBooking: (emailHash: string, bookingId: string) => `idx/guest-bookings/${emailHash}/${bookingId}.json`,
+  hostBookingsPrefix: () => `idx/booking-hosts/`,
+  hostBookingSummary: (calId: string) => `idx/booking-hosts/${calId}.json`,
+  allBookingsPrefix: () => `idx/booking-all/`,
+  allBookingRecord: (bookingId: string) => `idx/booking-all/${bookingId}.json`,
+  adminSettings: () => `idx/admin/settings.json`,
 };

@@ -7,6 +7,8 @@ import { MeService } from './me/me.service';
 import { SharedEventController } from './shared-event/shared-event.controller';
 import { SharedEventService } from './shared-event/shared-event.service';
 import { PushController } from './push/push.controller';
+import { WebPlatformController } from './booking/web-platform.controller';
+import { WebPlatformService } from './booking/web-platform.service';
 
 @Module({
   imports: [CoreModule],
@@ -15,11 +17,13 @@ import { PushController } from './push/push.controller';
     CalendarController,
     MeController,
     SharedEventController,
+    WebPlatformController,
   ],
   providers: [
     CalendarService,
     MeService,
     SharedEventService,
+    WebPlatformService,
   ],
 })
 export class AppModule {}

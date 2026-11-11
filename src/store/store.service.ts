@@ -5,8 +5,8 @@ import {
   DeleteObjectCommand,
   ListObjectsV2Command,
 } from '@aws-sdk/client-s3';
-import { keys } from './keys';
 import { CalendarStorageClient } from './calendar-storage-client';
+import { keys } from './keys';
 
 /**
  * S3-as-DB. A thin, injectable wrapper around the exact operations the original

@@ -94,7 +94,16 @@ export class CalendarService {
     let identity: any;
     try {
       if (body.provider === 'google') {
-        identity = await verifyGoogleIdToken(body.token, GOOGLE_CLIENT_ID);
+        const adminSettings = await this.store.getJSON(this.keys.adminSettings()).catch(() => null);
+        const googleAudiences = [
+          GOOGLE_CLIENT_ID,
+          process.env.GOOGLE_WEB_CLIENT_ID ?? null,
+          adminSettings?.googleWebClientId ?? null,
+        ].filter(Boolean) as string[];
+        identity = await verifyGoogleIdToken(
+          body.token,
+          googleAudiences.length ? googleAudiences : null,
+        );
       } else if (body.provider === 'apple') {
         identity = await verifyAppleIdToken(body.token, APPLE_CLIENT_IDS);
       } else if (body.provider === 'microsoft') {
@@ -3123,7 +3132,7 @@ function mergeEventDetailsForWrite(value: any, previous: any): any {
   if (value === undefined) return previous ?? null;
   const sanitized = sanitizeEventDetails(value);
   if (!sanitized || !previous) return sanitized;
-  for (const field of ['travelTime', 'attachments', 'videoCallURL']) {
+  for (const field of ['travelTime', 'attachments', 'videoCallURL', 'color']) {
     if (!Object.prototype.hasOwnProperty.call(value, field)
         && Object.prototype.hasOwnProperty.call(previous, field)) {
       sanitized[field] = previous[field];
@@ -3233,9 +3242,14 @@ function sanitizeEventDetails(value: any): any {
     }).filter(Boolean)
     : [];
 
+  const normalizedColor = /^#[0-9a-fA-F]{6}$/.test(String(value.color ?? ''))
+    ? String(value.color).toUpperCase()
+    : null;
+
   return {
     notes: text(value.notes, 20000),
     timeZone: text(value.timeZone, 128),
+    ...(normalizedColor ? { color: normalizedColor } : {}),
     availability: Math.max(-1, Math.min(3, integer(value.availability))),
     alarms,
     recurrenceRules,

@@ -13,16 +13,16 @@ export class CalendarStorageClient {
   }
 
   async send(command: any): Promise<any> {
-    if (!this.endpoint || command.input.Bucket !== process.env.CAL_BUCKET) {
+    if (!this.endpoint || command?.input?.Bucket !== process.env.CAL_BUCKET) {
       return this.aws.send(command);
     }
     const operations: Record<string, string> = {
       GetObjectCommand: 'get', PutObjectCommand: 'put', DeleteObjectCommand: 'delete',
       ListObjectsV2Command: 'list', ListObjectVersionsCommand: 'versions',
     };
-    const operation = operations[command.constructor.name];
+    const operation = operations[command?.constructor?.name];
     if (!operation) throw new Error('Unsupported calendar storage operation');
-    const input = { ...command.input, Operation: operation };
+    const input: any = { ...command.input, Operation: operation };
     if (input.Body !== undefined) input.Body = Buffer.from(input.Body).toString('base64');
     const response = await fetch(new URL('/v1/objects', this.endpoint), {
       method: 'POST', headers: { Authorization: `Bearer ${this.token}`, 'Content-Type': 'application/json' },

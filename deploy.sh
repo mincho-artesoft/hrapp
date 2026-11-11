@@ -27,6 +27,7 @@ MODE="${1:-debug}"
 
 package() {
   log "build (tsc)"
+  rm -rf "$HERE/dist"
   (cd "$HERE" && npx tsc -p tsconfig.json)
 
   log "staging production dependencies (including pinned SES SDK)"

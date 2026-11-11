@@ -18,8 +18,8 @@ export async function createApp(expressApp?: Express): Promise<INestApplication>
 
   app.enableCors({
     origin: '*',
-    methods: 'GET,POST,PUT,DELETE,OPTIONS',
-    allowedHeaders: 'authorization,content-type',
+    methods: 'GET,POST,PUT,PATCH,DELETE,OPTIONS',
+    allowedHeaders: 'authorization,content-type,cache-control',
     maxAge: 86400,
   });
   app.useGlobalFilters(new AllExceptionsFilter());
