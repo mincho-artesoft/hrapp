@@ -1081,3 +1081,57 @@
 "Weekend day" = "Dia de fim de semana";
 
 "Event will occur every %@." = "O evento ocorrerá a cada %@.";
+
+"Web Sign-In & Authenticator" = "Login Web e Autenticador";
+
+"6-digit security code for cloud-calendars.com" = "Código de segurança de 6 dígitos para cloud-calendars.com";
+
+"Web Sign-In & 6-Digit Authenticator" = "Login Web e Autenticador de 6 dígitos";
+
+"Web Sign-In" = "Login Web";
+
+"Web Authenticator" = "Autenticador Web";
+
+"Cloud Calendars Web" = "Cloud Calendars Web";
+
+"Confirm sign-in on your browser with your Cloud Calendars account." = "Confirme o login no navegador com sua conta do Cloud Calendars.";
+
+"Sign in at cloud-calendars.com by QR scan or with your 6-digit security code." = "Entre em cloud-calendars.com escaneando o QR code ou usando seu código de segurança de 6 dígitos.";
+
+"Connect your Cloud Calendars account with Apple, Google, or Microsoft first." = "Conecte primeiro sua conta do Cloud Calendars com Apple, Google ou Microsoft.";
+
+"Approve Browser Sign-In" = "Aprovar login no navegador";
+
+"This will also link browser session %@ with your Cloud Calendars iOS account." = "Isso também vinculará a sessão do navegador %@ à sua conta iOS do Cloud Calendars.";
+
+"Tap Approve below to sign in immediately on your computer." = "Toque em Aprovar abaixo para entrar imediatamente no computador.";
+
+"Approving…" = "Aprovando…";
+
+"Approve Sign-In" = "Aprovar login";
+
+"Browser Sign-In Approved" = "Login no navegador aprovado";
+
+"Your web workspace is now open and synced with this account." = "Seu espaço web já está aberto e sincronizado com esta conta.";
+
+"6-Digit Authenticator Code" = "Código autenticador de 6 dígitos";
+
+"Copy" = "Copiar";
+
+"Account email: %@" = "E-mail da conta: %@";
+
+"You can enter this email and 6-digit code anytime at cloud-calendars.com to sign in without scanning a QR code." = "Você pode digitar este e-mail e o código de 6 dígitos a qualquer momento em cloud-calendars.com sem precisar escanear um QR code.";
+
+"Preparing your Authenticator key…" = "Preparando sua chave do autenticador…";
+
+"Activate 6-Digit Authenticator Code" = "Ativar código de 6 dígitos";
+
+"Scan Web Sign-In QR Code" = "Escanear QR code de login Web";
+
+"This QR code has expired. Scan the refreshed QR code shown on your computer." = "Este QR code expirou. Escaneie o QR code atualizado exibido no seu computador.";
+
+"Cloud Calendars" = "Cloud Calendars";
+
+"Web & Events Sync" = "Sincronização Web e Eventos";
+
+"Synced automatically with Cloud Calendars on the web, Event RSVP pages, and Booking links." = "Sincronizado automaticamente com o Cloud Calendars na web, páginas RSVP de eventos e links de agendamento.";

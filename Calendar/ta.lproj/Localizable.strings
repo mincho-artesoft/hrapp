@@ -1083,3 +1083,57 @@
 "Weekend day" = "வார இறுதி நாள்";
 
 "Event will occur every %@." = "ஒவ்வொரு %@ நிகழ்வும் நிகழும்.";
+
+"Web Sign-In & Authenticator" = "வெப் உள்நுழைவு & அங்கீகரிப்பான்";
+
+"6-digit security code for cloud-calendars.com" = "cloud-calendars.com-க்கான 6 இலக்க பாதுகாப்பு குறியீடு";
+
+"Web Sign-In & 6-Digit Authenticator" = "வெப் உள்நுழைவு & 6 இலக்க அங்கீகரிப்பான்";
+
+"Web Sign-In" = "வெப் உள்நுழைவு";
+
+"Web Authenticator" = "வெப் அங்கீகரிப்பான்";
+
+"Cloud Calendars Web" = "Cloud Calendars Web";
+
+"Confirm sign-in on your browser with your Cloud Calendars account." = "உங்கள் Cloud Calendars கணக்குடன் உலாவி உள்நுழைவை உறுதிப்படுத்தவும்.";
+
+"Sign in at cloud-calendars.com by QR scan or with your 6-digit security code." = "QR ஸ்கேன் அல்லது 6 இலக்க பாதுகாப்பு குறியீடு மூலம் cloud-calendars.com-இல் உள்நுழையவும்.";
+
+"Connect your Cloud Calendars account with Apple, Google, or Microsoft first." = "முதலில் உங்கள் Cloud Calendars கணக்கை Apple, Google அல்லது Microsoft உடன் இணைக்கவும்.";
+
+"Approve Browser Sign-In" = "உலாவி உள்நுழைவை அனுமதி";
+
+"This will also link browser session %@ with your Cloud Calendars iOS account." = "இது உலாவி அமர்வு %@-ஐயும் உங்கள் Cloud Calendars iOS கணக்குடன் இணைக்கும்.";
+
+"Tap Approve below to sign in immediately on your computer." = "உங்கள் கணினியில் உடனே உள்நுழைய கீழே உள்ள உள்நுழைவை அனுமதி என்பதைத் தட்டவும்.";
+
+"Approving…" = "அனுமதிக்கிறது…";
+
+"Approve Sign-In" = "உள்நுழைவை அனுமதி";
+
+"Browser Sign-In Approved" = "உலாவி உள்நுழைவு அனுமதிக்கப்பட்டது";
+
+"Your web workspace is now open and synced with this account." = "உங்கள் வெப் பணியிடம் இப்போது திறக்கப்பட்டு இந்தக் கணக்குடன் ஒத்திசைக்கப்பட்டுள்ளது.";
+
+"6-Digit Authenticator Code" = "6 இலக்க அங்கீகாரக் குறியீடு";
+
+"Copy" = "நகலெடு";
+
+"Account email: %@" = "கணக்கு மின்னஞ்சல்: %@";
+
+"You can enter this email and 6-digit code anytime at cloud-calendars.com to sign in without scanning a QR code." = "QR குறியீட்டை ஸ்கேன் செய்யாமல் உள்நுழைய எப்போது வேண்டுமானாலும் cloud-calendars.com-இல் இந்த மின்னஞ்சலையும் 6 இலக்க குறியீட்டையும் உள்ளிடலாம்.";
+
+"Preparing your Authenticator key…" = "அங்கீகார விசை தயாராகிறது…";
+
+"Activate 6-Digit Authenticator Code" = "6 இலக்க குறியீட்டை இயக்கு";
+
+"Scan Web Sign-In QR Code" = "வெப் உள்நுழைவு QR குறியீட்டை ஸ்கேன் செய்";
+
+"This QR code has expired. Scan the refreshed QR code shown on your computer." = "இந்த QR குறியீடு காலாவதியானது. கணினியில் காட்டப்படும் புதிய QR குறியீட்டை ஸ்கேன் செய்யவும்.";
+
+"Cloud Calendars" = "Cloud Calendars";
+
+"Web & Events Sync" = "வெப் & நிகழ்வு ஒத்திசைவு";
+
+"Synced automatically with Cloud Calendars on the web, Event RSVP pages, and Booking links." = "வெப்பில் உள்ள Cloud Calendars, நிகழ்வு RSVP பக்கங்கள் மற்றும் முன்பதிவு இணைப்புகளுடன் தானாக ஒத்திசைகிறது.";

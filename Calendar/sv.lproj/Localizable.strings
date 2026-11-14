@@ -1081,3 +1081,57 @@
 "Weekend day" = "Helgdag";
 
 "Event will occur every %@." = "Händelse kommer att inträffa varje %@.";
+
+"Web Sign-In & Authenticator" = "Webbinloggning & Autentiserare";
+
+"6-digit security code for cloud-calendars.com" = "6-siffrig säkerhetskod för cloud-calendars.com";
+
+"Web Sign-In & 6-Digit Authenticator" = "Webbinloggning & 6-siffrig Autentiserare";
+
+"Web Sign-In" = "Webbinloggning";
+
+"Web Authenticator" = "Webbautentiserare";
+
+"Cloud Calendars Web" = "Cloud Calendars Web";
+
+"Confirm sign-in on your browser with your Cloud Calendars account." = "Bekräfta inloggningen i webbläsaren med ditt Cloud Calendars-konto.";
+
+"Sign in at cloud-calendars.com by QR scan or with your 6-digit security code." = "Logga in på cloud-calendars.com via QR-kod eller med din 6-siffriga säkerhetskod.";
+
+"Connect your Cloud Calendars account with Apple, Google, or Microsoft first." = "Anslut först ditt Cloud Calendars-konto med Apple, Google eller Microsoft.";
+
+"Approve Browser Sign-In" = "Godkänn webbläsarinloggning";
+
+"This will also link browser session %@ with your Cloud Calendars iOS account." = "Detta kopplar även webbläsarsessionen %@ till ditt Cloud Calendars iOS-konto.";
+
+"Tap Approve below to sign in immediately on your computer." = "Tryck på Godkänn inloggning nedan för att logga in direkt på datorn.";
+
+"Approving…" = "Godkänner…";
+
+"Approve Sign-In" = "Godkänn inloggning";
+
+"Browser Sign-In Approved" = "Webbläsarinloggning godkänd";
+
+"Your web workspace is now open and synced with this account." = "Din webbarbetsplats är nu öppen och synkroniserad med det här kontot.";
+
+"6-Digit Authenticator Code" = "6-siffrig autentiseringskod";
+
+"Copy" = "Kopiera";
+
+"Account email: %@" = "Konto-e-post: %@";
+
+"You can enter this email and 6-digit code anytime at cloud-calendars.com to sign in without scanning a QR code." = "Du kan när som helst ange den här e-postadressen och den 6-siffriga koden på cloud-calendars.com utan att skanna en QR-kod.";
+
+"Preparing your Authenticator key…" = "Förbereder din autentiseringsnyckel…";
+
+"Activate 6-Digit Authenticator Code" = "Aktivera 6-siffrig kod";
+
+"Scan Web Sign-In QR Code" = "Skanna QR-kod för webbinloggning";
+
+"This QR code has expired. Scan the refreshed QR code shown on your computer." = "Den här QR-koden har gått ut. Skanna den uppdaterade QR-koden på datorn.";
+
+"Cloud Calendars" = "Cloud Calendars";
+
+"Web & Events Sync" = "Webb- och händelsesynk";
+
+"Synced automatically with Cloud Calendars on the web, Event RSVP pages, and Booking links." = "Synkroniseras automatiskt med Cloud Calendars på webben, OSA-sidor och bokningslänkar.";

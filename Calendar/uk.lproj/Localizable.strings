@@ -1083,3 +1083,57 @@
 "Weekend day" = "Вихідний день";
 
 "Event will occur every %@." = "Подія відбуватиметься кожні %@.";
+
+"Web Sign-In & Authenticator" = "Веб-вхід та Автентифікатор";
+
+"6-digit security code for cloud-calendars.com" = "6-значний код безпеки для cloud-calendars.com";
+
+"Web Sign-In & 6-Digit Authenticator" = "Веб-вхід та 6-значний Автентифікатор";
+
+"Web Sign-In" = "Веб-вхід";
+
+"Web Authenticator" = "Веб-автентифікатор";
+
+"Cloud Calendars Web" = "Cloud Calendars Web";
+
+"Confirm sign-in on your browser with your Cloud Calendars account." = "Підтвердьте вхід у браузері за допомогою облікового запису Cloud Calendars.";
+
+"Sign in at cloud-calendars.com by QR scan or with your 6-digit security code." = "Увійдіть на cloud-calendars.com за QR-кодом або за допомогою 6-значного коду безпеки.";
+
+"Connect your Cloud Calendars account with Apple, Google, or Microsoft first." = "Спочатку підключіть обліковий запис Cloud Calendars через Apple, Google або Microsoft.";
+
+"Approve Browser Sign-In" = "Підтвердити вхід у браузері";
+
+"This will also link browser session %@ with your Cloud Calendars iOS account." = "Це також пов’яже сесію браузера %@ з вашим обліковим записом iOS Cloud Calendars.";
+
+"Tap Approve below to sign in immediately on your computer." = "Натисніть «Підтвердити вхід» нижче, щоб миттєво увійти на комп’ютері.";
+
+"Approving…" = "Підтвердження…";
+
+"Approve Sign-In" = "Підтвердити вхід";
+
+"Browser Sign-In Approved" = "Вхід у браузері підтверджено";
+
+"Your web workspace is now open and synced with this account." = "Ваш веб-простір відкрито та синхронізовано з цим обліковим записом.";
+
+"6-Digit Authenticator Code" = "6-значний код автентифікатора";
+
+"Copy" = "Копіювати";
+
+"Account email: %@" = "Email облікового запису: %@";
+
+"You can enter this email and 6-digit code anytime at cloud-calendars.com to sign in without scanning a QR code." = "Ви можете будь-коли ввести цей email і 6-значний код на cloud-calendars.com без сканування QR-коду.";
+
+"Preparing your Authenticator key…" = "Підготовка ключа автентифікатора…";
+
+"Activate 6-Digit Authenticator Code" = "Активувати 6-значний код";
+
+"Scan Web Sign-In QR Code" = "Сканувати QR-код веб-входу";
+
+"This QR code has expired. Scan the refreshed QR code shown on your computer." = "Термін дії цього QR-коду минув. Відскануйте оновлений QR-код на екрані комп’ютера.";
+
+"Cloud Calendars" = "Cloud Calendars";
+
+"Web & Events Sync" = "Синхронізація веб і подій";
+
+"Synced automatically with Cloud Calendars on the web, Event RSVP pages, and Booking links." = "Автоматично синхронізується з веб-версією Cloud Calendars, сторінками RSVP та посиланнями для бронювання.";

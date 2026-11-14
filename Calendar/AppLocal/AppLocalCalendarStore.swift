@@ -14,6 +14,11 @@ enum AppLocalCalendarOrigin: String, Codable {
 
 struct AppLocalCalendarRecord: Codable, Equatable, Identifiable {
     static let identifierPrefix = "app-local:"
+    static let personalCloudPrefix = "app-local:personal-cloud:"
+
+    static func personalCloudCalendarID(for remoteCalendarID: String) -> String {
+        personalCloudPrefix + remoteCalendarID
+    }
 
     var id: String
     var title: String
@@ -65,10 +70,11 @@ struct AppLocalCalendarRecord: Codable, Equatable, Identifiable {
         self.localColorOverrideHex = localColorOverrideHex
     }
 
+    var isPersonalCloud: Bool { id.hasPrefix(Self.personalCloudPrefix) }
     var displayColorHex: String { localColorOverrideHex ?? colorHex }
     var isRevoked: Bool { revokedAt != nil }
     var canEditEvents: Bool { !isRevoked && access != .reader }
-    var canManageSharing: Bool { !isRevoked && access == .owner }
+    var canManageSharing: Bool { !isRevoked && access == .owner && !isPersonalCloud }
 
     /// The backend deliberately receives a one-way fingerprint rather than
     /// the app's raw local identifier.
@@ -220,7 +226,12 @@ final class AppLocalCalendarStore: ObservableObject {
 
     var ownedCalendars: [AppLocalCalendarRecord] {
         calendars.filter { $0.origin == .owned }
-            .sorted { $0.title.localizedStandardCompare($1.title) == .orderedAscending }
+            .sorted { lhs, rhs in
+                if lhs.isPersonalCloud != rhs.isPersonalCloud {
+                    return lhs.isPersonalCloud
+                }
+                return lhs.title.localizedStandardCompare(rhs.title) == .orderedAscending
+            }
     }
 
     var receivedCalendars: [AppLocalCalendarRecord] {
@@ -363,6 +374,99 @@ final class AppLocalCalendarStore: ObservableObject {
         let removedIDs = Set(calendars.filter {
             $0.origin == .received
                 && !remoteKeys.contains(Self.remoteKey(ownerID: $0.remoteOwnerID, calendarID: $0.remoteCalendarID))
+        }.map(\.id))
+        guard !removedIDs.isEmpty else { return }
+        calendars.removeAll { removedIDs.contains($0.id) }
+        events.removeAll { removedIDs.contains($0.calendarID) }
+        CalendarViewModel.shared.selectedCalendarIDs.subtract(removedIDs)
+        persistAndNotify()
+    }
+
+    @discardableResult
+    func applyPersonalCloudSnapshot(
+        remoteCalendarID: String,
+        title: String,
+        colorHex: String,
+        timeZone: String,
+        updatedAt: String?,
+        remoteItems: [CloudCalendarsAPI.SharedICloudCalendarEvent]
+    ) -> Bool {
+        let localID = AppLocalCalendarRecord.personalCloudCalendarID(for: remoteCalendarID)
+        let previous = calendar(id: localID)
+        let updated = AppLocalCalendarRecord(
+            id: localID,
+            title: title,
+            colorHex: colorHex,
+            timeZoneIdentifier: timeZone,
+            createdAt: previous?.createdAt ?? Date(),
+            updatedAt: Self.date(updatedAt) ?? previous?.updatedAt ?? Date(),
+            origin: .owned,
+            remoteOwnerID: nil,
+            remoteOwnerEmail: nil,
+            remoteCalendarID: nil,
+            access: .owner,
+            isOriginalCreator: true,
+            revokedAt: nil,
+            revokedReason: nil,
+            localColorOverrideHex: previous?.localColorOverrideHex
+        )
+
+        let mappedEvents: [AppLocalEventRecord] = remoteItems.compactMap { value -> AppLocalEventRecord? in
+            guard let start = value.startDate, let end = value.endDate else { return nil }
+            let old = events.first { $0.calendarID == localID && $0.shareID == value.id }
+            var availableAlarms = old?.alarms ?? []
+            let alarms = (value.details?.alarms ?? []).compactMap { alarm -> AppLocalEventAlarm? in
+                guard let offset = alarm.relativeOffset else { return nil }
+                if let index = availableAlarms.firstIndex(where: { $0.relativeOffset == offset }) {
+                    return availableAlarms.remove(at: index)
+                }
+                return AppLocalEventAlarm(relativeOffset: offset)
+            }
+            return AppLocalEventRecord(
+                id: old?.id ?? "app-local-event:personal:\(remoteCalendarID):\(value.id)",
+                calendarID: localID,
+                title: value.title,
+                startDate: start,
+                endDate: end,
+                isAllDay: value.allDay,
+                location: value.location ?? "",
+                notes: value.details?.notes ?? "",
+                urlString: value.url ?? "",
+                videoCallURL: value.details?.videoCallURL,
+                timeZoneIdentifier: value.details?.timeZone ?? timeZone,
+                alarms: alarms,
+                createdAt: old?.createdAt ?? Date(),
+                updatedAt: old?.updatedAt ?? Date(),
+                remoteEventID: value.id,
+                isCancelled: false,
+                travelTime: value.details?.travelTime,
+                recurrenceRules: value.details?.recurrenceRules,
+                structuredLocation: value.details?.structuredLocation,
+                attachments: value.details?.attachments?.map(AppLocalEventAttachment.init)
+            )
+        }
+
+        let currentLocalEvents = events.filter { $0.calendarID == localID }
+        let changed = previous != updated
+            || currentLocalEvents.sorted { $0.id < $1.id } != mappedEvents.sorted { $0.id < $1.id }
+        guard changed else { return false }
+
+        if let index = calendars.firstIndex(where: { $0.id == localID }) {
+            calendars[index] = updated
+        } else {
+            calendars.append(updated)
+            CalendarViewModel.shared.selectedCalendarIDs.insert(localID)
+        }
+        events.removeAll { $0.calendarID == localID }
+        events.append(contentsOf: mappedEvents)
+        persistAndNotify()
+        return true
+    }
+
+    func removePersonalCloudCalendars(except activeRemoteCalendarID: String?) {
+        let keepID = activeRemoteCalendarID.map(AppLocalCalendarRecord.personalCloudCalendarID(for:))
+        let removedIDs = Set(calendars.filter {
+            $0.isPersonalCloud && $0.id != keepID
         }.map(\.id))
         guard !removedIDs.isEmpty else { return }
         calendars.removeAll { removedIDs.contains($0.id) }

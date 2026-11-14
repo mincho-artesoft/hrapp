@@ -1083,3 +1083,57 @@
 "Weekend day" = "Víkendový deň";
 
 "Event will occur every %@." = "Udalosť sa uskutoční každé %@.";
+
+"Web Sign-In & Authenticator" = "Webové prihlásenie a Overovač";
+
+"6-digit security code for cloud-calendars.com" = "6-miestny bezpečnostný kód pre cloud-calendars.com";
+
+"Web Sign-In & 6-Digit Authenticator" = "Webové prihlásenie a 6-miestny Overovač";
+
+"Web Sign-In" = "Webové prihlásenie";
+
+"Web Authenticator" = "Webový overovač";
+
+"Cloud Calendars Web" = "Cloud Calendars Web";
+
+"Confirm sign-in on your browser with your Cloud Calendars account." = "Potvrďte prihlásenie v prehliadači pomocou účtu Cloud Calendars.";
+
+"Sign in at cloud-calendars.com by QR scan or with your 6-digit security code." = "Prihláste sa na cloud-calendars.com naskenovaním QR kódu alebo 6-miestnym kódom.";
+
+"Connect your Cloud Calendars account with Apple, Google, or Microsoft first." = "Najprv prepojte účet Cloud Calendars so službou Apple, Google alebo Microsoft.";
+
+"Approve Browser Sign-In" = "Schváliť prihlásenie v prehliadači";
+
+"This will also link browser session %@ with your Cloud Calendars iOS account." = "Týmto sa prepojí aj relácia prehliadača %@ s vaším účtom Cloud Calendars pre iOS.";
+
+"Tap Approve below to sign in immediately on your computer." = "Ťuknite na Schváliť prihlásenie nižšie a okamžite sa prihlásite na počítači.";
+
+"Approving…" = "Schvaľovanie…";
+
+"Approve Sign-In" = "Schváliť prihlásenie";
+
+"Browser Sign-In Approved" = "Prihlásenie v prehliadači schválené";
+
+"Your web workspace is now open and synced with this account." = "Váš webový priestor je teraz otvorený a synchronizovaný s týmto účtom.";
+
+"6-Digit Authenticator Code" = "6-miestny overovací kód";
+
+"Copy" = "Kopírovať";
+
+"Account email: %@" = "E-mail účtu: %@";
+
+"You can enter this email and 6-digit code anytime at cloud-calendars.com to sign in without scanning a QR code." = "Tento e-mail a 6-miestny kód môžete kedykoľvek zadať na cloud-calendars.com bez skenovania QR kódu.";
+
+"Preparing your Authenticator key…" = "Príprava overovacieho kľúča…";
+
+"Activate 6-Digit Authenticator Code" = "Aktivovať 6-miestny kód";
+
+"Scan Web Sign-In QR Code" = "Naskenovať QR kód pre web";
+
+"This QR code has expired. Scan the refreshed QR code shown on your computer." = "Platnosť tohto QR kódu vypršala. Naskenujte obnovený QR kód na počítači.";
+
+"Cloud Calendars" = "Cloud Calendars";
+
+"Web & Events Sync" = "Synchronizácia webu a udalostí";
+
+"Synced automatically with Cloud Calendars on the web, Event RSVP pages, and Booking links." = "Automaticky sa synchronizuje s webom Cloud Calendars, stránkami RSVP a rezervačnými odkazmi.";

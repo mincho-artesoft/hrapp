@@ -766,6 +766,7 @@ struct CalendarsSheetView: View {
             // used to overwrite a local edit before the foreground sync could
             // upload it.
             _ = await SharedICloudCalendarLocalStore.refreshAll()
+            _ = await PersonalCloudCalendarSyncService.syncNow()
             _ = await AppLocalCalendarSyncService.syncAll()
             // The sync mutates EventKit in place. Refresh this sheet's
             // observed calendar collection as well, otherwise its open rows

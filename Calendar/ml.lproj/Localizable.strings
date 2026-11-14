@@ -1083,3 +1083,57 @@
 "Weekend day" = "വാരാന്ത്യ ദിവസം";
 
 "Event will occur every %@." = "ഓരോ %@-ലും ഇവൻ്റ് സംഭവിക്കും.";
+
+"Web Sign-In & Authenticator" = "വെബ് സൈൻ-ഇൻ & ഓതന്റിക്കേറ്റർ";
+
+"6-digit security code for cloud-calendars.com" = "cloud-calendars.com-നുള്ള 6-അക്ക സുരക്ഷാ കോഡ്";
+
+"Web Sign-In & 6-Digit Authenticator" = "വെബ് സൈൻ-ഇൻ & 6-അക്ക ഓതന്റിക്കേറ്റർ";
+
+"Web Sign-In" = "വെബ് സൈൻ-ഇൻ";
+
+"Web Authenticator" = "വെബ് ഓതന്റിക്കേറ്റർ";
+
+"Cloud Calendars Web" = "Cloud Calendars Web";
+
+"Confirm sign-in on your browser with your Cloud Calendars account." = "നിങ്ങളുടെ Cloud Calendars അക്കൗണ്ട് ഉപയോഗിച്ച് ബ്രൗസർ സൈൻ-ഇൻ സ്ഥിരീകരിക്കുക.";
+
+"Sign in at cloud-calendars.com by QR scan or with your 6-digit security code." = "QR സ്കാൻ വഴിയോ 6-അക്ക സുരക്ഷാ കോഡ് ഉപയോഗിച്ചോ cloud-calendars.com-ൽ സൈൻ ഇൻ ചെയ്യുക.";
+
+"Connect your Cloud Calendars account with Apple, Google, or Microsoft first." = "ആദ്യം Apple, Google അല്ലെങ്കിൽ Microsoft വഴി Cloud Calendars അക്കൗണ്ട് ബന്ധിപ്പിക്കുക.";
+
+"Approve Browser Sign-In" = "ബ്രൗസർ സൈൻ-ഇൻ അംഗീകരിക്കുക";
+
+"This will also link browser session %@ with your Cloud Calendars iOS account." = "ഇത് ബ്രൗസർ സെഷൻ %@ നിങ്ങളുടെ Cloud Calendars iOS അക്കൗണ്ടുമായും ബന്ധിപ്പിക്കും.";
+
+"Tap Approve below to sign in immediately on your computer." = "കംപ്യൂട്ടറിൽ ഉടൻ സൈൻ ഇൻ ചെയ്യാൻ താഴെയുള്ള സൈൻ-ഇൻ അംഗീകരിക്കുക ടാപ്പ് ചെയ്യുക.";
+
+"Approving…" = "അംഗീകരിക്കുന്നു…";
+
+"Approve Sign-In" = "സൈൻ-ഇൻ അംഗീകരിക്കുക";
+
+"Browser Sign-In Approved" = "ബ്രൗസർ സൈൻ-ഇൻ അംഗീകരിച്ചു";
+
+"Your web workspace is now open and synced with this account." = "നിങ്ങളുടെ വെബ് വർക്ക്‌സ്‌പെയ്‌സ് ഇപ്പോൾ തുറന്നിരിക്കുന്നു, ഈ അക്കൗണ്ടുമായി സിങ്ക് ചെയ്തിരിക്കുന്നു.";
+
+"6-Digit Authenticator Code" = "6-അക്ക ഓതന്റിക്കേറ്റർ കോഡ്";
+
+"Copy" = "പകർത്തുക";
+
+"Account email: %@" = "അക്കൗണ്ട് ഇമെയിൽ: %@";
+
+"You can enter this email and 6-digit code anytime at cloud-calendars.com to sign in without scanning a QR code." = "QR കോഡ് സ്കാൻ ചെയ്യാതെ തന്നെ സൈൻ ഇൻ ചെയ്യാൻ എപ്പോൾ വേണമെങ്കിലും cloud-calendars.com-ൽ ഈ ഇമെയിലും 6-അക്ക കോഡും നൽകാം.";
+
+"Preparing your Authenticator key…" = "നിങ്ങളുടെ ഓതന്റിക്കേറ്റർ കീ തയ്യാറാക്കുന്നു…";
+
+"Activate 6-Digit Authenticator Code" = "6-അക്ക കോഡ് സജീവമാക്കുക";
+
+"Scan Web Sign-In QR Code" = "വെബ് സൈൻ-ഇൻ QR കോഡ് സ്കാൻ ചെയ്യുക";
+
+"This QR code has expired. Scan the refreshed QR code shown on your computer." = "ഈ QR കോഡിന്റെ കാലാവധി കഴിഞ്ഞു. കംപ്യൂട്ടറിൽ കാണുന്ന പുതിയ QR കോഡ് സ്കാൻ ചെയ്യുക.";
+
+"Cloud Calendars" = "Cloud Calendars";
+
+"Web & Events Sync" = "വെബ് & ഇവന്റ് സിങ്ക്";
+
+"Synced automatically with Cloud Calendars on the web, Event RSVP pages, and Booking links." = "വെബിലെ Cloud Calendars, ഇവന്റ് RSVP പേജുകൾ, ബുക്കിംഗ് ലിങ്കുകൾ എന്നിവയുമായി സ്വയമേവ സിങ്ക് ചെയ്യുന്നു.";

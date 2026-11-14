@@ -31,6 +31,7 @@ class SubscriptionManager: ObservableObject {
     }
     @Published var expirationDates: [String: Date] = [:]
     @Published var isLoading = false
+    @Published private(set) var hasCheckedEntitlements = false
 
     private var updatesTask: Task<Void, Never>?
     var hasActiveSubscription: Bool { !purchasedProductIDs.isEmpty }
@@ -163,6 +164,7 @@ class SubscriptionManager: ObservableObject {
         await MainActor.run {
             self.purchasedProductIDs = activeIDs
             self.expirationDates     = expiryDates
+            self.hasCheckedEntitlements = true
         }
     }
 

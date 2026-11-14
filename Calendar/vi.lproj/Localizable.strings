@@ -1081,3 +1081,57 @@
 "Weekend day" = "Ngày cuối tuần";
 
 "Event will occur every %@." = "Sự kiện sẽ xảy ra vào mỗi %@.";
+
+"Web Sign-In & Authenticator" = "Đăng nhập Web & Trình xác thực";
+
+"6-digit security code for cloud-calendars.com" = "Mã bảo mật 6 chữ số cho cloud-calendars.com";
+
+"Web Sign-In & 6-Digit Authenticator" = "Đăng nhập Web & Trình xác thực 6 số";
+
+"Web Sign-In" = "Đăng nhập Web";
+
+"Web Authenticator" = "Trình xác thực Web";
+
+"Cloud Calendars Web" = "Cloud Calendars Web";
+
+"Confirm sign-in on your browser with your Cloud Calendars account." = "Xác nhận đăng nhập trên trình duyệt bằng tài khoản Cloud Calendars của bạn.";
+
+"Sign in at cloud-calendars.com by QR scan or with your 6-digit security code." = "Đăng nhập tại cloud-calendars.com bằng mã QR hoặc mã bảo mật 6 chữ số.";
+
+"Connect your Cloud Calendars account with Apple, Google, or Microsoft first." = "Trước tiên hãy kết nối tài khoản Cloud Calendars với Apple, Google hoặc Microsoft.";
+
+"Approve Browser Sign-In" = "Phê duyệt đăng nhập trình duyệt";
+
+"This will also link browser session %@ with your Cloud Calendars iOS account." = "Thao tác này cũng sẽ liên kết phiên trình duyệt %@ với tài khoản iOS Cloud Calendars của bạn.";
+
+"Tap Approve below to sign in immediately on your computer." = "Chạm Phê duyệt đăng nhập bên dưới để đăng nhập ngay trên máy tính.";
+
+"Approving…" = "Đang phê duyệt…";
+
+"Approve Sign-In" = "Phê duyệt đăng nhập";
+
+"Browser Sign-In Approved" = "Đã phê duyệt đăng nhập trình duyệt";
+
+"Your web workspace is now open and synced with this account." = "Không gian làm việc web của bạn đã mở và đồng bộ với tài khoản này.";
+
+"6-Digit Authenticator Code" = "Mã xác thực 6 chữ số";
+
+"Copy" = "Sao chép";
+
+"Account email: %@" = "Email tài khoản: %@";
+
+"You can enter this email and 6-digit code anytime at cloud-calendars.com to sign in without scanning a QR code." = "Bạn có thể nhập email này và mã 6 chữ số bất cứ lúc nào tại cloud-calendars.com mà không cần quét mã QR.";
+
+"Preparing your Authenticator key…" = "Đang chuẩn bị khóa xác thực…";
+
+"Activate 6-Digit Authenticator Code" = "Kích hoạt mã 6 chữ số";
+
+"Scan Web Sign-In QR Code" = "Quét mã QR đăng nhập Web";
+
+"This QR code has expired. Scan the refreshed QR code shown on your computer." = "Mã QR này đã hết hạn. Hãy quét mã QR mới hiển thị trên máy tính của bạn.";
+
+"Cloud Calendars" = "Cloud Calendars";
+
+"Web & Events Sync" = "Đồng bộ Web & Sự kiện";
+
+"Synced automatically with Cloud Calendars on the web, Event RSVP pages, and Booking links." = "Tự động đồng bộ với Cloud Calendars trên web, trang RSVP sự kiện và liên kết đặt lịch.";

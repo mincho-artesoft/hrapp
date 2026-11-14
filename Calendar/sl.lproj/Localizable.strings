@@ -1083,3 +1083,57 @@
 "Weekend day" = "Vikend dan";
 
 "Event will occur every %@." = "Dogodek se bo zgodil vsak %@.";
+
+"Web Sign-In & Authenticator" = "Spletna prijava in Overitelj";
+
+"6-digit security code for cloud-calendars.com" = "6-mestna varnostna koda za cloud-calendars.com";
+
+"Web Sign-In & 6-Digit Authenticator" = "Spletna prijava in 6-mestni Overitelj";
+
+"Web Sign-In" = "Spletna prijava";
+
+"Web Authenticator" = "Spletni overitelj";
+
+"Cloud Calendars Web" = "Cloud Calendars Web";
+
+"Confirm sign-in on your browser with your Cloud Calendars account." = "Potrdite prijavo v brskalniku s svojim računom Cloud Calendars.";
+
+"Sign in at cloud-calendars.com by QR scan or with your 6-digit security code." = "Prijavite se na cloud-calendars.com s skeniranjem QR-kode ali 6-mestno varnostno kodo.";
+
+"Connect your Cloud Calendars account with Apple, Google, or Microsoft first." = "Najprej povežite račun Cloud Calendars z Apple, Googlom ali Microsoftom.";
+
+"Approve Browser Sign-In" = "Odobri prijavo v brskalniku";
+
+"This will also link browser session %@ with your Cloud Calendars iOS account." = "S tem bo tudi seja brskalnika %@ povezana z vašim iOS računom Cloud Calendars.";
+
+"Tap Approve below to sign in immediately on your computer." = "Tapnite Odobri prijavo spodaj za takojšnjo prijavo v računalniku.";
+
+"Approving…" = "Odobravanje…";
+
+"Approve Sign-In" = "Odobri prijavo";
+
+"Browser Sign-In Approved" = "Prijava v brskalniku odobrena";
+
+"Your web workspace is now open and synced with this account." = "Vaš spletni delovni prostor je odprt in sinhroniziran s tem računom.";
+
+"6-Digit Authenticator Code" = "6-mestna overitvena koda";
+
+"Copy" = "Kopiraj";
+
+"Account email: %@" = "E-pošta računa: %@";
+
+"You can enter this email and 6-digit code anytime at cloud-calendars.com to sign in without scanning a QR code." = "To e-pošto in 6-mestno kodo lahko kadar koli vnesete na cloud-calendars.com brez skeniranja QR-kode.";
+
+"Preparing your Authenticator key…" = "Priprava overitvenega ključa…";
+
+"Activate 6-Digit Authenticator Code" = "Aktiviraj 6-mestno kodo";
+
+"Scan Web Sign-In QR Code" = "Skeniraj QR-kodo za spletno prijavo";
+
+"This QR code has expired. Scan the refreshed QR code shown on your computer." = "Ta QR-koda je potekla. Skenirajte osveženo QR-kodo na zaslonu računalnika.";
+
+"Cloud Calendars" = "Cloud Calendars";
+
+"Web & Events Sync" = "Sinhronizacija spleta in dogodkov";
+
+"Synced automatically with Cloud Calendars on the web, Event RSVP pages, and Booking links." = "Samodejno sinhronizirano s spletno različico Cloud Calendars, stranmi RSVP in povezavami za rezervacije.";

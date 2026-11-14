@@ -1081,3 +1081,57 @@
 "Weekend day" = "Weekenddag";
 
 "Event will occur every %@." = "Het evenement vindt elke %@ plaats.";
+
+"Web Sign-In & Authenticator" = "Web-login & Authenticator";
+
+"6-digit security code for cloud-calendars.com" = "6-cijferige beveiligingscode voor cloud-calendars.com";
+
+"Web Sign-In & 6-Digit Authenticator" = "Web-login & 6-cijferige Authenticator";
+
+"Web Sign-In" = "Web-login";
+
+"Web Authenticator" = "Web-authenticator";
+
+"Cloud Calendars Web" = "Cloud Calendars Web";
+
+"Confirm sign-in on your browser with your Cloud Calendars account." = "Bevestig het inloggen in je browser met je Cloud Calendars-account.";
+
+"Sign in at cloud-calendars.com by QR scan or with your 6-digit security code." = "Log in op cloud-calendars.com via QR-scan of met je 6-cijferige beveiligingscode.";
+
+"Connect your Cloud Calendars account with Apple, Google, or Microsoft first." = "Koppel eerst je Cloud Calendars-account met Apple, Google of Microsoft.";
+
+"Approve Browser Sign-In" = "Browser-login goedkeuren";
+
+"This will also link browser session %@ with your Cloud Calendars iOS account." = "Hiermee wordt ook browsersessie %@ gekoppeld aan je Cloud Calendars iOS-account.";
+
+"Tap Approve below to sign in immediately on your computer." = "Tik hieronder op Goedkeuren om direct op je computer in te loggen.";
+
+"Approving…" = "Goedkeuren…";
+
+"Approve Sign-In" = "Inloggen goedkeuren";
+
+"Browser Sign-In Approved" = "Browser-login goedgekeurd";
+
+"Your web workspace is now open and synced with this account." = "Je webomgeving is nu geopend en gesynchroniseerd met dit account.";
+
+"6-Digit Authenticator Code" = "6-cijferige authenticatorcode";
+
+"Copy" = "Kopiëren";
+
+"Account email: %@" = "Account-e-mail: %@";
+
+"You can enter this email and 6-digit code anytime at cloud-calendars.com to sign in without scanning a QR code." = "Je kunt dit e-mailadres en de 6-cijferige code altijd invoeren op cloud-calendars.com zonder een QR-code te scannen.";
+
+"Preparing your Authenticator key…" = "Authenticatorsleutel voorbereiden…";
+
+"Activate 6-Digit Authenticator Code" = "6-cijferige code activeren";
+
+"Scan Web Sign-In QR Code" = "QR-code voor web-login scannen";
+
+"This QR code has expired. Scan the refreshed QR code shown on your computer." = "Deze QR-code is verlopen. Scan de vernieuwde QR-code op je computer.";
+
+"Cloud Calendars" = "Cloud Calendars";
+
+"Web & Events Sync" = "Web- & agendasynchronisatie";
+
+"Synced automatically with Cloud Calendars on the web, Event RSVP pages, and Booking links." = "Wordt automatisch gesynchroniseerd met Cloud Calendars op het web, RSVP-pagina’s en boekingslinks.";

@@ -1081,3 +1081,57 @@
 "Weekend day" = "Μέρα Σαββατοκύριακου";
 
 "Event will occur every %@." = "Το συμβάν θα λαμβάνει χώρα κάθε %@.";
+
+"Web Sign-In & Authenticator" = "Σύνδεση Web & Επαληθευτής";
+
+"6-digit security code for cloud-calendars.com" = "6ψήφιος κωδικός ασφαλείας για το cloud-calendars.com";
+
+"Web Sign-In & 6-Digit Authenticator" = "Σύνδεση Web & 6ψήφιος Επαληθευτής";
+
+"Web Sign-In" = "Σύνδεση Web";
+
+"Web Authenticator" = "Επαληθευτής Web";
+
+"Cloud Calendars Web" = "Cloud Calendars Web";
+
+"Confirm sign-in on your browser with your Cloud Calendars account." = "Επιβεβαιώστε τη σύνδεση στο πρόγραμμα περιήγησης με τον λογαριασμό Cloud Calendars.";
+
+"Sign in at cloud-calendars.com by QR scan or with your 6-digit security code." = "Συνδεθείτε στο cloud-calendars.com με σάρωση QR ή με τον 6ψήφιο κωδικό ασφαλείας.";
+
+"Connect your Cloud Calendars account with Apple, Google, or Microsoft first." = "Συνδέστε πρώτα τον λογαριασμό Cloud Calendars με Apple, Google ή Microsoft.";
+
+"Approve Browser Sign-In" = "Έγκριση σύνδεσης προγράμματος περιήγησης";
+
+"This will also link browser session %@ with your Cloud Calendars iOS account." = "Αυτό θα συνδέσει επίσης τη συνεδρία %@ με τον λογαριασμό iOS Cloud Calendars.";
+
+"Tap Approve below to sign in immediately on your computer." = "Πατήστε Έγκριση παρακάτω για άμεση σύνδεση στον υπολογιστή σας.";
+
+"Approving…" = "Έγκριση…";
+
+"Approve Sign-In" = "Έγκριση σύνδεσης";
+
+"Browser Sign-In Approved" = "Η σύνδεση εγκρίθηκε";
+
+"Your web workspace is now open and synced with this account." = "Ο χώρος εργασίας web είναι πλέον ανοιχτός και συγχρονισμένος με αυτόν τον λογαριασμό.";
+
+"6-Digit Authenticator Code" = "6ψήφιος κωδικός επαλήθευσης";
+
+"Copy" = "Αντιγραφή";
+
+"Account email: %@" = "Email λογαριασμού: %@";
+
+"You can enter this email and 6-digit code anytime at cloud-calendars.com to sign in without scanning a QR code." = "Μπορείτε να εισαγάγετε αυτό το email και τον 6ψήφιο κωδικό οποτεδήποτε στο cloud-calendars.com χωρίς σάρωση QR.";
+
+"Preparing your Authenticator key…" = "Προετοιμασία κλειδιού επαληθευτή…";
+
+"Activate 6-Digit Authenticator Code" = "Ενεργοποίηση 6ψήφιου κωδικού";
+
+"Scan Web Sign-In QR Code" = "Σάρωση κωδικού QR σύνδεσης Web";
+
+"This QR code has expired. Scan the refreshed QR code shown on your computer." = "Αυτός ο κωδικός QR έληξε. Σαρώστε τον ανανεωμένο κωδικό QR στον υπολογιστή σας.";
+
+"Cloud Calendars" = "Cloud Calendars";
+
+"Web & Events Sync" = "Συγχρονισμός Web & εκδηλώσεων";
+
+"Synced automatically with Cloud Calendars on the web, Event RSVP pages, and Booking links." = "Συγχρονίζεται αυτόματα με το Cloud Calendars στο web, τις σελίδες RSVP και τους συνδέσμους κρατήσεων.";

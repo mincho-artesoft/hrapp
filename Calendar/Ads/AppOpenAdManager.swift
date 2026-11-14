@@ -8,8 +8,11 @@ class AppOpenAdManager: NSObject, FullScreenContentDelegate {
 
   private var appOpenAd: AppOpenAd?
   private var isLoadingAd = false
-  private var isShowingAd = false
+  private var generation = 0
+  private(set) var isShowingAd = false
   private var loadTime: Date?
+  private(set) var lastPresentationDate: Date?
+  private let minimumCooldown: TimeInterval = 45
 
     #if DEBUG
     // Google Test ID (За симулатор и тестове на устройство)
@@ -22,28 +25,45 @@ class AppOpenAdManager: NSObject, FullScreenContentDelegate {
   /// Зарежда нов спот (ако няма или е експирал).
   func loadAd() async {
     // No request goes out without a consent string to carry.
-    guard ConsentManager.shared.canRequestAds else { return }
+    guard ConsentManager.shared.canLoadAds else { return }
     guard !isLoadingAd, !isAdAvailable() else { return }
     isLoadingAd = true
+    let requestGeneration = generation
     do {
-      appOpenAd = try await AppOpenAd.load(
+      let loaded = try await AppOpenAd.load(
         with: adUnitID,
         request: Request()
       )
+      guard requestGeneration == generation else { return }
+      guard ConsentManager.shared.canLoadAds else { isLoadingAd = false; return }
+      appOpenAd = loaded
       appOpenAd?.fullScreenContentDelegate = self
       loadTime = Date()
       print("✅ App-open ad loaded")
     } catch {
       print("❌ Failed to load app-open ad:", error.localizedDescription)
     }
+    if requestGeneration == generation { isLoadingAd = false }
+  }
+
+  func reset() {
+    generation += 1
+    appOpenAd = nil
+    loadTime = nil
     isLoadingAd = false
   }
 
     @MainActor
     func showAdIfAvailable() {
-        // 1. Ако вече показваме или зареждаме – не прави нищо
-        guard !isShowingAd, !CloudAccountManager.shared.isSigningIn,
+        // 1. Ако вече показваме или е показана наскоро – не прави нищо
+        guard ConsentManager.shared.canLoadAds,
+              !InterstitialAdManager.shared.isShowing,
+              !isShowingAd, !CloudAccountManager.shared.isSigningIn,
               CalendarSharingIntroductionState.shared.hasCompleted else { return }
+        if let lastPresentationDate,
+           Date().timeIntervalSince(lastPresentationDate) < minimumCooldown {
+            return
+        }
 
         // 2. Провери дали имаме готова и "прясна" реклама
         if !isAdAvailable() {
@@ -63,6 +83,7 @@ class AppOpenAdManager: NSObject, FullScreenContentDelegate {
 
         // 4. Покажи рекламата
         isShowingAd = true
+        lastPresentationDate = Date()
         appOpenAd?.present(from: root)
     }
 

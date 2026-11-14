@@ -73,6 +73,7 @@ enum CalendarFeedSession {
 
     static func forget() {
         cached = nil
+        AppLocalCalendarStore.shared.removePersonalCloudCalendars(except: nil)
         guard let url = try? storageURL(createDirectory: false) else { return }
         try? FileManager.default.removeItem(at: url)
     }
@@ -152,6 +153,9 @@ enum CalendarFeedSession {
             identities: identitiesByProvider.values.sorted { $0.provider < $1.provider }
         )
         try store(authenticated)
+        Task { @MainActor in
+            _ = await PersonalCloudCalendarSyncService.syncNow()
+        }
         return authenticated
     }
 

@@ -1081,3 +1081,57 @@
 "Weekend day" = "Weekenddag";
 
 "Event will occur every %@." = "Begivenheden finder sted hver %@.";
+
+"Web Sign-In & Authenticator" = "Web-login og Godkender";
+
+"6-digit security code for cloud-calendars.com" = "6-cifret sikkerhedskode til cloud-calendars.com";
+
+"Web Sign-In & 6-Digit Authenticator" = "Web-login og 6-cifret Godkender";
+
+"Web Sign-In" = "Web-login";
+
+"Web Authenticator" = "Web-godkender";
+
+"Cloud Calendars Web" = "Cloud Calendars Web";
+
+"Confirm sign-in on your browser with your Cloud Calendars account." = "Bekræft login i din browser med din Cloud Calendars-konto.";
+
+"Sign in at cloud-calendars.com by QR scan or with your 6-digit security code." = "Log ind på cloud-calendars.com via QR-scanning eller med din 6-cifrede sikkerhedskode.";
+
+"Connect your Cloud Calendars account with Apple, Google, or Microsoft first." = "Forbind først din Cloud Calendars-konto med Apple, Google eller Microsoft.";
+
+"Approve Browser Sign-In" = "Godkend browser-login";
+
+"This will also link browser session %@ with your Cloud Calendars iOS account." = "Dette knytter også browsersessionen %@ til din Cloud Calendars iOS-konto.";
+
+"Tap Approve below to sign in immediately on your computer." = "Tryk på Godkend login nedenfor for at logge ind med det samme på din computer.";
+
+"Approving…" = "Godkender…";
+
+"Approve Sign-In" = "Godkend login";
+
+"Browser Sign-In Approved" = "Browser-login godkendt";
+
+"Your web workspace is now open and synced with this account." = "Dit web-arbejdsområde er nu åbent og synkroniseret med denne konto.";
+
+"6-Digit Authenticator Code" = "6-cifret godkenderkode";
+
+"Copy" = "Kopiér";
+
+"Account email: %@" = "Konto-e-mail: %@";
+
+"You can enter this email and 6-digit code anytime at cloud-calendars.com to sign in without scanning a QR code." = "Du kan altid indtaste denne e-mail og den 6-cifrede kode på cloud-calendars.com uden at scanne en QR-kode.";
+
+"Preparing your Authenticator key…" = "Forbereder din godkendernøgle…";
+
+"Activate 6-Digit Authenticator Code" = "Aktivér 6-cifret kode";
+
+"Scan Web Sign-In QR Code" = "Scan QR-kode til web-login";
+
+"This QR code has expired. Scan the refreshed QR code shown on your computer." = "Denne QR-kode er udløbet. Scan den opdaterede QR-kode på din computer.";
+
+"Cloud Calendars" = "Cloud Calendars";
+
+"Web & Events Sync" = "Web- og begivenhedssynk";
+
+"Synced automatically with Cloud Calendars on the web, Event RSVP pages, and Booking links." = "Synkroniseres automatisk med Cloud Calendars på nettet, RSVP-sider og bookinglinks.";

@@ -1083,3 +1083,57 @@
 "Weekend day" = "Dia de cap de setmana";
 
 "Event will occur every %@." = "L'esdeveniment es produirà cada %@.";
+
+"Web Sign-In & Authenticator" = "Inici web i Autenticador";
+
+"6-digit security code for cloud-calendars.com" = "Codi de seguretat de 6 dígits per a cloud-calendars.com";
+
+"Web Sign-In & 6-Digit Authenticator" = "Inici web i Autenticador de 6 dígits";
+
+"Web Sign-In" = "Inici de sessió web";
+
+"Web Authenticator" = "Autenticador web";
+
+"Cloud Calendars Web" = "Cloud Calendars Web";
+
+"Confirm sign-in on your browser with your Cloud Calendars account." = "Confirma l’inici de sessió al navegador amb el teu compte de Cloud Calendars.";
+
+"Sign in at cloud-calendars.com by QR scan or with your 6-digit security code." = "Inicia sessió a cloud-calendars.com escanejant el codi QR o amb el codi de 6 dígits.";
+
+"Connect your Cloud Calendars account with Apple, Google, or Microsoft first." = "Connecta primer el teu compte de Cloud Calendars amb Apple, Google o Microsoft.";
+
+"Approve Browser Sign-In" = "Aprova l’inici al navegador";
+
+"This will also link browser session %@ with your Cloud Calendars iOS account." = "Això també vincularà la sessió del navegador %@ amb el teu compte iOS de Cloud Calendars.";
+
+"Tap Approve below to sign in immediately on your computer." = "Toca Aprova l’inici a sota per entrar immediatament a l’ordinador.";
+
+"Approving…" = "Aprovant…";
+
+"Approve Sign-In" = "Aprova l’inici";
+
+"Browser Sign-In Approved" = "Inici al navegador aprovat";
+
+"Your web workspace is now open and synced with this account." = "El teu espai web ja està obert i sincronitzat amb aquest compte.";
+
+"6-Digit Authenticator Code" = "Codi autenticador de 6 dígits";
+
+"Copy" = "Copia";
+
+"Account email: %@" = "Correu del compte: %@";
+
+"You can enter this email and 6-digit code anytime at cloud-calendars.com to sign in without scanning a QR code." = "Pots introduir aquest correu i el codi de 6 dígits en qualsevol moment a cloud-calendars.com sense escanejar cap QR.";
+
+"Preparing your Authenticator key…" = "Preparant la clau de l’autenticador…";
+
+"Activate 6-Digit Authenticator Code" = "Activa el codi de 6 dígits";
+
+"Scan Web Sign-In QR Code" = "Escaneja el codi QR d’inici web";
+
+"This QR code has expired. Scan the refreshed QR code shown on your computer." = "Aquest codi QR ha caducat. Escaneja el codi QR actualitzat que es mostra a l’ordinador.";
+
+"Cloud Calendars" = "Cloud Calendars";
+
+"Web & Events Sync" = "Sincronització web i esdeveniments";
+
+"Synced automatically with Cloud Calendars on the web, Event RSVP pages, and Booking links." = "Es sincronitza automàticament amb Cloud Calendars al web, pàgines RSVP i enllaços de reserva.";

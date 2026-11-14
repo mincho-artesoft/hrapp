@@ -1081,3 +1081,57 @@
 "Weekend day" = "週末の日";
 
 "Event will occur every %@." = "イベントは%@ごとに発生します。";
+
+"Web Sign-In & Authenticator" = "Webログインと認証コード";
+
+"6-digit security code for cloud-calendars.com" = "cloud-calendars.com 用の6桁セキュリティコード";
+
+"Web Sign-In & 6-Digit Authenticator" = "Webログインと6桁の認証コード";
+
+"Web Sign-In" = "Webログイン";
+
+"Web Authenticator" = "Web認証コード";
+
+"Cloud Calendars Web" = "Cloud Calendars Web";
+
+"Confirm sign-in on your browser with your Cloud Calendars account." = "Cloud Calendarsアカウントでブラウザのログインを確認します。";
+
+"Sign in at cloud-calendars.com by QR scan or with your 6-digit security code." = "QRコードのスキャンまたは6桁のセキュリティコードで cloud-calendars.com にログインできます。";
+
+"Connect your Cloud Calendars account with Apple, Google, or Microsoft first." = "まずApple、Google、またはMicrosoftでCloud Calendarsアカウントを連携してください。";
+
+"Approve Browser Sign-In" = "ブラウザのログインを承認";
+
+"This will also link browser session %@ with your Cloud Calendars iOS account." = "ブラウザセッション %@ もCloud Calendars iOSアカウントにリンクされます。";
+
+"Tap Approve below to sign in immediately on your computer." = "下の「ログインを承認」をタップすると、パソコンですぐにサインインできます。";
+
+"Approving…" = "承認中…";
+
+"Approve Sign-In" = "ログインを承認";
+
+"Browser Sign-In Approved" = "ブラウザのログインを承認しました";
+
+"Your web workspace is now open and synced with this account." = "Webワークスペースが開き、このアカウントと同期されました。";
+
+"6-Digit Authenticator Code" = "6桁の認証コード";
+
+"Copy" = "コピー";
+
+"Account email: %@" = "アカウントのメール: %@";
+
+"You can enter this email and 6-digit code anytime at cloud-calendars.com to sign in without scanning a QR code." = "QRコードをスキャンしなくても、cloud-calendars.com でいつでもこのメールアドレスと6桁のコードを入力してログインできます。";
+
+"Preparing your Authenticator key…" = "認証キーを準備しています…";
+
+"Activate 6-Digit Authenticator Code" = "6桁の認証コードを有効化";
+
+"Scan Web Sign-In QR Code" = "Webログイン用QRコードをスキャン";
+
+"This QR code has expired. Scan the refreshed QR code shown on your computer." = "このQRコードは有効期限切れです。パソコンに表示されている新しいQRコードをスキャンしてください。";
+
+"Cloud Calendars" = "Cloud Calendars";
+
+"Web & Events Sync" = "Web・イベント同期";
+
+"Synced automatically with Cloud Calendars on the web, Event RSVP pages, and Booking links." = "Web版Cloud Calendars、イベント出欠（RSVP）ページ、予約リンクと自動同期されます。";

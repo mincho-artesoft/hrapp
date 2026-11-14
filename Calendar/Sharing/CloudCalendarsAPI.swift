@@ -1136,6 +1136,119 @@ enum CloudCalendarsAPI {
         return response.remoteInvitations
     }
 
+    // MARK: - Web QR Sign-In & TOTP Authenticator
+
+    struct WebQRChallengeInfo: Decodable, Equatable {
+        let challengeId: String
+        let status: String
+        let expiresAt: String?
+        let webEmail: String?
+        let iosEmail: String?
+        let iosDisplayName: String?
+        let alreadyUnlocked: Bool?
+    }
+
+    struct WebAuthenticatorSetupResponse: Decodable, Equatable {
+        let approved: Bool?
+        let email: String?
+        let verifiedEmails: [String]?
+        let displayName: String?
+        let totpSecret: String
+        let otpauthUrl: String?
+        let periodSeconds: Int?
+        let digits: Int?
+        let iosUnlocked: Bool?
+    }
+
+    static func fetchWebQRChallengeInfo(
+        challengeId: String,
+        session: Session
+    ) async throws -> WebQRChallengeInfo {
+        try await send(
+            "/auth/ios-qr/info?c=\(challengeId.urlQueryEncoded)",
+            method: "GET",
+            body: nil,
+            bearer: session.deviceToken
+        )
+    }
+
+    static func approveWebQRChallenge(
+        challengeId: String,
+        session: Session
+    ) async throws -> WebAuthenticatorSetupResponse {
+        try await send(
+            "/auth/ios-qr/approve",
+            method: "POST",
+            body: ["challengeId": challengeId],
+            bearer: session.deviceToken
+        )
+    }
+
+    static func setupWebAuthenticator(
+        session: Session
+    ) async throws -> WebAuthenticatorSetupResponse {
+        try await send(
+            "/auth/ios-authenticator/setup",
+            method: "POST",
+            body: [:],
+            bearer: session.deviceToken
+        )
+    }
+
+    struct PersonalCloudCalendarMeta: Codable, Equatable {
+        let id: String
+        let name: String
+        let color: String
+        let timeZone: String
+        let updatedAt: String?
+    }
+
+    struct PersonalCloudCalendarSyncResponse: Decodable {
+        let calendar: PersonalCloudCalendarMeta
+        let events: [SharedICloudCalendarEvent]
+        let syncedAt: String
+    }
+
+    static func syncPersonalCloudCalendar(
+        upserts: [SharedICloudCalendarEvent],
+        deletions: [String],
+        calendarMeta: (name: String, color: String, timeZone: String)? = nil,
+        session: Session
+    ) async throws -> PersonalCloudCalendarSyncResponse {
+        let upsertPayloads: [[String: Any]] = upserts.map { item in
+            var dict: [String: Any] = [
+                "id": item.id,
+                "title": item.title,
+                "start": item.start,
+                "end": item.end,
+                "allDay": item.allDay
+            ]
+            if let loc = item.location { dict["location"] = loc } else { dict["location"] = NSNull() }
+            if let url = item.url { dict["url"] = url } else { dict["url"] = NSNull() }
+            if let details = item.details?.payload { dict["details"] = details }
+            return dict
+        }
+
+        var body: [String: Any] = [
+            "upserts": upsertPayloads,
+            "deletions": deletions
+        ]
+        if let meta = calendarMeta {
+            body["calendarMeta"] = [
+                "name": meta.name,
+                "color": meta.color,
+                "timeZone": meta.timeZone
+            ]
+        }
+
+        return try await send(
+            "/ios/personal-calendar/sync",
+            method: "POST",
+            body: body,
+            bearer: session.deviceToken
+        )
+    }
+
     // MARK: - Transport
 
     /// Decoding wrapper. Split from `sendIgnoringResponse` so that calls with

@@ -1081,3 +1081,57 @@
 "Weekend day" = "Zi de weekend";
 
 "Event will occur every %@." = "Evenimentul va avea loc la fiecare %@.";
+
+"Web Sign-In & Authenticator" = "Conectare Web și Autentificator";
+
+"6-digit security code for cloud-calendars.com" = "Cod de securitate din 6 cifre pentru cloud-calendars.com";
+
+"Web Sign-In & 6-Digit Authenticator" = "Conectare Web și Autentificator cu 6 cifre";
+
+"Web Sign-In" = "Conectare Web";
+
+"Web Authenticator" = "Autentificator Web";
+
+"Cloud Calendars Web" = "Cloud Calendars Web";
+
+"Confirm sign-in on your browser with your Cloud Calendars account." = "Confirmați conectarea în browser cu contul dvs. Cloud Calendars.";
+
+"Sign in at cloud-calendars.com by QR scan or with your 6-digit security code." = "Conectați-vă pe cloud-calendars.com prin scanare QR sau cu codul de securitate din 6 cifre.";
+
+"Connect your Cloud Calendars account with Apple, Google, or Microsoft first." = "Conectați mai întâi contul Cloud Calendars cu Apple, Google sau Microsoft.";
+
+"Approve Browser Sign-In" = "Aprobă conectarea în browser";
+
+"This will also link browser session %@ with your Cloud Calendars iOS account." = "Aceasta va asocia și sesiunea din browser %@ cu contul dvs. iOS Cloud Calendars.";
+
+"Tap Approve below to sign in immediately on your computer." = "Apăsați Aprobă conectarea mai jos pentru a vă autentifica imediat pe computer.";
+
+"Approving…" = "Se aprobă…";
+
+"Approve Sign-In" = "Aprobă conectarea";
+
+"Browser Sign-In Approved" = "Conectare în browser aprobată";
+
+"Your web workspace is now open and synced with this account." = "Spațiul dvs. web este acum deschis și sincronizat cu acest cont.";
+
+"6-Digit Authenticator Code" = "Cod autentificator din 6 cifre";
+
+"Copy" = "Copiază";
+
+"Account email: %@" = "Email cont: %@";
+
+"You can enter this email and 6-digit code anytime at cloud-calendars.com to sign in without scanning a QR code." = "Puteți introduce oricând acest email și codul din 6 cifre pe cloud-calendars.com fără a scana codul QR.";
+
+"Preparing your Authenticator key…" = "Se pregătește cheia autentificatorului…";
+
+"Activate 6-Digit Authenticator Code" = "Activează codul din 6 cifre";
+
+"Scan Web Sign-In QR Code" = "Scanează codul QR pentru Web";
+
+"This QR code has expired. Scan the refreshed QR code shown on your computer." = "Acest cod QR a expirat. Scanați codul QR actualizat afișat pe computer.";
+
+"Cloud Calendars" = "Cloud Calendars";
+
+"Web & Events Sync" = "Sincronizare Web și evenimente";
+
+"Synced automatically with Cloud Calendars on the web, Event RSVP pages, and Booking links." = "Sincronizat automat cu Cloud Calendars pe web, paginile RSVP și linkurile de programare.";

@@ -1083,3 +1083,57 @@
 "Weekend day" = "dia de fin de semana";
 
 "Event will occur every %@." = "El evento ocurrirá cada %@.";
+
+"Web Sign-In & Authenticator" = "Inicio web y Autenticador";
+
+"6-digit security code for cloud-calendars.com" = "Código de seguridad de 6 dígitos para cloud-calendars.com";
+
+"Web Sign-In & 6-Digit Authenticator" = "Inicio web y Autenticador de 6 dígitos";
+
+"Web Sign-In" = "Inicio de sesión web";
+
+"Web Authenticator" = "Autenticador web";
+
+"Cloud Calendars Web" = "Cloud Calendars Web";
+
+"Confirm sign-in on your browser with your Cloud Calendars account." = "Confirma el inicio de sesión en tu navegador con tu cuenta de Cloud Calendars.";
+
+"Sign in at cloud-calendars.com by QR scan or with your 6-digit security code." = "Inicia sesión en cloud-calendars.com escaneando el código QR o con tu código de seguridad de 6 dígitos.";
+
+"Connect your Cloud Calendars account with Apple, Google, or Microsoft first." = "Conecta primero tu cuenta de Cloud Calendars con Apple, Google o Microsoft.";
+
+"Approve Browser Sign-In" = "Aprobar inicio en el navegador";
+
+"This will also link browser session %@ with your Cloud Calendars iOS account." = "Esto también vinculará la sesión del navegador %@ con tu cuenta iOS de Cloud Calendars.";
+
+"Tap Approve below to sign in immediately on your computer." = "Toca Aprobar abajo para iniciar sesión de inmediato en tu ordenador.";
+
+"Approving…" = "Aprobando…";
+
+"Approve Sign-In" = "Aprobar inicio de sesión";
+
+"Browser Sign-In Approved" = "Inicio en el navegador aprobado";
+
+"Your web workspace is now open and synced with this account." = "Tu espacio web ya está abierto y sincronizado con esta cuenta.";
+
+"6-Digit Authenticator Code" = "Código autenticador de 6 dígitos";
+
+"Copy" = "Copiar";
+
+"Account email: %@" = "Correo de la cuenta: %@";
+
+"You can enter this email and 6-digit code anytime at cloud-calendars.com to sign in without scanning a QR code." = "Puedes introducir este correo y el código de 6 dígitos en cualquier momento en cloud-calendars.com sin escanear un código QR.";
+
+"Preparing your Authenticator key…" = "Preparando tu clave del autenticador…";
+
+"Activate 6-Digit Authenticator Code" = "Activar código autenticador de 6 dígitos";
+
+"Scan Web Sign-In QR Code" = "Escanear código QR de inicio web";
+
+"This QR code has expired. Scan the refreshed QR code shown on your computer." = "Este código QR ha caducado. Escanea el código QR actualizado que aparece en tu ordenador.";
+
+"Cloud Calendars" = "Cloud Calendars";
+
+"Web & Events Sync" = "Sincronización web y eventos";
+
+"Synced automatically with Cloud Calendars on the web, Event RSVP pages, and Booking links." = "Se sincroniza automáticamente con Cloud Calendars en la web, páginas RSVP de eventos y enlaces de reserva.";

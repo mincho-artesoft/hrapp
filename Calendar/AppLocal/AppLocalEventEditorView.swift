@@ -353,7 +353,9 @@ struct AppLocalEventEditorView: View {
             CalendarChoice(
                 id: $0.id,
                 title: $0.title,
-                subtitle: $0.origin == .received ? $0.remoteOwnerEmail : nil,
+                subtitle: $0.isPersonalCloud
+                    ? NSLocalizedString("Web & Events Sync", comment: "Personal Cloud Calendar subtitle")
+                    : ($0.origin == .received ? $0.remoteOwnerEmail : nil),
                 color: AppLocalCalendarStore.color($0.displayColorHex),
                 kind: .appLocal,
                 canEdit: $0.canEditEvents

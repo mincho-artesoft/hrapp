@@ -1081,3 +1081,57 @@
 "Weekend day" = "วันหยุดสุดสัปดาห์";
 
 "Event will occur every %@." = "กิจกรรมจะเกิดขึ้นทุกๆ %@";
+
+"Web Sign-In & Authenticator" = "เข้าสู่ระบบเว็บและตัวรับรอง";
+
+"6-digit security code for cloud-calendars.com" = "รหัสความปลอดภัย 6 หลักสำหรับ cloud-calendars.com";
+
+"Web Sign-In & 6-Digit Authenticator" = "เข้าสู่ระบบเว็บและรหัสรับรอง 6 หลัก";
+
+"Web Sign-In" = "เข้าสู่ระบบเว็บ";
+
+"Web Authenticator" = "ตัวรับรองเว็บ";
+
+"Cloud Calendars Web" = "Cloud Calendars Web";
+
+"Confirm sign-in on your browser with your Cloud Calendars account." = "ยืนยันการเข้าสู่ระบบบนเบราว์เซอร์ด้วยบัญชี Cloud Calendars ของคุณ";
+
+"Sign in at cloud-calendars.com by QR scan or with your 6-digit security code." = "เข้าสู่ระบบที่ cloud-calendars.com ด้วยการสแกน QR หรือรหัสความปลอดภัย 6 หลัก";
+
+"Connect your Cloud Calendars account with Apple, Google, or Microsoft first." = "เชื่อมต่อบัญชี Cloud Calendars กับ Apple, Google หรือ Microsoft ก่อน";
+
+"Approve Browser Sign-In" = "อนุมัติการเข้าสู่ระบบเบราว์เซอร์";
+
+"This will also link browser session %@ with your Cloud Calendars iOS account." = "การดำเนินการนี้จะเชื่อมเซสชันเบราว์เซอร์ %@ เข้ากับบัญชี Cloud Calendars บน iOS ของคุณด้วย";
+
+"Tap Approve below to sign in immediately on your computer." = "แตะอนุมัติการเข้าสู่ระบบด้านล่างเพื่อเข้าสู่ระบบบนคอมพิวเตอร์ทันที";
+
+"Approving…" = "กำลังอนุมัติ…";
+
+"Approve Sign-In" = "อนุมัติการเข้าสู่ระบบ";
+
+"Browser Sign-In Approved" = "อนุมัติการเข้าสู่ระบบเบราว์เซอร์แล้ว";
+
+"Your web workspace is now open and synced with this account." = "พื้นที่ทำงานบนเว็บของคุณเปิดใช้งานและซิงค์กับบัญชีนี้แล้ว";
+
+"6-Digit Authenticator Code" = "รหัสรับรอง 6 หลัก";
+
+"Copy" = "คัดลอก";
+
+"Account email: %@" = "อีเมลบัญชี: %@";
+
+"You can enter this email and 6-digit code anytime at cloud-calendars.com to sign in without scanning a QR code." = "คุณสามารถกรอกอีเมลนี้และรหัส 6 หลักได้ที่ cloud-calendars.com ทุกเมื่อโดยไม่ต้องสแกน QR";
+
+"Preparing your Authenticator key…" = "กำลังเตรียมคีย์ตัวรับรองของคุณ…";
+
+"Activate 6-Digit Authenticator Code" = "เปิดใช้งานรหัส 6 หลัก";
+
+"Scan Web Sign-In QR Code" = "สแกน QR เข้าสู่ระบบเว็บ";
+
+"This QR code has expired. Scan the refreshed QR code shown on your computer." = "รหัส QR นี้หมดอายุแล้ว โปรดสแกนรหัส QR ใหม่ที่แสดงบนคอมพิวเตอร์ของคุณ";
+
+"Cloud Calendars" = "Cloud Calendars";
+
+"Web & Events Sync" = "ซิงค์เว็บและกิจกรรม";
+
+"Synced automatically with Cloud Calendars on the web, Event RSVP pages, and Booking links." = "ซิงค์อัตโนมัติกับ Cloud Calendars บนเว็บ หน้าตอบรับกิจกรรม (RSVP) และลิงก์จองเวลา";

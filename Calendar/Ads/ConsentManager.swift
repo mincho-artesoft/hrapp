@@ -1,5 +1,7 @@
 import UIKit
 import UserMessagingPlatform
+import GoogleMobileAds
+import AppTrackingTransparency
 
 /// Google's User Messaging Platform -- the IAB TCF-registered CMP that gives
 /// every ad request from the EEA, the UK and Switzerland a consent string.
@@ -20,6 +22,19 @@ final class ConsentManager: ObservableObject {
 
     private var isGathering = false
     private var didGatherConsent = false
+    private var didStartAdsSDK = false
+    @Published private(set) var privacyRevision = 0
+
+    var canLoadAds: Bool {
+        canRequestAds && SubscriptionManager.shared.hasCheckedEntitlements
+            && SubscriptionManager.shared.subscriptionStatus == .base
+            && UIApplication.shared.applicationState == .active
+    }
+
+    func discardFullScreenAds() {
+        AppOpenAdManager.shared.reset()
+        InterstitialAdManager.shared.reset()
+    }
 
     private init() {
         refreshFromSDK()
@@ -39,7 +54,13 @@ final class ConsentManager: ObservableObject {
     /// says one is owed. Runs once a launch -- nothing appears outside the
     /// consent regions, or for anyone who has already answered.
     func gatherConsentIfNeeded() async {
-        guard !didGatherConsent, !isGathering else { return }
+        while isGathering {
+            do { try await Task.sleep(for: .milliseconds(100)) }
+            catch { return }
+        }
+        guard !Task.isCancelled else { return }
+        guard !didGatherConsent else { return }
+        guard UIApplication.shared.applicationState == .active else { return }
         isGathering = true
         defer { isGathering = false }
 
@@ -58,8 +79,28 @@ final class ConsentManager: ObservableObject {
             print("❌ Consent form failed: \(failure)")
         }
 
-        refreshFromSDK()
+        // Resolve StoreKit before requests; cached .base is not proof of entitlement.
+        if !SubscriptionManager.shared.hasCheckedEntitlements {
+            await SubscriptionManager.shared.updatePurchasedStatus()
+        }
+        guard SubscriptionManager.shared.subscriptionStatus == .base else { return }
+        if ConsentInformation.shared.canRequestAds {
+            let defaults = UserDefaults.standard
+            let deniedStorage = defaults.integer(forKey: "IABTCF_gdprApplies") == 1
+                && (defaults.string(forKey: "IABTCF_PurposeConsents")?.hasPrefix("0") == true)
+            if !deniedStorage, UIApplication.shared.applicationState == .active,
+               ATTrackingManager.trackingAuthorizationStatus == .notDetermined {
+                _ = await ATTrackingManager.requestTrackingAuthorization()
+            }
+            if !didStartAdsSDK {
+                await withCheckedContinuation { continuation in
+                    MobileAds.shared.start { _ in continuation.resume() }
+                }
+                didStartAdsSDK = true
+            }
+        }
         didGatherConsent = true
+        refreshFromSDK()
     }
 
     /// Reopens the form so consent can be changed or withdrawn -- the route
@@ -68,12 +109,16 @@ final class ConsentManager: ObservableObject {
     func presentPrivacyOptionsForm() {
         guard let presenter = UIApplication.shared.topMostViewController else { return }
 
+        canRequestAds = false
+        privacyRevision += 1
+        discardFullScreenAds()
         ConsentForm.presentPrivacyOptionsForm(from: presenter) { error in
             Task { @MainActor in
                 if let error {
                     print("❌ Privacy options form failed: \(error.localizedDescription)")
                 }
-                self.refreshFromSDK()
+                self.didGatherConsent = false
+                await self.gatherConsentIfNeeded()
             }
         }
     }
@@ -81,7 +126,7 @@ final class ConsentManager: ObservableObject {
     /// Copies the SDK's view of the world onto the published properties.
     /// Called after every step that can change it.
     private func refreshFromSDK() {
-        canRequestAds = ConsentInformation.shared.canRequestAds
+        canRequestAds = didGatherConsent && didStartAdsSDK && ConsentInformation.shared.canRequestAds
         isPrivacyOptionsRequired =
             ConsentInformation.shared.privacyOptionsRequirementStatus == .required
     }

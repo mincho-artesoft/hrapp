@@ -29,6 +29,7 @@ struct CalendarApp: App {
     @State private var widgetRefreshTask: Task<Void, Never>?
     @State private var pendingSharedEvent: SharedEventImportPayload?
     @State private var pendingSharedCalendar: SharedCalendarInvitationPayload?
+    @State private var pendingWebAuthChallenge: WebAuthChallengePayload?
 
     private let liveActivityRefreshInterval: UInt64 = 5 * 60 * 1_000_000_000
 
@@ -59,7 +60,9 @@ struct CalendarApp: App {
         // in the full app as well makes the handoff screen testable locally.
         if let rawURL = ProcessInfo.processInfo.environment["_XCAppClipURL"],
            let url = URL(string: rawURL) {
-            if let calendar = SharedCalendarInvitationPayload(url: url) {
+            if let webAuth = WebAuthChallengePayload(url: url) {
+                _pendingWebAuthChallenge = State(initialValue: webAuth)
+            } else if let calendar = SharedCalendarInvitationPayload(url: url) {
                 _pendingSharedCalendar = State(initialValue: calendar)
             } else if let payload = SharedEventImportPayload(url: url) {
                 _pendingSharedEvent = State(initialValue: payload)
@@ -112,28 +115,25 @@ struct CalendarApp: App {
 
                     // Логика за реклами
                     if SubscriptionManager.shared.subscriptionStatus == .base {
-                        Task {
-                            // The consent record is refreshed, and any form
-                            // owed is answered, before the first ad request
-                            // goes out. Outside the EEA nothing is shown and
-                            // this returns almost at once.
+                        let shouldShowColdStartAd = hasLaunchedBefore
+                        if !hasLaunchedBefore {
+                            hasLaunchedBefore = true
+                        }
+                        Task { @MainActor in
+                            let startedAt = Date()
                             await ConsentManager.shared.gatherConsentIfNeeded()
                             guard ConsentManager.shared.canRequestAds else { return }
 
-                            MobileAds.shared.start(completionHandler: nil)
                             await AppOpenAdManager.shared.loadAd()
                             InterstitialAdManager.shared.loadAd()
-                        }
-                        // ✅ При първото стартиране НЕ показваме App Open Ad.
-                        // ✅ При всяко следващо стартиране/отваряне - показваме.
-                        if hasLaunchedBefore {
-                            Task {
-                                try? await Task.sleep(nanoseconds: 2_000_000_000)
-                                guard pendingSharedEvent == nil else { return }
-                                AppOpenAdManager.shared.showAdIfAvailable()
+
+                            guard shouldShowColdStartAd else { return }
+                            let remaining = 1.5 - Date().timeIntervalSince(startedAt)
+                            if remaining > 0 {
+                                try? await Task.sleep(nanoseconds: UInt64(remaining * 1_000_000_000))
                             }
-                        } else {
-                            hasLaunchedBefore = true
+                            guard pendingSharedEvent == nil, pendingWebAuthChallenge == nil else { return }
+                            AppOpenAdManager.shared.showAdIfAvailable()
                         }
                     }
 
@@ -164,6 +164,10 @@ struct CalendarApp: App {
                 }
                 .onContinueUserActivity(NSUserActivityTypeBrowsingWeb) { activity in
                     guard let url = activity.webpageURL else { return }
+                    if let webAuth = WebAuthChallengePayload(url: url) {
+                        pendingWebAuthChallenge = webAuth
+                        return
+                    }
                     if let calendar = SharedCalendarInvitationPayload(url: url) {
                         pendingSharedCalendar = calendar
                         return
@@ -175,6 +179,10 @@ struct CalendarApp: App {
                     }
                 }
                 .onOpenURL { url in
+                    if let webAuth = WebAuthChallengePayload(url: url) {
+                        pendingWebAuthChallenge = webAuth
+                        return
+                    }
                     if let calendar = SharedCalendarInvitationPayload(url: url) {
                         pendingSharedCalendar = calendar
                         return
@@ -191,9 +199,18 @@ struct CalendarApp: App {
                 .sheet(item: $pendingSharedCalendar) { payload in
                     SharedCalendarInvitationView(payload: payload)
                 }
+                .sheet(item: $pendingWebAuthChallenge) { challenge in
+                    WebStudioAuthSheetView(initialChallenge: challenge)
+                }
         }
         .backgroundTask(.appRefresh(CalendarLiveActivityBackgroundRefreshTask.identifier)) {
             await CalendarLiveActivityBackgroundRefreshTask.run()
+        }
+        .onChange(of: storedSubscriptionStatusRaw) { _, _ in
+            ConsentManager.shared.discardFullScreenAds()
+            if SubscriptionManager.shared.subscriptionStatus == .base {
+                Task { await ConsentManager.shared.gatherConsentIfNeeded() }
+            }
         }
         .onChange(of: scenePhase) { _, newPhase in
             #if DEBUG
@@ -223,25 +240,20 @@ struct CalendarApp: App {
 
                 // ПРОВЕРКА ЗА РЕКЛАМИ
                 if SubscriptionManager.shared.subscriptionStatus == .base {
-                    Task {
-                        // Retry for the launch above if the window was not up
-                        // yet, and the only chance on a later foreground.
-                        await ConsentManager.shared.gatherConsentIfNeeded()
-                        await AppOpenAdManager.shared.loadAd()
-                    }
-
-                    // ✅ Показваме само ако НЕ е първо стартиране.
-                    if hasLaunchedBefore {
-                        Task {
-                            // Universal-link delivery follows activation. This
-                            // short delay lets the shared-event route win over
-                            // the app-open ad when the app is already installed.
-                            try? await Task.sleep(for: .milliseconds(600))
-                            guard pendingSharedEvent == nil else { return }
-                            AppOpenAdManager.shared.showAdIfAvailable()
-                        }
-                    } else {
+                    let shouldShowForegroundAd = hasLaunchedBefore
+                    if !hasLaunchedBefore {
                         hasLaunchedBefore = true
+                    }
+                    Task { @MainActor in
+                        await ConsentManager.shared.gatherConsentIfNeeded()
+                        guard ConsentManager.shared.canRequestAds else { return }
+                        await AppOpenAdManager.shared.loadAd()
+                        InterstitialAdManager.shared.loadAd()
+
+                        guard shouldShowForegroundAd else { return }
+                        try? await Task.sleep(for: .milliseconds(600))
+                        guard pendingSharedEvent == nil else { return }
+                        AppOpenAdManager.shared.showAdIfAvailable()
                     }
                 }
 
@@ -267,9 +279,6 @@ struct CalendarApp: App {
                 print("App in background.")
                 CalendarLiveActivityManager.shared.update()
                 CalendarLiveActivityBackgroundRefreshTask.schedule()
-                if SubscriptionManager.shared.subscriptionStatus == .base {
-                    Task { await AppOpenAdManager.shared.loadAd() }
-                }
                 CalendarViewModel.shared.stopGoogleCalendarSync()
                 CalendarViewModel.shared.stopMicrosoftCalendarSync()
                 SharedEventSyncManager.stop()

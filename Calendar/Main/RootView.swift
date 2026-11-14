@@ -603,8 +603,7 @@ struct RootView: View {
                 tabSwitchCounter += 1
                 print("🔄 Tab switched. Count (saved): \(tabSwitchCounter)")
                 
-                // Ако стигне 2 (или колкото си решил)
-                if tabSwitchCounter >= 10 {
+                if tabSwitchCounter >= 4 {
                     InterstitialAdManager.shared.showAd()
                     tabSwitchCounter = 0
                 }

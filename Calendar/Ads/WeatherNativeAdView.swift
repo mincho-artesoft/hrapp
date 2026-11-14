@@ -30,132 +30,137 @@ enum WeatherNativeAdLayout: Int {
     }
 }
 
-/// A native Google Mobile Ads placement shared by every Weather detail sheet.
-/// It collapses completely until an ad is available, so failed or slow loads
-/// never leave an empty card between the Weather sections.
+/// One loader per stable placement. A one-point sentinel reserves no ad-sized
+/// gap but allows visibility to be measured before requesting an ad.
 struct WeatherNativeAdPlacement: View {
-    @ObservedObject private var subscriptionManager = SubscriptionManager.shared
-    @State private var isLoaded = false
-    @State private var didFail = false
-
+    @ObservedObject private var subscription = SubscriptionManager.shared
+    @ObservedObject private var consent = ConsentManager.shared
+    @StateObject private var model = WeatherNativeAdModel()
     let layout: WeatherNativeAdLayout
 
     var body: some View {
         Group {
-            if subscriptionManager.subscriptionStatus == .base {
-                WeatherNativeAdRepresentable(
-                    layout: layout,
-                    isLoaded: $isLoaded,
-                    didFail: $didFail
-                )
-                    // Google validates the registered asset frames when the native
-                    // ad is attached. The inner frame keeps UIKit at its real size
-                    // while the outer frame collapses the still-loading placement.
+            if subscription.hasCheckedEntitlements && subscription.subscriptionStatus == .base {
+                WeatherNativeAdRepresentable(layout: layout, model: model)
                     .frame(height: layout.totalHeight)
-                    .frame(
-                        height: isLoaded && !didFail ? layout.totalHeight : 0,
-                        alignment: .top
-                    )
+                    .frame(height: model.isLoaded ? layout.totalHeight : 1, alignment: .top)
                     .clipped()
-                    .opacity(isLoaded ? 1 : 0)
-                    .accessibilityHidden(!isLoaded)
-            } else {
-                Color.clear
-                    .frame(height: 0)
-                    .accessibilityHidden(true)
+                    .accessibilityHidden(!model.isLoaded)
+                    .task {
+                        while !Task.isCancelled {
+                            model.loadIfVisible()
+                            do { try await Task.sleep(for: .milliseconds(500)) }
+                            catch { break }
+                        }
+                    }
             }
         }
+        .onChange(of: subscription.subscriptionStatus) { _, _ in model.reset() }
+        .onChange(of: consent.privacyRevision) { _, _ in model.reset() }
     }
 }
 
 private struct WeatherNativeAdRepresentable: UIViewRepresentable {
     let layout: WeatherNativeAdLayout
-    @Binding var isLoaded: Bool
-    @Binding var didFail: Bool
-
-    func makeCoordinator() -> Coordinator {
-        Coordinator(isLoaded: $isLoaded, didFail: $didFail)
-    }
+    @ObservedObject var model: WeatherNativeAdModel
 
     func makeUIView(context: Context) -> WeatherNativeAdContainerView {
         let view = WeatherNativeAdContainerView(layout: layout)
-        context.coordinator.attach(to: view)
+        model.attach(to: view)
         return view
     }
 
-    func updateUIView(_ uiView: WeatherNativeAdContainerView, context: Context) {}
+    func updateUIView(_ view: WeatherNativeAdContainerView, context: Context) {
+        model.attach(to: view)
+    }
+}
 
-    @MainActor
-    final class Coordinator: NSObject, @preconcurrency NativeAdLoaderDelegate {
-        @Binding private var isLoaded: Bool
-        @Binding private var didFail: Bool
-        private weak var containerView: WeatherNativeAdContainerView?
-        private var adLoader: AdLoader?
+@MainActor
+private final class WeatherNativeAdModel: NSObject, ObservableObject,
+    @preconcurrency NativeAdLoaderDelegate, @preconcurrency NativeAdDelegate {
+    @Published private(set) var isLoaded = false
+    private weak var container: WeatherNativeAdContainerView?
+    private var loader: AdLoader?
+    private var ad: NativeAd?
+    private var loadedAt: Date?
+    private var retryAfter = Date.distantPast
 
-        init(isLoaded: Binding<Bool>, didFail: Binding<Bool>) {
-            _isLoaded = isLoaded
-            _didFail = didFail
-        }
+    func attach(to view: WeatherNativeAdContainerView) {
+        guard container !== view else { return }
+        container = view
+        if let ad { view.render(ad) }
+    }
 
-        func attach(to containerView: WeatherNativeAdContainerView) {
-            self.containerView = containerView
+    func reset() {
+        loader?.delegate = nil
+        loader = nil
+        ad = nil
+        loadedAt = nil
+        container?.clearAd()
+        isLoaded = false
+    }
 
-            #if DEBUG
-            let adUnitID = "ca-app-pub-3940256099942544/3986624511"
-            #else
-            let adUnitID = "ca-app-pub-3759868960530173/8627112781"
-            #endif
-
-            let mediaOptions = NativeAdMediaAdLoaderOptions()
-            mediaOptions.mediaAspectRatio = .landscape
-
-            let loader = AdLoader(
-                adUnitID: adUnitID,
-                rootViewController: Self.presentingViewController,
-                adTypes: [.native],
-                options: [mediaOptions]
-            )
-            loader.delegate = self
-            adLoader = loader
-
-            // No request goes out without a consent string to carry.
-            guard ConsentManager.shared.canRequestAds else {
-                didFail = true
-                return
+    func loadIfVisible() {
+        guard ConsentManager.shared.canLoadAds, let container,
+              let window = container.window,
+              let presenter = UIApplication.shared.topMostViewController,
+              container.isDescendant(of: presenter.view),
+              !presenter.isBeingPresented, !presenter.isBeingDismissed else { return }
+        // Respect scroll clipping, hidden tabs and sheets above this placement.
+        var visible = container.convert(container.bounds, to: window).intersection(window.bounds)
+        var ancestor: UIView? = container
+        while let view = ancestor {
+            guard !view.isHidden, view.alpha > 0.01 else { return }
+            if view.clipsToBounds {
+                visible = visible.intersection(view.convert(view.bounds, to: window))
             }
-            loader.load(Request())
+            ancestor = view.superview
         }
+        guard !visible.isNull, visible.width > 1, visible.height >= 0.5 else { return }
+        if let loadedAt, Date().timeIntervalSince(loadedAt) >= 3600 { reset() }
+        guard ad == nil, loader == nil, Date() >= retryAfter else { return }
+        #if DEBUG
+        let unit = "ca-app-pub-3940256099942544/3986624511"
+        #else
+        let unit = "ca-app-pub-3759868960530173/8627112781"
+        #endif
+        let options = NativeAdMediaAdLoaderOptions()
+        options.mediaAspectRatio = .landscape
+        let request = AdLoader(adUnitID: unit, rootViewController: presenter,
+                               adTypes: [.native], options: [options])
+        loader = request
+        request.delegate = self
+        request.load(Request())
+        #if DEBUG
+        print("[WeatherAds] Requested visible placement")
+        #endif
+    }
 
-        func adLoader(_ adLoader: AdLoader, didReceive nativeAd: NativeAd) {
-            guard let containerView else { return }
-            nativeAd.rootViewController = Self.presentingViewController
-            didFail = false
-            containerView.render(nativeAd)
-            isLoaded = true
-        }
+    func adLoader(_ adLoader: AdLoader, didReceive nativeAd: NativeAd) {
+        guard adLoader === loader else { return }
+        loader = nil
+        guard ConsentManager.shared.canLoadAds else { return }
+        ad = nativeAd
+        loadedAt = Date()
+        nativeAd.delegate = self
+        nativeAd.rootViewController = UIApplication.shared.topMostViewController
+        container?.render(nativeAd)
+        isLoaded = true
+    }
 
-        func adLoader(_ adLoader: AdLoader, didFailToReceiveAdWithError error: Error) {
-            isLoaded = false
-            didFail = true
-            #if DEBUG
-            print("❌ Weather native ad failed: \(error.localizedDescription)")
-            #endif
-        }
+    func adLoader(_ adLoader: AdLoader, didFailToReceiveAdWithError error: Error) {
+        guard adLoader === loader else { return }
+        loader = nil
+        retryAfter = Date().addingTimeInterval(60)
+        #if DEBUG
+        print("[WeatherAds] Load failed; retry only while visible after cooldown: \(error.localizedDescription)")
+        #endif
+    }
 
-        private static var presentingViewController: UIViewController? {
-            let root = UIApplication.shared.connectedScenes
-                .compactMap { $0 as? UIWindowScene }
-                .filter { $0.activationState == .foregroundActive }
-                .flatMap(\.windows)
-                .first(where: \.isKeyWindow)?
-                .rootViewController
-
-            var current = root
-            while let presented = current?.presentedViewController {
-                current = presented
-            }
-            return current
-        }
+    func nativeAdDidRecordImpression(_ nativeAd: NativeAd) {
+        #if DEBUG
+        print("[WeatherAds] Impression recorded")
+        #endif
     }
 }
 
@@ -301,6 +306,11 @@ private final class WeatherNativeAdContainerView: UIView {
         nativeAdView.mediaView = mediaView
         nativeAdView.callToActionView = callToActionButton
         nativeAdView.adChoicesView = adChoicesView
+    }
+
+    func clearAd() {
+        pendingNativeAd = nil
+        nativeAdView.nativeAd = nil
     }
 
     func render(_ nativeAd: NativeAd) {

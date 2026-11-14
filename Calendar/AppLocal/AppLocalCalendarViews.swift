@@ -25,11 +25,23 @@ struct AppLocalCalendarRow: View {
 
             Button(action: editAction) {
                 VStack(alignment: .leading, spacing: 2) {
-                    Text(calendar.title)
-                        .foregroundStyle(.primary)
-                        .lineLimit(1)
-                        .strikethrough(calendar.isRevoked, color: color)
-                    if calendar.origin == .received {
+                    HStack(spacing: 5) {
+                        Text(calendar.title)
+                            .foregroundStyle(.primary)
+                            .lineLimit(1)
+                            .strikethrough(calendar.isRevoked, color: color)
+                        if calendar.isPersonalCloud {
+                            Image(systemName: "icloud.fill")
+                                .font(.caption2)
+                                .foregroundStyle(.secondary)
+                        }
+                    }
+                    if calendar.isPersonalCloud {
+                        Text("Web & Events Sync")
+                            .font(.caption)
+                            .foregroundStyle(.secondary)
+                            .lineLimit(1)
+                    } else if calendar.origin == .received {
                         Text(calendar.remoteOwnerEmail ?? NSLocalizedString("Shared calendar", comment: "Shared calendar owner fallback"))
                             .font(.caption)
                             .foregroundStyle(.secondary)
@@ -153,19 +165,28 @@ struct AppLocalCalendarEditView: View {
                     }
                 }
 
-                Section {
-                    Button(role: .destructive) {
-                        showDeleteConfirmation = true
-                    } label: {
-                        Text(LocalizedStringKey(calendar?.origin == .received ? "Remove from My Calendars" : "Delete Calendar"))
-                            .frame(maxWidth: .infinity)
+                if calendar?.isPersonalCloud == true {
+                    Section {
+                        Label("Web & Events Sync", systemImage: "icloud.fill")
+                            .foregroundStyle(.secondary)
+                    } footer: {
+                        Text("Synced automatically with Cloud Calendars on the web, Event RSVP pages, and Booking links.")
                     }
-                    .disabled(isDeleting)
+                } else {
+                    Section {
+                        Button(role: .destructive) {
+                            showDeleteConfirmation = true
+                        } label: {
+                            Text(LocalizedStringKey(calendar?.origin == .received ? "Remove from My Calendars" : "Delete Calendar"))
+                                .frame(maxWidth: .infinity)
+                        }
+                        .disabled(isDeleting)
 
-                    if let errorMessage {
-                        Label(errorMessage, systemImage: "exclamationmark.circle.fill")
-                            .font(.footnote)
-                            .foregroundStyle(.red)
+                        if let errorMessage {
+                            Label(errorMessage, systemImage: "exclamationmark.circle.fill")
+                                .font(.footnote)
+                                .foregroundStyle(.red)
+                        }
                     }
                 }
             }

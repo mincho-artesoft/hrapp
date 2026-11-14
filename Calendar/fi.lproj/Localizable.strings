@@ -1081,3 +1081,57 @@
 "Weekend day" = "Viikonloppupäivä";
 
 "Event will occur every %@." = "Tapahtuma tapahtuu joka %@.";
+
+"Web Sign-In & Authenticator" = "Verkkokirjautuminen ja Todennin";
+
+"6-digit security code for cloud-calendars.com" = "6-numeroinen turvakoodi sivustolle cloud-calendars.com";
+
+"Web Sign-In & 6-Digit Authenticator" = "Verkkokirjautuminen ja 6-numeroinen Todennin";
+
+"Web Sign-In" = "Verkkokirjautuminen";
+
+"Web Authenticator" = "Verkkotodennin";
+
+"Cloud Calendars Web" = "Cloud Calendars Web";
+
+"Confirm sign-in on your browser with your Cloud Calendars account." = "Vahvista selaimen kirjautuminen Cloud Calendars -tililläsi.";
+
+"Sign in at cloud-calendars.com by QR scan or with your 6-digit security code." = "Kirjaudu osoitteessa cloud-calendars.com QR-koodilla tai 6-numeroisella turvakoodilla.";
+
+"Connect your Cloud Calendars account with Apple, Google, or Microsoft first." = "Yhdistä ensin Cloud Calendars -tilisi Apple-, Google- tai Microsoft-tiliin.";
+
+"Approve Browser Sign-In" = "Hyväksy selainkirjautuminen";
+
+"This will also link browser session %@ with your Cloud Calendars iOS account." = "Tämä yhdistää myös selainistunnon %@ Cloud Calendars iOS -tiliisi.";
+
+"Tap Approve below to sign in immediately on your computer." = "Kirjaudu heti tietokoneellasi napauttamalla alta Hyväksy kirjautuminen.";
+
+"Approving…" = "Hyväksytään…";
+
+"Approve Sign-In" = "Hyväksy kirjautuminen";
+
+"Browser Sign-In Approved" = "Selainkirjautuminen hyväksytty";
+
+"Your web workspace is now open and synced with this account." = "Verkkotyötilasi on nyt avoinna ja synkronoitu tämän tilin kanssa.";
+
+"6-Digit Authenticator Code" = "6-numeroinen todennuskoodi";
+
+"Copy" = "Kopioi";
+
+"Account email: %@" = "Tilin sähköposti: %@";
+
+"You can enter this email and 6-digit code anytime at cloud-calendars.com to sign in without scanning a QR code." = "Voit syöttää tämän sähköpostin ja 6-numeroisen koodin milloin tahansa osoitteessa cloud-calendars.com ilman QR-koodia.";
+
+"Preparing your Authenticator key…" = "Valmistellaan todennusavainta…";
+
+"Activate 6-Digit Authenticator Code" = "Ota 6-numeroinen koodi käyttöön";
+
+"Scan Web Sign-In QR Code" = "Skannaa verkkokirjautumisen QR-koodi";
+
+"This QR code has expired. Scan the refreshed QR code shown on your computer." = "Tämä QR-koodi on vanhentunut. Skannaa tietokoneella näkyvä päivitetty QR-koodi.";
+
+"Cloud Calendars" = "Cloud Calendars";
+
+"Web & Events Sync" = "Verkko- ja tapahtumasynkronointi";
+
+"Synced automatically with Cloud Calendars on the web, Event RSVP pages, and Booking links." = "Synkronoituu automaattisesti Cloud Calendars -verkkoversion, RSVP-sivujen ja varauslinkkien kanssa.";

@@ -2,20 +2,17 @@ import SwiftUI
 
 private enum WeatherAdPlacement: Int {
     case compactNative
-    case banner
     case standardNative
 }
 
-/// Persists the exact Weather ad sequence across launches:
-/// compact native -> banner -> standard native -> banner -> repeat.
+/// Persists the high-eCPM rich/video Native ad sequence across launches:
+/// compact native -> standard native -> repeat (replacing low-CPM banners).
 @MainActor
 private enum WeatherAdRotationStore {
-    private static let nextIndexKey = "weather.adRotation.nextIndex.v2"
+    private static let nextIndexKey = "weather.adRotation.nextIndex.v3"
     private static let sequence: [WeatherAdPlacement] = [
         .compactNative,
-        .banner,
-        .standardNative,
-        .banner
+        .standardNative
     ]
 
     static func claimNextPlacement(defaults: UserDefaults = .standard) -> WeatherAdPlacement {
@@ -33,7 +30,6 @@ private enum WeatherAdRotationStore {
 struct WeatherRotatingAdPlacement: View {
     @ObservedObject private var subscriptionManager = SubscriptionManager.shared
     @State private var selectedPlacement: WeatherAdPlacement?
-    @State private var bannerIsAvailable = true
 
     var nativeHorizontalPadding: CGFloat = 0
 
@@ -43,10 +39,6 @@ struct WeatherRotatingAdPlacement: View {
                 switch selectedPlacement {
                 case .compactNative:
                     WeatherNativeAdPlacement(layout: .compact)
-                        .padding(.horizontal, nativeHorizontalPadding)
-
-                case .banner:
-                    WeatherBannerAdCard(isAvailable: $bannerIsAvailable)
                         .padding(.horizontal, nativeHorizontalPadding)
 
                 case .standardNative:
@@ -77,40 +69,10 @@ struct WeatherRotatingAdPlacement: View {
         let placementName: String
         switch selectedPlacement {
         case .compactNative: placementName = "Compact NativeAd (224pt)"
-        case .banner: placementName = "Banner"
         case .standardNative: placementName = "Standard NativeAd (286pt)"
         case nil: placementName = "None"
         }
         print("🔄 [WeatherAds] Claimed next persisted placement: \(placementName)")
         #endif
-    }
-}
-
-private struct WeatherBannerAdCard: View {
-    @Binding var isAvailable: Bool
-
-    var body: some View {
-        GeometryReader { proxy in
-            let horizontalInset: CGFloat = 12
-            let availableWidth = max(1, proxy.size.width - horizontalInset * 2)
-
-            BannerAdView(
-                adsBool: $isAvailable,
-                adWidth: availableWidth
-            )
-            .frame(width: availableWidth, height: 60)
-            .clipShape(RoundedRectangle(cornerRadius: 12, style: .continuous))
-            .frame(maxWidth: .infinity, maxHeight: .infinity, alignment: .center)
-            .padding(.horizontal, horizontalInset)
-        }
-        .frame(height: isAvailable ? 84 : 0)
-        .background {
-            if isAvailable {
-                RoundedRectangle(cornerRadius: 20, style: .continuous)
-                    .fill(Color.white.opacity(0.15))
-            }
-        }
-        .clipShape(RoundedRectangle(cornerRadius: 20, style: .continuous))
-        .accessibilityHidden(!isAvailable)
     }
 }

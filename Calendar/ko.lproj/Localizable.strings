@@ -1081,3 +1081,57 @@
 "Weekend day" = "주말";
 
 "Event will occur every %@." = "이벤트는 %@마다 발생합니다.";
+
+"Web Sign-In & Authenticator" = "웹 로그인 및 인증기";
+
+"6-digit security code for cloud-calendars.com" = "cloud-calendars.com용 6자리 보안 코드";
+
+"Web Sign-In & 6-Digit Authenticator" = "웹 로그인 및 6자리 인증기";
+
+"Web Sign-In" = "웹 로그인";
+
+"Web Authenticator" = "웹 인증기";
+
+"Cloud Calendars Web" = "Cloud Calendars 웹";
+
+"Confirm sign-in on your browser with your Cloud Calendars account." = "Cloud Calendars 계정으로 브라우저 로그인을 확인하세요.";
+
+"Sign in at cloud-calendars.com by QR scan or with your 6-digit security code." = "QR 스캔 또는 6자리 보안 코드로 cloud-calendars.com에 로그인하세요.";
+
+"Connect your Cloud Calendars account with Apple, Google, or Microsoft first." = "먼저 Apple, Google 또는 Microsoft로 Cloud Calendars 계정을 연결하세요.";
+
+"Approve Browser Sign-In" = "브라우저 로그인 승인";
+
+"This will also link browser session %@ with your Cloud Calendars iOS account." = "브라우저 세션 %@도 Cloud Calendars iOS 계정에 함께 연결됩니다.";
+
+"Tap Approve below to sign in immediately on your computer." = "아래에서 로그인 승인을 탭하면 컴퓨터에서 즉시 로그인됩니다.";
+
+"Approving…" = "승인 중…";
+
+"Approve Sign-In" = "로그인 승인";
+
+"Browser Sign-In Approved" = "브라우저 로그인 승인됨";
+
+"Your web workspace is now open and synced with this account." = "웹 워크스페이스가 열렸으며 이 계정과 동기화되었습니다.";
+
+"6-Digit Authenticator Code" = "6자리 인증 코드";
+
+"Copy" = "복사";
+
+"Account email: %@" = "계정 이메일: %@";
+
+"You can enter this email and 6-digit code anytime at cloud-calendars.com to sign in without scanning a QR code." = "QR 코드를 스캔하지 않고도 언제든지 cloud-calendars.com에서 이 이메일과 6자리 코드를 입력해 로그인할 수 있습니다.";
+
+"Preparing your Authenticator key…" = "인증 키 준비 중…";
+
+"Activate 6-Digit Authenticator Code" = "6자리 인증 코드 활성화";
+
+"Scan Web Sign-In QR Code" = "웹 로그인 QR 코드 스캔";
+
+"This QR code has expired. Scan the refreshed QR code shown on your computer." = "이 QR 코드는 만료되었습니다. 컴퓨터에 표시된 새 QR 코드를 스캔하세요.";
+
+"Cloud Calendars" = "Cloud Calendars";
+
+"Web & Events Sync" = "웹 및 일정 동기화";
+
+"Synced automatically with Cloud Calendars on the web, Event RSVP pages, and Booking links." = "웹의 Cloud Calendars, 이벤트 RSVP 페이지 및 예약 링크와 자동으로 동기화됩니다.";

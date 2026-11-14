@@ -1083,3 +1083,57 @@
 "Weekend day" = "ਵੀਕਐਂਡ ਦਿਨ";
 
 "Event will occur every %@." = "ਇਵੈਂਟ ਹਰ %@ ਵਾਪਰੇਗਾ।";
+
+"Web Sign-In & Authenticator" = "ਵੈੱਬ ਸਾਈਨ-ਇਨ ਅਤੇ ਪ੍ਰਮਾਣਕ";
+
+"6-digit security code for cloud-calendars.com" = "cloud-calendars.com ਲਈ 6-ਅੰਕਾਂ ਦਾ ਸੁਰੱਖਿਆ ਕੋਡ";
+
+"Web Sign-In & 6-Digit Authenticator" = "ਵੈੱਬ ਸਾਈਨ-ਇਨ ਅਤੇ 6-ਅੰਕਾਂ ਦਾ ਪ੍ਰਮਾਣਕ";
+
+"Web Sign-In" = "ਵੈੱਬ ਸਾਈਨ-ਇਨ";
+
+"Web Authenticator" = "ਵੈੱਬ ਪ੍ਰਮਾਣਕ";
+
+"Cloud Calendars Web" = "Cloud Calendars Web";
+
+"Confirm sign-in on your browser with your Cloud Calendars account." = "ਆਪਣੇ Cloud Calendars ਖਾਤੇ ਨਾਲ ਬ੍ਰਾਊਜ਼ਰ ਸਾਈਨ-ਇਨ ਦੀ ਪੁਸ਼ਟੀ ਕਰੋ।";
+
+"Sign in at cloud-calendars.com by QR scan or with your 6-digit security code." = "QR ਸਕੈਨ ਜਾਂ 6-ਅੰਕਾਂ ਦੇ ਸੁਰੱਖਿਆ ਕੋਡ ਨਾਲ cloud-calendars.com 'ਤੇ ਸਾਈਨ ਇਨ ਕਰੋ।";
+
+"Connect your Cloud Calendars account with Apple, Google, or Microsoft first." = "ਪਹਿਲਾਂ ਆਪਣੇ Cloud Calendars ਖਾਤੇ ਨੂੰ Apple, Google ਜਾਂ Microsoft ਨਾਲ ਜੋੜੋ।";
+
+"Approve Browser Sign-In" = "ਬ੍ਰਾਊਜ਼ਰ ਸਾਈਨ-ਇਨ ਮਨਜ਼ੂਰ ਕਰੋ";
+
+"This will also link browser session %@ with your Cloud Calendars iOS account." = "ਇਹ ਬ੍ਰਾਊਜ਼ਰ ਸੈਸ਼ਨ %@ ਨੂੰ ਤੁਹਾਡੇ Cloud Calendars iOS ਖਾਤੇ ਨਾਲ ਵੀ ਜੋੜ ਦੇਵੇਗਾ।";
+
+"Tap Approve below to sign in immediately on your computer." = "ਆਪਣੇ ਕੰਪਿਊਟਰ 'ਤੇ ਤੁਰੰਤ ਸਾਈਨ ਇਨ ਕਰਨ ਲਈ ਹੇਠਾਂ ਸਾਈਨ-ਇਨ ਮਨਜ਼ੂਰ ਕਰੋ 'ਤੇ ਟੈਪ ਕਰੋ।";
+
+"Approving…" = "ਮਨਜ਼ੂਰ ਕੀਤਾ ਜਾ ਰਿਹਾ ਹੈ…";
+
+"Approve Sign-In" = "ਸਾਈਨ-ਇਨ ਮਨਜ਼ੂਰ ਕਰੋ";
+
+"Browser Sign-In Approved" = "ਬ੍ਰਾਊਜ਼ਰ ਸਾਈਨ-ਇਨ ਮਨਜ਼ੂਰ ਹੋਇਆ";
+
+"Your web workspace is now open and synced with this account." = "ਤੁਹਾਡਾ ਵੈੱਬ ਵਰਕਸਪੇਸ ਹੁਣ ਖੁੱਲ੍ਹਾ ਹੈ ਅਤੇ ਇਸ ਖਾਤੇ ਨਾਲ ਸਿੰਕ ਹੈ।";
+
+"6-Digit Authenticator Code" = "6-ਅੰਕਾਂ ਦਾ ਪ੍ਰਮਾਣਕ ਕੋਡ";
+
+"Copy" = "ਕਾਪੀ ਕਰੋ";
+
+"Account email: %@" = "ਖਾਤਾ ਈਮੇਲ: %@";
+
+"You can enter this email and 6-digit code anytime at cloud-calendars.com to sign in without scanning a QR code." = "ਤੁਸੀਂ QR ਕੋਡ ਸਕੈਨ ਕੀਤੇ ਬਿਨਾਂ ਸਾਈਨ ਇਨ ਕਰਨ ਲਈ ਕਿਸੇ ਵੀ ਸਮੇਂ cloud-calendars.com 'ਤੇ ਇਹ ਈਮੇਲ ਅਤੇ 6-ਅੰਕਾਂ ਦਾ ਕੋਡ ਭਰ ਸਕਦੇ ਹੋ।";
+
+"Preparing your Authenticator key…" = "ਤੁਹਾਡੀ ਪ੍ਰਮਾਣਕ ਕੁੰਜੀ ਤਿਆਰ ਕੀਤੀ ਜਾ ਰਹੀ ਹੈ…";
+
+"Activate 6-Digit Authenticator Code" = "6-ਅੰਕਾਂ ਦਾ ਕੋਡ ਚਾਲੂ ਕਰੋ";
+
+"Scan Web Sign-In QR Code" = "ਵੈੱਬ ਸਾਈਨ-ਇਨ QR ਕੋਡ ਸਕੈਨ ਕਰੋ";
+
+"This QR code has expired. Scan the refreshed QR code shown on your computer." = "ਇਸ QR ਕੋਡ ਦੀ ਮਿਆਦ ਪੁੱਗ ਗਈ ਹੈ। ਕੰਪਿਊਟਰ 'ਤੇ ਦਿਖਾਇਆ ਨਵਾਂ QR ਕੋਡ ਸਕੈਨ ਕਰੋ।";
+
+"Cloud Calendars" = "Cloud Calendars";
+
+"Web & Events Sync" = "ਵੈੱਬ ਅਤੇ ਇਵੈਂਟ ਸਿੰਕ";
+
+"Synced automatically with Cloud Calendars on the web, Event RSVP pages, and Booking links." = "ਵੈੱਬ 'ਤੇ Cloud Calendars, ਇਵੈਂਟ RSVP ਪੰਨਿਆਂ ਅਤੇ ਬੁਕਿੰਗ ਲਿੰਕਾਂ ਨਾਲ ਆਪਣੇ-ਆਪ ਸਿੰਕ ਹੁੰਦਾ ਹੈ।";

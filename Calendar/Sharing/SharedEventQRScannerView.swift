@@ -4,6 +4,7 @@ import VisionKit
 enum CloudCalendarsScannedShare {
     case event(SharedEventImportPayload)
     case calendar(SharedCalendarInvitationPayload)
+    case webAuth(WebAuthChallengePayload)
 }
 
 @MainActor
@@ -92,6 +93,12 @@ struct SharedEventQRScannerView: View {
         let trimmed = rawValue.trimmingCharacters(in: .whitespacesAndNewlines)
         guard let url = URL(string: trimmed) else {
             errorMessage = NSLocalizedString("This QR code does not contain a Cloud Calendars share.", comment: "")
+            return
+        }
+
+        if let webAuth = WebAuthChallengePayload(url: url) {
+            onScanned(.webAuth(webAuth))
+            dismiss()
             return
         }
 

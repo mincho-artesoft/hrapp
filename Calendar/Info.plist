@@ -42,6 +42,8 @@
 	</array>
 	<key>GADApplicationIdentifier</key>
 	<string>ca-app-pub-3759868960530173~5612581418</string>
+	<key>NSUserTrackingUsageDescription</key>
+	<string>Your permission helps show relevant ads and measure their performance. You can use the app without allowing tracking.</string>
 	<key>ITSAppUsesNonExemptEncryption</key>
 	<false/>
 	<key>LSApplicationQueriesSchemes</key>

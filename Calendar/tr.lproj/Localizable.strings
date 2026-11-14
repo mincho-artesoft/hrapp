@@ -1081,3 +1081,57 @@
 "Weekend day" = "Hafta sonu günü";
 
 "Event will occur every %@." = "Etkinlik her %@'de gerçekleşecektir.";
+
+"Web Sign-In & Authenticator" = "Web Girişi ve Doğrulayıcı";
+
+"6-digit security code for cloud-calendars.com" = "cloud-calendars.com için 6 haneli güvenlik kodu";
+
+"Web Sign-In & 6-Digit Authenticator" = "Web Girişi ve 6 Haneli Doğrulayıcı";
+
+"Web Sign-In" = "Web Girişi";
+
+"Web Authenticator" = "Web Doğrulayıcı";
+
+"Cloud Calendars Web" = "Cloud Calendars Web";
+
+"Confirm sign-in on your browser with your Cloud Calendars account." = "Tarayıcınızdaki girişi Cloud Calendars hesabınızla onaylayın.";
+
+"Sign in at cloud-calendars.com by QR scan or with your 6-digit security code." = "cloud-calendars.com adresinde QR kodu tarayarak veya 6 haneli güvenlik kodunuzla giriş yapın.";
+
+"Connect your Cloud Calendars account with Apple, Google, or Microsoft first." = "Önce Cloud Calendars hesabınızı Apple, Google veya Microsoft ile bağlayın.";
+
+"Approve Browser Sign-In" = "Tarayıcı Girişini Onayla";
+
+"This will also link browser session %@ with your Cloud Calendars iOS account." = "Bu işlem %@ tarayıcı oturumunu Cloud Calendars iOS hesabınızla da bağlayacaktır.";
+
+"Tap Approve below to sign in immediately on your computer." = "Bilgisayarınızda hemen oturum açmak için aşağıdan Girişi Onayla’ya dokunun.";
+
+"Approving…" = "Onaylanıyor…";
+
+"Approve Sign-In" = "Girişi Onayla";
+
+"Browser Sign-In Approved" = "Tarayıcı Girişi Onaylandı";
+
+"Your web workspace is now open and synced with this account." = "Web çalışma alanınız artık açık ve bu hesapla senkronize.";
+
+"6-Digit Authenticator Code" = "6 Haneli Doğrulayıcı Kodu";
+
+"Copy" = "Kopyala";
+
+"Account email: %@" = "Hesap e-postası: %@";
+
+"You can enter this email and 6-digit code anytime at cloud-calendars.com to sign in without scanning a QR code." = "QR kodu taramadan giriş yapmak için bu e-postayı ve 6 haneli kodu istediğiniz zaman cloud-calendars.com adresinde girebilirsiniz.";
+
+"Preparing your Authenticator key…" = "Doğrulayıcı anahtarınız hazırlanıyor…";
+
+"Activate 6-Digit Authenticator Code" = "6 Haneli Kodu Etkinleştir";
+
+"Scan Web Sign-In QR Code" = "Web Giriş QR Kodunu Tara";
+
+"This QR code has expired. Scan the refreshed QR code shown on your computer." = "Bu QR kodunun süresi doldu. Bilgisayarınızda gösterilen yenilenmiş QR kodunu tarayın.";
+
+"Cloud Calendars" = "Cloud Calendars";
+
+"Web & Events Sync" = "Web ve Etkinlik Senkronizasyonu";
+
+"Synced automatically with Cloud Calendars on the web, Event RSVP pages, and Booking links." = "Web’deki Cloud Calendars, Etkinlik RSVP sayfaları ve Randevu bağlantılarıyla otomatik olarak senkronize edilir.";

@@ -1081,3 +1081,57 @@
 "Weekend day" = "週末";
 
 "Event will occur every %@." = "事件将在每个 %@ 发生。";
+
+"Web Sign-In & Authenticator" = "網頁登入與驗證器";
+
+"6-digit security code for cloud-calendars.com" = "用於 cloud-calendars.com 的 6 位數安全驗證碼";
+
+"Web Sign-In & 6-Digit Authenticator" = "網頁登入與 6 位數驗證器";
+
+"Web Sign-In" = "網頁登入";
+
+"Web Authenticator" = "網頁驗證器";
+
+"Cloud Calendars Web" = "Cloud Calendars 網頁版";
+
+"Confirm sign-in on your browser with your Cloud Calendars account." = "使用您的 Cloud Calendars 帳號確認瀏覽器登入。";
+
+"Sign in at cloud-calendars.com by QR scan or with your 6-digit security code." = "透過掃描 QR Code 或輸入 6 位數安全驗證碼登入 cloud-calendars.com。";
+
+"Connect your Cloud Calendars account with Apple, Google, or Microsoft first." = "請先透過 Apple、Google 或 Microsoft 連結您的 Cloud Calendars 帳號。";
+
+"Approve Browser Sign-In" = "核准瀏覽器登入";
+
+"This will also link browser session %@ with your Cloud Calendars iOS account." = "這同時會將瀏覽器工作階段 %@ 與您的 Cloud Calendars iOS 帳號連結。";
+
+"Tap Approve below to sign in immediately on your computer." = "點一下下方的「核准登入」，即可立即在電腦上登入。";
+
+"Approving…" = "核准中…";
+
+"Approve Sign-In" = "核准登入";
+
+"Browser Sign-In Approved" = "已核准瀏覽器登入";
+
+"Your web workspace is now open and synced with this account." = "您的網頁工作區現已開啟並與此帳號同步。";
+
+"6-Digit Authenticator Code" = "6 位數驗證碼";
+
+"Copy" = "複製";
+
+"Account email: %@" = "帳號電子郵件：%@";
+
+"You can enter this email and 6-digit code anytime at cloud-calendars.com to sign in without scanning a QR code." = "您可以隨時在 cloud-calendars.com 輸入此電子郵件與 6 位數驗證碼登入，無需再次掃描 QR Code。";
+
+"Preparing your Authenticator key…" = "正在準備驗證器金鑰…";
+
+"Activate 6-Digit Authenticator Code" = "啟用 6 位數驗證碼";
+
+"Scan Web Sign-In QR Code" = "掃描網頁登入 QR Code";
+
+"This QR code has expired. Scan the refreshed QR code shown on your computer." = "此 QR Code 已過期，請掃描電腦上重新整理後的 QR Code。";
+
+"Cloud Calendars" = "Cloud Calendars";
+
+"Web & Events Sync" = "網頁與活動同步";
+
+"Synced automatically with Cloud Calendars on the web, Event RSVP pages, and Booking links." = "自動與網頁版 Cloud Calendars、活動報名（RSVP）頁面及預約連結雙向同步。";

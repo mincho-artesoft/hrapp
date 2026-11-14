@@ -1081,3 +1081,57 @@
 "Weekend day" = "יום סוף שבוע";
 
 "Event will occur every %@." = "האירוע יתרחש בכל %@.";
+
+"Web Sign-In & Authenticator" = "התחברות לווב ומאמת";
+
+"6-digit security code for cloud-calendars.com" = "קוד אבטחה בן 6 ספרות עבור cloud-calendars.com";
+
+"Web Sign-In & 6-Digit Authenticator" = "התחברות לווב ומאמת 6 ספרות";
+
+"Web Sign-In" = "התחברות לווב";
+
+"Web Authenticator" = "מאמת ווב";
+
+"Cloud Calendars Web" = "Cloud Calendars Web";
+
+"Confirm sign-in on your browser with your Cloud Calendars account." = "אשר את ההתחברות בדפדפן באמצעות חשבון Cloud Calendars שלך.";
+
+"Sign in at cloud-calendars.com by QR scan or with your 6-digit security code." = "התחבר אל cloud-calendars.com בסריקת QR או באמצעות קוד האבטחה בן 6 הספרות.";
+
+"Connect your Cloud Calendars account with Apple, Google, or Microsoft first." = "חבר תחילה את חשבון Cloud Calendars שלך עם Apple, Google או Microsoft.";
+
+"Approve Browser Sign-In" = "אשר התחברות בדפדפן";
+
+"This will also link browser session %@ with your Cloud Calendars iOS account." = "פעולה זו תקשר גם את הפעלת הדפדפן %@ לחשבון Cloud Calendars שלך ב-iOS.";
+
+"Tap Approve below to sign in immediately on your computer." = "הקש על אשר התחברות למטה כדי להיכנס מיד במחשב שלך.";
+
+"Approving…" = "מאשר…";
+
+"Approve Sign-In" = "אשר התחברות";
+
+"Browser Sign-In Approved" = "ההתחברות בדפדפן אושרה";
+
+"Your web workspace is now open and synced with this account." = "סביבת העבודה שלך בווב פתוחה כעת ומסונכרנת עם חשבון זה.";
+
+"6-Digit Authenticator Code" = "קוד מאמת בן 6 ספרות";
+
+"Copy" = "העתק";
+
+"Account email: %@" = "אימייל החשבון: %@";
+
+"You can enter this email and 6-digit code anytime at cloud-calendars.com to sign in without scanning a QR code." = "ניתן להזין אימייל זה ואת הקוד בן 6 הספרות בכל עת ב-cloud-calendars.com ללא סריקת קוד QR.";
+
+"Preparing your Authenticator key…" = "מכין את מפתח האימות שלך…";
+
+"Activate 6-Digit Authenticator Code" = "הפעל קוד מאמת בן 6 ספרות";
+
+"Scan Web Sign-In QR Code" = "סרוק קוד QR להתחברות לווב";
+
+"This QR code has expired. Scan the refreshed QR code shown on your computer." = "פג תוקפו של קוד QR זה. סרוק את קוד ה-QR המעודכן שמוצג במחשב שלך.";
+
+"Cloud Calendars" = "Cloud Calendars";
+
+"Web & Events Sync" = "סנכרון ווב ואירועים";
+
+"Synced automatically with Cloud Calendars on the web, Event RSVP pages, and Booking links." = "מסונכרן אוטומטית עם Cloud Calendars בווב, דפי אישור הגעה (RSVP) וקישורי הזמנת פגישות.";

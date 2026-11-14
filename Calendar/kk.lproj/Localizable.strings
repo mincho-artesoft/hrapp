@@ -1083,3 +1083,57 @@
 "Weekend day" = "Демалыс күні";
 
 "Event will occur every %@." = "Оқиға әрбір %@ болады.";
+
+"Web Sign-In & Authenticator" = "Веб-кіру және Аутентификатор";
+
+"6-digit security code for cloud-calendars.com" = "cloud-calendars.com үшін 6 таңбалы қауіпсіздік коды";
+
+"Web Sign-In & 6-Digit Authenticator" = "Веб-кіру және 6 таңбалы Аутентификатор";
+
+"Web Sign-In" = "Веб-кіру";
+
+"Web Authenticator" = "Веб-аутентификатор";
+
+"Cloud Calendars Web" = "Cloud Calendars Web";
+
+"Confirm sign-in on your browser with your Cloud Calendars account." = "Браузердегі кіруді Cloud Calendars аккаунтыңызбен растаңыз.";
+
+"Sign in at cloud-calendars.com by QR scan or with your 6-digit security code." = "cloud-calendars.com сайтына QR сканерлеу немесе 6 таңбалы қауіпсіздік коды арқылы кіріңіз.";
+
+"Connect your Cloud Calendars account with Apple, Google, or Microsoft first." = "Алдымен Cloud Calendars аккаунтыңызды Apple, Google немесе Microsoft арқылы байланыстырыңыз.";
+
+"Approve Browser Sign-In" = "Браузерде кіруді растау";
+
+"This will also link browser session %@ with your Cloud Calendars iOS account." = "Бұл %@ браузер сессиясын Cloud Calendars iOS аккаунтыңызбен де байланыстырады.";
+
+"Tap Approve below to sign in immediately on your computer." = "Компьютерде бірден кіру үшін төмендегі «Кіруді растау» түймесін басыңыз.";
+
+"Approving…" = "Расталуда…";
+
+"Approve Sign-In" = "Кіруді растау";
+
+"Browser Sign-In Approved" = "Браузерде кіру расталды";
+
+"Your web workspace is now open and synced with this account." = "Веб жұмыс кеңістігіңіз ашылды және осы аккаунтпен синхрондалды.";
+
+"6-Digit Authenticator Code" = "6 таңбалы аутентификатор коды";
+
+"Copy" = "Көшіру";
+
+"Account email: %@" = "Аккаунт поштасы: %@";
+
+"You can enter this email and 6-digit code anytime at cloud-calendars.com to sign in without scanning a QR code." = "QR кодты сканерлемей-ақ кез келген уақытта cloud-calendars.com сайтында осы пошта мен 6 таңбалы кодты енгізе аласыз.";
+
+"Preparing your Authenticator key…" = "Аутентификатор кілті дайындалуда…";
+
+"Activate 6-Digit Authenticator Code" = "6 таңбалы кодты іске қосу";
+
+"Scan Web Sign-In QR Code" = "Веб-кіру QR кодын сканерлеу";
+
+"This QR code has expired. Scan the refreshed QR code shown on your computer." = "Бұл QR кодтың мерзімі өтті. Компьютердегі жаңартылған QR кодты сканерлеңіз.";
+
+"Cloud Calendars" = "Cloud Calendars";
+
+"Web & Events Sync" = "Веб және іс-шаралар синхрондауы";
+
+"Synced automatically with Cloud Calendars on the web, Event RSVP pages, and Booking links." = "Вебтегі Cloud Calendars, RSVP беттері және брондау сілтемелерімен автоматты түрде синхрондалады.";

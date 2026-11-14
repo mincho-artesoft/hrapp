@@ -1079,3 +1079,57 @@
 "Weekend day" = "Почивен ден";
 
 "Event will occur every %@." = "Събитието ще се повтаря на всеки %@.";
+
+"Web Sign-In & Authenticator" = "Уеб вход и Удостоверител";
+
+"6-digit security code for cloud-calendars.com" = "6-цифрен код за сигурност за cloud-calendars.com";
+
+"Web Sign-In & 6-Digit Authenticator" = "Уеб вход и 6-цифрен Удостоверител";
+
+"Web Sign-In" = "Уеб вход";
+
+"Web Authenticator" = "Уеб Удостоверител";
+
+"Cloud Calendars Web" = "Cloud Calendars Уеб";
+
+"Confirm sign-in on your browser with your Cloud Calendars account." = "Потвърдете входа в браузъра с вашия Cloud Calendars акаунт.";
+
+"Sign in at cloud-calendars.com by QR scan or with your 6-digit security code." = "Влезте в cloud-calendars.com чрез QR код или с вашия 6-цифрен код за сигурност.";
+
+"Connect your Cloud Calendars account with Apple, Google, or Microsoft first." = "Първо свържете вашия Cloud Calendars акаунт чрез Apple, Google или Microsoft.";
+
+"Approve Browser Sign-In" = "Одобряване на вход в браузър";
+
+"This will also link browser session %@ with your Cloud Calendars iOS account." = "Това ще свърже и сесията в браузъра %@ с вашия Cloud Calendars iOS акаунт.";
+
+"Tap Approve below to sign in immediately on your computer." = "Докоснете „Одобри входа“ по-долу, за да влезете веднага на компютъра си.";
+
+"Approving…" = "Одобряване…";
+
+"Approve Sign-In" = "Одобри входа";
+
+"Browser Sign-In Approved" = "Входът в браузъра е одобрен";
+
+"Your web workspace is now open and synced with this account." = "Уеб работното ви пространство вече е отворено и синхронизирано с този акаунт.";
+
+"6-Digit Authenticator Code" = "6-цифрен код за вход";
+
+"Copy" = "Копирай";
+
+"Account email: %@" = "Имейл на акаунта: %@";
+
+"You can enter this email and 6-digit code anytime at cloud-calendars.com to sign in without scanning a QR code." = "Можете да въведете този имейл и 6-цифрения код по всяко време в cloud-calendars.com, за да влезете без сканиране на QR код.";
+
+"Preparing your Authenticator key…" = "Подготовка на вашия ключ за вход…";
+
+"Activate 6-Digit Authenticator Code" = "Активирай 6-цифрения код";
+
+"Scan Web Sign-In QR Code" = "Сканирай QR код за уеб вход";
+
+"This QR code has expired. Scan the refreshed QR code shown on your computer." = "Този QR код е изтекъл. Сканирайте обновения QR код на екрана на компютъра.";
+
+"Cloud Calendars" = "Cloud Calendars";
+
+"Web & Events Sync" = "Уеб и събития синхронизация";
+
+"Synced automatically with Cloud Calendars on the web, Event RSVP pages, and Booking links." = "Синхронизира се автоматично с Cloud Calendars в уеб, страниците за събития (RSVP) и линковете за резервации.";

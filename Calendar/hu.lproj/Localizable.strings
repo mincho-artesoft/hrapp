@@ -1081,3 +1081,57 @@
 "Weekend day" = "Hétvégi nap";
 
 "Event will occur every %@." = "Az esemény minden %@-ben megtörténik.";
+
+"Web Sign-In & Authenticator" = "Webes belépés és Hitelesítő";
+
+"6-digit security code for cloud-calendars.com" = "6 jegyű biztonsági kód a cloud-calendars.com oldalhoz";
+
+"Web Sign-In & 6-Digit Authenticator" = "Webes belépés és 6 jegyű Hitelesítő";
+
+"Web Sign-In" = "Webes belépés";
+
+"Web Authenticator" = "Webes hitelesítő";
+
+"Cloud Calendars Web" = "Cloud Calendars Web";
+
+"Confirm sign-in on your browser with your Cloud Calendars account." = "Erősítse meg a böngészős bejelentkezést Cloud Calendars-fiókjával.";
+
+"Sign in at cloud-calendars.com by QR scan or with your 6-digit security code." = "Jelentkezzen be a cloud-calendars.com oldalon QR-kóddal vagy a 6 jegyű biztonsági kóddal.";
+
+"Connect your Cloud Calendars account with Apple, Google, or Microsoft first." = "Először kapcsolja össze Cloud Calendars-fiókját Apple-, Google- vagy Microsoft-fiókkal.";
+
+"Approve Browser Sign-In" = "Böngészős belépés jóváhagyása";
+
+"This will also link browser session %@ with your Cloud Calendars iOS account." = "Ez a(z) %@ böngészőmunkamenetet is összekapcsolja Cloud Calendars iOS-fiókjával.";
+
+"Tap Approve below to sign in immediately on your computer." = "Koppintson alább a Belépés jóváhagyása gombra az azonnali számítógépes belépéshez.";
+
+"Approving…" = "Jóváhagyás…";
+
+"Approve Sign-In" = "Belépés jóváhagyása";
+
+"Browser Sign-In Approved" = "Böngészős belépés jóváhagyva";
+
+"Your web workspace is now open and synced with this account." = "A webes munkaterület megnyílt és szinkronizálva van ezzel a fiókkal.";
+
+"6-Digit Authenticator Code" = "6 jegyű hitelesítőkód";
+
+"Copy" = "Másolás";
+
+"Account email: %@" = "Fiók e-mail-címe: %@";
+
+"You can enter this email and 6-digit code anytime at cloud-calendars.com to sign in without scanning a QR code." = "Bármikor megadhatja ezt az e-mail-címet és a 6 jegyű kódot a cloud-calendars.com oldalon QR-kód beolvasása nélkül.";
+
+"Preparing your Authenticator key…" = "Hitelesítőkulcs előkészítése…";
+
+"Activate 6-Digit Authenticator Code" = "6 jegyű kód aktiválása";
+
+"Scan Web Sign-In QR Code" = "Webes belépési QR-kód beolvasása";
+
+"This QR code has expired. Scan the refreshed QR code shown on your computer." = "Ez a QR-kód lejárt. Olvassa be a számítógépen látható frissített QR-kódot.";
+
+"Cloud Calendars" = "Cloud Calendars";
+
+"Web & Events Sync" = "Webes és eseményszinkron";
+
+"Synced automatically with Cloud Calendars on the web, Event RSVP pages, and Booking links." = "Automatikusan szinkronizálódik a webes Cloud Calendars felülettel, az RSVP-oldalakkal és a foglalási linkekkel.";

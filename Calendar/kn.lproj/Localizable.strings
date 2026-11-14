@@ -1083,3 +1083,57 @@
 "Weekend day" = "ವಾರಾಂತ್ಯದ ದಿನ";
 
 "Event will occur every %@." = "ಈವೆಂಟ್ ಪ್ರತಿ %@ ಸಂಭವಿಸುತ್ತದೆ.";
+
+"Web Sign-In & Authenticator" = "ವೆಬ್ ಸೈನ್-ಇನ್ ಮತ್ತು ದೃಢೀಕರಣ";
+
+"6-digit security code for cloud-calendars.com" = "cloud-calendars.com ಗಾಗಿ 6-ಅಂಕಿಯ ಭದ್ರತಾ ಕೋಡ್";
+
+"Web Sign-In & 6-Digit Authenticator" = "ವೆಬ್ ಸೈನ್-ಇನ್ ಮತ್ತು 6-ಅಂಕಿಯ ದೃಢೀಕರಣ";
+
+"Web Sign-In" = "ವೆಬ್ ಸೈನ್-ಇನ್";
+
+"Web Authenticator" = "ವೆಬ್ ದೃಢೀಕರಣ";
+
+"Cloud Calendars Web" = "Cloud Calendars Web";
+
+"Confirm sign-in on your browser with your Cloud Calendars account." = "ನಿಮ್ಮ Cloud Calendars ಖಾತೆಯೊಂದಿಗೆ ಬ್ರೌಸರ್ ಸೈನ್-ಇನ್ ದೃಢೀಕರಿಸಿ.";
+
+"Sign in at cloud-calendars.com by QR scan or with your 6-digit security code." = "QR ಸ್ಕ್ಯಾನ್ ಅಥವಾ 6-ಅಂಕಿಯ ಭದ್ರತಾ ಕೋಡ್ ಮೂಲಕ cloud-calendars.com ನಲ್ಲಿ ಸೈನ್ ಇನ್ ಮಾಡಿ.";
+
+"Connect your Cloud Calendars account with Apple, Google, or Microsoft first." = "ಮೊದಲು ನಿಮ್ಮ Cloud Calendars ಖಾತೆಯನ್ನು Apple, Google ಅಥವಾ Microsoft ನೊಂದಿಗೆ ಸಂಪರ್ಕಿಸಿ.";
+
+"Approve Browser Sign-In" = "ಬ್ರೌಸರ್ ಸೈನ್-ಇನ್ ಅನುಮೋದಿಸಿ";
+
+"This will also link browser session %@ with your Cloud Calendars iOS account." = "ಇದು ಬ್ರೌಸರ್ ಸೆಷನ್ %@ ಅನ್ನು ನಿಮ್ಮ Cloud Calendars iOS ಖಾತೆಯೊಂದಿಗೆ ಸಹ ಲಿಂಕ್ ಮಾಡುತ್ತದೆ.";
+
+"Tap Approve below to sign in immediately on your computer." = "ನಿಮ್ಮ ಕಂಪ್ಯೂಟರ್‌ನಲ್ಲಿ ತಕ್ಷಣ ಸೈನ್ ಇನ್ ಮಾಡಲು ಕೆಳಗಿನ ಅನುಮೋದಿಸಿ ಟ್ಯಾಪ್ ಮಾಡಿ.";
+
+"Approving…" = "ಅನುಮೋದಿಸಲಾಗುತ್ತಿದೆ…";
+
+"Approve Sign-In" = "ಸೈನ್-ಇನ್ ಅನುಮೋದಿಸಿ";
+
+"Browser Sign-In Approved" = "ಬ್ರೌಸರ್ ಸೈನ್-ಇನ್ ಅನುಮೋದಿಸಲಾಗಿದೆ";
+
+"Your web workspace is now open and synced with this account." = "ನಿಮ್ಮ ವೆಬ್ ಕಾರ್ಯಕ್ಷೇತ್ರ ಈಗ ತೆರೆದಿದೆ ಮತ್ತು ಈ ಖಾತೆಯೊಂದಿಗೆ ಸಿಂಕ್ ಆಗಿದೆ.";
+
+"6-Digit Authenticator Code" = "6-ಅಂಕಿಯ ದೃಢೀಕರಣ ಕೋಡ್";
+
+"Copy" = "ನಕಲಿಸಿ";
+
+"Account email: %@" = "ಖಾತೆ ಇಮೇಲ್: %@";
+
+"You can enter this email and 6-digit code anytime at cloud-calendars.com to sign in without scanning a QR code." = "QR ಕೋಡ್ ಸ್ಕ್ಯಾನ್ ಮಾಡದೆ ಸೈನ್ ಇನ್ ಮಾಡಲು ನೀವು ಯಾವಾಗ ಬೇಕಾದರೂ cloud-calendars.com ನಲ್ಲಿ ಈ ಇಮೇಲ್ ಮತ್ತು 6-ಅಂಕಿಯ ಕೋಡ್ ನಮೂದಿಸಬಹುದು.";
+
+"Preparing your Authenticator key…" = "ನಿಮ್ಮ ದೃಢೀಕರಣ ಕೀಲಿಯನ್ನು ಸಿದ್ಧಪಡಿಸಲಾಗುತ್ತಿದೆ…";
+
+"Activate 6-Digit Authenticator Code" = "6-ಅಂಕಿಯ ಕೋಡ್ ಸಕ್ರಿಯಗೊಳಿಸಿ";
+
+"Scan Web Sign-In QR Code" = "ವೆಬ್ ಸೈನ್-ಇನ್ QR ಕೋಡ್ ಸ್ಕ್ಯಾನ್ ಮಾಡಿ";
+
+"This QR code has expired. Scan the refreshed QR code shown on your computer." = "ಈ QR ಕೋಡ್ ಅವಧಿ ಮುಗಿದಿದೆ. ನಿಮ್ಮ ಕಂಪ್ಯೂಟರ್‌ನಲ್ಲಿ ತೋರಿಸಿರುವ ಹೊಸ QR ಕೋಡ್ ಸ್ಕ್ಯಾನ್ ಮಾಡಿ.";
+
+"Cloud Calendars" = "Cloud Calendars";
+
+"Web & Events Sync" = "ವೆಬ್ ಮತ್ತು ಈವೆಂಟ್ ಸಿಂಕ್";
+
+"Synced automatically with Cloud Calendars on the web, Event RSVP pages, and Booking links." = "ವೆಬ್‌ನಲ್ಲಿನ Cloud Calendars, ಈವೆಂಟ್ RSVP ಪುಟಗಳು ಮತ್ತು ಬುಕಿಂಗ್ ಲಿಂಕ್‌ಗಳೊಂದಿಗೆ ಸ್ವಯಂಚಾಲಿತವಾಗಿ ಸಿಂಕ್ ಆಗುತ್ತದೆ.";

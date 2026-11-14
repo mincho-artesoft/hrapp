@@ -1081,3 +1081,57 @@
 "Weekend day" = "周末";
 
 "Event will occur every %@." = "事件将在每个 %@ 发生。";
+
+"Web Sign-In & Authenticator" = "网页登录与验证器";
+
+"6-digit security code for cloud-calendars.com" = "用于 cloud-calendars.com 的 6 位安全验证码";
+
+"Web Sign-In & 6-Digit Authenticator" = "网页登录与 6 位验证器";
+
+"Web Sign-In" = "网页登录";
+
+"Web Authenticator" = "网页验证器";
+
+"Cloud Calendars Web" = "Cloud Calendars 网页版";
+
+"Confirm sign-in on your browser with your Cloud Calendars account." = "使用您的 Cloud Calendars 账号确认浏览器登录。";
+
+"Sign in at cloud-calendars.com by QR scan or with your 6-digit security code." = "通过扫描二维码或使用 6 位安全验证码登录 cloud-calendars.com。";
+
+"Connect your Cloud Calendars account with Apple, Google, or Microsoft first." = "请先通过 Apple、Google 或 Microsoft 关联您的 Cloud Calendars 账号。";
+
+"Approve Browser Sign-In" = "批准浏览器登录";
+
+"This will also link browser session %@ with your Cloud Calendars iOS account." = "这还会将浏览器会话 %@ 与您的 Cloud Calendars iOS 账号关联。";
+
+"Tap Approve below to sign in immediately on your computer." = "轻点下方的“批准登录”，即可立即在电脑上完成登录。";
+
+"Approving…" = "正在批准…";
+
+"Approve Sign-In" = "批准登录";
+
+"Browser Sign-In Approved" = "已批准浏览器登录";
+
+"Your web workspace is now open and synced with this account." = "您的网页工作区现已打开并与该账号同步。";
+
+"6-Digit Authenticator Code" = "6 位动态验证码";
+
+"Copy" = "复制";
+
+"Account email: %@" = "账号邮箱：%@";
+
+"You can enter this email and 6-digit code anytime at cloud-calendars.com to sign in without scanning a QR code." = "您可以随时在 cloud-calendars.com 输入此邮箱和 6 位验证码登录，无需再次扫描二维码。";
+
+"Preparing your Authenticator key…" = "正在准备验证器密钥…";
+
+"Activate 6-Digit Authenticator Code" = "激活 6 位动态验证码";
+
+"Scan Web Sign-In QR Code" = "扫描网页登录二维码";
+
+"This QR code has expired. Scan the refreshed QR code shown on your computer." = "此二维码已过期，请扫描电脑上刷新后的二维码。";
+
+"Cloud Calendars" = "Cloud Calendars";
+
+"Web & Events Sync" = "网页与活动同步";
+
+"Synced automatically with Cloud Calendars on the web, Event RSVP pages, and Booking links." = "与网页版 Cloud Calendars、活动邀请（RSVP）页面和预约链接自动双向同步。";

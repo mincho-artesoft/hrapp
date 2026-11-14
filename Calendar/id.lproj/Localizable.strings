@@ -1081,3 +1081,57 @@
 "Weekend day" = "Hari akhir pekan";
 
 "Event will occur every %@." = "Event akan terjadi setiap %@.";
+
+"Web Sign-In & Authenticator" = "Masuk Web & Autentikator";
+
+"6-digit security code for cloud-calendars.com" = "Kode keamanan 6 digit untuk cloud-calendars.com";
+
+"Web Sign-In & 6-Digit Authenticator" = "Masuk Web & Autentikator 6 Digit";
+
+"Web Sign-In" = "Masuk Web";
+
+"Web Authenticator" = "Autentikator Web";
+
+"Cloud Calendars Web" = "Cloud Calendars Web";
+
+"Confirm sign-in on your browser with your Cloud Calendars account." = "Konfirmasi masuk di browser dengan akun Cloud Calendars Anda.";
+
+"Sign in at cloud-calendars.com by QR scan or with your 6-digit security code." = "Masuk di cloud-calendars.com dengan pindai QR atau kode keamanan 6 digit Anda.";
+
+"Connect your Cloud Calendars account with Apple, Google, or Microsoft first." = "Hubungkan akun Cloud Calendars Anda dengan Apple, Google, atau Microsoft terlebih dahulu.";
+
+"Approve Browser Sign-In" = "Setujui Masuk Browser";
+
+"This will also link browser session %@ with your Cloud Calendars iOS account." = "Ini juga akan menautkan sesi browser %@ dengan akun iOS Cloud Calendars Anda.";
+
+"Tap Approve below to sign in immediately on your computer." = "Ketuk Setujui Masuk di bawah untuk langsung masuk di komputer Anda.";
+
+"Approving…" = "Menyetujui…";
+
+"Approve Sign-In" = "Setujui Masuk";
+
+"Browser Sign-In Approved" = "Masuk Browser Disetujui";
+
+"Your web workspace is now open and synced with this account." = "Ruang kerja web Anda kini terbuka dan tersinkronisasi dengan akun ini.";
+
+"6-Digit Authenticator Code" = "Kode Autentikator 6 Digit";
+
+"Copy" = "Salin";
+
+"Account email: %@" = "Email akun: %@";
+
+"You can enter this email and 6-digit code anytime at cloud-calendars.com to sign in without scanning a QR code." = "Anda dapat memasukkan email ini dan kode 6 digit kapan saja di cloud-calendars.com tanpa memindai kode QR.";
+
+"Preparing your Authenticator key…" = "Menyiapkan kunci Autentikator Anda…";
+
+"Activate 6-Digit Authenticator Code" = "Aktifkan Kode 6 Digit";
+
+"Scan Web Sign-In QR Code" = "Pindai Kode QR Masuk Web";
+
+"This QR code has expired. Scan the refreshed QR code shown on your computer." = "Kode QR ini telah kedaluwarsa. Pindai kode QR terbaru yang ditampilkan di komputer Anda.";
+
+"Cloud Calendars" = "Cloud Calendars";
+
+"Web & Events Sync" = "Sinkronisasi Web & Acara";
+
+"Synced automatically with Cloud Calendars on the web, Event RSVP pages, and Booking links." = "Tersinkronisasi otomatis dengan Cloud Calendars di web, halaman RSVP acara, dan tautan pemesanan.";

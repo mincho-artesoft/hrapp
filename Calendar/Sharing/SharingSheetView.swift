@@ -82,8 +82,11 @@ struct SharingSheetView: View {
     @State private var showQRScanner = false
     @State private var pendingScannedEvent: SharedEventImportPayload?
     @State private var pendingScannedCalendar: SharedCalendarInvitationPayload?
+    @State private var pendingScannedWebAuth: WebAuthChallengePayload?
     @State private var scannedEvent: SharedEventImportPayload?
     @State private var scannedCalendar: SharedCalendarInvitationPayload?
+    @State private var scannedWebAuth: WebAuthChallengePayload?
+    @State private var showWebAuthenticator = false
 
     private let expiryRefreshTimer = Timer.publish(
         every: 60,
@@ -182,6 +185,8 @@ struct SharingSheetView: View {
                     pendingScannedEvent = payload
                 case .calendar(let payload):
                     pendingScannedCalendar = payload
+                case .webAuth(let payload):
+                    pendingScannedWebAuth = payload
                 }
             }
         }
@@ -190,6 +195,12 @@ struct SharingSheetView: View {
         }
         .sheet(item: $scannedCalendar) { payload in
             SharedCalendarInvitationView(payload: payload)
+        }
+        .sheet(item: $scannedWebAuth) { payload in
+            WebStudioAuthSheetView(initialChallenge: payload)
+        }
+        .sheet(isPresented: $showWebAuthenticator) {
+            WebStudioAuthSheetView(initialChallenge: nil)
         }
         .fullScreenCover(item: $sharedEventsDestination) { destination in
             sharedEventsList(destination)
@@ -204,6 +215,10 @@ struct SharingSheetView: View {
                 Divider()
 
                 cloudAccountButton
+
+                Divider()
+
+                webAuthenticatorButton
 
                 Divider()
 
@@ -325,12 +340,56 @@ struct SharingSheetView: View {
         return localizedFormat(format, Int64(count))
     }
 
+    private var webAuthenticatorButton: some View {
+        Button {
+            showWebAuthenticator = true
+        } label: {
+            HStack(spacing: 12) {
+                Image(systemName: "key.horizontal.fill")
+                    .font(.body.weight(.semibold))
+                    .foregroundStyle(.teal)
+                    .frame(width: 38, height: 38)
+                    .background(Color.teal.opacity(0.12), in: RoundedRectangle(cornerRadius: 10))
+
+                VStack(alignment: .leading, spacing: 2) {
+                    Text("Web Sign-In & Authenticator")
+                        .font(.body.weight(.semibold))
+                        .foregroundStyle(.primary)
+                    Text("6-digit security code for cloud-calendars.com")
+                        .font(.footnote)
+                        .foregroundStyle(.secondary)
+                }
+
+                Spacer(minLength: 8)
+
+                Image(systemName: "chevron.forward")
+                    .font(.footnote.weight(.semibold))
+                    .foregroundStyle(.tertiary)
+            }
+            .padding(.vertical, DraggableMenuContentLayout.verticalInset)
+            .contentShape(Rectangle())
+        }
+        .buttonStyle(.plain)
+    }
+
     private var cloudAccountView: some View {
         NavigationStack {
             Form {
                 Section {
                     CloudAccountSignInContent()
                         .padding(.vertical, 4)
+                }
+                if cloudAccountManager.isSignedIn {
+                    Section {
+                        Button {
+                            showCloudAccount = false
+                            DispatchQueue.main.asyncAfter(deadline: .now() + 0.35) {
+                                showWebAuthenticator = true
+                            }
+                        } label: {
+                            Label("Web Sign-In & 6-Digit Authenticator", systemImage: "key.horizontal.fill")
+                        }
+                    }
                 }
             }
             .navigationTitle("Cloud Calendars account")
@@ -347,7 +406,12 @@ struct SharingSheetView: View {
     }
 
     private func presentScannedEvent() {
-        if let payload = pendingScannedEvent {
+        if let payload = pendingScannedWebAuth {
+            pendingScannedWebAuth = nil
+            DispatchQueue.main.async {
+                scannedWebAuth = payload
+            }
+        } else if let payload = pendingScannedEvent {
             pendingScannedEvent = nil
             DispatchQueue.main.async {
                 scannedEvent = payload
