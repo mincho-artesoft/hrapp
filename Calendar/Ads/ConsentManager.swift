@@ -1,7 +1,6 @@
 import UIKit
 import UserMessagingPlatform
 import GoogleMobileAds
-import AppTrackingTransparency
 
 /// Google's User Messaging Platform -- the IAB TCF-registered CMP that gives
 /// every ad request from the EEA, the UK and Switzerland a consent string.
@@ -85,13 +84,6 @@ final class ConsentManager: ObservableObject {
         }
         guard SubscriptionManager.shared.subscriptionStatus == .base else { return }
         if ConsentInformation.shared.canRequestAds {
-            let defaults = UserDefaults.standard
-            let deniedStorage = defaults.integer(forKey: "IABTCF_gdprApplies") == 1
-                && (defaults.string(forKey: "IABTCF_PurposeConsents")?.hasPrefix("0") == true)
-            if !deniedStorage, UIApplication.shared.applicationState == .active,
-               ATTrackingManager.trackingAuthorizationStatus == .notDetermined {
-                _ = await ATTrackingManager.requestTrackingAuthorization()
-            }
             if !didStartAdsSDK {
                 await withCheckedContinuation { continuation in
                     MobileAds.shared.start { _ in continuation.resume() }
