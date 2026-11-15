@@ -8,8 +8,9 @@ struct SubscriptionView: View {
     @State private var showRestoreAlert = false
     @State private var restoreAlertMessage = ""
     
-    @State private var selectedCategory: SubscriptionCategory = .base
+    @State private var selectedCategory: SubscriptionCategory = .advance
     @State private var selectedProductID: String?
+    @State private var hasInitializedCategory = false
 
     // Alert
     @State private var showPlanAlert = false
@@ -56,7 +57,13 @@ struct SubscriptionView: View {
             .background(Color(.systemGroupedBackground).ignoresSafeArea())
 
             // MARK: – реагира на промени
-            .onAppear { setupDefaultSelection() }
+            .onAppear {
+                if !hasInitializedCategory {
+                    hasInitializedCategory = true
+                    selectedCategory = manager.subscriptionStatus == .premium ? .premium : .advance
+                }
+                setupDefaultSelection()
+            }
             .onChange(of: selectedCategory)          {setupDefaultSelection() }
             .onChange(of: manager.products)          {setupDefaultSelection() }
             .onChange(of: manager.hasActiveSubscription) {
@@ -140,20 +147,26 @@ struct SubscriptionView: View {
             return
         }
 
-        // Филтър за Advance/Premium
+        // Филтър за Advance/Premium (case-insensitive срещу Cloud.Calendars.Advanced.* / .Premium.*)
         let categoryMatches: (Product) -> Bool = { product in
             switch selectedCategory {
-            case .advance: return product.id.contains("advanced")
-            case .premium: return product.id.contains("premium")
+            case .advance: return product.id.localizedCaseInsensitiveContains("advanced")
+            case .premium: return product.id.localizedCaseInsensitiveContains("premium")
             case .base:    return false
             }
         }
 
-        // Търсим първия REAL selectable
-        if let firstSelectable = manager.sortedProducts.first(where: { product in
+        let candidates = manager.sortedProducts.filter { product in
             categoryMatches(product) && !manager.purchasedProductIDs.contains(product.id)
-        }) {
-            selectedProductID = firstSelectable.id
+        }
+
+        // Приоритетно избираме Годишния план със 7-дневен Free Trial
+        if let yearlyTrial = candidates.first(where: {
+            $0.subscription?.subscriptionPeriod.unit == .year && $0.subscription?.introductoryOffer != nil
+        }) ?? candidates.first(where: {
+            $0.subscription?.subscriptionPeriod.unit == .year
+        }) ?? candidates.first {
+            selectedProductID = yearlyTrial.id
         } else {
             selectedProductID = nil
         }

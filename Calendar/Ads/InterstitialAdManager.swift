@@ -70,6 +70,7 @@ final class InterstitialAdManager: NSObject, FullScreenContentDelegate, Observab
             interstitial = nil
         }
         guard !CloudAccountManager.shared.isSigningIn,
+              !ReviewManager.shouldPauseAppOpenAds,
               !isShowing,
               !AppOpenAdManager.shared.isShowingAd else { return }
         if let lastShownDate, Date().timeIntervalSince(lastShownDate) < minimumInterval {

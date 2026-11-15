@@ -156,9 +156,9 @@ class SubscriptionManager: ObservableObject {
         }
 
         // If any premium sub – drop advance ones
-        if activeIDs.contains(where: { $0.contains("premium") }) {
-            activeIDs   = activeIDs.filter { $0.contains("premium") }
-            expiryDates = expiryDates.filter { key, _ in key.contains("premium") }
+        if activeIDs.contains(where: { $0.localizedCaseInsensitiveContains("premium") }) {
+            activeIDs   = activeIDs.filter { $0.localizedCaseInsensitiveContains("premium") }
+            expiryDates = expiryDates.filter { key, _ in key.localizedCaseInsensitiveContains("premium") }
         }
 
         await MainActor.run {
@@ -190,6 +190,9 @@ class SubscriptionManager: ObservableObject {
         products.sorted {
             guard let u1 = $0.subscription?.subscriptionPeriod.unit,
                   let u2 = $1.subscription?.subscriptionPeriod.unit else { return false }
+            let u1Yearly = (u1 == .year)
+            let u2Yearly = (u2 == .year)
+            if u1Yearly != u2Yearly { return u1Yearly }
             return u1.sortIndex < u2.sortIndex
         }
     }

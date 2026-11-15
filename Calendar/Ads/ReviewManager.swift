@@ -23,11 +23,25 @@ import SwiftUI
 /// All counters are kept in `UserDefaults` under the `rm_` namespace.
 @MainActor
 enum ReviewManager {
-    // MARK: ‑ Tunables
+    // MARK: ‑ Tunables
     private static let requiredLaunches        = 5
     private static let requiredDaysAfterInstall = 1
     private static let requiredCreatedEvents    = 3
     private static let cooldownDays            = 120
+    private static let adPauseAfterPromptSeconds: TimeInterval = 35
+    private static var lastPromptTriggerUptime: TimeInterval?
+
+    static var shouldPauseAppOpenAds: Bool {
+        if let uptime = lastPromptTriggerUptime,
+           ProcessInfo.processInfo.systemUptime - uptime < adPauseAfterPromptSeconds {
+            return true
+        }
+        if let last = UserDefaults.standard.object(forKey: lastPromptKey) as? Date,
+           abs(Date().timeIntervalSince(last)) < adPauseAfterPromptSeconds {
+            return true
+        }
+        return false
+    }
 
     // MARK: ‑ Keys
     private static let installDateKey  = "rm_installDate"
@@ -58,6 +72,7 @@ enum ReviewManager {
                 .compactMap({ $0 as? UIWindowScene })
                 .first(where: { $0.activationState == .foregroundActive }) else { return }
 
+        lastPromptTriggerUptime = ProcessInfo.processInfo.systemUptime
         Task {
             if #available(iOS 18, *) {
                 AppStore.requestReview(in: scene)

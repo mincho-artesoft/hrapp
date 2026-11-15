@@ -57,6 +57,7 @@ class AppOpenAdManager: NSObject, FullScreenContentDelegate {
     func showAdIfAvailable() {
         // 1. Ако вече показваме или е показана наскоро – не прави нищо
         guard ConsentManager.shared.canLoadAds,
+              !ReviewManager.shouldPauseAppOpenAds,
               !InterstitialAdManager.shared.isShowing,
               !isShowingAd, !CloudAccountManager.shared.isSigningIn,
               CalendarSharingIntroductionState.shared.hasCompleted else { return }
